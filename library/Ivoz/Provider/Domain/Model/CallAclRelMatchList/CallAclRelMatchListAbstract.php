@@ -25,7 +25,7 @@ abstract class CallAclRelMatchListAbstract
     protected $policy;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface
+     * @var \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface | null
      */
     protected $callAcl;
 
@@ -174,7 +174,7 @@ abstract class CallAclRelMatchListAbstract
             'priority' => self::getPriority(),
             'policy' => self::getPolicy(),
             'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
-            'matchListId' => self::getMatchList() ? self::getMatchList()->getId() : null
+            'matchListId' => self::getMatchList()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -240,7 +240,7 @@ abstract class CallAclRelMatchListAbstract
     /**
      * Set callAcl
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl
+     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl | null
      *
      * @return static
      */
@@ -254,7 +254,7 @@ abstract class CallAclRelMatchListAbstract
     /**
      * Get callAcl
      *
-     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface
+     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface | null
      */
     public function getCallAcl()
     {
@@ -268,7 +268,7 @@ abstract class CallAclRelMatchListAbstract
      *
      * @return static
      */
-    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList)
+    protected function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList)
     {
         $this->matchList = $matchList;
 

@@ -219,7 +219,7 @@ abstract class LocutionAbstract
             'originalFileFileSize' => self::getOriginalFile()->getFileSize(),
             'originalFileMimeType' => self::getOriginalFile()->getMimeType(),
             'originalFileBaseName' => self::getOriginalFile()->getBaseName(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'companyId' => self::getCompany()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -292,7 +292,7 @@ abstract class LocutionAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -316,7 +316,7 @@ abstract class LocutionAbstract
      *
      * @return static
      */
-    public function setEncodedFile(EncodedFile $encodedFile)
+    protected function setEncodedFile(EncodedFile $encodedFile)
     {
         $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
         if ($isEqual) {
@@ -344,7 +344,7 @@ abstract class LocutionAbstract
      *
      * @return static
      */
-    public function setOriginalFile(OriginalFile $originalFile)
+    protected function setOriginalFile(OriginalFile $originalFile)
     {
         $isEqual = $this->originalFile && $this->originalFile->equals($originalFile);
         if ($isEqual) {

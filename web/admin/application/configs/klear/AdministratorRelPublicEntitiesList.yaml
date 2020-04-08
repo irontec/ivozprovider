@@ -1,0 +1,116 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: administratorRelPublicEntities_screen
+  screens: &administratorRelPublicEntities_screensLink
+    administratorRelPublicEntitiesList_screen: &administratorRelPublicEntitiesList_screenLink
+      controller: list
+      order:
+        field:
+          - publicEntity
+        type: asc
+      pagination:
+        items: 25
+      <<: *AdministratorRelPublicEntities
+      class: fa fa-users red
+      title: _("List of %s %2s", ngettext('Administrator access privilege', 'Administrator access privileges', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/en/api_rest/acls.html"
+      fields:  &administratorRelPublicEntitiesList_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            administratorRelPublicEntitiesEdit_screen: true
+          default: administratorRelPublicEntitiesEdit_screen
+        order: &AdministratorRelPublicEntities_orderLink
+          publicEntity: true
+          create: true
+          read: true
+          update: true
+          delete: true
+      options: &administratorRelPublicEntitiesList_optionsLink
+        title: _("Options")
+        dialogs:
+          administratorRelPublicEntitiesNoAccess_dialog: true
+          administratorRelPublicEntitiesReadOnly_dialog: true
+          administratorRelPublicEntitiesWriteAccess_dialog: true
+      parentOptionCustomizer:
+      - IvozProvider_Klear_Options_OptionsCustomizerFilterForPublicEntities
+
+    administratorRelPublicEntitiesEdit_screen: &administratorRelPublicEntitiesEdit_screenLink
+      <<: *AdministratorRelPublicEntities
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Administrator access privilege', 'Administrator access privileges', 1), "[format| (%item%)]")
+      fields: &administratorRelPublicEntitiesFields_Link
+        order:
+          <<: *AdministratorRelPublicEntities_orderLink
+      fixedPositions: &brandsFixedPositions_Link
+        group0:
+          colsPerRow: 2
+          fields:
+            publicEntity: 2
+        group1:
+          label: _("Access privileges")
+          colsPerRow: 2
+          fields:
+            read: 1
+            create: 1
+            update: 1
+            delete: 1
+
+  dialogs: &administratorRelPublicEntities_dialogsLink
+
+    administratorRelPublicEntitiesNoAccess_dialog: &administratorRelPublicEntitiesNoAccess_dialogLink
+      <<: *AdministratorRelPublicEntities
+      module: default
+      controller: klear-custom-acl
+      action: revoke-access
+      class: ui-silk-application-delete
+      labelOption: true
+      title: _("Revoke %s", _("Access"))
+      description: _("Do you want revoke access to this %s?", ngettext('Entity', 'Entities', 1))
+      message: _("Access successfully revoked.")
+      multiItem: 1
+      labelOnList: 1
+
+    administratorRelPublicEntitiesReadOnly_dialog: &administratorRelPublicEntitiesReadOnly_dialogLink
+      <<: *AdministratorRelPublicEntities
+      module: default
+      controller: klear-custom-acl
+      action: grant-read-only
+      class: ui-silk-application-get
+      labelOption: true
+      title: _("Grant Read Only %s", _("Access"))
+      description: _("Do you want to grant read access to this %s?", ngettext('Entity', 'Entities', 1))
+      message: _("Read access successfully granted.")
+      multiItem: 1
+      labelOnList: 1
+
+    administratorRelPublicEntitiesWriteAccess_dialog: &administratorRelPublicEntitiesReadOnly_dialogLink
+      <<: *AdministratorRelPublicEntities
+      module: default
+      controller: klear-custom-acl
+      action: grant-write
+      class: ui-silk-application-get
+      labelOption: true
+      title: _("Grant Write %s", _("Access"))
+      description: _("Do you want to grant write access to this %s?", ngettext('Entity', 'Entities', 1))
+      message: _("Write access successfully granted.")
+      multiItem: 1
+      labelOnList: 1
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

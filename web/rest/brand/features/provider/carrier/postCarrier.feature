@@ -14,6 +14,7 @@ Feature: Create carriers
           "description": "Artemis-New",
           "name": "Artemis-New",
           "externallyRated": false,
+          "proxyTrunk": 1,
           "transformationRuleSet": 1
       }
     """
@@ -23,15 +24,16 @@ Feature: Create carriers
      And the JSON should be equal to:
     """
       {
-          "description": "Artemis-New",
-          "name": "Artemis-New",
-          "externallyRated": false,
-          "balance": 0,
-          "calculateCost": false,
-          "id": 3,
-          "transformationRuleSet": 1,
-          "currency": null
-      }
+            "description": "Artemis-New",
+            "name": "Artemis-New",
+            "externallyRated": false,
+            "balance": 0,
+            "calculateCost": false,
+            "id": 3,
+            "transformationRuleSet": 1,
+            "currency": null,
+            "proxyTrunk": 1
+        }
     """
 
   Scenario: Retrieve created carrier

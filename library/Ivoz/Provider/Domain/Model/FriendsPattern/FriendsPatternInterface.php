@@ -33,7 +33,7 @@ interface FriendsPatternInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend = null);
+    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend);
 
     /**
      * Get friend

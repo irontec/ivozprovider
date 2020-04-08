@@ -17,6 +17,7 @@ Feature: Create companies
         "nif": "",
         "distributeMethod": "hash",
         "maxCalls": 0,
+        "maxDailyUsage": 100,
         "postalAddress": "",
         "postalCode": "",
         "town": "",
@@ -44,7 +45,7 @@ Feature: Create companies
     Then the response status code should be 201
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
+     And the JSON should be like:
     """
       {
           "type": "vpbx",
@@ -52,6 +53,7 @@ Feature: Create companies
           "domainUsers": "api.irontec.com",
           "nif": "",
           "maxCalls": 0,
+          "maxDailyUsage": 100,
           "postalAddress": "",
           "postalCode": "",
           "town": "",
@@ -65,17 +67,46 @@ Feature: Create companies
           "balance": 0,
           "showInvoices": false,
           "id": 6,
-          "language": 1,
-          "defaultTimezone": 1,
-          "country": 1,
+          "language": "~",
+          "defaultTimezone": {
+              "tz": "Europe/Andorra",
+              "comment": "",
+              "id": 1,
+              "label": {
+                  "en": "",
+                  "es": "",
+                  "ca": "",
+                  "it": ""
+              },
+              "country": 1
+          },
+          "country": {
+              "code": "AD",
+              "countryCode": "+376",
+              "id": 1,
+              "name": {
+                  "en": "Andorra",
+                  "es": "Andorra",
+                  "ca": "Andorra",
+                  "it": "Andorra"
+              },
+              "zone": {
+                  "en": "Europe",
+                  "es": "Europa",
+                  "ca": "Europa",
+                  "it": "Europe"
+              }
+          },
           "currency": null,
-          "transformationRuleSet": 1,
-          "outgoingDdi": 1,
-          "voicemailNotificationTemplate": 1,
+          "transformationRuleSet": "~",
+          "outgoingDdi": "~",
+          "voicemailNotificationTemplate": "~",
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
-          "featureIds": [1]
+          "featureIds": [
+              1
+          ]
       }
     """
 

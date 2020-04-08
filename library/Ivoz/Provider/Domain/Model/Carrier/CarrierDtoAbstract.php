@@ -56,6 +56,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $currency;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto | null
+     */
+    private $proxyTrunk;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto[] | null
      */
     private $outgoingRoutings = null;
@@ -106,7 +111,8 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'brandId' => 'brand',
             'transformationRuleSetId' => 'transformationRuleSet',
-            'currencyId' => 'currency'
+            'currencyId' => 'currency',
+            'proxyTrunkId' => 'proxyTrunk'
         ];
     }
 
@@ -125,6 +131,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'currency' => $this->getCurrency(),
+            'proxyTrunk' => $this->getProxyTrunk(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
             'outgoingRoutingsRelCarriers' => $this->getOutgoingRoutingsRelCarriers(),
             'servers' => $this->getServers(),
@@ -385,6 +392,52 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getCurrencyId()
     {
         if ($dto = $this->getCurrency()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto $proxyTrunk
+     *
+     * @return static
+     */
+    public function setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto $proxyTrunk = null)
+    {
+        $this->proxyTrunk = $proxyTrunk;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto | null
+     */
+    public function getProxyTrunk()
+    {
+        return $this->proxyTrunk;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setProxyTrunkId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto($id)
+            : null;
+
+        return $this->setProxyTrunk($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getProxyTrunkId()
+    {
+        if ($dto = $this->getProxyTrunk()) {
             return $dto->getId();
         }
 

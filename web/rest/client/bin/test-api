@@ -5,8 +5,11 @@ set -e
 export SYMFONY_ENV=test
 
 pushd /opt/irontec/ivozprovider/web/rest/client
-    # Prepare dataset
-    bin/prepare-test-db
+
+    if [ "$1" != "--skip-db" ]; then
+        # Prepare dataset
+        bin/prepare-test-db
+    fi
 
     # Access control tests
     SYMFONY_PHPUNIT_VERSION=6.5.14 vendor/bin/simple-phpunit

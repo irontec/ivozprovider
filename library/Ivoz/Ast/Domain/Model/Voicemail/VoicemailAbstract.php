@@ -181,12 +181,12 @@ abstract class VoicemailAbstract
     protected $stamp;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     protected $user;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     protected $residentialDevice;
 
@@ -1358,7 +1358,7 @@ abstract class VoicemailAbstract
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
+    protected function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
     {
         $this->user = $user;
 
@@ -1382,7 +1382,7 @@ abstract class VoicemailAbstract
      *
      * @return static
      */
-    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null)
+    protected function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null)
     {
         $this->residentialDevice = $residentialDevice;
 

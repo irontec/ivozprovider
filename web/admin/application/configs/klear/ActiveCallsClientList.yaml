@@ -1,0 +1,26 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+#include ActiveCallsList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: activeCallsList_screen
+
+  screens:
+    activeCallsList_screen:
+      <<: *activeCallsList_screenLink
+      action: users
+      forcedValues:
+        b: ${auth.brandId}
+        c: ${auth.companyId}
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
+

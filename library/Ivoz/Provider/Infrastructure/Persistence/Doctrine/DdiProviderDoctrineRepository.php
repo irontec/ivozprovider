@@ -3,9 +3,13 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
 
 /**
  * DdiProviderDoctrineRepository
@@ -18,5 +22,61 @@ class DdiProviderDoctrineRepository extends ServiceEntityRepository implements D
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, DdiProvider::class);
+    }
+
+    public function getDdiProviderIdsByBrandAdmin(AdministratorInterface $admin): array
+    {
+        if (!$admin->isBrandAdmin()) {
+            throw new \DomainException('User must be brand admin');
+        }
+
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('self.id')
+            ->where(
+                $expression->eq(
+                    'self.brand',
+                    $admin->getBrand()->getId()
+                )
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_column(
+            $result,
+            'id'
+        );
+    }
+
+    /**
+     * @param BrandInterface $brand
+     * @param ProxyTrunkInterface $proxyTrunks
+     * @return array
+     */
+    public function findByBrandAndProxyTrunks(BrandInterface $brand, ProxyTrunkInterface $proxyTrunks)
+    {
+        /** @var DdiProviderInterface[] $response */
+        $response = $this->findBy([
+            'brand' => $brand,
+            'proxyTrunk' => $proxyTrunks
+        ]);
+
+        return $response;
+    }
+
+    /**
+     * @param ProxyTrunkInterface $proxyTrunks
+     * @return array
+     */
+    public function findByProxyTrunks(ProxyTrunkInterface $proxyTrunks)
+    {
+        /** @var DdiProviderInterface[] $response */
+        $response = $this->findBy([
+            'proxyTrunk' => $proxyTrunks
+        ]);
+
+        return $response;
     }
 }

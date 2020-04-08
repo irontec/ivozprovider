@@ -45,6 +45,18 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
                 $this->getCompany()->getBrand()
             );
         }
+
+        if ($this->isDirectConnectivity() && !$this->getTransport()) {
+            throw new \DomainException('Invalid empty transport');
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDirectConnectivity() : bool
+    {
+        return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_YES;
     }
 
     /**

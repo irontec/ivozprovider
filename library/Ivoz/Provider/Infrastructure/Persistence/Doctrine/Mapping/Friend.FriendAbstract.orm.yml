@@ -28,7 +28,7 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
     transport:
       column: transport
       type: string
-      nullable: false
+      nullable: true
       length: 25
       options:
         fixed: false

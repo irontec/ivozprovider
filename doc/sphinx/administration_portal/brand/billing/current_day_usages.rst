@@ -30,3 +30,6 @@ This section lists current day usage for each client in the brand:
 
 .. error:: This is one of main :ref:`security` mechanisms available in IvozProvider. Use it to avoid toll fraud calls
            (see :ref:`Current day max usage`).
+
+This section shows runtime value obtained asking to CGRateS (value actually applying) that should be equal to the one
+set editing the client itself. If data is shown in red, these values differ.

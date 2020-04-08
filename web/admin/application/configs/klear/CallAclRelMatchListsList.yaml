@@ -18,16 +18,16 @@ production:
         options:
           title: _("Options")
           screens:
-            callACLRelMatchListsEdit_screen: true
+            callACLRelMatchListsEdit_screen: ${auth.acls.CallAclRelMatchLists.update}
           dialogs:
-            callACLRelMatchListsDel_dialog: true
+            callACLRelMatchListsDel_dialog: ${auth.acls.CallAclRelMatchLists.delete}
           default: callACLRelMatchListsEdit_screen
       options:
         title: _("Options")
         screens:
-          callACLRelMatchListsNew_screen: true
+          callACLRelMatchListsNew_screen: ${auth.acls.CallAclRelMatchLists.create}
         dialogs:
-          callACLRelMatchListsDel_dialog: true
+          callACLRelMatchListsDel_dialog: ${auth.acls.CallAclRelMatchLists.delete}
 
     callACLRelMatchListsNew_screen: &callACLRelMatchListsNew_screenLink
       <<: *CallAclRelMatchLists

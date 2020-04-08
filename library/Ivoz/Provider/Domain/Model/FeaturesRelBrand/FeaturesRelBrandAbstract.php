@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class FeaturesRelBrandAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
@@ -152,7 +152,7 @@ abstract class FeaturesRelBrandAbstract
     {
         return [
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'featureId' => self::getFeature() ? self::getFeature()->getId() : null
+            'featureId' => self::getFeature()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class FeaturesRelBrandAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class FeaturesRelBrandAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand()
     {
@@ -188,7 +188,7 @@ abstract class FeaturesRelBrandAbstract
      *
      * @return static
      */
-    public function setFeature(\Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature)
+    protected function setFeature(\Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature)
     {
         $this->feature = $feature;
 

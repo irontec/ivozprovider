@@ -78,14 +78,13 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
       length: 55
       options:
         fixed: false
+        comment: '[enum:RetailAccount|ResidentialDevice|User|Friend|Fax]'
       column: endpointType
     endpointId:
       type: integer
       nullable: true
       options:
         unsigned: true
-      type: integer
-      options:
         fixed: false
       column: endpointId
     direction:
@@ -177,6 +176,30 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
       inversedBy: null
       joinColumns:
         trunksCdrId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    ddi:
+      targetEntity: \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ddiId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    ddiProvider:
+      targetEntity: \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ddiProviderId:
           referencedColumnName: id
           nullable: true
           onDelete: set null

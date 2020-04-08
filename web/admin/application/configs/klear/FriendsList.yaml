@@ -56,17 +56,17 @@ production:
         options:
           title: _("Options")
           screens:
-            friendsEdit_screen: true
-            friendsPatternsList_screen: true
+            friendsEdit_screen: ${auth.acls.Friends.update}
+            friendsPatternsList_screen: ${auth.acls.FriendsPatterns.read}
           dialogs:
-            friendsDel_dialog: true
+            friendsDel_dialog: ${auth.acls.Friends.delete}
           default: friendsEdit_screen
       options:
         title: _("Options")
         screens:
-          friendsNew_screen: true
+          friendsNew_screen: ${auth.acls.Friends.create}
         dialogs:
-          friendsDel_dialog: true
+          friendsDel_dialog: ${auth.acls.Friends.delete}
 
     friendsNew_screen: &friendsNew_screenLink
       <<: *Friends
@@ -81,7 +81,7 @@ production:
       plugin: passwordgennew
       forcedValues:
         <<: *forcedCompany
-        ddiIn: "no"
+        ddiIn: "yes"
       fields:
         readOnly:
           interCompany: ${auth.isCompanyOperator}
@@ -193,6 +193,7 @@ production:
       <<: *friendsPatternsList_screenLink
       filterField: Friend
       parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
         - recordCount
     friendsPatternsNew_screen:
       <<: *friendsPatternsNew_screenLink

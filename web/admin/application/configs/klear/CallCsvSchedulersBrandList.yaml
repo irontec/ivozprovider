@@ -18,25 +18,85 @@ production:
       rawCondition: "CallCsvScheduler.brand is not null"
       forcedValues:
         <<: *forcedBrand
+      fields: &callCsvSchedulersBrand_fields
+        <<: *callCsvSchedulers_fieldsLink
 
     callCsvSchedulersNew_screen:
       <<: *callCsvSchedulersNew_screenLink
       forcedValues:
         <<: *forcedBrand
-      fields:
+      fields: &callCsvSchedulersBrandNew_fields
+        <<: *callCsvSchedulersNew_fields
         blacklist:
           <<: *callCsvSchedulersNew_blacklist
           callCsvNotificationTemplate: false
+          retailAccount: false
+          residentialDevice: false
+          carrier: false
+          companyType: false
+          ddi: false
+          endpointType: false
+          user: false
+          fax: false
+          friend: false
+      fixedPositions: &callCsvSchedulersNew_fixedPositions
+        group0:
+          label: _("Basic Information")
+          colsPerRow: 2
+          fields:
+            name: 1
+            companyType: 1
+            email: 1
+            callCsvNotificationTemplate: 1
+        group1:
+          label: _("Time Information")
+          colsPerRow: 2
+          fields:
+            frequency: 1
+            unit: 1
+            nextExecution: 1
+            lastExecution: 1
+        group2:
+          label: _("Provider filters")
+          colsPerRow: 2
+          fields:
+            callDirection: 1
+            carrier: 1
+        group3:
+          label: _("Client filters")
+          colsPerRow: 2
+          fields:
+            vpbx: 1
+            company: 1
+            retail: 1
+            residential: 1
+            ddi: 1
+            endpointType: 1
+            retailAccount: 1
+            residentialDevice: 1
+            user: 1
+            fax: 1
+            friend: 1
 
     callCsvSchedulersEdit_screen:
       <<: *callCsvSchedulersEdit_screenLink
       forcedValues:
         <<: *forcedBrand
       fields:
+        <<: *callCsvSchedulersBrandNew_fields
         blacklist:
           <<: *callCsvSchedulersEdit_blacklist
           callCsvNotificationTemplate: false
-
+          retailAccount: false
+          residentialDevice: false
+          carrier: false
+          ddi: false
+          endpointType: false
+          user: false
+          fax: false
+          friend: false
+      fixedPositions:
+        <<: *callCsvSchedulersNew_fixedPositions
   dialogs:
     <<: *callCsvSchedulers_dialogsLink
 

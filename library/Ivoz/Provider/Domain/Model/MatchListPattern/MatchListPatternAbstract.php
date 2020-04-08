@@ -190,7 +190,7 @@ abstract class MatchListPatternAbstract
             'type' => self::getType(),
             'regExp' => self::getRegexp(),
             'numberValue' => self::getNumbervalue(),
-            'matchListId' => self::getMatchList() ? self::getMatchList()->getId() : null,
+            'matchListId' => self::getMatchList()->getId(),
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
@@ -318,7 +318,7 @@ abstract class MatchListPatternAbstract
      *
      * @return static
      */
-    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList = null)
+    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList)
     {
         $this->matchList = $matchList;
 
@@ -342,7 +342,7 @@ abstract class MatchListPatternAbstract
      *
      * @return static
      */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    protected function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
     {
         $this->numberCountry = $numberCountry;
 

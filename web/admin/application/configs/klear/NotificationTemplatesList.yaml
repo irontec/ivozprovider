@@ -25,21 +25,21 @@ production:
         options:
           title: _("Options")
           screens:
-            notificationTemplatesEdit_screen: true
+            notificationTemplatesEdit_screen: ${auth.acls.NotificationTemplates.update}
             notificationTemplatesContentsVoicemailList_screen: true
             notificationTemplatesContentsFaxList_screen: true
             notificationTemplatesContentsLowBalanceList_screen: true
             notificationTemplatesContentsInvoiceList_screen: true
             notificationTemplatesContentsCallCsvList_screen: true
           dialogs:
-            notificationTemplatesDel_dialog: true
+            notificationTemplatesDel_dialog: ${auth.acls.NotificationTemplates.delete}
           default: notificationTemplatesEdit_screen
       options:
         title: _("Options")
         screens:
-          notificationTemplatesNew_screen: true
+          notificationTemplatesNew_screen: ${auth.acls.NotificationTemplates.create}
         dialogs:
-          notificationTemplatesDel_dialog: true
+          notificationTemplatesDel_dialog: ${auth.acls.NotificationTemplates.delete}
 
     notificationTemplatesNew_screen: &notificationTemplatesNew_screenLink
       <<: *NotificationTemplates

@@ -39,29 +39,11 @@ interface ServiceInterface extends LoggableEntityInterface
     public function getExtraArgs();
 
     /**
-     * Set name
-     *
-     * @param \Ivoz\Provider\Domain\Model\Service\Name $name
-     *
-     * @return static
-     */
-    public function setName(\Ivoz\Provider\Domain\Model\Service\Name $name);
-
-    /**
      * Get name
      *
      * @return \Ivoz\Provider\Domain\Model\Service\Name
      */
     public function getName();
-
-    /**
-     * Set description
-     *
-     * @param \Ivoz\Provider\Domain\Model\Service\Description $description
-     *
-     * @return static
-     */
-    public function setDescription(\Ivoz\Provider\Domain\Model\Service\Description $description);
 
     /**
      * Get description

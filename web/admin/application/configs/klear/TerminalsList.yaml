@@ -38,9 +38,9 @@ production:
         options:
           title: _("Options")
           screens:
-            terminalsEdit_screen: true
+            terminalsEdit_screen: ${auth.acls.Terminals.update}
           dialogs:
-            terminalsDel_dialog: true
+            terminalsDel_dialog: ${auth.acls.Terminals.delete}
           default: terminalsEdit_screen
         order:
           name: true
@@ -53,9 +53,9 @@ production:
       options:
         title: _("Options")
         screens:
-          terminalsNew_screen: true
+          terminalsNew_screen: ${auth.acls.Terminals.create}
         dialogs:
-          terminalsDel_dialog: true
+          terminalsDel_dialog: ${auth.acls.Terminals.delete}
           importTerminals_dialog: false
     terminalsNew_screen: &terminalsNew_screenLink
       <<: *Terminals

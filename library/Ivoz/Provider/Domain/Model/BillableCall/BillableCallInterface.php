@@ -6,6 +6,13 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface BillableCallInterface extends LoggableEntityInterface
 {
+    const ENDPOINTTYPE_RETAILACCOUNT = 'RetailAccount';
+    const ENDPOINTTYPE_RESIDENTIALDEVICE = 'ResidentialDevice';
+    const ENDPOINTTYPE_USER = 'User';
+    const ENDPOINTTYPE_FRIEND = 'Friend';
+    const ENDPOINTTYPE_FAX = 'Fax';
+
+
     const DIRECTION_INBOUND = 'inbound';
     const DIRECTION_OUTBOUND = 'outbound';
 
@@ -117,29 +124,11 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getDirection();
 
     /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
-
-    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
-
-    /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
     /**
      * Get company
@@ -149,29 +138,11 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getCompany();
 
     /**
-     * Set carrier
-     *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
-     *
-     * @return static
-     */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
-
-    /**
      * Get carrier
      *
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
-
-    /**
-     * Set destination
-     *
-     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination | null
-     *
-     * @return static
-     */
-    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null);
 
     /**
      * Get destination
@@ -181,29 +152,11 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getDestination();
 
     /**
-     * Set ratingPlanGroup
-     *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup | null
-     *
-     * @return static
-     */
-    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null);
-
-    /**
      * Get ratingPlanGroup
      *
      * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
      */
     public function getRatingPlanGroup();
-
-    /**
-     * Set invoice
-     *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice | null
-     *
-     * @return static
-     */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null);
 
     /**
      * Get invoice
@@ -213,18 +166,23 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getInvoice();
 
     /**
-     * Set trunksCdr
-     *
-     * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr | null
-     *
-     * @return static
-     */
-    public function setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr = null);
-
-    /**
      * Get trunksCdr
      *
      * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
      */
     public function getTrunksCdr();
+
+    /**
+     * Get ddi
+     *
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     */
+    public function getDdi();
+
+    /**
+     * Get ddiProvider
+     *
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
+     */
+    public function getDdiProvider();
 }

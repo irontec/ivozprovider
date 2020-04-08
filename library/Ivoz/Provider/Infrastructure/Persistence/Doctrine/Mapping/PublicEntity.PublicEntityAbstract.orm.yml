@@ -1,0 +1,37 @@
+Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityAbstract:
+  type: mappedSuperclass
+  uniqueConstraints:
+    iden:
+      columns:
+        - iden
+    fqdn:
+      columns:
+      - fqdn
+  embedded:
+    name:
+      class: Name
+      columnPrefix: false
+  fields:
+    iden:
+      type: string
+      nullable: false
+      length: 100
+    fqdn:
+      type: string
+      nullable: true
+      length: 200
+    platform:
+      type: boolean
+      nullable: false
+      options:
+        default: 0
+    brand:
+      type: boolean
+      nullable: false
+      options:
+        default: 0
+    client:
+      type: boolean
+      nullable: false
+      options:
+        default: 0

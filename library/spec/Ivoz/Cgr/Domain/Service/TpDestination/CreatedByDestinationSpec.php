@@ -7,6 +7,7 @@ use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Service\TpDestination\CreatedByDestination;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Destination\DestinationDto;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -19,6 +20,7 @@ class CreatedByDestinationSpec extends ObjectBehavior
     protected $entityTools;
 
     protected $destination;
+    protected $destinationDto;
     protected $brand;
     protected $tpDestination;
     protected $tpDestinationDto;
@@ -38,6 +40,11 @@ class CreatedByDestinationSpec extends ObjectBehavior
     {
         $this->destination = $destination = $this->getTestDouble(
             DestinationInterface::class,
+            true
+        );
+
+        $this->destinationDto = $destinationDto = $this->getTestDouble(
+            DestinationDto::class,
             true
         );
 
@@ -79,6 +86,11 @@ class CreatedByDestinationSpec extends ObjectBehavior
             ->entityTools
             ->entityToDto($tpDestination)
             ->willReturn($tpDestinationDto);
+
+        $this
+            ->entityTools
+            ->entityToDto($destination)
+            ->willReturn($destinationDto);
 
         $this
             ->entityTools
@@ -151,8 +163,16 @@ class CreatedByDestinationSpec extends ObjectBehavior
         $this->prepareExecution();
 
         $this
+            ->destinationDto
+            ->setTpDestination(
+                $this->tpDestinationDto
+            )
+            ->shouldBeCalled();
+
+        $this
             ->entityTools
-            ->persist(
+            ->persistDto(
+                Argument::type(DestinationDto::class),
                 Argument::type(DestinationInterface::class)
             )
             ->shouldBeCalled();

@@ -24,19 +24,14 @@ production:
         <<: *documentationLink
         href: "/doc/en/administration_portal/platform/brands.html"
       fields:
-        order: &brandsOrder_Link
+        order:
           name: true
           invoice.nif: true
           logo: true
-          defaultTimezone: true
-          language: true
-          domain_users: true
-          invoice.postalAddress: true
           invoice.postalCode: true
-          invoice.town: true
-          invoice.province: true
-          invoice.country: true
-          invoice.registryData: true
+          domainUsers: true
+          relProxyTrunks: true
+          relFeatures: true
         blacklist:
           domain_trunks: true
           iden: true
@@ -107,9 +102,22 @@ production:
           recordingsDiskUsage: true
           recordingsDiskAvailable: true
           recordingsLimitEmail: true
-        order:
-          <<: *brandsOrder_Link
-
+        order: &brandsOrder_Link
+          name: true
+          invoice.nif: true
+          relProxyTrunks: true
+          relFeatures: true
+          logo: true
+          maxCalls: true
+          defaultTimezone: true
+          language: true
+          domainUsers: true
+          invoice.postalAddress: true
+          invoice.postalCode: true
+          invoice.town: true
+          invoice.province: true
+          invoice.country: true
+          invoice.registryData: true
       fixedPositions: &brandsFixedPositions_Link
         group0:
           label: _("Basic Configuration")
@@ -117,8 +125,9 @@ production:
           fields:
             name: 1
             invoice.nif: 1
-            logo: 1
+            relProxyTrunks: 1
             relFeatures: 1
+            logo: 1
             maxCalls: 1
         group2:
           label: _("Locales")
@@ -141,7 +150,7 @@ production:
           colsPerRow: 4
           label: _("SIP domain")
           fields:
-            domain_users: 2
+            domainUsers: 2
         group5:
           colsPerRow: 2
           collapsed: true
@@ -180,6 +189,7 @@ production:
         "self::company": null
       parentOptionCustomizer:
         - recordCount
+
     administratorsNew_screen:
       <<: *administratorsNew_screenLink
       title: _("Add %s %2s", ngettext('Brand operator', 'Brand operators', 1), "[format| (%parent%)]")
@@ -189,6 +199,7 @@ production:
         blacklist:
           <<: *administratorsBlacklist
           timezone: true
+
     administratorsEdit_screen:
       <<: *administratorsEdit_screenLink
       title: _("Edit %s %2s", ngettext('Brand operator', 'Brand operators', 1), "[format| (%item%)]")

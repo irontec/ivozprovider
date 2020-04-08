@@ -37,6 +37,7 @@ Feature: Create hunt groups
           "noAnswerTargetType": "extension",
           "noAnswerNumberValue": null,
           "preventMissedCalls": 1,
+          "allowCallForwards": 0,
           "id": 2,
           "noAnswerLocution": null,
           "noAnswerExtension": 1,

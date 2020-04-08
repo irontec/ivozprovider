@@ -210,7 +210,7 @@ abstract class DispatcherAbstract
             'priority' => self::getPriority(),
             'attrs' => self::getAttrs(),
             'description' => self::getDescription(),
-            'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null
+            'applicationServerId' => self::getApplicationServer()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -384,7 +384,7 @@ abstract class DispatcherAbstract
      *
      * @return static
      */
-    public function setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer)
+    protected function setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer)
     {
         $this->applicationServer = $applicationServer;
 

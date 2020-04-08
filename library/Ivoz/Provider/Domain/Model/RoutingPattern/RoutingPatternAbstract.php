@@ -217,7 +217,7 @@ abstract class RoutingPatternAbstract
             'descriptionEs' => self::getDescription()->getEs(),
             'descriptionCa' => self::getDescription()->getCa(),
             'descriptionIt' => self::getDescription()->getIt(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -256,7 +256,7 @@ abstract class RoutingPatternAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -280,7 +280,7 @@ abstract class RoutingPatternAbstract
      *
      * @return static
      */
-    public function setName(Name $name)
+    protected function setName(Name $name)
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -308,7 +308,7 @@ abstract class RoutingPatternAbstract
      *
      * @return static
      */
-    public function setDescription(Description $description)
+    protected function setDescription(Description $description)
     {
         $isEqual = $this->description && $this->description->equals($description);
         if ($isEqual) {

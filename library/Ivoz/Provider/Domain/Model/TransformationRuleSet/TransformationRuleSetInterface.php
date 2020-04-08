@@ -67,15 +67,6 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function getGenerateRules();
 
     /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
-
-    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
@@ -83,29 +74,11 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function getBrand();
 
     /**
-     * Set country
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country | null
-     *
-     * @return static
-     */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null);
-
-    /**
      * Get country
      *
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry();
-
-    /**
-     * Set name
-     *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\Name $name
-     *
-     * @return static
-     */
-    public function setName(\Ivoz\Provider\Domain\Model\TransformationRuleSet\Name $name);
 
     /**
      * Get name

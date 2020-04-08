@@ -165,7 +165,7 @@ abstract class CallAclAbstract
         return [
             'name' => self::getName(),
             'defaultPolicy' => self::getDefaultPolicy(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'companyId' => self::getCompany()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -235,7 +235,7 @@ abstract class CallAclAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 

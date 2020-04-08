@@ -349,7 +349,7 @@ abstract class MusicOnHoldAbstract
      *
      * @return static
      */
-    public function setOriginalFile(OriginalFile $originalFile)
+    protected function setOriginalFile(OriginalFile $originalFile)
     {
         $isEqual = $this->originalFile && $this->originalFile->equals($originalFile);
         if ($isEqual) {
@@ -377,7 +377,7 @@ abstract class MusicOnHoldAbstract
      *
      * @return static
      */
-    public function setEncodedFile(EncodedFile $encodedFile)
+    protected function setEncodedFile(EncodedFile $encodedFile)
     {
         $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
         if ($isEqual) {

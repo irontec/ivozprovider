@@ -15,7 +15,7 @@ interface ExternalCallFilterWhiteListInterface extends LoggableEntityInterface
     /**
      * Set filter
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter
+     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter | null
      *
      * @return static
      */
@@ -24,18 +24,9 @@ interface ExternalCallFilterWhiteListInterface extends LoggableEntityInterface
     /**
      * Get filter
      *
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
      */
     public function getFilter();
-
-    /**
-     * Set matchlist
-     *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist
-     *
-     * @return static
-     */
-    public function setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist);
 
     /**
      * Get matchlist

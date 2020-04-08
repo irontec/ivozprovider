@@ -110,29 +110,11 @@ interface IvrInterface extends LoggableEntityInterface
     public function getErrorNumberValue();
 
     /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
-
-    /**
      * Get company
      *
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
-
-    /**
-     * Set welcomeLocution
-     *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution | null
-     *
-     * @return static
-     */
-    public function setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution = null);
 
     /**
      * Get welcomeLocution
@@ -142,29 +124,11 @@ interface IvrInterface extends LoggableEntityInterface
     public function getWelcomeLocution();
 
     /**
-     * Set noInputLocution
-     *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noInputLocution | null
-     *
-     * @return static
-     */
-    public function setNoInputLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noInputLocution = null);
-
-    /**
      * Get noInputLocution
      *
      * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getNoInputLocution();
-
-    /**
-     * Set errorLocution
-     *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $errorLocution | null
-     *
-     * @return static
-     */
-    public function setErrorLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $errorLocution = null);
 
     /**
      * Get errorLocution
@@ -174,29 +138,11 @@ interface IvrInterface extends LoggableEntityInterface
     public function getErrorLocution();
 
     /**
-     * Set successLocution
-     *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $successLocution | null
-     *
-     * @return static
-     */
-    public function setSuccessLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $successLocution = null);
-
-    /**
      * Get successLocution
      *
      * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getSuccessLocution();
-
-    /**
-     * Set noInputExtension
-     *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noInputExtension | null
-     *
-     * @return static
-     */
-    public function setNoInputExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noInputExtension = null);
 
     /**
      * Get noInputExtension
@@ -206,29 +152,11 @@ interface IvrInterface extends LoggableEntityInterface
     public function getNoInputExtension();
 
     /**
-     * Set errorExtension
-     *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $errorExtension | null
-     *
-     * @return static
-     */
-    public function setErrorExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $errorExtension = null);
-
-    /**
      * Get errorExtension
      *
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getErrorExtension();
-
-    /**
-     * Set noInputVoiceMailUser
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $noInputVoiceMailUser | null
-     *
-     * @return static
-     */
-    public function setNoInputVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $noInputVoiceMailUser = null);
 
     /**
      * Get noInputVoiceMailUser
@@ -238,15 +166,6 @@ interface IvrInterface extends LoggableEntityInterface
     public function getNoInputVoiceMailUser();
 
     /**
-     * Set errorVoiceMailUser
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $errorVoiceMailUser | null
-     *
-     * @return static
-     */
-    public function setErrorVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $errorVoiceMailUser = null);
-
-    /**
      * Get errorVoiceMailUser
      *
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
@@ -254,29 +173,11 @@ interface IvrInterface extends LoggableEntityInterface
     public function getErrorVoiceMailUser();
 
     /**
-     * Set noInputNumberCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noInputNumberCountry | null
-     *
-     * @return static
-     */
-    public function setNoInputNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $noInputNumberCountry = null);
-
-    /**
      * Get noInputNumberCountry
      *
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNoInputNumberCountry();
-
-    /**
-     * Set errorNumberCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry | null
-     *
-     * @return static
-     */
-    public function setErrorNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry = null);
 
     /**
      * Get errorNumberCountry

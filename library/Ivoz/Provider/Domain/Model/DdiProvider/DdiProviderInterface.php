@@ -36,15 +36,6 @@ interface DdiProviderInterface extends LoggableEntityInterface
     public function getExternallyRated();
 
     /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
-
-    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
@@ -52,20 +43,18 @@ interface DdiProviderInterface extends LoggableEntityInterface
     public function getBrand();
 
     /**
-     * Set transformationRuleSet
-     *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
-
-    /**
      * Get transformationRuleSet
      *
      * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet();
+
+    /**
+     * Get proxyTrunk
+     *
+     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     */
+    public function getProxyTrunk();
 
     /**
      * Add ddiProviderRegistration

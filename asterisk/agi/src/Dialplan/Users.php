@@ -124,6 +124,7 @@ class Users extends RouteHandlerAbstract
 
         // Get caller user from endpoint name
         $user = $this->endpointResolver->getUserFromEndpoint($endpointName);
+        $this->agi->setVariable("__USERID", $user->getId());
 
         // Create a new agent for caller user
         $caller = new UserAgent($this->agi, $user);

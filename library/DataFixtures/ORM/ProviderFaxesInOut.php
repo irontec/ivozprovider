@@ -7,6 +7,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
+use Ivoz\Provider\Domain\Model\FaxesInOut\File;
 
 class ProviderFaxesInOut extends Fixture implements DependentFixtureInterface
 {
@@ -31,6 +32,9 @@ class ProviderFaxesInOut extends Fixture implements DependentFixtureInterface
             $this->setStatus('error');
             $this->setFax(
                 $fixture->getReference('_reference_ProviderFax1')
+            );
+            $this->setFile(
+                new File(null, null, null)
             );
         })->call($item1);
 

@@ -11,7 +11,7 @@ interface IvrExcludedExtensionInterface extends LoggableEntityInterface
     /**
      * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr | null
      *
      * @return static
      */
@@ -20,18 +20,9 @@ interface IvrExcludedExtensionInterface extends LoggableEntityInterface
     /**
      * Get ivr
      *
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
      */
     public function getIvr();
-
-    /**
-     * Set extension
-     *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
-     *
-     * @return static
-     */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension);
 
     /**
      * Get extension

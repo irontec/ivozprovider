@@ -23,7 +23,7 @@ class DestinationLifeCycleTest extends KernelTestCase
             ->setPrefix('+34')
             ->setNameEn('testName')
             ->setNameEs('testNombre')
-            ->setTpDestinationId(1)
+            ->setTpDestinationId(null)
             ->setBrandId(1);
 
         return $destinationDto;

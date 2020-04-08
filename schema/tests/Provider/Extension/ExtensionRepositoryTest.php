@@ -3,6 +3,7 @@
 namespace Tests\Provider\Extension;
 
 use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
@@ -17,7 +18,8 @@ class ExtensionRepositoryTest extends KernelTestCase
     public function test_runner()
     {
         $this->its_instantiable();
-        $this->it_finds_one_by_company_id();
+        $this->it_finds_by_company_id();
+        $this->it_finds_by_company_extension();
     }
 
     public function its_instantiable()
@@ -33,7 +35,7 @@ class ExtensionRepositoryTest extends KernelTestCase
         );
     }
 
-    public function it_finds_one_by_company_id()
+    public function it_finds_by_company_id()
     {
         /** @var ExtensionRepository $repository */
         $repository = $this
@@ -50,6 +52,26 @@ class ExtensionRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             Extension::class,
             $extensions[0]
+        );
+    }
+
+
+    public function it_finds_by_company_extension()
+    {
+        /** @var ExtensionRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Extension::class);
+
+        $extensions = $repository
+            ->findCompanyExtension(
+                1,
+                101
+            );
+
+        $this->assertInstanceOf(
+            ExtensionInterface::class,
+            $extensions
         );
     }
 }

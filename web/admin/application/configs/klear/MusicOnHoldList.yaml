@@ -24,9 +24,9 @@ production:
         options:
           title: _("Options")
           screens:
-            musicOnHoldEdit_screen: true
+            musicOnHoldEdit_screen: ${auth.acls.MusicOnHold.update}
           dialogs:
-            musicOnHoldDel_dialog: true
+            musicOnHoldDel_dialog: ${auth.acls.MusicOnHold.delete}
           default: musicOnHoldEdit_screen
         order: &musicOnHold_orderLink
           company: true
@@ -37,9 +37,9 @@ production:
       options:
         title: _("Options")
         screens:
-          musicOnHoldNew_screen: true
+          musicOnHoldNew_screen: ${auth.acls.MusicOnHold.create}
         dialogs:
-          musicOnHoldDel_dialog: true
+          musicOnHoldDel_dialog: ${auth.acls.MusicOnHold.delete}
 
     musicOnHoldNew_screen: &musicOnHoldNew_screenLink
       <<: *MusicOnHold

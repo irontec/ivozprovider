@@ -9,8 +9,12 @@ production:
   screens: &domains_screensLink
     domainsList_screen: &domainsList_screenLink
       controller: list
+      rawCondition: "Domain.id NOT IN (1, 2)"
       pagination:
-        items: 25
+        items: 100
+      order:
+        field:
+        - Domain.domain asc
       <<: *Domains
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Domain', 'Domains', 0), "[format| (%parent%)]")
@@ -20,9 +24,8 @@ production:
       fields:
         order: &domains_orderLink
           domain: true
-          scope: true
-          pointsTo: true
-          description: true
+          brand: true
+          client: true
 staging:
   _extends: production
 testing:

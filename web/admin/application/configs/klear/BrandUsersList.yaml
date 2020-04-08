@@ -1,0 +1,65 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: brandUsersList_screen
+  screens: &users_screensLink
+    brandUsersList_screen: &brandUsersList_screenLink
+      controller: list
+      rawCondition: "User.company IN (SELECT C.id FROM Ivoz\\Provider\\Domain\\Model\\Company\\Company AS C WHERE C.brand = '${auth.brandId}')"
+      pagination:
+        items: 25
+      order:
+        field:
+          - User.name asc
+      <<: *Users
+      class: ui-silk-user
+      title: _("List of %s %2s", ngettext('User', 'Users', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/brand/views/users.html"
+      fields:
+        order: &Users_orderLink
+          company: true
+          name: true
+          lastname: true
+          email: true
+          extension: true
+          terminal: true
+          statusIcon: true
+        blacklist:
+          active: true
+          doNotDisturb: true
+          pass: true
+          gsQRCode: true
+          timezone: true
+          callACL: true
+          bossAssistant: true
+          bossAssistantWhiteList: true
+          HuntGroupsRelUsers: true
+          PickUpRelUsers: true
+          timeout: true
+          isBoss: true
+          maxCalls: true
+          tokenKey: true
+          voicemailEnabled: true
+          voicemailLocution: true
+          voicemailAttachSound: true
+          voicemailSendMail: true
+          transformationRuleSet: true
+          language: true
+          externalIpCalls: true
+          outgoingDdiRule: true
+          outgoingDdi: true
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

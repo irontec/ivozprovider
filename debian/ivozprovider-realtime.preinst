@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#DEBHELPER#
+
+# This is a temporal migration script to automatize changes implemented in #633
+if [ -d /opt/irontec/ivozprovider/microservices/realtime/ ]; then
+    pushd /opt/irontec/ivozprovider/microservices/realtime/
+        # Remove existing old cache
+        rm -fr var/cache
+        # Remove existing vendor (will be replaced with new package contents)
+        rm -fr vendor
+    popd
+fi
+
+:

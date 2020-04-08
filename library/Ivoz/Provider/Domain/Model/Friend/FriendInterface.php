@@ -50,6 +50,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function isInterPbxConnectivity();
 
     /**
+     * @return bool
+     */
+    public function isDirectConnectivity();
+
+    /**
      * @param string $number
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
@@ -130,7 +135,7 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Get transport
      *
-     * @return string
+     * @return string | null
      */
     public function getTransport();
 
@@ -239,7 +244,7 @@ interface FriendInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
     /**
      * Get company
@@ -265,29 +270,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function getDomain();
 
     /**
-     * Set transformationRuleSet
-     *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
-
-    /**
      * Get transformationRuleSet
      *
      * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet();
-
-    /**
-     * Set callAcl
-     *
-     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl | null
-     *
-     * @return static
-     */
-    public function setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl = null);
 
     /**
      * Get callAcl
@@ -297,38 +284,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function getCallAcl();
 
     /**
-     * Set outgoingDdi
-     *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
-     *
-     * @return static
-     */
-    public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null);
-
-    /**
-     * Set language
-     *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
-     *
-     * @return static
-     */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null);
-
-    /**
      * Get language
      *
      * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage();
-
-    /**
-     * Set interCompany
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany | null
-     *
-     * @return static
-     */
-    public function setInterCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany = null);
 
     /**
      * Get interCompany

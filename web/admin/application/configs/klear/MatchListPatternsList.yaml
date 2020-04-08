@@ -20,9 +20,9 @@ production:
         options:
           title: _("Options")
           screens:
-            matchListPatternsEdit_screen: true
+            matchListPatternsEdit_screen: ${auth.acls.MatchListPatterns.update}
           dialogs:
-            matchListPatternsDel_dialog: true
+            matchListPatternsDel_dialog: ${auth.acls.MatchListPatterns.delete}
           default: matchListPatternsEdit_screen
         order:
           type: true
@@ -35,9 +35,9 @@ production:
       options:
         title: _("Options")
         screens:
-          matchListPatternsNew_screen: true
+          matchListPatternsNew_screen: ${auth.acls.MatchListPatterns.create}
         dialogs:
-          matchListPatternsDel_dialog: true
+          matchListPatternsDel_dialog: ${auth.acls.MatchListPatterns.delete}
 
 
     matchListPatternsNew_screen: &matchListPatternsNew_screenLink

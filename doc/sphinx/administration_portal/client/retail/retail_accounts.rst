@@ -69,8 +69,9 @@ These are the configurable settings of *Retail accounts*:
         the From header.
 
     DDI In
-        If set to 'Yes', use endpoint username in R-URI when calling this retail account. If set to 'No', use called
-        number instead.
+        If set to 'Yes', set destination (R-URI and To) to called DDI when calling to this endpoint. If set 'No', username
+        used in Contact header of registration will be used, as specified in SIP RFC (retail account name will be used for
+        endpoints with direct connectivity). Defaults to 'Yes'.
 
     Enable T.38 passthrough
         If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
@@ -81,6 +82,9 @@ These are the configurable settings of *Retail accounts*:
 .. tip:: On retail account edit screen **id** field shows internal identification number assigned to the retail account.
          This id is transported to *Endpoint Id* field in *External Calls* section for CSV export.
 
+.. tip:: Retail account can be contacted due to calls to several DDIs. *DDI In* setting allows remote SIP endpoint to
+         know which number caused each call, setting that number as destination (R-URI and To headers). This way, retail
+         account can handle calls differently.
 
 Voicemail settings
 ==================

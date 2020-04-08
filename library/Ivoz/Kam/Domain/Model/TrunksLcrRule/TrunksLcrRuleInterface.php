@@ -86,15 +86,6 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     public function getRoutingPattern();
 
     /**
-     * Set routingPatternGroupsRelPattern
-     *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern | null
-     *
-     * @return static
-     */
-    public function setRoutingPatternGroupsRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern = null);
-
-    /**
      * Get routingPatternGroupsRelPattern
      *
      * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface | null
@@ -108,7 +99,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null);
+    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
 
     /**
      * Get outgoingRouting

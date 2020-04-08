@@ -154,7 +154,7 @@ abstract class PickUpGroupAbstract
     {
         return [
             'name' => self::getName(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'companyId' => self::getCompany()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -193,7 +193,7 @@ abstract class PickUpGroupAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 

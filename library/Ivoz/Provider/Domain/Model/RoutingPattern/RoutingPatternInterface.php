@@ -23,15 +23,6 @@ interface RoutingPatternInterface extends LoggableEntityInterface
     public function getPrefix();
 
     /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
-
-    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
@@ -39,29 +30,11 @@ interface RoutingPatternInterface extends LoggableEntityInterface
     public function getBrand();
 
     /**
-     * Set name
-     *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\Name $name
-     *
-     * @return static
-     */
-    public function setName(\Ivoz\Provider\Domain\Model\RoutingPattern\Name $name);
-
-    /**
      * Get name
      *
      * @return \Ivoz\Provider\Domain\Model\RoutingPattern\Name
      */
     public function getName();
-
-    /**
-     * Set description
-     *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\Description $description
-     *
-     * @return static
-     */
-    public function setDescription(\Ivoz\Provider\Domain\Model\RoutingPattern\Description $description);
 
     /**
      * Get description

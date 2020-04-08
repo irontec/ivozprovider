@@ -444,7 +444,7 @@ abstract class TpDerivedChargerAbstract
             'rated_field' => self::getRatedTimeField(),
             'cost_field' => self::getCostField(),
             'created_at' => self::getCreatedAt(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -1167,7 +1167,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 

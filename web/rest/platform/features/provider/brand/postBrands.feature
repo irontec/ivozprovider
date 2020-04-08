@@ -50,7 +50,18 @@ Feature: Manage brands
               "registryData": "registryData"
           },
           "language": null,
-          "defaultTimezone": 145,
+          "defaultTimezone": {
+              "tz": "Europe/Madrid",
+              "comment": "mainland",
+              "id": 145,
+              "label": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
+              "country": 68
+          },
           "features": []
       }
     """
@@ -147,7 +158,7 @@ This is file content
           "id": 3,
           "logo": {
               "fileSize": 20,
-              "mimeType": "text\/plain; charset=us-ascii",
+              "mimeType": "text/plain; charset=us-ascii",
               "baseName": "uploadable"
           },
           "invoice": {
@@ -160,7 +171,20 @@ This is file content
               "registryData": "registryData"
           },
           "language": null,
-          "defaultTimezone": 145,
-          "features": [1]
+          "defaultTimezone": {
+              "tz": "Europe/Madrid",
+              "comment": "mainland",
+              "id": 145,
+              "label": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
+              "country": 68
+          },
+          "features": [
+              1
+          ]
       }
     """

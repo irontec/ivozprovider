@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface AdministratorInterface extends LoggableEntityInterface
 {
@@ -65,6 +67,13 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getActive();
 
     /**
+     * Get restricted
+     *
+     * @return boolean
+     */
+    public function getRestricted();
+
+    /**
      * Get name
      *
      * @return string | null
@@ -79,29 +88,11 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getLastname();
 
     /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
-
-    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
-
-    /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
     /**
      * Get company
@@ -111,15 +102,6 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getCompany();
 
     /**
-     * Set timezone
-     *
-     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone | null
-     *
-     * @return static
-     */
-    public function setTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone = null);
-
-    /**
      * Get timezone
      *
      * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
@@ -127,9 +109,42 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getTimezone();
 
     /**
+     * Add relPublicEntity
+     *
+     * @param \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity
+     *
+     * @return static
+     */
+    public function addRelPublicEntity(\Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity);
+
+    /**
+     * Remove relPublicEntity
+     *
+     * @param \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity
+     */
+    public function removeRelPublicEntity(\Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity);
+
+    /**
+     * Replace relPublicEntities
+     *
+     * @param ArrayCollection $relPublicEntities of Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface
+     * @return static
+     */
+    public function replaceRelPublicEntities(ArrayCollection $relPublicEntities);
+
+    /**
+     * Get relPublicEntities
+     * @param Criteria | null $criteria
+     * @return \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface[]
+     */
+    public function getRelPublicEntities(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
      * @see AdvancedUserInterface::getRoles()
      */
     public function getRoles();
+
+    public function hasAccessPrivileges(string $fqdn, string $reqMethod);
 
     /**
      * @see AdvancedUserInterface::getPassword()

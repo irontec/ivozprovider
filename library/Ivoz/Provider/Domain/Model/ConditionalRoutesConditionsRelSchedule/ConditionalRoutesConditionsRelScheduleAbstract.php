@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class ConditionalRoutesConditionsRelScheduleAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
+     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
      */
     protected $condition;
 
@@ -152,7 +152,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     {
         return [
             'conditionId' => self::getCondition() ? self::getCondition()->getId() : null,
-            'scheduleId' => self::getSchedule() ? self::getSchedule()->getId() : null
+            'scheduleId' => self::getSchedule()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
      */
     public function getCondition()
     {
@@ -188,7 +188,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
      *
      * @return static
      */
-    public function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule)
+    protected function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule)
     {
         $this->schedule = $schedule;
 

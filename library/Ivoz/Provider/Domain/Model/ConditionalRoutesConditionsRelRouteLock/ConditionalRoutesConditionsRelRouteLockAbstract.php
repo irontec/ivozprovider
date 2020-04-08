@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class ConditionalRoutesConditionsRelRouteLockAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
+     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
      */
     protected $condition;
 
@@ -152,7 +152,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     {
         return [
             'conditionId' => self::getCondition() ? self::getCondition()->getId() : null,
-            'routeLockId' => self::getRouteLock() ? self::getRouteLock()->getId() : null
+            'routeLockId' => self::getRouteLock()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
      */
     public function getCondition()
     {
@@ -188,7 +188,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
      *
      * @return static
      */
-    public function setRouteLock(\Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface $routeLock)
+    protected function setRouteLock(\Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface $routeLock)
     {
         $this->routeLock = $routeLock;
 

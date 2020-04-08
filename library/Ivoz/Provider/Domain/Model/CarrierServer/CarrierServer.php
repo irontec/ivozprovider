@@ -49,14 +49,10 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
             && $this->hasChanged('carrierId');
 
         if ($isNotNewAndCarrierHasChanged || !$this->getBrand()->getId()) {
-            $carrier = $this->getCarrier();
-            if (!$carrier) {
-                throw new \DomainException('Unknown Carrier');
-            }
-            $brand = $carrier->getBrand();
-            if (!$brand) {
-                throw new \DomainException('Unknown Brand');
-            }
+            $brand = $this
+                ->getCarrier()
+                ->getBrand();
+
             $this->setBrand($brand);
         }
     }

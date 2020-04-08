@@ -1,0 +1,7 @@
+imports:
+  - { resource: "autoload.yml" }
+  - { resource: 'services/infraestructure.yml' }
+  - { resource: "services/path_resolvers.yml" }
+  - { resource: "services/assemblers.yml" }
+  - { resource: "services/domain.yml" }
+  - { resource: 'model.yml' }

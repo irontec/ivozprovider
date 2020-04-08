@@ -1,0 +1,1643 @@
+########################################
+## Raw
+########################################
+Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    pagination_client_enabled: true
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\Calendar\Calendar:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        inherited:
+          calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+          - inherited:
+              calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+        - or:
+          - inheritedOrNull:
+              voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+        - or:
+          - inheritedOrNull:
+              extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+        - or:
+          - inheritedOrNull:
+              locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+    swagger_context:
+      required:
+      - calendar
+
+Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule:
+  collectionOperations:
+    post:
+      depth: 1
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        inherited:
+          schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
+    write_access_control:
+      inherited:
+        calendarPeriod: 'Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod'
+        schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
+    swagger_context:
+      required:
+      - calendarPeriod
+      - schedule
+
+Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
+  collectionOperations:
+    post: ~
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
+    write_access_control:
+      inherited:
+        callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
+        matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+    swagger_context:
+      required:
+      - callAcl
+      - matchList
+
+Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
+  properties:
+    lastExecution:
+      attributes:
+        swagger_context:
+          readOnly: true
+    lastExecutionError:
+      attributes:
+        swagger_context:
+          readOnly: true
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+        brand:
+          isNull: ~
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+        - carrier:
+            isNull: ~
+      - or:
+        - inheritedOrNull:
+            callCsvNotificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
+      - or:
+        - inheritedOrNull:
+            ddi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+      - or:
+        - inheritedOrNull:
+            retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
+      - or:
+        - inheritedOrNull:
+            residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+    post_my_call_forward_settings:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'POST'
+      path: '/my/call_forward_settings'
+      route_name: 'post_my_call_forward_settings'
+      swagger_context:
+        consumes: ["application/ld+json"]
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters:
+        - name: 'CallForwardSetting'
+          in: 'body'
+          description: 'The updated CallForwardSetting resource'
+          schema:
+            $ref: '#/definitions/CallForwardSetting'
+  collectionOperations:
+    get: ~
+    post: ~
+    get_my_call_forward_settings:
+      depth: 1
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'GET'
+      path: '/my/call_forward_settings'
+      route_name: 'get_my_call_forward_settings'
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+      swagger_context:
+        parameters: []
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+  attributes:
+    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
+    read_access_control:
+      ROLE_COMPANY_USER:
+        user:
+          eq: "user.getId()"
+      ROLE_COMPANY_ADMIN:
+      - or:
+        - inherited:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+        - inherited:
+            residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+        - inherited:
+            retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
+    write_access_control:
+      ROLE_COMPANY_USER:
+        user:
+          eq: "user.getId()"
+      ROLE_COMPANY_ADMIN:
+      - or:
+        - inheritedOrNull:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+      - or:
+        - inheritedOrNull:
+            retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
+      - or:
+        - inheritedOrNull:
+            extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+
+Ivoz\Provider\Domain\Model\Company\Company:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  properties:
+    name:
+      attributes:
+        swagger_context:
+          readOnly: true
+    domainUsers:
+      attributes:
+        swagger_context:
+          readOnly: true
+    nif:
+      attributes:
+        swagger_context:
+          readOnly: true
+    onDemandRecordCode:
+      attributes:
+        swagger_context:
+          readOnly: true
+    balance:
+      attributes:
+        swagger_context:
+          readOnly: true
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        id:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - id:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+      - or:
+        - inheritedOrNull:
+            outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
+
+Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+      - or:
+        - inheritedOrNull:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+      - or:
+        - inheritedOrNull:
+            locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+      - or:
+        - inheritedOrNull:
+            ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+      - or:
+        - inheritedOrNull:
+            voicemailUser: 'Ivoz\Provider\Domain\Model\User\User'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withInverseRelationships'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withInverseRelationships'
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    normalization_context:
+      groups: ['withInverseRelationships']
+    read_access_control:
+      inherited:
+        conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+    write_access_control:
+    - and:
+      - inherited:
+          conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+    - or:
+      - inheritedOrNull:
+          extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+    - or:
+      - inheritedOrNull:
+          huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+    - or:
+      - inheritedOrNull:
+          user: 'Ivoz\Provider\Domain\Model\User\User'
+    - or:
+      - inheritedOrNull:
+          queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+    - or:
+      - inheritedOrNull:
+          locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+    - or:
+      - inheritedOrNull:
+          conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+    swagger_context:
+      required:
+      - conditionalRoute
+
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlist:
+  itemOperations:
+    get: ~
+    delete: ~
+  collectionOperations:
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+    write_access_control:
+      inherited:
+        matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+        condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
+    swagger_context:
+      required:
+      - matchlist
+      - condition
+
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule:
+  itemOperations:
+    get: ~
+    delete: ~
+  collectionOperations:
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
+    write_access_control:
+      inherited:
+        condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
+        schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
+    swagger_context:
+      required:
+      - condition
+      - schedule
+
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar:
+  itemOperations:
+    get: ~
+    delete: ~
+  collectionOperations:
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+    write_access_control:
+      inherited:
+        condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
+        calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+    swagger_context:
+      required:
+      - condition
+      - calendar
+
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLock:
+  itemOperations:
+    get: ~
+    delete: ~
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        routeLock: 'Ivoz\Provider\Domain\Model\RouteLock\RouteLock'
+    write_access_control:
+      inherited:
+        condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
+        routeLock: 'Ivoz\Provider\Domain\Model\RouteLock\RouteLock'
+    swagger_context:
+      required:
+      - condition
+      - routeLock
+
+Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\Country\Name:
+Ivoz\Provider\Domain\Model\Country\Zone:
+Ivoz\Provider\Domain\Model\Country\Country:
+  itemOperations:
+    get: ~
+    get_my_company_country:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'GET'
+      path: '/my/company_country'
+      route_name: 'get_my_company_country'
+      operation_normalization_context: 'detailed'
+      normalization_context:
+        groups: ['detailed']
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters: []
+  collectionOperations:
+    get: ~
+  attributes:
+    pagination_client_enabled: true
+    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
+
+Ivoz\Provider\Domain\Model\Ddi\Ddi:
+  itemOperations:
+    get: ~
+    put: ~
+  collectionOperations:
+    get: ~
+  properties:
+    ddi:
+      attributes:
+        swagger_context:
+          readOnly: true
+    country:
+      attributes:
+        swagger_context:
+          readOnly: true
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      company:
+        eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+      - or:
+        - inheritedOrNull:
+            huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+      - or:
+        - inheritedOrNull:
+            fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+      - or:
+        - inheritedOrNull:
+            conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+      - or:
+        - inheritedOrNull:
+            queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+      - or:
+        - inheritedOrNull:
+            retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
+      - or:
+        - inheritedOrNull:
+            residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+      - or:
+        - inheritedOrNull:
+            conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+      - or:
+        - inheritedOrNull:
+            externalCallFilter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\Extension\Extension:
+  collectionOperations:
+    get: ~
+    post: ~
+    get_my_company_extensions:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'GET'
+      path: '/my/extensions'
+      route_name: 'get_my_company_extensions'
+      normalization_context:
+      - collection
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters: []
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+      - or:
+        - inheritedOrNull:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+      - or:
+        - inheritedOrNull:
+            conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+      - or:
+        - inheritedOrNull:
+            ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+      - or:
+        - inheritedOrNull:
+            conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withInverseRelationships'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withInverseRelationships'
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    normalization_context:
+      groups: ['withInverseRelationships']
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            outOfScheduleLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            holidayExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            outOfScheduleExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            holidayVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            outOfScheduleVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            holidayLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+      depth: 1
+    post:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+    write_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+        matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+    swagger_context:
+      required:
+      - filter
+      - matchlist
+
+Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar:
+  collectionOperations:
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+    write_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+        calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+    swagger_context:
+      required:
+      - filter
+      - calendar
+
+Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule:
+  collectionOperations:
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+    write_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+        schedule: 'Ivoz\Provider\Domain\Model\Schedule\Schedule'
+    swagger_context:
+      required:
+      - filter
+      - schedule
+
+Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteList:
+  collectionOperations:
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+    write_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+        matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+    swagger_context:
+      required:
+      - filter
+      - matchlist
+
+Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+    swagger_context:
+      required:
+      - fax
+
+Ivoz\Provider\Domain\Model\Fax\Fax:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\Feature\Feature:
+  itemOperations: []
+  collectionOperations: []
+
+Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\Friend\Friend:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+    - and:
+      - company:
+          eq: "user.getCompany().getId()"
+    - or:
+      - inheritedOrNull:
+          interCompany: 'Ivoz\Provider\Domain\Model\Company\Company'
+    - or:
+      - inheritedOrNull:
+          callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
+    - or:
+      - inheritedOrNull:
+          outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    - or:
+      - inheritedOrNull:
+          transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+    swagger_context:
+      required:
+      - company
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'friends/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'friends/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
+
+Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        friend: 'Ivoz\Provider\Domain\Model\Friend\Friend'
+    swagger_context:
+      required:
+      - friend
+
+Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - inherited:
+            calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+      - or:
+        - inheritedOrNull:
+            extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+    swagger_context:
+      required:
+      - calendar
+
+Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      company:
+        eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            noAnswerLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            noAnswerExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            noAnswerVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
+  collectionOperations:
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+    write_access_control:
+      inherited:
+        user: 'Ivoz\Provider\Domain\Model\User\User'
+        huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+    swagger_context:
+      required:
+      - user
+      - huntGroup
+
+Ivoz\Provider\Domain\Model\Invoice\Invoice:
+  itemOperations: []
+  collectionOperations: []
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - inherited:
+            ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+      - or:
+        - inheritedOrNull:
+            extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+      - or:
+        - inheritedOrNull:
+            voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+    swagger_context:
+      required:
+      - ivr
+
+Ivoz\Provider\Domain\Model\Ivr\Ivr:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withExcludedExtensions'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withExcludedExtensions'
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    normalization_context:
+      groups: ['withExcludedExtensions']
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            errorExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            errorLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            welcomeLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            noInputLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            successLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            noInputVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            errorVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            noInputExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
+  collectionOperations:
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+    write_access_control:
+      inherited:
+        ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+        extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+    swagger_context:
+      required:
+      - ivr
+      - extension
+
+Ivoz\Provider\Domain\Model\Language\Language:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
+Ivoz\Provider\Domain\Model\Language\Name:
+
+Ivoz\Provider\Domain\Model\Locution\Locution:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
+  itemOperations: []
+  collectionOperations: []
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+      - or:
+        - brand:
+            eq: "user.getCompany().getBrand().getId()"
+        - brand:
+            isNull: ~
+
+Ivoz\Provider\Domain\Model\MatchList\MatchList:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        or:
+        - brand:
+            eq: "user.getCompany().getBrand().getId()"
+        - company:
+            eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+
+Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+    write_access_control:
+      matchList:
+        in: 'matchListRepository.getIdsByCompanyId(user.getCompany().getId())'
+    swagger_context:
+      required:
+      - matchList
+
+Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+    - and:
+      - company:
+          eq: "user.getCompany().getId()"
+    - or:
+      - inheritedOrNull:
+          forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
+  collectionOperations:
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
+    write_access_control:
+    - and:
+      - inherited:
+          outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
+    - or:
+      - inheritedOrNull:
+          matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+    - or:
+      - inheritedOrNull:
+          forcedDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    swagger_context:
+      required:
+      - outgoingDdiRule
+
+Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withUsers'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withUsers'
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    normalization_context:
+      groups: ['withUsers']
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
+  collectionOperations:
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        pickUpGroup: 'Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup'
+    write_access_control:
+      inherited:
+        user: 'Ivoz\Provider\Domain\Model\User\User'
+        pickUpGroup: 'Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup'
+    swagger_context:
+      required:
+      - user
+      - pickUpGroup
+
+Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
+  collectionOperations:
+    get:
+      depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+    post:
+      depth: 1
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+    write_access_control:
+      inherited:
+        user: 'Ivoz\Provider\Domain\Model\User\User'
+        queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+    swagger_context:
+      required:
+      - user
+      - queue
+
+Ivoz\Provider\Domain\Model\Queue\Queue:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      company:
+        eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            periodicAnnounceLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            timeoutLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            timeoutExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            timeoutVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            fullLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            fullExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            fullVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
+  attributes:
+    access_control: 'FALSE'
+    pagination_enabled: false
+  itemOperations: []
+  collectionOperations: []
+
+Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\Recording\Recording:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+    - and:
+      - company:
+          eq: "user.getCompany().getId()"
+    - or:
+      - inheritedOrNull:
+          outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    - or:
+      - inheritedOrNull:
+          transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+    swagger_context:
+      required:
+      - company
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'residential_devices/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'residential_devices/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+
+Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+    - and:
+      - company:
+          eq: "user.getCompany().getId()"
+    - or:
+      - inheritedOrNull:
+          outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    - or:
+      - inheritedOrNull:
+          transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'retail_accounts/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'retail_accounts/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+
+Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\Schedule\Schedule:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\Service\Service:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+
+Ivoz\Provider\Domain\Model\Terminal\Terminal:
+  itemOperations:
+    get: ~
+    get_status_item:
+      method: 'GET'
+      path: 'terminals/{id}/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    put: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+    get_status_collection:
+      method: 'GET'
+      path: 'terminals/status'
+      operation_normalization_context: 'status'
+      normalization_context:
+        groups: ['status']
+    post: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+
+Ivoz\Provider\Domain\Model\Timezone\Timezone:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    pagination_client_enabled: true
+    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+      ROLE_COMPANY_USER:
+        raw: 'FALSE'
+
+Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
+  access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+      - or:
+        - brand:
+            eq: "user.getCompany().getBrand().getId()"
+        - brand:
+            isNull: ~
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+
+Ivoz\Provider\Domain\Model\User\User:
+  itemOperations:
+    get:
+      operation_normalization_context: 'detailed'
+    put:
+      operation_normalization_context: 'withPickupGroups'
+    delete: ~
+    get_my_profile:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      depth: 1
+      method: 'GET'
+      path: '/my/profile'
+      route_name: 'get_my_profile'
+      operation_normalization_context: 'myProfile'
+      normalization_context:
+        groups: ['myProfile']
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters: []
+    put_my_profile:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      attributes:
+        depth: 1
+      method: 'PUT'
+      path: '/my/profile'
+      route_name: 'put_my_profile'
+      operation_normalization_context: 'updateMyProfile'
+      denormalization_context:
+        groups: ['updateMyProfile']
+      normalization_context:
+        groups: ['myProfile']
+      swagger_context:
+        tags:
+        - My
+        consumes: ["application/ld+json"]
+        parameters:
+        - name: 'user'
+          in: 'body'
+          description: 'The updated User resource'
+          schema:
+            $ref: '#/definitions/User-updateMyProfile'
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withPickupGroups'
+      depth: 1
+    get_my_company_assistants:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'GET'
+      path: '/my/company_assistants'
+      route_name: 'get_my_company_assistants'
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters: []
+    get_my_company_voicemails:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'GET'
+      path: '/my/company_voicemails'
+      route_name: 'get_my_company_voicemails'
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters: []
+  attributes:
+    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
+    read_access_control:
+      ROLE_COMPANY_USER:
+        id:
+          eq: "user.getId()"
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_USER:
+        id:
+          eq: "user.getId()"
+      ROLE_COMPANY_ADMIN:
+      - and:
+        - company:
+            eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
+      - or:
+        - inheritedOrNull:
+            bossAssistant: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
+      - or:
+        - inheritedOrNull:
+            voicemailLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+      - or:
+        - inheritedOrNull:
+            bossAssistantWhiteList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+      - or:
+        - inheritedOrNull:
+            terminal: 'Ivoz\Provider\Domain\Model\Terminal\Terminal'
+      - or:
+        - inheritedOrNull:
+            extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+      - or:
+        - inheritedOrNull:
+            outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    swagger_context:
+      required:
+      - company

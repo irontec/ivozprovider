@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#DEBHELPER#
+
+# Set current environment
+export SYMFONY_ENV=prod
+
+cd /opt/irontec/ivozprovider/microservices/realtime
+
+# Set proper var permissions
+setfacl -dR -m u:www-data:rwX -m u:root:rwX var
+setfacl  -R -m u:www-data:rwX -m u:root:rwX var
+
+# Create project cache
+bin/console cache:clear --no-warmup -q -n
+
+:

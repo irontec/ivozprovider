@@ -40,6 +40,58 @@ class AdministratorRepositoryTest extends KernelTestCase
         );
     }
 
+    public function it_finds_brand_admin_by_username()
+    {
+        /** @var AdministratorDoctrineRepository $repository */
+        $repository = $this->em
+            ->getRepository(Administrator::class);
+
+        $targetName = 'test_brand_admin';
+        $admin = $repository->findBrandAdminByUsername(
+            $targetName
+        );
+
+        $this->assertInstanceOf(
+            Administrator::class,
+            $admin
+        );
+
+        $this->assertNotEmpty(
+            $admin->getBrand()
+        );
+
+        $this->assertEquals(
+            $targetName,
+            $admin->getUsername()
+        );
+    }
+
+    public function it_finds_client_admin_by_username()
+    {
+        /** @var AdministratorDoctrineRepository $repository */
+        $repository = $this->em
+            ->getRepository(Administrator::class);
+
+        $targetName = 'test_company_admin';
+        $admin = $repository->findClientAdminByUsername(
+            $targetName
+        );
+
+        $this->assertInstanceOf(
+            Administrator::class,
+            $admin
+        );
+
+        $this->assertNotEmpty(
+            $admin->getBrand()
+        );
+
+        $this->assertEquals(
+            $targetName,
+            $admin->getUsername()
+        );
+    }
+
     /**
      * @test
      * @expectedException \RuntimeException

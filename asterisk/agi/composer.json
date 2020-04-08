@@ -24,6 +24,7 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-0": {
             "IvozProvider\\": "../../library/IvozProvider"
@@ -33,14 +34,10 @@
             "Ivoz\\": "../../library/Ivoz"
         },
         "classmap": [
-            "app/MicroKernel.php",
             "phpagi/phpagi.php"
         ]
     },
     "autoload-dev": {
-        "files": [
-            "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
-        ]
     },
     "config": {
         "sort-packages": true,
@@ -53,15 +50,12 @@
     },
     "require": {
         "php": ">=7.0.19",
-        "irontec/ivoz-core-bundle": "^2.0",
-        "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
-        "symfony/symfony": "3.4.*"
+        "irontec/ivoz-provider-bundle": "^2.0",
+        "php-mime-mail-parser/php-mime-mail-parser": "^2.9"
     },
     "scripts": {
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-install-cmd": [
@@ -70,5 +64,16 @@
         "post-update-cmd": [
             "@symfony-scripts"
         ]
+    },
+    "extra": {
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "public",
+        "symfony-tests-dir": "tests",
+        "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "vendor/irontec/ivoz-provider-bundle/Resources/config/parameters.yml"
+        },
+        "branch-alias": null
     }
 }

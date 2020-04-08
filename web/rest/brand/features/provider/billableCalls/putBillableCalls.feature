@@ -48,7 +48,9 @@ Feature: Update billable calls
           "carrier": 1,
           "destination": null,
           "ratingPlanGroup": null,
-          "invoice": null
+          "invoice": null,
+          "ddi": 1,
+          "ddiProvider": 1
       }
     """
 

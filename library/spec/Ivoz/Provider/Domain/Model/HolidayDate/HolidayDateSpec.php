@@ -2,6 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\HolidayDate;
 
+use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateDto;
@@ -16,7 +17,8 @@ class HolidayDateSpec extends ObjectBehavior
     protected $dto;
 
     function let(
-        CountryInterface $country
+        CountryInterface $country,
+        CalendarInterface $calendar
     ) {
         $this->dto = $dto = new HolidayDateDto();
         $dto
@@ -31,7 +33,8 @@ class HolidayDateSpec extends ObjectBehavior
         $this->hydrate(
             $dto,
             [
-                'numberCountry' => $country->getWrappedObject()
+                'numberCountry' => $country->getWrappedObject(),
+                'calendar' => $calendar->getWrappedObject(),
             ]
         );
 

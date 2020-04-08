@@ -31,6 +31,7 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-0": {
             "IvozProvider\\": "../../library/IvozProvider"
@@ -38,15 +39,9 @@
         "psr-4": {
             "": "src/",
             "Ivoz\\": "../../library/Ivoz"
-        },
-        "classmap": [
-            "app/MicroKernel.php"
-        ]
+        }
     },
     "autoload-dev": {
-        "files": [
-            "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
-        ]
     },
     "config": {
         "sort-packages": true,
@@ -59,19 +54,16 @@
     },
     "require": {
         "php": ">=7.0.19",
-        "irontec/ivoz-core-bundle": "^2.0",
         "h4cc/wkhtmltopdf-amd64": "0.12.3",
+        "irontec/ivoz-provider-bundle": "^2.0",
         "knplabs/knp-snappy": "0.4.3",
-        "mmoreram/gearman-bundle": "4.1.0",
-        "phpxmlrpc/phpxmlrpc": "4.0",
-        "xamin/handlebars.php": "^0.10.4",
-        "symfony/symfony": "3.4.*"
+        "mmoreram/gearman-bundle": "^4.1",
+        "phpxmlrpc/phpxmlrpc": "^4.0",
+        "xamin/handlebars.php": "^0.10.4"
     },
     "scripts": {
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-install-cmd": [
@@ -80,5 +72,16 @@
         "post-update-cmd": [
             "@symfony-scripts"
         ]
+    },
+    "extra": {
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "public",
+        "symfony-tests-dir": "tests",
+        "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "vendor/irontec/ivoz-provider-bundle/Resources/config/parameters.yml"
+        },
+        "branch-alias": null
     }
 }

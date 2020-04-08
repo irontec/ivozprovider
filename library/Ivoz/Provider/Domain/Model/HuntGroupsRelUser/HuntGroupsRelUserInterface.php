@@ -6,11 +6,22 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface HuntGroupsRelUserInterface extends LoggableEntityInterface
 {
+    const ROUTETYPE_NUMBER = 'number';
+    const ROUTETYPE_USER = 'user';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
      */
     public function getChangeSet();
+
+    /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getNumberValueE164();
 
     /**
      * Get timeoutTime
@@ -27,9 +38,23 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
     public function getPriority();
 
     /**
+     * Get routeType
+     *
+     * @return string
+     */
+    public function getRouteType();
+
+    /**
+     * Get numberValue
+     *
+     * @return string | null
+     */
+    public function getNumberValue();
+
+    /**
      * Set huntGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup
+     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
      *
      * @return static
      */
@@ -38,23 +63,27 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
     /**
      * Get huntGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
      */
     public function getHuntGroup();
 
     /**
-     * Set user
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
-     *
-     * @return static
-     */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
-
-    /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getUser();
+
+    /**
+     * Get numberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     */
+    public function getNumberCountry();
+
+    /**
+     * @param string $prefix
+     * @return null|string
+     */
+    public function getTarget(string $prefix = '');
 }

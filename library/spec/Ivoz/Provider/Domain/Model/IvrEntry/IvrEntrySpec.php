@@ -5,6 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Model\IvrEntry;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry;
 use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
@@ -22,13 +23,20 @@ class IvrEntrySpec extends ObjectBehavior
     protected $dto;
 
     function let(
-        CompanyInterface $company
+        IvrInterface $ivr
     ) {
         $this->dto = $dto = new IvrEntryDto();
         $dto
             ->setEntry('Entry')
             ->setRouteType('number')
             ->setNumberValue('946002020');
+
+        $this->hydrate(
+            $dto,
+            [
+                'ivr' => $ivr->getWrappedObject(),
+            ]
+        );
 
         $this->beConstructedThrough(
             'fromDto',

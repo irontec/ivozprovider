@@ -18,23 +18,7 @@ If calling to an extension in another vPBX causes an external call, it is allowe
 What kind of calls can be routed through an *internal friend*?
 --------------------------------------------------------------
 
-IvozProvider must know what calls must be routed to the different defined *friends* (both internal and remote friends).
-For that, **client administrator** will configure regular expressions that
-describe the numbers that *can be reached* through the **internal friend**.
-
-.. note:: Internal :ref:`extensions <extensions>` have priority over any expression
-          defined in the *friends*.
-
-To sum up, IvozProvider will route a call received by a :ref:`user <users>` or
-a :ref:`friend <friends>` following this logic:
-
-1. Destination matches an existing IvozProvider extension?
-
-2. If not: Destination matches any *friend* regular expression?
-
-3. If not: This is an external call.
-
-.. important:: Avoid PCRE regular expressions in friend configuration: use [0-9] instead of \\d.
+IvozProvider will route any call matching an Extension in vpbx client connected by the internal friend.
 
 Configuration of internal friends
 ---------------------------------

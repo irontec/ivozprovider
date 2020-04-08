@@ -57,17 +57,17 @@ production:
         options:
           title: _("Options")
           screens:
-            residentialDevicesEdit_screen: ${auth.canSeeBrand}
-            callForwardSettingsList_screen: true
+            residentialDevicesEdit_screen: $[${auth.acls.ResidentialDevices.update} && ${auth.canSeeBrand}]
+            callForwardSettingsList_screen: $[${auth.acls.CallForwardSettings.read} && ${auth.acls.CallForwardSettings.read}]
           dialogs:
             residentialDevicesDel_dialog: ${auth.canSeeBrand}
           default: residentialDevicesEdit_screen
       options:
         title: _("Options")
         screens:
-          residentialDevicesNew_screen: ${auth.canSeeBrand}
+          residentialDevicesNew_screen: $[${auth.acls.ResidentialDevices.create} && ${auth.canSeeBrand}]
         dialogs:
-          residentialDevicesDel_dialog: ${auth.canSeeBrand}
+          residentialDevicesDel_dialog: $[${auth.acls.ResidentialDevices.delete} && ${auth.canSeeBrand}]
 
     residentialDevicesNew_screen: &residentialDevicesNew_screenLink
       <<: *ResidentialDevices

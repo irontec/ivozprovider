@@ -20,9 +20,9 @@ production:
         options:
           title: _("Options")
           screens:
-            terminalModelsEdit_screen: true
+            terminalModelsEdit_screen: ${auth.acls.TerminalModels.update}
           dialogs:
-            terminalModelsDel_dialog: true
+            terminalModelsDel_dialog: ${auth.acls.TerminalModels.delete}
           default: terminalModelsEdit_screen
         order: &terminalModels_orderLink
           terminalManufacturer: true
@@ -39,9 +39,9 @@ production:
       options:
         title: _("Options")
         screens:
-          terminalModelsNew_screen: true
+          terminalModelsNew_screen: ${auth.acls.TerminalModels.create}
         dialogs:
-          terminalModelsDel_dialog: true
+          terminalModelsDel_dialog: ${auth.acls.TerminalModels.delete}
     terminalModelsNew_screen: &terminalModelsNew_screenLink
       <<: *terminalManufacturersHelp
       <<: *TerminalModels

@@ -1,7 +1,6 @@
 production:
   klearCommon:
-    30000: _("There is an inconditional call forward with that call type. You can't add call forwards")
-    30001: _("There are already call forwards with that call type. You can't add inconditional call forward")
+    30001: _("There is already a inconditional call forward with that call type.")
     30002: _("There is already a busy call forward with that call type.")
     30003: _("There is already a noAnswer call forward with that call type.")
     30004: _("There is already a userNotRegistered call forward with that call type.")
@@ -26,6 +25,7 @@ production:
     70001: _("Wrong mask, discarding value.")
     70003: _("When Outbound Proxy is used, SIP Proxy must not include a port.")
     70004: _("Outbound Proxy IP value is not valid.")
+    70005: _("Local socket cannot be empty.")
     80000: _("Template field can not be null.")
     90000: _("Inbound Calls cannot be billed as DDI Provider is not externally rated.")
     90001: _("Externally rated cannot be disabled as some DDIs wants to bill inbound calls.")

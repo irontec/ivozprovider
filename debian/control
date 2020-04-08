@@ -84,6 +84,7 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-doc (=${binary:Version}),
     ivozprovider-async-workers (=${binary:Version}),
     ivozprovider-scheduler (=${binary:Version}),
+    ivozprovider-realtime (=${binary:Version}),
     apache2,
     ssl-cert,
     ghostscript,
@@ -128,6 +129,7 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
         ivozprovider-kamailio-presence-modules,
         ivozprovider-kamailio-extra-modules,
         ivozprovider-kamailio-utils-modules,
+        ivozprovider-kamailio-redis-modules,
         ivozprovider-kamailio-trunks (=${binary:Version}),
         ivozprovider-kamailio-users (=${binary:Version}),
         ivozprovider-recordings (=${binary:Version}),
@@ -265,6 +267,14 @@ Priority: optional
 Depends: ivozprovider-common-library (=${binary:Version}), php-gearman
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Rating updater - Symfony microservice
+  .
+
+Package: ivozprovider-realtime
+Architecture: all
+Priority: optional
+Depends: ivozprovider-common-library (=${binary:Version}), php-redis, php-swoole
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Realtime Websocket server - Symfony microservice
   .
 
 Package: ivozprovider-doc

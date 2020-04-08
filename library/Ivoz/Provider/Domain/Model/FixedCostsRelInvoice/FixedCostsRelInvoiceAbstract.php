@@ -24,7 +24,7 @@ abstract class FixedCostsRelInvoiceAbstract
     protected $fixedCost;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     protected $invoice;
 
@@ -160,7 +160,7 @@ abstract class FixedCostsRelInvoiceAbstract
     {
         return [
             'quantity' => self::getQuantity(),
-            'fixedCostId' => self::getFixedCost() ? self::getFixedCost()->getId() : null,
+            'fixedCostId' => self::getFixedCost()->getId(),
             'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null
         ];
     }
@@ -203,7 +203,7 @@ abstract class FixedCostsRelInvoiceAbstract
      *
      * @return static
      */
-    public function setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost)
+    protected function setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost)
     {
         $this->fixedCost = $fixedCost;
 
@@ -223,7 +223,7 @@ abstract class FixedCostsRelInvoiceAbstract
     /**
      * Set invoice
      *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
+     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice | null
      *
      * @return static
      */
@@ -237,7 +237,7 @@ abstract class FixedCostsRelInvoiceAbstract
     /**
      * Get invoice
      *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     public function getInvoice()
     {

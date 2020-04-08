@@ -7,6 +7,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport;
+use Ivoz\Provider\Domain\Model\CallCsvReport\Csv;
 
 class ProviderCallCsvReport extends Fixture implements DependentFixtureInterface
 {
@@ -36,6 +37,9 @@ class ProviderCallCsvReport extends Fixture implements DependentFixtureInterface
             $this->setCallCsvScheduler(
                 $fixture->getReference('_reference_ProviderCallCsvScheduler1')
             );
+            $this->setCsv(
+                new Csv(null, null, null)
+            );
         })->call($item1);
 
         $this->addReference('_reference_ProviderCallCsvReport1', $item1);
@@ -54,6 +58,9 @@ class ProviderCallCsvReport extends Fixture implements DependentFixtureInterface
             );
             $this->setCallCsvScheduler(
                 $fixture->getReference('_reference_ProviderCallCsvScheduler2')
+            );
+            $this->setCsv(
+                new Csv(null, null, null)
             );
         })->call($item2);
 

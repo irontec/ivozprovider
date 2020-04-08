@@ -25,7 +25,7 @@ abstract class ResidentialDeviceAbstract
 
     /**
      * comment: enum:udp|tcp|tls
-     * @var string
+     * @var string | null
      */
     protected $transport;
 
@@ -149,7 +149,6 @@ abstract class ResidentialDeviceAbstract
     protected function __construct(
         $name,
         $description,
-        $transport,
         $authNeeded,
         $disallow,
         $allow,
@@ -163,7 +162,6 @@ abstract class ResidentialDeviceAbstract
     ) {
         $this->setName($name);
         $this->setDescription($description);
-        $this->setTransport($transport);
         $this->setAuthNeeded($authNeeded);
         $this->setDisallow($disallow);
         $this->setAllow($allow);
@@ -247,7 +245,6 @@ abstract class ResidentialDeviceAbstract
         $self = new static(
             $dto->getName(),
             $dto->getDescription(),
-            $dto->getTransport(),
             $dto->getAuthNeeded(),
             $dto->getDisallow(),
             $dto->getAllow(),
@@ -261,6 +258,7 @@ abstract class ResidentialDeviceAbstract
         );
 
         $self
+            ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
@@ -375,9 +373,9 @@ abstract class ResidentialDeviceAbstract
             'ddiIn' => self::getDdiIn(),
             'maxCalls' => self::getMaxCalls(),
             't38Passthrough' => self::getT38Passthrough(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
@@ -442,19 +440,20 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set transport
      *
-     * @param string $transport
+     * @param string $transport | null
      *
      * @return static
      */
-    protected function setTransport($transport)
+    protected function setTransport($transport = null)
     {
-        Assertion::notNull($transport, 'transport value "%s" is null, but non null value was expected.');
-        Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($transport, [
-            ResidentialDeviceInterface::TRANSPORT_UDP,
-            ResidentialDeviceInterface::TRANSPORT_TCP,
-            ResidentialDeviceInterface::TRANSPORT_TLS
-        ], 'transportvalue "%s" is not an element of the valid values: %s');
+        if (!is_null($transport)) {
+            Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice($transport, [
+                ResidentialDeviceInterface::TRANSPORT_UDP,
+                ResidentialDeviceInterface::TRANSPORT_TCP,
+                ResidentialDeviceInterface::TRANSPORT_TLS
+            ], 'transportvalue "%s" is not an element of the valid values: %s');
+        }
 
         $this->transport = $transport;
 
@@ -464,7 +463,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get transport
      *
-     * @return string
+     * @return string | null
      */
     public function getTransport()
     {
@@ -880,7 +879,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -928,7 +927,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -952,7 +951,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
+    protected function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -976,7 +975,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
+    protected function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
     {
         $this->outgoingDdi = $outgoingDdi;
 
@@ -1000,7 +999,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
+    protected function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {
         $this->language = $language;
 

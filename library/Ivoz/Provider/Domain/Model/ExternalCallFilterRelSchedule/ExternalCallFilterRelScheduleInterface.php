@@ -15,7 +15,7 @@ interface ExternalCallFilterRelScheduleInterface extends LoggableEntityInterface
     /**
      * Set filter
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter
+     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter | null
      *
      * @return static
      */
@@ -24,18 +24,9 @@ interface ExternalCallFilterRelScheduleInterface extends LoggableEntityInterface
     /**
      * Get filter
      *
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
      */
     public function getFilter();
-
-    /**
-     * Set schedule
-     *
-     * @param \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule
-     *
-     * @return static
-     */
-    public function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule);
 
     /**
      * Get schedule

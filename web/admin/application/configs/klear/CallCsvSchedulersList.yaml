@@ -26,30 +26,43 @@ production:
         blacklist:
           brand: true
           callCsvNotificationTemplate: true
+          ddi: true
+          carrier: true
+          retailAccount: true
+          residentialDevice: true
+          companyType: true
+          vpbx: true
+          endpointType: true
+          user: true
+          fax: true
+          friend: true
+          retail: true
+          residential: true
         order: &callCsvSchedulers_orderLink
           id: true
           name: true
           company: true
-          frequency: true
-          unit: true
+          direction: true
           callDirection: true
           email: true
+          frequency: true
+          unit: true
           lastExecution: true
           nextExecution: true
         options:
           title: _("Options")
           screens:
-            callCsvSchedulersEdit_screen: true
-            callCsvReportsList_screen: true
+            callCsvSchedulersEdit_screen: ${auth.acls.CallCsvSchedulers.update}
+            callCsvReportsList_screen: ${auth.acls.CallCsvReports.read}
           dialogs:
-            callCsvSchedulersDel_dialog: true
+            callCsvSchedulersDel_dialog: ${auth.acls.CallCsvSchedulers.delete}
           default: callCsvSchedulersEdit_screen
       options:
         title: _("Options")
         screens:
-          callCsvSchedulersNew_screen: true
+          callCsvSchedulersNew_screen: ${auth.acls.CallCsvSchedulers.create}
         dialogs:
-          callCsvSchedulersDel_dialog: true
+          callCsvSchedulersDel_dialog: ${auth.acls.CallCsvSchedulers.delete}
 
     callCsvSchedulersNew_screen: &callCsvSchedulersNew_screenLink
       <<: *CallCsvSchedulers
@@ -61,32 +74,69 @@ production:
       forcedValues:
         self::brand: null
         <<: *forcedCompany
+        self::vpbx: ${auth.companyId}
       shortcutOption: N
-      fields:
+      fields: &callCsvSchedulersNew_fields
         blacklist: &callCsvSchedulersNew_blacklist
           lastExecution: true
           nextExecution: true
           callCsvNotificationTemplate: true
+          retailAccount: ${auth.companyNotRetail}
+          residentialDevice: ${auth.companyNotResidential}
+          carrier: true
+          companyType: true
+          ddi: ${auth.companyWholesale}
+          endpointType: ${auth.companyNotVPBX}
+          user: ${auth.companyNotVPBX}
+          fax: ${auth.companyNotVPBX}
+          friend: ${auth.companyNotVPBX}
         order:
           name: 1
-          callDirection: 1
+          companyType: 1
           email: 1
           callCsvNotificationTemplate: 1
           frequency: 1
           unit: 1
           nextExecution: 1
           lastExecution: 1
+          callDirection: 1
+          carrier: 1
+          company: 1
+          retail: 1
+          residential: 1
+          vpbx: 1
+          retailAccount: 1
+          residentialDevice: 1
+          ddi: 1
+          endpointType: 1
       fixedPositions: &callCsvSchedulersFixedPositions_Link
         group0:
           label: _("Basic Information")
           colsPerRow: 2
           fields:
             name: 1
-            callDirection: 1
-            company: 1
+            companyType: 1
             email: 1
             callCsvNotificationTemplate: 1
         group1:
+          label: _("Filters")
+          colsPerRow: 2
+          fields:
+            callDirection: 1
+            carrier: 1
+            company: 1
+            vpbx: 1
+            retail: 1
+            residential: 1
+            endpointType: 1
+            endpointType: 1
+            retailAccount: 1
+            residentialDevice: 1
+            ddi: 1
+            user: 1
+            fax: 1
+            friend: 1
+        group3:
           label: _("Time Information")
           colsPerRow: 2
           fields:
@@ -105,8 +155,11 @@ production:
         self::brand: null
         <<: *forcedCompany
       fields:
+        <<: *callCsvSchedulersNew_fields
         blacklist: &callCsvSchedulersEdit_blacklist
           callCsvNotificationTemplate: true
+          carrier: true
+          ddi: ${auth.companyWholesale}
       fixedPositions:
         <<: *callCsvSchedulersFixedPositions_Link
 

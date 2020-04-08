@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class CompanyRelRoutingTagAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
@@ -152,7 +152,7 @@ abstract class CompanyRelRoutingTagAbstract
     {
         return [
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
+            'routingTagId' => self::getRoutingTag()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class CompanyRelRoutingTagAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class CompanyRelRoutingTagAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {
@@ -188,7 +188,7 @@ abstract class CompanyRelRoutingTagAbstract
      *
      * @return static
      */
-    public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null)
+    public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag)
     {
         $this->routingTag = $routingTag;
 

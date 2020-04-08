@@ -27,29 +27,11 @@ interface CountryInterface extends LoggableEntityInterface
     public function getCountryCode();
 
     /**
-     * Set name
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\Name $name
-     *
-     * @return static
-     */
-    public function setName(\Ivoz\Provider\Domain\Model\Country\Name $name);
-
-    /**
      * Get name
      *
      * @return \Ivoz\Provider\Domain\Model\Country\Name
      */
     public function getName();
-
-    /**
-     * Set zone
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\Zone $zone
-     *
-     * @return static
-     */
-    public function setZone(\Ivoz\Provider\Domain\Model\Country\Zone $zone);
 
     /**
      * Get zone

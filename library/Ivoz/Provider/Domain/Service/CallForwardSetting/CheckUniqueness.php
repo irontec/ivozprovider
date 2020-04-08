@@ -15,7 +15,6 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
  */
 class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterface
 {
-    const INCONDITIONAL_CALL_FORWARD_EXCEPTION = 30000;
     const CALL_FORWARDS_WITH_THAT_TYPE_EXCEPTION = 30001;
     const BUSY_CALL_FORWARD_EXCEPTION = 30002;
     const NO_ANSWER_CALL_FORWARD_EXCEPTION = 30003;
@@ -61,31 +60,18 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
             $callTypeFilterConditions[] = 'both';
         }
 
-        $inconditionalCallForwardsConditions = $this->getInconditionalCallForwardsCondition(
-            $entity,
-            $callTypeFilterConditions
-        );
-        $inconditionalCallForwards = $this->callForwardSettingRepository->matching(
-            $inconditionalCallForwardsConditions
-        );
-
-        if ($inconditionalCallForwards->count() > 0) {
-            $message = "There is an inconditional call forward with that call type. You can't add call forwards";
-            throw new \DomainException($message, self::INCONDITIONAL_CALL_FORWARD_EXCEPTION);
-        }
-
         $isInconditional = ($entity->getCallForwardType() === 'inconditional');
         if ($isInconditional) {
-            $callForwardsConditions = $this->getCallForwardsCondition(
+            $inconditionalCallForwardsConditions = $this->getInconditionalCallForwardsCondition(
                 $entity,
                 $callTypeFilterConditions
             );
             $callForwards = $this->callForwardSettingRepository->matching(
-                $callForwardsConditions
+                $inconditionalCallForwardsConditions
             );
 
             if ($callForwards->count() > 0) {
-                $message = "There are already call forwards with that call type. You can't add inconditional call forward";
+                $message = "There is already a inconditional call forward with that call type.";
                 throw new \DomainException($message, self::CALL_FORWARDS_WITH_THAT_TYPE_EXCEPTION);
             }
         }

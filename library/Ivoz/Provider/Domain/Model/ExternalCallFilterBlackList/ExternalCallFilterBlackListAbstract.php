@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class ExternalCallFilterBlackListAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+     * @var \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
      */
     protected $filter;
 
@@ -152,7 +152,7 @@ abstract class ExternalCallFilterBlackListAbstract
     {
         return [
             'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
-            'matchlistId' => self::getMatchlist() ? self::getMatchlist()->getId() : null
+            'matchlistId' => self::getMatchlist()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class ExternalCallFilterBlackListAbstract
     /**
      * Set filter
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter
+     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class ExternalCallFilterBlackListAbstract
     /**
      * Get filter
      *
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
      */
     public function getFilter()
     {
@@ -188,7 +188,7 @@ abstract class ExternalCallFilterBlackListAbstract
      *
      * @return static
      */
-    public function setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist)
+    protected function setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist)
     {
         $this->matchlist = $matchlist;
 

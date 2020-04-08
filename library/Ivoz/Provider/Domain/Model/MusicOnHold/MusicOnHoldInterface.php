@@ -84,29 +84,11 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
     public function getCompany();
 
     /**
-     * Set originalFile
-     *
-     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile $originalFile
-     *
-     * @return static
-     */
-    public function setOriginalFile(\Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile $originalFile);
-
-    /**
      * Get originalFile
      *
      * @return \Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile
      */
     public function getOriginalFile();
-
-    /**
-     * Set encodedFile
-     *
-     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile $encodedFile
-     *
-     * @return static
-     */
-    public function setEncodedFile(\Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile $encodedFile);
 
     /**
      * Get encodedFile

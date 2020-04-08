@@ -33,7 +33,7 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
     /**
      * Set callAcl
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl
+     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl | null
      *
      * @return static
      */
@@ -42,18 +42,9 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
     /**
      * Get callAcl
      *
-     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface
+     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface | null
      */
     public function getCallAcl();
-
-    /**
-     * Set matchList
-     *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
-     *
-     * @return static
-     */
-    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList);
 
     /**
      * Get matchList

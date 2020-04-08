@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class CompanyRelCodecAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
@@ -152,7 +152,7 @@ abstract class CompanyRelCodecAbstract
     {
         return [
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'codecId' => self::getCodec() ? self::getCodec()->getId() : null
+            'codecId' => self::getCodec()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class CompanyRelCodecAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class CompanyRelCodecAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {
@@ -188,7 +188,7 @@ abstract class CompanyRelCodecAbstract
      *
      * @return static
      */
-    public function setCodec(\Ivoz\Provider\Domain\Model\Codec\CodecInterface $codec)
+    protected function setCodec(\Ivoz\Provider\Domain\Model\Codec\CodecInterface $codec)
     {
         $this->codec = $codec;
 

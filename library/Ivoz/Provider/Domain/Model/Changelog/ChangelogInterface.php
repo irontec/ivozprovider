@@ -11,7 +11,7 @@ interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
      * @param \Ivoz\Core\Domain\Event\EntityEventInterface $event
      * @return self
      */
-    public static function fromEvent(\Ivoz\Core\Domain\Event\EntityEventInterface $event);
+    public static function fromEvent(\Ivoz\Core\Domain\Event\EntityEventInterface $event, \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command);
 
     /**
      * Get entity
@@ -47,15 +47,6 @@ interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
      * @return integer
      */
     public function getMicrotime();
-
-    /**
-     * Set command
-     *
-     * @param \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command
-     *
-     * @return static
-     */
-    public function setCommand(\Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command);
 
     /**
      * Get command

@@ -1,0 +1,18 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist: ~
+
+  Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry: ~
+
+  Ivoz\Kam\Domain\Service\TrunksLcrRule\CreateByOutgoingRoutingAndRoutingPattern: ~
+
+  Ivoz\Provider\Domain\Service\Invoice\Generator:
+    arguments:
+      $logger: '@logger'
+      $vendorDir: '%kernel.root_dir%/../vendor/'
+
+  Ivoz\Provider\Domain\Service\Extension\AliasImporter:
+    public: true

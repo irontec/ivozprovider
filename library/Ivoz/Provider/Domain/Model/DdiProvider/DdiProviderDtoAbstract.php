@@ -41,6 +41,11 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     private $transformationRuleSet;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto | null
+     */
+    private $proxyTrunk;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto[] | null
      */
     private $ddiProviderRegistrations = null;
@@ -73,7 +78,8 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
             'externallyRated' => 'externallyRated',
             'id' => 'id',
             'brandId' => 'brand',
-            'transformationRuleSetId' => 'transformationRuleSet'
+            'transformationRuleSetId' => 'transformationRuleSet',
+            'proxyTrunkId' => 'proxyTrunk'
         ];
     }
 
@@ -89,6 +95,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
+            'proxyTrunk' => $this->getProxyTrunk(),
             'ddiProviderRegistrations' => $this->getDdiProviderRegistrations(),
             'ddiProviderAddresses' => $this->getDdiProviderAddresses()
         ];
@@ -260,6 +267,52 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     public function getTransformationRuleSetId()
     {
         if ($dto = $this->getTransformationRuleSet()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto $proxyTrunk
+     *
+     * @return static
+     */
+    public function setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto $proxyTrunk = null)
+    {
+        $this->proxyTrunk = $proxyTrunk;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto | null
+     */
+    public function getProxyTrunk()
+    {
+        return $this->proxyTrunk;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setProxyTrunkId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto($id)
+            : null;
+
+        return $this->setProxyTrunk($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getProxyTrunkId()
+    {
+        if ($dto = $this->getProxyTrunk()) {
             return $dto->getId();
         }
 

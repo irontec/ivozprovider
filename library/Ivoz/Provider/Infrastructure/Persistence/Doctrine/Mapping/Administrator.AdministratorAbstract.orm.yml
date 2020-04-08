@@ -31,6 +31,11 @@ Ivoz\Provider\Domain\Model\Administrator\AdministratorAbstract:
       nullable: false
       options:
         default: '1'
+    restricted:
+      type: boolean
+      nullable: false
+      options:
+        default: 0
     name:
       type: string
       nullable: true

@@ -21,6 +21,21 @@ Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserAbstract:
       nullable: true
       options:
         unsigned: false
+    routeType:
+      type: string
+      nullable: false
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:number|user]'
+      column: routeType
+    numberValue:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+      column: numberValue
   manyToOne:
     huntGroup:
       targetEntity: \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
@@ -43,6 +58,17 @@ Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserAbstract:
       joinColumns:
         userId:
           referencedColumnName: id
-          nullable: false
+          nullable: true
           onDelete: cascade
+      orphanRemoval: false
+    numberCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        numberCountryId:
+          referencedColumnName: id
+          onDelete: set null
       orphanRemoval: false

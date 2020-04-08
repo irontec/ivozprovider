@@ -181,7 +181,7 @@ abstract class FaxAbstract
             'name' => self::getName(),
             'email' => self::getEmail(),
             'sendByEmail' => self::getSendByEmail(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()->getId(),
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null
         ];
     }
@@ -277,7 +277,7 @@ abstract class FaxAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -301,7 +301,7 @@ abstract class FaxAbstract
      *
      * @return static
      */
-    public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
+    protected function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
     {
         $this->outgoingDdi = $outgoingDdi;
 

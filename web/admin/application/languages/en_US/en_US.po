@@ -47,8 +47,17 @@ msgstr "ASR"
 msgid "Accept"
 msgstr "Accept"
 
+msgid "Access"
+msgstr "Access"
+
 msgid "Access denied"
 msgstr "Access denied"
+
+msgid "Access privileges"
+msgstr "Access privileges"
+
+msgid "Access successfully revoked."
+msgstr "Access successfully revoked."
 
 msgid "Action"
 msgstr "Action"
@@ -61,6 +70,14 @@ msgstr "Activation time"
 
 msgid "Active"
 msgstr "Active"
+
+msgid "Active call"
+msgid_plural "Active calls"
+msgstr[0] "Active call"
+msgstr[1] "Active calls"
+
+msgid "Active calls"
+msgstr "Active calls"
 
 msgid "Active pricing plan does not allow to call introduced phone number"
 msgstr "Active pricing plan does not allow to call introduced phone number"
@@ -97,17 +114,30 @@ msgstr "Add pattern to %2s"
 msgid "Admin"
 msgstr "Admin"
 
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "Administrator access privilege"
+msgid_plural "Administrator access privileges"
+msgstr[0] "Administrator access privilege"
+msgstr[1] "Administrator access privileges"
+
 msgid "Advanced Configuration"
 msgstr "Advanced Configuration"
 
 msgid "Advanced Setting, read carefully"
 msgstr "Advanced Setting, read carefully"
 
+msgid "Alias"
+msgid_plural "Aliases"
+msgstr[0] "Alias"
+msgstr[1] "Aliases"
+
 msgid "All"
 msgstr "All"
 
-msgid "All clients"
-msgstr "All clients"
+msgid "Allow Call Forwards"
+msgstr "Allow Call Forwards"
 
 msgid "Allow Client to remove recordings"
 msgstr "Allow Client to remove recordings"
@@ -147,6 +177,11 @@ msgstr "An error occurred: check files format and content."
 
 msgid "Announce"
 msgstr "Announce"
+
+msgid "Antiflood banned IP"
+msgid_plural "Antiflood banned IPs"
+msgstr[0] "Antiflood banned IP"
+msgstr[1] "Antiflood banned IPs"
 
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
@@ -222,6 +257,11 @@ msgstr "Balance modified successfully"
 msgid "Balance operations"
 msgstr "Balance operations"
 
+msgid "Banned IP address"
+msgid_plural "Banned IP addresses"
+msgstr[0] "Banned IP address"
+msgstr[1] "Banned IP addresses"
+
 msgid "Basic Configuration"
 msgstr "Basic Configuration"
 
@@ -245,6 +285,9 @@ msgstr "Black Lists"
 
 msgid "Block"
 msgstr "Block"
+
+msgid "Blocker"
+msgstr "Blocker"
 
 msgid "Body"
 msgstr "Body"
@@ -357,9 +400,6 @@ msgstr "Call ID"
 msgid "Call destination"
 msgstr "Call destination"
 
-msgid "Call direction"
-msgstr "Call direction"
-
 msgid "Call forward setting"
 msgid_plural "Call forward settings"
 msgstr[0] "Call forward setting"
@@ -433,9 +473,7 @@ msgid "Cannot invoice calls from today in the future."
 msgstr "Cannot invoice calls from today in the future."
 
 msgid "Carrier"
-msgid_plural "Carriers"
-msgstr[0] "Carrier"
-msgstr[1] "Carriers"
+msgstr "Carrier"
 
 msgid "Carrier server"
 msgid_plural "Carrier servers"
@@ -464,10 +502,18 @@ msgid_plural "Client Portals"
 msgstr[0] "Client portal"
 msgstr[1] "Clients portals"
 
+msgid "Client Type"
+msgid_plural "Client Types"
+msgstr[0] "Client Type"
+msgstr[1] "Client Types"
+
 msgid "Client admin"
 msgid_plural "Client admins"
 msgstr[0] "Client admin"
 msgstr[1] "Clients admins"
+
+msgid "Client filters"
+msgstr "Client filters"
 
 msgid "Client's default"
 msgstr "Client's default"
@@ -515,6 +561,9 @@ msgid_plural "Conference rooms"
 msgstr[0] "Conference room"
 msgstr[1] "Conference rooms"
 
+msgid "Connecting"
+msgstr "Connecting"
+
 msgid "Connection Info"
 msgstr "Connection Info"
 
@@ -549,6 +598,9 @@ msgstr[1] "Countries"
 
 msgid "Country code"
 msgstr "Country code"
+
+msgid "Create"
+msgstr "Create"
 
 msgid "Created"
 msgstr "Created"
@@ -626,6 +678,9 @@ msgstr "Default policy"
 msgid "Default timezone"
 msgstr "Default timezone"
 
+msgid "Delete"
+msgstr "Delete"
+
 #, python-format
 msgid "Delete %s"
 msgstr "Delete %s"
@@ -702,9 +757,30 @@ msgstr "Distribute method"
 msgid "Do not disturb"
 msgstr "Do not disturb"
 
+msgid "Do you really want to grant read access to selected entities?"
+msgstr "Do you really want to grant read access to selected entities?"
+
+msgid "Do you really want to grant write access to selected entities?"
+msgstr "Do you really want to grant write access to selected entities?"
+
+msgid "Do you really want to revoke access to selected entities?"
+msgstr "Do you really want to revoke access to selected entities?"
+
+#, python-format
+msgid "Do you want revoke access to this %s?"
+msgstr "Do you want revoke access to this %s?"
+
 #, python-format
 msgid "Do you want to delete this %s?"
 msgstr "Do you want to delete this %s?"
+
+#, python-format
+msgid "Do you want to grant read access to this %s?"
+msgstr "Do you want to grant read access to this %s?"
+
+#, python-format
+msgid "Do you want to grant write access to this %s?"
+msgstr "Do you want to grant write access to this %s?"
 
 msgid "Do you want to rerate selected calls?"
 msgstr "Do you want to rerate selected calls?"
@@ -813,6 +889,12 @@ msgstr ""
 msgid "Enabled"
 msgstr "Enabled"
 
+msgid "Enabled (SIP INFO + DTMFs)"
+msgstr "Enabled (SIP INFO + DTMFs)"
+
+msgid "Enabled (SIP INFO)"
+msgstr "Enabled (SIP INFO)"
+
 msgid "End date"
 msgstr "End date"
 
@@ -830,6 +912,11 @@ msgstr "Ensure the preview below is right before you proceed"
 
 msgid "Enter number patterns in E.164 format (plus symbol must be escaped)."
 msgstr "Enter number patterns in E.164 format (plus symbol must be escaped)."
+
+msgid "Entity"
+msgid_plural "Entities"
+msgstr[0] "Entity"
+msgstr[1] "Entities"
 
 msgid "Entry"
 msgstr "Entry"
@@ -960,6 +1047,9 @@ msgstr[1] "Files for play"
 msgid "File imported"
 msgstr "File imported"
 
+msgid "File imported successfully"
+msgstr "File imported successfully"
+
 msgid "File partially imported"
 msgstr "File partially imported"
 
@@ -974,6 +1064,9 @@ msgstr "Filter's Out of schedule Routing"
 
 msgid "Filtering info"
 msgstr "Filtering info"
+
+msgid "Filters"
+msgstr "Filters"
 
 msgid "Filters data"
 msgstr "Filters data"
@@ -1101,6 +1194,14 @@ msgstr[1] "Global Special Numbers"
 msgid "God"
 msgstr "God"
 
+#, python-format
+msgid "Grant Read Only %s"
+msgstr "Grant Read Only %s"
+
+#, python-format
+msgid "Grant Write %s"
+msgstr "Grant Write %s"
+
 msgid "Group"
 msgstr "Group"
 
@@ -1144,6 +1245,14 @@ msgstr[1] "Hunt Groups"
 msgid "IP Address"
 msgstr "IP address"
 
+msgid "IP address"
+msgstr "IP address"
+
+msgid "IP filter blocked address"
+msgid_plural "IP filter blocked addresses"
+msgstr[0] "IP filter blocked address"
+msgstr[1] "IP filter blocked addresses"
+
 msgid "IP or domain name (port with ':')"
 msgstr "IP or domain name (port with ':')"
 
@@ -1171,18 +1280,32 @@ msgstr[0] "Iden"
 msgstr[1] "Idens"
 
 msgid ""
-"If 'no', R-URI username will match endpoint's name. If 'yes', called number "
-"will be used instead."
+"If no queue member answers before time this seconds, the timeout queue logic "
+"will be activated. Leave empty to disable."
 msgstr ""
-"If 'no', R-URI username will match endpoint's name. If 'yes', called number "
-"will be used instead."
+"If no queue member answers before time this seconds, the timeout queue logic "
+"will be activated. Leave empty to disable."
 
 msgid ""
-"If no queue member answers before time this seconds, the timeout queue logic "
-"will be activated. Leave empty to disable."
+"If set to 'Yes', set destination (R-URI and To) to called DDI when calling "
+"to this residential device."
 msgstr ""
-"If no queue member answers before time this seconds, the timeout queue logic "
-"will be activated. Leave empty to disable."
+"If set to 'Yes', set destination (R-URI and To) to called DDI when calling "
+"to this residential device."
+
+msgid ""
+"If set to 'Yes', set destination (R-URI and To) to called DDI when calling "
+"to this retail account."
+msgstr ""
+"If set to 'Yes', set destination (R-URI and To) to called DDI when calling "
+"to this retail account."
+
+msgid ""
+"If set to 'Yes', set destination (R-URI and To) to called DDI/number when "
+"calling to this friend."
+msgstr ""
+"If set to 'Yes', set destination (R-URI and To) to called DDI/number when "
+"calling to this friend."
 
 msgid "Ignore"
 msgstr "Ignore"
@@ -1234,9 +1357,6 @@ msgstr "Inbound"
 msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Inbound Calls cannot be billed as DDI Provider is not externally rated."
-
-msgid "Inbound calls"
-msgstr "Inbound calls"
 
 msgid "Inbound configuration"
 msgstr "Inbound configuration"
@@ -1369,6 +1489,9 @@ msgstr "Last notification sent on"
 msgid "Last provision date"
 msgstr "Last provision date"
 
+msgid "Last time banned"
+msgstr "Last time banned"
+
 msgid "Lastname"
 msgstr "Lastname"
 
@@ -1397,10 +1520,10 @@ msgstr ""
 
 msgid ""
 "Limits received calls when already handling this number of calls. Set 0 for "
-"disabling."
+"unlimited."
 msgstr ""
 "Limits received calls when already handling this number of calls. Set 0 for "
-"disabling."
+"unlimited."
 
 msgid "Linear"
 msgstr "Linear"
@@ -1409,7 +1532,7 @@ msgstr "Linear"
 msgid "List %s %2s"
 msgstr "List %s %2s"
 
-#, python-format
+#, python-format, php-format
 msgid "List of %s"
 msgstr "List of %s"
 
@@ -1437,12 +1560,24 @@ msgstr "Load file"
 msgid "Loading"
 msgstr "Loading"
 
+msgid "Local address used in SIP signalling with this DDI Provider."
+msgstr "Local address used in SIP signalling with this DDI Provider."
+
+msgid "Local address used in SIP signalling with this carrier."
+msgstr "Local address used in SIP signalling with this carrier."
+
 msgid ""
 "Local legislation may enforce to announce the call recording to both "
 "parties, act responsibly"
 msgstr ""
 "Local legislation may enforce to announce the call recording to both "
 "parties, act responsibly"
+
+msgid "Local socket"
+msgstr "Local socket"
+
+msgid "Local socket cannot be empty."
+msgstr "Local socket cannot be empty."
 
 msgid "Locales"
 msgstr "Locales"
@@ -1587,6 +1722,11 @@ msgid_plural "Media relay sets"
 msgstr[0] "Media relay set"
 msgstr[1] "Media relay sets"
 
+msgid "Member"
+msgid_plural "Members"
+msgstr[0] "Member"
+msgstr[1] "Members"
+
 msgid "Member call seconds"
 msgstr "Member call seconds"
 
@@ -1677,6 +1817,9 @@ msgstr "No answer timeout"
 
 msgid "No backup found."
 msgstr "No backup found."
+
+msgid "No calls"
+msgstr "No calls"
 
 msgid "No default template found"
 msgstr "No default template found"
@@ -1793,9 +1936,6 @@ msgstr "Outbound Proxy"
 
 msgid "Outbound Proxy IP value is not valid."
 msgstr "Outbound Proxy IP value is not valid."
-
-msgid "Outbound calls"
-msgstr "Outbound calls"
 
 msgid "Outbound configuration"
 msgstr "Outbound configuration"
@@ -1921,9 +2061,6 @@ msgstr "Please, type a duration in seconds"
 msgid "Please, type a phone number"
 msgstr "Please, type a phone number"
 
-msgid "Points to"
-msgstr "Points to"
-
 msgid "Policy"
 msgstr "Policy"
 
@@ -1976,6 +2113,9 @@ msgstr "Processing"
 msgid "Proto"
 msgstr "Proto"
 
+msgid "Provider filters"
+msgstr "Provider filters"
+
 msgid "Providers"
 msgstr "Providers"
 
@@ -1988,14 +2128,10 @@ msgid "Provisioning Info"
 msgstr "Provisioning Info"
 
 msgid "Proxy Trunks"
-msgid_plural "Proxies Trunks"
-msgstr[0] "Proxy Trunks"
-msgstr[1] "Proxies Trunks"
+msgstr "Proxy Trunks"
 
 msgid "Proxy Users"
-msgid_plural "Proxies Users"
-msgstr[0] "Proxy Users"
-msgstr[1] "Proxies Users"
+msgstr "Proxy Users"
 
 msgid "Pseudo-prepaid"
 msgstr "Pseudo-prepaid"
@@ -2052,6 +2188,15 @@ msgid "Rating plan"
 msgid_plural "Rating plans"
 msgstr[0] "Rating plan"
 msgstr[1] "Rating plans"
+
+msgid "Read"
+msgstr "Read"
+
+msgid "Read Only Access"
+msgstr "Read Only Access"
+
+msgid "Read access successfully granted."
+msgstr "Read access successfully granted."
 
 msgid "Realm"
 msgstr "Realm"
@@ -2132,6 +2277,24 @@ msgstr "Restore default template"
 msgid "Restore last backup"
 msgstr "Restore last backup"
 
+msgid "Restricted"
+msgstr "Restricted"
+
+msgid ""
+"Restricted administrators have read-only permissions by default. This "
+"privileges can be fine-tuned in <i>List of Administrator access privileges</"
+"i> subsection. <br><br><b>Global/Brand</b> restricted administrators have no "
+"web access and can only be used for API integrations. <br><br><b>Client</b> "
+"restricted administrators can be used both for API integrations and limited "
+"web access."
+msgstr ""
+"Restricted administrators have read-only permissions by default. This "
+"privileges can be fine-tuned in <i>List of Administrator access privileges</"
+"i> subsection. <br><br><b>Global/Brand</b> restricted administrators have no "
+"web access and can only be used for API integrations. <br><br><b>Client</b> "
+"restricted administrators can be used both for API integrations and limited "
+"web access."
+
 msgid "Results"
 msgstr "Results"
 
@@ -2157,6 +2320,13 @@ msgstr[1] "Retail admins"
 
 msgid "Retail specific"
 msgstr "Retail specific"
+
+#, python-format
+msgid "Revoke %s"
+msgstr "Revoke %s"
+
+msgid "Revoke Access"
+msgstr "Revoke Access"
 
 msgid "Ring all"
 msgstr "Ring all"
@@ -2249,9 +2419,6 @@ msgid "Schedule"
 msgid_plural "Schedules"
 msgstr[0] "Schedule"
 msgstr[1] "Schedules"
-
-msgid "Scope"
-msgstr "Scope"
 
 msgid "Screen Extension"
 msgstr "Screen Extension"
@@ -2467,13 +2634,6 @@ msgid_plural "Themes"
 msgstr[0] "Theme"
 msgstr[1] "Themes"
 
-msgid ""
-"There are already call forwards with that call type. You can't add "
-"inconditional call forward"
-msgstr ""
-"There are already call forwards with that call type. You can't add "
-"inconditional call forward"
-
 msgid "There are invoices in the same range of date."
 msgstr "There are invoices in the same range of date."
 
@@ -2497,6 +2657,9 @@ msgstr "There is already a busy call forward with that call type."
 msgid "There is already a friend with that name."
 msgstr "There is already a friend with that name."
 
+msgid "There is already a inconditional call forward with that call type."
+msgstr "There is already a inconditional call forward with that call type."
+
 msgid "There is already a noAnswer call forward with that call type."
 msgstr "There is already a no answer call forward with that call type."
 
@@ -2512,13 +2675,6 @@ msgstr "There is already a terminal with that name."
 msgid "There is already a userNotRegistered call forward with that call type."
 msgstr ""
 "There is already a user not registered call forward with that call type."
-
-msgid ""
-"There is an inconditional call forward with that call type. You can't add "
-"call forwards"
-msgstr ""
-"There is an inconditional call forward with that call type. You can't add "
-"call forwards"
 
 msgid "There was an error"
 msgstr "There was an error"
@@ -2679,6 +2835,9 @@ msgstr "Unit"
 msgid "Unreachable"
 msgstr "Unreachable"
 
+msgid "Update"
+msgstr "Update"
+
 msgid "Update CallerID?"
 msgstr "Update CallerID?"
 
@@ -2733,12 +2892,6 @@ msgstr "User configuration"
 
 msgid "Username"
 msgstr "Username"
-
-msgid "Using DTMFs"
-msgstr "Using DTMFs"
-
-msgid "Using INFO"
-msgstr "Using INFO"
 
 #, python-format
 msgid "View %s %2s"
@@ -2797,12 +2950,22 @@ msgstr "Weight"
 msgid "Welcome locution"
 msgstr "Welcome locution"
 
+msgid "When 'Yes', Users call forward settings will be followed."
+msgstr "When 'Yes', Users call forward settings will be followed."
+
 msgid ""
 "When 'Yes', calls will never generate a missed call. When 'No', missed calls "
 "will be prevented only for RingAll huntgroups if someone answers."
 msgstr ""
 "When 'Yes', calls will never generate a missed call. When 'No', missed calls "
 "will be prevented only for RingAll huntgroups if someone answers."
+
+msgid ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll queues if someone answers."
+msgstr ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll queues if someone answers."
 
 msgid "When Outbound Proxy is used, SIP Proxy must not include a port."
 msgstr "When Outbound Proxy is used, SIP Proxy must not include a port."
@@ -2845,6 +3008,12 @@ msgstr "Wholesale specific"
 
 msgid "Will be shown on page footer"
 msgstr "Will be shown on page footer"
+
+msgid "Write Access"
+msgstr "Write Access"
+
+msgid "Write access successfully granted."
+msgstr "Write access successfully granted.."
 
 msgid "Wrong mask, discarding value."
 msgstr "Wrong mask, discarding value."
@@ -2925,6 +3094,9 @@ msgstr "ignore"
 msgid "is a required field"
 msgstr "is a required field"
 
+msgid "min"
+msgstr "min"
+
 msgid "oversized"
 msgstr "oversized"
 
@@ -2934,6 +3106,9 @@ msgstr "Pending"
 msgid "ready"
 msgstr "ready"
 
+msgid "sec"
+msgstr "sec"
+
 msgid "seconds"
 msgstr "seconds"
 
@@ -2942,3 +3117,6 @@ msgstr "shared"
 
 msgid "unlimited"
 msgstr "unlimited"
+
+msgid "vPBX"
+msgstr "vPBX"

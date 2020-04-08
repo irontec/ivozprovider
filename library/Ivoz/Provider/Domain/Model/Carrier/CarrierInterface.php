@@ -65,29 +65,11 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getCalculateCost();
 
     /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
-
-    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
-
-    /**
-     * Set transformationRuleSet
-     *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
 
     /**
      * Get transformationRuleSet
@@ -97,20 +79,18 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getTransformationRuleSet();
 
     /**
-     * Set currency
-     *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
-     *
-     * @return static
-     */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null);
-
-    /**
      * Get currency
      *
      * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
      */
     public function getCurrency();
+
+    /**
+     * Get proxyTrunk
+     *
+     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     */
+    public function getProxyTrunk();
 
     /**
      * Add outgoingRouting

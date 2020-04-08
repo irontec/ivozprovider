@@ -33,16 +33,16 @@ production:
         options:
           title: _("Options")
           screens:
-            calendarPeriodsEdit_screen: true
+            calendarPeriodsEdit_screen: ${auth.acls.CalendarPeriods.update}
           dialogs:
-            calendarPeriodsDel_dialog: true
+            calendarPeriodsDel_dialog: ${auth.acls.CalendarPeriods.delete}
           default: calendarPeriodsEdit_screen
       options:
         title: _("Options")
         screens:
-          calendarPeriodsNew_screen: true
+          calendarPeriodsNew_screen: ${auth.acls.CalendarPeriods.create}
         dialogs:
-          calendarPeriodsDel_dialog: true
+          calendarPeriodsDel_dialog: ${auth.acls.CalendarPeriods.delete}
     calendarPeriodsNew_screen: &calendarPeriodsNew_screenLink
       <<: *CalendarPeriods
       controller: new

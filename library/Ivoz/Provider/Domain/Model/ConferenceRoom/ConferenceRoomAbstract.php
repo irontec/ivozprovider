@@ -183,7 +183,7 @@ abstract class ConferenceRoomAbstract
             'pinProtected' => self::getPinProtected(),
             'pinCode' => self::getPinCode(),
             'maxMembers' => self::getMaxMembers(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'companyId' => self::getCompany()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -306,7 +306,7 @@ abstract class ConferenceRoomAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 

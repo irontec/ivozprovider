@@ -82,6 +82,7 @@ class Friends extends RouteHandlerAbstract
 
         // Get friend from the endpoint.
         $friend = $this->endpointResolver->getFriendFromEndpoint($endpointName);
+        $this->agi->setVariable("__FRIENDID", $friend->getId());
 
         // Set Company/Brand/Generic Music class
         $company = $friend->getCompany();

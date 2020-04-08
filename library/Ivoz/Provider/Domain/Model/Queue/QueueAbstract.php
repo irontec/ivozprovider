@@ -76,6 +76,11 @@ abstract class QueueAbstract
     protected $weight;
 
     /**
+     * @var integer
+     */
+    protected $preventMissedCalls = 1;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -131,8 +136,9 @@ abstract class QueueAbstract
     /**
      * Constructor
      */
-    protected function __construct()
+    protected function __construct($preventMissedCalls)
     {
+        $this->setPreventMissedCalls($preventMissedCalls);
     }
 
     abstract public function getId();
@@ -203,7 +209,9 @@ abstract class QueueAbstract
     ) {
         Assertion::isInstanceOf($dto, QueueDto::class);
 
-        $self = new static();
+        $self = new static(
+            $dto->getPreventMissedCalls()
+        );
 
         $self
             ->setName($dto->getName())
@@ -259,6 +267,7 @@ abstract class QueueAbstract
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
+            ->setPreventMissedCalls($dto->getPreventMissedCalls())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setPeriodicAnnounceLocution($fkTransformer->transform($dto->getPeriodicAnnounceLocution()))
             ->setTimeoutLocution($fkTransformer->transform($dto->getTimeoutLocution()))
@@ -295,6 +304,7 @@ abstract class QueueAbstract
             ->setMemberCallTimeout(self::getMemberCallTimeout())
             ->setStrategy(self::getStrategy())
             ->setWeight(self::getWeight())
+            ->setPreventMissedCalls(self::getPreventMissedCalls())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setPeriodicAnnounceLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getPeriodicAnnounceLocution(), $depth))
             ->setTimeoutLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getTimeoutLocution(), $depth))
@@ -325,7 +335,8 @@ abstract class QueueAbstract
             'memberCallTimeout' => self::getMemberCallTimeout(),
             'strategy' => self::getStrategy(),
             'weight' => self::getWeight(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'preventMissedCalls' => self::getPreventMissedCalls(),
+            'companyId' => self::getCompany()->getId(),
             'periodicAnnounceLocutionId' => self::getPeriodicAnnounceLocution() ? self::getPeriodicAnnounceLocution()->getId() : null,
             'timeoutLocutionId' => self::getTimeoutLocution() ? self::getTimeoutLocution()->getId() : null,
             'timeoutExtensionId' => self::getTimeoutExtension() ? self::getTimeoutExtension()->getId() : null,
@@ -688,13 +699,41 @@ abstract class QueueAbstract
     }
 
     /**
+     * Set preventMissedCalls
+     *
+     * @param integer $preventMissedCalls
+     *
+     * @return static
+     */
+    protected function setPreventMissedCalls($preventMissedCalls)
+    {
+        Assertion::notNull($preventMissedCalls, 'preventMissedCalls value "%s" is null, but non null value was expected.');
+        Assertion::integerish($preventMissedCalls, 'preventMissedCalls value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($preventMissedCalls, 0, 'preventMissedCalls provided "%s" is not greater or equal than "%s".');
+
+        $this->preventMissedCalls = (int) $preventMissedCalls;
+
+        return $this;
+    }
+
+    /**
+     * Get preventMissedCalls
+     *
+     * @return integer
+     */
+    public function getPreventMissedCalls()
+    {
+        return $this->preventMissedCalls;
+    }
+
+    /**
      * Set company
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -718,7 +757,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setPeriodicAnnounceLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution = null)
+    protected function setPeriodicAnnounceLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution = null)
     {
         $this->periodicAnnounceLocution = $periodicAnnounceLocution;
 
@@ -742,7 +781,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setTimeoutLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution = null)
+    protected function setTimeoutLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution = null)
     {
         $this->timeoutLocution = $timeoutLocution;
 
@@ -766,7 +805,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setTimeoutExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension = null)
+    protected function setTimeoutExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension = null)
     {
         $this->timeoutExtension = $timeoutExtension;
 
@@ -790,7 +829,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setTimeoutVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser = null)
+    protected function setTimeoutVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser = null)
     {
         $this->timeoutVoiceMailUser = $timeoutVoiceMailUser;
 
@@ -814,7 +853,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setFullLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution = null)
+    protected function setFullLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution = null)
     {
         $this->fullLocution = $fullLocution;
 
@@ -838,7 +877,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setFullExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension = null)
+    protected function setFullExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension = null)
     {
         $this->fullExtension = $fullExtension;
 
@@ -862,7 +901,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setFullVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser = null)
+    protected function setFullVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser = null)
     {
         $this->fullVoiceMailUser = $fullVoiceMailUser;
 
@@ -886,7 +925,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null)
+    protected function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null)
     {
         $this->timeoutNumberCountry = $timeoutNumberCountry;
 
@@ -910,7 +949,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    public function setFullNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry = null)
+    protected function setFullNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry = null)
     {
         $this->fullNumberCountry = $fullNumberCountry;
 

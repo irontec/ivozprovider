@@ -12,7 +12,8 @@ Feature: Update hunt groups rel users
     """
       {
           "timeoutTime": 2,
-          "priority": 2,
+          "priority": 10,
+          "routeType": "user",
           "id": 1,
           "huntGroup": 1,
           "user": 1
@@ -21,26 +22,15 @@ Feature: Update hunt groups rel users
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
+     And the JSON should be like:
     """
      {
           "timeoutTime": 2,
-          "priority": 2,
+          "priority": 10,
+          "routeType": "user",
+          "numberValue": null,
           "id": 1,
-          "huntGroup": {
-              "name": "testHuntGroup",
-              "description": "desc",
-              "strategy": "ringAll",
-              "ringAllTimeout": 10,
-              "noAnswerTargetType": null,
-              "noAnswerNumberValue": null,
-              "preventMissedCalls": 1,
-              "id": 1,
-              "noAnswerLocution": null,
-              "noAnswerExtension": null,
-              "noAnswerVoiceMailUser": null,
-              "noAnswerNumberCountry": null
-          },
+          "huntGroup": "~",
           "user": {
               "name": "Alice",
               "lastname": "Allison",
@@ -67,6 +57,7 @@ Feature: Update hunt groups rel users
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null
-          }
+          },
+          "numberCountry": null
       }
     """

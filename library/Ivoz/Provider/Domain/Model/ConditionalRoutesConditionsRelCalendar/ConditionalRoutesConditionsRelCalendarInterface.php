@@ -15,7 +15,7 @@ interface ConditionalRoutesConditionsRelCalendarInterface extends LoggableEntity
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
      *
      * @return static
      */
@@ -24,18 +24,9 @@ interface ConditionalRoutesConditionsRelCalendarInterface extends LoggableEntity
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
      */
     public function getCondition();
-
-    /**
-     * Set calendar
-     *
-     * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar
-     *
-     * @return static
-     */
-    public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar);
 
     /**
      * Get calendar

@@ -49,18 +49,18 @@ production:
         options:
           title: _("Options")
           screens:
-            retailAccountsEdit_screen: ${auth.canSeeBrand}
-            ddisList_screen: true
-            callForwardSettingsList_screen: true
+            retailAccountsEdit_screen: $[${auth.acls.RetailAccounts.update} && ${auth.canSeeBrand}]
+            ddisList_screen: ${auth.acls.DDIs.read}
+            callForwardSettingsList_screen: ${auth.acls.CallForwardSettings.read}
           dialogs:
             retailAccountsDel_dialog: ${auth.canSeeBrand}
           default: retailAccountsEdit_screen
       options:
         title: _("Options")
         screens:
-          retailAccountsNew_screen: ${auth.canSeeBrand}
+          retailAccountsNew_screen: $[${auth.acls.RetailAccounts.create} && ${auth.canSeeBrand}]
         dialogs:
-          retailAccountsDel_dialog: ${auth.canSeeBrand}
+          retailAccountsDel_dialog: $[${auth.acls.RetailAccounts.delete} && ${auth.canSeeBrand}]
 
     retailAccountsNew_screen: &retailAccountsNew_screenLink
       <<: *RetailAccounts
@@ -76,7 +76,7 @@ production:
       forcedValues:
         <<: *forcedCompany
         <<: *forcedBrand
-        ddiIn: "no"
+        ddiIn: "yes"
       fields:
         blacklist: &retailAccounts_blacklistLink
           domain: true

@@ -16,7 +16,10 @@ Feature: Update call CSV scheduler
           "frequency": 1,
           "callDirection": "outbound",
           "email": "something@domain.net",
-          "nextExecution": "2019-12-02 09:00:00"
+          "nextExecution": "2019-12-02 09:00:00",
+          "ddi": 1,
+          "retailAccount": null,
+          "residentialDevice": null
       }
     """
     Then the response status code should be 200
@@ -34,6 +37,12 @@ Feature: Update call CSV scheduler
           "lastExecutionError": "",
           "nextExecution": "2019-12-02 09:00:00",
           "id": 2,
-          "callCsvNotificationTemplate": null
+          "callCsvNotificationTemplate": null,
+          "ddi": "~",
+          "retailAccount": null,
+          "residentialDevice": null,
+          "user": null,
+          "fax": null,
+          "friend": null
       }
     """

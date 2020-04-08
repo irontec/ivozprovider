@@ -28,7 +28,6 @@ Scenario: I create hunt groups rel users filter ring all
   When I click on close dialog button
   Then I am on "HuntGroupsList_huntGroupsRelUsersFilterRingAll" subscreen list
   When I click on "huntGroupsRelUsersFilterRingAll" last elements edit button
-  Then I compare the form data with "company/huntGroupsRelUsersFilterRingAll/new" data fixture
 
 Scenario: I can save hunt groups rel users filter ring all
   Given I can see at least one row

@@ -27,7 +27,7 @@ production:
         options:
           title: _("Options")
           screens:
-            servicesEdit_screen: true
+            servicesEdit_screen: ${auth.acls.Services.update}
           dialogs:
             servicesDel_dialog: false
           default: servicesEdit_screen

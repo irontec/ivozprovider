@@ -2,6 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\OutgoingRouting;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
@@ -19,12 +20,20 @@ class OutgoingRoutingSpec extends ObjectBehavior
      */
     protected $dto;
 
-    function let()
-    {
+    function let(
+        BrandInterface $brand
+    ) {
         $this->dto = $dto = new OutgoingRoutingDto();
 
         $dto->setPriority(1);
         $dto->setWeight(2);
+
+        $this->hydrate(
+            $dto,
+            [
+                'brand' => $brand->getWrappedObject()
+            ]
+        );
 
         $this->beConstructedThrough(
             'fromDto',

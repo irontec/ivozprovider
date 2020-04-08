@@ -25,10 +25,10 @@ production:
         options:
           title: _("Options")
           screens:
-            conditionalRoutesEdit_screen: true
-            conditionalRoutesConditionsList_screen: true
+            conditionalRoutesEdit_screen: ${auth.acls.ConditionalRoutes.update}
+            conditionalRoutesConditionsList_screen: ${auth.acls.ConditionalRoutesConditions.read}
           dialogs:
-            conditionalRoutesDel_dialog: true
+            conditionalRoutesDel_dialog: ${auth.acls.ConditionalRoutes.delete}
           default: conditionalRoutesEdit_screen
         blacklist:
           ivr: true
@@ -50,9 +50,9 @@ production:
       options:
         title: _("Options")
         screens:
-          conditionalRoutesNew_screen: true
+          conditionalRoutesNew_screen: ${auth.acls.ConditionalRoutes.create}
         dialogs:
-          conditionalRoutesDel_dialog: true
+          conditionalRoutesDel_dialog: ${auth.acls.ConditionalRoutes.delete}
 
     conditionalRoutesNew_screen: &conditionalRoutesNew_screenLink
       <<: *ConditionalRoutes

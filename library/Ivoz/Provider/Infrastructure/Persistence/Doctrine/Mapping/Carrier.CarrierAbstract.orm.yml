@@ -75,3 +75,14 @@ Ivoz\Provider\Domain\Model\Carrier\CarrierAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
+    proxyTrunk:
+      targetEntity: \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        proxyTrunkId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

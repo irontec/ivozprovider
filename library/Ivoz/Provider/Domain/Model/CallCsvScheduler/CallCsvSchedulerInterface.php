@@ -91,29 +91,11 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     public function getNextExecution();
 
     /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
-
-    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
-
-    /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
     /**
      * Get company
@@ -123,18 +105,58 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     public function getCompany();
 
     /**
-     * Set callCsvNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate | null
-     *
-     * @return static
-     */
-    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null);
-
-    /**
      * Get callCsvNotificationTemplate
      *
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getCallCsvNotificationTemplate();
+
+    /**
+     * Get ddi
+     *
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     */
+    public function getDdi();
+
+    /**
+     * Get carrier
+     *
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
+     */
+    public function getCarrier();
+
+    /**
+     * Get retailAccount
+     *
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
+     */
+    public function getRetailAccount();
+
+    /**
+     * Get residentialDevice
+     *
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
+     */
+    public function getResidentialDevice();
+
+    /**
+     * Get user
+     *
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     */
+    public function getUser();
+
+    /**
+     * Get fax
+     *
+     * @return \Ivoz\Provider\Domain\Model\Fax\FaxInterface | null
+     */
+    public function getFax();
+
+    /**
+     * Get friend
+     *
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
+     */
+    public function getFriend();
 }

@@ -11,3 +11,5 @@ Sections in this group list read-only handy information for brand operators:
     ddis
     retail_accounts
     residential_devices
+    users
+    ipfilter_blocked_addresses

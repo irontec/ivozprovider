@@ -58,6 +58,13 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupAbstract:
         default: 1
         unsigned: true
       column: preventMissedCalls
+    allowCallForwards:
+      type: integer
+      nullable: false
+      options:
+        default: 0
+        unsigned: true
+      column: allowCallForwards
   manyToOne:
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface

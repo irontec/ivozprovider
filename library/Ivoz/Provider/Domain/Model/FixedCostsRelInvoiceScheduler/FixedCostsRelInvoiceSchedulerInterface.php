@@ -20,15 +20,6 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
     public function getQuantity();
 
     /**
-     * Set fixedCost
-     *
-     * @param \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost
-     *
-     * @return static
-     */
-    public function setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost);
-
-    /**
      * Get fixedCost
      *
      * @return \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface
@@ -38,7 +29,7 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
     /**
      * Set invoiceScheduler
      *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $invoiceScheduler
+     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $invoiceScheduler | null
      *
      * @return static
      */
@@ -47,7 +38,7 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
     /**
      * Get invoiceScheduler
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
      */
     public function getInvoiceScheduler();
 }

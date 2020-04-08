@@ -208,7 +208,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier);
 
     /**
      * Get carrier

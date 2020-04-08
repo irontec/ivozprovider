@@ -18,4 +18,16 @@ interface AdministratorRepository extends ObjectRepository, Selectable
      * @return null| AdministratorInterface
      */
     public function findPlatformAdminByUsername(string $username);
+
+    /**
+     * @param string $username
+     * @return null| AdministratorInterface
+     */
+    public function findBrandAdminByUsername(string $username);
+
+    /**
+     * @param string $username
+     * @return null| AdministratorInterface
+     */
+    public function findClientAdminByUsername(string $username);
 }

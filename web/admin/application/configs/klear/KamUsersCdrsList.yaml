@@ -10,7 +10,7 @@ production:
   screens: &kamUsersCdrs_screensLink
     kamUsersCdrsList_screen: &kamUsersCdrsList_screenLink
       controller: list
-      rawCondition: "UsersCdr.hidden = 0"
+      rawCondition: "UsersCdr.hidden = 0 AND UsersCdr.startTime >= DATESUB(CURRENT_DATE(), 1, 'YEAR')"
       order:
         field:
           - UsersCdr.startTime desc

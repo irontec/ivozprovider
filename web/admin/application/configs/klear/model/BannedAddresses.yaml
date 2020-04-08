@@ -1,0 +1,59 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress
+  fields:
+    brand:
+      title: ngettext('Brand', 'Brands', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Brand.name: asc
+    company:
+      title: ngettext('Client', 'Clients', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+    ip:
+      title: _('IP address')
+      type: text
+      trim: both
+    blocker:
+      title: _('Blocker')
+      type: text
+      trim: both
+    description:
+      title: _('Description')
+      type: text
+      trim: both
+    lastTimeBanned:
+      title: _('Last time banned')
+      type: picker
+      defaultValue: 2000-01-01 00:00:00
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

@@ -2,8 +2,20 @@
 
 namespace Ivoz\Provider\Domain\Model\SpecialNumber;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+
 class SpecialNumberDto extends SpecialNumberDtoAbstract
 {
+    /**
+     * @var string
+     * @AttributeDefinition(
+     *     type="bool",
+     *     writable=false,
+     *     description="Global Special Number"
+     * )
+     */
+    protected $global;
+
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -17,8 +29,27 @@ class SpecialNumberDto extends SpecialNumberDtoAbstract
             $response = parent::getPropertyMap($context, $role);
         }
 
+        if ($role === 'ROLE_BRAND_ADMIN') {
+            $response['global'] = 'global';
+        }
+
         unset($response['brandId']);
         unset($response['numberE164']);
+
+        return $response;
+    }
+
+    public function normalize(string $context, string $role = '')
+    {
+        $response = parent::normalize(...func_get_args());
+
+        $isBrandAdmin = $role === 'ROLE_BRAND_ADMIN';
+
+        if ($isBrandAdmin) {
+            $response['global'] = $this->getBrandId()
+                ? false
+                : true;
+        }
 
         return $response;
     }

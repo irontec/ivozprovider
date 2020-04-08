@@ -117,15 +117,6 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getFromDomain();
 
     /**
-     * Set lcrGateway
-     *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway
-     *
-     * @return static
-     */
-    public function setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway = null);
-
-    /**
      * Get lcrGateway
      *
      * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
@@ -139,7 +130,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier);
 
     /**
      * Get carrier
@@ -147,15 +138,6 @@ interface CarrierServerInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
     public function getCarrier();
-
-    /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
     /**
      * Get brand

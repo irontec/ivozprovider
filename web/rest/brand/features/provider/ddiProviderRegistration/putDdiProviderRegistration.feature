@@ -29,22 +29,23 @@ Feature: Update ddi provider registrations
      And the JSON should be equal to:
     """
       {
-          "username": "UpdatedDDIRegistrationUsername",
-          "domain": "UpdatedDDIRegistrationDomain",
-          "realm": "UpdatedDDIRegistrationRealm",
-          "authUsername": "UpdatedDDIRegistrationAuthUsername",
-          "authPassword": "UpdatedDDIRegistrationAuthPassword",
-          "authProxy": "sip:UpdatedDDIRegistrationAuthProxy",
-          "expires": 3600,
-          "multiDdi": true,
-          "contactUsername": "",
-          "id": 1,
-          "ddiProvider": {
-              "description": "DDIProviderDescription",
-              "name": "DDIProviderName",
-              "externallyRated": false,
-              "id": 1,
-              "transformationRuleSet": 1
-          }
-      }
+            "username": "UpdatedDDIRegistrationUsername",
+            "domain": "UpdatedDDIRegistrationDomain",
+            "realm": "UpdatedDDIRegistrationRealm",
+            "authUsername": "UpdatedDDIRegistrationAuthUsername",
+            "authPassword": "UpdatedDDIRegistrationAuthPassword",
+            "authProxy": "sip:UpdatedDDIRegistrationAuthProxy",
+            "expires": 3600,
+            "multiDdi": true,
+            "contactUsername": "",
+            "id": 1,
+            "ddiProvider": {
+                "description": "DDIProviderDescription",
+                "name": "DDIProviderName",
+                "externallyRated": false,
+                "id": 1,
+                "transformationRuleSet": 1,
+                "proxyTrunk": 1
+            }
+        }
     """

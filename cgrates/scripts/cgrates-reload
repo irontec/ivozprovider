@@ -59,7 +59,7 @@ if [ $FLUSHALL -eq 1 ]; then
     redis-cli -h $SENTINEL_MASTER -n 10 keys \* | egrep -v "^acc_" | xargs redis-cli -h $SENTINEL_MASTER -n 10 del
 fi
 
-if [ $ALLBRANDS > 0 ]; then
+if [ $ALLBRANDS -gt 0 ]; then
     BRANDS=`mysql -h data.ivozprovider.local -ukamailio -pironsecret -BN ivozprovider -e "SELECT id FROM Brands"`
 fi
 

@@ -5,8 +5,13 @@ namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 use Ivoz\Core\Domain\Service\ApiClientInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Ddi\Ddi;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
 use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 use Ivoz\Provider\Domain\Service\BillableCall\CsvExporter;
 use PhpSpec\ObjectBehavior;
@@ -38,7 +43,8 @@ class CsvExporterSpec extends ObjectBehavior
 
     function it_returns_string_response(
         ResponseInterface $response,
-        StreamInterface $responseBody
+        StreamInterface $responseBody,
+        CallCsvSchedulerInterface $scheduler
     ) {
         $company = $this->getInstance(
             Company::class
@@ -61,12 +67,13 @@ class CsvExporterSpec extends ObjectBehavior
         $outDate = new \DateTime('2015-01-01 01:01:01');
 
         $this
-            ->execute($inDate, $outDate, $company);
+            ->execute($inDate, $outDate, $company, null, $scheduler);
     }
 
     function it_adds_filter_arguments_into_the_url(
         ResponseInterface $response,
-        StreamInterface $responseBody
+        StreamInterface $responseBody,
+        CallCsvSchedulerInterface $scheduler
     ) {
         $company = $this->getInstance(
             Company::class
@@ -91,12 +98,13 @@ class CsvExporterSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
-            ->execute($inDate, $outDate, $company);
+            ->execute($inDate, $outDate, $company, null, $scheduler);
     }
 
     function it_request_csv_content_type(
         ResponseInterface $response,
-        StreamInterface $responseBody
+        StreamInterface $responseBody,
+        CallCsvSchedulerInterface $scheduler
     ) {
         $company = $this->getInstance(
             Company::class
@@ -123,12 +131,13 @@ class CsvExporterSpec extends ObjectBehavior
             )->willReturn($response);
 
         $this
-            ->execute($inDate, $outDate, $company);
+            ->execute($inDate, $outDate, $company, null, $scheduler);
     }
 
     function company_is_nullable(
         ResponseInterface $response,
-        StreamInterface $responseBody
+        StreamInterface $responseBody,
+        CallCsvSchedulerInterface $scheduler
     ) {
         $this->prepareConditions(
             $response,
@@ -139,12 +148,13 @@ class CsvExporterSpec extends ObjectBehavior
         $outDate = new \DateTime('2015-01-01 01:01:01');
 
         $this
-            ->execute($inDate, $outDate);
+            ->execute($inDate, $outDate, null, null, $scheduler);
     }
 
     function it_accepts_brand(
         ResponseInterface $response,
-        StreamInterface $responseBody
+        StreamInterface $responseBody,
+        CallCsvSchedulerInterface $scheduler
     ) {
         $brand = $this->getInstance(
             Brand::class
@@ -170,7 +180,69 @@ class CsvExporterSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
-            ->execute($inDate, $outDate, null, $brand);
+            ->execute($inDate, $outDate, null, $brand, $scheduler);
+    }
+
+    function it_sets_criteria_based_on_scheduler(
+        ResponseInterface $response,
+        StreamInterface $responseBody
+    ) {
+        $brand = $this->getInstance(
+            Brand::class
+        );
+
+        $schedulerData = [
+            'callDirection' => CallCsvSchedulerInterface::CALLDIRECTION_OUTBOUND,
+            'ddi' => $this->getInstance(Ddi::class, ['id' => 1]),
+            'carrier' => $this->getInstance(Carrier::class, ['id' => 2]),
+            'retailAccount' => $this->getInstance(RetailAccount::class, ['id' => 3])
+        ];
+
+        $scheduler = $this->getInstance(
+            CallCsvScheduler::class,
+            $schedulerData
+        );
+
+        $this->prepareConditions(
+            $response,
+            $responseBody,
+            null,
+            $brand
+        );
+
+        $inDate = new \DateTime('2010-01-01 01:01:01');
+        $outDate = new \DateTime('2015-01-01 01:01:01');
+
+        $this
+            ->apiClient
+            ->get(
+                Argument::that(function ($url) {
+
+                    $expectedArguments = [
+                        'direction',
+                        'ddi',
+                        'carrier',
+                        'endpointType',
+                        'endpointId'
+                    ];
+
+                    foreach ($expectedArguments as $expectedArgument) {
+                        if (!strpos($url, $expectedArgument)) {
+                            throw new \Exception(
+                                $expectedArgument . ' was expected on querystring'
+                            );
+                        }
+                    }
+
+                    return true;
+                }),
+                Argument::any()
+            )
+            ->willReturn($response)
+            ->shouldBeCalled();
+
+        $this
+            ->execute($inDate, $outDate, null, $brand, $scheduler);
     }
 
     protected function prepareConditions(
@@ -220,14 +292,12 @@ class CsvExporterSpec extends ObjectBehavior
         \DateTime $inDate,
         \DateTime $outDate,
         CompanyInterface $company = null,
-        BrandInterface $brand = null,
-        $direction = 'outbound'
+        BrandInterface $brand = null
     ) {
         $criteria = [
             'startTime[after]' => $inDate->format('Y-m-d H:i:s'),
             'startTime[strictly_before]' => $outDate->format('Y-m-d H:i:s'),
             "_pagination" => 'false',
-            'direction' => $direction
         ];
 
         if ($company) {

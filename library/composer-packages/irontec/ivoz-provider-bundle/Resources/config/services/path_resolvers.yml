@@ -1,0 +1,160 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##########################################
+  ## Brand
+  ##########################################
+  Service\StoragePathResolverCollection::Brand:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['Logo', '@Service\CommonStoragePathResolver::BrandLogo']]
+     public: true
+
+  Service\CommonStoragePathResolver::BrandLogo:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_brands.logo'
+
+  ##########################################
+  ## WebPortal
+  ##########################################
+  Service\StoragePathResolverCollection::WebPortal:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['Logo', '@Service\CommonStoragePathResolver::WebPortalLogo']]
+     public: true
+
+  Service\CommonStoragePathResolver::WebPortalLogo:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_brandurls.logo'
+
+  ##########################################
+  ## CallCsvReport
+  ##########################################
+  Service\StoragePathResolverCollection::CallCsvReport:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['Csv', '@Service\CommonStoragePathResolver::CallCsvReportCsv']]
+     public: true
+
+  Service\CommonStoragePathResolver::CallCsvReportCsv:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_call_csv_report.csv'
+
+  ##########################################
+  ## Locution
+  ##########################################
+  Service\StoragePathResolverCollection::Locution:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['OriginalFile', '@Service\CommonStoragePathResolver::LocutionOriginalFile']]
+      - [addPathResolver, ['EncodedFile', '@Service\CommonStoragePathResolver::LocutionEncodedFile']]
+     public: true
+
+  Service\CommonStoragePathResolver::LocutionOriginalFile:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_locutions.originalfile'
+      $keepExtension: true
+
+  Service\CommonStoragePathResolver::LocutionEncodedFile:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_locutions.encodedfile'
+      $keepExtension: true
+
+  ##########################################
+  ## FaxesInOut
+  ##########################################
+  Service\StoragePathResolverCollection::FaxesInOut:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['file', '@Service\CommonStoragePathResolver::FaxesInOutFile']]
+     public: true
+
+  Service\CommonStoragePathResolver::FaxesInOutFile:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_faxesinout.file'
+
+  ##########################################
+  ## Invoice
+  ##########################################
+  Service\StoragePathResolverCollection::Invoice:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['Pdf', '@Service\CommonStoragePathResolver::InvoicePdf']]
+     public: true
+
+  Service\CommonStoragePathResolver::InvoicePdf:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_invoice.pdf'
+
+  ##########################################
+  ## MusicOnHold
+  ##########################################
+
+  Service\StoragePathResolverCollection::MusicOnHold:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['OriginalFile', '@MusicOnHold\StoragePathResolver::MusicOnHoldOriginalFile']]
+      - [addPathResolver, ['EncodedFile', '@MusicOnHold\StoragePathResolver::MusicOnHoldEncodedFile']]
+     public: true
+
+  Ivoz\Provider\Application\Service\MusicOnHold\StoragePathResolver: ~
+
+  MusicOnHold\StoragePathResolver::MusicOnHoldOriginalFile:
+    class: Ivoz\Provider\Application\Service\MusicOnHold\StoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_musiconhold.originalfile'
+
+  MusicOnHold\StoragePathResolver::MusicOnHoldEncodedFile:
+    class: Ivoz\Provider\Application\Service\MusicOnHold\StoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_musiconhold.encodedfile'
+
+  ##########################################
+  ## Recording
+  ##########################################
+  Service\StoragePathResolverCollection::Recording:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['RecordedFile', '@Service\CommonStoragePathResolver::RecordingRecordedFile']]
+     public: true
+
+  Service\CommonStoragePathResolver::RecordingRecordedFile:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_recordings.recordedfile'
+      $keepExtension: true
+
+  ##########################################
+  ## DestinationRateGroup
+  ##########################################
+  Service\StoragePathResolverCollection::DestinationRateGroup:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['file', '@Service\CommonStoragePathResolver::DestinationRateGroupFile']]
+     public: true
+
+  Service\CommonStoragePathResolver::DestinationRateGroupFile:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_destination_rates.file'
+      $keepExtension: true

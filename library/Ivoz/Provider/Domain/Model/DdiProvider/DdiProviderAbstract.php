@@ -38,6 +38,11 @@ abstract class DdiProviderAbstract
      */
     protected $transformationRuleSet;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     */
+    protected $proxyTrunk;
+
 
     use ChangelogTrait;
 
@@ -127,6 +132,7 @@ abstract class DdiProviderAbstract
             ->setExternallyRated($dto->getExternallyRated())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
         ;
 
         $self->initChangelog();
@@ -150,7 +156,8 @@ abstract class DdiProviderAbstract
             ->setName($dto->getName())
             ->setExternallyRated($dto->getExternallyRated())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()));
+            ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
+            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
 
 
 
@@ -169,7 +176,8 @@ abstract class DdiProviderAbstract
             ->setName(self::getName())
             ->setExternallyRated(self::getExternallyRated())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth));
+            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
+            ->setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth));
     }
 
     /**
@@ -181,8 +189,9 @@ abstract class DdiProviderAbstract
             'description' => self::getDescription(),
             'name' => self::getName(),
             'externallyRated' => self::getExternallyRated(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
+            'brandId' => self::getBrand()->getId(),
+            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
+            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -277,7 +286,7 @@ abstract class DdiProviderAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -301,7 +310,7 @@ abstract class DdiProviderAbstract
      *
      * @return static
      */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
+    protected function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -316,6 +325,30 @@ abstract class DdiProviderAbstract
     public function getTransformationRuleSet()
     {
         return $this->transformationRuleSet;
+    }
+
+    /**
+     * Set proxyTrunk
+     *
+     * @param \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface $proxyTrunk | null
+     *
+     * @return static
+     */
+    protected function setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface $proxyTrunk = null)
+    {
+        $this->proxyTrunk = $proxyTrunk;
+
+        return $this;
+    }
+
+    /**
+     * Get proxyTrunk
+     *
+     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     */
+    public function getProxyTrunk()
+    {
+        return $this->proxyTrunk;
     }
 
     // @codeCoverageIgnoreEnd

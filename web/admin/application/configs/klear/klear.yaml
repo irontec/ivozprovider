@@ -69,6 +69,10 @@ production:
           title: ngettext('Antiflood trusted IP', 'Antiflood trusted IPs', 0)
           class: ui-silk-shield-go
           description: _("List of %s", ngettext('Trusted IP address', 'Trusted IP addresses', 0))
+        BannedAddressesList:
+          title: ngettext('Antiflood banned IP', 'Antiflood banned IPs', 0)
+          class: ui-silk-shield-delete
+          description: _("List of %s", ngettext('Banned IP address', 'Banned IP addresses', 0))
         TerminalManufacturersList:
           title: ngettext('Terminal manufacturer', 'Terminal manufacturers', 0)
           class: ui-silk-telephone-link
@@ -101,6 +105,10 @@ production:
           title: ngettext('Platform Portal', 'Platform Portals', 0)
           class: ui-silk-world-link
           description: _("List of %s", ngettext('Platform Portal', 'Platform Portals', 0))
+        ActiveCallsList:
+          title: ngettext('Active call', 'Active calls', 0)
+          description: _("List of %s", ngettext('Active call', 'Active calls', 0))
+          class: ui-silk-transmit-blue
         BillableCallsList:
           title: ngettext('External call', 'External calls', 0)
           description: _("List of %s", ngettext('External call', 'External calls', 0))
@@ -110,13 +118,13 @@ production:
           class: ui-silk-sitemap-color
           submenus:
             ProxyUsersList:
-              title: ngettext('Proxy Users', 'Proxies Users', 1)
+              title: _('Proxy Users')
               class: ui-silk-server
-              description: _("List of %s", ngettext('Proxy Users', 'Proxies Users', 0))
+              description: _("List of %s", _('Proxy Users'))
             ProxyTrunksList:
-              title: ngettext('Proxy Trunks', 'Proxies Trunks', 1)
+              title: _('Proxy Trunks')
               class: ui-silk-server
-              description: _("List of %s", ngettext('Proxy Trunks', 'Proxies Trunks', 0))
+              description: _("List of %s", _('Proxy Trunks'))
             MediaRelaySetsList:
               title: ngettext('Media relay set', 'Media relay sets', 0)
               class: ui-silk-bell-go
@@ -241,6 +249,10 @@ production:
           title: _("Calls")
           class: ui-silk-application-view-list-telephone
           submenus:
+            ActiveCallsBrandList:
+              title: ngettext('Active call', 'Active calls', 0)
+              description: _("List of %s", ngettext('Active call', 'Active calls', 0))
+              class: ui-silk-transmit-blue
             BillableCallsBrandList:
               title: ngettext('External call', 'External calls', 0)
               description: _("List of %s", ngettext('External call', 'External calls', 0))
@@ -299,6 +311,15 @@ production:
               class: ui-silk-ipod-sound
               description: _("List of %s", ngettext('Residential Device', 'Residential Devices', 0))
               showOnlyIf: ${auth.brandFeatures.residential.enabled}
+            BrandUsersList:
+              title: ngettext('User', 'Users', 0)
+              class: ui-silk-user
+              description: _("List of %s", ngettext('User', 'Users', 0))
+              showOnlyIf: ${auth.brandFeatures.vpbx.enabled}
+            IpFilterBlockedAddressesList:
+              title: ngettext('IP filter blocked address', 'IP filter blocked addresses', 0)
+              class: ui-silk-door
+              description: _("List of %s", ngettext('IP filter blocked address', 'IP filter blocked addresses', 0))
     Admin:
       title: _("Client Configuration")
       meta: "[mine:${auth.isCompanyAdmin}|company:${auth.companyId}|type:${auth.companyType}|name:${auth.companyName}]"
@@ -309,42 +330,42 @@ production:
           title: ngettext('User', 'Users', 0)
           class: ui-silk-user
           description: _("List of %s", ngettext('User', 'Users', 0))
-          showOnlyIf: ${auth.companyVPBX}
+          showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.Users.read}]
         TerminalsList:
           title: ngettext('Terminal', 'Terminals', 0)
           class: ui-silk-telephone
           description: _("List of %s", ngettext('Terminal', 'Terminals', 0))
-          showOnlyIf: ${auth.companyVPBX}
+          showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.Terminals.read}]
         ExtensionsList:
           title: ngettext('Extension', 'Extensions', 0)
           class: ui-silk-book-open
           description: _("List of %s", ngettext('Extension', 'Extensions', 0))
-          showOnlyIf: ${auth.companyVPBX}
+          showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.Extensions.read}]
         DdisList:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
           description: _("List of %s", ngettext('DDI', 'DDIs', 0))
-          showOnlyIf: ${auth.companyVPBX}
+          showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.DDIs.read}]
         ResidentialDevicesList:
           title: ngettext('Residential Device', 'Residential Devices', 0)
           class: ui-silk-ipod-sound
           description: _("List of %s", ngettext('Residential Device', 'Residential Devices', 0))
-          showOnlyIf: ${auth.companyResidential}
+          showOnlyIf: $[${auth.companyResidential} && ${auth.acls.ResidentialDevices.read}]
         RetailAccountsList:
           title: ngettext('Retail Account', 'Retail Accounts', 0)
           class: ui-silk-key
           description: _("List of %s", ngettext('Retail Account', 'Retail Accounts', 1))
-          showOnlyIf: ${auth.companyRetail}
+          showOnlyIf: $[${auth.companyRetail} && ${auth.acls.RetailAccounts.read}]
         ResidentialDdisList:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
           description: _("List of %s", ngettext('DDI', 'DDIs', 0))
-          showOnlyIf: ${auth.companyResidential}
+          showOnlyIf: $[${auth.companyResidential} && ${auth.acls.DDIs.read}]
         RetailDdisList:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
           description: _("List of %s", ngettext('DDI', 'DDIs', 0))
-          showOnlyIf: ${auth.companyRetail}
+          showOnlyIf: $[${auth.companyRetail} && ${auth.acls.DDIs.read}]
         Routing:
           title: _("Routing endpoints")
           class: ui-silk-arrow-switch
@@ -354,34 +375,37 @@ production:
               title: ngettext('IVR', 'IVRs', 0)
               class: ui-silk-chart-organisation
               description: _("List of %s", ngettext('IVR', 'IVRs', 0))
+              showOnlyIf: ${auth.acls.IVRs.read}
             HuntGroupsList:
               title: ngettext('Hunt Group', 'Hunt Groups', 0)
               class: ui-silk-group-go
               description: _("List of %s", ngettext('Hunt Group', 'Hunt Groups', 0))
+              showOnlyIf: ${auth.acls.HuntGroups.read}
             QueuesList:
               title: ngettext('Queue', 'Queues', 0)
               class: ui-silk-status-away
               description: _("List of %s", ngettext('Queue', 'Queues', 0))
-              showOnlyIf: ${auth.companyFeatures.queues.enabled}
+              showOnlyIf: $[${auth.companyFeatures.queues.enabled} && ${auth.acls.Queues.read}]
             ConditionalRoutesList:
               title: ngettext('Conditional Route', 'Conditional Routes', 0)
               class: ui-silk-arrow-divide
               description: _("List of %s", ngettext('Conditional Route', 'Conditional Routes', 0))
+              showOnlyIf: ${auth.acls.ConditionalRoutes.read}
             FriendsList:
-              showOnlyIf: ${auth.companyFeatures.friends.enabled}
               title: ngettext('Friend', 'Friends', 0)
               class: ui-silk-heart
               description: _("List of %s", ngettext('Friend', 'Friends', 0))
+              showOnlyIf: $[${auth.companyFeatures.friends.enabled} && ${auth.acls.Friends.read}]
             ConferenceRoomsList:
-              showOnlyIf: ${auth.companyFeatures.conferences.enabled}
               title: ngettext('Conference room', 'Conference rooms', 0)
-              class: ui-silk-transmit-blue
+              class: ui-silk-comments
               description: _("List of %s", ngettext('Conference room', 'Conference rooms', 0))
+              showOnlyIf: $[${auth.companyFeatures.conferences.enabled} && ${auth.acls.ConferenceRooms.read}]
         ExternalCallFiltersResidentialList:
           title: ngettext('External call filter', 'External call filters', 0)
           class: ui-silk-arrow-branch
           description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
-          showOnlyIf: ${auth.companyResidential}
+          showOnlyIf: $[${auth.companyResidential} && ${auth.acls.ExternalCallFilters.read}]
         RoutingTools:
           title: _("Routing tools")
           class: ui-silk-wrench
@@ -391,22 +415,27 @@ production:
               title: ngettext('External call filter', 'External call filters', 0)
               class: ui-silk-arrow-branch
               description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
+              showOnlyIf: ${auth.acls.ExternalCallFilters.read}
             CalendarsList:
               title: ngettext('Calendar', 'Calendars', 0)
               class: ui-silk-calendar
               description: _("List of %s", ngettext('Calendar', 'Calendars', 0))
+              showOnlyIf: ${auth.acls.Calendars.read}
             SchedulesList:
               title: ngettext('Schedule', 'Schedules', 0)
               class: ui-silk-clock
               description: _("List of %s", ngettext('Schedule', 'Schedules', 0))
+              showOnlyIf: ${auth.acls.Schedules.read}
             MatchListsList:
               title: ngettext('Match List', 'Match Lists', 0)
               class: ui-silk-text-list-numbers
               description: _("List of %s", ngettext('Match List', 'Match Lists', 0))
+              showOnlyIf: ${auth.acls.MatchLists.read}
             RouteLocksList:
               title: ngettext('Route Lock', 'Route Locks', 0)
               class: ui-silk-lock
               description: _("List of %s", ngettext('Route Lock', 'Route Locks', 0))
+              showOnlyIf: ${auth.acls.RouteLocks.read}
         UserConfiguration:
           title: _("User configuration")
           class: ui-silk-group-gear
@@ -416,14 +445,17 @@ production:
               title: ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 0)
               class: ui-silk-script-lightning
               description: _("List of %s", ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 0))
+              showOnlyIf: ${auth.acls.OutgoingDDIRules.read}
             PickUpGroupsList:
               title: ngettext('Pick up group', 'Pick up groups', 0)
               class: ui-silk-group-link
               description: _("List of %s", ngettext('Pick up group', 'Pick up groups', 0))
+              showOnlyIf: ${auth.acls.PickUpGroups.read}
             CallACLList:
               title: ngettext('Call ACL', 'Call ACLs', 0)
               class: ui-silk-telephone-key
               description: _("List of %s", ngettext('Call ACL', 'Call ACLs', 0))
+              showOnlyIf: ${auth.acls.CallACL.read}
         Multimedia:
           title: _("Multimedia")
           class: ui-silk-cd
@@ -433,52 +465,61 @@ production:
               title: ngettext('Locution', 'Locutions', 0)
               class: ui-silk-sound
               description: _("List of %s", ngettext('Locution', 'Locutions', 0))
+              showOnlyIf: ${auth.acls.Locutions.read}
             MusicOnHoldList:
               title: ngettext('Music on Hold', 'Musics on Hold', 1)
               class: ui-silk-music
               description: _("List of %s", ngettext('Music on Hold', 'Musics on Hold', 1))
+              showOnlyIf: ${auth.acls.MusicOnHold.read}
         FaxesList:
-          showOnlyIf: ${auth.companyFeatures.faxes.enabled}
           title: ngettext('Fax', 'Faxes', 0)
           class: ui-silk-printer
           description: _("List of %s", ngettext('Fax', 'Faxes', 0))
+          showOnlyIf: $[${auth.companyFeatures.faxes.enabled} && ${auth.acls.Faxes.read}]
         CompanyServicesList:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))
-          showOnlyIf: ${auth.companyVPBX}
+          showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.CompanyServices.read}]
         RatingProfilesCompanyList:
           title: ngettext('Rating Profile', 'Rating Profiles', 0)
           class: ui-silk-money
           description: _("List of %s", ngettext('Rating Profile', 'Rating Profiles', 0))
-          showOnlyIf: ${auth.brandFeatures.billing.enabled}
+          showOnlyIf: $[${auth.brandFeatures.billing.enabled} && ${auth.acls.RatingProfiles.read}]
         CompanyInvoicesList:
           title: ngettext('Invoice', 'Invoices', 0)
           class: ui-silk-report
           description: _("List of %s", ngettext('Invoice', 'Invoices', 0))
-          showOnlyIf: ${auth.companyInvoices}
+          showOnlyIf: $[${auth.companyInvoices} && ${auth.acls.Invoices.read}]
         CallListsClient:
           title: _("Calls")
           class: ui-silk-application-view-list-telephone
           submenus:
+            ActiveCallsClientList:
+              title: ngettext('Active call', 'Active calls', 0)
+              description: _("List of %s", ngettext('Active call', 'Active calls', 0))
+              class: ui-silk-transmit-blue
+              showOnlyIf: ${auth.acls.BillableCalls.read}
             KamUsersCdrsList:
               title: _('Call registry')
               class: ui-silk-application-view-list-telephone
               description: _("List of %s", ngettext('Call', 'Calls', 0))
-              showOnlyIf: ${auth.companyVPBX}
+              showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.kam_users_cdrs.read}]
             BillableCallsClientList:
               title: ngettext('External call', 'External calls', 0)
               description: _("List of %s", ngettext('External call', 'External calls', 0))
               class: ui-silk-application-view-list-world
+              showOnlyIf: ${auth.acls.BillableCalls.read}
             CallCsvSchedulersList:
               title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 0)
               class: ui-silk-application-view-list-schedule
               description: _("List of %s", ngettext('Call CSV scheduler', 'Call CSV schedulers', 0))
+              showOnlyIf: ${auth.acls.CallCsvSchedulers.read}
             RecordingsList:
-              showOnlyIf: ${auth.companyFeatures.recordings.enabled}
               title: ngettext('Call recording', 'Call recordings', 0)
               class: ui-silk-application-view-list-record
               description: _("List of %s", ngettext('Recording', 'Recordings', 0))
+              showOnlyIf: $[${auth.companyFeatures.recordings.enabled} && ${auth.acls.Recordings.read}]
   footerMenu:
     footer:
       title: ''

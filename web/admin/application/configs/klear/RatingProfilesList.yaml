@@ -21,16 +21,16 @@ production:
         options:
           title: _("Options")
           screens:
-            ratingProfilesEdit_screen: true
+            ratingProfilesEdit_screen: ${auth.acls.RatingProfiles.update}
           dialogs:
-            ratingProfilesDel_dialog: true
+            ratingProfilesDel_dialog: ${auth.acls.RatingProfiles.delete}
           default: ratingProfilesEdit_screen
       options:
         title: _("Options")
         screens:
-          ratingProfilesNew_screen: true
+          ratingProfilesNew_screen: ${auth.acls.RatingProfiles.create}
         dialogs:
-          ratingProfilesDel_dialog: true
+          ratingProfilesDel_dialog: ${auth.acls.RatingProfiles.delete}
           simulateCall_dialog: true
 
     ratingProfilesNew_screen: &ratingProfilesNew_screenLink

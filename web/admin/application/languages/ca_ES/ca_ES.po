@@ -48,8 +48,17 @@ msgstr "ASR"
 msgid "Accept"
 msgstr "Accepta"
 
+msgid "Access"
+msgstr "Acceso"
+
 msgid "Access denied"
 msgstr "Accés denegat"
+
+msgid "Access privileges"
+msgstr "Control de acceso"
+
+msgid "Access successfully revoked."
+msgstr "Acceso revocado satisfactoriamente"
 
 msgid "Action"
 msgstr "Acció"
@@ -62,6 +71,14 @@ msgstr "Data d'activació"
 
 msgid "Active"
 msgstr "Actiu"
+
+msgid "Active call"
+msgid_plural "Active calls"
+msgstr[0] "Llamada en curso"
+msgstr[1] "Llamadas en curso"
+
+msgid "Active calls"
+msgstr "Llamadas en curso"
 
 msgid "Active pricing plan does not allow to call introduced phone number"
 msgstr "El pla de preus actiu no permet trucar al número desitjat"
@@ -102,17 +119,30 @@ msgstr "Afegeix patró a %2s"
 msgid "Admin"
 msgstr "Administrador"
 
+msgid "Administrator"
+msgstr "Administrador"
+
+msgid "Administrator access privilege"
+msgid_plural "Administrator access privileges"
+msgstr[0] "Control de acceso de administrador"
+msgstr[1] "Controles de acceso de administrador"
+
 msgid "Advanced Configuration"
 msgstr "Configuració avançada"
 
 msgid "Advanced Setting, read carefully"
 msgstr "Configuració avançada, llegeix amb cura"
 
+msgid "Alias"
+msgid_plural "Aliases"
+msgstr[0] "Alias"
+msgstr[1] "Aliases"
+
 msgid "All"
 msgstr "Tots"
 
-msgid "All clients"
-msgstr "Tots els clients"
+msgid "Allow Call Forwards"
+msgstr "Permet desviament de trucada"
 
 msgid "Allow Client to remove recordings"
 msgstr "Permet al client eliminar les gravacions"
@@ -152,6 +182,11 @@ msgstr "Hi ha hagut un error: comprova el format i contingut dels fitxers."
 
 msgid "Announce"
 msgstr "Anuncia"
+
+msgid "Antiflood banned IP"
+msgid_plural "Antiflood banned IPs"
+msgstr[0] "IP bloqueada antiflood"
+msgstr[1] "IPs bloqueadas antiflood"
 
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
@@ -227,6 +262,11 @@ msgstr "Balanç modificat satisfactòriament"
 msgid "Balance operations"
 msgstr "Operacions de balanç"
 
+msgid "Banned IP address"
+msgid_plural "Banned IP addresses"
+msgstr[0] "Dirección IP bloqueda"
+msgstr[1] "Direcciones IP bloqueadas"
+
 msgid "Basic Configuration"
 msgstr "Configuració bàsica"
 
@@ -250,6 +290,9 @@ msgstr "Llista negra"
 
 msgid "Block"
 msgstr "Bloquejar"
+
+msgid "Blocker"
+msgstr "Bloqueador"
 
 msgid "Body"
 msgstr "Cos"
@@ -362,9 +405,6 @@ msgstr "ID de trucada"
 msgid "Call destination"
 msgstr "Destí de trucada"
 
-msgid "Call direction"
-msgstr "Direcció de trucada"
-
 msgid "Call forward setting"
 msgid_plural "Call forward settings"
 msgstr[0] "Configuració desviament de trucada"
@@ -438,9 +478,7 @@ msgid "Cannot invoice calls from today in the future."
 msgstr "No es poden facturar trucades d'avui en el futur."
 
 msgid "Carrier"
-msgid_plural "Carriers"
-msgstr[0] "Proveïdor"
-msgstr[1] "Proveïdors"
+msgstr "Proveïdor"
 
 msgid "Carrier server"
 msgid_plural "Carrier servers"
@@ -469,10 +507,18 @@ msgid_plural "Client Portals"
 msgstr[0] "Portal del client"
 msgstr[1] "Portals de client"
 
+msgid "Client Type"
+msgid_plural "Client Types"
+msgstr[0] "Tipo de cliente"
+msgstr[1] "Tipos de cliente"
+
 msgid "Client admin"
 msgid_plural "Client admins"
 msgstr[0] "Administrador del client"
 msgstr[1] "Administradors de client"
+
+msgid "Client filters"
+msgstr "Filtros de cliente"
 
 msgid "Client's default"
 msgstr "Per defecte del client"
@@ -520,6 +566,9 @@ msgid_plural "Conference rooms"
 msgstr[0] "Sala de conferències"
 msgstr[1] "Sales de conferències"
 
+msgid "Connecting"
+msgstr "Conectando"
+
 msgid "Connection Info"
 msgstr "Informació de connexió"
 
@@ -554,6 +603,9 @@ msgstr[1] "Països"
 
 msgid "Country code"
 msgstr "Codi de País"
+
+msgid "Create"
+msgstr "Crear"
 
 msgid "Created"
 msgstr "Creat"
@@ -635,6 +687,9 @@ msgstr "Política per defecte"
 msgid "Default timezone"
 msgstr "Zona horària per defecte"
 
+msgid "Delete"
+msgstr "Borrar"
+
 #, python-format
 msgid "Delete %s"
 msgstr "Esborra %s"
@@ -711,9 +766,31 @@ msgstr "Mètode de distribució"
 msgid "Do not disturb"
 msgstr "No molestar"
 
+msgid "Do you really want to grant read access to selected entities?"
+msgstr "¿Realmente desea dar acceso de lectura a las entidades seleccionadas?"
+
+msgid "Do you really want to grant write access to selected entities?"
+msgstr ""
+"¿Realmente desea dar acceso de escritura a las entidades seleccionadas?"
+
+msgid "Do you really want to revoke access to selected entities?"
+msgstr "¿Realmente desea denegar el acceso a las entidades seleccionadas?"
+
+#, python-format
+msgid "Do you want revoke access to this %s?"
+msgstr "¿Desea denegar el acceso a %s?"
+
 #, python-format
 msgid "Do you want to delete this %s?"
 msgstr "Vols esborrar %s?"
+
+#, python-format
+msgid "Do you want to grant read access to this %s?"
+msgstr "¿Desea dar acceso de lectura a %s?"
+
+#, python-format
+msgid "Do you want to grant write access to this %s?"
+msgstr "¿Desea dar acceso de escritura a %s?"
 
 msgid "Do you want to rerate selected calls?"
 msgstr "Vols tornar a tarifar les trucades seleccionades?"
@@ -823,6 +900,12 @@ msgstr ""
 msgid "Enabled"
 msgstr "Habilitat"
 
+msgid "Enabled (SIP INFO + DTMFs)"
+msgstr "Habilitat (SIP INFO + DTMFs)"
+
+msgid "Enabled (SIP INFO)"
+msgstr "Habilitat (SIP INFO)"
+
 msgid "End date"
 msgstr "Data fi"
 
@@ -841,6 +924,11 @@ msgstr "Assegura que la previsualització és correcte abans de procedir"
 msgid "Enter number patterns in E.164 format (plus symbol must be escaped)."
 msgstr ""
 "Entra patrons de numeració en format E.164 (el símbol + cal ignorar-lo)."
+
+msgid "Entity"
+msgid_plural "Entities"
+msgstr[0] "Entidad"
+msgstr[1] "Entidades"
 
 msgid "Entry"
 msgstr "Entrada"
@@ -972,6 +1060,9 @@ msgstr[1] "Fitxers per reproduir"
 msgid "File imported"
 msgstr "Fitxer importat"
 
+msgid "File imported successfully"
+msgstr "Fitxer importat correctament"
+
 msgid "File partially imported"
 msgstr "Fitxer parcialment importat"
 
@@ -986,6 +1077,9 @@ msgstr "El filtre es fora de l'horari d'enrutament"
 
 msgid "Filtering info"
 msgstr "Informació de filtreig"
+
+msgid "Filters"
+msgstr "Filtros"
 
 msgid "Filters data"
 msgstr "Filtres de dates"
@@ -1113,6 +1207,14 @@ msgstr[1] "Números especiales Globales"
 msgid "God"
 msgstr "Déu"
 
+#, python-format
+msgid "Grant Read Only %s"
+msgstr "Dar acceso de solo lectura %s"
+
+#, python-format
+msgid "Grant Write %s"
+msgstr "Dar acceso de escritura %s"
+
 msgid "Group"
 msgstr "Grup"
 
@@ -1156,6 +1258,14 @@ msgstr[1] "Grups de salt"
 msgid "IP Address"
 msgstr "Adreça IP"
 
+msgid "IP address"
+msgstr "Adreça IP"
+
+msgid "IP filter blocked address"
+msgid_plural "IP filter blocked addresses"
+msgstr[0] "Bloqueo filtrado por IP"
+msgstr[1] "Bloqueos filtrado por IP"
+
 msgid "IP or domain name (port with ':')"
 msgstr "IP o nom de domini (port amb ':')"
 
@@ -1183,18 +1293,32 @@ msgstr[0] "Iden"
 msgstr[1] "Idens"
 
 msgid ""
-"If 'no', R-URI username will match endpoint's name. If 'yes', called number "
-"will be used instead."
-msgstr ""
-"Quan 'No', el nom d'usuari a R-URI coincidirà amb el nom del dispositiu "
-"final. 'Sí' per utilitzar el número trucat ."
-
-msgid ""
 "If no queue member answers before time this seconds, the timeout queue logic "
 "will be activated. Leave empty to disable."
 msgstr ""
 "Quan cap membre atengui a cap trucada durant aquest temps, el temps d'espera "
 "de la cua lògica serà activat. Deixar en blanc per deshabilitar."
+
+msgid ""
+"If set to 'Yes', set destination (R-URI and To) to called DDI when calling "
+"to this residential device."
+msgstr ""
+"Si activado, se utilizará el DDI llamado como destino de las llamadas a este "
+"dispositivo residencial (cabeceras R-URI y To)."
+
+msgid ""
+"If set to 'Yes', set destination (R-URI and To) to called DDI when calling "
+"to this retail account."
+msgstr ""
+"Si activado, se utilizará el DDI llamado como destino de las llamadas a esta "
+"cuenta retail (cabeceras R-URI y To)."
+
+msgid ""
+"If set to 'Yes', set destination (R-URI and To) to called DDI/number when "
+"calling to this friend."
+msgstr ""
+"Si activado, se utilizará el DDI llamado como destino de las llamadas a este "
+"friend (cabeceras R-URI y To)."
 
 msgid "Ignore"
 msgstr "Ignora"
@@ -1247,9 +1371,6 @@ msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Trucades entrants no poden ser facturats ja que el proveïdor de DDI no està "
 "facturant externament."
-
-msgid "Inbound calls"
-msgstr "Trucades entrants"
 
 msgid "Inbound configuration"
 msgstr "Configuració d'entrada"
@@ -1381,6 +1502,9 @@ msgstr "Última notificació enviada"
 msgid "Last provision date"
 msgstr "Última data de provisió"
 
+msgid "Last time banned"
+msgstr "Último bloqueo"
+
 msgid "Lastname"
 msgstr "Cognom"
 
@@ -1409,10 +1533,10 @@ msgstr ""
 
 msgid ""
 "Limits received calls when already handling this number of calls. Set 0 for "
-"disabling."
+"unlimited."
 msgstr ""
 "Limita el número de trucades entrants quan se superi. Introdueix 0 per "
-"desactivar."
+"infinit."
 
 msgid "Linear"
 msgstr "Linear"
@@ -1421,7 +1545,7 @@ msgstr "Linear"
 msgid "List %s %2s"
 msgstr "Llista %s %2s"
 
-#, python-format
+#, python-format, php-format
 msgid "List of %s"
 msgstr "Llista de %s"
 
@@ -1449,12 +1573,24 @@ msgstr "Carrega fitxer"
 msgid "Loading"
 msgstr "Carregant"
 
+msgid "Local address used in SIP signalling with this DDI Provider."
+msgstr "IP local utilizada en la señalización SIP con este proveedor de DDIs."
+
+msgid "Local address used in SIP signalling with this carrier."
+msgstr "IP local utilizada en la señalización SIP con este operador."
+
 msgid ""
 "Local legislation may enforce to announce the call recording to both "
 "parties, act responsibly"
 msgstr ""
 "La legislació aposta per anunciar l'enregistrament de la trucada per totes "
 "parts, actuant responsablement"
+
+msgid "Local socket"
+msgstr "Dirección local"
+
+msgid "Local socket cannot be empty."
+msgstr "La dirección local no puede estar vacía."
 
 msgid "Locales"
 msgstr "Configuracions locals"
@@ -1602,6 +1738,11 @@ msgid_plural "Media relay sets"
 msgstr[0] "Conjunt de retransmissors de mijtans"
 msgstr[1] "Conjunts de retransmissors de mitjans"
 
+msgid "Member"
+msgid_plural "Members"
+msgstr[0] "Membre"
+msgstr[1] "Membres"
+
 msgid "Member call seconds"
 msgstr "Segons de trucada a membre"
 
@@ -1692,6 +1833,9 @@ msgstr "Sense temps d'espera de resposta"
 
 msgid "No backup found."
 msgstr "No trobo còpia de seguretat."
+
+msgid "No calls"
+msgstr "Ninguna llamada en curso"
 
 msgid "No default template found"
 msgstr "No trobo plantilla per defecte"
@@ -1809,9 +1953,6 @@ msgstr "Intermediari de sortida"
 
 msgid "Outbound Proxy IP value is not valid."
 msgstr "Ip del  intermediari de sortida no és vàlida."
-
-msgid "Outbound calls"
-msgstr "Trucades sortint"
 
 msgid "Outbound configuration"
 msgstr "Configuració de sortida"
@@ -1937,9 +2078,6 @@ msgstr "Introdueix la durada en segons"
 msgid "Please, type a phone number"
 msgstr "Introdueix un número de telèfon"
 
-msgid "Points to"
-msgstr "Apunta a"
-
 msgid "Policy"
 msgstr "Política"
 
@@ -1992,6 +2130,9 @@ msgstr "Processant"
 msgid "Proto"
 msgstr "Protocol"
 
+msgid "Provider filters"
+msgstr "Filtros de proveedor"
+
 msgid "Providers"
 msgstr "Proveïdors"
 
@@ -2004,14 +2145,10 @@ msgid "Provisioning Info"
 msgstr "Informació aprovisionament"
 
 msgid "Proxy Trunks"
-msgid_plural "Proxies Trunks"
-msgstr[0] "Proxy Trunks"
-msgstr[1] "Proxies Trunks"
+msgstr "Proxy Trunks"
 
 msgid "Proxy Users"
-msgid_plural "Proxies Users"
-msgstr[0] "Proxy Users"
-msgstr[1] "Proxies Users"
+msgstr "Proxy Users"
 
 msgid "Pseudo-prepaid"
 msgstr "Pseudo-prepagament"
@@ -2068,6 +2205,15 @@ msgid "Rating plan"
 msgid_plural "Rating plans"
 msgstr[0] "Pla de preus"
 msgstr[1] "Plans de preus"
+
+msgid "Read"
+msgstr "Lectura"
+
+msgid "Read Only Access"
+msgstr "Acceso de solo lectura"
+
+msgid "Read access successfully granted."
+msgstr "Acceso de solo lectura oportado"
 
 msgid "Realm"
 msgstr "Regne"
@@ -2148,6 +2294,25 @@ msgstr "Restaura plantilla per defecte"
 msgid "Restore last backup"
 msgstr "Restaura última còpia de seguretat"
 
+msgid "Restricted"
+msgstr "Restringido"
+
+msgid ""
+"Restricted administrators have read-only permissions by default. This "
+"privileges can be fine-tuned in <i>List of Administrator access privileges</"
+"i> subsection. <br><br><b>Global/Brand</b> restricted administrators have no "
+"web access and can only be used for API integrations. <br><br><b>Client</b> "
+"restricted administrators can be used both for API integrations and limited "
+"web access."
+msgstr ""
+"Los administradores restringidos tienen permisos de solo lectura por "
+"defecto. Estos privilegios se pueden afinar en <i>Listado de Controles de "
+"acceso de administrador</i>. <br><br>Los administradores <b>globales/de "
+"marca</b> no tienen acceso web y solo se pueden utilizar para integraciones "
+"vía API. <br><br>Los administradores restringidos de <b>cliente</b> se "
+"pueden utilizar tanto para integraciones vía API como para acceso limitado "
+"al portal web."
+
 msgid "Results"
 msgstr "Resultats"
 
@@ -2173,6 +2338,13 @@ msgstr[1] "Retail admins"
 
 msgid "Retail specific"
 msgstr "Específic al detall"
+
+#, python-format
+msgid "Revoke %s"
+msgstr "Revocar %s"
+
+msgid "Revoke Access"
+msgstr "Revocar acceso"
 
 msgid "Ring all"
 msgstr "Trucar a tots"
@@ -2266,9 +2438,6 @@ msgid "Schedule"
 msgid_plural "Schedules"
 msgstr[0] "Schedule"
 msgstr[1] "Schedules"
-
-msgid "Scope"
-msgstr "Àmbit"
 
 msgid "Screen Extension"
 msgstr "Extensió de pantalla"
@@ -2485,13 +2654,6 @@ msgid_plural "Themes"
 msgstr[0] "Theme"
 msgstr[1] "Themes"
 
-msgid ""
-"There are already call forwards with that call type. You can't add "
-"inconditional call forward"
-msgstr ""
-"Hi ha desviaments de trucades actius. No pots afegir un desviament "
-"incondicional"
-
 msgid "There are invoices in the same range of date."
 msgstr "Hi ha factures en el mateix període."
 
@@ -2515,6 +2677,9 @@ msgstr "Ja hi ha un desviament quan estigui Ocupat actiu."
 msgid "There is already a friend with that name."
 msgstr "Ja hi ha un amic amb el mateix nom."
 
+msgid "There is already a inconditional call forward with that call type."
+msgstr "Ja hi ha un desviament incondicional actiu."
+
 msgid "There is already a noAnswer call forward with that call type."
 msgstr "Ja hi ha un desviament quan no hi hagi resposta actiu."
 
@@ -2530,12 +2695,6 @@ msgstr "Ja existeix un dispositiu amb aquest nom."
 msgid "There is already a userNotRegistered call forward with that call type."
 msgstr ""
 "Ja hi ha un desviament quan el dispositiu no estigui registrat activat."
-
-msgid ""
-"There is an inconditional call forward with that call type. You can't add "
-"call forwards"
-msgstr ""
-"Ja hi ha un desviament incondicional activat. No pots afegir més desviaments"
 
 msgid "There was an error"
 msgstr "Hi ha hagut un error"
@@ -2698,6 +2857,9 @@ msgstr "Unitat"
 msgid "Unreachable"
 msgstr "Inabastable"
 
+msgid "Update"
+msgstr "Actualizar"
+
 msgid "Update CallerID?"
 msgstr "Actualitzar ID del trucant?"
 
@@ -2758,12 +2920,6 @@ msgstr "Configuració d'usuari"
 msgid "Username"
 msgstr "Nom d'usuari"
 
-msgid "Using DTMFs"
-msgstr "Utilitzant DTMFs"
-
-msgid "Using INFO"
-msgstr "Utilitzant INFO"
-
 #, python-format
 msgid "View %s %2s"
 msgstr "Veure %s %2s"
@@ -2821,6 +2977,9 @@ msgstr "Pes"
 msgid "Welcome locution"
 msgstr "Locució de benvinguda"
 
+msgid "When 'Yes', Users call forward settings will be followed."
+msgstr "Al activarlo, los desviós de llamada serán aplicados."
+
 msgid ""
 "When 'Yes', calls will never generate a missed call. When 'No', missed calls "
 "will be prevented only for RingAll huntgroups if someone answers."
@@ -2828,6 +2987,13 @@ msgstr ""
 "'Sí' evita de forma incondicional la generació de trucades perdudes. 'No' "
 "evita les trucades perdudes nomésp els grups de salt RingAll si algú "
 "contesta."
+
+msgid ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll queues if someone answers."
+msgstr ""
+"'Sí' evita de forma incondicional la generació de trucades perdudes. 'No' "
+"evita les trucades perdudes nomésp els cues de salt RingAll si algú contesta."
 
 msgid "When Outbound Proxy is used, SIP Proxy must not include a port."
 msgstr "Quan s'utilitza Proxy de sortida, el Proxy SIP no ha d'incloure port."
@@ -2870,6 +3036,12 @@ msgstr "Específic a l'engròs"
 
 msgid "Will be shown on page footer"
 msgstr "Es mostrarà al peu de pàgina"
+
+msgid "Write Access"
+msgstr "Acceso de escritura"
+
+msgid "Write access successfully granted."
+msgstr "Acceso de escritura otorgado satisfactoriamente."
 
 msgid "Wrong mask, discarding value."
 msgstr "Màscara de xarxa invàlida, s'ignorarà el valor."
@@ -2952,6 +3124,9 @@ msgstr "ignora"
 msgid "is a required field"
 msgstr "és un camp requerit"
 
+msgid "min"
+msgstr "min"
+
 msgid "oversized"
 msgstr "sobredimensionat"
 
@@ -2961,6 +3136,9 @@ msgstr "pendent"
 msgid "ready"
 msgstr "a punt"
 
+msgid "sec"
+msgstr "seg"
+
 msgid "seconds"
 msgstr "segons"
 
@@ -2969,3 +3147,6 @@ msgstr "compartit"
 
 msgid "unlimited"
 msgstr "il·limitat"
+
+msgid "vPBX"
+msgstr "vPBX"

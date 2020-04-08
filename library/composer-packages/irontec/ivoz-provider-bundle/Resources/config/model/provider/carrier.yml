@@ -1,0 +1,28 @@
+services:
+  _defaults:
+    autowire: false
+    public: false
+
+  Ivoz\Provider\Domain\Service\Carrier\SyncBalances:
+    public: true
+    autowire: true
+
+  Ivoz\Provider\Domain\Service\Carrier\AbstractBalanceOperation:
+    abstract:  true
+    arguments:
+      $entityTools: '@Ivoz\Core\Application\Service\EntityTools'
+      $logger: '@logger'
+      $client: '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CarrierBalanceService'
+      $syncBalanceService: '@Ivoz\Provider\Domain\Service\Carrier\SyncBalances'
+      $carrierRepository: '@Ivoz\Provider\Domain\Model\Carrier\CarrierRepository'
+      $createByCarrier: '@Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCarrier'
+
+  Ivoz\Provider\Domain\Service\Carrier\IncrementBalance:
+    public: true
+    autowire: false
+    parent: Ivoz\Provider\Domain\Service\Carrier\AbstractBalanceOperation
+
+  Ivoz\Provider\Domain\Service\Carrier\DecrementBalance:
+    public: true
+    autowire: false
+    parent: Ivoz\Provider\Domain\Service\Carrier\AbstractBalanceOperation

@@ -1,0 +1,47 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+imports:
+    - { resource: "@ApiBundle/Resources/config/services.yml" }
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Service\UserProvider:
+    arguments:
+      $identifierField: 'username'
+      $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+
+  Service\AuthEndpointDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 5
+    arguments:
+      $decoratedNormalizer:
+        '@Service\AuthEndpointDecorator.inner'
+
+  Ivoz\Api\Operation\ExchangeToken:
+    arguments:
+      $userProvider: '@Service\UserProvider'
+
+  Ivoz\Api\Core\Security\DataAccessControlParser:
+    calls:
+      - [ addRepository, ['companyRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Company\\Company")']]
+      - [ addRepository, ['transformationRuleSetRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet")']]
+
+  #######################################
+  ## Controllers
+  #######################################
+  Controller\Auth\:
+    resource: '../src/Controller/Auth/*'
+    tags: ['controller.service_arguments']
+
+  Controller\My\:
+    resource: '../src/Controller/My/*'
+    tags: ['controller.service_arguments']
+
+  Controller\Provider\:
+    resource: '../src/Controller/Provider/*'
+    tags: ['controller.service_arguments']
+

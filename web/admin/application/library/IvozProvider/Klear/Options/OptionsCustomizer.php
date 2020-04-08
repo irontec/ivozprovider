@@ -1,6 +1,8 @@
 <?php
 
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use \Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
 
 class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model_Interfaces_ParentOptionCustomizer
 {
@@ -73,6 +75,13 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "mediaRelaySetsDel_dialog":
                 $show = $this->_isRemovable();
                 break;
+            case "proxyTrunksEditMain_screen":
+                $show = $this->_isMainProxyTrunks();
+                break;
+            case "proxyTrunksEdit_screen":
+            case "proxyTrunksDel_dialog":
+                $show = !$this->_isMainProxyTrunks();
+                break;
             case "domainsEdit_screen":
             case "domainsDel_dialog":
                 $show = $this->_isEditable();
@@ -136,6 +145,11 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "specialNumbersView_screen":
                 $show = !$this->_isBrandData();
                 break;
+            case "friendsPatternsList_screen":
+                $directConnectivity = $this->_parentModel->getDirectConnectivity();
+                $isNotInterPbx = $directConnectivity != FriendInterface::DIRECTCONNECTIVITY_INTERVPBX;
+                $show = $isNotInterPbx;
+                break;
             default:
                 throw new Klear_Exception_Default("Unsupported dialog " . $this->_option->getName());
                 break;
@@ -157,6 +171,12 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
     {
         $name = $this->_parentModel->getName();
         return $name != 'Default';
+    }
+
+    protected function _isMainProxyTrunks()
+    {
+        $id = $this->_parentModel->getId();
+        return $id == ProxyTrunk::MAIN_ADDRESS_ID;
     }
 
     protected function _isEditable()

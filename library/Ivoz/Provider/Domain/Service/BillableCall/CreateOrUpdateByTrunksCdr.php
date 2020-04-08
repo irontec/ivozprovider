@@ -65,6 +65,8 @@ class CreateOrUpdateByTrunksCdr
                 $trunksCdrDto->getCompanyId()
             )->setCarrierId(
                 $trunksCdrDto->getCarrierId()
+            )->setDdiProviderId(
+                $trunksCdrDto->getDdiProviderId()
             )->setCarrierName(
                 $carrierName
             )->setCallid(
@@ -73,6 +75,8 @@ class CreateOrUpdateByTrunksCdr
                 $caller
             )->setDirection(
                 $trunksCdrDto->getDirection()
+            )->setDdiId(
+                $trunksCdrDto->getDdiId()
             );
 
         $isNew = is_null($billableCall);
@@ -93,14 +97,32 @@ class CreateOrUpdateByTrunksCdr
 
         if ($trunksCdrDto->getRetailAccountId()) {
             $billableCallDto
-                ->setEndpointType('RetailAccount')
+                ->setEndpointType(BillableCallInterface::ENDPOINTTYPE_RETAILACCOUNT)
                 ->setEndpointId($trunksCdrDto->getRetailAccountId());
         }
 
         if ($trunksCdrDto->getResidentialDeviceId()) {
             $billableCallDto
-                ->setEndpointType('ResidentialDevice')
+                ->setEndpointType(BillableCallInterface::ENDPOINTTYPE_RESIDENTIALDEVICE)
                 ->setEndpointId($trunksCdrDto->getResidentialDeviceId());
+        }
+
+        if ($trunksCdrDto->getUserId()) {
+            $billableCallDto
+                ->setEndpointType(BillableCallInterface::ENDPOINTTYPE_USER)
+                ->setEndpointId($trunksCdrDto->getUserId());
+        }
+
+        if ($trunksCdrDto->getFriendId()) {
+            $billableCallDto
+                ->setEndpointType(BillableCallInterface::ENDPOINTTYPE_FRIEND)
+                ->setEndpointId($trunksCdrDto->getFriendId());
+        }
+
+        if ($trunksCdrDto->getFaxId()) {
+            $billableCallDto
+                ->setEndpointType(BillableCallInterface::ENDPOINTTYPE_FAX)
+                ->setEndpointId($trunksCdrDto->getFaxId());
         }
 
         /** @var BillableCallInterface $billableCall */

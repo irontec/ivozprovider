@@ -1,6 +1,3 @@
 parameters:
-    includes:
-        - vendor/phpstan/phpstan-beberlei-assert/extension.neon
-        - vendor/phpstan/phpstan-symfony/extension.neon
     excludes_analyse:
         - "*/vendor/*"

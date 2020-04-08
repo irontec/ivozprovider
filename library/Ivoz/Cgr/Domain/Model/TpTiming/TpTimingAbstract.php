@@ -233,7 +233,7 @@ abstract class TpTimingAbstract
             'week_days' => self::getWeekDays(),
             'time' => self::getTime(),
             'created_at' => self::getCreatedAt(),
-            'ratingPlanId' => self::getRatingPlan() ? self::getRatingPlan()->getId() : null
+            'ratingPlanId' => self::getRatingPlan()->getId()
         ];
     }
     // @codeCoverageIgnoreStart

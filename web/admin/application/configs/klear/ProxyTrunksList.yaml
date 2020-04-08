@@ -12,7 +12,7 @@ production:
       pagination:
         items: 25
       <<: *ProxyTrunks
-      title: _("List of %s %2s", ngettext('Proxy Trunks', 'Proxies Trunks', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", _('Proxy Trunks'), "[format| (%parent%)]")
       info:
         <<: *documentationLink
         href: "/doc/en/administration_portal/platform/infrastructure/proxy_trunks.html"
@@ -21,23 +21,66 @@ production:
           title: _("Options")
           screens:
             proxyTrunksEdit_screen: true
-          default: proxyTrunksEdit_screen
-    proxyTrunksEdit_screen: &proxyTrunksEdit_screenLink
+            proxyTrunksEditMain_screen: true
+          default: false
+          dialogs:
+            proxyTrunksDel_dialog: true
+      options:
+        title: _("Options")
+        screens:
+          proxyTrunksNew_screen: true
+    proxyTrunksEdit_screen:
       <<: *ProxyTrunks
       controller: edit
       class: ui-silk-pencil
+      parentOptionCustomizer:
+      - IvozProvider_Klear_Options_OptionsCustomizer
       label: false
-      title: _("Edit %s %2s", ngettext('Proxy Trunks', 'Proxies Trunks', 1), "[format| (%item%)]")
-      fixedPositions:
+      title: _("Edit %s %2s", _('Proxy Trunks'), "[format| (%item%)]")
+      fixedPositions: &proxyTrunksFixedPositionsLink
         group0:
           label: _("Basic Configuration")
           colsPerRow: 3
           fields:
             name: 1
             ip: 1
+    proxyTrunksEditMain_screen:
+      <<: *ProxyTrunks
+      controller: edit
+      class: ui-silk-pencil
+      parentOptionCustomizer:
+      - IvozProvider_Klear_Options_OptionsCustomizer
+      label: false
+      title: _("Edit %s %2s", _('Proxy Trunks'), "[format| (%item%)]")
+      fixedPositions:
+        <<: *proxyTrunksFixedPositionsLink
       fields:
         readOnly:
           name: true
+    proxyTrunksNew_screen:
+      <<: *ProxyTrunks
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", _('Proxy Trunks'), "[format| (%parent%)]")
+      shortcutOption: N
+      fixedPositions:
+        <<: *proxyTrunksFixedPositionsLink
+
+  dialogs:
+    proxyTrunksDel_dialog:
+      <<: *ProxyTrunks
+      controller: delete
+      class: ui-silk-bin
+      parentOptionCustomizer:
+      - IvozProvider_Klear_Options_OptionsCustomizer
+      labelOption: false
+      title: _("Delete %s", _('Proxy Trunks'))
+      description: _("Do you want to delete this %s?", _('Proxy Trunks'))
+      message: _("%s successfully deleted.", _('Proxy Trunks'))
+      multiItem: 1
+      labelOnList: 1
 staging:
   _extends: production
 testing:

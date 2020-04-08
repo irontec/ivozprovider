@@ -21,7 +21,7 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
         default: ''
     transport:
       type: string
-      nullable: false
+      nullable: true
       length: 25
       options:
         fixed: false

@@ -15,7 +15,7 @@ interface ConditionalRoutesConditionsRelMatchlistInterface extends LoggableEntit
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
      *
      * @return static
      */
@@ -24,18 +24,9 @@ interface ConditionalRoutesConditionsRelMatchlistInterface extends LoggableEntit
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
      */
     public function getCondition();
-
-    /**
-     * Set matchlist
-     *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist
-     *
-     * @return static
-     */
-    public function setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist);
 
     /**
      * Get matchlist

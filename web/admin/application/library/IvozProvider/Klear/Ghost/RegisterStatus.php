@@ -3,6 +3,8 @@
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocation;
 use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationDto;
+use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
@@ -97,6 +99,33 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
         );
 
         return $this->getLocationStatusIcon($terminal);
+    }
+
+    public function getOrderByUserTerminalStatus()
+    {
+        $auth = Zend_Auth::getInstance();
+        if (!$auth->hasIdentity()) {
+            throw new Klear_Exception_Default("empty auth object");
+        }
+        $currentBrandId = $auth->getIdentity()->brandId;
+
+        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
+        $sortedUserIds = $dataGateway->runNamedQuery(
+            User::class,
+            'getBrandUsersIdsOrderByTerminalExpireDate',
+            [$currentBrandId]
+        );
+
+        $priority = 1;
+        $response =  'CASE User.id ';
+        foreach ($sortedUserIds as $posibleResult) {
+            $response .= " WHEN '" . $posibleResult . "' THEN " . $priority++;
+        }
+        $response .= ' ELSE '. $priority .' END AS HIDDEN ORD';
+
+        return $response;
     }
 
     /**

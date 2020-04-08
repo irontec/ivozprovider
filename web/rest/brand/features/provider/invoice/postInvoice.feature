@@ -46,7 +46,8 @@
           },
           "invoiceTemplate": 1,
           "company": 1,
-          "numberSequence": null
+          "numberSequence": null,
+          "scheduler": null
       } 
     """
 
@@ -83,6 +84,7 @@
               "id": 1
           },
           "company": "~",
-          "numberSequence": null
+          "numberSequence": null,
+          "scheduler": null
       }
     """

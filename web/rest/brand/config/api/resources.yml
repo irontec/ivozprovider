@@ -1,0 +1,50 @@
+########################################
+## Custom models
+########################################
+
+Model\Token:
+  itemOperations: []
+  collectionOperations:
+    post_auth_token_exchange:
+      method: 'POST'
+      path: '/token/exchange'
+      route_name: 'post_auth_token_exchange'
+      swagger_context:
+        consumes:
+          - 'application/x-www-form-urlencoded'
+        produces:
+          - 'application/json'
+        tags:
+          - Auth
+        parameters:
+          - name: token
+            in: formData
+            type: string
+            required: true
+            description: 'Platform admin token'
+          - name: username
+            in: formData
+            type: string
+            required: true
+            description: 'Target brand admin user name'
+
+Model\ActiveCalls:
+  itemOperations:
+    get_my_active_calls:
+      access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+      method: 'GET'
+      path: '/my/active_calls'
+      route_name: 'get_my_active_calls'
+      parameters: []
+      swagger_context:
+        produces:
+        - 'application/json'
+        tags:
+        - My
+        parameters:
+        - name: company
+          in: query
+          type: integer
+          required: false
+          description: 'Company Id'
+  collectionOperations: []

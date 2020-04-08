@@ -40,6 +40,11 @@ trait BrandTrait
     /**
      * @var ArrayCollection
      */
+    protected $relProxyTrunks;
+
+    /**
+     * @var ArrayCollection
+     */
     protected $residentialDevices;
 
     /**
@@ -68,6 +73,7 @@ trait BrandTrait
         $this->services = new ArrayCollection();
         $this->urls = new ArrayCollection();
         $this->relFeatures = new ArrayCollection();
+        $this->relProxyTrunks = new ArrayCollection();
         $this->residentialDevices = new ArrayCollection();
         $this->musicsOnHold = new ArrayCollection();
         $this->matchLists = new ArrayCollection();
@@ -117,6 +123,14 @@ trait BrandTrait
             $self->replaceRelFeatures(
                 $fkTransformer->transformCollection(
                     $dto->getRelFeatures()
+                )
+            );
+        }
+
+        if (!is_null($dto->getRelProxyTrunks())) {
+            $self->replaceRelProxyTrunks(
+                $fkTransformer->transformCollection(
+                    $dto->getRelProxyTrunks()
                 )
             );
         }
@@ -197,6 +211,13 @@ trait BrandTrait
             $this->replaceRelFeatures(
                 $fkTransformer->transformCollection(
                     $dto->getRelFeatures()
+                )
+            );
+        }
+        if (!is_null($dto->getRelProxyTrunks())) {
+            $this->replaceRelProxyTrunks(
+                $fkTransformer->transformCollection(
+                    $dto->getRelProxyTrunks()
                 )
             );
         }
@@ -540,6 +561,78 @@ trait BrandTrait
         }
 
         return $this->relFeatures->toArray();
+    }
+
+    /**
+     * Add relProxyTrunk
+     *
+     * @param \Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface $relProxyTrunk
+     *
+     * @return static
+     */
+    public function addRelProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface $relProxyTrunk)
+    {
+        $this->relProxyTrunks->add($relProxyTrunk);
+
+        return $this;
+    }
+
+    /**
+     * Remove relProxyTrunk
+     *
+     * @param \Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface $relProxyTrunk
+     */
+    public function removeRelProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface $relProxyTrunk)
+    {
+        $this->relProxyTrunks->removeElement($relProxyTrunk);
+    }
+
+    /**
+     * Replace relProxyTrunks
+     *
+     * @param ArrayCollection $relProxyTrunks of Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface
+     * @return static
+     */
+    public function replaceRelProxyTrunks(ArrayCollection $relProxyTrunks)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($relProxyTrunks as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setBrand($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->relProxyTrunks as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->relProxyTrunks->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->relProxyTrunks->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addRelProxyTrunk($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get relProxyTrunks
+     * @param Criteria | null $criteria
+     * @return \Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface[]
+     */
+    public function getRelProxyTrunks(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->relProxyTrunks->matching($criteria)->toArray();
+        }
+
+        return $this->relProxyTrunks->toArray();
     }
 
     /**

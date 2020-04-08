@@ -1,0 +1,30 @@
+imports:
+  - { resource: "orm_target_entities.yml" }
+  - { resource: "@CoreBundle/Resources/config/doctrine.yml" }
+
+doctrine:
+  orm:
+    dql:
+      datetime_functions:
+        DATESUB: DoctrineExtensions\Query\Mysql\DateSub
+    mappings:
+      Provider:
+        type: yml
+        is_bundle: false
+        dir: '/opt/irontec/ivozprovider/library/Ivoz/Provider/Infrastructure/Persistence/Doctrine/Mapping'
+        prefix: Ivoz\Provider\Domain\Model
+      Ast:
+        type: yml
+        is_bundle: false
+        dir: '/opt/irontec/ivozprovider/library/Ivoz/Ast/Infrastructure/Persistence/Doctrine/Mapping'
+        prefix: Ivoz\Ast\Domain\Model
+      Kam:
+        type: yml
+        is_bundle: false
+        dir: '/opt/irontec/ivozprovider/library/Ivoz/Kam/Infrastructure/Persistence/Doctrine/Mapping'
+        prefix: Ivoz\Kam\Domain\Model
+      Cgr:
+        type: yml
+        is_bundle: false
+        dir: '/opt/irontec/ivozprovider/library/Ivoz/Cgr/Infrastructure/Persistence/Doctrine/Mapping'
+        prefix: Ivoz\Cgr\Domain\Model

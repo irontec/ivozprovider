@@ -29,7 +29,7 @@ production:
         options:
           title: _("Options")
           screens:
-            billableCallsView_screen: true
+            billableCallsView_screen: ${auth.acls.BillableCalls.read}
           default: billableCallsView_screen
         blacklist:
           brand: true
@@ -37,6 +37,7 @@ production:
           invoice: true
           callid: true
           carrierName: true
+          ddiProvider: true
           cost: true
           destinationName: true
           ratingPlanName: true
@@ -55,7 +56,7 @@ production:
       options: &billableCalls_optionsLink
         title: _("Options")
         commands:
-          exportBillableCallsToCsv_command: true
+          exportBillableCallsToCsv_command: ${auth.acls.BillableCalls.read}
     billableCallsView_screen:
       <<: *BillableCalls
       controller: edit
@@ -69,6 +70,7 @@ production:
           brand: true
           company: true
           carrierName: true
+          ddiProvider: true
           invoice: true
           cost: true
         order:

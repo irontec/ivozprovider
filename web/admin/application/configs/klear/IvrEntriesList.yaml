@@ -29,16 +29,16 @@ production:
         options:
           title: _("Options")
           screens:
-            ivrEntriesEdit_screen: true
+            ivrEntriesEdit_screen: ${auth.acls.IVREntries.update}
           dialogs:
-            ivrEntriesDel_dialog: true
+            ivrEntriesDel_dialog: ${auth.acls.IVREntries.delete}
           default: ivrEntriesEdit_screen
       options:
         title: _("Options")
         screens:
-          ivrEntriesNew_screen: true
+          ivrEntriesNew_screen: ${auth.acls.IVREntries.create}
         dialogs:
-          ivrEntriesDel_dialog: true
+          ivrEntriesDel_dialog: ${auth.acls.IVREntries.delete}
 
     ivrEntriesNew_screen: &ivrEntriesNew_screenLink
       <<: *IvrEntries

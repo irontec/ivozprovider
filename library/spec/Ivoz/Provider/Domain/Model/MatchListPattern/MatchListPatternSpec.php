@@ -2,6 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\MatchListPattern;
 
+use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern;
 use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternDto;
 use PhpSpec\ObjectBehavior;
@@ -17,11 +18,19 @@ class MatchListPatternSpec extends ObjectBehavior
      */
     protected $dto;
 
-    function let()
-    {
+    function let(
+        MatchListInterface $matchList
+    ) {
         $this->dto = $dto = new MatchListPatternDto();
         $dto
             ->setType('number');
+
+        $this->hydrate(
+            $dto,
+            [
+                'matchList' => $matchList->getWrappedObject(),
+            ]
+        );
 
         $this->beConstructedThrough(
             'fromDto',

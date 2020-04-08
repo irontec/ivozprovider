@@ -85,7 +85,7 @@ interface ExtensionInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
 
     /**
      * Get company
@@ -95,29 +95,11 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getCompany();
 
     /**
-     * Set ivr
-     *
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr | null
-     *
-     * @return static
-     */
-    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null);
-
-    /**
      * Get ivr
      *
      * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
      */
     public function getIvr();
-
-    /**
-     * Set huntGroup
-     *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
-     *
-     * @return static
-     */
-    public function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null);
 
     /**
      * Get huntGroup
@@ -127,29 +109,11 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getHuntGroup();
 
     /**
-     * Set conferenceRoom
-     *
-     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom | null
-     *
-     * @return static
-     */
-    public function setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom = null);
-
-    /**
      * Get conferenceRoom
      *
      * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface | null
      */
     public function getConferenceRoom();
-
-    /**
-     * Set user
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
-     *
-     * @return static
-     */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
 
     /**
      * Get user
@@ -159,15 +123,6 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getUser();
 
     /**
-     * Set queue
-     *
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue | null
-     *
-     * @return static
-     */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue = null);
-
-    /**
      * Get queue
      *
      * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface | null
@@ -175,29 +130,11 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getQueue();
 
     /**
-     * Set conditionalRoute
-     *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute | null
-     *
-     * @return static
-     */
-    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null);
-
-    /**
      * Get conditionalRoute
      *
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface | null
      */
     public function getConditionalRoute();
-
-    /**
-     * Set numberCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
-     *
-     * @return static
-     */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null);
 
     /**
      * Get numberCountry

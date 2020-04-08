@@ -17,7 +17,13 @@ Feature: Create call CSV scheduler
           "callDirection": "outbound",
           "email": "something@domain.net",
           "nextExecution": "2018-12-02 09:00:00",
-          "callCsvNotificationTemplate": null
+          "callCsvNotificationTemplate": null,
+          "ddi": 1,
+          "retailAccount": null,
+          "residentialDevice": null,
+          "user": null,
+          "fax": null,
+          "friend": null
       }
     """
     Then the response status code should be 201
@@ -35,7 +41,13 @@ Feature: Create call CSV scheduler
           "lastExecutionError": null,
           "nextExecution": "2018-12-02 09:00:00",
           "id": 3,
-          "callCsvNotificationTemplate": null
+          "callCsvNotificationTemplate": null,
+          "ddi": 1,
+          "retailAccount": null,
+          "residentialDevice": null,
+          "user": null,
+          "fax": null,
+          "friend": null
       }
     """
 
@@ -58,6 +70,12 @@ Feature: Create call CSV scheduler
           "lastExecutionError": null,
           "nextExecution": "2018-12-02 09:00:00",
           "id": 3,
-          "callCsvNotificationTemplate": null
+          "callCsvNotificationTemplate": null,
+          "ddi": "~",
+          "retailAccount": null,
+          "residentialDevice": null,
+          "user": null,
+          "fax": null,
+          "friend": null
       }
     """

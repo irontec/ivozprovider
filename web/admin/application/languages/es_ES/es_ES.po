@@ -47,8 +47,17 @@ msgstr "ASR"
 msgid "Accept"
 msgstr "Aceptar"
 
+msgid "Access"
+msgstr "Acceso"
+
 msgid "Access denied"
 msgstr "Acceso denegado"
+
+msgid "Access privileges"
+msgstr "Control de acceso"
+
+msgid "Access successfully revoked."
+msgstr "Acceso revocado satisfactoriamente"
 
 msgid "Action"
 msgstr "Acción"
@@ -61,6 +70,14 @@ msgstr "Activado desde"
 
 msgid "Active"
 msgstr "Activo"
+
+msgid "Active call"
+msgid_plural "Active calls"
+msgstr[0] "Llamada en curso"
+msgstr[1] "Llamadas en curso"
+
+msgid "Active calls"
+msgstr "Llamadas en curso"
 
 msgid "Active pricing plan does not allow to call introduced phone number"
 msgstr "El plan de precios activo no permite llamar al destino introducido"
@@ -101,17 +118,30 @@ msgstr "Añadir patrón a %2s"
 msgid "Admin"
 msgstr "Administrador"
 
+msgid "Administrator"
+msgstr "Administrador"
+
+msgid "Administrator access privilege"
+msgid_plural "Administrator access privileges"
+msgstr[0] "Control de acceso de administrador"
+msgstr[1] "Controles de acceso de administrador"
+
 msgid "Advanced Configuration"
 msgstr "Configuración Avanzada"
 
 msgid "Advanced Setting, read carefully"
 msgstr "Opciones avanzadas, leer cuidadosamente"
 
+msgid "Alias"
+msgid_plural "Aliases"
+msgstr[0] "Alias"
+msgstr[1] "Aliases"
+
 msgid "All"
 msgstr "Todos"
 
-msgid "All clients"
-msgstr "Todos los clientes"
+msgid "Allow Call Forwards"
+msgstr "Permitir desvíos de llamada"
 
 msgid "Allow Client to remove recordings"
 msgstr "Permitir al cliente eliminar grabaciones"
@@ -152,6 +182,11 @@ msgstr ""
 
 msgid "Announce"
 msgstr "Anuncio"
+
+msgid "Antiflood banned IP"
+msgid_plural "Antiflood banned IPs"
+msgstr[0] "IP bloqueada antiflood"
+msgstr[1] "IPs bloqueadas antiflood"
 
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
@@ -227,6 +262,11 @@ msgstr "Saldo modificado con éxito"
 msgid "Balance operations"
 msgstr "Operaciones de saldo"
 
+msgid "Banned IP address"
+msgid_plural "Banned IP addresses"
+msgstr[0] "Dirección IP bloqueda"
+msgstr[1] "Direcciones IP bloqueadas"
+
 msgid "Basic Configuration"
 msgstr "Configuración Básica"
 
@@ -250,6 +290,9 @@ msgstr "Listas negras"
 
 msgid "Block"
 msgstr "Bloquear"
+
+msgid "Blocker"
+msgstr "Bloqueador"
 
 msgid "Body"
 msgstr "Cuerpo"
@@ -364,9 +407,6 @@ msgstr "ID de llamada"
 msgid "Call destination"
 msgstr "Destino llamada"
 
-msgid "Call direction"
-msgstr "Dirección de llamada"
-
 msgid "Call forward setting"
 msgid_plural "Call forward settings"
 msgstr[0] "Opción de desvío"
@@ -440,9 +480,7 @@ msgid "Cannot invoice calls from today in the future."
 msgstr "No se pueden crear facturas en el dia actual o futuro."
 
 msgid "Carrier"
-msgid_plural "Carriers"
-msgstr[0] "Carrier"
-msgstr[1] "Carriers"
+msgstr "Operador"
 
 msgid "Carrier server"
 msgid_plural "Carrier servers"
@@ -471,10 +509,18 @@ msgid_plural "Client Portals"
 msgstr[0] "Portal de cliente"
 msgstr[1] "Portales de clientes"
 
+msgid "Client Type"
+msgid_plural "Client Types"
+msgstr[0] "Tipo de cliente"
+msgstr[1] "Tipos de cliente"
+
 msgid "Client admin"
 msgid_plural "Client admins"
 msgstr[0] "Administrador de cliente"
 msgstr[1] "Administradores de clientes"
+
+msgid "Client filters"
+msgstr "Filtros de cliente"
 
 msgid "Client's default"
 msgstr "Usar configuración cliente"
@@ -522,6 +568,9 @@ msgid_plural "Conference rooms"
 msgstr[0] "Sala de conferencias"
 msgstr[1] "Salas de conferencias"
 
+msgid "Connecting"
+msgstr "Conectando"
+
 msgid "Connection Info"
 msgstr "Configuración de conexión"
 
@@ -556,6 +605,9 @@ msgstr[1] "Países"
 
 msgid "Country code"
 msgstr "Código de País"
+
+msgid "Create"
+msgstr "Crear"
 
 msgid "Created"
 msgstr "Creado"
@@ -637,6 +689,9 @@ msgstr "Acción por defecto"
 msgid "Default timezone"
 msgstr "Zona horaria"
 
+msgid "Delete"
+msgstr "Borrar"
+
 #, python-format
 msgid "Delete %s"
 msgstr "Borrar %s"
@@ -713,9 +768,31 @@ msgstr "Método de distribución"
 msgid "Do not disturb"
 msgstr "No molestar"
 
+msgid "Do you really want to grant read access to selected entities?"
+msgstr "¿Realmente desea dar acceso de lectura a las entidades seleccionadas?"
+
+msgid "Do you really want to grant write access to selected entities?"
+msgstr ""
+"¿Realmente desea dar acceso de escritura a las entidades seleccionadas?"
+
+msgid "Do you really want to revoke access to selected entities?"
+msgstr "¿Realmente desea denegar el acceso a las entidades seleccionadas?"
+
+#, python-format
+msgid "Do you want revoke access to this %s?"
+msgstr "¿Desea denegar el acceso a %s?"
+
 #, python-format
 msgid "Do you want to delete this %s?"
 msgstr "¿Desea eliminar %s?"
+
+#, python-format
+msgid "Do you want to grant read access to this %s?"
+msgstr "¿Desea dar acceso de lectura a %s?"
+
+#, python-format
+msgid "Do you want to grant write access to this %s?"
+msgstr "¿Desea dar acceso de escritura a %s?"
 
 msgid "Do you want to rerate selected calls?"
 msgstr "¿Desea retarificar las llamadas seleccionadas?"
@@ -826,6 +903,12 @@ msgstr ""
 msgid "Enabled"
 msgstr "Activado"
 
+msgid "Enabled (SIP INFO + DTMFs)"
+msgstr "Activado (SIP INFO + DTMFs)"
+
+msgid "Enabled (SIP INFO)"
+msgstr "Activado (SIP INFO)"
+
 msgid "End date"
 msgstr "Fecha fin"
 
@@ -844,6 +927,11 @@ msgstr "Compruebe que la previsualización es correcta antes de continuar."
 msgid "Enter number patterns in E.164 format (plus symbol must be escaped)."
 msgstr ""
 "Introduzca patrones de números en formato E.164 (el plus hay que escaparlo)."
+
+msgid "Entity"
+msgid_plural "Entities"
+msgstr[0] "Entidad"
+msgstr[1] "Entidades"
 
 msgid "Entry"
 msgstr "Entrada"
@@ -975,6 +1063,9 @@ msgstr[1] "Ficheros convertidos"
 msgid "File imported"
 msgstr "Fichero importado"
 
+msgid "File imported successfully"
+msgstr "Fichero importado correctamente"
+
 msgid "File partially imported"
 msgstr "Fichero parcialmente importado"
 
@@ -989,6 +1080,9 @@ msgstr "Usar enrutado Fuera Horario del filtro"
 
 msgid "Filtering info"
 msgstr "Información de filtrado"
+
+msgid "Filters"
+msgstr "Filtros"
 
 msgid "Filters data"
 msgstr "Información filtrado"
@@ -1118,6 +1212,14 @@ msgstr[1] "Números especiales Globales"
 msgid "God"
 msgstr "God"
 
+#, python-format
+msgid "Grant Read Only %s"
+msgstr "Dar acceso de solo lectura %s"
+
+#, python-format
+msgid "Grant Write %s"
+msgstr "Dar acceso de escritura %s"
+
 msgid "Group"
 msgstr "Grupo"
 
@@ -1161,6 +1263,14 @@ msgstr[1] "Grupos de salto"
 msgid "IP Address"
 msgstr "Dirección IP"
 
+msgid "IP address"
+msgstr "Dirección IP"
+
+msgid "IP filter blocked address"
+msgid_plural "IP filter blocked addresses"
+msgstr[0] "Bloqueo filtrado por IP"
+msgstr[1] "Bloqueos filtrado por IP"
+
 msgid "IP or domain name (port with ':')"
 msgstr "IP o dominio (puerto con ':')"
 
@@ -1188,18 +1298,32 @@ msgstr[0] "Iden"
 msgstr[1] "Idens"
 
 msgid ""
-"If 'no', R-URI username will match endpoint's name. If 'yes', called number "
-"will be used instead."
-msgstr ""
-"Utilizar nombre de la entidad en el campo username de la R-URI (No) o "
-"utilizar el número llamado (Sí)."
-
-msgid ""
 "If no queue member answers before time this seconds, the timeout queue logic "
 "will be activated. Leave empty to disable."
 msgstr ""
 "Si ningún miembro de la cola contesta en estos segundos, se activará la "
 "lógica de no contesta. Dejar vacío para deshabilitar."
+
+msgid ""
+"If set to 'Yes', set destination (R-URI and To) to called DDI when calling "
+"to this residential device."
+msgstr ""
+"Si activado, se utilizará el DDI llamado como destino de las llamadas a este "
+"dispositivo residencial (cabeceras R-URI y To)."
+
+msgid ""
+"If set to 'Yes', set destination (R-URI and To) to called DDI when calling "
+"to this retail account."
+msgstr ""
+"Si activado, se utilizará el DDI llamado como destino de las llamadas a esta "
+"cuenta retail (cabeceras R-URI y To)."
+
+msgid ""
+"If set to 'Yes', set destination (R-URI and To) to called DDI/number when "
+"calling to this friend."
+msgstr ""
+"Si activado, se utilizará el DDI llamado como destino de las llamadas a este "
+"friend (cabeceras R-URI y To)."
 
 msgid "Ignore"
 msgstr "Ignorar"
@@ -1251,9 +1375,6 @@ msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Las llamadas entrantes solo pueden ser tarificadas en Proveedores de DDI con "
 "tarificación externa."
-
-msgid "Inbound calls"
-msgstr "Llamadas entrantes"
 
 msgid "Inbound configuration"
 msgstr "Configuración Entrante"
@@ -1386,6 +1507,9 @@ msgstr "Último envío"
 msgid "Last provision date"
 msgstr "Última provisión"
 
+msgid "Last time banned"
+msgstr "Último bloqueo"
+
 msgid "Lastname"
 msgstr "Apellido"
 
@@ -1417,10 +1541,10 @@ msgstr ""
 
 msgid ""
 "Limits received calls when already handling this number of calls. Set 0 for "
-"disabling."
+"unlimited."
 msgstr ""
 "Limita la recepción de llamadas cuando se estén gestionando este número de "
-"llamadas. 0 para desactivar."
+"llamadas. 0 para ilimitadas."
 
 msgid "Linear"
 msgstr "Secuencialmente"
@@ -1429,7 +1553,7 @@ msgstr "Secuencialmente"
 msgid "List %s %2s"
 msgstr "Listado %s %2s"
 
-#, python-format
+#, python-format, php-format
 msgid "List of %s"
 msgstr "Listado de %s"
 
@@ -1457,12 +1581,24 @@ msgstr "Cargar fichero"
 msgid "Loading"
 msgstr "Cargando"
 
+msgid "Local address used in SIP signalling with this DDI Provider."
+msgstr "IP local utilizada en la señalización SIP con este proveedor de DDIs."
+
+msgid "Local address used in SIP signalling with this carrier."
+msgstr "IP local utilizada en la señalización SIP con este operador."
+
 msgid ""
 "Local legislation may enforce to announce the call recording to both "
 "parties, act responsibly"
 msgstr ""
 "La legislación vigente obliga a avisar a los participantes antes de grabar, "
 "actúa con responsabilidad."
+
+msgid "Local socket"
+msgstr "Dirección local"
+
+msgid "Local socket cannot be empty."
+msgstr "La dirección local no puede estar vacía."
 
 msgid "Locales"
 msgstr "Localización"
@@ -1612,6 +1748,11 @@ msgid_plural "Media relay sets"
 msgstr[0] "Servidor de Media"
 msgstr[1] "Servidores de Media"
 
+msgid "Member"
+msgid_plural "Members"
+msgstr[0] "Miembro"
+msgstr[1] "Miembros"
+
 msgid "Member call seconds"
 msgstr "Duración llamada a miembro"
 
@@ -1703,6 +1844,9 @@ msgstr "Timeout no contesta"
 
 msgid "No backup found."
 msgstr "No se encontro backup."
+
+msgid "No calls"
+msgstr "Ninguna llamada en curso"
 
 msgid "No default template found"
 msgstr "No se encontró plantilla por defecto"
@@ -1820,9 +1964,6 @@ msgstr "Proxy saliente"
 
 msgid "Outbound Proxy IP value is not valid."
 msgstr "El valor de Proxy saliente no es válido."
-
-msgid "Outbound calls"
-msgstr "Llamadas salientes"
 
 msgid "Outbound configuration"
 msgstr "Configuración Saliente"
@@ -1950,9 +2091,6 @@ msgstr "Introduzca la duración en segundos"
 msgid "Please, type a phone number"
 msgstr "Introduzca un número de teléfono"
 
-msgid "Points to"
-msgstr "Apunta a"
-
 msgid "Policy"
 msgstr "Acción"
 
@@ -2005,6 +2143,9 @@ msgstr "Procesando"
 msgid "Proto"
 msgstr "Protocolo"
 
+msgid "Provider filters"
+msgstr "Filtros de proveedor"
+
 msgid "Providers"
 msgstr "Proveedores"
 
@@ -2017,14 +2158,10 @@ msgid "Provisioning Info"
 msgstr "Provisioning"
 
 msgid "Proxy Trunks"
-msgid_plural "Proxies Trunks"
-msgstr[0] "Proxy de Salida"
-msgstr[1] "Proxies de Salida"
+msgstr "Proxy de Salida"
 
 msgid "Proxy Users"
-msgid_plural "Proxies Users"
-msgstr[0] "Proxy de Usuarios"
-msgstr[1] "Proxies de Usuarios"
+msgstr "Proxy de Usuarios"
 
 msgid "Pseudo-prepaid"
 msgstr "Pseudo-prepago"
@@ -2081,6 +2218,15 @@ msgid "Rating plan"
 msgid_plural "Rating plans"
 msgstr[0] "Plan de precio"
 msgstr[1] "Planes de precios"
+
+msgid "Read"
+msgstr "Lectura"
+
+msgid "Read Only Access"
+msgstr "Acceso de solo lectura"
+
+msgid "Read access successfully granted."
+msgstr "Acceso de solo lectura oportado"
 
 msgid "Realm"
 msgstr "Realm"
@@ -2161,6 +2307,25 @@ msgstr "Restaurar plantilla por defecto"
 msgid "Restore last backup"
 msgstr "Restaurar último backup"
 
+msgid "Restricted"
+msgstr "Restringido"
+
+msgid ""
+"Restricted administrators have read-only permissions by default. This "
+"privileges can be fine-tuned in <i>List of Administrator access privileges</"
+"i> subsection. <br><br><b>Global/Brand</b> restricted administrators have no "
+"web access and can only be used for API integrations. <br><br><b>Client</b> "
+"restricted administrators can be used both for API integrations and limited "
+"web access."
+msgstr ""
+"Los administradores restringidos tienen permisos de solo lectura por "
+"defecto. Estos privilegios se pueden afinar en <i>Listado de Controles de "
+"acceso de administrador</i>. <br><br>Los administradores <b>globales/de "
+"marca</b> no tienen acceso web y solo se pueden utilizar para integraciones "
+"vía API. <br><br>Los administradores restringidos de <b>cliente</b> se "
+"pueden utilizar tanto para integraciones vía API como para acceso limitado "
+"al portal web."
+
 msgid "Results"
 msgstr "Resultados"
 
@@ -2186,6 +2351,13 @@ msgstr[1] "Administradores Retail"
 
 msgid "Retail specific"
 msgstr "Específico de retail"
+
+#, python-format
+msgid "Revoke %s"
+msgstr "Revocar %s"
+
+msgid "Revoke Access"
+msgstr "Revocar acceso"
 
 msgid "Ring all"
 msgstr "A todos"
@@ -2279,9 +2451,6 @@ msgid "Schedule"
 msgid_plural "Schedules"
 msgstr[0] "Horario"
 msgstr[1] "Horarios"
-
-msgid "Scope"
-msgstr "Ámbito"
 
 msgid "Screen Extension"
 msgstr "Extensión a mostrar"
@@ -2498,13 +2667,6 @@ msgid_plural "Themes"
 msgstr[0] "Tema"
 msgstr[1] "Temas"
 
-msgid ""
-"There are already call forwards with that call type. You can't add "
-"inconditional call forward"
-msgstr ""
-"Ya existen desvíos con ese tipo de llamada. No puedes añadir un desvío "
-"incondicional."
-
 msgid "There are invoices in the same range of date."
 msgstr "Ya existen facturas en el mismo rango de fechas."
 
@@ -2529,6 +2691,9 @@ msgstr "Ya existe un desvío si ocupado con ese tipo de llamada."
 msgid "There is already a friend with that name."
 msgstr "Ya existe un friend con ese nombre."
 
+msgid "There is already a inconditional call forward with that call type."
+msgstr "Ya existe un desvío incondicional con ese tipo de llamada."
+
 msgid "There is already a noAnswer call forward with that call type."
 msgstr "Ya existe un desvío si no contesta con ese tipo de llamada."
 
@@ -2543,13 +2708,6 @@ msgstr "Ya existe un terminal con ese nombre."
 
 msgid "There is already a userNotRegistered call forward with that call type."
 msgstr "Ya existe un desvío si usuario no registrado con ese tipo de llamada."
-
-msgid ""
-"There is an inconditional call forward with that call type. You can't add "
-"call forwards"
-msgstr ""
-"Existe un desvío incondicional con ese tipo de llamada. No puedes añadir "
-"desvíos."
 
 msgid "There was an error"
 msgstr "Ocurrió un error"
@@ -2710,6 +2868,9 @@ msgstr "Unidad"
 msgid "Unreachable"
 msgstr "Inalcanzable"
 
+msgid "Update"
+msgstr "Actualizar"
+
 msgid "Update CallerID?"
 msgstr "¿Actualización Pantalla?"
 
@@ -2770,12 +2931,6 @@ msgstr "Configuración de usuario"
 msgid "Username"
 msgstr "Nombre de usuario"
 
-msgid "Using DTMFs"
-msgstr "Empleando DTMFs"
-
-msgid "Using INFO"
-msgstr "Empleando INFO"
-
 #, python-format
 msgid "View %s %2s"
 msgstr "Ver %s %2s"
@@ -2833,6 +2988,9 @@ msgstr "Peso"
 msgid "Welcome locution"
 msgstr "Locución Bienvenida"
 
+msgid "When 'Yes', Users call forward settings will be followed."
+msgstr "Al activarlo, los desviós de llamada serán aplicados."
+
 msgid ""
 "When 'Yes', calls will never generate a missed call. When 'No', missed calls "
 "will be prevented only for RingAll huntgroups if someone answers."
@@ -2840,6 +2998,13 @@ msgstr ""
 "'Sí' evita de forma incondicional la generación de llamadas perdidas. 'No' "
 "evita las llamadas perdidas solo para grupos de salto RingAll si alguien "
 "contesta."
+
+msgid ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll queues if someone answers."
+msgstr ""
+"'Sí' evita de forma incondicional la generación de llamadas perdidas. 'No' "
+"evita las llamadas perdidas solo para colas RingAll si alguien contesta."
 
 msgid "When Outbound Proxy is used, SIP Proxy must not include a port."
 msgstr "Cuando se emplea Proxy de salida, el Proxy SIP no debe incluir puerto."
@@ -2882,6 +3047,12 @@ msgstr "Específico de Wholesale"
 
 msgid "Will be shown on page footer"
 msgstr "Se mostrará en el pie de página"
+
+msgid "Write Access"
+msgstr "Acceso de escritura"
+
+msgid "Write access successfully granted."
+msgstr "Acceso de escritura otorgado satisfactoriamente."
 
 msgid "Wrong mask, discarding value."
 msgstr "Máscara de red inválida: el valor será ignorado."
@@ -2965,6 +3136,9 @@ msgstr "ignorar"
 msgid "is a required field"
 msgstr "es un campo obligatorio"
 
+msgid "min"
+msgstr "min"
+
 msgid "oversized"
 msgstr "sobre-dimensionado"
 
@@ -2974,6 +3148,9 @@ msgstr "Pendiente"
 msgid "ready"
 msgstr "Listo"
 
+msgid "sec"
+msgstr "seg"
+
 msgid "seconds"
 msgstr "segundos"
 
@@ -2982,3 +3159,6 @@ msgstr "compartido"
 
 msgid "unlimited"
 msgstr "ilimitado"
+
+msgid "vPBX"
+msgstr "vPBX"

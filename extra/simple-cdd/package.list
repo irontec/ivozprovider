@@ -28,6 +28,7 @@ ivozprovider-profile-data
 ivozprovider-profile-portal
 ivozprovider-profile-proxy
 ivozprovider-recordings
+ivozprovider-realtime
 ivozprovider-rtpengine:#ARCH#
 ivozprovider-schema
 ivozprovider-web-admin
@@ -46,4 +47,6 @@ mysql-common:#ARCH#
 mysql-community-client:#ARCH#
 mysql-community-server:#ARCH#
 mysql-server:#ARCH#
+php-redis
+php-swoole
 zendframework

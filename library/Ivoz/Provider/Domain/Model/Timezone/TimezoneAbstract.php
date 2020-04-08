@@ -260,7 +260,7 @@ abstract class TimezoneAbstract
      *
      * @return static
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
+    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
     {
         $this->country = $country;
 
@@ -284,7 +284,7 @@ abstract class TimezoneAbstract
      *
      * @return static
      */
-    public function setLabel(Label $label)
+    protected function setLabel(Label $label)
     {
         $isEqual = $this->label && $this->label->equals($label);
         if ($isEqual) {

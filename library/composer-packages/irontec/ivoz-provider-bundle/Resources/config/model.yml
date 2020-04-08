@@ -1,0 +1,2 @@
+imports:
+  - { resource: "model/provider.yml" }

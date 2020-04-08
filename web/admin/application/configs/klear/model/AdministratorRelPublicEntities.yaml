@@ -1,0 +1,84 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity
+  fields:
+    administrator:
+      title: _('Administrator')
+      readonly: true
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Administrator\Administrator
+          fieldName:
+            fields:
+            - username
+            template: '%username%'
+    publicEntity:
+      title: _('Entity')
+      readonly: true
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity
+          filterClass: IvozProvider_Klear_Filter_PublicEntities
+          fieldName:
+            fields:
+            - name${lang}
+            template: '%name${lang}%'
+          order:
+            PublicEntity.name.${lang}: asc
+    create:
+      title: _('Create')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+    read:
+      title: _('Read')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+    update:
+      title: _('Update')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+    delete:
+      title: _('Delete')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

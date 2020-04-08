@@ -28,21 +28,15 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "": "src/",
             "DataFixtures\\": "../library/DataFixtures",
             "Ivoz\\": "../library/Ivoz"
-        },
-        "classmap": [
-            "app/AppKernel.php",
-            "app/AppCache.php"
-        ]
+        }
     },
     "autoload-dev": {
-        "files": [
-            "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
-        ],
         "psr-4": {
             "Tests\\": "./tests"
         }
@@ -63,11 +57,8 @@
         "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
         "graze/guzzle-jsonrpc": "3.2.*",
         "guzzlehttp/guzzle": "^6.3",
-        "incenteev/composer-parameter-handler": "^2.0",
-        "irontec/ivoz-api-bundle": "^2.0",
-        "irontec/ivoz-core-bundle": "^2.0",
-        "irontec/ivoz-dev-tools": "^2.0",
-        "symfony/symfony": "3.4.*"
+        "irontec/ivoz-provider-bundle": "^2.0",
+        "irontec/ivoz-dev-tools": "^3.0"
     },
     "require-dev": {
         "docteurklein/test-double-bundle": "^1.0",
@@ -75,13 +66,11 @@
         "phpunit/phpunit": "^6.0",
         "sensio/generator-bundle": "^3.0",
         "squizlabs/php_codesniffer": "3.*",
-        "symfony/phpunit-bridge": "^3.0"
+        "symfony/phpunit-bridge": "4.1.12"
     },
     "scripts": {
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-install-cmd": [
@@ -92,14 +81,13 @@
         ]
     },
     "extra": {
-        "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
         "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
-            "file": "vendor/irontec/ivoz-core-bundle/Resources/config/parameters.yml"
+            "file": "vendor/irontec/ivoz-provider-bundle/Resources/config/parameters.yml"
         },
         "branch-alias": null
     }

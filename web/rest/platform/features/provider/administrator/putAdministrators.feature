@@ -8,13 +8,14 @@ Feature: Update administrators
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/administrators/4" with body:
+      And I send a "PUT" request to "/administrators/1" with body:
     """
       {
           "username": "newUserName",
           "pass": "1234",
           "email": "modified@example.com",
           "active": false,
+          "restricted": true,
           "name": "Updated admin name",
           "lastname": "a lastname",
           "brand": null,
@@ -32,9 +33,10 @@ Feature: Update administrators
           "pass": "****",
           "email": "modified@example.com",
           "active": false,
+          "restricted": true,
           "name": "Updated admin name",
           "lastname": "a lastname",
-          "id": 4,
+          "id": 1,
           "brand": null,
           "company": null,
           "timezone": {

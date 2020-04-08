@@ -238,7 +238,7 @@ abstract class ExtensionAbstract
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
             'friendValue' => self::getFriendValue(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()->getId(),
             'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
             'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
             'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
@@ -378,7 +378,7 @@ abstract class ExtensionAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -402,7 +402,7 @@ abstract class ExtensionAbstract
      *
      * @return static
      */
-    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null)
+    protected function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null)
     {
         $this->ivr = $ivr;
 
@@ -426,7 +426,7 @@ abstract class ExtensionAbstract
      *
      * @return static
      */
-    public function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null)
+    protected function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null)
     {
         $this->huntGroup = $huntGroup;
 
@@ -450,7 +450,7 @@ abstract class ExtensionAbstract
      *
      * @return static
      */
-    public function setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom = null)
+    protected function setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom = null)
     {
         $this->conferenceRoom = $conferenceRoom;
 
@@ -474,7 +474,7 @@ abstract class ExtensionAbstract
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
+    protected function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
     {
         $this->user = $user;
 
@@ -498,7 +498,7 @@ abstract class ExtensionAbstract
      *
      * @return static
      */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue = null)
+    protected function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue = null)
     {
         $this->queue = $queue;
 
@@ -522,7 +522,7 @@ abstract class ExtensionAbstract
      *
      * @return static
      */
-    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null)
+    protected function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null)
     {
         $this->conditionalRoute = $conditionalRoute;
 
@@ -546,7 +546,7 @@ abstract class ExtensionAbstract
      *
      * @return static
      */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    protected function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
     {
         $this->numberCountry = $numberCountry;
 

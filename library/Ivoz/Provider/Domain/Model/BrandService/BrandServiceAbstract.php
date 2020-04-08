@@ -162,8 +162,8 @@ abstract class BrandServiceAbstract
     {
         return [
             'code' => self::getCode(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'serviceId' => self::getService() ? self::getService()->getId() : null
+            'brandId' => self::getBrand()->getId(),
+            'serviceId' => self::getService()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -202,7 +202,7 @@ abstract class BrandServiceAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -226,7 +226,7 @@ abstract class BrandServiceAbstract
      *
      * @return static
      */
-    public function setService(\Ivoz\Provider\Domain\Model\Service\ServiceInterface $service)
+    protected function setService(\Ivoz\Provider\Domain\Model\Service\ServiceInterface $service)
     {
         $this->service = $service;
 

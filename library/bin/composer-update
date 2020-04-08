@@ -1,8 +1,10 @@
 #!/bin/bash
 
-pushd /opt/irontec/ivozprovider/library
-    composer update $*
-popd
+if [ "$1" == "--full" ]; then
+    pushd /opt/irontec/ivozprovider/library
+        composer update $*
+    popd
+fi
 
 pushd /opt/irontec/ivozprovider/asterisk/agi
     composer update $*
@@ -21,6 +23,10 @@ pushd /opt/irontec/ivozprovider/microservices/balances
 popd
 
 pushd /opt/irontec/ivozprovider/microservices/scheduler
+    composer update $*
+popd
+
+pushd /opt/irontec/ivozprovider/microservices/realtime
     composer update $*
 popd
 

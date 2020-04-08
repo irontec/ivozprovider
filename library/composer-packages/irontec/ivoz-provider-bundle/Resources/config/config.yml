@@ -1,0 +1,6 @@
+imports:
+  - { resource: parameters.yml }
+  - { resource: security.yml }
+  - { resource: "@CoreBundle/Resources/config/config.yml" }
+  - { resource: services.yml }
+  - { resource: doctrine.yml }

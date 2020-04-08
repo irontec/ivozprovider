@@ -16,10 +16,10 @@ class CompanyLifecycleServiceCollection implements LifecycleServiceCollectionInt
         "pre_persist" =>
         [
             \Ivoz\Provider\Domain\Service\Company\SanitizeEmptyValues::class => 10,
-            \Ivoz\Provider\Domain\Service\Domain\UpdateByCompany::class => 10,
         ],
         "post_persist" =>
         [
+            \Ivoz\Provider\Domain\Service\Domain\UpdateByCompany::class => 10,
             \Ivoz\Cgr\Domain\Service\TpAccountAction\CreateByCompany::class => 20,
             \Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices::class => 30,
         ],

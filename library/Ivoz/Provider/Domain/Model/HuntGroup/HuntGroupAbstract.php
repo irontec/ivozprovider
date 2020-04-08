@@ -51,6 +51,11 @@ abstract class HuntGroupAbstract
     protected $preventMissedCalls = 1;
 
     /**
+     * @var integer
+     */
+    protected $allowCallForwards = 0;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -86,13 +91,15 @@ abstract class HuntGroupAbstract
         $description,
         $strategy,
         $ringAllTimeout,
-        $preventMissedCalls
+        $preventMissedCalls,
+        $allowCallForwards
     ) {
         $this->setName($name);
         $this->setDescription($description);
         $this->setStrategy($strategy);
         $this->setRingAllTimeout($ringAllTimeout);
         $this->setPreventMissedCalls($preventMissedCalls);
+        $this->setAllowCallForwards($allowCallForwards);
     }
 
     abstract public function getId();
@@ -168,7 +175,8 @@ abstract class HuntGroupAbstract
             $dto->getDescription(),
             $dto->getStrategy(),
             $dto->getRingAllTimeout(),
-            $dto->getPreventMissedCalls()
+            $dto->getPreventMissedCalls(),
+            $dto->getAllowCallForwards()
         );
 
         $self
@@ -205,6 +213,7 @@ abstract class HuntGroupAbstract
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
             ->setPreventMissedCalls($dto->getPreventMissedCalls())
+            ->setAllowCallForwards($dto->getAllowCallForwards())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setNoAnswerLocution($fkTransformer->transform($dto->getNoAnswerLocution()))
             ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
@@ -231,6 +240,7 @@ abstract class HuntGroupAbstract
             ->setNoAnswerTargetType(self::getNoAnswerTargetType())
             ->setNoAnswerNumberValue(self::getNoAnswerNumberValue())
             ->setPreventMissedCalls(self::getPreventMissedCalls())
+            ->setAllowCallForwards(self::getAllowCallForwards())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setNoAnswerLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getNoAnswerLocution(), $depth))
             ->setNoAnswerExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getNoAnswerExtension(), $depth))
@@ -251,7 +261,8 @@ abstract class HuntGroupAbstract
             'noAnswerTargetType' => self::getNoAnswerTargetType(),
             'noAnswerNumberValue' => self::getNoAnswerNumberValue(),
             'preventMissedCalls' => self::getPreventMissedCalls(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'allowCallForwards' => self::getAllowCallForwards(),
+            'companyId' => self::getCompany()->getId(),
             'noAnswerLocutionId' => self::getNoAnswerLocution() ? self::getNoAnswerLocution()->getId() : null,
             'noAnswerExtensionId' => self::getNoAnswerExtension() ? self::getNoAnswerExtension()->getId() : null,
             'noAnswerVoiceMailUserId' => self::getNoAnswerVoiceMailUser() ? self::getNoAnswerVoiceMailUser()->getId() : null,
@@ -464,13 +475,41 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * Set allowCallForwards
+     *
+     * @param integer $allowCallForwards
+     *
+     * @return static
+     */
+    protected function setAllowCallForwards($allowCallForwards)
+    {
+        Assertion::notNull($allowCallForwards, 'allowCallForwards value "%s" is null, but non null value was expected.');
+        Assertion::integerish($allowCallForwards, 'allowCallForwards value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($allowCallForwards, 0, 'allowCallForwards provided "%s" is not greater or equal than "%s".');
+
+        $this->allowCallForwards = (int) $allowCallForwards;
+
+        return $this;
+    }
+
+    /**
+     * Get allowCallForwards
+     *
+     * @return integer
+     */
+    public function getAllowCallForwards()
+    {
+        return $this->allowCallForwards;
+    }
+
+    /**
      * Set company
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -494,7 +533,7 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    public function setNoAnswerLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noAnswerLocution = null)
+    protected function setNoAnswerLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noAnswerLocution = null)
     {
         $this->noAnswerLocution = $noAnswerLocution;
 
@@ -518,7 +557,7 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    public function setNoAnswerExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noAnswerExtension = null)
+    protected function setNoAnswerExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noAnswerExtension = null)
     {
         $this->noAnswerExtension = $noAnswerExtension;
 
@@ -542,7 +581,7 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    public function setNoAnswerVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $noAnswerVoiceMailUser = null)
+    protected function setNoAnswerVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $noAnswerVoiceMailUser = null)
     {
         $this->noAnswerVoiceMailUser = $noAnswerVoiceMailUser;
 
@@ -566,7 +605,7 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    public function setNoAnswerNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry = null)
+    protected function setNoAnswerNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry = null)
     {
         $this->noAnswerNumberCountry = $noAnswerNumberCountry;
 

@@ -98,6 +98,22 @@ production:
     endpointId:
       title: _('Endpoint id')
       type: text
+    ddiProvider:
+      title: ngettext('DDI Provider', 'DDI Providers', 1)
+      type: select
+      required: false
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+            - name
+            template: '%name%'
+          order:
+            DdiProvider.description: asc
+        'null': _("Unassigned")
 staging:
   _extends: production
 testing:

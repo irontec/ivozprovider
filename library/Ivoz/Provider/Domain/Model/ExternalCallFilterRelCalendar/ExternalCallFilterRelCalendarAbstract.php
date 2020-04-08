@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class ExternalCallFilterRelCalendarAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+     * @var \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
      */
     protected $filter;
 
@@ -152,7 +152,7 @@ abstract class ExternalCallFilterRelCalendarAbstract
     {
         return [
             'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
-            'calendarId' => self::getCalendar() ? self::getCalendar()->getId() : null
+            'calendarId' => self::getCalendar()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class ExternalCallFilterRelCalendarAbstract
     /**
      * Set filter
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter
+     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class ExternalCallFilterRelCalendarAbstract
     /**
      * Get filter
      *
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
      */
     public function getFilter()
     {
@@ -188,7 +188,7 @@ abstract class ExternalCallFilterRelCalendarAbstract
      *
      * @return static
      */
-    public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar)
+    protected function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar)
     {
         $this->calendar = $calendar;
 

@@ -94,29 +94,11 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     public function getStatusMsg();
 
     /**
-     * Set invoiceTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate | null
-     *
-     * @return static
-     */
-    public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null);
-
-    /**
      * Get invoiceTemplate
      *
      * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface | null
      */
     public function getInvoiceTemplate();
-
-    /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
     /**
      * Get brand
@@ -126,29 +108,11 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     public function getBrand();
 
     /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
-
-    /**
      * Get company
      *
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
-
-    /**
-     * Set numberSequence
-     *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence | null
-     *
-     * @return static
-     */
-    public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null);
 
     /**
      * Get numberSequence
@@ -158,29 +122,11 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     public function getNumberSequence();
 
     /**
-     * Set scheduler
-     *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler | null
-     *
-     * @return static
-     */
-    public function setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler = null);
-
-    /**
      * Get scheduler
      *
      * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
      */
     public function getScheduler();
-
-    /**
-     * Set pdf
-     *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\Pdf $pdf
-     *
-     * @return static
-     */
-    public function setPdf(\Ivoz\Provider\Domain\Model\Invoice\Pdf $pdf);
 
     /**
      * Get pdf

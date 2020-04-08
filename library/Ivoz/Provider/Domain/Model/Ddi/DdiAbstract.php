@@ -324,8 +324,8 @@ abstract class DdiAbstract
             'routeType' => self::getRouteType(),
             'billInboundCalls' => self::getBillInboundCalls(),
             'friendValue' => self::getFriendValue(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'companyId' => self::getCompany()->getId(),
+            'brandId' => self::getBrand()->getId(),
             'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
@@ -335,7 +335,7 @@ abstract class DdiAbstract
             'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
             'faxId' => self::getFax() ? self::getFax()->getId() : null,
             'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null,
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
+            'countryId' => self::getCountry()->getId(),
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
             'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
             'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
@@ -562,7 +562,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -586,7 +586,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 
@@ -610,7 +610,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom = null)
+    protected function setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conferenceRoom = null)
     {
         $this->conferenceRoom = $conferenceRoom;
 
@@ -634,7 +634,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
+    protected function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {
         $this->language = $language;
 
@@ -658,7 +658,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue = null)
+    protected function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue = null)
     {
         $this->queue = $queue;
 
@@ -682,7 +682,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setExternalCallFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $externalCallFilter = null)
+    protected function setExternalCallFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $externalCallFilter = null)
     {
         $this->externalCallFilter = $externalCallFilter;
 
@@ -706,7 +706,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
+    protected function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
     {
         $this->user = $user;
 
@@ -730,7 +730,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null)
+    protected function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null)
     {
         $this->ivr = $ivr;
 
@@ -754,7 +754,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null)
+    protected function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null)
     {
         $this->huntGroup = $huntGroup;
 
@@ -778,7 +778,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax = null)
+    protected function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax = null)
     {
         $this->fax = $fax;
 
@@ -802,7 +802,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null)
+    protected function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null)
     {
         $this->ddiProvider = $ddiProvider;
 
@@ -826,7 +826,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country)
+    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country)
     {
         $this->country = $country;
 
@@ -874,7 +874,7 @@ abstract class DdiAbstract
      *
      * @return static
      */
-    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null)
+    protected function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null)
     {
         $this->conditionalRoute = $conditionalRoute;
 

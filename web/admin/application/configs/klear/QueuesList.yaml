@@ -25,10 +25,10 @@ production:
         options:
           title: _("Options")
           screens:
-            queuesEdit_screen: true
-            queueMembersList_screen: true
+            queuesEdit_screen: ${auth.acls.Queues.update}
+            queueMembersList_screen: ${auth.acls.QueueMembers.read}
           dialogs:
-            queuesDel_dialog: true
+            queuesDel_dialog: ${auth.acls.Queues.delete}
           default: queuesEdit_screen
         order: &Queues_orderLink
           name: true
@@ -36,6 +36,7 @@ production:
           weight: true
           memberCallTimeout: true
           memberCallRest: true
+          preventMissedCalls: true
           periodicAnnounceLocution: true
           maxWaitTime: true
           maxlen: true
@@ -54,12 +55,13 @@ production:
           fullVoiceMailUser: true
           periodicAnnounceLocution: true
           periodicAnnounceFrequency: true
+          preventMissedCalls: true
       options:
         title: _("Options")
         screens:
-          queuesNew_screen: true
+          queuesNew_screen: ${auth.acls.Queues.create}
         dialogs:
-          queuesDel_dialog: true
+          queuesDel_dialog: ${auth.acls.Queues.delete}
 
     queuesNew_screen: &queuesNew_screenLink
       <<: *Queues
@@ -97,6 +99,7 @@ production:
           fields:
             memberCallTimeout: 6
             memberCallRest: 6
+            preventMissedCalls: 6
         group4:
           label: _('Timeout configuration')
           colsPerRow: 12

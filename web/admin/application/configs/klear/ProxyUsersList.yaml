@@ -13,7 +13,7 @@ production:
         items: 25
       <<: *ProxyUsers
       class: ui-silk-text-list-bullets
-      title: _("List of %s %2s", ngettext('Proxy Users', 'Proxies Users', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", _('Proxy Users'), "[format| (%parent%)]")
       info:
         <<: *documentationLink
         href: "/doc/en/administration_portal/platform/infrastructure/proxy_users.html"
@@ -29,15 +29,15 @@ production:
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Proxy Users', 'Proxies Users', 1), "[format| (%parent%)]")
+      title: _("Add %s", _('Proxy Users'), "[format| (%parent%)]")
       shortcutOption: N
     proxyUsersEdit_screen: &proxyUsersEdit_screenLink
       <<: *ProxyUsers
       controller: edit
       class: ui-silk-pencil
       label: false
-      labelOnPostAction: _("Edit %s %2s", ngettext('Proxy Users', 'Proxies Users', 1), "[format| (%item%)]")
-      title: _("Edit %s %2s", ngettext('Proxy Users', 'Proxies Users', 1), "[format| (%item%)]")
+      labelOnPostAction: _("Edit %s %2s", _('Proxy Users'), "[format| (%item%)]")
+      title: _("Edit %s %2s", _('Proxy Users'), "[format| (%item%)]")
       fields:
         readOnly:
           name: true

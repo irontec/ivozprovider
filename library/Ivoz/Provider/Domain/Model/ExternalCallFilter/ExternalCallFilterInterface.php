@@ -128,29 +128,11 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getOutOfScheduleNumberValue();
 
     /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
-
-    /**
      * Get company
      *
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
-
-    /**
-     * Set welcomeLocution
-     *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution | null
-     *
-     * @return static
-     */
-    public function setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $welcomeLocution = null);
 
     /**
      * Get welcomeLocution
@@ -160,29 +142,11 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getWelcomeLocution();
 
     /**
-     * Set holidayLocution
-     *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $holidayLocution | null
-     *
-     * @return static
-     */
-    public function setHolidayLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $holidayLocution = null);
-
-    /**
      * Get holidayLocution
      *
      * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getHolidayLocution();
-
-    /**
-     * Set outOfScheduleLocution
-     *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $outOfScheduleLocution | null
-     *
-     * @return static
-     */
-    public function setOutOfScheduleLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $outOfScheduleLocution = null);
 
     /**
      * Get outOfScheduleLocution
@@ -192,29 +156,11 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getOutOfScheduleLocution();
 
     /**
-     * Set holidayExtension
-     *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $holidayExtension | null
-     *
-     * @return static
-     */
-    public function setHolidayExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $holidayExtension = null);
-
-    /**
      * Get holidayExtension
      *
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     public function getHolidayExtension();
-
-    /**
-     * Set outOfScheduleExtension
-     *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $outOfScheduleExtension | null
-     *
-     * @return static
-     */
-    public function setOutOfScheduleExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $outOfScheduleExtension = null);
 
     /**
      * Get outOfScheduleExtension
@@ -224,29 +170,11 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getOutOfScheduleExtension();
 
     /**
-     * Set holidayVoiceMailUser
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $holidayVoiceMailUser | null
-     *
-     * @return static
-     */
-    public function setHolidayVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $holidayVoiceMailUser = null);
-
-    /**
      * Get holidayVoiceMailUser
      *
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getHolidayVoiceMailUser();
-
-    /**
-     * Set outOfScheduleVoiceMailUser
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $outOfScheduleVoiceMailUser | null
-     *
-     * @return static
-     */
-    public function setOutOfScheduleVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $outOfScheduleVoiceMailUser = null);
 
     /**
      * Get outOfScheduleVoiceMailUser
@@ -256,29 +184,11 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getOutOfScheduleVoiceMailUser();
 
     /**
-     * Set holidayNumberCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry | null
-     *
-     * @return static
-     */
-    public function setHolidayNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry = null);
-
-    /**
      * Get holidayNumberCountry
      *
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getHolidayNumberCountry();
-
-    /**
-     * Set outOfScheduleNumberCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry | null
-     *
-     * @return static
-     */
-    public function setOutOfScheduleNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry = null);
 
     /**
      * Get outOfScheduleNumberCountry

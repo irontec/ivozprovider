@@ -3,22 +3,31 @@
 SIP domains
 -----------
 
-The section **Domains** will display the SIP domains that points to our two
-public IP addresses.
+The section **Domains** will display the SIP domains that point to :ref:`ProxyUsers` public address.
 
-- Users SIP Proxy IP address
-- Trunks SIP Proxy IP address
+.. note:: DNS register can be type A (supported by all the hardphones/softphones
+   ) or even NAPTR+SRV.
 
-After the initial installation, there will be two domains, one for each address:
+There are two type of SIP domains:
 
-- trunks.ivozprovider.local
+.. glossary::
 
-- users.ivozprovider.local
+    vPBX client SIP domain
+        Each vPBX client has a unique SIP domain.
 
-This domains will be used internally by a builtin DNS server included in the
-solution.
+    Brand SIP domain
+        Shared by all retail and residential clients in the brand.
 
-.. attention:: As mentioned in the section :ref:`domain_per_client`, each
-    client will require a DNS pointing to the users SIP proxy. Once configured,
-    the domain will be displayed in this list so global administrator can check
-    what domains are registered for each client.
+All these SIP domains will be displayed in this list so that global administrator can check
+what domains are registered for each client/brand:
+
+.. glossary::
+
+    Domain
+        DNS pointing to :ref:`ProxyUsers` public address
+
+    Brand
+        Brand of specific brand domain or vPBX client.
+
+    Client
+        vPBX client of specific vPBX client domain. Empty for brand domains.

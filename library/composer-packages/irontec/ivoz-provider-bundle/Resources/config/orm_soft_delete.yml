@@ -1,0 +1,35 @@
+parameters:
+  soft_delete:
+    Ivoz\Provider\Domain\Model\Brand\Brand:
+      - Ivoz\Provider\Domain\Model\WebPortal\WebPortal
+      - Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold
+      - Ivoz\Provider\Domain\Model\Invoice\Invoice
+      - Ivoz\Provider\Domain\Model\Company\Company
+    Ivoz\Provider\Domain\Model\Company\Company:
+      - Ivoz\Provider\Domain\Model\Locution\Locution
+      - Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold
+      - Ivoz\Provider\Domain\Model\Recording\Recording
+      - Ivoz\Provider\Domain\Model\Fax\Fax
+      - Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile
+      - Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction
+    Ivoz\Provider\Domain\Model\Carrier\Carrier:
+      - Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile
+      - Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction
+    Ivoz\Provider\Domain\Model\Fax\Fax:
+      - Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut
+    Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
+      - Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
+    Ivoz\Provider\Domain\Model\Destination\Destination:
+      - Ivoz\Cgr\Domain\Model\TpDestination\TpDestination
+    Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate:
+      - Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate
+    Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
+      - Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
+    Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan:
+      - Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan
+    Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
+      - Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile
+    Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
+      - Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier
+    Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier:
+      - Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile

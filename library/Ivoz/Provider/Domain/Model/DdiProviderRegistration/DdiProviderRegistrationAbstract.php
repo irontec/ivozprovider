@@ -59,7 +59,7 @@ abstract class DdiProviderRegistrationAbstract
     protected $contactUsername = '';
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface
+     * @var \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface | null
      */
     protected $trunksUacreg;
 
@@ -175,6 +175,7 @@ abstract class DdiProviderRegistrationAbstract
 
         $self
             ->setMultiDdi($dto->getMultiDdi())
+            ->setTrunksUacreg($fkTransformer->transform($dto->getTrunksUacreg()))
             ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
         ;
 
@@ -204,6 +205,7 @@ abstract class DdiProviderRegistrationAbstract
             ->setExpires($dto->getExpires())
             ->setMultiDdi($dto->getMultiDdi())
             ->setContactUsername($dto->getContactUsername())
+            ->setTrunksUacreg($fkTransformer->transform($dto->getTrunksUacreg()))
             ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
 
 
@@ -228,6 +230,7 @@ abstract class DdiProviderRegistrationAbstract
             ->setExpires(self::getExpires())
             ->setMultiDdi(self::getMultiDdi())
             ->setContactUsername(self::getContactUsername())
+            ->setTrunksUacreg(\Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg::entityToDto(self::getTrunksUacreg(), $depth))
             ->setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::entityToDto(self::getDdiProvider(), $depth));
     }
 
@@ -246,7 +249,8 @@ abstract class DdiProviderRegistrationAbstract
             'expires' => self::getExpires(),
             'multiDdi' => self::getMultiDdi(),
             'contactUsername' => self::getContactUsername(),
-            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
+            'trunksUacregId' => self::getTrunksUacreg() ? self::getTrunksUacreg()->getId() : null,
+            'ddiProviderId' => self::getDdiProvider()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -503,7 +507,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return static
      */
-    public function setTrunksUacreg(\Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface $trunksUacreg = null)
+    protected function setTrunksUacreg(\Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface $trunksUacreg = null)
     {
         $this->trunksUacreg = $trunksUacreg;
 
@@ -527,7 +531,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return static
      */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null)
+    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider)
     {
         $this->ddiProvider = $ddiProvider;
 

@@ -102,13 +102,11 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getPreventMissedCalls();
 
     /**
-     * Set company
+     * Get allowCallForwards
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return static
+     * @return integer
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
+    public function getAllowCallForwards();
 
     /**
      * Get company
@@ -118,29 +116,11 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getCompany();
 
     /**
-     * Set noAnswerLocution
-     *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noAnswerLocution | null
-     *
-     * @return static
-     */
-    public function setNoAnswerLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noAnswerLocution = null);
-
-    /**
      * Get noAnswerLocution
      *
      * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getNoAnswerLocution();
-
-    /**
-     * Set noAnswerExtension
-     *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noAnswerExtension | null
-     *
-     * @return static
-     */
-    public function setNoAnswerExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noAnswerExtension = null);
 
     /**
      * Get noAnswerExtension
@@ -150,29 +130,11 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getNoAnswerExtension();
 
     /**
-     * Set noAnswerVoiceMailUser
-     *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $noAnswerVoiceMailUser | null
-     *
-     * @return static
-     */
-    public function setNoAnswerVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $noAnswerVoiceMailUser = null);
-
-    /**
      * Get noAnswerVoiceMailUser
      *
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
      */
     public function getNoAnswerVoiceMailUser();
-
-    /**
-     * Set noAnswerNumberCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry | null
-     *
-     * @return static
-     */
-    public function setNoAnswerNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry = null);
 
     /**
      * Get noAnswerNumberCountry

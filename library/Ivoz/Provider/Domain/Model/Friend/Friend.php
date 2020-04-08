@@ -62,6 +62,10 @@ class Friend extends FriendAbstract implements FriendInterface
             $this->setInterCompany(null);
         }
 
+        if ($this->isDirectConnectivity() && !$this->getTransport()) {
+            throw new \DomainException('Invalid empty transport');
+        }
+
         $this->setDomain(
             $this
                 ->getCompany()
@@ -75,6 +79,14 @@ class Friend extends FriendAbstract implements FriendInterface
     public function isInterPbxConnectivity() : bool
     {
         return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_INTERVPBX;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDirectConnectivity() : bool
+    {
+        return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_YES;
     }
 
     /**
@@ -181,6 +193,15 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     public function checkExtension($exten)
     {
+        if ($this->isInterPbxConnectivity()) {
+            // Inter-vPBX can call to any Extension pointing to user
+            $extension = $this->getInterCompany()->getExtension($exten);
+            if (is_null($extension)) {
+                return false;
+            }
+            return true;
+        }
+
         $patterns = $this->getPatterns();
         /**
          * @var FriendsPattern $pattern

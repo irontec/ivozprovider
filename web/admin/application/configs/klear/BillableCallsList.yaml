@@ -10,6 +10,7 @@ production:
   screens: &billableCalls_screensLink
     billableCallsList_screen: &billableCallsList_screenLink
       controller: list
+      rawCondition: "BillableCall.startTime >= DATESUB(CURRENT_DATE(), 1, 'YEAR')"
       csv: false
       order:
         field:
@@ -22,7 +23,7 @@ production:
       title: _("List of %s %2s", ngettext('External call', 'External calls', 0), "[format| (%parent%)]")
       options:
         commands:
-          exportBillableCallsToCsv_command: true
+          exportBillableCallsToCsv_command: ${auth.acls.BillableCalls.read}
       info:
         <<: *documentationLink
         href: "/doc/en/administration_portal/platform/external_calls.html"
@@ -30,13 +31,14 @@ production:
         options:
           title: _("Options")
           screens:
-            billableCallsView_screen: true
+            billableCallsView_screen: ${auth.acls.BillableCalls}
           default: billableCallsView_screen
         blacklist: &billableCalls_blacklistLink
           callid: true
           ratingPlanName: true
           destinationName: true
           carrierName: true
+          ddiProvider: true
           endpointType: true
           endpointId: true
         order:
@@ -73,6 +75,7 @@ production:
           ratingPlanName: true
           destinationName: true
           carrierName: true
+          ddiProvider: true
           invoice: true
           callid: true
       fixedPositions:
@@ -96,6 +99,7 @@ production:
             ratingPlanName: 6
             destinationName: 6
             carrierName: 6
+            ddiProvider: 6
             invoice: 6
         group2:
           label: _("Extra Information")

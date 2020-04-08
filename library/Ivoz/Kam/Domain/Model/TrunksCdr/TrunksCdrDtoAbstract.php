@@ -110,6 +110,31 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
      */
     private $residentialDevice;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\User\UserDto | null
+     */
+    private $user;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Friend\FriendDto | null
+     */
+    private $friend;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Fax\FaxDto | null
+     */
+    private $fax;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     */
+    private $ddi;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     */
+    private $ddiProvider;
+
 
     use DtoNormalizer;
 
@@ -147,7 +172,12 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'companyId' => 'company',
             'carrierId' => 'carrier',
             'retailAccountId' => 'retailAccount',
-            'residentialDeviceId' => 'residentialDevice'
+            'residentialDeviceId' => 'residentialDevice',
+            'userId' => 'user',
+            'friendId' => 'friend',
+            'faxId' => 'fax',
+            'ddiId' => 'ddi',
+            'ddiProviderId' => 'ddiProvider'
         ];
     }
 
@@ -176,7 +206,12 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'carrier' => $this->getCarrier(),
             'retailAccount' => $this->getRetailAccount(),
-            'residentialDevice' => $this->getResidentialDevice()
+            'residentialDevice' => $this->getResidentialDevice(),
+            'user' => $this->getUser(),
+            'friend' => $this->getFriend(),
+            'fax' => $this->getFax(),
+            'ddi' => $this->getDdi(),
+            'ddiProvider' => $this->getDdiProvider()
         ];
     }
 
@@ -704,6 +739,236 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     public function getResidentialDeviceId()
     {
         if ($dto = $this->getResidentialDevice()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\User\UserDto $user
+     *
+     * @return static
+     */
+    public function setUser(\Ivoz\Provider\Domain\Model\User\UserDto $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
+
+        return $this->setUser($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getUserId()
+    {
+        if ($dto = $this->getUser()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Friend\FriendDto $friend
+     *
+     * @return static
+     */
+    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendDto $friend = null)
+    {
+        $this->friend = $friend;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendDto | null
+     */
+    public function getFriend()
+    {
+        return $this->friend;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setFriendId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Friend\FriendDto($id)
+            : null;
+
+        return $this->setFriend($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getFriendId()
+    {
+        if ($dto = $this->getFriend()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Fax\FaxDto $fax
+     *
+     * @return static
+     */
+    public function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxDto $fax = null)
+    {
+        $this->fax = $fax;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Fax\FaxDto | null
+     */
+    public function getFax()
+    {
+        return $this->fax;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setFaxId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Fax\FaxDto($id)
+            : null;
+
+        return $this->setFax($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getFaxId()
+    {
+        if ($dto = $this->getFax()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi
+     *
+     * @return static
+     */
+    public function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi = null)
+    {
+        $this->ddi = $ddi;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     */
+    public function getDdi()
+    {
+        return $this->ddi;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setDdiId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            : null;
+
+        return $this->setDdi($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDdiId()
+    {
+        if ($dto = $this->getDdi()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider
+     *
+     * @return static
+     */
+    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider = null)
+    {
+        $this->ddiProvider = $ddiProvider;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     */
+    public function getDdiProvider()
+    {
+        return $this->ddiProvider;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setDdiProviderId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto($id)
+            : null;
+
+        return $this->setDdiProvider($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDdiProviderId()
+    {
+        if ($dto = $this->getDdiProvider()) {
             return $dto->getId();
         }
 

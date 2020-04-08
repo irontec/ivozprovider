@@ -22,15 +22,16 @@ Feature: Update ddi provider addresses
      And the JSON should be equal to:
     """
       {
-          "ip": "2.2.2.2",
-          "description": "UpdatedDDIProviderAddress",
-          "id": 1,
-          "ddiProvider": {
-              "description": "DDIProviderDescription",
-              "name": "DDIProviderName",
-              "externallyRated": false,
-              "id": 1,
-              "transformationRuleSet": 1
-          }
-      }
+            "ip": "2.2.2.2",
+            "description": "UpdatedDDIProviderAddress",
+            "id": 1,
+            "ddiProvider": {
+                "description": "DDIProviderDescription",
+                "name": "DDIProviderName",
+                "externallyRated": false,
+                "id": 1,
+                "transformationRuleSet": 1,
+                "proxyTrunk": 1
+            }
+        }
     """

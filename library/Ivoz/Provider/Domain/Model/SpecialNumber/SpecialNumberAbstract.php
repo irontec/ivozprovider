@@ -182,7 +182,7 @@ abstract class SpecialNumberAbstract
             'numberE164' => self::getNumberE164(),
             'disableCDR' => self::getDisableCDR(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null
+            'countryId' => self::getCountry()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -277,7 +277,7 @@ abstract class SpecialNumberAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
         $this->brand = $brand;
 
@@ -301,7 +301,7 @@ abstract class SpecialNumberAbstract
      *
      * @return static
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country)
+    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country)
     {
         $this->country = $country;
 

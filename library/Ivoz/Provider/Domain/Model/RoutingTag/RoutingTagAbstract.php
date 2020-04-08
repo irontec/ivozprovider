@@ -164,7 +164,7 @@ abstract class RoutingTagAbstract
         return [
             'name' => self::getName(),
             'tag' => self::getTag(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -230,7 +230,7 @@ abstract class RoutingTagAbstract
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
     {
         $this->brand = $brand;
 

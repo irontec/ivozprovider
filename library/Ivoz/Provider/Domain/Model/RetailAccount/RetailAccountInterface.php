@@ -32,6 +32,11 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @return bool
+     */
+    public function isDirectConnectivity();
+
+    /**
      * {@inheritDoc}
      */
     public function setName($name);
@@ -83,7 +88,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Get transport
      *
-     * @return string
+     * @return string | null
      */
     public function getTransport();
 
@@ -143,7 +148,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
 
     /**
      * Get brand
@@ -169,15 +174,6 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getDomain();
 
     /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
-
-    /**
      * Get company
      *
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
@@ -185,29 +181,11 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getCompany();
 
     /**
-     * Set transformationRuleSet
-     *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
-
-    /**
      * Get transformationRuleSet
      *
      * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet();
-
-    /**
-     * Set outgoingDdi
-     *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
-     *
-     * @return static
-     */
-    public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null);
 
     /**
      * Get outgoingDdi

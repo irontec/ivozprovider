@@ -52,8 +52,32 @@ class UpdateByCompanySpec extends ObjectBehavior
         $this->shouldHaveType(UpdateByCompany::class);
     }
 
+    function it_returns_if_company_is_not_vpbx()
+    {
+        $this
+            ->entity
+            ->getType()
+            ->willReturn(null);
+
+        $this
+            ->entity
+            ->getDomainUsers()
+            ->shouldNotBeCalled();
+
+        $this->execute(
+            $this->entity
+        );
+    }
+
     function it_returns_when_domain_user_is_empty()
     {
+        $this
+            ->entity
+            ->getType()
+            ->willReturn(
+                CompanyInterface::TYPE_VPBX
+            );
+
         $this->entity
             ->getDomainUsers()
             ->willReturn('');
@@ -71,7 +95,8 @@ class UpdateByCompanySpec extends ObjectBehavior
     function it_creates_new_domain_if_none(
         DomainInterface $domain
     ) {
-        $this->prepareEntityResponses();
+        $this
+            ->prepareEntityResponses();
 
         $this
             ->entity
@@ -83,7 +108,8 @@ class UpdateByCompanySpec extends ObjectBehavior
             ->entityTools
             ->persistDto(
                 Argument::that($this->getDomainDtoAssertion()),
-                null
+                null,
+                true
             )
             ->willReturn($domain)
             ->shouldBeCalled();
@@ -126,7 +152,8 @@ class UpdateByCompanySpec extends ObjectBehavior
             ->entityTools
             ->persistDto(
                 Argument::that($this->getDomainDtoAssertion()),
-                $domain
+                $domain,
+                true
             )
             ->willReturn($domain)
             ->shouldBeCalled();
@@ -169,6 +196,11 @@ class UpdateByCompanySpec extends ObjectBehavior
 
     private function prepareEntityResponses()
     {
+        $this
+            ->entity
+            ->getType()
+            ->willReturn(CompanyInterface::TYPE_VPBX);
+
         $this
             ->entity
             ->getDomainUsers()

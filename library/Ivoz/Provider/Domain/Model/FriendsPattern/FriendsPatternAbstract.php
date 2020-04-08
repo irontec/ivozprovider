@@ -164,7 +164,7 @@ abstract class FriendsPatternAbstract
         return [
             'name' => self::getName(),
             'regExp' => self::getRegExp(),
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null
+            'friendId' => self::getFriend()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -230,7 +230,7 @@ abstract class FriendsPatternAbstract
      *
      * @return static
      */
-    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend = null)
+    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend)
     {
         $this->friend = $friend;
 

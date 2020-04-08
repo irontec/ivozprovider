@@ -28,6 +28,7 @@ class ProviderCarrier extends Fixture implements DependentFixtureInterface
             $this->setExternallyRated(false);
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
+            $this->setProxyTrunk($fixture->getReference('_reference_ProviderProxyTrunk1'));
         })->call($item1);
 
         $this->addReference('_reference_ProviderCarrier1', $item1);
@@ -42,6 +43,7 @@ class ProviderCarrier extends Fixture implements DependentFixtureInterface
             $this->setExternallyRated(true);
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
+            $this->setProxyTrunk($fixture->getReference('_reference_ProviderProxyTrunk2'));
         })->call($item2);
 
         $this->addReference('_reference_ProviderCarrier2', $item2);
@@ -55,7 +57,8 @@ class ProviderCarrier extends Fixture implements DependentFixtureInterface
     {
         return array(
             ProviderBrand::class,
-            ProviderTransformationRuleSet::class
+            ProviderTransformationRuleSet::class,
+            ProviderProxyTrunk::class,
         );
     }
 }

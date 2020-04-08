@@ -67,7 +67,8 @@ Feature: Create ddi provider registrations
               "description": "DDIProviderDescription",
               "name": "DDIProviderName",
               "id": 1,
-              "transformationRuleSet": 1
+              "transformationRuleSet": 1,
+                "proxyTrunk": 1
           }
       }
     """

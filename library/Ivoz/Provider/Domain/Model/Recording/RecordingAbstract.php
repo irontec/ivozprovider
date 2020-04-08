@@ -241,7 +241,7 @@ abstract class RecordingAbstract
             'recordedFileFileSize' => self::getRecordedFile()->getFileSize(),
             'recordedFileMimeType' => self::getRecordedFile()->getMimeType(),
             'recordedFileBaseName' => self::getRecordedFile()->getBaseName(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'companyId' => self::getCompany()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -456,7 +456,7 @@ abstract class RecordingAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -480,7 +480,7 @@ abstract class RecordingAbstract
      *
      * @return static
      */
-    public function setRecordedFile(RecordedFile $recordedFile)
+    protected function setRecordedFile(RecordedFile $recordedFile)
     {
         $isEqual = $this->recordedFile && $this->recordedFile->equals($recordedFile);
         if ($isEqual) {

@@ -32,7 +32,7 @@ Feature: Retrieve hunt groups rel users
                   "noAnswerVoiceMailUser": null,
                   "noAnswerNumberCountry": null
               },
-              "user": "~"
+              "routeType": "user"
           }
       ]
     """
@@ -49,6 +49,8 @@ Feature: Retrieve hunt groups rel users
       {
           "timeoutTime": 1,
           "priority": 1,
+          "routeType": "user",
+          "numberValue": null,
           "id": 1,
           "huntGroup": {
               "name": "testHuntGroup",
@@ -64,6 +66,7 @@ Feature: Retrieve hunt groups rel users
               "noAnswerVoiceMailUser": null,
               "noAnswerNumberCountry": null
           },
-          "user": "~"
+          "user": "~",
+          "numberCountry": null
       }
     """

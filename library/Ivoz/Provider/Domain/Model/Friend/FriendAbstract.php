@@ -25,7 +25,7 @@ abstract class FriendAbstract
 
     /**
      * comment: enum:udp|tcp|tls
-     * @var string
+     * @var string | null
      */
     protected $transport;
 
@@ -154,7 +154,6 @@ abstract class FriendAbstract
     protected function __construct(
         $name,
         $description,
-        $transport,
         $authNeeded,
         $priority,
         $disallow,
@@ -168,7 +167,6 @@ abstract class FriendAbstract
     ) {
         $this->setName($name);
         $this->setDescription($description);
-        $this->setTransport($transport);
         $this->setAuthNeeded($authNeeded);
         $this->setPriority($priority);
         $this->setDisallow($disallow);
@@ -252,7 +250,6 @@ abstract class FriendAbstract
         $self = new static(
             $dto->getName(),
             $dto->getDescription(),
-            $dto->getTransport(),
             $dto->getAuthNeeded(),
             $dto->getPriority(),
             $dto->getDisallow(),
@@ -266,6 +263,7 @@ abstract class FriendAbstract
         );
 
         $self
+            ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
@@ -383,7 +381,7 @@ abstract class FriendAbstract
             'directConnectivity' => self::getDirectConnectivity(),
             'ddiIn' => self::getDdiIn(),
             't38Passthrough' => self::getT38Passthrough(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
@@ -451,19 +449,20 @@ abstract class FriendAbstract
     /**
      * Set transport
      *
-     * @param string $transport
+     * @param string $transport | null
      *
      * @return static
      */
-    protected function setTransport($transport)
+    protected function setTransport($transport = null)
     {
-        Assertion::notNull($transport, 'transport value "%s" is null, but non null value was expected.');
-        Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($transport, [
-            FriendInterface::TRANSPORT_UDP,
-            FriendInterface::TRANSPORT_TCP,
-            FriendInterface::TRANSPORT_TLS
-        ], 'transportvalue "%s" is not an element of the valid values: %s');
+        if (!is_null($transport)) {
+            Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice($transport, [
+                FriendInterface::TRANSPORT_UDP,
+                FriendInterface::TRANSPORT_TCP,
+                FriendInterface::TRANSPORT_TLS
+            ], 'transportvalue "%s" is not an element of the valid values: %s');
+        }
 
         $this->transport = $transport;
 
@@ -473,7 +472,7 @@ abstract class FriendAbstract
     /**
      * Get transport
      *
-     * @return string
+     * @return string | null
      */
     public function getTransport()
     {
@@ -890,7 +889,7 @@ abstract class FriendAbstract
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -938,7 +937,7 @@ abstract class FriendAbstract
      *
      * @return static
      */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
+    protected function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -962,7 +961,7 @@ abstract class FriendAbstract
      *
      * @return static
      */
-    public function setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl = null)
+    protected function setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface $callAcl = null)
     {
         $this->callAcl = $callAcl;
 
@@ -986,7 +985,7 @@ abstract class FriendAbstract
      *
      * @return static
      */
-    public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
+    protected function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
     {
         $this->outgoingDdi = $outgoingDdi;
 
@@ -1010,7 +1009,7 @@ abstract class FriendAbstract
      *
      * @return static
      */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
+    protected function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
     {
         $this->language = $language;
 
@@ -1034,7 +1033,7 @@ abstract class FriendAbstract
      *
      * @return static
      */
-    public function setInterCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany = null)
+    protected function setInterCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $interCompany = null)
     {
         $this->interCompany = $interCompany;
 

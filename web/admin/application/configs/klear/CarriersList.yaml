@@ -33,16 +33,17 @@ production:
             ratingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
             balanceMovementsList_screen: ${auth.brandFeatures.billing.enabled}
             balanceNotificationList_screen: ${auth.brandFeatures.billing.enabled}
-            billableCallsList_screen: true
+            billableCallsList_screen: ${auth.acls.BillableCalls.read}
           dialogs:
             addToBalance_dialog: ${auth.brandFeatures.billing.enabled}
             carriersDel_dialog: true
           default: carriersEdit_screen
-        order: &carrierOrder_Link
+        order:
           brand: true
           name: true
           description: true
           transformationRuleSet: true
+          proxyTrunks: true
           balance: true
         blacklist:
           externallyRated: true
@@ -70,8 +71,13 @@ production:
       forcedValues:
         <<: *forcedBrand
       fields:
-        order:
-          <<: *carrierOrder_Link
+        order: &carrierOrder_Link
+          brand: true
+          name: true
+          proxyTrunks: true
+          description: true
+          transformationRuleSet: true
+          balance: true
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
           calculateCos: ${auth.brandFeatures.billing.disabled}
@@ -84,8 +90,9 @@ production:
           label: _("Basic Configuration")
           colsPerRow: 12
           fields:
-            name: 5
-            description: 7
+            name: 6
+            proxyTrunks: 6
+            description: 12
         group1:
           label: _("Extra Configuration")
           colsPerRow: 6

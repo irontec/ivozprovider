@@ -63,11 +63,6 @@ class CallCsvSchedulerTest extends KernelTestCase
                             'brand',
                             'eq',
                             'user.getBrand().getId()'
-                        ],
-                        [
-                            'company',
-                            'isNull',
-                            null
                         ]
                     ]
                 ],
@@ -82,9 +77,65 @@ class CallCsvSchedulerTest extends KernelTestCase
                             'callCsvNotificationTemplate',
                             'isNull',
                             null
-                        ]
+                        ],
                     ]
-                ]
+                ],
+                [
+                    'or' => [
+                        [
+                            'ddi',
+                            'in',
+                            'DdiRepository([["brand","eq","user.getBrand().getId()"],["company","IN",["companyRepository.getSupervisedCompanyIdsByAdmin(user)"]]])'
+                        ],
+                        [
+                            'ddi',
+                            'isNull',
+                            null
+                        ],
+                    ]
+                ],
+                [
+                    'or' => [
+                        [
+                            'carrier',
+                            'in',
+                            'CarrierRepository([["brand","eq","user.getBrand().getId()"]])'
+                        ],
+                        [
+                            'carrier',
+                            'isNull',
+                            null
+                        ],
+                    ]
+                ],
+                [
+                    'or' => [
+                        [
+                            'retailAccount',
+                            'in',
+                            'RetailAccountRepository([["brand","eq","user.getBrand().getId()"],["company","IN",["companyRepository.getSupervisedCompanyIdsByAdmin(user)"]]])'
+                        ],
+                        [
+                            'retailAccount',
+                            'isNull',
+                            null
+                        ],
+                    ]
+                ],
+                [
+                    'or' => [
+                        [
+                            'residentialDevice',
+                            'in',
+                            'ResidentialDeviceRepository([["brand","eq","user.getBrand().getId()"],["company","IN",["companyRepository.getSupervisedCompanyIdsByAdmin(user)"]]])'
+                        ],
+                        [
+                            'residentialDevice',
+                            'isNull',
+                            null
+                        ],
+                    ]
+                ],
             ]
         );
     }

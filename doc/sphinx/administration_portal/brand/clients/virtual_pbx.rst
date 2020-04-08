@@ -86,5 +86,19 @@ Administrator.
               for remaining ones**, as 'Round-robin' imposes some limitations
               to client features (no queues, no conferences).
 
+Additional subsections
+----------------------
 
+Each entry in this table has these additional options:
 
+- **List of authorized sources**: if *Filter by IP address* is enabled, this subsection allows adding addresses or network ranges.
+
+.. error:: No outgoing call will be allowed if *Filter by IP address* is enabled and the corresponding list is empty.
+
+- **List of client admins**: this subsection allows managing portal credentials for this specific client. Read :ref:`acls`
+  for further explanation about restricted client administrators.
+
+- **List of Rating profiles**: this subsection allows managing the rating profiles that will be used to bill its outgoing calls.
+
+.. warning:: No outgoing call will be allowed for this client unless an active rating profiles that can
+             bill the specific call.

@@ -18,7 +18,6 @@ use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class RouterAction
@@ -38,7 +37,6 @@ class RouterAction
     const ConferenceRoom = 'conferenceRoom';
     const Queue          = 'queue';
     const Residential    = 'residential';
-    const Retail         = 'retail';
     const Conditional    = 'conditional';
 
     /**
@@ -122,11 +120,6 @@ class RouterAction
     protected $routeResidential;
 
     /**
-     * @var RetailAccountInterface
-     */
-    protected $routeRetail;
-
-    /**
      * @var ConditionalRouteInterface
      */
     protected $routeConditional;
@@ -192,11 +185,6 @@ class RouterAction
     protected $residentialCallAction;
 
     /**
-     * @var RetailCallAction
-     */
-    protected $retailCallAction;
-
-    /**
      * @var ServiceAction
      */
     protected $serviceAction;
@@ -220,7 +208,6 @@ class RouterAction
         IvrAction $ivrAction,
         QueueAction $queueAction,
         ResidentialCallAction $residentialCallAction,
-        RetailCallAction $retailCallAction,
         ServiceAction $serviceAction,
         VoiceMailAction $voiceMailAction
     ) {
@@ -237,7 +224,6 @@ class RouterAction
         $this->ivrAction = $ivrAction;
         $this->queueAction = $queueAction;
         $this->residentialCallAction = $residentialCallAction;
-        $this->retailCallAction = $retailCallAction;
         $this->serviceAction = $serviceAction;
         $this->voiceMailAction = $voiceMailAction;
     }
@@ -349,12 +335,6 @@ class RouterAction
         return $this;
     }
 
-    public function setRouteRetail(RetailAccountInterface $routeRetail = null)
-    {
-        $this->routeRetail = $routeRetail;
-        return $this;
-    }
-
     public function setRouteFax(FaxInterface $routeFax = null)
     {
         $this->routeFax = $routeFax;
@@ -397,9 +377,6 @@ class RouterAction
                 break;
             case RouterAction::Residential:
                 $this->routeToResidentialDevice();
-                break;
-            case RouterAction::Retail:
-                $this->routeToRetailAccount();
                 break;
             case RouterAction::Conditional:
                 $this->routeToConditionalRoute();
@@ -503,13 +480,6 @@ class RouterAction
     {
         $this->residentialCallAction
             ->setResidentialDevice($this->routeResidential)
-            ->process();
-    }
-
-    protected function routeToRetailAccount()
-    {
-        $this->retailCallAction
-            ->setRetailAccount($this->routeRetail)
             ->process();
     }
 

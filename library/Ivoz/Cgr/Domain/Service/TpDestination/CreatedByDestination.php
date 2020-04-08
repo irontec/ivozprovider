@@ -5,6 +5,7 @@ namespace Ivoz\Cgr\Domain\Service\TpDestination;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Destination\DestinationDto;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Provider\Domain\Service\Destination\DestinationLifecycleEventHandlerInterface;
 
@@ -68,10 +69,19 @@ class CreatedByDestination implements DestinationLifecycleEventHandlerInterface
             true
         );
 
-        $destination
-            ->setTpDestination($tpDestination);
+        /** @var DestinationDto $destinationDto */
+        $destinationDto = $this->entityTools->entityToDto(
+            $destination
+        );
 
-        $this->entityTools
-            ->persist($destination);
+        $destinationDto
+            ->setTpDestination($tpDestinationDto);
+
+        $this
+            ->entityTools
+            ->persistDto(
+                $destinationDto,
+                $destination
+            );
     }
 }

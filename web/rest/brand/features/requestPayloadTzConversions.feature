@@ -18,7 +18,8 @@ Feature: Input timezone convertion
           "statusMsg": null,
           "invoiceTemplate": 1,
           "company": 1,
-          "numberSequence": null
+          "numberSequence": null,
+          "scheduler": null
       }
     """
     Then the response status code should be 201
@@ -43,12 +44,13 @@ Feature: Input timezone convertion
           },
           "invoiceTemplate": 1,
           "company": 1,
-          "numberSequence": null
+          "numberSequence": null,
+          "scheduler": null
       }
     """
 
   Scenario: Retrieve created item using user time zone (Europe/Madrid)
-    Given I add Authorization header for "utcBrandAdmin"
+    Given I add Authorization header for "restrictedBrandAdmin"
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "invoices/2"
     And the JSON should be like:
@@ -70,6 +72,7 @@ Feature: Input timezone convertion
           },
           "invoiceTemplate": "~",
           "company": "~",
-          "numberSequence": null
+          "numberSequence": null,
+          "scheduler": null
       }
     """

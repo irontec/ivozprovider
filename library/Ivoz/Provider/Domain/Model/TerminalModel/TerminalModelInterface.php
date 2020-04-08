@@ -77,15 +77,6 @@ interface TerminalModelInterface extends LoggableEntityInterface
     public function getSpecificUrlPattern();
 
     /**
-     * Set terminalManufacturer
-     *
-     * @param \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface $terminalManufacturer
-     *
-     * @return static
-     */
-    public function setTerminalManufacturer(\Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface $terminalManufacturer);
-
-    /**
      * Get terminalManufacturer
      *
      * @return \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface

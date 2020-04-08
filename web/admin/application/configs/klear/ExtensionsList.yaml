@@ -26,9 +26,9 @@ production:
         options:
           title: _("Options")
           screens:
-            extensionsEdit_screen: true
+            extensionsEdit_screen: ${auth.acls.Extensions.update}
           dialogs:
-            extensionsDel_dialog: true
+            extensionsDel_dialog: ${auth.acls.Extensions.delete}
           default: extensionsEdit_screen
         blacklist:
           ivr: true
@@ -47,10 +47,10 @@ production:
       options:
         title: _("Options")
         screens:
-          extensionsNew_screen: true
+          extensionsNew_screen: ${auth.acls.Extensions.create}
         dialogs:
-          extensionsDel_dialog: true
-          importExtensions_dialog: false
+          extensionsDel_dialog: ${auth.acls.Extensions.delete}
+          importAliases_dialog: true
 
     extensionsNew_screen: &extensionsNew_screenLink
       <<: *Extensions
@@ -111,20 +111,20 @@ production:
       multiItem: 1
       labelOnList: 1
 
-    importExtensions_dialog:
+    importAliases_dialog:
       <<: *Extensions
       module: default
-      title: _("Import %s", ngettext('Extension', 'Extensions', 0))
+      title: _("Import %s", ngettext('Alias', 'Aliases', 0))
       label: false
       labelOnEdit: true
       labelOnList: true
       labelOnOption: true
       labelOnEntityPostSave: true
-      controller: import-file
+      controller: import-aliases-custom-file
       action: import
       class:  ui-silk-page-gear
       freeUploadCommand: importExtensionsFreeUpload_command
-      delimiter: ";"
+      delimiter: ","
       enclosure: '"'
       escape: "\\"
       forcedValues:

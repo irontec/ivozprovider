@@ -92,6 +92,30 @@ class Headers extends RouteHandlerAbstract
             if (!empty($retailAccountId)) {
                 $this->agi->setSIPHeader("X-Info-RetailAccount", $retailAccountId);
             }
+
+            // Get user from channel variables
+            $userId = $this->agi->getVariable("USERID");
+            if (!empty($userId)) {
+                $this->agi->setSIPHeader("X-Info-UserId", $userId);
+            }
+
+            // Get friend from channel variables
+            $friendId = $this->agi->getVariable("FRIENDID");
+            if (!empty($friendId)) {
+                $this->agi->setSIPHeader("X-Info-FriendId", $friendId);
+            }
+
+            // Get fax from channel variables
+            $faxId = $this->agi->getVariable("FAXID");
+            if (!empty($faxId)) {
+                $this->agi->setSIPHeader("X-Info-FaxId", $faxId);
+            }
+
+            // Get ddi from channel variables
+            $ddiId = $this->agi->getVariable("DDIID");
+            if (!empty($ddiId)) {
+                $this->agi->setSIPHeader("X-Info-DdiId", $ddiId);
+            }
         }
 
         // Set recording header

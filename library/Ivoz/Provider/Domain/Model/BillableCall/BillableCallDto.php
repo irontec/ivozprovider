@@ -47,9 +47,11 @@ class BillableCallDto extends BillableCallDtoAbstract
                 'brandId' => 'brand',
                 'companyId' => 'company',
                 'carrierId' => 'carrier',
+                'ddiProviderId' => 'ddiProvider',
                 'invoiceId' => 'invoice',
                 'endpointType' => 'endpointType',
                 'endpointId' => 'endpointId',
+                'ddiId' => 'ddi'
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -95,9 +97,11 @@ class BillableCallDto extends BillableCallDtoAbstract
             'id',
             'companyId',
             'carrierId',
+            'ddiProviderId',
             'destinationId',
             'ratingPlanGroupId',
-            'invoiceId'
+            'invoiceId',
+            'ddiId'
         ];
 
         return array_filter(
@@ -128,6 +132,7 @@ class BillableCallDto extends BillableCallDtoAbstract
             'endpointId',
             'direction',
             'id',
+            'ddiId',
         ];
 
         return array_filter(

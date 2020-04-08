@@ -29,21 +29,12 @@ SIP *trunk*, but also:
 What kind of calls can be routed through a *remote friend*?
 -----------------------------------------------------------
 
-IvozProvider must know what calls must be routed to the different defined *friends* (both internal and remote friends).
+IvozProvider must know what calls must be routed to the different defined *remote friends*.
 For that, **client administrator** will configure regular expressions that
 describe the numbers that *can be reached* through the **friend**.
 
 .. note:: Internal :ref:`extensions <extensions>` have priority over any expression
           defined in the *friends*.
-
-To sum up, IvozProvider will route a call received by a :ref:`user <users>` or
-a :ref:`friend <friends>` following this logic:
-
-1. Destination matches an existing IvozProvider extension?
-
-2. If not: Destination matches any *friend* regular expression?
-
-3. If not: This is an external call.
 
 .. important:: Avoid PCRE regular expressions in friend configuration: use [0-9] instead of \\d.
 
@@ -95,8 +86,9 @@ These are the configurable settings of *friends*:
         the From header.
 
     DDI In
-        If set to 'Yes', use endpoint username in R-URI when calling this friend. If set to 'No', use called
-        number instead.
+        If set to 'Yes', set destination (R-URI and To) to called DDI/number when calling to this endpoint. If set 'No', username
+        used in Contact header of registration will be used, as specified in SIP RFC (friend name will be used for
+        endpoints with direct connectivity). Defaults to 'Yes'.
 
     Enable T.38 passthrough
         If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
@@ -105,6 +97,10 @@ These are the configurable settings of *friends*:
 .. note:: Calls to *friends* are considered internal. That means that ACLs won't
           be checked when calling a friend, no matter if the origin of the call
           is a user or another friend.
+
+.. tip:: Friend can be contacted due to calls to several extensions/DDIs. *DDI In* setting allows remote SIP endpoint to
+         know which number caused each call, setting that number as destination (R-URI and To headers). This way, friend
+         can handle calls differently.
 
 Asterisk as a remote friend
 ---------------------------

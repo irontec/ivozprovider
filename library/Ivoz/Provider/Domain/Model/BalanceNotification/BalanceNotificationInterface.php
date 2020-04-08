@@ -44,15 +44,6 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getLastSent();
 
     /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
-
-    /**
      * Get company
      *
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
@@ -60,29 +51,11 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getCompany();
 
     /**
-     * Set carrier
-     *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
-     *
-     * @return static
-     */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
-
-    /**
      * Get carrier
      *
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
-
-    /**
-     * Set notificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate | null
-     *
-     * @return static
-     */
-    public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate = null);
 
     /**
      * Get notificationTemplate

@@ -110,7 +110,7 @@ interface RatingPlanInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null);
+    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup);
 
     /**
      * Get ratingPlanGroup
@@ -118,15 +118,6 @@ interface RatingPlanInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
      */
     public function getRatingPlanGroup();
-
-    /**
-     * Set destinationRateGroup
-     *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup
-     *
-     * @return static
-     */
-    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup);
 
     /**
      * Get destinationRateGroup

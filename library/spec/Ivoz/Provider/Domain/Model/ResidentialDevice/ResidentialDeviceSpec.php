@@ -55,7 +55,8 @@ class ResidentialDeviceSpec extends ObjectBehavior
         $this->hydrate(
             $dto,
             [
-                'company' => $company->getWrappedObject()
+                'company' => $company->getWrappedObject(),
+                'brand' => $brand->getWrappedObject()
             ]
         );
 

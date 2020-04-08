@@ -236,7 +236,7 @@ abstract class TpRateAbstract
             'rate_increment' => self::getRateIncrement(),
             'group_interval_start' => self::getGroupIntervalStart(),
             'created_at' => self::getCreatedAt(),
-            'destinationRateId' => self::getDestinationRate() ? self::getDestinationRate()->getId() : null
+            'destinationRateId' => self::getDestinationRate()->getId()
         ];
     }
     // @codeCoverageIgnoreStart

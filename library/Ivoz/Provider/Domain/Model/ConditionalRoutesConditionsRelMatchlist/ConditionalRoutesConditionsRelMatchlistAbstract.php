@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class ConditionalRoutesConditionsRelMatchlistAbstract
 {
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
+     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
      */
     protected $condition;
 
@@ -152,7 +152,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     {
         return [
             'conditionId' => self::getCondition() ? self::getCondition()->getId() : null,
-            'matchlistId' => self::getMatchlist() ? self::getMatchlist()->getId() : null
+            'matchlistId' => self::getMatchlist()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -160,7 +160,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
      *
      * @return static
      */
@@ -174,7 +174,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
      */
     public function getCondition()
     {
@@ -188,7 +188,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
      *
      * @return static
      */
-    public function setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist)
+    protected function setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchlist)
     {
         $this->matchlist = $matchlist;
 

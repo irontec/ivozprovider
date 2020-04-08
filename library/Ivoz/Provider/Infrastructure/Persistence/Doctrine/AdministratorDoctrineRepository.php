@@ -65,4 +65,52 @@ class AdministratorDoctrineRepository extends ServiceEntityRepository implements
 
         return $admin;
     }
+
+    /**
+     * @param string $username
+     * @return null| AdministratorInterface
+     */
+    public function findBrandAdminByUsername(string $username)
+    {
+        $criteria = [
+            ['username', 'eq', $username],
+            ['brand', 'isNotNull'],
+            ['company', 'isNull']
+        ];
+
+        return $this->findOneByCriteria(
+            $criteria
+        );
+    }
+
+    /**
+     * @param string $username
+     * @return null| AdministratorInterface
+     */
+    public function findClientAdminByUsername(string $username)
+    {
+        $criteria = [
+            ['username', 'eq', $username],
+            ['brand', 'isNotNull'],
+            ['company', 'isNotNull']
+        ];
+
+        return $this->findOneByCriteria(
+            $criteria
+        );
+    }
+
+    private function findOneByCriteria(array $criteria)
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $qb
+            ->select('self')
+            ->addCriteria(
+                CriteriaHelper::fromArray($criteria)
+            );
+        $query = $qb->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }

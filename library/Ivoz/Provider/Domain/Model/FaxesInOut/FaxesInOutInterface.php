@@ -81,15 +81,6 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     public function getStatus();
 
     /**
-     * Set fax
-     *
-     * @param \Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax
-     *
-     * @return static
-     */
-    public function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax);
-
-    /**
      * Get fax
      *
      * @return \Ivoz\Provider\Domain\Model\Fax\FaxInterface
@@ -97,29 +88,11 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     public function getFax();
 
     /**
-     * Set dstCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry | null
-     *
-     * @return static
-     */
-    public function setDstCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry = null);
-
-    /**
      * Get dstCountry
      *
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getDstCountry();
-
-    /**
-     * Set file
-     *
-     * @param \Ivoz\Provider\Domain\Model\FaxesInOut\File $file
-     *
-     * @return static
-     */
-    public function setFile(\Ivoz\Provider\Domain\Model\FaxesInOut\File $file);
 
     /**
      * Get file

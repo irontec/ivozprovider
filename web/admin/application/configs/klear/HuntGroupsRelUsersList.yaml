@@ -14,20 +14,27 @@ production:
         items: 25
       <<: *HuntGroupsRelUsers
       title: _("List of %s %2s", ngettext('Hunt Group', 'Hunt Groups', 0), "[format| (%parent%)]")
-      fields:
+      fields: &huntGroupsRelUsersList_fields
+        order:
+          routeType: true
+          target: true
+        blacklist:
+          numberCountry: true
+          numberValue: true
+          user: true
         options:
           title: _("Options")
           screens:
-            huntGroupsRelUsersEdit_screen: true
+            huntGroupsRelUsersEdit_screen: ${auth.acls.HuntGroupsRelUsers.update}
           dialogs:
-            huntGroupsRelUsersDel_dialog: true
+            huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
           default: huntGroupsRelUsersEdit_screen
       options:
         title: _("Options")
         screens:
-          huntGroupsRelUsersNew_screen: true
+          huntGroupsRelUsersNew_screen: ${auth.acls.HuntGroupsRelUsers.create}
         dialogs:
-          huntGroupsRelUsersDel_dialog: true
+          huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
     huntGroupsRelUsersNew_screen: &huntGroupsRelUsersNew_screenLink
       <<: *HuntGroupsRelUsers
       controller: new
@@ -35,10 +42,29 @@ production:
       label: true
       multiInstance: true
       title: _("Add %s", ngettext('Hunt Group', 'Hunt Groups', 1))
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
+      fields:
+        blacklist:
+          target: true
       shortcutOption: N
-#      fields:
-#        blacklist:
-#          huntGroup: true
+      fixedPositions: &huntGroupsRelUsersFixedPositions_link
+        group1:
+          label: _("Routing configuration")
+          colsPerRow: 12
+          fields:
+            routeType: 4
+            numberCountry: 4
+            numberValue: 4
+            user: 4
+            target: 4
+        group0:
+          label: _("Entry information")
+          colsPerRow: 8
+          fields:
+            timeoutTime: 4
+            priority: 4
+
     huntGroupsRelUsersEdit_screen: &huntGroupsRelUsersEdit_screenLink
       <<: *HuntGroupsRelUsers
       controller: edit
@@ -47,19 +73,14 @@ production:
       title: _("Edit %s %2s", ngettext('Hunt Group', 'Hunt Groups', 1), "[format| (%parent%)]")
       fields:
         blacklist:
-          huntGroup: false
-        readOnly:
-          huntGroup: true
           user: true
-
-    #HuntGroups
-#    <<: *huntGroups_screensLink
-#    huntGroupsEdit_screen:
-#      <<: *huntGroupsEdit_screenLink
-#      class: ui-silk-group-go
-#      calculatedPk:
-#        class: IvozProvider_Klear_Calculated_Primarykeys
-#        method: huntGroupPk
+          numberValue: true
+          numberCountry: true
+        readOnly:
+          routeType: true
+          target: true
+      fixedPositions:
+        <<: *huntGroupsRelUsersFixedPositions_link
 
   dialogs: &huntGroupsRelUsers_dialogsLink
     huntGroupsRelUsersDel_dialog: &huntGroupsRelUsersDel_dialogLink

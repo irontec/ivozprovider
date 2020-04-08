@@ -17,7 +17,7 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
     /**
      * Set outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting | null
      *
      * @return static
      */
@@ -26,7 +26,7 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
     /**
      * Get outgoingRouting
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
      */
     public function getOutgoingRouting();
 
@@ -37,7 +37,7 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier);
 
     /**
      * Get carrier
