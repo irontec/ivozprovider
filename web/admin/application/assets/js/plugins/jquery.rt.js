@@ -213,11 +213,22 @@
                         0
                     );
 
+                    var hours = parseInt(seconds / 60 / 60);
                     var minutes = parseInt(seconds / 60);
-                    seconds -= minutes * 60;
+
+                    minutes -= hours * 60;
+                    seconds -= (hours * 60 * 60) + (minutes * 60);
+
+                    hours = hours > 0
+                        ? hours + 'h '
+                        : ''
+
+                    minutes = minutes > 0
+                        ? minutes + 'm '
+                        : '';
 
                     item.html(
-                        minutes + " min " + seconds + ' seg'
+                        hours + minutes + seconds + 's'
                     );
                 });
 
