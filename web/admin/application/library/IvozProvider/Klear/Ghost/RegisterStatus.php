@@ -344,11 +344,15 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
                                 <td><span class="ui-silk inline ui-silk-tick" title="Registered until %s"/> %s </td>
                                 <td><span class="ui-silk inline ui-silk-telephone" title="Contact Address" /> %s</td>
                                 <td><span class="ui-silk inline ui-silk-world" title="Received Address" /> %s</td>
+                            </tr>
+                            <tr height="30">
+                                <td colspan="3"><span class="ui-silk inline ui-silk-lightbulb" title="Hint"/> %s</td>
                             </tr>',
                     $location->getExpires()->format("Y-m-d H:i:s"),
                     $location->getUserAgent(),
                     $contactSrc,
-                    $receivedSrc
+                    $receivedSrc,
+                    $this->getRegisterHint($contactSrc, $receivedSrc)
                 );
             }
 
@@ -359,5 +363,69 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
         }
 
         return $registerStatus;
+    }
+
+    /***
+     * @param $contact
+     * @param $received
+     * @return string
+     */
+    private function getRegisterHint($contact, $received) : string
+    {
+        $contactIsPrivate = $this->isRFC1918($contact);
+
+        // No NAT
+        if (is_null($received)) {
+            if ($contactIsPrivate) {
+                return "No NAT with private Contact (hint: internal routing)";
+            }
+
+            return "No NAT with public Contact (hint: SIP ALG / STUN)";
+        }
+
+        // Behind NAT
+        $receivedIsPublic = !$this->isRFC1918($received);
+
+        if ($contactIsPrivate && $receivedIsPublic) {
+            return "Regular NAT detected (private Contact, public Received)";
+        }
+
+        return sprintf(
+            "Awkward NAT detected (%s Contact, %s Received)",
+            $contactIsPrivate ?  "Private" : "Public",
+            $receivedIsPublic ?  "Public" : "Private"
+        );
+    }
+
+    /***
+     * Check if given source in IP(:PORT) format is private
+     *
+     * @param $src
+     * @return bool
+     */
+    private function isRFC1918($src) : bool
+    {
+        list ($ip, $port) = explode(':', $src); // Extract address if port is given
+
+        $privateAddresses = array (
+            '10.0.0.0|10.255.255.255', // single class A network
+            '172.16.0.0|172.31.255.255', // 16 contiguous class B network
+            '192.168.0.0|192.168.255.255', // 256 contiguous class C network
+            '169.254.0.0|169.254.255.255', // Link-local address also refered to as Automatic Private IP Addressing
+            '127.0.0.0|127.255.255.255' // localhost
+        );
+
+        $longIp = ip2long($ip);
+        if ($longIp != -1) {
+            foreach ($privateAddresses as $privateAddress) {
+                list ($start, $end) = explode('|', $privateAddress);
+
+                if ($longIp >= ip2long($start) && $longIp <= ip2long($end)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
