@@ -64,14 +64,14 @@
         },
         _icons : {
             events: {
-                "Trying": '<span title="Call Setup" class="ui-silk inline ui-silk-connect"></span>',
-                "Early": '<span title="Ringing" class="ui-silk inline ui-silk-connect"></span>',
-                "Confirmed": '<span title="In call" class="ui-silk inline ui-silk-phone-sound"></span>',
-                "Terminated": '<span title="In call" class="ui-silk inline ui-silk-phone"></span>'
+                "Trying": '<span title="Call Setup" class="ui-silk inline ui-silk-disconnect"></span>',
+                "Early": '<span title="Ringing" class="ui-silk inline ui-silk-bell"></span>',
+                "Confirmed": '<span title="In call" class="ui-silk inline ui-silk-user-comment"></span>',
+                "Terminated": '<span title="In call" class="ui-silk inline ui-silk-stop"></span>'
             },
             directions: {
-                "outbound": '<span title="Outbound" class="ui-silk inline ui-silk-resultset-next"></span>',
-                "inbound": '<span title="Inbound" class="ui-silk inline ui-silk-resultset-previous"></span>'
+                "outbound": '<span title="Outbound" class="ui-silk inline ui-silk-red-arrow"></span>',
+                "inbound": '<span title="Inbound" class="ui-silk inline ui-silk-green-arrow"></span>'
             }
         },
         _curConnection : 0,

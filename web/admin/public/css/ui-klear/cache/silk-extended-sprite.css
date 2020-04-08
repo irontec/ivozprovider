@@ -9,9 +9,14 @@
 	background-image: url(./silk-extended-sprite.png);background-position: -18px -0px;
 }
 
-.ui-silk-application-view-list-telephone
+.ui-silk-green-arrow
 {
 	background-image: url(./silk-extended-sprite.png);background-position: -36px -0px;
+}
+
+.ui-silk-application-view-list-telephone
+{
+	background-image: url(./silk-extended-sprite.png);background-position: -54px -0px;
 }
 
 .ui-silk-application-view-list-record
@@ -31,10 +36,15 @@
 
 .ui-silk-application-view-list-world
 {
-	background-image: url(./silk-extended-sprite.png);background-position: -0px -36px;
+	background-image: url(./silk-extended-sprite.png);background-position: -54px -18px;
 }
 
 .ui-silk-report-refresh
+{
+	background-image: url(./silk-extended-sprite.png);background-position: -0px -36px;
+}
+
+.ui-silk-red-arrow
 {
 	background-image: url(./silk-extended-sprite.png);background-position: -18px -36px;
 }
