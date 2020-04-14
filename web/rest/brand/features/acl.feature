@@ -28,7 +28,7 @@ Feature: Authorization checking
     """
       {
           "username": "test_company_admin",
-          "pass": "****",
+          "pass": "*****",
           "email": "test@irontec.com",
           "active": true,
           "restricted": false,
