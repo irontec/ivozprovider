@@ -14,16 +14,7 @@ class Voicemail extends VoicemailAbstract implements VoicemailInterface
      */
     public function getChangeSet()
     {
-        $changeSet = parent::getChangeSet();
-        if (isset($changeSet['password'])) {
-            $changeSet['password'] = '****';
-        }
-
-        if (isset($changeSet['imappassword'])) {
-            $changeSet['imappassword'] = '****';
-        }
-
-        return $changeSet;
+        return parent::getChangeSet();
     }
 
     /**
