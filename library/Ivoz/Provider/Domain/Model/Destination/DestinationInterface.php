@@ -36,7 +36,7 @@ interface DestinationInterface extends LoggableEntityInterface
     /**
      * Get tpDestination
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface | null
      */
     public function getTpDestination();
 

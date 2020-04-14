@@ -503,7 +503,7 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * Set trunksUacreg
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface $trunksUacreg
+     * @param \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface $trunksUacreg | null
      *
      * @return static
      */
@@ -517,7 +517,7 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * Get trunksUacreg
      *
-     * @return \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface | null
      */
     public function getTrunksUacreg()
     {

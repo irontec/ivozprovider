@@ -228,7 +228,7 @@ abstract class DestinationAbstract
     /**
      * Set tpDestination
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination | null
      *
      * @return static
      */
@@ -242,7 +242,7 @@ abstract class DestinationAbstract
     /**
      * Get tpDestination
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface | null
      */
     public function getTpDestination()
     {

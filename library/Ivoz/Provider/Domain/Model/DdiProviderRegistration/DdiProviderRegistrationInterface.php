@@ -78,7 +78,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     /**
      * Get trunksUacreg
      *
-     * @return \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface | null
      */
     public function getTrunksUacreg();
 

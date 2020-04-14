@@ -34,7 +34,7 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
     /**
      * Get trunksAddress
      *
-     * @return \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface | null
      */
     public function getTrunksAddress();
 

@@ -383,7 +383,7 @@ abstract class RtpengineAbstract
     /**
      * Set mediaRelaySet
      *
-     * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet
+     * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet | null
      *
      * @return static
      */
@@ -397,7 +397,7 @@ abstract class RtpengineAbstract
     /**
      * Get mediaRelaySet
      *
-     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface
+     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface | null
      */
     public function getMediaRelaySet()
     {

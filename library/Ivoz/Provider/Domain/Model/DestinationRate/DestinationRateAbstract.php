@@ -332,7 +332,7 @@ abstract class DestinationRateAbstract
     /**
      * Set tpRate
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate
+     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate | null
      *
      * @return static
      */
@@ -346,7 +346,7 @@ abstract class DestinationRateAbstract
     /**
      * Get tpRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface | null
      */
     public function getTpRate()
     {
@@ -356,7 +356,7 @@ abstract class DestinationRateAbstract
     /**
      * Set tpDestinationRate
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
+     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate | null
      *
      * @return static
      */
@@ -370,7 +370,7 @@ abstract class DestinationRateAbstract
     /**
      * Get tpDestinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface | null
      */
     public function getTpDestinationRate()
     {
