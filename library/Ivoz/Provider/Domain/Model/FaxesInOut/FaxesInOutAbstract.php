@@ -45,7 +45,7 @@ abstract class FaxesInOutAbstract
     protected $status;
 
     /**
-     * @var File
+     * @var File | null
      */
     protected $file;
 

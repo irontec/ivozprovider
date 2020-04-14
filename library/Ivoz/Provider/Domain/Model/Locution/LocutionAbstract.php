@@ -25,12 +25,12 @@ abstract class LocutionAbstract
     protected $status;
 
     /**
-     * @var EncodedFile
+     * @var EncodedFile | null
      */
     protected $encodedFile;
 
     /**
-     * @var OriginalFile
+     * @var OriginalFile | null
      */
     protected $originalFile;
 

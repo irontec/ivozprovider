@@ -39,7 +39,7 @@ abstract class PublicEntityAbstract
     protected $client = false;
 
     /**
-     * @var Name
+     * @var Name | null
      */
     protected $name;
 

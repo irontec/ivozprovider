@@ -40,7 +40,7 @@ abstract class WebPortalAbstract
     protected $userTheme = '';
 
     /**
-     * @var Logo
+     * @var Logo | null
      */
     protected $logo;
 

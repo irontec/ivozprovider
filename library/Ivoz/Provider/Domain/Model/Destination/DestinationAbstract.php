@@ -19,7 +19,7 @@ abstract class DestinationAbstract
     protected $prefix;
 
     /**
-     * @var Name
+     * @var Name | null
      */
     protected $name;
 

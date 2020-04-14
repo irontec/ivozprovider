@@ -24,7 +24,7 @@ abstract class CurrencyAbstract
     protected $symbol;
 
     /**
-     * @var Name
+     * @var Name | null
      */
     protected $name;
 

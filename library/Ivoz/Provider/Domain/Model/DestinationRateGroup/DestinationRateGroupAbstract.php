@@ -20,17 +20,17 @@ abstract class DestinationRateGroupAbstract
     protected $status;
 
     /**
-     * @var Name
+     * @var Name | null
      */
     protected $name;
 
     /**
-     * @var Description
+     * @var Description | null
      */
     protected $description;
 
     /**
-     * @var File
+     * @var File | null
      */
     protected $file;
 

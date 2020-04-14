@@ -55,7 +55,7 @@ abstract class InvoiceAbstract
     protected $statusMsg;
 
     /**
-     * @var Pdf
+     * @var Pdf | null
      */
     protected $pdf;
 
