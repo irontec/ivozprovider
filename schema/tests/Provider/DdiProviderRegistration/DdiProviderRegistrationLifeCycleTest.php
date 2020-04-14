@@ -122,7 +122,7 @@ class DdiProviderRegistrationLifeCycleTest extends KernelTestCase
             'r_domain' => 'testDomain.net',
             'realm' => 'testRealm',
             'auth_username' => 'testAuthUsername',
-            'auth_password' => '****',
+            'auth_password' => '*****',
             'auth_proxy' => 'sip:testAuthProxy',
             'expires' => 1,
             'ddiProviderRegistrationId' => 2,
