@@ -35,6 +35,7 @@ use Assert\Assertion;
 class Rates
 {
     const CHUNK_SIZE = 100;
+    const MAX_LINES = 75001;
 
     use RegisterCommandTrait;
 
@@ -162,6 +163,12 @@ class Rates
         }
 
         try {
+            Assertion::lessOrEqualThan(
+                count($csvLines),
+                self::MAX_LINES,
+                'File cannot exceed ' . self::MAX_LINES . ' lines'
+            );
+
             // Parse every CSV line
             $lineNum = $importerArguments['ignoreFirst']
                 ? 1
