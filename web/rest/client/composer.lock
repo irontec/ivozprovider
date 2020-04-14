@@ -1539,11 +1539,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "2.4.3.0",
+            "version": "2.5.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "c4fb637e625e30b9573d17f1476dfcf9933aa806",
+                "reference": "1ba668b66c39467ea64991fb714a1daf6e460bcc",
                 "shasum": null
             },
             "require": {
@@ -1551,7 +1551,7 @@
                 "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
                 "graze/guzzle-jsonrpc": "3.2.*",
                 "guzzlehttp/guzzle": "^6.3",
-                "irontec/ivoz-core": "^2.3.3",
+                "irontec/ivoz-core": "^2.4",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "php": ">=7.0.19",
                 "symfony/expression-language": "3.4.*",
