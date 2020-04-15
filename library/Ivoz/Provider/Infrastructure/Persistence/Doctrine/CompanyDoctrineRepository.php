@@ -55,11 +55,7 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
     public function getSupervisedCompanyIdsByAdmin(AdministratorInterface $admin)
     {
         if (!$admin->isBrandAdmin()) {
-            throw new \DomainException('User must be brand admin at least');
-        }
-
-        if (!$admin->getBrand()) {
-            return [];
+            throw new \DomainException('User must be brand admin');
         }
 
         $qb = $this->createQueryBuilder('self');
