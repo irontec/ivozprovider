@@ -377,6 +377,21 @@ class WsServer extends AbstractWsServer
             return;
         }
 
+        $sortByTimeCallable = function ($a, $b) {
+            $a = json_decode($a, true);
+            $b = json_decode($b, true);
+
+            if ($a['Time'] === $b['Time']) {
+                return 0;
+            }
+
+            return ($a['Time'] < $b['Time']) ? -1 : 1;
+        };
+        usort(
+            $currentState,
+            $sortByTimeCallable
+        );
+
         foreach ($currentState as $payload) {
             $server->push(
                 $fd,
@@ -412,8 +427,8 @@ class WsServer extends AbstractWsServer
             }
 
             if (!isset($server->connections[$fd])) {
-                $this->logger->debug(
-                    "Connection not found for #" . $fd
+                $this->logger->info(
+                    "Connection not found on #" . $fd
                 );
                 break;
             }
@@ -429,8 +444,15 @@ class WsServer extends AbstractWsServer
                 );
 
             if (!$forward) {
+                $this->logger->info(
+                    "Do not forward to #" . $fd . " message: " . $argument
+                );
                 continue;
             }
+
+            $this->logger->debug(
+                "Pushing to #" . $fd . " message: " . $argument
+            );
 
             $server->push(
                 $fd,
