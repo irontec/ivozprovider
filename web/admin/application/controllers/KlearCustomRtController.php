@@ -139,7 +139,7 @@ class KlearCustomRtController extends Zend_Controller_Action
             'calls' => $this->_helper->translate('Calls'),
             'duration' => $this->_helper->translate('Duration'),
             'brand' => $this->_helper->translate(array('Brand', 'Brands', 1)),
-            'carrier' => $this->_helper->translate('Carrier'),
+            'carrier' => $this->_helper->translate(array('Carrier', 'Carriers', 1)),
             'client' => $this->_helper->translate(array('Client', 'Clients', 1)),
             'caller' => $this->_helper->translate('Caller'),
             'callee' => $this->_helper->translate('Callee'),

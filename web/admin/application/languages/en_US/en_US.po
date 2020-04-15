@@ -473,7 +473,9 @@ msgid "Cannot invoice calls from today in the future."
 msgstr "Cannot invoice calls from today in the future."
 
 msgid "Carrier"
-msgstr "Carrier"
+msgid_plural "Carriers"
+msgstr[0] "Carrier"
+msgstr[1] "Carriers"
 
 msgid "Carrier server"
 msgid_plural "Carrier servers"
