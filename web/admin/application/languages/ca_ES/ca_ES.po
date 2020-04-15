@@ -478,7 +478,9 @@ msgid "Cannot invoice calls from today in the future."
 msgstr "No es poden facturar trucades d'avui en el futur."
 
 msgid "Carrier"
-msgstr "Proveïdor"
+msgid_plural "Carriers"
+msgstr[0] "Proveïdor"
+msgstr[1] "Proveïdors"
 
 msgid "Carrier server"
 msgid_plural "Carrier servers"
