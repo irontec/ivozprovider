@@ -78,7 +78,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'entity' => $this->getEntity(),
             'entityId' => $this->getEntityId(),
             'data' => $this->getData(),
@@ -87,6 +87,19 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'command' => $this->getCommand()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

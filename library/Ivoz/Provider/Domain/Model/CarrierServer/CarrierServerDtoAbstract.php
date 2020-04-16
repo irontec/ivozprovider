@@ -144,7 +144,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'ip' => $this->getIp(),
             'hostname' => $this->getHostname(),
             'port' => $this->getPort(),
@@ -164,6 +164,19 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
             'carrier' => $this->getCarrier(),
             'brand' => $this->getBrand()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

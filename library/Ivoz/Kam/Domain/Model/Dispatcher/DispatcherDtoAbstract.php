@@ -84,7 +84,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'setid' => $this->getSetid(),
             'destination' => $this->getDestination(),
             'flags' => $this->getFlags(),
@@ -94,6 +94,19 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'applicationServer' => $this->getApplicationServer()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

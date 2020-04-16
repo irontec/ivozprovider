@@ -102,7 +102,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'iden' => $this->getIden(),
             'defaultCode' => $this->getDefaultCode(),
             'extraArgs' => $this->getExtraArgs(),
@@ -120,6 +120,19 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
                 'it' => $this->getDescriptionIt()
             ]
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

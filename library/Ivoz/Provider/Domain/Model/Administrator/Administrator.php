@@ -18,12 +18,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
      */
     public function getChangeSet()
     {
-        $changeSet = parent::getChangeSet();
-        if (isset($changeSet['pass'])) {
-            $changeSet['pass'] = '****';
-        }
-
-        return $changeSet;
+        return parent::getChangeSet();
     }
 
     /**

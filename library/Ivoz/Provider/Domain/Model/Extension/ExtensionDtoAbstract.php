@@ -119,7 +119,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'number' => $this->getNumber(),
             'routeType' => $this->getRouteType(),
             'numberValue' => $this->getNumberValue(),
@@ -135,6 +135,19 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
             'numberCountry' => $this->getNumberCountry(),
             'users' => $this->getUsers()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

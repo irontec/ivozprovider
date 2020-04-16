@@ -4,6 +4,10 @@ namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
 class CarrierServerDto extends CarrierServerDtoAbstract
 {
+    protected $sensitiveFields = [
+        'authPassword',
+    ];
+
     /**
      * @inheritdoc
      * @codeCoverageIgnore
@@ -28,20 +32,6 @@ class CarrierServerDto extends CarrierServerDtoAbstract
         if ($role === 'ROLE_BRAND_ADMIN') {
             unset($response['brandId']);
         }
-
-        return $response;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function toArray($hideSensitiveData = false)
-    {
-        $response = parent::toArray($hideSensitiveData);
-        if (!$hideSensitiveData) {
-            return $response;
-        }
-        $response['auth_password'] = '****';
 
         return $response;
     }

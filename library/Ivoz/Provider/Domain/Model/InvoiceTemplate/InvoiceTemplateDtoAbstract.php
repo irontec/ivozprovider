@@ -78,7 +78,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'name' => $this->getName(),
             'description' => $this->getDescription(),
             'template' => $this->getTemplate(),
@@ -87,6 +87,19 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'brand' => $this->getBrand()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

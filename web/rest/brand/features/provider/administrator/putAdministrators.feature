@@ -29,7 +29,7 @@ Feature: Update administrators
     """
       {
           "username": "newUserName",
-          "pass": "****",
+          "pass": "*****",
           "email": "modified@example.com",
           "active": false,
           "restricted": true,

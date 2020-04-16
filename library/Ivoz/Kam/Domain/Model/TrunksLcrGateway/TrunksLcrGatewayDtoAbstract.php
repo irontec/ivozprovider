@@ -120,7 +120,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'lcrId' => $this->getLcrId(),
             'gwName' => $this->getGwName(),
             'ip' => $this->getIp(),
@@ -136,6 +136,19 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
             'id' => $this->getId(),
             'carrierServer' => $this->getCarrierServer()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

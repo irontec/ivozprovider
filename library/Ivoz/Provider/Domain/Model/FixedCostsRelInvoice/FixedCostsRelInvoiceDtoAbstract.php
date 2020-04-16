@@ -60,12 +60,25 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'quantity' => $this->getQuantity(),
             'id' => $this->getId(),
             'fixedCost' => $this->getFixedCost(),
             'invoice' => $this->getInvoice()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

@@ -186,7 +186,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'startTime' => $this->getStartTime(),
             'endTime' => $this->getEndTime(),
             'duration' => $this->getDuration(),
@@ -213,6 +213,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'ddi' => $this->getDdi(),
             'ddiProvider' => $this->getDdiProvider()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

@@ -84,7 +84,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'setid' => $this->getSetid(),
             'url' => $this->getUrl(),
             'weight' => $this->getWeight(),
@@ -94,6 +94,19 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'mediaRelaySet' => $this->getMediaRelaySet()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

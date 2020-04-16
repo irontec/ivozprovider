@@ -16,12 +16,7 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
      */
     public function getChangeSet()
     {
-        $changeSet = parent::getChangeSet();
-        if (isset($changeSet['auth_password'])) {
-            $changeSet['auth_password'] = '****';
-        }
-
-        return $changeSet;
+        return parent::getChangeSet();
     }
 
     /**

@@ -96,7 +96,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'entry' => $this->getEntry(),
             'routeType' => $this->getRouteType(),
             'numberValue' => $this->getNumberValue(),
@@ -108,6 +108,19 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
             'conditionalRoute' => $this->getConditionalRoute(),
             'numberCountry' => $this->getNumberCountry()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

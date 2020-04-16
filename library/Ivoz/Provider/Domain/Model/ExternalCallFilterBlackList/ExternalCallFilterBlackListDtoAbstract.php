@@ -54,11 +54,24 @@ abstract class ExternalCallFilterBlackListDtoAbstract implements DataTransferObj
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'id' => $this->getId(),
             'filter' => $this->getFilter(),
             'matchlist' => $this->getMatchlist()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

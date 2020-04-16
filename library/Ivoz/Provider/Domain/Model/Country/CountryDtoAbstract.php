@@ -96,7 +96,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'code' => $this->getCode(),
             'countryCode' => $this->getCountryCode(),
             'id' => $this->getId(),
@@ -113,6 +113,19 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
                 'it' => $this->getZoneIt()
             ]
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

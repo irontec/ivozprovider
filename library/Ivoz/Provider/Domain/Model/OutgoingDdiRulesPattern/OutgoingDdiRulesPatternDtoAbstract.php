@@ -84,7 +84,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'type' => $this->getType(),
             'prefix' => $this->getPrefix(),
             'action' => $this->getAction(),
@@ -94,6 +94,19 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
             'matchList' => $this->getMatchList(),
             'forcedDdi' => $this->getForcedDdi()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

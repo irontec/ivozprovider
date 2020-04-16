@@ -102,7 +102,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'lcrId' => $this->getLcrId(),
             'prefix' => $this->getPrefix(),
             'fromUri' => $this->getFromUri(),
@@ -115,6 +115,19 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
             'routingPatternGroupsRelPattern' => $this->getRoutingPatternGroupsRelPattern(),
             'outgoingRouting' => $this->getOutgoingRouting()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

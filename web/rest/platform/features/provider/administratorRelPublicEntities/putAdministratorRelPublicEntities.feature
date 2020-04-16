@@ -32,7 +32,7 @@ Feature: Manage administrator rel public entities
           "id": 70,
           "administrator": {
               "username": "restrictedBrandAdmin",
-              "pass": "****",
+              "pass": "*****",
               "email": "restrictedAdmin@irontec.com",
               "active": true,
               "restricted": true,

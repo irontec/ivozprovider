@@ -116,7 +116,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'description' => $this->getDescription(),
             'internationalCode' => $this->getInternationalCode(),
             'trunkPrefix' => $this->getTrunkPrefix(),
@@ -134,6 +134,19 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
             'country' => $this->getCountry(),
             'rules' => $this->getRules()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

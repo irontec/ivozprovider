@@ -319,7 +319,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'type' => $this->getType(),
             'name' => $this->getName(),
             'domainUsers' => $this->getDomainUsers(),
@@ -370,6 +370,19 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'relCodecs' => $this->getRelCodecs(),
             'relRoutingTags' => $this->getRelRoutingTags()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

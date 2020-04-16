@@ -114,7 +114,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'callTypeFilter' => $this->getCallTypeFilter(),
             'callForwardType' => $this->getCallForwardType(),
             'targetType' => $this->getTargetType(),
@@ -129,6 +129,19 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'residentialDevice' => $this->getResidentialDevice(),
             'retailAccount' => $this->getRetailAccount()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

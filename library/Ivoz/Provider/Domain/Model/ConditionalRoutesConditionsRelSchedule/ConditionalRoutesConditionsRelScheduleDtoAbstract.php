@@ -54,11 +54,24 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'id' => $this->getId(),
             'condition' => $this->getCondition(),
             'schedule' => $this->getSchedule()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

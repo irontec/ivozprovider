@@ -96,7 +96,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'tpid' => $this->getTpid(),
             'tag' => $this->getTag(),
             'connectFee' => $this->getConnectFee(),
@@ -108,6 +108,19 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'destinationRate' => $this->getDestinationRate()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

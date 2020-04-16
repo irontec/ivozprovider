@@ -90,7 +90,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'username' => $this->getUsername(),
             'domain' => $this->getDomain(),
             'doc' => $this->getDoc(),
@@ -101,6 +101,19 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
             'port' => $this->getPort(),
             'id' => $this->getId()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**
