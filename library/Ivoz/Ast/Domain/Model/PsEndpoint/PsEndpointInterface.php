@@ -173,7 +173,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     /**
      * Set terminal
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
+     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal | null
      *
      * @return static
      */
@@ -182,14 +182,14 @@ interface PsEndpointInterface extends LoggableEntityInterface
     /**
      * Get terminal
      *
-     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
+     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface | null
      */
     public function getTerminal();
 
     /**
      * Set friend
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
+     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend | null
      *
      * @return static
      */
@@ -198,14 +198,14 @@ interface PsEndpointInterface extends LoggableEntityInterface
     /**
      * Get friend
      *
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
      */
     public function getFriend();
 
     /**
      * Set residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice | null
      *
      * @return static
      */
@@ -214,14 +214,14 @@ interface PsEndpointInterface extends LoggableEntityInterface
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     public function getResidentialDevice();
 
     /**
      * Set retailAccount
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount | null
      *
      * @return static
      */
@@ -230,7 +230,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount();
 }

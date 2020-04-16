@@ -34,7 +34,7 @@ abstract class CallCsvReportAbstract
     protected $createdOn;
 
     /**
-     * @var Csv
+     * @var Csv | null
      */
     protected $csv;
 

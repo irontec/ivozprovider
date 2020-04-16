@@ -24,7 +24,7 @@ abstract class TimezoneAbstract
     protected $comment = '';
 
     /**
-     * @var Label
+     * @var Label | null
      */
     protected $label;
 

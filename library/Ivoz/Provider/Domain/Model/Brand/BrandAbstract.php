@@ -40,12 +40,12 @@ abstract class BrandAbstract
     protected $maxCalls = 0;
 
     /**
-     * @var Logo
+     * @var Logo | null
      */
     protected $logo;
 
     /**
-     * @var Invoice
+     * @var Invoice | null
      */
     protected $invoice;
 

@@ -24,12 +24,12 @@ abstract class CountryAbstract
     protected $countryCode;
 
     /**
-     * @var Name
+     * @var Name | null
      */
     protected $name;
 
     /**
-     * @var Zone
+     * @var Zone | null
      */
     protected $zone;
 

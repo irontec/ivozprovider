@@ -50,7 +50,7 @@ abstract class RecordingAbstract
     protected $recorder;
 
     /**
-     * @var RecordedFile
+     * @var RecordedFile | null
      */
     protected $recordedFile;
 

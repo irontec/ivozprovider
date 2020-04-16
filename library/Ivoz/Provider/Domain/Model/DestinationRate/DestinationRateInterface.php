@@ -86,14 +86,14 @@ interface DestinationRateInterface extends LoggableEntityInterface
     /**
      * Get tpRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface | null
      */
     public function getTpRate();
 
     /**
      * Get tpDestinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface | null
      */
     public function getTpDestinationRate();
 

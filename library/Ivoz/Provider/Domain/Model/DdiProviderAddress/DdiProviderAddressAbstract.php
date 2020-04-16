@@ -234,7 +234,7 @@ abstract class DdiProviderAddressAbstract
     /**
      * Set trunksAddress
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface $trunksAddress
+     * @param \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface $trunksAddress | null
      *
      * @return static
      */
@@ -248,7 +248,7 @@ abstract class DdiProviderAddressAbstract
     /**
      * Get trunksAddress
      *
-     * @return \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface | null
      */
     public function getTrunksAddress()
     {

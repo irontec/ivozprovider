@@ -436,7 +436,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Set routingPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern | null
      *
      * @return static
      */
@@ -450,7 +450,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Get routingPattern
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface | null
      */
     public function getRoutingPattern()
     {
