@@ -3,6 +3,7 @@ namespace Tests\Provider\Brand;
 
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\Country\Country;
+use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern;
@@ -35,6 +36,136 @@ class BrandLifeCycleTest extends KernelTestCase
     const ZONE_NUM = 7;
 
     use DbIntegrationTestHelperTrait;
+
+    /**
+     * @test
+     */
+    public function it_persists_brands()
+    {
+        $brandRepository = $this->em
+            ->getRepository(Brand::class);
+        $fixtureBrands = $brandRepository->findAll();
+        $brand = $this->addBrand();
+
+        $brands = $brandRepository->findAll();
+        $this->assertCount(count($fixtureBrands) + 1, $brands);
+
+        $this->it_triggers_lifecycle_services();
+        $this->added_brand_has_domain();
+        $this->new_brand_autogenerates_routingPatterns_by_country($brand);
+        $this->new_brand_autogenerates_routingPatternGroups_by_country_zone($brand);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateBrand();
+        $this->assetChangedEntities([
+            Brand::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeBrand();
+        $this->assetChangedEntities([
+            WebPortal::class,
+            MusicOnHold::class,
+            FixedCostsRelInvoice::class,
+            Invoice::class,
+            Locution::class,
+            Recording::class,
+            FaxesInOut::class,
+            Fax::class,
+            TpRatingProfile::class,
+            RatingProfile::class,
+            TpAccountAction::class,
+            FeaturesRelCompany::class,
+            Company::class,
+            Domain::class,
+            FeaturesRelBrand::class,
+            Brand::class,
+            ProxyTrunksRelBrand::class
+        ]);
+    }
+
+    /**
+     * @test
+     * @deprecated
+     */
+    public function empty_domain_users_removes_domain()
+    {
+        $brandRepository = $this->em->getRepository(Brand::class);
+        /** @var Brand $brand */
+        $brand = $brandRepository->find(2);
+        $domainId = $brand->getDomain()->getId();
+
+        $this->assertEquals(
+            $domainId,
+            4
+        );
+
+        $brand->setDomainUsers('');
+        $this->entityTools
+            ->persist($brand, true);
+
+        /** @var Changelog[] $changelogEntries */
+        $changelogEntries = $this->getChangelogByClass(
+            Domain::class
+        );
+
+        $this->assertCount(1, $changelogEntries);
+        $domainChangelog = $changelogEntries[0];
+
+        $this->assertEquals(
+            $domainChangelog->getEntityId(),
+            $domainId
+        );
+
+        $this->assertEquals(
+            $domainChangelog->getData(),
+            null
+        );
+    }
+
+
+    /**
+     * @test
+     * @deprecated
+     */
+    public function removing_brand_removes_its_domain()
+    {
+        /** @var Brand $brand */
+        $brandRepository = $this->em->getRepository(Brand::class);
+        $brand = $brandRepository->find(2);
+        $domainId = $brand->getDomain()->getId();
+
+        $this->entityTools->remove($brand);
+
+        /** @var Changelog[] $changelogEntries */
+        $changelogEntries = $this->getChangelogByClass(
+            Domain::class
+        );
+
+        $this->assertCount(1, $changelogEntries);
+        $domainChangelog = $changelogEntries[0];
+
+        $this->assertEquals(
+            $domainChangelog->getEntityId(),
+            $domainId
+        );
+
+        $this->assertEquals(
+            $domainChangelog->getData(),
+            null
+        );
+    }
+
 
     /**
      * @return Brand
@@ -87,25 +218,6 @@ class BrandLifeCycleTest extends KernelTestCase
         $this
             ->entityTools
             ->remove($brand);
-    }
-
-    /**
-     * @test
-     */
-    public function it_persists_brands()
-    {
-        $brandRepository = $this->em
-            ->getRepository(Brand::class);
-        $fixtureBrands = $brandRepository->findAll();
-        $brand = $this->addBrand();
-
-        $brands = $brandRepository->findAll();
-        $this->assertCount(count($fixtureBrands) + 1, $brands);
-
-        $this->it_triggers_lifecycle_services();
-        $this->added_brand_has_domain();
-        $this->new_brand_autogenerates_routingPatterns_by_country($brand);
-        $this->new_brand_autogenerates_routingPatternGroups_by_country_zone($brand);
     }
 
     protected function it_triggers_lifecycle_services()
@@ -220,120 +332,6 @@ class BrandLifeCycleTest extends KernelTestCase
         $this->assertCount(
             count($services),
             $brandServices
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_update_lifecycle_services()
-    {
-        $this->updateBrand();
-        $this->assetChangedEntities([
-            Brand::class,
-        ]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_remove_lifecycle_services()
-    {
-        $this->removeBrand();
-        $this->assetChangedEntities([
-            WebPortal::class,
-            MusicOnHold::class,
-            FixedCostsRelInvoice::class,
-            Invoice::class,
-            Locution::class,
-            Recording::class,
-            FaxesInOut::class,
-            Fax::class,
-            TpRatingProfile::class,
-            RatingProfile::class,
-            TpAccountAction::class,
-            FeaturesRelCompany::class,
-            Company::class,
-            Domain::class,
-            FeaturesRelBrand::class,
-            Brand::class,
-        ]);
-    }
-
-    //////////////////////////////////////////
-    //
-    //////////////////////////////////////////
-
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function empty_domain_users_removes_domain()
-    {
-        $brandRepository = $this->em->getRepository(Brand::class);
-        /** @var Brand $brand */
-        $brand = $brandRepository->find(2);
-        $domainId = $brand->getDomain()->getId();
-
-        $this->assertEquals(
-            $domainId,
-            4
-        );
-
-        $brand->setDomainUsers('');
-        $this->entityTools
-            ->persist($brand, true);
-
-        /** @var Changelog[] $changelogEntries */
-        $changelogEntries = $this->getChangelogByClass(
-            Domain::class
-        );
-
-        $this->assertCount(1, $changelogEntries);
-        $domainChangelog = $changelogEntries[0];
-
-        $this->assertEquals(
-            $domainChangelog->getEntityId(),
-            $domainId
-        );
-
-        $this->assertEquals(
-            $domainChangelog->getData(),
-            null
-        );
-    }
-
-
-    /**
-     * @test
-     * @deprecated
-     */
-    public function removing_brand_removes_its_domain()
-    {
-        /** @var Brand $brand */
-        $brandRepository = $this->em->getRepository(Brand::class);
-        $brand = $brandRepository->find(2);
-        $domainId = $brand->getDomain()->getId();
-
-        $this->entityTools->remove($brand);
-
-        /** @var Changelog[] $changelogEntries */
-        $changelogEntries = $this->getChangelogByClass(
-            Domain::class
-        );
-
-        $this->assertCount(1, $changelogEntries);
-        $domainChangelog = $changelogEntries[0];
-
-        $this->assertEquals(
-            $domainChangelog->getEntityId(),
-            $domainId
-        );
-
-        $this->assertEquals(
-            $domainChangelog->getData(),
-            null
         );
     }
 }
