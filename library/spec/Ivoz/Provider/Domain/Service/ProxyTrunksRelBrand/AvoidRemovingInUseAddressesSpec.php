@@ -2,11 +2,11 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\ProxyTrunksRelBrand;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
-use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderRepository;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
 use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand;
@@ -20,6 +20,9 @@ class AvoidRemovingInUseAddressesSpec extends ObjectBehavior
 {
     use HelperTrait;
 
+    /** @var  EntityTools */
+    protected $entityTools;
+
     /** @var  CarrierRepository */
     protected $carrierRepository;
 
@@ -31,6 +34,10 @@ class AvoidRemovingInUseAddressesSpec extends ObjectBehavior
 
     public function let()
     {
+        $this->entityTools = $this->getTestDouble(
+            EntityTools::class
+        );
+
         $this->carrierRepository = $this->getTestDouble(
             CarrierRepository::class
         );
@@ -63,6 +70,7 @@ class AvoidRemovingInUseAddressesSpec extends ObjectBehavior
         );
 
         $this->beConstructedWith(
+            $this->entityTools,
             $this->carrierRepository,
             $this->ddiProviderRepository
         );
@@ -77,6 +85,13 @@ class AvoidRemovingInUseAddressesSpec extends ObjectBehavior
         $carrierResponse = [],
         $ddiProviders = []
     ) {
+        $this
+            ->entityTools
+            ->isScheduledForRemoval(
+                Argument::type(Brand::class)
+            )
+            ->willReturn(false);
+
         $this
             ->carrierRepository
             ->findByBrandAndProxyTrunks(
@@ -94,6 +109,29 @@ class AvoidRemovingInUseAddressesSpec extends ObjectBehavior
             )
             ->willReturn($ddiProviders)
             ->shouldBeCalled();
+    }
+
+    function it_return_if_brand_is_being_removed()
+    {
+        $this
+            ->entityTools
+            ->isScheduledForRemoval(
+                Argument::any()
+            )
+            ->willReturn(true)
+            ->shouldBeCalled();
+
+        $this
+            ->carrierRepository
+            ->findByBrandAndProxyTrunks(
+                Argument::any(),
+                Argument::any()
+            )
+            ->shouldNotBeCalled();
+
+        $this->execute(
+            $this->entity
+        );
     }
 
     function it_allows_deletion_if_none_is_using_it()
