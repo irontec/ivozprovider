@@ -256,7 +256,7 @@ class WsServer extends AbstractWsServer
         $event = $payload['Event'];
 
         if ($event === AbstractCall::HANG_UP) {
-            $this->logger->debug(
+            $this->logger->info(
                 "[DEL] " . $channel
             );
             $this
@@ -269,7 +269,7 @@ class WsServer extends AbstractWsServer
         }
 
         if ($event === AbstractCall::CALL_SETUP) {
-            $this->logger->debug(
+            $this->logger->info(
                 "[SETEX] " . $channel . "\n" . json_encode($payload)
             );
             $this
@@ -295,6 +295,9 @@ class WsServer extends AbstractWsServer
         );
 
         if (!$data) {
+            $this->logger->info(
+                "No data found for call " . $channel
+            );
             return;
         }
 
@@ -306,8 +309,8 @@ class WsServer extends AbstractWsServer
             $logInfo = $event;
         }
 
-        $this->logger->debug(
-            "[SETEX] " . $channel . "\n" . $logInfo
+        $this->logger->info(
+            "[SETEX] " . $channel . " " . $logInfo
         );
         $this
             ->controlRedisClient
@@ -444,7 +447,7 @@ class WsServer extends AbstractWsServer
                 );
 
             if (!$forward) {
-                $this->logger->info(
+                $this->logger->debug(
                     "Do not forward to #" . $fd . " message: " . $argument
                 );
                 continue;
