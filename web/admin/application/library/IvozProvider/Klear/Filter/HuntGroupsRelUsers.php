@@ -70,7 +70,9 @@ class IvozProvider_Klear_Filter_HuntGroupsRelUsers extends IvozProvider_Klear_Fi
             }
         }
 
-        $this->_condition[] = "self::id NOT IN (" . implode(',', $userIdsInUse) . ")";
+        if (!empty($userIdsInUse)) {
+            $this->_condition[] = "self::id NOT IN (" . implode(',', $userIdsInUse) . ")";
+        }
 
         return true;
     }
