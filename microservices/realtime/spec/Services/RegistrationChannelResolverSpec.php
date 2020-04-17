@@ -248,7 +248,7 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
             $this
                 ->companyRepository
                 ->getSupervisedCompanyIdsByAdmin($admin)
-                ->willReturn([$companyId]);
+                ->willReturn([(string) $companyId]);
         }
 
         $carrier = $carrierId
@@ -259,7 +259,7 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
             $this
                 ->carrierRepository
                 ->getCarrierIdsByBrandAdmin($admin)
-                ->willReturn([$carrierId])
+                ->willReturn([(string) $carrierId])
                 ->shouldBeCalled();
         }
 
