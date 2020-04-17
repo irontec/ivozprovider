@@ -65,6 +65,7 @@
         _icons : {
             events: {
                 "Trying": '<span title="Call Setup" class="ui-silk inline ui-silk-disconnect"></span>',
+                "Proceeding": '<span title="Proceeding" class="ui-silk inline ui-silk-connect"></span>',
                 "Early": '<span title="Ringing" class="ui-silk inline ui-silk-bell"></span>',
                 "Confirmed": '<span title="In call" class="ui-silk inline ui-silk-user-comment"></span>',
                 "Terminated": '<span title="In call" class="ui-silk inline ui-silk-stop"></span>'
