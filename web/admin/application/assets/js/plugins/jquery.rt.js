@@ -148,9 +148,9 @@
                     return;
                 }
 
-                var operator = data.CarrierName
-                    ? data.CarrierName
-                    : data.DdiProviderName;
+                var operator = data.Carrier
+                    ? data.Carrier
+                    : data.DdiProvider;
 
                 $(".time",_tr).data('time', data.Time);
                 $(".event",_tr).html(
@@ -161,15 +161,15 @@
                 );
 
 
-                $(".brand",_tr).html(data.BrandName);
+                $(".brand",_tr).html(data.Brand);
                 $(".operator",_tr).html(operator);
-                $(".company",_tr).html(data.CompanyName);
+                $(".company",_tr).html(data.Company);
 
                 $(".caller",_tr).html(data.Caller);
                 $(".callee",_tr).html(data.Callee);
 
                 //Users
-                $(".owner",_tr).html(data.OwnerName);
+                $(".owner",_tr).html(data.Owner);
                 $(".party",_tr).html(data.Party);
             });
 
