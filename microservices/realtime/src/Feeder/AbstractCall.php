@@ -19,6 +19,9 @@ abstract class AbstractCall
     ];
 
     /** @var string */
+    protected $id;
+
+    /** @var string */
     protected $callId;
 
     /** @var string */

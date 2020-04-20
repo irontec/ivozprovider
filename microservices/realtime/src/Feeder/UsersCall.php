@@ -10,6 +10,8 @@ class UsersCall extends AbstractCall
 
     public function __construct()
     {
+        $this->id = Random::alphaNum(8);
+
         $this->callId =
             Random::alphaNum(10)
             . "@"
@@ -50,6 +52,7 @@ class UsersCall extends AbstractCall
         $payload = [
             "Event" => $this->status,
             "Time" => time(),
+            "ID" => $this->id,
             "Call-ID" => $this->callId,
             "Party" => $this->party,
             "BrandId" => 1,
