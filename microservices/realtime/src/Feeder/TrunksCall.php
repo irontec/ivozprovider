@@ -14,6 +14,8 @@ class TrunksCall extends AbstractCall
 
     public function __construct()
     {
+        $this->id = Random::alphaNum(8);
+
         $this->callId =
             Random::alphaNum(8)
             . "-"
@@ -36,6 +38,7 @@ class TrunksCall extends AbstractCall
         $payload = [
             "Event" => $this->status,
             "Time" => time(),
+            "ID" => $this->id,
             "Call-ID" => $this->callId,
             "Caller" => $this->caller,
             "Callee" => $this->callee,

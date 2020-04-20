@@ -104,12 +104,9 @@
 
                 $("tr.loading",self._tab).hide();
 
-                var _callid =
-                    "callid-"
-                    + data['Call-ID'].replace('@', '-').replace(/\./gi, '_');
-
-                if ($("#" + _callid, self._tab).length > 0) {
-                    var _tr = $("#" + _callid, self._tab);
+                var _id = data['ID'];
+                if ($("#" + _id, self._tab).length > 0) {
+                    var _tr = $("#" + _id, self._tab);
 
                     if (data.Event === 'UpdateCLID') {
                         $(".party",_tr).html(data.Party);
@@ -131,9 +128,13 @@
                     return;
 
                 } else if (Object.keys(data).length > 3 && data.Event !== 'Terminated') {
+
+                    var _callid = data['Call-ID'].replace('@', '-').replace(/\./gi, '_');
+
                     var _tr = _trBase
                         .clone()
-                        .attr('id',_callid)
+                        .attr('id',_id)
+                        .data('callid', _callid)
                         .addClass('info')
                         .show();
 
