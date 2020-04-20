@@ -39,42 +39,47 @@ class TrunksCall extends AbstractCall
             "Call-ID" => $this->callId,
             "Caller" => $this->caller,
             "Callee" => $this->callee,
-            "Brand" => 1,
-            "BrandName" => "brand1",
-            "Company" => 1,
-            "CompanyName" => "company1"
+            "BrandId" => 1,
+            "Brand" => "brand1",
+            "CompanyId" => 1,
+            "Company" => "company1"
         ];
 
         $outbound = rand(1, 3) > 1;
         if ($outbound) {
             $payload = $payload + [
                 "Direction" => "outbound",
-                "Carrier" => 1,
-                "CarrierName" => "carrier1"
+                "CarrierId" => 1,
+                "Carrier" => "carrier1"
             ];
 
             $this->channel = sprintf(
                 'trunks:b%d:c%d:cr%d:%s',
-                $payload['Brand'],
-                $payload['Company'],
-                $payload['Carrier'],
+                $payload['BrandId'],
+                $payload['CompanyId'],
+                $payload['CarrierId'],
                 $payload['Call-ID']
             );
         } else {
             $payload = $payload + [
                 "Direction" => "inbound",
-                "DdiProvider" => 1,
-                "DdiProviderName" => 'DdiProvider1',
+                "DdiProviderId" => 1,
+                "DdiProvider" => 'DdiProvider1',
             ];
 
             $this->channel = sprintf(
                 'trunks:b%d:c%d:dp%d:%s',
-                $payload['Brand'],
-                $payload['Company'],
-                $payload['DdiProvider'],
+                $payload['BrandId'],
+                $payload['CompanyId'],
+                $payload['DdiProviderId'],
                 $payload['Call-ID']
             );
         }
+
+        unset($payload['BrandId']);
+        unset($payload['CompanyId']);
+        unset($payload['CarrierId']);
+        unset($payload['DdiProviderId']);
 
         return [
             $this->channel => $payload
