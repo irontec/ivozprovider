@@ -1,19 +1,24 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Service\ProxyTrunksRelBrand;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderRepository;
 use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 
 class AvoidRemovingInUseAddresses implements ProxyTrunksRelBrandLifecycleEventHandlerInterface
 {
+    protected $entityTools;
     protected $carrierRepository;
     protected $ddiProviderRepository;
 
     public function __construct(
+        EntityTools $entityTools,
         CarrierRepository $carrierRepository,
         DdiProviderRepository $ddiProviderRepository
     ) {
+        $this->entityTools = $entityTools;
         $this->carrierRepository = $carrierRepository;
         $this->ddiProviderRepository = $ddiProviderRepository;
     }
@@ -34,6 +39,13 @@ class AvoidRemovingInUseAddresses implements ProxyTrunksRelBrandLifecycleEventHa
     public function execute(ProxyTrunksRelBrandInterface $entity)
     {
         $brand = $entity->getBrand();
+        $isBrandBeingRemoved = $this->entityTools->isScheduledForRemoval(
+            $brand
+        );
+        if ($isBrandBeingRemoved) {
+            return;
+        }
+
         $proxyTrunks = $entity->getProxyTrunk();
 
         $carriers = $this->carrierRepository->findByBrandAndProxyTrunks($brand, $proxyTrunks);
