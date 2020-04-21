@@ -155,6 +155,9 @@ class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
             $billableCallDto->setCost(
                 $carrierRunTpCdr->getCost()
             );
+        } elseif ($trunksCdr->getBounced()) {
+            $billableCallDto
+                ->setCost(0);
         }
 
         $this->entityTools->persistDto(
