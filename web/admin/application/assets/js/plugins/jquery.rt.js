@@ -186,7 +186,7 @@
 
             this._tab.on('ready',function(e,data) {
                 $("tr.connecting",self._tab).hide();
-                $("tr.loading",self._tab).show();
+                $("tr.none",self._tab).show();
             });
 
             this._tab.on('emptyness', function() {
