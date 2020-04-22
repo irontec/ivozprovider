@@ -28,4 +28,10 @@ interface CarrierRepository extends ObjectRepository, Selectable
      * @return mixed
      */
     public function findByProxyTrunks(ProxyTrunkInterface $proxyTrunks);
+
+    /**
+     * @param int $brandId | null
+     * @return string[]
+     */
+    public function getNames($brandId = null);
 }

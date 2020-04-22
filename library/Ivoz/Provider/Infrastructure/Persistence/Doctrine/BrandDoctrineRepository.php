@@ -19,4 +19,24 @@ class BrandDoctrineRepository extends ServiceEntityRepository implements BrandRe
     {
         parent::__construct($registry, Brand::class);
     }
+
+    /**
+     * @return string[]
+     */
+    public function getNames()
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $result = $qb
+            ->select('self.id, self.name')
+            ->getQuery()
+            ->getScalarResult();
+
+        $response = [];
+        foreach ($result as $row) {
+            $response[$row['id']] = $row['name'];
+        }
+
+        return $response;
+    }
 }
