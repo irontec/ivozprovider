@@ -2,6 +2,7 @@
 
 namespace spec\Services;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -20,6 +21,10 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
 {
     use HelperTrait;
 
+    /** @var EntityManagerInterface */
+    private $em;
+
+    private $connection;
     /** @var  AdministratorRepository */
     private $administratorRepository;
     /** @var  CompanyRepository */
@@ -31,6 +36,14 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
 
     function let()
     {
+        $this->em = $this->getTestDouble(
+            EntityManagerInterface::class
+        );
+
+        $this->connection = $this->getTestDouble(
+            \Doctrine\DBAL\Connection::class
+        );
+
         $this->administratorRepository = $this->getTestDouble(
             AdministratorRepository::class
         );
@@ -48,6 +61,7 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
         );
 
         $this->beConstructedWith(
+            $this->em,
             $this->administratorRepository,
             $this->companyRepository,
             $this->carrierRepository,
@@ -62,8 +76,42 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
         );
     }
 
+    function it_reconnectes_if_necessary()
+    {
+        $this
+            ->em
+            ->getConnection()
+            ->wilLReturn($this->connection)
+            ->shouldBeCalled();
+
+        $this
+            ->connection
+            ->ping()
+            ->willReturn(false)
+            ->shouldBeCalled();
+
+        $this
+            ->connection
+            ->close()
+            ->shouldBeCalled();
+
+        $this
+            ->connection
+            ->connect()
+            ->shouldBeCalled();
+
+        $this->criteriaToString(
+            $this->getTokenPayload(),
+            $this->getTrunksRegisterPayload(
+                'trunks'
+            )
+        );
+    }
+
     function it_should_grant_access_to_trunks_to_super_admins()
     {
+        $this->prepareEm();
+
         $subscribe = $this->criteriaToString(
             $this->getTokenPayload(),
             $this->getTrunksRegisterPayload(
@@ -83,6 +131,8 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
 
     function it_should_grant_access_to_users_to_super_admins()
     {
+        $this->prepareEm();
+
         $subscribe = $this->criteriaToString(
             $this->getTokenPayload(),
             $this->getTrunksRegisterPayload(
@@ -102,6 +152,8 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
 
     function it_should_apply_filters()
     {
+        $this->prepareEm();
+
         $subscribe = $this->criteriaToString(
             $this->getTokenPayload(),
             $this->getTrunksRegisterPayload(
@@ -124,6 +176,8 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
 
     function it_should_validate_filters_if_brand_admin()
     {
+        $this->prepareEm();
+
         $tokenPayload = $this->getTokenPayload(
             'ROLE_BRAND_ADMIN'
         );
@@ -170,6 +224,8 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
 
     function it_should_validate_filters_if_company_admin()
     {
+        $this->prepareEm();
+
         $tokenPayload = $this->getTokenPayload(
             'ROLE_COMPANY_ADMIN'
         );
@@ -212,6 +268,21 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
                     $this->getTrunksRegisterPayload(...$filters)
                 ]
             );
+    }
+
+    private function prepareEm()
+    {
+        $this
+            ->em
+            ->getConnection()
+            ->wilLReturn($this->connection)
+            ->shouldBeCalled();
+
+        $this
+            ->connection
+            ->ping()
+            ->willReturn(true)
+            ->shouldBeCalled();
     }
 
     private function prepareRepositories(

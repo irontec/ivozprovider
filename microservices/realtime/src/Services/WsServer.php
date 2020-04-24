@@ -139,7 +139,7 @@ class WsServer extends AbstractWsServer
                     $data['register']
                 );
         } catch (\Exception $e) {
-            $this->logger->info(
+            $this->logger->error(
                 $e->getMessage()
             );
         }
