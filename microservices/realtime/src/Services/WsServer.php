@@ -443,31 +443,34 @@ class WsServer extends AbstractWsServer
                 break;
             }
 
-            $payload = json_decode($argument, true);
+            Coroutine::create(function () use ($server, $fd, $argument) {
 
-            $forward =
-                $payload
-                && in_array(
-                    $payload['Event'] ?? null,
-                    AbstractCall::SIGNIFICANT_CALL_EVENTS,
-                    true
-                );
+                $payload = json_decode($argument, true);
 
-            if (!$forward) {
+                $forward =
+                    $payload
+                    && in_array(
+                        $payload['Event'] ?? null,
+                        AbstractCall::SIGNIFICANT_CALL_EVENTS,
+                        true
+                    );
+
+                if (!$forward) {
+                    $this->logger->debug(
+                        "Do not forward to #" . $fd . " message: " . $argument
+                    );
+                    return;
+                }
+
                 $this->logger->debug(
-                    "Do not forward to #" . $fd . " message: " . $argument
+                    "Pushing to #" . $fd . " message: " . $argument
                 );
-                continue;
-            }
 
-            $this->logger->debug(
-                "Pushing to #" . $fd . " message: " . $argument
-            );
-
-            $server->push(
-                $fd,
-                $argument
-            );
+                $server->push(
+                    $fd,
+                    $argument
+                );
+            });
         }
 
         unset($this->subscribers[$fd]);
