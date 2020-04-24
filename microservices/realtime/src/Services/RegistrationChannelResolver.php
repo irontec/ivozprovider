@@ -2,6 +2,7 @@
 
 namespace Services;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
@@ -10,17 +11,20 @@ use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderRepository;
 
 class RegistrationChannelResolver
 {
+    private $em;
     private $administratorRepository;
     private $companyRepository;
     private $carrierRepository;
     private $ddiProviderRepository;
 
     public function __construct(
+        EntityManagerInterface $em,
         AdministratorRepository $administratorRepository,
         CompanyRepository $companyRepository,
         CarrierRepository $carrierRepository,
         DdiProviderRepository $ddiProviderRepository
     ) {
+        $this->em = $em;
         $this->administratorRepository = $administratorRepository;
         $this->companyRepository = $companyRepository;
         $this->carrierRepository = $carrierRepository;
@@ -31,6 +35,13 @@ class RegistrationChannelResolver
         array $tokenPayload,
         array $registerCriteria
     ) {
+        $connection = $this->em->getConnection();
+        $pingError = !$connection->ping();
+        if ($pingError) {
+            $connection->close();
+            $connection->connect();
+        }
+
         $this->assertAccessGranted(
             $tokenPayload,
             $registerCriteria
@@ -105,7 +116,7 @@ class RegistrationChannelResolver
             $this->assertBrand($admin, $brand);
         }
 
-        $company = (string) $channel['c'] ?? '';
+        $company = strval($channel['c'] ?? '');
         if ($company) {
             $companyIds = $this->companyRepository->getSupervisedCompanyIdsByAdmin(
                 $admin
@@ -122,7 +133,7 @@ class RegistrationChannelResolver
             }
         }
 
-        $carrier = (string) $channel['cr'] ?? '';
+        $carrier = strval($channel['cr'] ?? '');
         if ($carrier) {
             $carrierIds = $this
                 ->carrierRepository
@@ -141,7 +152,7 @@ class RegistrationChannelResolver
             }
         }
 
-        $ddiProvider = $channel['dp'] ?? '';
+        $ddiProvider = strval($channel['dp'] ?? '');
         if ($ddiProvider) {
             $ddiProviderIds = $this
                 ->ddiProviderRepository

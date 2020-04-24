@@ -139,7 +139,7 @@ class WsServer extends AbstractWsServer
                     $data['register']
                 );
         } catch (\Exception $e) {
-            $this->logger->info(
+            $this->logger->error(
                 $e->getMessage()
             );
         }
@@ -212,18 +212,15 @@ class WsServer extends AbstractWsServer
 
     private function initRedisControlClients(RedisConf $redisMaster)
     {
-        Coroutine::create(function () use ($redisMaster) {
+        $messageChannel = new Coroutine\Channel();
 
+        Coroutine::create(function () use ($redisMaster, $messageChannel) {
             $this
                 ->redisPool
                 ->connect(
                     $redisMaster->getHost(),
                     $redisMaster->getPort()
                 );
-
-            $this->controlRedisClient = $this
-                ->redisPool
-                ->get();
 
             $this->controlRedisSubscriber = $this
                 ->redisPool
@@ -238,6 +235,17 @@ class WsServer extends AbstractWsServer
                 ]);
 
             while ($msg = $controlRedisSubscriber->recv()) {
+                $messageChannel->push($msg);
+            }
+        });
+
+        Coroutine::create(function () use ($messageChannel) {
+
+            $this->controlRedisClient = $this
+                ->redisPool
+                ->get();
+
+            while ($msg = $messageChannel->pop()) {
                 $this->updateCurrentCallsStatus(
                     $msg
                 );
@@ -411,22 +419,21 @@ class WsServer extends AbstractWsServer
         $redisClient = $subscriber->getRedisClient();
 
         while ($msg = $redisClient->recv()) {
-            list(, , $command) = $msg;
             $argument = $msg[3] ?? null;
+            if (!$argument) {
+                continue;
+            }
 
+            list(, , $command) = $msg;
             $unsubscribe =
                 $command == Subscriber::UNSUBSCRIBE_CHANNEL
                 && $argument === (string) $fd;
 
             if ($unsubscribe) {
-                $this->logger->debug(
+                $this->logger->info(
                     'Unsubscribe on #' . $fd
                 );
                 break;
-            }
-
-            if (!$argument) {
-                continue;
             }
 
             if (!isset($server->connections[$fd])) {
@@ -436,31 +443,34 @@ class WsServer extends AbstractWsServer
                 break;
             }
 
-            $payload = json_decode($argument, true);
+            Coroutine::create(function () use ($server, $fd, $argument) {
 
-            $forward =
-                $payload
-                && in_array(
-                    $payload['Event'] ?? null,
-                    AbstractCall::SIGNIFICANT_CALL_EVENTS,
-                    true
-                );
+                $payload = json_decode($argument, true);
 
-            if (!$forward) {
+                $forward =
+                    $payload
+                    && in_array(
+                        $payload['Event'] ?? null,
+                        AbstractCall::SIGNIFICANT_CALL_EVENTS,
+                        true
+                    );
+
+                if (!$forward) {
+                    $this->logger->debug(
+                        "Do not forward to #" . $fd . " message: " . $argument
+                    );
+                    return;
+                }
+
                 $this->logger->debug(
-                    "Do not forward to #" . $fd . " message: " . $argument
+                    "Pushing to #" . $fd . " message: " . $argument
                 );
-                continue;
-            }
 
-            $this->logger->debug(
-                "Pushing to #" . $fd . " message: " . $argument
-            );
-
-            $server->push(
-                $fd,
-                $argument
-            );
+                $server->push(
+                    $fd,
+                    $argument
+                );
+            });
         }
 
         unset($this->subscribers[$fd]);
