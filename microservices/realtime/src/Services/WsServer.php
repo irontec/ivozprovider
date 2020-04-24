@@ -419,22 +419,21 @@ class WsServer extends AbstractWsServer
         $redisClient = $subscriber->getRedisClient();
 
         while ($msg = $redisClient->recv()) {
-            list(, , $command) = $msg;
             $argument = $msg[3] ?? null;
+            if (!$argument) {
+                continue;
+            }
 
+            list(, , $command) = $msg;
             $unsubscribe =
                 $command == Subscriber::UNSUBSCRIBE_CHANNEL
                 && $argument === (string) $fd;
 
             if ($unsubscribe) {
-                $this->logger->debug(
+                $this->logger->info(
                     'Unsubscribe on #' . $fd
                 );
                 break;
-            }
-
-            if (!$argument) {
-                continue;
             }
 
             if (!isset($server->connections[$fd])) {
