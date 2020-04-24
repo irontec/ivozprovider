@@ -105,7 +105,7 @@ class RegistrationChannelResolver
             $this->assertBrand($admin, $brand);
         }
 
-        $company = (string) $channel['c'] ?? '';
+        $company = strval($channel['c'] ?? '');
         if ($company) {
             $companyIds = $this->companyRepository->getSupervisedCompanyIdsByAdmin(
                 $admin
@@ -122,7 +122,7 @@ class RegistrationChannelResolver
             }
         }
 
-        $carrier = (string) $channel['cr'] ?? '';
+        $carrier = strval($channel['cr'] ?? '');
         if ($carrier) {
             $carrierIds = $this
                 ->carrierRepository
@@ -141,7 +141,7 @@ class RegistrationChannelResolver
             }
         }
 
-        $ddiProvider = $channel['dp'] ?? '';
+        $ddiProvider = strval($channel['dp'] ?? '');
         if ($ddiProvider) {
             $ddiProviderIds = $this
                 ->ddiProviderRepository
