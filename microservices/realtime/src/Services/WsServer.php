@@ -212,18 +212,15 @@ class WsServer extends AbstractWsServer
 
     private function initRedisControlClients(RedisConf $redisMaster)
     {
-        Coroutine::create(function () use ($redisMaster) {
+        $messageChannel = new Coroutine\Channel();
 
+        Coroutine::create(function () use ($redisMaster, $messageChannel) {
             $this
                 ->redisPool
                 ->connect(
                     $redisMaster->getHost(),
                     $redisMaster->getPort()
                 );
-
-            $this->controlRedisClient = $this
-                ->redisPool
-                ->get();
 
             $this->controlRedisSubscriber = $this
                 ->redisPool
@@ -238,6 +235,17 @@ class WsServer extends AbstractWsServer
                 ]);
 
             while ($msg = $controlRedisSubscriber->recv()) {
+                $messageChannel->push($msg);
+            }
+        });
+
+        Coroutine::create(function () use ($messageChannel) {
+
+            $this->controlRedisClient = $this
+                ->redisPool
+                ->get();
+
+            while ($msg = $messageChannel->pop()) {
                 $this->updateCurrentCallsStatus(
                     $msg
                 );
