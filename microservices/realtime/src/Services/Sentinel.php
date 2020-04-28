@@ -101,30 +101,40 @@ class Sentinel
         $this->logger->info(
             "Sentinel pSubscribe *"
         );
-        $sentinelCo->pSubscribe(['']);
+        $sentinelCo->pSubscribe(['*']);
 
         while ($msg = $sentinelCo->recv()) {
             if (count($msg) < 4) {
                 continue;
             }
 
+            $significantEvents = [
+                'down' => '+sdown',
+                'switch' => '+switch-master',
+            ];
             $event = $msg[2];
-            if ($event !== '+sdown') {
+
+            if (!in_array($event, $significantEvents, true)) {
                 continue;
             }
 
             $masterName = $this->master->getName();
-            $isOurMasterAffected = false !== strpos(
+            $masterIsDown = false !== strpos(
                 $msg[3],
                 'master ' . $masterName . ' '
             );
+            $masterHasSwitched = $event === $significantEvents['switch'];
 
-            if (!$isOurMasterAffected) {
+            if (!$masterIsDown && !$masterHasSwitched) {
                 continue;
             }
 
-            $this->logger->critical(
-                "Redis master is down"
+            $logMsg = $masterIsDown
+                ? "Redis master is down"
+                : 'Redis master has changed';
+
+            $this->logger->error(
+                $logMsg
             );
 
             $this->channel->push(
