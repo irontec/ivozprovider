@@ -96,8 +96,6 @@ abstract class AbstractWsServer
         $this
             ->server
             ->shutdown();
-
-        exit;
     }
 
     protected function bindWorkerEvents(
