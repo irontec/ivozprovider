@@ -205,6 +205,11 @@ class UserCallAction
      */
     private function getDialTimeout()
     {
+        // Ignore user timeout if User call forwards are disabled
+        if (!$this->allowCallForwards) {
+            return "";
+        }
+
         $timeout = null;
 
         // Get active NoAnswer call forwards
