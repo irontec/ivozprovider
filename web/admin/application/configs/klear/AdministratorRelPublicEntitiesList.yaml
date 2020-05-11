@@ -16,7 +16,7 @@ production:
       pagination:
         items: 25
       <<: *AdministratorRelPublicEntities
-      class: fa fa-users red
+      class: ui-silk-key
       title: _("List of %s %2s", ngettext('Administrator access privilege', 'Administrator access privileges', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink

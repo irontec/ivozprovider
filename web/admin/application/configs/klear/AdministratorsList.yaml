@@ -13,7 +13,7 @@ production:
       pagination:
         items: 25
       <<: *Administrators
-      class: fa fa-users red
+      class: ui-silk-tux
       title: _("List of %s %2s", ngettext('Main operator', 'Main operators', 0), "[format| (%parent%)]")
       rawCondition: "Administrator.id != 0"
       info:
