@@ -1,4 +1,16 @@
 # Changelog
+## 2.15.1
+* Endpoints:
+    - 
+* Models:
+    - Friend:
+        - Set transport property as nullable
+    - HuntGroup:
+        - Set ringAllTimeout property as nullable
+    - ResidentialDevice:
+        - Set transport property as nullable
+    - RetailAccount:
+        - Set transport property as nullable
 
 ## 2.15
 * Endpoints:
