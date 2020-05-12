@@ -148,7 +148,7 @@ class RegistrationChannelResolver
             );
 
             if (!$validCarrier) {
-                throw new \Exception('Company id is not valid');
+                throw new \Exception('Carrier id is not valid');
             }
         }
 

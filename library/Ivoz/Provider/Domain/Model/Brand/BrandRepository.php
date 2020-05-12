@@ -7,5 +7,8 @@ use Doctrine\Common\Persistence\ObjectRepository;
 
 interface BrandRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @return string[]
+     */
+    public function getNames();
 }

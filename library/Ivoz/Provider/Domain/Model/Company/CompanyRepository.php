@@ -25,4 +25,10 @@ interface CompanyRepository extends ObjectRepository, Selectable
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface[]
      */
     public function getPrepaidCompanies();
+
+    /**
+     * @param int $brandId | null
+     * @return string[]
+     */
+    public function getNames($brandId = null);
 }

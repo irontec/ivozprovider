@@ -79,4 +79,33 @@ class DdiProviderDoctrineRepository extends ServiceEntityRepository implements D
 
         return $response;
     }
+
+    /**
+     * @param int $brandId | null
+     * @return string[]
+     */
+    public function getNames($brandId = null)
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $qb->select('self.id, self.name');
+
+        if ($brandId) {
+            $qb->where(
+                $qb->expr()->eq('self.brand', $brandId)
+            );
+        }
+
+        $result = $qb
+            ->select('self.id, self.name')
+            ->getQuery()
+            ->getScalarResult();
+
+        $response = [];
+        foreach ($result as $row) {
+            $response[$row['id']] = $row['name'];
+        }
+
+        return $response;
+    }
 }
