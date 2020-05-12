@@ -36,6 +36,12 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
     protected function sanitizeValues()
     {
         $this->sanitizeRouteValues('NoAnswer');
+
+        $isRingAll = $this->getStrategy() === HuntGroupInterface::STRATEGY_RINGALL;
+        $nullTimeout = is_null($this->getRingAllTimeout());
+        if ($isRingAll && $nullTimeout) {
+            throw new \DomainException('Empty ring all timeout');
+        }
     }
 
     /**
