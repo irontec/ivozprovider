@@ -137,12 +137,12 @@ production:
           'static':
             title: _("Static")
             visualFilter:
-              show: [ carrier, prefix, forceClid, clidCountry, clid ]
+              show: [ carrier, prefix, forceClid, clidCountry, clid, weight, priority ]
               hide: [ relCarriers ]
           'lcr':
             title: _("LCR")
             visualFilter:
-              show: [ relCarriers ]
+              show: [ relCarriers, weight, priority ]
               hide: [ carrier, prefix, forceClid, clidCountry, clid ]
           'block':
             title: _("Block")
