@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.15.1
+* Endpoints:
+    - Added [GET] /proxy_trunks
+* Models:
+    - Friend:
+        - Set transport property as nullable
+    - ProxyTrunk
+        - Added entity
+    - ResidentialDevice:
+        - Set transport property as nullable
+    - RetailAccount:
+        - Set transport property as nullable
+ 
 ## 2.15
 * Endpoints:
     - Added [GET] /administrator_rel_public_entities
