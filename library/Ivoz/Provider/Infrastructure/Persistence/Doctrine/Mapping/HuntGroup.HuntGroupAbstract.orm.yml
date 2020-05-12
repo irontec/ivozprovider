@@ -32,7 +32,7 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupAbstract:
         comment: '[enum:ringAll|linear|roundRobin|random]'
     ringAllTimeout:
       type: smallint
-      nullable: false
+      nullable: true
       options:
         unsigned: false
       column: ringAllTimeout
