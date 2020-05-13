@@ -126,7 +126,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'tpid' => $this->getTpid(),
             'direction' => $this->getDirection(),
             'tenant' => $this->getTenant(),
@@ -143,6 +143,19 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'outgoingRouting' => $this->getOutgoingRouting()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

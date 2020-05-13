@@ -190,6 +190,20 @@ Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
     get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+
+Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand:
+  itemOperations:
+    get:
+      depth: 1
+    put: ~
+    delete: ~
+  collectionOperations:
+    get:
+      depth: 1
+    post: ~
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+
 Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser:
   itemOperations:
     get: ~

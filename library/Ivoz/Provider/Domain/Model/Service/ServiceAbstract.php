@@ -29,12 +29,12 @@ abstract class ServiceAbstract
     protected $extraArgs = false;
 
     /**
-     * @var Name
+     * @var Name | null
      */
     protected $name;
 
     /**
-     * @var Description
+     * @var Description | null
      */
     protected $description;
 

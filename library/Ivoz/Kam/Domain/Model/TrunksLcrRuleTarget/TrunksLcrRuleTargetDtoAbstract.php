@@ -78,7 +78,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'lcrId' => $this->getLcrId(),
             'priority' => $this->getPriority(),
             'weight' => $this->getWeight(),
@@ -87,6 +87,19 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
             'gw' => $this->getGw(),
             'outgoingRouting' => $this->getOutgoingRouting()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

@@ -73,7 +73,7 @@ Feature: Retrieve administrators
     """
       {
           "username": "admin",
-          "pass": "****",
+          "pass": "*****",
           "email": "admin@example.com",
           "active": true,
           "restricted": false,

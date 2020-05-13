@@ -153,7 +153,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'type' => $this->getType(),
             'priority' => $this->getPriority(),
             'weight' => $this->getWeight(),
@@ -175,6 +175,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             'lcrRuleTargets' => $this->getLcrRuleTargets(),
             'relCarriers' => $this->getRelCarriers()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

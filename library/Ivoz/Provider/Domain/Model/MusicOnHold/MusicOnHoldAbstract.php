@@ -25,12 +25,12 @@ abstract class MusicOnHoldAbstract
     protected $status;
 
     /**
-     * @var OriginalFile
+     * @var OriginalFile | null
      */
     protected $originalFile;
 
     /**
-     * @var EncodedFile
+     * @var EncodedFile | null
      */
     protected $encodedFile;
 

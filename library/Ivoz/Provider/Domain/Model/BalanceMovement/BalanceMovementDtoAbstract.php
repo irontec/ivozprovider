@@ -72,7 +72,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'amount' => $this->getAmount(),
             'balance' => $this->getBalance(),
             'createdOn' => $this->getCreatedOn(),
@@ -80,6 +80,19 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'carrier' => $this->getCarrier()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

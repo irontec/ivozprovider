@@ -90,7 +90,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'cost' => $this->getCost(),
             'connectFee' => $this->getConnectFee(),
             'rateIncrement' => $this->getRateIncrement(),
@@ -101,6 +101,19 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
             'destinationRateGroup' => $this->getDestinationRateGroup(),
             'destination' => $this->getDestination()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

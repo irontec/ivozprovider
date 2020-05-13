@@ -4,6 +4,10 @@ namespace Ivoz\Provider\Domain\Model\Administrator;
 
 class AdministratorDto extends AdministratorDtoAbstract
 {
+    protected $sensitiveFields = [
+        'pass',
+    ];
+
     /**
      * @inheritdoc
      * @codeCoverageIgnore
@@ -27,17 +31,6 @@ class AdministratorDto extends AdministratorDtoAbstract
         if ($role === 'ROLE_BRAND_ADMIN') {
             unset($response['brandId']);
         }
-
-        return $response;
-    }
-
-    public function toArray($hideSensitiveData = false)
-    {
-        $response = parent::toArray($hideSensitiveData);
-        if (!$hideSensitiveData) {
-            return $response;
-        }
-        $response['pass'] = '****';
 
         return $response;
     }

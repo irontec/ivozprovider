@@ -19,7 +19,7 @@ abstract class LanguageAbstract
     protected $iden;
 
     /**
-     * @var Name
+     * @var Name | null
      */
     protected $name;
 

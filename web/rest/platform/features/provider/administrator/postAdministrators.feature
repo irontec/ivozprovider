@@ -31,7 +31,7 @@ Feature: Create administrators
     """
       {
           "username": "post-test",
-          "pass": "****",
+          "pass": "*****",
           "email": "post-test@example.com",
           "active": true,
           "restricted": false,
@@ -55,7 +55,7 @@ Feature: Create administrators
     """
       {
           "username": "post-test",
-          "pass": "****",
+          "pass": "*****",
           "email": "post-test@example.com",
           "active": true,
           "restricted": false,

@@ -695,7 +695,7 @@ abstract class CarrierServerAbstract
     /**
      * Set lcrGateway
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway | null
      *
      * @return static
      */
@@ -709,7 +709,7 @@ abstract class CarrierServerAbstract
     /**
      * Get lcrGateway
      *
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface | null
      */
     public function getLcrGateway()
     {

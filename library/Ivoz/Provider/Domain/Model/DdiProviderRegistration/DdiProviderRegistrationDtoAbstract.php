@@ -108,7 +108,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'username' => $this->getUsername(),
             'domain' => $this->getDomain(),
             'realm' => $this->getRealm(),
@@ -122,6 +122,19 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
             'trunksUacreg' => $this->getTrunksUacreg(),
             'ddiProvider' => $this->getDdiProvider()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

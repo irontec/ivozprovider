@@ -96,7 +96,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'tpid' => $this->getTpid(),
             'tag' => $this->getTag(),
             'years' => $this->getYears(),
@@ -108,6 +108,19 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'ratingPlan' => $this->getRatingPlan()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

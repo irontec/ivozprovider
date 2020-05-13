@@ -119,7 +119,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     /**
      * Get lcrGateway
      *
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface | null
      */
     public function getLcrGateway();
 

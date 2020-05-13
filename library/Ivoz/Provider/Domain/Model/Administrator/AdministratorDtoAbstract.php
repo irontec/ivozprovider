@@ -107,7 +107,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'username' => $this->getUsername(),
             'pass' => $this->getPass(),
             'email' => $this->getEmail(),
@@ -121,6 +121,19 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
             'timezone' => $this->getTimezone(),
             'relPublicEntities' => $this->getRelPublicEntities()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

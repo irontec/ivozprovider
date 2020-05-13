@@ -1,4 +1,10 @@
 # Changelog
+## 2.15.1
+* Endpoints:
+    - Added /proxy_trunks_rel_brands
+* Models:
+    - ProxyTrunksRelBrand:
+        - Added entity
 
 ## 2.15
 * Endpoints:

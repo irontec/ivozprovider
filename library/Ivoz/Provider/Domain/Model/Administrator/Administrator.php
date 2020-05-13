@@ -18,12 +18,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
      */
     public function getChangeSet()
     {
-        $changeSet = parent::getChangeSet();
-        if (isset($changeSet['pass'])) {
-            $changeSet['pass'] = '****';
-        }
-
-        return $changeSet;
+        return parent::getChangeSet();
     }
 
     /**
@@ -74,7 +69,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
             return true;
         }
 
-        return !is_null($this->getBrand());
+        return is_null($this->getCompany());
     }
 
     /**
@@ -83,10 +78,6 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
      */
     public function isCompanyAdmin()
     {
-        if ($this->isBrandAdmin()) {
-            return true;
-        }
-
         return !is_null($this->getCompany());
     }
 

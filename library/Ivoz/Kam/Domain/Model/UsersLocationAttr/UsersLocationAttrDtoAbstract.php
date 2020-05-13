@@ -84,7 +84,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'ruid' => $this->getRuid(),
             'username' => $this->getUsername(),
             'domain' => $this->getDomain(),
@@ -94,6 +94,19 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
             'lastModified' => $this->getLastModified(),
             'id' => $this->getId()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

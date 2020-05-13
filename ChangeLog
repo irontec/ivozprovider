@@ -1,3 +1,30 @@
+Web, 12 May 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.15.1 released
+
+    * Application Server
+        - Ignore user call timeout when call forwards are disabled
+
+    * Proxies
+        - Roadwarrior registration ip filter fix
+        - Fix unreachable cfwd for direct retails
+        - Improve wholesale call logic
+        - No carrierId for bounced calls
+        - Patch Kamailio-redis reconnection logic
+        - Realtime fix edge cases
+
+    * Billing
+        - No cost calculation for bounced calls
+
+    * Recordings
+        - Fixed recording speed when call had silent RTP gaps
+
+    * Portals
+        - New ALG/STUN guesser on register status
+        - New restriction in destination rates file importer maximum length, up to 75000 lines
+        - New realtime calls filter form
+        - Several realtime bug fixes
+
 Web, 08 Apr 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.15.0 released
@@ -1100,4 +1127,3 @@ Mon Nov 14 19:12:30 2016 +0100 IvozProvider Development Team <vozip+ivozprovider
 
     * IvozProvider 1.0 released
     * Initial release
-

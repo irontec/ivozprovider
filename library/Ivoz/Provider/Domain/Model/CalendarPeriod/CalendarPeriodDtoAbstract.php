@@ -101,7 +101,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'startDate' => $this->getStartDate(),
             'endDate' => $this->getEndDate(),
             'routeType' => $this->getRouteType(),
@@ -114,6 +114,19 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
             'numberCountry' => $this->getNumberCountry(),
             'relSchedules' => $this->getRelSchedules()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

@@ -75,7 +75,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'domain' => $this->getDomain(),
             'pointsTo' => $this->getPointsTo(),
             'description' => $this->getDescription(),
@@ -84,6 +84,19 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
             'residentialDevices' => $this->getResidentialDevices(),
             'terminals' => $this->getTerminals()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

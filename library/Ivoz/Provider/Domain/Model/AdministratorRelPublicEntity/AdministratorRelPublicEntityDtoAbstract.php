@@ -78,7 +78,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'create' => $this->getCreate(),
             'read' => $this->getRead(),
             'update' => $this->getUpdate(),
@@ -87,6 +87,19 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
             'administrator' => $this->getAdministrator(),
             'publicEntity' => $this->getPublicEntity()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

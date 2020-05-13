@@ -66,13 +66,26 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'priority' => $this->getPriority(),
             'policy' => $this->getPolicy(),
             'id' => $this->getId(),
             'callAcl' => $this->getCallAcl(),
             'matchList' => $this->getMatchList()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

@@ -150,7 +150,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'name' => $this->getName(),
             'unit' => $this->getUnit(),
             'frequency' => $this->getFrequency(),
@@ -171,6 +171,19 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
             'fax' => $this->getFax(),
             'friend' => $this->getFriend()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

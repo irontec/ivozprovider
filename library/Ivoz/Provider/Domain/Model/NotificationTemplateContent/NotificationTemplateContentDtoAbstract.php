@@ -84,7 +84,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'fromName' => $this->getFromName(),
             'fromAddress' => $this->getFromAddress(),
             'subject' => $this->getSubject(),
@@ -94,6 +94,19 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
             'notificationTemplate' => $this->getNotificationTemplate(),
             'language' => $this->getLanguage()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

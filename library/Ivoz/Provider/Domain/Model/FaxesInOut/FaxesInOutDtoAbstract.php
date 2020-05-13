@@ -106,7 +106,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'calldate' => $this->getCalldate(),
             'src' => $this->getSrc(),
             'dst' => $this->getDst(),
@@ -122,6 +122,19 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
             'fax' => $this->getFax(),
             'dstCountry' => $this->getDstCountry()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

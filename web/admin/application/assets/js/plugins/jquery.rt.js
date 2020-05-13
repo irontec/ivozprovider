@@ -51,10 +51,16 @@
         },
         _init: function() {
 
-            var $template = $.tmpl(
-                this.options.data.template,
+            var filters = $.tmpl(
+                'rt-filters',
                 this.options.data,
                 $.klearmatrix.template.helper
+            );
+
+            this.options.data.filterForm = filters.html();
+
+            var $template = this._loadTemplate(
+                this.options.data.template
             );
 
             $(this.element.klearModule("getPanel")).append($template);
@@ -198,7 +204,6 @@
             });
             this._connect.apply(this);
 
-
             var timeReresh = function () {
                 var timestamps = $("tr.info:not(.terminated) .time", self._tab);
 
@@ -237,6 +242,276 @@
                 setTimeout(timeReresh, 1000);
             };
             timeReresh();
+
+            this._initFilterForm();
+        },
+        _initFilterForm: function () {
+
+            var self = this.element;
+            var _self = this;
+            var panel = this.element.klearModule("getPanel");
+            var $applyFilters = $("input[name=applyFilters]", panel);
+
+            $(".klearMatrixFiltering span.addTerm", panel).on('click', function (e, noNewValue) {
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                var $holder = $(this).parents(".klearMatrixFiltering");
+                var $_term = $("input.term", $holder);
+                var $_field = $("select[name=searchField]", $holder);
+
+                var _dispatchOptions = $(self).klearModule("option", "dispatchOptions");
+
+                var fieldName = $_field.val();
+
+                _dispatchOptions.post = _dispatchOptions.post || {};
+                _dispatchOptions.post.searchFields = _dispatchOptions.post.searchFields || {};
+                _dispatchOptions.post.searchOps = _dispatchOptions.post.searchOps || {};
+
+                _dispatchOptions.post.searchFields[fieldName] = _dispatchOptions.post.searchFields[fieldName] || [];
+                _dispatchOptions.post.searchOps[fieldName] = _dispatchOptions.post.searchOps[fieldName] || [];
+
+                if (noNewValue !== true) {
+
+                    if ((($_term.data('autocomplete')) && (!$_term.data('idItem')) ) ||
+                        ($_term.val() == '')) {
+
+                        $(this).parents(".filterItem:eq(0)").effect("shake", {times: 3}, 60);
+                        return;
+                    }
+
+                    $_term.attr("disabled", "disabled");
+                    $_field.attr("disabled", "disabled");
+
+                    var isDatePicker = $_term.hasClass('hasDatepicker');
+                    if (isDatePicker) {
+                        var currentFormat = $_term.datepicker("option", 'dateFormat');
+                        $_term.datepicker("option", 'dateFormat', 'yy-mm-dd');
+                    }
+                    var _newVal = ($_term.data('autocomplete')) ? $_term.data('idItem') : $_term.val();
+                    if (isDatePicker) {
+                        $_term.datepicker("option", 'dateFormat', currentFormat);
+                    }
+
+                    _dispatchOptions.post.searchFields[fieldName].push(_newVal);
+
+                    var _searchOp = 'eq';
+                    if ($("select[name=searchOption]", $holder).parent("span").is(":visible")) {
+                        _searchOp = $("select[name=searchOption]", $holder).val();
+                    }
+
+                    _dispatchOptions.post.searchOps[fieldName].push(_searchOp);
+
+                }
+
+                _dispatchOptions.post.searchAddModifier = $("input[name=addFilters]:checked", panel).length;
+
+                if ($applyFilters.length > 0) {
+                    _dispatchOptions.post.applySearchFilters = ( $applyFilters.is(':checked') ) ? 1 : 0;
+                } else {
+                    _dispatchOptions.post.applySearchFilters = 1;
+                }
+                _dispatchOptions.post.page = 1;
+
+                $(self)
+                    .klearModule("option", "dispatchOptions", _dispatchOptions)
+                    .klearModule("reDispatch");
+            });
+
+            $(".klearMatrixFiltering", panel).on('keydown', 'input.term', function (e) {
+
+                if (e.keyCode == 13) {
+                    // Wait for select event to happed (autocomplete)
+                    var $target = $(this);
+                    setTimeout(function () {
+                        $("span.addTerm", $target.parents(".klearMatrixFiltering")).trigger("click");
+                    }, 10);
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            });
+
+            $(".klearMatrixFiltering input[name=addFilters]", panel).on('change', function (e) {
+
+                if ($(".klearMatrixFiltering .filteredFields .field", panel).length <= 1) {
+                    return;
+                }
+
+                $("span.addTerm", panel).trigger("click", true);
+            });
+
+            $applyFilters.on('change', function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                $("span.addTerm", panel).trigger("click", true);
+            });
+
+            $(".klearMatrixFiltering .filteredFields", panel).on('click', '.ui-silk-cancel', function (e) {
+
+                var fieldName = $(this).parents("span.field:eq(0)").data("field");
+                var idxToRemove = $(this).data("idx");
+                var _dispatchOptions = $(self).klearModule("option", "dispatchOptions");
+
+                if (!_dispatchOptions.post.searchFields[fieldName]) {
+                    return;
+                }
+                _dispatchOptions.post.searchFields[fieldName].splice(idxToRemove, 1);
+                _dispatchOptions.post.searchOps[fieldName].splice(idxToRemove, 1);
+                _dispatchOptions.post.page = 1;
+
+                $(self)
+                    .klearModule("option", "dispatchOptions", _dispatchOptions)
+                    .klearModule("reDispatch");
+
+            });
+
+            $(".klearMatrixFilteringForm", panel).form();
+
+            var currentPlugin = false;
+            var originalSearchField = $(".klearMatrixFiltering input.term", panel).clone();
+
+            $(".klearMatrixFiltering select[name=searchField]", panel).on('manualchange.searchValues', function (e, manual) {
+
+                var column = $.klearmatrix.template.helper.getColumn(_self.options.data.columns, $(this).val());
+
+                var availableValues = {};
+                var $container = $(".klearMatrixFiltering", panel);
+                var searchField = $("input.term", $container);
+                var searchOption = $("span.searchOption", $container);
+
+                if (false !== currentPlugin) {
+
+                    searchField[currentPlugin]("destroy");
+                    currentPlugin = false;
+                }
+
+                var _newField = originalSearchField.clone();
+                searchField = searchField.replaceWith(_newField);
+                searchField = _newField;
+
+                column.search = column.search || {};
+
+                //TODO: Determinar cuando mostrar el searchOption (=/</>) desde el controlador
+                if (column.config && column.config['plugin'] && column.config['plugin'].match(/date|time/g)) {
+                    column.search.options = true;
+                }
+
+                if (column.search.options) {
+                    searchOption.show();
+                } else {
+                    searchOption.hide();
+                }
+
+                $container.find("span.infoShow").remove();
+                $container.find("div.infoDiv").remove();
+
+                if (column.search.info) {
+                    $("<span />")
+                        .attr("class", "infoShow ui-silk ui-silk-help inline")
+                        .prependTo($(".filterItem", $container))
+                        .on('click', function (e) {
+                            if ($('div.infoDiv').is(':visible')) {
+                                $('div.infoDiv').slideUp('fast');
+                            } else {
+                                $('div.infoDiv').slideDown('fast');
+                            }
+                        });
+
+                    $("<div>" + column.search.info + "</div>")
+                        .attr("class", "infoDiv hidden")
+                        .prependTo($(".filterItem", $container));
+                }
+
+                switch (true) {
+                    // un select!
+                    case  (column.type == 'select'):
+                    case  (column.type == 'multiselect'):
+                        var _availableValues = $.klearmatrix.template.helper.getValuesFromSelectColumn(column);
+
+                        var sourcedata = [];
+                        $.each(_availableValues, function (i, val) {
+                            sourcedata.push({label: val, id: i});
+                        });
+
+                        searchField.autocomplete({
+                            minLength: 0,
+                            source: sourcedata,
+                            select: function (event, ui) {
+                                searchField.val(ui.item.label);
+                                searchField.data('idItem', ui.item.id);
+                                return false;
+                            }
+                        }).data("autocomplete")._renderItem = function (ul, item) {
+                            return $("<li></li>")
+                                .data("item.autocomplete", item)
+                                .append("<a>" + item.label + "</a>")
+                                .appendTo(ul);
+                        };
+                        currentPlugin = 'autocomplete';
+
+                        break;
+
+                    // TODO, hacer que esta configuración venga de serie en column.search
+                    case (column.config && typeof column.config['plugin'] == 'string'):
+                        var _pluginName = column.config['plugin'];
+                        currentPlugin = _pluginName;
+                        var _settings = column.config['settings'] || {};
+                        searchField[_pluginName](_settings);
+                        break;
+
+                    case (column.search.plugin && typeof column.search.plugin == 'string'):
+                        var _pluginName = column.config['plugin'];
+                        currentPlugin = column.search.plugin;
+                        var _settings = column.search.settings || {};
+                        searchField[column.search.plugin](_settings);
+                        break;
+                    default:
+
+                        break;
+                }
+
+                if (manual !== true && !$(searchField).hasClass("hasDatepicker")) {
+                    searchField.focus();
+                }
+
+            }).trigger('manualchange.searchValues', true);
+
+            $(".klearMatrixFiltering select[name=searchField]", panel).trigger("manualchange");
+
+            var $filteredFields = $(".klearMatrixFiltering .filteredFields", panel);
+            $(".klearMatrixFiltering .title", panel).on('click', function (e, i) {
+
+                var $searchForm = $(this).parents("form:eq(0)");
+                var target = ".filterItem";
+
+                if ($applyFilters.is(':checked') == false
+                    && $filteredFields.find('.field').length > 0) {
+
+                    target = ".filteredFields";
+
+                }
+
+                if ($searchForm.hasClass("not-loaded")) {
+                    $(target, $searchForm).slideDown(function () {
+                        $searchForm.removeClass("not-loaded");
+                    });
+                } else {
+                    $(target, $searchForm).slideUp(function () {
+                        $searchForm.addClass("not-loaded");
+                    });
+                }
+            });
+
+            if ($applyFilters.is(':checked') == false
+                && $filteredFields.find('.field').length > 0) {
+
+                $filteredFields.css('opacity', '0.5');
+                $filteredFields.unbind('click');
+                $('.preconfiguredFilters, .filterItem', panel).hide();
+
+                $(".klearMatrixFilteringForm:eq(0)", panel).addClass('not-loaded');
+            }
         },
         _hideRow: function(_tr) {
             var self = this;

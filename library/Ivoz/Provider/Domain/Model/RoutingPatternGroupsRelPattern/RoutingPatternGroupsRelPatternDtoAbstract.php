@@ -54,11 +54,24 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'id' => $this->getId(),
             'routingPattern' => $this->getRoutingPattern(),
             'routingPatternGroup' => $this->getRoutingPatternGroup()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

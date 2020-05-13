@@ -10,6 +10,8 @@ class UsersCall extends AbstractCall
 
     public function __construct()
     {
+        $this->id = Random::alphaNum(8);
+
         $this->callId =
             Random::alphaNum(10)
             . "@"
@@ -50,24 +52,29 @@ class UsersCall extends AbstractCall
         $payload = [
             "Event" => $this->status,
             "Time" => time(),
+            "ID" => $this->id,
             "Call-ID" => $this->callId,
             "Party" => $this->party,
-            "Brand" => 1,
-            "BrandName" => "brand1",
-            "Company" => 1,
-            "CompanyName" => "company1",
+            "BrandId" => 1,
+            "Brand" => "brand1",
+            "CompanyId" => 1,
+            "Company" => "company1",
             "Direction" => "outbound",
-            "Owner" => "u1",
-            "OwnerName" => "user1"
+            "OwnerId" => "u1",
+            "Owner" => "user1"
         ];
 
         $this->channel = sprintf(
             'users:b%d:c%d:%s:%s',
-            $payload['Brand'],
-            $payload['Company'],
-            $payload['Owner'],
+            $payload['BrandId'],
+            $payload['CompanyId'],
+            $payload['OwnerId'],
             $payload['Call-ID']
         );
+
+        unset($payload['BrandId']);
+        unset($payload['CompanyId']);
+        unset($payload['OwnerId']);
 
         return [
             $this->channel => $payload

@@ -18,12 +18,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
      */
     public function getChangeSet()
     {
-        $changeSet = parent::getChangeSet();
-        if (isset($changeSet['pass'])) {
-            $changeSet['pass'] = '****';
-        }
-
-        return $changeSet;
+        return parent::getChangeSet();
     }
 
     /**

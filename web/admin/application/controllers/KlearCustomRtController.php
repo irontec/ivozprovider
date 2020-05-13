@@ -46,10 +46,11 @@ class KlearCustomRtController extends Zend_Controller_Action
         $data['secret'] = $user->token;
 
         $config = $this->_mainRouter->getCurrentItem()->getConfig();
-        $criteria = $config->getProperty("forcedValues");
+        $forcedValues = $config->getProperty("forcedValues");
 
-        if ($criteria) {
-            $criteria = $criteria->toArray();
+        if ($forcedValues) {
+            $forcedValues = $forcedValues->toArray();
+            $criteria = $forcedValues;
             $template = '/template/klearCustomRtCallBrandList.tmpl.html';
             $templateIden = 'RtCallBrandList';
         } else {
@@ -58,22 +59,59 @@ class KlearCustomRtController extends Zend_Controller_Action
             $templateIden = 'RtCallList';
         }
 
+        $criteria = $this->appendFilters(
+            $criteria
+        );
+
         $data['channel'] = [
             'trunks' => $criteria
         ];
         $data["template"] = $templateIden;
         $data['translations'] = $this->getTransalations();
+        $data["columns"] = $this->getColumns(
+            !isset($forcedValues['b'])
+        );
 
-        $jsonResponse = new Klear_Model_DispatchResponse();
-        $jsonResponse->setModule('default');
-        $jsonResponse->setPlugin('rt');
-        $jsonResponse->addJsFile("/js/plugins/jquery.rt.js");
-        $jsonResponse->addTemplate($template, $templateIden);
-        $jsonResponse->addCssFile("/css/klearCustomRtCallList.tmpl.css");
-        $jsonResponse->setData($data);
-        $jsonResponse->attachView($this->view);
+        $templates = [
+            $templateIden => $template
+        ];
+
+        $this->_dispatchResponse(
+            $templates,
+            $data
+        );
     }
 
+    /**
+     * @return int|null
+     */
+    private function getBrandId()
+    {
+        $config = $this->_mainRouter->getCurrentItem()->getConfig();
+        $forcedValues = $config->getProperty("forcedValues");
+        if ($forcedValues) {
+            $forcedValues = $forcedValues->toArray();
+        }
+
+        if (isset($forcedValues['b'])) {
+            return (int) $forcedValues['b'];
+        }
+
+        $searchFields = $this->cleanSearchFields(
+            $this->_request->getPost("searchFields", [])
+        );
+        if (isset($searchFields['b'])) {
+            $value = end($searchFields['b']);
+
+            return (int) preg_replace(
+                '/[^0-9]+/',
+                '',
+                $value
+            );
+        }
+
+        return null;
+    }
 
     public function usersAction()
     {
@@ -108,6 +146,10 @@ class KlearCustomRtController extends Zend_Controller_Action
             $template = '/template/klearCustomRtCallList.tmpl.html';
         }
 
+        $criteria = $this->appendFilters(
+            $criteria
+        );
+
         $data['channel'] = [
             'users' => $criteria
         ];
@@ -117,13 +159,102 @@ class KlearCustomRtController extends Zend_Controller_Action
         $templateIden = 'RtCallClientList';
         $data["template"] = $templateIden;
 
+        $templates = [
+            $templateIden => $template
+        ];
+
+        $this->_dispatchResponse(
+            $templates,
+            $data
+        );
+    }
+
+    private function appendFilters(array $criteria)
+    {
+        $searchFields = $this->cleanSearchFields(
+            $this->_request->getPost("searchFields", [])
+        );
+
+        if (isset($searchFields['dir'])) {
+            $searchFields['c'] = $searchFields['c'] ?? ['c*'];
+        }
+
+        if (isset($searchFields['cr']) || isset($searchFields['dp'])) {
+            $searchFields['c'] = $searchFields['c'] ?? ['c*'];
+        }
+
+        if (isset($searchFields['c'])) {
+            $searchFields['b'] = $searchFields['b'] ?? ['b*'];
+        }
+
+        foreach ($searchFields as $field => $values) {
+            $value = end($values);
+            $key = preg_replace('/[^a-zA-Z]+/', '', $value);
+            $val = preg_replace('/[^0-9\*]+/', '', $value);
+
+            if (isset($criteria[$key]) && $criteria[$key] != '*') {
+                continue;
+            }
+
+            $criteria[$key] = $val;
+        }
+
+        $keyOrder = [
+            'b' => 0,
+            'c' => 1,
+            'cr' => 2,
+            'dp' => 2
+        ];
+
+        uksort(
+            $criteria,
+            function ($k1, $k2) use ($keyOrder) {
+                return $keyOrder[$k1] > $keyOrder[$k2];
+            }
+        );
+
+        return $criteria;
+    }
+
+    private function _dispatchResponse(
+        array $templates,
+        $data
+    ) {
         $jsonResponse = new Klear_Model_DispatchResponse();
         $jsonResponse->setModule('default');
         $jsonResponse->setPlugin('rt');
+
+        $jsonResponse->addTemplate(
+            '/template/filters.tmpl.html',
+            "rt-filters"
+        );
+        foreach ($templates as $key => $val) {
+            $jsonResponse->addTemplate($val, $key);
+        }
+
         $jsonResponse->addJsFile("/js/plugins/jquery.rt.js");
-        $jsonResponse->addTemplate($template, $templateIden);
+        $jsonResponse->addJsFile(
+            "/js/translation/jquery.klearmatrix.translation.js"
+        );
+
         $jsonResponse->addCssFile("/css/klearCustomRtCallList.tmpl.css");
+
+        $data['searchOps'] = $this->_request->getPost("searchOps");
+
+        $searchFields = $this->cleanSearchFields(
+            $this->_request->getPost("searchFields", [])
+        );
+
+        if (!empty($searchFields)) {
+            $data['searchFields'] = $searchFields;
+        }
+
+        if (!empty($data['searchOps']) || !empty($data['searchFields'])) {
+            $data["applySearchFilters"] = true;
+        }
+
         $jsonResponse->setData($data);
+
         $jsonResponse->attachView($this->view);
     }
 
@@ -151,5 +282,147 @@ class KlearCustomRtController extends Zend_Controller_Action
             'min' => $this->_helper->translate('min'),
             'sec' => $this->_helper->translate('sec'),
         ];
+    }
+
+    private function getColumns(
+        $brand = true,
+        $client = true,
+        $operator = true
+    ) {
+        $dataGateway = \Zend_Registry::get('data_gateway');
+        $columns = [];
+
+        $brandId = $this->getBrandId();
+        if ($brand) {
+            $brands = $dataGateway->runNamedQuery(
+                \Ivoz\Provider\Domain\Model\Brand\Brand::class,
+                'getNames',
+                []
+            );
+
+            $brandValues = [];
+            foreach ($brands as $id => $name) {
+                $brandValues[] = [
+                    'key' => 'b' . $id,
+                    'item' => $name,
+                ];
+            }
+
+            $columns[] = ['b', 'Brand', $brandValues];
+        }
+
+        if ($client) {
+            $clients = $dataGateway->runNamedQuery(
+                \Ivoz\Provider\Domain\Model\Company\Company::class,
+                'getNames',
+                [$brandId]
+            );
+
+            $clientValues = [];
+            foreach ($clients as $id => $name) {
+                $clientValues[] = [
+                    'key' => 'c' . $id,
+                    'item' => $name,
+                ];
+            }
+
+            $columns[] = ['c', 'Client', $clientValues];
+        }
+
+        if ($operator) {
+            $searchFields = $this->cleanSearchFields(
+                $this->_request->getPost("searchFields", [])
+            );
+
+            $crFilter = isset($searchFields['cr']);
+            $dpFilter = isset($searchFields['dp']);
+            $dirFilter = isset($searchFields['dir']);
+
+            if (!$crFilter && !$dpFilter) {
+                $columns[] = [
+                    'dir',
+                    'Direction',
+                    [
+                        ['key' => 'cr*', 'item' => 'Outbound'],
+                        ['key' => 'dp*', 'item' => 'Inbound'],
+                    ]
+                ];
+            }
+
+            if (!$dpFilter && (!$dirFilter || $searchFields['dir'][0] == 'cr*')) {
+                $carrierValues = [];
+                $carriers = $dataGateway->runNamedQuery(
+                    \Ivoz\Provider\Domain\Model\Carrier\Carrier::class,
+                    'getNames',
+                    [$brandId]
+                );
+                foreach ($carriers as $id => $name) {
+                    $carrierValues[] = [
+                        'key' => 'cr' . $id,
+                        'item' => $name,
+                    ];
+                }
+                $columns[] = ['cr', 'Carrier', $carrierValues];
+            }
+
+            if (!$crFilter && (!$dirFilter || $searchFields['dir'][0] == 'dp*')) {
+                $ddiProviderValues = [];
+                $ddiProviders = $dataGateway->runNamedQuery(
+                    \Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::class,
+                    'getNames',
+                    [$brandId]
+                );
+                foreach ($ddiProviders as $id => $name) {
+                    $ddiProviderValues[] = [
+                        'key' => 'dp' . $id,
+                        'item' => $name,
+                    ];
+                }
+                $columns[] = ['dp', 'Ddi Provider', $ddiProviderValues];
+            }
+        }
+
+        $response = [];
+        foreach ($columns as $column) {
+            list($id, $name, $values) = $column;
+            $response[$id] = [
+                'id' => $id,
+                'name' => $name,
+                'type' => 'select',
+                'searchable' => true,
+                'sortable' => false,
+                'config' => ['values' => $values],
+                'attributes' => null,
+                'properties' => [
+                    'required' => null,
+                    'pattern' => null,
+                    'placeholder' => null,
+                    'nullIfEmpty' => null,
+                    'maxLength' => null,
+                    'expandable' => null,
+                    'showSize' => null,
+                    'defaultValue' => null,
+                    'prefix' => '',
+                    'sufix' => '',
+                ],
+            ];
+        }
+
+        return $response;
+    }
+
+    private function cleanSearchFields(array $searchFields): array
+    {
+        if (isset($searchFields['cr'])) {
+            unset($searchFields['dp']);
+        } elseif (isset($searchFields['cr'])) {
+            unset($searchFields['cr']);
+        }
+
+        foreach ($searchFields as $k => $v) {
+            $searchFields[$k] = [end($v)];
+        }
+
+        return $searchFields;
     }
 }

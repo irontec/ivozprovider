@@ -50,7 +50,7 @@ Feature: Retrieve carrier servers
           "sendRPID": false,
           "authNeeded": "no",
           "authUser": null,
-          "authPassword": null,
+          "authPassword": "*****",
           "sipProxy": "127.0.0.1",
           "outboundProxy": null,
           "fromUser": "",

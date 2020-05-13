@@ -180,7 +180,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'name' => $this->getName(),
             'maxWaitTime' => $this->getMaxWaitTime(),
             'timeoutTargetType' => $this->getTimeoutTargetType(),
@@ -206,6 +206,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'timeoutNumberCountry' => $this->getTimeoutNumberCountry(),
             'fullNumberCountry' => $this->getFullNumberCountry()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

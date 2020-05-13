@@ -22,7 +22,7 @@ Feature: Manage administrator rel public entities
               "id": 1,
               "administrator": {
                   "username": "restrictedCompanyAdmin",
-                  "pass": "****",
+                  "pass": "*****",
                   "email": "test@irontec.com",
                   "active": true,
                   "restricted": true,
@@ -55,7 +55,7 @@ Feature: Manage administrator rel public entities
               "id": 2,
               "administrator": {
                   "username": "restrictedCompanyAdmin",
-                  "pass": "****",
+                  "pass": "*****",
                   "email": "test@irontec.com",
                   "active": true,
                   "restricted": true,
@@ -88,7 +88,7 @@ Feature: Manage administrator rel public entities
               "id": 3,
               "administrator": {
                   "username": "restrictedCompanyAdmin",
-                  "pass": "****",
+                  "pass": "*****",
                   "email": "test@irontec.com",
                   "active": true,
                   "restricted": true,
@@ -133,7 +133,7 @@ Feature: Manage administrator rel public entities
           "id": 3,
           "administrator": {
               "username": "restrictedCompanyAdmin",
-              "pass": "****",
+              "pass": "*****",
               "email": "test@irontec.com",
               "active": true,
               "restricted": true,

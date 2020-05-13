@@ -174,7 +174,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'ddi' => $this->getDdi(),
             'ddie164' => $this->getDdie164(),
             'recordCalls' => $this->getRecordCalls(),
@@ -199,6 +199,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'conditionalRoute' => $this->getConditionalRoute(),
             'retailAccount' => $this->getRetailAccount()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

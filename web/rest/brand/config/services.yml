@@ -29,6 +29,7 @@ services:
     calls:
       - [ addRepository, ['companyRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Company\\Company")']]
       - [ addRepository, ['transformationRuleSetRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet")']]
+      - [ addRepository, ['proxyTrunksRelBrandRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\ProxyTrunksRelBrand\\ProxyTrunksRelBrand")']]
 
   #######################################
   ## Controllers

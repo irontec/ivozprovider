@@ -69,7 +69,7 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'iden' => $this->getIden(),
             'id' => $this->getId(),
             'name' => [
@@ -79,6 +79,19 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
                 'it' => $this->getNameIt()
             ]
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

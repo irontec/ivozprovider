@@ -19,6 +19,9 @@ abstract class AbstractCall
     ];
 
     /** @var string */
+    protected $id;
+
+    /** @var string */
     protected $callId;
 
     /** @var string */
@@ -80,7 +83,8 @@ abstract class AbstractCall
         $payload = [
             "Event" => $this->status,
             "Time" => time(),
-            "Call-ID" => $this->callId
+            "Call-ID" => $this->callId,
+            "ID" => $this->id
         ];
 
         return [
@@ -95,7 +99,8 @@ abstract class AbstractCall
         $payload = [
             "Event" => $this->status,
             "Time" => time(),
-            "Call-ID" => $this->callId
+            "Call-ID" => $this->callId,
+            "ID" => $this->id
         ];
 
         return [
@@ -110,7 +115,8 @@ abstract class AbstractCall
         $payload = [
             "Event" => $this->status,
             "Time" => time(),
-            "Call-ID" => $this->callId
+            "Call-ID" => $this->callId,
+            "ID" => $this->id
         ];
 
         return [

@@ -1,0 +1,91 @@
+<div class="ui-widget-content ui-corner-all klearMatrixFiltering">
+    <form class="klearMatrixFilteringForm {{if (typeof searchFields == 'undefined') }} {{if (typeof showFilterForm == 'undefined' || !showFilterForm)}} not-loaded {{/if}} {{/if}} ">
+        {{if (preconfiguredFilters)}}
+        <p class="preconfiguredFilters">
+            <span class="ui-silk inline ui-silk-zoom-in"></span>Search shortcuts: {{each(idx,filter) preconfiguredFilters}}
+            <button class="preconfigureFilters tooltip" data-field="${filter.field}" data-value="${filter.value}" data-title="${filter.description}" >${filter.title}</button>
+            {{/each}}
+        </p>
+        {{/if}}
+        <p class="title"><span class="ui-silk inline ui-silk-zoom"></span>Filter fields</p>
+        {{if (searchFields) }}
+        <div style="display:none;">
+            <span class="applyFilters" title="Returns records that satisfy any of filters">
+            Apply filters
+            <input type="checkbox" name="applyFilters"
+                    {{if (applySearchFilters) }}
+                    checked="checked"
+                    {{/if}} />
+            </span>
+        </div>
+        {{/if}}
+        <p class="filterItem">
+            <select name="searchField">
+
+                {{each(idx,column) columns}}
+                {{if ( (type != '_option') && (column.searchable) ) }}
+                {{if (column.decorators)}}
+                {{each(name, config) column.decorators}}
+
+                {{if (config._applyToListFiltering)}}
+                <option value="${column.id}" class="option command fieldDecorator ${column.type}"
+                        data-field="${column.type}" data-fielddecorator="${name}" data-external="true" rel="${id}${randIden}"
+                        {{each(key, val) config}}
+                        data-${key}="${val}"
+                        {{/each}}
+                >${column.name}</option>
+                {{else}}
+                <option value="${column.id}" >${column.name}</option>
+                {{/if}}
+
+                {{/each}}
+                {{else}}
+                <option value="${column.id}" >${column.name}</option>
+                {{/if}}
+
+                {{/if}}
+                {{/each}}
+            </select>
+            <span class="searchOption">
+        <select name="searchOption">
+            <option value="lt">less than</option>
+            <option value="eq">equals</option>
+            <option value="gt">greater than</option>
+        </select>
+    </span>
+            <input type="text" class="term">
+            <span class="ui-silk inline ui-silk-add addTerm"></span>
+            <br />
+
+        <p class="filteredFields">
+            {{each(field,searchValues) searchFields}}
+
+            {{if (($item.getColumnName(columns,field))) }}
+
+            <span data-field="${field}" class="field">
+            <strong>${$item.getColumnName(columns,field)}</strong>:
+
+            {{each(_valIdx,_val) searchValues}}
+                <span class="ui-widget-content ui-corner-all content" data-value="${_val}" data-op="${searchOps[field][_valIdx]}">
+                {{if (searchPresetted)}}
+                    <span class="ui-silk inline ui-silk-lock-go"></span>
+                {{else}}
+                    <span data-idx="${_valIdx}" class="ui-silk inline ui-silk-cancel removable"></span>
+                {{/if}}
+                    {{if (searchOps[field][_valIdx] == 'lt')}}
+                        <strong>&lt;</strong>
+                    {{/if}}
+                    {{if (searchOps[field][_valIdx] == 'gt')}}
+                        <strong>&gt;</strong>
+                    {{/if}}
+
+                    {{html $item.getValuesFromSelectColumn($item.getColumn(columns,field),_val)}}
+
+                </span>
+            {{/each}}
+        </span>
+            {{/if}}
+            {{/each}}
+        </p>
+    </form>
+</div>

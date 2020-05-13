@@ -14,12 +14,12 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class RatingPlanGroupAbstract
 {
     /**
-     * @var Name
+     * @var Name | null
      */
     protected $name;
 
     /**
-     * @var Description
+     * @var Description | null
      */
     protected $description;
 

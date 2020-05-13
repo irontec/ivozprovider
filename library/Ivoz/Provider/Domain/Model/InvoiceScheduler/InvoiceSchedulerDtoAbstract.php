@@ -119,7 +119,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'name' => $this->getName(),
             'unit' => $this->getUnit(),
             'frequency' => $this->getFrequency(),
@@ -135,6 +135,19 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
             'numberSequence' => $this->getNumberSequence(),
             'relFixedCosts' => $this->getRelFixedCosts()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**

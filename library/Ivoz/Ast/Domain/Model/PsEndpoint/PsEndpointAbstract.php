@@ -944,7 +944,7 @@ abstract class PsEndpointAbstract
     /**
      * Set terminal
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
+     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal | null
      *
      * @return static
      */
@@ -958,7 +958,7 @@ abstract class PsEndpointAbstract
     /**
      * Get terminal
      *
-     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
+     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface | null
      */
     public function getTerminal()
     {
@@ -968,7 +968,7 @@ abstract class PsEndpointAbstract
     /**
      * Set friend
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
+     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend | null
      *
      * @return static
      */
@@ -982,7 +982,7 @@ abstract class PsEndpointAbstract
     /**
      * Get friend
      *
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
      */
     public function getFriend()
     {
@@ -992,7 +992,7 @@ abstract class PsEndpointAbstract
     /**
      * Set residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice | null
      *
      * @return static
      */
@@ -1006,7 +1006,7 @@ abstract class PsEndpointAbstract
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     public function getResidentialDevice()
     {
@@ -1016,7 +1016,7 @@ abstract class PsEndpointAbstract
     /**
      * Set retailAccount
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount | null
      *
      * @return static
      */
@@ -1030,7 +1030,7 @@ abstract class PsEndpointAbstract
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount()
     {

@@ -12,7 +12,7 @@ production:
       pagination:
         items: 25
       <<: *PickUpGroups
-      class: fa fa-phone orange
+      class: ui-silk-group-link
       title: _("List of %s %2s", ngettext('Pick up group', 'Pick up groups', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink

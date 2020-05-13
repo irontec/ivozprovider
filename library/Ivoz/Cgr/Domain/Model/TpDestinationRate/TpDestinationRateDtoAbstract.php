@@ -102,7 +102,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
      */
     public function toArray($hideSensitiveData = false)
     {
-        return [
+        $response = [
             'tpid' => $this->getTpid(),
             'tag' => $this->getTag(),
             'destinationsTag' => $this->getDestinationsTag(),
@@ -115,6 +115,19 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
             'id' => $this->getId(),
             'destinationRate' => $this->getDestinationRate()
         ];
+
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+
+        foreach ($this->sensitiveFields as $sensitiveField) {
+            if (!array_key_exists($sensitiveField, $response)) {
+                throw new \Exception($sensitiveField . ' field was not found');
+            }
+            $response[$sensitiveField] = '*****';
+        }
+
+        return $response;
     }
 
     /**
