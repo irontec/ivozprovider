@@ -29,4 +29,16 @@ class RatingPlanDto extends RatingPlanDtoAbstract
 
         return parent::getPropertyMap(...func_get_args());
     }
+
+
+    public function setTimingType($timingType = null)
+    {
+        if ($timingType == RatingPlanInterface::TIMINGTYPE_ALWAYS) {
+            $this->setTimeIn(
+                new \DateTime('00:00:00')
+            );
+        }
+
+        return parent::setTimingType($timingType);
+    }
 }

@@ -26,15 +26,6 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * Set ringAllTimeout
-     *
-     * @param integer $ringAllTimeout
-     *
-     * @return self
-     */
-    public function setRingAllTimeout($ringAllTimeout);
-
-    /**
      * Get this Hungroup related users
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
      */
@@ -76,7 +67,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     /**
      * Get ringAllTimeout
      *
-     * @return integer
+     * @return integer | null
      */
     public function getRingAllTimeout();
 

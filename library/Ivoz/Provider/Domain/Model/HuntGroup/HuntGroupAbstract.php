@@ -30,7 +30,7 @@ abstract class HuntGroupAbstract
     protected $strategy;
 
     /**
-     * @var integer
+     * @var integer | null
      */
     protected $ringAllTimeout;
 
@@ -90,14 +90,12 @@ abstract class HuntGroupAbstract
         $name,
         $description,
         $strategy,
-        $ringAllTimeout,
         $preventMissedCalls,
         $allowCallForwards
     ) {
         $this->setName($name);
         $this->setDescription($description);
         $this->setStrategy($strategy);
-        $this->setRingAllTimeout($ringAllTimeout);
         $this->setPreventMissedCalls($preventMissedCalls);
         $this->setAllowCallForwards($allowCallForwards);
     }
@@ -174,12 +172,12 @@ abstract class HuntGroupAbstract
             $dto->getName(),
             $dto->getDescription(),
             $dto->getStrategy(),
-            $dto->getRingAllTimeout(),
             $dto->getPreventMissedCalls(),
             $dto->getAllowCallForwards()
         );
 
         $self
+            ->setRingAllTimeout($dto->getRingAllTimeout())
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
@@ -361,16 +359,18 @@ abstract class HuntGroupAbstract
     /**
      * Set ringAllTimeout
      *
-     * @param integer $ringAllTimeout
+     * @param integer $ringAllTimeout | null
      *
      * @return static
      */
-    protected function setRingAllTimeout($ringAllTimeout)
+    protected function setRingAllTimeout($ringAllTimeout = null)
     {
-        Assertion::notNull($ringAllTimeout, 'ringAllTimeout value "%s" is null, but non null value was expected.');
-        Assertion::integerish($ringAllTimeout, 'ringAllTimeout value "%s" is not an integer or a number castable to integer.');
+        if (!is_null($ringAllTimeout)) {
+            Assertion::integerish($ringAllTimeout, 'ringAllTimeout value "%s" is not an integer or a number castable to integer.');
+            $ringAllTimeout = (int) $ringAllTimeout;
+        }
 
-        $this->ringAllTimeout = (int) $ringAllTimeout;
+        $this->ringAllTimeout = $ringAllTimeout;
 
         return $this;
     }
@@ -378,7 +378,7 @@ abstract class HuntGroupAbstract
     /**
      * Get ringAllTimeout
      *
-     * @return integer
+     * @return integer | null
      */
     public function getRingAllTimeout()
     {
