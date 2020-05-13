@@ -8,6 +8,7 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 class CreateOrUpdateByTrunksCdr
 {
@@ -52,9 +53,18 @@ class CreateOrUpdateByTrunksCdr
             $trunksCdr
         );
 
-        $caller = $trunksCdrDto->getDiversion()
-            ? $trunksCdrDto->getDiversion()
-            : $trunksCdrDto->getCaller();
+        /**
+         * @var DdiInterface $ddi
+         */
+        $ddi = $trunksCdr->getDdi();
+
+        $isOutbound = $trunksCdrDto->getDirection() === TrunksCdrInterface::DIRECTION_OUTBOUND;
+
+        if ($isOutbound && !is_null($ddi)) {
+            $caller = $ddi->getDdie164();
+        } else {
+            $caller = $trunksCdrDto->getCaller();
+        }
 
         $billableCallDto
             ->setTrunksCdrId(
