@@ -136,10 +136,14 @@ class Users extends RouteHandlerAbstract
             $transfererURI = str_replace($endpointName, $user->getExtensionNumber(), $transfererURI);
             $this->agi->setVariable("__SIPREFERREDBYHDR", $transfererURI);
         } elseif (!empty($forwarder)) {
-            // Update Diversion Header with User Outgoing DDI
-            $this->agi->setRedirecting('from-name,i', $user->getFullName());
-            $this->agi->setRedirecting('from-num,i', $user->getExtensionNumber());
-            $this->agi->setRedirecting('count,i', 1);
+            // Get channel origin
+            $origin = $this->channelInfo->getChannelOrigin();
+            // Update Diversion Header with User extension (unless its forwarding itself)
+            if (!$caller->isEqual($origin)) {
+                $this->agi->setRedirecting('from-name,i', $user->getFullName());
+                $this->agi->setRedirecting('from-num,i', $user->getExtensionNumber());
+                $this->agi->setRedirecting('count,i', 1);
+            }
         } else {
             // For now, origin is also the caller user
             $this->channelInfo->setChannelOrigin($caller);
