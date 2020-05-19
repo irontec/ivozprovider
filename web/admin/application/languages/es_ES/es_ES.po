@@ -1074,6 +1074,9 @@ msgstr "Fichero parcialmente importado"
 msgid "Filter by IP address"
 msgstr "Filtrado por IP"
 
+msgid "Filter fields"
+msgstr "Filtrado de elementos"
+
 msgid "Filter's Out of schedule Locution"
 msgstr "Usar locucion Fuera Horario del filtro"
 
