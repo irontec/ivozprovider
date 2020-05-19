@@ -77,6 +77,7 @@ class CallForwardAction
         $forwarder = $this->cfw->getUser();
         if ($forwarder) {
             $caller = new UserAgent($this->agi, $forwarder);
+            $this->agi->setVariable("_USERID", $forwarder->getId());
         } else {
             $forwarder = $this->cfw->getResidentialDevice();
 
@@ -87,6 +88,7 @@ class CallForwardAction
             }
 
             $caller = new ResidentialAgent($this->agi, $forwarder);
+            $this->agi->setVariable("_RESIDENTIALDEVICEID", $forwarder->getId());
         }
 
         // Set the new caller

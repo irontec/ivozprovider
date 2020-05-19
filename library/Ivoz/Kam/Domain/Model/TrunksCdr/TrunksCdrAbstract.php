@@ -76,6 +76,7 @@ abstract class TrunksCdrAbstract
     protected $parserScheduledAt;
 
     /**
+     * comment: enum:inbound|outbound
      * @var string | null
      */
     protected $direction;
@@ -730,6 +731,13 @@ abstract class TrunksCdrAbstract
      */
     protected function setDirection($direction = null)
     {
+        if (!is_null($direction)) {
+            Assertion::choice($direction, [
+                TrunksCdrInterface::DIRECTION_INBOUND,
+                TrunksCdrInterface::DIRECTION_OUTBOUND
+            ], 'directionvalue "%s" is not an element of the valid values: %s');
+        }
+
         $this->direction = $direction;
 
         return $this;
