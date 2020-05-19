@@ -264,7 +264,7 @@ class WsServer extends AbstractWsServer
         $event = $payload['Event'];
 
         if ($event === AbstractCall::HANG_UP) {
-            $this->logger->info(
+            $this->logger->debug(
                 "[DEL] " . $channel
             );
             $this
@@ -277,7 +277,7 @@ class WsServer extends AbstractWsServer
         }
 
         if ($event === AbstractCall::CALL_SETUP) {
-            $this->logger->info(
+            $this->logger->debug(
                 "[SETEX] " . $channel . "\n" . json_encode($payload)
             );
             $this
@@ -303,7 +303,7 @@ class WsServer extends AbstractWsServer
         );
 
         if (!$data) {
-            $this->logger->info(
+            $this->logger->debug(
                 "No data found for call " . $channel
             );
             return;
@@ -317,7 +317,7 @@ class WsServer extends AbstractWsServer
             $logInfo = $event;
         }
 
-        $this->logger->info(
+        $this->logger->debug(
             "[SETEX] " . $channel . " " . $logInfo
         );
         $this
