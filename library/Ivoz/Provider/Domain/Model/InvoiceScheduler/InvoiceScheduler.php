@@ -51,7 +51,6 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
         return parent::setFrequency($frequency);
     }
 
-
     public function getSchedulerDateTimeZone(): \DateTimeZone
     {
         $timezone = $this->getBrand()->getDefaultTimezone();
@@ -77,5 +76,18 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
             case 'week':
                 return new \DateInterval("P${frecuency}W");
         }
+    }
+
+    protected function setLastExecutionError($lastExecutionError = null)
+    {
+        if (!is_null($lastExecutionError)) {
+            $lastExecutionError = substr(
+                $lastExecutionError,
+                0,
+                300
+            );
+        }
+
+        return parent::setLastExecutionError($lastExecutionError);
     }
 }
