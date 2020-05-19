@@ -281,6 +281,7 @@ class KlearCustomRtController extends Zend_Controller_Action
             'party' => $this->_helper->translate('Party'),
             'min' => $this->_helper->translate('min'),
             'sec' => $this->_helper->translate('sec'),
+            'filterFields' => $this->_helper->translate('Filter fields'),
         ];
     }
 
@@ -308,7 +309,11 @@ class KlearCustomRtController extends Zend_Controller_Action
                 ];
             }
 
-            $columns[] = ['b', 'Brand', $brandValues];
+            $columns[] = [
+                'b',
+                $this->_helper->translate(array('Brand', 'Brands', 1)),
+                $brandValues
+            ];
         }
 
         if ($client) {
@@ -326,7 +331,11 @@ class KlearCustomRtController extends Zend_Controller_Action
                 ];
             }
 
-            $columns[] = ['c', 'Client', $clientValues];
+            $columns[] = [
+                'c',
+                $this->_helper->translate(array('Client', 'Clients', 1)),
+                $clientValues
+            ];
         }
 
         if ($operator) {
@@ -341,10 +350,16 @@ class KlearCustomRtController extends Zend_Controller_Action
             if (!$crFilter && !$dpFilter) {
                 $columns[] = [
                     'dir',
-                    'Direction',
+                    $this->_helper->translate('Direction'),
                     [
-                        ['key' => 'cr*', 'item' => 'Outbound'],
-                        ['key' => 'dp*', 'item' => 'Inbound'],
+                        [
+                            'key' => 'cr*',
+                            'item' => $this->_helper->translate('Outbound')
+                        ],
+                        [
+                            'key' => 'dp*',
+                            'item' => $this->_helper->translate('Inbound')
+                        ],
                     ]
                 ];
             }
@@ -362,7 +377,11 @@ class KlearCustomRtController extends Zend_Controller_Action
                         'item' => $name,
                     ];
                 }
-                $columns[] = ['cr', 'Carrier', $carrierValues];
+                $columns[] = [
+                    'cr',
+                    $this->_helper->translate(array('Carrier', 'Carriers', 1)),
+                    $carrierValues
+                ];
             }
 
             if (!$crFilter && (!$dirFilter || $searchFields['dir'][0] == 'dp*')) {
@@ -378,7 +397,11 @@ class KlearCustomRtController extends Zend_Controller_Action
                         'item' => $name,
                     ];
                 }
-                $columns[] = ['dp', 'Ddi Provider', $ddiProviderValues];
+                $columns[] = [
+                    'dp',
+                    $this->_helper->translate(array('Ddi Provider', 'Ddi Providers', 1)),
+                    $ddiProviderValues
+                ];
             }
         }
 
