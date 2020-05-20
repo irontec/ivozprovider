@@ -17,7 +17,7 @@ bin/console cache:clear --no-warmup -q -n
 bin/console api:swagger:export > web/swagger.json
 
 # Create jwt certificates
-[ ! -e /opt/irontec/ivozprovider/web/rest/platform/var/jwt/private.pem ] && bin/generate-keys --initial
+[ ! -e /opt/irontec/ivozprovider/storage/jwt/private.pem ] && bin/generate-keys --initial
 
 if [ -d /opt/irontec/ivozprovider/web/rest/brand/ ]; then
     pushd /opt/irontec/ivozprovider/web/rest/brand/
@@ -29,8 +29,6 @@ if [ -d /opt/irontec/ivozprovider/web/rest/brand/ ]; then
         bin/console cache:clear --no-warmup -q -n
         # generate swagger spec
         bin/console api:swagger:export > web/swagger.json
-
-        [ ! -e var/jwt/private.pem ] && ln -s ../platform/var/jwt var/jwt
     popd
 fi
 
@@ -44,8 +42,6 @@ if [ -d /opt/irontec/ivozprovider/web/rest/client/ ]; then
         bin/console cache:clear --no-warmup -q -n
         # generate swagger spec
         bin/console api:swagger:export > web/swagger.json
-
-        [ ! -e var/jwt/private.pem ] && ln -s ../platform/var/jwt var/jwt
     popd
 fi
 
