@@ -86,7 +86,7 @@ These are the fields of the generated CSV files:
         Client DDI to which call will be assigned (callee for inbound calls, caller for outbound calls).
 
     endpointType
-        Possible values for outbound calls: User, Fax, Friend. **Empty for inbound calls**.
+        Possible values: User, Fax, Friend. **Empty for inbound calls**.
 
     endpointId
         Internal ID of specific endpoint (only when *endpointType* has a non-empty value).

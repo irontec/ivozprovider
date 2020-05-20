@@ -124,9 +124,6 @@ These are the fields of the generated CSV files:
         Client DDI to which call will be assigned (callee for inbound calls, caller for outbound calls). Empty for
         wholesale clients.
 
-.. warning:: *endpointType* in vPBX clients will be empty for inbound calls. Outbound calls will have one value among
-             **User, Fax, Friend**.
-
 DDI Provider detection
 ======================
 

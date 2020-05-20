@@ -63,10 +63,10 @@ Each entry shows this information:
         Shows the call ID of the call for troubleshooting and CSV export.
 
     Endpoint Type
-        For retail client calls, shows "RetailAccount". Empty for remaining client types.
+        Possible values: RetailAccount, ResidentialDevice, User, Fax, Friend.
 
     Endpoint Id
-        For retail client calls, shows the retail account's id of the call. Empty for remaining client types.
+        Internal ID of specific endpoint (only when *endpointType* is non-empty).
 
 
 .. note:: An asynchronous process parses each external call and adds it to this list a few minutes after call hangup. Billing related fields, such as cost and price, will be empty for external incoming calls.
