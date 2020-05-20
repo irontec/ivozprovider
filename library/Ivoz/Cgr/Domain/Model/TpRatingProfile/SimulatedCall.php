@@ -147,7 +147,7 @@ class SimulatedCall
         $instance->cost = ceil($instance->cost * pow(10, $precision)) / pow(10, $precision);
 
         $tag = $result->RatingFilters->{$ratingFilterId}->RatingPlanID;
-        /** @var TpRatingPlan $tpRatingPlan */
+
         $tpRatingPlan = $tpRatingPlanRepository
             ->findOneByTag($tag);
 
@@ -161,7 +161,6 @@ class SimulatedCall
         );
         $destinationTag = $result->RatingFilters->{$ratingFilterId}->DestinationID;
 
-        /** @var TpDestinationInterface $tpDestination */
         $tpDestination = $tpDestinationRepository
             ->findOneByTag($destinationTag);
 
@@ -200,7 +199,6 @@ class SimulatedCall
         /** @var TpRatingPlanRepository $tpRatingPlansRepository */
         $tpRatingPlansRepository = $entityTools->getRepository(TpRatingPlan::class);
 
-        /** @var TpRatingPlan $tpRatingPlan */
         $tpRatingPlan = $tpRatingPlansRepository->findOneByTag($ratingPlanTag);
 
         if ($tpRatingPlan) {

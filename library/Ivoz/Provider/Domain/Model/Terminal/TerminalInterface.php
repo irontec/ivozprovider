@@ -52,7 +52,7 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getAllow();
 
     /**
-     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface | null
      */
     public function getAstPsEndpoint();
 

@@ -9,7 +9,7 @@ interface VoicemailRepository extends ObjectRepository, Selectable
 {
     /**
      * @param int $id
-     * @return VoicemailInterface
+     * @return VoicemailInterface | null
      */
     public function findOneByUserId($id);
 

@@ -10,7 +10,7 @@ interface CompanyServiceRepository extends ObjectRepository, Selectable
     /**
      * @param int $companyId
      * @param int $serviceId
-     * @return CompanyServiceInterface
+     * @return CompanyServiceInterface | null
      */
     public function findCompanyService($companyId, $serviceId);
 }

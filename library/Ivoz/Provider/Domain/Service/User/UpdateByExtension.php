@@ -65,7 +65,7 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
         // If this extension was pointing to a user and number has changed
         if ($originalValue && ($originalValue != $currentValue)) {
             /**
-             * @var UserInterface $prevUser
+             * @var UserInterface | null $prevUser
              */
             $prevUser = $this->userRepository->find($originalValue);
 
@@ -96,9 +96,6 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
 
         // If there is a new user and new user has no extension
         if ($routeType === 'user') {
-            /**
-             * @var User $user
-             */
             $user = $extension->getUser();
             $userExtension = $user->getExtension();
 

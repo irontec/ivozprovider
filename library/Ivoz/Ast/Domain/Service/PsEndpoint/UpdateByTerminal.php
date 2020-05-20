@@ -44,9 +44,6 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
     public function execute(TerminalInterface $terminal)
     {
         // Replicate Terminal into ast_ps_endpoint
-        /**
-         * @var PsEndpointInterface $endpoint
-         */
         $endpoint = $this->psEndpointRepository->findOneByTerminalId(
             $terminal->getId()
         );
@@ -58,6 +55,7 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
                 ->setSendDiversion('yes')
                 ->setSendPai('yes');
         } else {
+            /** @var PsEndpointDto $endpointDto */
             $endpointDto = $this->entityTools->entityToDto($endpoint);
         }
 

@@ -113,9 +113,7 @@ class TrunksClient implements TrunksClientInterface
     public function getCompanyActiveCalls(int $companyId)
     {
         $payload = ['activeCallsCompany'];
-        if (!is_null($companyId)) {
-            $payload[] = $companyId;
-        }
+        $payload[] = $companyId;
 
         return $this->getActiveCalls($payload);
     }
@@ -127,9 +125,7 @@ class TrunksClient implements TrunksClientInterface
     public function getBrandActiveCalls(int $brandId)
     {
         $payload = ['activeCallsBrand'];
-        if (!is_null($brandId)) {
-            $payload[] = $brandId;
-        }
+        $payload[] = $brandId;
 
         return $this->getActiveCalls($payload);
     }

@@ -63,7 +63,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get User outgoingDdi
      * If no Ddi is assigned, retrieve company's default Ddi
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getOutgoingDdi();
 

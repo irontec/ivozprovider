@@ -109,7 +109,6 @@ class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
             return;
         }
 
-        /** @var CarrierInterface $carrier */
         $carrier = $billableCall->getCarrier();
         if ($carrier && $carrier->getExternallyRated()) {
             $infoMsg = sprintf(
@@ -120,9 +119,6 @@ class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
             return;
         }
 
-        /**
-         * @var TpCdrInterface $defaultRunTpCdr
-         */
         $defaultRunTpCdr = $this->tpCdrRepository->getDefaultRunByCgrid(
             $cgrid
         );
@@ -144,9 +140,6 @@ class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
             $defaultRunTpCdr
         );
 
-        /**
-         * @var TpCdrInterface $carrierRunTpCdr
-         */
         $carrierRunTpCdr = $this->tpCdrRepository->getCarrierRunByCgrid(
             $cgrid
         );

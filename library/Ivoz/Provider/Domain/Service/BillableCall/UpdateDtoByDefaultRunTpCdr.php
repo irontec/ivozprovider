@@ -121,10 +121,8 @@ class UpdateDtoByDefaultRunTpCdr
             return $billableCallDto;
         }
 
-        /** @var RatingPlanInterface $ratingPlan */
         $ratingPlan = $tpRatingPlan->getRatingPlan();
 
-        /** @var RatingPlanGroupInterface $ratingPlanGroup */
         $ratingPlanGroup = $ratingPlan->getRatingPlanGroup();
 
         $ratingPlanGroupId = $ratingPlanGroup
@@ -137,11 +135,10 @@ class UpdateDtoByDefaultRunTpCdr
             ? $ratingPlanGroup->getName()->{$brandLangGetter}()
             : '';
 
-        /** @var TpDestinationInterface $tpDestination */
         $tpDestination = $this->tpDestinationRepository->findOneByTag(
             $defaultRunTpCdr->getMatchedDestinationTag()
         );
-        /** @var DestinationInterface $destination */
+
         $destination = $tpDestination
             ? $tpDestination->getDestination()
             : null;
