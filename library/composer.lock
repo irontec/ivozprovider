@@ -1948,11 +1948,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.3.3",
+            "version": "2.3.4",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "1bb926ad01484560b245d08090ef99a4dd0d6b43",
+                "reference": "3782393ab8183814db86eebbd0dfe33f5f40be37",
                 "shasum": null
             },
             "require": {
