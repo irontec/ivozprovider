@@ -1,16 +1,15 @@
 <?php
 
-namespace Tests\Provider\RetailAccount;
+namespace Tests\Provider\ResidentialDevice;
 
 use Ivoz\Provider\Domain\Model\Domain\Domain;
-use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainRepository;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountRepository;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 
-class RetailAccountRepositoryTest extends KernelTestCase
+class ResidentialDeviceRepositoryTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
@@ -26,49 +25,49 @@ class RetailAccountRepositoryTest extends KernelTestCase
 
     public function its_instantiable()
     {
-        /** @var RetailAccountRepository $repository */
+        /** @var ResidentialDeviceRepository $repository */
         $repository = $this
             ->em
-            ->getRepository(RetailAccount::class);
+            ->getRepository(ResidentialDevice::class);
 
         $this->assertInstanceOf(
-            RetailAccountRepository::class,
+            ResidentialDeviceRepository::class,
             $repository
         );
     }
 
     public function it_finds_one_by_name_and_domain()
     {
-        /** @var RetailAccountRepository $repository */
+        /** @var ResidentialDeviceRepository $repository */
         $repository = $this
             ->em
-            ->getRepository(RetailAccount::class);
+            ->getRepository(ResidentialDevice::class);
 
         /** @var DomainRepository $domainRepository */
         $domainRepository = $this
             ->em
             ->getRepository(Domain::class);
 
-        /** @var DomainInterface $domain */
+        /** @var Domain $domain */
         $domain = $domainRepository->find(6);
 
-        $RetailAccount = $repository->findOneByNameAndDomain(
-            'testRetailAccount',
+        $residentialDevice = $repository->findOneByNameAndDomain(
+            'residentialDevice',
             $domain
         );
 
         $this->assertInstanceOf(
-            RetailAccount::class,
-            $RetailAccount
+            ResidentialDevice::class,
+            $residentialDevice
         );
     }
 
     public function it_counts_registrable_devices_by_brand()
     {
-        /** @var RetailAccountRepository $repository */
+        /** @var ResidentialDeviceRepository $repository */
         $repository = $this
             ->em
-            ->getRepository(RetailAccount::class);
+            ->getRepository(ResidentialDevice::class);
 
         $num = $repository->countRegistrableDevicesByCompanies([1]);
 
