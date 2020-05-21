@@ -1071,6 +1071,9 @@ msgstr "Fitxer parcialment importat"
 msgid "Filter by IP address"
 msgstr "Filtrar per adreça IP"
 
+msgid "Filter fields"
+msgstr "Filtrado de elementos"
+
 msgid "Filter's Out of schedule Locution"
 msgstr "El filtre es fora de l'horari de locució"
 

@@ -1058,6 +1058,9 @@ msgstr "File partially imported"
 msgid "Filter by IP address"
 msgstr "Filter by IP address"
 
+msgid "Filter fields"
+msgstr "Filter fields"
+
 msgid "Filter's Out of schedule Locution"
 msgstr "Filter's Out of schedule Locution"
 
