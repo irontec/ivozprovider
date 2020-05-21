@@ -12,8 +12,8 @@ parameters:
     api_brand_base_url: 'https://localhost/api/brand/index.html'
     api_client_base_url: 'https://localhost/api/client/index.html'
     api_default_role: ~
-    jwt_private_key_path: '/opt/irontec/ivozprovider/web/rest/platform/var/jwt/private.pem' # ssh private key path
-    jwt_public_key_path: '/opt/irontec/ivozprovider/web/rest/platform/var/jwt/public.pem' # ssh public key path
+    jwt_private_key_path: '/opt/irontec/ivozprovider/storage/jwt/private.pem' # ssh private key path
+    jwt_public_key_path: '/opt/irontec/ivozprovider/storage/jwt/public.pem' # ssh public key path
     jwt_key_pass_phrase: 'changeme' # ssh key pass phrase
     jwt_token_ttl: 3600
     mailer_local_domain: localhost

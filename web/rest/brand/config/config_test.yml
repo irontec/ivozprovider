@@ -15,6 +15,6 @@ doctrine:
     charset: 'UTF8'
 
 parameters:
-  jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private-test.pem'
-  jwt_public_key_path: '%kernel.root_dir%/../var/jwt/public-test.pem'
+  jwt_private_key_path: '/opt/irontec/ivozprovider/storage/jwt/private-test.pem'
+  jwt_public_key_path: '/opt/irontec/ivozprovider/storage/jwt/public-test.pem'
 
