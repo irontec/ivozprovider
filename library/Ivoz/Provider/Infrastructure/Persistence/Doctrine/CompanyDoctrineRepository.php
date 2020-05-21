@@ -3,8 +3,10 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -117,5 +119,64 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
         }
 
         return $response;
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getVpbxIdsByBrand(int $brandId)
+    {
+        return $this->getIdsByBrandAndType(
+            $brandId,
+            CompanyInterface::TYPE_VPBX
+        );
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getResidentialIdsByBrand(int $brandId)
+    {
+        return $this->getIdsByBrandAndType(
+            $brandId,
+            CompanyInterface::TYPE_RESIDENTIAL
+        );
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getRetailIdsByBrand(int $brandId)
+    {
+        return $this->getIdsByBrandAndType(
+            $brandId,
+            CompanyInterface::TYPE_RETAIL
+        );
+    }
+
+    private function getIdsByBrandAndType(int $brandId, string $type)
+    {
+        $qb = $this->createQueryBuilder('self');
+        $criteria = CriteriaHelper::fromArray([
+            ['brand', 'eq', $brandId],
+            ['type', 'eq', $type]
+        ]);
+
+        $qb
+            ->select('self.id')
+            ->addCriteria($criteria);
+
+        $result = $qb
+            ->getQuery()
+            ->getScalarResult();
+
+        return
+            array_map(
+                'intval',
+                array_column(
+                    $result,
+                    'id'
+                )
+            );
     }
 }

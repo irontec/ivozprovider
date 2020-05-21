@@ -19,4 +19,10 @@ interface UsersLocationRepository extends ObjectRepository
      * @throws \Doctrine\ORM\Query\QueryException
      */
     public function findByUsernameAndDomain(string $username, string $domain): array;
+
+    /**
+     * @param string[] $domains
+     * @return UsersLocationInterface[]
+     */
+    public function findByDomains(array $domains): array;
 }
