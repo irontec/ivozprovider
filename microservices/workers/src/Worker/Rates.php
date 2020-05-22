@@ -99,7 +99,7 @@ class Rates
         $job = igbinary_unserialize($serializedJob->workload());
         $params = $job->getParams();
 
-        /** @var DestinationRateGroupInterface $destinationRateGroup */
+        /** @var DestinationRateGroupInterface | null $destinationRateGroup */
         $destinationRateGroup = $this->destinationRateGroupRepository->find(
             $params['id']
         );

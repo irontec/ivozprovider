@@ -45,14 +45,6 @@ class UpdateByRoutingPatternAndCountry
      */
     public function execute(RoutingPatternInterface $entity, CountryInterface $country)
     {
-
-        if (!$country->getZone()) {
-            /**
-             * @todo Every country has a value on db. Is this even needed?
-             */
-            return;
-        }
-
         $brandId = $entity
             ->getbrand()
             ->getId();
