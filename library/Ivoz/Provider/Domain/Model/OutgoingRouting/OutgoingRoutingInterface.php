@@ -207,7 +207,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Get tpLcrRule
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface | null
      */
     public function getTpLcrRule();
 

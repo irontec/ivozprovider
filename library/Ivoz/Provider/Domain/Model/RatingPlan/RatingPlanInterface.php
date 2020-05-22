@@ -138,7 +138,7 @@ interface RatingPlanInterface extends LoggableEntityInterface
     /**
      * Get tpTiming
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface | null
      */
     public function getTpTiming();
 
@@ -154,7 +154,7 @@ interface RatingPlanInterface extends LoggableEntityInterface
     /**
      * Get tpRatingPlan
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface | null
      */
     public function getTpRatingPlan();
 }
