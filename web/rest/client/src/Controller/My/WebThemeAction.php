@@ -41,7 +41,6 @@ class WebThemeAction
     {
         $request = $this->requestStack->getCurrentRequest();
 
-        /** @var WebPortal $webPortal */
         $webPortal = $this->webPortalRepository->findUserUrlByServerName(
             $request->server->get('SERVER_NAME')
         );
