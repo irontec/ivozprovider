@@ -3,15 +3,10 @@
 namespace Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
-use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
-use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
-use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
 use Psr\Log\LoggerInterface;
 
 class UpdateDtoByDefaultRunTpCdr
@@ -121,16 +116,11 @@ class UpdateDtoByDefaultRunTpCdr
         $ratingPlan = $tpRatingPlan->getRatingPlan();
 
         $ratingPlanGroup = $ratingPlan->getRatingPlanGroup();
-
-        $ratingPlanGroupId = $ratingPlanGroup
-            ? $ratingPlanGroup->getId()
-            : null;
+        $ratingPlanGroupId = $ratingPlanGroup->getId();
 
         $languageCode = ucfirst($trunksCdr->getBrand()->getLanguageCode());
         $brandLangGetter = 'get' . $languageCode;
-        $ratingPlanGroupName = $ratingPlanGroup
-            ? $ratingPlanGroup->getName()->{$brandLangGetter}()
-            : '';
+        $ratingPlanGroupName = $ratingPlanGroup->getName()->{$brandLangGetter}();
 
         $tpDestination = $this->tpDestinationRepository->findOneByTag(
             $defaultRunTpCdr->getMatchedDestinationTag()
