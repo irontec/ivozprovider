@@ -25,11 +25,11 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     /**
      * Set calldate
      *
-     * @param \DateTime $calldate
+     * @param \DateTime | null $calldate
      *
      * @return self
      */
-    public function setCalldate($calldate);
+    public function setCalldate($calldate = null);
 
     /**
      * Get the numberValue in E.164 format when routing to 'number'

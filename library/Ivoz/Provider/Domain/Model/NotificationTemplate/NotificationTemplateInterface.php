@@ -26,7 +26,7 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
      * Get contents by language
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface | null
      */
     public function getContentsByLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language);
 

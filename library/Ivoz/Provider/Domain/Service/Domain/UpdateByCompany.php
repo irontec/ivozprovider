@@ -62,9 +62,6 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
             return;
         }
 
-        /**
-         * @var DomainInterface $domain
-         */
         $domain = $company->getDomain();
 
         // If domain field is filled, look for Domain entity or create a new one

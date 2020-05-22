@@ -108,7 +108,7 @@ class SyncBalances
     {
         foreach ($companiesBalance as $companyId => $balance) {
 
-            /** @var CompanyInterface $company */
+            /** @var CompanyInterface | null $company */
             $company = $this->companyRepository->find($companyId);
             if (!$company) {
                 $this->logger->error(

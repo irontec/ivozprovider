@@ -37,9 +37,6 @@ class CreateOrUpdateByTrunksCdr
             ? $this->entityTools->entityToDto($billableCall)
             : BillableCall::createDto();
 
-        /**
-         * @var CarrierInterface $carrier
-         */
         $carrier = $trunksCdr->getCarrier();
 
         $carrierName = $carrier
@@ -53,9 +50,6 @@ class CreateOrUpdateByTrunksCdr
             $trunksCdr
         );
 
-        /**
-         * @var DdiInterface $ddi
-         */
         $ddi = $trunksCdr->getDdi();
 
         $isOutbound = $trunksCdrDto->getDirection() === TrunksCdrInterface::DIRECTION_OUTBOUND;

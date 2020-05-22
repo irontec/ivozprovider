@@ -80,14 +80,7 @@ class Ddi extends DdiAbstract implements DdiInterface
     public function getDomain()
     {
         $company = $this->getCompany();
-        if (!$company) {
-            return null;
-        }
-
         $brand = $company->getBrand();
-        if (!$brand) {
-            return null;
-        }
 
         return $brand->getDomain();
     }

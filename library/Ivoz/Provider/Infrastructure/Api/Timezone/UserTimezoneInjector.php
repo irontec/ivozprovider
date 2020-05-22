@@ -77,7 +77,6 @@ class UserTimezoneInjector
             return null;
         }
 
-        /** @var \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timeZone */
         $timeZone = $user->getTimezone();
 
         return $timeZone

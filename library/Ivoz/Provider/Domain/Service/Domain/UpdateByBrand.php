@@ -48,9 +48,6 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 
         $domainUsers = $brand->getDomainUsers();
 
-        /**
-         * @var DomainInterface $domain
-         */
         $domain = $brand->getDomain();
 
         // Empty domain field, delete any related domain

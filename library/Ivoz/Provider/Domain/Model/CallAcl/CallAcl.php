@@ -38,9 +38,6 @@ class CallAcl extends CallAclAbstract implements CallAclInterface
      */
     public function dstIsCallable($dst)
     {
-        /**
-         * @var CallAcl $this
-         */
         $defaultPolicy = $this->getDefaultPolicy();
 
         $criteria = Criteria

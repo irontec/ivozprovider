@@ -3,7 +3,7 @@
 namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
-use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
@@ -43,9 +43,6 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
      */
     public function execute(RetailAccountInterface $entity)
     {
-        /**
-         * @var PsEndpointInterface $endpoint
-         */
         $endpoint = $this->psEndpointRepository->findOneByRetailAccountId(
             $entity->getId()
         );
@@ -58,6 +55,7 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
                 ->setSendDiversion('yes')
                 ->setSendPai('yes');
         } else {
+            /** @var PsEndpointDto $endpointDto */
             $endpointDto  = $this->entityTools->entityToDto($endpoint);
         }
 

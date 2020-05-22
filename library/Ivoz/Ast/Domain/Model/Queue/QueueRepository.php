@@ -9,7 +9,7 @@ interface QueueRepository extends ObjectRepository, Selectable
 {
     /**
      * @param int $id
-     * @return QueueInterface
+     * @return QueueInterface | null
      */
     public function findOneByProviderQueueId($id);
 }
