@@ -88,14 +88,11 @@ class UpdateDtoByDefaultRunTpCdr
                 $cost
             );
 
-        /**
-         * @var TpRatingPlanInterface $tpRatingPlan
-         */
         $tpRatingPlan = $this->tpRatingPlanRepository->findOneByTag(
             $defaultRunTpCdr->getRatingPlanTag()
         );
 
-        if (is_null($cost) || $cost < 0 || !$tpRatingPlan) {
+        if ($cost < 0 || !$tpRatingPlan) {
             $errorMsg = empty($tpRatingPlan)
                 ? 'Rating plan not found'
                 : 'Rating price error';
