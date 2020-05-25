@@ -164,7 +164,11 @@ class UserCallAction
         $this->agi->setVariable("DIAL_OPTS", $options);
 
         // Redirect to the calling dialplan context
-        $this->agi->redirect('call-user', $extension->getNumber());
+        if ($this->allowCallForwards) {
+            $this->agi->redirect('call-user-cfw', $extension->getNumber());
+        } else {
+            $this->agi->redirect('call-user', $extension->getNumber());
+        }
     }
 
     /**
