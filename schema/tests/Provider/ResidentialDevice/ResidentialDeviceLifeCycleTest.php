@@ -99,7 +99,7 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
         /////////////////////////////////
 
         $this->it_triggers_lifecycle_services();
-        $this->it_updates_tp_rating_profile();
+        $this->it_updates_ps_endpoint();
     }
 
     protected function it_triggers_lifecycle_services()
@@ -111,7 +111,7 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
         ]);
     }
 
-    protected function it_updates_tp_rating_profile()
+    protected function it_updates_ps_endpoint()
     {
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
@@ -130,6 +130,7 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
                 'context' => 'residential',
                 'disallow' => 'all' ,
                 'allow' => 'alaw',
+                'mailboxes' => 'residential2@company1',
                 'direct_media' => 'yes',
                 'direct_media_method' => 'invite',
                 'send_diversion' => 'yes',
