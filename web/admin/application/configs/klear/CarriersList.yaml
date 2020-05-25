@@ -45,6 +45,8 @@ production:
           transformationRuleSet: true
           proxyTrunks: true
           balance: true
+          proxyTrunk: true
+          statusIcon: true
         blacklist:
           externallyRated: true
           calculateCost: true
@@ -85,6 +87,7 @@ production:
           balance: true
           acd: true
           asr: true
+          statusIcon: true
       fixedPositions: &carriersNew_fixedPositionsLink
         group0:
           label: _("Basic Configuration")
@@ -126,6 +129,7 @@ production:
           balance: true
           acd: true
           asr: true
+          statusIcon: true
       fixedPositions:
         <<: *carriersNew_fixedPositionsLink
 
