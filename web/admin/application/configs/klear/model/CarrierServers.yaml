@@ -158,6 +158,13 @@ production:
         icon: help
         text: _("Use this instead in From header domain")
         label: _("Need help?")
+    statusIcon:
+      title: _('Status')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_CarrierServerStatus
+        method: getCarrierServerStatusIcon
 staging:
   _extends: production
 testing:

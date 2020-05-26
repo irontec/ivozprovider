@@ -142,6 +142,13 @@ production:
         icon: help
         text: "<a href='https://en.wikipedia.org/wiki/Answer-seizure_ratio' target='_blank'>Answer-Seizure Ratio</a>"
         label: _("Need help?")
+    statusIcon:
+      title: _('Status')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_CarrierServerStatus
+        method: getCarrierStatusIcon
 staging:
   _extends: production
 testing:

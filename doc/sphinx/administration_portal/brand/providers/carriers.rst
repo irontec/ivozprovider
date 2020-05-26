@@ -39,6 +39,10 @@ This are the fields that define a carrier:
         Selected address will be used as source address for signalling with this carrier. Brand operator can choose among
         addresses assigned by main operator via :ref:`Brands`. Read :ref:`Proxy Trunks` for further details.
 
+    Status
+        Non-responding carrier servers are inactivated until they respond to OPTIONS ping request. This icon is green if
+        every carrier server of given carrier is active, red if they are all inactive and yellow if just some of them are inactive.
+
 Cost calculation
 ****************
 
@@ -96,6 +100,10 @@ are used for placing outgoing calls by using :ref:`Outgoing routings`.
         For those providers that show origin in other headers (PAI/RPID), it is
         possible that request that From User have the account code being used
         and from domain their SIP domain. In case of doubt, leave empty.
+
+    Status
+        Non-responding carrier servers are inactivated until they respond to a OPTIONS ping request. This icon shows
+        if carrier server is active or inactive (and being pinged via OPTIONS message until gets back).
 
 .. tip:: There are many fields to establish *peering* with multiple kind of
    carriers, but usually with the name and SIP Proxy will be enough (for

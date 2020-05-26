@@ -44,6 +44,7 @@ production:
         order:
           sipProxy: true
           outboundProxy: true
+          statusIcon: true
       options:
         title: _("Options")
         screens:
@@ -65,6 +66,7 @@ production:
           ip: true
           hostname: true
           port: true
+          statusIcon: true
         order: &carrierServersOrder_Link
           sipProxy: true
           authNeeded: true
@@ -115,6 +117,7 @@ production:
           ip: true
           hostname: true
           port: true
+          statusIcon: true
         order:
           <<: *carrierServersOrder_Link
       fixedPositions:
