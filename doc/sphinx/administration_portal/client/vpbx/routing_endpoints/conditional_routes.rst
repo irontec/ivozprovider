@@ -25,32 +25,30 @@ These routes are electable in three sections:
 Creating a conditional route
 ============================
 
-First of all we create a conditional route in **Conditional routes** section:
+First of all we create a conditional route in **Conditional routes** section.
 
 
 On creation we define what should be done with a call that does not satisfy any
-of the rules described below.
+of the rules added bellow.
 
 Adding rules
 ============
 
 Once created, we need to add rules, for example:
 
-.. rubric:: Calls from Japan and Germany received in the morning to an specific user
+- Calls from Japan and Germany received in the morning to an specific user
 
 
-.. rubric:: Calls from Japan and Germany received in the afternoon to another user
+- Calls from Japan and Germany received in the afternoon to another user
 
 
-.. rubric:: Override the reception IVR for summer days
+- Override the reception IVR for summer days
 
 
-With this example rules, our example conditional route will look like this:
+Evaluating conditional routes
+=============================
 
-
-Some notes about this example:
-
-- Rules are evaluated following the metric parameter. Once a rule matches, its 
+- Rules are evaluated following the metric parameter. Once a rule matches, its
   logic is applied.
 
 - Rules may have from 1 to 4 criteria:
@@ -65,19 +63,32 @@ Some notes about this example:
 
 - These 4 criteria are combined (applying an AND logic).
 
-.. tip:: If one of selected route locks is open, this criteria is considered fulfilled.
+- If all used criterias in a rule are fulfilled, its logic is applied.
 
-Using a conditional route
-=========================
+This is how each criteria is evaluated:
 
-The behaviour when an IVR option or an extension is routed to a conditional 
-route is easy to understand, but using conditional routes with DDIs need an
-additional explanation.
+.. glossary::
 
-Imagine this scenario:
+    Matchlist criteria
+        If caller number matches any of selected matchlist(s), this criteria is considered fulfilled.
 
+    Schedule criteria
+        If current time is included in any of selected schedules, this criteria is considered fulfilled.
 
-DDI has an external call filter and is routed to the new conditional route.
+    Calendar criteria
+          - If current day is marked as holiday in any of selected calendars, this criteria is considered fulfilled.
+          - If current day is marked as non-wholeday holiday in any of selected calendars and current time is included
+            in its interval, this criteria is considered fulfilled.
+
+    Lock criteria
+        If one of selected route locks is open, this criteria is considered fulfilled.
+
+.. warning:: :ref:`Calendar Periods` linked to selected calendars are not taken into account.
+
+DDI routed to a conditional route
+=================================
+
+Imagine this scenario: DDI has an external call filter and is routed to the new conditional route.
 
 When a call is received:
 
