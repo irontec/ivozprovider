@@ -94,14 +94,18 @@ function setup_proxies()
     # Change ProxyTrunks ports if USERS_ADDRESS == TRUNKS_ADDRESS
     if [ -n "$USERS_ADDRESS" ] && [ "$USERS_ADDRESS" == "$TRUNKS_ADDRESS" ]; then
         sed -i -e '/#!define TRUNKS_SIP_PORT/c\#!define TRUNKS_SIP_PORT 7060' /etc/kamailio/proxyusers/kamailio.cfg
+        sed -i -e '/modparam("dmq", "notification_address"/c\modparam("dmq", "notification_address", "sip:trunks.ivozprovider.local:7060")' /etc/kamailio/proxyusers/kamailio.cfg
         sed -i -e '/#!define SIP_PORT/c\#!define SIP_PORT 7060' /etc/kamailio/proxytrunks/kamailio.cfg
         sed -i -e '/#!define SIPS_PORT/c\#!define SIPS_PORT 7061' /etc/kamailio/proxytrunks/kamailio.cfg
+        sed -i -e '/modparam("dmq", "server_address"/c\modparam("dmq", "server_address", "sip:trunks.ivozprovider.local:7060")' /etc/kamailio/proxytrunks/kamailio.cfg
         sed -i -e '/contact=sip:trunks.ivozprovider.local/c\contact=sip:trunks.ivozprovider.local:7060' /etc/asterisk/pjsip.conf
         sed -i -e '/endpoint_identifier_order=ip,contact,username,anonymous/c\endpoint_identifier_order=contact,ip,username,anonymous' /etc/asterisk/pjsip.conf
     else
         sed -i -e '/#!define TRUNKS_SIP_PORT/c\#!define TRUNKS_SIP_PORT 5060' /etc/kamailio/proxyusers/kamailio.cfg
+        sed -i -e '/modparam("dmq", "notification_address"/c\modparam("dmq", "notification_address", "sip:trunks.ivozprovider.local:5060")' /etc/kamailio/proxyusers/kamailio.cfg
         sed -i -e '/#!define SIP_PORT/c\#!define SIP_PORT 5060' /etc/kamailio/proxytrunks/kamailio.cfg
         sed -i -e '/#!define SIPS_PORT/c\#!define SIPS_PORT 5061' /etc/kamailio/proxytrunks/kamailio.cfg
+        sed -i -e '/modparam("dmq", "server_address"/c\modparam("dmq", "server_address", "sip:trunks.ivozprovider.local:5060")' /etc/kamailio/proxytrunks/kamailio.cfg
         sed -i -e '/contact=sip:trunks.ivozprovider.local/c\contact=sip:trunks.ivozprovider.local' /etc/asterisk/pjsip.conf
         sed -i -e '/endpoint_identifier_order=contact,ip,username,anonymous/c\endpoint_identifier_order=ip,contact,username,anonymous' /etc/asterisk/pjsip.conf
     fi
