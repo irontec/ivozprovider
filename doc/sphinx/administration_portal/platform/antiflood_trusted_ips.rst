@@ -5,8 +5,8 @@ Antiflood trusted IPs
 *********************
 
 IvozProvider comes with an *anti-flooding* mechanism to avoid that a single
-sender can deny the platform service by sending lots of requests. Both *proxies*
-(users and trunks) use this mechanism, that **limits the number of requests
+sender can deny the platform service by sending lots of requests. *Users proxy*
+(kamusers) uses this mechanism, that **limits the number of requests
 from an origin address in a time lapse**.
 
 .. warning:: When an origin reaches this limit, the proxy will stop sending
@@ -15,7 +15,7 @@ from an origin address in a time lapse**.
 
 Some origins are automatically excluded from this *anti-flooding* mechanism:
 
-- Application Servers from the platform.
+- IvozProvider components.
 
 - Client authorized IP addresses or ranges (see previous section).
 
