@@ -88,7 +88,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         (function () use ($fixture) {
             $this->setName("Retail Company");
             $this->setType("retail");
-            $this->setDomainUsers("retail.irontec.com");
+            $this->setDomainUsers(null);
             $this->setNif("12345679-Z");
             $this->setMaxCalls(0);
             $this->setPostalAddress("");
@@ -117,7 +117,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         (function () use ($fixture) {
             $this->setName("Retail Company 2");
             $this->setType("retail");
-            $this->setDomainUsers("retail2.irontec.com");
+            $this->setDomainUsers(null);
             $this->setNif("12345679-Z");
             $this->setMaxCalls(0);
             $this->setPostalAddress("");
