@@ -4,20 +4,15 @@ namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
-use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Destination\Destination;
-use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
-use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Service\BillableCall\UpdateDtoByDefaultRunTpCdr;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -107,40 +102,6 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
             $this->billableCallDto,
             [
                 'setPrice' => -1,
-                'setDestinationId' => null,
-                'setDestinationName' => null,
-                'setRatingPlanGroupId' => null,
-                'setRatingPlanName' => null,
-            ],
-            true
-        );
-
-        $this->execute(
-            $this->billableCallDto,
-            $this->trunksCdr,
-            $this->defaultRunTpCdr
-        );
-    }
-
-    function it_sets_save_values_on_null_cost()
-    {
-        $this->prepareExecution();
-
-        $this
-            ->defaultRunTpCdr
-            ->getCost()
-            ->willReturn(null)
-            ->shouldBeCalled();
-
-        $this
-            ->logger
-            ->error(Argument::type('string'))
-            ->shouldbeCalled();
-
-        $this->fluentSetterProphecy(
-            $this->billableCallDto,
-            [
-                'setPrice' => null,
                 'setDestinationId' => null,
                 'setDestinationName' => null,
                 'setRatingPlanGroupId' => null,
