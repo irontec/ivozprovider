@@ -125,10 +125,14 @@ class Xmlrpc
      */
     private function sendRpcRequest($entity, $port, $method)
     {
-        /** @var ProxyTrunkRepository|ProxyUserRepository $repository */
-        $repository = $this->em->getRepository($entity);
-        if (!$repository) {
-            $this->logger->error(sprintf("Unable to find repository for %s", $entity));
+        try {
+
+            /** @var ProxyTrunkRepository|ProxyUserRepository $repository */
+            $repository = $this->em->getRepository($entity);
+        } catch (\Exception $e) {
+            $this->logger->error(
+                sprintf("Unable to find repository for %s", $entity)
+            );
             return false;
         }
 

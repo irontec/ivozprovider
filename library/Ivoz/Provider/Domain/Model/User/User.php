@@ -97,7 +97,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
 
     protected function sanitizeNew()
     {
-        if (is_null($this->getVoicemailSendMail()) && $this->getEmail()) {
+        if ($this->getEmail()) {
             $this->setVoicemailSendMail(1);
         }
 

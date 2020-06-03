@@ -16,7 +16,7 @@ abstract class AbstractWsServer
     /** @var Server */
     protected $server;
 
-    /** @var RedisPool */
+    /** @var RedisPool | null */
     protected $redisPool;
 
     /** @var Redis */

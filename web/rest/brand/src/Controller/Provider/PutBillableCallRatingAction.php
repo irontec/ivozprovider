@@ -35,7 +35,6 @@ class PutBillableCallRatingAction
 
     public function __invoke()
     {
-        /** @var TokenInterface $token */
         $token = $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {
@@ -44,7 +43,7 @@ class PutBillableCallRatingAction
 
         /** @var AdministratorInterface $user */
         $user = $token->getUser();
-        /** @var BrandInterface $brand */
+
         $brand = $user->getBrand();
         if (!$brand) {
             throw new ResourceClassNotFoundException('User brand not found');
