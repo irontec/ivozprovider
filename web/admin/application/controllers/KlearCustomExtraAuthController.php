@@ -279,7 +279,22 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         $this->_getData();
         $title = $this->view->translate('%s emulated', ucfirst($type));
         $messageLiteral = 'The "%s" %2s has been emulated. <p>Refreshing tabs.</p>';
-        $messageLiteral .= '<script>$("#tabsList li").klearModule("reDispatch");$.klear.restart({}, false);</script>';
+        $messageLiteral .=
+            '<script>
+                $("#tabsList li")
+                    .filter(function () {
+                        var controller = $(this).data(\'controller\');
+                        return (controller == \'edit\' || controller == \'new\');
+                    })
+                    .klearModule("close", {forced: true});
+
+                $("#tabsList li")
+                    .filter(function () {
+                        var controller = $(this).data(\'controller\');
+                        return !controller || controller == \'list\';
+                    })
+                    .klearModule(\'reDispatch\');
+            </script>';
         $message = $this->view->translate($messageLiteral, $model->getName(), $type);
         $data = array(
                 "title" => $title,
