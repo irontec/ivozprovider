@@ -5,7 +5,7 @@ Feature: Update retail accounts
 
   @createSchema
   Scenario: Update a retail account
-    Given I add Company Authorization header
+    Given I add Retail Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/retail_accounts/1" with body:
@@ -14,7 +14,7 @@ Feature: Update retail accounts
           "name": "updatedRetailAccount",
           "description": "updated desc",
           "transformationRuleSet": 1,
-          "outgoingDdi": 1
+          "outgoingDdi": 3
       }
     """
     Then the response status code should be 200
@@ -44,12 +44,12 @@ Feature: Update retail accounts
               "country": 68
           },
           "outgoingDdi": {
-              "ddi": "123",
+              "ddi": "121",
               "recordCalls": "none",
               "displayName": "",
               "routeType": null,
               "friendValue": "",
-              "id": 1,
+              "id": 3,
               "conferenceRoom": null,
               "language": null,
               "queue": null,

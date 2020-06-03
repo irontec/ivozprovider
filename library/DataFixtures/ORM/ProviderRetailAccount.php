@@ -33,7 +33,7 @@ class ProviderRetailAccount extends Fixture implements DependentFixtureInterface
                 $fixture->getReference('_reference_ProviderBrand1')
             );
             $this->setCompany(
-                $fixture->getReference('_reference_ProviderCompany1')
+                $fixture->getReference('_reference_ProviderCompany3')
             );
         })->call($item1);
 

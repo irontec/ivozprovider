@@ -17,7 +17,7 @@ Feature: Retrieve retail accounts status
           {
               "name": "testRetailAccount",
               "id": 1,
-              "company": 1,
+              "company": 3,
               "domainName": "retail.irontec.com",
               "status": [
                   {

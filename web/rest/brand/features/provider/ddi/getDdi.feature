@@ -17,6 +17,14 @@ Feature: Retrieve ddis
           {
               "ddi": "123",
               "id": 1
+          },
+          {
+              "ddi": "124",
+              "id": 2
+          },
+          {
+              "ddi": "121",
+              "id": 3
           }
       ]
     """

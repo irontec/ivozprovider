@@ -5,7 +5,7 @@ Feature: Create residential devices
 
   @createSchema
   Scenario: Create a residential device
-    Given I add Company Authorization header
+    Given I add Residential Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/residential_devices" with body:

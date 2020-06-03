@@ -31,6 +31,12 @@ Feature: Retrieve companies
               "name": "Retail Company",
               "nif": "12345679-Z",
               "id": 3
+          },
+          {
+              "type": "residential",
+              "name": "Residential Company",
+              "nif": "12345679-Z",
+              "id": 4
           }
       ]
     """

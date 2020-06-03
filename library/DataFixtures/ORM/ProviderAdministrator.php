@@ -138,6 +138,39 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item7);
         $manager->persist($item7);
 
+        $item8 = $this->createEntityInstance(Administrator::class);
+        (function () use ($fixture) {
+            $this->setUsername("test_residential_admin");
+            $this->setPass("changeme");
+            $this->setEmail("test@irontec.com");
+            $this->setActive(true);
+            $this->setName("Admin Name");
+            $this->setLastname("Admin Lastname");
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany4'));
+            $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
+        })->call($item8);
+        $this->addReference('_reference_ProviderAdministrator8', $item8);
+        $this->sanitizeEntityValues($item8);
+        $manager->persist($item8);
+
+
+        $item9 = $this->createEntityInstance(Administrator::class);
+        (function () use ($fixture) {
+            $this->setUsername("test_retail_admin");
+            $this->setPass("changeme");
+            $this->setEmail("test@irontec.com");
+            $this->setActive(true);
+            $this->setName("Admin Name");
+            $this->setLastname("Admin Lastname");
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany3'));
+            $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
+        })->call($item9);
+        $this->addReference('_reference_ProviderAdministrator9', $item9);
+        $this->sanitizeEntityValues($item9);
+        $manager->persist($item9);
+
         $manager->flush();
     }
 
