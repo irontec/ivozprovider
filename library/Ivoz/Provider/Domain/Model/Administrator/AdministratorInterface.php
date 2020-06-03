@@ -28,11 +28,17 @@ interface AdministratorInterface extends LoggableEntityInterface
      */
     public function isBrandAdmin();
 
-    /**
-     * @return bool
-     * @deprecated dead code (apparently)
-     */
-    public function isCompanyAdmin();
+    public function isVpbxAdmin();
+
+    public function isResidentialAdmin();
+
+    public function isRetailAdmin();
+
+    public function isWholesaleAdmin();
+
+    public function companyHasFeature(string $iden);
+
+    public function brandHasFeature(string $iden);
 
     public function serialize();
 
