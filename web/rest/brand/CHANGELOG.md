@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.15.2
+* Endpoints:
+    - Added /my/registration_summary
+
 ## 2.15.1
 * Endpoints:
     - Added [GET] /proxy_trunks
