@@ -46,6 +46,7 @@ Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateAbstract:
       options:
         fixed: false
         default: "*up"
+        comment: '[enum:*up|*upmincost]'
       column: rounding_method
     roundingDecimals:
       type: integer
