@@ -5,7 +5,7 @@ Feature: Create retail accounts
 
   @createSchema
   Scenario: Create a retail account
-    Given I add Company Authorization header
+    Given I add Retail Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/retail_accounts" with body:

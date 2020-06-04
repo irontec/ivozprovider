@@ -5,7 +5,7 @@ Feature: Manage retail accounts
 
   @createSchema
   Scenario: Remove a retail account
-    Given I add Company Authorization header
+    Given I add Retail Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/retail_accounts/1"

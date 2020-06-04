@@ -47,3 +47,12 @@ put_billable_call_rate_by_callid:
     _api_resource_class: 'Ivoz\Provider\Domain\Model\BillableCall\BillableCall'
     _api_item_operation_name: 'put_billable_call_rate_by_callid'
     _api_receive: false
+
+get_my_registration_summary:
+  path: '/my/registration_summary'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\RegistrationSummaryAction
+    _api_resource_class: 'Model\RegistrationSummary'
+    _api_item_operation_name: 'get_my_registration_summary'
+    _api_receive: false

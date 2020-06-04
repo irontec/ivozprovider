@@ -1,7 +1,6 @@
 ########################################
 ## Custom models
 ########################################
-
 Model\Token:
   itemOperations: []
   collectionOperations:
@@ -48,3 +47,18 @@ Model\ActiveCalls:
           required: false
           description: 'Company Id'
   collectionOperations: []
+
+Model\RegistrationSummary:
+  itemOperations: []
+  collectionOperations:
+    get_my_registration_summary:
+      access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+      method: 'GET'
+      path: '/my/registration_summary'
+      route_name: 'get_my_registration_summary'
+      parameters: []
+      swagger_context:
+        produces:
+        - 'application/json'
+        tags:
+        - My

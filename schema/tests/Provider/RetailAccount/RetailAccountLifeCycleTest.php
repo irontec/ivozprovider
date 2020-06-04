@@ -55,7 +55,7 @@ class RetailAccountLifeCycleTest extends KernelTestCase
         $retailAccountDto = $this->entityTools->entityToDto($retailAccount);
 
         $retailAccountDto
-            ->setDirectConnectivity('no');
+            ->setDirectConnectivity('yes');
 
         return $this
             ->entityTools
@@ -111,7 +111,7 @@ class RetailAccountLifeCycleTest extends KernelTestCase
         $this->updateRetailAccount();
         $this->assetChangedEntities([
             RetailAccount::class,
-            PsEndpoint::class
+            PsEndpoint::class,
         ]);
     }
 

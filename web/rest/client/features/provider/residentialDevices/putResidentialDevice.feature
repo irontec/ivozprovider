@@ -5,7 +5,7 @@ Feature: Update residential devices
 
   @createSchema
   Scenario: Update a residential device
-    Given I add Company Authorization header
+    Given I add Residential Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/residential_devices/1" with body:
@@ -25,7 +25,7 @@ Feature: Update residential devices
           "updateCallerid": "yes",
           "fromDomain": null,
           "directConnectivity": "yes",
-          "outgoingDdi": 1,
+          "outgoingDdi": 2,
           "language": 1
       }
     """
@@ -41,12 +41,12 @@ Feature: Update residential devices
           "password": "ZGthe7E2+4",
           "id": 1,
           "outgoingDdi": {
-              "ddi": "123",
+              "ddi": "124",
               "recordCalls": "none",
               "displayName": "",
               "routeType": null,
               "friendValue": "",
-              "id": 1,
+              "id": 2,
               "conferenceRoom": null,
               "language": null,
               "queue": null,

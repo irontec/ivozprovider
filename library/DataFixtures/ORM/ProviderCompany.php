@@ -88,7 +88,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         (function () use ($fixture) {
             $this->setName("Retail Company");
             $this->setType("retail");
-            $this->setDomainUsers("retail.irontec.com");
+            $this->setDomainUsers(null);
             $this->setNif("12345679-Z");
             $this->setMaxCalls(0);
             $this->setPostalAddress("");
@@ -115,9 +115,9 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
 
         $item4 = $this->createEntityInstance(Company::class);
         (function () use ($fixture) {
-            $this->setName("Retail Company 2");
-            $this->setType("retail");
-            $this->setDomainUsers("retail2.irontec.com");
+            $this->setName("Residential Company");
+            $this->setType("residential");
+            $this->setDomainUsers(null);
             $this->setNif("12345679-Z");
             $this->setMaxCalls(0);
             $this->setPostalAddress("");
@@ -131,7 +131,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
-            $this->setBrand($fixture->getReference('_reference_ProviderBrand2'));
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setVoicemailNotificationTemplate($fixture->getReference('_reference_ProviderNotificationTemplate1'));

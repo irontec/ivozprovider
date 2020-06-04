@@ -40,6 +40,42 @@ class ProviderDdi extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+        /** @var DdiInterface $item2 */
+        $item2 = $this->createEntityInstance(Ddi::class);
+        (function () use ($fixture) {
+            $this->setDdi("124");
+            $this->setDdie164("+34124");
+            $this->setDisplayName("");
+            $this->setBillInboundCalls(false);
+            $this->setFriendValue("");
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany4'));
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setDdiProvider($fixture->getReference('_reference_ProviderDdiProvider1'));
+            $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
+        })->call($item2);
+
+        $this->addReference('_reference_ProviderDdi2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
+
+        /** @var DdiInterface $item3 */
+        $item3 = $this->createEntityInstance(Ddi::class);
+        (function () use ($fixture) {
+            $this->setDdi("121");
+            $this->setDdie164("+34121");
+            $this->setDisplayName("");
+            $this->setBillInboundCalls(false);
+            $this->setFriendValue("");
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany3'));
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setDdiProvider($fixture->getReference('_reference_ProviderDdiProvider1'));
+            $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
+        })->call($item3);
+
+        $this->addReference('_reference_ProviderDdi3', $item3);
+        $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
+
         $manager->flush();
     }
 
