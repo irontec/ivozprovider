@@ -50,6 +50,11 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     public function getCurrencyIden();
 
     /**
+     * @return string
+     */
+    public function getRoundingMethod();
+
+    /**
      * Get status
      *
      * @return string | null
