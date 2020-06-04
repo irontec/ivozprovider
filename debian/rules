@@ -16,10 +16,17 @@ build_library:
 build_agis: build_library
 	cd asterisk/agi ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
-build_webrest: build_library
+build_webrest_platform: build_library
 	cd web/rest/platform ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
+	cd web/rest/platform ; bin/console api:swagger:export > public/swagger.json
+
+build_webrest_brand: build_library
 	cd web/rest/brand ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
+	cd web/rest/brand ; bin/console api:swagger:export > public/swagger.json
+
+build_webrest_client: build_library
 	cd web/rest/client ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
+	cd web/rest/client ; bin/console api:swagger:export > public/swagger.json
 
 build_webadmin: build_library
 	cd web/admin ; msgfmt -o application/languages/es_ES/es_ES.mo application/languages/es_ES/es_ES.po
@@ -45,7 +52,9 @@ build_microservices: build_library
 build_schema: build_library
 	cd schema ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
-override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_schema build_webuser
+override_dh_auto_build: build_doc build_agis build_webadmin
+override_dh_auto_build: build_webrest_platform build_webrest_brand build_webrest_client
+override_dh_auto_build: build_microservices build_schema build_webuser
 
 override_dh_install:
 	dh_install
