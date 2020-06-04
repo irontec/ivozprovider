@@ -561,7 +561,7 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
-      && user.isVpbxAdmin()
+      && (user.isVpbxAdmin() || user.isResidentialAdmin())
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       company:
@@ -674,7 +674,7 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
-      && user.isVpbxAdmin()
+      && (user.isVpbxAdmin() || user.isResidentialAdmin())
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     normalization_context:
       groups: ['withInverseRelationships']
@@ -1399,7 +1399,10 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
 
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+        "ROLE_COMPANY_ADMIN" in roles
+        && user.isResidentialAdmin()
+        && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
