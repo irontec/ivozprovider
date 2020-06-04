@@ -820,7 +820,10 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
 
 Ivoz\Provider\Domain\Model\Fax\Fax:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.companyHasFeature('faxes')
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -997,7 +1000,10 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
   itemOperations: []
   collectionOperations: []
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.companyHasFeature('invoices')
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1370,7 +1376,10 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.brandHasFeature('billing')
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1388,7 +1397,10 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.companyHasFeature('recordings')
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
