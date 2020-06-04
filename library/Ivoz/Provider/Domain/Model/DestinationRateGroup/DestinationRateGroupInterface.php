@@ -57,6 +57,13 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     public function getStatus();
 
     /**
+     * Get deductibleConnectionFee
+     *
+     * @return boolean
+     */
+    public function getDeductibleConnectionFee();
+
+    /**
      * Get brand
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
