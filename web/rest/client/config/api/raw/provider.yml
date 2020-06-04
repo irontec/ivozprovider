@@ -22,7 +22,10 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
 
 Ivoz\Provider\Domain\Model\Calendar\Calendar:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -82,7 +85,10 @@ Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule
 
 Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -295,7 +301,10 @@ Ivoz\Provider\Domain\Model\Company\Company:
 
 Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -306,7 +315,10 @@ Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
 
 Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -493,7 +505,10 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRo
 
 Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -544,7 +559,10 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
         swagger_context:
           readOnly: true
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       company:
         eq: "user.getCompany().getId()"
@@ -606,7 +624,10 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
         - My
         parameters: []
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -651,7 +672,10 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
       operation_normalization_context: 'withInverseRelationships'
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     normalization_context:
       groups: ['withInverseRelationships']
     read_access_control:
@@ -838,7 +862,10 @@ Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
 
 Ivoz\Provider\Domain\Model\Friend\Friend:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -918,7 +945,10 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
 
 Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       company:
         eq: "user.getCompany().getId()"
@@ -1019,7 +1049,10 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
       operation_normalization_context: 'withExcludedExtensions'
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     normalization_context:
       groups: ['withExcludedExtensions']
     read_access_control:
@@ -1093,7 +1126,10 @@ Ivoz\Provider\Domain\Model\Language\Name:
 
 Ivoz\Provider\Domain\Model\Locution\Locution:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1117,7 +1153,10 @@ Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
 
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         or:
@@ -1145,7 +1184,10 @@ Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
 
 Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1156,7 +1198,10 @@ Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
 
 Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1213,7 +1258,10 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
       operation_normalization_context: 'withUsers'
       depth: 1
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     normalization_context:
       groups: ['withUsers']
     read_access_control:
@@ -1272,7 +1320,10 @@ Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
 
 Ivoz\Provider\Domain\Model\Queue\Queue:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       company:
         eq: "user.getCompany().getId()"
@@ -1421,7 +1472,10 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
 
 Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1432,7 +1486,10 @@ Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
 
 Ivoz\Provider\Domain\Model\Schedule\Schedule:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1470,7 +1527,10 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
         groups: ['status']
     post: ~
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1598,7 +1658,10 @@ Ivoz\Provider\Domain\Model\User\User:
         - My
         parameters: []
   attributes:
-    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_USER:
         id:
