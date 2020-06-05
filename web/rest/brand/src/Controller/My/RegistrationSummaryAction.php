@@ -3,48 +3,34 @@
 namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Kam\Domain\Service\UsersLocation\BrandRegistrationSummary;
+use Ivoz\Kam\Domain\Service\UsersLocation\CompanyRegistrationSummary;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
-use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
-use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
-use Ivoz\Provider\Domain\Model\Domain\DomainRepository;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountRepository;
 use Model\RegistrationSummary;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class RegistrationSummaryAction
 {
+    protected $requestStack;
     protected $tokenStorage;
-    protected $domainRepository;
-    protected $usersLocationRepository;
-    protected $companyRepository;
-    protected $terminalRepository;
-    protected $friendRepository;
-    protected $residentialDeviceRepository;
-    protected $retailAccountRepository;
+    protected $companyRegistrationSummary;
+    protected $brandRegistrationSummary;
 
     public function __construct(
+        RequestStack $requestStack,
         TokenStorage $tokenStorage,
-        DomainRepository $domainRepository,
-        UsersLocationRepository $usersLocationRepository,
-        CompanyRepository $companyRepository,
-        TerminalRepository $terminalRepository,
-        FriendRepository $friendRepository,
-        ResidentialDeviceRepository $residentialDeviceRepository,
-        RetailAccountRepository $retailAccountRepository
+        CompanyRegistrationSummary $companyRegistrationSummary,
+        BrandRegistrationSummary $brandRegistrationSummary
     ) {
+        $this->requestStack = $requestStack;
         $this->tokenStorage = $tokenStorage;
-        $this->domainRepository = $domainRepository;
-        $this->usersLocationRepository = $usersLocationRepository;
-        $this->companyRepository = $companyRepository;
-        $this->terminalRepository = $terminalRepository;
-        $this->friendRepository = $friendRepository;
-        $this->residentialDeviceRepository = $residentialDeviceRepository;
-        $this->retailAccountRepository = $retailAccountRepository;
+        $this->companyRegistrationSummary = $companyRegistrationSummary;
+        $this->brandRegistrationSummary = $brandRegistrationSummary;
     }
 
     public function __invoke()
@@ -64,47 +50,42 @@ class RegistrationSummaryAction
             throw new NotFoundHttpException('Brand not found');
         }
 
-        $domains = $this->domainRepository->findByBrandId(
-            $brand->getId()
-        );
+        /** @var Request $request */
+        $request = $this->requestStack->getCurrentRequest();
+        $companyId = $request->get('company');
 
-        $domainFqdns = [];
-        foreach ($domains as $domain) {
-            $domainFqdns[] = $domain->getDomain();
+        if (!$companyId) {
+            $userLocations = $this->brandRegistrationSummary->getUsersLocations(
+                $brand
+            );
+
+            $total = $this->brandRegistrationSummary->getDeviceNumber(
+                $brand->getId()
+            );
+        } else {
+            $companies = $brand->getCompanies(CriteriaHelper::fromArray([
+                ['id', 'eq', $companyId]
+            ]));
+
+            if (empty($companies)) {
+                throw new NotFoundHttpException('Company not found');
+            }
+            $company = $companies[0];
+
+            $userLocations = $this->companyRegistrationSummary->getUsersLocations(
+                $company
+            );
+
+            $total = $this->companyRegistrationSummary->getDeviceNumber(
+                $company
+            );
         }
 
-        $userLocations = $this->usersLocationRepository->findByDomains(
-            $domainFqdns
-        );
-
         $active = count($userLocations);
-        $total = $this->getTotalDevices(
-            $brand->getId()
-        );
 
         return new RegistrationSummary(
             $active,
             $total
         );
-    }
-
-    /**
-     * @param int $brandId
-     * @return int
-     */
-    private function getTotalDevices(int $brandId): int
-    {
-        $total = 0;
-
-        $vpbxIds = $this->companyRepository->getVpbxIdsByBrand($brandId);
-        $residentialIds = $this->companyRepository->getResidentialIdsByBrand($brandId);
-        $retailIds = $this->companyRepository->getRetailIdsByBrand($brandId);
-
-        $total += $this->terminalRepository->countRegistrableDevices($vpbxIds);
-        $total += $this->friendRepository->countRegistrableDevices($vpbxIds);
-        $total += $this->residentialDeviceRepository->countRegistrableDevicesByCompanies($residentialIds);
-        $total += $this->retailAccountRepository->countRegistrableDevicesByCompanies($retailIds);
-
-        return $total;
     }
 }
