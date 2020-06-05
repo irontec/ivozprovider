@@ -33,6 +33,7 @@
     """
       {
           "status": null,
+          "deductibleConnectionFee": false,
           "id": 3,
           "name": {
               "en": "New DR",
@@ -67,6 +68,7 @@
     """
       {
           "status": null,
+          "deductibleConnectionFee": false,
           "id": 3,
           "name": {
               "en": "New DR",
