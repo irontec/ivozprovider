@@ -77,9 +77,43 @@ class UsersLocationDoctrineRepository extends ServiceEntityRepository implements
         /** @var UsersLocationInterface[] $results **/
         $results = $qb->getQuery()->getResult();
 
-        /** @var UsersLocationInterface[] $response **/
-        $response = [];
+        return $this->filterByExpires(
+            $results
+        );
+    }
 
+    /**
+     * @param string[] $names
+     * @param string $domain
+     * @return UsersLocationInterface[]
+     */
+    public function findByNamesInDomain(array $names, string $domain): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $qb
+            ->select('self')
+            ->addCriteria(
+                CriteriaHelper::fromArray([
+                    [ 'domain', 'eq', $domain ],
+                    [ 'username', 'in', $names ],
+                ])
+            );
+
+        /** @var UsersLocationInterface[] $results **/
+        $results = $qb->getQuery()->getResult();
+
+        return $this->filterByExpires(
+            $results
+        );
+    }
+
+    /**
+     * @param UsersLocationInterface[] $results
+     * @return UsersLocationInterface[]
+     */
+    private function filterByExpires($results)
+    {
+        $response = [];
         foreach ($results as $result) {
             $key = $result->getUsername() . '@' . $result->getDomain();
             if (!array_key_exists($key, $response)) {

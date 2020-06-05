@@ -41,6 +41,31 @@ class FriendDoctrineRepository extends ServiceEntityRepository implements Friend
     }
 
     /**
+     * @param int $companyId
+     * @return string[]
+     */
+    public function findNamesByCompanyId(int $companyId)
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('self.name')
+            ->where(
+                $expression->eq('self.company', $companyId)
+            );
+
+        $result = $qb
+            ->getQuery()
+            ->getScalarResult();
+
+        return array_column(
+            $result,
+            'name'
+        );
+    }
+
+    /**
      * @param int[] $companyIds
      * @return int
      */

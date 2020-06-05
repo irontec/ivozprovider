@@ -25,4 +25,11 @@ interface UsersLocationRepository extends ObjectRepository
      * @return UsersLocationInterface[]
      */
     public function findByDomains(array $domains): array;
+
+    /**
+     * @param string[] $names
+     * @param string $domain
+     * @return UsersLocationInterface[]
+     */
+    public function findByNamesInDomain(array $names, string $domain): array;
 }

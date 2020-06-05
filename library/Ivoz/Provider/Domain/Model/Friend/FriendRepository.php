@@ -16,6 +16,12 @@ interface FriendRepository extends ObjectRepository, Selectable
     public function findOneByNameAndDomain(string $name, DomainInterface $domain);
 
     /**
+     * @param int $companyId
+     * @return string[]
+     */
+    public function findNamesByCompanyId(int $companyId);
+
+    /**
      * @param int[] $companyIds
      * @return int
      */
