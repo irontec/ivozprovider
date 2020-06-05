@@ -351,10 +351,20 @@ class Company extends CompanyAbstract implements CompanyInterface
      * @param int $featureId
      * @return bool
      */
-    public function hasFeature($featureId)
+    public function hasFeature($featureId): bool
     {
         foreach ($this->getFeatures() as $feature) {
             if ($feature->getId() == $featureId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function hasFeatureByIden(string $iden): bool
+    {
+        foreach ($this->getFeatures() as $feature) {
+            if ($feature->getIden() === $iden) {
                 return true;
             }
         }
@@ -430,5 +440,25 @@ class Company extends CompanyAbstract implements CompanyInterface
     public function getCgrSubject()
     {
         return sprintf("c%d", $this->getId());
+    }
+
+    public function isVpbx(): bool
+    {
+        return $this->getType() === self::TYPE_VPBX;
+    }
+
+    public function isRetail(): bool
+    {
+        return $this->getType() === self::TYPE_RETAIL;
+    }
+
+    public function isResidential(): bool
+    {
+        return $this->getType() === self::TYPE_RESIDENTIAL;
+    }
+
+    public function isWholesale(): bool
+    {
+        return $this->getType() === self::TYPE_WHOLESALE;
     }
 }

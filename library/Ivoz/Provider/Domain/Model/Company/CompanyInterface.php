@@ -121,6 +121,8 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function hasFeature($featureId);
 
+    public function hasFeatureByIden(string $iden);
+
     /**
      * Get On demand recording code DTMFs
      * @return string
@@ -142,6 +144,14 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return string
      */
     public function getCgrSubject();
+
+    public function isVpbx();
+
+    public function isRetail();
+
+    public function isResidential();
+
+    public function isWholesale();
 
     /**
      * Get type

@@ -140,6 +140,16 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
         return false;
     }
 
+    public function hasFeatureByIden(string $iden): bool
+    {
+        foreach ($this->getFeatures() as $feature) {
+            if ($feature->getIden() === $iden) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Return Brand Cgrates tenant code
      *

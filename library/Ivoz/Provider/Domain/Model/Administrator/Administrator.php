@@ -63,7 +63,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
     /**
      * @return bool
      */
-    public function isBrandAdmin()
+    public function isBrandAdmin(): bool
     {
         if ($this->isSuperAdmin()) {
             return true;
@@ -72,13 +72,64 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
         return is_null($this->getCompany());
     }
 
-    /**
-     * @return bool
-     * @deprecated dead code (apparently)
-     */
-    public function isCompanyAdmin()
+    public function isVpbxAdmin(): bool
     {
-        return !is_null($this->getCompany());
+        $company = $this->getCompany();
+        if (!$company) {
+            return false;
+        }
+
+        return $company->isVpbx();
+    }
+
+    public function isResidentialAdmin(): bool
+    {
+        $company = $this->getCompany();
+        if (!$company) {
+            return false;
+        }
+
+        return $company->isResidential();
+    }
+
+    public function isRetailAdmin(): bool
+    {
+        $company = $this->getCompany();
+        if (!$company) {
+            return false;
+        }
+
+        return $company->isRetail();
+    }
+
+    public function isWholesaleAdmin(): bool
+    {
+        $company = $this->getCompany();
+        if (!$company) {
+            return false;
+        }
+
+        return $company->isWholesale();
+    }
+
+    public function companyHasFeature(string $iden): bool
+    {
+        $company = $this->getCompany();
+        if ($company) {
+            return $company->hasFeatureByIden($iden);
+        }
+
+        return false;
+    }
+
+    public function brandHasFeature(string $iden): bool
+    {
+        $brand = $this->getBrand();
+        if ($brand) {
+            return $brand->hasFeatureByIden($iden);
+        }
+
+        return false;
     }
 
     public function serialize()
