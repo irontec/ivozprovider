@@ -90,3 +90,18 @@ Model\CallStats:
           - My
         parameters: []
   collectionOperations: {}
+
+Model\RegistrationSummary:
+  itemOperations:
+    get_my_registration_summary:
+      access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+      method: 'GET'
+      path: '/my/registration_summary'
+      route_name: 'get_my_registration_summary'
+      swagger_context:
+        produces:
+        - 'application/json'
+        tags:
+        - My
+        parameters: []
+  collectionOperations: []
