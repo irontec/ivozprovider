@@ -200,6 +200,13 @@ msgid_plural "Application Servers"
 msgstr[0] "Application Server"
 msgstr[1] "Application Servers"
 
+msgid ""
+"Apply connect fee only if call cost does not reach connect fee (minimal "
+"cost, read documentation for further information)."
+msgstr ""
+"Apply connect fee only if call cost does not reach connect fee (minimal "
+"cost, read documentation for further information)."
+
 msgid "Apply to all clients"
 msgstr "Applica a tutte le Company"
 
@@ -658,6 +665,12 @@ msgstr[1] "DDI Provider Registrations"
 
 msgid "Day"
 msgstr "Day"
+
+msgid "Deductible Connection Fee"
+msgstr "Deductible Connection Fee"
+
+msgid "Deductible Connection Fee cannot be changed"
+msgstr "Deductible Connection Fee cannot be changed"
 
 msgid "Default Action"
 msgstr "Azione predefinita"
