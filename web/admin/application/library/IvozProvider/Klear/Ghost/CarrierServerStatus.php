@@ -38,13 +38,18 @@ class IvozProvider_Klear_Ghost_CarrierServerStatus extends KlearMatrix_Model_Fie
             return '<span class="ui-silk inline ui-silk-error" title="No carrier server assigned"></span>';
         }
 
+        /** @var TrunksClientInterface $trunksClient */
         $trunksClient = \Zend_Registry::get('container')->get(
             TrunksClientInterface::class
         );
 
-        $dumpGw = $trunksClient->getLcrGatewayInfo(
-            $kamTrunksLcrGateway->getId()
-        );
+        try {
+            $dumpGw = $trunksClient->getLcrGatewayInfo(
+                $kamTrunksLcrGateway->getId()
+            );
+        } catch (\Exception $e) {
+            return '<span class="ui-silk inline ui-silk-error" title="Error retrieving status"></span>';
+        }
 
         $status = $dumpGw['state'] ?? '';
 
@@ -98,13 +103,19 @@ class IvozProvider_Klear_Ghost_CarrierServerStatus extends KlearMatrix_Model_Fie
                 return '<span class="ui-silk inline ui-silk-error" title="No carrier server assigned"></span>';
             }
 
+            /** @var TrunksClientInterface $trunksClient */
             $trunksClient = \Zend_Registry::get('container')->get(
                 TrunksClientInterface::class
             );
 
-            $dumpGw = $trunksClient->getLcrGatewayInfo(
-                $kamTrunksLcrGateway->getId()
-            );
+            try {
+                $dumpGw = $trunksClient->getLcrGatewayInfo(
+                    $kamTrunksLcrGateway->getId()
+                );
+            } catch (\Exception $e) {
+                return '<span class="ui-silk inline ui-silk-error" title="Error retrieving status"></span>';
+            }
+
             // 0: active - 2: inactive (defaults to inactive)
             $status += $dumpGw['state'] ?? 2;
         }
