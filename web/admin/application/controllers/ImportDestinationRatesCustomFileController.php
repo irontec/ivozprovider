@@ -263,7 +263,7 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
         foreach ($lines as $line) {
             $table.= "<tr>";
             foreach ($line as $idPart => $part) {
-                $table.="<td class='ui-widget-content'>" . $part . "</td>";
+                $table.="<td class='ui-widget-content'>" . utf8_encode($part) . "</td>";
             }
             $table.= "</tr>";
         }
