@@ -13,7 +13,7 @@ class FriendCallAction
     protected $agi;
 
     /**
-     * @var FriendInterface
+     * @var FriendInterface|null
      */
     protected $friend;
 

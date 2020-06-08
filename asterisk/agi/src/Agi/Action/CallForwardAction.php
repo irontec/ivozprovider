@@ -27,7 +27,7 @@ class CallForwardAction
     protected $_maxRedirections = 5;
 
     /**
-     * @var CallForwardSettingInterface
+     * @var CallForwardSettingInterface|null
      */
     protected $cfw;
 

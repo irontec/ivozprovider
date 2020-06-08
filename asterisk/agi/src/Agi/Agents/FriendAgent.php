@@ -55,7 +55,7 @@ class FriendAgent implements AgentInterface
         // Allow identification from any company DDI
         $callerIdNum = $this->agi->getCallerIdNum();
 
-        /** @var DdiInterface $ddi */
+        /** @var DdiInterface|null $ddi */
         $ddi = null;
 
         // Check presented number against company DDIs

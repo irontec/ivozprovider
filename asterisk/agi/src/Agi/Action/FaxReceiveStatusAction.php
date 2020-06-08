@@ -33,7 +33,7 @@ class FaxReceiveStatusAction
     protected $mailer;
 
     /**
-     * @var FaxesInOutInterface
+     * @var FaxesInOutInterface|null
      */
     protected $faxInOut;
 
@@ -70,10 +70,6 @@ class FaxReceiveStatusAction
         }
 
         $fax = $faxIn->getFax();
-        if (is_null($faxIn)) {
-            $this->agi->error("Faxfile has no Fax associated! Check configuration.");
-            return;
-        }
 
         // Get DTO for status updates
         /** @var FaxesInOutDto $faxInDto */

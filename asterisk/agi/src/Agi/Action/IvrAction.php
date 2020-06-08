@@ -20,7 +20,7 @@ class IvrAction
     protected $routerAction;
 
     /**
-     * @var IvrInterface
+     * @var IvrInterface|null
      */
     protected $ivr;
 
