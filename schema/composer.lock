@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "eba8ae21c1fa0509817fded5211241e5",
     "content-hash": "db48786117d33471ff85da32de5114b0",
     "packages": [
         {
@@ -1237,7 +1236,7 @@
             ],
             "authors": [
                 {
-                    "name": "Marcos Gómez Vilches",
+                    "name": "Marcos G??mez Vilches",
                     "email": "marcos@gesdinet.com"
                 }
             ],
@@ -1553,11 +1552,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "2.4.2.0",
+            "version": "2.4.3.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core",
-                "reference": "17018d09ee2d7ccd2a1766f474022869eed7408b",
+                "reference": "c53318587a46cee069c65ae4579f1bfd15aa4e2e",
                 "shasum": null
             },
             "require": {
@@ -1841,7 +1840,7 @@
             ],
             "authors": [
                 {
-                    "name": "Luís Otávio Cobucci Oblonczyk",
+                    "name": "Lu??s Ot??vio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
                     "role": "Developer"
                 }
