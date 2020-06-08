@@ -217,7 +217,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     /**
      * Get User outgoingDdiRule
      * If no OutgoingDdiRule is assigned, retrieve company's default OutgoingDdiRule
-     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface or null
+     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface|null
      */
     public function getOutgoingDdiRule()
     {
