@@ -273,11 +273,14 @@ class Rates
                 );
                 $csvLines[$k]['rateIncrement'] = intval($line['rateIncrement']);
 
+                $destinationName = utf8_encode($line['destinationName']);
                 $destinations[] = sprintf(
-                    '("%s",  "%s",  "%s", "%d" )',
+                    '("%s", "%s", "%s", "%s", "%s", "%d" )',
                     $line['destinationPrefix'],
-                    $line['destinationName'],
-                    $line['destinationName'],
+                    $destinationName,
+                    $destinationName,
+                    $destinationName,
+                    $destinationName,
                     $brandId
                 );
 
