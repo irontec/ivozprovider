@@ -274,8 +274,10 @@ class Rates
                 $csvLines[$k]['rateIncrement'] = intval($line['rateIncrement']);
 
                 $destinations[] = sprintf(
-                    '("%s",  "%s",  "%s", "%d" )',
+                    '("%s", "%s", "%s", "%s", "%s", "%d" )',
                     $line['destinationPrefix'],
+                    $line['destinationName'],
+                    $line['destinationName'],
                     $line['destinationName'],
                     $line['destinationName'],
                     $brandId

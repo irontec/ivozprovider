@@ -36,7 +36,7 @@ class DestinationDoctrineRepository extends ServiceEntityRepository implements D
     public function insertIgnoreFromArray(array $destinations)
     {
         $destinationInsert =
-            'INSERT IGNORE INTO Destinations (prefix, name_en, name_es, brandId) VALUES '
+            'INSERT IGNORE INTO Destinations (prefix, name_en, name_es, name_ca, name_it, brandId) VALUES '
             . implode(",", $destinations);
 
         $nativeQuery = new NativeQuery($this->_em);
