@@ -34,7 +34,6 @@ Model\ActiveCalls:
       method: 'GET'
       path: '/my/active_calls'
       route_name: 'get_my_active_calls'
-      parameters: []
       swagger_context:
         produces:
         - 'application/json'
@@ -49,16 +48,21 @@ Model\ActiveCalls:
   collectionOperations: []
 
 Model\RegistrationSummary:
-  itemOperations: []
-  collectionOperations:
+  itemOperations:
     get_my_registration_summary:
       access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
       method: 'GET'
       path: '/my/registration_summary'
       route_name: 'get_my_registration_summary'
-      parameters: []
       swagger_context:
         produces:
         - 'application/json'
         tags:
         - My
+        parameters:
+        - name: company
+          in: query
+          type: integer
+          required: false
+          description: 'Company Id'
+  collectionOperations: []
