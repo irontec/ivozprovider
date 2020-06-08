@@ -34,6 +34,7 @@ production:
     2201: _("Email already in use")
     2202: _("Duplicated prefix")
     2202: _("Duplicated priority")
+    2301: _("Deductible Connection Fee cannot be changed")
   connectorErrors:
     9001: _("No Application Server available.")
 staging:

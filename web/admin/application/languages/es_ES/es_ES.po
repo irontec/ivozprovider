@@ -198,6 +198,13 @@ msgid_plural "Application Servers"
 msgstr[0] "Servidor de Aplicación"
 msgstr[1] "Servidores de Aplicación"
 
+msgid ""
+"Apply connect fee only if call cost does not reach connect fee (minimal "
+"cost, read documentation for further information)."
+msgstr ""
+"Aplicar coste de establecimiento solo si el coste de la llamada no alcanza "
+"el coste del establecimiento (coste mínimo, leer documentación)."
+
 msgid "Apply to all clients"
 msgstr "Aplicar a todos los clientes"
 
@@ -655,6 +662,12 @@ msgstr[1] "Registros Proveedor"
 
 msgid "Day"
 msgstr "Día"
+
+msgid "Deductible Connection Fee"
+msgstr "Coste de establecimiento deducible"
+
+msgid "Deductible Connection Fee cannot be changed"
+msgstr "El valor de Coste de establecimiento deducible no es editable"
 
 msgid "Default Action"
 msgstr "Acción por defecto"

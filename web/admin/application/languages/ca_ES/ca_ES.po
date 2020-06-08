@@ -198,6 +198,13 @@ msgid_plural "Application Servers"
 msgstr[0] "Servidor d'aplicació"
 msgstr[1] "Servidors d'aplicació"
 
+msgid ""
+"Apply connect fee only if call cost does not reach connect fee (minimal "
+"cost, read documentation for further information)."
+msgstr ""
+"Aplicar coste de establecimiento solo si el coste de la llamada no alcanza "
+"el coste del establecimiento (coste mínimo, leer documentación)."
+
 msgid "Apply to all clients"
 msgstr "Aplica a tots els clients"
 
@@ -653,6 +660,12 @@ msgstr[1] "Registres del proveïdor de DDI"
 
 msgid "Day"
 msgstr "Dia"
+
+msgid "Deductible Connection Fee"
+msgstr "Coste de establecimiento deducible"
+
+msgid "Deductible Connection Fee cannot be changed"
+msgstr "El valor de Coste de establecimiento deducible no es editable"
 
 msgid "Default Action"
 msgstr "Acció per defecte"

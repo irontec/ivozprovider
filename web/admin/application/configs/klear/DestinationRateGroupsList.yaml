@@ -22,6 +22,8 @@ production:
       forcedValues:
         <<: *forcedBrand
       fields: &destinationRateGroups_fieldsLink
+        blacklist:
+          deductibleConnectionFee: true
         order:
           tag: true
           name: true
@@ -77,6 +79,7 @@ production:
             name: 4
             description: 5
             currency: 4
+            deductibleConnectionFee: 4
         group2:
           colsPerRow: 8
           fields:
@@ -89,6 +92,9 @@ production:
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Destination rate', 'Destination rates', 1), "[format| (%item%)]")
+      fields:
+        readOnly:
+          deductibleConnectionFee: true
       forcedValues:
         <<: *forcedBrand
       fixedPositions:

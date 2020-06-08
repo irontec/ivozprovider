@@ -16,6 +16,11 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     private $status;
 
     /**
+     * @var boolean
+     */
+    private $deductibleConnectionFee = false;
+
+    /**
      * @var integer
      */
     private $id;
@@ -114,6 +119,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
 
         return [
             'status' => 'status',
+            'deductibleConnectionFee' => 'deductibleConnectionFee',
             'id' => 'id',
             'name' => ['en','es','ca','it'],
             'description' => ['en','es','ca','it'],
@@ -130,6 +136,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     {
         $response = [
             'status' => $this->getStatus(),
+            'deductibleConnectionFee' => $this->getDeductibleConnectionFee(),
             'id' => $this->getId(),
             'name' => [
                 'en' => $this->getNameEn(),
@@ -186,6 +193,26 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * @param boolean $deductibleConnectionFee
+     *
+     * @return static
+     */
+    public function setDeductibleConnectionFee($deductibleConnectionFee = null)
+    {
+        $this->deductibleConnectionFee = $deductibleConnectionFee;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getDeductibleConnectionFee()
+    {
+        return $this->deductibleConnectionFee;
     }
 
     /**

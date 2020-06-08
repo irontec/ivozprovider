@@ -83,7 +83,24 @@ production:
               - symbol
             template: '%name${lang}% (%symbol%)'
         'null': _("Default currency")
-staging: 
+    deductibleConnectionFee:
+      title: _('Deductible Connection Fee')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Apply connect fee only if call cost does not reach connect fee (minimal cost, read documentation for further information).")
+        label: _("Need help?")
+staging:
   _extends: production
 testing:
   _extends: production
