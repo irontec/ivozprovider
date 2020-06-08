@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+    "hash": "c681e87b76f9855920a47966f091f421",
     "content-hash": "a684d88f24e5198ca79ee9d5d39203c0",
     "packages": [
         {
@@ -1366,11 +1367,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "2.4.1.0",
+            "version": "2.4.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core",
-                "reference": "14daa0d9860c1d374ad35cc539aaa16111e8f14d",
+                "reference": "17018d09ee2d7ccd2a1766f474022869eed7408b",
                 "shasum": null
             },
             "require": {
@@ -1611,7 +1612,7 @@
             ],
             "authors": [
                 {
-                    "name": "Lu??s Ot??vio Cobucci Oblonczyk",
+                    "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
                     "role": "Developer"
                 }
@@ -2950,7 +2951,7 @@
         },
         {
             "name": "symfony/debug",
-            "version": "4.4.9999999.9999999-dev",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/debug",
@@ -3002,7 +3003,7 @@
         },
         {
             "name": "symfony/debug-bundle",
-            "version": "3.4.38.0",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/debug-bundle",
@@ -3207,7 +3208,7 @@
         },
         {
             "name": "symfony/dotenv",
-            "version": "3.4.38.0",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/dotenv",
@@ -3412,7 +3413,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "3.4.38.0",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/finder",
@@ -3781,7 +3782,7 @@
         },
         {
             "name": "symfony/inflector",
-            "version": "3.4.38.0",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/inflector",
@@ -4028,7 +4029,7 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "3.4.38.0",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/options-resolver",
@@ -4078,7 +4079,7 @@
         },
         {
             "name": "symfony/polyfill-apcu",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-apcu",
@@ -4130,7 +4131,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-ctype",
@@ -4184,7 +4185,7 @@
         },
         {
             "name": "symfony/polyfill-iconv",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-iconv",
@@ -4239,7 +4240,7 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-icu",
@@ -4293,7 +4294,7 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-idn",
@@ -4351,7 +4352,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-mbstring",
@@ -4406,7 +4407,7 @@
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php56",
@@ -4458,7 +4459,7 @@
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php70",
@@ -4513,7 +4514,7 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php72",
@@ -4564,7 +4565,7 @@
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-util",
@@ -4721,7 +4722,7 @@
         },
         {
             "name": "symfony/property-info",
-            "version": "3.4.38.0",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/property-info",
@@ -4769,7 +4770,7 @@
             ],
             "authors": [
                 {
-                    "name": "K??vin Dunglas",
+                    "name": "Kévin Dunglas",
                     "email": "dunglas@gmail.com"
                 },
                 {
