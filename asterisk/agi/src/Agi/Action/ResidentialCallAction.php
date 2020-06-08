@@ -15,7 +15,7 @@ class ResidentialCallAction
     protected $agi;
 
     /**
-     * @var ResidentialDeviceInterface
+     * @var ResidentialDeviceInterface|null
      */
     protected $residentialDevice;
 

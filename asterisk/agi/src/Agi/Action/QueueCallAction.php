@@ -13,7 +13,7 @@ class QueueCallAction
     protected $agi;
 
     /**
-     * @var QueueMemberInterface
+     * @var QueueMemberInterface|null
      */
     protected $queueMember;
 
@@ -48,16 +48,7 @@ class QueueCallAction
         }
 
         $queue = $queueMember->getQueue();
-        if (is_null($queue)) {
-            $this->agi->error("Queue is not properly defined. Check configuration.");
-            return;
-        }
-
         $user = $queueMember->getUser();
-        if (is_null($user)) {
-            $this->agi->error("No user found for queue member %s", $queueMember);
-            return;
-        }
 
         $endpoint = $user->getEndpoint();
         if (is_null($endpoint)) {

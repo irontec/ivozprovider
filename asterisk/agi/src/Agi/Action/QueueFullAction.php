@@ -18,7 +18,7 @@ class QueueFullAction
     protected $routerAction;
 
     /**
-     * @var QueueInterface
+     * @var QueueInterface|null
      */
     protected $queue;
 

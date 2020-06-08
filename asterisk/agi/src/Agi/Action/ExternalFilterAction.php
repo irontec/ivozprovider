@@ -31,12 +31,12 @@ class ExternalFilterAction
     protected $ddi;
 
     /**
-     * @var HolidayDateInterface
+     * @var HolidayDateInterface|null
      */
     protected $holidayDate;
 
     /**
-     * @var CalendarPeriodInterface
+     * @var CalendarPeriodInterface|null
      */
     protected $calendarPeriod;
 

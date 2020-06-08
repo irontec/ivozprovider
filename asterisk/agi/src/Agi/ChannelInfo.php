@@ -37,12 +37,12 @@ class ChannelInfo
     protected $em;
 
     /**
-     * @var AgentInterface
+     * @var AgentInterface|null
      */
     protected $origin;
 
     /**
-     * @var AgentInterface
+     * @var AgentInterface|null
      */
     protected $caller;
 
@@ -97,7 +97,7 @@ class ChannelInfo
     }
 
     /**
-     * @return AgentInterface
+     * @return AgentInterface|null
      */
     public function getChannelOrigin()
     {

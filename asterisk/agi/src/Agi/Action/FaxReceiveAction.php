@@ -20,7 +20,7 @@ class FaxReceiveAction
     protected $entityTools;
 
     /**
-     * @var FaxInterface
+     * @var FaxInterface|null
      */
     protected $fax;
 

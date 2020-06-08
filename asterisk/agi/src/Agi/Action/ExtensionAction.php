@@ -18,7 +18,7 @@ class ExtensionAction
     protected $routerAction;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface|null
      */
     protected $extension;
 

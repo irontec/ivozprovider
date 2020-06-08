@@ -50,7 +50,7 @@ class ServiceAction
     protected $entityTools;
 
     /**
-     * @var CompanyServiceInterface|BrandServiceInterface
+     * @var CompanyServiceInterface|BrandServiceInterface|null
      */
     protected $service;
 
@@ -326,7 +326,7 @@ class ServiceAction
 
         /** @var RouteLockRepository $routeLockRepository */
         $routeLockRepository = $this->em->getRepository(RouteLock::class);
-        /** @var RouteLockInterface $routeLock */
+        /** @var RouteLockInterface|null $routeLock */
         $routeLock = $routeLockRepository->find($routeLockId);
 
         // Check if lock actually exists

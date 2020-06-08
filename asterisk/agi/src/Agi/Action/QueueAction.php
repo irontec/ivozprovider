@@ -13,7 +13,7 @@ class QueueAction
     protected $agi;
 
     /**
-     * @var QueueInterface
+     * @var QueueInterface|null
      */
     protected $queue;
 

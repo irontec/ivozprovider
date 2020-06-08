@@ -13,7 +13,7 @@ class ConferenceRoomAction
     protected $agi;
 
     /**
-     * @var ConferenceRoomInterface
+     * @var ConferenceRoomInterface|null
      */
     protected $room;
 
