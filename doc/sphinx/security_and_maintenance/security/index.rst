@@ -15,3 +15,4 @@ installations maintained by `Irontec <https://www.irontec.com>`_) security mecha
     authorized_ip_ranges
     concurrent_call_limit
     current_day_max_usage
+    antibruteforce
