@@ -71,7 +71,7 @@ class Company extends CompanyAbstract implements CompanyInterface
         }
 
         if (!$this->getIpFilter()) {
-            $this->setIpFilter(0);
+            $this->setIpFilter(false);
         }
 
         if (!$this->getOnDemandRecord()) {

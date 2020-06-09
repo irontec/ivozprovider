@@ -52,7 +52,7 @@ class CreateByCarrier implements CarrierLifecycleEventHandlerInterface
             ->setTpid($brand->getCgrTenant())
             ->setCarrierId($carrier->getId())
             ->setTenant($brand->getCgrTenant())
-            ->setAllowNegative(1)
+            ->setAllowNegative(true)
             ->setAccount($carrier->getCgrSubject());
 
         $this->entityTools->persistDto($accountActionDto, null);

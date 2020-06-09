@@ -126,11 +126,11 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
     }
 
     /**
-     * @param CallForwardSetting $entity
+     * @param CallForwardSettingInterface $entity
      * @param array $callTypeFilterConditions
      * @return Criteria
      */
-    protected function getInconditionalCallForwardsCondition(CallForwardSetting $entity, $callTypeFilterConditions)
+    protected function getInconditionalCallForwardsCondition(CallForwardSettingInterface $entity, $callTypeFilterConditions)
     {
         return $this->createConditions(
             $entity,
@@ -140,11 +140,11 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
     }
 
     /**
-     * @param CallForwardSetting $entity
+     * @param CallForwardSettingInterface $entity
      * @param array $callTypeFilterConditions
      * @return Criteria
      */
-    protected function getCallForwardsCondition(CallForwardSetting $entity, $callTypeFilterConditions)
+    protected function getCallForwardsCondition(CallForwardSettingInterface $entity, $callTypeFilterConditions)
     {
         return $this->createConditions(
             $entity,
@@ -153,11 +153,11 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
     }
 
     /**
-     * @param CallForwardSetting $entity
+     * @param CallForwardSettingInterface $entity
      * @param array $callTypeFilterConditions
      * @return Criteria
      */
-    protected function getBusyCallForwardsConditions(CallForwardSetting $entity, $callTypeFilterConditions)
+    protected function getBusyCallForwardsConditions(CallForwardSettingInterface $entity, $callTypeFilterConditions)
     {
         return $this->createConditions(
             $entity,
@@ -167,11 +167,11 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
     }
 
     /**
-     * @param CallForwardSetting $entity
+     * @param CallForwardSettingInterface $entity
      * @param array $callTypeFilterConditions
      * @return Criteria
      */
-    protected function getNoAnswerCallForwardsConditions(CallForwardSetting $entity, $callTypeFilterConditions)
+    protected function getNoAnswerCallForwardsConditions(CallForwardSettingInterface $entity, $callTypeFilterConditions)
     {
         return $this->createConditions(
             $entity,
@@ -181,11 +181,11 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
     }
 
     /**
-     * @param CallForwardSetting $entity
+     * @param CallForwardSettingInterface $entity
      * @param array $callTypeFilterConditions
      * @return Criteria
      */
-    protected function getUserNotRegisteredCallForwardsConditions(CallForwardSetting $entity, $callTypeFilterConditions)
+    protected function getUserNotRegisteredCallForwardsConditions(CallForwardSettingInterface $entity, $callTypeFilterConditions)
     {
         return $this->createConditions(
             $entity,
@@ -195,12 +195,12 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
     }
 
     /**
-     * @param CallForwardSetting $entity
+     * @param CallForwardSettingInterface $entity
      * @param array $callTypeFilterConditions
      * @param string | null $callForwardType
      * @return Criteria
      */
-    protected function createConditions(CallForwardSetting $entity, $callTypeFilterConditions, $callForwardType = null)
+    protected function createConditions(CallForwardSettingInterface $entity, $callTypeFilterConditions, $callForwardType = null)
     {
         $criteria = [
             ['id', 'neq', $entity->getId()],

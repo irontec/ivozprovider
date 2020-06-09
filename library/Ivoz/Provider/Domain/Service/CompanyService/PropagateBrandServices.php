@@ -7,6 +7,7 @@ use Ivoz\Provider\Domain\Model\BrandService\BrandService;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Service\Service;
 use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 
@@ -82,6 +83,7 @@ class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
                 ->setCode($service->getCode())
                 ->setCompanyId($company->getId());
 
+            /** @var CompanyServiceInterface $companyService */
             $companyService = $this->entityTools->persistDto($companyServiceDto);
 
             $company
