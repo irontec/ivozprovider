@@ -18,7 +18,7 @@ class HuntGroupStatusAction
     protected $routerAction;
 
     /**
-     * @var HuntGroupInterface
+     * @var HuntGroupInterface|null
      */
     protected $huntgroup;
 

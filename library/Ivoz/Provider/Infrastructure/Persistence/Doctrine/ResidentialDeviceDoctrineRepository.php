@@ -3,10 +3,12 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
+use Ivoz\Provider\Infrastructure\Persistence\Doctrine\Traits\CountByCriteriaTrait;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -17,6 +19,8 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class ResidentialDeviceDoctrineRepository extends ServiceEntityRepository implements ResidentialDeviceRepository
 {
+    use CountByCriteriaTrait;
+
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, ResidentialDevice::class);
@@ -32,6 +36,45 @@ class ResidentialDeviceDoctrineRepository extends ServiceEntityRepository implem
             "name" => $name,
             "domain" => $domain
         ]);
+
         return $response;
+    }
+
+    /**
+     * @param int $companyId
+     * @return string[]
+     */
+    public function findNamesByCompanyId(int $companyId)
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('self.name')
+            ->where(
+                $expression->eq('self.company', $companyId)
+            );
+
+        $result = $qb
+            ->getQuery()
+            ->getScalarResult();
+
+        return array_column(
+            $result,
+            'name'
+        );
+    }
+
+    /**
+     * @param int[] $companyIds
+     */
+    public function countRegistrableDevicesByCompanies(array $companyIds): int
+    {
+        $criteria = CriteriaHelper::fromArray([
+            ['company', 'in', $companyIds],
+            ['directConnectivity', 'eq', ResidentialDeviceInterface::DIRECTCONNECTIVITY_NO],
+        ]);
+
+        return $this->countByCriteria($criteria);
     }
 }

@@ -35,7 +35,6 @@ class StatusAction
 
     public function __invoke()
     {
-        /** @var TokenInterface $token */
         $token =  $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {
@@ -78,9 +77,10 @@ class StatusAction
             $this->setExtensionData($userStatus, $extension);
         }
 
-        if ($company) {
-            $this->setCompanyData($userStatus, $company);
-        }
+        $this->setCompanyData(
+            $userStatus,
+            $company
+        );
 
         return $userStatus;
     }

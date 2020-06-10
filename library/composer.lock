@@ -1796,16 +1796,16 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "2.4.1",
+            "version": "2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "14daa0d9860c1d374ad35cc539aaa16111e8f14d"
+                "reference": "c53318587a46cee069c65ae4579f1bfd15aa4e2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/14daa0d9860c1d374ad35cc539aaa16111e8f14d",
-                "reference": "14daa0d9860c1d374ad35cc539aaa16111e8f14d",
+                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/c53318587a46cee069c65ae4579f1bfd15aa4e2e",
+                "reference": "c53318587a46cee069c65ae4579f1bfd15aa4e2e",
                 "shasum": ""
             },
             "require": {
@@ -1846,7 +1846,7 @@
                 }
             ],
             "description": "Core library for ivozprovider",
-            "time": "2020-04-16T09:18:44+00:00"
+            "time": "2020-06-08T15:39:18+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
@@ -1901,16 +1901,16 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "3.2",
+            "version": "3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-dev-tools.git",
-                "reference": "91c9c6675e9f9b6510d2a720404061cdb148657d"
+                "reference": "6d48a2ccbcb13c76fd5b1d76601ff909c9f79ec4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/91c9c6675e9f9b6510d2a720404061cdb148657d",
-                "reference": "91c9c6675e9f9b6510d2a720404061cdb148657d",
+                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/6d48a2ccbcb13c76fd5b1d76601ff909c9f79ec4",
+                "reference": "6d48a2ccbcb13c76fd5b1d76601ff909c9f79ec4",
                 "shasum": ""
             },
             "require": {
@@ -1944,15 +1944,15 @@
                 }
             ],
             "description": "DevTools for ivozprovider",
-            "time": "2020-04-14T07:47:33+00:00"
+            "time": "2020-05-22T07:02:24+00:00"
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.3.3",
+            "version": "2.3.4",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "1bb926ad01484560b245d08090ef99a4dd0d6b43",
+                "reference": "3782393ab8183814db86eebbd0dfe33f5f40be37",
                 "shasum": null
             },
             "require": {

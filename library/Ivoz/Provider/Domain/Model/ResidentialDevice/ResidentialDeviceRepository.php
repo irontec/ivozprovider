@@ -14,4 +14,15 @@ interface ResidentialDeviceRepository extends ObjectRepository, Selectable
      * @return mixed
      */
     public function findOneByNameAndDomain(string $name, DomainInterface $domain);
+
+    /**
+     * @param int $companyId
+     * @return string[]
+     */
+    public function findNamesByCompanyId(int $companyId);
+
+    /**
+     * @param int[] $companyIds
+     */
+    public function countRegistrableDevicesByCompanies(array $companyIds): int;
 }

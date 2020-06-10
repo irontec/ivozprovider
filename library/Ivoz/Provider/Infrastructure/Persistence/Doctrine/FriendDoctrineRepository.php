@@ -3,10 +3,12 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
+use Ivoz\Provider\Infrastructure\Persistence\Doctrine\Traits\CountByCriteriaTrait;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -17,6 +19,8 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class FriendDoctrineRepository extends ServiceEntityRepository implements FriendRepository
 {
+    use CountByCriteriaTrait;
+
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Friend::class);
@@ -34,5 +38,44 @@ class FriendDoctrineRepository extends ServiceEntityRepository implements Friend
         ]);
 
         return $response;
+    }
+
+    /**
+     * @param int $companyId
+     * @return string[]
+     */
+    public function findNamesByCompanyId(int $companyId)
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('self.name')
+            ->where(
+                $expression->eq('self.company', $companyId)
+            );
+
+        $result = $qb
+            ->getQuery()
+            ->getScalarResult();
+
+        return array_column(
+            $result,
+            'name'
+        );
+    }
+
+    /**
+     * @param int[] $companyIds
+     * @return int
+     */
+    public function countRegistrableDevices(array $companyIds): int
+    {
+        $criteria = CriteriaHelper::fromArray([
+            ['directConnectivity', 'eq', FriendInterface::DIRECTCONNECTIVITY_NO],
+            ['company', 'in', $companyIds]
+        ]);
+
+        return $this->countByCriteria($criteria);
     }
 }

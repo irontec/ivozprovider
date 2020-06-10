@@ -13,4 +13,17 @@ interface DomainRepository extends ObjectRepository, Selectable
      * @return DomainInterface | null
      */
     public function findOneByDomain($endpointDomain);
+
+    /**
+     * Includes company domains
+     * @param int $brandId
+     * @return DomainInterface[]
+     */
+    public function findByBrandId(int $brandId): array;
+
+    /**
+     * @param int $companyId
+     * @return DomainInterface|null
+     */
+    public function findByCompanyId(int $companyId);
 }

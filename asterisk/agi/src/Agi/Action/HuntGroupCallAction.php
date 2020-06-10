@@ -13,7 +13,7 @@ class HuntGroupCallAction
     protected $agi;
 
     /**
-     * @var HuntGroupInterface
+     * @var HuntGroupInterface|null
      */
     protected $huntgroup;
 

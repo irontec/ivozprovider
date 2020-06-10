@@ -99,6 +99,7 @@ class AstPsEndpoint extends Fixture implements DependentFixtureInterface
             $this->setDirectMediaMethod("invite");
             $this->setOutboundProxy("sip:users.ivozprovider.local^3Blr");
             $this->setTrustIdInbound("yes");
+            $this->setMailboxes("residential2@company1");
             $this->setResidentialDevice($fixture->getReference('_reference_ProviderResidentialDevice1'));
         })->call($item5);
 

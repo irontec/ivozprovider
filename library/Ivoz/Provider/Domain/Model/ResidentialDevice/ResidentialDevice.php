@@ -167,7 +167,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * Get Residential Device outgoingDdi
      * If no Ddi is assigned, retrieve company's default Ddi
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface or NULL
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | NULL
      */
     public function getOutgoingDdi()
     {

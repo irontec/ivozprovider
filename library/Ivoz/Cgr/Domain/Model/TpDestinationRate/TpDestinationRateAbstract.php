@@ -37,6 +37,7 @@ abstract class TpDestinationRateAbstract
 
     /**
      * column: rounding_method
+     * comment: enum:*up|*upmincost
      * @var string
      */
     protected $roundingMethod = '*up';
@@ -371,6 +372,10 @@ abstract class TpDestinationRateAbstract
     {
         Assertion::notNull($roundingMethod, 'roundingMethod value "%s" is null, but non null value was expected.');
         Assertion::maxLength($roundingMethod, 255, 'roundingMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($roundingMethod, [
+            TpDestinationRateInterface::ROUNDINGMETHOD_UP,
+            TpDestinationRateInterface::ROUNDINGMETHOD_UPMINCOST
+        ], 'roundingMethodvalue "%s" is not an element of the valid values: %s');
 
         $this->roundingMethod = $roundingMethod;
 

@@ -17,7 +17,7 @@ Feature: Retrieve residential devices status
           {
               "name": "residentialDevice",
               "id": 1,
-              "company": 1,
+              "company": 4,
               "domainName": "retail.irontec.com",
               "status": [
                   {

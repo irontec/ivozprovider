@@ -78,7 +78,7 @@ class Multimedia
             return false;
         }
 
-        /** @var LocutionInterface $entity */
+        /** @var LocutionInterface | null $entity */
         $entity = $repository->find($entityId);
         if (!$entity) {
             $this->logger->error(sprintf("Unable to find %s with id %d", $entityName, $entityId));

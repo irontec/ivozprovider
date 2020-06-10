@@ -12,7 +12,7 @@ run_test () {
     echo "======================"
 
     phpstan analyse \
-        --level 3 \
+        --level 4 \
         --ansi \
         --no-progress \
         --autoload-file ${ROOT}/vendor/autoload.php \

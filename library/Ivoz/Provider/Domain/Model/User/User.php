@@ -97,7 +97,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
 
     protected function sanitizeNew()
     {
-        if (is_null($this->getVoicemailSendMail()) && $this->getEmail()) {
+        if ($this->getEmail()) {
             $this->setVoicemailSendMail(1);
         }
 
@@ -200,7 +200,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     /**
      * Get User outgoingDdi
      * If no Ddi is assigned, retrieve company's default Ddi
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getOutgoingDdi()
     {
@@ -217,7 +217,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     /**
      * Get User outgoingDdiRule
      * If no OutgoingDdiRule is assigned, retrieve company's default OutgoingDdiRule
-     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface or null
+     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface|null
      */
     public function getOutgoingDdiRule()
     {

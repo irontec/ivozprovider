@@ -20,6 +20,11 @@ abstract class DestinationRateGroupAbstract
     protected $status;
 
     /**
+     * @var boolean
+     */
+    protected $deductibleConnectionFee = false;
+
+    /**
      * @var Name | null
      */
     protected $name;
@@ -51,10 +56,12 @@ abstract class DestinationRateGroupAbstract
      * Constructor
      */
     protected function __construct(
+        $deductibleConnectionFee,
         Name $name,
         Description $description,
         File $file
     ) {
+        $this->setDeductibleConnectionFee($deductibleConnectionFee);
         $this->setName($name);
         $this->setDescription($description);
         $this->setFile($file);
@@ -150,6 +157,7 @@ abstract class DestinationRateGroupAbstract
         );
 
         $self = new static(
+            $dto->getDeductibleConnectionFee(),
             $name,
             $description,
             $file
@@ -200,6 +208,7 @@ abstract class DestinationRateGroupAbstract
 
         $this
             ->setStatus($dto->getStatus())
+            ->setDeductibleConnectionFee($dto->getDeductibleConnectionFee())
             ->setName($name)
             ->setDescription($description)
             ->setFile($file)
@@ -220,6 +229,7 @@ abstract class DestinationRateGroupAbstract
     {
         return self::createDto()
             ->setStatus(self::getStatus())
+            ->setDeductibleConnectionFee(self::getDeductibleConnectionFee())
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
@@ -243,6 +253,7 @@ abstract class DestinationRateGroupAbstract
     {
         return [
             'status' => self::getStatus(),
+            'deductibleConnectionFee' => self::getDeductibleConnectionFee(),
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
@@ -293,6 +304,34 @@ abstract class DestinationRateGroupAbstract
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set deductibleConnectionFee
+     *
+     * @param boolean $deductibleConnectionFee
+     *
+     * @return static
+     */
+    protected function setDeductibleConnectionFee($deductibleConnectionFee)
+    {
+        Assertion::notNull($deductibleConnectionFee, 'deductibleConnectionFee value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($deductibleConnectionFee), 0, 1, 'deductibleConnectionFee provided "%s" is not a valid boolean value.');
+        $deductibleConnectionFee = (bool) $deductibleConnectionFee;
+
+        $this->deductibleConnectionFee = $deductibleConnectionFee;
+
+        return $this;
+    }
+
+    /**
+     * Get deductibleConnectionFee
+     *
+     * @return boolean
+     */
+    public function getDeductibleConnectionFee()
+    {
+        return $this->deductibleConnectionFee;
     }
 
     /**

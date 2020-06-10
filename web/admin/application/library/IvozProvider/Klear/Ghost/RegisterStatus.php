@@ -383,11 +383,16 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
             return "No NAT with public Contact (hint: SIP ALG / STUN)";
         }
 
+        // NAT detected but no real NAT (e.g. DNS in Via header)
+        if ($contact === $received) {
+            return "Nonexistent NAT detected (hint: domain in Via header)";
+        }
+
         // Behind NAT
         $receivedIsPublic = !$this->isRFC1918($received);
 
         if ($contactIsPrivate && $receivedIsPublic) {
-            return "Regular NAT detected (private Contact, public Received)";
+            return "Regular NAT detected";
         }
 
         return sprintf(

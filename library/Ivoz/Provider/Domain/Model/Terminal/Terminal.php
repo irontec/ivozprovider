@@ -131,7 +131,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
     }
 
     /**
-     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface | null
      */
     public function getAstPsEndpoint()
     {

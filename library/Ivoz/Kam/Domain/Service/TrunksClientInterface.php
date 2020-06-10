@@ -11,6 +11,7 @@ interface TrunksClientInterface
     const PERMISSIONS_ADDRESS_RELOAD_ACTION = 'permissions.addressReload';
     const UAC_REG_RELOAD_ACTION = 'uac.reg_reload';
     const UAC_REG_INFO_ACTION = 'uac.reg_info';
+    const LCR_DUMP_GWS_ACTION = 'lcr.dump_gws';
     const DLG_PROFILE_GET_SIZE = 'dlg.profile_get_size';
     const RTPENGINE_RELOAD_ACTION = 'rtpengine.reload';
     const CGRATES_ENABLED_ACTION = 'cfg.get';
@@ -23,6 +24,7 @@ interface TrunksClientInterface
         self::PERMISSIONS_ADDRESS_RELOAD_ACTION,
         self::UAC_REG_RELOAD_ACTION,
         self::UAC_REG_INFO_ACTION,
+        self::LCR_DUMP_GWS_ACTION,
         self::DLG_PROFILE_GET_SIZE,
         self::RTPENGINE_RELOAD_ACTION
     ];
@@ -59,6 +61,8 @@ interface TrunksClientInterface
     public function reloadUacReg();
 
     public function getUacRegistrationInfo($luuid): array;
+
+    public function getLcrGatewayInfo($gw_id): array;
 
     public function reloadRtpengine();
 }

@@ -25,7 +25,7 @@ class DdiAction
     protected $externalFilterAction;
 
     /**
-     * @var DdiInterface
+     * @var DdiInterface|null
      */
     protected $_ddi;
 

@@ -16,7 +16,7 @@ class VoiceMailAction
     protected $agi;
 
     /**
-     * @var AgentInterface
+     * @var AgentInterface|null
      */
     protected $voicemail;
 

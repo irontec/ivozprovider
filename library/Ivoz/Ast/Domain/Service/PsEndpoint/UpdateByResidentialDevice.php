@@ -45,9 +45,6 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
      */
     public function execute(ResidentialDeviceInterface $entity)
     {
-        /**
-         * @var PsEndpointInterface $endpoint
-         */
         $endpoint = $this->psEndpointRepository->findOneByResidentialDeviceId(
             $entity->getId()
         );
@@ -82,6 +79,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
             ->setTrustIdInbound('yes')
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
             ->setT38Udptl($entity->getT38Passthrough())
+            ->setMailboxes($entity->getVoiceMail())
             ->setDirectMediaMethod('invite');
 
         // Disable direct media for T.38 capable devices

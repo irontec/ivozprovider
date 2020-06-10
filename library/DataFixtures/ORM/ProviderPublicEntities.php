@@ -128,6 +128,7 @@ class ProviderPublicEntities extends Fixture implements FixtureInterface
             ["TransformationRuleSets","Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet","0","1","1"],
             ["Users","Ivoz\\Provider\\Domain\\Model\\User\\User","0","0","1"],
             ["_ActiveCalls","Model\\ActiveCalls","1","1","0"],
+            ["_RegistrationSummary","Model\\RegistrationSummary","0","1","1"],
             ["_DdiProviderRegistrationStatus","Ivoz\\Kam\\Domain\\Model\\TrunksUacreg\\DdiProviderRegistrationStatus","0","1","0"],
             ["_RegistrationStatus","Ivoz\\Kam\\Domain\\Model\\UsersLocation\\RegistrationStatus","0","1","0"],
             ["kam_users_address","Ivoz\\Kam\\Domain\\Model\\UsersAddress\\UsersAddress","0","1","0"],

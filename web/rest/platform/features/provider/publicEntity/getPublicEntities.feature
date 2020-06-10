@@ -70,7 +70,7 @@ Feature: Retrieve public entities
   Scenario: Retrieve certain feature json
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "public_entities/80"
+      And I send a "GET" request to "public_entities/81"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -82,7 +82,7 @@ Feature: Retrieve public entities
           "platform": true,
           "brand": true,
           "client": false,
-          "id": 80,
+          "id": 81,
           "name": {
               "en": "Destinations",
               "es": "Destinations",

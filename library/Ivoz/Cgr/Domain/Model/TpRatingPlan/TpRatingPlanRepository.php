@@ -9,7 +9,7 @@ interface TpRatingPlanRepository extends ObjectRepository, Selectable
 {
     /**
      * @param string $tag
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface | null
      */
     public function findOneByTag(string $tag);
 }

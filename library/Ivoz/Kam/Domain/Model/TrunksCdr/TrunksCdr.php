@@ -9,8 +9,6 @@ class TrunksCdr extends TrunksCdrAbstract implements TrunksCdrInterface
 {
     use TrunksCdrTrait;
 
-    const DIRECTION_OUTBOUND = 'outbound';
-
     /**
      * Get id
      * @codeCoverageIgnore

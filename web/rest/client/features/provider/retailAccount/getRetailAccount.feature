@@ -5,7 +5,7 @@ Feature: Retrieve retail accounts
 
   @createSchema
   Scenario: Retrieve the retail accounts json list
-    Given I add Company Authorization header
+    Given I add Retail Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "retail_accounts"
     Then the response status code should be 200
@@ -23,7 +23,7 @@ Feature: Retrieve retail accounts
     """
 
   Scenario: Retrieve certain retail account json
-    Given I add Company Authorization header
+    Given I add Retail Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "retail_accounts/1"
     Then the response status code should be 200

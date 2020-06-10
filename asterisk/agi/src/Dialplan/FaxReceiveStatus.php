@@ -52,7 +52,7 @@ class FaxReceiveStatus extends RouteHandlerAbstract
         /** @var FaxesInOutRepository $faxInOutRepository */
         $faxInOutRepository = $this->em->getRepository(FaxesInOut::class);
 
-        /** @var FaxesInOutInterface $faxOut */
+        /** @var FaxesInOutInterface|null $faxOut */
         $faxOut = $faxInOutRepository->find($faxId);
         if (is_null($faxOut)) {
             $this->agi->error("Faxfile %d not found in database", $faxId);

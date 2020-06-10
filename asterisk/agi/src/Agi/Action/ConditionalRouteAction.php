@@ -20,7 +20,7 @@ class ConditionalRouteAction
     protected $routerAction;
 
     /**
-     * @var ConditionalRouteInterface
+     * @var ConditionalRouteInterface|null
      */
     protected $conditionalRoute;
 

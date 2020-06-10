@@ -34,12 +34,12 @@ class ProviderResidentialDevice extends Fixture implements DependentFixtureInter
             $this->setDirectMediaMethod('invite');
             $this->setCalleridUpdateHeader('pai');
             $this->setUpdateCallerid('yes');
-            $this->setDirectConnectivity('yes');
+            $this->setDirectConnectivity('no');
             $this->setBrand(
                 $fixture->getReference('_reference_ProviderBrand1')
             );
             $this->setCompany(
-                $fixture->getReference('_reference_ProviderCompany1')
+                $fixture->getReference('_reference_ProviderCompany4')
             );
         })->call($item1);
 

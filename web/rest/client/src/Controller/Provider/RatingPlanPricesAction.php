@@ -57,7 +57,6 @@ class RatingPlanPricesAction
         /** @var Request $request */
         $request = $this->requestStack->getCurrentRequest();
 
-        /** @var TokenInterface $token */
         $token =  $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {
@@ -106,7 +105,7 @@ class RatingPlanPricesAction
         /** @var AdministratorInterface $admin */
         $admin = $token->getUser();
 
-        /** @var RatingPlanGroup $ratingPlanGroup */
+        /** @var RatingPlanGroup | null $ratingPlanGroup */
         $ratingPlanGroup = $this->ratingPlanGroupRepository->find(
             $request->attributes->get('id')
         );

@@ -193,6 +193,13 @@ msgid_plural "Application Servers"
 msgstr[0] "Application Server"
 msgstr[1] "Application Servers"
 
+msgid ""
+"Apply connect fee only if call cost does not reach connect fee (minimal "
+"cost, read documentation for further information)."
+msgstr ""
+"Apply connect fee only if call cost does not reach connect fee (minimal "
+"cost, read documentation for further information)."
+
 msgid "Apply to all clients"
 msgstr "Apply to all clients"
 
@@ -649,6 +656,12 @@ msgstr[1] "DDI Provider Registrations"
 msgid "Day"
 msgstr "Day"
 
+msgid "Deductible Connection Fee"
+msgstr "Deductible Connection Fee"
+
+msgid "Deductible Connection Fee cannot be changed"
+msgstr "Deductible Connection Fee cannot be changed"
+
 msgid "Default Action"
 msgstr "Default Action"
 
@@ -1058,6 +1071,9 @@ msgstr "File partially imported"
 msgid "Filter by IP address"
 msgstr "Filter by IP address"
 
+msgid "Filter fields"
+msgstr "Filter fields"
+
 msgid "Filter's Out of schedule Locution"
 msgstr "Filter's Out of schedule Locution"
 
@@ -1282,11 +1298,39 @@ msgstr[0] "Iden"
 msgstr[1] "Idens"
 
 msgid ""
+"If caller matches any selected matchlist, this criteria is considered "
+"fulfilled."
+msgstr ""
+"If caller matches any selected matchlist, this criteria is considered "
+"fulfilled."
+
+msgid ""
+"If calling date is marked as holiday in any selected calendar, this criteria "
+"is considered fulfilled. Calendar periods are not taken into account."
+msgstr ""
+"If calling date is marked as holiday in any selected calendar, this criteria "
+"is considered fulfilled. Calendar periods are not taken into account."
+
+msgid ""
+"If calling time is included in any selected schedules, this criteria is "
+"considered fulfilled."
+msgstr ""
+"If calling time is included in any selected schedules, this criteria is "
+"considered fulfilled."
+
+msgid ""
 "If no queue member answers before time this seconds, the timeout queue logic "
 "will be activated. Leave empty to disable."
 msgstr ""
 "If no queue member answers before time this seconds, the timeout queue logic "
 "will be activated. Leave empty to disable."
+
+msgid ""
+"If one of selected route locks is open, this criteria is considered "
+"fulfilled."
+msgstr ""
+"If one of selected route locks is open, this criteria is considered "
+"fulfilled."
 
 msgid ""
 "If set to 'Yes', set destination (R-URI and To) to called DDI when calling "

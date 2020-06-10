@@ -9,7 +9,8 @@ interface TpDestinationRateRepository extends ObjectRepository, Selectable
 {
     /**
      * @param int $destinationRateGroupId
+     * @param string $roundingMethod
      * @return int affected rows
      */
-    public function syncWithBussines($destinationRateGroupId);
+    public function syncWithBussines($destinationRateGroupId, $roundingMethod);
 }

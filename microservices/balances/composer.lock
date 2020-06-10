@@ -1366,11 +1366,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "2.4.1.0",
+            "version": "2.4.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core",
-                "reference": "14daa0d9860c1d374ad35cc539aaa16111e8f14d",
+                "reference": "c53318587a46cee069c65ae4579f1bfd15aa4e2e",
                 "shasum": null
             },
             "require": {
@@ -1463,11 +1463,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.3.3",
+            "version": "2.3.4",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "62f91f154999d2a644d03fccf409ddaed97e9c07",
+                "reference": "562439127aff8daf805c5d1e58d5bd9a92579bb5",
                 "shasum": null
             },
             "require": {
@@ -2874,7 +2874,7 @@
         },
         {
             "name": "symfony/debug",
-            "version": "4.4.9999999.9999999-dev",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/debug",
@@ -2926,7 +2926,7 @@
         },
         {
             "name": "symfony/debug-bundle",
-            "version": "3.4.38.0",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/debug-bundle",
@@ -3131,7 +3131,7 @@
         },
         {
             "name": "symfony/dotenv",
-            "version": "3.4.38.0",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/dotenv",
@@ -3336,7 +3336,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "3.4.38.0",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/finder",
@@ -3705,7 +3705,7 @@
         },
         {
             "name": "symfony/inflector",
-            "version": "3.4.38.0",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/inflector",
@@ -3952,7 +3952,7 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "3.4.38.0",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/options-resolver",
@@ -4002,7 +4002,7 @@
         },
         {
             "name": "symfony/polyfill-apcu",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-apcu",
@@ -4054,7 +4054,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-ctype",
@@ -4108,7 +4108,7 @@
         },
         {
             "name": "symfony/polyfill-iconv",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-iconv",
@@ -4163,7 +4163,7 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-icu",
@@ -4217,7 +4217,7 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-idn",
@@ -4275,7 +4275,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-mbstring",
@@ -4330,7 +4330,7 @@
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php56",
@@ -4382,7 +4382,7 @@
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php70",
@@ -4437,7 +4437,7 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php72",
@@ -4488,7 +4488,7 @@
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "dev-master",
+            "version": "1.15.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-util",
@@ -4645,7 +4645,7 @@
         },
         {
             "name": "symfony/property-info",
-            "version": "3.4.38.0",
+            "version": "3.4.39.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/property-info",

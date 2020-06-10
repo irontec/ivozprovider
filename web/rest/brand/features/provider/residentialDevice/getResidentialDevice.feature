@@ -42,7 +42,7 @@ Feature: Retrieve residential devices
           "password": "+rA778LidL",
           "allow": "alaw",
           "fromDomain": null,
-          "directConnectivity": "yes",
+          "directConnectivity": "no",
           "ddiIn": "yes",
           "maxCalls": 1,
           "t38Passthrough": "no",

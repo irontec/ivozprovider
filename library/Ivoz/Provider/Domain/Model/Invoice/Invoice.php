@@ -154,4 +154,17 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
 
         return $newScheduledInvoice || $modifiedInvoice;
     }
+
+    protected function setStatusMsg($statusMsg = null)
+    {
+        if (!is_null($statusMsg)) {
+            $statusMsg = substr(
+                $statusMsg,
+                0,
+                140
+            );
+        }
+
+        return parent::setStatusMsg($statusMsg);
+    }
 }

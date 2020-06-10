@@ -19,7 +19,64 @@ They only have two fields:
     Currency
         All rates imported/added will use this currency
 
+    Deductible Connection Fee
+        Set to 'No' for typical fee charged at call establishment. Set to 'Yes' to enable
+        minimal-cost-alike behaviour (read below).
+
 .. tip:: Destination rate names are not shown to the final client, you can use whatever makes sense to you.
+
+****************************************
+Deductible Connection Fee (Minimal Cost)
+****************************************
+
+When Destination Rate has *Deductible Connection Fee* set to yes, all rates' Connection Fee will behave like Minimal Cost.
+
+This is underlying logic:
+
+- When call is established, Connection Fee of matched prefix is charged.
+
+- When call is hung up:
+
+  - Total cost without connection fee is calculated (CostWithoutConnectionFee):
+
+    - If is greater than connection fee, connection fee is subtracted from total cost.
+
+        - Final connection fee: 0
+
+        - Final cost: CostWithoutConnectionFee
+
+    - If is lower than connection fee, connection fee is adjusted so that total cost is equal to connection fee.
+
+        - Final connection fee: ConnectionFee - CostWithoutConnectionFee
+
+        - Final cost: ConnectionFee
+
+  - In both cases, cost difference is refunded to affected balances.
+
+
+.. rubric:: Connection fee 0.01 - Total cost 0.21
+
+- Cost without connection fee: 0.20
+
+- As 0.20 > 0.01:
+
+  - Call cost is reduced to 0.20
+
+  - 0.01 is refunded to affected balances
+
+.. rubric:: Connection fee 0.01 - Total cost 0.013
+
+- Cost without connection fee: 0.003
+
+- As 0.003 < 0.01:
+
+  - Call cost is reduced to 0.01
+
+  - 0.003 is refunded to affected balances
+
+
+This setting guarantees a minimal cost of 0.01.
+
 
 ******************
 Add rates manually

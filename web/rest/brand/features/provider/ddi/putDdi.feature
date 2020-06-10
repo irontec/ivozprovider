@@ -11,7 +11,7 @@ Feature: Update ddi
       And I send a "PUT" request to "/ddis/1" with body:
     """
       {
-          "ddi": "124",
+          "ddi": "128",
           "id": 1,
           "company": 1,
           "ddiProvider": 1,
@@ -24,7 +24,7 @@ Feature: Update ddi
      And the JSON should be like:
     """
       {
-          "ddi": "124",
+          "ddi": "128",
           "id": 1,
           "company": "~",
           "ddiProvider": {

@@ -76,7 +76,7 @@ class SyncBalances
     {
         foreach ($carriersBalance as $carrierId => $balance) {
 
-            /** @var CarrierInterface $carrier */
+            /** @var CarrierInterface | null $carrier */
             $carrier = $this->carrierRepository->find($carrierId);
             if (!$carrier) {
                 $this->logger->error(

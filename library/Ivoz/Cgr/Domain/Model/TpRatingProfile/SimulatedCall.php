@@ -5,6 +5,7 @@ namespace Ivoz\Cgr\Domain\Model\TpRatingProfile;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
+use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
@@ -143,11 +144,17 @@ class SimulatedCall
 
         $instance->cost = $result->Cost;
 
+        $connectFeeIsMinCost = $result->Rating->{$ratingId}->RoundingMethod === TpDestinationRateInterface::ROUNDINGMETHOD_UPMINCOST;
+        if ($connectFeeIsMinCost) {
+            $minCost = $result->Rating->{$ratingId}->ConnectFee;
+            $instance->connectionFee = ($result->Cost > $minCost) ? 0 : $minCost - $result->Cost;
+        }
+
         $precision = $result->Rating->{$ratingId}->RoundingDecimals;
         $instance->cost = ceil($instance->cost * pow(10, $precision)) / pow(10, $precision);
 
         $tag = $result->RatingFilters->{$ratingFilterId}->RatingPlanID;
-        /** @var TpRatingPlan $tpRatingPlan */
+
         $tpRatingPlan = $tpRatingPlanRepository
             ->findOneByTag($tag);
 
@@ -161,7 +168,6 @@ class SimulatedCall
         );
         $destinationTag = $result->RatingFilters->{$ratingFilterId}->DestinationID;
 
-        /** @var TpDestinationInterface $tpDestination */
         $tpDestination = $tpDestinationRepository
             ->findOneByTag($destinationTag);
 
@@ -200,7 +206,6 @@ class SimulatedCall
         /** @var TpRatingPlanRepository $tpRatingPlansRepository */
         $tpRatingPlansRepository = $entityTools->getRepository(TpRatingPlan::class);
 
-        /** @var TpRatingPlan $tpRatingPlan */
         $tpRatingPlan = $tpRatingPlansRepository->findOneByTag($ratingPlanTag);
 
         if ($tpRatingPlan) {

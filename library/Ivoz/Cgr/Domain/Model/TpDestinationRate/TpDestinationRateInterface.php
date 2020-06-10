@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface TpDestinationRateInterface extends LoggableEntityInterface
 {
+    const ROUNDINGMETHOD_UP = '*up';
+    const ROUNDINGMETHOD_UPMINCOST = '*upmincost';
+
+
     public function getChangeSet();
 
     /**

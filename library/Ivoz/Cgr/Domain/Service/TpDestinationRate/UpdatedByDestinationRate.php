@@ -4,6 +4,7 @@ namespace Ivoz\Cgr\Domain\Service\TpDestinationRate;
 
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto;
+use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
 use Ivoz\Cgr\Domain\Service\TpRate\UpdatedByDestinationRate as TpRateUpdatedByDestinationRate;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
@@ -52,6 +53,8 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
         $brand = $destinationRate->getDestinationRateGroup()->getBrand();
         $tpDestinationRate = $destinationRate->getTpDestinationRate();
 
+        $roundingMethod = $destinationRate->getDestinationRateGroup()->getRoundingMethod();
+
         /** @var TpDestinationRateDto $tpDestinationRateDto */
         $tpDestinationRateDto = is_null($tpDestinationRate)
             ? TpDestinationRate::createDto()
@@ -62,6 +65,7 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
             ->setDestinationRateId($destinationRate->getId())
             ->setTag($destinationRate->getCgrTag())
             ->setDestinationsTag($destinationRate->getCgrDestinationsTag())
+            ->setRoundingMethod($roundingMethod)
             ->setRatesTag($destinationRate->getCgrRatesTag());
 
         $tpDestinationRate = $this->entityTools->persistDto(

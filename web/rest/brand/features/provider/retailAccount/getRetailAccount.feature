@@ -39,7 +39,7 @@ Feature: Retrieve retail accounts
           "port": null,
           "password": "9rv6G3TVc-",
           "fromDomain": null,
-          "directConnectivity": "yes",
+          "directConnectivity": "no",
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "id": 1,

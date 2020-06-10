@@ -43,7 +43,6 @@ class PutProfileAction
 
     public function __invoke()
     {
-        /** @var TokenInterface $token */
         $token =  $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {

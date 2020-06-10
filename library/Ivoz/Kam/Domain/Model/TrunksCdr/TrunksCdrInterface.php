@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface TrunksCdrInterface extends EntityInterface
 {
+    const DIRECTION_INBOUND = 'inbound';
+    const DIRECTION_OUTBOUND = 'outbound';
+
+
     public function isOutboundCall();
 
     /**

@@ -1,7 +1,10 @@
 # Changelog
-## 2.15.1
+
+## 2.15.2
 * Endpoints:
-    - 
+    - Added /my/registration_summary
+
+## 2.15.1
 * Models:
     - Friend:
         - Set transport property as nullable

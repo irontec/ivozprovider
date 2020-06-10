@@ -14,6 +14,7 @@ use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateRepository;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupRepository;
+use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
 use Mmoreram\GearmanBundle\Driver\Gearman;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
@@ -99,7 +100,7 @@ class Rates
         $job = igbinary_unserialize($serializedJob->workload());
         $params = $job->getParams();
 
-        /** @var DestinationRateGroupInterface $destinationRateGroup */
+        /** @var DestinationRateGroupInterface | null $destinationRateGroup */
         $destinationRateGroup = $this->destinationRateGroupRepository->find(
             $params['id']
         );
@@ -112,6 +113,8 @@ class Rates
         $destinationRateGroupId = $destinationRateGroup->getId();
         $brand = $destinationRateGroup->getBrand();
         $brandId = $brand->getId();
+
+        $roundingMethod = $destinationRateGroup->getRoundingMethod();
 
         /** @var DestinationRateGroupDto $destinationRateGroupDto */
         $destinationRateGroupDto = $this
@@ -273,11 +276,14 @@ class Rates
                 );
                 $csvLines[$k]['rateIncrement'] = intval($line['rateIncrement']);
 
+                $destinationName = utf8_encode($line['destinationName']);
                 $destinations[] = sprintf(
-                    '("%s",  "%s",  "%s", "%d" )',
+                    '("%s", "%s", "%s", "%s", "%s", "%d" )',
                     $line['destinationPrefix'],
-                    $line['destinationName'],
-                    $line['destinationName'],
+                    $destinationName,
+                    $destinationName,
+                    $destinationName,
+                    $destinationName,
                     $brandId
                 );
 
@@ -381,7 +387,7 @@ class Rates
              */
             $this
                 ->tpDestinationRateRepository
-                ->syncWithBussines($destinationRateGroupId);
+                ->syncWithBussines($destinationRateGroupId, $roundingMethod);
 
             $destinationRateGroupDto->setStatus('imported');
             $this

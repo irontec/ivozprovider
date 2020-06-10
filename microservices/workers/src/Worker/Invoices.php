@@ -77,7 +77,7 @@ class Invoices
 
         $this->billableCallRepository->resetInvoiceId($id);
 
-        /** @var InvoiceInterface $invoice */
+        /** @var InvoiceInterface | null $invoice */
         $invoice = $this->invoiceRepository->find($id);
         if (!$invoice) {
             $this->logger->error("Invoice #${id} was not found!");

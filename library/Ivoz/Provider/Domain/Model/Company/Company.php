@@ -82,15 +82,16 @@ class Company extends CompanyAbstract implements CompanyInterface
             $this->setOnDemandRecordCode('');
         }
 
-        if ($this->getType() === self::TYPE_RETAIL) {
-            if (!$this->getDomain()) {
-                $this->setDomain(
-                    $this->getBrand()->getDomain()
-                );
-            }
-        }
+        $setBrandDomain = in_array(
+            $this->getType(),
+            [
+                self::TYPE_RETAIL,
+                self::TYPE_RESIDENTIAL
+            ],
+            true
+        );
 
-        if ($this->getType() === self::TYPE_RESIDENTIAL) {
+        if ($setBrandDomain) {
             if (!$this->getDomain()) {
                 $this->setDomain(
                     $this->getBrand()->getDomain()
@@ -350,10 +351,20 @@ class Company extends CompanyAbstract implements CompanyInterface
      * @param int $featureId
      * @return bool
      */
-    public function hasFeature($featureId)
+    public function hasFeature($featureId): bool
     {
         foreach ($this->getFeatures() as $feature) {
             if ($feature->getId() == $featureId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function hasFeatureByIden(string $iden): bool
+    {
+        foreach ($this->getFeatures() as $feature) {
+            if ($feature->getIden() === $iden) {
                 return true;
             }
         }
@@ -429,5 +440,25 @@ class Company extends CompanyAbstract implements CompanyInterface
     public function getCgrSubject()
     {
         return sprintf("c%d", $this->getId());
+    }
+
+    public function isVpbx(): bool
+    {
+        return $this->getType() === self::TYPE_VPBX;
+    }
+
+    public function isRetail(): bool
+    {
+        return $this->getType() === self::TYPE_RETAIL;
+    }
+
+    public function isResidential(): bool
+    {
+        return $this->getType() === self::TYPE_RESIDENTIAL;
+    }
+
+    public function isWholesale(): bool
+    {
+        return $this->getType() === self::TYPE_WHOLESALE;
     }
 }

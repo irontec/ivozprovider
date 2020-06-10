@@ -41,7 +41,6 @@ class ActiveCallsAction
         /** @var Request $request */
         $request = $this->requestStack->getCurrentRequest();
 
-        /** @var TokenInterface $token */
         $token =  $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {

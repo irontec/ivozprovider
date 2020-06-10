@@ -41,7 +41,7 @@ interface AgentInterface
 
     /**
      * @param string $destination
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface|null
      */
     public function getOutgoingDdi($destination);
 

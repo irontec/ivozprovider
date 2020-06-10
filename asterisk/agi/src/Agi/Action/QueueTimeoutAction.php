@@ -18,7 +18,7 @@ class QueueTimeoutAction
     protected $routerAction;
 
     /**
-     * @var QueueInterface
+     * @var QueueInterface|null
      */
     protected $queue;
 

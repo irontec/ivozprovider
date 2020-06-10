@@ -24,7 +24,7 @@ Feature: Create ddis
     """
       {
           "ddi": "321",
-          "id": 2,
+          "id": 4,
           "company": 1,
           "ddiProvider": 1,
           "country": 68
@@ -34,7 +34,7 @@ Feature: Create ddis
   Scenario: Retrieve created ddi
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "ddis/2"
+      And I send a "GET" request to "ddis/4"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -42,7 +42,7 @@ Feature: Create ddis
     """
       {
           "ddi": "321",
-          "id": 2,
+          "id": 4,
           "company": "~",
           "ddiProvider": {
               "description": "DDIProviderDescription",
