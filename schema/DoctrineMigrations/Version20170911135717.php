@@ -48,7 +48,7 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE BrandURLs DROP FOREIGN KEY BrandURLs_ibfk_1');
         $this->addSql('ALTER TABLE BrandURLs ADD CONSTRAINT FK_8DBE74F59CBEC244 FOREIGN KEY (brandId) REFERENCES Brands (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE OutgoingRouting CHANGE priority priority SMALLINT UNSIGNED NOT NULL');
-        $this->addSql('ALTER TABLE IVRCustomEntries RENAME INDEX IVRCustomEntries_ibfk_5 TO IDX_E6693828F1B1189');
+        $this->addSql('ALTER TABLE IVRCustomEntries RENAME INDEX targetConditionalRouteId TO IDX_E6693828F1B1189');
         $this->addSql('ALTER TABLE DDIs DROP FOREIGN KEY DDIs_ibfk_11');
         $this->addSql('ALTER TABLE DDIs DROP FOREIGN KEY DDIs_ibfk_9');
         $this->addSql('ALTER TABLE DDIs ADD CONSTRAINT FK_AA16E1A023E42D0D FOREIGN KEY (conferenceRoomId) REFERENCES ConferenceRooms (id) ON DELETE SET NULL');
