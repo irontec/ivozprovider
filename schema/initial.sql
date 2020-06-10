@@ -16,6 +16,39 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `AdministratorRelPublicEntities`
+--
+
+DROP TABLE IF EXISTS `AdministratorRelPublicEntities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `AdministratorRelPublicEntities` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `administratorId` int(10) unsigned NOT NULL,
+  `publicEntityId` int(10) unsigned NOT NULL,
+  `create` tinyint(1) NOT NULL DEFAULT '0',
+  `read` tinyint(1) NOT NULL DEFAULT '1',
+  `update` tinyint(1) NOT NULL DEFAULT '0',
+  `delete` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `administratorRelPublicEntity_administrator_publicEntity` (`administratorId`,`publicEntityId`),
+  KEY `IDX_76F8BC9320C8F565` (`publicEntityId`),
+  CONSTRAINT `FK_76F8BC9320C8F565` FOREIGN KEY (`publicEntityId`) REFERENCES `PublicEntities` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_76F8BC93607ED20D` FOREIGN KEY (`administratorId`) REFERENCES `Administrators` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `AdministratorRelPublicEntities`
+--
+
+LOCK TABLES `AdministratorRelPublicEntities` WRITE;
+/*!40000 ALTER TABLE `AdministratorRelPublicEntities` DISABLE KEYS */;
+INSERT INTO `AdministratorRelPublicEntities` VALUES (1,0,150,0,1,0,0),(2,1,150,0,1,0,0);
+/*!40000 ALTER TABLE `AdministratorRelPublicEntities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Administrators`
 --
 
@@ -33,6 +66,7 @@ CREATE TABLE `Administrators` (
   `brandId` int(10) unsigned DEFAULT NULL,
   `companyId` int(10) unsigned DEFAULT NULL,
   `timezoneId` int(10) unsigned DEFAULT NULL,
+  `restricted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `administrator_username_brand` (`username`,`brandId`),
   KEY `IDX_CA5E09B79CBEC244` (`brandId`),
@@ -50,7 +84,7 @@ CREATE TABLE `Administrators` (
 
 LOCK TABLES `Administrators` WRITE;
 /*!40000 ALTER TABLE `Administrators` DISABLE KEYS */;
-INSERT INTO `Administrators` VALUES (0,'privateAdmin','','',0,NULL,NULL,NULL,NULL,NULL),(1,'admin','$2a$08$ToDhikHKFDznPJVrbPGpeONfmbr3Y9dIrvnyNgN8S7QZ918SeCF0W','admin@example.com',1,'admin','ivozprovider',NULL,NULL,145);
+INSERT INTO `Administrators` VALUES (0,'privateAdmin','','',0,NULL,NULL,NULL,NULL,145,0),(1,'admin','$2a$08$ToDhikHKFDznPJVrbPGpeONfmbr3Y9dIrvnyNgN8S7QZ918SeCF0W','admin@example.com',1,'admin','ivozprovider',NULL,NULL,145,0);
 /*!40000 ALTER TABLE `Administrators` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,6 +181,40 @@ LOCK TABLES `BalanceNotifications` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `BannedAddresses`
+--
+
+DROP TABLE IF EXISTS `BannedAddresses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BannedAddresses` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `blocker` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '[enum:antiflood|ipfilter]',
+  `description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastTimeBanned` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
+  `brandId` int(10) unsigned DEFAULT NULL,
+  `companyId` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_63B7B3C79CBEC244` (`brandId`),
+  KEY `IDX_63B7B3C72480E723` (`companyId`),
+  KEY `bannedAddress_lastTimeBanned` (`lastTimeBanned`),
+  KEY `bannedAddress_ip_blocker` (`ip`,`blocker`),
+  CONSTRAINT `FK_63B7B3C72480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_63B7B3C79CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BannedAddresses`
+--
+
+LOCK TABLES `BannedAddresses` WRITE;
+/*!40000 ALTER TABLE `BannedAddresses` DISABLE KEYS */;
+/*!40000 ALTER TABLE `BannedAddresses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `BillableCalls`
 --
 
@@ -166,16 +234,18 @@ CREATE TABLE `BillableCalls` (
   `carrierName` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `destinationName` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ratingPlanName` varchar(55) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `brandId` int(10) unsigned NOT NULL,
-  `companyId` int(10) unsigned NOT NULL,
+  `brandId` int(10) unsigned DEFAULT NULL,
+  `companyId` int(10) unsigned DEFAULT NULL,
   `carrierId` int(10) unsigned DEFAULT NULL,
   `destinationId` int(10) unsigned DEFAULT NULL,
   `ratingPlanGroupId` int(10) unsigned DEFAULT NULL,
   `invoiceId` int(10) unsigned DEFAULT NULL,
   `trunksCdrId` int(10) unsigned DEFAULT NULL,
-  `endpointType` varchar(55) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `endpointType` varchar(55) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '[enum:RetailAccount|ResidentialDevice|User|Friend|Fax]',
   `endpointId` int(10) unsigned DEFAULT NULL,
   `direction` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'outbound' COMMENT '[enum:inbound|outbound]',
+  `ddiId` int(10) unsigned DEFAULT NULL,
+  `ddiProviderId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_E6F2DA359CBEC244` (`brandId`),
   KEY `IDX_E6F2DA352480E723` (`companyId`),
@@ -184,17 +254,18 @@ CREATE TABLE `BillableCalls` (
   KEY `IDX_E6F2DA353D7BDC51` (`invoiceId`),
   KEY `IDX_E6F2DA353B9439A5` (`trunksCdrId`),
   KEY `IDX_E6F2DA356A765F36` (`ratingPlanGroupId`),
-  KEY `billableCall_endpointType_idx` (`endpointType`),
-  KEY `billableCall_endpointId_idx` (`endpointId`),
   KEY `billableCall_startTime_idx` (`startTime`),
-  KEY `billableCall_direction_idx` (`direction`),
   KEY `billableCall_callid_idx` (`callid`),
-  CONSTRAINT `FK_E6F2DA352480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
+  KEY `IDX_E6F2DA3532B6E766` (`ddiId`),
+  KEY `IDX_E6F2DA3553615680` (`ddiProviderId`),
+  CONSTRAINT `FK_E6F2DA352480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_E6F2DA3532B6E766` FOREIGN KEY (`ddiId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_E6F2DA353B9439A5` FOREIGN KEY (`trunksCdrId`) REFERENCES `kam_trunks_cdrs` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_E6F2DA353D7BDC51` FOREIGN KEY (`invoiceId`) REFERENCES `Invoices` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_E6F2DA3553615680` FOREIGN KEY (`ddiProviderId`) REFERENCES `DDIProviders` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_E6F2DA356709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_E6F2DA356A765F36` FOREIGN KEY (`ratingPlanGroupId`) REFERENCES `RatingPlanGroups` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `FK_E6F2DA359CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_E6F2DA359CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_E6F2DA35BF3434FC` FOREIGN KEY (`destinationId`) REFERENCES `Destinations` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -222,7 +293,6 @@ CREATE TABLE `BrandServices` (
   `code` varchar(3) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `brandService_brand_service` (`brandId`,`serviceId`),
-  KEY `IDX_AA498CCC9CBEC244` (`brandId`),
   KEY `IDX_AA498CCC89697FA8` (`serviceId`),
   CONSTRAINT `BrandServices_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `BrandServices_ibfk_2` FOREIGN KEY (`serviceId`) REFERENCES `Services` (`id`) ON DELETE CASCADE
@@ -412,7 +482,6 @@ CREATE TABLE `CallACL` (
   `defaultPolicy` varchar(10) NOT NULL COMMENT '[enum:allow|deny]',
   PRIMARY KEY (`id`),
   UNIQUE KEY `CallAcl_company_name` (`companyId`,`name`),
-  KEY `IDX_D37348182480E723` (`companyId`),
   CONSTRAINT `CallAcl_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -441,7 +510,6 @@ CREATE TABLE `CallAclRelMatchLists` (
   `matchListId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_callAclId_priority` (`CallAclId`,`priority`),
-  KEY `IDX_9BCB337648DE28A4` (`CallAclId`),
   KEY `IDX_9BCB3376283E7346` (`matchListId`),
   CONSTRAINT `FK_A09BB695283E7346` FOREIGN KEY (`matchListId`) REFERENCES `MatchLists` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_A09BB69548DE28A4` FOREIGN KEY (`CallAclId`) REFERENCES `CallACL` (`id`) ON DELETE CASCADE
@@ -515,13 +583,33 @@ CREATE TABLE `CallCsvSchedulers` (
   `lastExecutionError` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
   `callCsvNotificationTemplateId` int(10) unsigned DEFAULT NULL,
   `callDirection` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'outbound' COMMENT '[enum:inbound|outbound]',
+  `ddiId` int(10) unsigned DEFAULT NULL,
+  `carrierId` int(10) unsigned DEFAULT NULL,
+  `retailAccountId` int(10) unsigned DEFAULT NULL,
+  `residentialDeviceId` int(10) unsigned DEFAULT NULL,
+  `userId` int(10) unsigned DEFAULT NULL,
+  `faxId` int(10) unsigned DEFAULT NULL,
+  `friendId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `CallCsvScheduler_name_brand` (`name`,`brandId`),
-  KEY `IDX_100E171E9CBEC244` (`brandId`),
+  UNIQUE KEY `CallCsvScheduler_brand_name` (`brandId`,`name`),
   KEY `IDX_100E171E2480E723` (`companyId`),
   KEY `IDX_100E171E74EE731B` (`callCsvNotificationTemplateId`),
+  KEY `IDX_100E171E32B6E766` (`ddiId`),
+  KEY `IDX_100E171E6709B1C` (`carrierId`),
+  KEY `IDX_100E171E5EA9D64D` (`retailAccountId`),
+  KEY `IDX_100E171E8B329DCD` (`residentialDeviceId`),
+  KEY `IDX_100E171E64B64DCC` (`userId`),
+  KEY `IDX_100E171E624C8D73` (`faxId`),
+  KEY `IDX_100E171E893BA339` (`friendId`),
   CONSTRAINT `FK_100E171E2480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_100E171E32B6E766` FOREIGN KEY (`ddiId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_100E171E5EA9D64D` FOREIGN KEY (`retailAccountId`) REFERENCES `RetailAccounts` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_100E171E624C8D73` FOREIGN KEY (`faxId`) REFERENCES `Faxes` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_100E171E64B64DCC` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_100E171E6709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_100E171E74EE731B` FOREIGN KEY (`callCsvNotificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_100E171E893BA339` FOREIGN KEY (`friendId`) REFERENCES `Friends` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_100E171E8B329DCD` FOREIGN KEY (`residentialDeviceId`) REFERENCES `ResidentialDevices` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_100E171E9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -640,12 +728,15 @@ CREATE TABLE `Carriers` (
   `balance` decimal(10,4) DEFAULT '0.0000',
   `calculateCost` tinyint(1) unsigned DEFAULT '0',
   `currencyId` int(10) unsigned DEFAULT NULL,
+  `proxyTrunkId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `carrier_nameBrand` (`name`,`brandId`),
   KEY `IDX_F63EC8E39CBEC244` (`brandId`),
   KEY `IDX_F63EC8E32FECF701` (`transformationRuleSetId`),
   KEY `IDX_F63EC8E391000B8A` (`currencyId`),
+  KEY `IDX_F63EC8E37504E30F` (`proxyTrunkId`),
   CONSTRAINT `FK_F63EC8E32FECF701` FOREIGN KEY (`transformationRuleSetId`) REFERENCES `TransformationRuleSets` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_F63EC8E37504E30F` FOREIGN KEY (`proxyTrunkId`) REFERENCES `ProxyTrunks` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_F63EC8E391000B8A` FOREIGN KEY (`currencyId`) REFERENCES `Currencies` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_F63EC8E39CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -679,6 +770,7 @@ CREATE TABLE `Changelog` (
   KEY `IDX_4AB3A4A28F36C645` (`commandId`),
   KEY `changelog_createdOn` (`createdOn`),
   KEY `changelog_entity_id_idx` (`entity`,`entityId`),
+  KEY `changelog_entity_createdOn` (`entity`,`createdOn`),
   CONSTRAINT `FK_4AB3A4A28F36C645` FOREIGN KEY (`commandId`) REFERENCES `Commandlog` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -689,7 +781,6 @@ CREATE TABLE `Changelog` (
 
 LOCK TABLES `Changelog` WRITE;
 /*!40000 ALTER TABLE `Changelog` DISABLE KEYS */;
-INSERT INTO `Changelog` VALUES ('179a732a-d45f-42a4-ac48-6312f6eb48c5','unkown','0','{\"query\":\"CREATE INDEX IDX_790E4102A29D8295 ON Brands (invoiceNotificationTemplateId)\",\"arguments\":[]}','2019-12-26 10:08:40','3b6418e0-052a-43c0-8100-a5e2db9d47c3',1604),('22a8b3f9-1f00-405e-a28d-6e729fad204a','unkown','0','{\"query\":\"CREATE INDEX IDX_790E410274EE731B ON Brands (callCsvNotificationTemplateId)\",\"arguments\":[]}','2019-12-26 10:08:40','3b6418e0-052a-43c0-8100-a5e2db9d47c3',1658),('60ffb4d6-96e5-4548-917d-c12749c4f4a6','unkown','0','{\"query\":\"CREATE INDEX IDX_790E41021BA12A15 ON Brands (vmNotificationTemplateId)\",\"arguments\":[]}','2019-12-26 10:08:40','3b6418e0-052a-43c0-8100-a5e2db9d47c3',1447),('ab7ecdd6-d102-43c3-9bd7-d38ef286cc99','unkown','0','{\"query\":\"ALTER TABLE Brands ADD CONSTRAINT FK_790E4102E559D278 FOREIGN KEY (faxNotificationTemplateId) REFERENCES NotificationTemplates (id) ON DELETE SET NULL\",\"arguments\":[]}','2019-12-26 10:08:40','3b6418e0-052a-43c0-8100-a5e2db9d47c3',1025),('bb832b32-5d98-4ead-862f-d97c530f0fd5','unkown','0','{\"query\":\"ALTER TABLE Brands ADD CONSTRAINT FK_790E410274EE731B FOREIGN KEY (callCsvNotificationTemplateId) REFERENCES NotificationTemplates (id) ON DELETE SET NULL\",\"arguments\":[]}','2019-12-26 10:08:40','3b6418e0-052a-43c0-8100-a5e2db9d47c3',1348),('c787f05e-5cb3-4a47-aa45-416da68e572b','unkown','0','{\"query\":\"ALTER TABLE Brands ADD CONSTRAINT FK_790E41021BA12A15 FOREIGN KEY (vmNotificationTemplateId) REFERENCES NotificationTemplates (id) ON DELETE SET NULL\",\"arguments\":[]}','2019-12-26 10:08:40','3b6418e0-052a-43c0-8100-a5e2db9d47c3',963),('ca96c1ba-d0f8-4a5d-bc27-91f97fac4939','unkown','0','{\"query\":\"ALTER TABLE Brands ADD vmNotificationTemplateId INT UNSIGNED DEFAULT NULL, ADD faxNotificationTemplateId INT UNSIGNED DEFAULT NULL, ADD invoiceNotificationTemplateId INT UNSIGNED DEFAULT NULL, ADD callCsvNotificationTemplateId INT UNSIGNED DEFAULT NULL\",\"arguments\":[]}','2019-12-26 10:08:40','3b6418e0-052a-43c0-8100-a5e2db9d47c3',814),('d08bea47-ae29-42d8-8499-d16347c2629e','unkown','0','{\"query\":\"CREATE INDEX IDX_790E4102E559D278 ON Brands (faxNotificationTemplateId)\",\"arguments\":[]}','2019-12-26 10:08:40','3b6418e0-052a-43c0-8100-a5e2db9d47c3',1500),('d76ee421-1e7e-4317-9db2-1a3f5b5839bb','unkown','0','{\"query\":\"ALTER TABLE Brands ADD CONSTRAINT FK_790E4102A29D8295 FOREIGN KEY (invoiceNotificationTemplateId) REFERENCES NotificationTemplates (id) ON DELETE SET NULL\",\"arguments\":[]}','2019-12-26 10:08:40','3b6418e0-052a-43c0-8100-a5e2db9d47c3',1294);
 /*!40000 ALTER TABLE `Changelog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -747,7 +838,6 @@ CREATE TABLE `Commandlog` (
 
 LOCK TABLES `Commandlog` WRITE;
 /*!40000 ALTER TABLE `Commandlog` DISABLE KEYS */;
-INSERT INTO `Commandlog` VALUES ('3b6418e0-052a-43c0-8100-a5e2db9d47c3','0','Application\\Migrations\\Version20191017111612','up','[]','2019-12-26 10:08:40',535,'[]');
 /*!40000 ALTER TABLE `Commandlog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -913,7 +1003,6 @@ CREATE TABLE `CompanyServices` (
   `code` varchar(3) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `companyService_company_service` (`companyId`,`serviceId`),
-  KEY `IDX_569B460B2480E723` (`companyId`),
   KEY `IDX_569B460B89697FA8` (`serviceId`),
   CONSTRAINT `CompanyServices_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `CompanyServices_ibfk_2` FOREIGN KEY (`serviceId`) REFERENCES `Services` (`id`) ON DELETE CASCADE
@@ -1170,7 +1259,6 @@ CREATE TABLE `ConferenceRooms` (
   `maxMembers` smallint(5) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ConferenceRoomsUniqueCompanyname` (`companyId`,`name`),
-  KEY `IDX_7CE925992480E723` (`companyId`),
   CONSTRAINT `ConferenceRooms_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1324,11 +1412,14 @@ CREATE TABLE `DDIProviders` (
   `externallyRated` tinyint(1) unsigned DEFAULT '0',
   `brandId` int(10) unsigned NOT NULL,
   `transformationRuleSetId` int(10) unsigned DEFAULT NULL,
+  `proxyTrunkId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ddiProvider_nameBrand` (`name`,`brandId`),
   KEY `IDX_CA534EFD9CBEC244` (`brandId`),
   KEY `IDX_CA534EFD2FECF701` (`transformationRuleSetId`),
+  KEY `IDX_CA534EFD7504E30F` (`proxyTrunkId`),
   CONSTRAINT `FK_CA534EFD2FECF701` FOREIGN KEY (`transformationRuleSetId`) REFERENCES `TransformationRuleSets` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_CA534EFD7504E30F` FOREIGN KEY (`proxyTrunkId`) REFERENCES `ProxyTrunks` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_CA534EFD9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1441,6 +1532,7 @@ CREATE TABLE `DestinationRateGroups` (
   `fileImporterArguments` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
   `brandId` int(10) unsigned NOT NULL,
   `currencyId` int(10) unsigned DEFAULT NULL,
+  `deductibleConnectionFee` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_2930FE169CBEC244` (`brandId`),
   KEY `IDX_2930FE1691000B8A` (`currencyId`),
@@ -1475,7 +1567,6 @@ CREATE TABLE `DestinationRates` (
   `destinationId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `destinationRate_destination` (`destinationRateGroupId`,`destinationId`),
-  KEY `IDX_6CAE066FC11683D9` (`destinationRateGroupId`),
   KEY `IDX_6CAE066FBF3434FC` (`destinationId`),
   CONSTRAINT `FK_6CAE066FBF3434FC` FOREIGN KEY (`destinationId`) REFERENCES `Destinations` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_6CAE066FC11683D9` FOREIGN KEY (`destinationRateGroupId`) REFERENCES `DestinationRateGroups` (`id`) ON DELETE CASCADE
@@ -1572,7 +1663,6 @@ CREATE TABLE `Extensions` (
   `ivrId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `extension_company_number` (`companyId`,`number`),
-  KEY `IDX_9AAD9F792480E723` (`companyId`),
   KEY `IDX_9AAD9F79921B2343` (`huntGroupId`),
   KEY `IDX_9AAD9F7923E42D0D` (`conferenceRoomId`),
   KEY `IDX_9AAD9F7964B64DCC` (`userId`),
@@ -1787,7 +1877,6 @@ CREATE TABLE `Faxes` (
   `outgoingDDIId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Fax_companyId_name` (`companyId`,`name`),
-  KEY `IDX_196F4C1E2480E723` (`companyId`),
   KEY `IDX_196F4C1E508D43B5` (`outgoingDDIId`),
   CONSTRAINT `Faxes_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Faxes_ibfk_2` FOREIGN KEY (`outgoingDDIId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL
@@ -1883,7 +1972,6 @@ CREATE TABLE `FeaturesRelBrands` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `featureRelBrand_feature_brand` (`featureId`,`brandId`),
   KEY `IDX_6BA104879CBEC244` (`brandId`),
-  KEY `IDX_6BA10487397515B7` (`featureId`),
   CONSTRAINT `FeaturesRelBrands_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FeaturesRelBrands_ibfk_2` FOREIGN KEY (`featureId`) REFERENCES `Features` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -1913,7 +2001,6 @@ CREATE TABLE `FeaturesRelCompanies` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `featureRelCompany_feature_brand` (`featureId`,`companyId`),
   KEY `IDX_2C2CF4D92480E723` (`companyId`),
-  KEY `IDX_2C2CF4D9397515B7` (`featureId`),
   CONSTRAINT `FeaturesRelCompanies_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FeaturesRelCompanies_ibfk_2` FOREIGN KEY (`featureId`) REFERENCES `Features` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -1944,7 +2031,6 @@ CREATE TABLE `FixedCosts` (
   `cost` decimal(10,4) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `descBrand` (`brandId`,`name`),
-  KEY `IDX_1D4E03F49CBEC244` (`brandId`),
   CONSTRAINT `FixedCosts_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1969,11 +2055,11 @@ CREATE TABLE `FixedCostsRelInvoiceSchedulers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `quantity` int(10) unsigned DEFAULT NULL,
   `fixedCostId` int(10) unsigned NOT NULL,
-  `invoiceId` int(10) unsigned NOT NULL,
+  `invoiceSchedulerId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `FixedCostsRelInvoiceScheduler_invoiceScheduler_fixedCost` (`invoiceSchedulerId`,`fixedCostId`),
   KEY `IDX_D9D0952B81256364` (`fixedCostId`),
-  KEY `IDX_D9D0952B3D7BDC51` (`invoiceId`),
-  CONSTRAINT `FK_D9D0952B3D7BDC51` FOREIGN KEY (`invoiceId`) REFERENCES `InvoiceSchedulers` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_D9D0952B1D113CF5` FOREIGN KEY (`invoiceSchedulerId`) REFERENCES `InvoiceSchedulers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_D9D0952B81256364` FOREIGN KEY (`fixedCostId`) REFERENCES `FixedCosts` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2029,7 +2115,7 @@ CREATE TABLE `Friends` (
   `name` varchar(65) NOT NULL,
   `domainId` int(10) unsigned DEFAULT NULL,
   `description` varchar(500) NOT NULL DEFAULT '',
-  `transport` varchar(25) NOT NULL COMMENT '[enum:udp|tcp|tls]',
+  `transport` varchar(25) DEFAULT NULL COMMENT '[enum:udp|tcp|tls]',
   `ip` varchar(50) DEFAULT NULL,
   `port` smallint(5) unsigned DEFAULT NULL,
   `auth_needed` enum('yes','no') NOT NULL DEFAULT 'yes',
@@ -2052,7 +2138,6 @@ CREATE TABLE `Friends` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `companyPrio` (`companyId`,`priority`),
   UNIQUE KEY `name_domain` (`name`,`domainId`),
-  KEY `IDX_EE5349F52480E723` (`companyId`),
   KEY `IDX_EE5349F5CA2FAA07` (`callACLId`),
   KEY `IDX_EE5349F5508D43B5` (`outgoingDDIId`),
   KEY `IDX_EE5349F5940D8C7E` (`languageId`),
@@ -2162,7 +2247,7 @@ CREATE TABLE `HuntGroups` (
   `description` varchar(500) NOT NULL DEFAULT '',
   `companyId` int(10) unsigned NOT NULL,
   `strategy` varchar(25) NOT NULL COMMENT '[enum:ringAll|linear|roundRobin|random]',
-  `ringAllTimeout` smallint(6) NOT NULL,
+  `ringAllTimeout` smallint(6) DEFAULT NULL,
   `noAnswerLocutionId` int(10) unsigned DEFAULT NULL,
   `noAnswerTargetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
   `noAnswerNumberCountryId` int(10) unsigned DEFAULT NULL,
@@ -2170,6 +2255,7 @@ CREATE TABLE `HuntGroups` (
   `noAnswerExtensionId` int(10) unsigned DEFAULT NULL,
   `noAnswerVoiceMailUserId` int(10) unsigned DEFAULT NULL,
   `preventMissedCalls` int(10) unsigned NOT NULL DEFAULT '1',
+  `allowCallForwards` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `huntGroup_name_company` (`name`,`companyId`),
   KEY `IDX_4F9672EC2480E723` (`companyId`),
@@ -2204,14 +2290,18 @@ DROP TABLE IF EXISTS `HuntGroupsRelUsers`;
 CREATE TABLE `HuntGroupsRelUsers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `huntGroupId` int(10) unsigned NOT NULL,
-  `userId` int(10) unsigned NOT NULL,
+  `userId` int(10) unsigned DEFAULT NULL,
   `timeoutTime` smallint(6) DEFAULT NULL,
   `priority` smallint(6) DEFAULT NULL,
+  `routeType` varchar(25) NOT NULL COMMENT '[enum:number|user]',
+  `numberValue` varchar(25) DEFAULT NULL,
+  `numberCountryId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `userHuntgroup` (`userId`,`huntGroupId`),
   UNIQUE KEY `prioHuntgroup` (`priority`,`huntGroupId`),
   KEY `IDX_79ED31AB921B2343` (`huntGroupId`),
-  KEY `IDX_79ED31AB64B64DCC` (`userId`),
+  KEY `IDX_79ED31ABD7819488` (`numberCountryId`),
+  CONSTRAINT `FK_79ED31ABD7819488` FOREIGN KEY (`numberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL,
   CONSTRAINT `HuntGroupsRelUsers_ibfk_1` FOREIGN KEY (`huntGroupId`) REFERENCES `HuntGroups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `HuntGroupsRelUsers_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -2251,7 +2341,6 @@ CREATE TABLE `IVREntries` (
   KEY `IDX_E847DD7CAF230FFD` (`voiceMailUserId`),
   KEY `IDX_E847DD7C9E2CE667` (`conditionalRouteId`),
   KEY `IDX_E847DD7CD7819488` (`numberCountryId`),
-  KEY `IDX_E847DD7C2045F052` (`ivrId`),
   CONSTRAINT `FK_E847DD7C12AB7F65` FOREIGN KEY (`extensionId`) REFERENCES `Extensions` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_E847DD7C2045F052` FOREIGN KEY (`ivrId`) REFERENCES `IVRs` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_E847DD7C2ECAF600` FOREIGN KEY (`welcomeLocutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
@@ -2283,7 +2372,6 @@ CREATE TABLE `IVRExcludedExtensions` (
   `extensionId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uniqueExtension` (`ivrId`,`extensionId`),
-  KEY `IDX_36E264F22045F052` (`ivrId`),
   KEY `IDX_36E264F212AB7F65` (`extensionId`),
   CONSTRAINT `FK_36E264F212AB7F65` FOREIGN KEY (`extensionId`) REFERENCES `Extensions` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_36E264F22045F052` FOREIGN KEY (`ivrId`) REFERENCES `IVRs` (`id`) ON DELETE CASCADE
@@ -2467,7 +2555,7 @@ CREATE TABLE `InvoiceTemplates` (
 
 LOCK TABLES `InvoiceTemplates` WRITE;
 /*!40000 ALTER TABLE `InvoiceTemplates` DISABLE KEYS */;
-INSERT INTO `InvoiceTemplates` VALUES (1,'Basic','Basic invoice template','<!DOCTYPE HTML>\n<html>\n<head>\n    <style>\n        body {\n            font-size: 11px;\n            font-family: Helvetica Neue,Helvetica,Arial,sans-serif;\n        }\n        h2 {\n            font-size: 15px;\n        }\n        div{\n            page-break-inside: avoid;\n        }\n        div.theader {\n            width: 100%;\n            text-align: center;\n            margin: 25px 0 0;\n            font-weight: bold;\n            font-size: 20px;\n            border: none;\n            padding-bottom: 5px;\n            border-bottom: 1px solid black;\n        }\n        div.table {\n            display: table;\n            margin-bottom: 5px;\n            text-align: center;\n            border: none;\n            border-collapse: collapse;\n            width: 100%;\n            table-layout: fixed;\n        }\n        div.tbody {\n            display: table-row-group;\n        }\n        div.table div.tr {\n            display: table-row;\n            border: 1px solid black;\n            page-break-inside: avoid;\n        }\n        div.table div.th {\n            display: table-cell;\n            border-right: 1px solid black;\n            background-color: black;\n            border-bottom: 1px solid black;\n            color: white;\n            font-weight: bold;\n            padding: 5px 0 2px;\n        }\n        div.table div.tr:not(:last-child) div.th {\n            border-bottom: 1px solid white;\n        }\n        div.table div.tr div.th:not(:last-child) {\n            border-right: 1px solid white;\n        }\n        div.table div.td {\n            display: table-cell;\n            width: 50%;\n            padding: 5px 0 5px;\n            font-weight: normal;\n            background-color: white;\n            border: 1px solid black;\n            color: black;\n        }\n        .bold {\n            font-weight: bold!important;\n        }\n        .center {\n            text-align: center!important;\n        }\n        .left {\n            float: left!important;\n        }\n        .noBorder {\n            border: none!important;\n        }\n        .clearFloats {\n            clear:both;\n        }\n        .multiline {\n            white-space: pre-wrap;\n        }\n        .clientData {\n            width: 60%;\n            float: left;\n        }\n        .clientData h2 {\n            margin: 0;\n        }\n        .clientData p {\n            margin: 0px 0px 0px 20px;\n            padding: 0;\n        }\n        .invoiceData {\n            width: 30%;\n            float: right;\n            text-align: right;\n        }\n        .invoiceData p {\n            margin: 0;\n            padding: 0;\n        }\n        #content {\n            margin: 10px 0;\n        }\n        #subheader .left {\n            width: 60%;\n            font-weight: bold;\n        }\n        #subheader .left p {\n            font-size: 32px;\n            margin-top: 0;\n        }\n        #subheader .right {\n            width: 35%;\n            text-align: right;\n            float: right;\n        }\n        #subheader .right p.title {\n            margin: 0px;\n            padding: 0;\n            font-weight: bold;\n            font-size: 17px;\n        }\n        #subheader .right p.date {\n            margin: 0;\n            padding: 0;\n            font-size: 13px;\n        }\n        #content > div.table {\n            text-align: center;\n            width: 50%;\n            float: right;\n            border: none;\n            border-collapse: collapse;\n        }\n        #callsPerTypeSummary > div.table {\n            text-align: center;\n            width: 100%;\n        }\n        #content {\n            width: 100%;\n        }\n        #fixedCosts > div.table {\n            clear: both;\n        }\n        #fixedCosts div.table div.td {\n            width: 25%;\n        }\n        #summary {\n            width: 50%;\n            float: right;\n        }\n        #callsPerTypeSummary div.td {\n            width: 25%;\n        }\n        #callsPerType div.td {\n            width: 20%;\n        }\n    </style>\n    <meta charset=\"UTF-8\">\n</head>\n<body>\n<div id=\"content\">\n    <div id=\"subheader\">\n        <div class=\"left\">\n            <p class=\"left\">Factura</p>\n        </div>\n        <div class=\"right\">\n            <p class=\"title\">Fecha</p>\n            <p class=\"date\">{{invoice.invoiceDate}}</p>\n        </div>\n    </div>\n    <div>\n        <div class=\"clientData\">\n            <h2>Cliente</h2>\n            <p>{{company.name}}</p>\n            <p>{{company.postalAddress}}</p>\n            <p>{{company.postalCode}} {{company.town}}, {{company.province}} </p>\n            <p>NIF / CIF: {{company.nif}}</p>\n        </div>\n        <div class=\"invoiceData\">\n            <p class=\"bold\">Nº de factura</p>\n            <p>{{invoice.number}}</p>\n            <p class=\"bold\">Periodo de facturación</p>\n            <p>{{invoice.inDate}} - {{invoice.outDate}}</p>\n        </div>\n    </div>\n    <br class=\"clearFloats\" />\n    <div id=\"summary\">\n        <div class=\"theader center\">Resumen</div>\n        <div class=\"table\">\n            <div class=\"tbody\">\n                {{#if fixedCostsTotals}}\n                <div class=\"tr bold center\">\n                    <div class=\"th\">Costes fijos</div>\n                    <div class=\"td bold\">\n                        {{fixedCostsTotals}} {{invoice.currency}}\n                    </div>\n                </div>\n                {{/if}}\n                <div class=\"tr bold center\">\n                    <div class=\"th\">Llamadas</div>\n                    <div class=\"td bold\">{{callData.callSumaryTotals.totalPrice}} {{invoice.currency}}</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">Total:</div>\n                    <div class=\"td bold\">{{totals.totalPrice}} {{invoice.currency}}</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">IVA aplicable</div>\n                    <div class=\"td bold\">{{invoice.taxRate}} %</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">IVA</div>\n                    <div class=\"td bold\">{{totals.totalTaxes}} {{invoice.currency}}</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">Total con IVA</div>\n                    <div class=\"td bold\">{{totals.totalWithTaxes}} {{invoice.currency}}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <br class=\"clearFloats\" />\n\n    {{#if fixedCosts.length}}\n        <div id=\"fixedCosts\">\n            <div class=\"theader\">Costes fijos</div>\n            <div class=\"table\">\n                <div class=\"tbody\">\n                    <div class=\"tr\">\n                        <div class=\"th\">Concepto</div>\n                        <div class=\"th\">Precio</div>\n                        <div class=\"th\">Cantidad</div>\n                        <div class=\"th\">Subtotal</div>\n                    </div>\n                    {{#each fixedCosts}}\n                        <div class=\"tr\">\n                            <div class=\"td\">\n                                {{name}}\n                                {{#if description}}\n                                    <br />\n                                    <div class=\"multiline\">{{description}}</div>\n                                {{/if}}\n                            </div>\n                            <div class=\"td\">{{cost}} {{currency}}</div>\n                            <div class=\"td\">{{quantity}}</div>\n                            <div class=\"td\">{{subTotal}} {{currency}}</div>\n                        </div>\n                    {{/each}}\n                    <div class=\"tr noBorder\">\n                        <div class=\"td noBorder\"></div>\n                        <div class=\"td noBorder\"></div>\n                        <div class=\"th\" style=\"border-right: 1px solid black;\">Total:</div>\n                        <div class=\"td bold\">{{fixedCostsTotals}} {{invoice.currency}}</div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    {{/if}}\n\n    <div id=\"callsPerTypeSummary\">\n        <div class=\"theader\">Resumen de llamadas por tipo</div>\n        <div class=\"table\">\n            <div class=\"tbody\">\n                <div class=\"tr\">\n                    <div class=\"th\">Tipo</div>\n                    <div class=\"th\">Nº llamadas</div>\n                    <div class=\"th\">Duración total</div>\n                    <div class=\"th\">Precio total</div>\n                </div>\n                {{#each callData.callSumary}}\n                <div class=\"tr\">\n                    <div class=\"td white\">{{type}}</div>\n                    <div class=\"td white\">{{numberOfCalls}}</div>\n                    <div class=\"td white\">{{totalCallsDurationFormatted}}</div>\n                    <div class=\"td white\">{{totalPrice}} {{currency}}</div>\n                </div>\n                {{/each}}\n                <div class=\"tr bold\">\n                    <div class=\"th\" style=\"border-right: 1px solid black;\">Totales:</div>\n                    <div class=\"td bold\" style=\"border-left: 1px solid black;\">{{callData.callSumaryTotals.numberOfCalls}}</div>\n                    <div class=\"td bold\">{{callData.callSumaryTotals.totalCallsDurationFormatted}}</div>\n                    <div class=\"td bold\">{{callData.callSumaryTotals.totalPrice}} {{invoice.currency}}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n</body>\n</html>\n','<!DOCTYPE HTML>\n<html>\n<head>\n    <style>\n        body {\n            font-size: 11px;\n            font-family: Helvetica Neue,Helvetica,Arial,sans-serif;\n            padding-top: 45px;\n            border-bottom: 1px solid red;\n            margin: 45px 8px 0;\n        }\n        .bold {\n            font-weight: bold!important;\n        }\n        .center {\n            text-align: center!important;\n        }\n        .left {\n            float: left!important;\n        }\n        #header {\n            text-align: right;\n            height: 50px;\n        }\n        #header img {\n            float: left;\n            height: 30px;\n        }\n        #header p {\n            margin: 0;\n        }\n        #header .redLine {\n            border-color: red;\n            border-width: 0 0 1px 0;\n        }\n    </style>\n    <meta charset=\"UTF-8\">\n</head>\n<body>\n<div id=\"header\">\n    <div>\n        <img src=\"{{brand.logoPath}}\">\n        <div>\n            <p class=\"bold\">{{brand.name}}</p>\n            <p class=\"bold\">{{brand.invoice.postalAddress}}, {{brand.invoice.postalCode}} {{brand.invoice.town}}, {{brand.invoice.province}} </p>\n            <p>NIF / CIF: {{brand.invoice.nif}}</p>\n        </div>\n        <div class=\"redLine\">\n        </div>\n    </div>\n</div>\n</body>\n</html>\n','<!DOCTYPE HTML>\n<html>\n   <head>\n       <style>\n           #registryData {\n              border-top: 1px solid red;\n         	  border-bottom: 1px solid red;\n              line-height: 18px;\n              font-size: 8px;\n              padding: 3px 0;\n              text-align: center;\n           }\n           #footer {\n         	  padding-bottom: 20px;\n              text-align: right;\n              font-size: 14px;\n              font-weith:bold;\n           }\n       </style>\n       <meta charset=\"UTF-8\">\n   </head>\n   <body>\n     <p id=\"registryData\">\n        {{brand.invoice.registryData}}\n     </p>\n     <div id=\"footer\">\n       <p>\n         <span id=\"page\"></span>\n         / <span id=\"topage\"></span>\n       </p>\n     </div>\n    <script>\n      var vars = {};\n      var query_strings_from_url = document.location.search.substring(1).split(\'&\');\n      for (var query_string in query_strings_from_url) {\n          if (query_strings_from_url.hasOwnProperty(query_string)) {\n              var temp_var = query_strings_from_url[query_string].split(\'=\', 2);\n              vars[temp_var[0]] = decodeURI(temp_var[1]);\n          }\n      }\n      document.getElementById(\'page\').innerHTML = vars.page;\n      document.getElementById(\'topage\').innerHTML = vars.topage;\n    </script>\n    </body>\n</html>\n',NULL),(2,'Detailed','Detailed invoice template','<!DOCTYPE HTML>\n<html>\n<head>\n    <style>\n        body {\n            font-size: 11px;\n            font-family: Helvetica Neue,Helvetica,Arial,sans-serif;\n        }\n        h2 {\n            font-size: 15px;\n        }\n        div{\n            page-break-inside: avoid;\n        }\n        div.theader {\n            width: 100%;\n            text-align: center;\n            margin: 25px 0 0;\n            font-weight: bold;\n            font-size: 20px;\n            border: none;\n            padding-bottom: 5px;\n            border-bottom: 1px solid black;\n        }\n        div.table {\n            display: table;\n            margin-bottom: 5px;\n            text-align: center;\n            border: none;\n            border-collapse: collapse;\n            width: 100%;\n            table-layout: fixed;\n        }\n        div.tbody {\n            display: table-row-group;\n        }\n        div.table div.tr {\n            display: table-row;\n            border: 1px solid black;\n            page-break-inside: avoid;\n        }\n        div.table div.th {\n            display: table-cell;\n            border-right: 1px solid black;\n            background-color: black;\n            border-bottom: 1px solid black;\n            color: white;\n            font-weight: bold;\n            padding: 5px 0 2px;\n        }\n        div.table div.tr:not(:last-child) div.th {\n            border-bottom: 1px solid white;\n        }\n        div.table div.tr div.th:not(:last-child) {\n            border-right: 1px solid white;\n        }\n        div.table div.td {\n            display: table-cell;\n            width: 50%;\n            padding: 5px 0 5px;\n            font-weight: normal;\n            background-color: white;\n            border: 1px solid black;\n            color: black;\n        }\n        .bold {\n            font-weight: bold!important;\n        }\n        .center {\n            text-align: center!important;\n        }\n        .left {\n            float: left!important;\n        }\n        .noBorder {\n            border: none!important;\n        }\n        .clearFloats {\n            clear:both;\n        }\n        .multiline {\n            white-space: pre-wrap;\n        }\n        .clientData {\n            width: 60%;\n            float: left;\n        }\n        .clientData h2 {\n            margin: 0;\n        }\n        .clientData p {\n            margin: 0px 0px 0px 20px;\n            padding: 0;\n        }\n        .invoiceData {\n            width: 30%;\n            float: right;\n            text-align: right;\n        }\n        .invoiceData p {\n            margin: 0;\n            padding: 0;\n        }\n        #content {\n            margin: 10px 0;\n        }\n        #subheader .left {\n            width: 60%;\n            font-weight: bold;\n        }\n        #subheader .left p {\n            font-size: 32px;\n            margin-top: 0;\n        }\n        #subheader .right {\n            width: 35%;\n            text-align: right;\n            float: right;\n        }\n        #subheader .right p.title {\n            margin: 0px;\n            padding: 0;\n            font-weight: bold;\n            font-size: 17px;\n        }\n        #subheader .right p.date {\n            margin: 0;\n            padding: 0;\n            font-size: 13px;\n        }\n        #content > div.table {\n            text-align: center;\n            width: 50%;\n            float: right;\n            border: none;\n            border-collapse: collapse;\n        }\n        #callsPerTypeSummary > div.table {\n            text-align: center;\n            width: 100%;\n        }\n        #content {\n            width: 100%;\n        }\n        #fixedCosts > div.table {\n            clear: both;\n        }\n        #fixedCosts div.table div.td {\n            width: 25%;\n        }\n        #summary {\n            width: 50%;\n            float: right;\n        }\n        #callsPerTypeSummary div.td {\n            width: 25%;\n        }\n        #callsPerType div.td {\n            width: 20%;\n        }\n    </style>\n    <meta charset=\"UTF-8\">\n</head>\n<body>\n<div id=\"content\">\n    <div id=\"subheader\">\n        <div class=\"left\">\n            <p class=\"left\">Factura</p>\n        </div>\n        <div class=\"right\">\n            <p class=\"title\">Fecha</p>\n            <p class=\"date\">{{invoice.invoiceDate}}</p>\n        </div>\n    </div>\n    <div>\n        <div class=\"clientData\">\n            <h2>Cliente</h2>\n            <p>{{company.name}}</p>\n            <p>{{company.postalAddress}}</p>\n            <p>{{company.postalCode}} {{company.town}}, {{company.province}} </p>\n            <p>NIF / CIF: {{company.nif}}</p>\n        </div>\n        <div class=\"invoiceData\">\n            <p class=\"bold\">Nº de factura</p>\n            <p>{{invoice.number}}</p>\n            <p class=\"bold\">Periodo de facturación</p>\n            <p>{{invoice.inDate}} - {{invoice.outDate}}</p>\n        </div>\n    </div>\n    <br class=\"clearFloats\" />\n    <div id=\"summary\">\n        <div class=\"theader center\">Resumen</div>\n        <div class=\"table\">\n            <div class=\"tbody\">\n                {{#if fixedCostsTotals}}\n                <div class=\"tr bold center\">\n                    <div class=\"th\">Costes fijos</div>\n                    <div class=\"td bold\">\n                        {{fixedCostsTotals}} {{invoice.currency}}\n                    </div>\n                </div>\n                {{/if}}\n                <div class=\"tr bold center\">\n                    <div class=\"th\">Llamadas</div>\n                    <div class=\"td bold\">{{callData.callSumaryTotals.totalPrice}} {{invoice.currency}}</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">Total:</div>\n                    <div class=\"td bold\">{{totals.totalPrice}} {{invoice.currency}}</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">IVA aplicable</div>\n                    <div class=\"td bold\">{{invoice.taxRate}} %</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">IVA</div>\n                    <div class=\"td bold\">{{totals.totalTaxes}} {{invoice.currency}}</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">Total con IVA</div>\n                    <div class=\"td bold\">{{totals.totalWithTaxes}} {{invoice.currency}}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <br class=\"clearFloats\" />\n\n    {{#if fixedCosts.length}}\n        <div id=\"fixedCosts\">\n            <div class=\"theader\">Costes fijos</div>\n            <div class=\"table\">\n                <div class=\"tbody\">\n                    <div class=\"tr\">\n                        <div class=\"th\">Concepto</div>\n                        <div class=\"th\">Precio</div>\n                        <div class=\"th\">Cantidad</div>\n                        <div class=\"th\">Subtotal</div>\n                    </div>\n                    {{#each fixedCosts}}\n                        <div class=\"tr\">\n                            <div class=\"td\">\n                                {{name}}\n                                {{#if description}}\n                                    <br />\n                                    <div class=\"multiline\">{{description}}</div>\n                                {{/if}}\n                            </div>\n                            <div class=\"td\">{{cost}} {{currency}}</div>\n                            <div class=\"td\">{{quantity}}</div>\n                            <div class=\"td\">{{subTotal}} {{currency}}</div>\n                        </div>\n                    {{/each}}\n                    <div class=\"tr noBorder\">\n                        <div class=\"td noBorder\"></div>\n                        <div class=\"td noBorder\"></div>\n                        <div class=\"th\" style=\"border-right: 1px solid black;\">Total:</div>\n                        <div class=\"td bold\">{{fixedCostsTotals}} {{invoice.currency}}</div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    {{/if}}\n\n    <div id=\"callsPerTypeSummary\">\n        <div class=\"theader\">Resumen de llamadas por tipo</div>\n        <div class=\"table\">\n            <div class=\"tbody\">\n                <div class=\"tr\">\n                    <div class=\"th\">Tipo</div>\n                    <div class=\"th\">Nº llamadas</div>\n                    <div class=\"th\">Duración total</div>\n                    <div class=\"th\">Precio total</div>\n                </div>\n                {{#each callData.callSumary}}\n                <div class=\"tr\">\n                    <div class=\"td white\">{{type}}</div>\n                    <div class=\"td white\">{{numberOfCalls}}</div>\n                    <div class=\"td white\">{{totalCallsDurationFormatted}}</div>\n                    <div class=\"td white\">{{totalPrice}} {{currency}}</div>\n                </div>\n                {{/each}}\n                <div class=\"tr bold\">\n                    <div class=\"th\" style=\"border-right: 1px solid black;\">Totales:</div>\n                    <div class=\"td bold\" style=\"border-left: 1px solid black;\">{{callData.callSumaryTotals.numberOfCalls}}</div>\n                    <div class=\"td bold\">{{callData.callSumaryTotals.totalCallsDurationFormatted}}</div>\n                    <div class=\"td bold\">{{callData.callSumaryTotals.totalPrice}} {{invoice.currency}}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n\n    {{#each callData.callsPerType}}\n    <div id=\"callsPerType\">\n        <div class=\"theader\">{{items.0.targetPattern.name}}</div>\n        <div class=\"table\">\n            <div class=\"tbody\">\n                <div class=\"tr\">\n                    <div class=\"th\">Fecha</div>\n                    <div class=\"th\">Destino</div>\n                    <div class=\"th\">Duración</div>\n                    <div class=\"th\">Plan</div>\n                    <div class=\"th\">Precio</div>\n                </div>\n                {{#each items}}\n                <div class=\"tr\">\n                    <div class=\"td white\">{{calldate}}</div>\n                    <div class=\"td white\">{{dst}}</div>\n                    <div class=\"td white\">{{durationFormatted}}</div>\n                    <div class=\"td white\">{{pricingPlan.name}}</div>\n                    <div class=\"td white\">{{price}} {{currency}}</div>\n                </div>\n                {{/each}}\n            </div>\n        </div>\n    </div>\n    {{/each}}\n</body>\n</html>\n','<!DOCTYPE HTML>\n<html>\n<head>\n    <style>\n        body {\n            font-size: 11px;\n            font-family: Helvetica Neue,Helvetica,Arial,sans-serif;\n            padding-top: 45px;\n            border-bottom: 1px solid red;\n            margin: 45px 8px 0;\n        }\n        .bold {\n            font-weight: bold!important;\n        }\n        .center {\n            text-align: center!important;\n        }\n        .left {\n            float: left!important;\n        }\n        #header {\n            text-align: right;\n            height: 50px;\n        }\n        #header img {\n            float: left;\n            height: 30px;\n        }\n        #header p {\n            margin: 0;\n        }\n        #header .redLine {\n            border-color: red;\n            border-width: 0 0 1px 0;\n        }\n    </style>\n    <meta charset=\"UTF-8\">\n</head>\n<body>\n<div id=\"header\">\n    <div>\n        <img src=\"{{brand.logoPath}}\">\n        <div>\n            <p class=\"bold\">{{brand.name}}</p>\n            <p class=\"bold\">{{brand.invoice.postalAddress}}, {{brand.invoice.postalCode}} {{brand.invoice.town}}, {{brand.invoice.province}} </p>\n            <p>NIF / CIF: {{brand.invoice.nif}}</p>\n        </div>\n        <div class=\"redLine\">\n        </div>\n    </div>\n</div>\n</body>\n</html>\n','<!DOCTYPE HTML>\n<html>\n   <head>\n       <style>\n           #registryData {\n              border-top: 1px solid red;\n         	  border-bottom: 1px solid red;\n              line-height: 18px;\n              font-size: 8px;\n              padding: 3px 0;\n              text-align: center;\n           }\n           #footer {\n         	  padding-bottom: 20px;\n              text-align: right;\n              font-size: 14px;\n              font-weith:bold;\n           }\n       </style>\n       <meta charset=\"UTF-8\">\n   </head>\n   <body>\n     <p id=\"registryData\">\n        {{brand.invoice.registryData}}\n     </p>\n     <div id=\"footer\">\n       <p>\n         <span id=\"page\"></span>\n         / <span id=\"topage\"></span>\n       </p>\n     </div>\n    <script>\n      var vars = {};\n      var query_strings_from_url = document.location.search.substring(1).split(\'&\');\n      for (var query_string in query_strings_from_url) {\n          if (query_strings_from_url.hasOwnProperty(query_string)) {\n              var temp_var = query_strings_from_url[query_string].split(\'=\', 2);\n              vars[temp_var[0]] = decodeURI(temp_var[1]);\n          }\n      }\n      document.getElementById(\'page\').innerHTML = vars.page;\n      document.getElementById(\'topage\').innerHTML = vars.topage;\n    </script>\n    </body>\n</html>\n',NULL);
+INSERT INTO `InvoiceTemplates` VALUES (1,'Basic','Basic invoice template','<!DOCTYPE HTML>\n<html>\n<head>\n    <style>\n        body {\n            font-size: 11px;\n            font-family: Helvetica Neue,Helvetica,Arial,sans-serif;\n        }\n        h2 {\n            font-size: 15px;\n        }\n        div{\n            page-break-inside: avoid;\n        }\n        div.theader {\n            width: 100%;\n            text-align: center;\n            margin: 25px 0 0;\n            font-weight: bold;\n            font-size: 20px;\n            border: none;\n            padding-bottom: 5px;\n            border-bottom: 1px solid black;\n        }\n        div.table {\n            display: table;\n            margin-bottom: 5px;\n            text-align: center;\n            border: none;\n            border-collapse: collapse;\n            width: 100%;\n            table-layout: fixed;\n        }\n        div.tbody {\n            display: table-row-group;\n        }\n        div.table div.tr {\n            display: table-row;\n            border: 1px solid black;\n            page-break-inside: avoid;\n        }\n        div.table div.th {\n            display: table-cell;\n            border-right: 1px solid black;\n            background-color: black;\n            border-bottom: 1px solid black;\n            color: white;\n            font-weight: bold;\n            padding: 5px 0 2px;\n        }\n        div.table div.tr:not(:last-child) div.th {\n            border-bottom: 1px solid white;\n        }\n        div.table div.tr div.th:not(:last-child) {\n            border-right: 1px solid white;\n        }\n        div.table div.td {\n            display: table-cell;\n            width: 50%;\n            padding: 5px 0 5px;\n            font-weight: normal;\n            background-color: white;\n            border: 1px solid black;\n            color: black;\n        }\n        .bold {\n            font-weight: bold!important;\n        }\n        .center {\n            text-align: center!important;\n        }\n        .left {\n            float: left!important;\n        }\n        .noBorder {\n            border: none!important;\n        }\n        .clearFloats {\n            clear:both;\n        }\n        .multiline {\n            white-space: pre-wrap;\n        }\n        .clientData {\n            width: 60%;\n            float: left;\n        }\n        .clientData h2 {\n            margin: 0;\n        }\n        .clientData p {\n            margin: 0px 0px 0px 20px;\n            padding: 0;\n        }\n        .invoiceData {\n            width: 30%;\n            float: right;\n            text-align: right;\n        }\n        .invoiceData p {\n            margin: 0;\n            padding: 0;\n        }\n        #content {\n            margin: 10px 0;\n        }\n        #subheader .left {\n            width: 60%;\n            font-weight: bold;\n        }\n        #subheader .left p {\n            font-size: 32px;\n            margin-top: 0;\n        }\n        #subheader .right {\n            width: 35%;\n            text-align: right;\n            float: right;\n        }\n        #subheader .right p.title {\n            margin: 0px;\n            padding: 0;\n            font-weight: bold;\n            font-size: 17px;\n        }\n        #subheader .right p.date {\n            margin: 0;\n            padding: 0;\n            font-size: 13px;\n        }\n        #content > div.table {\n            text-align: center;\n            width: 50%;\n            float: right;\n            border: none;\n            border-collapse: collapse;\n        }\n        #callsPerTypeSummary > div.table {\n            text-align: center;\n            width: 100%;\n        }\n        #content {\n            width: 100%;\n        }\n        #fixedCosts > div.table {\n            clear: both;\n        }\n        #fixedCosts div.table div.td {\n            width: 25%;\n        }\n        #summary {\n            width: 50%;\n            float: right;\n        }\n        #callsPerTypeSummary div.td {\n            width: 25%;\n        }\n        #callsPerType div.td {\n            width: 20%;\n        }\n    </style>\n    <meta charset=\"UTF-8\">\n</head>\n<body>\n<div id=\"content\">\n    <div id=\"subheader\">\n        <div class=\"left\">\n            <p class=\"left\">Factura</p>\n        </div>\n        <div class=\"right\">\n            <p class=\"title\">Fecha</p>\n            <p class=\"date\">{{invoice.invoiceDate}}</p>\n        </div>\n    </div>\n    <div>\n        <div class=\"clientData\">\n            <h2>Cliente</h2>\n            <p>{{company.name}}</p>\n            <p>{{company.postalAddress}}</p>\n            <p>{{company.postalCode}} {{company.town}}, {{company.province}} </p>\n            <p>NIF / CIF: {{company.nif}}</p>\n        </div>\n        <div class=\"invoiceData\">\n            <p class=\"bold\">Nº de factura</p>\n            <p>{{invoice.number}}</p>\n            <p class=\"bold\">Periodo de facturación</p>\n            <p>{{invoice.inDate}} - {{invoice.outDate}}</p>\n        </div>\n    </div>\n    <br class=\"clearFloats\" />\n    <div id=\"summary\">\n        <div class=\"theader center\">Resumen</div>\n        <div class=\"table\">\n            <div class=\"tbody\">\n                {{#if fixedCostsTotals}}\n                <div class=\"tr bold center\">\n                    <div class=\"th\">Costes fijos</div>\n                    <div class=\"td bold\">\n                        {{fixedCostsTotals}} {{invoice.currency}}\n                    </div>\n                </div>\n                {{/if}}\n                <div class=\"tr bold center\">\n                    <div class=\"th\">Llamadas</div>\n                    <div class=\"td bold\">{{callData.callSumaryTotals.totalPrice}} {{invoice.currency}}</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">Total:</div>\n                    <div class=\"td bold\">{{totals.totalPrice}} {{invoice.currency}}</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">IVA aplicable</div>\n                    <div class=\"td bold\">{{invoice.taxRate}} %</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">IVA</div>\n                    <div class=\"td bold\">{{totals.totalTaxes}} {{invoice.currency}}</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">Total con IVA</div>\n                    <div class=\"td bold\">{{totals.totalWithTaxes}} {{invoice.currency}}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <br class=\"clearFloats\" />\n\n    {{#if fixedCosts.length}}\n        <div id=\"fixedCosts\">\n            <div class=\"theader\">Costes fijos</div>\n            <div class=\"table\">\n                <div class=\"tbody\">\n                    <div class=\"tr\">\n                        <div class=\"th\">Concepto</div>\n                        <div class=\"th\">Precio</div>\n                        <div class=\"th\">Cantidad</div>\n                        <div class=\"th\">Subtotal</div>\n                    </div>\n                    {{#each fixedCosts}}\n                        <div class=\"tr\">\n                            <div class=\"td\">\n                                {{name}}\n                                {{#if description}}\n                                    <br />\n                                    <div class=\"multiline\">{{description}}</div>\n                                {{/if}}\n                            </div>\n                            <div class=\"td\">{{cost}} {{currency}}</div>\n                            <div class=\"td\">{{quantity}}</div>\n                            <div class=\"td\">{{subTotal}} {{currency}}</div>\n                        </div>\n                    {{/each}}\n                    <div class=\"tr noBorder\">\n                        <div class=\"td noBorder\"></div>\n                        <div class=\"td noBorder\"></div>\n                        <div class=\"th\" style=\"border-right: 1px solid black;\">Total:</div>\n                        <div class=\"td bold\">{{fixedCostsTotals}} {{invoice.currency}}</div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    {{/if}}\n\n    <div id=\"callsPerTypeSummary\">\n        <div class=\"theader\">Resumen de llamadas por tipo</div>\n        <div class=\"table\">\n            <div class=\"tbody\">\n                <div class=\"tr\">\n                    <div class=\"th\">Tipo</div>\n                    <div class=\"th\">Nº llamadas</div>\n                    <div class=\"th\">Duración total</div>\n                    <div class=\"th\">Precio total</div>\n                </div>\n                {{#each callData.callSumary}}\n                <div class=\"tr\">\n                    <div class=\"td white\">{{type}}</div>\n                    <div class=\"td white\">{{numberOfCalls}}</div>\n                    <div class=\"td white\">{{totalCallsDurationFormatted}}</div>\n                    <div class=\"td white\">{{totalPrice}} {{currency}}</div>\n                </div>\n                {{/each}}\n                <div class=\"tr bold\">\n                    <div class=\"th\" style=\"border-right: 1px solid black;\">Totales:</div>\n                    <div class=\"td bold\" style=\"border-left: 1px solid black;\">{{callData.callSumaryTotals.numberOfCalls}}</div>\n                    <div class=\"td bold\">{{callData.callSumaryTotals.totalCallsDurationFormatted}}</div>\n                    <div class=\"td bold\">{{callData.callSumaryTotals.totalPrice}} {{invoice.currency}}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n</body>\n</html>\n','<!DOCTYPE HTML>\n<html>\n<head>\n    <style>\n        body {\n            font-size: 11px;\n            font-family: Helvetica Neue,Helvetica,Arial,sans-serif;\n            padding-top: 45px;\n            border-bottom: 1px solid red;\n            margin: 45px 8px 0;\n        }\n        .bold {\n            font-weight: bold!important;\n        }\n        .center {\n            text-align: center!important;\n        }\n        .left {\n            float: left!important;\n        }\n        #header {\n            text-align: right;\n            height: 50px;\n        }\n        #header img {\n            float: left;\n            height: 30px;\n        }\n        #header p {\n            margin: 0;\n        }\n        #header .redLine {\n            border-color: red;\n            border-width: 0 0 1px 0;\n        }\n    </style>\n    <meta charset=\"UTF-8\">\n</head>\n<body>\n<div id=\"header\">\n    <div>\n        <img src=\"{{brand.logoPath}}\">\n        <div>\n            <p class=\"bold\">{{brand.name}}</p>\n            <p class=\"bold\">{{brand.invoice.postalAddress}}, {{brand.invoice.postalCode}} {{brand.invoice.town}}, {{brand.invoice.province}} </p>\n            <p>NIF / CIF: {{brand.invoice.nif}}</p>\n        </div>\n        <div class=\"redLine\">\n        </div>\n    </div>\n</div>\n</body>\n</html>\n','<!DOCTYPE HTML>\n<html>\n   <head>\n       <style>\n           #registryData {\n              border-top: 1px solid red;\n              border-bottom: 1px solid red;\n              line-height: 18px;\n              font-size: 8px;\n              padding: 3px 0;\n              text-align: center;\n           }\n           #footer {\n              padding-bottom: 20px;\n              text-align: right;\n              font-size: 14px;\n              font-weith:bold;\n           }\n       </style>\n       <meta charset=\"UTF-8\">\n   </head>\n   <body>\n     <p id=\"registryData\">\n        {{brand.invoice.registryData}}\n     </p>\n     <div id=\"footer\">\n       <p>\n         <span id=\"page\"></span>\n         / <span id=\"topage\"></span>\n       </p>\n     </div>\n    <script>\n      var vars = {};\n      var query_strings_from_url = document.location.search.substring(1).split(\'&\');\n      for (var query_string in query_strings_from_url) {\n          if (query_strings_from_url.hasOwnProperty(query_string)) {\n              var temp_var = query_strings_from_url[query_string].split(\'=\', 2);\n              vars[temp_var[0]] = decodeURI(temp_var[1]);\n          }\n      }\n      document.getElementById(\'page\').innerHTML = vars.page;\n      document.getElementById(\'topage\').innerHTML = vars.topage;\n    </script>\n    </body>\n</html>\n',NULL),(2,'Detailed','Detailed invoice template','<!DOCTYPE HTML>\n<html>\n<head>\n    <style>\n        body {\n            font-size: 11px;\n            font-family: Helvetica Neue,Helvetica,Arial,sans-serif;\n        }\n        h2 {\n            font-size: 15px;\n        }\n        div{\n            page-break-inside: avoid;\n        }\n        div.theader {\n            width: 100%;\n            text-align: center;\n            margin: 25px 0 0;\n            font-weight: bold;\n            font-size: 20px;\n            border: none;\n            padding-bottom: 5px;\n            border-bottom: 1px solid black;\n        }\n        div.table {\n            display: table;\n            margin-bottom: 5px;\n            text-align: center;\n            border: none;\n            border-collapse: collapse;\n            width: 100%;\n            table-layout: fixed;\n        }\n        div.tbody {\n            display: table-row-group;\n        }\n        div.table div.tr {\n            display: table-row;\n            border: 1px solid black;\n            page-break-inside: avoid;\n        }\n        div.table div.th {\n            display: table-cell;\n            border-right: 1px solid black;\n            background-color: black;\n            border-bottom: 1px solid black;\n            color: white;\n            font-weight: bold;\n            padding: 5px 0 2px;\n        }\n        div.table div.tr:not(:last-child) div.th {\n            border-bottom: 1px solid white;\n        }\n        div.table div.tr div.th:not(:last-child) {\n            border-right: 1px solid white;\n        }\n        div.table div.td {\n            display: table-cell;\n            width: 50%;\n            padding: 5px 0 5px;\n            font-weight: normal;\n            background-color: white;\n            border: 1px solid black;\n            color: black;\n        }\n        .bold {\n            font-weight: bold!important;\n        }\n        .center {\n            text-align: center!important;\n        }\n        .left {\n            float: left!important;\n        }\n        .noBorder {\n            border: none!important;\n        }\n        .clearFloats {\n            clear:both;\n        }\n        .multiline {\n            white-space: pre-wrap;\n        }\n        .clientData {\n            width: 60%;\n            float: left;\n        }\n        .clientData h2 {\n            margin: 0;\n        }\n        .clientData p {\n            margin: 0px 0px 0px 20px;\n            padding: 0;\n        }\n        .invoiceData {\n            width: 30%;\n            float: right;\n            text-align: right;\n        }\n        .invoiceData p {\n            margin: 0;\n            padding: 0;\n        }\n        #content {\n            margin: 10px 0;\n        }\n        #subheader .left {\n            width: 60%;\n            font-weight: bold;\n        }\n        #subheader .left p {\n            font-size: 32px;\n            margin-top: 0;\n        }\n        #subheader .right {\n            width: 35%;\n            text-align: right;\n            float: right;\n        }\n        #subheader .right p.title {\n            margin: 0px;\n            padding: 0;\n            font-weight: bold;\n            font-size: 17px;\n        }\n        #subheader .right p.date {\n            margin: 0;\n            padding: 0;\n            font-size: 13px;\n        }\n        #content > div.table {\n            text-align: center;\n            width: 50%;\n            float: right;\n            border: none;\n            border-collapse: collapse;\n        }\n        #callsPerTypeSummary > div.table {\n            text-align: center;\n            width: 100%;\n        }\n        #content {\n            width: 100%;\n        }\n        #fixedCosts > div.table {\n            clear: both;\n        }\n        #fixedCosts div.table div.td {\n            width: 25%;\n        }\n        #summary {\n            width: 50%;\n            float: right;\n        }\n        #callsPerTypeSummary div.td {\n            width: 25%;\n        }\n        #callsPerType div.td {\n            width: 20%;\n        }\n    </style>\n    <meta charset=\"UTF-8\">\n</head>\n<body>\n<div id=\"content\">\n    <div id=\"subheader\">\n        <div class=\"left\">\n            <p class=\"left\">Factura</p>\n        </div>\n        <div class=\"right\">\n            <p class=\"title\">Fecha</p>\n            <p class=\"date\">{{invoice.invoiceDate}}</p>\n        </div>\n    </div>\n    <div>\n        <div class=\"clientData\">\n            <h2>Cliente</h2>\n            <p>{{company.name}}</p>\n            <p>{{company.postalAddress}}</p>\n            <p>{{company.postalCode}} {{company.town}}, {{company.province}} </p>\n            <p>NIF / CIF: {{company.nif}}</p>\n        </div>\n        <div class=\"invoiceData\">\n            <p class=\"bold\">Nº de factura</p>\n            <p>{{invoice.number}}</p>\n            <p class=\"bold\">Periodo de facturación</p>\n            <p>{{invoice.inDate}} - {{invoice.outDate}}</p>\n        </div>\n    </div>\n    <br class=\"clearFloats\" />\n    <div id=\"summary\">\n        <div class=\"theader center\">Resumen</div>\n        <div class=\"table\">\n            <div class=\"tbody\">\n                {{#if fixedCostsTotals}}\n                <div class=\"tr bold center\">\n                    <div class=\"th\">Costes fijos</div>\n                    <div class=\"td bold\">\n                        {{fixedCostsTotals}} {{invoice.currency}}\n                    </div>\n                </div>\n                {{/if}}\n                <div class=\"tr bold center\">\n                    <div class=\"th\">Llamadas</div>\n                    <div class=\"td bold\">{{callData.callSumaryTotals.totalPrice}} {{invoice.currency}}</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">Total:</div>\n                    <div class=\"td bold\">{{totals.totalPrice}} {{invoice.currency}}</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">IVA aplicable</div>\n                    <div class=\"td bold\">{{invoice.taxRate}} %</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">IVA</div>\n                    <div class=\"td bold\">{{totals.totalTaxes}} {{invoice.currency}}</div>\n                </div>\n                <div class=\"tr bold\">\n                    <div class=\"th\">Total con IVA</div>\n                    <div class=\"td bold\">{{totals.totalWithTaxes}} {{invoice.currency}}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <br class=\"clearFloats\" />\n\n    {{#if fixedCosts.length}}\n        <div id=\"fixedCosts\">\n            <div class=\"theader\">Costes fijos</div>\n            <div class=\"table\">\n                <div class=\"tbody\">\n                    <div class=\"tr\">\n                        <div class=\"th\">Concepto</div>\n                        <div class=\"th\">Precio</div>\n                        <div class=\"th\">Cantidad</div>\n                        <div class=\"th\">Subtotal</div>\n                    </div>\n                    {{#each fixedCosts}}\n                        <div class=\"tr\">\n                            <div class=\"td\">\n                                {{name}}\n                                {{#if description}}\n                                    <br />\n                                    <div class=\"multiline\">{{description}}</div>\n                                {{/if}}\n                            </div>\n                            <div class=\"td\">{{cost}} {{currency}}</div>\n                            <div class=\"td\">{{quantity}}</div>\n                            <div class=\"td\">{{subTotal}} {{currency}}</div>\n                        </div>\n                    {{/each}}\n                    <div class=\"tr noBorder\">\n                        <div class=\"td noBorder\"></div>\n                        <div class=\"td noBorder\"></div>\n                        <div class=\"th\" style=\"border-right: 1px solid black;\">Total:</div>\n                        <div class=\"td bold\">{{fixedCostsTotals}} {{invoice.currency}}</div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    {{/if}}\n\n    <div id=\"callsPerTypeSummary\">\n        <div class=\"theader\">Resumen de llamadas por tipo</div>\n        <div class=\"table\">\n            <div class=\"tbody\">\n                <div class=\"tr\">\n                    <div class=\"th\">Tipo</div>\n                    <div class=\"th\">Nº llamadas</div>\n                    <div class=\"th\">Duración total</div>\n                    <div class=\"th\">Precio total</div>\n                </div>\n                {{#each callData.callSumary}}\n                <div class=\"tr\">\n                    <div class=\"td white\">{{type}}</div>\n                    <div class=\"td white\">{{numberOfCalls}}</div>\n                    <div class=\"td white\">{{totalCallsDurationFormatted}}</div>\n                    <div class=\"td white\">{{totalPrice}} {{currency}}</div>\n                </div>\n                {{/each}}\n                <div class=\"tr bold\">\n                    <div class=\"th\" style=\"border-right: 1px solid black;\">Totales:</div>\n                    <div class=\"td bold\" style=\"border-left: 1px solid black;\">{{callData.callSumaryTotals.numberOfCalls}}</div>\n                    <div class=\"td bold\">{{callData.callSumaryTotals.totalCallsDurationFormatted}}</div>\n                    <div class=\"td bold\">{{callData.callSumaryTotals.totalPrice}} {{invoice.currency}}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n\n    {{#each callData.callsPerType}}\n    <div id=\"callsPerType\">\n        <div class=\"theader\">{{items.0.targetPattern.name}}</div>\n        <div class=\"table\">\n            <div class=\"tbody\">\n                <div class=\"tr\">\n                    <div class=\"th\">Fecha</div>\n                    <div class=\"th\">Destino</div>\n                    <div class=\"th\">Duración</div>\n                    <div class=\"th\">Plan</div>\n                    <div class=\"th\">Precio</div>\n                </div>\n                {{#each items}}\n                <div class=\"tr\">\n                    <div class=\"td white\">{{calldate}}</div>\n                    <div class=\"td white\">{{dst}}</div>\n                    <div class=\"td white\">{{durationFormatted}}</div>\n                    <div class=\"td white\">{{pricingPlan.name}}</div>\n                    <div class=\"td white\">{{price}} {{currency}}</div>\n                </div>\n                {{/each}}\n            </div>\n        </div>\n    </div>\n    {{/each}}\n</body>\n</html>\n','<!DOCTYPE HTML>\n<html>\n<head>\n    <style>\n        body {\n            font-size: 11px;\n            font-family: Helvetica Neue,Helvetica,Arial,sans-serif;\n            padding-top: 45px;\n            border-bottom: 1px solid red;\n            margin: 45px 8px 0;\n        }\n        .bold {\n            font-weight: bold!important;\n        }\n        .center {\n            text-align: center!important;\n        }\n        .left {\n            float: left!important;\n        }\n        #header {\n            text-align: right;\n            height: 50px;\n        }\n        #header img {\n            float: left;\n            height: 30px;\n        }\n        #header p {\n            margin: 0;\n        }\n        #header .redLine {\n            border-color: red;\n            border-width: 0 0 1px 0;\n        }\n    </style>\n    <meta charset=\"UTF-8\">\n</head>\n<body>\n<div id=\"header\">\n    <div>\n        <img src=\"{{brand.logoPath}}\">\n        <div>\n            <p class=\"bold\">{{brand.name}}</p>\n            <p class=\"bold\">{{brand.invoice.postalAddress}}, {{brand.invoice.postalCode}} {{brand.invoice.town}}, {{brand.invoice.province}} </p>\n            <p>NIF / CIF: {{brand.invoice.nif}}</p>\n        </div>\n        <div class=\"redLine\">\n        </div>\n    </div>\n</div>\n</body>\n</html>\n','<!DOCTYPE HTML>\n<html>\n   <head>\n       <style>\n           #registryData {\n              border-top: 1px solid red;\n              border-bottom: 1px solid red;\n              line-height: 18px;\n              font-size: 8px;\n              padding: 3px 0;\n              text-align: center;\n           }\n           #footer {\n              padding-bottom: 20px;\n              text-align: right;\n              font-size: 14px;\n              font-weith:bold;\n           }\n       </style>\n       <meta charset=\"UTF-8\">\n   </head>\n   <body>\n     <p id=\"registryData\">\n        {{brand.invoice.registryData}}\n     </p>\n     <div id=\"footer\">\n       <p>\n         <span id=\"page\"></span>\n         / <span id=\"topage\"></span>\n       </p>\n     </div>\n    <script>\n      var vars = {};\n      var query_strings_from_url = document.location.search.substring(1).split(\'&\');\n      for (var query_string in query_strings_from_url) {\n          if (query_strings_from_url.hasOwnProperty(query_string)) {\n              var temp_var = query_strings_from_url[query_string].split(\'=\', 2);\n              vars[temp_var[0]] = decodeURI(temp_var[1]);\n          }\n      }\n      document.getElementById(\'page\').innerHTML = vars.page;\n      document.getElementById(\'topage\').innerHTML = vars.topage;\n    </script>\n    </body>\n</html>\n',NULL);
 /*!40000 ALTER TABLE `InvoiceTemplates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2630,7 +2718,6 @@ CREATE TABLE `MatchLists` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `listName` (`brandId`,`companyId`,`name`),
   KEY `IDX_BAF072182480E723` (`companyId`),
-  KEY `IDX_BAF072189CBEC244` (`brandId`),
   CONSTRAINT `FK_BAF072189CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `MatchList_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -2756,7 +2843,6 @@ CREATE TABLE `NotificationTemplatesContents` (
   `bodyType` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'text/plain' COMMENT '[enum:text/plain|text/html]',
   PRIMARY KEY (`id`),
   UNIQUE KEY `notificationTemplateContent_language_unique` (`notificationTemplateId`,`languageId`),
-  KEY `IDX_AD99291D1333F77D` (`notificationTemplateId`),
   KEY `IDX_AD99291D940D8C7E` (`languageId`),
   CONSTRAINT `FK_AD99291D1333F77D` FOREIGN KEY (`notificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_AD99291D940D8C7E` FOREIGN KEY (`languageId`) REFERENCES `Languages` (`id`) ON DELETE SET NULL
@@ -2788,7 +2874,6 @@ CREATE TABLE `OutgoingDDIRules` (
   `forcedDDIId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `outgoingDdiRule_company_name` (`companyId`,`name`),
-  KEY `IDX_C4795A7C2480E723` (`companyId`),
   KEY `IDX_C4795A7CC85EF10` (`forcedDDIId`),
   CONSTRAINT `OutgoingDDIRules_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `OutgoingDDIRules_ibfk_2` FOREIGN KEY (`forcedDDIId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL
@@ -2824,7 +2909,6 @@ CREATE TABLE `OutgoingDDIRulesPatterns` (
   UNIQUE KEY `patternPriority` (`outgoingDDIRuleId`,`priority`),
   KEY `IDX_A4399FB2283E7346` (`matchListId`),
   KEY `IDX_A4399FB2C85EF10` (`forcedDDIId`),
-  KEY `IDX_A4399FB2FC6BB9C8` (`outgoingDDIRuleId`),
   CONSTRAINT `OutgoingDDIRulesPatterns_ibfk_1` FOREIGN KEY (`outgoingDDIRuleId`) REFERENCES `OutgoingDDIRules` (`id`) ON DELETE CASCADE,
   CONSTRAINT `OutgoingDDIRulesPatterns_ibfk_2` FOREIGN KEY (`matchListId`) REFERENCES `MatchLists` (`id`) ON DELETE CASCADE,
   CONSTRAINT `OutgoingDDIRulesPatterns_ibfk_3` FOREIGN KEY (`forcedDDIId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL
@@ -2863,6 +2947,7 @@ CREATE TABLE `OutgoingRouting` (
   `forceClid` tinyint(1) unsigned DEFAULT '0',
   `clid` varchar(25) DEFAULT NULL,
   `clidCountryId` int(10) unsigned DEFAULT NULL,
+  `stopper` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_569314722480E723` (`companyId`),
   KEY `IDX_569314729CBEC244` (`brandId`),
@@ -2903,7 +2988,6 @@ CREATE TABLE `OutgoingRoutingRelCarriers` (
   `carrierId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `outgoingRoutingRelCarrier_carrier` (`outgoingRoutingId`,`carrierId`),
-  KEY `IDX_BD8A311D3CDE892` (`outgoingRoutingId`),
   KEY `IDX_BD8A311D6709B1C` (`carrierId`),
   CONSTRAINT `FK_BD8A311D3CDE892` FOREIGN KEY (`outgoingRoutingId`) REFERENCES `OutgoingRouting` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_BD8A311D6709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE CASCADE
@@ -3001,6 +3085,35 @@ INSERT INTO `ProxyTrunks` VALUES (1,'proxytrunks','127.0.0.1');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `ProxyTrunksRelBrands`
+--
+
+DROP TABLE IF EXISTS `ProxyTrunksRelBrands`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ProxyTrunksRelBrands` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `brandId` int(10) unsigned NOT NULL,
+  `proxyTrunkId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `proxyTrunkRelBrand_proxyTrunk_brand` (`proxyTrunkId`,`brandId`),
+  KEY `IDX_3ECFAB9CBEC244` (`brandId`),
+  CONSTRAINT `FK_3ECFAB7504E30F` FOREIGN KEY (`proxyTrunkId`) REFERENCES `ProxyTrunks` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_3ECFAB9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ProxyTrunksRelBrands`
+--
+
+LOCK TABLES `ProxyTrunksRelBrands` WRITE;
+/*!40000 ALTER TABLE `ProxyTrunksRelBrands` DISABLE KEYS */;
+INSERT INTO `ProxyTrunksRelBrands` VALUES (1,1,1);
+/*!40000 ALTER TABLE `ProxyTrunksRelBrands` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ProxyUsers`
 --
 
@@ -3024,6 +3137,40 @@ LOCK TABLES `ProxyUsers` WRITE;
 /*!40000 ALTER TABLE `ProxyUsers` DISABLE KEYS */;
 INSERT INTO `ProxyUsers` VALUES (1,'proxyusers','127.0.0.1');
 /*!40000 ALTER TABLE `ProxyUsers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `PublicEntities`
+--
+
+DROP TABLE IF EXISTS `PublicEntities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `PublicEntities` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `iden` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `fqdn` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `platform` tinyint(1) NOT NULL DEFAULT '0',
+  `brand` tinyint(1) NOT NULL DEFAULT '0',
+  `client` tinyint(1) NOT NULL DEFAULT '0',
+  `name_en` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name_es` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name_ca` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name_it` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `iden` (`iden`),
+  UNIQUE KEY `fqdn` (`fqdn`)
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `PublicEntities`
+--
+
+LOCK TABLES `PublicEntities` WRITE;
+/*!40000 ALTER TABLE `PublicEntities` DISABLE KEYS */;
+INSERT INTO `PublicEntities` VALUES (1,'_RatingPlanPrices','Model\\RatingPlanPrices',0,0,1,'Prices','Precios','Precios','Prices'),(2,'kam_users_cdrs','Ivoz\\Kam\\Domain\\Model\\UsersCdr\\UsersCdr',0,0,1,'Call registry','Registro de llamadas','Registro de llamadas','Call registry'),(3,'BillableCalls','Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall',1,1,1,'External calls','Llamadas externas','Llamadas externas','External calls'),(4,'Calendars','Ivoz\\Provider\\Domain\\Model\\Calendar\\Calendar',0,0,1,'Calendars','Calendarios','Calendarios','Calendars'),(5,'CalendarPeriods','Ivoz\\Provider\\Domain\\Model\\CalendarPeriod\\CalendarPeriod',0,0,1,'Calendar Periods','Eventos de Horario','Eventos de Horario','Calendar Periods'),(6,'CalendarPeriodsRelSchedules','Ivoz\\Provider\\Domain\\Model\\CalendarPeriodsRelSchedule\\CalendarPeriodsRelSchedule',0,0,1,'Calendar Periods <-> Schedules','Eventos de Horario <-> Horarios','Eventos de Horario <-> Horarios','Calendar Periods <-> Schedules'),(7,'CallACL','Ivoz\\Provider\\Domain\\Model\\CallAcl\\CallAcl',0,0,1,'Call ACLs','Permisos llamada','Permisos llamada','Call ACLs'),(8,'CallAclRelMatchLists','Ivoz\\Provider\\Domain\\Model\\CallAclRelMatchList\\CallAclRelMatchList',0,0,1,'Call ACL Patterns','Patrón permisos llamada','Patrón permisos llamada','Call ACL Patterns'),(9,'CallCsvSchedulers','Ivoz\\Provider\\Domain\\Model\\CallCsvScheduler\\CallCsvScheduler',0,1,1,'Call CSV schedulers','CSVs programados','CSVs programados','Call CSV schedulers'),(10,'CallCsvReports','Ivoz\\Provider\\Domain\\Model\\CallCsvReport\\CallCsvReport',0,1,1,'Call CSV reports','CSVs de llamadas','CSVs de llamadas','Call CSV reports'),(11,'CallForwardSettings','Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting',0,0,1,'Call forward settings','Opciones de desvío','Opciones de desvío','Call forward settings'),(12,'Companies','Ivoz\\Provider\\Domain\\Model\\Company\\Company',1,1,1,'Clients','Clientes','Clientes','Clients'),(13,'CompanyServices','Ivoz\\Provider\\Domain\\Model\\CompanyService\\CompanyService',0,0,1,'Client services','Servicios de cliente','Servicios de cliente','Client services'),(14,'ConditionalRoutes','Ivoz\\Provider\\Domain\\Model\\ConditionalRoute\\ConditionalRoute',0,0,1,'Conditional Routes','Rutas condicionales','Rutas condicionales','Conditional Routes'),(15,'ConditionalRoutesConditions','Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesCondition\\ConditionalRoutesCondition',0,0,1,'Conditional Route Conditions','Condiciones de Rutas Condicionales','Condiciones de Rutas Condicionales','Conditional Route Conditions'),(16,'ConditionalRoutesConditionsRelMatchLists','Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelMatchlist\\ConditionalRoutesConditionsRelMatchlist',0,0,1,'Conditional Routes <-> Match Lists','Rutas condicionales <-> Listas de coincidencia','Rutas condicionales <-> Listas de coincidencia','Conditional Routes <-> Match Lists'),(17,'ConditionalRoutesConditionsRelSchedules','Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelSchedule\\ConditionalRoutesConditionsRelSchedule',0,0,1,'Conditional Routes <-> Schedules','Rutas condicionales <-> Horarios','Rutas condicionales <-> Horarios','Conditional Routes <-> Schedules'),(18,'ConditionalRoutesConditionsRelCalendars','Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelCalendar\\ConditionalRoutesConditionsRelCalendar',0,0,1,'Conditional Routes <-> Calendars','Rutas condicionales <-> Calendarios','Rutas condicionales <-> Calendarios','Conditional Routes <-> Calendars'),(19,'ConditionalRoutesConditionsRelRouteLocks','Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelRouteLock\\ConditionalRoutesConditionsRelRouteLock',0,0,1,'Conditional Routes <-> Route Locks','Rutas condicionales <-> Candados','Rutas condicionales <-> Candados','Conditional Routes <-> Route Locks'),(20,'ConferenceRooms','Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom',0,0,1,'Conference rooms','Salas de conferencias','Salas de conferencias','Conference rooms'),(21,'Countries','Ivoz\\Provider\\Domain\\Model\\Country\\Country',1,1,1,'Countries','Países','Países','Countries'),(22,'DDIs','Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi',0,1,1,'DDIs','DDIs','DDIs','DDIs'),(23,'Extensions','Ivoz\\Provider\\Domain\\Model\\Extension\\Extension',0,0,1,'Extensions','Extensiones','Extensiones','Extensions'),(24,'ExternalCallFilters','Ivoz\\Provider\\Domain\\Model\\ExternalCallFilter\\ExternalCallFilter',0,0,1,'External call filters','Filtros de entrada externo','Filtros de entrada externo','External call filters'),(25,'ExternalCallFilterBlackLists','Ivoz\\Provider\\Domain\\Model\\ExternalCallFilterBlackList\\ExternalCallFilterBlackList',0,0,1,'External call filters <-> Black Lists','Filtros de entrada externo <-> Listas negras','Filtros de entrada externo <-> Listas negras','External call filters <-> Black Lists'),(26,'ExternalCallFilterRelCalendars','Ivoz\\Provider\\Domain\\Model\\ExternalCallFilterRelCalendar\\ExternalCallFilterRelCalendar',0,0,1,'External call filters <-> Calendars','Filtros de entrada externo <-> Calendarios','Filtros de entrada externo <-> Calendarios','External call filters <-> Calendars'),(27,'ExternalCallFilterRelSchedules','Ivoz\\Provider\\Domain\\Model\\ExternalCallFilterRelSchedule\\ExternalCallFilterRelSchedule',0,0,1,'External call filters <-> Schedules','Filtros de entrada externo <-> Horarios','Filtros de entrada externo <-> Horarios','External call filters <-> Schedules'),(28,'ExternalCallFilterWhiteLists','Ivoz\\Provider\\Domain\\Model\\ExternalCallFilterWhiteList\\ExternalCallFilterWhiteList',0,0,1,'External call filters <-> White Lists','Filtros de entrada externo <-> Listas blancas','Filtros de entrada externo <-> Listas blancas','External call filters <-> White Lists'),(29,'FaxesInOut','Ivoz\\Provider\\Domain\\Model\\FaxesInOut\\FaxesInOut',0,0,1,'Faxfiles','Ficheros de fax','Ficheros de fax','Faxfiles'),(30,'Faxes','Ivoz\\Provider\\Domain\\Model\\Fax\\Fax',0,1,1,'Faxes','Faxes','Faxes','Faxes'),(31,'Features','Ivoz\\Provider\\Domain\\Model\\Feature\\Feature',1,1,1,'Features','Funcionalidades','Funcionalidades','Features'),(32,'FeaturesRelCompanies','Ivoz\\Provider\\Domain\\Model\\FeaturesRelCompany\\FeaturesRelCompany',0,1,1,'Features <-> Clients','Funcionalidades <-> Clientes','Funcionalidades <-> Clientes','Features <-> Clients'),(33,'Friends','Ivoz\\Provider\\Domain\\Model\\Friend\\Friend',0,1,1,'Friends','Friends','Friends','Friends'),(34,'FriendsPatterns','Ivoz\\Provider\\Domain\\Model\\FriendsPattern\\FriendsPattern',0,0,1,'Friend Patterns','Patrones de Friend','Patrones de Friend','Friend Patterns'),(35,'HolidayDates','Ivoz\\Provider\\Domain\\Model\\HolidayDate\\HolidayDate',0,0,1,'Holiday dates','Festivos','Festivos','Holiday dates'),(36,'HuntGroups','Ivoz\\Provider\\Domain\\Model\\HuntGroup\\HuntGroup',0,0,1,'Hunt Groups','Grupos de salto','Grupos de salto','Hunt Groups'),(37,'HuntGroupsRelUsers','Ivoz\\Provider\\Domain\\Model\\HuntGroupsRelUser\\HuntGroupsRelUser',0,0,1,'Hunt Groups <-> Users','Grupos de salto <-> Usuarios','Grupos de salto <-> Usuarios','Hunt Groups <-> Users'),(38,'Invoices','Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice',1,1,1,'Invoices','Facturas','Facturas','Invoices'),(39,'IVREntries','Ivoz\\Provider\\Domain\\Model\\IvrEntry\\IvrEntry',0,0,1,'IVR entries','Entradas IVR','Entradas IVR','IVR entries'),(40,'IVRs','Ivoz\\Provider\\Domain\\Model\\Ivr\\Ivr',0,0,1,'IVRs','IVRs','IVRs','IVRs'),(41,'IVRExcludedExtensions','Ivoz\\Provider\\Domain\\Model\\IvrExcludedExtension\\IvrExcludedExtension',0,0,1,'IVR Excluded Extensions','IVR Extensiones excluidas','IVR Extensiones excluidas','IVR Excluded Extensions'),(42,'Languages','Ivoz\\Provider\\Domain\\Model\\Language\\Language',1,1,1,'Languages','Idiomas','Idiomas','Languages'),(43,'Locutions','Ivoz\\Provider\\Domain\\Model\\Locution\\Locution',0,0,1,'Locutions','Locuciones','Locuciones','Locutions'),(44,'NotificationTemplates','Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate',0,1,1,'Notification templates','Plantillas de notificación','Plantillas de notificación','Notification templates'),(45,'MatchLists','Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList',0,0,1,'Match Lists','Listas de ','Listas de ','Match Lists'),(46,'MatchListPatterns','Ivoz\\Provider\\Domain\\Model\\MatchListPattern\\MatchListPattern',0,0,1,'Match List Patterns','Patrones lista de coincidencia','Patrones lista de coincidencia','Match List Patterns'),(47,'MusicOnHold','Ivoz\\Provider\\Domain\\Model\\MusicOnHold\\MusicOnHold',0,0,1,'Musics on Hold','Músicas en espera','Músicas en espera','Musics on Hold'),(48,'OutgoingDDIRules','Ivoz\\Provider\\Domain\\Model\\OutgoingDdiRule\\OutgoingDdiRule',0,0,1,'Outgoing DDI Rules','Reglas DDI de salida','Reglas DDI de salida','Outgoing DDI Rules'),(49,'OutgoingDDIRulesPatterns','Ivoz\\Provider\\Domain\\Model\\OutgoingDdiRulesPattern\\OutgoingDdiRulesPattern',0,0,1,'Outgoing DDI Rule Patterns','Patrones de regla DDI de salida','Patrones de regla DDI de salida','Outgoing DDI Rule Patterns'),(50,'PickUpGroups','Ivoz\\Provider\\Domain\\Model\\PickUpGroup\\PickUpGroup',0,0,1,'Pick up groups','Grupos de captura','Grupos de captura','Pick up groups'),(51,'PickUpRelUsers','Ivoz\\Provider\\Domain\\Model\\PickUpRelUser\\PickUpRelUser',0,0,1,'Pick up <->> users','Grupos de captura <-> Usuarios','Grupos de captura <-> Usuarios','Pick up <->> users'),(52,'QueueMembers','Ivoz\\Provider\\Domain\\Model\\QueueMember\\QueueMember',0,0,1,'Queue Members','Miembros de cola','Miembros de cola','Queue Members'),(53,'Queues','Ivoz\\Provider\\Domain\\Model\\Queue\\Queue',0,0,1,'Queues','Colas','Colas','Queues'),(54,'RatingPlanGroups','Ivoz\\Provider\\Domain\\Model\\RatingPlanGroup\\RatingPlanGroup',1,1,1,'Rating plans groups','Grupos de planes de precios','Grupos de planes de precios','Rating plans groups'),(55,'RatingProfiles','Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile',0,1,1,'Rating Plans','Planes de precios','Planes de precios','Rating Plans'),(56,'Recordings','Ivoz\\Provider\\Domain\\Model\\Recording\\Recording',0,0,1,'Recordings','Grabaciones','Grabaciones','Recordings'),(57,'ResidentialDevices','Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice',0,1,1,'Residential Devices','Dispositivo residencial','Dispositivo residencial','Residential Devices'),(58,'RetailAccounts','Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount',0,1,1,'Retail Accounts','Cuentas Retail','Cuentas Retail','Retail Accounts'),(59,'RouteLocks','Ivoz\\Provider\\Domain\\Model\\RouteLock\\RouteLock',0,0,1,'Route Locks','Candados','Candados','Route Locks'),(60,'Schedules','Ivoz\\Provider\\Domain\\Model\\Schedule\\Schedule',0,0,1,'Schedules','Horarios','Horarios','Schedules'),(61,'Services','Ivoz\\Provider\\Domain\\Model\\Service\\Service',1,1,1,'Services','Servicios','Servicios','Services'),(62,'Terminals','Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal',0,1,1,'Terminals','Terminales','Terminales','Terminals'),(63,'TerminalModels','Ivoz\\Provider\\Domain\\Model\\TerminalModel\\TerminalModel',1,0,1,'Terminal models','Modelos de Terminales','Modelos de Terminales','Terminal models'),(64,'Timezones','Ivoz\\Provider\\Domain\\Model\\Timezone\\Timezone',1,1,1,'Time zones','Zonas Horarias','Zonas Horarias','Time zones'),(65,'TransformationRuleSets','Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet',0,1,1,'Numeric transformations','Transformaciones numéricas','Transformaciones numéricas','Numeric transformations'),(66,'Users','Ivoz\\Provider\\Domain\\Model\\User\\User',0,1,1,'Users','Usuarios','Usuarios','Users'),(67,'_ActiveCalls','Model\\ActiveCalls',1,1,0,'Active calls','Llamadas activas','Llamadas activas','Active calls'),(68,'_DdiProviderRegistrationStatus','Ivoz\\Kam\\Domain\\Model\\TrunksUacreg\\DdiProviderRegistrationStatus',0,1,0,'Ddi provider registration status','Estado de registro de proveedores DDIs','Estado de registro de proveedores DDIs','Ddi provider registration status'),(69,'_RegistrationStatus','Ivoz\\Kam\\Domain\\Model\\UsersLocation\\RegistrationStatus',0,1,0,'Registration status','Estado de registro','Estado de registro','Registration status'),(70,'kam_users_address','Ivoz\\Kam\\Domain\\Model\\UsersAddress\\UsersAddress',0,1,0,'Authorized sources','Redes autorizadas','Redes autorizadas','Authorized sources'),(71,'Administrators','Ivoz\\Provider\\Domain\\Model\\Administrator\\Administrator',1,1,0,'Administrators','Administradores','Administradores','Administrators'),(72,'BalanceNotifications','Ivoz\\Provider\\Domain\\Model\\BalanceNotification\\BalanceNotification',0,1,0,'Balance Notifications','Notificaciones Saldo','Notificaciones Saldo','Balance Notifications'),(74,'Brands','Ivoz\\Provider\\Domain\\Model\\Brand\\Brand',1,1,0,'Brands','Marcas','Marcas','Brands'),(76,'BrandServices','Ivoz\\Provider\\Domain\\Model\\BrandService\\BrandService',1,1,0,'Brand services','Servicios de marca','Servicios de marca','Brand services'),(79,'Carriers','Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier',0,1,0,'Carriers','Carriers','Carriers','Carriers'),(80,'CarrierServers','Ivoz\\Provider\\Domain\\Model\\CarrierServer\\CarrierServer',0,1,0,'Carrier servers','Servidores de Carrier','Servidores de Carrier','Carrier servers'),(83,'Currencies','Ivoz\\Provider\\Domain\\Model\\Currency\\Currency',0,1,0,'Currencies','Divisas','Divisas','Currencies'),(85,'DDIProviderAddresses','Ivoz\\Provider\\Domain\\Model\\DdiProviderAddress\\DdiProviderAddress',0,1,0,'DDI Provider Addresses','Direcciones IP Proveedor','Direcciones IP Proveedor','DDI Provider Addresses'),(86,'DDIProviders','Ivoz\\Provider\\Domain\\Model\\DdiProvider\\DdiProvider',0,1,0,'DDI Providers','Proveedores DDIs','Proveedores DDIs','DDI Providers'),(87,'DDIProviderRegistrations','Ivoz\\Provider\\Domain\\Model\\DdiProviderRegistration\\DdiProviderRegistration',0,1,0,'DDI Provider Registrations','Registros Proveedor','Registros Proveedor','DDI Provider Registrations'),(88,'Destinations','Ivoz\\Provider\\Domain\\Model\\Destination\\Destination',1,1,0,'Destinations','Destinos','Destinos','Destinations'),(89,'DestinationRates','Ivoz\\Provider\\Domain\\Model\\DestinationRate\\DestinationRate',0,1,0,'Rates','Tarifas','Tarifas','Rates'),(90,'DestinationRateGroups','Ivoz\\Provider\\Domain\\Model\\DestinationRateGroup\\DestinationRateGroup',0,1,0,'Destination rates','Precios destinos','Precios destinos','Destination rates'),(91,'Domains','Ivoz\\Provider\\Domain\\Model\\Domain\\Domain',1,1,0,'Domains','Dominios','Dominios','Domains'),(93,'FeaturesRelBrands','Ivoz\\Provider\\Domain\\Model\\FeaturesRelBrand\\FeaturesRelBrand',1,1,0,'Features <-> Brands','Funcionalidades <-> Marcas','Funcionalidades <-> Marcas','Features <-> Brands'),(95,'FixedCosts','Ivoz\\Provider\\Domain\\Model\\FixedCost\\FixedCost',0,1,0,'Fixed costs','Costes fijos','Costes fijos','Fixed costs'),(96,'FixedCostsRelInvoices','Ivoz\\Provider\\Domain\\Model\\FixedCostsRelInvoice\\FixedCostsRelInvoice',0,1,0,'Fixed costs <-> Invoices','Costes fijos <-> Facturas','Costes fijos <-> Facturas','Fixed costs <-> Invoices'),(97,'FixedCostsRelInvoiceSchedulers','Ivoz\\Provider\\Domain\\Model\\FixedCostsRelInvoiceScheduler\\FixedCostsRelInvoiceScheduler',0,1,0,'Fixed costs <-> Invoice schedulers','Costes fijos <-> Planificadores de facturas','Costes fijos <-> Planificadores de facturas','Fixed costs <-> Invoice schedulers'),(100,'InvoiceNumberSequences','Ivoz\\Provider\\Domain\\Model\\InvoiceNumberSequence\\InvoiceNumberSequence',0,1,0,'Invoice number sequences','Numeraciones de facturas','Numeraciones de facturas','Invoice number sequences'),(101,'InvoiceSchedulers','Ivoz\\Provider\\Domain\\Model\\InvoiceScheduler\\InvoiceScheduler',0,1,0,'Invoice schedulers','Planificadores de facturas','Planificadores de facturas','Invoice schedulers'),(102,'InvoiceTemplates','Ivoz\\Provider\\Domain\\Model\\InvoiceTemplate\\InvoiceTemplate',1,1,0,'Invoice templates','Plantillas de facturas','Plantillas de facturas','Invoice templates'),(104,'NotificationTemplatesContents','Ivoz\\Provider\\Domain\\Model\\NotificationTemplateContent\\NotificationTemplateContent',0,1,0,'Notification contents','Contenidos de notificaciones','Contenidos de notificaciones','Notification contents'),(106,'OutgoingRouting','Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',0,1,0,'Outgoing routings','Rutas salientes','Rutas salientes','Outgoing routings'),(108,'RatingPlans','Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan',0,1,0,'Rates','Precios','Precios','Rates'),(112,'RoutingPatternGroups','Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup',0,1,0,'Routing pattern groups','Grupos de patrones de ruta','Grupos de patrones de ruta','Routing pattern groups'),(113,'RoutingPatternGroupsRelPatterns','Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroupsRelPattern\\RoutingPatternGroupsRelPattern',0,1,0,'Routing pattern groups rel patterns','Patrones de destino','Patrones de destino','Routing pattern groups rel patterns'),(114,'RoutingPatterns','Ivoz\\Provider\\Domain\\Model\\RoutingPattern\\RoutingPattern',0,1,0,'Routing patterns','Patrones de ruta','Patrones de ruta','Routing patterns'),(115,'RoutingTags','Ivoz\\Provider\\Domain\\Model\\RoutingTag\\RoutingTag',0,1,0,'Routing Tags','Etiquetas de ruta','Etiquetas de ruta','Routing Tags'),(117,'SpecialNumbers','Ivoz\\Provider\\Domain\\Model\\SpecialNumber\\SpecialNumber',1,1,0,'Special Numbers','Números especiales','Números especiales','Special Numbers'),(121,'TransformationRules','Ivoz\\Provider\\Domain\\Model\\TransformationRule\\TransformationRule',0,1,0,'Transformation Rules','Transformaciones numéricas','Transformaciones numéricas','Transformation Rules'),(122,'WebPortals','Ivoz\\Provider\\Domain\\Model\\WebPortal\\WebPortal',1,1,0,'Web Portals','Portales Web','Portales Web','Web Portals'),(125,'kam_rtpengine','Ivoz\\Kam\\Domain\\Model\\Rtpengine\\Rtpengine',1,0,0,'Media relays','Servidores de media','Servidores de media','Media relays'),(126,'ApplicationServers','Ivoz\\Provider\\Domain\\Model\\ApplicationServer\\ApplicationServer',1,0,0,'Application Servers','Servidores de Aplicación','Servidores de Aplicación','Application Servers'),(139,'MediaRelaySets','Ivoz\\Provider\\Domain\\Model\\MediaRelaySet\\MediaRelaySet',1,0,0,'Media relay sets','Servidores de Media','Servidores de Media','Media relay sets'),(140,'ProxyTrunks','Ivoz\\Provider\\Domain\\Model\\ProxyTrunk\\ProxyTrunk',1,1,0,'Proxies Trunks','Proxies de Salida','Proxies de Salida','Proxies Trunks'),(141,'ProxyUsers','Ivoz\\Provider\\Domain\\Model\\ProxyUser\\ProxyUser',1,0,0,'Proxies Users','Proxies de Usuarios','Proxies de Usuarios','Proxies Users'),(145,'TerminalManufacturers','Ivoz\\Provider\\Domain\\Model\\TerminalManufacturer\\TerminalManufacturer',1,0,0,'Terminal manufacturers','Fabricantes de Terminales','Fabricantes de Terminales','Terminal manufacturers'),(149,'BannedAddresses','IvozProviderDomainModelBannedAddressBannedAddress',1,1,0,'Banned Addresses','Direcciones bloqueadas','Direcciones bloqueadas','Banned Addresses'),(150,'ProxyTrunksRelBrands','Ivoz\\Provider\\Domain\\Model\\ProxyTrunksRelBrand\\ProxyTrunksRelBrand',1,0,0,'Proxy Trunks <-> Brand','Proxy de Salida <-> Marca','Proxy de Salida <-> Marca','Proxy Trunks <-> Brand'),(151,'_RegistrationSummary','Model\\RegistrationSummary',0,1,1,'Registration summary','Resumen de registros','Resumen de registros','Registration summary');
+/*!40000 ALTER TABLE `PublicEntities` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -3086,9 +3233,9 @@ CREATE TABLE `Queues` (
   `memberCallTimeout` int(11) DEFAULT NULL,
   `strategy` enum('ringall','leastrecent','fewestcalls','random','rrmemory','linear','wrandom','rrordered') DEFAULT NULL,
   `weight` int(11) DEFAULT NULL,
+  `preventMissedCalls` int(10) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `company_queuename` (`companyId`,`name`),
-  KEY `IDX_C86607A02480E723` (`companyId`),
   KEY `IDX_C86607A02CAE121C` (`periodicAnnounceLocutionId`),
   KEY `IDX_C86607A0FE276E1B` (`timeoutLocutionId`),
   KEY `IDX_C86607A0535464FB` (`timeoutExtensionId`),
@@ -3180,7 +3327,6 @@ CREATE TABLE `RatingPlans` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `ratingPlan_ratingPlanGroup_weight` (`ratingPlanGroupId`,`weight`),
   KEY `IDX_EB67DB9CC11683D9` (`destinationRateGroupId`),
-  KEY `IDX_EB67DB9C6A765F36` (`ratingPlanGroupId`),
   CONSTRAINT `FK_4CC2BCABC11683D9` FOREIGN KEY (`destinationRateGroupId`) REFERENCES `DestinationRateGroups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_EB67DB9C6A765F36` FOREIGN KEY (`ratingPlanGroupId`) REFERENCES `RatingPlanGroups` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -3211,7 +3357,6 @@ CREATE TABLE `RatingProfiles` (
   `carrierId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ratingProfile_company_plan_tag` (`companyId`,`ratingPlanGroupId`,`routingTagId`,`activationTime`),
-  KEY `IDX_282687BB2480E723` (`companyId`),
   KEY `IDX_282687BBA48EA1F0` (`routingTagId`),
   KEY `IDX_282687BB6709B1C` (`carrierId`),
   KEY `IDX_282687BB6A765F36` (`ratingPlanGroupId`),
@@ -3280,7 +3425,7 @@ CREATE TABLE `ResidentialDevices` (
   `name` varchar(65) NOT NULL,
   `domainId` int(10) unsigned DEFAULT NULL,
   `description` varchar(500) NOT NULL DEFAULT '',
-  `transport` varchar(25) NOT NULL COMMENT '[enum:udp|tcp|tls]',
+  `transport` varchar(25) DEFAULT NULL COMMENT '[enum:udp|tcp|tls]',
   `ip` varchar(50) DEFAULT NULL,
   `port` smallint(5) unsigned DEFAULT NULL,
   `auth_needed` varchar(255) NOT NULL DEFAULT 'yes',
@@ -3335,7 +3480,7 @@ CREATE TABLE `RetailAccounts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(65) NOT NULL,
   `description` varchar(500) NOT NULL DEFAULT '',
-  `transport` varchar(25) NOT NULL COMMENT '[enum:udp|tcp|tls]',
+  `transport` varchar(25) DEFAULT NULL COMMENT '[enum:udp|tcp|tls]',
   `ip` varchar(50) DEFAULT NULL,
   `port` smallint(5) unsigned DEFAULT NULL,
   `password` varchar(64) DEFAULT NULL,
@@ -3442,7 +3587,6 @@ CREATE TABLE `RoutingPatternGroupsRelPatterns` (
   `routingPatternGroupId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `rel` (`routingPatternId`,`routingPatternGroupId`),
-  KEY `IDX_C90A69B46D661974` (`routingPatternId`),
   KEY `IDX_C90A69B486CE18CB` (`routingPatternGroupId`),
   CONSTRAINT `RoutingPatternGroupsRelPatterns_ibfk_1` FOREIGN KEY (`routingPatternId`) REFERENCES `RoutingPatterns` (`id`) ON DELETE CASCADE,
   CONSTRAINT `RoutingPatternGroupsRelPatterns_ibfk_2` FOREIGN KEY (`routingPatternGroupId`) REFERENCES `RoutingPatternGroups` (`id`) ON DELETE CASCADE
@@ -3578,7 +3722,7 @@ CREATE TABLE `Services` (
   `defaultCode` varchar(3) NOT NULL,
   `extraArgs` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3587,8 +3731,39 @@ CREATE TABLE `Services` (
 
 LOCK TABLES `Services` WRITE;
 /*!40000 ALTER TABLE `Services` DISABLE KEYS */;
-INSERT INTO `Services` VALUES (1,'DirectPickUp','Direct Pickup','Captura Directa','Captura Directa','Direct Pickup','Add the capture extension after the service code','Añada la extensión a capturar tras el código de servicio','Añada la extensión a capturar tras el código de servicio','Add the capture extension after the service code','94',1),(2,'GroupPickUp','Group Pickup','Captura de Grupo','Captura de Grupo','Group Pickup','Captura la llamada de un miembro de los grupos de captura del usuario','Captura la llamada de un miembro de los grupos de captura del usuario','Captura la llamada de un miembro de los grupos de captura del usuario','Captura la llamada de un miembro de los grupos de captura del usuario','95',0),(3,'Voicemail','Check Voicemail','Consultar buzón de voz','Consultar buzón de voz','Check Voicemail','Check and configure the voicemail of the user','Consulta y configura el buzón de voz del usuario','Consulta y configura el buzón de voz del usuario','Check and configure the voicemail of the user','93',1),(4,'RecordLocution','Record Locution','Grabar Locucion','Grabar Locucion','Record Locution','Add the locution code after the service code','Añada el código de locución tras el código de servicio','Añada el código de locución tras el código de servicio','Add the locution code after the service code','00',1),(5,'CloseLock','Close Lock','Cerrar candado','Cerrar candado','Close Lock','Disables a routes with the lock','Deshabilita rutas configuradas con el candado','Deshabilita rutas configuradas con el candado','Disables a routes with the lock','70',1),(6,'OpenLock','Open Lock','Abrir candado','Abrir candado','Open Lock','Enables a routes with the lock','Habilita rutas configuradas con el candado','Habilita rutas configuradas con el candado','Enables a routes with the lock','71',1),(7,'ToggleLock','Toggle Lock','Alternar candado','Alternar candado','Toggle Lock','Switch current lock status','Alterna el estado de un candado','Alterna el estado de un candado','Switch current lock status','72',1);
+INSERT INTO `Services` VALUES (1,'DirectPickUp','Direct Pickup','Captura Directa','Captura Directa','Direct Pickup','Add the capture extension after the service code','Añada la extensión a capturar tras el código de servicio','Añada la extensión a capturar tras el código de servicio','Add the capture extension after the service code','94',1),(2,'GroupPickUp','Group Pickup','Captura de Grupo','Captura de Grupo','Group Pickup','Captura la llamada de un miembro de los grupos de captura del usuario','Captura la llamada de un miembro de los grupos de captura del usuario','Captura la llamada de un miembro de los grupos de captura del usuario','Captura la llamada de un miembro de los grupos de captura del usuario','95',0),(3,'Voicemail','Check Voicemail','Consultar buzón de voz','Consultar buzón de voz','Check Voicemail','Check and configure the voicemail of the user','Consulta y configura el buzón de voz del usuario','Consulta y configura el buzón de voz del usuario','Check and configure the voicemail of the user','93',1),(4,'RecordLocution','Record Locution','Grabar Locucion','Grabar Locucion','Record Locution','Add the locution code after the service code','Añada el código de locución tras el código de servicio','Añada el código de locución tras el código de servicio','Add the locution code after the service code','00',1),(5,'CloseLock','Close Lock','Cerrar candado','Cerrar candado','Close Lock','Disables a routes with the lock','Deshabilita rutas configuradas con el candado','Deshabilita rutas configuradas con el candado','Disables a routes with the lock','70',1),(6,'OpenLock','Open Lock','Abrir candado','Abrir candado','Open Lock','Enables a routes with the lock','Habilita rutas configuradas con el candado','Habilita rutas configuradas con el candado','Enables a routes with the lock','71',1),(7,'ToggleLock','Toggle Lock','Alternar candado','Alternar candado','Toggle Lock','Switch current lock status','Alterna el estado de un candado','Alterna el estado de un candado','Switch current lock status','72',1),(8,'CallForwardInconditional','Inconditional call forward','Desvío incondicional','Desvío incondicional','Inconditional call forward','Enable or disable inconditional call forward','Habilita o deshabilita el desvío incondicional','Habilita o deshabilita el desvío incondicional','Enable or disable inconditional call forward','80',1),(9,'CallForwardBusy','Busy call forward','Desvío si ocupado','Desvío si ocupado','Busy call forward','Enable or disable busy call forward','Habilita o deshabilita el desvío si ocupado','Habilita o deshabilita el desvío si ocupado','Enable or disable busy call forward','81',1),(10,'CallForwardNoAnswer','No answer call forward','Desvío si no contesta','Desvío si no contesta','No answer call forward','Enable or disable no answer call forward','Habilita o deshabilita el desvío si no contesta','Habilita o deshabilita el desvío si no contesta','Enable or disable no answer call forward','82',1),(11,'CallForwardUnreachable','Unreachable call forward','Desvío si inalcanzable','Desvío si inalcanzable','Unreachable call forward','Enable or disable unreachable call forward','Habilita o deshabilita el desvío si inalcanzable','Habilita o deshabilita el desvío si inalcanzable','Enable or disable unreachable call forward','83',1);
 /*!40000 ALTER TABLE `Services` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `SpecialNumbers`
+--
+
+DROP TABLE IF EXISTS `SpecialNumbers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `SpecialNumbers` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `number` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `numberE164` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `disableCDR` int(10) unsigned NOT NULL DEFAULT '1',
+  `brandId` int(10) unsigned DEFAULT NULL,
+  `countryId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_8D0323969CBEC244` (`brandId`),
+  KEY `IDX_8D032396FBA2A6B4` (`countryId`),
+  CONSTRAINT `FK_8D0323969CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_8D032396FBA2A6B4` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `SpecialNumbers`
+--
+
+LOCK TABLES `SpecialNumbers` WRITE;
+/*!40000 ALTER TABLE `SpecialNumbers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `SpecialNumbers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -3980,7 +4155,6 @@ CREATE TABLE `ast_ps_endpoints` (
   `t38_udptl_maxdatagram` int(10) unsigned NOT NULL DEFAULT '1440',
   `t38_udptl_nat` varchar(255) NOT NULL DEFAULT 'no' COMMENT '[enum:yes|no]',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `psEndpoint_id` (`id`),
   KEY `psEndpoint_terminalId` (`terminalId`),
   KEY `psEndpoint_friendId` (`friendId`),
   KEY `psEndpoint_sorcery_idx` (`sorcery_id`),
@@ -4101,7 +4275,6 @@ CREATE TABLE `ast_voicemail` (
   `userId` int(10) unsigned DEFAULT NULL,
   `residentialDeviceId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`uniqueid`),
-  KEY `voicemail_mailbox` (`mailbox`),
   KEY `voicemail__context` (`context`),
   KEY `voicemail_mailbox_context` (`mailbox`,`context`),
   KEY `voicemail_imapuser` (`imapuser`),
@@ -4284,7 +4457,7 @@ CREATE TABLE `kam_trunks_cdrs` (
   `xcallid` varchar(255) DEFAULT NULL,
   `diversion` varchar(64) DEFAULT NULL,
   `bounced` tinyint(1) DEFAULT NULL,
-  `direction` varchar(255) DEFAULT NULL,
+  `direction` varchar(255) DEFAULT NULL COMMENT '[enum:inbound|outbound]',
   `cgrid` varchar(40) DEFAULT NULL,
   `brandId` int(10) unsigned DEFAULT NULL,
   `companyId` int(10) unsigned DEFAULT NULL,
@@ -4292,23 +4465,36 @@ CREATE TABLE `kam_trunks_cdrs` (
   `parsed` tinyint(1) DEFAULT '0',
   `parserScheduledAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
   `retailAccountId` int(10) unsigned DEFAULT NULL,
+  `residentialDeviceId` int(10) unsigned DEFAULT NULL,
+  `userId` int(10) unsigned DEFAULT NULL,
+  `friendId` int(10) unsigned DEFAULT NULL,
+  `faxId` int(10) unsigned DEFAULT NULL,
+  `ddiId` int(10) unsigned DEFAULT NULL,
+  `ddiProviderId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `trunksCdr_callid_direction` (`callid`,`direction`),
   KEY `IDX_92E58EB69CBEC244` (`brandId`),
   KEY `IDX_92E58EB62480E723` (`companyId`),
   KEY `trunksCdr_start_time_idx` (`start_time`),
-  KEY `trunksCdr_end_time_idx` (`end_time`),
-  KEY `trunksCdr_callid_idx` (`callid`),
-  KEY `trunksCdr_xcallid_idx` (`xcallid`),
-  KEY `trunksCdr_direction_idx` (`direction`),
-  KEY `trunksCdr_cgrid_idx` (`cgrid`),
   KEY `IDX_92E58EB66709B1C` (`carrierId`),
   KEY `IDX_92E58EB65EA9D64D` (`retailAccountId`),
   KEY `trunksCdr_parsed_idx` (`parsed`),
-  CONSTRAINT `FK_92E58EB62480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
+  KEY `IDX_92E58EB68B329DCD` (`residentialDeviceId`),
+  KEY `IDX_92E58EB664B64DCC` (`userId`),
+  KEY `IDX_92E58EB6893BA339` (`friendId`),
+  KEY `IDX_92E58EB6624C8D73` (`faxId`),
+  KEY `IDX_92E58EB632B6E766` (`ddiId`),
+  KEY `IDX_92E58EB653615680` (`ddiProviderId`),
+  CONSTRAINT `FK_92E58EB62480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_92E58EB632B6E766` FOREIGN KEY (`ddiId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_92E58EB653615680` FOREIGN KEY (`ddiProviderId`) REFERENCES `DDIProviders` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_92E58EB65EA9D64D` FOREIGN KEY (`retailAccountId`) REFERENCES `RetailAccounts` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_92E58EB6624C8D73` FOREIGN KEY (`faxId`) REFERENCES `Faxes` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_92E58EB664B64DCC` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_92E58EB66709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `FK_92E58EB69CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_92E58EB6893BA339` FOREIGN KEY (`friendId`) REFERENCES `Friends` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_92E58EB68B329DCD` FOREIGN KEY (`residentialDeviceId`) REFERENCES `ResidentialDevices` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_92E58EB69CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -4713,25 +4899,21 @@ CREATE TABLE `kam_users_cdrs` (
   `friendId` int(10) unsigned DEFAULT NULL,
   `residentialDeviceId` int(10) unsigned DEFAULT NULL,
   `retailAccountId` int(10) unsigned DEFAULT NULL,
+  `hidden` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `usersCdr_callid_direction` (`callid`,`direction`),
-  KEY `usersCdr_start_time_idx` (`start_time`),
-  KEY `usersCdr_end_time_idx` (`end_time`),
-  KEY `usersCdr_callid_idx` (`callid`),
-  KEY `usersCdr_xcallid_idx` (`xcallid`),
   KEY `usersCdr_brandId` (`brandId`),
-  KEY `usersCdr_companyId` (`companyId`),
   KEY `usersCdr_userId` (`userId`),
   KEY `usersCdr_friendId` (`friendId`),
   KEY `usersCdr_residentialDeviceId` (`residentialDeviceId`),
   KEY `IDX_238F735B5EA9D64D` (`retailAccountId`),
-  KEY `usersCdr_direction` (`direction`),
-  CONSTRAINT `FK_238F735B2480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
+  KEY `usersCdr_companyId_hidden_startTime` (`companyId`,`hidden`,`start_time`),
+  CONSTRAINT `FK_238F735B2480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_238F735B5EA9D64D` FOREIGN KEY (`retailAccountId`) REFERENCES `RetailAccounts` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_238F735B64B64DCC` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_238F735B893BA339` FOREIGN KEY (`friendId`) REFERENCES `Friends` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_238F735B8B329DCD` FOREIGN KEY (`residentialDeviceId`) REFERENCES `ResidentialDevices` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `FK_238F735B9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_238F735B9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -4897,8 +5079,7 @@ CREATE TABLE `kam_users_presentity` (
   `priority` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `kam_users_presentity_idx` (`username`,`domain`,`event`,`etag`),
-  KEY `usersPresentity_expires` (`expires`),
-  KEY `usersPresentity_account_idx` (`username`,`domain`,`event`)
+  KEY `usersPresentity_expires` (`expires`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -4942,8 +5123,7 @@ CREATE TABLE `kam_users_pua` (
   UNIQUE KEY `kam_users_pua_idx` (`etag`,`tuple_id`,`call_id`,`from_tag`),
   KEY `usersPua_expires_idx` (`expires`),
   KEY `usersPua_dialog1_idx` (`pres_id`,`pres_uri`),
-  KEY `usersPua_dialog2_idx` (`call_id`,`from_tag`),
-  KEY `usersPua_record_idx` (`pres_id`)
+  KEY `usersPua_dialog2_idx` (`call_id`,`from_tag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -5005,7 +5185,6 @@ CREATE TABLE `kam_users_xcap` (
   `port` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `doc_uri_idx` (`doc_uri`),
-  KEY `UsersXcap_account_doc_type_idx` (`username`,`domain`,`doc_type`),
   KEY `UsersXcap_account_doc_type_uri_idx` (`username`,`domain`,`doc_type`,`doc_uri`),
   KEY `UsersXcap_account_doc_uri_idx` (`username`,`domain`,`doc_uri`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
@@ -5063,7 +5242,7 @@ CREATE TABLE `migration_versions` (
 
 LOCK TABLES `migration_versions` WRITE;
 /*!40000 ALTER TABLE `migration_versions` DISABLE KEYS */;
-INSERT INTO `migration_versions` VALUES ('20170901000000'),('20170901000001'),('20170911135717'),('20171020142228'),('20171024113642'),('20171030065859'),('20171031161520'),('20171031181245'),('20171103142714'),('20171103153932'),('20171103171335'),('20171121171116'),('20171123112244'),('20171127124756'),('20171128151800'),('20171128152948'),('20171128153543'),('20171129150643'),('20180108141912'),('20180109120523'),('20180109153627'),('20180115124902'),('20180115125057'),('20180116104420'),('20180116104428'),('20180212173438'),('20180220144935'),('20180306160405'),('20180307193902'),('20180308143534'),('20180308171319'),('20180314120551'),('20180319152940'),('20180319174246'),('20180321113400'),('20180322122500'),('20180328102026'),('20180403114214'),('20180405103050'),('20180406102202'),('20180410164407'),('20180411143939'),('20180418161848'),('20180419105002'),('20180509163441'),('20180522102027'),('20180523162834'),('20180524110405'),('20180524154405'),('20180524170318'),('20180528114746'),('20180529165016'),('20180606134347'),('20180611142317'),('20180619114825'),('20180621134613'),('20180622091118'),('20180703090754'),('20180705161808'),('20180706071646'),('20180710081244'),('20180712110938'),('20180713111050'),('20180713123645'),('20180717102522'),('20180717150551'),('20180718132230'),('20180719150852'),('20180720150757'),('20180726103223'),('20180726142227'),('20180802142456'),('20180803114755'),('20180807142455'),('20180809101240'),('20180813131742'),('20180817101632'),('20180827100437'),('20180830103124'),('20180830105838'),('20180905061800'),('20180906173440'),('20180913141229'),('20180914104258'),('20180919144526'),('20181019144832'),('20181019153700'),('20181022130854'),('20181024151114'),('20181105161633'),('20181113095345'),('20181121085714'),('20181121130028'),('20181121165124'),('20181127120015'),('20181220182244'),('20181221113443'),('20181227122711'),('20190114171641'),('20190115093223'),('20190115143446'),('20190117144921'),('20190121183004'),('20190122092017'),('20190225163038'),('20190226111402'),('20190312114056'),('20190314162710'),('20190325123659'),('20190408170724'),('20190410082735'),('20190423104815'),('20190429075931'),('20190515094552'),('20190520145100'),('20190529132608'),('20190603115458'),('20190604091022'),('20190604110803'),('20190605113954'),('20190617101841'),('20190618064619'),('20190618171243'),('20190618171752'),('20190625143639'),('20190702101426'),('20190709121932'),('20190801104204'),('20190828081505'),('20190912161620'),('20190912162641'),('20190919120015'),('20191008111009'),('20191008111715'),('20191008113235'),('20191017111612'),('20191021113146'),('20191021131531'),('20191023153740'),('20191025092721'),('20191029165140'),('20191114115328'),('20191115154014'),('20191127124853');
+INSERT INTO `migration_versions` VALUES ('20170901000000'),('20170901000001'),('20170911135717'),('20171020142228'),('20171024113642'),('20171030065859'),('20171031161520'),('20171031181245'),('20171103142714'),('20171103153932'),('20171103171335'),('20171121171116'),('20171123112244'),('20171127124756'),('20171128151800'),('20171128152948'),('20171128153543'),('20171129150643'),('20180108141912'),('20180109120523'),('20180109153627'),('20180115124902'),('20180115125057'),('20180116104420'),('20180116104428'),('20180212173438'),('20180220144935'),('20180306160405'),('20180307193902'),('20180308143534'),('20180308171319'),('20180314120551'),('20180319152940'),('20180319174246'),('20180321113400'),('20180322122500'),('20180328102026'),('20180403114214'),('20180405103050'),('20180406102202'),('20180410164407'),('20180411143939'),('20180418161848'),('20180419105002'),('20180509163441'),('20180522102027'),('20180523162834'),('20180524110405'),('20180524154405'),('20180524170318'),('20180528114746'),('20180529165016'),('20180606134347'),('20180611142317'),('20180619114825'),('20180621134613'),('20180622091118'),('20180703090754'),('20180705161808'),('20180706071646'),('20180710081244'),('20180712110938'),('20180713111050'),('20180713123645'),('20180717102522'),('20180717150551'),('20180718132230'),('20180719150852'),('20180720150757'),('20180726103223'),('20180726142227'),('20180802142456'),('20180803114755'),('20180807142455'),('20180809101240'),('20180813131742'),('20180817101632'),('20180827100437'),('20180830103124'),('20180830105838'),('20180905061800'),('20180906173440'),('20180913141229'),('20180914104258'),('20180919144526'),('20181019144832'),('20181019153700'),('20181022130854'),('20181024151114'),('20181105161633'),('20181113095345'),('20181121085714'),('20181121130028'),('20181121165124'),('20181127120015'),('20181220182244'),('20181221113443'),('20181227122711'),('20190114171641'),('20190115093223'),('20190115143446'),('20190117144921'),('20190121183004'),('20190122092017'),('20190225163038'),('20190226111402'),('20190312114056'),('20190314162710'),('20190325123659'),('20190408170724'),('20190410082735'),('20190423104815'),('20190429075931'),('20190515094552'),('20190520145100'),('20190529132608'),('20190603115458'),('20190604091022'),('20190604110803'),('20190605113954'),('20190617101841'),('20190618064619'),('20190618171243'),('20190618171752'),('20190625143639'),('20190702101426'),('20190709121932'),('20190801104204'),('20190828081505'),('20190912161620'),('20190912162641'),('20190919120015'),('20191008111009'),('20191008111715'),('20191008113235'),('20191017111612'),('20191021113146'),('20191021131531'),('20191023153740'),('20191025092721'),('20191029165140'),('20191114115328'),('20191115154014'),('20191127124853'),('20191220152436'),('20191226104551'),('20200109172609'),('20200113080213'),('20200113155612'),('20200115092517'),('20200116124851'),('20200120112941'),('20200127120901'),('20200127164702'),('20200127164703'),('20200130155353'),('20200131103107'),('20200203125704'),('20200204114637'),('20200205123949'),('20200210145816'),('20200210145817'),('20200210145818'),('20200211120351'),('20200220113025'),('20200220142749'),('20200221112255'),('20200224120137'),('20200226155532'),('20200226175512'),('20200227160910'),('20200305163752'),('20200309102734'),('20200311114912'),('20200324123710'),('20200407133940'),('20200414145121'),('20200512093347'),('20200513164526'),('20200525104541'),('20200603095357'),('20200604125512'),('20200608091055');
 /*!40000 ALTER TABLE `migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5152,7 +5331,6 @@ CREATE TABLE `tp_account_actions` (
   UNIQUE KEY `UNIQ_9C6C0B6E2480E723` (`companyId`),
   UNIQUE KEY `unique_tp_account` (`tpid`,`loadid`,`tenant`,`account`,`companyId`),
   UNIQUE KEY `UNIQ_9C6C0B6E6709B1C` (`carrierId`),
-  KEY `tpAccountAction_tpid` (`tpid`),
   CONSTRAINT `FK_9C6C0B6E2480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_9C6C0B6E6709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -5164,7 +5342,7 @@ CREATE TABLE `tp_account_actions` (
 
 LOCK TABLES `tp_account_actions` WRITE;
 /*!40000 ALTER TABLE `tp_account_actions` DISABLE KEYS */;
-INSERT INTO `tp_account_actions` VALUES (1,'b1','DATABASE','b1','c1',NULL,'STANDARD_TRIGGERS',1,0,'2018-12-26 12:14:18',1,NULL);
+INSERT INTO `tp_account_actions` VALUES (1,'b1','DATABASE','b1','c1',NULL,'c1',1,0,'2020-06-10 14:44:16',1,NULL);
 /*!40000 ALTER TABLE `tp_account_actions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5293,7 +5471,7 @@ CREATE TABLE `tp_cdrs` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `tpCdrs_cdrrun` (`cgrid`,`run_id`,`origin_id`),
   KEY `tpCdr_originId_idx` (`origin_id`),
-  KEY `tpCdr_cgrid_idx` (`cgrid`)
+  KEY `tpCdr_answerTime_idx` (`answer_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -5355,7 +5533,7 @@ CREATE TABLE `tp_derived_chargers` (
 
 LOCK TABLES `tp_derived_chargers` WRITE;
 /*!40000 ALTER TABLE `tp_derived_chargers` DISABLE KEYS */;
-INSERT INTO `tp_derived_chargers` VALUES (1,'b1','DATABASE','*out','b1','call','*any','*any','*any','carrier','','^*postpaid','*default','*default','*default','carrierId','carrierId','*default','*default','*default','*default','*default','*default','*default','*default','*default','2018-12-26 12:14:39',1);
+INSERT INTO `tp_derived_chargers` VALUES (1,'b1','DATABASE','*out','b1','call','*any','*any','*any','carrier','','^*postpaid','*default','*default','*default','carrierId','carrierId','*default','*default','*default','*default','*default','*default','*default','*default','*default','2020-06-10 14:44:36',1);
 /*!40000 ALTER TABLE `tp_derived_chargers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5372,7 +5550,7 @@ CREATE TABLE `tp_destination_rates` (
   `tag` varchar(64) DEFAULT NULL,
   `destinations_tag` varchar(64) DEFAULT NULL,
   `rates_tag` varchar(64) DEFAULT NULL,
-  `rounding_method` varchar(255) NOT NULL DEFAULT '*up',
+  `rounding_method` varchar(255) NOT NULL DEFAULT '*up' COMMENT '[enum:*up|*upmincost]',
   `rounding_decimals` int(11) NOT NULL DEFAULT '4',
   `max_cost` decimal(10,4) NOT NULL DEFAULT '0.0000',
   `max_cost_strategy` varchar(16) NOT NULL DEFAULT '',
@@ -5382,7 +5560,6 @@ CREATE TABLE `tp_destination_rates` (
   UNIQUE KEY `UNIQ_4823F9F84EB67480` (`destinationRateId`),
   UNIQUE KEY `tpid_drid_dstid` (`tpid`,`tag`,`destinations_tag`),
   KEY `tpDestinationRate_tpid` (`tpid`),
-  KEY `tpDestinationRate_tpid_drid` (`tpid`,`tag`),
   CONSTRAINT `FK_4823F9F84EB67480` FOREIGN KEY (`destinationRateId`) REFERENCES `DestinationRates` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -5414,7 +5591,6 @@ CREATE TABLE `tp_destinations` (
   UNIQUE KEY `UNIQ_C9806885BF3434FC` (`destinationId`),
   UNIQUE KEY `tpid_dest_prefix` (`tpid`,`tag`,`prefix`),
   KEY `tpDestination_tpid` (`tpid`),
-  KEY `tpDestination_tpid_dstid` (`tpid`,`tag`),
   CONSTRAINT `FK_C9806885BF3434FC` FOREIGN KEY (`destinationId`) REFERENCES `Destinations` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -5489,7 +5665,6 @@ CREATE TABLE `tp_rates` (
   UNIQUE KEY `UNIQ_DE7E762B4EB67480` (`destinationRateId`),
   UNIQUE KEY `unique_tprate` (`tpid`,`tag`,`group_interval_start`),
   KEY `tpRate_tpid` (`tpid`),
-  KEY `tpRate_tpid_rtid` (`tpid`,`tag`),
   CONSTRAINT `FK_DE7E762B4EB67480` FOREIGN KEY (`destinationRateId`) REFERENCES `DestinationRates` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -5523,7 +5698,6 @@ CREATE TABLE `tp_rating_plans` (
   UNIQUE KEY `UNIQ_4CC2BCAB5C17F7F9` (`ratingPlanId`),
   UNIQUE KEY `tpid_rplid_destrates_timings_weight` (`tpid`,`tag`,`destrates_tag`,`timing_tag`,`weight`),
   KEY `tpRatingPlan_tpid` (`tpid`),
-  KEY `tpRatingPlan_tpid_rpl` (`tpid`,`tag`),
   CONSTRAINT `FK_4CC2BCAB5C17F7F9` FOREIGN KEY (`ratingPlanId`) REFERENCES `RatingPlans` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -5561,8 +5735,6 @@ CREATE TABLE `tp_rating_profiles` (
   `outgoingRoutingRelCarrierId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tpid_loadid_tenant_category_dir_subj_atime` (`tpid`,`loadid`,`tenant`,`subject`,`category`,`direction`,`activation_time`),
-  KEY `tpRatingProfile_tpid` (`tpid`),
-  KEY `tpRatingProfile_tpid_loadid` (`tpid`,`loadid`),
   KEY `IDX_8502DE0E692AE6A8` (`ratingProfileId`),
   KEY `IDX_8502DE0E622624F7` (`outgoingRoutingRelCarrierId`),
   CONSTRAINT `FK_8502DE0E622624F7` FOREIGN KEY (`outgoingRoutingRelCarrierId`) REFERENCES `OutgoingRoutingRelCarriers` (`id`) ON DELETE CASCADE,
@@ -5815,7 +5987,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `tp_action_triggers` AS select concat('b',`Brands`.`id`) AS `tpid`,'STANDARD_TRIGGERS' AS `tag`,'*default' AS `unique_id`,'*max_balance_counter' AS `threshold_type`,1000000 AS `threshold_value`,1 AS `recurrent`,'*default' AS `balance_tag`,'*monetary' AS `balance_type`,'DISABLE_AND_LOG' AS `actions_tag`,0.0 AS `weight` from `Brands` */;
+/*!50001 VIEW `tp_action_triggers` AS select concat('b',`Companies`.`brandId`) AS `tpid`,concat('c',`Companies`.`id`) AS `tag`,'*default' AS `unique_id`,'*max_balance_counter' AS `threshold_type`,`Companies`.`maxDailyUsage` AS `threshold_value`,1 AS `recurrent`,'*default' AS `balance_tag`,'*monetary' AS `balance_type`,'DISABLE_AND_LOG' AS `actions_tag`,0.0 AS `weight` from `Companies` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -5847,7 +6019,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-26 11:09:12
+-- Dump completed on 2020-06-10 16:53:26
 
 -- Add needed users to db
 GRANT USAGE ON *.* TO 'asterisk'@'%' IDENTIFIED BY PASSWORD '*B1745AABE8FF81695592076E0F0D90D3FAB17F67';
