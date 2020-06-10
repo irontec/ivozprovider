@@ -63,7 +63,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      */
     public function hasFeature($featureId);
 
-    public function hasFeatureByIden(string $iden);
+    public function hasFeatureByIden(string $iden) :bool;
 
     /**
      * Return Brand Cgrates tenant code

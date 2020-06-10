@@ -119,9 +119,9 @@ interface CompanyInterface extends LoggableEntityInterface
      * @param int $featureId
      * @return bool
      */
-    public function hasFeature($featureId);
+    public function hasFeature($featureId) :bool;
 
-    public function hasFeatureByIden(string $iden);
+    public function hasFeatureByIden(string $iden) :bool;
 
     /**
      * Get On demand recording code DTMFs
@@ -145,13 +145,13 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getCgrSubject();
 
-    public function isVpbx();
+    public function isVpbx() :bool;
 
-    public function isRetail();
+    public function isRetail() :bool;
 
-    public function isResidential();
+    public function isResidential() :bool;
 
-    public function isWholesale();
+    public function isWholesale() :bool;
 
     /**
      * Get type

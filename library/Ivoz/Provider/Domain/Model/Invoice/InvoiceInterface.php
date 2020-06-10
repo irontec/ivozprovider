@@ -29,13 +29,13 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * @return bool
      */
-    public function isWaiting();
+    public function isWaiting() :bool;
 
     public function setNumber($number = null);
 
-    public function mustRunInvoicer();
+    public function mustRunInvoicer() :bool;
 
-    public function mustCheckValidity();
+    public function mustCheckValidity() :bool;
 
     /**
      * Get number

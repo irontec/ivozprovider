@@ -46,7 +46,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     /**
      * @return bool
      */
-    public function isDirectConnectivity();
+    public function isDirectConnectivity() :bool;
 
     /**
      * {@inheritDoc}

@@ -21,12 +21,12 @@ interface TpCdrInterface extends EntityInterface
     /**
      * @return string
      */
-    public function getRatingPlanTag();
+    public function getRatingPlanTag() :string;
 
     /**
      * @return string
      */
-    public function getMatchedDestinationTag();
+    public function getMatchedDestinationTag() :string;
 
     /**
      * Get cgrid

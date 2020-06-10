@@ -26,19 +26,19 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * @return bool
      */
-    public function isBrandAdmin();
+    public function isBrandAdmin() :bool;
 
-    public function isVpbxAdmin();
+    public function isVpbxAdmin() :bool;
 
-    public function isResidentialAdmin();
+    public function isResidentialAdmin() :bool;
 
-    public function isRetailAdmin();
+    public function isRetailAdmin() :bool;
 
-    public function isWholesaleAdmin();
+    public function isWholesaleAdmin() :bool;
 
-    public function companyHasFeature(string $iden);
+    public function companyHasFeature(string $iden) :bool;
 
-    public function brandHasFeature(string $iden);
+    public function brandHasFeature(string $iden) :bool;
 
     public function serialize();
 
@@ -150,7 +150,7 @@ interface AdministratorInterface extends LoggableEntityInterface
      */
     public function getRoles();
 
-    public function hasAccessPrivileges(string $fqdn, string $reqMethod);
+    public function hasAccessPrivileges(string $fqdn, string $reqMethod) :bool;
 
     /**
      * @see AdvancedUserInterface::getPassword()

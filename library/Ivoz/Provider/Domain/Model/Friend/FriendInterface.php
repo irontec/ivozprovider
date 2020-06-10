@@ -47,12 +47,12 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * @return bool
      */
-    public function isInterPbxConnectivity();
+    public function isInterPbxConnectivity() :bool;
 
     /**
      * @return bool
      */
-    public function isDirectConnectivity();
+    public function isDirectConnectivity() :bool;
 
     /**
      * @param string $number

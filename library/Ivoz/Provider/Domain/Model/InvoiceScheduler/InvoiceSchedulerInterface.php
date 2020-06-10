@@ -30,7 +30,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      */
     public function setFrequency($frequency);
 
-    public function getSchedulerDateTimeZone();
+    public function getSchedulerDateTimeZone() :\DateTimeZone;
 
     /**
      * @return \DateInterval
