@@ -1,3 +1,36 @@
+Web, 10 Jun 2020 11:27:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.15.2 released
+
+    * Application Server
+        - Diversion related minor improvements
+        - Fixed a loop in HuntGroup user call forwards
+
+    * Core
+        - Fixed unsolicited MWI for residential clients
+        - Fixed encoding issues on rate importer
+
+    * Proxies
+        - Added userId/faxId/friendId for external inbound calls CDRs
+        - Fixed empty pointer free warning log
+        - No user CDR for non-vpbx calls
+        - Disabled antiflood for trunks proxy
+        - Reduced log messages
+        - Anti brute-force attack mechanism
+        - Ban addresses rejected by IP filter
+        - Increased registration min expires to 900
+
+    * Billing
+        - Deductible Connection Fee (minCost)
+
+    * API
+        - Registration summary brand/client endpoint
+        - Improved client-level endpoint ACLs
+
+    * Portals
+        - New Carrier / CarrierServer status icon
+        - Fixed emulations issues
+
 Web, 12 May 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.15.1 released
