@@ -13,15 +13,6 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * Fake/Empty setter
-     *
-     * Version value is automatically handled by doctrine
-     *
-     * @inheritdoc
-     */
-    public function setVersion($version);
-
-    /**
      * Update and return latest value
      *
      * @return string
