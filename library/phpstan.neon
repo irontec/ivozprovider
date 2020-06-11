@@ -1,3 +1,5 @@
+includes:
+    - /composer/vendor/phpstan/phpstan-beberlei-assert/extension.neon
 parameters:
     excludes_analyse:
         - "*/vendor/[^irontec]/*"
