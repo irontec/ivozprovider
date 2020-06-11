@@ -136,14 +136,14 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get lastname
      *
      * @return string
      */
-    public function getLastname();
+    public function getLastname(): string;
 
     /**
      * Get email
@@ -164,63 +164,63 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @return boolean
      */
-    public function getDoNotDisturb();
+    public function getDoNotDisturb(): bool;
 
     /**
      * Get isBoss
      *
      * @return boolean
      */
-    public function getIsBoss();
+    public function getIsBoss(): bool;
 
     /**
      * Get active
      *
      * @return boolean
      */
-    public function getActive();
+    public function getActive(): bool;
 
     /**
      * Get maxCalls
      *
      * @return integer
      */
-    public function getMaxCalls();
+    public function getMaxCalls(): int;
 
     /**
      * Get externalIpCalls
      *
      * @return string
      */
-    public function getExternalIpCalls();
+    public function getExternalIpCalls(): string;
 
     /**
      * Get voicemailEnabled
      *
      * @return boolean
      */
-    public function getVoicemailEnabled();
+    public function getVoicemailEnabled(): bool;
 
     /**
      * Get voicemailSendMail
      *
      * @return boolean
      */
-    public function getVoicemailSendMail();
+    public function getVoicemailSendMail(): bool;
 
     /**
      * Get voicemailAttachSound
      *
      * @return boolean
      */
-    public function getVoicemailAttachSound();
+    public function getVoicemailAttachSound(): bool;
 
     /**
      * Get gsQRCode
      *
      * @return boolean
      */
-    public function getGsQRCode();
+    public function getGsQRCode(): bool;
 
     /**
      * Get company
@@ -302,6 +302,11 @@ interface UserInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
      */
     public function getVoicemailLocution();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add pickUpRelUser
@@ -399,42 +404,42 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * @see AdvancedUserInterface::getRoles()
      */
-    public function getRoles();
+    public function getRoles(): array;
 
     /**
      * @see AdvancedUserInterface::getUsername()
      */
-    public function getUsername();
+    public function getUsername(): string;
 
     /**
      * @see AdvancedUserInterface::getPassword()
      */
-    public function getPassword();
+    public function getPassword(): string;
 
     /**
      * @see AdvancedUserInterface::isAccountNonExpired()
      */
-    public function isAccountNonExpired();
+    public function isAccountNonExpired(): bool;
 
     /**
      * @see AdvancedUserInterface::isAccountNonLocked()
      */
-    public function isAccountNonLocked();
+    public function isAccountNonLocked(): bool;
 
     /**
      * @see AdvancedUserInterface::isCredentialsNonExpired()
      */
-    public function isCredentialsNonExpired();
+    public function isCredentialsNonExpired(): bool;
 
     /**
      * @see AdvancedUserInterface::isEnabled()
      */
-    public function isEnabled();
+    public function isEnabled(): bool;
 
     /**
      * @see AdvancedUserInterface::getSalt()
      */
-    public function getSalt();
+    public function getSalt(): string;
 
     /**
      * @see AdvancedUserInterface::eraseCredentials()

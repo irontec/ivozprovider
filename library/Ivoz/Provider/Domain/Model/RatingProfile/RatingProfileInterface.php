@@ -26,7 +26,7 @@ interface RatingProfileInterface extends LoggableEntityInterface
      *
      * @return \DateTime
      */
-    public function getActivationTime();
+    public function getActivationTime(): \DateTime;
 
     /**
      * Set company
@@ -73,6 +73,11 @@ interface RatingProfileInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
      */
     public function getRoutingTag();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add tpRatingProfile

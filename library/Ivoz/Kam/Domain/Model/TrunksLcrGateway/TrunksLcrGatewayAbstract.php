@@ -285,7 +285,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return integer
      */
-    public function getLcrId()
+    public function getLcrId(): int
     {
         return $this->lcrId;
     }
@@ -312,7 +312,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return string
      */
-    public function getGwName()
+    public function getGwName(): string
     {
         return $this->gwName;
     }

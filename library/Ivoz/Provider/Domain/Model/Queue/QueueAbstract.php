@@ -721,7 +721,7 @@ abstract class QueueAbstract
      *
      * @return integer
      */
-    public function getPreventMissedCalls()
+    public function getPreventMissedCalls(): int
     {
         return $this->preventMissedCalls;
     }

@@ -21,152 +21,152 @@ interface TpCdrInterface extends EntityInterface
     /**
      * @return string
      */
-    public function getRatingPlanTag() :string;
+    public function getRatingPlanTag(): string;
 
     /**
      * @return string
      */
-    public function getMatchedDestinationTag() :string;
+    public function getMatchedDestinationTag(): string;
 
     /**
      * Get cgrid
      *
      * @return string
      */
-    public function getCgrid();
+    public function getCgrid(): string;
 
     /**
      * Get runId
      *
      * @return string
      */
-    public function getRunId();
+    public function getRunId(): string;
 
     /**
      * Get originHost
      *
      * @return string
      */
-    public function getOriginHost();
+    public function getOriginHost(): string;
 
     /**
      * Get source
      *
      * @return string
      */
-    public function getSource();
+    public function getSource(): string;
 
     /**
      * Get originId
      *
      * @return string
      */
-    public function getOriginId();
+    public function getOriginId(): string;
 
     /**
      * Get tor
      *
      * @return string
      */
-    public function getTor();
+    public function getTor(): string;
 
     /**
      * Get requestType
      *
      * @return string
      */
-    public function getRequestType();
+    public function getRequestType(): string;
 
     /**
      * Get tenant
      *
      * @return string
      */
-    public function getTenant();
+    public function getTenant(): string;
 
     /**
      * Get category
      *
      * @return string
      */
-    public function getCategory();
+    public function getCategory(): string;
 
     /**
      * Get account
      *
      * @return string
      */
-    public function getAccount();
+    public function getAccount(): string;
 
     /**
      * Get subject
      *
      * @return string
      */
-    public function getSubject();
+    public function getSubject(): string;
 
     /**
      * Get destination
      *
      * @return string
      */
-    public function getDestination();
+    public function getDestination(): string;
 
     /**
      * Get setupTime
      *
      * @return \DateTime
      */
-    public function getSetupTime();
+    public function getSetupTime(): \DateTime;
 
     /**
      * Get answerTime
      *
      * @return \DateTime
      */
-    public function getAnswerTime();
+    public function getAnswerTime(): \DateTime;
 
     /**
      * Get usage
      *
      * @return integer
      */
-    public function getUsage();
+    public function getUsage(): int;
 
     /**
      * Get extraFields
      *
      * @return string
      */
-    public function getExtraFields();
+    public function getExtraFields(): string;
 
     /**
      * Get costSource
      *
      * @return string
      */
-    public function getCostSource();
+    public function getCostSource(): string;
 
     /**
      * Get cost
      *
      * @return float
      */
-    public function getCost();
+    public function getCost(): float;
 
     /**
      * Get costDetails
      *
      * @return array
      */
-    public function getCostDetails();
+    public function getCostDetails(): array;
 
     /**
      * Get extraInfo
      *
      * @return string
      */
-    public function getExtraInfo();
+    public function getExtraInfo(): string;
 
     /**
      * Get createdAt
@@ -188,4 +188,9 @@ interface TpCdrInterface extends EntityInterface
      * @return \DateTime | null
      */
     public function getDeletedAt();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

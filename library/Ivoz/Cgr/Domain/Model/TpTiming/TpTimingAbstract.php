@@ -260,7 +260,7 @@ abstract class TpTimingAbstract
      *
      * @return string
      */
-    public function getTpid()
+    public function getTpid(): string
     {
         return $this->tpid;
     }
@@ -315,7 +315,7 @@ abstract class TpTimingAbstract
      *
      * @return string
      */
-    public function getYears()
+    public function getYears(): string
     {
         return $this->years;
     }
@@ -342,7 +342,7 @@ abstract class TpTimingAbstract
      *
      * @return string
      */
-    public function getMonths()
+    public function getMonths(): string
     {
         return $this->months;
     }
@@ -369,7 +369,7 @@ abstract class TpTimingAbstract
      *
      * @return string
      */
-    public function getMonthDays()
+    public function getMonthDays(): string
     {
         return $this->monthDays;
     }
@@ -396,7 +396,7 @@ abstract class TpTimingAbstract
      *
      * @return string
      */
-    public function getWeekDays()
+    public function getWeekDays(): string
     {
         return $this->weekDays;
     }
@@ -423,7 +423,7 @@ abstract class TpTimingAbstract
      *
      * @return string
      */
-    public function getTime()
+    public function getTime(): string
     {
         return $this->time;
     }
@@ -457,7 +457,7 @@ abstract class TpTimingAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

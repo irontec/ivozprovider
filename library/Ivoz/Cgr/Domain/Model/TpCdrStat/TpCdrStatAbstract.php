@@ -485,7 +485,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getTpid()
+    public function getTpid(): string
     {
         return $this->tpid;
     }
@@ -512,7 +512,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getTag()
+    public function getTag(): string
     {
         return $this->tag;
     }
@@ -539,7 +539,7 @@ abstract class TpCdrStatAbstract
      *
      * @return integer
      */
-    public function getQueueLength()
+    public function getQueueLength(): int
     {
         return $this->queueLength;
     }
@@ -566,7 +566,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getTimeWindow()
+    public function getTimeWindow(): string
     {
         return $this->timeWindow;
     }
@@ -593,7 +593,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getSaveInterval()
+    public function getSaveInterval(): string
     {
         return $this->saveInterval;
     }
@@ -620,7 +620,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getMetrics()
+    public function getMetrics(): string
     {
         return $this->metrics;
     }
@@ -647,7 +647,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getSetupInterval()
+    public function getSetupInterval(): string
     {
         return $this->setupInterval;
     }
@@ -674,7 +674,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getTors()
+    public function getTors(): string
     {
         return $this->tors;
     }
@@ -701,7 +701,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getCdrHosts()
+    public function getCdrHosts(): string
     {
         return $this->cdrHosts;
     }
@@ -728,7 +728,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getCdrSources()
+    public function getCdrSources(): string
     {
         return $this->cdrSources;
     }
@@ -755,7 +755,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getReqTypes()
+    public function getReqTypes(): string
     {
         return $this->reqTypes;
     }
@@ -782,7 +782,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getDirections()
+    public function getDirections(): string
     {
         return $this->directions;
     }
@@ -809,7 +809,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getTenants()
+    public function getTenants(): string
     {
         return $this->tenants;
     }
@@ -836,7 +836,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getCategories()
+    public function getCategories(): string
     {
         return $this->categories;
     }
@@ -863,7 +863,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getAccounts()
+    public function getAccounts(): string
     {
         return $this->accounts;
     }
@@ -890,7 +890,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getSubjects()
+    public function getSubjects(): string
     {
         return $this->subjects;
     }
@@ -917,7 +917,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getDestinationIds()
+    public function getDestinationIds(): string
     {
         return $this->destinationIds;
     }
@@ -944,7 +944,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getPpdInterval()
+    public function getPpdInterval(): string
     {
         return $this->ppdInterval;
     }
@@ -971,7 +971,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getUsageInterval()
+    public function getUsageInterval(): string
     {
         return $this->usageInterval;
     }
@@ -998,7 +998,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getSuppliers()
+    public function getSuppliers(): string
     {
         return $this->suppliers;
     }
@@ -1025,7 +1025,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getDisconnectCauses()
+    public function getDisconnectCauses(): string
     {
         return $this->disconnectCauses;
     }
@@ -1052,7 +1052,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getMediationRunids()
+    public function getMediationRunids(): string
     {
         return $this->mediationRunids;
     }
@@ -1079,7 +1079,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getRatedAccounts()
+    public function getRatedAccounts(): string
     {
         return $this->ratedAccounts;
     }
@@ -1106,7 +1106,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getRatedSubjects()
+    public function getRatedSubjects(): string
     {
         return $this->ratedSubjects;
     }
@@ -1133,7 +1133,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getCostInterval()
+    public function getCostInterval(): string
     {
         return $this->costInterval;
     }
@@ -1160,7 +1160,7 @@ abstract class TpCdrStatAbstract
      *
      * @return string
      */
-    public function getActionTriggers()
+    public function getActionTriggers(): string
     {
         return $this->actionTriggers;
     }
@@ -1194,7 +1194,7 @@ abstract class TpCdrStatAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

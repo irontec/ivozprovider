@@ -46,4 +46,9 @@ interface BalanceMovementInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

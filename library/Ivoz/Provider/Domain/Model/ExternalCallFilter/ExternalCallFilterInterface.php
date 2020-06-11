@@ -97,7 +97,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get holidayTargetType
@@ -196,6 +196,11 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getOutOfScheduleNumberCountry();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add calendar

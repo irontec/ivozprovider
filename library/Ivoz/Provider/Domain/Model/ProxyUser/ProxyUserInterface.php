@@ -25,4 +25,9 @@ interface ProxyUserInterface extends LoggableEntityInterface
      * @return string | null
      */
     public function getIp();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

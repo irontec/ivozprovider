@@ -43,7 +43,7 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
      *
      * @return \DateTime
      */
-    public function getCalldate();
+    public function getCalldate(): \DateTime;
 
     /**
      * Get src
@@ -100,6 +100,11 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
      * @return \Ivoz\Provider\Domain\Model\FaxesInOut\File
      */
     public function getFile();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * @param string $fldName

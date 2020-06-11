@@ -17,7 +17,7 @@ interface CountryInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getCode();
+    public function getCode(): string;
 
     /**
      * Get countryCode
@@ -39,4 +39,9 @@ interface CountryInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\Zone
      */
     public function getZone();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

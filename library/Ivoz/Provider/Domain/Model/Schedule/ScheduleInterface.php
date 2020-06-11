@@ -25,21 +25,21 @@ interface ScheduleInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get timeIn
      *
      * @return \DateTime
      */
-    public function getTimeIn();
+    public function getTimeIn(): \DateTime;
 
     /**
      * Get timeout
      *
      * @return \DateTime
      */
-    public function getTimeout();
+    public function getTimeout(): \DateTime;
 
     /**
      * Get monday
@@ -96,4 +96,9 @@ interface ScheduleInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

@@ -17,7 +17,7 @@ interface FeatureInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getIden();
+    public function getIden(): string;
 
     /**
      * Get name
@@ -25,4 +25,9 @@ interface FeatureInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Feature\Name
      */
     public function getName();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

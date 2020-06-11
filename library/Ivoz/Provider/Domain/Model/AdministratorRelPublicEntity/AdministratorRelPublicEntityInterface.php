@@ -17,28 +17,28 @@ interface AdministratorRelPublicEntityInterface extends LoggableEntityInterface
      *
      * @return boolean
      */
-    public function getCreate();
+    public function getCreate(): bool;
 
     /**
      * Get read
      *
      * @return boolean
      */
-    public function getRead();
+    public function getRead(): bool;
 
     /**
      * Get update
      *
      * @return boolean
      */
-    public function getUpdate();
+    public function getUpdate(): bool;
 
     /**
      * Get delete
      *
      * @return boolean
      */
-    public function getDelete();
+    public function getDelete(): bool;
 
     /**
      * Set administrator
@@ -62,4 +62,9 @@ interface AdministratorRelPublicEntityInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface
      */
     public function getPublicEntity();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

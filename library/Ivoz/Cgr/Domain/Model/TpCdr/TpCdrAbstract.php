@@ -422,7 +422,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getCgrid()
+    public function getCgrid(): string
     {
         return $this->cgrid;
     }
@@ -449,7 +449,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getRunId()
+    public function getRunId(): string
     {
         return $this->runId;
     }
@@ -476,7 +476,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getOriginHost()
+    public function getOriginHost(): string
     {
         return $this->originHost;
     }
@@ -503,7 +503,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getSource()
+    public function getSource(): string
     {
         return $this->source;
     }
@@ -530,7 +530,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getOriginId()
+    public function getOriginId(): string
     {
         return $this->originId;
     }
@@ -557,7 +557,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getTor()
+    public function getTor(): string
     {
         return $this->tor;
     }
@@ -584,7 +584,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getRequestType()
+    public function getRequestType(): string
     {
         return $this->requestType;
     }
@@ -611,7 +611,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getTenant()
+    public function getTenant(): string
     {
         return $this->tenant;
     }
@@ -638,7 +638,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getCategory()
+    public function getCategory(): string
     {
         return $this->category;
     }
@@ -665,7 +665,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getAccount()
+    public function getAccount(): string
     {
         return $this->account;
     }
@@ -692,7 +692,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getSubject()
+    public function getSubject(): string
     {
         return $this->subject;
     }
@@ -719,7 +719,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getDestination()
+    public function getDestination(): string
     {
         return $this->destination;
     }
@@ -753,7 +753,7 @@ abstract class TpCdrAbstract
      *
      * @return \DateTime
      */
-    public function getSetupTime()
+    public function getSetupTime(): \DateTime
     {
         return clone $this->setupTime;
     }
@@ -787,7 +787,7 @@ abstract class TpCdrAbstract
      *
      * @return \DateTime
      */
-    public function getAnswerTime()
+    public function getAnswerTime(): \DateTime
     {
         return clone $this->answerTime;
     }
@@ -814,7 +814,7 @@ abstract class TpCdrAbstract
      *
      * @return integer
      */
-    public function getUsage()
+    public function getUsage(): int
     {
         return $this->usage;
     }
@@ -840,7 +840,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getExtraFields()
+    public function getExtraFields(): string
     {
         return $this->extraFields;
     }
@@ -867,7 +867,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getCostSource()
+    public function getCostSource(): string
     {
         return $this->costSource;
     }
@@ -894,7 +894,7 @@ abstract class TpCdrAbstract
      *
      * @return float
      */
-    public function getCost()
+    public function getCost(): float
     {
         return $this->cost;
     }
@@ -920,7 +920,7 @@ abstract class TpCdrAbstract
      *
      * @return array
      */
-    public function getCostDetails()
+    public function getCostDetails(): array
     {
         return $this->costDetails;
     }
@@ -946,7 +946,7 @@ abstract class TpCdrAbstract
      *
      * @return string
      */
-    public function getExtraInfo()
+    public function getExtraInfo(): string
     {
         return $this->extraInfo;
     }

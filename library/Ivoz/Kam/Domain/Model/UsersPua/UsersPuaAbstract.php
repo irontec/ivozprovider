@@ -367,7 +367,7 @@ abstract class UsersPuaAbstract
      *
      * @return string
      */
-    public function getPresUri()
+    public function getPresUri(): string
     {
         return $this->presUri;
     }
@@ -394,7 +394,7 @@ abstract class UsersPuaAbstract
      *
      * @return string
      */
-    public function getPresId()
+    public function getPresId(): string
     {
         return $this->presId;
     }
@@ -421,7 +421,7 @@ abstract class UsersPuaAbstract
      *
      * @return integer
      */
-    public function getEvent()
+    public function getEvent(): int
     {
         return $this->event;
     }
@@ -448,7 +448,7 @@ abstract class UsersPuaAbstract
      *
      * @return integer
      */
-    public function getExpires()
+    public function getExpires(): int
     {
         return $this->expires;
     }
@@ -475,7 +475,7 @@ abstract class UsersPuaAbstract
      *
      * @return integer
      */
-    public function getDesiredExpires()
+    public function getDesiredExpires(): int
     {
         return $this->desiredExpires;
     }
@@ -502,7 +502,7 @@ abstract class UsersPuaAbstract
      *
      * @return integer
      */
-    public function getFlag()
+    public function getFlag(): int
     {
         return $this->flag;
     }
@@ -529,7 +529,7 @@ abstract class UsersPuaAbstract
      *
      * @return string
      */
-    public function getEtag()
+    public function getEtag(): string
     {
         return $this->etag;
     }
@@ -584,7 +584,7 @@ abstract class UsersPuaAbstract
      *
      * @return string
      */
-    public function getWatcherUri()
+    public function getWatcherUri(): string
     {
         return $this->watcherUri;
     }
@@ -611,7 +611,7 @@ abstract class UsersPuaAbstract
      *
      * @return string
      */
-    public function getCallId()
+    public function getCallId(): string
     {
         return $this->callId;
     }
@@ -638,7 +638,7 @@ abstract class UsersPuaAbstract
      *
      * @return string
      */
-    public function getToTag()
+    public function getToTag(): string
     {
         return $this->toTag;
     }
@@ -665,7 +665,7 @@ abstract class UsersPuaAbstract
      *
      * @return string
      */
-    public function getFromTag()
+    public function getFromTag(): string
     {
         return $this->fromTag;
     }
@@ -692,7 +692,7 @@ abstract class UsersPuaAbstract
      *
      * @return integer
      */
-    public function getCseq()
+    public function getCseq(): int
     {
         return $this->cseq;
     }
@@ -747,7 +747,7 @@ abstract class UsersPuaAbstract
      *
      * @return string
      */
-    public function getContact()
+    public function getContact(): string
     {
         return $this->contact;
     }
@@ -774,7 +774,7 @@ abstract class UsersPuaAbstract
      *
      * @return string
      */
-    public function getRemoteContact()
+    public function getRemoteContact(): string
     {
         return $this->remoteContact;
     }
@@ -801,7 +801,7 @@ abstract class UsersPuaAbstract
      *
      * @return integer
      */
-    public function getVersion()
+    public function getVersion(): int
     {
         return $this->version;
     }
@@ -828,7 +828,7 @@ abstract class UsersPuaAbstract
      *
      * @return string
      */
-    public function getExtraHeaders()
+    public function getExtraHeaders(): string
     {
         return $this->extraHeaders;
     }

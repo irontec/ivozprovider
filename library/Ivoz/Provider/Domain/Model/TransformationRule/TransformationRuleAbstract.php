@@ -225,7 +225,7 @@ abstract class TransformationRuleAbstract
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -252,7 +252,7 @@ abstract class TransformationRuleAbstract
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }

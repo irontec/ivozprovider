@@ -31,7 +31,7 @@ interface DestinationInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getPrefix();
+    public function getPrefix(): string;
 
     /**
      * Get tpDestination
@@ -53,6 +53,11 @@ interface DestinationInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Destination\Name
      */
     public function getName();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add destinationRate

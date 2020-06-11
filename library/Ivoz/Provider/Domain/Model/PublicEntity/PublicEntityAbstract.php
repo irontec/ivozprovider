@@ -246,7 +246,7 @@ abstract class PublicEntityAbstract
      *
      * @return string
      */
-    public function getIden()
+    public function getIden(): string
     {
         return $this->iden;
     }
@@ -302,7 +302,7 @@ abstract class PublicEntityAbstract
      *
      * @return boolean
      */
-    public function getPlatform()
+    public function getPlatform(): bool
     {
         return $this->platform;
     }
@@ -330,7 +330,7 @@ abstract class PublicEntityAbstract
      *
      * @return boolean
      */
-    public function getBrand()
+    public function getBrand(): bool
     {
         return $this->brand;
     }
@@ -358,7 +358,7 @@ abstract class PublicEntityAbstract
      *
      * @return boolean
      */
-    public function getClient()
+    public function getClient(): bool
     {
         return $this->client;
     }

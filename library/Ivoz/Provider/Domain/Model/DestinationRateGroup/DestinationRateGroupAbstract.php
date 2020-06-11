@@ -329,7 +329,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @return boolean
      */
-    public function getDeductibleConnectionFee()
+    public function getDeductibleConnectionFee(): bool
     {
         return $this->deductibleConnectionFee;
     }

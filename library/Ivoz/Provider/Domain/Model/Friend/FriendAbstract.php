@@ -414,7 +414,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -441,7 +441,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -558,7 +558,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getAuthNeeded()
+    public function getAuthNeeded(): string
     {
         return $this->authNeeded;
     }
@@ -613,7 +613,7 @@ abstract class FriendAbstract
      *
      * @return integer
      */
-    public function getPriority()
+    public function getPriority(): int
     {
         return $this->priority;
     }
@@ -640,7 +640,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getDisallow()
+    public function getDisallow(): string
     {
         return $this->disallow;
     }
@@ -667,7 +667,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getAllow()
+    public function getAllow(): string
     {
         return $this->allow;
     }
@@ -697,7 +697,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getDirectMediaMethod()
+    public function getDirectMediaMethod(): string
     {
         return $this->directMediaMethod;
     }
@@ -727,7 +727,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getCalleridUpdateHeader()
+    public function getCalleridUpdateHeader(): string
     {
         return $this->calleridUpdateHeader;
     }
@@ -757,7 +757,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getUpdateCallerid()
+    public function getUpdateCallerid(): string
     {
         return $this->updateCallerid;
     }
@@ -817,7 +817,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getDirectConnectivity()
+    public function getDirectConnectivity(): string
     {
         return $this->directConnectivity;
     }
@@ -847,7 +847,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getDdiIn()
+    public function getDdiIn(): string
     {
         return $this->ddiIn;
     }
@@ -877,7 +877,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getT38Passthrough()
+    public function getT38Passthrough(): string
     {
         return $this->t38Passthrough;
     }

@@ -42,7 +42,7 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getRouteType();
+    public function getRouteType(): string;
 
     /**
      * Get numberValue
@@ -80,6 +80,11 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNumberCountry();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * @param string $prefix

@@ -181,7 +181,7 @@ abstract class ApplicationServerAbstract
      *
      * @return string
      */
-    public function getIp()
+    public function getIp(): string
     {
         return $this->ip;
     }

@@ -311,7 +311,7 @@ abstract class RetailAccountAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -338,7 +338,7 @@ abstract class RetailAccountAbstract
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -515,7 +515,7 @@ abstract class RetailAccountAbstract
      *
      * @return string
      */
-    public function getDirectConnectivity()
+    public function getDirectConnectivity(): string
     {
         return $this->directConnectivity;
     }
@@ -545,7 +545,7 @@ abstract class RetailAccountAbstract
      *
      * @return string
      */
-    public function getDdiIn()
+    public function getDdiIn(): string
     {
         return $this->ddiIn;
     }
@@ -575,7 +575,7 @@ abstract class RetailAccountAbstract
      *
      * @return string
      */
-    public function getT38Passthrough()
+    public function getT38Passthrough(): string
     {
         return $this->t38Passthrough;
     }

@@ -285,7 +285,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @return string
      */
-    public function getSubject()
+    public function getSubject(): string
     {
         return $this->subject;
     }
@@ -312,7 +312,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @return string
      */
-    public function getBody()
+    public function getBody(): string
     {
         return $this->body;
     }
@@ -343,7 +343,7 @@ abstract class NotificationTemplateContentAbstract
      *
      * @return string
      */
-    public function getBodyType()
+    public function getBodyType(): string
     {
         return $this->bodyType;
     }

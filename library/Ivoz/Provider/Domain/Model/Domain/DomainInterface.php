@@ -19,14 +19,14 @@ interface DomainInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getDomain();
+    public function getDomain(): string;
 
     /**
      * Get pointsTo
      *
      * @return string
      */
-    public function getPointsTo();
+    public function getPointsTo(): string;
 
     /**
      * Get description
@@ -34,6 +34,11 @@ interface DomainInterface extends LoggableEntityInterface
      * @return string | null
      */
     public function getDescription();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add friend

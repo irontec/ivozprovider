@@ -215,7 +215,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @return string
      */
-    public function getDid()
+    public function getDid(): string
     {
         return $this->did;
     }
@@ -242,7 +242,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -270,7 +270,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @return integer
      */
-    public function getType()
+    public function getType(): int
     {
         return $this->type;
     }
@@ -297,7 +297,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @return string
      */
-    public function getValue()
+    public function getValue(): string
     {
         return $this->value;
     }
@@ -331,7 +331,7 @@ abstract class TrunksDomainAttrAbstract
      *
      * @return \DateTime
      */
-    public function getLastModified()
+    public function getLastModified(): \DateTime
     {
         return clone $this->lastModified;
     }

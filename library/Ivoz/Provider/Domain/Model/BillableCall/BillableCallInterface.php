@@ -23,7 +23,7 @@ interface BillableCallInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    public function isOutboundCall() :bool;
+    public function isOutboundCall(): bool;
 
     /**
      * Get callid
@@ -44,7 +44,7 @@ interface BillableCallInterface extends LoggableEntityInterface
      *
      * @return float
      */
-    public function getDuration();
+    public function getDuration(): float;
 
     /**
      * Get caller
@@ -185,4 +185,9 @@ interface BillableCallInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
      */
     public function getDdiProvider();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

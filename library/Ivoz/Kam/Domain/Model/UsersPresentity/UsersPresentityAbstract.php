@@ -259,7 +259,7 @@ abstract class UsersPresentityAbstract
      *
      * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -286,7 +286,7 @@ abstract class UsersPresentityAbstract
      *
      * @return string
      */
-    public function getDomain()
+    public function getDomain(): string
     {
         return $this->domain;
     }
@@ -313,7 +313,7 @@ abstract class UsersPresentityAbstract
      *
      * @return string
      */
-    public function getEvent()
+    public function getEvent(): string
     {
         return $this->event;
     }
@@ -340,7 +340,7 @@ abstract class UsersPresentityAbstract
      *
      * @return string
      */
-    public function getEtag()
+    public function getEtag(): string
     {
         return $this->etag;
     }
@@ -367,7 +367,7 @@ abstract class UsersPresentityAbstract
      *
      * @return integer
      */
-    public function getExpires()
+    public function getExpires(): int
     {
         return $this->expires;
     }
@@ -394,7 +394,7 @@ abstract class UsersPresentityAbstract
      *
      * @return integer
      */
-    public function getReceivedTime()
+    public function getReceivedTime(): int
     {
         return $this->receivedTime;
     }
@@ -420,7 +420,7 @@ abstract class UsersPresentityAbstract
      *
      * @return string
      */
-    public function getBody()
+    public function getBody(): string
     {
         return $this->body;
     }
@@ -447,7 +447,7 @@ abstract class UsersPresentityAbstract
      *
      * @return string
      */
-    public function getSender()
+    public function getSender(): string
     {
         return $this->sender;
     }
@@ -474,7 +474,7 @@ abstract class UsersPresentityAbstract
      *
      * @return integer
      */
-    public function getPriority()
+    public function getPriority(): int
     {
         return $this->priority;
     }

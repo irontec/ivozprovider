@@ -29,7 +29,7 @@ interface TpRateInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getTpid();
+    public function getTpid(): string;
 
     /**
      * Get tag
@@ -43,42 +43,42 @@ interface TpRateInterface extends LoggableEntityInterface
      *
      * @return float
      */
-    public function getConnectFee();
+    public function getConnectFee(): float;
 
     /**
      * Get rateCost
      *
      * @return float
      */
-    public function getRateCost();
+    public function getRateCost(): float;
 
     /**
      * Get rateUnit
      *
      * @return string
      */
-    public function getRateUnit();
+    public function getRateUnit(): string;
 
     /**
      * Get rateIncrement
      *
      * @return string
      */
-    public function getRateIncrement();
+    public function getRateIncrement(): string;
 
     /**
      * Get groupIntervalStart
      *
      * @return string
      */
-    public function getGroupIntervalStart();
+    public function getGroupIntervalStart(): string;
 
     /**
      * Get createdAt
      *
      * @return \DateTime
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): \DateTime;
 
     /**
      * Set destinationRate
@@ -95,4 +95,9 @@ interface TpRateInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
     public function getDestinationRate();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

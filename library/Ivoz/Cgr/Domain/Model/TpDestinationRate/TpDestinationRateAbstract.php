@@ -272,7 +272,7 @@ abstract class TpDestinationRateAbstract
      *
      * @return string
      */
-    public function getTpid()
+    public function getTpid(): string
     {
         return $this->tpid;
     }
@@ -387,7 +387,7 @@ abstract class TpDestinationRateAbstract
      *
      * @return string
      */
-    public function getRoundingMethod()
+    public function getRoundingMethod(): string
     {
         return $this->roundingMethod;
     }
@@ -414,7 +414,7 @@ abstract class TpDestinationRateAbstract
      *
      * @return integer
      */
-    public function getRoundingDecimals()
+    public function getRoundingDecimals(): int
     {
         return $this->roundingDecimals;
     }
@@ -441,7 +441,7 @@ abstract class TpDestinationRateAbstract
      *
      * @return float
      */
-    public function getMaxCost()
+    public function getMaxCost(): float
     {
         return $this->maxCost;
     }
@@ -468,7 +468,7 @@ abstract class TpDestinationRateAbstract
      *
      * @return string
      */
-    public function getMaxCostStrategy()
+    public function getMaxCostStrategy(): string
     {
         return $this->maxCostStrategy;
     }
@@ -502,7 +502,7 @@ abstract class TpDestinationRateAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

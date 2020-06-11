@@ -38,7 +38,7 @@ interface RatingPlanInterface extends LoggableEntityInterface
      *
      * @return float
      */
-    public function getWeight();
+    public function getWeight(): float;
 
     /**
      * Get timingType
@@ -52,7 +52,7 @@ interface RatingPlanInterface extends LoggableEntityInterface
      *
      * @return \DateTime
      */
-    public function getTimeIn();
+    public function getTimeIn(): \DateTime;
 
     /**
      * Get monday
@@ -125,6 +125,11 @@ interface RatingPlanInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
      */
     public function getDestinationRateGroup();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Set tpTiming

@@ -34,4 +34,9 @@ interface ConditionalRoutesConditionsRelRouteLockInterface extends LoggableEntit
      * @return \Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface
      */
     public function getRouteLock();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

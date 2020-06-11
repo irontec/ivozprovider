@@ -48,21 +48,21 @@ interface HuntGroupInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get description
      *
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): string;
 
     /**
      * Get strategy
      *
      * @return string
      */
-    public function getStrategy();
+    public function getStrategy(): string;
 
     /**
      * Get ringAllTimeout
@@ -90,14 +90,14 @@ interface HuntGroupInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getPreventMissedCalls();
+    public function getPreventMissedCalls(): int;
 
     /**
      * Get allowCallForwards
      *
      * @return integer
      */
-    public function getAllowCallForwards();
+    public function getAllowCallForwards(): int;
 
     /**
      * Get company
@@ -133,6 +133,11 @@ interface HuntGroupInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNoAnswerNumberCountry();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add huntGroupsRelUser

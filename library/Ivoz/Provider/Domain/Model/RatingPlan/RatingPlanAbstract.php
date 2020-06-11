@@ -275,7 +275,7 @@ abstract class RatingPlanAbstract
      *
      * @return float
      */
-    public function getWeight()
+    public function getWeight(): float
     {
         return $this->weight;
     }
@@ -333,7 +333,7 @@ abstract class RatingPlanAbstract
      *
      * @return \DateTime
      */
-    public function getTimeIn()
+    public function getTimeIn(): \DateTime
     {
         return $this->timeIn;
     }

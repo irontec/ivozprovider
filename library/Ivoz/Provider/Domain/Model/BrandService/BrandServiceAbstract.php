@@ -190,7 +190,7 @@ abstract class BrandServiceAbstract
      *
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }

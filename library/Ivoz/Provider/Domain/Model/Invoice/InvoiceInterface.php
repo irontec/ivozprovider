@@ -29,13 +29,13 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
     /**
      * @return bool
      */
-    public function isWaiting() :bool;
+    public function isWaiting(): bool;
 
     public function setNumber($number = null);
 
-    public function mustRunInvoicer() :bool;
+    public function mustRunInvoicer(): bool;
 
-    public function mustCheckValidity() :bool;
+    public function mustCheckValidity(): bool;
 
     /**
      * Get number
@@ -134,6 +134,11 @@ interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterfa
      * @return \Ivoz\Provider\Domain\Model\Invoice\Pdf
      */
     public function getPdf();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add relFixedCost

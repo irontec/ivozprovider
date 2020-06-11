@@ -11,14 +11,14 @@ interface UsersLocationAttrInterface extends EntityInterface
      *
      * @return string
      */
-    public function getRuid();
+    public function getRuid(): string;
 
     /**
      * Get username
      *
      * @return string
      */
-    public function getUsername();
+    public function getUsername(): string;
 
     /**
      * Get domain
@@ -32,26 +32,31 @@ interface UsersLocationAttrInterface extends EntityInterface
      *
      * @return string
      */
-    public function getAname();
+    public function getAname(): string;
 
     /**
      * Get atype
      *
      * @return integer
      */
-    public function getAtype();
+    public function getAtype(): int;
 
     /**
      * Get avalue
      *
      * @return string
      */
-    public function getAvalue();
+    public function getAvalue(): string;
 
     /**
      * Get lastModified
      *
      * @return \DateTime
      */
-    public function getLastModified();
+    public function getLastModified(): \DateTime;
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

@@ -20,7 +20,7 @@ interface RoutingPatternInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getPrefix();
+    public function getPrefix(): string;
 
     /**
      * Get brand
@@ -42,6 +42,11 @@ interface RoutingPatternInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RoutingPattern\Description
      */
     public function getDescription();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add outgoingRouting

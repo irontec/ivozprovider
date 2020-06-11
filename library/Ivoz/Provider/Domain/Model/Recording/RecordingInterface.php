@@ -34,21 +34,21 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @return \DateTime
      */
-    public function getCalldate();
+    public function getCalldate(): \DateTime;
 
     /**
      * Get type
      *
      * @return string
      */
-    public function getType();
+    public function getType(): string;
 
     /**
      * Get duration
      *
      * @return float
      */
-    public function getDuration();
+    public function getDuration(): float;
 
     /**
      * Get caller
@@ -93,6 +93,11 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
      * @return \Ivoz\Provider\Domain\Model\Recording\RecordedFile
      */
     public function getRecordedFile();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * @param string $fldName

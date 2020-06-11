@@ -21,14 +21,14 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getPriority();
+    public function getPriority(): int;
 
     /**
      * Get policy
      *
      * @return string
      */
-    public function getPolicy();
+    public function getPolicy(): string;
 
     /**
      * Set callAcl
@@ -52,4 +52,9 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
      */
     public function getMatchList();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

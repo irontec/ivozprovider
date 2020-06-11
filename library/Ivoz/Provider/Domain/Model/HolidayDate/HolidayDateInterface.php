@@ -29,21 +29,21 @@ interface HolidayDateInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get eventDate
      *
      * @return \DateTime
      */
-    public function getEventDate();
+    public function getEventDate(): \DateTime;
 
     /**
      * Get wholeDayEvent
      *
      * @return boolean
      */
-    public function getWholeDayEvent();
+    public function getWholeDayEvent(): bool;
 
     /**
      * Get timeIn
@@ -116,6 +116,11 @@ interface HolidayDateInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNumberCountry();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * @param string $prefix

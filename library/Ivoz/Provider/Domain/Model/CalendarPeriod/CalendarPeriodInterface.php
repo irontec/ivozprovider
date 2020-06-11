@@ -33,14 +33,14 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
      *
      * @return \DateTime
      */
-    public function getStartDate();
+    public function getStartDate(): \DateTime;
 
     /**
      * Get endDate
      *
      * @return \DateTime
      */
-    public function getEndDate();
+    public function getEndDate(): \DateTime;
 
     /**
      * Get routeType
@@ -99,6 +99,11 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNumberCountry();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add relSchedule

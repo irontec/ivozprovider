@@ -55,7 +55,7 @@ interface ExtensionInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getNumber();
+    public function getNumber(): string;
 
     /**
      * Get routeType
@@ -142,6 +142,11 @@ interface ExtensionInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNumberCountry();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add user

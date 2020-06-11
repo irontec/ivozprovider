@@ -26,19 +26,19 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * @return bool
      */
-    public function isBrandAdmin() :bool;
+    public function isBrandAdmin(): bool;
 
-    public function isVpbxAdmin() :bool;
+    public function isVpbxAdmin(): bool;
 
-    public function isResidentialAdmin() :bool;
+    public function isResidentialAdmin(): bool;
 
-    public function isRetailAdmin() :bool;
+    public function isRetailAdmin(): bool;
 
-    public function isWholesaleAdmin() :bool;
+    public function isWholesaleAdmin(): bool;
 
-    public function companyHasFeature(string $iden) :bool;
+    public function companyHasFeature(string $iden): bool;
 
-    public function brandHasFeature(string $iden) :bool;
+    public function brandHasFeature(string $iden): bool;
 
     public function serialize();
 
@@ -49,35 +49,35 @@ interface AdministratorInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getUsername();
+    public function getUsername(): string;
 
     /**
      * Get pass
      *
      * @return string
      */
-    public function getPass();
+    public function getPass(): string;
 
     /**
      * Get email
      *
      * @return string
      */
-    public function getEmail();
+    public function getEmail(): string;
 
     /**
      * Get active
      *
      * @return boolean
      */
-    public function getActive();
+    public function getActive(): bool;
 
     /**
      * Get restricted
      *
      * @return boolean
      */
-    public function getRestricted();
+    public function getRestricted(): bool;
 
     /**
      * Get name
@@ -115,6 +115,11 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getTimezone();
 
     /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
+
+    /**
      * Add relPublicEntity
      *
      * @param \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity
@@ -148,39 +153,39 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * @see AdvancedUserInterface::getRoles()
      */
-    public function getRoles();
+    public function getRoles(): array;
 
-    public function hasAccessPrivileges(string $fqdn, string $reqMethod) :bool;
+    public function hasAccessPrivileges(string $fqdn, string $reqMethod): bool;
 
     /**
      * @see AdvancedUserInterface::getPassword()
      */
-    public function getPassword();
+    public function getPassword(): string;
 
     /**
      * @see AdvancedUserInterface::isAccountNonExpired()
      */
-    public function isAccountNonExpired();
+    public function isAccountNonExpired(): bool;
 
     /**
      * @see AdvancedUserInterface::isAccountNonLocked()
      */
-    public function isAccountNonLocked();
+    public function isAccountNonLocked(): bool;
 
     /**
      * @see AdvancedUserInterface::isCredentialsNonExpired()
      */
-    public function isCredentialsNonExpired();
+    public function isCredentialsNonExpired(): bool;
 
     /**
      * @see AdvancedUserInterface::isEnabled()
      */
-    public function isEnabled();
+    public function isEnabled(): bool;
 
     /**
      * @see AdvancedUserInterface::getSalt()
      */
-    public function getSalt();
+    public function getSalt(): string;
 
     /**
      * @see AdvancedUserInterface::eraseCredentials()

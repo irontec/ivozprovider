@@ -330,7 +330,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -362,7 +362,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @return string
      */
-    public function getUnit()
+    public function getUnit(): string
     {
         return $this->unit;
     }
@@ -390,7 +390,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @return integer
      */
-    public function getFrequency()
+    public function getFrequency(): int
     {
         return $this->frequency;
     }
@@ -448,7 +448,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }

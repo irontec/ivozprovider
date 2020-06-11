@@ -201,7 +201,7 @@ abstract class RouteLockAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -228,7 +228,7 @@ abstract class RouteLockAbstract
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -256,7 +256,7 @@ abstract class RouteLockAbstract
      *
      * @return boolean
      */
-    public function getOpen()
+    public function getOpen(): bool
     {
         return $this->open;
     }
