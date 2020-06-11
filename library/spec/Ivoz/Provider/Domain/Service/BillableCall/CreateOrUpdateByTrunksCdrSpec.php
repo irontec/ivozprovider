@@ -233,7 +233,10 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
     protected function prepareExecution()
     {
         $this->carrier = $this->getInstance(
-            Carrier::class
+            Carrier::class,
+            [
+                'name' => 'carrer1',
+            ]
         );
 
         $this->trunksCdr = $this->getInstance(

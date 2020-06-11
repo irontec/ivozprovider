@@ -279,6 +279,15 @@ class ProcessExternalCdrSpec extends ObjectBehavior
         );
 
         $this->getterProphecy(
+            $company,
+            [
+                'getId' => 1,
+                'getBillingMethod' => 'postpaid',
+            ],
+            false
+        );
+
+        $this->getterProphecy(
             $trunksCdr,
             [
                 'getId' => 1,
@@ -287,7 +296,7 @@ class ProcessExternalCdrSpec extends ObjectBehavior
                 'getCarrier' => null,
                 'getCallid' => '',
                 'getCallee' => '',
-                'getDuration' => '',
+                'getDuration' => 10,
                 'getStartTime' => $startTime,
                 'isOutboundCall' => true
             ],
@@ -301,6 +310,16 @@ class ProcessExternalCdrSpec extends ObjectBehavior
             ],
             false
         );
+
+        if ($tpCdr) {
+            $this->getterProphecy(
+                $tpCdr,
+                [
+                    'getCgrid' => 'b10c1'
+                ],
+                false
+            );
+        }
 
         $this
             ->apiClient
