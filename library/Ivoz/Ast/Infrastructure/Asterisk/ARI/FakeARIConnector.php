@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Service\Asterisk\ARI;
+namespace Ivoz\Ast\Infrastructure\Asterisk\ARI;
 
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 
