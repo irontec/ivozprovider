@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Service\Rest;
+namespace Ivoz\Provider\Infrastructure\Api\Client;
 
 use GuzzleHttp\ClientInterface;
 use Ivoz\Core\Domain\Service\ApiClientInterface;
