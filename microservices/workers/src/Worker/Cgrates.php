@@ -3,7 +3,7 @@
 namespace Worker;
 
 use GearmanJob;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReloadService;
+use Ivoz\Cgr\Infrastructure\Cgrates\Service\ReloadService;
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Cgrates as CgratesJob;
 use Mmoreram\GearmanBundle\Driver\Gearman;
 use Psr\Log\LoggerInterface;

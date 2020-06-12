@@ -1,9 +1,10 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
+namespace Ivoz\Cgr\Infrastructure\Cgrates\Service;
 
 use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\AbstractBalanceService;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface;
 

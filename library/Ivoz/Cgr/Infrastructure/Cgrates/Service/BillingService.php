@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
+namespace Ivoz\Cgr\Infrastructure\Cgrates\Service;
 
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
 use Ivoz\Core\Application\Service\EntityTools;

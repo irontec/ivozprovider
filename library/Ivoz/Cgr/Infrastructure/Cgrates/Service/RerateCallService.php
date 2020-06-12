@@ -1,8 +1,9 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
+namespace Ivoz\Cgr\Infrastructure\Cgrates\Service;
 
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
+use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\AbstractApiBasedService;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;

@@ -2,17 +2,15 @@
 
 namespace Ivoz\Provider\Domain\Service\BillableCall;
 
-use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
+use Ivoz\Cgr\Infrastructure\Cgrates\Service\ProcessExternalCdr;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Event\DomainEventInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ProcessExternalCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
 use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigratedSubscriberInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
-use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Psr\Log\LoggerInterface;
 
 class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface

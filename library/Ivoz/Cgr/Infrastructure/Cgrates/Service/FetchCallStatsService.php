@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
+namespace Ivoz\Cgr\Infrastructure\Cgrates\Service;
 
 use GuzzleHttp\Exception\RequestException;
 use Ivoz\Cgr\Domain\Service\TpCdrStat\FetchCallStatsServiceInterface;

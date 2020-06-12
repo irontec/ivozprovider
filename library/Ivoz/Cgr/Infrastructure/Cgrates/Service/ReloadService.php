@@ -1,8 +1,9 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
+namespace Ivoz\Cgr\Infrastructure\Cgrates\Service;
 
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
+use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\AbstractApiBasedService;
 
 class ReloadService extends AbstractApiBasedService
 {

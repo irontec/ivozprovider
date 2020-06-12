@@ -1,10 +1,11 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
+namespace Ivoz\Cgr\Infrastructure\Cgrates\Service;
 
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ApiClient;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
@@ -94,7 +95,6 @@ class ProcessExternalCdr
                 $payload
             );
 
-            /** @var TpCdrInterface $tpCdr */
             $tpCdr = $this->tpCdrRepository->getByOriginId($callId);
             if (!$tpCdr) {
                 throw new \DomainException('TpCdr not found');
