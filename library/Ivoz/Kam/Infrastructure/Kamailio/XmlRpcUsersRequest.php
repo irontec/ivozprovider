@@ -1,7 +1,9 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client;
+namespace Ivoz\Kam\Infrastructure\Kamailio;
 
+use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\AbstractXmlRpcRequest;
+use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcUsersRequestInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc;
 use Ivoz\Kam\Domain\Service\UsersClientInterface;
 use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
