@@ -1,9 +1,10 @@
 <?php
 
-namespace Ivoz\Kam\Infrastructure\Kamailio;
+namespace Ivoz\Kam\Infrastructure\Gearman;
 
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcTrunksRequestInterface;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
+use Ivoz\Kam\Infrastructure\Kamailio\RpcClient;
 use Psr\Log\LoggerInterface;
 
 class TrunksClient implements TrunksClientInterface
