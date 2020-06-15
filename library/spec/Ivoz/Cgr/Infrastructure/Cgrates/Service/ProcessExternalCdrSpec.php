@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
+namespace spec\Ivoz\Cgr\Infrastructure\Cgrates\Service;
 
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
+use Ivoz\Cgr\Infrastructure\Cgrates\Service\ProcessExternalCdr;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ApiClient;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ProcessExternalCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
