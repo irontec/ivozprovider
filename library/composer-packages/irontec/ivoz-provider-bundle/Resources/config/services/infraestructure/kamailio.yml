@@ -1,0 +1,27 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ###############################################
+  ## RPC Clients
+  ###############################################
+
+  Ivoz\Kam\Infrastructure\Kamailio\FakeRpcClient:
+    class: Ivoz\Kam\Infrastructure\Kamailio\FakeRpcClient
+    factory: ['Ivoz\Kam\Infrastructure\Kamailio\FakeRpcClient', 'factory']
+    arguments: ['trunks.ivozprovider.local:8001']
+
+  Ivoz\Kam\Infrastructure\Kamailio\RpcClient::Trunks:
+    class: Ivoz\Kam\Infrastructure\Kamailio\RpcClient
+    factory: ['Ivoz\Kam\Infrastructure\Kamailio\RpcClient', 'factory']
+    arguments: ['trunks.ivozprovider.local:8001']
+    tags:
+    - { name: test_double, fake: 'Ivoz\Kam\Infrastructure\Kamailio\FakeRpcClient' }
+
+  Ivoz\Kam\Infrastructure\Kamailio\RpcClient::Users:
+    class: Ivoz\Kam\Infrastructure\Kamailio\RpcClient
+    factory: ['Ivoz\Kam\Infrastructure\Kamailio\RpcClient', 'factory']
+    arguments: ['users.ivozprovider.local:8000']
+    tags:
+    - { name: test_double, fake: 'Ivoz\Kam\Infrastructure\Kamailio\FakeRpcClient' }

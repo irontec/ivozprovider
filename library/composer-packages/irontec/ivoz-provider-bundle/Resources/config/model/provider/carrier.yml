@@ -12,7 +12,7 @@ services:
     arguments:
       $entityTools: '@Ivoz\Core\Application\Service\EntityTools'
       $logger: '@logger'
-      $client: '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CarrierBalanceService'
+      $client: '@Ivoz\Cgr\Infrastructure\Cgrates\Service\CarrierBalanceService'
       $syncBalanceService: '@Ivoz\Provider\Domain\Service\Carrier\SyncBalances'
       $carrierRepository: '@Ivoz\Provider\Domain\Model\Carrier\CarrierRepository'
       $createByCarrier: '@Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCarrier'

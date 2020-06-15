@@ -1,4 +1,7 @@
 imports:
+  - { resource: 'infraestructure/asterisk.yml' }
   - { resource: 'infraestructure/cgrates.yml' }
+  - { resource: 'infraestructure/kamailio.yml' }
+  - { resource: 'infraestructure/gearman.yml' }
   - { resource: 'infraestructure/repositories.yml' }
   - { resource: 'infraestructure/rest.yml' }
