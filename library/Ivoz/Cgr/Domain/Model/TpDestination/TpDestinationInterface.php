@@ -13,7 +13,7 @@ interface TpDestinationInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getTpid();
+    public function getTpid(): string;
 
     /**
      * Get tag
@@ -27,14 +27,14 @@ interface TpDestinationInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getPrefix();
+    public function getPrefix(): string;
 
     /**
      * Get createdAt
      *
      * @return \DateTime
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): \DateTime;
 
     /**
      * Set destination
@@ -51,4 +51,9 @@ interface TpDestinationInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
      */
     public function getDestination();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

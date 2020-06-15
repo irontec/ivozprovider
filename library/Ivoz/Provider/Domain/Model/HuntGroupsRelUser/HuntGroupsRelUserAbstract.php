@@ -289,7 +289,7 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @return string
      */
-    public function getRouteType()
+    public function getRouteType(): string
     {
         return $this->routeType;
     }

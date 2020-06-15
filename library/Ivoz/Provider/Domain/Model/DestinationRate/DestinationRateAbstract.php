@@ -243,7 +243,7 @@ abstract class DestinationRateAbstract
      *
      * @return float
      */
-    public function getCost()
+    public function getCost(): float
     {
         return $this->cost;
     }
@@ -270,7 +270,7 @@ abstract class DestinationRateAbstract
      *
      * @return float
      */
-    public function getConnectFee()
+    public function getConnectFee(): float
     {
         return $this->connectFee;
     }
@@ -297,7 +297,7 @@ abstract class DestinationRateAbstract
      *
      * @return string
      */
-    public function getRateIncrement()
+    public function getRateIncrement(): string
     {
         return $this->rateIncrement;
     }
@@ -324,7 +324,7 @@ abstract class DestinationRateAbstract
      *
      * @return string
      */
-    public function getGroupIntervalStart()
+    public function getGroupIntervalStart(): string
     {
         return $this->groupIntervalStart;
     }

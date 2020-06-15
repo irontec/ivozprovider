@@ -17,7 +17,7 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get periodicAnnounce
@@ -45,14 +45,14 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getAutopause();
+    public function getAutopause(): string;
 
     /**
      * Get ringinuse
      *
      * @return string
      */
-    public function getRinginuse();
+    public function getRinginuse(): string;
 
     /**
      * Get wrapuptime
@@ -88,4 +88,9 @@ interface QueueInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface
      */
     public function getQueue();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

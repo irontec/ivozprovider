@@ -272,7 +272,7 @@ abstract class ExtensionAbstract
      *
      * @return string
      */
-    public function getNumber()
+    public function getNumber(): string
     {
         return $this->number;
     }

@@ -72,7 +72,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getAuthNeeded();
+    public function getAuthNeeded(): string;
 
     /**
      * Get authUser
@@ -145,4 +145,9 @@ interface CarrierServerInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

@@ -17,7 +17,7 @@ interface TimezoneInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getTz();
+    public function getTz(): string;
 
     /**
      * Get comment
@@ -39,4 +39,9 @@ interface TimezoneInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Timezone\Label
      */
     public function getLabel();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

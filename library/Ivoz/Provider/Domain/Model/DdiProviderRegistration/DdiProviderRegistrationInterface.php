@@ -17,49 +17,49 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getUsername();
+    public function getUsername(): string;
 
     /**
      * Get domain
      *
      * @return string
      */
-    public function getDomain();
+    public function getDomain(): string;
 
     /**
      * Get realm
      *
      * @return string
      */
-    public function getRealm();
+    public function getRealm(): string;
 
     /**
      * Get authUsername
      *
      * @return string
      */
-    public function getAuthUsername();
+    public function getAuthUsername(): string;
 
     /**
      * Get authPassword
      *
      * @return string
      */
-    public function getAuthPassword();
+    public function getAuthPassword(): string;
 
     /**
      * Get authProxy
      *
      * @return string
      */
-    public function getAuthProxy();
+    public function getAuthProxy(): string;
 
     /**
      * Get expires
      *
      * @return integer
      */
-    public function getExpires();
+    public function getExpires(): int;
 
     /**
      * Get multiDdi
@@ -73,7 +73,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getContactUsername();
+    public function getContactUsername(): string;
 
     /**
      * Get trunksUacreg
@@ -97,4 +97,9 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
      */
     public function getDdiProvider();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

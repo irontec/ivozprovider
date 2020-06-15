@@ -17,7 +17,7 @@ interface TrunksAddressInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getGrp();
+    public function getGrp(): int;
 
     /**
      * Get ipAddr
@@ -31,14 +31,14 @@ interface TrunksAddressInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getMask();
+    public function getMask(): int;
 
     /**
      * Get port
      *
      * @return integer
      */
-    public function getPort();
+    public function getPort(): int;
 
     /**
      * Get tag
@@ -62,4 +62,9 @@ interface TrunksAddressInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
      */
     public function getDdiProviderAddress();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

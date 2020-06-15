@@ -244,7 +244,7 @@ abstract class RoutingPatternAbstract
      *
      * @return string
      */
-    public function getPrefix()
+    public function getPrefix(): string
     {
         return $this->prefix;
     }

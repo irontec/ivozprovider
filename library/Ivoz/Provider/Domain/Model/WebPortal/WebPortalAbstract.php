@@ -245,7 +245,7 @@ abstract class WebPortalAbstract
      *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
@@ -306,7 +306,7 @@ abstract class WebPortalAbstract
      *
      * @return string
      */
-    public function getUrlType()
+    public function getUrlType(): string
     {
         return $this->urlType;
     }

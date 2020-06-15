@@ -56,14 +56,14 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getCallTypeFilter();
+    public function getCallTypeFilter(): string;
 
     /**
      * Get callForwardType
      *
      * @return string
      */
-    public function getCallForwardType();
+    public function getCallForwardType(): string;
 
     /**
      * Get targetType
@@ -84,14 +84,14 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getNoAnswerTimeout();
+    public function getNoAnswerTimeout(): int;
 
     /**
      * Get enabled
      *
      * @return boolean
      */
-    public function getEnabled();
+    public function getEnabled(): bool;
 
     /**
      * Set user
@@ -161,6 +161,11 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * @param string $prefix

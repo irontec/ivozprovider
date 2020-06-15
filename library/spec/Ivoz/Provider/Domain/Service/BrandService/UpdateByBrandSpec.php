@@ -11,9 +11,12 @@ use Ivoz\Provider\Domain\Model\Service\ServiceRepository;
 use Ivoz\Provider\Domain\Service\BrandService\UpdateByBrand;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class UpdateByBrandSpec extends ObjectBehavior
 {
+    use HelperTrait;
+
     /**
      * @var EntityTools
      */
@@ -71,6 +74,15 @@ class UpdateByBrandSpec extends ObjectBehavior
             ->serviceRepository
             ->findAll()
             ->willReturn([$service]);
+
+        $this->getterProphecy(
+            $service,
+            [
+                'getId' => 1,
+                'getDefaultCode' => '94',
+            ],
+            false
+        );
 
         $this
             ->entityTools

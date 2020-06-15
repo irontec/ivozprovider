@@ -263,7 +263,7 @@ abstract class AdministratorAbstract
      *
      * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -290,7 +290,7 @@ abstract class AdministratorAbstract
      *
      * @return string
      */
-    public function getPass()
+    public function getPass(): string
     {
         return $this->pass;
     }
@@ -317,7 +317,7 @@ abstract class AdministratorAbstract
      *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -345,7 +345,7 @@ abstract class AdministratorAbstract
      *
      * @return boolean
      */
-    public function getActive()
+    public function getActive(): bool
     {
         return $this->active;
     }
@@ -373,7 +373,7 @@ abstract class AdministratorAbstract
      *
      * @return boolean
      */
-    public function getRestricted()
+    public function getRestricted(): bool
     {
         return $this->restricted;
     }

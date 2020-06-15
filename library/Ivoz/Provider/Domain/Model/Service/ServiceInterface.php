@@ -22,21 +22,21 @@ interface ServiceInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getIden();
+    public function getIden(): string;
 
     /**
      * Get defaultCode
      *
      * @return string
      */
-    public function getDefaultCode();
+    public function getDefaultCode(): string;
 
     /**
      * Get extraArgs
      *
      * @return boolean
      */
-    public function getExtraArgs();
+    public function getExtraArgs(): bool;
 
     /**
      * Get name
@@ -51,4 +51,9 @@ interface ServiceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Service\Description
      */
     public function getDescription();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

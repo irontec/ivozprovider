@@ -7,8 +7,6 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
-use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
-use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 class CreateOrUpdateByTrunksCdr
 {

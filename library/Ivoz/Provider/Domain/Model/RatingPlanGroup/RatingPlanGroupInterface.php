@@ -66,6 +66,11 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
+
+    /**
      * Add ratingPlan
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan

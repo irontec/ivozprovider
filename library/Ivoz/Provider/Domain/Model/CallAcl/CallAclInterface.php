@@ -29,14 +29,14 @@ interface CallAclInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get defaultPolicy
      *
      * @return string
      */
-    public function getDefaultPolicy();
+    public function getDefaultPolicy(): string;
 
     /**
      * Get company
@@ -44,6 +44,11 @@ interface CallAclInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add relMatchList

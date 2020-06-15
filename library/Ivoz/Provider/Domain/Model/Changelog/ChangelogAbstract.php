@@ -224,7 +224,7 @@ abstract class ChangelogAbstract
      *
      * @return string
      */
-    public function getEntity()
+    public function getEntity(): string
     {
         return $this->entity;
     }
@@ -251,7 +251,7 @@ abstract class ChangelogAbstract
      *
      * @return string
      */
-    public function getEntityId()
+    public function getEntityId(): string
     {
         return $this->entityId;
     }
@@ -309,7 +309,7 @@ abstract class ChangelogAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedOn()
+    public function getCreatedOn(): \DateTime
     {
         return clone $this->createdOn;
     }
@@ -336,7 +336,7 @@ abstract class ChangelogAbstract
      *
      * @return integer
      */
-    public function getMicrotime()
+    public function getMicrotime(): int
     {
         return $this->microtime;
     }

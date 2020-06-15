@@ -220,7 +220,7 @@ abstract class TimezoneAbstract
      *
      * @return string
      */
-    public function getTz()
+    public function getTz(): string
     {
         return $this->tz;
     }

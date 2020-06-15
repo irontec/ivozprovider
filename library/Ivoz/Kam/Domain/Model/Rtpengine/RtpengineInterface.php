@@ -13,35 +13,35 @@ interface RtpengineInterface extends EntityInterface
      *
      * @return integer
      */
-    public function getSetid();
+    public function getSetid(): int;
 
     /**
      * Get url
      *
      * @return string
      */
-    public function getUrl();
+    public function getUrl(): string;
 
     /**
      * Get weight
      *
      * @return integer
      */
-    public function getWeight();
+    public function getWeight(): int;
 
     /**
      * Get disabled
      *
      * @return boolean
      */
-    public function getDisabled();
+    public function getDisabled(): bool;
 
     /**
      * Get stamp
      *
      * @return \DateTime
      */
-    public function getStamp();
+    public function getStamp(): \DateTime;
 
     /**
      * Get description
@@ -56,4 +56,9 @@ interface RtpengineInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface | null
      */
     public function getMediaRelaySet();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

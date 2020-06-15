@@ -15,7 +15,7 @@ interface UsersAddressInterface extends EntityInterface
      *
      * @return string
      */
-    public function getSourceAddress();
+    public function getSourceAddress(): string;
 
     /**
      * Get ipAddr
@@ -29,14 +29,14 @@ interface UsersAddressInterface extends EntityInterface
      *
      * @return integer
      */
-    public function getMask();
+    public function getMask(): int;
 
     /**
      * Get port
      *
      * @return integer
      */
-    public function getPort();
+    public function getPort(): int;
 
     /**
      * Get tag
@@ -58,4 +58,9 @@ interface UsersAddressInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

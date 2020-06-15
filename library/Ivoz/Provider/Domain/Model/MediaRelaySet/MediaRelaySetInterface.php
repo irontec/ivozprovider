@@ -17,7 +17,7 @@ interface MediaRelaySetInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get description
@@ -25,4 +25,9 @@ interface MediaRelaySetInterface extends LoggableEntityInterface
      * @return string | null
      */
     public function getDescription();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

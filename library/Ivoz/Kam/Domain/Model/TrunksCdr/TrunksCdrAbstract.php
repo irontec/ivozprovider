@@ -396,7 +396,7 @@ abstract class TrunksCdrAbstract
      *
      * @return \DateTime
      */
-    public function getStartTime()
+    public function getStartTime(): \DateTime
     {
         return clone $this->startTime;
     }
@@ -430,7 +430,7 @@ abstract class TrunksCdrAbstract
      *
      * @return \DateTime
      */
-    public function getEndTime()
+    public function getEndTime(): \DateTime
     {
         return clone $this->endTime;
     }
@@ -457,7 +457,7 @@ abstract class TrunksCdrAbstract
      *
      * @return float
      */
-    public function getDuration()
+    public function getDuration(): float
     {
         return $this->duration;
     }
@@ -717,7 +717,7 @@ abstract class TrunksCdrAbstract
      *
      * @return \DateTime
      */
-    public function getParserScheduledAt()
+    public function getParserScheduledAt(): \DateTime
     {
         return clone $this->parserScheduledAt;
     }

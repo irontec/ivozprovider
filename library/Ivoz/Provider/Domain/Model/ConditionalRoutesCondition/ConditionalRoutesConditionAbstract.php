@@ -290,7 +290,7 @@ abstract class ConditionalRoutesConditionAbstract
      *
      * @return integer
      */
-    public function getPriority()
+    public function getPriority(): int
     {
         return $this->priority;
     }

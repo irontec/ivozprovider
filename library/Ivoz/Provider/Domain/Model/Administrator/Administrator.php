@@ -36,7 +36,9 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
      */
     public function setPass($pass = null)
     {
-        if ($pass === $this->getPass()) {
+        if ($this->isInitialized()
+            && $pass === $this->getPass()
+        ) {
             return $this;
         }
 

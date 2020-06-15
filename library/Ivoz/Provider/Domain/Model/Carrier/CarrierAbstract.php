@@ -245,7 +245,7 @@ abstract class CarrierAbstract
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -272,7 +272,7 @@ abstract class CarrierAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }

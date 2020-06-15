@@ -17,7 +17,7 @@ interface SpecialNumberInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getNumber();
+    public function getNumber(): string;
 
     /**
      * Get numberE164
@@ -31,7 +31,7 @@ interface SpecialNumberInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getDisableCDR();
+    public function getDisableCDR(): int;
 
     /**
      * Get brand
@@ -46,4 +46,9 @@ interface SpecialNumberInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
      */
     public function getCountry();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

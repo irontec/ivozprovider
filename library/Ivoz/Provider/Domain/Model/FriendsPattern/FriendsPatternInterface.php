@@ -17,14 +17,14 @@ interface FriendsPatternInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get regExp
      *
      * @return string
      */
-    public function getRegExp();
+    public function getRegExp(): string;
 
     /**
      * Set friend
@@ -41,4 +41,9 @@ interface FriendsPatternInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface
      */
     public function getFriend();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

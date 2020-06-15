@@ -28,28 +28,28 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
      *
      * @return string
      */
-    public function getSentTo();
+    public function getSentTo(): string;
 
     /**
      * Get inDate
      *
      * @return \DateTime
      */
-    public function getInDate();
+    public function getInDate(): \DateTime;
 
     /**
      * Get outDate
      *
      * @return \DateTime
      */
-    public function getOutDate();
+    public function getOutDate(): \DateTime;
 
     /**
      * Get createdOn
      *
      * @return \DateTime
      */
-    public function getCreatedOn();
+    public function getCreatedOn(): \DateTime;
 
     /**
      * Get company
@@ -78,6 +78,11 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
      * @return \Ivoz\Provider\Domain\Model\CallCsvReport\Csv
      */
     public function getCsv();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * @param string $fldName

@@ -17,21 +17,21 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getLcrId();
+    public function getLcrId(): int;
 
     /**
      * Get priority
      *
      * @return integer
      */
-    public function getPriority();
+    public function getPriority(): int;
 
     /**
      * Get weight
      *
      * @return integer
      */
-    public function getWeight();
+    public function getWeight(): int;
 
     /**
      * Get rule
@@ -62,4 +62,9 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
      */
     public function getOutgoingRouting();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

@@ -264,7 +264,7 @@ abstract class ScheduleAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -290,7 +290,7 @@ abstract class ScheduleAbstract
      *
      * @return \DateTime
      */
-    public function getTimeIn()
+    public function getTimeIn(): \DateTime
     {
         return $this->timeIn;
     }
@@ -316,7 +316,7 @@ abstract class ScheduleAbstract
      *
      * @return \DateTime
      */
-    public function getTimeout()
+    public function getTimeout(): \DateTime
     {
         return $this->timeout;
     }

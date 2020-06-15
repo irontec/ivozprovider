@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "db48786117d33471ff85da32de5114b0",
+    "content-hash": "ec4e28ab19091f0d7693abc3235fb0e3",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1552,11 +1552,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "2.4.3.0",
+            "version": "3.0.0.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core",
-                "reference": "c53318587a46cee069c65ae4579f1bfd15aa4e2e",
+                "reference": "0797b865c2cead73d84d069f352261b01c379052",
                 "shasum": null
             },
             "require": {
@@ -1602,17 +1602,17 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "2.3.5.0",
+            "version": "3.0.0.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "10afbfeef44d380f36371dcc08aa231b331e67a8",
+                "reference": "0b817442bf521b5462b4d4d05608ab11ab260a96",
                 "shasum": null
             },
             "require": {
                 "doctrine/doctrine-bundle": "^1.6",
                 "doctrine/doctrine-cache-bundle": "^1.3",
-                "irontec/ivoz-core": "^2.3",
+                "irontec/ivoz-core": "^3.0",
                 "ocramius/proxy-manager": "~2.0",
                 "php": ">=7.0.19",
                 "symfony/monolog-bundle": "3.1.*",
@@ -1649,11 +1649,11 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "3.3.0.0",
+            "version": "4.0.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-dev-tools",
-                "reference": "6d48a2ccbcb13c76fd5b1d76601ff909c9f79ec4",
+                "reference": "8734bdf5f6f1b821339a12be570e932b9b5b6376",
                 "shasum": null
             },
             "require": {
@@ -1692,18 +1692,18 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.3.4",
+            "version": "2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "562439127aff8daf805c5d1e58d5bd9a92579bb5",
+                "reference": "05769e866b73e507ca79c7ebcae30c9b929a2fa8",
                 "shasum": null
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.1",
                 "incenteev/composer-parameter-handler": "^2.0",
-                "irontec/ivoz-core": "^2.3",
-                "irontec/ivoz-core-bundle": "^2.3",
+                "irontec/ivoz-core": "^3.0",
+                "irontec/ivoz-core-bundle": "^3.0",
                 "php": ">=7.0.19",
                 "sensio/distribution-bundle": "5.0.*",
                 "symfony/asset": "^3.4",
@@ -3035,7 +3035,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "3.4.39.0",
+            "version": "3.4.40.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/console",
@@ -3103,7 +3103,7 @@
         },
         {
             "name": "symfony/debug",
-            "version": "3.4.39.0",
+            "version": "3.4.40.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/debug",
@@ -3413,7 +3413,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "3.4.39.0",
+            "version": "3.4.40.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/event-dispatcher",
@@ -3934,7 +3934,7 @@
         },
         {
             "name": "symfony/inflector",
-            "version": "3.4.39.0",
+            "version": "3.4.40.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/inflector",

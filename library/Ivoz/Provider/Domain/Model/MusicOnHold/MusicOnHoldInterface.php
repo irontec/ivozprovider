@@ -42,7 +42,7 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get status
@@ -96,6 +96,11 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
      * @return \Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile
      */
     public function getEncodedFile();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * @param \Ivoz\Core\Domain\Service\TempFile $file

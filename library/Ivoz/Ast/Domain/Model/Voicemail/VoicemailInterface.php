@@ -16,14 +16,14 @@ interface VoicemailInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getContext();
+    public function getContext(): string;
 
     /**
      * Get mailbox
      *
      * @return string
      */
-    public function getMailbox();
+    public function getMailbox(): string;
 
     /**
      * Get password
@@ -255,4 +255,9 @@ interface VoicemailInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
      */
     public function getResidentialDevice();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

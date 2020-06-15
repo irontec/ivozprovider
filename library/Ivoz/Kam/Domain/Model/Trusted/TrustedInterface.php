@@ -55,7 +55,7 @@ interface TrustedInterface extends EntityInterface
      *
      * @return integer
      */
-    public function getPriority();
+    public function getPriority(): int;
 
     /**
      * Get company
@@ -63,4 +63,9 @@ interface TrustedInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

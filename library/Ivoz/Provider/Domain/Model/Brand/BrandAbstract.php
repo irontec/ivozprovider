@@ -354,7 +354,7 @@ abstract class BrandAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -467,7 +467,7 @@ abstract class BrandAbstract
      *
      * @return integer
      */
-    public function getMaxCalls()
+    public function getMaxCalls(): int
     {
         return $this->maxCalls;
     }

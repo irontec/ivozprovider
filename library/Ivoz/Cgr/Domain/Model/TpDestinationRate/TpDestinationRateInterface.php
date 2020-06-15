@@ -17,7 +17,7 @@ interface TpDestinationRateInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getTpid();
+    public function getTpid(): string;
 
     /**
      * Get tag
@@ -45,35 +45,35 @@ interface TpDestinationRateInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getRoundingMethod();
+    public function getRoundingMethod(): string;
 
     /**
      * Get roundingDecimals
      *
      * @return integer
      */
-    public function getRoundingDecimals();
+    public function getRoundingDecimals(): int;
 
     /**
      * Get maxCost
      *
      * @return float
      */
-    public function getMaxCost();
+    public function getMaxCost(): float;
 
     /**
      * Get maxCostStrategy
      *
      * @return string
      */
-    public function getMaxCostStrategy();
+    public function getMaxCostStrategy(): string;
 
     /**
      * Get createdAt
      *
      * @return \DateTime
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): \DateTime;
 
     /**
      * Set destinationRate
@@ -90,4 +90,9 @@ interface TpDestinationRateInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
     public function getDestinationRate();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

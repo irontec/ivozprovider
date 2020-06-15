@@ -27,6 +27,14 @@ class HuntGroupsRelUserSpec extends ObjectBehavior
         $huntGroup = $this->getTestDouble(
             HuntGroupInterface::class
         );
+        $this->getterProphecy(
+            $huntGroup,
+            [
+                'getStrategy' => 'roundRobin',
+            ],
+            false
+        );
+
         $user = $this->getTestDouble(
             UserInterface::class
         );

@@ -230,7 +230,7 @@ abstract class UsersAddressAbstract
      *
      * @return string
      */
-    public function getSourceAddress()
+    public function getSourceAddress(): string
     {
         return $this->sourceAddress;
     }
@@ -285,7 +285,7 @@ abstract class UsersAddressAbstract
      *
      * @return integer
      */
-    public function getMask()
+    public function getMask(): int
     {
         return $this->mask;
     }
@@ -312,7 +312,7 @@ abstract class UsersAddressAbstract
      *
      * @return integer
      */
-    public function getPort()
+    public function getPort(): int
     {
         return $this->port;
     }

@@ -326,7 +326,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @return integer
      */
-    public function getPriority()
+    public function getPriority(): int
     {
         return $this->priority;
     }
@@ -354,7 +354,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @return integer
      */
-    public function getWeight()
+    public function getWeight(): int
     {
         return $this->weight;
     }
@@ -443,7 +443,7 @@ abstract class OutgoingRoutingAbstract
      *
      * @return boolean
      */
-    public function getStopper()
+    public function getStopper(): bool
     {
         return $this->stopper;
     }

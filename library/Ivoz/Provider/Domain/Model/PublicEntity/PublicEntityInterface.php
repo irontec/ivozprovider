@@ -17,7 +17,7 @@ interface PublicEntityInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getIden();
+    public function getIden(): string;
 
     /**
      * Get fqdn
@@ -31,21 +31,21 @@ interface PublicEntityInterface extends LoggableEntityInterface
      *
      * @return boolean
      */
-    public function getPlatform();
+    public function getPlatform(): bool;
 
     /**
      * Get brand
      *
      * @return boolean
      */
-    public function getBrand();
+    public function getBrand(): bool;
 
     /**
      * Get client
      *
      * @return boolean
      */
-    public function getClient();
+    public function getClient(): bool;
 
     /**
      * Get name
@@ -53,4 +53,9 @@ interface PublicEntityInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\PublicEntity\Name
      */
     public function getName();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

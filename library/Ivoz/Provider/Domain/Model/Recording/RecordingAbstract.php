@@ -303,7 +303,7 @@ abstract class RecordingAbstract
      *
      * @return \DateTime
      */
-    public function getCalldate()
+    public function getCalldate(): \DateTime
     {
         return clone $this->calldate;
     }
@@ -333,7 +333,7 @@ abstract class RecordingAbstract
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -360,7 +360,7 @@ abstract class RecordingAbstract
      *
      * @return float
      */
-    public function getDuration()
+    public function getDuration(): float
     {
         return $this->duration;
     }

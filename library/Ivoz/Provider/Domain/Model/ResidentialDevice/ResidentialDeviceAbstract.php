@@ -405,7 +405,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -432,7 +432,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -549,7 +549,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string
      */
-    public function getAuthNeeded()
+    public function getAuthNeeded(): string
     {
         return $this->authNeeded;
     }
@@ -604,7 +604,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string
      */
-    public function getDisallow()
+    public function getDisallow(): string
     {
         return $this->disallow;
     }
@@ -631,7 +631,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string
      */
-    public function getAllow()
+    public function getAllow(): string
     {
         return $this->allow;
     }
@@ -661,7 +661,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string
      */
-    public function getDirectMediaMethod()
+    public function getDirectMediaMethod(): string
     {
         return $this->directMediaMethod;
     }
@@ -691,7 +691,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string
      */
-    public function getCalleridUpdateHeader()
+    public function getCalleridUpdateHeader(): string
     {
         return $this->calleridUpdateHeader;
     }
@@ -721,7 +721,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string
      */
-    public function getUpdateCallerid()
+    public function getUpdateCallerid(): string
     {
         return $this->updateCallerid;
     }
@@ -779,7 +779,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string
      */
-    public function getDirectConnectivity()
+    public function getDirectConnectivity(): string
     {
         return $this->directConnectivity;
     }
@@ -809,7 +809,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string
      */
-    public function getDdiIn()
+    public function getDdiIn(): string
     {
         return $this->ddiIn;
     }
@@ -837,7 +837,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return integer
      */
-    public function getMaxCalls()
+    public function getMaxCalls(): int
     {
         return $this->maxCalls;
     }
@@ -867,7 +867,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string
      */
-    public function getT38Passthrough()
+    public function getT38Passthrough(): string
     {
         return $this->t38Passthrough;
     }

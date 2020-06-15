@@ -34,4 +34,9 @@ interface FeaturesRelCompanyInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Feature\FeatureInterface
      */
     public function getFeature();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

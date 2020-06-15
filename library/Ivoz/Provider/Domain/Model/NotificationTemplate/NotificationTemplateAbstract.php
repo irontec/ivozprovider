@@ -192,7 +192,7 @@ abstract class NotificationTemplateAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -227,7 +227,7 @@ abstract class NotificationTemplateAbstract
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }

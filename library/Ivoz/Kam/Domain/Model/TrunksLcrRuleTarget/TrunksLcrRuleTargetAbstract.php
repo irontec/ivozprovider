@@ -221,7 +221,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @return integer
      */
-    public function getLcrId()
+    public function getLcrId(): int
     {
         return $this->lcrId;
     }
@@ -249,7 +249,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @return integer
      */
-    public function getPriority()
+    public function getPriority(): int
     {
         return $this->priority;
     }
@@ -277,7 +277,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @return integer
      */
-    public function getWeight()
+    public function getWeight(): int
     {
         return $this->weight;
     }

@@ -11,54 +11,59 @@ interface UsersXcapInterface extends EntityInterface
      *
      * @return string
      */
-    public function getUsername();
+    public function getUsername(): string;
 
     /**
      * Get domain
      *
      * @return string
      */
-    public function getDomain();
+    public function getDomain(): string;
 
     /**
      * Get doc
      *
      * @return string
      */
-    public function getDoc();
+    public function getDoc(): string;
 
     /**
      * Get docType
      *
      * @return integer
      */
-    public function getDocType();
+    public function getDocType(): int;
 
     /**
      * Get etag
      *
      * @return string
      */
-    public function getEtag();
+    public function getEtag(): string;
 
     /**
      * Get source
      *
      * @return integer
      */
-    public function getSource();
+    public function getSource(): int;
 
     /**
      * Get docUri
      *
      * @return string
      */
-    public function getDocUri();
+    public function getDocUri(): string;
 
     /**
      * Get port
      *
      * @return integer
      */
-    public function getPort();
+    public function getPort(): int;
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

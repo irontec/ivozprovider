@@ -151,7 +151,8 @@ class SyncBalancesSpec extends ObjectBehavior
             Carrier::class,
             [
                 'id' => $carrierId,
-                'balance' => $balance
+                'balance' => $balance,
+                'name' => 'carrier1',
             ]
         );
 

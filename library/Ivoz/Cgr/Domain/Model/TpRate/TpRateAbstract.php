@@ -263,7 +263,7 @@ abstract class TpRateAbstract
      *
      * @return string
      */
-    public function getTpid()
+    public function getTpid(): string
     {
         return $this->tpid;
     }
@@ -318,7 +318,7 @@ abstract class TpRateAbstract
      *
      * @return float
      */
-    public function getConnectFee()
+    public function getConnectFee(): float
     {
         return $this->connectFee;
     }
@@ -345,7 +345,7 @@ abstract class TpRateAbstract
      *
      * @return float
      */
-    public function getRateCost()
+    public function getRateCost(): float
     {
         return $this->rateCost;
     }
@@ -372,7 +372,7 @@ abstract class TpRateAbstract
      *
      * @return string
      */
-    public function getRateUnit()
+    public function getRateUnit(): string
     {
         return $this->rateUnit;
     }
@@ -399,7 +399,7 @@ abstract class TpRateAbstract
      *
      * @return string
      */
-    public function getRateIncrement()
+    public function getRateIncrement(): string
     {
         return $this->rateIncrement;
     }
@@ -426,7 +426,7 @@ abstract class TpRateAbstract
      *
      * @return string
      */
-    public function getGroupIntervalStart()
+    public function getGroupIntervalStart(): string
     {
         return $this->groupIntervalStart;
     }
@@ -460,7 +460,7 @@ abstract class TpRateAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

@@ -346,7 +346,7 @@ abstract class UsersCdrAbstract
      *
      * @return \DateTime
      */
-    public function getStartTime()
+    public function getStartTime(): \DateTime
     {
         return clone $this->startTime;
     }
@@ -380,7 +380,7 @@ abstract class UsersCdrAbstract
      *
      * @return \DateTime
      */
-    public function getEndTime()
+    public function getEndTime(): \DateTime
     {
         return clone $this->endTime;
     }
@@ -407,7 +407,7 @@ abstract class UsersCdrAbstract
      *
      * @return float
      */
-    public function getDuration()
+    public function getDuration(): float
     {
         return $this->duration;
     }
@@ -683,7 +683,7 @@ abstract class UsersCdrAbstract
      *
      * @return boolean
      */
-    public function getHidden()
+    public function getHidden(): bool
     {
         return $this->hidden;
     }

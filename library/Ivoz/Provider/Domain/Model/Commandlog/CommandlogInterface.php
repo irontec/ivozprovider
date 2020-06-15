@@ -18,14 +18,14 @@ interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
      *
      * @return string
      */
-    public function getRequestId();
+    public function getRequestId(): string;
 
     /**
      * Get class
      *
      * @return string
      */
-    public function getClass();
+    public function getClass(): string;
 
     /**
      * Get method
@@ -53,12 +53,17 @@ interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
      *
      * @return \DateTime
      */
-    public function getCreatedOn();
+    public function getCreatedOn(): \DateTime;
 
     /**
      * Get microtime
      *
      * @return integer
      */
-    public function getMicrotime();
+    public function getMicrotime(): int;
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

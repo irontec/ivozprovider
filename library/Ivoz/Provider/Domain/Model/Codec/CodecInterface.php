@@ -21,19 +21,24 @@ interface CodecInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getType();
+    public function getType(): string;
 
     /**
      * Get iden
      *
      * @return string
      */
-    public function getIden();
+    public function getIden(): string;
 
     /**
      * Get name
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

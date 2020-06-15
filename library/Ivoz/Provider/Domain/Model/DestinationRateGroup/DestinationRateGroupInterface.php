@@ -66,7 +66,7 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      *
      * @return boolean
      */
-    public function getDeductibleConnectionFee();
+    public function getDeductibleConnectionFee(): bool;
 
     /**
      * Get brand
@@ -102,6 +102,11 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\File
      */
     public function getFile();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add destinationRate

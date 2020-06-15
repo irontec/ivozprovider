@@ -246,7 +246,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -273,7 +273,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @return string
      */
-    public function getPrefix()
+    public function getPrefix(): string
     {
         return $this->prefix;
     }
@@ -301,7 +301,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @return integer
      */
-    public function getSequenceLength()
+    public function getSequenceLength(): int
     {
         return $this->sequenceLength;
     }
@@ -329,7 +329,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @return integer
      */
-    public function getIncrement()
+    public function getIncrement(): int
     {
         return $this->increment;
     }
@@ -381,7 +381,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @return integer
      */
-    public function getIteration()
+    public function getIteration(): int
     {
         return $this->iteration;
     }

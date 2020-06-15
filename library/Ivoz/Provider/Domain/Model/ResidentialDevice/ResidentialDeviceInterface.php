@@ -46,7 +46,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     /**
      * @return bool
      */
-    public function isDirectConnectivity();
+    public function isDirectConnectivity(): bool;
 
     /**
      * {@inheritDoc}
@@ -124,14 +124,14 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get description
      *
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): string;
 
     /**
      * Get transport
@@ -159,7 +159,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getAuthNeeded();
+    public function getAuthNeeded(): string;
 
     /**
      * Get password
@@ -173,35 +173,35 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getDisallow();
+    public function getDisallow(): string;
 
     /**
      * Get allow
      *
      * @return string
      */
-    public function getAllow();
+    public function getAllow(): string;
 
     /**
      * Get directMediaMethod
      *
      * @return string
      */
-    public function getDirectMediaMethod();
+    public function getDirectMediaMethod(): string;
 
     /**
      * Get calleridUpdateHeader
      *
      * @return string
      */
-    public function getCalleridUpdateHeader();
+    public function getCalleridUpdateHeader(): string;
 
     /**
      * Get updateCallerid
      *
      * @return string
      */
-    public function getUpdateCallerid();
+    public function getUpdateCallerid(): string;
 
     /**
      * Get fromDomain
@@ -215,28 +215,28 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getDirectConnectivity();
+    public function getDirectConnectivity(): string;
 
     /**
      * Get ddiIn
      *
      * @return string
      */
-    public function getDdiIn();
+    public function getDdiIn(): string;
 
     /**
      * Get maxCalls
      *
      * @return integer
      */
-    public function getMaxCalls();
+    public function getMaxCalls(): int;
 
     /**
      * Get t38Passthrough
      *
      * @return string
      */
-    public function getT38Passthrough();
+    public function getT38Passthrough(): string;
 
     /**
      * Set brand
@@ -290,6 +290,11 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add psEndpoint
