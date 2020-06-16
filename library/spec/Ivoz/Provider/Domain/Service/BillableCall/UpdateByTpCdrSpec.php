@@ -4,9 +4,9 @@ namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdr;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
+use Ivoz\Cgr\Infrastructure\Cgrates\Service\ProcessExternalCdr;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ProcessExternalCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;

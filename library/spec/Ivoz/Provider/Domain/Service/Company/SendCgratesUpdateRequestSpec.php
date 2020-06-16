@@ -2,13 +2,13 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Company;
 
+use Ivoz\Cgr\Infrastructure\Cgrates\Service\SetMaxUsageThresholdService;
 use Ivoz\Provider\Domain\Model\Brand\Brandinterface;
 use Ivoz\Provider\Domain\Service\Company\SendCgratesUpdateRequest;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionRepository;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\SetMaxUsageThresholdService;
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Cgrates;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionInterface;

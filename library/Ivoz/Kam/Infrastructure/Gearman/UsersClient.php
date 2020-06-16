@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Kam\Infrastructure\Kamailio;
+namespace Ivoz\Kam\Infrastructure\Gearman;
 
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcUsersRequestInterface;
 use Ivoz\Kam\Domain\Service\UsersClientInterface;
