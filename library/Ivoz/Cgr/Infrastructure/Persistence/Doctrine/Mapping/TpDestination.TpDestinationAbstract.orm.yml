@@ -1,9 +1,9 @@
 Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationAbstract:
   type: mappedSuperclass
   indexes:
-    tpDestination_tpid:
+    tpDestination_tag:
       columns:
-        - tpid
+        - tag
   uniqueConstraints:
     tpid_dest_prefix:
       columns:
