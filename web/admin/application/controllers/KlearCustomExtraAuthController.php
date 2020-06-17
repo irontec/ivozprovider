@@ -294,6 +294,8 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                         return !controller || controller == \'list\';
                     })
                     .klearModule(\'reDispatch\');
+
+                $.klear.restart({}, false);
             </script>';
         $message = $this->view->translate($messageLiteral, $model->getName(), $type);
         $data = array(
