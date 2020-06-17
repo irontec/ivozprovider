@@ -28,7 +28,7 @@ class FetchCallStatsService implements FetchCallStatsServiceInterface
     public function execute(CarrierInterface $carrier)
     {
         $params = [
-            'StatsQueueId' => 'cr' . $carrier->getId()
+            'StatsQueueId' => $carrier->getCgrSubject()
         ];
         $response = $this->sendRequest(
             'CDRStatsV1.GetMetrics',

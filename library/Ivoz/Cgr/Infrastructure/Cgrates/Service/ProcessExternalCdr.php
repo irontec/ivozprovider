@@ -70,8 +70,8 @@ class ProcessExternalCdr
             'OriginID' => $callId,
             'ToR' => '*voice',
             'RequestType' => '*' . $company->getBillingMethod(),
-            'Tenant' => 'b' . $brand->getId(),
-            'Account' => 'c' . $company->getId(),
+            'Tenant' => $brand->getCgrTenant(),
+            'Account' => $company->getCgrSubject(),
             'Destination' => $trunksCdr->getCallee(),
             'SetupTime' => $time,
             'AnswerTime' => $time,
@@ -84,7 +84,7 @@ class ProcessExternalCdr
                 : '0';
 
             $payload['ExtraFields'] = [
-                'carrierId' => 'cr' . $carrier->getId(),
+                'carrierId' => $carrier->getCgrSubject(),
                 'calculateCost' => $calculateCost
             ];
         }

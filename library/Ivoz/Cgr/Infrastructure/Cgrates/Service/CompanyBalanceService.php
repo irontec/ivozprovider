@@ -130,7 +130,8 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
         );
 
         $brand = $entity->getBrand();
-        return self::TENANT_PREFIX . $brand->getId();
+
+        return $brand->getCgrTenant();
     }
 
     /**
@@ -144,6 +145,7 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
             CompanyInterface::class
         );
 
-        return self::ACCOUNT_PREFIX . $entity->getId();
+        /** @var CompanyInterface $entity */
+        return $entity->getCgrSubject();
     }
 }
