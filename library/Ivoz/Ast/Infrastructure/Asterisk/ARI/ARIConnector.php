@@ -24,7 +24,6 @@ class ARIConnector
     /**
      * Connection information
      */
-    protected $_host;
     protected $_port;
     protected $_user;
     protected $_pass;
