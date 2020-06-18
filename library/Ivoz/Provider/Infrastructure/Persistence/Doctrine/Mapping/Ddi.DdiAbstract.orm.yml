@@ -1,5 +1,9 @@
 Ivoz\Provider\Domain\Model\Ddi\DdiAbstract:
   type: mappedSuperclass
+  indexes:
+    ddi_ddiE164:
+      columns:
+        - DdiE164
   uniqueConstraints:
     Ddicountry:
       columns:
