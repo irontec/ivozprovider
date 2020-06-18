@@ -74,7 +74,8 @@ class CarrierBalanceService extends AbstractBalanceService implements CarrierBal
         );
 
         $brand = $entity->getBrand();
-        return self::TENANT_PREFIX . $brand->getId();
+
+        return $brand->getCgrTenant();
     }
 
     /**
@@ -88,6 +89,7 @@ class CarrierBalanceService extends AbstractBalanceService implements CarrierBal
             CarrierInterface::class
         );
 
-        return self::ACCOUNT_PREFIX . $entity->getId();
+        /** @var CarrierInterface $entity */
+        $entity->getCgrSubject();
     }
 }

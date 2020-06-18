@@ -155,12 +155,12 @@ class ProcessExternalCdrSpec extends ObjectBehavior
             ->willReturn(4.26);
 
         $brand
-            ->getId()
-            ->willReturn(1);
+            ->getCgrTenant()
+            ->willReturn('b1');
 
         $company
-            ->getId()
-            ->willReturn(1);
+            ->getCgrSubject()
+            ->willReturn('c1');
 
         $company
             ->getBillingMethod()
@@ -221,8 +221,8 @@ class ProcessExternalCdrSpec extends ObjectBehavior
             ->willReturn(true);
 
         $carrier
-            ->getId()
-            ->willReturn(2);
+            ->getCgrSubject()
+            ->willReturn('cr2');
 
         $this
             ->apiClient
@@ -281,7 +281,7 @@ class ProcessExternalCdrSpec extends ObjectBehavior
         $this->getterProphecy(
             $company,
             [
-                'getId' => 1,
+                'getCgrSubject' => 'c1',
                 'getBillingMethod' => 'postpaid',
             ],
             false
