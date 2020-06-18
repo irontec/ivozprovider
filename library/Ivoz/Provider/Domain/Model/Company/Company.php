@@ -258,16 +258,15 @@ class Company extends CompanyAbstract implements CompanyInterface
      */
     public function getMusicClass()
     {
-        /**
-         * @var Company $this
-         */
         // Company has music on hold
+        /** @var \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $companyMoH */
         $companyMoH = $this->getMusicsOnHold();
         if (!empty($companyMoH)) {
             return $companyMoH[0]->getOwner();
         }
 
         // Brand has music on hold
+        /** @var \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $brandMoH */
         $brandMoH = $this->getBrand()->getMusicsOnHold();
         if (!empty($brandMoH)) {
             return $brandMoH[0]->getOwner();
