@@ -12,8 +12,6 @@ scenarios:
           - wait: 5
           - answer
           - waitfor: CONFIRMED
-          - wait
-          - hangup
           - waitfor: DISCONNCTD
 
       # Place a call to retail account DDI
@@ -24,5 +22,6 @@ scenarios:
               caller: 999444000
           - waitfor: CONFIRMED
           - wait: 2
+          - hangup
           - waitfor: DISCONNCTD
 
