@@ -2,4 +2,5 @@ imports:
     - { resource: config.yml }
 
 parameters:
-    database_host: 127.0.0.1
+    database_host: ~
+    database_unix_socket: '/var/run/mysqld/mysqld.sock'
