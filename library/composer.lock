@@ -1850,16 +1850,16 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "3.1",
+            "version": "3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core-bundle.git",
-                "reference": "a602b9166f6635e07b81867959d4d177a31cb235"
+                "reference": "9e851318c21878572c6cb455bd3a4628c2a57ce1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/a602b9166f6635e07b81867959d4d177a31cb235",
-                "reference": "a602b9166f6635e07b81867959d4d177a31cb235",
+                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/9e851318c21878572c6cb455bd3a4628c2a57ce1",
+                "reference": "9e851318c21878572c6cb455bd3a4628c2a57ce1",
                 "shasum": ""
             },
             "require": {
@@ -1897,7 +1897,7 @@
                 }
             ],
             "description": "Symfony bridge for ivoz-core",
-            "time": "2020-06-15T10:25:30+00:00"
+            "time": "2020-06-18T06:59:45+00:00"
         },
         {
             "name": "irontec/ivoz-dev-tools",
@@ -1948,11 +1948,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.4.0",
+            "version": "2.4.1",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "fd748ebad6bcf7bbba7ceff25f837a68e3d73931",
+                "reference": "b0c35d0910af6034ddcf46116d4edfc3e53ac9d5",
                 "shasum": null
             },
             "require": {
