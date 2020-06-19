@@ -62,6 +62,13 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     public function getStatus();
 
     /**
+     * Get lastExecutionError
+     *
+     * @return string | null
+     */
+    public function getLastExecutionError();
+
+    /**
      * Get deductibleConnectionFee
      *
      * @return boolean
