@@ -309,7 +309,10 @@ class Rates
             }
 
             $destinationRateGroupDto
-                ->setStatus('error');
+                ->setStatus('error')
+                ->setLastExecutionError(
+                    $e->getMessage()
+                );
 
             $this
                 ->entityTools
@@ -397,7 +400,10 @@ class Rates
                 ->tpDestinationRateRepository
                 ->syncWithBussines($destinationRateGroupId, $roundingMethod);
 
-            $destinationRateGroupDto->setStatus('imported');
+            $destinationRateGroupDto
+                ->setStatus('imported')
+                ->setLastExecutionError(null);
+
             $this
                 ->entityTools
                 ->persistDto(
@@ -411,7 +417,12 @@ class Rates
             $this->logger->error('Importer error. Rollback');
             $this->em->getConnection()->rollback();
 
-            $destinationRateGroupDto->setStatus('error');
+            $destinationRateGroupDto
+                ->setStatus('error')
+                ->setLastExecutionError(
+                    $exception->getMessage()
+                );
+
             $this
                 ->entityTools
                 ->persistDto(
