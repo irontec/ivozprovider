@@ -12,6 +12,7 @@ Feature: Update destination rate group
     """
       {
           "status": null,
+          "lastExecutionError": null,
           "id": 1,
           "name": {
               "en": "Updated Standard",
@@ -39,6 +40,7 @@ Feature: Update destination rate group
     """
       {
           "status": null,
+          "lastExecutionError": null,
           "id": 1,
           "name": {
               "en": "Updated Standard",
