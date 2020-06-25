@@ -61,38 +61,38 @@ class Multimedia
      */
     public function encode(GearmanJob $serializedJob)
     {
-        // Thanks Gearmand, you've done your job
-        $serializedJob->sendComplete("DONE");
-        $this->registerCommand('Worker', 'multimedia');
-
-        $job = igbinary_unserialize($serializedJob->workload());
-
-        $entityId = $job->getId();
-        $entityName = $job->getEntityName();
-        $entityNameSegments = explode('\\', $entityName);
-        $entityClass = end($entityNameSegments);
-
-        $repository = $this->em->getRepository($entityName);
-        if (!$repository) {
-            $this->logger->error(sprintf("Unable to find repository for %s", $entityName));
-            return false;
-        }
-
-        /** @var LocutionInterface | null $entity */
-        $entity = $repository->find($entityId);
-        if (!$entity) {
-            $this->logger->error(sprintf("Unable to find %s with id %d", $entityName, $entityId));
-            return false;
-        }
-
-        $this->logger->info(sprintf("Encode process started for %s", $entity));
-
-        /** @var LocutionDto $entityDto */
-        $entityDto = $this->entityTools->entityToDto($entity);
-        $entityDto->setStatus('encoding');
-        $this->entityTools->persistDto($entityDto, $entity);
-
         try {
+            // Thanks Gearmand, you've done your job
+            $serializedJob->sendComplete("DONE");
+            $this->registerCommand('Worker', 'multimedia');
+
+            $job = igbinary_unserialize($serializedJob->workload());
+
+            $entityId = $job->getId();
+            $entityName = $job->getEntityName();
+            $entityNameSegments = explode('\\', $entityName);
+            $entityClass = end($entityNameSegments);
+
+            $repository = $this->em->getRepository($entityName);
+            if (!$repository) {
+                $this->logger->error(sprintf("Unable to find repository for %s", $entityName));
+                return false;
+            }
+
+            /** @var LocutionInterface | null $entity */
+            $entity = $repository->find($entityId);
+            if (!$entity) {
+                $this->logger->error(sprintf("Unable to find %s with id %d", $entityName, $entityId));
+                return false;
+            }
+
+            $this->logger->info(sprintf("Encode process started for %s", $entity));
+
+            /** @var LocutionDto $entityDto */
+            $entityDto = $this->entityTools->entityToDto($entity);
+            $entityDto->setStatus('encoding');
+            $this->entityTools->persistDto($entityDto, $entity);
+
             $originalFile = $entityDto->getOriginalFilePath();
             $originalFileNoExt = pathinfo($entityDto->getOriginalFileBaseName(), PATHINFO_FILENAME);
 
@@ -140,13 +140,22 @@ class Multimedia
             $this->entityTools->persistDto($entityDto, $entity);
             $this->logger->info(sprintf("Successfully encoded %s", $entity));
         } catch (\Exception $e) {
+            if (!isset($entity)) {
+                $this->logger->error($e->getMessage());
+                exit(1);
+            }
+
+            if (!isset($entityDto)) {
+                $this->logger->error($e->getMessage());
+                exit(1);
+            }
+
             $entityDto
                 ->setEncodedFilePath(null)
                 ->setStatus('error');
 
             $this->entityTools->persistDto($entityDto, $entity);
             $this->logger->error(sprintf("Failed to encode %s: %s ", $entity, $e->getMessage()));
-            throw $e;
         }
 
         // Done!

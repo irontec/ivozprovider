@@ -65,29 +65,29 @@ class Invoices
      */
     public function create(GearmanJob $serializedJob)
     {
-        // Thanks Gearmand, you've done your job
-        $serializedJob->sendComplete("DONE");
-
-        $job = igbinary_unserialize($serializedJob->workload());
-        $id = $job->getId();
-
-        $this->registerCommand('Worker', 'invoices', ['id' => $id]);
-
-        $this->logger->info("[INVOICER] ID = " . $id);
-
-        $this->billableCallRepository->resetInvoiceId($id);
-
-        /** @var InvoiceInterface | null $invoice */
-        $invoice = $this->invoiceRepository->find($id);
-        if (!$invoice) {
-            $this->logger->error("Invoice #${id} was not found!");
-            return null;
-        }
-
-        /** @var InvoiceDto $invoiceDto */
-        $invoiceDto = $this->entityTools->entityToDto($invoice);
-
         try {
+            // Thanks Gearmand, you've done your job
+            $serializedJob->sendComplete("DONE");
+
+            $job = igbinary_unserialize($serializedJob->workload());
+            $id = $job->getId();
+
+            $this->registerCommand('Worker', 'invoices', ['id' => $id]);
+
+            $this->logger->info("[INVOICER] ID = " . $id);
+
+            $this->billableCallRepository->resetInvoiceId($id);
+
+            /** @var InvoiceInterface | null $invoice */
+            $invoice = $this->invoiceRepository->find($id);
+            if (!$invoice) {
+                $this->logger->error("Invoice #${id} was not found!");
+                return null;
+            }
+
+            /** @var InvoiceDto $invoiceDto */
+            $invoiceDto = $this->entityTools->entityToDto($invoice);
+
             $invoiceDto->setStatus(InvoiceInterface::STATUS_PROCESSING);
             $this->entityTools->persistDto($invoiceDto, $invoice, true);
 
@@ -115,7 +115,15 @@ class Invoices
             $this->logger->info("[INVOICER] Status = created");
         } catch (\Exception $e) {
             $this->logger->info("[INVOICER] Status = error");
-            $this->logger->info("[INVOICER] Error was: ".$e->getMessage());
+            $this->logger->error("[INVOICER] Error was: ".$e->getMessage());
+
+            if (!isset($invoiceDto)) {
+                exit(1);
+            }
+
+            if (!isset($invoice)) {
+                exit(1);
+            }
 
             $invoiceDto->setStatus(InvoiceInterface::STATUS_ERROR);
             $invoiceDto->setStatusMsg(

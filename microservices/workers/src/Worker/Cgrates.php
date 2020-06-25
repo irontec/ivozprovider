@@ -55,30 +55,38 @@ class Cgrates
      */
     public function reload(GearmanJob $serializedJob)
     {
-        // Thanks Gearmand, you've done your job
-        $serializedJob->sendComplete("DONE");
-        $this->registerCommand('Worker', 'cgrates');
+        try {
+            // Thanks Gearmand, you've done your job
+            $serializedJob->sendComplete("DONE");
+            $this->registerCommand('Worker', 'cgrates');
 
-        /** @var CgratesJob $job */
-        $job = igbinary_unserialize($serializedJob->workload());
+            /** @var CgratesJob $job */
+            $job = igbinary_unserialize($serializedJob->workload());
 
-        $this->logger->info(
-            'ApierV1.LoadTariffPlanFromStorDb GEARMAN payload ' . var_export($job, true)
-        );
-
-        $cgratesTpid = $job->getTpid();
-
-        $this->logger->info(sprintf("ApierV1.LoadTariffPlanFromStorDb GEARMAN Reloading Tpid %s through CGRateS API", $cgratesTpid));
-
-        $this
-            ->reloadService
-            ->execute(
-                $cgratesTpid,
-                $job->getDisableDestinations()
+            $this->logger->info(
+                'ApierV1.LoadTariffPlanFromStorDb GEARMAN payload ' . var_export($job, true)
             );
 
-        $this->logger->info(sprintf("ApierV1.LoadTariffPlanFromStorDb GEARMAN Reloaded Tpid %s through CGRateS API", $cgratesTpid));
-        // Done!
-        return true;
+            $cgratesTpid = $job->getTpid();
+
+            $this->logger->info(sprintf("ApierV1.LoadTariffPlanFromStorDb GEARMAN Reloading Tpid %s through CGRateS API", $cgratesTpid));
+
+            $this
+                ->reloadService
+                ->execute(
+                    $cgratesTpid,
+                    $job->getDisableDestinations()
+                );
+
+            $this->logger->info(sprintf("ApierV1.LoadTariffPlanFromStorDb GEARMAN Reloaded Tpid %s through CGRateS API", $cgratesTpid));
+            // Done!
+            return true;
+        } catch (\Exception $e) {
+            $this->logger->error(
+                $e->getMessage()
+            );
+
+            exit(1);
+        }
     }
 }

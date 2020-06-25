@@ -62,18 +62,26 @@ class Xmlrpc
      */
     public function immediate(GearmanJob $serializedJob)
     {
-        // Thanks Gearmand, you've done your job
-        $serializedJob->sendComplete("DONE");
-        $this->registerCommand('Worker', 'xmlrpc');
+        try {
+            // Thanks Gearmand, you've done your job
+            $serializedJob->sendComplete("DONE");
+            $this->registerCommand('Worker', 'xmlrpc');
 
-        /** @var \Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc $job */
-        $job = igbinary_unserialize($serializedJob->workload());
+            /** @var \Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc $job */
+            $job = igbinary_unserialize($serializedJob->workload());
 
-        return $this->sendRpcRequest(
-            $job->getRpcEntity(),
-            $job->getRpcPort(),
-            $job->getRpcMethod()
-        );
+            return $this->sendRpcRequest(
+                $job->getRpcEntity(),
+                $job->getRpcPort(),
+                $job->getRpcMethod()
+            );
+        } catch (\Exception $e) {
+            $this->logger->error(
+                $e->getMessage()
+            );
+
+            exit(1);
+        }
     }
 
     /**
@@ -90,28 +98,37 @@ class Xmlrpc
      */
     public function delayed(GearmanJob $serializedJob)
     {
-        /** @var \Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc $job */
-        $job = igbinary_unserialize($serializedJob->workload());
+        try {
 
-        $success = $this->sendRpcRequest(
-            $job->getRpcEntity(),
-            $job->getRpcPort(),
-            $job->getRpcMethod()
-        );
+            /** @var \Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc $job */
+            $job = igbinary_unserialize($serializedJob->workload());
 
-        if (!$success) {
-            $this->logger->info(sprintf(
-                "[KAM-RPC] Delayed %s job request failed: Retrying in %d seconds.",
-                $job->getRpcMethod(),
-                $this->retryInterval
-            ));
-            sleep($this->retryInterval);
-            exit(GEARMAN_WORK_ERROR);
+            $success = $this->sendRpcRequest(
+                $job->getRpcEntity(),
+                $job->getRpcPort(),
+                $job->getRpcMethod()
+            );
+
+            if (!$success) {
+                $this->logger->info(sprintf(
+                    "[KAM-RPC] Delayed %s job request failed: Retrying in %d seconds.",
+                    $job->getRpcMethod(),
+                    $this->retryInterval
+                ));
+                sleep($this->retryInterval);
+                exit(GEARMAN_WORK_ERROR);
+            }
+
+            // Thanks Gearmand, you've done your job
+            $serializedJob->sendComplete("DONE");
+            return $success;
+        } catch (\Exception $e) {
+            $this->logger->error(
+                $e->getMessage()
+            );
+
+            exit(1);
         }
-
-        // Thanks Gearmand, you've done your job
-        $serializedJob->sendComplete("DONE");
-        return $success;
     }
 
     /**
