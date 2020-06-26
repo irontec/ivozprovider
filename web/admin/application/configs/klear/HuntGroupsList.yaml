@@ -24,12 +24,12 @@ production:
         options:
           title: _("Options")
           screens:
-            huntGroupsEdit_screen: ${auth.acls.HuntGroups.update}
-            huntGroupsRelUsersList_screen: ${auth.acls.HuntGroupsRelUsers.read}
-            huntGroupsRelUsersFilterRingAllList_screen: ${auth.acls.HuntGroupsRelUsers.read}
-            huntGroupsRelUsersFilterRandomList_screen: ${auth.acls.HuntGroupsRelUsers.read}
+            huntGroupsEdit_screen: $[${auth.acls.HuntGroups.update} && ${auth.companyVPBX}]
+            huntGroupsRelUsersList_screen: $[${auth.acls.HuntGroupsRelUsers.read} && ${auth.companyVPBX}]
+            huntGroupsRelUsersFilterRingAllList_screen: $[${auth.acls.HuntGroupsRelUsers.read} && ${auth.companyVPBX}]
+            huntGroupsRelUsersFilterRandomList_screen: $[${auth.acls.HuntGroupsRelUsers.read} && ${auth.companyVPBX}]
           dialogs:
-            huntGroupsDel_dialog: ${auth.acls.HuntGroups.delete}
+            huntGroupsDel_dialog: $[${auth.acls.HuntGroups.delete} && ${auth.companyVPBX}]
           default: huntGroupsEdit_screen
         blacklist:
           ringAllTimeout: true
@@ -44,9 +44,9 @@ production:
       options:
         title: _("Options")
         screens:
-          huntGroupsNew_screen: ${auth.acls.HuntGroups.create}
+          huntGroupsNew_screen: $[${auth.acls.HuntGroups.create} && ${auth.companyVPBX}]
         dialogs:
-          huntGroupsDel_dialog: ${auth.acls.HuntGroups.delete}
+          huntGroupsDel_dialog: $[${auth.acls.HuntGroups.delete} && ${auth.companyVPBX}]
     huntGroupsNew_screen: &huntGroupsNew_screenLink
       <<: *HuntGroups
       controller: new

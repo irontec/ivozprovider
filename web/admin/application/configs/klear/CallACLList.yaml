@@ -24,18 +24,18 @@ production:
         options:
           title: _("Options")
           screens:
-            callACLEdit_screen: ${auth.acls.CallACL.update}
+            callACLEdit_screen: $[${auth.acls.CallACL.update} && ${auth.companyVPBX}]
           dialogs:
-            callACLDel_dialog: ${auth.acls.CallACL.delete}
+            callACLDel_dialog: $[${auth.acls.CallACL.delete} && ${auth.companyVPBX}]
           default: callACLEdit_screen
         blacklist:
           CallAclRelMatchLists: true
       options:
         title: _("Options")
         screens:
-          callACLNew_screen: ${auth.acls.CallACL.create}
+          callACLNew_screen: $[${auth.acls.CallACL.create} && ${auth.companyVPBX}]
         dialogs:
-          callACLDel_dialog: ${auth.acls.CallACL.delete}
+          callACLDel_dialog: $[${auth.acls.CallACL.delete} && ${auth.companyVPBX}]
     callACLNew_screen: &callACLNew_screenLink
       <<: *CallACL
       controller: new

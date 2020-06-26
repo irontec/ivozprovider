@@ -29,11 +29,11 @@ production:
         options:
           title: _("Options")
           screens:
-            usersEdit_screen: ${auth.acls.Users.update}
-            callForwardSettingsList_screen: ${auth.acls.CallForwardSettings.read}
-            huntGroupsRelUsersList_screen: ${auth.acls.HuntGroupsRelUsers.read}
+            usersEdit_screen: $[${auth.acls.Users.update} && ${auth.companyVPBX}]
+            callForwardSettingsList_screen: $[${auth.acls.CallForwardSettings.read} && ${auth.companyVPBX}]
+            huntGroupsRelUsersList_screen: $[${auth.acls.HuntGroupsRelUsers.read} && ${auth.companyVPBX}]
           dialogs:
-            usersDel_dialog: ${auth.acls.Users.delete}
+            usersDel_dialog: $[${auth.acls.Users.delete} && ${auth.companyVPBX}]
           default: usersEdit_screen
         order: &Users_orderLink
           company: true
@@ -83,9 +83,9 @@ production:
       options:
         title: _("Options")
         screens:
-          usersNew_screen: ${auth.acls.Users.create}
+          usersNew_screen: $[${auth.acls.Users.create} && ${auth.companyVPBX}]
         dialogs:
-          usersDel_dialog: ${auth.acls.Users.delete}
+          usersDel_dialog: $[${auth.acls.Users.delete} && ${auth.companyVPBX}]
           importUsers_dialog: false
     usersNew_screen: &usersNew_screenLink
       <<: *Users

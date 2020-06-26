@@ -24,9 +24,9 @@ production:
         options:
           title: _("Options")
           screens:
-            musicOnHoldEdit_screen: ${auth.acls.MusicOnHold.update}
+            musicOnHoldEdit_screen: $[${auth.acls.MusicOnHold.update} && ${auth.companyVPBX}]
           dialogs:
-            musicOnHoldDel_dialog: ${auth.acls.MusicOnHold.delete}
+            musicOnHoldDel_dialog: $[${auth.acls.MusicOnHold.delete} && ${auth.companyVPBX}]
           default: musicOnHoldEdit_screen
         order: &musicOnHold_orderLink
           company: true
@@ -37,9 +37,9 @@ production:
       options:
         title: _("Options")
         screens:
-          musicOnHoldNew_screen: ${auth.acls.MusicOnHold.create}
+          musicOnHoldNew_screen: $[${auth.acls.MusicOnHold.create} && ${auth.companyVPBX}]
         dialogs:
-          musicOnHoldDel_dialog: ${auth.acls.MusicOnHold.delete}
+          musicOnHoldDel_dialog: $[${auth.acls.MusicOnHold.delete} && ${auth.companyVPBX}]
 
     musicOnHoldNew_screen: &musicOnHoldNew_screenLink
       <<: *MusicOnHold

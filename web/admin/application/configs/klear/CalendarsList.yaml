@@ -25,11 +25,11 @@ production:
         options:
           title: _("Options")
           screens:
-            calendarsEdit_screen: ${auth.acls.Calendars.update}
-            holidayDatesList_screen: ${auth.acls.HolidayDates.read}
-            calendarPeriodsList_screen: ${auth.acls.CalendarPeriods.read}
+            calendarsEdit_screen: $[${auth.acls.Calendars.update} && ${auth.companyVPBX}]
+            holidayDatesList_screen: $[${auth.acls.HolidayDates.read} && ${auth.companyVPBX}]
+            calendarPeriodsList_screen: $[${auth.acls.CalendarPeriods.read} && ${auth.companyVPBX}]
           dialogs:
-            calendarsDel_dialog: ${auth.acls.Calendars.delete}
+            calendarsDel_dialog: $[${auth.acls.Calendars.delete} && ${auth.companyVPBX}]
           default: calendarsEdit_screen
       options:
         title: _("Options")

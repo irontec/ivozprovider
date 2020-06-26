@@ -25,10 +25,10 @@ production:
         options:
           title: _("Options")
           screens:
-            queuesEdit_screen: ${auth.acls.Queues.update}
-            queueMembersList_screen: ${auth.acls.QueueMembers.read}
+            queuesEdit_screen: $[${auth.acls.Queues.update} && ${auth.companyVPBX}]
+            queueMembersList_screen: $[${auth.acls.QueueMembers.read} && ${auth.companyVPBX}]
           dialogs:
-            queuesDel_dialog: ${auth.acls.Queues.delete}
+            queuesDel_dialog: $[${auth.acls.Queues.delete} && ${auth.companyVPBX}]
           default: queuesEdit_screen
         order: &Queues_orderLink
           name: true
@@ -59,9 +59,9 @@ production:
       options:
         title: _("Options")
         screens:
-          queuesNew_screen: ${auth.acls.Queues.create}
+          queuesNew_screen: $[${auth.acls.Queues.create} && ${auth.companyVPBX}]
         dialogs:
-          queuesDel_dialog: ${auth.acls.Queues.delete}
+          queuesDel_dialog: $[${auth.acls.Queues.delete} && ${auth.companyVPBX}]
 
     queuesNew_screen: &queuesNew_screenLink
       <<: *Queues
