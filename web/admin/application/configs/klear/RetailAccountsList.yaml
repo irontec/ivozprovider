@@ -49,18 +49,18 @@ production:
         options:
           title: _("Options")
           screens:
-            retailAccountsEdit_screen: $[${auth.acls.RetailAccounts.update} && ${auth.canSeeBrand}]
+            retailAccountsEdit_screen: $[${auth.acls.RetailAccounts.update} && ${auth.canSeeBrand} && ${auth.companyRetail}]
             ddisList_screen: ${auth.acls.DDIs.read}
-            callForwardSettingsList_screen: ${auth.acls.CallForwardSettings.read}
+            callForwardSettingsList_screen: $[${auth.acls.CallForwardSettings.read} && ${auth.companyRetail}]
           dialogs:
-            retailAccountsDel_dialog: ${auth.canSeeBrand}
+            retailAccountsDel_dialog: $[${auth.canSeeBrand} && ${auth.companyRetail}]
           default: retailAccountsEdit_screen
       options:
         title: _("Options")
         screens:
-          retailAccountsNew_screen: $[${auth.acls.RetailAccounts.create} && ${auth.canSeeBrand}]
+          retailAccountsNew_screen: $[${auth.acls.RetailAccounts.create} && ${auth.canSeeBrand} && ${auth.companyRetail}]
         dialogs:
-          retailAccountsDel_dialog: $[${auth.acls.RetailAccounts.delete} && ${auth.canSeeBrand}]
+          retailAccountsDel_dialog: $[${auth.acls.RetailAccounts.delete} && ${auth.canSeeBrand} && ${auth.companyRetail}]
 
     retailAccountsNew_screen: &retailAccountsNew_screenLink
       <<: *RetailAccounts

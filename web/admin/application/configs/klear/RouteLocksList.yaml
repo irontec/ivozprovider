@@ -31,16 +31,16 @@ production:
         options:
           title: _("Options")
           screens:
-            routeLocksEdit_screen: ${auth.acls.RouteLocks.update}
+            routeLocksEdit_screen: $[${auth.acls.RouteLocks.update} && ${auth.companyVPBX}]
           dialogs:
-            routeLocksDel_dialog: ${auth.acls.RouteLocks.delete}
+            routeLocksDel_dialog: $[${auth.acls.RouteLocks.delete} && ${auth.companyVPBX}]
           default: routeLocksEdit_screen
       options:
         title: _("Options")
         screens:
-          routeLocksNew_screen: ${auth.acls.RouteLocks.create}
+          routeLocksNew_screen: $[${auth.acls.RouteLocks.create} && ${auth.companyVPBX}]
         dialogs:
-          routeLocksDel_dialog: ${auth.acls.RouteLocks.delete}
+          routeLocksDel_dialog: $[${auth.acls.RouteLocks.delete} && ${auth.companyVPBX}]
 
     routeLocksNew_screen: &routeLocksNew_screenLink
       <<: *RouteLocks

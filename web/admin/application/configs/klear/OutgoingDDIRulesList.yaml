@@ -30,17 +30,17 @@ production:
         options:
           title: _("Options")
           screens:
-            outgoingDDIRulesEdit_screen: ${auth.acls.OutgoingDDIRules.update}
-            outgoingDDIRulesPatternsList_screen: ${auth.acls.OutgoingDDIRulesPatterns.read}
+            outgoingDDIRulesEdit_screen: $[${auth.acls.OutgoingDDIRules.update} && ${auth.companyVPBX}]
+            outgoingDDIRulesPatternsList_screen: $[${auth.acls.OutgoingDDIRulesPatterns.read} && ${auth.companyVPBX}]
           dialogs:
-            outgoingDDIRulesDel_dialog: ${auth.acls.OutgoingDDIRules.delete}
+            outgoingDDIRulesDel_dialog: $[${auth.acls.OutgoingDDIRules.delete} && ${auth.companyVPBX}]
           default: outgoingDDIRulesEdit_screen
       options:
         title: _("Options")
         screens:
-          outgoingDDIRulesNew_screen: ${auth.acls.OutgoingDDIRules.create}
+          outgoingDDIRulesNew_screen: $[${auth.acls.OutgoingDDIRules.create} && ${auth.companyVPBX}]
         dialogs:
-          outgoingDDIRulesDel_dialog: ${auth.acls.OutgoingDDIRules.delete}
+          outgoingDDIRulesDel_dialog: $[${auth.acls.OutgoingDDIRules.delete} && ${auth.companyVPBX}]
 
     outgoingDDIRulesNew_screen: &outgoingDDIRulesNew_screenLink
       <<: *OutgoingDDIRules

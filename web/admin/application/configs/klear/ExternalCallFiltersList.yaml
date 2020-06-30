@@ -24,9 +24,9 @@ production:
         options:
           title: _("Options")
           screens:
-            externalCallFiltersEdit_screen: ${auth.acls.ExternalCallFilters.update}
+            externalCallFiltersEdit_screen: $[${auth.acls.ExternalCallFilters.update} && ${auth.companyVPBX}]
           dialogs:
-            externalCallFiltersDel_dialog: ${auth.acls.ExternalCallFilters.delete}
+            externalCallFiltersDel_dialog: $[${auth.acls.ExternalCallFilters.delete} && ${auth.companyVPBX}]
           default: externalCallFiltersEdit_screen
         blacklist:
           company: false
@@ -70,9 +70,9 @@ production:
       options:
         title: _("Options")
         screens:
-          externalCallFiltersNew_screen: ${auth.acls.ExternalCallFilters.create}
+          externalCallFiltersNew_screen: $[${auth.acls.ExternalCallFilters.create} && ${auth.companyVPBX}]
         dialogs:
-          externalCallFiltersDel_dialog: ${auth.acls.ExternalCallFilters.delete}
+          externalCallFiltersDel_dialog: $[${auth.acls.ExternalCallFilters.delete} && ${auth.companyVPBX}]
 
     externalCallFiltersNew_screen: &externalCallFiltersNew_screenLink
       <<: *ExternalCallFilters

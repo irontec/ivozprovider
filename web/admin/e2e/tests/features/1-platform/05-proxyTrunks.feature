@@ -14,8 +14,11 @@ Background:
 
 Scenario: I can edit application servers
   Given I can see at least one row
-   When I click on "ProxyTrunks" first elements edit button
-    And I click on save button
-   Then I can see confirmation dialog
-   When I click on close dialog button
-   Then I am on "ProxyTrunks" list
+##########################################################################################################
+#  screen is called proxyTrunksEditMain_screen now, it'll require some development in order to be tested
+##########################################################################################################
+#   When I click on "ProxyTrunks" first elements edit button
+#    And I click on save button
+#   Then I can see confirmation dialog
+#   When I click on close dialog button
+#   Then I am on "ProxyTrunks" list

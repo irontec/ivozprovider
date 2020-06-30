@@ -49,14 +49,14 @@ production:
             ivrEdit_screen: ${auth.acls.IVRs.update}
             ivrEntriesList_screen: ${auth.acls.IVREntries.read}
           dialogs:
-            ivrDel_dialog: ${auth.acls.IVRs.delete}
+            ivrDel_dialog: $[${auth.acls.IVRs.delete} && ${auth.companyVPBX}]
           default: ivrEdit_screen
       options:
         title: _("Options")
         screens:
-          ivrNew_screen: ${auth.acls.IVRs.create}
+          ivrNew_screen: $[${auth.acls.IVRs.create} && ${auth.companyVPBX}]
         dialogs:
-          ivrDel_dialog: ${auth.acls.IVRs.delete}
+          ivrDel_dialog: $[${auth.acls.IVRs.delete} && ${auth.companyVPBX}]
 
     ivrNew_screen: &ivrNew_screenLink
       <<: *Ivr

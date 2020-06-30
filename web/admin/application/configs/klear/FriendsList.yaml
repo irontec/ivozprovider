@@ -56,17 +56,17 @@ production:
         options:
           title: _("Options")
           screens:
-            friendsEdit_screen: ${auth.acls.Friends.update}
-            friendsPatternsList_screen: ${auth.acls.FriendsPatterns.read}
+            friendsEdit_screen: $[${auth.acls.Friends.update} && ${auth.companyVPBX}]
+            friendsPatternsList_screen: $[${auth.acls.FriendsPatterns.read} && ${auth.companyVPBX}]
           dialogs:
             friendsDel_dialog: ${auth.acls.Friends.delete}
           default: friendsEdit_screen
       options:
         title: _("Options")
         screens:
-          friendsNew_screen: ${auth.acls.Friends.create}
+          friendsNew_screen: $[${auth.acls.Friends.create} && ${auth.companyVPBX}]
         dialogs:
-          friendsDel_dialog: ${auth.acls.Friends.delete}
+          friendsDel_dialog: $[${auth.acls.Friends.delete} && ${auth.companyVPBX}]
 
     friendsNew_screen: &friendsNew_screenLink
       <<: *Friends

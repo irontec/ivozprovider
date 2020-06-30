@@ -24,9 +24,9 @@ production:
         options:
           title: _("Options")
           screens:
-            externalCallFiltersResidentialEdit_screen: true
+            externalCallFiltersResidentialEdit_screen: $[${auth.companyResidential}]
           dialogs:
-            externalCallFiltersResidentialDel_dialog: true
+            externalCallFiltersResidentialDel_dialog: $[${auth.companyResidential}]
           default: externalCallFiltersResidentialEdit_screen
         blacklist: &externalCallFiltersResidential_blacklistLink
           company: false
@@ -56,9 +56,9 @@ production:
       options:
         title: _("Options")
         screens:
-          externalCallFiltersResidentialNew_screen: true
+          externalCallFiltersResidentialNew_screen: $[${auth.companyResidential}]
         dialogs:
-          externalCallFiltersResidentialDel_dialog: true
+          externalCallFiltersResidentialDel_dialog: $[${auth.companyResidential}]
     externalCallFiltersResidentialNew_screen: &externalCallFiltersResidentialNew_screenLink
       <<: *ExternalCallFiltersResidential
       controller: new
