@@ -1394,6 +1394,7 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
 Ivoz\Provider\Domain\Model\Recording\Recording:
   itemOperations:
     get: ~
+    delete: ~
   collectionOperations:
     get: ~
   attributes:
