@@ -141,7 +141,7 @@ production:
           ddi: company
       source:
         data: mapper
-        'null': " "
+        'null': _('All')
         config: &company_source_config_link
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           filterClass: IvozProvider_Klear_Filter_Brand
