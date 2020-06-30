@@ -74,17 +74,6 @@ class GenerateInRules
         $ruleDto
             ->setTransformationRuleSetId($entity->getId())
             ->setType($type)
-            ->setDescription("From national in e164 without plus to e164")
-            ->setPriority(4)
-            ->setMatchExpr("^34([0-9]+)$")
-            ->setReplaceExpr($countryCode . '\1');
-
-        $this->entityPersister->persistDto($ruleDto);
-
-        $ruleDto = new TransformationRuleDto();
-        $ruleDto
-            ->setTransformationRuleSetId($entity->getId())
-            ->setType($type)
             ->setDescription("From national to e164")
             ->setPriority(5)
             ->setMatchExpr("^([0-9]+)$")
