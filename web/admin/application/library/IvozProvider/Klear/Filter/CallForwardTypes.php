@@ -1,6 +1,7 @@
 <?php
 
 use Ivoz\Core\Application\Service\DataGateway;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 
@@ -41,7 +42,7 @@ class IvozProvider_Klear_Filter_CallForwardTypes implements KlearMatrix_Model_Fi
 
         $excludedRoutes = [];
 
-        if ($companyDto->getType() === Company::RETAIL) {
+        if ($companyDto->getType() === CompanyInterface::TYPE_RETAIL) {
             $excludedRoutes = ["inconditional", "busy", "noAnswer"];
         }
 

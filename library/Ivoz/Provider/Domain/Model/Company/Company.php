@@ -14,18 +14,6 @@ class Company extends CompanyAbstract implements CompanyInterface
 {
     const EMPTY_DOMAIN_EXCEPTION = 2001;
 
-    /** @deprecated */
-    const VPBX          = self::TYPE_VPBX;
-
-    /** @deprecated */
-    const RETAIL        = self::TYPE_RETAIL;
-
-    /** @deprecated */
-    const WHOLESALE     = self::TYPE_WHOLESALE;
-
-    /** @deprecated */
-    const RESIDENTIAL   = self::TYPE_RESIDENTIAL;
-
     use CompanyTrait;
 
     /**
@@ -284,7 +272,7 @@ class Company extends CompanyAbstract implements CompanyInterface
             $domainUsers = trim($domainUsers);
         }
 
-        if ($this->getType() === self::VPBX && empty($domainUsers)) {
+        if ($this->getType() === self::TYPE_VPBX && empty($domainUsers)) {
             throw new \DomainException("Domain can't be empty", self::EMPTY_DOMAIN_EXCEPTION);
         }
 
