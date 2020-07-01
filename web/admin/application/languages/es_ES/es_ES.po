@@ -847,6 +847,9 @@ msgstr "Editar %s %2s"
 msgid "Edit pattern of %s"
 msgstr "Editar patrón de %s"
 
+msgid "Edition/creation tabs will be closed."
+msgstr "Las pestañas de edición/creación serán cerradas."
+
 msgid "Email"
 msgid_plural "Emails"
 msgstr[0] "Email"
@@ -1919,9 +1922,6 @@ msgstr "Sin etiqueta de enrutado"
 msgid "None"
 msgstr "Ninguna"
 
-msgid "Notice that edition/creation tabs will be closed."
-msgstr "Las pestañas de edición/creación serán cerradas."
-
 msgid "Notification Threshold"
 msgstr "Límite de notificación"
 
@@ -2514,8 +2514,8 @@ msgstr "Seguridad"
 msgid "Select Brand"
 msgstr "Seleccionar Marca"
 
-msgid "Select Company"
-msgstr "Seleccionar Compañía"
+msgid "Select Client"
+msgstr "Seleccionar Cliente"
 
 msgid "Select destination group"
 msgstr "Grupo patrones destino"
