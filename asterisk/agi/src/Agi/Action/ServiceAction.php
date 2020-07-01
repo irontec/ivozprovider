@@ -286,7 +286,7 @@ class ServiceAction
         $originalFile = "/tmp/locution_record_" . $originalFilename;
 
         // Record file playing a beep before starting
-        $this->agi->record($originalFile, ",,ky");
+        $this->agi->record($originalFile, "30,600,ky");
 
         // Set upload the original file of the locution
         /** @var LocutionDto $locutionDto */
