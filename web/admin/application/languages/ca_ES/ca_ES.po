@@ -845,6 +845,9 @@ msgstr "Edita %s %2s"
 msgid "Edit pattern of %s"
 msgstr "Edita els patrons de %s"
 
+msgid "Edition/creation tabs will be closed."
+msgstr "Les fitxes d'edició/creació seran tancades."
+
 msgid "Email"
 msgid_plural "Emails"
 msgstr[0] "Correu electrònic"
@@ -1908,9 +1911,6 @@ msgstr "Sense etiqueta de ruta"
 msgid "None"
 msgstr "Cap"
 
-msgid "Notice that edition/creation tabs will be closed."
-msgstr "Anuncia que les fitxes d'edició/creació seran tancades."
-
 msgid "Notification Threshold"
 msgstr "Llindar de notificació"
 
@@ -2500,8 +2500,8 @@ msgstr "Seguretat"
 msgid "Select Brand"
 msgstr "Selecciona marca"
 
-msgid "Select Company"
-msgstr "Selecciona companyia"
+msgid "Select Client"
+msgstr "Selecciona Client"
 
 msgid "Select destination group"
 msgstr "Selecciona grup de destinació"

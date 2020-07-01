@@ -835,6 +835,9 @@ msgstr "Edit %s %2s"
 msgid "Edit pattern of %s"
 msgstr "Edit pattern of %s"
 
+msgid "Edition/creation tabs will be closed."
+msgstr "Edition/creation tabs will be closed."
+
 msgid "Email"
 msgid_plural "Emails"
 msgstr[0] "Email"
@@ -1891,9 +1894,6 @@ msgstr "No routing tag"
 msgid "None"
 msgstr "None"
 
-msgid "Notice that edition/creation tabs will be closed."
-msgstr "Notice that edition/creation tabs will be closed."
-
 msgid "Notification Threshold"
 msgstr "Notification Threshold"
 
@@ -2480,8 +2480,8 @@ msgstr "Security"
 msgid "Select Brand"
 msgstr "Select Brand"
 
-msgid "Select Company"
-msgstr "Select Company"
+msgid "Select Client"
+msgstr "Select Client"
 
 msgid "Select destination group"
 msgstr "Select destination group"
