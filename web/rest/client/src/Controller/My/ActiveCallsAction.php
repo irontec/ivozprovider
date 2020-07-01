@@ -46,31 +46,15 @@ class ActiveCallsAction
 
         /** @var AdministratorInterface $user */
         $user = $token->getUser();
-        $brand = $user->getBrand();
-
-        $companyId = $request->get('company');
-        if (!$companyId) {
-            $activeCalls = $this
-                ->trunksClient
-                ->getBrandActiveCalls($brand->getId());
-
-            return new ActiveCalls($activeCalls);
-        }
-
-        /** @var CompanyInterface | null $company */
-        $company = $this->companyRepository->find($companyId);
+        $company = $user->getCompany();
         if (!$company) {
             throw new NotFoundHttpException('Company not found');
-        }
-
-        if ($company->getBrand() !== $brand) {
-            throw new UnprocessableEntityHttpException('This company does not belong to your brand');
         }
 
         $activeCalls = $this
             ->trunksClient
             ->getCompanyActiveCalls(
-                intval($companyId)
+                $company->getId()
             );
 
         return new ActiveCalls($activeCalls);
