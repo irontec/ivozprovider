@@ -37,7 +37,7 @@ Feature: Update queues
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "name": "updatedQueue",
@@ -52,85 +52,16 @@ Feature: Update queues
           "memberCallTimeout": 1,
           "strategy": "rrmemory",
           "weight": 5,
+          "preventMissedCalls": 1,
           "id": 1,
-          "periodicAnnounceLocution": {
-              "name": "testLocution",
-              "status": null,
-              "id": 1,
-              "encodedFile": {
-                  "fileSize": 1,
-                  "mimeType": "audio/x-wav; charset=binary",
-                  "baseName": "locution.wav"
-              },
-              "originalFile": {
-                  "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
-                  "baseName": "locution.mp3"
-              }
-          },
-          "timeoutLocution": {
-              "name": "testLocution",
-              "status": null,
-              "id": 1,
-              "encodedFile": {
-                  "fileSize": 1,
-                  "mimeType": "audio/x-wav; charset=binary",
-                  "baseName": "locution.wav"
-              },
-              "originalFile": {
-                  "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
-                  "baseName": "locution.mp3"
-              }
-          },
+          "periodicAnnounceLocution": 1,
+          "timeoutLocution": 1,
           "timeoutExtension": null,
           "timeoutVoiceMailUser": null,
-          "fullLocution": {
-              "name": "testLocution",
-              "status": null,
-              "id": 1,
-              "encodedFile": {
-                  "fileSize": 1,
-                  "mimeType": "audio/x-wav; charset=binary",
-                  "baseName": "locution.wav"
-              },
-              "originalFile": {
-                  "fileSize": 1,
-                  "mimeType": "audio/mpeg; charset=binary",
-                  "baseName": "locution.mp3"
-              }
-          },
+          "fullLocution": 1,
           "fullExtension": null,
           "fullVoiceMailUser": null,
-          "timeoutNumberCountry": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España",
-                  "ca": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
-          },
-          "fullNumberCountry": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España",
-                  "ca": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
-          }
+          "timeoutNumberCountry": 68,
+          "fullNumberCountry": 68
       }
     """

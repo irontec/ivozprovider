@@ -41,7 +41,7 @@ Feature: Update external call filters
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "name": "updatedFilter",
@@ -57,36 +57,8 @@ Feature: Update external call filters
           "outOfScheduleExtension": null,
           "holidayVoiceMailUser": null,
           "outOfScheduleVoiceMailUser": null,
-          "holidayNumberCountry": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España",
-                  "ca": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
-          },
-          "outOfScheduleNumberCountry": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España",
-                  "ca": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
-          },
+          "holidayNumberCountry": 68,
+          "outOfScheduleNumberCountry": 68,
           "scheduleIds": [],
           "calendarIds": [
             1

@@ -31,25 +31,8 @@ Feature: Update holiday dates
           "routeType": null,
           "numberValue": null,
           "id": 1,
-          "calendar": {
-              "name": "testCalendar2",
-              "id": 2
-          },
-          "locution": {
-              "name": "testLocution",
-              "status": null,
-              "id": 1,
-              "encodedFile": {
-                  "fileSize": 1,
-                  "mimeType": "audio/x-wav; charset=binary",
-                  "baseName": "locution.wav"
-              },
-              "originalFile": {
-                  "fileSize": 1,
-                  "mimeType": "audio\/mpeg; charset=binary",
-                  "baseName": "locution.mp3"
-              }
-          },
+          "calendar": 2,
+          "locution": 1,
           "extension": null,
           "voiceMailUser": null,
           "numberCountry": null

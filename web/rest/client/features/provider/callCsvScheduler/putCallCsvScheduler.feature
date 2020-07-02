@@ -25,7 +25,7 @@ Feature: Update call CSV scheduler
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "name": "updated name",
@@ -38,7 +38,7 @@ Feature: Update call CSV scheduler
           "nextExecution": "2019-12-02 09:00:00",
           "id": 2,
           "callCsvNotificationTemplate": null,
-          "ddi": "~",
+          "ddi": 1,
           "retailAccount": null,
           "residentialDevice": null,
           "user": null,
