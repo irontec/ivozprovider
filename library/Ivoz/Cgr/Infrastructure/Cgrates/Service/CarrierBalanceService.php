@@ -90,6 +90,6 @@ class CarrierBalanceService extends AbstractBalanceService implements CarrierBal
         );
 
         /** @var CarrierInterface $entity */
-        $entity->getCgrSubject();
+        return $entity->getCgrSubject();
     }
 }
