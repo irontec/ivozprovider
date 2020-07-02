@@ -75,6 +75,9 @@ class SyncBalances
     private function persistBalances(array $carriersBalance)
     {
         foreach ($carriersBalance as $carrierId => $balance) {
+            if (is_null($balance)) {
+                continue;
+            }
 
             /** @var CarrierInterface | null $carrier */
             $carrier = $this->carrierRepository->find($carrierId);

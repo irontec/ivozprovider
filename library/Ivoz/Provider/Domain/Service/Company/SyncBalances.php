@@ -107,6 +107,9 @@ class SyncBalances
     private function persistBalances(array $companiesBalance)
     {
         foreach ($companiesBalance as $companyId => $balance) {
+            if (is_null($balance)) {
+                continue;
+            }
 
             /** @var CompanyInterface | null $company */
             $company = $this->companyRepository->find($companyId);
