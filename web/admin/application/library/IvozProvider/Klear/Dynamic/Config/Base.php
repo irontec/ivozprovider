@@ -87,7 +87,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
             return $this->_title;
         }
 
-        return sprintf('[%s]', $this->_brandURL->getName());
+        return sprintf('%s', $this->_brandURL->getName());
     }
 
     public function processSiteSubName($sitesubname)
