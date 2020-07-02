@@ -35,7 +35,7 @@ class CarrierRepositoryTest extends KernelTestCase
             ->em
             ->getRepository(Carrier::class);
 
-        $result = $repository->getCarrierIdsGroupByBrand();
+        $result = $repository->getCarrierIdsWithCalculatecostGroupByBrand();
 
         $this->assertNotEmpty($result);
     }

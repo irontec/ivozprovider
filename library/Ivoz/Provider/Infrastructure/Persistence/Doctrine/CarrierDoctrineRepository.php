@@ -27,10 +27,10 @@ class CarrierDoctrineRepository extends ServiceEntityRepository implements Carri
     /**
      * @return array
      */
-    public function getCarrierIdsGroupByBrand()
+    public function getCarrierIdsWithCalculatecostGroupByBrand()
     {
         /** @var CarrierInterface[] $carriers */
-        $carriers = $this->findAll();
+        $carriers = $this->findBy(['calculateCost' => 1]);
         $response = [];
 
         foreach ($carriers as $carrier) {

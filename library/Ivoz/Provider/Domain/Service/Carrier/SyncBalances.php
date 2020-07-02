@@ -35,7 +35,7 @@ class SyncBalances
     {
         $this->logger->info('Companies balances are about to be synced');
 
-        $targetCarriers = $this->carrierRepository->getCarrierIdsGroupByBrand();
+        $targetCarriers = $this->carrierRepository->getCarrierIdsWithCalculatecostGroupByBrand();
         foreach ($targetCarriers as $brandId => $carriers) {
             $this->updateCarriers($brandId, $carriers);
         }

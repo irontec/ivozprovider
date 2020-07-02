@@ -80,7 +80,7 @@ class SyncBalancesSpec extends ObjectBehavior
 
         $this
             ->carrierRepository
-            ->getCarrierIdsGroupByBrand()
+            ->getCarrierIdsWithCalculatecostGroupByBrand()
             ->willReturn([
                 1 => [$carrierId]
             ])
