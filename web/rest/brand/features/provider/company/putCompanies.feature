@@ -51,7 +51,7 @@ Feature: Update company
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "type": "vpbx",
@@ -73,43 +73,13 @@ Feature: Update company
           "balance": 1.2,
           "showInvoices": false,
           "id": 1,
-          "language": {
-              "iden": "es",
-              "id": 1,
-              "name": "~"
-          },
-          "defaultTimezone": {
-              "tz": "Europe/Andorra",
-              "comment": "",
-              "id": 1,
-              "label": "~",
-              "country": 1
-          },
-          "country": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": "~",
-              "zone": "~"
-          },
+          "language": 1,
+          "defaultTimezone": 1,
+          "country": 68,
           "currency": null,
-          "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
-              "internationalCode": "00",
-              "trunkPrefix": "",
-              "areaCode": "",
-              "nationalLen": 9,
-              "generateRules": false,
-              "id": 1,
-              "name": "~",
-              "country": 68
-          },
+          "transformationRuleSet": 1,
           "outgoingDdi": null,
-          "voicemailNotificationTemplate": {
-              "name": "Voicemail notification",
-              "type": "voicemail",
-              "id": 1
-          },
+          "voicemailNotificationTemplate": 1,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,

@@ -39,13 +39,6 @@ Feature: Update ddi provider registrations
             "multiDdi": true,
             "contactUsername": "",
             "id": 1,
-            "ddiProvider": {
-                "description": "DDIProviderDescription",
-                "name": "DDIProviderName",
-                "externallyRated": false,
-                "id": 1,
-                "transformationRuleSet": 1,
-                "proxyTrunk": 1
-            }
+            "ddiProvider": 1
         }
     """

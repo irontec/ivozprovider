@@ -30,7 +30,7 @@ Feature: Update transformation rule sets
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "description": "Desc",
@@ -46,6 +46,6 @@ Feature: Update transformation rule sets
               "ca": "nombre actualizado",
               "it": "nome aggiornato"
           },
-          "country":"~"
+          "country": 68
       }
     """

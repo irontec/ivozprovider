@@ -36,21 +36,24 @@ Feature: Update destination rate group
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "status": null,
           "lastExecutionError": null,
+          "deductibleConnectionFee": false,
           "id": 1,
           "name": {
               "en": "Updated Standard",
               "es": "Standard Actualizado",
-              "ca": "Standard Actualizado"
+              "ca": "Standard Actualizado",
+              "it": "Standard"
           },
           "description": {
               "en": "New Description",
-              "es": "Descripci\u00f3n nueva",
-              "ca": "Descripci\u00f3n nueva"
+              "es": "Descripción nueva",
+              "ca": "Descripción nueva",
+              "it": ""
           },
           "file": {
               "fileSize": null,
@@ -58,14 +61,6 @@ Feature: Update destination rate group
               "baseName": null,
               "importerArguments": []
           },
-          "currency": {
-              "iden": "USD",
-              "symbol": "$",
-              "id": 2,
-              "name": {
-                  "en": "Dollar",
-                  "es": "D\u00f3llar"
-              }
-          }
+          "currency": 2
       }
     """

@@ -20,7 +20,7 @@ Feature: Update carriers
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
          {
           "description": "Artemis-Updated",
@@ -29,20 +29,8 @@ Feature: Update carriers
           "balance": 0,
           "calculateCost": false,
           "id": 1,
-          "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
-              "internationalCode": "00",
-              "trunkPrefix": "",
-              "areaCode": "",
-              "nationalLen": 9,
-              "generateRules": false,
-              "id": 1,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
-              },
-              "country": 68
-          }
+          "transformationRuleSet": 1,
+          "currency": null,
+          "proxyTrunk": 1
       }
     """

@@ -34,7 +34,7 @@ Feature: Update residential device
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
             {
           "name": "updatedResidentialDevice",
@@ -51,7 +51,7 @@ Feature: Update residential device
           "maxCalls": 1,
           "t38Passthrough": "no",
           "id": 1,
-          "company": "~",
+          "company": 1,
           "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null
