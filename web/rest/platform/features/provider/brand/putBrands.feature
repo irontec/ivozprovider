@@ -53,28 +53,8 @@ Feature: Manage brands
               "country": "",
               "registryData": ""
           },
-          "language": {
-              "iden": "es",
-              "id": 1,
-              "name": {
-                  "en": "es",
-                  "es": "es",
-                  "ca": "es",
-                  "it": "es"
-              }
-          },
-          "defaultTimezone": {
-              "tz": "Europe/Madrid",
-              "comment": "mainland",
-              "id": 145,
-              "label": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              },
-              "country": 68
-          },
+          "language": 1,
+          "defaultTimezone": 145,
           "features": [1]
       }
     """
@@ -122,28 +102,8 @@ This is file content
               "country": "",
               "registryData": ""
           },
-          "language": {
-              "iden": "es",
-              "id": 1,
-              "name": {
-                  "en": "es",
-                  "es": "es",
-                  "ca": "es",
-                  "it": "es"
-              }
-          },
-          "defaultTimezone": {
-              "tz": "Europe\/Madrid",
-              "comment": "mainland",
-              "id": 145,
-              "label": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              },
-              "country": 68
-          },
+          "language": 1,
+          "defaultTimezone": 145,
           "features": []
       }
     """
