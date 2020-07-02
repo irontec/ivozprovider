@@ -2703,11 +2703,11 @@
         },
         {
             "name": "symfony/cache",
-            "version": "3.4.39.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/cache",
-                "reference": "04860ece0f3996781c2fb04811a6c160a4b910ee",
+                "reference": "42bd2c563c94eeda0639074e91774505ea557cce",
                 "shasum": null
             },
             "require": {
@@ -2726,9 +2726,9 @@
             },
             "require-dev": {
                 "cache/integration-tests": "dev-master",
-                "doctrine/cache": "~1.6",
-                "doctrine/dbal": "~2.4",
-                "predis/predis": "~1.0"
+                "doctrine/cache": "^1.6",
+                "doctrine/dbal": "^2.4|^3.0",
+                "predis/predis": "^1.0"
             },
             "type": "library",
             "extra": {
@@ -2821,7 +2821,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/config",
@@ -2881,7 +2881,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/console",
@@ -2949,7 +2949,7 @@
         },
         {
             "name": "symfony/debug",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/debug",
@@ -3062,7 +3062,7 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/dependency-injection",
@@ -3259,7 +3259,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/event-dispatcher",
@@ -3365,7 +3365,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/filesystem",
@@ -3534,11 +3534,11 @@
         },
         {
             "name": "symfony/framework-bundle",
-            "version": "3.4.39.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/framework-bundle",
-                "reference": "6df6490ceb7ce7ddf0e119d055be332ce04bc401",
+                "reference": "c60957bbff5735490efe30399c5795a5d2415e98",
                 "shasum": null
             },
             "require": {
@@ -3645,7 +3645,7 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/http-foundation",
@@ -3781,7 +3781,7 @@
         },
         {
             "name": "symfony/inflector",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/inflector",
@@ -3835,7 +3835,7 @@
         },
         {
             "name": "symfony/intl",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/intl",
@@ -4612,7 +4612,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/process",
@@ -4657,7 +4657,7 @@
         },
         {
             "name": "symfony/property-access",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/property-access",
@@ -4721,7 +4721,7 @@
         },
         {
             "name": "symfony/property-info",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/property-info",
@@ -4843,7 +4843,7 @@
         },
         {
             "name": "symfony/routing",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/routing",
@@ -4915,7 +4915,7 @@
         },
         {
             "name": "symfony/security",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/security",
@@ -5264,7 +5264,7 @@
         },
         {
             "name": "symfony/translation",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/translation",
@@ -5635,7 +5635,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "3.4.41.0",
+            "version": "3.4.42.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/yaml",
