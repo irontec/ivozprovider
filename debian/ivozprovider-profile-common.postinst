@@ -11,4 +11,7 @@ if [ -z "$2" ]; then
     echo >> /root/.bashrc
 fi
 
+# Change storage perms
+chmod 777 /opt/irontec/ivozprovider/storage
+
 :
