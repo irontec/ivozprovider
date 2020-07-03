@@ -42,7 +42,7 @@ Feature: Retrieve carriers
           "description": "CarrierDescription",
           "name": "CarrierName",
           "externallyRated": false,
-          "calculateCost": false,
+          "calculateCost": true,
           "id": 1,
           "transformationRuleSet": {
               "description": "Generic transformation for Spain",

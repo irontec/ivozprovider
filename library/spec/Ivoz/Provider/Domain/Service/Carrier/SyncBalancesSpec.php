@@ -71,7 +71,7 @@ class SyncBalancesSpec extends ObjectBehavior
         $this->updateCarriers(1, [1]);
     }
 
-    function it_iterates_over_all_carriers()
+    function it_iterates_over_carriers_with_calculateCost()
     {
         $carrierId = 1;
         $this->prepareExecution(

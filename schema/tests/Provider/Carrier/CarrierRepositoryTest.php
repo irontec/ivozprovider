@@ -22,13 +22,13 @@ class CarrierRepositoryTest extends KernelTestCase
      */
     public function test_runner()
     {
-        $this->it_finds_carrier_ids_group_by_brand();
+        $this->it_finds_carrier_ids_with_calculatecost_group_by_brand();
         $this->it_finds_ids_by_brand_admin();
         $this->it_finds_ids_by_brand_and_proxyTrunk();
         $this->it_finds_ids_by_proxyTrunk();
     }
 
-    public function it_finds_carrier_ids_group_by_brand()
+    public function it_finds_carrier_ids_with_calculatecost_group_by_brand()
     {
         /** @var CarrierDoctrineRepository $repository */
         $repository = $this
