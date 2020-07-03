@@ -2,7 +2,6 @@
 # http://symfony.com/doc/current/service_container.html
 imports:
   - { resource: "@CoreBundle/Resources/config/services.yml" }
-  - { resource: "@CoreBundle/Resources/config/logger.yml" }
 
 services:
   _defaults:
