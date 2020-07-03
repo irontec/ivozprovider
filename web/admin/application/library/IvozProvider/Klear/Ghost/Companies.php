@@ -54,10 +54,17 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
             /** @var DataGateway $dataGateway */
             $dataGateway = \Zend_Registry::get('data_gateway');
 
-            $amount = $this->fetchCompanyBalance->getBalance(
+            $balance = $this->fetchCompanyBalance->getBalance(
                 $companyDto->getBrandId(),
                 $companyDto->getId()
             );
+
+            // If numeric amount, round to 2 decimals value
+            if (is_numeric($balance)) {
+                $amount = sprintf("%0.2f", floatval($balance));
+            } else {
+                $amount = 0;
+            }
 
             $currencySymbol = $dataGateway->remoteProcedureCall(
                 Company::class,

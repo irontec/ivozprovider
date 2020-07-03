@@ -26,6 +26,7 @@ class ProviderCarrier extends Fixture implements DependentFixtureInterface
             $this->setDescription("CarrierDescription");
             $this->setName("CarrierName");
             $this->setExternallyRated(false);
+            $this->setCalculateCost(true);
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setProxyTrunk($fixture->getReference('_reference_ProviderProxyTrunk1'));

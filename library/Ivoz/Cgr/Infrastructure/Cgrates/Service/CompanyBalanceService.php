@@ -38,11 +38,11 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
     {
         $payload = parent::getAccountsBalances($brandId, $companyIds, self::ACCOUNT_PREFIX);
 
-        $balanceSum = [];
+        $balances = [];
         foreach ($payload->result as $balance) {
-            $balanceSum += $this->balanceReducer($balance);
+            $balances += $this->balanceReducer($balance);
         }
-        $payload->result = $balanceSum;
+        $payload->result = $balances;
 
         return $payload;
     }
@@ -53,18 +53,13 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      */
     public function getBalance($brandId, $companyId)
     {
-        $payload = parent::getAccountsBalances($brandId, [$companyId], self::ACCOUNT_PREFIX);
+        $payload = $this->getBalances($brandId, [$companyId]);
 
-        $balanceSum = [];
-        foreach ($payload->result as $balance) {
-            $balanceSum += $this->balanceReducer($balance);
-        }
-
-        if (!array_key_exists($companyId, $balanceSum)) {
+        if (!array_key_exists($companyId, $payload->result)) {
             throw new \Exception('Balance not found');
         }
 
-        return $balanceSum[$companyId];
+        return $payload->result[$companyId];
     }
 
     /**
