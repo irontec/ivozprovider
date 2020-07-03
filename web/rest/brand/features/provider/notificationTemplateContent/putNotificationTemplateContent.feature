@@ -20,7 +20,7 @@ Feature: Update notification template contents
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "fromName": "IvozProvider Notification",
@@ -29,11 +29,7 @@ Feature: Update notification template contents
           "body": "New Test body",
           "bodyType": "text\/plain",
           "id": 1,
-          "notificationTemplate": {
-              "name": "Voicemail notification",
-              "type": "voicemail",
-              "id": 1
-          },
-          "language": "~"
+          "notificationTemplate": 1,
+          "language": 2
       }
     """

@@ -40,34 +40,7 @@ Feature: Update residential devices
           "transport": "udp",
           "password": "ZGthe7E2+4",
           "id": 1,
-          "outgoingDdi": {
-              "ddi": "124",
-              "recordCalls": "none",
-              "displayName": "",
-              "routeType": null,
-              "friendValue": "",
-              "id": 2,
-              "conferenceRoom": null,
-              "language": null,
-              "queue": null,
-              "externalCallFilter": null,
-              "user": null,
-              "ivr": null,
-              "huntGroup": null,
-              "fax": null,
-              "country": 68,
-              "residentialDevice": null,
-              "conditionalRoute": null,
-              "retailAccount": null
-          },
-          "language": {
-              "iden": "es",
-              "id": 1,
-              "name": {
-                  "en": "es",
-                  "es": "es",
-                  "ca": "es"
-              }
-          }
+          "outgoingDdi": 2,
+          "language": 1
       }
     """

@@ -22,32 +22,7 @@ Feature: Update proxy trunks rel brands
   """
      {
           "id": 1,
-          "brand": {
-              "name": "DemoBrand",
-              "domainUsers": "",
-              "maxCalls": 0,
-              "id": 1,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "language": 1,
-              "defaultTimezone": 145
-          },
-          "proxyTrunk": {
-              "name": "ExtraIP",
-              "ip": "127.0.0.3",
-              "id": 2
-          }
+          "brand": 1,
+          "proxyTrunk": 2
       }
     """

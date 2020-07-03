@@ -23,21 +23,6 @@ Feature: Update brand services
       {
           "code": "95",
           "id": 2,
-          "service": {
-              "iden": "GroupPickUp",
-              "defaultCode": "95",
-              "extraArgs": false,
-              "id": 2,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
-              },
-              "description": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
-              }
-          }
+          "service": 2
       }
     """

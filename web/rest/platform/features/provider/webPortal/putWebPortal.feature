@@ -42,28 +42,7 @@ Feature: Update web portals
               "mimeType": null,
               "baseName": null
           },
-          "brand": {
-              "name": "Irontec_e2e",
-              "domainUsers": "sip.irontec.com",
-              "maxCalls": 0,
-              "id": 2,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "language": 1,
-              "defaultTimezone": 145
-          }
+          "brand": 2
       }
     """
 

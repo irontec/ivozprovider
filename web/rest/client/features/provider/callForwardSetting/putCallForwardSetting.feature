@@ -26,7 +26,7 @@ Feature: Update call forward settings
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "callTypeFilter": "internal",
@@ -36,10 +36,10 @@ Feature: Update call forward settings
           "noAnswerTimeout": 0,
           "enabled": true,
           "id": 1,
-          "user": "~",
+          "user": 1,
           "extension": null,
           "voiceMailUser": null,
-          "numberCountry": "~",
+          "numberCountry": 1,
           "residentialDevice": null,
           "retailAccount": null
       }

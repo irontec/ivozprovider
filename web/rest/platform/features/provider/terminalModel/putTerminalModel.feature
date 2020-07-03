@@ -35,11 +35,6 @@ Feature: Update terminal models
           "genericUrlPattern": "",
           "specificUrlPattern": "",
           "id": 1,
-          "terminalManufacturer": {
-              "iden": "Yealink",
-              "name": "Yealink",
-              "description": "",
-              "id": 2
-          }
+          "terminalManufacturer": 2
       }
     """

@@ -26,7 +26,7 @@ Feature: Update hunt groups
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "name": "updatedHuntGroup",
@@ -36,35 +36,11 @@ Feature: Update hunt groups
           "noAnswerTargetType": "voicemail",
           "noAnswerNumberValue": null,
           "preventMissedCalls": 1,
+          "allowCallForwards": 0,
           "id": 1,
           "noAnswerLocution": null,
           "noAnswerExtension": null,
-          "noAnswerVoiceMailUser": {
-              "name": "Alice",
-              "lastname": "Allison",
-              "email": "alice@democompany.com",
-              "pass": "*****",
-              "doNotDisturb": false,
-              "isBoss": false,
-              "active": true,
-              "maxCalls": 1,
-              "externalIpCalls": "0",
-              "voicemailEnabled": true,
-              "voicemailSendMail": true,
-              "voicemailAttachSound": true,
-              "gsQRCode": false,
-              "id": 1,
-              "callAcl": null,
-              "bossAssistant": null,
-              "bossAssistantWhiteList": null,
-              "language": null,
-              "terminal": 1,
-              "extension": null,
-              "timezone": 145,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null,
-              "voicemailLocution": null
-          },
+          "noAnswerVoiceMailUser": 1,
           "noAnswerNumberCountry": null
       }
     """

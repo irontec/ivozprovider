@@ -25,23 +25,7 @@ Feature: Update special numbers
           "number": "016",
           "disableCDR": 0,
           "id": 2,
-          "country": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España",
-                  "ca": "España",
-                  "it": "Spagna"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa",
-                  "it": "Europe"
-              }
-          },
+          "country": 68,
           "global": false
       }
     """

@@ -25,7 +25,7 @@ Feature: Update administrators
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "username": "newUserName",
@@ -36,17 +36,8 @@ Feature: Update administrators
           "name": "Updated admin name",
           "lastname": "a lastname",
           "id": 4,
-          "company": "~",
-          "timezone": {
-              "tz": "Europe/London",
-              "comment": "",
-              "id": 158,
-              "label": {
-                  "en": "en",
-                  "es": "es"
-              },
-              "country": 180
-          }
+          "company": 1,
+          "timezone": 158
       }
     """
 

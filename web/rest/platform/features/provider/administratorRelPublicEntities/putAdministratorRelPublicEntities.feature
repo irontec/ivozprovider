@@ -30,32 +30,7 @@ Feature: Manage administrator rel public entities
           "update": true,
           "delete": false,
           "id": 71,
-          "administrator": {
-              "username": "restrictedBrandAdmin",
-              "pass": "*****",
-              "email": "restrictedAdmin@irontec.com",
-              "active": true,
-              "restricted": true,
-              "name": "RestrictedAdmin",
-              "lastname": "Lastname",
-              "id": 6,
-              "brand": 1,
-              "company": null,
-              "timezone": 145
-          },
-          "publicEntity": {
-              "iden": "Countries",
-              "fqdn": "Ivoz\\Provider\\Domain\\Model\\Country\\Country",
-              "platform": true,
-              "brand": true,
-              "client": true,
-              "id": 20,
-              "name": {
-                  "en": "Countries",
-                  "es": "Countries",
-                  "ca": "Countries",
-                  "it": "Countries"
-              }
-          }
+          "administrator": 6,
+          "publicEntity": 20
       }
     """

@@ -31,7 +31,7 @@ Feature: Update carrier servers
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
         {
             "ip": null,
@@ -49,14 +49,6 @@ Feature: Update carrier servers
             "fromUser": "",
             "fromDomain": "",
             "id": 1,
-            "carrier": {
-                "description": "CarrierDescription",
-                "name": "CarrierName",
-                "externallyRated": false,
-                "balance": 0,
-                "calculateCost": false,
-                "id": 1,
-                "transformationRuleSet": 1
-            }
+            "carrier": 1
         }
     """

@@ -28,7 +28,7 @@ Feature: Update rating plan
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "weight": 5,
@@ -42,7 +42,7 @@ Feature: Update rating plan
           "saturday": false,
           "sunday": false,
           "id": 1,
-          "ratingPlanGroup": "~",
-          "destinationRateGroup": "~"
+          "ratingPlanGroup": 1,
+          "destinationRateGroup": 1
       }
     """
