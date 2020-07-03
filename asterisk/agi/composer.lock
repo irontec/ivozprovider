@@ -4078,11 +4078,11 @@
         },
         {
             "name": "symfony/polyfill-apcu",
-            "version": "1.17.0.0",
+            "version": "1.17.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-apcu",
-                "reference": "9ec426b564916afb9bfd15f78708ec322eeb8538",
+                "reference": "a96dc28442814ae56199f57b72a937b5a822150c",
                 "shasum": null
             },
             "require": {
@@ -4092,6 +4092,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.17-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
