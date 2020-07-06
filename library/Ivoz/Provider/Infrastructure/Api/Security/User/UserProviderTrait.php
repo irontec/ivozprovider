@@ -3,8 +3,6 @@
 namespace Ivoz\Provider\Infrastructure\Api\Security\User;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Ivoz\Provider\Domain\Model\User\User;
-use Ivoz\Provider\Domain\Model\WebPortal\WebPortalRepository;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -15,7 +13,6 @@ trait UserProviderTrait
 {
     private $registry;
     private $requestStack;
-    private $webPortalRepository;
     private $logger;
     private $managerName;
     private $entityClass;
@@ -24,7 +21,6 @@ trait UserProviderTrait
     public function __construct(
         ManagerRegistry $registry,
         RequestStack $requestStack,
-        WebPortalRepository $webPortalRepository,
         LoggerInterface $logger,
         string $entityClass,
         string $identifierField,
@@ -32,7 +28,6 @@ trait UserProviderTrait
     ) {
         $this->registry = $registry;
         $this->requestStack = $requestStack;
-        $this->webPortalRepository = $webPortalRepository;
         $this->logger = $logger;
         $this->managerName = $managerName;
 
@@ -93,13 +88,6 @@ trait UserProviderTrait
         }
 
         return $refreshedUser;
-    }
-
-    private function getCurrentHost(): string
-    {
-        $request = $this->requestStack->getCurrentRequest();
-
-        return $request->getSchemeAndHttpHost();
     }
 
     private function getObjectManager()

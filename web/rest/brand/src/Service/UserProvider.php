@@ -17,12 +17,6 @@ class UserProvider implements UserProviderInterface
      */
     protected function findUser(array $criteria)
     {
-        $brandId = $this->webPortalRepository->findBrandIdByUrl(
-            $this->getCurrentHost()
-        );
-
-        $criteria['brand'] = $brandId;
-
         return $this
             ->getRepository()
             ->findOneBy($criteria);
