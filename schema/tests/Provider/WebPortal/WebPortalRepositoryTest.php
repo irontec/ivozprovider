@@ -19,7 +19,6 @@ class WebPortalRepositoryTest extends KernelTestCase
     {
         $this->its_instantiable();
         $this->its_finds_user_web_portal_by_server_name();
-        $this->its_gets_brand_id_by_url();
     }
 
     public function its_instantiable()
@@ -48,23 +47,6 @@ class WebPortalRepositoryTest extends KernelTestCase
 
         $this->assertInstanceOf(
             WebPortal::class,
-            $webPortal
-        );
-    }
-
-    public function its_gets_brand_id_by_url()
-    {
-        /** @var WebPortalRepository $repository */
-        $repository = $this
-            ->em
-            ->getRepository(WebPortal::class);
-
-        $webPortal = $repository->findBrandIdByUrl(
-            'https://users-ivozprovider.irontec.com'
-        );
-
-        $this->assertInternalType(
-            'integer',
             $webPortal
         );
     }
