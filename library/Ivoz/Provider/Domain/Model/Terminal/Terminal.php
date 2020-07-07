@@ -142,6 +142,10 @@ class Terminal extends TerminalAbstract implements TerminalInterface
 
     public function setMac($mac = null)
     {
+        if (!$mac) {
+            $mac = null;
+        }
+
         if (!is_null($mac)) {
             $mac = strtolower($mac);
             $mac = preg_replace(
