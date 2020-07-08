@@ -77,7 +77,7 @@ Feature: Retrieve users
               "allowVideo": null,
               "directMediaMethod": "invite",
               "password": "AUfVkn498_",
-              "mac": "",
+              "mac": null,
               "lastProvisionDate": null,
               "t38Passthrough": "no",
               "id": 1,

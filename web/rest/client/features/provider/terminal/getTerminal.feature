@@ -16,13 +16,13 @@ Feature: Retrieve terminals
       [
           {
               "name": "alice",
-              "mac": "",
+              "mac": null,
               "lastProvisionDate": null,
               "id": 1
           },
           {
               "name": "bob",
-              "mac": "",
+              "mac": null,
               "lastProvisionDate": null,
               "id": 2
           },
@@ -51,7 +51,7 @@ Feature: Retrieve terminals
           "allowVideo": null,
           "directMediaMethod": "invite",
           "password": "AUfVkn498_",
-          "mac": "",
+          "mac": null,
           "lastProvisionDate": null,
           "id": 1,
           "terminalModel": {
