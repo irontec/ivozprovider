@@ -17,7 +17,7 @@ Feature: Create terminals
           "allowVideo": null,
           "directMediaMethod": "invite",
           "password": "ZGthe7E2+5",
-          "mac": "",
+          "mac": null,
           "lastProvisionDate": "1970-03-04 11:12:13",
           "terminalModel": 1
       }
@@ -34,7 +34,7 @@ Feature: Create terminals
           "allowVideo": null,
           "directMediaMethod": "invite",
           "password": "ZGthe7E2+5",
-          "mac": "",
+          "mac": null,
           "lastProvisionDate": "1970-03-04 11:12:13",
           "t38Passthrough": "no",
           "id": 4,
@@ -58,7 +58,7 @@ Feature: Create terminals
           "allowVideo": null,
           "directMediaMethod": "invite",
           "password": "ZGthe7E2+5",
-          "mac": "",
+          "mac": null,
           "lastProvisionDate": "1970-03-04 11:12:13",
           "id": 4,
           "terminalModel": {
