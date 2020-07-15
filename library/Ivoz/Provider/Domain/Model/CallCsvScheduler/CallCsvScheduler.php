@@ -50,7 +50,6 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
                     $this
                         ->setRetailAccount(null)
                         ->setUser(null)
-                        ->setFax(null)
                         ->setFriend(null);
                     break;
                 case CompanyInterface::TYPE_RETAIL:
