@@ -46,14 +46,6 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
       nullable: true
       options:
         unsigned: true
-    authNeeded:
-      type: string
-      nullable: false
-      length: null
-      options:
-        fixed: false
-        default: 'yes'
-      column: auth_needed
     password:
       column: password
       type: string
