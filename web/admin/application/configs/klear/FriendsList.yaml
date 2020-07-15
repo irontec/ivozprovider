@@ -26,7 +26,6 @@ production:
       fields:
         blacklist:
           transport: true
-          authNeeded: true
           password: true
           allow: true
           disallow: true
@@ -90,7 +89,6 @@ production:
           directMediaMethod: true
           updateCallerid: true
           calleridUpdateHeader: true
-          authNeeded: true
           disallow: true
           status: true
           statusIcon: true
@@ -179,7 +177,6 @@ production:
           directMediaMethod: true
           updateCallerid: true
           calleridUpdateHeader: true
-          authNeeded: true
           disallow: true
           statusIcon: true
       fixedPositions:
