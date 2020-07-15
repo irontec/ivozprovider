@@ -55,6 +55,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function isDirectConnectivity(): bool;
 
     /**
+     * @return bool
+     */
+    public function isRegisterConnectivity(): bool;
+
+    /**
      * @param string $number
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */

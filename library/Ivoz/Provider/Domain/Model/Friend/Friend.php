@@ -51,6 +51,26 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     protected function sanitizeValues()
     {
+        if ($this->isDirectConnectivity() && !$this->getTransport()) {
+            throw new \DomainException('Invalid empty transport');
+        }
+
+        if ($this->isDirectConnectivity() && !$this->getIp()) {
+            throw new \DomainException('Invalid empty IP');
+        }
+
+        if ($this->isDirectConnectivity() && !$this->getPort()) {
+            throw new \DomainException('Invalid empty port');
+        }
+
+        if ($this->isRegisterConnectivity() && !$this->getPassword()) {
+            throw new \DomainException('Password cannot be empty for register friends');
+        }
+
+        if ($this->isInterPbxConnectivity() && $this->getPassword()) {
+            throw new \DomainException('Password must be empty for intervpbx friends');
+        }
+
         if ($this->isInterPbxConnectivity()) {
             // Force Inter company friends name
             $this->setName($this->getInterCompanyName());
@@ -60,10 +80,6 @@ class Friend extends FriendAbstract implements FriendInterface
             $this->setFromDomain($this->getInterCompany()->getDomainUsers());
         } else {
             $this->setInterCompany(null);
-        }
-
-        if ($this->isDirectConnectivity() && !$this->getTransport()) {
-            throw new \DomainException('Invalid empty transport');
         }
 
         $this->setDomain(
@@ -87,6 +103,14 @@ class Friend extends FriendAbstract implements FriendInterface
     public function isDirectConnectivity() : bool
     {
         return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_YES;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRegisterConnectivity() : bool
+    {
+        return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_NO;
     }
 
     /**
@@ -147,7 +171,9 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     public function setPassword($password = null)
     {
-        if (!empty($password)) {
+        if (empty($password)) {
+            $password = null;
+        } else {
             Assertion::regex(
                 $password,
                 '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/',
