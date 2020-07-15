@@ -36,6 +36,7 @@ production:
           companyType: false
           ddi: false
           endpointType: false
+          residentialEndpointType: false
           user: false
           fax: false
           friend: false
@@ -72,6 +73,7 @@ production:
             residential: 1
             ddi: 1
             endpointType: 1
+            residentialEndpointType: 1
             retailAccount: 1
             residentialDevice: 1
             user: 1
@@ -92,6 +94,7 @@ production:
           carrier: false
           ddi: false
           endpointType: false
+          residentialEndpointType: false
           user: false
           fax: false
           friend: false
