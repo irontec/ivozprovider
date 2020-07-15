@@ -40,12 +40,6 @@ abstract class FriendAbstract
     protected $port;
 
     /**
-     * column: auth_needed
-     * @var string
-     */
-    protected $authNeeded = 'yes';
-
-    /**
      * @var string | null
      */
     protected $password;
@@ -154,7 +148,6 @@ abstract class FriendAbstract
     protected function __construct(
         $name,
         $description,
-        $authNeeded,
         $priority,
         $disallow,
         $allow,
@@ -167,7 +160,6 @@ abstract class FriendAbstract
     ) {
         $this->setName($name);
         $this->setDescription($description);
-        $this->setAuthNeeded($authNeeded);
         $this->setPriority($priority);
         $this->setDisallow($disallow);
         $this->setAllow($allow);
@@ -250,7 +242,6 @@ abstract class FriendAbstract
         $self = new static(
             $dto->getName(),
             $dto->getDescription(),
-            $dto->getAuthNeeded(),
             $dto->getPriority(),
             $dto->getDisallow(),
             $dto->getAllow(),
@@ -299,7 +290,6 @@ abstract class FriendAbstract
             ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
-            ->setAuthNeeded($dto->getAuthNeeded())
             ->setPassword($dto->getPassword())
             ->setPriority($dto->getPriority())
             ->setDisallow($dto->getDisallow())
@@ -337,7 +327,6 @@ abstract class FriendAbstract
             ->setTransport(self::getTransport())
             ->setIp(self::getIp())
             ->setPort(self::getPort())
-            ->setAuthNeeded(self::getAuthNeeded())
             ->setPassword(self::getPassword())
             ->setPriority(self::getPriority())
             ->setDisallow(self::getDisallow())
@@ -369,7 +358,6 @@ abstract class FriendAbstract
             'transport' => self::getTransport(),
             'ip' => self::getIp(),
             'port' => self::getPort(),
-            'auth_needed' => self::getAuthNeeded(),
             'password' => self::getPassword(),
             'priority' => self::getPriority(),
             'disallow' => self::getDisallow(),
@@ -535,32 +523,6 @@ abstract class FriendAbstract
     public function getPort()
     {
         return $this->port;
-    }
-
-    /**
-     * Set authNeeded
-     *
-     * @param string $authNeeded
-     *
-     * @return static
-     */
-    protected function setAuthNeeded($authNeeded)
-    {
-        Assertion::notNull($authNeeded, 'authNeeded value "%s" is null, but non null value was expected.');
-
-        $this->authNeeded = $authNeeded;
-
-        return $this;
-    }
-
-    /**
-     * Get authNeeded
-     *
-     * @return string
-     */
-    public function getAuthNeeded(): string
-    {
-        return $this->authNeeded;
     }
 
     /**

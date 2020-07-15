@@ -38,11 +38,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $authNeeded = 'yes';
-
-    /**
-     * @var string
-     */
     private $password;
 
     /**
@@ -168,7 +163,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'transport' => 'transport',
             'ip' => 'ip',
             'port' => 'port',
-            'authNeeded' => 'authNeeded',
             'password' => 'password',
             'priority' => 'priority',
             'disallow' => 'disallow',
@@ -202,7 +196,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'transport' => $this->getTransport(),
             'ip' => $this->getIp(),
             'port' => $this->getPort(),
-            'authNeeded' => $this->getAuthNeeded(),
             'password' => $this->getPassword(),
             'priority' => $this->getPriority(),
             'disallow' => $this->getDisallow(),
@@ -338,26 +331,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getPort()
     {
         return $this->port;
-    }
-
-    /**
-     * @param string $authNeeded
-     *
-     * @return static
-     */
-    public function setAuthNeeded($authNeeded = null)
-    {
-        $this->authNeeded = $authNeeded;
-
-        return $this;
-    }
-
-    /**
-     * @return string | null
-     */
-    public function getAuthNeeded()
-    {
-        return $this->authNeeded;
     }
 
     /**
