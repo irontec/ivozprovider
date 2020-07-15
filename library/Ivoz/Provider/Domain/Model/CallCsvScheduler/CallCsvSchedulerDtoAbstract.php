@@ -105,6 +105,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
      */
     private $friend;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     */
+    private $ddiProvider;
+
 
     use DtoNormalizer;
 
@@ -141,7 +146,8 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
             'residentialDeviceId' => 'residentialDevice',
             'userId' => 'user',
             'faxId' => 'fax',
-            'friendId' => 'friend'
+            'friendId' => 'friend',
+            'ddiProviderId' => 'ddiProvider'
         ];
     }
 
@@ -169,7 +175,8 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
             'residentialDevice' => $this->getResidentialDevice(),
             'user' => $this->getUser(),
             'fax' => $this->getFax(),
-            'friend' => $this->getFriend()
+            'friend' => $this->getFriend(),
+            'ddiProvider' => $this->getDdiProvider()
         ];
 
         if (!$hideSensitiveData) {
@@ -820,6 +827,52 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     public function getFriendId()
     {
         if ($dto = $this->getFriend()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider
+     *
+     * @return static
+     */
+    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider = null)
+    {
+        $this->ddiProvider = $ddiProvider;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     */
+    public function getDdiProvider()
+    {
+        return $this->ddiProvider;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setDdiProviderId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto($id)
+            : null;
+
+        return $this->setDdiProvider($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDdiProviderId()
+    {
+        if ($dto = $this->getDdiProvider()) {
             return $dto->getId();
         }
 

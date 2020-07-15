@@ -161,6 +161,13 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     public function getFriend();
 
     /**
+     * Get ddiProvider
+     *
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
+     */
+    public function getDdiProvider();
+
+    /**
      * @return bool
      */
     public function isInitialized(): bool;
