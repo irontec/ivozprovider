@@ -172,6 +172,9 @@ msgstr "Codec video consentiti"
 msgid "Always"
 msgstr "Always"
 
+msgid "Always apply transformations"
+msgstr "Always apply transformations"
+
 msgid "Amount"
 msgstr "Paese"
 
@@ -917,6 +920,15 @@ msgid ""
 msgstr ""
 "Abilitare questa opzione per visualizzare il pulsante Elimina nella sezione "
 "registrazioni chiamate del portale del cliente."
+
+msgid ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
+msgstr ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
 
 msgid "Enabled"
 msgstr "Abilitato"
