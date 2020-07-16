@@ -137,6 +137,12 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
         comment: '[enum:yes|no]'
         default: 'no'
       column: t38Passthrough
+    alwaysApplyTransformations:
+      type: boolean
+      nullable: false
+      options:
+        default: '0'
+      column: alwaysApplyTransformations
   manyToOne:
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
