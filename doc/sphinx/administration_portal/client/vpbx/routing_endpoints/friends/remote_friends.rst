@@ -95,6 +95,10 @@ These are the configurable settings of *friends*:
         If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
         will act as a T.38 gateway, bridging fax-calls of a T.38 capable carrier and a T.38 capable device.
 
+    Always apply transformations
+        Both numbers listed in Extensions section and numbers matching any friend regexp will be considered as internal and
+        won't traverse numeric transformation rules.  Enable this setting to force Numeric Transformation rules even on these numbers. 
+
 .. note:: Calls to *friends* are considered internal. That means that ACLs won't
           be checked when calling a friend, no matter if the origin of the call
           is a user or another friend.
@@ -163,4 +167,3 @@ extension-user-terminal trio:
 
 - Only connects with *Users SIP Proxy*, like terminals. In fact, SIP traffic from
   friends are identical to any other user terminal traffic in format.
-
