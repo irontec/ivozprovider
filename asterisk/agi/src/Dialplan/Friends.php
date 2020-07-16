@@ -6,6 +6,7 @@ use Agi\Action\ExtensionAction;
 use Agi\Action\ExternalFriendCallAction;
 use Agi\Action\ExternalNumberAction;
 use Agi\Action\FriendCallAction;
+use Agi\Action\ServiceAction;
 use Agi\Agents\FriendAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
@@ -29,6 +30,11 @@ class Friends extends RouteHandlerAbstract
      * @var EndpointResolver
      */
     protected $endpointResolver;
+
+    /**
+     * @var ServiceAction
+     */
+    protected $serviceAction;
 
     /**
      * @var ExtensionAction
@@ -59,6 +65,7 @@ class Friends extends RouteHandlerAbstract
         Wrapper $agi,
         ChannelInfo $channelInfo,
         EndpointResolver $endpointResolver,
+        ServiceAction $serviceAction,
         ExtensionAction $extensionAction,
         FriendCallAction $friendCallAction,
         ExternalNumberAction $externalNumberAction
@@ -66,6 +73,7 @@ class Friends extends RouteHandlerAbstract
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->endpointResolver = $endpointResolver;
+        $this->serviceAction = $serviceAction;
         $this->extensionAction = $extensionAction;
         $this->friendCallAction = $friendCallAction;
         $this->externalNumberAction = $externalNumberAction;
@@ -113,8 +121,22 @@ class Friends extends RouteHandlerAbstract
         // Some feedback for asterisk cli
         $this->agi->notice("Processing outgoing call from \e[0;36m%s\e[0;93m to number %s", $friend, $exten);
 
-        // Check if this is an extension call
-        if (($dstExtension = $company->getExtension($exten))) {
+        // Check if this extension starts with '*' code
+        if (strpos($exten, '*') === 0) {
+            /** @var CompanyServiceInterface $service */
+            if (($service = $company->getService($exten))) {
+                // Handle service code
+                $this->serviceAction
+                    ->setService($service)
+                    ->process();
+            } else {
+                // Decline this call if not matching service is found
+                $this->agi->error("Invalid Service code %s for company  %s", $exten, $company);
+                $this->agi->hangup();
+            }
+
+            // Check if this is an extension call
+        } elseif (($dstExtension = $company->getExtension($exten))) {
             $this->agi->verbose(
                 "Number %s belongs to a Company Extension [extension%d].",
                 $exten,
