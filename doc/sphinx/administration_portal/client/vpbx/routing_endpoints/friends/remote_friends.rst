@@ -61,7 +61,8 @@ These are the configurable settings of *friends*:
 
     Password
         When the *friend* send requests, IvozProvider will authenticate it using
-        this password. Like in terminals **using password IS A MUST**.
+        this password. **Using password IS A MUST in "Register" mode**. In "Direct" mode,
+        leaving it blank disables SIP authentication and enables IP source check.
 
     Connectivity mode
         Choose between "Direct" and "Register" for a remote friend.

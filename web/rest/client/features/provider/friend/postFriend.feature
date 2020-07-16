@@ -4,7 +4,7 @@ Feature: Create friends
   I need to be able to create them through the API.
 
   @createSchema
-  Scenario: Create an friends
+  Scenario: Create a friend
     Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
@@ -16,7 +16,6 @@ Feature: Create friends
           "transport": "tls",
           "ip": "129.1.2.3",
           "port": 5060,
-          "authNeeded": "yes",
           "password": "ZEF7t5n+b4",
           "priority": 2,
           "allow": "alaw",
@@ -42,7 +41,6 @@ Feature: Create friends
           "transport": "tls",
           "ip": "129.1.2.3",
           "port": 5060,
-          "authNeeded": "yes",
           "password": "ZEF7t5n+b4",
           "priority": 2,
           "allow": "alaw",
@@ -73,7 +71,6 @@ Feature: Create friends
           "transport": "tls",
           "ip": "129.1.2.3",
           "port": 5060,
-          "authNeeded": "yes",
           "password": "ZEF7t5n+b4",
           "priority": 2,
           "allow": "alaw",
