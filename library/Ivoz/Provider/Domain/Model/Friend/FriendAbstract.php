@@ -105,6 +105,11 @@ abstract class FriendAbstract
     protected $t38Passthrough = 'no';
 
     /**
+     * @var boolean
+     */
+    protected $alwaysApplyTransformations = false;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -156,7 +161,8 @@ abstract class FriendAbstract
         $updateCallerid,
         $directConnectivity,
         $ddiIn,
-        $t38Passthrough
+        $t38Passthrough,
+        $alwaysApplyTransformations
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -169,6 +175,7 @@ abstract class FriendAbstract
         $this->setDirectConnectivity($directConnectivity);
         $this->setDdiIn($ddiIn);
         $this->setT38Passthrough($t38Passthrough);
+        $this->setAlwaysApplyTransformations($alwaysApplyTransformations);
     }
 
     abstract public function getId();
@@ -250,7 +257,8 @@ abstract class FriendAbstract
             $dto->getUpdateCallerid(),
             $dto->getDirectConnectivity(),
             $dto->getDdiIn(),
-            $dto->getT38Passthrough()
+            $dto->getT38Passthrough(),
+            $dto->getAlwaysApplyTransformations()
         );
 
         $self
@@ -301,6 +309,7 @@ abstract class FriendAbstract
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setDdiIn($dto->getDdiIn())
             ->setT38Passthrough($dto->getT38Passthrough())
+            ->setAlwaysApplyTransformations($dto->getAlwaysApplyTransformations())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
@@ -338,6 +347,7 @@ abstract class FriendAbstract
             ->setDirectConnectivity(self::getDirectConnectivity())
             ->setDdiIn(self::getDdiIn())
             ->setT38Passthrough(self::getT38Passthrough())
+            ->setAlwaysApplyTransformations(self::getAlwaysApplyTransformations())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
@@ -369,6 +379,7 @@ abstract class FriendAbstract
             'directConnectivity' => self::getDirectConnectivity(),
             'ddiIn' => self::getDdiIn(),
             't38Passthrough' => self::getT38Passthrough(),
+            'alwaysApplyTransformations' => self::getAlwaysApplyTransformations(),
             'companyId' => self::getCompany()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
@@ -842,6 +853,34 @@ abstract class FriendAbstract
     public function getT38Passthrough(): string
     {
         return $this->t38Passthrough;
+    }
+
+    /**
+     * Set alwaysApplyTransformations
+     *
+     * @param boolean $alwaysApplyTransformations
+     *
+     * @return static
+     */
+    protected function setAlwaysApplyTransformations($alwaysApplyTransformations)
+    {
+        Assertion::notNull($alwaysApplyTransformations, 'alwaysApplyTransformations value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($alwaysApplyTransformations), 0, 1, 'alwaysApplyTransformations provided "%s" is not a valid boolean value.');
+        $alwaysApplyTransformations = (bool) $alwaysApplyTransformations;
+
+        $this->alwaysApplyTransformations = $alwaysApplyTransformations;
+
+        return $this;
+    }
+
+    /**
+     * Get alwaysApplyTransformations
+     *
+     * @return boolean
+     */
+    public function getAlwaysApplyTransformations(): bool
+    {
+        return $this->alwaysApplyTransformations;
     }
 
     /**
