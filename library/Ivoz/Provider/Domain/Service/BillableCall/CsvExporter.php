@@ -113,6 +113,11 @@ class CsvExporter
             $criteria['carrier'] = $carrier->getId();
         }
 
+        $ddiProvider = $scheduler->getDdiProvider();
+        if (!empty($ddiProvider)) {
+            $criteria['ddiProvider'] = $ddiProvider->getId();
+        }
+
         $criteria = $this->addEndpointType(
             $scheduler,
             $criteria
