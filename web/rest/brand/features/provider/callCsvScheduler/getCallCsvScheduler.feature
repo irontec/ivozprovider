@@ -52,9 +52,9 @@ Feature: Retrieve call CSV scheduler
           "carrier": null,
           "retailAccount": null,
           "residentialDevice": null,
-          "residentialDevice": null,
           "user": null,
           "fax": null,
-          "friend": null
+          "friend": null,
+          "ddiProvider": null
       }
     """
