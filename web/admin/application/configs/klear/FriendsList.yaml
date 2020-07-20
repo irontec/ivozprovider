@@ -45,6 +45,7 @@ production:
           t38Passthrough: true
           outgoingDdi: true
           interCompany: true
+          alwaysApplyTransformations: true
         order:
           name: true
           domain: true
@@ -118,6 +119,7 @@ production:
           ddiIn: true
           status: true
           t38Passthrough: true
+          alwaysApplyTransformations: true
       fixedPositions: &friends_FixedPositionsLink
         group0:
           label: _("Basic Configuration")
@@ -130,10 +132,10 @@ production:
             name: 6
             password: 6
             interCompany: 10
-            __empty1: 2
             transport: 4
             ip: 5
             port: 3
+            alwaysApplyTransformations: 8
         group1:
           label: _("Geographic Configuration")
           colsPerRow: 12

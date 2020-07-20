@@ -236,6 +236,13 @@ interface FriendInterface extends LoggableEntityInterface
     public function getT38Passthrough(): string;
 
     /**
+     * Get alwaysApplyTransformations
+     *
+     * @return boolean
+     */
+    public function getAlwaysApplyTransformations(): bool;
+
+    /**
      * Set company
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company

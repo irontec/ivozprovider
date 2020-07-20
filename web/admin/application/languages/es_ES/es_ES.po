@@ -170,6 +170,9 @@ msgstr "Codecs video permitidos"
 msgid "Always"
 msgstr "Siempre"
 
+msgid "Always apply transformations"
+msgstr "Aplicar siempre transformaciones numéricas"
+
 msgid "Amount"
 msgstr "Cantidad"
 
@@ -917,6 +920,14 @@ msgstr ""
 "Habilite esta opción para mostrar el botón eliminar en la sección "
 "Grabaciones de llamadas del portal de clienteGrabaciones de llamadas del "
 "portal del cliente"
+
+msgid ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
+msgstr ""
+"Habilitar para forzar las tranformaciones numéricas para los números "
+"considerados internos."
 
 msgid "Enabled"
 msgstr "Activado"

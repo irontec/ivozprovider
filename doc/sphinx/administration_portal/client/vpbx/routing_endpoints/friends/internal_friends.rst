@@ -44,6 +44,10 @@ These are the configurable settings of *internal friends*:
     Fallback Outgoing DDI
         If called extension causes an external call, this DDI will be used as source number.
 
+    Always apply transformations
+        Numbers listed in Extensions section of both source and destination client will be considered as internal and
+        won't traverse numeric transformation rules. Enable this setting to force Numeric Transformation rules even on these numbers. 
+
 .. note:: Calls to *friends* are considered internal. That means that ACLs won't
           be checked when calling a friend, no matter if the origin of the call
           is a user or another friend.

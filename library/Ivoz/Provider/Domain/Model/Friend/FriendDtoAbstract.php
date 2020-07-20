@@ -91,6 +91,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $t38Passthrough = 'no';
 
     /**
+     * @var boolean
+     */
+    private $alwaysApplyTransformations = false;
+
+    /**
      * @var integer
      */
     private $id;
@@ -174,6 +179,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'directConnectivity' => 'directConnectivity',
             'ddiIn' => 'ddiIn',
             't38Passthrough' => 't38Passthrough',
+            'alwaysApplyTransformations' => 'alwaysApplyTransformations',
             'id' => 'id',
             'companyId' => 'company',
             'domainId' => 'domain',
@@ -207,6 +213,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'directConnectivity' => $this->getDirectConnectivity(),
             'ddiIn' => $this->getDdiIn(),
             't38Passthrough' => $this->getT38Passthrough(),
+            'alwaysApplyTransformations' => $this->getAlwaysApplyTransformations(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
@@ -551,6 +558,26 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getT38Passthrough()
     {
         return $this->t38Passthrough;
+    }
+
+    /**
+     * @param boolean $alwaysApplyTransformations
+     *
+     * @return static
+     */
+    public function setAlwaysApplyTransformations($alwaysApplyTransformations = null)
+    {
+        $this->alwaysApplyTransformations = $alwaysApplyTransformations;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getAlwaysApplyTransformations()
+    {
+        return $this->alwaysApplyTransformations;
     }
 
     /**

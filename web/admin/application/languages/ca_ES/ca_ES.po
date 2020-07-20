@@ -171,6 +171,9 @@ msgstr "Còdecs de vídeo permesos"
 msgid "Always"
 msgstr "Sempre"
 
+msgid "Always apply transformations"
+msgstr "Aplicar siempre transformaciones numéricas"
+
 msgid "Amount"
 msgstr "Quantitat"
 
@@ -914,6 +917,14 @@ msgid ""
 msgstr ""
 "Activa aquesta opció per mostrar el botó d’eliminació a la secció "
 "d’enregistrament de trucades al portal del client."
+
+msgid ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
+msgstr ""
+"Habilitar para forzar las tranformaciones numéricas para los números "
+"considerados internos."
 
 msgid "Enabled"
 msgstr "Habilitat"

@@ -166,6 +166,9 @@ msgstr "Allowed video codecs"
 msgid "Always"
 msgstr "Always"
 
+msgid "Always apply transformations"
+msgstr "Always apply transformations"
+
 msgid "Amount"
 msgstr "Amount"
 
@@ -903,6 +906,15 @@ msgid ""
 msgstr ""
 "Enable this option to display delete button in Client's portal call "
 "recordings section."
+
+msgid ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
+msgstr ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
 
 msgid "Enabled"
 msgstr "Enabled"
