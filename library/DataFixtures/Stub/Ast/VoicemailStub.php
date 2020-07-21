@@ -42,13 +42,13 @@ class VoicemailStub
         $this->append($dto);
 
         $dto = (new VoicemailDto(3))
-            ->setContext('company1')
-            ->setMailbox('101')
-            ->setFullname('Alice ')
-            ->setEmail('alice@democompany.com')
+            ->setContext('company4')
+            ->setMailbox('residentialDevice')
+            ->setFullname('residentialDevice ')
+            ->setEmail('residential@democompany.com')
             ->setAttach('yes')
             ->setTz('Europe/Madrid')
-            ->setUserId(
+            ->setResidentialDeviceId(
                 1
             );
         $this->append($dto);
