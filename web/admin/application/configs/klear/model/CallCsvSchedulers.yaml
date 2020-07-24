@@ -109,27 +109,78 @@ production:
             title: _('All')
             visualFilter:
               show: ["callCsvNotificationTemplate"]
-              hide: ["company", "retail", "residential", "vpbx", "residentialDevice", "retailAccount", "ddi", "user", "fax", "friend", "endpointType"]
+              hide:
+              - company
+              - retail
+              - residential
+              - vpbx
+              - residentialDevice
+              - retailAccount
+              - ddi
+              - user
+              - fax
+              - friend
+              - endpointType
+              - residentialEndpointType
           vpbx:
             title: _('vPBX')
             visualFilter:
               show: ["vpbx"]
-              hide: ["retail", "residential", "company", "residentialDevice", "retailAccount", "callCsvNotificationTemplate"]
+              hide:
+              - retail
+              - residential
+              - company
+              - residentialDevice
+              - retailAccount
+              - callCsvNotificationTemplate
+              - residentialEndpointType
           retail:
             title: _('Retail')
             visualFilter:
               show: ["retail"]
-              hide: ["company", "vpbx", "residential", "residentialDevice", "callCsvNotificationTemplate", "user", "fax", "friend", "endpointType", "retailAccount"]
+              hide:
+              - company
+              - vpbx
+              - residential
+              - residentialDevice
+              - callCsvNotificationTemplate
+              - user
+              - fax
+              - friend
+              - endpointType
+              - residentialEndpointType
+              - retailAccount
           residential:
             title: _('Residential')
             visualFilter:
               show: ["residential"]
-              hide: ["company", "vpbx", "retail", "retailAccount", "callCsvNotificationTemplate", "user", "fax", "friend", "endpointType", "residentialDevice"]
+              hide:
+              - company
+              - vpbx
+              - retail
+              - retailAccount
+              - callCsvNotificationTemplate
+              - user
+              - fax
+              - friend
+              - endpointType
+              - residentialDevice
           wholesale:
             title: _('Wholesale')
             visualFilter:
               show: ["company"]
-              hide: ["vpbx", "retail", "residential", "retailAccount", "residentialDevice", "callCsvNotificationTemplate", "user", "fax", "friend", "endpointType", "ddi"]
+              hide:
+              - vpbx
+              - retail
+              - residential
+              - retailAccount
+              - residentialDevice
+              - callCsvNotificationTemplate
+              - user
+              - fax
+              - friend
+              - endpointType
+              - ddi
     company: &company_link
       title: ngettext('Client', 'Clients', 1)
       type: select
@@ -345,6 +396,7 @@ production:
         data-autofilter-select-by-data:
           ddi: company
           residentialDevice: company
+          fax: company
       source:
         data: mapper
         'null': " "
@@ -356,12 +408,15 @@ production:
                 show:
                 - ddi
                 - residentialDevice
+                - residentialEndpointType
                 hide: []
               'null':
                 show: []
                 hide:
                 - ddi
+                - fax
                 - residentialDevice
+                - residentialEndpointType
     endpointType:
       title: _('Endpoint type')
       type: select
@@ -383,12 +438,34 @@ production:
             title: _('Fax')
             visualFilter:
               show: ["fax"]
-              hide: ["user", "fax", "friend"]
+              hide: ["user", "friend"]
           friend:
             title: _('Friend')
             visualFilter:
               show: ["friend"]
               hide: ["user", "fax", "friend"]
+    residentialEndpointType:
+      title: _('Endpoint type')
+      type: select
+      required: false
+      source:
+        data: inline
+        values:
+          '_NULL_':
+            title: _('All')
+            visualFilter:
+              show: []
+              hide: ["residentialDevice", "fax"]
+          residentialDevice:
+            title: _('Residential Device')
+            visualFilter:
+              show: ["residentialDevice"]
+              hide: ["fax"]
+          fax:
+            title: _('Fax')
+            visualFilter:
+              show: ["fax"]
+              hide: ["residentialDevice"]
 staging:
 staging:
   _extends: production

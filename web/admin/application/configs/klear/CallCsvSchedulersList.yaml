@@ -33,6 +33,7 @@ production:
           companyType: true
           vpbx: true
           endpointType: true
+          residentialEndpointType: true
           user: true
           fax: true
           friend: true
@@ -87,6 +88,7 @@ production:
           companyType: true
           ddi: ${auth.companyWholesale}
           endpointType: ${auth.companyNotVPBX}
+          residentialEndpointType: ${auth.companyNotResidential}
           user: ${auth.companyNotVPBX}
           fax: ${auth.companyNotVPBX}
           friend: ${auth.companyNotVPBX}
@@ -109,6 +111,7 @@ production:
           residentialDevice: 1
           ddi: 1
           endpointType: 1
+          residentialEndpointType: 1
       fixedPositions: &callCsvSchedulersFixedPositions_Link
         group0:
           label: _("Basic Information")
@@ -129,9 +132,9 @@ production:
             retail: 1
             residential: 1
             endpointType: 1
-            endpointType: 1
             retailAccount: 1
             residentialDevice: 1
+            residentialEndpointType: 1
             ddi: 1
             user: 1
             fax: 1
