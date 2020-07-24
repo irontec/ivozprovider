@@ -110,6 +110,10 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
             if ($this->getCarrier()) {
                 throw new \DomainException('Filter by carrier is only possible for outbound calls');
             }
+        } else {
+            if ($this->getDdiProvider()) {
+                throw new \DomainException('Filter by ddi provider is only possible for inbound calls');
+            }
         }
     }
 

@@ -12,7 +12,7 @@ production:
       title: _('Direction')
       type: select
       required: false
-      defaultValue: 'outbound'
+      defaultValue: '__null__'
       source:
         data: inline
         values:
@@ -20,17 +20,17 @@ production:
             title: _('Outbound')
             visualFilter:
               show: ["carrier"]
-              hide: []
+              hide: ["ddiProvider"]
           'inbound':
             title: _('Inbound')
             visualFilter:
-              show: []
+              show: ["ddiProvider"]
               hide: ["carrier"]
           '__null__':
             title:_('Both')
             visualFilter:
               show: []
-              hide: ["carrier"]
+              hide: ["carrier", "ddiProvider"]
     frequency:
       title: _('Frequency')
       type: number
@@ -338,6 +338,21 @@ production:
             company: companyId
           order:
             Friend.name: asc
+    ddiProvider:
+      title: _('DDI Provider')
+      type: select
+      source:
+        data: mapper
+        'null': _("All")
+        config:
+          entity: \Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+            - name
+            template: '%name%'
+          order:
+            DdiProvider.name: asc
     vpbx:
       <<: *company_link
       attributes:

@@ -33,6 +33,7 @@ production:
           retailAccount: false
           residentialDevice: false
           carrier: false
+          ddiProvider: false
           companyType: false
           ddi: false
           endpointType: false
@@ -63,6 +64,7 @@ production:
           fields:
             callDirection: 1
             carrier: 1
+            ddiProvider: 1
         group3:
           label: _("Client filters")
           colsPerRow: 2
@@ -92,6 +94,7 @@ production:
           retailAccount: false
           residentialDevice: false
           carrier: false
+          ddiProvider: false
           ddi: false
           endpointType: false
           residentialEndpointType: false
