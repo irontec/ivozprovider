@@ -98,15 +98,6 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
 
         $isNotOutbound = $this->getCallDirection() !== self::CALLDIRECTION_OUTBOUND;
         if ($isNotOutbound) {
-            if ($this->getUser()) {
-                throw new \DomainException('Filter by user is only possible for outbound calls');
-            }
-            if ($this->getFriend()) {
-                throw new \DomainException('Filter by friend is only possible for outbound calls');
-            }
-            if ($this->getFax()) {
-                throw new \DomainException('Filter by fax is only possible for outbound calls');
-            }
             if ($this->getCarrier()) {
                 throw new \DomainException('Filter by carrier is only possible for outbound calls');
             }
