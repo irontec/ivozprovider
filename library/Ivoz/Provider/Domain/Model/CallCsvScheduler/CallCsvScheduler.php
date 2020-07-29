@@ -153,7 +153,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
             case 'week':
                 return new \DateInterval("P${frecuency}W");
             case 'day':
-                return \DateInterval::createFromDateString('1 day');
+                return new \DateInterval("P${frecuency}D");
         }
     }
 
