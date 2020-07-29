@@ -41,6 +41,9 @@ production:
           user: false
           fax: false
           friend: false
+          retail: false
+          residential: false
+          vpbx: false
       fixedPositions: &callCsvSchedulersNew_fixedPositions
         group0:
           label: _("Basic Information")
@@ -101,6 +104,10 @@ production:
           user: false
           fax: false
           friend: false
+          retail: false
+          residential: false
+          vpbx: false
+          companyType: false
       fixedPositions:
         <<: *callCsvSchedulersNew_fixedPositions
   dialogs:
