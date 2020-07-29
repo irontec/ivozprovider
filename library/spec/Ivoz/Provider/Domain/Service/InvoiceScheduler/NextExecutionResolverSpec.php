@@ -53,7 +53,6 @@ class NextExecutionResolverSpec extends ObjectBehavior
             [
                 'getBrand' => $brand,
                 'getNextExecution' => null,
-                'getFrequency' => 1,
                 'getUnit' => 'month'
             ]
         );
