@@ -123,9 +123,9 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
      */
     public function getTimezone()
     {
-        $timeZone = $this->getBrand()
-            ? $this->getBrand()->getDefaultTimezone()
-            : $this->getCompany()->getDefaultTimezone();
+        $timeZone = $this->getCompany()
+            ? $this->getCompany()->getDefaultTimezone()
+            : $this->getBrand()->getDefaultTimezone();
 
         return $timeZone;
     }
