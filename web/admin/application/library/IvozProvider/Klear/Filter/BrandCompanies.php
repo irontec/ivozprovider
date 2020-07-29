@@ -15,6 +15,23 @@ class IvozProvider_Klear_Filter_BrandCompanies implements KlearMatrix_Model_Fiel
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
+        $file = $routeDispatcher->getParam('file');
+        $clientFilteredScreens = [
+            'CallCsvSchedulersList'
+        ];
+
+        if (in_array($file, $clientFilteredScreens)) {
+            $auth = Zend_Auth::getInstance();
+            if (!$auth->hasIdentity()) {
+                throw new Klear_Exception_Default('Unable to get user identity');
+            }
+
+            $loggedUser = $auth->getIdentity();
+            $currentCompanyId = $loggedUser->companyId;
+            $this->_condition[] = "self::company in (" . $currentCompanyId . ")";
+
+            return true;
+        }
 
         // Get ModelName and your Controller
         $currentItemName = $routeDispatcher->getCurrentItemName();

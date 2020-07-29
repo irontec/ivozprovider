@@ -226,8 +226,8 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
      */
     public function getResidentialEndpointType()
     {
-        if ($this->getUserId()) {
-            return 'user';
+        if ($this->getResidentialDeviceId()) {
+            return 'residentialDevice';
         }
 
         if ($this->getFaxId()) {

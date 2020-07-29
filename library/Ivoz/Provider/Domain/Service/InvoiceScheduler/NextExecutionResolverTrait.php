@@ -20,7 +20,6 @@ trait NextExecutionResolverTrait
      */
     protected function setFallbackNextExecution(SchedulerInterface $scheduler, TimezoneInterface $timeZone)
     {
-        $frecuency = $scheduler->getFrequency() -1;
         $unit = $scheduler->getUnit();
 
         $dateTimeZone = new \DateTimeZone($timeZone->getTz());
@@ -29,7 +28,6 @@ trait NextExecutionResolverTrait
             null,
             $dateTimeZone
         );
-        $nextExecution->modify("+${frecuency} ${unit}s");
 
         switch ($unit) {
             case 'year':

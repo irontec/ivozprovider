@@ -26,14 +26,17 @@ When adding a new definition, these fields are shown:
     DDI
         Allows selecting a client's specific DDI.
 
+    Endpoint type
+        Allows selecting one specific endpoint type between: user, friend and fax.
+
     User
-        Allows selecting a client's specific user.
+        Only for *Endpoint type: user*, allows selecting one specific user.
 
     Fax
-        Allows selecting a client's specific fax.
+        Only for *Endpoint type: fax*, allows selecting one specific fax.
 
     Friend
-        Allows selecting a client's specific friend.
+        Only for *Endpoint type: friend*, allows selecting one specific friend.
 
 
 Once created, some new fields and subsections are accesible:
@@ -86,7 +89,7 @@ These are the fields of the generated CSV files:
         Client DDI to which call will be assigned (callee for inbound calls, caller for outbound calls).
 
     endpointType
-        Possible values: User, Fax, Friend. **Empty for inbound calls**.
+        Possible values: User, Fax, Friend.
 
     endpointId
         Internal ID of specific endpoint (only when *endpointType* has a non-empty value).

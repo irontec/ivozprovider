@@ -98,15 +98,6 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
 
         $isNotOutbound = $this->getCallDirection() !== self::CALLDIRECTION_OUTBOUND;
         if ($isNotOutbound) {
-            if ($this->getUser()) {
-                throw new \DomainException('Filter by user is only possible for outbound calls');
-            }
-            if ($this->getFriend()) {
-                throw new \DomainException('Filter by friend is only possible for outbound calls');
-            }
-            if ($this->getFax()) {
-                throw new \DomainException('Filter by fax is only possible for outbound calls');
-            }
             if ($this->getCarrier()) {
                 throw new \DomainException('Filter by carrier is only possible for outbound calls');
             }
@@ -132,9 +123,9 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
      */
     public function getTimezone()
     {
-        $timeZone = $this->getBrand()
-            ? $this->getBrand()->getDefaultTimezone()
-            : $this->getCompany()->getDefaultTimezone();
+        $timeZone = $this->getCompany()
+            ? $this->getCompany()->getDefaultTimezone()
+            : $this->getBrand()->getDefaultTimezone();
 
         return $timeZone;
     }
@@ -162,7 +153,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
             case 'week':
                 return new \DateInterval("P${frecuency}W");
             case 'day':
-                return \DateInterval::createFromDateString('1 day');
+                return new \DateInterval("P${frecuency}D");
         }
     }
 

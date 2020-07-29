@@ -257,7 +257,7 @@ production:
         'null': _("All")
         config:
           entity: \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
-          filterClass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_BrandCompanies
           fieldName:
             fields:
               - name
@@ -274,7 +274,7 @@ production:
         'null': _("All")
         config:
           entity: \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice
-          filterClass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_BrandCompanies
           fieldName:
             fields:
               - name
