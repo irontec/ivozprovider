@@ -43,7 +43,7 @@ class IvozProvider_Klear_Filter_CallForwardTypes implements KlearMatrix_Model_Fi
         $excludedRoutes = [];
 
         if ($companyDto->getType() === CompanyInterface::TYPE_RETAIL) {
-            $excludedRoutes = ["inconditional", "busy", "noAnswer"];
+            $excludedRoutes = ["busy", "noAnswer"];
         }
 
         return $excludedRoutes;
