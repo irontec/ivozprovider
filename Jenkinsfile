@@ -24,7 +24,7 @@ pipeline {
     // ------------------------------------------------------------------------
     environment {
         SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
-        SYMFONY_PHPUNIT_VERSION = "6.5.14"
+        SYMFONY_PHPUNIT_VERSION = "8.5.8"
         GITHUB_TOKEN=credentials('github')
         COMPOSER_AUTH="{\"github-oauth\": {\"github.com\": \"${env.GITHUB_TOKEN_PSW}\"}}"
     }
