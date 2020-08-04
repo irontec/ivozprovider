@@ -114,7 +114,7 @@ class InvoiceSchedulerLifeCycleTest extends KernelTestCase
         $changelog = $changelogEntries[0];
 
         $diff = $changelog->getData();
-        $this->assertArraySubset(
+        $this->assertSubset(
             [
                 'name' => 'testReport',
                 'unit' => 'week',

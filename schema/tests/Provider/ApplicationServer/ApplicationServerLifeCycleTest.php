@@ -21,7 +21,7 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
     /**
      * {@inheritDoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_setUp(...func_get_args());
 

@@ -32,8 +32,7 @@ class CallForwardSettingRepositoryTest extends KernelTestCase
         $ids = $callForwardSettingRepository
             ->countByUserId(1);
 
-        $this->assertInternalType(
-            'int',
+        $this->assertIsInt(
             $ids
         );
     }
@@ -54,8 +53,7 @@ class CallForwardSettingRepositoryTest extends KernelTestCase
                 $userRepository->find(1)
             );
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $callForwardSettings
         );
 

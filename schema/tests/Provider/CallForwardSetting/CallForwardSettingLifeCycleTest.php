@@ -13,11 +13,17 @@ class CallForwardSettingLifeCycleTest extends KernelTestCase
 
     /**
      * @test
-     * @expectedException \DomainException
-     * @expectedExceptionCode Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness::BUSY_CALL_FORWARD_EXCEPTION
      */
     public function ensures_one_single_busy_call_forward_by_type()
     {
+        $this->expectException(
+            \DomainException::class
+        );
+
+        $this->expectExceptionCode(
+            \Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness::BUSY_CALL_FORWARD_EXCEPTION
+        );
+
         $cf = new CallForwardSettingDto();
         $cf->setCallTypeFilter('external')
             ->setCallForwardType('busy')
@@ -29,11 +35,17 @@ class CallForwardSettingLifeCycleTest extends KernelTestCase
 
     /**
      * @test
-     * @expectedException \DomainException
-     * @expectedExceptionCode Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness::NO_ANSWER_CALL_FORWARD_EXCEPTION
      */
     public function ensures_one_single_noAnswer_call_forward_by_type()
     {
+        $this->expectException(
+            \DomainException::class
+        );
+
+        $this->expectExceptionCode(
+            \Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness::NO_ANSWER_CALL_FORWARD_EXCEPTION
+        );
+
         $cf = new CallForwardSettingDto();
         $cf->setCallTypeFilter('external')
             ->setCallForwardType('noAnswer')
@@ -45,11 +57,17 @@ class CallForwardSettingLifeCycleTest extends KernelTestCase
 
     /**
      * @test
-     * @expectedException \DomainException
-     * @expectedExceptionCode Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness::USER_NOT_REGISTERED_CALL_FORWARD_EXCEPTION
      */
     public function ensures_one_single_userNotRegistered_call_forward_by_type()
     {
+        $this->expectException(
+            \DomainException::class
+        );
+
+        $this->expectExceptionCode(
+            \Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness::USER_NOT_REGISTERED_CALL_FORWARD_EXCEPTION
+        );
+
         $cf = new CallForwardSettingDto();
         $cf->setCallTypeFilter('external')
             ->setCallForwardType('userNotRegistered')

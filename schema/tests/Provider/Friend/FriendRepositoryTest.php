@@ -71,8 +71,7 @@ class FriendRepositoryTest extends KernelTestCase
 
         $num = $repository->countRegistrableDevices([1]);
 
-        $this->assertInternalType(
-            'int',
+        $this->assertIsInt(
             $num
         );
     }

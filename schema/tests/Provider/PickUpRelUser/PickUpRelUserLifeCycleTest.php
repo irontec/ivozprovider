@@ -118,10 +118,13 @@ class PickUpRelUserLifeCycleTest extends KernelTestCase
 
     /**
      * @test
-     * @expectedException \DomainException
      */
     public function it_triggers_update_lifecycle_services()
     {
+        $this->expectException(
+            \DomainException::class
+        );
+
         $this->updatePickUpRelUser();
     }
 

@@ -94,10 +94,13 @@ class AdministratorRepositoryTest extends KernelTestCase
 
     /**
      * @test
-     * @expectedException \RuntimeException
      */
     public function it_throws_exception_if_inner_global_admin_is_not_found()
     {
+        $this->expectException(
+            \RuntimeException::class
+        );
+
         /** @var AdministratorDoctrineRepository $repository */
         $repository = $this->em
             ->getRepository(Administrator::class);

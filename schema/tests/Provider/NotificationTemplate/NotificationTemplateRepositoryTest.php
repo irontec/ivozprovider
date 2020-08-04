@@ -63,8 +63,7 @@ class NotificationTemplateRepositoryTest extends KernelTestCase
         $genericCallCsvTemplate = $repository
             ->findGenericInvoiceTemplate();
 
-        $this->assertInternalType(
-            'null', // @todo NotificationTemplateRepository::class (No fixture yet)
+        $this->assertNull(
             $genericCallCsvTemplate
         );
     }

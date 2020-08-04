@@ -59,8 +59,7 @@ class ProxyTrunksRelBrandRepositoryTest extends KernelTestCase
             $trunksIds
         );
 
-        $this->assertInternalType(
-            'integer',
+        $this->assertIsInt(
             $trunksIds[0]
         );
     }

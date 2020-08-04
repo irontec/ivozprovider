@@ -9,6 +9,8 @@ use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Domain\Service\EntityEventSubscriber;
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\Changelog\ChangelogRepository;
+use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\Constraint\ArraySubset;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -59,7 +61,7 @@ trait DbIntegrationTestHelperTrait
     /**
      * {@inheritDoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $kernel = self::bootKernel();
         $this->serviceContainer = $kernel->getContainer();
@@ -227,14 +229,14 @@ trait DbIntegrationTestHelperTrait
         $this->entityEventSubscriber->clearEvents();
     }
 
-    protected function assertSubset(
+    protected function assertChangedSubset(
         Changelog $changelog,
         array $expectedSubset,
         array $excludedSubsetKeys = []
     ) {
         $diff = $changelog->getData();
 
-        $this->assertArraySubset(
+        $this->assertSubset(
             $expectedSubset,
             $diff
         );
@@ -250,6 +252,30 @@ trait DbIntegrationTestHelperTrait
                 )
             )
         );
+    }
+
+    /**
+     * @todo use official phpunit extension https://github.com/sebastianbergmann/phpunit/issues/3494
+     */
+    protected function assertSubset($subset, $array, bool $checkForObjectIdentity = false, string $message = ''): void
+    {
+        if (!is_array($subset)) {
+            throw \PHPUnit\Util\InvalidArgumentHelper::factory(
+                1,
+                'array'
+            );
+        }
+
+        if (!is_array($array)) {
+            throw \PHPUnit\Util\InvalidArgumentHelper::factory(
+                2,
+                'array'
+            );
+        }
+
+        $constraint = new ArraySubset($subset, $checkForObjectIdentity);
+
+        Assert::assertThat($array, $constraint, $message);
     }
 
     /**

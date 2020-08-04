@@ -44,8 +44,7 @@ class TpDestinationRepositoryTest extends KernelTestCase
         $result = $repository
             ->findOneByTag('tag');
 
-        $this->assertInternalType(
-            'null', // @todo TpDestinationInterface::class (No fixture yet)
+        $this->assertNull(
             $result
         );
     }

@@ -44,8 +44,7 @@ class TpRatingPlanRepositoryTest extends KernelTestCase
         $result = $repository
             ->findOneByTag('tag');
 
-        $this->assertInternalType(
-            'null', // @todo TpRatingPlanInterface::class (No fixture yet)
+        $this->assertNull(
             $result
         );
     }

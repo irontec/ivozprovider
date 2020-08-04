@@ -102,7 +102,7 @@ class FriendLifeCycleTestLifeCycleTest extends KernelTestCase
             $friendEntries
         );
 
-        $this->assertArraySubset(
+        $this->assertSubset(
             [ 'name' => 'ormTestFriend' ],
             $friendEntries[0]->getData()
         );

@@ -71,8 +71,7 @@ class ResidentialDeviceRepositoryTest extends KernelTestCase
 
         $num = $repository->countRegistrableDevicesByCompanies([1]);
 
-        $this->assertInternalType(
-            'int',
+        $this->assertIsInt(
             $num
         );
     }

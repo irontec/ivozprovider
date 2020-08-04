@@ -130,7 +130,7 @@ class RatingProfileLifeCycleTest extends KernelTestCase
             'created_at'
         ];
 
-        $this->assertSubset(
+        $this->assertChangedSubset(
             $changelog,
             $expectedSubset,
             $excludedSubsetKeys

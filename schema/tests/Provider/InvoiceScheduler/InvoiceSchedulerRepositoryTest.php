@@ -27,8 +27,7 @@ class InvoiceSchedulerRepositoryTest extends KernelTestCase
             ->getRepository(InvoiceScheduler::class);
         $pendingSchedulers = $invoiceSchedulerRepository->getPendingSchedulers();
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $pendingSchedulers
         );
     }
@@ -40,8 +39,7 @@ class InvoiceSchedulerRepositoryTest extends KernelTestCase
             ->getRepository(InvoiceScheduler::class);
         $companyIdsInUse = $invoiceSchedulerRepository->getCompanyIdsInUse(1);
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $companyIdsInUse
         );
     }

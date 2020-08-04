@@ -115,7 +115,7 @@ class CallCsvSchedulerLifeCycleTest extends KernelTestCase
         $changelog = $changelogEntries[0];
 
         $diff = $changelog->getData();
-        $this->assertArraySubset(
+        $this->assertSubset(
             [
                 'name' => 'testReport',
                 'unit' => 'week',
@@ -171,10 +171,13 @@ class CallCsvSchedulerLifeCycleTest extends KernelTestCase
 
     /**
      * @test
-     * @expectedException \DomainException
      */
     public function duplicated_company_and_name_throws_exception()
     {
+        $this->expectException(
+            \DomainException::class
+        );
+
         $dto = $this->createDto();
         $scheduler2  = $this->entityTools->persistDto($dto, null, true);
 
@@ -184,16 +187,19 @@ class CallCsvSchedulerLifeCycleTest extends KernelTestCase
 
     /**
      * @test
-     * @expectedException \Doctrine\DBAL\Exception\UniqueConstraintViolationException
      */
     public function duplicated_brand_and_name_throws_exception()
     {
+        $this->expectException(
+            \Doctrine\DBAL\Exception\UniqueConstraintViolationException::class
+        );
+
         $dto = $this->createDto();
         $dto->setBrandId(1);
-        $scheduler2  = $this->entityTools->persistDto($dto, null, true);
+        $this->entityTools->persistDto($dto, null, true);
 
         $dto2 = $this->createDto();
         $dto2->setBrandId(1);
-        $scheduler2  = $this->entityTools->persistDto($dto2, null, true);
+        $this->entityTools->persistDto($dto2, null, true);
     }
 }

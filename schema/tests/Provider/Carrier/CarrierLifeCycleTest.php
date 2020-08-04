@@ -120,7 +120,7 @@ class CarrierLifeCycleTest extends KernelTestCase
         $diff = array_filter($diff, function ($value) {
             return !empty($value);
         });
-        $this->assertArraySubset(
+        $this->assertSubset(
             [
                 'tpid' => 'b1',
                 'tag' => 'cr3',
@@ -172,7 +172,7 @@ class CarrierLifeCycleTest extends KernelTestCase
             'id' => 3
         ];
 
-        $this->assertArraySubset(
+        $this->assertSubset(
             $expectedSubset,
             $diff
         );

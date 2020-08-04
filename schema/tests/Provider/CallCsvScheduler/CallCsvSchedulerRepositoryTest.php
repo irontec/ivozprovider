@@ -34,8 +34,7 @@ class CallCsvSchedulerRepositoryTest extends KernelTestCase
         $ids = $callCsvSchedulerRepository
             ->getCompanyIdsInUse(1);
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $ids
         );
     }
@@ -50,8 +49,7 @@ class CallCsvSchedulerRepositoryTest extends KernelTestCase
         $callCsvSchedulers = $callCsvSchedulerRepository
             ->getPendingSchedulers();
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $callCsvSchedulers
         );
     }
@@ -80,8 +78,7 @@ class CallCsvSchedulerRepositoryTest extends KernelTestCase
         $isUnique = $callCsvSchedulerRepository
             ->hasUniqueName($callCsvSchedulerMock);
 
-        $this->assertInternalType(
-            'bool',
+        $this->assertIsBool(
             $isUnique
         );
     }

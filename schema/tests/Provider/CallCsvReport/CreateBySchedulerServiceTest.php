@@ -43,7 +43,7 @@ class CreateBySchedulerServiceTest extends KernelTestCase
         $changelog = $changelogEntries[0];
 
         $diff = $changelog->getData();
-        $this->assertArraySubset(
+        $this->assertSubset(
             [
                 'inDate' => '2018-12-08 23:00:00',
                 'outDate' => '2018-12-09 22:59:59'
@@ -63,7 +63,7 @@ class CreateBySchedulerServiceTest extends KernelTestCase
         $changelog = $changelogEntries[0];
 
         $diff = $changelog->getData();
-        $this->assertArraySubset(
+        $this->assertSubset(
             [
                 'nextExecution' => '2018-12-11 08:00:00'
             ],

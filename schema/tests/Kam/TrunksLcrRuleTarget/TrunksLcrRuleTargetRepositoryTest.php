@@ -68,8 +68,7 @@ class TrunksLcrRuleTargetRepositoryTest extends KernelTestCase
             $this->em->getReference(OutgoingRouting::class, 1)
         );
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $results
         );
     }

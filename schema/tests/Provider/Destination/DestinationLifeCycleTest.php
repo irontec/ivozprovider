@@ -116,7 +116,7 @@ class DestinationLifeCycleTest extends KernelTestCase
         $this->assertCount(1, $changelogEntries);
         $changelog = $changelogEntries[0];
 
-        $this->assertSubset(
+        $this->assertChangedSubset(
             $changelog,
             [
                 'tpid' => 'b1',

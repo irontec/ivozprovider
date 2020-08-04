@@ -45,13 +45,11 @@ class CompanyRepositoryTest extends KernelTestCase
 
         $companies = $repository->findIdsByBrandId(1);
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $companies
         );
 
-        $this->assertInternalType(
-            'int',
+        $this->assertIsInt(
             $companies[0]
         );
     }
@@ -65,8 +63,7 @@ class CompanyRepositoryTest extends KernelTestCase
 
         $companies = $repository->getPrepaidCompanies();
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $companies
         );
 
@@ -85,13 +82,11 @@ class CompanyRepositoryTest extends KernelTestCase
 
         $ids = $repository->getVpbxIdsByBrand(1);
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $ids
         );
 
-        $this->assertInternalType(
-            'int',
+        $this->assertIsInt(
             $ids[0]
         );
     }

@@ -82,8 +82,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         $retarificable = $billableCallRepository
             ->areRetarificable([1]);
 
-        $this->assertInternalType(
-            'boolean',
+        $this->assertIsBool(
             $retarificable
         );
     }
@@ -101,8 +100,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         $cgrids = $billableCallRepository
             ->findUnratedInGroup([]);
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $cgrids
         );
     }
@@ -120,8 +118,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         $cgrids = $billableCallRepository
             ->findRerateableCgridsInGroup([1]);
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $cgrids
         );
     }
@@ -136,18 +133,20 @@ class BillableCallRepositoryTest extends KernelTestCase
         $cgrids = $billableCallRepository
             ->idsToTrunkCdrId([1]);
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $cgrids
         );
     }
 
     /**
      * @test
-     * @expectedException \RuntimeException
      */
     public function it_throws_exception_if_trunkCdrIds_are_missing()
     {
+        $this->expectException(
+            \RuntimeException::class
+        );
+
         /** @var BillableCallRepository $billableCallRepository */
         $billableCallRepository = $this->em
             ->getRepository(BillableCall::class);
@@ -288,8 +287,7 @@ class BillableCallRepositoryTest extends KernelTestCase
                 )
             );
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $response
         );
     }
@@ -309,8 +307,7 @@ class BillableCallRepositoryTest extends KernelTestCase
                 )
             );
 
-        $this->assertInternalType(
-            'int',
+        $this->assertIsInt(
             $response
         );
     }

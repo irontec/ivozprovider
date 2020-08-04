@@ -43,8 +43,7 @@ class BalanceNotificationRepositoryTest extends KernelTestCase
                 0
             );
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $balanceNotifications
         );
 
@@ -72,8 +71,7 @@ class BalanceNotificationRepositoryTest extends KernelTestCase
                 0
             );
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $balanceNotifications
         );
     }

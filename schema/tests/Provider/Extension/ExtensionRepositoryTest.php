@@ -44,8 +44,7 @@ class ExtensionRepositoryTest extends KernelTestCase
 
         $extensions = $repository->findByCompanyId(1);
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $extensions
         );
 

@@ -43,8 +43,7 @@ class BrandServiceRepositoryTest extends KernelTestCase
 
         $results = $repository->findByBrandId(1);
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $results
         );
 

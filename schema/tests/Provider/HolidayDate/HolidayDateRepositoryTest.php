@@ -44,7 +44,7 @@ class HolidayDateRepositoryTest extends KernelTestCase
         $holidayDate2 = $holidayDateRepository->find(2);
         $holidayDates = $holidayDateRepository->findMatchingDateSiblings($holidayDate2);
 
-        $this->assertInternalType('array', $holidayDates);
+        $this->assertIsArray($holidayDates);
         $this->assertCount(1, $holidayDates);
     }
 }

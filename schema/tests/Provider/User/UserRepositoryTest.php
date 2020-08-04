@@ -32,8 +32,7 @@ class UserRepositoryTest extends KernelTestCase
         $user = $repository
             ->findByBossAssistantId(1);
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $user
         );
 
@@ -54,8 +53,7 @@ class UserRepositoryTest extends KernelTestCase
                 $userRepository->find(2)
             );
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $users
         );
 
@@ -76,8 +74,7 @@ class UserRepositoryTest extends KernelTestCase
                 $userRepository->find(1)
             );
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $users
         );
 

@@ -34,8 +34,7 @@ class RatingPlanGroupRepositoryTest extends KernelTestCase
         );
 
         foreach ($ratingPlanGroupGenerator as $iteration) {
-            $this->assertInternalType(
-                'array',
+            $this->assertIsArray(
                 $iteration
             );
 
