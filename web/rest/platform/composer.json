@@ -48,13 +48,9 @@
         "sort-packages": true,
         "preferred-install": {
             "*": "git"
-        },
-        "platform": {
-            "php": "7.0.19"
         }
     },
     "require": {
-        "php": ">=7.0.19",
         "api-platform/core": "2.2.*",
         "irontec/ivoz-api-bundle": "^3.1",
         "irontec/ivoz-provider-bundle": "^2.0",
@@ -66,14 +62,14 @@
         "ext-pcntl": "*",
         "behat/behat": "^3.1",
         "behat/mink": "^1.7",
-        "behat/mink-browserkit-driver": "^1.3.1",
+        "behat/mink-browserkit-driver": "^1.3",
         "behat/mink-extension": "^2.2",
         "behat/symfony2-extension": "^2.1",
         "behatch/contexts": "^2.5",
         "docteurklein/test-double-bundle": "^1.0",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
-        "phpunit/phpunit": "^6.0",
-        "symfony/phpunit-bridge": "4.1.12"
+        "phpunit/phpunit": "^8.0",
+        "symfony/phpunit-bridge": "^4.1"
     },
     "scripts": {
         "symfony-scripts": [

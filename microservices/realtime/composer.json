@@ -41,19 +41,15 @@
         "sort-packages": true,
         "preferred-install": {
             "*": "git"
-        },
-        "platform": {
-            "php": "7.0.19"
         }
     },
     "require": {
-        "php": ">=7.0.19",
         "irontec/ivoz-api-bundle": "^3.2",
         "irontec/ivoz-provider-bundle": "^2.0"
     },
     "require-dev": {
-        "phpspec/phpspec": "^4.2",
-        "swoole/ide-helper": "4.3.4"
+        "phpspec/phpspec": "^6.0",
+        "swoole/ide-helper": "^4.3.4"
     },
     "scripts": {
         "symfony-scripts": [

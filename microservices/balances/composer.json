@@ -40,13 +40,9 @@
         "sort-packages": true,
         "preferred-install": {
             "*": "git"
-        },
-        "platform": {
-            "php": "7.0.19"
         }
     },
     "require": {
-        "php": ">=7.0.19",
         "irontec/ivoz-provider-bundle": "^2.0"
     },
     "scripts": {

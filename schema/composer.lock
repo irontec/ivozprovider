@@ -194,12 +194,11 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "1.4.0.0",
+            "version": "1.10.4",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/doctrine/annotations",
-                "reference": "54cacc9b81758b14e3ce750f205a393d52339e97",
-                "shasum": null
+                "reference": "bfe91e31984e2ba76df1c1339681770401ec262f"
             },
             "require": {
                 "doctrine/lexer": "1.*",
@@ -207,7 +206,8 @@
             },
             "require-dev": {
                 "doctrine/cache": "1.*",
-                "phpunit/phpunit": "^5.7"
+                "phpstan/phpstan": "^0.12.20",
+                "phpunit/phpunit": "^7.5 || ^9.1.5"
             },
             "type": "library",
             "extra": {
@@ -1181,6 +1181,145 @@
                     "name": "Eduardo Gulias Davis"
                 }
             ],
+            "description": "The Doctrine Persistence project is a set of shared interfaces and functionality that the different Doctrine object mappers share.",
+            "homepage": "https://doctrine-project.org/projects/persistence.html",
+            "keywords": [
+                "mapper",
+                "object",
+                "odm",
+                "orm",
+                "persistence"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "doctrine/reflection",
+            "version": "1.2.1",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/doctrine/reflection",
+                "reference": "55e71912dfcd824b2fdd16f2d9afe15684cfce79"
+            },
+            "require": {
+                "doctrine/annotations": "^1.0",
+                "ext-tokenizer": "*",
+                "php": "^7.1"
+            },
+            "conflict": {
+                "doctrine/common": "<2.9"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^5.0",
+                "doctrine/common": "^2.10",
+                "phpstan/phpstan": "^0.11.0",
+                "phpstan/phpstan-phpunit": "^0.11.0",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Common\\": "lib/Doctrine/Common"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Doctrine\\Tests\\": "tests/Doctrine/Tests",
+                    "Doctrine\\Tests_PHP74\\": "tests/Doctrine/Tests_PHP74"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                },
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com"
+                }
+            ],
+            "description": "The Doctrine Reflection project is a simple library used by the various Doctrine projects which adds some additional functionality on top of the reflection functionality that comes with PHP. It allows you to get the reflection information about classes, methods and properties statically.",
+            "homepage": "https://www.doctrine-project.org/projects/reflection.html",
+            "keywords": [
+                "reflection",
+                "static"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "egulias/email-validator",
+            "version": "2.1.19",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/egulias/email-validator",
+                "reference": "840d5603eb84cc81a6a0382adac3293e57c1c64c"
+            },
+            "require": {
+                "doctrine/lexer": "^1.0.1",
+                "php": ">=5.5",
+                "symfony/polyfill-intl-idn": "^1.10"
+            },
+            "require-dev": {
+                "dominicsayers/isemail": "^3.0.7",
+                "phpunit/phpunit": "^4.8.36|^7.5.15",
+                "satooshi/php-coveralls": "^1.0.1"
+            },
+            "suggest": {
+                "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Egulias\\EmailValidator\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Egulias\\EmailValidator\\Tests\\": "tests"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo Gulias Davis"
+                }
+            ],
             "description": "A library for validating emails against several RFCs",
             "homepage": "https://github.com/egulias/EmailValidator",
             "keywords": [
@@ -1552,12 +1691,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "3.1.1.0",
+            "version": "4.0.1",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core",
-                "reference": "be3f185d8cc5a478d9a310f560b773281c999890",
-                "shasum": null
+                "reference": "88b66b220c54cd0eb5af361cd7fb064f5ec82a33"
             },
             "require": {
                 "beberlei/assert": "2.9.*",
@@ -1696,8 +1834,7 @@
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "a3f524413a4a16bd4cfd2e876435f3d8f8290387",
-                "shasum": null
+                "reference": "325f9501e995aec060af135c270b9d08142053e9"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.1",
@@ -1709,7 +1846,8 @@
                 "symfony/asset": "^3.4",
                 "symfony/console": "^3.4",
                 "symfony/debug-bundle": "^3.4",
-                "symfony/dotenv": "^3.4",
+                "symfony/dotenv": "^4.4",
+                "symfony/flex": "^1.0",
                 "symfony/form": "^3.4",
                 "symfony/framework-bundle": "^3.4",
                 "symfony/http-foundation": "^3.4",
@@ -1720,6 +1858,9 @@
                 "symfony/templating": "^3.4",
                 "symfony/twig-bundle": "^3.4",
                 "symfony/validator": "^3.4"
+            },
+            "conflict": {
+                "symfony/symfony": "*"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -1792,17 +1933,274 @@
                 "sql"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "laminas/laminas-code",
+            "version": "3.4.1",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/laminas/laminas-code",
+                "reference": "1cb8f203389ab1482bf89c0e70a04849bacd7766"
+            },
+            "require": {
+                "laminas/laminas-eventmanager": "^2.6 || ^3.0",
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^7.1"
+            },
+            "conflict": {
+                "phpspec/prophecy": "<1.9.0"
+            },
+            "replace": {
+                "zendframework/zend-code": "self.version"
+            },
+            "require-dev": {
+                "doctrine/annotations": "^1.7",
+                "ext-phar": "*",
+                "laminas/laminas-coding-standard": "^1.0",
+                "laminas/laminas-stdlib": "^2.7 || ^3.0",
+                "phpunit/phpunit": "^7.5.16 || ^8.4"
+            },
+            "suggest": {
+                "doctrine/annotations": "Doctrine\\Common\\Annotations >=1.0 for annotation features",
+                "laminas/laminas-stdlib": "Laminas\\Stdlib component"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4.x-dev",
+                    "dev-develop": "3.5.x-dev",
+                    "dev-dev-4.0": "4.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\Code\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "LaminasTest\\Code\\": "test/"
+                }
+            },
+            "scripts": {
+                "check": [
+                    "@cs-check",
+                    "@test"
+                ],
+                "cs-check": [
+                    "phpcs"
+                ],
+                "cs-fix": [
+                    "phpcbf"
+                ],
+                "test": [
+                    "phpunit --colors=always"
+                ],
+                "test-coverage": [
+                    "phpunit --colors=always --coverage-clover clover.xml"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Extensions to the PHP Reflection API, static code scanning, and code generation",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "code",
+                "laminas"
+            ],
+            "support": {
+                "docs": "https://docs.laminas.dev/laminas-code/",
+                "issues": "https://github.com/laminas/laminas-code/issues",
+                "source": "https://github.com/laminas/laminas-code",
+                "rss": "https://github.com/laminas/laminas-code/releases.atom",
+                "chat": "https://laminas.dev/chat",
+                "forum": "https://discourse.laminas.dev"
+            },
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "laminas/laminas-eventmanager",
+            "version": "3.3.0",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/laminas/laminas-eventmanager",
+                "reference": "1940ccf30e058b2fd66f5a9d696f1b5e0027b082"
+            },
+            "require": {
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^7.3 || ^8.0"
+            },
+            "replace": {
+                "zendframework/zend-eventmanager": "^3.2.1"
+            },
+            "require-dev": {
+                "container-interop/container-interop": "^1.1",
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "laminas/laminas-stdlib": "^2.7.3 || ^3.0",
+                "phpbench/phpbench": "^0.17.1",
+                "phpunit/phpunit": "^8.5.8"
+            },
+            "suggest": {
+                "container-interop/container-interop": "^1.1, to use the lazy listeners feature",
+                "laminas/laminas-stdlib": "^2.7.3 || ^3.0, to use the FilterChain feature"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev",
+                    "dev-develop": "3.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\EventManager\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "LaminasTest\\EventManager\\": "test/",
+                    "LaminasBench\\EventManager\\": "benchmarks/"
+                },
+                "files": [
+                    "test/_autoload.php"
+                ]
+            },
+            "scripts": {
+                "check": [
+                    "@cs-check",
+                    "@test"
+                ],
+                "cs-check": [
+                    "phpcs"
+                ],
+                "cs-fix": [
+                    "phpcbf"
+                ],
+                "test": [
+                    "phpunit --colors=always"
+                ],
+                "test-coverage": [
+                    "phpunit --colors=always --coverage-clover clover.xml"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Trigger and listen to events within a PHP application",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "event",
+                "eventmanager",
+                "events",
+                "laminas"
+            ],
+            "support": {
+                "docs": "https://docs.laminas.dev/laminas-eventmanager/",
+                "issues": "https://github.com/laminas/laminas-eventmanager/issues",
+                "source": "https://github.com/laminas/laminas-eventmanager",
+                "rss": "https://github.com/laminas/laminas-eventmanager/releases.atom",
+                "chat": "https://laminas.dev/chat",
+                "forum": "https://discourse.laminas.dev"
+            },
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "laminas/laminas-zendframework-bridge",
+            "version": "1.1.0",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/laminas/laminas-zendframework-bridge",
+                "reference": "4939c81f63a8a4968c108c440275c94955753b19"
+            },
+            "require": {
+                "php": "^5.6 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.1 || ^9.3",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev",
+                    "dev-develop": "1.1.x-dev"
+                },
+                "laminas": {
+                    "module": "Laminas\\ZendFrameworkBridge"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/autoload.php"
+                ],
+                "psr-4": {
+                    "Laminas\\ZendFrameworkBridge\\": "src//"
+                }
+            },
+            "autoload-dev": {
+                "files": [
+                    "test/classes.php"
+                ],
+                "psr-4": {
+                    "LaminasTest\\ZendFrameworkBridge\\": "test/",
+                    "LaminasTest\\ZendFrameworkBridge\\TestAsset\\": "test/TestAsset/classes/",
+                    "Laminas\\ApiTools\\": "test/TestAsset/LaminasApiTools/",
+                    "Mezzio\\": "test/TestAsset/Mezzio/",
+                    "Laminas\\": "test/TestAsset/Laminas/"
+                }
+            },
+            "scripts": {
+                "cs-check": [
+                    "phpcs"
+                ],
+                "cs-fix": [
+                    "phpcbf"
+                ],
+                "test": [
+                    "phpunit --colors=always"
+                ],
+                "test-coverage": [
+                    "phpunit --colors=always --coverage-clover clover.xml"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Alias legacy ZF class names to Laminas Project equivalents.",
+            "keywords": [
+                "autoloading",
+                "laminas",
+                "zendframework",
+                "zf"
+            ],
+            "support": {
+                "issues": "https://github.com/laminas/laminas-zendframework-bridge/issues",
+                "source": "https://github.com/laminas/laminas-zendframework-bridge",
+                "rss": "https://github.com/laminas/laminas-zendframework-bridge/releases.atom",
+                "forum": "https://discourse.laminas.dev/"
+            },
+            "transport-options": {
+                "symlink": true,
+                "relative": true
             }
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.3.2.0",
+            "version": "3.3.3",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/lcobucci/jwt",
-                "reference": "56f10808089e38623345e28af2f2d5e4eb579455",
-                "shasum": null
+                "reference": "c1123697f6a2ec29162b82f170dd4a491f524773"
             },
             "require": {
                 "ext-mbstring": "*",
@@ -2452,50 +2850,6 @@
             }
         },
         {
-            "name": "psr/simple-cache",
-            "version": "1.0.1.0",
-            "dist": {
-                "type": "path",
-                "url": "../library/vendor/psr/simple-cache",
-                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
-                "shasum": null
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\SimpleCache\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interfaces for simple caching",
-            "keywords": [
-                "cache",
-                "caching",
-                "psr",
-                "psr-16",
-                "simple-cache"
-            ],
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3.0",
             "dist": {
@@ -2856,37 +3210,44 @@
         },
         {
             "name": "symfony/cache",
-            "version": "3.4.43.0",
+            "version": "v4.3.11",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/cache",
-                "reference": "0dc6b972cfd110df3bc317b9d6033243b41b4f4f",
-                "shasum": null
+                "reference": "8794ccf68ac341fc19311919d2287f7557bfccba"
             },
             "require": {
-                "php": "^5.5.9|>=7.0.8",
+                "php": "^7.1.3",
                 "psr/cache": "~1.0",
                 "psr/log": "~1.0",
-                "psr/simple-cache": "^1.0",
-                "symfony/polyfill-apcu": "~1.1"
+                "symfony/cache-contracts": "^1.1",
+                "symfony/service-contracts": "^1.1",
+                "symfony/var-exporter": "^4.2"
             },
             "conflict": {
-                "symfony/var-dumper": "<3.3"
+                "doctrine/dbal": "<2.5",
+                "symfony/dependency-injection": "<3.4",
+                "symfony/var-dumper": "<3.4"
             },
             "provide": {
                 "psr/cache-implementation": "1.0",
-                "psr/simple-cache-implementation": "1.0"
+                "psr/simple-cache-implementation": "1.0",
+                "symfony/cache-implementation": "1.0"
             },
             "require-dev": {
                 "cache/integration-tests": "dev-master",
-                "doctrine/cache": "^1.6",
-                "doctrine/dbal": "^2.4|^3.0",
-                "predis/predis": "^1.0"
+                "doctrine/cache": "~1.6",
+                "doctrine/dbal": "~2.5",
+                "predis/predis": "~1.1",
+                "psr/simple-cache": "^1.0",
+                "symfony/config": "~4.2",
+                "symfony/dependency-injection": "~3.4|~4.1",
+                "symfony/var-dumper": "^4.1.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.4-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -2921,13 +3282,70 @@
             }
         },
         {
+            "name": "symfony/cache-contracts",
+            "version": "v1.1.9",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/symfony/cache-contracts",
+                "reference": "4638bdd93e14dddc171212258d0c6d8c95e95ced"
+            },
+            "require": {
+                "php": ">=7.1.3",
+                "psr/cache": "^1.0"
+            },
+            "suggest": {
+                "symfony/cache-implementation": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Contracts\\Cache\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Generic abstractions related to caching",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "abstractions",
+                "contracts",
+                "decoupling",
+                "interfaces",
+                "interoperability",
+                "standards"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "symfony/class-loader",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/class-loader",
-                "reference": "e4636a4f23f157278a19e5db160c63de0da297d8",
-                "shasum": null
+                "reference": "04a7e4c1bf7f156f3d9df930401eb2c6fe51fc72"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -2974,12 +3392,11 @@
         },
         {
             "name": "symfony/config",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/config",
-                "reference": "9e2aa97f0d51f114983666f5aa362426d53e004a",
-                "shasum": null
+                "reference": "801a3bbc17fb1ba44b0d7d41a6db7a0b74953595"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3034,12 +3451,11 @@
         },
         {
             "name": "symfony/console",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/console",
-                "reference": "afc7189694d2c59546cf24ea606a236fa46a966e",
-                "shasum": null
+                "reference": "71da881ad579f0cd66aef8677e4cf6217d8ecd0c"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3102,12 +3518,11 @@
         },
         {
             "name": "symfony/debug",
-            "version": "3.4.43.0",
+            "version": "v4.4.13",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/debug",
-                "reference": "7ce874f4432d8b11cc45a80cc5130a6e2609728d",
-                "shasum": null
+                "reference": "aeb73aca16a8f1fe958230fe44e6cf4c84cbb85e"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3215,12 +3630,11 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/dependency-injection",
-                "reference": "3a14abc01c36e81fc1c4c48b42c103b9dd892ed3",
-                "shasum": null
+                "reference": "7d15cf4294d4f3610bc741c8fdd54a6baac586d4"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3282,12 +3696,11 @@
         },
         {
             "name": "symfony/doctrine-bridge",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/doctrine-bridge",
-                "reference": "595cce17d5c646f2741bf72a2ec608d0ea2dd21d",
-                "shasum": null
+                "reference": "bbc57b339de9cdf21a55d0b79e7d93172a70e384"
             },
             "require": {
                 "doctrine/common": "~2.4",
@@ -3359,23 +3772,22 @@
         },
         {
             "name": "symfony/dotenv",
-            "version": "3.4.43.0",
+            "version": "v4.4.11",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/dotenv",
-                "reference": "22577db70b4fbd2e93d6b331ce2ae5f3d49f20e6",
-                "shasum": null
+                "reference": "a9eb95c87c2965d0e7dfda9c5e87e4fb590d1f4e"
             },
             "require": {
-                "php": "^5.5.9|>=7.0.8"
+                "php": ">=7.1.3"
             },
             "require-dev": {
-                "symfony/process": "^3.4.2|^4.0"
+                "symfony/process": "^3.4.2|^4.0|^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.4-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -3412,12 +3824,11 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "3.4.43.0",
+            "version": "v4.4.13",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/event-dispatcher",
-                "reference": "14d978f8e8555f2de719c00eb65376be7d2e9081",
-                "shasum": null
+                "reference": "3e8ea5ccddd00556b86d69d42f99f1061a704030"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -3471,12 +3882,11 @@
         },
         {
             "name": "symfony/expression-language",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/expression-language",
-                "reference": "56de5bb3d653aca3a8641cb788f80646033275c9",
-                "shasum": null
+                "reference": "5ceca597a48f3dccbe772b221b41412f201134a5"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3518,12 +3928,11 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/filesystem",
-                "reference": "0f625d0cb1e59c8c4ba61abb170125175218ff10",
-                "shasum": null
+                "reference": "8e6eff546d0fe879996fa701ee2f312767e95e50"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3608,13 +4017,57 @@
             }
         },
         {
+            "name": "symfony/flex",
+            "version": "v1.9.3",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/symfony/flex",
+                "reference": "1eab1e85f5eb66dac138d6240cc0ceffd6e3ae34"
+            },
+            "require": {
+                "composer-plugin-api": "^1.0|^2.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0.2|^2.0",
+                "symfony/dotenv": "^4.4|^5.0",
+                "symfony/phpunit-bridge": "^4.4|^5.0",
+                "symfony/process": "^3.4|^4.4|^5.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                },
+                "class": "Symfony\\Flex\\Flex"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Flex\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien.potencier@gmail.com"
+                }
+            ],
+            "description": "Composer plugin for Symfony",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "symfony/form",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/form",
-                "reference": "d9c944e4d69dda3585f9639e4dedf2255793d5b0",
-                "shasum": null
+                "reference": "58a84f63dd0b2370733bfbe8ab0282bb83ea9eee"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3687,12 +4140,11 @@
         },
         {
             "name": "symfony/framework-bundle",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/framework-bundle",
-                "reference": "7c8345e3ec1d9a2aa65451b9c1024720cd06ebc6",
-                "shasum": null
+                "reference": "b2ab2a295cdfa64c6757c0dd043f7381374c9602"
             },
             "require": {
                 "ext-xml": "*",
@@ -3793,17 +4245,132 @@
             "description": "Symfony FrameworkBundle",
             "homepage": "https://symfony.com",
             "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "symfony/http-client",
+            "version": "v5.1.5",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/symfony/http-client",
+                "reference": "21c4372e9cd2305313f4d4792d7b9fa7c25ade53"
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "psr/log": "^1.0",
+                "symfony/http-client-contracts": "^2.1.1",
+                "symfony/polyfill-php73": "^1.11",
+                "symfony/polyfill-php80": "^1.15",
+                "symfony/service-contracts": "^1.0|^2"
+            },
+            "provide": {
+                "php-http/async-client-implementation": "*",
+                "php-http/client-implementation": "*",
+                "psr/http-client-implementation": "1.0",
+                "symfony/http-client-implementation": "1.1"
+            },
+            "require-dev": {
+                "amphp/http-client": "^4.2.1",
+                "amphp/http-tunnel": "^1.0",
+                "amphp/socket": "^1.1",
+                "guzzlehttp/promises": "^1.3.1",
+                "nyholm/psr7": "^1.0",
+                "php-http/httplug": "^1.0|^2.0",
+                "psr/http-client": "^1.0",
+                "symfony/dependency-injection": "^4.4|^5.0",
+                "symfony/http-kernel": "^4.4.13|^5.1.5",
+                "symfony/process": "^4.4|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\HttpClient\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony HttpClient component",
+            "homepage": "https://symfony.com",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "symfony/http-client-contracts",
+            "version": "v2.1.3",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/symfony/http-client-contracts",
+                "reference": "cd88921e9add61f2064c9c6b30de4f589db42962"
+            },
+            "require": {
+                "php": ">=7.2.5"
+            },
+            "suggest": {
+                "symfony/http-client-implementation": ""
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bundle\\FrameworkBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony FrameworkBundle",
+            "homepage": "https://symfony.com",
+            "transport-options": {
                 "symlink": true
             }
         },
         {
             "name": "symfony/http-foundation",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/http-foundation",
-                "reference": "5219dba1253aa07ed3ad82f73c08146fb3f517d0",
-                "shasum": null
+                "reference": "e5a42880895b43cd53d1a7b92bdcfb7d80c0af1c"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3848,12 +4415,11 @@
         },
         {
             "name": "symfony/http-kernel",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/http-kernel",
-                "reference": "4a1c6b310806adce0f299411951d06747edf9e28",
-                "shasum": null
+                "reference": "27dcaa8c6b18c75df9f37badeb4d3564ffaa1326"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3988,12 +4554,11 @@
         },
         {
             "name": "symfony/intl",
-            "version": "3.4.43.0",
+            "version": "v4.4.13",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/intl",
-                "reference": "0c47952617207bba74bb42e58764f4a4adef087e",
-                "shasum": null
+                "reference": "18e708f12e3d3b64a35761ab191de6302b7de4f6"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -4054,7 +4619,67 @@
                 "localization"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "symfony/mime",
+            "version": "v5.1.5",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/symfony/mime",
+                "reference": "89a2c9b4cb7b5aa516cf55f5194c384f444c81dc"
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-intl-idn": "^1.10",
+                "symfony/polyfill-mbstring": "^1.0",
+                "symfony/polyfill-php80": "^1.15"
+            },
+            "conflict": {
+                "symfony/mailer": "<4.4"
+            },
+            "require-dev": {
+                "egulias/email-validator": "^2.1.10",
+                "symfony/dependency-injection": "^4.4|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mime\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A library to manipulate MIME messages",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "mime",
+                "mime-type"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4224,62 +4849,6 @@
                 "config",
                 "configuration",
                 "options"
-            ],
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
-            "name": "symfony/polyfill-apcu",
-            "version": "1.18.1.0",
-            "dist": {
-                "type": "path",
-                "url": "../library/vendor/symfony/polyfill-apcu",
-                "reference": "f1d94a98e364f4b84252331a40cb7987b847e241",
-                "shasum": null
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.18-dev"
-                },
-                "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Apcu\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting apcu_* functions to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "apcu",
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
             ],
             "transport-options": {
                 "symlink": true
@@ -4918,12 +5487,11 @@
         },
         {
             "name": "symfony/property-access",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/property-access",
-                "reference": "0be88586f85142ab5f82ab14e5a04b17739ef7bd",
-                "shasum": null
+                "reference": "27360cd40ea1c22142575de949d17583b739a877"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5407,7 +5975,112 @@
             "description": "Symfony Serializer Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "symfony/service-contracts",
+            "version": "v1.1.9",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/symfony/service-contracts",
+                "reference": "b776d18b303a39f56c63747bcb977ad4b27aca26"
+            },
+            "require": {
+                "php": ">=7.1.3",
+                "psr/container": "^1.0"
+            },
+            "suggest": {
+                "symfony/service-implementation": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Contracts\\Service\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Generic abstractions related to writing services",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "abstractions",
+                "contracts",
+                "decoupling",
+                "interfaces",
+                "interoperability",
+                "standards"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "symfony/stopwatch",
+            "version": "v5.1.3",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/symfony/stopwatch",
+                "reference": "0f7c58cf81dbb5dd67d423a89d577524a2ec0323"
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/service-contracts": "^1.0|^2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Stopwatch\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Stopwatch Component",
+            "homepage": "https://symfony.com",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5749,12 +6422,11 @@
         },
         {
             "name": "symfony/validator",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/validator",
-                "reference": "008b41843e9e1a871ce13417c7e35ac1395e1bf2",
-                "shasum": null
+                "reference": "0d493f914f936c441563a7edeb90132ea6883c3f"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5831,12 +6503,11 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "3.4.43.0",
+            "version": "v4.4.13",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/var-dumper",
-                "reference": "276cdd86063d42f9468cd26dab32daf546765050",
-                "shasum": null
+                "reference": "1bef32329f3166486ab7cb88599cae4875632b99"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5895,13 +6566,68 @@
             }
         },
         {
+            "name": "symfony/var-exporter",
+            "version": "v4.4.11",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/symfony/var-exporter",
+                "reference": "09f0aec4b8bfc25c1dd306e6203cf055c9886560"
+            },
+            "require": {
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "symfony/var-dumper": "^4.4.9|^5.0.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\VarExporter\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A blend of var_export() + serialize() to turn any serializable data structure to plain PHP code",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "clone",
+                "construct",
+                "export",
+                "hydrate",
+                "instantiate",
+                "serialize"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "symfony/yaml",
-            "version": "3.4.43.0",
+            "version": "v3.4.44",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/yaml",
-                "reference": "e7fa05917ae931332a42d65b577ece4d497aad81",
-                "shasum": null
+                "reference": "4152e36b0f305c2a57aa0233dee56ec27bca4f06"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -6016,34 +6742,27 @@
             }
         },
         {
-            "name": "zendframework/zend-code",
-            "version": "dev-master",
+            "name": "webimpress/safe-writer",
+            "version": "2.1.0",
             "dist": {
                 "type": "path",
-                "url": "../library/vendor/zendframework/zend-code",
-                "reference": "2899c17f83a7207f2d7f53ec2f421204d3beea27",
-                "shasum": null
+                "url": "../library/vendor/webimpress/safe-writer",
+                "reference": "5cfafdec5873c389036f14bf832a5efc9390dcdd"
             },
             "require": {
-                "php": "^5.6 || 7.0.0 - 7.0.4 || ^7.0.6",
-                "zendframework/zend-eventmanager": "^2.6 || ^3.0"
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "doctrine/annotations": "~1.0",
-                "ext-phar": "*",
-                "phpunit/phpunit": "^4.8.21",
-                "squizlabs/php_codesniffer": "^2.5",
-                "zendframework/zend-stdlib": "^2.7 || ^3.0"
-            },
-            "suggest": {
-                "doctrine/annotations": "Doctrine\\Common\\Annotations >=1.0 for annotation features",
-                "zendframework/zend-stdlib": "Zend\\Stdlib component"
+                "phpunit/phpunit": "^8.5.8 || ^9.3.7",
+                "vimeo/psalm": "^3.14.2",
+                "webimpress/coding-standard": "^1.1.5"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev",
-                    "dev-develop": "3.2-dev"
+                    "dev-master": "2.1.x-dev",
+                    "dev-develop": "2.2.x-dev",
+                    "dev-release-1.0": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -6059,7 +6778,8 @@
             "scripts": {
                 "check": [
                     "@cs-check",
-                    "@test"
+                    "@test",
+                    "@static-analysis"
                 ],
                 "upload-coverage": [
                     "coveralls -v"
@@ -6069,6 +6789,9 @@
                 ],
                 "cs-fix": [
                     "phpcbf"
+                ],
+                "static-analysis": [
+                    "psalm --shepherd --stats"
                 ],
                 "test": [
                     "phpunit --colors=always"
@@ -6931,12 +7654,11 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.5.14.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/phpunit/phpunit",
-                "reference": "bac23fe7ff13dbdb461481f706f0e9fe746334b7",
-                "shasum": null
+                "reference": "532cf9e62be7e2441e0861a376a0f1e9ad9c4faa"
             },
             "require": {
                 "ext-dom": "*",
@@ -7677,12 +8399,11 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.3.2.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/squizlabs/php_codesniffer",
-                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e",
-                "shasum": null
+                "reference": "ed6b543e73211236ddd4c615c1f050bcbbc3f163"
             },
             "require": {
                 "ext-simplexml": "*",
