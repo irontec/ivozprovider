@@ -43,7 +43,7 @@ trait AccessControlTestHelperTrait
     /**
      * {@inheritDoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $kernel = self::bootKernel();
         $this->cacheDir = $kernel->getCacheDir();

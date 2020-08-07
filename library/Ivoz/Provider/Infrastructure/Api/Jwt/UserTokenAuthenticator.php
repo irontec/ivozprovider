@@ -11,6 +11,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\TokenExtractorInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\User\ChainUserProvider;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class UserTokenAuthenticator extends JWTTokenAuthenticator
@@ -83,17 +84,29 @@ class UserTokenAuthenticator extends JWTTokenAuthenticator
      */
     protected function loadUser(UserProviderInterface $userProvider, array $payload, $identity)
     {
-        if (!$userProvider instanceof MutableUserProviderInterface) {
+        $provider = null;
+
+        if ($userProvider instanceof MutableUserProviderInterface) {
+            $provider = $userProvider;
+        } else if ($userProvider instanceof ChainUserProvider) {
+            foreach ($userProvider->getProviders() as $provider) {
+                if ($provider instanceof MutableUserProviderInterface) {
+                    break;
+                }
+            }
+        }
+
+        if (!$provider instanceof MutableUserProviderInterface) {
             throw new \RuntimeException(
                 'MutableUserProviderInterface was espected in order to load a user'
             );
         }
 
         /** @var MutableUserProviderInterface $userProvider */
-        $userProvider
+        $provider
             ->setEntityClass(User::class)
             ->setUserIdentityField('email');
 
-        return $userProvider->loadUserByUsername($identity);
+        return $provider->loadUserByUsername($identity);
     }
 }
