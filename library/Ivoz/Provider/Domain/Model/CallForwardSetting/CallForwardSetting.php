@@ -46,6 +46,29 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
 
         $this->sanitizeRouteValues();
 
+        $company = $this
+            ->getUser()
+            ->getCompany();
+
+        $isRetailCompany = $company->isRetail();
+        $isValidRetailCfs = in_array(
+            $this->getCallForwardType(),
+            [
+                CallForwardSettingInterface::CALLFORWARDTYPE_USERNOTREGISTERED,
+                CallForwardSettingInterface::CALLFORWARDTYPE_INCONDITIONAL,
+            ],
+            true
+        );
+        
+        if ($isRetailCompany && !$isValidRetailCfs) {
+            $errorMsg = sprintf(
+                'Only %s and %s call forward types are allowed for retail clients',
+                CallForwardSettingInterface::CALLFORWARDTYPE_USERNOTREGISTERED,
+                CallForwardSettingInterface::CALLFORWARDTYPE_INCONDITIONAL
+            );
+            throw new \DomainException($errorMsg);
+        }
+
         // Timeout only makes sense in NoAnswer Call Forwards
         if ($this->callForwardType != self::CALLFORWARDTYPE_NOANSWER) {
             $this->setNoAnswerTimeout(0);
