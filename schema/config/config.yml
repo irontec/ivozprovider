@@ -15,10 +15,20 @@ doctrine:
         prefix: 'Gesdinet\JWTRefreshTokenBundle\Entity'
 
 doctrine_migrations:
-  dir_name: "%kernel.root_dir%/../DoctrineMigrations"
-  namespace: Application\Migrations
-  table_name: migration_versions
-  name: Application Migrations
+#  dir_name: "%kernel.root_dir%/../DoctrineMigrations"
+#  namespace: Application\Migrations
+#  table_name: migration_versions
+#  name: Application Migrations
+  migrations_paths:
+    'Application\Migrations': 'DoctrineMigrations'
+  storage:
+    # Default (SQL table) metadata storage configuration
+    table_storage:
+      table_name: 'migration_versions'
+#      version_column_name: 'version'
+#      version_column_length: 1024
+#      executed_at_column_name: 'executed_at'
+#      execution_time_column_name: 'execution_time'
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration

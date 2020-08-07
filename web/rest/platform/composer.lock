@@ -842,14 +842,14 @@
         },
         {
             "name": "doctrine/event-manager",
-            "version": "1.1.0",
+            "version": "1.1.x-dev",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/doctrine/event-manager",
-                "reference": "629572819973f13486371cb611386eb17851e85c"
+                "reference": "41370af6a30faa9dc0368c4a6814d596e81aba7f"
             },
             "require": {
-                "php": "^7.1"
+                "php": "^7.1 || ^8.0"
             },
             "conflict": {
                 "doctrine/common": "<2.9@dev"
@@ -913,7 +913,8 @@
                 "events"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1951,14 +1952,14 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "3.2",
+            "version": "3.3",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "9e851318c21878572c6cb455bd3a4628c2a57ce1"
+                "reference": "3a6df81761283a921cfd93139a56435c63845a98"
             },
             "require": {
-                "doctrine/doctrine-bundle": "^1.6",
+                "doctrine/doctrine-bundle": "^1.6|^2.0",
                 "doctrine/doctrine-cache-bundle": "^1.3",
                 "irontec/ivoz-core": "^3.1",
                 "ocramius/proxy-manager": "~2.0",
@@ -3147,6 +3148,50 @@
             }
         },
         {
+            "name": "psr/simple-cache",
+            "version": "1.0.1",
+            "dist": {
+                "type": "path",
+                "url": "../../../library/vendor/psr/simple-cache",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\SimpleCache\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for simple caching",
+            "keywords": [
+                "cache",
+                "caching",
+                "psr",
+                "psr-16",
+                "simple-cache"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
             "dist": {
@@ -3509,44 +3554,36 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v4.3.11",
+            "version": "v3.4.43",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/cache",
-                "reference": "8794ccf68ac341fc19311919d2287f7557bfccba"
+                "reference": "0dc6b972cfd110df3bc317b9d6033243b41b4f4f"
             },
             "require": {
-                "php": "^7.1.3",
+                "php": "^5.5.9|>=7.0.8",
                 "psr/cache": "~1.0",
                 "psr/log": "~1.0",
-                "symfony/cache-contracts": "^1.1",
-                "symfony/service-contracts": "^1.1",
-                "symfony/var-exporter": "^4.2"
+                "psr/simple-cache": "^1.0",
+                "symfony/polyfill-apcu": "~1.1"
             },
             "conflict": {
-                "doctrine/dbal": "<2.5",
-                "symfony/dependency-injection": "<3.4",
-                "symfony/var-dumper": "<3.4"
+                "symfony/var-dumper": "<3.3"
             },
             "provide": {
                 "psr/cache-implementation": "1.0",
-                "psr/simple-cache-implementation": "1.0",
-                "symfony/cache-implementation": "1.0"
+                "psr/simple-cache-implementation": "1.0"
             },
             "require-dev": {
                 "cache/integration-tests": "dev-master",
-                "doctrine/cache": "~1.6",
-                "doctrine/dbal": "~2.5",
-                "predis/predis": "~1.1",
-                "psr/simple-cache": "^1.0",
-                "symfony/config": "~4.2",
-                "symfony/dependency-injection": "~3.4|~4.1",
-                "symfony/var-dumper": "^4.1.1"
+                "doctrine/cache": "^1.6",
+                "doctrine/dbal": "^2.4|^3.0",
+                "predis/predis": "^1.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
@@ -3575,64 +3612,6 @@
             "keywords": [
                 "caching",
                 "psr6"
-            ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "symfony/cache-contracts",
-            "version": "v1.1.9",
-            "dist": {
-                "type": "path",
-                "url": "../../../library/vendor/symfony/cache-contracts",
-                "reference": "4638bdd93e14dddc171212258d0c6d8c95e95ced"
-            },
-            "require": {
-                "php": ">=7.1.3",
-                "psr/cache": "^1.0"
-            },
-            "suggest": {
-                "symfony/cache-implementation": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                },
-                "thanks": {
-                    "name": "symfony/contracts",
-                    "url": "https://github.com/symfony/contracts"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Contracts\\Cache\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Generic abstractions related to caching",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "abstractions",
-                "contracts",
-                "decoupling",
-                "interfaces",
-                "interoperability",
-                "standards"
             ],
             "transport-options": {
                 "symlink": true,
@@ -5312,6 +5291,62 @@
             }
         },
         {
+            "name": "symfony/polyfill-apcu",
+            "version": "v1.18.0",
+            "dist": {
+                "type": "path",
+                "url": "../../../library/vendor/symfony/polyfill-apcu",
+                "reference": "f1d94a98e364f4b84252331a40cb7987b847e241"
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.18-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Apcu\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting apcu_* functions to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "apcu",
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "symfony/polyfill-ctype",
             "version": "v1.18.0",
             "dist": {
@@ -6556,14 +6591,14 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v1.1.9",
+            "version": "v2.1.3",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/service-contracts",
-                "reference": "b776d18b303a39f56c63747bcb977ad4b27aca26"
+                "reference": "58c7475e5457c5492c26cc740cc0ad7464be9442"
             },
             "require": {
-                "php": ">=7.1.3",
+                "php": ">=7.2.5",
                 "psr/container": "^1.0"
             },
             "suggest": {
@@ -6572,7 +6607,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "2.1-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -7335,11 +7370,11 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.13.0",
+            "version": "v2.13.1",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/twig/twig",
-                "reference": "46a612ba1bbf6ee1c58acabacd868212ff8a2911"
+                "reference": "57e96259776ddcacf1814885fc3950460c8e18ef"
             },
             "require": {
                 "php": ">=7.1.3",
@@ -7636,7 +7671,8 @@
                 "testing"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7695,7 +7731,8 @@
                 "parser"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7756,7 +7793,8 @@
                 "web"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7813,7 +7851,8 @@
                 "testing"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7867,7 +7906,8 @@
                 "web"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7923,7 +7963,8 @@
                 "symfony"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7968,7 +8009,8 @@
                 "transliterator"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8021,7 +8063,8 @@
                 "Symfony2"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8055,7 +8098,8 @@
             ],
             "description": "Easily create test doubles using symfony DIC",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8119,7 +8163,8 @@
                 "database"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8182,7 +8227,8 @@
                 "Persistence"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8265,7 +8311,8 @@
                 "schema"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8314,7 +8361,8 @@
                 "object graph"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8367,7 +8415,8 @@
                 "issues": "https://github.com/phar-io/manifest/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8412,7 +8461,8 @@
                 "issues": "https://github.com/phar-io/version/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8456,7 +8506,8 @@
                 "static analysis"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8508,7 +8559,8 @@
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8556,7 +8608,8 @@
             ],
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8619,7 +8672,8 @@
                 "Stub"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8686,7 +8740,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8734,7 +8789,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-file-iterator/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8773,7 +8829,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-text-template/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8820,7 +8877,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-timer/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8867,7 +8925,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-token-stream/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8959,7 +9018,8 @@
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8999,7 +9059,8 @@
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9063,7 +9124,8 @@
                 "equality"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9119,7 +9181,8 @@
                 "unified diff"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9167,7 +9230,8 @@
                 "xdebug"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9229,7 +9293,8 @@
                 "exporter"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9286,7 +9351,8 @@
                 "global state"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9333,7 +9399,8 @@
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9378,7 +9445,8 @@
             "description": "Allows reflection of object attributes, including inherited and non-public ones",
             "homepage": "https://github.com/sebastianbergmann/object-reflector/",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9426,7 +9494,8 @@
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9463,7 +9532,8 @@
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9515,7 +9585,8 @@
                 "issues": "https://github.com/sebastianbergmann/type/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9556,7 +9627,8 @@
                 "issues": "https://github.com/sebastianbergmann/version/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9610,7 +9682,8 @@
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9658,7 +9731,8 @@
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9714,7 +9788,8 @@
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9774,7 +9849,8 @@
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9812,7 +9888,8 @@
                 "issues": "https://github.com/theseer/tokenizer/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -9862,7 +9939,8 @@
                 "validate"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         }
     ],

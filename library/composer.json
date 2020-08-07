@@ -1,6 +1,8 @@
 {
     "name": "irontec/ivozprovider-shared-dependencies",
     "description": "Multitenant solution for VoIP telephony providers (Shared dependencies)",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "Carlos Cruz",
@@ -62,18 +64,21 @@
     "require": {
         "php": ">=7.4.6",
         "debach/zend-mp3": "1.8.*",
-        "doctrine/doctrine-migrations-bundle": "^1.2",
+        "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/doctrine-migrations-bundle": "^3.0",
+        "doctrine/orm": "^2.7",
+        "doctrine/persistence": "1.3.7",
         "h4cc/wkhtmltopdf-amd64": "0.12.3",
-        "irontec/ivoz-provider-bundle": "^2.5",
         "irontec/ivoz-api-bundle": "^3.3",
         "irontec/ivoz-dev-tools": "^4.0",
+        "irontec/ivoz-provider-bundle": "^2.4",
         "knplabs/knp-snappy": "0.4.3",
         "mmoreram/gearman-bundle": "^4.1",
+        "ocramius/package-versions": "^1.9",
         "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
         "phpxmlrpc/phpxmlrpc": "^4.0",
         "snc/redis-bundle": "^2.1",
-        "xamin/handlebars.php": "^0.10.4",
-        "doctrine/orm": "^2.5"
+        "xamin/handlebars.php": "^0.10.4"
     },
     "require-dev": {
         "ext-pcntl": "*",
