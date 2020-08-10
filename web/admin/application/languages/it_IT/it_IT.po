@@ -193,11 +193,6 @@ msgid_plural "Antiflood banned IPs"
 msgstr[0] "Antiflood banned IP"
 msgstr[1] "Antiflood banned IPs"
 
-msgid "Antiflood trusted IP"
-msgid_plural "Antiflood trusted IPs"
-msgstr[0] "Antiflood trusted IP"
-msgstr[1] "Antiflood trusted IPs"
-
 msgid "Application Server"
 msgid_plural "Application Servers"
 msgstr[0] "Application Server"
