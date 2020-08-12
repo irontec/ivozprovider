@@ -52,7 +52,7 @@ abstract class TrustedAbstract
     protected $priority = 0;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
 
@@ -211,7 +211,7 @@ abstract class TrustedAbstract
             'tag' => self::getTag(),
             'description' => self::getDescription(),
             'priority' => self::getPriority(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'companyId' => self::getCompany()->getId()
         ];
     }
     // @codeCoverageIgnoreStart
@@ -414,11 +414,11 @@ abstract class TrustedAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
     {
         $this->company = $company;
 
@@ -428,7 +428,7 @@ abstract class TrustedAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany()
     {

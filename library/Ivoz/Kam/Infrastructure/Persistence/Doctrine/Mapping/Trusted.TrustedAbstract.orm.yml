@@ -64,6 +64,6 @@ Ivoz\Kam\Domain\Model\Trusted\TrustedAbstract:
       joinColumns:
         companyId:
           referencedColumnName: id
-          nullable: true
+          nullable: false
           onDelete: cascade
       orphanRemoval: false

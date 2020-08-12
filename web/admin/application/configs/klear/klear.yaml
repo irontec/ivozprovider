@@ -65,10 +65,6 @@ production:
           title: ngettext('Main operator', 'Main operators', 0)
           class: ui-silk-tux
           description: _("List of %s", ngettext('Main operator', 'Main operators', 0))
-        KamTrustedList:
-          title: ngettext('Antiflood trusted IP', 'Antiflood trusted IPs', 0)
-          class: ui-silk-shield-go
-          description: _("List of %s", ngettext('Trusted IP address', 'Trusted IP addresses', 0))
         BannedAddressesList:
           title: ngettext('Antiflood banned IP', 'Antiflood banned IPs', 0)
           class: ui-silk-shield-delete

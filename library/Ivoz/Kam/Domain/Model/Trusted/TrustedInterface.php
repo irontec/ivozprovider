@@ -60,7 +60,7 @@ interface TrustedInterface extends EntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
 
