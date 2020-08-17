@@ -79,6 +79,7 @@ production:
           maxDailyUsage: true
           allowRecordingRemoval: true
           externallyExtraOpts: true
+          relCountries: true
         order:
           name: true
           nif: true
@@ -146,6 +147,8 @@ production:
           name: true
           maxCalls: true
           maxDialyUsage: true
+          ipFilter: true
+          relCountries: true
           language: true
           outgoingDdi: true
           showInvoices: true
@@ -161,12 +164,13 @@ production:
             relFeatures: 3
             billingMethod: 3
         group1:
-          colsPerRow: 3
+          colsPerRow: 2
           label: _("Security")
           fields:
             maxCalls: 1
-            ipFilter: 1
             maxDailyUsage: 1
+            ipFilter: 1
+            relCountries: 1
         group2:
           colsPerRow: 3
           label: _("Geographic Configuration")
@@ -240,12 +244,13 @@ production:
             relFeatures: 3
             billingMethod: 3
         group1:
-          colsPerRow: 3
+          colsPerRow: 2
           label: _("Security")
           fields:
             maxCalls: 1
-            ipFilter: 1
             maxDailyUsage: 1
+            ipFilter: 1
+            relCountries: 1
         group2:
           colsPerRow: 3
           label: _("Geographic Configuration")
