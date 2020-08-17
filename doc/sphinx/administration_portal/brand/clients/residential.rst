@@ -57,7 +57,10 @@ These are the fields shown when **adding** a new residential client:
         Limits both incoming and outgoing external calls (0 for unlimited).
 
     Filter by IP address
-        If set, the platform will only allow calls coming from allowed IP addresses or network ranges.
+        If set, the platform will only allow calls coming from allowed IP/ranges or countries.
+
+    GeoIP allowed countries
+        If *Filter by IP address* is enabled, traffic from selected countries will be allowed.
 
     Max daily usage
         Limits external outbound calls when this limit is reached within a day. At midnight counters are reset and

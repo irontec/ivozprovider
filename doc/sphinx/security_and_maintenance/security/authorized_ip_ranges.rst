@@ -13,8 +13,8 @@ Authorized IP ranges
 When **Filter by IP address** is enabled, users won't be allowed to connect from another network, even if they have
 valid SIP credentials.
 
-.. error:: Once the filter has been activated you **MUST** add networks or
-           valid IP addresses, otherwise, all the calls will be rejected.
+.. error:: Enabling **Filter by IP address** and leaving blank both **GeoIP countries** and **List of authorized sources**
+           will prevent all calls.
 
 .. tip:: Addresses listed in :ref:`IP filter blocked addresses` gives a clue of legitimate sources that should be
          added in **List of authorized sources** subsection.
