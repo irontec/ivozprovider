@@ -766,4 +766,35 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
      */
     public function getRelRoutingTags(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add relCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry
+     *
+     * @return static
+     */
+    public function addRelCountry(\Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry);
+
+    /**
+     * Remove relCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry
+     */
+    public function removeRelCountry(\Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry);
+
+    /**
+     * Replace relCountries
+     *
+     * @param ArrayCollection $relCountries of Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface
+     * @return static
+     */
+    public function replaceRelCountries(ArrayCollection $relCountries);
+
+    /**
+     * Get relCountries
+     * @param Criteria | null $criteria
+     * @return \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface[]
+     */
+    public function getRelCountries(\Doctrine\Common\Collections\Criteria $criteria = null);
 }

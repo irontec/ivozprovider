@@ -61,6 +61,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodec
       Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface:
         Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag
+      Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface:
+        Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountry
       Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface:
         Ivoz\Provider\Domain\Model\CompanyService\CompanyService
       Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface:

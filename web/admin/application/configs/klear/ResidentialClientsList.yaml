@@ -72,6 +72,7 @@ production:
           maxDailyUsage: true
           allowRecordingRemoval: true
           externallyExtraOpts: true
+          relCountries: true
         order:
           name: true
           nif: true
@@ -134,6 +135,8 @@ production:
           name: true
           maxCalls: true
           maxDailyUsage: true
+          ipFilter: true
+          relCountries: true
           language: true
           showInvoices: true
           onDemandRecord: true
@@ -158,12 +161,13 @@ production:
             transformationRuleSet: 8
             currency: 4
         group2:
-          colsPerRow: 3
+          colsPerRow: 2
           label: _("Security")
           fields:
             maxCalls: 1
-            ipFilter: 1
             maxDailyUsage: 1
+            ipFilter: 1
+            relCountries: 1
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -225,12 +229,13 @@ production:
             transformationRuleSet: 8
             currency: 4
         group2:
-          colsPerRow: 3
+          colsPerRow: 2
           label: _("Security")
           fields:
             maxCalls: 1
-            ipFilter: 1
             maxDailyUsage: 1
+            ipFilter: 1
+            relCountries: 1
         group3:
           colsPerRow: 12
           collapsed: true

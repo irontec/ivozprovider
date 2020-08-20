@@ -272,8 +272,14 @@ production:
         values:
           '0':
             title: _("No")
+            visualFilter:
+              show: []
+              hide: ["relCountries"]
           '1':
             title: _("Yes")
+            visualFilter:
+              show: ["relCountries"]
+              hide: []
       info:
         type: box
         position: left
@@ -508,6 +514,26 @@ production:
     externallyExtraOpts:
       title: _('Externally rater custom options')
       type: textarea
+    relCountries:
+      title: _('GeoIP allowed countries')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relation: \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountry
+          relationProperty: company
+          relatedProperty: country
+          related: \Ivoz\Provider\Domain\Model\Country\Country
+          relatedFieldName:
+            fields:
+            - name${lang}
+            template: '%name${lang}%'
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Select a country to allow all IPs. Leave it blank if you want to allow just specific IP/ranges.")
+        label: _("Need help?")
 staging:
   _extends: production
 testing:

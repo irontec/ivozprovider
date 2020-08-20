@@ -1208,6 +1208,9 @@ msgstr "Generic URL Pattern"
 msgid "Generic template"
 msgstr "Generic template"
 
+msgid "GeoIP allowed countries"
+msgstr "GeoIP allowed countries"
+
 msgid "Geographic Configuration"
 msgstr "Geographic Configuration"
 
@@ -2489,6 +2492,13 @@ msgstr "Select Brand"
 
 msgid "Select Client"
 msgstr "Select Client"
+
+msgid ""
+"Select a country to allow all IPs. Leave it blank if you want to allow just "
+"specific IP/ranges."
+msgstr ""
+"Select a country to allow all IPs. Leave it blank if you want to allow just "
+"specific IP/ranges."
 
 msgid "Select destination group"
 msgstr "Select destination group"

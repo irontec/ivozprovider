@@ -52,3 +52,8 @@ Ivoz\Provider\Domain\Model\Company\Company:
       mappedBy: company
       cascade: ['persist']
       orphanRemoval: true
+    relCountries:
+      targetEntity: Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface
+      mappedBy: company
+      cascade: ['persist']
+      orphanRemoval: true

@@ -1220,6 +1220,9 @@ msgstr "Patró URL genèric"
 msgid "Generic template"
 msgstr "Pantilla genèrica"
 
+msgid "GeoIP allowed countries"
+msgstr "GeoIP países permitidos"
+
 msgid "Geographic Configuration"
 msgstr "Configuració geogràfica"
 
@@ -2508,6 +2511,13 @@ msgstr "Selecciona marca"
 
 msgid "Select Client"
 msgstr "Selecciona Client"
+
+msgid ""
+"Select a country to allow all IPs. Leave it blank if you want to allow just "
+"specific IP/ranges."
+msgstr ""
+"Selecciona un país para permitir todas sus IPs. No lo selecciones si quieres "
+"permitir solo algunas IPs o rangos."
 
 msgid "Select destination group"
 msgstr "Selecciona grup de destinació"
