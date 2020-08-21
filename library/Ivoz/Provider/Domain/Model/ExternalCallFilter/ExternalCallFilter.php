@@ -166,6 +166,16 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
     public function isOutOfSchedule()
     {
         $externalCallFilterRelSchedules = $this->getSchedules();
+
+        $outOfScheduleLocution = $this->getOutOfScheduleLocution();
+        $outOfScheduleTarget = $this->getOutOfScheduleTarget();
+
+        // If there is no schedules, locutions and targets, ignore OutOfSchedule completely
+        if (empty($externalCallFilterRelSchedules) && !$outOfScheduleLocution && !$outOfScheduleTarget) {
+            return false;
+        }
+
+        // No Schedule == Out Of Schedule
         if (empty($externalCallFilterRelSchedules)) {
             return true;
         }
