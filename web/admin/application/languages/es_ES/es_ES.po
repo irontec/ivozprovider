@@ -1009,9 +1009,6 @@ msgstr "Extensión llamante"
 msgid "External"
 msgstr "Externa"
 
-msgid "External Filter destination"
-msgstr "Destino llamada filtro"
-
 msgid "External call"
 msgid_plural "External calls"
 msgstr[0] "Llamada externa"
@@ -2924,6 +2921,9 @@ msgstr "Tipo URL"
 
 msgid "Unassigned"
 msgstr "Sin asignar"
+
+msgid "Unconditional Call Forward"
+msgstr "Desvío incondicional"
 
 msgid "Unit"
 msgstr "Unidad"

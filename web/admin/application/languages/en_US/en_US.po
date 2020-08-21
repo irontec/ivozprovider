@@ -995,9 +995,6 @@ msgstr "Extension dialing"
 msgid "External"
 msgstr "External"
 
-msgid "External Filter destination"
-msgstr "External Filter destination"
-
 msgid "External call"
 msgid_plural "External calls"
 msgstr[0] "External call"
@@ -2891,6 +2888,9 @@ msgstr "URL type"
 
 msgid "Unassigned"
 msgstr "Unassigned"
+
+msgid "Unconditional Call Forward"
+msgstr "Unconditional Call Forward"
 
 msgid "Unit"
 msgstr "Unit"
