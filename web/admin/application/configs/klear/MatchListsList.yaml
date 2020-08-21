@@ -30,17 +30,15 @@ production:
         options:
           title: _("Options")
           screens:
-            matchListsEdit_screen: $[${auth.acls.MatchLists.update} && ${auth.companyVPBX}]
-            matchListPatternsList_screen: $[${auth.acls.MatchListPatterns.read} && ${auth.companyVPBX}]
-            matchListPatternsView_screen: $[${auth.acls.MatchListPatterns.read} && ${auth.companyVPBX}]
+            matchListsEdit_screen: $[${auth.acls.MatchLists.update}]
+            matchListPatternsList_screen: $[${auth.acls.MatchListPatterns.read}]
+            matchListPatternsView_screen: $[${auth.acls.MatchListPatterns.read}]
           dialogs:
-            matchListsDel_dialog: $[${auth.acls.MatchLists.delete} && ${auth.companyVPBX}]
+            matchListsDel_dialog: $[${auth.acls.MatchLists.delete}]
       options:
         title: _("Options")
         screens:
           matchListsNew_screen: ${auth.acls.MatchLists.create}
-        dialogs:
-          matchListsDel_dialog: ${auth.acls.MatchLists.delete}
 
     matchListsNew_screen: &matchListsNew_screenLink
       <<: *MatchLists

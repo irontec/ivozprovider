@@ -1006,9 +1006,6 @@ msgstr "Marcatge d'extensió"
 msgid "External"
 msgstr "Externa"
 
-msgid "External Filter destination"
-msgstr "Filtre de destí extern"
-
 msgid "External call"
 msgid_plural "External calls"
 msgstr[0] "Trucada externa"
@@ -2913,6 +2910,9 @@ msgstr "Tipus URL"
 
 msgid "Unassigned"
 msgstr "No adscrit"
+
+msgid "Unconditional Call Forward"
+msgstr "Desvío incondicional"
 
 msgid "Unit"
 msgstr "Unitat"
