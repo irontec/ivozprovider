@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodAbstract" table="calendar_period_abstract">
+    <field name="startDate" type="date" column="startDate" nullable="false"/>
+    <field name="endDate" type="date" column="endDate" nullable="false"/>
+    <field name="routeType" type="string" column="routeType" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:number|extension|voicemail]</option>
+      </options>
+    </field>
+    <field name="numberValue" type="string" column="numberValue" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="calendar" target-entity="Ivoz\Provider\Domain\Model\Calendar\CalendarInterface" inversed-by="calendarPeriods" fetch="LAZY">
+      <join-columns>
+        <join-column name="calendarId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="locution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="locutionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="extensionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="voiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="voiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

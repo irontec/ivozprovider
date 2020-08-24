@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationAbstract" table="tp_destination_abstract">
+    <indexes>
+      <index name="tpDestination_tag" columns="tag"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="tpid_dest_prefix" columns="tpid,tag,prefix"/>
+    </unique-constraints>
+    <field name="tpid" type="string" column="tpid" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">ivozprovider</option>
+      </options>
+    </field>
+    <field name="tag" type="string" column="tag" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prefix" type="string" column="prefix" length="24" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <one-to-one field="destination" target-entity="Ivoz\Provider\Domain\Model\Destination\DestinationInterface" inversed-by="tpDestination" fetch="LAZY">
+      <join-columns>
+        <join-column name="destinationId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </one-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

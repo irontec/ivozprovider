@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetAbstract" table="transformation_rule_set_abstract">
+    <embedded name="name" class="Ivoz\Provider\Domain\Model\TransformationRuleSet\Name" use-column-prefix="false" />
+    <field name="description" type="string" column="description" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="internationalCode" type="string" column="internationalCode" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">00</option>
+      </options>
+    </field>
+    <field name="trunkPrefix" type="string" column="trunkPrefix" length="5" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="areaCode" type="string" column="areaCode" length="5" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="nationalLen" type="integer" column="nationalLen" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">9</option>
+      </options>
+    </field>
+    <field name="generateRules" type="boolean" column="generateRules" nullable="true">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="country" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="countryId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\Feature\FeatureAbstract" table="feature_abstract">
+    <unique-constraints>
+      <unique-constraint name="featureIden" columns="iden"/>
+    </unique-constraints>
+    <embedded name="name" class="Ivoz\Provider\Domain\Model\Feature\Name" use-column-prefix="false" />
+    <field name="iden" type="string" column="iden" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </mapped-superclass>
+</doctrine-mapping>

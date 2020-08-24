@@ -3,15 +3,15 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotification;
 use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotificationRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class MaxUsageNotificationDoctrineRepository extends ServiceEntityRepository implements MaxUsageNotificationRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, MaxUsageNotification::class);
     }

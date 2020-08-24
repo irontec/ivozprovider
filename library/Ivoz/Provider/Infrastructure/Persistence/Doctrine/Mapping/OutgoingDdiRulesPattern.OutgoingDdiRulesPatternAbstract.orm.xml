@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternAbstract" table="outgoing_ddi_rules_pattern_abstract">
+    <unique-constraints>
+      <unique-constraint name="patternPriority" columns="outgoingDDIRuleId,priority"/>
+    </unique-constraints>
+    <field name="type" type="string" column="type" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:prefix|destination]</option>
+      </options>
+    </field>
+    <field name="prefix" type="string" column="prefix" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="action" type="string" column="action" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:keep|force]</option>
+      </options>
+    </field>
+    <field name="priority" type="smallint" column="priority" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <many-to-one field="outgoingDdiRule" target-entity="Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule" inversed-by="patterns" fetch="LAZY">
+      <join-columns>
+        <join-column name="outgoingDDIRuleId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="matchList" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchList" fetch="LAZY">
+      <join-columns>
+        <join-column name="matchListId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="forcedDdi" target-entity="Ivoz\Provider\Domain\Model\Ddi\Ddi" fetch="LAZY">
+      <join-columns>
+        <join-column name="forcedDdiId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

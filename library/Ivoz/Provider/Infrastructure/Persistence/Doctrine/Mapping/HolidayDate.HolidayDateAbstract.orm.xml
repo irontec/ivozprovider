@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateAbstract" table="holiday_date_abstract">
+    <field name="name" type="string" column="name" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="eventDate" type="date" column="eventDate" nullable="false"/>
+    <field name="wholeDayEvent" type="boolean" column="wholeDayEvent" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="timeIn" type="time" column="timeIn" nullable="true"/>
+    <field name="timeOut" type="time" column="timeOut" nullable="true"/>
+    <field name="routeType" type="string" column="routeType" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:number|extension|voicemail]</option>
+      </options>
+    </field>
+    <field name="numberValue" type="string" column="numberValue" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="calendar" target-entity="Ivoz\Provider\Domain\Model\Calendar\Calendar" inversed-by="holidayDates" fetch="LAZY">
+      <join-columns>
+        <join-column name="calendarId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="locution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+      <join-columns>
+        <join-column name="locutionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\Extension" fetch="LAZY">
+      <join-columns>
+        <join-column name="extensionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="voiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+      <join-columns>
+        <join-column name="voiceMailUserId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+      <join-columns>
+        <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionAbstract" table="conditional_routes_condition_abstract">
+    <unique-constraints>
+      <unique-constraint name="conditionalRouteId" columns="conditionalRouteId,priority"/>
+    </unique-constraints>
+    <field name="priority" type="smallint" column="priority" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="routeType" type="string" column="routeType" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension]</option>
+      </options>
+    </field>
+    <field name="numberValue" type="string" column="numberValue" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="friendValue" type="string" column="friendValue" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="conditionalRoute" target-entity="Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute" inversed-by="conditions" fetch="LAZY">
+      <join-columns>
+        <join-column name="conditionalRouteId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="ivr" target-entity="Ivoz\Provider\Domain\Model\Ivr\Ivr" fetch="LAZY">
+      <join-columns>
+        <join-column name="ivrId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="huntGroup" target-entity="Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup" fetch="LAZY">
+      <join-columns>
+        <join-column name="huntGroupId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="voicemailUser" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+      <join-columns>
+        <join-column name="voiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+      <join-columns>
+        <join-column name="userId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="queue" target-entity="Ivoz\Provider\Domain\Model\Queue\Queue" fetch="LAZY">
+      <join-columns>
+        <join-column name="queueId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="locution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+      <join-columns>
+        <join-column name="locutionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="conferenceRoom" target-entity="Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom" fetch="LAZY">
+      <join-columns>
+        <join-column name="conferenceRoomId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\Extension" fetch="LAZY">
+      <join-columns>
+        <join-column name="extensionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+      <join-columns>
+        <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

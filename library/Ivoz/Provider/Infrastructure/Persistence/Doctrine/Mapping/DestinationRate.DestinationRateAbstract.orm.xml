@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateAbstract" table="destination_rate_abstract">
+    <unique-constraints>
+      <unique-constraint name="destinationRate_destination" columns="destinationRateGroupId,destinationId"/>
+    </unique-constraints>
+    <field name="cost" type="decimal" column="rate" precision="10" scale="4" nullable="false"/>
+    <field name="connectFee" type="decimal" column="connectFee" precision="10" scale="4" nullable="false"/>
+    <field name="rateIncrement" type="string" column="rateIncrement" length="16" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="groupIntervalStart" type="string" column="groupIntervalStart" length="16" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">0s</option>
+      </options>
+    </field>
+    <one-to-one field="tpRate" target-entity="Ivoz\Cgr\Domain\Model\TpRate\TpRate" mapped-by="destinationRate" fetch="LAZY"/>
+    <one-to-one field="tpDestinationRate" target-entity="Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate" mapped-by="destinationRate" fetch="LAZY"/>
+    <many-to-one field="destinationRateGroup" target-entity="Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup" inversed-by="destinationRates" fetch="LAZY">
+      <join-columns>
+        <join-column name="destinationRateGroupId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="destination" target-entity="Ivoz\Provider\Domain\Model\Destination\Destination" inversed-by="destinationRates" fetch="LAZY">
+      <join-columns>
+        <join-column name="destinationId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

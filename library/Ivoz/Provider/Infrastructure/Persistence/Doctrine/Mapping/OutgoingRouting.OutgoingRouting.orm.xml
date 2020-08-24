@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity
+          repository-class="Ivoz\Provider\Infrastructure\Persistence\Doctrine\OutgoingRoutingDoctrineRepository"
+          name="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting"
+          table="OutgoingRouting"
+          change-tracking-policy="DEFERRED_EXPLICIT"
+  >
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </id>
+    <one-to-one field="tpLcrRule" target-entity="Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRule" mapped-by="outgoingRouting" fetch="LAZY"/>
+    <one-to-many field="lcrRules" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule" mapped-by="outgoingRouting" fetch="LAZY"/>
+    <one-to-many field="lcrRuleTargets" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget" mapped-by="outgoingRouting" fetch="LAZY"/>
+    <one-to-many field="relCarriers" target-entity="Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier" mapped-by="outgoingRouting" orphan-removal="true" fetch="LAZY">
+      <cascade>
+        <cascade-remove/>
+        <cascade-persist/>
+      </cascade>
+    </one-to-many>
+  </entity>
+</doctrine-mapping>

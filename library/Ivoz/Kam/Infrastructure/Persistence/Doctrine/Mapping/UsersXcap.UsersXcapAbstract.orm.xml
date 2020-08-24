@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Kam\Domain\Model\UsersXcap\UsersXcapAbstract" table="users_xcap_abstract">
+    <indexes>
+      <index name="UsersXcap_account_doc_type_uri_idx" columns="username,domain,doc_type,doc_uri"/>
+      <index name="UsersXcap_account_doc_uri_idx" columns="username,domain,doc_uri"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="doc_uri_idx" columns="doc_uri"/>
+    </unique-constraints>
+    <field name="username" type="string" column="username" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="domain" type="string" column="domain" length="190" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="doc" type="blob" column="doc" length="16777215" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="docType" type="integer" column="doc_type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="etag" type="string" column="etag" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="source" type="integer" column="source" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="docUri" type="string" column="doc_uri" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="port" type="integer" column="port" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+  </mapped-superclass>
+</doctrine-mapping>

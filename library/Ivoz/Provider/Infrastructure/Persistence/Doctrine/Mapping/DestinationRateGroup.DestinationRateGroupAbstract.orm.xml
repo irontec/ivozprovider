@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupAbstract" table="destination_rate_group_abstract">
+    <embedded name="name" class="Ivoz\Provider\Domain\Model\DestinationRateGroup\Name" use-column-prefix="false" />
+    <embedded name="description" class="Ivoz\Provider\Domain\Model\DestinationRateGroup\Description" use-column-prefix="false" />
+    <embedded name="file" class="Ivoz\Provider\Domain\Model\DestinationRateGroup\File" use-column-prefix="false" />
+    <field name="status" type="string" column="status" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:waiting|inProgress|imported|error]</option>
+      </options>
+    </field>
+    <field name="lastExecutionError" type="string" column="lastExecutionError" length="300" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="deductibleConnectionFee" type="boolean" column="deductibleConnectionFee" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="currency" target-entity="Ivoz\Provider\Domain\Model\Currency\CurrencyInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="currencyId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

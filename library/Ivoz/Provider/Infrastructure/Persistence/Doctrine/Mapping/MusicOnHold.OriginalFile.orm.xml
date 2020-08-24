@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <embeddable name="Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile">
+    <field name="fileSize" type="integer" column="originalFileFileSize" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="comment">[FSO:keepExtension]</option>
+      </options>
+    </field>
+    <field name="mimeType" type="string" column="originalFileMimeType" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="baseName" type="string" column="originalFileBaseName" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </embeddable>
+</doctrine-mapping>

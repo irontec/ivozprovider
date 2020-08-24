@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetAbstract" table="trunks_lcr_rule_target_abstract">
+    <indexes>
+      <index name="lcrRuleTarget_lcr_id" columns="lcr_id"/>
+    </indexes>
+    <field name="lcrId" type="integer" column="lcr_id" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="priority" type="smallint" column="priority" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="weight" type="integer" column="weight" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <many-to-one field="rule" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="rule_id" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="gw" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="gw_id" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="outgoingRouting" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface" inversed-by="lcrRuleTargets" fetch="LAZY">
+      <join-columns>
+        <join-column name="outgoingRoutingId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

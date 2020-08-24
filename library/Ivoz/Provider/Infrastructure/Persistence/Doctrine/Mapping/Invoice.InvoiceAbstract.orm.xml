@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\Invoice\InvoiceAbstract" table="invoice_abstract">
+    <unique-constraints>
+      <unique-constraint name="invoice_number_brand" columns="number,brandId"/>
+    </unique-constraints>
+    <embedded name="pdf" class="Ivoz\Provider\Domain\Model\Invoice\Pdf" use-column-prefix="false" />
+    <field name="number" type="string" column="number" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="inDate" type="datetime" column="inDate" nullable="true"/>
+    <field name="outDate" type="datetime" column="outDate" nullable="true"/>
+    <field name="total" type="decimal" column="total" precision="10" scale="3" nullable="true"/>
+    <field name="taxRate" type="decimal" column="taxRate" precision="10" scale="3" nullable="true"/>
+    <field name="totalWithTax" type="decimal" column="totalWithTax" precision="10" scale="3" nullable="true"/>
+    <field name="status" type="string" column="status" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:waiting|processing|created|error]</option>
+      </options>
+    </field>
+    <field name="statusMsg" type="string" column="statusMsg" length="140" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="invoiceTemplate" target-entity="Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="invoiceTemplateId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="numberSequence" target-entity="Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="invoiceNumberSequenceId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="scheduler" target-entity="Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="invoiceSchedulerId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

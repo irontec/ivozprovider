@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupAbstract" table="rating_plan_group_abstract">
+    <embedded name="name" class="Ivoz\Provider\Domain\Model\RatingPlanGroup\Name" use-column-prefix="false" />
+    <embedded name="description" class="Ivoz\Provider\Domain\Model\RatingPlanGroup\Description" use-column-prefix="false" />
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\Brand" fetch="LAZY">
+      <join-columns>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="currency" target-entity="Ivoz\Provider\Domain\Model\Currency\Currency" fetch="LAZY">
+      <join-columns>
+        <join-column name="currencyId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

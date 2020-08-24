@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\User\UserAbstract" table="user_abstract">
+    <unique-constraints>
+      <unique-constraint name="uniqueTerminalId" columns="terminalId"/>
+      <unique-constraint name="uniqueExtensionId" columns="extensionId"/>
+      <unique-constraint name="duplicateEmail" columns="email"/>
+    </unique-constraints>
+    <field name="name" type="string" column="name" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lastname" type="string" column="lastname" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="email" type="string" column="email" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pass" type="string" column="pass" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[password]</option>
+      </options>
+    </field>
+    <field name="doNotDisturb" type="boolean" column="doNotDisturb" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="isBoss" type="boolean" column="isBoss" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="active" type="boolean" column="active" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="maxCalls" type="integer" column="maxCalls" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="externalIpCalls" type="string" column="externalIpCalls" length="1" nullable="false">
+      <options>
+        <option name="comment">[enum:0|1|2|3]</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="voicemailEnabled" type="boolean" column="voicemailEnabled" nullable="false">
+      <options>
+        <option name="default">1</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="voicemailSendMail" type="boolean" column="voicemailSendMail" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="voicemailAttachSound" type="boolean" column="voicemailAttachSound" nullable="false">
+      <options>
+        <option name="default">1</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="gsQRCode" type="boolean" column="gsQRCode" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" fetch="LAZY">
+      <join-columns>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="callAcl" target-entity="Ivoz\Provider\Domain\Model\CallAcl\CallAcl" fetch="LAZY">
+      <join-columns>
+        <join-column name="callAclId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="bossAssistant" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+      <join-columns>
+        <join-column name="bossAssistantId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="bossAssistantWhiteList" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchList" fetch="LAZY">
+      <join-columns>
+        <join-column name="bossAssistantWhiteListId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="transformationRuleSet" target-entity="Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet" fetch="LAZY">
+      <join-columns>
+        <join-column name="transformationRuleSetId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="language" target-entity="Ivoz\Provider\Domain\Model\Language\Language" fetch="LAZY">
+      <join-columns>
+        <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="terminal" target-entity="Ivoz\Provider\Domain\Model\Terminal\Terminal" inversed-by="users" fetch="LAZY">
+      <join-columns>
+        <join-column name="terminalId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\Extension" inversed-by="users" fetch="LAZY">
+      <join-columns>
+        <join-column name="extensionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="timezone" target-entity="Ivoz\Provider\Domain\Model\Timezone\Timezone" fetch="LAZY">
+      <join-columns>
+        <join-column name="timezoneId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="outgoingDdi" target-entity="Ivoz\Provider\Domain\Model\Ddi\Ddi" fetch="LAZY">
+      <join-columns>
+        <join-column name="outgoingDdiId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="outgoingDdiRule" target-entity="Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule" fetch="LAZY">
+      <join-columns>
+        <join-column name="outgoingDdiRuleId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="voicemailLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+      <join-columns>
+        <join-column name="voicemailLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

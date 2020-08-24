@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\Friend\FriendAbstract" table="friend_abstract">
+    <unique-constraints>
+      <unique-constraint name="name_domain" columns="name,domainId"/>
+      <unique-constraint name="companyPrio" columns="companyId,priority"/>
+    </unique-constraints>
+    <field name="name" type="string" column="name" length="65" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="description" type="string" column="description" length="500" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="transport" type="string" column="transport" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:udp|tcp|tls]</option>
+      </options>
+    </field>
+    <field name="ip" type="string" column="ip" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="port" type="smallint" column="port" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="password" type="string" column="password" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="priority" type="smallint" column="priority" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="disallow" type="string" column="disallow" length="200" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">all</option>
+      </options>
+    </field>
+    <field name="allow" type="string" column="allow" length="200" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">alaw</option>
+      </options>
+    </field>
+    <field name="directMediaMethod" type="string" column="direct_media_method" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:invite|update]</option>
+        <option name="default">update</option>
+      </options>
+    </field>
+    <field name="calleridUpdateHeader" type="string" column="callerid_update_header" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:pai|rpid]</option>
+        <option name="default">pai</option>
+      </options>
+    </field>
+    <field name="updateCallerid" type="string" column="update_callerid" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
+        <option name="default">yes</option>
+      </options>
+    </field>
+    <field name="fromUser" type="string" length="190" column="from_user" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fromDomain" type="string" column="from_domain" length="190" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="directConnectivity" type="string" column="directConnectivity" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:yes|no|intervpbx]</option>
+        <option name="default">yes</option>
+      </options>
+    </field>
+    <field name="ddiIn" type="string" column="ddiIn" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
+        <option name="default">yes</option>
+      </options>
+    </field>
+    <field name="t38Passthrough" type="string" column="t38Passthrough" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
+        <option name="default">no</option>
+      </options>
+    </field>
+    <field name="alwaysApplyTransformations" type="boolean" column="alwaysApplyTransformations" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="rtpEncryption" type="boolean" column="rtpEncryption" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="friends" fetch="LAZY">
+      <join-columns>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="domain" target-entity="Ivoz\Provider\Domain\Model\Domain\DomainInterface" inversed-by="friends" fetch="LAZY">
+      <join-columns>
+        <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="transformationRuleSet" target-entity="Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="transformationRuleSetId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="callAcl" target-entity="Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="callAclId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="outgoingDdi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="outgoingDdiId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="language" target-entity="Ivoz\Provider\Domain\Model\Language\LanguageInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="interCompany" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="interCompanyId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

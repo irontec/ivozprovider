@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity
+          repository-class="Ivoz\Provider\Infrastructure\Persistence\Doctrine\ExternalCallFilterDoctrineRepository"
+          name="Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter"
+          table="ExternalCallFilters"
+          change-tracking-policy="DEFERRED_EXPLICIT"
+  >
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </id>
+    <one-to-many field="calendars" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar" mapped-by="filter" orphan-removal="true" fetch="LAZY">
+      <cascade>
+        <cascade-remove/>
+        <cascade-persist/>
+      </cascade>
+    </one-to-many>
+    <one-to-many field="blackLists" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList" mapped-by="filter" orphan-removal="true" fetch="LAZY">
+      <cascade>
+        <cascade-remove/>
+        <cascade-persist/>
+      </cascade>
+    </one-to-many>
+    <one-to-many field="whiteLists" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteList" mapped-by="filter" orphan-removal="true" fetch="LAZY">
+      <cascade>
+        <cascade-remove/>
+        <cascade-persist/>
+      </cascade>
+    </one-to-many>
+    <one-to-many field="schedules" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule" mapped-by="filter" orphan-removal="true" fetch="LAZY">
+      <cascade>
+        <cascade-remove/>
+        <cascade-persist/>
+      </cascade>
+    </one-to-many>
+  </entity>
+</doctrine-mapping>

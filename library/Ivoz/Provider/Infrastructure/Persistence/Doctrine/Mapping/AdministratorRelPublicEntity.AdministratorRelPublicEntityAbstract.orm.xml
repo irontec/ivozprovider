@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityAbstract" table="administrator_rel_public_entity_abstract">
+    <unique-constraints>
+      <unique-constraint name="administratorRelPublicEntity_administrator_publicEntity" columns="administratorId,publicEntityId"/>
+    </unique-constraints>
+    <field name="create" type="boolean" column="`create`" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="read" type="boolean" column="read" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="update" type="boolean" column="`update`" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="delete" type="boolean" column="`delete`" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="administrator" target-entity="Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface" inversed-by="relPublicEntities" fetch="LAZY">
+      <join-columns>
+        <join-column name="administratorId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="publicEntity" target-entity="Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface" fetch="EAGER">
+      <join-columns>
+        <join-column name="publicEntityId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

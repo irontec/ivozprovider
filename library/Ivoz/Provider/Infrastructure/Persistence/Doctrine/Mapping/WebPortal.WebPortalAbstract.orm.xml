@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\WebPortal\WebPortalAbstract" table="web_portal_abstract">
+    <unique-constraints>
+      <unique-constraint name="webportal_url" columns="url"/>
+    </unique-constraints>
+    <embedded name="logo" class="Ivoz\Provider\Domain\Model\WebPortal\Logo" use-column-prefix="false" />
+    <field name="url" type="string" column="url" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="klearTheme" type="string" column="klearTheme" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="urlType" type="string" column="urlType" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:god|brand|admin|user]</option>
+      </options>
+    </field>
+    <field name="name" type="string" column="name" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="userTheme" type="string" column="userTheme" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" inversed-by="urls" fetch="LAZY">
+      <join-columns>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

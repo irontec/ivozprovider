@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\Queue\QueueAbstract" table="queue_abstract">
+    <unique-constraints>
+      <unique-constraint name="company_queuename" columns="companyId,name"/>
+    </unique-constraints>
+    <field name="name" type="string" column="name" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="maxWaitTime" type="integer" column="maxWaitTime" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="timeoutTargetType" type="string" column="timeoutTargetType" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:number|extension|voicemail]</option>
+      </options>
+    </field>
+    <field name="timeoutNumberValue" type="string" column="timeoutNumberValue" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="maxlen" type="integer" column="maxlen" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fullTargetType" type="string" column="fullTargetType" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:number|extension|voicemail]</option>
+      </options>
+    </field>
+    <field name="fullNumberValue" type="string" column="fullNumberValue" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="periodicAnnounceFrequency" type="integer" column="periodicAnnounceFrequency" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="memberCallRest" type="integer" column="memberCallRest" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="memberCallTimeout" type="integer" column="memberCallTimeout" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="strategy" type="string" column="strategy" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="weight" type="integer" column="weight" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="preventMissedCalls" type="integer" column="preventMissedCalls" nullable="false">
+      <options>
+        <option name="default">1</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="periodicAnnounceLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="periodicAnnounceLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="timeoutLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="timeoutLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="timeoutExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="timeoutExtensionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="timeoutVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="timeoutVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fullLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="fullLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fullExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="fullExtensionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fullVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="fullVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="timeoutNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="timeoutNumberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fullNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="fullNumberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Ast\Domain\Model\Voicemail\VoicemailAbstract" table="voicemail_abstract">
+    <indexes>
+      <index name="voicemail__context" columns="context"/>
+      <index name="voicemail_mailbox_context" columns="mailbox,context"/>
+      <index name="voicemail_imapuser" columns="imapuser"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="voicemail_user" columns="userId"/>
+      <unique-constraint name="voicemail_residential_device" columns="residentialDeviceId"/>
+    </unique-constraints>
+    <field name="context" type="string" column="context" length="80" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="mailbox" type="string" column="mailbox" length="80" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="password" type="string" column="password" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fullname" type="string" column="fullname" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="alias" type="string" column="alias" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="email" type="string" column="email" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pager" type="string" column="pager" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="attach" type="string" column="attach" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="attachfmt" type="string" column="attachfmt" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="serveremail" type="string" column="serveremail" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="language" type="string" column="language" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tz" type="string" column="tz" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="deleteVoicemail" type="string" column="deleteast_voicemail" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="saycid" type="string" column="saycid" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">yes</option>
+      </options>
+    </field>
+    <field name="sendVoicemail" type="string" column="sendast_voicemail" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="review" type="string" column="review" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tempgreetwarn" type="string" column="tempgreetwarn" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="operator" type="string" column="operator" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="envelope" type="string" column="envelope" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sayduration" type="integer" column="sayduration" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="forcename" type="string" column="forcename" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="forcegreetings" type="string" column="forcegreetings" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="callback" type="string" column="callback" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dialout" type="string" column="dialout" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="exitcontext" type="string" column="exitcontext" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="maxmsg" type="integer" column="maxmsg" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="volgain" type="decimal" column="volgain" precision="5" scale="2" nullable="true"/>
+    <field name="imapuser" type="string" column="imapuser" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imappassword" type="string" column="imappassword" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imapserver" type="string" column="imapserver" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imapport" type="string" column="imapport" length="8" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imapflags" type="string" column="imapflags" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="stamp" type="datetime" column="stamp" nullable="true"/>
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="userId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

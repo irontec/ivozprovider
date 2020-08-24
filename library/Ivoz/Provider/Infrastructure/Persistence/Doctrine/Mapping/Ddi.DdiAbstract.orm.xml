@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\Ddi\DdiAbstract" table="ddi_abstract">
+    <indexes>
+      <index name="ddi_ddiE164" columns="DdiE164"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="Ddicountry" columns="Ddi,countryId"/>
+    </unique-constraints>
+    <field name="ddi" type="string" column="Ddi" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ddie164" type="string" column="DdiE164" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="recordCalls" type="string" column="recordCalls" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:none|all|inbound|outbound]</option>
+        <option name="default">none</option>
+      </options>
+    </field>
+    <field name="displayName" type="string" column="displayName" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="routeType" type="string" column="routeType" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail]</option>
+      </options>
+    </field>
+    <field name="billInboundCalls" type="boolean" column="billInboundCalls" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="friendValue" type="string" column="friendValue" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="ddis" fetch="LAZY">
+      <join-columns>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="conferenceRoom" target-entity="Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="conferenceRoomId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="language" target-entity="Ivoz\Provider\Domain\Model\Language\LanguageInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="queue" target-entity="Ivoz\Provider\Domain\Model\Queue\QueueInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="queueId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="externalCallFilter" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="externalCallFilterId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="userId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="ivr" target-entity="Ivoz\Provider\Domain\Model\Ivr\IvrInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="ivrId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="huntGroup" target-entity="Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="huntGroupId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fax" target-entity="Ivoz\Provider\Domain\Model\Fax\FaxInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="faxId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="ddiProvider" target-entity="Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="ddiProviderId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="country" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="countryId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" inversed-by="ddis" fetch="LAZY">
+      <join-columns>
+        <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="conditionalRoute" target-entity="Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="conditionalRouteId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="retailAccount" target-entity="Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface" inversed-by="ddis" fetch="LAZY">
+      <join-columns>
+        <join-column name="retailAccountId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

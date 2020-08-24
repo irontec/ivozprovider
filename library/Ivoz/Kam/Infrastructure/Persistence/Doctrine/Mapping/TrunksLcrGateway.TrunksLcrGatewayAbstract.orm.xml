@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayAbstract" table="trunks_lcr_gateway_abstract">
+    <indexes>
+      <index name="lcrGateway_lcr_id" columns="lcr_id"/>
+    </indexes>
+    <field name="lcrId" type="integer" column="lcr_id" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="gwName" type="string" column="gw_name" length="200" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ip" type="string" column="ip" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="hostname" type="string" column="hostname" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="port" type="smallint" column="port" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="params" type="string" column="params" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="uriScheme" type="smallint" column="uri_scheme" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="transport" type="smallint" column="transport" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="strip" type="boolean" column="strip" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="prefix" type="string" column="prefix" length="16" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tag" type="string" column="tag" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="defunct" type="integer" column="defunct" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <one-to-one field="carrierServer" target-entity="Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface" inversed-by="lcrGateway" fetch="LAZY">
+      <join-columns>
+        <join-column name="carrierServerId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </one-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\Changelog\ChangelogAbstract" table="changelog_abstract">
+    <indexes>
+      <index name="changelog_createdOn" columns="createdOn"/>
+      <index name="changelog_entity_id_idx" columns="entity,entityId"/>
+      <index name="changelog_entity_createdOn" columns="entity,createdOn"/>
+    </indexes>
+    <field name="entity" type="string" column="entity" length="150" nullable="false"/>
+    <field name="entityId" type="string" column="entityId" length="36" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="data" type="json_array" column="data" nullable="true"/>
+    <field name="createdOn" type="datetime" column="createdOn" nullable="false"/>
+    <field name="microtime" type="smallint" column="microtime" nullable="false"/>
+    <many-to-one field="command" target-entity="Ivoz\Provider\Domain\Model\Commandlog\Commandlog" fetch="LAZY">
+      <join-columns>
+        <join-column name="commandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

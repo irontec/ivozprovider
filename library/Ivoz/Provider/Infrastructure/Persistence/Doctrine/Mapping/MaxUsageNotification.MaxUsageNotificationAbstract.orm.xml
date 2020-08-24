@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass
+    name="Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotificationAbstract"
+    table="MaxUsageNotifications"
+  >
+    <field name="toAddress" type="string" column="toAddress" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="threshold" type="decimal" column="threshold" precision="10" scale="4" nullable="true">
+      <options>
+        <option name="default">0.0000</option>
+      </options>
+    </field>
+    <field name="lastSent" type="datetime" column="lastSent" nullable="true"/>
+    <many-to-one
+      field="notificationTemplate"
+      target-entity="\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface"
+      fetch="LAZY"
+    >
+      <join-columns>
+        <join-column name="notificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="true" />
+      </join-columns>
+    </many-to-one>
+    <many-to-one
+      field="company"
+      target-entity="\Ivoz\Provider\Domain\Model\Company\CompanyInterface"
+      fetch="LAZY"
+    >
+      <join-columns>
+        <join-column name="companyId" referenced-column-name="id" on-delete="SET NULL" nullable="true" />
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

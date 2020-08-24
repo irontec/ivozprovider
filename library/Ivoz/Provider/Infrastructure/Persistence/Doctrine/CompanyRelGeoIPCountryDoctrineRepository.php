@@ -3,9 +3,9 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountry;
 use Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
  * CompanyRelGeoIPCountryDoctrineRepository
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class CompanyRelGeoIPCountryDoctrineRepository extends ServiceEntityRepository implements CompanyRelGeoIPCountryRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, CompanyRelGeoIPCountry::class);
     }

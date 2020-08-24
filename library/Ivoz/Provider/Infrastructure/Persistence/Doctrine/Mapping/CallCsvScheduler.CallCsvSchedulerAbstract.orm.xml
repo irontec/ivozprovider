@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerAbstract" table="call_csv_scheduler_abstract">
+    <unique-constraints>
+      <unique-constraint name="CallCsvScheduler_brand_name" columns="brandId,name"/>
+    </unique-constraints>
+    <field name="name" type="string" column="name" length="40" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="unit" type="string" column="unit" length="30" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:day|week|month]</option>
+        <option name="default">month</option>
+      </options>
+    </field>
+    <field name="frequency" type="smallint" column="frequency" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="callDirection" type="string" column="callDirection" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:inbound|outbound]</option>
+        <option name="default">outbound</option>
+      </options>
+    </field>
+    <field name="email" type="string" column="email" length="140" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lastExecution" type="datetime" column="lastExecution" nullable="true"/>
+    <field name="lastExecutionError" type="string" column="lastExecutionError" length="300" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nextExecution" type="datetime" column="nextExecution" nullable="true"/>
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\Brand" fetch="LAZY">
+      <join-columns>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" fetch="EAGER">
+      <join-columns>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="callCsvNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate" fetch="LAZY">
+      <join-columns>
+        <join-column name="callCsvNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="ddi" target-entity="Ivoz\Provider\Domain\Model\Ddi\Ddi" fetch="LAZY">
+      <join-columns>
+        <join-column name="ddiId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\Carrier" fetch="LAZY">
+      <join-columns>
+        <join-column name="carrierId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="retailAccount" target-entity="Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount" fetch="LAZY">
+      <join-columns>
+        <join-column name="retailAccountId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice" fetch="LAZY">
+      <join-columns>
+        <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+      <join-columns>
+        <join-column name="userId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fax" target-entity="Ivoz\Provider\Domain\Model\Fax\Fax" fetch="LAZY">
+      <join-columns>
+        <join-column name="faxId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="friend" target-entity="Ivoz\Provider\Domain\Model\Friend\Friend" fetch="LAZY">
+      <join-columns>
+        <join-column name="friendId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="ddiProvider" target-entity="Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider" fetch="LAZY">
+      <join-columns>
+        <join-column name="ddiProviderId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

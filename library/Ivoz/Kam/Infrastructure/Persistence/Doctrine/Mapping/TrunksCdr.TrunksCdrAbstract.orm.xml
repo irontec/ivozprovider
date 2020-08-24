@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract" table="trunks_cdr_abstract">
+    <indexes>
+      <index name="trunksCdr_start_time_idx" columns="start_time"/>
+      <index name="trunksCdr_parsed_idx" columns="parsed"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="trunksCdr_callid_direction" columns="callid,direction"/>
+    </unique-constraints>
+    <field name="startTime" type="datetime" column="start_time" nullable="false">
+      <options>
+        <option name="default">2000-01-01 00:00:00</option>
+      </options>
+    </field>
+    <field name="endTime" type="datetime" column="end_time" nullable="false">
+      <options>
+        <option name="default">2000-01-01 00:00:00</option>
+      </options>
+    </field>
+    <field name="duration" type="float" column="duration" precision="10" scale="3" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="caller" type="string" column="caller" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="callee" type="string" column="callee" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="callid" type="string" column="callid" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="callidHash" type="string" column="callidHash" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="xcallid" type="string" column="xcallid" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="diversion" type="string" column="diversion" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="bounced" type="boolean" column="bounced" nullable="true"/>
+    <field name="parsed" type="boolean" column="parsed" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="parserScheduledAt" type="datetime" column="parserScheduledAt" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="direction" type="string" column="direction" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:inbound|outbound]</option>
+      </options>
+    </field>
+    <field name="cgrid" type="string" column="cgrid" length="40" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="brandId" referenced-column-name="id" on-delete="set null"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="companyId" referenced-column-name="id" on-delete="set null"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\CarrierInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="carrierId" referenced-column-name="id" on-delete="set null"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="retailAccount" target-entity="Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="retailAccountId" referenced-column-name="id" on-delete="set null"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="set null"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="userId" referenced-column-name="id" on-delete="set null"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="friend" target-entity="Ivoz\Provider\Domain\Model\Friend\FriendInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="friendId" referenced-column-name="id" on-delete="set null"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fax" target-entity="Ivoz\Provider\Domain\Model\Fax\FaxInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="faxId" referenced-column-name="id" on-delete="set null"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="ddi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="ddiId" referenced-column-name="id" on-delete="set null" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="ddiProvider" target-entity="Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="ddiProviderId" referenced-column-name="id" on-delete="set null" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

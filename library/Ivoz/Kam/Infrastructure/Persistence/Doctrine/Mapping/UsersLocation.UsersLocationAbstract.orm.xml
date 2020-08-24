@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationAbstract" table="users_location_abstract">
+    <indexes>
+      <index name="usersLocation_account_contact_idx" columns="username,domain,contact"/>
+      <index name="usersLocation_expires_idx" columns="expires"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="ruid_idx" columns="ruid"/>
+    </unique-constraints>
+    <field name="ruid" type="string" column="ruid" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="username" type="string" column="username" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="domain" type="string" column="domain" length="190" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="contact" type="string" column="contact" length="512" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="received" type="string" column="received" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="path" type="string" column="path" length="512" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="expires" type="datetime" column="expires" nullable="false">
+      <options>
+        <option name="default">2030-05-28 21:32:15</option>
+      </options>
+    </field>
+    <field name="q" type="float" column="q" precision="10" scale="2" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="callid" type="string" column="callid" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">Default-Call-ID</option>
+      </options>
+    </field>
+    <field name="cseq" type="integer" column="cseq" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="lastModified" type="datetime" column="last_modified" nullable="false">
+      <options>
+        <option name="default">1900-01-01 00:00:01</option>
+      </options>
+    </field>
+    <field name="flags" type="integer" column="flags" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="cflags" type="integer" column="cflags" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="userAgent" type="string" column="user_agent" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="socket" type="string" column="socket" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="methods" type="integer" column="methods" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="instance" type="string" column="instance" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="regId" type="integer" column="reg_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="serverId" type="integer" column="server_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="connectionId" type="integer" column="connection_id" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="keepalive" type="integer" column="keepalive" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="partition" type="integer" column="partition" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </mapped-superclass>
+</doctrine-mapping>

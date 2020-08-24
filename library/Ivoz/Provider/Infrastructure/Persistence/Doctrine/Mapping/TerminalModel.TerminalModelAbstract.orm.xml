@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelAbstract" table="terminal_model_abstract">
+    <unique-constraints>
+      <unique-constraint name="terminalModel_iden" columns="iden"/>
+    </unique-constraints>
+    <field name="iden" type="string" column="iden" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="name" type="string" column="name" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="description" type="string" column="description" length="500" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="genericTemplate" type="text" column="genericTemplate" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="specificTemplate" type="text" column="specificTemplate" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="genericUrlPattern" type="string" column="genericUrlPattern" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="specificUrlPattern" type="string" column="specificUrlPattern" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="terminalManufacturer" target-entity="Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="TerminalManufacturerId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Kam\Domain\Model\UsersLocationAttr\UsersLocationAttrAbstract" table="users_location_attr_abstract">
+    <indexes>
+      <index name="usersLocationAttr_account_record_idx" columns="username,domain,ruid"/>
+      <index name="usersLocationAttr_last_modified_idx" columns="last_modified"/>
+    </indexes>
+    <field name="ruid" type="string" column="ruid" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="username" type="string" column="username" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="domain" type="string" column="domain" length="190" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aname" type="string" column="aname" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="atype" type="integer" column="atype" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="avalue" type="string" column="avalue" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="lastModified" type="datetime" column="last_modified" nullable="false">
+      <options>
+        <option name="default">1900-01-01 00:00:01</option>
+      </options>
+    </field>
+  </mapped-superclass>
+</doctrine-mapping>

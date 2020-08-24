@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract" table="terminal_abstract">
+    <indexes>
+      <index name="terminal_name_domain_idx" columns="name,domainId"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="terminal_name_domain" columns="name,domainId"/>
+      <unique-constraint name="terminal_mac" columns="mac"/>
+    </unique-constraints>
+    <field name="name" type="string" column="name" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="disallow" type="string" column="disallow" length="200" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">all</option>
+      </options>
+    </field>
+    <field name="allowAudio" type="string" column="allow_audio" length="200" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">alaw</option>
+      </options>
+    </field>
+    <field name="allowVideo" type="string" column="allow_video" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="directMediaMethod" type="string" column="direct_media_method" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:update|invite|reinvite]</option>
+        <option name="default">update</option>
+      </options>
+    </field>
+    <field name="password" type="string" column="password" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[password]</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="mac" type="string" column="mac" length="12" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lastProvisionDate" type="datetime" column="lastProvisionDate" nullable="true"/>
+    <field name="t38Passthrough" type="string" column="t38Passthrough" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
+        <option name="default">no</option>
+      </options>
+    </field>
+    <field name="rtpEncryption" type="boolean" column="rtpEncryption" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" inversed-by="terminals" fetch="LAZY">
+      <join-columns>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="domain" target-entity="Ivoz\Provider\Domain\Model\Domain\Domain" inversed-by="terminals" fetch="LAZY">
+      <join-columns>
+        <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="terminalModel" target-entity="Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel" fetch="LAZY">
+      <join-columns>
+        <join-column name="TerminalModelId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

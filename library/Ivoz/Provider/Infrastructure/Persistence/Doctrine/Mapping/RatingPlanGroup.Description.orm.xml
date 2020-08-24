@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <embeddable name="Ivoz\Provider\Domain\Model\RatingPlanGroup\Description">
+    <field name="en" type="string" column="description_en" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="es" type="string" column="description_es" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ca" type="string" column="description_ca" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="it" type="string" column="description_it" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </embeddable>
+</doctrine-mapping>

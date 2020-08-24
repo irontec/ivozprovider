@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract" table="tp_rating_plan_abstract">
+    <indexes>
+      <index name="tpRatingPlan_tpid" columns="tpid"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="tpid_rplid_destrates_timings_weight" columns="tpid,tag,destrates_tag,timing_tag,weight"/>
+    </unique-constraints>
+    <field name="tpid" type="string" column="tpid" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">ivozprovider</option>
+      </options>
+    </field>
+    <field name="tag" type="string" column="tag" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="destratesTag" type="string" column="destrates_tag" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="timingTag" type="string" column="timing_tag" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*any</option>
+      </options>
+    </field>
+    <field name="weight" type="decimal" column="weight" precision="8" scale="2" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">10</option>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <one-to-one field="ratingPlan" target-entity="Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface" inversed-by="tpRatingPlan" fetch="LAZY">
+      <join-columns>
+        <join-column name="ratingPlanId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </one-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Kam\Domain\Model\UsersActiveWatcher\UsersActiveWatcherAbstract" table="users_active_watcher_abstract">
+    <indexes>
+      <index name="usersActiveWatcher_expires" columns="expires"/>
+      <index name="usersActiveWatcher_pres" columns="presentity_uri,event"/>
+      <index name="usersActiveWatcher_updated_idx" columns="updated"/>
+      <index name="usersActiveWatcher_updated_winfo_idx" columns="updated_winfo,presentity_uri"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="kam_users_active_watchers_idx" columns="callid,to_tag,from_tag"/>
+    </unique-constraints>
+    <field name="presentityUri" type="string" column="presentity_uri" length="128" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="watcherUsername" type="string" column="watcher_username" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="watcherDomain" type="string" column="watcher_domain" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="toUser" type="string" column="to_user" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="toDomain" type="string" column="to_domain" length="190" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="event" type="string" column="event" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">presence</option>
+      </options>
+    </field>
+    <field name="eventId" type="string" column="event_id" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="toTag" type="string" column="to_tag" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fromTag" type="string" column="from_tag" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="callid" type="string" column="callid" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="localCseq" type="integer" column="local_cseq" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="remoteCseq" type="integer" column="remote_cseq" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="contact" type="string" column="contact" length="128" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="recordRoute" type="text" column="record_route" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="expires" type="integer" column="expires" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="status" type="integer" column="status" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">2</option>
+      </options>
+    </field>
+    <field name="reason" type="string" column="reason" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="version" type="integer" column="version" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="socketInfo" type="string" column="socket_info" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="localContact" type="string" column="local_contact" length="128" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fromUser" type="string" column="from_user" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fromDomain" type="string" column="from_domain" length="190" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="updated" type="integer" column="updated" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="updatedWinfo" type="integer" column="updated_winfo" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="flags" type="integer" column="flags" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="userAgent" type="string" column="user_agent" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+  </mapped-superclass>
+</doctrine-mapping>

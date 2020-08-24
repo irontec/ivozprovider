@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Cgr\Domain\Model\TpTiming\TpTimingAbstract" table="tp_timing_abstract">
+    <indexes>
+      <index name="tpTiming_tpid" columns="tpid"/>
+      <index name="tpTiming_tpid_tmid" columns="tpid,tag"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="tpid_tag" columns="tpid,tag"/>
+    </unique-constraints>
+    <field name="tpid" type="string" column="tpid" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">ivozprovider</option>
+      </options>
+    </field>
+    <field name="tag" type="string" column="tag" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="years" type="string" column="years" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="months" type="string" column="months" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="monthDays" type="string" column="month_days" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="weekDays" type="string" column="week_days" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="time" type="string" column="time" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">00:00:00</option>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <one-to-one field="ratingPlan" target-entity="Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface" inversed-by="tpTiming" fetch="LAZY">
+      <join-columns>
+        <join-column name="ratingPlanId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </one-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

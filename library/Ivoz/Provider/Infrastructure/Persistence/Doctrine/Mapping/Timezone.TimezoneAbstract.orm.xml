@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\Timezone\TimezoneAbstract" table="timezone_abstract">
+    <embedded name="label" class="Ivoz\Provider\Domain\Model\Timezone\Label" use-column-prefix="false" />
+    <field name="tz" type="string" column="tz" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="comment" type="string" column="comment" length="150" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <many-to-one field="country" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+      <join-columns>
+        <join-column name="countryId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

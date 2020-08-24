@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Ivoz\Provider\Infrastructure\Persistence\Doctrine\RatingPlanDoctrineRepository" name="Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan" table="RatingPlans">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </id>
+    <one-to-one field="tpTiming" target-entity="Ivoz\Cgr\Domain\Model\TpTiming\TpTiming" mapped-by="ratingPlan" fetch="LAZY"/>
+    <one-to-one field="tpRatingPlan" target-entity="Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan" mapped-by="ratingPlan" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>

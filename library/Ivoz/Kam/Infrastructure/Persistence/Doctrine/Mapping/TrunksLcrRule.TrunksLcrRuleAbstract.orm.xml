@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleAbstract" table="trunks_lcr_rule_abstract">
+    <indexes>
+      <index name="lcrRule_lcr_id" columns="lcr_id"/>
+    </indexes>
+    <field name="lcrId" type="integer" column="lcr_id" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="prefix" type="string" column="prefix" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fromUri" type="string" column="from_uri" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestUri" type="string" column="request_uri" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="mtTvalue" type="string" column="mt_tvalue" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="stopper" type="integer" column="stopper" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="enabled" type="integer" column="enabled" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <many-to-one field="routingPattern" target-entity="Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface" inversed-by="lcrRules" fetch="LAZY">
+      <join-columns>
+        <join-column name="routingPatternId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="routingPatternGroupsRelPattern" target-entity="Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="routingPatternGroupsRelPatternId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="outgoingRouting" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface" inversed-by="lcrRules" fetch="LAZY">
+      <join-columns>
+        <join-column name="outgoingRoutingId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

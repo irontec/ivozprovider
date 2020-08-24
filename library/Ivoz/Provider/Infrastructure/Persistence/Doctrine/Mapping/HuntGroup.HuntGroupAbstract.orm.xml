@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupAbstract" table="hunt_group_abstract">
+    <unique-constraints>
+      <unique-constraint name="huntGroup_name_company" columns="name,companyId"/>
+    </unique-constraints>
+    <field name="name" type="string" column="name" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="description" type="string" column="description" length="500" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="strategy" type="string" column="strategy" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:ringAll|linear|roundRobin|random]</option>
+      </options>
+    </field>
+    <field name="ringAllTimeout" type="smallint" column="ringAllTimeout" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="noAnswerTargetType" type="string" column="noAnswerTargetType" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:number|extension|voicemail]</option>
+      </options>
+    </field>
+    <field name="noAnswerNumberValue" type="string" column="noAnswerNumberValue" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="preventMissedCalls" type="integer" column="preventMissedCalls" nullable="false">
+      <options>
+        <option name="default">1</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="allowCallForwards" type="integer" column="allowCallForwards" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" fetch="LAZY">
+      <join-columns>
+        <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="noAnswerLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+      <join-columns>
+        <join-column name="noAnswerLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="noAnswerExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\Extension" fetch="LAZY">
+      <join-columns>
+        <join-column name="noAnswerExtensionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="noAnswerVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+      <join-columns>
+        <join-column name="noAnswerVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="noAnswerNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+      <join-columns>
+        <join-column name="noAnswerNumberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

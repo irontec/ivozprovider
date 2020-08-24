@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryAbstract" table="ivr_entry_abstract">
+    <unique-constraints>
+      <unique-constraint name="UniqueIVRCutomIdAndEntry" columns="ivrId,entry"/>
+    </unique-constraints>
+    <field name="entry" type="string" column="entry" length="40" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="routeType" type="string" column="routeType" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:number|extension|voicemail|conditional]</option>
+      </options>
+    </field>
+    <field name="numberValue" type="string" column="numberValue" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="ivr" target-entity="Ivoz\Provider\Domain\Model\Ivr\Ivr" inversed-by="entries" fetch="LAZY">
+      <join-columns>
+        <join-column name="ivrId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="welcomeLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+      <join-columns>
+        <join-column name="welcomeLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\Extension" fetch="LAZY">
+      <join-columns>
+        <join-column name="extensionId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="voiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+      <join-columns>
+        <join-column name="voiceMailUserId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="conditionalRoute" target-entity="Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute" fetch="LAZY">
+      <join-columns>
+        <join-column name="conditionalRouteId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+      <join-columns>
+        <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

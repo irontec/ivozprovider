@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract" table="ps_endpoint_abstract">
+    <indexes>
+      <index name="psEndpoint_sorcery_idx" columns="sorcery_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="psEndpoint_terminal" columns="terminalId"/>
+      <unique-constraint name="psEndpoint_friend" columns="friendId"/>
+      <unique-constraint name="psEndpoint_residential_device" columns="residentialDeviceId"/>
+      <unique-constraint name="psEndpoint_retail_account" columns="retailAccountId"/>
+    </unique-constraints>
+    <field name="sorceryId" type="string" column="sorcery_id" length="40" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fromDomain" type="string" column="from_domain" length="190" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aors" type="string" column="aors" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="callerid" type="string" column="callerid" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="context" type="string" column="context" length="40" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">users</option>
+      </options>
+    </field>
+    <field name="disallow" type="string" column="disallow" length="200" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">all</option>
+      </options>
+    </field>
+    <field name="allow" type="string" column="allow" length="200" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">all</option>
+      </options>
+    </field>
+    <field name="directMedia" type="string" column="direct_media" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">yes</option>
+      </options>
+    </field>
+    <field name="directMediaMethod" type="string" column="direct_media_method" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:update|invite|reinvite]</option>
+        <option name="default">update</option>
+      </options>
+    </field>
+    <field name="mailboxes" type="string" column="mailboxes" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="namedPickupGroup" type="string" column="named_pickup_group" length="40" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sendDiversion" type="string" column="send_diversion" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">yes</option>
+      </options>
+    </field>
+    <field name="sendPai" type="string" column="send_pai" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">yes</option>
+      </options>
+    </field>
+    <field name="oneHundredRel" type="string" column="`100rel`" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">no</option>
+      </options>
+    </field>
+    <field name="outboundProxy" type="string" column="outbound_proxy" length="256" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="trustIdInbound" type="string" column="trust_id_inbound" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="t38Udptl" type="string" column="t38_udptl" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
+        <option name="default">no</option>
+      </options>
+    </field>
+    <field name="t38UdptlEc" type="string" column="t38_udptl_ec" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:none|fec|redundancy]</option>
+        <option name="default">redundancy</option>
+      </options>
+    </field>
+    <field name="t38UdptlMaxdatagram" type="integer" column="t38_udptl_maxdatagram" nullable="false">
+      <options>
+        <option name="default">1440</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="t38UdptlNat" type="string" column="t38_udptl_nat" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
+        <option name="default">no</option>
+      </options>
+    </field>
+    <many-to-one field="terminal" target-entity="Ivoz\Provider\Domain\Model\Terminal\TerminalInterface" inversed-by="astPsEndpoints" fetch="LAZY">
+      <join-columns>
+        <join-column name="terminalId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="friend" target-entity="Ivoz\Provider\Domain\Model\Friend\FriendInterface" inversed-by="psEndpoints" fetch="LAZY">
+      <join-columns>
+        <join-column name="friendId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" inversed-by="psEndpoints" fetch="LAZY">
+      <join-columns>
+        <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="retailAccount" target-entity="Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface" inversed-by="psEndpoints" fetch="LAZY">
+      <join-columns>
+        <join-column name="retailAccountId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

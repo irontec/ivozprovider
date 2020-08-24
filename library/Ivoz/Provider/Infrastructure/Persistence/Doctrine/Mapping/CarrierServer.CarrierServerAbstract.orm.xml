@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerAbstract" table="carrier_server_abstract">
+    <field name="ip" type="string" column="ip" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="hostname" type="string" column="hostname" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="port" type="smallint" column="port" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="uriScheme" type="smallint" column="uriScheme" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="transport" type="smallint" column="transport" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="sendPAI" type="boolean" column="sendPAI" nullable="true">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="sendRPID" type="boolean" column="sendRPID" nullable="true">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="authNeeded" type="string" column="authNeeded" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">no</option>
+      </options>
+    </field>
+    <field name="authUser" type="string" column="authUser" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="authPassword" type="string" column="authPassword" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sipProxy" type="string" column="sipProxy" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="outboundProxy" type="string" column="outboundProxy" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fromUser" type="string" column="fromUser" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fromDomain" type="string" column="fromDomain" length="190" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <one-to-one field="lcrGateway" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway" mapped-by="carrierServer" fetch="LAZY"/>
+    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\Carrier" inversed-by="servers" fetch="LAZY">
+      <join-columns>
+        <join-column name="carrierId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\Brand" fetch="LAZY">
+      <join-columns>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

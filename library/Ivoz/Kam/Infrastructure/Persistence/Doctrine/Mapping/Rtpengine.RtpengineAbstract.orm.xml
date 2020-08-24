@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Kam\Domain\Model\Rtpengine\RtpengineAbstract" table="rtpengine_abstract">
+    <indexes>
+      <index name="rtpengine_mediaRelaySetsId" columns="mediaRelaySetsId"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="rtpengine_nodes" columns="setid,url"/>
+    </unique-constraints>
+    <field name="setid" type="integer" column="setid" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="url" type="string" column="url" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="weight" type="integer" column="weight" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="disabled" type="boolean" column="disabled" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="stamp" type="datetime" column="stamp" nullable="false">
+      <options>
+        <option name="default">2000-01-01 00:00:00</option>
+      </options>
+    </field>
+    <field name="description" type="string" column="description" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="mediaRelaySet" target-entity="Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="mediaRelaySetsId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

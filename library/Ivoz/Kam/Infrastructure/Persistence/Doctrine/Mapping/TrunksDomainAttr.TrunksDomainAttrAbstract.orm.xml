@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Kam\Domain\Model\TrunksDomainAttr\TrunksDomainAttrAbstract" table="trunks_domain_attr_abstract">
+    <unique-constraints>
+      <unique-constraint name="domain_attrs_idx" columns="did,name"/>
+    </unique-constraints>
+    <field name="did" type="string" column="did" length="190" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="name" type="string" column="name" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="type" type="integer" column="type" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="value" type="string" column="value" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lastModified" type="datetime" column="last_modified" nullable="false">
+      <options>
+        <option name="default">1900-01-01 00:00:01</option>
+      </options>
+    </field>
+  </mapped-superclass>
+</doctrine-mapping>

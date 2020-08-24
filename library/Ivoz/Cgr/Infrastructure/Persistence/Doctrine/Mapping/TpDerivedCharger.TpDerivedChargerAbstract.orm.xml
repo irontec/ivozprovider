@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedChargerAbstract" table="tp_derived_charger_abstract">
+    <indexes>
+      <index name="tpDerivedCharge_tpid" columns="tpid"/>
+    </indexes>
+    <field name="tpid" type="string" column="tpid" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">ivozprovider</option>
+      </options>
+    </field>
+    <field name="loadid" type="string" column="loadid" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">DATABASE</option>
+      </options>
+    </field>
+    <field name="direction" type="string" column="direction" length="8" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*out</option>
+      </options>
+    </field>
+    <field name="tenant" type="string" column="tenant" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="category" type="string" column="category" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">call</option>
+      </options>
+    </field>
+    <field name="account" type="string" column="account" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*any</option>
+      </options>
+    </field>
+    <field name="subject" type="string" column="subject" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*any</option>
+      </options>
+    </field>
+    <field name="destinationIds" type="string" column="destination_ids" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*any</option>
+      </options>
+    </field>
+    <field name="runid" type="string" column="runid" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">carrier</option>
+      </options>
+    </field>
+    <field name="runFilters" type="string" column="run_filters" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="reqTypeField" type="string" column="req_type_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">^*postpaid</option>
+      </options>
+    </field>
+    <field name="directionField" type="string" column="direction_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*default</option>
+      </options>
+    </field>
+    <field name="tenantField" type="string" column="tenant_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*default</option>
+      </options>
+    </field>
+    <field name="categoryField" type="string" column="category_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*default</option>
+      </options>
+    </field>
+    <field name="accountField" type="string" column="account_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">carrierId</option>
+      </options>
+    </field>
+    <field name="subjectField" type="string" column="subject_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">carrierId</option>
+      </options>
+    </field>
+    <field name="destinationField" type="string" column="destination_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*default</option>
+      </options>
+    </field>
+    <field name="setupTimeField" type="string" column="setup_time_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*default</option>
+      </options>
+    </field>
+    <field name="pddField" type="string" column="pdd_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*default</option>
+      </options>
+    </field>
+    <field name="answerTimeField" type="string" column="answer_time_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*default</option>
+      </options>
+    </field>
+    <field name="usageField" type="string" column="usage_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*default</option>
+      </options>
+    </field>
+    <field name="supplierField" type="string" column="supplier_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*default</option>
+      </options>
+    </field>
+    <field name="disconnectCauseField" type="string" column="disconnect_cause_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*default</option>
+      </options>
+    </field>
+    <field name="ratedTimeField" type="string" column="rated_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*default</option>
+      </options>
+    </field>
+    <field name="costField" type="string" column="cost_field" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*default</option>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <one-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </one-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

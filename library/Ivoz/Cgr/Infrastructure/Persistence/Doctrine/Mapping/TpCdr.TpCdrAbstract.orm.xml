@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Cgr\Domain\Model\TpCdr\TpCdrAbstract" table="tp_cdr_abstract">
+    <indexes>
+      <index name="tpCdr_originId_idx" columns="origin_id"/>
+      <index name="tpCdr_answerTime_idx" columns="answer_time"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="tpCdrs_cdrrun" columns="cgrid,run_id,origin_id"/>
+    </unique-constraints>
+    <field name="cgrid" type="string" column="cgrid" length="40" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="runId" type="string" column="run_id" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="originHost" type="string" column="origin_host" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="source" type="string" column="source" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="originId" type="string" column="origin_id" length="128" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tor" type="string" column="tor" length="16" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="requestType" type="string" column="request_type" length="24" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tenant" type="string" column="tenant" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="category" type="string" column="category" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="account" type="string" column="account" length="128" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="subject" type="string" column="subject" length="128" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="destination" type="string" column="destination" length="128" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="setupTime" type="datetime" column="setup_time" nullable="false"/>
+    <field name="answerTime" type="datetime" column="answer_time" nullable="false"/>
+    <field name="usage" type="bigint" column="usage" length="20" nullable="false"/>
+    <field name="extraFields" type="text" column="extra_fields" nullable="false"/>
+    <field name="costSource" type="string" column="cost_source" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cost" type="decimal" column="cost" precision="20" scale="4" nullable="false"/>
+    <field name="costDetails" type="json_array" column="cost_details" nullable="false"/>
+    <field name="extraInfo" type="text" column="extra_info" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="true"/>
+    <field name="updatedAt" type="datetime" column="updated_at" nullable="true"/>
+    <field name="deletedAt" type="datetime" column="deleted_at" nullable="true"/>
+  </mapped-superclass>
+</doctrine-mapping>

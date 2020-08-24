@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleAbstract" table="tp_lcr_rule_abstract">
+    <indexes>
+      <index name="tpLcrRule_tpid" columns="tpid"/>
+    </indexes>
+    <field name="tpid" type="string" column="tpid" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">ivozprovider</option>
+      </options>
+    </field>
+    <field name="direction" type="string" column="direction" length="8" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*out</option>
+      </options>
+    </field>
+    <field name="tenant" type="string" column="tenant" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="category" type="string" column="category" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="account" type="string" column="account" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*any</option>
+      </options>
+    </field>
+    <field name="subject" type="string" column="subject" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*any</option>
+      </options>
+    </field>
+    <field name="destinationTag" type="string" column="destination_tag" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*any</option>
+      </options>
+    </field>
+    <field name="rpCategory" type="string" column="rp_category" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="strategy" type="string" column="strategy" length="18" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*lowest_cost</option>
+      </options>
+    </field>
+    <field name="strategyParams" type="string" column="strategy_params" length="256" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="activationTime" type="datetime" column="activation_time" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="weight" type="decimal" column="weight" precision="8" scale="2" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">10</option>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <one-to-one field="outgoingRouting" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface" inversed-by="tpLcrRule" fetch="LAZY">
+      <join-columns>
+        <join-column name="outgoingRoutingId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </one-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserAbstract" table="hunt_groups_rel_user_abstract">
+    <unique-constraints>
+      <unique-constraint name="userHuntgroup" columns="userId,huntGroupId"/>
+      <unique-constraint name="prioHuntgroup" columns="priority,huntGroupId"/>
+    </unique-constraints>
+    <field name="timeoutTime" type="smallint" column="timeoutTime" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="priority" type="smallint" column="priority" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="routeType" type="string" column="routeType" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:number|user]</option>
+      </options>
+    </field>
+    <field name="numberValue" type="string" column="numberValue" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="huntGroup" target-entity="Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup" inversed-by="huntGroupsRelUsers" fetch="LAZY">
+      <join-columns>
+        <join-column name="huntGroupId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+      <join-columns>
+        <join-column name="userId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+      <join-columns>
+        <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

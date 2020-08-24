@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceAbstract" table="fixed_costs_rel_invoice_abstract">
+    <field name="quantity" type="integer" column="quantity" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <many-to-one field="fixedCost" target-entity="Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="fixedCostId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="invoice" target-entity="Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface" inversed-by="relFixedCosts" fetch="LAZY">
+      <join-columns>
+        <join-column name="invoiceId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

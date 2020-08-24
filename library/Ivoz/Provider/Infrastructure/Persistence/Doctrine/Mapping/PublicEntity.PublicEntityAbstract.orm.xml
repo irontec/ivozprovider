@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityAbstract" table="public_entity_abstract">
+    <unique-constraints>
+      <unique-constraint name="iden" columns="iden"/>
+      <unique-constraint name="fqdn" columns="fqdn"/>
+    </unique-constraints>
+    <embedded name="name" class="Ivoz\Provider\Domain\Model\PublicEntity\Name" use-column-prefix="false" />
+    <field name="iden" type="string" column="iden" length="100" nullable="false"/>
+    <field name="fqdn" type="string" column="fqdn" length="200" nullable="true"/>
+    <field name="platform" type="boolean" column="platform" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="brand" type="boolean" column="brand" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="client" type="boolean" column="client" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+  </mapped-superclass>
+</doctrine-mapping>

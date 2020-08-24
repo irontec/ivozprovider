@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateAbstract" table="tp_destination_rate_abstract">
+    <indexes>
+      <index name="tpDestinationRate_tpid" columns="tpid"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="tpid_drid_dstid" columns="tpid,tag,destinations_tag"/>
+    </unique-constraints>
+    <field name="tpid" type="string" column="tpid" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">ivozprovider</option>
+      </options>
+    </field>
+    <field name="tag" type="string" column="tag" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="destinationsTag" type="string" column="destinations_tag" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ratesTag" type="string" column="rates_tag" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="roundingMethod" type="string" column="rounding_method" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">*up</option>
+        <option name="comment">[enum:*up|*upmincost]</option>
+      </options>
+    </field>
+    <field name="roundingDecimals" type="integer" column="rounding_decimals" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">4</option>
+      </options>
+    </field>
+    <field name="maxCost" type="decimal" column="max_cost" precision="10" scale="4" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="maxCostStrategy" type="string" column="max_cost_strategy" length="16" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <one-to-one field="destinationRate" target-entity="Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface" inversed-by="tpDestinationRate" fetch="LAZY">
+      <join-columns>
+        <join-column name="destinationRateId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </one-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

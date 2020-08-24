@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregAbstract" table="trunks_uacreg_abstract">
+    <unique-constraints>
+      <unique-constraint name="l_uuid_idx" columns="l_uuid"/>
+    </unique-constraints>
+    <field name="lUuid" type="string" column="l_uuid" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="lUsername" type="string" column="l_username" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">unused</option>
+      </options>
+    </field>
+    <field name="lDomain" type="string" column="l_domain" length="190" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">unused</option>
+      </options>
+    </field>
+    <field name="rUsername" type="string" column="r_username" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="rDomain" type="string" column="r_domain" length="190" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="realm" type="string" column="realm" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="authUsername" type="string" column="auth_username" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="authPassword" type="string" column="auth_password" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="authProxy" type="string" column="auth_proxy" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="expires" type="integer" column="expires" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="flags" type="integer" column="flags" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="regDelay" type="integer" column="reg_delay" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="authHa1" type="string" column="auth_ha1" length="128" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <one-to-one field="ddiProviderRegistration" target-entity="Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface" inversed-by="trunksUacreg" fetch="LAZY">
+      <join-columns>
+        <join-column name="ddiProviderRegistrationId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </one-to-one>
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

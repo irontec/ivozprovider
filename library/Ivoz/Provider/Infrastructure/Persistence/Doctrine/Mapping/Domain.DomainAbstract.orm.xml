@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\Domain\DomainAbstract" table="domain_abstract">
+    <unique-constraints>
+      <unique-constraint name="domain" columns="domain"/>
+    </unique-constraints>
+    <field name="domain" type="string" column="domain" length="190" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pointsTo" type="string" column="pointsTo" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">proxyusers</option>
+      </options>
+    </field>
+    <field name="description" type="string" column="description" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </mapped-superclass>
+</doctrine-mapping>

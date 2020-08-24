@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\Company\CompanyAbstract" table="company_abstract">
+    <unique-constraints>
+      <unique-constraint name="domain_unique" columns="domain_users"/>
+      <unique-constraint name="company_name_brand" columns="name,brandId"/>
+    </unique-constraints>
+    <field name="type" type="string" column="type" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:vpbx|retail|wholesale|residential]</option>
+        <option name="default">vpbx</option>
+      </options>
+    </field>
+    <field name="name" type="string" column="name" length="80" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="domainUsers" type="string" column="domain_users" length="190" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nif" type="string" column="nif" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="distributeMethod" type="string" column="distributeMethod" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:static|rr|hash]</option>
+        <option name="default">hash</option>
+      </options>
+    </field>
+    <field name="maxCalls" type="integer" column="maxCalls" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="maxDailyUsage" type="integer" column="maxDailyUsage" nullable="false">
+      <options>
+        <option name="unsigned">1</option>
+        <option name="default">1000000</option>
+      </options>
+    </field>
+    <field name="currentDayUsage" type="decimal" column="currentDayUsage" precision="10" scale="4" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="maxDailyUsageEmail" type="string" column="maxDailyUsageEmail" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="postalAddress" type="string" column="postalAddress" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="postalCode" type="string" column="postalCode" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="town" type="string" column="town" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="province" type="string" column="province" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="countryName" type="string" column="country" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ipfilter" type="boolean" column="ipFilter" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="onDemandRecord" type="smallint" column="onDemandRecord" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="allowRecordingRemoval" type="boolean" column="allowRecordingRemoval" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="onDemandRecordCode" type="string" column="onDemandRecordCode" length="3" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="externallyextraopts" type="text" column="externallyExtraOpts" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="recordingsLimitMB" type="integer" column="recordingsLimitMB" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="recordingsLimitEmail" type="string" column="recordingsLimitEmail" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="billingMethod" type="string" column="billingMethod" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:postpaid|prepaid|pseudoprepaid]</option>
+        <option name="default">postpaid</option>
+      </options>
+    </field>
+    <field name="balance" type="decimal" column="balance" precision="10" scale="4" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="showInvoices" type="boolean" column="showInvoices" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="language" target-entity="Ivoz\Provider\Domain\Model\Language\LanguageInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="mediaRelaySets" target-entity="Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="mediaRelaySetsId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="defaultTimezone" target-entity="Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="defaultTimezoneId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" inversed-by="companies" fetch="LAZY">
+      <join-columns>
+        <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="domain" target-entity="Ivoz\Provider\Domain\Model\Domain\DomainInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="applicationServer" target-entity="Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="applicationServerId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="country" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="countryId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="currency" target-entity="Ivoz\Provider\Domain\Model\Currency\CurrencyInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="currencyId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="transformationRuleSet" target-entity="Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="transformationRuleSetId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="outgoingDdi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="outgoingDdiId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="outgoingDdiRule" target-entity="Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="outgoingDdiRuleId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="voicemailNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="vmNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="faxNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="faxNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="invoiceNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="invoiceNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="callCsvNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="callCsvNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="maxDailyUsageNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="maxDailyUsageNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>
