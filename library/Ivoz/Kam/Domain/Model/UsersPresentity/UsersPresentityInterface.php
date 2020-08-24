@@ -11,61 +11,66 @@ interface UsersPresentityInterface extends EntityInterface
      *
      * @return string
      */
-    public function getUsername();
+    public function getUsername(): string;
 
     /**
      * Get domain
      *
      * @return string
      */
-    public function getDomain();
+    public function getDomain(): string;
 
     /**
      * Get event
      *
      * @return string
      */
-    public function getEvent();
+    public function getEvent(): string;
 
     /**
      * Get etag
      *
      * @return string
      */
-    public function getEtag();
+    public function getEtag(): string;
 
     /**
      * Get expires
      *
      * @return integer
      */
-    public function getExpires();
+    public function getExpires(): int;
 
     /**
      * Get receivedTime
      *
      * @return integer
      */
-    public function getReceivedTime();
+    public function getReceivedTime(): int;
 
     /**
      * Get body
      *
      * @return string
      */
-    public function getBody();
+    public function getBody(): string;
 
     /**
      * Get sender
      *
      * @return string
      */
-    public function getSender();
+    public function getSender(): string;
 
     /**
      * Get priority
      *
      * @return integer
      */
-    public function getPriority();
+    public function getPriority(): int;
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

@@ -57,7 +57,7 @@ class UpdateByCompanySpec extends ObjectBehavior
         $this
             ->entity
             ->getType()
-            ->willReturn(null);
+            ->willReturn(CompanyInterface::TYPE_RETAIL);
 
         $this
             ->entity

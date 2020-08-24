@@ -20,6 +20,11 @@ abstract class DestinationRateGroupAbstract
     protected $status;
 
     /**
+     * @var string | null
+     */
+    protected $lastExecutionError;
+
+    /**
      * @var boolean
      */
     protected $deductibleConnectionFee = false;
@@ -165,6 +170,7 @@ abstract class DestinationRateGroupAbstract
 
         $self
             ->setStatus($dto->getStatus())
+            ->setLastExecutionError($dto->getLastExecutionError())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
         ;
@@ -208,6 +214,7 @@ abstract class DestinationRateGroupAbstract
 
         $this
             ->setStatus($dto->getStatus())
+            ->setLastExecutionError($dto->getLastExecutionError())
             ->setDeductibleConnectionFee($dto->getDeductibleConnectionFee())
             ->setName($name)
             ->setDescription($description)
@@ -229,6 +236,7 @@ abstract class DestinationRateGroupAbstract
     {
         return self::createDto()
             ->setStatus(self::getStatus())
+            ->setLastExecutionError(self::getLastExecutionError())
             ->setDeductibleConnectionFee(self::getDeductibleConnectionFee())
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
@@ -253,6 +261,7 @@ abstract class DestinationRateGroupAbstract
     {
         return [
             'status' => self::getStatus(),
+            'lastExecutionError' => self::getLastExecutionError(),
             'deductibleConnectionFee' => self::getDeductibleConnectionFee(),
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
@@ -307,6 +316,34 @@ abstract class DestinationRateGroupAbstract
     }
 
     /**
+     * Set lastExecutionError
+     *
+     * @param string $lastExecutionError | null
+     *
+     * @return static
+     */
+    protected function setLastExecutionError($lastExecutionError = null)
+    {
+        if (!is_null($lastExecutionError)) {
+            Assertion::maxLength($lastExecutionError, 300, 'lastExecutionError value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->lastExecutionError = $lastExecutionError;
+
+        return $this;
+    }
+
+    /**
+     * Get lastExecutionError
+     *
+     * @return string | null
+     */
+    public function getLastExecutionError()
+    {
+        return $this->lastExecutionError;
+    }
+
+    /**
      * Set deductibleConnectionFee
      *
      * @param boolean $deductibleConnectionFee
@@ -329,7 +366,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @return boolean
      */
-    public function getDeductibleConnectionFee()
+    public function getDeductibleConnectionFee(): bool
     {
         return $this->deductibleConnectionFee;
     }

@@ -21,33 +21,13 @@ Feature: Update ddi
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "ddi": "128",
           "id": 1,
-          "company": "~",
-          "ddiProvider": {
-              "description": "DDIProviderDescription",
-              "name": "DDIProviderName",
-              "externallyRated": false,
-              "id": 1,
-              "transformationRuleSet": 1
-          },
-          "country": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España",
-                  "ca": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
-          }
+          "company": 1,
+          "ddiProvider": 1,
+          "country": 68
       }
     """

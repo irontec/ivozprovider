@@ -23,9 +23,9 @@ production:
         options:
           title: _("Options")
           screens:
-            locutionsEdit_screen: ${auth.acls.Locutions.update}
+            locutionsEdit_screen: $[${auth.acls.Locutions.update} && ${auth.companyVPBX}]
           dialogs:
-            locutionsDel_dialog: ${auth.acls.Locutions.delete}
+            locutionsDel_dialog: $[${auth.acls.Locutions.delete} && ${auth.companyVPBX}]
           default: locutionsEdit_screen
         order: &locutions_orderLink
           company: true
@@ -37,9 +37,9 @@ production:
       options:
         title: _("Options")
         screens:
-          locutionsNew_screen: ${auth.acls.Locutions.create}
+          locutionsNew_screen: $[${auth.acls.Locutions.create} && ${auth.companyVPBX}]
         dialogs:
-          locutionsDel_dialog: ${auth.acls.Locutions.delete}
+          locutionsDel_dialog: $[${auth.acls.Locutions.delete} && ${auth.companyVPBX}]
     locutionsNew_screen: &locutionsNew_screenLink
       <<: *Locutions
       controller: new

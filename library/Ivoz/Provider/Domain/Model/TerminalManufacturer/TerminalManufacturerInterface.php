@@ -17,19 +17,24 @@ interface TerminalManufacturerInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getIden();
+    public function getIden(): string;
 
     /**
      * Get name
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get description
      *
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): string;
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

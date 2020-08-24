@@ -125,4 +125,17 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
             );
         }
     }
+
+    protected function setLastExecutionError($lastExecutionError = null)
+    {
+        if (!is_null($lastExecutionError)) {
+            $lastExecutionError = substr(
+                $lastExecutionError,
+                0,
+                300
+            );
+        }
+
+        return parent::setLastExecutionError($lastExecutionError);
+    }
 }

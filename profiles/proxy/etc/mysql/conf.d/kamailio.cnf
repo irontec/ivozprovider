@@ -1,0 +1,5 @@
+[kamailio]
+host = data.ivozprovider.local
+user = kamailio
+password = ironsecret
+default-character-set = utf8

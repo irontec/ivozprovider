@@ -2,8 +2,8 @@
 
 namespace Services;
 
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReassembleTriggerService;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\EnableAccountService;
+use Ivoz\Cgr\Infrastructure\Cgrates\Service\EnableAccountService;
+use Ivoz\Cgr\Infrastructure\Cgrates\Service\ReassembleTriggerService;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandRepository;
 

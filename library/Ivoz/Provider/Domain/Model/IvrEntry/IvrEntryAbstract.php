@@ -246,7 +246,7 @@ abstract class IvrEntryAbstract
      *
      * @return string
      */
-    public function getEntry()
+    public function getEntry(): string
     {
         return $this->entry;
     }
@@ -279,7 +279,7 @@ abstract class IvrEntryAbstract
      *
      * @return string
      */
-    public function getRouteType()
+    public function getRouteType(): string
     {
         return $this->routeType;
     }

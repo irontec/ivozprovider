@@ -35,7 +35,7 @@ interface CalendarInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get company
@@ -43,6 +43,11 @@ interface CalendarInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add holidayDate

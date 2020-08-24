@@ -35,21 +35,21 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getSubject();
+    public function getSubject(): string;
 
     /**
      * Get body
      *
      * @return string
      */
-    public function getBody();
+    public function getBody(): string;
 
     /**
      * Get bodyType
      *
      * @return string
      */
-    public function getBodyType();
+    public function getBodyType(): string;
 
     /**
      * Set notificationTemplate
@@ -73,4 +73,9 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
      */
     public function getLanguage();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

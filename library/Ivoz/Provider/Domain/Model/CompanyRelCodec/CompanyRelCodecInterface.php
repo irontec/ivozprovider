@@ -34,4 +34,9 @@ interface CompanyRelCodecInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Codec\CodecInterface
      */
     public function getCodec();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

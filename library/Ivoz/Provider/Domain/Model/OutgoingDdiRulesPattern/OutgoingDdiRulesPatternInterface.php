@@ -31,7 +31,7 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getType();
+    public function getType(): string;
 
     /**
      * Get prefix
@@ -45,14 +45,14 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getAction();
+    public function getAction(): string;
 
     /**
      * Get priority
      *
      * @return integer
      */
-    public function getPriority();
+    public function getPriority(): int;
 
     /**
      * Set outgoingDdiRule
@@ -76,4 +76,9 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface | null
      */
     public function getMatchList();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

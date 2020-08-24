@@ -232,7 +232,7 @@ abstract class TpRatingPlanAbstract
      *
      * @return string
      */
-    public function getTpid()
+    public function getTpid(): string
     {
         return $this->tpid;
     }
@@ -315,7 +315,7 @@ abstract class TpRatingPlanAbstract
      *
      * @return string
      */
-    public function getTimingTag()
+    public function getTimingTag(): string
     {
         return $this->timingTag;
     }
@@ -342,7 +342,7 @@ abstract class TpRatingPlanAbstract
      *
      * @return float
      */
-    public function getWeight()
+    public function getWeight(): float
     {
         return $this->weight;
     }
@@ -376,7 +376,7 @@ abstract class TpRatingPlanAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

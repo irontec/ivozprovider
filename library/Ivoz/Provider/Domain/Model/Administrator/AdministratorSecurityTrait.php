@@ -15,22 +15,22 @@ trait AdministratorSecurityTrait
     /**
      * @return string
      */
-    abstract public function getUsername();
+    abstract public function getUsername(): string;
 
     /**
      * @return string
      */
-    abstract public function getEmail();
+    abstract public function getEmail(): string;
 
     /**
      * @return string
      */
-    abstract public function getPass();
+    abstract public function getPass(): string;
 
     /**
      * @return boolean
      */
-    abstract public function getActive();
+    abstract public function getActive(): bool;
 
     /**
      * @return BrandInterface | null
@@ -45,12 +45,12 @@ trait AdministratorSecurityTrait
     /**
      * @return boolean
      */
-    abstract public function getRestricted();
+    abstract public function getRestricted(): bool;
 
     /**
      * @see AdvancedUserInterface::getRoles()
      */
-    public function getRoles()
+    public function getRoles(): array
     {
         $brand = $this->getBrand();
         $company = $this->getCompany();
@@ -131,7 +131,7 @@ trait AdministratorSecurityTrait
     /**
      * @see AdvancedUserInterface::getPassword()
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->getPass();
     }
@@ -139,7 +139,7 @@ trait AdministratorSecurityTrait
     /**
      * @see AdvancedUserInterface::isAccountNonExpired()
      */
-    public function isAccountNonExpired()
+    public function isAccountNonExpired(): bool
     {
         return true;
     }
@@ -147,7 +147,7 @@ trait AdministratorSecurityTrait
     /**
      * @see AdvancedUserInterface::isAccountNonLocked()
      */
-    public function isAccountNonLocked()
+    public function isAccountNonLocked(): bool
     {
         return true;
     }
@@ -155,7 +155,7 @@ trait AdministratorSecurityTrait
     /**
      * @see AdvancedUserInterface::isCredentialsNonExpired()
      */
-    public function isCredentialsNonExpired()
+    public function isCredentialsNonExpired(): bool
     {
         return true;
     }
@@ -163,7 +163,7 @@ trait AdministratorSecurityTrait
     /**
      * @see AdvancedUserInterface::isEnabled()
      */
-    public function isEnabled()
+    public function isEnabled(): bool
     {
         $isInnerGlobalAdmin = ($this->getId() === 0);
         if ($isInnerGlobalAdmin) {
@@ -176,7 +176,7 @@ trait AdministratorSecurityTrait
     /**
      * @see AdvancedUserInterface::getSalt()
      */
-    public function getSalt()
+    public function getSalt(): string
     {
         return substr($this->getPassword(), 0, 29);
     }

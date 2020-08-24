@@ -291,7 +291,7 @@ abstract class HuntGroupAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -318,7 +318,7 @@ abstract class HuntGroupAbstract
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -351,7 +351,7 @@ abstract class HuntGroupAbstract
      *
      * @return string
      */
-    public function getStrategy()
+    public function getStrategy(): string
     {
         return $this->strategy;
     }
@@ -469,7 +469,7 @@ abstract class HuntGroupAbstract
      *
      * @return integer
      */
-    public function getPreventMissedCalls()
+    public function getPreventMissedCalls(): int
     {
         return $this->preventMissedCalls;
     }
@@ -497,7 +497,7 @@ abstract class HuntGroupAbstract
      *
      * @return integer
      */
-    public function getAllowCallForwards()
+    public function getAllowCallForwards(): int
     {
         return $this->allowCallForwards;
     }

@@ -4,7 +4,7 @@ Feature: Update friends
   I need to be able to update them through the API.
 
   @createSchema
-  Scenario: Update an friends
+  Scenario: Update a friend
     Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
@@ -14,9 +14,8 @@ Feature: Update friends
           "name": "updatedTestFriend",
           "description": "",
           "transport": "udp",
-          "ip": "",
+          "ip": "1.2.3.4",
           "port": 5061,
-          "authNeeded": "yes",
           "password": "ZEF7t5n+b4",
           "priority": 1,
           "disallow": "all",
@@ -41,9 +40,8 @@ Feature: Update friends
           "name": "updatedTestFriend",
           "description": "",
           "transport": "udp",
-          "ip": "",
+          "ip": "1.2.3.4",
           "port": 5061,
-          "authNeeded": "yes",
           "password": "ZEF7t5n+b4",
           "priority": 1,
           "allow": "alaw",

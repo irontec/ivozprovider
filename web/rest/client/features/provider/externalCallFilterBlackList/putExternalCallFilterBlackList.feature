@@ -22,26 +22,7 @@ Feature: Update external call filter black lists
     """
       {
           "id": 1,
-          "filter": {
-              "name": "testFilter",
-              "holidayTargetType": null,
-              "holidayNumberValue": null,
-              "outOfScheduleTargetType": null,
-              "outOfScheduleNumberValue": null,
-              "id": 1,
-              "welcomeLocution": null,
-              "holidayLocution": null,
-              "outOfScheduleLocution": null,
-              "holidayExtension": null,
-              "outOfScheduleExtension": null,
-              "holidayVoiceMailUser": null,
-              "outOfScheduleVoiceMailUser": null,
-              "holidayNumberCountry": null,
-              "outOfScheduleNumberCountry": null
-          },
-          "matchlist": {
-              "name": "testMatchlist2",
-              "id": 2
-          }
+          "filter": 1,
+          "matchlist": 2
       }
     """

@@ -13,7 +13,7 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getTpid();
+    public function getTpid(): string;
 
     /**
      * Get tag
@@ -34,21 +34,21 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getTimingTag();
+    public function getTimingTag(): string;
 
     /**
      * Get weight
      *
      * @return float
      */
-    public function getWeight();
+    public function getWeight(): float;
 
     /**
      * Get createdAt
      *
      * @return \DateTime
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): \DateTime;
 
     /**
      * Set ratingPlan
@@ -65,4 +65,9 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
      */
     public function getRatingPlan();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

@@ -11,33 +11,38 @@ interface TrunksDomainAttrInterface extends EntityInterface
      *
      * @return string
      */
-    public function getDid();
+    public function getDid(): string;
 
     /**
      * Get name
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get type
      *
      * @return integer
      */
-    public function getType();
+    public function getType(): int;
 
     /**
      * Get value
      *
      * @return string
      */
-    public function getValue();
+    public function getValue(): string;
 
     /**
      * Get lastModified
      *
      * @return \DateTime
      */
-    public function getLastModified();
+    public function getLastModified(): \DateTime;
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

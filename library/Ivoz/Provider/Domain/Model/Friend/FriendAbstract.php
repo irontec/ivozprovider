@@ -40,12 +40,6 @@ abstract class FriendAbstract
     protected $port;
 
     /**
-     * column: auth_needed
-     * @var string
-     */
-    protected $authNeeded = 'yes';
-
-    /**
      * @var string | null
      */
     protected $password;
@@ -111,6 +105,11 @@ abstract class FriendAbstract
     protected $t38Passthrough = 'no';
 
     /**
+     * @var boolean
+     */
+    protected $alwaysApplyTransformations = false;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -154,7 +153,6 @@ abstract class FriendAbstract
     protected function __construct(
         $name,
         $description,
-        $authNeeded,
         $priority,
         $disallow,
         $allow,
@@ -163,11 +161,11 @@ abstract class FriendAbstract
         $updateCallerid,
         $directConnectivity,
         $ddiIn,
-        $t38Passthrough
+        $t38Passthrough,
+        $alwaysApplyTransformations
     ) {
         $this->setName($name);
         $this->setDescription($description);
-        $this->setAuthNeeded($authNeeded);
         $this->setPriority($priority);
         $this->setDisallow($disallow);
         $this->setAllow($allow);
@@ -177,6 +175,7 @@ abstract class FriendAbstract
         $this->setDirectConnectivity($directConnectivity);
         $this->setDdiIn($ddiIn);
         $this->setT38Passthrough($t38Passthrough);
+        $this->setAlwaysApplyTransformations($alwaysApplyTransformations);
     }
 
     abstract public function getId();
@@ -250,7 +249,6 @@ abstract class FriendAbstract
         $self = new static(
             $dto->getName(),
             $dto->getDescription(),
-            $dto->getAuthNeeded(),
             $dto->getPriority(),
             $dto->getDisallow(),
             $dto->getAllow(),
@@ -259,7 +257,8 @@ abstract class FriendAbstract
             $dto->getUpdateCallerid(),
             $dto->getDirectConnectivity(),
             $dto->getDdiIn(),
-            $dto->getT38Passthrough()
+            $dto->getT38Passthrough(),
+            $dto->getAlwaysApplyTransformations()
         );
 
         $self
@@ -299,7 +298,6 @@ abstract class FriendAbstract
             ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
-            ->setAuthNeeded($dto->getAuthNeeded())
             ->setPassword($dto->getPassword())
             ->setPriority($dto->getPriority())
             ->setDisallow($dto->getDisallow())
@@ -311,6 +309,7 @@ abstract class FriendAbstract
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setDdiIn($dto->getDdiIn())
             ->setT38Passthrough($dto->getT38Passthrough())
+            ->setAlwaysApplyTransformations($dto->getAlwaysApplyTransformations())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
@@ -337,7 +336,6 @@ abstract class FriendAbstract
             ->setTransport(self::getTransport())
             ->setIp(self::getIp())
             ->setPort(self::getPort())
-            ->setAuthNeeded(self::getAuthNeeded())
             ->setPassword(self::getPassword())
             ->setPriority(self::getPriority())
             ->setDisallow(self::getDisallow())
@@ -349,6 +347,7 @@ abstract class FriendAbstract
             ->setDirectConnectivity(self::getDirectConnectivity())
             ->setDdiIn(self::getDdiIn())
             ->setT38Passthrough(self::getT38Passthrough())
+            ->setAlwaysApplyTransformations(self::getAlwaysApplyTransformations())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
@@ -369,7 +368,6 @@ abstract class FriendAbstract
             'transport' => self::getTransport(),
             'ip' => self::getIp(),
             'port' => self::getPort(),
-            'auth_needed' => self::getAuthNeeded(),
             'password' => self::getPassword(),
             'priority' => self::getPriority(),
             'disallow' => self::getDisallow(),
@@ -381,6 +379,7 @@ abstract class FriendAbstract
             'directConnectivity' => self::getDirectConnectivity(),
             'ddiIn' => self::getDdiIn(),
             't38Passthrough' => self::getT38Passthrough(),
+            'alwaysApplyTransformations' => self::getAlwaysApplyTransformations(),
             'companyId' => self::getCompany()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
@@ -414,7 +413,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -441,7 +440,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -538,32 +537,6 @@ abstract class FriendAbstract
     }
 
     /**
-     * Set authNeeded
-     *
-     * @param string $authNeeded
-     *
-     * @return static
-     */
-    protected function setAuthNeeded($authNeeded)
-    {
-        Assertion::notNull($authNeeded, 'authNeeded value "%s" is null, but non null value was expected.');
-
-        $this->authNeeded = $authNeeded;
-
-        return $this;
-    }
-
-    /**
-     * Get authNeeded
-     *
-     * @return string
-     */
-    public function getAuthNeeded()
-    {
-        return $this->authNeeded;
-    }
-
-    /**
      * Set password
      *
      * @param string $password | null
@@ -613,7 +586,7 @@ abstract class FriendAbstract
      *
      * @return integer
      */
-    public function getPriority()
+    public function getPriority(): int
     {
         return $this->priority;
     }
@@ -640,7 +613,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getDisallow()
+    public function getDisallow(): string
     {
         return $this->disallow;
     }
@@ -667,7 +640,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getAllow()
+    public function getAllow(): string
     {
         return $this->allow;
     }
@@ -697,7 +670,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getDirectMediaMethod()
+    public function getDirectMediaMethod(): string
     {
         return $this->directMediaMethod;
     }
@@ -727,7 +700,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getCalleridUpdateHeader()
+    public function getCalleridUpdateHeader(): string
     {
         return $this->calleridUpdateHeader;
     }
@@ -757,7 +730,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getUpdateCallerid()
+    public function getUpdateCallerid(): string
     {
         return $this->updateCallerid;
     }
@@ -817,7 +790,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getDirectConnectivity()
+    public function getDirectConnectivity(): string
     {
         return $this->directConnectivity;
     }
@@ -847,7 +820,7 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getDdiIn()
+    public function getDdiIn(): string
     {
         return $this->ddiIn;
     }
@@ -877,9 +850,37 @@ abstract class FriendAbstract
      *
      * @return string
      */
-    public function getT38Passthrough()
+    public function getT38Passthrough(): string
     {
         return $this->t38Passthrough;
+    }
+
+    /**
+     * Set alwaysApplyTransformations
+     *
+     * @param boolean $alwaysApplyTransformations
+     *
+     * @return static
+     */
+    protected function setAlwaysApplyTransformations($alwaysApplyTransformations)
+    {
+        Assertion::notNull($alwaysApplyTransformations, 'alwaysApplyTransformations value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($alwaysApplyTransformations), 0, 1, 'alwaysApplyTransformations provided "%s" is not a valid boolean value.');
+        $alwaysApplyTransformations = (bool) $alwaysApplyTransformations;
+
+        $this->alwaysApplyTransformations = $alwaysApplyTransformations;
+
+        return $this;
+    }
+
+    /**
+     * Get alwaysApplyTransformations
+     *
+     * @return boolean
+     */
+    public function getAlwaysApplyTransformations(): bool
+    {
+        return $this->alwaysApplyTransformations;
     }
 
     /**

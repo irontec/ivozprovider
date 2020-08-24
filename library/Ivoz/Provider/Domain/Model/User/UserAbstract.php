@@ -411,7 +411,7 @@ abstract class UserAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -438,7 +438,7 @@ abstract class UserAbstract
      *
      * @return string
      */
-    public function getLastname()
+    public function getLastname(): string
     {
         return $this->lastname;
     }
@@ -522,7 +522,7 @@ abstract class UserAbstract
      *
      * @return boolean
      */
-    public function getDoNotDisturb()
+    public function getDoNotDisturb(): bool
     {
         return $this->doNotDisturb;
     }
@@ -550,7 +550,7 @@ abstract class UserAbstract
      *
      * @return boolean
      */
-    public function getIsBoss()
+    public function getIsBoss(): bool
     {
         return $this->isBoss;
     }
@@ -578,7 +578,7 @@ abstract class UserAbstract
      *
      * @return boolean
      */
-    public function getActive()
+    public function getActive(): bool
     {
         return $this->active;
     }
@@ -606,7 +606,7 @@ abstract class UserAbstract
      *
      * @return integer
      */
-    public function getMaxCalls()
+    public function getMaxCalls(): int
     {
         return $this->maxCalls;
     }
@@ -639,7 +639,7 @@ abstract class UserAbstract
      *
      * @return string
      */
-    public function getExternalIpCalls()
+    public function getExternalIpCalls(): string
     {
         return $this->externalIpCalls;
     }
@@ -667,7 +667,7 @@ abstract class UserAbstract
      *
      * @return boolean
      */
-    public function getVoicemailEnabled()
+    public function getVoicemailEnabled(): bool
     {
         return $this->voicemailEnabled;
     }
@@ -695,7 +695,7 @@ abstract class UserAbstract
      *
      * @return boolean
      */
-    public function getVoicemailSendMail()
+    public function getVoicemailSendMail(): bool
     {
         return $this->voicemailSendMail;
     }
@@ -723,7 +723,7 @@ abstract class UserAbstract
      *
      * @return boolean
      */
-    public function getVoicemailAttachSound()
+    public function getVoicemailAttachSound(): bool
     {
         return $this->voicemailAttachSound;
     }
@@ -751,7 +751,7 @@ abstract class UserAbstract
      *
      * @return boolean
      */
-    public function getGsQRCode()
+    public function getGsQRCode(): bool
     {
         return $this->gsQRCode;
     }

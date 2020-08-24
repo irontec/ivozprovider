@@ -47,12 +47,17 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * @return bool
      */
-    public function isInterPbxConnectivity();
+    public function isInterPbxConnectivity(): bool;
 
     /**
      * @return bool
      */
-    public function isDirectConnectivity();
+    public function isDirectConnectivity(): bool;
+
+    /**
+     * @return bool
+     */
+    public function isRegisterConnectivity(): bool;
 
     /**
      * @param string $number
@@ -123,14 +128,14 @@ interface FriendInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get description
      *
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): string;
 
     /**
      * Get transport
@@ -154,13 +159,6 @@ interface FriendInterface extends LoggableEntityInterface
     public function getPort();
 
     /**
-     * Get authNeeded
-     *
-     * @return string
-     */
-    public function getAuthNeeded();
-
-    /**
      * Get password
      *
      * @return string | null
@@ -172,42 +170,42 @@ interface FriendInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getPriority();
+    public function getPriority(): int;
 
     /**
      * Get disallow
      *
      * @return string
      */
-    public function getDisallow();
+    public function getDisallow(): string;
 
     /**
      * Get allow
      *
      * @return string
      */
-    public function getAllow();
+    public function getAllow(): string;
 
     /**
      * Get directMediaMethod
      *
      * @return string
      */
-    public function getDirectMediaMethod();
+    public function getDirectMediaMethod(): string;
 
     /**
      * Get calleridUpdateHeader
      *
      * @return string
      */
-    public function getCalleridUpdateHeader();
+    public function getCalleridUpdateHeader(): string;
 
     /**
      * Get updateCallerid
      *
      * @return string
      */
-    public function getUpdateCallerid();
+    public function getUpdateCallerid(): string;
 
     /**
      * Get fromDomain
@@ -221,21 +219,28 @@ interface FriendInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getDirectConnectivity();
+    public function getDirectConnectivity(): string;
 
     /**
      * Get ddiIn
      *
      * @return string
      */
-    public function getDdiIn();
+    public function getDdiIn(): string;
 
     /**
      * Get t38Passthrough
      *
      * @return string
      */
-    public function getT38Passthrough();
+    public function getT38Passthrough(): string;
+
+    /**
+     * Get alwaysApplyTransformations
+     *
+     * @return boolean
+     */
+    public function getAlwaysApplyTransformations(): bool;
 
     /**
      * Set company
@@ -296,6 +301,11 @@ interface FriendInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getInterCompany();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add psEndpoint

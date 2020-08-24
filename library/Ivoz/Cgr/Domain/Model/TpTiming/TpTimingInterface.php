@@ -11,7 +11,7 @@ interface TpTimingInterface extends EntityInterface
      *
      * @return string
      */
-    public function getTpid();
+    public function getTpid(): string;
 
     /**
      * Get tag
@@ -25,42 +25,42 @@ interface TpTimingInterface extends EntityInterface
      *
      * @return string
      */
-    public function getYears();
+    public function getYears(): string;
 
     /**
      * Get months
      *
      * @return string
      */
-    public function getMonths();
+    public function getMonths(): string;
 
     /**
      * Get monthDays
      *
      * @return string
      */
-    public function getMonthDays();
+    public function getMonthDays(): string;
 
     /**
      * Get weekDays
      *
      * @return string
      */
-    public function getWeekDays();
+    public function getWeekDays(): string;
 
     /**
      * Get time
      *
      * @return string
      */
-    public function getTime();
+    public function getTime(): string;
 
     /**
      * Get createdAt
      *
      * @return \DateTime
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): \DateTime;
 
     /**
      * Set ratingPlan
@@ -77,4 +77,9 @@ interface TpTimingInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
      */
     public function getRatingPlan();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

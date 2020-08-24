@@ -24,7 +24,7 @@ interface FaxInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get email
@@ -38,7 +38,7 @@ interface FaxInterface extends LoggableEntityInterface
      *
      * @return boolean
      */
-    public function getSendByEmail();
+    public function getSendByEmail(): bool;
 
     /**
      * Get company
@@ -46,4 +46,9 @@ interface FaxInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

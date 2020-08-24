@@ -241,7 +241,7 @@ abstract class CountryAbstract
      *
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }

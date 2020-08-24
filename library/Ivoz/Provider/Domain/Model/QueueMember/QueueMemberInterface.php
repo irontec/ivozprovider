@@ -41,4 +41,9 @@ interface QueueMemberInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getUser();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

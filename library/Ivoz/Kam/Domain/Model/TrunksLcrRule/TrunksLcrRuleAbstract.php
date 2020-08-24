@@ -260,7 +260,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @return integer
      */
-    public function getLcrId()
+    public function getLcrId(): int
     {
         return $this->lcrId;
     }
@@ -400,7 +400,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @return integer
      */
-    public function getStopper()
+    public function getStopper(): int
     {
         return $this->stopper;
     }
@@ -428,7 +428,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @return integer
      */
-    public function getEnabled()
+    public function getEnabled(): int
     {
         return $this->enabled;
     }

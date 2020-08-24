@@ -22,19 +22,21 @@ production:
       required: true
       default: true
     outOfScheduleTargetType:
-      title: _('Out of schedule target type')
+      title: _('Unconditional Call Forward')
       type: select
       source:
         data: inline
         values:
           '__null__':
-            title: _('Unassigned')
+            title: _('Disabled')
+            visualFilter:
+              show: []
+              hide: [ outOfScheduleNumberValue, outOfScheduleNumberCountry ]
           'number':
-            title: _('Number')
-          'extension':
-            title: ngettext('Extension', 'Extensions', 1)
-          'voicemail':
-            title: ngettext('Voicemail', 'Voicemails', 1)
+            title: _('Enabled')
+            visualFilter:
+              show: [ outOfScheduleNumberValue, outOfScheduleNumberCountry ]
+              hide: []
     outOfScheduleNumberCountry:
       title: ngettext('Country', 'Countries', 1)
       type: select
@@ -51,10 +53,26 @@ production:
           order:
             Country.name.${lang}: asc
     outOfScheduleNumberValue:
-      title: _('External Filter destination')
+      title: _('Number')
       type: text
       trim: both
       required: true
+    blackLists:
+      title: _('Black Lists')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relation: \Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList
+          relationProperty: filter
+          relatedProperty: matchlist
+          related: \Ivoz\Provider\Domain\Model\MatchList\MatchList
+          relatedFieldName: name
+          filterClass: IvozProvider_Klear_Filter_Company
+      info:
+        type: box
+        text: _("Incoming numbers that match this lists will be always REJECTED without checking this filter configuration.")
+        label: _("Need help?")
 staging:
   _extends: production
 testing:

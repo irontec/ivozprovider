@@ -4,6 +4,7 @@ use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use \Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Feature\FeatureDto;
 
 /**
@@ -82,18 +83,18 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
         }
 
         switch ($companyDto->getType()) {
-            case Company::VPBX:
+            case CompanyInterface::TYPE_VPBX:
                 $excludedRoutes[] = 'residential';
                 $excludedRoutes[] = 'retail';
                 break;
-            case Company::RETAIL:
+            case CompanyInterface::TYPE_RETAIL:
                 $excludedRoutes[] = 'user';
                 $excludedRoutes[] = 'ivr';
                 $excludedRoutes[] = 'huntGroup';
                 $excludedRoutes[] = 'conditional';
                 $excludedRoutes[] = 'residential';
                 break;
-            case Company::RESIDENTIAL:
+            case CompanyInterface::TYPE_RESIDENTIAL:
                 $excludedRoutes[] = 'user';
                 $excludedRoutes[] = 'ivr';
                 $excludedRoutes[] = 'huntGroup';

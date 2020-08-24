@@ -43,7 +43,7 @@ Feature: Update users
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "name": "Updated",
@@ -63,47 +63,11 @@ Feature: Update users
           "callAcl": null,
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
-          "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
-              "internationalCode": "00",
-              "trunkPrefix": "",
-              "areaCode": "",
-              "nationalLen": 9,
-              "generateRules": false,
-              "id": 1,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
-              },
-              "country": 68
-          },
+          "transformationRuleSet": 1,
           "language": null,
-          "terminal": {
-              "name": "alice",
-              "disallow": "all",
-              "allowAudio": "alaw",
-              "allowVideo": null,
-              "directMediaMethod": "invite",
-              "password": "AUfVkn498_",
-              "mac": "",
-              "lastProvisionDate": null,
-              "t38Passthrough": "no",
-              "id": 1,
-              "terminalModel": 1
-          },
+          "terminal": 1,
           "extension": null,
-          "timezone": {
-              "tz": "Europe/Madrid",
-              "comment": "mainland",
-              "id": 145,
-              "label": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
-              },
-              "country": 68
-          },
+          "timezone": 145,
           "outgoingDdi": null,
           "outgoingDdiRule": null,
           "voicemailLocution": null,

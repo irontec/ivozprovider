@@ -209,7 +209,7 @@ abstract class CurrencyAbstract
      *
      * @return string
      */
-    public function getIden()
+    public function getIden(): string
     {
         return $this->iden;
     }
@@ -236,7 +236,7 @@ abstract class CurrencyAbstract
      *
      * @return string
      */
-    public function getSymbol()
+    public function getSymbol(): string
     {
         return $this->symbol;
     }

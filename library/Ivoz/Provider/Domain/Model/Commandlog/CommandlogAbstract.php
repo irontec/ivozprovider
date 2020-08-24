@@ -232,7 +232,7 @@ abstract class CommandlogAbstract
      *
      * @return string
      */
-    public function getRequestId()
+    public function getRequestId(): string
     {
         return $this->requestId;
     }
@@ -259,7 +259,7 @@ abstract class CommandlogAbstract
      *
      * @return string
      */
-    public function getClass()
+    public function getClass(): string
     {
         return $this->class;
     }
@@ -369,7 +369,7 @@ abstract class CommandlogAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedOn()
+    public function getCreatedOn(): \DateTime
     {
         return clone $this->createdOn;
     }
@@ -396,7 +396,7 @@ abstract class CommandlogAbstract
      *
      * @return integer
      */
-    public function getMicrotime()
+    public function getMicrotime(): int
     {
         return $this->microtime;
     }

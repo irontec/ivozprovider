@@ -50,7 +50,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                     . $this->view->translate('Select the brand you want to emulate.')
                     . '</p>'
                     . '<br/><span class="ui-silk inline ui-silk-error"></span><p>'
-                    . $this->view->translate('Notice that edition/creation tabs will be closed.')
+                    . $this->view->translate('Edition/creation tabs will be closed.')
                     . '</p></div>';
                 $title = $this->view->translate('Select Brand');
 
@@ -76,7 +76,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                         . $this->view->translate('Select the client you want to emulate')
                         . '</p>'
                         . '<span class="ui-icon ui-icon-circle-close"></span><p>'
-                        . $this->view->translate('Notice that edition/creation tabs will be closed.')
+                        . $this->view->translate('Edition/creation tabs will be closed.')
                         . '</p></div>';
                     $options = $dataGateway->findBy(
                         Company::class,
@@ -87,7 +87,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                         $id = $this->_user->companyId;
                     }
                 }
-                $title = $this->view->translate('Select Company');
+                $title = $this->view->translate('Select Client');
             } else {
                 return $this->_noPermission();
             }
@@ -96,7 +96,12 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         }
 
         if ($type == 'brand' || ($this->_user->canSeeBrand && !is_null($this->_user->brandId))) {
-            $html .= '<div class="entitySelectDiv">';
+            $html .= '<div style="width:60%; margin: .8em auto;">';
+            $html .= "<input 
+                        type'text' placeholder='filter' 
+                        style='width:95%;margin: 0;padding: 6px;' 
+                        class='emulation-filter ui-widget ui-state-default ui-corner-all'>";
+            $html .= '</div><div class="entitySelectDiv">';
             $html .= '<select id="entitySelect" name="'.$type.'" data-type="'.$type.'" class="" data-size="4">';
             foreach ($options as $option) {
                 $selected = "";
@@ -127,6 +132,50 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 }
             }
             $html .= "</select>";
+            $html .= "<script>
+
+                var retries = 50;
+                var retryCount = 0;
+                var waitForElement = function(selector, callback) {
+                    if ($(selector).length) {
+                        callback();
+                    } else {
+                        if (retryCount >= retries) {
+                            return;
+                        }
+                        setTimeout(function() {
+                            retryCount++;
+                            waitForElement(selector, callback);
+                        }, 100 + retryCount * 50);
+                    }
+                };
+
+                var filterSelector = '.emulation-filter:visible'; 
+                waitForElement(
+                    filterSelector,
+                    function () {
+                        var select = $('#entitySelect', $(filterSelector).parents('form'));
+                        var options = select.find('option').clone();
+                        $(filterSelector).bind('change keyup', function() {
+                            select.empty();
+                            var search = $.trim($(this).val());
+                            var regex = search === ''
+                                ? new RegExp('.*', \"gi\")
+                                : new RegExp(search, \"gi\");
+                            $.each(options, function(i) {
+                                var option = options[i];
+                                if (option.text.match(regex) !== null) {
+                                    select.append(
+                                        $('<option>').text(option.text).val(option.value)
+                                    );
+                                }
+                            });
+                            select.data('selectBoxIt').refresh();
+                        });
+                    }
+                );
+            </script>";
+
             $html .= '</div>';
         }
 
@@ -294,6 +343,8 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                         return !controller || controller == \'list\';
                     })
                     .klearModule(\'reDispatch\');
+
+                $.klear.restart({}, false);
             </script>';
         $message = $this->view->translate($messageLiteral, $model->getName(), $type);
         $data = array(

@@ -266,7 +266,7 @@ abstract class QueueAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -378,7 +378,7 @@ abstract class QueueAbstract
      *
      * @return string
      */
-    public function getAutopause()
+    public function getAutopause(): string
     {
         return $this->autopause;
     }
@@ -404,7 +404,7 @@ abstract class QueueAbstract
      *
      * @return string
      */
-    public function getRinginuse()
+    public function getRinginuse(): string
     {
         return $this->ringinuse;
     }

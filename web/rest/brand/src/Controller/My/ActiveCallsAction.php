@@ -3,7 +3,6 @@
 namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use Assert\Assertion;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -11,28 +10,26 @@ use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Model\ActiveCalls;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class ActiveCallsAction
 {
     protected $tokenStorage;
     protected $requestStack;
-    protected $apiClient;
+    protected $trunksClient;
     protected $companyRepository;
 
     public function __construct(
         TokenStorage $tokenStorage,
         RequestStack $requestStack,
-        TrunksClientInterface $apiClient,
+        TrunksClientInterface $trunksClient,
         CompanyRepository $companyRepository
     ) {
         $this->tokenStorage = $tokenStorage;
         $this->requestStack = $requestStack;
-        $this->apiClient = $apiClient;
+        $this->trunksClient = $trunksClient;
         $this->companyRepository = $companyRepository;
     }
 
@@ -54,7 +51,7 @@ class ActiveCallsAction
         $companyId = $request->get('company');
         if (!$companyId) {
             $activeCalls = $this
-                ->apiClient
+                ->trunksClient
                 ->getBrandActiveCalls($brand->getId());
 
             return new ActiveCalls($activeCalls);
@@ -71,7 +68,7 @@ class ActiveCallsAction
         }
 
         $activeCalls = $this
-            ->apiClient
+            ->trunksClient
             ->getCompanyActiveCalls(
                 intval($companyId)
             );

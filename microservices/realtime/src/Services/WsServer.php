@@ -203,10 +203,7 @@ class WsServer extends AbstractWsServer
             $this->logger->error(
                 "Sentinel shutdown"
             );
-            $this->shutdown();
-            Coroutine::sleep(1);
-
-            exit;
+            $this->reload();
         });
     }
 

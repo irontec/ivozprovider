@@ -81,6 +81,7 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
 
         $fromName = $notificationTemplateContent->getFromName();
         $fromAddress = $notificationTemplateContent->getFromAddress();
+        $bodyType = $notificationTemplateContent->getBodyType();
         $body = $this->parseVariables(
             $callCsvReport,
             $notificationTemplateContent->getBody()
@@ -96,7 +97,7 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
         );
 
         $mail = new Message();
-        $mail->setBody($body)
+        $mail->setBody($body, $bodyType)
             ->setSubject($subject)
             ->setFromAddress($fromAddress)
             ->setFromName($fromName)

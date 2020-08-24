@@ -18,7 +18,8 @@ class FriendLifeCycleTestLifeCycleTest extends KernelTestCase
         $friendDto
             ->setName('ormTestFriend')
             ->setTransport('udp')
-            ->setIp('')
+            ->setIp('1.2.3.4')
+            ->setDirectConnectivity('yes')
             ->setPort('5060')
             ->setPassword('SAG0qd2j6+')
             ->setPriority(2)

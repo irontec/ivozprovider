@@ -365,7 +365,7 @@ abstract class DdiAbstract
      *
      * @return string
      */
-    public function getDdi()
+    public function getDdi(): string
     {
         return $this->ddi;
     }
@@ -426,7 +426,7 @@ abstract class DdiAbstract
      *
      * @return string
      */
-    public function getRecordCalls()
+    public function getRecordCalls(): string
     {
         return $this->recordCalls;
     }
@@ -522,7 +522,7 @@ abstract class DdiAbstract
      *
      * @return boolean
      */
-    public function getBillInboundCalls()
+    public function getBillInboundCalls(): bool
     {
         return $this->billInboundCalls;
     }

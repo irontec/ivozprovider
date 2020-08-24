@@ -94,13 +94,19 @@ There is no voicemail service for retail clients.
 Call forwarding settings
 ========================
 
-Each retail account can have a unique enabled call forward setting, pointing to an external number.
+There are 2 types of call forward settings for retail accounts, both pointing to an external number:
 
-This external called will be called whenever the retail account cannot be reached:
+- Unconditional call forward.
+
+- Unreachable call forward.
+
+The last one will be called whenever the retail account cannot be reached:
 
 - Direct connectivity accounts: when no answer is received from defined address.
 
 - Accounts using SIP register: when no answer is received from last contact address or when no active register is found.
+
+.. tip:: Unconditional call forward has precedence over unreacheable call forward.
 
 .. warning:: Retail accounts marked as T.38 won't have any call forward settings.
 

@@ -532,7 +532,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -559,7 +559,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -614,7 +614,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getNif()
+    public function getNif(): string
     {
         return $this->nif;
     }
@@ -646,7 +646,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getDistributeMethod()
+    public function getDistributeMethod(): string
     {
         return $this->distributeMethod;
     }
@@ -674,7 +674,7 @@ abstract class CompanyAbstract
      *
      * @return integer
      */
-    public function getMaxCalls()
+    public function getMaxCalls(): int
     {
         return $this->maxCalls;
     }
@@ -702,7 +702,7 @@ abstract class CompanyAbstract
      *
      * @return integer
      */
-    public function getMaxDailyUsage()
+    public function getMaxDailyUsage(): int
     {
         return $this->maxDailyUsage;
     }
@@ -729,7 +729,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getPostalAddress()
+    public function getPostalAddress(): string
     {
         return $this->postalAddress;
     }
@@ -756,7 +756,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getPostalCode()
+    public function getPostalCode(): string
     {
         return $this->postalCode;
     }
@@ -783,7 +783,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getTown()
+    public function getTown(): string
     {
         return $this->town;
     }
@@ -810,7 +810,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getProvince()
+    public function getProvince(): string
     {
         return $this->province;
     }
@@ -837,7 +837,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getCountryName()
+    public function getCountryName(): string
     {
         return $this->countryName;
     }
@@ -923,7 +923,7 @@ abstract class CompanyAbstract
      *
      * @return boolean
      */
-    public function getAllowRecordingRemoval()
+    public function getAllowRecordingRemoval(): bool
     {
         return $this->allowRecordingRemoval;
     }
@@ -1068,7 +1068,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getBillingMethod()
+    public function getBillingMethod(): string
     {
         return $this->billingMethod;
     }

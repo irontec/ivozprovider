@@ -8,6 +8,7 @@ parameters:
     database_name: ivozprovider
     database_user: root
     database_password: changeme
+    database_unix_socket: ~
     api_platform_base_url: 'https://localhost/api/platform/index.html'
     api_brand_base_url: 'https://localhost/api/brand/index.html'
     api_client_base_url: 'https://localhost/api/client/index.html'

@@ -333,7 +333,7 @@ abstract class TrunksUacregAbstract
      *
      * @return string
      */
-    public function getLUuid()
+    public function getLUuid(): string
     {
         return $this->lUuid;
     }
@@ -360,7 +360,7 @@ abstract class TrunksUacregAbstract
      *
      * @return string
      */
-    public function getLUsername()
+    public function getLUsername(): string
     {
         return $this->lUsername;
     }
@@ -387,7 +387,7 @@ abstract class TrunksUacregAbstract
      *
      * @return string
      */
-    public function getLDomain()
+    public function getLDomain(): string
     {
         return $this->lDomain;
     }
@@ -414,7 +414,7 @@ abstract class TrunksUacregAbstract
      *
      * @return string
      */
-    public function getRUsername()
+    public function getRUsername(): string
     {
         return $this->rUsername;
     }
@@ -441,7 +441,7 @@ abstract class TrunksUacregAbstract
      *
      * @return string
      */
-    public function getRDomain()
+    public function getRDomain(): string
     {
         return $this->rDomain;
     }
@@ -468,7 +468,7 @@ abstract class TrunksUacregAbstract
      *
      * @return string
      */
-    public function getRealm()
+    public function getRealm(): string
     {
         return $this->realm;
     }
@@ -495,7 +495,7 @@ abstract class TrunksUacregAbstract
      *
      * @return string
      */
-    public function getAuthUsername()
+    public function getAuthUsername(): string
     {
         return $this->authUsername;
     }
@@ -522,7 +522,7 @@ abstract class TrunksUacregAbstract
      *
      * @return string
      */
-    public function getAuthPassword()
+    public function getAuthPassword(): string
     {
         return $this->authPassword;
     }
@@ -549,7 +549,7 @@ abstract class TrunksUacregAbstract
      *
      * @return string
      */
-    public function getAuthProxy()
+    public function getAuthProxy(): string
     {
         return $this->authProxy;
     }
@@ -576,7 +576,7 @@ abstract class TrunksUacregAbstract
      *
      * @return integer
      */
-    public function getExpires()
+    public function getExpires(): int
     {
         return $this->expires;
     }
@@ -603,7 +603,7 @@ abstract class TrunksUacregAbstract
      *
      * @return integer
      */
-    public function getFlags()
+    public function getFlags(): int
     {
         return $this->flags;
     }
@@ -630,7 +630,7 @@ abstract class TrunksUacregAbstract
      *
      * @return integer
      */
-    public function getRegDelay()
+    public function getRegDelay(): int
     {
         return $this->regDelay;
     }
@@ -657,7 +657,7 @@ abstract class TrunksUacregAbstract
      *
      * @return string
      */
-    public function getAuthHa1()
+    public function getAuthHa1(): string
     {
         return $this->authHa1;
     }

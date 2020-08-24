@@ -211,7 +211,7 @@ abstract class TpDestinationAbstract
      *
      * @return string
      */
-    public function getTpid()
+    public function getTpid(): string
     {
         return $this->tpid;
     }
@@ -266,7 +266,7 @@ abstract class TpDestinationAbstract
      *
      * @return string
      */
-    public function getPrefix()
+    public function getPrefix(): string
     {
         return $this->prefix;
     }
@@ -300,7 +300,7 @@ abstract class TpDestinationAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

@@ -26,7 +26,6 @@ production:
       fields:
         blacklist:
           transport: true
-          authNeeded: true
           password: true
           allow: true
           disallow: true
@@ -46,6 +45,7 @@ production:
           t38Passthrough: true
           outgoingDdi: true
           interCompany: true
+          alwaysApplyTransformations: true
         order:
           name: true
           domain: true
@@ -56,17 +56,17 @@ production:
         options:
           title: _("Options")
           screens:
-            friendsEdit_screen: ${auth.acls.Friends.update}
-            friendsPatternsList_screen: ${auth.acls.FriendsPatterns.read}
+            friendsEdit_screen: $[${auth.acls.Friends.update} && ${auth.companyVPBX}]
+            friendsPatternsList_screen: $[${auth.acls.FriendsPatterns.read} && ${auth.companyVPBX}]
           dialogs:
             friendsDel_dialog: ${auth.acls.Friends.delete}
           default: friendsEdit_screen
       options:
         title: _("Options")
         screens:
-          friendsNew_screen: ${auth.acls.Friends.create}
+          friendsNew_screen: $[${auth.acls.Friends.create} && ${auth.companyVPBX}]
         dialogs:
-          friendsDel_dialog: ${auth.acls.Friends.delete}
+          friendsDel_dialog: $[${auth.acls.Friends.delete} && ${auth.companyVPBX}]
 
     friendsNew_screen: &friendsNew_screenLink
       <<: *Friends
@@ -90,7 +90,6 @@ production:
           directMediaMethod: true
           updateCallerid: true
           calleridUpdateHeader: true
-          authNeeded: true
           disallow: true
           status: true
           statusIcon: true
@@ -120,6 +119,7 @@ production:
           ddiIn: true
           status: true
           t38Passthrough: true
+          alwaysApplyTransformations: true
       fixedPositions: &friends_FixedPositionsLink
         group0:
           label: _("Basic Configuration")
@@ -132,10 +132,10 @@ production:
             name: 6
             password: 6
             interCompany: 10
-            __empty1: 2
             transport: 4
             ip: 5
             port: 3
+            alwaysApplyTransformations: 8
         group1:
           label: _("Geographic Configuration")
           colsPerRow: 12
@@ -179,7 +179,6 @@ production:
           directMediaMethod: true
           updateCallerid: true
           calleridUpdateHeader: true
-          authNeeded: true
           disallow: true
           statusIcon: true
       fixedPositions:

@@ -172,6 +172,9 @@ msgstr "Codec video consentiti"
 msgid "Always"
 msgstr "Sempre"
 
+msgid "Always apply transformations"
+msgstr "Always apply transformations"
+
 msgid "Amount"
 msgstr "Quantità"
 
@@ -849,6 +852,9 @@ msgstr "Modifica %s %2s"
 msgid "Edit pattern of %s"
 msgstr "Modifica schema  di %s"
 
+msgid "Edition/creation tabs will be closed."
+msgstr "Edition/creation tabs will be closed."
+
 msgid "Email"
 msgid_plural "Emails"
 msgstr[0] "Email"
@@ -914,6 +920,15 @@ msgid ""
 msgstr ""
 "Abilitare questa opzione per visualizzare il pulsante Elimina nella sezione "
 "registrazioni chiamate del portale del cliente."
+
+msgid ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
+msgstr ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
 
 msgid "Enabled"
 msgstr "Abilitato"
@@ -1000,9 +1015,6 @@ msgstr "Interno chiamante"
 
 msgid "External"
 msgstr "Esterno"
-
-msgid "External Filter destination"
-msgstr "Filtro Esterno Destinazione"
 
 msgid "External call"
 msgid_plural "External calls"
@@ -1216,6 +1228,9 @@ msgstr "Pattern URL generico"
 
 msgid "Generic template"
 msgstr "Modello generico"
+
+msgid "GeoIP allowed countries"
+msgstr "GeoIP allowed countries"
 
 msgid "Geographic Configuration"
 msgstr "Configurazione geografica"
@@ -2513,8 +2528,15 @@ msgstr "Sicurezza"
 msgid "Select Brand"
 msgstr "Seleziona Brand"
 
-msgid "Select Company"
-msgstr "Seleziona Company"
+msgid "Select Client"
+msgstr "Seleziona cliente"
+
+msgid ""
+"Select a country to allow all IPs. Leave it blank if you want to allow just "
+"specific IP/ranges."
+msgstr ""
+"Select a country to allow all IPs. Leave it blank if you want to allow just "
+"specific IP/ranges."
 
 msgid "Select destination group"
 msgstr "Seleziona il gruppo di destinazione"
@@ -2913,6 +2935,9 @@ msgstr "Tipo di URL"
 
 msgid "Unassigned"
 msgstr "Non assegnato"
+
+msgid "Unconditional Call Forward"
+msgstr "Unconditional Call Forward"
 
 msgid "Unit"
 msgstr "Unità"

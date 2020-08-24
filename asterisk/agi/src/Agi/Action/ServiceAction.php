@@ -11,6 +11,7 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
@@ -286,7 +287,7 @@ class ServiceAction
         $originalFile = "/tmp/locution_record_" . $originalFilename;
 
         // Record file playing a beep before starting
-        $this->agi->record($originalFile, ",,ky");
+        $this->agi->record($originalFile, "30,600,ky");
 
         // Set upload the original file of the locution
         /** @var LocutionDto $locutionDto */
@@ -425,6 +426,12 @@ class ServiceAction
         $caller = $this->channelInfo->getChannelCaller();
         $company = $caller->getCompany();
         $companyCountry = $company->getCountry();
+
+        // This Service is only available for Residential Clients
+        if ($company->getType() !== CompanyInterface::TYPE_RESIDENTIAL) {
+            $this->agi->error("Call Forward Service used by non-residential %s", $company);
+            return;
+        }
 
         /**
          * Extract Destination from dialed number

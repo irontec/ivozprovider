@@ -274,7 +274,7 @@ abstract class HolidayDateAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -300,7 +300,7 @@ abstract class HolidayDateAbstract
      *
      * @return \DateTime
      */
-    public function getEventDate()
+    public function getEventDate(): \DateTime
     {
         return $this->eventDate;
     }
@@ -328,7 +328,7 @@ abstract class HolidayDateAbstract
      *
      * @return boolean
      */
-    public function getWholeDayEvent()
+    public function getWholeDayEvent(): bool
     {
         return $this->wholeDayEvent;
     }

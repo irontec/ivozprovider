@@ -28,40 +28,7 @@ Feature: Update retail accounts
           "transport": "udp",
           "password": "9rv6G3TVc-",
           "id": 1,
-          "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
-              "internationalCode": "00",
-              "trunkPrefix": "",
-              "areaCode": "",
-              "nationalLen": 9,
-              "generateRules": false,
-              "id": 1,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
-              },
-              "country": 68
-          },
-          "outgoingDdi": {
-              "ddi": "121",
-              "recordCalls": "none",
-              "displayName": "",
-              "routeType": null,
-              "friendValue": "",
-              "id": 3,
-              "conferenceRoom": null,
-              "language": null,
-              "queue": null,
-              "externalCallFilter": null,
-              "user": null,
-              "ivr": null,
-              "huntGroup": null,
-              "fax": null,
-              "country": 68,
-              "residentialDevice": null,
-              "conditionalRoute": null,
-              "retailAccount": null
-          }
+          "transformationRuleSet": 1,
+          "outgoingDdi": 3
       }
     """

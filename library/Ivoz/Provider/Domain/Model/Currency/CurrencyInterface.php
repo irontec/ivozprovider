@@ -17,14 +17,14 @@ interface CurrencyInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getIden();
+    public function getIden(): string;
 
     /**
      * Get symbol
      *
      * @return string
      */
-    public function getSymbol();
+    public function getSymbol(): string;
 
     /**
      * Get name
@@ -32,4 +32,9 @@ interface CurrencyInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Currency\Name
      */
     public function getName();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

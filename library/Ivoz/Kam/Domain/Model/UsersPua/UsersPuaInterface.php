@@ -11,49 +11,49 @@ interface UsersPuaInterface extends EntityInterface
      *
      * @return string
      */
-    public function getPresUri();
+    public function getPresUri(): string;
 
     /**
      * Get presId
      *
      * @return string
      */
-    public function getPresId();
+    public function getPresId(): string;
 
     /**
      * Get event
      *
      * @return integer
      */
-    public function getEvent();
+    public function getEvent(): int;
 
     /**
      * Get expires
      *
      * @return integer
      */
-    public function getExpires();
+    public function getExpires(): int;
 
     /**
      * Get desiredExpires
      *
      * @return integer
      */
-    public function getDesiredExpires();
+    public function getDesiredExpires(): int;
 
     /**
      * Get flag
      *
      * @return integer
      */
-    public function getFlag();
+    public function getFlag(): int;
 
     /**
      * Get etag
      *
      * @return string
      */
-    public function getEtag();
+    public function getEtag(): string;
 
     /**
      * Get tupleId
@@ -67,35 +67,35 @@ interface UsersPuaInterface extends EntityInterface
      *
      * @return string
      */
-    public function getWatcherUri();
+    public function getWatcherUri(): string;
 
     /**
      * Get callId
      *
      * @return string
      */
-    public function getCallId();
+    public function getCallId(): string;
 
     /**
      * Get toTag
      *
      * @return string
      */
-    public function getToTag();
+    public function getToTag(): string;
 
     /**
      * Get fromTag
      *
      * @return string
      */
-    public function getFromTag();
+    public function getFromTag(): string;
 
     /**
      * Get cseq
      *
      * @return integer
      */
-    public function getCseq();
+    public function getCseq(): int;
 
     /**
      * Get recordRoute
@@ -109,26 +109,31 @@ interface UsersPuaInterface extends EntityInterface
      *
      * @return string
      */
-    public function getContact();
+    public function getContact(): string;
 
     /**
      * Get remoteContact
      *
      * @return string
      */
-    public function getRemoteContact();
+    public function getRemoteContact(): string;
 
     /**
      * Get version
      *
      * @return integer
      */
-    public function getVersion();
+    public function getVersion(): int;
 
     /**
      * Get extraHeaders
      *
      * @return string
      */
-    public function getExtraHeaders();
+    public function getExtraHeaders(): string;
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

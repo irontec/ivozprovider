@@ -192,7 +192,7 @@ abstract class CallAclAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -223,7 +223,7 @@ abstract class CallAclAbstract
      *
      * @return string
      */
-    public function getDefaultPolicy()
+    public function getDefaultPolicy(): string
     {
         return $this->defaultPolicy;
     }

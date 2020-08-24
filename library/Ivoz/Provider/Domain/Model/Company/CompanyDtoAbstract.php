@@ -255,6 +255,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      */
     private $relRoutingTags = null;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryDto[] | null
+     */
+    private $relCountries = null;
+
 
     use DtoNormalizer;
 
@@ -368,7 +373,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'recordings' => $this->getRecordings(),
             'relFeatures' => $this->getRelFeatures(),
             'relCodecs' => $this->getRelCodecs(),
-            'relRoutingTags' => $this->getRelRoutingTags()
+            'relRoutingTags' => $this->getRelRoutingTags(),
+            'relCountries' => $this->getRelCountries()
         ];
 
         if (!$hideSensitiveData) {
@@ -1753,5 +1759,25 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getRelRoutingTags()
     {
         return $this->relRoutingTags;
+    }
+
+    /**
+     * @param array $relCountries
+     *
+     * @return static
+     */
+    public function setRelCountries($relCountries = null)
+    {
+        $this->relCountries = $relCountries;
+
+        return $this;
+    }
+
+    /**
+     * @return array | null
+     */
+    public function getRelCountries()
+    {
+        return $this->relCountries;
     }
 }

@@ -209,7 +209,7 @@ abstract class SpecialNumberAbstract
      *
      * @return string
      */
-    public function getNumber()
+    public function getNumber(): string
     {
         return $this->number;
     }
@@ -265,7 +265,7 @@ abstract class SpecialNumberAbstract
      *
      * @return integer
      */
-    public function getDisableCDR()
+    public function getDisableCDR(): int
     {
         return $this->disableCDR;
     }

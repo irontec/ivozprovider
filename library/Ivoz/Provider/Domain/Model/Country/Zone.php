@@ -84,7 +84,7 @@ class Zone
      *
      * @return string
      */
-    public function getEn()
+    public function getEn(): string
     {
         return $this->en;
     }
@@ -111,7 +111,7 @@ class Zone
      *
      * @return string
      */
-    public function getEs()
+    public function getEs(): string
     {
         return $this->es;
     }
@@ -138,7 +138,7 @@ class Zone
      *
      * @return string
      */
-    public function getCa()
+    public function getCa(): string
     {
         return $this->ca;
     }
@@ -165,7 +165,7 @@ class Zone
      *
      * @return string
      */
-    public function getIt()
+    public function getIt(): string
     {
         return $this->it;
     }

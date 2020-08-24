@@ -241,7 +241,7 @@ abstract class UsersWatcherAbstract
      *
      * @return string
      */
-    public function getPresentityUri()
+    public function getPresentityUri(): string
     {
         return $this->presentityUri;
     }
@@ -268,7 +268,7 @@ abstract class UsersWatcherAbstract
      *
      * @return string
      */
-    public function getWatcherUsername()
+    public function getWatcherUsername(): string
     {
         return $this->watcherUsername;
     }
@@ -295,7 +295,7 @@ abstract class UsersWatcherAbstract
      *
      * @return string
      */
-    public function getWatcherDomain()
+    public function getWatcherDomain(): string
     {
         return $this->watcherDomain;
     }
@@ -322,7 +322,7 @@ abstract class UsersWatcherAbstract
      *
      * @return string
      */
-    public function getEvent()
+    public function getEvent(): string
     {
         return $this->event;
     }
@@ -349,7 +349,7 @@ abstract class UsersWatcherAbstract
      *
      * @return integer
      */
-    public function getStatus()
+    public function getStatus(): int
     {
         return $this->status;
     }
@@ -404,7 +404,7 @@ abstract class UsersWatcherAbstract
      *
      * @return integer
      */
-    public function getInsertedTime()
+    public function getInsertedTime(): int
     {
         return $this->insertedTime;
     }

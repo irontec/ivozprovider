@@ -296,7 +296,7 @@ abstract class TpRatingProfileAbstract
      *
      * @return string
      */
-    public function getTpid()
+    public function getTpid(): string
     {
         return $this->tpid;
     }
@@ -323,7 +323,7 @@ abstract class TpRatingProfileAbstract
      *
      * @return string
      */
-    public function getLoadid()
+    public function getLoadid(): string
     {
         return $this->loadid;
     }
@@ -350,7 +350,7 @@ abstract class TpRatingProfileAbstract
      *
      * @return string
      */
-    public function getDirection()
+    public function getDirection(): string
     {
         return $this->direction;
     }
@@ -405,7 +405,7 @@ abstract class TpRatingProfileAbstract
      *
      * @return string
      */
-    public function getCategory()
+    public function getCategory(): string
     {
         return $this->category;
     }
@@ -460,7 +460,7 @@ abstract class TpRatingProfileAbstract
      *
      * @return string
      */
-    public function getActivationTime()
+    public function getActivationTime(): string
     {
         return $this->activationTime;
     }
@@ -578,7 +578,7 @@ abstract class TpRatingProfileAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

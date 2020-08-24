@@ -17,7 +17,7 @@ interface FixedCostInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get description
@@ -39,4 +39,9 @@ interface FixedCostInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

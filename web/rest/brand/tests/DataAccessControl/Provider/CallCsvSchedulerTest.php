@@ -136,6 +136,20 @@ class CallCsvSchedulerTest extends KernelTestCase
                         ],
                     ]
                 ],
+                [
+                    'or' => [
+                        [
+                            'ddiProvider',
+                            'in',
+                            'DdiProviderRepository([["brand","eq","user.getBrand().getId()"]])'
+                        ],
+                        [
+                            'ddiProvider',
+                            'isNull',
+                            null
+                        ],
+                    ]
+                ],
             ]
         );
     }

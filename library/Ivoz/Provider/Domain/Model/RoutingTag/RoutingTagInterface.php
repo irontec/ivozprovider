@@ -24,14 +24,14 @@ interface RoutingTagInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get tag
      *
      * @return string
      */
-    public function getTag();
+    public function getTag(): string;
 
     /**
      * Get brand
@@ -39,6 +39,11 @@ interface RoutingTagInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add outgoingRouting

@@ -25,7 +25,7 @@ Feature: Update calendar periods
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "startDate": "2019-05-01",
@@ -33,25 +33,9 @@ Feature: Update calendar periods
           "routeType": "extension",
           "numberValue": null,
           "id": 1,
-          "calendar": {
-              "name": "testCalendar",
-              "id": 1
-          },
+          "calendar": 1,
           "locution": null,
-          "extension": {
-              "number": "101",
-              "routeType": "user",
-              "numberValue": null,
-              "friendValue": null,
-              "id": 1,
-              "ivr": null,
-              "huntGroup": null,
-              "conferenceRoom": null,
-              "user": 1,
-              "queue": null,
-              "conditionalRoute": null,
-              "numberCountry": null
-          },
+          "extension": 1,
           "voiceMailUser": null,
           "numberCountry": null
       }

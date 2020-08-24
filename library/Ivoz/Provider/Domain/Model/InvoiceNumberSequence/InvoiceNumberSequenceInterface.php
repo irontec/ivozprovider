@@ -13,15 +13,6 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * Fake/Empty setter
-     *
-     * Version value is automatically handled by doctrine
-     *
-     * @inheritdoc
-     */
-    public function setVersion($version);
-
-    /**
      * Update and return latest value
      *
      * @return string
@@ -33,28 +24,28 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get prefix
      *
      * @return string
      */
-    public function getPrefix();
+    public function getPrefix(): string;
 
     /**
      * Get sequenceLength
      *
      * @return integer
      */
-    public function getSequenceLength();
+    public function getSequenceLength(): int;
 
     /**
      * Get increment
      *
      * @return integer
      */
-    public function getIncrement();
+    public function getIncrement(): int;
 
     /**
      * Get latestValue
@@ -68,7 +59,7 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getIteration();
+    public function getIteration(): int;
 
     /**
      * Get version
@@ -83,4 +74,9 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

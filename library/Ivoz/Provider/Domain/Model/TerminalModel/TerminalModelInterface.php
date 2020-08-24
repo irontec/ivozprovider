@@ -32,21 +32,21 @@ interface TerminalModelInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getIden();
+    public function getIden(): string;
 
     /**
      * Get name
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get description
      *
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): string;
 
     /**
      * Get genericTemplate
@@ -82,4 +82,9 @@ interface TerminalModelInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface
      */
     public function getTerminalManufacturer();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

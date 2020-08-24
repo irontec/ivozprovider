@@ -17,35 +17,35 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getTpid();
+    public function getTpid(): string;
 
     /**
      * Get direction
      *
      * @return string
      */
-    public function getDirection();
+    public function getDirection(): string;
 
     /**
      * Get tenant
      *
      * @return string
      */
-    public function getTenant();
+    public function getTenant(): string;
 
     /**
      * Get category
      *
      * @return string
      */
-    public function getCategory();
+    public function getCategory(): string;
 
     /**
      * Get account
      *
      * @return string
      */
-    public function getAccount();
+    public function getAccount(): string;
 
     /**
      * Get subject
@@ -66,14 +66,14 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getRpCategory();
+    public function getRpCategory(): string;
 
     /**
      * Get strategy
      *
      * @return string
      */
-    public function getStrategy();
+    public function getStrategy(): string;
 
     /**
      * Get strategyParams
@@ -87,21 +87,21 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
      *
      * @return \DateTime
      */
-    public function getActivationTime();
+    public function getActivationTime(): \DateTime;
 
     /**
      * Get weight
      *
      * @return float
      */
-    public function getWeight();
+    public function getWeight(): float;
 
     /**
      * Get createdAt
      *
      * @return \DateTime
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): \DateTime;
 
     /**
      * Set outgoingRouting
@@ -118,4 +118,9 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
      */
     public function getOutgoingRouting();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

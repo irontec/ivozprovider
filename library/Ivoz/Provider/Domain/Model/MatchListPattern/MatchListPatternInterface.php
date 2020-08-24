@@ -34,7 +34,7 @@ interface MatchListPatternInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getType();
+    public function getType(): string;
 
     /**
      * Get regexp
@@ -72,4 +72,9 @@ interface MatchListPatternInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNumberCountry();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

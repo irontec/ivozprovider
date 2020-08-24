@@ -24,7 +24,7 @@ Feature: Update invoice
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "number": "1",
@@ -41,8 +41,9 @@ Feature: Update invoice
               "mimeType": null,
               "baseName": null
           },
-          "invoiceTemplate": "~",
-          "company": "~",
-          "numberSequence": null
+          "invoiceTemplate": 1,
+          "company": 1,
+          "numberSequence": null,
+          "scheduler": null
       }
     """

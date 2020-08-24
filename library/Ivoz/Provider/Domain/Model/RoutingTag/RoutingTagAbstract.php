@@ -191,7 +191,7 @@ abstract class RoutingTagAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -218,7 +218,7 @@ abstract class RoutingTagAbstract
      *
      * @return string
      */
-    public function getTag()
+    public function getTag(): string
     {
         return $this->tag;
     }

@@ -17,21 +17,21 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getTpid();
+    public function getTpid(): string;
 
     /**
      * Get loadid
      *
      * @return string
      */
-    public function getLoadid();
+    public function getLoadid(): string;
 
     /**
      * Get direction
      *
      * @return string
      */
-    public function getDirection();
+    public function getDirection(): string;
 
     /**
      * Get tenant
@@ -45,7 +45,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getCategory();
+    public function getCategory(): string;
 
     /**
      * Get subject
@@ -59,7 +59,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getActivationTime();
+    public function getActivationTime(): string;
 
     /**
      * Get ratingPlanTag
@@ -87,7 +87,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
      *
      * @return \DateTime
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): \DateTime;
 
     /**
      * Set ratingProfile
@@ -120,4 +120,9 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface | null
      */
     public function getOutgoingRoutingRelCarrier();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

@@ -48,7 +48,7 @@
             },
             getName : function() {
                 if (configParser.name=== null) {
-                    var result = configParser.raw.match(/name\:([^|]+)/);
+                    var result = configParser.raw.match(/name\:([^|\]]+)/);
                     if (result) {
                         configParser.name = result[1];
                     }

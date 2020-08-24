@@ -171,6 +171,9 @@ msgstr "Còdecs de vídeo permesos"
 msgid "Always"
 msgstr "Sempre"
 
+msgid "Always apply transformations"
+msgstr "Aplicar siempre transformaciones numéricas"
+
 msgid "Amount"
 msgstr "Quantitat"
 
@@ -187,11 +190,6 @@ msgid "Antiflood banned IP"
 msgid_plural "Antiflood banned IPs"
 msgstr[0] "IP bloqueada antiflood"
 msgstr[1] "IPs bloqueadas antiflood"
-
-msgid "Antiflood trusted IP"
-msgid_plural "Antiflood trusted IPs"
-msgstr[0] "IP de confiança per l'antiflood"
-msgstr[1] "IPs de confiança per l'antiflood"
 
 msgid "Application Server"
 msgid_plural "Application Servers"
@@ -845,6 +843,9 @@ msgstr "Edita %s %2s"
 msgid "Edit pattern of %s"
 msgstr "Edita els patrons de %s"
 
+msgid "Edition/creation tabs will be closed."
+msgstr "Les fitxes d'edició/creació seran tancades."
+
 msgid "Email"
 msgid_plural "Emails"
 msgstr[0] "Correu electrònic"
@@ -911,6 +912,14 @@ msgid ""
 msgstr ""
 "Activa aquesta opció per mostrar el botó d’eliminació a la secció "
 "d’enregistrament de trucades al portal del client."
+
+msgid ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
+msgstr ""
+"Habilitar para forzar las tranformaciones numéricas para los números "
+"considerados internos."
 
 msgid "Enabled"
 msgstr "Habilitat"
@@ -996,9 +1005,6 @@ msgstr "Marcatge d'extensió"
 
 msgid "External"
 msgstr "Externa"
-
-msgid "External Filter destination"
-msgstr "Filtre de destí extern"
 
 msgid "External call"
 msgid_plural "External calls"
@@ -1210,6 +1216,9 @@ msgstr "Patró URL genèric"
 
 msgid "Generic template"
 msgstr "Pantilla genèrica"
+
+msgid "GeoIP allowed countries"
+msgstr "GeoIP países permitidos"
 
 msgid "Geographic Configuration"
 msgstr "Configuració geogràfica"
@@ -1908,9 +1917,6 @@ msgstr "Sense etiqueta de ruta"
 msgid "None"
 msgstr "Cap"
 
-msgid "Notice that edition/creation tabs will be closed."
-msgstr "Anuncia que les fitxes d'edició/creació seran tancades."
-
 msgid "Notification Threshold"
 msgstr "Llindar de notificació"
 
@@ -2500,8 +2506,15 @@ msgstr "Seguretat"
 msgid "Select Brand"
 msgstr "Selecciona marca"
 
-msgid "Select Company"
-msgstr "Selecciona companyia"
+msgid "Select Client"
+msgstr "Selecciona Client"
+
+msgid ""
+"Select a country to allow all IPs. Leave it blank if you want to allow just "
+"specific IP/ranges."
+msgstr ""
+"Selecciona un país para permitir todas sus IPs. No lo selecciones si quieres "
+"permitir solo algunas IPs o rangos."
 
 msgid "Select destination group"
 msgstr "Selecciona grup de destinació"
@@ -2897,6 +2910,9 @@ msgstr "Tipus URL"
 
 msgid "Unassigned"
 msgstr "No adscrit"
+
+msgid "Unconditional Call Forward"
+msgstr "Desvío incondicional"
 
 msgid "Unit"
 msgstr "Unitat"

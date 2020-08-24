@@ -30,7 +30,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      */
     public function setFrequency($frequency);
 
-    public function getSchedulerDateTimeZone();
+    public function getSchedulerDateTimeZone(): \DateTimeZone;
 
     /**
      * @return \DateInterval
@@ -42,28 +42,28 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get unit
      *
      * @return string
      */
-    public function getUnit();
+    public function getUnit(): string;
 
     /**
      * Get frequency
      *
      * @return integer
      */
-    public function getFrequency();
+    public function getFrequency(): int;
 
     /**
      * Get email
      *
      * @return string
      */
-    public function getEmail();
+    public function getEmail(): string;
 
     /**
      * Get lastExecution
@@ -120,6 +120,11 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface | null
      */
     public function getNumberSequence();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add relFixedCost

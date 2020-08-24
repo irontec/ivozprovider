@@ -249,7 +249,7 @@ abstract class UsersXcapAbstract
      *
      * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -276,7 +276,7 @@ abstract class UsersXcapAbstract
      *
      * @return string
      */
-    public function getDomain()
+    public function getDomain(): string
     {
         return $this->domain;
     }
@@ -302,7 +302,7 @@ abstract class UsersXcapAbstract
      *
      * @return string
      */
-    public function getDoc()
+    public function getDoc(): string
     {
         return $this->doc;
     }
@@ -329,7 +329,7 @@ abstract class UsersXcapAbstract
      *
      * @return integer
      */
-    public function getDocType()
+    public function getDocType(): int
     {
         return $this->docType;
     }
@@ -356,7 +356,7 @@ abstract class UsersXcapAbstract
      *
      * @return string
      */
-    public function getEtag()
+    public function getEtag(): string
     {
         return $this->etag;
     }
@@ -383,7 +383,7 @@ abstract class UsersXcapAbstract
      *
      * @return integer
      */
-    public function getSource()
+    public function getSource(): int
     {
         return $this->source;
     }
@@ -410,7 +410,7 @@ abstract class UsersXcapAbstract
      *
      * @return string
      */
-    public function getDocUri()
+    public function getDocUri(): string
     {
         return $this->docUri;
     }
@@ -437,7 +437,7 @@ abstract class UsersXcapAbstract
      *
      * @return integer
      */
-    public function getPort()
+    public function getPort(): int
     {
         return $this->port;
     }

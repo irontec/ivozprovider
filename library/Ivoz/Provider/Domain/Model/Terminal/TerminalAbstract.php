@@ -314,7 +314,7 @@ abstract class TerminalAbstract
      *
      * @return string
      */
-    public function getDisallow()
+    public function getDisallow(): string
     {
         return $this->disallow;
     }
@@ -341,7 +341,7 @@ abstract class TerminalAbstract
      *
      * @return string
      */
-    public function getAllowAudio()
+    public function getAllowAudio(): string
     {
         return $this->allowAudio;
     }
@@ -400,7 +400,7 @@ abstract class TerminalAbstract
      *
      * @return string
      */
-    public function getDirectMediaMethod()
+    public function getDirectMediaMethod(): string
     {
         return $this->directMediaMethod;
     }
@@ -427,7 +427,7 @@ abstract class TerminalAbstract
      *
      * @return string
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -520,7 +520,7 @@ abstract class TerminalAbstract
      *
      * @return string
      */
-    public function getT38Passthrough()
+    public function getT38Passthrough(): string
     {
         return $this->t38Passthrough;
     }

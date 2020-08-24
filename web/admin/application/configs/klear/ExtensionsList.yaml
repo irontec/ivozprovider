@@ -26,9 +26,9 @@ production:
         options:
           title: _("Options")
           screens:
-            extensionsEdit_screen: ${auth.acls.Extensions.update}
+            extensionsEdit_screen: $[${auth.acls.Extensions.update} && ${auth.companyVPBX}]
           dialogs:
-            extensionsDel_dialog: ${auth.acls.Extensions.delete}
+            extensionsDel_dialog: $[${auth.acls.Extensions.delete} && ${auth.companyVPBX}]
           default: extensionsEdit_screen
         blacklist:
           ivr: true
@@ -47,10 +47,10 @@ production:
       options:
         title: _("Options")
         screens:
-          extensionsNew_screen: ${auth.acls.Extensions.create}
+          extensionsNew_screen: $[${auth.acls.Extensions.create} && ${auth.companyVPBX}]
         dialogs:
-          extensionsDel_dialog: ${auth.acls.Extensions.delete}
-          importAliases_dialog: true
+          extensionsDel_dialog: $[${auth.acls.Extensions.delete} && ${auth.companyVPBX}]
+          importAliases_dialog: ${auth.companyVPBX}
 
     extensionsNew_screen: &extensionsNew_screenLink
       <<: *Extensions

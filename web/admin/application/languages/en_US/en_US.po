@@ -166,6 +166,9 @@ msgstr "Allowed video codecs"
 msgid "Always"
 msgstr "Always"
 
+msgid "Always apply transformations"
+msgstr "Always apply transformations"
+
 msgid "Amount"
 msgstr "Amount"
 
@@ -182,11 +185,6 @@ msgid "Antiflood banned IP"
 msgid_plural "Antiflood banned IPs"
 msgstr[0] "Antiflood banned IP"
 msgstr[1] "Antiflood banned IPs"
-
-msgid "Antiflood trusted IP"
-msgid_plural "Antiflood trusted IPs"
-msgstr[0] "Antiflood trusted IP"
-msgstr[1] "Antiflood trusted IPs"
 
 msgid "Application Server"
 msgid_plural "Application Servers"
@@ -835,6 +833,9 @@ msgstr "Edit %s %2s"
 msgid "Edit pattern of %s"
 msgstr "Edit pattern of %s"
 
+msgid "Edition/creation tabs will be closed."
+msgstr "Edition/creation tabs will be closed."
+
 msgid "Email"
 msgid_plural "Emails"
 msgstr[0] "Email"
@@ -900,6 +901,15 @@ msgid ""
 msgstr ""
 "Enable this option to display delete button in Client's portal call "
 "recordings section."
+
+msgid ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
+msgstr ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
 
 msgid "Enabled"
 msgstr "Enabled"
@@ -984,9 +994,6 @@ msgstr "Extension dialing"
 
 msgid "External"
 msgstr "External"
-
-msgid "External Filter destination"
-msgstr "External Filter destination"
 
 msgid "External call"
 msgid_plural "External calls"
@@ -1197,6 +1204,9 @@ msgstr "Generic URL Pattern"
 
 msgid "Generic template"
 msgstr "Generic template"
+
+msgid "GeoIP allowed countries"
+msgstr "GeoIP allowed countries"
 
 msgid "Geographic Configuration"
 msgstr "Geographic Configuration"
@@ -1891,9 +1901,6 @@ msgstr "No routing tag"
 msgid "None"
 msgstr "None"
 
-msgid "Notice that edition/creation tabs will be closed."
-msgstr "Notice that edition/creation tabs will be closed."
-
 msgid "Notification Threshold"
 msgstr "Notification Threshold"
 
@@ -2480,8 +2487,15 @@ msgstr "Security"
 msgid "Select Brand"
 msgstr "Select Brand"
 
-msgid "Select Company"
-msgstr "Select Company"
+msgid "Select Client"
+msgstr "Select Client"
+
+msgid ""
+"Select a country to allow all IPs. Leave it blank if you want to allow just "
+"specific IP/ranges."
+msgstr ""
+"Select a country to allow all IPs. Leave it blank if you want to allow just "
+"specific IP/ranges."
 
 msgid "Select destination group"
 msgstr "Select destination group"
@@ -2874,6 +2888,9 @@ msgstr "URL type"
 
 msgid "Unassigned"
 msgstr "Unassigned"
+
+msgid "Unconditional Call Forward"
+msgstr "Unconditional Call Forward"
 
 msgid "Unit"
 msgstr "Unit"

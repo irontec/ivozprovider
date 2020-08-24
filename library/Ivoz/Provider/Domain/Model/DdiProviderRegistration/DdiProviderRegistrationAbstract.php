@@ -277,7 +277,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -304,7 +304,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return string
      */
-    public function getDomain()
+    public function getDomain(): string
     {
         return $this->domain;
     }
@@ -331,7 +331,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return string
      */
-    public function getRealm()
+    public function getRealm(): string
     {
         return $this->realm;
     }
@@ -358,7 +358,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return string
      */
-    public function getAuthUsername()
+    public function getAuthUsername(): string
     {
         return $this->authUsername;
     }
@@ -385,7 +385,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return string
      */
-    public function getAuthPassword()
+    public function getAuthPassword(): string
     {
         return $this->authPassword;
     }
@@ -412,7 +412,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return string
      */
-    public function getAuthProxy()
+    public function getAuthProxy(): string
     {
         return $this->authProxy;
     }
@@ -439,7 +439,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return integer
      */
-    public function getExpires()
+    public function getExpires(): int
     {
         return $this->expires;
     }
@@ -495,7 +495,7 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return string
      */
-    public function getContactUsername()
+    public function getContactUsername(): string
     {
         return $this->contactUsername;
     }

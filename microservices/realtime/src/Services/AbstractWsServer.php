@@ -96,6 +96,15 @@ abstract class AbstractWsServer
         $this
             ->server
             ->shutdown();
+
+        exit;
+    }
+
+    public function reload()
+    {
+        $this
+            ->server
+            ->reload();
     }
 
     protected function bindWorkerEvents(
@@ -199,7 +208,6 @@ abstract class AbstractWsServer
         $this->logger->error(
             'worker stop shutdown'
         );
-        $this->shutdown();
     }
 
     protected function onWorkerError(

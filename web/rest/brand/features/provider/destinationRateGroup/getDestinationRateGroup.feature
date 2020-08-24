@@ -62,6 +62,7 @@ Feature: Retrieve destination rate group
     """
       {
           "status": "inProgress",
+          "lastExecutionError": null,
           "id": 1,
           "name": {
               "en": "Standard",

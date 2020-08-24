@@ -237,7 +237,7 @@ abstract class TerminalModelAbstract
      *
      * @return string
      */
-    public function getIden()
+    public function getIden(): string
     {
         return $this->iden;
     }
@@ -264,7 +264,7 @@ abstract class TerminalModelAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -291,7 +291,7 @@ abstract class TerminalModelAbstract
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }

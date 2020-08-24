@@ -397,7 +397,7 @@ abstract class UsersLocationAbstract
      *
      * @return string
      */
-    public function getRuid()
+    public function getRuid(): string
     {
         return $this->ruid;
     }
@@ -424,7 +424,7 @@ abstract class UsersLocationAbstract
      *
      * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -479,7 +479,7 @@ abstract class UsersLocationAbstract
      *
      * @return string
      */
-    public function getContact()
+    public function getContact(): string
     {
         return $this->contact;
     }
@@ -569,7 +569,7 @@ abstract class UsersLocationAbstract
      *
      * @return \DateTime
      */
-    public function getExpires()
+    public function getExpires(): \DateTime
     {
         return clone $this->expires;
     }
@@ -596,7 +596,7 @@ abstract class UsersLocationAbstract
      *
      * @return float
      */
-    public function getQ()
+    public function getQ(): float
     {
         return $this->q;
     }
@@ -623,7 +623,7 @@ abstract class UsersLocationAbstract
      *
      * @return string
      */
-    public function getCallid()
+    public function getCallid(): string
     {
         return $this->callid;
     }
@@ -650,7 +650,7 @@ abstract class UsersLocationAbstract
      *
      * @return integer
      */
-    public function getCseq()
+    public function getCseq(): int
     {
         return $this->cseq;
     }
@@ -684,7 +684,7 @@ abstract class UsersLocationAbstract
      *
      * @return \DateTime
      */
-    public function getLastModified()
+    public function getLastModified(): \DateTime
     {
         return clone $this->lastModified;
     }
@@ -711,7 +711,7 @@ abstract class UsersLocationAbstract
      *
      * @return integer
      */
-    public function getFlags()
+    public function getFlags(): int
     {
         return $this->flags;
     }
@@ -738,7 +738,7 @@ abstract class UsersLocationAbstract
      *
      * @return integer
      */
-    public function getCflags()
+    public function getCflags(): int
     {
         return $this->cflags;
     }
@@ -765,7 +765,7 @@ abstract class UsersLocationAbstract
      *
      * @return string
      */
-    public function getUserAgent()
+    public function getUserAgent(): string
     {
         return $this->userAgent;
     }
@@ -877,7 +877,7 @@ abstract class UsersLocationAbstract
      *
      * @return integer
      */
-    public function getRegId()
+    public function getRegId(): int
     {
         return $this->regId;
     }
@@ -904,7 +904,7 @@ abstract class UsersLocationAbstract
      *
      * @return integer
      */
-    public function getServerId()
+    public function getServerId(): int
     {
         return $this->serverId;
     }
@@ -931,7 +931,7 @@ abstract class UsersLocationAbstract
      *
      * @return integer
      */
-    public function getConnectionId()
+    public function getConnectionId(): int
     {
         return $this->connectionId;
     }
@@ -958,7 +958,7 @@ abstract class UsersLocationAbstract
      *
      * @return integer
      */
-    public function getKeepalive()
+    public function getKeepalive(): int
     {
         return $this->keepalive;
     }
@@ -985,7 +985,7 @@ abstract class UsersLocationAbstract
      *
      * @return integer
      */
-    public function getPartition()
+    public function getPartition(): int
     {
         return $this->partition;
     }

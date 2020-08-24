@@ -234,7 +234,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -293,7 +293,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @return string
      */
-    public function getAction()
+    public function getAction(): string
     {
         return $this->action;
     }
@@ -320,7 +320,7 @@ abstract class OutgoingDdiRulesPatternAbstract
      *
      * @return integer
      */
-    public function getPriority()
+    public function getPriority(): int
     {
         return $this->priority;
     }

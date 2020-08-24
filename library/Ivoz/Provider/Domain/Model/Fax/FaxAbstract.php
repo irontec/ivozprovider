@@ -209,7 +209,7 @@ abstract class FaxAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -265,7 +265,7 @@ abstract class FaxAbstract
      *
      * @return boolean
      */
-    public function getSendByEmail()
+    public function getSendByEmail(): bool
     {
         return $this->sendByEmail;
     }

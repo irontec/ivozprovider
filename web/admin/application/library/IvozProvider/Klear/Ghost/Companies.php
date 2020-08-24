@@ -3,6 +3,7 @@
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\AbstractBalanceService;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
@@ -30,13 +31,13 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
     public function getTypeIcon($model)
     {
         switch ($model->getType()) {
-            case Company::VPBX:
+            case CompanyInterface::TYPE_VPBX:
                 return '<span class="ui-silk inline ui-silk-building" title="Company"></span>';
-            case Company::RETAIL:
+            case CompanyInterface::TYPE_RETAIL:
                 return '<span class="ui-silk inline ui-silk-basket" title="Retail"></span>';
-            case Company::WHOLESALE:
+            case CompanyInterface::TYPE_WHOLESALE:
                 return '<span class="ui-silk inline ui-silk-cart" title="Wholesale"></span>';
-            case Company::RESIDENTIAL:
+            case CompanyInterface::TYPE_RESIDENTIAL:
                 return '<span class="ui-silk inline ui-silk-house" title="Residential"></span>';
             default:
                 return $model->getType();
@@ -53,10 +54,17 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
             /** @var DataGateway $dataGateway */
             $dataGateway = \Zend_Registry::get('data_gateway');
 
-            $amount = $this->fetchCompanyBalance->getBalance(
+            $balance = $this->fetchCompanyBalance->getBalance(
                 $companyDto->getBrandId(),
                 $companyDto->getId()
             );
+
+            // If numeric amount, round to 2 decimals value
+            if (is_numeric($balance)) {
+                $amount = sprintf("%0.2f", floatval($balance));
+            } else {
+                $amount = 0;
+            }
 
             $currencySymbol = $dataGateway->remoteProcedureCall(
                 Company::class,

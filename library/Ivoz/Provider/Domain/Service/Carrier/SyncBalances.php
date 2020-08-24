@@ -35,7 +35,7 @@ class SyncBalances
     {
         $this->logger->info('Companies balances are about to be synced');
 
-        $targetCarriers = $this->carrierRepository->getCarrierIdsGroupByBrand();
+        $targetCarriers = $this->carrierRepository->getCarrierIdsWithCalculatecostGroupByBrand();
         foreach ($targetCarriers as $brandId => $carriers) {
             $this->updateCarriers($brandId, $carriers);
         }
@@ -75,6 +75,9 @@ class SyncBalances
     private function persistBalances(array $carriersBalance)
     {
         foreach ($carriersBalance as $carrierId => $balance) {
+            if (is_null($balance)) {
+                continue;
+            }
 
             /** @var CarrierInterface | null $carrier */
             $carrier = $this->carrierRepository->find($carrierId);

@@ -34,14 +34,14 @@ interface CarrierInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): string;
 
     /**
      * Get name
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get externallyRated
@@ -91,6 +91,11 @@ interface CarrierInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
      */
     public function getProxyTrunk();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add outgoingRouting

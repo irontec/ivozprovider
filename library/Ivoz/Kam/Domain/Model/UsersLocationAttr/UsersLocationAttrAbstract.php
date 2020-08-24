@@ -238,7 +238,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @return string
      */
-    public function getRuid()
+    public function getRuid(): string
     {
         return $this->ruid;
     }
@@ -265,7 +265,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -320,7 +320,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @return string
      */
-    public function getAname()
+    public function getAname(): string
     {
         return $this->aname;
     }
@@ -347,7 +347,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @return integer
      */
-    public function getAtype()
+    public function getAtype(): int
     {
         return $this->atype;
     }
@@ -374,7 +374,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @return string
      */
-    public function getAvalue()
+    public function getAvalue(): string
     {
         return $this->avalue;
     }
@@ -408,7 +408,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @return \DateTime
      */
-    public function getLastModified()
+    public function getLastModified(): \DateTime
     {
         return clone $this->lastModified;
     }

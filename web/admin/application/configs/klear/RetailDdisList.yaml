@@ -37,10 +37,10 @@ production:
         options:
           title: _("Options")
           screens:
-            ddisEdit_screen: $[${auth.acls.DDIs.update} && ${auth.isNotCompanyOperator}]
-            ddisEditLimited_screen: $[${auth.acls.DDIs.update} && ${auth.isCompanyOperator}]
+            ddisEdit_screen: $[${auth.acls.DDIs.update} && ${auth.isNotCompanyOperator} && ${auth.companyRetail}]
+            ddisEditLimited_screen: $[${auth.acls.DDIs.update} && ${auth.isCompanyOperator} && ${auth.companyRetail}]
           dialogs:
-            ddisDel_dialog: $[${auth.acls.DDIs.delete} && ${auth.isNotCompanyOperator}]
+            ddisDel_dialog: $[${auth.acls.DDIs.delete} && ${auth.isNotCompanyOperator} && ${auth.companyRetail}]
           default: ddisEdit_screen
         blacklist:
           user: true
@@ -84,9 +84,9 @@ production:
       options:
         title: _("Options")
         screens:
-          ddisNew_screen: $[${auth.acls.DDIs.create} && ${auth.isNotCompanyOperator}]
+          ddisNew_screen: $[${auth.acls.DDIs.create} && ${auth.isNotCompanyOperator} && ${auth.companyRetail}]
         dialogs:
-          ddisDel_dialog: $[${auth.acls.DDIs.delete} && ${auth.isNotCompanyOperator}]
+          ddisDel_dialog: $[${auth.acls.DDIs.delete} && ${auth.isNotCompanyOperator} && ${auth.companyRetail}]
           importDDIs_dialog: false
 
     ddisNew_screen: &ddisNew_screenLink

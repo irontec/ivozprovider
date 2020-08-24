@@ -191,7 +191,7 @@ abstract class FriendsPatternAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -218,7 +218,7 @@ abstract class FriendsPatternAbstract
      *
      * @return string
      */
-    public function getRegExp()
+    public function getRegExp(): string
     {
         return $this->regExp;
     }

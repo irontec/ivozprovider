@@ -20,31 +20,12 @@ Feature: Update friends patterns
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "name": "Spain modified",
           "regExp": "+34[6|7|9]",
           "id": 1,
-          "friend": {
-              "name": "testFriend",
-              "description": "",
-              "transport": "udp",
-              "ip": "",
-              "port": 5060,
-              "authNeeded": "yes",
-              "password": "SDG3qd2j6+",
-              "priority": 1,
-              "allow": "alaw",
-              "fromDomain": "",
-              "directConnectivity": "yes",
-              "ddiIn": "yes",
-              "t38Passthrough": "no",
-              "id": 1,
-              "transformationRuleSet": null,
-              "callAcl": null,
-              "outgoingDdi": null,
-              "language": null
-          }
+          "friend": 1
       }
     """

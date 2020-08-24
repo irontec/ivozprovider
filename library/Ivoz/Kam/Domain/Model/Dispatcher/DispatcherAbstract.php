@@ -237,7 +237,7 @@ abstract class DispatcherAbstract
      *
      * @return integer
      */
-    public function getSetid()
+    public function getSetid(): int
     {
         return $this->setid;
     }
@@ -264,7 +264,7 @@ abstract class DispatcherAbstract
      *
      * @return string
      */
-    public function getDestination()
+    public function getDestination(): string
     {
         return $this->destination;
     }
@@ -291,7 +291,7 @@ abstract class DispatcherAbstract
      *
      * @return integer
      */
-    public function getFlags()
+    public function getFlags(): int
     {
         return $this->flags;
     }
@@ -318,7 +318,7 @@ abstract class DispatcherAbstract
      *
      * @return integer
      */
-    public function getPriority()
+    public function getPriority(): int
     {
         return $this->priority;
     }
@@ -345,7 +345,7 @@ abstract class DispatcherAbstract
      *
      * @return string
      */
-    public function getAttrs()
+    public function getAttrs(): string
     {
         return $this->attrs;
     }
@@ -372,7 +372,7 @@ abstract class DispatcherAbstract
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }

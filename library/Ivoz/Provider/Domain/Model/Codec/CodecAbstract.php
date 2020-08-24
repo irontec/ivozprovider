@@ -194,7 +194,7 @@ abstract class CodecAbstract
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -221,7 +221,7 @@ abstract class CodecAbstract
      *
      * @return string
      */
-    public function getIden()
+    public function getIden(): string
     {
         return $this->iden;
     }
@@ -248,7 +248,7 @@ abstract class CodecAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }

@@ -35,7 +35,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getSorceryId();
+    public function getSorceryId(): string;
 
     /**
      * Get fromDomain
@@ -63,21 +63,21 @@ interface PsEndpointInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getContext();
+    public function getContext(): string;
 
     /**
      * Get disallow
      *
      * @return string
      */
-    public function getDisallow();
+    public function getDisallow(): string;
 
     /**
      * Get allow
      *
      * @return string
      */
-    public function getAllow();
+    public function getAllow(): string;
 
     /**
      * Get directMedia
@@ -126,7 +126,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getOneHundredRel();
+    public function getOneHundredRel(): string;
 
     /**
      * Get outboundProxy
@@ -147,28 +147,28 @@ interface PsEndpointInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getT38Udptl();
+    public function getT38Udptl(): string;
 
     /**
      * Get t38UdptlEc
      *
      * @return string
      */
-    public function getT38UdptlEc();
+    public function getT38UdptlEc(): string;
 
     /**
      * Get t38UdptlMaxdatagram
      *
      * @return integer
      */
-    public function getT38UdptlMaxdatagram();
+    public function getT38UdptlMaxdatagram(): int;
 
     /**
      * Get t38UdptlNat
      *
      * @return string
      */
-    public function getT38UdptlNat();
+    public function getT38UdptlNat(): string;
 
     /**
      * Set terminal
@@ -233,4 +233,9 @@ interface PsEndpointInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

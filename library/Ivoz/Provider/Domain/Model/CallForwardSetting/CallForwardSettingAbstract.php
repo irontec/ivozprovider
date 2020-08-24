@@ -286,7 +286,7 @@ abstract class CallForwardSettingAbstract
      *
      * @return string
      */
-    public function getCallTypeFilter()
+    public function getCallTypeFilter(): string
     {
         return $this->callTypeFilter;
     }
@@ -319,7 +319,7 @@ abstract class CallForwardSettingAbstract
      *
      * @return string
      */
-    public function getCallForwardType()
+    public function getCallForwardType(): string
     {
         return $this->callForwardType;
     }
@@ -407,7 +407,7 @@ abstract class CallForwardSettingAbstract
      *
      * @return integer
      */
-    public function getNoAnswerTimeout()
+    public function getNoAnswerTimeout(): int
     {
         return $this->noAnswerTimeout;
     }
@@ -435,7 +435,7 @@ abstract class CallForwardSettingAbstract
      *
      * @return boolean
      */
-    public function getEnabled()
+    public function getEnabled(): bool
     {
         return $this->enabled;
     }

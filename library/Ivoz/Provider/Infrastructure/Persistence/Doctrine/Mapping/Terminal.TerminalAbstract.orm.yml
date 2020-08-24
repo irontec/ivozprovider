@@ -10,6 +10,9 @@ Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract:
       columns:
         - name
         - domainId
+    terminal_mac:
+      columns:
+      - mac
   fields:
     name:
       type: string

@@ -435,7 +435,7 @@ abstract class BillableCallAbstract
      *
      * @return float
      */
-    public function getDuration()
+    public function getDuration(): float
     {
         return $this->duration;
     }

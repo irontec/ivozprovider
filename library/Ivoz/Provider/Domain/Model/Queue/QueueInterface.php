@@ -146,7 +146,7 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getPreventMissedCalls();
+    public function getPreventMissedCalls(): int;
 
     /**
      * Get company
@@ -217,6 +217,11 @@ interface QueueInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getFullNumberCountry();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * @param string $prefix

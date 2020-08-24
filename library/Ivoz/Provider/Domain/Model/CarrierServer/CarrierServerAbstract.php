@@ -519,7 +519,7 @@ abstract class CarrierServerAbstract
      *
      * @return string
      */
-    public function getAuthNeeded()
+    public function getAuthNeeded(): string
     {
         return $this->authNeeded;
     }

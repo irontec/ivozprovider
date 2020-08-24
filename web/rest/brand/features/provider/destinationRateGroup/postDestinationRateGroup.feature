@@ -33,6 +33,7 @@
     """
       {
           "status": null,
+          "lastExecutionError": null,
           "deductibleConnectionFee": false,
           "id": 3,
           "name": {
@@ -68,6 +69,7 @@
     """
       {
           "status": null,
+          "lastExecutionError": null,
           "deductibleConnectionFee": false,
           "id": 3,
           "name": {

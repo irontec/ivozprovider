@@ -38,11 +38,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $authNeeded = 'yes';
-
-    /**
-     * @var string
-     */
     private $password;
 
     /**
@@ -94,6 +89,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
      * @var string
      */
     private $t38Passthrough = 'no';
+
+    /**
+     * @var boolean
+     */
+    private $alwaysApplyTransformations = false;
 
     /**
      * @var integer
@@ -168,7 +168,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'transport' => 'transport',
             'ip' => 'ip',
             'port' => 'port',
-            'authNeeded' => 'authNeeded',
             'password' => 'password',
             'priority' => 'priority',
             'disallow' => 'disallow',
@@ -180,6 +179,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'directConnectivity' => 'directConnectivity',
             'ddiIn' => 'ddiIn',
             't38Passthrough' => 't38Passthrough',
+            'alwaysApplyTransformations' => 'alwaysApplyTransformations',
             'id' => 'id',
             'companyId' => 'company',
             'domainId' => 'domain',
@@ -202,7 +202,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'transport' => $this->getTransport(),
             'ip' => $this->getIp(),
             'port' => $this->getPort(),
-            'authNeeded' => $this->getAuthNeeded(),
             'password' => $this->getPassword(),
             'priority' => $this->getPriority(),
             'disallow' => $this->getDisallow(),
@@ -214,6 +213,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'directConnectivity' => $this->getDirectConnectivity(),
             'ddiIn' => $this->getDdiIn(),
             't38Passthrough' => $this->getT38Passthrough(),
+            'alwaysApplyTransformations' => $this->getAlwaysApplyTransformations(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
@@ -338,26 +338,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getPort()
     {
         return $this->port;
-    }
-
-    /**
-     * @param string $authNeeded
-     *
-     * @return static
-     */
-    public function setAuthNeeded($authNeeded = null)
-    {
-        $this->authNeeded = $authNeeded;
-
-        return $this;
-    }
-
-    /**
-     * @return string | null
-     */
-    public function getAuthNeeded()
-    {
-        return $this->authNeeded;
     }
 
     /**
@@ -578,6 +558,26 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getT38Passthrough()
     {
         return $this->t38Passthrough;
+    }
+
+    /**
+     * @param boolean $alwaysApplyTransformations
+     *
+     * @return static
+     */
+    public function setAlwaysApplyTransformations($alwaysApplyTransformations = null)
+    {
+        $this->alwaysApplyTransformations = $alwaysApplyTransformations;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getAlwaysApplyTransformations()
+    {
+        return $this->alwaysApplyTransformations;
     }
 
     /**

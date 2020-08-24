@@ -218,7 +218,7 @@ abstract class UsersHtableAbstract
      *
      * @return string
      */
-    public function getKeyName()
+    public function getKeyName(): string
     {
         return $this->keyName;
     }
@@ -245,7 +245,7 @@ abstract class UsersHtableAbstract
      *
      * @return integer
      */
-    public function getKeyType()
+    public function getKeyType(): int
     {
         return $this->keyType;
     }
@@ -272,7 +272,7 @@ abstract class UsersHtableAbstract
      *
      * @return integer
      */
-    public function getValueType()
+    public function getValueType(): int
     {
         return $this->valueType;
     }
@@ -299,7 +299,7 @@ abstract class UsersHtableAbstract
      *
      * @return string
      */
-    public function getKeyValue()
+    public function getKeyValue(): string
     {
         return $this->keyValue;
     }
@@ -326,7 +326,7 @@ abstract class UsersHtableAbstract
      *
      * @return integer
      */
-    public function getExpires()
+    public function getExpires(): int
     {
         return $this->expires;
     }

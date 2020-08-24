@@ -221,7 +221,7 @@ abstract class AdministratorRelPublicEntityAbstract
      *
      * @return boolean
      */
-    public function getCreate()
+    public function getCreate(): bool
     {
         return $this->create;
     }
@@ -249,7 +249,7 @@ abstract class AdministratorRelPublicEntityAbstract
      *
      * @return boolean
      */
-    public function getRead()
+    public function getRead(): bool
     {
         return $this->read;
     }
@@ -277,7 +277,7 @@ abstract class AdministratorRelPublicEntityAbstract
      *
      * @return boolean
      */
-    public function getUpdate()
+    public function getUpdate(): bool
     {
         return $this->update;
     }
@@ -305,7 +305,7 @@ abstract class AdministratorRelPublicEntityAbstract
      *
      * @return boolean
      */
-    public function getDelete()
+    public function getDelete(): bool
     {
         return $this->delete;
     }
