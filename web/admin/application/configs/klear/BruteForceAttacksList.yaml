@@ -24,6 +24,10 @@ production:
         <<: *documentationLink
         href: "/doc/en/administration_portal/brand/views/bruteforce_attacks.html"
       fields: &bruteForceAttacks_fieldsLink
+        options:
+          title: _("Options")
+          dialogs:
+            bruteForceUnban_dialog: true
         order:
           company: true
           aor: true
@@ -32,6 +36,20 @@ production:
         blacklist:
           blocker: true
           description: true
+
+  dialogs:
+    bruteForceUnban_dialog: &bruteForceUnban_dialogLink
+      title: _("Unban address")
+      module: default
+      controller: klear-custom-brute-force-unban
+      action: index
+      class: ui-silk-flag-green
+      label: false
+      labelOnEdit: false
+      labelOnList: false
+      labelOnEntityPostSave: false
+      multiItem: false
+
 staging:
   _extends: production
 testing:
