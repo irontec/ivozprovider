@@ -337,6 +337,11 @@ msgid_plural "Brand services"
 msgstr[0] "Brand service"
 msgstr[1] "Brand services"
 
+msgid "Brute-force attack"
+msgid_plural "Brute-force attacks"
+msgstr[0] "Brute-force attack"
+msgstr[1] "Brute-force attacks"
+
 msgid "Busy"
 msgstr "Busy"
 
@@ -2461,6 +2466,9 @@ msgstr "SIP Domain can't be empty"
 
 msgid "SIP Proxy"
 msgstr "SIP Proxy"
+
+msgid "SIP address"
+msgstr "SIP address"
 
 msgid "SIP domain"
 msgstr "SIP domain"
