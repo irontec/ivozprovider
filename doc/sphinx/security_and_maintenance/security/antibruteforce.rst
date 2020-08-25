@@ -25,3 +25,5 @@ After 12 hours, source is accepted again and:
 
 
 This simple mechanism prevents brute-force attacks even from sources excluded from :ref:`SIP Antiflooding` mechanism.
+
+.. tip:: See :ref:`Brute-force attacks` for currently blocked sources.
