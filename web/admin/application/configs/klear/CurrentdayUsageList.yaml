@@ -65,6 +65,7 @@ production:
           maxDailyUsage: true
           allowRecordingRemoval: true
           externallyExtraOpts: true
+          relCountries: true
         order:
           typeIcon: true
           name: true
