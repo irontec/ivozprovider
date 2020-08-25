@@ -794,6 +794,9 @@ msgstr ""
 msgid "Do you really want to revoke access to selected entities?"
 msgstr "¿Realmente desea denegar el acceso a las entidades seleccionadas?"
 
+msgid "Do you really want to unban selected item?"
+msgstr "¿Realmente desea desbloquear el elemento seleccionado?"
+
 #, python-format
 msgid "Do you want revoke access to this %s?"
 msgstr "¿Desea denegar el acceso a %s?"
@@ -2918,6 +2921,12 @@ msgstr "Tipus URL"
 
 msgid "Unassigned"
 msgstr "No adscrit"
+
+msgid "Unban address"
+msgstr "Desbloquear dirección"
+
+msgid "Unbanned address"
+msgstr "Dirección desbloqueda"
 
 msgid "Unconditional Call Forward"
 msgstr "Desvío incondicional"

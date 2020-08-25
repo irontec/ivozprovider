@@ -784,6 +784,9 @@ msgstr "Do you really want to grant write access to selected entities?"
 msgid "Do you really want to revoke access to selected entities?"
 msgstr "Do you really want to revoke access to selected entities?"
 
+msgid "Do you really want to unban selected item?"
+msgstr "Do you really want to unban selected item?"
+
 #, python-format
 msgid "Do you want revoke access to this %s?"
 msgstr "Do you want revoke access to this %s?"
@@ -2896,6 +2899,12 @@ msgstr "URL type"
 
 msgid "Unassigned"
 msgstr "Unassigned"
+
+msgid "Unban address"
+msgstr "Unban address"
+
+msgid "Unbanned address"
+msgstr "Unbanned address"
 
 msgid "Unconditional Call Forward"
 msgstr "Unconditional Call Forward"
