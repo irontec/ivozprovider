@@ -4,11 +4,14 @@ namespace Ivoz\Kam\Infrastructure\Gearman;
 
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcTrunksRequestInterface;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
+use Ivoz\Kam\Infrastructure\Kamailio\JsonRpcRequestTrait;
 use Ivoz\Kam\Infrastructure\Kamailio\RpcClient;
 use Psr\Log\LoggerInterface;
 
 class TrunksClient implements TrunksClientInterface
 {
+    use JsonRpcRequestTrait;
+
     protected $rpcClient;
     protected $germanClient;
     protected $logger;
@@ -209,40 +212,5 @@ class TrunksClient implements TrunksClientInterface
         }
 
         return $response->result === 0;
-    }
-
-    /**
-     * @param string $method
-     * @param array $payload
-     * @throws \RuntimeException
-     * @return \stdClass
-     */
-    private function sendRequest($method, array $payload = [])
-    {
-        /** @var \Graze\GuzzleHttp\JsonRpc\Message\Request $request */
-        $request = $this
-            ->rpcClient
-            ->request(
-                1,
-                $method,
-                $payload
-            );
-
-        /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $response */
-        $response = $this->rpcClient->send($request);
-        $stringResponse = (string) $response->getBody();
-        $objectResponse = json_decode($stringResponse);
-
-        if ($response->getRpcErrorCode()) {
-            $errorMsg = sprintf(
-                'Trunks API response error: %s',
-                $response->getRpcErrorMessage()
-            );
-
-            $this->logger->error($errorMsg);
-            throw new \RuntimeException($errorMsg);
-        }
-
-        return $objectResponse;
     }
 }

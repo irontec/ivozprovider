@@ -2,8 +2,8 @@
 Brute-force attacks
 *******************
 
-*SIP address + IP address* combinations listed here have been blocked by *Anti brute-force* mechanism.
+*SIP address + IP address* combinations listed here have been blocked (for 12 hours) by *Anti brute-force* mechanism.
 
-.. warning:: Sources are blocked for 12 hours.
+.. tip:: You can unblock any source using green flag button of each row.
 
 See :ref:`Anti brute-force attacks` for further information.

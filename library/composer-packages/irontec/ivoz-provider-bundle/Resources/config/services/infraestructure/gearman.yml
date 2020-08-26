@@ -29,6 +29,8 @@ services:
     alias: 'Ivoz\Kam\Infrastructure\Gearman\TrunksClient'
     public: true
 
-  Ivoz\Kam\Infrastructure\Gearman\UsersClient: ~
+  Ivoz\Kam\Infrastructure\Gearman\UsersClient:
+    arguments:
+      $rpcClient: '@Ivoz\Kam\Infrastructure\Kamailio\RpcClient::Users'
   Ivoz\Kam\Domain\Service\UsersClientInterface:
     alias: 'Ivoz\Kam\Infrastructure\Gearman\UsersClient'
