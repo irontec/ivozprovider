@@ -14,6 +14,7 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
     const TYPE_LOWBALANCE = 'lowbalance';
     const TYPE_INVOICE = 'invoice';
     const TYPE_CALLCSV = 'callCsv';
+    const TYPE_MAXDAILYUSAGE = 'maxDailyUsage';
 
 
     /**

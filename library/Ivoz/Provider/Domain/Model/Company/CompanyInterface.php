@@ -203,6 +203,20 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getMaxDailyUsage(): int;
 
     /**
+     * Get currentDayUsage
+     *
+     * @return float | null
+     */
+    public function getCurrentDayUsage();
+
+    /**
+     * Get maxDailyUsageEmail
+     *
+     * @return string | null
+     */
+    public function getMaxDailyUsageEmail();
+
+    /**
      * Get postalAddress
      *
      * @return string
@@ -420,6 +434,13 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getCallCsvNotificationTemplate();
+
+    /**
+     * Get maxDailyUsageNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getMaxDailyUsageNotificationTemplate();
 
     /**
      * @return bool
