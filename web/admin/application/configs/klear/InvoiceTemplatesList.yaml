@@ -41,8 +41,6 @@ production:
         title: _("Options")
         screens:
           invoiceTemplatesNew_screen: true
-        dialogs:
-          invoiceTemplatesDel_dialog: true
       <<: *invoiceTemplateHelp
 
     invoiceTemplatesNew_screen: &invoiceTemplatesNew_screenLink
