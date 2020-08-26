@@ -646,7 +646,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         if ($retarificable) {
             $serviceContainer = \Zend_Registry::get('container');
             $rerateService = $serviceContainer->get(
-                \Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RerateCallService::class
+                \Ivoz\Cgr\Infrastructure\Cgrates\Service\RerateCallService::class
             );
 
             try {
