@@ -12,7 +12,6 @@ production:
     <<: *matchLists_screensLink
     genericMatchListsList_screen:
       <<: *matchListsList_screenLink
-      rawCondition: false
       title: _("List of %s %2s", ngettext('Generic Match List', 'Generic Match Lists', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
