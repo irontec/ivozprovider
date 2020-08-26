@@ -316,6 +316,10 @@ production:
               title: ngettext('IP filter blocked address', 'IP filter blocked addresses', 0)
               class: ui-silk-door
               description: _("List of %s", ngettext('IP filter blocked address', 'IP filter blocked addresses', 0))
+            BruteForceAttacksList:
+              title: ngettext('Brute-force attack', 'Brute-force attacks', 0)
+              class: ui-silk-delete
+              description: _("List of %s", ngettext('Brute-force attack', 'Brute-force attacks', 0))
     Admin:
       title: _("Client Configuration")
       meta: "[mine:${auth.isCompanyAdmin}|company:${auth.companyId}|type:${auth.companyType}|name:${auth.companyName}]"

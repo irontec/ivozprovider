@@ -31,6 +31,13 @@ interface BannedAddressInterface extends LoggableEntityInterface
     public function getBlocker();
 
     /**
+     * Get aor
+     *
+     * @return string | null
+     */
+    public function getAor();
+
+    /**
      * Get description
      *
      * @return string | null

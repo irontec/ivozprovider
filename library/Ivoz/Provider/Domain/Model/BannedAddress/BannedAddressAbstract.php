@@ -27,6 +27,11 @@ abstract class BannedAddressAbstract
     /**
      * @var string | null
      */
+    protected $aor;
+
+    /**
+     * @var string | null
+     */
     protected $description;
 
     /**
@@ -127,6 +132,7 @@ abstract class BannedAddressAbstract
         $self
             ->setIp($dto->getIp())
             ->setBlocker($dto->getBlocker())
+            ->setAor($dto->getAor())
             ->setDescription($dto->getDescription())
             ->setLastTimeBanned($dto->getLastTimeBanned())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
@@ -152,6 +158,7 @@ abstract class BannedAddressAbstract
         $this
             ->setIp($dto->getIp())
             ->setBlocker($dto->getBlocker())
+            ->setAor($dto->getAor())
             ->setDescription($dto->getDescription())
             ->setLastTimeBanned($dto->getLastTimeBanned())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
@@ -172,6 +179,7 @@ abstract class BannedAddressAbstract
         return self::createDto()
             ->setIp(self::getIp())
             ->setBlocker(self::getBlocker())
+            ->setAor(self::getAor())
             ->setDescription(self::getDescription())
             ->setLastTimeBanned(self::getLastTimeBanned())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
@@ -186,6 +194,7 @@ abstract class BannedAddressAbstract
         return [
             'ip' => self::getIp(),
             'blocker' => self::getBlocker(),
+            'aor' => self::getAor(),
             'description' => self::getDescription(),
             'lastTimeBanned' => self::getLastTimeBanned(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
@@ -252,6 +261,34 @@ abstract class BannedAddressAbstract
     public function getBlocker()
     {
         return $this->blocker;
+    }
+
+    /**
+     * Set aor
+     *
+     * @param string $aor | null
+     *
+     * @return static
+     */
+    protected function setAor($aor = null)
+    {
+        if (!is_null($aor)) {
+            Assertion::maxLength($aor, 300, 'aor value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->aor = $aor;
+
+        return $this;
+    }
+
+    /**
+     * Get aor
+     *
+     * @return string | null
+     */
+    public function getAor()
+    {
+        return $this->aor;
     }
 
     /**

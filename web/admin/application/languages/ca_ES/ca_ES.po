@@ -342,6 +342,11 @@ msgid_plural "Brand services"
 msgstr[0] "Servei de marca"
 msgstr[1] "Serveis de marca"
 
+msgid "Brute-force attack"
+msgid_plural "Brute-force attacks"
+msgstr[0] "Ataque de fuerza bruta"
+msgstr[1] "Ataques de fuerza bruta"
+
 msgid "Busy"
 msgstr "Ocupat"
 
@@ -2480,6 +2485,9 @@ msgstr "Domini SIP no pot estar buit"
 
 msgid "SIP Proxy"
 msgstr "Intermediari SIP"
+
+msgid "SIP address"
+msgstr "Adreça SIP"
 
 msgid "SIP domain"
 msgstr "Domini SIP"

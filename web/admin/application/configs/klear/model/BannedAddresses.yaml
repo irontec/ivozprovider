@@ -37,6 +37,10 @@ production:
       title: _('Blocker')
       type: text
       trim: both
+    aor:
+      title: _('SIP address')
+      type: text
+      trim: both
     description:
       title: _('Description')
       type: text

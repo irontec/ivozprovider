@@ -27,6 +27,7 @@ production:
         blacklist:
           blocker: true
           description: true
+          aor: true
 staging:
   _extends: production
 testing:
