@@ -31,6 +31,7 @@ production:
           'lowbalance': _('Low balance')
           'invoice': ngettext('Invoice', 'Invoices', 1)
           'callCsv': ngettext('Call CSV', 'Call CSVs', 1)
+          'maxDailyUsage': _('Max daily usage')
 staging:
   _extends: production
 testing:

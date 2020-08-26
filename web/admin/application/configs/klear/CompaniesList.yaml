@@ -69,6 +69,7 @@ production:
           faxNotificationTemplate: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
+          maxDailyUsageNotificationTemplate: true
           balance: true
           currentDayUsage: true
           currentDayMaxUsage: true
@@ -77,6 +78,7 @@ production:
           showInvoices: true
           outgoingDdi: true
           maxDailyUsage: true
+          maxDailyUsageEmail: true
           allowRecordingRemoval: true
           externallyExtraOpts: true
           relCountries: true
@@ -164,13 +166,16 @@ production:
             relFeatures: 3
             billingMethod: 3
         group1:
-          colsPerRow: 2
+          colsPerRow: 3
           label: _("Security")
           fields:
             maxCalls: 1
+            __empty0: 2
             maxDailyUsage: 1
+            maxDailyUsageNotificationTemplate: 1
+            maxDailyUsageEmail: 1
             ipFilter: 1
-            relCountries: 1
+            relCountries: 2
         group2:
           colsPerRow: 3
           label: _("Geographic Configuration")
@@ -244,13 +249,16 @@ production:
             relFeatures: 3
             billingMethod: 3
         group1:
-          colsPerRow: 2
+          colsPerRow: 3
           label: _("Security")
           fields:
             maxCalls: 1
+            __empty0: 2
             maxDailyUsage: 1
+            maxDailyUsageNotificationTemplate: 1
+            maxDailyUsageEmail: 1
             ipFilter: 1
-            relCountries: 1
+            relCountries: 2
         group2:
           colsPerRow: 3
           label: _("Geographic Configuration")

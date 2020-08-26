@@ -47,6 +47,7 @@ production:
           faxNotificationTemplate: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
+          maxDailyUsageNotificationTemplate: true
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
@@ -98,6 +99,7 @@ production:
           faxNotificationTemplate: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
+          maxDailyUsageNotificationTemplate: true
           recordingsLimitMB: true
           recordingsDiskUsage: true
           recordingsDiskAvailable: true
@@ -160,6 +162,7 @@ production:
             faxNotificationTemplate: 1
             invoiceNotificationTemplate: 1
             callCsvNotificationTemplate: 1
+            maxDailyUsageNotificationTemplate: 1
 
     brandsEdit_screen: &brandsEdit_screenLink
       <<: *Brands
