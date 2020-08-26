@@ -222,6 +222,13 @@ production:
         blacklist:
           <<: *billableCalls_blacklistLink
           brand: true
+        options:
+          title: _("Options")
+          screens:
+            billableCallsView_screen: ${auth.acls.BillableCalls.read}
+          dialogs:
+            tarificateCall_dialog: ${auth.brandFeatures.billing.enabled}
+          default: billableCallsView_screen
     billableCallsView_screen:
       <<: *billableCallsView_screenLink
       fields:
@@ -230,6 +237,7 @@ production:
           brand: true
 
   dialogs: &carriers_dialogsLink
+    <<: *billableCalls_dialogsLink
     carriersDel_dialog: &carriersDel_dialogLink
       <<: *Carriers
       controller: delete
