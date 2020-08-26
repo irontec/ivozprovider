@@ -1,6 +1,6 @@
 <?php
 
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\BillingService;
+use Ivoz\Cgr\Infrastructure\Cgrates\Service\BillingService;
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
