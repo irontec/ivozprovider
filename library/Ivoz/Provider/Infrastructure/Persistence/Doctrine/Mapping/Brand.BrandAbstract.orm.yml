@@ -140,3 +140,15 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
           nullable: true
           onDelete: set null
       orphanRemoval: false
+    maxDailyUsageNotificationTemplate:
+      targetEntity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        maxDailyUsageNotificationTemplateId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false

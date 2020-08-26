@@ -59,6 +59,21 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
         unsigned: true
         default: 1000000
       column: maxDailyUsage
+    currentDayUsage:
+      type: decimal
+      nullable: true
+      precision: 10
+      scale: 4
+      options:
+        default: 0
+      column: currentDayUsage
+    maxDailyUsageEmail:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+      column: maxDailyUsageEmail
     postalAddress:
       type: string
       nullable: false
@@ -330,6 +345,18 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       inversedBy: null
       joinColumns:
         callCsvNotificationTemplateId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    maxDailyUsageNotificationTemplate:
+      targetEntity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        maxDailyUsageNotificationTemplateId:
           referencedColumnName: id
           nullable: true
           onDelete: set null
