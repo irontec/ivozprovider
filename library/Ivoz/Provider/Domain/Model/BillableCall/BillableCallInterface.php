@@ -117,6 +117,13 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getEndpointId();
 
     /**
+     * Get endpointName
+     *
+     * @return string | null
+     */
+    public function getEndpointName();
+
+    /**
      * Get direction
      *
      * @return string | null
