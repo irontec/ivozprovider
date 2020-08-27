@@ -11,6 +11,10 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountRepository;
+use Ivoz\Provider\Domain\Model\User\UserRepository;
 use Ivoz\Provider\Domain\Service\BillableCall\CreateOrUpdateByTrunksCdr;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -20,10 +24,11 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
+    protected $retailAccountRepository;
+    protected $residentialDeviceRepository;
+    protected $userRepository;
+    protected $friendRepository;
 
     //////////////////////////////////////
     ///
@@ -45,12 +50,24 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
     protected $billableCall;
 
     public function let(
-        EntityTools $entityTools
+        EntityTools $entityTools,
+        RetailAccountRepository $retailAccountRepository,
+        ResidentialDeviceRepository $residentialDeviceRepository,
+        UserRepository $userRepository,
+        FriendRepository $friendRepository
     ) {
         $this->entityTools = $entityTools;
+        $this->retailAccountRepository = $retailAccountRepository;
+        $this->residentialDeviceRepository = $residentialDeviceRepository;
+        $this->userRepository = $userRepository;
+        $this->friendRepository = $friendRepository;
 
         $this->beConstructedWith(
-            $this->entityTools
+            $this->entityTools,
+            $this->retailAccountRepository,
+            $this->residentialDeviceRepository,
+            $this->userRepository,
+            $this->friendRepository
         );
 
         $this->prepareExecution();
