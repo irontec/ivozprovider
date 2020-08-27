@@ -7,18 +7,35 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountRepository;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\User\UserRepository;
 
 class CreateOrUpdateByTrunksCdr
 {
-    /**
-     * @var EntityTools
-     */
     protected $entityTools;
+    protected $retailAccountRepository;
+    protected $residentialDeviceRepository;
+    protected $userRepository;
+    protected $friendRepository;
 
     public function __construct(
-        EntityTools $entityTools
+        EntityTools $entityTools,
+        RetailAccountRepository $retailAccountRepository,
+        ResidentialDeviceRepository $residentialDeviceRepository,
+        UserRepository $userRepository,
+        FriendRepository $friendRepository
     ) {
         $this->entityTools = $entityTools;
+        $this->retailAccountRepository = $retailAccountRepository;
+        $this->residentialDeviceRepository = $residentialDeviceRepository;
+        $this->userRepository = $userRepository;
+        $this->friendRepository = $friendRepository;
     }
 
     /**
@@ -98,27 +115,71 @@ class CreateOrUpdateByTrunksCdr
         }
 
         if ($trunksCdrDto->getRetailAccountId()) {
+
+            /** @var RetailAccountInterface|null $retailAccount */
+            $retailAccount = $this->retailAccountRepository->find(
+                $trunksCdrDto->getRetailAccountId()
+            );
+
+            $endpointName = $retailAccount
+                ? $retailAccount->getName()
+                : null;
+
             $billableCallDto
                 ->setEndpointType(BillableCallInterface::ENDPOINTTYPE_RETAILACCOUNT)
-                ->setEndpointId($trunksCdrDto->getRetailAccountId());
+                ->setEndpointId($trunksCdrDto->getRetailAccountId())
+                ->setEndpointName($endpointName);
         }
 
         if ($trunksCdrDto->getResidentialDeviceId()) {
+
+            /** @var ResidentialDeviceInterface|null $residentialDevice */
+            $residentialDevice = $this->residentialDeviceRepository->find(
+                $trunksCdrDto->getResidentialDeviceId()
+            );
+
+            $endpointName = $residentialDevice
+                ? $residentialDevice->getName()
+                : null;
+
             $billableCallDto
                 ->setEndpointType(BillableCallInterface::ENDPOINTTYPE_RESIDENTIALDEVICE)
-                ->setEndpointId($trunksCdrDto->getResidentialDeviceId());
+                ->setEndpointId($trunksCdrDto->getResidentialDeviceId())
+                ->setEndpointName($endpointName);
         }
 
         if ($trunksCdrDto->getUserId()) {
+
+            /** @var UserInterface|null $user */
+            $user = $this->userRepository->find(
+                $trunksCdrDto->getUserId()
+            );
+
+            $endpointName = ($user && $user->getExtension())
+                ? $user->getExtension()->getNumber()
+                : null;
+
             $billableCallDto
                 ->setEndpointType(BillableCallInterface::ENDPOINTTYPE_USER)
-                ->setEndpointId($trunksCdrDto->getUserId());
+                ->setEndpointId($trunksCdrDto->getUserId())
+                ->setEndpointName($endpointName);
         }
 
         if ($trunksCdrDto->getFriendId()) {
+
+            /** @var FriendInterface|null $friend */
+            $friend = $this->friendRepository->find(
+                $trunksCdrDto->getFriendId()
+            );
+
+            $endpointName = $friend
+                ? $friend->getName()
+                : null;
+
             $billableCallDto
                 ->setEndpointType(BillableCallInterface::ENDPOINTTYPE_FRIEND)
-                ->setEndpointId($trunksCdrDto->getFriendId());
+                ->setEndpointId($trunksCdrDto->getFriendId())
+                ->setEndpointName($endpointName);
         }
 
         if ($trunksCdrDto->getFaxId()) {
