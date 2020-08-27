@@ -42,6 +42,7 @@ Feature: Update billable calls
           "ratingPlanName": "RatingPlan Test",
           "endpointType": null,
           "endpointId": null,
+          "endpointName": null,
           "direction": "outbound",
           "id": 2,
           "company": 1,
