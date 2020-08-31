@@ -51,8 +51,7 @@
         }
     },
     "require": {
-        "api-platform/core": "2.2.*",
-        "irontec/ivoz-api-bundle": "^3.1",
+        "irontec/ivoz-api-bundle": "^4.0",
         "irontec/ivoz-provider-bundle": "^2.0",
         "xamin/handlebars.php": "^0.10.4",
         "knplabs/knp-snappy": "0.4.3",

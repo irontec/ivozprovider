@@ -40,7 +40,7 @@
         "symfony/http-kernel": "^3.4",
         "symfony/property-access": "^3.4",
         "symfony/property-info": "^3.4",
-        "symfony/serializer": "^3.4",
+        "symfony/serializer": "^3.4 || ^4.1",
         "symfony/templating": "^3.4",
         "symfony/twig-bundle": "^3.4",
         "symfony/validator": "^3.4",

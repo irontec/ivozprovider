@@ -1678,7 +1678,7 @@
                 "symfony/expression-language": "3.4.*",
                 "symfony/finder": "3.4.*",
                 "symfony/http-foundation": "3.4.*",
-                "symfony/serializer": "3.4.*"
+                "symfony/serializer": "3.4.* || ^4.1"
             },
             "type": "library",
             "autoload": {
@@ -1711,16 +1711,16 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "3.3",
+            "version": "4.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "3a6df81761283a921cfd93139a56435c63845a98"
+                "reference": "0d1281fd77b053d84764ac591a5ffd93448e1918"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^1.6|^2.0",
                 "doctrine/doctrine-cache-bundle": "^1.3",
-                "irontec/ivoz-core": "^3.1",
+                "irontec/ivoz-core": "^4.0",
                 "ocramius/proxy-manager": "~2.0",
                 "php": ">=7.0.19",
                 "symfony/monolog-bundle": "3.1.*",
@@ -1767,8 +1767,8 @@
             "require": {
                 "beberlei/doctrineextensions": "^1.1",
                 "incenteev/composer-parameter-handler": "^2.0",
-                "irontec/ivoz-core": "^3.0",
-                "irontec/ivoz-core-bundle": "^3.0",
+                "irontec/ivoz-core": "^4.0",
+                "irontec/ivoz-core-bundle": "^4.0",
                 "php": ">=7.0.19",
                 "sensio/distribution-bundle": "5.0.*",
                 "symfony/asset": "^3.4",
@@ -1782,7 +1782,7 @@
                 "symfony/http-kernel": "^3.4",
                 "symfony/property-access": "^3.4",
                 "symfony/property-info": "^3.4",
-                "symfony/serializer": "^3.4",
+                "symfony/serializer": "^3.4 || ^4.1",
                 "symfony/templating": "^3.4",
                 "symfony/twig-bundle": "^3.4",
                 "symfony/validator": "^3.4"
@@ -6189,33 +6189,34 @@
         },
         {
             "name": "symfony/serializer",
-            "version": "v3.4.43",
+            "version": "v4.2.12",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/serializer",
-                "reference": "f64adecb8428febda812166bdc4baa99c039fc74"
+                "reference": "8a2974c10e8eb8eb2d36a28c1bd68eb0b411cc60"
             },
             "require": {
-                "php": "^5.5.9|>=7.0.8",
+                "php": "^7.1.3",
                 "symfony/polyfill-ctype": "~1.8"
             },
             "conflict": {
                 "phpdocumentor/type-resolver": "<0.2.1",
-                "symfony/dependency-injection": "<3.2",
-                "symfony/property-access": ">=3.0,<3.0.4|>=2.8,<2.8.4",
-                "symfony/property-info": "<3.1",
+                "symfony/dependency-injection": "<3.4",
+                "symfony/property-access": "<3.4",
+                "symfony/property-info": "<3.4",
                 "symfony/yaml": "<3.4"
             },
             "require-dev": {
                 "doctrine/annotations": "~1.0",
                 "doctrine/cache": "~1.0",
                 "phpdocumentor/reflection-docblock": "^3.0|^4.0",
-                "symfony/cache": "~3.1|~4.0",
-                "symfony/config": "~2.8|~3.0|~4.0",
-                "symfony/dependency-injection": "~3.2|~4.0",
-                "symfony/http-foundation": "~2.8|~3.0|~4.0",
-                "symfony/property-access": "~2.8|~3.0|~4.0",
+                "symfony/cache": "~3.4|~4.0",
+                "symfony/config": "~3.4|~4.0",
+                "symfony/dependency-injection": "~3.4|~4.0",
+                "symfony/http-foundation": "~3.4|~4.0",
+                "symfony/property-access": "~3.4|~4.0",
                 "symfony/property-info": "^3.4.13|~4.0",
+                "symfony/validator": "~3.4|~4.0",
                 "symfony/yaml": "~3.4|~4.0"
             },
             "suggest": {
@@ -6231,7 +6232,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.4-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
