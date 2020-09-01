@@ -1756,8 +1756,13 @@ msgstr "Tipo coincidencia"
 msgid "Max calls"
 msgstr "Límite llamadas"
 
+msgid "Max daily Notification"
+msgid_plural "Max daily Notifications"
+msgstr[0] "Notif. Máximo consumo"
+msgstr[1] "Notif. Máximo consumo"
+
 msgid "Max daily usage"
-msgstr "Máximo consumo diario"
+msgstr "Máximo diario"
 
 msgid "Max digits"
 msgstr "Longitud máxima"
@@ -3009,6 +3014,9 @@ msgstr "Se empleará este en lugar del usuario de la cabecera From"
 
 msgid "Used as voicemail reception and user portal credential"
 msgstr "Empleado en buzón de voz y acceso al portal de usuario"
+
+msgid "Used to notify if max daily usage has been reached"
+msgstr "Empleado para notificar cuando se alcanza el máximo consumo diario"
 
 msgid "User"
 msgid_plural "Users"

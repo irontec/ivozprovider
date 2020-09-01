@@ -1732,6 +1732,11 @@ msgstr "Matching type"
 msgid "Max calls"
 msgstr "Max calls"
 
+msgid "Max daily Notification"
+msgid_plural "Max daily Notifications"
+msgstr[0] "Max daily Notification"
+msgstr[1] "Max daily Notifications"
+
 msgid "Max daily usage"
 msgstr "Max daily usage"
 
@@ -2971,6 +2976,9 @@ msgstr "Use this instead in From header username"
 
 msgid "Used as voicemail reception and user portal credential"
 msgstr "Used as voicemail reception and user portal credential"
+
+msgid "Used to notify if max daily usage has been reached"
+msgstr "Used to notify if max daily usage has been reached"
 
 msgid "User"
 msgid_plural "Users"
