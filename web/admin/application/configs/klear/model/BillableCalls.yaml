@@ -98,6 +98,9 @@ production:
     endpointId:
       title: _('Endpoint id')
       type: text
+    endpointName:
+      title: _('Endpoint name')
+      type: text
     ddiProvider:
       title: ngettext('DDI Provider', 'DDI Providers', 1)
       type: select

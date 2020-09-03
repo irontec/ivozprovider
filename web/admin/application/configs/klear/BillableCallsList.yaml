@@ -30,7 +30,7 @@ production:
         options:
           title: _("Options")
           screens:
-            billableCallsView_screen: ${auth.acls.BillableCalls}
+            billableCallsView_screen: ${auth.acls.BillableCalls.read}
           default: billableCallsView_screen
         blacklist: &billableCalls_blacklistLink
           callid: true
@@ -40,6 +40,7 @@ production:
           ddiProvider: true
           endpointType: true
           endpointId: true
+          endpointName: true
         order:
           startTime: true
           brand: true
@@ -105,8 +106,9 @@ production:
           colsPerRow: 12
           fields:
             callid: 12
-            endpointType: 8
+            endpointType: 4
             endpointId: 4
+            endpointName: 4
 
   dialogs:  &billableCalls_dialogsLink
     tarificateCall_dialog:
