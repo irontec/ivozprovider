@@ -43,6 +43,7 @@ production:
           ratingPlanName: true
           endpointType: true
           endpointId: true
+          endpointName: true
         order:
           startTime: true
           direction: true
@@ -101,8 +102,9 @@ production:
           colsPerRow: 12
           fields:
             callid: 12
-            endpointType: 8
+            endpointType: 4
             endpointId: 4
+            endpointName: 4
   dialogs:
     <<: *billableCalls_dialogsLink
 
