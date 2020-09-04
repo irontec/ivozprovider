@@ -37,6 +37,7 @@ Feature: Update terminals
           "mac": "aabbccddeeff",
           "lastProvisionDate": "1970-01-01 10:10:10",
           "t38Passthrough": "no",
+          "rtpEncryption": false,
           "id": 1,
           "terminalModel": 2
       }
