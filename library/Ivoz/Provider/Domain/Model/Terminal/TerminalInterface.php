@@ -122,6 +122,13 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getT38Passthrough(): string;
 
     /**
+     * Get rtpEncryption
+     *
+     * @return boolean
+     */
+    public function getRtpEncryption(): bool;
+
+    /**
      * Set company
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company

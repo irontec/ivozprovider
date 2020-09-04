@@ -243,6 +243,13 @@ interface FriendInterface extends LoggableEntityInterface
     public function getAlwaysApplyTransformations(): bool;
 
     /**
+     * Get rtpEncryption
+     *
+     * @return boolean
+     */
+    public function getRtpEncryption(): bool;
+
+    /**
      * Set company
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company

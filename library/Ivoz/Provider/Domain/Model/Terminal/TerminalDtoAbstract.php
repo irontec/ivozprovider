@@ -56,6 +56,11 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     private $t38Passthrough = 'no';
 
     /**
+     * @var boolean
+     */
+    private $rtpEncryption = false;
+
+    /**
      * @var integer
      */
     private $id;
@@ -112,6 +117,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
             'mac' => 'mac',
             'lastProvisionDate' => 'lastProvisionDate',
             't38Passthrough' => 't38Passthrough',
+            'rtpEncryption' => 'rtpEncryption',
             'id' => 'id',
             'companyId' => 'company',
             'domainId' => 'domain',
@@ -134,6 +140,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
             'mac' => $this->getMac(),
             'lastProvisionDate' => $this->getLastProvisionDate(),
             't38Passthrough' => $this->getT38Passthrough(),
+            'rtpEncryption' => $this->getRtpEncryption(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
@@ -334,6 +341,26 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     public function getT38Passthrough()
     {
         return $this->t38Passthrough;
+    }
+
+    /**
+     * @param boolean $rtpEncryption
+     *
+     * @return static
+     */
+    public function setRtpEncryption($rtpEncryption = null)
+    {
+        $this->rtpEncryption = $rtpEncryption;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getRtpEncryption()
+    {
+        return $this->rtpEncryption;
     }
 
     /**
