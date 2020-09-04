@@ -925,6 +925,13 @@ msgstr ""
 "portal del cliente"
 
 msgid ""
+"Enable to force audio encryption. Call won't be established unless it is "
+"encrypted."
+msgstr ""
+"Activar para forzar el cifrado del audio. La llamada no se establecerá en "
+"caso de no ser posible cifrar su audio."
+
+msgid ""
 "Enable to force numeric transformation on numbers in Extensions or numbers "
 "matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
 "transformations rules."
@@ -2250,6 +2257,9 @@ msgstr[1] "Miembros de cola"
 
 msgid "R-URI pattern"
 msgstr "Patrón R-URI"
+
+msgid "RTP encryption"
+msgstr "Cifrar RTP"
 
 msgid "Random"
 msgstr "Aleatoriamente"
