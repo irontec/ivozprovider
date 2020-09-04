@@ -86,6 +86,10 @@ These are the configurable settings of *Residential devices*:
         If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
         will act as a T.38 gateway, bridging fax-calls of a T.38 capable carrier and a T.38 capable device.
 
+    RTP Encryption
+        If set to 'yes', call won't be established unless it's possible to encryption its audio. If set to 'no',
+        audio won't be encrypted.
+
 .. tip:: Residential device can be contacted due to calls to several DDIs. *DDI In* setting allows remote SIP endpoint to
          know which number caused each call, setting that number as destination (R-URI and To headers). This way, residential
          device can handle calls differently.

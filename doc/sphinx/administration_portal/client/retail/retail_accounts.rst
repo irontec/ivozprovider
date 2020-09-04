@@ -77,6 +77,10 @@ These are the configurable settings of *Retail accounts*:
         If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
         will act as a T.38 gateway, bridging fax-calls of a T.38 capable carrier and a T.38 capable device.
 
+    RTP Encryption
+        If set to 'yes', call won't be established unless it's possible to encryption its audio. If set to 'no',
+        audio won't be encrypted.
+
 .. warning:: All retail accounts within a retail client will have the transcoding capabilities configured at client level.
 
 .. tip:: On retail account edit screen **id** field shows internal identification number assigned to the retail account.
