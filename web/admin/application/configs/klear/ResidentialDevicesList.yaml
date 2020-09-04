@@ -48,6 +48,7 @@ production:
           maxCalls: true
           t38Passthrough: true
           outgoingDdi: true
+          rtpEncryption: true
         order:
           name: true
           domain: true
@@ -102,6 +103,7 @@ production:
           fromDomain: true
           ddiIn: true
           maxCalls: true
+          rtpEncryption: true
         order: &residentialDevices_orderLink
           name: true
           description: true
@@ -154,6 +156,7 @@ production:
             ddiIn: 3
             t38Passthrough: 3
             maxCalls: 3
+            rtpEncryption: 3
     residentialDevicesEdit_screen: &residentialDevicesEdit_screenLink
       <<: *ResidentialDevices
       controller: edit

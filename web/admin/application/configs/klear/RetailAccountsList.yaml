@@ -40,6 +40,7 @@ production:
           ddiIn: true
           t38Passthrough: true
           outgoingDdi: true
+          rtpEncryption: true
         order:
           name: true
           domain: true
@@ -87,6 +88,7 @@ production:
           transformationRuleSet: true
           fromDomain: true
           ddiIn: true
+          rtpEncryption: true
         order: &retailAccounts_orderLink
           id: true
           name: true
@@ -133,6 +135,7 @@ production:
             fromDomain: 3
             ddiIn: 3
             t38Passthrough: 3
+            rtpEncryption: 3
 
     retailAccountsEdit_screen: &retailAccountsEdit_screenLink
       <<: *RetailAccounts

@@ -35,6 +35,7 @@ production:
           t38Passthrough: true
           allowAudio: true
           allowVideo: true
+          rtpEncryption: true
         options:
           title: _("Options")
           screens:
@@ -92,6 +93,7 @@ production:
           allowAudio: true
           allowVideo: true
           directMediaMethod: true
+          rtpEncryption: true
       fixedPositions: &TerminalsFixedPositions_link
         group0:
           label: _("Login Info")
@@ -108,6 +110,7 @@ production:
             allowVideo: 4
             directMediaMethod: 4
             t38Passthrough: 4
+            rtpEncryption: 4
         group2:
           label: _("Provisioning Info")
           colsPerRow: 12

@@ -153,6 +153,23 @@ production:
         values:
           'yes': _('Yes')
           'no': _('No')
+    rtpEncryption:
+      title: _('RTP encryption')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Enable to force audio encryption. Call won't be established unless it is encrypted.")
+        label: _("Need help?")
 staging:
   _extends: production
 testing:
