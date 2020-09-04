@@ -78,6 +78,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
+    private $endpointName;
+
+    /**
+     * @var string
+     */
     private $direction = 'outbound';
 
     /**
@@ -161,6 +166,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'ratingPlanName' => 'ratingPlanName',
             'endpointType' => 'endpointType',
             'endpointId' => 'endpointId',
+            'endpointName' => 'endpointName',
             'direction' => 'direction',
             'id' => 'id',
             'brandId' => 'brand',
@@ -194,6 +200,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'ratingPlanName' => $this->getRatingPlanName(),
             'endpointType' => $this->getEndpointType(),
             'endpointId' => $this->getEndpointId(),
+            'endpointName' => $this->getEndpointName(),
             'direction' => $this->getDirection(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
@@ -479,6 +486,26 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     public function getEndpointId()
     {
         return $this->endpointId;
+    }
+
+    /**
+     * @param string $endpointName
+     *
+     * @return static
+     */
+    public function setEndpointName($endpointName = null)
+    {
+        $this->endpointName = $endpointName;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getEndpointName()
+    {
+        return $this->endpointName;
     }
 
     /**

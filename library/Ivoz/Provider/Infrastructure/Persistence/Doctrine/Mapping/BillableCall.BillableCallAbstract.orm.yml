@@ -87,6 +87,13 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
         unsigned: true
         fixed: false
       column: endpointId
+    endpointName:
+      type: string
+      nullable: true
+      length: 65
+      options:
+        fixed: false
+      column: endpointName
     direction:
       type: string
       nullable: true

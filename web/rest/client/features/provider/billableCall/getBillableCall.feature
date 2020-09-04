@@ -23,6 +23,7 @@ Feature: Retrieve billable calls
               "price": 1,
               "endpointType": null,
               "endpointId": null,
+              "endpointName": null,
               "direction": "outbound",
               "id": 1,
               "ddi": 1
@@ -36,6 +37,7 @@ Feature: Retrieve billable calls
               "price": 1,
               "endpointType": null,
               "endpointId": null,
+              "endpointName": null,
               "direction": "outbound",
               "id": 2,
               "ddi": 1
@@ -49,6 +51,7 @@ Feature: Retrieve billable calls
               "price": 1,
               "endpointType": null,
               "endpointId": null,
+              "endpointName": null,
               "direction": "outbound",
               "id": 3,
               "ddi": 1
@@ -62,6 +65,7 @@ Feature: Retrieve billable calls
               "price": 1,
               "endpointType": null,
               "endpointId": null,
+              "endpointName": null,
               "direction": "outbound",
               "id": 4,
               "ddi": 1
@@ -75,6 +79,7 @@ Feature: Retrieve billable calls
               "price": 1,
               "endpointType": null,
               "endpointId": null,
+              "endpointName": null,
               "direction": "outbound",
               "id": 5,
               "ddi": 1
@@ -102,6 +107,7 @@ Feature: Retrieve billable calls
           "ratingPlanName": null,
           "endpointType": null,
           "endpointId": null,
+          "endpointName": null,
           "direction": "outbound",
           "id": 1,
           "ddi": {
