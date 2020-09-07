@@ -65,6 +65,11 @@ abstract class TerminalAbstract
     protected $t38Passthrough = 'no';
 
     /**
+     * @var boolean
+     */
+    protected $rtpEncryption = false;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -90,13 +95,15 @@ abstract class TerminalAbstract
         $allowAudio,
         $directMediaMethod,
         $password,
-        $t38Passthrough
+        $t38Passthrough,
+        $rtpEncryption
     ) {
         $this->setDisallow($disallow);
         $this->setAllowAudio($allowAudio);
         $this->setDirectMediaMethod($directMediaMethod);
         $this->setPassword($password);
         $this->setT38Passthrough($t38Passthrough);
+        $this->setRtpEncryption($rtpEncryption);
     }
 
     abstract public function getId();
@@ -172,7 +179,8 @@ abstract class TerminalAbstract
             $dto->getAllowAudio(),
             $dto->getDirectMediaMethod(),
             $dto->getPassword(),
-            $dto->getT38Passthrough()
+            $dto->getT38Passthrough(),
+            $dto->getRtpEncryption()
         );
 
         $self
@@ -211,6 +219,7 @@ abstract class TerminalAbstract
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
             ->setT38Passthrough($dto->getT38Passthrough())
+            ->setRtpEncryption($dto->getRtpEncryption())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()));
@@ -237,6 +246,7 @@ abstract class TerminalAbstract
             ->setMac(self::getMac())
             ->setLastProvisionDate(self::getLastProvisionDate())
             ->setT38Passthrough(self::getT38Passthrough())
+            ->setRtpEncryption(self::getRtpEncryption())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::entityToDto(self::getTerminalModel(), $depth));
@@ -257,6 +267,7 @@ abstract class TerminalAbstract
             'mac' => self::getMac(),
             'lastProvisionDate' => self::getLastProvisionDate(),
             't38Passthrough' => self::getT38Passthrough(),
+            'rtpEncryption' => self::getRtpEncryption(),
             'companyId' => self::getCompany()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
@@ -523,6 +534,34 @@ abstract class TerminalAbstract
     public function getT38Passthrough(): string
     {
         return $this->t38Passthrough;
+    }
+
+    /**
+     * Set rtpEncryption
+     *
+     * @param boolean $rtpEncryption
+     *
+     * @return static
+     */
+    protected function setRtpEncryption($rtpEncryption)
+    {
+        Assertion::notNull($rtpEncryption, 'rtpEncryption value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
+        $rtpEncryption = (bool) $rtpEncryption;
+
+        $this->rtpEncryption = $rtpEncryption;
+
+        return $this;
+    }
+
+    /**
+     * Get rtpEncryption
+     *
+     * @return boolean
+     */
+    public function getRtpEncryption(): bool
+    {
+        return $this->rtpEncryption;
     }
 
     /**

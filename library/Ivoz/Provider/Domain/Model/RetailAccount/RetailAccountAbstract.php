@@ -68,6 +68,11 @@ abstract class RetailAccountAbstract
     protected $t38Passthrough = 'no';
 
     /**
+     * @var boolean
+     */
+    protected $rtpEncryption = false;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -103,13 +108,15 @@ abstract class RetailAccountAbstract
         $description,
         $directConnectivity,
         $ddiIn,
-        $t38Passthrough
+        $t38Passthrough,
+        $rtpEncryption
     ) {
         $this->setName($name);
         $this->setDescription($description);
         $this->setDirectConnectivity($directConnectivity);
         $this->setDdiIn($ddiIn);
         $this->setT38Passthrough($t38Passthrough);
+        $this->setRtpEncryption($rtpEncryption);
     }
 
     abstract public function getId();
@@ -185,7 +192,8 @@ abstract class RetailAccountAbstract
             $dto->getDescription(),
             $dto->getDirectConnectivity(),
             $dto->getDdiIn(),
-            $dto->getT38Passthrough()
+            $dto->getT38Passthrough(),
+            $dto->getRtpEncryption()
         );
 
         $self
@@ -228,6 +236,7 @@ abstract class RetailAccountAbstract
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setDdiIn($dto->getDdiIn())
             ->setT38Passthrough($dto->getT38Passthrough())
+            ->setRtpEncryption($dto->getRtpEncryption())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
@@ -257,6 +266,7 @@ abstract class RetailAccountAbstract
             ->setDirectConnectivity(self::getDirectConnectivity())
             ->setDdiIn(self::getDdiIn())
             ->setT38Passthrough(self::getT38Passthrough())
+            ->setRtpEncryption(self::getRtpEncryption())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
@@ -280,6 +290,7 @@ abstract class RetailAccountAbstract
             'directConnectivity' => self::getDirectConnectivity(),
             'ddiIn' => self::getDdiIn(),
             't38Passthrough' => self::getT38Passthrough(),
+            'rtpEncryption' => self::getRtpEncryption(),
             'brandId' => self::getBrand()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'companyId' => self::getCompany()->getId(),
@@ -578,6 +589,34 @@ abstract class RetailAccountAbstract
     public function getT38Passthrough(): string
     {
         return $this->t38Passthrough;
+    }
+
+    /**
+     * Set rtpEncryption
+     *
+     * @param boolean $rtpEncryption
+     *
+     * @return static
+     */
+    protected function setRtpEncryption($rtpEncryption)
+    {
+        Assertion::notNull($rtpEncryption, 'rtpEncryption value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
+        $rtpEncryption = (bool) $rtpEncryption;
+
+        $this->rtpEncryption = $rtpEncryption;
+
+        return $this;
+    }
+
+    /**
+     * Get rtpEncryption
+     *
+     * @return boolean
+     */
+    public function getRtpEncryption(): bool
+    {
+        return $this->rtpEncryption;
     }
 
     /**

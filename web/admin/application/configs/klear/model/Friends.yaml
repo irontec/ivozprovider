@@ -239,6 +239,7 @@ production:
                 - language
                 - transformationRuleSet
                 - callACL
+                - rtpEncryption
           'no':
             title: _('Register')
             visualFilter:
@@ -256,6 +257,7 @@ production:
                 - language
                 - transformationRuleSet
                 - callACL
+                - rtpEncryption
           'intervpbx':
             title: _('Inter vPBX')
             visualFilter:
@@ -272,6 +274,7 @@ production:
                 - transformationRuleSet
                 - callACL
                 - t38Passthrough
+                - rtpEncryption
               show:
                 - interCompany
     interCompany:
@@ -360,6 +363,23 @@ production:
         position: left
         icon: help
         text: _("Enable to force numeric transformation on numbers in Extensions or numbers matching any Friend regexp. Otherwise, those numbers won't traverse numeric transformations rules.")
+        label: _("Need help?")
+    rtpEncryption:
+      title: _('RTP encryption')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Enable to force audio encryption. Call won't be established unless it is encrypted.")
         label: _("Need help?")
 staging:
   _extends: production

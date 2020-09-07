@@ -96,6 +96,11 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     private $t38Passthrough = 'no';
 
     /**
+     * @var boolean
+     */
+    private $rtpEncryption = false;
+
+    /**
      * @var integer
      */
     private $id;
@@ -180,6 +185,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'ddiIn' => 'ddiIn',
             'maxCalls' => 'maxCalls',
             't38Passthrough' => 't38Passthrough',
+            'rtpEncryption' => 'rtpEncryption',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -213,6 +219,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'ddiIn' => $this->getDdiIn(),
             'maxCalls' => $this->getMaxCalls(),
             't38Passthrough' => $this->getT38Passthrough(),
+            'rtpEncryption' => $this->getRtpEncryption(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -577,6 +584,26 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getT38Passthrough()
     {
         return $this->t38Passthrough;
+    }
+
+    /**
+     * @param boolean $rtpEncryption
+     *
+     * @return static
+     */
+    public function setRtpEncryption($rtpEncryption = null)
+    {
+        $this->rtpEncryption = $rtpEncryption;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getRtpEncryption()
+    {
+        return $this->rtpEncryption;
     }
 
     /**

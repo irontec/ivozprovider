@@ -37,6 +37,7 @@ Feature: Create terminals
           "mac": null,
           "lastProvisionDate": "1970-03-04 11:12:13",
           "t38Passthrough": "no",
+          "rtpEncryption": false,
           "id": 4,
           "terminalModel": 1
       }

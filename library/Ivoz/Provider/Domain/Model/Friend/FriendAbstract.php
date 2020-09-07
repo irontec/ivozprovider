@@ -110,6 +110,11 @@ abstract class FriendAbstract
     protected $alwaysApplyTransformations = false;
 
     /**
+     * @var boolean
+     */
+    protected $rtpEncryption = false;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -162,7 +167,8 @@ abstract class FriendAbstract
         $directConnectivity,
         $ddiIn,
         $t38Passthrough,
-        $alwaysApplyTransformations
+        $alwaysApplyTransformations,
+        $rtpEncryption
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -176,6 +182,7 @@ abstract class FriendAbstract
         $this->setDdiIn($ddiIn);
         $this->setT38Passthrough($t38Passthrough);
         $this->setAlwaysApplyTransformations($alwaysApplyTransformations);
+        $this->setRtpEncryption($rtpEncryption);
     }
 
     abstract public function getId();
@@ -258,7 +265,8 @@ abstract class FriendAbstract
             $dto->getDirectConnectivity(),
             $dto->getDdiIn(),
             $dto->getT38Passthrough(),
-            $dto->getAlwaysApplyTransformations()
+            $dto->getAlwaysApplyTransformations(),
+            $dto->getRtpEncryption()
         );
 
         $self
@@ -310,6 +318,7 @@ abstract class FriendAbstract
             ->setDdiIn($dto->getDdiIn())
             ->setT38Passthrough($dto->getT38Passthrough())
             ->setAlwaysApplyTransformations($dto->getAlwaysApplyTransformations())
+            ->setRtpEncryption($dto->getRtpEncryption())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
@@ -348,6 +357,7 @@ abstract class FriendAbstract
             ->setDdiIn(self::getDdiIn())
             ->setT38Passthrough(self::getT38Passthrough())
             ->setAlwaysApplyTransformations(self::getAlwaysApplyTransformations())
+            ->setRtpEncryption(self::getRtpEncryption())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
@@ -380,6 +390,7 @@ abstract class FriendAbstract
             'ddiIn' => self::getDdiIn(),
             't38Passthrough' => self::getT38Passthrough(),
             'alwaysApplyTransformations' => self::getAlwaysApplyTransformations(),
+            'rtpEncryption' => self::getRtpEncryption(),
             'companyId' => self::getCompany()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
@@ -881,6 +892,34 @@ abstract class FriendAbstract
     public function getAlwaysApplyTransformations(): bool
     {
         return $this->alwaysApplyTransformations;
+    }
+
+    /**
+     * Set rtpEncryption
+     *
+     * @param boolean $rtpEncryption
+     *
+     * @return static
+     */
+    protected function setRtpEncryption($rtpEncryption)
+    {
+        Assertion::notNull($rtpEncryption, 'rtpEncryption value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
+        $rtpEncryption = (bool) $rtpEncryption;
+
+        $this->rtpEncryption = $rtpEncryption;
+
+        return $this;
+    }
+
+    /**
+     * Get rtpEncryption
+     *
+     * @return boolean
+     */
+    public function getRtpEncryption(): bool
+    {
+        return $this->rtpEncryption;
     }
 
     /**

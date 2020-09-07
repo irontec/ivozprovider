@@ -78,6 +78,12 @@ Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract:
         comment: '[enum:yes|no]'
         default: 'no'
       column: t38Passthrough
+    rtpEncryption:
+      type: boolean
+      nullable: false
+      options:
+        default: '0'
+      column: rtpEncryption
   manyToOne:
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface

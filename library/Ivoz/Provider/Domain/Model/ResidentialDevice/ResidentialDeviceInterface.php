@@ -239,6 +239,13 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getT38Passthrough(): string;
 
     /**
+     * Get rtpEncryption
+     *
+     * @return boolean
+     */
+    public function getRtpEncryption(): bool;
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand

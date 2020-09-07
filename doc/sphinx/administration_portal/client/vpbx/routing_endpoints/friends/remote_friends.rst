@@ -99,6 +99,10 @@ These are the configurable settings of *friends*:
         Both numbers listed in Extensions section and numbers matching any friend regexp will be considered as internal and
         won't traverse numeric transformation rules.  Enable this setting to force Numeric Transformation rules even on these numbers. 
 
+    RTP Encryption
+        If set to 'yes', call won't be established unless it's possible to encryption its audio. If set to 'no',
+        audio won't be encrypted.
+
 .. note:: Calls to *friends* are considered internal. That means that ACLs won't
           be checked when calling a friend, no matter if the origin of the call
           is a user or another friend.

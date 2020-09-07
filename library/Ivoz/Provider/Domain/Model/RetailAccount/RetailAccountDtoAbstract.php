@@ -61,6 +61,11 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     private $t38Passthrough = 'no';
 
     /**
+     * @var boolean
+     */
+    private $rtpEncryption = false;
+
+    /**
      * @var integer
      */
     private $id;
@@ -133,6 +138,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'directConnectivity' => 'directConnectivity',
             'ddiIn' => 'ddiIn',
             't38Passthrough' => 't38Passthrough',
+            'rtpEncryption' => 'rtpEncryption',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -158,6 +164,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'directConnectivity' => $this->getDirectConnectivity(),
             'ddiIn' => $this->getDdiIn(),
             't38Passthrough' => $this->getT38Passthrough(),
+            'rtpEncryption' => $this->getRtpEncryption(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -381,6 +388,26 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     public function getT38Passthrough()
     {
         return $this->t38Passthrough;
+    }
+
+    /**
+     * @param boolean $rtpEncryption
+     *
+     * @return static
+     */
+    public function setRtpEncryption($rtpEncryption = null)
+    {
+        $this->rtpEncryption = $rtpEncryption;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getRtpEncryption()
+    {
+        return $this->rtpEncryption;
     }
 
     /**

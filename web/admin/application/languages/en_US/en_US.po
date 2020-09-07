@@ -911,6 +911,13 @@ msgstr ""
 "recordings section."
 
 msgid ""
+"Enable to force audio encryption. Call won't be established unless it is "
+"encrypted."
+msgstr ""
+"Enable to force audio encryption. Call won't be established unless it is "
+"encrypted."
+
+msgid ""
 "Enable to force numeric transformation on numbers in Extensions or numbers "
 "matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
 "transformations rules."
@@ -2220,6 +2227,9 @@ msgstr[1] "Queue Members"
 
 msgid "R-URI pattern"
 msgstr "R-URI pattern"
+
+msgid "RTP encryption"
+msgstr "RTP encryption"
 
 msgid "Random"
 msgstr "Random"

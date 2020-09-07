@@ -96,6 +96,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $alwaysApplyTransformations = false;
 
     /**
+     * @var boolean
+     */
+    private $rtpEncryption = false;
+
+    /**
      * @var integer
      */
     private $id;
@@ -180,6 +185,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'ddiIn' => 'ddiIn',
             't38Passthrough' => 't38Passthrough',
             'alwaysApplyTransformations' => 'alwaysApplyTransformations',
+            'rtpEncryption' => 'rtpEncryption',
             'id' => 'id',
             'companyId' => 'company',
             'domainId' => 'domain',
@@ -214,6 +220,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'ddiIn' => $this->getDdiIn(),
             't38Passthrough' => $this->getT38Passthrough(),
             'alwaysApplyTransformations' => $this->getAlwaysApplyTransformations(),
+            'rtpEncryption' => $this->getRtpEncryption(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
@@ -578,6 +585,26 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getAlwaysApplyTransformations()
     {
         return $this->alwaysApplyTransformations;
+    }
+
+    /**
+     * @param boolean $rtpEncryption
+     *
+     * @return static
+     */
+    public function setRtpEncryption($rtpEncryption = null)
+    {
+        $this->rtpEncryption = $rtpEncryption;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getRtpEncryption()
+    {
+        return $this->rtpEncryption;
     }
 
     /**
