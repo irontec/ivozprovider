@@ -66,10 +66,12 @@ production:
           faxNotificationTemplate: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
+          maxDailyUsageNotificationTemplate: true
           balance: true
           showInvoices: true
           outgoingDdi: true
           maxDailyUsage: true
+          maxDailyUsageEmail: true
           allowRecordingRemoval: true
           externallyExtraOpts: true
           relCountries: true
@@ -161,13 +163,16 @@ production:
             transformationRuleSet: 8
             currency: 4
         group2:
-          colsPerRow: 2
+          colsPerRow: 3
           label: _("Security")
           fields:
             maxCalls: 1
+            __empty0: 2
             maxDailyUsage: 1
+            maxDailyUsageNotificationTemplate: 1
+            maxDailyUsageEmail: 1
             ipFilter: 1
-            relCountries: 1
+            relCountries: 2
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -229,13 +234,16 @@ production:
             transformationRuleSet: 8
             currency: 4
         group2:
-          colsPerRow: 2
+          colsPerRow: 3
           label: _("Security")
           fields:
             maxCalls: 1
+            __empty0: 2
             maxDailyUsage: 1
+            maxDailyUsageNotificationTemplate: 1
+            maxDailyUsageEmail: 1
             ipFilter: 1
-            relCountries: 1
+            relCountries: 2
         group3:
           colsPerRow: 12
           collapsed: true

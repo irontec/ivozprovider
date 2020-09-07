@@ -304,6 +304,19 @@ production:
             - name
             template: '%name%'
         'null': _("Use generic template")
+    maxDailyUsageNotificationTemplate:
+      title: ngettext('Max daily Notification', 'Max daily Notifications', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate
+          filterClass: IvozProvider_Klear_Filter_NotificationTemplateMaxDailyUsage
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+        'null': _("Use generic template")
 staging:
   _extends: production
 testing:

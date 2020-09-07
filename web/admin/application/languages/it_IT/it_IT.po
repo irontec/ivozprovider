@@ -1759,6 +1759,11 @@ msgstr "Confronta tipo"
 msgid "Max calls"
 msgstr "Max Chiamate"
 
+msgid "Max daily Notification"
+msgid_plural "Max daily Notifications"
+msgstr[0] "Notifica Consumo giornaliero"
+msgstr[1] "Notifiche Consumo giornaliero"
+
 msgid "Max daily usage"
 msgstr "Consumo giornaliero"
 
@@ -3017,6 +3022,9 @@ msgstr "Usa questo nel From header username"
 msgid "Used as voicemail reception and user portal credential"
 msgstr ""
 "Utilizzato per la ricezione Voicemail e come credenziali del portale utente"
+
+msgid "Used to notify if max daily usage has been reached"
+msgstr "Used to notify if max daily usage has been reached"
 
 msgid "User"
 msgid_plural "Users"

@@ -24,6 +24,7 @@ production:
           invoiceVariables: true
           lowBalanceVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
         options:
           title: _("Options")
           screens:
@@ -55,6 +56,7 @@ production:
           invoiceVariables: true
           lowBalanceVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
           subject: true
           bodyType: true
           body: true
@@ -78,6 +80,8 @@ production:
             faxVariables: 12
             invoiceVariables: 12
             lowBalanceVariables: 12
+            callCsvVariables: 12
+            maxDailyUsageVariables: 12
             bodyType: 3
             subject: 9
             body: 12
@@ -122,6 +126,7 @@ production:
           invoiceVariables: true
           lowBalanceVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
     notificationTemplatesContentsVoicemailEdit_screen: &notificationTemplatesContentsVoicemailEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
       fields:
@@ -132,6 +137,7 @@ production:
           invoiceVariables: true
           lowBalanceVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
 
     ###################################################################################################################
     # Screens for Fax Notification templates
@@ -164,6 +170,7 @@ production:
           invoiceVariables: true
           lowBalanceVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
     notificationTemplatesContentsFaxEdit_screen: &notificationTemplatesContentsFaxEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
       fields:
@@ -174,6 +181,7 @@ production:
           lowBalanceVariables: true
           invoiceVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
 
     ###################################################################################################################
     # Screens for Invoice Notification templates
@@ -206,6 +214,7 @@ production:
           lowBalanceVariables: true
           faxVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
     notificationTemplatesContentsInvoiceEdit_screen: &notificationTemplatesContentsInvoiceEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
       fields:
@@ -216,6 +225,7 @@ production:
           lowBalanceVariables: true
           faxVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
 
     ###################################################################################################################
     # Screens for LowBalance Notification templates
@@ -248,6 +258,7 @@ production:
           faxVariables: true
           invoiceVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
     notificationTemplatesContentsLowBalanceEdit_screen: &notificationTemplatesContentsLowBalanceEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
       fields:
@@ -258,6 +269,7 @@ production:
           faxVariables: true
           invoiceVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
 
     ###################################################################################################################
     # Screens for CallCsv Notification templates
@@ -290,6 +302,7 @@ production:
           lowBalanceVariables: true
           faxVariables: true
           invoiceVariables: true
+          maxDailyUsageVariables: true
     notificationTemplatesContentsCallCsvEdit_screen: &notificationTemplatesContentsCallCsvEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
       fields:
@@ -300,6 +313,51 @@ production:
           lowBalanceVariables: true
           faxVariables: true
           invoiceVariables: true
+          maxDailyUsageVariables: true
+
+    ###################################################################################################################
+    # Screens for maxDailyUsage Notification templates
+    # This screens is like the generic one but hiding the other substitution variables helpers
+    ###################################################################################################################
+    notificationTemplatesContentsMaxDailyUsageList_screen: &notificationTemplatesContentsMaxDailyUsageList_screenLink
+      <<: *notificationTemplatesContentsList_screenLink
+      fields:
+        <<: *notificationTemplatesContents_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            notificationTemplatesContentsMaxDailyUsageEdit_screen: true
+          dialogs:
+            notificationTemplatesContentsDel_dialog: true
+          default: notificationTemplatesContentsMaxDailyUsageEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          notificationTemplatesContentsMaxDailyUsageNew_screen: true
+        dialogs:
+          notificationTemplatesContentsDel_dialog: true
+    notificationTemplatesContentsMaxDailyUsageNew_screen: &notificationTemplatesContentsMaxDailyUsageNew_screenLink
+      <<: *notificationTemplatesContentsNew_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          lowBalanceVariables: true
+          faxVariables: true
+          invoiceVariables: true
+          callCsvVariables: true
+    notificationTemplatesContentsMaxDailyUsageEdit_screen: &notificationTemplatesContentsMaxDailyUsageEdit_screenLink
+      <<: *notificationTemplatesContentsEdit_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          lowBalanceVariables: true
+          faxVariables: true
+          invoiceVariables: true
+          callCsvVariables: true
 
   dialogs: &notificationTemplatesContents_dialogsLink
     notificationTemplatesContentsDel_dialog: &notificationTemplatesContentsDel_dialogLink

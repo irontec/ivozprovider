@@ -170,6 +170,13 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getCallCsvNotificationTemplate();
 
     /**
+     * Get maxDailyUsageNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getMaxDailyUsageNotificationTemplate();
+
+    /**
      * Get logo
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\Logo

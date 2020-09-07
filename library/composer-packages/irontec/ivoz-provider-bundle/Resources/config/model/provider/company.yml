@@ -3,6 +3,11 @@ services:
     autowire: true
     public: false
 
+  Ivoz\Provider\Domain\Service\Company\SyncDailyUsage:
+    public: true
+    arguments:
+      $logger: '@logger'
+
   Ivoz\Provider\Domain\Service\Company\SyncBalances:
     public: true
     arguments:

@@ -18,7 +18,7 @@ Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateAbstract:
       length: 25
       options:
         fixed: false
-        comment: '[enum:voicemail|fax|limit|lowbalance|invoice|callCsv]'
+        comment: '[enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage]'
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface

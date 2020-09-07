@@ -31,6 +31,7 @@ production:
             notificationTemplatesContentsLowBalanceList_screen: true
             notificationTemplatesContentsInvoiceList_screen: true
             notificationTemplatesContentsCallCsvList_screen: true
+            notificationTemplatesContentsMaxDailyUsageList_screen: true
           dialogs:
             notificationTemplatesDel_dialog: ${auth.acls.NotificationTemplates.delete}
           default: notificationTemplatesEdit_screen
@@ -137,6 +138,20 @@ production:
       filterField: notificationTemplate
     notificationTemplatesContentsCallCsvEdit_screen:
       <<: *notificationTemplatesContentsCallCsvEdit_screenLink
+      filterField: notificationTemplate
+
+    # notificationTemplatesMaxDailyUsageContents screens:
+    notificationTemplatesContentsMaxDailyUsageList_screen:
+      <<: *notificationTemplatesContentsMaxDailyUsageList_screenLink
+      filterField: notificationTemplate
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForNotificationMaxDailyUsage
+        - recordCount
+    notificationTemplatesContentsMaxDailyUsageNew_screen:
+      <<: *notificationTemplatesContentsMaxDailyUsageNew_screenLink
+      filterField: notificationTemplate
+    notificationTemplatesContentsMaxDailyUsageEdit_screen:
+      <<: *notificationTemplatesContentsMaxDailyUsageEdit_screenLink
       filterField: notificationTemplate
 
   dialogs: &notificationTemplates_dialogsLink

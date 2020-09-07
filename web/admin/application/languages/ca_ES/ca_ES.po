@@ -1747,6 +1747,11 @@ msgstr "Tipus de coincidència"
 msgid "Max calls"
 msgstr "Trucades màximes"
 
+msgid "Max daily Notification"
+msgid_plural "Max daily Notifications"
+msgstr[0] "Notificació de Màxim diari"
+msgstr[1] "Notificacions de Màxim diari"
+
 msgid "Max daily usage"
 msgstr "Màxim diari consum"
 
@@ -2998,6 +3003,9 @@ msgid "Used as voicemail reception and user portal credential"
 msgstr ""
 "Utilitzat com a recepció de correu de veu i com a credencial del portal "
 "d'usuari"
+
+msgid "Used to notify if max daily usage has been reached"
+msgstr "Empleado para notificar cuando se alcanza el máximo consumo diario"
 
 msgid "User"
 msgid_plural "Users"

@@ -19,7 +19,7 @@ abstract class NotificationTemplateAbstract
     protected $name;
 
     /**
-     * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv
+     * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage
      * @var string
      */
     protected $type;
@@ -214,7 +214,8 @@ abstract class NotificationTemplateAbstract
             NotificationTemplateInterface::TYPE_LIMIT,
             NotificationTemplateInterface::TYPE_LOWBALANCE,
             NotificationTemplateInterface::TYPE_INVOICE,
-            NotificationTemplateInterface::TYPE_CALLCSV
+            NotificationTemplateInterface::TYPE_CALLCSV,
+            NotificationTemplateInterface::TYPE_MAXDAILYUSAGE
         ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
