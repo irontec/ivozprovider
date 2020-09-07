@@ -20,6 +20,7 @@ class CompanyLifecycleServiceCollection implements LifecycleServiceCollectionInt
         "post_persist" =>
         [
             \Ivoz\Provider\Domain\Service\Domain\UpdateByCompany::class => 10,
+            \Ivoz\Provider\Domain\Service\MaxUsageNotification\SearchBrokenMaxDailyUsage::class => 10,
             \Ivoz\Cgr\Domain\Service\TpAccountAction\CreateByCompany::class => 20,
             \Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices::class => 30,
         ],
