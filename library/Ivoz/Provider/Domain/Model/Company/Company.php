@@ -22,7 +22,10 @@ class Company extends CompanyAbstract implements CompanyInterface
      */
     public function getChangeSet()
     {
-        return parent::getChangeSet();
+        $response = parent::getChangeSet();
+        unset($response['currentDayUsage']);
+
+        return $response;
     }
 
     /**
