@@ -66,6 +66,8 @@ production:
           allowRecordingRemoval: true
           externallyExtraOpts: true
           relCountries: true
+          maxDailyUsageEmail: true
+          maxDailyUsageNotificationTemplate: true
         order:
           typeIcon: true
           name: true
