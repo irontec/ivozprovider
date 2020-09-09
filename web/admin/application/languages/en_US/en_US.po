@@ -2980,6 +2980,13 @@ msgstr "Used as voicemail reception and user portal credential"
 msgid "Used to notify if max daily usage has been reached"
 msgstr "Used to notify if max daily usage has been reached"
 
+msgid ""
+"Used to notify if max daily usage has been reached. Leave empty to avoid "
+"notification."
+msgstr ""
+"Used to notify if max daily usage has been reached. Leave empty to avoid "
+"notification."
+
 msgid "User"
 msgid_plural "Users"
 msgstr[0] "User"
