@@ -40,7 +40,7 @@ class Version20200826105344 extends LoggableMigration
                       ) VALUES (
                         "Notificaciones IvozProvider",
                         "no-reply@ivozprovider.com",
-                        "Alerta de consumo maximo de ${MAXDAILYUSAGE_COMPANY}",
+                        "Alerta de consumo máximo de ${MAXDAILYUSAGE_COMPANY}",
                         CONCAT_WS(CHAR(10 using utf8),
                           "Hola ${MAXDAILYUSAGE_COMPANY}!", "",
                           "Su saldo diario máximo ha sido alcanzado y no podrá realizar más llamadas hasta mañana", "",
