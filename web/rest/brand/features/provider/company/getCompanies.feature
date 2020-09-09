@@ -56,7 +56,7 @@ Feature: Retrieve companies
           "domainUsers": "127.0.0.1",
           "nif": "12345678A",
           "maxCalls": 0,
-          "maxDailyUsage": 1000000,
+          "maxDailyUsage": 2,
           "postalAddress": "Company Address",
           "postalCode": "54321",
           "town": "Company Town",
