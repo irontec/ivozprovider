@@ -48,6 +48,9 @@ class ActiveCallsAction
             ? $this->apiClient->getBrandActiveCalls(intval($brandId))
             : $this->apiClient->getPlatformActiveCalls();
 
-        return new ActiveCalls($activeCalls);
+        return new ActiveCalls(
+            $activeCalls[0] ?? 0,
+            $activeCalls[1] ?? 0
+        );
     }
 }

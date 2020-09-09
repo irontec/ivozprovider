@@ -54,7 +54,10 @@ class ActiveCallsAction
                 ->trunksClient
                 ->getBrandActiveCalls($brand->getId());
 
-            return new ActiveCalls($activeCalls);
+            return new ActiveCalls(
+                $activeCalls[0] ?? 0,
+                $activeCalls[1] ?? 0
+            );
         }
 
         /** @var CompanyInterface | null $company */
@@ -73,6 +76,9 @@ class ActiveCallsAction
                 intval($companyId)
             );
 
-        return new ActiveCalls($activeCalls);
+        return new ActiveCalls(
+            $activeCalls[0] ?? 0,
+            $activeCalls[1] ?? 0
+        );
     }
 }

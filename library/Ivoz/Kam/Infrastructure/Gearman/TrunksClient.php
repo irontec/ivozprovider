@@ -147,36 +147,65 @@ class TrunksClient implements TrunksClientInterface
 
     /**
      * @param int $companyId
-     * @return int
+     * @return int[] inbound/outbound
      */
-    public function getCompanyActiveCalls(int $companyId)
+    public function getCompanyActiveCalls(int $companyId): array
     {
-        $payload = ['activeCallsCompany'];
-        $payload[] = $companyId;
+        $inbound = $this->getActiveCalls([
+            'inboundCallsCompany',
+            $companyId
+        ]);
 
-        return $this->getActiveCalls($payload);
+        $outbound = $this->getActiveCalls([
+            'outboundCallsCompany',
+            $companyId
+        ]);
+
+        return [
+            $inbound,
+            $outbound
+        ];
     }
 
     /**
      * @param int $brandId
-     * @return int
+     * @return int[] inbound/outbound
      */
-    public function getBrandActiveCalls(int $brandId)
+    public function getBrandActiveCalls(int $brandId): array
     {
-        $payload = ['activeCallsBrand'];
-        $payload[] = $brandId;
+        $inbound = $this->getActiveCalls([
+            'inboundCallsBrand',
+            $brandId
+        ]);
 
-        return $this->getActiveCalls($payload);
+        $outbound = $this->getActiveCalls([
+            'outboundCallsBrand',
+            $brandId
+        ]);
+
+        return [
+            $inbound,
+            $outbound
+        ];
     }
 
     /**
-     * @return int
+     * @return int[]
      */
-    public function getPlatformActiveCalls()
+    public function getPlatformActiveCalls(): array
     {
-        return $this->getActiveCalls([
-            'activeCallsBrand'
+        $inbound = $this->getActiveCalls([
+            'inboundCallsBrand'
         ]);
+
+        $outbound = $this->getActiveCalls([
+            'outboundCallsBrand'
+        ]);
+
+        return [
+            $inbound,
+            $outbound
+        ];
     }
 
     /**
