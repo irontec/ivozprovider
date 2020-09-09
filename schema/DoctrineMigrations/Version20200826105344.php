@@ -43,7 +43,7 @@ class Version20200826105344 extends LoggableMigration
                         "Alerta de consumo máximo de ${MAXDAILYUSAGE_COMPANY}",
                         CONCAT_WS(CHAR(10 using utf8),
                           "Hola ${MAXDAILYUSAGE_COMPANY}!", "",
-                          "Su saldo diario máximo ha sido alcanzado y no podrá realizar más llamadas hasta mañana", "",
+                          "Su saldo diario máximo ha sido alcanzado y no podrá realizar más llamadas hasta mañana.", "",
                           "    Saldo máximo diario: ${MAXDAILYUSAGE_AMOUNT}", "",
                           "Por favor, póngase en contacto con su administador.", "",
                           "Un saludo,", ""
@@ -68,7 +68,7 @@ class Version20200826105344 extends LoggableMigration
                           "Greetings ${MAXDAILYUSAGE_COMPANY}!", "",
                           "Your max daily balance has been reached and you won\'t be able to place more calls until tomorrow.", "",
                           "    Max daily balance: ${MAXDAILYUSAGE_AMOUNT}", "",
-                          "Please, contact your administator for further assiastance", "",
+                          "Please, contact your administator for further assistance", "",
                           "Best Regards,", ""
                           "IvozProvider Balance System"
                         ),
