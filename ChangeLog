@@ -1,3 +1,55 @@
+Web, 09 Sep 2020 09:49:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.16.0 released
+
+    * Core
+        - Added MaxDailyUsage mail notifications
+        - Validate retail call forward settings
+        - Unique administrator usernames
+
+    * Proxies
+        - Added support for SRTP media encryption
+        - Fixed WebRTC compatibilities issues
+        - Added per client GeoIP filtering support
+        - Redesigned SIP auth (dropped kam_users view)
+        - Fixed within dialog invalid Contact from client UACs
+
+    * Billing
+        - MaxDailyUsage hangs up active calls when limit is reached
+        - Added endpointName field to CDRs
+        - Added inbound call CSV schedules filtered by user/friend/fax
+        - Added inbound call CSV schedules filtered by DDI Provider
+        - Added inbound call CSV schedules filtered by DDI Provider
+
+    * vPBX
+        - Added transform always toggle for friends
+        - Added optional SIP auth for direct friends
+        - Added service handling for friends
+        - Disable queue member after failed call attempt
+
+    * Residential
+        - Added caller blacklisting feature
+
+    * Retail
+        - Added unconditional call forward
+
+    * API
+        - Exposed active calls on client API
+        - Fixed PUT response format
+        - Allowed DELETE on Recordings
+        - Added outbound/inbound to activeCalls endpoint response
+
+    * Provisioning
+        - Added Snom DXXX sample templates (D375, D717, D735, D785)
+
+    * Portals
+        - Added new section to list and unban anti brute-force sources
+        - Added filter field for emulation pop-up window
+        - Fixed call rerating from Carrier call list
+        - Fixed client generic matchlist deletion
+        - Fixed client generic invoice template deletion
+        - Added failure reason to price CSV importer
+
 Web, 10 Jun 2020 11:27:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.15.2 released
