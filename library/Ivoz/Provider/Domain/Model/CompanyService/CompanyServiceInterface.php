@@ -22,7 +22,7 @@ interface CompanyServiceInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getCode();
+    public function getCode(): string;
 
     /**
      * Set company
@@ -46,4 +46,9 @@ interface CompanyServiceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Service\ServiceInterface
      */
     public function getService();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

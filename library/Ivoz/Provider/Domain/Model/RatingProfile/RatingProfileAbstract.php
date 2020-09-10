@@ -215,7 +215,7 @@ abstract class RatingProfileAbstract
      *
      * @return \DateTime
      */
-    public function getActivationTime()
+    public function getActivationTime(): \DateTime
     {
         return clone $this->activationTime;
     }

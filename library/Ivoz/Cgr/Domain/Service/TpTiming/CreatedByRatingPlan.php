@@ -4,6 +4,7 @@ namespace Ivoz\Cgr\Domain\Service\TpTiming;
 
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
 
+use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Ivoz\Provider\Domain\Service\RatingPlan\RatingPlanLifecycleEventHandlerInterface;
@@ -64,6 +65,7 @@ class CreatedByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
             ->setWeekDays($ratingPlan->getWeekDays())
             ->setTime($ratingPlan->getTimeIn()->format("H:i:s"));
 
+        /** @var TpTimingInterface $tpTiming */
         $tpTiming = $this->entityTools
             ->persistDto(
                 $tpTimingDto,

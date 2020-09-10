@@ -31,20 +31,20 @@ interface TrunksClientInterface
 
     /**
      * @param int $companyId
-     * @return int
+     * @return int[] inbound/outbound
      */
-    public function getCompanyActiveCalls(int $companyId);
+    public function getCompanyActiveCalls(int $companyId): array;
 
     /**
      * @param int $brandId
-     * @return int
+     * @return int[] inbound/outbound
      */
-    public function getBrandActiveCalls(int $brandId);
+    public function getBrandActiveCalls(int $brandId): array;
 
     /**
-     * @return int
+     * @return int[] inbound/outbound
      */
-    public function getPlatformActiveCalls();
+    public function getPlatformActiveCalls(): array;
 
     public function isCgrEnabled();
 

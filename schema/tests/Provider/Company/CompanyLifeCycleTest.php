@@ -8,6 +8,7 @@ use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
+use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotification;
 use Ivoz\Provider\Infrastructure\Domain\Service\Company\SendUsersAddressPermissionsReloadRequest;
 use Ivoz\Provider\Infrastructure\Domain\Service\Company\SendUsersTrustedPermissionsReloadRequest;
 use Ivoz\Provider\Infrastructure\Domain\Service\Domain\SendUsersDomainReloadRequest;
@@ -26,78 +27,6 @@ use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 class CompanyLifeCycleTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
-
-    protected function createDto()
-    {
-        $companyDto = new CompanyDto();
-        $companyDto
-            ->setName('ACompany')
-            ->setDomainUsers('127.3.0.1')
-            ->setNif('12345678B')
-            ->setMaxCalls(0)
-            ->setPostalAddress('An address')
-            ->setPostalCode('54321')
-            ->setTown('')
-            ->setProvince('')
-            ->setCountryName('')
-            ->setIpfilter(false)
-            ->setOnDemandRecord(0)
-            ->setOnDemandRecordCode('')
-            ->setExternallyextraopts('')
-            ->setRecordingsLimitEmail('')
-            ->setLanguageId(1)
-            ->setMediaRelaySetsId(0)
-            ->setDefaultTimezoneId(1)
-            ->setBrandId(1)
-            ->setDomainId(1)
-            ->setCountryId(1);
-
-        return $companyDto;
-    }
-
-    /**
-     * @return Company
-     */
-    protected function addCompany()
-    {
-        $companyDto = $this->createDto();
-
-        /** @var Company $company */
-        $company = $this->entityTools
-            ->persistDto($companyDto, null, true);
-
-        return $company;
-    }
-
-    protected function updateCompany()
-    {
-        $companyRepository = $this->em
-            ->getRepository(Company::class);
-
-        $company = $companyRepository->find(1);
-
-        /** @var CompanyDto $companyDto */
-        $companyDto = $this->entityTools->entityToDto($company);
-
-        $companyDto
-            ->setName('updatedName');
-
-        return $this
-            ->entityTools
-            ->persistDto($companyDto, $company, true);
-    }
-
-    protected function removeCompany()
-    {
-        $companyRepository = $this->em
-            ->getRepository(Company::class);
-
-        $company = $companyRepository->find(1);
-
-        $this
-            ->entityTools
-            ->remove($company);
-    }
 
     /**
      * @test
@@ -121,26 +50,6 @@ class CompanyLifeCycleTest extends KernelTestCase
         $this->added_company_has_a_domain($company);
         $this->added_company_has_a_tpAccountAction($company);
         $this->added_company_has_a_companyServices($company);
-    }
-
-    protected function it_triggers_lifecycle_services()
-    {
-        $this->assetChangedEntities([
-            Domain::class,
-            Company::class,
-            TpAccountAction::class,
-            CompanyService::class,
-        ]);
-    }
-
-    protected function added_company_has_a_domain(Company $company)
-    {
-        $domain = $company->getDomain();
-
-        $this->assertInstanceOf(
-            Domain::class,
-            $domain
-        );
     }
 
     public function added_company_has_a_tpAccountAction(Company $company)
@@ -181,6 +90,7 @@ class CompanyLifeCycleTest extends KernelTestCase
             Company::class,
             Domain::class,
             PsEndpoint::class, // Domain lifecycle
+            MaxUsageNotification::class
         ]);
     }
 
@@ -222,7 +132,6 @@ class CompanyLifeCycleTest extends KernelTestCase
             $domain->getDescription()
         );
     }
-
 
     /**
      * @test
@@ -369,5 +278,101 @@ class CompanyLifeCycleTest extends KernelTestCase
 
         $this->entityTools->remove($company);
         $this->assertNull($company->getDomain());
+    }
+
+    protected function createDto()
+    {
+        $companyDto = new CompanyDto();
+        $companyDto
+            ->setName('ACompany')
+            ->setDomainUsers('127.3.0.1')
+            ->setNif('12345678B')
+            ->setMaxCalls(0)
+            ->setPostalAddress('An address')
+            ->setPostalCode('54321')
+            ->setTown('')
+            ->setProvince('')
+            ->setCountryName('')
+            ->setIpfilter(false)
+            ->setOnDemandRecord(0)
+            ->setOnDemandRecordCode('')
+            ->setExternallyextraopts('')
+            ->setRecordingsLimitEmail('')
+            ->setLanguageId(1)
+            ->setMediaRelaySetsId(0)
+            ->setDefaultTimezoneId(1)
+            ->setBrandId(1)
+            ->setDomainId(1)
+            ->setCountryId(1);
+
+        return $companyDto;
+    }
+
+    /**
+     * @return Company
+     */
+    protected function addCompany()
+    {
+        $companyDto = $this->createDto();
+
+        /** @var Company $company */
+        $company = $this->entityTools
+            ->persistDto($companyDto, null, true);
+
+        return $company;
+    }
+
+    protected function updateCompany()
+    {
+        $companyRepository = $this->em
+            ->getRepository(Company::class);
+
+        $company = $companyRepository->find(1);
+
+        /** @var CompanyDto $companyDto */
+        $companyDto = $this->entityTools->entityToDto($company);
+
+        $companyDto
+            ->setName('updatedName')
+            ->setMaxDailyUsageEmail('no-replay@domain.net')
+            ->setMaxDailyUsage(2)
+            ->setCurrentDayUsage(3)
+            ->setMaxDailyUsageNotificationTemplateId(3);
+
+        return $this
+            ->entityTools
+            ->persistDto($companyDto, $company, true);
+    }
+
+    protected function removeCompany()
+    {
+        $companyRepository = $this->em
+            ->getRepository(Company::class);
+
+        $company = $companyRepository->find(1);
+
+        $this
+            ->entityTools
+            ->remove($company);
+    }
+
+    protected function it_triggers_lifecycle_services()
+    {
+        $this->assetChangedEntities([
+            Domain::class,
+            Company::class,
+            TpAccountAction::class,
+            CompanyService::class,
+        ]);
+    }
+
+    protected function added_company_has_a_domain(Company $company)
+    {
+        $domain = $company->getDomain();
+
+        $this->assertInstanceOf(
+            Domain::class,
+            $domain
+        );
     }
 }

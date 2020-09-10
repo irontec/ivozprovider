@@ -34,7 +34,7 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @return string
      */
-    public function getUrl();
+    public function getUrl(): string;
 
     /**
      * Get klearTheme
@@ -48,7 +48,7 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @return string
      */
-    public function getUrlType();
+    public function getUrlType(): string;
 
     /**
      * Get name
@@ -86,6 +86,11 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
      * @return \Ivoz\Provider\Domain\Model\WebPortal\Logo
      */
     public function getLogo();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * @param string $fldName

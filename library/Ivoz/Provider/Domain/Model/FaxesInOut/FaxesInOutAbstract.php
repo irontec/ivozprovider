@@ -269,7 +269,7 @@ abstract class FaxesInOutAbstract
      *
      * @return \DateTime
      */
-    public function getCalldate()
+    public function getCalldate(): \DateTime
     {
         return clone $this->calldate;
     }

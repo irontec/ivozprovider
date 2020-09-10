@@ -220,7 +220,7 @@ abstract class DestinationAbstract
      *
      * @return string
      */
-    public function getPrefix()
+    public function getPrefix(): string
     {
         return $this->prefix;
     }

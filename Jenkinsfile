@@ -262,8 +262,8 @@ pipeline {
     // Pipeline post-actions
     // ------------------------------------------------------------------------
     post {
-        failure { notifyFailureSlack() }
-        fixed { notifyFixedSlack() }
+        failure { notifyFailureMattermost() }
+        fixed { notifyFixedMattermost() }
         cleanup { cleanWs()}
     }
 }
@@ -288,9 +288,9 @@ void notifyFailureGithub() {
     ])
 }
 
-void notifyFailureSlack() {
+void notifyFailureMattermost() {
     if (env.GIT_BRANCH == 'artemis' || env.GIT_BRANCH == 'bleeding') {
-        slackSend([
+        mattermostSend([
             channel: "#ivozprovider",
             color: "#FF0000",
             message: ":red_circle: Branch ${env.GIT_BRANCH} tests failed :red_circle: - (<${env.BUILD_URL}|Open>)"
@@ -298,9 +298,9 @@ void notifyFailureSlack() {
     }
 }
 
-void notifyFixedSlack() {
+void notifyFixedMattermost() {
     if (env.GIT_BRANCH == 'artemis' || env.GIT_BRANCH == 'bleeding') {
-        slackSend([
+        mattermostSend([
             channel: "#ivozprovider",
             color: "#008000",
             message: ":thumbsup_all: Branch ${env.GIT_BRANCH} tests fixed :thumbsup_all: - (<${env.BUILD_URL}|Open>)"

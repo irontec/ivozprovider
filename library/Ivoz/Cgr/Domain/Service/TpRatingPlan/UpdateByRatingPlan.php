@@ -4,6 +4,7 @@ namespace Ivoz\Cgr\Domain\Service\TpRatingPlan;
 
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Ivoz\Provider\Domain\Service\RatingPlan\RatingPlanLifecycleEventHandlerInterface;
@@ -53,6 +54,7 @@ class UpdateByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
             ->setWeight($ratingPlan->getWeight())
             ->setRatingPlanId($ratingPlan->getId());
 
+        /** @var TpRatingPlanInterface $tpRatingPlan */
         $tpRatingPlan = $this->entityTools->persistDto(
             $tpRatingPlanDto,
             $tpRatingPlan,

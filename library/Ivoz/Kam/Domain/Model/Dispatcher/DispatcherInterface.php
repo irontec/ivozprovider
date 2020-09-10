@@ -17,42 +17,42 @@ interface DispatcherInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getSetid();
+    public function getSetid(): int;
 
     /**
      * Get destination
      *
      * @return string
      */
-    public function getDestination();
+    public function getDestination(): string;
 
     /**
      * Get flags
      *
      * @return integer
      */
-    public function getFlags();
+    public function getFlags(): int;
 
     /**
      * Get priority
      *
      * @return integer
      */
-    public function getPriority();
+    public function getPriority(): int;
 
     /**
      * Get attrs
      *
      * @return string
      */
-    public function getAttrs();
+    public function getAttrs(): string;
 
     /**
      * Get description
      *
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): string;
 
     /**
      * Get applicationServer
@@ -60,4 +60,9 @@ interface DispatcherInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface
      */
     public function getApplicationServer();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

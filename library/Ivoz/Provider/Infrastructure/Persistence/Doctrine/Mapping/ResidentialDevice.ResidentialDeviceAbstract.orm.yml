@@ -133,6 +133,12 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceAbstract:
         comment: '[enum:yes|no]'
         default: 'no'
       column: t38Passthrough
+    rtpEncryption:
+      type: boolean
+      nullable: false
+      options:
+        default: '0'
+      column: rtpEncryption
   manyToOne:
     brand:
       targetEntity: Ivoz\Provider\Domain\Model\Brand\BrandInterface

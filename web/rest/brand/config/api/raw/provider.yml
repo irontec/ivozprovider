@@ -190,6 +190,9 @@ Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler:
       - or:
         - inheritedOrNull:
             residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+      - or:
+        - inheritedOrNull:
+            ddiProvider: 'Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider'
     swagger_context:
       required:
       - brand

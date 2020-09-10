@@ -16,6 +16,11 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     private $status;
 
     /**
+     * @var string
+     */
+    private $lastExecutionError;
+
+    /**
      * @var boolean
      */
     private $deductibleConnectionFee = false;
@@ -119,6 +124,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
 
         return [
             'status' => 'status',
+            'lastExecutionError' => 'lastExecutionError',
             'deductibleConnectionFee' => 'deductibleConnectionFee',
             'id' => 'id',
             'name' => ['en','es','ca','it'],
@@ -136,6 +142,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     {
         $response = [
             'status' => $this->getStatus(),
+            'lastExecutionError' => $this->getLastExecutionError(),
             'deductibleConnectionFee' => $this->getDeductibleConnectionFee(),
             'id' => $this->getId(),
             'name' => [
@@ -193,6 +200,26 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * @param string $lastExecutionError
+     *
+     * @return static
+     */
+    public function setLastExecutionError($lastExecutionError = null)
+    {
+        $this->lastExecutionError = $lastExecutionError;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getLastExecutionError()
+    {
+        return $this->lastExecutionError;
     }
 
     /**

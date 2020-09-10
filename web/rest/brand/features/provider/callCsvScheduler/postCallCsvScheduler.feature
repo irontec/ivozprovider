@@ -25,7 +25,8 @@ Feature: Create call CSV scheduler
           "residentialDevice": null,
           "residentialDevice": null,
           "user": null,
-          "friend": null
+          "friend": null,
+          "ddiProvider": null
       }
     """
     Then the response status code should be 201
@@ -51,7 +52,8 @@ Feature: Create call CSV scheduler
           "residentialDevice": null,
           "user": null,
           "fax": null,
-          "friend": null
+          "friend": null,
+          "ddiProvider": null
       }
     """
 
@@ -83,6 +85,7 @@ Feature: Create call CSV scheduler
           "residentialDevice": null,
           "user": null,
           "fax": null,
-          "friend": null
+          "friend": null,
+          "ddiProvider": null
       }
     """

@@ -27,6 +27,7 @@ production:
           brand: true
           company: true
           description: true
+          aor: true
 staging:
   _extends: production
 testing:

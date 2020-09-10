@@ -2,6 +2,7 @@
 
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 
 /**
@@ -42,11 +43,11 @@ class IvozProvider_Klear_Filter_TargetTypes implements KlearMatrix_Model_Field_S
 
         $excludedRoutes = [];
 
-        if ($companyDto->getType() !== Company::VPBX) {
+        if ($companyDto->getType() !== CompanyInterface::TYPE_VPBX) {
             $excludedRoutes[] = "extension";
         }
 
-        if ($companyDto->getType() === Company::RETAIL) {
+        if ($companyDto->getType() === CompanyInterface::TYPE_RETAIL) {
             $excludedRoutes[] = "voicemail";
         }
 

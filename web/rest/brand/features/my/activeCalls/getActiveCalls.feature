@@ -11,7 +11,9 @@ Feature: Retrieve active calls
       And the JSON should be equal to:
     """
       {
-        "total": -1
+          "inbound": -1,
+          "outbound": -1,
+          "total": -2
       }
     """
 
@@ -25,7 +27,9 @@ Feature: Retrieve active calls
     And the JSON should be equal to:
     """
       {
-        "total": -1
+          "inbound": -1,
+          "outbound": -1,
+          "total": -2
       }
     """
 

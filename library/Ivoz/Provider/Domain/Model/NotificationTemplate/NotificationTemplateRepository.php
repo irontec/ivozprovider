@@ -26,6 +26,11 @@ interface NotificationTemplateRepository extends ObjectRepository, Selectable
     /**
      * @return null | NotificationTemplateInterface
      */
+    public function findGenericMaxDailyUsageTemplate();
+
+    /**
+     * @return null | NotificationTemplateInterface
+     */
     public function findGenericVoicemailTemplate();
 
     /**

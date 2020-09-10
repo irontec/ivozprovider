@@ -21,13 +21,14 @@ Feature: Update rating profile
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "activationTime": "2018-03-03 20:30:30",
           "id": 1,
-          "company": "~",
+          "company": 2,
           "carrier": null,
-          "ratingPlanGroup": "~"
+          "ratingPlanGroup": 1,
+          "routingTag": null
       }
     """

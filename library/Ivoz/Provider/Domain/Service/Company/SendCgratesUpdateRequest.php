@@ -4,7 +4,7 @@ namespace Ivoz\Provider\Domain\Service\Company;
 
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionRepository;
 use Ivoz\Cgr\Domain\Service\CgratesReloadNotificator;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\SetMaxUsageThresholdService;
+use Ivoz\Cgr\Infrastructure\Cgrates\Service\SetMaxUsageThresholdService;
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Cgrates;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 

@@ -71,7 +71,7 @@ class SyncBalancesSpec extends ObjectBehavior
         $this->updateCarriers(1, [1]);
     }
 
-    function it_iterates_over_all_carriers()
+    function it_iterates_over_carriers_with_calculateCost()
     {
         $carrierId = 1;
         $this->prepareExecution(
@@ -80,7 +80,7 @@ class SyncBalancesSpec extends ObjectBehavior
 
         $this
             ->carrierRepository
-            ->getCarrierIdsGroupByBrand()
+            ->getCarrierIdsWithCalculatecostGroupByBrand()
             ->willReturn([
                 1 => [$carrierId]
             ])
@@ -151,7 +151,8 @@ class SyncBalancesSpec extends ObjectBehavior
             Carrier::class,
             [
                 'id' => $carrierId,
-                'balance' => $balance
+                'balance' => $balance,
+                'name' => 'carrier1',
             ]
         );
 

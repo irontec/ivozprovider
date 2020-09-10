@@ -11,42 +11,42 @@ interface UsersActiveWatcherInterface extends EntityInterface
      *
      * @return string
      */
-    public function getPresentityUri();
+    public function getPresentityUri(): string;
 
     /**
      * Get watcherUsername
      *
      * @return string
      */
-    public function getWatcherUsername();
+    public function getWatcherUsername(): string;
 
     /**
      * Get watcherDomain
      *
      * @return string
      */
-    public function getWatcherDomain();
+    public function getWatcherDomain(): string;
 
     /**
      * Get toUser
      *
      * @return string
      */
-    public function getToUser();
+    public function getToUser(): string;
 
     /**
      * Get toDomain
      *
      * @return string
      */
-    public function getToDomain();
+    public function getToDomain(): string;
 
     /**
      * Get event
      *
      * @return string
      */
-    public function getEvent();
+    public function getEvent(): string;
 
     /**
      * Get eventId
@@ -60,42 +60,42 @@ interface UsersActiveWatcherInterface extends EntityInterface
      *
      * @return string
      */
-    public function getToTag();
+    public function getToTag(): string;
 
     /**
      * Get fromTag
      *
      * @return string
      */
-    public function getFromTag();
+    public function getFromTag(): string;
 
     /**
      * Get callid
      *
      * @return string
      */
-    public function getCallid();
+    public function getCallid(): string;
 
     /**
      * Get localCseq
      *
      * @return integer
      */
-    public function getLocalCseq();
+    public function getLocalCseq(): int;
 
     /**
      * Get remoteCseq
      *
      * @return integer
      */
-    public function getRemoteCseq();
+    public function getRemoteCseq(): int;
 
     /**
      * Get contact
      *
      * @return string
      */
-    public function getContact();
+    public function getContact(): string;
 
     /**
      * Get recordRoute
@@ -109,14 +109,14 @@ interface UsersActiveWatcherInterface extends EntityInterface
      *
      * @return integer
      */
-    public function getExpires();
+    public function getExpires(): int;
 
     /**
      * Get status
      *
      * @return integer
      */
-    public function getStatus();
+    public function getStatus(): int;
 
     /**
      * Get reason
@@ -130,61 +130,66 @@ interface UsersActiveWatcherInterface extends EntityInterface
      *
      * @return integer
      */
-    public function getVersion();
+    public function getVersion(): int;
 
     /**
      * Get socketInfo
      *
      * @return string
      */
-    public function getSocketInfo();
+    public function getSocketInfo(): string;
 
     /**
      * Get localContact
      *
      * @return string
      */
-    public function getLocalContact();
+    public function getLocalContact(): string;
 
     /**
      * Get fromUser
      *
      * @return string
      */
-    public function getFromUser();
+    public function getFromUser(): string;
 
     /**
      * Get fromDomain
      *
      * @return string
      */
-    public function getFromDomain();
+    public function getFromDomain(): string;
 
     /**
      * Get updated
      *
      * @return integer
      */
-    public function getUpdated();
+    public function getUpdated(): int;
 
     /**
      * Get updatedWinfo
      *
      * @return integer
      */
-    public function getUpdatedWinfo();
+    public function getUpdatedWinfo(): int;
 
     /**
      * Get flags
      *
      * @return integer
      */
-    public function getFlags();
+    public function getFlags(): int;
 
     /**
      * Get userAgent
      *
      * @return string
      */
-    public function getUserAgent();
+    public function getUserAgent(): string;
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

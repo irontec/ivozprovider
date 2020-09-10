@@ -78,6 +78,7 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
             $endpointDto->setDirectMedia('yes');
         }
 
+        /** @var PsEndpointInterface $endpoint */
         $endpoint = $this
             ->entityTools
             ->persistDto(

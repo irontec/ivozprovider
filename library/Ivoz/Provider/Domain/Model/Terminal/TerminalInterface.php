@@ -70,14 +70,14 @@ interface TerminalInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getDisallow();
+    public function getDisallow(): string;
 
     /**
      * Get allowAudio
      *
      * @return string
      */
-    public function getAllowAudio();
+    public function getAllowAudio(): string;
 
     /**
      * Get allowVideo
@@ -91,14 +91,14 @@ interface TerminalInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getDirectMediaMethod();
+    public function getDirectMediaMethod(): string;
 
     /**
      * Get password
      *
      * @return string
      */
-    public function getPassword();
+    public function getPassword(): string;
 
     /**
      * Get mac
@@ -119,7 +119,14 @@ interface TerminalInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getT38Passthrough();
+    public function getT38Passthrough(): string;
+
+    /**
+     * Get rtpEncryption
+     *
+     * @return boolean
+     */
+    public function getRtpEncryption(): bool;
 
     /**
      * Set company
@@ -159,6 +166,11 @@ interface TerminalInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface | null
      */
     public function getTerminalModel();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add astPsEndpoint

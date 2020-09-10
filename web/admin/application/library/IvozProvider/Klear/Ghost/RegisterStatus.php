@@ -410,7 +410,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
      */
     private function isRFC1918($src) : bool
     {
-        list ($ip, $port) = explode(':', $src); // Extract address if port is given
+        list ($ip) = explode(':', $src); // Extract address if port is given
 
         $privateAddresses = array (
             '10.0.0.0|10.255.255.255', // single class A network

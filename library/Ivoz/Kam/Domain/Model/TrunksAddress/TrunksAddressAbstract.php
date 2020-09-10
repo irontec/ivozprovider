@@ -221,7 +221,7 @@ abstract class TrunksAddressAbstract
      *
      * @return integer
      */
-    public function getGrp()
+    public function getGrp(): int
     {
         return $this->grp;
     }
@@ -276,7 +276,7 @@ abstract class TrunksAddressAbstract
      *
      * @return integer
      */
-    public function getMask()
+    public function getMask(): int
     {
         return $this->mask;
     }
@@ -303,7 +303,7 @@ abstract class TrunksAddressAbstract
      *
      * @return integer
      */
-    public function getPort()
+    public function getPort(): int
     {
         return $this->port;
     }

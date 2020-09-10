@@ -27,8 +27,7 @@ class ProviderRatingPlan extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstance(RatingPlan::class);
         (function () use ($fixture) {
             $this
-                ->setTimeIn(new \DateTime('2018-01-01 10:10:10'));
-            $this
+                ->setTimeIn(new \DateTime('2018-01-01 10:10:10'))
                 ->setRatingPlanGroup(
                     $fixture->getReference('_reference_ProviderRatingPlanGroup1')
                 )

@@ -34,4 +34,9 @@ interface ProxyTrunksRelBrandInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface
      */
     public function getProxyTrunk();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

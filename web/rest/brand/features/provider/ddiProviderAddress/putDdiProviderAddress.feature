@@ -25,13 +25,6 @@ Feature: Update ddi provider addresses
             "ip": "2.2.2.2",
             "description": "UpdatedDDIProviderAddress",
             "id": 1,
-            "ddiProvider": {
-                "description": "DDIProviderDescription",
-                "name": "DDIProviderName",
-                "externallyRated": false,
-                "id": 1,
-                "transformationRuleSet": 1,
-                "proxyTrunk": 1
-            }
+            "ddiProvider": 1
         }
     """

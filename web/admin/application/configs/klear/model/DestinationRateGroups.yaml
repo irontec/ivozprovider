@@ -57,10 +57,11 @@ production:
           destinationRateGroupsFileDownload_command: true
     status:
       title: _('Importer status')
-      type: select
-      readonly: true
+      type: ghost
+      dirty: true
       source:
-        data: inline
+        class: IvozProvider_Klear_Ghost_DestinationRateGroups
+        method: getStatus
         values:
           'waiting':
             title: _("Waiting")

@@ -166,6 +166,9 @@ msgstr "Allowed video codecs"
 msgid "Always"
 msgstr "Always"
 
+msgid "Always apply transformations"
+msgstr "Always apply transformations"
+
 msgid "Amount"
 msgstr "Amount"
 
@@ -182,11 +185,6 @@ msgid "Antiflood banned IP"
 msgid_plural "Antiflood banned IPs"
 msgstr[0] "Antiflood banned IP"
 msgstr[1] "Antiflood banned IPs"
-
-msgid "Antiflood trusted IP"
-msgid_plural "Antiflood trusted IPs"
-msgstr[0] "Antiflood trusted IP"
-msgstr[1] "Antiflood trusted IPs"
 
 msgid "Application Server"
 msgid_plural "Application Servers"
@@ -338,6 +336,11 @@ msgid "Brand service"
 msgid_plural "Brand services"
 msgstr[0] "Brand service"
 msgstr[1] "Brand services"
+
+msgid "Brute-force attack"
+msgid_plural "Brute-force attacks"
+msgstr[0] "Brute-force attack"
+msgstr[1] "Brute-force attacks"
 
 msgid "Busy"
 msgstr "Busy"
@@ -781,6 +784,9 @@ msgstr "Do you really want to grant write access to selected entities?"
 msgid "Do you really want to revoke access to selected entities?"
 msgstr "Do you really want to revoke access to selected entities?"
 
+msgid "Do you really want to unban selected item?"
+msgstr "Do you really want to unban selected item?"
+
 #, python-format
 msgid "Do you want revoke access to this %s?"
 msgstr "Do you want revoke access to this %s?"
@@ -834,6 +840,9 @@ msgstr "Edit %s %2s"
 #, python-format
 msgid "Edit pattern of %s"
 msgstr "Edit pattern of %s"
+
+msgid "Edition/creation tabs will be closed."
+msgstr "Edition/creation tabs will be closed."
 
 msgid "Email"
 msgid_plural "Emails"
@@ -900,6 +909,22 @@ msgid ""
 msgstr ""
 "Enable this option to display delete button in Client's portal call "
 "recordings section."
+
+msgid ""
+"Enable to force audio encryption. Call won't be established unless it is "
+"encrypted."
+msgstr ""
+"Enable to force audio encryption. Call won't be established unless it is "
+"encrypted."
+
+msgid ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
+msgstr ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
 
 msgid "Enabled"
 msgstr "Enabled"
@@ -984,9 +1009,6 @@ msgstr "Extension dialing"
 
 msgid "External"
 msgstr "External"
-
-msgid "External Filter destination"
-msgstr "External Filter destination"
 
 msgid "External call"
 msgid_plural "External calls"
@@ -1197,6 +1219,9 @@ msgstr "Generic URL Pattern"
 
 msgid "Generic template"
 msgstr "Generic template"
+
+msgid "GeoIP allowed countries"
+msgstr "GeoIP allowed countries"
 
 msgid "Geographic Configuration"
 msgstr "Geographic Configuration"
@@ -1707,6 +1732,11 @@ msgstr "Matching type"
 msgid "Max calls"
 msgstr "Max calls"
 
+msgid "Max daily Notification"
+msgid_plural "Max daily Notifications"
+msgstr[0] "Max daily Notification"
+msgstr[1] "Max daily Notifications"
+
 msgid "Max daily usage"
 msgstr "Max daily usage"
 
@@ -1890,9 +1920,6 @@ msgstr "No routing tag"
 
 msgid "None"
 msgstr "None"
-
-msgid "Notice that edition/creation tabs will be closed."
-msgstr "Notice that edition/creation tabs will be closed."
 
 msgid "Notification Threshold"
 msgstr "Notification Threshold"
@@ -2206,6 +2233,9 @@ msgstr[1] "Queue Members"
 msgid "R-URI pattern"
 msgstr "R-URI pattern"
 
+msgid "RTP encryption"
+msgstr "RTP encryption"
+
 msgid "Random"
 msgstr "Random"
 
@@ -2455,6 +2485,9 @@ msgstr "SIP Domain can't be empty"
 msgid "SIP Proxy"
 msgstr "SIP Proxy"
 
+msgid "SIP address"
+msgstr "SIP address"
+
 msgid "SIP domain"
 msgstr "SIP domain"
 
@@ -2480,8 +2513,15 @@ msgstr "Security"
 msgid "Select Brand"
 msgstr "Select Brand"
 
-msgid "Select Company"
-msgstr "Select Company"
+msgid "Select Client"
+msgstr "Select Client"
+
+msgid ""
+"Select a country to allow all IPs. Leave it blank if you want to allow just "
+"specific IP/ranges."
+msgstr ""
+"Select a country to allow all IPs. Leave it blank if you want to allow just "
+"specific IP/ranges."
 
 msgid "Select destination group"
 msgstr "Select destination group"
@@ -2875,6 +2915,15 @@ msgstr "URL type"
 msgid "Unassigned"
 msgstr "Unassigned"
 
+msgid "Unban address"
+msgstr "Unban address"
+
+msgid "Unbanned address"
+msgstr "Unbanned address"
+
+msgid "Unconditional Call Forward"
+msgstr "Unconditional Call Forward"
+
 msgid "Unit"
 msgstr "Unit"
 
@@ -2927,6 +2976,16 @@ msgstr "Use this instead in From header username"
 
 msgid "Used as voicemail reception and user portal credential"
 msgstr "Used as voicemail reception and user portal credential"
+
+msgid "Used to notify if max daily usage has been reached"
+msgstr "Used to notify if max daily usage has been reached"
+
+msgid ""
+"Used to notify if max daily usage has been reached. Leave empty to avoid "
+"notification."
+msgstr ""
+"Used to notify if max daily usage has been reached. Leave empty to avoid "
+"notification."
 
 msgid "User"
 msgid_plural "Users"

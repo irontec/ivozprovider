@@ -108,7 +108,7 @@ class Invoice
      *
      * @return string
      */
-    public function getNif()
+    public function getNif(): string
     {
         return $this->nif;
     }
@@ -135,7 +135,7 @@ class Invoice
      *
      * @return string
      */
-    public function getPostalAddress()
+    public function getPostalAddress(): string
     {
         return $this->postalAddress;
     }
@@ -162,7 +162,7 @@ class Invoice
      *
      * @return string
      */
-    public function getPostalCode()
+    public function getPostalCode(): string
     {
         return $this->postalCode;
     }
@@ -189,7 +189,7 @@ class Invoice
      *
      * @return string
      */
-    public function getTown()
+    public function getTown(): string
     {
         return $this->town;
     }
@@ -216,7 +216,7 @@ class Invoice
      *
      * @return string
      */
-    public function getProvince()
+    public function getProvince(): string
     {
         return $this->province;
     }
@@ -243,7 +243,7 @@ class Invoice
      *
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): string
     {
         return $this->country;
     }

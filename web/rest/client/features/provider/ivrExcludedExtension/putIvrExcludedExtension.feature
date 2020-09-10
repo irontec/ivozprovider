@@ -23,40 +23,7 @@ Feature: Update ivr excluded extensions
     """
      {
           "id": 1,
-          "ivr": {
-              "name": "testIvrCustom",
-              "timeout": 6,
-              "maxDigits": 0,
-              "allowExtensions": false,
-              "noInputRouteType": "number",
-              "noInputNumberValue": "946002020",
-              "errorRouteType": "voicemail",
-              "errorNumberValue": null,
-              "id": 1,
-              "welcomeLocution": 1,
-              "noInputLocution": null,
-              "errorLocution": null,
-              "successLocution": 1,
-              "noInputExtension": null,
-              "errorExtension": null,
-              "noInputVoiceMailUser": null,
-              "errorVoiceMailUser": 1,
-              "noInputNumberCountry": 68,
-              "errorNumberCountry": null
-          },
-          "extension": {
-              "number": "102",
-              "routeType": "user",
-              "numberValue": null,
-              "friendValue": null,
-              "id": 2,
-              "ivr": null,
-              "huntGroup": null,
-              "conferenceRoom": null,
-              "user": 2,
-              "queue": null,
-              "conditionalRoute": null,
-              "numberCountry": null
-          }
+          "ivr": 1,
+          "extension": 2
       }
     """

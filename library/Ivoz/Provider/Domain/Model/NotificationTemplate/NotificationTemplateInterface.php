@@ -14,6 +14,7 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
     const TYPE_LOWBALANCE = 'lowbalance';
     const TYPE_INVOICE = 'invoice';
     const TYPE_CALLCSV = 'callCsv';
+    const TYPE_MAXDAILYUSAGE = 'maxDailyUsage';
 
 
     /**
@@ -35,14 +36,14 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get type
      *
      * @return string
      */
-    public function getType();
+    public function getType(): string;
 
     /**
      * Get brand
@@ -50,6 +51,11 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add content

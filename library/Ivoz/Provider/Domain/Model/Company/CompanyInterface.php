@@ -119,9 +119,9 @@ interface CompanyInterface extends LoggableEntityInterface
      * @param int $featureId
      * @return bool
      */
-    public function hasFeature($featureId);
+    public function hasFeature($featureId): bool;
 
-    public function hasFeatureByIden(string $iden);
+    public function hasFeatureByIden(string $iden): bool;
 
     /**
      * Get On demand recording code DTMFs
@@ -145,27 +145,27 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getCgrSubject();
 
-    public function isVpbx();
+    public function isVpbx(): bool;
 
-    public function isRetail();
+    public function isRetail(): bool;
 
-    public function isResidential();
+    public function isResidential(): bool;
 
-    public function isWholesale();
+    public function isWholesale(): bool;
 
     /**
      * Get type
      *
      * @return string
      */
-    public function getType();
+    public function getType(): string;
 
     /**
      * Get name
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get domainUsers
@@ -179,63 +179,77 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getNif();
+    public function getNif(): string;
 
     /**
      * Get distributeMethod
      *
      * @return string
      */
-    public function getDistributeMethod();
+    public function getDistributeMethod(): string;
 
     /**
      * Get maxCalls
      *
      * @return integer
      */
-    public function getMaxCalls();
+    public function getMaxCalls(): int;
 
     /**
      * Get maxDailyUsage
      *
      * @return integer
      */
-    public function getMaxDailyUsage();
+    public function getMaxDailyUsage(): int;
+
+    /**
+     * Get currentDayUsage
+     *
+     * @return float | null
+     */
+    public function getCurrentDayUsage();
+
+    /**
+     * Get maxDailyUsageEmail
+     *
+     * @return string | null
+     */
+    public function getMaxDailyUsageEmail();
 
     /**
      * Get postalAddress
      *
      * @return string
      */
-    public function getPostalAddress();
+    public function getPostalAddress(): string;
 
     /**
      * Get postalCode
      *
      * @return string
      */
-    public function getPostalCode();
+    public function getPostalCode(): string;
 
     /**
      * Get town
      *
      * @return string
      */
-    public function getTown();
+    public function getTown(): string;
 
     /**
      * Get province
      *
      * @return string
      */
-    public function getProvince();
+    public function getProvince(): string;
 
     /**
      * Get countryName
      *
      * @return string
      */
-    public function getCountryName();
+    public function getCountryName(): string;
 
     /**
      * Get ipfilter
@@ -256,7 +270,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @return boolean
      */
-    public function getAllowRecordingRemoval();
+    public function getAllowRecordingRemoval(): bool;
 
     /**
      * Get onDemandRecordCode
@@ -291,7 +305,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getBillingMethod();
+    public function getBillingMethod(): string;
 
     /**
      * Get balance
@@ -420,6 +434,18 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
      */
     public function getCallCsvNotificationTemplate();
+
+    /**
+     * Get maxDailyUsageNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getMaxDailyUsageNotificationTemplate();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add extension
@@ -761,4 +787,35 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
      */
     public function getRelRoutingTags(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add relCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry
+     *
+     * @return static
+     */
+    public function addRelCountry(\Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry);
+
+    /**
+     * Remove relCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry
+     */
+    public function removeRelCountry(\Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry);
+
+    /**
+     * Replace relCountries
+     *
+     * @param ArrayCollection $relCountries of Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface
+     * @return static
+     */
+    public function replaceRelCountries(ArrayCollection $relCountries);
+
+    /**
+     * Get relCountries
+     * @param Criteria | null $criteria
+     * @return \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface[]
+     */
+    public function getRelCountries(\Doctrine\Common\Collections\Criteria $criteria = null);
 }

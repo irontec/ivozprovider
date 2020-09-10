@@ -24,9 +24,9 @@ production:
         options:
           title: _("Options")
           screens:
-            externalCallFiltersResidentialEdit_screen: true
+            externalCallFiltersResidentialEdit_screen: $[${auth.companyResidential}]
           dialogs:
-            externalCallFiltersResidentialDel_dialog: true
+            externalCallFiltersResidentialDel_dialog: $[${auth.companyResidential}]
           default: externalCallFiltersResidentialEdit_screen
         blacklist: &externalCallFiltersResidential_blacklistLink
           company: false
@@ -40,25 +40,23 @@ production:
           outOfScheduleTargetType: false
           outOfScheduleExtension: true
           outOfScheduleVoiceMailUser: true
-          blackListRegExp: true
-          whiteListRegExp: true
           holidayTargetType: true
           holidayTarget: true
-          outOfScheduleTargetType: true
           outOfScheduleTarget: true
           ExternalCallFilterRelCalendars: true
           ExternalCallFilterRelSchedules: true
           ExternalCallFilterWhiteLists: true
-          ExternalCallFilterBlackLists: true
         order: &externalCallFiltersResidential_orderLink
           company: true
           name: true
+          blackLists: true
       options:
         title: _("Options")
         screens:
-          externalCallFiltersResidentialNew_screen: true
+          externalCallFiltersResidentialNew_screen: $[${auth.companyResidential}]
         dialogs:
-          externalCallFiltersResidentialDel_dialog: true
+          externalCallFiltersResidentialDel_dialog: $[${auth.companyResidential}]
+
     externalCallFiltersResidentialNew_screen: &externalCallFiltersResidentialNew_screenLink
       <<: *ExternalCallFiltersResidential
       controller: new
@@ -68,13 +66,14 @@ production:
       title: _("Add %s", ngettext('External call filter', 'External call filters', 1))
       shortcutOption: N
       forcedValues:
-        outOfScheduleTargetType: number
         <<: *forcedCompany
       defaultValues:
         outOfScheduleNumberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           <<: *externalCallFiltersResidential_blacklistLink
+        order:
+          <<: *externalCallFiltersResidential_orderLink
       fixedPositions: &externalCallFiltersResidential_fixedPositionsLink
         group0:
           label: _("Basic Info")
@@ -83,9 +82,16 @@ production:
             name: 1
         group1:
           label: _("Filtering info")
+          colsPerRow: 12
+          fields:
+            blackLists: 6
+        group2:
+          label: _("Call forward setting")
           colsPerRow: 6
           fields:
-            outOfScheduleNumberCountry: 2
+            outOfScheduleTargetType: 3
+            __empty: 3
+            outOfScheduleNumberCountry: 3
             outOfScheduleNumberValue: 2
 
     externalCallFiltersResidentialEdit_screen: &externalCallFiltersResidentialEdit_screenLink
@@ -96,9 +102,13 @@ production:
       title: _("Edit %s %2s", ngettext('External call filter', 'External call filters', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedCompany
+      defaultValues:
+        outOfScheduleNumberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           <<: *externalCallFiltersResidential_blacklistLink
+        order:
+          <<: *externalCallFiltersResidential_orderLink
       fixedPositions:
         <<: *externalCallFiltersResidential_fixedPositionsLink
 

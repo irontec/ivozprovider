@@ -19,6 +19,13 @@ Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupAbstract:
         fixed: false
         comment: '[enum:waiting|inProgress|imported|error]'
         default: null
+    lastExecutionError:
+      type: string
+      nullable: true
+      length: 300
+      options:
+        fixed: false
+      column: lastExecutionError
     deductibleConnectionFee:
       type: boolean
       nullable: false

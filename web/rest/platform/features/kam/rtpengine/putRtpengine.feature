@@ -33,10 +33,6 @@ Feature: Update rtpengines
           "stamp": "2020-01-01 01:00:00",
           "description": "rtpengine01-updated",
           "id": 1,
-          "mediaRelaySet": {
-              "name": "Test",
-              "description": "Test media relay set",
-              "id": 1
-          }
+          "mediaRelaySet": 1
       }
     """

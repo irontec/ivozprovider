@@ -85,24 +85,24 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
                 throw new \DomainException('Active users must have a password');
             }
         } else {
-            $this->setActive(0);
+            $this->setActive(false);
             $this->setPass(null);
         }
 
         if (!$this->getEmail()) {
             // If no mail, no SendMail
-            $this->setVoicemailSendMail(0);
+            $this->setVoicemailSendMail(false);
         }
     }
 
     protected function sanitizeNew()
     {
         if ($this->getEmail()) {
-            $this->setVoicemailSendMail(1);
+            $this->setVoicemailSendMail(true);
         }
 
         if ($this->getEmail()) {
-            $this->setActive(1);
+            $this->setActive(true);
         }
     }
 

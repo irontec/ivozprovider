@@ -72,6 +72,11 @@ trait CompanyTrait
      */
     protected $relRoutingTags;
 
+    /**
+     * @var ArrayCollection
+     */
+    protected $relCountries;
+
 
     /**
      * Constructor
@@ -90,6 +95,7 @@ trait CompanyTrait
         $this->relFeatures = new ArrayCollection();
         $this->relCodecs = new ArrayCollection();
         $this->relRoutingTags = new ArrayCollection();
+        $this->relCountries = new ArrayCollection();
     }
 
     abstract protected function sanitizeValues();
@@ -194,6 +200,14 @@ trait CompanyTrait
                 )
             );
         }
+
+        if (!is_null($dto->getRelCountries())) {
+            $self->replaceRelCountries(
+                $fkTransformer->transformCollection(
+                    $dto->getRelCountries()
+                )
+            );
+        }
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -288,6 +302,13 @@ trait CompanyTrait
             $this->replaceRelRoutingTags(
                 $fkTransformer->transformCollection(
                     $dto->getRelRoutingTags()
+                )
+            );
+        }
+        if (!is_null($dto->getRelCountries())) {
+            $this->replaceRelCountries(
+                $fkTransformer->transformCollection(
+                    $dto->getRelCountries()
                 )
             );
         }
@@ -1107,5 +1128,77 @@ trait CompanyTrait
         }
 
         return $this->relRoutingTags->toArray();
+    }
+
+    /**
+     * Add relCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry
+     *
+     * @return static
+     */
+    public function addRelCountry(\Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry)
+    {
+        $this->relCountries->add($relCountry);
+
+        return $this;
+    }
+
+    /**
+     * Remove relCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry
+     */
+    public function removeRelCountry(\Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry)
+    {
+        $this->relCountries->removeElement($relCountry);
+    }
+
+    /**
+     * Replace relCountries
+     *
+     * @param ArrayCollection $relCountries of Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface
+     * @return static
+     */
+    public function replaceRelCountries(ArrayCollection $relCountries)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($relCountries as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setCompany($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->relCountries as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->relCountries->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->relCountries->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addRelCountry($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get relCountries
+     * @param Criteria | null $criteria
+     * @return \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface[]
+     */
+    public function getRelCountries(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->relCountries->matching($criteria)->toArray();
+        }
+
+        return $this->relCountries->toArray();
     }
 }

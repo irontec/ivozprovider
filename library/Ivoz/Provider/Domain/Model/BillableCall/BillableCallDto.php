@@ -51,6 +51,7 @@ class BillableCallDto extends BillableCallDtoAbstract
                 'invoiceId' => 'invoice',
                 'endpointType' => 'endpointType',
                 'endpointId' => 'endpointId',
+                'endpointName' => 'endpointName',
                 'ddiId' => 'ddi'
             ];
         } else {
@@ -93,6 +94,7 @@ class BillableCallDto extends BillableCallDtoAbstract
             'ratingPlanName',
             'endpointType',
             'endpointId',
+            'endpointName',
             'direction',
             'id',
             'companyId',
@@ -130,6 +132,7 @@ class BillableCallDto extends BillableCallDtoAbstract
             'ratingPlanName',
             'endpointType',
             'endpointId',
+            'endpointName',
             'direction',
             'id',
             'ddiId',

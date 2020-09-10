@@ -218,7 +218,7 @@ abstract class InvoiceTemplateAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -273,7 +273,7 @@ abstract class InvoiceTemplateAbstract
      *
      * @return string
      */
-    public function getTemplate()
+    public function getTemplate(): string
     {
         return $this->template;
     }

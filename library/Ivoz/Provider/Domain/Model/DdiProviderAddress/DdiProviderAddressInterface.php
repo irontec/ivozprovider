@@ -53,4 +53,9 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
      */
     public function getDdiProvider();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

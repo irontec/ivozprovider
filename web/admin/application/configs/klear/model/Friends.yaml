@@ -77,28 +77,11 @@ production:
       required: true
       pattern: "^[0-9]+$"
       defaultValue: 5060
-    authNeeded:
-      title: _('Auth needed')
-      type: select
-      defaultValue: 'no'
-      source:
-        data: inline
-        values:
-          'yes':
-            title: _('Yes')
-            visualFilter:
-              show: ["password"]
-              hide: []
-          'no':
-            title: _('No')
-            visualFilter:
-              hide: ["password"]
-              show: []
     password:
       title: _('Password')
       type: text
       pattern: "^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$"
-      required: true
+      trim: both
       info:
         type: box
         position: left
@@ -250,13 +233,13 @@ production:
                 - ip
                 - port
                 - transport
-                - authNeeded
                 - ddiIn
                 - allow
                 - fromDomain
                 - language
                 - transformationRuleSet
                 - callACL
+                - rtpEncryption
           'no':
             title: _('Register')
             visualFilter:
@@ -264,7 +247,6 @@ production:
                 - ip
                 - port
                 - transport
-                - authNeeded
                 - interCompany
               show:
                 - name
@@ -275,6 +257,7 @@ production:
                 - language
                 - transformationRuleSet
                 - callACL
+                - rtpEncryption
           'intervpbx':
             title: _('Inter vPBX')
             visualFilter:
@@ -283,7 +266,6 @@ production:
                 - ip
                 - port
                 - transport
-                - authNeeded
                 - password
                 - ddiIn
                 - allow
@@ -292,6 +274,7 @@ production:
                 - transformationRuleSet
                 - callACL
                 - t38Passthrough
+                - rtpEncryption
               show:
                 - interCompany
     interCompany:
@@ -364,6 +347,40 @@ production:
         values:
           'yes': _('Yes')
           'no': _('No')
+    alwaysApplyTransformations:
+      title: _('Always apply transformations')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Enable to force numeric transformation on numbers in Extensions or numbers matching any Friend regexp. Otherwise, those numbers won't traverse numeric transformations rules.")
+        label: _("Need help?")
+    rtpEncryption:
+      title: _('RTP encryption')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Enable to force audio encryption. Call won't be established unless it is encrypted.")
+        label: _("Need help?")
 staging:
   _extends: production
 testing:

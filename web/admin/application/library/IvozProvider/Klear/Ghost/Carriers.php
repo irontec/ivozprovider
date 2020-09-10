@@ -89,6 +89,13 @@ class IvozProvider_Klear_Ghost_Carriers extends KlearMatrix_Model_Field_Ghost_Ab
                 $carrierDto->getId()
             );
 
+            // If numeric amount, round to 2 decimals value
+            if (is_numeric($balance)) {
+                $amount = sprintf("%0.2f", floatval($balance));
+            } else {
+                $amount = 0;
+            }
+
             $currencySymbol = $dataGateway->remoteProcedureCall(
                 Carrier::class,
                 $carrierDto->getId(),
@@ -98,7 +105,7 @@ class IvozProvider_Klear_Ghost_Carriers extends KlearMatrix_Model_Field_Ghost_Ab
 
             return sprintf(
                 "%s %s",
-                $balance,
+                $amount,
                 $currencySymbol
             );
         } catch (Exception $exception) {

@@ -105,6 +105,11 @@ abstract class CallCsvSchedulerAbstract
      */
     protected $friend;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
+     */
+    protected $ddiProvider;
+
 
     use ChangelogTrait;
 
@@ -209,6 +214,7 @@ abstract class CallCsvSchedulerAbstract
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setFax($fkTransformer->transform($dto->getFax()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
         ;
 
         $self->initChangelog();
@@ -245,7 +251,8 @@ abstract class CallCsvSchedulerAbstract
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setFax($fkTransformer->transform($dto->getFax()))
-            ->setFriend($fkTransformer->transform($dto->getFriend()));
+            ->setFriend($fkTransformer->transform($dto->getFriend()))
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
 
 
 
@@ -277,7 +284,8 @@ abstract class CallCsvSchedulerAbstract
             ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
             ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
             ->setFax(\Ivoz\Provider\Domain\Model\Fax\Fax::entityToDto(self::getFax(), $depth))
-            ->setFriend(\Ivoz\Provider\Domain\Model\Friend\Friend::entityToDto(self::getFriend(), $depth));
+            ->setFriend(\Ivoz\Provider\Domain\Model\Friend\Friend::entityToDto(self::getFriend(), $depth))
+            ->setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::entityToDto(self::getDdiProvider(), $depth));
     }
 
     /**
@@ -303,7 +311,8 @@ abstract class CallCsvSchedulerAbstract
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
             'userId' => self::getUser() ? self::getUser()->getId() : null,
             'faxId' => self::getFax() ? self::getFax()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null
+            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
+            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -330,7 +339,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -362,7 +371,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @return string
      */
-    public function getUnit()
+    public function getUnit(): string
     {
         return $this->unit;
     }
@@ -390,7 +399,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @return integer
      */
-    public function getFrequency()
+    public function getFrequency(): int
     {
         return $this->frequency;
     }
@@ -448,7 +457,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -789,6 +798,30 @@ abstract class CallCsvSchedulerAbstract
     public function getFriend()
     {
         return $this->friend;
+    }
+
+    /**
+     * Set ddiProvider
+     *
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider | null
+     *
+     * @return static
+     */
+    protected function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null)
+    {
+        $this->ddiProvider = $ddiProvider;
+
+        return $this;
+    }
+
+    /**
+     * Get ddiProvider
+     *
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
+     */
+    public function getDdiProvider()
+    {
+        return $this->ddiProvider;
     }
 
     // @codeCoverageIgnoreEnd

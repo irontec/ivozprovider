@@ -77,6 +77,10 @@ These are the configurable settings of *Retail accounts*:
         If set to 'yes', this SIP endpoint must be a **T.38 capable fax sender/receiver**. IvozProvider
         will act as a T.38 gateway, bridging fax-calls of a T.38 capable carrier and a T.38 capable device.
 
+    RTP Encryption
+        If set to 'yes', call won't be established unless it's possible to encryption its audio. If set to 'no',
+        audio won't be encrypted.
+
 .. warning:: All retail accounts within a retail client will have the transcoding capabilities configured at client level.
 
 .. tip:: On retail account edit screen **id** field shows internal identification number assigned to the retail account.
@@ -94,13 +98,19 @@ There is no voicemail service for retail clients.
 Call forwarding settings
 ========================
 
-Each retail account can have a unique enabled call forward setting, pointing to an external number.
+There are 2 types of call forward settings for retail accounts, both pointing to an external number:
 
-This external called will be called whenever the retail account cannot be reached:
+- Unconditional call forward.
+
+- Unreachable call forward.
+
+The last one will be called whenever the retail account cannot be reached:
 
 - Direct connectivity accounts: when no answer is received from defined address.
 
 - Accounts using SIP register: when no answer is received from last contact address or when no active register is found.
+
+.. tip:: Unconditional call forward has precedence over unreacheable call forward.
 
 .. warning:: Retail accounts marked as T.38 won't have any call forward settings.
 

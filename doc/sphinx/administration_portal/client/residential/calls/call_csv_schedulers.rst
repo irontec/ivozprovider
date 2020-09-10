@@ -26,8 +26,14 @@ When adding a new definition, these fields are shown:
     DDI
         Allows selecting client's one specific DDI.
 
+    Endpoint type
+        Allows selecting one specific endpoint type between: residential device and fax.
+
     Residential device
-        Allows selecting client's one specific residential device.
+        Only for *Endpoint type: residential*, allows selecting one specific residential device.
+
+    Fax
+        Only for *Endpoint type: fax*, allows selecting one specific fax.
 
 
 Once created, some new fields and subsections are accesible:
@@ -80,7 +86,7 @@ These are the fields of the generated CSV files:
         Client DDI to which call will be assigned (callee for inbound calls, caller for outbound calls).
 
     endpointType
-        Fixed value: ResidentialDevice
+        Possible values: ResidentialDevice, Fax.
 
     endpointId
         Internal ID of specific residential device

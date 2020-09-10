@@ -31,6 +31,13 @@ interface BannedAddressInterface extends LoggableEntityInterface
     public function getBlocker();
 
     /**
+     * Get aor
+     *
+     * @return string | null
+     */
+    public function getAor();
+
+    /**
      * Get description
      *
      * @return string | null
@@ -57,4 +64,9 @@ interface BannedAddressInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

@@ -47,21 +47,21 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getDdie164();
+    public function getDdie164(): string;
 
     /**
      * Get ddi
      *
      * @return string
      */
-    public function getDdi();
+    public function getDdi(): string;
 
     /**
      * Get recordCalls
      *
      * @return string
      */
-    public function getRecordCalls();
+    public function getRecordCalls(): string;
 
     /**
      * Get displayName
@@ -82,7 +82,7 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @return boolean
      */
-    public function getBillInboundCalls();
+    public function getBillInboundCalls(): bool;
 
     /**
      * Get friendValue
@@ -222,6 +222,11 @@ interface DdiInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * @param string $prefix

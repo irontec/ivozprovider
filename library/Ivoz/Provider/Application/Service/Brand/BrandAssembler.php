@@ -9,6 +9,7 @@ use Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Application\Service\Traits\FileContainerEntityAssemblerTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 
 class BrandAssembler implements CustomEntityAssemblerInterface

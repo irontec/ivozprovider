@@ -46,6 +46,16 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $maxDailyUsage = 1000000;
 
     /**
+     * @var float
+     */
+    private $currentDayUsage = 0;
+
+    /**
+     * @var string
+     */
+    private $maxDailyUsageEmail;
+
+    /**
      * @var string
      */
     private $postalAddress;
@@ -201,6 +211,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $callCsvNotificationTemplate;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     */
+    private $maxDailyUsageNotificationTemplate;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionDto[] | null
      */
     private $extensions = null;
@@ -255,6 +270,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      */
     private $relRoutingTags = null;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryDto[] | null
+     */
+    private $relCountries = null;
+
 
     use DtoNormalizer;
 
@@ -280,6 +300,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'distributeMethod' => 'distributeMethod',
             'maxCalls' => 'maxCalls',
             'maxDailyUsage' => 'maxDailyUsage',
+            'currentDayUsage' => 'currentDayUsage',
+            'maxDailyUsageEmail' => 'maxDailyUsageEmail',
             'postalAddress' => 'postalAddress',
             'postalCode' => 'postalCode',
             'town' => 'town',
@@ -310,7 +332,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'voicemailNotificationTemplateId' => 'voicemailNotificationTemplate',
             'faxNotificationTemplateId' => 'faxNotificationTemplate',
             'invoiceNotificationTemplateId' => 'invoiceNotificationTemplate',
-            'callCsvNotificationTemplateId' => 'callCsvNotificationTemplate'
+            'callCsvNotificationTemplateId' => 'callCsvNotificationTemplate',
+            'maxDailyUsageNotificationTemplateId' => 'maxDailyUsageNotificationTemplate'
         ];
     }
 
@@ -327,6 +350,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'distributeMethod' => $this->getDistributeMethod(),
             'maxCalls' => $this->getMaxCalls(),
             'maxDailyUsage' => $this->getMaxDailyUsage(),
+            'currentDayUsage' => $this->getCurrentDayUsage(),
+            'maxDailyUsageEmail' => $this->getMaxDailyUsageEmail(),
             'postalAddress' => $this->getPostalAddress(),
             'postalCode' => $this->getPostalCode(),
             'town' => $this->getTown(),
@@ -358,6 +383,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'faxNotificationTemplate' => $this->getFaxNotificationTemplate(),
             'invoiceNotificationTemplate' => $this->getInvoiceNotificationTemplate(),
             'callCsvNotificationTemplate' => $this->getCallCsvNotificationTemplate(),
+            'maxDailyUsageNotificationTemplate' => $this->getMaxDailyUsageNotificationTemplate(),
             'extensions' => $this->getExtensions(),
             'ddis' => $this->getDdis(),
             'friends' => $this->getFriends(),
@@ -368,7 +394,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'recordings' => $this->getRecordings(),
             'relFeatures' => $this->getRelFeatures(),
             'relCodecs' => $this->getRelCodecs(),
-            'relRoutingTags' => $this->getRelRoutingTags()
+            'relRoutingTags' => $this->getRelRoutingTags(),
+            'relCountries' => $this->getRelCountries()
         ];
 
         if (!$hideSensitiveData) {
@@ -523,6 +550,46 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getMaxDailyUsage()
     {
         return $this->maxDailyUsage;
+    }
+
+    /**
+     * @param float $currentDayUsage
+     *
+     * @return static
+     */
+    public function setCurrentDayUsage($currentDayUsage = null)
+    {
+        $this->currentDayUsage = $currentDayUsage;
+
+        return $this;
+    }
+
+    /**
+     * @return float | null
+     */
+    public function getCurrentDayUsage()
+    {
+        return $this->currentDayUsage;
+    }
+
+    /**
+     * @param string $maxDailyUsageEmail
+     *
+     * @return static
+     */
+    public function setMaxDailyUsageEmail($maxDailyUsageEmail = null)
+    {
+        $this->maxDailyUsageEmail = $maxDailyUsageEmail;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getMaxDailyUsageEmail()
+    {
+        return $this->maxDailyUsageEmail;
     }
 
     /**
@@ -1536,6 +1603,52 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $maxDailyUsageNotificationTemplate
+     *
+     * @return static
+     */
+    public function setMaxDailyUsageNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $maxDailyUsageNotificationTemplate = null)
+    {
+        $this->maxDailyUsageNotificationTemplate = $maxDailyUsageNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     */
+    public function getMaxDailyUsageNotificationTemplate()
+    {
+        return $this->maxDailyUsageNotificationTemplate;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setMaxDailyUsageNotificationTemplateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            : null;
+
+        return $this->setMaxDailyUsageNotificationTemplate($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getMaxDailyUsageNotificationTemplateId()
+    {
+        if ($dto = $this->getMaxDailyUsageNotificationTemplate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
      * @param array $extensions
      *
      * @return static
@@ -1753,5 +1866,25 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getRelRoutingTags()
     {
         return $this->relRoutingTags;
+    }
+
+    /**
+     * @param array $relCountries
+     *
+     * @return static
+     */
+    public function setRelCountries($relCountries = null)
+    {
+        $this->relCountries = $relCountries;
+
+        return $this;
+    }
+
+    /**
+     * @return array | null
+     */
+    public function getRelCountries()
+    {
+        return $this->relCountries;
     }
 }

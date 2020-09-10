@@ -62,7 +62,7 @@ class DdiProviderRegistrationStatus
         return $this->inProgress;
     }
 
-    private function setInProgress(string $inProgress): self
+    private function setInProgress(bool $inProgress): self
     {
         $this->inProgress = $inProgress;
 

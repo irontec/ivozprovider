@@ -58,7 +58,7 @@
         "graze/guzzle-jsonrpc": "3.2.*",
         "guzzlehttp/guzzle": "^6.3",
         "irontec/ivoz-provider-bundle": "^2.0",
-        "irontec/ivoz-dev-tools": "^3.0"
+        "irontec/ivoz-dev-tools": "^4.0"
     },
     "require-dev": {
         "docteurklein/test-double-bundle": "^1.0",

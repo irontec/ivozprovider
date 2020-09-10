@@ -17,28 +17,28 @@ interface TpAccountActionInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getTpid();
+    public function getTpid(): string;
 
     /**
      * Get loadid
      *
      * @return string
      */
-    public function getLoadid();
+    public function getLoadid(): string;
 
     /**
      * Get tenant
      *
      * @return string
      */
-    public function getTenant();
+    public function getTenant(): string;
 
     /**
      * Get account
      *
      * @return string
      */
-    public function getAccount();
+    public function getAccount(): string;
 
     /**
      * Get actionPlanTag
@@ -59,21 +59,21 @@ interface TpAccountActionInterface extends LoggableEntityInterface
      *
      * @return boolean
      */
-    public function getAllowNegative();
+    public function getAllowNegative(): bool;
 
     /**
      * Get disabled
      *
      * @return boolean
      */
-    public function getDisabled();
+    public function getDisabled(): bool;
 
     /**
      * Get createdAt
      *
      * @return \DateTime
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): \DateTime;
 
     /**
      * Get company
@@ -88,4 +88,9 @@ interface TpAccountActionInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

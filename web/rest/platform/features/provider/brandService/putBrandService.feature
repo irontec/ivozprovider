@@ -24,45 +24,7 @@ Feature: Update brand services
       {
           "code": "95",
           "id": 1,
-          "brand": {
-              "name": "Irontec_e2e",
-              "domainUsers": "sip.irontec.com",
-              "maxCalls": 0,
-              "id": 2,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "language": 1,
-              "defaultTimezone": 145
-          },
-          "service": {
-              "iden": "GroupPickUp",
-              "defaultCode": "95",
-              "extraArgs": false,
-              "id": 2,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              },
-              "description": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              }
-          }
+          "brand": 2,
+          "service": 2
       }
     """

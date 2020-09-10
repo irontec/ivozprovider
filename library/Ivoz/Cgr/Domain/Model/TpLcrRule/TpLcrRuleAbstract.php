@@ -313,7 +313,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return string
      */
-    public function getTpid()
+    public function getTpid(): string
     {
         return $this->tpid;
     }
@@ -340,7 +340,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return string
      */
-    public function getDirection()
+    public function getDirection(): string
     {
         return $this->direction;
     }
@@ -367,7 +367,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return string
      */
-    public function getTenant()
+    public function getTenant(): string
     {
         return $this->tenant;
     }
@@ -394,7 +394,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return string
      */
-    public function getCategory()
+    public function getCategory(): string
     {
         return $this->category;
     }
@@ -421,7 +421,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return string
      */
-    public function getAccount()
+    public function getAccount(): string
     {
         return $this->account;
     }
@@ -504,7 +504,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return string
      */
-    public function getRpCategory()
+    public function getRpCategory(): string
     {
         return $this->rpCategory;
     }
@@ -531,7 +531,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return string
      */
-    public function getStrategy()
+    public function getStrategy(): string
     {
         return $this->strategy;
     }
@@ -593,7 +593,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return \DateTime
      */
-    public function getActivationTime()
+    public function getActivationTime(): \DateTime
     {
         return clone $this->activationTime;
     }
@@ -620,7 +620,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return float
      */
-    public function getWeight()
+    public function getWeight(): float
     {
         return $this->weight;
     }
@@ -654,7 +654,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

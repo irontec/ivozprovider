@@ -6,6 +6,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
+use Ivoz\Provider\Domain\Service\Company\SyncDailyUsage;
 use Ivoz\Provider\Domain\Service\Company\SyncBalances;
 use Ivoz\Provider\Domain\Service\Carrier\SyncBalances as SyncCarrierBalances;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
@@ -53,6 +54,10 @@ class MicroKernel extends Kernel
     public function sync()
     {
         $this->registerCommand();
+
+        /** @var SyncDailyUsage $syncDailyUsage */
+        $syncDailyUsage = $this->container->get(SyncDailyUsage::class);
+        $syncDailyUsage->updateAll();
 
         /** @var SyncBalances $syncBalancesService */
         $syncBalancesService = $this->container->get(SyncBalances::class);

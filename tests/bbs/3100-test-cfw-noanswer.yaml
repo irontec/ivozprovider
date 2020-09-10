@@ -9,7 +9,7 @@ scenarios:
               credentials:
                 <<: *alice_cred
           - waitfor: CONFIRMED
-          - wait: 10
+          - wait: 5
           - hangup
           - waitfor: DISCONNCTD
       - eve:

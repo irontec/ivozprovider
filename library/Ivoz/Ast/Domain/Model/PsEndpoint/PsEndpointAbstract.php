@@ -414,7 +414,7 @@ abstract class PsEndpointAbstract
      *
      * @return string
      */
-    public function getSorceryId()
+    public function getSorceryId(): string
     {
         return $this->sorceryId;
     }
@@ -525,7 +525,7 @@ abstract class PsEndpointAbstract
      *
      * @return string
      */
-    public function getContext()
+    public function getContext(): string
     {
         return $this->context;
     }
@@ -552,7 +552,7 @@ abstract class PsEndpointAbstract
      *
      * @return string
      */
-    public function getDisallow()
+    public function getDisallow(): string
     {
         return $this->disallow;
     }
@@ -579,7 +579,7 @@ abstract class PsEndpointAbstract
      *
      * @return string
      */
-    public function getAllow()
+    public function getAllow(): string
     {
         return $this->allow;
     }
@@ -765,7 +765,7 @@ abstract class PsEndpointAbstract
      *
      * @return string
      */
-    public function getOneHundredRel()
+    public function getOneHundredRel(): string
     {
         return $this->oneHundredRel;
     }
@@ -847,7 +847,7 @@ abstract class PsEndpointAbstract
      *
      * @return string
      */
-    public function getT38Udptl()
+    public function getT38Udptl(): string
     {
         return $this->t38Udptl;
     }
@@ -878,7 +878,7 @@ abstract class PsEndpointAbstract
      *
      * @return string
      */
-    public function getT38UdptlEc()
+    public function getT38UdptlEc(): string
     {
         return $this->t38UdptlEc;
     }
@@ -906,7 +906,7 @@ abstract class PsEndpointAbstract
      *
      * @return integer
      */
-    public function getT38UdptlMaxdatagram()
+    public function getT38UdptlMaxdatagram(): int
     {
         return $this->t38UdptlMaxdatagram;
     }
@@ -936,7 +936,7 @@ abstract class PsEndpointAbstract
      *
      * @return string
      */
-    public function getT38UdptlNat()
+    public function getT38UdptlNat(): string
     {
         return $this->t38UdptlNat;
     }

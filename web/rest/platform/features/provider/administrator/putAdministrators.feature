@@ -39,18 +39,7 @@ Feature: Update administrators
           "id": 1,
           "brand": null,
           "company": null,
-          "timezone": {
-              "tz": "Europe/London",
-              "comment": "",
-              "id": 158,
-              "label": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              },
-              "country": 180
-          }
+          "timezone": 158
       }
     """
 

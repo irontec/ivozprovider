@@ -105,3 +105,18 @@ Model\RegistrationSummary:
         - My
         parameters: []
   collectionOperations: []
+
+Model\ActiveCalls:
+  itemOperations:
+    get_my_active_calls:
+      access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+      method: 'GET'
+      path: '/my/active_calls'
+      route_name: 'get_my_active_calls'
+      swagger_context:
+        produces:
+        - 'application/json'
+        tags:
+        - My
+        parameters: []
+  collectionOperations: []

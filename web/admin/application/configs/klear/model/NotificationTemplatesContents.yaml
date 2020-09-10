@@ -98,6 +98,15 @@ production:
         class: IvozProvider_Klear_Ghost_NotificationTemplate
         method: getVariables
       <<: *callCsvVariablesHelp
+    maxDailyUsageVariables:
+      title: _('Substitution variables')
+      type: ghost
+      maxLength: 255
+      readonly: true
+      source:
+        class: IvozProvider_Klear_Ghost_NotificationTemplate
+        method: getVariables
+      <<: *maxDailyUsageVariablesHelp
     subject:
       title: _('Subject')
       trim: both

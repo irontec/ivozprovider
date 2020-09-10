@@ -59,7 +59,9 @@ production:
           showInvoices: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
+          maxDailyUsageNotificationTemplate: true
           maxDailyUsage: true
+          maxDailyUsageEmail: true
           externallyExtraOpts: true
         order:
           name: true
@@ -106,6 +108,7 @@ production:
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
           externallyExtraOpts: true
+          maxDailyUsageNotificationTemplate: true
         order: &wholesaleClientsOrder_Link
           id: true
           name: true
@@ -125,11 +128,15 @@ production:
             name: 3
             billingMethod: 3
         group1:
-          colsPerRow: 2
+          colsPerRow: 12
           label: _("Security")
           fields:
-            maxCalls: 1
-            maxDailyUsage: 1
+            maxCalls: 6
+            __empty2: 6
+            maxDailyUsage: 6
+            maxDailyUsageEmail: 6
+            ipFilter: 6
+            relCountries: 6
         group2:
           colsPerRow: 12
           label: _("Geographic Configuration")
@@ -187,11 +194,15 @@ production:
             name: 3
             billingMethod: 3
         group1:
-          colsPerRow: 2
+          colsPerRow: 12
           label: _("Security")
           fields:
-            maxCalls: 1
-            maxDailyUsage: 1
+            maxCalls: 6
+            __empty2: 6
+            maxDailyUsage: 6
+            maxDailyUsageEmail: 6
+            ipFilter: 6
+            relCountries: 6
         group2:
           colsPerRow: 12
           label: _("Geographic Configuration")
@@ -238,6 +249,7 @@ production:
           fields:
             invoiceNotificationTemplate: 1
             callCsvNotificationTemplate: 1
+            maxDailyUsageNotificationTemplate: 1
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Wholesale Client', 'Wholesale Clients', 1), "[format| (%item%)]")

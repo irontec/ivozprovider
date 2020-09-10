@@ -191,7 +191,7 @@ abstract class DomainAbstract
      *
      * @return string
      */
-    public function getDomain()
+    public function getDomain(): string
     {
         return $this->domain;
     }
@@ -217,7 +217,7 @@ abstract class DomainAbstract
      *
      * @return string
      */
-    public function getPointsTo()
+    public function getPointsTo(): string
     {
         return $this->pointsTo;
     }

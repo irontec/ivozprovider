@@ -39,4 +39,9 @@ interface RoutingPatternGroupsRelPatternInterface extends LoggableEntityInterfac
      * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface | null
      */
     public function getRoutingPatternGroup();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

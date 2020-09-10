@@ -30,31 +30,7 @@ Feature: Manage administrator rel public entities
           "update": false,
           "delete": false,
           "id": 3,
-          "administrator": {
-              "username": "restrictedCompanyAdmin",
-              "pass": "*****",
-              "email": "test@irontec.com",
-              "active": true,
-              "restricted": true,
-              "name": "Admin Name",
-              "lastname": "Admin Lastname",
-              "id": 7,
-              "company": 1,
-              "timezone": 145
-          },
-          "publicEntity": {
-              "iden": "Calendars",
-              "fqdn": "Ivoz\\Provider\\Domain\\Model\\Calendar\\Calendar",
-              "platform": false,
-              "brand": false,
-              "client": true,
-              "id": 3,
-              "name": {
-                  "en": "Calendars",
-                  "es": "Calendars",
-                  "ca": "Calendars",
-                  "it": "Calendars"
-              }
-          }
+          "administrator": 7,
+          "publicEntity": 3
       }
     """

@@ -23,7 +23,7 @@ Feature: Update outgoing ddi rules patterns
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "type": "prefix",
@@ -31,13 +31,8 @@ Feature: Update outgoing ddi rules patterns
           "action": "force",
           "priority": 10,
           "id": 1,
-          "outgoingDdiRule": {
-              "name": "testRule",
-              "defaultAction": "keep",
-              "id": 1,
-              "forcedDdi": null
-          },
+          "outgoingDdiRule": 1,
           "matchList": null,
-          "forcedDdi": "~"
+          "forcedDdi": 1
       }
     """

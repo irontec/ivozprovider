@@ -17,42 +17,42 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getTpid();
+    public function getTpid(): string;
 
     /**
      * Get loadid
      *
      * @return string
      */
-    public function getLoadid();
+    public function getLoadid(): string;
 
     /**
      * Get direction
      *
      * @return string
      */
-    public function getDirection();
+    public function getDirection(): string;
 
     /**
      * Get tenant
      *
      * @return string
      */
-    public function getTenant();
+    public function getTenant(): string;
 
     /**
      * Get category
      *
      * @return string
      */
-    public function getCategory();
+    public function getCategory(): string;
 
     /**
      * Get account
      *
      * @return string
      */
-    public function getAccount();
+    public function getAccount(): string;
 
     /**
      * Get subject
@@ -73,126 +73,126 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getRunid();
+    public function getRunid(): string;
 
     /**
      * Get runFilters
      *
      * @return string
      */
-    public function getRunFilters();
+    public function getRunFilters(): string;
 
     /**
      * Get reqTypeField
      *
      * @return string
      */
-    public function getReqTypeField();
+    public function getReqTypeField(): string;
 
     /**
      * Get directionField
      *
      * @return string
      */
-    public function getDirectionField();
+    public function getDirectionField(): string;
 
     /**
      * Get tenantField
      *
      * @return string
      */
-    public function getTenantField();
+    public function getTenantField(): string;
 
     /**
      * Get categoryField
      *
      * @return string
      */
-    public function getCategoryField();
+    public function getCategoryField(): string;
 
     /**
      * Get accountField
      *
      * @return string
      */
-    public function getAccountField();
+    public function getAccountField(): string;
 
     /**
      * Get subjectField
      *
      * @return string
      */
-    public function getSubjectField();
+    public function getSubjectField(): string;
 
     /**
      * Get destinationField
      *
      * @return string
      */
-    public function getDestinationField();
+    public function getDestinationField(): string;
 
     /**
      * Get setupTimeField
      *
      * @return string
      */
-    public function getSetupTimeField();
+    public function getSetupTimeField(): string;
 
     /**
      * Get pddField
      *
      * @return string
      */
-    public function getPddField();
+    public function getPddField(): string;
 
     /**
      * Get answerTimeField
      *
      * @return string
      */
-    public function getAnswerTimeField();
+    public function getAnswerTimeField(): string;
 
     /**
      * Get usageField
      *
      * @return string
      */
-    public function getUsageField();
+    public function getUsageField(): string;
 
     /**
      * Get supplierField
      *
      * @return string
      */
-    public function getSupplierField();
+    public function getSupplierField(): string;
 
     /**
      * Get disconnectCauseField
      *
      * @return string
      */
-    public function getDisconnectCauseField();
+    public function getDisconnectCauseField(): string;
 
     /**
      * Get ratedTimeField
      *
      * @return string
      */
-    public function getRatedTimeField();
+    public function getRatedTimeField(): string;
 
     /**
      * Get costField
      *
      * @return string
      */
-    public function getCostField();
+    public function getCostField(): string;
 
     /**
      * Get createdAt
      *
      * @return \DateTime
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): \DateTime;
 
     /**
      * Get brand
@@ -200,4 +200,9 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

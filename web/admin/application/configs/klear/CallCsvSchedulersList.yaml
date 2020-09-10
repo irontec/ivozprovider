@@ -33,11 +33,13 @@ production:
           companyType: true
           vpbx: true
           endpointType: true
+          residentialEndpointType: true
           user: true
           fax: true
           friend: true
           retail: true
           residential: true
+          ddiProvider: true
         order: &callCsvSchedulers_orderLink
           id: true
           name: true
@@ -84,11 +86,16 @@ production:
           retailAccount: ${auth.companyNotRetail}
           residentialDevice: ${auth.companyNotResidential}
           carrier: true
+          ddiProvider: true
           companyType: true
+          retail: true
+          residential: true
+          vpbx: true
           ddi: ${auth.companyWholesale}
           endpointType: ${auth.companyNotVPBX}
+          residentialEndpointType: ${auth.companyNotResidential}
           user: ${auth.companyNotVPBX}
-          fax: ${auth.companyNotVPBX}
+          fax: ${auth.companyFeatures.faxes.disabled}
           friend: ${auth.companyNotVPBX}
         order:
           name: 1
@@ -101,6 +108,7 @@ production:
           lastExecution: 1
           callDirection: 1
           carrier: 1
+          ddiProvider: 1
           company: 1
           retail: 1
           residential: 1
@@ -109,6 +117,7 @@ production:
           residentialDevice: 1
           ddi: 1
           endpointType: 1
+          residentialEndpointType: 1
       fixedPositions: &callCsvSchedulersFixedPositions_Link
         group0:
           label: _("Basic Information")
@@ -124,15 +133,16 @@ production:
           fields:
             callDirection: 1
             carrier: 1
+            ddiProvider: 1
             company: 1
             vpbx: 1
             retail: 1
             residential: 1
-            endpointType: 1
-            endpointType: 1
-            retailAccount: 1
-            residentialDevice: 1
             ddi: 1
+            retailAccount: 1
+            residentialEndpointType: 1
+            residentialDevice: 1
+            endpointType: 1
             user: 1
             fax: 1
             friend: 1
@@ -159,7 +169,19 @@ production:
         blacklist: &callCsvSchedulersEdit_blacklist
           callCsvNotificationTemplate: true
           carrier: true
+          ddiProvider: true
           ddi: ${auth.companyWholesale}
+          retail: true
+          residential: true
+          companyType: true
+          vpbx: true
+          retailAccount: ${auth.companyNotRetail}
+          residentialDevice: ${auth.companyNotResidential}
+          endpointType: ${auth.companyNotVPBX}
+          residentialEndpointType: ${auth.companyNotResidential}
+          user: ${auth.companyNotVPBX}
+          fax: ${auth.companyFeatures.faxes.disabled}
+          friend: ${auth.companyNotVPBX}
       fixedPositions:
         <<: *callCsvSchedulersFixedPositions_Link
 

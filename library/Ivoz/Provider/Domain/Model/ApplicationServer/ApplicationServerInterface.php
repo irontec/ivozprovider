@@ -17,7 +17,7 @@ interface ApplicationServerInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getIp();
+    public function getIp(): string;
 
     /**
      * Get name
@@ -25,4 +25,9 @@ interface ApplicationServerInterface extends LoggableEntityInterface
      * @return string | null
      */
     public function getName();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

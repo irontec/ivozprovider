@@ -38,7 +38,7 @@ Feature: Update IVRs
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
      {
           "name": "testIvrCustom",
@@ -50,72 +50,16 @@ Feature: Update IVRs
           "errorRouteType": "number",
           "errorNumberValue": "946002021",
           "id": 1,
-          "welcomeLocution": {
-              "name": "testLocution",
-              "status": null,
-              "id": 1,
-              "encodedFile": {
-                  "fileSize": 1,
-                  "mimeType": "audio/x-wav; charset=binary",
-                  "baseName": "locution.wav"
-              },
-              "originalFile": {
-                  "fileSize": 1,
-                  "mimeType": "audio\/mpeg; charset=binary",
-                  "baseName": "locution.mp3"
-              }
-          },
+          "welcomeLocution": 1,
           "noInputLocution": null,
           "errorLocution": null,
-          "successLocution": {
-              "name": "testLocution",
-              "status": null,
-              "id": 1,
-              "encodedFile": {
-                  "fileSize": 1,
-                  "mimeType": "audio/x-wav; charset=binary",
-                  "baseName": "locution.wav"
-              },
-              "originalFile": {
-                  "fileSize": 1,
-                  "mimeType": "audio\/mpeg; charset=binary",
-                  "baseName": "locution.mp3"
-              }
-          },
+          "successLocution": 1,
           "noInputExtension": null,
           "errorExtension": null,
           "noInputVoiceMailUser": null,
           "errorVoiceMailUser": null,
-          "noInputNumberCountry": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España",
-                  "ca": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
-          },
-          "errorNumberCountry": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 68,
-              "name": {
-                  "en": "Spain",
-                  "es": "España",
-                  "ca": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa"
-              }
-          },
+          "noInputNumberCountry": 68,
+          "errorNumberCountry": 68,
           "excludedExtensionIds": [
               2
           ]

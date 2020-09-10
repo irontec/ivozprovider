@@ -21,21 +21,21 @@ interface UsersCdrInterface extends EntityInterface
      *
      * @return \DateTime
      */
-    public function getStartTime();
+    public function getStartTime(): \DateTime;
 
     /**
      * Get endTime
      *
      * @return \DateTime
      */
-    public function getEndTime();
+    public function getEndTime(): \DateTime;
 
     /**
      * Get duration
      *
      * @return float
      */
-    public function getDuration();
+    public function getDuration(): float;
 
     /**
      * Get direction
@@ -105,7 +105,7 @@ interface UsersCdrInterface extends EntityInterface
      *
      * @return boolean
      */
-    public function getHidden();
+    public function getHidden(): bool;
 
     /**
      * Get brand
@@ -148,4 +148,9 @@ interface UsersCdrInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
      */
     public function getRetailAccount();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

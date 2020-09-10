@@ -1,0 +1,60 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: bruteForceAttacksList_screen
+  screens: &bruteForceAttacks_screensLink
+    bruteForceAttacksList_screen: &bruteForceAttacksList_screenLink
+      controller: list
+      forcedValues:
+        <<: *forcedBrand
+      pagination:
+        items: 100
+      order:
+        field:
+        - BannedAddress.lastTimeBanned desc
+      <<: *BannedAddresses
+      class: ui-silk-door
+      title: _("List of %s %2s", ngettext('Banned IP address', 'Banned IP addresses', 0), "[format| (%parent%)]")
+      rawCondition: "BannedAddress.blocker = 'antibruteforce'"
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/brand/views/bruteforce_attacks.html"
+      fields: &bruteForceAttacks_fieldsLink
+        options:
+          title: _("Options")
+          dialogs:
+            bruteForceUnban_dialog: true
+        order:
+          company: true
+          aor: true
+          ip: true
+          lastTimeBanned: true
+        blacklist:
+          blocker: true
+          description: true
+
+  dialogs:
+    bruteForceUnban_dialog: &bruteForceUnban_dialogLink
+      title: _("Unban address")
+      module: default
+      controller: klear-custom-brute-force-unban
+      action: index
+      class: ui-silk-flag-green
+      label: false
+      labelOnEdit: false
+      labelOnList: false
+      labelOnEntityPostSave: false
+      multiItem: false
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

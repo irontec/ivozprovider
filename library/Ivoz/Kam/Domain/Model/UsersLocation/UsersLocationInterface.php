@@ -11,14 +11,14 @@ interface UsersLocationInterface extends EntityInterface
      *
      * @return string
      */
-    public function getRuid();
+    public function getRuid(): string;
 
     /**
      * Get username
      *
      * @return string
      */
-    public function getUsername();
+    public function getUsername(): string;
 
     /**
      * Get domain
@@ -32,7 +32,7 @@ interface UsersLocationInterface extends EntityInterface
      *
      * @return string
      */
-    public function getContact();
+    public function getContact(): string;
 
     /**
      * Get received
@@ -53,56 +53,56 @@ interface UsersLocationInterface extends EntityInterface
      *
      * @return \DateTime
      */
-    public function getExpires();
+    public function getExpires(): \DateTime;
 
     /**
      * Get q
      *
      * @return float
      */
-    public function getQ();
+    public function getQ(): float;
 
     /**
      * Get callid
      *
      * @return string
      */
-    public function getCallid();
+    public function getCallid(): string;
 
     /**
      * Get cseq
      *
      * @return integer
      */
-    public function getCseq();
+    public function getCseq(): int;
 
     /**
      * Get lastModified
      *
      * @return \DateTime
      */
-    public function getLastModified();
+    public function getLastModified(): \DateTime;
 
     /**
      * Get flags
      *
      * @return integer
      */
-    public function getFlags();
+    public function getFlags(): int;
 
     /**
      * Get cflags
      *
      * @return integer
      */
-    public function getCflags();
+    public function getCflags(): int;
 
     /**
      * Get userAgent
      *
      * @return string
      */
-    public function getUserAgent();
+    public function getUserAgent(): string;
 
     /**
      * Get socket
@@ -130,33 +130,38 @@ interface UsersLocationInterface extends EntityInterface
      *
      * @return integer
      */
-    public function getRegId();
+    public function getRegId(): int;
 
     /**
      * Get serverId
      *
      * @return integer
      */
-    public function getServerId();
+    public function getServerId(): int;
 
     /**
      * Get connectionId
      *
      * @return integer
      */
-    public function getConnectionId();
+    public function getConnectionId(): int;
 
     /**
      * Get keepalive
      *
      * @return integer
      */
-    public function getKeepalive();
+    public function getKeepalive(): int;
 
     /**
      * Get partition
      *
      * @return integer
      */
-    public function getPartition();
+    public function getPartition(): int;
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

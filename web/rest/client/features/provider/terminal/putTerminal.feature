@@ -25,7 +25,7 @@ Feature: Update terminals
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "name": "aliceUpdated",
@@ -36,16 +36,9 @@ Feature: Update terminals
           "password": "ZGthe7E2+1",
           "mac": "aabbccddeeff",
           "lastProvisionDate": "1970-01-01 10:10:10",
+          "t38Passthrough": "no",
+          "rtpEncryption": false,
           "id": 1,
-          "terminalModel": {
-              "iden": "YealinkT21P_E2",
-              "name": "YealinkT21P_E2",
-              "description": "",
-              "genericTemplate": null,
-              "specificTemplate": null,
-              "genericUrlPattern": "y000000000052.cfg",
-              "specificUrlPattern": "{mac}",
-              "id": 2
-          }
+          "terminalModel": 2
       }
     """

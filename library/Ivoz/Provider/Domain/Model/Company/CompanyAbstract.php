@@ -52,6 +52,16 @@ abstract class CompanyAbstract
     protected $maxDailyUsage = 1000000;
 
     /**
+     * @var float | null
+     */
+    protected $currentDayUsage = 0;
+
+    /**
+     * @var string | null
+     */
+    protected $maxDailyUsageEmail;
+
+    /**
      * @var string
      */
     protected $postalAddress;
@@ -203,6 +213,11 @@ abstract class CompanyAbstract
      */
     protected $callCsvNotificationTemplate;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    protected $maxDailyUsageNotificationTemplate;
+
 
     use ChangelogTrait;
 
@@ -325,6 +340,8 @@ abstract class CompanyAbstract
 
         $self
             ->setDomainUsers($dto->getDomainUsers())
+            ->setCurrentDayUsage($dto->getCurrentDayUsage())
+            ->setMaxDailyUsageEmail($dto->getMaxDailyUsageEmail())
             ->setIpfilter($dto->getIpfilter())
             ->setOnDemandRecord($dto->getOnDemandRecord())
             ->setOnDemandRecordCode($dto->getOnDemandRecordCode())
@@ -348,6 +365,7 @@ abstract class CompanyAbstract
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
+            ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()))
         ;
 
         $self->initChangelog();
@@ -374,6 +392,8 @@ abstract class CompanyAbstract
             ->setDistributeMethod($dto->getDistributeMethod())
             ->setMaxCalls($dto->getMaxCalls())
             ->setMaxDailyUsage($dto->getMaxDailyUsage())
+            ->setCurrentDayUsage($dto->getCurrentDayUsage())
+            ->setMaxDailyUsageEmail($dto->getMaxDailyUsageEmail())
             ->setPostalAddress($dto->getPostalAddress())
             ->setPostalCode($dto->getPostalCode())
             ->setTown($dto->getTown())
@@ -403,7 +423,8 @@ abstract class CompanyAbstract
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
-            ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()));
+            ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
+            ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()));
 
 
 
@@ -425,6 +446,8 @@ abstract class CompanyAbstract
             ->setDistributeMethod(self::getDistributeMethod())
             ->setMaxCalls(self::getMaxCalls())
             ->setMaxDailyUsage(self::getMaxDailyUsage())
+            ->setCurrentDayUsage(self::getCurrentDayUsage())
+            ->setMaxDailyUsageEmail(self::getMaxDailyUsageEmail())
             ->setPostalAddress(self::getPostalAddress())
             ->setPostalCode(self::getPostalCode())
             ->setTown(self::getTown())
@@ -454,7 +477,8 @@ abstract class CompanyAbstract
             ->setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getVoicemailNotificationTemplate(), $depth))
             ->setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth))
             ->setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth))
-            ->setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth));
+            ->setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth))
+            ->setMaxDailyUsageNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getMaxDailyUsageNotificationTemplate(), $depth));
     }
 
     /**
@@ -470,6 +494,8 @@ abstract class CompanyAbstract
             'distributeMethod' => self::getDistributeMethod(),
             'maxCalls' => self::getMaxCalls(),
             'maxDailyUsage' => self::getMaxDailyUsage(),
+            'currentDayUsage' => self::getCurrentDayUsage(),
+            'maxDailyUsageEmail' => self::getMaxDailyUsageEmail(),
             'postalAddress' => self::getPostalAddress(),
             'postalCode' => self::getPostalCode(),
             'town' => self::getTown(),
@@ -499,7 +525,8 @@ abstract class CompanyAbstract
             'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
             'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null,
             'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null,
-            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null
+            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null,
+            'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate() ? self::getMaxDailyUsageNotificationTemplate()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -532,7 +559,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -559,7 +586,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -614,7 +641,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getNif()
+    public function getNif(): string
     {
         return $this->nif;
     }
@@ -646,7 +673,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getDistributeMethod()
+    public function getDistributeMethod(): string
     {
         return $this->distributeMethod;
     }
@@ -674,7 +701,7 @@ abstract class CompanyAbstract
      *
      * @return integer
      */
-    public function getMaxCalls()
+    public function getMaxCalls(): int
     {
         return $this->maxCalls;
     }
@@ -702,9 +729,66 @@ abstract class CompanyAbstract
      *
      * @return integer
      */
-    public function getMaxDailyUsage()
+    public function getMaxDailyUsage(): int
     {
         return $this->maxDailyUsage;
+    }
+
+    /**
+     * Set currentDayUsage
+     *
+     * @param float $currentDayUsage | null
+     *
+     * @return static
+     */
+    protected function setCurrentDayUsage($currentDayUsage = null)
+    {
+        if (!is_null($currentDayUsage)) {
+            Assertion::numeric($currentDayUsage);
+            $currentDayUsage = (float) $currentDayUsage;
+        }
+
+        $this->currentDayUsage = $currentDayUsage;
+
+        return $this;
+    }
+
+    /**
+     * Get currentDayUsage
+     *
+     * @return float | null
+     */
+    public function getCurrentDayUsage()
+    {
+        return $this->currentDayUsage;
+    }
+
+    /**
+     * Set maxDailyUsageEmail
+     *
+     * @param string $maxDailyUsageEmail | null
+     *
+     * @return static
+     */
+    protected function setMaxDailyUsageEmail($maxDailyUsageEmail = null)
+    {
+        if (!is_null($maxDailyUsageEmail)) {
+            Assertion::maxLength($maxDailyUsageEmail, 100, 'maxDailyUsageEmail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->maxDailyUsageEmail = $maxDailyUsageEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get maxDailyUsageEmail
+     *
+     * @return string | null
+     */
+    public function getMaxDailyUsageEmail()
+    {
+        return $this->maxDailyUsageEmail;
     }
 
     /**
@@ -729,7 +813,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getPostalAddress()
+    public function getPostalAddress(): string
     {
         return $this->postalAddress;
     }
@@ -756,7 +840,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getPostalCode()
+    public function getPostalCode(): string
     {
         return $this->postalCode;
     }
@@ -783,7 +867,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getTown()
+    public function getTown(): string
     {
         return $this->town;
     }
@@ -810,7 +894,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getProvince()
+    public function getProvince(): string
     {
         return $this->province;
     }
@@ -837,7 +921,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getCountryName()
+    public function getCountryName(): string
     {
         return $this->countryName;
     }
@@ -923,7 +1007,7 @@ abstract class CompanyAbstract
      *
      * @return boolean
      */
-    public function getAllowRecordingRemoval()
+    public function getAllowRecordingRemoval(): bool
     {
         return $this->allowRecordingRemoval;
     }
@@ -1068,7 +1152,7 @@ abstract class CompanyAbstract
      *
      * @return string
      */
-    public function getBillingMethod()
+    public function getBillingMethod(): string
     {
         return $this->billingMethod;
     }
@@ -1489,6 +1573,30 @@ abstract class CompanyAbstract
     public function getCallCsvNotificationTemplate()
     {
         return $this->callCsvNotificationTemplate;
+    }
+
+    /**
+     * Set maxDailyUsageNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $maxDailyUsageNotificationTemplate | null
+     *
+     * @return static
+     */
+    protected function setMaxDailyUsageNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $maxDailyUsageNotificationTemplate = null)
+    {
+        $this->maxDailyUsageNotificationTemplate = $maxDailyUsageNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get maxDailyUsageNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getMaxDailyUsageNotificationTemplate()
+    {
+        return $this->maxDailyUsageNotificationTemplate;
     }
 
     // @codeCoverageIgnoreEnd

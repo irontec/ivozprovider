@@ -58,28 +58,28 @@ interface IvrInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get timeout
      *
      * @return integer
      */
-    public function getTimeout();
+    public function getTimeout(): int;
 
     /**
      * Get maxDigits
      *
      * @return integer
      */
-    public function getMaxDigits();
+    public function getMaxDigits(): int;
 
     /**
      * Get allowExtensions
      *
      * @return boolean
      */
-    public function getAllowExtensions();
+    public function getAllowExtensions(): bool;
 
     /**
      * Get noInputRouteType
@@ -185,6 +185,11 @@ interface IvrInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getErrorNumberCountry();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add entry

@@ -35,12 +35,13 @@ production:
           t38Passthrough: true
           allowAudio: true
           allowVideo: true
+          rtpEncryption: true
         options:
           title: _("Options")
           screens:
-            terminalsEdit_screen: ${auth.acls.Terminals.update}
+            terminalsEdit_screen: $[${auth.acls.Terminals.update} && ${auth.companyVPBX}]
           dialogs:
-            terminalsDel_dialog: ${auth.acls.Terminals.delete}
+            terminalsDel_dialog: $[${auth.acls.Terminals.delete} && ${auth.companyVPBX}]
           default: terminalsEdit_screen
         order:
           name: true
@@ -53,9 +54,9 @@ production:
       options:
         title: _("Options")
         screens:
-          terminalsNew_screen: ${auth.acls.Terminals.create}
+          terminalsNew_screen: $[${auth.acls.Terminals.create} && ${auth.companyVPBX}]
         dialogs:
-          terminalsDel_dialog: ${auth.acls.Terminals.delete}
+          terminalsDel_dialog: $[${auth.acls.Terminals.delete} && ${auth.companyVPBX}]
           importTerminals_dialog: false
     terminalsNew_screen: &terminalsNew_screenLink
       <<: *Terminals
@@ -92,6 +93,7 @@ production:
           allowAudio: true
           allowVideo: true
           directMediaMethod: true
+          rtpEncryption: true
       fixedPositions: &TerminalsFixedPositions_link
         group0:
           label: _("Login Info")
@@ -108,6 +110,7 @@ production:
             allowVideo: 4
             directMediaMethod: 4
             t38Passthrough: 4
+            rtpEncryption: 4
         group2:
           label: _("Provisioning Info")
           colsPerRow: 12

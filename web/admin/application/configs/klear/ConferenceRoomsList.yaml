@@ -28,16 +28,16 @@ production:
         options:
           title: _("Options")
           screens:
-            conferenceRoomsEdit_screen: ${auth.acls.ConferenceRooms.update}
+            conferenceRoomsEdit_screen: $[${auth.acls.ConferenceRooms.update} && ${auth.companyVPBX}]
           dialogs:
-            conferenceRoomsDel_dialog: ${auth.acls.ConferenceRooms.delete}
+            conferenceRoomsDel_dialog: $[${auth.acls.ConferenceRooms.delete} && ${auth.companyVPBX}]
           default: conferenceRoomsEdit_screen
       options:
         title: _("Options")
         screens:
-          conferenceRoomsNew_screen: ${auth.acls.ConferenceRooms.create}
+          conferenceRoomsNew_screen: $[${auth.acls.ConferenceRooms.create} && ${auth.companyVPBX}]
         dialogs:
-          conferenceRoomsDel_dialog: ${auth.acls.ConferenceRooms.delete}
+          conferenceRoomsDel_dialog: $[${auth.acls.ConferenceRooms.delete} && ${auth.companyVPBX}]
     conferenceRoomsNew_screen: &conferenceRoomsNew_screenLink
       <<: *ConferenceRooms
       controller: new

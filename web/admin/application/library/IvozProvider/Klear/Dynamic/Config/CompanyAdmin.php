@@ -15,7 +15,7 @@ class CompanyAdmin extends Base
     {
         if ($this->_user) {
             $this->_title = '[' . $this->_user->companyName . ']';
-            $this->_subTitle = "Main Operator: <strong>". $this->_user->getusername()."</strong>";
+            $this->_subTitle = "Operator: <strong>". $this->_user->getLogin()."</strong>";
         }
     }
 }

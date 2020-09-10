@@ -35,25 +35,29 @@ When adding a new definition, these fields are shown:
         Only for *Direction: outbound* reports, allows filtering calls of one specific carrier.
 
     Client
-        Only for *Client type* different from *All*, allows selecting one specific client.
+        Only for *Client type* different from *All*, allows selecting one specific client of chosen type.
 
     DDI
-        Only for *Client type* different from *All*, allows selecting one specific DDI of chosen client.
+        Lists all DDIs of chosen client to get only calls from/to that specific DDI.
+
+    Endpoint type
+        Allows selecting one specific endpoint type of chosen client. Depending on client type, different values will
+        be listed.
 
     Residential device
-        Only for *Client type: residential*, allows selecting one specific residential device of chosen client.
+        Only for *Client type: residential* and *Endpoint type: residential device*, allows selecting one specific residential device of chosen client.
 
     Retail account
         Only for *Client type: retail*, allows selecting one specific retail account of chosen client.
 
     User
-        Only for *Client type: vpbx*, allows selecting one specific user of chosen client.
+        Only for *Client type: vpbx* and *Endpoint type: user*, allows selecting one specific user of chosen client.
 
     Fax
-        Only for *Client type: vpbx*, allows selecting one specific fax of chosen client.
+        Only for *Client type: vpbx/residential* and *Endpoint type: fax*, allows selecting one specific fax of chosen client.
 
     Friend
-        Only for *Client type: vpbx*, allows selecting one specific friend of chosen client.
+        Only for *Client type: vpbx* and *Endpoint type: friend*, allows selecting one specific friend of chosen client.
 
 
 Once created, some new fields and subsections are accesible:
@@ -148,3 +152,53 @@ The DDI Provider that allowed that match is saved as DDI Provider for that inbou
 
 - Matched DDI is linked to another DDI Provider that also matches source IP address. If this happens, linked DDI Provider
   is saved instead.
+
+
+Using CSV scheduler as a one-shot CSV generator
+===============================================
+
+*External Calls* section can filter list and export resulting rows to CSV, but filter criteria are much powerful in
+*Call CSV schedulers* section.
+
+That's why **it could be useful to use this section even if we are not interested in scheduling any recurring CSV**.
+
+.. note:: Scheduling a CSV to generate just a CSV could be useful as *Call CSV Schedulers* have more filtering criteria
+         than *External Calls* section.
+
+Imagine you need:
+
+- Start date: 2020/06/02 (included)
+
+- End date: 2020/06/14 (included)
+
+- Client: XXX (vpbx)
+
+- Inbound calls to YYY DDI answered by user ZZZ
+
+To achieve such a CSV using schedules section we would **create a scheduler** with these inputs:
+
+- Client Type: vpbx
+
+- Client: XXX
+
+- DDI: YYY
+
+- Endpoint Type: user
+
+- User: ZZZ
+
+- Direction: inbound.
+
+- Unit: days.
+
+- Frequency: 13
+
+.. tip:: Get sure you set *Unit* to days and *Frequency* to the amount of days wanted in resulting CSV. In the example,
+         from 2nd of June to 14th, both included, we have 13 days.
+
+Once generated, we would **edit Next execution time** from tomorrow's date to 2020/06/15, leaving time unchanged.
+
+.. tip:: Get sure you modify *Next execution* to the first day not wanted in resulting CSV.
+
+Then we will **wait a few minutes** until scheduler generates our CSV, **download** it and **delete the row to avoid recurrent
+CSV generation**.

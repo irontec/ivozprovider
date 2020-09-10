@@ -210,7 +210,7 @@ abstract class ConferenceRoomAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -238,7 +238,7 @@ abstract class ConferenceRoomAbstract
      *
      * @return boolean
      */
-    public function getPinProtected()
+    public function getPinProtected(): bool
     {
         return $this->pinProtected;
     }
@@ -294,7 +294,7 @@ abstract class ConferenceRoomAbstract
      *
      * @return integer
      */
-    public function getMaxMembers()
+    public function getMaxMembers(): int
     {
         return $this->maxMembers;
     }

@@ -1,13 +1,17 @@
 <?php
 
-namespace Ivoz\Kam\Infrastructure\Kamailio;
+namespace Ivoz\Kam\Infrastructure\Gearman;
 
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcTrunksRequestInterface;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
+use Ivoz\Kam\Infrastructure\Kamailio\JsonRpcRequestTrait;
+use Ivoz\Kam\Infrastructure\Kamailio\RpcClient;
 use Psr\Log\LoggerInterface;
 
 class TrunksClient implements TrunksClientInterface
 {
+    use JsonRpcRequestTrait;
+
     protected $rpcClient;
     protected $germanClient;
     protected $logger;
@@ -143,36 +147,65 @@ class TrunksClient implements TrunksClientInterface
 
     /**
      * @param int $companyId
-     * @return int
+     * @return int[] inbound/outbound
      */
-    public function getCompanyActiveCalls(int $companyId)
+    public function getCompanyActiveCalls(int $companyId): array
     {
-        $payload = ['activeCallsCompany'];
-        $payload[] = $companyId;
+        $inbound = $this->getActiveCalls([
+            'inboundCallsCompany',
+            $companyId
+        ]);
 
-        return $this->getActiveCalls($payload);
+        $outbound = $this->getActiveCalls([
+            'outboundCallsCompany',
+            $companyId
+        ]);
+
+        return [
+            $inbound,
+            $outbound
+        ];
     }
 
     /**
      * @param int $brandId
-     * @return int
+     * @return int[] inbound/outbound
      */
-    public function getBrandActiveCalls(int $brandId)
+    public function getBrandActiveCalls(int $brandId): array
     {
-        $payload = ['activeCallsBrand'];
-        $payload[] = $brandId;
+        $inbound = $this->getActiveCalls([
+            'inboundCallsBrand',
+            $brandId
+        ]);
 
-        return $this->getActiveCalls($payload);
+        $outbound = $this->getActiveCalls([
+            'outboundCallsBrand',
+            $brandId
+        ]);
+
+        return [
+            $inbound,
+            $outbound
+        ];
     }
 
     /**
-     * @return int
+     * @return int[]
      */
-    public function getPlatformActiveCalls()
+    public function getPlatformActiveCalls(): array
     {
-        return $this->getActiveCalls([
-            'activeCallsBrand'
+        $inbound = $this->getActiveCalls([
+            'inboundCallsBrand'
         ]);
+
+        $outbound = $this->getActiveCalls([
+            'outboundCallsBrand'
+        ]);
+
+        return [
+            $inbound,
+            $outbound
+        ];
     }
 
     /**
@@ -208,40 +241,5 @@ class TrunksClient implements TrunksClientInterface
         }
 
         return $response->result === 0;
-    }
-
-    /**
-     * @param string $method
-     * @param array $payload
-     * @throws \RuntimeException
-     * @return \stdClass
-     */
-    private function sendRequest($method, array $payload = [])
-    {
-        /** @var \Graze\GuzzleHttp\JsonRpc\Message\Request $request */
-        $request = $this
-            ->rpcClient
-            ->request(
-                1,
-                $method,
-                $payload
-            );
-
-        /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $response */
-        $response = $this->rpcClient->send($request);
-        $stringResponse = (string) $response->getBody();
-        $objectResponse = json_decode($stringResponse);
-
-        if ($response->getRpcErrorCode()) {
-            $errorMsg = sprintf(
-                'Trunks API response error: %s',
-                $response->getRpcErrorMessage()
-            );
-
-            $this->logger->error($errorMsg);
-            throw new \RuntimeException($errorMsg);
-        }
-
-        return $objectResponse;
     }
 }

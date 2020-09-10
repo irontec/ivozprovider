@@ -31,21 +31,6 @@ Feature: Update transformation rules
           "matchExpr": "^([0-9]+)$",
           "replaceExpr": "+34\u0001",
           "id": 4,
-          "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
-              "internationalCode": "00",
-              "trunkPrefix": "",
-              "areaCode": "",
-              "nationalLen": 9,
-              "generateRules": false,
-              "id": 1,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              },
-              "country": 68
-          }
+          "transformationRuleSet": 1
       }
     """

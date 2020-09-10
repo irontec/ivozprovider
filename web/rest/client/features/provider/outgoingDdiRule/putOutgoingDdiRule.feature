@@ -19,31 +19,12 @@ Feature: Update outgoing ddi rules
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "name": "updatedRule",
           "defaultAction": "force",
           "id": 1,
-          "forcedDdi": {
-              "ddi": "123",
-              "recordCalls": "none",
-              "displayName": "",
-              "routeType": null,
-              "friendValue": "",
-              "id": 1,
-              "conferenceRoom": null,
-              "language": null,
-              "queue": null,
-              "externalCallFilter": null,
-              "user": null,
-              "ivr": null,
-              "huntGroup": null,
-              "fax": null,
-              "country": 68,
-              "residentialDevice": null,
-              "conditionalRoute": null,
-              "retailAccount": null
-          }
+          "forcedDdi": 1
       }
     """

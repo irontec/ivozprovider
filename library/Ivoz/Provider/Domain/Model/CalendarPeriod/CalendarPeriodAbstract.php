@@ -245,7 +245,7 @@ abstract class CalendarPeriodAbstract
      *
      * @return \DateTime
      */
-    public function getStartDate()
+    public function getStartDate(): \DateTime
     {
         return $this->startDate;
     }
@@ -271,7 +271,7 @@ abstract class CalendarPeriodAbstract
      *
      * @return \DateTime
      */
-    public function getEndDate()
+    public function getEndDate(): \DateTime
     {
         return $this->endDate;
     }

@@ -63,7 +63,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      */
     public function hasFeature($featureId);
 
-    public function hasFeatureByIden(string $iden);
+    public function hasFeatureByIden(string $iden): bool;
 
     /**
      * Return Brand Cgrates tenant code
@@ -83,7 +83,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get domainUsers
@@ -111,7 +111,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      *
      * @return integer
      */
-    public function getMaxCalls();
+    public function getMaxCalls(): int;
 
     /**
      * Get domain
@@ -170,6 +170,13 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getCallCsvNotificationTemplate();
 
     /**
+     * Get maxDailyUsageNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     */
+    public function getMaxDailyUsageNotificationTemplate();
+
+    /**
      * Get logo
      *
      * @return \Ivoz\Provider\Domain\Model\Brand\Logo
@@ -182,6 +189,11 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\Invoice
      */
     public function getInvoice();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add company

@@ -19,7 +19,7 @@ abstract class NotificationTemplateAbstract
     protected $name;
 
     /**
-     * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv
+     * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage
      * @var string
      */
     protected $type;
@@ -192,7 +192,7 @@ abstract class NotificationTemplateAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -214,7 +214,8 @@ abstract class NotificationTemplateAbstract
             NotificationTemplateInterface::TYPE_LIMIT,
             NotificationTemplateInterface::TYPE_LOWBALANCE,
             NotificationTemplateInterface::TYPE_INVOICE,
-            NotificationTemplateInterface::TYPE_CALLCSV
+            NotificationTemplateInterface::TYPE_CALLCSV,
+            NotificationTemplateInterface::TYPE_MAXDAILYUSAGE
         ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
@@ -227,7 +228,7 @@ abstract class NotificationTemplateAbstract
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }

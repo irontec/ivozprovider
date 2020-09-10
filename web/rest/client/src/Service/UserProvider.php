@@ -19,13 +19,6 @@ class UserProvider implements UserProviderInterface, MutableUserProviderInterfac
      */
     protected function findUser(array $criteria)
     {
-        if ($this->entityClass === Administrator::class) {
-            $brandId = $this->webPortalRepository->findBrandIdByUrl(
-                $this->getCurrentHost()
-            );
-            $criteria['brand'] = $brandId;
-        }
-
         return $this
             ->getRepository()
             ->findOneBy($criteria);

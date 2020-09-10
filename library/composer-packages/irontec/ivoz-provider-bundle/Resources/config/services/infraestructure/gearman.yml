@@ -1,0 +1,36 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+
+  Ivoz\Kam\Infrastructure\Gearman\XmlRpcTrunksRequest:
+    arguments:
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\FakeXmlRpcTrunksRequest' }
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcTrunksRequestInterface:
+    '@Ivoz\Kam\Infrastructure\Gearman\XmlRpcTrunksRequest'
+
+  Ivoz\Kam\Infrastructure\Gearman\XmlRpcUsersRequest:
+    arguments:
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
+    tags:
+    - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\FakeXmlRpcUsersRequest' }
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcUsersRequestInterface:
+    '@Ivoz\Kam\Infrastructure\Gearman\XmlRpcUsersRequest'
+
+  Ivoz\Kam\Infrastructure\Gearman\TrunksClient:
+    arguments:
+      $rpcClient: '@Ivoz\Kam\Infrastructure\Kamailio\RpcClient::Trunks'
+  Ivoz\Kam\Domain\Service\TrunksClientInterface:
+    alias: 'Ivoz\Kam\Infrastructure\Gearman\TrunksClient'
+    public: true
+
+  Ivoz\Kam\Infrastructure\Gearman\UsersClient:
+    arguments:
+      $rpcClient: '@Ivoz\Kam\Infrastructure\Kamailio\RpcClient::Users'
+  Ivoz\Kam\Domain\Service\UsersClientInterface:
+    alias: 'Ivoz\Kam\Infrastructure\Gearman\UsersClient'

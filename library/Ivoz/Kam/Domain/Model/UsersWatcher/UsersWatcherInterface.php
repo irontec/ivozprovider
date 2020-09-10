@@ -11,35 +11,35 @@ interface UsersWatcherInterface extends EntityInterface
      *
      * @return string
      */
-    public function getPresentityUri();
+    public function getPresentityUri(): string;
 
     /**
      * Get watcherUsername
      *
      * @return string
      */
-    public function getWatcherUsername();
+    public function getWatcherUsername(): string;
 
     /**
      * Get watcherDomain
      *
      * @return string
      */
-    public function getWatcherDomain();
+    public function getWatcherDomain(): string;
 
     /**
      * Get event
      *
      * @return string
      */
-    public function getEvent();
+    public function getEvent(): string;
 
     /**
      * Get status
      *
      * @return integer
      */
-    public function getStatus();
+    public function getStatus(): int;
 
     /**
      * Get reason
@@ -53,5 +53,10 @@ interface UsersWatcherInterface extends EntityInterface
      *
      * @return integer
      */
-    public function getInsertedTime();
+    public function getInsertedTime(): int;
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

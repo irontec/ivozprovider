@@ -37,7 +37,7 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get status
@@ -66,6 +66,11 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
      * @return \Ivoz\Provider\Domain\Model\Locution\OriginalFile
      */
     public function getOriginalFile();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * @param \Ivoz\Core\Domain\Service\TempFile $file

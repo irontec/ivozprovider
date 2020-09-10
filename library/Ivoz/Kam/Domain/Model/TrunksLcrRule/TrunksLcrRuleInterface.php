@@ -25,7 +25,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getLcrId();
+    public function getLcrId(): int;
 
     /**
      * Get prefix
@@ -60,14 +60,14 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getStopper();
+    public function getStopper(): int;
 
     /**
      * Get enabled
      *
      * @return integer
      */
-    public function getEnabled();
+    public function getEnabled(): int;
 
     /**
      * Set routingPattern
@@ -107,4 +107,9 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
      */
     public function getOutgoingRouting();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

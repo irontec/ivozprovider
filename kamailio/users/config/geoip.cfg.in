@@ -1,0 +1,15 @@
+# This file enables geoip IP filtering in KamUsers
+#
+# - Make sure that geoip2 'path' modparam points to valid MaxMind mmdb file
+#
+# - Rename geoip.cfg.in file to geoip.cfg
+#
+# - Restart KamUsers
+#
+
+#!define WITH_GEOIP
+
+#!ifdef WITH_GEOIP
+loadmodule    "geoip2.so"
+modparam("geoip2", "path", "/usr/share/GeoIP/GeoLite2-Country.mmdb")
+#!endif

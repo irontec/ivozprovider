@@ -14,18 +14,6 @@ class Company extends CompanyAbstract implements CompanyInterface
 {
     const EMPTY_DOMAIN_EXCEPTION = 2001;
 
-    /** @deprecated */
-    const VPBX          = self::TYPE_VPBX;
-
-    /** @deprecated */
-    const RETAIL        = self::TYPE_RETAIL;
-
-    /** @deprecated */
-    const WHOLESALE     = self::TYPE_WHOLESALE;
-
-    /** @deprecated */
-    const RESIDENTIAL   = self::TYPE_RESIDENTIAL;
-
     use CompanyTrait;
 
     /**
@@ -34,7 +22,10 @@ class Company extends CompanyAbstract implements CompanyInterface
      */
     public function getChangeSet()
     {
-        return parent::getChangeSet();
+        $response = parent::getChangeSet();
+        unset($response['currentDayUsage']);
+
+        return $response;
     }
 
     /**
@@ -71,7 +62,7 @@ class Company extends CompanyAbstract implements CompanyInterface
         }
 
         if (!$this->getIpFilter()) {
-            $this->setIpFilter(0);
+            $this->setIpFilter(false);
         }
 
         if (!$this->getOnDemandRecord()) {
@@ -258,16 +249,15 @@ class Company extends CompanyAbstract implements CompanyInterface
      */
     public function getMusicClass()
     {
-        /**
-         * @var Company $this
-         */
         // Company has music on hold
+        /** @var \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $companyMoH */
         $companyMoH = $this->getMusicsOnHold();
         if (!empty($companyMoH)) {
             return $companyMoH[0]->getOwner();
         }
 
         // Brand has music on hold
+        /** @var \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $brandMoH */
         $brandMoH = $this->getBrand()->getMusicsOnHold();
         if (!empty($brandMoH)) {
             return $brandMoH[0]->getOwner();
@@ -285,7 +275,7 @@ class Company extends CompanyAbstract implements CompanyInterface
             $domainUsers = trim($domainUsers);
         }
 
-        if ($this->getType() === self::VPBX && empty($domainUsers)) {
+        if ($this->getType() === self::TYPE_VPBX && empty($domainUsers)) {
             throw new \DomainException("Domain can't be empty", self::EMPTY_DOMAIN_EXCEPTION);
         }
 

@@ -28,14 +28,14 @@ interface TransformationRuleInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getType();
+    public function getType(): string;
 
     /**
      * Get description
      *
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): string;
 
     /**
      * Get priority
@@ -73,4 +73,9 @@ interface TransformationRuleInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
      */
     public function getTransformationRuleSet();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

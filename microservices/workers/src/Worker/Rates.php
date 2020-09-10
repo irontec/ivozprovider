@@ -6,9 +6,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateRepository;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateRepository;
+use Ivoz\Cgr\Infrastructure\Cgrates\Service\ReloadService;
 use Ivoz\Core\Application\Service\EntityTools;
 use GearmanJob;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReloadService;
 use Ivoz\Provider\Domain\Model\Destination\DestinationRepository;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateRepository;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto;
@@ -93,79 +93,79 @@ class Rates
      */
     public function import(GearmanJob $serializedJob)
     {
-        // Thanks Gearmand, you've done your job
-        $serializedJob->sendComplete("DONE");
-        $this->registerCommand('Worker', 'rates');
-
-        $job = igbinary_unserialize($serializedJob->workload());
-        $params = $job->getParams();
-
-        /** @var DestinationRateGroupInterface | null $destinationRateGroup */
-        $destinationRateGroup = $this->destinationRateGroupRepository->find(
-            $params['id']
-        );
-
-        if (!$destinationRateGroup) {
-            $this->logger->error('Unknown destination rate with id ' . $params['id']);
-            throw new \Exception('Unknown destination rate');
-        }
-
-        $destinationRateGroupId = $destinationRateGroup->getId();
-        $brand = $destinationRateGroup->getBrand();
-        $brandId = $brand->getId();
-
-        $roundingMethod = $destinationRateGroup->getRoundingMethod();
-
-        /** @var DestinationRateGroupDto $destinationRateGroupDto */
-        $destinationRateGroupDto = $this
-            ->entityTools
-            ->entityToDto(
-                $destinationRateGroup
-            );
-
-        $destinationRateGroupDto->setStatus('inProgress');
-        $this
-            ->entityTools
-            ->persistDto(
-                $destinationRateGroupDto,
-                $destinationRateGroup,
-                true
-            );
-
-        $this->logger->debug('Importer in progress');
-
-        $importerArguments = $destinationRateGroup
-            ->getFile()
-            ->getImporterArguments();
-
-        $csvEncoder = new CsvEncoder(
-            $importerArguments['delimiter'] ?? ',',
-            $importerArguments['enclosure'] ?? '"',
-            $importerArguments['scape'] ?? '\\'
-        );
-
-        $serializer = new Serializer([new ObjectNormalizer()], [$csvEncoder]);
-        $csvContents = file_get_contents($destinationRateGroupDto->getFilePath());
-        if ($importerArguments['ignoreFirst']) {
-            $csvContents = preg_replace('/^.+\n/', '', $csvContents);
-        }
-
-        $header = implode(',', $importerArguments['columns']) . "\n";
-        $csvContents = $header . $csvContents;
-
-        $csvLines = $serializer->decode(
-            $csvContents,
-            'csv'
-        );
-        $destinationRates = [];
-        $destinations = [];
-
-        if (current($csvLines) && !is_array(current($csvLines))) {
-            // We require an array of arrays
-            $csvLines = [$csvLines];
-        }
-
         try {
+            // Thanks Gearmand, you've done your job
+            $serializedJob->sendComplete("DONE");
+            $this->registerCommand('Worker', 'rates');
+
+            $job = igbinary_unserialize($serializedJob->workload());
+            $params = $job->getParams();
+
+            /** @var DestinationRateGroupInterface | null $destinationRateGroup */
+            $destinationRateGroup = $this->destinationRateGroupRepository->find(
+                $params['id']
+            );
+
+            if (!$destinationRateGroup) {
+                $this->logger->error('Unknown destination rate with id ' . $params['id']);
+                throw new \Exception('Unknown destination rate');
+            }
+
+            $destinationRateGroupId = $destinationRateGroup->getId();
+            $brand = $destinationRateGroup->getBrand();
+            $brandId = $brand->getId();
+
+            $roundingMethod = $destinationRateGroup->getRoundingMethod();
+
+            /** @var DestinationRateGroupDto $destinationRateGroupDto */
+            $destinationRateGroupDto = $this
+                ->entityTools
+                ->entityToDto(
+                    $destinationRateGroup
+                );
+
+            $destinationRateGroupDto->setStatus('inProgress');
+            $this
+                ->entityTools
+                ->persistDto(
+                    $destinationRateGroupDto,
+                    $destinationRateGroup,
+                    true
+                );
+
+            $this->logger->debug('Importer in progress');
+
+            $importerArguments = $destinationRateGroup
+                ->getFile()
+                ->getImporterArguments();
+
+            $csvEncoder = new CsvEncoder(
+                $importerArguments['delimiter'] ?? ',',
+                $importerArguments['enclosure'] ?? '"',
+                $importerArguments['scape'] ?? '\\'
+            );
+
+            $serializer = new Serializer([new ObjectNormalizer()], [$csvEncoder]);
+            $csvContents = file_get_contents($destinationRateGroupDto->getFilePath());
+            if ($importerArguments['ignoreFirst']) {
+                $csvContents = preg_replace('/^.+\n/', '', $csvContents);
+            }
+
+            $header = implode(',', $importerArguments['columns']) . "\n";
+            $csvContents = $header . $csvContents;
+
+            $csvLines = $serializer->decode(
+                $csvContents,
+                'csv'
+            );
+            $destinationRates = [];
+            $destinations = [];
+
+            if (current($csvLines) && !is_array(current($csvLines))) {
+                // We require an array of arrays
+                $csvLines = [$csvLines];
+            }
+
             Assertion::lessOrEqualThan(
                 count($csvLines),
                 self::MAX_LINES,
@@ -300,8 +300,19 @@ class Rates
                 $e->getMessage()
             );
 
+            if (!isset($destinationRateGroupDto)) {
+                exit(1);
+            }
+
+            if (!isset($destinationRateGroup)) {
+                exit(1);
+            }
+
             $destinationRateGroupDto
-                ->setStatus('error');
+                ->setStatus('error')
+                ->setLastExecutionError(
+                    $e->getMessage()
+                );
 
             $this
                 ->entityTools
@@ -389,7 +400,10 @@ class Rates
                 ->tpDestinationRateRepository
                 ->syncWithBussines($destinationRateGroupId, $roundingMethod);
 
-            $destinationRateGroupDto->setStatus('imported');
+            $destinationRateGroupDto
+                ->setStatus('imported')
+                ->setLastExecutionError(null);
+
             $this
                 ->entityTools
                 ->persistDto(
@@ -403,7 +417,12 @@ class Rates
             $this->logger->error('Importer error. Rollback');
             $this->em->getConnection()->rollback();
 
-            $destinationRateGroupDto->setStatus('error');
+            $destinationRateGroupDto
+                ->setStatus('error')
+                ->setLastExecutionError(
+                    $exception->getMessage()
+                );
+
             $this
                 ->entityTools
                 ->persistDto(
@@ -413,8 +432,6 @@ class Rates
                 );
 
             $this->em->close();
-
-            throw $exception;
         }
 
         try {

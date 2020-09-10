@@ -59,10 +59,13 @@ production:
           showInvoices: true
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
+          maxDailyUsageNotificationTemplate: true
           outgoingDdi: true
           maxDailyUsage: true
+          maxDailyUsageEmail: true
           allowRecordingRemoval: true
           externallyExtraOpts: true
+          relCountries: true
         order:
           name: true
           nif: true
@@ -110,11 +113,14 @@ production:
           outgoingDdiE164: true
           allowRecordingRemoval: true
           externallyExtraOpts: true
+          maxDailyUsageNotificationTemplate: true
         order: &retailClientsOrder_Link
           id: true
           name: true
           maxCalls: true
           maxDailyUsage: true
+          ipFilter: true
+          relCountries: true
           language: true
           relRoutingTags: true
           showInvoices: true
@@ -131,12 +137,15 @@ production:
             outgoingDdi: 6
             relFeatures: 3
         group1:
-          colsPerRow: 3
+          colsPerRow: 12
           label: _("Security")
           fields:
-            maxCalls: 1
-            ipFilter: 1
-            maxDailyUsage: 1
+            maxCalls: 6
+            __empty2: 6
+            maxDailyUsage: 6
+            maxDailyUsageEmail: 6
+            ipFilter: 6
+            relCountries: 6
         group2:
           colsPerRow: 12
           label: _("Geographic Configuration")
@@ -206,12 +215,15 @@ production:
             transformationRuleSet: 8
             currency: 4
         group2:
-          colsPerRow: 3
+          colsPerRow: 12
           label: _("Security")
           fields:
-            maxCalls: 1
-            ipFilter: 1
-            maxDailyUsage: 1
+            maxCalls: 6
+            __empty2: 6
+            maxDailyUsage: 6
+            maxDailyUsageEmail: 6
+            ipFilter: 6
+            relCountries: 6
         group3:
           colsPerRow: 12
           label: _("Retail specific")
@@ -243,6 +255,7 @@ production:
           fields:
             invoiceNotificationTemplate: 1
             callCsvNotificationTemplate: 1
+            maxDailyUsageNotificationTemplate: 1
         group8:
           colsPerRow: 1
           collapsed: true

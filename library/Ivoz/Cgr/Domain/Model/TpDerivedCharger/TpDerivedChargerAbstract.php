@@ -471,7 +471,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getTpid()
+    public function getTpid(): string
     {
         return $this->tpid;
     }
@@ -498,7 +498,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getLoadid()
+    public function getLoadid(): string
     {
         return $this->loadid;
     }
@@ -525,7 +525,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getDirection()
+    public function getDirection(): string
     {
         return $this->direction;
     }
@@ -552,7 +552,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getTenant()
+    public function getTenant(): string
     {
         return $this->tenant;
     }
@@ -579,7 +579,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getCategory()
+    public function getCategory(): string
     {
         return $this->category;
     }
@@ -606,7 +606,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getAccount()
+    public function getAccount(): string
     {
         return $this->account;
     }
@@ -689,7 +689,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getRunid()
+    public function getRunid(): string
     {
         return $this->runid;
     }
@@ -716,7 +716,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getRunFilters()
+    public function getRunFilters(): string
     {
         return $this->runFilters;
     }
@@ -743,7 +743,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getReqTypeField()
+    public function getReqTypeField(): string
     {
         return $this->reqTypeField;
     }
@@ -770,7 +770,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getDirectionField()
+    public function getDirectionField(): string
     {
         return $this->directionField;
     }
@@ -797,7 +797,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getTenantField()
+    public function getTenantField(): string
     {
         return $this->tenantField;
     }
@@ -824,7 +824,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getCategoryField()
+    public function getCategoryField(): string
     {
         return $this->categoryField;
     }
@@ -851,7 +851,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getAccountField()
+    public function getAccountField(): string
     {
         return $this->accountField;
     }
@@ -878,7 +878,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getSubjectField()
+    public function getSubjectField(): string
     {
         return $this->subjectField;
     }
@@ -905,7 +905,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getDestinationField()
+    public function getDestinationField(): string
     {
         return $this->destinationField;
     }
@@ -932,7 +932,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getSetupTimeField()
+    public function getSetupTimeField(): string
     {
         return $this->setupTimeField;
     }
@@ -959,7 +959,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getPddField()
+    public function getPddField(): string
     {
         return $this->pddField;
     }
@@ -986,7 +986,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getAnswerTimeField()
+    public function getAnswerTimeField(): string
     {
         return $this->answerTimeField;
     }
@@ -1013,7 +1013,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getUsageField()
+    public function getUsageField(): string
     {
         return $this->usageField;
     }
@@ -1040,7 +1040,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getSupplierField()
+    public function getSupplierField(): string
     {
         return $this->supplierField;
     }
@@ -1067,7 +1067,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getDisconnectCauseField()
+    public function getDisconnectCauseField(): string
     {
         return $this->disconnectCauseField;
     }
@@ -1094,7 +1094,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getRatedTimeField()
+    public function getRatedTimeField(): string
     {
         return $this->ratedTimeField;
     }
@@ -1121,7 +1121,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string
      */
-    public function getCostField()
+    public function getCostField(): string
     {
         return $this->costField;
     }
@@ -1155,7 +1155,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

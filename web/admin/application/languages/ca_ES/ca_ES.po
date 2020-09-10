@@ -171,6 +171,9 @@ msgstr "Còdecs de vídeo permesos"
 msgid "Always"
 msgstr "Sempre"
 
+msgid "Always apply transformations"
+msgstr "Aplicar siempre transformaciones numéricas"
+
 msgid "Amount"
 msgstr "Quantitat"
 
@@ -187,11 +190,6 @@ msgid "Antiflood banned IP"
 msgid_plural "Antiflood banned IPs"
 msgstr[0] "IP bloqueada antiflood"
 msgstr[1] "IPs bloqueadas antiflood"
-
-msgid "Antiflood trusted IP"
-msgid_plural "Antiflood trusted IPs"
-msgstr[0] "IP de confiança per l'antiflood"
-msgstr[1] "IPs de confiança per l'antiflood"
 
 msgid "Application Server"
 msgid_plural "Application Servers"
@@ -343,6 +341,11 @@ msgid "Brand service"
 msgid_plural "Brand services"
 msgstr[0] "Servei de marca"
 msgstr[1] "Serveis de marca"
+
+msgid "Brute-force attack"
+msgid_plural "Brute-force attacks"
+msgstr[0] "Ataque de fuerza bruta"
+msgstr[1] "Ataques de fuerza bruta"
 
 msgid "Busy"
 msgstr "Ocupat"
@@ -791,6 +794,9 @@ msgstr ""
 msgid "Do you really want to revoke access to selected entities?"
 msgstr "¿Realmente desea denegar el acceso a las entidades seleccionadas?"
 
+msgid "Do you really want to unban selected item?"
+msgstr "¿Realmente desea desbloquear el elemento seleccionado?"
+
 #, python-format
 msgid "Do you want revoke access to this %s?"
 msgstr "¿Desea denegar el acceso a %s?"
@@ -844,6 +850,9 @@ msgstr "Edita %s %2s"
 #, python-format
 msgid "Edit pattern of %s"
 msgstr "Edita els patrons de %s"
+
+msgid "Edition/creation tabs will be closed."
+msgstr "Les fitxes d'edició/creació seran tancades."
 
 msgid "Email"
 msgid_plural "Emails"
@@ -911,6 +920,21 @@ msgid ""
 msgstr ""
 "Activa aquesta opció per mostrar el botó d’eliminació a la secció "
 "d’enregistrament de trucades al portal del client."
+
+msgid ""
+"Enable to force audio encryption. Call won't be established unless it is "
+"encrypted."
+msgstr ""
+"Activar para forzar el cifrado del audio. La llamada no se establecerá en "
+"caso de no ser posible cifrar su audio."
+
+msgid ""
+"Enable to force numeric transformation on numbers in Extensions or numbers "
+"matching any Friend regexp. Otherwise, those numbers won't traverse numeric "
+"transformations rules."
+msgstr ""
+"Habilitar para forzar las tranformaciones numéricas para los números "
+"considerados internos."
 
 msgid "Enabled"
 msgstr "Habilitat"
@@ -996,9 +1020,6 @@ msgstr "Marcatge d'extensió"
 
 msgid "External"
 msgstr "Externa"
-
-msgid "External Filter destination"
-msgstr "Filtre de destí extern"
 
 msgid "External call"
 msgid_plural "External calls"
@@ -1210,6 +1231,9 @@ msgstr "Patró URL genèric"
 
 msgid "Generic template"
 msgstr "Pantilla genèrica"
+
+msgid "GeoIP allowed countries"
+msgstr "GeoIP países permitidos"
 
 msgid "Geographic Configuration"
 msgstr "Configuració geogràfica"
@@ -1723,6 +1747,11 @@ msgstr "Tipus de coincidència"
 msgid "Max calls"
 msgstr "Trucades màximes"
 
+msgid "Max daily Notification"
+msgid_plural "Max daily Notifications"
+msgstr[0] "Notificació de Màxim diari"
+msgstr[1] "Notificacions de Màxim diari"
+
 msgid "Max daily usage"
 msgstr "Màxim diari consum"
 
@@ -1907,9 +1936,6 @@ msgstr "Sense etiqueta de ruta"
 
 msgid "None"
 msgstr "Cap"
-
-msgid "Notice that edition/creation tabs will be closed."
-msgstr "Anuncia que les fitxes d'edició/creació seran tancades."
 
 msgid "Notification Threshold"
 msgstr "Llindar de notificació"
@@ -2224,6 +2250,9 @@ msgstr[1] "Membres de la cua"
 msgid "R-URI pattern"
 msgstr "Patró R-URI"
 
+msgid "RTP encryption"
+msgstr "Cifrar RTP"
+
 msgid "Random"
 msgstr "Aleatori"
 
@@ -2475,6 +2504,9 @@ msgstr "Domini SIP no pot estar buit"
 msgid "SIP Proxy"
 msgstr "Intermediari SIP"
 
+msgid "SIP address"
+msgstr "Adreça SIP"
+
 msgid "SIP domain"
 msgstr "Domini SIP"
 
@@ -2500,8 +2532,15 @@ msgstr "Seguretat"
 msgid "Select Brand"
 msgstr "Selecciona marca"
 
-msgid "Select Company"
-msgstr "Selecciona companyia"
+msgid "Select Client"
+msgstr "Selecciona Client"
+
+msgid ""
+"Select a country to allow all IPs. Leave it blank if you want to allow just "
+"specific IP/ranges."
+msgstr ""
+"Selecciona un país para permitir todas sus IPs. No lo selecciones si quieres "
+"permitir solo algunas IPs o rangos."
 
 msgid "Select destination group"
 msgstr "Selecciona grup de destinació"
@@ -2898,6 +2937,15 @@ msgstr "Tipus URL"
 msgid "Unassigned"
 msgstr "No adscrit"
 
+msgid "Unban address"
+msgstr "Desbloquear dirección"
+
+msgid "Unbanned address"
+msgstr "Dirección desbloqueda"
+
+msgid "Unconditional Call Forward"
+msgstr "Desvío incondicional"
+
 msgid "Unit"
 msgstr "Unitat"
 
@@ -2955,6 +3003,16 @@ msgid "Used as voicemail reception and user portal credential"
 msgstr ""
 "Utilitzat com a recepció de correu de veu i com a credencial del portal "
 "d'usuari"
+
+msgid "Used to notify if max daily usage has been reached"
+msgstr "Empleado para notificar cuando se alcanza el máximo consumo diario"
+
+msgid ""
+"Used to notify if max daily usage has been reached. Leave empty to avoid "
+"notification."
+msgstr ""
+"Empleado para notificar cuando se alcanza el máximo consumo diario. Dejar "
+"vacío para desactivar notificación."
 
 msgid "User"
 msgid_plural "Users"

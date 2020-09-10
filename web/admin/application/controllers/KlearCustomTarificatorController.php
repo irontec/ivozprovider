@@ -1,14 +1,14 @@
 <?php
 
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\BillingService;
+use Ivoz\Cgr\Infrastructure\Cgrates\Service\BillingService;
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
-use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupsDto;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
 
 class KlearCustomTarificatorController extends Zend_Controller_Action
@@ -179,7 +179,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         $showRatingTags = in_array(
             $companyType,
-            [Company::WHOLESALE, Company::RETAIL]
+            [CompanyInterface::TYPE_WHOLESALE, CompanyInterface::TYPE_RETAIL]
         );
 
         $this->testPlans(
@@ -646,7 +646,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         if ($retarificable) {
             $serviceContainer = \Zend_Registry::get('container');
             $rerateService = $serviceContainer->get(
-                \Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RerateCallService::class
+                \Ivoz\Cgr\Infrastructure\Cgrates\Service\RerateCallService::class
             );
 
             try {

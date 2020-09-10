@@ -24,8 +24,9 @@ class ProviderFriend extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstance(Friend::class);
         (function () use ($fixture) {
             $this->setName("testFriend");
+            $this->setDirectConnectivity("yes");
             $this->setTransport("udp");
-            $this->setIp("");
+            $this->setIp("1.2.3.4");
             $this->setPort('5060');
             $this->setPassword("SDG3qd2j6+");
             $this->setPriority(1);

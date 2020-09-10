@@ -10,7 +10,6 @@ This section is only shown to *God administrator* and allows modifying global co
 
     brands
     main_operators
-    antiflood_trusted_ips
     antiflood_banned_ips
     terminal_manufacturers
     services

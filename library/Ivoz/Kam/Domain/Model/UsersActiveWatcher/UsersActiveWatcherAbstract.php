@@ -459,7 +459,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getPresentityUri()
+    public function getPresentityUri(): string
     {
         return $this->presentityUri;
     }
@@ -486,7 +486,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getWatcherUsername()
+    public function getWatcherUsername(): string
     {
         return $this->watcherUsername;
     }
@@ -513,7 +513,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getWatcherDomain()
+    public function getWatcherDomain(): string
     {
         return $this->watcherDomain;
     }
@@ -540,7 +540,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getToUser()
+    public function getToUser(): string
     {
         return $this->toUser;
     }
@@ -567,7 +567,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getToDomain()
+    public function getToDomain(): string
     {
         return $this->toDomain;
     }
@@ -594,7 +594,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getEvent()
+    public function getEvent(): string
     {
         return $this->event;
     }
@@ -649,7 +649,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getToTag()
+    public function getToTag(): string
     {
         return $this->toTag;
     }
@@ -676,7 +676,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getFromTag()
+    public function getFromTag(): string
     {
         return $this->fromTag;
     }
@@ -703,7 +703,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getCallid()
+    public function getCallid(): string
     {
         return $this->callid;
     }
@@ -730,7 +730,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return integer
      */
-    public function getLocalCseq()
+    public function getLocalCseq(): int
     {
         return $this->localCseq;
     }
@@ -757,7 +757,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return integer
      */
-    public function getRemoteCseq()
+    public function getRemoteCseq(): int
     {
         return $this->remoteCseq;
     }
@@ -784,7 +784,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getContact()
+    public function getContact(): string
     {
         return $this->contact;
     }
@@ -839,7 +839,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return integer
      */
-    public function getExpires()
+    public function getExpires(): int
     {
         return $this->expires;
     }
@@ -866,7 +866,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return integer
      */
-    public function getStatus()
+    public function getStatus(): int
     {
         return $this->status;
     }
@@ -921,7 +921,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return integer
      */
-    public function getVersion()
+    public function getVersion(): int
     {
         return $this->version;
     }
@@ -948,7 +948,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getSocketInfo()
+    public function getSocketInfo(): string
     {
         return $this->socketInfo;
     }
@@ -975,7 +975,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getLocalContact()
+    public function getLocalContact(): string
     {
         return $this->localContact;
     }
@@ -1002,7 +1002,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getFromUser()
+    public function getFromUser(): string
     {
         return $this->fromUser;
     }
@@ -1029,7 +1029,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getFromDomain()
+    public function getFromDomain(): string
     {
         return $this->fromDomain;
     }
@@ -1056,7 +1056,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return integer
      */
-    public function getUpdated()
+    public function getUpdated(): int
     {
         return $this->updated;
     }
@@ -1083,7 +1083,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return integer
      */
-    public function getUpdatedWinfo()
+    public function getUpdatedWinfo(): int
     {
         return $this->updatedWinfo;
     }
@@ -1110,7 +1110,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return integer
      */
-    public function getFlags()
+    public function getFlags(): int
     {
         return $this->flags;
     }
@@ -1137,7 +1137,7 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return string
      */
-    public function getUserAgent()
+    public function getUserAgent(): string
     {
         return $this->userAgent;
     }

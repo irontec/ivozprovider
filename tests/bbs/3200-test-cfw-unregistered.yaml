@@ -1,7 +1,7 @@
 # ----------------------------------------------------------------------------
 scenarios:
   - name: call from alice to eve no-registed forwarded to dave
-    timeout: 10
+    timeout: 20
     sessions:
       - alice:
           - call:

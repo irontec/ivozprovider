@@ -34,11 +34,18 @@ that require feature-full call flows.
         Limits both incoming and outgoing external calls (0 for unlimited).
 
     Filter by IP address
-        If set, the platform will only allow calls coming from allowed IP addresses or network ranges.
+        If set, the platform will only allow calls coming from allowed IP/ranges or countries.
+
+    GeoIP allowed countries
+        If *Filter by IP address* is enabled, traffic from selected countries will be allowed.
 
     Max daily usage
         Limits external outbound calls when this limit is reached within a day. At midnight counters are reset and
         accounts are re-enabled.
+
+    Email
+        A notification email will be sent to given address when configured max daily usage is reached. Leave empty to
+        avoid notification.
 
     Invoice data
         Data included in invoices created by this brand. This section also allows displaying invoices list in

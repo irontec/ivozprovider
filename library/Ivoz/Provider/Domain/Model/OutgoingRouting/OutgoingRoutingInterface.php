@@ -57,14 +57,14 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getPriority();
+    public function getPriority(): int;
 
     /**
      * Get weight
      *
      * @return integer
      */
-    public function getWeight();
+    public function getWeight(): int;
 
     /**
      * Get routingMode
@@ -85,7 +85,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      *
      * @return boolean
      */
-    public function getStopper();
+    public function getStopper(): bool;
 
     /**
      * Get forceClid
@@ -194,6 +194,11 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getClidCountry();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Set tpLcrRule

@@ -23,6 +23,7 @@ class CsvExporter
         'ddi',
         'endpointType',
         'endpointId',
+        'endpointName',
         'userId',
         'faxId',
         'friendId',
@@ -38,6 +39,7 @@ class CsvExporter
         'price',
         'endpointType',
         'endpointId',
+        'endpointName',
         'company',
         'cost',
         'carrier',
@@ -111,6 +113,11 @@ class CsvExporter
         $carrier = $scheduler->getCarrier();
         if (!empty($carrier)) {
             $criteria['carrier'] = $carrier->getId();
+        }
+
+        $ddiProvider = $scheduler->getDdiProvider();
+        if (!empty($ddiProvider)) {
+            $criteria['ddiProvider'] = $ddiProvider->getId();
         }
 
         $criteria = $this->addEndpointType(

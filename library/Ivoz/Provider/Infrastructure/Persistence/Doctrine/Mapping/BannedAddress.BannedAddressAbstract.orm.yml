@@ -23,6 +23,12 @@ Ivoz\Provider\Domain\Model\BannedAddress\BannedAddressAbstract:
         fixed: false
         comment: '[enum:antiflood|ipfilter]'
       column: blocker
+    aor:
+      type: string
+      nullable: true
+      length: 300
+      options:
+        fixed: false
     description:
       type: string
       nullable: true

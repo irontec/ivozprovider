@@ -254,7 +254,7 @@ abstract class ServiceAbstract
      *
      * @return string
      */
-    public function getIden()
+    public function getIden(): string
     {
         return $this->iden;
     }
@@ -281,7 +281,7 @@ abstract class ServiceAbstract
      *
      * @return string
      */
-    public function getDefaultCode()
+    public function getDefaultCode(): string
     {
         return $this->defaultCode;
     }
@@ -309,7 +309,7 @@ abstract class ServiceAbstract
      *
      * @return boolean
      */
-    public function getExtraArgs()
+    public function getExtraArgs(): bool
     {
         return $this->extraArgs;
     }

@@ -33,12 +33,17 @@ production:
           retailAccount: false
           residentialDevice: false
           carrier: false
+          ddiProvider: false
           companyType: false
           ddi: false
           endpointType: false
+          residentialEndpointType: false
           user: false
           fax: false
           friend: false
+          retail: false
+          residential: false
+          vpbx: false
       fixedPositions: &callCsvSchedulersNew_fixedPositions
         group0:
           label: _("Basic Information")
@@ -62,6 +67,7 @@ production:
           fields:
             callDirection: 1
             carrier: 1
+            ddiProvider: 1
         group3:
           label: _("Client filters")
           colsPerRow: 2
@@ -72,6 +78,7 @@ production:
             residential: 1
             ddi: 1
             endpointType: 1
+            residentialEndpointType: 1
             retailAccount: 1
             residentialDevice: 1
             user: 1
@@ -90,11 +97,17 @@ production:
           retailAccount: false
           residentialDevice: false
           carrier: false
+          ddiProvider: false
           ddi: false
           endpointType: false
+          residentialEndpointType: false
           user: false
           fax: false
           friend: false
+          retail: false
+          residential: false
+          vpbx: false
+          companyType: false
       fixedPositions:
         <<: *callCsvSchedulersNew_fixedPositions
   dialogs:

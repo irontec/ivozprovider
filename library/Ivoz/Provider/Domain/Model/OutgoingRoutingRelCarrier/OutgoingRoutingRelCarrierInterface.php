@@ -47,6 +47,11 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
     public function getCarrier();
 
     /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
+
+    /**
      * Add tpRatingProfile
      *
      * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile

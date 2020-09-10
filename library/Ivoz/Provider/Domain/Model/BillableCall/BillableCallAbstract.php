@@ -80,6 +80,11 @@ abstract class BillableCallAbstract
     protected $endpointId;
 
     /**
+     * @var string | null
+     */
+    protected $endpointName;
+
+    /**
      * comment: enum:inbound|outbound
      * @var string | null
      */
@@ -226,6 +231,7 @@ abstract class BillableCallAbstract
             ->setRatingPlanName($dto->getRatingPlanName())
             ->setEndpointType($dto->getEndpointType())
             ->setEndpointId($dto->getEndpointId())
+            ->setEndpointName($dto->getEndpointName())
             ->setDirection($dto->getDirection())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
@@ -268,6 +274,7 @@ abstract class BillableCallAbstract
             ->setRatingPlanName($dto->getRatingPlanName())
             ->setEndpointType($dto->getEndpointType())
             ->setEndpointId($dto->getEndpointId())
+            ->setEndpointName($dto->getEndpointName())
             ->setDirection($dto->getDirection())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
@@ -305,6 +312,7 @@ abstract class BillableCallAbstract
             ->setRatingPlanName(self::getRatingPlanName())
             ->setEndpointType(self::getEndpointType())
             ->setEndpointId(self::getEndpointId())
+            ->setEndpointName(self::getEndpointName())
             ->setDirection(self::getDirection())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
@@ -336,6 +344,7 @@ abstract class BillableCallAbstract
             'ratingPlanName' => self::getRatingPlanName(),
             'endpointType' => self::getEndpointType(),
             'endpointId' => self::getEndpointId(),
+            'endpointName' => self::getEndpointName(),
             'direction' => self::getDirection(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
@@ -435,7 +444,7 @@ abstract class BillableCallAbstract
      *
      * @return float
      */
-    public function getDuration()
+    public function getDuration(): float
     {
         return $this->duration;
     }
@@ -725,6 +734,34 @@ abstract class BillableCallAbstract
     public function getEndpointId()
     {
         return $this->endpointId;
+    }
+
+    /**
+     * Set endpointName
+     *
+     * @param string $endpointName | null
+     *
+     * @return static
+     */
+    protected function setEndpointName($endpointName = null)
+    {
+        if (!is_null($endpointName)) {
+            Assertion::maxLength($endpointName, 65, 'endpointName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->endpointName = $endpointName;
+
+        return $this;
+    }
+
+    /**
+     * Get endpointName
+     *
+     * @return string | null
+     */
+    public function getEndpointName()
+    {
+        return $this->endpointName;
     }
 
     /**

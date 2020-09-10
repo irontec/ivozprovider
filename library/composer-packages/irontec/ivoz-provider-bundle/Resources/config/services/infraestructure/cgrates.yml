@@ -4,32 +4,56 @@ services:
     autoconfigure: true
     public: false
 
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\CompanyBalanceService: ~
   Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface:
-    alias: Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CompanyBalanceService
+    alias: Ivoz\Cgr\Infrastructure\Cgrates\Service\CompanyBalanceService
     public: true
 
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\CarrierBalanceService: ~
   Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface:
-    alias: Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CarrierBalanceService
+    alias: Ivoz\Cgr\Infrastructure\Cgrates\Service\CarrierBalanceService
     public: true
 
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\LoadTpAccountAction:  ~
   Ivoz\Cgr\Domain\Service\TpAccountAction\LoadTpAccountActionInterface:
-    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpAccountAction'
+    '@Ivoz\Cgr\Infrastructure\Cgrates\Service\LoadTpAccountAction'
 
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\RemoveTpAccountAction:  ~
   Ivoz\Cgr\Domain\Service\TpAccountAction\RemoveTpAccountActionInterface:
-    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpAccountAction'
+    '@Ivoz\Cgr\Infrastructure\Cgrates\Service\RemoveTpAccountAction'
 
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\LoadTpRatingProfile:  ~
   Ivoz\Cgr\Domain\Service\TpRatingProfile\LoadTpRatingProfileInterface:
-    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpRatingProfile'
+    '@Ivoz\Cgr\Infrastructure\Cgrates\Service\LoadTpRatingProfile'
 
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\RemoveTpRatingProfile:  ~
   Ivoz\Cgr\Domain\Service\TpRatingProfile\RemoveTpRatingProfileInterface:
-    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpRatingProfile'
+    '@Ivoz\Cgr\Infrastructure\Cgrates\Service\RemoveTpRatingProfile'
 
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\RerateCallService:
+    public: true
   Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface:
-    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RerateCallService'
+    '@Ivoz\Cgr\Infrastructure\Cgrates\Service\RerateCallService'
 
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\FetchCallStatsService: ~
   Ivoz\Cgr\Domain\Service\TpCdrStat\FetchCallStatsServiceInterface:
-    alias: Ivoz\Core\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService
+    alias: Ivoz\Cgr\Infrastructure\Cgrates\Service\FetchCallStatsService
     public: true
 
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\ProcessExternalCdr: ~
 
-  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ProcessExternalCdr: ~
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\BillingService:
+    public: true
+
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\SetMaxUsageThresholdService:
+    public: true
+
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\ReassembleTriggerService:
+    public: true
+
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\EnableAccountService:
+    public: true
+
+  Ivoz\Cgr\Infrastructure\Cgrates\Service\ReloadService:
+    public: true
+

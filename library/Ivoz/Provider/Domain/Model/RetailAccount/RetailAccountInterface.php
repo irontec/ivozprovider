@@ -34,7 +34,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * @return bool
      */
-    public function isDirectConnectivity();
+    public function isDirectConnectivity(): bool;
 
     /**
      * {@inheritDoc}
@@ -76,14 +76,14 @@ interface RetailAccountInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get description
      *
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): string;
 
     /**
      * Get transport
@@ -125,21 +125,28 @@ interface RetailAccountInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getDirectConnectivity();
+    public function getDirectConnectivity(): string;
 
     /**
      * Get ddiIn
      *
      * @return string
      */
-    public function getDdiIn();
+    public function getDdiIn(): string;
 
     /**
      * Get t38Passthrough
      *
      * @return string
      */
-    public function getT38Passthrough();
+    public function getT38Passthrough(): string;
+
+    /**
+     * Get rtpEncryption
+     *
+     * @return boolean
+     */
+    public function getRtpEncryption(): bool;
 
     /**
      * Set brand
@@ -193,6 +200,11 @@ interface RetailAccountInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getOutgoingDdi();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add psEndpoint

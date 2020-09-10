@@ -101,7 +101,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getPriority();
+    public function getPriority(): int;
 
     /**
      * Get routeType
@@ -202,6 +202,11 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getNumberCountry();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 
     /**
      * Add relMatchlist

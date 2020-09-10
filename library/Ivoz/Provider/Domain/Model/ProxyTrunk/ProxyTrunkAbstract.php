@@ -209,7 +209,7 @@ abstract class ProxyTrunkAbstract
      *
      * @return string
      */
-    public function getIp()
+    public function getIp(): string
     {
         return $this->ip;
     }

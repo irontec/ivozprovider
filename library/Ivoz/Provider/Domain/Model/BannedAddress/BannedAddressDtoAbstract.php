@@ -23,6 +23,11 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
+    private $aor;
+
+    /**
+     * @var string
+     */
     private $description;
 
     /**
@@ -65,6 +70,7 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
         return [
             'ip' => 'ip',
             'blocker' => 'blocker',
+            'aor' => 'aor',
             'description' => 'description',
             'lastTimeBanned' => 'lastTimeBanned',
             'id' => 'id',
@@ -81,6 +87,7 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
         $response = [
             'ip' => $this->getIp(),
             'blocker' => $this->getBlocker(),
+            'aor' => $this->getAor(),
             'description' => $this->getDescription(),
             'lastTimeBanned' => $this->getLastTimeBanned(),
             'id' => $this->getId(),
@@ -140,6 +147,26 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     public function getBlocker()
     {
         return $this->blocker;
+    }
+
+    /**
+     * @param string $aor
+     *
+     * @return static
+     */
+    public function setAor($aor = null)
+    {
+        $this->aor = $aor;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getAor()
+    {
+        return $this->aor;
     }
 
     /**

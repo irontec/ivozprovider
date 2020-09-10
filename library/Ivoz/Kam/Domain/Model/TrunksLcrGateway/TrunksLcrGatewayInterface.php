@@ -17,14 +17,14 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getLcrId();
+    public function getLcrId(): int;
 
     /**
      * Get gwName
      *
      * @return string
      */
-    public function getGwName();
+    public function getGwName(): string;
 
     /**
      * Get ip
@@ -111,4 +111,9 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface | null
      */
     public function getCarrierServer();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

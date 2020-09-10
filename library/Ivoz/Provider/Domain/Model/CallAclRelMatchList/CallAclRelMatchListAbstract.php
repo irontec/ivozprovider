@@ -201,7 +201,7 @@ abstract class CallAclRelMatchListAbstract
      *
      * @return integer
      */
-    public function getPriority()
+    public function getPriority(): int
     {
         return $this->priority;
     }
@@ -232,7 +232,7 @@ abstract class CallAclRelMatchListAbstract
      *
      * @return string
      */
-    public function getPolicy()
+    public function getPolicy(): string
     {
         return $this->policy;
     }

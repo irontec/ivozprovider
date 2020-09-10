@@ -279,7 +279,7 @@ abstract class TpAccountActionAbstract
      *
      * @return string
      */
-    public function getTpid()
+    public function getTpid(): string
     {
         return $this->tpid;
     }
@@ -306,7 +306,7 @@ abstract class TpAccountActionAbstract
      *
      * @return string
      */
-    public function getLoadid()
+    public function getLoadid(): string
     {
         return $this->loadid;
     }
@@ -333,7 +333,7 @@ abstract class TpAccountActionAbstract
      *
      * @return string
      */
-    public function getTenant()
+    public function getTenant(): string
     {
         return $this->tenant;
     }
@@ -360,7 +360,7 @@ abstract class TpAccountActionAbstract
      *
      * @return string
      */
-    public function getAccount()
+    public function getAccount(): string
     {
         return $this->account;
     }
@@ -444,7 +444,7 @@ abstract class TpAccountActionAbstract
      *
      * @return boolean
      */
-    public function getAllowNegative()
+    public function getAllowNegative(): bool
     {
         return $this->allowNegative;
     }
@@ -472,7 +472,7 @@ abstract class TpAccountActionAbstract
      *
      * @return boolean
      */
-    public function getDisabled()
+    public function getDisabled(): bool
     {
         return $this->disabled;
     }
@@ -506,7 +506,7 @@ abstract class TpAccountActionAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

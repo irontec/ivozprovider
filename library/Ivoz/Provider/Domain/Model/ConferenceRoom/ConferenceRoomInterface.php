@@ -17,14 +17,14 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get pinProtected
      *
      * @return boolean
      */
-    public function getPinProtected();
+    public function getPinProtected(): bool;
 
     /**
      * Get pinCode
@@ -38,7 +38,7 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
      *
      * @return integer
      */
-    public function getMaxMembers();
+    public function getMaxMembers(): int;
 
     /**
      * Get company
@@ -46,4 +46,9 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

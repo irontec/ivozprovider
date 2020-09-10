@@ -343,7 +343,7 @@ abstract class IvrAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -371,7 +371,7 @@ abstract class IvrAbstract
      *
      * @return integer
      */
-    public function getTimeout()
+    public function getTimeout(): int
     {
         return $this->timeout;
     }
@@ -399,7 +399,7 @@ abstract class IvrAbstract
      *
      * @return integer
      */
-    public function getMaxDigits()
+    public function getMaxDigits(): int
     {
         return $this->maxDigits;
     }
@@ -427,7 +427,7 @@ abstract class IvrAbstract
      *
      * @return boolean
      */
-    public function getAllowExtensions()
+    public function getAllowExtensions(): bool
     {
         return $this->allowExtensions;
     }

@@ -28,6 +28,7 @@ production:
             notificationTemplatesContentsLowBalanceList_screen: true
             notificationTemplatesContentsInvoiceList_screen: true
             notificationTemplatesContentsCallCsvList_screen: true
+            notificationTemplatesContentsMaxDailyUsageList_screen: true
           dialogs:
             notificationTemplatesDel_dialog: false
           default: notificationTemplatesContentsVoicemailList_screen
@@ -64,6 +65,7 @@ production:
           invoiceVariables: true
           lowBalanceVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
         readOnly:
           language: true
       filterField: notificationTemplate
@@ -94,6 +96,7 @@ production:
           invoiceVariables: true
           lowBalanceVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
         readOnly:
           language: true
       filterField: notificationTemplate
@@ -124,6 +127,7 @@ production:
           faxVariables: true
           lowBalanceVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
         readOnly:
           language: true
       filterField: notificationTemplate
@@ -154,6 +158,7 @@ production:
           faxVariables: true
           invoiceVariables: true
           callCsvVariables: true
+          maxDailyUsageVariables: true
         readOnly:
           language: true
       filterField: notificationTemplate
@@ -184,9 +189,41 @@ production:
           faxVariables: true
           invoiceVariables: true
           lowBalanceVariables: true
+          maxDailyUsageVariables: true
         readOnly:
           language: true
       filterField: notificationTemplate      
+
+    # notificationTemplatesMaxDailyUsageContents screens:
+    notificationTemplatesContentsMaxDailyUsageList_screen:
+      <<: *notificationTemplatesContentsMaxDailyUsageList_screenLink
+      fields:
+        <<: *notificationTemplatesContents_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            notificationTemplatesContentsMaxDailyUsageEdit_screen: true
+          default: notificationTemplatesContentsMaxDailyUsageEdit_screen
+      options:
+        title: _("Options")
+      filterField: notificationTemplate
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForNotificationMaxDailyUsage
+        - recordCount
+    notificationTemplatesContentsMaxDailyUsageEdit_screen: &notificationTemplatesContentsMaxDailyUsageEdit_screenLink
+      <<: *notificationTemplatesContentsEdit_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          faxVariables: true
+          invoiceVariables: true
+          lowBalanceVariables: true
+          callCsvVariables: true
+        readOnly:
+          language: true
+      filterField: notificationTemplate
 
   dialogs:
     # notificationTemplatesContents dialogs:

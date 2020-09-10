@@ -23,21 +23,6 @@ Feature: Update company services
       {
           "code": "92",
           "id": 1,
-          "service": {
-              "iden": "RecordLocution",
-              "defaultCode": "00",
-              "extraArgs": true,
-              "id": 4,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
-              },
-              "description": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
-              }
-          }
+          "service": 4
       }
     """

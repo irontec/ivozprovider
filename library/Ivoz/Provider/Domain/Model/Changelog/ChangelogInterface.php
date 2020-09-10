@@ -18,14 +18,14 @@ interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
      *
      * @return string
      */
-    public function getEntity();
+    public function getEntity(): string;
 
     /**
      * Get entityId
      *
      * @return string
      */
-    public function getEntityId();
+    public function getEntityId(): string;
 
     /**
      * Get data
@@ -39,14 +39,14 @@ interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
      *
      * @return \DateTime
      */
-    public function getCreatedOn();
+    public function getCreatedOn(): \DateTime;
 
     /**
      * Get microtime
      *
      * @return integer
      */
-    public function getMicrotime();
+    public function getMicrotime(): int;
 
     /**
      * Get command
@@ -54,4 +54,9 @@ interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
      * @return \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface
      */
     public function getCommand();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

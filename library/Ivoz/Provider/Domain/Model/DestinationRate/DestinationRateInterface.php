@@ -60,28 +60,28 @@ interface DestinationRateInterface extends LoggableEntityInterface
      *
      * @return float
      */
-    public function getCost();
+    public function getCost(): float;
 
     /**
      * Get connectFee
      *
      * @return float
      */
-    public function getConnectFee();
+    public function getConnectFee(): float;
 
     /**
      * Get rateIncrement
      *
      * @return string
      */
-    public function getRateIncrement();
+    public function getRateIncrement(): string;
 
     /**
      * Get groupIntervalStart
      *
      * @return string
      */
-    public function getGroupIntervalStart();
+    public function getGroupIntervalStart(): string;
 
     /**
      * Get tpRate
@@ -128,4 +128,9 @@ interface DestinationRateInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
      */
     public function getDestination();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

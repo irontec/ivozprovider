@@ -48,4 +48,9 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     public function getInvoice();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

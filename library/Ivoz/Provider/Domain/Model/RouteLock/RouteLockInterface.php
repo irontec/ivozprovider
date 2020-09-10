@@ -24,21 +24,21 @@ interface RouteLockInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get description
      *
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): string;
 
     /**
      * Get open
      *
      * @return boolean
      */
-    public function getOpen();
+    public function getOpen(): bool;
 
     /**
      * Get company
@@ -46,4 +46,9 @@ interface RouteLockInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

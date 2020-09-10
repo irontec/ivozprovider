@@ -16,6 +16,8 @@ Brand administrators can configure the notifications sent by IvozProvider:
 
 - Email sent when scheduled CDR CSVs are generated
 
+- Email sent when max daily usage is reached
+
 This section allows **modifying default templates** that will be **used when no custom notification is configured**.
 
 See :ref:`notification_templates` for further reference.

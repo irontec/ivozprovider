@@ -17,21 +17,21 @@ interface TrunksCdrInterface extends EntityInterface
      *
      * @return \DateTime
      */
-    public function getStartTime();
+    public function getStartTime(): \DateTime;
 
     /**
      * Get endTime
      *
      * @return \DateTime
      */
-    public function getEndTime();
+    public function getEndTime(): \DateTime;
 
     /**
      * Get duration
      *
      * @return float
      */
-    public function getDuration();
+    public function getDuration(): float;
 
     /**
      * Get caller
@@ -94,7 +94,7 @@ interface TrunksCdrInterface extends EntityInterface
      *
      * @return \DateTime
      */
-    public function getParserScheduledAt();
+    public function getParserScheduledAt(): \DateTime;
 
     /**
      * Get direction
@@ -179,4 +179,9 @@ interface TrunksCdrInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
      */
     public function getDdiProvider();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

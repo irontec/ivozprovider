@@ -1,5 +1,12 @@
 Ivoz\Ast\Domain\Model\Voicemail\VoicemailAbstract:
   type: mappedSuperclass
+  uniqueConstraints:
+    voicemail_user:
+      columns:
+        - userId
+    voicemail_residential_device:
+      columns:
+        - residentialDeviceId
   indexes:
     voicemail__context:
       columns:
@@ -11,9 +18,6 @@ Ivoz\Ast\Domain\Model\Voicemail\VoicemailAbstract:
     voicemail_imapuser:
       columns:
         - imapuser
-    voicemail_userId:
-      columns:
-        - userId
   fields:
     context:
       type: string

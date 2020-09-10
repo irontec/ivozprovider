@@ -35,7 +35,7 @@ class ProviderNotificationTemplate extends Fixture implements DependentFixtureIn
         $manager->persist($item1);
 
 
-        /** @var NotificationTemplateInterface $item1 */
+        /** @var NotificationTemplateInterface $item2 */
         $item2 = $this->createEntityInstance(NotificationTemplate::class);
         (function () use ($fixture) {
             $this->setName("CallCsv notification");
@@ -45,6 +45,19 @@ class ProviderNotificationTemplate extends Fixture implements DependentFixtureIn
         $this->addReference('_reference_ProviderNotificationTemplate2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
+
+        /** @var NotificationTemplateInterface $item3 */
+        $item3 = $this->createEntityInstance(NotificationTemplate::class);
+        (function () use ($fixture) {
+            $this->setName("Max daily usage notification");
+            $this->setType(
+                NotificationTemplateInterface::TYPE_MAXDAILYUSAGE
+            );
+        })->call($item3);
+
+        $this->addReference('_reference_ProviderNotificationTemplate3', $item3);
+        $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
 
         $manager->flush();
     }

@@ -43,4 +43,9 @@ interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
      */
     public function getRoutingTag();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

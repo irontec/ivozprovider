@@ -199,7 +199,7 @@ abstract class FeatureAbstract
      *
      * @return string
      */
-    public function getIden()
+    public function getIden(): string
     {
         return $this->iden;
     }

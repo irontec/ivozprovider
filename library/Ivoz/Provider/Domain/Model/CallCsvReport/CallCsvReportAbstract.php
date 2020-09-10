@@ -260,7 +260,7 @@ abstract class CallCsvReportAbstract
      *
      * @return string
      */
-    public function getSentTo()
+    public function getSentTo(): string
     {
         return $this->sentTo;
     }
@@ -294,7 +294,7 @@ abstract class CallCsvReportAbstract
      *
      * @return \DateTime
      */
-    public function getInDate()
+    public function getInDate(): \DateTime
     {
         return clone $this->inDate;
     }
@@ -328,7 +328,7 @@ abstract class CallCsvReportAbstract
      *
      * @return \DateTime
      */
-    public function getOutDate()
+    public function getOutDate(): \DateTime
     {
         return clone $this->outDate;
     }
@@ -362,7 +362,7 @@ abstract class CallCsvReportAbstract
      *
      * @return \DateTime
      */
-    public function getCreatedOn()
+    public function getCreatedOn(): \DateTime
     {
         return clone $this->createdOn;
     }

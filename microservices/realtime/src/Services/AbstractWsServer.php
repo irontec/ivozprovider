@@ -100,6 +100,13 @@ abstract class AbstractWsServer
         exit;
     }
 
+    public function reload()
+    {
+        $this
+            ->server
+            ->reload();
+    }
+
     protected function bindWorkerEvents(
         Sentinel $sentinel,
         int $redisPoolSize,
@@ -201,7 +208,6 @@ abstract class AbstractWsServer
         $this->logger->error(
             'worker stop shutdown'
         );
-        $this->shutdown();
     }
 
     protected function onWorkerError(

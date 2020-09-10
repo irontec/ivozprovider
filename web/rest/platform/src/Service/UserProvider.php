@@ -17,8 +17,6 @@ class UserProvider implements UserProviderInterface
      */
     protected function findUser(array $criteria)
     {
-        $criteria['brand'] = null;
-
         return $this
             ->getRepository()
             ->findOneBy($criteria);

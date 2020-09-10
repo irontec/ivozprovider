@@ -6,6 +6,7 @@ use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class User extends \Klear_Model_UserAdvanced
 {
@@ -114,14 +115,14 @@ class User extends \Klear_Model_UserAdvanced
         $this->companyCountryId = $company->getCountryId();
         $this->companyName = $company->getName();
         $this->companyType = $company->getType();
-        $this->companyVPBX = $company->getType() === Company::VPBX;
-        $this->companyNotVPBX = $company->getType() != Company::VPBX;
-        $this->companyResidential = $company->getType() === Company::RESIDENTIAL;
-        $this->companyNotResidential = $company->getType() != Company::RESIDENTIAL;
-        $this->companyWholesale = $company->getType() === Company::WHOLESALE;
-        $this->companyNotWholesale = $company->getType() != Company::WHOLESALE;
-        $this->companyRetail = $company->getType() === Company::RETAIL;
-        $this->companyNotRetail = $company->getType() != Company::RETAIL;
+        $this->companyVPBX = $company->getType() === CompanyInterface::TYPE_VPBX;
+        $this->companyNotVPBX = $company->getType() != CompanyInterface::TYPE_VPBX;
+        $this->companyResidential = $company->getType() === CompanyInterface::TYPE_RESIDENTIAL;
+        $this->companyNotResidential = $company->getType() != CompanyInterface::TYPE_RESIDENTIAL;
+        $this->companyWholesale = $company->getType() === CompanyInterface::TYPE_WHOLESALE;
+        $this->companyNotWholesale = $company->getType() != CompanyInterface::TYPE_WHOLESALE;
+        $this->companyRetail = $company->getType() === CompanyInterface::TYPE_RETAIL;
+        $this->companyNotRetail = $company->getType() != CompanyInterface::TYPE_RETAIL;
         $this->companyInvoices = $company->getShowInvoices() == 1;
         $this->companyRecordingRemoval = $company->getAllowRecordingRemoval() !== false;
     }

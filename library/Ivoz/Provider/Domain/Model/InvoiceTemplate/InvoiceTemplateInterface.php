@@ -22,7 +22,7 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get description
@@ -36,7 +36,7 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getTemplate();
+    public function getTemplate(): string;
 
     /**
      * Get templateHeader
@@ -58,4 +58,9 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

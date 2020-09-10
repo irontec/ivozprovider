@@ -220,4 +220,28 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     {
         return $this;
     }
+
+    /**
+     * TODO: Remove this as soon as klear is dead
+     */
+    public function getResidentialEndpointType()
+    {
+        if ($this->getResidentialDeviceId()) {
+            return 'residentialDevice';
+        }
+
+        if ($this->getFaxId()) {
+            return 'fax';
+        }
+
+        return null;
+    }
+
+    /**
+     * TODO: Remove this as soon as klear is dead
+     */
+    public function setResidentialEndpointType($type)
+    {
+        return $this;
+    }
 }

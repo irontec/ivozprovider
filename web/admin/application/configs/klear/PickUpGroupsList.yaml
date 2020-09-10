@@ -23,16 +23,16 @@ production:
         options:
           title: _("Options")
           screens:
-            pickUpGroupsEdit_screen: ${auth.acls.PickUpGroups.update}
+            pickUpGroupsEdit_screen: $[${auth.acls.PickUpGroups.update} && ${auth.companyVPBX}]
           dialogs:
-            pickUpGroupsDel_dialog: ${auth.acls.PickUpGroups.delete}
+            pickUpGroupsDel_dialog: $[${auth.acls.PickUpGroups.delete} && ${auth.companyVPBX}]
           default: pickUpGroupsEdit_screen
       options:
         title: _("Options")
         screens:
-          pickUpGroupsNew_screen: ${auth.acls.PickUpGroups.create}
+          pickUpGroupsNew_screen: $[${auth.acls.PickUpGroups.create} && ${auth.companyVPBX}]
         dialogs:
-          pickUpGroupsDel_dialog: ${auth.acls.PickUpGroups.delete}
+          pickUpGroupsDel_dialog: $[${auth.acls.PickUpGroups.delete} && ${auth.companyVPBX}]
     pickUpGroupsNew_screen: &pickUpGroupsNew_screenLink
       <<: *PickUpGroups
       controller: new

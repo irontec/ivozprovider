@@ -201,7 +201,7 @@ abstract class OutgoingDdiRuleAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -232,7 +232,7 @@ abstract class OutgoingDdiRuleAbstract
      *
      * @return string
      */
-    public function getDefaultAction()
+    public function getDefaultAction(): string
     {
         return $this->defaultAction;
     }

@@ -17,189 +17,189 @@ interface TpCdrStatInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getTpid();
+    public function getTpid(): string;
 
     /**
      * Get tag
      *
      * @return string
      */
-    public function getTag();
+    public function getTag(): string;
 
     /**
      * Get queueLength
      *
      * @return integer
      */
-    public function getQueueLength();
+    public function getQueueLength(): int;
 
     /**
      * Get timeWindow
      *
      * @return string
      */
-    public function getTimeWindow();
+    public function getTimeWindow(): string;
 
     /**
      * Get saveInterval
      *
      * @return string
      */
-    public function getSaveInterval();
+    public function getSaveInterval(): string;
 
     /**
      * Get metrics
      *
      * @return string
      */
-    public function getMetrics();
+    public function getMetrics(): string;
 
     /**
      * Get setupInterval
      *
      * @return string
      */
-    public function getSetupInterval();
+    public function getSetupInterval(): string;
 
     /**
      * Get tors
      *
      * @return string
      */
-    public function getTors();
+    public function getTors(): string;
 
     /**
      * Get cdrHosts
      *
      * @return string
      */
-    public function getCdrHosts();
+    public function getCdrHosts(): string;
 
     /**
      * Get cdrSources
      *
      * @return string
      */
-    public function getCdrSources();
+    public function getCdrSources(): string;
 
     /**
      * Get reqTypes
      *
      * @return string
      */
-    public function getReqTypes();
+    public function getReqTypes(): string;
 
     /**
      * Get directions
      *
      * @return string
      */
-    public function getDirections();
+    public function getDirections(): string;
 
     /**
      * Get tenants
      *
      * @return string
      */
-    public function getTenants();
+    public function getTenants(): string;
 
     /**
      * Get categories
      *
      * @return string
      */
-    public function getCategories();
+    public function getCategories(): string;
 
     /**
      * Get accounts
      *
      * @return string
      */
-    public function getAccounts();
+    public function getAccounts(): string;
 
     /**
      * Get subjects
      *
      * @return string
      */
-    public function getSubjects();
+    public function getSubjects(): string;
 
     /**
      * Get destinationIds
      *
      * @return string
      */
-    public function getDestinationIds();
+    public function getDestinationIds(): string;
 
     /**
      * Get ppdInterval
      *
      * @return string
      */
-    public function getPpdInterval();
+    public function getPpdInterval(): string;
 
     /**
      * Get usageInterval
      *
      * @return string
      */
-    public function getUsageInterval();
+    public function getUsageInterval(): string;
 
     /**
      * Get suppliers
      *
      * @return string
      */
-    public function getSuppliers();
+    public function getSuppliers(): string;
 
     /**
      * Get disconnectCauses
      *
      * @return string
      */
-    public function getDisconnectCauses();
+    public function getDisconnectCauses(): string;
 
     /**
      * Get mediationRunids
      *
      * @return string
      */
-    public function getMediationRunids();
+    public function getMediationRunids(): string;
 
     /**
      * Get ratedAccounts
      *
      * @return string
      */
-    public function getRatedAccounts();
+    public function getRatedAccounts(): string;
 
     /**
      * Get ratedSubjects
      *
      * @return string
      */
-    public function getRatedSubjects();
+    public function getRatedSubjects(): string;
 
     /**
      * Get costInterval
      *
      * @return string
      */
-    public function getCostInterval();
+    public function getCostInterval(): string;
 
     /**
      * Get actionTriggers
      *
      * @return string
      */
-    public function getActionTriggers();
+    public function getActionTriggers(): string;
 
     /**
      * Get createdAt
      *
      * @return \DateTime
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): \DateTime;
 
     /**
      * Set carrier
@@ -216,4 +216,9 @@ interface TpCdrStatInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
     public function getCarrier();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

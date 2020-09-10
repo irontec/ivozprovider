@@ -88,6 +88,11 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
+
+    /**
      * Add rule
      *
      * @param \Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface $rule

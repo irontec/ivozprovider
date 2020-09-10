@@ -34,4 +34,9 @@ interface ExternalCallFilterRelScheduleInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface
      */
     public function getSchedule();
+
+    /**
+     * @return bool
+     */
+    public function isInitialized(): bool;
 }

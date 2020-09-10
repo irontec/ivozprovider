@@ -230,7 +230,7 @@ abstract class RtpengineAbstract
      *
      * @return integer
      */
-    public function getSetid()
+    public function getSetid(): int
     {
         return $this->setid;
     }
@@ -257,7 +257,7 @@ abstract class RtpengineAbstract
      *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
@@ -285,7 +285,7 @@ abstract class RtpengineAbstract
      *
      * @return integer
      */
-    public function getWeight()
+    public function getWeight(): int
     {
         return $this->weight;
     }
@@ -313,7 +313,7 @@ abstract class RtpengineAbstract
      *
      * @return boolean
      */
-    public function getDisabled()
+    public function getDisabled(): bool
     {
         return $this->disabled;
     }
@@ -347,7 +347,7 @@ abstract class RtpengineAbstract
      *
      * @return \DateTime
      */
-    public function getStamp()
+    public function getStamp(): \DateTime
     {
         return clone $this->stamp;
     }

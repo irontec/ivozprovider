@@ -481,7 +481,7 @@ abstract class VoicemailAbstract
      *
      * @return string
      */
-    public function getContext()
+    public function getContext(): string
     {
         return $this->context;
     }
@@ -508,7 +508,7 @@ abstract class VoicemailAbstract
      *
      * @return string
      */
-    public function getMailbox()
+    public function getMailbox(): string
     {
         return $this->mailbox;
     }
