@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.16.0
+* Models:
+    - ActiveCalls:
+        - Added inbound and outbound properties
+    - BannedAddress:
+        - Added aor property into BannedAddress-detailed model
+    - BillableCall:
+        - Added endpointName property
+    - Company:
+        - Added currentDayUsage and maxDailyUsageEmail properties
+
 ## 2.15.1
 * Endpoints:
     - Added /proxy_trunks_rel_brands
