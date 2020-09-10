@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.16
+* Endpoints:
+    - Added /my/active_calls
+    - Added [DELETE] /recordings/{id}
+* Models:
+    - BillableCall:
+        - Added endpointName property
+    - Friend:
+        - Removed authNeeded property
+    - Terminal:
+        - Added rtpEncryption property
+
 ## 2.15.2
 * Endpoints:
     - Added /my/registration_summary

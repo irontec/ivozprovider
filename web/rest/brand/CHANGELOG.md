@@ -1,5 +1,25 @@
 # Changelog
 
+## 2.16.0
+* Endpoints:
+    - /my/registration_summary
+        - Added company parameter
+* Models:
+    - ActiveCalls:
+        - Added inbound and outbound properties
+    - BannedAddress:
+        - Added aor property into BannedAddress-detailed model
+    - BillableCall:
+        - Added endpointName property
+    - CallCsvScheduler:
+        - Added ddiProvider property
+    - DestinationRateGroup:
+        - Added lastExecutionError and deductibleConnectionFee properties
+    - Friend:
+        - Removed authNeeded property
+    - Terminal:
+        - Added rtpEncryption property
+
 ## 2.15.2
 * Endpoints:
     - Added /my/registration_summary
