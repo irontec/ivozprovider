@@ -43,6 +43,10 @@ that require feature-full call flows.
         Limits external outbound calls when this limit is reached within a day. At midnight counters are reset and
         accounts are re-enabled.
 
+    Email
+        A notification email will be sent to given address when configured max daily usage is reached. Leave empty to
+        avoid notification.
+
     Invoice data
         Data included in invoices created by this brand. This section also allows displaying invoices list in
         client's portal menu so they can download them.

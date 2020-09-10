@@ -155,6 +155,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\MatchList\MatchList
       Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface:
         Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern
+      Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotificationInterface:
+        Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotification
       Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface:
         Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet
       Ivoz\Provider\Domain\Model\Musiconhold\MusiconholdInterface:

@@ -144,6 +144,7 @@ production:
           currentDayMaxUsage: true
           accountStatus: true
           allowRecordingRemoval: true
+          maxDailyUsageNotificationTemplate: true
         order: &companiesOrder_Link
           id: true
           name: true
@@ -166,16 +167,15 @@ production:
             relFeatures: 3
             billingMethod: 3
         group1:
-          colsPerRow: 3
+          colsPerRow: 12
           label: _("Security")
           fields:
-            maxCalls: 1
-            __empty0: 2
-            maxDailyUsage: 1
-            maxDailyUsageNotificationTemplate: 1
-            maxDailyUsageEmail: 1
-            ipFilter: 1
-            relCountries: 2
+            maxCalls: 6
+            __empty2: 6
+            maxDailyUsage: 6
+            maxDailyUsageEmail: 6
+            ipFilter: 6
+            relCountries: 6
         group2:
           colsPerRow: 3
           label: _("Geographic Configuration")
@@ -249,16 +249,15 @@ production:
             relFeatures: 3
             billingMethod: 3
         group1:
-          colsPerRow: 3
+          colsPerRow: 12
           label: _("Security")
           fields:
-            maxCalls: 1
-            __empty0: 2
-            maxDailyUsage: 1
-            maxDailyUsageNotificationTemplate: 1
-            maxDailyUsageEmail: 1
-            ipFilter: 1
-            relCountries: 2
+            maxCalls: 6
+            __empty2: 6
+            maxDailyUsage: 6
+            maxDailyUsageEmail: 6
+            ipFilter: 6
+            relCountries: 6
         group2:
           colsPerRow: 3
           label: _("Geographic Configuration")
@@ -314,6 +313,7 @@ production:
             faxNotificationTemplate: 1
             invoiceNotificationTemplate: 1
             callCsvNotificationTemplate: 1
+            maxDailyUsageNotificationTemplate: 1
 
     # Administrators
     <<: *administrators_screensLink

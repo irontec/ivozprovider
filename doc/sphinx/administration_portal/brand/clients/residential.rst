@@ -66,6 +66,9 @@ These are the fields shown when **adding** a new residential client:
         Limits external outbound calls when this limit is reached within a day. At midnight counters are reset and
         accounts are re-enabled.
 
+    Email
+        A notification email will be sent to given address when configured max daily usage is reached. Leave empty to
+        avoid notification.
 
 When **editing** a client, these additional fields can be configured:
 

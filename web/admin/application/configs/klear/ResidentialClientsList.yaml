@@ -132,6 +132,7 @@ production:
           outgoingDdiE164: true
           allowRecordingRemoval: true
           externallyExtraOpts: true
+          maxDailyUsageNotificationTemplate: true
         order: &residentialClientsOrder_Link
           id: true
           name: true
@@ -163,16 +164,15 @@ production:
             transformationRuleSet: 8
             currency: 4
         group2:
-          colsPerRow: 3
+          colsPerRow: 12
           label: _("Security")
           fields:
-            maxCalls: 1
-            __empty0: 2
-            maxDailyUsage: 1
-            maxDailyUsageNotificationTemplate: 1
-            maxDailyUsageEmail: 1
-            ipFilter: 1
-            relCountries: 2
+            maxCalls: 6
+            __empty2: 6
+            maxDailyUsage: 6
+            maxDailyUsageEmail: 6
+            ipFilter: 6
+            relCountries: 6
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -234,16 +234,15 @@ production:
             transformationRuleSet: 8
             currency: 4
         group2:
-          colsPerRow: 3
+          colsPerRow: 12
           label: _("Security")
           fields:
-            maxCalls: 1
-            __empty0: 2
-            maxDailyUsage: 1
-            maxDailyUsageNotificationTemplate: 1
-            maxDailyUsageEmail: 1
-            ipFilter: 1
-            relCountries: 2
+            maxCalls: 6
+            __empty2: 6
+            maxDailyUsage: 6
+            maxDailyUsageEmail: 6
+            ipFilter: 6
+            relCountries: 6
         group3:
           colsPerRow: 12
           collapsed: true
@@ -287,6 +286,7 @@ production:
             faxNotificationTemplate: 1
             invoiceNotificationTemplate: 1
             callCsvNotificationTemplate: 1
+            maxDailyUsageNotificationTemplate: 1
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Residential Client', 'Residential Clients', 1), "[format| (%item%)]")

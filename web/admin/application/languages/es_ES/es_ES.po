@@ -3018,6 +3018,13 @@ msgstr "Empleado en buzón de voz y acceso al portal de usuario"
 msgid "Used to notify if max daily usage has been reached"
 msgstr "Empleado para notificar cuando se alcanza el máximo consumo diario"
 
+msgid ""
+"Used to notify if max daily usage has been reached. Leave empty to avoid "
+"notification."
+msgstr ""
+"Empleado para notificar cuando se alcanza el máximo consumo diario. Dejar "
+"vacío para desactivar notificación."
+
 msgid "User"
 msgid_plural "Users"
 msgstr[0] "Usuario"

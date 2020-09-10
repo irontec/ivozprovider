@@ -41,6 +41,12 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setRecordingsLimitEmail("");
             $this->setBillingMethod("prepaid");
             $this->setBalance(1.2);
+            $this->setMaxDailyUsageEmail('no-replay@domain.net');
+            $this->setMaxDailyUsage(2);
+            $this->setCurrentDayUsage(1);
+            $this->setMaxDailyUsageNotificationTemplate(
+                $fixture->getReference('_reference_ProviderNotificationTemplate2')
+            );
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));

@@ -139,7 +139,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Used to notify if max daily usage has been reached")
+        text: _("Used to notify if max daily usage has been reached. Leave empty to avoid notification.")
         label: _("Need help?")
     postalAddress:
       title: _('Postal address')

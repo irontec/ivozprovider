@@ -67,6 +67,20 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
     /**
      * @return null | NotificationTemplateInterface
      */
+    public function findGenericMaxDailyUsageTemplate()
+    {
+        /** @var NotificationTemplateInterface $response */
+        $response = $this->findOneBy([
+            'brand' => null,
+            'type' => 'maxDailyUsage'
+        ]);
+
+        return $response;
+    }
+
+    /**
+     * @return null | NotificationTemplateInterface
+     */
     public function findGenericVoicemailTemplate()
     {
         /** @var NotificationTemplateInterface $response */
