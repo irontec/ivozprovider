@@ -5,12 +5,11 @@ namespace Controller\Provider;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Serializer\Serializer;
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class PutBillableCallRatingAction
 {
@@ -20,8 +19,8 @@ class PutBillableCallRatingAction
     protected $billableCallRepository;
 
     public function __construct(
-        TokenStorage $tokenStorage,
-        Serializer $serializer,
+        TokenStorageInterface $tokenStorage,
+        SerializerInterface $serializer,
         RequestStack $requestStack,
         BillableCallRepository $billableCallRepository
     ) {

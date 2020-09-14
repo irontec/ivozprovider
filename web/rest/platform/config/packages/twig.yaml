@@ -1,0 +1,6 @@
+twig:
+    paths:
+        '%kernel.project_dir%/vendor/irontec/ivoz-api-bundle/Resources/views': ApiBundle
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'

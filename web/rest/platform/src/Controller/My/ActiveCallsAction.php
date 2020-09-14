@@ -8,9 +8,7 @@ use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Model\ActiveCalls;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ActiveCallsAction
 {
@@ -19,7 +17,7 @@ class ActiveCallsAction
     protected $apiClient;
 
     public function __construct(
-        TokenStorage $tokenStorage,
+        TokenStorageInterface $tokenStorage,
         RequestStack $requestStack,
         TrunksClientInterface $apiClient
     ) {

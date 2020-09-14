@@ -1,9 +1,9 @@
 imports:
-  - { resource: "@ApiBundle/Resources/config/api_platform_base.yml" }
+    - { resource: "@ApiBundle/Resources/config/api_platform_base.yml" }
 
 api_platform:
     description: 'Platform REST API'
-    version: 2.15
+    version: 3.0
     collection:
         pagination:
             # The maximum number of items per page.

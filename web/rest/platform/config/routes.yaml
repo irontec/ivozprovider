@@ -1,7 +1,3 @@
-api:
-  resource: '.'
-  type: 'api_platform'
-
 api_base_path:
   path: '/'
 
@@ -10,13 +6,6 @@ api_admin_login:
 
 api_user_login:
   path: user_login
-
-###############################
-## Refresh JWT Token
-###############################
-gesdinet_jwt_refresh_token:
-  path:     /token/refresh
-  defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
 
 ###############################
 ## Custom routes

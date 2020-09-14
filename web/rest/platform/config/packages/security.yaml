@@ -1,0 +1,62 @@
+## To get started with security, check out the documentation:
+## http://symfony.com/doc/current/security.html
+security:
+
+    providers:
+        admin_orm:
+            id: 'Service\UserProvider'
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        api_index:
+            pattern: ^/index.[^.{3,6}]/?.*$
+            security: false
+
+        api_docs:
+            pattern: ^/docs.[^.{3,6}]/?.*$
+            security: false
+
+        admin_login:
+            pattern:  ^/admin_login
+            stateless: true
+            anonymous: true
+            provider: admin_orm
+            form_login:
+                check_path: /admin_login
+                username_parameter: username
+                password_parameter: password
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+
+        refresh:
+            pattern:  ^/token/refresh
+            stateless: true
+            anonymous: true
+
+        api:
+            pattern:   ^/.+
+            stateless: true
+            guard:
+                authenticators:
+                    - Ivoz\Provider\Infrastructure\Api\Jwt\AdminTokenAuthenticator
+
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+
+            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            #form_login: ~
+
+    access_control:
+        - { path: ^/admin_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/.+, roles: ROLE_USER }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }

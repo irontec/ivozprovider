@@ -3,9 +3,10 @@
 namespace Service;
 
 use Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\AuthEndpointTrait;
+use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class AuthEndpointDecorator implements NormalizerInterface
+class AuthEndpointDecorator implements NormalizerInterface, CacheableSupportsMethodInterface
 {
     use AuthEndpointTrait;
 
@@ -23,6 +24,16 @@ class AuthEndpointDecorator implements NormalizerInterface
         NormalizerInterface $decoratedNormalizer
     ) {
         $this->decoratedNormalizer = $decoratedNormalizer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasCacheableSupportsMethod(): bool
+    {
+        return
+            $this->decoratedNormalizer instanceof CacheableSupportsMethodInterface
+            && $this->decoratedNormalizer->hasCacheableSupportsMethod();
     }
 
     /**
