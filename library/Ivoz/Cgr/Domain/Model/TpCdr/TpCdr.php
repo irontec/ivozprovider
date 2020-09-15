@@ -19,6 +19,18 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
         return $this->id;
     }
 
+    public function initChangelog()
+    {
+        /** @var array|null $costDetails */
+        $costDetails = $this->costDetails;
+        if (is_null($costDetails)) {
+            // NOT NULL constraint is not being met under some circumstances
+            $this->setCostDetails([]);
+        }
+
+        parent::initChangelog();
+    }
+
     public function getDuration()
     {
         $usage = $this->getUsage();
