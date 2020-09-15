@@ -6,6 +6,7 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -18,7 +19,7 @@ class CallForwardSettingSpec extends ObjectBehavior
     /** @var CallForwardSettingDto  */
     protected $dto;
     protected $user;
-    protected $company;
+    protected $retailAccount;
 
     function let()
     {
@@ -29,15 +30,14 @@ class CallForwardSettingSpec extends ObjectBehavior
             true
         );
 
-        $this->company = $this->getTestDouble(
-            CompanyInterface::class,
+        $this->retailAccount = $this->getTestDouble(
+            RetailAccountInterface::class,
             true
         );
 
         $this->prepareExecution(
             $this->dto,
-            $this->user,
-            $this->company
+            $this->retailAccount
         );
 
         $this->beConstructedThrough(
@@ -74,26 +74,12 @@ class CallForwardSettingSpec extends ObjectBehavior
 
     function it_restricts_retail_client_cfs_type_values()
     {
-
         $dto = new CallForwardSettingDto();
-        $user = $this->getTestDouble(
-            UserInterface::class,
-            true
-        );
-        $company = $this->getTestDouble(
-            CompanyInterface::class,
-            true
-        );
 
         $this->prepareExecution(
             $dto,
-            $user,
-            $company
+            $this->retailAccount
         );
-
-        $company
-            ->isRetail()
-            ->willReturn(true);
 
         $validTypes = [
             CallForwardSettingInterface::CALLFORWARDTYPE_USERNOTREGISTERED,
@@ -130,8 +116,7 @@ class CallForwardSettingSpec extends ObjectBehavior
 
     private function prepareExecution(
         $dto,
-        $user,
-        $company
+        $retailAccount = null
     ) {
         $dto
             ->setCallTypeFilter('internal')
@@ -141,36 +126,9 @@ class CallForwardSettingSpec extends ObjectBehavior
             ->setTargetType('extension')
             ->setNoAnswerTimeout(10);
 
-        $this->getterProphecy(
-            $company,
-            [
-                'isRetail' => false
-            ],
-            false
-        );
-
-        $this->linkDependencies(
-            $dto,
-            $user,
-            $company
-        );
-    }
-
-    private function linkDependencies($dto, $user, $company)
-    {
-        $this->getterProphecy(
-            $user,
-            [
-                'getCompany' => $company
-            ],
-            false
-        );
-
         $this->hydrate(
             $dto,
-            [
-                'user' => $user->reveal(),
-            ]
+            ['retailAccount' => $retailAccount->reveal()]
         );
     }
 }
