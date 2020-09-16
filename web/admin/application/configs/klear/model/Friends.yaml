@@ -159,7 +159,6 @@ production:
     allow:
       title: _('Allowed audio codecs')
       type: select
-      trim: both
       defaultValue: alaw
       maxLength: 100
       source:
