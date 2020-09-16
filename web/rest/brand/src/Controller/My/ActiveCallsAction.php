@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ActiveCallsAction
 {
@@ -22,7 +22,7 @@ class ActiveCallsAction
     protected $companyRepository;
 
     public function __construct(
-        TokenStorage $tokenStorage,
+        TokenStorageInterface $tokenStorage,
         RequestStack $requestStack,
         TrunksClientInterface $trunksClient,
         CompanyRepository $companyRepository

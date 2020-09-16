@@ -2,7 +2,7 @@
 
 set -e
 
-export SYMFONY_ENV=test
+export APP_ENV=test
 
 pushd /opt/irontec/ivozprovider/web/rest/brand
     # Prepare dataset
