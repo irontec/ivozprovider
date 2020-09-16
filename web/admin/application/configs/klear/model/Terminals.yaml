@@ -54,7 +54,6 @@ production:
     allowAudio:
       title: _('Allowed audio codecs')
       type: select
-      trim: both
       defaultValue: alaw
       maxLength: 100
       source:
@@ -72,7 +71,6 @@ production:
     allowVideo:
       title: _('Allowed video codecs')
       type: select
-      trim: both
       maxLength: 100
       source:
         data: inline
