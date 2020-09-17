@@ -13,7 +13,7 @@ use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
 
@@ -31,7 +31,7 @@ class CallHistoryAction
     protected $request;
 
     public function __construct(
-        TokenStorage $tokenStorage,
+        TokenStorageInterface $tokenStorage,
         UsersCdrRepository $usersCdrRepository,
         CollectionExtensionList $collectionExtensions,
         RequestStack $requestStack

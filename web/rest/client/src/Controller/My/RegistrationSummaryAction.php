@@ -8,8 +8,8 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Model\RegistrationSummary;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class RegistrationSummaryAction
 {
@@ -19,7 +19,7 @@ class RegistrationSummaryAction
 
     public function __construct(
         RequestStack $requestStack,
-        TokenStorage $tokenStorage,
+        TokenStorageInterface $tokenStorage,
         CompanyRegistrationSummary $companyRegistrationSummary
     ) {
         $this->requestStack = $requestStack;

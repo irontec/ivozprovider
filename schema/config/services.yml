@@ -1,9 +1,0 @@
-imports:
-  - { resource: "@CommandlogBundle/Resources/config/services.yml" }
-  - { resource: "@MigrationsBundle/Resources/config/services.yml" }
-
-services:
-  _defaults:
-    autowire: true
-    autoconfigure: true
-    public: false

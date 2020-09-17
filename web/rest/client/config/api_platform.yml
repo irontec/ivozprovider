@@ -1,6 +1,0 @@
-imports:
-  - { resource: "@ApiBundle/Resources/config/api_platform_base.yml" }
-
-api_platform:
-    description: 'Client REST API'
-    version: 2.15

@@ -6,19 +6,18 @@ use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class PostCallForwardSettingsAction
 {
     /**
-     * @var TokenStorage
+     * @var TokenStorageInterface
      */
     protected $tokenStorage;
 
     /**
-     * @var Serializer
+     * @var SerializerInterface
      */
     protected $serializer;
 
@@ -29,13 +28,13 @@ class PostCallForwardSettingsAction
 
     /**
      * PutProfileAction constructor.
-     * @param TokenStorage $tokenStorage
-     * @param Serializer $serializer
+     * @param TokenStorageInterface $tokenStorage
+     * @param SerializerInterface $serializer
      * @param RequestStack $requestStack
      */
     public function __construct(
-        TokenStorage $tokenStorage,
-        Serializer $serializer,
+        TokenStorageInterface $tokenStorage,
+        SerializerInterface $serializer,
         RequestStack $requestStack
     ) {
         $this->tokenStorage = $tokenStorage;

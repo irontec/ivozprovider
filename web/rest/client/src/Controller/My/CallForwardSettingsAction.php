@@ -4,7 +4,7 @@ namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class CallForwardSettingsAction
@@ -20,7 +20,7 @@ class CallForwardSettingsAction
     protected $callForwardSettingRepository;
 
     public function __construct(
-        TokenStorage $tokenStorage,
+        TokenStorageInterface $tokenStorage,
         CallForwardSettingRepository $callForwardSettingRepository
     ) {
         $this->tokenStorage = $tokenStorage;

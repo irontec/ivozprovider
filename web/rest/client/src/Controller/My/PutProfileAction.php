@@ -4,19 +4,18 @@ namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class PutProfileAction
 {
     /**
-     * @var TokenStorage
+     * @var TokenStorageInterface
      */
     protected $tokenStorage;
 
     /**
-     * @var Serializer
+     * @var SerializerInterface
      */
     protected $serializer;
 
@@ -27,13 +26,10 @@ class PutProfileAction
 
     /**
      * PutProfileAction constructor.
-     * @param TokenStorage $tokenStorage
-     * @param Serializer $serializer
-     * @param RequestStack $requestStack
      */
     public function __construct(
-        TokenStorage $tokenStorage,
-        Serializer $serializer,
+        TokenStorageInterface $tokenStorage,
+        SerializerInterface $serializer,
         RequestStack $requestStack
     ) {
         $this->tokenStorage = $tokenStorage;
