@@ -957,6 +957,9 @@ msgstr "Fecha fin debe ser igual o mayor que fecha inicio."
 msgid "Endpoint id"
 msgstr "Endpoint id"
 
+msgid "Endpoint name"
+msgstr "Endpoint name"
+
 msgid "Endpoint type"
 msgstr "Endpoint type"
 

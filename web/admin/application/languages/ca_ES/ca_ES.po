@@ -954,6 +954,9 @@ msgstr "'Data final' ha de ser igual o més gran que la 'data inici'."
 msgid "Endpoint id"
 msgstr "Dispositiu final Id"
 
+msgid "Endpoint name"
+msgstr "Endpoint name"
+
 msgid "Endpoint type"
 msgstr "Tipus dispositiu final"
 

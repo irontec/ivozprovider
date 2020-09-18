@@ -944,6 +944,9 @@ msgstr "End date must be equal or greater than start date'."
 msgid "Endpoint id"
 msgstr "Endpoint id"
 
+msgid "Endpoint name"
+msgstr "Endpoint name"
+
 msgid "Endpoint type"
 msgstr "Endpoint type"
 

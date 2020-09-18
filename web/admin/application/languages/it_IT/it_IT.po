@@ -958,6 +958,9 @@ msgstr "Data Fine non valida; deve essere uguale o maggiore di Data Inizio."
 msgid "Endpoint id"
 msgstr "Endpoint id"
 
+msgid "Endpoint name"
+msgstr "Endpoint name"
+
 msgid "Endpoint type"
 msgstr "Tipo Endpoint"
 
