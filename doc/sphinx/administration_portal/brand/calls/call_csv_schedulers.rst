@@ -112,6 +112,9 @@ These are the fields of the generated CSV files:
     endpointId
         Internal ID of specific endpoint (only when *endpointType* is non-empty).
 
+    endpointName
+        User extension, friend name, fax name, retail account name or residential device name (only when *endpointId* is non-empty).
+
     direction
         Possible values: inbound, outbound.
 

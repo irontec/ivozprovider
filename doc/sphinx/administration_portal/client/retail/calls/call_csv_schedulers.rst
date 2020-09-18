@@ -84,3 +84,6 @@ These are the fields of the generated CSV files:
 
     endpointId
         Internal ID of specific retail account
+
+    endpointName
+        Retail account name

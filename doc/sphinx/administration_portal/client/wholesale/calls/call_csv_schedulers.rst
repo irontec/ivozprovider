@@ -77,3 +77,6 @@ These are the fields of the generated CSV files:
 
     endpointId
         Empty for wholesale clients
+
+    endpointName
+        Empty for wholesale clients

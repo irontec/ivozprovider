@@ -90,3 +90,6 @@ These are the fields of the generated CSV files:
 
     endpointId
         Internal ID of specific residential device
+
+    endpointName
+        Residential device name or fax name
