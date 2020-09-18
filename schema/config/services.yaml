@@ -1,7 +1,7 @@
 imports:
     - { resource: "@ProviderBundle/Resources/config/config.yml" }
     - { resource: "@CommandlogBundle/Resources/config/services.yml" }
-    - { resource: "@MigrationsBundle/Resources/config/services.yml" }
+#    - { resource: "@MigrationsBundle/Resources/config/services.yml" }
 
 # This file is the entry point to configure your own services.
 # Files in the packages/ subdirectory configure your dependencies.

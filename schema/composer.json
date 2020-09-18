@@ -1,5 +1,5 @@
 {
-    "name": "irontec/ivozprovider/schema",
+    "name": "irontec/ivozprovider-schema",
     "description": "Multitenant solution for VoIP telephony providers (Migration handler)",
     "authors": [
         {
@@ -49,12 +49,12 @@
     },
     "require": {
         "doctrine/doctrine-migrations-bundle": "^3.0",
-        "doctrine/orm": "^2.7",
         "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
         "graze/guzzle-jsonrpc": "3.2.*",
         "guzzlehttp/guzzle": "^6.3",
         "irontec/ivoz-provider-bundle": "^2.0",
-        "irontec/ivoz-dev-tools": "^4.0"
+        "irontec/ivoz-dev-tools": "^4.0",
+        "symfony/flex": "^1.9"
     },
     "require-dev": {
         "docteurklein/test-double-bundle": "^1.0",
@@ -64,27 +64,18 @@
         "squizlabs/php_codesniffer": "3.*",
         "symfony/phpunit-bridge": "^4.1"
     },
-    "scripts": {
-        "symfony-scripts": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
-        ],
-        "post-install-cmd": [
-            "@symfony-scripts"
-        ],
-        "post-update-cmd": [
-            "@symfony-scripts"
-        ]
-    },
     "extra": {
-        "symfony-bin-dir": "bin",
-        "symfony-var-dir": "var",
-        "symfony-web-dir": "web",
-        "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "vendor/irontec/ivoz-provider-bundle/Resources/config/parameters.yml"
         },
         "branch-alias": null
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "security-checker security:check": "script"
+        }
     }
 }
