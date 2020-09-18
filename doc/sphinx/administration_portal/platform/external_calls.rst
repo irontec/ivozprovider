@@ -68,6 +68,8 @@ Each entry shows this information:
     Endpoint Id
         Internal ID of specific endpoint (only when *endpointType* is non-empty).
 
+    Endpoint Name
+        User extension, friend name, fax name, retail account name or residential device name (only when *endpointId* is non-empty).
 
 .. note:: An asynchronous process parses each external call and adds it to this list a few minutes after call hangup. Billing related fields, such as cost and price, will be empty for external incoming calls.
 
