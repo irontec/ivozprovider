@@ -93,3 +93,6 @@ These are the fields of the generated CSV files:
 
     endpointId
         Internal ID of specific endpoint (only when *endpointType* has a non-empty value).
+
+    endpointName
+        User extension, friend name or fax name
