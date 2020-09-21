@@ -1,7 +1,11 @@
 {
-    "name": "irontec/ivozprovider/scheduler",
+    "name": "irontec/ivozprovider-scheduler",
     "description": "Multitenant solution for VoIP telephony providers (scheduled task runner module)",
     "authors": [
+        {
+            "name": "Carlos Cruz",
+            "email": "carlos@irontec.com"
+        },
         {
             "name": "Ivan Alonso",
             "email": "kaian@irontec.com"
@@ -43,29 +47,21 @@
         }
     },
     "require": {
-        "irontec/ivoz-provider-bundle": "^2.0"
-    },
-    "scripts": {
-        "symfony-scripts": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
-        ],
-        "post-install-cmd": [
-            "@symfony-scripts"
-        ],
-        "post-update-cmd": [
-            "@symfony-scripts"
-        ]
+        "irontec/ivoz-provider-bundle": "^2.0",
+        "symfony/flex": "^1.9"
     },
     "extra": {
-        "symfony-bin-dir": "bin",
-        "symfony-var-dir": "var",
-        "symfony-web-dir": "public",
-        "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "vendor/irontec/ivoz-provider-bundle/Resources/config/parameters.yml"
         },
         "branch-alias": null
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "security-checker security:check": "script"
+        }
     }
 }

@@ -5,14 +5,12 @@ use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\HttpFoundation\Request;
 
 // require Composer's autoloader
-require __DIR__.'/../vendor/autoload.php';
-
-require __DIR__.'/../src/MicroKernel.php';
+require __DIR__.'/../config/bootstrap.php';
 
 $input = new ArgvInput();
-$env = $input->getParameterOption(['--env', '-e'], getenv('SYMFONY_ENV') ?: 'dev');
+$env = $input->getParameterOption(['--env', '-e'], getenv('APP_ENV') ?: 'dev');
 
-$kernel = new MicroKernel($env, false);
+$kernel = new Kernel($env, false);
 $request = new Request([], [], [], [], [], ['REQUEST_URI' => '/call-csv-to-email']);
 
 $response = $kernel->handle($request);
