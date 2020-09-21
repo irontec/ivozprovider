@@ -295,7 +295,7 @@ production:
           relatedProperty: matchlist
           related: \Ivoz\Provider\Domain\Model\MatchList\MatchList
           relatedFieldName: name
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_CompanyOrBrand
       info:
         type: box
         text: _("Incoming numbers that match this lists will be always ACCEPTED without checking this filter configuration.")
@@ -311,7 +311,7 @@ production:
           relatedProperty: matchlist
           related: \Ivoz\Provider\Domain\Model\MatchList\MatchList
           relatedFieldName: name
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_CompanyOrBrand
       info:
         type: box
         text: _("Incoming numbers that match this lists will be always REJECTED without checking this filter configuration.")
