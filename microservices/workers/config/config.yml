@@ -1,7 +1,0 @@
-imports:
-  - { resource: "@ProviderBundle/Resources/config/config.yml" }
-  - { resource: "@CoreBundle/Resources/config/doctrine_cache.yml" }
-  - { resource: "gearman.yml" }
-  - { resource: "logger.yml" }
-  - { resource: "services.yml" }
-  - { resource: "security.yml" }

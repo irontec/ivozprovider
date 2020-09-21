@@ -1,0 +1,18 @@
+doctrine:
+    dbal:
+        url: '%env(resolve:DATABASE_URL)%'
+
+        # IMPORTANT: You MUST configure your server version,
+        # either here or in the DATABASE_URL env var (see .env file)
+        #server_version: '5.7'
+
+        # only needed for MySQL
+        charset: utf8mb4
+        default_table_options:
+            collate: utf8mb4_unicode_ci
+
+doctrine_cache:
+    providers:
+        gearman_cache:
+            type: file_system
+            namespace: doctrine_cache.ns.gearman

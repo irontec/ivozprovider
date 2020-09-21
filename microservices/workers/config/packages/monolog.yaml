@@ -1,0 +1,10 @@
+monolog:
+    channels: ['workers']
+    handlers:
+        app_syslog:
+            ident: worker
+            type: syslog
+            bubble: false
+            level: info
+            priority: 5
+            channels: workers
