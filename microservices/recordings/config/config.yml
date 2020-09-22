@@ -1,5 +1,0 @@
-imports:
-  - { resource: "@ProviderBundle/Resources/config/config.yml" }
-  - { resource: "logger.yml" }
-  - { resource: "services.yml" }
-  - { resource: "security.yml" }
