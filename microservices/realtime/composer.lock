@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "609dd0ba823c2eb29cda556ee7dc3b79",
+    "content-hash": "01ebb6022966f64f7d1a824876dfec80",
     "packages": [
         {
             "name": "api-platform/core",
@@ -4390,6 +4390,51 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "symfony/flex",
+            "version": "v1.9.3",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/symfony/flex",
+                "reference": "1eab1e85f5eb66dac138d6240cc0ceffd6e3ae34"
+            },
+            "require": {
+                "composer-plugin-api": "^1.0|^2.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0.2|^2.0",
+                "symfony/dotenv": "^4.4|^5.0",
+                "symfony/phpunit-bridge": "^4.4|^5.0",
+                "symfony/process": "^3.4|^4.4|^5.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                },
+                "class": "Symfony\\Flex\\Flex"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Flex\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien.potencier@gmail.com"
+                }
+            ],
+            "description": "Composer plugin for Symfony",
             "transport-options": {
                 "symlink": true,
                 "relative": true

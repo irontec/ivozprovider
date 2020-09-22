@@ -4,14 +4,14 @@ use Services\WsServer;
 use Services\Sentinel;
 use Symfony\Component\Debug\Debug;
 
-$loader = require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/../config/bootstrap.php';
 
-$env = getenv('SYMFONY_ENV') ?: 'dev';
+$env = getenv('APP_ENV') ?: 'dev';
 $debug = getenv('SYMFONY_DEBUG') !== '0' && $env !== 'prod';
 if ($debug) {
     Debug::enable();
 }
-$kernel = new MicroKernel(
+$kernel = new Kernel(
     $env,
     $debug
 );

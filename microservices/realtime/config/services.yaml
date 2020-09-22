@@ -1,0 +1,49 @@
+imports:
+    - { resource: "@ProviderBundle/Resources/config/config.yml" }
+
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    sentinels:
+        - {host: 'data.ivozprovider.local', port: '26379'}
+    ws_host: '127.0.0.1'
+    ws_port: 8081
+    ws_worker_num: 1
+
+    # per worker
+    # 3 at least because 2 are used by the service itself
+    redis_pool_size: 52
+    redis_db: 1
+
+    logger_level: info
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Services\:
+        resource: '../src/Services/*'
+
+    Services\WsServer:
+        public: true
+        arguments:
+            $host: '%ws_host%'
+            $port: '%ws_port%'
+            $config:
+                worker_num: '%ws_worker_num%'
+
+    Services\Sentinel:
+        public: true
+        factory:   ['Services\Sentinel', 'fromConfigArray']
+        arguments:
+            $config: '%sentinels%'
+            $logger: '@logger'
+
+    Services\JwtToken:
+        public: true

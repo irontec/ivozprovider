@@ -1,0 +1,7 @@
+sync:
+    path: /
+    controller: Controller\Sync::index
+
+reset-counter:
+  path: /
+  controller: Controller\ResetCounter::index
