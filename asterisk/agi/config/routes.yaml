@@ -1,0 +1,75 @@
+dialplan/users:
+  path: '/dialplan/users'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/userstatus:
+  path: '/dialplan/userstatus'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/trunks:
+  path: '/dialplan/trunks'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/residentials:
+  path: '/dialplan/residentials'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/retails:
+  path: '/dialplan/retails'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/residentialstatus:
+  path: '/dialplan/residentialstatus'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/friends:
+  path: '/dialplan/friends'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/headers:
+  path: '/dialplan/headers'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/huntgroups:
+  path: '/dialplan/huntgroups'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/huntgroupstatus:
+  path: '/dialplan/huntgroupstatus'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/huntgroupmember:
+  path: '/dialplan/huntgroupmember'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/queues:
+  path: '/dialplan/queues'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/queuestatus:
+  path: '/dialplan/queuestatus'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/faxdial:
+  path: '/dialplan/faxdial'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/faxdialstatus:
+  path: '/dialplan/faxdialstatus'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/faxsend:
+  path: '/dialplan/faxsend'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/faxsendstatus:
+  path: '/dialplan/faxsendstatus'
+  controller: 'kernel:handleRequestAction'
+
+dialplan/faxreceivestatus:
+  path: '/dialplan/faxreceivestatus'
+  controller: 'kernel:handleRequestAction'
+
+voicemail/sender:
+  path: '/voicemail/sender'
+  controller: 'kernel:handleRequestAction'
