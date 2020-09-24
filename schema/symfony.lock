@@ -102,6 +102,9 @@
     "doctrine/reflection": {
         "version": "1.2.1"
     },
+    "doctrine/sql-formatter": {
+        "version": "1.1.1"
+    },
     "egulias/email-validator": {
         "version": "2.1.19"
     },
@@ -360,11 +363,17 @@
     "symfony/dependency-injection": {
         "version": "v3.4.44"
     },
+    "symfony/deprecation-contracts": {
+        "version": "v2.2.0"
+    },
     "symfony/doctrine-bridge": {
         "version": "v3.4.44"
     },
     "symfony/dotenv": {
         "version": "v4.4.11"
+    },
+    "symfony/error-handler": {
+        "version": "v4.4.13"
     },
     "symfony/event-dispatcher": {
         "version": "v4.4.13"
@@ -478,6 +487,9 @@
     "symfony/polyfill-iconv": {
         "version": "v1.18.0"
     },
+    "symfony/polyfill-intl-grapheme": {
+        "version": "v1.18.1"
+    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.18.0"
     },
@@ -548,6 +560,18 @@
             "config/packages/security.yaml"
         ]
     },
+    "symfony/security-core": {
+        "version": "v4.4.13"
+    },
+    "symfony/security-csrf": {
+        "version": "v5.1.5"
+    },
+    "symfony/security-guard": {
+        "version": "v4.4.13"
+    },
+    "symfony/security-http": {
+        "version": "v4.4.13"
+    },
     "symfony/serializer": {
         "version": "v4.2.12"
     },
@@ -556,6 +580,9 @@
     },
     "symfony/stopwatch": {
         "version": "v5.1.3"
+    },
+    "symfony/string": {
+        "version": "v5.1.5"
     },
     "symfony/swiftmailer-bundle": {
         "version": "2.5",
