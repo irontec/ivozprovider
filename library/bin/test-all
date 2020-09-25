@@ -1,4 +1,6 @@
 #!/bin/bash
+ 
+set -e
 
 pushd /opt/irontec/ivozprovider
     ./library/bin/test-codestyle
