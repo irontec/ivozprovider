@@ -115,8 +115,7 @@ class IncrementBalanceSpec extends ObjectBehavior
 
         $this
             ->logger
-            ->info(Argument::any())
-            ->willReturn(null);
+            ->info(Argument::any());
 
         $this
             ->carrierRepository
