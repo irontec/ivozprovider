@@ -55,7 +55,7 @@
         "irontec/ivoz-provider-bundle": "^2.0",
         "knplabs/knp-snappy": "0.4.3",
         "symfony/flex": "^1.9",
-        "twig/twig": "^1.0 || ^2.0",
+        "twig/twig": "^3.0",
         "xamin/handlebars.php": "^0.10.4"
     },
     "require-dev": {
@@ -69,7 +69,7 @@
         "docteurklein/test-double-bundle": "^1.0",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "phpunit/phpunit": "^8.0",
-        "symfony/phpunit-bridge": "^4.1"
+        "symfony/phpunit-bridge": "^5.0"
     },
     "extra": {
         "symfony-assets-install": "relative",
@@ -81,8 +81,7 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "security-checker security:check": "script"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
         }
     }
 }
