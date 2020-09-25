@@ -1453,7 +1453,6 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
 
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     access_control: >-
         "ROLE_COMPANY_ADMIN" in roles
         && user.isRetailAdmin()

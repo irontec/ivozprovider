@@ -50,6 +50,7 @@ services:
             $requiredOutputRole: 'ROLE_COMPANY_ADMIN'
 
     Ivoz\Api\Core\Security\DataAccessControlParser:
+        public: true
         calls:
             - [ addRepository, ['matchListRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList")']]
 
