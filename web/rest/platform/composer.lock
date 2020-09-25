@@ -7671,7 +7671,7 @@
                 "symfony/console": "^3.4|^4.0|^5.0"
             },
             "suggest": {
-                "symfony/console": "For validating YAML files using the lint command"
+                "symfonyweb/rest/brand/composer.lockweb/rest/brand/composer.lock/console": "For validating YAML files using the lint command"
             },
             "type": "library",
             "extra": {

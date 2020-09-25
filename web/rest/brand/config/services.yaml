@@ -41,6 +41,7 @@ services:
             $userProvider: '@Service\UserProvider'
 
     Ivoz\Api\Core\Security\DataAccessControlParser:
+        public: true
         calls:
             - [ addRepository, ['companyRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Company\\Company")']]
             - [ addRepository, ['transformationRuleSetRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet")']]
