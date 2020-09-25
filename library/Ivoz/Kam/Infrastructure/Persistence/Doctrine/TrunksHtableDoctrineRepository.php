@@ -5,7 +5,7 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Kam\Domain\Model\TrunksHtable\TrunksHtable;
 use Ivoz\Kam\Domain\Model\TrunksHtable\TrunksHtableRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * TrunksHtableDoctrineRepository
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TrunksHtableDoctrineRepository extends ServiceEntityRepository implements TrunksHtableRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, TrunksHtable::class);
     }

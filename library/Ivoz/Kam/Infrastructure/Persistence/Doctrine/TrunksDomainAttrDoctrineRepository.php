@@ -5,7 +5,7 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Kam\Domain\Model\TrunksDomainAttr\TrunksDomainAttr;
 use Ivoz\Kam\Domain\Model\TrunksDomainAttr\TrunksDomainAttrRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * TrunksDomainAttrDoctrineRepository
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TrunksDomainAttrDoctrineRepository extends ServiceEntityRepository implements TrunksDomainAttrRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, TrunksDomainAttr::class);
     }

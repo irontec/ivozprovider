@@ -5,7 +5,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * CallAclRelMatchListDoctrineRepository
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class CallAclRelMatchListDoctrineRepository extends ServiceEntityRepository implements CallAclRelMatchListRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, CallAclRelMatchList::class);
     }

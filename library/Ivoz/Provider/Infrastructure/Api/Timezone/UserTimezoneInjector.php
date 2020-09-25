@@ -8,7 +8,7 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class UserTimezoneInjector
 {
@@ -19,7 +19,7 @@ class UserTimezoneInjector
     protected $tzParamName;
 
     public function __construct(
-        TokenStorage $tokenStorage,
+        TokenStorageInterface $tokenStorage,
         LoggerInterface $logger,
         $tzParamName = '_timezone'
     ) {

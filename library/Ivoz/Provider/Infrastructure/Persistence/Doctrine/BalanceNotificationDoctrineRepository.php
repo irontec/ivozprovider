@@ -8,7 +8,7 @@ use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * BalanceNotificationDoctrineRepository
@@ -18,7 +18,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class BalanceNotificationDoctrineRepository extends ServiceEntityRepository implements BalanceNotificationRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, BalanceNotification::class);
     }

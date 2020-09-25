@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * DomainDoctrineRepository
@@ -25,7 +25,7 @@ class DomainDoctrineRepository extends ServiceEntityRepository implements Domain
     protected $companyRepository;
 
     public function __construct(
-        RegistryInterface $registry,
+        ManagerRegistry $registry,
         BrandRepository $brandRepository,
         CompanyRepository $companyRepository
     ) {

@@ -7,7 +7,7 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity;
 use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface;
 use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * PublicEntityDoctrineRepository
@@ -17,7 +17,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class PublicEntityDoctrineRepository extends ServiceEntityRepository implements PublicEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, PublicEntity::class);
     }

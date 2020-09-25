@@ -7,7 +7,7 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * HolidayDateDoctrineRepository
@@ -17,7 +17,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class HolidayDateDoctrineRepository extends ServiceEntityRepository implements HolidayDateRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, HolidayDate::class);
     }

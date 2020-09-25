@@ -5,7 +5,7 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Kam\Domain\Model\UsersAddress\UsersAddress;
 use Ivoz\Kam\Domain\Model\UsersAddress\UsersAddressRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * UsersAddressDoctrineRepository
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class UsersAddressDoctrineRepository extends ServiceEntityRepository implements UsersAddressRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, UsersAddress::class);
     }

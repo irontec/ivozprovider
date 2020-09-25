@@ -5,7 +5,7 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Kam\Domain\Model\UsersPua\UsersPua;
 use Ivoz\Kam\Domain\Model\UsersPua\UsersPuaRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * UsersPuaDoctrineRepository
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class UsersPuaDoctrineRepository extends ServiceEntityRepository implements UsersPuaRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, UsersPua::class);
     }

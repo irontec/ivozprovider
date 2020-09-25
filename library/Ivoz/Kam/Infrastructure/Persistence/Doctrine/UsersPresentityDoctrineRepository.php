@@ -5,7 +5,7 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Kam\Domain\Model\UsersPresentity\UsersPresentity;
 use Ivoz\Kam\Domain\Model\UsersPresentity\UsersPresentityRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * UsersPresentityDoctrineRepository
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class UsersPresentityDoctrineRepository extends ServiceEntityRepository implements UsersPresentityRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, UsersPresentity::class);
     }

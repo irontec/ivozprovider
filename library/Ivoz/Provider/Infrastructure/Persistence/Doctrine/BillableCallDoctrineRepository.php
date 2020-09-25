@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * BillableCallDoctrineRepository
@@ -28,7 +28,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     protected $queryRunner;
 
     public function __construct(
-        RegistryInterface $registry,
+        ManagerRegistry $registry,
         DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, BillableCall::class);

@@ -5,7 +5,7 @@ namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedCharger;
 use Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedChargerRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * TpDerivedChargerDoctrineRepository
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TpDerivedChargerDoctrineRepository extends ServiceEntityRepository implements TpDerivedChargerRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, TpDerivedCharger::class);
     }

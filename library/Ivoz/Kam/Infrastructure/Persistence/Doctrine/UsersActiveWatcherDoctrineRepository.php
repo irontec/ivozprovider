@@ -5,7 +5,7 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Kam\Domain\Model\UsersActiveWatcher\UsersActiveWatcher;
 use Ivoz\Kam\Domain\Model\UsersActiveWatcher\UsersActiveWatcherRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * UsersActiveWatcherDoctrineRepository
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class UsersActiveWatcherDoctrineRepository extends ServiceEntityRepository implements UsersActiveWatcherRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, UsersActiveWatcher::class);
     }

@@ -10,7 +10,7 @@ use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * TrunksLcrRuleTargetDoctrineRepository
@@ -20,7 +20,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TrunksLcrRuleTargetDoctrineRepository extends ServiceEntityRepository implements TrunksLcrRuleTargetRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, TrunksLcrRuleTarget::class);
     }

@@ -5,7 +5,7 @@ namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * TpTimingDoctrineRepository
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TpTimingDoctrineRepository extends ServiceEntityRepository implements TpTimingRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, TpTiming::class);
     }

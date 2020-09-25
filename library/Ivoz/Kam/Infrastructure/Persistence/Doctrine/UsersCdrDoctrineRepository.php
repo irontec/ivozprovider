@@ -6,7 +6,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * UsersCdrDoctrineRepository
@@ -16,7 +16,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class UsersCdrDoctrineRepository extends ServiceEntityRepository implements UsersCdrRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, UsersCdr::class);
     }

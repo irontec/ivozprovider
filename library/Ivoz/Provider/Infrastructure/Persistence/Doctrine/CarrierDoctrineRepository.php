@@ -9,7 +9,7 @@ use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * CarrierDoctrineRepository
@@ -19,7 +19,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class CarrierDoctrineRepository extends ServiceEntityRepository implements CarrierRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Carrier::class);
     }

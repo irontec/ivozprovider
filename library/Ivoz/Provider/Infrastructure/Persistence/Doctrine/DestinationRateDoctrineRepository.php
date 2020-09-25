@@ -8,7 +8,7 @@ use Doctrine\ORM\NativeQuery;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * DestinationRateDoctrineRepository
@@ -22,7 +22,7 @@ class DestinationRateDoctrineRepository extends ServiceEntityRepository implemen
     protected $queryRunner;
 
     public function __construct(
-        RegistryInterface $registry,
+        ManagerRegistry $registry,
         EntityManagerInterface $em,
         DoctrineQueryRunner $queryRunner
     ) {

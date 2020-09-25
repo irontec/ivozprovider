@@ -8,7 +8,7 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * AdministratorRelPublicEntityDoctrineRepository
@@ -21,7 +21,7 @@ class AdministratorRelPublicEntityDoctrineRepository extends ServiceEntityReposi
     protected $queryRunner;
 
     public function __construct(
-        RegistryInterface $registry,
+        ManagerRegistry $registry,
         DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, AdministratorRelPublicEntity::class);

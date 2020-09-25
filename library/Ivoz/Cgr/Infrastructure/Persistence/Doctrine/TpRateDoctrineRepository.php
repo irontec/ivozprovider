@@ -7,7 +7,7 @@ use Doctrine\ORM\NativeQuery;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRate;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateRepository;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * TpRateDoctrineRepository
@@ -20,7 +20,7 @@ class TpRateDoctrineRepository extends ServiceEntityRepository implements TpRate
     protected $queryRunner;
 
     public function __construct(
-        RegistryInterface $registry,
+        ManagerRegistry $registry,
         DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, TpRate::class);

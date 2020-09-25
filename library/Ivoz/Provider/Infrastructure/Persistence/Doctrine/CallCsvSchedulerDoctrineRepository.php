@@ -8,7 +8,7 @@ use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerRepository;
 use Ivoz\Provider\Infrastructure\Persistence\Doctrine\Traits\CountByCriteriaTrait;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * CallCsvSchedulerDoctrineRepository
@@ -20,7 +20,7 @@ class CallCsvSchedulerDoctrineRepository extends ServiceEntityRepository impleme
 {
     use CountByCriteriaTrait;
 
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, CallCsvScheduler::class);
     }

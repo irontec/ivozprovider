@@ -6,7 +6,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Kam\Domain\Model\Dispatcher\Dispatcher;
 use Ivoz\Kam\Domain\Model\Dispatcher\DispatcherInterface;
 use Ivoz\Kam\Domain\Model\Dispatcher\DispatcherRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * DispatcherDoctrineRepository
@@ -16,7 +16,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class DispatcherDoctrineRepository extends ServiceEntityRepository implements DispatcherRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Dispatcher::class);
     }

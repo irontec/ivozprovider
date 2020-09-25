@@ -7,7 +7,7 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocation;
 use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationInterface;
 use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * UsersLocationDoctrineRepository
@@ -17,7 +17,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class UsersLocationDoctrineRepository extends ServiceEntityRepository implements UsersLocationRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, UsersLocation::class);
     }

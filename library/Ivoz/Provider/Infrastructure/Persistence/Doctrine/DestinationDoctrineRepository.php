@@ -7,7 +7,7 @@ use Doctrine\ORM\NativeQuery;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Provider\Domain\Model\Destination\Destination;
 use Ivoz\Provider\Domain\Model\Destination\DestinationRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * DestinationDoctrineRepository
@@ -20,7 +20,7 @@ class DestinationDoctrineRepository extends ServiceEntityRepository implements D
     protected $queryRunner;
 
     public function __construct(
-        RegistryInterface $registry,
+        ManagerRegistry $registry,
         DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, Destination::class);

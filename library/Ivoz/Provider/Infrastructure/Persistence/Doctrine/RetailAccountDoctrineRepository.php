@@ -9,7 +9,7 @@ use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountRepository;
 use Ivoz\Provider\Infrastructure\Persistence\Doctrine\Traits\CountByCriteriaTrait;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * RetailAccountRepository
@@ -21,7 +21,7 @@ class RetailAccountDoctrineRepository extends ServiceEntityRepository implements
 {
     use CountByCriteriaTrait;
 
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, RetailAccount::class);
     }

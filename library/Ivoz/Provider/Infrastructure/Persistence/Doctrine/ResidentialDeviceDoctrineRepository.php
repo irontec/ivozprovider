@@ -9,7 +9,7 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
 use Ivoz\Provider\Infrastructure\Persistence\Doctrine\Traits\CountByCriteriaTrait;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * ResidentialDeviceRepository
@@ -21,7 +21,7 @@ class ResidentialDeviceDoctrineRepository extends ServiceEntityRepository implem
 {
     use CountByCriteriaTrait;
 
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, ResidentialDevice::class);
     }

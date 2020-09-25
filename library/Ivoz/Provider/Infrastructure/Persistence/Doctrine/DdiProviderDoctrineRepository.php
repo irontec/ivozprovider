@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
 
@@ -19,7 +19,7 @@ use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
  */
 class DdiProviderDoctrineRepository extends ServiceEntityRepository implements DdiProviderRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, DdiProvider::class);
     }

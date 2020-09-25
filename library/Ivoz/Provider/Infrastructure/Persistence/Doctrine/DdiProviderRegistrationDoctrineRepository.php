@@ -5,7 +5,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * DdiProviderRegistrationDoctrineRepository
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class DdiProviderRegistrationDoctrineRepository extends ServiceEntityRepository implements DdiProviderRegistrationRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, DdiProviderRegistration::class);
     }

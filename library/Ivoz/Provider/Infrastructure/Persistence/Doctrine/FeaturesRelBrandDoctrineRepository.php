@@ -5,7 +5,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * FeaturesRelBrandDoctrineRepository
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class FeaturesRelBrandDoctrineRepository extends ServiceEntityRepository implements FeaturesRelBrandRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, FeaturesRelBrand::class);
     }

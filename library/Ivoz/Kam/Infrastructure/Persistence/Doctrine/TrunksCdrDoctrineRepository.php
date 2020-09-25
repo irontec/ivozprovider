@@ -9,7 +9,7 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Traits\GetGeneratorByCondition
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * TrunksCdrDoctrineRepository
@@ -24,7 +24,7 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
     protected $queryRunner;
 
     public function __construct(
-        RegistryInterface $registry,
+        ManagerRegistry $registry,
         DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, TrunksCdr::class);
