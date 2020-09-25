@@ -13,7 +13,6 @@ return [
     ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle::class => ['all' => true],
     Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
-    Sensio\Bundle\DistributionBundle\SensioDistributionBundle::class => ['all' => true],
 
     Ivoz\CoreBundle\CoreBundle::class => ['all' => true],
     Ivoz\ApiBundle\ApiBundle::class => ['all' => true],
