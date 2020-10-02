@@ -23,7 +23,7 @@ ivozprovider-kamailio-xml-modules:#ARCH#
 ivozprovider-kamailio-presence-modules:#ARCH#
 ivozprovider-kamailio-utils-modules:#ARCH#
 ivozprovider-kamailio-redis-modules:#ARCH#
-ivozprovider-kamailio-geoip-modules:#ARCH#
+ivozprovider-kamailio-geoip2-modules:#ARCH#
 ivozprovider-profile-as
 ivozprovider-profile-common
 ivozprovider-profile-data
