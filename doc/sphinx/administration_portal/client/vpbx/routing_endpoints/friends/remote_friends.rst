@@ -82,6 +82,10 @@ These are the configurable settings of *friends*:
     Allowed codecs
         Like a terminal, *friends* will talk the selected codec.
 
+    From user
+        Request from IvozProvider to this friend will include this user in
+        the From header.
+
     From domain
         Request from IvozProvider to this friend will include this domain in
         the From header.
