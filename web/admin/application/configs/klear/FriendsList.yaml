@@ -32,6 +32,7 @@ production:
           directMediaMethod: true
           updateCallerid: true
           fromDomain: true
+          fromUser: true
           calleridUpdateHeader: true
           directConnectivity: true
           ip: true
@@ -101,6 +102,7 @@ production:
           outgoingDdi: true
           allow: true
           fromDomain: true
+          fromUser: true
           ddiIn: true
           rtpEncryption: true
         order: &friends_orderLink
@@ -115,9 +117,10 @@ production:
           language: true
           callACL: true
           outgoingDdi: true
-          allow: true
           transformationRuleSet: true
+          fromUser: true
           fromDomain: true
+          allow: true
           ddiIn: true
           status: true
           t38Passthrough: true
@@ -154,8 +157,9 @@ production:
           label: _("Advanced Configuration")
           colsPerRow: 4
           fields:
-            allow: 2
+            fromUser: 2
             fromDomain: 2
+            allow: 2
             ddiIn: 2
             t38Passthrough: 2
             rtpEncryption: 2

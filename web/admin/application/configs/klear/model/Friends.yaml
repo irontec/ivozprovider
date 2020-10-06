@@ -212,6 +212,12 @@ production:
     fromDomain:
       title: _('From domain')
       type: text
+      trim: both
+      maxLength: 190
+    fromUser:
+      title: _('From user')
+      type: text
+      trim: both
       maxLength: 190
     directConnectivity:
       title: _('Connectivity mode')
@@ -234,6 +240,7 @@ production:
                 - transport
                 - ddiIn
                 - allow
+                - fromUser
                 - fromDomain
                 - language
                 - transformationRuleSet
@@ -252,6 +259,7 @@ production:
                 - password
                 - ddiIn
                 - allow
+                - fromUser
                 - fromDomain
                 - language
                 - transformationRuleSet
@@ -268,6 +276,7 @@ production:
                 - password
                 - ddiIn
                 - allow
+                - fromUser
                 - fromDomain
                 - language
                 - transformationRuleSet
