@@ -208,6 +208,13 @@ interface FriendInterface extends LoggableEntityInterface
     public function getUpdateCallerid(): string;
 
     /**
+     * Get fromUser
+     *
+     * @return string | null
+     */
+    public function getFromUser();
+
+    /**
      * Get fromDomain
      *
      * @return string | null

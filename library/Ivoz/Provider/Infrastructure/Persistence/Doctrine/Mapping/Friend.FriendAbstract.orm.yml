@@ -103,6 +103,13 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
         comment: '[enum:yes|no]'
         default: 'yes'
       column: update_callerid
+    fromUser:
+      type: string
+      nullable: true
+      length: 190
+      options:
+        fixed: false
+      column: from_user
     fromDomain:
       type: string
       nullable: true

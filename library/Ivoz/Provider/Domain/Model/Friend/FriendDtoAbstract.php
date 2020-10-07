@@ -73,6 +73,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
+    private $fromUser;
+
+    /**
+     * @var string
+     */
     private $fromDomain;
 
     /**
@@ -180,6 +185,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'directMediaMethod' => 'directMediaMethod',
             'calleridUpdateHeader' => 'calleridUpdateHeader',
             'updateCallerid' => 'updateCallerid',
+            'fromUser' => 'fromUser',
             'fromDomain' => 'fromDomain',
             'directConnectivity' => 'directConnectivity',
             'ddiIn' => 'ddiIn',
@@ -215,6 +221,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'directMediaMethod' => $this->getDirectMediaMethod(),
             'calleridUpdateHeader' => $this->getCalleridUpdateHeader(),
             'updateCallerid' => $this->getUpdateCallerid(),
+            'fromUser' => $this->getFromUser(),
             'fromDomain' => $this->getFromDomain(),
             'directConnectivity' => $this->getDirectConnectivity(),
             'ddiIn' => $this->getDdiIn(),
@@ -485,6 +492,26 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getUpdateCallerid()
     {
         return $this->updateCallerid;
+    }
+
+    /**
+     * @param string $fromUser
+     *
+     * @return static
+     */
+    public function setFromUser($fromUser = null)
+    {
+        $this->fromUser = $fromUser;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getFromUser()
+    {
+        return $this->fromUser;
     }
 
     /**
