@@ -17,7 +17,7 @@ doctrine:
     orm:
         mappings:
             JWTRefreshTokenEntity:
-                type: yml
+                type: xml
                 is_bundle: false
-                dir: '%kernel.root_dir%/../src/Entity'
+                dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'Gesdinet\JWTRefreshTokenBundle\Entity'
