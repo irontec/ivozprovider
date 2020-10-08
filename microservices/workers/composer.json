@@ -55,9 +55,9 @@
     },
     "require": {
         "h4cc/wkhtmltopdf-amd64": "0.12.3",
-        "irontec/ivoz-provider-bundle": "^2.0",
-        "knplabs/knp-snappy": "0.4.3",
-        "mmoreram/gearman-bundle": "^4.1",
+        "irontec/ivoz-provider-bundle": "^2.5",
+        "knplabs/knp-snappy": "^1.2",
+        "mmoreram/gearman-bundle": "^5.0",
         "phpxmlrpc/phpxmlrpc": "^4.0",
         "symfony/flex": "^1.9",
         "xamin/handlebars.php": "^0.10.4"

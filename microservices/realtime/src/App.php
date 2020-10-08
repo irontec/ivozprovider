@@ -2,7 +2,7 @@
 
 use Services\WsServer;
 use Services\Sentinel;
-use Symfony\Component\Debug\Debug;
+use Symfony\Component\ErrorHandler\Debug;
 
 require __DIR__.'/../config/bootstrap.php';
 

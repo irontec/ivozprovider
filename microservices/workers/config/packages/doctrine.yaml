@@ -11,8 +11,3 @@ doctrine:
         default_table_options:
             collate: utf8mb4_unicode_ci
 
-doctrine_cache:
-    providers:
-        gearman_cache:
-            type: file_system
-            namespace: doctrine_cache.ns.gearman
