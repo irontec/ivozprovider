@@ -1,5 +1,7 @@
 <?php
 
+namespace Service\Behat;
+
 use Ivoz\Api\Behat\Context\FeatureContext as BaseFeatureContext;
 
 class FeatureContext extends BaseFeatureContext

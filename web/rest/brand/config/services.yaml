@@ -35,6 +35,8 @@ services:
         arguments:
             $decoratedNormalizer:
                 '@Service\AuthEndpointDecorator.inner'
+        tags:
+            - { name: serializer.normalizer, priority: 100 }
 
     Ivoz\Api\Operation\ExchangeToken:
         arguments:

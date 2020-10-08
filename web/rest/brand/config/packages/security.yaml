@@ -25,6 +25,7 @@ security:
             stateless: true
             anonymous: true
             provider: admin_orm
+            user_checker: Ivoz\Provider\Domain\Service\Administrator\AdminLoginChecker
             form_login:
                 check_path: /admin_login
                 username_parameter: username
