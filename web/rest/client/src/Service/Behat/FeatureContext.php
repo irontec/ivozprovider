@@ -1,10 +1,11 @@
 <?php
 
-use Ivoz\Api\Behat\Context\FeatureContext as BaseFeatureContext;
+namespace Service\Behat;
 
-/**
- * Defines application features from the specific context.
- */
+use Ivoz\Api\Behat\Context\FeatureContext as BaseFeatureContext;
+use Behat\Behat\Hook\Scope\BeforeScenarioScope;
+use \Behat\MinkExtension\Context\RawMinkContext;
+
 class FeatureContext extends BaseFeatureContext
 {
     /**
@@ -50,12 +51,15 @@ class FeatureContext extends BaseFeatureContext
     /**
      * @BeforeScenario @userApiContext
      */
-    public function setUserApiContext(\Behat\Behat\Hook\Scope\BeforeScenarioScope $scope)
+    public function setUserApiContext(BeforeScenarioScope $scope)
     {
         $environment = $scope->getEnvironment();
 
-        foreach ($environment->getContexts() as $context) {
-            if ($context instanceof \Behat\MinkExtension\Context\RawMinkContext) {
+        foreach ($environment->getContextClasses() as $contextName) {
+
+            $context = $environment->getContext($contextName);
+
+            if ($context instanceof RawMinkContext) {
                 $context->setMinkParameter(
                     'base_url',
                     'https://users-ivozprovider.irontec.com'

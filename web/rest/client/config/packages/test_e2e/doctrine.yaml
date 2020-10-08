@@ -1,3 +1,0 @@
-doctrine:
-    dbal:
-        dbname: "%database_name%_e2e"

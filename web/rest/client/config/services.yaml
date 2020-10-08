@@ -1,6 +1,6 @@
 imports:
-    - { resource: "@CoreBundle/Resources/config/doctrine_cache.yml" }
     - { resource: "@ProviderBundle/Resources/config/config.yml" }
+    - { resource: "@CoreBundle/Resources/config/doctrine_cache.yml" }
     - { resource: "@ApiBundle/Resources/config/config.yml" }
     - { resource: "@ApiBundle/Resources/config/services.yml" }
 

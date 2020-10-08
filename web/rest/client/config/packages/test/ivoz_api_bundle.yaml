@@ -1,0 +1,4 @@
+services:
+    Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface:
+        alias: 'lexik_jwt_authentication.jwt_manager'
+        public: true

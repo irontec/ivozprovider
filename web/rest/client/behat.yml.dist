@@ -4,23 +4,23 @@ default:
   suites:
     default:
       contexts:
-        - FeatureContext: { kernel: "@kernel" }
+        - Service\Behat\FeatureContext
         - Behat\MinkExtension\Context\MinkContext
         - Behatch\Context\RestContext
         - Behatch\Context\JsonContext
         - Ivoz\Api\Behat\Context\JsonContext
 #        - Ivoz\Api\Behat\Context\CoverageContext: {}
   extensions:
-    Behat\Symfony2Extension:
+    FriendsOfBehat\SymfonyExtension:
+      bootstrap: features/bootstrap/bootstrap.php
       kernel:
-        env: "test"
-        debug: "true"
-        bootstrap: features/bootstrap/bootstrap.php
+        environment: "test"
+        debug: true
         path: "src/Kernel.php"
         class: "Kernel"
     Behat\MinkExtension:
       base_url: "https://ivozprovider/"
       sessions:
         default:
-          symfony2: ~
+          symfony: ~
     Behatch\Extension: ~
