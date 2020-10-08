@@ -12,7 +12,7 @@ services:
   Ivoz\Provider\Domain\Service\Invoice\Generator:
     arguments:
       $logger: '@logger'
-      $vendorDir: '%kernel.root_dir%/../vendor/'
+      $vendorDir: '%kernel.project_dir%/vendor/'
 
   Ivoz\Provider\Domain\Service\Extension\AliasImporter:
     public: true

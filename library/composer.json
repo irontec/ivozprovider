@@ -44,6 +44,10 @@
         {
             "url": "https://github.com/mmadariaga/TestDoubleBundle.git",
             "type": "git"
+        },
+        {
+            "url": "https://github.com/mmadariaga/GearmanBundle.git",
+            "type": "git"
         }
     ],
     "autoload-dev": {
@@ -68,15 +72,15 @@
         "doctrine/orm": "^2.7",
         "doctrine/persistence": "1.3.7",
         "h4cc/wkhtmltopdf-amd64": "0.12.3",
-        "irontec/ivoz-api-bundle": "^4.0",
-        "irontec/ivoz-dev-tools": "^4.0",
-        "irontec/ivoz-provider-bundle": "^2.5.5",
-        "knplabs/knp-snappy": "0.4.3",
-        "mmoreram/gearman-bundle": "^4.1",
+        "irontec/ivoz-api-bundle": "^4.0.7",
+        "irontec/ivoz-dev-tools": "^4.1",
+        "irontec/ivoz-provider-bundle": "^2.5",
+        "knplabs/knp-snappy": "^1.2",
+        "mmoreram/gearman-bundle": "^5.0",
         "ocramius/package-versions": "^1.9",
         "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
         "phpxmlrpc/phpxmlrpc": "^4.0",
-        "snc/redis-bundle": "^2.1",
+        "snc/redis-bundle": "^3.2",
         "xamin/handlebars.php": "^0.10.4"
     },
     "require-dev": {
@@ -85,20 +89,20 @@
         "behat/mink": "^1.7",
         "behat/mink-browserkit-driver": "^1.3",
         "behat/mink-extension": "^2.2",
-        "behat/symfony2-extension": "^2.1",
-        "behatch/contexts": "^2.5",
-        "docteurklein/test-double-bundle": "^1.0",
+        "behatch/contexts": "^3.3",
+        "docteurklein/test-double-bundle": "^1.2",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "friends-of-behat/symfony-extension": "^2.0",
         "friends-of-phpspec/phpspec-code-coverage": "^4.3",
         "friendsofphp/php-cs-fixer": "^2.16",
         "http-interop/http-middleware": "^0.5",
         "overtrue/phplint": "^1.0",
         "phpspec/phpspec": "^6.0",
         "phpunit/phpunit": "^8.0",
-        "symfony/maker-bundle": "^1.2",
         "squizlabs/php_codesniffer": "3.3.*",
         "swoole/ide-helper": "^4.3.4",
-        "symfony/phpunit-bridge": "^5.2",
+        "symfony/maker-bundle": "^1.2",
+        "symfony/phpunit-bridge": "^5.1",
         "vimeo/psalm": "^3.2"
     }
 }

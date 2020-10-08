@@ -1,8 +1,8 @@
 doctrine:
   orm:
     resolve_target_entities:
-      Ivoz\Ast\Domain\Model\Hint\HintInterface:
-        Ivoz\Ast\Domain\Model\Hint\Hint
+      Ivoz\Ast\Domain\Model\Hint\VoicemailInterface:
+        Ivoz\Ast\Domain\Model\Hint\Voicemail
       Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface:
         Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint
       Ivoz\Ast\Domain\Model\Queue\QueueInterface:
