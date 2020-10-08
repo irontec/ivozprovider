@@ -89,7 +89,7 @@ trait HelperTrait
             } else {
                 $collaborator
                     ->{$methodName}(...$arguments)
-                    ->willReturn();
+                    ->will(function () {});
             }
         }
 

@@ -86,7 +86,7 @@ class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface,
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
-    public function addTmpFile($fldName, TempFile $file)
+    public function addTmpFile(string $fldName, TempFile $file)
     {
         if ($fldName === 'OriginalFile') {
             $this->setStatus('pending');

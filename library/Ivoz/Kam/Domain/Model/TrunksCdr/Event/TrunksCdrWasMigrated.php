@@ -6,7 +6,7 @@ use Ivoz\Core\Domain\Event\DomainEventTrait;
 use Ivoz\Core\Domain\Event\StoppableDomainEventInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 class TrunksCdrWasMigrated extends Event implements StoppableDomainEventInterface
 {

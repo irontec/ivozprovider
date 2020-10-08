@@ -35,7 +35,7 @@ interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInt
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
-    public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+    public function addTmpFile(string $fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
      * Get name

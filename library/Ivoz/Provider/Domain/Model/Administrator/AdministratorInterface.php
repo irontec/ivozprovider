@@ -163,21 +163,6 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getPassword(): string;
 
     /**
-     * @see AdvancedUserInterface::isAccountNonExpired()
-     */
-    public function isAccountNonExpired(): bool;
-
-    /**
-     * @see AdvancedUserInterface::isAccountNonLocked()
-     */
-    public function isAccountNonLocked(): bool;
-
-    /**
-     * @see AdvancedUserInterface::isCredentialsNonExpired()
-     */
-    public function isCredentialsNonExpired(): bool;
-
-    /**
      * @see AdvancedUserInterface::isEnabled()
      */
     public function isEnabled(): bool;

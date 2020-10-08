@@ -62,7 +62,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
-    public function addTmpFile($fldName, TempFile $file)
+    public function addTmpFile(string $fldName, TempFile $file)
     {
         if ($fldName === 'file') {
             $this->setStatus('waiting');

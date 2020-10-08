@@ -3,12 +3,12 @@
 namespace Ivoz\Provider\Domain\Model\User;
 
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
 
 /**
  * User
  */
-class User extends UserAbstract implements UserInterface, AdvancedUserInterface, \Serializable
+class User extends UserAbstract implements UserInterface, SymfonyUserInterface, \Serializable
 {
     use UserTrait;
     use UserSecurityTrait;

@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\User;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+
 trait UserSecurityTrait
 {
     abstract public function getEmail();
@@ -9,7 +11,7 @@ trait UserSecurityTrait
     abstract public function getActive(): bool;
 
     /**
-     * @see AdvancedUserInterface::getRoles()
+     * @see UserInterface::getRoles()
      */
     public function getRoles(): array
     {
@@ -19,7 +21,7 @@ trait UserSecurityTrait
     }
 
     /**
-     * @see AdvancedUserInterface::getUsername()
+     * @see UserInterface::getUsername()
      */
     public function getUsername(): string
     {
@@ -27,47 +29,20 @@ trait UserSecurityTrait
     }
 
     /**
-     * @see AdvancedUserInterface::getPassword()
+     * @see UserInterface::getPassword()
      */
     public function getPassword(): string
     {
         return $this->getPass();
     }
 
-    /**
-     * @see AdvancedUserInterface::isAccountNonExpired()
-     */
-    public function isAccountNonExpired(): bool
-    {
-        return true;
-    }
-
-    /**
-     * @see AdvancedUserInterface::isAccountNonLocked()
-     */
-    public function isAccountNonLocked(): bool
-    {
-        return true;
-    }
-
-    /**
-     * @see AdvancedUserInterface::isCredentialsNonExpired()
-     */
-    public function isCredentialsNonExpired(): bool
-    {
-        return true;
-    }
-
-    /**
-     * @see AdvancedUserInterface::isEnabled()
-     */
     public function isEnabled(): bool
     {
         return $this->getActive();
     }
 
     /**
-     * @see AdvancedUserInterface::getSalt()
+     * @see UserInterface::getSalt()
      */
     public function getSalt(): string
     {
@@ -75,7 +50,7 @@ trait UserSecurityTrait
     }
 
     /**
-     * @see AdvancedUserInterface::eraseCredentials()
+     * @see UserInterface::eraseCredentials()
      */
     public function eraseCredentials()
     {

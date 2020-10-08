@@ -90,7 +90,7 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
      *
      * @return void
      */
-    public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+    public function addTmpFile(string $fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
      * @param \Ivoz\Core\Domain\Service\TempFile $file

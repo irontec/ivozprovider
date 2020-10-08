@@ -59,7 +59,7 @@ class Locution extends LocutionAbstract implements FileContainerInterface, Locut
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
-    public function addTmpFile($fldName, TempFile $file)
+    public function addTmpFile(string $fldName, TempFile $file)
     {
         if ($fldName === 'OriginalFile') {
             $this->setStatus('pending');

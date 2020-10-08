@@ -7,6 +7,7 @@ use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 trait AdministratorSecurityTrait
 {
@@ -129,40 +130,13 @@ trait AdministratorSecurityTrait
     abstract public function getRelPublicEntities(Criteria $criteria = null): array;
 
     /**
-     * @see AdvancedUserInterface::getPassword()
+     * @see UserInterface::getPassword()
      */
     public function getPassword(): string
     {
         return $this->getPass();
     }
 
-    /**
-     * @see AdvancedUserInterface::isAccountNonExpired()
-     */
-    public function isAccountNonExpired(): bool
-    {
-        return true;
-    }
-
-    /**
-     * @see AdvancedUserInterface::isAccountNonLocked()
-     */
-    public function isAccountNonLocked(): bool
-    {
-        return true;
-    }
-
-    /**
-     * @see AdvancedUserInterface::isCredentialsNonExpired()
-     */
-    public function isCredentialsNonExpired(): bool
-    {
-        return true;
-    }
-
-    /**
-     * @see AdvancedUserInterface::isEnabled()
-     */
     public function isEnabled(): bool
     {
         $isInnerGlobalAdmin = ($this->getId() === 0);
@@ -174,7 +148,7 @@ trait AdministratorSecurityTrait
     }
 
     /**
-     * @see AdvancedUserInterface::getSalt()
+     * @see UserInterface::getSalt()
      */
     public function getSalt(): string
     {
@@ -182,7 +156,7 @@ trait AdministratorSecurityTrait
     }
 
     /**
-     * @see AdvancedUserInterface::eraseCredentials()
+     * @see UserInterface::eraseCredentials()
      */
     public function eraseCredentials()
     {
