@@ -1,0 +1,2 @@
+imports:
+  - { resource: "@ApiBundle/Resources/config/services/behat.yml" }
