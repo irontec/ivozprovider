@@ -5,7 +5,7 @@ namespace DataFixtures\ORM;
 use DataFixtures\Stub\Ast\VoicemailStub;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
 

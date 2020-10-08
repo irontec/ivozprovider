@@ -3,7 +3,7 @@
 namespace DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\Currency\Name;
 use Ivoz\Provider\Domain\Model\Currency\Currency;

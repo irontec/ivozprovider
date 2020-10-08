@@ -4,7 +4,7 @@ namespace DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity;
 use Ivoz\Provider\Domain\Model\PublicEntity\Name;

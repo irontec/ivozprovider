@@ -3,7 +3,7 @@
 namespace DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\Feature\Name;
