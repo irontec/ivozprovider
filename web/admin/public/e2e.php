@@ -5,7 +5,7 @@ require_once 'Zend/Registry.php';
 $loader = require __DIR__.'/../../rest/platform/vendor/autoload.php';
 
 putenv("APPLICATION_ENV=testing");
-$kernel = new AppKernel('test_e2e', false);
+$kernel = new Kernel('test_e2e', false);
 $kernel->boot();
 
 require 'zf.php';

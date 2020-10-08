@@ -3,10 +3,10 @@ require_once 'Zend/Registry.php';
 
 /** @var \Composer\Autoload\ClassLoader $loader */
 $loader = require __DIR__.'/../../rest/platform/vendor/autoload.php';
-Symfony\Component\Debug\Debug::enable();
+use Symfony\Component\ErrorHandler\Debug::enable();
 
-$kernel = new AppKernel('dev', true);
+$kernel = new Kernel('dev', true);
 $kernel->boot();
 
-putenv("APPLICATION_ENV=development");
+putenv("APP_ENV=development");
 require 'zf.php';
