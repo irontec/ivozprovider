@@ -81,6 +81,12 @@ abstract class FriendAbstract
     protected $updateCallerid = 'yes';
 
     /**
+     * column: from_user
+     * @var string | null
+     */
+    protected $fromUser;
+
+    /**
      * column: from_domain
      * @var string | null
      */
@@ -274,6 +280,7 @@ abstract class FriendAbstract
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
+            ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
@@ -313,6 +320,7 @@ abstract class FriendAbstract
             ->setDirectMediaMethod($dto->getDirectMediaMethod())
             ->setCalleridUpdateHeader($dto->getCalleridUpdateHeader())
             ->setUpdateCallerid($dto->getUpdateCallerid())
+            ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setDdiIn($dto->getDdiIn())
@@ -352,6 +360,7 @@ abstract class FriendAbstract
             ->setDirectMediaMethod(self::getDirectMediaMethod())
             ->setCalleridUpdateHeader(self::getCalleridUpdateHeader())
             ->setUpdateCallerid(self::getUpdateCallerid())
+            ->setFromUser(self::getFromUser())
             ->setFromDomain(self::getFromDomain())
             ->setDirectConnectivity(self::getDirectConnectivity())
             ->setDdiIn(self::getDdiIn())
@@ -385,6 +394,7 @@ abstract class FriendAbstract
             'direct_media_method' => self::getDirectMediaMethod(),
             'callerid_update_header' => self::getCalleridUpdateHeader(),
             'update_callerid' => self::getUpdateCallerid(),
+            'from_user' => self::getFromUser(),
             'from_domain' => self::getFromDomain(),
             'directConnectivity' => self::getDirectConnectivity(),
             'ddiIn' => self::getDdiIn(),
@@ -744,6 +754,34 @@ abstract class FriendAbstract
     public function getUpdateCallerid(): string
     {
         return $this->updateCallerid;
+    }
+
+    /**
+     * Set fromUser
+     *
+     * @param string $fromUser | null
+     *
+     * @return static
+     */
+    protected function setFromUser($fromUser = null)
+    {
+        if (!is_null($fromUser)) {
+            Assertion::maxLength($fromUser, 190, 'fromUser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->fromUser = $fromUser;
+
+        return $this;
+    }
+
+    /**
+     * Get fromUser
+     *
+     * @return string | null
+     */
+    public function getFromUser()
+    {
+        return $this->fromUser;
     }
 
     /**

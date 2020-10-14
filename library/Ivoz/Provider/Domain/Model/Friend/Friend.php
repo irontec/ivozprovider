@@ -78,6 +78,8 @@ class Friend extends FriendAbstract implements FriendInterface
             $this->setDdiIn(FriendInterface::DDIIN_YES);
             // Set From Domain from target company
             $this->setFromDomain($this->getInterCompany()->getDomainUsers());
+            // Empty From User
+            $this->setFromUser(null);
         } else {
             $this->setInterCompany(null);
         }
