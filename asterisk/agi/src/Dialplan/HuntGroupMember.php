@@ -6,6 +6,7 @@ use Agi\Action\ExternalNumberAction;
 use Agi\Action\UserCallAction;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
 use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser;
 use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
 use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserRepository;
@@ -74,6 +75,9 @@ class HuntGroupMember extends RouteHandlerAbstract
                 ->setAllowCallForwards($huntgroup->getAllowCallForwards())
                 ->process();
         } else {
+            if ($huntgroup->getStrategy() === HuntGroupInterface::STRATEGY_RINGALL) {
+                $this->agi->ringing();
+            }
             $this->externalNumberCallAction
                 ->setDestination($huntgroupsRelUser->getNumberValueE164())
                 ->process();
