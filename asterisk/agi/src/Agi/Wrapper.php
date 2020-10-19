@@ -153,6 +153,11 @@ class Wrapper
         return $this;
     }
 
+    public function ringing()
+    {
+        return $this->fastagi->exec("Ringing", "");
+    }
+
     /**
      *
      * @param LocutionInterface|null $locution
