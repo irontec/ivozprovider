@@ -24,7 +24,7 @@ class BrandDto extends BrandDtoAbstract
      *     description="Active feature ids"
      * )
      */
-    protected $featureIds = [];
+    protected $features = [];
 
     public function getFileObjects()
     {
@@ -94,7 +94,7 @@ class BrandDto extends BrandDtoAbstract
         );
 
         if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
-            $response['features'] = $this->featureIds;
+            $response['features'] = $this->features;
         }
 
         return $response;
@@ -130,7 +130,7 @@ class BrandDto extends BrandDtoAbstract
      */
     public function setFeatures(array $featureIds)
     {
-        $this->featureIds = $featureIds;
+        $this->features = $featureIds;
 
         $relFeatures = [];
         foreach ($featureIds as $id) {
