@@ -2,11 +2,11 @@ Source: ivozprovider
 Section: php
 Priority: optional
 Build-Depends: debhelper, dh-systemd,
-    nodejs, ruby-compass, git, openssh-client, curl, php7.0,
+    nodejs, compass-blueprint-plugin, git, openssh-client, curl, php7.4,
     python, make, python-sphinx-rtd-theme, gettext,
     python-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
     libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8), composer,
-    php7.0-mbstring, php7.0-xml, php7.0-zip, php-mailparse, php-gearman
+    php7.4-mbstring, php7.4-xml, php7.4-zip, php-mailparse, php-gearman
 Standards-Version: 3.9.6
 Maintainer: Irontec IvozProvider Team <ivozprovider@irontec.com>
 
@@ -51,7 +51,7 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-asterisk-config (=${binary:Version}),
     ivozprovider-asterisk-sounds,
     ivozprovider-asterisk,
-    php7.0-igbinary,
+    php7.4-igbinary,
     php-gearman,
     sngrep,
     ghostscript,
@@ -89,14 +89,14 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     ssl-cert,
     ghostscript,
     php-gearman,
-    php7.0,
+    php7.4,
     php-igbinary,
-    php7.0-mysql,
+    php7.4-mysql,
     php-imagick,
-    php7.0-mbstring,
-    php7.0-curl,
+    php7.4-mbstring,
+    php7.4-curl,
     php-yaml,
-    php7.0-gd,
+    php7.4-gd,
     php-zip,
     ivozprovider-web-admin (=${binary:Version}),
     ivozprovider-web-user (=${binary:Version}),
@@ -188,7 +188,7 @@ Package: ivozprovider-schema
 Architecture: all
 Section: database
 Priority: optional
-Pre-Depends: ivozprovider-common-library (=${binary:Version}), bind9, php7.0-mysql, php7.0-xml, mysql-server
+Pre-Depends: ivozprovider-common-library (=${binary:Version}), bind9, php7.4-mysql, php7.4-xml, mysql-server
 Conflicts: ivozprovider-scheme
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
@@ -220,7 +220,7 @@ Package: ivozprovider-web-rest
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), apache2, libapache2-mod-php7.0
+Depends: ivozprovider-common-library (=${binary:Version}), apache2, libapache2-mod-php7.4
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Rest API files
  .
@@ -228,7 +228,7 @@ Description: IVOZ Provider - Rest API files
 Package: ivozprovider-common-library
 Architecture: all
 Section: php
-Depends: php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, acl, klear-library, php-mailparse, php7.0-intl
+Depends: php7.4-cli, php7.4-mysql, php7.4-mbstring, php7.4-xml, acl, klear-library, php-mailparse, php7.4-intl
 Provides: ivozprovider-data-library
 Conflicts: ivozprovider-data-library
 Priority: optional
@@ -273,7 +273,7 @@ Description: IVOZ Provider - Rating updater - Symfony microservice
 Package: ivozprovider-realtime
 Architecture: all
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), php-redis, php-swoole
+Depends: ivozprovider-common-library (=${binary:Version}), php-redis, php7.4-swoole
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Realtime Websocket server - Symfony microservice
   .
