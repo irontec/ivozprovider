@@ -114,7 +114,7 @@ class Encoder
         // Check each recording file
         foreach ($files as $filename) {
             // Store valid files
-            if (preg_match("/(.*)-\w+-mix.wav/", $filename, $matches)) {
+            if (preg_match("/\w+-\w+-(.*)-\w+-mix.wav/", $filename, $matches)) {
                 $file = $matches[0];
                 $callid = urldecode($matches[1]);
             } else {
