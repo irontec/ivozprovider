@@ -83,23 +83,6 @@ pipeline {
                         failure { notifyFailureGithub() }
                     }
                 }
-                stage ('api-client') {
-                    agent {
-                        docker {
-                            image 'ironartemis/ivozprovider-testing-base'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
-                            reuseNode true
-                        }
-                    }
-                    steps {
-                        sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api-spec'
-                        sh '/opt/irontec/ivozprovider/web/rest/client/bin/test-api --skip-db'
-                    }
-                    post {
-                        success { notifySuccessGithub() }
-                        failure { notifyFailureGithub() }
-                    }
-                }
             }
         }
     }
