@@ -50,11 +50,11 @@ class BalanceNotification extends BalanceNotificationAbstract implements Balance
         }
 
         $company = $this->getCompany();
-        $language = $company
-            ? $company->getLanguage()
-            : null;
+        if (!$company) {
+            return null;
+        }
 
-        return $language;
+        return $company->getLanguage();
     }
 
     /**

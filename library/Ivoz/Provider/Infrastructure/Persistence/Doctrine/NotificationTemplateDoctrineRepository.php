@@ -38,7 +38,8 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
             ? $company->getLanguage()
             : $brand->getLanguage();
 
-        if ($template
+        if (
+            $template
             && $template->getContentsByLanguage($language)
         ) {
             return $template;
@@ -89,7 +90,8 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
         $language = $company->getLanguage();
         $invoiceNotificationTemplate = $company->getInvoiceNotificationTemplate();
 
-        if ($invoiceNotificationTemplate
+        if (
+            $invoiceNotificationTemplate
             && $invoiceNotificationTemplate->getContentsByLanguage($language)
         ) {
             return $invoiceNotificationTemplate;
@@ -151,13 +153,9 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
         }
 
         $language = $company->getLanguage();
-        if (!$language) {
-            $language = $company
-                ->getBrand()
-                ->getLanguage();
-        }
 
-        if ($notificationTemplate
+        if (
+            $notificationTemplate
             && $notificationTemplate->getContentsByLanguage($language)
         ) {
             return $notificationTemplate;
