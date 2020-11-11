@@ -6,6 +6,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Model\Mailer\Message;
 use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotification;
 use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotificationDto;
 use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotificationRepository;
@@ -25,7 +26,8 @@ class NotifyMaxDailyUsage
      */
     public function send(
         CompanyInterface $company,
-        NotificationTemplateInterface $notificationTemplate
+        NotificationTemplateInterface $notificationTemplate,
+        LanguageInterface $language
     ) {
         /** @var MaxUsageNotification | null $maxUsageNotification */
         $maxUsageNotification = $this
@@ -38,7 +40,8 @@ class NotifyMaxDailyUsage
             : new MaxUsageNotificationDto();
 
         $language = $company->getLanguage();
-        $notificationTemplateContent = $notificationTemplate->getContentsByLanguage($language);
+        $notificationTemplateContent = $notificationTemplate
+            ->getContentsByLanguage($language);
 
         $subject = $this->parseNotificationSubject(
             $notificationTemplateContent->getSubject(),

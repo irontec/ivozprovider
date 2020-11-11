@@ -51,18 +51,16 @@ class SearchBrokenMaxDailyUsage implements CompanyLifecycleEventHandlerInterface
             return;
         }
 
-        $notificationTemplate = $company->getMaxDailyUsageNotificationTemplate();
-        if (!$notificationTemplate) {
-            $notificationTemplate = $company
+        $language = $company->getLanguage();
+        if (!$language) {
+            $language = $company
                 ->getBrand()
-                ->getMaxDailyUsageNotificationTemplate();
+                ->getLanguage();
         }
 
-        if (!$notificationTemplate) {
-            $notificationTemplate = $this
-                ->notificationTemplateRepository
-                ->findGenericMaxDailyUsageTemplate();
-        }
+        $notificationTemplate = $this
+            ->notificationTemplateRepository
+            ->findMaxDailyUsageTemplateByCompany($company);
 
         if (!$notificationTemplate) {
             return;
@@ -72,7 +70,8 @@ class SearchBrokenMaxDailyUsage implements CompanyLifecycleEventHandlerInterface
             ->notifyMaxDailyUsage
             ->send(
                 $company,
-                $notificationTemplate
+                $notificationTemplate,
+                $language
             );
     }
 }
