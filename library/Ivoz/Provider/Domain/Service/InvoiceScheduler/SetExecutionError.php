@@ -29,13 +29,13 @@ class SetExecutionError
 
     /**
      * @param InvoiceSchedulerInterface $scheduler
-     * @param string $error
+     * @param string $error | null
      *
      * @return void
      */
     public function execute(
         InvoiceSchedulerInterface $scheduler,
-        string $error
+        $error = null
     ) {
         /** @var InvoiceSchedulerDto $invoiceSchedulerDto */
         $invoiceSchedulerDto = $this
