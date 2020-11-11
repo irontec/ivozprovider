@@ -35,8 +35,7 @@ class UpdateLastExecutionDate
                     null,
                     new \DateTimeZone('UTC')
                 )
-            )
-            ->setLastExecutionError('');
+            );
 
         $this->entityTools->persistDto(
             $invoiceSchedulerDto,
