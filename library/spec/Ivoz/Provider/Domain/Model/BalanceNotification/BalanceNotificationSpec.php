@@ -88,13 +88,6 @@ class BalanceNotificationSpec extends ObjectBehavior
             ->shouldReturn(null);
     }
 
-    function it_may_return_empty_language()
-    {
-        $this
-            ->getLanguage()
-            ->shouldReturn(null);
-    }
-
     function it_resolves_language_through_carrier()
     {
         $brand = $this->getTestDouble(Brand::class);
