@@ -72,7 +72,7 @@ When **editing** a client, these additional fields can be configured:
 
     Invoice data
         All the fields in this group will be included in invoices generated for this client. This section also allows
-        displaying invoices list in client's portal menu so they can download them.
+        showing/hiding billing details to client's portal, such as Invoices, Rating Profiles and Price of external calls.
 
     Routing tags
         This field allows enabling routing tags for this specific client. Call preceded with this

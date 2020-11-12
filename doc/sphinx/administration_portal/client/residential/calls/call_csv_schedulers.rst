@@ -77,7 +77,7 @@ These are the fields of the generated CSV files:
         Callee number in E.164 format (with '+')
 
     price
-        Calculated price for the given call
+        Calculated price for the given call (empty if *Display billing details to client* is disabled)
 
     direction
         Possible values: inbound, outbound.

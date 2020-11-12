@@ -102,7 +102,7 @@ When **editing** a client, these additional fields can be configured:
 
     Invoice data
         All the fields in this group will be included in invoices generated for this client. This section also allows
-        displaying invoices list in client's portal menu so they can download them.
+        showing/hiding billing details to client's portal, such as Invoices, Rating Profiles and Price of external calls.
 
     Outgoing DDI
         Fallback DDI for external outgoing calls (can be overridden at residential device level).
