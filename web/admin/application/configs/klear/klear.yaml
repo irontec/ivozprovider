@@ -254,7 +254,7 @@ production:
               description: _("List of %s", ngettext('External call', 'External calls', 0))
               class: ui-silk-application-view-list-world
             CallCsvSchedulersBrandList:
-              title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 1)
+              title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 0)
               class: ui-silk-application-view-list-schedule
               description: _("List of %s", ngettext('Call CSV scheduler', 'Call CSV schedulers', 0))
         Settings:
