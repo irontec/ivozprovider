@@ -43,7 +43,8 @@ class User extends \Klear_Model_UserAdvanced
     public $companyNotWholesale = true;
     public $companyRetail = false;
     public $companyNotRetail = true;
-    public $companyInvoices = false;
+    public $companyShowBilling = false;
+    public $companyHideBilling = true;
     public $companyRecordingRemoval = true;
 
     public $acls = [];
@@ -123,7 +124,8 @@ class User extends \Klear_Model_UserAdvanced
         $this->companyNotWholesale = $company->getType() != CompanyInterface::TYPE_WHOLESALE;
         $this->companyRetail = $company->getType() === CompanyInterface::TYPE_RETAIL;
         $this->companyNotRetail = $company->getType() != CompanyInterface::TYPE_RETAIL;
-        $this->companyInvoices = $company->getShowInvoices() == 1;
+        $this->companyShowBilling = $company->getShowInvoices() == 1;
+        $this->companyHideBilling = $company->getShowInvoices() == 0;
         $this->companyRecordingRemoval = $company->getAllowRecordingRemoval() !== false;
     }
 
