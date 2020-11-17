@@ -65,7 +65,7 @@ These are the configurable settings of *Residential devices*:
 
     Fallback Outgoing DDI
         External calls from this *residential device* will be presented with this DDI, **unless
-        the source presented matches a DDI belonging to the residential device**.
+        the source presented matches a DDI belonging to the residential client**.
 
     Allowed codec
         Like vPBX terminals, *residential devices* will talk only the selected codec.

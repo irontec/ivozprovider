@@ -62,7 +62,7 @@ These are the configurable settings of *Retail accounts*:
 
     Fallback Outgoing DDI
         External calls from this *retail account* will be presented with this DDI, **unless
-        the source presented matches a DDI belonging to the retail account**.
+        the source presented matches a DDI belonging to the retail client**.
 
     From domain
         Request from IvozProvider to this account will include this domain in
