@@ -22,7 +22,7 @@ Thu, 19 Nov 2020 12:35:13 +0100  IvozProvider Team <vozip+ivozprovider@irontec.c
         - Show only currently anti brute-force banned addresses
         - New +800 prefix for IUPN
 
-Web, 14 Oct 2020 09:59:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Wed, 14 Oct 2020 09:59:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.16.1 released
 
@@ -40,7 +40,7 @@ Web, 14 Oct 2020 09:59:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.c
         - Allow using brand level matchlists to clients
         - Show endpointName in BillableCalls view screen
 
-Web, 09 Sep 2020 09:49:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Wed, 09 Sep 2020 09:49:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.16.0 released
 
@@ -92,7 +92,7 @@ Web, 09 Sep 2020 09:49:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.c
         - Fixed client generic invoice template deletion
         - Added failure reason to price CSV importer
 
-Web, 10 Jun 2020 11:27:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Wed, 10 Jun 2020 11:27:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.15.2 released
 
@@ -125,7 +125,7 @@ Web, 10 Jun 2020 11:27:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.c
         - New Carrier / CarrierServer status icon
         - Fixed emulations issues
 
-Web, 12 May 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Tue, 12 May 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.15.1 released
 
@@ -152,7 +152,7 @@ Web, 12 May 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.c
         - New realtime calls filter form
         - Several realtime bug fixes
 
-Web, 08 Apr 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Wed, 08 Apr 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.15.0 released
 
@@ -194,7 +194,7 @@ Web, 08 Apr 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.c
         - Maximun items per page increased from 500 to 5k on client API and from 500 to 10k on brand and platform APIs.
         - Optimized memory usage on unpaginated API requests, especially with JSON response format
 
-Web, 05 Feb 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Wed, 05 Feb 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.14.1 released
 
