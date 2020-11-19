@@ -44,6 +44,7 @@ production:
           endpointType: true
           endpointId: true
           endpointName: true
+          price: ${auth.companyHideBilling}
         order:
           startTime: true
           direction: true
@@ -74,6 +75,9 @@ production:
           ddiProvider: true
           invoice: true
           cost: true
+          price: ${auth.companyHideBilling}
+          ratingPlanName: ${auth.companyHideBilling}
+          destinationName: ${auth.companyHideBilling}
         order:
           startTime: true
           duration: true

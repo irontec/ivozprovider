@@ -1,6 +1,0 @@
-[Unit]
-Description=Ivozprovider Realtime Event publisher
-
-[Service]
-User=root
-ExecStart=/opt/irontec/ivozprovider/microservices/realtime/bin/run

@@ -1,3 +1,27 @@
+Thu, 19 Nov 2020 12:35:13 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.16.2 released
+
+    * Core
+        - Fix invoice scheduler error message
+
+    * Proxies
+        - Antiflooding redesign
+        - Avoid inactivating gateways used in stopper rules
+        - Block basic SQL injection
+        - Reduce amount of log messages
+        - Ignore wrong Diversion headers from UACs
+        - Fix recording issues
+        - Fix R-URI correction mechanism in retail/wholesale to retail calls
+
+    * vPBX
+        - Add fake ringing for external ringall huntgroups
+
+    * Portals
+        - Hide/Show billing details to clients
+        - Show only currently anti brute-force banned addresses
+        - New +800 prefix for IUPN
+
 Web, 14 Oct 2020 09:59:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.16.1 released

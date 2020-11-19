@@ -13,4 +13,4 @@ Sections in this group list read-only handy information for brand operators:
     residential_devices
     users
     ipfilter_blocked_addresses
-    antibruteforce_blocked_aors
+    bruteforce_attacks

@@ -53,3 +53,27 @@ services:
   Controller\Provider\:
     resource: '../src/Controller/Provider/*'
     tags: ['controller.service_arguments']
+
+  #######################################
+  ## API Normalizers
+  #######################################
+  billable_call_normalizer.json:
+    class: 'Service\BillableCallNormalizer'
+    decorates: 'Ivoz\Api\Json\Serializer\Normalizer\EntityNormalizer'
+    decoration_priority: 1
+    arguments:
+      $decoratedNormalizer: '@billable_call_normalizer.json.inner'
+
+  billable_call_normalizer.jsonld:
+    class: 'Service\BillableCallNormalizer'
+    decorates: 'Ivoz\Api\JsonLd\Serializer\Normalizer\EntityNormalizer'
+    decoration_priority: 1
+    arguments:
+      $decoratedNormalizer: '@billable_call_normalizer.jsonld.inner'
+
+  billable_call_normalizer.csv:
+    class: 'Service\BillableCallNormalizer'
+    decorates: 'Ivoz\Api\Csv\Serializer\Normalizer\EntityNormalizer'
+    decoration_priority: 1
+    arguments:
+      $decoratedNormalizer: '@billable_call_normalizer.csv.inner'

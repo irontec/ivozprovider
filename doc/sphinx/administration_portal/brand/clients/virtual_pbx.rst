@@ -48,8 +48,8 @@ that require feature-full call flows.
         avoid notification.
 
     Invoice data
-        Data included in invoices created by this brand. This section also allows displaying invoices list in
-        client's portal menu so they can download them.
+        Data included in invoices created by this brand. This section also allows showing/hiding billing details to
+        client's portal, such as Invoices, Rating Profiles and Price of external calls.
 
     Notifications
         Configure the email :ref:`notification templates` to use for this client.
