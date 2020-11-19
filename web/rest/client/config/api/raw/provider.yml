@@ -2,6 +2,7 @@
 ## Raw
 ########################################
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
+  # custom normalizer: Service\BillableCallNormalizer
   itemOperations:
     get: ~
   collectionOperations:
@@ -1380,6 +1381,7 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
       "ROLE_COMPANY_ADMIN" in roles
       && user.brandHasFeature('billing')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+      && user.getCompany().getShowInvoices()
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:

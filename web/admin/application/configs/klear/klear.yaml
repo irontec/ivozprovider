@@ -490,12 +490,12 @@ production:
           title: ngettext('Rating Profile', 'Rating Profiles', 0)
           class: ui-silk-money
           description: _("List of %s", ngettext('Rating Profile', 'Rating Profiles', 0))
-          showOnlyIf: $[${auth.brandFeatures.billing.enabled} && ${auth.acls.RatingProfiles.read}]
+          showOnlyIf: $[${auth.companyShowBilling} && ${auth.brandFeatures.billing.enabled} && ${auth.acls.RatingProfiles.read}]
         CompanyInvoicesList:
           title: ngettext('Invoice', 'Invoices', 0)
           class: ui-silk-report
           description: _("List of %s", ngettext('Invoice', 'Invoices', 0))
-          showOnlyIf: $[${auth.companyInvoices} && ${auth.acls.Invoices.read}]
+          showOnlyIf: $[${auth.companyShowBilling} && ${auth.acls.Invoices.read}]
         CallListsClient:
           title: _("Calls")
           class: ui-silk-application-view-list-telephone

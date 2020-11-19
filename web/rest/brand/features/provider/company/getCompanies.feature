@@ -68,7 +68,7 @@ Feature: Retrieve companies
           "externallyextraopts": "",
           "billingMethod": "prepaid",
           "balance": 1.2,
-          "showInvoices": false,
+          "showInvoices": true,
           "id": 1,
           "language": {
               "iden": "es",

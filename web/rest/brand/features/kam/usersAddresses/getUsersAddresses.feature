@@ -23,7 +23,7 @@ Feature: Retrieve Users addresses
       ]
     """
 
-  Scenario: Retrieve certain administrator json
+  Scenario: Retrieve certain users addresses json
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "users_addresses/1"
@@ -36,35 +36,6 @@ Feature: Retrieve Users addresses
           "sourceAddress": "127.0.0.1",
           "description": "Irontec HQ",
           "id": 1,
-          "company": {
-              "type": "vpbx",
-              "name": "DemoCompany",
-              "domainUsers": "127.0.0.1",
-              "nif": "12345678A",
-              "maxCalls": 0,
-              "postalAddress": "Company Address",
-              "postalCode": "54321",
-              "town": "Company Town",
-              "province": "Company Province",
-              "countryName": "Company Country",
-              "ipfilter": false,
-              "onDemandRecord": 0,
-              "onDemandRecordCode": "",
-              "externallyextraopts": "",
-              "billingMethod": "prepaid",
-              "balance": 1.2,
-              "showInvoices": false,
-              "id": 1,
-              "language": 1,
-              "defaultTimezone": 145,
-              "country": 68,
-              "currency": null,
-              "transformationRuleSet": 1,
-              "outgoingDdi": null,
-              "voicemailNotificationTemplate": 1,
-              "faxNotificationTemplate": null,
-              "invoiceNotificationTemplate": null,
-              "callCsvNotificationTemplate": null
-          }
+          "company": "~"
       }
     """

@@ -44,6 +44,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setMaxDailyUsageEmail('no-replay@domain.net');
             $this->setMaxDailyUsage(2);
             $this->setCurrentDayUsage(1);
+            $this->setShowInvoices(true);
             $this->setMaxDailyUsageNotificationTemplate(
                 $fixture->getReference('_reference_ProviderNotificationTemplate2')
             );
