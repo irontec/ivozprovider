@@ -1,27 +1,29 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
- * AdministratorTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait AdministratorTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * AdministratorRelPublicEntityInterface mappedBy administrator
      */
     protected $relPublicEntities;
-
 
     /**
      * Constructor
@@ -38,12 +40,12 @@ trait AdministratorTrait
      * Factory method
      * @internal use EntityTools instead
      * @param AdministratorDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -54,6 +56,7 @@ trait AdministratorTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -66,12 +69,12 @@ trait AdministratorTrait
     /**
      * @internal use EntityTools instead
      * @param AdministratorDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getRelPublicEntities())) {
@@ -107,14 +110,15 @@ trait AdministratorTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add relPublicEntity
      *
-     * @param \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity
+     * @param AdministratorRelPublicEntityInterface $relPublicEntity
      *
      * @return static
      */
-    public function addRelPublicEntity(\Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity)
+    public function addRelPublicEntity(AdministratorRelPublicEntityInterface $relPublicEntity): AdministratorInterface
     {
         $this->relPublicEntities->add($relPublicEntity);
 
@@ -124,20 +128,25 @@ trait AdministratorTrait
     /**
      * Remove relPublicEntity
      *
-     * @param \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity
+     * @param AdministratorRelPublicEntityInterface $relPublicEntity
+     *
+     * @return static
      */
-    public function removeRelPublicEntity(\Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity)
+    public function removeRelPublicEntity(AdministratorRelPublicEntityInterface $relPublicEntity): AdministratorInterface
     {
         $this->relPublicEntities->removeElement($relPublicEntity);
+
+        return $this;
     }
 
     /**
      * Replace relPublicEntities
      *
-     * @param ArrayCollection $relPublicEntities of Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface
+     * @param ArrayCollection $relPublicEntities of AdministratorRelPublicEntityInterface
+     *
      * @return static
      */
-    public function replaceRelPublicEntities(ArrayCollection $relPublicEntities)
+    public function replaceRelPublicEntities(ArrayCollection $relPublicEntities): AdministratorInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,9 +177,9 @@ trait AdministratorTrait
     /**
      * Get relPublicEntities
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface[]
+     * @return AdministratorRelPublicEntityInterface[]
      */
-    public function getRelPublicEntities(Criteria $criteria = null)
+    public function getRelPublicEntities(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->relPublicEntities->matching($criteria)->toArray();
@@ -178,4 +187,5 @@ trait AdministratorTrait
 
         return $this->relPublicEntities->toArray();
     }
+
 }

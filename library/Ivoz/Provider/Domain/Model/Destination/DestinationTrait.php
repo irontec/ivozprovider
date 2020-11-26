@@ -1,27 +1,36 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Destination;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 
 /**
- * DestinationTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait DestinationTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * DestinationRateInterface mappedBy destination
      */
     protected $destinationRates;
 
+    /**
+     * @var TpDestinationInterface
+     * mappedBy destination
+     */
+    protected $tpDestination;
 
     /**
      * Constructor
@@ -38,12 +47,12 @@ trait DestinationTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DestinationDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -54,6 +63,15 @@ trait DestinationTrait
                 )
             );
         }
+
+        if (!is_null($dto->getTpDestination())) {
+            $self->setTpDestination(
+                $fkTransformer->transform(
+                    $dto->getTpDestination()
+                )
+            );
+        }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -66,18 +84,26 @@ trait DestinationTrait
     /**
      * @internal use EntityTools instead
      * @param DestinationDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getDestinationRates())) {
             $this->replaceDestinationRates(
                 $fkTransformer->transformCollection(
                     $dto->getDestinationRates()
+                )
+            );
+        }
+
+        if (!is_null($dto->getTpDestination())) {
+            $this->setTpDestination(
+                $fkTransformer->transform(
+                    $dto->getTpDestination()
                 )
             );
         }
@@ -107,14 +133,15 @@ trait DestinationTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add destinationRate
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param DestinationRateInterface $destinationRate
      *
      * @return static
      */
-    public function addDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate)
+    public function addDestinationRate(DestinationRateInterface $destinationRate): DestinationInterface
     {
         $this->destinationRates->add($destinationRate);
 
@@ -124,20 +151,25 @@ trait DestinationTrait
     /**
      * Remove destinationRate
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param DestinationRateInterface $destinationRate
+     *
+     * @return static
      */
-    public function removeDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate)
+    public function removeDestinationRate(DestinationRateInterface $destinationRate): DestinationInterface
     {
         $this->destinationRates->removeElement($destinationRate);
+
+        return $this;
     }
 
     /**
      * Replace destinationRates
      *
-     * @param ArrayCollection $destinationRates of Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
+     * @param ArrayCollection $destinationRates of DestinationRateInterface
+     *
      * @return static
      */
-    public function replaceDestinationRates(ArrayCollection $destinationRates)
+    public function replaceDestinationRates(ArrayCollection $destinationRates): DestinationInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,9 +200,9 @@ trait DestinationTrait
     /**
      * Get destinationRates
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface[]
+     * @return DestinationRateInterface[]
      */
-    public function getDestinationRates(Criteria $criteria = null)
+    public function getDestinationRates(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->destinationRates->matching($criteria)->toArray();
@@ -178,4 +210,25 @@ trait DestinationTrait
 
         return $this->destinationRates->toArray();
     }
+
+    /**
+     * @var TpDestinationInterface
+     * mappedBy destination
+     */
+    public function setTpDestination(TpDestinationInterface $tpDestination): DestinationInterface
+    {
+        $this->tpDestination = $tpDestination;
+
+        return $this;
+    }
+
+    /**
+     * Get tpDestination
+     * @return TpDestinationInterface
+     */
+    public function getTpDestination(): ?TpDestinationInterface
+    {
+        return $this->tpDestination;
+    }
+
 }

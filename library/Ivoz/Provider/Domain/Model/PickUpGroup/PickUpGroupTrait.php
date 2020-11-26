@@ -1,27 +1,30 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\PickUpGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
- * PickUpGroupTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait PickUpGroupTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * PickUpRelUserInterface mappedBy pickUpGroup
+     * orphanRemoval
      */
     protected $relUsers;
-
 
     /**
      * Constructor
@@ -38,12 +41,12 @@ trait PickUpGroupTrait
      * Factory method
      * @internal use EntityTools instead
      * @param PickUpGroupDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -54,6 +57,7 @@ trait PickUpGroupTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -66,12 +70,12 @@ trait PickUpGroupTrait
     /**
      * @internal use EntityTools instead
      * @param PickUpGroupDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getRelUsers())) {
@@ -107,14 +111,15 @@ trait PickUpGroupTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add relUser
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $relUser
+     * @param PickUpRelUserInterface $relUser
      *
      * @return static
      */
-    public function addRelUser(\Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $relUser)
+    public function addRelUser(PickUpRelUserInterface $relUser): PickUpGroupInterface
     {
         $this->relUsers->add($relUser);
 
@@ -124,20 +129,25 @@ trait PickUpGroupTrait
     /**
      * Remove relUser
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $relUser
+     * @param PickUpRelUserInterface $relUser
+     *
+     * @return static
      */
-    public function removeRelUser(\Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $relUser)
+    public function removeRelUser(PickUpRelUserInterface $relUser): PickUpGroupInterface
     {
         $this->relUsers->removeElement($relUser);
+
+        return $this;
     }
 
     /**
      * Replace relUsers
      *
-     * @param ArrayCollection $relUsers of Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface
+     * @param ArrayCollection $relUsers of PickUpRelUserInterface
+     *
      * @return static
      */
-    public function replaceRelUsers(ArrayCollection $relUsers)
+    public function replaceRelUsers(ArrayCollection $relUsers): PickUpGroupInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,9 +178,9 @@ trait PickUpGroupTrait
     /**
      * Get relUsers
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[]
+     * @return PickUpRelUserInterface[]
      */
-    public function getRelUsers(Criteria $criteria = null)
+    public function getRelUsers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->relUsers->matching($criteria)->toArray();
@@ -178,4 +188,5 @@ trait PickUpGroupTrait
 
         return $this->relUsers->toArray();
     }
+
 }

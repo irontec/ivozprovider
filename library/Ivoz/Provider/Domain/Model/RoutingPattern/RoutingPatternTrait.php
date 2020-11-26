@@ -1,37 +1,44 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\RoutingPattern;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 
 /**
- * RoutingPatternTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait RoutingPatternTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * OutgoingRoutingInterface mappedBy routingPattern
      */
     protected $outgoingRoutings;
 
     /**
      * @var ArrayCollection
+     * RoutingPatternGroupsRelPatternInterface mappedBy routingPattern
+     * orphanRemoval
      */
     protected $relPatternGroups;
 
     /**
      * @var ArrayCollection
+     * TrunksLcrRuleInterface mappedBy routingPattern
      */
     protected $lcrRules;
-
 
     /**
      * Constructor
@@ -50,12 +57,12 @@ trait RoutingPatternTrait
      * Factory method
      * @internal use EntityTools instead
      * @param RoutingPatternDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -82,6 +89,7 @@ trait RoutingPatternTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -94,12 +102,12 @@ trait RoutingPatternTrait
     /**
      * @internal use EntityTools instead
      * @param RoutingPatternDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getOutgoingRoutings())) {
@@ -109,6 +117,7 @@ trait RoutingPatternTrait
                 )
             );
         }
+
         if (!is_null($dto->getRelPatternGroups())) {
             $this->replaceRelPatternGroups(
                 $fkTransformer->transformCollection(
@@ -116,6 +125,7 @@ trait RoutingPatternTrait
                 )
             );
         }
+
         if (!is_null($dto->getLcrRules())) {
             $this->replaceLcrRules(
                 $fkTransformer->transformCollection(
@@ -149,14 +159,15 @@ trait RoutingPatternTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param OutgoingRoutingInterface $outgoingRouting
      *
      * @return static
      */
-    public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
+    public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingPatternInterface
     {
         $this->outgoingRoutings->add($outgoingRouting);
 
@@ -166,20 +177,25 @@ trait RoutingPatternTrait
     /**
      * Remove outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param OutgoingRoutingInterface $outgoingRouting
+     *
+     * @return static
      */
-    public function removeOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
+    public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingPatternInterface
     {
         $this->outgoingRoutings->removeElement($outgoingRouting);
+
+        return $this;
     }
 
     /**
      * Replace outgoingRoutings
      *
-     * @param ArrayCollection $outgoingRoutings of Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @param ArrayCollection $outgoingRoutings of OutgoingRoutingInterface
+     *
      * @return static
      */
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings)
+    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingPatternInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -210,9 +226,9 @@ trait RoutingPatternTrait
     /**
      * Get outgoingRoutings
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
+     * @return OutgoingRoutingInterface[]
      */
-    public function getOutgoingRoutings(Criteria $criteria = null)
+    public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->outgoingRoutings->matching($criteria)->toArray();
@@ -224,11 +240,11 @@ trait RoutingPatternTrait
     /**
      * Add relPatternGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup
+     * @param RoutingPatternGroupsRelPatternInterface $relPatternGroup
      *
      * @return static
      */
-    public function addRelPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup)
+    public function addRelPatternGroup(RoutingPatternGroupsRelPatternInterface $relPatternGroup): RoutingPatternInterface
     {
         $this->relPatternGroups->add($relPatternGroup);
 
@@ -238,20 +254,25 @@ trait RoutingPatternTrait
     /**
      * Remove relPatternGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup
+     * @param RoutingPatternGroupsRelPatternInterface $relPatternGroup
+     *
+     * @return static
      */
-    public function removeRelPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup)
+    public function removeRelPatternGroup(RoutingPatternGroupsRelPatternInterface $relPatternGroup): RoutingPatternInterface
     {
         $this->relPatternGroups->removeElement($relPatternGroup);
+
+        return $this;
     }
 
     /**
      * Replace relPatternGroups
      *
-     * @param ArrayCollection $relPatternGroups of Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
+     * @param ArrayCollection $relPatternGroups of RoutingPatternGroupsRelPatternInterface
+     *
      * @return static
      */
-    public function replaceRelPatternGroups(ArrayCollection $relPatternGroups)
+    public function replaceRelPatternGroups(ArrayCollection $relPatternGroups): RoutingPatternInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -282,9 +303,9 @@ trait RoutingPatternTrait
     /**
      * Get relPatternGroups
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[]
+     * @return RoutingPatternGroupsRelPatternInterface[]
      */
-    public function getRelPatternGroups(Criteria $criteria = null)
+    public function getRelPatternGroups(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->relPatternGroups->matching($criteria)->toArray();
@@ -296,11 +317,11 @@ trait RoutingPatternTrait
     /**
      * Add lcrRule
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
+     * @param TrunksLcrRuleInterface $lcrRule
      *
      * @return static
      */
-    public function addLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule)
+    public function addLcrRule(TrunksLcrRuleInterface $lcrRule): RoutingPatternInterface
     {
         $this->lcrRules->add($lcrRule);
 
@@ -310,20 +331,25 @@ trait RoutingPatternTrait
     /**
      * Remove lcrRule
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
+     * @param TrunksLcrRuleInterface $lcrRule
+     *
+     * @return static
      */
-    public function removeLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule)
+    public function removeLcrRule(TrunksLcrRuleInterface $lcrRule): RoutingPatternInterface
     {
         $this->lcrRules->removeElement($lcrRule);
+
+        return $this;
     }
 
     /**
      * Replace lcrRules
      *
-     * @param ArrayCollection $lcrRules of Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
+     * @param ArrayCollection $lcrRules of TrunksLcrRuleInterface
+     *
      * @return static
      */
-    public function replaceLcrRules(ArrayCollection $lcrRules)
+    public function replaceLcrRules(ArrayCollection $lcrRules): RoutingPatternInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -354,9 +380,9 @@ trait RoutingPatternTrait
     /**
      * Get lcrRules
      * @param Criteria | null $criteria
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[]
+     * @return TrunksLcrRuleInterface[]
      */
-    public function getLcrRules(Criteria $criteria = null)
+    public function getLcrRules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->lcrRules->matching($criteria)->toArray();
@@ -364,4 +390,5 @@ trait RoutingPatternTrait
 
         return $this->lcrRules->toArray();
     }
+
 }

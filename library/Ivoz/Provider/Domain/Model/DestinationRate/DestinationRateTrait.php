@@ -1,20 +1,34 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\DestinationRate;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface;
+use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
 
 /**
- * DestinationRateTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait DestinationRateTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
+    /**
+     * @var TpRateInterface
+     * mappedBy destinationRate
+     */
+    protected $tpRate;
+
+    /**
+     * @var TpDestinationRateInterface
+     * mappedBy destinationRate
+     */
+    protected $tpDestinationRate;
 
     /**
      * Constructor
@@ -22,6 +36,7 @@ trait DestinationRateTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
+
     }
 
     abstract protected function sanitizeValues();
@@ -30,15 +45,30 @@ trait DestinationRateTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DestinationRateDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getTpRate())) {
+            $self->setTpRate(
+                $fkTransformer->transform(
+                    $dto->getTpRate()
+                )
+            );
+        }
+
+        if (!is_null($dto->getTpDestinationRate())) {
+            $self->setTpDestinationRate(
+                $fkTransformer->transform(
+                    $dto->getTpDestinationRate()
+                )
+            );
+        }
 
         $self->sanitizeValues();
         if ($dto->getId()) {
@@ -52,15 +82,29 @@ trait DestinationRateTrait
     /**
      * @internal use EntityTools instead
      * @param DestinationRateDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getTpRate())) {
+            $this->setTpRate(
+                $fkTransformer->transform(
+                    $dto->getTpRate()
+                )
+            );
+        }
 
+        if (!is_null($dto->getTpDestinationRate())) {
+            $this->setTpDestinationRate(
+                $fkTransformer->transform(
+                    $dto->getTpDestinationRate()
+                )
+            );
+        }
         $this->sanitizeValues();
 
         return $this;
@@ -87,4 +131,45 @@ trait DestinationRateTrait
             'id' => self::getId()
         ];
     }
+
+    /**
+     * @var TpRateInterface
+     * mappedBy destinationRate
+     */
+    public function setTpRate(TpRateInterface $tpRate): DestinationRateInterface
+    {
+        $this->tpRate = $tpRate;
+
+        return $this;
+    }
+
+    /**
+     * Get tpRate
+     * @return TpRateInterface
+     */
+    public function getTpRate(): ?TpRateInterface
+    {
+        return $this->tpRate;
+    }
+
+    /**
+     * @var TpDestinationRateInterface
+     * mappedBy destinationRate
+     */
+    public function setTpDestinationRate(TpDestinationRateInterface $tpDestinationRate): DestinationRateInterface
+    {
+        $this->tpDestinationRate = $tpDestinationRate;
+
+        return $this;
+    }
+
+    /**
+     * Get tpDestinationRate
+     * @return TpDestinationRateInterface
+     */
+    public function getTpDestinationRate(): ?TpDestinationRateInterface
+    {
+        return $this->tpDestinationRate;
+    }
+
 }

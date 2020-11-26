@@ -1,30 +1,34 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\RatingPlan;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 
 /**
- * RatingPlanTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait RatingPlanTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface
+     * @var TpTimingInterface
+     * mappedBy ratingPlan
      */
     protected $tpTiming;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface
+     * @var TpRatingPlanInterface
+     * mappedBy ratingPlan
      */
     protected $tpRatingPlan;
-
 
     /**
      * Constructor
@@ -32,6 +36,7 @@ trait RatingPlanTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
+
     }
 
     abstract protected function sanitizeValues();
@@ -40,15 +45,30 @@ trait RatingPlanTrait
      * Factory method
      * @internal use EntityTools instead
      * @param RatingPlanDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getTpTiming())) {
+            $self->setTpTiming(
+                $fkTransformer->transform(
+                    $dto->getTpTiming()
+                )
+            );
+        }
+
+        if (!is_null($dto->getTpRatingPlan())) {
+            $self->setTpRatingPlan(
+                $fkTransformer->transform(
+                    $dto->getTpRatingPlan()
+                )
+            );
+        }
 
         $self->sanitizeValues();
         if ($dto->getId()) {
@@ -62,15 +82,29 @@ trait RatingPlanTrait
     /**
      * @internal use EntityTools instead
      * @param RatingPlanDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getTpTiming())) {
+            $this->setTpTiming(
+                $fkTransformer->transform(
+                    $dto->getTpTiming()
+                )
+            );
+        }
 
+        if (!is_null($dto->getTpRatingPlan())) {
+            $this->setTpRatingPlan(
+                $fkTransformer->transform(
+                    $dto->getTpRatingPlan()
+                )
+            );
+        }
         $this->sanitizeValues();
 
         return $this;
@@ -97,14 +131,12 @@ trait RatingPlanTrait
             'id' => self::getId()
         ];
     }
+
     /**
-     * Set tpTiming
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming
-     *
-     * @return static
+     * @var TpTimingInterface
+     * mappedBy ratingPlan
      */
-    public function setTpTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming = null)
+    public function setTpTiming(TpTimingInterface $tpTiming): RatingPlanInterface
     {
         $this->tpTiming = $tpTiming;
 
@@ -113,22 +145,18 @@ trait RatingPlanTrait
 
     /**
      * Get tpTiming
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface | null
+     * @return TpTimingInterface
      */
-    public function getTpTiming()
+    public function getTpTiming(): ?TpTimingInterface
     {
         return $this->tpTiming;
     }
 
     /**
-     * Set tpRatingPlan
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan
-     *
-     * @return static
+     * @var TpRatingPlanInterface
+     * mappedBy ratingPlan
      */
-    public function setTpRatingPlan(\Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan = null)
+    public function setTpRatingPlan(TpRatingPlanInterface $tpRatingPlan): RatingPlanInterface
     {
         $this->tpRatingPlan = $tpRatingPlan;
 
@@ -137,11 +165,11 @@ trait RatingPlanTrait
 
     /**
      * Get tpRatingPlan
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface | null
+     * @return TpRatingPlanInterface
      */
-    public function getTpRatingPlan()
+    public function getTpRatingPlan(): ?TpRatingPlanInterface
     {
         return $this->tpRatingPlan;
     }
+
 }

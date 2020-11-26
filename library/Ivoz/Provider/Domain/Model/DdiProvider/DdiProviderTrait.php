@@ -1,32 +1,36 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface;
 
 /**
- * DdiProviderTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait DdiProviderTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * DdiProviderRegistrationInterface mappedBy ddiProvider
      */
     protected $ddiProviderRegistrations;
 
     /**
      * @var ArrayCollection
+     * DdiProviderAddressInterface mappedBy ddiProvider
      */
     protected $ddiProviderAddresses;
-
 
     /**
      * Constructor
@@ -44,12 +48,12 @@ trait DdiProviderTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DdiProviderDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -68,6 +72,7 @@ trait DdiProviderTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -80,12 +85,12 @@ trait DdiProviderTrait
     /**
      * @internal use EntityTools instead
      * @param DdiProviderDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getDdiProviderRegistrations())) {
@@ -95,6 +100,7 @@ trait DdiProviderTrait
                 )
             );
         }
+
         if (!is_null($dto->getDdiProviderAddresses())) {
             $this->replaceDdiProviderAddresses(
                 $fkTransformer->transformCollection(
@@ -128,14 +134,15 @@ trait DdiProviderTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add ddiProviderRegistration
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration
+     * @param DdiProviderRegistrationInterface $ddiProviderRegistration
      *
      * @return static
      */
-    public function addDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration)
+    public function addDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): DdiProviderInterface
     {
         $this->ddiProviderRegistrations->add($ddiProviderRegistration);
 
@@ -145,20 +152,25 @@ trait DdiProviderTrait
     /**
      * Remove ddiProviderRegistration
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration
+     * @param DdiProviderRegistrationInterface $ddiProviderRegistration
+     *
+     * @return static
      */
-    public function removeDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration)
+    public function removeDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): DdiProviderInterface
     {
         $this->ddiProviderRegistrations->removeElement($ddiProviderRegistration);
+
+        return $this;
     }
 
     /**
      * Replace ddiProviderRegistrations
      *
-     * @param ArrayCollection $ddiProviderRegistrations of Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface
+     * @param ArrayCollection $ddiProviderRegistrations of DdiProviderRegistrationInterface
+     *
      * @return static
      */
-    public function replaceDdiProviderRegistrations(ArrayCollection $ddiProviderRegistrations)
+    public function replaceDdiProviderRegistrations(ArrayCollection $ddiProviderRegistrations): DdiProviderInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -189,9 +201,9 @@ trait DdiProviderTrait
     /**
      * Get ddiProviderRegistrations
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface[]
+     * @return DdiProviderRegistrationInterface[]
      */
-    public function getDdiProviderRegistrations(Criteria $criteria = null)
+    public function getDdiProviderRegistrations(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->ddiProviderRegistrations->matching($criteria)->toArray();
@@ -203,11 +215,11 @@ trait DdiProviderTrait
     /**
      * Add ddiProviderAddress
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress
+     * @param DdiProviderAddressInterface $ddiProviderAddress
      *
      * @return static
      */
-    public function addDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress)
+    public function addDdiProviderAddress(DdiProviderAddressInterface $ddiProviderAddress): DdiProviderInterface
     {
         $this->ddiProviderAddresses->add($ddiProviderAddress);
 
@@ -217,20 +229,25 @@ trait DdiProviderTrait
     /**
      * Remove ddiProviderAddress
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress
+     * @param DdiProviderAddressInterface $ddiProviderAddress
+     *
+     * @return static
      */
-    public function removeDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress)
+    public function removeDdiProviderAddress(DdiProviderAddressInterface $ddiProviderAddress): DdiProviderInterface
     {
         $this->ddiProviderAddresses->removeElement($ddiProviderAddress);
+
+        return $this;
     }
 
     /**
      * Replace ddiProviderAddresses
      *
-     * @param ArrayCollection $ddiProviderAddresses of Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
+     * @param ArrayCollection $ddiProviderAddresses of DdiProviderAddressInterface
+     *
      * @return static
      */
-    public function replaceDdiProviderAddresses(ArrayCollection $ddiProviderAddresses)
+    public function replaceDdiProviderAddresses(ArrayCollection $ddiProviderAddresses): DdiProviderInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -261,9 +278,9 @@ trait DdiProviderTrait
     /**
      * Get ddiProviderAddresses
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface[]
+     * @return DdiProviderAddressInterface[]
      */
-    public function getDdiProviderAddresses(Criteria $criteria = null)
+    public function getDdiProviderAddresses(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->ddiProviderAddresses->matching($criteria)->toArray();
@@ -271,4 +288,5 @@ trait DdiProviderTrait
 
         return $this->ddiProviderAddresses->toArray();
     }
+
 }

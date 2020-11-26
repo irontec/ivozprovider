@@ -1,37 +1,43 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
 /**
- * ResidentialDeviceTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait ResidentialDeviceTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * PsEndpointInterface mappedBy residentialDevice
      */
     protected $psEndpoints;
 
     /**
      * @var ArrayCollection
+     * DdiInterface mappedBy residentialDevice
      */
     protected $ddis;
 
     /**
      * @var ArrayCollection
+     * CallForwardSettingInterface mappedBy residentialDevice
      */
     protected $callForwardSettings;
-
 
     /**
      * Constructor
@@ -50,12 +56,12 @@ trait ResidentialDeviceTrait
      * Factory method
      * @internal use EntityTools instead
      * @param ResidentialDeviceDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -82,6 +88,7 @@ trait ResidentialDeviceTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -94,12 +101,12 @@ trait ResidentialDeviceTrait
     /**
      * @internal use EntityTools instead
      * @param ResidentialDeviceDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoints())) {
@@ -109,6 +116,7 @@ trait ResidentialDeviceTrait
                 )
             );
         }
+
         if (!is_null($dto->getDdis())) {
             $this->replaceDdis(
                 $fkTransformer->transformCollection(
@@ -116,6 +124,7 @@ trait ResidentialDeviceTrait
                 )
             );
         }
+
         if (!is_null($dto->getCallForwardSettings())) {
             $this->replaceCallForwardSettings(
                 $fkTransformer->transformCollection(
@@ -149,14 +158,15 @@ trait ResidentialDeviceTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add psEndpoint
      *
-     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
+     * @param PsEndpointInterface $psEndpoint
      *
      * @return static
      */
-    public function addPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint)
+    public function addPsEndpoint(PsEndpointInterface $psEndpoint): ResidentialDeviceInterface
     {
         $this->psEndpoints->add($psEndpoint);
 
@@ -166,20 +176,25 @@ trait ResidentialDeviceTrait
     /**
      * Remove psEndpoint
      *
-     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
+     * @param PsEndpointInterface $psEndpoint
+     *
+     * @return static
      */
-    public function removePsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint)
+    public function removePsEndpoint(PsEndpointInterface $psEndpoint): ResidentialDeviceInterface
     {
         $this->psEndpoints->removeElement($psEndpoint);
+
+        return $this;
     }
 
     /**
      * Replace psEndpoints
      *
-     * @param ArrayCollection $psEndpoints of Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
+     * @param ArrayCollection $psEndpoints of PsEndpointInterface
+     *
      * @return static
      */
-    public function replacePsEndpoints(ArrayCollection $psEndpoints)
+    public function replacePsEndpoints(ArrayCollection $psEndpoints): ResidentialDeviceInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -210,9 +225,9 @@ trait ResidentialDeviceTrait
     /**
      * Get psEndpoints
      * @param Criteria | null $criteria
-     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
+     * @return PsEndpointInterface[]
      */
-    public function getPsEndpoints(Criteria $criteria = null)
+    public function getPsEndpoints(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->psEndpoints->matching($criteria)->toArray();
@@ -224,11 +239,11 @@ trait ResidentialDeviceTrait
     /**
      * Add ddi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi
+     * @param DdiInterface $ddi
      *
      * @return static
      */
-    public function addDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi)
+    public function addDdi(DdiInterface $ddi): ResidentialDeviceInterface
     {
         $this->ddis->add($ddi);
 
@@ -238,20 +253,25 @@ trait ResidentialDeviceTrait
     /**
      * Remove ddi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi
+     * @param DdiInterface $ddi
+     *
+     * @return static
      */
-    public function removeDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi)
+    public function removeDdi(DdiInterface $ddi): ResidentialDeviceInterface
     {
         $this->ddis->removeElement($ddi);
+
+        return $this;
     }
 
     /**
      * Replace ddis
      *
-     * @param ArrayCollection $ddis of Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @param ArrayCollection $ddis of DdiInterface
+     *
      * @return static
      */
-    public function replaceDdis(ArrayCollection $ddis)
+    public function replaceDdis(ArrayCollection $ddis): ResidentialDeviceInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -282,9 +302,9 @@ trait ResidentialDeviceTrait
     /**
      * Get ddis
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[]
+     * @return DdiInterface[]
      */
-    public function getDdis(Criteria $criteria = null)
+    public function getDdis(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->ddis->matching($criteria)->toArray();
@@ -296,11 +316,11 @@ trait ResidentialDeviceTrait
     /**
      * Add callForwardSetting
      *
-     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     * @param CallForwardSettingInterface $callForwardSetting
      *
      * @return static
      */
-    public function addCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting)
+    public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): ResidentialDeviceInterface
     {
         $this->callForwardSettings->add($callForwardSetting);
 
@@ -310,20 +330,25 @@ trait ResidentialDeviceTrait
     /**
      * Remove callForwardSetting
      *
-     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     * @param CallForwardSettingInterface $callForwardSetting
+     *
+     * @return static
      */
-    public function removeCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting)
+    public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): ResidentialDeviceInterface
     {
         $this->callForwardSettings->removeElement($callForwardSetting);
+
+        return $this;
     }
 
     /**
      * Replace callForwardSettings
      *
-     * @param ArrayCollection $callForwardSettings of Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
+     * @param ArrayCollection $callForwardSettings of CallForwardSettingInterface
+     *
      * @return static
      */
-    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings)
+    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): ResidentialDeviceInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -354,9 +379,9 @@ trait ResidentialDeviceTrait
     /**
      * Get callForwardSettings
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
+     * @return CallForwardSettingInterface[]
      */
-    public function getCallForwardSettings(Criteria $criteria = null)
+    public function getCallForwardSettings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->callForwardSettings->matching($criteria)->toArray();
@@ -364,4 +389,5 @@ trait ResidentialDeviceTrait
 
         return $this->callForwardSettings->toArray();
     }
+
 }

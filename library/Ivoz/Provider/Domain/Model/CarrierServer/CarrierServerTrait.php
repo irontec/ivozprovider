@@ -1,20 +1,27 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 
 /**
- * CarrierServerTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait CarrierServerTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
+    /**
+     * @var TrunksLcrGatewayInterface
+     * mappedBy carrierServer
+     */
+    protected $lcrGateway;
 
     /**
      * Constructor
@@ -22,6 +29,7 @@ trait CarrierServerTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
+
     }
 
     abstract protected function sanitizeValues();
@@ -30,15 +38,22 @@ trait CarrierServerTrait
      * Factory method
      * @internal use EntityTools instead
      * @param CarrierServerDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getLcrGateway())) {
+            $self->setLcrGateway(
+                $fkTransformer->transform(
+                    $dto->getLcrGateway()
+                )
+            );
+        }
 
         $self->sanitizeValues();
         if ($dto->getId()) {
@@ -52,15 +67,21 @@ trait CarrierServerTrait
     /**
      * @internal use EntityTools instead
      * @param CarrierServerDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
-
+        if (!is_null($dto->getLcrGateway())) {
+            $this->setLcrGateway(
+                $fkTransformer->transform(
+                    $dto->getLcrGateway()
+                )
+            );
+        }
         $this->sanitizeValues();
 
         return $this;
@@ -87,4 +108,25 @@ trait CarrierServerTrait
             'id' => self::getId()
         ];
     }
+
+    /**
+     * @var TrunksLcrGatewayInterface
+     * mappedBy carrierServer
+     */
+    public function setLcrGateway(TrunksLcrGatewayInterface $lcrGateway): CarrierServerInterface
+    {
+        $this->lcrGateway = $lcrGateway;
+
+        return $this;
+    }
+
+    /**
+     * Get lcrGateway
+     * @return TrunksLcrGatewayInterface
+     */
+    public function getLcrGateway(): ?TrunksLcrGatewayInterface
+    {
+        return $this->lcrGateway;
+    }
+
 }

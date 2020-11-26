@@ -1,20 +1,20 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
- * ConditionalRoutesConditionsRelScheduleTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait ConditionalRoutesConditionsRelScheduleTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
-
 
     /**
      * Constructor
@@ -22,6 +22,7 @@ trait ConditionalRoutesConditionsRelScheduleTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
+
     }
 
     abstract protected function sanitizeValues();
@@ -30,12 +31,12 @@ trait ConditionalRoutesConditionsRelScheduleTrait
      * Factory method
      * @internal use EntityTools instead
      * @param ConditionalRoutesConditionsRelScheduleDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -52,12 +53,12 @@ trait ConditionalRoutesConditionsRelScheduleTrait
     /**
      * @internal use EntityTools instead
      * @param ConditionalRoutesConditionsRelScheduleDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
 
@@ -87,4 +88,5 @@ trait ConditionalRoutesConditionsRelScheduleTrait
             'id' => self::getId()
         ];
     }
+
 }

@@ -1,42 +1,54 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface;
+use Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface;
+use Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface;
 
 /**
- * ExternalCallFilterTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait ExternalCallFilterTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * ExternalCallFilterRelCalendarInterface mappedBy filter
+     * orphanRemoval
      */
     protected $calendars;
 
     /**
      * @var ArrayCollection
+     * ExternalCallFilterBlackListInterface mappedBy filter
+     * orphanRemoval
      */
     protected $blackLists;
 
     /**
      * @var ArrayCollection
+     * ExternalCallFilterWhiteListInterface mappedBy filter
+     * orphanRemoval
      */
     protected $whiteLists;
 
     /**
      * @var ArrayCollection
+     * ExternalCallFilterRelScheduleInterface mappedBy filter
+     * orphanRemoval
      */
     protected $schedules;
-
 
     /**
      * Constructor
@@ -56,12 +68,12 @@ trait ExternalCallFilterTrait
      * Factory method
      * @internal use EntityTools instead
      * @param ExternalCallFilterDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -96,6 +108,7 @@ trait ExternalCallFilterTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -108,12 +121,12 @@ trait ExternalCallFilterTrait
     /**
      * @internal use EntityTools instead
      * @param ExternalCallFilterDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getCalendars())) {
@@ -123,6 +136,7 @@ trait ExternalCallFilterTrait
                 )
             );
         }
+
         if (!is_null($dto->getBlackLists())) {
             $this->replaceBlackLists(
                 $fkTransformer->transformCollection(
@@ -130,6 +144,7 @@ trait ExternalCallFilterTrait
                 )
             );
         }
+
         if (!is_null($dto->getWhiteLists())) {
             $this->replaceWhiteLists(
                 $fkTransformer->transformCollection(
@@ -137,6 +152,7 @@ trait ExternalCallFilterTrait
                 )
             );
         }
+
         if (!is_null($dto->getSchedules())) {
             $this->replaceSchedules(
                 $fkTransformer->transformCollection(
@@ -170,14 +186,15 @@ trait ExternalCallFilterTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add calendar
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface $calendar
+     * @param ExternalCallFilterRelCalendarInterface $calendar
      *
      * @return static
      */
-    public function addCalendar(\Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface $calendar)
+    public function addCalendar(ExternalCallFilterRelCalendarInterface $calendar): ExternalCallFilterInterface
     {
         $this->calendars->add($calendar);
 
@@ -187,20 +204,25 @@ trait ExternalCallFilterTrait
     /**
      * Remove calendar
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface $calendar
+     * @param ExternalCallFilterRelCalendarInterface $calendar
+     *
+     * @return static
      */
-    public function removeCalendar(\Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface $calendar)
+    public function removeCalendar(ExternalCallFilterRelCalendarInterface $calendar): ExternalCallFilterInterface
     {
         $this->calendars->removeElement($calendar);
+
+        return $this;
     }
 
     /**
      * Replace calendars
      *
-     * @param ArrayCollection $calendars of Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface
+     * @param ArrayCollection $calendars of ExternalCallFilterRelCalendarInterface
+     *
      * @return static
      */
-    public function replaceCalendars(ArrayCollection $calendars)
+    public function replaceCalendars(ArrayCollection $calendars): ExternalCallFilterInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -231,9 +253,9 @@ trait ExternalCallFilterTrait
     /**
      * Get calendars
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface[]
+     * @return ExternalCallFilterRelCalendarInterface[]
      */
-    public function getCalendars(Criteria $criteria = null)
+    public function getCalendars(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->calendars->matching($criteria)->toArray();
@@ -245,11 +267,11 @@ trait ExternalCallFilterTrait
     /**
      * Add blackList
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface $blackList
+     * @param ExternalCallFilterBlackListInterface $blackList
      *
      * @return static
      */
-    public function addBlackList(\Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface $blackList)
+    public function addBlackList(ExternalCallFilterBlackListInterface $blackList): ExternalCallFilterInterface
     {
         $this->blackLists->add($blackList);
 
@@ -259,20 +281,25 @@ trait ExternalCallFilterTrait
     /**
      * Remove blackList
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface $blackList
+     * @param ExternalCallFilterBlackListInterface $blackList
+     *
+     * @return static
      */
-    public function removeBlackList(\Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface $blackList)
+    public function removeBlackList(ExternalCallFilterBlackListInterface $blackList): ExternalCallFilterInterface
     {
         $this->blackLists->removeElement($blackList);
+
+        return $this;
     }
 
     /**
      * Replace blackLists
      *
-     * @param ArrayCollection $blackLists of Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface
+     * @param ArrayCollection $blackLists of ExternalCallFilterBlackListInterface
+     *
      * @return static
      */
-    public function replaceBlackLists(ArrayCollection $blackLists)
+    public function replaceBlackLists(ArrayCollection $blackLists): ExternalCallFilterInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -303,9 +330,9 @@ trait ExternalCallFilterTrait
     /**
      * Get blackLists
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface[]
+     * @return ExternalCallFilterBlackListInterface[]
      */
-    public function getBlackLists(Criteria $criteria = null)
+    public function getBlackLists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->blackLists->matching($criteria)->toArray();
@@ -317,11 +344,11 @@ trait ExternalCallFilterTrait
     /**
      * Add whiteList
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface $whiteList
+     * @param ExternalCallFilterWhiteListInterface $whiteList
      *
      * @return static
      */
-    public function addWhiteList(\Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface $whiteList)
+    public function addWhiteList(ExternalCallFilterWhiteListInterface $whiteList): ExternalCallFilterInterface
     {
         $this->whiteLists->add($whiteList);
 
@@ -331,20 +358,25 @@ trait ExternalCallFilterTrait
     /**
      * Remove whiteList
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface $whiteList
+     * @param ExternalCallFilterWhiteListInterface $whiteList
+     *
+     * @return static
      */
-    public function removeWhiteList(\Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface $whiteList)
+    public function removeWhiteList(ExternalCallFilterWhiteListInterface $whiteList): ExternalCallFilterInterface
     {
         $this->whiteLists->removeElement($whiteList);
+
+        return $this;
     }
 
     /**
      * Replace whiteLists
      *
-     * @param ArrayCollection $whiteLists of Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface
+     * @param ArrayCollection $whiteLists of ExternalCallFilterWhiteListInterface
+     *
      * @return static
      */
-    public function replaceWhiteLists(ArrayCollection $whiteLists)
+    public function replaceWhiteLists(ArrayCollection $whiteLists): ExternalCallFilterInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -375,9 +407,9 @@ trait ExternalCallFilterTrait
     /**
      * Get whiteLists
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface[]
+     * @return ExternalCallFilterWhiteListInterface[]
      */
-    public function getWhiteLists(Criteria $criteria = null)
+    public function getWhiteLists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->whiteLists->matching($criteria)->toArray();
@@ -389,11 +421,11 @@ trait ExternalCallFilterTrait
     /**
      * Add schedule
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface $schedule
+     * @param ExternalCallFilterRelScheduleInterface $schedule
      *
      * @return static
      */
-    public function addSchedule(\Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface $schedule)
+    public function addSchedule(ExternalCallFilterRelScheduleInterface $schedule): ExternalCallFilterInterface
     {
         $this->schedules->add($schedule);
 
@@ -403,20 +435,25 @@ trait ExternalCallFilterTrait
     /**
      * Remove schedule
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface $schedule
+     * @param ExternalCallFilterRelScheduleInterface $schedule
+     *
+     * @return static
      */
-    public function removeSchedule(\Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface $schedule)
+    public function removeSchedule(ExternalCallFilterRelScheduleInterface $schedule): ExternalCallFilterInterface
     {
         $this->schedules->removeElement($schedule);
+
+        return $this;
     }
 
     /**
      * Replace schedules
      *
-     * @param ArrayCollection $schedules of Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface
+     * @param ArrayCollection $schedules of ExternalCallFilterRelScheduleInterface
+     *
      * @return static
      */
-    public function replaceSchedules(ArrayCollection $schedules)
+    public function replaceSchedules(ArrayCollection $schedules): ExternalCallFilterInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -447,9 +484,9 @@ trait ExternalCallFilterTrait
     /**
      * Get schedules
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface[]
+     * @return ExternalCallFilterRelScheduleInterface[]
      */
-    public function getSchedules(Criteria $criteria = null)
+    public function getSchedules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->schedules->matching($criteria)->toArray();
@@ -457,4 +494,5 @@ trait ExternalCallFilterTrait
 
         return $this->schedules->toArray();
     }
+
 }

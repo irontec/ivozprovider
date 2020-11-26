@@ -1,20 +1,27 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderRegistration;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface;
 
 /**
- * DdiProviderRegistrationTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait DdiProviderRegistrationTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
+    /**
+     * @var TrunksUacregInterface
+     * mappedBy ddiProviderRegistration
+     */
+    protected $trunksUacreg;
 
     /**
      * Constructor
@@ -22,6 +29,7 @@ trait DdiProviderRegistrationTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
+
     }
 
     abstract protected function sanitizeValues();
@@ -30,15 +38,22 @@ trait DdiProviderRegistrationTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DdiProviderRegistrationDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getTrunksUacreg())) {
+            $self->setTrunksUacreg(
+                $fkTransformer->transform(
+                    $dto->getTrunksUacreg()
+                )
+            );
+        }
 
         $self->sanitizeValues();
         if ($dto->getId()) {
@@ -52,15 +67,21 @@ trait DdiProviderRegistrationTrait
     /**
      * @internal use EntityTools instead
      * @param DdiProviderRegistrationDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
-
+        if (!is_null($dto->getTrunksUacreg())) {
+            $this->setTrunksUacreg(
+                $fkTransformer->transform(
+                    $dto->getTrunksUacreg()
+                )
+            );
+        }
         $this->sanitizeValues();
 
         return $this;
@@ -87,4 +108,25 @@ trait DdiProviderRegistrationTrait
             'id' => self::getId()
         ];
     }
+
+    /**
+     * @var TrunksUacregInterface
+     * mappedBy ddiProviderRegistration
+     */
+    public function setTrunksUacreg(TrunksUacregInterface $trunksUacreg): DdiProviderRegistrationInterface
+    {
+        $this->trunksUacreg = $trunksUacreg;
+
+        return $this;
+    }
+
+    /**
+     * Get trunksUacreg
+     * @return TrunksUacregInterface
+     */
+    public function getTrunksUacreg(): ?TrunksUacregInterface
+    {
+        return $this->trunksUacreg;
+    }
+
 }

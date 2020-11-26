@@ -1,32 +1,36 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Calendar;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface;
 
 /**
- * CalendarTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait CalendarTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * HolidayDateInterface mappedBy calendar
      */
     protected $holidayDates;
 
     /**
      * @var ArrayCollection
+     * CalendarPeriodInterface mappedBy calendar
      */
     protected $calendarPeriods;
-
 
     /**
      * Constructor
@@ -44,12 +48,12 @@ trait CalendarTrait
      * Factory method
      * @internal use EntityTools instead
      * @param CalendarDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -68,6 +72,7 @@ trait CalendarTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -80,12 +85,12 @@ trait CalendarTrait
     /**
      * @internal use EntityTools instead
      * @param CalendarDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getHolidayDates())) {
@@ -95,6 +100,7 @@ trait CalendarTrait
                 )
             );
         }
+
         if (!is_null($dto->getCalendarPeriods())) {
             $this->replaceCalendarPeriods(
                 $fkTransformer->transformCollection(
@@ -128,14 +134,15 @@ trait CalendarTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add holidayDate
      *
-     * @param \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayDate
+     * @param HolidayDateInterface $holidayDate
      *
      * @return static
      */
-    public function addHolidayDate(\Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayDate)
+    public function addHolidayDate(HolidayDateInterface $holidayDate): CalendarInterface
     {
         $this->holidayDates->add($holidayDate);
 
@@ -145,20 +152,25 @@ trait CalendarTrait
     /**
      * Remove holidayDate
      *
-     * @param \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayDate
+     * @param HolidayDateInterface $holidayDate
+     *
+     * @return static
      */
-    public function removeHolidayDate(\Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayDate)
+    public function removeHolidayDate(HolidayDateInterface $holidayDate): CalendarInterface
     {
         $this->holidayDates->removeElement($holidayDate);
+
+        return $this;
     }
 
     /**
      * Replace holidayDates
      *
-     * @param ArrayCollection $holidayDates of Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface
+     * @param ArrayCollection $holidayDates of HolidayDateInterface
+     *
      * @return static
      */
-    public function replaceHolidayDates(ArrayCollection $holidayDates)
+    public function replaceHolidayDates(ArrayCollection $holidayDates): CalendarInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -189,9 +201,9 @@ trait CalendarTrait
     /**
      * Get holidayDates
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface[]
+     * @return HolidayDateInterface[]
      */
-    public function getHolidayDates(Criteria $criteria = null)
+    public function getHolidayDates(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->holidayDates->matching($criteria)->toArray();
@@ -203,11 +215,11 @@ trait CalendarTrait
     /**
      * Add calendarPeriod
      *
-     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod
+     * @param CalendarPeriodInterface $calendarPeriod
      *
      * @return static
      */
-    public function addCalendarPeriod(\Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod)
+    public function addCalendarPeriod(CalendarPeriodInterface $calendarPeriod): CalendarInterface
     {
         $this->calendarPeriods->add($calendarPeriod);
 
@@ -217,20 +229,25 @@ trait CalendarTrait
     /**
      * Remove calendarPeriod
      *
-     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod
+     * @param CalendarPeriodInterface $calendarPeriod
+     *
+     * @return static
      */
-    public function removeCalendarPeriod(\Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod)
+    public function removeCalendarPeriod(CalendarPeriodInterface $calendarPeriod): CalendarInterface
     {
         $this->calendarPeriods->removeElement($calendarPeriod);
+
+        return $this;
     }
 
     /**
      * Replace calendarPeriods
      *
-     * @param ArrayCollection $calendarPeriods of Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface
+     * @param ArrayCollection $calendarPeriods of CalendarPeriodInterface
+     *
      * @return static
      */
-    public function replaceCalendarPeriods(ArrayCollection $calendarPeriods)
+    public function replaceCalendarPeriods(ArrayCollection $calendarPeriods): CalendarInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -261,9 +278,9 @@ trait CalendarTrait
     /**
      * Get calendarPeriods
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface[]
+     * @return CalendarPeriodInterface[]
      */
-    public function getCalendarPeriods(Criteria $criteria = null)
+    public function getCalendarPeriods(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->calendarPeriods->matching($criteria)->toArray();
@@ -271,4 +288,5 @@ trait CalendarTrait
 
         return $this->calendarPeriods->toArray();
     }
+
 }

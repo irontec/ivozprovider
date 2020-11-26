@@ -1,32 +1,36 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\RoutingTag;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface;
 
 /**
- * RoutingTagTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait RoutingTagTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * OutgoingRoutingInterface mappedBy routingTag
      */
     protected $outgoingRoutings;
 
     /**
      * @var ArrayCollection
+     * CompanyRelRoutingTagInterface mappedBy routingTag
      */
     protected $relCompanies;
-
 
     /**
      * Constructor
@@ -44,12 +48,12 @@ trait RoutingTagTrait
      * Factory method
      * @internal use EntityTools instead
      * @param RoutingTagDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -68,6 +72,7 @@ trait RoutingTagTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -80,12 +85,12 @@ trait RoutingTagTrait
     /**
      * @internal use EntityTools instead
      * @param RoutingTagDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getOutgoingRoutings())) {
@@ -95,6 +100,7 @@ trait RoutingTagTrait
                 )
             );
         }
+
         if (!is_null($dto->getRelCompanies())) {
             $this->replaceRelCompanies(
                 $fkTransformer->transformCollection(
@@ -128,14 +134,15 @@ trait RoutingTagTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param OutgoingRoutingInterface $outgoingRouting
      *
      * @return static
      */
-    public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
+    public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingTagInterface
     {
         $this->outgoingRoutings->add($outgoingRouting);
 
@@ -145,20 +152,25 @@ trait RoutingTagTrait
     /**
      * Remove outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param OutgoingRoutingInterface $outgoingRouting
+     *
+     * @return static
      */
-    public function removeOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
+    public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingTagInterface
     {
         $this->outgoingRoutings->removeElement($outgoingRouting);
+
+        return $this;
     }
 
     /**
      * Replace outgoingRoutings
      *
-     * @param ArrayCollection $outgoingRoutings of Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @param ArrayCollection $outgoingRoutings of OutgoingRoutingInterface
+     *
      * @return static
      */
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings)
+    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingTagInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -189,9 +201,9 @@ trait RoutingTagTrait
     /**
      * Get outgoingRoutings
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
+     * @return OutgoingRoutingInterface[]
      */
-    public function getOutgoingRoutings(Criteria $criteria = null)
+    public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->outgoingRoutings->matching($criteria)->toArray();
@@ -203,11 +215,11 @@ trait RoutingTagTrait
     /**
      * Add relCompany
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany
+     * @param CompanyRelRoutingTagInterface $relCompany
      *
      * @return static
      */
-    public function addRelCompany(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany)
+    public function addRelCompany(CompanyRelRoutingTagInterface $relCompany): RoutingTagInterface
     {
         $this->relCompanies->add($relCompany);
 
@@ -217,20 +229,25 @@ trait RoutingTagTrait
     /**
      * Remove relCompany
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany
+     * @param CompanyRelRoutingTagInterface $relCompany
+     *
+     * @return static
      */
-    public function removeRelCompany(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany)
+    public function removeRelCompany(CompanyRelRoutingTagInterface $relCompany): RoutingTagInterface
     {
         $this->relCompanies->removeElement($relCompany);
+
+        return $this;
     }
 
     /**
      * Replace relCompanies
      *
-     * @param ArrayCollection $relCompanies of Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface
+     * @param ArrayCollection $relCompanies of CompanyRelRoutingTagInterface
+     *
      * @return static
      */
-    public function replaceRelCompanies(ArrayCollection $relCompanies)
+    public function replaceRelCompanies(ArrayCollection $relCompanies): RoutingTagInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -261,9 +278,9 @@ trait RoutingTagTrait
     /**
      * Get relCompanies
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
+     * @return CompanyRelRoutingTagInterface[]
      */
-    public function getRelCompanies(Criteria $criteria = null)
+    public function getRelCompanies(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->relCompanies->matching($criteria)->toArray();
@@ -271,4 +288,5 @@ trait RoutingTagTrait
 
         return $this->relCompanies->toArray();
     }
+
 }

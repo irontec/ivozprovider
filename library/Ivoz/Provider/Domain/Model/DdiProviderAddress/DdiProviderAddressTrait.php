@@ -1,20 +1,27 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderAddress;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface;
 
 /**
- * DdiProviderAddressTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait DdiProviderAddressTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
+    /**
+     * @var TrunksAddressInterface
+     * mappedBy ddiProviderAddress
+     */
+    protected $trunksAddress;
 
     /**
      * Constructor
@@ -22,6 +29,7 @@ trait DdiProviderAddressTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
+
     }
 
     abstract protected function sanitizeValues();
@@ -30,15 +38,22 @@ trait DdiProviderAddressTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DdiProviderAddressDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getTrunksAddress())) {
+            $self->setTrunksAddress(
+                $fkTransformer->transform(
+                    $dto->getTrunksAddress()
+                )
+            );
+        }
 
         $self->sanitizeValues();
         if ($dto->getId()) {
@@ -52,15 +67,21 @@ trait DdiProviderAddressTrait
     /**
      * @internal use EntityTools instead
      * @param DdiProviderAddressDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
-
+        if (!is_null($dto->getTrunksAddress())) {
+            $this->setTrunksAddress(
+                $fkTransformer->transform(
+                    $dto->getTrunksAddress()
+                )
+            );
+        }
         $this->sanitizeValues();
 
         return $this;
@@ -87,4 +108,25 @@ trait DdiProviderAddressTrait
             'id' => self::getId()
         ];
     }
+
+    /**
+     * @var TrunksAddressInterface
+     * mappedBy ddiProviderAddress
+     */
+    public function setTrunksAddress(TrunksAddressInterface $trunksAddress): DdiProviderAddressInterface
+    {
+        $this->trunksAddress = $trunksAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get trunksAddress
+     * @return TrunksAddressInterface
+     */
+    public function getTrunksAddress(): ?TrunksAddressInterface
+    {
+        return $this->trunksAddress;
+    }
+
 }

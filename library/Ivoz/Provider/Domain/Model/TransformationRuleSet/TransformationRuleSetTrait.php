@@ -1,27 +1,29 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\TransformationRuleSet;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
- * TransformationRuleSetTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait TransformationRuleSetTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * TransformationRuleInterface mappedBy transformationRuleSet
      */
     protected $rules;
-
 
     /**
      * Constructor
@@ -38,12 +40,12 @@ trait TransformationRuleSetTrait
      * Factory method
      * @internal use EntityTools instead
      * @param TransformationRuleSetDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -54,6 +56,7 @@ trait TransformationRuleSetTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -66,12 +69,12 @@ trait TransformationRuleSetTrait
     /**
      * @internal use EntityTools instead
      * @param TransformationRuleSetDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getRules())) {
@@ -107,14 +110,15 @@ trait TransformationRuleSetTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add rule
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface $rule
+     * @param TransformationRuleInterface $rule
      *
      * @return static
      */
-    public function addRule(\Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface $rule)
+    public function addRule(TransformationRuleInterface $rule): TransformationRuleSetInterface
     {
         $this->rules->add($rule);
 
@@ -124,20 +128,25 @@ trait TransformationRuleSetTrait
     /**
      * Remove rule
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface $rule
+     * @param TransformationRuleInterface $rule
+     *
+     * @return static
      */
-    public function removeRule(\Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface $rule)
+    public function removeRule(TransformationRuleInterface $rule): TransformationRuleSetInterface
     {
         $this->rules->removeElement($rule);
+
+        return $this;
     }
 
     /**
      * Replace rules
      *
-     * @param ArrayCollection $rules of Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface
+     * @param ArrayCollection $rules of TransformationRuleInterface
+     *
      * @return static
      */
-    public function replaceRules(ArrayCollection $rules)
+    public function replaceRules(ArrayCollection $rules): TransformationRuleSetInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,9 +177,9 @@ trait TransformationRuleSetTrait
     /**
      * Get rules
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface[]
+     * @return TransformationRuleInterface[]
      */
-    public function getRules(Criteria $criteria = null)
+    public function getRules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->rules->matching($criteria)->toArray();
@@ -178,4 +187,5 @@ trait TransformationRuleSetTrait
 
         return $this->rules->toArray();
     }
+
 }

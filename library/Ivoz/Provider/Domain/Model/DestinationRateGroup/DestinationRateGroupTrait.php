@@ -1,27 +1,29 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
- * DestinationRateGroupTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait DestinationRateGroupTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * DestinationRateInterface mappedBy destinationRateGroup
      */
     protected $destinationRates;
-
 
     /**
      * Constructor
@@ -38,12 +40,12 @@ trait DestinationRateGroupTrait
      * Factory method
      * @internal use EntityTools instead
      * @param DestinationRateGroupDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -54,6 +56,7 @@ trait DestinationRateGroupTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -66,12 +69,12 @@ trait DestinationRateGroupTrait
     /**
      * @internal use EntityTools instead
      * @param DestinationRateGroupDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getDestinationRates())) {
@@ -107,14 +110,15 @@ trait DestinationRateGroupTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add destinationRate
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param DestinationRateInterface $destinationRate
      *
      * @return static
      */
-    public function addDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate)
+    public function addDestinationRate(DestinationRateInterface $destinationRate): DestinationRateGroupInterface
     {
         $this->destinationRates->add($destinationRate);
 
@@ -124,20 +128,25 @@ trait DestinationRateGroupTrait
     /**
      * Remove destinationRate
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param DestinationRateInterface $destinationRate
+     *
+     * @return static
      */
-    public function removeDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate)
+    public function removeDestinationRate(DestinationRateInterface $destinationRate): DestinationRateGroupInterface
     {
         $this->destinationRates->removeElement($destinationRate);
+
+        return $this;
     }
 
     /**
      * Replace destinationRates
      *
-     * @param ArrayCollection $destinationRates of Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
+     * @param ArrayCollection $destinationRates of DestinationRateInterface
+     *
      * @return static
      */
-    public function replaceDestinationRates(ArrayCollection $destinationRates)
+    public function replaceDestinationRates(ArrayCollection $destinationRates): DestinationRateGroupInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,9 +177,9 @@ trait DestinationRateGroupTrait
     /**
      * Get destinationRates
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface[]
+     * @return DestinationRateInterface[]
      */
-    public function getDestinationRates(Criteria $criteria = null)
+    public function getDestinationRates(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->destinationRates->matching($criteria)->toArray();
@@ -178,4 +187,5 @@ trait DestinationRateGroupTrait
 
         return $this->destinationRates->toArray();
     }
+
 }

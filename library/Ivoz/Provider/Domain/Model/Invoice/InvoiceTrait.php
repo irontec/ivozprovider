@@ -1,27 +1,30 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
- * InvoiceTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait InvoiceTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * FixedCostsRelInvoiceInterface mappedBy invoice
+     * orphanRemoval
      */
     protected $relFixedCosts;
-
 
     /**
      * Constructor
@@ -38,12 +41,12 @@ trait InvoiceTrait
      * Factory method
      * @internal use EntityTools instead
      * @param InvoiceDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -54,6 +57,7 @@ trait InvoiceTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -66,12 +70,12 @@ trait InvoiceTrait
     /**
      * @internal use EntityTools instead
      * @param InvoiceDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getRelFixedCosts())) {
@@ -107,14 +111,15 @@ trait InvoiceTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add relFixedCost
      *
-     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface $relFixedCost
+     * @param FixedCostsRelInvoiceInterface $relFixedCost
      *
      * @return static
      */
-    public function addRelFixedCost(\Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface $relFixedCost)
+    public function addRelFixedCost(FixedCostsRelInvoiceInterface $relFixedCost): InvoiceInterface
     {
         $this->relFixedCosts->add($relFixedCost);
 
@@ -124,20 +129,25 @@ trait InvoiceTrait
     /**
      * Remove relFixedCost
      *
-     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface $relFixedCost
+     * @param FixedCostsRelInvoiceInterface $relFixedCost
+     *
+     * @return static
      */
-    public function removeRelFixedCost(\Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface $relFixedCost)
+    public function removeRelFixedCost(FixedCostsRelInvoiceInterface $relFixedCost): InvoiceInterface
     {
         $this->relFixedCosts->removeElement($relFixedCost);
+
+        return $this;
     }
 
     /**
      * Replace relFixedCosts
      *
-     * @param ArrayCollection $relFixedCosts of Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface
+     * @param ArrayCollection $relFixedCosts of FixedCostsRelInvoiceInterface
+     *
      * @return static
      */
-    public function replaceRelFixedCosts(ArrayCollection $relFixedCosts)
+    public function replaceRelFixedCosts(ArrayCollection $relFixedCosts): InvoiceInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,9 +178,9 @@ trait InvoiceTrait
     /**
      * Get relFixedCosts
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface[]
+     * @return FixedCostsRelInvoiceInterface[]
      */
-    public function getRelFixedCosts(Criteria $criteria = null)
+    public function getRelFixedCosts(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->relFixedCosts->matching($criteria)->toArray();
@@ -178,4 +188,5 @@ trait InvoiceTrait
 
         return $this->relFixedCosts->toArray();
     }
+
 }

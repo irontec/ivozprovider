@@ -1,27 +1,29 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
- * RatingPlanGroupTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait RatingPlanGroupTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * RatingPlanInterface mappedBy ratingPlanGroup
      */
     protected $ratingPlan;
-
 
     /**
      * Constructor
@@ -38,12 +40,12 @@ trait RatingPlanGroupTrait
      * Factory method
      * @internal use EntityTools instead
      * @param RatingPlanGroupDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -54,6 +56,7 @@ trait RatingPlanGroupTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -66,12 +69,12 @@ trait RatingPlanGroupTrait
     /**
      * @internal use EntityTools instead
      * @param RatingPlanGroupDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getRatingPlan())) {
@@ -107,14 +110,15 @@ trait RatingPlanGroupTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add ratingPlan
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param RatingPlanInterface $ratingPlan
      *
      * @return static
      */
-    public function addRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
+    public function addRatingPlan(RatingPlanInterface $ratingPlan): RatingPlanGroupInterface
     {
         $this->ratingPlan->add($ratingPlan);
 
@@ -124,20 +128,25 @@ trait RatingPlanGroupTrait
     /**
      * Remove ratingPlan
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param RatingPlanInterface $ratingPlan
+     *
+     * @return static
      */
-    public function removeRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
+    public function removeRatingPlan(RatingPlanInterface $ratingPlan): RatingPlanGroupInterface
     {
         $this->ratingPlan->removeElement($ratingPlan);
+
+        return $this;
     }
 
     /**
      * Replace ratingPlan
      *
-     * @param ArrayCollection $ratingPlan of Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     * @param ArrayCollection $ratingPlan of RatingPlanInterface
+     *
      * @return static
      */
-    public function replaceRatingPlan(ArrayCollection $ratingPlan)
+    public function replaceRatingPlan(ArrayCollection $ratingPlan): RatingPlanGroupInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,9 +177,9 @@ trait RatingPlanGroupTrait
     /**
      * Get ratingPlan
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface[]
+     * @return RatingPlanInterface[]
      */
-    public function getRatingPlan(Criteria $criteria = null)
+    public function getRatingPlan(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->ratingPlan->matching($criteria)->toArray();
@@ -178,4 +187,5 @@ trait RatingPlanGroupTrait
 
         return $this->ratingPlan->toArray();
     }
+
 }

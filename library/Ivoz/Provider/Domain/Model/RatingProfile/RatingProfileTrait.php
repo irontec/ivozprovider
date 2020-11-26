@@ -1,27 +1,29 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\RatingProfile;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
- * RatingProfileTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait RatingProfileTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * TpRatingProfileInterface mappedBy ratingProfile
      */
     protected $tpRatingProfiles;
-
 
     /**
      * Constructor
@@ -38,12 +40,12 @@ trait RatingProfileTrait
      * Factory method
      * @internal use EntityTools instead
      * @param RatingProfileDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -54,6 +56,7 @@ trait RatingProfileTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -66,12 +69,12 @@ trait RatingProfileTrait
     /**
      * @internal use EntityTools instead
      * @param RatingProfileDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpRatingProfiles())) {
@@ -107,14 +110,15 @@ trait RatingProfileTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add tpRatingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
+     * @param TpRatingProfileInterface $tpRatingProfile
      *
      * @return static
      */
-    public function addTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile)
+    public function addTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): RatingProfileInterface
     {
         $this->tpRatingProfiles->add($tpRatingProfile);
 
@@ -124,20 +128,25 @@ trait RatingProfileTrait
     /**
      * Remove tpRatingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
+     * @param TpRatingProfileInterface $tpRatingProfile
+     *
+     * @return static
      */
-    public function removeTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile)
+    public function removeTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): RatingProfileInterface
     {
         $this->tpRatingProfiles->removeElement($tpRatingProfile);
+
+        return $this;
     }
 
     /**
      * Replace tpRatingProfiles
      *
-     * @param ArrayCollection $tpRatingProfiles of Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
+     * @param ArrayCollection $tpRatingProfiles of TpRatingProfileInterface
+     *
      * @return static
      */
-    public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles)
+    public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles): RatingProfileInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,9 +177,9 @@ trait RatingProfileTrait
     /**
      * Get tpRatingProfiles
      * @param Criteria | null $criteria
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
+     * @return TpRatingProfileInterface[]
      */
-    public function getTpRatingProfiles(Criteria $criteria = null)
+    public function getTpRatingProfiles(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->tpRatingProfiles->matching($criteria)->toArray();
@@ -178,4 +187,5 @@ trait RatingProfileTrait
 
         return $this->tpRatingProfiles->toArray();
     }
+
 }

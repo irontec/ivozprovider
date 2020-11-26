@@ -1,37 +1,44 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\User;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
 /**
- * UserTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait UserTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * PickUpRelUserInterface mappedBy user
+     * orphanRemoval
      */
     protected $pickUpRelUsers;
 
     /**
      * @var ArrayCollection
+     * QueueMemberInterface mappedBy user
      */
     protected $queueMembers;
 
     /**
      * @var ArrayCollection
+     * CallForwardSettingInterface mappedBy user
      */
     protected $callForwardSettings;
-
 
     /**
      * Constructor
@@ -50,12 +57,12 @@ trait UserTrait
      * Factory method
      * @internal use EntityTools instead
      * @param UserDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -82,6 +89,7 @@ trait UserTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -94,12 +102,12 @@ trait UserTrait
     /**
      * @internal use EntityTools instead
      * @param UserDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getPickUpRelUsers())) {
@@ -109,6 +117,7 @@ trait UserTrait
                 )
             );
         }
+
         if (!is_null($dto->getQueueMembers())) {
             $this->replaceQueueMembers(
                 $fkTransformer->transformCollection(
@@ -116,6 +125,7 @@ trait UserTrait
                 )
             );
         }
+
         if (!is_null($dto->getCallForwardSettings())) {
             $this->replaceCallForwardSettings(
                 $fkTransformer->transformCollection(
@@ -149,14 +159,15 @@ trait UserTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add pickUpRelUser
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser
+     * @param PickUpRelUserInterface $pickUpRelUser
      *
      * @return static
      */
-    public function addPickUpRelUser(\Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser)
+    public function addPickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface
     {
         $this->pickUpRelUsers->add($pickUpRelUser);
 
@@ -166,20 +177,25 @@ trait UserTrait
     /**
      * Remove pickUpRelUser
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser
+     * @param PickUpRelUserInterface $pickUpRelUser
+     *
+     * @return static
      */
-    public function removePickUpRelUser(\Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser)
+    public function removePickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface
     {
         $this->pickUpRelUsers->removeElement($pickUpRelUser);
+
+        return $this;
     }
 
     /**
      * Replace pickUpRelUsers
      *
-     * @param ArrayCollection $pickUpRelUsers of Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface
+     * @param ArrayCollection $pickUpRelUsers of PickUpRelUserInterface
+     *
      * @return static
      */
-    public function replacePickUpRelUsers(ArrayCollection $pickUpRelUsers)
+    public function replacePickUpRelUsers(ArrayCollection $pickUpRelUsers): UserInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -210,9 +226,9 @@ trait UserTrait
     /**
      * Get pickUpRelUsers
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[]
+     * @return PickUpRelUserInterface[]
      */
-    public function getPickUpRelUsers(Criteria $criteria = null)
+    public function getPickUpRelUsers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->pickUpRelUsers->matching($criteria)->toArray();
@@ -224,11 +240,11 @@ trait UserTrait
     /**
      * Add queueMember
      *
-     * @param \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember
+     * @param QueueMemberInterface $queueMember
      *
      * @return static
      */
-    public function addQueueMember(\Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember)
+    public function addQueueMember(QueueMemberInterface $queueMember): UserInterface
     {
         $this->queueMembers->add($queueMember);
 
@@ -238,20 +254,25 @@ trait UserTrait
     /**
      * Remove queueMember
      *
-     * @param \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember
+     * @param QueueMemberInterface $queueMember
+     *
+     * @return static
      */
-    public function removeQueueMember(\Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember)
+    public function removeQueueMember(QueueMemberInterface $queueMember): UserInterface
     {
         $this->queueMembers->removeElement($queueMember);
+
+        return $this;
     }
 
     /**
      * Replace queueMembers
      *
-     * @param ArrayCollection $queueMembers of Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface
+     * @param ArrayCollection $queueMembers of QueueMemberInterface
+     *
      * @return static
      */
-    public function replaceQueueMembers(ArrayCollection $queueMembers)
+    public function replaceQueueMembers(ArrayCollection $queueMembers): UserInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -282,9 +303,9 @@ trait UserTrait
     /**
      * Get queueMembers
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface[]
+     * @return QueueMemberInterface[]
      */
-    public function getQueueMembers(Criteria $criteria = null)
+    public function getQueueMembers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->queueMembers->matching($criteria)->toArray();
@@ -296,11 +317,11 @@ trait UserTrait
     /**
      * Add callForwardSetting
      *
-     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     * @param CallForwardSettingInterface $callForwardSetting
      *
      * @return static
      */
-    public function addCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting)
+    public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): UserInterface
     {
         $this->callForwardSettings->add($callForwardSetting);
 
@@ -310,20 +331,25 @@ trait UserTrait
     /**
      * Remove callForwardSetting
      *
-     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     * @param CallForwardSettingInterface $callForwardSetting
+     *
+     * @return static
      */
-    public function removeCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting)
+    public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): UserInterface
     {
         $this->callForwardSettings->removeElement($callForwardSetting);
+
+        return $this;
     }
 
     /**
      * Replace callForwardSettings
      *
-     * @param ArrayCollection $callForwardSettings of Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
+     * @param ArrayCollection $callForwardSettings of CallForwardSettingInterface
+     *
      * @return static
      */
-    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings)
+    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): UserInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -354,9 +380,9 @@ trait UserTrait
     /**
      * Get callForwardSettings
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
+     * @return CallForwardSettingInterface[]
      */
-    public function getCallForwardSettings(Criteria $criteria = null)
+    public function getCallForwardSettings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->callForwardSettings->matching($criteria)->toArray();
@@ -364,4 +390,5 @@ trait UserTrait
 
         return $this->callForwardSettings->toArray();
     }
+
 }

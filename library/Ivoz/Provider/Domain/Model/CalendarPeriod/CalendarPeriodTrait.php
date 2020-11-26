@@ -1,27 +1,30 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\CalendarPeriod;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
- * CalendarPeriodTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait CalendarPeriodTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
     /**
      * @var ArrayCollection
+     * CalendarPeriodsRelScheduleInterface mappedBy calendarPeriod
+     * orphanRemoval
      */
     protected $relSchedules;
-
 
     /**
      * Constructor
@@ -38,12 +41,12 @@ trait CalendarPeriodTrait
      * Factory method
      * @internal use EntityTools instead
      * @param CalendarPeriodDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -54,6 +57,7 @@ trait CalendarPeriodTrait
                 )
             );
         }
+
         $self->sanitizeValues();
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -66,12 +70,12 @@ trait CalendarPeriodTrait
     /**
      * @internal use EntityTools instead
      * @param CalendarPeriodDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getRelSchedules())) {
@@ -107,14 +111,15 @@ trait CalendarPeriodTrait
             'id' => self::getId()
         ];
     }
+
     /**
      * Add relSchedule
      *
-     * @param \Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface $relSchedule
+     * @param CalendarPeriodsRelScheduleInterface $relSchedule
      *
      * @return static
      */
-    public function addRelSchedule(\Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface $relSchedule)
+    public function addRelSchedule(CalendarPeriodsRelScheduleInterface $relSchedule): CalendarPeriodInterface
     {
         $this->relSchedules->add($relSchedule);
 
@@ -124,20 +129,25 @@ trait CalendarPeriodTrait
     /**
      * Remove relSchedule
      *
-     * @param \Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface $relSchedule
+     * @param CalendarPeriodsRelScheduleInterface $relSchedule
+     *
+     * @return static
      */
-    public function removeRelSchedule(\Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface $relSchedule)
+    public function removeRelSchedule(CalendarPeriodsRelScheduleInterface $relSchedule): CalendarPeriodInterface
     {
         $this->relSchedules->removeElement($relSchedule);
+
+        return $this;
     }
 
     /**
      * Replace relSchedules
      *
-     * @param ArrayCollection $relSchedules of Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface
+     * @param ArrayCollection $relSchedules of CalendarPeriodsRelScheduleInterface
+     *
      * @return static
      */
-    public function replaceRelSchedules(ArrayCollection $relSchedules)
+    public function replaceRelSchedules(ArrayCollection $relSchedules): CalendarPeriodInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
@@ -168,9 +178,9 @@ trait CalendarPeriodTrait
     /**
      * Get relSchedules
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface[]
+     * @return CalendarPeriodsRelScheduleInterface[]
      */
-    public function getRelSchedules(Criteria $criteria = null)
+    public function getRelSchedules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
             return $this->relSchedules->matching($criteria)->toArray();
@@ -178,4 +188,5 @@ trait CalendarPeriodTrait
 
         return $this->relSchedules->toArray();
     }
+
 }
