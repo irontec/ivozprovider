@@ -4,19 +4,23 @@ namespace Ivoz\Cgr\Domain\Model\TpRate;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TpRateDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpRateDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $tag;
 
@@ -46,22 +50,19 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     private $groupIntervalStart = '0s';
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto | null
+     * @var DestinationRateDto | null
      */
     private $destinationRate;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -69,8 +70,8 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -92,8 +93,8 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -124,11 +125,11 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $tpid
+     * @param string $tpid | null
      *
      * @return static
      */
-    public function setTpid($tpid = null)
+    public function setTpid(?string $tpid = null): self
     {
         $this->tpid = $tpid;
 
@@ -138,17 +139,17 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTpid()
+    public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
     /**
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
-    public function setTag($tag = null)
+    public function setTag(?string $tag = null): self
     {
         $this->tag = $tag;
 
@@ -158,17 +159,17 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
 
     /**
-     * @param float $connectFee
+     * @param float $connectFee | null
      *
      * @return static
      */
-    public function setConnectFee($connectFee = null)
+    public function setConnectFee(?float $connectFee = null): self
     {
         $this->connectFee = $connectFee;
 
@@ -178,17 +179,17 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getConnectFee()
+    public function getConnectFee(): ?float
     {
         return $this->connectFee;
     }
 
     /**
-     * @param float $rateCost
+     * @param float $rateCost | null
      *
      * @return static
      */
-    public function setRateCost($rateCost = null)
+    public function setRateCost(?float $rateCost = null): self
     {
         $this->rateCost = $rateCost;
 
@@ -198,17 +199,17 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getRateCost()
+    public function getRateCost(): ?float
     {
         return $this->rateCost;
     }
 
     /**
-     * @param string $rateUnit
+     * @param string $rateUnit | null
      *
      * @return static
      */
-    public function setRateUnit($rateUnit = null)
+    public function setRateUnit(?string $rateUnit = null): self
     {
         $this->rateUnit = $rateUnit;
 
@@ -218,17 +219,17 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRateUnit()
+    public function getRateUnit(): ?string
     {
         return $this->rateUnit;
     }
 
     /**
-     * @param string $rateIncrement
+     * @param string $rateIncrement | null
      *
      * @return static
      */
-    public function setRateIncrement($rateIncrement = null)
+    public function setRateIncrement(?string $rateIncrement = null): self
     {
         $this->rateIncrement = $rateIncrement;
 
@@ -238,17 +239,17 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRateIncrement()
+    public function getRateIncrement(): ?string
     {
         return $this->rateIncrement;
     }
 
     /**
-     * @param string $groupIntervalStart
+     * @param string $groupIntervalStart | null
      *
      * @return static
      */
-    public function setGroupIntervalStart($groupIntervalStart = null)
+    public function setGroupIntervalStart(?string $groupIntervalStart = null): self
     {
         $this->groupIntervalStart = $groupIntervalStart;
 
@@ -258,17 +259,17 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getGroupIntervalStart()
+    public function getGroupIntervalStart(): ?string
     {
         return $this->groupIntervalStart;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt | null
      *
      * @return static
      */
-    public function setCreatedAt($createdAt = null)
+    public function setCreatedAt($createdAt = null): self
     {
         $this->createdAt = $createdAt;
 
@@ -276,7 +277,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedAt()
     {
@@ -284,11 +285,11 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -296,19 +297,19 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto $destinationRate
+     * @param DestinationRateDto | null
      *
      * @return static
      */
-    public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto $destinationRate = null)
+    public function setDestinationRate(?DestinationRateDto $destinationRate = null): self
     {
         $this->destinationRate = $destinationRate;
 
@@ -316,22 +317,20 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto | null
+     * @return DestinationRateDto | null
      */
-    public function getDestinationRate()
+    public function getDestinationRate(): ?DestinationRateDto
     {
         return $this->destinationRate;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDestinationRateId($id)
+    public function setDestinationRateId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto($id)
+            ? new DestinationRateDto($id)
             : null;
 
         return $this->setDestinationRate($value);
@@ -348,4 +347,5 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

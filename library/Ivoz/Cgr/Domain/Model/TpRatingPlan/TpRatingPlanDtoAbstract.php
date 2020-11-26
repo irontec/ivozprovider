@@ -4,24 +4,28 @@ namespace Ivoz\Cgr\Domain\Model\TpRatingPlan;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TpRatingPlanDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $tag;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $destratesTag;
 
@@ -36,22 +40,19 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     private $weight = 10;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
+     * @var RatingPlanDto | null
      */
     private $ratingPlan;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -59,8 +60,8 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -80,8 +81,8 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -110,11 +111,11 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $tpid
+     * @param string $tpid | null
      *
      * @return static
      */
-    public function setTpid($tpid = null)
+    public function setTpid(?string $tpid = null): self
     {
         $this->tpid = $tpid;
 
@@ -124,17 +125,17 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTpid()
+    public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
     /**
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
-    public function setTag($tag = null)
+    public function setTag(?string $tag = null): self
     {
         $this->tag = $tag;
 
@@ -144,17 +145,17 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
 
     /**
-     * @param string $destratesTag
+     * @param string $destratesTag | null
      *
      * @return static
      */
-    public function setDestratesTag($destratesTag = null)
+    public function setDestratesTag(?string $destratesTag = null): self
     {
         $this->destratesTag = $destratesTag;
 
@@ -164,17 +165,17 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDestratesTag()
+    public function getDestratesTag(): ?string
     {
         return $this->destratesTag;
     }
 
     /**
-     * @param string $timingTag
+     * @param string $timingTag | null
      *
      * @return static
      */
-    public function setTimingTag($timingTag = null)
+    public function setTimingTag(?string $timingTag = null): self
     {
         $this->timingTag = $timingTag;
 
@@ -184,17 +185,17 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTimingTag()
+    public function getTimingTag(): ?string
     {
         return $this->timingTag;
     }
 
     /**
-     * @param float $weight
+     * @param float $weight | null
      *
      * @return static
      */
-    public function setWeight($weight = null)
+    public function setWeight(?float $weight = null): self
     {
         $this->weight = $weight;
 
@@ -204,17 +205,17 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getWeight()
+    public function getWeight(): ?float
     {
         return $this->weight;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt | null
      *
      * @return static
      */
-    public function setCreatedAt($createdAt = null)
+    public function setCreatedAt($createdAt = null): self
     {
         $this->createdAt = $createdAt;
 
@@ -222,7 +223,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedAt()
     {
@@ -230,11 +231,11 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -242,19 +243,19 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
+     * @param RatingPlanDto | null
      *
      * @return static
      */
-    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
+    public function setRatingPlan(?RatingPlanDto $ratingPlan = null): self
     {
         $this->ratingPlan = $ratingPlan;
 
@@ -262,22 +263,20 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
+     * @return RatingPlanDto | null
      */
-    public function getRatingPlan()
+    public function getRatingPlan(): ?RatingPlanDto
     {
         return $this->ratingPlan;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRatingPlanId($id)
+    public function setRatingPlanId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto($id)
+            ? new RatingPlanDto($id)
             : null;
 
         return $this->setRatingPlan($value);
@@ -294,4 +293,5 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

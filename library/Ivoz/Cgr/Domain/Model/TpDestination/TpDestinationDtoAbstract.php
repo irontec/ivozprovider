@@ -4,19 +4,23 @@ namespace Ivoz\Cgr\Domain\Model\TpDestination;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Destination\DestinationDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TpDestinationDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $tag;
 
@@ -26,22 +30,19 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     private $prefix;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationDto | null
+     * @var DestinationDto | null
      */
     private $destination;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -49,8 +50,8 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -68,8 +69,8 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -96,11 +97,11 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $tpid
+     * @param string $tpid | null
      *
      * @return static
      */
-    public function setTpid($tpid = null)
+    public function setTpid(?string $tpid = null): self
     {
         $this->tpid = $tpid;
 
@@ -110,17 +111,17 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTpid()
+    public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
     /**
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
-    public function setTag($tag = null)
+    public function setTag(?string $tag = null): self
     {
         $this->tag = $tag;
 
@@ -130,17 +131,17 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
 
     /**
-     * @param string $prefix
+     * @param string $prefix | null
      *
      * @return static
      */
-    public function setPrefix($prefix = null)
+    public function setPrefix(?string $prefix = null): self
     {
         $this->prefix = $prefix;
 
@@ -150,17 +151,17 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPrefix()
+    public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt | null
      *
      * @return static
      */
-    public function setCreatedAt($createdAt = null)
+    public function setCreatedAt($createdAt = null): self
     {
         $this->createdAt = $createdAt;
 
@@ -168,7 +169,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedAt()
     {
@@ -176,11 +177,11 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -188,19 +189,19 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationDto $destination
+     * @param DestinationDto | null
      *
      * @return static
      */
-    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationDto $destination = null)
+    public function setDestination(?DestinationDto $destination = null): self
     {
         $this->destination = $destination;
 
@@ -208,22 +209,20 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationDto | null
+     * @return DestinationDto | null
      */
-    public function getDestination()
+    public function getDestination(): ?DestinationDto
     {
         return $this->destination;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDestinationId($id)
+    public function setDestinationId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Destination\DestinationDto($id)
+            ? new DestinationDto($id)
             : null;
 
         return $this->setDestination($value);
@@ -240,4 +239,5 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

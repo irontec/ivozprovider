@@ -4,12 +4,17 @@ namespace Ivoz\Cgr\Domain\Model\TpRatingProfile;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto;
+use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TpRatingProfileDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -26,7 +31,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     private $direction = '*out';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $tenant;
 
@@ -36,7 +41,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     private $category = 'call';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $subject;
 
@@ -46,42 +51,39 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     private $activationTime = '1970-01-01 00:00:00';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $ratingPlanTag;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $fallbackSubjects;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $cdrStatQueueIds;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto | null
+     * @var RatingProfileDto | null
      */
     private $ratingProfile;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto | null
+     * @var OutgoingRoutingRelCarrierDto | null
      */
     private $outgoingRoutingRelCarrier;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -89,8 +91,8 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -116,8 +118,8 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -152,11 +154,11 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $tpid
+     * @param string $tpid | null
      *
      * @return static
      */
-    public function setTpid($tpid = null)
+    public function setTpid(?string $tpid = null): self
     {
         $this->tpid = $tpid;
 
@@ -166,17 +168,17 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTpid()
+    public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
     /**
-     * @param string $loadid
+     * @param string $loadid | null
      *
      * @return static
      */
-    public function setLoadid($loadid = null)
+    public function setLoadid(?string $loadid = null): self
     {
         $this->loadid = $loadid;
 
@@ -186,17 +188,17 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getLoadid()
+    public function getLoadid(): ?string
     {
         return $this->loadid;
     }
 
     /**
-     * @param string $direction
+     * @param string $direction | null
      *
      * @return static
      */
-    public function setDirection($direction = null)
+    public function setDirection(?string $direction = null): self
     {
         $this->direction = $direction;
 
@@ -206,17 +208,17 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDirection()
+    public function getDirection(): ?string
     {
         return $this->direction;
     }
 
     /**
-     * @param string $tenant
+     * @param string $tenant | null
      *
      * @return static
      */
-    public function setTenant($tenant = null)
+    public function setTenant(?string $tenant = null): self
     {
         $this->tenant = $tenant;
 
@@ -226,17 +228,17 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTenant()
+    public function getTenant(): ?string
     {
         return $this->tenant;
     }
 
     /**
-     * @param string $category
+     * @param string $category | null
      *
      * @return static
      */
-    public function setCategory($category = null)
+    public function setCategory(?string $category = null): self
     {
         $this->category = $category;
 
@@ -246,17 +248,17 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCategory()
+    public function getCategory(): ?string
     {
         return $this->category;
     }
 
     /**
-     * @param string $subject
+     * @param string $subject | null
      *
      * @return static
      */
-    public function setSubject($subject = null)
+    public function setSubject(?string $subject = null): self
     {
         $this->subject = $subject;
 
@@ -266,17 +268,17 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getSubject()
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
 
     /**
-     * @param string $activationTime
+     * @param string $activationTime | null
      *
      * @return static
      */
-    public function setActivationTime($activationTime = null)
+    public function setActivationTime(?string $activationTime = null): self
     {
         $this->activationTime = $activationTime;
 
@@ -286,17 +288,17 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getActivationTime()
+    public function getActivationTime(): ?string
     {
         return $this->activationTime;
     }
 
     /**
-     * @param string $ratingPlanTag
+     * @param string $ratingPlanTag | null
      *
      * @return static
      */
-    public function setRatingPlanTag($ratingPlanTag = null)
+    public function setRatingPlanTag(?string $ratingPlanTag = null): self
     {
         $this->ratingPlanTag = $ratingPlanTag;
 
@@ -306,17 +308,17 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRatingPlanTag()
+    public function getRatingPlanTag(): ?string
     {
         return $this->ratingPlanTag;
     }
 
     /**
-     * @param string $fallbackSubjects
+     * @param string $fallbackSubjects | null
      *
      * @return static
      */
-    public function setFallbackSubjects($fallbackSubjects = null)
+    public function setFallbackSubjects(?string $fallbackSubjects = null): self
     {
         $this->fallbackSubjects = $fallbackSubjects;
 
@@ -326,17 +328,17 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getFallbackSubjects()
+    public function getFallbackSubjects(): ?string
     {
         return $this->fallbackSubjects;
     }
 
     /**
-     * @param string $cdrStatQueueIds
+     * @param string $cdrStatQueueIds | null
      *
      * @return static
      */
-    public function setCdrStatQueueIds($cdrStatQueueIds = null)
+    public function setCdrStatQueueIds(?string $cdrStatQueueIds = null): self
     {
         $this->cdrStatQueueIds = $cdrStatQueueIds;
 
@@ -346,17 +348,17 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCdrStatQueueIds()
+    public function getCdrStatQueueIds(): ?string
     {
         return $this->cdrStatQueueIds;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt | null
      *
      * @return static
      */
-    public function setCreatedAt($createdAt = null)
+    public function setCreatedAt($createdAt = null): self
     {
         $this->createdAt = $createdAt;
 
@@ -364,7 +366,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedAt()
     {
@@ -372,11 +374,11 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -384,19 +386,19 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto $ratingProfile
+     * @param RatingProfileDto | null
      *
      * @return static
      */
-    public function setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto $ratingProfile = null)
+    public function setRatingProfile(?RatingProfileDto $ratingProfile = null): self
     {
         $this->ratingProfile = $ratingProfile;
 
@@ -404,22 +406,20 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto | null
+     * @return RatingProfileDto | null
      */
-    public function getRatingProfile()
+    public function getRatingProfile(): ?RatingProfileDto
     {
         return $this->ratingProfile;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRatingProfileId($id)
+    public function setRatingProfileId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto($id)
+            ? new RatingProfileDto($id)
             : null;
 
         return $this->setRatingProfile($value);
@@ -438,11 +438,11 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto $outgoingRoutingRelCarrier
+     * @param OutgoingRoutingRelCarrierDto | null
      *
      * @return static
      */
-    public function setOutgoingRoutingRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto $outgoingRoutingRelCarrier = null)
+    public function setOutgoingRoutingRelCarrier(?OutgoingRoutingRelCarrierDto $outgoingRoutingRelCarrier = null): self
     {
         $this->outgoingRoutingRelCarrier = $outgoingRoutingRelCarrier;
 
@@ -450,22 +450,20 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto | null
+     * @return OutgoingRoutingRelCarrierDto | null
      */
-    public function getOutgoingRoutingRelCarrier()
+    public function getOutgoingRoutingRelCarrier(): ?OutgoingRoutingRelCarrierDto
     {
         return $this->outgoingRoutingRelCarrier;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setOutgoingRoutingRelCarrierId($id)
+    public function setOutgoingRoutingRelCarrierId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto($id)
+            ? new OutgoingRoutingRelCarrierDto($id)
             : null;
 
         return $this->setOutgoingRoutingRelCarrier($value);
@@ -482,4 +480,5 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

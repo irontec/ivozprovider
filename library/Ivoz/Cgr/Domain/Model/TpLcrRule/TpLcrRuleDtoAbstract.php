@@ -4,12 +4,16 @@ namespace Ivoz\Cgr\Domain\Model\TpLcrRule;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TpLcrRuleDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -36,12 +40,12 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     private $account = '*any';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $subject = '*any';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $destinationTag = '*any';
 
@@ -56,12 +60,12 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     private $strategy = '*lowest_cost';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $strategyParams = '';
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $activationTime = 'CURRENT_TIMESTAMP';
 
@@ -71,22 +75,19 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     private $weight = 10;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto | null
+     * @var OutgoingRoutingDto | null
      */
     private $outgoingRouting;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -94,8 +95,8 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -122,8 +123,8 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -159,11 +160,11 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $tpid
+     * @param string $tpid | null
      *
      * @return static
      */
-    public function setTpid($tpid = null)
+    public function setTpid(?string $tpid = null): self
     {
         $this->tpid = $tpid;
 
@@ -173,17 +174,17 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTpid()
+    public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
     /**
-     * @param string $direction
+     * @param string $direction | null
      *
      * @return static
      */
-    public function setDirection($direction = null)
+    public function setDirection(?string $direction = null): self
     {
         $this->direction = $direction;
 
@@ -193,17 +194,17 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDirection()
+    public function getDirection(): ?string
     {
         return $this->direction;
     }
 
     /**
-     * @param string $tenant
+     * @param string $tenant | null
      *
      * @return static
      */
-    public function setTenant($tenant = null)
+    public function setTenant(?string $tenant = null): self
     {
         $this->tenant = $tenant;
 
@@ -213,17 +214,17 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTenant()
+    public function getTenant(): ?string
     {
         return $this->tenant;
     }
 
     /**
-     * @param string $category
+     * @param string $category | null
      *
      * @return static
      */
-    public function setCategory($category = null)
+    public function setCategory(?string $category = null): self
     {
         $this->category = $category;
 
@@ -233,17 +234,17 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCategory()
+    public function getCategory(): ?string
     {
         return $this->category;
     }
 
     /**
-     * @param string $account
+     * @param string $account | null
      *
      * @return static
      */
-    public function setAccount($account = null)
+    public function setAccount(?string $account = null): self
     {
         $this->account = $account;
 
@@ -253,17 +254,17 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getAccount()
+    public function getAccount(): ?string
     {
         return $this->account;
     }
 
     /**
-     * @param string $subject
+     * @param string $subject | null
      *
      * @return static
      */
-    public function setSubject($subject = null)
+    public function setSubject(?string $subject = null): self
     {
         $this->subject = $subject;
 
@@ -273,17 +274,17 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getSubject()
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
 
     /**
-     * @param string $destinationTag
+     * @param string $destinationTag | null
      *
      * @return static
      */
-    public function setDestinationTag($destinationTag = null)
+    public function setDestinationTag(?string $destinationTag = null): self
     {
         $this->destinationTag = $destinationTag;
 
@@ -293,17 +294,17 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDestinationTag()
+    public function getDestinationTag(): ?string
     {
         return $this->destinationTag;
     }
 
     /**
-     * @param string $rpCategory
+     * @param string $rpCategory | null
      *
      * @return static
      */
-    public function setRpCategory($rpCategory = null)
+    public function setRpCategory(?string $rpCategory = null): self
     {
         $this->rpCategory = $rpCategory;
 
@@ -313,17 +314,17 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRpCategory()
+    public function getRpCategory(): ?string
     {
         return $this->rpCategory;
     }
 
     /**
-     * @param string $strategy
+     * @param string $strategy | null
      *
      * @return static
      */
-    public function setStrategy($strategy = null)
+    public function setStrategy(?string $strategy = null): self
     {
         $this->strategy = $strategy;
 
@@ -333,17 +334,17 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getStrategy()
+    public function getStrategy(): ?string
     {
         return $this->strategy;
     }
 
     /**
-     * @param string $strategyParams
+     * @param string $strategyParams | null
      *
      * @return static
      */
-    public function setStrategyParams($strategyParams = null)
+    public function setStrategyParams(?string $strategyParams = null): self
     {
         $this->strategyParams = $strategyParams;
 
@@ -353,17 +354,17 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getStrategyParams()
+    public function getStrategyParams(): ?string
     {
         return $this->strategyParams;
     }
 
     /**
-     * @param \DateTime $activationTime
+     * @param \DateTimeInterface $activationTime | null
      *
      * @return static
      */
-    public function setActivationTime($activationTime = null)
+    public function setActivationTime($activationTime = null): self
     {
         $this->activationTime = $activationTime;
 
@@ -371,7 +372,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getActivationTime()
     {
@@ -379,11 +380,11 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param float $weight
+     * @param float $weight | null
      *
      * @return static
      */
-    public function setWeight($weight = null)
+    public function setWeight(?float $weight = null): self
     {
         $this->weight = $weight;
 
@@ -393,17 +394,17 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getWeight()
+    public function getWeight(): ?float
     {
         return $this->weight;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt | null
      *
      * @return static
      */
-    public function setCreatedAt($createdAt = null)
+    public function setCreatedAt($createdAt = null): self
     {
         $this->createdAt = $createdAt;
 
@@ -411,7 +412,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedAt()
     {
@@ -419,11 +420,11 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -431,19 +432,19 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto $outgoingRouting
+     * @param OutgoingRoutingDto | null
      *
      * @return static
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto $outgoingRouting = null)
+    public function setOutgoingRouting(?OutgoingRoutingDto $outgoingRouting = null): self
     {
         $this->outgoingRouting = $outgoingRouting;
 
@@ -451,22 +452,20 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto | null
+     * @return OutgoingRoutingDto | null
      */
-    public function getOutgoingRouting()
+    public function getOutgoingRouting(): ?OutgoingRoutingDto
     {
         return $this->outgoingRouting;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setOutgoingRoutingId($id)
+    public function setOutgoingRoutingId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto($id)
+            ? new OutgoingRoutingDto($id)
             : null;
 
         return $this->setOutgoingRouting($value);
@@ -483,4 +482,5 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

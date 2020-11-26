@@ -4,19 +4,23 @@ namespace Ivoz\Cgr\Domain\Model\TpTiming;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TpTimingDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $tag;
 
@@ -46,22 +50,19 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     private $time = '00:00:00';
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
+     * @var RatingPlanDto | null
      */
     private $ratingPlan;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -69,8 +70,8 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -92,8 +93,8 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -124,11 +125,11 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $tpid
+     * @param string $tpid | null
      *
      * @return static
      */
-    public function setTpid($tpid = null)
+    public function setTpid(?string $tpid = null): self
     {
         $this->tpid = $tpid;
 
@@ -138,17 +139,17 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTpid()
+    public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
     /**
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
-    public function setTag($tag = null)
+    public function setTag(?string $tag = null): self
     {
         $this->tag = $tag;
 
@@ -158,17 +159,17 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
 
     /**
-     * @param string $years
+     * @param string $years | null
      *
      * @return static
      */
-    public function setYears($years = null)
+    public function setYears(?string $years = null): self
     {
         $this->years = $years;
 
@@ -178,17 +179,17 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getYears()
+    public function getYears(): ?string
     {
         return $this->years;
     }
 
     /**
-     * @param string $months
+     * @param string $months | null
      *
      * @return static
      */
-    public function setMonths($months = null)
+    public function setMonths(?string $months = null): self
     {
         $this->months = $months;
 
@@ -198,17 +199,17 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getMonths()
+    public function getMonths(): ?string
     {
         return $this->months;
     }
 
     /**
-     * @param string $monthDays
+     * @param string $monthDays | null
      *
      * @return static
      */
-    public function setMonthDays($monthDays = null)
+    public function setMonthDays(?string $monthDays = null): self
     {
         $this->monthDays = $monthDays;
 
@@ -218,17 +219,17 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getMonthDays()
+    public function getMonthDays(): ?string
     {
         return $this->monthDays;
     }
 
     /**
-     * @param string $weekDays
+     * @param string $weekDays | null
      *
      * @return static
      */
-    public function setWeekDays($weekDays = null)
+    public function setWeekDays(?string $weekDays = null): self
     {
         $this->weekDays = $weekDays;
 
@@ -238,17 +239,17 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getWeekDays()
+    public function getWeekDays(): ?string
     {
         return $this->weekDays;
     }
 
     /**
-     * @param string $time
+     * @param string $time | null
      *
      * @return static
      */
-    public function setTime($time = null)
+    public function setTime(?string $time = null): self
     {
         $this->time = $time;
 
@@ -258,17 +259,17 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTime()
+    public function getTime(): ?string
     {
         return $this->time;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt | null
      *
      * @return static
      */
-    public function setCreatedAt($createdAt = null)
+    public function setCreatedAt($createdAt = null): self
     {
         $this->createdAt = $createdAt;
 
@@ -276,7 +277,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedAt()
     {
@@ -284,11 +285,11 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -296,19 +297,19 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
+     * @param RatingPlanDto | null
      *
      * @return static
      */
-    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
+    public function setRatingPlan(?RatingPlanDto $ratingPlan = null): self
     {
         $this->ratingPlan = $ratingPlan;
 
@@ -316,22 +317,20 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
+     * @return RatingPlanDto | null
      */
-    public function getRatingPlan()
+    public function getRatingPlan(): ?RatingPlanDto
     {
         return $this->ratingPlan;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRatingPlanId($id)
+    public function setRatingPlanId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto($id)
+            ? new RatingPlanDto($id)
             : null;
 
         return $this->setRatingPlan($value);
@@ -348,4 +347,5 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

@@ -4,12 +4,16 @@ namespace Ivoz\Cgr\Domain\Model\TpDerivedCharger;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TpDerivedChargerDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -41,12 +45,12 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     private $account = '*any';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $subject = '*any';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $destinationIds = '*any';
 
@@ -136,22 +140,19 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     private $costField = '*default';
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -159,8 +160,8 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -200,8 +201,8 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -250,11 +251,11 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param string $tpid
+     * @param string $tpid | null
      *
      * @return static
      */
-    public function setTpid($tpid = null)
+    public function setTpid(?string $tpid = null): self
     {
         $this->tpid = $tpid;
 
@@ -264,17 +265,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getTpid()
+    public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
     /**
-     * @param string $loadid
+     * @param string $loadid | null
      *
      * @return static
      */
-    public function setLoadid($loadid = null)
+    public function setLoadid(?string $loadid = null): self
     {
         $this->loadid = $loadid;
 
@@ -284,17 +285,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getLoadid()
+    public function getLoadid(): ?string
     {
         return $this->loadid;
     }
 
     /**
-     * @param string $direction
+     * @param string $direction | null
      *
      * @return static
      */
-    public function setDirection($direction = null)
+    public function setDirection(?string $direction = null): self
     {
         $this->direction = $direction;
 
@@ -304,17 +305,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getDirection()
+    public function getDirection(): ?string
     {
         return $this->direction;
     }
 
     /**
-     * @param string $tenant
+     * @param string $tenant | null
      *
      * @return static
      */
-    public function setTenant($tenant = null)
+    public function setTenant(?string $tenant = null): self
     {
         $this->tenant = $tenant;
 
@@ -324,17 +325,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getTenant()
+    public function getTenant(): ?string
     {
         return $this->tenant;
     }
 
     /**
-     * @param string $category
+     * @param string $category | null
      *
      * @return static
      */
-    public function setCategory($category = null)
+    public function setCategory(?string $category = null): self
     {
         $this->category = $category;
 
@@ -344,17 +345,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getCategory()
+    public function getCategory(): ?string
     {
         return $this->category;
     }
 
     /**
-     * @param string $account
+     * @param string $account | null
      *
      * @return static
      */
-    public function setAccount($account = null)
+    public function setAccount(?string $account = null): self
     {
         $this->account = $account;
 
@@ -364,17 +365,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getAccount()
+    public function getAccount(): ?string
     {
         return $this->account;
     }
 
     /**
-     * @param string $subject
+     * @param string $subject | null
      *
      * @return static
      */
-    public function setSubject($subject = null)
+    public function setSubject(?string $subject = null): self
     {
         $this->subject = $subject;
 
@@ -384,17 +385,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getSubject()
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
 
     /**
-     * @param string $destinationIds
+     * @param string $destinationIds | null
      *
      * @return static
      */
-    public function setDestinationIds($destinationIds = null)
+    public function setDestinationIds(?string $destinationIds = null): self
     {
         $this->destinationIds = $destinationIds;
 
@@ -404,17 +405,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getDestinationIds()
+    public function getDestinationIds(): ?string
     {
         return $this->destinationIds;
     }
 
     /**
-     * @param string $runid
+     * @param string $runid | null
      *
      * @return static
      */
-    public function setRunid($runid = null)
+    public function setRunid(?string $runid = null): self
     {
         $this->runid = $runid;
 
@@ -424,17 +425,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getRunid()
+    public function getRunid(): ?string
     {
         return $this->runid;
     }
 
     /**
-     * @param string $runFilters
+     * @param string $runFilters | null
      *
      * @return static
      */
-    public function setRunFilters($runFilters = null)
+    public function setRunFilters(?string $runFilters = null): self
     {
         $this->runFilters = $runFilters;
 
@@ -444,17 +445,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getRunFilters()
+    public function getRunFilters(): ?string
     {
         return $this->runFilters;
     }
 
     /**
-     * @param string $reqTypeField
+     * @param string $reqTypeField | null
      *
      * @return static
      */
-    public function setReqTypeField($reqTypeField = null)
+    public function setReqTypeField(?string $reqTypeField = null): self
     {
         $this->reqTypeField = $reqTypeField;
 
@@ -464,17 +465,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getReqTypeField()
+    public function getReqTypeField(): ?string
     {
         return $this->reqTypeField;
     }
 
     /**
-     * @param string $directionField
+     * @param string $directionField | null
      *
      * @return static
      */
-    public function setDirectionField($directionField = null)
+    public function setDirectionField(?string $directionField = null): self
     {
         $this->directionField = $directionField;
 
@@ -484,17 +485,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getDirectionField()
+    public function getDirectionField(): ?string
     {
         return $this->directionField;
     }
 
     /**
-     * @param string $tenantField
+     * @param string $tenantField | null
      *
      * @return static
      */
-    public function setTenantField($tenantField = null)
+    public function setTenantField(?string $tenantField = null): self
     {
         $this->tenantField = $tenantField;
 
@@ -504,17 +505,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getTenantField()
+    public function getTenantField(): ?string
     {
         return $this->tenantField;
     }
 
     /**
-     * @param string $categoryField
+     * @param string $categoryField | null
      *
      * @return static
      */
-    public function setCategoryField($categoryField = null)
+    public function setCategoryField(?string $categoryField = null): self
     {
         $this->categoryField = $categoryField;
 
@@ -524,17 +525,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getCategoryField()
+    public function getCategoryField(): ?string
     {
         return $this->categoryField;
     }
 
     /**
-     * @param string $accountField
+     * @param string $accountField | null
      *
      * @return static
      */
-    public function setAccountField($accountField = null)
+    public function setAccountField(?string $accountField = null): self
     {
         $this->accountField = $accountField;
 
@@ -544,17 +545,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getAccountField()
+    public function getAccountField(): ?string
     {
         return $this->accountField;
     }
 
     /**
-     * @param string $subjectField
+     * @param string $subjectField | null
      *
      * @return static
      */
-    public function setSubjectField($subjectField = null)
+    public function setSubjectField(?string $subjectField = null): self
     {
         $this->subjectField = $subjectField;
 
@@ -564,17 +565,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getSubjectField()
+    public function getSubjectField(): ?string
     {
         return $this->subjectField;
     }
 
     /**
-     * @param string $destinationField
+     * @param string $destinationField | null
      *
      * @return static
      */
-    public function setDestinationField($destinationField = null)
+    public function setDestinationField(?string $destinationField = null): self
     {
         $this->destinationField = $destinationField;
 
@@ -584,17 +585,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getDestinationField()
+    public function getDestinationField(): ?string
     {
         return $this->destinationField;
     }
 
     /**
-     * @param string $setupTimeField
+     * @param string $setupTimeField | null
      *
      * @return static
      */
-    public function setSetupTimeField($setupTimeField = null)
+    public function setSetupTimeField(?string $setupTimeField = null): self
     {
         $this->setupTimeField = $setupTimeField;
 
@@ -604,17 +605,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getSetupTimeField()
+    public function getSetupTimeField(): ?string
     {
         return $this->setupTimeField;
     }
 
     /**
-     * @param string $pddField
+     * @param string $pddField | null
      *
      * @return static
      */
-    public function setPddField($pddField = null)
+    public function setPddField(?string $pddField = null): self
     {
         $this->pddField = $pddField;
 
@@ -624,17 +625,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getPddField()
+    public function getPddField(): ?string
     {
         return $this->pddField;
     }
 
     /**
-     * @param string $answerTimeField
+     * @param string $answerTimeField | null
      *
      * @return static
      */
-    public function setAnswerTimeField($answerTimeField = null)
+    public function setAnswerTimeField(?string $answerTimeField = null): self
     {
         $this->answerTimeField = $answerTimeField;
 
@@ -644,17 +645,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getAnswerTimeField()
+    public function getAnswerTimeField(): ?string
     {
         return $this->answerTimeField;
     }
 
     /**
-     * @param string $usageField
+     * @param string $usageField | null
      *
      * @return static
      */
-    public function setUsageField($usageField = null)
+    public function setUsageField(?string $usageField = null): self
     {
         $this->usageField = $usageField;
 
@@ -664,17 +665,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getUsageField()
+    public function getUsageField(): ?string
     {
         return $this->usageField;
     }
 
     /**
-     * @param string $supplierField
+     * @param string $supplierField | null
      *
      * @return static
      */
-    public function setSupplierField($supplierField = null)
+    public function setSupplierField(?string $supplierField = null): self
     {
         $this->supplierField = $supplierField;
 
@@ -684,17 +685,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getSupplierField()
+    public function getSupplierField(): ?string
     {
         return $this->supplierField;
     }
 
     /**
-     * @param string $disconnectCauseField
+     * @param string $disconnectCauseField | null
      *
      * @return static
      */
-    public function setDisconnectCauseField($disconnectCauseField = null)
+    public function setDisconnectCauseField(?string $disconnectCauseField = null): self
     {
         $this->disconnectCauseField = $disconnectCauseField;
 
@@ -704,17 +705,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getDisconnectCauseField()
+    public function getDisconnectCauseField(): ?string
     {
         return $this->disconnectCauseField;
     }
 
     /**
-     * @param string $ratedTimeField
+     * @param string $ratedTimeField | null
      *
      * @return static
      */
-    public function setRatedTimeField($ratedTimeField = null)
+    public function setRatedTimeField(?string $ratedTimeField = null): self
     {
         $this->ratedTimeField = $ratedTimeField;
 
@@ -724,17 +725,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getRatedTimeField()
+    public function getRatedTimeField(): ?string
     {
         return $this->ratedTimeField;
     }
 
     /**
-     * @param string $costField
+     * @param string $costField | null
      *
      * @return static
      */
-    public function setCostField($costField = null)
+    public function setCostField(?string $costField = null): self
     {
         $this->costField = $costField;
 
@@ -744,17 +745,17 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getCostField()
+    public function getCostField(): ?string
     {
         return $this->costField;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt | null
      *
      * @return static
      */
-    public function setCreatedAt($createdAt = null)
+    public function setCreatedAt($createdAt = null): self
     {
         $this->createdAt = $createdAt;
 
@@ -762,7 +763,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedAt()
     {
@@ -770,11 +771,11 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -782,19 +783,19 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -802,22 +803,20 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -834,4 +833,5 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
 
         return null;
     }
+
 }

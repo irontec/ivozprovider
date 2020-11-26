@@ -4,12 +4,17 @@ namespace Ivoz\Cgr\Domain\Model\TpAccountAction;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TpAccountActionDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -31,47 +36,44 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     private $account;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $actionPlanTag;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $actionTriggersTag;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $allowNegative = false;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $disabled = false;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @var CarrierDto | null
      */
     private $carrier;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -79,8 +81,8 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -104,8 +106,8 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -138,11 +140,11 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $tpid
+     * @param string $tpid | null
      *
      * @return static
      */
-    public function setTpid($tpid = null)
+    public function setTpid(?string $tpid = null): self
     {
         $this->tpid = $tpid;
 
@@ -152,17 +154,17 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTpid()
+    public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
     /**
-     * @param string $loadid
+     * @param string $loadid | null
      *
      * @return static
      */
-    public function setLoadid($loadid = null)
+    public function setLoadid(?string $loadid = null): self
     {
         $this->loadid = $loadid;
 
@@ -172,17 +174,17 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getLoadid()
+    public function getLoadid(): ?string
     {
         return $this->loadid;
     }
 
     /**
-     * @param string $tenant
+     * @param string $tenant | null
      *
      * @return static
      */
-    public function setTenant($tenant = null)
+    public function setTenant(?string $tenant = null): self
     {
         $this->tenant = $tenant;
 
@@ -192,17 +194,17 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTenant()
+    public function getTenant(): ?string
     {
         return $this->tenant;
     }
 
     /**
-     * @param string $account
+     * @param string $account | null
      *
      * @return static
      */
-    public function setAccount($account = null)
+    public function setAccount(?string $account = null): self
     {
         $this->account = $account;
 
@@ -212,17 +214,17 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getAccount()
+    public function getAccount(): ?string
     {
         return $this->account;
     }
 
     /**
-     * @param string $actionPlanTag
+     * @param string $actionPlanTag | null
      *
      * @return static
      */
-    public function setActionPlanTag($actionPlanTag = null)
+    public function setActionPlanTag(?string $actionPlanTag = null): self
     {
         $this->actionPlanTag = $actionPlanTag;
 
@@ -232,17 +234,17 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getActionPlanTag()
+    public function getActionPlanTag(): ?string
     {
         return $this->actionPlanTag;
     }
 
     /**
-     * @param string $actionTriggersTag
+     * @param string $actionTriggersTag | null
      *
      * @return static
      */
-    public function setActionTriggersTag($actionTriggersTag = null)
+    public function setActionTriggersTag(?string $actionTriggersTag = null): self
     {
         $this->actionTriggersTag = $actionTriggersTag;
 
@@ -252,17 +254,17 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getActionTriggersTag()
+    public function getActionTriggersTag(): ?string
     {
         return $this->actionTriggersTag;
     }
 
     /**
-     * @param boolean $allowNegative
+     * @param bool $allowNegative | null
      *
      * @return static
      */
-    public function setAllowNegative($allowNegative = null)
+    public function setAllowNegative(?bool $allowNegative = null): self
     {
         $this->allowNegative = $allowNegative;
 
@@ -270,19 +272,19 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getAllowNegative()
+    public function getAllowNegative(): ?bool
     {
         return $this->allowNegative;
     }
 
     /**
-     * @param boolean $disabled
+     * @param bool $disabled | null
      *
      * @return static
      */
-    public function setDisabled($disabled = null)
+    public function setDisabled(?bool $disabled = null): self
     {
         $this->disabled = $disabled;
 
@@ -290,19 +292,19 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getDisabled()
+    public function getDisabled(): ?bool
     {
         return $this->disabled;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt | null
      *
      * @return static
      */
-    public function setCreatedAt($createdAt = null)
+    public function setCreatedAt($createdAt = null): self
     {
         $this->createdAt = $createdAt;
 
@@ -310,7 +312,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedAt()
     {
@@ -318,11 +320,11 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -330,19 +332,19 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -350,22 +352,20 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -384,11 +384,11 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
+     * @param CarrierDto | null
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
+    public function setCarrier(?CarrierDto $carrier = null): self
     {
         $this->carrier = $carrier;
 
@@ -396,22 +396,20 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @return CarrierDto | null
      */
-    public function getCarrier()
+    public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCarrierId($id)
+    public function setCarrierId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
+            ? new CarrierDto($id)
             : null;
 
         return $this->setCarrier($value);
@@ -428,4 +426,5 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

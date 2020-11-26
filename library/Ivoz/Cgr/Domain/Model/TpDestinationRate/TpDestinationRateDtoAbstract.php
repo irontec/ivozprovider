@@ -4,29 +4,33 @@ namespace Ivoz\Cgr\Domain\Model\TpDestinationRate;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TpDestinationRateDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $tag;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $destinationsTag;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $ratesTag;
 
@@ -36,14 +40,14 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     private $roundingMethod = '*up';
 
     /**
-     * @var integer
+     * @var int
      */
     private $roundingDecimals = 4;
 
     /**
      * @var float
      */
-    private $maxCost = 0.0;
+    private $maxCost = 0;
 
     /**
      * @var string
@@ -51,22 +55,19 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     private $maxCostStrategy = '';
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto | null
+     * @var DestinationRateDto | null
      */
     private $destinationRate;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -74,8 +75,8 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -98,8 +99,8 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -131,11 +132,11 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param string $tpid
+     * @param string $tpid | null
      *
      * @return static
      */
-    public function setTpid($tpid = null)
+    public function setTpid(?string $tpid = null): self
     {
         $this->tpid = $tpid;
 
@@ -145,17 +146,17 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     /**
      * @return string | null
      */
-    public function getTpid()
+    public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
     /**
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
-    public function setTag($tag = null)
+    public function setTag(?string $tag = null): self
     {
         $this->tag = $tag;
 
@@ -165,17 +166,17 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     /**
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
 
     /**
-     * @param string $destinationsTag
+     * @param string $destinationsTag | null
      *
      * @return static
      */
-    public function setDestinationsTag($destinationsTag = null)
+    public function setDestinationsTag(?string $destinationsTag = null): self
     {
         $this->destinationsTag = $destinationsTag;
 
@@ -185,17 +186,17 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     /**
      * @return string | null
      */
-    public function getDestinationsTag()
+    public function getDestinationsTag(): ?string
     {
         return $this->destinationsTag;
     }
 
     /**
-     * @param string $ratesTag
+     * @param string $ratesTag | null
      *
      * @return static
      */
-    public function setRatesTag($ratesTag = null)
+    public function setRatesTag(?string $ratesTag = null): self
     {
         $this->ratesTag = $ratesTag;
 
@@ -205,17 +206,17 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     /**
      * @return string | null
      */
-    public function getRatesTag()
+    public function getRatesTag(): ?string
     {
         return $this->ratesTag;
     }
 
     /**
-     * @param string $roundingMethod
+     * @param string $roundingMethod | null
      *
      * @return static
      */
-    public function setRoundingMethod($roundingMethod = null)
+    public function setRoundingMethod(?string $roundingMethod = null): self
     {
         $this->roundingMethod = $roundingMethod;
 
@@ -225,17 +226,17 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     /**
      * @return string | null
      */
-    public function getRoundingMethod()
+    public function getRoundingMethod(): ?string
     {
         return $this->roundingMethod;
     }
 
     /**
-     * @param integer $roundingDecimals
+     * @param int $roundingDecimals | null
      *
      * @return static
      */
-    public function setRoundingDecimals($roundingDecimals = null)
+    public function setRoundingDecimals(?int $roundingDecimals = null): self
     {
         $this->roundingDecimals = $roundingDecimals;
 
@@ -243,19 +244,19 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getRoundingDecimals()
+    public function getRoundingDecimals(): ?int
     {
         return $this->roundingDecimals;
     }
 
     /**
-     * @param float $maxCost
+     * @param float $maxCost | null
      *
      * @return static
      */
-    public function setMaxCost($maxCost = null)
+    public function setMaxCost(?float $maxCost = null): self
     {
         $this->maxCost = $maxCost;
 
@@ -265,17 +266,17 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     /**
      * @return float | null
      */
-    public function getMaxCost()
+    public function getMaxCost(): ?float
     {
         return $this->maxCost;
     }
 
     /**
-     * @param string $maxCostStrategy
+     * @param string $maxCostStrategy | null
      *
      * @return static
      */
-    public function setMaxCostStrategy($maxCostStrategy = null)
+    public function setMaxCostStrategy(?string $maxCostStrategy = null): self
     {
         $this->maxCostStrategy = $maxCostStrategy;
 
@@ -285,17 +286,17 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     /**
      * @return string | null
      */
-    public function getMaxCostStrategy()
+    public function getMaxCostStrategy(): ?string
     {
         return $this->maxCostStrategy;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt | null
      *
      * @return static
      */
-    public function setCreatedAt($createdAt = null)
+    public function setCreatedAt($createdAt = null): self
     {
         $this->createdAt = $createdAt;
 
@@ -303,7 +304,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedAt()
     {
@@ -311,11 +312,11 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -323,19 +324,19 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto $destinationRate
+     * @param DestinationRateDto | null
      *
      * @return static
      */
-    public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto $destinationRate = null)
+    public function setDestinationRate(?DestinationRateDto $destinationRate = null): self
     {
         $this->destinationRate = $destinationRate;
 
@@ -343,22 +344,20 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto | null
+     * @return DestinationRateDto | null
      */
-    public function getDestinationRate()
+    public function getDestinationRate(): ?DestinationRateDto
     {
         return $this->destinationRate;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDestinationRateId($id)
+    public function setDestinationRateId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto($id)
+            ? new DestinationRateDto($id)
             : null;
 
         return $this->setDestinationRate($value);
@@ -375,4 +374,5 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
 
         return null;
     }
+
 }
