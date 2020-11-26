@@ -4,34 +4,37 @@ namespace Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
+use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto;
 
 /**
- * @codeCoverageIgnore
- */
+* OutgoingRoutingRelCarrierDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto | null
+     * @var OutgoingRoutingDto | null
      */
     private $outgoingRouting;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @var CarrierDto | null
      */
     private $carrier;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto[] | null
+     * @var TpRatingProfileDto[] | null
      */
-    private $tpRatingProfiles = null;
-
-
-    use DtoNormalizer;
+    private $tpRatingProfiles;
 
     public function __construct($id = null)
     {
@@ -39,8 +42,8 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -55,8 +58,8 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -81,11 +84,11 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -93,19 +96,19 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto $outgoingRouting
+     * @param OutgoingRoutingDto | null
      *
      * @return static
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto $outgoingRouting = null)
+    public function setOutgoingRouting(?OutgoingRoutingDto $outgoingRouting = null): self
     {
         $this->outgoingRouting = $outgoingRouting;
 
@@ -113,22 +116,20 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto | null
+     * @return OutgoingRoutingDto | null
      */
-    public function getOutgoingRouting()
+    public function getOutgoingRouting(): ?OutgoingRoutingDto
     {
         return $this->outgoingRouting;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setOutgoingRoutingId($id)
+    public function setOutgoingRoutingId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto($id)
+            ? new OutgoingRoutingDto($id)
             : null;
 
         return $this->setOutgoingRouting($value);
@@ -147,11 +148,11 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
+     * @param CarrierDto | null
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
+    public function setCarrier(?CarrierDto $carrier = null): self
     {
         $this->carrier = $carrier;
 
@@ -159,22 +160,20 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @return CarrierDto | null
      */
-    public function getCarrier()
+    public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCarrierId($id)
+    public function setCarrierId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
+            ? new CarrierDto($id)
             : null;
 
         return $this->setCarrier($value);
@@ -193,11 +192,11 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @param array $tpRatingProfiles
+     * @param TpRatingProfileDto[] | null
      *
      * @return static
      */
-    public function setTpRatingProfiles($tpRatingProfiles = null)
+    public function setTpRatingProfiles(?array $tpRatingProfiles = null): self
     {
         $this->tpRatingProfiles = $tpRatingProfiles;
 
@@ -205,10 +204,11 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-     * @return array | null
+     * @return TpRatingProfileDto[] | null
      */
-    public function getTpRatingProfiles()
+    public function getTpRatingProfiles(): ?array
     {
         return $this->tpRatingProfiles;
     }
+
 }

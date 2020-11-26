@@ -4,19 +4,23 @@ namespace Ivoz\Provider\Domain\Model\WebPortal;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 
 /**
- * @codeCoverageIgnore
- */
+* WebPortalDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $url;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $klearTheme = '';
 
@@ -26,42 +30,39 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     private $urlType;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $name = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $userTheme = '';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $logoFileSize;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $logoMimeType;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $logoBaseName;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -69,8 +70,8 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -84,14 +85,18 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
             'name' => 'name',
             'userTheme' => 'userTheme',
             'id' => 'id',
-            'logo' => ['fileSize','mimeType','baseName'],
+            'logo' => [
+                'fileSize',
+                'mimeType',
+                'baseName',
+            ],
             'brandId' => 'brand'
         ];
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -104,7 +109,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
             'logo' => [
                 'fileSize' => $this->getLogoFileSize(),
                 'mimeType' => $this->getLogoMimeType(),
-                'baseName' => $this->getLogoBaseName()
+                'baseName' => $this->getLogoBaseName(),
             ],
             'brand' => $this->getBrand()
         ];
@@ -124,11 +129,11 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $url
+     * @param string $url | null
      *
      * @return static
      */
-    public function setUrl($url = null)
+    public function setUrl(?string $url = null): self
     {
         $this->url = $url;
 
@@ -138,17 +143,17 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
     /**
-     * @param string $klearTheme
+     * @param string $klearTheme | null
      *
      * @return static
      */
-    public function setKlearTheme($klearTheme = null)
+    public function setKlearTheme(?string $klearTheme = null): self
     {
         $this->klearTheme = $klearTheme;
 
@@ -158,17 +163,17 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getKlearTheme()
+    public function getKlearTheme(): ?string
     {
         return $this->klearTheme;
     }
 
     /**
-     * @param string $urlType
+     * @param string $urlType | null
      *
      * @return static
      */
-    public function setUrlType($urlType = null)
+    public function setUrlType(?string $urlType = null): self
     {
         $this->urlType = $urlType;
 
@@ -178,17 +183,17 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getUrlType()
+    public function getUrlType(): ?string
     {
         return $this->urlType;
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -198,17 +203,17 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $userTheme
+     * @param string $userTheme | null
      *
      * @return static
      */
-    public function setUserTheme($userTheme = null)
+    public function setUserTheme(?string $userTheme = null): self
     {
         $this->userTheme = $userTheme;
 
@@ -218,17 +223,17 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getUserTheme()
+    public function getUserTheme(): ?string
     {
         return $this->userTheme;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -236,19 +241,19 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param integer $logoFileSize
+     * @param int $logoFileSize | null
      *
      * @return static
      */
-    public function setLogoFileSize($logoFileSize = null)
+    public function setLogoFileSize(?int $logoFileSize = null): self
     {
         $this->logoFileSize = $logoFileSize;
 
@@ -256,19 +261,19 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getLogoFileSize()
+    public function getLogoFileSize(): ?int
     {
         return $this->logoFileSize;
     }
 
     /**
-     * @param string $logoMimeType
+     * @param string $logoMimeType | null
      *
      * @return static
      */
-    public function setLogoMimeType($logoMimeType = null)
+    public function setLogoMimeType(?string $logoMimeType = null): self
     {
         $this->logoMimeType = $logoMimeType;
 
@@ -278,17 +283,17 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getLogoMimeType()
+    public function getLogoMimeType(): ?string
     {
         return $this->logoMimeType;
     }
 
     /**
-     * @param string $logoBaseName
+     * @param string $logoBaseName | null
      *
      * @return static
      */
-    public function setLogoBaseName($logoBaseName = null)
+    public function setLogoBaseName(?string $logoBaseName = null): self
     {
         $this->logoBaseName = $logoBaseName;
 
@@ -298,17 +303,17 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getLogoBaseName()
+    public function getLogoBaseName(): ?string
     {
         return $this->logoBaseName;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -316,22 +321,20 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -348,4 +351,5 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

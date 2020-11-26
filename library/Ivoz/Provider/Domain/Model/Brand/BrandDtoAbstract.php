@@ -4,54 +4,71 @@ namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Domain\DomainDto;
+use Ivoz\Provider\Domain\Model\Language\LanguageDto;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyDto;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\BrandService\BrandServiceDto;
+use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto;
+use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto;
+use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandDto;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
+use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldDto;
+use Ivoz\Provider\Domain\Model\MatchList\MatchListDto;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
 
 /**
- * @codeCoverageIgnore
- */
+* BrandDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class BrandDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $name;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $domainUsers;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $recordingsLimitMB;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $recordingsLimitEmail;
 
     /**
-     * @var integer
+     * @var int
      */
     private $maxCalls = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $logoFileSize;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $logoMimeType;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $logoBaseName;
 
@@ -86,102 +103,99 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     private $invoiceCountry;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $invoiceRegistryData;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainDto | null
+     * @var DomainDto | null
      */
     private $domain;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
+     * @var LanguageDto | null
      */
     private $language;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto | null
+     * @var TimezoneDto | null
      */
     private $defaultTimezone;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     * @var CurrencyDto | null
      */
     private $currency;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @var NotificationTemplateDto | null
      */
     private $voicemailNotificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @var NotificationTemplateDto | null
      */
     private $faxNotificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @var NotificationTemplateDto | null
      */
     private $invoiceNotificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @var NotificationTemplateDto | null
      */
     private $callCsvNotificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @var NotificationTemplateDto | null
      */
     private $maxDailyUsageNotificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto[] | null
+     * @var CompanyDto[] | null
      */
-    private $companies = null;
+    private $companies;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\BrandService\BrandServiceDto[] | null
+     * @var BrandServiceDto[] | null
      */
-    private $services = null;
+    private $services;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto[] | null
+     * @var WebPortalDto[] | null
      */
-    private $urls = null;
+    private $urls;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto[] | null
+     * @var FeaturesRelBrandDto[] | null
      */
-    private $relFeatures = null;
+    private $relFeatures;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandDto[] | null
+     * @var ProxyTrunksRelBrandDto[] | null
      */
-    private $relProxyTrunks = null;
+    private $relProxyTrunks;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto[] | null
+     * @var ResidentialDeviceDto[] | null
      */
-    private $residentialDevices = null;
+    private $residentialDevices;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldDto[] | null
+     * @var MusicOnHoldDto[] | null
      */
-    private $musicsOnHold = null;
+    private $musicsOnHold;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\MatchList\MatchListDto[] | null
+     * @var MatchListDto[] | null
      */
-    private $matchLists = null;
+    private $matchLists;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto[] | null
+     * @var OutgoingRoutingDto[] | null
      */
-    private $outgoingRoutings = null;
-
-
-    use DtoNormalizer;
+    private $outgoingRoutings;
 
     public function __construct($id = null)
     {
@@ -189,8 +203,8 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -204,8 +218,20 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'recordingsLimitEmail' => 'recordingsLimitEmail',
             'maxCalls' => 'maxCalls',
             'id' => 'id',
-            'logo' => ['fileSize','mimeType','baseName'],
-            'invoice' => ['nif','postalAddress','postalCode','town','province','country','registryData'],
+            'logo' => [
+                'fileSize',
+                'mimeType',
+                'baseName',
+            ],
+            'invoice' => [
+                'nif',
+                'postalAddress',
+                'postalCode',
+                'town',
+                'province',
+                'country',
+                'registryData',
+            ],
             'domainId' => 'domain',
             'languageId' => 'language',
             'defaultTimezoneId' => 'defaultTimezone',
@@ -219,8 +245,8 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -233,7 +259,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'logo' => [
                 'fileSize' => $this->getLogoFileSize(),
                 'mimeType' => $this->getLogoMimeType(),
-                'baseName' => $this->getLogoBaseName()
+                'baseName' => $this->getLogoBaseName(),
             ],
             'invoice' => [
                 'nif' => $this->getInvoiceNif(),
@@ -242,7 +268,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
                 'town' => $this->getInvoiceTown(),
                 'province' => $this->getInvoiceProvince(),
                 'country' => $this->getInvoiceCountry(),
-                'registryData' => $this->getInvoiceRegistryData()
+                'registryData' => $this->getInvoiceRegistryData(),
             ],
             'domain' => $this->getDomain(),
             'language' => $this->getLanguage(),
@@ -279,11 +305,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -293,17 +319,17 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $domainUsers
+     * @param string $domainUsers | null
      *
      * @return static
      */
-    public function setDomainUsers($domainUsers = null)
+    public function setDomainUsers(?string $domainUsers = null): self
     {
         $this->domainUsers = $domainUsers;
 
@@ -313,17 +339,17 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDomainUsers()
+    public function getDomainUsers(): ?string
     {
         return $this->domainUsers;
     }
 
     /**
-     * @param integer $recordingsLimitMB
+     * @param int $recordingsLimitMB | null
      *
      * @return static
      */
-    public function setRecordingsLimitMB($recordingsLimitMB = null)
+    public function setRecordingsLimitMB(?int $recordingsLimitMB = null): self
     {
         $this->recordingsLimitMB = $recordingsLimitMB;
 
@@ -331,19 +357,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getRecordingsLimitMB()
+    public function getRecordingsLimitMB(): ?int
     {
         return $this->recordingsLimitMB;
     }
 
     /**
-     * @param string $recordingsLimitEmail
+     * @param string $recordingsLimitEmail | null
      *
      * @return static
      */
-    public function setRecordingsLimitEmail($recordingsLimitEmail = null)
+    public function setRecordingsLimitEmail(?string $recordingsLimitEmail = null): self
     {
         $this->recordingsLimitEmail = $recordingsLimitEmail;
 
@@ -353,17 +379,17 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRecordingsLimitEmail()
+    public function getRecordingsLimitEmail(): ?string
     {
         return $this->recordingsLimitEmail;
     }
 
     /**
-     * @param integer $maxCalls
+     * @param int $maxCalls | null
      *
      * @return static
      */
-    public function setMaxCalls($maxCalls = null)
+    public function setMaxCalls(?int $maxCalls = null): self
     {
         $this->maxCalls = $maxCalls;
 
@@ -371,19 +397,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getMaxCalls()
+    public function getMaxCalls(): ?int
     {
         return $this->maxCalls;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -391,19 +417,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param integer $logoFileSize
+     * @param int $logoFileSize | null
      *
      * @return static
      */
-    public function setLogoFileSize($logoFileSize = null)
+    public function setLogoFileSize(?int $logoFileSize = null): self
     {
         $this->logoFileSize = $logoFileSize;
 
@@ -411,19 +437,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getLogoFileSize()
+    public function getLogoFileSize(): ?int
     {
         return $this->logoFileSize;
     }
 
     /**
-     * @param string $logoMimeType
+     * @param string $logoMimeType | null
      *
      * @return static
      */
-    public function setLogoMimeType($logoMimeType = null)
+    public function setLogoMimeType(?string $logoMimeType = null): self
     {
         $this->logoMimeType = $logoMimeType;
 
@@ -433,17 +459,17 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getLogoMimeType()
+    public function getLogoMimeType(): ?string
     {
         return $this->logoMimeType;
     }
 
     /**
-     * @param string $logoBaseName
+     * @param string $logoBaseName | null
      *
      * @return static
      */
-    public function setLogoBaseName($logoBaseName = null)
+    public function setLogoBaseName(?string $logoBaseName = null): self
     {
         $this->logoBaseName = $logoBaseName;
 
@@ -453,17 +479,17 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getLogoBaseName()
+    public function getLogoBaseName(): ?string
     {
         return $this->logoBaseName;
     }
 
     /**
-     * @param string $invoiceNif
+     * @param string $invoiceNif | null
      *
      * @return static
      */
-    public function setInvoiceNif($invoiceNif = null)
+    public function setInvoiceNif(?string $invoiceNif = null): self
     {
         $this->invoiceNif = $invoiceNif;
 
@@ -473,17 +499,17 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getInvoiceNif()
+    public function getInvoiceNif(): ?string
     {
         return $this->invoiceNif;
     }
 
     /**
-     * @param string $invoicePostalAddress
+     * @param string $invoicePostalAddress | null
      *
      * @return static
      */
-    public function setInvoicePostalAddress($invoicePostalAddress = null)
+    public function setInvoicePostalAddress(?string $invoicePostalAddress = null): self
     {
         $this->invoicePostalAddress = $invoicePostalAddress;
 
@@ -493,17 +519,17 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getInvoicePostalAddress()
+    public function getInvoicePostalAddress(): ?string
     {
         return $this->invoicePostalAddress;
     }
 
     /**
-     * @param string $invoicePostalCode
+     * @param string $invoicePostalCode | null
      *
      * @return static
      */
-    public function setInvoicePostalCode($invoicePostalCode = null)
+    public function setInvoicePostalCode(?string $invoicePostalCode = null): self
     {
         $this->invoicePostalCode = $invoicePostalCode;
 
@@ -513,17 +539,17 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getInvoicePostalCode()
+    public function getInvoicePostalCode(): ?string
     {
         return $this->invoicePostalCode;
     }
 
     /**
-     * @param string $invoiceTown
+     * @param string $invoiceTown | null
      *
      * @return static
      */
-    public function setInvoiceTown($invoiceTown = null)
+    public function setInvoiceTown(?string $invoiceTown = null): self
     {
         $this->invoiceTown = $invoiceTown;
 
@@ -533,17 +559,17 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getInvoiceTown()
+    public function getInvoiceTown(): ?string
     {
         return $this->invoiceTown;
     }
 
     /**
-     * @param string $invoiceProvince
+     * @param string $invoiceProvince | null
      *
      * @return static
      */
-    public function setInvoiceProvince($invoiceProvince = null)
+    public function setInvoiceProvince(?string $invoiceProvince = null): self
     {
         $this->invoiceProvince = $invoiceProvince;
 
@@ -553,17 +579,17 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getInvoiceProvince()
+    public function getInvoiceProvince(): ?string
     {
         return $this->invoiceProvince;
     }
 
     /**
-     * @param string $invoiceCountry
+     * @param string $invoiceCountry | null
      *
      * @return static
      */
-    public function setInvoiceCountry($invoiceCountry = null)
+    public function setInvoiceCountry(?string $invoiceCountry = null): self
     {
         $this->invoiceCountry = $invoiceCountry;
 
@@ -573,17 +599,17 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getInvoiceCountry()
+    public function getInvoiceCountry(): ?string
     {
         return $this->invoiceCountry;
     }
 
     /**
-     * @param string $invoiceRegistryData
+     * @param string $invoiceRegistryData | null
      *
      * @return static
      */
-    public function setInvoiceRegistryData($invoiceRegistryData = null)
+    public function setInvoiceRegistryData(?string $invoiceRegistryData = null): self
     {
         $this->invoiceRegistryData = $invoiceRegistryData;
 
@@ -593,17 +619,17 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getInvoiceRegistryData()
+    public function getInvoiceRegistryData(): ?string
     {
         return $this->invoiceRegistryData;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainDto $domain
+     * @param DomainDto | null
      *
      * @return static
      */
-    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainDto $domain = null)
+    public function setDomain(?DomainDto $domain = null): self
     {
         $this->domain = $domain;
 
@@ -611,22 +637,20 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto | null
+     * @return DomainDto | null
      */
-    public function getDomain()
+    public function getDomain(): ?DomainDto
     {
         return $this->domain;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDomainId($id)
+    public function setDomainId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Domain\DomainDto($id)
+            ? new DomainDto($id)
             : null;
 
         return $this->setDomain($value);
@@ -645,11 +669,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageDto $language
+     * @param LanguageDto | null
      *
      * @return static
      */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageDto $language = null)
+    public function setLanguage(?LanguageDto $language = null): self
     {
         $this->language = $language;
 
@@ -657,22 +681,20 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
+     * @return LanguageDto | null
      */
-    public function getLanguage()
+    public function getLanguage(): ?LanguageDto
     {
         return $this->language;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setLanguageId($id)
+    public function setLanguageId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Language\LanguageDto($id)
+            ? new LanguageDto($id)
             : null;
 
         return $this->setLanguage($value);
@@ -691,11 +713,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto $defaultTimezone
+     * @param TimezoneDto | null
      *
      * @return static
      */
-    public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneDto $defaultTimezone = null)
+    public function setDefaultTimezone(?TimezoneDto $defaultTimezone = null): self
     {
         $this->defaultTimezone = $defaultTimezone;
 
@@ -703,22 +725,20 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto | null
+     * @return TimezoneDto | null
      */
-    public function getDefaultTimezone()
+    public function getDefaultTimezone(): ?TimezoneDto
     {
         return $this->defaultTimezone;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDefaultTimezoneId($id)
+    public function setDefaultTimezoneId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto($id)
+            ? new TimezoneDto($id)
             : null;
 
         return $this->setDefaultTimezone($value);
@@ -737,11 +757,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency
+     * @param CurrencyDto | null
      *
      * @return static
      */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency = null)
+    public function setCurrency(?CurrencyDto $currency = null): self
     {
         $this->currency = $currency;
 
@@ -749,22 +769,20 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     * @return CurrencyDto | null
      */
-    public function getCurrency()
+    public function getCurrency(): ?CurrencyDto
     {
         return $this->currency;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCurrencyId($id)
+    public function setCurrencyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Currency\CurrencyDto($id)
+            ? new CurrencyDto($id)
             : null;
 
         return $this->setCurrency($value);
@@ -783,11 +801,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $voicemailNotificationTemplate
+     * @param NotificationTemplateDto | null
      *
      * @return static
      */
-    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $voicemailNotificationTemplate = null)
+    public function setVoicemailNotificationTemplate(?NotificationTemplateDto $voicemailNotificationTemplate = null): self
     {
         $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
 
@@ -795,22 +813,20 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @return NotificationTemplateDto | null
      */
-    public function getVoicemailNotificationTemplate()
+    public function getVoicemailNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->voicemailNotificationTemplate;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setVoicemailNotificationTemplateId($id)
+    public function setVoicemailNotificationTemplateId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            ? new NotificationTemplateDto($id)
             : null;
 
         return $this->setVoicemailNotificationTemplate($value);
@@ -829,11 +845,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $faxNotificationTemplate
+     * @param NotificationTemplateDto | null
      *
      * @return static
      */
-    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $faxNotificationTemplate = null)
+    public function setFaxNotificationTemplate(?NotificationTemplateDto $faxNotificationTemplate = null): self
     {
         $this->faxNotificationTemplate = $faxNotificationTemplate;
 
@@ -841,22 +857,20 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @return NotificationTemplateDto | null
      */
-    public function getFaxNotificationTemplate()
+    public function getFaxNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->faxNotificationTemplate;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setFaxNotificationTemplateId($id)
+    public function setFaxNotificationTemplateId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            ? new NotificationTemplateDto($id)
             : null;
 
         return $this->setFaxNotificationTemplate($value);
@@ -875,11 +889,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $invoiceNotificationTemplate
+     * @param NotificationTemplateDto | null
      *
      * @return static
      */
-    public function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $invoiceNotificationTemplate = null)
+    public function setInvoiceNotificationTemplate(?NotificationTemplateDto $invoiceNotificationTemplate = null): self
     {
         $this->invoiceNotificationTemplate = $invoiceNotificationTemplate;
 
@@ -887,22 +901,20 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @return NotificationTemplateDto | null
      */
-    public function getInvoiceNotificationTemplate()
+    public function getInvoiceNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->invoiceNotificationTemplate;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setInvoiceNotificationTemplateId($id)
+    public function setInvoiceNotificationTemplateId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            ? new NotificationTemplateDto($id)
             : null;
 
         return $this->setInvoiceNotificationTemplate($value);
@@ -921,11 +933,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $callCsvNotificationTemplate
+     * @param NotificationTemplateDto | null
      *
      * @return static
      */
-    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $callCsvNotificationTemplate = null)
+    public function setCallCsvNotificationTemplate(?NotificationTemplateDto $callCsvNotificationTemplate = null): self
     {
         $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
 
@@ -933,22 +945,20 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @return NotificationTemplateDto | null
      */
-    public function getCallCsvNotificationTemplate()
+    public function getCallCsvNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->callCsvNotificationTemplate;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCallCsvNotificationTemplateId($id)
+    public function setCallCsvNotificationTemplateId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            ? new NotificationTemplateDto($id)
             : null;
 
         return $this->setCallCsvNotificationTemplate($value);
@@ -967,11 +977,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $maxDailyUsageNotificationTemplate
+     * @param NotificationTemplateDto | null
      *
      * @return static
      */
-    public function setMaxDailyUsageNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $maxDailyUsageNotificationTemplate = null)
+    public function setMaxDailyUsageNotificationTemplate(?NotificationTemplateDto $maxDailyUsageNotificationTemplate = null): self
     {
         $this->maxDailyUsageNotificationTemplate = $maxDailyUsageNotificationTemplate;
 
@@ -979,22 +989,20 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @return NotificationTemplateDto | null
      */
-    public function getMaxDailyUsageNotificationTemplate()
+    public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->maxDailyUsageNotificationTemplate;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setMaxDailyUsageNotificationTemplateId($id)
+    public function setMaxDailyUsageNotificationTemplateId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            ? new NotificationTemplateDto($id)
             : null;
 
         return $this->setMaxDailyUsageNotificationTemplate($value);
@@ -1013,11 +1021,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $companies
+     * @param CompanyDto[] | null
      *
      * @return static
      */
-    public function setCompanies($companies = null)
+    public function setCompanies(?array $companies = null): self
     {
         $this->companies = $companies;
 
@@ -1025,19 +1033,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return CompanyDto[] | null
      */
-    public function getCompanies()
+    public function getCompanies(): ?array
     {
         return $this->companies;
     }
 
     /**
-     * @param array $services
+     * @param BrandServiceDto[] | null
      *
      * @return static
      */
-    public function setServices($services = null)
+    public function setServices(?array $services = null): self
     {
         $this->services = $services;
 
@@ -1045,19 +1053,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return BrandServiceDto[] | null
      */
-    public function getServices()
+    public function getServices(): ?array
     {
         return $this->services;
     }
 
     /**
-     * @param array $urls
+     * @param WebPortalDto[] | null
      *
      * @return static
      */
-    public function setUrls($urls = null)
+    public function setUrls(?array $urls = null): self
     {
         $this->urls = $urls;
 
@@ -1065,19 +1073,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return WebPortalDto[] | null
      */
-    public function getUrls()
+    public function getUrls(): ?array
     {
         return $this->urls;
     }
 
     /**
-     * @param array $relFeatures
+     * @param FeaturesRelBrandDto[] | null
      *
      * @return static
      */
-    public function setRelFeatures($relFeatures = null)
+    public function setRelFeatures(?array $relFeatures = null): self
     {
         $this->relFeatures = $relFeatures;
 
@@ -1085,19 +1093,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return FeaturesRelBrandDto[] | null
      */
-    public function getRelFeatures()
+    public function getRelFeatures(): ?array
     {
         return $this->relFeatures;
     }
 
     /**
-     * @param array $relProxyTrunks
+     * @param ProxyTrunksRelBrandDto[] | null
      *
      * @return static
      */
-    public function setRelProxyTrunks($relProxyTrunks = null)
+    public function setRelProxyTrunks(?array $relProxyTrunks = null): self
     {
         $this->relProxyTrunks = $relProxyTrunks;
 
@@ -1105,19 +1113,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return ProxyTrunksRelBrandDto[] | null
      */
-    public function getRelProxyTrunks()
+    public function getRelProxyTrunks(): ?array
     {
         return $this->relProxyTrunks;
     }
 
     /**
-     * @param array $residentialDevices
+     * @param ResidentialDeviceDto[] | null
      *
      * @return static
      */
-    public function setResidentialDevices($residentialDevices = null)
+    public function setResidentialDevices(?array $residentialDevices = null): self
     {
         $this->residentialDevices = $residentialDevices;
 
@@ -1125,19 +1133,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return ResidentialDeviceDto[] | null
      */
-    public function getResidentialDevices()
+    public function getResidentialDevices(): ?array
     {
         return $this->residentialDevices;
     }
 
     /**
-     * @param array $musicsOnHold
+     * @param MusicOnHoldDto[] | null
      *
      * @return static
      */
-    public function setMusicsOnHold($musicsOnHold = null)
+    public function setMusicsOnHold(?array $musicsOnHold = null): self
     {
         $this->musicsOnHold = $musicsOnHold;
 
@@ -1145,19 +1153,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return MusicOnHoldDto[] | null
      */
-    public function getMusicsOnHold()
+    public function getMusicsOnHold(): ?array
     {
         return $this->musicsOnHold;
     }
 
     /**
-     * @param array $matchLists
+     * @param MatchListDto[] | null
      *
      * @return static
      */
-    public function setMatchLists($matchLists = null)
+    public function setMatchLists(?array $matchLists = null): self
     {
         $this->matchLists = $matchLists;
 
@@ -1165,19 +1173,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return MatchListDto[] | null
      */
-    public function getMatchLists()
+    public function getMatchLists(): ?array
     {
         return $this->matchLists;
     }
 
     /**
-     * @param array $outgoingRoutings
+     * @param OutgoingRoutingDto[] | null
      *
      * @return static
      */
-    public function setOutgoingRoutings($outgoingRoutings = null)
+    public function setOutgoingRoutings(?array $outgoingRoutings = null): self
     {
         $this->outgoingRoutings = $outgoingRoutings;
 
@@ -1185,10 +1193,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return OutgoingRoutingDto[] | null
      */
-    public function getOutgoingRoutings()
+    public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;
     }
+
 }

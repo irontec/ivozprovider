@@ -4,14 +4,19 @@ namespace Ivoz\Provider\Domain\Model\MatchListPattern;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\MatchList\MatchListDto;
+use Ivoz\Provider\Domain\Model\Country\CountryDto;
 
 /**
- * @codeCoverageIgnore
- */
+* MatchListPatternDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $description;
 
@@ -21,32 +26,29 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     private $type;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $regexp;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $numbervalue;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\MatchList\MatchListDto | null
+     * @var MatchListDto | null
      */
     private $matchList;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @var CountryDto | null
      */
     private $numberCountry;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -54,8 +56,8 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -74,8 +76,8 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -103,11 +105,11 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
-    public function setDescription($description = null)
+    public function setDescription(?string $description = null): self
     {
         $this->description = $description;
 
@@ -117,17 +119,17 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param string $type
+     * @param string $type | null
      *
      * @return static
      */
-    public function setType($type = null)
+    public function setType(?string $type = null): self
     {
         $this->type = $type;
 
@@ -137,17 +139,17 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     /**
-     * @param string $regexp
+     * @param string $regexp | null
      *
      * @return static
      */
-    public function setRegexp($regexp = null)
+    public function setRegexp(?string $regexp = null): self
     {
         $this->regexp = $regexp;
 
@@ -157,17 +159,17 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getRegexp()
+    public function getRegexp(): ?string
     {
         return $this->regexp;
     }
 
     /**
-     * @param string $numbervalue
+     * @param string $numbervalue | null
      *
      * @return static
      */
-    public function setNumbervalue($numbervalue = null)
+    public function setNumbervalue(?string $numbervalue = null): self
     {
         $this->numbervalue = $numbervalue;
 
@@ -177,17 +179,17 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getNumbervalue()
+    public function getNumbervalue(): ?string
     {
         return $this->numbervalue;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -195,19 +197,19 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListDto $matchList
+     * @param MatchListDto | null
      *
      * @return static
      */
-    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListDto $matchList = null)
+    public function setMatchList(?MatchListDto $matchList = null): self
     {
         $this->matchList = $matchList;
 
@@ -215,22 +217,20 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListDto | null
+     * @return MatchListDto | null
      */
-    public function getMatchList()
+    public function getMatchList(): ?MatchListDto
     {
         return $this->matchList;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setMatchListId($id)
+    public function setMatchListId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\MatchList\MatchListDto($id)
+            ? new MatchListDto($id)
             : null;
 
         return $this->setMatchList($value);
@@ -249,11 +249,11 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $numberCountry
+     * @param CountryDto | null
      *
      * @return static
      */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryDto $numberCountry = null)
+    public function setNumberCountry(?CountryDto $numberCountry = null): self
     {
         $this->numberCountry = $numberCountry;
 
@@ -261,22 +261,20 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @return CountryDto | null
      */
-    public function getNumberCountry()
+    public function getNumberCountry(): ?CountryDto
     {
         return $this->numberCountry;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setNumberCountryId($id)
+    public function setNumberCountryId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            ? new CountryDto($id)
             : null;
 
         return $this->setNumberCountry($value);
@@ -293,4 +291,5 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
 
         return null;
     }
+
 }

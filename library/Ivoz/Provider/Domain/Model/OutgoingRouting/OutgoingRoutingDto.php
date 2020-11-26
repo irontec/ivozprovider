@@ -95,7 +95,7 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
         $this->setRelCarriers($relCarriers);
     }
 
-    public function setRoutingMode($routingMode = null)
+    public function setRoutingMode(?string $routingMode = null): self
     {
         if ($routingMode === OutgoingRoutingInterface::ROUTINGMODE_BLOCK) {
             // klear visual filter fix

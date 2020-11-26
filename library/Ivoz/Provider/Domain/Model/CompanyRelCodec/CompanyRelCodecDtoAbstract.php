@@ -4,29 +4,31 @@ namespace Ivoz\Provider\Domain\Model\CompanyRelCodec;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Codec\CodecDto;
 
 /**
- * @codeCoverageIgnore
- */
+* CompanyRelCodecDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Codec\CodecDto | null
+     * @var CodecDto | null
      */
     private $codec;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -34,8 +36,8 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -50,8 +52,8 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -75,11 +77,11 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -87,19 +89,19 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -107,22 +109,20 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -141,11 +141,11 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Codec\CodecDto $codec
+     * @param CodecDto | null
      *
      * @return static
      */
-    public function setCodec(\Ivoz\Provider\Domain\Model\Codec\CodecDto $codec = null)
+    public function setCodec(?CodecDto $codec = null): self
     {
         $this->codec = $codec;
 
@@ -153,22 +153,20 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Codec\CodecDto | null
+     * @return CodecDto | null
      */
-    public function getCodec()
+    public function getCodec(): ?CodecDto
     {
         return $this->codec;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCodecId($id)
+    public function setCodecId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Codec\CodecDto($id)
+            ? new CodecDto($id)
             : null;
 
         return $this->setCodec($value);
@@ -185,4 +183,5 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

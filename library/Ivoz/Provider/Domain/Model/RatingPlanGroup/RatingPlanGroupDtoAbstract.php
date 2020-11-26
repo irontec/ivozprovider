@@ -4,14 +4,20 @@ namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyDto;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 
 /**
- * @codeCoverageIgnore
- */
+* RatingPlanGroupDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -56,22 +62,19 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     private $descriptionIt;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     * @var CurrencyDto | null
      */
     private $currency;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto[] | null
+     * @var RatingPlanDto[] | null
      */
-    private $ratingPlan = null;
-
-
-    use DtoNormalizer;
+    private $ratingPlan;
 
     public function __construct($id = null)
     {
@@ -79,8 +82,8 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -89,16 +92,26 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
 
         return [
             'id' => 'id',
-            'name' => ['en','es','ca','it'],
-            'description' => ['en','es','ca','it'],
+            'name' => [
+                'en',
+                'es',
+                'ca',
+                'it',
+            ],
+            'description' => [
+                'en',
+                'es',
+                'ca',
+                'it',
+            ],
             'brandId' => 'brand',
             'currencyId' => 'currency'
         ];
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -107,13 +120,13 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
                 'en' => $this->getNameEn(),
                 'es' => $this->getNameEs(),
                 'ca' => $this->getNameCa(),
-                'it' => $this->getNameIt()
+                'it' => $this->getNameIt(),
             ],
             'description' => [
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs(),
                 'ca' => $this->getDescriptionCa(),
-                'it' => $this->getDescriptionIt()
+                'it' => $this->getDescriptionIt(),
             ],
             'brand' => $this->getBrand(),
             'currency' => $this->getCurrency(),
@@ -135,11 +148,11 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -147,19 +160,19 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param string $nameEn
+     * @param string $nameEn | null
      *
      * @return static
      */
-    public function setNameEn($nameEn = null)
+    public function setNameEn(?string $nameEn = null): self
     {
         $this->nameEn = $nameEn;
 
@@ -169,17 +182,17 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameEn()
+    public function getNameEn(): ?string
     {
         return $this->nameEn;
     }
 
     /**
-     * @param string $nameEs
+     * @param string $nameEs | null
      *
      * @return static
      */
-    public function setNameEs($nameEs = null)
+    public function setNameEs(?string $nameEs = null): self
     {
         $this->nameEs = $nameEs;
 
@@ -189,17 +202,17 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameEs()
+    public function getNameEs(): ?string
     {
         return $this->nameEs;
     }
 
     /**
-     * @param string $nameCa
+     * @param string $nameCa | null
      *
      * @return static
      */
-    public function setNameCa($nameCa = null)
+    public function setNameCa(?string $nameCa = null): self
     {
         $this->nameCa = $nameCa;
 
@@ -209,17 +222,17 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameCa()
+    public function getNameCa(): ?string
     {
         return $this->nameCa;
     }
 
     /**
-     * @param string $nameIt
+     * @param string $nameIt | null
      *
      * @return static
      */
-    public function setNameIt($nameIt = null)
+    public function setNameIt(?string $nameIt = null): self
     {
         $this->nameIt = $nameIt;
 
@@ -229,17 +242,17 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameIt()
+    public function getNameIt(): ?string
     {
         return $this->nameIt;
     }
 
     /**
-     * @param string $descriptionEn
+     * @param string $descriptionEn | null
      *
      * @return static
      */
-    public function setDescriptionEn($descriptionEn = null)
+    public function setDescriptionEn(?string $descriptionEn = null): self
     {
         $this->descriptionEn = $descriptionEn;
 
@@ -249,17 +262,17 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescriptionEn()
+    public function getDescriptionEn(): ?string
     {
         return $this->descriptionEn;
     }
 
     /**
-     * @param string $descriptionEs
+     * @param string $descriptionEs | null
      *
      * @return static
      */
-    public function setDescriptionEs($descriptionEs = null)
+    public function setDescriptionEs(?string $descriptionEs = null): self
     {
         $this->descriptionEs = $descriptionEs;
 
@@ -269,17 +282,17 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescriptionEs()
+    public function getDescriptionEs(): ?string
     {
         return $this->descriptionEs;
     }
 
     /**
-     * @param string $descriptionCa
+     * @param string $descriptionCa | null
      *
      * @return static
      */
-    public function setDescriptionCa($descriptionCa = null)
+    public function setDescriptionCa(?string $descriptionCa = null): self
     {
         $this->descriptionCa = $descriptionCa;
 
@@ -289,17 +302,17 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescriptionCa()
+    public function getDescriptionCa(): ?string
     {
         return $this->descriptionCa;
     }
 
     /**
-     * @param string $descriptionIt
+     * @param string $descriptionIt | null
      *
      * @return static
      */
-    public function setDescriptionIt($descriptionIt = null)
+    public function setDescriptionIt(?string $descriptionIt = null): self
     {
         $this->descriptionIt = $descriptionIt;
 
@@ -309,17 +322,17 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescriptionIt()
+    public function getDescriptionIt(): ?string
     {
         return $this->descriptionIt;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -327,22 +340,20 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -361,11 +372,11 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency
+     * @param CurrencyDto | null
      *
      * @return static
      */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency = null)
+    public function setCurrency(?CurrencyDto $currency = null): self
     {
         $this->currency = $currency;
 
@@ -373,22 +384,20 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     * @return CurrencyDto | null
      */
-    public function getCurrency()
+    public function getCurrency(): ?CurrencyDto
     {
         return $this->currency;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCurrencyId($id)
+    public function setCurrencyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Currency\CurrencyDto($id)
+            ? new CurrencyDto($id)
             : null;
 
         return $this->setCurrency($value);
@@ -407,11 +416,11 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $ratingPlan
+     * @param RatingPlanDto[] | null
      *
      * @return static
      */
-    public function setRatingPlan($ratingPlan = null)
+    public function setRatingPlan(?array $ratingPlan = null): self
     {
         $this->ratingPlan = $ratingPlan;
 
@@ -419,10 +428,11 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return RatingPlanDto[] | null
      */
-    public function getRatingPlan()
+    public function getRatingPlan(): ?array
     {
         return $this->ratingPlan;
     }
+
 }

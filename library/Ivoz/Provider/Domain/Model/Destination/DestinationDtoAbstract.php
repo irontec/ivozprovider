@@ -4,59 +4,63 @@ namespace Ivoz\Provider\Domain\Model\Destination;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto;
 
 /**
- * @codeCoverageIgnore
- */
+* DestinationDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class DestinationDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $prefix;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $nameEn;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $nameEs;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $nameCa;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $nameIt;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto | null
-     */
-    private $tpDestination;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto[] | null
+     * @var DestinationRateDto[] | null
      */
-    private $destinationRates = null;
+    private $destinationRates;
 
-
-    use DtoNormalizer;
+    /**
+     * @var TpDestinationDto | null
+     */
+    private $tpDestination;
 
     public function __construct($id = null)
     {
@@ -64,8 +68,8 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -75,15 +79,20 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return [
             'prefix' => 'prefix',
             'id' => 'id',
-            'name' => ['en','es','ca','it'],
+            'name' => [
+                'en',
+                'es',
+                'ca',
+                'it',
+            ],
             'tpDestinationId' => 'tpDestination',
             'brandId' => 'brand'
         ];
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -93,7 +102,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
                 'en' => $this->getNameEn(),
                 'es' => $this->getNameEs(),
                 'ca' => $this->getNameCa(),
-                'it' => $this->getNameIt()
+                'it' => $this->getNameIt(),
             ],
             'tpDestination' => $this->getTpDestination(),
             'brand' => $this->getBrand(),
@@ -115,11 +124,11 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $prefix
+     * @param string $prefix | null
      *
      * @return static
      */
-    public function setPrefix($prefix = null)
+    public function setPrefix(?string $prefix = null): self
     {
         $this->prefix = $prefix;
 
@@ -129,17 +138,17 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPrefix()
+    public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -147,19 +156,19 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param string $nameEn
+     * @param string $nameEn | null
      *
      * @return static
      */
-    public function setNameEn($nameEn = null)
+    public function setNameEn(?string $nameEn = null): self
     {
         $this->nameEn = $nameEn;
 
@@ -169,17 +178,17 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameEn()
+    public function getNameEn(): ?string
     {
         return $this->nameEn;
     }
 
     /**
-     * @param string $nameEs
+     * @param string $nameEs | null
      *
      * @return static
      */
-    public function setNameEs($nameEs = null)
+    public function setNameEs(?string $nameEs = null): self
     {
         $this->nameEs = $nameEs;
 
@@ -189,17 +198,17 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameEs()
+    public function getNameEs(): ?string
     {
         return $this->nameEs;
     }
 
     /**
-     * @param string $nameCa
+     * @param string $nameCa | null
      *
      * @return static
      */
-    public function setNameCa($nameCa = null)
+    public function setNameCa(?string $nameCa = null): self
     {
         $this->nameCa = $nameCa;
 
@@ -209,17 +218,17 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameCa()
+    public function getNameCa(): ?string
     {
         return $this->nameCa;
     }
 
     /**
-     * @param string $nameIt
+     * @param string $nameIt | null
      *
      * @return static
      */
-    public function setNameIt($nameIt = null)
+    public function setNameIt(?string $nameIt = null): self
     {
         $this->nameIt = $nameIt;
 
@@ -229,63 +238,17 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameIt()
+    public function getNameIt(): ?string
     {
         return $this->nameIt;
     }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto $tpDestination
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto $tpDestination = null)
-    {
-        $this->tpDestination = $tpDestination;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto | null
-     */
-    public function getTpDestination()
-    {
-        return $this->tpDestination;
-    }
-
-    /**
-     * @param mixed | null $id
-     *
-     * @return static
-     */
-    public function setTpDestinationId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto($id)
-            : null;
-
-        return $this->setTpDestination($value);
-    }
-
-    /**
-     * @return mixed | null
-     */
-    public function getTpDestinationId()
-    {
-        if ($dto = $this->getTpDestination()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
-    /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -293,22 +256,20 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -327,11 +288,11 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $destinationRates
+     * @param DestinationRateDto[] | null
      *
      * @return static
      */
-    public function setDestinationRates($destinationRates = null)
+    public function setDestinationRates(?array $destinationRates = null): self
     {
         $this->destinationRates = $destinationRates;
 
@@ -339,10 +300,54 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return DestinationRateDto[] | null
      */
-    public function getDestinationRates()
+    public function getDestinationRates(): ?array
     {
         return $this->destinationRates;
+    }
+
+    /**
+     * @param TpDestinationDto | null
+     *
+     * @return static
+     */
+    public function setTpDestination(?TpDestinationDto $tpDestination = null): self
+    {
+        $this->tpDestination = $tpDestination;
+
+        return $this;
+    }
+
+    /**
+     * @return TpDestinationDto | null
+     */
+    public function getTpDestination(): ?TpDestinationDto
+    {
+        return $this->tpDestination;
+    }
+
+    /**
+     * @return static
+     */
+    public function setTpDestinationId($id): self
+    {
+        $value = !is_null($id)
+            ? new TpDestinationDto($id)
+            : null;
+
+        return $this->setTpDestination($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getTpDestinationId()
+    {
+        if ($dto = $this->getTpDestination()) {
+            return $dto->getId();
+        }
+
+        return null;
     }
 }

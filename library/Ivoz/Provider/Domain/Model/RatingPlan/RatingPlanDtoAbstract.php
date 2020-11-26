@@ -4,89 +4,93 @@ namespace Ivoz\Provider\Domain\Model\RatingPlan;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto;
+use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
 
 /**
- * @codeCoverageIgnore
- */
+* RatingPlanDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var float
      */
     private $weight = 10;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $timingType = 'always';
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $timeIn;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $monday = true;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $tuesday = true;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $wednesday = true;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $thursday = true;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $friday = true;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $saturday = true;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $sunday = true;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto | null
+     * @var RatingPlanGroupDto | null
      */
     private $ratingPlanGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto | null
+     * @var DestinationRateGroupDto | null
      */
     private $destinationRateGroup;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto | null
+     * @var TpTimingDto | null
      */
     private $tpTiming;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto | null
+     * @var TpRatingPlanDto | null
      */
     private $tpRatingPlan;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -94,8 +98,8 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -122,8 +126,8 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -159,11 +163,11 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param float $weight
+     * @param float $weight | null
      *
      * @return static
      */
-    public function setWeight($weight = null)
+    public function setWeight(?float $weight = null): self
     {
         $this->weight = $weight;
 
@@ -173,17 +177,17 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getWeight()
+    public function getWeight(): ?float
     {
         return $this->weight;
     }
 
     /**
-     * @param string $timingType
+     * @param string $timingType | null
      *
      * @return static
      */
-    public function setTimingType($timingType = null)
+    public function setTimingType(?string $timingType = null): self
     {
         $this->timingType = $timingType;
 
@@ -193,17 +197,17 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTimingType()
+    public function getTimingType(): ?string
     {
         return $this->timingType;
     }
 
     /**
-     * @param \DateTime $timeIn
+     * @param \DateTimeInterface $timeIn | null
      *
      * @return static
      */
-    public function setTimeIn($timeIn = null)
+    public function setTimeIn($timeIn = null): self
     {
         $this->timeIn = $timeIn;
 
@@ -211,7 +215,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getTimeIn()
     {
@@ -219,11 +223,11 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param boolean $monday
+     * @param bool $monday | null
      *
      * @return static
      */
-    public function setMonday($monday = null)
+    public function setMonday(?bool $monday = null): self
     {
         $this->monday = $monday;
 
@@ -231,19 +235,19 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getMonday()
+    public function getMonday(): ?bool
     {
         return $this->monday;
     }
 
     /**
-     * @param boolean $tuesday
+     * @param bool $tuesday | null
      *
      * @return static
      */
-    public function setTuesday($tuesday = null)
+    public function setTuesday(?bool $tuesday = null): self
     {
         $this->tuesday = $tuesday;
 
@@ -251,19 +255,19 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getTuesday()
+    public function getTuesday(): ?bool
     {
         return $this->tuesday;
     }
 
     /**
-     * @param boolean $wednesday
+     * @param bool $wednesday | null
      *
      * @return static
      */
-    public function setWednesday($wednesday = null)
+    public function setWednesday(?bool $wednesday = null): self
     {
         $this->wednesday = $wednesday;
 
@@ -271,19 +275,19 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getWednesday()
+    public function getWednesday(): ?bool
     {
         return $this->wednesday;
     }
 
     /**
-     * @param boolean $thursday
+     * @param bool $thursday | null
      *
      * @return static
      */
-    public function setThursday($thursday = null)
+    public function setThursday(?bool $thursday = null): self
     {
         $this->thursday = $thursday;
 
@@ -291,19 +295,19 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getThursday()
+    public function getThursday(): ?bool
     {
         return $this->thursday;
     }
 
     /**
-     * @param boolean $friday
+     * @param bool $friday | null
      *
      * @return static
      */
-    public function setFriday($friday = null)
+    public function setFriday(?bool $friday = null): self
     {
         $this->friday = $friday;
 
@@ -311,19 +315,19 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getFriday()
+    public function getFriday(): ?bool
     {
         return $this->friday;
     }
 
     /**
-     * @param boolean $saturday
+     * @param bool $saturday | null
      *
      * @return static
      */
-    public function setSaturday($saturday = null)
+    public function setSaturday(?bool $saturday = null): self
     {
         $this->saturday = $saturday;
 
@@ -331,19 +335,19 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSaturday()
+    public function getSaturday(): ?bool
     {
         return $this->saturday;
     }
 
     /**
-     * @param boolean $sunday
+     * @param bool $sunday | null
      *
      * @return static
      */
-    public function setSunday($sunday = null)
+    public function setSunday(?bool $sunday = null): self
     {
         $this->sunday = $sunday;
 
@@ -351,19 +355,19 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSunday()
+    public function getSunday(): ?bool
     {
         return $this->sunday;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -371,19 +375,19 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto $ratingPlanGroup
+     * @param RatingPlanGroupDto | null
      *
      * @return static
      */
-    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto $ratingPlanGroup = null)
+    public function setRatingPlanGroup(?RatingPlanGroupDto $ratingPlanGroup = null): self
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
@@ -391,22 +395,20 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto | null
+     * @return RatingPlanGroupDto | null
      */
-    public function getRatingPlanGroup()
+    public function getRatingPlanGroup(): ?RatingPlanGroupDto
     {
         return $this->ratingPlanGroup;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRatingPlanGroupId($id)
+    public function setRatingPlanGroupId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto($id)
+            ? new RatingPlanGroupDto($id)
             : null;
 
         return $this->setRatingPlanGroup($value);
@@ -425,11 +427,11 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto $destinationRateGroup
+     * @param DestinationRateGroupDto | null
      *
      * @return static
      */
-    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto $destinationRateGroup = null)
+    public function setDestinationRateGroup(?DestinationRateGroupDto $destinationRateGroup = null): self
     {
         $this->destinationRateGroup = $destinationRateGroup;
 
@@ -437,22 +439,20 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto | null
+     * @return DestinationRateGroupDto | null
      */
-    public function getDestinationRateGroup()
+    public function getDestinationRateGroup(): ?DestinationRateGroupDto
     {
         return $this->destinationRateGroup;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDestinationRateGroupId($id)
+    public function setDestinationRateGroupId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto($id)
+            ? new DestinationRateGroupDto($id)
             : null;
 
         return $this->setDestinationRateGroup($value);
@@ -471,11 +471,11 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto $tpTiming
+     * @param TpTimingDto | null
      *
      * @return static
      */
-    public function setTpTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto $tpTiming = null)
+    public function setTpTiming(?TpTimingDto $tpTiming = null): self
     {
         $this->tpTiming = $tpTiming;
 
@@ -483,22 +483,20 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto | null
+     * @return TpTimingDto | null
      */
-    public function getTpTiming()
+    public function getTpTiming(): ?TpTimingDto
     {
         return $this->tpTiming;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setTpTimingId($id)
+    public function setTpTimingId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto($id)
+            ? new TpTimingDto($id)
             : null;
 
         return $this->setTpTiming($value);
@@ -517,11 +515,11 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto $tpRatingPlan
+     * @param TpRatingPlanDto | null
      *
      * @return static
      */
-    public function setTpRatingPlan(\Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto $tpRatingPlan = null)
+    public function setTpRatingPlan(?TpRatingPlanDto $tpRatingPlan = null): self
     {
         $this->tpRatingPlan = $tpRatingPlan;
 
@@ -529,22 +527,20 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto | null
+     * @return TpRatingPlanDto | null
      */
-    public function getTpRatingPlan()
+    public function getTpRatingPlan(): ?TpRatingPlanDto
     {
         return $this->tpRatingPlan;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setTpRatingPlanId($id)
+    public function setTpRatingPlanId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto($id)
+            ? new TpRatingPlanDto($id)
             : null;
 
         return $this->setTpRatingPlan($value);
@@ -561,4 +557,5 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

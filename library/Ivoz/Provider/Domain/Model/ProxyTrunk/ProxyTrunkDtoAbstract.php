@@ -6,12 +6,15 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* ProxyTrunkDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $name;
 
@@ -21,12 +24,9 @@ abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
     private $ip;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -34,8 +34,8 @@ abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -50,8 +50,8 @@ abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -75,11 +75,11 @@ abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -89,17 +89,17 @@ abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
-    public function setIp($ip = null)
+    public function setIp(?string $ip = null): self
     {
         $this->ip = $ip;
 
@@ -109,17 +109,17 @@ abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -127,10 +127,11 @@ abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
+
 }

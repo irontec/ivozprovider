@@ -4,29 +4,31 @@ namespace Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Country\CountryDto;
 
 /**
- * @codeCoverageIgnore
- */
+* CompanyRelGeoIPCountryDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @var CountryDto | null
      */
     private $country;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -34,8 +36,8 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -50,8 +52,8 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -75,11 +77,11 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -87,19 +89,19 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -107,22 +109,20 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -141,11 +141,11 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $country
+     * @param CountryDto | null
      *
      * @return static
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryDto $country = null)
+    public function setCountry(?CountryDto $country = null): self
     {
         $this->country = $country;
 
@@ -153,22 +153,20 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @return CountryDto | null
      */
-    public function getCountry()
+    public function getCountry(): ?CountryDto
     {
         return $this->country;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCountryId($id)
+    public function setCountryId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            ? new CountryDto($id)
             : null;
 
         return $this->setCountry($value);
@@ -185,4 +183,5 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
 
         return null;
     }
+
 }

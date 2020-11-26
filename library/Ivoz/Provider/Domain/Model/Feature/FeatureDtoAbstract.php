@@ -6,17 +6,20 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* FeatureDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class FeatureDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $iden;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -40,17 +43,14 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
      */
     private $nameIt = '';
 
-
-    use DtoNormalizer;
-
     public function __construct($id = null)
     {
         $this->setId($id);
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -60,13 +60,18 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
         return [
             'iden' => 'iden',
             'id' => 'id',
-            'name' => ['en','es','ca','it']
+            'name' => [
+                'en',
+                'es',
+                'ca',
+                'it',
+            ]
         ];
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -76,7 +81,7 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
                 'en' => $this->getNameEn(),
                 'es' => $this->getNameEs(),
                 'ca' => $this->getNameCa(),
-                'it' => $this->getNameIt()
+                'it' => $this->getNameIt(),
             ]
         ];
 
@@ -95,11 +100,11 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $iden
+     * @param string $iden | null
      *
      * @return static
      */
-    public function setIden($iden = null)
+    public function setIden(?string $iden = null): self
     {
         $this->iden = $iden;
 
@@ -109,17 +114,17 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getIden()
+    public function getIden(): ?string
     {
         return $this->iden;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -127,19 +132,19 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param string $nameEn
+     * @param string $nameEn | null
      *
      * @return static
      */
-    public function setNameEn($nameEn = null)
+    public function setNameEn(?string $nameEn = null): self
     {
         $this->nameEn = $nameEn;
 
@@ -149,17 +154,17 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameEn()
+    public function getNameEn(): ?string
     {
         return $this->nameEn;
     }
 
     /**
-     * @param string $nameEs
+     * @param string $nameEs | null
      *
      * @return static
      */
-    public function setNameEs($nameEs = null)
+    public function setNameEs(?string $nameEs = null): self
     {
         $this->nameEs = $nameEs;
 
@@ -169,17 +174,17 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameEs()
+    public function getNameEs(): ?string
     {
         return $this->nameEs;
     }
 
     /**
-     * @param string $nameCa
+     * @param string $nameCa | null
      *
      * @return static
      */
-    public function setNameCa($nameCa = null)
+    public function setNameCa(?string $nameCa = null): self
     {
         $this->nameCa = $nameCa;
 
@@ -189,17 +194,17 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameCa()
+    public function getNameCa(): ?string
     {
         return $this->nameCa;
     }
 
     /**
-     * @param string $nameIt
+     * @param string $nameIt | null
      *
      * @return static
      */
-    public function setNameIt($nameIt = null)
+    public function setNameIt(?string $nameIt = null): self
     {
         $this->nameIt = $nameIt;
 
@@ -209,8 +214,9 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameIt()
+    public function getNameIt(): ?string
     {
         return $this->nameIt;
     }
+
 }

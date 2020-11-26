@@ -4,29 +4,31 @@ namespace Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto;
+use Ivoz\Provider\Domain\Model\Schedule\ScheduleDto;
 
 /**
- * @codeCoverageIgnore
- */
+* CalendarPeriodsRelScheduleDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto | null
+     * @var CalendarPeriodDto | null
      */
     private $calendarPeriod;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto | null
+     * @var ScheduleDto | null
      */
     private $schedule;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -34,8 +36,8 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -50,8 +52,8 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -75,11 +77,11 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -87,19 +89,19 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto $calendarPeriod
+     * @param CalendarPeriodDto | null
      *
      * @return static
      */
-    public function setCalendarPeriod(\Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto $calendarPeriod = null)
+    public function setCalendarPeriod(?CalendarPeriodDto $calendarPeriod = null): self
     {
         $this->calendarPeriod = $calendarPeriod;
 
@@ -107,22 +109,20 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto | null
+     * @return CalendarPeriodDto | null
      */
-    public function getCalendarPeriod()
+    public function getCalendarPeriod(): ?CalendarPeriodDto
     {
         return $this->calendarPeriod;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCalendarPeriodId($id)
+    public function setCalendarPeriodId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto($id)
+            ? new CalendarPeriodDto($id)
             : null;
 
         return $this->setCalendarPeriod($value);
@@ -141,11 +141,11 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto $schedule
+     * @param ScheduleDto | null
      *
      * @return static
      */
-    public function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleDto $schedule = null)
+    public function setSchedule(?ScheduleDto $schedule = null): self
     {
         $this->schedule = $schedule;
 
@@ -153,22 +153,20 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto | null
+     * @return ScheduleDto | null
      */
-    public function getSchedule()
+    public function getSchedule(): ?ScheduleDto
     {
         return $this->schedule;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setScheduleId($id)
+    public function setScheduleId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto($id)
+            ? new ScheduleDto($id)
             : null;
 
         return $this->setSchedule($value);
@@ -185,4 +183,5 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
 
         return null;
     }
+
 }

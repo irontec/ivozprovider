@@ -4,29 +4,31 @@ namespace Ivoz\Provider\Domain\Model\IvrExcludedExtension;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 
 /**
- * @codeCoverageIgnore
- */
+* IvrExcludedExtensionDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ivr\IvrDto | null
+     * @var IvrDto | null
      */
     private $ivr;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
+     * @var ExtensionDto | null
      */
     private $extension;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -34,8 +36,8 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -50,8 +52,8 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -75,11 +77,11 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -87,19 +89,19 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrDto $ivr
+     * @param IvrDto | null
      *
      * @return static
      */
-    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrDto $ivr = null)
+    public function setIvr(?IvrDto $ivr = null): self
     {
         $this->ivr = $ivr;
 
@@ -107,22 +109,20 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto | null
+     * @return IvrDto | null
      */
-    public function getIvr()
+    public function getIvr(): ?IvrDto
     {
         return $this->ivr;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setIvrId($id)
+    public function setIvrId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Ivr\IvrDto($id)
+            ? new IvrDto($id)
             : null;
 
         return $this->setIvr($value);
@@ -141,11 +141,11 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $extension
+     * @param ExtensionDto | null
      *
      * @return static
      */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionDto $extension = null)
+    public function setExtension(?ExtensionDto $extension = null): self
     {
         $this->extension = $extension;
 
@@ -153,22 +153,20 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
+     * @return ExtensionDto | null
      */
-    public function getExtension()
+    public function getExtension(): ?ExtensionDto
     {
         return $this->extension;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setExtensionId($id)
+    public function setExtensionId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            ? new ExtensionDto($id)
             : null;
 
         return $this->setExtension($value);
@@ -185,4 +183,5 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
 
         return null;
     }
+
 }

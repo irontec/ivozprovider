@@ -4,12 +4,17 @@ namespace Ivoz\Provider\Domain\Model\NotificationTemplate;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentDto;
 
 /**
- * @codeCoverageIgnore
- */
+* NotificationTemplateDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,22 +26,19 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     private $type;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentDto[] | null
+     * @var NotificationTemplateContentDto[] | null
      */
-    private $contents = null;
-
-
-    use DtoNormalizer;
+    private $contents;
 
     public function __construct($id = null)
     {
@@ -44,8 +46,8 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -61,8 +63,8 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -88,11 +90,11 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -102,17 +104,17 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $type
+     * @param string $type | null
      *
      * @return static
      */
-    public function setType($type = null)
+    public function setType(?string $type = null): self
     {
         $this->type = $type;
 
@@ -122,17 +124,17 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -140,19 +142,19 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -160,22 +162,20 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -194,11 +194,11 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param array $contents
+     * @param NotificationTemplateContentDto[] | null
      *
      * @return static
      */
-    public function setContents($contents = null)
+    public function setContents(?array $contents = null): self
     {
         $this->contents = $contents;
 
@@ -206,10 +206,11 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return array | null
+     * @return NotificationTemplateContentDto[] | null
      */
-    public function getContents()
+    public function getContents(): ?array
     {
         return $this->contents;
     }
+
 }

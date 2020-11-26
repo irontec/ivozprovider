@@ -4,12 +4,20 @@ namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto;
+use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto;
+use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto;
 
 /**
- * @codeCoverageIgnore
- */
+* DdiProviderDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,42 +29,39 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     private $name;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $externallyRated = false;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
+     * @var TransformationRuleSetDto | null
      */
     private $transformationRuleSet;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto | null
+     * @var ProxyTrunkDto | null
      */
     private $proxyTrunk;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto[] | null
+     * @var DdiProviderRegistrationDto[] | null
      */
-    private $ddiProviderRegistrations = null;
+    private $ddiProviderRegistrations;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto[] | null
+     * @var DdiProviderAddressDto[] | null
      */
-    private $ddiProviderAddresses = null;
-
-
-    use DtoNormalizer;
+    private $ddiProviderAddresses;
 
     public function __construct($id = null)
     {
@@ -64,8 +69,8 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -84,8 +89,8 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -115,11 +120,11 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
-    public function setDescription($description = null)
+    public function setDescription(?string $description = null): self
     {
         $this->description = $description;
 
@@ -129,17 +134,17 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -149,17 +154,17 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param boolean $externallyRated
+     * @param bool $externallyRated | null
      *
      * @return static
      */
-    public function setExternallyRated($externallyRated = null)
+    public function setExternallyRated(?bool $externallyRated = null): self
     {
         $this->externallyRated = $externallyRated;
 
@@ -167,19 +172,19 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getExternallyRated()
+    public function getExternallyRated(): ?bool
     {
         return $this->externallyRated;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -187,19 +192,19 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -207,22 +212,20 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -241,11 +244,11 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto $transformationRuleSet
+     * @param TransformationRuleSetDto | null
      *
      * @return static
      */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto $transformationRuleSet = null)
+    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet = null): self
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -253,22 +256,20 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
+     * @return TransformationRuleSetDto | null
      */
-    public function getTransformationRuleSet()
+    public function getTransformationRuleSet(): ?TransformationRuleSetDto
     {
         return $this->transformationRuleSet;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setTransformationRuleSetId($id)
+    public function setTransformationRuleSetId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto($id)
+            ? new TransformationRuleSetDto($id)
             : null;
 
         return $this->setTransformationRuleSet($value);
@@ -287,11 +288,11 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto $proxyTrunk
+     * @param ProxyTrunkDto | null
      *
      * @return static
      */
-    public function setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto $proxyTrunk = null)
+    public function setProxyTrunk(?ProxyTrunkDto $proxyTrunk = null): self
     {
         $this->proxyTrunk = $proxyTrunk;
 
@@ -299,22 +300,20 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto | null
+     * @return ProxyTrunkDto | null
      */
-    public function getProxyTrunk()
+    public function getProxyTrunk(): ?ProxyTrunkDto
     {
         return $this->proxyTrunk;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setProxyTrunkId($id)
+    public function setProxyTrunkId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto($id)
+            ? new ProxyTrunkDto($id)
             : null;
 
         return $this->setProxyTrunk($value);
@@ -333,11 +332,11 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $ddiProviderRegistrations
+     * @param DdiProviderRegistrationDto[] | null
      *
      * @return static
      */
-    public function setDdiProviderRegistrations($ddiProviderRegistrations = null)
+    public function setDdiProviderRegistrations(?array $ddiProviderRegistrations = null): self
     {
         $this->ddiProviderRegistrations = $ddiProviderRegistrations;
 
@@ -345,19 +344,19 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return DdiProviderRegistrationDto[] | null
      */
-    public function getDdiProviderRegistrations()
+    public function getDdiProviderRegistrations(): ?array
     {
         return $this->ddiProviderRegistrations;
     }
 
     /**
-     * @param array $ddiProviderAddresses
+     * @param DdiProviderAddressDto[] | null
      *
      * @return static
      */
-    public function setDdiProviderAddresses($ddiProviderAddresses = null)
+    public function setDdiProviderAddresses(?array $ddiProviderAddresses = null): self
     {
         $this->ddiProviderAddresses = $ddiProviderAddresses;
 
@@ -365,10 +364,11 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return DdiProviderAddressDto[] | null
      */
-    public function getDdiProviderAddresses()
+    public function getDdiProviderAddresses(): ?array
     {
         return $this->ddiProviderAddresses;
     }
+
 }

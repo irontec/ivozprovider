@@ -4,12 +4,16 @@ namespace Ivoz\Provider\Domain\Model\InvoiceNumberSequence;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 
 /**
- * @codeCoverageIgnore
- */
+* InvoiceNumberSequenceDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,42 +25,39 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     private $prefix = '';
 
     /**
-     * @var integer
+     * @var int
      */
     private $sequenceLength;
 
     /**
-     * @var integer
+     * @var int
      */
     private $increment;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $latestValue = '';
 
     /**
-     * @var integer
+     * @var int
      */
     private $iteration = 0;
 
     /**
-     * @var integer
+     * @var int
      */
-    private $version;
+    private $version = 1;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -64,8 +65,8 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -86,8 +87,8 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -117,11 +118,11 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -131,17 +132,17 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $prefix
+     * @param string $prefix | null
      *
      * @return static
      */
-    public function setPrefix($prefix = null)
+    public function setPrefix(?string $prefix = null): self
     {
         $this->prefix = $prefix;
 
@@ -151,17 +152,17 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     /**
      * @return string | null
      */
-    public function getPrefix()
+    public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
     /**
-     * @param integer $sequenceLength
+     * @param int $sequenceLength | null
      *
      * @return static
      */
-    public function setSequenceLength($sequenceLength = null)
+    public function setSequenceLength(?int $sequenceLength = null): self
     {
         $this->sequenceLength = $sequenceLength;
 
@@ -169,19 +170,19 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getSequenceLength()
+    public function getSequenceLength(): ?int
     {
         return $this->sequenceLength;
     }
 
     /**
-     * @param integer $increment
+     * @param int $increment | null
      *
      * @return static
      */
-    public function setIncrement($increment = null)
+    public function setIncrement(?int $increment = null): self
     {
         $this->increment = $increment;
 
@@ -189,19 +190,19 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getIncrement()
+    public function getIncrement(): ?int
     {
         return $this->increment;
     }
 
     /**
-     * @param string $latestValue
+     * @param string $latestValue | null
      *
      * @return static
      */
-    public function setLatestValue($latestValue = null)
+    public function setLatestValue(?string $latestValue = null): self
     {
         $this->latestValue = $latestValue;
 
@@ -211,17 +212,17 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     /**
      * @return string | null
      */
-    public function getLatestValue()
+    public function getLatestValue(): ?string
     {
         return $this->latestValue;
     }
 
     /**
-     * @param integer $iteration
+     * @param int $iteration | null
      *
      * @return static
      */
-    public function setIteration($iteration = null)
+    public function setIteration(?int $iteration = null): self
     {
         $this->iteration = $iteration;
 
@@ -229,19 +230,19 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getIteration()
+    public function getIteration(): ?int
     {
         return $this->iteration;
     }
 
     /**
-     * @param integer $version
+     * @param int $version | null
      *
      * @return static
      */
-    public function setVersion($version = null)
+    public function setVersion(?int $version = null): self
     {
         $this->version = $version;
 
@@ -249,19 +250,19 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getVersion()
+    public function getVersion(): ?int
     {
         return $this->version;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -269,19 +270,19 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -289,22 +290,20 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -321,4 +320,5 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
 
         return null;
     }
+
 }

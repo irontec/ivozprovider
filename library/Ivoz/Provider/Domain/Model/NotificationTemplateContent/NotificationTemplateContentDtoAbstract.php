@@ -4,19 +4,24 @@ namespace Ivoz\Provider\Domain\Model\NotificationTemplateContent;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto;
+use Ivoz\Provider\Domain\Model\Language\LanguageDto;
 
 /**
- * @codeCoverageIgnore
- */
+* NotificationTemplateContentDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class NotificationTemplateContentDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $fromName;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $fromAddress;
 
@@ -36,22 +41,19 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     private $bodyType = 'text/plain';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @var NotificationTemplateDto | null
      */
     private $notificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
+     * @var LanguageDto | null
      */
     private $language;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -59,8 +61,8 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -80,8 +82,8 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -110,11 +112,11 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @param string $fromName
+     * @param string $fromName | null
      *
      * @return static
      */
-    public function setFromName($fromName = null)
+    public function setFromName(?string $fromName = null): self
     {
         $this->fromName = $fromName;
 
@@ -124,17 +126,17 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     /**
      * @return string | null
      */
-    public function getFromName()
+    public function getFromName(): ?string
     {
         return $this->fromName;
     }
 
     /**
-     * @param string $fromAddress
+     * @param string $fromAddress | null
      *
      * @return static
      */
-    public function setFromAddress($fromAddress = null)
+    public function setFromAddress(?string $fromAddress = null): self
     {
         $this->fromAddress = $fromAddress;
 
@@ -144,17 +146,17 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     /**
      * @return string | null
      */
-    public function getFromAddress()
+    public function getFromAddress(): ?string
     {
         return $this->fromAddress;
     }
 
     /**
-     * @param string $subject
+     * @param string $subject | null
      *
      * @return static
      */
-    public function setSubject($subject = null)
+    public function setSubject(?string $subject = null): self
     {
         $this->subject = $subject;
 
@@ -164,17 +166,17 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     /**
      * @return string | null
      */
-    public function getSubject()
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
 
     /**
-     * @param string $body
+     * @param string $body | null
      *
      * @return static
      */
-    public function setBody($body = null)
+    public function setBody(?string $body = null): self
     {
         $this->body = $body;
 
@@ -184,17 +186,17 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     /**
      * @return string | null
      */
-    public function getBody()
+    public function getBody(): ?string
     {
         return $this->body;
     }
 
     /**
-     * @param string $bodyType
+     * @param string $bodyType | null
      *
      * @return static
      */
-    public function setBodyType($bodyType = null)
+    public function setBodyType(?string $bodyType = null): self
     {
         $this->bodyType = $bodyType;
 
@@ -204,17 +206,17 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     /**
      * @return string | null
      */
-    public function getBodyType()
+    public function getBodyType(): ?string
     {
         return $this->bodyType;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -222,19 +224,19 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $notificationTemplate
+     * @param NotificationTemplateDto | null
      *
      * @return static
      */
-    public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $notificationTemplate = null)
+    public function setNotificationTemplate(?NotificationTemplateDto $notificationTemplate = null): self
     {
         $this->notificationTemplate = $notificationTemplate;
 
@@ -242,22 +244,20 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @return NotificationTemplateDto | null
      */
-    public function getNotificationTemplate()
+    public function getNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->notificationTemplate;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setNotificationTemplateId($id)
+    public function setNotificationTemplateId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            ? new NotificationTemplateDto($id)
             : null;
 
         return $this->setNotificationTemplate($value);
@@ -276,11 +276,11 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageDto $language
+     * @param LanguageDto | null
      *
      * @return static
      */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageDto $language = null)
+    public function setLanguage(?LanguageDto $language = null): self
     {
         $this->language = $language;
 
@@ -288,22 +288,20 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
+     * @return LanguageDto | null
      */
-    public function getLanguage()
+    public function getLanguage(): ?LanguageDto
     {
         return $this->language;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setLanguageId($id)
+    public function setLanguageId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Language\LanguageDto($id)
+            ? new LanguageDto($id)
             : null;
 
         return $this->setLanguage($value);
@@ -320,4 +318,5 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
 
         return null;
     }
+
 }

@@ -4,104 +4,110 @@ namespace Ivoz\Provider\Domain\Model\Invoice;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto;
+use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;
+use Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceDto;
 
 /**
- * @codeCoverageIgnore
- */
+* InvoiceDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $number;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $inDate;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $outDate;
 
     /**
-     * @var float
+     * @var float | null
      */
     private $total;
 
     /**
-     * @var float
+     * @var float | null
      */
     private $taxRate;
 
     /**
-     * @var float
+     * @var float | null
      */
     private $totalWithTax;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $status;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $statusMsg;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $pdfFileSize;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $pdfMimeType;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $pdfBaseName;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto | null
+     * @var InvoiceTemplateDto | null
      */
     private $invoiceTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto | null
+     * @var InvoiceNumberSequenceDto | null
      */
     private $numberSequence;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto | null
+     * @var InvoiceSchedulerDto | null
      */
     private $scheduler;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceDto[] | null
+     * @var FixedCostsRelInvoiceDto[] | null
      */
-    private $relFixedCosts = null;
-
-
-    use DtoNormalizer;
+    private $relFixedCosts;
 
     public function __construct($id = null)
     {
@@ -109,8 +115,8 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -127,7 +133,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
             'status' => 'status',
             'statusMsg' => 'statusMsg',
             'id' => 'id',
-            'pdf' => ['fileSize','mimeType','baseName'],
+            'pdf' => [
+                'fileSize',
+                'mimeType',
+                'baseName',
+            ],
             'invoiceTemplateId' => 'invoiceTemplate',
             'brandId' => 'brand',
             'companyId' => 'company',
@@ -137,8 +147,8 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -154,7 +164,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
             'pdf' => [
                 'fileSize' => $this->getPdfFileSize(),
                 'mimeType' => $this->getPdfMimeType(),
-                'baseName' => $this->getPdfBaseName()
+                'baseName' => $this->getPdfBaseName(),
             ],
             'invoiceTemplate' => $this->getInvoiceTemplate(),
             'brand' => $this->getBrand(),
@@ -179,11 +189,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $number
+     * @param string $number | null
      *
      * @return static
      */
-    public function setNumber($number = null)
+    public function setNumber(?string $number = null): self
     {
         $this->number = $number;
 
@@ -193,17 +203,17 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNumber()
+    public function getNumber(): ?string
     {
         return $this->number;
     }
 
     /**
-     * @param \DateTime $inDate
+     * @param \DateTimeInterface $inDate | null
      *
      * @return static
      */
-    public function setInDate($inDate = null)
+    public function setInDate($inDate = null): self
     {
         $this->inDate = $inDate;
 
@@ -211,7 +221,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getInDate()
     {
@@ -219,11 +229,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \DateTime $outDate
+     * @param \DateTimeInterface $outDate | null
      *
      * @return static
      */
-    public function setOutDate($outDate = null)
+    public function setOutDate($outDate = null): self
     {
         $this->outDate = $outDate;
 
@@ -231,7 +241,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getOutDate()
     {
@@ -239,11 +249,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param float $total
+     * @param float $total | null
      *
      * @return static
      */
-    public function setTotal($total = null)
+    public function setTotal(?float $total = null): self
     {
         $this->total = $total;
 
@@ -253,17 +263,17 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getTotal()
+    public function getTotal(): ?float
     {
         return $this->total;
     }
 
     /**
-     * @param float $taxRate
+     * @param float $taxRate | null
      *
      * @return static
      */
-    public function setTaxRate($taxRate = null)
+    public function setTaxRate(?float $taxRate = null): self
     {
         $this->taxRate = $taxRate;
 
@@ -273,17 +283,17 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getTaxRate()
+    public function getTaxRate(): ?float
     {
         return $this->taxRate;
     }
 
     /**
-     * @param float $totalWithTax
+     * @param float $totalWithTax | null
      *
      * @return static
      */
-    public function setTotalWithTax($totalWithTax = null)
+    public function setTotalWithTax(?float $totalWithTax = null): self
     {
         $this->totalWithTax = $totalWithTax;
 
@@ -293,17 +303,17 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getTotalWithTax()
+    public function getTotalWithTax(): ?float
     {
         return $this->totalWithTax;
     }
 
     /**
-     * @param string $status
+     * @param string $status | null
      *
      * @return static
      */
-    public function setStatus($status = null)
+    public function setStatus(?string $status = null): self
     {
         $this->status = $status;
 
@@ -313,17 +323,17 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     /**
-     * @param string $statusMsg
+     * @param string $statusMsg | null
      *
      * @return static
      */
-    public function setStatusMsg($statusMsg = null)
+    public function setStatusMsg(?string $statusMsg = null): self
     {
         $this->statusMsg = $statusMsg;
 
@@ -333,17 +343,17 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getStatusMsg()
+    public function getStatusMsg(): ?string
     {
         return $this->statusMsg;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -351,19 +361,19 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param integer $pdfFileSize
+     * @param int $pdfFileSize | null
      *
      * @return static
      */
-    public function setPdfFileSize($pdfFileSize = null)
+    public function setPdfFileSize(?int $pdfFileSize = null): self
     {
         $this->pdfFileSize = $pdfFileSize;
 
@@ -371,19 +381,19 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPdfFileSize()
+    public function getPdfFileSize(): ?int
     {
         return $this->pdfFileSize;
     }
 
     /**
-     * @param string $pdfMimeType
+     * @param string $pdfMimeType | null
      *
      * @return static
      */
-    public function setPdfMimeType($pdfMimeType = null)
+    public function setPdfMimeType(?string $pdfMimeType = null): self
     {
         $this->pdfMimeType = $pdfMimeType;
 
@@ -393,17 +403,17 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPdfMimeType()
+    public function getPdfMimeType(): ?string
     {
         return $this->pdfMimeType;
     }
 
     /**
-     * @param string $pdfBaseName
+     * @param string $pdfBaseName | null
      *
      * @return static
      */
-    public function setPdfBaseName($pdfBaseName = null)
+    public function setPdfBaseName(?string $pdfBaseName = null): self
     {
         $this->pdfBaseName = $pdfBaseName;
 
@@ -413,17 +423,17 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPdfBaseName()
+    public function getPdfBaseName(): ?string
     {
         return $this->pdfBaseName;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto $invoiceTemplate
+     * @param InvoiceTemplateDto | null
      *
      * @return static
      */
-    public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto $invoiceTemplate = null)
+    public function setInvoiceTemplate(?InvoiceTemplateDto $invoiceTemplate = null): self
     {
         $this->invoiceTemplate = $invoiceTemplate;
 
@@ -431,22 +441,20 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto | null
+     * @return InvoiceTemplateDto | null
      */
-    public function getInvoiceTemplate()
+    public function getInvoiceTemplate(): ?InvoiceTemplateDto
     {
         return $this->invoiceTemplate;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setInvoiceTemplateId($id)
+    public function setInvoiceTemplateId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto($id)
+            ? new InvoiceTemplateDto($id)
             : null;
 
         return $this->setInvoiceTemplate($value);
@@ -465,11 +473,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -477,22 +485,20 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -511,11 +517,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -523,22 +529,20 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -557,11 +561,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto $numberSequence
+     * @param InvoiceNumberSequenceDto | null
      *
      * @return static
      */
-    public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto $numberSequence = null)
+    public function setNumberSequence(?InvoiceNumberSequenceDto $numberSequence = null): self
     {
         $this->numberSequence = $numberSequence;
 
@@ -569,22 +573,20 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto | null
+     * @return InvoiceNumberSequenceDto | null
      */
-    public function getNumberSequence()
+    public function getNumberSequence(): ?InvoiceNumberSequenceDto
     {
         return $this->numberSequence;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setNumberSequenceId($id)
+    public function setNumberSequenceId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto($id)
+            ? new InvoiceNumberSequenceDto($id)
             : null;
 
         return $this->setNumberSequence($value);
@@ -603,11 +605,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto $scheduler
+     * @param InvoiceSchedulerDto | null
      *
      * @return static
      */
-    public function setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto $scheduler = null)
+    public function setScheduler(?InvoiceSchedulerDto $scheduler = null): self
     {
         $this->scheduler = $scheduler;
 
@@ -615,22 +617,20 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto | null
+     * @return InvoiceSchedulerDto | null
      */
-    public function getScheduler()
+    public function getScheduler(): ?InvoiceSchedulerDto
     {
         return $this->scheduler;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setSchedulerId($id)
+    public function setSchedulerId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto($id)
+            ? new InvoiceSchedulerDto($id)
             : null;
 
         return $this->setScheduler($value);
@@ -649,11 +649,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $relFixedCosts
+     * @param FixedCostsRelInvoiceDto[] | null
      *
      * @return static
      */
-    public function setRelFixedCosts($relFixedCosts = null)
+    public function setRelFixedCosts(?array $relFixedCosts = null): self
     {
         $this->relFixedCosts = $relFixedCosts;
 
@@ -661,10 +661,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return FixedCostsRelInvoiceDto[] | null
      */
-    public function getRelFixedCosts()
+    public function getRelFixedCosts(): ?array
     {
         return $this->relFixedCosts;
     }
+
 }

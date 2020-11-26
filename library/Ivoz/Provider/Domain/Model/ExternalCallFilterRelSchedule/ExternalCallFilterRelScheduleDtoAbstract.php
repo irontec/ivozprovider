@@ -4,29 +4,31 @@ namespace Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto;
+use Ivoz\Provider\Domain\Model\Schedule\ScheduleDto;
 
 /**
- * @codeCoverageIgnore
- */
+* ExternalCallFilterRelScheduleDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto | null
+     * @var ExternalCallFilterDto | null
      */
     private $filter;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto | null
+     * @var ScheduleDto | null
      */
     private $schedule;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -34,8 +36,8 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -50,8 +52,8 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -75,11 +77,11 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -87,19 +89,19 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto $filter
+     * @param ExternalCallFilterDto | null
      *
      * @return static
      */
-    public function setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto $filter = null)
+    public function setFilter(?ExternalCallFilterDto $filter = null): self
     {
         $this->filter = $filter;
 
@@ -107,22 +109,20 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto | null
+     * @return ExternalCallFilterDto | null
      */
-    public function getFilter()
+    public function getFilter(): ?ExternalCallFilterDto
     {
         return $this->filter;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setFilterId($id)
+    public function setFilterId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto($id)
+            ? new ExternalCallFilterDto($id)
             : null;
 
         return $this->setFilter($value);
@@ -141,11 +141,11 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto $schedule
+     * @param ScheduleDto | null
      *
      * @return static
      */
-    public function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleDto $schedule = null)
+    public function setSchedule(?ScheduleDto $schedule = null): self
     {
         $this->schedule = $schedule;
 
@@ -153,22 +153,20 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto | null
+     * @return ScheduleDto | null
      */
-    public function getSchedule()
+    public function getSchedule(): ?ScheduleDto
     {
         return $this->schedule;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setScheduleId($id)
+    public function setScheduleId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto($id)
+            ? new ScheduleDto($id)
             : null;
 
         return $this->setSchedule($value);
@@ -185,4 +183,5 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
 
         return null;
     }
+
 }

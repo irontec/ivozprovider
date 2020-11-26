@@ -6,10 +6,13 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* CodecDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CodecDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -26,12 +29,9 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     private $name;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -39,8 +39,8 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -56,8 +56,8 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -82,11 +82,11 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $type
+     * @param string $type | null
      *
      * @return static
      */
-    public function setType($type = null)
+    public function setType(?string $type = null): self
     {
         $this->type = $type;
 
@@ -96,17 +96,17 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     /**
-     * @param string $iden
+     * @param string $iden | null
      *
      * @return static
      */
-    public function setIden($iden = null)
+    public function setIden(?string $iden = null): self
     {
         $this->iden = $iden;
 
@@ -116,17 +116,17 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getIden()
+    public function getIden(): ?string
     {
         return $this->iden;
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -136,17 +136,17 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -154,10 +154,11 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
+
 }

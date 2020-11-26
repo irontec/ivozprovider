@@ -4,12 +4,18 @@ namespace Ivoz\Provider\Domain\Model\Domain;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Friend\FriendDto;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 
 /**
- * @codeCoverageIgnore
- */
+* DomainDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class DomainDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,32 +27,29 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     private $pointsTo = 'proxyusers';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $description;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Friend\FriendDto[] | null
+     * @var FriendDto[] | null
      */
-    private $friends = null;
+    private $friends;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto[] | null
+     * @var ResidentialDeviceDto[] | null
      */
-    private $residentialDevices = null;
+    private $residentialDevices;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Terminal\TerminalDto[] | null
+     * @var TerminalDto[] | null
      */
-    private $terminals = null;
-
-
-    use DtoNormalizer;
+    private $terminals;
 
     public function __construct($id = null)
     {
@@ -54,8 +57,8 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -71,8 +74,8 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -100,11 +103,11 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $domain
+     * @param string $domain | null
      *
      * @return static
      */
-    public function setDomain($domain = null)
+    public function setDomain(?string $domain = null): self
     {
         $this->domain = $domain;
 
@@ -114,17 +117,17 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDomain()
+    public function getDomain(): ?string
     {
         return $this->domain;
     }
 
     /**
-     * @param string $pointsTo
+     * @param string $pointsTo | null
      *
      * @return static
      */
-    public function setPointsTo($pointsTo = null)
+    public function setPointsTo(?string $pointsTo = null): self
     {
         $this->pointsTo = $pointsTo;
 
@@ -134,17 +137,17 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPointsTo()
+    public function getPointsTo(): ?string
     {
         return $this->pointsTo;
     }
 
     /**
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
-    public function setDescription($description = null)
+    public function setDescription(?string $description = null): self
     {
         $this->description = $description;
 
@@ -154,17 +157,17 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -172,19 +175,19 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param array $friends
+     * @param FriendDto[] | null
      *
      * @return static
      */
-    public function setFriends($friends = null)
+    public function setFriends(?array $friends = null): self
     {
         $this->friends = $friends;
 
@@ -192,19 +195,19 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return FriendDto[] | null
      */
-    public function getFriends()
+    public function getFriends(): ?array
     {
         return $this->friends;
     }
 
     /**
-     * @param array $residentialDevices
+     * @param ResidentialDeviceDto[] | null
      *
      * @return static
      */
-    public function setResidentialDevices($residentialDevices = null)
+    public function setResidentialDevices(?array $residentialDevices = null): self
     {
         $this->residentialDevices = $residentialDevices;
 
@@ -212,19 +215,19 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return ResidentialDeviceDto[] | null
      */
-    public function getResidentialDevices()
+    public function getResidentialDevices(): ?array
     {
         return $this->residentialDevices;
     }
 
     /**
-     * @param array $terminals
+     * @param TerminalDto[] | null
      *
      * @return static
      */
-    public function setTerminals($terminals = null)
+    public function setTerminals(?array $terminals = null): self
     {
         $this->terminals = $terminals;
 
@@ -232,10 +235,11 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return TerminalDto[] | null
      */
-    public function getTerminals()
+    public function getTerminals(): ?array
     {
         return $this->terminals;
     }
+
 }

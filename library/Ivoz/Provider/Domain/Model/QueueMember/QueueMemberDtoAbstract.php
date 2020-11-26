@@ -4,34 +4,36 @@ namespace Ivoz\Provider\Domain\Model\QueueMember;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Queue\QueueDto;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 
 /**
- * @codeCoverageIgnore
- */
+* QueueMemberDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int | null
      */
     private $penalty;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Queue\QueueDto | null
+     * @var QueueDto | null
      */
     private $queue;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @var UserDto | null
      */
     private $user;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -39,8 +41,8 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -56,8 +58,8 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -82,11 +84,11 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $penalty
+     * @param int $penalty | null
      *
      * @return static
      */
-    public function setPenalty($penalty = null)
+    public function setPenalty(?int $penalty = null): self
     {
         $this->penalty = $penalty;
 
@@ -94,19 +96,19 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPenalty()
+    public function getPenalty(): ?int
     {
         return $this->penalty;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -114,19 +116,19 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueDto $queue
+     * @param QueueDto | null
      *
      * @return static
      */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueDto $queue = null)
+    public function setQueue(?QueueDto $queue = null): self
     {
         $this->queue = $queue;
 
@@ -134,22 +136,20 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto | null
+     * @return QueueDto | null
      */
-    public function getQueue()
+    public function getQueue(): ?QueueDto
     {
         return $this->queue;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setQueueId($id)
+    public function setQueueId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Queue\QueueDto($id)
+            ? new QueueDto($id)
             : null;
 
         return $this->setQueue($value);
@@ -168,11 +168,11 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\User\UserDto $user
+     * @param UserDto | null
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserDto $user = null)
+    public function setUser(?UserDto $user = null): self
     {
         $this->user = $user;
 
@@ -180,22 +180,20 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @return UserDto | null
      */
-    public function getUser()
+    public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setUserId($id)
+    public function setUserId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            ? new UserDto($id)
             : null;
 
         return $this->setUser($value);
@@ -212,4 +210,5 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

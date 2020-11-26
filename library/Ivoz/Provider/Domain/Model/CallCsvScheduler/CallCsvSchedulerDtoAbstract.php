@@ -4,12 +4,26 @@ namespace Ivoz\Provider\Domain\Model\CallCsvScheduler;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
+use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Fax\FaxDto;
+use Ivoz\Provider\Domain\Model\Friend\FriendDto;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto;
 
 /**
- * @codeCoverageIgnore
- */
+* CallCsvSchedulerDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,12 +35,12 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     private $unit = 'month';
 
     /**
-     * @var integer
+     * @var int
      */
     private $frequency;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $callDirection = 'outbound';
 
@@ -36,82 +50,79 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     private $email;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $lastExecution;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $lastExecutionError;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $nextExecution;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @var NotificationTemplateDto | null
      */
     private $callCsvNotificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     * @var DdiDto | null
      */
     private $ddi;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @var CarrierDto | null
      */
     private $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
+     * @var RetailAccountDto | null
      */
     private $retailAccount;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
+     * @var ResidentialDeviceDto | null
      */
     private $residentialDevice;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @var UserDto | null
      */
     private $user;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Fax\FaxDto | null
+     * @var FaxDto | null
      */
     private $fax;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Friend\FriendDto | null
+     * @var FriendDto | null
      */
     private $friend;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     * @var DdiProviderDto | null
      */
     private $ddiProvider;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -119,8 +130,8 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -152,8 +163,8 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -194,11 +205,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -208,17 +219,17 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $unit
+     * @param string $unit | null
      *
      * @return static
      */
-    public function setUnit($unit = null)
+    public function setUnit(?string $unit = null): self
     {
         $this->unit = $unit;
 
@@ -228,17 +239,17 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getUnit()
+    public function getUnit(): ?string
     {
         return $this->unit;
     }
 
     /**
-     * @param integer $frequency
+     * @param int $frequency | null
      *
      * @return static
      */
-    public function setFrequency($frequency = null)
+    public function setFrequency(?int $frequency = null): self
     {
         $this->frequency = $frequency;
 
@@ -246,19 +257,19 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getFrequency()
+    public function getFrequency(): ?int
     {
         return $this->frequency;
     }
 
     /**
-     * @param string $callDirection
+     * @param string $callDirection | null
      *
      * @return static
      */
-    public function setCallDirection($callDirection = null)
+    public function setCallDirection(?string $callDirection = null): self
     {
         $this->callDirection = $callDirection;
 
@@ -268,17 +279,17 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getCallDirection()
+    public function getCallDirection(): ?string
     {
         return $this->callDirection;
     }
 
     /**
-     * @param string $email
+     * @param string $email | null
      *
      * @return static
      */
-    public function setEmail($email = null)
+    public function setEmail(?string $email = null): self
     {
         $this->email = $email;
 
@@ -288,17 +299,17 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     /**
-     * @param \DateTime $lastExecution
+     * @param \DateTimeInterface $lastExecution | null
      *
      * @return static
      */
-    public function setLastExecution($lastExecution = null)
+    public function setLastExecution($lastExecution = null): self
     {
         $this->lastExecution = $lastExecution;
 
@@ -306,7 +317,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getLastExecution()
     {
@@ -314,11 +325,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param string $lastExecutionError
+     * @param string $lastExecutionError | null
      *
      * @return static
      */
-    public function setLastExecutionError($lastExecutionError = null)
+    public function setLastExecutionError(?string $lastExecutionError = null): self
     {
         $this->lastExecutionError = $lastExecutionError;
 
@@ -328,17 +339,17 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getLastExecutionError()
+    public function getLastExecutionError(): ?string
     {
         return $this->lastExecutionError;
     }
 
     /**
-     * @param \DateTime $nextExecution
+     * @param \DateTimeInterface $nextExecution | null
      *
      * @return static
      */
-    public function setNextExecution($nextExecution = null)
+    public function setNextExecution($nextExecution = null): self
     {
         $this->nextExecution = $nextExecution;
 
@@ -346,7 +357,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getNextExecution()
     {
@@ -354,11 +365,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -366,19 +377,19 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -386,22 +397,20 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -420,11 +429,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -432,22 +441,20 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -466,11 +473,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $callCsvNotificationTemplate
+     * @param NotificationTemplateDto | null
      *
      * @return static
      */
-    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $callCsvNotificationTemplate = null)
+    public function setCallCsvNotificationTemplate(?NotificationTemplateDto $callCsvNotificationTemplate = null): self
     {
         $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
 
@@ -478,22 +485,20 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @return NotificationTemplateDto | null
      */
-    public function getCallCsvNotificationTemplate()
+    public function getCallCsvNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->callCsvNotificationTemplate;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCallCsvNotificationTemplateId($id)
+    public function setCallCsvNotificationTemplateId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            ? new NotificationTemplateDto($id)
             : null;
 
         return $this->setCallCsvNotificationTemplate($value);
@@ -512,11 +517,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi
+     * @param DdiDto | null
      *
      * @return static
      */
-    public function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi = null)
+    public function setDdi(?DdiDto $ddi = null): self
     {
         $this->ddi = $ddi;
 
@@ -524,22 +529,20 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     * @return DdiDto | null
      */
-    public function getDdi()
+    public function getDdi(): ?DdiDto
     {
         return $this->ddi;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDdiId($id)
+    public function setDdiId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            ? new DdiDto($id)
             : null;
 
         return $this->setDdi($value);
@@ -558,11 +561,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
+     * @param CarrierDto | null
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
+    public function setCarrier(?CarrierDto $carrier = null): self
     {
         $this->carrier = $carrier;
 
@@ -570,22 +573,20 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @return CarrierDto | null
      */
-    public function getCarrier()
+    public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCarrierId($id)
+    public function setCarrierId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
+            ? new CarrierDto($id)
             : null;
 
         return $this->setCarrier($value);
@@ -604,11 +605,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount
+     * @param RetailAccountDto | null
      *
      * @return static
      */
-    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount = null)
+    public function setRetailAccount(?RetailAccountDto $retailAccount = null): self
     {
         $this->retailAccount = $retailAccount;
 
@@ -616,22 +617,20 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
+     * @return RetailAccountDto | null
      */
-    public function getRetailAccount()
+    public function getRetailAccount(): ?RetailAccountDto
     {
         return $this->retailAccount;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRetailAccountId($id)
+    public function setRetailAccountId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto($id)
+            ? new RetailAccountDto($id)
             : null;
 
         return $this->setRetailAccount($value);
@@ -650,11 +649,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice
+     * @param ResidentialDeviceDto | null
      *
      * @return static
      */
-    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice = null)
+    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice = null): self
     {
         $this->residentialDevice = $residentialDevice;
 
@@ -662,22 +661,20 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
+     * @return ResidentialDeviceDto | null
      */
-    public function getResidentialDevice()
+    public function getResidentialDevice(): ?ResidentialDeviceDto
     {
         return $this->residentialDevice;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setResidentialDeviceId($id)
+    public function setResidentialDeviceId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto($id)
+            ? new ResidentialDeviceDto($id)
             : null;
 
         return $this->setResidentialDevice($value);
@@ -696,11 +693,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\User\UserDto $user
+     * @param UserDto | null
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserDto $user = null)
+    public function setUser(?UserDto $user = null): self
     {
         $this->user = $user;
 
@@ -708,22 +705,20 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @return UserDto | null
      */
-    public function getUser()
+    public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setUserId($id)
+    public function setUserId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            ? new UserDto($id)
             : null;
 
         return $this->setUser($value);
@@ -742,11 +737,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Fax\FaxDto $fax
+     * @param FaxDto | null
      *
      * @return static
      */
-    public function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxDto $fax = null)
+    public function setFax(?FaxDto $fax = null): self
     {
         $this->fax = $fax;
 
@@ -754,22 +749,20 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Fax\FaxDto | null
+     * @return FaxDto | null
      */
-    public function getFax()
+    public function getFax(): ?FaxDto
     {
         return $this->fax;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setFaxId($id)
+    public function setFaxId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Fax\FaxDto($id)
+            ? new FaxDto($id)
             : null;
 
         return $this->setFax($value);
@@ -788,11 +781,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendDto $friend
+     * @param FriendDto | null
      *
      * @return static
      */
-    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendDto $friend = null)
+    public function setFriend(?FriendDto $friend = null): self
     {
         $this->friend = $friend;
 
@@ -800,22 +793,20 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendDto | null
+     * @return FriendDto | null
      */
-    public function getFriend()
+    public function getFriend(): ?FriendDto
     {
         return $this->friend;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setFriendId($id)
+    public function setFriendId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Friend\FriendDto($id)
+            ? new FriendDto($id)
             : null;
 
         return $this->setFriend($value);
@@ -834,11 +825,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider
+     * @param DdiProviderDto | null
      *
      * @return static
      */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider = null)
+    public function setDdiProvider(?DdiProviderDto $ddiProvider = null): self
     {
         $this->ddiProvider = $ddiProvider;
 
@@ -846,22 +837,20 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     * @return DdiProviderDto | null
      */
-    public function getDdiProvider()
+    public function getDdiProvider(): ?DdiProviderDto
     {
         return $this->ddiProvider;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDdiProviderId($id)
+    public function setDdiProviderId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto($id)
+            ? new DdiProviderDto($id)
             : null;
 
         return $this->setDdiProvider($value);
@@ -878,4 +867,5 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
 
         return null;
     }
+
 }

@@ -4,12 +4,19 @@ namespace Ivoz\Provider\Domain\Model\Administrator;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
+use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityDto;
 
 /**
- * @codeCoverageIgnore
- */
+* AdministratorDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -26,52 +33,49 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     private $email = '';
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $active = true;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $restricted = false;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $name;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $lastname;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto | null
+     * @var TimezoneDto | null
      */
     private $timezone;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityDto[] | null
+     * @var AdministratorRelPublicEntityDto[] | null
      */
-    private $relPublicEntities = null;
-
-
-    use DtoNormalizer;
+    private $relPublicEntities;
 
     public function __construct($id = null)
     {
@@ -79,8 +83,8 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -103,8 +107,8 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -137,11 +141,11 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $username
+     * @param string $username | null
      *
      * @return static
      */
-    public function setUsername($username = null)
+    public function setUsername(?string $username = null): self
     {
         $this->username = $username;
 
@@ -151,17 +155,17 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getUsername()
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
     /**
-     * @param string $pass
+     * @param string $pass | null
      *
      * @return static
      */
-    public function setPass($pass = null)
+    public function setPass(?string $pass = null): self
     {
         $this->pass = $pass;
 
@@ -171,17 +175,17 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPass()
+    public function getPass(): ?string
     {
         return $this->pass;
     }
 
     /**
-     * @param string $email
+     * @param string $email | null
      *
      * @return static
      */
-    public function setEmail($email = null)
+    public function setEmail(?string $email = null): self
     {
         $this->email = $email;
 
@@ -191,17 +195,17 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     /**
-     * @param boolean $active
+     * @param bool $active | null
      *
      * @return static
      */
-    public function setActive($active = null)
+    public function setActive(?bool $active = null): self
     {
         $this->active = $active;
 
@@ -209,19 +213,19 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getActive()
+    public function getActive(): ?bool
     {
         return $this->active;
     }
 
     /**
-     * @param boolean $restricted
+     * @param bool $restricted | null
      *
      * @return static
      */
-    public function setRestricted($restricted = null)
+    public function setRestricted(?bool $restricted = null): self
     {
         $this->restricted = $restricted;
 
@@ -229,19 +233,19 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getRestricted()
+    public function getRestricted(): ?bool
     {
         return $this->restricted;
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -251,17 +255,17 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $lastname
+     * @param string $lastname | null
      *
      * @return static
      */
-    public function setLastname($lastname = null)
+    public function setLastname(?string $lastname = null): self
     {
         $this->lastname = $lastname;
 
@@ -271,17 +275,17 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getLastname()
+    public function getLastname(): ?string
     {
         return $this->lastname;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -289,19 +293,19 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -309,22 +313,20 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -343,11 +345,11 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -355,22 +357,20 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -389,11 +389,11 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto $timezone
+     * @param TimezoneDto | null
      *
      * @return static
      */
-    public function setTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneDto $timezone = null)
+    public function setTimezone(?TimezoneDto $timezone = null): self
     {
         $this->timezone = $timezone;
 
@@ -401,22 +401,20 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto | null
+     * @return TimezoneDto | null
      */
-    public function getTimezone()
+    public function getTimezone(): ?TimezoneDto
     {
         return $this->timezone;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setTimezoneId($id)
+    public function setTimezoneId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto($id)
+            ? new TimezoneDto($id)
             : null;
 
         return $this->setTimezone($value);
@@ -435,11 +433,11 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $relPublicEntities
+     * @param AdministratorRelPublicEntityDto[] | null
      *
      * @return static
      */
-    public function setRelPublicEntities($relPublicEntities = null)
+    public function setRelPublicEntities(?array $relPublicEntities = null): self
     {
         $this->relPublicEntities = $relPublicEntities;
 
@@ -447,10 +445,11 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return AdministratorRelPublicEntityDto[] | null
      */
-    public function getRelPublicEntities()
+    public function getRelPublicEntities(): ?array
     {
         return $this->relPublicEntities;
     }
+
 }

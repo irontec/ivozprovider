@@ -4,79 +4,84 @@ namespace Ivoz\Provider\Domain\Model\HolidayDate;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Calendar\CalendarDto;
+use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
+use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Country\CountryDto;
 
 /**
- * @codeCoverageIgnore
- */
+* HolidayDateDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $name;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $eventDate;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $wholeDayEvent = true;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $timeIn;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $timeOut;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $routeType;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $numberValue;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Calendar\CalendarDto | null
+     * @var CalendarDto | null
      */
     private $calendar;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
+     * @var LocutionDto | null
      */
     private $locution;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
+     * @var ExtensionDto | null
      */
     private $extension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @var UserDto | null
      */
     private $voiceMailUser;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @var CountryDto | null
      */
     private $numberCountry;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -84,8 +89,8 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -110,8 +115,8 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -145,11 +150,11 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -159,17 +164,17 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param \DateTime $eventDate
+     * @param \DateTimeInterface $eventDate | null
      *
      * @return static
      */
-    public function setEventDate($eventDate = null)
+    public function setEventDate($eventDate = null): self
     {
         $this->eventDate = $eventDate;
 
@@ -177,7 +182,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getEventDate()
     {
@@ -185,11 +190,11 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param boolean $wholeDayEvent
+     * @param bool $wholeDayEvent | null
      *
      * @return static
      */
-    public function setWholeDayEvent($wholeDayEvent = null)
+    public function setWholeDayEvent(?bool $wholeDayEvent = null): self
     {
         $this->wholeDayEvent = $wholeDayEvent;
 
@@ -197,19 +202,19 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getWholeDayEvent()
+    public function getWholeDayEvent(): ?bool
     {
         return $this->wholeDayEvent;
     }
 
     /**
-     * @param \DateTime $timeIn
+     * @param \DateTimeInterface $timeIn | null
      *
      * @return static
      */
-    public function setTimeIn($timeIn = null)
+    public function setTimeIn($timeIn = null): self
     {
         $this->timeIn = $timeIn;
 
@@ -217,7 +222,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getTimeIn()
     {
@@ -225,11 +230,11 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \DateTime $timeOut
+     * @param \DateTimeInterface $timeOut | null
      *
      * @return static
      */
-    public function setTimeOut($timeOut = null)
+    public function setTimeOut($timeOut = null): self
     {
         $this->timeOut = $timeOut;
 
@@ -237,7 +242,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getTimeOut()
     {
@@ -245,11 +250,11 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $routeType
+     * @param string $routeType | null
      *
      * @return static
      */
-    public function setRouteType($routeType = null)
+    public function setRouteType(?string $routeType = null): self
     {
         $this->routeType = $routeType;
 
@@ -259,17 +264,17 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRouteType()
+    public function getRouteType(): ?string
     {
         return $this->routeType;
     }
 
     /**
-     * @param string $numberValue
+     * @param string $numberValue | null
      *
      * @return static
      */
-    public function setNumberValue($numberValue = null)
+    public function setNumberValue(?string $numberValue = null): self
     {
         $this->numberValue = $numberValue;
 
@@ -279,17 +284,17 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNumberValue()
+    public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -297,19 +302,19 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarDto $calendar
+     * @param CalendarDto | null
      *
      * @return static
      */
-    public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarDto $calendar = null)
+    public function setCalendar(?CalendarDto $calendar = null): self
     {
         $this->calendar = $calendar;
 
@@ -317,22 +322,20 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarDto | null
+     * @return CalendarDto | null
      */
-    public function getCalendar()
+    public function getCalendar(): ?CalendarDto
     {
         return $this->calendar;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCalendarId($id)
+    public function setCalendarId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Calendar\CalendarDto($id)
+            ? new CalendarDto($id)
             : null;
 
         return $this->setCalendar($value);
@@ -351,11 +354,11 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $locution
+     * @param LocutionDto | null
      *
      * @return static
      */
-    public function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionDto $locution = null)
+    public function setLocution(?LocutionDto $locution = null): self
     {
         $this->locution = $locution;
 
@@ -363,22 +366,20 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
+     * @return LocutionDto | null
      */
-    public function getLocution()
+    public function getLocution(): ?LocutionDto
     {
         return $this->locution;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setLocutionId($id)
+    public function setLocutionId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            ? new LocutionDto($id)
             : null;
 
         return $this->setLocution($value);
@@ -397,11 +398,11 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $extension
+     * @param ExtensionDto | null
      *
      * @return static
      */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionDto $extension = null)
+    public function setExtension(?ExtensionDto $extension = null): self
     {
         $this->extension = $extension;
 
@@ -409,22 +410,20 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
+     * @return ExtensionDto | null
      */
-    public function getExtension()
+    public function getExtension(): ?ExtensionDto
     {
         return $this->extension;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setExtensionId($id)
+    public function setExtensionId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            ? new ExtensionDto($id)
             : null;
 
         return $this->setExtension($value);
@@ -443,11 +442,11 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\User\UserDto $voiceMailUser
+     * @param UserDto | null
      *
      * @return static
      */
-    public function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserDto $voiceMailUser = null)
+    public function setVoiceMailUser(?UserDto $voiceMailUser = null): self
     {
         $this->voiceMailUser = $voiceMailUser;
 
@@ -455,22 +454,20 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @return UserDto | null
      */
-    public function getVoiceMailUser()
+    public function getVoiceMailUser(): ?UserDto
     {
         return $this->voiceMailUser;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setVoiceMailUserId($id)
+    public function setVoiceMailUserId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            ? new UserDto($id)
             : null;
 
         return $this->setVoiceMailUser($value);
@@ -489,11 +486,11 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $numberCountry
+     * @param CountryDto | null
      *
      * @return static
      */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryDto $numberCountry = null)
+    public function setNumberCountry(?CountryDto $numberCountry = null): self
     {
         $this->numberCountry = $numberCountry;
 
@@ -501,22 +498,20 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @return CountryDto | null
      */
-    public function getNumberCountry()
+    public function getNumberCountry(): ?CountryDto
     {
         return $this->numberCountry;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setNumberCountryId($id)
+    public function setNumberCountryId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            ? new CountryDto($id)
             : null;
 
         return $this->setNumberCountry($value);
@@ -533,4 +528,5 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

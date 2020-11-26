@@ -4,69 +4,72 @@ namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto;
 
 /**
- * @codeCoverageIgnore
- */
+* CallCsvReportDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $sentTo = '';
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $inDate;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $outDate;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $createdOn;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $csvFileSize;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $csvMimeType;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $csvBaseName;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto | null
+     * @var CallCsvSchedulerDto | null
      */
     private $callCsvScheduler;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -74,8 +77,8 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -88,7 +91,11 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
             'outDate' => 'outDate',
             'createdOn' => 'createdOn',
             'id' => 'id',
-            'csv' => ['fileSize','mimeType','baseName'],
+            'csv' => [
+                'fileSize',
+                'mimeType',
+                'baseName',
+            ],
             'companyId' => 'company',
             'brandId' => 'brand',
             'callCsvSchedulerId' => 'callCsvScheduler'
@@ -96,8 +103,8 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -109,7 +116,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
             'csv' => [
                 'fileSize' => $this->getCsvFileSize(),
                 'mimeType' => $this->getCsvMimeType(),
-                'baseName' => $this->getCsvBaseName()
+                'baseName' => $this->getCsvBaseName(),
             ],
             'company' => $this->getCompany(),
             'brand' => $this->getBrand(),
@@ -131,11 +138,11 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $sentTo
+     * @param string $sentTo | null
      *
      * @return static
      */
-    public function setSentTo($sentTo = null)
+    public function setSentTo(?string $sentTo = null): self
     {
         $this->sentTo = $sentTo;
 
@@ -145,17 +152,17 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getSentTo()
+    public function getSentTo(): ?string
     {
         return $this->sentTo;
     }
 
     /**
-     * @param \DateTime $inDate
+     * @param \DateTimeInterface $inDate | null
      *
      * @return static
      */
-    public function setInDate($inDate = null)
+    public function setInDate($inDate = null): self
     {
         $this->inDate = $inDate;
 
@@ -163,7 +170,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getInDate()
     {
@@ -171,11 +178,11 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \DateTime $outDate
+     * @param \DateTimeInterface $outDate | null
      *
      * @return static
      */
-    public function setOutDate($outDate = null)
+    public function setOutDate($outDate = null): self
     {
         $this->outDate = $outDate;
 
@@ -183,7 +190,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getOutDate()
     {
@@ -191,11 +198,11 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \DateTime $createdOn
+     * @param \DateTimeInterface $createdOn | null
      *
      * @return static
      */
-    public function setCreatedOn($createdOn = null)
+    public function setCreatedOn($createdOn = null): self
     {
         $this->createdOn = $createdOn;
 
@@ -203,7 +210,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedOn()
     {
@@ -211,11 +218,11 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -223,19 +230,19 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param integer $csvFileSize
+     * @param int $csvFileSize | null
      *
      * @return static
      */
-    public function setCsvFileSize($csvFileSize = null)
+    public function setCsvFileSize(?int $csvFileSize = null): self
     {
         $this->csvFileSize = $csvFileSize;
 
@@ -243,19 +250,19 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getCsvFileSize()
+    public function getCsvFileSize(): ?int
     {
         return $this->csvFileSize;
     }
 
     /**
-     * @param string $csvMimeType
+     * @param string $csvMimeType | null
      *
      * @return static
      */
-    public function setCsvMimeType($csvMimeType = null)
+    public function setCsvMimeType(?string $csvMimeType = null): self
     {
         $this->csvMimeType = $csvMimeType;
 
@@ -265,17 +272,17 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCsvMimeType()
+    public function getCsvMimeType(): ?string
     {
         return $this->csvMimeType;
     }
 
     /**
-     * @param string $csvBaseName
+     * @param string $csvBaseName | null
      *
      * @return static
      */
-    public function setCsvBaseName($csvBaseName = null)
+    public function setCsvBaseName(?string $csvBaseName = null): self
     {
         $this->csvBaseName = $csvBaseName;
 
@@ -285,17 +292,17 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCsvBaseName()
+    public function getCsvBaseName(): ?string
     {
         return $this->csvBaseName;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -303,22 +310,20 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -337,11 +342,11 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -349,22 +354,20 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -383,11 +386,11 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto $callCsvScheduler
+     * @param CallCsvSchedulerDto | null
      *
      * @return static
      */
-    public function setCallCsvScheduler(\Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto $callCsvScheduler = null)
+    public function setCallCsvScheduler(?CallCsvSchedulerDto $callCsvScheduler = null): self
     {
         $this->callCsvScheduler = $callCsvScheduler;
 
@@ -395,22 +398,20 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto | null
+     * @return CallCsvSchedulerDto | null
      */
-    public function getCallCsvScheduler()
+    public function getCallCsvScheduler(): ?CallCsvSchedulerDto
     {
         return $this->callCsvScheduler;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCallCsvSchedulerId($id)
+    public function setCallCsvSchedulerId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto($id)
+            ? new CallCsvSchedulerDto($id)
             : null;
 
         return $this->setCallCsvScheduler($value);
@@ -427,4 +428,5 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

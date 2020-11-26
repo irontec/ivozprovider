@@ -4,12 +4,18 @@ namespace Ivoz\Provider\Domain\Model\OutgoingDdiRule;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
+use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternDto;
 
 /**
- * @codeCoverageIgnore
- */
+* OutgoingDdiRuleDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,27 +27,24 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     private $defaultAction;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     * @var DdiDto | null
      */
     private $forcedDdi;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternDto[] | null
+     * @var OutgoingDdiRulesPatternDto[] | null
      */
-    private $patterns = null;
-
-
-    use DtoNormalizer;
+    private $patterns;
 
     public function __construct($id = null)
     {
@@ -49,8 +52,8 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -67,8 +70,8 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -95,11 +98,11 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -109,17 +112,17 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $defaultAction
+     * @param string $defaultAction | null
      *
      * @return static
      */
-    public function setDefaultAction($defaultAction = null)
+    public function setDefaultAction(?string $defaultAction = null): self
     {
         $this->defaultAction = $defaultAction;
 
@@ -129,17 +132,17 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDefaultAction()
+    public function getDefaultAction(): ?string
     {
         return $this->defaultAction;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -147,19 +150,19 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -167,22 +170,20 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -201,11 +202,11 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $forcedDdi
+     * @param DdiDto | null
      *
      * @return static
      */
-    public function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiDto $forcedDdi = null)
+    public function setForcedDdi(?DdiDto $forcedDdi = null): self
     {
         $this->forcedDdi = $forcedDdi;
 
@@ -213,22 +214,20 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     * @return DdiDto | null
      */
-    public function getForcedDdi()
+    public function getForcedDdi(): ?DdiDto
     {
         return $this->forcedDdi;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setForcedDdiId($id)
+    public function setForcedDdiId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            ? new DdiDto($id)
             : null;
 
         return $this->setForcedDdi($value);
@@ -247,11 +246,11 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $patterns
+     * @param OutgoingDdiRulesPatternDto[] | null
      *
      * @return static
      */
-    public function setPatterns($patterns = null)
+    public function setPatterns(?array $patterns = null): self
     {
         $this->patterns = $patterns;
 
@@ -259,10 +258,11 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return OutgoingDdiRulesPatternDto[] | null
      */
-    public function getPatterns()
+    public function getPatterns(): ?array
     {
         return $this->patterns;
     }
+
 }

@@ -4,29 +4,31 @@ namespace Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto;
 
 /**
- * @codeCoverageIgnore
- */
+* RoutingPatternGroupsRelPatternDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto | null
+     * @var RoutingPatternDto | null
      */
     private $routingPattern;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto | null
+     * @var RoutingPatternGroupDto | null
      */
     private $routingPatternGroup;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -34,8 +36,8 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -50,8 +52,8 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -75,11 +77,11 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -87,19 +89,19 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto $routingPattern
+     * @param RoutingPatternDto | null
      *
      * @return static
      */
-    public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto $routingPattern = null)
+    public function setRoutingPattern(?RoutingPatternDto $routingPattern = null): self
     {
         $this->routingPattern = $routingPattern;
 
@@ -107,22 +109,20 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto | null
+     * @return RoutingPatternDto | null
      */
-    public function getRoutingPattern()
+    public function getRoutingPattern(): ?RoutingPatternDto
     {
         return $this->routingPattern;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRoutingPatternId($id)
+    public function setRoutingPatternId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto($id)
+            ? new RoutingPatternDto($id)
             : null;
 
         return $this->setRoutingPattern($value);
@@ -141,11 +141,11 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto $routingPatternGroup
+     * @param RoutingPatternGroupDto | null
      *
      * @return static
      */
-    public function setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto $routingPatternGroup = null)
+    public function setRoutingPatternGroup(?RoutingPatternGroupDto $routingPatternGroup = null): self
     {
         $this->routingPatternGroup = $routingPatternGroup;
 
@@ -153,22 +153,20 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto | null
+     * @return RoutingPatternGroupDto | null
      */
-    public function getRoutingPatternGroup()
+    public function getRoutingPatternGroup(): ?RoutingPatternGroupDto
     {
         return $this->routingPatternGroup;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRoutingPatternGroupId($id)
+    public function setRoutingPatternGroupId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto($id)
+            ? new RoutingPatternGroupDto($id)
             : null;
 
         return $this->setRoutingPatternGroup($value);
@@ -185,4 +183,5 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
 
         return null;
     }
+
 }

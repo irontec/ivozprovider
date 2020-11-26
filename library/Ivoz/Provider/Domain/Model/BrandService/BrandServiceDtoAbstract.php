@@ -4,34 +4,36 @@ namespace Ivoz\Provider\Domain\Model\BrandService;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Service\ServiceDto;
 
 /**
- * @codeCoverageIgnore
- */
+* BrandServiceDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $code;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Service\ServiceDto | null
+     * @var ServiceDto | null
      */
     private $service;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -39,8 +41,8 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -56,8 +58,8 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -82,11 +84,11 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $code
+     * @param string $code | null
      *
      * @return static
      */
-    public function setCode($code = null)
+    public function setCode(?string $code = null): self
     {
         $this->code = $code;
 
@@ -96,17 +98,17 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -114,19 +116,19 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -134,22 +136,20 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -168,11 +168,11 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Service\ServiceDto $service
+     * @param ServiceDto | null
      *
      * @return static
      */
-    public function setService(\Ivoz\Provider\Domain\Model\Service\ServiceDto $service = null)
+    public function setService(?ServiceDto $service = null): self
     {
         $this->service = $service;
 
@@ -180,22 +180,20 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Service\ServiceDto | null
+     * @return ServiceDto | null
      */
-    public function getService()
+    public function getService(): ?ServiceDto
     {
         return $this->service;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setServiceId($id)
+    public function setServiceId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Service\ServiceDto($id)
+            ? new ServiceDto($id)
             : null;
 
         return $this->setService($value);
@@ -212,4 +210,5 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

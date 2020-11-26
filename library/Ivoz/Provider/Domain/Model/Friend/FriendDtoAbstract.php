@@ -4,12 +4,23 @@ namespace Ivoz\Provider\Domain\Model\Friend;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Domain\DomainDto;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
+use Ivoz\Provider\Domain\Model\CallAcl\CallAclDto;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
+use Ivoz\Provider\Domain\Model\Language\LanguageDto;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
+use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternDto;
 
 /**
- * @codeCoverageIgnore
- */
+* FriendDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class FriendDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,27 +32,27 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $description = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $transport;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $ip;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $port;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $password;
 
     /**
-     * @var integer
+     * @var int
      */
     private $priority = 1;
 
@@ -71,12 +82,12 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $updateCallerid = 'yes';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $fromUser;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $fromDomain;
 
@@ -96,67 +107,64 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $t38Passthrough = 'no';
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $alwaysApplyTransformations = false;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $rtpEncryption = false;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainDto | null
+     * @var DomainDto | null
      */
     private $domain;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
+     * @var TransformationRuleSetDto | null
      */
     private $transformationRuleSet;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto | null
+     * @var CallAclDto | null
      */
     private $callAcl;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     * @var DdiDto | null
      */
     private $outgoingDdi;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
+     * @var LanguageDto | null
      */
     private $language;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $interCompany;
 
     /**
-     * @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto[] | null
+     * @var PsEndpointDto[] | null
      */
-    private $psEndpoints = null;
+    private $psEndpoints;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternDto[] | null
+     * @var FriendsPatternDto[] | null
      */
-    private $patterns = null;
-
-
-    use DtoNormalizer;
+    private $patterns;
 
     public function __construct($id = null)
     {
@@ -164,8 +172,8 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -204,8 +212,8 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -255,11 +263,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -269,17 +277,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
-    public function setDescription($description = null)
+    public function setDescription(?string $description = null): self
     {
         $this->description = $description;
 
@@ -289,17 +297,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param string $transport
+     * @param string $transport | null
      *
      * @return static
      */
-    public function setTransport($transport = null)
+    public function setTransport(?string $transport = null): self
     {
         $this->transport = $transport;
 
@@ -309,17 +317,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTransport()
+    public function getTransport(): ?string
     {
         return $this->transport;
     }
 
     /**
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
-    public function setIp($ip = null)
+    public function setIp(?string $ip = null): self
     {
         $this->ip = $ip;
 
@@ -329,17 +337,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
 
     /**
-     * @param integer $port
+     * @param int $port | null
      *
      * @return static
      */
-    public function setPort($port = null)
+    public function setPort(?int $port = null): self
     {
         $this->port = $port;
 
@@ -347,19 +355,19 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPort()
+    public function getPort(): ?int
     {
         return $this->port;
     }
 
     /**
-     * @param string $password
+     * @param string $password | null
      *
      * @return static
      */
-    public function setPassword($password = null)
+    public function setPassword(?string $password = null): self
     {
         $this->password = $password;
 
@@ -369,17 +377,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPassword()
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
     /**
-     * @param integer $priority
+     * @param int $priority | null
      *
      * @return static
      */
-    public function setPriority($priority = null)
+    public function setPriority(?int $priority = null): self
     {
         $this->priority = $priority;
 
@@ -387,19 +395,19 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPriority()
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
 
     /**
-     * @param string $disallow
+     * @param string $disallow | null
      *
      * @return static
      */
-    public function setDisallow($disallow = null)
+    public function setDisallow(?string $disallow = null): self
     {
         $this->disallow = $disallow;
 
@@ -409,17 +417,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDisallow()
+    public function getDisallow(): ?string
     {
         return $this->disallow;
     }
 
     /**
-     * @param string $allow
+     * @param string $allow | null
      *
      * @return static
      */
-    public function setAllow($allow = null)
+    public function setAllow(?string $allow = null): self
     {
         $this->allow = $allow;
 
@@ -429,17 +437,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getAllow()
+    public function getAllow(): ?string
     {
         return $this->allow;
     }
 
     /**
-     * @param string $directMediaMethod
+     * @param string $directMediaMethod | null
      *
      * @return static
      */
-    public function setDirectMediaMethod($directMediaMethod = null)
+    public function setDirectMediaMethod(?string $directMediaMethod = null): self
     {
         $this->directMediaMethod = $directMediaMethod;
 
@@ -449,17 +457,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDirectMediaMethod()
+    public function getDirectMediaMethod(): ?string
     {
         return $this->directMediaMethod;
     }
 
     /**
-     * @param string $calleridUpdateHeader
+     * @param string $calleridUpdateHeader | null
      *
      * @return static
      */
-    public function setCalleridUpdateHeader($calleridUpdateHeader = null)
+    public function setCalleridUpdateHeader(?string $calleridUpdateHeader = null): self
     {
         $this->calleridUpdateHeader = $calleridUpdateHeader;
 
@@ -469,17 +477,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCalleridUpdateHeader()
+    public function getCalleridUpdateHeader(): ?string
     {
         return $this->calleridUpdateHeader;
     }
 
     /**
-     * @param string $updateCallerid
+     * @param string $updateCallerid | null
      *
      * @return static
      */
-    public function setUpdateCallerid($updateCallerid = null)
+    public function setUpdateCallerid(?string $updateCallerid = null): self
     {
         $this->updateCallerid = $updateCallerid;
 
@@ -489,17 +497,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getUpdateCallerid()
+    public function getUpdateCallerid(): ?string
     {
         return $this->updateCallerid;
     }
 
     /**
-     * @param string $fromUser
+     * @param string $fromUser | null
      *
      * @return static
      */
-    public function setFromUser($fromUser = null)
+    public function setFromUser(?string $fromUser = null): self
     {
         $this->fromUser = $fromUser;
 
@@ -509,17 +517,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getFromUser()
+    public function getFromUser(): ?string
     {
         return $this->fromUser;
     }
 
     /**
-     * @param string $fromDomain
+     * @param string $fromDomain | null
      *
      * @return static
      */
-    public function setFromDomain($fromDomain = null)
+    public function setFromDomain(?string $fromDomain = null): self
     {
         $this->fromDomain = $fromDomain;
 
@@ -529,17 +537,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getFromDomain()
+    public function getFromDomain(): ?string
     {
         return $this->fromDomain;
     }
 
     /**
-     * @param string $directConnectivity
+     * @param string $directConnectivity | null
      *
      * @return static
      */
-    public function setDirectConnectivity($directConnectivity = null)
+    public function setDirectConnectivity(?string $directConnectivity = null): self
     {
         $this->directConnectivity = $directConnectivity;
 
@@ -549,17 +557,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDirectConnectivity()
+    public function getDirectConnectivity(): ?string
     {
         return $this->directConnectivity;
     }
 
     /**
-     * @param string $ddiIn
+     * @param string $ddiIn | null
      *
      * @return static
      */
-    public function setDdiIn($ddiIn = null)
+    public function setDdiIn(?string $ddiIn = null): self
     {
         $this->ddiIn = $ddiIn;
 
@@ -569,17 +577,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDdiIn()
+    public function getDdiIn(): ?string
     {
         return $this->ddiIn;
     }
 
     /**
-     * @param string $t38Passthrough
+     * @param string $t38Passthrough | null
      *
      * @return static
      */
-    public function setT38Passthrough($t38Passthrough = null)
+    public function setT38Passthrough(?string $t38Passthrough = null): self
     {
         $this->t38Passthrough = $t38Passthrough;
 
@@ -589,17 +597,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getT38Passthrough()
+    public function getT38Passthrough(): ?string
     {
         return $this->t38Passthrough;
     }
 
     /**
-     * @param boolean $alwaysApplyTransformations
+     * @param bool $alwaysApplyTransformations | null
      *
      * @return static
      */
-    public function setAlwaysApplyTransformations($alwaysApplyTransformations = null)
+    public function setAlwaysApplyTransformations(?bool $alwaysApplyTransformations = null): self
     {
         $this->alwaysApplyTransformations = $alwaysApplyTransformations;
 
@@ -607,19 +615,19 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getAlwaysApplyTransformations()
+    public function getAlwaysApplyTransformations(): ?bool
     {
         return $this->alwaysApplyTransformations;
     }
 
     /**
-     * @param boolean $rtpEncryption
+     * @param bool $rtpEncryption | null
      *
      * @return static
      */
-    public function setRtpEncryption($rtpEncryption = null)
+    public function setRtpEncryption(?bool $rtpEncryption = null): self
     {
         $this->rtpEncryption = $rtpEncryption;
 
@@ -627,19 +635,19 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getRtpEncryption()
+    public function getRtpEncryption(): ?bool
     {
         return $this->rtpEncryption;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -647,19 +655,19 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -667,22 +675,20 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -701,11 +707,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainDto $domain
+     * @param DomainDto | null
      *
      * @return static
      */
-    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainDto $domain = null)
+    public function setDomain(?DomainDto $domain = null): self
     {
         $this->domain = $domain;
 
@@ -713,22 +719,20 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainDto | null
+     * @return DomainDto | null
      */
-    public function getDomain()
+    public function getDomain(): ?DomainDto
     {
         return $this->domain;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDomainId($id)
+    public function setDomainId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Domain\DomainDto($id)
+            ? new DomainDto($id)
             : null;
 
         return $this->setDomain($value);
@@ -747,11 +751,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto $transformationRuleSet
+     * @param TransformationRuleSetDto | null
      *
      * @return static
      */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto $transformationRuleSet = null)
+    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet = null): self
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -759,22 +763,20 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
+     * @return TransformationRuleSetDto | null
      */
-    public function getTransformationRuleSet()
+    public function getTransformationRuleSet(): ?TransformationRuleSetDto
     {
         return $this->transformationRuleSet;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setTransformationRuleSetId($id)
+    public function setTransformationRuleSetId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto($id)
+            ? new TransformationRuleSetDto($id)
             : null;
 
         return $this->setTransformationRuleSet($value);
@@ -793,11 +795,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto $callAcl
+     * @param CallAclDto | null
      *
      * @return static
      */
-    public function setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAclDto $callAcl = null)
+    public function setCallAcl(?CallAclDto $callAcl = null): self
     {
         $this->callAcl = $callAcl;
 
@@ -805,22 +807,20 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto | null
+     * @return CallAclDto | null
      */
-    public function getCallAcl()
+    public function getCallAcl(): ?CallAclDto
     {
         return $this->callAcl;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCallAclId($id)
+    public function setCallAclId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto($id)
+            ? new CallAclDto($id)
             : null;
 
         return $this->setCallAcl($value);
@@ -839,11 +839,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $outgoingDdi
+     * @param DdiDto | null
      *
      * @return static
      */
-    public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiDto $outgoingDdi = null)
+    public function setOutgoingDdi(?DdiDto $outgoingDdi = null): self
     {
         $this->outgoingDdi = $outgoingDdi;
 
@@ -851,22 +851,20 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     * @return DdiDto | null
      */
-    public function getOutgoingDdi()
+    public function getOutgoingDdi(): ?DdiDto
     {
         return $this->outgoingDdi;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setOutgoingDdiId($id)
+    public function setOutgoingDdiId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            ? new DdiDto($id)
             : null;
 
         return $this->setOutgoingDdi($value);
@@ -885,11 +883,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageDto $language
+     * @param LanguageDto | null
      *
      * @return static
      */
-    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageDto $language = null)
+    public function setLanguage(?LanguageDto $language = null): self
     {
         $this->language = $language;
 
@@ -897,22 +895,20 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageDto | null
+     * @return LanguageDto | null
      */
-    public function getLanguage()
+    public function getLanguage(): ?LanguageDto
     {
         return $this->language;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setLanguageId($id)
+    public function setLanguageId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Language\LanguageDto($id)
+            ? new LanguageDto($id)
             : null;
 
         return $this->setLanguage($value);
@@ -931,11 +927,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $interCompany
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setInterCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $interCompany = null)
+    public function setInterCompany(?CompanyDto $interCompany = null): self
     {
         $this->interCompany = $interCompany;
 
@@ -943,22 +939,20 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getInterCompany()
+    public function getInterCompany(): ?CompanyDto
     {
         return $this->interCompany;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setInterCompanyId($id)
+    public function setInterCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setInterCompany($value);
@@ -977,11 +971,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $psEndpoints
+     * @param PsEndpointDto[] | null
      *
      * @return static
      */
-    public function setPsEndpoints($psEndpoints = null)
+    public function setPsEndpoints(?array $psEndpoints = null): self
     {
         $this->psEndpoints = $psEndpoints;
 
@@ -989,19 +983,19 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return PsEndpointDto[] | null
      */
-    public function getPsEndpoints()
+    public function getPsEndpoints(): ?array
     {
         return $this->psEndpoints;
     }
 
     /**
-     * @param array $patterns
+     * @param FriendsPatternDto[] | null
      *
      * @return static
      */
-    public function setPatterns($patterns = null)
+    public function setPatterns(?array $patterns = null): self
     {
         $this->patterns = $patterns;
 
@@ -1009,10 +1003,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return FriendsPatternDto[] | null
      */
-    public function getPatterns()
+    public function getPatterns(): ?array
     {
         return $this->patterns;
     }
+
 }

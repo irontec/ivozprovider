@@ -4,44 +4,46 @@ namespace Ivoz\Provider\Domain\Model\MaxUsageNotification;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 
 /**
- * @codeCoverageIgnore
- */
+* MaxUsageNotificationDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $toAddress;
 
     /**
-     * @var float
+     * @var float | null
      */
     private $threshold = 0;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $lastSent;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
-     */
-    private $company;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     * @var NotificationTemplateDto | null
      */
     private $notificationTemplate;
 
-
-    use DtoNormalizer;
+    /**
+     * @var CompanyDto | null
+     */
+    private $company;
 
     public function __construct($id = null)
     {
@@ -49,8 +51,8 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -62,14 +64,14 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
             'threshold' => 'threshold',
             'lastSent' => 'lastSent',
             'id' => 'id',
-            'companyId' => 'company',
-            'notificationTemplateId' => 'notificationTemplate'
+            'notificationTemplateId' => 'notificationTemplate',
+            'companyId' => 'company'
         ];
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -77,8 +79,8 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
             'threshold' => $this->getThreshold(),
             'lastSent' => $this->getLastSent(),
             'id' => $this->getId(),
-            'company' => $this->getCompany(),
-            'notificationTemplate' => $this->getNotificationTemplate()
+            'notificationTemplate' => $this->getNotificationTemplate(),
+            'company' => $this->getCompany()
         ];
 
         if (!$hideSensitiveData) {
@@ -96,11 +98,11 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param string $toAddress
+     * @param string $toAddress | null
      *
      * @return static
      */
-    public function setToAddress($toAddress = null)
+    public function setToAddress(?string $toAddress = null): self
     {
         $this->toAddress = $toAddress;
 
@@ -110,17 +112,17 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getToAddress()
+    public function getToAddress(): ?string
     {
         return $this->toAddress;
     }
 
     /**
-     * @param float $threshold
+     * @param float $threshold | null
      *
      * @return static
      */
-    public function setThreshold($threshold = null)
+    public function setThreshold(?float $threshold = null): self
     {
         $this->threshold = $threshold;
 
@@ -130,17 +132,17 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     /**
      * @return float | null
      */
-    public function getThreshold()
+    public function getThreshold(): ?float
     {
         return $this->threshold;
     }
 
     /**
-     * @param \DateTime $lastSent
+     * @param \DateTimeInterface $lastSent | null
      *
      * @return static
      */
-    public function setLastSent($lastSent = null)
+    public function setLastSent($lastSent = null): self
     {
         $this->lastSent = $lastSent;
 
@@ -148,7 +150,7 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getLastSent()
     {
@@ -156,11 +158,11 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -168,19 +170,63 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param NotificationTemplateDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setNotificationTemplate(?NotificationTemplateDto $notificationTemplate = null): self
+    {
+        $this->notificationTemplate = $notificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @return NotificationTemplateDto | null
+     */
+    public function getNotificationTemplate(): ?NotificationTemplateDto
+    {
+        return $this->notificationTemplate;
+    }
+
+    /**
+     * @return static
+     */
+    public function setNotificationTemplateId($id): self
+    {
+        $value = !is_null($id)
+            ? new NotificationTemplateDto($id)
+            : null;
+
+        return $this->setNotificationTemplate($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getNotificationTemplateId()
+    {
+        if ($dto = $this->getNotificationTemplate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param CompanyDto | null
+     *
+     * @return static
+     */
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -188,22 +234,20 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -221,49 +265,4 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return null;
     }
 
-    /**
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $notificationTemplate
-     *
-     * @return static
-     */
-    public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $notificationTemplate = null)
-    {
-        $this->notificationTemplate = $notificationTemplate;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
-     */
-    public function getNotificationTemplate()
-    {
-        return $this->notificationTemplate;
-    }
-
-    /**
-     * @param mixed | null $id
-     *
-     * @return static
-     */
-    public function setNotificationTemplateId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
-            : null;
-
-        return $this->setNotificationTemplate($value);
-    }
-
-    /**
-     * @return mixed | null
-     */
-    public function getNotificationTemplateId()
-    {
-        if ($dto = $this->getNotificationTemplate()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
 }

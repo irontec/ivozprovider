@@ -4,54 +4,56 @@ namespace Ivoz\Provider\Domain\Model\BannedAddress;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 
 /**
- * @codeCoverageIgnore
- */
+* BannedAddressDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $ip;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $blocker;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $aor;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $description;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $lastTimeBanned;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -59,8 +61,8 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -80,8 +82,8 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -110,11 +112,11 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
-    public function setIp($ip = null)
+    public function setIp(?string $ip = null): self
     {
         $this->ip = $ip;
 
@@ -124,17 +126,17 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
 
     /**
-     * @param string $blocker
+     * @param string $blocker | null
      *
      * @return static
      */
-    public function setBlocker($blocker = null)
+    public function setBlocker(?string $blocker = null): self
     {
         $this->blocker = $blocker;
 
@@ -144,17 +146,17 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getBlocker()
+    public function getBlocker(): ?string
     {
         return $this->blocker;
     }
 
     /**
-     * @param string $aor
+     * @param string $aor | null
      *
      * @return static
      */
-    public function setAor($aor = null)
+    public function setAor(?string $aor = null): self
     {
         $this->aor = $aor;
 
@@ -164,17 +166,17 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getAor()
+    public function getAor(): ?string
     {
         return $this->aor;
     }
 
     /**
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
-    public function setDescription($description = null)
+    public function setDescription(?string $description = null): self
     {
         $this->description = $description;
 
@@ -184,17 +186,17 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param \DateTime $lastTimeBanned
+     * @param \DateTimeInterface $lastTimeBanned | null
      *
      * @return static
      */
-    public function setLastTimeBanned($lastTimeBanned = null)
+    public function setLastTimeBanned($lastTimeBanned = null): self
     {
         $this->lastTimeBanned = $lastTimeBanned;
 
@@ -202,7 +204,7 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getLastTimeBanned()
     {
@@ -210,11 +212,11 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -222,19 +224,19 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -242,22 +244,20 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -276,11 +276,11 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -288,22 +288,20 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -320,4 +318,5 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

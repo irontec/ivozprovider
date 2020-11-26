@@ -4,12 +4,24 @@ namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyDto;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
+use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto;
+use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto;
+use Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatDto;
 
 /**
- * @codeCoverageIgnore
- */
+* CarrierDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CarrierDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,72 +33,69 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $name;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $externallyRated = false;
 
     /**
-     * @var float
+     * @var float | null
      */
     private $balance = 0;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $calculateCost = false;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
+     * @var TransformationRuleSetDto | null
      */
     private $transformationRuleSet;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     * @var CurrencyDto | null
      */
     private $currency;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto | null
+     * @var ProxyTrunkDto | null
      */
     private $proxyTrunk;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto[] | null
+     * @var OutgoingRoutingDto[] | null
      */
-    private $outgoingRoutings = null;
+    private $outgoingRoutings;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto[] | null
+     * @var OutgoingRoutingRelCarrierDto[] | null
      */
-    private $outgoingRoutingsRelCarriers = null;
+    private $outgoingRoutingsRelCarriers;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto[] | null
+     * @var CarrierServerDto[] | null
      */
-    private $servers = null;
+    private $servers;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto[] | null
+     * @var RatingProfileDto[] | null
      */
-    private $ratingProfiles = null;
+    private $ratingProfiles;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatDto[] | null
+     * @var TpCdrStatDto[] | null
      */
-    private $tpCdrStats = null;
-
-
-    use DtoNormalizer;
+    private $tpCdrStats;
 
     public function __construct($id = null)
     {
@@ -94,8 +103,8 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -117,8 +126,8 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -154,11 +163,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
-    public function setDescription($description = null)
+    public function setDescription(?string $description = null): self
     {
         $this->description = $description;
 
@@ -168,17 +177,17 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -188,17 +197,17 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param boolean $externallyRated
+     * @param bool $externallyRated | null
      *
      * @return static
      */
-    public function setExternallyRated($externallyRated = null)
+    public function setExternallyRated(?bool $externallyRated = null): self
     {
         $this->externallyRated = $externallyRated;
 
@@ -206,19 +215,19 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getExternallyRated()
+    public function getExternallyRated(): ?bool
     {
         return $this->externallyRated;
     }
 
     /**
-     * @param float $balance
+     * @param float $balance | null
      *
      * @return static
      */
-    public function setBalance($balance = null)
+    public function setBalance(?float $balance = null): self
     {
         $this->balance = $balance;
 
@@ -228,17 +237,17 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getBalance()
+    public function getBalance(): ?float
     {
         return $this->balance;
     }
 
     /**
-     * @param boolean $calculateCost
+     * @param bool $calculateCost | null
      *
      * @return static
      */
-    public function setCalculateCost($calculateCost = null)
+    public function setCalculateCost(?bool $calculateCost = null): self
     {
         $this->calculateCost = $calculateCost;
 
@@ -246,19 +255,19 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getCalculateCost()
+    public function getCalculateCost(): ?bool
     {
         return $this->calculateCost;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -266,19 +275,19 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -286,22 +295,20 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -320,11 +327,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto $transformationRuleSet
+     * @param TransformationRuleSetDto | null
      *
      * @return static
      */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto $transformationRuleSet = null)
+    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet = null): self
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -332,22 +339,20 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
+     * @return TransformationRuleSetDto | null
      */
-    public function getTransformationRuleSet()
+    public function getTransformationRuleSet(): ?TransformationRuleSetDto
     {
         return $this->transformationRuleSet;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setTransformationRuleSetId($id)
+    public function setTransformationRuleSetId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto($id)
+            ? new TransformationRuleSetDto($id)
             : null;
 
         return $this->setTransformationRuleSet($value);
@@ -366,11 +371,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency
+     * @param CurrencyDto | null
      *
      * @return static
      */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency = null)
+    public function setCurrency(?CurrencyDto $currency = null): self
     {
         $this->currency = $currency;
 
@@ -378,22 +383,20 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     * @return CurrencyDto | null
      */
-    public function getCurrency()
+    public function getCurrency(): ?CurrencyDto
     {
         return $this->currency;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCurrencyId($id)
+    public function setCurrencyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Currency\CurrencyDto($id)
+            ? new CurrencyDto($id)
             : null;
 
         return $this->setCurrency($value);
@@ -412,11 +415,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto $proxyTrunk
+     * @param ProxyTrunkDto | null
      *
      * @return static
      */
-    public function setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto $proxyTrunk = null)
+    public function setProxyTrunk(?ProxyTrunkDto $proxyTrunk = null): self
     {
         $this->proxyTrunk = $proxyTrunk;
 
@@ -424,22 +427,20 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto | null
+     * @return ProxyTrunkDto | null
      */
-    public function getProxyTrunk()
+    public function getProxyTrunk(): ?ProxyTrunkDto
     {
         return $this->proxyTrunk;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setProxyTrunkId($id)
+    public function setProxyTrunkId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto($id)
+            ? new ProxyTrunkDto($id)
             : null;
 
         return $this->setProxyTrunk($value);
@@ -458,11 +459,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $outgoingRoutings
+     * @param OutgoingRoutingDto[] | null
      *
      * @return static
      */
-    public function setOutgoingRoutings($outgoingRoutings = null)
+    public function setOutgoingRoutings(?array $outgoingRoutings = null): self
     {
         $this->outgoingRoutings = $outgoingRoutings;
 
@@ -470,19 +471,19 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return OutgoingRoutingDto[] | null
      */
-    public function getOutgoingRoutings()
+    public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;
     }
 
     /**
-     * @param array $outgoingRoutingsRelCarriers
+     * @param OutgoingRoutingRelCarrierDto[] | null
      *
      * @return static
      */
-    public function setOutgoingRoutingsRelCarriers($outgoingRoutingsRelCarriers = null)
+    public function setOutgoingRoutingsRelCarriers(?array $outgoingRoutingsRelCarriers = null): self
     {
         $this->outgoingRoutingsRelCarriers = $outgoingRoutingsRelCarriers;
 
@@ -490,19 +491,19 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return OutgoingRoutingRelCarrierDto[] | null
      */
-    public function getOutgoingRoutingsRelCarriers()
+    public function getOutgoingRoutingsRelCarriers(): ?array
     {
         return $this->outgoingRoutingsRelCarriers;
     }
 
     /**
-     * @param array $servers
+     * @param CarrierServerDto[] | null
      *
      * @return static
      */
-    public function setServers($servers = null)
+    public function setServers(?array $servers = null): self
     {
         $this->servers = $servers;
 
@@ -510,19 +511,19 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return CarrierServerDto[] | null
      */
-    public function getServers()
+    public function getServers(): ?array
     {
         return $this->servers;
     }
 
     /**
-     * @param array $ratingProfiles
+     * @param RatingProfileDto[] | null
      *
      * @return static
      */
-    public function setRatingProfiles($ratingProfiles = null)
+    public function setRatingProfiles(?array $ratingProfiles = null): self
     {
         $this->ratingProfiles = $ratingProfiles;
 
@@ -530,19 +531,19 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return RatingProfileDto[] | null
      */
-    public function getRatingProfiles()
+    public function getRatingProfiles(): ?array
     {
         return $this->ratingProfiles;
     }
 
     /**
-     * @param array $tpCdrStats
+     * @param TpCdrStatDto[] | null
      *
      * @return static
      */
-    public function setTpCdrStats($tpCdrStats = null)
+    public function setTpCdrStats(?array $tpCdrStats = null): self
     {
         $this->tpCdrStats = $tpCdrStats;
 
@@ -550,10 +551,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return TpCdrStatDto[] | null
      */
-    public function getTpCdrStats()
+    public function getTpCdrStats(): ?array
     {
         return $this->tpCdrStats;
     }
+
 }

@@ -4,12 +4,16 @@ namespace Ivoz\Provider\Domain\Model\TransformationRule;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TransformationRuleDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,32 +25,29 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     private $description = '';
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $priority;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $matchExpr;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $replaceExpr;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
+     * @var TransformationRuleSetDto | null
      */
     private $transformationRuleSet;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -54,8 +55,8 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -74,8 +75,8 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -103,11 +104,11 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param string $type
+     * @param string $type | null
      *
      * @return static
      */
-    public function setType($type = null)
+    public function setType(?string $type = null): self
     {
         $this->type = $type;
 
@@ -117,17 +118,17 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     /**
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
-    public function setDescription($description = null)
+    public function setDescription(?string $description = null): self
     {
         $this->description = $description;
 
@@ -137,17 +138,17 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param integer $priority
+     * @param int $priority | null
      *
      * @return static
      */
-    public function setPriority($priority = null)
+    public function setPriority(?int $priority = null): self
     {
         $this->priority = $priority;
 
@@ -155,19 +156,19 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPriority()
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
 
     /**
-     * @param string $matchExpr
+     * @param string $matchExpr | null
      *
      * @return static
      */
-    public function setMatchExpr($matchExpr = null)
+    public function setMatchExpr(?string $matchExpr = null): self
     {
         $this->matchExpr = $matchExpr;
 
@@ -177,17 +178,17 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getMatchExpr()
+    public function getMatchExpr(): ?string
     {
         return $this->matchExpr;
     }
 
     /**
-     * @param string $replaceExpr
+     * @param string $replaceExpr | null
      *
      * @return static
      */
-    public function setReplaceExpr($replaceExpr = null)
+    public function setReplaceExpr(?string $replaceExpr = null): self
     {
         $this->replaceExpr = $replaceExpr;
 
@@ -197,17 +198,17 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getReplaceExpr()
+    public function getReplaceExpr(): ?string
     {
         return $this->replaceExpr;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -215,19 +216,19 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto $transformationRuleSet
+     * @param TransformationRuleSetDto | null
      *
      * @return static
      */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto $transformationRuleSet = null)
+    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet = null): self
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -235,22 +236,20 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto | null
+     * @return TransformationRuleSetDto | null
      */
-    public function getTransformationRuleSet()
+    public function getTransformationRuleSet(): ?TransformationRuleSetDto
     {
         return $this->transformationRuleSet;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setTransformationRuleSetId($id)
+    public function setTransformationRuleSetId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto($id)
+            ? new TransformationRuleSetDto($id)
             : null;
 
         return $this->setTransformationRuleSet($value);
@@ -267,4 +266,5 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
 
         return null;
     }
+
 }

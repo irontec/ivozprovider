@@ -4,34 +4,36 @@ namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto;
+use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;
 
 /**
- * @codeCoverageIgnore
- */
+* FixedCostsRelInvoiceSchedulerDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int | null
      */
     private $quantity;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto | null
+     * @var FixedCostDto | null
      */
     private $fixedCost;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto | null
+     * @var InvoiceSchedulerDto | null
      */
     private $invoiceScheduler;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -39,8 +41,8 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -56,8 +58,8 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -82,11 +84,11 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     }
 
     /**
-     * @param integer $quantity
+     * @param int $quantity | null
      *
      * @return static
      */
-    public function setQuantity($quantity = null)
+    public function setQuantity(?int $quantity = null): self
     {
         $this->quantity = $quantity;
 
@@ -94,19 +96,19 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -114,19 +116,19 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto $fixedCost
+     * @param FixedCostDto | null
      *
      * @return static
      */
-    public function setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto $fixedCost = null)
+    public function setFixedCost(?FixedCostDto $fixedCost = null): self
     {
         $this->fixedCost = $fixedCost;
 
@@ -134,22 +136,20 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto | null
+     * @return FixedCostDto | null
      */
-    public function getFixedCost()
+    public function getFixedCost(): ?FixedCostDto
     {
         return $this->fixedCost;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setFixedCostId($id)
+    public function setFixedCostId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto($id)
+            ? new FixedCostDto($id)
             : null;
 
         return $this->setFixedCost($value);
@@ -168,11 +168,11 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto $invoiceScheduler
+     * @param InvoiceSchedulerDto | null
      *
      * @return static
      */
-    public function setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto $invoiceScheduler = null)
+    public function setInvoiceScheduler(?InvoiceSchedulerDto $invoiceScheduler = null): self
     {
         $this->invoiceScheduler = $invoiceScheduler;
 
@@ -180,22 +180,20 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto | null
+     * @return InvoiceSchedulerDto | null
      */
-    public function getInvoiceScheduler()
+    public function getInvoiceScheduler(): ?InvoiceSchedulerDto
     {
         return $this->invoiceScheduler;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setInvoiceSchedulerId($id)
+    public function setInvoiceSchedulerId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto($id)
+            ? new InvoiceSchedulerDto($id)
             : null;
 
         return $this->setInvoiceScheduler($value);
@@ -212,4 +210,5 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
 
         return null;
     }
+
 }

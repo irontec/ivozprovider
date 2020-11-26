@@ -4,49 +4,51 @@ namespace Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorDto;
+use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityDto;
 
 /**
- * @codeCoverageIgnore
- */
+* AdministratorRelPublicEntityDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var boolean
+     * @var bool
      */
     private $create = false;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $read = true;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $update = false;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $delete = false;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Administrator\AdministratorDto | null
+     * @var AdministratorDto | null
      */
     private $administrator;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityDto | null
+     * @var PublicEntityDto | null
      */
     private $publicEntity;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -54,8 +56,8 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -74,8 +76,8 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -103,11 +105,11 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     }
 
     /**
-     * @param boolean $create
+     * @param bool $create | null
      *
      * @return static
      */
-    public function setCreate($create = null)
+    public function setCreate(?bool $create = null): self
     {
         $this->create = $create;
 
@@ -115,19 +117,19 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getCreate()
+    public function getCreate(): ?bool
     {
         return $this->create;
     }
 
     /**
-     * @param boolean $read
+     * @param bool $read | null
      *
      * @return static
      */
-    public function setRead($read = null)
+    public function setRead(?bool $read = null): self
     {
         $this->read = $read;
 
@@ -135,19 +137,19 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getRead()
+    public function getRead(): ?bool
     {
         return $this->read;
     }
 
     /**
-     * @param boolean $update
+     * @param bool $update | null
      *
      * @return static
      */
-    public function setUpdate($update = null)
+    public function setUpdate(?bool $update = null): self
     {
         $this->update = $update;
 
@@ -155,19 +157,19 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getUpdate()
+    public function getUpdate(): ?bool
     {
         return $this->update;
     }
 
     /**
-     * @param boolean $delete
+     * @param bool $delete | null
      *
      * @return static
      */
-    public function setDelete($delete = null)
+    public function setDelete(?bool $delete = null): self
     {
         $this->delete = $delete;
 
@@ -175,19 +177,19 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getDelete()
+    public function getDelete(): ?bool
     {
         return $this->delete;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -195,19 +197,19 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Administrator\AdministratorDto $administrator
+     * @param AdministratorDto | null
      *
      * @return static
      */
-    public function setAdministrator(\Ivoz\Provider\Domain\Model\Administrator\AdministratorDto $administrator = null)
+    public function setAdministrator(?AdministratorDto $administrator = null): self
     {
         $this->administrator = $administrator;
 
@@ -215,22 +217,20 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Administrator\AdministratorDto | null
+     * @return AdministratorDto | null
      */
-    public function getAdministrator()
+    public function getAdministrator(): ?AdministratorDto
     {
         return $this->administrator;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setAdministratorId($id)
+    public function setAdministratorId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Administrator\AdministratorDto($id)
+            ? new AdministratorDto($id)
             : null;
 
         return $this->setAdministrator($value);
@@ -249,11 +249,11 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityDto $publicEntity
+     * @param PublicEntityDto | null
      *
      * @return static
      */
-    public function setPublicEntity(\Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityDto $publicEntity = null)
+    public function setPublicEntity(?PublicEntityDto $publicEntity = null): self
     {
         $this->publicEntity = $publicEntity;
 
@@ -261,22 +261,20 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityDto | null
+     * @return PublicEntityDto | null
      */
-    public function getPublicEntity()
+    public function getPublicEntity(): ?PublicEntityDto
     {
         return $this->publicEntity;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setPublicEntityId($id)
+    public function setPublicEntityId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityDto($id)
+            ? new PublicEntityDto($id)
             : null;
 
         return $this->setPublicEntity($value);
@@ -293,4 +291,5 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
 
         return null;
     }
+
 }

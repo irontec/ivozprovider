@@ -4,34 +4,36 @@ namespace Ivoz\Provider\Domain\Model\PickUpGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 
 /**
- * @codeCoverageIgnore
- */
+* PickUpGroupDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $name;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto[] | null
+     * @var PickUpRelUserDto[] | null
      */
-    private $relUsers = null;
-
-
-    use DtoNormalizer;
+    private $relUsers;
 
     public function __construct($id = null)
     {
@@ -39,8 +41,8 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -55,8 +57,8 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -81,11 +83,11 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -95,17 +97,17 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -113,19 +115,19 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -133,22 +135,20 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -167,11 +167,11 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $relUsers
+     * @param PickUpRelUserDto[] | null
      *
      * @return static
      */
-    public function setRelUsers($relUsers = null)
+    public function setRelUsers(?array $relUsers = null): self
     {
         $this->relUsers = $relUsers;
 
@@ -179,10 +179,11 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return PickUpRelUserDto[] | null
      */
-    public function getRelUsers()
+    public function getRelUsers(): ?array
     {
         return $this->relUsers;
     }
+
 }

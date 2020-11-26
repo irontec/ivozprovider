@@ -6,27 +6,27 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* ApplicationServerDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $ip;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $name;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -34,8 +34,8 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -50,8 +50,8 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -75,11 +75,11 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
-    public function setIp($ip = null)
+    public function setIp(?string $ip = null): self
     {
         $this->ip = $ip;
 
@@ -89,17 +89,17 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
     /**
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -109,17 +109,17 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -127,10 +127,11 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
+
 }

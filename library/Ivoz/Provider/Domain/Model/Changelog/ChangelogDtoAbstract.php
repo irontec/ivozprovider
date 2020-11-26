@@ -4,12 +4,16 @@ namespace Ivoz\Provider\Domain\Model\Changelog;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Commandlog\CommandlogDto;
 
 /**
- * @codeCoverageIgnore
- */
+* ChangelogDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,17 +25,17 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     private $entityId;
 
     /**
-     * @var array
+     * @var array | null
      */
     private $data;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $createdOn;
 
     /**
-     * @var integer
+     * @var int
      */
     private $microtime;
 
@@ -41,12 +45,9 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Commandlog\CommandlogDto | null
+     * @var CommandlogDto | null
      */
     private $command;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -54,8 +55,8 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -74,8 +75,8 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -103,11 +104,11 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $entity
+     * @param string $entity | null
      *
      * @return static
      */
-    public function setEntity($entity = null)
+    public function setEntity(?string $entity = null): self
     {
         $this->entity = $entity;
 
@@ -117,17 +118,17 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEntity()
+    public function getEntity(): ?string
     {
         return $this->entity;
     }
 
     /**
-     * @param string $entityId
+     * @param string $entityId | null
      *
      * @return static
      */
-    public function setEntityId($entityId = null)
+    public function setEntityId(?string $entityId = null): self
     {
         $this->entityId = $entityId;
 
@@ -137,17 +138,17 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEntityId()
+    public function getEntityId(): ?string
     {
         return $this->entityId;
     }
 
     /**
-     * @param array $data
+     * @param array $data | null
      *
      * @return static
      */
-    public function setData($data = null)
+    public function setData(?array $data = null): self
     {
         $this->data = $data;
 
@@ -157,17 +158,17 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array | null
      */
-    public function getData()
+    public function getData(): ?array
     {
         return $this->data;
     }
 
     /**
-     * @param \DateTime $createdOn
+     * @param \DateTimeInterface $createdOn | null
      *
      * @return static
      */
-    public function setCreatedOn($createdOn = null)
+    public function setCreatedOn($createdOn = null): self
     {
         $this->createdOn = $createdOn;
 
@@ -175,7 +176,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedOn()
     {
@@ -183,11 +184,11 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $microtime
+     * @param int $microtime | null
      *
      * @return static
      */
-    public function setMicrotime($microtime = null)
+    public function setMicrotime(?int $microtime = null): self
     {
         $this->microtime = $microtime;
 
@@ -195,19 +196,19 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getMicrotime()
+    public function getMicrotime(): ?int
     {
         return $this->microtime;
     }
 
     /**
-     * @param string $id
+     * @param string $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?string $id = null): self
     {
         $this->id = $id;
 
@@ -217,17 +218,17 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Commandlog\CommandlogDto $command
+     * @param CommandlogDto | null
      *
      * @return static
      */
-    public function setCommand(\Ivoz\Provider\Domain\Model\Commandlog\CommandlogDto $command = null)
+    public function setCommand(?CommandlogDto $command = null): self
     {
         $this->command = $command;
 
@@ -235,22 +236,20 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Commandlog\CommandlogDto | null
+     * @return CommandlogDto | null
      */
-    public function getCommand()
+    public function getCommand(): ?CommandlogDto
     {
         return $this->command;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCommandId($id)
+    public function setCommandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Commandlog\CommandlogDto($id)
+            ? new CommandlogDto($id)
             : null;
 
         return $this->setCommand($value);
@@ -267,4 +266,5 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

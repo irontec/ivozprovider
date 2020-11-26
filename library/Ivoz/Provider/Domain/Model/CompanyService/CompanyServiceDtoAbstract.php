@@ -4,34 +4,36 @@ namespace Ivoz\Provider\Domain\Model\CompanyService;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Service\ServiceDto;
 
 /**
- * @codeCoverageIgnore
- */
+* CompanyServiceDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $code;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Service\ServiceDto | null
+     * @var ServiceDto | null
      */
     private $service;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -39,8 +41,8 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -56,8 +58,8 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -82,11 +84,11 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $code
+     * @param string $code | null
      *
      * @return static
      */
-    public function setCode($code = null)
+    public function setCode(?string $code = null): self
     {
         $this->code = $code;
 
@@ -96,17 +98,17 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -114,19 +116,19 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -134,22 +136,20 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -168,11 +168,11 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Service\ServiceDto $service
+     * @param ServiceDto | null
      *
      * @return static
      */
-    public function setService(\Ivoz\Provider\Domain\Model\Service\ServiceDto $service = null)
+    public function setService(?ServiceDto $service = null): self
     {
         $this->service = $service;
 
@@ -180,22 +180,20 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Service\ServiceDto | null
+     * @return ServiceDto | null
      */
-    public function getService()
+    public function getService(): ?ServiceDto
     {
         return $this->service;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setServiceId($id)
+    public function setServiceId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Service\ServiceDto($id)
+            ? new ServiceDto($id)
             : null;
 
         return $this->setService($value);
@@ -212,4 +210,5 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

@@ -4,44 +4,46 @@ namespace Ivoz\Provider\Domain\Model\SpecialNumber;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Country\CountryDto;
 
 /**
- * @codeCoverageIgnore
- */
+* SpecialNumberDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $number;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $numberE164;
 
     /**
-     * @var integer
+     * @var int
      */
     private $disableCDR = 1;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @var CountryDto | null
      */
     private $country;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -49,8 +51,8 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -68,8 +70,8 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -96,11 +98,11 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $number
+     * @param string $number | null
      *
      * @return static
      */
-    public function setNumber($number = null)
+    public function setNumber(?string $number = null): self
     {
         $this->number = $number;
 
@@ -110,17 +112,17 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNumber()
+    public function getNumber(): ?string
     {
         return $this->number;
     }
 
     /**
-     * @param string $numberE164
+     * @param string $numberE164 | null
      *
      * @return static
      */
-    public function setNumberE164($numberE164 = null)
+    public function setNumberE164(?string $numberE164 = null): self
     {
         $this->numberE164 = $numberE164;
 
@@ -130,17 +132,17 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNumberE164()
+    public function getNumberE164(): ?string
     {
         return $this->numberE164;
     }
 
     /**
-     * @param integer $disableCDR
+     * @param int $disableCDR | null
      *
      * @return static
      */
-    public function setDisableCDR($disableCDR = null)
+    public function setDisableCDR(?int $disableCDR = null): self
     {
         $this->disableCDR = $disableCDR;
 
@@ -148,19 +150,19 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getDisableCDR()
+    public function getDisableCDR(): ?int
     {
         return $this->disableCDR;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -168,19 +170,19 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -188,22 +190,20 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -222,11 +222,11 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $country
+     * @param CountryDto | null
      *
      * @return static
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryDto $country = null)
+    public function setCountry(?CountryDto $country = null): self
     {
         $this->country = $country;
 
@@ -234,22 +234,20 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @return CountryDto | null
      */
-    public function getCountry()
+    public function getCountry(): ?CountryDto
     {
         return $this->country;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCountryId($id)
+    public function setCountryId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            ? new CountryDto($id)
             : null;
 
         return $this->setCountry($value);
@@ -266,4 +264,5 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

@@ -4,69 +4,71 @@ namespace Ivoz\Provider\Domain\Model\MusicOnHold;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 
 /**
- * @codeCoverageIgnore
- */
+* MusicOnHoldDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $name;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $status;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var integer
-     */
-    private $originalFileFileSize;
-
-    /**
-     * @var string
-     */
-    private $originalFileMimeType;
-
-    /**
-     * @var string
-     */
-    private $originalFileBaseName;
-
-    /**
-     * @var integer
+     * @var int | null
      */
     private $encodedFileFileSize;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $encodedFileMimeType;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $encodedFileBaseName;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var int | null
+     */
+    private $originalFileFileSize;
+
+    /**
+     * @var string | null
+     */
+    private $originalFileMimeType;
+
+    /**
+     * @var string | null
+     */
+    private $originalFileBaseName;
+
+    /**
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -74,8 +76,8 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -86,31 +88,39 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
             'name' => 'name',
             'status' => 'status',
             'id' => 'id',
-            'originalFile' => ['fileSize','mimeType','baseName'],
-            'encodedFile' => ['fileSize','mimeType','baseName'],
+            'encodedFile' => [
+                'fileSize',
+                'mimeType',
+                'baseName',
+            ],
+            'originalFile' => [
+                'fileSize',
+                'mimeType',
+                'baseName',
+            ],
             'brandId' => 'brand',
             'companyId' => 'company'
         ];
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
             'name' => $this->getName(),
             'status' => $this->getStatus(),
             'id' => $this->getId(),
-            'originalFile' => [
-                'fileSize' => $this->getOriginalFileFileSize(),
-                'mimeType' => $this->getOriginalFileMimeType(),
-                'baseName' => $this->getOriginalFileBaseName()
-            ],
             'encodedFile' => [
                 'fileSize' => $this->getEncodedFileFileSize(),
                 'mimeType' => $this->getEncodedFileMimeType(),
-                'baseName' => $this->getEncodedFileBaseName()
+                'baseName' => $this->getEncodedFileBaseName(),
+            ],
+            'originalFile' => [
+                'fileSize' => $this->getOriginalFileFileSize(),
+                'mimeType' => $this->getOriginalFileMimeType(),
+                'baseName' => $this->getOriginalFileBaseName(),
             ],
             'brand' => $this->getBrand(),
             'company' => $this->getCompany()
@@ -131,11 +141,11 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -145,17 +155,17 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $status
+     * @param string $status | null
      *
      * @return static
      */
-    public function setStatus($status = null)
+    public function setStatus(?string $status = null): self
     {
         $this->status = $status;
 
@@ -165,17 +175,17 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -183,79 +193,19 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param integer $originalFileFileSize
+     * @param int $encodedFileFileSize | null
      *
      * @return static
      */
-    public function setOriginalFileFileSize($originalFileFileSize = null)
-    {
-        $this->originalFileFileSize = $originalFileFileSize;
-
-        return $this;
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getOriginalFileFileSize()
-    {
-        return $this->originalFileFileSize;
-    }
-
-    /**
-     * @param string $originalFileMimeType
-     *
-     * @return static
-     */
-    public function setOriginalFileMimeType($originalFileMimeType = null)
-    {
-        $this->originalFileMimeType = $originalFileMimeType;
-
-        return $this;
-    }
-
-    /**
-     * @return string | null
-     */
-    public function getOriginalFileMimeType()
-    {
-        return $this->originalFileMimeType;
-    }
-
-    /**
-     * @param string $originalFileBaseName
-     *
-     * @return static
-     */
-    public function setOriginalFileBaseName($originalFileBaseName = null)
-    {
-        $this->originalFileBaseName = $originalFileBaseName;
-
-        return $this;
-    }
-
-    /**
-     * @return string | null
-     */
-    public function getOriginalFileBaseName()
-    {
-        return $this->originalFileBaseName;
-    }
-
-    /**
-     * @param integer $encodedFileFileSize
-     *
-     * @return static
-     */
-    public function setEncodedFileFileSize($encodedFileFileSize = null)
+    public function setEncodedFileFileSize(?int $encodedFileFileSize = null): self
     {
         $this->encodedFileFileSize = $encodedFileFileSize;
 
@@ -263,19 +213,19 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getEncodedFileFileSize()
+    public function getEncodedFileFileSize(): ?int
     {
         return $this->encodedFileFileSize;
     }
 
     /**
-     * @param string $encodedFileMimeType
+     * @param string $encodedFileMimeType | null
      *
      * @return static
      */
-    public function setEncodedFileMimeType($encodedFileMimeType = null)
+    public function setEncodedFileMimeType(?string $encodedFileMimeType = null): self
     {
         $this->encodedFileMimeType = $encodedFileMimeType;
 
@@ -285,17 +235,17 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEncodedFileMimeType()
+    public function getEncodedFileMimeType(): ?string
     {
         return $this->encodedFileMimeType;
     }
 
     /**
-     * @param string $encodedFileBaseName
+     * @param string $encodedFileBaseName | null
      *
      * @return static
      */
-    public function setEncodedFileBaseName($encodedFileBaseName = null)
+    public function setEncodedFileBaseName(?string $encodedFileBaseName = null): self
     {
         $this->encodedFileBaseName = $encodedFileBaseName;
 
@@ -305,17 +255,77 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEncodedFileBaseName()
+    public function getEncodedFileBaseName(): ?string
     {
         return $this->encodedFileBaseName;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param int $originalFileFileSize | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setOriginalFileFileSize(?int $originalFileFileSize = null): self
+    {
+        $this->originalFileFileSize = $originalFileFileSize;
+
+        return $this;
+    }
+
+    /**
+     * @return int | null
+     */
+    public function getOriginalFileFileSize(): ?int
+    {
+        return $this->originalFileFileSize;
+    }
+
+    /**
+     * @param string $originalFileMimeType | null
+     *
+     * @return static
+     */
+    public function setOriginalFileMimeType(?string $originalFileMimeType = null): self
+    {
+        $this->originalFileMimeType = $originalFileMimeType;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getOriginalFileMimeType(): ?string
+    {
+        return $this->originalFileMimeType;
+    }
+
+    /**
+     * @param string $originalFileBaseName | null
+     *
+     * @return static
+     */
+    public function setOriginalFileBaseName(?string $originalFileBaseName = null): self
+    {
+        $this->originalFileBaseName = $originalFileBaseName;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getOriginalFileBaseName(): ?string
+    {
+        return $this->originalFileBaseName;
+    }
+
+    /**
+     * @param BrandDto | null
+     *
+     * @return static
+     */
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -323,22 +333,20 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -357,11 +365,11 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -369,22 +377,20 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -401,4 +407,5 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

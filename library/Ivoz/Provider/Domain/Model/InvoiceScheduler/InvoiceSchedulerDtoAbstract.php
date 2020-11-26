@@ -4,12 +4,20 @@ namespace Ivoz\Provider\Domain\Model\InvoiceScheduler;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto;
+use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerDto;
 
 /**
- * @codeCoverageIgnore
- */
+* InvoiceSchedulerDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,7 +29,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     private $unit = 'month';
 
     /**
-     * @var integer
+     * @var int
      */
     private $frequency;
 
@@ -31,57 +39,54 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     private $email;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $lastExecution;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $lastExecutionError;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $nextExecution;
 
     /**
-     * @var float
+     * @var float | null
      */
     private $taxRate;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto | null
+     * @var InvoiceTemplateDto | null
      */
     private $invoiceTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto | null
+     * @var InvoiceNumberSequenceDto | null
      */
     private $numberSequence;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerDto[] | null
+     * @var FixedCostsRelInvoiceSchedulerDto[] | null
      */
-    private $relFixedCosts = null;
-
-
-    use DtoNormalizer;
+    private $relFixedCosts;
 
     public function __construct($id = null)
     {
@@ -89,8 +94,8 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -115,8 +120,8 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -151,11 +156,11 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -165,17 +170,17 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $unit
+     * @param string $unit | null
      *
      * @return static
      */
-    public function setUnit($unit = null)
+    public function setUnit(?string $unit = null): self
     {
         $this->unit = $unit;
 
@@ -185,17 +190,17 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getUnit()
+    public function getUnit(): ?string
     {
         return $this->unit;
     }
 
     /**
-     * @param integer $frequency
+     * @param int $frequency | null
      *
      * @return static
      */
-    public function setFrequency($frequency = null)
+    public function setFrequency(?int $frequency = null): self
     {
         $this->frequency = $frequency;
 
@@ -203,19 +208,19 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getFrequency()
+    public function getFrequency(): ?int
     {
         return $this->frequency;
     }
 
     /**
-     * @param string $email
+     * @param string $email | null
      *
      * @return static
      */
-    public function setEmail($email = null)
+    public function setEmail(?string $email = null): self
     {
         $this->email = $email;
 
@@ -225,17 +230,17 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     /**
-     * @param \DateTime $lastExecution
+     * @param \DateTimeInterface $lastExecution | null
      *
      * @return static
      */
-    public function setLastExecution($lastExecution = null)
+    public function setLastExecution($lastExecution = null): self
     {
         $this->lastExecution = $lastExecution;
 
@@ -243,7 +248,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getLastExecution()
     {
@@ -251,11 +256,11 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param string $lastExecutionError
+     * @param string $lastExecutionError | null
      *
      * @return static
      */
-    public function setLastExecutionError($lastExecutionError = null)
+    public function setLastExecutionError(?string $lastExecutionError = null): self
     {
         $this->lastExecutionError = $lastExecutionError;
 
@@ -265,17 +270,17 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getLastExecutionError()
+    public function getLastExecutionError(): ?string
     {
         return $this->lastExecutionError;
     }
 
     /**
-     * @param \DateTime $nextExecution
+     * @param \DateTimeInterface $nextExecution | null
      *
      * @return static
      */
-    public function setNextExecution($nextExecution = null)
+    public function setNextExecution($nextExecution = null): self
     {
         $this->nextExecution = $nextExecution;
 
@@ -283,7 +288,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getNextExecution()
     {
@@ -291,11 +296,11 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param float $taxRate
+     * @param float $taxRate | null
      *
      * @return static
      */
-    public function setTaxRate($taxRate = null)
+    public function setTaxRate(?float $taxRate = null): self
     {
         $this->taxRate = $taxRate;
 
@@ -305,17 +310,17 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return float | null
      */
-    public function getTaxRate()
+    public function getTaxRate(): ?float
     {
         return $this->taxRate;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -323,19 +328,19 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto $invoiceTemplate
+     * @param InvoiceTemplateDto | null
      *
      * @return static
      */
-    public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto $invoiceTemplate = null)
+    public function setInvoiceTemplate(?InvoiceTemplateDto $invoiceTemplate = null): self
     {
         $this->invoiceTemplate = $invoiceTemplate;
 
@@ -343,22 +348,20 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto | null
+     * @return InvoiceTemplateDto | null
      */
-    public function getInvoiceTemplate()
+    public function getInvoiceTemplate(): ?InvoiceTemplateDto
     {
         return $this->invoiceTemplate;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setInvoiceTemplateId($id)
+    public function setInvoiceTemplateId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateDto($id)
+            ? new InvoiceTemplateDto($id)
             : null;
 
         return $this->setInvoiceTemplate($value);
@@ -377,11 +380,11 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -389,22 +392,20 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -423,11 +424,11 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -435,22 +436,20 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -469,11 +468,11 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto $numberSequence
+     * @param InvoiceNumberSequenceDto | null
      *
      * @return static
      */
-    public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto $numberSequence = null)
+    public function setNumberSequence(?InvoiceNumberSequenceDto $numberSequence = null): self
     {
         $this->numberSequence = $numberSequence;
 
@@ -481,22 +480,20 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto | null
+     * @return InvoiceNumberSequenceDto | null
      */
-    public function getNumberSequence()
+    public function getNumberSequence(): ?InvoiceNumberSequenceDto
     {
         return $this->numberSequence;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setNumberSequenceId($id)
+    public function setNumberSequenceId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto($id)
+            ? new InvoiceNumberSequenceDto($id)
             : null;
 
         return $this->setNumberSequence($value);
@@ -515,11 +512,11 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param array $relFixedCosts
+     * @param FixedCostsRelInvoiceSchedulerDto[] | null
      *
      * @return static
      */
-    public function setRelFixedCosts($relFixedCosts = null)
+    public function setRelFixedCosts(?array $relFixedCosts = null): self
     {
         $this->relFixedCosts = $relFixedCosts;
 
@@ -527,10 +524,11 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return array | null
+     * @return FixedCostsRelInvoiceSchedulerDto[] | null
      */
-    public function getRelFixedCosts()
+    public function getRelFixedCosts(): ?array
     {
         return $this->relFixedCosts;
     }
+
 }

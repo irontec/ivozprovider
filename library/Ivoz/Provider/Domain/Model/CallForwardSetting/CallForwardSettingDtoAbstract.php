@@ -4,12 +4,20 @@ namespace Ivoz\Provider\Domain\Model\CallForwardSetting;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
+use Ivoz\Provider\Domain\Model\Country\CountryDto;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
 
 /**
- * @codeCoverageIgnore
- */
+* CallForwardSettingDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,62 +29,59 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     private $callForwardType;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $targetType;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $numberValue;
 
     /**
-     * @var integer
+     * @var int
      */
     private $noAnswerTimeout = 10;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $enabled = true;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @var UserDto | null
      */
     private $user;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
+     * @var ExtensionDto | null
      */
     private $extension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @var UserDto | null
      */
     private $voiceMailUser;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @var CountryDto | null
      */
     private $numberCountry;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
+     * @var ResidentialDeviceDto | null
      */
     private $residentialDevice;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
+     * @var RetailAccountDto | null
      */
     private $retailAccount;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -84,8 +89,8 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -110,8 +115,8 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -145,11 +150,11 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param string $callTypeFilter
+     * @param string $callTypeFilter | null
      *
      * @return static
      */
-    public function setCallTypeFilter($callTypeFilter = null)
+    public function setCallTypeFilter(?string $callTypeFilter = null): self
     {
         $this->callTypeFilter = $callTypeFilter;
 
@@ -159,17 +164,17 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getCallTypeFilter()
+    public function getCallTypeFilter(): ?string
     {
         return $this->callTypeFilter;
     }
 
     /**
-     * @param string $callForwardType
+     * @param string $callForwardType | null
      *
      * @return static
      */
-    public function setCallForwardType($callForwardType = null)
+    public function setCallForwardType(?string $callForwardType = null): self
     {
         $this->callForwardType = $callForwardType;
 
@@ -179,17 +184,17 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getCallForwardType()
+    public function getCallForwardType(): ?string
     {
         return $this->callForwardType;
     }
 
     /**
-     * @param string $targetType
+     * @param string $targetType | null
      *
      * @return static
      */
-    public function setTargetType($targetType = null)
+    public function setTargetType(?string $targetType = null): self
     {
         $this->targetType = $targetType;
 
@@ -199,17 +204,17 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getTargetType()
+    public function getTargetType(): ?string
     {
         return $this->targetType;
     }
 
     /**
-     * @param string $numberValue
+     * @param string $numberValue | null
      *
      * @return static
      */
-    public function setNumberValue($numberValue = null)
+    public function setNumberValue(?string $numberValue = null): self
     {
         $this->numberValue = $numberValue;
 
@@ -219,17 +224,17 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getNumberValue()
+    public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
     /**
-     * @param integer $noAnswerTimeout
+     * @param int $noAnswerTimeout | null
      *
      * @return static
      */
-    public function setNoAnswerTimeout($noAnswerTimeout = null)
+    public function setNoAnswerTimeout(?int $noAnswerTimeout = null): self
     {
         $this->noAnswerTimeout = $noAnswerTimeout;
 
@@ -237,19 +242,19 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getNoAnswerTimeout()
+    public function getNoAnswerTimeout(): ?int
     {
         return $this->noAnswerTimeout;
     }
 
     /**
-     * @param boolean $enabled
+     * @param bool $enabled | null
      *
      * @return static
      */
-    public function setEnabled($enabled = null)
+    public function setEnabled(?bool $enabled = null): self
     {
         $this->enabled = $enabled;
 
@@ -257,19 +262,19 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getEnabled()
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -277,19 +282,19 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\User\UserDto $user
+     * @param UserDto | null
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserDto $user = null)
+    public function setUser(?UserDto $user = null): self
     {
         $this->user = $user;
 
@@ -297,22 +302,20 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @return UserDto | null
      */
-    public function getUser()
+    public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setUserId($id)
+    public function setUserId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            ? new UserDto($id)
             : null;
 
         return $this->setUser($value);
@@ -331,11 +334,11 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $extension
+     * @param ExtensionDto | null
      *
      * @return static
      */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionDto $extension = null)
+    public function setExtension(?ExtensionDto $extension = null): self
     {
         $this->extension = $extension;
 
@@ -343,22 +346,20 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
+     * @return ExtensionDto | null
      */
-    public function getExtension()
+    public function getExtension(): ?ExtensionDto
     {
         return $this->extension;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setExtensionId($id)
+    public function setExtensionId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            ? new ExtensionDto($id)
             : null;
 
         return $this->setExtension($value);
@@ -377,11 +378,11 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\User\UserDto $voiceMailUser
+     * @param UserDto | null
      *
      * @return static
      */
-    public function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserDto $voiceMailUser = null)
+    public function setVoiceMailUser(?UserDto $voiceMailUser = null): self
     {
         $this->voiceMailUser = $voiceMailUser;
 
@@ -389,22 +390,20 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @return UserDto | null
      */
-    public function getVoiceMailUser()
+    public function getVoiceMailUser(): ?UserDto
     {
         return $this->voiceMailUser;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setVoiceMailUserId($id)
+    public function setVoiceMailUserId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            ? new UserDto($id)
             : null;
 
         return $this->setVoiceMailUser($value);
@@ -423,11 +422,11 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $numberCountry
+     * @param CountryDto | null
      *
      * @return static
      */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryDto $numberCountry = null)
+    public function setNumberCountry(?CountryDto $numberCountry = null): self
     {
         $this->numberCountry = $numberCountry;
 
@@ -435,22 +434,20 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @return CountryDto | null
      */
-    public function getNumberCountry()
+    public function getNumberCountry(): ?CountryDto
     {
         return $this->numberCountry;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setNumberCountryId($id)
+    public function setNumberCountryId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            ? new CountryDto($id)
             : null;
 
         return $this->setNumberCountry($value);
@@ -469,11 +466,11 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice
+     * @param ResidentialDeviceDto | null
      *
      * @return static
      */
-    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice = null)
+    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice = null): self
     {
         $this->residentialDevice = $residentialDevice;
 
@@ -481,22 +478,20 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
+     * @return ResidentialDeviceDto | null
      */
-    public function getResidentialDevice()
+    public function getResidentialDevice(): ?ResidentialDeviceDto
     {
         return $this->residentialDevice;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setResidentialDeviceId($id)
+    public function setResidentialDeviceId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto($id)
+            ? new ResidentialDeviceDto($id)
             : null;
 
         return $this->setResidentialDevice($value);
@@ -515,11 +510,11 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount
+     * @param RetailAccountDto | null
      *
      * @return static
      */
-    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount = null)
+    public function setRetailAccount(?RetailAccountDto $retailAccount = null): self
     {
         $this->retailAccount = $retailAccount;
 
@@ -527,22 +522,20 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
+     * @return RetailAccountDto | null
      */
-    public function getRetailAccount()
+    public function getRetailAccount(): ?RetailAccountDto
     {
         return $this->retailAccount;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRetailAccountId($id)
+    public function setRetailAccountId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto($id)
+            ? new RetailAccountDto($id)
             : null;
 
         return $this->setRetailAccount($value);
@@ -559,4 +552,5 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
 
         return null;
     }
+
 }

@@ -4,12 +4,18 @@ namespace Ivoz\Provider\Domain\Model\RoutingTag;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
+use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagDto;
 
 /**
- * @codeCoverageIgnore
- */
+* RoutingTagDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,27 +27,24 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     private $tag;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto[] | null
+     * @var OutgoingRoutingDto[] | null
      */
-    private $outgoingRoutings = null;
+    private $outgoingRoutings;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagDto[] | null
+     * @var CompanyRelRoutingTagDto[] | null
      */
-    private $relCompanies = null;
-
-
-    use DtoNormalizer;
+    private $relCompanies;
 
     public function __construct($id = null)
     {
@@ -49,8 +52,8 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -66,8 +69,8 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -94,11 +97,11 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -108,17 +111,17 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
-    public function setTag($tag = null)
+    public function setTag(?string $tag = null): self
     {
         $this->tag = $tag;
 
@@ -128,17 +131,17 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -146,19 +149,19 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -166,22 +169,20 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -200,11 +201,11 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $outgoingRoutings
+     * @param OutgoingRoutingDto[] | null
      *
      * @return static
      */
-    public function setOutgoingRoutings($outgoingRoutings = null)
+    public function setOutgoingRoutings(?array $outgoingRoutings = null): self
     {
         $this->outgoingRoutings = $outgoingRoutings;
 
@@ -212,19 +213,19 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return OutgoingRoutingDto[] | null
      */
-    public function getOutgoingRoutings()
+    public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;
     }
 
     /**
-     * @param array $relCompanies
+     * @param CompanyRelRoutingTagDto[] | null
      *
      * @return static
      */
-    public function setRelCompanies($relCompanies = null)
+    public function setRelCompanies(?array $relCompanies = null): self
     {
         $this->relCompanies = $relCompanies;
 
@@ -232,10 +233,11 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return CompanyRelRoutingTagDto[] | null
      */
-    public function getRelCompanies()
+    public function getRelCompanies(): ?array
     {
         return $this->relCompanies;
     }
+
 }

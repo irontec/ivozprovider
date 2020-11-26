@@ -4,29 +4,31 @@ namespace Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto;
 
 /**
- * @codeCoverageIgnore
- */
+* ProxyTrunksRelBrandDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto | null
+     * @var ProxyTrunkDto | null
      */
     private $proxyTrunk;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -34,8 +36,8 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -50,8 +52,8 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -75,11 +77,11 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -87,19 +89,19 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -107,22 +109,20 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -141,11 +141,11 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto $proxyTrunk
+     * @param ProxyTrunkDto | null
      *
      * @return static
      */
-    public function setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto $proxyTrunk = null)
+    public function setProxyTrunk(?ProxyTrunkDto $proxyTrunk = null): self
     {
         $this->proxyTrunk = $proxyTrunk;
 
@@ -153,22 +153,20 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto | null
+     * @return ProxyTrunkDto | null
      */
-    public function getProxyTrunk()
+    public function getProxyTrunk(): ?ProxyTrunkDto
     {
         return $this->proxyTrunk;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setProxyTrunkId($id)
+    public function setProxyTrunkId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto($id)
+            ? new ProxyTrunkDto($id)
             : null;
 
         return $this->setProxyTrunk($value);
@@ -185,4 +183,5 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
 
         return null;
     }
+
 }

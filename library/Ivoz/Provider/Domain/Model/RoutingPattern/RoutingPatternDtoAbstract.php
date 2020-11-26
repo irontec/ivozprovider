@@ -4,19 +4,26 @@ namespace Ivoz\Provider\Domain\Model\RoutingPattern;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto;
 
 /**
- * @codeCoverageIgnore
- */
+* RoutingPatternDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $prefix;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -41,47 +48,44 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     private $nameIt;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $descriptionEn;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $descriptionEs;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $descriptionCa;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $descriptionIt;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto[] | null
+     * @var OutgoingRoutingDto[] | null
      */
-    private $outgoingRoutings = null;
+    private $outgoingRoutings;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto[] | null
+     * @var RoutingPatternGroupsRelPatternDto[] | null
      */
-    private $relPatternGroups = null;
+    private $relPatternGroups;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto[] | null
+     * @var TrunksLcrRuleDto[] | null
      */
-    private $lcrRules = null;
-
-
-    use DtoNormalizer;
+    private $lcrRules;
 
     public function __construct($id = null)
     {
@@ -89,8 +93,8 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -100,15 +104,25 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return [
             'prefix' => 'prefix',
             'id' => 'id',
-            'name' => ['en','es','ca','it'],
-            'description' => ['en','es','ca','it'],
+            'name' => [
+                'en',
+                'es',
+                'ca',
+                'it',
+            ],
+            'description' => [
+                'en',
+                'es',
+                'ca',
+                'it',
+            ],
             'brandId' => 'brand'
         ];
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -118,13 +132,13 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
                 'en' => $this->getNameEn(),
                 'es' => $this->getNameEs(),
                 'ca' => $this->getNameCa(),
-                'it' => $this->getNameIt()
+                'it' => $this->getNameIt(),
             ],
             'description' => [
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs(),
                 'ca' => $this->getDescriptionCa(),
-                'it' => $this->getDescriptionIt()
+                'it' => $this->getDescriptionIt(),
             ],
             'brand' => $this->getBrand(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
@@ -147,11 +161,11 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $prefix
+     * @param string $prefix | null
      *
      * @return static
      */
-    public function setPrefix($prefix = null)
+    public function setPrefix(?string $prefix = null): self
     {
         $this->prefix = $prefix;
 
@@ -161,17 +175,17 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPrefix()
+    public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -179,19 +193,19 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param string $nameEn
+     * @param string $nameEn | null
      *
      * @return static
      */
-    public function setNameEn($nameEn = null)
+    public function setNameEn(?string $nameEn = null): self
     {
         $this->nameEn = $nameEn;
 
@@ -201,17 +215,17 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameEn()
+    public function getNameEn(): ?string
     {
         return $this->nameEn;
     }
 
     /**
-     * @param string $nameEs
+     * @param string $nameEs | null
      *
      * @return static
      */
-    public function setNameEs($nameEs = null)
+    public function setNameEs(?string $nameEs = null): self
     {
         $this->nameEs = $nameEs;
 
@@ -221,17 +235,17 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameEs()
+    public function getNameEs(): ?string
     {
         return $this->nameEs;
     }
 
     /**
-     * @param string $nameCa
+     * @param string $nameCa | null
      *
      * @return static
      */
-    public function setNameCa($nameCa = null)
+    public function setNameCa(?string $nameCa = null): self
     {
         $this->nameCa = $nameCa;
 
@@ -241,17 +255,17 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameCa()
+    public function getNameCa(): ?string
     {
         return $this->nameCa;
     }
 
     /**
-     * @param string $nameIt
+     * @param string $nameIt | null
      *
      * @return static
      */
-    public function setNameIt($nameIt = null)
+    public function setNameIt(?string $nameIt = null): self
     {
         $this->nameIt = $nameIt;
 
@@ -261,17 +275,17 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getNameIt()
+    public function getNameIt(): ?string
     {
         return $this->nameIt;
     }
 
     /**
-     * @param string $descriptionEn
+     * @param string $descriptionEn | null
      *
      * @return static
      */
-    public function setDescriptionEn($descriptionEn = null)
+    public function setDescriptionEn(?string $descriptionEn = null): self
     {
         $this->descriptionEn = $descriptionEn;
 
@@ -281,17 +295,17 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescriptionEn()
+    public function getDescriptionEn(): ?string
     {
         return $this->descriptionEn;
     }
 
     /**
-     * @param string $descriptionEs
+     * @param string $descriptionEs | null
      *
      * @return static
      */
-    public function setDescriptionEs($descriptionEs = null)
+    public function setDescriptionEs(?string $descriptionEs = null): self
     {
         $this->descriptionEs = $descriptionEs;
 
@@ -301,17 +315,17 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescriptionEs()
+    public function getDescriptionEs(): ?string
     {
         return $this->descriptionEs;
     }
 
     /**
-     * @param string $descriptionCa
+     * @param string $descriptionCa | null
      *
      * @return static
      */
-    public function setDescriptionCa($descriptionCa = null)
+    public function setDescriptionCa(?string $descriptionCa = null): self
     {
         $this->descriptionCa = $descriptionCa;
 
@@ -321,17 +335,17 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescriptionCa()
+    public function getDescriptionCa(): ?string
     {
         return $this->descriptionCa;
     }
 
     /**
-     * @param string $descriptionIt
+     * @param string $descriptionIt | null
      *
      * @return static
      */
-    public function setDescriptionIt($descriptionIt = null)
+    public function setDescriptionIt(?string $descriptionIt = null): self
     {
         $this->descriptionIt = $descriptionIt;
 
@@ -341,17 +355,17 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescriptionIt()
+    public function getDescriptionIt(): ?string
     {
         return $this->descriptionIt;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -359,22 +373,20 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -393,11 +405,11 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $outgoingRoutings
+     * @param OutgoingRoutingDto[] | null
      *
      * @return static
      */
-    public function setOutgoingRoutings($outgoingRoutings = null)
+    public function setOutgoingRoutings(?array $outgoingRoutings = null): self
     {
         $this->outgoingRoutings = $outgoingRoutings;
 
@@ -405,19 +417,19 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return OutgoingRoutingDto[] | null
      */
-    public function getOutgoingRoutings()
+    public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;
     }
 
     /**
-     * @param array $relPatternGroups
+     * @param RoutingPatternGroupsRelPatternDto[] | null
      *
      * @return static
      */
-    public function setRelPatternGroups($relPatternGroups = null)
+    public function setRelPatternGroups(?array $relPatternGroups = null): self
     {
         $this->relPatternGroups = $relPatternGroups;
 
@@ -425,19 +437,19 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return RoutingPatternGroupsRelPatternDto[] | null
      */
-    public function getRelPatternGroups()
+    public function getRelPatternGroups(): ?array
     {
         return $this->relPatternGroups;
     }
 
     /**
-     * @param array $lcrRules
+     * @param TrunksLcrRuleDto[] | null
      *
      * @return static
      */
-    public function setLcrRules($lcrRules = null)
+    public function setLcrRules(?array $lcrRules = null): self
     {
         $this->lcrRules = $lcrRules;
 
@@ -445,10 +457,11 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return TrunksLcrRuleDto[] | null
      */
-    public function getLcrRules()
+    public function getLcrRules(): ?array
     {
         return $this->lcrRules;
     }
+
 }

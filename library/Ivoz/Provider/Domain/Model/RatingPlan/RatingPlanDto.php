@@ -31,7 +31,7 @@ class RatingPlanDto extends RatingPlanDtoAbstract
     }
 
 
-    public function setTimingType($timingType = null)
+    public function setTimingType(?string $timingType = null): self
     {
         if ($timingType == RatingPlanInterface::TIMINGTYPE_ALWAYS) {
             $this->setTimeIn(

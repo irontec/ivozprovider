@@ -4,109 +4,122 @@ namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto;
+use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
+use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Queue\QueueDto;
+use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
+use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
+use Ivoz\Provider\Domain\Model\Country\CountryDto;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistDto;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleDto;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarDto;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockDto;
 
 /**
- * @codeCoverageIgnore
- */
+* ConditionalRoutesConditionDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $priority = 1;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $routeType;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $numberValue;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $friendValue;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto | null
+     * @var ConditionalRouteDto | null
      */
     private $conditionalRoute;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ivr\IvrDto | null
+     * @var IvrDto | null
      */
     private $ivr;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto | null
+     * @var HuntGroupDto | null
      */
     private $huntGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @var UserDto | null
      */
     private $voicemailUser;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @var UserDto | null
      */
     private $user;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Queue\QueueDto | null
+     * @var QueueDto | null
      */
     private $queue;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
+     * @var LocutionDto | null
      */
     private $locution;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto | null
+     * @var ConferenceRoomDto | null
      */
     private $conferenceRoom;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
+     * @var ExtensionDto | null
      */
     private $extension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @var CountryDto | null
      */
     private $numberCountry;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistDto[] | null
+     * @var ConditionalRoutesConditionsRelMatchlistDto[] | null
      */
-    private $relMatchlists = null;
+    private $relMatchlists;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleDto[] | null
+     * @var ConditionalRoutesConditionsRelScheduleDto[] | null
      */
-    private $relSchedules = null;
+    private $relSchedules;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarDto[] | null
+     * @var ConditionalRoutesConditionsRelCalendarDto[] | null
      */
-    private $relCalendars = null;
+    private $relCalendars;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockDto[] | null
+     * @var ConditionalRoutesConditionsRelRouteLockDto[] | null
      */
-    private $relRouteLocks = null;
-
-
-    use DtoNormalizer;
+    private $relRouteLocks;
 
     public function __construct($id = null)
     {
@@ -114,8 +127,8 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -142,8 +155,8 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -183,11 +196,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param integer $priority
+     * @param int $priority | null
      *
      * @return static
      */
-    public function setPriority($priority = null)
+    public function setPriority(?int $priority = null): self
     {
         $this->priority = $priority;
 
@@ -195,19 +208,19 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPriority()
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
 
     /**
-     * @param string $routeType
+     * @param string $routeType | null
      *
      * @return static
      */
-    public function setRouteType($routeType = null)
+    public function setRouteType(?string $routeType = null): self
     {
         $this->routeType = $routeType;
 
@@ -217,17 +230,17 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     /**
      * @return string | null
      */
-    public function getRouteType()
+    public function getRouteType(): ?string
     {
         return $this->routeType;
     }
 
     /**
-     * @param string $numberValue
+     * @param string $numberValue | null
      *
      * @return static
      */
-    public function setNumberValue($numberValue = null)
+    public function setNumberValue(?string $numberValue = null): self
     {
         $this->numberValue = $numberValue;
 
@@ -237,17 +250,17 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     /**
      * @return string | null
      */
-    public function getNumberValue()
+    public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
     /**
-     * @param string $friendValue
+     * @param string $friendValue | null
      *
      * @return static
      */
-    public function setFriendValue($friendValue = null)
+    public function setFriendValue(?string $friendValue = null): self
     {
         $this->friendValue = $friendValue;
 
@@ -257,17 +270,17 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     /**
      * @return string | null
      */
-    public function getFriendValue()
+    public function getFriendValue(): ?string
     {
         return $this->friendValue;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -275,19 +288,19 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto $conditionalRoute
+     * @param ConditionalRouteDto | null
      *
      * @return static
      */
-    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto $conditionalRoute = null)
+    public function setConditionalRoute(?ConditionalRouteDto $conditionalRoute = null): self
     {
         $this->conditionalRoute = $conditionalRoute;
 
@@ -295,22 +308,20 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto | null
+     * @return ConditionalRouteDto | null
      */
-    public function getConditionalRoute()
+    public function getConditionalRoute(): ?ConditionalRouteDto
     {
         return $this->conditionalRoute;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setConditionalRouteId($id)
+    public function setConditionalRouteId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto($id)
+            ? new ConditionalRouteDto($id)
             : null;
 
         return $this->setConditionalRoute($value);
@@ -329,11 +340,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrDto $ivr
+     * @param IvrDto | null
      *
      * @return static
      */
-    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrDto $ivr = null)
+    public function setIvr(?IvrDto $ivr = null): self
     {
         $this->ivr = $ivr;
 
@@ -341,22 +352,20 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrDto | null
+     * @return IvrDto | null
      */
-    public function getIvr()
+    public function getIvr(): ?IvrDto
     {
         return $this->ivr;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setIvrId($id)
+    public function setIvrId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Ivr\IvrDto($id)
+            ? new IvrDto($id)
             : null;
 
         return $this->setIvr($value);
@@ -375,11 +384,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto $huntGroup
+     * @param HuntGroupDto | null
      *
      * @return static
      */
-    public function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto $huntGroup = null)
+    public function setHuntGroup(?HuntGroupDto $huntGroup = null): self
     {
         $this->huntGroup = $huntGroup;
 
@@ -387,22 +396,20 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto | null
+     * @return HuntGroupDto | null
      */
-    public function getHuntGroup()
+    public function getHuntGroup(): ?HuntGroupDto
     {
         return $this->huntGroup;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setHuntGroupId($id)
+    public function setHuntGroupId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto($id)
+            ? new HuntGroupDto($id)
             : null;
 
         return $this->setHuntGroup($value);
@@ -421,11 +428,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\User\UserDto $voicemailUser
+     * @param UserDto | null
      *
      * @return static
      */
-    public function setVoicemailUser(\Ivoz\Provider\Domain\Model\User\UserDto $voicemailUser = null)
+    public function setVoicemailUser(?UserDto $voicemailUser = null): self
     {
         $this->voicemailUser = $voicemailUser;
 
@@ -433,22 +440,20 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @return UserDto | null
      */
-    public function getVoicemailUser()
+    public function getVoicemailUser(): ?UserDto
     {
         return $this->voicemailUser;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setVoicemailUserId($id)
+    public function setVoicemailUserId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            ? new UserDto($id)
             : null;
 
         return $this->setVoicemailUser($value);
@@ -467,11 +472,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\User\UserDto $user
+     * @param UserDto | null
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserDto $user = null)
+    public function setUser(?UserDto $user = null): self
     {
         $this->user = $user;
 
@@ -479,22 +484,20 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @return UserDto | null
      */
-    public function getUser()
+    public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setUserId($id)
+    public function setUserId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            ? new UserDto($id)
             : null;
 
         return $this->setUser($value);
@@ -513,11 +516,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueDto $queue
+     * @param QueueDto | null
      *
      * @return static
      */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueDto $queue = null)
+    public function setQueue(?QueueDto $queue = null): self
     {
         $this->queue = $queue;
 
@@ -525,22 +528,20 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto | null
+     * @return QueueDto | null
      */
-    public function getQueue()
+    public function getQueue(): ?QueueDto
     {
         return $this->queue;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setQueueId($id)
+    public function setQueueId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Queue\QueueDto($id)
+            ? new QueueDto($id)
             : null;
 
         return $this->setQueue($value);
@@ -559,11 +560,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $locution
+     * @param LocutionDto | null
      *
      * @return static
      */
-    public function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionDto $locution = null)
+    public function setLocution(?LocutionDto $locution = null): self
     {
         $this->locution = $locution;
 
@@ -571,22 +572,20 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionDto | null
+     * @return LocutionDto | null
      */
-    public function getLocution()
+    public function getLocution(): ?LocutionDto
     {
         return $this->locution;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setLocutionId($id)
+    public function setLocutionId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            ? new LocutionDto($id)
             : null;
 
         return $this->setLocution($value);
@@ -605,11 +604,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto $conferenceRoom
+     * @param ConferenceRoomDto | null
      *
      * @return static
      */
-    public function setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto $conferenceRoom = null)
+    public function setConferenceRoom(?ConferenceRoomDto $conferenceRoom = null): self
     {
         $this->conferenceRoom = $conferenceRoom;
 
@@ -617,22 +616,20 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto | null
+     * @return ConferenceRoomDto | null
      */
-    public function getConferenceRoom()
+    public function getConferenceRoom(): ?ConferenceRoomDto
     {
         return $this->conferenceRoom;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setConferenceRoomId($id)
+    public function setConferenceRoomId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto($id)
+            ? new ConferenceRoomDto($id)
             : null;
 
         return $this->setConferenceRoom($value);
@@ -651,11 +648,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $extension
+     * @param ExtensionDto | null
      *
      * @return static
      */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionDto $extension = null)
+    public function setExtension(?ExtensionDto $extension = null): self
     {
         $this->extension = $extension;
 
@@ -663,22 +660,20 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
+     * @return ExtensionDto | null
      */
-    public function getExtension()
+    public function getExtension(): ?ExtensionDto
     {
         return $this->extension;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setExtensionId($id)
+    public function setExtensionId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            ? new ExtensionDto($id)
             : null;
 
         return $this->setExtension($value);
@@ -697,11 +692,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $numberCountry
+     * @param CountryDto | null
      *
      * @return static
      */
-    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryDto $numberCountry = null)
+    public function setNumberCountry(?CountryDto $numberCountry = null): self
     {
         $this->numberCountry = $numberCountry;
 
@@ -709,22 +704,20 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @return CountryDto | null
      */
-    public function getNumberCountry()
+    public function getNumberCountry(): ?CountryDto
     {
         return $this->numberCountry;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setNumberCountryId($id)
+    public function setNumberCountryId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            ? new CountryDto($id)
             : null;
 
         return $this->setNumberCountry($value);
@@ -743,11 +736,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @param array $relMatchlists
+     * @param ConditionalRoutesConditionsRelMatchlistDto[] | null
      *
      * @return static
      */
-    public function setRelMatchlists($relMatchlists = null)
+    public function setRelMatchlists(?array $relMatchlists = null): self
     {
         $this->relMatchlists = $relMatchlists;
 
@@ -755,19 +748,19 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return array | null
+     * @return ConditionalRoutesConditionsRelMatchlistDto[] | null
      */
-    public function getRelMatchlists()
+    public function getRelMatchlists(): ?array
     {
         return $this->relMatchlists;
     }
 
     /**
-     * @param array $relSchedules
+     * @param ConditionalRoutesConditionsRelScheduleDto[] | null
      *
      * @return static
      */
-    public function setRelSchedules($relSchedules = null)
+    public function setRelSchedules(?array $relSchedules = null): self
     {
         $this->relSchedules = $relSchedules;
 
@@ -775,19 +768,19 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return array | null
+     * @return ConditionalRoutesConditionsRelScheduleDto[] | null
      */
-    public function getRelSchedules()
+    public function getRelSchedules(): ?array
     {
         return $this->relSchedules;
     }
 
     /**
-     * @param array $relCalendars
+     * @param ConditionalRoutesConditionsRelCalendarDto[] | null
      *
      * @return static
      */
-    public function setRelCalendars($relCalendars = null)
+    public function setRelCalendars(?array $relCalendars = null): self
     {
         $this->relCalendars = $relCalendars;
 
@@ -795,19 +788,19 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return array | null
+     * @return ConditionalRoutesConditionsRelCalendarDto[] | null
      */
-    public function getRelCalendars()
+    public function getRelCalendars(): ?array
     {
         return $this->relCalendars;
     }
 
     /**
-     * @param array $relRouteLocks
+     * @param ConditionalRoutesConditionsRelRouteLockDto[] | null
      *
      * @return static
      */
-    public function setRelRouteLocks($relRouteLocks = null)
+    public function setRelRouteLocks(?array $relRouteLocks = null): self
     {
         $this->relRouteLocks = $relRouteLocks;
 
@@ -815,10 +808,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-     * @return array | null
+     * @return ConditionalRoutesConditionsRelRouteLockDto[] | null
      */
-    public function getRelRouteLocks()
+    public function getRelRouteLocks(): ?array
     {
         return $this->relRouteLocks;
     }
+
 }

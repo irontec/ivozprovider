@@ -4,19 +4,23 @@ namespace Ivoz\Provider\Domain\Model\Recording;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 
 /**
- * @codeCoverageIgnore
- */
+* RecordingDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class RecordingDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $callid;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $calldate = 'CURRENT_TIMESTAMP';
 
@@ -28,50 +32,47 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     /**
      * @var float
      */
-    private $duration = 0.0;
+    private $duration = 0;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $caller;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $callee;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $recorder;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $recordedFileFileSize;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $recordedFileMimeType;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $recordedFileBaseName;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -79,8 +80,8 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -96,14 +97,18 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
             'callee' => 'callee',
             'recorder' => 'recorder',
             'id' => 'id',
-            'recordedFile' => ['fileSize','mimeType','baseName'],
+            'recordedFile' => [
+                'fileSize',
+                'mimeType',
+                'baseName',
+            ],
             'companyId' => 'company'
         ];
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -118,7 +123,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
             'recordedFile' => [
                 'fileSize' => $this->getRecordedFileFileSize(),
                 'mimeType' => $this->getRecordedFileMimeType(),
-                'baseName' => $this->getRecordedFileBaseName()
+                'baseName' => $this->getRecordedFileBaseName(),
             ],
             'company' => $this->getCompany()
         ];
@@ -138,11 +143,11 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $callid
+     * @param string $callid | null
      *
      * @return static
      */
-    public function setCallid($callid = null)
+    public function setCallid(?string $callid = null): self
     {
         $this->callid = $callid;
 
@@ -152,17 +157,17 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCallid()
+    public function getCallid(): ?string
     {
         return $this->callid;
     }
 
     /**
-     * @param \DateTime $calldate
+     * @param \DateTimeInterface $calldate | null
      *
      * @return static
      */
-    public function setCalldate($calldate = null)
+    public function setCalldate($calldate = null): self
     {
         $this->calldate = $calldate;
 
@@ -170,7 +175,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCalldate()
     {
@@ -178,11 +183,11 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $type
+     * @param string $type | null
      *
      * @return static
      */
-    public function setType($type = null)
+    public function setType(?string $type = null): self
     {
         $this->type = $type;
 
@@ -192,17 +197,17 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     /**
-     * @param float $duration
+     * @param float $duration | null
      *
      * @return static
      */
-    public function setDuration($duration = null)
+    public function setDuration(?float $duration = null): self
     {
         $this->duration = $duration;
 
@@ -212,17 +217,17 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getDuration()
+    public function getDuration(): ?float
     {
         return $this->duration;
     }
 
     /**
-     * @param string $caller
+     * @param string $caller | null
      *
      * @return static
      */
-    public function setCaller($caller = null)
+    public function setCaller(?string $caller = null): self
     {
         $this->caller = $caller;
 
@@ -232,17 +237,17 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCaller()
+    public function getCaller(): ?string
     {
         return $this->caller;
     }
 
     /**
-     * @param string $callee
+     * @param string $callee | null
      *
      * @return static
      */
-    public function setCallee($callee = null)
+    public function setCallee(?string $callee = null): self
     {
         $this->callee = $callee;
 
@@ -252,17 +257,17 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCallee()
+    public function getCallee(): ?string
     {
         return $this->callee;
     }
 
     /**
-     * @param string $recorder
+     * @param string $recorder | null
      *
      * @return static
      */
-    public function setRecorder($recorder = null)
+    public function setRecorder(?string $recorder = null): self
     {
         $this->recorder = $recorder;
 
@@ -272,17 +277,17 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRecorder()
+    public function getRecorder(): ?string
     {
         return $this->recorder;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -290,19 +295,19 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param integer $recordedFileFileSize
+     * @param int $recordedFileFileSize | null
      *
      * @return static
      */
-    public function setRecordedFileFileSize($recordedFileFileSize = null)
+    public function setRecordedFileFileSize(?int $recordedFileFileSize = null): self
     {
         $this->recordedFileFileSize = $recordedFileFileSize;
 
@@ -310,19 +315,19 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getRecordedFileFileSize()
+    public function getRecordedFileFileSize(): ?int
     {
         return $this->recordedFileFileSize;
     }
 
     /**
-     * @param string $recordedFileMimeType
+     * @param string $recordedFileMimeType | null
      *
      * @return static
      */
-    public function setRecordedFileMimeType($recordedFileMimeType = null)
+    public function setRecordedFileMimeType(?string $recordedFileMimeType = null): self
     {
         $this->recordedFileMimeType = $recordedFileMimeType;
 
@@ -332,17 +337,17 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRecordedFileMimeType()
+    public function getRecordedFileMimeType(): ?string
     {
         return $this->recordedFileMimeType;
     }
 
     /**
-     * @param string $recordedFileBaseName
+     * @param string $recordedFileBaseName | null
      *
      * @return static
      */
-    public function setRecordedFileBaseName($recordedFileBaseName = null)
+    public function setRecordedFileBaseName(?string $recordedFileBaseName = null): self
     {
         $this->recordedFileBaseName = $recordedFileBaseName;
 
@@ -352,17 +357,17 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRecordedFileBaseName()
+    public function getRecordedFileBaseName(): ?string
     {
         return $this->recordedFileBaseName;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -370,22 +375,20 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -402,4 +405,5 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

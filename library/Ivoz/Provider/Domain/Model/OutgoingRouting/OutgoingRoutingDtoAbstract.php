@@ -4,114 +4,125 @@ namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto;
+use Ivoz\Provider\Domain\Model\Country\CountryDto;
+use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleDto;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto;
+use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetDto;
+use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto;
 
 /**
- * @codeCoverageIgnore
- */
+* OutgoingRoutingDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $type = 'group';
 
     /**
-     * @var integer
+     * @var int
      */
     private $priority;
 
     /**
-     * @var integer
+     * @var int
      */
     private $weight = 1;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $routingMode = 'static';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $prefix;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $stopper = false;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $forceClid = false;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $clid;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @var CarrierDto | null
      */
     private $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto | null
+     * @var RoutingPatternDto | null
      */
     private $routingPattern;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto | null
+     * @var RoutingPatternGroupDto | null
      */
     private $routingPatternGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto | null
+     * @var RoutingTagDto | null
      */
     private $routingTag;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @var CountryDto | null
      */
     private $clidCountry;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleDto | null
+     * @var TpLcrRuleDto | null
      */
     private $tpLcrRule;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto[] | null
+     * @var TrunksLcrRuleDto[] | null
      */
-    private $lcrRules = null;
+    private $lcrRules;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetDto[] | null
+     * @var TrunksLcrRuleTargetDto[] | null
      */
-    private $lcrRuleTargets = null;
+    private $lcrRuleTargets;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto[] | null
+     * @var OutgoingRoutingRelCarrierDto[] | null
      */
-    private $relCarriers = null;
-
-
-    use DtoNormalizer;
+    private $relCarriers;
 
     public function __construct($id = null)
     {
@@ -119,8 +130,8 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -149,8 +160,8 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -191,11 +202,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $type
+     * @param string $type | null
      *
      * @return static
      */
-    public function setType($type = null)
+    public function setType(?string $type = null): self
     {
         $this->type = $type;
 
@@ -205,17 +216,17 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     /**
-     * @param integer $priority
+     * @param int $priority | null
      *
      * @return static
      */
-    public function setPriority($priority = null)
+    public function setPriority(?int $priority = null): self
     {
         $this->priority = $priority;
 
@@ -223,19 +234,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPriority()
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
 
     /**
-     * @param integer $weight
+     * @param int $weight | null
      *
      * @return static
      */
-    public function setWeight($weight = null)
+    public function setWeight(?int $weight = null): self
     {
         $this->weight = $weight;
 
@@ -243,19 +254,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getWeight()
+    public function getWeight(): ?int
     {
         return $this->weight;
     }
 
     /**
-     * @param string $routingMode
+     * @param string $routingMode | null
      *
      * @return static
      */
-    public function setRoutingMode($routingMode = null)
+    public function setRoutingMode(?string $routingMode = null): self
     {
         $this->routingMode = $routingMode;
 
@@ -265,17 +276,17 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRoutingMode()
+    public function getRoutingMode(): ?string
     {
         return $this->routingMode;
     }
 
     /**
-     * @param string $prefix
+     * @param string $prefix | null
      *
      * @return static
      */
-    public function setPrefix($prefix = null)
+    public function setPrefix(?string $prefix = null): self
     {
         $this->prefix = $prefix;
 
@@ -285,17 +296,17 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPrefix()
+    public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
     /**
-     * @param boolean $stopper
+     * @param bool $stopper | null
      *
      * @return static
      */
-    public function setStopper($stopper = null)
+    public function setStopper(?bool $stopper = null): self
     {
         $this->stopper = $stopper;
 
@@ -303,19 +314,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getStopper()
+    public function getStopper(): ?bool
     {
         return $this->stopper;
     }
 
     /**
-     * @param boolean $forceClid
+     * @param bool $forceClid | null
      *
      * @return static
      */
-    public function setForceClid($forceClid = null)
+    public function setForceClid(?bool $forceClid = null): self
     {
         $this->forceClid = $forceClid;
 
@@ -323,19 +334,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getForceClid()
+    public function getForceClid(): ?bool
     {
         return $this->forceClid;
     }
 
     /**
-     * @param string $clid
+     * @param string $clid | null
      *
      * @return static
      */
-    public function setClid($clid = null)
+    public function setClid(?string $clid = null): self
     {
         $this->clid = $clid;
 
@@ -345,17 +356,17 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getClid()
+    public function getClid(): ?string
     {
         return $this->clid;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -363,19 +374,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -383,22 +394,20 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -417,11 +426,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -429,22 +438,20 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -463,11 +470,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
+     * @param CarrierDto | null
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
+    public function setCarrier(?CarrierDto $carrier = null): self
     {
         $this->carrier = $carrier;
 
@@ -475,22 +482,20 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @return CarrierDto | null
      */
-    public function getCarrier()
+    public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCarrierId($id)
+    public function setCarrierId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
+            ? new CarrierDto($id)
             : null;
 
         return $this->setCarrier($value);
@@ -509,11 +514,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto $routingPattern
+     * @param RoutingPatternDto | null
      *
      * @return static
      */
-    public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto $routingPattern = null)
+    public function setRoutingPattern(?RoutingPatternDto $routingPattern = null): self
     {
         $this->routingPattern = $routingPattern;
 
@@ -521,22 +526,20 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto | null
+     * @return RoutingPatternDto | null
      */
-    public function getRoutingPattern()
+    public function getRoutingPattern(): ?RoutingPatternDto
     {
         return $this->routingPattern;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRoutingPatternId($id)
+    public function setRoutingPatternId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto($id)
+            ? new RoutingPatternDto($id)
             : null;
 
         return $this->setRoutingPattern($value);
@@ -555,11 +558,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto $routingPatternGroup
+     * @param RoutingPatternGroupDto | null
      *
      * @return static
      */
-    public function setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto $routingPatternGroup = null)
+    public function setRoutingPatternGroup(?RoutingPatternGroupDto $routingPatternGroup = null): self
     {
         $this->routingPatternGroup = $routingPatternGroup;
 
@@ -567,22 +570,20 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto | null
+     * @return RoutingPatternGroupDto | null
      */
-    public function getRoutingPatternGroup()
+    public function getRoutingPatternGroup(): ?RoutingPatternGroupDto
     {
         return $this->routingPatternGroup;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRoutingPatternGroupId($id)
+    public function setRoutingPatternGroupId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto($id)
+            ? new RoutingPatternGroupDto($id)
             : null;
 
         return $this->setRoutingPatternGroup($value);
@@ -601,11 +602,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto $routingTag
+     * @param RoutingTagDto | null
      *
      * @return static
      */
-    public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto $routingTag = null)
+    public function setRoutingTag(?RoutingTagDto $routingTag = null): self
     {
         $this->routingTag = $routingTag;
 
@@ -613,22 +614,20 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto | null
+     * @return RoutingTagDto | null
      */
-    public function getRoutingTag()
+    public function getRoutingTag(): ?RoutingTagDto
     {
         return $this->routingTag;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRoutingTagId($id)
+    public function setRoutingTagId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto($id)
+            ? new RoutingTagDto($id)
             : null;
 
         return $this->setRoutingTag($value);
@@ -647,11 +646,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $clidCountry
+     * @param CountryDto | null
      *
      * @return static
      */
-    public function setClidCountry(\Ivoz\Provider\Domain\Model\Country\CountryDto $clidCountry = null)
+    public function setClidCountry(?CountryDto $clidCountry = null): self
     {
         $this->clidCountry = $clidCountry;
 
@@ -659,22 +658,20 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     * @return CountryDto | null
      */
-    public function getClidCountry()
+    public function getClidCountry(): ?CountryDto
     {
         return $this->clidCountry;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setClidCountryId($id)
+    public function setClidCountryId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            ? new CountryDto($id)
             : null;
 
         return $this->setClidCountry($value);
@@ -693,11 +690,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleDto $tpLcrRule
+     * @param TpLcrRuleDto | null
      *
      * @return static
      */
-    public function setTpLcrRule(\Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleDto $tpLcrRule = null)
+    public function setTpLcrRule(?TpLcrRuleDto $tpLcrRule = null): self
     {
         $this->tpLcrRule = $tpLcrRule;
 
@@ -705,22 +702,20 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleDto | null
+     * @return TpLcrRuleDto | null
      */
-    public function getTpLcrRule()
+    public function getTpLcrRule(): ?TpLcrRuleDto
     {
         return $this->tpLcrRule;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setTpLcrRuleId($id)
+    public function setTpLcrRuleId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleDto($id)
+            ? new TpLcrRuleDto($id)
             : null;
 
         return $this->setTpLcrRule($value);
@@ -739,11 +734,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $lcrRules
+     * @param TrunksLcrRuleDto[] | null
      *
      * @return static
      */
-    public function setLcrRules($lcrRules = null)
+    public function setLcrRules(?array $lcrRules = null): self
     {
         $this->lcrRules = $lcrRules;
 
@@ -751,19 +746,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return TrunksLcrRuleDto[] | null
      */
-    public function getLcrRules()
+    public function getLcrRules(): ?array
     {
         return $this->lcrRules;
     }
 
     /**
-     * @param array $lcrRuleTargets
+     * @param TrunksLcrRuleTargetDto[] | null
      *
      * @return static
      */
-    public function setLcrRuleTargets($lcrRuleTargets = null)
+    public function setLcrRuleTargets(?array $lcrRuleTargets = null): self
     {
         $this->lcrRuleTargets = $lcrRuleTargets;
 
@@ -771,19 +766,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return TrunksLcrRuleTargetDto[] | null
      */
-    public function getLcrRuleTargets()
+    public function getLcrRuleTargets(): ?array
     {
         return $this->lcrRuleTargets;
     }
 
     /**
-     * @param array $relCarriers
+     * @param OutgoingRoutingRelCarrierDto[] | null
      *
      * @return static
      */
-    public function setRelCarriers($relCarriers = null)
+    public function setRelCarriers(?array $relCarriers = null): self
     {
         $this->relCarriers = $relCarriers;
 
@@ -791,10 +786,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return OutgoingRoutingRelCarrierDto[] | null
      */
-    public function getRelCarriers()
+    public function getRelCarriers(): ?array
     {
         return $this->relCarriers;
     }
+
 }

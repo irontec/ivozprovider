@@ -6,10 +6,13 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* TerminalManufacturerDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -26,12 +29,9 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     private $description = '';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -39,8 +39,8 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -56,8 +56,8 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -82,11 +82,11 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param string $iden
+     * @param string $iden | null
      *
      * @return static
      */
-    public function setIden($iden = null)
+    public function setIden(?string $iden = null): self
     {
         $this->iden = $iden;
 
@@ -96,17 +96,17 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getIden()
+    public function getIden(): ?string
     {
         return $this->iden;
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -116,17 +116,17 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
-    public function setDescription($description = null)
+    public function setDescription(?string $description = null): self
     {
         $this->description = $description;
 
@@ -136,17 +136,17 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -154,10 +154,11 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
+
 }

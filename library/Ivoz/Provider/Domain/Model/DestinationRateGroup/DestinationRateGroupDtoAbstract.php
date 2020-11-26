@@ -4,29 +4,35 @@ namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyDto;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
 
 /**
- * @codeCoverageIgnore
- */
+* DestinationRateGroupDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $status;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $lastExecutionError;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $deductibleConnectionFee = false;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -71,42 +77,39 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     private $descriptionIt;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $fileFileSize;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $fileMimeType;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $fileBaseName;
 
     /**
-     * @var array
+     * @var array | null
      */
     private $fileImporterArguments;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     * @var CurrencyDto | null
      */
     private $currency;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto[] | null
+     * @var DestinationRateDto[] | null
      */
-    private $destinationRates = null;
-
-
-    use DtoNormalizer;
+    private $destinationRates;
 
     public function __construct($id = null)
     {
@@ -114,8 +117,8 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -127,17 +130,32 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
             'lastExecutionError' => 'lastExecutionError',
             'deductibleConnectionFee' => 'deductibleConnectionFee',
             'id' => 'id',
-            'name' => ['en','es','ca','it'],
-            'description' => ['en','es','ca','it'],
-            'file' => ['fileSize','mimeType','baseName','importerArguments'],
+            'name' => [
+                'en',
+                'es',
+                'ca',
+                'it',
+            ],
+            'description' => [
+                'en',
+                'es',
+                'ca',
+                'it',
+            ],
+            'file' => [
+                'fileSize',
+                'mimeType',
+                'baseName',
+                'importerArguments',
+            ],
             'brandId' => 'brand',
             'currencyId' => 'currency'
         ];
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -149,19 +167,19 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
                 'en' => $this->getNameEn(),
                 'es' => $this->getNameEs(),
                 'ca' => $this->getNameCa(),
-                'it' => $this->getNameIt()
+                'it' => $this->getNameIt(),
             ],
             'description' => [
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs(),
                 'ca' => $this->getDescriptionCa(),
-                'it' => $this->getDescriptionIt()
+                'it' => $this->getDescriptionIt(),
             ],
             'file' => [
                 'fileSize' => $this->getFileFileSize(),
                 'mimeType' => $this->getFileMimeType(),
                 'baseName' => $this->getFileBaseName(),
-                'importerArguments' => $this->getFileImporterArguments()
+                'importerArguments' => $this->getFileImporterArguments(),
             ],
             'brand' => $this->getBrand(),
             'currency' => $this->getCurrency(),
@@ -183,11 +201,11 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param string $status
+     * @param string $status | null
      *
      * @return static
      */
-    public function setStatus($status = null)
+    public function setStatus(?string $status = null): self
     {
         $this->status = $status;
 
@@ -197,17 +215,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     /**
-     * @param string $lastExecutionError
+     * @param string $lastExecutionError | null
      *
      * @return static
      */
-    public function setLastExecutionError($lastExecutionError = null)
+    public function setLastExecutionError(?string $lastExecutionError = null): self
     {
         $this->lastExecutionError = $lastExecutionError;
 
@@ -217,17 +235,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getLastExecutionError()
+    public function getLastExecutionError(): ?string
     {
         return $this->lastExecutionError;
     }
 
     /**
-     * @param boolean $deductibleConnectionFee
+     * @param bool $deductibleConnectionFee | null
      *
      * @return static
      */
-    public function setDeductibleConnectionFee($deductibleConnectionFee = null)
+    public function setDeductibleConnectionFee(?bool $deductibleConnectionFee = null): self
     {
         $this->deductibleConnectionFee = $deductibleConnectionFee;
 
@@ -235,19 +253,19 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getDeductibleConnectionFee()
+    public function getDeductibleConnectionFee(): ?bool
     {
         return $this->deductibleConnectionFee;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -255,19 +273,19 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param string $nameEn
+     * @param string $nameEn | null
      *
      * @return static
      */
-    public function setNameEn($nameEn = null)
+    public function setNameEn(?string $nameEn = null): self
     {
         $this->nameEn = $nameEn;
 
@@ -277,17 +295,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getNameEn()
+    public function getNameEn(): ?string
     {
         return $this->nameEn;
     }
 
     /**
-     * @param string $nameEs
+     * @param string $nameEs | null
      *
      * @return static
      */
-    public function setNameEs($nameEs = null)
+    public function setNameEs(?string $nameEs = null): self
     {
         $this->nameEs = $nameEs;
 
@@ -297,17 +315,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getNameEs()
+    public function getNameEs(): ?string
     {
         return $this->nameEs;
     }
 
     /**
-     * @param string $nameCa
+     * @param string $nameCa | null
      *
      * @return static
      */
-    public function setNameCa($nameCa = null)
+    public function setNameCa(?string $nameCa = null): self
     {
         $this->nameCa = $nameCa;
 
@@ -317,17 +335,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getNameCa()
+    public function getNameCa(): ?string
     {
         return $this->nameCa;
     }
 
     /**
-     * @param string $nameIt
+     * @param string $nameIt | null
      *
      * @return static
      */
-    public function setNameIt($nameIt = null)
+    public function setNameIt(?string $nameIt = null): self
     {
         $this->nameIt = $nameIt;
 
@@ -337,17 +355,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getNameIt()
+    public function getNameIt(): ?string
     {
         return $this->nameIt;
     }
 
     /**
-     * @param string $descriptionEn
+     * @param string $descriptionEn | null
      *
      * @return static
      */
-    public function setDescriptionEn($descriptionEn = null)
+    public function setDescriptionEn(?string $descriptionEn = null): self
     {
         $this->descriptionEn = $descriptionEn;
 
@@ -357,17 +375,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getDescriptionEn()
+    public function getDescriptionEn(): ?string
     {
         return $this->descriptionEn;
     }
 
     /**
-     * @param string $descriptionEs
+     * @param string $descriptionEs | null
      *
      * @return static
      */
-    public function setDescriptionEs($descriptionEs = null)
+    public function setDescriptionEs(?string $descriptionEs = null): self
     {
         $this->descriptionEs = $descriptionEs;
 
@@ -377,17 +395,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getDescriptionEs()
+    public function getDescriptionEs(): ?string
     {
         return $this->descriptionEs;
     }
 
     /**
-     * @param string $descriptionCa
+     * @param string $descriptionCa | null
      *
      * @return static
      */
-    public function setDescriptionCa($descriptionCa = null)
+    public function setDescriptionCa(?string $descriptionCa = null): self
     {
         $this->descriptionCa = $descriptionCa;
 
@@ -397,17 +415,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getDescriptionCa()
+    public function getDescriptionCa(): ?string
     {
         return $this->descriptionCa;
     }
 
     /**
-     * @param string $descriptionIt
+     * @param string $descriptionIt | null
      *
      * @return static
      */
-    public function setDescriptionIt($descriptionIt = null)
+    public function setDescriptionIt(?string $descriptionIt = null): self
     {
         $this->descriptionIt = $descriptionIt;
 
@@ -417,17 +435,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getDescriptionIt()
+    public function getDescriptionIt(): ?string
     {
         return $this->descriptionIt;
     }
 
     /**
-     * @param integer $fileFileSize
+     * @param int $fileFileSize | null
      *
      * @return static
      */
-    public function setFileFileSize($fileFileSize = null)
+    public function setFileFileSize(?int $fileFileSize = null): self
     {
         $this->fileFileSize = $fileFileSize;
 
@@ -435,19 +453,19 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getFileFileSize()
+    public function getFileFileSize(): ?int
     {
         return $this->fileFileSize;
     }
 
     /**
-     * @param string $fileMimeType
+     * @param string $fileMimeType | null
      *
      * @return static
      */
-    public function setFileMimeType($fileMimeType = null)
+    public function setFileMimeType(?string $fileMimeType = null): self
     {
         $this->fileMimeType = $fileMimeType;
 
@@ -457,17 +475,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getFileMimeType()
+    public function getFileMimeType(): ?string
     {
         return $this->fileMimeType;
     }
 
     /**
-     * @param string $fileBaseName
+     * @param string $fileBaseName | null
      *
      * @return static
      */
-    public function setFileBaseName($fileBaseName = null)
+    public function setFileBaseName(?string $fileBaseName = null): self
     {
         $this->fileBaseName = $fileBaseName;
 
@@ -477,17 +495,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return string | null
      */
-    public function getFileBaseName()
+    public function getFileBaseName(): ?string
     {
         return $this->fileBaseName;
     }
 
     /**
-     * @param array $fileImporterArguments
+     * @param array $fileImporterArguments | null
      *
      * @return static
      */
-    public function setFileImporterArguments($fileImporterArguments = null)
+    public function setFileImporterArguments(?array $fileImporterArguments = null): self
     {
         $this->fileImporterArguments = $fileImporterArguments;
 
@@ -497,17 +515,17 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @return array | null
      */
-    public function getFileImporterArguments()
+    public function getFileImporterArguments(): ?array
     {
         return $this->fileImporterArguments;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -515,22 +533,20 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -549,11 +565,11 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency
+     * @param CurrencyDto | null
      *
      * @return static
      */
-    public function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyDto $currency = null)
+    public function setCurrency(?CurrencyDto $currency = null): self
     {
         $this->currency = $currency;
 
@@ -561,22 +577,20 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyDto | null
+     * @return CurrencyDto | null
      */
-    public function getCurrency()
+    public function getCurrency(): ?CurrencyDto
     {
         return $this->currency;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCurrencyId($id)
+    public function setCurrencyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Currency\CurrencyDto($id)
+            ? new CurrencyDto($id)
             : null;
 
         return $this->setCurrency($value);
@@ -595,11 +609,11 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param array $destinationRates
+     * @param DestinationRateDto[] | null
      *
      * @return static
      */
-    public function setDestinationRates($destinationRates = null)
+    public function setDestinationRates(?array $destinationRates = null): self
     {
         $this->destinationRates = $destinationRates;
 
@@ -607,10 +621,11 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @return array | null
+     * @return DestinationRateDto[] | null
      */
-    public function getDestinationRates()
+    public function getDestinationRates(): ?array
     {
         return $this->destinationRates;
     }
+
 }

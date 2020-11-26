@@ -6,10 +6,13 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* CommandlogDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,27 +24,27 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     private $class;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $method;
 
     /**
-     * @var array
+     * @var array | null
      */
     private $arguments;
 
     /**
-     * @var array
+     * @var array | null
      */
     private $agent;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $createdOn;
 
     /**
-     * @var integer
+     * @var int
      */
     private $microtime;
 
@@ -50,17 +53,14 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
      */
     private $id;
 
-
-    use DtoNormalizer;
-
     public function __construct($id = null)
     {
         $this->setId($id);
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -80,8 +80,8 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -110,11 +110,11 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $requestId
+     * @param string $requestId | null
      *
      * @return static
      */
-    public function setRequestId($requestId = null)
+    public function setRequestId(?string $requestId = null): self
     {
         $this->requestId = $requestId;
 
@@ -124,17 +124,17 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRequestId()
+    public function getRequestId(): ?string
     {
         return $this->requestId;
     }
 
     /**
-     * @param string $class
+     * @param string $class | null
      *
      * @return static
      */
-    public function setClass($class = null)
+    public function setClass(?string $class = null): self
     {
         $this->class = $class;
 
@@ -144,17 +144,17 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getClass()
+    public function getClass(): ?string
     {
         return $this->class;
     }
 
     /**
-     * @param string $method
+     * @param string $method | null
      *
      * @return static
      */
-    public function setMethod($method = null)
+    public function setMethod(?string $method = null): self
     {
         $this->method = $method;
 
@@ -164,17 +164,17 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getMethod()
+    public function getMethod(): ?string
     {
         return $this->method;
     }
 
     /**
-     * @param array $arguments
+     * @param array $arguments | null
      *
      * @return static
      */
-    public function setArguments($arguments = null)
+    public function setArguments(?array $arguments = null): self
     {
         $this->arguments = $arguments;
 
@@ -184,17 +184,17 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array | null
      */
-    public function getArguments()
+    public function getArguments(): ?array
     {
         return $this->arguments;
     }
 
     /**
-     * @param array $agent
+     * @param array $agent | null
      *
      * @return static
      */
-    public function setAgent($agent = null)
+    public function setAgent(?array $agent = null): self
     {
         $this->agent = $agent;
 
@@ -204,17 +204,17 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array | null
      */
-    public function getAgent()
+    public function getAgent(): ?array
     {
         return $this->agent;
     }
 
     /**
-     * @param \DateTime $createdOn
+     * @param \DateTimeInterface $createdOn | null
      *
      * @return static
      */
-    public function setCreatedOn($createdOn = null)
+    public function setCreatedOn($createdOn = null): self
     {
         $this->createdOn = $createdOn;
 
@@ -222,7 +222,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedOn()
     {
@@ -230,11 +230,11 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $microtime
+     * @param int $microtime | null
      *
      * @return static
      */
-    public function setMicrotime($microtime = null)
+    public function setMicrotime(?int $microtime = null): self
     {
         $this->microtime = $microtime;
 
@@ -242,19 +242,19 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getMicrotime()
+    public function getMicrotime(): ?int
     {
         return $this->microtime;
     }
 
     /**
-     * @param string $id
+     * @param string $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?string $id = null): self
     {
         $this->id = $id;
 
@@ -264,8 +264,9 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
+
 }

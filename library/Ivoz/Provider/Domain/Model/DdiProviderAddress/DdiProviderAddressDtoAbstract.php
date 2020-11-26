@@ -4,39 +4,41 @@ namespace Ivoz\Provider\Domain\Model\DdiProviderAddress;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto;
+use Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto;
 
 /**
- * @codeCoverageIgnore
- */
+* DdiProviderAddressDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $ip;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $description;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto | null
-     */
-    private $trunksAddress;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     * @var DdiProviderDto | null
      */
     private $ddiProvider;
 
-
-    use DtoNormalizer;
+    /**
+     * @var TrunksAddressDto | null
+     */
+    private $trunksAddress;
 
     public function __construct($id = null)
     {
@@ -44,8 +46,8 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -56,22 +58,22 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
             'ip' => 'ip',
             'description' => 'description',
             'id' => 'id',
-            'trunksAddressId' => 'trunksAddress',
-            'ddiProviderId' => 'ddiProvider'
+            'ddiProviderId' => 'ddiProvider',
+            'trunksAddressId' => 'trunksAddress'
         ];
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
             'ip' => $this->getIp(),
             'description' => $this->getDescription(),
             'id' => $this->getId(),
-            'trunksAddress' => $this->getTrunksAddress(),
-            'ddiProvider' => $this->getDdiProvider()
+            'ddiProvider' => $this->getDdiProvider(),
+            'trunksAddress' => $this->getTrunksAddress()
         ];
 
         if (!$hideSensitiveData) {
@@ -89,11 +91,11 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
-    public function setIp($ip = null)
+    public function setIp(?string $ip = null): self
     {
         $this->ip = $ip;
 
@@ -103,17 +105,17 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
 
     /**
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
-    public function setDescription($description = null)
+    public function setDescription(?string $description = null): self
     {
         $this->description = $description;
 
@@ -123,17 +125,17 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -141,19 +143,63 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto $trunksAddress
+     * @param DdiProviderDto | null
      *
      * @return static
      */
-    public function setTrunksAddress(\Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto $trunksAddress = null)
+    public function setDdiProvider(?DdiProviderDto $ddiProvider = null): self
+    {
+        $this->ddiProvider = $ddiProvider;
+
+        return $this;
+    }
+
+    /**
+     * @return DdiProviderDto | null
+     */
+    public function getDdiProvider(): ?DdiProviderDto
+    {
+        return $this->ddiProvider;
+    }
+
+    /**
+     * @return static
+     */
+    public function setDdiProviderId($id): self
+    {
+        $value = !is_null($id)
+            ? new DdiProviderDto($id)
+            : null;
+
+        return $this->setDdiProvider($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDdiProviderId()
+    {
+        if ($dto = $this->getDdiProvider()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param TrunksAddressDto | null
+     *
+     * @return static
+     */
+    public function setTrunksAddress(?TrunksAddressDto $trunksAddress = null): self
     {
         $this->trunksAddress = $trunksAddress;
 
@@ -161,22 +207,20 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto | null
+     * @return TrunksAddressDto | null
      */
-    public function getTrunksAddress()
+    public function getTrunksAddress(): ?TrunksAddressDto
     {
         return $this->trunksAddress;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setTrunksAddressId($id)
+    public function setTrunksAddressId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto($id)
+            ? new TrunksAddressDto($id)
             : null;
 
         return $this->setTrunksAddress($value);
@@ -194,49 +238,4 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
         return null;
     }
 
-    /**
-     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider
-     *
-     * @return static
-     */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider = null)
-    {
-        $this->ddiProvider = $ddiProvider;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
-     */
-    public function getDdiProvider()
-    {
-        return $this->ddiProvider;
-    }
-
-    /**
-     * @param mixed | null $id
-     *
-     * @return static
-     */
-    public function setDdiProviderId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto($id)
-            : null;
-
-        return $this->setDdiProvider($value);
-    }
-
-    /**
-     * @return mixed | null
-     */
-    public function getDdiProviderId()
-    {
-        if ($dto = $this->getDdiProvider()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
 }

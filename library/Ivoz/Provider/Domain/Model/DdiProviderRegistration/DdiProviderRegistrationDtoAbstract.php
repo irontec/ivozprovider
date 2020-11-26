@@ -4,12 +4,17 @@ namespace Ivoz\Provider\Domain\Model\DdiProviderRegistration;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto;
+use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto;
 
 /**
- * @codeCoverageIgnore
- */
+* DdiProviderRegistrationDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -41,12 +46,12 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     private $authProxy = '';
 
     /**
-     * @var integer
+     * @var int
      */
     private $expires = 0;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $multiDdi = false;
 
@@ -56,22 +61,19 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     private $contactUsername = '';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto | null
-     */
-    private $trunksUacreg;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     * @var DdiProviderDto | null
      */
     private $ddiProvider;
 
-
-    use DtoNormalizer;
+    /**
+     * @var TrunksUacregDto | null
+     */
+    private $trunksUacreg;
 
     public function __construct($id = null)
     {
@@ -79,8 +81,8 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -98,14 +100,14 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
             'multiDdi' => 'multiDdi',
             'contactUsername' => 'contactUsername',
             'id' => 'id',
-            'trunksUacregId' => 'trunksUacreg',
-            'ddiProviderId' => 'ddiProvider'
+            'ddiProviderId' => 'ddiProvider',
+            'trunksUacregId' => 'trunksUacreg'
         ];
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -119,8 +121,8 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
             'multiDdi' => $this->getMultiDdi(),
             'contactUsername' => $this->getContactUsername(),
             'id' => $this->getId(),
-            'trunksUacreg' => $this->getTrunksUacreg(),
-            'ddiProvider' => $this->getDdiProvider()
+            'ddiProvider' => $this->getDdiProvider(),
+            'trunksUacreg' => $this->getTrunksUacreg()
         ];
 
         if (!$hideSensitiveData) {
@@ -138,11 +140,11 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @param string $username
+     * @param string $username | null
      *
      * @return static
      */
-    public function setUsername($username = null)
+    public function setUsername(?string $username = null): self
     {
         $this->username = $username;
 
@@ -152,17 +154,17 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     /**
      * @return string | null
      */
-    public function getUsername()
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
     /**
-     * @param string $domain
+     * @param string $domain | null
      *
      * @return static
      */
-    public function setDomain($domain = null)
+    public function setDomain(?string $domain = null): self
     {
         $this->domain = $domain;
 
@@ -172,17 +174,17 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     /**
      * @return string | null
      */
-    public function getDomain()
+    public function getDomain(): ?string
     {
         return $this->domain;
     }
 
     /**
-     * @param string $realm
+     * @param string $realm | null
      *
      * @return static
      */
-    public function setRealm($realm = null)
+    public function setRealm(?string $realm = null): self
     {
         $this->realm = $realm;
 
@@ -192,17 +194,17 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     /**
      * @return string | null
      */
-    public function getRealm()
+    public function getRealm(): ?string
     {
         return $this->realm;
     }
 
     /**
-     * @param string $authUsername
+     * @param string $authUsername | null
      *
      * @return static
      */
-    public function setAuthUsername($authUsername = null)
+    public function setAuthUsername(?string $authUsername = null): self
     {
         $this->authUsername = $authUsername;
 
@@ -212,17 +214,17 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     /**
      * @return string | null
      */
-    public function getAuthUsername()
+    public function getAuthUsername(): ?string
     {
         return $this->authUsername;
     }
 
     /**
-     * @param string $authPassword
+     * @param string $authPassword | null
      *
      * @return static
      */
-    public function setAuthPassword($authPassword = null)
+    public function setAuthPassword(?string $authPassword = null): self
     {
         $this->authPassword = $authPassword;
 
@@ -232,17 +234,17 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     /**
      * @return string | null
      */
-    public function getAuthPassword()
+    public function getAuthPassword(): ?string
     {
         return $this->authPassword;
     }
 
     /**
-     * @param string $authProxy
+     * @param string $authProxy | null
      *
      * @return static
      */
-    public function setAuthProxy($authProxy = null)
+    public function setAuthProxy(?string $authProxy = null): self
     {
         $this->authProxy = $authProxy;
 
@@ -252,17 +254,17 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     /**
      * @return string | null
      */
-    public function getAuthProxy()
+    public function getAuthProxy(): ?string
     {
         return $this->authProxy;
     }
 
     /**
-     * @param integer $expires
+     * @param int $expires | null
      *
      * @return static
      */
-    public function setExpires($expires = null)
+    public function setExpires(?int $expires = null): self
     {
         $this->expires = $expires;
 
@@ -270,19 +272,19 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getExpires()
+    public function getExpires(): ?int
     {
         return $this->expires;
     }
 
     /**
-     * @param boolean $multiDdi
+     * @param bool $multiDdi | null
      *
      * @return static
      */
-    public function setMultiDdi($multiDdi = null)
+    public function setMultiDdi(?bool $multiDdi = null): self
     {
         $this->multiDdi = $multiDdi;
 
@@ -290,19 +292,19 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getMultiDdi()
+    public function getMultiDdi(): ?bool
     {
         return $this->multiDdi;
     }
 
     /**
-     * @param string $contactUsername
+     * @param string $contactUsername | null
      *
      * @return static
      */
-    public function setContactUsername($contactUsername = null)
+    public function setContactUsername(?string $contactUsername = null): self
     {
         $this->contactUsername = $contactUsername;
 
@@ -312,17 +314,17 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     /**
      * @return string | null
      */
-    public function getContactUsername()
+    public function getContactUsername(): ?string
     {
         return $this->contactUsername;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -330,19 +332,63 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto $trunksUacreg
+     * @param DdiProviderDto | null
      *
      * @return static
      */
-    public function setTrunksUacreg(\Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto $trunksUacreg = null)
+    public function setDdiProvider(?DdiProviderDto $ddiProvider = null): self
+    {
+        $this->ddiProvider = $ddiProvider;
+
+        return $this;
+    }
+
+    /**
+     * @return DdiProviderDto | null
+     */
+    public function getDdiProvider(): ?DdiProviderDto
+    {
+        return $this->ddiProvider;
+    }
+
+    /**
+     * @return static
+     */
+    public function setDdiProviderId($id): self
+    {
+        $value = !is_null($id)
+            ? new DdiProviderDto($id)
+            : null;
+
+        return $this->setDdiProvider($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDdiProviderId()
+    {
+        if ($dto = $this->getDdiProvider()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param TrunksUacregDto | null
+     *
+     * @return static
+     */
+    public function setTrunksUacreg(?TrunksUacregDto $trunksUacreg = null): self
     {
         $this->trunksUacreg = $trunksUacreg;
 
@@ -350,22 +396,20 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-     * @return \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto | null
+     * @return TrunksUacregDto | null
      */
-    public function getTrunksUacreg()
+    public function getTrunksUacreg(): ?TrunksUacregDto
     {
         return $this->trunksUacreg;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setTrunksUacregId($id)
+    public function setTrunksUacregId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto($id)
+            ? new TrunksUacregDto($id)
             : null;
 
         return $this->setTrunksUacreg($value);
@@ -383,49 +427,4 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return null;
     }
 
-    /**
-     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider
-     *
-     * @return static
-     */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider = null)
-    {
-        $this->ddiProvider = $ddiProvider;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
-     */
-    public function getDdiProvider()
-    {
-        return $this->ddiProvider;
-    }
-
-    /**
-     * @param mixed | null $id
-     *
-     * @return static
-     */
-    public function setDdiProviderId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto($id)
-            : null;
-
-        return $this->setDdiProvider($value);
-    }
-
-    /**
-     * @return mixed | null
-     */
-    public function getDdiProviderId()
-    {
-        if ($dto = $this->getDdiProvider()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
 }

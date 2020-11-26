@@ -4,14 +4,19 @@ namespace Ivoz\Provider\Domain\Model\CallAclRelMatchList;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\CallAcl\CallAclDto;
+use Ivoz\Provider\Domain\Model\MatchList\MatchListDto;
 
 /**
- * @codeCoverageIgnore
- */
+* CallAclRelMatchListDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $priority;
 
@@ -21,22 +26,19 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     private $policy;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto | null
+     * @var CallAclDto | null
      */
     private $callAcl;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\MatchList\MatchListDto | null
+     * @var MatchListDto | null
      */
     private $matchList;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -44,8 +46,8 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -62,8 +64,8 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -89,11 +91,11 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @param integer $priority
+     * @param int $priority | null
      *
      * @return static
      */
-    public function setPriority($priority = null)
+    public function setPriority(?int $priority = null): self
     {
         $this->priority = $priority;
 
@@ -101,19 +103,19 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPriority()
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
 
     /**
-     * @param string $policy
+     * @param string $policy | null
      *
      * @return static
      */
-    public function setPolicy($policy = null)
+    public function setPolicy(?string $policy = null): self
     {
         $this->policy = $policy;
 
@@ -123,17 +125,17 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     /**
      * @return string | null
      */
-    public function getPolicy()
+    public function getPolicy(): ?string
     {
         return $this->policy;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -141,19 +143,19 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto $callAcl
+     * @param CallAclDto | null
      *
      * @return static
      */
-    public function setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAclDto $callAcl = null)
+    public function setCallAcl(?CallAclDto $callAcl = null): self
     {
         $this->callAcl = $callAcl;
 
@@ -161,22 +163,20 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto | null
+     * @return CallAclDto | null
      */
-    public function getCallAcl()
+    public function getCallAcl(): ?CallAclDto
     {
         return $this->callAcl;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCallAclId($id)
+    public function setCallAclId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto($id)
+            ? new CallAclDto($id)
             : null;
 
         return $this->setCallAcl($value);
@@ -195,11 +195,11 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListDto $matchList
+     * @param MatchListDto | null
      *
      * @return static
      */
-    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListDto $matchList = null)
+    public function setMatchList(?MatchListDto $matchList = null): self
     {
         $this->matchList = $matchList;
 
@@ -207,22 +207,20 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListDto | null
+     * @return MatchListDto | null
      */
-    public function getMatchList()
+    public function getMatchList(): ?MatchListDto
     {
         return $this->matchList;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setMatchListId($id)
+    public function setMatchListId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\MatchList\MatchListDto($id)
+            ? new MatchListDto($id)
             : null;
 
         return $this->setMatchList($value);
@@ -239,4 +237,5 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
 
         return null;
     }
+
 }

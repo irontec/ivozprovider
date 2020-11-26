@@ -4,39 +4,42 @@ namespace Ivoz\Provider\Domain\Model\Calendar;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateDto;
+use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto;
 
 /**
- * @codeCoverageIgnore
- */
+* CalendarDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CalendarDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $name;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateDto[] | null
+     * @var HolidayDateDto[] | null
      */
-    private $holidayDates = null;
+    private $holidayDates;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto[] | null
+     * @var CalendarPeriodDto[] | null
      */
-    private $calendarPeriods = null;
-
-
-    use DtoNormalizer;
+    private $calendarPeriods;
 
     public function __construct($id = null)
     {
@@ -44,8 +47,8 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -60,8 +63,8 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -87,11 +90,11 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -101,17 +104,17 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -119,19 +122,19 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -139,22 +142,20 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -173,11 +174,11 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $holidayDates
+     * @param HolidayDateDto[] | null
      *
      * @return static
      */
-    public function setHolidayDates($holidayDates = null)
+    public function setHolidayDates(?array $holidayDates = null): self
     {
         $this->holidayDates = $holidayDates;
 
@@ -185,19 +186,19 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return HolidayDateDto[] | null
      */
-    public function getHolidayDates()
+    public function getHolidayDates(): ?array
     {
         return $this->holidayDates;
     }
 
     /**
-     * @param array $calendarPeriods
+     * @param CalendarPeriodDto[] | null
      *
      * @return static
      */
-    public function setCalendarPeriods($calendarPeriods = null)
+    public function setCalendarPeriods(?array $calendarPeriods = null): self
     {
         $this->calendarPeriods = $calendarPeriods;
 
@@ -205,10 +206,11 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array | null
+     * @return CalendarPeriodDto[] | null
      */
-    public function getCalendarPeriods()
+    public function getCalendarPeriods(): ?array
     {
         return $this->calendarPeriods;
     }
+
 }

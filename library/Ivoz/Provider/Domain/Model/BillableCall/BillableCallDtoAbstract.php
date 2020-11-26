@@ -4,139 +4,148 @@ namespace Ivoz\Provider\Domain\Model\BillableCall;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
+use Ivoz\Provider\Domain\Model\Destination\DestinationDto;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto;
 
 /**
- * @codeCoverageIgnore
- */
+* BillableCallDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $callid;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $startTime;
 
     /**
      * @var float
      */
-    private $duration = 0.0;
+    private $duration = 0;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $caller;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $callee;
 
     /**
-     * @var float
+     * @var float | null
      */
     private $cost;
 
     /**
-     * @var float
+     * @var float | null
      */
     private $price;
 
     /**
-     * @var array
+     * @var array | null
      */
     private $priceDetails;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $carrierName;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $destinationName;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $ratingPlanName;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $endpointType;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $endpointId;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $endpointName;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $direction = 'outbound';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @var CarrierDto | null
      */
     private $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationDto | null
+     * @var DestinationDto | null
      */
     private $destination;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto | null
+     * @var RatingPlanGroupDto | null
      */
     private $ratingPlanGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto | null
+     * @var InvoiceDto | null
      */
     private $invoice;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto | null
+     * @var TrunksCdrDto | null
      */
     private $trunksCdr;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     * @var DdiDto | null
      */
     private $ddi;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     * @var DdiProviderDto | null
      */
     private $ddiProvider;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -144,8 +153,8 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -182,8 +191,8 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -229,11 +238,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $callid
+     * @param string $callid | null
      *
      * @return static
      */
-    public function setCallid($callid = null)
+    public function setCallid(?string $callid = null): self
     {
         $this->callid = $callid;
 
@@ -243,17 +252,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCallid()
+    public function getCallid(): ?string
     {
         return $this->callid;
     }
 
     /**
-     * @param \DateTime $startTime
+     * @param \DateTimeInterface $startTime | null
      *
      * @return static
      */
-    public function setStartTime($startTime = null)
+    public function setStartTime($startTime = null): self
     {
         $this->startTime = $startTime;
 
@@ -261,7 +270,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getStartTime()
     {
@@ -269,11 +278,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param float $duration
+     * @param float $duration | null
      *
      * @return static
      */
-    public function setDuration($duration = null)
+    public function setDuration(?float $duration = null): self
     {
         $this->duration = $duration;
 
@@ -283,17 +292,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getDuration()
+    public function getDuration(): ?float
     {
         return $this->duration;
     }
 
     /**
-     * @param string $caller
+     * @param string $caller | null
      *
      * @return static
      */
-    public function setCaller($caller = null)
+    public function setCaller(?string $caller = null): self
     {
         $this->caller = $caller;
 
@@ -303,17 +312,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCaller()
+    public function getCaller(): ?string
     {
         return $this->caller;
     }
 
     /**
-     * @param string $callee
+     * @param string $callee | null
      *
      * @return static
      */
-    public function setCallee($callee = null)
+    public function setCallee(?string $callee = null): self
     {
         $this->callee = $callee;
 
@@ -323,17 +332,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCallee()
+    public function getCallee(): ?string
     {
         return $this->callee;
     }
 
     /**
-     * @param float $cost
+     * @param float $cost | null
      *
      * @return static
      */
-    public function setCost($cost = null)
+    public function setCost(?float $cost = null): self
     {
         $this->cost = $cost;
 
@@ -343,17 +352,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getCost()
+    public function getCost(): ?float
     {
         return $this->cost;
     }
 
     /**
-     * @param float $price
+     * @param float $price | null
      *
      * @return static
      */
-    public function setPrice($price = null)
+    public function setPrice(?float $price = null): self
     {
         $this->price = $price;
 
@@ -363,17 +372,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getPrice()
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
     /**
-     * @param array $priceDetails
+     * @param array $priceDetails | null
      *
      * @return static
      */
-    public function setPriceDetails($priceDetails = null)
+    public function setPriceDetails(?array $priceDetails = null): self
     {
         $this->priceDetails = $priceDetails;
 
@@ -383,17 +392,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array | null
      */
-    public function getPriceDetails()
+    public function getPriceDetails(): ?array
     {
         return $this->priceDetails;
     }
 
     /**
-     * @param string $carrierName
+     * @param string $carrierName | null
      *
      * @return static
      */
-    public function setCarrierName($carrierName = null)
+    public function setCarrierName(?string $carrierName = null): self
     {
         $this->carrierName = $carrierName;
 
@@ -403,17 +412,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCarrierName()
+    public function getCarrierName(): ?string
     {
         return $this->carrierName;
     }
 
     /**
-     * @param string $destinationName
+     * @param string $destinationName | null
      *
      * @return static
      */
-    public function setDestinationName($destinationName = null)
+    public function setDestinationName(?string $destinationName = null): self
     {
         $this->destinationName = $destinationName;
 
@@ -423,17 +432,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDestinationName()
+    public function getDestinationName(): ?string
     {
         return $this->destinationName;
     }
 
     /**
-     * @param string $ratingPlanName
+     * @param string $ratingPlanName | null
      *
      * @return static
      */
-    public function setRatingPlanName($ratingPlanName = null)
+    public function setRatingPlanName(?string $ratingPlanName = null): self
     {
         $this->ratingPlanName = $ratingPlanName;
 
@@ -443,17 +452,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRatingPlanName()
+    public function getRatingPlanName(): ?string
     {
         return $this->ratingPlanName;
     }
 
     /**
-     * @param string $endpointType
+     * @param string $endpointType | null
      *
      * @return static
      */
-    public function setEndpointType($endpointType = null)
+    public function setEndpointType(?string $endpointType = null): self
     {
         $this->endpointType = $endpointType;
 
@@ -463,17 +472,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEndpointType()
+    public function getEndpointType(): ?string
     {
         return $this->endpointType;
     }
 
     /**
-     * @param integer $endpointId
+     * @param int $endpointId | null
      *
      * @return static
      */
-    public function setEndpointId($endpointId = null)
+    public function setEndpointId(?int $endpointId = null): self
     {
         $this->endpointId = $endpointId;
 
@@ -481,19 +490,19 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getEndpointId()
+    public function getEndpointId(): ?int
     {
         return $this->endpointId;
     }
 
     /**
-     * @param string $endpointName
+     * @param string $endpointName | null
      *
      * @return static
      */
-    public function setEndpointName($endpointName = null)
+    public function setEndpointName(?string $endpointName = null): self
     {
         $this->endpointName = $endpointName;
 
@@ -503,17 +512,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEndpointName()
+    public function getEndpointName(): ?string
     {
         return $this->endpointName;
     }
 
     /**
-     * @param string $direction
+     * @param string $direction | null
      *
      * @return static
      */
-    public function setDirection($direction = null)
+    public function setDirection(?string $direction = null): self
     {
         $this->direction = $direction;
 
@@ -523,17 +532,17 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDirection()
+    public function getDirection(): ?string
     {
         return $this->direction;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -541,19 +550,19 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -561,22 +570,20 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -595,11 +602,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -607,22 +614,20 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -641,11 +646,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
+     * @param CarrierDto | null
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
+    public function setCarrier(?CarrierDto $carrier = null): self
     {
         $this->carrier = $carrier;
 
@@ -653,22 +658,20 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @return CarrierDto | null
      */
-    public function getCarrier()
+    public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCarrierId($id)
+    public function setCarrierId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
+            ? new CarrierDto($id)
             : null;
 
         return $this->setCarrier($value);
@@ -687,11 +690,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationDto $destination
+     * @param DestinationDto | null
      *
      * @return static
      */
-    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationDto $destination = null)
+    public function setDestination(?DestinationDto $destination = null): self
     {
         $this->destination = $destination;
 
@@ -699,22 +702,20 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationDto | null
+     * @return DestinationDto | null
      */
-    public function getDestination()
+    public function getDestination(): ?DestinationDto
     {
         return $this->destination;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDestinationId($id)
+    public function setDestinationId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Destination\DestinationDto($id)
+            ? new DestinationDto($id)
             : null;
 
         return $this->setDestination($value);
@@ -733,11 +734,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto $ratingPlanGroup
+     * @param RatingPlanGroupDto | null
      *
      * @return static
      */
-    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto $ratingPlanGroup = null)
+    public function setRatingPlanGroup(?RatingPlanGroupDto $ratingPlanGroup = null): self
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
@@ -745,22 +746,20 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto | null
+     * @return RatingPlanGroupDto | null
      */
-    public function getRatingPlanGroup()
+    public function getRatingPlanGroup(): ?RatingPlanGroupDto
     {
         return $this->ratingPlanGroup;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRatingPlanGroupId($id)
+    public function setRatingPlanGroupId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto($id)
+            ? new RatingPlanGroupDto($id)
             : null;
 
         return $this->setRatingPlanGroup($value);
@@ -779,11 +778,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto $invoice
+     * @param InvoiceDto | null
      *
      * @return static
      */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceDto $invoice = null)
+    public function setInvoice(?InvoiceDto $invoice = null): self
     {
         $this->invoice = $invoice;
 
@@ -791,22 +790,20 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto | null
+     * @return InvoiceDto | null
      */
-    public function getInvoice()
+    public function getInvoice(): ?InvoiceDto
     {
         return $this->invoice;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setInvoiceId($id)
+    public function setInvoiceId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto($id)
+            ? new InvoiceDto($id)
             : null;
 
         return $this->setInvoice($value);
@@ -825,11 +822,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto $trunksCdr
+     * @param TrunksCdrDto | null
      *
      * @return static
      */
-    public function setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto $trunksCdr = null)
+    public function setTrunksCdr(?TrunksCdrDto $trunksCdr = null): self
     {
         $this->trunksCdr = $trunksCdr;
 
@@ -837,22 +834,20 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto | null
+     * @return TrunksCdrDto | null
      */
-    public function getTrunksCdr()
+    public function getTrunksCdr(): ?TrunksCdrDto
     {
         return $this->trunksCdr;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setTrunksCdrId($id)
+    public function setTrunksCdrId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto($id)
+            ? new TrunksCdrDto($id)
             : null;
 
         return $this->setTrunksCdr($value);
@@ -871,11 +866,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi
+     * @param DdiDto | null
      *
      * @return static
      */
-    public function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi = null)
+    public function setDdi(?DdiDto $ddi = null): self
     {
         $this->ddi = $ddi;
 
@@ -883,22 +878,20 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     * @return DdiDto | null
      */
-    public function getDdi()
+    public function getDdi(): ?DdiDto
     {
         return $this->ddi;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDdiId($id)
+    public function setDdiId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            ? new DdiDto($id)
             : null;
 
         return $this->setDdi($value);
@@ -917,11 +910,11 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider
+     * @param DdiProviderDto | null
      *
      * @return static
      */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider = null)
+    public function setDdiProvider(?DdiProviderDto $ddiProvider = null): self
     {
         $this->ddiProvider = $ddiProvider;
 
@@ -929,22 +922,20 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     * @return DdiProviderDto | null
      */
-    public function getDdiProvider()
+    public function getDdiProvider(): ?DdiProviderDto
     {
         return $this->ddiProvider;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDdiProviderId($id)
+    public function setDdiProviderId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto($id)
+            ? new DdiProviderDto($id)
             : null;
 
         return $this->setDdiProvider($value);
@@ -961,4 +952,5 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

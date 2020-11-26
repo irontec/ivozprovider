@@ -4,44 +4,50 @@ namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto;
 
 /**
- * @codeCoverageIgnore
- */
+* CarrierServerDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $ip;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $hostname;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $port;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $uriScheme;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $transport;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $sendPAI = false;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $sendRPID = false;
 
@@ -51,57 +57,54 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     private $authNeeded = 'no';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $authUser;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $authPassword;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $sipProxy;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $outboundProxy;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $fromUser;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $fromDomain;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto | null
-     */
-    private $lcrGateway;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @var CarrierDto | null
      */
     private $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
-
-    use DtoNormalizer;
+    /**
+     * @var TrunksLcrGatewayDto | null
+     */
+    private $lcrGateway;
 
     public function __construct($id = null)
     {
@@ -109,8 +112,8 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -133,15 +136,15 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
             'fromUser' => 'fromUser',
             'fromDomain' => 'fromDomain',
             'id' => 'id',
-            'lcrGatewayId' => 'lcrGateway',
             'carrierId' => 'carrier',
-            'brandId' => 'brand'
+            'brandId' => 'brand',
+            'lcrGatewayId' => 'lcrGateway'
         ];
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -160,9 +163,9 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
             'fromUser' => $this->getFromUser(),
             'fromDomain' => $this->getFromDomain(),
             'id' => $this->getId(),
-            'lcrGateway' => $this->getLcrGateway(),
             'carrier' => $this->getCarrier(),
-            'brand' => $this->getBrand()
+            'brand' => $this->getBrand(),
+            'lcrGateway' => $this->getLcrGateway()
         ];
 
         if (!$hideSensitiveData) {
@@ -180,11 +183,11 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
-    public function setIp($ip = null)
+    public function setIp(?string $ip = null): self
     {
         $this->ip = $ip;
 
@@ -194,17 +197,17 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
 
     /**
-     * @param string $hostname
+     * @param string $hostname | null
      *
      * @return static
      */
-    public function setHostname($hostname = null)
+    public function setHostname(?string $hostname = null): self
     {
         $this->hostname = $hostname;
 
@@ -214,17 +217,17 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getHostname()
+    public function getHostname(): ?string
     {
         return $this->hostname;
     }
 
     /**
-     * @param integer $port
+     * @param int $port | null
      *
      * @return static
      */
-    public function setPort($port = null)
+    public function setPort(?int $port = null): self
     {
         $this->port = $port;
 
@@ -232,19 +235,19 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPort()
+    public function getPort(): ?int
     {
         return $this->port;
     }
 
     /**
-     * @param integer $uriScheme
+     * @param int $uriScheme | null
      *
      * @return static
      */
-    public function setUriScheme($uriScheme = null)
+    public function setUriScheme(?int $uriScheme = null): self
     {
         $this->uriScheme = $uriScheme;
 
@@ -252,19 +255,19 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getUriScheme()
+    public function getUriScheme(): ?int
     {
         return $this->uriScheme;
     }
 
     /**
-     * @param integer $transport
+     * @param int $transport | null
      *
      * @return static
      */
-    public function setTransport($transport = null)
+    public function setTransport(?int $transport = null): self
     {
         $this->transport = $transport;
 
@@ -272,19 +275,19 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getTransport()
+    public function getTransport(): ?int
     {
         return $this->transport;
     }
 
     /**
-     * @param boolean $sendPAI
+     * @param bool $sendPAI | null
      *
      * @return static
      */
-    public function setSendPAI($sendPAI = null)
+    public function setSendPAI(?bool $sendPAI = null): self
     {
         $this->sendPAI = $sendPAI;
 
@@ -292,19 +295,19 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSendPAI()
+    public function getSendPAI(): ?bool
     {
         return $this->sendPAI;
     }
 
     /**
-     * @param boolean $sendRPID
+     * @param bool $sendRPID | null
      *
      * @return static
      */
-    public function setSendRPID($sendRPID = null)
+    public function setSendRPID(?bool $sendRPID = null): self
     {
         $this->sendRPID = $sendRPID;
 
@@ -312,19 +315,19 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSendRPID()
+    public function getSendRPID(): ?bool
     {
         return $this->sendRPID;
     }
 
     /**
-     * @param string $authNeeded
+     * @param string $authNeeded | null
      *
      * @return static
      */
-    public function setAuthNeeded($authNeeded = null)
+    public function setAuthNeeded(?string $authNeeded = null): self
     {
         $this->authNeeded = $authNeeded;
 
@@ -334,17 +337,17 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getAuthNeeded()
+    public function getAuthNeeded(): ?string
     {
         return $this->authNeeded;
     }
 
     /**
-     * @param string $authUser
+     * @param string $authUser | null
      *
      * @return static
      */
-    public function setAuthUser($authUser = null)
+    public function setAuthUser(?string $authUser = null): self
     {
         $this->authUser = $authUser;
 
@@ -354,17 +357,17 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getAuthUser()
+    public function getAuthUser(): ?string
     {
         return $this->authUser;
     }
 
     /**
-     * @param string $authPassword
+     * @param string $authPassword | null
      *
      * @return static
      */
-    public function setAuthPassword($authPassword = null)
+    public function setAuthPassword(?string $authPassword = null): self
     {
         $this->authPassword = $authPassword;
 
@@ -374,17 +377,17 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getAuthPassword()
+    public function getAuthPassword(): ?string
     {
         return $this->authPassword;
     }
 
     /**
-     * @param string $sipProxy
+     * @param string $sipProxy | null
      *
      * @return static
      */
-    public function setSipProxy($sipProxy = null)
+    public function setSipProxy(?string $sipProxy = null): self
     {
         $this->sipProxy = $sipProxy;
 
@@ -394,17 +397,17 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getSipProxy()
+    public function getSipProxy(): ?string
     {
         return $this->sipProxy;
     }
 
     /**
-     * @param string $outboundProxy
+     * @param string $outboundProxy | null
      *
      * @return static
      */
-    public function setOutboundProxy($outboundProxy = null)
+    public function setOutboundProxy(?string $outboundProxy = null): self
     {
         $this->outboundProxy = $outboundProxy;
 
@@ -414,17 +417,17 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getOutboundProxy()
+    public function getOutboundProxy(): ?string
     {
         return $this->outboundProxy;
     }
 
     /**
-     * @param string $fromUser
+     * @param string $fromUser | null
      *
      * @return static
      */
-    public function setFromUser($fromUser = null)
+    public function setFromUser(?string $fromUser = null): self
     {
         $this->fromUser = $fromUser;
 
@@ -434,17 +437,17 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getFromUser()
+    public function getFromUser(): ?string
     {
         return $this->fromUser;
     }
 
     /**
-     * @param string $fromDomain
+     * @param string $fromDomain | null
      *
      * @return static
      */
-    public function setFromDomain($fromDomain = null)
+    public function setFromDomain(?string $fromDomain = null): self
     {
         $this->fromDomain = $fromDomain;
 
@@ -454,17 +457,17 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getFromDomain()
+    public function getFromDomain(): ?string
     {
         return $this->fromDomain;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -472,65 +475,19 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto $lcrGateway
+     * @param CarrierDto | null
      *
      * @return static
      */
-    public function setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto $lcrGateway = null)
-    {
-        $this->lcrGateway = $lcrGateway;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto | null
-     */
-    public function getLcrGateway()
-    {
-        return $this->lcrGateway;
-    }
-
-    /**
-     * @param mixed | null $id
-     *
-     * @return static
-     */
-    public function setLcrGatewayId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto($id)
-            : null;
-
-        return $this->setLcrGateway($value);
-    }
-
-    /**
-     * @return mixed | null
-     */
-    public function getLcrGatewayId()
-    {
-        if ($dto = $this->getLcrGateway()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
-    /**
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
-     *
-     * @return static
-     */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
+    public function setCarrier(?CarrierDto $carrier = null): self
     {
         $this->carrier = $carrier;
 
@@ -538,22 +495,20 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @return CarrierDto | null
      */
-    public function getCarrier()
+    public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCarrierId($id)
+    public function setCarrierId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
+            ? new CarrierDto($id)
             : null;
 
         return $this->setCarrier($value);
@@ -572,11 +527,11 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -584,22 +539,20 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -616,4 +569,49 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
+    /**
+     * @param TrunksLcrGatewayDto | null
+     *
+     * @return static
+     */
+    public function setLcrGateway(?TrunksLcrGatewayDto $lcrGateway = null): self
+    {
+        $this->lcrGateway = $lcrGateway;
+
+        return $this;
+    }
+
+    /**
+     * @return TrunksLcrGatewayDto | null
+     */
+    public function getLcrGateway(): ?TrunksLcrGatewayDto
+    {
+        return $this->lcrGateway;
+    }
+
+    /**
+     * @return static
+     */
+    public function setLcrGatewayId($id): self
+    {
+        $value = !is_null($id)
+            ? new TrunksLcrGatewayDto($id)
+            : null;
+
+        return $this->setLcrGateway($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getLcrGatewayId()
+    {
+        if ($dto = $this->getLcrGateway()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
 }

@@ -4,44 +4,46 @@ namespace Ivoz\Provider\Domain\Model\BalanceMovement;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 
 /**
- * @codeCoverageIgnore
- */
+* BalanceMovementDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var float
+     * @var float | null
      */
     private $amount = 0;
 
     /**
-     * @var float
+     * @var float | null
      */
     private $balance = 0;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $createdOn = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @var CarrierDto | null
      */
     private $carrier;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -49,8 +51,8 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -68,8 +70,8 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -96,11 +98,11 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param float $amount
+     * @param float $amount | null
      *
      * @return static
      */
-    public function setAmount($amount = null)
+    public function setAmount(?float $amount = null): self
     {
         $this->amount = $amount;
 
@@ -110,17 +112,17 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getAmount()
+    public function getAmount(): ?float
     {
         return $this->amount;
     }
 
     /**
-     * @param float $balance
+     * @param float $balance | null
      *
      * @return static
      */
-    public function setBalance($balance = null)
+    public function setBalance(?float $balance = null): self
     {
         $this->balance = $balance;
 
@@ -130,17 +132,17 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getBalance()
+    public function getBalance(): ?float
     {
         return $this->balance;
     }
 
     /**
-     * @param \DateTime $createdOn
+     * @param \DateTimeInterface $createdOn | null
      *
      * @return static
      */
-    public function setCreatedOn($createdOn = null)
+    public function setCreatedOn($createdOn = null): self
     {
         $this->createdOn = $createdOn;
 
@@ -148,7 +150,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getCreatedOn()
     {
@@ -156,11 +158,11 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -168,19 +170,19 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -188,22 +190,20 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -222,11 +222,11 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
+     * @param CarrierDto | null
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
+    public function setCarrier(?CarrierDto $carrier = null): self
     {
         $this->carrier = $carrier;
 
@@ -234,22 +234,20 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @return CarrierDto | null
      */
-    public function getCarrier()
+    public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCarrierId($id)
+    public function setCarrierId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
+            ? new CarrierDto($id)
             : null;
 
         return $this->setCarrier($value);
@@ -266,4 +264,5 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }
