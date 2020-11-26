@@ -1,20 +1,20 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\UsersPua;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
- * UsersPuaTrait
- * @codeCoverageIgnore
- */
+* @codeCoverageIgnore
+*/
 trait UsersPuaTrait
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
-
 
     /**
      * Constructor
@@ -22,6 +22,7 @@ trait UsersPuaTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
+
     }
 
     abstract protected function sanitizeValues();
@@ -30,12 +31,12 @@ trait UsersPuaTrait
      * Factory method
      * @internal use EntityTools instead
      * @param UsersPuaDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
@@ -52,12 +53,12 @@ trait UsersPuaTrait
     /**
      * @internal use EntityTools instead
      * @param UsersPuaDto $dto
-     * @param \Ivoz\Core\Application\ForeignKeyTransformerInterface  $fkTransformer
+     * @param ForeignKeyTransformerInterface  $fkTransformer
      * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
 
@@ -87,4 +88,5 @@ trait UsersPuaTrait
             'id' => self::getId()
         ];
     }
+
 }
