@@ -4,49 +4,52 @@ namespace Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TrunksLcrRuleTargetDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $lcrId = 1;
 
     /**
-     * @var integer
+     * @var int
      */
     private $priority;
 
     /**
-     * @var integer
+     * @var int
      */
     private $weight = 1;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto | null
+     * @var TrunksLcrRuleDto | null
      */
     private $rule;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto | null
+     * @var TrunksLcrGatewayDto | null
      */
     private $gw;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto | null
+     * @var OutgoingRoutingDto | null
      */
     private $outgoingRouting;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -54,8 +57,8 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -74,8 +77,8 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -103,11 +106,11 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @param integer $lcrId
+     * @param int $lcrId | null
      *
      * @return static
      */
-    public function setLcrId($lcrId = null)
+    public function setLcrId(?int $lcrId = null): self
     {
         $this->lcrId = $lcrId;
 
@@ -115,19 +118,19 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getLcrId()
+    public function getLcrId(): ?int
     {
         return $this->lcrId;
     }
 
     /**
-     * @param integer $priority
+     * @param int $priority | null
      *
      * @return static
      */
-    public function setPriority($priority = null)
+    public function setPriority(?int $priority = null): self
     {
         $this->priority = $priority;
 
@@ -135,19 +138,19 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPriority()
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
 
     /**
-     * @param integer $weight
+     * @param int $weight | null
      *
      * @return static
      */
-    public function setWeight($weight = null)
+    public function setWeight(?int $weight = null): self
     {
         $this->weight = $weight;
 
@@ -155,19 +158,19 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getWeight()
+    public function getWeight(): ?int
     {
         return $this->weight;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -175,19 +178,19 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto $rule
+     * @param TrunksLcrRuleDto | null
      *
      * @return static
      */
-    public function setRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto $rule = null)
+    public function setRule(?TrunksLcrRuleDto $rule = null): self
     {
         $this->rule = $rule;
 
@@ -195,22 +198,20 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto | null
+     * @return TrunksLcrRuleDto | null
      */
-    public function getRule()
+    public function getRule(): ?TrunksLcrRuleDto
     {
         return $this->rule;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRuleId($id)
+    public function setRuleId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto($id)
+            ? new TrunksLcrRuleDto($id)
             : null;
 
         return $this->setRule($value);
@@ -229,11 +230,11 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto $gw
+     * @param TrunksLcrGatewayDto | null
      *
      * @return static
      */
-    public function setGw(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto $gw = null)
+    public function setGw(?TrunksLcrGatewayDto $gw = null): self
     {
         $this->gw = $gw;
 
@@ -241,22 +242,20 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto | null
+     * @return TrunksLcrGatewayDto | null
      */
-    public function getGw()
+    public function getGw(): ?TrunksLcrGatewayDto
     {
         return $this->gw;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setGwId($id)
+    public function setGwId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto($id)
+            ? new TrunksLcrGatewayDto($id)
             : null;
 
         return $this->setGw($value);
@@ -275,11 +274,11 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto $outgoingRouting
+     * @param OutgoingRoutingDto | null
      *
      * @return static
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto $outgoingRouting = null)
+    public function setOutgoingRouting(?OutgoingRoutingDto $outgoingRouting = null): self
     {
         $this->outgoingRouting = $outgoingRouting;
 
@@ -287,22 +286,20 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto | null
+     * @return OutgoingRoutingDto | null
      */
-    public function getOutgoingRouting()
+    public function getOutgoingRouting(): ?OutgoingRoutingDto
     {
         return $this->outgoingRouting;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setOutgoingRoutingId($id)
+    public function setOutgoingRoutingId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto($id)
+            ? new OutgoingRoutingDto($id)
             : null;
 
         return $this->setOutgoingRouting($value);
@@ -319,4 +316,5 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
 
         return null;
     }
+
 }

@@ -6,22 +6,25 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* TrunksHtableDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $keyName = '';
 
     /**
-     * @var integer
+     * @var int
      */
     private $keyType = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     private $valueType = 0;
 
@@ -31,17 +34,14 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
     private $keyValue = '';
 
     /**
-     * @var integer
+     * @var int
      */
     private $expires = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -49,8 +49,8 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -68,8 +68,8 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -96,11 +96,11 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $keyName
+     * @param string $keyName | null
      *
      * @return static
      */
-    public function setKeyName($keyName = null)
+    public function setKeyName(?string $keyName = null): self
     {
         $this->keyName = $keyName;
 
@@ -110,17 +110,17 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getKeyName()
+    public function getKeyName(): ?string
     {
         return $this->keyName;
     }
 
     /**
-     * @param integer $keyType
+     * @param int $keyType | null
      *
      * @return static
      */
-    public function setKeyType($keyType = null)
+    public function setKeyType(?int $keyType = null): self
     {
         $this->keyType = $keyType;
 
@@ -128,19 +128,19 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getKeyType()
+    public function getKeyType(): ?int
     {
         return $this->keyType;
     }
 
     /**
-     * @param integer $valueType
+     * @param int $valueType | null
      *
      * @return static
      */
-    public function setValueType($valueType = null)
+    public function setValueType(?int $valueType = null): self
     {
         $this->valueType = $valueType;
 
@@ -148,19 +148,19 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getValueType()
+    public function getValueType(): ?int
     {
         return $this->valueType;
     }
 
     /**
-     * @param string $keyValue
+     * @param string $keyValue | null
      *
      * @return static
      */
-    public function setKeyValue($keyValue = null)
+    public function setKeyValue(?string $keyValue = null): self
     {
         $this->keyValue = $keyValue;
 
@@ -170,17 +170,17 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getKeyValue()
+    public function getKeyValue(): ?string
     {
         return $this->keyValue;
     }
 
     /**
-     * @param integer $expires
+     * @param int $expires | null
      *
      * @return static
      */
-    public function setExpires($expires = null)
+    public function setExpires(?int $expires = null): self
     {
         $this->expires = $expires;
 
@@ -188,19 +188,19 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getExpires()
+    public function getExpires(): ?int
     {
         return $this->expires;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -208,10 +208,11 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
+
 }

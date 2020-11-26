@@ -6,10 +6,13 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* TrunksDomainAttrDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,7 +24,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     private $name;
 
     /**
-     * @var integer
+     * @var int
      */
     private $type;
 
@@ -31,17 +34,14 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     private $value;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $lastModified = '1900-01-01 00:00:01';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -49,8 +49,8 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -68,8 +68,8 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -96,11 +96,11 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param string $did
+     * @param string $did | null
      *
      * @return static
      */
-    public function setDid($did = null)
+    public function setDid(?string $did = null): self
     {
         $this->did = $did;
 
@@ -110,17 +110,17 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getDid()
+    public function getDid(): ?string
     {
         return $this->did;
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -130,17 +130,17 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param integer $type
+     * @param int $type | null
      *
      * @return static
      */
-    public function setType($type = null)
+    public function setType(?int $type = null): self
     {
         $this->type = $type;
 
@@ -148,19 +148,19 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getType()
+    public function getType(): ?int
     {
         return $this->type;
     }
 
     /**
-     * @param string $value
+     * @param string $value | null
      *
      * @return static
      */
-    public function setValue($value = null)
+    public function setValue(?string $value = null): self
     {
         $this->value = $value;
 
@@ -170,17 +170,17 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
     /**
-     * @param \DateTime $lastModified
+     * @param \DateTimeInterface $lastModified | null
      *
      * @return static
      */
-    public function setLastModified($lastModified = null)
+    public function setLastModified($lastModified = null): self
     {
         $this->lastModified = $lastModified;
 
@@ -188,7 +188,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getLastModified()
     {
@@ -196,11 +196,11 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -208,10 +208,11 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
+
 }

@@ -6,10 +6,13 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* UsersLocationDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,7 +24,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     private $username = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $domain;
 
@@ -31,24 +34,24 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     private $contact = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $received;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $path;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $expires = '2030-05-28 21:32:15';
 
     /**
      * @var float
      */
-    private $q = 1.0;
+    private $q = 1;
 
     /**
      * @var string
@@ -56,22 +59,22 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     private $callid = 'Default-Call-ID';
 
     /**
-     * @var integer
+     * @var int
      */
     private $cseq = 1;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $lastModified = '1900-01-01 00:00:01';
 
     /**
-     * @var integer
+     * @var int
      */
     private $flags = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     private $cflags = 0;
 
@@ -81,52 +84,49 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     private $userAgent = '';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $socket;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $methods;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $instance;
 
     /**
-     * @var integer
+     * @var int
      */
     private $regId = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     private $serverId = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     private $connectionId = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     private $keepalive = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     private $partition = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -134,8 +134,8 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -170,8 +170,8 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -215,11 +215,11 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $ruid
+     * @param string $ruid | null
      *
      * @return static
      */
-    public function setRuid($ruid = null)
+    public function setRuid(?string $ruid = null): self
     {
         $this->ruid = $ruid;
 
@@ -229,17 +229,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRuid()
+    public function getRuid(): ?string
     {
         return $this->ruid;
     }
 
     /**
-     * @param string $username
+     * @param string $username | null
      *
      * @return static
      */
-    public function setUsername($username = null)
+    public function setUsername(?string $username = null): self
     {
         $this->username = $username;
 
@@ -249,17 +249,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getUsername()
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
     /**
-     * @param string $domain
+     * @param string $domain | null
      *
      * @return static
      */
-    public function setDomain($domain = null)
+    public function setDomain(?string $domain = null): self
     {
         $this->domain = $domain;
 
@@ -269,17 +269,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDomain()
+    public function getDomain(): ?string
     {
         return $this->domain;
     }
 
     /**
-     * @param string $contact
+     * @param string $contact | null
      *
      * @return static
      */
-    public function setContact($contact = null)
+    public function setContact(?string $contact = null): self
     {
         $this->contact = $contact;
 
@@ -289,17 +289,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getContact()
+    public function getContact(): ?string
     {
         return $this->contact;
     }
 
     /**
-     * @param string $received
+     * @param string $received | null
      *
      * @return static
      */
-    public function setReceived($received = null)
+    public function setReceived(?string $received = null): self
     {
         $this->received = $received;
 
@@ -309,17 +309,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getReceived()
+    public function getReceived(): ?string
     {
         return $this->received;
     }
 
     /**
-     * @param string $path
+     * @param string $path | null
      *
      * @return static
      */
-    public function setPath($path = null)
+    public function setPath(?string $path = null): self
     {
         $this->path = $path;
 
@@ -329,17 +329,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPath()
+    public function getPath(): ?string
     {
         return $this->path;
     }
 
     /**
-     * @param \DateTime $expires
+     * @param \DateTimeInterface $expires | null
      *
      * @return static
      */
-    public function setExpires($expires = null)
+    public function setExpires($expires = null): self
     {
         $this->expires = $expires;
 
@@ -347,7 +347,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getExpires()
     {
@@ -355,11 +355,11 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param float $q
+     * @param float $q | null
      *
      * @return static
      */
-    public function setQ($q = null)
+    public function setQ(?float $q = null): self
     {
         $this->q = $q;
 
@@ -369,17 +369,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getQ()
+    public function getQ(): ?float
     {
         return $this->q;
     }
 
     /**
-     * @param string $callid
+     * @param string $callid | null
      *
      * @return static
      */
-    public function setCallid($callid = null)
+    public function setCallid(?string $callid = null): self
     {
         $this->callid = $callid;
 
@@ -389,17 +389,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCallid()
+    public function getCallid(): ?string
     {
         return $this->callid;
     }
 
     /**
-     * @param integer $cseq
+     * @param int $cseq | null
      *
      * @return static
      */
-    public function setCseq($cseq = null)
+    public function setCseq(?int $cseq = null): self
     {
         $this->cseq = $cseq;
 
@@ -407,19 +407,19 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getCseq()
+    public function getCseq(): ?int
     {
         return $this->cseq;
     }
 
     /**
-     * @param \DateTime $lastModified
+     * @param \DateTimeInterface $lastModified | null
      *
      * @return static
      */
-    public function setLastModified($lastModified = null)
+    public function setLastModified($lastModified = null): self
     {
         $this->lastModified = $lastModified;
 
@@ -427,7 +427,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getLastModified()
     {
@@ -435,11 +435,11 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $flags
+     * @param int $flags | null
      *
      * @return static
      */
-    public function setFlags($flags = null)
+    public function setFlags(?int $flags = null): self
     {
         $this->flags = $flags;
 
@@ -447,19 +447,19 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getFlags()
+    public function getFlags(): ?int
     {
         return $this->flags;
     }
 
     /**
-     * @param integer $cflags
+     * @param int $cflags | null
      *
      * @return static
      */
-    public function setCflags($cflags = null)
+    public function setCflags(?int $cflags = null): self
     {
         $this->cflags = $cflags;
 
@@ -467,19 +467,19 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getCflags()
+    public function getCflags(): ?int
     {
         return $this->cflags;
     }
 
     /**
-     * @param string $userAgent
+     * @param string $userAgent | null
      *
      * @return static
      */
-    public function setUserAgent($userAgent = null)
+    public function setUserAgent(?string $userAgent = null): self
     {
         $this->userAgent = $userAgent;
 
@@ -489,17 +489,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getUserAgent()
+    public function getUserAgent(): ?string
     {
         return $this->userAgent;
     }
 
     /**
-     * @param string $socket
+     * @param string $socket | null
      *
      * @return static
      */
-    public function setSocket($socket = null)
+    public function setSocket(?string $socket = null): self
     {
         $this->socket = $socket;
 
@@ -509,17 +509,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getSocket()
+    public function getSocket(): ?string
     {
         return $this->socket;
     }
 
     /**
-     * @param integer $methods
+     * @param int $methods | null
      *
      * @return static
      */
-    public function setMethods($methods = null)
+    public function setMethods(?int $methods = null): self
     {
         $this->methods = $methods;
 
@@ -527,19 +527,19 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getMethods()
+    public function getMethods(): ?int
     {
         return $this->methods;
     }
 
     /**
-     * @param string $instance
+     * @param string $instance | null
      *
      * @return static
      */
-    public function setInstance($instance = null)
+    public function setInstance(?string $instance = null): self
     {
         $this->instance = $instance;
 
@@ -549,17 +549,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getInstance()
+    public function getInstance(): ?string
     {
         return $this->instance;
     }
 
     /**
-     * @param integer $regId
+     * @param int $regId | null
      *
      * @return static
      */
-    public function setRegId($regId = null)
+    public function setRegId(?int $regId = null): self
     {
         $this->regId = $regId;
 
@@ -567,19 +567,19 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getRegId()
+    public function getRegId(): ?int
     {
         return $this->regId;
     }
 
     /**
-     * @param integer $serverId
+     * @param int $serverId | null
      *
      * @return static
      */
-    public function setServerId($serverId = null)
+    public function setServerId(?int $serverId = null): self
     {
         $this->serverId = $serverId;
 
@@ -587,19 +587,19 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getServerId()
+    public function getServerId(): ?int
     {
         return $this->serverId;
     }
 
     /**
-     * @param integer $connectionId
+     * @param int $connectionId | null
      *
      * @return static
      */
-    public function setConnectionId($connectionId = null)
+    public function setConnectionId(?int $connectionId = null): self
     {
         $this->connectionId = $connectionId;
 
@@ -607,19 +607,19 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getConnectionId()
+    public function getConnectionId(): ?int
     {
         return $this->connectionId;
     }
 
     /**
-     * @param integer $keepalive
+     * @param int $keepalive | null
      *
      * @return static
      */
-    public function setKeepalive($keepalive = null)
+    public function setKeepalive(?int $keepalive = null): self
     {
         $this->keepalive = $keepalive;
 
@@ -627,19 +627,19 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getKeepalive()
+    public function getKeepalive(): ?int
     {
         return $this->keepalive;
     }
 
     /**
-     * @param integer $partition
+     * @param int $partition | null
      *
      * @return static
      */
-    public function setPartition($partition = null)
+    public function setPartition(?int $partition = null): self
     {
         $this->partition = $partition;
 
@@ -647,19 +647,19 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPartition()
+    public function getPartition(): ?int
     {
         return $this->partition;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -667,10 +667,11 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
+
 }

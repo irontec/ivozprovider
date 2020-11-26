@@ -6,10 +6,13 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* UsersPresentityDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -31,17 +34,17 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     private $etag;
 
     /**
-     * @var integer
+     * @var int
      */
     private $expires;
 
     /**
-     * @var integer
+     * @var int
      */
     private $receivedTime;
 
     /**
-     * @var string
+     * @var 
      */
     private $body;
 
@@ -51,17 +54,14 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     private $sender;
 
     /**
-     * @var integer
+     * @var int
      */
     private $priority = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -69,8 +69,8 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -92,8 +92,8 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -124,11 +124,11 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $username
+     * @param string $username | null
      *
      * @return static
      */
-    public function setUsername($username = null)
+    public function setUsername(?string $username = null): self
     {
         $this->username = $username;
 
@@ -138,17 +138,17 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getUsername()
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
     /**
-     * @param string $domain
+     * @param string $domain | null
      *
      * @return static
      */
-    public function setDomain($domain = null)
+    public function setDomain(?string $domain = null): self
     {
         $this->domain = $domain;
 
@@ -158,17 +158,17 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDomain()
+    public function getDomain(): ?string
     {
         return $this->domain;
     }
 
     /**
-     * @param string $event
+     * @param string $event | null
      *
      * @return static
      */
-    public function setEvent($event = null)
+    public function setEvent(?string $event = null): self
     {
         $this->event = $event;
 
@@ -178,17 +178,17 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEvent()
+    public function getEvent(): ?string
     {
         return $this->event;
     }
 
     /**
-     * @param string $etag
+     * @param string $etag | null
      *
      * @return static
      */
-    public function setEtag($etag = null)
+    public function setEtag(?string $etag = null): self
     {
         $this->etag = $etag;
 
@@ -198,17 +198,17 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEtag()
+    public function getEtag(): ?string
     {
         return $this->etag;
     }
 
     /**
-     * @param integer $expires
+     * @param int $expires | null
      *
      * @return static
      */
-    public function setExpires($expires = null)
+    public function setExpires(?int $expires = null): self
     {
         $this->expires = $expires;
 
@@ -216,19 +216,19 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getExpires()
+    public function getExpires(): ?int
     {
         return $this->expires;
     }
 
     /**
-     * @param integer $receivedTime
+     * @param int $receivedTime | null
      *
      * @return static
      */
-    public function setReceivedTime($receivedTime = null)
+    public function setReceivedTime(?int $receivedTime = null): self
     {
         $this->receivedTime = $receivedTime;
 
@@ -236,19 +236,19 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getReceivedTime()
+    public function getReceivedTime(): ?int
     {
         return $this->receivedTime;
     }
 
     /**
-     * @param string $body
+     * @param  $body | null
      *
      * @return static
      */
-    public function setBody($body = null)
+    public function setBody(? $body = null): self
     {
         $this->body = $body;
 
@@ -256,7 +256,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string | null
+     * @return  | null
      */
     public function getBody()
     {
@@ -264,11 +264,11 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $sender
+     * @param string $sender | null
      *
      * @return static
      */
-    public function setSender($sender = null)
+    public function setSender(?string $sender = null): self
     {
         $this->sender = $sender;
 
@@ -278,17 +278,17 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getSender()
+    public function getSender(): ?string
     {
         return $this->sender;
     }
 
     /**
-     * @param integer $priority
+     * @param int $priority | null
      *
      * @return static
      */
-    public function setPriority($priority = null)
+    public function setPriority(?int $priority = null): self
     {
         $this->priority = $priority;
 
@@ -296,19 +296,19 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPriority()
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -316,10 +316,11 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
+
 }

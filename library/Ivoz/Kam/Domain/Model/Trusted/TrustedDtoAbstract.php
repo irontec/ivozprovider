@@ -4,59 +4,60 @@ namespace Ivoz\Kam\Domain\Model\Trusted;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TrustedDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrustedDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var string
+     * @var string | null
      */
     private $srcIp;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $proto;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $fromPattern;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $ruriPattern;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $tag;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $description;
 
     /**
-     * @var integer
+     * @var int
      */
     private $priority = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -64,8 +65,8 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -86,8 +87,8 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -117,11 +118,11 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $srcIp
+     * @param string $srcIp | null
      *
      * @return static
      */
-    public function setSrcIp($srcIp = null)
+    public function setSrcIp(?string $srcIp = null): self
     {
         $this->srcIp = $srcIp;
 
@@ -131,17 +132,17 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getSrcIp()
+    public function getSrcIp(): ?string
     {
         return $this->srcIp;
     }
 
     /**
-     * @param string $proto
+     * @param string $proto | null
      *
      * @return static
      */
-    public function setProto($proto = null)
+    public function setProto(?string $proto = null): self
     {
         $this->proto = $proto;
 
@@ -151,17 +152,17 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getProto()
+    public function getProto(): ?string
     {
         return $this->proto;
     }
 
     /**
-     * @param string $fromPattern
+     * @param string $fromPattern | null
      *
      * @return static
      */
-    public function setFromPattern($fromPattern = null)
+    public function setFromPattern(?string $fromPattern = null): self
     {
         $this->fromPattern = $fromPattern;
 
@@ -171,17 +172,17 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getFromPattern()
+    public function getFromPattern(): ?string
     {
         return $this->fromPattern;
     }
 
     /**
-     * @param string $ruriPattern
+     * @param string $ruriPattern | null
      *
      * @return static
      */
-    public function setRuriPattern($ruriPattern = null)
+    public function setRuriPattern(?string $ruriPattern = null): self
     {
         $this->ruriPattern = $ruriPattern;
 
@@ -191,17 +192,17 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRuriPattern()
+    public function getRuriPattern(): ?string
     {
         return $this->ruriPattern;
     }
 
     /**
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
-    public function setTag($tag = null)
+    public function setTag(?string $tag = null): self
     {
         $this->tag = $tag;
 
@@ -211,17 +212,17 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
 
     /**
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
-    public function setDescription($description = null)
+    public function setDescription(?string $description = null): self
     {
         $this->description = $description;
 
@@ -231,17 +232,17 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param integer $priority
+     * @param int $priority | null
      *
      * @return static
      */
-    public function setPriority($priority = null)
+    public function setPriority(?int $priority = null): self
     {
         $this->priority = $priority;
 
@@ -249,19 +250,19 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPriority()
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -269,19 +270,19 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -289,22 +290,20 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -321,4 +320,5 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

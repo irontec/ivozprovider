@@ -6,10 +6,13 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* UsersWatcherDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -31,27 +34,24 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     private $event = 'presence';
 
     /**
-     * @var integer
+     * @var int
      */
     private $status;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $reason;
 
     /**
-     * @var integer
+     * @var int
      */
     private $insertedTime;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -59,8 +59,8 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -80,8 +80,8 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -110,11 +110,11 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $presentityUri
+     * @param string $presentityUri | null
      *
      * @return static
      */
-    public function setPresentityUri($presentityUri = null)
+    public function setPresentityUri(?string $presentityUri = null): self
     {
         $this->presentityUri = $presentityUri;
 
@@ -124,17 +124,17 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPresentityUri()
+    public function getPresentityUri(): ?string
     {
         return $this->presentityUri;
     }
 
     /**
-     * @param string $watcherUsername
+     * @param string $watcherUsername | null
      *
      * @return static
      */
-    public function setWatcherUsername($watcherUsername = null)
+    public function setWatcherUsername(?string $watcherUsername = null): self
     {
         $this->watcherUsername = $watcherUsername;
 
@@ -144,17 +144,17 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getWatcherUsername()
+    public function getWatcherUsername(): ?string
     {
         return $this->watcherUsername;
     }
 
     /**
-     * @param string $watcherDomain
+     * @param string $watcherDomain | null
      *
      * @return static
      */
-    public function setWatcherDomain($watcherDomain = null)
+    public function setWatcherDomain(?string $watcherDomain = null): self
     {
         $this->watcherDomain = $watcherDomain;
 
@@ -164,17 +164,17 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getWatcherDomain()
+    public function getWatcherDomain(): ?string
     {
         return $this->watcherDomain;
     }
 
     /**
-     * @param string $event
+     * @param string $event | null
      *
      * @return static
      */
-    public function setEvent($event = null)
+    public function setEvent(?string $event = null): self
     {
         $this->event = $event;
 
@@ -184,17 +184,17 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEvent()
+    public function getEvent(): ?string
     {
         return $this->event;
     }
 
     /**
-     * @param integer $status
+     * @param int $status | null
      *
      * @return static
      */
-    public function setStatus($status = null)
+    public function setStatus(?int $status = null): self
     {
         $this->status = $status;
 
@@ -202,19 +202,19 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getStatus()
+    public function getStatus(): ?int
     {
         return $this->status;
     }
 
     /**
-     * @param string $reason
+     * @param string $reason | null
      *
      * @return static
      */
-    public function setReason($reason = null)
+    public function setReason(?string $reason = null): self
     {
         $this->reason = $reason;
 
@@ -224,17 +224,17 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getReason()
+    public function getReason(): ?string
     {
         return $this->reason;
     }
 
     /**
-     * @param integer $insertedTime
+     * @param int $insertedTime | null
      *
      * @return static
      */
-    public function setInsertedTime($insertedTime = null)
+    public function setInsertedTime(?int $insertedTime = null): self
     {
         $this->insertedTime = $insertedTime;
 
@@ -242,19 +242,19 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getInsertedTime()
+    public function getInsertedTime(): ?int
     {
         return $this->insertedTime;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -262,10 +262,11 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
+
 }

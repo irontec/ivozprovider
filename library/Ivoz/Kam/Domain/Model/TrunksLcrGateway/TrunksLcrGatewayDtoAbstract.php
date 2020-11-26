@@ -4,14 +4,18 @@ namespace Ivoz\Kam\Domain\Model\TrunksLcrGateway;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TrunksLcrGatewayDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $lcrId = 1;
 
@@ -21,67 +25,64 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     private $gwName;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $ip;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $hostname;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $port;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $params;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $uriScheme;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $transport;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $strip;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $prefix;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $tag;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $defunct;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto | null
+     * @var CarrierServerDto | null
      */
     private $carrierServer;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -89,8 +90,8 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -116,8 +117,8 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -152,11 +153,11 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param integer $lcrId
+     * @param int $lcrId | null
      *
      * @return static
      */
-    public function setLcrId($lcrId = null)
+    public function setLcrId(?int $lcrId = null): self
     {
         $this->lcrId = $lcrId;
 
@@ -164,19 +165,19 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getLcrId()
+    public function getLcrId(): ?int
     {
         return $this->lcrId;
     }
 
     /**
-     * @param string $gwName
+     * @param string $gwName | null
      *
      * @return static
      */
-    public function setGwName($gwName = null)
+    public function setGwName(?string $gwName = null): self
     {
         $this->gwName = $gwName;
 
@@ -186,17 +187,17 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getGwName()
+    public function getGwName(): ?string
     {
         return $this->gwName;
     }
 
     /**
-     * @param string $ip
+     * @param string $ip | null
      *
      * @return static
      */
-    public function setIp($ip = null)
+    public function setIp(?string $ip = null): self
     {
         $this->ip = $ip;
 
@@ -206,17 +207,17 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
 
     /**
-     * @param string $hostname
+     * @param string $hostname | null
      *
      * @return static
      */
-    public function setHostname($hostname = null)
+    public function setHostname(?string $hostname = null): self
     {
         $this->hostname = $hostname;
 
@@ -226,17 +227,17 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getHostname()
+    public function getHostname(): ?string
     {
         return $this->hostname;
     }
 
     /**
-     * @param integer $port
+     * @param int $port | null
      *
      * @return static
      */
-    public function setPort($port = null)
+    public function setPort(?int $port = null): self
     {
         $this->port = $port;
 
@@ -244,19 +245,19 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPort()
+    public function getPort(): ?int
     {
         return $this->port;
     }
 
     /**
-     * @param string $params
+     * @param string $params | null
      *
      * @return static
      */
-    public function setParams($params = null)
+    public function setParams(?string $params = null): self
     {
         $this->params = $params;
 
@@ -266,17 +267,17 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getParams()
+    public function getParams(): ?string
     {
         return $this->params;
     }
 
     /**
-     * @param integer $uriScheme
+     * @param int $uriScheme | null
      *
      * @return static
      */
-    public function setUriScheme($uriScheme = null)
+    public function setUriScheme(?int $uriScheme = null): self
     {
         $this->uriScheme = $uriScheme;
 
@@ -284,19 +285,19 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getUriScheme()
+    public function getUriScheme(): ?int
     {
         return $this->uriScheme;
     }
 
     /**
-     * @param integer $transport
+     * @param int $transport | null
      *
      * @return static
      */
-    public function setTransport($transport = null)
+    public function setTransport(?int $transport = null): self
     {
         $this->transport = $transport;
 
@@ -304,19 +305,19 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getTransport()
+    public function getTransport(): ?int
     {
         return $this->transport;
     }
 
     /**
-     * @param boolean $strip
+     * @param bool $strip | null
      *
      * @return static
      */
-    public function setStrip($strip = null)
+    public function setStrip(?bool $strip = null): self
     {
         $this->strip = $strip;
 
@@ -324,19 +325,19 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getStrip()
+    public function getStrip(): ?bool
     {
         return $this->strip;
     }
 
     /**
-     * @param string $prefix
+     * @param string $prefix | null
      *
      * @return static
      */
-    public function setPrefix($prefix = null)
+    public function setPrefix(?string $prefix = null): self
     {
         $this->prefix = $prefix;
 
@@ -346,17 +347,17 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getPrefix()
+    public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
     /**
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
-    public function setTag($tag = null)
+    public function setTag(?string $tag = null): self
     {
         $this->tag = $tag;
 
@@ -366,17 +367,17 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
 
     /**
-     * @param integer $defunct
+     * @param int $defunct | null
      *
      * @return static
      */
-    public function setDefunct($defunct = null)
+    public function setDefunct(?int $defunct = null): self
     {
         $this->defunct = $defunct;
 
@@ -384,19 +385,19 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getDefunct()
+    public function getDefunct(): ?int
     {
         return $this->defunct;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -404,19 +405,19 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto $carrierServer
+     * @param CarrierServerDto | null
      *
      * @return static
      */
-    public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto $carrierServer = null)
+    public function setCarrierServer(?CarrierServerDto $carrierServer = null): self
     {
         $this->carrierServer = $carrierServer;
 
@@ -424,22 +425,20 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto | null
+     * @return CarrierServerDto | null
      */
-    public function getCarrierServer()
+    public function getCarrierServer(): ?CarrierServerDto
     {
         return $this->carrierServer;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCarrierServerId($id)
+    public function setCarrierServerId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto($id)
+            ? new CarrierServerDto($id)
             : null;
 
         return $this->setCarrierServer($value);
@@ -456,4 +455,5 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
 
         return null;
     }
+
 }

@@ -4,14 +4,18 @@ namespace Ivoz\Kam\Domain\Model\Rtpengine;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto;
 
 /**
- * @codeCoverageIgnore
- */
+* RtpengineDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $setid = 0;
 
@@ -21,37 +25,34 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     private $url;
 
     /**
-     * @var integer
+     * @var int
      */
     private $weight = 1;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $disabled = false;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $stamp = '2000-01-01 00:00:00';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $description;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto | null
+     * @var MediaRelaySetDto | null
      */
     private $mediaRelaySet;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -59,8 +60,8 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -80,8 +81,8 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -110,11 +111,11 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $setid
+     * @param int $setid | null
      *
      * @return static
      */
-    public function setSetid($setid = null)
+    public function setSetid(?int $setid = null): self
     {
         $this->setid = $setid;
 
@@ -122,19 +123,19 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getSetid()
+    public function getSetid(): ?int
     {
         return $this->setid;
     }
 
     /**
-     * @param string $url
+     * @param string $url | null
      *
      * @return static
      */
-    public function setUrl($url = null)
+    public function setUrl(?string $url = null): self
     {
         $this->url = $url;
 
@@ -144,17 +145,17 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
     /**
-     * @param integer $weight
+     * @param int $weight | null
      *
      * @return static
      */
-    public function setWeight($weight = null)
+    public function setWeight(?int $weight = null): self
     {
         $this->weight = $weight;
 
@@ -162,19 +163,19 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getWeight()
+    public function getWeight(): ?int
     {
         return $this->weight;
     }
 
     /**
-     * @param boolean $disabled
+     * @param bool $disabled | null
      *
      * @return static
      */
-    public function setDisabled($disabled = null)
+    public function setDisabled(?bool $disabled = null): self
     {
         $this->disabled = $disabled;
 
@@ -182,19 +183,19 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getDisabled()
+    public function getDisabled(): ?bool
     {
         return $this->disabled;
     }
 
     /**
-     * @param \DateTime $stamp
+     * @param \DateTimeInterface $stamp | null
      *
      * @return static
      */
-    public function setStamp($stamp = null)
+    public function setStamp($stamp = null): self
     {
         $this->stamp = $stamp;
 
@@ -202,7 +203,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getStamp()
     {
@@ -210,11 +211,11 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $description
+     * @param string $description | null
      *
      * @return static
      */
-    public function setDescription($description = null)
+    public function setDescription(?string $description = null): self
     {
         $this->description = $description;
 
@@ -224,17 +225,17 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -242,19 +243,19 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto $mediaRelaySet
+     * @param MediaRelaySetDto | null
      *
      * @return static
      */
-    public function setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto $mediaRelaySet = null)
+    public function setMediaRelaySet(?MediaRelaySetDto $mediaRelaySet = null): self
     {
         $this->mediaRelaySet = $mediaRelaySet;
 
@@ -262,22 +263,20 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto | null
+     * @return MediaRelaySetDto | null
      */
-    public function getMediaRelaySet()
+    public function getMediaRelaySet(): ?MediaRelaySetDto
     {
         return $this->mediaRelaySet;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setMediaRelaySetId($id)
+    public function setMediaRelaySetId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto($id)
+            ? new MediaRelaySetDto($id)
             : null;
 
         return $this->setMediaRelaySet($value);
@@ -294,4 +293,5 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

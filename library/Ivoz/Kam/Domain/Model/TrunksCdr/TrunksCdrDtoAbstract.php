@@ -4,139 +4,149 @@ namespace Ivoz\Kam\Domain\Model\TrunksCdr;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
+use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Friend\FriendDto;
+use Ivoz\Provider\Domain\Model\Fax\FaxDto;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TrunksCdrDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $startTime = '2000-01-01 00:00:00';
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $endTime = '2000-01-01 00:00:00';
 
     /**
      * @var float
      */
-    private $duration = 0.0;
+    private $duration = 0;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $caller;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $callee;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $callid;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $callidHash;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $xcallid;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $diversion;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $bounced;
 
     /**
-     * @var boolean
+     * @var bool | null
      */
     private $parsed = false;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface
      */
     private $parserScheduledAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $direction;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $cgrid;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @var BrandDto | null
      */
     private $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var CompanyDto | null
      */
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @var CarrierDto | null
      */
     private $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
+     * @var RetailAccountDto | null
      */
     private $retailAccount;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
+     * @var ResidentialDeviceDto | null
      */
     private $residentialDevice;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @var UserDto | null
      */
     private $user;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Friend\FriendDto | null
+     * @var FriendDto | null
      */
     private $friend;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Fax\FaxDto | null
+     * @var FaxDto | null
      */
     private $fax;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     * @var DdiDto | null
      */
     private $ddi;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     * @var DdiProviderDto | null
      */
     private $ddiProvider;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -144,8 +154,8 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -182,8 +192,8 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -229,11 +239,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \DateTime $startTime
+     * @param \DateTimeInterface $startTime | null
      *
      * @return static
      */
-    public function setStartTime($startTime = null)
+    public function setStartTime($startTime = null): self
     {
         $this->startTime = $startTime;
 
@@ -241,7 +251,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getStartTime()
     {
@@ -249,11 +259,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \DateTime $endTime
+     * @param \DateTimeInterface $endTime | null
      *
      * @return static
      */
-    public function setEndTime($endTime = null)
+    public function setEndTime($endTime = null): self
     {
         $this->endTime = $endTime;
 
@@ -261,7 +271,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getEndTime()
     {
@@ -269,11 +279,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param float $duration
+     * @param float $duration | null
      *
      * @return static
      */
-    public function setDuration($duration = null)
+    public function setDuration(?float $duration = null): self
     {
         $this->duration = $duration;
 
@@ -283,17 +293,17 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getDuration()
+    public function getDuration(): ?float
     {
         return $this->duration;
     }
 
     /**
-     * @param string $caller
+     * @param string $caller | null
      *
      * @return static
      */
-    public function setCaller($caller = null)
+    public function setCaller(?string $caller = null): self
     {
         $this->caller = $caller;
 
@@ -303,17 +313,17 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCaller()
+    public function getCaller(): ?string
     {
         return $this->caller;
     }
 
     /**
-     * @param string $callee
+     * @param string $callee | null
      *
      * @return static
      */
-    public function setCallee($callee = null)
+    public function setCallee(?string $callee = null): self
     {
         $this->callee = $callee;
 
@@ -323,17 +333,17 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCallee()
+    public function getCallee(): ?string
     {
         return $this->callee;
     }
 
     /**
-     * @param string $callid
+     * @param string $callid | null
      *
      * @return static
      */
-    public function setCallid($callid = null)
+    public function setCallid(?string $callid = null): self
     {
         $this->callid = $callid;
 
@@ -343,17 +353,17 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCallid()
+    public function getCallid(): ?string
     {
         return $this->callid;
     }
 
     /**
-     * @param string $callidHash
+     * @param string $callidHash | null
      *
      * @return static
      */
-    public function setCallidHash($callidHash = null)
+    public function setCallidHash(?string $callidHash = null): self
     {
         $this->callidHash = $callidHash;
 
@@ -363,17 +373,17 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCallidHash()
+    public function getCallidHash(): ?string
     {
         return $this->callidHash;
     }
 
     /**
-     * @param string $xcallid
+     * @param string $xcallid | null
      *
      * @return static
      */
-    public function setXcallid($xcallid = null)
+    public function setXcallid(?string $xcallid = null): self
     {
         $this->xcallid = $xcallid;
 
@@ -383,17 +393,17 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getXcallid()
+    public function getXcallid(): ?string
     {
         return $this->xcallid;
     }
 
     /**
-     * @param string $diversion
+     * @param string $diversion | null
      *
      * @return static
      */
-    public function setDiversion($diversion = null)
+    public function setDiversion(?string $diversion = null): self
     {
         $this->diversion = $diversion;
 
@@ -403,17 +413,17 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDiversion()
+    public function getDiversion(): ?string
     {
         return $this->diversion;
     }
 
     /**
-     * @param boolean $bounced
+     * @param bool $bounced | null
      *
      * @return static
      */
-    public function setBounced($bounced = null)
+    public function setBounced(?bool $bounced = null): self
     {
         $this->bounced = $bounced;
 
@@ -421,19 +431,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getBounced()
+    public function getBounced(): ?bool
     {
         return $this->bounced;
     }
 
     /**
-     * @param boolean $parsed
+     * @param bool $parsed | null
      *
      * @return static
      */
-    public function setParsed($parsed = null)
+    public function setParsed(?bool $parsed = null): self
     {
         $this->parsed = $parsed;
 
@@ -441,19 +451,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getParsed()
+    public function getParsed(): ?bool
     {
         return $this->parsed;
     }
 
     /**
-     * @param \DateTime $parserScheduledAt
+     * @param \DateTimeInterface $parserScheduledAt | null
      *
      * @return static
      */
-    public function setParserScheduledAt($parserScheduledAt = null)
+    public function setParserScheduledAt($parserScheduledAt = null): self
     {
         $this->parserScheduledAt = $parserScheduledAt;
 
@@ -461,7 +471,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getParserScheduledAt()
     {
@@ -469,11 +479,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $direction
+     * @param string $direction | null
      *
      * @return static
      */
-    public function setDirection($direction = null)
+    public function setDirection(?string $direction = null): self
     {
         $this->direction = $direction;
 
@@ -483,17 +493,17 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDirection()
+    public function getDirection(): ?string
     {
         return $this->direction;
     }
 
     /**
-     * @param string $cgrid
+     * @param string $cgrid | null
      *
      * @return static
      */
-    public function setCgrid($cgrid = null)
+    public function setCgrid(?string $cgrid = null): self
     {
         $this->cgrid = $cgrid;
 
@@ -503,17 +513,17 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCgrid()
+    public function getCgrid(): ?string
     {
         return $this->cgrid;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -521,19 +531,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     * @param BrandDto | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    public function setBrand(?BrandDto $brand = null): self
     {
         $this->brand = $brand;
 
@@ -541,22 +551,20 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     * @return BrandDto | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setBrandId($id)
+    public function setBrandId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new BrandDto($id)
             : null;
 
         return $this->setBrand($value);
@@ -575,11 +583,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param CompanyDto | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setCompany(?CompanyDto $company = null): self
     {
         $this->company = $company;
 
@@ -587,22 +595,20 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @return CompanyDto | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setCompanyId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new CompanyDto($id)
             : null;
 
         return $this->setCompany($value);
@@ -621,11 +627,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
+     * @param CarrierDto | null
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
+    public function setCarrier(?CarrierDto $carrier = null): self
     {
         $this->carrier = $carrier;
 
@@ -633,22 +639,20 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     * @return CarrierDto | null
      */
-    public function getCarrier()
+    public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setCarrierId($id)
+    public function setCarrierId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
+            ? new CarrierDto($id)
             : null;
 
         return $this->setCarrier($value);
@@ -667,11 +671,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount
+     * @param RetailAccountDto | null
      *
      * @return static
      */
-    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount = null)
+    public function setRetailAccount(?RetailAccountDto $retailAccount = null): self
     {
         $this->retailAccount = $retailAccount;
 
@@ -679,22 +683,20 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
+     * @return RetailAccountDto | null
      */
-    public function getRetailAccount()
+    public function getRetailAccount(): ?RetailAccountDto
     {
         return $this->retailAccount;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setRetailAccountId($id)
+    public function setRetailAccountId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto($id)
+            ? new RetailAccountDto($id)
             : null;
 
         return $this->setRetailAccount($value);
@@ -713,11 +715,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice
+     * @param ResidentialDeviceDto | null
      *
      * @return static
      */
-    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice = null)
+    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice = null): self
     {
         $this->residentialDevice = $residentialDevice;
 
@@ -725,22 +727,20 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
+     * @return ResidentialDeviceDto | null
      */
-    public function getResidentialDevice()
+    public function getResidentialDevice(): ?ResidentialDeviceDto
     {
         return $this->residentialDevice;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setResidentialDeviceId($id)
+    public function setResidentialDeviceId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto($id)
+            ? new ResidentialDeviceDto($id)
             : null;
 
         return $this->setResidentialDevice($value);
@@ -759,11 +759,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\User\UserDto $user
+     * @param UserDto | null
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserDto $user = null)
+    public function setUser(?UserDto $user = null): self
     {
         $this->user = $user;
 
@@ -771,22 +771,20 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @return UserDto | null
      */
-    public function getUser()
+    public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setUserId($id)
+    public function setUserId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            ? new UserDto($id)
             : null;
 
         return $this->setUser($value);
@@ -805,11 +803,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendDto $friend
+     * @param FriendDto | null
      *
      * @return static
      */
-    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendDto $friend = null)
+    public function setFriend(?FriendDto $friend = null): self
     {
         $this->friend = $friend;
 
@@ -817,22 +815,20 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendDto | null
+     * @return FriendDto | null
      */
-    public function getFriend()
+    public function getFriend(): ?FriendDto
     {
         return $this->friend;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setFriendId($id)
+    public function setFriendId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Friend\FriendDto($id)
+            ? new FriendDto($id)
             : null;
 
         return $this->setFriend($value);
@@ -851,11 +847,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Fax\FaxDto $fax
+     * @param FaxDto | null
      *
      * @return static
      */
-    public function setFax(\Ivoz\Provider\Domain\Model\Fax\FaxDto $fax = null)
+    public function setFax(?FaxDto $fax = null): self
     {
         $this->fax = $fax;
 
@@ -863,22 +859,20 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Fax\FaxDto | null
+     * @return FaxDto | null
      */
-    public function getFax()
+    public function getFax(): ?FaxDto
     {
         return $this->fax;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setFaxId($id)
+    public function setFaxId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Fax\FaxDto($id)
+            ? new FaxDto($id)
             : null;
 
         return $this->setFax($value);
@@ -897,11 +891,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi
+     * @param DdiDto | null
      *
      * @return static
      */
-    public function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi = null)
+    public function setDdi(?DdiDto $ddi = null): self
     {
         $this->ddi = $ddi;
 
@@ -909,22 +903,20 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     * @return DdiDto | null
      */
-    public function getDdi()
+    public function getDdi(): ?DdiDto
     {
         return $this->ddi;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDdiId($id)
+    public function setDdiId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            ? new DdiDto($id)
             : null;
 
         return $this->setDdi($value);
@@ -943,11 +935,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider
+     * @param DdiProviderDto | null
      *
      * @return static
      */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider = null)
+    public function setDdiProvider(?DdiProviderDto $ddiProvider = null): self
     {
         $this->ddiProvider = $ddiProvider;
 
@@ -955,22 +947,20 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     * @return DdiProviderDto | null
      */
-    public function getDdiProvider()
+    public function getDdiProvider(): ?DdiProviderDto
     {
         return $this->ddiProvider;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDdiProviderId($id)
+    public function setDdiProviderId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto($id)
+            ? new DdiProviderDto($id)
             : null;
 
         return $this->setDdiProvider($value);
@@ -987,4 +977,5 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

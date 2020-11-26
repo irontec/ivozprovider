@@ -4,49 +4,50 @@ namespace Ivoz\Kam\Domain\Model\TrunksAddress;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto;
 
 /**
- * @codeCoverageIgnore
- */
+* TrunksAddressDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
-     * @var integer
+     * @var int
      */
     private $grp = 1;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $ipAddr;
 
     /**
-     * @var integer
+     * @var int
      */
     private $mask = 32;
 
     /**
-     * @var integer
+     * @var int
      */
     private $port = 0;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $tag;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto | null
+     * @var DdiProviderAddressDto | null
      */
     private $ddiProviderAddress;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -54,8 +55,8 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -74,8 +75,8 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -103,11 +104,11 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $grp
+     * @param int $grp | null
      *
      * @return static
      */
-    public function setGrp($grp = null)
+    public function setGrp(?int $grp = null): self
     {
         $this->grp = $grp;
 
@@ -115,19 +116,19 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getGrp()
+    public function getGrp(): ?int
     {
         return $this->grp;
     }
 
     /**
-     * @param string $ipAddr
+     * @param string $ipAddr | null
      *
      * @return static
      */
-    public function setIpAddr($ipAddr = null)
+    public function setIpAddr(?string $ipAddr = null): self
     {
         $this->ipAddr = $ipAddr;
 
@@ -137,17 +138,17 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getIpAddr()
+    public function getIpAddr(): ?string
     {
         return $this->ipAddr;
     }
 
     /**
-     * @param integer $mask
+     * @param int $mask | null
      *
      * @return static
      */
-    public function setMask($mask = null)
+    public function setMask(?int $mask = null): self
     {
         $this->mask = $mask;
 
@@ -155,19 +156,19 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getMask()
+    public function getMask(): ?int
     {
         return $this->mask;
     }
 
     /**
-     * @param integer $port
+     * @param int $port | null
      *
      * @return static
      */
-    public function setPort($port = null)
+    public function setPort(?int $port = null): self
     {
         $this->port = $port;
 
@@ -175,19 +176,19 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPort()
+    public function getPort(): ?int
     {
         return $this->port;
     }
 
     /**
-     * @param string $tag
+     * @param string $tag | null
      *
      * @return static
      */
-    public function setTag($tag = null)
+    public function setTag(?string $tag = null): self
     {
         $this->tag = $tag;
 
@@ -197,17 +198,17 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -215,19 +216,19 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto $ddiProviderAddress
+     * @param DdiProviderAddressDto | null
      *
      * @return static
      */
-    public function setDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto $ddiProviderAddress = null)
+    public function setDdiProviderAddress(?DdiProviderAddressDto $ddiProviderAddress = null): self
     {
         $this->ddiProviderAddress = $ddiProviderAddress;
 
@@ -235,22 +236,20 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto | null
+     * @return DdiProviderAddressDto | null
      */
-    public function getDdiProviderAddress()
+    public function getDdiProviderAddress(): ?DdiProviderAddressDto
     {
         return $this->ddiProviderAddress;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setDdiProviderAddressId($id)
+    public function setDdiProviderAddressId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto($id)
+            ? new DdiProviderAddressDto($id)
             : null;
 
         return $this->setDdiProviderAddress($value);
@@ -267,4 +266,5 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

@@ -6,10 +6,13 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* UsersXcapDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,12 +24,12 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     private $domain;
 
     /**
-     * @var string
+     * @var 
      */
     private $doc;
 
     /**
-     * @var integer
+     * @var int
      */
     private $docType;
 
@@ -36,7 +39,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     private $etag;
 
     /**
-     * @var integer
+     * @var int
      */
     private $source;
 
@@ -46,17 +49,14 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     private $docUri;
 
     /**
-     * @var integer
+     * @var int
      */
     private $port;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -64,8 +64,8 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -86,8 +86,8 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -117,11 +117,11 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $username
+     * @param string $username | null
      *
      * @return static
      */
-    public function setUsername($username = null)
+    public function setUsername(?string $username = null): self
     {
         $this->username = $username;
 
@@ -131,17 +131,17 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getUsername()
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
     /**
-     * @param string $domain
+     * @param string $domain | null
      *
      * @return static
      */
-    public function setDomain($domain = null)
+    public function setDomain(?string $domain = null): self
     {
         $this->domain = $domain;
 
@@ -151,17 +151,17 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDomain()
+    public function getDomain(): ?string
     {
         return $this->domain;
     }
 
     /**
-     * @param string $doc
+     * @param  $doc | null
      *
      * @return static
      */
-    public function setDoc($doc = null)
+    public function setDoc(? $doc = null): self
     {
         $this->doc = $doc;
 
@@ -169,7 +169,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string | null
+     * @return  | null
      */
     public function getDoc()
     {
@@ -177,11 +177,11 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $docType
+     * @param int $docType | null
      *
      * @return static
      */
-    public function setDocType($docType = null)
+    public function setDocType(?int $docType = null): self
     {
         $this->docType = $docType;
 
@@ -189,19 +189,19 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getDocType()
+    public function getDocType(): ?int
     {
         return $this->docType;
     }
 
     /**
-     * @param string $etag
+     * @param string $etag | null
      *
      * @return static
      */
-    public function setEtag($etag = null)
+    public function setEtag(?string $etag = null): self
     {
         $this->etag = $etag;
 
@@ -211,17 +211,17 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEtag()
+    public function getEtag(): ?string
     {
         return $this->etag;
     }
 
     /**
-     * @param integer $source
+     * @param int $source | null
      *
      * @return static
      */
-    public function setSource($source = null)
+    public function setSource(?int $source = null): self
     {
         $this->source = $source;
 
@@ -229,19 +229,19 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getSource()
+    public function getSource(): ?int
     {
         return $this->source;
     }
 
     /**
-     * @param string $docUri
+     * @param string $docUri | null
      *
      * @return static
      */
-    public function setDocUri($docUri = null)
+    public function setDocUri(?string $docUri = null): self
     {
         $this->docUri = $docUri;
 
@@ -251,17 +251,17 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDocUri()
+    public function getDocUri(): ?string
     {
         return $this->docUri;
     }
 
     /**
-     * @param integer $port
+     * @param int $port | null
      *
      * @return static
      */
-    public function setPort($port = null)
+    public function setPort(?int $port = null): self
     {
         $this->port = $port;
 
@@ -269,19 +269,19 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPort()
+    public function getPort(): ?int
     {
         return $this->port;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -289,10 +289,11 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
+
 }

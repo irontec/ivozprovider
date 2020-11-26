@@ -6,10 +6,13 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 
 /**
- * @codeCoverageIgnore
- */
+* UsersActiveWatcherDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -41,7 +44,7 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     private $event = 'presence';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $eventId;
 
@@ -61,12 +64,12 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     private $callid;
 
     /**
-     * @var integer
+     * @var int
      */
     private $localCseq;
 
     /**
-     * @var integer
+     * @var int
      */
     private $remoteCseq;
 
@@ -76,27 +79,27 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     private $contact;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $recordRoute;
 
     /**
-     * @var integer
+     * @var int
      */
     private $expires;
 
     /**
-     * @var integer
+     * @var int
      */
     private $status = 2;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $reason;
 
     /**
-     * @var integer
+     * @var int
      */
     private $version = 0;
 
@@ -121,17 +124,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     private $fromDomain;
 
     /**
-     * @var integer
+     * @var int
      */
     private $updated;
 
     /**
-     * @var integer
+     * @var int
      */
     private $updatedWinfo;
 
     /**
-     * @var integer
+     * @var int
      */
     private $flags = 0;
 
@@ -141,12 +144,9 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     private $userAgent = '';
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -154,8 +154,8 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -194,8 +194,8 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -243,11 +243,11 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @param string $presentityUri
+     * @param string $presentityUri | null
      *
      * @return static
      */
-    public function setPresentityUri($presentityUri = null)
+    public function setPresentityUri(?string $presentityUri = null): self
     {
         $this->presentityUri = $presentityUri;
 
@@ -257,17 +257,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getPresentityUri()
+    public function getPresentityUri(): ?string
     {
         return $this->presentityUri;
     }
 
     /**
-     * @param string $watcherUsername
+     * @param string $watcherUsername | null
      *
      * @return static
      */
-    public function setWatcherUsername($watcherUsername = null)
+    public function setWatcherUsername(?string $watcherUsername = null): self
     {
         $this->watcherUsername = $watcherUsername;
 
@@ -277,17 +277,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getWatcherUsername()
+    public function getWatcherUsername(): ?string
     {
         return $this->watcherUsername;
     }
 
     /**
-     * @param string $watcherDomain
+     * @param string $watcherDomain | null
      *
      * @return static
      */
-    public function setWatcherDomain($watcherDomain = null)
+    public function setWatcherDomain(?string $watcherDomain = null): self
     {
         $this->watcherDomain = $watcherDomain;
 
@@ -297,17 +297,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getWatcherDomain()
+    public function getWatcherDomain(): ?string
     {
         return $this->watcherDomain;
     }
 
     /**
-     * @param string $toUser
+     * @param string $toUser | null
      *
      * @return static
      */
-    public function setToUser($toUser = null)
+    public function setToUser(?string $toUser = null): self
     {
         $this->toUser = $toUser;
 
@@ -317,17 +317,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getToUser()
+    public function getToUser(): ?string
     {
         return $this->toUser;
     }
 
     /**
-     * @param string $toDomain
+     * @param string $toDomain | null
      *
      * @return static
      */
-    public function setToDomain($toDomain = null)
+    public function setToDomain(?string $toDomain = null): self
     {
         $this->toDomain = $toDomain;
 
@@ -337,17 +337,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getToDomain()
+    public function getToDomain(): ?string
     {
         return $this->toDomain;
     }
 
     /**
-     * @param string $event
+     * @param string $event | null
      *
      * @return static
      */
-    public function setEvent($event = null)
+    public function setEvent(?string $event = null): self
     {
         $this->event = $event;
 
@@ -357,17 +357,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getEvent()
+    public function getEvent(): ?string
     {
         return $this->event;
     }
 
     /**
-     * @param string $eventId
+     * @param string $eventId | null
      *
      * @return static
      */
-    public function setEventId($eventId = null)
+    public function setEventId(?string $eventId = null): self
     {
         $this->eventId = $eventId;
 
@@ -377,17 +377,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getEventId()
+    public function getEventId(): ?string
     {
         return $this->eventId;
     }
 
     /**
-     * @param string $toTag
+     * @param string $toTag | null
      *
      * @return static
      */
-    public function setToTag($toTag = null)
+    public function setToTag(?string $toTag = null): self
     {
         $this->toTag = $toTag;
 
@@ -397,17 +397,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getToTag()
+    public function getToTag(): ?string
     {
         return $this->toTag;
     }
 
     /**
-     * @param string $fromTag
+     * @param string $fromTag | null
      *
      * @return static
      */
-    public function setFromTag($fromTag = null)
+    public function setFromTag(?string $fromTag = null): self
     {
         $this->fromTag = $fromTag;
 
@@ -417,17 +417,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getFromTag()
+    public function getFromTag(): ?string
     {
         return $this->fromTag;
     }
 
     /**
-     * @param string $callid
+     * @param string $callid | null
      *
      * @return static
      */
-    public function setCallid($callid = null)
+    public function setCallid(?string $callid = null): self
     {
         $this->callid = $callid;
 
@@ -437,17 +437,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getCallid()
+    public function getCallid(): ?string
     {
         return $this->callid;
     }
 
     /**
-     * @param integer $localCseq
+     * @param int $localCseq | null
      *
      * @return static
      */
-    public function setLocalCseq($localCseq = null)
+    public function setLocalCseq(?int $localCseq = null): self
     {
         $this->localCseq = $localCseq;
 
@@ -455,19 +455,19 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getLocalCseq()
+    public function getLocalCseq(): ?int
     {
         return $this->localCseq;
     }
 
     /**
-     * @param integer $remoteCseq
+     * @param int $remoteCseq | null
      *
      * @return static
      */
-    public function setRemoteCseq($remoteCseq = null)
+    public function setRemoteCseq(?int $remoteCseq = null): self
     {
         $this->remoteCseq = $remoteCseq;
 
@@ -475,19 +475,19 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getRemoteCseq()
+    public function getRemoteCseq(): ?int
     {
         return $this->remoteCseq;
     }
 
     /**
-     * @param string $contact
+     * @param string $contact | null
      *
      * @return static
      */
-    public function setContact($contact = null)
+    public function setContact(?string $contact = null): self
     {
         $this->contact = $contact;
 
@@ -497,17 +497,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getContact()
+    public function getContact(): ?string
     {
         return $this->contact;
     }
 
     /**
-     * @param string $recordRoute
+     * @param string $recordRoute | null
      *
      * @return static
      */
-    public function setRecordRoute($recordRoute = null)
+    public function setRecordRoute(?string $recordRoute = null): self
     {
         $this->recordRoute = $recordRoute;
 
@@ -517,17 +517,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getRecordRoute()
+    public function getRecordRoute(): ?string
     {
         return $this->recordRoute;
     }
 
     /**
-     * @param integer $expires
+     * @param int $expires | null
      *
      * @return static
      */
-    public function setExpires($expires = null)
+    public function setExpires(?int $expires = null): self
     {
         $this->expires = $expires;
 
@@ -535,19 +535,19 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getExpires()
+    public function getExpires(): ?int
     {
         return $this->expires;
     }
 
     /**
-     * @param integer $status
+     * @param int $status | null
      *
      * @return static
      */
-    public function setStatus($status = null)
+    public function setStatus(?int $status = null): self
     {
         $this->status = $status;
 
@@ -555,19 +555,19 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getStatus()
+    public function getStatus(): ?int
     {
         return $this->status;
     }
 
     /**
-     * @param string $reason
+     * @param string $reason | null
      *
      * @return static
      */
-    public function setReason($reason = null)
+    public function setReason(?string $reason = null): self
     {
         $this->reason = $reason;
 
@@ -577,17 +577,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getReason()
+    public function getReason(): ?string
     {
         return $this->reason;
     }
 
     /**
-     * @param integer $version
+     * @param int $version | null
      *
      * @return static
      */
-    public function setVersion($version = null)
+    public function setVersion(?int $version = null): self
     {
         $this->version = $version;
 
@@ -595,19 +595,19 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getVersion()
+    public function getVersion(): ?int
     {
         return $this->version;
     }
 
     /**
-     * @param string $socketInfo
+     * @param string $socketInfo | null
      *
      * @return static
      */
-    public function setSocketInfo($socketInfo = null)
+    public function setSocketInfo(?string $socketInfo = null): self
     {
         $this->socketInfo = $socketInfo;
 
@@ -617,17 +617,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getSocketInfo()
+    public function getSocketInfo(): ?string
     {
         return $this->socketInfo;
     }
 
     /**
-     * @param string $localContact
+     * @param string $localContact | null
      *
      * @return static
      */
-    public function setLocalContact($localContact = null)
+    public function setLocalContact(?string $localContact = null): self
     {
         $this->localContact = $localContact;
 
@@ -637,17 +637,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getLocalContact()
+    public function getLocalContact(): ?string
     {
         return $this->localContact;
     }
 
     /**
-     * @param string $fromUser
+     * @param string $fromUser | null
      *
      * @return static
      */
-    public function setFromUser($fromUser = null)
+    public function setFromUser(?string $fromUser = null): self
     {
         $this->fromUser = $fromUser;
 
@@ -657,17 +657,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getFromUser()
+    public function getFromUser(): ?string
     {
         return $this->fromUser;
     }
 
     /**
-     * @param string $fromDomain
+     * @param string $fromDomain | null
      *
      * @return static
      */
-    public function setFromDomain($fromDomain = null)
+    public function setFromDomain(?string $fromDomain = null): self
     {
         $this->fromDomain = $fromDomain;
 
@@ -677,17 +677,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getFromDomain()
+    public function getFromDomain(): ?string
     {
         return $this->fromDomain;
     }
 
     /**
-     * @param integer $updated
+     * @param int $updated | null
      *
      * @return static
      */
-    public function setUpdated($updated = null)
+    public function setUpdated(?int $updated = null): self
     {
         $this->updated = $updated;
 
@@ -695,19 +695,19 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getUpdated()
+    public function getUpdated(): ?int
     {
         return $this->updated;
     }
 
     /**
-     * @param integer $updatedWinfo
+     * @param int $updatedWinfo | null
      *
      * @return static
      */
-    public function setUpdatedWinfo($updatedWinfo = null)
+    public function setUpdatedWinfo(?int $updatedWinfo = null): self
     {
         $this->updatedWinfo = $updatedWinfo;
 
@@ -715,19 +715,19 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getUpdatedWinfo()
+    public function getUpdatedWinfo(): ?int
     {
         return $this->updatedWinfo;
     }
 
     /**
-     * @param integer $flags
+     * @param int $flags | null
      *
      * @return static
      */
-    public function setFlags($flags = null)
+    public function setFlags(?int $flags = null): self
     {
         $this->flags = $flags;
 
@@ -735,19 +735,19 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getFlags()
+    public function getFlags(): ?int
     {
         return $this->flags;
     }
 
     /**
-     * @param string $userAgent
+     * @param string $userAgent | null
      *
      * @return static
      */
-    public function setUserAgent($userAgent = null)
+    public function setUserAgent(?string $userAgent = null): self
     {
         $this->userAgent = $userAgent;
 
@@ -757,17 +757,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @return string | null
      */
-    public function getUserAgent()
+    public function getUserAgent(): ?string
     {
         return $this->userAgent;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -775,10 +775,11 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
+
 }
