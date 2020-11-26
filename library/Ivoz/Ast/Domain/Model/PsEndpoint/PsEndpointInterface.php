@@ -2,27 +2,36 @@
 
 namespace Ivoz\Ast\Domain\Model\PsEndpoint;
 
+use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* PsEndpointInterface
+*/
 interface PsEndpointInterface extends LoggableEntityInterface
 {
     const DIRECTMEDIAMETHOD_UPDATE = 'update';
+
     const DIRECTMEDIAMETHOD_INVITE = 'invite';
+
     const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
 
-
     const T38UDPTL_YES = 'yes';
+
     const T38UDPTL_NO = 'no';
 
-
     const T38UDPTLEC_NONE = 'none';
+
     const T38UDPTLEC_FEC = 'fec';
+
     const T38UDPTLEC_REDUNDANCY = 'redundancy';
 
-
     const T38UDPTLNAT_YES = 'yes';
-    const T38UDPTLNAT_NO = 'no';
 
+    const T38UDPTLNAT_NO = 'no';
 
     /**
      * @codeCoverageIgnore
@@ -42,21 +51,21 @@ interface PsEndpointInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getFromDomain();
+    public function getFromDomain(): ?string;
 
     /**
      * Get aors
      *
      * @return string | null
      */
-    public function getAors();
+    public function getAors(): ?string;
 
     /**
      * Get callerid
      *
      * @return string | null
      */
-    public function getCallerid();
+    public function getCallerid(): ?string;
 
     /**
      * Get context
@@ -84,42 +93,42 @@ interface PsEndpointInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getDirectMedia();
+    public function getDirectMedia(): ?string;
 
     /**
      * Get directMediaMethod
      *
      * @return string | null
      */
-    public function getDirectMediaMethod();
+    public function getDirectMediaMethod(): ?string;
 
     /**
      * Get mailboxes
      *
      * @return string | null
      */
-    public function getMailboxes();
+    public function getMailboxes(): ?string;
 
     /**
      * Get namedPickupGroup
      *
      * @return string | null
      */
-    public function getNamedPickupGroup();
+    public function getNamedPickupGroup(): ?string;
 
     /**
      * Get sendDiversion
      *
      * @return string | null
      */
-    public function getSendDiversion();
+    public function getSendDiversion(): ?string;
 
     /**
      * Get sendPai
      *
      * @return string | null
      */
-    public function getSendPai();
+    public function getSendPai(): ?string;
 
     /**
      * Get oneHundredRel
@@ -133,14 +142,14 @@ interface PsEndpointInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getOutboundProxy();
+    public function getOutboundProxy(): ?string;
 
     /**
      * Get trustIdInbound
      *
      * @return string | null
      */
-    public function getTrustIdInbound();
+    public function getTrustIdInbound(): ?string;
 
     /**
      * Get t38Udptl
@@ -159,7 +168,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     /**
      * Get t38UdptlMaxdatagram
      *
-     * @return integer
+     * @return int
      */
     public function getT38UdptlMaxdatagram(): int;
 
@@ -173,69 +182,70 @@ interface PsEndpointInterface extends LoggableEntityInterface
     /**
      * Set terminal
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal | null
+     * @param TerminalInterface | null
      *
      * @return static
      */
-    public function setTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal = null);
+    public function setTerminal(?TerminalInterface $terminal = null): PsEndpointInterface;
 
     /**
      * Get terminal
      *
-     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface | null
+     * @return TerminalInterface | null
      */
-    public function getTerminal();
+    public function getTerminal(): ?TerminalInterface;
 
     /**
      * Set friend
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend | null
+     * @param FriendInterface | null
      *
      * @return static
      */
-    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend = null);
+    public function setFriend(?FriendInterface $friend = null): PsEndpointInterface;
 
     /**
      * Get friend
      *
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
+     * @return FriendInterface | null
      */
-    public function getFriend();
+    public function getFriend(): ?FriendInterface;
 
     /**
      * Set residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice | null
+     * @param ResidentialDeviceInterface | null
      *
      * @return static
      */
-    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null);
+    public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): PsEndpointInterface;
 
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
+     * @return ResidentialDeviceInterface | null
      */
-    public function getResidentialDevice();
+    public function getResidentialDevice(): ?ResidentialDeviceInterface;
 
     /**
      * Set retailAccount
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount | null
+     * @param RetailAccountInterface | null
      *
      * @return static
      */
-    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null);
+    public function setRetailAccount(?RetailAccountInterface $retailAccount = null): PsEndpointInterface;
 
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
+     * @return RetailAccountInterface | null
      */
-    public function getRetailAccount();
+    public function getRetailAccount(): ?RetailAccountInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

@@ -4,6 +4,9 @@ namespace Ivoz\Ast\Domain\Model\Queue;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* QueueInterface
+*/
 interface QueueInterface extends LoggableEntityInterface
 {
     /**
@@ -24,21 +27,21 @@ interface QueueInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getPeriodicAnnounce();
+    public function getPeriodicAnnounce(): ?string;
 
     /**
      * Get periodicAnnounceFrequency
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getPeriodicAnnounceFrequency();
+    public function getPeriodicAnnounceFrequency(): ?int;
 
     /**
      * Get timeout
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getTimeout();
+    public function getTimeout(): ?int;
 
     /**
      * Get autopause
@@ -57,40 +60,41 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * Get wrapuptime
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getWrapuptime();
+    public function getWrapuptime(): ?int;
 
     /**
      * Get maxlen
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getMaxlen();
+    public function getMaxlen(): ?int;
 
     /**
      * Get strategy
      *
      * @return string | null
      */
-    public function getStrategy();
+    public function getStrategy(): ?string;
 
     /**
      * Get weight
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getWeight();
+    public function getWeight(): ?int;
 
     /**
      * Get queue
      *
      * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface
      */
-    public function getQueue();
+    public function getQueue(): \Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }
