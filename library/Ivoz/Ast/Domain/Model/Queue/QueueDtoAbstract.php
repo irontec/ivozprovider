@@ -4,29 +4,33 @@ namespace Ivoz\Ast\Domain\Model\Queue;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\Queue\QueueDto;
 
 /**
- * @codeCoverageIgnore
- */
+* QueueDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class QueueDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
     private $name;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $periodicAnnounce;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $periodicAnnounceFrequency;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $timeout;
 
@@ -41,37 +45,34 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     private $ringinuse = 'no';
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $wrapuptime;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $maxlen;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $strategy;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $weight;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Queue\QueueDto | null
+     * @var QueueDto | null
      */
     private $queue;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -79,8 +80,8 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -104,8 +105,8 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -138,11 +139,11 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $name
+     * @param string $name | null
      *
      * @return static
      */
-    public function setName($name = null)
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -152,17 +153,17 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $periodicAnnounce
+     * @param string $periodicAnnounce | null
      *
      * @return static
      */
-    public function setPeriodicAnnounce($periodicAnnounce = null)
+    public function setPeriodicAnnounce(?string $periodicAnnounce = null): self
     {
         $this->periodicAnnounce = $periodicAnnounce;
 
@@ -172,17 +173,17 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPeriodicAnnounce()
+    public function getPeriodicAnnounce(): ?string
     {
         return $this->periodicAnnounce;
     }
 
     /**
-     * @param integer $periodicAnnounceFrequency
+     * @param int $periodicAnnounceFrequency | null
      *
      * @return static
      */
-    public function setPeriodicAnnounceFrequency($periodicAnnounceFrequency = null)
+    public function setPeriodicAnnounceFrequency(?int $periodicAnnounceFrequency = null): self
     {
         $this->periodicAnnounceFrequency = $periodicAnnounceFrequency;
 
@@ -190,19 +191,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getPeriodicAnnounceFrequency()
+    public function getPeriodicAnnounceFrequency(): ?int
     {
         return $this->periodicAnnounceFrequency;
     }
 
     /**
-     * @param integer $timeout
+     * @param int $timeout | null
      *
      * @return static
      */
-    public function setTimeout($timeout = null)
+    public function setTimeout(?int $timeout = null): self
     {
         $this->timeout = $timeout;
 
@@ -210,19 +211,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getTimeout()
+    public function getTimeout(): ?int
     {
         return $this->timeout;
     }
 
     /**
-     * @param string $autopause
+     * @param string $autopause | null
      *
      * @return static
      */
-    public function setAutopause($autopause = null)
+    public function setAutopause(?string $autopause = null): self
     {
         $this->autopause = $autopause;
 
@@ -232,17 +233,17 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getAutopause()
+    public function getAutopause(): ?string
     {
         return $this->autopause;
     }
 
     /**
-     * @param string $ringinuse
+     * @param string $ringinuse | null
      *
      * @return static
      */
-    public function setRinginuse($ringinuse = null)
+    public function setRinginuse(?string $ringinuse = null): self
     {
         $this->ringinuse = $ringinuse;
 
@@ -252,17 +253,17 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getRinginuse()
+    public function getRinginuse(): ?string
     {
         return $this->ringinuse;
     }
 
     /**
-     * @param integer $wrapuptime
+     * @param int $wrapuptime | null
      *
      * @return static
      */
-    public function setWrapuptime($wrapuptime = null)
+    public function setWrapuptime(?int $wrapuptime = null): self
     {
         $this->wrapuptime = $wrapuptime;
 
@@ -270,19 +271,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getWrapuptime()
+    public function getWrapuptime(): ?int
     {
         return $this->wrapuptime;
     }
 
     /**
-     * @param integer $maxlen
+     * @param int $maxlen | null
      *
      * @return static
      */
-    public function setMaxlen($maxlen = null)
+    public function setMaxlen(?int $maxlen = null): self
     {
         $this->maxlen = $maxlen;
 
@@ -290,19 +291,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getMaxlen()
+    public function getMaxlen(): ?int
     {
         return $this->maxlen;
     }
 
     /**
-     * @param string $strategy
+     * @param string $strategy | null
      *
      * @return static
      */
-    public function setStrategy($strategy = null)
+    public function setStrategy(?string $strategy = null): self
     {
         $this->strategy = $strategy;
 
@@ -312,17 +313,17 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getStrategy()
+    public function getStrategy(): ?string
     {
         return $this->strategy;
     }
 
     /**
-     * @param integer $weight
+     * @param int $weight | null
      *
      * @return static
      */
-    public function setWeight($weight = null)
+    public function setWeight(?int $weight = null): self
     {
         $this->weight = $weight;
 
@@ -330,19 +331,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getWeight()
+    public function getWeight(): ?int
     {
         return $this->weight;
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -350,19 +351,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueDto $queue
+     * @param QueueDto | null
      *
      * @return static
      */
-    public function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueDto $queue = null)
+    public function setQueue(?QueueDto $queue = null): self
     {
         $this->queue = $queue;
 
@@ -370,22 +371,20 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueDto | null
+     * @return QueueDto | null
      */
-    public function getQueue()
+    public function getQueue(): ?QueueDto
     {
         return $this->queue;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setQueueId($id)
+    public function setQueueId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Queue\QueueDto($id)
+            ? new QueueDto($id)
             : null;
 
         return $this->setQueue($value);
@@ -402,4 +401,5 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }

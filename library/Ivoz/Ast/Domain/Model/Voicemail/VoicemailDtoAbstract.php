@@ -4,12 +4,17 @@ namespace Ivoz\Ast\Domain\Model\Voicemail;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 
 /**
- * @codeCoverageIgnore
- */
+* VoicemailDtoAbstract
+* @codeCoverageIgnore
+*/
 abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
 {
+    use DtoNormalizer;
+
     /**
      * @var string
      */
@@ -21,177 +26,174 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     private $mailbox;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $password;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $fullname;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $alias;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $email;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $pager;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $attach;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $attachfmt;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $serveremail;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $language;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $tz;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $deleteVoicemail;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $saycid = 'yes';
 
     /**
-     * @var string
+     * @var string | null
      */
     private $sendVoicemail;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $review;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $tempgreetwarn;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $operator;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $envelope;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $sayduration;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $forcename;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $forcegreetings;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $callback;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $dialout;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $exitcontext;
 
     /**
-     * @var integer
+     * @var int | null
      */
     private $maxmsg;
 
     /**
-     * @var float
+     * @var float | null
      */
     private $volgain;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $imapuser;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $imappassword;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $imapserver;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $imapport;
 
     /**
-     * @var string
+     * @var string | null
      */
     private $imapflags;
 
     /**
-     * @var \DateTime | string
+     * @var \DateTimeInterface | null
      */
     private $stamp;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @var UserDto | null
      */
     private $user;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
+     * @var ResidentialDeviceDto | null
      */
     private $residentialDevice;
-
-
-    use DtoNormalizer;
 
     public function __construct($id = null)
     {
@@ -199,8 +201,8 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -248,8 +250,8 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return array
-     */
+    * @return array
+    */
     public function toArray($hideSensitiveData = false)
     {
         $response = [
@@ -306,11 +308,11 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $context
+     * @param string $context | null
      *
      * @return static
      */
-    public function setContext($context = null)
+    public function setContext(?string $context = null): self
     {
         $this->context = $context;
 
@@ -320,17 +322,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getContext()
+    public function getContext(): ?string
     {
         return $this->context;
     }
 
     /**
-     * @param string $mailbox
+     * @param string $mailbox | null
      *
      * @return static
      */
-    public function setMailbox($mailbox = null)
+    public function setMailbox(?string $mailbox = null): self
     {
         $this->mailbox = $mailbox;
 
@@ -340,17 +342,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getMailbox()
+    public function getMailbox(): ?string
     {
         return $this->mailbox;
     }
 
     /**
-     * @param string $password
+     * @param string $password | null
      *
      * @return static
      */
-    public function setPassword($password = null)
+    public function setPassword(?string $password = null): self
     {
         $this->password = $password;
 
@@ -360,17 +362,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPassword()
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
     /**
-     * @param string $fullname
+     * @param string $fullname | null
      *
      * @return static
      */
-    public function setFullname($fullname = null)
+    public function setFullname(?string $fullname = null): self
     {
         $this->fullname = $fullname;
 
@@ -380,17 +382,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getFullname()
+    public function getFullname(): ?string
     {
         return $this->fullname;
     }
 
     /**
-     * @param string $alias
+     * @param string $alias | null
      *
      * @return static
      */
-    public function setAlias($alias = null)
+    public function setAlias(?string $alias = null): self
     {
         $this->alias = $alias;
 
@@ -400,17 +402,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getAlias()
+    public function getAlias(): ?string
     {
         return $this->alias;
     }
 
     /**
-     * @param string $email
+     * @param string $email | null
      *
      * @return static
      */
-    public function setEmail($email = null)
+    public function setEmail(?string $email = null): self
     {
         $this->email = $email;
 
@@ -420,17 +422,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     /**
-     * @param string $pager
+     * @param string $pager | null
      *
      * @return static
      */
-    public function setPager($pager = null)
+    public function setPager(?string $pager = null): self
     {
         $this->pager = $pager;
 
@@ -440,17 +442,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getPager()
+    public function getPager(): ?string
     {
         return $this->pager;
     }
 
     /**
-     * @param string $attach
+     * @param string $attach | null
      *
      * @return static
      */
-    public function setAttach($attach = null)
+    public function setAttach(?string $attach = null): self
     {
         $this->attach = $attach;
 
@@ -460,17 +462,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getAttach()
+    public function getAttach(): ?string
     {
         return $this->attach;
     }
 
     /**
-     * @param string $attachfmt
+     * @param string $attachfmt | null
      *
      * @return static
      */
-    public function setAttachfmt($attachfmt = null)
+    public function setAttachfmt(?string $attachfmt = null): self
     {
         $this->attachfmt = $attachfmt;
 
@@ -480,17 +482,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getAttachfmt()
+    public function getAttachfmt(): ?string
     {
         return $this->attachfmt;
     }
 
     /**
-     * @param string $serveremail
+     * @param string $serveremail | null
      *
      * @return static
      */
-    public function setServeremail($serveremail = null)
+    public function setServeremail(?string $serveremail = null): self
     {
         $this->serveremail = $serveremail;
 
@@ -500,17 +502,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getServeremail()
+    public function getServeremail(): ?string
     {
         return $this->serveremail;
     }
 
     /**
-     * @param string $language
+     * @param string $language | null
      *
      * @return static
      */
-    public function setLanguage($language = null)
+    public function setLanguage(?string $language = null): self
     {
         $this->language = $language;
 
@@ -520,17 +522,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getLanguage()
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
 
     /**
-     * @param string $tz
+     * @param string $tz | null
      *
      * @return static
      */
-    public function setTz($tz = null)
+    public function setTz(?string $tz = null): self
     {
         $this->tz = $tz;
 
@@ -540,17 +542,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTz()
+    public function getTz(): ?string
     {
         return $this->tz;
     }
 
     /**
-     * @param string $deleteVoicemail
+     * @param string $deleteVoicemail | null
      *
      * @return static
      */
-    public function setDeleteVoicemail($deleteVoicemail = null)
+    public function setDeleteVoicemail(?string $deleteVoicemail = null): self
     {
         $this->deleteVoicemail = $deleteVoicemail;
 
@@ -560,17 +562,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDeleteVoicemail()
+    public function getDeleteVoicemail(): ?string
     {
         return $this->deleteVoicemail;
     }
 
     /**
-     * @param string $saycid
+     * @param string $saycid | null
      *
      * @return static
      */
-    public function setSaycid($saycid = null)
+    public function setSaycid(?string $saycid = null): self
     {
         $this->saycid = $saycid;
 
@@ -580,17 +582,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getSaycid()
+    public function getSaycid(): ?string
     {
         return $this->saycid;
     }
 
     /**
-     * @param string $sendVoicemail
+     * @param string $sendVoicemail | null
      *
      * @return static
      */
-    public function setSendVoicemail($sendVoicemail = null)
+    public function setSendVoicemail(?string $sendVoicemail = null): self
     {
         $this->sendVoicemail = $sendVoicemail;
 
@@ -600,17 +602,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getSendVoicemail()
+    public function getSendVoicemail(): ?string
     {
         return $this->sendVoicemail;
     }
 
     /**
-     * @param string $review
+     * @param string $review | null
      *
      * @return static
      */
-    public function setReview($review = null)
+    public function setReview(?string $review = null): self
     {
         $this->review = $review;
 
@@ -620,17 +622,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getReview()
+    public function getReview(): ?string
     {
         return $this->review;
     }
 
     /**
-     * @param string $tempgreetwarn
+     * @param string $tempgreetwarn | null
      *
      * @return static
      */
-    public function setTempgreetwarn($tempgreetwarn = null)
+    public function setTempgreetwarn(?string $tempgreetwarn = null): self
     {
         $this->tempgreetwarn = $tempgreetwarn;
 
@@ -640,17 +642,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getTempgreetwarn()
+    public function getTempgreetwarn(): ?string
     {
         return $this->tempgreetwarn;
     }
 
     /**
-     * @param string $operator
+     * @param string $operator | null
      *
      * @return static
      */
-    public function setOperator($operator = null)
+    public function setOperator(?string $operator = null): self
     {
         $this->operator = $operator;
 
@@ -660,17 +662,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getOperator()
+    public function getOperator(): ?string
     {
         return $this->operator;
     }
 
     /**
-     * @param string $envelope
+     * @param string $envelope | null
      *
      * @return static
      */
-    public function setEnvelope($envelope = null)
+    public function setEnvelope(?string $envelope = null): self
     {
         $this->envelope = $envelope;
 
@@ -680,17 +682,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getEnvelope()
+    public function getEnvelope(): ?string
     {
         return $this->envelope;
     }
 
     /**
-     * @param integer $sayduration
+     * @param int $sayduration | null
      *
      * @return static
      */
-    public function setSayduration($sayduration = null)
+    public function setSayduration(?int $sayduration = null): self
     {
         $this->sayduration = $sayduration;
 
@@ -698,19 +700,19 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getSayduration()
+    public function getSayduration(): ?int
     {
         return $this->sayduration;
     }
 
     /**
-     * @param string $forcename
+     * @param string $forcename | null
      *
      * @return static
      */
-    public function setForcename($forcename = null)
+    public function setForcename(?string $forcename = null): self
     {
         $this->forcename = $forcename;
 
@@ -720,17 +722,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getForcename()
+    public function getForcename(): ?string
     {
         return $this->forcename;
     }
 
     /**
-     * @param string $forcegreetings
+     * @param string $forcegreetings | null
      *
      * @return static
      */
-    public function setForcegreetings($forcegreetings = null)
+    public function setForcegreetings(?string $forcegreetings = null): self
     {
         $this->forcegreetings = $forcegreetings;
 
@@ -740,17 +742,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getForcegreetings()
+    public function getForcegreetings(): ?string
     {
         return $this->forcegreetings;
     }
 
     /**
-     * @param string $callback
+     * @param string $callback | null
      *
      * @return static
      */
-    public function setCallback($callback = null)
+    public function setCallback(?string $callback = null): self
     {
         $this->callback = $callback;
 
@@ -760,17 +762,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getCallback()
+    public function getCallback(): ?string
     {
         return $this->callback;
     }
 
     /**
-     * @param string $dialout
+     * @param string $dialout | null
      *
      * @return static
      */
-    public function setDialout($dialout = null)
+    public function setDialout(?string $dialout = null): self
     {
         $this->dialout = $dialout;
 
@@ -780,17 +782,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getDialout()
+    public function getDialout(): ?string
     {
         return $this->dialout;
     }
 
     /**
-     * @param string $exitcontext
+     * @param string $exitcontext | null
      *
      * @return static
      */
-    public function setExitcontext($exitcontext = null)
+    public function setExitcontext(?string $exitcontext = null): self
     {
         $this->exitcontext = $exitcontext;
 
@@ -800,17 +802,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getExitcontext()
+    public function getExitcontext(): ?string
     {
         return $this->exitcontext;
     }
 
     /**
-     * @param integer $maxmsg
+     * @param int $maxmsg | null
      *
      * @return static
      */
-    public function setMaxmsg($maxmsg = null)
+    public function setMaxmsg(?int $maxmsg = null): self
     {
         $this->maxmsg = $maxmsg;
 
@@ -818,19 +820,19 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getMaxmsg()
+    public function getMaxmsg(): ?int
     {
         return $this->maxmsg;
     }
 
     /**
-     * @param float $volgain
+     * @param float $volgain | null
      *
      * @return static
      */
-    public function setVolgain($volgain = null)
+    public function setVolgain(?float $volgain = null): self
     {
         $this->volgain = $volgain;
 
@@ -840,17 +842,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return float | null
      */
-    public function getVolgain()
+    public function getVolgain(): ?float
     {
         return $this->volgain;
     }
 
     /**
-     * @param string $imapuser
+     * @param string $imapuser | null
      *
      * @return static
      */
-    public function setImapuser($imapuser = null)
+    public function setImapuser(?string $imapuser = null): self
     {
         $this->imapuser = $imapuser;
 
@@ -860,17 +862,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getImapuser()
+    public function getImapuser(): ?string
     {
         return $this->imapuser;
     }
 
     /**
-     * @param string $imappassword
+     * @param string $imappassword | null
      *
      * @return static
      */
-    public function setImappassword($imappassword = null)
+    public function setImappassword(?string $imappassword = null): self
     {
         $this->imappassword = $imappassword;
 
@@ -880,17 +882,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getImappassword()
+    public function getImappassword(): ?string
     {
         return $this->imappassword;
     }
 
     /**
-     * @param string $imapserver
+     * @param string $imapserver | null
      *
      * @return static
      */
-    public function setImapserver($imapserver = null)
+    public function setImapserver(?string $imapserver = null): self
     {
         $this->imapserver = $imapserver;
 
@@ -900,17 +902,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getImapserver()
+    public function getImapserver(): ?string
     {
         return $this->imapserver;
     }
 
     /**
-     * @param string $imapport
+     * @param string $imapport | null
      *
      * @return static
      */
-    public function setImapport($imapport = null)
+    public function setImapport(?string $imapport = null): self
     {
         $this->imapport = $imapport;
 
@@ -920,17 +922,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getImapport()
+    public function getImapport(): ?string
     {
         return $this->imapport;
     }
 
     /**
-     * @param string $imapflags
+     * @param string $imapflags | null
      *
      * @return static
      */
-    public function setImapflags($imapflags = null)
+    public function setImapflags(?string $imapflags = null): self
     {
         $this->imapflags = $imapflags;
 
@@ -940,17 +942,17 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string | null
      */
-    public function getImapflags()
+    public function getImapflags(): ?string
     {
         return $this->imapflags;
     }
 
     /**
-     * @param \DateTime $stamp
+     * @param \DateTimeInterface $stamp | null
      *
      * @return static
      */
-    public function setStamp($stamp = null)
+    public function setStamp($stamp = null): self
     {
         $this->stamp = $stamp;
 
@@ -958,7 +960,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
     public function getStamp()
     {
@@ -966,11 +968,11 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $id
+     * @param int $id | null
      *
      * @return static
      */
-    public function setId($id = null)
+    public function setId(?int $id = null): self
     {
         $this->id = $id;
 
@@ -978,19 +980,19 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer | null
+     * @return int | null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\User\UserDto $user
+     * @param UserDto | null
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserDto $user = null)
+    public function setUser(?UserDto $user = null): self
     {
         $this->user = $user;
 
@@ -998,22 +1000,20 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\User\UserDto | null
+     * @return UserDto | null
      */
-    public function getUser()
+    public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setUserId($id)
+    public function setUserId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            ? new UserDto($id)
             : null;
 
         return $this->setUser($value);
@@ -1032,11 +1032,11 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice
+     * @param ResidentialDeviceDto | null
      *
      * @return static
      */
-    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice = null)
+    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice = null): self
     {
         $this->residentialDevice = $residentialDevice;
 
@@ -1044,22 +1044,20 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
+     * @return ResidentialDeviceDto | null
      */
-    public function getResidentialDevice()
+    public function getResidentialDevice(): ?ResidentialDeviceDto
     {
         return $this->residentialDevice;
     }
 
     /**
-     * @param mixed | null $id
-     *
      * @return static
      */
-    public function setResidentialDeviceId($id)
+    public function setResidentialDeviceId($id): self
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto($id)
+            ? new ResidentialDeviceDto($id)
             : null;
 
         return $this->setResidentialDevice($value);
@@ -1076,4 +1074,5 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
 }
