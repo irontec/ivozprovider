@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Cgr\Domain\Model\TpLcrRule;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 
 /**
- * TpLcrRuleAbstract
- * @codeCoverageIgnore
- */
+* TpLcrRuleAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpLcrRuleAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -68,9 +74,9 @@ abstract class TpLcrRuleAbstract
 
     /**
      * column: activation_time
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
-    protected $activationTime;
+    protected $activationTime = 'CURRENT_TIMESTAMP';
 
     /**
      * @var float
@@ -79,17 +85,15 @@ abstract class TpLcrRuleAbstract
 
     /**
      * column: created_at
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
-    protected $createdAt;
+    protected $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
+     * @var OutgoingRouting
+     * inversedBy tpLcrRule
      */
     protected $outgoingRouting;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -182,7 +186,7 @@ abstract class TpLcrRuleAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TpLcrRuleDto::class);
 
@@ -203,8 +207,7 @@ abstract class TpLcrRuleAbstract
             ->setSubject($dto->getSubject())
             ->setDestinationTag($dto->getDestinationTag())
             ->setStrategyParams($dto->getStrategyParams())
-            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
-        ;
+            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
 
         $self->initChangelog();
 
@@ -218,7 +221,7 @@ abstract class TpLcrRuleAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TpLcrRuleDto::class);
 
@@ -237,8 +240,6 @@ abstract class TpLcrRuleAbstract
             ->setWeight($dto->getWeight())
             ->setCreatedAt($dto->getCreatedAt())
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
-
-
 
         return $this;
     }
@@ -264,7 +265,7 @@ abstract class TpLcrRuleAbstract
             ->setActivationTime(self::getActivationTime())
             ->setWeight(self::getWeight())
             ->setCreatedAt(self::getCreatedAt())
-            ->setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth));
+            ->setOutgoingRouting(OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth));
     }
 
     /**
@@ -289,7 +290,6 @@ abstract class TpLcrRuleAbstract
             'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set tpid
@@ -298,9 +298,8 @@ abstract class TpLcrRuleAbstract
      *
      * @return static
      */
-    protected function setTpid($tpid)
+    protected function setTpid(string $tpid): TpLcrRuleInterface
     {
-        Assertion::notNull($tpid, 'tpid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tpid = $tpid;
@@ -325,9 +324,8 @@ abstract class TpLcrRuleAbstract
      *
      * @return static
      */
-    protected function setDirection($direction)
+    protected function setDirection(string $direction): TpLcrRuleInterface
     {
-        Assertion::notNull($direction, 'direction value "%s" is null, but non null value was expected.');
         Assertion::maxLength($direction, 8, 'direction value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->direction = $direction;
@@ -352,9 +350,8 @@ abstract class TpLcrRuleAbstract
      *
      * @return static
      */
-    protected function setTenant($tenant)
+    protected function setTenant(string $tenant): TpLcrRuleInterface
     {
-        Assertion::notNull($tenant, 'tenant value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tenant, 64, 'tenant value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tenant = $tenant;
@@ -379,9 +376,8 @@ abstract class TpLcrRuleAbstract
      *
      * @return static
      */
-    protected function setCategory($category)
+    protected function setCategory(string $category): TpLcrRuleInterface
     {
-        Assertion::notNull($category, 'category value "%s" is null, but non null value was expected.');
         Assertion::maxLength($category, 32, 'category value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->category = $category;
@@ -406,9 +402,8 @@ abstract class TpLcrRuleAbstract
      *
      * @return static
      */
-    protected function setAccount($account)
+    protected function setAccount(string $account): TpLcrRuleInterface
     {
-        Assertion::notNull($account, 'account value "%s" is null, but non null value was expected.');
         Assertion::maxLength($account, 64, 'account value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->account = $account;
@@ -433,7 +428,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return static
      */
-    protected function setSubject($subject = null)
+    protected function setSubject(?string $subject = null): TpLcrRuleInterface
     {
         if (!is_null($subject)) {
             Assertion::maxLength($subject, 64, 'subject value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -449,7 +444,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return string | null
      */
-    public function getSubject()
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
@@ -461,7 +456,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return static
      */
-    protected function setDestinationTag($destinationTag = null)
+    protected function setDestinationTag(?string $destinationTag = null): TpLcrRuleInterface
     {
         if (!is_null($destinationTag)) {
             Assertion::maxLength($destinationTag, 64, 'destinationTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -477,7 +472,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return string | null
      */
-    public function getDestinationTag()
+    public function getDestinationTag(): ?string
     {
         return $this->destinationTag;
     }
@@ -489,9 +484,8 @@ abstract class TpLcrRuleAbstract
      *
      * @return static
      */
-    protected function setRpCategory($rpCategory)
+    protected function setRpCategory(string $rpCategory): TpLcrRuleInterface
     {
-        Assertion::notNull($rpCategory, 'rpCategory value "%s" is null, but non null value was expected.');
         Assertion::maxLength($rpCategory, 32, 'rpCategory value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->rpCategory = $rpCategory;
@@ -516,9 +510,8 @@ abstract class TpLcrRuleAbstract
      *
      * @return static
      */
-    protected function setStrategy($strategy)
+    protected function setStrategy(string $strategy): TpLcrRuleInterface
     {
-        Assertion::notNull($strategy, 'strategy value "%s" is null, but non null value was expected.');
         Assertion::maxLength($strategy, 18, 'strategy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->strategy = $strategy;
@@ -543,7 +536,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return static
      */
-    protected function setStrategyParams($strategyParams = null)
+    protected function setStrategyParams(?string $strategyParams = null): TpLcrRuleInterface
     {
         if (!is_null($strategyParams)) {
             Assertion::maxLength($strategyParams, 256, 'strategyParams value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -559,7 +552,7 @@ abstract class TpLcrRuleAbstract
      *
      * @return string | null
      */
-    public function getStrategyParams()
+    public function getStrategyParams(): ?string
     {
         return $this->strategyParams;
     }
@@ -567,14 +560,14 @@ abstract class TpLcrRuleAbstract
     /**
      * Set activationTime
      *
-     * @param \DateTime $activationTime
+     * @param \DateTimeInterface $activationTime
      *
      * @return static
      */
-    protected function setActivationTime($activationTime)
+    protected function setActivationTime($activationTime): TpLcrRuleInterface
     {
-        Assertion::notNull($activationTime, 'activationTime value "%s" is null, but non null value was expected.');
-        $activationTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $activationTime = DateTimeHelper::createOrFix(
             $activationTime,
             'CURRENT_TIMESTAMP'
         );
@@ -591,9 +584,9 @@ abstract class TpLcrRuleAbstract
     /**
      * Get activationTime
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getActivationTime(): \DateTime
+    public function getActivationTime(): \DateTimeInterface
     {
         return clone $this->activationTime;
     }
@@ -605,12 +598,9 @@ abstract class TpLcrRuleAbstract
      *
      * @return static
      */
-    protected function setWeight($weight)
+    protected function setWeight(float $weight): TpLcrRuleInterface
     {
-        Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
-        Assertion::numeric($weight);
-
-        $this->weight = (float) $weight;
+        $this->weight = $weight;
 
         return $this;
     }
@@ -628,14 +618,14 @@ abstract class TpLcrRuleAbstract
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt
      *
      * @return static
      */
-    protected function setCreatedAt($createdAt)
+    protected function setCreatedAt($createdAt): TpLcrRuleInterface
     {
-        Assertion::notNull($createdAt, 'createdAt value "%s" is null, but non null value was expected.');
-        $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
@@ -652,9 +642,9 @@ abstract class TpLcrRuleAbstract
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }
@@ -662,11 +652,11 @@ abstract class TpLcrRuleAbstract
     /**
      * Set outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting | null
+     * @param OutgoingRouting | null
      *
      * @return static
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null)
+    public function setOutgoingRouting(?OutgoingRouting $outgoingRouting = null): TpLcrRuleInterface
     {
         $this->outgoingRouting = $outgoingRouting;
 
@@ -676,12 +666,11 @@ abstract class TpLcrRuleAbstract
     /**
      * Get outgoingRouting
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
+     * @return OutgoingRouting | null
      */
-    public function getOutgoingRouting()
+    public function getOutgoingRouting(): ?OutgoingRouting
     {
         return $this->outgoingRouting;
     }
 
-    // @codeCoverageIgnoreEnd
 }

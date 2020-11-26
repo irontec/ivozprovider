@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Cgr\Domain\Model\TpRatingPlan;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
 
 /**
- * TpRatingPlanAbstract
- * @codeCoverageIgnore
- */
+* TpRatingPlanAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpRatingPlanAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -42,23 +48,25 @@ abstract class TpRatingPlanAbstract
 
     /**
      * column: created_at
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
-    protected $createdAt;
+    protected $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     * @var RatingPlan
+     * inversedBy tpRatingPlan
      */
     protected $ratingPlan;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($tpid, $timingTag, $weight, $createdAt)
-    {
+    protected function __construct(
+        $tpid,
+        $timingTag,
+        $weight,
+        $createdAt
+    ) {
         $this->setTpid($tpid);
         $this->setTimingTag($timingTag);
         $this->setWeight($weight);
@@ -129,7 +137,7 @@ abstract class TpRatingPlanAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TpRatingPlanDto::class);
 
@@ -143,8 +151,7 @@ abstract class TpRatingPlanAbstract
         $self
             ->setTag($dto->getTag())
             ->setDestratesTag($dto->getDestratesTag())
-            ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()))
-        ;
+            ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()));
 
         $self->initChangelog();
 
@@ -158,7 +165,7 @@ abstract class TpRatingPlanAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TpRatingPlanDto::class);
 
@@ -170,8 +177,6 @@ abstract class TpRatingPlanAbstract
             ->setWeight($dto->getWeight())
             ->setCreatedAt($dto->getCreatedAt())
             ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()));
-
-
 
         return $this;
     }
@@ -190,7 +195,7 @@ abstract class TpRatingPlanAbstract
             ->setTimingTag(self::getTimingTag())
             ->setWeight(self::getWeight())
             ->setCreatedAt(self::getCreatedAt())
-            ->setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::entityToDto(self::getRatingPlan(), $depth));
+            ->setRatingPlan(RatingPlan::entityToDto(self::getRatingPlan(), $depth));
     }
 
     /**
@@ -208,7 +213,6 @@ abstract class TpRatingPlanAbstract
             'ratingPlanId' => self::getRatingPlan()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set tpid
@@ -217,9 +221,8 @@ abstract class TpRatingPlanAbstract
      *
      * @return static
      */
-    protected function setTpid($tpid)
+    protected function setTpid(string $tpid): TpRatingPlanInterface
     {
-        Assertion::notNull($tpid, 'tpid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tpid = $tpid;
@@ -244,7 +247,7 @@ abstract class TpRatingPlanAbstract
      *
      * @return static
      */
-    protected function setTag($tag = null)
+    protected function setTag(?string $tag = null): TpRatingPlanInterface
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -260,7 +263,7 @@ abstract class TpRatingPlanAbstract
      *
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
@@ -272,7 +275,7 @@ abstract class TpRatingPlanAbstract
      *
      * @return static
      */
-    protected function setDestratesTag($destratesTag = null)
+    protected function setDestratesTag(?string $destratesTag = null): TpRatingPlanInterface
     {
         if (!is_null($destratesTag)) {
             Assertion::maxLength($destratesTag, 64, 'destratesTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -288,7 +291,7 @@ abstract class TpRatingPlanAbstract
      *
      * @return string | null
      */
-    public function getDestratesTag()
+    public function getDestratesTag(): ?string
     {
         return $this->destratesTag;
     }
@@ -300,9 +303,8 @@ abstract class TpRatingPlanAbstract
      *
      * @return static
      */
-    protected function setTimingTag($timingTag)
+    protected function setTimingTag(string $timingTag): TpRatingPlanInterface
     {
-        Assertion::notNull($timingTag, 'timingTag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($timingTag, 64, 'timingTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->timingTag = $timingTag;
@@ -327,12 +329,9 @@ abstract class TpRatingPlanAbstract
      *
      * @return static
      */
-    protected function setWeight($weight)
+    protected function setWeight(float $weight): TpRatingPlanInterface
     {
-        Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
-        Assertion::numeric($weight);
-
-        $this->weight = (float) $weight;
+        $this->weight = $weight;
 
         return $this;
     }
@@ -350,14 +349,14 @@ abstract class TpRatingPlanAbstract
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt
      *
      * @return static
      */
-    protected function setCreatedAt($createdAt)
+    protected function setCreatedAt($createdAt): TpRatingPlanInterface
     {
-        Assertion::notNull($createdAt, 'createdAt value "%s" is null, but non null value was expected.');
-        $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
@@ -374,9 +373,9 @@ abstract class TpRatingPlanAbstract
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }
@@ -384,11 +383,11 @@ abstract class TpRatingPlanAbstract
     /**
      * Set ratingPlan
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param RatingPlan
      *
      * @return static
      */
-    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
+    public function setRatingPlan(RatingPlan $ratingPlan): TpRatingPlanInterface
     {
         $this->ratingPlan = $ratingPlan;
 
@@ -398,12 +397,11 @@ abstract class TpRatingPlanAbstract
     /**
      * Get ratingPlan
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return RatingPlan
      */
-    public function getRatingPlan()
+    public function getRatingPlan(): RatingPlan
     {
         return $this->ratingPlan;
     }
 
-    // @codeCoverageIgnoreEnd
 }

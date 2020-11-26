@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Cgr\Domain\Model\TpCdr;
 
@@ -6,13 +7,17 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 
 /**
- * TpCdrAbstract
- * @codeCoverageIgnore
- */
+* TpCdrAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpCdrAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -79,18 +84,18 @@ abstract class TpCdrAbstract
 
     /**
      * column: setup_time
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     protected $setupTime;
 
     /**
      * column: answer_time
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     protected $answerTime;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $usage;
 
@@ -115,7 +120,7 @@ abstract class TpCdrAbstract
      * column: cost_details
      * @var array
      */
-    protected $costDetails;
+    protected $costDetails = [];
 
     /**
      * column: extra_info
@@ -125,24 +130,21 @@ abstract class TpCdrAbstract
 
     /**
      * column: created_at
-     * @var \DateTime | null
+     * @var \DateTimeInterface | null
      */
     protected $createdAt;
 
     /**
      * column: updated_at
-     * @var \DateTime | null
+     * @var \DateTimeInterface | null
      */
     protected $updatedAt;
 
     /**
      * column: deleted_at
-     * @var \DateTime | null
+     * @var \DateTimeInterface | null
      */
     protected $deletedAt;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -255,7 +257,7 @@ abstract class TpCdrAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TpCdrDto::class);
 
@@ -285,8 +287,7 @@ abstract class TpCdrAbstract
         $self
             ->setCreatedAt($dto->getCreatedAt())
             ->setUpdatedAt($dto->getUpdatedAt())
-            ->setDeletedAt($dto->getDeletedAt())
-        ;
+            ->setDeletedAt($dto->getDeletedAt());
 
         $self->initChangelog();
 
@@ -300,7 +301,7 @@ abstract class TpCdrAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TpCdrDto::class);
 
@@ -328,8 +329,6 @@ abstract class TpCdrAbstract
             ->setCreatedAt($dto->getCreatedAt())
             ->setUpdatedAt($dto->getUpdatedAt())
             ->setDeletedAt($dto->getDeletedAt());
-
-
 
         return $this;
     }
@@ -398,7 +397,6 @@ abstract class TpCdrAbstract
             'deleted_at' => self::getDeletedAt()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set cgrid
@@ -407,9 +405,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setCgrid($cgrid)
+    protected function setCgrid(string $cgrid): TpCdrInterface
     {
-        Assertion::notNull($cgrid, 'cgrid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($cgrid, 40, 'cgrid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->cgrid = $cgrid;
@@ -434,9 +431,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setRunId($runId)
+    protected function setRunId(string $runId): TpCdrInterface
     {
-        Assertion::notNull($runId, 'runId value "%s" is null, but non null value was expected.');
         Assertion::maxLength($runId, 64, 'runId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->runId = $runId;
@@ -461,9 +457,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setOriginHost($originHost)
+    protected function setOriginHost(string $originHost): TpCdrInterface
     {
-        Assertion::notNull($originHost, 'originHost value "%s" is null, but non null value was expected.');
         Assertion::maxLength($originHost, 64, 'originHost value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->originHost = $originHost;
@@ -488,9 +483,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setSource($source)
+    protected function setSource(string $source): TpCdrInterface
     {
-        Assertion::notNull($source, 'source value "%s" is null, but non null value was expected.');
         Assertion::maxLength($source, 64, 'source value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->source = $source;
@@ -515,9 +509,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setOriginId($originId)
+    protected function setOriginId(string $originId): TpCdrInterface
     {
-        Assertion::notNull($originId, 'originId value "%s" is null, but non null value was expected.');
         Assertion::maxLength($originId, 128, 'originId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->originId = $originId;
@@ -542,9 +535,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setTor($tor)
+    protected function setTor(string $tor): TpCdrInterface
     {
-        Assertion::notNull($tor, 'tor value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tor, 16, 'tor value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tor = $tor;
@@ -569,9 +561,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setRequestType($requestType)
+    protected function setRequestType(string $requestType): TpCdrInterface
     {
-        Assertion::notNull($requestType, 'requestType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($requestType, 24, 'requestType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->requestType = $requestType;
@@ -596,9 +587,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setTenant($tenant)
+    protected function setTenant(string $tenant): TpCdrInterface
     {
-        Assertion::notNull($tenant, 'tenant value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tenant, 64, 'tenant value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tenant = $tenant;
@@ -623,9 +613,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setCategory($category)
+    protected function setCategory(string $category): TpCdrInterface
     {
-        Assertion::notNull($category, 'category value "%s" is null, but non null value was expected.');
         Assertion::maxLength($category, 32, 'category value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->category = $category;
@@ -650,9 +639,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setAccount($account)
+    protected function setAccount(string $account): TpCdrInterface
     {
-        Assertion::notNull($account, 'account value "%s" is null, but non null value was expected.');
         Assertion::maxLength($account, 128, 'account value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->account = $account;
@@ -677,9 +665,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setSubject($subject)
+    protected function setSubject(string $subject): TpCdrInterface
     {
-        Assertion::notNull($subject, 'subject value "%s" is null, but non null value was expected.');
         Assertion::maxLength($subject, 128, 'subject value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->subject = $subject;
@@ -704,9 +691,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setDestination($destination)
+    protected function setDestination(string $destination): TpCdrInterface
     {
-        Assertion::notNull($destination, 'destination value "%s" is null, but non null value was expected.');
         Assertion::maxLength($destination, 128, 'destination value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->destination = $destination;
@@ -727,14 +713,14 @@ abstract class TpCdrAbstract
     /**
      * Set setupTime
      *
-     * @param \DateTime $setupTime
+     * @param \DateTimeInterface $setupTime
      *
      * @return static
      */
-    protected function setSetupTime($setupTime)
+    protected function setSetupTime($setupTime): TpCdrInterface
     {
-        Assertion::notNull($setupTime, 'setupTime value "%s" is null, but non null value was expected.');
-        $setupTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $setupTime = DateTimeHelper::createOrFix(
             $setupTime,
             null
         );
@@ -751,9 +737,9 @@ abstract class TpCdrAbstract
     /**
      * Get setupTime
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getSetupTime(): \DateTime
+    public function getSetupTime(): \DateTimeInterface
     {
         return clone $this->setupTime;
     }
@@ -761,14 +747,14 @@ abstract class TpCdrAbstract
     /**
      * Set answerTime
      *
-     * @param \DateTime $answerTime
+     * @param \DateTimeInterface $answerTime
      *
      * @return static
      */
-    protected function setAnswerTime($answerTime)
+    protected function setAnswerTime($answerTime): TpCdrInterface
     {
-        Assertion::notNull($answerTime, 'answerTime value "%s" is null, but non null value was expected.');
-        $answerTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $answerTime = DateTimeHelper::createOrFix(
             $answerTime,
             null
         );
@@ -785,9 +771,9 @@ abstract class TpCdrAbstract
     /**
      * Get answerTime
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getAnswerTime(): \DateTime
+    public function getAnswerTime(): \DateTimeInterface
     {
         return clone $this->answerTime;
     }
@@ -795,16 +781,13 @@ abstract class TpCdrAbstract
     /**
      * Set usage
      *
-     * @param integer $usage
+     * @param int $usage
      *
      * @return static
      */
-    protected function setUsage($usage)
+    protected function setUsage(int $usage): TpCdrInterface
     {
-        Assertion::notNull($usage, 'usage value "%s" is null, but non null value was expected.');
-        Assertion::integerish($usage, 'usage value "%s" is not an integer or a number castable to integer.');
-
-        $this->usage = (int) $usage;
+        $this->usage = $usage;
 
         return $this;
     }
@@ -812,7 +795,7 @@ abstract class TpCdrAbstract
     /**
      * Get usage
      *
-     * @return integer
+     * @return int
      */
     public function getUsage(): int
     {
@@ -826,10 +809,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setExtraFields($extraFields)
+    protected function setExtraFields(string $extraFields): TpCdrInterface
     {
-        Assertion::notNull($extraFields, 'extraFields value "%s" is null, but non null value was expected.');
-
         $this->extraFields = $extraFields;
 
         return $this;
@@ -852,9 +833,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setCostSource($costSource)
+    protected function setCostSource(string $costSource): TpCdrInterface
     {
-        Assertion::notNull($costSource, 'costSource value "%s" is null, but non null value was expected.');
         Assertion::maxLength($costSource, 64, 'costSource value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->costSource = $costSource;
@@ -879,12 +859,9 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setCost($cost)
+    protected function setCost(float $cost): TpCdrInterface
     {
-        Assertion::notNull($cost, 'cost value "%s" is null, but non null value was expected.');
-        Assertion::numeric($cost);
-
-        $this->cost = (float) $cost;
+        $this->cost = $cost;
 
         return $this;
     }
@@ -906,10 +883,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setCostDetails($costDetails)
+    protected function setCostDetails(array $costDetails): TpCdrInterface
     {
-        Assertion::notNull($costDetails, 'costDetails value "%s" is null, but non null value was expected.');
-
         $this->costDetails = $costDetails;
 
         return $this;
@@ -932,10 +907,8 @@ abstract class TpCdrAbstract
      *
      * @return static
      */
-    protected function setExtraInfo($extraInfo)
+    protected function setExtraInfo(string $extraInfo): TpCdrInterface
     {
-        Assertion::notNull($extraInfo, 'extraInfo value "%s" is null, but non null value was expected.');
-
         $this->extraInfo = $extraInfo;
 
         return $this;
@@ -954,14 +927,18 @@ abstract class TpCdrAbstract
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt | null
+     * @param \DateTimeInterface $createdAt | null
      *
      * @return static
      */
-    protected function setCreatedAt($createdAt = null)
+    protected function setCreatedAt($createdAt = null): TpCdrInterface
     {
         if (!is_null($createdAt)) {
-            $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            Assertion::notNull(
+                $createdAt,
+                'createdAt value "%s" is null, but non null value was expected.'
+            );
+            $createdAt = DateTimeHelper::createOrFix(
                 $createdAt,
                 null
             );
@@ -979,9 +956,9 @@ abstract class TpCdrAbstract
     /**
      * Get createdAt
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return !is_null($this->createdAt) ? clone $this->createdAt : null;
     }
@@ -989,14 +966,18 @@ abstract class TpCdrAbstract
     /**
      * Set updatedAt
      *
-     * @param \DateTime $updatedAt | null
+     * @param \DateTimeInterface $updatedAt | null
      *
      * @return static
      */
-    protected function setUpdatedAt($updatedAt = null)
+    protected function setUpdatedAt($updatedAt = null): TpCdrInterface
     {
         if (!is_null($updatedAt)) {
-            $updatedAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            Assertion::notNull(
+                $updatedAt,
+                'updatedAt value "%s" is null, but non null value was expected.'
+            );
+            $updatedAt = DateTimeHelper::createOrFix(
                 $updatedAt,
                 null
             );
@@ -1014,9 +995,9 @@ abstract class TpCdrAbstract
     /**
      * Get updatedAt
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return !is_null($this->updatedAt) ? clone $this->updatedAt : null;
     }
@@ -1024,14 +1005,18 @@ abstract class TpCdrAbstract
     /**
      * Set deletedAt
      *
-     * @param \DateTime $deletedAt | null
+     * @param \DateTimeInterface $deletedAt | null
      *
      * @return static
      */
-    protected function setDeletedAt($deletedAt = null)
+    protected function setDeletedAt($deletedAt = null): TpCdrInterface
     {
         if (!is_null($deletedAt)) {
-            $deletedAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            Assertion::notNull(
+                $deletedAt,
+                'deletedAt value "%s" is null, but non null value was expected.'
+            );
+            $deletedAt = DateTimeHelper::createOrFix(
                 $deletedAt,
                 null
             );
@@ -1049,12 +1034,11 @@ abstract class TpCdrAbstract
     /**
      * Get deletedAt
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getDeletedAt()
+    public function getDeletedAt(): ?\DateTimeInterface
     {
         return !is_null($this->deletedAt) ? clone $this->deletedAt : null;
     }
 
-    // @codeCoverageIgnoreEnd
 }

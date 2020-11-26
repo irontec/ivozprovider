@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Cgr\Domain\Model\TpCdrStat;
 
@@ -6,13 +7,19 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 
 /**
- * TpCdrStatAbstract
- * @codeCoverageIgnore
- */
+* TpCdrStatAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpCdrStatAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -25,7 +32,7 @@ abstract class TpCdrStatAbstract
 
     /**
      * column: queue_length
-     * @var integer
+     * @var int
      */
     protected $queueLength = 0;
 
@@ -161,17 +168,15 @@ abstract class TpCdrStatAbstract
 
     /**
      * column: created_at
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
-    protected $createdAt;
+    protected $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var CarrierInterface
+     * inversedBy tpCdrStats
      */
     protected $carrier;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -298,7 +303,7 @@ abstract class TpCdrStatAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TpCdrStatDto::class);
 
@@ -333,8 +338,7 @@ abstract class TpCdrStatAbstract
         );
 
         $self
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-        ;
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
 
         $self->initChangelog();
 
@@ -348,7 +352,7 @@ abstract class TpCdrStatAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TpCdrStatDto::class);
 
@@ -381,8 +385,6 @@ abstract class TpCdrStatAbstract
             ->setActionTriggers($dto->getActionTriggers())
             ->setCreatedAt($dto->getCreatedAt())
             ->setCarrier($fkTransformer->transform($dto->getCarrier()));
-
-
 
         return $this;
     }
@@ -422,7 +424,7 @@ abstract class TpCdrStatAbstract
             ->setCostInterval(self::getCostInterval())
             ->setActionTriggers(self::getActionTriggers())
             ->setCreatedAt(self::getCreatedAt())
-            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth));
+            ->setCarrier(Carrier::entityToDto(self::getCarrier(), $depth));
     }
 
     /**
@@ -461,7 +463,6 @@ abstract class TpCdrStatAbstract
             'carrierId' => self::getCarrier()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set tpid
@@ -470,9 +471,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setTpid($tpid)
+    protected function setTpid(string $tpid): TpCdrStatInterface
     {
-        Assertion::notNull($tpid, 'tpid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tpid = $tpid;
@@ -497,9 +497,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setTag($tag)
+    protected function setTag(string $tag): TpCdrStatInterface
     {
-        Assertion::notNull($tag, 'tag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tag = $tag;
@@ -520,16 +519,13 @@ abstract class TpCdrStatAbstract
     /**
      * Set queueLength
      *
-     * @param integer $queueLength
+     * @param int $queueLength
      *
      * @return static
      */
-    protected function setQueueLength($queueLength)
+    protected function setQueueLength(int $queueLength): TpCdrStatInterface
     {
-        Assertion::notNull($queueLength, 'queueLength value "%s" is null, but non null value was expected.');
-        Assertion::integerish($queueLength, 'queueLength value "%s" is not an integer or a number castable to integer.');
-
-        $this->queueLength = (int) $queueLength;
+        $this->queueLength = $queueLength;
 
         return $this;
     }
@@ -537,7 +533,7 @@ abstract class TpCdrStatAbstract
     /**
      * Get queueLength
      *
-     * @return integer
+     * @return int
      */
     public function getQueueLength(): int
     {
@@ -551,9 +547,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setTimeWindow($timeWindow)
+    protected function setTimeWindow(string $timeWindow): TpCdrStatInterface
     {
-        Assertion::notNull($timeWindow, 'timeWindow value "%s" is null, but non null value was expected.');
         Assertion::maxLength($timeWindow, 8, 'timeWindow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->timeWindow = $timeWindow;
@@ -578,9 +573,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setSaveInterval($saveInterval)
+    protected function setSaveInterval(string $saveInterval): TpCdrStatInterface
     {
-        Assertion::notNull($saveInterval, 'saveInterval value "%s" is null, but non null value was expected.');
         Assertion::maxLength($saveInterval, 8, 'saveInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->saveInterval = $saveInterval;
@@ -605,9 +599,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setMetrics($metrics)
+    protected function setMetrics(string $metrics): TpCdrStatInterface
     {
-        Assertion::notNull($metrics, 'metrics value "%s" is null, but non null value was expected.');
         Assertion::maxLength($metrics, 64, 'metrics value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->metrics = $metrics;
@@ -632,9 +625,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setSetupInterval($setupInterval)
+    protected function setSetupInterval(string $setupInterval): TpCdrStatInterface
     {
-        Assertion::notNull($setupInterval, 'setupInterval value "%s" is null, but non null value was expected.');
         Assertion::maxLength($setupInterval, 64, 'setupInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->setupInterval = $setupInterval;
@@ -659,9 +651,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setTors($tors)
+    protected function setTors(string $tors): TpCdrStatInterface
     {
-        Assertion::notNull($tors, 'tors value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tors, 64, 'tors value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tors = $tors;
@@ -686,9 +677,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setCdrHosts($cdrHosts)
+    protected function setCdrHosts(string $cdrHosts): TpCdrStatInterface
     {
-        Assertion::notNull($cdrHosts, 'cdrHosts value "%s" is null, but non null value was expected.');
         Assertion::maxLength($cdrHosts, 64, 'cdrHosts value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->cdrHosts = $cdrHosts;
@@ -713,9 +703,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setCdrSources($cdrSources)
+    protected function setCdrSources(string $cdrSources): TpCdrStatInterface
     {
-        Assertion::notNull($cdrSources, 'cdrSources value "%s" is null, but non null value was expected.');
         Assertion::maxLength($cdrSources, 64, 'cdrSources value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->cdrSources = $cdrSources;
@@ -740,9 +729,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setReqTypes($reqTypes)
+    protected function setReqTypes(string $reqTypes): TpCdrStatInterface
     {
-        Assertion::notNull($reqTypes, 'reqTypes value "%s" is null, but non null value was expected.');
         Assertion::maxLength($reqTypes, 64, 'reqTypes value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->reqTypes = $reqTypes;
@@ -767,9 +755,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setDirections($directions)
+    protected function setDirections(string $directions): TpCdrStatInterface
     {
-        Assertion::notNull($directions, 'directions value "%s" is null, but non null value was expected.');
         Assertion::maxLength($directions, 8, 'directions value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->directions = $directions;
@@ -794,9 +781,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setTenants($tenants)
+    protected function setTenants(string $tenants): TpCdrStatInterface
     {
-        Assertion::notNull($tenants, 'tenants value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tenants, 64, 'tenants value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tenants = $tenants;
@@ -821,9 +807,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setCategories($categories)
+    protected function setCategories(string $categories): TpCdrStatInterface
     {
-        Assertion::notNull($categories, 'categories value "%s" is null, but non null value was expected.');
         Assertion::maxLength($categories, 32, 'categories value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->categories = $categories;
@@ -848,9 +833,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setAccounts($accounts)
+    protected function setAccounts(string $accounts): TpCdrStatInterface
     {
-        Assertion::notNull($accounts, 'accounts value "%s" is null, but non null value was expected.');
         Assertion::maxLength($accounts, 32, 'accounts value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->accounts = $accounts;
@@ -875,9 +859,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setSubjects($subjects)
+    protected function setSubjects(string $subjects): TpCdrStatInterface
     {
-        Assertion::notNull($subjects, 'subjects value "%s" is null, but non null value was expected.');
         Assertion::maxLength($subjects, 64, 'subjects value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->subjects = $subjects;
@@ -902,9 +885,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setDestinationIds($destinationIds)
+    protected function setDestinationIds(string $destinationIds): TpCdrStatInterface
     {
-        Assertion::notNull($destinationIds, 'destinationIds value "%s" is null, but non null value was expected.');
         Assertion::maxLength($destinationIds, 64, 'destinationIds value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->destinationIds = $destinationIds;
@@ -929,9 +911,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setPpdInterval($ppdInterval)
+    protected function setPpdInterval(string $ppdInterval): TpCdrStatInterface
     {
-        Assertion::notNull($ppdInterval, 'ppdInterval value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ppdInterval, 64, 'ppdInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ppdInterval = $ppdInterval;
@@ -956,9 +937,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setUsageInterval($usageInterval)
+    protected function setUsageInterval(string $usageInterval): TpCdrStatInterface
     {
-        Assertion::notNull($usageInterval, 'usageInterval value "%s" is null, but non null value was expected.');
         Assertion::maxLength($usageInterval, 64, 'usageInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->usageInterval = $usageInterval;
@@ -983,9 +963,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setSuppliers($suppliers)
+    protected function setSuppliers(string $suppliers): TpCdrStatInterface
     {
-        Assertion::notNull($suppliers, 'suppliers value "%s" is null, but non null value was expected.');
         Assertion::maxLength($suppliers, 64, 'suppliers value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->suppliers = $suppliers;
@@ -1010,9 +989,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setDisconnectCauses($disconnectCauses)
+    protected function setDisconnectCauses(string $disconnectCauses): TpCdrStatInterface
     {
-        Assertion::notNull($disconnectCauses, 'disconnectCauses value "%s" is null, but non null value was expected.');
         Assertion::maxLength($disconnectCauses, 64, 'disconnectCauses value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->disconnectCauses = $disconnectCauses;
@@ -1037,9 +1015,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setMediationRunids($mediationRunids)
+    protected function setMediationRunids(string $mediationRunids): TpCdrStatInterface
     {
-        Assertion::notNull($mediationRunids, 'mediationRunids value "%s" is null, but non null value was expected.');
         Assertion::maxLength($mediationRunids, 64, 'mediationRunids value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->mediationRunids = $mediationRunids;
@@ -1064,9 +1041,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setRatedAccounts($ratedAccounts)
+    protected function setRatedAccounts(string $ratedAccounts): TpCdrStatInterface
     {
-        Assertion::notNull($ratedAccounts, 'ratedAccounts value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ratedAccounts, 32, 'ratedAccounts value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ratedAccounts = $ratedAccounts;
@@ -1091,9 +1067,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setRatedSubjects($ratedSubjects)
+    protected function setRatedSubjects(string $ratedSubjects): TpCdrStatInterface
     {
-        Assertion::notNull($ratedSubjects, 'ratedSubjects value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ratedSubjects, 64, 'ratedSubjects value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ratedSubjects = $ratedSubjects;
@@ -1118,9 +1093,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setCostInterval($costInterval)
+    protected function setCostInterval(string $costInterval): TpCdrStatInterface
     {
-        Assertion::notNull($costInterval, 'costInterval value "%s" is null, but non null value was expected.');
         Assertion::maxLength($costInterval, 24, 'costInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->costInterval = $costInterval;
@@ -1145,9 +1119,8 @@ abstract class TpCdrStatAbstract
      *
      * @return static
      */
-    protected function setActionTriggers($actionTriggers)
+    protected function setActionTriggers(string $actionTriggers): TpCdrStatInterface
     {
-        Assertion::notNull($actionTriggers, 'actionTriggers value "%s" is null, but non null value was expected.');
         Assertion::maxLength($actionTriggers, 64, 'actionTriggers value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->actionTriggers = $actionTriggers;
@@ -1168,14 +1141,14 @@ abstract class TpCdrStatAbstract
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt
      *
      * @return static
      */
-    protected function setCreatedAt($createdAt)
+    protected function setCreatedAt($createdAt): TpCdrStatInterface
     {
-        Assertion::notNull($createdAt, 'createdAt value "%s" is null, but non null value was expected.');
-        $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
@@ -1192,9 +1165,9 @@ abstract class TpCdrStatAbstract
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }
@@ -1202,11 +1175,11 @@ abstract class TpCdrStatAbstract
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param CarrierInterface
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier)
+    public function setCarrier(CarrierInterface $carrier): TpCdrStatInterface
     {
         $this->carrier = $carrier;
 
@@ -1216,12 +1189,11 @@ abstract class TpCdrStatAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return CarrierInterface
      */
-    public function getCarrier()
+    public function getCarrier(): CarrierInterface
     {
         return $this->carrier;
     }
 
-    // @codeCoverageIgnoreEnd
 }

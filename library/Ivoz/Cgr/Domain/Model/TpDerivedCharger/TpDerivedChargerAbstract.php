@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Cgr\Domain\Model\TpDerivedCharger;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 
 /**
- * TpDerivedChargerAbstract
- * @codeCoverageIgnore
- */
+* TpDerivedChargerAbstract
+* @codeCoverageIgnore
+*/
 abstract class TpDerivedChargerAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -157,17 +163,14 @@ abstract class TpDerivedChargerAbstract
 
     /**
      * column: created_at
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
-    protected $createdAt;
+    protected $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var Brand
      */
     protected $brand;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -288,7 +291,7 @@ abstract class TpDerivedChargerAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TpDerivedChargerDto::class);
 
@@ -322,8 +325,7 @@ abstract class TpDerivedChargerAbstract
         $self
             ->setSubject($dto->getSubject())
             ->setDestinationIds($dto->getDestinationIds())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-        ;
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
         $self->initChangelog();
 
@@ -337,7 +339,7 @@ abstract class TpDerivedChargerAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TpDerivedChargerDto::class);
 
@@ -369,8 +371,6 @@ abstract class TpDerivedChargerAbstract
             ->setCostField($dto->getCostField())
             ->setCreatedAt($dto->getCreatedAt())
             ->setBrand($fkTransformer->transform($dto->getBrand()));
-
-
 
         return $this;
     }
@@ -409,7 +409,7 @@ abstract class TpDerivedChargerAbstract
             ->setRatedTimeField(self::getRatedTimeField())
             ->setCostField(self::getCostField())
             ->setCreatedAt(self::getCreatedAt())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**
@@ -447,7 +447,6 @@ abstract class TpDerivedChargerAbstract
             'brandId' => self::getBrand()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set tpid
@@ -456,9 +455,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setTpid($tpid)
+    protected function setTpid(string $tpid): TpDerivedChargerInterface
     {
-        Assertion::notNull($tpid, 'tpid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tpid = $tpid;
@@ -483,9 +481,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setLoadid($loadid)
+    protected function setLoadid(string $loadid): TpDerivedChargerInterface
     {
-        Assertion::notNull($loadid, 'loadid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($loadid, 64, 'loadid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->loadid = $loadid;
@@ -510,9 +507,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setDirection($direction)
+    protected function setDirection(string $direction): TpDerivedChargerInterface
     {
-        Assertion::notNull($direction, 'direction value "%s" is null, but non null value was expected.');
         Assertion::maxLength($direction, 8, 'direction value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->direction = $direction;
@@ -537,9 +533,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setTenant($tenant)
+    protected function setTenant(string $tenant): TpDerivedChargerInterface
     {
-        Assertion::notNull($tenant, 'tenant value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tenant, 64, 'tenant value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tenant = $tenant;
@@ -564,9 +559,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setCategory($category)
+    protected function setCategory(string $category): TpDerivedChargerInterface
     {
-        Assertion::notNull($category, 'category value "%s" is null, but non null value was expected.');
         Assertion::maxLength($category, 32, 'category value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->category = $category;
@@ -591,9 +585,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setAccount($account)
+    protected function setAccount(string $account): TpDerivedChargerInterface
     {
-        Assertion::notNull($account, 'account value "%s" is null, but non null value was expected.');
         Assertion::maxLength($account, 64, 'account value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->account = $account;
@@ -618,7 +611,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setSubject($subject = null)
+    protected function setSubject(?string $subject = null): TpDerivedChargerInterface
     {
         if (!is_null($subject)) {
             Assertion::maxLength($subject, 64, 'subject value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -634,7 +627,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string | null
      */
-    public function getSubject()
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
@@ -646,7 +639,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setDestinationIds($destinationIds = null)
+    protected function setDestinationIds(?string $destinationIds = null): TpDerivedChargerInterface
     {
         if (!is_null($destinationIds)) {
             Assertion::maxLength($destinationIds, 64, 'destinationIds value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -662,7 +655,7 @@ abstract class TpDerivedChargerAbstract
      *
      * @return string | null
      */
-    public function getDestinationIds()
+    public function getDestinationIds(): ?string
     {
         return $this->destinationIds;
     }
@@ -674,9 +667,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setRunid($runid)
+    protected function setRunid(string $runid): TpDerivedChargerInterface
     {
-        Assertion::notNull($runid, 'runid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($runid, 64, 'runid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->runid = $runid;
@@ -701,9 +693,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setRunFilters($runFilters)
+    protected function setRunFilters(string $runFilters): TpDerivedChargerInterface
     {
-        Assertion::notNull($runFilters, 'runFilters value "%s" is null, but non null value was expected.');
         Assertion::maxLength($runFilters, 32, 'runFilters value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->runFilters = $runFilters;
@@ -728,9 +719,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setReqTypeField($reqTypeField)
+    protected function setReqTypeField(string $reqTypeField): TpDerivedChargerInterface
     {
-        Assertion::notNull($reqTypeField, 'reqTypeField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($reqTypeField, 64, 'reqTypeField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->reqTypeField = $reqTypeField;
@@ -755,9 +745,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setDirectionField($directionField)
+    protected function setDirectionField(string $directionField): TpDerivedChargerInterface
     {
-        Assertion::notNull($directionField, 'directionField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($directionField, 64, 'directionField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->directionField = $directionField;
@@ -782,9 +771,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setTenantField($tenantField)
+    protected function setTenantField(string $tenantField): TpDerivedChargerInterface
     {
-        Assertion::notNull($tenantField, 'tenantField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tenantField, 64, 'tenantField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tenantField = $tenantField;
@@ -809,9 +797,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setCategoryField($categoryField)
+    protected function setCategoryField(string $categoryField): TpDerivedChargerInterface
     {
-        Assertion::notNull($categoryField, 'categoryField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($categoryField, 64, 'categoryField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->categoryField = $categoryField;
@@ -836,9 +823,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setAccountField($accountField)
+    protected function setAccountField(string $accountField): TpDerivedChargerInterface
     {
-        Assertion::notNull($accountField, 'accountField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($accountField, 64, 'accountField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->accountField = $accountField;
@@ -863,9 +849,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setSubjectField($subjectField)
+    protected function setSubjectField(string $subjectField): TpDerivedChargerInterface
     {
-        Assertion::notNull($subjectField, 'subjectField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($subjectField, 64, 'subjectField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->subjectField = $subjectField;
@@ -890,9 +875,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setDestinationField($destinationField)
+    protected function setDestinationField(string $destinationField): TpDerivedChargerInterface
     {
-        Assertion::notNull($destinationField, 'destinationField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($destinationField, 64, 'destinationField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->destinationField = $destinationField;
@@ -917,9 +901,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setSetupTimeField($setupTimeField)
+    protected function setSetupTimeField(string $setupTimeField): TpDerivedChargerInterface
     {
-        Assertion::notNull($setupTimeField, 'setupTimeField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($setupTimeField, 64, 'setupTimeField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->setupTimeField = $setupTimeField;
@@ -944,9 +927,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setPddField($pddField)
+    protected function setPddField(string $pddField): TpDerivedChargerInterface
     {
-        Assertion::notNull($pddField, 'pddField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($pddField, 64, 'pddField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->pddField = $pddField;
@@ -971,9 +953,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setAnswerTimeField($answerTimeField)
+    protected function setAnswerTimeField(string $answerTimeField): TpDerivedChargerInterface
     {
-        Assertion::notNull($answerTimeField, 'answerTimeField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($answerTimeField, 64, 'answerTimeField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->answerTimeField = $answerTimeField;
@@ -998,9 +979,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setUsageField($usageField)
+    protected function setUsageField(string $usageField): TpDerivedChargerInterface
     {
-        Assertion::notNull($usageField, 'usageField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($usageField, 64, 'usageField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->usageField = $usageField;
@@ -1025,9 +1005,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setSupplierField($supplierField)
+    protected function setSupplierField(string $supplierField): TpDerivedChargerInterface
     {
-        Assertion::notNull($supplierField, 'supplierField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($supplierField, 64, 'supplierField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->supplierField = $supplierField;
@@ -1052,9 +1031,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setDisconnectCauseField($disconnectCauseField)
+    protected function setDisconnectCauseField(string $disconnectCauseField): TpDerivedChargerInterface
     {
-        Assertion::notNull($disconnectCauseField, 'disconnectCauseField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($disconnectCauseField, 64, 'disconnectCauseField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->disconnectCauseField = $disconnectCauseField;
@@ -1079,9 +1057,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setRatedTimeField($ratedTimeField)
+    protected function setRatedTimeField(string $ratedTimeField): TpDerivedChargerInterface
     {
-        Assertion::notNull($ratedTimeField, 'ratedTimeField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ratedTimeField, 64, 'ratedTimeField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ratedTimeField = $ratedTimeField;
@@ -1106,9 +1083,8 @@ abstract class TpDerivedChargerAbstract
      *
      * @return static
      */
-    protected function setCostField($costField)
+    protected function setCostField(string $costField): TpDerivedChargerInterface
     {
-        Assertion::notNull($costField, 'costField value "%s" is null, but non null value was expected.');
         Assertion::maxLength($costField, 64, 'costField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->costField = $costField;
@@ -1129,14 +1105,14 @@ abstract class TpDerivedChargerAbstract
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt
      *
      * @return static
      */
-    protected function setCreatedAt($createdAt)
+    protected function setCreatedAt($createdAt): TpDerivedChargerInterface
     {
-        Assertion::notNull($createdAt, 'createdAt value "%s" is null, but non null value was expected.');
-        $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
@@ -1153,9 +1129,9 @@ abstract class TpDerivedChargerAbstract
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }
@@ -1163,11 +1139,11 @@ abstract class TpDerivedChargerAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param Brand
      *
      * @return static
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(Brand $brand): TpDerivedChargerInterface
     {
         $this->brand = $brand;
 
@@ -1177,12 +1153,11 @@ abstract class TpDerivedChargerAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return Brand
      */
-    public function getBrand()
+    public function getBrand(): Brand
     {
         return $this->brand;
     }
 
-    // @codeCoverageIgnoreEnd
 }
