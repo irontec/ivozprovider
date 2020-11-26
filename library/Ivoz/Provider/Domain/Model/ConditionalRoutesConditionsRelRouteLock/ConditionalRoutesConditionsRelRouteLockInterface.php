@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock;
 
+use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
+use Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ConditionalRoutesConditionsRelRouteLockInterface
+*/
 interface ConditionalRoutesConditionsRelRouteLockInterface extends LoggableEntityInterface
 {
     /**
@@ -15,28 +20,29 @@ interface ConditionalRoutesConditionsRelRouteLockInterface extends LoggableEntit
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
+     * @param ConditionalRoutesConditionInterface | null
      *
      * @return static
      */
-    public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null);
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelRouteLockInterface;
 
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
+     * @return ConditionalRoutesConditionInterface | null
      */
-    public function getCondition();
+    public function getCondition(): ?ConditionalRoutesConditionInterface;
 
     /**
      * Get routeLock
      *
-     * @return \Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface
+     * @return RouteLockInterface
      */
-    public function getRouteLock();
+    public function getRouteLock(): RouteLockInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

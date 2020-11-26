@@ -2,10 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\Domain;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* DomainInterface
+*/
 interface DomainInterface extends LoggableEntityInterface
 {
     /**
@@ -33,7 +39,7 @@ interface DomainInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * @return bool
@@ -43,93 +49,103 @@ interface DomainInterface extends LoggableEntityInterface
     /**
      * Add friend
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
+     * @param FriendInterface $friend
      *
      * @return static
      */
-    public function addFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend);
+    public function addFriend(FriendInterface $friend): DomainInterface;
 
     /**
      * Remove friend
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
+     * @param FriendInterface $friend
+     *
+     * @return static
      */
-    public function removeFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend);
+    public function removeFriend(FriendInterface $friend): DomainInterface;
 
     /**
      * Replace friends
      *
-     * @param ArrayCollection $friends of Ivoz\Provider\Domain\Model\Friend\FriendInterface
+     * @param ArrayCollection $friends of FriendInterface
+     *
      * @return static
      */
-    public function replaceFriends(ArrayCollection $friends);
+    public function replaceFriends(ArrayCollection $friends): DomainInterface;
 
     /**
      * Get friends
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface[]
+     * @return FriendInterface[]
      */
-    public function getFriends(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getFriends(?Criteria $criteria = null): array;
 
     /**
      * Add residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     * @param ResidentialDeviceInterface $residentialDevice
      *
      * @return static
      */
-    public function addResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice);
+    public function addResidentialDevice(ResidentialDeviceInterface $residentialDevice): DomainInterface;
 
     /**
      * Remove residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     * @param ResidentialDeviceInterface $residentialDevice
+     *
+     * @return static
      */
-    public function removeResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice);
+    public function removeResidentialDevice(ResidentialDeviceInterface $residentialDevice): DomainInterface;
 
     /**
      * Replace residentialDevices
      *
-     * @param ArrayCollection $residentialDevices of Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     * @param ArrayCollection $residentialDevices of ResidentialDeviceInterface
+     *
      * @return static
      */
-    public function replaceResidentialDevices(ArrayCollection $residentialDevices);
+    public function replaceResidentialDevices(ArrayCollection $residentialDevices): DomainInterface;
 
     /**
      * Get residentialDevices
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[]
+     * @return ResidentialDeviceInterface[]
      */
-    public function getResidentialDevices(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getResidentialDevices(?Criteria $criteria = null): array;
 
     /**
      * Add terminal
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
+     * @param TerminalInterface $terminal
      *
      * @return static
      */
-    public function addTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal);
+    public function addTerminal(TerminalInterface $terminal): DomainInterface;
 
     /**
      * Remove terminal
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
+     * @param TerminalInterface $terminal
+     *
+     * @return static
      */
-    public function removeTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal);
+    public function removeTerminal(TerminalInterface $terminal): DomainInterface;
 
     /**
      * Replace terminals
      *
-     * @param ArrayCollection $terminals of Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
+     * @param ArrayCollection $terminals of TerminalInterface
+     *
      * @return static
      */
-    public function replaceTerminals(ArrayCollection $terminals);
+    public function replaceTerminals(ArrayCollection $terminals): DomainInterface;
 
     /**
      * Get terminals
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[]
+     * @return TerminalInterface[]
      */
-    public function getTerminals(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getTerminals(?Criteria $criteria = null): array;
+
 }

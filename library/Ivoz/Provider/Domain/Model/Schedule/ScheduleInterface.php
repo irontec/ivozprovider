@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\Schedule;
 
+use DateTime;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ScheduleInterface
+*/
 interface ScheduleInterface extends LoggableEntityInterface
 {
     /**
@@ -18,7 +23,7 @@ interface ScheduleInterface extends LoggableEntityInterface
      * @param \DateTime $time Current time in Client's Timezone
      * @return bool
      */
-    public function isOnSchedule(\DateTime $time);
+    public function isOnSchedule(DateTime $time);
 
     /**
      * Get name
@@ -30,75 +35,76 @@ interface ScheduleInterface extends LoggableEntityInterface
     /**
      * Get timeIn
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getTimeIn(): \DateTime;
+    public function getTimeIn(): \DateTimeInterface;
 
     /**
      * Get timeout
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getTimeout(): \DateTime;
+    public function getTimeout(): \DateTimeInterface;
 
     /**
      * Get monday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getMonday();
+    public function getMonday(): ?bool;
 
     /**
      * Get tuesday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getTuesday();
+    public function getTuesday(): ?bool;
 
     /**
      * Get wednesday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getWednesday();
+    public function getWednesday(): ?bool;
 
     /**
      * Get thursday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getThursday();
+    public function getThursday(): ?bool;
 
     /**
      * Get friday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getFriday();
+    public function getFriday(): ?bool;
 
     /**
      * Get saturday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSaturday();
+    public function getSaturday(): ?bool;
 
     /**
      * Get sunday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSunday();
+    public function getSunday(): ?bool;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany();
+    public function getCompany(): CompanyInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

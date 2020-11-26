@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\SpecialNumber;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* SpecialNumberInterface
+*/
 interface SpecialNumberInterface extends LoggableEntityInterface
 {
     /**
@@ -24,31 +29,32 @@ interface SpecialNumberInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getNumberE164();
+    public function getNumberE164(): ?string;
 
     /**
      * Get disableCDR
      *
-     * @return integer
+     * @return int
      */
     public function getDisableCDR(): int;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand();
+    public function getBrand(): ?BrandInterface;
 
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return CountryInterface
      */
-    public function getCountry();
+    public function getCountry(): CountryInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

@@ -2,17 +2,23 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern;
 
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
+use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* OutgoingDdiRulesPatternInterface
+*/
 interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
 {
     const TYPE_PREFIX = 'prefix';
+
     const TYPE_DESTINATION = 'destination';
 
-
     const ACTION_KEEP = 'keep';
-    const ACTION_FORCE = 'force';
 
+    const ACTION_FORCE = 'force';
 
     /**
      * @codeCoverageIgnore
@@ -24,7 +30,7 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
      * Return forced Ddi for this rule pattern
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
-    public function getForcedDdi();
+    public function getForcedDdi(): DdiInterface;
 
     /**
      * Get type
@@ -38,7 +44,7 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getPrefix();
+    public function getPrefix(): ?string;
 
     /**
      * Get action
@@ -50,35 +56,36 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
     /**
      * Get priority
      *
-     * @return integer
+     * @return int
      */
     public function getPriority(): int;
 
     /**
      * Set outgoingDdiRule
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule
+     * @param OutgoingDdiRuleInterface
      *
      * @return static
      */
-    public function setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface $outgoingDdiRule);
+    public function setOutgoingDdiRule(OutgoingDdiRuleInterface $outgoingDdiRule): OutgoingDdiRulesPatternInterface;
 
     /**
      * Get outgoingDdiRule
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface
+     * @return OutgoingDdiRuleInterface
      */
-    public function getOutgoingDdiRule();
+    public function getOutgoingDdiRule(): OutgoingDdiRuleInterface;
 
     /**
      * Get matchList
      *
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface | null
+     * @return MatchListInterface | null
      */
-    public function getMatchList();
+    public function getMatchList(): ?MatchListInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

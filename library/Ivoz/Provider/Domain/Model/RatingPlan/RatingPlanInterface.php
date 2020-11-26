@@ -2,13 +2,20 @@
 
 namespace Ivoz\Provider\Domain\Model\RatingPlan;
 
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
+use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* RatingPlanInterface
+*/
 interface RatingPlanInterface extends LoggableEntityInterface
 {
     const TIMINGTYPE_ALWAYS = 'always';
-    const TIMINGTYPE_CUSTOM = 'custom';
 
+    const TIMINGTYPE_CUSTOM = 'custom';
 
     public function getChangeSet();
 
@@ -45,86 +52,86 @@ interface RatingPlanInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getTimingType();
+    public function getTimingType(): ?string;
 
     /**
      * Get timeIn
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getTimeIn(): \DateTime;
+    public function getTimeIn(): \DateTimeInterface;
 
     /**
      * Get monday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getMonday();
+    public function getMonday(): ?bool;
 
     /**
      * Get tuesday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getTuesday();
+    public function getTuesday(): ?bool;
 
     /**
      * Get wednesday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getWednesday();
+    public function getWednesday(): ?bool;
 
     /**
      * Get thursday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getThursday();
+    public function getThursday(): ?bool;
 
     /**
      * Get friday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getFriday();
+    public function getFriday(): ?bool;
 
     /**
      * Get saturday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSaturday();
+    public function getSaturday(): ?bool;
 
     /**
      * Get sunday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSunday();
+    public function getSunday(): ?bool;
 
     /**
      * Set ratingPlanGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
+     * @param RatingPlanGroupInterface
      *
      * @return static
      */
-    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup);
+    public function setRatingPlanGroup(RatingPlanGroupInterface $ratingPlanGroup): RatingPlanInterface;
 
     /**
      * Get ratingPlanGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     * @return RatingPlanGroupInterface
      */
-    public function getRatingPlanGroup();
+    public function getRatingPlanGroup(): RatingPlanGroupInterface;
 
     /**
      * Get destinationRateGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
+     * @return DestinationRateGroupInterface
      */
-    public function getDestinationRateGroup();
+    public function getDestinationRateGroup(): DestinationRateGroupInterface;
 
     /**
      * @return bool
@@ -132,34 +139,27 @@ interface RatingPlanInterface extends LoggableEntityInterface
     public function isInitialized(): bool;
 
     /**
-     * Set tpTiming
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming
-     *
-     * @return static
+     * @var TpTimingInterface
+     * mappedBy ratingPlan
      */
-    public function setTpTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming = null);
+    public function setTpTiming(TpTimingInterface $tpTiming): RatingPlanInterface;
 
     /**
      * Get tpTiming
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface | null
+     * @return TpTimingInterface
      */
-    public function getTpTiming();
+    public function getTpTiming(): ?TpTimingInterface;
 
     /**
-     * Set tpRatingPlan
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan
-     *
-     * @return static
+     * @var TpRatingPlanInterface
+     * mappedBy ratingPlan
      */
-    public function setTpRatingPlan(\Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan = null);
+    public function setTpRatingPlan(TpRatingPlanInterface $tpRatingPlan): RatingPlanInterface;
 
     /**
      * Get tpRatingPlan
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface | null
+     * @return TpRatingPlanInterface
      */
-    public function getTpRatingPlan();
+    public function getTpRatingPlan(): ?TpRatingPlanInterface;
+
 }

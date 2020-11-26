@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Service;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ServiceInterface
+*/
 interface ServiceInterface extends LoggableEntityInterface
 {
     /**
@@ -15,7 +18,7 @@ interface ServiceInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setDefaultCode($defaultCode);
+    public function setDefaultCode(string $defaultCode): ServiceInterface;
 
     /**
      * Get iden
@@ -34,26 +37,27 @@ interface ServiceInterface extends LoggableEntityInterface
     /**
      * Get extraArgs
      *
-     * @return boolean
+     * @return bool
      */
     public function getExtraArgs(): bool;
 
     /**
      * Get name
      *
-     * @return \Ivoz\Provider\Domain\Model\Service\Name
+     * @return Name
      */
-    public function getName();
+    public function getName(): Name;
 
     /**
      * Get description
      *
-     * @return \Ivoz\Provider\Domain\Model\Service\Description
+     * @return Description
      */
-    public function getDescription();
+    public function getDescription(): Description;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

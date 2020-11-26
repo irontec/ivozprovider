@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\BalanceMovement;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* BalanceMovementInterface
+*/
 interface BalanceMovementInterface extends LoggableEntityInterface
 {
     /**
@@ -17,38 +22,39 @@ interface BalanceMovementInterface extends LoggableEntityInterface
      *
      * @return float | null
      */
-    public function getAmount();
+    public function getAmount(): ?float;
 
     /**
      * Get balance
      *
      * @return float | null
      */
-    public function getBalance();
+    public function getBalance(): ?float;
 
     /**
      * Get createdOn
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getCreatedOn();
+    public function getCreatedOn(): ?\DateTimeInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany();
+    public function getCompany(): ?CompanyInterface;
 
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
+     * @return CarrierInterface | null
      */
-    public function getCarrier();
+    public function getCarrier(): ?CarrierInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

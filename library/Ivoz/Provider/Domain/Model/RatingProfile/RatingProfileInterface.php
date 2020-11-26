@@ -2,10 +2,18 @@
 
 namespace Ivoz\Provider\Domain\Model\RatingProfile;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
+use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* RatingProfileInterface
+*/
 interface RatingProfileInterface extends LoggableEntityInterface
 {
     /**
@@ -24,55 +32,55 @@ interface RatingProfileInterface extends LoggableEntityInterface
     /**
      * Get activationTime
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getActivationTime(): \DateTime;
+    public function getActivationTime(): \DateTimeInterface;
 
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
+     * @param CompanyInterface | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
+    public function setCompany(?CompanyInterface $company = null): RatingProfileInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany();
+    public function getCompany(): ?CompanyInterface;
 
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
+     * @param CarrierInterface | null
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
+    public function setCarrier(?CarrierInterface $carrier = null): RatingProfileInterface;
 
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
+     * @return CarrierInterface | null
      */
-    public function getCarrier();
+    public function getCarrier(): ?CarrierInterface;
 
     /**
      * Get ratingPlanGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     * @return RatingPlanGroupInterface
      */
-    public function getRatingPlanGroup();
+    public function getRatingPlanGroup(): RatingPlanGroupInterface;
 
     /**
      * Get routingTag
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
+     * @return RoutingTagInterface | null
      */
-    public function getRoutingTag();
+    public function getRoutingTag(): ?RoutingTagInterface;
 
     /**
      * @return bool
@@ -82,31 +90,35 @@ interface RatingProfileInterface extends LoggableEntityInterface
     /**
      * Add tpRatingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
+     * @param TpRatingProfileInterface $tpRatingProfile
      *
      * @return static
      */
-    public function addTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile);
+    public function addTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): RatingProfileInterface;
 
     /**
      * Remove tpRatingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
+     * @param TpRatingProfileInterface $tpRatingProfile
+     *
+     * @return static
      */
-    public function removeTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile);
+    public function removeTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): RatingProfileInterface;
 
     /**
      * Replace tpRatingProfiles
      *
-     * @param ArrayCollection $tpRatingProfiles of Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
+     * @param ArrayCollection $tpRatingProfiles of TpRatingProfileInterface
+     *
      * @return static
      */
-    public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles);
+    public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles): RatingProfileInterface;
 
     /**
      * Get tpRatingProfiles
      * @param Criteria | null $criteria
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
+     * @return TpRatingProfileInterface[]
      */
-    public function getTpRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getTpRatingProfiles(?Criteria $criteria = null): array;
+
 }

@@ -2,8 +2,14 @@
 
 namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* CarrierServerInterface
+*/
 interface CarrierServerInterface extends LoggableEntityInterface
 {
     /**
@@ -14,7 +20,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setIp($ip = null);
+    public function setIp(string $ip = null): CarrierServerInterface;
 
     public function getName();
 
@@ -23,49 +29,49 @@ interface CarrierServerInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getIp();
+    public function getIp(): ?string;
 
     /**
      * Get hostname
      *
      * @return string | null
      */
-    public function getHostname();
+    public function getHostname(): ?string;
 
     /**
      * Get port
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getPort();
+    public function getPort(): ?int;
 
     /**
      * Get uriScheme
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getUriScheme();
+    public function getUriScheme(): ?int;
 
     /**
      * Get transport
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getTransport();
+    public function getTransport(): ?int;
 
     /**
      * Get sendPAI
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSendPAI();
+    public function getSendPAI(): ?bool;
 
     /**
      * Get sendRPID
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSendRPID();
+    public function getSendRPID(): ?bool;
 
     /**
      * Get authNeeded
@@ -79,75 +85,81 @@ interface CarrierServerInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getAuthUser();
+    public function getAuthUser(): ?string;
 
     /**
      * Get authPassword
      *
      * @return string | null
      */
-    public function getAuthPassword();
+    public function getAuthPassword(): ?string;
 
     /**
      * Get sipProxy
      *
      * @return string | null
      */
-    public function getSipProxy();
+    public function getSipProxy(): ?string;
 
     /**
      * Get outboundProxy
      *
      * @return string | null
      */
-    public function getOutboundProxy();
+    public function getOutboundProxy(): ?string;
 
     /**
      * Get fromUser
      *
      * @return string | null
      */
-    public function getFromUser();
+    public function getFromUser(): ?string;
 
     /**
      * Get fromDomain
      *
      * @return string | null
      */
-    public function getFromDomain();
-
-    /**
-     * Get lcrGateway
-     *
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface | null
-     */
-    public function getLcrGateway();
+    public function getFromDomain(): ?string;
 
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param CarrierInterface
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier);
+    public function setCarrier(CarrierInterface $carrier): CarrierServerInterface;
 
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return CarrierInterface
      */
-    public function getCarrier();
+    public function getCarrier(): CarrierInterface;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand();
+    public function getBrand(): BrandInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
+    /**
+     * @var TrunksLcrGatewayInterface
+     * mappedBy carrierServer
+     */
+    public function setLcrGateway(TrunksLcrGatewayInterface $lcrGateway): CarrierServerInterface;
+
+    /**
+     * Get lcrGateway
+     * @return TrunksLcrGatewayInterface
+     */
+    public function getLcrGateway(): ?TrunksLcrGatewayInterface;
+
 }

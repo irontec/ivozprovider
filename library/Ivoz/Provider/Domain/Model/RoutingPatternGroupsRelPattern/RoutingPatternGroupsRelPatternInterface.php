@@ -2,46 +2,53 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern;
 
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* RoutingPatternGroupsRelPatternInterface
+*/
 interface RoutingPatternGroupsRelPatternInterface extends LoggableEntityInterface
 {
+
     public function getChangeSet();
 
     /**
      * Set routingPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern | null
+     * @param RoutingPatternInterface | null
      *
      * @return static
      */
-    public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern = null);
+    public function setRoutingPattern(?RoutingPatternInterface $routingPattern = null): RoutingPatternGroupsRelPatternInterface;
 
     /**
      * Get routingPattern
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface | null
+     * @return RoutingPatternInterface | null
      */
-    public function getRoutingPattern();
+    public function getRoutingPattern(): ?RoutingPatternInterface;
 
     /**
      * Set routingPatternGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup | null
+     * @param RoutingPatternGroupInterface | null
      *
      * @return static
      */
-    public function setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup = null);
+    public function setRoutingPatternGroup(?RoutingPatternGroupInterface $routingPatternGroup = null): RoutingPatternGroupsRelPatternInterface;
 
     /**
      * Get routingPatternGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface | null
+     * @return RoutingPatternGroupInterface | null
      */
-    public function getRoutingPatternGroup();
+    public function getRoutingPatternGroup(): ?RoutingPatternGroupInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

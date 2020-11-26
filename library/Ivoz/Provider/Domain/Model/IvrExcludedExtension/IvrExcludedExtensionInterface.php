@@ -2,37 +2,44 @@
 
 namespace Ivoz\Provider\Domain\Model\IvrExcludedExtension;
 
+use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* IvrExcludedExtensionInterface
+*/
 interface IvrExcludedExtensionInterface extends LoggableEntityInterface
 {
+
     public function getChangeSet();
 
     /**
      * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr | null
+     * @param IvrInterface | null
      *
      * @return static
      */
-    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null);
+    public function setIvr(?IvrInterface $ivr = null): IvrExcludedExtensionInterface;
 
     /**
      * Get ivr
      *
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
+     * @return IvrInterface | null
      */
-    public function getIvr();
+    public function getIvr(): ?IvrInterface;
 
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return ExtensionInterface
      */
-    public function getExtension();
+    public function getExtension(): ExtensionInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

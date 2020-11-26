@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar;
 
+use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
+use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ConditionalRoutesConditionsRelCalendarInterface
+*/
 interface ConditionalRoutesConditionsRelCalendarInterface extends LoggableEntityInterface
 {
     /**
@@ -15,28 +20,29 @@ interface ConditionalRoutesConditionsRelCalendarInterface extends LoggableEntity
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
+     * @param ConditionalRoutesConditionInterface | null
      *
      * @return static
      */
-    public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null);
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelCalendarInterface;
 
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
+     * @return ConditionalRoutesConditionInterface | null
      */
-    public function getCondition();
+    public function getCondition(): ?ConditionalRoutesConditionInterface;
 
     /**
      * Get calendar
      *
-     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
+     * @return CalendarInterface
      */
-    public function getCalendar();
+    public function getCalendar(): CalendarInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

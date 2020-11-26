@@ -2,16 +2,23 @@
 
 namespace Ivoz\Provider\Domain\Model\WebPortal;
 
-use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Core\Domain\Service\TempFile;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 
-interface WebPortalInterface extends FileContainerInterface, LoggableEntityInterface
+/**
+* WebPortalInterface
+*/
+interface WebPortalInterface extends LoggableEntityInterface, FileContainerInterface
 {
     const URLTYPE_GOD = 'god';
-    const URLTYPE_BRAND = 'brand';
-    const URLTYPE_ADMIN = 'admin';
-    const URLTYPE_USER = 'user';
 
+    const URLTYPE_BRAND = 'brand';
+
+    const URLTYPE_ADMIN = 'admin';
+
+    const URLTYPE_USER = 'user';
 
     /**
      * @codeCoverageIgnore
@@ -27,7 +34,7 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
     /**
      * {@inheritDoc}
      */
-    public function setUrl($url);
+    public function setUrl(string $url): WebPortalInterface;
 
     /**
      * Get url
@@ -41,7 +48,7 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @return string | null
      */
-    public function getKlearTheme();
+    public function getKlearTheme(): ?string;
 
     /**
      * Get urlType
@@ -55,37 +62,37 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @return string | null
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * Get userTheme
      *
      * @return string | null
      */
-    public function getUserTheme();
-
-    /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
-     */
-    public function getBrand();
+    public function getUserTheme(): ?string;
 
     /**
      * Get logo
      *
-     * @return \Ivoz\Provider\Domain\Model\WebPortal\Logo
+     * @return Logo
      */
-    public function getLogo();
+    public function getLogo(): Logo;
+
+    /**
+     * Set brand
+     *
+     * @param BrandInterface | null
+     *
+     * @return static
+     */
+    public function setBrand(?BrandInterface $brand = null): WebPortalInterface;
+
+    /**
+     * Get brand
+     *
+     * @return BrandInterface | null
+     */
+    public function getBrand(): ?BrandInterface;
 
     /**
      * @return bool
@@ -93,21 +100,15 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
     public function isInitialized(): bool;
 
     /**
-     * @param string $fldName
-     * @param \Ivoz\Core\Domain\Service\TempFile $file
-     *
      * @return void
      */
-    public function addTmpFile(string $fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+    public function addTmpFile(string $fldName, TempFile $file);
 
     /**
-     * @param \Ivoz\Core\Domain\Service\TempFile $file
-     *
      * @throws \Exception
-     *
      * @return void
      */
-    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+    public function removeTmpFile(TempFile $file);
 
     /**
      * @return \Ivoz\Core\Domain\Service\TempFile[]
@@ -119,4 +120,5 @@ interface WebPortalInterface extends FileContainerInterface, LoggableEntityInter
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
+
 }

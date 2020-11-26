@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\Fax;
 
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* FaxInterface
+*/
 interface FaxInterface extends LoggableEntityInterface
 {
     /**
@@ -12,12 +17,12 @@ interface FaxInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    public function setSendByEmail($sendByEmail);
+    public function setSendByEmail(bool $sendByEmail): FaxInterface;
 
     /**
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
-    public function getOutgoingDdi();
+    public function getOutgoingDdi(): DdiInterface;
 
     /**
      * Get name
@@ -31,24 +36,25 @@ interface FaxInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getEmail();
+    public function getEmail(): ?string;
 
     /**
      * Get sendByEmail
      *
-     * @return boolean
+     * @return bool
      */
     public function getSendByEmail(): bool;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany();
+    public function getCompany(): CompanyInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

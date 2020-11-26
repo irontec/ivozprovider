@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\ProxyUser;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ProxyUserInterface
+*/
 interface ProxyUserInterface extends LoggableEntityInterface
 {
     /**
@@ -17,17 +20,18 @@ interface ProxyUserInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * Get ip
      *
      * @return string | null
      */
-    public function getIp();
+    public function getIp(): ?string;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

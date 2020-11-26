@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist;
 
+use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
+use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ConditionalRoutesConditionsRelMatchlistInterface
+*/
 interface ConditionalRoutesConditionsRelMatchlistInterface extends LoggableEntityInterface
 {
     /**
@@ -15,28 +20,29 @@ interface ConditionalRoutesConditionsRelMatchlistInterface extends LoggableEntit
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
+     * @param ConditionalRoutesConditionInterface | null
      *
      * @return static
      */
-    public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null);
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelMatchlistInterface;
 
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
+     * @return ConditionalRoutesConditionInterface | null
      */
-    public function getCondition();
+    public function getCondition(): ?ConditionalRoutesConditionInterface;
 
     /**
      * Get matchlist
      *
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     * @return MatchListInterface
      */
-    public function getMatchlist();
+    public function getMatchlist(): MatchListInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

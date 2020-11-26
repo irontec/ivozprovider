@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\FeaturesRelBrand;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* FeaturesRelBrandInterface
+*/
 interface FeaturesRelBrandInterface extends LoggableEntityInterface
 {
     /**
@@ -15,28 +20,29 @@ interface FeaturesRelBrandInterface extends LoggableEntityInterface
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
+     * @param BrandInterface | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
+    public function setBrand(?BrandInterface $brand = null): FeaturesRelBrandInterface;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand();
+    public function getBrand(): ?BrandInterface;
 
     /**
      * Get feature
      *
-     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureInterface
+     * @return FeatureInterface
      */
-    public function getFeature();
+    public function getFeature(): FeatureInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\MaxUsageNotification;
 
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* MaxUsageNotificationInterface
+*/
 interface MaxUsageNotificationInterface extends LoggableEntityInterface
 {
     /**
@@ -17,38 +22,39 @@ interface MaxUsageNotificationInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getToAddress();
+    public function getToAddress(): ?string;
 
     /**
      * Get threshold
      *
      * @return float | null
      */
-    public function getThreshold();
+    public function getThreshold(): ?float;
 
     /**
      * Get lastSent
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getLastSent();
-
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
-     */
-    public function getCompany();
+    public function getLastSent(): ?\DateTimeInterface;
 
     /**
      * Get notificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     * @return NotificationTemplateInterface | null
      */
-    public function getNotificationTemplate();
+    public function getNotificationTemplate(): ?NotificationTemplateInterface;
+
+    /**
+     * Get company
+     *
+     * @return CompanyInterface | null
+     */
+    public function getCompany(): ?CompanyInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

@@ -2,10 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* OutgoingRoutingRelCarrierInterface
+*/
 interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
 {
     /**
@@ -17,34 +23,34 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
     /**
      * Set outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting | null
+     * @param OutgoingRoutingInterface | null
      *
      * @return static
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null);
+    public function setOutgoingRouting(?OutgoingRoutingInterface $outgoingRouting = null): OutgoingRoutingRelCarrierInterface;
 
     /**
      * Get outgoingRouting
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
+     * @return OutgoingRoutingInterface | null
      */
-    public function getOutgoingRouting();
+    public function getOutgoingRouting(): ?OutgoingRoutingInterface;
 
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param CarrierInterface
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier);
+    public function setCarrier(CarrierInterface $carrier): OutgoingRoutingRelCarrierInterface;
 
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return CarrierInterface
      */
-    public function getCarrier();
+    public function getCarrier(): CarrierInterface;
 
     /**
      * @return bool
@@ -54,31 +60,35 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
     /**
      * Add tpRatingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
+     * @param TpRatingProfileInterface $tpRatingProfile
      *
      * @return static
      */
-    public function addTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile);
+    public function addTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): OutgoingRoutingRelCarrierInterface;
 
     /**
      * Remove tpRatingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
+     * @param TpRatingProfileInterface $tpRatingProfile
+     *
+     * @return static
      */
-    public function removeTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile);
+    public function removeTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): OutgoingRoutingRelCarrierInterface;
 
     /**
      * Replace tpRatingProfiles
      *
-     * @param ArrayCollection $tpRatingProfiles of Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
+     * @param ArrayCollection $tpRatingProfiles of TpRatingProfileInterface
+     *
      * @return static
      */
-    public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles);
+    public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles): OutgoingRoutingRelCarrierInterface;
 
     /**
      * Get tpRatingProfiles
      * @param Criteria | null $criteria
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
+     * @return TpRatingProfileInterface[]
      */
-    public function getTpRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getTpRatingProfiles(?Criteria $criteria = null): array;
+
 }

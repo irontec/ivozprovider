@@ -2,8 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\FixedCost;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* FixedCostInterface
+*/
 interface FixedCostInterface extends LoggableEntityInterface
 {
     /**
@@ -24,24 +28,25 @@ interface FixedCostInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * Get cost
      *
      * @return float | null
      */
-    public function getCost();
+    public function getCost(): ?float;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand();
+    public function getBrand(): BrandInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

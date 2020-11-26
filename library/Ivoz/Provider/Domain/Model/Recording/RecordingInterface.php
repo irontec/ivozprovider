@@ -2,14 +2,19 @@
 
 namespace Ivoz\Provider\Domain\Model\Recording;
 
-use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Core\Domain\Service\TempFile;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 
-interface RecordingInterface extends FileContainerInterface, LoggableEntityInterface
+/**
+* RecordingInterface
+*/
+interface RecordingInterface extends LoggableEntityInterface, FileContainerInterface
 {
     const TYPE_ONDEMAND = 'ondemand';
-    const TYPE_DDI = 'ddi';
 
+    const TYPE_DDI = 'ddi';
 
     /**
      * @codeCoverageIgnore
@@ -27,14 +32,14 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @return string | null
      */
-    public function getCallid();
+    public function getCallid(): ?string;
 
     /**
      * Get calldate
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCalldate(): \DateTime;
+    public function getCalldate(): \DateTimeInterface;
 
     /**
      * Get type
@@ -55,44 +60,44 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
      *
      * @return string | null
      */
-    public function getCaller();
+    public function getCaller(): ?string;
 
     /**
      * Get callee
      *
      * @return string | null
      */
-    public function getCallee();
+    public function getCallee(): ?string;
 
     /**
      * Get recorder
      *
      * @return string | null
      */
-    public function getRecorder();
-
-    /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
-
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
-     */
-    public function getCompany();
+    public function getRecorder(): ?string;
 
     /**
      * Get recordedFile
      *
-     * @return \Ivoz\Provider\Domain\Model\Recording\RecordedFile
+     * @return RecordedFile
      */
-    public function getRecordedFile();
+    public function getRecordedFile(): RecordedFile;
+
+    /**
+     * Set company
+     *
+     * @param CompanyInterface
+     *
+     * @return static
+     */
+    public function setCompany(CompanyInterface $company): RecordingInterface;
+
+    /**
+     * Get company
+     *
+     * @return CompanyInterface
+     */
+    public function getCompany(): CompanyInterface;
 
     /**
      * @return bool
@@ -100,21 +105,15 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
     public function isInitialized(): bool;
 
     /**
-     * @param string $fldName
-     * @param \Ivoz\Core\Domain\Service\TempFile $file
-     *
      * @return void
      */
-    public function addTmpFile(string $fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+    public function addTmpFile(string $fldName, TempFile $file);
 
     /**
-     * @param \Ivoz\Core\Domain\Service\TempFile $file
-     *
      * @throws \Exception
-     *
      * @return void
      */
-    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+    public function removeTmpFile(TempFile $file);
 
     /**
      * @return \Ivoz\Core\Domain\Service\TempFile[]
@@ -126,4 +125,5 @@ interface RecordingInterface extends FileContainerInterface, LoggableEntityInter
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
+
 }

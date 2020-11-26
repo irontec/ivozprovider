@@ -2,8 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\RouteLock;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* RouteLockInterface
+*/
 interface RouteLockInterface extends LoggableEntityInterface
 {
     /**
@@ -36,19 +40,20 @@ interface RouteLockInterface extends LoggableEntityInterface
     /**
      * Get open
      *
-     * @return boolean
+     * @return bool
      */
     public function getOpen(): bool;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany();
+    public function getCompany(): CompanyInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

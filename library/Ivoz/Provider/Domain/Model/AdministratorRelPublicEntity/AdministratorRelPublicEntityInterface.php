@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity;
 
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
+use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* AdministratorRelPublicEntityInterface
+*/
 interface AdministratorRelPublicEntityInterface extends LoggableEntityInterface
 {
     /**
@@ -15,56 +20,57 @@ interface AdministratorRelPublicEntityInterface extends LoggableEntityInterface
     /**
      * Get create
      *
-     * @return boolean
+     * @return bool
      */
     public function getCreate(): bool;
 
     /**
      * Get read
      *
-     * @return boolean
+     * @return bool
      */
     public function getRead(): bool;
 
     /**
      * Get update
      *
-     * @return boolean
+     * @return bool
      */
     public function getUpdate(): bool;
 
     /**
      * Get delete
      *
-     * @return boolean
+     * @return bool
      */
     public function getDelete(): bool;
 
     /**
      * Set administrator
      *
-     * @param \Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface $administrator
+     * @param AdministratorInterface
      *
      * @return static
      */
-    public function setAdministrator(\Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface $administrator);
+    public function setAdministrator(AdministratorInterface $administrator): AdministratorRelPublicEntityInterface;
 
     /**
      * Get administrator
      *
-     * @return \Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface
+     * @return AdministratorInterface
      */
-    public function getAdministrator();
+    public function getAdministrator(): AdministratorInterface;
 
     /**
      * Get publicEntity
      *
-     * @return \Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface
+     * @return PublicEntityInterface
      */
-    public function getPublicEntity();
+    public function getPublicEntity(): PublicEntityInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

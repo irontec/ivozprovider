@@ -2,10 +2,22 @@
 
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
+use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
+use Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* CarrierInterface
+*/
 interface CarrierInterface extends LoggableEntityInterface
 {
     /**
@@ -46,51 +58,51 @@ interface CarrierInterface extends LoggableEntityInterface
     /**
      * Get externallyRated
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getExternallyRated();
+    public function getExternallyRated(): ?bool;
 
     /**
      * Get balance
      *
      * @return float | null
      */
-    public function getBalance();
+    public function getBalance(): ?float;
 
     /**
      * Get calculateCost
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getCalculateCost();
+    public function getCalculateCost(): ?bool;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand();
+    public function getBrand(): BrandInterface;
 
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @return TransformationRuleSetInterface | null
      */
-    public function getTransformationRuleSet();
+    public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
     /**
      * Get currency
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
+     * @return CurrencyInterface | null
      */
-    public function getCurrency();
+    public function getCurrency(): ?CurrencyInterface;
 
     /**
      * Get proxyTrunk
      *
-     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     * @return ProxyTrunkInterface | null
      */
-    public function getProxyTrunk();
+    public function getProxyTrunk(): ?ProxyTrunkInterface;
 
     /**
      * @return bool
@@ -100,155 +112,171 @@ interface CarrierInterface extends LoggableEntityInterface
     /**
      * Add outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param OutgoingRoutingInterface $outgoingRouting
      *
      * @return static
      */
-    public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+    public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): CarrierInterface;
 
     /**
      * Remove outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param OutgoingRoutingInterface $outgoingRouting
+     *
+     * @return static
      */
-    public function removeOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+    public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): CarrierInterface;
 
     /**
      * Replace outgoingRoutings
      *
-     * @param ArrayCollection $outgoingRoutings of Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @param ArrayCollection $outgoingRoutings of OutgoingRoutingInterface
+     *
      * @return static
      */
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings);
+    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): CarrierInterface;
 
     /**
      * Get outgoingRoutings
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
+     * @return OutgoingRoutingInterface[]
      */
-    public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getOutgoingRoutings(?Criteria $criteria = null): array;
 
     /**
      * Add outgoingRoutingsRelCarrier
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
+     * @param OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
      *
      * @return static
      */
-    public function addOutgoingRoutingsRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier);
+    public function addOutgoingRoutingsRelCarrier(OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier): CarrierInterface;
 
     /**
      * Remove outgoingRoutingsRelCarrier
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
+     * @param OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
+     *
+     * @return static
      */
-    public function removeOutgoingRoutingsRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier);
+    public function removeOutgoingRoutingsRelCarrier(OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier): CarrierInterface;
 
     /**
      * Replace outgoingRoutingsRelCarriers
      *
-     * @param ArrayCollection $outgoingRoutingsRelCarriers of Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+     * @param ArrayCollection $outgoingRoutingsRelCarriers of OutgoingRoutingRelCarrierInterface
+     *
      * @return static
      */
-    public function replaceOutgoingRoutingsRelCarriers(ArrayCollection $outgoingRoutingsRelCarriers);
+    public function replaceOutgoingRoutingsRelCarriers(ArrayCollection $outgoingRoutingsRelCarriers): CarrierInterface;
 
     /**
      * Get outgoingRoutingsRelCarriers
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
+     * @return OutgoingRoutingRelCarrierInterface[]
      */
-    public function getOutgoingRoutingsRelCarriers(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getOutgoingRoutingsRelCarriers(?Criteria $criteria = null): array;
 
     /**
      * Add server
      *
-     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server
+     * @param CarrierServerInterface $server
      *
      * @return static
      */
-    public function addServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server);
+    public function addServer(CarrierServerInterface $server): CarrierInterface;
 
     /**
      * Remove server
      *
-     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server
+     * @param CarrierServerInterface $server
+     *
+     * @return static
      */
-    public function removeServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server);
+    public function removeServer(CarrierServerInterface $server): CarrierInterface;
 
     /**
      * Replace servers
      *
-     * @param ArrayCollection $servers of Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
+     * @param ArrayCollection $servers of CarrierServerInterface
+     *
      * @return static
      */
-    public function replaceServers(ArrayCollection $servers);
+    public function replaceServers(ArrayCollection $servers): CarrierInterface;
 
     /**
      * Get servers
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface[]
+     * @return CarrierServerInterface[]
      */
-    public function getServers(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getServers(?Criteria $criteria = null): array;
 
     /**
      * Add ratingProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
+     * @param RatingProfileInterface $ratingProfile
      *
      * @return static
      */
-    public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
+    public function addRatingProfile(RatingProfileInterface $ratingProfile): CarrierInterface;
 
     /**
      * Remove ratingProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
+     * @param RatingProfileInterface $ratingProfile
+     *
+     * @return static
      */
-    public function removeRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
+    public function removeRatingProfile(RatingProfileInterface $ratingProfile): CarrierInterface;
 
     /**
      * Replace ratingProfiles
      *
-     * @param ArrayCollection $ratingProfiles of Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
+     * @param ArrayCollection $ratingProfiles of RatingProfileInterface
+     *
      * @return static
      */
-    public function replaceRatingProfiles(ArrayCollection $ratingProfiles);
+    public function replaceRatingProfiles(ArrayCollection $ratingProfiles): CarrierInterface;
 
     /**
      * Get ratingProfiles
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[]
+     * @return RatingProfileInterface[]
      */
-    public function getRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRatingProfiles(?Criteria $criteria = null): array;
 
     /**
      * Add tpCdrStat
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat
+     * @param TpCdrStatInterface $tpCdrStat
      *
      * @return static
      */
-    public function addTpCdrStat(\Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat);
+    public function addTpCdrStat(TpCdrStatInterface $tpCdrStat): CarrierInterface;
 
     /**
      * Remove tpCdrStat
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat
+     * @param TpCdrStatInterface $tpCdrStat
+     *
+     * @return static
      */
-    public function removeTpCdrStat(\Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat);
+    public function removeTpCdrStat(TpCdrStatInterface $tpCdrStat): CarrierInterface;
 
     /**
      * Replace tpCdrStats
      *
-     * @param ArrayCollection $tpCdrStats of Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface
+     * @param ArrayCollection $tpCdrStats of TpCdrStatInterface
+     *
      * @return static
      */
-    public function replaceTpCdrStats(ArrayCollection $tpCdrStats);
+    public function replaceTpCdrStats(ArrayCollection $tpCdrStats): CarrierInterface;
 
     /**
      * Get tpCdrStats
      * @param Criteria | null $criteria
-     * @return \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[]
+     * @return TpCdrStatInterface[]
      */
-    public function getTpCdrStats(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getTpCdrStats(?Criteria $criteria = null): array;
+
 }

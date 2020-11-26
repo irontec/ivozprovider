@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Currency;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* CurrencyInterface
+*/
 interface CurrencyInterface extends LoggableEntityInterface
 {
     /**
@@ -29,12 +32,13 @@ interface CurrencyInterface extends LoggableEntityInterface
     /**
      * Get name
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\Name
+     * @return Name
      */
-    public function getName();
+    public function getName(): Name;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

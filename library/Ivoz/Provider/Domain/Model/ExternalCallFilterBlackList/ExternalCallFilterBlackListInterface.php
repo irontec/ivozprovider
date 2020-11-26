@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList;
 
+use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
+use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ExternalCallFilterBlackListInterface
+*/
 interface ExternalCallFilterBlackListInterface extends LoggableEntityInterface
 {
     /**
@@ -15,28 +20,29 @@ interface ExternalCallFilterBlackListInterface extends LoggableEntityInterface
     /**
      * Set filter
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter | null
+     * @param ExternalCallFilterInterface | null
      *
      * @return static
      */
-    public function setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter = null);
+    public function setFilter(?ExternalCallFilterInterface $filter = null): ExternalCallFilterBlackListInterface;
 
     /**
      * Get filter
      *
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
+     * @return ExternalCallFilterInterface | null
      */
-    public function getFilter();
+    public function getFilter(): ?ExternalCallFilterInterface;
 
     /**
      * Get matchlist
      *
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     * @return MatchListInterface
      */
-    public function getMatchlist();
+    public function getMatchlist(): MatchListInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

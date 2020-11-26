@@ -2,8 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\TerminalModel;
 
+use Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TerminalModelInterface
+*/
 interface TerminalModelInterface extends LoggableEntityInterface
 {
     /**
@@ -15,17 +19,17 @@ interface TerminalModelInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setIden($iden);
+    public function setIden(string $iden): TerminalModelInterface;
 
     /**
      * {@inheritdoc}
      */
-    public function setGenericTemplate($genericTemplate = null);
+    public function setGenericTemplate(string $genericTemplate = null): TerminalModelInterface;
 
     /**
      * {@inheritdoc}
      */
-    public function setSpecificTemplate($specificTemplate = null);
+    public function setSpecificTemplate(string $specificTemplate = null): TerminalModelInterface;
 
     /**
      * Get iden
@@ -53,38 +57,39 @@ interface TerminalModelInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getGenericTemplate();
+    public function getGenericTemplate(): ?string;
 
     /**
      * Get specificTemplate
      *
      * @return string | null
      */
-    public function getSpecificTemplate();
+    public function getSpecificTemplate(): ?string;
 
     /**
      * Get genericUrlPattern
      *
      * @return string | null
      */
-    public function getGenericUrlPattern();
+    public function getGenericUrlPattern(): ?string;
 
     /**
      * Get specificUrlPattern
      *
      * @return string | null
      */
-    public function getSpecificUrlPattern();
+    public function getSpecificUrlPattern(): ?string;
 
     /**
      * Get terminalManufacturer
      *
-     * @return \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface
+     * @return TerminalManufacturerInterface
      */
-    public function getTerminalManufacturer();
+    public function getTerminalManufacturer(): TerminalManufacturerInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

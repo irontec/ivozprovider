@@ -2,16 +2,19 @@
 
 namespace Ivoz\Provider\Domain\Model\Commandlog;
 
-use Ivoz\Core\Domain\Model\LoggerEntityInterface;
+use Ivoz\Core\Application\Event\CommandEventInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
+/**
+* CommandlogInterface
+*/
+interface CommandlogInterface extends EntityInterface
 {
     /**
      * @param \Ivoz\Core\Application\Event\CommandEventInterface $event
      * @return self
      */
-    public static function fromEvent(\Ivoz\Core\Application\Event\CommandEventInterface $event);
+    public static function fromEvent(CommandEventInterface $event);
 
     /**
      * Get requestId
@@ -32,33 +35,33 @@ interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
      *
      * @return string | null
      */
-    public function getMethod();
+    public function getMethod(): ?string;
 
     /**
      * Get arguments
      *
      * @return array | null
      */
-    public function getArguments();
+    public function getArguments(): ?array;
 
     /**
      * Get agent
      *
      * @return array | null
      */
-    public function getAgent();
+    public function getAgent(): ?array;
 
     /**
      * Get createdOn
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedOn(): \DateTime;
+    public function getCreatedOn(): \DateTimeInterface;
 
     /**
      * Get microtime
      *
-     * @return integer
+     * @return int
      */
     public function getMicrotime(): int;
 
@@ -66,4 +69,5 @@ interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

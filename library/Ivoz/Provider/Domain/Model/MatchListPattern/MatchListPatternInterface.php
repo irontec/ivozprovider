@@ -2,13 +2,18 @@
 
 namespace Ivoz\Provider\Domain\Model\MatchListPattern;
 
+use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* MatchListPatternInterface
+*/
 interface MatchListPatternInterface extends LoggableEntityInterface
 {
     const TYPE_NUMBER = 'number';
-    const TYPE_REGEXP = 'regexp';
 
+    const TYPE_REGEXP = 'regexp';
 
     /**
      * @codeCoverageIgnore
@@ -27,7 +32,7 @@ interface MatchListPatternInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * Get type
@@ -41,40 +46,41 @@ interface MatchListPatternInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getRegexp();
+    public function getRegexp(): ?string;
 
     /**
      * Get numbervalue
      *
      * @return string | null
      */
-    public function getNumbervalue();
+    public function getNumbervalue(): ?string;
 
     /**
      * Set matchList
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
+     * @param MatchListInterface
      *
      * @return static
      */
-    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList);
+    public function setMatchList(MatchListInterface $matchList): MatchListPatternInterface;
 
     /**
      * Get matchList
      *
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     * @return MatchListInterface
      */
-    public function getMatchList();
+    public function getMatchList(): MatchListInterface;
 
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getNumberCountry();
+    public function getNumberCountry(): ?CountryInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

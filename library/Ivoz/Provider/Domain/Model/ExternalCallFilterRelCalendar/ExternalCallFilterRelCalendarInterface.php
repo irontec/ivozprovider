@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar;
 
+use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
+use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ExternalCallFilterRelCalendarInterface
+*/
 interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
 {
     /**
@@ -13,30 +18,31 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Get calendar
+     *
+     * @return CalendarInterface
+     */
+    public function getCalendar(): CalendarInterface;
+
+    /**
      * Set filter
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter | null
+     * @param ExternalCallFilterInterface | null
      *
      * @return static
      */
-    public function setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter = null);
+    public function setFilter(?ExternalCallFilterInterface $filter = null): ExternalCallFilterRelCalendarInterface;
 
     /**
      * Get filter
      *
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
+     * @return ExternalCallFilterInterface | null
      */
-    public function getFilter();
-
-    /**
-     * Get calendar
-     *
-     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
-     */
-    public function getCalendar();
+    public function getFilter(): ?ExternalCallFilterInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

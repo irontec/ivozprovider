@@ -2,13 +2,18 @@
 
 namespace Ivoz\Provider\Domain\Model\BannedAddress;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* BannedAddressInterface
+*/
 interface BannedAddressInterface extends LoggableEntityInterface
 {
     const BLOCKER_ANTIFLOOD = 'antiflood';
-    const BLOCKER_IPFILTER = 'ipfilter';
 
+    const BLOCKER_IPFILTER = 'ipfilter';
 
     /**
      * @codeCoverageIgnore
@@ -21,52 +26,53 @@ interface BannedAddressInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getIp();
+    public function getIp(): ?string;
 
     /**
      * Get blocker
      *
      * @return string | null
      */
-    public function getBlocker();
+    public function getBlocker(): ?string;
 
     /**
      * Get aor
      *
      * @return string | null
      */
-    public function getAor();
+    public function getAor(): ?string;
 
     /**
      * Get description
      *
      * @return string | null
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * Get lastTimeBanned
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getLastTimeBanned();
+    public function getLastTimeBanned(): ?\DateTimeInterface;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand();
+    public function getBrand(): ?BrandInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany();
+    public function getCompany(): ?CompanyInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\PublicEntity;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* PublicEntityInterface
+*/
 interface PublicEntityInterface extends LoggableEntityInterface
 {
     /**
@@ -24,38 +27,39 @@ interface PublicEntityInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getFqdn();
+    public function getFqdn(): ?string;
 
     /**
      * Get platform
      *
-     * @return boolean
+     * @return bool
      */
     public function getPlatform(): bool;
 
     /**
      * Get brand
      *
-     * @return boolean
+     * @return bool
      */
     public function getBrand(): bool;
 
     /**
      * Get client
      *
-     * @return boolean
+     * @return bool
      */
     public function getClient(): bool;
 
     /**
      * Get name
      *
-     * @return \Ivoz\Provider\Domain\Model\PublicEntity\Name
+     * @return Name
      */
-    public function getName();
+    public function getName(): Name;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

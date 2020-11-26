@@ -2,10 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\Destination;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* DestinationInterface
+*/
 interface DestinationInterface extends LoggableEntityInterface
 {
     /**
@@ -19,7 +25,7 @@ interface DestinationInterface extends LoggableEntityInterface
      *
      * @inheritdoc
      */
-    public function setPrefix($prefix);
+    public function setPrefix(string $prefix): DestinationInterface;
 
     /**
      * @return string
@@ -34,25 +40,18 @@ interface DestinationInterface extends LoggableEntityInterface
     public function getPrefix(): string;
 
     /**
-     * Get tpDestination
+     * Get name
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface | null
+     * @return Name
      */
-    public function getTpDestination();
+    public function getName(): Name;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand();
-
-    /**
-     * Get name
-     *
-     * @return \Ivoz\Provider\Domain\Model\Destination\Name
-     */
-    public function getName();
+    public function getBrand(): BrandInterface;
 
     /**
      * @return bool
@@ -62,31 +61,47 @@ interface DestinationInterface extends LoggableEntityInterface
     /**
      * Add destinationRate
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param DestinationRateInterface $destinationRate
      *
      * @return static
      */
-    public function addDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate);
+    public function addDestinationRate(DestinationRateInterface $destinationRate): DestinationInterface;
 
     /**
      * Remove destinationRate
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param DestinationRateInterface $destinationRate
+     *
+     * @return static
      */
-    public function removeDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate);
+    public function removeDestinationRate(DestinationRateInterface $destinationRate): DestinationInterface;
 
     /**
      * Replace destinationRates
      *
-     * @param ArrayCollection $destinationRates of Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
+     * @param ArrayCollection $destinationRates of DestinationRateInterface
+     *
      * @return static
      */
-    public function replaceDestinationRates(ArrayCollection $destinationRates);
+    public function replaceDestinationRates(ArrayCollection $destinationRates): DestinationInterface;
 
     /**
      * Get destinationRates
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface[]
+     * @return DestinationRateInterface[]
      */
-    public function getDestinationRates(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getDestinationRates(?Criteria $criteria = null): array;
+
+    /**
+     * @var TpDestinationInterface
+     * mappedBy destination
+     */
+    public function setTpDestination(TpDestinationInterface $tpDestination): DestinationInterface;
+
+    /**
+     * Get tpDestination
+     * @return TpDestinationInterface
+     */
+    public function getTpDestination(): ?TpDestinationInterface;
+
 }

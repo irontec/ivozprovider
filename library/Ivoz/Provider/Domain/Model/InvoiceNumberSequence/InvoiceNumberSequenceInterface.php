@@ -2,8 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\InvoiceNumberSequence;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* InvoiceNumberSequenceInterface
+*/
 interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
 {
     /**
@@ -36,14 +40,14 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     /**
      * Get sequenceLength
      *
-     * @return integer
+     * @return int
      */
     public function getSequenceLength(): int;
 
     /**
      * Get increment
      *
-     * @return integer
+     * @return int
      */
     public function getIncrement(): int;
 
@@ -52,31 +56,32 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getLatestValue();
+    public function getLatestValue(): ?string;
 
     /**
      * Get iteration
      *
-     * @return integer
+     * @return int
      */
     public function getIteration(): int;
 
     /**
      * Get version
      *
-     * @return integer
+     * @return int
      */
-    public function getVersion();
+    public function getVersion(): int;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand();
+    public function getBrand(): BrandInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

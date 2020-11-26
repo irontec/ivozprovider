@@ -2,10 +2,17 @@
 
 namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
-use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
+use Ivoz\Core\Domain\Service\TempFile;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 
-interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityInterface
+/**
+* CallCsvReportInterface
+*/
+interface CallCsvReportInterface extends LoggableEntityInterface, FileContainerInterface
 {
     /**
      * @codeCoverageIgnore
@@ -33,51 +40,51 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     /**
      * Get inDate
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getInDate(): \DateTime;
+    public function getInDate(): \DateTimeInterface;
 
     /**
      * Get outDate
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getOutDate(): \DateTime;
+    public function getOutDate(): \DateTimeInterface;
 
     /**
      * Get createdOn
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedOn(): \DateTime;
-
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
-     */
-    public function getCompany();
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
-     */
-    public function getBrand();
-
-    /**
-     * Get callCsvScheduler
-     *
-     * @return \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface | null
-     */
-    public function getCallCsvScheduler();
+    public function getCreatedOn(): \DateTimeInterface;
 
     /**
      * Get csv
      *
-     * @return \Ivoz\Provider\Domain\Model\CallCsvReport\Csv
+     * @return Csv
      */
-    public function getCsv();
+    public function getCsv(): Csv;
+
+    /**
+     * Get company
+     *
+     * @return CompanyInterface | null
+     */
+    public function getCompany(): ?CompanyInterface;
+
+    /**
+     * Get brand
+     *
+     * @return BrandInterface | null
+     */
+    public function getBrand(): ?BrandInterface;
+
+    /**
+     * Get callCsvScheduler
+     *
+     * @return CallCsvSchedulerInterface | null
+     */
+    public function getCallCsvScheduler(): ?CallCsvSchedulerInterface;
 
     /**
      * @return bool
@@ -85,21 +92,15 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     public function isInitialized(): bool;
 
     /**
-     * @param string $fldName
-     * @param \Ivoz\Core\Domain\Service\TempFile $file
-     *
      * @return void
      */
-    public function addTmpFile(string $fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+    public function addTmpFile(string $fldName, TempFile $file);
 
     /**
-     * @param \Ivoz\Core\Domain\Service\TempFile $file
-     *
      * @throws \Exception
-     *
      * @return void
      */
-    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+    public function removeTmpFile(TempFile $file);
 
     /**
      * @return \Ivoz\Core\Domain\Service\TempFile[]
@@ -111,4 +112,5 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
+
 }

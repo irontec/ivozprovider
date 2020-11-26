@@ -2,16 +2,23 @@
 
 namespace Ivoz\Provider\Domain\Model\Locution;
 
-use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Core\Domain\Service\TempFile;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 
-interface LocutionInterface extends FileContainerInterface, LoggableEntityInterface
+/**
+* LocutionInterface
+*/
+interface LocutionInterface extends LoggableEntityInterface, FileContainerInterface
 {
     const STATUS_PENDING = 'pending';
-    const STATUS_ENCODING = 'encoding';
-    const STATUS_READY = 'ready';
-    const STATUS_ERROR = 'error';
 
+    const STATUS_ENCODING = 'encoding';
+
+    const STATUS_READY = 'ready';
+
+    const STATUS_ERROR = 'error';
 
     /**
      * @codeCoverageIgnore
@@ -30,7 +37,7 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
-    public function addTmpFile(string $fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+    public function addTmpFile(string $fldName, TempFile $file);
 
     /**
      * Get name
@@ -44,28 +51,28 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
      *
      * @return string | null
      */
-    public function getStatus();
-
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
-     */
-    public function getCompany();
+    public function getStatus(): ?string;
 
     /**
      * Get encodedFile
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\EncodedFile
+     * @return EncodedFile
      */
-    public function getEncodedFile();
+    public function getEncodedFile(): EncodedFile;
 
     /**
      * Get originalFile
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\OriginalFile
+     * @return OriginalFile
      */
-    public function getOriginalFile();
+    public function getOriginalFile(): OriginalFile;
+
+    /**
+     * Get company
+     *
+     * @return CompanyInterface
+     */
+    public function getCompany(): CompanyInterface;
 
     /**
      * @return bool
@@ -73,13 +80,10 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
     public function isInitialized(): bool;
 
     /**
-     * @param \Ivoz\Core\Domain\Service\TempFile $file
-     *
      * @throws \Exception
-     *
      * @return void
      */
-    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+    public function removeTmpFile(TempFile $file);
 
     /**
      * @return \Ivoz\Core\Domain\Service\TempFile[]
@@ -91,4 +95,5 @@ interface LocutionInterface extends FileContainerInterface, LoggableEntityInterf
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
+
 }

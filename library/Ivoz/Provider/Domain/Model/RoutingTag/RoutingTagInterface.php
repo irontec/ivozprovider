@@ -2,10 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingTag;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* RoutingTagInterface
+*/
 interface RoutingTagInterface extends LoggableEntityInterface
 {
     /**
@@ -36,9 +42,9 @@ interface RoutingTagInterface extends LoggableEntityInterface
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand();
+    public function getBrand(): BrandInterface;
 
     /**
      * @return bool
@@ -48,62 +54,69 @@ interface RoutingTagInterface extends LoggableEntityInterface
     /**
      * Add outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param OutgoingRoutingInterface $outgoingRouting
      *
      * @return static
      */
-    public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+    public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingTagInterface;
 
     /**
      * Remove outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param OutgoingRoutingInterface $outgoingRouting
+     *
+     * @return static
      */
-    public function removeOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+    public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingTagInterface;
 
     /**
      * Replace outgoingRoutings
      *
-     * @param ArrayCollection $outgoingRoutings of Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @param ArrayCollection $outgoingRoutings of OutgoingRoutingInterface
+     *
      * @return static
      */
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings);
+    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingTagInterface;
 
     /**
      * Get outgoingRoutings
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
+     * @return OutgoingRoutingInterface[]
      */
-    public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getOutgoingRoutings(?Criteria $criteria = null): array;
 
     /**
      * Add relCompany
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany
+     * @param CompanyRelRoutingTagInterface $relCompany
      *
      * @return static
      */
-    public function addRelCompany(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany);
+    public function addRelCompany(CompanyRelRoutingTagInterface $relCompany): RoutingTagInterface;
 
     /**
      * Remove relCompany
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany
+     * @param CompanyRelRoutingTagInterface $relCompany
+     *
+     * @return static
      */
-    public function removeRelCompany(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany);
+    public function removeRelCompany(CompanyRelRoutingTagInterface $relCompany): RoutingTagInterface;
 
     /**
      * Replace relCompanies
      *
-     * @param ArrayCollection $relCompanies of Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface
+     * @param ArrayCollection $relCompanies of CompanyRelRoutingTagInterface
+     *
      * @return static
      */
-    public function replaceRelCompanies(ArrayCollection $relCompanies);
+    public function replaceRelCompanies(ArrayCollection $relCompanies): RoutingTagInterface;
 
     /**
      * Get relCompanies
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
+     * @return CompanyRelRoutingTagInterface[]
      */
-    public function getRelCompanies(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelCompanies(?Criteria $criteria = null): array;
+
 }

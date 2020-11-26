@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\CompanyRelRoutingTag;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* CompanyRelRoutingTagInterface
+*/
 interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
 {
     /**
@@ -15,37 +20,38 @@ interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
+     * @param CompanyInterface | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
+    public function setCompany(?CompanyInterface $company = null): CompanyRelRoutingTagInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany();
+    public function getCompany(): ?CompanyInterface;
 
     /**
      * Set routingTag
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag
+     * @param RoutingTagInterface
      *
      * @return static
      */
-    public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag);
+    public function setRoutingTag(RoutingTagInterface $routingTag): CompanyRelRoutingTagInterface;
 
     /**
      * Get routingTag
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+     * @return RoutingTagInterface
      */
-    public function getRoutingTag();
+    public function getRoutingTag(): RoutingTagInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderRegistration;
 
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
+use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* DdiProviderRegistrationInterface
+*/
 interface DdiProviderRegistrationInterface extends LoggableEntityInterface
 {
     /**
@@ -57,16 +62,16 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     /**
      * Get expires
      *
-     * @return integer
+     * @return int
      */
     public function getExpires(): int;
 
     /**
      * Get multiDdi
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getMultiDdi();
+    public function getMultiDdi(): ?bool;
 
     /**
      * Get contactUsername
@@ -76,30 +81,36 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getContactUsername(): string;
 
     /**
-     * Get trunksUacreg
-     *
-     * @return \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface | null
-     */
-    public function getTrunksUacreg();
-
-    /**
      * Set ddiProvider
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider
+     * @param DdiProviderInterface
      *
      * @return static
      */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider);
+    public function setDdiProvider(DdiProviderInterface $ddiProvider): DdiProviderRegistrationInterface;
 
     /**
      * Get ddiProvider
      *
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
+     * @return DdiProviderInterface
      */
-    public function getDdiProvider();
+    public function getDdiProvider(): DdiProviderInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
+    /**
+     * @var TrunksUacregInterface
+     * mappedBy ddiProviderRegistration
+     */
+    public function setTrunksUacreg(TrunksUacregInterface $trunksUacreg): DdiProviderRegistrationInterface;
+
+    /**
+     * Get trunksUacreg
+     * @return TrunksUacregInterface
+     */
+    public function getTrunksUacreg(): ?TrunksUacregInterface;
+
 }

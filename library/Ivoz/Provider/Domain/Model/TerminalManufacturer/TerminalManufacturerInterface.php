@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\TerminalManufacturer;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TerminalManufacturerInterface
+*/
 interface TerminalManufacturerInterface extends LoggableEntityInterface
 {
     /**
@@ -37,4 +40,5 @@ interface TerminalManufacturerInterface extends LoggableEntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

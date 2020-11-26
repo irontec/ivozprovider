@@ -2,17 +2,36 @@
 
 namespace Ivoz\Provider\Domain\Model\User;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface;
+use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* UserInterface
+*/
 interface UserInterface extends LoggableEntityInterface
 {
     const EXTERNALIPCALLS_0 = '0';
-    const EXTERNALIPCALLS_1 = '1';
-    const EXTERNALIPCALLS_2 = '2';
-    const EXTERNALIPCALLS_3 = '3';
 
+    const EXTERNALIPCALLS_1 = '1';
+
+    const EXTERNALIPCALLS_2 = '2';
+
+    const EXTERNALIPCALLS_3 = '3';
 
     /**
      * @return array
@@ -26,7 +45,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * @inheritdoc
      */
-    public function setPass($pass = null);
+    public function setPass(string $pass = null): UserInterface;
 
     /**
      * return associated endpoint with the user
@@ -65,14 +84,14 @@ interface UserInterface extends LoggableEntityInterface
      * If no Ddi is assigned, retrieve company's default Ddi
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
-    public function getOutgoingDdi();
+    public function getOutgoingDdi(): ?DdiInterface;
 
     /**
      * Get User outgoingDdiRule
      * If no OutgoingDdiRule is assigned, retrieve company's default OutgoingDdiRule
      * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface|null
      */
-    public function getOutgoingDdiRule();
+    public function getOutgoingDdiRule(): ?OutgoingDdiRuleInterface;
 
     /**
      * @return string
@@ -115,7 +134,7 @@ interface UserInterface extends LoggableEntityInterface
      * returns company language if empty
      * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
      */
-    public function getLanguage();
+    public function getLanguage(): ?LanguageInterface;
 
     /**
      * Get User language code.
@@ -124,7 +143,7 @@ interface UserInterface extends LoggableEntityInterface
      */
     public function getLanguageCode();
 
-    public function setEmail($email = null);
+    public function setEmail(string $email = null): UserInterface;
 
     /**
      * @return string
@@ -150,40 +169,40 @@ interface UserInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getEmail();
+    public function getEmail(): ?string;
 
     /**
      * Get pass
      *
      * @return string | null
      */
-    public function getPass();
+    public function getPass(): ?string;
 
     /**
      * Get doNotDisturb
      *
-     * @return boolean
+     * @return bool
      */
     public function getDoNotDisturb(): bool;
 
     /**
      * Get isBoss
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsBoss(): bool;
 
     /**
      * Get active
      *
-     * @return boolean
+     * @return bool
      */
     public function getActive(): bool;
 
     /**
      * Get maxCalls
      *
-     * @return integer
+     * @return int
      */
     public function getMaxCalls(): int;
 
@@ -197,111 +216,111 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get voicemailEnabled
      *
-     * @return boolean
+     * @return bool
      */
     public function getVoicemailEnabled(): bool;
 
     /**
      * Get voicemailSendMail
      *
-     * @return boolean
+     * @return bool
      */
     public function getVoicemailSendMail(): bool;
 
     /**
      * Get voicemailAttachSound
      *
-     * @return boolean
+     * @return bool
      */
     public function getVoicemailAttachSound(): bool;
 
     /**
      * Get gsQRCode
      *
-     * @return boolean
+     * @return bool
      */
     public function getGsQRCode(): bool;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany();
+    public function getCompany(): CompanyInterface;
 
     /**
      * Get callAcl
      *
-     * @return \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface | null
+     * @return CallAclInterface | null
      */
-    public function getCallAcl();
+    public function getCallAcl(): ?CallAclInterface;
 
     /**
      * Get bossAssistant
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getBossAssistant();
+    public function getBossAssistant(): ?UserInterface;
 
     /**
      * Get bossAssistantWhiteList
      *
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface | null
+     * @return MatchListInterface | null
      */
-    public function getBossAssistantWhiteList();
+    public function getBossAssistantWhiteList(): ?MatchListInterface;
 
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @return TransformationRuleSetInterface | null
      */
-    public function getTransformationRuleSet();
+    public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
     /**
      * Set terminal
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal | null
+     * @param TerminalInterface | null
      *
      * @return static
      */
-    public function setTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal = null);
+    public function setTerminal(?TerminalInterface $terminal = null): UserInterface;
 
     /**
      * Get terminal
      *
-     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface | null
+     * @return TerminalInterface | null
      */
-    public function getTerminal();
+    public function getTerminal(): ?TerminalInterface;
 
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
+     * @param ExtensionInterface | null
      *
      * @return static
      */
-    public function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null);
+    public function setExtension(?ExtensionInterface $extension = null): UserInterface;
 
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @return ExtensionInterface | null
      */
-    public function getExtension();
+    public function getExtension(): ?ExtensionInterface;
 
     /**
      * Get timezone
      *
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
+     * @return TimezoneInterface | null
      */
-    public function getTimezone();
+    public function getTimezone(): ?TimezoneInterface;
 
     /**
      * Get voicemailLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @return LocutionInterface | null
      */
-    public function getVoicemailLocution();
+    public function getVoicemailLocution(): ?LocutionInterface;
 
     /**
      * @return bool
@@ -311,123 +330,130 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Add pickUpRelUser
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser
+     * @param PickUpRelUserInterface $pickUpRelUser
      *
      * @return static
      */
-    public function addPickUpRelUser(\Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser);
+    public function addPickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface;
 
     /**
      * Remove pickUpRelUser
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser
+     * @param PickUpRelUserInterface $pickUpRelUser
+     *
+     * @return static
      */
-    public function removePickUpRelUser(\Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser);
+    public function removePickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface;
 
     /**
      * Replace pickUpRelUsers
      *
-     * @param ArrayCollection $pickUpRelUsers of Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface
+     * @param ArrayCollection $pickUpRelUsers of PickUpRelUserInterface
+     *
      * @return static
      */
-    public function replacePickUpRelUsers(ArrayCollection $pickUpRelUsers);
+    public function replacePickUpRelUsers(ArrayCollection $pickUpRelUsers): UserInterface;
 
     /**
      * Get pickUpRelUsers
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[]
+     * @return PickUpRelUserInterface[]
      */
-    public function getPickUpRelUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getPickUpRelUsers(?Criteria $criteria = null): array;
 
     /**
      * Add queueMember
      *
-     * @param \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember
+     * @param QueueMemberInterface $queueMember
      *
      * @return static
      */
-    public function addQueueMember(\Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember);
+    public function addQueueMember(QueueMemberInterface $queueMember): UserInterface;
 
     /**
      * Remove queueMember
      *
-     * @param \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember
+     * @param QueueMemberInterface $queueMember
+     *
+     * @return static
      */
-    public function removeQueueMember(\Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface $queueMember);
+    public function removeQueueMember(QueueMemberInterface $queueMember): UserInterface;
 
     /**
      * Replace queueMembers
      *
-     * @param ArrayCollection $queueMembers of Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface
+     * @param ArrayCollection $queueMembers of QueueMemberInterface
+     *
      * @return static
      */
-    public function replaceQueueMembers(ArrayCollection $queueMembers);
+    public function replaceQueueMembers(ArrayCollection $queueMembers): UserInterface;
 
     /**
      * Get queueMembers
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface[]
+     * @return QueueMemberInterface[]
      */
-    public function getQueueMembers(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getQueueMembers(?Criteria $criteria = null): array;
 
     /**
      * Add callForwardSetting
      *
-     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     * @param CallForwardSettingInterface $callForwardSetting
      *
      * @return static
      */
-    public function addCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting);
+    public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): UserInterface;
 
     /**
      * Remove callForwardSetting
      *
-     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     * @param CallForwardSettingInterface $callForwardSetting
+     *
+     * @return static
      */
-    public function removeCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting);
+    public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): UserInterface;
 
     /**
      * Replace callForwardSettings
      *
-     * @param ArrayCollection $callForwardSettings of Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
+     * @param ArrayCollection $callForwardSettings of CallForwardSettingInterface
+     *
      * @return static
      */
-    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings);
+    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): UserInterface;
 
     /**
      * Get callForwardSettings
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
+     * @return CallForwardSettingInterface[]
      */
-    public function getCallForwardSettings(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getCallForwardSettings(?Criteria $criteria = null): array;
 
     /**
-     * @see AdvancedUserInterface::getRoles()
+     * @see UserInterface::getRoles()
      */
     public function getRoles(): array;
 
     /**
-     * @see AdvancedUserInterface::getUsername()
+     * @see UserInterface::getUsername()
      */
     public function getUsername(): string;
 
     /**
-     * @see AdvancedUserInterface::getPassword()
+     * @see UserInterface::getPassword()
      */
     public function getPassword(): string;
 
-    /**
-     * @see AdvancedUserInterface::isEnabled()
-     */
     public function isEnabled(): bool;
 
     /**
-     * @see AdvancedUserInterface::getSalt()
+     * @see UserInterface::getSalt()
      */
     public function getSalt(): string;
 
     /**
-     * @see AdvancedUserInterface::eraseCredentials()
+     * @see UserInterface::eraseCredentials()
      */
     public function eraseCredentials();
+
 }

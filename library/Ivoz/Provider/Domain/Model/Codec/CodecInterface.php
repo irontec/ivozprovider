@@ -4,11 +4,14 @@ namespace Ivoz\Provider\Domain\Model\Codec;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* CodecInterface
+*/
 interface CodecInterface extends LoggableEntityInterface
 {
     const TYPE_AUDIO = 'audio';
-    const TYPE_VIDEO = 'video';
 
+    const TYPE_VIDEO = 'video';
 
     /**
      * @codeCoverageIgnore
@@ -41,4 +44,5 @@ interface CodecInterface extends LoggableEntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule;
 
+use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
+use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ExternalCallFilterRelScheduleInterface
+*/
 interface ExternalCallFilterRelScheduleInterface extends LoggableEntityInterface
 {
     /**
@@ -15,28 +20,29 @@ interface ExternalCallFilterRelScheduleInterface extends LoggableEntityInterface
     /**
      * Set filter
      *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter | null
+     * @param ExternalCallFilterInterface | null
      *
      * @return static
      */
-    public function setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter = null);
+    public function setFilter(?ExternalCallFilterInterface $filter = null): ExternalCallFilterRelScheduleInterface;
 
     /**
      * Get filter
      *
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
+     * @return ExternalCallFilterInterface | null
      */
-    public function getFilter();
+    public function getFilter(): ?ExternalCallFilterInterface;
 
     /**
      * Get schedule
      *
-     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface
+     * @return ScheduleInterface
      */
-    public function getSchedule();
+    public function getSchedule(): ScheduleInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

@@ -2,8 +2,15 @@
 
 namespace Ivoz\Provider\Domain\Model\DestinationRate;
 
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
+use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
+use Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface;
+use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* DestinationRateInterface
+*/
 interface DestinationRateInterface extends LoggableEntityInterface
 {
     /**
@@ -32,28 +39,28 @@ interface DestinationRateInterface extends LoggableEntityInterface
      *
      * @inheritdoc
      */
-    public function setConnectFee($connectFee);
+    public function setConnectFee(float $connectFee): DestinationRateInterface;
 
     /**
      * Ensure Valid connectFee format
      *
      * @inheritdoc
      */
-    public function setCost($cost);
+    public function setCost(float $cost): DestinationRateInterface;
 
     /**
      * Ensure Group Interval Start has seconds suffix
      *
      * @inheritdoc
      */
-    public function setGroupIntervalStart($groupIntervalStart);
+    public function setGroupIntervalStart(string $groupIntervalStart): DestinationRateInterface;
 
     /**
      * Ensure Rating Increment has seconds suffix
      *
      * @inheritdoc
      */
-    public function setRateIncrement($rateIncrement);
+    public function setRateIncrement(string $rateIncrement): DestinationRateInterface;
 
     /**
      * Get cost
@@ -84,53 +91,64 @@ interface DestinationRateInterface extends LoggableEntityInterface
     public function getGroupIntervalStart(): string;
 
     /**
-     * Get tpRate
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface | null
-     */
-    public function getTpRate();
-
-    /**
-     * Get tpDestinationRate
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface | null
-     */
-    public function getTpDestinationRate();
-
-    /**
      * Set destinationRateGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup
+     * @param DestinationRateGroupInterface
      *
      * @return static
      */
-    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup);
+    public function setDestinationRateGroup(DestinationRateGroupInterface $destinationRateGroup): DestinationRateInterface;
 
     /**
      * Get destinationRateGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
+     * @return DestinationRateGroupInterface
      */
-    public function getDestinationRateGroup();
+    public function getDestinationRateGroup(): DestinationRateGroupInterface;
 
     /**
      * Set destination
      *
-     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
+     * @param DestinationInterface
      *
      * @return static
      */
-    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination);
+    public function setDestination(DestinationInterface $destination): DestinationRateInterface;
 
     /**
      * Get destination
      *
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     * @return DestinationInterface
      */
-    public function getDestination();
+    public function getDestination(): DestinationInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
+    /**
+     * @var TpRateInterface
+     * mappedBy destinationRate
+     */
+    public function setTpRate(TpRateInterface $tpRate): DestinationRateInterface;
+
+    /**
+     * Get tpRate
+     * @return TpRateInterface
+     */
+    public function getTpRate(): ?TpRateInterface;
+
+    /**
+     * @var TpDestinationRateInterface
+     * mappedBy destinationRate
+     */
+    public function setTpDestinationRate(TpDestinationRateInterface $tpDestinationRate): DestinationRateInterface;
+
+    /**
+     * Get tpDestinationRate
+     * @return TpDestinationRateInterface
+     */
+    public function getTpDestinationRate(): ?TpDestinationRateInterface;
+
 }

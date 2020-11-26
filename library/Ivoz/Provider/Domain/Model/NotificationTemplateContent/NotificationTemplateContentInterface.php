@@ -2,13 +2,18 @@
 
 namespace Ivoz\Provider\Domain\Model\NotificationTemplateContent;
 
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* NotificationTemplateContentInterface
+*/
 interface NotificationTemplateContentInterface extends LoggableEntityInterface
 {
     const BODYTYPE_TEXTPLAIN = 'text/plain';
-    const BODYTYPE_TEXTHTML = 'text/html';
 
+    const BODYTYPE_TEXTHTML = 'text/html';
 
     /**
      * @codeCoverageIgnore
@@ -21,14 +26,14 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getFromName();
+    public function getFromName(): ?string;
 
     /**
      * Get fromAddress
      *
      * @return string | null
      */
-    public function getFromAddress();
+    public function getFromAddress(): ?string;
 
     /**
      * Get subject
@@ -54,28 +59,29 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
     /**
      * Set notificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate
+     * @param NotificationTemplateInterface
      *
      * @return static
      */
-    public function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate);
+    public function setNotificationTemplate(NotificationTemplateInterface $notificationTemplate): NotificationTemplateContentInterface;
 
     /**
      * Get notificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     * @return NotificationTemplateInterface
      */
-    public function getNotificationTemplate();
+    public function getNotificationTemplate(): NotificationTemplateInterface;
 
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
+     * @return LanguageInterface | null
      */
-    public function getLanguage();
+    public function getLanguage(): ?LanguageInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

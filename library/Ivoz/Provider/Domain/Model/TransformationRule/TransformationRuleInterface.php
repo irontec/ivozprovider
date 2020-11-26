@@ -2,15 +2,21 @@
 
 namespace Ivoz\Provider\Domain\Model\TransformationRule;
 
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TransformationRuleInterface
+*/
 interface TransformationRuleInterface extends LoggableEntityInterface
 {
     const TYPE_CALLERIN = 'callerin';
-    const TYPE_CALLEEIN = 'calleein';
-    const TYPE_CALLEROUT = 'callerout';
-    const TYPE_CALLEEOUT = 'calleeout';
 
+    const TYPE_CALLEEIN = 'calleein';
+
+    const TYPE_CALLEROUT = 'callerout';
+
+    const TYPE_CALLEEOUT = 'calleeout';
 
     /**
      * @codeCoverageIgnore
@@ -21,7 +27,7 @@ interface TransformationRuleInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setMatchExpr($matchExpr = null);
+    public function setMatchExpr(string $matchExpr = null): TransformationRuleInterface;
 
     /**
      * Get type
@@ -40,42 +46,43 @@ interface TransformationRuleInterface extends LoggableEntityInterface
     /**
      * Get priority
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getPriority();
+    public function getPriority(): ?int;
 
     /**
      * Get matchExpr
      *
      * @return string | null
      */
-    public function getMatchExpr();
+    public function getMatchExpr(): ?string;
 
     /**
      * Get replaceExpr
      *
      * @return string | null
      */
-    public function getReplaceExpr();
+    public function getReplaceExpr(): ?string;
 
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
+     * @param TransformationRuleSetInterface | null
      *
      * @return static
      */
-    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
+    public function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): TransformationRuleInterface;
 
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @return TransformationRuleSetInterface | null
      */
-    public function getTransformationRuleSet();
+    public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

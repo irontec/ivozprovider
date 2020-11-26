@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\ApplicationServer;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ApplicationServerInterface
+*/
 interface ApplicationServerInterface extends LoggableEntityInterface
 {
     /**
@@ -24,10 +27,11 @@ interface ApplicationServerInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

@@ -2,10 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroup;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* RoutingPatternGroupInterface
+*/
 interface RoutingPatternGroupInterface extends LoggableEntityInterface
 {
     /**
@@ -18,7 +24,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      * @param Criteria|null $criteria
      * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface[]
      */
-    public function getRoutingPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRoutingPatterns(?Criteria $criteria = null);
 
     /**
      * Get name
@@ -32,14 +38,14 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand();
+    public function getBrand(): BrandInterface;
 
     /**
      * @return bool
@@ -49,62 +55,69 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     /**
      * Add relPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPattern
+     * @param RoutingPatternGroupsRelPatternInterface $relPattern
      *
      * @return static
      */
-    public function addRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPattern);
+    public function addRelPattern(RoutingPatternGroupsRelPatternInterface $relPattern): RoutingPatternGroupInterface;
 
     /**
      * Remove relPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPattern
+     * @param RoutingPatternGroupsRelPatternInterface $relPattern
+     *
+     * @return static
      */
-    public function removeRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPattern);
+    public function removeRelPattern(RoutingPatternGroupsRelPatternInterface $relPattern): RoutingPatternGroupInterface;
 
     /**
      * Replace relPatterns
      *
-     * @param ArrayCollection $relPatterns of Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
+     * @param ArrayCollection $relPatterns of RoutingPatternGroupsRelPatternInterface
+     *
      * @return static
      */
-    public function replaceRelPatterns(ArrayCollection $relPatterns);
+    public function replaceRelPatterns(ArrayCollection $relPatterns): RoutingPatternGroupInterface;
 
     /**
      * Get relPatterns
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[]
+     * @return RoutingPatternGroupsRelPatternInterface[]
      */
-    public function getRelPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelPatterns(?Criteria $criteria = null): array;
 
     /**
      * Add outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param OutgoingRoutingInterface $outgoingRouting
      *
      * @return static
      */
-    public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+    public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingPatternGroupInterface;
 
     /**
      * Remove outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param OutgoingRoutingInterface $outgoingRouting
+     *
+     * @return static
      */
-    public function removeOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+    public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingPatternGroupInterface;
 
     /**
      * Replace outgoingRoutings
      *
-     * @param ArrayCollection $outgoingRoutings of Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @param ArrayCollection $outgoingRoutings of OutgoingRoutingInterface
+     *
      * @return static
      */
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings);
+    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingPatternGroupInterface;
 
     /**
      * Get outgoingRoutings
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
+     * @return OutgoingRoutingInterface[]
      */
-    public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getOutgoingRoutings(?Criteria $criteria = null): array;
+
 }

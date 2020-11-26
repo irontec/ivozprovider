@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Language;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* LanguageInterface
+*/
 interface LanguageInterface extends LoggableEntityInterface
 {
     /**
@@ -22,12 +25,13 @@ interface LanguageInterface extends LoggableEntityInterface
     /**
      * Get name
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\Name
+     * @return Name
      */
-    public function getName();
+    public function getName(): Name;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

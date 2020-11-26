@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule;
 
+use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
+use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ConditionalRoutesConditionsRelScheduleInterface
+*/
 interface ConditionalRoutesConditionsRelScheduleInterface extends LoggableEntityInterface
 {
     /**
@@ -15,28 +20,29 @@ interface ConditionalRoutesConditionsRelScheduleInterface extends LoggableEntity
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
+     * @param ConditionalRoutesConditionInterface | null
      *
      * @return static
      */
-    public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null);
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelScheduleInterface;
 
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
+     * @return ConditionalRoutesConditionInterface | null
      */
-    public function getCondition();
+    public function getCondition(): ?ConditionalRoutesConditionInterface;
 
     /**
      * Get schedule
      *
-     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface
+     * @return ScheduleInterface
      */
-    public function getSchedule();
+    public function getSchedule(): ScheduleInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

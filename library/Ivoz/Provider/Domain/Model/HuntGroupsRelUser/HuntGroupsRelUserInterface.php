@@ -2,13 +2,19 @@
 
 namespace Ivoz\Provider\Domain\Model\HuntGroupsRelUser;
 
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* HuntGroupsRelUserInterface
+*/
 interface HuntGroupsRelUserInterface extends LoggableEntityInterface
 {
     const ROUTETYPE_NUMBER = 'number';
-    const ROUTETYPE_USER = 'user';
 
+    const ROUTETYPE_USER = 'user';
 
     /**
      * @codeCoverageIgnore
@@ -26,16 +32,16 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
     /**
      * Get timeoutTime
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getTimeoutTime();
+    public function getTimeoutTime(): ?int;
 
     /**
      * Get priority
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getPriority();
+    public function getPriority(): ?int;
 
     /**
      * Get routeType
@@ -49,37 +55,37 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getNumberValue();
+    public function getNumberValue(): ?string;
 
     /**
      * Set huntGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
+     * @param HuntGroupInterface | null
      *
      * @return static
      */
-    public function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null);
+    public function setHuntGroup(?HuntGroupInterface $huntGroup = null): HuntGroupsRelUserInterface;
 
     /**
      * Get huntGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
+     * @return HuntGroupInterface | null
      */
-    public function getHuntGroup();
+    public function getHuntGroup(): ?HuntGroupInterface;
 
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getUser();
+    public function getUser(): ?UserInterface;
 
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getNumberCountry();
+    public function getNumberCountry(): ?CountryInterface;
 
     /**
      * @return bool
@@ -91,4 +97,5 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
      * @return null|string
      */
     public function getTarget(string $prefix = '');
+
 }

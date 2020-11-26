@@ -2,10 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* RatingPlanGroupInterface
+*/
 interface RatingPlanGroupInterface extends LoggableEntityInterface
 {
     /**
@@ -38,32 +44,32 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     public function assertNoDuplicatedDestinationRateGroups();
 
     /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
-     */
-    public function getBrand();
-
-    /**
-     * Get currency
-     *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
-     */
-    public function getCurrency();
-
-    /**
      * Get name
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\Name
+     * @return Name
      */
-    public function getName();
+    public function getName(): Name;
 
     /**
      * Get description
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\Description
+     * @return Description
      */
-    public function getDescription();
+    public function getDescription(): Description;
+
+    /**
+     * Get brand
+     *
+     * @return BrandInterface
+     */
+    public function getBrand(): BrandInterface;
+
+    /**
+     * Get currency
+     *
+     * @return CurrencyInterface | null
+     */
+    public function getCurrency(): ?CurrencyInterface;
 
     /**
      * @return bool
@@ -73,31 +79,35 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     /**
      * Add ratingPlan
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param RatingPlanInterface $ratingPlan
      *
      * @return static
      */
-    public function addRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan);
+    public function addRatingPlan(RatingPlanInterface $ratingPlan): RatingPlanGroupInterface;
 
     /**
      * Remove ratingPlan
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param RatingPlanInterface $ratingPlan
+     *
+     * @return static
      */
-    public function removeRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan);
+    public function removeRatingPlan(RatingPlanInterface $ratingPlan): RatingPlanGroupInterface;
 
     /**
      * Replace ratingPlan
      *
-     * @param ArrayCollection $ratingPlan of Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     * @param ArrayCollection $ratingPlan of RatingPlanInterface
+     *
      * @return static
      */
-    public function replaceRatingPlan(ArrayCollection $ratingPlan);
+    public function replaceRatingPlan(ArrayCollection $ratingPlan): RatingPlanGroupInterface;
 
     /**
      * Get ratingPlan
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface[]
+     * @return RatingPlanInterface[]
      */
-    public function getRatingPlan(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRatingPlan(?Criteria $criteria = null): array;
+
 }

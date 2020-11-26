@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule;
 
+use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface;
+use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* CalendarPeriodsRelScheduleInterface
+*/
 interface CalendarPeriodsRelScheduleInterface extends LoggableEntityInterface
 {
     /**
@@ -15,28 +20,29 @@ interface CalendarPeriodsRelScheduleInterface extends LoggableEntityInterface
     /**
      * Set calendarPeriod
      *
-     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod | null
+     * @param CalendarPeriodInterface | null
      *
      * @return static
      */
-    public function setCalendarPeriod(\Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod = null);
+    public function setCalendarPeriod(?CalendarPeriodInterface $calendarPeriod = null): CalendarPeriodsRelScheduleInterface;
 
     /**
      * Get calendarPeriod
      *
-     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface | null
+     * @return CalendarPeriodInterface | null
      */
-    public function getCalendarPeriod();
+    public function getCalendarPeriod(): ?CalendarPeriodInterface;
 
     /**
      * Get schedule
      *
-     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface
+     * @return ScheduleInterface
      */
-    public function getSchedule();
+    public function getSchedule(): ScheduleInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

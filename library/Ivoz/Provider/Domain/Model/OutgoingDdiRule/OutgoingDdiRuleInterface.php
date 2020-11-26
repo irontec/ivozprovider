@@ -2,15 +2,21 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRule;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* OutgoingDdiRuleInterface
+*/
 interface OutgoingDdiRuleInterface extends LoggableEntityInterface
 {
     const DEFAULTACTION_KEEP = 'keep';
-    const DEFAULTACTION_FORCE = 'force';
 
+    const DEFAULTACTION_FORCE = 'force';
 
     /**
      * @codeCoverageIgnore
@@ -22,7 +28,7 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
      * Return forced Ddi for this rule
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
-    public function getForcedDdi();
+    public function getForcedDdi(): ?DdiInterface;
 
     /**
      * Check final outgoing Ddi presentation for given destination
@@ -50,9 +56,9 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany();
+    public function getCompany(): CompanyInterface;
 
     /**
      * @return bool
@@ -62,31 +68,35 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
     /**
      * Add pattern
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface $pattern
+     * @param OutgoingDdiRulesPatternInterface $pattern
      *
      * @return static
      */
-    public function addPattern(\Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface $pattern);
+    public function addPattern(OutgoingDdiRulesPatternInterface $pattern): OutgoingDdiRuleInterface;
 
     /**
      * Remove pattern
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface $pattern
+     * @param OutgoingDdiRulesPatternInterface $pattern
+     *
+     * @return static
      */
-    public function removePattern(\Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface $pattern);
+    public function removePattern(OutgoingDdiRulesPatternInterface $pattern): OutgoingDdiRuleInterface;
 
     /**
      * Replace patterns
      *
-     * @param ArrayCollection $patterns of Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface
+     * @param ArrayCollection $patterns of OutgoingDdiRulesPatternInterface
+     *
      * @return static
      */
-    public function replacePatterns(ArrayCollection $patterns);
+    public function replacePatterns(ArrayCollection $patterns): OutgoingDdiRuleInterface;
 
     /**
      * Get patterns
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface[]
+     * @return OutgoingDdiRulesPatternInterface[]
      */
-    public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getPatterns(?Criteria $criteria = null): array;
+
 }

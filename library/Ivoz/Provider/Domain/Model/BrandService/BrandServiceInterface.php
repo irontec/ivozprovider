@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\BrandService;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* BrandServiceInterface
+*/
 interface BrandServiceInterface extends LoggableEntityInterface
 {
     /**
@@ -15,7 +20,7 @@ interface BrandServiceInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setCode($code);
+    public function setCode(string $code): BrandServiceInterface;
 
     /**
      * Get code
@@ -27,28 +32,29 @@ interface BrandServiceInterface extends LoggableEntityInterface
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param BrandInterface
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
+    public function setBrand(BrandInterface $brand): BrandServiceInterface;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand();
+    public function getBrand(): BrandInterface;
 
     /**
      * Get service
      *
-     * @return \Ivoz\Provider\Domain\Model\Service\ServiceInterface
+     * @return ServiceInterface
      */
-    public function getService();
+    public function getService(): ServiceInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

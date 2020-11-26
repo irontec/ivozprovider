@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Country;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* CountryInterface
+*/
 interface CountryInterface extends LoggableEntityInterface
 {
     /**
@@ -24,24 +27,25 @@ interface CountryInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getCountryCode();
+    public function getCountryCode(): ?string;
 
     /**
      * Get name
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\Name
+     * @return Name
      */
-    public function getName();
+    public function getName(): Name;
 
     /**
      * Get zone
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\Zone
+     * @return Zone
      */
-    public function getZone();
+    public function getZone(): Zone;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

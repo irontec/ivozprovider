@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* CompanyRelGeoIPCountryInterface
+*/
 interface CompanyRelGeoIPCountryInterface extends LoggableEntityInterface
 {
     /**
@@ -15,28 +20,29 @@ interface CompanyRelGeoIPCountryInterface extends LoggableEntityInterface
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
+     * @param CompanyInterface
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
+    public function setCompany(CompanyInterface $company): CompanyRelGeoIPCountryInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface
      */
-    public function getCompany();
+    public function getCompany(): CompanyInterface;
 
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return CountryInterface
      */
-    public function getCountry();
+    public function getCountry(): CountryInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

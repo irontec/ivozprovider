@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\FeaturesRelCompany;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* FeaturesRelCompanyInterface
+*/
 interface FeaturesRelCompanyInterface extends LoggableEntityInterface
 {
     /**
@@ -15,28 +20,29 @@ interface FeaturesRelCompanyInterface extends LoggableEntityInterface
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
+     * @param CompanyInterface | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
+    public function setCompany(?CompanyInterface $company = null): FeaturesRelCompanyInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany();
+    public function getCompany(): ?CompanyInterface;
 
     /**
      * Get feature
      *
-     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureInterface
+     * @return FeatureInterface
      */
-    public function getFeature();
+    public function getFeature(): FeatureInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

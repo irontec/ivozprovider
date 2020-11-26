@@ -2,10 +2,18 @@
 
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
+use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* DdiProviderInterface
+*/
 interface DdiProviderInterface extends LoggableEntityInterface
 {
     /**
@@ -31,30 +39,30 @@ interface DdiProviderInterface extends LoggableEntityInterface
     /**
      * Get externallyRated
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getExternallyRated();
+    public function getExternallyRated(): ?bool;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand();
+    public function getBrand(): BrandInterface;
 
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @return TransformationRuleSetInterface | null
      */
-    public function getTransformationRuleSet();
+    public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
     /**
      * Get proxyTrunk
      *
-     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     * @return ProxyTrunkInterface | null
      */
-    public function getProxyTrunk();
+    public function getProxyTrunk(): ?ProxyTrunkInterface;
 
     /**
      * @return bool
@@ -64,62 +72,69 @@ interface DdiProviderInterface extends LoggableEntityInterface
     /**
      * Add ddiProviderRegistration
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration
+     * @param DdiProviderRegistrationInterface $ddiProviderRegistration
      *
      * @return static
      */
-    public function addDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration);
+    public function addDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): DdiProviderInterface;
 
     /**
      * Remove ddiProviderRegistration
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration
+     * @param DdiProviderRegistrationInterface $ddiProviderRegistration
+     *
+     * @return static
      */
-    public function removeDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration);
+    public function removeDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): DdiProviderInterface;
 
     /**
      * Replace ddiProviderRegistrations
      *
-     * @param ArrayCollection $ddiProviderRegistrations of Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface
+     * @param ArrayCollection $ddiProviderRegistrations of DdiProviderRegistrationInterface
+     *
      * @return static
      */
-    public function replaceDdiProviderRegistrations(ArrayCollection $ddiProviderRegistrations);
+    public function replaceDdiProviderRegistrations(ArrayCollection $ddiProviderRegistrations): DdiProviderInterface;
 
     /**
      * Get ddiProviderRegistrations
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface[]
+     * @return DdiProviderRegistrationInterface[]
      */
-    public function getDdiProviderRegistrations(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getDdiProviderRegistrations(?Criteria $criteria = null): array;
 
     /**
      * Add ddiProviderAddress
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress
+     * @param DdiProviderAddressInterface $ddiProviderAddress
      *
      * @return static
      */
-    public function addDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress);
+    public function addDdiProviderAddress(DdiProviderAddressInterface $ddiProviderAddress): DdiProviderInterface;
 
     /**
      * Remove ddiProviderAddress
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress
+     * @param DdiProviderAddressInterface $ddiProviderAddress
+     *
+     * @return static
      */
-    public function removeDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress);
+    public function removeDdiProviderAddress(DdiProviderAddressInterface $ddiProviderAddress): DdiProviderInterface;
 
     /**
      * Replace ddiProviderAddresses
      *
-     * @param ArrayCollection $ddiProviderAddresses of Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
+     * @param ArrayCollection $ddiProviderAddresses of DdiProviderAddressInterface
+     *
      * @return static
      */
-    public function replaceDdiProviderAddresses(ArrayCollection $ddiProviderAddresses);
+    public function replaceDdiProviderAddresses(ArrayCollection $ddiProviderAddresses): DdiProviderInterface;
 
     /**
      * Get ddiProviderAddresses
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface[]
+     * @return DdiProviderAddressInterface[]
      */
-    public function getDdiProviderAddresses(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getDdiProviderAddresses(?Criteria $criteria = null): array;
+
 }

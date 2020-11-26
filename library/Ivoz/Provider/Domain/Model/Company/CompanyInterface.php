@@ -2,27 +2,56 @@
 
 namespace Ivoz\Provider\Domain\Model\Company;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
+use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
+use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
+use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
+use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface;
+use Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface;
+use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* CompanyInterface
+*/
 interface CompanyInterface extends LoggableEntityInterface
 {
     const TYPE_VPBX = 'vpbx';
+
     const TYPE_RETAIL = 'retail';
+
     const TYPE_WHOLESALE = 'wholesale';
+
     const TYPE_RESIDENTIAL = 'residential';
 
-
     const DISTRIBUTEMETHOD_STATIC = 'static';
+
     const DISTRIBUTEMETHOD_RR = 'rr';
+
     const DISTRIBUTEMETHOD_HASH = 'hash';
 
-
     const BILLINGMETHOD_POSTPAID = 'postpaid';
-    const BILLINGMETHOD_PREPAID = 'prepaid';
-    const BILLINGMETHOD_PSEUDOPREPAID = 'pseudoprepaid';
 
+    const BILLINGMETHOD_PREPAID = 'prepaid';
+
+    const BILLINGMETHOD_PSEUDOPREPAID = 'pseudoprepaid';
 
     /**
      * @codeCoverageIgnore
@@ -33,12 +62,12 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setName($name);
+    public function setName(string $name): CompanyInterface;
 
     /**
      * {@inheritDoc}
      */
-    public function setOnDemandRecordCode($onDemandRecordCode = null);
+    public function setOnDemandRecordCode(string $onDemandRecordCode = null): CompanyInterface;
 
     /**
      * @param string $exten
@@ -94,7 +123,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * @inheritdoc
      */
-    public function setDomainUsers($domainUsers = null);
+    public function setDomainUsers(string $domainUsers = null): CompanyInterface;
 
     /**
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
@@ -172,7 +201,7 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getDomainUsers();
+    public function getDomainUsers(): ?string;
 
     /**
      * Get nif
@@ -191,14 +220,14 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get maxCalls
      *
-     * @return integer
+     * @return int
      */
     public function getMaxCalls(): int;
 
     /**
      * Get maxDailyUsage
      *
-     * @return integer
+     * @return int
      */
     public function getMaxDailyUsage(): int;
 
@@ -207,14 +236,14 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @return float | null
      */
-    public function getCurrentDayUsage();
+    public function getCurrentDayUsage(): ?float;
 
     /**
      * Get maxDailyUsageEmail
      *
      * @return string | null
      */
-    public function getMaxDailyUsageEmail();
+    public function getMaxDailyUsageEmail(): ?string;
 
     /**
      * Get postalAddress
@@ -254,21 +283,21 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get ipfilter
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getIpfilter();
+    public function getIpfilter(): ?bool;
 
     /**
      * Get onDemandRecord
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getOnDemandRecord();
+    public function getOnDemandRecord(): ?int;
 
     /**
      * Get allowRecordingRemoval
      *
-     * @return boolean
+     * @return bool
      */
     public function getAllowRecordingRemoval(): bool;
 
@@ -277,28 +306,28 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getOnDemandRecordCode();
+    public function getOnDemandRecordCode(): ?string;
 
     /**
      * Get externallyextraopts
      *
      * @return string | null
      */
-    public function getExternallyextraopts();
+    public function getExternallyextraopts(): ?string;
 
     /**
      * Get recordingsLimitMB
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getRecordingsLimitMB();
+    public function getRecordingsLimitMB(): ?int;
 
     /**
      * Get recordingsLimitEmail
      *
      * @return string | null
      */
-    public function getRecordingsLimitEmail();
+    public function getRecordingsLimitEmail(): ?string;
 
     /**
      * Get billingMethod
@@ -312,135 +341,135 @@ interface CompanyInterface extends LoggableEntityInterface
      *
      * @return float | null
      */
-    public function getBalance();
+    public function getBalance(): ?float;
 
     /**
      * Get showInvoices
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getShowInvoices();
+    public function getShowInvoices(): ?bool;
 
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
+     * @return LanguageInterface | null
      */
-    public function getLanguage();
+    public function getLanguage(): ?LanguageInterface;
 
     /**
      * Get mediaRelaySets
      *
-     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface | null
+     * @return MediaRelaySetInterface | null
      */
-    public function getMediaRelaySets();
+    public function getMediaRelaySets(): ?MediaRelaySetInterface;
 
     /**
      * Get defaultTimezone
      *
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
+     * @return TimezoneInterface | null
      */
-    public function getDefaultTimezone();
+    public function getDefaultTimezone(): ?TimezoneInterface;
 
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param BrandInterface
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
+    public function setBrand(BrandInterface $brand): CompanyInterface;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand();
+    public function getBrand(): BrandInterface;
 
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
+     * @return DomainInterface | null
      */
-    public function getDomain();
+    public function getDomain(): ?DomainInterface;
 
     /**
      * Get applicationServer
      *
-     * @return \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface | null
+     * @return ApplicationServerInterface | null
      */
-    public function getApplicationServer();
+    public function getApplicationServer(): ?ApplicationServerInterface;
 
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getCountry();
+    public function getCountry(): ?CountryInterface;
 
     /**
      * Get currency
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
+     * @return CurrencyInterface | null
      */
-    public function getCurrency();
+    public function getCurrency(): ?CurrencyInterface;
 
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @return TransformationRuleSetInterface | null
      */
-    public function getTransformationRuleSet();
+    public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
     /**
      * Get outgoingDdi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     * @return DdiInterface | null
      */
-    public function getOutgoingDdi();
+    public function getOutgoingDdi(): ?DdiInterface;
 
     /**
      * Get outgoingDdiRule
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface | null
+     * @return OutgoingDdiRuleInterface | null
      */
-    public function getOutgoingDdiRule();
+    public function getOutgoingDdiRule(): ?OutgoingDdiRuleInterface;
 
     /**
      * Get voicemailNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     * @return NotificationTemplateInterface | null
      */
-    public function getVoicemailNotificationTemplate();
+    public function getVoicemailNotificationTemplate(): ?NotificationTemplateInterface;
 
     /**
      * Get faxNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     * @return NotificationTemplateInterface | null
      */
-    public function getFaxNotificationTemplate();
+    public function getFaxNotificationTemplate(): ?NotificationTemplateInterface;
 
     /**
      * Get invoiceNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     * @return NotificationTemplateInterface | null
      */
-    public function getInvoiceNotificationTemplate();
+    public function getInvoiceNotificationTemplate(): ?NotificationTemplateInterface;
 
     /**
      * Get callCsvNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     * @return NotificationTemplateInterface | null
      */
-    public function getCallCsvNotificationTemplate();
+    public function getCallCsvNotificationTemplate(): ?NotificationTemplateInterface;
 
     /**
      * Get maxDailyUsageNotificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     * @return NotificationTemplateInterface | null
      */
-    public function getMaxDailyUsageNotificationTemplate();
+    public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateInterface;
 
     /**
      * @return bool
@@ -450,372 +479,375 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Add extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     * @param ExtensionInterface $extension
      *
      * @return static
      */
-    public function addExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension);
+    public function addExtension(ExtensionInterface $extension): CompanyInterface;
 
     /**
      * Remove extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     * @param ExtensionInterface $extension
+     *
+     * @return static
      */
-    public function removeExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension);
+    public function removeExtension(ExtensionInterface $extension): CompanyInterface;
 
     /**
      * Replace extensions
      *
-     * @param ArrayCollection $extensions of Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @param ArrayCollection $extensions of ExtensionInterface
+     *
      * @return static
      */
-    public function replaceExtensions(ArrayCollection $extensions);
+    public function replaceExtensions(ArrayCollection $extensions): CompanyInterface;
 
     /**
      * Get extensions
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface[]
+     * @return ExtensionInterface[]
      */
-    public function getExtensions(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getExtensions(?Criteria $criteria = null): array;
 
     /**
      * Add ddi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi
+     * @param DdiInterface $ddi
      *
      * @return static
      */
-    public function addDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi);
+    public function addDdi(DdiInterface $ddi): CompanyInterface;
 
     /**
      * Remove ddi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi
+     * @param DdiInterface $ddi
+     *
+     * @return static
      */
-    public function removeDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi);
+    public function removeDdi(DdiInterface $ddi): CompanyInterface;
 
     /**
      * Replace ddis
      *
-     * @param ArrayCollection $ddis of Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @param ArrayCollection $ddis of DdiInterface
+     *
      * @return static
      */
-    public function replaceDdis(ArrayCollection $ddis);
+    public function replaceDdis(ArrayCollection $ddis): CompanyInterface;
 
     /**
      * Get ddis
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[]
+     * @return DdiInterface[]
      */
-    public function getDdis(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getDdis(?Criteria $criteria = null): array;
 
     /**
      * Add friend
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
+     * @param FriendInterface $friend
      *
      * @return static
      */
-    public function addFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend);
+    public function addFriend(FriendInterface $friend): CompanyInterface;
 
     /**
      * Remove friend
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
+     * @param FriendInterface $friend
+     *
+     * @return static
      */
-    public function removeFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend);
+    public function removeFriend(FriendInterface $friend): CompanyInterface;
 
     /**
      * Replace friends
      *
-     * @param ArrayCollection $friends of Ivoz\Provider\Domain\Model\Friend\FriendInterface
+     * @param ArrayCollection $friends of FriendInterface
+     *
      * @return static
      */
-    public function replaceFriends(ArrayCollection $friends);
+    public function replaceFriends(ArrayCollection $friends): CompanyInterface;
 
     /**
      * Get friends
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface[]
+     * @return FriendInterface[]
      */
-    public function getFriends(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getFriends(?Criteria $criteria = null): array;
 
     /**
      * Add companyService
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface $companyService
+     * @param CompanyServiceInterface $companyService
      *
      * @return static
      */
-    public function addCompanyService(\Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface $companyService);
+    public function addCompanyService(CompanyServiceInterface $companyService): CompanyInterface;
 
     /**
      * Remove companyService
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface $companyService
+     * @param CompanyServiceInterface $companyService
+     *
+     * @return static
      */
-    public function removeCompanyService(\Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface $companyService);
+    public function removeCompanyService(CompanyServiceInterface $companyService): CompanyInterface;
 
     /**
      * Replace companyServices
      *
-     * @param ArrayCollection $companyServices of Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface
+     * @param ArrayCollection $companyServices of CompanyServiceInterface
+     *
      * @return static
      */
-    public function replaceCompanyServices(ArrayCollection $companyServices);
+    public function replaceCompanyServices(ArrayCollection $companyServices): CompanyInterface;
 
     /**
      * Get companyServices
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface[]
+     * @return CompanyServiceInterface[]
      */
-    public function getCompanyServices(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getCompanyServices(?Criteria $criteria = null): array;
 
     /**
      * Add terminal
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
+     * @param TerminalInterface $terminal
      *
      * @return static
      */
-    public function addTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal);
+    public function addTerminal(TerminalInterface $terminal): CompanyInterface;
 
     /**
      * Remove terminal
      *
-     * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal
+     * @param TerminalInterface $terminal
+     *
+     * @return static
      */
-    public function removeTerminal(\Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal);
+    public function removeTerminal(TerminalInterface $terminal): CompanyInterface;
 
     /**
      * Replace terminals
      *
-     * @param ArrayCollection $terminals of Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
+     * @param ArrayCollection $terminals of TerminalInterface
+     *
      * @return static
      */
-    public function replaceTerminals(ArrayCollection $terminals);
+    public function replaceTerminals(ArrayCollection $terminals): CompanyInterface;
 
     /**
      * Get terminals
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[]
+     * @return TerminalInterface[]
      */
-    public function getTerminals(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getTerminals(?Criteria $criteria = null): array;
 
     /**
      * Add ratingProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
+     * @param RatingProfileInterface $ratingProfile
      *
      * @return static
      */
-    public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
+    public function addRatingProfile(RatingProfileInterface $ratingProfile): CompanyInterface;
 
     /**
      * Remove ratingProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
+     * @param RatingProfileInterface $ratingProfile
+     *
+     * @return static
      */
-    public function removeRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
+    public function removeRatingProfile(RatingProfileInterface $ratingProfile): CompanyInterface;
 
     /**
      * Replace ratingProfiles
      *
-     * @param ArrayCollection $ratingProfiles of Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
+     * @param ArrayCollection $ratingProfiles of RatingProfileInterface
+     *
      * @return static
      */
-    public function replaceRatingProfiles(ArrayCollection $ratingProfiles);
+    public function replaceRatingProfiles(ArrayCollection $ratingProfiles): CompanyInterface;
 
     /**
      * Get ratingProfiles
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[]
+     * @return RatingProfileInterface[]
      */
-    public function getRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRatingProfiles(?Criteria $criteria = null): array;
 
     /**
      * Add musicsOnHold
      *
-     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold
+     * @param MusicOnHoldInterface $musicsOnHold
      *
      * @return static
      */
-    public function addMusicsOnHold(\Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold);
+    public function addMusicsOnHold(MusicOnHoldInterface $musicsOnHold): CompanyInterface;
 
     /**
      * Remove musicsOnHold
      *
-     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold
+     * @param MusicOnHoldInterface $musicsOnHold
+     *
+     * @return static
      */
-    public function removeMusicsOnHold(\Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold);
+    public function removeMusicsOnHold(MusicOnHoldInterface $musicsOnHold): CompanyInterface;
 
     /**
      * Replace musicsOnHold
      *
-     * @param ArrayCollection $musicsOnHold of Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface
+     * @param ArrayCollection $musicsOnHold of MusicOnHoldInterface
+     *
      * @return static
      */
-    public function replaceMusicsOnHold(ArrayCollection $musicsOnHold);
+    public function replaceMusicsOnHold(ArrayCollection $musicsOnHold): CompanyInterface;
 
     /**
      * Get musicsOnHold
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[]
+     * @return MusicOnHoldInterface[]
      */
-    public function getMusicsOnHold(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getMusicsOnHold(?Criteria $criteria = null): array;
 
     /**
      * Add recording
      *
-     * @param \Ivoz\Provider\Domain\Model\Recording\RecordingInterface $recording
+     * @param RecordingInterface $recording
      *
      * @return static
      */
-    public function addRecording(\Ivoz\Provider\Domain\Model\Recording\RecordingInterface $recording);
+    public function addRecording(RecordingInterface $recording): CompanyInterface;
 
     /**
      * Remove recording
      *
-     * @param \Ivoz\Provider\Domain\Model\Recording\RecordingInterface $recording
+     * @param RecordingInterface $recording
+     *
+     * @return static
      */
-    public function removeRecording(\Ivoz\Provider\Domain\Model\Recording\RecordingInterface $recording);
+    public function removeRecording(RecordingInterface $recording): CompanyInterface;
 
     /**
      * Replace recordings
      *
-     * @param ArrayCollection $recordings of Ivoz\Provider\Domain\Model\Recording\RecordingInterface
+     * @param ArrayCollection $recordings of RecordingInterface
+     *
      * @return static
      */
-    public function replaceRecordings(ArrayCollection $recordings);
+    public function replaceRecordings(ArrayCollection $recordings): CompanyInterface;
 
     /**
      * Get recordings
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\Recording\RecordingInterface[]
+     * @return RecordingInterface[]
      */
-    public function getRecordings(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRecordings(?Criteria $criteria = null): array;
 
     /**
      * Add relFeature
      *
-     * @param \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface $relFeature
+     * @param FeaturesRelCompanyInterface $relFeature
      *
      * @return static
      */
-    public function addRelFeature(\Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface $relFeature);
+    public function addRelFeature(FeaturesRelCompanyInterface $relFeature): CompanyInterface;
 
     /**
      * Remove relFeature
      *
-     * @param \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface $relFeature
+     * @param FeaturesRelCompanyInterface $relFeature
+     *
+     * @return static
      */
-    public function removeRelFeature(\Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface $relFeature);
+    public function removeRelFeature(FeaturesRelCompanyInterface $relFeature): CompanyInterface;
 
     /**
      * Replace relFeatures
      *
-     * @param ArrayCollection $relFeatures of Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface
+     * @param ArrayCollection $relFeatures of FeaturesRelCompanyInterface
+     *
      * @return static
      */
-    public function replaceRelFeatures(ArrayCollection $relFeatures);
+    public function replaceRelFeatures(ArrayCollection $relFeatures): CompanyInterface;
 
     /**
      * Get relFeatures
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface[]
+     * @return FeaturesRelCompanyInterface[]
      */
-    public function getRelFeatures(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelFeatures(?Criteria $criteria = null): array;
 
     /**
      * Add relCodec
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
+     * @param CompanyRelCodecInterface $relCodec
      *
      * @return static
      */
-    public function addRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec);
+    public function addRelCodec(CompanyRelCodecInterface $relCodec): CompanyInterface;
 
     /**
      * Remove relCodec
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
+     * @param CompanyRelCodecInterface $relCodec
+     *
+     * @return static
      */
-    public function removeRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec);
+    public function removeRelCodec(CompanyRelCodecInterface $relCodec): CompanyInterface;
 
     /**
      * Replace relCodecs
      *
-     * @param ArrayCollection $relCodecs of Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface
+     * @param ArrayCollection $relCodecs of CompanyRelCodecInterface
+     *
      * @return static
      */
-    public function replaceRelCodecs(ArrayCollection $relCodecs);
+    public function replaceRelCodecs(ArrayCollection $relCodecs): CompanyInterface;
 
     /**
      * Get relCodecs
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[]
+     * @return CompanyRelCodecInterface[]
      */
-    public function getRelCodecs(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelCodecs(?Criteria $criteria = null): array;
 
     /**
      * Add relRoutingTag
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag
+     * @param CompanyRelRoutingTagInterface $relRoutingTag
      *
      * @return static
      */
-    public function addRelRoutingTag(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag);
+    public function addRelRoutingTag(CompanyRelRoutingTagInterface $relRoutingTag): CompanyInterface;
 
     /**
      * Remove relRoutingTag
      *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag
+     * @param CompanyRelRoutingTagInterface $relRoutingTag
+     *
+     * @return static
      */
-    public function removeRelRoutingTag(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag);
+    public function removeRelRoutingTag(CompanyRelRoutingTagInterface $relRoutingTag): CompanyInterface;
 
     /**
      * Replace relRoutingTags
      *
-     * @param ArrayCollection $relRoutingTags of Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface
+     * @param ArrayCollection $relRoutingTags of CompanyRelRoutingTagInterface
+     *
      * @return static
      */
-    public function replaceRelRoutingTags(ArrayCollection $relRoutingTags);
+    public function replaceRelRoutingTags(ArrayCollection $relRoutingTags): CompanyInterface;
 
     /**
      * Get relRoutingTags
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
+     * @return CompanyRelRoutingTagInterface[]
      */
-    public function getRelRoutingTags(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelRoutingTags(?Criteria $criteria = null): array;
 
-    /**
-     * Add relCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry
-     *
-     * @return static
-     */
-    public function addRelCountry(\Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry);
-
-    /**
-     * Remove relCountry
-     *
-     * @param \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry
-     */
-    public function removeRelCountry(\Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface $relCountry);
-
-    /**
-     * Replace relCountries
-     *
-     * @param ArrayCollection $relCountries of Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface
-     * @return static
-     */
-    public function replaceRelCountries(ArrayCollection $relCountries);
-
-    /**
-     * Get relCountries
-     * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface[]
-     */
-    public function getRelCountries(\Doctrine\Common\Collections\Criteria $criteria = null);
 }

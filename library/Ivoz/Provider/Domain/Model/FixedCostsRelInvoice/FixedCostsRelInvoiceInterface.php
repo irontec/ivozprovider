@@ -2,8 +2,14 @@
 
 namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoice;
 
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
+use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface;
+use Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* FixedCostsRelInvoiceInterface
+*/
 interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
 {
     /**
@@ -17,40 +23,41 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
      * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler
      * @return static
      */
-    public static function fromFixedCostsRelInvoiceScheduler(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice, \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler);
+    public static function fromFixedCostsRelInvoiceScheduler(InvoiceInterface $invoice, FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler);
 
     /**
      * Get quantity
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getQuantity();
+    public function getQuantity(): ?int;
 
     /**
      * Get fixedCost
      *
-     * @return \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface
+     * @return FixedCostInterface
      */
-    public function getFixedCost();
+    public function getFixedCost(): FixedCostInterface;
 
     /**
      * Set invoice
      *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice | null
+     * @param InvoiceInterface | null
      *
      * @return static
      */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null);
+    public function setInvoice(?InvoiceInterface $invoice = null): FixedCostsRelInvoiceInterface;
 
     /**
      * Get invoice
      *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
+     * @return InvoiceInterface | null
      */
-    public function getInvoice();
+    public function getInvoice(): ?InvoiceInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

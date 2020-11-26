@@ -2,8 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\ConferenceRoom;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ConferenceRoomInterface
+*/
 interface ConferenceRoomInterface extends LoggableEntityInterface
 {
     /**
@@ -22,7 +26,7 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
     /**
      * Get pinProtected
      *
-     * @return boolean
+     * @return bool
      */
     public function getPinProtected(): bool;
 
@@ -31,24 +35,25 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getPinCode();
+    public function getPinCode(): ?string;
 
     /**
      * Get maxMembers
      *
-     * @return integer
+     * @return int
      */
     public function getMaxMembers(): int;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany();
+    public function getCompany(): CompanyInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

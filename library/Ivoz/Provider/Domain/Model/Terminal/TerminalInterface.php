@@ -2,20 +2,29 @@
 
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TerminalInterface
+*/
 interface TerminalInterface extends LoggableEntityInterface
 {
     const DIRECTMEDIAMETHOD_UPDATE = 'update';
+
     const DIRECTMEDIAMETHOD_INVITE = 'invite';
+
     const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
 
-
     const T38PASSTHROUGH_YES = 'yes';
-    const T38PASSTHROUGH_NO = 'no';
 
+    const T38PASSTHROUGH_NO = 'no';
 
     /**
      * @return array
@@ -26,13 +35,13 @@ interface TerminalInterface extends LoggableEntityInterface
      * {@inheritDoc}
      * @throws \InvalidArgumentException
      */
-    public function setName($name = null);
+    public function setName(string $name = null): TerminalInterface;
 
     /**
      * {@inheritDoc}
      * @throws \InvalidArgumentException
      */
-    public function setPassword($password);
+    public function setPassword(string $password): TerminalInterface;
 
     public function getUser();
 
@@ -56,14 +65,14 @@ interface TerminalInterface extends LoggableEntityInterface
      */
     public function getAstPsEndpoint();
 
-    public function setMac($mac = null);
+    public function setMac(string $mac = null): TerminalInterface;
 
     /**
      * Get name
      *
      * @return string | null
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * Get disallow
@@ -84,7 +93,7 @@ interface TerminalInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getAllowVideo();
+    public function getAllowVideo(): ?string;
 
     /**
      * Get directMediaMethod
@@ -105,14 +114,14 @@ interface TerminalInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getMac();
+    public function getMac(): ?string;
 
     /**
      * Get lastProvisionDate
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getLastProvisionDate();
+    public function getLastProvisionDate(): ?\DateTimeInterface;
 
     /**
      * Get t38Passthrough
@@ -124,48 +133,48 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Get rtpEncryption
      *
-     * @return boolean
+     * @return bool
      */
     public function getRtpEncryption(): bool;
 
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
+    public function setCompany(CompanyInterface $company): TerminalInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany();
+    public function getCompany(): CompanyInterface;
 
     /**
      * Set domain
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
+     * @param DomainInterface | null
      *
      * @return static
      */
-    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null);
+    public function setDomain(?DomainInterface $domain = null): TerminalInterface;
 
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
+     * @return DomainInterface | null
      */
-    public function getDomain();
+    public function getDomain(): ?DomainInterface;
 
     /**
      * Get terminalModel
      *
-     * @return \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface | null
+     * @return TerminalModelInterface | null
      */
-    public function getTerminalModel();
+    public function getTerminalModel(): ?TerminalModelInterface;
 
     /**
      * @return bool
@@ -175,62 +184,69 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Add astPsEndpoint
      *
-     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $astPsEndpoint
+     * @param PsEndpointInterface $astPsEndpoint
      *
      * @return static
      */
-    public function addAstPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $astPsEndpoint);
+    public function addAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface;
 
     /**
      * Remove astPsEndpoint
      *
-     * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $astPsEndpoint
+     * @param PsEndpointInterface $astPsEndpoint
+     *
+     * @return static
      */
-    public function removeAstPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $astPsEndpoint);
+    public function removeAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface;
 
     /**
      * Replace astPsEndpoints
      *
-     * @param ArrayCollection $astPsEndpoints of Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
+     * @param ArrayCollection $astPsEndpoints of PsEndpointInterface
+     *
      * @return static
      */
-    public function replaceAstPsEndpoints(ArrayCollection $astPsEndpoints);
+    public function replaceAstPsEndpoints(ArrayCollection $astPsEndpoints): TerminalInterface;
 
     /**
      * Get astPsEndpoints
      * @param Criteria | null $criteria
-     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
+     * @return PsEndpointInterface[]
      */
-    public function getAstPsEndpoints(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getAstPsEndpoints(?Criteria $criteria = null): array;
 
     /**
      * Add user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param UserInterface $user
      *
      * @return static
      */
-    public function addUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
+    public function addUser(UserInterface $user): TerminalInterface;
 
     /**
      * Remove user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param UserInterface $user
+     *
+     * @return static
      */
-    public function removeUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
+    public function removeUser(UserInterface $user): TerminalInterface;
 
     /**
      * Replace users
      *
-     * @param ArrayCollection $users of Ivoz\Provider\Domain\Model\User\UserInterface
+     * @param ArrayCollection $users of UserInterface
+     *
      * @return static
      */
-    public function replaceUsers(ArrayCollection $users);
+    public function replaceUsers(ArrayCollection $users): TerminalInterface;
 
     /**
      * Get users
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
+     * @return UserInterface[]
      */
-    public function getUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getUsers(?Criteria $criteria = null): array;
+
 }

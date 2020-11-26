@@ -2,16 +2,31 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* OutgoingRoutingInterface
+*/
 interface OutgoingRoutingInterface extends LoggableEntityInterface
 {
     const ROUTINGMODE_STATIC = 'static';
-    const ROUTINGMODE_LCR = 'lcr';
-    const ROUTINGMODE_BLOCK = 'block';
 
+    const ROUTINGMODE_LCR = 'lcr';
+
+    const ROUTINGMODE_BLOCK = 'block';
 
     /**
      * @codeCoverageIgnore
@@ -43,26 +58,26 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $pattern
      * @return bool
      */
-    public function hasRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $pattern);
+    public function hasRoutingPattern(RoutingPatternInterface $pattern);
 
     /**
      * Get type
      *
      * @return string | null
      */
-    public function getType();
+    public function getType(): ?string;
 
     /**
      * Get priority
      *
-     * @return integer
+     * @return int
      */
     public function getPriority(): int;
 
     /**
      * Get weight
      *
-     * @return integer
+     * @return int
      */
     public function getWeight(): int;
 
@@ -71,129 +86,129 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getRoutingMode();
+    public function getRoutingMode(): ?string;
 
     /**
      * Get prefix
      *
      * @return string | null
      */
-    public function getPrefix();
+    public function getPrefix(): ?string;
 
     /**
      * Get stopper
      *
-     * @return boolean
+     * @return bool
      */
     public function getStopper(): bool;
 
     /**
      * Get forceClid
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getForceClid();
+    public function getForceClid(): ?bool;
 
     /**
      * Get clid
      *
      * @return string | null
      */
-    public function getClid();
+    public function getClid(): ?string;
 
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param BrandInterface
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
+    public function setBrand(BrandInterface $brand): OutgoingRoutingInterface;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand();
+    public function getBrand(): BrandInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany();
+    public function getCompany(): ?CompanyInterface;
 
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
+     * @param CarrierInterface | null
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
+    public function setCarrier(?CarrierInterface $carrier = null): OutgoingRoutingInterface;
 
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
+     * @return CarrierInterface | null
      */
-    public function getCarrier();
+    public function getCarrier(): ?CarrierInterface;
 
     /**
      * Set routingPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern | null
+     * @param RoutingPatternInterface | null
      *
      * @return static
      */
-    public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern = null);
+    public function setRoutingPattern(?RoutingPatternInterface $routingPattern = null): OutgoingRoutingInterface;
 
     /**
      * Get routingPattern
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface | null
+     * @return RoutingPatternInterface | null
      */
-    public function getRoutingPattern();
+    public function getRoutingPattern(): ?RoutingPatternInterface;
 
     /**
      * Set routingPatternGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup | null
+     * @param RoutingPatternGroupInterface | null
      *
      * @return static
      */
-    public function setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup = null);
+    public function setRoutingPatternGroup(?RoutingPatternGroupInterface $routingPatternGroup = null): OutgoingRoutingInterface;
 
     /**
      * Get routingPatternGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface | null
+     * @return RoutingPatternGroupInterface | null
      */
-    public function getRoutingPatternGroup();
+    public function getRoutingPatternGroup(): ?RoutingPatternGroupInterface;
 
     /**
      * Set routingTag
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag | null
+     * @param RoutingTagInterface | null
      *
      * @return static
      */
-    public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null);
+    public function setRoutingTag(?RoutingTagInterface $routingTag = null): OutgoingRoutingInterface;
 
     /**
      * Get routingTag
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
+     * @return RoutingTagInterface | null
      */
-    public function getRoutingTag();
+    public function getRoutingTag(): ?RoutingTagInterface;
 
     /**
      * Get clidCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getClidCountry();
+    public function getClidCountry(): ?CountryInterface;
 
     /**
      * @return bool
@@ -201,111 +216,117 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function isInitialized(): bool;
 
     /**
-     * Set tpLcrRule
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface $tpLcrRule
-     *
-     * @return static
+     * @var TpLcrRuleInterface
+     * mappedBy outgoingRouting
      */
-    public function setTpLcrRule(\Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface $tpLcrRule = null);
+    public function setTpLcrRule(TpLcrRuleInterface $tpLcrRule): OutgoingRoutingInterface;
 
     /**
      * Get tpLcrRule
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface | null
+     * @return TpLcrRuleInterface
      */
-    public function getTpLcrRule();
+    public function getTpLcrRule(): ?TpLcrRuleInterface;
 
     /**
      * Add lcrRule
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
+     * @param TrunksLcrRuleInterface $lcrRule
      *
      * @return static
      */
-    public function addLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule);
+    public function addLcrRule(TrunksLcrRuleInterface $lcrRule): OutgoingRoutingInterface;
 
     /**
      * Remove lcrRule
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
+     * @param TrunksLcrRuleInterface $lcrRule
+     *
+     * @return static
      */
-    public function removeLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule);
+    public function removeLcrRule(TrunksLcrRuleInterface $lcrRule): OutgoingRoutingInterface;
 
     /**
      * Replace lcrRules
      *
-     * @param ArrayCollection $lcrRules of Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
+     * @param ArrayCollection $lcrRules of TrunksLcrRuleInterface
+     *
      * @return static
      */
-    public function replaceLcrRules(ArrayCollection $lcrRules);
+    public function replaceLcrRules(ArrayCollection $lcrRules): OutgoingRoutingInterface;
 
     /**
      * Get lcrRules
      * @param Criteria | null $criteria
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[]
+     * @return TrunksLcrRuleInterface[]
      */
-    public function getLcrRules(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getLcrRules(?Criteria $criteria = null): array;
 
     /**
      * Add lcrRuleTarget
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget
+     * @param TrunksLcrRuleTargetInterface $lcrRuleTarget
      *
      * @return static
      */
-    public function addLcrRuleTarget(\Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget);
+    public function addLcrRuleTarget(TrunksLcrRuleTargetInterface $lcrRuleTarget): OutgoingRoutingInterface;
 
     /**
      * Remove lcrRuleTarget
      *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget
+     * @param TrunksLcrRuleTargetInterface $lcrRuleTarget
+     *
+     * @return static
      */
-    public function removeLcrRuleTarget(\Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget);
+    public function removeLcrRuleTarget(TrunksLcrRuleTargetInterface $lcrRuleTarget): OutgoingRoutingInterface;
 
     /**
      * Replace lcrRuleTargets
      *
-     * @param ArrayCollection $lcrRuleTargets of Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface
+     * @param ArrayCollection $lcrRuleTargets of TrunksLcrRuleTargetInterface
+     *
      * @return static
      */
-    public function replaceLcrRuleTargets(ArrayCollection $lcrRuleTargets);
+    public function replaceLcrRuleTargets(ArrayCollection $lcrRuleTargets): OutgoingRoutingInterface;
 
     /**
      * Get lcrRuleTargets
      * @param Criteria | null $criteria
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[]
+     * @return TrunksLcrRuleTargetInterface[]
      */
-    public function getLcrRuleTargets(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getLcrRuleTargets(?Criteria $criteria = null): array;
 
     /**
      * Add relCarrier
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier
+     * @param OutgoingRoutingRelCarrierInterface $relCarrier
      *
      * @return static
      */
-    public function addRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier);
+    public function addRelCarrier(OutgoingRoutingRelCarrierInterface $relCarrier): OutgoingRoutingInterface;
 
     /**
      * Remove relCarrier
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier
+     * @param OutgoingRoutingRelCarrierInterface $relCarrier
+     *
+     * @return static
      */
-    public function removeRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier);
+    public function removeRelCarrier(OutgoingRoutingRelCarrierInterface $relCarrier): OutgoingRoutingInterface;
 
     /**
      * Replace relCarriers
      *
-     * @param ArrayCollection $relCarriers of Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+     * @param ArrayCollection $relCarriers of OutgoingRoutingRelCarrierInterface
+     *
      * @return static
      */
-    public function replaceRelCarriers(ArrayCollection $relCarriers);
+    public function replaceRelCarriers(ArrayCollection $relCarriers): OutgoingRoutingInterface;
 
     /**
      * Get relCarriers
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
+     * @return OutgoingRoutingRelCarrierInterface[]
      */
-    public function getRelCarriers(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelCarriers(?Criteria $criteria = null): array;
+
 }

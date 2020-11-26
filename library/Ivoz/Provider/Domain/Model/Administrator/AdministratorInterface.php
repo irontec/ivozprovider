@@ -2,10 +2,17 @@
 
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* AdministratorInterface
+*/
 interface AdministratorInterface extends LoggableEntityInterface
 {
     /**
@@ -16,7 +23,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * @inheritdoc
      */
-    public function setPass($pass = null);
+    public function setPass(string $pass = null): AdministratorInterface;
 
     /**
      * @return bool
@@ -68,14 +75,14 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * Get active
      *
-     * @return boolean
+     * @return bool
      */
     public function getActive(): bool;
 
     /**
      * Get restricted
      *
-     * @return boolean
+     * @return bool
      */
     public function getRestricted(): bool;
 
@@ -84,35 +91,35 @@ interface AdministratorInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * Get lastname
      *
      * @return string | null
      */
-    public function getLastname();
+    public function getLastname(): ?string;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand();
+    public function getBrand(): ?BrandInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany();
+    public function getCompany(): ?CompanyInterface;
 
     /**
      * Get timezone
      *
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
+     * @return TimezoneInterface | null
      */
-    public function getTimezone();
+    public function getTimezone(): ?TimezoneInterface;
 
     /**
      * @return bool
@@ -122,33 +129,36 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * Add relPublicEntity
      *
-     * @param \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity
+     * @param AdministratorRelPublicEntityInterface $relPublicEntity
      *
      * @return static
      */
-    public function addRelPublicEntity(\Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity);
+    public function addRelPublicEntity(AdministratorRelPublicEntityInterface $relPublicEntity): AdministratorInterface;
 
     /**
      * Remove relPublicEntity
      *
-     * @param \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity
+     * @param AdministratorRelPublicEntityInterface $relPublicEntity
+     *
+     * @return static
      */
-    public function removeRelPublicEntity(\Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface $relPublicEntity);
+    public function removeRelPublicEntity(AdministratorRelPublicEntityInterface $relPublicEntity): AdministratorInterface;
 
     /**
      * Replace relPublicEntities
      *
-     * @param ArrayCollection $relPublicEntities of Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface
+     * @param ArrayCollection $relPublicEntities of AdministratorRelPublicEntityInterface
+     *
      * @return static
      */
-    public function replaceRelPublicEntities(ArrayCollection $relPublicEntities);
+    public function replaceRelPublicEntities(ArrayCollection $relPublicEntities): AdministratorInterface;
 
     /**
      * Get relPublicEntities
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface[]
+     * @return AdministratorRelPublicEntityInterface[]
      */
-    public function getRelPublicEntities(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelPublicEntities(?Criteria $criteria = null): array;
 
     /**
      * @see AdvancedUserInterface::getRoles()
@@ -158,22 +168,20 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function hasAccessPrivileges(string $fqdn, string $reqMethod): bool;
 
     /**
-     * @see AdvancedUserInterface::getPassword()
+     * @see UserInterface::getPassword()
      */
     public function getPassword(): string;
 
-    /**
-     * @see AdvancedUserInterface::isEnabled()
-     */
     public function isEnabled(): bool;
 
     /**
-     * @see AdvancedUserInterface::getSalt()
+     * @see UserInterface::getSalt()
      */
     public function getSalt(): string;
 
     /**
-     * @see AdvancedUserInterface::eraseCredentials()
+     * @see UserInterface::eraseCredentials()
      */
     public function eraseCredentials();
+
 }

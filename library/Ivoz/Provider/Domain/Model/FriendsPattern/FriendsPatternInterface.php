@@ -2,8 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\FriendsPattern;
 
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* FriendsPatternInterface
+*/
 interface FriendsPatternInterface extends LoggableEntityInterface
 {
     /**
@@ -29,21 +33,22 @@ interface FriendsPatternInterface extends LoggableEntityInterface
     /**
      * Set friend
      *
-     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend
+     * @param FriendInterface
      *
      * @return static
      */
-    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend);
+    public function setFriend(FriendInterface $friend): FriendsPatternInterface;
 
     /**
      * Get friend
      *
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface
+     * @return FriendInterface
      */
-    public function getFriend();
+    public function getFriend(): FriendInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

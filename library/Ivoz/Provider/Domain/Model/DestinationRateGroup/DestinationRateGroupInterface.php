@@ -2,18 +2,27 @@
 
 namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
-use Ivoz\Core\Domain\Service\FileContainerInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Domain\Service\TempFile;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 
-interface DestinationRateGroupInterface extends FileContainerInterface, LoggableEntityInterface
+/**
+* DestinationRateGroupInterface
+*/
+interface DestinationRateGroupInterface extends LoggableEntityInterface, FileContainerInterface
 {
     const STATUS_WAITING = 'waiting';
-    const STATUS_INPROGRESS = 'inProgress';
-    const STATUS_IMPORTED = 'imported';
-    const STATUS_ERROR = 'error';
 
+    const STATUS_INPROGRESS = 'inProgress';
+
+    const STATUS_IMPORTED = 'imported';
+
+    const STATUS_ERROR = 'error';
 
     /**
      * @codeCoverageIgnore
@@ -32,7 +41,7 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
      */
-    public function addTmpFile(string $fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+    public function addTmpFile(string $fldName, TempFile $file);
 
     /**
      * @return string
@@ -59,56 +68,56 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      *
      * @return string | null
      */
-    public function getStatus();
+    public function getStatus(): ?string;
 
     /**
      * Get lastExecutionError
      *
      * @return string | null
      */
-    public function getLastExecutionError();
+    public function getLastExecutionError(): ?string;
 
     /**
      * Get deductibleConnectionFee
      *
-     * @return boolean
+     * @return bool
      */
     public function getDeductibleConnectionFee(): bool;
 
     /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
-     */
-    public function getBrand();
-
-    /**
-     * Get currency
-     *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
-     */
-    public function getCurrency();
-
-    /**
      * Get name
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\Name
+     * @return Name
      */
-    public function getName();
+    public function getName(): Name;
 
     /**
      * Get description
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\Description
+     * @return Description
      */
-    public function getDescription();
+    public function getDescription(): Description;
 
     /**
      * Get file
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\File
+     * @return File
      */
-    public function getFile();
+    public function getFile(): File;
+
+    /**
+     * Get brand
+     *
+     * @return BrandInterface
+     */
+    public function getBrand(): BrandInterface;
+
+    /**
+     * Get currency
+     *
+     * @return CurrencyInterface | null
+     */
+    public function getCurrency(): ?CurrencyInterface;
 
     /**
      * @return bool
@@ -118,42 +127,42 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
     /**
      * Add destinationRate
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param DestinationRateInterface $destinationRate
      *
      * @return static
      */
-    public function addDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate);
+    public function addDestinationRate(DestinationRateInterface $destinationRate): DestinationRateGroupInterface;
 
     /**
      * Remove destinationRate
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param DestinationRateInterface $destinationRate
+     *
+     * @return static
      */
-    public function removeDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate);
+    public function removeDestinationRate(DestinationRateInterface $destinationRate): DestinationRateGroupInterface;
 
     /**
      * Replace destinationRates
      *
-     * @param ArrayCollection $destinationRates of Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
+     * @param ArrayCollection $destinationRates of DestinationRateInterface
+     *
      * @return static
      */
-    public function replaceDestinationRates(ArrayCollection $destinationRates);
+    public function replaceDestinationRates(ArrayCollection $destinationRates): DestinationRateGroupInterface;
 
     /**
      * Get destinationRates
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface[]
+     * @return DestinationRateInterface[]
      */
-    public function getDestinationRates(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getDestinationRates(?Criteria $criteria = null): array;
 
     /**
-     * @param \Ivoz\Core\Domain\Service\TempFile $file
-     *
      * @throws \Exception
-     *
      * @return void
      */
-    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+    public function removeTmpFile(TempFile $file);
 
     /**
      * @return \Ivoz\Core\Domain\Service\TempFile[]
@@ -165,4 +174,5 @@ interface DestinationRateGroupInterface extends FileContainerInterface, Loggable
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
+
 }

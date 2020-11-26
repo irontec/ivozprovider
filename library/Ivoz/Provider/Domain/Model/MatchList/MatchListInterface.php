@@ -2,10 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\MatchList;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* MatchListInterface
+*/
 interface MatchListInterface extends LoggableEntityInterface
 {
     /**
@@ -32,25 +38,25 @@ interface MatchListInterface extends LoggableEntityInterface
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
+     * @param BrandInterface | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
+    public function setBrand(?BrandInterface $brand = null): MatchListInterface;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand();
+    public function getBrand(): ?BrandInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany();
+    public function getCompany(): ?CompanyInterface;
 
     /**
      * @return bool
@@ -60,31 +66,35 @@ interface MatchListInterface extends LoggableEntityInterface
     /**
      * Add pattern
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface $pattern
+     * @param MatchListPatternInterface $pattern
      *
      * @return static
      */
-    public function addPattern(\Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface $pattern);
+    public function addPattern(MatchListPatternInterface $pattern): MatchListInterface;
 
     /**
      * Remove pattern
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface $pattern
+     * @param MatchListPatternInterface $pattern
+     *
+     * @return static
      */
-    public function removePattern(\Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface $pattern);
+    public function removePattern(MatchListPatternInterface $pattern): MatchListInterface;
 
     /**
      * Replace patterns
      *
-     * @param ArrayCollection $patterns of Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface
+     * @param ArrayCollection $patterns of MatchListPatternInterface
+     *
      * @return static
      */
-    public function replacePatterns(ArrayCollection $patterns);
+    public function replacePatterns(ArrayCollection $patterns): MatchListInterface;
 
     /**
      * Get patterns
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface[]
+     * @return MatchListPatternInterface[]
      */
-    public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getPatterns(?Criteria $criteria = null): array;
+
 }

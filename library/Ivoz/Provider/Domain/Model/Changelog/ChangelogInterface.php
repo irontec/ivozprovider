@@ -2,16 +2,20 @@
 
 namespace Ivoz\Provider\Domain\Model\Changelog;
 
-use Ivoz\Core\Domain\Model\LoggerEntityInterface;
+use Ivoz\Core\Domain\Event\EntityEventInterface;
+use Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
+/**
+* ChangelogInterface
+*/
+interface ChangelogInterface extends EntityInterface
 {
     /**
      * @param \Ivoz\Core\Domain\Event\EntityEventInterface $event
      * @return self
      */
-    public static function fromEvent(\Ivoz\Core\Domain\Event\EntityEventInterface $event, \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command);
+    public static function fromEvent(EntityEventInterface $event, CommandlogInterface $command);
 
     /**
      * Get entity
@@ -32,31 +36,32 @@ interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
      *
      * @return array | null
      */
-    public function getData();
+    public function getData(): ?array;
 
     /**
      * Get createdOn
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedOn(): \DateTime;
+    public function getCreatedOn(): \DateTimeInterface;
 
     /**
      * Get microtime
      *
-     * @return integer
+     * @return int
      */
     public function getMicrotime(): int;
 
     /**
      * Get command
      *
-     * @return \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface
+     * @return CommandlogInterface
      */
-    public function getCommand();
+    public function getCommand(): CommandlogInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

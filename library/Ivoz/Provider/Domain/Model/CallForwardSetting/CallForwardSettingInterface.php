@@ -2,25 +2,37 @@
 
 namespace Ivoz\Provider\Domain\Model\CallForwardSetting;
 
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* CallForwardSettingInterface
+*/
 interface CallForwardSettingInterface extends LoggableEntityInterface
 {
     const CALLTYPEFILTER_INTERNAL = 'internal';
+
     const CALLTYPEFILTER_EXTERNAL = 'external';
+
     const CALLTYPEFILTER_BOTH = 'both';
 
-
     const CALLFORWARDTYPE_INCONDITIONAL = 'inconditional';
+
     const CALLFORWARDTYPE_NOANSWER = 'noAnswer';
+
     const CALLFORWARDTYPE_BUSY = 'busy';
+
     const CALLFORWARDTYPE_USERNOTREGISTERED = 'userNotRegistered';
 
-
     const TARGETTYPE_NUMBER = 'number';
-    const TARGETTYPE_EXTENSION = 'extension';
-    const TARGETTYPE_VOICEMAIL = 'voicemail';
 
+    const TARGETTYPE_EXTENSION = 'extension';
+
+    const TARGETTYPE_VOICEMAIL = 'voicemail';
 
     /**
      * @codeCoverageIgnore
@@ -33,7 +45,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      *
      * @throws \InvalidArgumentException
      */
-    public function setNumberValue($numberValue = null);
+    public function setNumberValue(string $numberValue = null): CallForwardSettingInterface;
 
     public function toArrayPortal();
 
@@ -70,97 +82,97 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getTargetType();
+    public function getTargetType(): ?string;
 
     /**
      * Get numberValue
      *
      * @return string | null
      */
-    public function getNumberValue();
+    public function getNumberValue(): ?string;
 
     /**
      * Get noAnswerTimeout
      *
-     * @return integer
+     * @return int
      */
     public function getNoAnswerTimeout(): int;
 
     /**
      * Get enabled
      *
-     * @return boolean
+     * @return bool
      */
     public function getEnabled(): bool;
 
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
+     * @param UserInterface | null
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
+    public function setUser(?UserInterface $user = null): CallForwardSettingInterface;
 
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getUser();
+    public function getUser(): ?UserInterface;
 
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @return ExtensionInterface | null
      */
-    public function getExtension();
+    public function getExtension(): ?ExtensionInterface;
 
     /**
      * Get voiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getVoiceMailUser();
+    public function getVoiceMailUser(): ?UserInterface;
 
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getNumberCountry();
+    public function getNumberCountry(): ?CountryInterface;
 
     /**
      * Set residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice | null
+     * @param ResidentialDeviceInterface | null
      *
      * @return static
      */
-    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null);
+    public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): CallForwardSettingInterface;
 
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
+     * @return ResidentialDeviceInterface | null
      */
-    public function getResidentialDevice();
+    public function getResidentialDevice(): ?ResidentialDeviceInterface;
 
     /**
      * Set retailAccount
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount | null
+     * @param RetailAccountInterface | null
      *
      * @return static
      */
-    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null);
+    public function setRetailAccount(?RetailAccountInterface $retailAccount = null): CallForwardSettingInterface;
 
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
+     * @return RetailAccountInterface | null
      */
-    public function getRetailAccount();
+    public function getRetailAccount(): ?RetailAccountInterface;
 
     /**
      * @return bool
@@ -172,4 +184,5 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      * @return null|string
      */
     public function getTarget(string $prefix = '');
+
 }

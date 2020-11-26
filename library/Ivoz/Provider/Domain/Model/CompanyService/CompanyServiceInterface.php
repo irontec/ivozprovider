@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\CompanyService;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* CompanyServiceInterface
+*/
 interface CompanyServiceInterface extends LoggableEntityInterface
 {
     /**
@@ -15,7 +20,7 @@ interface CompanyServiceInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setCode($code);
+    public function setCode(string $code): CompanyServiceInterface;
 
     /**
      * Get code
@@ -27,28 +32,29 @@ interface CompanyServiceInterface extends LoggableEntityInterface
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
+    public function setCompany(CompanyInterface $company): CompanyServiceInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany();
+    public function getCompany(): CompanyInterface;
 
     /**
      * Get service
      *
-     * @return \Ivoz\Provider\Domain\Model\Service\ServiceInterface
+     * @return ServiceInterface
      */
-    public function getService();
+    public function getService(): ServiceInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

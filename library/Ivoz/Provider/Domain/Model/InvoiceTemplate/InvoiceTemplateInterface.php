@@ -2,8 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\InvoiceTemplate;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* InvoiceTemplateInterface
+*/
 interface InvoiceTemplateInterface extends LoggableEntityInterface
 {
     /**
@@ -15,7 +19,7 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
     /**
      * @inheritdoc
      */
-    public function setTemplate($template);
+    public function setTemplate(string $template): InvoiceTemplateInterface;
 
     /**
      * Get name
@@ -29,7 +33,7 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * Get template
@@ -43,24 +47,25 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getTemplateHeader();
+    public function getTemplateHeader(): ?string;
 
     /**
      * Get templateFooter
      *
      * @return string | null
      */
-    public function getTemplateFooter();
+    public function getTemplateFooter(): ?string;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand();
+    public function getBrand(): ?BrandInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

@@ -2,10 +2,15 @@
 
 namespace Ivoz\Provider\Domain\Model\PickUpGroup;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* PickUpGroupInterface
+*/
 interface PickUpGroupInterface extends LoggableEntityInterface
 {
     /**
@@ -24,9 +29,9 @@ interface PickUpGroupInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany();
+    public function getCompany(): CompanyInterface;
 
     /**
      * @return bool
@@ -36,31 +41,35 @@ interface PickUpGroupInterface extends LoggableEntityInterface
     /**
      * Add relUser
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $relUser
+     * @param PickUpRelUserInterface $relUser
      *
      * @return static
      */
-    public function addRelUser(\Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $relUser);
+    public function addRelUser(PickUpRelUserInterface $relUser): PickUpGroupInterface;
 
     /**
      * Remove relUser
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $relUser
+     * @param PickUpRelUserInterface $relUser
+     *
+     * @return static
      */
-    public function removeRelUser(\Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $relUser);
+    public function removeRelUser(PickUpRelUserInterface $relUser): PickUpGroupInterface;
 
     /**
      * Replace relUsers
      *
-     * @param ArrayCollection $relUsers of Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface
+     * @param ArrayCollection $relUsers of PickUpRelUserInterface
+     *
      * @return static
      */
-    public function replaceRelUsers(ArrayCollection $relUsers);
+    public function replaceRelUsers(ArrayCollection $relUsers): PickUpGroupInterface;
 
     /**
      * Get relUsers
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[]
+     * @return PickUpRelUserInterface[]
      */
-    public function getRelUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelUsers(?Criteria $criteria = null): array;
+
 }

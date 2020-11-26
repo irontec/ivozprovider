@@ -2,10 +2,17 @@
 
 namespace Ivoz\Provider\Domain\Model\Calendar;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use DateTime;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* CalendarInterface
+*/
 interface CalendarInterface extends LoggableEntityInterface
 {
     /**
@@ -20,7 +27,7 @@ interface CalendarInterface extends LoggableEntityInterface
      * @param \DateTime $datetime
      * @return bool
      */
-    public function isHolidayDate(\DateTime $datetime);
+    public function isHolidayDate(DateTime $datetime);
 
     /**
      * Return the first HolidayDate matching the given date
@@ -28,7 +35,7 @@ interface CalendarInterface extends LoggableEntityInterface
      * @param \DateTime $dateTime
      * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface|null
      */
-    public function getHolidayDate(\DateTime $dateTime);
+    public function getHolidayDate(DateTime $dateTime);
 
     /**
      * Get name
@@ -40,9 +47,9 @@ interface CalendarInterface extends LoggableEntityInterface
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany();
+    public function getCompany(): CompanyInterface;
 
     /**
      * @return bool
@@ -52,62 +59,69 @@ interface CalendarInterface extends LoggableEntityInterface
     /**
      * Add holidayDate
      *
-     * @param \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayDate
+     * @param HolidayDateInterface $holidayDate
      *
      * @return static
      */
-    public function addHolidayDate(\Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayDate);
+    public function addHolidayDate(HolidayDateInterface $holidayDate): CalendarInterface;
 
     /**
      * Remove holidayDate
      *
-     * @param \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayDate
+     * @param HolidayDateInterface $holidayDate
+     *
+     * @return static
      */
-    public function removeHolidayDate(\Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayDate);
+    public function removeHolidayDate(HolidayDateInterface $holidayDate): CalendarInterface;
 
     /**
      * Replace holidayDates
      *
-     * @param ArrayCollection $holidayDates of Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface
+     * @param ArrayCollection $holidayDates of HolidayDateInterface
+     *
      * @return static
      */
-    public function replaceHolidayDates(ArrayCollection $holidayDates);
+    public function replaceHolidayDates(ArrayCollection $holidayDates): CalendarInterface;
 
     /**
      * Get holidayDates
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface[]
+     * @return HolidayDateInterface[]
      */
-    public function getHolidayDates(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getHolidayDates(?Criteria $criteria = null): array;
 
     /**
      * Add calendarPeriod
      *
-     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod
+     * @param CalendarPeriodInterface $calendarPeriod
      *
      * @return static
      */
-    public function addCalendarPeriod(\Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod);
+    public function addCalendarPeriod(CalendarPeriodInterface $calendarPeriod): CalendarInterface;
 
     /**
      * Remove calendarPeriod
      *
-     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod
+     * @param CalendarPeriodInterface $calendarPeriod
+     *
+     * @return static
      */
-    public function removeCalendarPeriod(\Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod);
+    public function removeCalendarPeriod(CalendarPeriodInterface $calendarPeriod): CalendarInterface;
 
     /**
      * Replace calendarPeriods
      *
-     * @param ArrayCollection $calendarPeriods of Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface
+     * @param ArrayCollection $calendarPeriods of CalendarPeriodInterface
+     *
      * @return static
      */
-    public function replaceCalendarPeriods(ArrayCollection $calendarPeriods);
+    public function replaceCalendarPeriods(ArrayCollection $calendarPeriods): CalendarInterface;
 
     /**
      * Get calendarPeriods
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface[]
+     * @return CalendarPeriodInterface[]
      */
-    public function getCalendarPeriods(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getCalendarPeriods(?Criteria $criteria = null): array;
+
 }

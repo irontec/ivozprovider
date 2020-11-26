@@ -2,22 +2,45 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
+use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* ConditionalRoutesConditionInterface
+*/
 interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
 {
     const ROUTETYPE_USER = 'user';
-    const ROUTETYPE_NUMBER = 'number';
-    const ROUTETYPE_IVR = 'ivr';
-    const ROUTETYPE_HUNTGROUP = 'huntGroup';
-    const ROUTETYPE_VOICEMAIL = 'voicemail';
-    const ROUTETYPE_FRIEND = 'friend';
-    const ROUTETYPE_QUEUE = 'queue';
-    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
-    const ROUTETYPE_EXTENSION = 'extension';
 
+    const ROUTETYPE_NUMBER = 'number';
+
+    const ROUTETYPE_IVR = 'ivr';
+
+    const ROUTETYPE_HUNTGROUP = 'huntGroup';
+
+    const ROUTETYPE_VOICEMAIL = 'voicemail';
+
+    const ROUTETYPE_FRIEND = 'friend';
+
+    const ROUTETYPE_QUEUE = 'queue';
+
+    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
+
+    const ROUTETYPE_EXTENSION = 'extension';
 
     /**
      * @codeCoverageIgnore
@@ -99,7 +122,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get priority
      *
-     * @return integer
+     * @return int
      */
     public function getPriority(): int;
 
@@ -108,100 +131,100 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getRouteType();
+    public function getRouteType(): ?string;
 
     /**
      * Get numberValue
      *
      * @return string | null
      */
-    public function getNumberValue();
+    public function getNumberValue(): ?string;
 
     /**
      * Get friendValue
      *
      * @return string | null
      */
-    public function getFriendValue();
+    public function getFriendValue(): ?string;
 
     /**
      * Set conditionalRoute
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute
+     * @param ConditionalRouteInterface
      *
      * @return static
      */
-    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute);
+    public function setConditionalRoute(ConditionalRouteInterface $conditionalRoute): ConditionalRoutesConditionInterface;
 
     /**
      * Get conditionalRoute
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface
+     * @return ConditionalRouteInterface
      */
-    public function getConditionalRoute();
+    public function getConditionalRoute(): ConditionalRouteInterface;
 
     /**
      * Get ivr
      *
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
+     * @return IvrInterface | null
      */
-    public function getIvr();
+    public function getIvr(): ?IvrInterface;
 
     /**
      * Get huntGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
+     * @return HuntGroupInterface | null
      */
-    public function getHuntGroup();
+    public function getHuntGroup(): ?HuntGroupInterface;
 
     /**
      * Get voicemailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getVoicemailUser();
+    public function getVoicemailUser(): ?UserInterface;
 
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getUser();
+    public function getUser(): ?UserInterface;
 
     /**
      * Get queue
      *
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface | null
+     * @return QueueInterface | null
      */
-    public function getQueue();
+    public function getQueue(): ?QueueInterface;
 
     /**
      * Get locution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @return LocutionInterface | null
      */
-    public function getLocution();
+    public function getLocution(): ?LocutionInterface;
 
     /**
      * Get conferenceRoom
      *
-     * @return \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface | null
+     * @return ConferenceRoomInterface | null
      */
-    public function getConferenceRoom();
+    public function getConferenceRoom(): ?ConferenceRoomInterface;
 
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @return ExtensionInterface | null
      */
-    public function getExtension();
+    public function getExtension(): ?ExtensionInterface;
 
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getNumberCountry();
+    public function getNumberCountry(): ?CountryInterface;
 
     /**
      * @return bool
@@ -211,130 +234,143 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Add relMatchlist
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
+     * @param ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
      *
      * @return static
      */
-    public function addRelMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist);
+    public function addRelMatchlist(ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist): ConditionalRoutesConditionInterface;
 
     /**
      * Remove relMatchlist
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
+     * @param ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
+     *
+     * @return static
      */
-    public function removeRelMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist);
+    public function removeRelMatchlist(ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist): ConditionalRoutesConditionInterface;
 
     /**
      * Replace relMatchlists
      *
-     * @param ArrayCollection $relMatchlists of Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface
+     * @param ArrayCollection $relMatchlists of ConditionalRoutesConditionsRelMatchlistInterface
+     *
      * @return static
      */
-    public function replaceRelMatchlists(ArrayCollection $relMatchlists);
+    public function replaceRelMatchlists(ArrayCollection $relMatchlists): ConditionalRoutesConditionInterface;
 
     /**
      * Get relMatchlists
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface[]
+     * @return ConditionalRoutesConditionsRelMatchlistInterface[]
      */
-    public function getRelMatchlists(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelMatchlists(?Criteria $criteria = null): array;
 
     /**
      * Add relSchedule
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule
+     * @param ConditionalRoutesConditionsRelScheduleInterface $relSchedule
      *
      * @return static
      */
-    public function addRelSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule);
+    public function addRelSchedule(ConditionalRoutesConditionsRelScheduleInterface $relSchedule): ConditionalRoutesConditionInterface;
 
     /**
      * Remove relSchedule
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule
+     * @param ConditionalRoutesConditionsRelScheduleInterface $relSchedule
+     *
+     * @return static
      */
-    public function removeRelSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule);
+    public function removeRelSchedule(ConditionalRoutesConditionsRelScheduleInterface $relSchedule): ConditionalRoutesConditionInterface;
 
     /**
      * Replace relSchedules
      *
-     * @param ArrayCollection $relSchedules of Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface
+     * @param ArrayCollection $relSchedules of ConditionalRoutesConditionsRelScheduleInterface
+     *
      * @return static
      */
-    public function replaceRelSchedules(ArrayCollection $relSchedules);
+    public function replaceRelSchedules(ArrayCollection $relSchedules): ConditionalRoutesConditionInterface;
 
     /**
      * Get relSchedules
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface[]
+     * @return ConditionalRoutesConditionsRelScheduleInterface[]
      */
-    public function getRelSchedules(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelSchedules(?Criteria $criteria = null): array;
 
     /**
      * Add relCalendar
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar
+     * @param ConditionalRoutesConditionsRelCalendarInterface $relCalendar
      *
      * @return static
      */
-    public function addRelCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar);
+    public function addRelCalendar(ConditionalRoutesConditionsRelCalendarInterface $relCalendar): ConditionalRoutesConditionInterface;
 
     /**
      * Remove relCalendar
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar
+     * @param ConditionalRoutesConditionsRelCalendarInterface $relCalendar
+     *
+     * @return static
      */
-    public function removeRelCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar);
+    public function removeRelCalendar(ConditionalRoutesConditionsRelCalendarInterface $relCalendar): ConditionalRoutesConditionInterface;
 
     /**
      * Replace relCalendars
      *
-     * @param ArrayCollection $relCalendars of Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface
+     * @param ArrayCollection $relCalendars of ConditionalRoutesConditionsRelCalendarInterface
+     *
      * @return static
      */
-    public function replaceRelCalendars(ArrayCollection $relCalendars);
+    public function replaceRelCalendars(ArrayCollection $relCalendars): ConditionalRoutesConditionInterface;
 
     /**
      * Get relCalendars
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[]
+     * @return ConditionalRoutesConditionsRelCalendarInterface[]
      */
-    public function getRelCalendars(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelCalendars(?Criteria $criteria = null): array;
 
     /**
      * Add relRouteLock
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
+     * @param ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
      *
      * @return static
      */
-    public function addRelRouteLock(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock);
+    public function addRelRouteLock(ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock): ConditionalRoutesConditionInterface;
 
     /**
      * Remove relRouteLock
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
+     * @param ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
+     *
+     * @return static
      */
-    public function removeRelRouteLock(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock);
+    public function removeRelRouteLock(ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock): ConditionalRoutesConditionInterface;
 
     /**
      * Replace relRouteLocks
      *
-     * @param ArrayCollection $relRouteLocks of Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface
+     * @param ArrayCollection $relRouteLocks of ConditionalRoutesConditionsRelRouteLockInterface
+     *
      * @return static
      */
-    public function replaceRelRouteLocks(ArrayCollection $relRouteLocks);
+    public function replaceRelRouteLocks(ArrayCollection $relRouteLocks): ConditionalRoutesConditionInterface;
 
     /**
      * Get relRouteLocks
      * @param Criteria | null $criteria
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface[]
+     * @return ConditionalRoutesConditionsRelRouteLockInterface[]
      */
-    public function getRelRouteLocks(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelRouteLocks(?Criteria $criteria = null): array;
 
     /**
      * @param string $prefix
      * @return null|string
      */
     public function getTarget(string $prefix = '');
+
 }

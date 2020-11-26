@@ -2,8 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\PickUpRelUser;
 
+use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* PickUpRelUserInterface
+*/
 interface PickUpRelUserInterface extends LoggableEntityInterface
 {
     /**
@@ -15,37 +20,38 @@ interface PickUpRelUserInterface extends LoggableEntityInterface
     /**
      * Set pickUpGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface $pickUpGroup | null
+     * @param PickUpGroupInterface | null
      *
      * @return static
      */
-    public function setPickUpGroup(\Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface $pickUpGroup = null);
+    public function setPickUpGroup(?PickUpGroupInterface $pickUpGroup = null): PickUpRelUserInterface;
 
     /**
      * Get pickUpGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface | null
+     * @return PickUpGroupInterface | null
      */
-    public function getPickUpGroup();
+    public function getPickUpGroup(): ?PickUpGroupInterface;
 
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
+     * @param UserInterface | null
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
+    public function setUser(?UserInterface $user = null): PickUpRelUserInterface;
 
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getUser();
+    public function getUser(): ?UserInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

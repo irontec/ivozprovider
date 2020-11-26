@@ -2,14 +2,20 @@
 
 namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
-use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Core\Domain\Service\TempFile;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 
-interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInterface
+/**
+* FaxesInOutInterface
+*/
+interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInterface
 {
     const TYPE_IN = 'In';
-    const TYPE_OUT = 'Out';
 
+    const TYPE_OUT = 'Out';
 
     /**
      * @codeCoverageIgnore
@@ -29,7 +35,7 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
      *
      * @return self
      */
-    public function setCalldate($calldate = null);
+    public function setCalldate($calldate = null): FaxesInOutInterface;
 
     /**
      * Get the numberValue in E.164 format when routing to 'number'
@@ -41,65 +47,65 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     /**
      * Get calldate
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCalldate(): \DateTime;
+    public function getCalldate(): \DateTimeInterface;
 
     /**
      * Get src
      *
      * @return string | null
      */
-    public function getSrc();
+    public function getSrc(): ?string;
 
     /**
      * Get dst
      *
      * @return string | null
      */
-    public function getDst();
+    public function getDst(): ?string;
 
     /**
      * Get type
      *
      * @return string | null
      */
-    public function getType();
+    public function getType(): ?string;
 
     /**
      * Get pages
      *
      * @return string | null
      */
-    public function getPages();
+    public function getPages(): ?string;
 
     /**
      * Get status
      *
      * @return string | null
      */
-    public function getStatus();
-
-    /**
-     * Get fax
-     *
-     * @return \Ivoz\Provider\Domain\Model\Fax\FaxInterface
-     */
-    public function getFax();
-
-    /**
-     * Get dstCountry
-     *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
-     */
-    public function getDstCountry();
+    public function getStatus(): ?string;
 
     /**
      * Get file
      *
-     * @return \Ivoz\Provider\Domain\Model\FaxesInOut\File
+     * @return File
      */
-    public function getFile();
+    public function getFile(): File;
+
+    /**
+     * Get fax
+     *
+     * @return FaxInterface
+     */
+    public function getFax(): FaxInterface;
+
+    /**
+     * Get dstCountry
+     *
+     * @return CountryInterface | null
+     */
+    public function getDstCountry(): ?CountryInterface;
 
     /**
      * @return bool
@@ -107,21 +113,15 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
     public function isInitialized(): bool;
 
     /**
-     * @param string $fldName
-     * @param \Ivoz\Core\Domain\Service\TempFile $file
-     *
      * @return void
      */
-    public function addTmpFile(string $fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+    public function addTmpFile(string $fldName, TempFile $file);
 
     /**
-     * @param \Ivoz\Core\Domain\Service\TempFile $file
-     *
      * @throws \Exception
-     *
      * @return void
      */
-    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+    public function removeTmpFile(TempFile $file);
 
     /**
      * @return \Ivoz\Core\Domain\Service\TempFile[]
@@ -133,4 +133,5 @@ interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInte
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
+
 }

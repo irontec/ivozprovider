@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Feature;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* FeatureInterface
+*/
 interface FeatureInterface extends LoggableEntityInterface
 {
     /**
@@ -22,12 +25,13 @@ interface FeatureInterface extends LoggableEntityInterface
     /**
      * Get name
      *
-     * @return \Ivoz\Provider\Domain\Model\Feature\Name
+     * @return Name
      */
-    public function getName();
+    public function getName(): Name;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }
