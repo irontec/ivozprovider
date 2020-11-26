@@ -43,7 +43,7 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
     /**
      * {@inheritDoc}
      */
-    public function setAuthProxy($authProxy)
+    public function setAuthProxy(string $authProxy): self
     {
         if (!empty($authProxy)) {
             Assertion::regex($authProxy, '/^sip:.+$|^sips:.+$/');
@@ -55,7 +55,7 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
     /**
      * @inheritdoc
      */
-    public function setLUuid($lUuid)
+    public function setLUuid(string $lUuid): self
     {
         if (empty($lUuid)) {
             $lUuid = (string)round(microtime(true) * 1000);

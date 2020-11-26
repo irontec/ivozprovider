@@ -21,7 +21,7 @@ class Rtpengine extends RtpengineAbstract implements RtpengineInterface
         return $this->id;
     }
 
-    public function setMediaRelaySet(MediaRelaySetInterface $mediaRelaySet = null)
+    public function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null): self
     {
         if (!is_null($mediaRelaySet)) {
             $this->setSetid(
