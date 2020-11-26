@@ -2,8 +2,12 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpTiming;
 
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* TpTimingInterface
+*/
 interface TpTimingInterface extends EntityInterface
 {
     /**
@@ -18,7 +22,7 @@ interface TpTimingInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getTag();
+    public function getTag(): ?string;
 
     /**
      * Get years
@@ -58,28 +62,29 @@ interface TpTimingInterface extends EntityInterface
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime;
+    public function getCreatedAt(): \DateTimeInterface;
 
     /**
      * Set ratingPlan
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param RatingPlan
      *
      * @return static
      */
-    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan);
+    public function setRatingPlan(RatingPlan $ratingPlan): TpTimingInterface;
 
     /**
      * Get ratingPlan
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return RatingPlan
      */
-    public function getRatingPlan();
+    public function getRatingPlan(): RatingPlan;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

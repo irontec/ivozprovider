@@ -2,8 +2,12 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpDerivedCharger;
 
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TpDerivedChargerInterface
+*/
 interface TpDerivedChargerInterface extends LoggableEntityInterface
 {
     /**
@@ -59,14 +63,14 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getSubject();
+    public function getSubject(): ?string;
 
     /**
      * Get destinationIds
      *
      * @return string | null
      */
-    public function getDestinationIds();
+    public function getDestinationIds(): ?string;
 
     /**
      * Get runid
@@ -190,19 +194,20 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime;
+    public function getCreatedAt(): \DateTimeInterface;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return Brand
      */
-    public function getBrand();
+    public function getBrand(): Brand;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

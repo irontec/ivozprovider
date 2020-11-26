@@ -2,8 +2,12 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpLcrRule;
 
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TpLcrRuleInterface
+*/
 interface TpLcrRuleInterface extends LoggableEntityInterface
 {
     /**
@@ -52,14 +56,14 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getSubject();
+    public function getSubject(): ?string;
 
     /**
      * Get destinationTag
      *
      * @return string | null
      */
-    public function getDestinationTag();
+    public function getDestinationTag(): ?string;
 
     /**
      * Get rpCategory
@@ -80,14 +84,14 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getStrategyParams();
+    public function getStrategyParams(): ?string;
 
     /**
      * Get activationTime
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getActivationTime(): \DateTime;
+    public function getActivationTime(): \DateTimeInterface;
 
     /**
      * Get weight
@@ -99,28 +103,29 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime;
+    public function getCreatedAt(): \DateTimeInterface;
 
     /**
      * Set outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting | null
+     * @param OutgoingRouting | null
      *
      * @return static
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null);
+    public function setOutgoingRouting(?OutgoingRouting $outgoingRouting = null): TpLcrRuleInterface;
 
     /**
      * Get outgoingRouting
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
+     * @return OutgoingRouting | null
      */
-    public function getOutgoingRouting();
+    public function getOutgoingRouting(): ?OutgoingRouting;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

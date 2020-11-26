@@ -2,10 +2,15 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpRate;
 
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TpRateInterface
+*/
 interface TpRateInterface extends LoggableEntityInterface
 {
+
     public function getChangeSet();
 
     /**
@@ -14,7 +19,7 @@ interface TpRateInterface extends LoggableEntityInterface
      * @param string $rateIncrement
      * @return $this|TpRateAbstract|TpRateInterface
      */
-    public function setRateIncrement($rateIncrement);
+    public function setRateIncrement(string $rateIncrement): TpRateInterface;
 
     /**
      * Validate GroupIntervalStart has valid unit
@@ -22,7 +27,7 @@ interface TpRateInterface extends LoggableEntityInterface
      * @param string $groupIntervalStart
      * @return $this|TpRateAbstract|TpRateInterface
      */
-    public function setGroupIntervalStart($groupIntervalStart);
+    public function setGroupIntervalStart(string $groupIntervalStart): TpRateInterface;
 
     /**
      * Get tpid
@@ -36,7 +41,7 @@ interface TpRateInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getTag();
+    public function getTag(): ?string;
 
     /**
      * Get connectFee
@@ -76,28 +81,29 @@ interface TpRateInterface extends LoggableEntityInterface
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime;
+    public function getCreatedAt(): \DateTimeInterface;
 
     /**
      * Set destinationRate
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param DestinationRate
      *
      * @return static
      */
-    public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate);
+    public function setDestinationRate(DestinationRate $destinationRate): TpRateInterface;
 
     /**
      * Get destinationRate
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
+     * @return DestinationRate
      */
-    public function getDestinationRate();
+    public function getDestinationRate(): DestinationRate;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

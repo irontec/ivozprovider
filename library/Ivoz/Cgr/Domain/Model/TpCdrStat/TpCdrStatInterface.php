@@ -2,8 +2,12 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpCdrStat;
 
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TpCdrStatInterface
+*/
 interface TpCdrStatInterface extends LoggableEntityInterface
 {
     /**
@@ -29,7 +33,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     /**
      * Get queueLength
      *
-     * @return integer
+     * @return int
      */
     public function getQueueLength(): int;
 
@@ -197,28 +201,29 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime;
+    public function getCreatedAt(): \DateTimeInterface;
 
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param CarrierInterface
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier);
+    public function setCarrier(CarrierInterface $carrier): TpCdrStatInterface;
 
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return CarrierInterface
      */
-    public function getCarrier();
+    public function getCarrier(): CarrierInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

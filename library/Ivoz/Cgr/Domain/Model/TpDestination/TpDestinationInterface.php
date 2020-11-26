@@ -2,10 +2,15 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpDestination;
 
+use Ivoz\Provider\Domain\Model\Destination\Destination;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TpDestinationInterface
+*/
 interface TpDestinationInterface extends LoggableEntityInterface
 {
+
     public function getChangeSet();
 
     /**
@@ -20,7 +25,7 @@ interface TpDestinationInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getTag();
+    public function getTag(): ?string;
 
     /**
      * Get prefix
@@ -32,28 +37,29 @@ interface TpDestinationInterface extends LoggableEntityInterface
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime;
+    public function getCreatedAt(): \DateTimeInterface;
 
     /**
      * Set destination
      *
-     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
+     * @param Destination
      *
      * @return static
      */
-    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination);
+    public function setDestination(Destination $destination): TpDestinationInterface;
 
     /**
      * Get destination
      *
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     * @return Destination
      */
-    public function getDestination();
+    public function getDestination(): Destination;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

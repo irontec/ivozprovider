@@ -4,8 +4,12 @@ namespace Ivoz\Cgr\Domain\Model\TpCdr;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* TpCdrInterface
+*/
 interface TpCdrInterface extends EntityInterface
 {
+
     public function getDuration();
 
     /**
@@ -115,21 +119,21 @@ interface TpCdrInterface extends EntityInterface
     /**
      * Get setupTime
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getSetupTime(): \DateTime;
+    public function getSetupTime(): \DateTimeInterface;
 
     /**
      * Get answerTime
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getAnswerTime(): \DateTime;
+    public function getAnswerTime(): \DateTimeInterface;
 
     /**
      * Get usage
      *
-     * @return integer
+     * @return int
      */
     public function getUsage(): int;
 
@@ -171,26 +175,27 @@ interface TpCdrInterface extends EntityInterface
     /**
      * Get createdAt
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): ?\DateTimeInterface;
 
     /**
      * Get updatedAt
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getUpdatedAt();
+    public function getUpdatedAt(): ?\DateTimeInterface;
 
     /**
      * Get deletedAt
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getDeletedAt();
+    public function getDeletedAt(): ?\DateTimeInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

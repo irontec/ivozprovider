@@ -2,8 +2,13 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpRatingProfile;
 
+use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TpRatingProfileInterface
+*/
 interface TpRatingProfileInterface extends LoggableEntityInterface
 {
     /**
@@ -38,7 +43,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getTenant();
+    public function getTenant(): ?string;
 
     /**
      * Get category
@@ -52,7 +57,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getSubject();
+    public function getSubject(): ?string;
 
     /**
      * Get activationTime
@@ -66,63 +71,64 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getRatingPlanTag();
+    public function getRatingPlanTag(): ?string;
 
     /**
      * Get fallbackSubjects
      *
      * @return string | null
      */
-    public function getFallbackSubjects();
+    public function getFallbackSubjects(): ?string;
 
     /**
      * Get cdrStatQueueIds
      *
      * @return string | null
      */
-    public function getCdrStatQueueIds();
+    public function getCdrStatQueueIds(): ?string;
 
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime;
+    public function getCreatedAt(): \DateTimeInterface;
 
     /**
      * Set ratingProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile | null
+     * @param RatingProfileInterface | null
      *
      * @return static
      */
-    public function setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile = null);
+    public function setRatingProfile(?RatingProfileInterface $ratingProfile = null): TpRatingProfileInterface;
 
     /**
      * Get ratingProfile
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface | null
+     * @return RatingProfileInterface | null
      */
-    public function getRatingProfile();
+    public function getRatingProfile(): ?RatingProfileInterface;
 
     /**
      * Set outgoingRoutingRelCarrier
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier | null
+     * @param OutgoingRoutingRelCarrierInterface | null
      *
      * @return static
      */
-    public function setOutgoingRoutingRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier = null);
+    public function setOutgoingRoutingRelCarrier(?OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier = null): TpRatingProfileInterface;
 
     /**
      * Get outgoingRoutingRelCarrier
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface | null
+     * @return OutgoingRoutingRelCarrierInterface | null
      */
-    public function getOutgoingRoutingRelCarrier();
+    public function getOutgoingRoutingRelCarrier(): ?OutgoingRoutingRelCarrierInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

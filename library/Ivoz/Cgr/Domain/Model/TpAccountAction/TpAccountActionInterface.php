@@ -2,8 +2,13 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpAccountAction;
 
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TpAccountActionInterface
+*/
 interface TpAccountActionInterface extends LoggableEntityInterface
 {
     /**
@@ -45,52 +50,53 @@ interface TpAccountActionInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getActionPlanTag();
+    public function getActionPlanTag(): ?string;
 
     /**
      * Get actionTriggersTag
      *
      * @return string | null
      */
-    public function getActionTriggersTag();
+    public function getActionTriggersTag(): ?string;
 
     /**
      * Get allowNegative
      *
-     * @return boolean
+     * @return bool
      */
     public function getAllowNegative(): bool;
 
     /**
      * Get disabled
      *
-     * @return boolean
+     * @return bool
      */
     public function getDisabled(): bool;
 
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime;
+    public function getCreatedAt(): \DateTimeInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return Company | null
      */
-    public function getCompany();
+    public function getCompany(): ?Company;
 
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
+     * @return Carrier | null
      */
-    public function getCarrier();
+    public function getCarrier(): ?Carrier;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

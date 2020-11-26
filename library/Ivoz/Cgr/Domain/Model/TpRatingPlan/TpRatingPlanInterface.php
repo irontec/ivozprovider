@@ -2,10 +2,15 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpRatingPlan;
 
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TpRatingPlanInterface
+*/
 interface TpRatingPlanInterface extends LoggableEntityInterface
 {
+
     public function getChangeSet();
 
     /**
@@ -20,14 +25,14 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getTag();
+    public function getTag(): ?string;
 
     /**
      * Get destratesTag
      *
      * @return string | null
      */
-    public function getDestratesTag();
+    public function getDestratesTag(): ?string;
 
     /**
      * Get timingTag
@@ -46,28 +51,29 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime;
+    public function getCreatedAt(): \DateTimeInterface;
 
     /**
      * Set ratingPlan
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param RatingPlan
      *
      * @return static
      */
-    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan);
+    public function setRatingPlan(RatingPlan $ratingPlan): TpRatingPlanInterface;
 
     /**
      * Get ratingPlan
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return RatingPlan
      */
-    public function getRatingPlan();
+    public function getRatingPlan(): RatingPlan;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }
