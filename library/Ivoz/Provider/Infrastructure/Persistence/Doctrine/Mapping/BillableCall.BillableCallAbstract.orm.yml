@@ -7,6 +7,16 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
     billableCall_callid_idx:
       columns:
       - callid
+    billableCall_caller_idx:
+      columns:
+      - caller
+    billableCall_callee_idx:
+      columns:
+      - callee
+    billableCall_brand_company_idx:
+      columns:
+      - brandId
+      - companyId
   fields:
     callid:
       type: string
