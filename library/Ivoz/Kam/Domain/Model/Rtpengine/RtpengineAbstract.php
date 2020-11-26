@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\Rtpengine;
 
@@ -6,15 +7,21 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 
 /**
- * RtpengineAbstract
- * @codeCoverageIgnore
- */
+* RtpengineAbstract
+* @codeCoverageIgnore
+*/
 abstract class RtpengineAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var integer
+     * @var int
      */
     protected $setid = 0;
 
@@ -24,19 +31,19 @@ abstract class RtpengineAbstract
     protected $url;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $weight = 1;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $disabled = false;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
-    protected $stamp;
+    protected $stamp = '2000-01-01 00:00:00';
 
     /**
      * @var string | null
@@ -44,18 +51,20 @@ abstract class RtpengineAbstract
     protected $description;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface | null
+     * @var MediaRelaySetInterface
      */
     protected $mediaRelaySet;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($setid, $url, $weight, $disabled, $stamp)
-    {
+    protected function __construct(
+        $setid,
+        $url,
+        $weight,
+        $disabled,
+        $stamp
+    ) {
         $this->setSetid($setid);
         $this->setUrl($url);
         $this->setWeight($weight);
@@ -127,7 +136,7 @@ abstract class RtpengineAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RtpengineDto::class);
 
@@ -141,8 +150,7 @@ abstract class RtpengineAbstract
 
         $self
             ->setDescription($dto->getDescription())
-            ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()))
-        ;
+            ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()));
 
         $self->initChangelog();
 
@@ -156,7 +164,7 @@ abstract class RtpengineAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RtpengineDto::class);
 
@@ -168,8 +176,6 @@ abstract class RtpengineAbstract
             ->setStamp($dto->getStamp())
             ->setDescription($dto->getDescription())
             ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()));
-
-
 
         return $this;
     }
@@ -188,7 +194,7 @@ abstract class RtpengineAbstract
             ->setDisabled(self::getDisabled())
             ->setStamp(self::getStamp())
             ->setDescription(self::getDescription())
-            ->setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet::entityToDto(self::getMediaRelaySet(), $depth));
+            ->setMediaRelaySet(MediaRelaySet::entityToDto(self::getMediaRelaySet(), $depth));
     }
 
     /**
@@ -206,21 +212,17 @@ abstract class RtpengineAbstract
             'mediaRelaySetId' => self::getMediaRelaySet() ? self::getMediaRelaySet()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set setid
      *
-     * @param integer $setid
+     * @param int $setid
      *
      * @return static
      */
-    protected function setSetid($setid)
+    protected function setSetid(int $setid): RtpengineInterface
     {
-        Assertion::notNull($setid, 'setid value "%s" is null, but non null value was expected.');
-        Assertion::integerish($setid, 'setid value "%s" is not an integer or a number castable to integer.');
-
-        $this->setid = (int) $setid;
+        $this->setid = $setid;
 
         return $this;
     }
@@ -228,7 +230,7 @@ abstract class RtpengineAbstract
     /**
      * Get setid
      *
-     * @return integer
+     * @return int
      */
     public function getSetid(): int
     {
@@ -242,9 +244,8 @@ abstract class RtpengineAbstract
      *
      * @return static
      */
-    protected function setUrl($url)
+    protected function setUrl(string $url): RtpengineInterface
     {
-        Assertion::notNull($url, 'url value "%s" is null, but non null value was expected.');
         Assertion::maxLength($url, 64, 'url value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->url = $url;
@@ -265,17 +266,15 @@ abstract class RtpengineAbstract
     /**
      * Set weight
      *
-     * @param integer $weight
+     * @param int $weight
      *
      * @return static
      */
-    protected function setWeight($weight)
+    protected function setWeight(int $weight): RtpengineInterface
     {
-        Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
-        Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($weight, 0, 'weight provided "%s" is not greater or equal than "%s".');
 
-        $this->weight = (int) $weight;
+        $this->weight = $weight;
 
         return $this;
     }
@@ -283,7 +282,7 @@ abstract class RtpengineAbstract
     /**
      * Get weight
      *
-     * @return integer
+     * @return int
      */
     public function getWeight(): int
     {
@@ -293,13 +292,12 @@ abstract class RtpengineAbstract
     /**
      * Set disabled
      *
-     * @param boolean $disabled
+     * @param bool $disabled
      *
      * @return static
      */
-    protected function setDisabled($disabled)
+    protected function setDisabled(bool $disabled): RtpengineInterface
     {
-        Assertion::notNull($disabled, 'disabled value "%s" is null, but non null value was expected.');
         Assertion::between(intval($disabled), 0, 1, 'disabled provided "%s" is not a valid boolean value.');
         $disabled = (bool) $disabled;
 
@@ -311,7 +309,7 @@ abstract class RtpengineAbstract
     /**
      * Get disabled
      *
-     * @return boolean
+     * @return bool
      */
     public function getDisabled(): bool
     {
@@ -321,14 +319,14 @@ abstract class RtpengineAbstract
     /**
      * Set stamp
      *
-     * @param \DateTime $stamp
+     * @param \DateTimeInterface $stamp
      *
      * @return static
      */
-    protected function setStamp($stamp)
+    protected function setStamp($stamp): RtpengineInterface
     {
-        Assertion::notNull($stamp, 'stamp value "%s" is null, but non null value was expected.');
-        $stamp = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $stamp = DateTimeHelper::createOrFix(
             $stamp,
             '2000-01-01 00:00:00'
         );
@@ -345,9 +343,9 @@ abstract class RtpengineAbstract
     /**
      * Get stamp
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getStamp(): \DateTime
+    public function getStamp(): \DateTimeInterface
     {
         return clone $this->stamp;
     }
@@ -359,7 +357,7 @@ abstract class RtpengineAbstract
      *
      * @return static
      */
-    protected function setDescription($description = null)
+    protected function setDescription(?string $description = null): RtpengineInterface
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -375,7 +373,7 @@ abstract class RtpengineAbstract
      *
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -383,11 +381,11 @@ abstract class RtpengineAbstract
     /**
      * Set mediaRelaySet
      *
-     * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet | null
+     * @param MediaRelaySetInterface | null
      *
      * @return static
      */
-    protected function setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet = null)
+    protected function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null): RtpengineInterface
     {
         $this->mediaRelaySet = $mediaRelaySet;
 
@@ -397,12 +395,11 @@ abstract class RtpengineAbstract
     /**
      * Get mediaRelaySet
      *
-     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface | null
+     * @return MediaRelaySetInterface | null
      */
-    public function getMediaRelaySet()
+    public function getMediaRelaySet(): ?MediaRelaySetInterface
     {
         return $this->mediaRelaySet;
     }
 
-    // @codeCoverageIgnoreEnd
 }

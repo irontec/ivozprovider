@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksAddress;
 
@@ -6,15 +7,19 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress;
 
 /**
- * TrunksAddressAbstract
- * @codeCoverageIgnore
- */
+* TrunksAddressAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrunksAddressAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var integer
+     * @var int
      */
     protected $grp = 1;
 
@@ -25,12 +30,12 @@ abstract class TrunksAddressAbstract
     protected $ipAddr;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $mask = 32;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $port = 0;
 
@@ -40,18 +45,19 @@ abstract class TrunksAddressAbstract
     protected $tag;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
+     * @var DdiProviderAddress
+     * inversedBy trunksAddress
      */
     protected $ddiProviderAddress;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($grp, $mask, $port)
-    {
+    protected function __construct(
+        $grp,
+        $mask,
+        $port
+    ) {
         $this->setGrp($grp);
         $this->setMask($mask);
         $this->setPort($port);
@@ -121,7 +127,7 @@ abstract class TrunksAddressAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TrunksAddressDto::class);
 
@@ -134,8 +140,7 @@ abstract class TrunksAddressAbstract
         $self
             ->setIpAddr($dto->getIpAddr())
             ->setTag($dto->getTag())
-            ->setDdiProviderAddress($fkTransformer->transform($dto->getDdiProviderAddress()))
-        ;
+            ->setDdiProviderAddress($fkTransformer->transform($dto->getDdiProviderAddress()));
 
         $self->initChangelog();
 
@@ -149,7 +154,7 @@ abstract class TrunksAddressAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TrunksAddressDto::class);
 
@@ -160,8 +165,6 @@ abstract class TrunksAddressAbstract
             ->setPort($dto->getPort())
             ->setTag($dto->getTag())
             ->setDdiProviderAddress($fkTransformer->transform($dto->getDdiProviderAddress()));
-
-
 
         return $this;
     }
@@ -179,7 +182,7 @@ abstract class TrunksAddressAbstract
             ->setMask(self::getMask())
             ->setPort(self::getPort())
             ->setTag(self::getTag())
-            ->setDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress::entityToDto(self::getDdiProviderAddress(), $depth));
+            ->setDdiProviderAddress(DdiProviderAddress::entityToDto(self::getDdiProviderAddress(), $depth));
     }
 
     /**
@@ -196,22 +199,19 @@ abstract class TrunksAddressAbstract
             'ddiProviderAddressId' => self::getDdiProviderAddress()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set grp
      *
-     * @param integer $grp
+     * @param int $grp
      *
      * @return static
      */
-    protected function setGrp($grp)
+    protected function setGrp(int $grp): TrunksAddressInterface
     {
-        Assertion::notNull($grp, 'grp value "%s" is null, but non null value was expected.');
-        Assertion::integerish($grp, 'grp value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($grp, 0, 'grp provided "%s" is not greater or equal than "%s".');
 
-        $this->grp = (int) $grp;
+        $this->grp = $grp;
 
         return $this;
     }
@@ -219,7 +219,7 @@ abstract class TrunksAddressAbstract
     /**
      * Get grp
      *
-     * @return integer
+     * @return int
      */
     public function getGrp(): int
     {
@@ -233,7 +233,7 @@ abstract class TrunksAddressAbstract
      *
      * @return static
      */
-    protected function setIpAddr($ipAddr = null)
+    protected function setIpAddr(?string $ipAddr = null): TrunksAddressInterface
     {
         if (!is_null($ipAddr)) {
             Assertion::maxLength($ipAddr, 50, 'ipAddr value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -249,7 +249,7 @@ abstract class TrunksAddressAbstract
      *
      * @return string | null
      */
-    public function getIpAddr()
+    public function getIpAddr(): ?string
     {
         return $this->ipAddr;
     }
@@ -257,16 +257,13 @@ abstract class TrunksAddressAbstract
     /**
      * Set mask
      *
-     * @param integer $mask
+     * @param int $mask
      *
      * @return static
      */
-    protected function setMask($mask)
+    protected function setMask(int $mask): TrunksAddressInterface
     {
-        Assertion::notNull($mask, 'mask value "%s" is null, but non null value was expected.');
-        Assertion::integerish($mask, 'mask value "%s" is not an integer or a number castable to integer.');
-
-        $this->mask = (int) $mask;
+        $this->mask = $mask;
 
         return $this;
     }
@@ -274,7 +271,7 @@ abstract class TrunksAddressAbstract
     /**
      * Get mask
      *
-     * @return integer
+     * @return int
      */
     public function getMask(): int
     {
@@ -284,16 +281,13 @@ abstract class TrunksAddressAbstract
     /**
      * Set port
      *
-     * @param integer $port
+     * @param int $port
      *
      * @return static
      */
-    protected function setPort($port)
+    protected function setPort(int $port): TrunksAddressInterface
     {
-        Assertion::notNull($port, 'port value "%s" is null, but non null value was expected.');
-        Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
-
-        $this->port = (int) $port;
+        $this->port = $port;
 
         return $this;
     }
@@ -301,7 +295,7 @@ abstract class TrunksAddressAbstract
     /**
      * Get port
      *
-     * @return integer
+     * @return int
      */
     public function getPort(): int
     {
@@ -315,7 +309,7 @@ abstract class TrunksAddressAbstract
      *
      * @return static
      */
-    protected function setTag($tag = null)
+    protected function setTag(?string $tag = null): TrunksAddressInterface
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -331,7 +325,7 @@ abstract class TrunksAddressAbstract
      *
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
@@ -339,11 +333,11 @@ abstract class TrunksAddressAbstract
     /**
      * Set ddiProviderAddress
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress
+     * @param DdiProviderAddress
      *
      * @return static
      */
-    public function setDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress)
+    public function setDdiProviderAddress(DdiProviderAddress $ddiProviderAddress): TrunksAddressInterface
     {
         $this->ddiProviderAddress = $ddiProviderAddress;
 
@@ -353,12 +347,11 @@ abstract class TrunksAddressAbstract
     /**
      * Get ddiProviderAddress
      *
-     * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
+     * @return DdiProviderAddress
      */
-    public function getDdiProviderAddress()
+    public function getDdiProviderAddress(): DdiProviderAddress
     {
         return $this->ddiProviderAddress;
     }
 
-    // @codeCoverageIgnoreEnd
 }

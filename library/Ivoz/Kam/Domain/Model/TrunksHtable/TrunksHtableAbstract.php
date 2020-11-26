@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksHtable;
 
@@ -6,13 +7,16 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
- * TrunksHtableAbstract
- * @codeCoverageIgnore
- */
+* TrunksHtableAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrunksHtableAbstract
 {
+    use ChangelogTrait;
+
     /**
      * column: key_name
      * @var string
@@ -21,13 +25,13 @@ abstract class TrunksHtableAbstract
 
     /**
      * column: key_type
-     * @var integer
+     * @var int
      */
     protected $keyType = 0;
 
     /**
      * column: value_type
-     * @var integer
+     * @var int
      */
     protected $valueType = 0;
 
@@ -38,12 +42,9 @@ abstract class TrunksHtableAbstract
     protected $keyValue = '';
 
     /**
-     * @var integer
+     * @var int
      */
     protected $expires = 0;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -126,7 +127,7 @@ abstract class TrunksHtableAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TrunksHtableDto::class);
 
@@ -137,6 +138,8 @@ abstract class TrunksHtableAbstract
             $dto->getKeyValue(),
             $dto->getExpires()
         );
+
+        ;
 
         $self->initChangelog();
 
@@ -150,7 +153,7 @@ abstract class TrunksHtableAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TrunksHtableDto::class);
 
@@ -160,8 +163,6 @@ abstract class TrunksHtableAbstract
             ->setValueType($dto->getValueType())
             ->setKeyValue($dto->getKeyValue())
             ->setExpires($dto->getExpires());
-
-
 
         return $this;
     }
@@ -194,7 +195,6 @@ abstract class TrunksHtableAbstract
             'expires' => self::getExpires()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set keyName
@@ -203,9 +203,8 @@ abstract class TrunksHtableAbstract
      *
      * @return static
      */
-    protected function setKeyName($keyName)
+    protected function setKeyName(string $keyName): TrunksHtableInterface
     {
-        Assertion::notNull($keyName, 'keyName value "%s" is null, but non null value was expected.');
         Assertion::maxLength($keyName, 64, 'keyName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->keyName = $keyName;
@@ -226,16 +225,13 @@ abstract class TrunksHtableAbstract
     /**
      * Set keyType
      *
-     * @param integer $keyType
+     * @param int $keyType
      *
      * @return static
      */
-    protected function setKeyType($keyType)
+    protected function setKeyType(int $keyType): TrunksHtableInterface
     {
-        Assertion::notNull($keyType, 'keyType value "%s" is null, but non null value was expected.');
-        Assertion::integerish($keyType, 'keyType value "%s" is not an integer or a number castable to integer.');
-
-        $this->keyType = (int) $keyType;
+        $this->keyType = $keyType;
 
         return $this;
     }
@@ -243,7 +239,7 @@ abstract class TrunksHtableAbstract
     /**
      * Get keyType
      *
-     * @return integer
+     * @return int
      */
     public function getKeyType(): int
     {
@@ -253,16 +249,13 @@ abstract class TrunksHtableAbstract
     /**
      * Set valueType
      *
-     * @param integer $valueType
+     * @param int $valueType
      *
      * @return static
      */
-    protected function setValueType($valueType)
+    protected function setValueType(int $valueType): TrunksHtableInterface
     {
-        Assertion::notNull($valueType, 'valueType value "%s" is null, but non null value was expected.');
-        Assertion::integerish($valueType, 'valueType value "%s" is not an integer or a number castable to integer.');
-
-        $this->valueType = (int) $valueType;
+        $this->valueType = $valueType;
 
         return $this;
     }
@@ -270,7 +263,7 @@ abstract class TrunksHtableAbstract
     /**
      * Get valueType
      *
-     * @return integer
+     * @return int
      */
     public function getValueType(): int
     {
@@ -284,9 +277,8 @@ abstract class TrunksHtableAbstract
      *
      * @return static
      */
-    protected function setKeyValue($keyValue)
+    protected function setKeyValue(string $keyValue): TrunksHtableInterface
     {
-        Assertion::notNull($keyValue, 'keyValue value "%s" is null, but non null value was expected.');
         Assertion::maxLength($keyValue, 128, 'keyValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->keyValue = $keyValue;
@@ -307,16 +299,13 @@ abstract class TrunksHtableAbstract
     /**
      * Set expires
      *
-     * @param integer $expires
+     * @param int $expires
      *
      * @return static
      */
-    protected function setExpires($expires)
+    protected function setExpires(int $expires): TrunksHtableInterface
     {
-        Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
-        Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
-
-        $this->expires = (int) $expires;
+        $this->expires = $expires;
 
         return $this;
     }
@@ -324,12 +313,11 @@ abstract class TrunksHtableAbstract
     /**
      * Get expires
      *
-     * @return integer
+     * @return int
      */
     public function getExpires(): int
     {
         return $this->expires;
     }
 
-    // @codeCoverageIgnoreEnd
 }

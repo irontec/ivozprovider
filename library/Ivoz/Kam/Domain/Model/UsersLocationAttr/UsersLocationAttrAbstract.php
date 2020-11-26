@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\UsersLocationAttr;
 
@@ -6,13 +7,17 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 
 /**
- * UsersLocationAttrAbstract
- * @codeCoverageIgnore
- */
+* UsersLocationAttrAbstract
+* @codeCoverageIgnore
+*/
 abstract class UsersLocationAttrAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -34,7 +39,7 @@ abstract class UsersLocationAttrAbstract
     protected $aname = '';
 
     /**
-     * @var integer
+     * @var int
      */
     protected $atype = 0;
 
@@ -45,12 +50,9 @@ abstract class UsersLocationAttrAbstract
 
     /**
      * column: last_modified
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
-    protected $lastModified;
-
-
-    use ChangelogTrait;
+    protected $lastModified = '1900-01-01 00:00:01';
 
     /**
      * Constructor
@@ -135,7 +137,7 @@ abstract class UsersLocationAttrAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, UsersLocationAttrDto::class);
 
@@ -149,8 +151,7 @@ abstract class UsersLocationAttrAbstract
         );
 
         $self
-            ->setDomain($dto->getDomain())
-        ;
+            ->setDomain($dto->getDomain());
 
         $self->initChangelog();
 
@@ -164,7 +165,7 @@ abstract class UsersLocationAttrAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, UsersLocationAttrDto::class);
 
@@ -176,8 +177,6 @@ abstract class UsersLocationAttrAbstract
             ->setAtype($dto->getAtype())
             ->setAvalue($dto->getAvalue())
             ->setLastModified($dto->getLastModified());
-
-
 
         return $this;
     }
@@ -214,7 +213,6 @@ abstract class UsersLocationAttrAbstract
             'last_modified' => self::getLastModified()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set ruid
@@ -223,9 +221,8 @@ abstract class UsersLocationAttrAbstract
      *
      * @return static
      */
-    protected function setRuid($ruid)
+    protected function setRuid(string $ruid): UsersLocationAttrInterface
     {
-        Assertion::notNull($ruid, 'ruid value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ruid, 64, 'ruid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ruid = $ruid;
@@ -250,9 +247,8 @@ abstract class UsersLocationAttrAbstract
      *
      * @return static
      */
-    protected function setUsername($username)
+    protected function setUsername(string $username): UsersLocationAttrInterface
     {
-        Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->username = $username;
@@ -277,7 +273,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @return static
      */
-    protected function setDomain($domain = null)
+    protected function setDomain(?string $domain = null): UsersLocationAttrInterface
     {
         if (!is_null($domain)) {
             Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -293,7 +289,7 @@ abstract class UsersLocationAttrAbstract
      *
      * @return string | null
      */
-    public function getDomain()
+    public function getDomain(): ?string
     {
         return $this->domain;
     }
@@ -305,9 +301,8 @@ abstract class UsersLocationAttrAbstract
      *
      * @return static
      */
-    protected function setAname($aname)
+    protected function setAname(string $aname): UsersLocationAttrInterface
     {
-        Assertion::notNull($aname, 'aname value "%s" is null, but non null value was expected.');
         Assertion::maxLength($aname, 64, 'aname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->aname = $aname;
@@ -328,16 +323,13 @@ abstract class UsersLocationAttrAbstract
     /**
      * Set atype
      *
-     * @param integer $atype
+     * @param int $atype
      *
      * @return static
      */
-    protected function setAtype($atype)
+    protected function setAtype(int $atype): UsersLocationAttrInterface
     {
-        Assertion::notNull($atype, 'atype value "%s" is null, but non null value was expected.');
-        Assertion::integerish($atype, 'atype value "%s" is not an integer or a number castable to integer.');
-
-        $this->atype = (int) $atype;
+        $this->atype = $atype;
 
         return $this;
     }
@@ -345,7 +337,7 @@ abstract class UsersLocationAttrAbstract
     /**
      * Get atype
      *
-     * @return integer
+     * @return int
      */
     public function getAtype(): int
     {
@@ -359,9 +351,8 @@ abstract class UsersLocationAttrAbstract
      *
      * @return static
      */
-    protected function setAvalue($avalue)
+    protected function setAvalue(string $avalue): UsersLocationAttrInterface
     {
-        Assertion::notNull($avalue, 'avalue value "%s" is null, but non null value was expected.');
         Assertion::maxLength($avalue, 255, 'avalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->avalue = $avalue;
@@ -382,14 +373,14 @@ abstract class UsersLocationAttrAbstract
     /**
      * Set lastModified
      *
-     * @param \DateTime $lastModified
+     * @param \DateTimeInterface $lastModified
      *
      * @return static
      */
-    protected function setLastModified($lastModified)
+    protected function setLastModified($lastModified): UsersLocationAttrInterface
     {
-        Assertion::notNull($lastModified, 'lastModified value "%s" is null, but non null value was expected.');
-        $lastModified = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $lastModified = DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'
         );
@@ -406,12 +397,11 @@ abstract class UsersLocationAttrAbstract
     /**
      * Get lastModified
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getLastModified(): \DateTime
+    public function getLastModified(): \DateTimeInterface
     {
         return clone $this->lastModified;
     }
 
-    // @codeCoverageIgnoreEnd
 }

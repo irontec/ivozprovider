@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksLcrGateway;
 
@@ -6,16 +7,20 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer;
 
 /**
- * TrunksLcrGatewayAbstract
- * @codeCoverageIgnore
- */
+* TrunksLcrGatewayAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrunksLcrGatewayAbstract
 {
+    use ChangelogTrait;
+
     /**
      * column: lcr_id
-     * @var integer
+     * @var int
      */
     protected $lcrId = 1;
 
@@ -36,7 +41,7 @@ abstract class TrunksLcrGatewayAbstract
     protected $hostname;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $port;
 
@@ -47,17 +52,17 @@ abstract class TrunksLcrGatewayAbstract
 
     /**
      * column: uri_scheme
-     * @var integer | null
+     * @var int | null
      */
     protected $uriScheme;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $transport;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $strip;
 
@@ -72,23 +77,23 @@ abstract class TrunksLcrGatewayAbstract
     protected $tag;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $defunct;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface | null
+     * @var CarrierServer
+     * inversedBy lcrGateway
      */
     protected $carrierServer;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($lcrId, $gwName)
-    {
+    protected function __construct(
+        $lcrId,
+        $gwName
+    ) {
         $this->setLcrId($lcrId);
         $this->setGwName($gwName);
     }
@@ -157,7 +162,7 @@ abstract class TrunksLcrGatewayAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TrunksLcrGatewayDto::class);
 
@@ -177,8 +182,7 @@ abstract class TrunksLcrGatewayAbstract
             ->setPrefix($dto->getPrefix())
             ->setTag($dto->getTag())
             ->setDefunct($dto->getDefunct())
-            ->setCarrierServer($fkTransformer->transform($dto->getCarrierServer()))
-        ;
+            ->setCarrierServer($fkTransformer->transform($dto->getCarrierServer()));
 
         $self->initChangelog();
 
@@ -192,7 +196,7 @@ abstract class TrunksLcrGatewayAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TrunksLcrGatewayDto::class);
 
@@ -210,8 +214,6 @@ abstract class TrunksLcrGatewayAbstract
             ->setTag($dto->getTag())
             ->setDefunct($dto->getDefunct())
             ->setCarrierServer($fkTransformer->transform($dto->getCarrierServer()));
-
-
 
         return $this;
     }
@@ -236,7 +238,7 @@ abstract class TrunksLcrGatewayAbstract
             ->setPrefix(self::getPrefix())
             ->setTag(self::getTag())
             ->setDefunct(self::getDefunct())
-            ->setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer::entityToDto(self::getCarrierServer(), $depth));
+            ->setCarrierServer(CarrierServer::entityToDto(self::getCarrierServer(), $depth));
     }
 
     /**
@@ -260,22 +262,19 @@ abstract class TrunksLcrGatewayAbstract
             'carrierServerId' => self::getCarrierServer() ? self::getCarrierServer()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set lcrId
      *
-     * @param integer $lcrId
+     * @param int $lcrId
      *
      * @return static
      */
-    protected function setLcrId($lcrId)
+    protected function setLcrId(int $lcrId): TrunksLcrGatewayInterface
     {
-        Assertion::notNull($lcrId, 'lcrId value "%s" is null, but non null value was expected.');
-        Assertion::integerish($lcrId, 'lcrId value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($lcrId, 0, 'lcrId provided "%s" is not greater or equal than "%s".');
 
-        $this->lcrId = (int) $lcrId;
+        $this->lcrId = $lcrId;
 
         return $this;
     }
@@ -283,7 +282,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get lcrId
      *
-     * @return integer
+     * @return int
      */
     public function getLcrId(): int
     {
@@ -297,9 +296,8 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return static
      */
-    protected function setGwName($gwName)
+    protected function setGwName(string $gwName): TrunksLcrGatewayInterface
     {
-        Assertion::notNull($gwName, 'gwName value "%s" is null, but non null value was expected.');
         Assertion::maxLength($gwName, 200, 'gwName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->gwName = $gwName;
@@ -324,7 +322,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return static
      */
-    protected function setIp($ip = null)
+    protected function setIp(?string $ip = null): TrunksLcrGatewayInterface
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -340,7 +338,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
@@ -352,7 +350,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return static
      */
-    protected function setHostname($hostname = null)
+    protected function setHostname(?string $hostname = null): TrunksLcrGatewayInterface
     {
         if (!is_null($hostname)) {
             Assertion::maxLength($hostname, 64, 'hostname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -368,7 +366,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return string | null
      */
-    public function getHostname()
+    public function getHostname(): ?string
     {
         return $this->hostname;
     }
@@ -376,16 +374,14 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set port
      *
-     * @param integer $port | null
+     * @param int $port | null
      *
      * @return static
      */
-    protected function setPort($port = null)
+    protected function setPort(?int $port = null): TrunksLcrGatewayInterface
     {
         if (!is_null($port)) {
-            Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
-            $port = (int) $port;
         }
 
         $this->port = $port;
@@ -396,9 +392,9 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get port
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getPort()
+    public function getPort(): ?int
     {
         return $this->port;
     }
@@ -410,7 +406,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return static
      */
-    protected function setParams($params = null)
+    protected function setParams(?string $params = null): TrunksLcrGatewayInterface
     {
         if (!is_null($params)) {
             Assertion::maxLength($params, 64, 'params value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -426,7 +422,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return string | null
      */
-    public function getParams()
+    public function getParams(): ?string
     {
         return $this->params;
     }
@@ -434,16 +430,14 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set uriScheme
      *
-     * @param integer $uriScheme | null
+     * @param int $uriScheme | null
      *
      * @return static
      */
-    protected function setUriScheme($uriScheme = null)
+    protected function setUriScheme(?int $uriScheme = null): TrunksLcrGatewayInterface
     {
         if (!is_null($uriScheme)) {
-            Assertion::integerish($uriScheme, 'uriScheme value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($uriScheme, 0, 'uriScheme provided "%s" is not greater or equal than "%s".');
-            $uriScheme = (int) $uriScheme;
         }
 
         $this->uriScheme = $uriScheme;
@@ -454,9 +448,9 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get uriScheme
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getUriScheme()
+    public function getUriScheme(): ?int
     {
         return $this->uriScheme;
     }
@@ -464,16 +458,14 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set transport
      *
-     * @param integer $transport | null
+     * @param int $transport | null
      *
      * @return static
      */
-    protected function setTransport($transport = null)
+    protected function setTransport(?int $transport = null): TrunksLcrGatewayInterface
     {
         if (!is_null($transport)) {
-            Assertion::integerish($transport, 'transport value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($transport, 0, 'transport provided "%s" is not greater or equal than "%s".');
-            $transport = (int) $transport;
         }
 
         $this->transport = $transport;
@@ -484,9 +476,9 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get transport
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getTransport()
+    public function getTransport(): ?int
     {
         return $this->transport;
     }
@@ -494,11 +486,11 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set strip
      *
-     * @param boolean $strip | null
+     * @param bool $strip | null
      *
      * @return static
      */
-    protected function setStrip($strip = null)
+    protected function setStrip(?bool $strip = null): TrunksLcrGatewayInterface
     {
         if (!is_null($strip)) {
             Assertion::between(intval($strip), 0, 1, 'strip provided "%s" is not a valid boolean value.');
@@ -513,9 +505,9 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get strip
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getStrip()
+    public function getStrip(): ?bool
     {
         return $this->strip;
     }
@@ -527,7 +519,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return static
      */
-    protected function setPrefix($prefix = null)
+    protected function setPrefix(?string $prefix = null): TrunksLcrGatewayInterface
     {
         if (!is_null($prefix)) {
             Assertion::maxLength($prefix, 16, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -543,7 +535,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return string | null
      */
-    public function getPrefix()
+    public function getPrefix(): ?string
     {
         return $this->prefix;
     }
@@ -555,7 +547,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return static
      */
-    protected function setTag($tag = null)
+    protected function setTag(?string $tag = null): TrunksLcrGatewayInterface
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -571,7 +563,7 @@ abstract class TrunksLcrGatewayAbstract
      *
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
@@ -579,16 +571,14 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set defunct
      *
-     * @param integer $defunct | null
+     * @param int $defunct | null
      *
      * @return static
      */
-    protected function setDefunct($defunct = null)
+    protected function setDefunct(?int $defunct = null): TrunksLcrGatewayInterface
     {
         if (!is_null($defunct)) {
-            Assertion::integerish($defunct, 'defunct value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($defunct, 0, 'defunct provided "%s" is not greater or equal than "%s".');
-            $defunct = (int) $defunct;
         }
 
         $this->defunct = $defunct;
@@ -599,9 +589,9 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get defunct
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getDefunct()
+    public function getDefunct(): ?int
     {
         return $this->defunct;
     }
@@ -609,11 +599,11 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set carrierServer
      *
-     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer | null
+     * @param CarrierServer | null
      *
      * @return static
      */
-    public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer = null)
+    public function setCarrierServer(?CarrierServer $carrierServer = null): TrunksLcrGatewayInterface
     {
         $this->carrierServer = $carrierServer;
 
@@ -623,12 +613,11 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get carrierServer
      *
-     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface | null
+     * @return CarrierServer | null
      */
-    public function getCarrierServer()
+    public function getCarrierServer(): ?CarrierServer
     {
         return $this->carrierServer;
     }
 
-    // @codeCoverageIgnoreEnd
 }

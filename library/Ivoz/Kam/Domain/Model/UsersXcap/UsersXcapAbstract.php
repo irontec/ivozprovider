@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\UsersXcap;
 
@@ -6,13 +7,16 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
- * UsersXcapAbstract
- * @codeCoverageIgnore
- */
+* UsersXcapAbstract
+* @codeCoverageIgnore
+*/
 abstract class UsersXcapAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,13 +28,13 @@ abstract class UsersXcapAbstract
     protected $domain;
 
     /**
-     * @var string
+     * @var 
      */
     protected $doc;
 
     /**
      * column: doc_type
-     * @var integer
+     * @var int
      */
     protected $docType;
 
@@ -40,7 +44,7 @@ abstract class UsersXcapAbstract
     protected $etag;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $source;
 
@@ -51,12 +55,9 @@ abstract class UsersXcapAbstract
     protected $docUri;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $port;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -145,7 +146,7 @@ abstract class UsersXcapAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, UsersXcapDto::class);
 
@@ -160,6 +161,8 @@ abstract class UsersXcapAbstract
             $dto->getPort()
         );
 
+        ;
+
         $self->initChangelog();
 
         return $self;
@@ -172,7 +175,7 @@ abstract class UsersXcapAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, UsersXcapDto::class);
 
@@ -185,8 +188,6 @@ abstract class UsersXcapAbstract
             ->setSource($dto->getSource())
             ->setDocUri($dto->getDocUri())
             ->setPort($dto->getPort());
-
-
 
         return $this;
     }
@@ -225,7 +226,6 @@ abstract class UsersXcapAbstract
             'port' => self::getPort()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set username
@@ -234,9 +234,8 @@ abstract class UsersXcapAbstract
      *
      * @return static
      */
-    protected function setUsername($username)
+    protected function setUsername(string $username): UsersXcapInterface
     {
-        Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->username = $username;
@@ -261,9 +260,8 @@ abstract class UsersXcapAbstract
      *
      * @return static
      */
-    protected function setDomain($domain)
+    protected function setDomain(string $domain): UsersXcapInterface
     {
-        Assertion::notNull($domain, 'domain value "%s" is null, but non null value was expected.');
         Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->domain = $domain;
@@ -284,14 +282,12 @@ abstract class UsersXcapAbstract
     /**
      * Set doc
      *
-     * @param string $doc
+     * @param  $doc
      *
      * @return static
      */
-    protected function setDoc($doc)
+    protected function setDoc( $doc): UsersXcapInterface
     {
-        Assertion::notNull($doc, 'doc value "%s" is null, but non null value was expected.');
-
         $this->doc = $doc;
 
         return $this;
@@ -300,9 +296,9 @@ abstract class UsersXcapAbstract
     /**
      * Get doc
      *
-     * @return string
+     * @return 
      */
-    public function getDoc(): string
+    public function getDoc()
     {
         return $this->doc;
     }
@@ -310,16 +306,13 @@ abstract class UsersXcapAbstract
     /**
      * Set docType
      *
-     * @param integer $docType
+     * @param int $docType
      *
      * @return static
      */
-    protected function setDocType($docType)
+    protected function setDocType(int $docType): UsersXcapInterface
     {
-        Assertion::notNull($docType, 'docType value "%s" is null, but non null value was expected.');
-        Assertion::integerish($docType, 'docType value "%s" is not an integer or a number castable to integer.');
-
-        $this->docType = (int) $docType;
+        $this->docType = $docType;
 
         return $this;
     }
@@ -327,7 +320,7 @@ abstract class UsersXcapAbstract
     /**
      * Get docType
      *
-     * @return integer
+     * @return int
      */
     public function getDocType(): int
     {
@@ -341,9 +334,8 @@ abstract class UsersXcapAbstract
      *
      * @return static
      */
-    protected function setEtag($etag)
+    protected function setEtag(string $etag): UsersXcapInterface
     {
-        Assertion::notNull($etag, 'etag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->etag = $etag;
@@ -364,16 +356,13 @@ abstract class UsersXcapAbstract
     /**
      * Set source
      *
-     * @param integer $source
+     * @param int $source
      *
      * @return static
      */
-    protected function setSource($source)
+    protected function setSource(int $source): UsersXcapInterface
     {
-        Assertion::notNull($source, 'source value "%s" is null, but non null value was expected.');
-        Assertion::integerish($source, 'source value "%s" is not an integer or a number castable to integer.');
-
-        $this->source = (int) $source;
+        $this->source = $source;
 
         return $this;
     }
@@ -381,7 +370,7 @@ abstract class UsersXcapAbstract
     /**
      * Get source
      *
-     * @return integer
+     * @return int
      */
     public function getSource(): int
     {
@@ -395,9 +384,8 @@ abstract class UsersXcapAbstract
      *
      * @return static
      */
-    protected function setDocUri($docUri)
+    protected function setDocUri(string $docUri): UsersXcapInterface
     {
-        Assertion::notNull($docUri, 'docUri value "%s" is null, but non null value was expected.');
         Assertion::maxLength($docUri, 255, 'docUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->docUri = $docUri;
@@ -418,16 +406,13 @@ abstract class UsersXcapAbstract
     /**
      * Set port
      *
-     * @param integer $port
+     * @param int $port
      *
      * @return static
      */
-    protected function setPort($port)
+    protected function setPort(int $port): UsersXcapInterface
     {
-        Assertion::notNull($port, 'port value "%s" is null, but non null value was expected.');
-        Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
-
-        $this->port = (int) $port;
+        $this->port = $port;
 
         return $this;
     }
@@ -435,12 +420,11 @@ abstract class UsersXcapAbstract
     /**
      * Get port
      *
-     * @return integer
+     * @return int
      */
     public function getPort(): int
     {
         return $this->port;
     }
 
-    // @codeCoverageIgnoreEnd
 }

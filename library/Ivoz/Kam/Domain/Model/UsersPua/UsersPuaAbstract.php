@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\UsersPua;
 
@@ -6,13 +7,16 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
- * UsersPuaAbstract
- * @codeCoverageIgnore
- */
+* UsersPuaAbstract
+* @codeCoverageIgnore
+*/
 abstract class UsersPuaAbstract
 {
+    use ChangelogTrait;
+
     /**
      * column: pres_uri
      * @var string
@@ -26,23 +30,23 @@ abstract class UsersPuaAbstract
     protected $presId;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $event;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $expires;
 
     /**
      * column: desired_expires
-     * @var integer
+     * @var int
      */
     protected $desiredExpires;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $flag;
 
@@ -82,7 +86,7 @@ abstract class UsersPuaAbstract
     protected $fromTag;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $cseq;
 
@@ -104,7 +108,7 @@ abstract class UsersPuaAbstract
     protected $remoteContact;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $version;
 
@@ -113,9 +117,6 @@ abstract class UsersPuaAbstract
      * @var string
      */
     protected $extraHeaders;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -220,7 +221,7 @@ abstract class UsersPuaAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, UsersPuaDto::class);
 
@@ -245,8 +246,7 @@ abstract class UsersPuaAbstract
 
         $self
             ->setTupleId($dto->getTupleId())
-            ->setRecordRoute($dto->getRecordRoute())
-        ;
+            ->setRecordRoute($dto->getRecordRoute());
 
         $self->initChangelog();
 
@@ -260,7 +260,7 @@ abstract class UsersPuaAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, UsersPuaDto::class);
 
@@ -283,8 +283,6 @@ abstract class UsersPuaAbstract
             ->setRemoteContact($dto->getRemoteContact())
             ->setVersion($dto->getVersion())
             ->setExtraHeaders($dto->getExtraHeaders());
-
-
 
         return $this;
     }
@@ -343,7 +341,6 @@ abstract class UsersPuaAbstract
             'extra_headers' => self::getExtraHeaders()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set presUri
@@ -352,9 +349,8 @@ abstract class UsersPuaAbstract
      *
      * @return static
      */
-    protected function setPresUri($presUri)
+    protected function setPresUri(string $presUri): UsersPuaInterface
     {
-        Assertion::notNull($presUri, 'presUri value "%s" is null, but non null value was expected.');
         Assertion::maxLength($presUri, 128, 'presUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->presUri = $presUri;
@@ -379,9 +375,8 @@ abstract class UsersPuaAbstract
      *
      * @return static
      */
-    protected function setPresId($presId)
+    protected function setPresId(string $presId): UsersPuaInterface
     {
-        Assertion::notNull($presId, 'presId value "%s" is null, but non null value was expected.');
         Assertion::maxLength($presId, 255, 'presId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->presId = $presId;
@@ -402,16 +397,13 @@ abstract class UsersPuaAbstract
     /**
      * Set event
      *
-     * @param integer $event
+     * @param int $event
      *
      * @return static
      */
-    protected function setEvent($event)
+    protected function setEvent(int $event): UsersPuaInterface
     {
-        Assertion::notNull($event, 'event value "%s" is null, but non null value was expected.');
-        Assertion::integerish($event, 'event value "%s" is not an integer or a number castable to integer.');
-
-        $this->event = (int) $event;
+        $this->event = $event;
 
         return $this;
     }
@@ -419,7 +411,7 @@ abstract class UsersPuaAbstract
     /**
      * Get event
      *
-     * @return integer
+     * @return int
      */
     public function getEvent(): int
     {
@@ -429,16 +421,13 @@ abstract class UsersPuaAbstract
     /**
      * Set expires
      *
-     * @param integer $expires
+     * @param int $expires
      *
      * @return static
      */
-    protected function setExpires($expires)
+    protected function setExpires(int $expires): UsersPuaInterface
     {
-        Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
-        Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
-
-        $this->expires = (int) $expires;
+        $this->expires = $expires;
 
         return $this;
     }
@@ -446,7 +435,7 @@ abstract class UsersPuaAbstract
     /**
      * Get expires
      *
-     * @return integer
+     * @return int
      */
     public function getExpires(): int
     {
@@ -456,16 +445,13 @@ abstract class UsersPuaAbstract
     /**
      * Set desiredExpires
      *
-     * @param integer $desiredExpires
+     * @param int $desiredExpires
      *
      * @return static
      */
-    protected function setDesiredExpires($desiredExpires)
+    protected function setDesiredExpires(int $desiredExpires): UsersPuaInterface
     {
-        Assertion::notNull($desiredExpires, 'desiredExpires value "%s" is null, but non null value was expected.');
-        Assertion::integerish($desiredExpires, 'desiredExpires value "%s" is not an integer or a number castable to integer.');
-
-        $this->desiredExpires = (int) $desiredExpires;
+        $this->desiredExpires = $desiredExpires;
 
         return $this;
     }
@@ -473,7 +459,7 @@ abstract class UsersPuaAbstract
     /**
      * Get desiredExpires
      *
-     * @return integer
+     * @return int
      */
     public function getDesiredExpires(): int
     {
@@ -483,16 +469,13 @@ abstract class UsersPuaAbstract
     /**
      * Set flag
      *
-     * @param integer $flag
+     * @param int $flag
      *
      * @return static
      */
-    protected function setFlag($flag)
+    protected function setFlag(int $flag): UsersPuaInterface
     {
-        Assertion::notNull($flag, 'flag value "%s" is null, but non null value was expected.');
-        Assertion::integerish($flag, 'flag value "%s" is not an integer or a number castable to integer.');
-
-        $this->flag = (int) $flag;
+        $this->flag = $flag;
 
         return $this;
     }
@@ -500,7 +483,7 @@ abstract class UsersPuaAbstract
     /**
      * Get flag
      *
-     * @return integer
+     * @return int
      */
     public function getFlag(): int
     {
@@ -514,9 +497,8 @@ abstract class UsersPuaAbstract
      *
      * @return static
      */
-    protected function setEtag($etag)
+    protected function setEtag(string $etag): UsersPuaInterface
     {
-        Assertion::notNull($etag, 'etag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->etag = $etag;
@@ -541,7 +523,7 @@ abstract class UsersPuaAbstract
      *
      * @return static
      */
-    protected function setTupleId($tupleId = null)
+    protected function setTupleId(?string $tupleId = null): UsersPuaInterface
     {
         if (!is_null($tupleId)) {
             Assertion::maxLength($tupleId, 64, 'tupleId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -557,7 +539,7 @@ abstract class UsersPuaAbstract
      *
      * @return string | null
      */
-    public function getTupleId()
+    public function getTupleId(): ?string
     {
         return $this->tupleId;
     }
@@ -569,9 +551,8 @@ abstract class UsersPuaAbstract
      *
      * @return static
      */
-    protected function setWatcherUri($watcherUri)
+    protected function setWatcherUri(string $watcherUri): UsersPuaInterface
     {
-        Assertion::notNull($watcherUri, 'watcherUri value "%s" is null, but non null value was expected.');
         Assertion::maxLength($watcherUri, 128, 'watcherUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->watcherUri = $watcherUri;
@@ -596,9 +577,8 @@ abstract class UsersPuaAbstract
      *
      * @return static
      */
-    protected function setCallId($callId)
+    protected function setCallId(string $callId): UsersPuaInterface
     {
-        Assertion::notNull($callId, 'callId value "%s" is null, but non null value was expected.');
         Assertion::maxLength($callId, 255, 'callId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->callId = $callId;
@@ -623,9 +603,8 @@ abstract class UsersPuaAbstract
      *
      * @return static
      */
-    protected function setToTag($toTag)
+    protected function setToTag(string $toTag): UsersPuaInterface
     {
-        Assertion::notNull($toTag, 'toTag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($toTag, 64, 'toTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->toTag = $toTag;
@@ -650,9 +629,8 @@ abstract class UsersPuaAbstract
      *
      * @return static
      */
-    protected function setFromTag($fromTag)
+    protected function setFromTag(string $fromTag): UsersPuaInterface
     {
-        Assertion::notNull($fromTag, 'fromTag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($fromTag, 64, 'fromTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->fromTag = $fromTag;
@@ -673,16 +651,13 @@ abstract class UsersPuaAbstract
     /**
      * Set cseq
      *
-     * @param integer $cseq
+     * @param int $cseq
      *
      * @return static
      */
-    protected function setCseq($cseq)
+    protected function setCseq(int $cseq): UsersPuaInterface
     {
-        Assertion::notNull($cseq, 'cseq value "%s" is null, but non null value was expected.');
-        Assertion::integerish($cseq, 'cseq value "%s" is not an integer or a number castable to integer.');
-
-        $this->cseq = (int) $cseq;
+        $this->cseq = $cseq;
 
         return $this;
     }
@@ -690,7 +665,7 @@ abstract class UsersPuaAbstract
     /**
      * Get cseq
      *
-     * @return integer
+     * @return int
      */
     public function getCseq(): int
     {
@@ -704,7 +679,7 @@ abstract class UsersPuaAbstract
      *
      * @return static
      */
-    protected function setRecordRoute($recordRoute = null)
+    protected function setRecordRoute(?string $recordRoute = null): UsersPuaInterface
     {
         if (!is_null($recordRoute)) {
             Assertion::maxLength($recordRoute, 65535, 'recordRoute value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -720,7 +695,7 @@ abstract class UsersPuaAbstract
      *
      * @return string | null
      */
-    public function getRecordRoute()
+    public function getRecordRoute(): ?string
     {
         return $this->recordRoute;
     }
@@ -732,9 +707,8 @@ abstract class UsersPuaAbstract
      *
      * @return static
      */
-    protected function setContact($contact)
+    protected function setContact(string $contact): UsersPuaInterface
     {
-        Assertion::notNull($contact, 'contact value "%s" is null, but non null value was expected.');
         Assertion::maxLength($contact, 128, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->contact = $contact;
@@ -759,9 +733,8 @@ abstract class UsersPuaAbstract
      *
      * @return static
      */
-    protected function setRemoteContact($remoteContact)
+    protected function setRemoteContact(string $remoteContact): UsersPuaInterface
     {
-        Assertion::notNull($remoteContact, 'remoteContact value "%s" is null, but non null value was expected.');
         Assertion::maxLength($remoteContact, 128, 'remoteContact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->remoteContact = $remoteContact;
@@ -782,16 +755,13 @@ abstract class UsersPuaAbstract
     /**
      * Set version
      *
-     * @param integer $version
+     * @param int $version
      *
      * @return static
      */
-    protected function setVersion($version)
+    protected function setVersion(int $version): UsersPuaInterface
     {
-        Assertion::notNull($version, 'version value "%s" is null, but non null value was expected.');
-        Assertion::integerish($version, 'version value "%s" is not an integer or a number castable to integer.');
-
-        $this->version = (int) $version;
+        $this->version = $version;
 
         return $this;
     }
@@ -799,7 +769,7 @@ abstract class UsersPuaAbstract
     /**
      * Get version
      *
-     * @return integer
+     * @return int
      */
     public function getVersion(): int
     {
@@ -813,9 +783,8 @@ abstract class UsersPuaAbstract
      *
      * @return static
      */
-    protected function setExtraHeaders($extraHeaders)
+    protected function setExtraHeaders(string $extraHeaders): UsersPuaInterface
     {
-        Assertion::notNull($extraHeaders, 'extraHeaders value "%s" is null, but non null value was expected.');
         Assertion::maxLength($extraHeaders, 65535, 'extraHeaders value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->extraHeaders = $extraHeaders;
@@ -833,5 +802,4 @@ abstract class UsersPuaAbstract
         return $this->extraHeaders;
     }
 
-    // @codeCoverageIgnoreEnd
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\UsersPresentity;
 
@@ -6,13 +7,16 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
- * UsersPresentityAbstract
- * @codeCoverageIgnore
- */
+* UsersPresentityAbstract
+* @codeCoverageIgnore
+*/
 abstract class UsersPresentityAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -34,18 +38,18 @@ abstract class UsersPresentityAbstract
     protected $etag;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $expires;
 
     /**
      * column: received_time
-     * @var integer
+     * @var int
      */
     protected $receivedTime;
 
     /**
-     * @var string
+     * @var 
      */
     protected $body;
 
@@ -55,12 +59,9 @@ abstract class UsersPresentityAbstract
     protected $sender;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $priority = 0;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -151,7 +152,7 @@ abstract class UsersPresentityAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, UsersPresentityDto::class);
 
@@ -167,6 +168,8 @@ abstract class UsersPresentityAbstract
             $dto->getPriority()
         );
 
+        ;
+
         $self->initChangelog();
 
         return $self;
@@ -179,7 +182,7 @@ abstract class UsersPresentityAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, UsersPresentityDto::class);
 
@@ -193,8 +196,6 @@ abstract class UsersPresentityAbstract
             ->setBody($dto->getBody())
             ->setSender($dto->getSender())
             ->setPriority($dto->getPriority());
-
-
 
         return $this;
     }
@@ -235,7 +236,6 @@ abstract class UsersPresentityAbstract
             'priority' => self::getPriority()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set username
@@ -244,9 +244,8 @@ abstract class UsersPresentityAbstract
      *
      * @return static
      */
-    protected function setUsername($username)
+    protected function setUsername(string $username): UsersPresentityInterface
     {
-        Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->username = $username;
@@ -271,9 +270,8 @@ abstract class UsersPresentityAbstract
      *
      * @return static
      */
-    protected function setDomain($domain)
+    protected function setDomain(string $domain): UsersPresentityInterface
     {
-        Assertion::notNull($domain, 'domain value "%s" is null, but non null value was expected.');
         Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->domain = $domain;
@@ -298,9 +296,8 @@ abstract class UsersPresentityAbstract
      *
      * @return static
      */
-    protected function setEvent($event)
+    protected function setEvent(string $event): UsersPresentityInterface
     {
-        Assertion::notNull($event, 'event value "%s" is null, but non null value was expected.');
         Assertion::maxLength($event, 64, 'event value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->event = $event;
@@ -325,9 +322,8 @@ abstract class UsersPresentityAbstract
      *
      * @return static
      */
-    protected function setEtag($etag)
+    protected function setEtag(string $etag): UsersPresentityInterface
     {
-        Assertion::notNull($etag, 'etag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->etag = $etag;
@@ -348,16 +344,13 @@ abstract class UsersPresentityAbstract
     /**
      * Set expires
      *
-     * @param integer $expires
+     * @param int $expires
      *
      * @return static
      */
-    protected function setExpires($expires)
+    protected function setExpires(int $expires): UsersPresentityInterface
     {
-        Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
-        Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
-
-        $this->expires = (int) $expires;
+        $this->expires = $expires;
 
         return $this;
     }
@@ -365,7 +358,7 @@ abstract class UsersPresentityAbstract
     /**
      * Get expires
      *
-     * @return integer
+     * @return int
      */
     public function getExpires(): int
     {
@@ -375,16 +368,13 @@ abstract class UsersPresentityAbstract
     /**
      * Set receivedTime
      *
-     * @param integer $receivedTime
+     * @param int $receivedTime
      *
      * @return static
      */
-    protected function setReceivedTime($receivedTime)
+    protected function setReceivedTime(int $receivedTime): UsersPresentityInterface
     {
-        Assertion::notNull($receivedTime, 'receivedTime value "%s" is null, but non null value was expected.');
-        Assertion::integerish($receivedTime, 'receivedTime value "%s" is not an integer or a number castable to integer.');
-
-        $this->receivedTime = (int) $receivedTime;
+        $this->receivedTime = $receivedTime;
 
         return $this;
     }
@@ -392,7 +382,7 @@ abstract class UsersPresentityAbstract
     /**
      * Get receivedTime
      *
-     * @return integer
+     * @return int
      */
     public function getReceivedTime(): int
     {
@@ -402,14 +392,12 @@ abstract class UsersPresentityAbstract
     /**
      * Set body
      *
-     * @param string $body
+     * @param  $body
      *
      * @return static
      */
-    protected function setBody($body)
+    protected function setBody( $body): UsersPresentityInterface
     {
-        Assertion::notNull($body, 'body value "%s" is null, but non null value was expected.');
-
         $this->body = $body;
 
         return $this;
@@ -418,9 +406,9 @@ abstract class UsersPresentityAbstract
     /**
      * Get body
      *
-     * @return string
+     * @return 
      */
-    public function getBody(): string
+    public function getBody()
     {
         return $this->body;
     }
@@ -432,9 +420,8 @@ abstract class UsersPresentityAbstract
      *
      * @return static
      */
-    protected function setSender($sender)
+    protected function setSender(string $sender): UsersPresentityInterface
     {
-        Assertion::notNull($sender, 'sender value "%s" is null, but non null value was expected.');
         Assertion::maxLength($sender, 128, 'sender value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->sender = $sender;
@@ -455,16 +442,13 @@ abstract class UsersPresentityAbstract
     /**
      * Set priority
      *
-     * @param integer $priority
+     * @param int $priority
      *
      * @return static
      */
-    protected function setPriority($priority)
+    protected function setPriority(int $priority): UsersPresentityInterface
     {
-        Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
-        Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
-
-        $this->priority = (int) $priority;
+        $this->priority = $priority;
 
         return $this;
     }
@@ -472,12 +456,11 @@ abstract class UsersPresentityAbstract
     /**
      * Get priority
      *
-     * @return integer
+     * @return int
      */
     public function getPriority(): int
     {
         return $this->priority;
     }
 
-    // @codeCoverageIgnoreEnd
 }

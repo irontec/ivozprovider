@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksLcrRule;
 
@@ -6,16 +7,25 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 
 /**
- * TrunksLcrRuleAbstract
- * @codeCoverageIgnore
- */
+* TrunksLcrRuleAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrunksLcrRuleAbstract
 {
+    use ChangelogTrait;
+
     /**
      * column: lcr_id
-     * @var integer
+     * @var int
      */
     protected $lcrId = 1;
 
@@ -43,38 +53,40 @@ abstract class TrunksLcrRuleAbstract
     protected $mtTvalue;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $stopper = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $enabled = 1;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface | null
+     * @var RoutingPatternInterface
+     * inversedBy lcrRules
      */
     protected $routingPattern;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface | null
+     * @var RoutingPatternGroupsRelPatternInterface
      */
     protected $routingPatternGroupsRelPattern;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @var OutgoingRoutingInterface
+     * inversedBy lcrRules
      */
     protected $outgoingRouting;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($lcrId, $stopper, $enabled)
-    {
+    protected function __construct(
+        $lcrId,
+        $stopper,
+        $enabled
+    ) {
         $this->setLcrId($lcrId);
         $this->setStopper($stopper);
         $this->setEnabled($enabled);
@@ -144,7 +156,7 @@ abstract class TrunksLcrRuleAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TrunksLcrRuleDto::class);
 
@@ -161,8 +173,7 @@ abstract class TrunksLcrRuleAbstract
             ->setMtTvalue($dto->getMtTvalue())
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
             ->setRoutingPatternGroupsRelPattern($fkTransformer->transform($dto->getRoutingPatternGroupsRelPattern()))
-            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
-        ;
+            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
 
         $self->initChangelog();
 
@@ -176,7 +187,7 @@ abstract class TrunksLcrRuleAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TrunksLcrRuleDto::class);
 
@@ -191,8 +202,6 @@ abstract class TrunksLcrRuleAbstract
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
             ->setRoutingPatternGroupsRelPattern($fkTransformer->transform($dto->getRoutingPatternGroupsRelPattern()))
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
-
-
 
         return $this;
     }
@@ -212,9 +221,9 @@ abstract class TrunksLcrRuleAbstract
             ->setMtTvalue(self::getMtTvalue())
             ->setStopper(self::getStopper())
             ->setEnabled(self::getEnabled())
-            ->setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern::entityToDto(self::getRoutingPattern(), $depth))
-            ->setRoutingPatternGroupsRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern::entityToDto(self::getRoutingPatternGroupsRelPattern(), $depth))
-            ->setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth));
+            ->setRoutingPattern(RoutingPattern::entityToDto(self::getRoutingPattern(), $depth))
+            ->setRoutingPatternGroupsRelPattern(RoutingPatternGroupsRelPattern::entityToDto(self::getRoutingPatternGroupsRelPattern(), $depth))
+            ->setOutgoingRouting(OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth));
     }
 
     /**
@@ -235,22 +244,19 @@ abstract class TrunksLcrRuleAbstract
             'outgoingRoutingId' => self::getOutgoingRouting()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set lcrId
      *
-     * @param integer $lcrId
+     * @param int $lcrId
      *
      * @return static
      */
-    protected function setLcrId($lcrId)
+    protected function setLcrId(int $lcrId): TrunksLcrRuleInterface
     {
-        Assertion::notNull($lcrId, 'lcrId value "%s" is null, but non null value was expected.');
-        Assertion::integerish($lcrId, 'lcrId value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($lcrId, 0, 'lcrId provided "%s" is not greater or equal than "%s".');
 
-        $this->lcrId = (int) $lcrId;
+        $this->lcrId = $lcrId;
 
         return $this;
     }
@@ -258,7 +264,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Get lcrId
      *
-     * @return integer
+     * @return int
      */
     public function getLcrId(): int
     {
@@ -272,7 +278,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @return static
      */
-    protected function setPrefix($prefix = null)
+    protected function setPrefix(?string $prefix = null): TrunksLcrRuleInterface
     {
         if (!is_null($prefix)) {
             Assertion::maxLength($prefix, 100, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -288,7 +294,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @return string | null
      */
-    public function getPrefix()
+    public function getPrefix(): ?string
     {
         return $this->prefix;
     }
@@ -300,7 +306,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @return static
      */
-    protected function setFromUri($fromUri = null)
+    protected function setFromUri(?string $fromUri = null): TrunksLcrRuleInterface
     {
         if (!is_null($fromUri)) {
             Assertion::maxLength($fromUri, 255, 'fromUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -316,7 +322,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @return string | null
      */
-    public function getFromUri()
+    public function getFromUri(): ?string
     {
         return $this->fromUri;
     }
@@ -328,7 +334,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @return static
      */
-    protected function setRequestUri($requestUri = null)
+    protected function setRequestUri(?string $requestUri = null): TrunksLcrRuleInterface
     {
         if (!is_null($requestUri)) {
             Assertion::maxLength($requestUri, 100, 'requestUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -344,7 +350,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @return string | null
      */
-    public function getRequestUri()
+    public function getRequestUri(): ?string
     {
         return $this->requestUri;
     }
@@ -356,7 +362,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @return static
      */
-    protected function setMtTvalue($mtTvalue = null)
+    protected function setMtTvalue(?string $mtTvalue = null): TrunksLcrRuleInterface
     {
         if (!is_null($mtTvalue)) {
             Assertion::maxLength($mtTvalue, 128, 'mtTvalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -372,7 +378,7 @@ abstract class TrunksLcrRuleAbstract
      *
      * @return string | null
      */
-    public function getMtTvalue()
+    public function getMtTvalue(): ?string
     {
         return $this->mtTvalue;
     }
@@ -380,17 +386,15 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Set stopper
      *
-     * @param integer $stopper
+     * @param int $stopper
      *
      * @return static
      */
-    protected function setStopper($stopper)
+    protected function setStopper(int $stopper): TrunksLcrRuleInterface
     {
-        Assertion::notNull($stopper, 'stopper value "%s" is null, but non null value was expected.');
-        Assertion::integerish($stopper, 'stopper value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($stopper, 0, 'stopper provided "%s" is not greater or equal than "%s".');
 
-        $this->stopper = (int) $stopper;
+        $this->stopper = $stopper;
 
         return $this;
     }
@@ -398,7 +402,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Get stopper
      *
-     * @return integer
+     * @return int
      */
     public function getStopper(): int
     {
@@ -408,17 +412,15 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Set enabled
      *
-     * @param integer $enabled
+     * @param int $enabled
      *
      * @return static
      */
-    protected function setEnabled($enabled)
+    protected function setEnabled(int $enabled): TrunksLcrRuleInterface
     {
-        Assertion::notNull($enabled, 'enabled value "%s" is null, but non null value was expected.');
-        Assertion::integerish($enabled, 'enabled value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($enabled, 0, 'enabled provided "%s" is not greater or equal than "%s".');
 
-        $this->enabled = (int) $enabled;
+        $this->enabled = $enabled;
 
         return $this;
     }
@@ -426,7 +428,7 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Get enabled
      *
-     * @return integer
+     * @return int
      */
     public function getEnabled(): int
     {
@@ -436,11 +438,11 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Set routingPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern | null
+     * @param RoutingPatternInterface | null
      *
      * @return static
      */
-    public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern = null)
+    public function setRoutingPattern(?RoutingPatternInterface $routingPattern = null): TrunksLcrRuleInterface
     {
         $this->routingPattern = $routingPattern;
 
@@ -450,9 +452,9 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Get routingPattern
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface | null
+     * @return RoutingPatternInterface | null
      */
-    public function getRoutingPattern()
+    public function getRoutingPattern(): ?RoutingPatternInterface
     {
         return $this->routingPattern;
     }
@@ -460,11 +462,11 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Set routingPatternGroupsRelPattern
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern | null
+     * @param RoutingPatternGroupsRelPatternInterface | null
      *
      * @return static
      */
-    protected function setRoutingPatternGroupsRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern = null)
+    protected function setRoutingPatternGroupsRelPattern(?RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern = null): TrunksLcrRuleInterface
     {
         $this->routingPatternGroupsRelPattern = $routingPatternGroupsRelPattern;
 
@@ -474,9 +476,9 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Get routingPatternGroupsRelPattern
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface | null
+     * @return RoutingPatternGroupsRelPatternInterface | null
      */
-    public function getRoutingPatternGroupsRelPattern()
+    public function getRoutingPatternGroupsRelPattern(): ?RoutingPatternGroupsRelPatternInterface
     {
         return $this->routingPatternGroupsRelPattern;
     }
@@ -484,11 +486,11 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Set outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param OutgoingRoutingInterface
      *
      * @return static
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
+    public function setOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): TrunksLcrRuleInterface
     {
         $this->outgoingRouting = $outgoingRouting;
 
@@ -498,12 +500,11 @@ abstract class TrunksLcrRuleAbstract
     /**
      * Get outgoingRouting
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @return OutgoingRoutingInterface
      */
-    public function getOutgoingRouting()
+    public function getOutgoingRouting(): OutgoingRoutingInterface
     {
         return $this->outgoingRouting;
     }
 
-    // @codeCoverageIgnoreEnd
 }

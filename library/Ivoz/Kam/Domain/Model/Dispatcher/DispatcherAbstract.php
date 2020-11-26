@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\Dispatcher;
 
@@ -6,15 +7,20 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
+use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer;
 
 /**
- * DispatcherAbstract
- * @codeCoverageIgnore
- */
+* DispatcherAbstract
+* @codeCoverageIgnore
+*/
 abstract class DispatcherAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var integer
+     * @var int
      */
     protected $setid = 0;
 
@@ -24,12 +30,12 @@ abstract class DispatcherAbstract
     protected $destination = '';
 
     /**
-     * @var integer
+     * @var int
      */
     protected $flags = 0;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $priority = 0;
 
@@ -44,12 +50,9 @@ abstract class DispatcherAbstract
     protected $description = '';
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface
+     * @var ApplicationServerInterface
      */
     protected $applicationServer;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -134,7 +137,7 @@ abstract class DispatcherAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DispatcherDto::class);
 
@@ -148,8 +151,7 @@ abstract class DispatcherAbstract
         );
 
         $self
-            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
-        ;
+            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()));
 
         $self->initChangelog();
 
@@ -163,7 +165,7 @@ abstract class DispatcherAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DispatcherDto::class);
 
@@ -175,8 +177,6 @@ abstract class DispatcherAbstract
             ->setAttrs($dto->getAttrs())
             ->setDescription($dto->getDescription())
             ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()));
-
-
 
         return $this;
     }
@@ -195,7 +195,7 @@ abstract class DispatcherAbstract
             ->setPriority(self::getPriority())
             ->setAttrs(self::getAttrs())
             ->setDescription(self::getDescription())
-            ->setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer::entityToDto(self::getApplicationServer(), $depth));
+            ->setApplicationServer(ApplicationServer::entityToDto(self::getApplicationServer(), $depth));
     }
 
     /**
@@ -213,21 +213,17 @@ abstract class DispatcherAbstract
             'applicationServerId' => self::getApplicationServer()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set setid
      *
-     * @param integer $setid
+     * @param int $setid
      *
      * @return static
      */
-    protected function setSetid($setid)
+    protected function setSetid(int $setid): DispatcherInterface
     {
-        Assertion::notNull($setid, 'setid value "%s" is null, but non null value was expected.');
-        Assertion::integerish($setid, 'setid value "%s" is not an integer or a number castable to integer.');
-
-        $this->setid = (int) $setid;
+        $this->setid = $setid;
 
         return $this;
     }
@@ -235,7 +231,7 @@ abstract class DispatcherAbstract
     /**
      * Get setid
      *
-     * @return integer
+     * @return int
      */
     public function getSetid(): int
     {
@@ -249,9 +245,8 @@ abstract class DispatcherAbstract
      *
      * @return static
      */
-    protected function setDestination($destination)
+    protected function setDestination(string $destination): DispatcherInterface
     {
-        Assertion::notNull($destination, 'destination value "%s" is null, but non null value was expected.');
         Assertion::maxLength($destination, 192, 'destination value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->destination = $destination;
@@ -272,16 +267,13 @@ abstract class DispatcherAbstract
     /**
      * Set flags
      *
-     * @param integer $flags
+     * @param int $flags
      *
      * @return static
      */
-    protected function setFlags($flags)
+    protected function setFlags(int $flags): DispatcherInterface
     {
-        Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
-        Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
-
-        $this->flags = (int) $flags;
+        $this->flags = $flags;
 
         return $this;
     }
@@ -289,7 +281,7 @@ abstract class DispatcherAbstract
     /**
      * Get flags
      *
-     * @return integer
+     * @return int
      */
     public function getFlags(): int
     {
@@ -299,16 +291,13 @@ abstract class DispatcherAbstract
     /**
      * Set priority
      *
-     * @param integer $priority
+     * @param int $priority
      *
      * @return static
      */
-    protected function setPriority($priority)
+    protected function setPriority(int $priority): DispatcherInterface
     {
-        Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
-        Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
-
-        $this->priority = (int) $priority;
+        $this->priority = $priority;
 
         return $this;
     }
@@ -316,7 +305,7 @@ abstract class DispatcherAbstract
     /**
      * Get priority
      *
-     * @return integer
+     * @return int
      */
     public function getPriority(): int
     {
@@ -330,9 +319,8 @@ abstract class DispatcherAbstract
      *
      * @return static
      */
-    protected function setAttrs($attrs)
+    protected function setAttrs(string $attrs): DispatcherInterface
     {
-        Assertion::notNull($attrs, 'attrs value "%s" is null, but non null value was expected.');
         Assertion::maxLength($attrs, 128, 'attrs value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->attrs = $attrs;
@@ -357,9 +345,8 @@ abstract class DispatcherAbstract
      *
      * @return static
      */
-    protected function setDescription($description)
+    protected function setDescription(string $description): DispatcherInterface
     {
-        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 64, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
@@ -380,11 +367,11 @@ abstract class DispatcherAbstract
     /**
      * Set applicationServer
      *
-     * @param \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer
+     * @param ApplicationServerInterface
      *
      * @return static
      */
-    protected function setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface $applicationServer)
+    protected function setApplicationServer(ApplicationServerInterface $applicationServer): DispatcherInterface
     {
         $this->applicationServer = $applicationServer;
 
@@ -394,12 +381,11 @@ abstract class DispatcherAbstract
     /**
      * Get applicationServer
      *
-     * @return \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface
+     * @return ApplicationServerInterface
      */
-    public function getApplicationServer()
+    public function getApplicationServer(): ApplicationServerInterface
     {
         return $this->applicationServer;
     }
 
-    // @codeCoverageIgnoreEnd
 }

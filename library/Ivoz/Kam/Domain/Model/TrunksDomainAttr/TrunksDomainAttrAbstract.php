@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksDomainAttr;
 
@@ -6,13 +7,17 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 
 /**
- * TrunksDomainAttrAbstract
- * @codeCoverageIgnore
- */
+* TrunksDomainAttrAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrunksDomainAttrAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,7 +29,7 @@ abstract class TrunksDomainAttrAbstract
     protected $name;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $type;
 
@@ -35,12 +40,9 @@ abstract class TrunksDomainAttrAbstract
 
     /**
      * column: last_modified
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
-    protected $lastModified;
-
-
-    use ChangelogTrait;
+    protected $lastModified = '1900-01-01 00:00:01';
 
     /**
      * Constructor
@@ -123,7 +125,7 @@ abstract class TrunksDomainAttrAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TrunksDomainAttrDto::class);
 
@@ -134,6 +136,8 @@ abstract class TrunksDomainAttrAbstract
             $dto->getValue(),
             $dto->getLastModified()
         );
+
+        ;
 
         $self->initChangelog();
 
@@ -147,7 +151,7 @@ abstract class TrunksDomainAttrAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TrunksDomainAttrDto::class);
 
@@ -157,8 +161,6 @@ abstract class TrunksDomainAttrAbstract
             ->setType($dto->getType())
             ->setValue($dto->getValue())
             ->setLastModified($dto->getLastModified());
-
-
 
         return $this;
     }
@@ -191,7 +193,6 @@ abstract class TrunksDomainAttrAbstract
             'last_modified' => self::getLastModified()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set did
@@ -200,9 +201,8 @@ abstract class TrunksDomainAttrAbstract
      *
      * @return static
      */
-    protected function setDid($did)
+    protected function setDid(string $did): TrunksDomainAttrInterface
     {
-        Assertion::notNull($did, 'did value "%s" is null, but non null value was expected.');
         Assertion::maxLength($did, 190, 'did value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->did = $did;
@@ -227,9 +227,8 @@ abstract class TrunksDomainAttrAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): TrunksDomainAttrInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 32, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -250,17 +249,15 @@ abstract class TrunksDomainAttrAbstract
     /**
      * Set type
      *
-     * @param integer $type
+     * @param int $type
      *
      * @return static
      */
-    protected function setType($type)
+    protected function setType(int $type): TrunksDomainAttrInterface
     {
-        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
-        Assertion::integerish($type, 'type value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($type, 0, 'type provided "%s" is not greater or equal than "%s".');
 
-        $this->type = (int) $type;
+        $this->type = $type;
 
         return $this;
     }
@@ -268,7 +265,7 @@ abstract class TrunksDomainAttrAbstract
     /**
      * Get type
      *
-     * @return integer
+     * @return int
      */
     public function getType(): int
     {
@@ -282,9 +279,8 @@ abstract class TrunksDomainAttrAbstract
      *
      * @return static
      */
-    protected function setValue($value)
+    protected function setValue(string $value): TrunksDomainAttrInterface
     {
-        Assertion::notNull($value, 'value value "%s" is null, but non null value was expected.');
         Assertion::maxLength($value, 255, 'value value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->value = $value;
@@ -305,14 +301,14 @@ abstract class TrunksDomainAttrAbstract
     /**
      * Set lastModified
      *
-     * @param \DateTime $lastModified
+     * @param \DateTimeInterface $lastModified
      *
      * @return static
      */
-    protected function setLastModified($lastModified)
+    protected function setLastModified($lastModified): TrunksDomainAttrInterface
     {
-        Assertion::notNull($lastModified, 'lastModified value "%s" is null, but non null value was expected.');
-        $lastModified = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $lastModified = DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'
         );
@@ -329,12 +325,11 @@ abstract class TrunksDomainAttrAbstract
     /**
      * Get lastModified
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getLastModified(): \DateTime
+    public function getLastModified(): \DateTimeInterface
     {
         return clone $this->lastModified;
     }
 
-    // @codeCoverageIgnoreEnd
 }

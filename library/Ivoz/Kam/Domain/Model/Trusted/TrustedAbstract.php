@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Kam\Domain\Model\Trusted;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
 
 /**
- * TrustedAbstract
- * @codeCoverageIgnore
- */
+* TrustedAbstract
+* @codeCoverageIgnore
+*/
 abstract class TrustedAbstract
 {
+    use ChangelogTrait;
+
     /**
      * column: src_ip
      * @var string | null
@@ -47,23 +53,21 @@ abstract class TrustedAbstract
     protected $description;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $priority = 0;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
      */
     protected $company;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($priority)
-    {
+    protected function __construct(
+        $priority
+    ) {
         $this->setPriority($priority);
     }
 
@@ -131,7 +135,7 @@ abstract class TrustedAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TrustedDto::class);
 
@@ -146,8 +150,7 @@ abstract class TrustedAbstract
             ->setRuriPattern($dto->getRuriPattern())
             ->setTag($dto->getTag())
             ->setDescription($dto->getDescription())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-        ;
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
         $self->initChangelog();
 
@@ -161,7 +164,7 @@ abstract class TrustedAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TrustedDto::class);
 
@@ -174,8 +177,6 @@ abstract class TrustedAbstract
             ->setDescription($dto->getDescription())
             ->setPriority($dto->getPriority())
             ->setCompany($fkTransformer->transform($dto->getCompany()));
-
-
 
         return $this;
     }
@@ -195,7 +196,7 @@ abstract class TrustedAbstract
             ->setTag(self::getTag())
             ->setDescription(self::getDescription())
             ->setPriority(self::getPriority())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**
@@ -214,7 +215,6 @@ abstract class TrustedAbstract
             'companyId' => self::getCompany()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set srcIp
@@ -223,7 +223,7 @@ abstract class TrustedAbstract
      *
      * @return static
      */
-    protected function setSrcIp($srcIp = null)
+    protected function setSrcIp(?string $srcIp = null): TrustedInterface
     {
         if (!is_null($srcIp)) {
             Assertion::maxLength($srcIp, 50, 'srcIp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -239,7 +239,7 @@ abstract class TrustedAbstract
      *
      * @return string | null
      */
-    public function getSrcIp()
+    public function getSrcIp(): ?string
     {
         return $this->srcIp;
     }
@@ -251,7 +251,7 @@ abstract class TrustedAbstract
      *
      * @return static
      */
-    protected function setProto($proto = null)
+    protected function setProto(?string $proto = null): TrustedInterface
     {
         if (!is_null($proto)) {
             Assertion::maxLength($proto, 4, 'proto value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -267,7 +267,7 @@ abstract class TrustedAbstract
      *
      * @return string | null
      */
-    public function getProto()
+    public function getProto(): ?string
     {
         return $this->proto;
     }
@@ -279,7 +279,7 @@ abstract class TrustedAbstract
      *
      * @return static
      */
-    protected function setFromPattern($fromPattern = null)
+    protected function setFromPattern(?string $fromPattern = null): TrustedInterface
     {
         if (!is_null($fromPattern)) {
             Assertion::maxLength($fromPattern, 64, 'fromPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -295,7 +295,7 @@ abstract class TrustedAbstract
      *
      * @return string | null
      */
-    public function getFromPattern()
+    public function getFromPattern(): ?string
     {
         return $this->fromPattern;
     }
@@ -307,7 +307,7 @@ abstract class TrustedAbstract
      *
      * @return static
      */
-    protected function setRuriPattern($ruriPattern = null)
+    protected function setRuriPattern(?string $ruriPattern = null): TrustedInterface
     {
         if (!is_null($ruriPattern)) {
             Assertion::maxLength($ruriPattern, 64, 'ruriPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -323,7 +323,7 @@ abstract class TrustedAbstract
      *
      * @return string | null
      */
-    public function getRuriPattern()
+    public function getRuriPattern(): ?string
     {
         return $this->ruriPattern;
     }
@@ -335,7 +335,7 @@ abstract class TrustedAbstract
      *
      * @return static
      */
-    protected function setTag($tag = null)
+    protected function setTag(?string $tag = null): TrustedInterface
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -351,7 +351,7 @@ abstract class TrustedAbstract
      *
      * @return string | null
      */
-    public function getTag()
+    public function getTag(): ?string
     {
         return $this->tag;
     }
@@ -363,7 +363,7 @@ abstract class TrustedAbstract
      *
      * @return static
      */
-    protected function setDescription($description = null)
+    protected function setDescription(?string $description = null): TrustedInterface
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -379,7 +379,7 @@ abstract class TrustedAbstract
      *
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -387,16 +387,13 @@ abstract class TrustedAbstract
     /**
      * Set priority
      *
-     * @param integer $priority
+     * @param int $priority
      *
      * @return static
      */
-    protected function setPriority($priority)
+    protected function setPriority(int $priority): TrustedInterface
     {
-        Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
-        Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
-
-        $this->priority = (int) $priority;
+        $this->priority = $priority;
 
         return $this;
     }
@@ -404,7 +401,7 @@ abstract class TrustedAbstract
     /**
      * Get priority
      *
-     * @return integer
+     * @return int
      */
     public function getPriority(): int
     {
@@ -414,11 +411,11 @@ abstract class TrustedAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(CompanyInterface $company): TrustedInterface
     {
         $this->company = $company;
 
@@ -428,12 +425,11 @@ abstract class TrustedAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany()
+    public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    // @codeCoverageIgnoreEnd
 }
