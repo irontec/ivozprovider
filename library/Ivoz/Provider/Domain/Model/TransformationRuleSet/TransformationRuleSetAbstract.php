@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\TransformationRuleSet;
 
@@ -6,13 +7,21 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\Name;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
- * TransformationRuleSetAbstract
- * @codeCoverageIgnore
- */
+* TransformationRuleSetAbstract
+* @codeCoverageIgnore
+*/
 abstract class TransformationRuleSetAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string | null
      */
@@ -34,12 +43,12 @@ abstract class TransformationRuleSetAbstract
     protected $areaCode = '';
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $nationalLen = 9;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $generateRules = false;
 
@@ -49,23 +58,21 @@ abstract class TransformationRuleSetAbstract
     protected $name;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @var BrandInterface
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @var CountryInterface
      */
     protected $country;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct(Name $name)
-    {
+    protected function __construct(
+        Name $name
+    ) {
         $this->setName($name);
     }
 
@@ -133,7 +140,7 @@ abstract class TransformationRuleSetAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TransformationRuleSetDto::class);
 
@@ -156,8 +163,7 @@ abstract class TransformationRuleSetAbstract
             ->setNationalLen($dto->getNationalLen())
             ->setGenerateRules($dto->getGenerateRules())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()))
-        ;
+            ->setCountry($fkTransformer->transform($dto->getCountry()));
 
         $self->initChangelog();
 
@@ -171,7 +177,7 @@ abstract class TransformationRuleSetAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TransformationRuleSetDto::class);
 
@@ -192,8 +198,6 @@ abstract class TransformationRuleSetAbstract
             ->setName($name)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCountry($fkTransformer->transform($dto->getCountry()));
-
-
 
         return $this;
     }
@@ -216,8 +220,8 @@ abstract class TransformationRuleSetAbstract
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
             ->setNameIt(self::getName()->getIt())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setCountry(Country::entityToDto(self::getCountry(), $depth));
     }
 
     /**
@@ -240,7 +244,6 @@ abstract class TransformationRuleSetAbstract
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set description
@@ -249,7 +252,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @return static
      */
-    protected function setDescription($description = null)
+    protected function setDescription(?string $description = null): TransformationRuleSetInterface
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 250, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -265,7 +268,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -277,7 +280,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @return static
      */
-    protected function setInternationalCode($internationalCode = null)
+    protected function setInternationalCode(?string $internationalCode = null): TransformationRuleSetInterface
     {
         if (!is_null($internationalCode)) {
             Assertion::maxLength($internationalCode, 10, 'internationalCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -293,7 +296,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @return string | null
      */
-    public function getInternationalCode()
+    public function getInternationalCode(): ?string
     {
         return $this->internationalCode;
     }
@@ -305,7 +308,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @return static
      */
-    protected function setTrunkPrefix($trunkPrefix = null)
+    protected function setTrunkPrefix(?string $trunkPrefix = null): TransformationRuleSetInterface
     {
         if (!is_null($trunkPrefix)) {
             Assertion::maxLength($trunkPrefix, 5, 'trunkPrefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -321,7 +324,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @return string | null
      */
-    public function getTrunkPrefix()
+    public function getTrunkPrefix(): ?string
     {
         return $this->trunkPrefix;
     }
@@ -333,7 +336,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @return static
      */
-    protected function setAreaCode($areaCode = null)
+    protected function setAreaCode(?string $areaCode = null): TransformationRuleSetInterface
     {
         if (!is_null($areaCode)) {
             Assertion::maxLength($areaCode, 5, 'areaCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -349,7 +352,7 @@ abstract class TransformationRuleSetAbstract
      *
      * @return string | null
      */
-    public function getAreaCode()
+    public function getAreaCode(): ?string
     {
         return $this->areaCode;
     }
@@ -357,16 +360,14 @@ abstract class TransformationRuleSetAbstract
     /**
      * Set nationalLen
      *
-     * @param integer $nationalLen | null
+     * @param int $nationalLen | null
      *
      * @return static
      */
-    protected function setNationalLen($nationalLen = null)
+    protected function setNationalLen(?int $nationalLen = null): TransformationRuleSetInterface
     {
         if (!is_null($nationalLen)) {
-            Assertion::integerish($nationalLen, 'nationalLen value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($nationalLen, 0, 'nationalLen provided "%s" is not greater or equal than "%s".');
-            $nationalLen = (int) $nationalLen;
         }
 
         $this->nationalLen = $nationalLen;
@@ -377,9 +378,9 @@ abstract class TransformationRuleSetAbstract
     /**
      * Get nationalLen
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getNationalLen()
+    public function getNationalLen(): ?int
     {
         return $this->nationalLen;
     }
@@ -387,11 +388,11 @@ abstract class TransformationRuleSetAbstract
     /**
      * Set generateRules
      *
-     * @param boolean $generateRules | null
+     * @param bool $generateRules | null
      *
      * @return static
      */
-    protected function setGenerateRules($generateRules = null)
+    protected function setGenerateRules(?bool $generateRules = null): TransformationRuleSetInterface
     {
         if (!is_null($generateRules)) {
             Assertion::between(intval($generateRules), 0, 1, 'generateRules provided "%s" is not a valid boolean value.');
@@ -406,69 +407,29 @@ abstract class TransformationRuleSetAbstract
     /**
      * Get generateRules
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getGenerateRules()
+    public function getGenerateRules(): ?bool
     {
         return $this->generateRules;
     }
 
     /**
-     * Set brand
+     * Get name
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
+     * @return Name
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    public function getName(): Name
     {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
-
-    /**
-     * Set country
-     *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country | null
-     *
-     * @return static
-     */
-    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
-     */
-    public function getCountry()
-    {
-        return $this->country;
+        return $this->name;
     }
 
     /**
      * Set name
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\Name $name
-     *
      * @return static
      */
-    protected function setName(Name $name)
+    protected function setName(Name $name): TransformationRuleSetInterface
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -480,13 +441,51 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
-     * Get name
+     * Set brand
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\Name
+     * @param BrandInterface | null
+     *
+     * @return static
      */
-    public function getName()
+    protected function setBrand(?BrandInterface $brand = null): TransformationRuleSetInterface
     {
-        return $this->name;
+        $this->brand = $brand;
+
+        return $this;
     }
-    // @codeCoverageIgnoreEnd
+
+    /**
+     * Get brand
+     *
+     * @return BrandInterface | null
+     */
+    public function getBrand(): ?BrandInterface
+    {
+        return $this->brand;
+    }
+
+    /**
+     * Set country
+     *
+     * @param CountryInterface | null
+     *
+     * @return static
+     */
+    protected function setCountry(?CountryInterface $country = null): TransformationRuleSetInterface
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return CountryInterface | null
+     */
+    public function getCountry(): ?CountryInterface
+    {
+        return $this->country;
+    }
+
 }

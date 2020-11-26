@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
@@ -6,13 +7,20 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 
 /**
- * CarrierServerAbstract
- * @codeCoverageIgnore
- */
+* CarrierServerAbstract
+* @codeCoverageIgnore
+*/
 abstract class CarrierServerAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string | null
      */
@@ -24,27 +32,27 @@ abstract class CarrierServerAbstract
     protected $hostname;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $port;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $uriScheme;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $transport;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $sendPAI = false;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $sendRPID = false;
 
@@ -84,28 +92,22 @@ abstract class CarrierServerAbstract
     protected $fromDomain;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface | null
-     */
-    protected $lcrGateway;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var CarrierInterface
+     * inversedBy servers
      */
     protected $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
      */
     protected $brand;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($authNeeded)
-    {
+    protected function __construct(
+        $authNeeded
+    ) {
         $this->setAuthNeeded($authNeeded);
     }
 
@@ -173,7 +175,7 @@ abstract class CarrierServerAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
 
@@ -195,10 +197,8 @@ abstract class CarrierServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setLcrGateway($fkTransformer->transform($dto->getLcrGateway()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-        ;
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
         $self->initChangelog();
 
@@ -212,7 +212,7 @@ abstract class CarrierServerAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
 
@@ -231,11 +231,8 @@ abstract class CarrierServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setLcrGateway($fkTransformer->transform($dto->getLcrGateway()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setBrand($fkTransformer->transform($dto->getBrand()));
-
-
 
         return $this;
     }
@@ -262,9 +259,8 @@ abstract class CarrierServerAbstract
             ->setOutboundProxy(self::getOutboundProxy())
             ->setFromUser(self::getFromUser())
             ->setFromDomain(self::getFromDomain())
-            ->setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway::entityToDto(self::getLcrGateway(), $depth))
-            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
+            ->setCarrier(Carrier::entityToDto(self::getCarrier(), $depth))
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**
@@ -287,12 +283,10 @@ abstract class CarrierServerAbstract
             'outboundProxy' => self::getOutboundProxy(),
             'fromUser' => self::getFromUser(),
             'fromDomain' => self::getFromDomain(),
-            'lcrGatewayId' => self::getLcrGateway() ? self::getLcrGateway()->getId() : null,
             'carrierId' => self::getCarrier()->getId(),
             'brandId' => self::getBrand()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set ip
@@ -301,7 +295,7 @@ abstract class CarrierServerAbstract
      *
      * @return static
      */
-    protected function setIp($ip = null)
+    protected function setIp(?string $ip = null): CarrierServerInterface
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -317,7 +311,7 @@ abstract class CarrierServerAbstract
      *
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
@@ -329,7 +323,7 @@ abstract class CarrierServerAbstract
      *
      * @return static
      */
-    protected function setHostname($hostname = null)
+    protected function setHostname(?string $hostname = null): CarrierServerInterface
     {
         if (!is_null($hostname)) {
             Assertion::maxLength($hostname, 64, 'hostname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -345,7 +339,7 @@ abstract class CarrierServerAbstract
      *
      * @return string | null
      */
-    public function getHostname()
+    public function getHostname(): ?string
     {
         return $this->hostname;
     }
@@ -353,16 +347,14 @@ abstract class CarrierServerAbstract
     /**
      * Set port
      *
-     * @param integer $port | null
+     * @param int $port | null
      *
      * @return static
      */
-    protected function setPort($port = null)
+    protected function setPort(?int $port = null): CarrierServerInterface
     {
         if (!is_null($port)) {
-            Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
-            $port = (int) $port;
         }
 
         $this->port = $port;
@@ -373,9 +365,9 @@ abstract class CarrierServerAbstract
     /**
      * Get port
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getPort()
+    public function getPort(): ?int
     {
         return $this->port;
     }
@@ -383,16 +375,14 @@ abstract class CarrierServerAbstract
     /**
      * Set uriScheme
      *
-     * @param integer $uriScheme | null
+     * @param int $uriScheme | null
      *
      * @return static
      */
-    protected function setUriScheme($uriScheme = null)
+    protected function setUriScheme(?int $uriScheme = null): CarrierServerInterface
     {
         if (!is_null($uriScheme)) {
-            Assertion::integerish($uriScheme, 'uriScheme value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($uriScheme, 0, 'uriScheme provided "%s" is not greater or equal than "%s".');
-            $uriScheme = (int) $uriScheme;
         }
 
         $this->uriScheme = $uriScheme;
@@ -403,9 +393,9 @@ abstract class CarrierServerAbstract
     /**
      * Get uriScheme
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getUriScheme()
+    public function getUriScheme(): ?int
     {
         return $this->uriScheme;
     }
@@ -413,16 +403,14 @@ abstract class CarrierServerAbstract
     /**
      * Set transport
      *
-     * @param integer $transport | null
+     * @param int $transport | null
      *
      * @return static
      */
-    protected function setTransport($transport = null)
+    protected function setTransport(?int $transport = null): CarrierServerInterface
     {
         if (!is_null($transport)) {
-            Assertion::integerish($transport, 'transport value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($transport, 0, 'transport provided "%s" is not greater or equal than "%s".');
-            $transport = (int) $transport;
         }
 
         $this->transport = $transport;
@@ -433,9 +421,9 @@ abstract class CarrierServerAbstract
     /**
      * Get transport
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getTransport()
+    public function getTransport(): ?int
     {
         return $this->transport;
     }
@@ -443,11 +431,11 @@ abstract class CarrierServerAbstract
     /**
      * Set sendPAI
      *
-     * @param boolean $sendPAI | null
+     * @param bool $sendPAI | null
      *
      * @return static
      */
-    protected function setSendPAI($sendPAI = null)
+    protected function setSendPAI(?bool $sendPAI = null): CarrierServerInterface
     {
         if (!is_null($sendPAI)) {
             Assertion::between(intval($sendPAI), 0, 1, 'sendPAI provided "%s" is not a valid boolean value.');
@@ -462,9 +450,9 @@ abstract class CarrierServerAbstract
     /**
      * Get sendPAI
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSendPAI()
+    public function getSendPAI(): ?bool
     {
         return $this->sendPAI;
     }
@@ -472,11 +460,11 @@ abstract class CarrierServerAbstract
     /**
      * Set sendRPID
      *
-     * @param boolean $sendRPID | null
+     * @param bool $sendRPID | null
      *
      * @return static
      */
-    protected function setSendRPID($sendRPID = null)
+    protected function setSendRPID(?bool $sendRPID = null): CarrierServerInterface
     {
         if (!is_null($sendRPID)) {
             Assertion::between(intval($sendRPID), 0, 1, 'sendRPID provided "%s" is not a valid boolean value.');
@@ -491,9 +479,9 @@ abstract class CarrierServerAbstract
     /**
      * Get sendRPID
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSendRPID()
+    public function getSendRPID(): ?bool
     {
         return $this->sendRPID;
     }
@@ -505,10 +493,8 @@ abstract class CarrierServerAbstract
      *
      * @return static
      */
-    protected function setAuthNeeded($authNeeded)
+    protected function setAuthNeeded(string $authNeeded): CarrierServerInterface
     {
-        Assertion::notNull($authNeeded, 'authNeeded value "%s" is null, but non null value was expected.');
-
         $this->authNeeded = $authNeeded;
 
         return $this;
@@ -531,7 +517,7 @@ abstract class CarrierServerAbstract
      *
      * @return static
      */
-    protected function setAuthUser($authUser = null)
+    protected function setAuthUser(?string $authUser = null): CarrierServerInterface
     {
         if (!is_null($authUser)) {
             Assertion::maxLength($authUser, 64, 'authUser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -547,7 +533,7 @@ abstract class CarrierServerAbstract
      *
      * @return string | null
      */
-    public function getAuthUser()
+    public function getAuthUser(): ?string
     {
         return $this->authUser;
     }
@@ -559,7 +545,7 @@ abstract class CarrierServerAbstract
      *
      * @return static
      */
-    protected function setAuthPassword($authPassword = null)
+    protected function setAuthPassword(?string $authPassword = null): CarrierServerInterface
     {
         if (!is_null($authPassword)) {
             Assertion::maxLength($authPassword, 64, 'authPassword value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -575,7 +561,7 @@ abstract class CarrierServerAbstract
      *
      * @return string | null
      */
-    public function getAuthPassword()
+    public function getAuthPassword(): ?string
     {
         return $this->authPassword;
     }
@@ -587,7 +573,7 @@ abstract class CarrierServerAbstract
      *
      * @return static
      */
-    protected function setSipProxy($sipProxy = null)
+    protected function setSipProxy(?string $sipProxy = null): CarrierServerInterface
     {
         if (!is_null($sipProxy)) {
             Assertion::maxLength($sipProxy, 128, 'sipProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -603,7 +589,7 @@ abstract class CarrierServerAbstract
      *
      * @return string | null
      */
-    public function getSipProxy()
+    public function getSipProxy(): ?string
     {
         return $this->sipProxy;
     }
@@ -615,7 +601,7 @@ abstract class CarrierServerAbstract
      *
      * @return static
      */
-    protected function setOutboundProxy($outboundProxy = null)
+    protected function setOutboundProxy(?string $outboundProxy = null): CarrierServerInterface
     {
         if (!is_null($outboundProxy)) {
             Assertion::maxLength($outboundProxy, 128, 'outboundProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -631,7 +617,7 @@ abstract class CarrierServerAbstract
      *
      * @return string | null
      */
-    public function getOutboundProxy()
+    public function getOutboundProxy(): ?string
     {
         return $this->outboundProxy;
     }
@@ -643,7 +629,7 @@ abstract class CarrierServerAbstract
      *
      * @return static
      */
-    protected function setFromUser($fromUser = null)
+    protected function setFromUser(?string $fromUser = null): CarrierServerInterface
     {
         if (!is_null($fromUser)) {
             Assertion::maxLength($fromUser, 64, 'fromUser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -659,7 +645,7 @@ abstract class CarrierServerAbstract
      *
      * @return string | null
      */
-    public function getFromUser()
+    public function getFromUser(): ?string
     {
         return $this->fromUser;
     }
@@ -671,7 +657,7 @@ abstract class CarrierServerAbstract
      *
      * @return static
      */
-    protected function setFromDomain($fromDomain = null)
+    protected function setFromDomain(?string $fromDomain = null): CarrierServerInterface
     {
         if (!is_null($fromDomain)) {
             Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -687,43 +673,19 @@ abstract class CarrierServerAbstract
      *
      * @return string | null
      */
-    public function getFromDomain()
+    public function getFromDomain(): ?string
     {
         return $this->fromDomain;
     }
 
     /**
-     * Set lcrGateway
-     *
-     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway | null
-     *
-     * @return static
-     */
-    protected function setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway = null)
-    {
-        $this->lcrGateway = $lcrGateway;
-
-        return $this;
-    }
-
-    /**
-     * Get lcrGateway
-     *
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface | null
-     */
-    public function getLcrGateway()
-    {
-        return $this->lcrGateway;
-    }
-
-    /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param CarrierInterface
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier)
+    public function setCarrier(CarrierInterface $carrier): CarrierServerInterface
     {
         $this->carrier = $carrier;
 
@@ -733,9 +695,9 @@ abstract class CarrierServerAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return CarrierInterface
      */
-    public function getCarrier()
+    public function getCarrier(): CarrierInterface
     {
         return $this->carrier;
     }
@@ -743,11 +705,11 @@ abstract class CarrierServerAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param BrandInterface
      *
      * @return static
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(BrandInterface $brand): CarrierServerInterface
     {
         $this->brand = $brand;
 
@@ -757,12 +719,11 @@ abstract class CarrierServerAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand()
+    public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    // @codeCoverageIgnoreEnd
 }

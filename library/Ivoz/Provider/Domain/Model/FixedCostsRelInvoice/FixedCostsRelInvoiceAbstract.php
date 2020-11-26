@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoice;
 
@@ -6,36 +7,43 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
+use Ivoz\Provider\Domain\Model\FixedCost\FixedCost;
+use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 
 /**
- * FixedCostsRelInvoiceAbstract
- * @codeCoverageIgnore
- */
+* FixedCostsRelInvoiceAbstract
+* @codeCoverageIgnore
+*/
 abstract class FixedCostsRelInvoiceAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $quantity;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface
+     * @var FixedCostInterface
      */
     protected $fixedCost;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
+     * @var InvoiceInterface
+     * inversedBy relFixedCosts
      */
     protected $invoice;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -102,17 +110,18 @@ abstract class FixedCostsRelInvoiceAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setQuantity($dto->getQuantity())
             ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
-            ->setInvoice($fkTransformer->transform($dto->getInvoice()))
-        ;
+            ->setInvoice($fkTransformer->transform($dto->getInvoice()));
 
         $self->initChangelog();
 
@@ -126,7 +135,7 @@ abstract class FixedCostsRelInvoiceAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceDto::class);
 
@@ -134,8 +143,6 @@ abstract class FixedCostsRelInvoiceAbstract
             ->setQuantity($dto->getQuantity())
             ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
             ->setInvoice($fkTransformer->transform($dto->getInvoice()));
-
-
 
         return $this;
     }
@@ -149,8 +156,8 @@ abstract class FixedCostsRelInvoiceAbstract
     {
         return self::createDto()
             ->setQuantity(self::getQuantity())
-            ->setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCost::entityToDto(self::getFixedCost(), $depth))
-            ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto(self::getInvoice(), $depth));
+            ->setFixedCost(FixedCost::entityToDto(self::getFixedCost(), $depth))
+            ->setInvoice(Invoice::entityToDto(self::getInvoice(), $depth));
     }
 
     /**
@@ -164,21 +171,18 @@ abstract class FixedCostsRelInvoiceAbstract
             'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set quantity
      *
-     * @param integer $quantity | null
+     * @param int $quantity | null
      *
      * @return static
      */
-    protected function setQuantity($quantity = null)
+    protected function setQuantity(?int $quantity = null): FixedCostsRelInvoiceInterface
     {
         if (!is_null($quantity)) {
-            Assertion::integerish($quantity, 'quantity value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($quantity, 0, 'quantity provided "%s" is not greater or equal than "%s".');
-            $quantity = (int) $quantity;
         }
 
         $this->quantity = $quantity;
@@ -189,9 +193,9 @@ abstract class FixedCostsRelInvoiceAbstract
     /**
      * Get quantity
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
@@ -199,11 +203,11 @@ abstract class FixedCostsRelInvoiceAbstract
     /**
      * Set fixedCost
      *
-     * @param \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost
+     * @param FixedCostInterface
      *
      * @return static
      */
-    protected function setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost)
+    protected function setFixedCost(FixedCostInterface $fixedCost): FixedCostsRelInvoiceInterface
     {
         $this->fixedCost = $fixedCost;
 
@@ -213,9 +217,9 @@ abstract class FixedCostsRelInvoiceAbstract
     /**
      * Get fixedCost
      *
-     * @return \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface
+     * @return FixedCostInterface
      */
-    public function getFixedCost()
+    public function getFixedCost(): FixedCostInterface
     {
         return $this->fixedCost;
     }
@@ -223,11 +227,11 @@ abstract class FixedCostsRelInvoiceAbstract
     /**
      * Set invoice
      *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice | null
+     * @param InvoiceInterface | null
      *
      * @return static
      */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null)
+    public function setInvoice(?InvoiceInterface $invoice = null): FixedCostsRelInvoiceInterface
     {
         $this->invoice = $invoice;
 
@@ -237,12 +241,11 @@ abstract class FixedCostsRelInvoiceAbstract
     /**
      * Get invoice
      *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
+     * @return InvoiceInterface | null
      */
-    public function getInvoice()
+    public function getInvoice(): ?InvoiceInterface
     {
         return $this->invoice;
     }
 
-    // @codeCoverageIgnoreEnd
 }

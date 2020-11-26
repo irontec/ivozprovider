@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Codec;
 
@@ -6,13 +7,16 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
- * CodecAbstract
- * @codeCoverageIgnore
- */
+* CodecAbstract
+* @codeCoverageIgnore
+*/
 abstract class CodecAbstract
 {
+    use ChangelogTrait;
+
     /**
      * comment: enum:audio|video
      * @var string
@@ -29,14 +33,14 @@ abstract class CodecAbstract
      */
     protected $name;
 
-
-    use ChangelogTrait;
-
     /**
      * Constructor
      */
-    protected function __construct($type, $iden, $name)
-    {
+    protected function __construct(
+        $type,
+        $iden,
+        $name
+    ) {
         $this->setType($type);
         $this->setIden($iden);
         $this->setName($name);
@@ -106,7 +110,7 @@ abstract class CodecAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CodecDto::class);
 
@@ -115,6 +119,8 @@ abstract class CodecAbstract
             $dto->getIden(),
             $dto->getName()
         );
+
+        ;
 
         $self->initChangelog();
 
@@ -128,7 +134,7 @@ abstract class CodecAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CodecDto::class);
 
@@ -136,8 +142,6 @@ abstract class CodecAbstract
             ->setType($dto->getType())
             ->setIden($dto->getIden())
             ->setName($dto->getName());
-
-
 
         return $this;
     }
@@ -166,7 +170,6 @@ abstract class CodecAbstract
             'name' => self::getName()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set type
@@ -175,14 +178,17 @@ abstract class CodecAbstract
      *
      * @return static
      */
-    protected function setType($type)
+    protected function setType(string $type): CodecInterface
     {
-        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($type, [
-            CodecInterface::TYPE_AUDIO,
-            CodecInterface::TYPE_VIDEO
-        ], 'typevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $type,
+            [
+                CodecInterface::TYPE_AUDIO,
+                CodecInterface::TYPE_VIDEO,
+            ],
+            'typevalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->type = $type;
 
@@ -206,9 +212,8 @@ abstract class CodecAbstract
      *
      * @return static
      */
-    protected function setIden($iden)
+    protected function setIden(string $iden): CodecInterface
     {
-        Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
         Assertion::maxLength($iden, 25, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->iden = $iden;
@@ -233,9 +238,8 @@ abstract class CodecAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): CodecInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -253,5 +257,4 @@ abstract class CodecAbstract
         return $this->name;
     }
 
-    // @codeCoverageIgnoreEnd
 }

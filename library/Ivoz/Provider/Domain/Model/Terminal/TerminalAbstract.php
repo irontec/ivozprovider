@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
@@ -6,13 +7,23 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Domain\Domain;
+use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel;
 
 /**
- * TerminalAbstract
- * @codeCoverageIgnore
- */
+* TerminalAbstract
+* @codeCoverageIgnore
+*/
 abstract class TerminalAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string | null
      */
@@ -54,7 +65,7 @@ abstract class TerminalAbstract
     protected $mac;
 
     /**
-     * @var \DateTime | null
+     * @var \DateTimeInterface | null
      */
     protected $lastProvisionDate;
 
@@ -65,27 +76,26 @@ abstract class TerminalAbstract
     protected $t38Passthrough = 'no';
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $rtpEncryption = false;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
+     * inversedBy terminals
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
+     * @var DomainInterface
+     * inversedBy terminals
      */
     protected $domain;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface | null
+     * @var TerminalModelInterface
      */
     protected $terminalModel;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -170,7 +180,7 @@ abstract class TerminalAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TerminalDto::class);
 
@@ -190,8 +200,7 @@ abstract class TerminalAbstract
             ->setLastProvisionDate($dto->getLastProvisionDate())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()))
-        ;
+            ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()));
 
         $self->initChangelog();
 
@@ -205,7 +214,7 @@ abstract class TerminalAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TerminalDto::class);
 
@@ -223,8 +232,6 @@ abstract class TerminalAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()));
-
-
 
         return $this;
     }
@@ -247,9 +254,9 @@ abstract class TerminalAbstract
             ->setLastProvisionDate(self::getLastProvisionDate())
             ->setT38Passthrough(self::getT38Passthrough())
             ->setRtpEncryption(self::getRtpEncryption())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
-            ->setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::entityToDto(self::getTerminalModel(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
+            ->setTerminalModel(TerminalModel::entityToDto(self::getTerminalModel(), $depth));
     }
 
     /**
@@ -273,7 +280,6 @@ abstract class TerminalAbstract
             'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -282,7 +288,7 @@ abstract class TerminalAbstract
      *
      * @return static
      */
-    protected function setName($name = null)
+    protected function setName(?string $name = null): TerminalInterface
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -298,7 +304,7 @@ abstract class TerminalAbstract
      *
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -310,9 +316,8 @@ abstract class TerminalAbstract
      *
      * @return static
      */
-    protected function setDisallow($disallow)
+    protected function setDisallow(string $disallow): TerminalInterface
     {
-        Assertion::notNull($disallow, 'disallow value "%s" is null, but non null value was expected.');
         Assertion::maxLength($disallow, 200, 'disallow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->disallow = $disallow;
@@ -337,9 +342,8 @@ abstract class TerminalAbstract
      *
      * @return static
      */
-    protected function setAllowAudio($allowAudio)
+    protected function setAllowAudio(string $allowAudio): TerminalInterface
     {
-        Assertion::notNull($allowAudio, 'allowAudio value "%s" is null, but non null value was expected.');
         Assertion::maxLength($allowAudio, 200, 'allowAudio value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->allowAudio = $allowAudio;
@@ -364,7 +368,7 @@ abstract class TerminalAbstract
      *
      * @return static
      */
-    protected function setAllowVideo($allowVideo = null)
+    protected function setAllowVideo(?string $allowVideo = null): TerminalInterface
     {
         if (!is_null($allowVideo)) {
             Assertion::maxLength($allowVideo, 200, 'allowVideo value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -380,7 +384,7 @@ abstract class TerminalAbstract
      *
      * @return string | null
      */
-    public function getAllowVideo()
+    public function getAllowVideo(): ?string
     {
         return $this->allowVideo;
     }
@@ -392,14 +396,17 @@ abstract class TerminalAbstract
      *
      * @return static
      */
-    protected function setDirectMediaMethod($directMediaMethod)
+    protected function setDirectMediaMethod(string $directMediaMethod): TerminalInterface
     {
-        Assertion::notNull($directMediaMethod, 'directMediaMethod value "%s" is null, but non null value was expected.');
-        Assertion::choice($directMediaMethod, [
-            TerminalInterface::DIRECTMEDIAMETHOD_UPDATE,
-            TerminalInterface::DIRECTMEDIAMETHOD_INVITE,
-            TerminalInterface::DIRECTMEDIAMETHOD_REINVITE
-        ], 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $directMediaMethod,
+            [
+                TerminalInterface::DIRECTMEDIAMETHOD_UPDATE,
+                TerminalInterface::DIRECTMEDIAMETHOD_INVITE,
+                TerminalInterface::DIRECTMEDIAMETHOD_REINVITE,
+            ],
+            'directMediaMethodvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->directMediaMethod = $directMediaMethod;
 
@@ -423,9 +430,8 @@ abstract class TerminalAbstract
      *
      * @return static
      */
-    protected function setPassword($password)
+    protected function setPassword(string $password): TerminalInterface
     {
-        Assertion::notNull($password, 'password value "%s" is null, but non null value was expected.');
         Assertion::maxLength($password, 25, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->password = $password;
@@ -450,7 +456,7 @@ abstract class TerminalAbstract
      *
      * @return static
      */
-    protected function setMac($mac = null)
+    protected function setMac(?string $mac = null): TerminalInterface
     {
         if (!is_null($mac)) {
             Assertion::maxLength($mac, 12, 'mac value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -466,7 +472,7 @@ abstract class TerminalAbstract
      *
      * @return string | null
      */
-    public function getMac()
+    public function getMac(): ?string
     {
         return $this->mac;
     }
@@ -474,14 +480,18 @@ abstract class TerminalAbstract
     /**
      * Set lastProvisionDate
      *
-     * @param \DateTime $lastProvisionDate | null
+     * @param \DateTimeInterface $lastProvisionDate | null
      *
      * @return static
      */
-    protected function setLastProvisionDate($lastProvisionDate = null)
+    protected function setLastProvisionDate($lastProvisionDate = null): TerminalInterface
     {
         if (!is_null($lastProvisionDate)) {
-            $lastProvisionDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            Assertion::notNull(
+                $lastProvisionDate,
+                'lastProvisionDate value "%s" is null, but non null value was expected.'
+            );
+            $lastProvisionDate = DateTimeHelper::createOrFix(
                 $lastProvisionDate,
                 null
             );
@@ -499,9 +509,9 @@ abstract class TerminalAbstract
     /**
      * Get lastProvisionDate
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getLastProvisionDate()
+    public function getLastProvisionDate(): ?\DateTimeInterface
     {
         return !is_null($this->lastProvisionDate) ? clone $this->lastProvisionDate : null;
     }
@@ -513,13 +523,16 @@ abstract class TerminalAbstract
      *
      * @return static
      */
-    protected function setT38Passthrough($t38Passthrough)
+    protected function setT38Passthrough(string $t38Passthrough): TerminalInterface
     {
-        Assertion::notNull($t38Passthrough, 't38Passthrough value "%s" is null, but non null value was expected.');
-        Assertion::choice($t38Passthrough, [
-            TerminalInterface::T38PASSTHROUGH_YES,
-            TerminalInterface::T38PASSTHROUGH_NO
-        ], 't38Passthroughvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $t38Passthrough,
+            [
+                TerminalInterface::T38PASSTHROUGH_YES,
+                TerminalInterface::T38PASSTHROUGH_NO,
+            ],
+            't38Passthroughvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->t38Passthrough = $t38Passthrough;
 
@@ -539,13 +552,12 @@ abstract class TerminalAbstract
     /**
      * Set rtpEncryption
      *
-     * @param boolean $rtpEncryption
+     * @param bool $rtpEncryption
      *
      * @return static
      */
-    protected function setRtpEncryption($rtpEncryption)
+    protected function setRtpEncryption(bool $rtpEncryption): TerminalInterface
     {
-        Assertion::notNull($rtpEncryption, 'rtpEncryption value "%s" is null, but non null value was expected.');
         Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
         $rtpEncryption = (bool) $rtpEncryption;
 
@@ -557,7 +569,7 @@ abstract class TerminalAbstract
     /**
      * Get rtpEncryption
      *
-     * @return boolean
+     * @return bool
      */
     public function getRtpEncryption(): bool
     {
@@ -567,11 +579,11 @@ abstract class TerminalAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    public function setCompany(CompanyInterface $company): TerminalInterface
     {
         $this->company = $company;
 
@@ -581,9 +593,9 @@ abstract class TerminalAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany()
+    public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
@@ -591,11 +603,11 @@ abstract class TerminalAbstract
     /**
      * Set domain
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
+     * @param DomainInterface | null
      *
      * @return static
      */
-    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
+    public function setDomain(?DomainInterface $domain = null): TerminalInterface
     {
         $this->domain = $domain;
 
@@ -605,9 +617,9 @@ abstract class TerminalAbstract
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
+     * @return DomainInterface | null
      */
-    public function getDomain()
+    public function getDomain(): ?DomainInterface
     {
         return $this->domain;
     }
@@ -615,11 +627,11 @@ abstract class TerminalAbstract
     /**
      * Set terminalModel
      *
-     * @param \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel | null
+     * @param TerminalModelInterface | null
      *
      * @return static
      */
-    protected function setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel = null)
+    protected function setTerminalModel(?TerminalModelInterface $terminalModel = null): TerminalInterface
     {
         $this->terminalModel = $terminalModel;
 
@@ -629,12 +641,11 @@ abstract class TerminalAbstract
     /**
      * Get terminalModel
      *
-     * @return \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface | null
+     * @return TerminalModelInterface | null
      */
-    public function getTerminalModel()
+    public function getTerminalModel(): ?TerminalModelInterface
     {
         return $this->terminalModel;
     }
 
-    // @codeCoverageIgnoreEnd
 }

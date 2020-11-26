@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\PublicEntity;
 
@@ -6,13 +7,17 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\PublicEntity\Name;
 
 /**
- * PublicEntityAbstract
- * @codeCoverageIgnore
- */
+* PublicEntityAbstract
+* @codeCoverageIgnore
+*/
 abstract class PublicEntityAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,17 +29,17 @@ abstract class PublicEntityAbstract
     protected $fqdn;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $platform = false;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $brand = false;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $client = false;
 
@@ -42,9 +47,6 @@ abstract class PublicEntityAbstract
      * @var Name | null
      */
     protected $name;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -127,7 +129,7 @@ abstract class PublicEntityAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, PublicEntityDto::class);
 
@@ -147,8 +149,7 @@ abstract class PublicEntityAbstract
         );
 
         $self
-            ->setFqdn($dto->getFqdn())
-        ;
+            ->setFqdn($dto->getFqdn());
 
         $self->initChangelog();
 
@@ -162,7 +163,7 @@ abstract class PublicEntityAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, PublicEntityDto::class);
 
@@ -180,8 +181,6 @@ abstract class PublicEntityAbstract
             ->setBrand($dto->getBrand())
             ->setClient($dto->getClient())
             ->setName($name);
-
-
 
         return $this;
     }
@@ -222,7 +221,6 @@ abstract class PublicEntityAbstract
             'nameIt' => self::getName()->getIt()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set iden
@@ -231,9 +229,8 @@ abstract class PublicEntityAbstract
      *
      * @return static
      */
-    protected function setIden($iden)
+    protected function setIden(string $iden): PublicEntityInterface
     {
-        Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
         Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->iden = $iden;
@@ -258,7 +255,7 @@ abstract class PublicEntityAbstract
      *
      * @return static
      */
-    protected function setFqdn($fqdn = null)
+    protected function setFqdn(?string $fqdn = null): PublicEntityInterface
     {
         if (!is_null($fqdn)) {
             Assertion::maxLength($fqdn, 200, 'fqdn value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -274,7 +271,7 @@ abstract class PublicEntityAbstract
      *
      * @return string | null
      */
-    public function getFqdn()
+    public function getFqdn(): ?string
     {
         return $this->fqdn;
     }
@@ -282,13 +279,12 @@ abstract class PublicEntityAbstract
     /**
      * Set platform
      *
-     * @param boolean $platform
+     * @param bool $platform
      *
      * @return static
      */
-    protected function setPlatform($platform)
+    protected function setPlatform(bool $platform): PublicEntityInterface
     {
-        Assertion::notNull($platform, 'platform value "%s" is null, but non null value was expected.');
         Assertion::between(intval($platform), 0, 1, 'platform provided "%s" is not a valid boolean value.');
         $platform = (bool) $platform;
 
@@ -300,7 +296,7 @@ abstract class PublicEntityAbstract
     /**
      * Get platform
      *
-     * @return boolean
+     * @return bool
      */
     public function getPlatform(): bool
     {
@@ -310,13 +306,12 @@ abstract class PublicEntityAbstract
     /**
      * Set brand
      *
-     * @param boolean $brand
+     * @param bool $brand
      *
      * @return static
      */
-    protected function setBrand($brand)
+    protected function setBrand(bool $brand): PublicEntityInterface
     {
-        Assertion::notNull($brand, 'brand value "%s" is null, but non null value was expected.');
         Assertion::between(intval($brand), 0, 1, 'brand provided "%s" is not a valid boolean value.');
         $brand = (bool) $brand;
 
@@ -328,7 +323,7 @@ abstract class PublicEntityAbstract
     /**
      * Get brand
      *
-     * @return boolean
+     * @return bool
      */
     public function getBrand(): bool
     {
@@ -338,13 +333,12 @@ abstract class PublicEntityAbstract
     /**
      * Set client
      *
-     * @param boolean $client
+     * @param bool $client
      *
      * @return static
      */
-    protected function setClient($client)
+    protected function setClient(bool $client): PublicEntityInterface
     {
-        Assertion::notNull($client, 'client value "%s" is null, but non null value was expected.');
         Assertion::between(intval($client), 0, 1, 'client provided "%s" is not a valid boolean value.');
         $client = (bool) $client;
 
@@ -356,7 +350,7 @@ abstract class PublicEntityAbstract
     /**
      * Get client
      *
-     * @return boolean
+     * @return bool
      */
     public function getClient(): bool
     {
@@ -364,13 +358,21 @@ abstract class PublicEntityAbstract
     }
 
     /**
-     * Set name
+     * Get name
      *
-     * @param \Ivoz\Provider\Domain\Model\PublicEntity\Name $name
+     * @return Name
+     */
+    public function getName(): Name
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name
      *
      * @return static
      */
-    protected function setName(Name $name)
+    protected function setName(Name $name): PublicEntityInterface
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -381,14 +383,4 @@ abstract class PublicEntityAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return \Ivoz\Provider\Domain\Model\PublicEntity\Name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-    // @codeCoverageIgnoreEnd
 }

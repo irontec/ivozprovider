@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier;
 
@@ -6,31 +7,39 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 
 /**
- * OutgoingRoutingRelCarrierAbstract
- * @codeCoverageIgnore
- */
+* OutgoingRoutingRelCarrierAbstract
+* @codeCoverageIgnore
+*/
 abstract class OutgoingRoutingRelCarrierAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
+     * @var OutgoingRoutingInterface
+     * inversedBy relCarriers
      */
     protected $outgoingRouting;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @var CarrierInterface
+     * inversedBy outgoingRoutingsRelCarriers
      */
     protected $carrier;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -97,16 +106,17 @@ abstract class OutgoingRoutingRelCarrierAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, OutgoingRoutingRelCarrierDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-        ;
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
 
         $self->initChangelog();
 
@@ -120,15 +130,13 @@ abstract class OutgoingRoutingRelCarrierAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, OutgoingRoutingRelCarrierDto::class);
 
         $this
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()));
-
-
 
         return $this;
     }
@@ -141,8 +149,8 @@ abstract class OutgoingRoutingRelCarrierAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth))
-            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth));
+            ->setOutgoingRouting(OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth))
+            ->setCarrier(Carrier::entityToDto(self::getCarrier(), $depth));
     }
 
     /**
@@ -155,16 +163,15 @@ abstract class OutgoingRoutingRelCarrierAbstract
             'carrierId' => self::getCarrier()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting | null
+     * @param OutgoingRoutingInterface | null
      *
      * @return static
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null)
+    public function setOutgoingRouting(?OutgoingRoutingInterface $outgoingRouting = null): OutgoingRoutingRelCarrierInterface
     {
         $this->outgoingRouting = $outgoingRouting;
 
@@ -174,9 +181,9 @@ abstract class OutgoingRoutingRelCarrierAbstract
     /**
      * Get outgoingRouting
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface | null
+     * @return OutgoingRoutingInterface | null
      */
-    public function getOutgoingRouting()
+    public function getOutgoingRouting(): ?OutgoingRoutingInterface
     {
         return $this->outgoingRouting;
     }
@@ -184,11 +191,11 @@ abstract class OutgoingRoutingRelCarrierAbstract
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     * @param CarrierInterface
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier)
+    public function setCarrier(CarrierInterface $carrier): OutgoingRoutingRelCarrierInterface
     {
         $this->carrier = $carrier;
 
@@ -198,12 +205,11 @@ abstract class OutgoingRoutingRelCarrierAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     * @return CarrierInterface
      */
-    public function getCarrier()
+    public function getCarrier(): CarrierInterface
     {
         return $this->carrier;
     }
 
-    // @codeCoverageIgnoreEnd
 }

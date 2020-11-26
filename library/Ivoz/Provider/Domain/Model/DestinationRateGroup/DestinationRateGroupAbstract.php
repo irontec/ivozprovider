@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
@@ -6,13 +7,23 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\Name;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\Description;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\File;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Currency\Currency;
 
 /**
- * DestinationRateGroupAbstract
- * @codeCoverageIgnore
- */
+* DestinationRateGroupAbstract
+* @codeCoverageIgnore
+*/
 abstract class DestinationRateGroupAbstract
 {
+    use ChangelogTrait;
+
     /**
      * comment: enum:waiting|inProgress|imported|error
      * @var string | null
@@ -25,7 +36,7 @@ abstract class DestinationRateGroupAbstract
     protected $lastExecutionError;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $deductibleConnectionFee = false;
 
@@ -45,17 +56,14 @@ abstract class DestinationRateGroupAbstract
     protected $file;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
+     * @var CurrencyInterface
      */
     protected $currency;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -136,7 +144,7 @@ abstract class DestinationRateGroupAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DestinationRateGroupDto::class);
 
@@ -172,8 +180,7 @@ abstract class DestinationRateGroupAbstract
             ->setStatus($dto->getStatus())
             ->setLastExecutionError($dto->getLastExecutionError())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
-        ;
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
         $self->initChangelog();
 
@@ -187,7 +194,7 @@ abstract class DestinationRateGroupAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DestinationRateGroupDto::class);
 
@@ -222,8 +229,6 @@ abstract class DestinationRateGroupAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
-
-
         return $this;
     }
 
@@ -250,8 +255,8 @@ abstract class DestinationRateGroupAbstract
             ->setFileMimeType(self::getFile()->getMimeType())
             ->setFileBaseName(self::getFile()->getBaseName())
             ->setFileImporterArguments(self::getFile()->getImporterArguments())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setCurrency(Currency::entityToDto(self::getCurrency(), $depth));
     }
 
     /**
@@ -279,7 +284,6 @@ abstract class DestinationRateGroupAbstract
             'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set status
@@ -288,16 +292,20 @@ abstract class DestinationRateGroupAbstract
      *
      * @return static
      */
-    protected function setStatus($status = null)
+    protected function setStatus(?string $status = null): DestinationRateGroupInterface
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($status, [
-                DestinationRateGroupInterface::STATUS_WAITING,
-                DestinationRateGroupInterface::STATUS_INPROGRESS,
-                DestinationRateGroupInterface::STATUS_IMPORTED,
-                DestinationRateGroupInterface::STATUS_ERROR
-            ], 'statusvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $status,
+                [
+                    DestinationRateGroupInterface::STATUS_WAITING,
+                    DestinationRateGroupInterface::STATUS_INPROGRESS,
+                    DestinationRateGroupInterface::STATUS_IMPORTED,
+                    DestinationRateGroupInterface::STATUS_ERROR,
+                ],
+                'statusvalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->status = $status;
@@ -310,7 +318,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @return string | null
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -322,7 +330,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @return static
      */
-    protected function setLastExecutionError($lastExecutionError = null)
+    protected function setLastExecutionError(?string $lastExecutionError = null): DestinationRateGroupInterface
     {
         if (!is_null($lastExecutionError)) {
             Assertion::maxLength($lastExecutionError, 300, 'lastExecutionError value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -338,7 +346,7 @@ abstract class DestinationRateGroupAbstract
      *
      * @return string | null
      */
-    public function getLastExecutionError()
+    public function getLastExecutionError(): ?string
     {
         return $this->lastExecutionError;
     }
@@ -346,13 +354,12 @@ abstract class DestinationRateGroupAbstract
     /**
      * Set deductibleConnectionFee
      *
-     * @param boolean $deductibleConnectionFee
+     * @param bool $deductibleConnectionFee
      *
      * @return static
      */
-    protected function setDeductibleConnectionFee($deductibleConnectionFee)
+    protected function setDeductibleConnectionFee(bool $deductibleConnectionFee): DestinationRateGroupInterface
     {
-        Assertion::notNull($deductibleConnectionFee, 'deductibleConnectionFee value "%s" is null, but non null value was expected.');
         Assertion::between(intval($deductibleConnectionFee), 0, 1, 'deductibleConnectionFee provided "%s" is not a valid boolean value.');
         $deductibleConnectionFee = (bool) $deductibleConnectionFee;
 
@@ -364,7 +371,7 @@ abstract class DestinationRateGroupAbstract
     /**
      * Get deductibleConnectionFee
      *
-     * @return boolean
+     * @return bool
      */
     public function getDeductibleConnectionFee(): bool
     {
@@ -372,61 +379,21 @@ abstract class DestinationRateGroupAbstract
     }
 
     /**
-     * Set brand
+     * Get name
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return static
+     * @return Name
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    public function getName(): Name
     {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
-
-    /**
-     * Set currency
-     *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
-     *
-     * @return static
-     */
-    protected function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
-    {
-        $this->currency = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Get currency
-     *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
-     */
-    public function getCurrency()
-    {
-        return $this->currency;
+        return $this->name;
     }
 
     /**
      * Set name
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\Name $name
-     *
      * @return static
      */
-    protected function setName(Name $name)
+    protected function setName(Name $name): DestinationRateGroupInterface
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -438,23 +405,21 @@ abstract class DestinationRateGroupAbstract
     }
 
     /**
-     * Get name
+     * Get description
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\Name
+     * @return Description
      */
-    public function getName()
+    public function getDescription(): Description
     {
-        return $this->name;
+        return $this->description;
     }
 
     /**
      * Set description
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\Description $description
-     *
      * @return static
      */
-    protected function setDescription(Description $description)
+    protected function setDescription(Description $description): DestinationRateGroupInterface
     {
         $isEqual = $this->description && $this->description->equals($description);
         if ($isEqual) {
@@ -466,23 +431,21 @@ abstract class DestinationRateGroupAbstract
     }
 
     /**
-     * Get description
+     * Get file
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\Description
+     * @return File
      */
-    public function getDescription()
+    public function getFile(): File
     {
-        return $this->description;
+        return $this->file;
     }
 
     /**
      * Set file
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\File $file
-     *
      * @return static
      */
-    protected function setFile(File $file)
+    protected function setFile(File $file): DestinationRateGroupInterface
     {
         $isEqual = $this->file && $this->file->equals($file);
         if ($isEqual) {
@@ -494,13 +457,51 @@ abstract class DestinationRateGroupAbstract
     }
 
     /**
-     * Get file
+     * Set brand
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\File
+     * @param BrandInterface
+     *
+     * @return static
      */
-    public function getFile()
+    protected function setBrand(BrandInterface $brand): DestinationRateGroupInterface
     {
-        return $this->file;
+        $this->brand = $brand;
+
+        return $this;
     }
-    // @codeCoverageIgnoreEnd
+
+    /**
+     * Get brand
+     *
+     * @return BrandInterface
+     */
+    public function getBrand(): BrandInterface
+    {
+        return $this->brand;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param CurrencyInterface | null
+     *
+     * @return static
+     */
+    protected function setCurrency(?CurrencyInterface $currency = null): DestinationRateGroupInterface
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return CurrencyInterface | null
+     */
+    public function getCurrency(): ?CurrencyInterface
+    {
+        return $this->currency;
+    }
+
 }

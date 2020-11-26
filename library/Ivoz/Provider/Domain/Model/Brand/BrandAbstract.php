@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Brand;
 
@@ -6,13 +7,28 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\Logo;
+use Ivoz\Provider\Domain\Model\Brand\Invoice;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
+use Ivoz\Provider\Domain\Model\Domain\Domain;
+use Ivoz\Provider\Domain\Model\Language\Language;
+use Ivoz\Provider\Domain\Model\Timezone\Timezone;
+use Ivoz\Provider\Domain\Model\Currency\Currency;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 
 /**
- * BrandAbstract
- * @codeCoverageIgnore
- */
+* BrandAbstract
+* @codeCoverageIgnore
+*/
 abstract class BrandAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -25,7 +41,7 @@ abstract class BrandAbstract
     protected $domainUsers;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $recordingsLimitMB;
 
@@ -35,7 +51,7 @@ abstract class BrandAbstract
     protected $recordingsLimitEmail;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $maxCalls = 0;
 
@@ -50,52 +66,49 @@ abstract class BrandAbstract
     protected $invoice;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
+     * @var DomainInterface
      */
     protected $domain;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
+     * @var LanguageInterface
      */
     protected $language;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     * @var TimezoneInterface
      */
     protected $defaultTimezone;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
+     * @var CurrencyInterface
      */
     protected $currency;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     * @var NotificationTemplateInterface
      */
     protected $voicemailNotificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     * @var NotificationTemplateInterface
      */
     protected $faxNotificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     * @var NotificationTemplateInterface
      */
     protected $invoiceNotificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     * @var NotificationTemplateInterface
      */
     protected $callCsvNotificationTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     * @var NotificationTemplateInterface
      */
     protected $maxDailyUsageNotificationTemplate;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -176,7 +189,7 @@ abstract class BrandAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, BrandDto::class);
 
@@ -215,8 +228,7 @@ abstract class BrandAbstract
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
-            ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()))
-        ;
+            ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()));
 
         $self->initChangelog();
 
@@ -230,7 +242,7 @@ abstract class BrandAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, BrandDto::class);
 
@@ -268,8 +280,6 @@ abstract class BrandAbstract
             ->setCallCsvNotificationTemplate($fkTransformer->transform($dto->getCallCsvNotificationTemplate()))
             ->setMaxDailyUsageNotificationTemplate($fkTransformer->transform($dto->getMaxDailyUsageNotificationTemplate()));
 
-
-
         return $this;
     }
 
@@ -296,15 +306,15 @@ abstract class BrandAbstract
             ->setInvoiceProvince(self::getInvoice()->getProvince())
             ->setInvoiceCountry(self::getInvoice()->getCountry())
             ->setInvoiceRegistryData(self::getInvoice()->getRegistryData())
-            ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
-            ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto(self::getLanguage(), $depth))
-            ->setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto(self::getDefaultTimezone(), $depth))
-            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth))
-            ->setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getVoicemailNotificationTemplate(), $depth))
-            ->setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth))
-            ->setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth))
-            ->setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth))
-            ->setMaxDailyUsageNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getMaxDailyUsageNotificationTemplate(), $depth));
+            ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
+            ->setLanguage(Language::entityToDto(self::getLanguage(), $depth))
+            ->setDefaultTimezone(Timezone::entityToDto(self::getDefaultTimezone(), $depth))
+            ->setCurrency(Currency::entityToDto(self::getCurrency(), $depth))
+            ->setVoicemailNotificationTemplate(NotificationTemplate::entityToDto(self::getVoicemailNotificationTemplate(), $depth))
+            ->setFaxNotificationTemplate(NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth))
+            ->setInvoiceNotificationTemplate(NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth))
+            ->setCallCsvNotificationTemplate(NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth))
+            ->setMaxDailyUsageNotificationTemplate(NotificationTemplate::entityToDto(self::getMaxDailyUsageNotificationTemplate(), $depth));
     }
 
     /**
@@ -339,7 +349,6 @@ abstract class BrandAbstract
             'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate() ? self::getMaxDailyUsageNotificationTemplate()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -348,9 +357,8 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): BrandInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 75, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -375,7 +383,7 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    protected function setDomainUsers($domainUsers = null)
+    protected function setDomainUsers(?string $domainUsers = null): BrandInterface
     {
         if (!is_null($domainUsers)) {
             Assertion::maxLength($domainUsers, 190, 'domainUsers value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -391,7 +399,7 @@ abstract class BrandAbstract
      *
      * @return string | null
      */
-    public function getDomainUsers()
+    public function getDomainUsers(): ?string
     {
         return $this->domainUsers;
     }
@@ -399,17 +407,12 @@ abstract class BrandAbstract
     /**
      * Set recordingsLimitMB
      *
-     * @param integer $recordingsLimitMB | null
+     * @param int $recordingsLimitMB | null
      *
      * @return static
      */
-    protected function setRecordingsLimitMB($recordingsLimitMB = null)
+    protected function setRecordingsLimitMB(?int $recordingsLimitMB = null): BrandInterface
     {
-        if (!is_null($recordingsLimitMB)) {
-            Assertion::integerish($recordingsLimitMB, 'recordingsLimitMB value "%s" is not an integer or a number castable to integer.');
-            $recordingsLimitMB = (int) $recordingsLimitMB;
-        }
-
         $this->recordingsLimitMB = $recordingsLimitMB;
 
         return $this;
@@ -418,9 +421,9 @@ abstract class BrandAbstract
     /**
      * Get recordingsLimitMB
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getRecordingsLimitMB()
+    public function getRecordingsLimitMB(): ?int
     {
         return $this->recordingsLimitMB;
     }
@@ -432,7 +435,7 @@ abstract class BrandAbstract
      *
      * @return static
      */
-    protected function setRecordingsLimitEmail($recordingsLimitEmail = null)
+    protected function setRecordingsLimitEmail(?string $recordingsLimitEmail = null): BrandInterface
     {
         if (!is_null($recordingsLimitEmail)) {
             Assertion::maxLength($recordingsLimitEmail, 250, 'recordingsLimitEmail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -448,7 +451,7 @@ abstract class BrandAbstract
      *
      * @return string | null
      */
-    public function getRecordingsLimitEmail()
+    public function getRecordingsLimitEmail(): ?string
     {
         return $this->recordingsLimitEmail;
     }
@@ -456,17 +459,15 @@ abstract class BrandAbstract
     /**
      * Set maxCalls
      *
-     * @param integer $maxCalls
+     * @param int $maxCalls
      *
      * @return static
      */
-    protected function setMaxCalls($maxCalls)
+    protected function setMaxCalls(int $maxCalls): BrandInterface
     {
-        Assertion::notNull($maxCalls, 'maxCalls value "%s" is null, but non null value was expected.');
-        Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
-        $this->maxCalls = (int) $maxCalls;
+        $this->maxCalls = $maxCalls;
 
         return $this;
     }
@@ -474,7 +475,7 @@ abstract class BrandAbstract
     /**
      * Get maxCalls
      *
-     * @return integer
+     * @return int
      */
     public function getMaxCalls(): int
     {
@@ -482,229 +483,21 @@ abstract class BrandAbstract
     }
 
     /**
-     * Set domain
+     * Get logo
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
-     *
-     * @return static
+     * @return Logo
      */
-    protected function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
+    public function getLogo(): Logo
     {
-        $this->domain = $domain;
-
-        return $this;
-    }
-
-    /**
-     * Get domain
-     *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
-     */
-    public function getDomain()
-    {
-        return $this->domain;
-    }
-
-    /**
-     * Set language
-     *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
-     *
-     * @return static
-     */
-    protected function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
-    {
-        $this->language = $language;
-
-        return $this;
-    }
-
-    /**
-     * Get language
-     *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
-     */
-    public function getLanguage()
-    {
-        return $this->language;
-    }
-
-    /**
-     * Set defaultTimezone
-     *
-     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone
-     *
-     * @return static
-     */
-    protected function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone)
-    {
-        $this->defaultTimezone = $defaultTimezone;
-
-        return $this;
-    }
-
-    /**
-     * Get defaultTimezone
-     *
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    public function getDefaultTimezone()
-    {
-        return $this->defaultTimezone;
-    }
-
-    /**
-     * Set currency
-     *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
-     *
-     * @return static
-     */
-    protected function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
-    {
-        $this->currency = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Get currency
-     *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
-     */
-    public function getCurrency()
-    {
-        return $this->currency;
-    }
-
-    /**
-     * Set voicemailNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate | null
-     *
-     * @return static
-     */
-    protected function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null)
-    {
-        $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
-
-        return $this;
-    }
-
-    /**
-     * Get voicemailNotificationTemplate
-     *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
-     */
-    public function getVoicemailNotificationTemplate()
-    {
-        return $this->voicemailNotificationTemplate;
-    }
-
-    /**
-     * Set faxNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate | null
-     *
-     * @return static
-     */
-    protected function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null)
-    {
-        $this->faxNotificationTemplate = $faxNotificationTemplate;
-
-        return $this;
-    }
-
-    /**
-     * Get faxNotificationTemplate
-     *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
-     */
-    public function getFaxNotificationTemplate()
-    {
-        return $this->faxNotificationTemplate;
-    }
-
-    /**
-     * Set invoiceNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate | null
-     *
-     * @return static
-     */
-    protected function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate = null)
-    {
-        $this->invoiceNotificationTemplate = $invoiceNotificationTemplate;
-
-        return $this;
-    }
-
-    /**
-     * Get invoiceNotificationTemplate
-     *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
-     */
-    public function getInvoiceNotificationTemplate()
-    {
-        return $this->invoiceNotificationTemplate;
-    }
-
-    /**
-     * Set callCsvNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate | null
-     *
-     * @return static
-     */
-    protected function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null)
-    {
-        $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
-
-        return $this;
-    }
-
-    /**
-     * Get callCsvNotificationTemplate
-     *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
-     */
-    public function getCallCsvNotificationTemplate()
-    {
-        return $this->callCsvNotificationTemplate;
-    }
-
-    /**
-     * Set maxDailyUsageNotificationTemplate
-     *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $maxDailyUsageNotificationTemplate | null
-     *
-     * @return static
-     */
-    protected function setMaxDailyUsageNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $maxDailyUsageNotificationTemplate = null)
-    {
-        $this->maxDailyUsageNotificationTemplate = $maxDailyUsageNotificationTemplate;
-
-        return $this;
-    }
-
-    /**
-     * Get maxDailyUsageNotificationTemplate
-     *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
-     */
-    public function getMaxDailyUsageNotificationTemplate()
-    {
-        return $this->maxDailyUsageNotificationTemplate;
+        return $this->logo;
     }
 
     /**
      * Set logo
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\Logo $logo
-     *
      * @return static
      */
-    protected function setLogo(Logo $logo)
+    protected function setLogo(Logo $logo): BrandInterface
     {
         $isEqual = $this->logo && $this->logo->equals($logo);
         if ($isEqual) {
@@ -716,23 +509,21 @@ abstract class BrandAbstract
     }
 
     /**
-     * Get logo
+     * Get invoice
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\Logo
+     * @return Invoice
      */
-    public function getLogo()
+    public function getInvoice(): Invoice
     {
-        return $this->logo;
+        return $this->invoice;
     }
 
     /**
      * Set invoice
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\Invoice $invoice
-     *
      * @return static
      */
-    protected function setInvoice(Invoice $invoice)
+    protected function setInvoice(Invoice $invoice): BrandInterface
     {
         $isEqual = $this->invoice && $this->invoice->equals($invoice);
         if ($isEqual) {
@@ -744,13 +535,219 @@ abstract class BrandAbstract
     }
 
     /**
-     * Get invoice
+     * Set domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\Invoice
+     * @param DomainInterface | null
+     *
+     * @return static
      */
-    public function getInvoice()
+    protected function setDomain(?DomainInterface $domain = null): BrandInterface
     {
-        return $this->invoice;
+        $this->domain = $domain;
+
+        return $this;
     }
-    // @codeCoverageIgnoreEnd
+
+    /**
+     * Get domain
+     *
+     * @return DomainInterface | null
+     */
+    public function getDomain(): ?DomainInterface
+    {
+        return $this->domain;
+    }
+
+    /**
+     * Set language
+     *
+     * @param LanguageInterface | null
+     *
+     * @return static
+     */
+    protected function setLanguage(?LanguageInterface $language = null): BrandInterface
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return LanguageInterface | null
+     */
+    public function getLanguage(): ?LanguageInterface
+    {
+        return $this->language;
+    }
+
+    /**
+     * Set defaultTimezone
+     *
+     * @param TimezoneInterface
+     *
+     * @return static
+     */
+    protected function setDefaultTimezone(TimezoneInterface $defaultTimezone): BrandInterface
+    {
+        $this->defaultTimezone = $defaultTimezone;
+
+        return $this;
+    }
+
+    /**
+     * Get defaultTimezone
+     *
+     * @return TimezoneInterface
+     */
+    public function getDefaultTimezone(): TimezoneInterface
+    {
+        return $this->defaultTimezone;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param CurrencyInterface | null
+     *
+     * @return static
+     */
+    protected function setCurrency(?CurrencyInterface $currency = null): BrandInterface
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return CurrencyInterface | null
+     */
+    public function getCurrency(): ?CurrencyInterface
+    {
+        return $this->currency;
+    }
+
+    /**
+     * Set voicemailNotificationTemplate
+     *
+     * @param NotificationTemplateInterface | null
+     *
+     * @return static
+     */
+    protected function setVoicemailNotificationTemplate(?NotificationTemplateInterface $voicemailNotificationTemplate = null): BrandInterface
+    {
+        $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get voicemailNotificationTemplate
+     *
+     * @return NotificationTemplateInterface | null
+     */
+    public function getVoicemailNotificationTemplate(): ?NotificationTemplateInterface
+    {
+        return $this->voicemailNotificationTemplate;
+    }
+
+    /**
+     * Set faxNotificationTemplate
+     *
+     * @param NotificationTemplateInterface | null
+     *
+     * @return static
+     */
+    protected function setFaxNotificationTemplate(?NotificationTemplateInterface $faxNotificationTemplate = null): BrandInterface
+    {
+        $this->faxNotificationTemplate = $faxNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get faxNotificationTemplate
+     *
+     * @return NotificationTemplateInterface | null
+     */
+    public function getFaxNotificationTemplate(): ?NotificationTemplateInterface
+    {
+        return $this->faxNotificationTemplate;
+    }
+
+    /**
+     * Set invoiceNotificationTemplate
+     *
+     * @param NotificationTemplateInterface | null
+     *
+     * @return static
+     */
+    protected function setInvoiceNotificationTemplate(?NotificationTemplateInterface $invoiceNotificationTemplate = null): BrandInterface
+    {
+        $this->invoiceNotificationTemplate = $invoiceNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get invoiceNotificationTemplate
+     *
+     * @return NotificationTemplateInterface | null
+     */
+    public function getInvoiceNotificationTemplate(): ?NotificationTemplateInterface
+    {
+        return $this->invoiceNotificationTemplate;
+    }
+
+    /**
+     * Set callCsvNotificationTemplate
+     *
+     * @param NotificationTemplateInterface | null
+     *
+     * @return static
+     */
+    protected function setCallCsvNotificationTemplate(?NotificationTemplateInterface $callCsvNotificationTemplate = null): BrandInterface
+    {
+        $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get callCsvNotificationTemplate
+     *
+     * @return NotificationTemplateInterface | null
+     */
+    public function getCallCsvNotificationTemplate(): ?NotificationTemplateInterface
+    {
+        return $this->callCsvNotificationTemplate;
+    }
+
+    /**
+     * Set maxDailyUsageNotificationTemplate
+     *
+     * @param NotificationTemplateInterface | null
+     *
+     * @return static
+     */
+    protected function setMaxDailyUsageNotificationTemplate(?NotificationTemplateInterface $maxDailyUsageNotificationTemplate = null): BrandInterface
+    {
+        $this->maxDailyUsageNotificationTemplate = $maxDailyUsageNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get maxDailyUsageNotificationTemplate
+     *
+     * @return NotificationTemplateInterface | null
+     */
+    public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateInterface
+    {
+        return $this->maxDailyUsageNotificationTemplate;
+    }
+
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
@@ -6,30 +7,41 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\CallCsvReport\Csv;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler;
 
 /**
- * CallCsvReportAbstract
- * @codeCoverageIgnore
- */
+* CallCsvReportAbstract
+* @codeCoverageIgnore
+*/
 abstract class CallCsvReportAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
     protected $sentTo = '';
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     protected $inDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     protected $outDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     protected $createdOn;
 
@@ -39,22 +51,19 @@ abstract class CallCsvReportAbstract
     protected $csv;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @var CompanyInterface
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @var BrandInterface
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface | null
+     * @var CallCsvSchedulerInterface
      */
     protected $callCsvScheduler;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -137,7 +146,7 @@ abstract class CallCsvReportAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CallCsvReportDto::class);
 
@@ -158,8 +167,7 @@ abstract class CallCsvReportAbstract
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCallCsvScheduler($fkTransformer->transform($dto->getCallCsvScheduler()))
-        ;
+            ->setCallCsvScheduler($fkTransformer->transform($dto->getCallCsvScheduler()));
 
         $self->initChangelog();
 
@@ -173,7 +181,7 @@ abstract class CallCsvReportAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CallCsvReportDto::class);
 
@@ -193,8 +201,6 @@ abstract class CallCsvReportAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCallCsvScheduler($fkTransformer->transform($dto->getCallCsvScheduler()));
 
-
-
         return $this;
     }
 
@@ -213,9 +219,9 @@ abstract class CallCsvReportAbstract
             ->setCsvFileSize(self::getCsv()->getFileSize())
             ->setCsvMimeType(self::getCsv()->getMimeType())
             ->setCsvBaseName(self::getCsv()->getBaseName())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCallCsvScheduler(\Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler::entityToDto(self::getCallCsvScheduler(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setCallCsvScheduler(CallCsvScheduler::entityToDto(self::getCallCsvScheduler(), $depth));
     }
 
     /**
@@ -236,7 +242,6 @@ abstract class CallCsvReportAbstract
             'callCsvSchedulerId' => self::getCallCsvScheduler() ? self::getCallCsvScheduler()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set sentTo
@@ -245,9 +250,8 @@ abstract class CallCsvReportAbstract
      *
      * @return static
      */
-    protected function setSentTo($sentTo)
+    protected function setSentTo(string $sentTo): CallCsvReportInterface
     {
-        Assertion::notNull($sentTo, 'sentTo value "%s" is null, but non null value was expected.');
         Assertion::maxLength($sentTo, 250, 'sentTo value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->sentTo = $sentTo;
@@ -268,14 +272,14 @@ abstract class CallCsvReportAbstract
     /**
      * Set inDate
      *
-     * @param \DateTime $inDate
+     * @param \DateTimeInterface $inDate
      *
      * @return static
      */
-    protected function setInDate($inDate)
+    protected function setInDate($inDate): CallCsvReportInterface
     {
-        Assertion::notNull($inDate, 'inDate value "%s" is null, but non null value was expected.');
-        $inDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $inDate = DateTimeHelper::createOrFix(
             $inDate,
             null
         );
@@ -292,9 +296,9 @@ abstract class CallCsvReportAbstract
     /**
      * Get inDate
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getInDate(): \DateTime
+    public function getInDate(): \DateTimeInterface
     {
         return clone $this->inDate;
     }
@@ -302,14 +306,14 @@ abstract class CallCsvReportAbstract
     /**
      * Set outDate
      *
-     * @param \DateTime $outDate
+     * @param \DateTimeInterface $outDate
      *
      * @return static
      */
-    protected function setOutDate($outDate)
+    protected function setOutDate($outDate): CallCsvReportInterface
     {
-        Assertion::notNull($outDate, 'outDate value "%s" is null, but non null value was expected.');
-        $outDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $outDate = DateTimeHelper::createOrFix(
             $outDate,
             null
         );
@@ -326,9 +330,9 @@ abstract class CallCsvReportAbstract
     /**
      * Get outDate
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getOutDate(): \DateTime
+    public function getOutDate(): \DateTimeInterface
     {
         return clone $this->outDate;
     }
@@ -336,14 +340,14 @@ abstract class CallCsvReportAbstract
     /**
      * Set createdOn
      *
-     * @param \DateTime $createdOn
+     * @param \DateTimeInterface $createdOn
      *
      * @return static
      */
-    protected function setCreatedOn($createdOn)
+    protected function setCreatedOn($createdOn): CallCsvReportInterface
     {
-        Assertion::notNull($createdOn, 'createdOn value "%s" is null, but non null value was expected.');
-        $createdOn = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $createdOn = DateTimeHelper::createOrFix(
             $createdOn,
             null
         );
@@ -360,93 +364,29 @@ abstract class CallCsvReportAbstract
     /**
      * Get createdOn
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedOn(): \DateTime
+    public function getCreatedOn(): \DateTimeInterface
     {
         return clone $this->createdOn;
     }
 
     /**
-     * Set company
+     * Get csv
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
-     *
-     * @return static
+     * @return Csv
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    public function getCsv(): Csv
     {
-        $this->company = $company;
-
-        return $this;
-    }
-
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
-     */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
-
-    /**
-     * Set callCsvScheduler
-     *
-     * @param \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler | null
-     *
-     * @return static
-     */
-    protected function setCallCsvScheduler(\Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler = null)
-    {
-        $this->callCsvScheduler = $callCsvScheduler;
-
-        return $this;
-    }
-
-    /**
-     * Get callCsvScheduler
-     *
-     * @return \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface | null
-     */
-    public function getCallCsvScheduler()
-    {
-        return $this->callCsvScheduler;
+        return $this->csv;
     }
 
     /**
      * Set csv
      *
-     * @param \Ivoz\Provider\Domain\Model\CallCsvReport\Csv $csv
-     *
      * @return static
      */
-    protected function setCsv(Csv $csv)
+    protected function setCsv(Csv $csv): CallCsvReportInterface
     {
         $isEqual = $this->csv && $this->csv->equals($csv);
         if ($isEqual) {
@@ -458,13 +398,75 @@ abstract class CallCsvReportAbstract
     }
 
     /**
-     * Get csv
+     * Set company
      *
-     * @return \Ivoz\Provider\Domain\Model\CallCsvReport\Csv
+     * @param CompanyInterface | null
+     *
+     * @return static
      */
-    public function getCsv()
+    protected function setCompany(?CompanyInterface $company = null): CallCsvReportInterface
     {
-        return $this->csv;
+        $this->company = $company;
+
+        return $this;
     }
-    // @codeCoverageIgnoreEnd
+
+    /**
+     * Get company
+     *
+     * @return CompanyInterface | null
+     */
+    public function getCompany(): ?CompanyInterface
+    {
+        return $this->company;
+    }
+
+    /**
+     * Set brand
+     *
+     * @param BrandInterface | null
+     *
+     * @return static
+     */
+    protected function setBrand(?BrandInterface $brand = null): CallCsvReportInterface
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Get brand
+     *
+     * @return BrandInterface | null
+     */
+    public function getBrand(): ?BrandInterface
+    {
+        return $this->brand;
+    }
+
+    /**
+     * Set callCsvScheduler
+     *
+     * @param CallCsvSchedulerInterface | null
+     *
+     * @return static
+     */
+    protected function setCallCsvScheduler(?CallCsvSchedulerInterface $callCsvScheduler = null): CallCsvReportInterface
+    {
+        $this->callCsvScheduler = $callCsvScheduler;
+
+        return $this;
+    }
+
+    /**
+     * Get callCsvScheduler
+     *
+     * @return CallCsvSchedulerInterface | null
+     */
+    public function getCallCsvScheduler(): ?CallCsvSchedulerInterface
+    {
+        return $this->callCsvScheduler;
+    }
+
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Domain;
 
@@ -6,13 +7,16 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
- * DomainAbstract
- * @codeCoverageIgnore
- */
+* DomainAbstract
+* @codeCoverageIgnore
+*/
 abstract class DomainAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -28,14 +32,13 @@ abstract class DomainAbstract
      */
     protected $description;
 
-
-    use ChangelogTrait;
-
     /**
      * Constructor
      */
-    protected function __construct($domain, $pointsTo)
-    {
+    protected function __construct(
+        $domain,
+        $pointsTo
+    ) {
         $this->setDomain($domain);
         $this->setPointsTo($pointsTo);
     }
@@ -104,7 +107,7 @@ abstract class DomainAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DomainDto::class);
 
@@ -114,8 +117,7 @@ abstract class DomainAbstract
         );
 
         $self
-            ->setDescription($dto->getDescription())
-        ;
+            ->setDescription($dto->getDescription());
 
         $self->initChangelog();
 
@@ -129,7 +131,7 @@ abstract class DomainAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DomainDto::class);
 
@@ -137,8 +139,6 @@ abstract class DomainAbstract
             ->setDomain($dto->getDomain())
             ->setPointsTo($dto->getPointsTo())
             ->setDescription($dto->getDescription());
-
-
 
         return $this;
     }
@@ -167,7 +167,6 @@ abstract class DomainAbstract
             'description' => self::getDescription()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set domain
@@ -176,9 +175,8 @@ abstract class DomainAbstract
      *
      * @return static
      */
-    protected function setDomain($domain)
+    protected function setDomain(string $domain): DomainInterface
     {
-        Assertion::notNull($domain, 'domain value "%s" is null, but non null value was expected.');
         Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->domain = $domain;
@@ -203,10 +201,8 @@ abstract class DomainAbstract
      *
      * @return static
      */
-    protected function setPointsTo($pointsTo)
+    protected function setPointsTo(string $pointsTo): DomainInterface
     {
-        Assertion::notNull($pointsTo, 'pointsTo value "%s" is null, but non null value was expected.');
-
         $this->pointsTo = $pointsTo;
 
         return $this;
@@ -229,7 +225,7 @@ abstract class DomainAbstract
      *
      * @return static
      */
-    protected function setDescription($description = null)
+    protected function setDescription(?string $description = null): DomainInterface
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -245,10 +241,9 @@ abstract class DomainAbstract
      *
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    // @codeCoverageIgnoreEnd
 }

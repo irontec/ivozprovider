@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\BalanceMovement;
 
@@ -6,13 +7,21 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 
 /**
- * BalanceMovementAbstract
- * @codeCoverageIgnore
- */
+* BalanceMovementAbstract
+* @codeCoverageIgnore
+*/
 abstract class BalanceMovementAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var float | null
      */
@@ -24,28 +33,27 @@ abstract class BalanceMovementAbstract
     protected $balance = 0;
 
     /**
-     * @var \DateTime | null
+     * @var \DateTimeInterface | null
      */
-    protected $createdOn;
+    protected $createdOn = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @var CompanyInterface
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
+     * @var CarrierInterface
      */
     protected $carrier;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -112,19 +120,20 @@ abstract class BalanceMovementAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, BalanceMovementDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setAmount($dto->getAmount())
             ->setBalance($dto->getBalance())
             ->setCreatedOn($dto->getCreatedOn())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-        ;
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
 
         $self->initChangelog();
 
@@ -138,7 +147,7 @@ abstract class BalanceMovementAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, BalanceMovementDto::class);
 
@@ -148,8 +157,6 @@ abstract class BalanceMovementAbstract
             ->setCreatedOn($dto->getCreatedOn())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()));
-
-
 
         return $this;
     }
@@ -165,8 +172,8 @@ abstract class BalanceMovementAbstract
             ->setAmount(self::getAmount())
             ->setBalance(self::getBalance())
             ->setCreatedOn(self::getCreatedOn())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setCarrier(Carrier::entityToDto(self::getCarrier(), $depth));
     }
 
     /**
@@ -182,7 +189,6 @@ abstract class BalanceMovementAbstract
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set amount
@@ -191,10 +197,9 @@ abstract class BalanceMovementAbstract
      *
      * @return static
      */
-    protected function setAmount($amount = null)
+    protected function setAmount(?float $amount = null): BalanceMovementInterface
     {
         if (!is_null($amount)) {
-            Assertion::numeric($amount);
             $amount = (float) $amount;
         }
 
@@ -208,7 +213,7 @@ abstract class BalanceMovementAbstract
      *
      * @return float | null
      */
-    public function getAmount()
+    public function getAmount(): ?float
     {
         return $this->amount;
     }
@@ -220,10 +225,9 @@ abstract class BalanceMovementAbstract
      *
      * @return static
      */
-    protected function setBalance($balance = null)
+    protected function setBalance(?float $balance = null): BalanceMovementInterface
     {
         if (!is_null($balance)) {
-            Assertion::numeric($balance);
             $balance = (float) $balance;
         }
 
@@ -237,7 +241,7 @@ abstract class BalanceMovementAbstract
      *
      * @return float | null
      */
-    public function getBalance()
+    public function getBalance(): ?float
     {
         return $this->balance;
     }
@@ -245,14 +249,18 @@ abstract class BalanceMovementAbstract
     /**
      * Set createdOn
      *
-     * @param \DateTime $createdOn | null
+     * @param \DateTimeInterface $createdOn | null
      *
      * @return static
      */
-    protected function setCreatedOn($createdOn = null)
+    protected function setCreatedOn($createdOn = null): BalanceMovementInterface
     {
         if (!is_null($createdOn)) {
-            $createdOn = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            Assertion::notNull(
+                $createdOn,
+                'createdOn value "%s" is null, but non null value was expected.'
+            );
+            $createdOn = DateTimeHelper::createOrFix(
                 $createdOn,
                 'CURRENT_TIMESTAMP'
             );
@@ -270,9 +278,9 @@ abstract class BalanceMovementAbstract
     /**
      * Get createdOn
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getCreatedOn()
+    public function getCreatedOn(): ?\DateTimeInterface
     {
         return !is_null($this->createdOn) ? clone $this->createdOn : null;
     }
@@ -280,11 +288,11 @@ abstract class BalanceMovementAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
+     * @param CompanyInterface | null
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    protected function setCompany(?CompanyInterface $company = null): BalanceMovementInterface
     {
         $this->company = $company;
 
@@ -294,9 +302,9 @@ abstract class BalanceMovementAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
@@ -304,11 +312,11 @@ abstract class BalanceMovementAbstract
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
+     * @param CarrierInterface | null
      *
      * @return static
      */
-    protected function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
+    protected function setCarrier(?CarrierInterface $carrier = null): BalanceMovementInterface
     {
         $this->carrier = $carrier;
 
@@ -318,12 +326,11 @@ abstract class BalanceMovementAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
+     * @return CarrierInterface | null
      */
-    public function getCarrier()
+    public function getCarrier(): ?CarrierInterface
     {
         return $this->carrier;
     }
 
-    // @codeCoverageIgnoreEnd
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\CompanyService;
 
@@ -6,36 +7,42 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Service\Service;
 
 /**
- * CompanyServiceAbstract
- * @codeCoverageIgnore
- */
+* CompanyServiceAbstract
+* @codeCoverageIgnore
+*/
 abstract class CompanyServiceAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
     protected $code;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
+     * inversedBy companyServices
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Service\ServiceInterface
+     * @var ServiceInterface
      */
     protected $service;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($code)
-    {
+    protected function __construct(
+        $code
+    ) {
         $this->setCode($code);
     }
 
@@ -103,7 +110,7 @@ abstract class CompanyServiceAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CompanyServiceDto::class);
 
@@ -113,8 +120,7 @@ abstract class CompanyServiceAbstract
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setService($fkTransformer->transform($dto->getService()))
-        ;
+            ->setService($fkTransformer->transform($dto->getService()));
 
         $self->initChangelog();
 
@@ -128,7 +134,7 @@ abstract class CompanyServiceAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CompanyServiceDto::class);
 
@@ -136,8 +142,6 @@ abstract class CompanyServiceAbstract
             ->setCode($dto->getCode())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setService($fkTransformer->transform($dto->getService()));
-
-
 
         return $this;
     }
@@ -151,8 +155,8 @@ abstract class CompanyServiceAbstract
     {
         return self::createDto()
             ->setCode(self::getCode())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setService(\Ivoz\Provider\Domain\Model\Service\Service::entityToDto(self::getService(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setService(Service::entityToDto(self::getService(), $depth));
     }
 
     /**
@@ -166,7 +170,6 @@ abstract class CompanyServiceAbstract
             'serviceId' => self::getService()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set code
@@ -175,9 +178,8 @@ abstract class CompanyServiceAbstract
      *
      * @return static
      */
-    protected function setCode($code)
+    protected function setCode(string $code): CompanyServiceInterface
     {
-        Assertion::notNull($code, 'code value "%s" is null, but non null value was expected.');
         Assertion::maxLength($code, 3, 'code value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->code = $code;
@@ -198,11 +200,11 @@ abstract class CompanyServiceAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    public function setCompany(CompanyInterface $company): CompanyServiceInterface
     {
         $this->company = $company;
 
@@ -212,9 +214,9 @@ abstract class CompanyServiceAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany()
+    public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
@@ -222,11 +224,11 @@ abstract class CompanyServiceAbstract
     /**
      * Set service
      *
-     * @param \Ivoz\Provider\Domain\Model\Service\ServiceInterface $service
+     * @param ServiceInterface
      *
      * @return static
      */
-    protected function setService(\Ivoz\Provider\Domain\Model\Service\ServiceInterface $service)
+    protected function setService(ServiceInterface $service): CompanyServiceInterface
     {
         $this->service = $service;
 
@@ -236,12 +238,11 @@ abstract class CompanyServiceAbstract
     /**
      * Get service
      *
-     * @return \Ivoz\Provider\Domain\Model\Service\ServiceInterface
+     * @return ServiceInterface
      */
-    public function getService()
+    public function getService(): ServiceInterface
     {
         return $this->service;
     }
 
-    // @codeCoverageIgnoreEnd
 }

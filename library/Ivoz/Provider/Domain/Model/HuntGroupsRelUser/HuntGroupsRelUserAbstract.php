@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\HuntGroupsRelUser;
 
@@ -6,20 +7,29 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
+use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
- * HuntGroupsRelUserAbstract
- * @codeCoverageIgnore
- */
+* HuntGroupsRelUserAbstract
+* @codeCoverageIgnore
+*/
 abstract class HuntGroupsRelUserAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $timeoutTime;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $priority;
 
@@ -35,28 +45,27 @@ abstract class HuntGroupsRelUserAbstract
     protected $numberValue;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
+     * @var HuntGroupInterface
+     * inversedBy huntGroupsRelUsers
      */
     protected $huntGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @var UserInterface
      */
     protected $user;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @var CountryInterface
      */
     protected $numberCountry;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($routeType)
-    {
+    protected function __construct(
+        $routeType
+    ) {
         $this->setRouteType($routeType);
     }
 
@@ -124,7 +133,7 @@ abstract class HuntGroupsRelUserAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, HuntGroupsRelUserDto::class);
 
@@ -138,8 +147,7 @@ abstract class HuntGroupsRelUserAbstract
             ->setNumberValue($dto->getNumberValue())
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setUser($fkTransformer->transform($dto->getUser()))
-            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
-        ;
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
         $self->initChangelog();
 
@@ -153,7 +161,7 @@ abstract class HuntGroupsRelUserAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, HuntGroupsRelUserDto::class);
 
@@ -165,8 +173,6 @@ abstract class HuntGroupsRelUserAbstract
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
-
-
 
         return $this;
     }
@@ -183,9 +189,9 @@ abstract class HuntGroupsRelUserAbstract
             ->setPriority(self::getPriority())
             ->setRouteType(self::getRouteType())
             ->setNumberValue(self::getNumberValue())
-            ->setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup::entityToDto(self::getHuntGroup(), $depth))
-            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
-            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth));
+            ->setHuntGroup(HuntGroup::entityToDto(self::getHuntGroup(), $depth))
+            ->setUser(User::entityToDto(self::getUser(), $depth))
+            ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
     /**
@@ -203,22 +209,16 @@ abstract class HuntGroupsRelUserAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set timeoutTime
      *
-     * @param integer $timeoutTime | null
+     * @param int $timeoutTime | null
      *
      * @return static
      */
-    protected function setTimeoutTime($timeoutTime = null)
+    protected function setTimeoutTime(?int $timeoutTime = null): HuntGroupsRelUserInterface
     {
-        if (!is_null($timeoutTime)) {
-            Assertion::integerish($timeoutTime, 'timeoutTime value "%s" is not an integer or a number castable to integer.');
-            $timeoutTime = (int) $timeoutTime;
-        }
-
         $this->timeoutTime = $timeoutTime;
 
         return $this;
@@ -227,9 +227,9 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Get timeoutTime
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getTimeoutTime()
+    public function getTimeoutTime(): ?int
     {
         return $this->timeoutTime;
     }
@@ -237,17 +237,12 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Set priority
      *
-     * @param integer $priority | null
+     * @param int $priority | null
      *
      * @return static
      */
-    protected function setPriority($priority = null)
+    protected function setPriority(?int $priority = null): HuntGroupsRelUserInterface
     {
-        if (!is_null($priority)) {
-            Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
-            $priority = (int) $priority;
-        }
-
         $this->priority = $priority;
 
         return $this;
@@ -256,9 +251,9 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Get priority
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getPriority()
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
@@ -270,14 +265,17 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @return static
      */
-    protected function setRouteType($routeType)
+    protected function setRouteType(string $routeType): HuntGroupsRelUserInterface
     {
-        Assertion::notNull($routeType, 'routeType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($routeType, [
-            HuntGroupsRelUserInterface::ROUTETYPE_NUMBER,
-            HuntGroupsRelUserInterface::ROUTETYPE_USER
-        ], 'routeTypevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $routeType,
+            [
+                HuntGroupsRelUserInterface::ROUTETYPE_NUMBER,
+                HuntGroupsRelUserInterface::ROUTETYPE_USER,
+            ],
+            'routeTypevalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->routeType = $routeType;
 
@@ -301,7 +299,7 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @return static
      */
-    protected function setNumberValue($numberValue = null)
+    protected function setNumberValue(?string $numberValue = null): HuntGroupsRelUserInterface
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -317,7 +315,7 @@ abstract class HuntGroupsRelUserAbstract
      *
      * @return string | null
      */
-    public function getNumberValue()
+    public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
@@ -325,11 +323,11 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Set huntGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup | null
+     * @param HuntGroupInterface | null
      *
      * @return static
      */
-    public function setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface $huntGroup = null)
+    public function setHuntGroup(?HuntGroupInterface $huntGroup = null): HuntGroupsRelUserInterface
     {
         $this->huntGroup = $huntGroup;
 
@@ -339,9 +337,9 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Get huntGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface | null
+     * @return HuntGroupInterface | null
      */
-    public function getHuntGroup()
+    public function getHuntGroup(): ?HuntGroupInterface
     {
         return $this->huntGroup;
     }
@@ -349,11 +347,11 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
+     * @param UserInterface | null
      *
      * @return static
      */
-    protected function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
+    protected function setUser(?UserInterface $user = null): HuntGroupsRelUserInterface
     {
         $this->user = $user;
 
@@ -363,9 +361,9 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getUser()
+    public function getUser(): ?UserInterface
     {
         return $this->user;
     }
@@ -373,11 +371,11 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
+     * @param CountryInterface | null
      *
      * @return static
      */
-    protected function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): HuntGroupsRelUserInterface
     {
         $this->numberCountry = $numberCountry;
 
@@ -387,12 +385,11 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getNumberCountry()
+    public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;
     }
 
-    // @codeCoverageIgnoreEnd
 }

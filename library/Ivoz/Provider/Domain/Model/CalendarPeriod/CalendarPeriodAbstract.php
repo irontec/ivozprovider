@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\CalendarPeriod;
 
@@ -6,20 +7,34 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Calendar\Calendar;
+use Ivoz\Provider\Domain\Model\Locution\Locution;
+use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
- * CalendarPeriodAbstract
- * @codeCoverageIgnore
- */
+* CalendarPeriodAbstract
+* @codeCoverageIgnore
+*/
 abstract class CalendarPeriodAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     protected $startDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     protected $endDate;
 
@@ -35,38 +50,38 @@ abstract class CalendarPeriodAbstract
     protected $numberValue;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
+     * @var CalendarInterface
+     * inversedBy calendarPeriods
      */
     protected $calendar;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @var LocutionInterface
      */
     protected $locution;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @var ExtensionInterface
      */
     protected $extension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @var UserInterface
      */
     protected $voiceMailUser;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @var CountryInterface
      */
     protected $numberCountry;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($startDate, $endDate)
-    {
+    protected function __construct(
+        $startDate,
+        $endDate
+    ) {
         $this->setStartDate($startDate);
         $this->setEndDate($endDate);
     }
@@ -135,7 +150,7 @@ abstract class CalendarPeriodAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CalendarPeriodDto::class);
 
@@ -151,8 +166,7 @@ abstract class CalendarPeriodAbstract
             ->setLocution($fkTransformer->transform($dto->getLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
-            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
-        ;
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
         $self->initChangelog();
 
@@ -166,7 +180,7 @@ abstract class CalendarPeriodAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CalendarPeriodDto::class);
 
@@ -180,8 +194,6 @@ abstract class CalendarPeriodAbstract
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
-
-
 
         return $this;
     }
@@ -198,11 +210,11 @@ abstract class CalendarPeriodAbstract
             ->setEndDate(self::getEndDate())
             ->setRouteType(self::getRouteType())
             ->setNumberValue(self::getNumberValue())
-            ->setCalendar(\Ivoz\Provider\Domain\Model\Calendar\Calendar::entityToDto(self::getCalendar(), $depth))
-            ->setLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getLocution(), $depth))
-            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getExtension(), $depth))
-            ->setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getVoiceMailUser(), $depth))
-            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth));
+            ->setCalendar(Calendar::entityToDto(self::getCalendar(), $depth))
+            ->setLocution(Locution::entityToDto(self::getLocution(), $depth))
+            ->setExtension(Extension::entityToDto(self::getExtension(), $depth))
+            ->setVoiceMailUser(User::entityToDto(self::getVoiceMailUser(), $depth))
+            ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
     /**
@@ -222,19 +234,16 @@ abstract class CalendarPeriodAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set startDate
      *
-     * @param \DateTime $startDate
+     * @param \DateTimeInterface $startDate
      *
      * @return static
      */
-    protected function setStartDate($startDate)
+    protected function setStartDate($startDate): CalendarPeriodInterface
     {
-        Assertion::notNull($startDate, 'startDate value "%s" is null, but non null value was expected.');
-
         $this->startDate = $startDate;
 
         return $this;
@@ -243,24 +252,22 @@ abstract class CalendarPeriodAbstract
     /**
      * Get startDate
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getStartDate(): \DateTime
+    public function getStartDate(): \DateTimeInterface
     {
-        return $this->startDate;
+        return clone $this->startDate;
     }
 
     /**
      * Set endDate
      *
-     * @param \DateTime $endDate
+     * @param \DateTimeInterface $endDate
      *
      * @return static
      */
-    protected function setEndDate($endDate)
+    protected function setEndDate($endDate): CalendarPeriodInterface
     {
-        Assertion::notNull($endDate, 'endDate value "%s" is null, but non null value was expected.');
-
         $this->endDate = $endDate;
 
         return $this;
@@ -269,11 +276,11 @@ abstract class CalendarPeriodAbstract
     /**
      * Get endDate
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getEndDate(): \DateTime
+    public function getEndDate(): \DateTimeInterface
     {
-        return $this->endDate;
+        return clone $this->endDate;
     }
 
     /**
@@ -283,15 +290,19 @@ abstract class CalendarPeriodAbstract
      *
      * @return static
      */
-    protected function setRouteType($routeType = null)
+    protected function setRouteType(?string $routeType = null): CalendarPeriodInterface
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($routeType, [
-                CalendarPeriodInterface::ROUTETYPE_NUMBER,
-                CalendarPeriodInterface::ROUTETYPE_EXTENSION,
-                CalendarPeriodInterface::ROUTETYPE_VOICEMAIL
-            ], 'routeTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $routeType,
+                [
+                    CalendarPeriodInterface::ROUTETYPE_NUMBER,
+                    CalendarPeriodInterface::ROUTETYPE_EXTENSION,
+                    CalendarPeriodInterface::ROUTETYPE_VOICEMAIL,
+                ],
+                'routeTypevalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->routeType = $routeType;
@@ -304,7 +315,7 @@ abstract class CalendarPeriodAbstract
      *
      * @return string | null
      */
-    public function getRouteType()
+    public function getRouteType(): ?string
     {
         return $this->routeType;
     }
@@ -316,7 +327,7 @@ abstract class CalendarPeriodAbstract
      *
      * @return static
      */
-    protected function setNumberValue($numberValue = null)
+    protected function setNumberValue(?string $numberValue = null): CalendarPeriodInterface
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -332,7 +343,7 @@ abstract class CalendarPeriodAbstract
      *
      * @return string | null
      */
-    public function getNumberValue()
+    public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
@@ -340,11 +351,11 @@ abstract class CalendarPeriodAbstract
     /**
      * Set calendar
      *
-     * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar
+     * @param CalendarInterface
      *
      * @return static
      */
-    public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar)
+    public function setCalendar(CalendarInterface $calendar): CalendarPeriodInterface
     {
         $this->calendar = $calendar;
 
@@ -354,9 +365,9 @@ abstract class CalendarPeriodAbstract
     /**
      * Get calendar
      *
-     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
+     * @return CalendarInterface
      */
-    public function getCalendar()
+    public function getCalendar(): CalendarInterface
     {
         return $this->calendar;
     }
@@ -364,11 +375,11 @@ abstract class CalendarPeriodAbstract
     /**
      * Set locution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution | null
+     * @param LocutionInterface | null
      *
      * @return static
      */
-    protected function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution = null)
+    protected function setLocution(?LocutionInterface $locution = null): CalendarPeriodInterface
     {
         $this->locution = $locution;
 
@@ -378,9 +389,9 @@ abstract class CalendarPeriodAbstract
     /**
      * Get locution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @return LocutionInterface | null
      */
-    public function getLocution()
+    public function getLocution(): ?LocutionInterface
     {
         return $this->locution;
     }
@@ -388,11 +399,11 @@ abstract class CalendarPeriodAbstract
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
+     * @param ExtensionInterface | null
      *
      * @return static
      */
-    protected function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null)
+    protected function setExtension(?ExtensionInterface $extension = null): CalendarPeriodInterface
     {
         $this->extension = $extension;
 
@@ -402,9 +413,9 @@ abstract class CalendarPeriodAbstract
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @return ExtensionInterface | null
      */
-    public function getExtension()
+    public function getExtension(): ?ExtensionInterface
     {
         return $this->extension;
     }
@@ -412,11 +423,11 @@ abstract class CalendarPeriodAbstract
     /**
      * Set voiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser | null
+     * @param UserInterface | null
      *
      * @return static
      */
-    protected function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser = null)
+    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): CalendarPeriodInterface
     {
         $this->voiceMailUser = $voiceMailUser;
 
@@ -426,9 +437,9 @@ abstract class CalendarPeriodAbstract
     /**
      * Get voiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getVoiceMailUser()
+    public function getVoiceMailUser(): ?UserInterface
     {
         return $this->voiceMailUser;
     }
@@ -436,11 +447,11 @@ abstract class CalendarPeriodAbstract
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
+     * @param CountryInterface | null
      *
      * @return static
      */
-    protected function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): CalendarPeriodInterface
     {
         $this->numberCountry = $numberCountry;
 
@@ -450,12 +461,11 @@ abstract class CalendarPeriodAbstract
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getNumberCountry()
+    public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;
     }
 
-    // @codeCoverageIgnoreEnd
 }

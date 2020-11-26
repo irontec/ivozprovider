@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
@@ -6,13 +7,24 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
+use Ivoz\Provider\Domain\Model\Currency\Currency;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
 
 /**
- * CarrierAbstract
- * @codeCoverageIgnore
- */
+* CarrierAbstract
+* @codeCoverageIgnore
+*/
 abstract class CarrierAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,7 +36,7 @@ abstract class CarrierAbstract
     protected $name;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $externallyRated = false;
 
@@ -34,38 +46,37 @@ abstract class CarrierAbstract
     protected $balance = 0;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $calculateCost = false;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @var TransformationRuleSetInterface
      */
     protected $transformationRuleSet;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
+     * @var CurrencyInterface
      */
     protected $currency;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     * @var ProxyTrunkInterface
      */
     protected $proxyTrunk;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($description, $name)
-    {
+    protected function __construct(
+        $description,
+        $name
+    ) {
         $this->setDescription($description);
         $this->setName($name);
     }
@@ -134,7 +145,7 @@ abstract class CarrierAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CarrierDto::class);
 
@@ -150,8 +161,7 @@ abstract class CarrierAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
-            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
-        ;
+            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
 
         $self->initChangelog();
 
@@ -165,7 +175,7 @@ abstract class CarrierAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CarrierDto::class);
 
@@ -179,8 +189,6 @@ abstract class CarrierAbstract
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
-
-
 
         return $this;
     }
@@ -198,10 +206,10 @@ abstract class CarrierAbstract
             ->setExternallyRated(self::getExternallyRated())
             ->setBalance(self::getBalance())
             ->setCalculateCost(self::getCalculateCost())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
-            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth))
-            ->setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
+            ->setCurrency(Currency::entityToDto(self::getCurrency(), $depth))
+            ->setProxyTrunk(ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth));
     }
 
     /**
@@ -221,7 +229,6 @@ abstract class CarrierAbstract
             'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set description
@@ -230,9 +237,8 @@ abstract class CarrierAbstract
      *
      * @return static
      */
-    protected function setDescription($description)
+    protected function setDescription(string $description): CarrierInterface
     {
-        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
@@ -257,9 +263,8 @@ abstract class CarrierAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): CarrierInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 200, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -280,11 +285,11 @@ abstract class CarrierAbstract
     /**
      * Set externallyRated
      *
-     * @param boolean $externallyRated | null
+     * @param bool $externallyRated | null
      *
      * @return static
      */
-    protected function setExternallyRated($externallyRated = null)
+    protected function setExternallyRated(?bool $externallyRated = null): CarrierInterface
     {
         if (!is_null($externallyRated)) {
             Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
@@ -299,9 +304,9 @@ abstract class CarrierAbstract
     /**
      * Get externallyRated
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getExternallyRated()
+    public function getExternallyRated(): ?bool
     {
         return $this->externallyRated;
     }
@@ -313,10 +318,9 @@ abstract class CarrierAbstract
      *
      * @return static
      */
-    protected function setBalance($balance = null)
+    protected function setBalance(?float $balance = null): CarrierInterface
     {
         if (!is_null($balance)) {
-            Assertion::numeric($balance);
             $balance = (float) $balance;
         }
 
@@ -330,7 +334,7 @@ abstract class CarrierAbstract
      *
      * @return float | null
      */
-    public function getBalance()
+    public function getBalance(): ?float
     {
         return $this->balance;
     }
@@ -338,11 +342,11 @@ abstract class CarrierAbstract
     /**
      * Set calculateCost
      *
-     * @param boolean $calculateCost | null
+     * @param bool $calculateCost | null
      *
      * @return static
      */
-    protected function setCalculateCost($calculateCost = null)
+    protected function setCalculateCost(?bool $calculateCost = null): CarrierInterface
     {
         if (!is_null($calculateCost)) {
             Assertion::between(intval($calculateCost), 0, 1, 'calculateCost provided "%s" is not a valid boolean value.');
@@ -357,9 +361,9 @@ abstract class CarrierAbstract
     /**
      * Get calculateCost
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getCalculateCost()
+    public function getCalculateCost(): ?bool
     {
         return $this->calculateCost;
     }
@@ -367,11 +371,11 @@ abstract class CarrierAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param BrandInterface
      *
      * @return static
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(BrandInterface $brand): CarrierInterface
     {
         $this->brand = $brand;
 
@@ -381,9 +385,9 @@ abstract class CarrierAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand()
+    public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
@@ -391,11 +395,11 @@ abstract class CarrierAbstract
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
+     * @param TransformationRuleSetInterface | null
      *
      * @return static
      */
-    protected function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
+    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): CarrierInterface
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -405,9 +409,9 @@ abstract class CarrierAbstract
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @return TransformationRuleSetInterface | null
      */
-    public function getTransformationRuleSet()
+    public function getTransformationRuleSet(): ?TransformationRuleSetInterface
     {
         return $this->transformationRuleSet;
     }
@@ -415,11 +419,11 @@ abstract class CarrierAbstract
     /**
      * Set currency
      *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
+     * @param CurrencyInterface | null
      *
      * @return static
      */
-    protected function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    protected function setCurrency(?CurrencyInterface $currency = null): CarrierInterface
     {
         $this->currency = $currency;
 
@@ -429,9 +433,9 @@ abstract class CarrierAbstract
     /**
      * Get currency
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
+     * @return CurrencyInterface | null
      */
-    public function getCurrency()
+    public function getCurrency(): ?CurrencyInterface
     {
         return $this->currency;
     }
@@ -439,11 +443,11 @@ abstract class CarrierAbstract
     /**
      * Set proxyTrunk
      *
-     * @param \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface $proxyTrunk | null
+     * @param ProxyTrunkInterface | null
      *
      * @return static
      */
-    protected function setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface $proxyTrunk = null)
+    protected function setProxyTrunk(?ProxyTrunkInterface $proxyTrunk = null): CarrierInterface
     {
         $this->proxyTrunk = $proxyTrunk;
 
@@ -453,12 +457,11 @@ abstract class CarrierAbstract
     /**
      * Get proxyTrunk
      *
-     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     * @return ProxyTrunkInterface | null
      */
-    public function getProxyTrunk()
+    public function getProxyTrunk(): ?ProxyTrunkInterface
     {
         return $this->proxyTrunk;
     }
 
-    // @codeCoverageIgnoreEnd
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\TerminalModel;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface;
+use Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer;
 
 /**
- * TerminalModelAbstract
- * @codeCoverageIgnore
- */
+* TerminalModelAbstract
+* @codeCoverageIgnore
+*/
 abstract class TerminalModelAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -49,18 +55,18 @@ abstract class TerminalModelAbstract
     protected $specificUrlPattern;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface
+     * @var TerminalManufacturerInterface
      */
     protected $terminalManufacturer;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($iden, $name, $description)
-    {
+    protected function __construct(
+        $iden,
+        $name,
+        $description
+    ) {
         $this->setIden($iden);
         $this->setName($name);
         $this->setDescription($description);
@@ -130,7 +136,7 @@ abstract class TerminalModelAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TerminalModelDto::class);
 
@@ -145,8 +151,7 @@ abstract class TerminalModelAbstract
             ->setSpecificTemplate($dto->getSpecificTemplate())
             ->setGenericUrlPattern($dto->getGenericUrlPattern())
             ->setSpecificUrlPattern($dto->getSpecificUrlPattern())
-            ->setTerminalManufacturer($fkTransformer->transform($dto->getTerminalManufacturer()))
-        ;
+            ->setTerminalManufacturer($fkTransformer->transform($dto->getTerminalManufacturer()));
 
         $self->initChangelog();
 
@@ -160,7 +165,7 @@ abstract class TerminalModelAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TerminalModelDto::class);
 
@@ -173,8 +178,6 @@ abstract class TerminalModelAbstract
             ->setGenericUrlPattern($dto->getGenericUrlPattern())
             ->setSpecificUrlPattern($dto->getSpecificUrlPattern())
             ->setTerminalManufacturer($fkTransformer->transform($dto->getTerminalManufacturer()));
-
-
 
         return $this;
     }
@@ -194,7 +197,7 @@ abstract class TerminalModelAbstract
             ->setSpecificTemplate(self::getSpecificTemplate())
             ->setGenericUrlPattern(self::getGenericUrlPattern())
             ->setSpecificUrlPattern(self::getSpecificUrlPattern())
-            ->setTerminalManufacturer(\Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer::entityToDto(self::getTerminalManufacturer(), $depth));
+            ->setTerminalManufacturer(TerminalManufacturer::entityToDto(self::getTerminalManufacturer(), $depth));
     }
 
     /**
@@ -213,7 +216,6 @@ abstract class TerminalModelAbstract
             'terminalManufacturerId' => self::getTerminalManufacturer()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set iden
@@ -222,9 +224,8 @@ abstract class TerminalModelAbstract
      *
      * @return static
      */
-    protected function setIden($iden)
+    protected function setIden(string $iden): TerminalModelInterface
     {
-        Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
         Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->iden = $iden;
@@ -249,9 +250,8 @@ abstract class TerminalModelAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): TerminalModelInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -276,9 +276,8 @@ abstract class TerminalModelAbstract
      *
      * @return static
      */
-    protected function setDescription($description)
+    protected function setDescription(string $description): TerminalModelInterface
     {
-        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
@@ -303,7 +302,7 @@ abstract class TerminalModelAbstract
      *
      * @return static
      */
-    protected function setGenericTemplate($genericTemplate = null)
+    protected function setGenericTemplate(?string $genericTemplate = null): TerminalModelInterface
     {
         if (!is_null($genericTemplate)) {
             Assertion::maxLength($genericTemplate, 65535, 'genericTemplate value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -319,7 +318,7 @@ abstract class TerminalModelAbstract
      *
      * @return string | null
      */
-    public function getGenericTemplate()
+    public function getGenericTemplate(): ?string
     {
         return $this->genericTemplate;
     }
@@ -331,7 +330,7 @@ abstract class TerminalModelAbstract
      *
      * @return static
      */
-    protected function setSpecificTemplate($specificTemplate = null)
+    protected function setSpecificTemplate(?string $specificTemplate = null): TerminalModelInterface
     {
         if (!is_null($specificTemplate)) {
             Assertion::maxLength($specificTemplate, 65535, 'specificTemplate value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -347,7 +346,7 @@ abstract class TerminalModelAbstract
      *
      * @return string | null
      */
-    public function getSpecificTemplate()
+    public function getSpecificTemplate(): ?string
     {
         return $this->specificTemplate;
     }
@@ -359,7 +358,7 @@ abstract class TerminalModelAbstract
      *
      * @return static
      */
-    protected function setGenericUrlPattern($genericUrlPattern = null)
+    protected function setGenericUrlPattern(?string $genericUrlPattern = null): TerminalModelInterface
     {
         if (!is_null($genericUrlPattern)) {
             Assertion::maxLength($genericUrlPattern, 225, 'genericUrlPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -375,7 +374,7 @@ abstract class TerminalModelAbstract
      *
      * @return string | null
      */
-    public function getGenericUrlPattern()
+    public function getGenericUrlPattern(): ?string
     {
         return $this->genericUrlPattern;
     }
@@ -387,7 +386,7 @@ abstract class TerminalModelAbstract
      *
      * @return static
      */
-    protected function setSpecificUrlPattern($specificUrlPattern = null)
+    protected function setSpecificUrlPattern(?string $specificUrlPattern = null): TerminalModelInterface
     {
         if (!is_null($specificUrlPattern)) {
             Assertion::maxLength($specificUrlPattern, 225, 'specificUrlPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -403,7 +402,7 @@ abstract class TerminalModelAbstract
      *
      * @return string | null
      */
-    public function getSpecificUrlPattern()
+    public function getSpecificUrlPattern(): ?string
     {
         return $this->specificUrlPattern;
     }
@@ -411,11 +410,11 @@ abstract class TerminalModelAbstract
     /**
      * Set terminalManufacturer
      *
-     * @param \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface $terminalManufacturer
+     * @param TerminalManufacturerInterface
      *
      * @return static
      */
-    protected function setTerminalManufacturer(\Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface $terminalManufacturer)
+    protected function setTerminalManufacturer(TerminalManufacturerInterface $terminalManufacturer): TerminalModelInterface
     {
         $this->terminalManufacturer = $terminalManufacturer;
 
@@ -425,12 +424,11 @@ abstract class TerminalModelAbstract
     /**
      * Get terminalManufacturer
      *
-     * @return \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface
+     * @return TerminalManufacturerInterface
      */
-    public function getTerminalManufacturer()
+    public function getTerminalManufacturer(): TerminalManufacturerInterface
     {
         return $this->terminalManufacturer;
     }
 
-    // @codeCoverageIgnoreEnd
 }

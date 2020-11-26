@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Fax;
 
@@ -6,13 +7,20 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 
 /**
- * FaxAbstract
- * @codeCoverageIgnore
- */
+* FaxAbstract
+* @codeCoverageIgnore
+*/
 abstract class FaxAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,28 +32,27 @@ abstract class FaxAbstract
     protected $email;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $sendByEmail = true;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     * @var DdiInterface
      */
     protected $outgoingDdi;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($name, $sendByEmail)
-    {
+    protected function __construct(
+        $name,
+        $sendByEmail
+    ) {
         $this->setName($name);
         $this->setSendByEmail($sendByEmail);
     }
@@ -114,7 +121,7 @@ abstract class FaxAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, FaxDto::class);
 
@@ -126,8 +133,7 @@ abstract class FaxAbstract
         $self
             ->setEmail($dto->getEmail())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
-        ;
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
 
         $self->initChangelog();
 
@@ -141,7 +147,7 @@ abstract class FaxAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, FaxDto::class);
 
@@ -151,8 +157,6 @@ abstract class FaxAbstract
             ->setSendByEmail($dto->getSendByEmail())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
-
-
 
         return $this;
     }
@@ -168,8 +172,8 @@ abstract class FaxAbstract
             ->setName(self::getName())
             ->setEmail(self::getEmail())
             ->setSendByEmail(self::getSendByEmail())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getOutgoingDdi(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth));
     }
 
     /**
@@ -185,7 +189,6 @@ abstract class FaxAbstract
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -194,9 +197,8 @@ abstract class FaxAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): FaxInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -221,7 +223,7 @@ abstract class FaxAbstract
      *
      * @return static
      */
-    protected function setEmail($email = null)
+    protected function setEmail(?string $email = null): FaxInterface
     {
         if (!is_null($email)) {
             Assertion::maxLength($email, 255, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -237,7 +239,7 @@ abstract class FaxAbstract
      *
      * @return string | null
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -245,13 +247,12 @@ abstract class FaxAbstract
     /**
      * Set sendByEmail
      *
-     * @param boolean $sendByEmail
+     * @param bool $sendByEmail
      *
      * @return static
      */
-    protected function setSendByEmail($sendByEmail)
+    protected function setSendByEmail(bool $sendByEmail): FaxInterface
     {
-        Assertion::notNull($sendByEmail, 'sendByEmail value "%s" is null, but non null value was expected.');
         Assertion::between(intval($sendByEmail), 0, 1, 'sendByEmail provided "%s" is not a valid boolean value.');
         $sendByEmail = (bool) $sendByEmail;
 
@@ -263,7 +264,7 @@ abstract class FaxAbstract
     /**
      * Get sendByEmail
      *
-     * @return boolean
+     * @return bool
      */
     public function getSendByEmail(): bool
     {
@@ -273,11 +274,11 @@ abstract class FaxAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(CompanyInterface $company): FaxInterface
     {
         $this->company = $company;
 
@@ -287,9 +288,9 @@ abstract class FaxAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany()
+    public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
@@ -297,11 +298,11 @@ abstract class FaxAbstract
     /**
      * Set outgoingDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
+     * @param DdiInterface | null
      *
      * @return static
      */
-    protected function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
+    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): FaxInterface
     {
         $this->outgoingDdi = $outgoingDdi;
 
@@ -311,12 +312,11 @@ abstract class FaxAbstract
     /**
      * Get outgoingDdi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     * @return DdiInterface | null
      */
-    public function getOutgoingDdi()
+    public function getOutgoingDdi(): ?DdiInterface
     {
         return $this->outgoingDdi;
     }
 
-    // @codeCoverageIgnoreEnd
 }

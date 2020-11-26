@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity;
 
@@ -6,51 +7,60 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
+use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface;
+use Ivoz\Provider\Domain\Model\Administrator\Administrator;
+use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity;
 
 /**
- * AdministratorRelPublicEntityAbstract
- * @codeCoverageIgnore
- */
+* AdministratorRelPublicEntityAbstract
+* @codeCoverageIgnore
+*/
 abstract class AdministratorRelPublicEntityAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var boolean
+     * @var bool
      */
     protected $create = false;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $read = true;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $update = false;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $delete = false;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface
+     * @var AdministratorInterface
+     * inversedBy relPublicEntities
      */
     protected $administrator;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface
+     * @var PublicEntityInterface
      */
     protected $publicEntity;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($create, $read, $update, $delete)
-    {
+    protected function __construct(
+        $create,
+        $read,
+        $update,
+        $delete
+    ) {
         $this->setCreate($create);
         $this->setRead($read);
         $this->setUpdate($update);
@@ -121,7 +131,7 @@ abstract class AdministratorRelPublicEntityAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, AdministratorRelPublicEntityDto::class);
 
@@ -134,8 +144,7 @@ abstract class AdministratorRelPublicEntityAbstract
 
         $self
             ->setAdministrator($fkTransformer->transform($dto->getAdministrator()))
-            ->setPublicEntity($fkTransformer->transform($dto->getPublicEntity()))
-        ;
+            ->setPublicEntity($fkTransformer->transform($dto->getPublicEntity()));
 
         $self->initChangelog();
 
@@ -149,7 +158,7 @@ abstract class AdministratorRelPublicEntityAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, AdministratorRelPublicEntityDto::class);
 
@@ -160,8 +169,6 @@ abstract class AdministratorRelPublicEntityAbstract
             ->setDelete($dto->getDelete())
             ->setAdministrator($fkTransformer->transform($dto->getAdministrator()))
             ->setPublicEntity($fkTransformer->transform($dto->getPublicEntity()));
-
-
 
         return $this;
     }
@@ -178,8 +185,8 @@ abstract class AdministratorRelPublicEntityAbstract
             ->setRead(self::getRead())
             ->setUpdate(self::getUpdate())
             ->setDelete(self::getDelete())
-            ->setAdministrator(\Ivoz\Provider\Domain\Model\Administrator\Administrator::entityToDto(self::getAdministrator(), $depth))
-            ->setPublicEntity(\Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity::entityToDto(self::getPublicEntity(), $depth));
+            ->setAdministrator(Administrator::entityToDto(self::getAdministrator(), $depth))
+            ->setPublicEntity(PublicEntity::entityToDto(self::getPublicEntity(), $depth));
     }
 
     /**
@@ -196,18 +203,16 @@ abstract class AdministratorRelPublicEntityAbstract
             'publicEntityId' => self::getPublicEntity()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set create
      *
-     * @param boolean $create
+     * @param bool $create
      *
      * @return static
      */
-    protected function setCreate($create)
+    protected function setCreate(bool $create): AdministratorRelPublicEntityInterface
     {
-        Assertion::notNull($create, 'create value "%s" is null, but non null value was expected.');
         Assertion::between(intval($create), 0, 1, 'create provided "%s" is not a valid boolean value.');
         $create = (bool) $create;
 
@@ -219,7 +224,7 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * Get create
      *
-     * @return boolean
+     * @return bool
      */
     public function getCreate(): bool
     {
@@ -229,13 +234,12 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * Set read
      *
-     * @param boolean $read
+     * @param bool $read
      *
      * @return static
      */
-    protected function setRead($read)
+    protected function setRead(bool $read): AdministratorRelPublicEntityInterface
     {
-        Assertion::notNull($read, 'read value "%s" is null, but non null value was expected.');
         Assertion::between(intval($read), 0, 1, 'read provided "%s" is not a valid boolean value.');
         $read = (bool) $read;
 
@@ -247,7 +251,7 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * Get read
      *
-     * @return boolean
+     * @return bool
      */
     public function getRead(): bool
     {
@@ -257,13 +261,12 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * Set update
      *
-     * @param boolean $update
+     * @param bool $update
      *
      * @return static
      */
-    protected function setUpdate($update)
+    protected function setUpdate(bool $update): AdministratorRelPublicEntityInterface
     {
-        Assertion::notNull($update, 'update value "%s" is null, but non null value was expected.');
         Assertion::between(intval($update), 0, 1, 'update provided "%s" is not a valid boolean value.');
         $update = (bool) $update;
 
@@ -275,7 +278,7 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * Get update
      *
-     * @return boolean
+     * @return bool
      */
     public function getUpdate(): bool
     {
@@ -285,13 +288,12 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * Set delete
      *
-     * @param boolean $delete
+     * @param bool $delete
      *
      * @return static
      */
-    protected function setDelete($delete)
+    protected function setDelete(bool $delete): AdministratorRelPublicEntityInterface
     {
-        Assertion::notNull($delete, 'delete value "%s" is null, but non null value was expected.');
         Assertion::between(intval($delete), 0, 1, 'delete provided "%s" is not a valid boolean value.');
         $delete = (bool) $delete;
 
@@ -303,7 +305,7 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * Get delete
      *
-     * @return boolean
+     * @return bool
      */
     public function getDelete(): bool
     {
@@ -313,11 +315,11 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * Set administrator
      *
-     * @param \Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface $administrator
+     * @param AdministratorInterface
      *
      * @return static
      */
-    public function setAdministrator(\Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface $administrator)
+    public function setAdministrator(AdministratorInterface $administrator): AdministratorRelPublicEntityInterface
     {
         $this->administrator = $administrator;
 
@@ -327,9 +329,9 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * Get administrator
      *
-     * @return \Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface
+     * @return AdministratorInterface
      */
-    public function getAdministrator()
+    public function getAdministrator(): AdministratorInterface
     {
         return $this->administrator;
     }
@@ -337,11 +339,11 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * Set publicEntity
      *
-     * @param \Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface $publicEntity
+     * @param PublicEntityInterface
      *
      * @return static
      */
-    protected function setPublicEntity(\Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface $publicEntity)
+    protected function setPublicEntity(PublicEntityInterface $publicEntity): AdministratorRelPublicEntityInterface
     {
         $this->publicEntity = $publicEntity;
 
@@ -351,12 +353,11 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * Get publicEntity
      *
-     * @return \Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface
+     * @return PublicEntityInterface
      */
-    public function getPublicEntity()
+    public function getPublicEntity(): PublicEntityInterface
     {
         return $this->publicEntity;
     }
 
-    // @codeCoverageIgnoreEnd
 }

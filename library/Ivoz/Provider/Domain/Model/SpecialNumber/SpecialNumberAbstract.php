@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\SpecialNumber;
 
@@ -6,13 +7,20 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
- * SpecialNumberAbstract
- * @codeCoverageIgnore
- */
+* SpecialNumberAbstract
+* @codeCoverageIgnore
+*/
 abstract class SpecialNumberAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,28 +32,27 @@ abstract class SpecialNumberAbstract
     protected $numberE164;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $disableCDR = 1;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @var BrandInterface
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var CountryInterface
      */
     protected $country;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($number, $disableCDR)
-    {
+    protected function __construct(
+        $number,
+        $disableCDR
+    ) {
         $this->setNumber($number);
         $this->setDisableCDR($disableCDR);
     }
@@ -114,7 +121,7 @@ abstract class SpecialNumberAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, SpecialNumberDto::class);
 
@@ -126,8 +133,7 @@ abstract class SpecialNumberAbstract
         $self
             ->setNumberE164($dto->getNumberE164())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()))
-        ;
+            ->setCountry($fkTransformer->transform($dto->getCountry()));
 
         $self->initChangelog();
 
@@ -141,7 +147,7 @@ abstract class SpecialNumberAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, SpecialNumberDto::class);
 
@@ -151,8 +157,6 @@ abstract class SpecialNumberAbstract
             ->setDisableCDR($dto->getDisableCDR())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCountry($fkTransformer->transform($dto->getCountry()));
-
-
 
         return $this;
     }
@@ -168,8 +172,8 @@ abstract class SpecialNumberAbstract
             ->setNumber(self::getNumber())
             ->setNumberE164(self::getNumberE164())
             ->setDisableCDR(self::getDisableCDR())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setCountry(Country::entityToDto(self::getCountry(), $depth));
     }
 
     /**
@@ -185,7 +189,6 @@ abstract class SpecialNumberAbstract
             'countryId' => self::getCountry()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set number
@@ -194,9 +197,8 @@ abstract class SpecialNumberAbstract
      *
      * @return static
      */
-    protected function setNumber($number)
+    protected function setNumber(string $number): SpecialNumberInterface
     {
-        Assertion::notNull($number, 'number value "%s" is null, but non null value was expected.');
         Assertion::maxLength($number, 25, 'number value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->number = $number;
@@ -221,7 +223,7 @@ abstract class SpecialNumberAbstract
      *
      * @return static
      */
-    protected function setNumberE164($numberE164 = null)
+    protected function setNumberE164(?string $numberE164 = null): SpecialNumberInterface
     {
         if (!is_null($numberE164)) {
             Assertion::maxLength($numberE164, 25, 'numberE164 value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -237,7 +239,7 @@ abstract class SpecialNumberAbstract
      *
      * @return string | null
      */
-    public function getNumberE164()
+    public function getNumberE164(): ?string
     {
         return $this->numberE164;
     }
@@ -245,17 +247,15 @@ abstract class SpecialNumberAbstract
     /**
      * Set disableCDR
      *
-     * @param integer $disableCDR
+     * @param int $disableCDR
      *
      * @return static
      */
-    protected function setDisableCDR($disableCDR)
+    protected function setDisableCDR(int $disableCDR): SpecialNumberInterface
     {
-        Assertion::notNull($disableCDR, 'disableCDR value "%s" is null, but non null value was expected.');
-        Assertion::integerish($disableCDR, 'disableCDR value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($disableCDR, 0, 'disableCDR provided "%s" is not greater or equal than "%s".');
 
-        $this->disableCDR = (int) $disableCDR;
+        $this->disableCDR = $disableCDR;
 
         return $this;
     }
@@ -263,7 +263,7 @@ abstract class SpecialNumberAbstract
     /**
      * Get disableCDR
      *
-     * @return integer
+     * @return int
      */
     public function getDisableCDR(): int
     {
@@ -273,11 +273,11 @@ abstract class SpecialNumberAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
+     * @param BrandInterface | null
      *
      * @return static
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    protected function setBrand(?BrandInterface $brand = null): SpecialNumberInterface
     {
         $this->brand = $brand;
 
@@ -287,9 +287,9 @@ abstract class SpecialNumberAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
@@ -297,11 +297,11 @@ abstract class SpecialNumberAbstract
     /**
      * Set country
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
+     * @param CountryInterface
      *
      * @return static
      */
-    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country)
+    protected function setCountry(CountryInterface $country): SpecialNumberInterface
     {
         $this->country = $country;
 
@@ -311,12 +311,11 @@ abstract class SpecialNumberAbstract
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return CountryInterface
      */
-    public function getCountry()
+    public function getCountry(): CountryInterface
     {
         return $this->country;
     }
 
-    // @codeCoverageIgnoreEnd
 }

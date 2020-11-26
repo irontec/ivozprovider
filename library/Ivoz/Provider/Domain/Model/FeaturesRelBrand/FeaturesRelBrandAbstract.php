@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\FeaturesRelBrand;
 
@@ -6,31 +7,38 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 
 /**
- * FeaturesRelBrandAbstract
- * @codeCoverageIgnore
- */
+* FeaturesRelBrandAbstract
+* @codeCoverageIgnore
+*/
 abstract class FeaturesRelBrandAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @var BrandInterface
+     * inversedBy relFeatures
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Feature\FeatureInterface
+     * @var FeatureInterface
      */
     protected $feature;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -97,16 +105,17 @@ abstract class FeaturesRelBrandAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, FeaturesRelBrandDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setFeature($fkTransformer->transform($dto->getFeature()))
-        ;
+            ->setFeature($fkTransformer->transform($dto->getFeature()));
 
         $self->initChangelog();
 
@@ -120,15 +129,13 @@ abstract class FeaturesRelBrandAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, FeaturesRelBrandDto::class);
 
         $this
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setFeature($fkTransformer->transform($dto->getFeature()));
-
-
 
         return $this;
     }
@@ -141,8 +148,8 @@ abstract class FeaturesRelBrandAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setFeature(\Ivoz\Provider\Domain\Model\Feature\Feature::entityToDto(self::getFeature(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setFeature(Feature::entityToDto(self::getFeature(), $depth));
     }
 
     /**
@@ -155,16 +162,15 @@ abstract class FeaturesRelBrandAbstract
             'featureId' => self::getFeature()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
+     * @param BrandInterface | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    public function setBrand(?BrandInterface $brand = null): FeaturesRelBrandInterface
     {
         $this->brand = $brand;
 
@@ -174,9 +180,9 @@ abstract class FeaturesRelBrandAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
@@ -184,11 +190,11 @@ abstract class FeaturesRelBrandAbstract
     /**
      * Set feature
      *
-     * @param \Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature
+     * @param FeatureInterface
      *
      * @return static
      */
-    protected function setFeature(\Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature)
+    protected function setFeature(FeatureInterface $feature): FeaturesRelBrandInterface
     {
         $this->feature = $feature;
 
@@ -198,12 +204,11 @@ abstract class FeaturesRelBrandAbstract
     /**
      * Get feature
      *
-     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureInterface
+     * @return FeatureInterface
      */
-    public function getFeature()
+    public function getFeature(): FeatureInterface
     {
         return $this->feature;
     }
 
-    // @codeCoverageIgnoreEnd
 }

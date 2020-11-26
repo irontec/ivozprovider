@@ -1,14 +1,14 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Assert\Assertion;
-use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
- * Invoice
- * @codeCoverageIgnore
- */
+* Invoice
+* @codeCoverageIgnore
+*/
 class Invoice
 {
     /**
@@ -46,7 +46,6 @@ class Invoice
      */
     protected $registryData;
 
-
     /**
      * Constructor
      */
@@ -83,9 +82,6 @@ class Invoice
             $this->getRegistryData() === $invoice->getRegistryData();
     }
 
-
-    // @codeCoverageIgnoreStart
-
     /**
      * Set nif
      *
@@ -93,9 +89,8 @@ class Invoice
      *
      * @return static
      */
-    protected function setNif($nif)
+    protected function setNif(string $nif): Invoice
     {
-        Assertion::notNull($nif, 'nif value "%s" is null, but non null value was expected.');
         Assertion::maxLength($nif, 25, 'nif value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->nif = $nif;
@@ -120,9 +115,8 @@ class Invoice
      *
      * @return static
      */
-    protected function setPostalAddress($postalAddress)
+    protected function setPostalAddress(string $postalAddress): Invoice
     {
-        Assertion::notNull($postalAddress, 'postalAddress value "%s" is null, but non null value was expected.');
         Assertion::maxLength($postalAddress, 255, 'postalAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->postalAddress = $postalAddress;
@@ -147,9 +141,8 @@ class Invoice
      *
      * @return static
      */
-    protected function setPostalCode($postalCode)
+    protected function setPostalCode(string $postalCode): Invoice
     {
-        Assertion::notNull($postalCode, 'postalCode value "%s" is null, but non null value was expected.');
         Assertion::maxLength($postalCode, 10, 'postalCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->postalCode = $postalCode;
@@ -174,9 +167,8 @@ class Invoice
      *
      * @return static
      */
-    protected function setTown($town)
+    protected function setTown(string $town): Invoice
     {
-        Assertion::notNull($town, 'town value "%s" is null, but non null value was expected.');
         Assertion::maxLength($town, 255, 'town value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->town = $town;
@@ -201,9 +193,8 @@ class Invoice
      *
      * @return static
      */
-    protected function setProvince($province)
+    protected function setProvince(string $province): Invoice
     {
-        Assertion::notNull($province, 'province value "%s" is null, but non null value was expected.');
         Assertion::maxLength($province, 255, 'province value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->province = $province;
@@ -228,9 +219,8 @@ class Invoice
      *
      * @return static
      */
-    protected function setCountry($country)
+    protected function setCountry(string $country): Invoice
     {
-        Assertion::notNull($country, 'country value "%s" is null, but non null value was expected.');
         Assertion::maxLength($country, 255, 'country value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->country = $country;
@@ -255,7 +245,7 @@ class Invoice
      *
      * @return static
      */
-    protected function setRegistryData($registryData = null)
+    protected function setRegistryData(?string $registryData = null): Invoice
     {
         if (!is_null($registryData)) {
             Assertion::maxLength($registryData, 1024, 'registryData value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -271,10 +261,9 @@ class Invoice
      *
      * @return string | null
      */
-    public function getRegistryData()
+    public function getRegistryData(): ?string
     {
         return $this->registryData;
     }
 
-    // @codeCoverageIgnoreEnd
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\RatingPlan;
 
@@ -6,13 +7,21 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup;
 
 /**
- * RatingPlanAbstract
- * @codeCoverageIgnore
- */
+* RatingPlanAbstract
+* @codeCoverageIgnore
+*/
 abstract class RatingPlanAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var float
      */
@@ -27,63 +36,63 @@ abstract class RatingPlanAbstract
 
     /**
      * column: time_in
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     protected $timeIn;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $monday = true;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $tuesday = true;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $wednesday = true;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $thursday = true;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $friday = true;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $saturday = true;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $sunday = true;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     * @var RatingPlanGroupInterface
+     * inversedBy ratingPlan
      */
     protected $ratingPlanGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
+     * @var DestinationRateGroupInterface
      */
     protected $destinationRateGroup;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($weight, $timeIn)
-    {
+    protected function __construct(
+        $weight,
+        $timeIn
+    ) {
         $this->setWeight($weight);
         $this->setTimeIn($timeIn);
     }
@@ -152,7 +161,7 @@ abstract class RatingPlanAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RatingPlanDto::class);
 
@@ -171,8 +180,7 @@ abstract class RatingPlanAbstract
             ->setSaturday($dto->getSaturday())
             ->setSunday($dto->getSunday())
             ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
-            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
-        ;
+            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()));
 
         $self->initChangelog();
 
@@ -186,7 +194,7 @@ abstract class RatingPlanAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RatingPlanDto::class);
 
@@ -203,8 +211,6 @@ abstract class RatingPlanAbstract
             ->setSunday($dto->getSunday())
             ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
             ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()));
-
-
 
         return $this;
     }
@@ -227,8 +233,8 @@ abstract class RatingPlanAbstract
             ->setFriday(self::getFriday())
             ->setSaturday(self::getSaturday())
             ->setSunday(self::getSunday())
-            ->setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup::entityToDto(self::getRatingPlanGroup(), $depth))
-            ->setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup::entityToDto(self::getDestinationRateGroup(), $depth));
+            ->setRatingPlanGroup(RatingPlanGroup::entityToDto(self::getRatingPlanGroup(), $depth))
+            ->setDestinationRateGroup(DestinationRateGroup::entityToDto(self::getDestinationRateGroup(), $depth));
     }
 
     /**
@@ -251,7 +257,6 @@ abstract class RatingPlanAbstract
             'destinationRateGroupId' => self::getDestinationRateGroup()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set weight
@@ -260,12 +265,9 @@ abstract class RatingPlanAbstract
      *
      * @return static
      */
-    protected function setWeight($weight)
+    protected function setWeight(float $weight): RatingPlanInterface
     {
-        Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
-        Assertion::numeric($weight);
-
-        $this->weight = (float) $weight;
+        $this->weight = $weight;
 
         return $this;
     }
@@ -287,14 +289,18 @@ abstract class RatingPlanAbstract
      *
      * @return static
      */
-    protected function setTimingType($timingType = null)
+    protected function setTimingType(?string $timingType = null): RatingPlanInterface
     {
         if (!is_null($timingType)) {
             Assertion::maxLength($timingType, 10, 'timingType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($timingType, [
-                RatingPlanInterface::TIMINGTYPE_ALWAYS,
-                RatingPlanInterface::TIMINGTYPE_CUSTOM
-            ], 'timingTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $timingType,
+                [
+                    RatingPlanInterface::TIMINGTYPE_ALWAYS,
+                    RatingPlanInterface::TIMINGTYPE_CUSTOM,
+                ],
+                'timingTypevalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->timingType = $timingType;
@@ -307,7 +313,7 @@ abstract class RatingPlanAbstract
      *
      * @return string | null
      */
-    public function getTimingType()
+    public function getTimingType(): ?string
     {
         return $this->timingType;
     }
@@ -315,14 +321,12 @@ abstract class RatingPlanAbstract
     /**
      * Set timeIn
      *
-     * @param \DateTime $timeIn
+     * @param \DateTimeInterface $timeIn
      *
      * @return static
      */
-    protected function setTimeIn($timeIn)
+    protected function setTimeIn($timeIn): RatingPlanInterface
     {
-        Assertion::notNull($timeIn, 'timeIn value "%s" is null, but non null value was expected.');
-
         $this->timeIn = $timeIn;
 
         return $this;
@@ -331,21 +335,21 @@ abstract class RatingPlanAbstract
     /**
      * Get timeIn
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getTimeIn(): \DateTime
+    public function getTimeIn(): \DateTimeInterface
     {
-        return $this->timeIn;
+        return clone $this->timeIn;
     }
 
     /**
      * Set monday
      *
-     * @param boolean $monday | null
+     * @param bool $monday | null
      *
      * @return static
      */
-    protected function setMonday($monday = null)
+    protected function setMonday(?bool $monday = null): RatingPlanInterface
     {
         if (!is_null($monday)) {
             Assertion::between(intval($monday), 0, 1, 'monday provided "%s" is not a valid boolean value.');
@@ -360,9 +364,9 @@ abstract class RatingPlanAbstract
     /**
      * Get monday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getMonday()
+    public function getMonday(): ?bool
     {
         return $this->monday;
     }
@@ -370,11 +374,11 @@ abstract class RatingPlanAbstract
     /**
      * Set tuesday
      *
-     * @param boolean $tuesday | null
+     * @param bool $tuesday | null
      *
      * @return static
      */
-    protected function setTuesday($tuesday = null)
+    protected function setTuesday(?bool $tuesday = null): RatingPlanInterface
     {
         if (!is_null($tuesday)) {
             Assertion::between(intval($tuesday), 0, 1, 'tuesday provided "%s" is not a valid boolean value.');
@@ -389,9 +393,9 @@ abstract class RatingPlanAbstract
     /**
      * Get tuesday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getTuesday()
+    public function getTuesday(): ?bool
     {
         return $this->tuesday;
     }
@@ -399,11 +403,11 @@ abstract class RatingPlanAbstract
     /**
      * Set wednesday
      *
-     * @param boolean $wednesday | null
+     * @param bool $wednesday | null
      *
      * @return static
      */
-    protected function setWednesday($wednesday = null)
+    protected function setWednesday(?bool $wednesday = null): RatingPlanInterface
     {
         if (!is_null($wednesday)) {
             Assertion::between(intval($wednesday), 0, 1, 'wednesday provided "%s" is not a valid boolean value.');
@@ -418,9 +422,9 @@ abstract class RatingPlanAbstract
     /**
      * Get wednesday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getWednesday()
+    public function getWednesday(): ?bool
     {
         return $this->wednesday;
     }
@@ -428,11 +432,11 @@ abstract class RatingPlanAbstract
     /**
      * Set thursday
      *
-     * @param boolean $thursday | null
+     * @param bool $thursday | null
      *
      * @return static
      */
-    protected function setThursday($thursday = null)
+    protected function setThursday(?bool $thursday = null): RatingPlanInterface
     {
         if (!is_null($thursday)) {
             Assertion::between(intval($thursday), 0, 1, 'thursday provided "%s" is not a valid boolean value.');
@@ -447,9 +451,9 @@ abstract class RatingPlanAbstract
     /**
      * Get thursday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getThursday()
+    public function getThursday(): ?bool
     {
         return $this->thursday;
     }
@@ -457,11 +461,11 @@ abstract class RatingPlanAbstract
     /**
      * Set friday
      *
-     * @param boolean $friday | null
+     * @param bool $friday | null
      *
      * @return static
      */
-    protected function setFriday($friday = null)
+    protected function setFriday(?bool $friday = null): RatingPlanInterface
     {
         if (!is_null($friday)) {
             Assertion::between(intval($friday), 0, 1, 'friday provided "%s" is not a valid boolean value.');
@@ -476,9 +480,9 @@ abstract class RatingPlanAbstract
     /**
      * Get friday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getFriday()
+    public function getFriday(): ?bool
     {
         return $this->friday;
     }
@@ -486,11 +490,11 @@ abstract class RatingPlanAbstract
     /**
      * Set saturday
      *
-     * @param boolean $saturday | null
+     * @param bool $saturday | null
      *
      * @return static
      */
-    protected function setSaturday($saturday = null)
+    protected function setSaturday(?bool $saturday = null): RatingPlanInterface
     {
         if (!is_null($saturday)) {
             Assertion::between(intval($saturday), 0, 1, 'saturday provided "%s" is not a valid boolean value.');
@@ -505,9 +509,9 @@ abstract class RatingPlanAbstract
     /**
      * Get saturday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSaturday()
+    public function getSaturday(): ?bool
     {
         return $this->saturday;
     }
@@ -515,11 +519,11 @@ abstract class RatingPlanAbstract
     /**
      * Set sunday
      *
-     * @param boolean $sunday | null
+     * @param bool $sunday | null
      *
      * @return static
      */
-    protected function setSunday($sunday = null)
+    protected function setSunday(?bool $sunday = null): RatingPlanInterface
     {
         if (!is_null($sunday)) {
             Assertion::between(intval($sunday), 0, 1, 'sunday provided "%s" is not a valid boolean value.');
@@ -534,9 +538,9 @@ abstract class RatingPlanAbstract
     /**
      * Get sunday
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getSunday()
+    public function getSunday(): ?bool
     {
         return $this->sunday;
     }
@@ -544,11 +548,11 @@ abstract class RatingPlanAbstract
     /**
      * Set ratingPlanGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
+     * @param RatingPlanGroupInterface
      *
      * @return static
      */
-    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup)
+    public function setRatingPlanGroup(RatingPlanGroupInterface $ratingPlanGroup): RatingPlanInterface
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
@@ -558,9 +562,9 @@ abstract class RatingPlanAbstract
     /**
      * Get ratingPlanGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     * @return RatingPlanGroupInterface
      */
-    public function getRatingPlanGroup()
+    public function getRatingPlanGroup(): RatingPlanGroupInterface
     {
         return $this->ratingPlanGroup;
     }
@@ -568,11 +572,11 @@ abstract class RatingPlanAbstract
     /**
      * Set destinationRateGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup
+     * @param DestinationRateGroupInterface
      *
      * @return static
      */
-    protected function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup)
+    protected function setDestinationRateGroup(DestinationRateGroupInterface $destinationRateGroup): RatingPlanInterface
     {
         $this->destinationRateGroup = $destinationRateGroup;
 
@@ -582,12 +586,11 @@ abstract class RatingPlanAbstract
     /**
      * Get destinationRateGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
+     * @return DestinationRateGroupInterface
      */
-    public function getDestinationRateGroup()
+    public function getDestinationRateGroup(): DestinationRateGroupInterface
     {
         return $this->destinationRateGroup;
     }
 
-    // @codeCoverageIgnoreEnd
 }

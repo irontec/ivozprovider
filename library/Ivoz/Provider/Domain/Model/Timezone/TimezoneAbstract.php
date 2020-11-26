@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Timezone;
 
@@ -6,13 +7,19 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Timezone\Label;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
- * TimezoneAbstract
- * @codeCoverageIgnore
- */
+* TimezoneAbstract
+* @codeCoverageIgnore
+*/
 abstract class TimezoneAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -29,18 +36,17 @@ abstract class TimezoneAbstract
     protected $label;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @var CountryInterface
      */
     protected $country;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($tz, Label $label)
-    {
+    protected function __construct(
+        $tz,
+        Label $label
+    ) {
         $this->setTz($tz);
         $this->setLabel($label);
     }
@@ -109,7 +115,7 @@ abstract class TimezoneAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
 
@@ -127,8 +133,7 @@ abstract class TimezoneAbstract
 
         $self
             ->setComment($dto->getComment())
-            ->setCountry($fkTransformer->transform($dto->getCountry()))
-        ;
+            ->setCountry($fkTransformer->transform($dto->getCountry()));
 
         $self->initChangelog();
 
@@ -142,7 +147,7 @@ abstract class TimezoneAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
 
@@ -158,8 +163,6 @@ abstract class TimezoneAbstract
             ->setComment($dto->getComment())
             ->setLabel($label)
             ->setCountry($fkTransformer->transform($dto->getCountry()));
-
-
 
         return $this;
     }
@@ -178,7 +181,7 @@ abstract class TimezoneAbstract
             ->setLabelEs(self::getLabel()->getEs())
             ->setLabelCa(self::getLabel()->getCa())
             ->setLabelIt(self::getLabel()->getIt())
-            ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth));
+            ->setCountry(Country::entityToDto(self::getCountry(), $depth));
     }
 
     /**
@@ -196,7 +199,6 @@ abstract class TimezoneAbstract
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set tz
@@ -205,9 +207,8 @@ abstract class TimezoneAbstract
      *
      * @return static
      */
-    protected function setTz($tz)
+    protected function setTz(string $tz): TimezoneInterface
     {
-        Assertion::notNull($tz, 'tz value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tz, 255, 'tz value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tz = $tz;
@@ -232,7 +233,7 @@ abstract class TimezoneAbstract
      *
      * @return static
      */
-    protected function setComment($comment = null)
+    protected function setComment(?string $comment = null): TimezoneInterface
     {
         if (!is_null($comment)) {
             Assertion::maxLength($comment, 150, 'comment value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -248,43 +249,27 @@ abstract class TimezoneAbstract
      *
      * @return string | null
      */
-    public function getComment()
+    public function getComment(): ?string
     {
         return $this->comment;
     }
 
     /**
-     * Set country
+     * Get label
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country | null
-     *
-     * @return static
+     * @return Label
      */
-    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
+    public function getLabel(): Label
     {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
-     */
-    public function getCountry()
-    {
-        return $this->country;
+        return $this->label;
     }
 
     /**
      * Set label
      *
-     * @param \Ivoz\Provider\Domain\Model\Timezone\Label $label
-     *
      * @return static
      */
-    protected function setLabel(Label $label)
+    protected function setLabel(Label $label): TimezoneInterface
     {
         $isEqual = $this->label && $this->label->equals($label);
         if ($isEqual) {
@@ -296,13 +281,27 @@ abstract class TimezoneAbstract
     }
 
     /**
-     * Get label
+     * Set country
      *
-     * @return \Ivoz\Provider\Domain\Model\Timezone\Label
+     * @param CountryInterface | null
+     *
+     * @return static
      */
-    public function getLabel()
+    protected function setCountry(?CountryInterface $country = null): TimezoneInterface
     {
-        return $this->label;
+        $this->country = $country;
+
+        return $this;
     }
-    // @codeCoverageIgnoreEnd
+
+    /**
+     * Get country
+     *
+     * @return CountryInterface | null
+     */
+    public function getCountry(): ?CountryInterface
+    {
+        return $this->country;
+    }
+
 }

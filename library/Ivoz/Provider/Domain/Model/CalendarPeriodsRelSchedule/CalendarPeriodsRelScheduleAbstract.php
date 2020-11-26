@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule;
 
@@ -6,31 +7,38 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface;
+use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
+use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod;
+use Ivoz\Provider\Domain\Model\Schedule\Schedule;
 
 /**
- * CalendarPeriodsRelScheduleAbstract
- * @codeCoverageIgnore
- */
+* CalendarPeriodsRelScheduleAbstract
+* @codeCoverageIgnore
+*/
 abstract class CalendarPeriodsRelScheduleAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface | null
+     * @var CalendarPeriodInterface
+     * inversedBy relSchedules
      */
     protected $calendarPeriod;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface
+     * @var ScheduleInterface
      */
     protected $schedule;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -97,16 +105,17 @@ abstract class CalendarPeriodsRelScheduleAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CalendarPeriodsRelScheduleDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setCalendarPeriod($fkTransformer->transform($dto->getCalendarPeriod()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()))
-        ;
+            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
 
         $self->initChangelog();
 
@@ -120,15 +129,13 @@ abstract class CalendarPeriodsRelScheduleAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CalendarPeriodsRelScheduleDto::class);
 
         $this
             ->setCalendarPeriod($fkTransformer->transform($dto->getCalendarPeriod()))
             ->setSchedule($fkTransformer->transform($dto->getSchedule()));
-
-
 
         return $this;
     }
@@ -141,8 +148,8 @@ abstract class CalendarPeriodsRelScheduleAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCalendarPeriod(\Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod::entityToDto(self::getCalendarPeriod(), $depth))
-            ->setSchedule(\Ivoz\Provider\Domain\Model\Schedule\Schedule::entityToDto(self::getSchedule(), $depth));
+            ->setCalendarPeriod(CalendarPeriod::entityToDto(self::getCalendarPeriod(), $depth))
+            ->setSchedule(Schedule::entityToDto(self::getSchedule(), $depth));
     }
 
     /**
@@ -155,16 +162,15 @@ abstract class CalendarPeriodsRelScheduleAbstract
             'scheduleId' => self::getSchedule()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set calendarPeriod
      *
-     * @param \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod | null
+     * @param CalendarPeriodInterface | null
      *
      * @return static
      */
-    public function setCalendarPeriod(\Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface $calendarPeriod = null)
+    public function setCalendarPeriod(?CalendarPeriodInterface $calendarPeriod = null): CalendarPeriodsRelScheduleInterface
     {
         $this->calendarPeriod = $calendarPeriod;
 
@@ -174,9 +180,9 @@ abstract class CalendarPeriodsRelScheduleAbstract
     /**
      * Get calendarPeriod
      *
-     * @return \Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface | null
+     * @return CalendarPeriodInterface | null
      */
-    public function getCalendarPeriod()
+    public function getCalendarPeriod(): ?CalendarPeriodInterface
     {
         return $this->calendarPeriod;
     }
@@ -184,11 +190,11 @@ abstract class CalendarPeriodsRelScheduleAbstract
     /**
      * Set schedule
      *
-     * @param \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule
+     * @param ScheduleInterface
      *
      * @return static
      */
-    protected function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule)
+    protected function setSchedule(ScheduleInterface $schedule): CalendarPeriodsRelScheduleInterface
     {
         $this->schedule = $schedule;
 
@@ -198,12 +204,11 @@ abstract class CalendarPeriodsRelScheduleAbstract
     /**
      * Get schedule
      *
-     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface
+     * @return ScheduleInterface
      */
-    public function getSchedule()
+    public function getSchedule(): ScheduleInterface
     {
         return $this->schedule;
     }
 
-    // @codeCoverageIgnoreEnd
 }

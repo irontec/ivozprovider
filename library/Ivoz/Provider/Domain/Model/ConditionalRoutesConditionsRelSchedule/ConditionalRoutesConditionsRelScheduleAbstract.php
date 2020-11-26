@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule;
 
@@ -6,31 +7,38 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
+use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition;
+use Ivoz\Provider\Domain\Model\Schedule\Schedule;
 
 /**
- * ConditionalRoutesConditionsRelScheduleAbstract
- * @codeCoverageIgnore
- */
+* ConditionalRoutesConditionsRelScheduleAbstract
+* @codeCoverageIgnore
+*/
 abstract class ConditionalRoutesConditionsRelScheduleAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
+     * @var ConditionalRoutesConditionInterface
+     * inversedBy relSchedules
      */
     protected $condition;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface
+     * @var ScheduleInterface
      */
     protected $schedule;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -97,16 +105,17 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelScheduleDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setCondition($fkTransformer->transform($dto->getCondition()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()))
-        ;
+            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
 
         $self->initChangelog();
 
@@ -120,15 +129,13 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelScheduleDto::class);
 
         $this
             ->setCondition($fkTransformer->transform($dto->getCondition()))
             ->setSchedule($fkTransformer->transform($dto->getSchedule()));
-
-
 
         return $this;
     }
@@ -141,8 +148,8 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))
-            ->setSchedule(\Ivoz\Provider\Domain\Model\Schedule\Schedule::entityToDto(self::getSchedule(), $depth));
+            ->setCondition(ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))
+            ->setSchedule(Schedule::entityToDto(self::getSchedule(), $depth));
     }
 
     /**
@@ -155,16 +162,15 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
             'scheduleId' => self::getSchedule()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
+     * @param ConditionalRoutesConditionInterface | null
      *
      * @return static
      */
-    public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null)
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelScheduleInterface
     {
         $this->condition = $condition;
 
@@ -174,9 +180,9 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
+     * @return ConditionalRoutesConditionInterface | null
      */
-    public function getCondition()
+    public function getCondition(): ?ConditionalRoutesConditionInterface
     {
         return $this->condition;
     }
@@ -184,11 +190,11 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     /**
      * Set schedule
      *
-     * @param \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule
+     * @param ScheduleInterface
      *
      * @return static
      */
-    protected function setSchedule(\Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface $schedule)
+    protected function setSchedule(ScheduleInterface $schedule): ConditionalRoutesConditionsRelScheduleInterface
     {
         $this->schedule = $schedule;
 
@@ -198,12 +204,11 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     /**
      * Get schedule
      *
-     * @return \Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface
+     * @return ScheduleInterface
      */
-    public function getSchedule()
+    public function getSchedule(): ScheduleInterface
     {
         return $this->schedule;
     }
 
-    // @codeCoverageIgnoreEnd
 }

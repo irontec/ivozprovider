@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\BannedAddress;
 
@@ -6,13 +7,21 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Company\Company;
 
 /**
- * BannedAddressAbstract
- * @codeCoverageIgnore
- */
+* BannedAddressAbstract
+* @codeCoverageIgnore
+*/
 abstract class BannedAddressAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string | null
      */
@@ -35,28 +44,27 @@ abstract class BannedAddressAbstract
     protected $description;
 
     /**
-     * @var \DateTime | null
+     * @var \DateTimeInterface | null
      */
     protected $lastTimeBanned;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @var BrandInterface
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @var CompanyInterface
      */
     protected $company;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -123,11 +131,13 @@ abstract class BannedAddressAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, BannedAddressDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setIp($dto->getIp())
@@ -136,8 +146,7 @@ abstract class BannedAddressAbstract
             ->setDescription($dto->getDescription())
             ->setLastTimeBanned($dto->getLastTimeBanned())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-        ;
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
         $self->initChangelog();
 
@@ -151,7 +160,7 @@ abstract class BannedAddressAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, BannedAddressDto::class);
 
@@ -163,8 +172,6 @@ abstract class BannedAddressAbstract
             ->setLastTimeBanned($dto->getLastTimeBanned())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()));
-
-
 
         return $this;
     }
@@ -182,8 +189,8 @@ abstract class BannedAddressAbstract
             ->setAor(self::getAor())
             ->setDescription(self::getDescription())
             ->setLastTimeBanned(self::getLastTimeBanned())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**
@@ -201,7 +208,6 @@ abstract class BannedAddressAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set ip
@@ -210,7 +216,7 @@ abstract class BannedAddressAbstract
      *
      * @return static
      */
-    protected function setIp($ip = null)
+    protected function setIp(?string $ip = null): BannedAddressInterface
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -226,7 +232,7 @@ abstract class BannedAddressAbstract
      *
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
@@ -238,14 +244,18 @@ abstract class BannedAddressAbstract
      *
      * @return static
      */
-    protected function setBlocker($blocker = null)
+    protected function setBlocker(?string $blocker = null): BannedAddressInterface
     {
         if (!is_null($blocker)) {
             Assertion::maxLength($blocker, 50, 'blocker value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($blocker, [
-                BannedAddressInterface::BLOCKER_ANTIFLOOD,
-                BannedAddressInterface::BLOCKER_IPFILTER
-            ], 'blockervalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $blocker,
+                [
+                    BannedAddressInterface::BLOCKER_ANTIFLOOD,
+                    BannedAddressInterface::BLOCKER_IPFILTER,
+                ],
+                'blockervalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->blocker = $blocker;
@@ -258,7 +268,7 @@ abstract class BannedAddressAbstract
      *
      * @return string | null
      */
-    public function getBlocker()
+    public function getBlocker(): ?string
     {
         return $this->blocker;
     }
@@ -270,7 +280,7 @@ abstract class BannedAddressAbstract
      *
      * @return static
      */
-    protected function setAor($aor = null)
+    protected function setAor(?string $aor = null): BannedAddressInterface
     {
         if (!is_null($aor)) {
             Assertion::maxLength($aor, 300, 'aor value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -286,7 +296,7 @@ abstract class BannedAddressAbstract
      *
      * @return string | null
      */
-    public function getAor()
+    public function getAor(): ?string
     {
         return $this->aor;
     }
@@ -298,7 +308,7 @@ abstract class BannedAddressAbstract
      *
      * @return static
      */
-    protected function setDescription($description = null)
+    protected function setDescription(?string $description = null): BannedAddressInterface
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 100, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -314,7 +324,7 @@ abstract class BannedAddressAbstract
      *
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -322,14 +332,18 @@ abstract class BannedAddressAbstract
     /**
      * Set lastTimeBanned
      *
-     * @param \DateTime $lastTimeBanned | null
+     * @param \DateTimeInterface $lastTimeBanned | null
      *
      * @return static
      */
-    protected function setLastTimeBanned($lastTimeBanned = null)
+    protected function setLastTimeBanned($lastTimeBanned = null): BannedAddressInterface
     {
         if (!is_null($lastTimeBanned)) {
-            $lastTimeBanned = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            Assertion::notNull(
+                $lastTimeBanned,
+                'lastTimeBanned value "%s" is null, but non null value was expected.'
+            );
+            $lastTimeBanned = DateTimeHelper::createOrFix(
                 $lastTimeBanned,
                 null
             );
@@ -347,9 +361,9 @@ abstract class BannedAddressAbstract
     /**
      * Get lastTimeBanned
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getLastTimeBanned()
+    public function getLastTimeBanned(): ?\DateTimeInterface
     {
         return !is_null($this->lastTimeBanned) ? clone $this->lastTimeBanned : null;
     }
@@ -357,11 +371,11 @@ abstract class BannedAddressAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
+     * @param BrandInterface | null
      *
      * @return static
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    protected function setBrand(?BrandInterface $brand = null): BannedAddressInterface
     {
         $this->brand = $brand;
 
@@ -371,9 +385,9 @@ abstract class BannedAddressAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
@@ -381,11 +395,11 @@ abstract class BannedAddressAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
+     * @param CompanyInterface | null
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    protected function setCompany(?CompanyInterface $company = null): BannedAddressInterface
     {
         $this->company = $company;
 
@@ -395,12 +409,11 @@ abstract class BannedAddressAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    // @codeCoverageIgnoreEnd
 }

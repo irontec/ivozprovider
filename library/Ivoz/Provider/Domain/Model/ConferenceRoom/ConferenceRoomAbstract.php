@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\ConferenceRoom;
 
@@ -6,20 +7,25 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
 
 /**
- * ConferenceRoomAbstract
- * @codeCoverageIgnore
- */
+* ConferenceRoomAbstract
+* @codeCoverageIgnore
+*/
 abstract class ConferenceRoomAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
     protected $name;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $pinProtected = false;
 
@@ -29,23 +35,23 @@ abstract class ConferenceRoomAbstract
     protected $pinCode;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $maxMembers = 0;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
      */
     protected $company;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($name, $pinProtected, $maxMembers)
-    {
+    protected function __construct(
+        $name,
+        $pinProtected,
+        $maxMembers
+    ) {
         $this->setName($name);
         $this->setPinProtected($pinProtected);
         $this->setMaxMembers($maxMembers);
@@ -115,7 +121,7 @@ abstract class ConferenceRoomAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ConferenceRoomDto::class);
 
@@ -127,8 +133,7 @@ abstract class ConferenceRoomAbstract
 
         $self
             ->setPinCode($dto->getPinCode())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-        ;
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
         $self->initChangelog();
 
@@ -142,7 +147,7 @@ abstract class ConferenceRoomAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ConferenceRoomDto::class);
 
@@ -152,8 +157,6 @@ abstract class ConferenceRoomAbstract
             ->setPinCode($dto->getPinCode())
             ->setMaxMembers($dto->getMaxMembers())
             ->setCompany($fkTransformer->transform($dto->getCompany()));
-
-
 
         return $this;
     }
@@ -170,7 +173,7 @@ abstract class ConferenceRoomAbstract
             ->setPinProtected(self::getPinProtected())
             ->setPinCode(self::getPinCode())
             ->setMaxMembers(self::getMaxMembers())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**
@@ -186,7 +189,6 @@ abstract class ConferenceRoomAbstract
             'companyId' => self::getCompany()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -195,9 +197,8 @@ abstract class ConferenceRoomAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): ConferenceRoomInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -218,13 +219,12 @@ abstract class ConferenceRoomAbstract
     /**
      * Set pinProtected
      *
-     * @param boolean $pinProtected
+     * @param bool $pinProtected
      *
      * @return static
      */
-    protected function setPinProtected($pinProtected)
+    protected function setPinProtected(bool $pinProtected): ConferenceRoomInterface
     {
-        Assertion::notNull($pinProtected, 'pinProtected value "%s" is null, but non null value was expected.');
         Assertion::between(intval($pinProtected), 0, 1, 'pinProtected provided "%s" is not a valid boolean value.');
         $pinProtected = (bool) $pinProtected;
 
@@ -236,7 +236,7 @@ abstract class ConferenceRoomAbstract
     /**
      * Get pinProtected
      *
-     * @return boolean
+     * @return bool
      */
     public function getPinProtected(): bool
     {
@@ -250,7 +250,7 @@ abstract class ConferenceRoomAbstract
      *
      * @return static
      */
-    protected function setPinCode($pinCode = null)
+    protected function setPinCode(?string $pinCode = null): ConferenceRoomInterface
     {
         if (!is_null($pinCode)) {
             Assertion::maxLength($pinCode, 6, 'pinCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -266,7 +266,7 @@ abstract class ConferenceRoomAbstract
      *
      * @return string | null
      */
-    public function getPinCode()
+    public function getPinCode(): ?string
     {
         return $this->pinCode;
     }
@@ -274,17 +274,15 @@ abstract class ConferenceRoomAbstract
     /**
      * Set maxMembers
      *
-     * @param integer $maxMembers
+     * @param int $maxMembers
      *
      * @return static
      */
-    protected function setMaxMembers($maxMembers)
+    protected function setMaxMembers(int $maxMembers): ConferenceRoomInterface
     {
-        Assertion::notNull($maxMembers, 'maxMembers value "%s" is null, but non null value was expected.');
-        Assertion::integerish($maxMembers, 'maxMembers value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($maxMembers, 0, 'maxMembers provided "%s" is not greater or equal than "%s".');
 
-        $this->maxMembers = (int) $maxMembers;
+        $this->maxMembers = $maxMembers;
 
         return $this;
     }
@@ -292,7 +290,7 @@ abstract class ConferenceRoomAbstract
     /**
      * Get maxMembers
      *
-     * @return integer
+     * @return int
      */
     public function getMaxMembers(): int
     {
@@ -302,11 +300,11 @@ abstract class ConferenceRoomAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(CompanyInterface $company): ConferenceRoomInterface
     {
         $this->company = $company;
 
@@ -316,12 +314,11 @@ abstract class ConferenceRoomAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany()
+    public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    // @codeCoverageIgnoreEnd
 }

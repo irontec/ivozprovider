@@ -1,14 +1,14 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Country;
 
 use Assert\Assertion;
-use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
- * Zone
- * @codeCoverageIgnore
- */
+* Zone
+* @codeCoverageIgnore
+*/
 class Zone
 {
     /**
@@ -35,12 +35,15 @@ class Zone
      */
     protected $it = '';
 
-
     /**
      * Constructor
      */
-    public function __construct($en, $es, $ca, $it)
-    {
+    public function __construct(
+        $en,
+        $es,
+        $ca,
+        $it
+    ) {
         $this->setEn($en);
         $this->setEs($es);
         $this->setCa($ca);
@@ -59,9 +62,6 @@ class Zone
             $this->getIt() === $zone->getIt();
     }
 
-
-    // @codeCoverageIgnoreStart
-
     /**
      * Set en
      *
@@ -69,9 +69,8 @@ class Zone
      *
      * @return static
      */
-    protected function setEn($en)
+    protected function setEn(string $en): Zone
     {
-        Assertion::notNull($en, 'en value "%s" is null, but non null value was expected.');
         Assertion::maxLength($en, 55, 'en value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->en = $en;
@@ -96,9 +95,8 @@ class Zone
      *
      * @return static
      */
-    protected function setEs($es)
+    protected function setEs(string $es): Zone
     {
-        Assertion::notNull($es, 'es value "%s" is null, but non null value was expected.');
         Assertion::maxLength($es, 55, 'es value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->es = $es;
@@ -123,9 +121,8 @@ class Zone
      *
      * @return static
      */
-    protected function setCa($ca)
+    protected function setCa(string $ca): Zone
     {
-        Assertion::notNull($ca, 'ca value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ca, 55, 'ca value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ca = $ca;
@@ -150,9 +147,8 @@ class Zone
      *
      * @return static
      */
-    protected function setIt($it)
+    protected function setIt(string $it): Zone
     {
-        Assertion::notNull($it, 'it value "%s" is null, but non null value was expected.');
         Assertion::maxLength($it, 55, 'it value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->it = $it;
@@ -170,5 +166,4 @@ class Zone
         return $this->it;
     }
 
-    // @codeCoverageIgnoreEnd
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Currency;
 
@@ -6,13 +7,17 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Currency\Name;
 
 /**
- * CurrencyAbstract
- * @codeCoverageIgnore
- */
+* CurrencyAbstract
+* @codeCoverageIgnore
+*/
 abstract class CurrencyAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -28,14 +33,14 @@ abstract class CurrencyAbstract
      */
     protected $name;
 
-
-    use ChangelogTrait;
-
     /**
      * Constructor
      */
-    protected function __construct($iden, $symbol, Name $name)
-    {
+    protected function __construct(
+        $iden,
+        $symbol,
+        Name $name
+    ) {
         $this->setIden($iden);
         $this->setSymbol($symbol);
         $this->setName($name);
@@ -105,7 +110,7 @@ abstract class CurrencyAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CurrencyDto::class);
 
@@ -122,6 +127,8 @@ abstract class CurrencyAbstract
             $name
         );
 
+        ;
+
         $self->initChangelog();
 
         return $self;
@@ -134,7 +141,7 @@ abstract class CurrencyAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CurrencyDto::class);
 
@@ -149,8 +156,6 @@ abstract class CurrencyAbstract
             ->setIden($dto->getIden())
             ->setSymbol($dto->getSymbol())
             ->setName($name);
-
-
 
         return $this;
     }
@@ -185,7 +190,6 @@ abstract class CurrencyAbstract
             'nameIt' => self::getName()->getIt()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set iden
@@ -194,9 +198,8 @@ abstract class CurrencyAbstract
      *
      * @return static
      */
-    protected function setIden($iden)
+    protected function setIden(string $iden): CurrencyInterface
     {
-        Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
         Assertion::maxLength($iden, 10, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->iden = $iden;
@@ -221,9 +224,8 @@ abstract class CurrencyAbstract
      *
      * @return static
      */
-    protected function setSymbol($symbol)
+    protected function setSymbol(string $symbol): CurrencyInterface
     {
-        Assertion::notNull($symbol, 'symbol value "%s" is null, but non null value was expected.');
         Assertion::maxLength($symbol, 5, 'symbol value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->symbol = $symbol;
@@ -242,13 +244,21 @@ abstract class CurrencyAbstract
     }
 
     /**
-     * Set name
+     * Get name
      *
-     * @param \Ivoz\Provider\Domain\Model\Currency\Name $name
+     * @return Name
+     */
+    public function getName(): Name
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name
      *
      * @return static
      */
-    protected function setName(Name $name)
+    protected function setName(Name $name): CurrencyInterface
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -259,14 +269,4 @@ abstract class CurrencyAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return \Ivoz\Provider\Domain\Model\Currency\Name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-    // @codeCoverageIgnoreEnd
 }

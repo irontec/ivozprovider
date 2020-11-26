@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
@@ -6,13 +7,22 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
 
 /**
- * DdiProviderAbstract
- * @codeCoverageIgnore
- */
+* DdiProviderAbstract
+* @codeCoverageIgnore
+*/
 abstract class DdiProviderAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,33 +34,32 @@ abstract class DdiProviderAbstract
     protected $name;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $externallyRated = false;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @var TransformationRuleSetInterface
      */
     protected $transformationRuleSet;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     * @var ProxyTrunkInterface
      */
     protected $proxyTrunk;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($description, $name)
-    {
+    protected function __construct(
+        $description,
+        $name
+    ) {
         $this->setDescription($description);
         $this->setName($name);
     }
@@ -119,7 +128,7 @@ abstract class DdiProviderAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DdiProviderDto::class);
 
@@ -132,8 +141,7 @@ abstract class DdiProviderAbstract
             ->setExternallyRated($dto->getExternallyRated())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
-            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
-        ;
+            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
 
         $self->initChangelog();
 
@@ -147,7 +155,7 @@ abstract class DdiProviderAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DdiProviderDto::class);
 
@@ -158,8 +166,6 @@ abstract class DdiProviderAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
-
-
 
         return $this;
     }
@@ -175,9 +181,9 @@ abstract class DdiProviderAbstract
             ->setDescription(self::getDescription())
             ->setName(self::getName())
             ->setExternallyRated(self::getExternallyRated())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
-            ->setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
+            ->setProxyTrunk(ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth));
     }
 
     /**
@@ -194,7 +200,6 @@ abstract class DdiProviderAbstract
             'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set description
@@ -203,9 +208,8 @@ abstract class DdiProviderAbstract
      *
      * @return static
      */
-    protected function setDescription($description)
+    protected function setDescription(string $description): DdiProviderInterface
     {
-        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
@@ -230,9 +234,8 @@ abstract class DdiProviderAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): DdiProviderInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 200, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -253,11 +256,11 @@ abstract class DdiProviderAbstract
     /**
      * Set externallyRated
      *
-     * @param boolean $externallyRated | null
+     * @param bool $externallyRated | null
      *
      * @return static
      */
-    protected function setExternallyRated($externallyRated = null)
+    protected function setExternallyRated(?bool $externallyRated = null): DdiProviderInterface
     {
         if (!is_null($externallyRated)) {
             Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
@@ -272,9 +275,9 @@ abstract class DdiProviderAbstract
     /**
      * Get externallyRated
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getExternallyRated()
+    public function getExternallyRated(): ?bool
     {
         return $this->externallyRated;
     }
@@ -282,11 +285,11 @@ abstract class DdiProviderAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param BrandInterface
      *
      * @return static
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(BrandInterface $brand): DdiProviderInterface
     {
         $this->brand = $brand;
 
@@ -296,9 +299,9 @@ abstract class DdiProviderAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand()
+    public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
@@ -306,11 +309,11 @@ abstract class DdiProviderAbstract
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
+     * @param TransformationRuleSetInterface | null
      *
      * @return static
      */
-    protected function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
+    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): DdiProviderInterface
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -320,9 +323,9 @@ abstract class DdiProviderAbstract
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @return TransformationRuleSetInterface | null
      */
-    public function getTransformationRuleSet()
+    public function getTransformationRuleSet(): ?TransformationRuleSetInterface
     {
         return $this->transformationRuleSet;
     }
@@ -330,11 +333,11 @@ abstract class DdiProviderAbstract
     /**
      * Set proxyTrunk
      *
-     * @param \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface $proxyTrunk | null
+     * @param ProxyTrunkInterface | null
      *
      * @return static
      */
-    protected function setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface $proxyTrunk = null)
+    protected function setProxyTrunk(?ProxyTrunkInterface $proxyTrunk = null): DdiProviderInterface
     {
         $this->proxyTrunk = $proxyTrunk;
 
@@ -344,12 +347,11 @@ abstract class DdiProviderAbstract
     /**
      * Get proxyTrunk
      *
-     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface | null
+     * @return ProxyTrunkInterface | null
      */
-    public function getProxyTrunk()
+    public function getProxyTrunk(): ?ProxyTrunkInterface
     {
         return $this->proxyTrunk;
     }
 
-    // @codeCoverageIgnoreEnd
 }

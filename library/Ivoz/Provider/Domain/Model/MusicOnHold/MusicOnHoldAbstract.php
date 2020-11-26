@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\MusicOnHold;
 
@@ -6,13 +7,22 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile;
+use Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Company\Company;
 
 /**
- * MusicOnHoldAbstract
- * @codeCoverageIgnore
- */
+* MusicOnHoldAbstract
+* @codeCoverageIgnore
+*/
 abstract class MusicOnHoldAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -25,39 +35,38 @@ abstract class MusicOnHoldAbstract
     protected $status;
 
     /**
-     * @var OriginalFile | null
-     */
-    protected $originalFile;
-
-    /**
      * @var EncodedFile | null
      */
     protected $encodedFile;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @var OriginalFile | null
+     */
+    protected $originalFile;
+
+    /**
+     * @var BrandInterface
+     * inversedBy musicsOnHold
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @var CompanyInterface
+     * inversedBy musicsOnHold
      */
     protected $company;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
     protected function __construct(
         $name,
-        OriginalFile $originalFile,
-        EncodedFile $encodedFile
+        EncodedFile $encodedFile,
+        OriginalFile $originalFile
     ) {
         $this->setName($name);
-        $this->setOriginalFile($originalFile);
         $this->setEncodedFile($encodedFile);
+        $this->setOriginalFile($originalFile);
     }
 
     abstract public function getId();
@@ -124,15 +133,9 @@ abstract class MusicOnHoldAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
-
-        $originalFile = new OriginalFile(
-            $dto->getOriginalFileFileSize(),
-            $dto->getOriginalFileMimeType(),
-            $dto->getOriginalFileBaseName()
-        );
 
         $encodedFile = new EncodedFile(
             $dto->getEncodedFileFileSize(),
@@ -140,17 +143,22 @@ abstract class MusicOnHoldAbstract
             $dto->getEncodedFileBaseName()
         );
 
+        $originalFile = new OriginalFile(
+            $dto->getOriginalFileFileSize(),
+            $dto->getOriginalFileMimeType(),
+            $dto->getOriginalFileBaseName()
+        );
+
         $self = new static(
             $dto->getName(),
-            $originalFile,
-            $encodedFile
+            $encodedFile,
+            $originalFile
         );
 
         $self
             ->setStatus($dto->getStatus())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-        ;
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
         $self->initChangelog();
 
@@ -164,15 +172,9 @@ abstract class MusicOnHoldAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
-
-        $originalFile = new OriginalFile(
-            $dto->getOriginalFileFileSize(),
-            $dto->getOriginalFileMimeType(),
-            $dto->getOriginalFileBaseName()
-        );
 
         $encodedFile = new EncodedFile(
             $dto->getEncodedFileFileSize(),
@@ -180,15 +182,19 @@ abstract class MusicOnHoldAbstract
             $dto->getEncodedFileBaseName()
         );
 
+        $originalFile = new OriginalFile(
+            $dto->getOriginalFileFileSize(),
+            $dto->getOriginalFileMimeType(),
+            $dto->getOriginalFileBaseName()
+        );
+
         $this
             ->setName($dto->getName())
             ->setStatus($dto->getStatus())
-            ->setOriginalFile($originalFile)
             ->setEncodedFile($encodedFile)
+            ->setOriginalFile($originalFile)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()));
-
-
 
         return $this;
     }
@@ -203,14 +209,14 @@ abstract class MusicOnHoldAbstract
         return self::createDto()
             ->setName(self::getName())
             ->setStatus(self::getStatus())
-            ->setOriginalFileFileSize(self::getOriginalFile()->getFileSize())
-            ->setOriginalFileMimeType(self::getOriginalFile()->getMimeType())
-            ->setOriginalFileBaseName(self::getOriginalFile()->getBaseName())
             ->setEncodedFileFileSize(self::getEncodedFile()->getFileSize())
             ->setEncodedFileMimeType(self::getEncodedFile()->getMimeType())
             ->setEncodedFileBaseName(self::getEncodedFile()->getBaseName())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
+            ->setOriginalFileFileSize(self::getOriginalFile()->getFileSize())
+            ->setOriginalFileMimeType(self::getOriginalFile()->getMimeType())
+            ->setOriginalFileBaseName(self::getOriginalFile()->getBaseName())
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**
@@ -221,17 +227,16 @@ abstract class MusicOnHoldAbstract
         return [
             'name' => self::getName(),
             'status' => self::getStatus(),
-            'originalFileFileSize' => self::getOriginalFile()->getFileSize(),
-            'originalFileMimeType' => self::getOriginalFile()->getMimeType(),
-            'originalFileBaseName' => self::getOriginalFile()->getBaseName(),
             'encodedFileFileSize' => self::getEncodedFile()->getFileSize(),
             'encodedFileMimeType' => self::getEncodedFile()->getMimeType(),
             'encodedFileBaseName' => self::getEncodedFile()->getBaseName(),
+            'originalFileFileSize' => self::getOriginalFile()->getFileSize(),
+            'originalFileMimeType' => self::getOriginalFile()->getMimeType(),
+            'originalFileBaseName' => self::getOriginalFile()->getBaseName(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -240,9 +245,8 @@ abstract class MusicOnHoldAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): MusicOnHoldInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -267,16 +271,20 @@ abstract class MusicOnHoldAbstract
      *
      * @return static
      */
-    protected function setStatus($status = null)
+    protected function setStatus(?string $status = null): MusicOnHoldInterface
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($status, [
-                MusicOnHoldInterface::STATUS_PENDING,
-                MusicOnHoldInterface::STATUS_ENCODING,
-                MusicOnHoldInterface::STATUS_READY,
-                MusicOnHoldInterface::STATUS_ERROR
-            ], 'statusvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $status,
+                [
+                    MusicOnHoldInterface::STATUS_PENDING,
+                    MusicOnHoldInterface::STATUS_ENCODING,
+                    MusicOnHoldInterface::STATUS_READY,
+                    MusicOnHoldInterface::STATUS_ERROR,
+                ],
+                'statusvalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->status = $status;
@@ -289,95 +297,27 @@ abstract class MusicOnHoldAbstract
      *
      * @return string | null
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     /**
-     * Set brand
+     * Get encodedFile
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
+     * @return EncodedFile
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    public function getEncodedFile(): EncodedFile
     {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
-
-    /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
-     *
-     * @return static
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
-    {
-        $this->company = $company;
-
-        return $this;
-    }
-
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
-     * Set originalFile
-     *
-     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile $originalFile
-     *
-     * @return static
-     */
-    protected function setOriginalFile(OriginalFile $originalFile)
-    {
-        $isEqual = $this->originalFile && $this->originalFile->equals($originalFile);
-        if ($isEqual) {
-            return $this;
-        }
-
-        $this->originalFile = $originalFile;
-        return $this;
-    }
-
-    /**
-     * Get originalFile
-     *
-     * @return \Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile
-     */
-    public function getOriginalFile()
-    {
-        return $this->originalFile;
+        return $this->encodedFile;
     }
 
     /**
      * Set encodedFile
      *
-     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile $encodedFile
-     *
      * @return static
      */
-    protected function setEncodedFile(EncodedFile $encodedFile)
+    protected function setEncodedFile(EncodedFile $encodedFile): MusicOnHoldInterface
     {
         $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
         if ($isEqual) {
@@ -389,13 +329,77 @@ abstract class MusicOnHoldAbstract
     }
 
     /**
-     * Get encodedFile
+     * Get originalFile
      *
-     * @return \Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile
+     * @return OriginalFile
      */
-    public function getEncodedFile()
+    public function getOriginalFile(): OriginalFile
     {
-        return $this->encodedFile;
+        return $this->originalFile;
     }
-    // @codeCoverageIgnoreEnd
+
+    /**
+     * Set originalFile
+     *
+     * @return static
+     */
+    protected function setOriginalFile(OriginalFile $originalFile): MusicOnHoldInterface
+    {
+        $isEqual = $this->originalFile && $this->originalFile->equals($originalFile);
+        if ($isEqual) {
+            return $this;
+        }
+
+        $this->originalFile = $originalFile;
+        return $this;
+    }
+
+    /**
+     * Set brand
+     *
+     * @param BrandInterface | null
+     *
+     * @return static
+     */
+    public function setBrand(?BrandInterface $brand = null): MusicOnHoldInterface
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Get brand
+     *
+     * @return BrandInterface | null
+     */
+    public function getBrand(): ?BrandInterface
+    {
+        return $this->brand;
+    }
+
+    /**
+     * Set company
+     *
+     * @param CompanyInterface | null
+     *
+     * @return static
+     */
+    public function setCompany(?CompanyInterface $company = null): MusicOnHoldInterface
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return CompanyInterface | null
+     */
+    public function getCompany(): ?CompanyInterface
+    {
+        return $this->company;
+    }
+
 }

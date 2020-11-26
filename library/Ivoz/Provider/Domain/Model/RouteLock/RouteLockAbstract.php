@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\RouteLock;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
 
 /**
- * RouteLockAbstract
- * @codeCoverageIgnore
- */
+* RouteLockAbstract
+* @codeCoverageIgnore
+*/
 abstract class RouteLockAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,23 +30,23 @@ abstract class RouteLockAbstract
     protected $description = '';
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $open = false;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
      */
     protected $company;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($name, $description, $open)
-    {
+    protected function __construct(
+        $name,
+        $description,
+        $open
+    ) {
         $this->setName($name);
         $this->setDescription($description);
         $this->setOpen($open);
@@ -110,7 +116,7 @@ abstract class RouteLockAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RouteLockDto::class);
 
@@ -121,8 +127,7 @@ abstract class RouteLockAbstract
         );
 
         $self
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-        ;
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
         $self->initChangelog();
 
@@ -136,7 +141,7 @@ abstract class RouteLockAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RouteLockDto::class);
 
@@ -145,8 +150,6 @@ abstract class RouteLockAbstract
             ->setDescription($dto->getDescription())
             ->setOpen($dto->getOpen())
             ->setCompany($fkTransformer->transform($dto->getCompany()));
-
-
 
         return $this;
     }
@@ -162,7 +165,7 @@ abstract class RouteLockAbstract
             ->setName(self::getName())
             ->setDescription(self::getDescription())
             ->setOpen(self::getOpen())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**
@@ -177,7 +180,6 @@ abstract class RouteLockAbstract
             'companyId' => self::getCompany()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -186,9 +188,8 @@ abstract class RouteLockAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): RouteLockInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -213,9 +214,8 @@ abstract class RouteLockAbstract
      *
      * @return static
      */
-    protected function setDescription($description)
+    protected function setDescription(string $description): RouteLockInterface
     {
-        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 100, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
@@ -236,13 +236,12 @@ abstract class RouteLockAbstract
     /**
      * Set open
      *
-     * @param boolean $open
+     * @param bool $open
      *
      * @return static
      */
-    protected function setOpen($open)
+    protected function setOpen(bool $open): RouteLockInterface
     {
-        Assertion::notNull($open, 'open value "%s" is null, but non null value was expected.');
         Assertion::between(intval($open), 0, 1, 'open provided "%s" is not a valid boolean value.');
         $open = (bool) $open;
 
@@ -254,7 +253,7 @@ abstract class RouteLockAbstract
     /**
      * Get open
      *
-     * @return boolean
+     * @return bool
      */
     public function getOpen(): bool
     {
@@ -264,11 +263,11 @@ abstract class RouteLockAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(CompanyInterface $company): RouteLockInterface
     {
         $this->company = $company;
 
@@ -278,12 +277,11 @@ abstract class RouteLockAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany()
+    public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    // @codeCoverageIgnoreEnd
 }

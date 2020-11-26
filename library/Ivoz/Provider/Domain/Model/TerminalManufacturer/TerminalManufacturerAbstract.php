@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\TerminalManufacturer;
 
@@ -6,13 +7,16 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
- * TerminalManufacturerAbstract
- * @codeCoverageIgnore
- */
+* TerminalManufacturerAbstract
+* @codeCoverageIgnore
+*/
 abstract class TerminalManufacturerAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -28,14 +32,14 @@ abstract class TerminalManufacturerAbstract
      */
     protected $description = '';
 
-
-    use ChangelogTrait;
-
     /**
      * Constructor
      */
-    protected function __construct($iden, $name, $description)
-    {
+    protected function __construct(
+        $iden,
+        $name,
+        $description
+    ) {
         $this->setIden($iden);
         $this->setName($name);
         $this->setDescription($description);
@@ -105,7 +109,7 @@ abstract class TerminalManufacturerAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TerminalManufacturerDto::class);
 
@@ -114,6 +118,8 @@ abstract class TerminalManufacturerAbstract
             $dto->getName(),
             $dto->getDescription()
         );
+
+        ;
 
         $self->initChangelog();
 
@@ -127,7 +133,7 @@ abstract class TerminalManufacturerAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, TerminalManufacturerDto::class);
 
@@ -135,8 +141,6 @@ abstract class TerminalManufacturerAbstract
             ->setIden($dto->getIden())
             ->setName($dto->getName())
             ->setDescription($dto->getDescription());
-
-
 
         return $this;
     }
@@ -165,7 +169,6 @@ abstract class TerminalManufacturerAbstract
             'description' => self::getDescription()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set iden
@@ -174,9 +177,8 @@ abstract class TerminalManufacturerAbstract
      *
      * @return static
      */
-    protected function setIden($iden)
+    protected function setIden(string $iden): TerminalManufacturerInterface
     {
-        Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
         Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->iden = $iden;
@@ -201,9 +203,8 @@ abstract class TerminalManufacturerAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): TerminalManufacturerInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -228,9 +229,8 @@ abstract class TerminalManufacturerAbstract
      *
      * @return static
      */
-    protected function setDescription($description)
+    protected function setDescription(string $description): TerminalManufacturerInterface
     {
-        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
@@ -248,5 +248,4 @@ abstract class TerminalManufacturerAbstract
         return $this->description;
     }
 
-    // @codeCoverageIgnoreEnd
 }

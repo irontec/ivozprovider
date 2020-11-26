@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar;
 
@@ -6,31 +7,38 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
+use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
+use Ivoz\Provider\Domain\Model\Calendar\Calendar;
+use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter;
 
 /**
- * ExternalCallFilterRelCalendarAbstract
- * @codeCoverageIgnore
- */
+* ExternalCallFilterRelCalendarAbstract
+* @codeCoverageIgnore
+*/
 abstract class ExternalCallFilterRelCalendarAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
+     * @var CalendarInterface
+     */
+    protected $calendar;
+
+    /**
+     * @var ExternalCallFilterInterface
+     * inversedBy calendars
      */
     protected $filter;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
-     */
-    protected $calendar;
-
-
-    use ChangelogTrait;
-
-    /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -97,16 +105,17 @@ abstract class ExternalCallFilterRelCalendarAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ExternalCallFilterRelCalendarDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
-            ->setFilter($fkTransformer->transform($dto->getFilter()))
             ->setCalendar($fkTransformer->transform($dto->getCalendar()))
-        ;
+            ->setFilter($fkTransformer->transform($dto->getFilter()));
 
         $self->initChangelog();
 
@@ -120,15 +129,13 @@ abstract class ExternalCallFilterRelCalendarAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ExternalCallFilterRelCalendarDto::class);
 
         $this
-            ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()));
-
-
+            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
+            ->setFilter($fkTransformer->transform($dto->getFilter()));
 
         return $this;
     }
@@ -141,8 +148,8 @@ abstract class ExternalCallFilterRelCalendarAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter::entityToDto(self::getFilter(), $depth))
-            ->setCalendar(\Ivoz\Provider\Domain\Model\Calendar\Calendar::entityToDto(self::getCalendar(), $depth));
+            ->setCalendar(Calendar::entityToDto(self::getCalendar(), $depth))
+            ->setFilter(ExternalCallFilter::entityToDto(self::getFilter(), $depth));
     }
 
     /**
@@ -151,44 +158,19 @@ abstract class ExternalCallFilterRelCalendarAbstract
     protected function __toArray()
     {
         return [
-            'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
-            'calendarId' => self::getCalendar()->getId()
+            'calendarId' => self::getCalendar()->getId(),
+            'filterId' => self::getFilter() ? self::getFilter()->getId() : null
         ];
-    }
-    // @codeCoverageIgnoreStart
-
-    /**
-     * Set filter
-     *
-     * @param \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter | null
-     *
-     * @return static
-     */
-    public function setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface $filter = null)
-    {
-        $this->filter = $filter;
-
-        return $this;
-    }
-
-    /**
-     * Get filter
-     *
-     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface | null
-     */
-    public function getFilter()
-    {
-        return $this->filter;
     }
 
     /**
      * Set calendar
      *
-     * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar
+     * @param CalendarInterface
      *
      * @return static
      */
-    protected function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar)
+    protected function setCalendar(CalendarInterface $calendar): ExternalCallFilterRelCalendarInterface
     {
         $this->calendar = $calendar;
 
@@ -198,12 +180,35 @@ abstract class ExternalCallFilterRelCalendarAbstract
     /**
      * Get calendar
      *
-     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
+     * @return CalendarInterface
      */
-    public function getCalendar()
+    public function getCalendar(): CalendarInterface
     {
         return $this->calendar;
     }
 
-    // @codeCoverageIgnoreEnd
+    /**
+     * Set filter
+     *
+     * @param ExternalCallFilterInterface | null
+     *
+     * @return static
+     */
+    public function setFilter(?ExternalCallFilterInterface $filter = null): ExternalCallFilterRelCalendarInterface
+    {
+        $this->filter = $filter;
+
+        return $this;
+    }
+
+    /**
+     * Get filter
+     *
+     * @return ExternalCallFilterInterface | null
+     */
+    public function getFilter(): ?ExternalCallFilterInterface
+    {
+        return $this->filter;
+    }
+
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
@@ -6,13 +7,26 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Domain\Domain;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
+use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 
 /**
- * RetailAccountAbstract
- * @codeCoverageIgnore
- */
+* RetailAccountAbstract
+* @codeCoverageIgnore
+*/
 abstract class RetailAccountAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -35,7 +49,7 @@ abstract class RetailAccountAbstract
     protected $ip;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $port;
 
@@ -68,37 +82,36 @@ abstract class RetailAccountAbstract
     protected $t38Passthrough = 'no';
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $rtpEncryption = false;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
+     * inversedBy residentialDevices
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
+     * @var DomainInterface
+     * inversedBy residentialDevices
      */
     protected $domain;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @var TransformationRuleSetInterface
      */
     protected $transformationRuleSet;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     * @var DdiInterface
      */
     protected $outgoingDdi;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -183,7 +196,7 @@ abstract class RetailAccountAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RetailAccountDto::class);
 
@@ -206,8 +219,7 @@ abstract class RetailAccountAbstract
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
-            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
-        ;
+            ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
 
         $self->initChangelog();
 
@@ -221,7 +233,7 @@ abstract class RetailAccountAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RetailAccountDto::class);
 
@@ -242,8 +254,6 @@ abstract class RetailAccountAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
-
-
 
         return $this;
     }
@@ -267,11 +277,11 @@ abstract class RetailAccountAbstract
             ->setDdiIn(self::getDdiIn())
             ->setT38Passthrough(self::getT38Passthrough())
             ->setRtpEncryption(self::getRtpEncryption())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
-            ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getOutgoingDdi(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
+            ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth));
     }
 
     /**
@@ -298,7 +308,6 @@ abstract class RetailAccountAbstract
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -307,9 +316,8 @@ abstract class RetailAccountAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): RetailAccountInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 65, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -334,9 +342,8 @@ abstract class RetailAccountAbstract
      *
      * @return static
      */
-    protected function setDescription($description)
+    protected function setDescription(string $description): RetailAccountInterface
     {
-        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
@@ -361,15 +368,19 @@ abstract class RetailAccountAbstract
      *
      * @return static
      */
-    protected function setTransport($transport = null)
+    protected function setTransport(?string $transport = null): RetailAccountInterface
     {
         if (!is_null($transport)) {
             Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($transport, [
-                RetailAccountInterface::TRANSPORT_UDP,
-                RetailAccountInterface::TRANSPORT_TCP,
-                RetailAccountInterface::TRANSPORT_TLS
-            ], 'transportvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $transport,
+                [
+                    RetailAccountInterface::TRANSPORT_UDP,
+                    RetailAccountInterface::TRANSPORT_TCP,
+                    RetailAccountInterface::TRANSPORT_TLS,
+                ],
+                'transportvalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->transport = $transport;
@@ -382,7 +393,7 @@ abstract class RetailAccountAbstract
      *
      * @return string | null
      */
-    public function getTransport()
+    public function getTransport(): ?string
     {
         return $this->transport;
     }
@@ -394,7 +405,7 @@ abstract class RetailAccountAbstract
      *
      * @return static
      */
-    protected function setIp($ip = null)
+    protected function setIp(?string $ip = null): RetailAccountInterface
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -410,7 +421,7 @@ abstract class RetailAccountAbstract
      *
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
@@ -418,16 +429,14 @@ abstract class RetailAccountAbstract
     /**
      * Set port
      *
-     * @param integer $port | null
+     * @param int $port | null
      *
      * @return static
      */
-    protected function setPort($port = null)
+    protected function setPort(?int $port = null): RetailAccountInterface
     {
         if (!is_null($port)) {
-            Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
-            $port = (int) $port;
         }
 
         $this->port = $port;
@@ -438,9 +447,9 @@ abstract class RetailAccountAbstract
     /**
      * Get port
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getPort()
+    public function getPort(): ?int
     {
         return $this->port;
     }
@@ -452,7 +461,7 @@ abstract class RetailAccountAbstract
      *
      * @return static
      */
-    protected function setPassword($password = null)
+    protected function setPassword(?string $password = null): RetailAccountInterface
     {
         if (!is_null($password)) {
             Assertion::maxLength($password, 64, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -468,7 +477,7 @@ abstract class RetailAccountAbstract
      *
      * @return string | null
      */
-    public function getPassword()
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -480,7 +489,7 @@ abstract class RetailAccountAbstract
      *
      * @return static
      */
-    protected function setFromDomain($fromDomain = null)
+    protected function setFromDomain(?string $fromDomain = null): RetailAccountInterface
     {
         if (!is_null($fromDomain)) {
             Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -496,7 +505,7 @@ abstract class RetailAccountAbstract
      *
      * @return string | null
      */
-    public function getFromDomain()
+    public function getFromDomain(): ?string
     {
         return $this->fromDomain;
     }
@@ -508,13 +517,16 @@ abstract class RetailAccountAbstract
      *
      * @return static
      */
-    protected function setDirectConnectivity($directConnectivity)
+    protected function setDirectConnectivity(string $directConnectivity): RetailAccountInterface
     {
-        Assertion::notNull($directConnectivity, 'directConnectivity value "%s" is null, but non null value was expected.');
-        Assertion::choice($directConnectivity, [
-            RetailAccountInterface::DIRECTCONNECTIVITY_YES,
-            RetailAccountInterface::DIRECTCONNECTIVITY_NO
-        ], 'directConnectivityvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $directConnectivity,
+            [
+                RetailAccountInterface::DIRECTCONNECTIVITY_YES,
+                RetailAccountInterface::DIRECTCONNECTIVITY_NO,
+            ],
+            'directConnectivityvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->directConnectivity = $directConnectivity;
 
@@ -538,13 +550,16 @@ abstract class RetailAccountAbstract
      *
      * @return static
      */
-    protected function setDdiIn($ddiIn)
+    protected function setDdiIn(string $ddiIn): RetailAccountInterface
     {
-        Assertion::notNull($ddiIn, 'ddiIn value "%s" is null, but non null value was expected.');
-        Assertion::choice($ddiIn, [
-            RetailAccountInterface::DDIIN_YES,
-            RetailAccountInterface::DDIIN_NO
-        ], 'ddiInvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $ddiIn,
+            [
+                RetailAccountInterface::DDIIN_YES,
+                RetailAccountInterface::DDIIN_NO,
+            ],
+            'ddiInvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->ddiIn = $ddiIn;
 
@@ -568,13 +583,16 @@ abstract class RetailAccountAbstract
      *
      * @return static
      */
-    protected function setT38Passthrough($t38Passthrough)
+    protected function setT38Passthrough(string $t38Passthrough): RetailAccountInterface
     {
-        Assertion::notNull($t38Passthrough, 't38Passthrough value "%s" is null, but non null value was expected.');
-        Assertion::choice($t38Passthrough, [
-            RetailAccountInterface::T38PASSTHROUGH_YES,
-            RetailAccountInterface::T38PASSTHROUGH_NO
-        ], 't38Passthroughvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $t38Passthrough,
+            [
+                RetailAccountInterface::T38PASSTHROUGH_YES,
+                RetailAccountInterface::T38PASSTHROUGH_NO,
+            ],
+            't38Passthroughvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->t38Passthrough = $t38Passthrough;
 
@@ -594,13 +612,12 @@ abstract class RetailAccountAbstract
     /**
      * Set rtpEncryption
      *
-     * @param boolean $rtpEncryption
+     * @param bool $rtpEncryption
      *
      * @return static
      */
-    protected function setRtpEncryption($rtpEncryption)
+    protected function setRtpEncryption(bool $rtpEncryption): RetailAccountInterface
     {
-        Assertion::notNull($rtpEncryption, 'rtpEncryption value "%s" is null, but non null value was expected.');
         Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
         $rtpEncryption = (bool) $rtpEncryption;
 
@@ -612,7 +629,7 @@ abstract class RetailAccountAbstract
     /**
      * Get rtpEncryption
      *
-     * @return boolean
+     * @return bool
      */
     public function getRtpEncryption(): bool
     {
@@ -622,11 +639,11 @@ abstract class RetailAccountAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param BrandInterface
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    public function setBrand(BrandInterface $brand): RetailAccountInterface
     {
         $this->brand = $brand;
 
@@ -636,9 +653,9 @@ abstract class RetailAccountAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand()
+    public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
@@ -646,11 +663,11 @@ abstract class RetailAccountAbstract
     /**
      * Set domain
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
+     * @param DomainInterface | null
      *
      * @return static
      */
-    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
+    public function setDomain(?DomainInterface $domain = null): RetailAccountInterface
     {
         $this->domain = $domain;
 
@@ -660,9 +677,9 @@ abstract class RetailAccountAbstract
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
+     * @return DomainInterface | null
      */
-    public function getDomain()
+    public function getDomain(): ?DomainInterface
     {
         return $this->domain;
     }
@@ -670,11 +687,11 @@ abstract class RetailAccountAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(CompanyInterface $company): RetailAccountInterface
     {
         $this->company = $company;
 
@@ -684,9 +701,9 @@ abstract class RetailAccountAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany()
+    public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
@@ -694,11 +711,11 @@ abstract class RetailAccountAbstract
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
+     * @param TransformationRuleSetInterface | null
      *
      * @return static
      */
-    protected function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
+    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): RetailAccountInterface
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -708,9 +725,9 @@ abstract class RetailAccountAbstract
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @return TransformationRuleSetInterface | null
      */
-    public function getTransformationRuleSet()
+    public function getTransformationRuleSet(): ?TransformationRuleSetInterface
     {
         return $this->transformationRuleSet;
     }
@@ -718,11 +735,11 @@ abstract class RetailAccountAbstract
     /**
      * Set outgoingDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
+     * @param DdiInterface | null
      *
      * @return static
      */
-    protected function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
+    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): RetailAccountInterface
     {
         $this->outgoingDdi = $outgoingDdi;
 
@@ -732,12 +749,11 @@ abstract class RetailAccountAbstract
     /**
      * Get outgoingDdi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     * @return DdiInterface | null
      */
-    public function getOutgoingDdi()
+    public function getOutgoingDdi(): ?DdiInterface
     {
         return $this->outgoingDdi;
     }
 
-    // @codeCoverageIgnoreEnd
 }

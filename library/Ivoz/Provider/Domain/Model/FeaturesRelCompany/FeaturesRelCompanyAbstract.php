@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\FeaturesRelCompany;
 
@@ -6,31 +7,38 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 
 /**
- * FeaturesRelCompanyAbstract
- * @codeCoverageIgnore
- */
+* FeaturesRelCompanyAbstract
+* @codeCoverageIgnore
+*/
 abstract class FeaturesRelCompanyAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @var CompanyInterface
+     * inversedBy relFeatures
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Feature\FeatureInterface
+     * @var FeatureInterface
      */
     protected $feature;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -97,16 +105,17 @@ abstract class FeaturesRelCompanyAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, FeaturesRelCompanyDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setFeature($fkTransformer->transform($dto->getFeature()))
-        ;
+            ->setFeature($fkTransformer->transform($dto->getFeature()));
 
         $self->initChangelog();
 
@@ -120,15 +129,13 @@ abstract class FeaturesRelCompanyAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, FeaturesRelCompanyDto::class);
 
         $this
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setFeature($fkTransformer->transform($dto->getFeature()));
-
-
 
         return $this;
     }
@@ -141,8 +148,8 @@ abstract class FeaturesRelCompanyAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setFeature(\Ivoz\Provider\Domain\Model\Feature\Feature::entityToDto(self::getFeature(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setFeature(Feature::entityToDto(self::getFeature(), $depth));
     }
 
     /**
@@ -155,16 +162,15 @@ abstract class FeaturesRelCompanyAbstract
             'featureId' => self::getFeature()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
+     * @param CompanyInterface | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    public function setCompany(?CompanyInterface $company = null): FeaturesRelCompanyInterface
     {
         $this->company = $company;
 
@@ -174,9 +180,9 @@ abstract class FeaturesRelCompanyAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
@@ -184,11 +190,11 @@ abstract class FeaturesRelCompanyAbstract
     /**
      * Set feature
      *
-     * @param \Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature
+     * @param FeatureInterface
      *
      * @return static
      */
-    protected function setFeature(\Ivoz\Provider\Domain\Model\Feature\FeatureInterface $feature)
+    protected function setFeature(FeatureInterface $feature): FeaturesRelCompanyInterface
     {
         $this->feature = $feature;
 
@@ -198,12 +204,11 @@ abstract class FeaturesRelCompanyAbstract
     /**
      * Get feature
      *
-     * @return \Ivoz\Provider\Domain\Model\Feature\FeatureInterface
+     * @return FeatureInterface
      */
-    public function getFeature()
+    public function getFeature(): FeatureInterface
     {
         return $this->feature;
     }
 
-    // @codeCoverageIgnoreEnd
 }

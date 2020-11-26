@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderRegistration;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
 
 /**
- * DdiProviderRegistrationAbstract
- * @codeCoverageIgnore
- */
+* DdiProviderRegistrationAbstract
+* @codeCoverageIgnore
+*/
 abstract class DdiProviderRegistrationAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -44,12 +50,12 @@ abstract class DdiProviderRegistrationAbstract
     protected $authProxy = '';
 
     /**
-     * @var integer
+     * @var int
      */
     protected $expires = 0;
 
     /**
-     * @var boolean | null
+     * @var bool | null
      */
     protected $multiDdi = false;
 
@@ -59,17 +65,10 @@ abstract class DdiProviderRegistrationAbstract
     protected $contactUsername = '';
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface | null
-     */
-    protected $trunksUacreg;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
+     * @var DdiProviderInterface
+     * inversedBy ddiProviderRegistrations
      */
     protected $ddiProvider;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -158,7 +157,7 @@ abstract class DdiProviderRegistrationAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DdiProviderRegistrationDto::class);
 
@@ -175,9 +174,7 @@ abstract class DdiProviderRegistrationAbstract
 
         $self
             ->setMultiDdi($dto->getMultiDdi())
-            ->setTrunksUacreg($fkTransformer->transform($dto->getTrunksUacreg()))
-            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
-        ;
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
 
         $self->initChangelog();
 
@@ -191,7 +188,7 @@ abstract class DdiProviderRegistrationAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DdiProviderRegistrationDto::class);
 
@@ -205,10 +202,7 @@ abstract class DdiProviderRegistrationAbstract
             ->setExpires($dto->getExpires())
             ->setMultiDdi($dto->getMultiDdi())
             ->setContactUsername($dto->getContactUsername())
-            ->setTrunksUacreg($fkTransformer->transform($dto->getTrunksUacreg()))
             ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
-
-
 
         return $this;
     }
@@ -230,8 +224,7 @@ abstract class DdiProviderRegistrationAbstract
             ->setExpires(self::getExpires())
             ->setMultiDdi(self::getMultiDdi())
             ->setContactUsername(self::getContactUsername())
-            ->setTrunksUacreg(\Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg::entityToDto(self::getTrunksUacreg(), $depth))
-            ->setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::entityToDto(self::getDdiProvider(), $depth));
+            ->setDdiProvider(DdiProvider::entityToDto(self::getDdiProvider(), $depth));
     }
 
     /**
@@ -249,11 +242,9 @@ abstract class DdiProviderRegistrationAbstract
             'expires' => self::getExpires(),
             'multiDdi' => self::getMultiDdi(),
             'contactUsername' => self::getContactUsername(),
-            'trunksUacregId' => self::getTrunksUacreg() ? self::getTrunksUacreg()->getId() : null,
             'ddiProviderId' => self::getDdiProvider()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set username
@@ -262,9 +253,8 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return static
      */
-    protected function setUsername($username)
+    protected function setUsername(string $username): DdiProviderRegistrationInterface
     {
-        Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->username = $username;
@@ -289,9 +279,8 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return static
      */
-    protected function setDomain($domain)
+    protected function setDomain(string $domain): DdiProviderRegistrationInterface
     {
-        Assertion::notNull($domain, 'domain value "%s" is null, but non null value was expected.');
         Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->domain = $domain;
@@ -316,9 +305,8 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return static
      */
-    protected function setRealm($realm)
+    protected function setRealm(string $realm): DdiProviderRegistrationInterface
     {
-        Assertion::notNull($realm, 'realm value "%s" is null, but non null value was expected.');
         Assertion::maxLength($realm, 64, 'realm value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->realm = $realm;
@@ -343,9 +331,8 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return static
      */
-    protected function setAuthUsername($authUsername)
+    protected function setAuthUsername(string $authUsername): DdiProviderRegistrationInterface
     {
-        Assertion::notNull($authUsername, 'authUsername value "%s" is null, but non null value was expected.');
         Assertion::maxLength($authUsername, 64, 'authUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->authUsername = $authUsername;
@@ -370,9 +357,8 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return static
      */
-    protected function setAuthPassword($authPassword)
+    protected function setAuthPassword(string $authPassword): DdiProviderRegistrationInterface
     {
-        Assertion::notNull($authPassword, 'authPassword value "%s" is null, but non null value was expected.');
         Assertion::maxLength($authPassword, 64, 'authPassword value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->authPassword = $authPassword;
@@ -397,9 +383,8 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return static
      */
-    protected function setAuthProxy($authProxy)
+    protected function setAuthProxy(string $authProxy): DdiProviderRegistrationInterface
     {
-        Assertion::notNull($authProxy, 'authProxy value "%s" is null, but non null value was expected.');
         Assertion::maxLength($authProxy, 64, 'authProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->authProxy = $authProxy;
@@ -420,16 +405,13 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * Set expires
      *
-     * @param integer $expires
+     * @param int $expires
      *
      * @return static
      */
-    protected function setExpires($expires)
+    protected function setExpires(int $expires): DdiProviderRegistrationInterface
     {
-        Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
-        Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
-
-        $this->expires = (int) $expires;
+        $this->expires = $expires;
 
         return $this;
     }
@@ -437,7 +419,7 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * Get expires
      *
-     * @return integer
+     * @return int
      */
     public function getExpires(): int
     {
@@ -447,11 +429,11 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * Set multiDdi
      *
-     * @param boolean $multiDdi | null
+     * @param bool $multiDdi | null
      *
      * @return static
      */
-    protected function setMultiDdi($multiDdi = null)
+    protected function setMultiDdi(?bool $multiDdi = null): DdiProviderRegistrationInterface
     {
         if (!is_null($multiDdi)) {
             Assertion::between(intval($multiDdi), 0, 1, 'multiDdi provided "%s" is not a valid boolean value.');
@@ -466,9 +448,9 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * Get multiDdi
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getMultiDdi()
+    public function getMultiDdi(): ?bool
     {
         return $this->multiDdi;
     }
@@ -480,9 +462,8 @@ abstract class DdiProviderRegistrationAbstract
      *
      * @return static
      */
-    protected function setContactUsername($contactUsername)
+    protected function setContactUsername(string $contactUsername): DdiProviderRegistrationInterface
     {
-        Assertion::notNull($contactUsername, 'contactUsername value "%s" is null, but non null value was expected.');
         Assertion::maxLength($contactUsername, 64, 'contactUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->contactUsername = $contactUsername;
@@ -501,37 +482,13 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
-     * Set trunksUacreg
-     *
-     * @param \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface $trunksUacreg | null
-     *
-     * @return static
-     */
-    protected function setTrunksUacreg(\Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface $trunksUacreg = null)
-    {
-        $this->trunksUacreg = $trunksUacreg;
-
-        return $this;
-    }
-
-    /**
-     * Get trunksUacreg
-     *
-     * @return \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface | null
-     */
-    public function getTrunksUacreg()
-    {
-        return $this->trunksUacreg;
-    }
-
-    /**
      * Set ddiProvider
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider
+     * @param DdiProviderInterface
      *
      * @return static
      */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider)
+    public function setDdiProvider(DdiProviderInterface $ddiProvider): DdiProviderRegistrationInterface
     {
         $this->ddiProvider = $ddiProvider;
 
@@ -541,12 +498,11 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * Get ddiProvider
      *
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
+     * @return DdiProviderInterface
      */
-    public function getDdiProvider()
+    public function getDdiProvider(): DdiProviderInterface
     {
         return $this->ddiProvider;
     }
 
-    // @codeCoverageIgnoreEnd
 }

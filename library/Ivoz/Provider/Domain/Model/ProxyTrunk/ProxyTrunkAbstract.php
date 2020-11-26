@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\ProxyTrunk;
 
@@ -6,13 +7,16 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
- * ProxyTrunkAbstract
- * @codeCoverageIgnore
- */
+* ProxyTrunkAbstract
+* @codeCoverageIgnore
+*/
 abstract class ProxyTrunkAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string | null
      */
@@ -23,14 +27,12 @@ abstract class ProxyTrunkAbstract
      */
     protected $ip;
 
-
-    use ChangelogTrait;
-
     /**
      * Constructor
      */
-    protected function __construct($ip)
-    {
+    protected function __construct(
+        $ip
+    ) {
         $this->setIp($ip);
     }
 
@@ -98,7 +100,7 @@ abstract class ProxyTrunkAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ProxyTrunkDto::class);
 
@@ -107,8 +109,7 @@ abstract class ProxyTrunkAbstract
         );
 
         $self
-            ->setName($dto->getName())
-        ;
+            ->setName($dto->getName());
 
         $self->initChangelog();
 
@@ -122,15 +123,13 @@ abstract class ProxyTrunkAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ProxyTrunkDto::class);
 
         $this
             ->setName($dto->getName())
             ->setIp($dto->getIp());
-
-
 
         return $this;
     }
@@ -157,7 +156,6 @@ abstract class ProxyTrunkAbstract
             'ip' => self::getIp()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -166,7 +164,7 @@ abstract class ProxyTrunkAbstract
      *
      * @return static
      */
-    protected function setName($name = null)
+    protected function setName(?string $name = null): ProxyTrunkInterface
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -182,7 +180,7 @@ abstract class ProxyTrunkAbstract
      *
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -194,9 +192,8 @@ abstract class ProxyTrunkAbstract
      *
      * @return static
      */
-    protected function setIp($ip)
+    protected function setIp(string $ip): ProxyTrunkInterface
     {
-        Assertion::notNull($ip, 'ip value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ip = $ip;
@@ -214,5 +211,4 @@ abstract class ProxyTrunkAbstract
         return $this->ip;
     }
 
-    // @codeCoverageIgnoreEnd
 }

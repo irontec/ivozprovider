@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Queue;
 
@@ -6,20 +7,33 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Locution\Locution;
+use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
- * QueueAbstract
- * @codeCoverageIgnore
- */
+* QueueAbstract
+* @codeCoverageIgnore
+*/
 abstract class QueueAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string | null
      */
     protected $name;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $maxWaitTime;
 
@@ -35,7 +49,7 @@ abstract class QueueAbstract
     protected $timeoutNumberValue;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $maxlen;
 
@@ -51,17 +65,17 @@ abstract class QueueAbstract
     protected $fullNumberValue;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $periodicAnnounceFrequency;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $memberCallRest;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $memberCallTimeout;
 
@@ -71,73 +85,71 @@ abstract class QueueAbstract
     protected $strategy;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $weight;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $preventMissedCalls = 1;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @var LocutionInterface
      */
     protected $periodicAnnounceLocution;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @var LocutionInterface
      */
     protected $timeoutLocution;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @var ExtensionInterface
      */
     protected $timeoutExtension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @var UserInterface
      */
     protected $timeoutVoiceMailUser;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @var LocutionInterface
      */
     protected $fullLocution;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @var ExtensionInterface
      */
     protected $fullExtension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @var UserInterface
      */
     protected $fullVoiceMailUser;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @var CountryInterface
      */
     protected $timeoutNumberCountry;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @var CountryInterface
      */
     protected $fullNumberCountry;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($preventMissedCalls)
-    {
+    protected function __construct(
+        $preventMissedCalls
+    ) {
         $this->setPreventMissedCalls($preventMissedCalls);
     }
 
@@ -205,7 +217,7 @@ abstract class QueueAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, QueueDto::class);
 
@@ -235,8 +247,7 @@ abstract class QueueAbstract
             ->setFullExtension($fkTransformer->transform($dto->getFullExtension()))
             ->setFullVoiceMailUser($fkTransformer->transform($dto->getFullVoiceMailUser()))
             ->setTimeoutNumberCountry($fkTransformer->transform($dto->getTimeoutNumberCountry()))
-            ->setFullNumberCountry($fkTransformer->transform($dto->getFullNumberCountry()))
-        ;
+            ->setFullNumberCountry($fkTransformer->transform($dto->getFullNumberCountry()));
 
         $self->initChangelog();
 
@@ -250,7 +261,7 @@ abstract class QueueAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, QueueDto::class);
 
@@ -279,8 +290,6 @@ abstract class QueueAbstract
             ->setTimeoutNumberCountry($fkTransformer->transform($dto->getTimeoutNumberCountry()))
             ->setFullNumberCountry($fkTransformer->transform($dto->getFullNumberCountry()));
 
-
-
         return $this;
     }
 
@@ -305,16 +314,16 @@ abstract class QueueAbstract
             ->setStrategy(self::getStrategy())
             ->setWeight(self::getWeight())
             ->setPreventMissedCalls(self::getPreventMissedCalls())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setPeriodicAnnounceLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getPeriodicAnnounceLocution(), $depth))
-            ->setTimeoutLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getTimeoutLocution(), $depth))
-            ->setTimeoutExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getTimeoutExtension(), $depth))
-            ->setTimeoutVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getTimeoutVoiceMailUser(), $depth))
-            ->setFullLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getFullLocution(), $depth))
-            ->setFullExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getFullExtension(), $depth))
-            ->setFullVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getFullVoiceMailUser(), $depth))
-            ->setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getTimeoutNumberCountry(), $depth))
-            ->setFullNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getFullNumberCountry(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setPeriodicAnnounceLocution(Locution::entityToDto(self::getPeriodicAnnounceLocution(), $depth))
+            ->setTimeoutLocution(Locution::entityToDto(self::getTimeoutLocution(), $depth))
+            ->setTimeoutExtension(Extension::entityToDto(self::getTimeoutExtension(), $depth))
+            ->setTimeoutVoiceMailUser(User::entityToDto(self::getTimeoutVoiceMailUser(), $depth))
+            ->setFullLocution(Locution::entityToDto(self::getFullLocution(), $depth))
+            ->setFullExtension(Extension::entityToDto(self::getFullExtension(), $depth))
+            ->setFullVoiceMailUser(User::entityToDto(self::getFullVoiceMailUser(), $depth))
+            ->setTimeoutNumberCountry(Country::entityToDto(self::getTimeoutNumberCountry(), $depth))
+            ->setFullNumberCountry(Country::entityToDto(self::getFullNumberCountry(), $depth));
     }
 
     /**
@@ -348,7 +357,6 @@ abstract class QueueAbstract
             'fullNumberCountryId' => self::getFullNumberCountry() ? self::getFullNumberCountry()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -357,7 +365,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    protected function setName($name = null)
+    protected function setName(?string $name = null): QueueInterface
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 128, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -373,7 +381,7 @@ abstract class QueueAbstract
      *
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -381,17 +389,12 @@ abstract class QueueAbstract
     /**
      * Set maxWaitTime
      *
-     * @param integer $maxWaitTime | null
+     * @param int $maxWaitTime | null
      *
      * @return static
      */
-    protected function setMaxWaitTime($maxWaitTime = null)
+    protected function setMaxWaitTime(?int $maxWaitTime = null): QueueInterface
     {
-        if (!is_null($maxWaitTime)) {
-            Assertion::integerish($maxWaitTime, 'maxWaitTime value "%s" is not an integer or a number castable to integer.');
-            $maxWaitTime = (int) $maxWaitTime;
-        }
-
         $this->maxWaitTime = $maxWaitTime;
 
         return $this;
@@ -400,9 +403,9 @@ abstract class QueueAbstract
     /**
      * Get maxWaitTime
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getMaxWaitTime()
+    public function getMaxWaitTime(): ?int
     {
         return $this->maxWaitTime;
     }
@@ -414,15 +417,19 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    protected function setTimeoutTargetType($timeoutTargetType = null)
+    protected function setTimeoutTargetType(?string $timeoutTargetType = null): QueueInterface
     {
         if (!is_null($timeoutTargetType)) {
             Assertion::maxLength($timeoutTargetType, 25, 'timeoutTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($timeoutTargetType, [
-                QueueInterface::TIMEOUTTARGETTYPE_NUMBER,
-                QueueInterface::TIMEOUTTARGETTYPE_EXTENSION,
-                QueueInterface::TIMEOUTTARGETTYPE_VOICEMAIL
-            ], 'timeoutTargetTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $timeoutTargetType,
+                [
+                    QueueInterface::TIMEOUTTARGETTYPE_NUMBER,
+                    QueueInterface::TIMEOUTTARGETTYPE_EXTENSION,
+                    QueueInterface::TIMEOUTTARGETTYPE_VOICEMAIL,
+                ],
+                'timeoutTargetTypevalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->timeoutTargetType = $timeoutTargetType;
@@ -435,7 +442,7 @@ abstract class QueueAbstract
      *
      * @return string | null
      */
-    public function getTimeoutTargetType()
+    public function getTimeoutTargetType(): ?string
     {
         return $this->timeoutTargetType;
     }
@@ -447,7 +454,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    protected function setTimeoutNumberValue($timeoutNumberValue = null)
+    protected function setTimeoutNumberValue(?string $timeoutNumberValue = null): QueueInterface
     {
         if (!is_null($timeoutNumberValue)) {
             Assertion::maxLength($timeoutNumberValue, 25, 'timeoutNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -463,7 +470,7 @@ abstract class QueueAbstract
      *
      * @return string | null
      */
-    public function getTimeoutNumberValue()
+    public function getTimeoutNumberValue(): ?string
     {
         return $this->timeoutNumberValue;
     }
@@ -471,17 +478,12 @@ abstract class QueueAbstract
     /**
      * Set maxlen
      *
-     * @param integer $maxlen | null
+     * @param int $maxlen | null
      *
      * @return static
      */
-    protected function setMaxlen($maxlen = null)
+    protected function setMaxlen(?int $maxlen = null): QueueInterface
     {
-        if (!is_null($maxlen)) {
-            Assertion::integerish($maxlen, 'maxlen value "%s" is not an integer or a number castable to integer.');
-            $maxlen = (int) $maxlen;
-        }
-
         $this->maxlen = $maxlen;
 
         return $this;
@@ -490,9 +492,9 @@ abstract class QueueAbstract
     /**
      * Get maxlen
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getMaxlen()
+    public function getMaxlen(): ?int
     {
         return $this->maxlen;
     }
@@ -504,15 +506,19 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    protected function setFullTargetType($fullTargetType = null)
+    protected function setFullTargetType(?string $fullTargetType = null): QueueInterface
     {
         if (!is_null($fullTargetType)) {
             Assertion::maxLength($fullTargetType, 25, 'fullTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($fullTargetType, [
-                QueueInterface::FULLTARGETTYPE_NUMBER,
-                QueueInterface::FULLTARGETTYPE_EXTENSION,
-                QueueInterface::FULLTARGETTYPE_VOICEMAIL
-            ], 'fullTargetTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $fullTargetType,
+                [
+                    QueueInterface::FULLTARGETTYPE_NUMBER,
+                    QueueInterface::FULLTARGETTYPE_EXTENSION,
+                    QueueInterface::FULLTARGETTYPE_VOICEMAIL,
+                ],
+                'fullTargetTypevalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->fullTargetType = $fullTargetType;
@@ -525,7 +531,7 @@ abstract class QueueAbstract
      *
      * @return string | null
      */
-    public function getFullTargetType()
+    public function getFullTargetType(): ?string
     {
         return $this->fullTargetType;
     }
@@ -537,7 +543,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    protected function setFullNumberValue($fullNumberValue = null)
+    protected function setFullNumberValue(?string $fullNumberValue = null): QueueInterface
     {
         if (!is_null($fullNumberValue)) {
             Assertion::maxLength($fullNumberValue, 25, 'fullNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -553,7 +559,7 @@ abstract class QueueAbstract
      *
      * @return string | null
      */
-    public function getFullNumberValue()
+    public function getFullNumberValue(): ?string
     {
         return $this->fullNumberValue;
     }
@@ -561,17 +567,12 @@ abstract class QueueAbstract
     /**
      * Set periodicAnnounceFrequency
      *
-     * @param integer $periodicAnnounceFrequency | null
+     * @param int $periodicAnnounceFrequency | null
      *
      * @return static
      */
-    protected function setPeriodicAnnounceFrequency($periodicAnnounceFrequency = null)
+    protected function setPeriodicAnnounceFrequency(?int $periodicAnnounceFrequency = null): QueueInterface
     {
-        if (!is_null($periodicAnnounceFrequency)) {
-            Assertion::integerish($periodicAnnounceFrequency, 'periodicAnnounceFrequency value "%s" is not an integer or a number castable to integer.');
-            $periodicAnnounceFrequency = (int) $periodicAnnounceFrequency;
-        }
-
         $this->periodicAnnounceFrequency = $periodicAnnounceFrequency;
 
         return $this;
@@ -580,9 +581,9 @@ abstract class QueueAbstract
     /**
      * Get periodicAnnounceFrequency
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getPeriodicAnnounceFrequency()
+    public function getPeriodicAnnounceFrequency(): ?int
     {
         return $this->periodicAnnounceFrequency;
     }
@@ -590,17 +591,12 @@ abstract class QueueAbstract
     /**
      * Set memberCallRest
      *
-     * @param integer $memberCallRest | null
+     * @param int $memberCallRest | null
      *
      * @return static
      */
-    protected function setMemberCallRest($memberCallRest = null)
+    protected function setMemberCallRest(?int $memberCallRest = null): QueueInterface
     {
-        if (!is_null($memberCallRest)) {
-            Assertion::integerish($memberCallRest, 'memberCallRest value "%s" is not an integer or a number castable to integer.');
-            $memberCallRest = (int) $memberCallRest;
-        }
-
         $this->memberCallRest = $memberCallRest;
 
         return $this;
@@ -609,9 +605,9 @@ abstract class QueueAbstract
     /**
      * Get memberCallRest
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getMemberCallRest()
+    public function getMemberCallRest(): ?int
     {
         return $this->memberCallRest;
     }
@@ -619,17 +615,12 @@ abstract class QueueAbstract
     /**
      * Set memberCallTimeout
      *
-     * @param integer $memberCallTimeout | null
+     * @param int $memberCallTimeout | null
      *
      * @return static
      */
-    protected function setMemberCallTimeout($memberCallTimeout = null)
+    protected function setMemberCallTimeout(?int $memberCallTimeout = null): QueueInterface
     {
-        if (!is_null($memberCallTimeout)) {
-            Assertion::integerish($memberCallTimeout, 'memberCallTimeout value "%s" is not an integer or a number castable to integer.');
-            $memberCallTimeout = (int) $memberCallTimeout;
-        }
-
         $this->memberCallTimeout = $memberCallTimeout;
 
         return $this;
@@ -638,9 +629,9 @@ abstract class QueueAbstract
     /**
      * Get memberCallTimeout
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getMemberCallTimeout()
+    public function getMemberCallTimeout(): ?int
     {
         return $this->memberCallTimeout;
     }
@@ -652,7 +643,7 @@ abstract class QueueAbstract
      *
      * @return static
      */
-    protected function setStrategy($strategy = null)
+    protected function setStrategy(?string $strategy = null): QueueInterface
     {
         $this->strategy = $strategy;
 
@@ -664,7 +655,7 @@ abstract class QueueAbstract
      *
      * @return string | null
      */
-    public function getStrategy()
+    public function getStrategy(): ?string
     {
         return $this->strategy;
     }
@@ -672,17 +663,12 @@ abstract class QueueAbstract
     /**
      * Set weight
      *
-     * @param integer $weight | null
+     * @param int $weight | null
      *
      * @return static
      */
-    protected function setWeight($weight = null)
+    protected function setWeight(?int $weight = null): QueueInterface
     {
-        if (!is_null($weight)) {
-            Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
-            $weight = (int) $weight;
-        }
-
         $this->weight = $weight;
 
         return $this;
@@ -691,9 +677,9 @@ abstract class QueueAbstract
     /**
      * Get weight
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getWeight()
+    public function getWeight(): ?int
     {
         return $this->weight;
     }
@@ -701,17 +687,15 @@ abstract class QueueAbstract
     /**
      * Set preventMissedCalls
      *
-     * @param integer $preventMissedCalls
+     * @param int $preventMissedCalls
      *
      * @return static
      */
-    protected function setPreventMissedCalls($preventMissedCalls)
+    protected function setPreventMissedCalls(int $preventMissedCalls): QueueInterface
     {
-        Assertion::notNull($preventMissedCalls, 'preventMissedCalls value "%s" is null, but non null value was expected.');
-        Assertion::integerish($preventMissedCalls, 'preventMissedCalls value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($preventMissedCalls, 0, 'preventMissedCalls provided "%s" is not greater or equal than "%s".');
 
-        $this->preventMissedCalls = (int) $preventMissedCalls;
+        $this->preventMissedCalls = $preventMissedCalls;
 
         return $this;
     }
@@ -719,7 +703,7 @@ abstract class QueueAbstract
     /**
      * Get preventMissedCalls
      *
-     * @return integer
+     * @return int
      */
     public function getPreventMissedCalls(): int
     {
@@ -729,11 +713,11 @@ abstract class QueueAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(CompanyInterface $company): QueueInterface
     {
         $this->company = $company;
 
@@ -743,9 +727,9 @@ abstract class QueueAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany()
+    public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
@@ -753,11 +737,11 @@ abstract class QueueAbstract
     /**
      * Set periodicAnnounceLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution | null
+     * @param LocutionInterface | null
      *
      * @return static
      */
-    protected function setPeriodicAnnounceLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $periodicAnnounceLocution = null)
+    protected function setPeriodicAnnounceLocution(?LocutionInterface $periodicAnnounceLocution = null): QueueInterface
     {
         $this->periodicAnnounceLocution = $periodicAnnounceLocution;
 
@@ -767,9 +751,9 @@ abstract class QueueAbstract
     /**
      * Get periodicAnnounceLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @return LocutionInterface | null
      */
-    public function getPeriodicAnnounceLocution()
+    public function getPeriodicAnnounceLocution(): ?LocutionInterface
     {
         return $this->periodicAnnounceLocution;
     }
@@ -777,11 +761,11 @@ abstract class QueueAbstract
     /**
      * Set timeoutLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution | null
+     * @param LocutionInterface | null
      *
      * @return static
      */
-    protected function setTimeoutLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $timeoutLocution = null)
+    protected function setTimeoutLocution(?LocutionInterface $timeoutLocution = null): QueueInterface
     {
         $this->timeoutLocution = $timeoutLocution;
 
@@ -791,9 +775,9 @@ abstract class QueueAbstract
     /**
      * Get timeoutLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @return LocutionInterface | null
      */
-    public function getTimeoutLocution()
+    public function getTimeoutLocution(): ?LocutionInterface
     {
         return $this->timeoutLocution;
     }
@@ -801,11 +785,11 @@ abstract class QueueAbstract
     /**
      * Set timeoutExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension | null
+     * @param ExtensionInterface | null
      *
      * @return static
      */
-    protected function setTimeoutExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $timeoutExtension = null)
+    protected function setTimeoutExtension(?ExtensionInterface $timeoutExtension = null): QueueInterface
     {
         $this->timeoutExtension = $timeoutExtension;
 
@@ -815,9 +799,9 @@ abstract class QueueAbstract
     /**
      * Get timeoutExtension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @return ExtensionInterface | null
      */
-    public function getTimeoutExtension()
+    public function getTimeoutExtension(): ?ExtensionInterface
     {
         return $this->timeoutExtension;
     }
@@ -825,11 +809,11 @@ abstract class QueueAbstract
     /**
      * Set timeoutVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser | null
+     * @param UserInterface | null
      *
      * @return static
      */
-    protected function setTimeoutVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $timeoutVoiceMailUser = null)
+    protected function setTimeoutVoiceMailUser(?UserInterface $timeoutVoiceMailUser = null): QueueInterface
     {
         $this->timeoutVoiceMailUser = $timeoutVoiceMailUser;
 
@@ -839,9 +823,9 @@ abstract class QueueAbstract
     /**
      * Get timeoutVoiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getTimeoutVoiceMailUser()
+    public function getTimeoutVoiceMailUser(): ?UserInterface
     {
         return $this->timeoutVoiceMailUser;
     }
@@ -849,11 +833,11 @@ abstract class QueueAbstract
     /**
      * Set fullLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution | null
+     * @param LocutionInterface | null
      *
      * @return static
      */
-    protected function setFullLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $fullLocution = null)
+    protected function setFullLocution(?LocutionInterface $fullLocution = null): QueueInterface
     {
         $this->fullLocution = $fullLocution;
 
@@ -863,9 +847,9 @@ abstract class QueueAbstract
     /**
      * Get fullLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @return LocutionInterface | null
      */
-    public function getFullLocution()
+    public function getFullLocution(): ?LocutionInterface
     {
         return $this->fullLocution;
     }
@@ -873,11 +857,11 @@ abstract class QueueAbstract
     /**
      * Set fullExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension | null
+     * @param ExtensionInterface | null
      *
      * @return static
      */
-    protected function setFullExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $fullExtension = null)
+    protected function setFullExtension(?ExtensionInterface $fullExtension = null): QueueInterface
     {
         $this->fullExtension = $fullExtension;
 
@@ -887,9 +871,9 @@ abstract class QueueAbstract
     /**
      * Get fullExtension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @return ExtensionInterface | null
      */
-    public function getFullExtension()
+    public function getFullExtension(): ?ExtensionInterface
     {
         return $this->fullExtension;
     }
@@ -897,11 +881,11 @@ abstract class QueueAbstract
     /**
      * Set fullVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser | null
+     * @param UserInterface | null
      *
      * @return static
      */
-    protected function setFullVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $fullVoiceMailUser = null)
+    protected function setFullVoiceMailUser(?UserInterface $fullVoiceMailUser = null): QueueInterface
     {
         $this->fullVoiceMailUser = $fullVoiceMailUser;
 
@@ -911,9 +895,9 @@ abstract class QueueAbstract
     /**
      * Get fullVoiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getFullVoiceMailUser()
+    public function getFullVoiceMailUser(): ?UserInterface
     {
         return $this->fullVoiceMailUser;
     }
@@ -921,11 +905,11 @@ abstract class QueueAbstract
     /**
      * Set timeoutNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry | null
+     * @param CountryInterface | null
      *
      * @return static
      */
-    protected function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null)
+    protected function setTimeoutNumberCountry(?CountryInterface $timeoutNumberCountry = null): QueueInterface
     {
         $this->timeoutNumberCountry = $timeoutNumberCountry;
 
@@ -935,9 +919,9 @@ abstract class QueueAbstract
     /**
      * Get timeoutNumberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getTimeoutNumberCountry()
+    public function getTimeoutNumberCountry(): ?CountryInterface
     {
         return $this->timeoutNumberCountry;
     }
@@ -945,11 +929,11 @@ abstract class QueueAbstract
     /**
      * Set fullNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry | null
+     * @param CountryInterface | null
      *
      * @return static
      */
-    protected function setFullNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry = null)
+    protected function setFullNumberCountry(?CountryInterface $fullNumberCountry = null): QueueInterface
     {
         $this->fullNumberCountry = $fullNumberCountry;
 
@@ -959,12 +943,11 @@ abstract class QueueAbstract
     /**
      * Get fullNumberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getFullNumberCountry()
+    public function getFullNumberCountry(): ?CountryInterface
     {
         return $this->fullNumberCountry;
     }
 
-    // @codeCoverageIgnoreEnd
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\RoutingTag;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 
 /**
- * RoutingTagAbstract
- * @codeCoverageIgnore
- */
+* RoutingTagAbstract
+* @codeCoverageIgnore
+*/
 abstract class RoutingTagAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,18 +30,17 @@ abstract class RoutingTagAbstract
     protected $tag;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
      */
     protected $brand;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($name, $tag)
-    {
+    protected function __construct(
+        $name,
+        $tag
+    ) {
         $this->setName($name);
         $this->setTag($tag);
     }
@@ -104,7 +109,7 @@ abstract class RoutingTagAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RoutingTagDto::class);
 
@@ -114,8 +119,7 @@ abstract class RoutingTagAbstract
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-        ;
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
         $self->initChangelog();
 
@@ -129,7 +133,7 @@ abstract class RoutingTagAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RoutingTagDto::class);
 
@@ -137,8 +141,6 @@ abstract class RoutingTagAbstract
             ->setName($dto->getName())
             ->setTag($dto->getTag())
             ->setBrand($fkTransformer->transform($dto->getBrand()));
-
-
 
         return $this;
     }
@@ -153,7 +155,7 @@ abstract class RoutingTagAbstract
         return self::createDto()
             ->setName(self::getName())
             ->setTag(self::getTag())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**
@@ -167,7 +169,6 @@ abstract class RoutingTagAbstract
             'brandId' => self::getBrand()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -176,9 +177,8 @@ abstract class RoutingTagAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): RoutingTagInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 80, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -203,9 +203,8 @@ abstract class RoutingTagAbstract
      *
      * @return static
      */
-    protected function setTag($tag)
+    protected function setTag(string $tag): RoutingTagInterface
     {
-        Assertion::notNull($tag, 'tag value "%s" is null, but non null value was expected.');
         Assertion::maxLength($tag, 15, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tag = $tag;
@@ -226,11 +225,11 @@ abstract class RoutingTagAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param BrandInterface
      *
      * @return static
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(BrandInterface $brand): RoutingTagInterface
     {
         $this->brand = $brand;
 
@@ -240,12 +239,11 @@ abstract class RoutingTagAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand()
+    public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    // @codeCoverageIgnoreEnd
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroup;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 
 /**
- * RoutingPatternGroupAbstract
- * @codeCoverageIgnore
- */
+* RoutingPatternGroupAbstract
+* @codeCoverageIgnore
+*/
 abstract class RoutingPatternGroupAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,18 +30,16 @@ abstract class RoutingPatternGroupAbstract
     protected $description;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
      */
     protected $brand;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($name)
-    {
+    protected function __construct(
+        $name
+    ) {
         $this->setName($name);
     }
 
@@ -103,7 +107,7 @@ abstract class RoutingPatternGroupAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RoutingPatternGroupDto::class);
 
@@ -113,8 +117,7 @@ abstract class RoutingPatternGroupAbstract
 
         $self
             ->setDescription($dto->getDescription())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-        ;
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
         $self->initChangelog();
 
@@ -128,7 +131,7 @@ abstract class RoutingPatternGroupAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RoutingPatternGroupDto::class);
 
@@ -136,8 +139,6 @@ abstract class RoutingPatternGroupAbstract
             ->setName($dto->getName())
             ->setDescription($dto->getDescription())
             ->setBrand($fkTransformer->transform($dto->getBrand()));
-
-
 
         return $this;
     }
@@ -152,7 +153,7 @@ abstract class RoutingPatternGroupAbstract
         return self::createDto()
             ->setName(self::getName())
             ->setDescription(self::getDescription())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**
@@ -166,7 +167,6 @@ abstract class RoutingPatternGroupAbstract
             'brandId' => self::getBrand()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -175,9 +175,8 @@ abstract class RoutingPatternGroupAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): RoutingPatternGroupInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 55, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -202,7 +201,7 @@ abstract class RoutingPatternGroupAbstract
      *
      * @return static
      */
-    protected function setDescription($description = null)
+    protected function setDescription(?string $description = null): RoutingPatternGroupInterface
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 55, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -218,7 +217,7 @@ abstract class RoutingPatternGroupAbstract
      *
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -226,11 +225,11 @@ abstract class RoutingPatternGroupAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param BrandInterface
      *
      * @return static
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(BrandInterface $brand): RoutingPatternGroupInterface
     {
         $this->brand = $brand;
 
@@ -240,12 +239,11 @@ abstract class RoutingPatternGroupAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand()
+    public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    // @codeCoverageIgnoreEnd
 }

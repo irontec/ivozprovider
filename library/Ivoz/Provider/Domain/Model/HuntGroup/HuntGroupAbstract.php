@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
@@ -6,13 +7,26 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Locution\Locution;
+use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
- * HuntGroupAbstract
- * @codeCoverageIgnore
- */
+* HuntGroupAbstract
+* @codeCoverageIgnore
+*/
 abstract class HuntGroupAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -30,7 +44,7 @@ abstract class HuntGroupAbstract
     protected $strategy;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $ringAllTimeout;
 
@@ -46,42 +60,39 @@ abstract class HuntGroupAbstract
     protected $noAnswerNumberValue;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $preventMissedCalls = 1;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $allowCallForwards = 0;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @var LocutionInterface
      */
     protected $noAnswerLocution;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @var ExtensionInterface
      */
     protected $noAnswerExtension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @var UserInterface
      */
     protected $noAnswerVoiceMailUser;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @var CountryInterface
      */
     protected $noAnswerNumberCountry;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -164,7 +175,7 @@ abstract class HuntGroupAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, HuntGroupDto::class);
 
@@ -184,8 +195,7 @@ abstract class HuntGroupAbstract
             ->setNoAnswerLocution($fkTransformer->transform($dto->getNoAnswerLocution()))
             ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
             ->setNoAnswerVoiceMailUser($fkTransformer->transform($dto->getNoAnswerVoiceMailUser()))
-            ->setNoAnswerNumberCountry($fkTransformer->transform($dto->getNoAnswerNumberCountry()))
-        ;
+            ->setNoAnswerNumberCountry($fkTransformer->transform($dto->getNoAnswerNumberCountry()));
 
         $self->initChangelog();
 
@@ -199,7 +209,7 @@ abstract class HuntGroupAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, HuntGroupDto::class);
 
@@ -217,8 +227,6 @@ abstract class HuntGroupAbstract
             ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
             ->setNoAnswerVoiceMailUser($fkTransformer->transform($dto->getNoAnswerVoiceMailUser()))
             ->setNoAnswerNumberCountry($fkTransformer->transform($dto->getNoAnswerNumberCountry()));
-
-
 
         return $this;
     }
@@ -239,11 +247,11 @@ abstract class HuntGroupAbstract
             ->setNoAnswerNumberValue(self::getNoAnswerNumberValue())
             ->setPreventMissedCalls(self::getPreventMissedCalls())
             ->setAllowCallForwards(self::getAllowCallForwards())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setNoAnswerLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getNoAnswerLocution(), $depth))
-            ->setNoAnswerExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getNoAnswerExtension(), $depth))
-            ->setNoAnswerVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getNoAnswerVoiceMailUser(), $depth))
-            ->setNoAnswerNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNoAnswerNumberCountry(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setNoAnswerLocution(Locution::entityToDto(self::getNoAnswerLocution(), $depth))
+            ->setNoAnswerExtension(Extension::entityToDto(self::getNoAnswerExtension(), $depth))
+            ->setNoAnswerVoiceMailUser(User::entityToDto(self::getNoAnswerVoiceMailUser(), $depth))
+            ->setNoAnswerNumberCountry(Country::entityToDto(self::getNoAnswerNumberCountry(), $depth));
     }
 
     /**
@@ -267,7 +275,6 @@ abstract class HuntGroupAbstract
             'noAnswerNumberCountryId' => self::getNoAnswerNumberCountry() ? self::getNoAnswerNumberCountry()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -276,9 +283,8 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): HuntGroupInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -303,9 +309,8 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    protected function setDescription($description)
+    protected function setDescription(string $description): HuntGroupInterface
     {
-        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
@@ -330,16 +335,19 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    protected function setStrategy($strategy)
+    protected function setStrategy(string $strategy): HuntGroupInterface
     {
-        Assertion::notNull($strategy, 'strategy value "%s" is null, but non null value was expected.');
         Assertion::maxLength($strategy, 25, 'strategy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($strategy, [
-            HuntGroupInterface::STRATEGY_RINGALL,
-            HuntGroupInterface::STRATEGY_LINEAR,
-            HuntGroupInterface::STRATEGY_ROUNDROBIN,
-            HuntGroupInterface::STRATEGY_RANDOM
-        ], 'strategyvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $strategy,
+            [
+                HuntGroupInterface::STRATEGY_RINGALL,
+                HuntGroupInterface::STRATEGY_LINEAR,
+                HuntGroupInterface::STRATEGY_ROUNDROBIN,
+                HuntGroupInterface::STRATEGY_RANDOM,
+            ],
+            'strategyvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->strategy = $strategy;
 
@@ -359,17 +367,12 @@ abstract class HuntGroupAbstract
     /**
      * Set ringAllTimeout
      *
-     * @param integer $ringAllTimeout | null
+     * @param int $ringAllTimeout | null
      *
      * @return static
      */
-    protected function setRingAllTimeout($ringAllTimeout = null)
+    protected function setRingAllTimeout(?int $ringAllTimeout = null): HuntGroupInterface
     {
-        if (!is_null($ringAllTimeout)) {
-            Assertion::integerish($ringAllTimeout, 'ringAllTimeout value "%s" is not an integer or a number castable to integer.');
-            $ringAllTimeout = (int) $ringAllTimeout;
-        }
-
         $this->ringAllTimeout = $ringAllTimeout;
 
         return $this;
@@ -378,9 +381,9 @@ abstract class HuntGroupAbstract
     /**
      * Get ringAllTimeout
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getRingAllTimeout()
+    public function getRingAllTimeout(): ?int
     {
         return $this->ringAllTimeout;
     }
@@ -392,15 +395,19 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    protected function setNoAnswerTargetType($noAnswerTargetType = null)
+    protected function setNoAnswerTargetType(?string $noAnswerTargetType = null): HuntGroupInterface
     {
         if (!is_null($noAnswerTargetType)) {
             Assertion::maxLength($noAnswerTargetType, 25, 'noAnswerTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($noAnswerTargetType, [
-                HuntGroupInterface::NOANSWERTARGETTYPE_NUMBER,
-                HuntGroupInterface::NOANSWERTARGETTYPE_EXTENSION,
-                HuntGroupInterface::NOANSWERTARGETTYPE_VOICEMAIL
-            ], 'noAnswerTargetTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $noAnswerTargetType,
+                [
+                    HuntGroupInterface::NOANSWERTARGETTYPE_NUMBER,
+                    HuntGroupInterface::NOANSWERTARGETTYPE_EXTENSION,
+                    HuntGroupInterface::NOANSWERTARGETTYPE_VOICEMAIL,
+                ],
+                'noAnswerTargetTypevalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->noAnswerTargetType = $noAnswerTargetType;
@@ -413,7 +420,7 @@ abstract class HuntGroupAbstract
      *
      * @return string | null
      */
-    public function getNoAnswerTargetType()
+    public function getNoAnswerTargetType(): ?string
     {
         return $this->noAnswerTargetType;
     }
@@ -425,7 +432,7 @@ abstract class HuntGroupAbstract
      *
      * @return static
      */
-    protected function setNoAnswerNumberValue($noAnswerNumberValue = null)
+    protected function setNoAnswerNumberValue(?string $noAnswerNumberValue = null): HuntGroupInterface
     {
         if (!is_null($noAnswerNumberValue)) {
             Assertion::maxLength($noAnswerNumberValue, 25, 'noAnswerNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -441,7 +448,7 @@ abstract class HuntGroupAbstract
      *
      * @return string | null
      */
-    public function getNoAnswerNumberValue()
+    public function getNoAnswerNumberValue(): ?string
     {
         return $this->noAnswerNumberValue;
     }
@@ -449,17 +456,15 @@ abstract class HuntGroupAbstract
     /**
      * Set preventMissedCalls
      *
-     * @param integer $preventMissedCalls
+     * @param int $preventMissedCalls
      *
      * @return static
      */
-    protected function setPreventMissedCalls($preventMissedCalls)
+    protected function setPreventMissedCalls(int $preventMissedCalls): HuntGroupInterface
     {
-        Assertion::notNull($preventMissedCalls, 'preventMissedCalls value "%s" is null, but non null value was expected.');
-        Assertion::integerish($preventMissedCalls, 'preventMissedCalls value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($preventMissedCalls, 0, 'preventMissedCalls provided "%s" is not greater or equal than "%s".');
 
-        $this->preventMissedCalls = (int) $preventMissedCalls;
+        $this->preventMissedCalls = $preventMissedCalls;
 
         return $this;
     }
@@ -467,7 +472,7 @@ abstract class HuntGroupAbstract
     /**
      * Get preventMissedCalls
      *
-     * @return integer
+     * @return int
      */
     public function getPreventMissedCalls(): int
     {
@@ -477,17 +482,15 @@ abstract class HuntGroupAbstract
     /**
      * Set allowCallForwards
      *
-     * @param integer $allowCallForwards
+     * @param int $allowCallForwards
      *
      * @return static
      */
-    protected function setAllowCallForwards($allowCallForwards)
+    protected function setAllowCallForwards(int $allowCallForwards): HuntGroupInterface
     {
-        Assertion::notNull($allowCallForwards, 'allowCallForwards value "%s" is null, but non null value was expected.');
-        Assertion::integerish($allowCallForwards, 'allowCallForwards value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($allowCallForwards, 0, 'allowCallForwards provided "%s" is not greater or equal than "%s".');
 
-        $this->allowCallForwards = (int) $allowCallForwards;
+        $this->allowCallForwards = $allowCallForwards;
 
         return $this;
     }
@@ -495,7 +498,7 @@ abstract class HuntGroupAbstract
     /**
      * Get allowCallForwards
      *
-     * @return integer
+     * @return int
      */
     public function getAllowCallForwards(): int
     {
@@ -505,11 +508,11 @@ abstract class HuntGroupAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(CompanyInterface $company): HuntGroupInterface
     {
         $this->company = $company;
 
@@ -519,9 +522,9 @@ abstract class HuntGroupAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany()
+    public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
@@ -529,11 +532,11 @@ abstract class HuntGroupAbstract
     /**
      * Set noAnswerLocution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noAnswerLocution | null
+     * @param LocutionInterface | null
      *
      * @return static
      */
-    protected function setNoAnswerLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $noAnswerLocution = null)
+    protected function setNoAnswerLocution(?LocutionInterface $noAnswerLocution = null): HuntGroupInterface
     {
         $this->noAnswerLocution = $noAnswerLocution;
 
@@ -543,9 +546,9 @@ abstract class HuntGroupAbstract
     /**
      * Get noAnswerLocution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @return LocutionInterface | null
      */
-    public function getNoAnswerLocution()
+    public function getNoAnswerLocution(): ?LocutionInterface
     {
         return $this->noAnswerLocution;
     }
@@ -553,11 +556,11 @@ abstract class HuntGroupAbstract
     /**
      * Set noAnswerExtension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noAnswerExtension | null
+     * @param ExtensionInterface | null
      *
      * @return static
      */
-    protected function setNoAnswerExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $noAnswerExtension = null)
+    protected function setNoAnswerExtension(?ExtensionInterface $noAnswerExtension = null): HuntGroupInterface
     {
         $this->noAnswerExtension = $noAnswerExtension;
 
@@ -567,9 +570,9 @@ abstract class HuntGroupAbstract
     /**
      * Get noAnswerExtension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @return ExtensionInterface | null
      */
-    public function getNoAnswerExtension()
+    public function getNoAnswerExtension(): ?ExtensionInterface
     {
         return $this->noAnswerExtension;
     }
@@ -577,11 +580,11 @@ abstract class HuntGroupAbstract
     /**
      * Set noAnswerVoiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $noAnswerVoiceMailUser | null
+     * @param UserInterface | null
      *
      * @return static
      */
-    protected function setNoAnswerVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $noAnswerVoiceMailUser = null)
+    protected function setNoAnswerVoiceMailUser(?UserInterface $noAnswerVoiceMailUser = null): HuntGroupInterface
     {
         $this->noAnswerVoiceMailUser = $noAnswerVoiceMailUser;
 
@@ -591,9 +594,9 @@ abstract class HuntGroupAbstract
     /**
      * Get noAnswerVoiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getNoAnswerVoiceMailUser()
+    public function getNoAnswerVoiceMailUser(): ?UserInterface
     {
         return $this->noAnswerVoiceMailUser;
     }
@@ -601,11 +604,11 @@ abstract class HuntGroupAbstract
     /**
      * Set noAnswerNumberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry | null
+     * @param CountryInterface | null
      *
      * @return static
      */
-    protected function setNoAnswerNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry = null)
+    protected function setNoAnswerNumberCountry(?CountryInterface $noAnswerNumberCountry = null): HuntGroupInterface
     {
         $this->noAnswerNumberCountry = $noAnswerNumberCountry;
 
@@ -615,12 +618,11 @@ abstract class HuntGroupAbstract
     /**
      * Get noAnswerNumberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getNoAnswerNumberCountry()
+    public function getNoAnswerNumberCountry(): ?CountryInterface
     {
         return $this->noAnswerNumberCountry;
     }
 
-    // @codeCoverageIgnoreEnd
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\IvrExcludedExtension;
 
@@ -6,31 +7,38 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\Ivr\Ivr;
+use Ivoz\Provider\Domain\Model\Extension\Extension;
 
 /**
- * IvrExcludedExtensionAbstract
- * @codeCoverageIgnore
- */
+* IvrExcludedExtensionAbstract
+* @codeCoverageIgnore
+*/
 abstract class IvrExcludedExtensionAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
+     * @var IvrInterface
+     * inversedBy excludedExtensions
      */
     protected $ivr;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @var ExtensionInterface
      */
     protected $extension;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -97,16 +105,17 @@ abstract class IvrExcludedExtensionAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setIvr($fkTransformer->transform($dto->getIvr()))
-            ->setExtension($fkTransformer->transform($dto->getExtension()))
-        ;
+            ->setExtension($fkTransformer->transform($dto->getExtension()));
 
         $self->initChangelog();
 
@@ -120,15 +129,13 @@ abstract class IvrExcludedExtensionAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
 
         $this
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setExtension($fkTransformer->transform($dto->getExtension()));
-
-
 
         return $this;
     }
@@ -141,8 +148,8 @@ abstract class IvrExcludedExtensionAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setIvr(\Ivoz\Provider\Domain\Model\Ivr\Ivr::entityToDto(self::getIvr(), $depth))
-            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getExtension(), $depth));
+            ->setIvr(Ivr::entityToDto(self::getIvr(), $depth))
+            ->setExtension(Extension::entityToDto(self::getExtension(), $depth));
     }
 
     /**
@@ -155,16 +162,15 @@ abstract class IvrExcludedExtensionAbstract
             'extensionId' => self::getExtension()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr | null
+     * @param IvrInterface | null
      *
      * @return static
      */
-    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null)
+    public function setIvr(?IvrInterface $ivr = null): IvrExcludedExtensionInterface
     {
         $this->ivr = $ivr;
 
@@ -174,9 +180,9 @@ abstract class IvrExcludedExtensionAbstract
     /**
      * Get ivr
      *
-     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface | null
+     * @return IvrInterface | null
      */
-    public function getIvr()
+    public function getIvr(): ?IvrInterface
     {
         return $this->ivr;
     }
@@ -184,11 +190,11 @@ abstract class IvrExcludedExtensionAbstract
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
+     * @param ExtensionInterface
      *
      * @return static
      */
-    protected function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension)
+    protected function setExtension(ExtensionInterface $extension): IvrExcludedExtensionInterface
     {
         $this->extension = $extension;
 
@@ -198,12 +204,11 @@ abstract class IvrExcludedExtensionAbstract
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     * @return ExtensionInterface
      */
-    public function getExtension()
+    public function getExtension(): ExtensionInterface
     {
         return $this->extension;
     }
 
-    // @codeCoverageIgnoreEnd
 }

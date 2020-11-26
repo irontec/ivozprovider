@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\WebPortal;
 
@@ -6,13 +7,19 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\WebPortal\Logo;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 
 /**
- * WebPortalAbstract
- * @codeCoverageIgnore
- */
+* WebPortalAbstract
+* @codeCoverageIgnore
+*/
 abstract class WebPortalAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -45,18 +52,19 @@ abstract class WebPortalAbstract
     protected $logo;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @var BrandInterface
+     * inversedBy urls
      */
     protected $brand;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($url, $urlType, Logo $logo)
-    {
+    protected function __construct(
+        $url,
+        $urlType,
+        Logo $logo
+    ) {
         $this->setUrl($url);
         $this->setUrlType($urlType);
         $this->setLogo($logo);
@@ -126,7 +134,7 @@ abstract class WebPortalAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, WebPortalDto::class);
 
@@ -146,8 +154,7 @@ abstract class WebPortalAbstract
             ->setKlearTheme($dto->getKlearTheme())
             ->setName($dto->getName())
             ->setUserTheme($dto->getUserTheme())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-        ;
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
         $self->initChangelog();
 
@@ -161,7 +168,7 @@ abstract class WebPortalAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, WebPortalDto::class);
 
@@ -179,8 +186,6 @@ abstract class WebPortalAbstract
             ->setUserTheme($dto->getUserTheme())
             ->setLogo($logo)
             ->setBrand($fkTransformer->transform($dto->getBrand()));
-
-
 
         return $this;
     }
@@ -201,7 +206,7 @@ abstract class WebPortalAbstract
             ->setLogoFileSize(self::getLogo()->getFileSize())
             ->setLogoMimeType(self::getLogo()->getMimeType())
             ->setLogoBaseName(self::getLogo()->getBaseName())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**
@@ -221,7 +226,6 @@ abstract class WebPortalAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set url
@@ -230,9 +234,8 @@ abstract class WebPortalAbstract
      *
      * @return static
      */
-    protected function setUrl($url)
+    protected function setUrl(string $url): WebPortalInterface
     {
-        Assertion::notNull($url, 'url value "%s" is null, but non null value was expected.');
         Assertion::maxLength($url, 255, 'url value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->url = $url;
@@ -257,7 +260,7 @@ abstract class WebPortalAbstract
      *
      * @return static
      */
-    protected function setKlearTheme($klearTheme = null)
+    protected function setKlearTheme(?string $klearTheme = null): WebPortalInterface
     {
         if (!is_null($klearTheme)) {
             Assertion::maxLength($klearTheme, 200, 'klearTheme value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -273,7 +276,7 @@ abstract class WebPortalAbstract
      *
      * @return string | null
      */
-    public function getKlearTheme()
+    public function getKlearTheme(): ?string
     {
         return $this->klearTheme;
     }
@@ -285,16 +288,19 @@ abstract class WebPortalAbstract
      *
      * @return static
      */
-    protected function setUrlType($urlType)
+    protected function setUrlType(string $urlType): WebPortalInterface
     {
-        Assertion::notNull($urlType, 'urlType value "%s" is null, but non null value was expected.');
         Assertion::maxLength($urlType, 25, 'urlType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($urlType, [
-            WebPortalInterface::URLTYPE_GOD,
-            WebPortalInterface::URLTYPE_BRAND,
-            WebPortalInterface::URLTYPE_ADMIN,
-            WebPortalInterface::URLTYPE_USER
-        ], 'urlTypevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $urlType,
+            [
+                WebPortalInterface::URLTYPE_GOD,
+                WebPortalInterface::URLTYPE_BRAND,
+                WebPortalInterface::URLTYPE_ADMIN,
+                WebPortalInterface::URLTYPE_USER,
+            ],
+            'urlTypevalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->urlType = $urlType;
 
@@ -318,7 +324,7 @@ abstract class WebPortalAbstract
      *
      * @return static
      */
-    protected function setName($name = null)
+    protected function setName(?string $name = null): WebPortalInterface
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 200, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -334,7 +340,7 @@ abstract class WebPortalAbstract
      *
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -346,7 +352,7 @@ abstract class WebPortalAbstract
      *
      * @return static
      */
-    protected function setUserTheme($userTheme = null)
+    protected function setUserTheme(?string $userTheme = null): WebPortalInterface
     {
         if (!is_null($userTheme)) {
             Assertion::maxLength($userTheme, 200, 'userTheme value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -362,43 +368,27 @@ abstract class WebPortalAbstract
      *
      * @return string | null
      */
-    public function getUserTheme()
+    public function getUserTheme(): ?string
     {
         return $this->userTheme;
     }
 
     /**
-     * Set brand
+     * Get logo
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
+     * @return Logo
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    public function getLogo(): Logo
     {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
-     */
-    public function getBrand()
-    {
-        return $this->brand;
+        return $this->logo;
     }
 
     /**
      * Set logo
      *
-     * @param \Ivoz\Provider\Domain\Model\WebPortal\Logo $logo
-     *
      * @return static
      */
-    protected function setLogo(Logo $logo)
+    protected function setLogo(Logo $logo): WebPortalInterface
     {
         $isEqual = $this->logo && $this->logo->equals($logo);
         if ($isEqual) {
@@ -410,13 +400,27 @@ abstract class WebPortalAbstract
     }
 
     /**
-     * Get logo
+     * Set brand
      *
-     * @return \Ivoz\Provider\Domain\Model\WebPortal\Logo
+     * @param BrandInterface | null
+     *
+     * @return static
      */
-    public function getLogo()
+    public function setBrand(?BrandInterface $brand = null): WebPortalInterface
     {
-        return $this->logo;
+        $this->brand = $brand;
+
+        return $this;
     }
-    // @codeCoverageIgnoreEnd
+
+    /**
+     * Get brand
+     *
+     * @return BrandInterface | null
+     */
+    public function getBrand(): ?BrandInterface
+    {
+        return $this->brand;
+    }
+
 }

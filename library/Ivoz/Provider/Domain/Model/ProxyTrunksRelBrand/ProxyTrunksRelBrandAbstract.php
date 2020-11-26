@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand;
 
@@ -6,31 +7,38 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
 
 /**
- * ProxyTrunksRelBrandAbstract
- * @codeCoverageIgnore
- */
+* ProxyTrunksRelBrandAbstract
+* @codeCoverageIgnore
+*/
 abstract class ProxyTrunksRelBrandAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @var BrandInterface
+     * inversedBy relProxyTrunks
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface
+     * @var ProxyTrunkInterface
      */
     protected $proxyTrunk;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -97,16 +105,17 @@ abstract class ProxyTrunksRelBrandAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ProxyTrunksRelBrandDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
-        ;
+            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
 
         $self->initChangelog();
 
@@ -120,15 +129,13 @@ abstract class ProxyTrunksRelBrandAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ProxyTrunksRelBrandDto::class);
 
         $this
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
-
-
 
         return $this;
     }
@@ -141,8 +148,8 @@ abstract class ProxyTrunksRelBrandAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setProxyTrunk(ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth));
     }
 
     /**
@@ -155,16 +162,15 @@ abstract class ProxyTrunksRelBrandAbstract
             'proxyTrunkId' => self::getProxyTrunk()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
+     * @param BrandInterface | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    public function setBrand(?BrandInterface $brand = null): ProxyTrunksRelBrandInterface
     {
         $this->brand = $brand;
 
@@ -174,9 +180,9 @@ abstract class ProxyTrunksRelBrandAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
@@ -184,11 +190,11 @@ abstract class ProxyTrunksRelBrandAbstract
     /**
      * Set proxyTrunk
      *
-     * @param \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface $proxyTrunk
+     * @param ProxyTrunkInterface
      *
      * @return static
      */
-    protected function setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface $proxyTrunk)
+    protected function setProxyTrunk(ProxyTrunkInterface $proxyTrunk): ProxyTrunksRelBrandInterface
     {
         $this->proxyTrunk = $proxyTrunk;
 
@@ -198,12 +204,11 @@ abstract class ProxyTrunksRelBrandAbstract
     /**
      * Get proxyTrunk
      *
-     * @return \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface
+     * @return ProxyTrunkInterface
      */
-    public function getProxyTrunk()
+    public function getProxyTrunk(): ProxyTrunkInterface
     {
         return $this->proxyTrunk;
     }
 
-    // @codeCoverageIgnoreEnd
 }

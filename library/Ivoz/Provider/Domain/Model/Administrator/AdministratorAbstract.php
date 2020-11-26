@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
@@ -6,13 +7,22 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 
 /**
- * AdministratorAbstract
- * @codeCoverageIgnore
- */
+* AdministratorAbstract
+* @codeCoverageIgnore
+*/
 abstract class AdministratorAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -30,12 +40,12 @@ abstract class AdministratorAbstract
     protected $email = '';
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $active = true;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $restricted = false;
 
@@ -50,22 +60,19 @@ abstract class AdministratorAbstract
     protected $lastname;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @var BrandInterface
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @var CompanyInterface
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
+     * @var TimezoneInterface
      */
     protected $timezone;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -148,7 +155,7 @@ abstract class AdministratorAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, AdministratorDto::class);
 
@@ -165,8 +172,7 @@ abstract class AdministratorAbstract
             ->setLastname($dto->getLastname())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setTimezone($fkTransformer->transform($dto->getTimezone()))
-        ;
+            ->setTimezone($fkTransformer->transform($dto->getTimezone()));
 
         $self->initChangelog();
 
@@ -180,7 +186,7 @@ abstract class AdministratorAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, AdministratorDto::class);
 
@@ -195,8 +201,6 @@ abstract class AdministratorAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setTimezone($fkTransformer->transform($dto->getTimezone()));
-
-
 
         return $this;
     }
@@ -216,9 +220,9 @@ abstract class AdministratorAbstract
             ->setRestricted(self::getRestricted())
             ->setName(self::getName())
             ->setLastname(self::getLastname())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto(self::getTimezone(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setTimezone(Timezone::entityToDto(self::getTimezone(), $depth));
     }
 
     /**
@@ -239,7 +243,6 @@ abstract class AdministratorAbstract
             'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set username
@@ -248,9 +251,8 @@ abstract class AdministratorAbstract
      *
      * @return static
      */
-    protected function setUsername($username)
+    protected function setUsername(string $username): AdministratorInterface
     {
-        Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
         Assertion::maxLength($username, 65, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->username = $username;
@@ -275,9 +277,8 @@ abstract class AdministratorAbstract
      *
      * @return static
      */
-    protected function setPass($pass)
+    protected function setPass(string $pass): AdministratorInterface
     {
-        Assertion::notNull($pass, 'pass value "%s" is null, but non null value was expected.');
         Assertion::maxLength($pass, 80, 'pass value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->pass = $pass;
@@ -302,9 +303,8 @@ abstract class AdministratorAbstract
      *
      * @return static
      */
-    protected function setEmail($email)
+    protected function setEmail(string $email): AdministratorInterface
     {
-        Assertion::notNull($email, 'email value "%s" is null, but non null value was expected.');
         Assertion::maxLength($email, 100, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->email = $email;
@@ -325,13 +325,12 @@ abstract class AdministratorAbstract
     /**
      * Set active
      *
-     * @param boolean $active
+     * @param bool $active
      *
      * @return static
      */
-    protected function setActive($active)
+    protected function setActive(bool $active): AdministratorInterface
     {
-        Assertion::notNull($active, 'active value "%s" is null, but non null value was expected.');
         Assertion::between(intval($active), 0, 1, 'active provided "%s" is not a valid boolean value.');
         $active = (bool) $active;
 
@@ -343,7 +342,7 @@ abstract class AdministratorAbstract
     /**
      * Get active
      *
-     * @return boolean
+     * @return bool
      */
     public function getActive(): bool
     {
@@ -353,13 +352,12 @@ abstract class AdministratorAbstract
     /**
      * Set restricted
      *
-     * @param boolean $restricted
+     * @param bool $restricted
      *
      * @return static
      */
-    protected function setRestricted($restricted)
+    protected function setRestricted(bool $restricted): AdministratorInterface
     {
-        Assertion::notNull($restricted, 'restricted value "%s" is null, but non null value was expected.');
         Assertion::between(intval($restricted), 0, 1, 'restricted provided "%s" is not a valid boolean value.');
         $restricted = (bool) $restricted;
 
@@ -371,7 +369,7 @@ abstract class AdministratorAbstract
     /**
      * Get restricted
      *
-     * @return boolean
+     * @return bool
      */
     public function getRestricted(): bool
     {
@@ -385,7 +383,7 @@ abstract class AdministratorAbstract
      *
      * @return static
      */
-    protected function setName($name = null)
+    protected function setName(?string $name = null): AdministratorInterface
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -401,7 +399,7 @@ abstract class AdministratorAbstract
      *
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -413,7 +411,7 @@ abstract class AdministratorAbstract
      *
      * @return static
      */
-    protected function setLastname($lastname = null)
+    protected function setLastname(?string $lastname = null): AdministratorInterface
     {
         if (!is_null($lastname)) {
             Assertion::maxLength($lastname, 100, 'lastname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -429,7 +427,7 @@ abstract class AdministratorAbstract
      *
      * @return string | null
      */
-    public function getLastname()
+    public function getLastname(): ?string
     {
         return $this->lastname;
     }
@@ -437,11 +435,11 @@ abstract class AdministratorAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
+     * @param BrandInterface | null
      *
      * @return static
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    protected function setBrand(?BrandInterface $brand = null): AdministratorInterface
     {
         $this->brand = $brand;
 
@@ -451,9 +449,9 @@ abstract class AdministratorAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
@@ -461,11 +459,11 @@ abstract class AdministratorAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
+     * @param CompanyInterface | null
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    protected function setCompany(?CompanyInterface $company = null): AdministratorInterface
     {
         $this->company = $company;
 
@@ -475,9 +473,9 @@ abstract class AdministratorAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
@@ -485,11 +483,11 @@ abstract class AdministratorAbstract
     /**
      * Set timezone
      *
-     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone | null
+     * @param TimezoneInterface | null
      *
      * @return static
      */
-    protected function setTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone = null)
+    protected function setTimezone(?TimezoneInterface $timezone = null): AdministratorInterface
     {
         $this->timezone = $timezone;
 
@@ -499,12 +497,11 @@ abstract class AdministratorAbstract
     /**
      * Get timezone
      *
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
+     * @return TimezoneInterface | null
      */
-    public function getTimezone()
+    public function getTimezone(): ?TimezoneInterface
     {
         return $this->timezone;
     }
 
-    // @codeCoverageIgnoreEnd
 }

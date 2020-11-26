@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\MatchList;
 
@@ -6,36 +7,42 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Company\Company;
 
 /**
- * MatchListAbstract
- * @codeCoverageIgnore
- */
+* MatchListAbstract
+* @codeCoverageIgnore
+*/
 abstract class MatchListAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
     protected $name;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @var BrandInterface
+     * inversedBy matchLists
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @var CompanyInterface
      */
     protected $company;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($name)
-    {
+    protected function __construct(
+        $name
+    ) {
         $this->setName($name);
     }
 
@@ -103,7 +110,7 @@ abstract class MatchListAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, MatchListDto::class);
 
@@ -113,8 +120,7 @@ abstract class MatchListAbstract
 
         $self
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-        ;
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
         $self->initChangelog();
 
@@ -128,7 +134,7 @@ abstract class MatchListAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, MatchListDto::class);
 
@@ -136,8 +142,6 @@ abstract class MatchListAbstract
             ->setName($dto->getName())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()));
-
-
 
         return $this;
     }
@@ -151,8 +155,8 @@ abstract class MatchListAbstract
     {
         return self::createDto()
             ->setName(self::getName())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**
@@ -166,7 +170,6 @@ abstract class MatchListAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -175,9 +178,8 @@ abstract class MatchListAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): MatchListInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -198,11 +200,11 @@ abstract class MatchListAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
+     * @param BrandInterface | null
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    public function setBrand(?BrandInterface $brand = null): MatchListInterface
     {
         $this->brand = $brand;
 
@@ -212,9 +214,9 @@ abstract class MatchListAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
@@ -222,11 +224,11 @@ abstract class MatchListAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
+     * @param CompanyInterface | null
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    protected function setCompany(?CompanyInterface $company = null): MatchListInterface
     {
         $this->company = $company;
 
@@ -236,12 +238,11 @@ abstract class MatchListAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    // @codeCoverageIgnoreEnd
 }

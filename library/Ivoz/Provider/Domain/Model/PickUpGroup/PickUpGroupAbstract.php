@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\PickUpGroup;
 
@@ -6,31 +7,34 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
 
 /**
- * PickUpGroupAbstract
- * @codeCoverageIgnore
- */
+* PickUpGroupAbstract
+* @codeCoverageIgnore
+*/
 abstract class PickUpGroupAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
     protected $name;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
      */
     protected $company;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($name)
-    {
+    protected function __construct(
+        $name
+    ) {
         $this->setName($name);
     }
 
@@ -98,7 +102,7 @@ abstract class PickUpGroupAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, PickUpGroupDto::class);
 
@@ -107,8 +111,7 @@ abstract class PickUpGroupAbstract
         );
 
         $self
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-        ;
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
         $self->initChangelog();
 
@@ -122,15 +125,13 @@ abstract class PickUpGroupAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, PickUpGroupDto::class);
 
         $this
             ->setName($dto->getName())
             ->setCompany($fkTransformer->transform($dto->getCompany()));
-
-
 
         return $this;
     }
@@ -144,7 +145,7 @@ abstract class PickUpGroupAbstract
     {
         return self::createDto()
             ->setName(self::getName())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**
@@ -157,7 +158,6 @@ abstract class PickUpGroupAbstract
             'companyId' => self::getCompany()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -166,9 +166,8 @@ abstract class PickUpGroupAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): PickUpGroupInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -189,11 +188,11 @@ abstract class PickUpGroupAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(CompanyInterface $company): PickUpGroupInterface
     {
         $this->company = $company;
 
@@ -203,12 +202,11 @@ abstract class PickUpGroupAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany()
+    public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    // @codeCoverageIgnoreEnd
 }

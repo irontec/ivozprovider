@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\ApplicationServer;
 
@@ -6,13 +7,16 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
- * ApplicationServerAbstract
- * @codeCoverageIgnore
- */
+* ApplicationServerAbstract
+* @codeCoverageIgnore
+*/
 abstract class ApplicationServerAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -23,14 +27,12 @@ abstract class ApplicationServerAbstract
      */
     protected $name;
 
-
-    use ChangelogTrait;
-
     /**
      * Constructor
      */
-    protected function __construct($ip)
-    {
+    protected function __construct(
+        $ip
+    ) {
         $this->setIp($ip);
     }
 
@@ -98,7 +100,7 @@ abstract class ApplicationServerAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ApplicationServerDto::class);
 
@@ -107,8 +109,7 @@ abstract class ApplicationServerAbstract
         );
 
         $self
-            ->setName($dto->getName())
-        ;
+            ->setName($dto->getName());
 
         $self->initChangelog();
 
@@ -122,15 +123,13 @@ abstract class ApplicationServerAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ApplicationServerDto::class);
 
         $this
             ->setIp($dto->getIp())
             ->setName($dto->getName());
-
-
 
         return $this;
     }
@@ -157,7 +156,6 @@ abstract class ApplicationServerAbstract
             'name' => self::getName()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set ip
@@ -166,9 +164,8 @@ abstract class ApplicationServerAbstract
      *
      * @return static
      */
-    protected function setIp($ip)
+    protected function setIp(string $ip): ApplicationServerInterface
     {
-        Assertion::notNull($ip, 'ip value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ip = $ip;
@@ -193,7 +190,7 @@ abstract class ApplicationServerAbstract
      *
      * @return static
      */
-    protected function setName($name = null)
+    protected function setName(?string $name = null): ApplicationServerInterface
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 64, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -209,10 +206,9 @@ abstract class ApplicationServerAbstract
      *
      * @return string | null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    // @codeCoverageIgnoreEnd
 }

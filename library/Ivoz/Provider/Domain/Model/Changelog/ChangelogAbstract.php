@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Changelog;
 
@@ -6,13 +7,19 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface;
+use Ivoz\Provider\Domain\Model\Commandlog\Commandlog;
 
 /**
- * ChangelogAbstract
- * @codeCoverageIgnore
- */
+* ChangelogAbstract
+* @codeCoverageIgnore
+*/
 abstract class ChangelogAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -26,25 +33,22 @@ abstract class ChangelogAbstract
     /**
      * @var array | null
      */
-    protected $data;
+    protected $data = [];
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     protected $createdOn;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $microtime;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface
+     * @var CommandlogInterface
      */
     protected $command;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -125,7 +129,7 @@ abstract class ChangelogAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ChangelogDto::class);
 
@@ -138,8 +142,7 @@ abstract class ChangelogAbstract
 
         $self
             ->setData($dto->getData())
-            ->setCommand($fkTransformer->transform($dto->getCommand()))
-        ;
+            ->setCommand($fkTransformer->transform($dto->getCommand()));
 
         $self->initChangelog();
 
@@ -153,7 +156,7 @@ abstract class ChangelogAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ChangelogDto::class);
 
@@ -164,8 +167,6 @@ abstract class ChangelogAbstract
             ->setCreatedOn($dto->getCreatedOn())
             ->setMicrotime($dto->getMicrotime())
             ->setCommand($fkTransformer->transform($dto->getCommand()));
-
-
 
         return $this;
     }
@@ -183,7 +184,7 @@ abstract class ChangelogAbstract
             ->setData(self::getData())
             ->setCreatedOn(self::getCreatedOn())
             ->setMicrotime(self::getMicrotime())
-            ->setCommand(\Ivoz\Provider\Domain\Model\Commandlog\Commandlog::entityToDto(self::getCommand(), $depth));
+            ->setCommand(Commandlog::entityToDto(self::getCommand(), $depth));
     }
 
     /**
@@ -200,7 +201,6 @@ abstract class ChangelogAbstract
             'commandId' => self::getCommand()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set entity
@@ -209,9 +209,8 @@ abstract class ChangelogAbstract
      *
      * @return static
      */
-    protected function setEntity($entity)
+    protected function setEntity(string $entity): ChangelogInterface
     {
-        Assertion::notNull($entity, 'entity value "%s" is null, but non null value was expected.');
         Assertion::maxLength($entity, 150, 'entity value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->entity = $entity;
@@ -236,9 +235,8 @@ abstract class ChangelogAbstract
      *
      * @return static
      */
-    protected function setEntityId($entityId)
+    protected function setEntityId(string $entityId): ChangelogInterface
     {
-        Assertion::notNull($entityId, 'entityId value "%s" is null, but non null value was expected.');
         Assertion::maxLength($entityId, 36, 'entityId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->entityId = $entityId;
@@ -263,7 +261,7 @@ abstract class ChangelogAbstract
      *
      * @return static
      */
-    protected function setData($data = null)
+    protected function setData(?array $data = null): ChangelogInterface
     {
         $this->data = $data;
 
@@ -275,7 +273,7 @@ abstract class ChangelogAbstract
      *
      * @return array | null
      */
-    public function getData()
+    public function getData(): ?array
     {
         return $this->data;
     }
@@ -283,14 +281,14 @@ abstract class ChangelogAbstract
     /**
      * Set createdOn
      *
-     * @param \DateTime $createdOn
+     * @param \DateTimeInterface $createdOn
      *
      * @return static
      */
-    protected function setCreatedOn($createdOn)
+    protected function setCreatedOn($createdOn): ChangelogInterface
     {
-        Assertion::notNull($createdOn, 'createdOn value "%s" is null, but non null value was expected.');
-        $createdOn = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $createdOn = DateTimeHelper::createOrFix(
             $createdOn,
             null
         );
@@ -307,9 +305,9 @@ abstract class ChangelogAbstract
     /**
      * Get createdOn
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedOn(): \DateTime
+    public function getCreatedOn(): \DateTimeInterface
     {
         return clone $this->createdOn;
     }
@@ -317,16 +315,13 @@ abstract class ChangelogAbstract
     /**
      * Set microtime
      *
-     * @param integer $microtime
+     * @param int $microtime
      *
      * @return static
      */
-    protected function setMicrotime($microtime)
+    protected function setMicrotime(int $microtime): ChangelogInterface
     {
-        Assertion::notNull($microtime, 'microtime value "%s" is null, but non null value was expected.');
-        Assertion::integerish($microtime, 'microtime value "%s" is not an integer or a number castable to integer.');
-
-        $this->microtime = (int) $microtime;
+        $this->microtime = $microtime;
 
         return $this;
     }
@@ -334,7 +329,7 @@ abstract class ChangelogAbstract
     /**
      * Get microtime
      *
-     * @return integer
+     * @return int
      */
     public function getMicrotime(): int
     {
@@ -344,11 +339,11 @@ abstract class ChangelogAbstract
     /**
      * Set command
      *
-     * @param \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command
+     * @param CommandlogInterface
      *
      * @return static
      */
-    protected function setCommand(\Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface $command)
+    protected function setCommand(CommandlogInterface $command): ChangelogInterface
     {
         $this->command = $command;
 
@@ -358,12 +353,11 @@ abstract class ChangelogAbstract
     /**
      * Get command
      *
-     * @return \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface
+     * @return CommandlogInterface
      */
-    public function getCommand()
+    public function getCommand(): CommandlogInterface
     {
         return $this->command;
     }
 
-    // @codeCoverageIgnoreEnd
 }

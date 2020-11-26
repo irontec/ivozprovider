@@ -1,14 +1,14 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
 use Assert\Assertion;
-use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
- * Description
- * @codeCoverageIgnore
- */
+* Description
+* @codeCoverageIgnore
+*/
 class Description
 {
     /**
@@ -35,12 +35,15 @@ class Description
      */
     protected $it;
 
-
     /**
      * Constructor
      */
-    public function __construct($en, $es, $ca, $it)
-    {
+    public function __construct(
+        $en,
+        $es,
+        $ca,
+        $it
+    ) {
         $this->setEn($en);
         $this->setEs($es);
         $this->setCa($ca);
@@ -59,9 +62,6 @@ class Description
             $this->getIt() === $description->getIt();
     }
 
-
-    // @codeCoverageIgnoreStart
-
     /**
      * Set en
      *
@@ -69,9 +69,8 @@ class Description
      *
      * @return static
      */
-    protected function setEn($en)
+    protected function setEn(string $en): Description
     {
-        Assertion::notNull($en, 'en value "%s" is null, but non null value was expected.');
         Assertion::maxLength($en, 255, 'en value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->en = $en;
@@ -96,9 +95,8 @@ class Description
      *
      * @return static
      */
-    protected function setEs($es)
+    protected function setEs(string $es): Description
     {
-        Assertion::notNull($es, 'es value "%s" is null, but non null value was expected.');
         Assertion::maxLength($es, 255, 'es value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->es = $es;
@@ -123,9 +121,8 @@ class Description
      *
      * @return static
      */
-    protected function setCa($ca)
+    protected function setCa(string $ca): Description
     {
-        Assertion::notNull($ca, 'ca value "%s" is null, but non null value was expected.');
         Assertion::maxLength($ca, 255, 'ca value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ca = $ca;
@@ -150,9 +147,8 @@ class Description
      *
      * @return static
      */
-    protected function setIt($it)
+    protected function setIt(string $it): Description
     {
-        Assertion::notNull($it, 'it value "%s" is null, but non null value was expected.');
         Assertion::maxLength($it, 255, 'it value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->it = $it;
@@ -170,5 +166,4 @@ class Description
         return $this->it;
     }
 
-    // @codeCoverageIgnoreEnd
 }

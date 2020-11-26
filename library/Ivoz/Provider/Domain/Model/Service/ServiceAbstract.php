@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Service;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Service\Name;
+use Ivoz\Provider\Domain\Model\Service\Description;
 
 /**
- * ServiceAbstract
- * @codeCoverageIgnore
- */
+* ServiceAbstract
+* @codeCoverageIgnore
+*/
 abstract class ServiceAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,7 +30,7 @@ abstract class ServiceAbstract
     protected $defaultCode;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $extraArgs = false;
 
@@ -37,9 +43,6 @@ abstract class ServiceAbstract
      * @var Description | null
      */
     protected $description;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -122,7 +125,7 @@ abstract class ServiceAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ServiceDto::class);
 
@@ -148,6 +151,8 @@ abstract class ServiceAbstract
             $description
         );
 
+        ;
+
         $self->initChangelog();
 
         return $self;
@@ -160,7 +165,7 @@ abstract class ServiceAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ServiceDto::class);
 
@@ -184,8 +189,6 @@ abstract class ServiceAbstract
             ->setExtraArgs($dto->getExtraArgs())
             ->setName($name)
             ->setDescription($description);
-
-
 
         return $this;
     }
@@ -230,7 +233,6 @@ abstract class ServiceAbstract
             'descriptionIt' => self::getDescription()->getIt()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set iden
@@ -239,9 +241,8 @@ abstract class ServiceAbstract
      *
      * @return static
      */
-    protected function setIden($iden)
+    protected function setIden(string $iden): ServiceInterface
     {
-        Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
         Assertion::maxLength($iden, 50, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->iden = $iden;
@@ -266,9 +267,8 @@ abstract class ServiceAbstract
      *
      * @return static
      */
-    protected function setDefaultCode($defaultCode)
+    protected function setDefaultCode(string $defaultCode): ServiceInterface
     {
-        Assertion::notNull($defaultCode, 'defaultCode value "%s" is null, but non null value was expected.');
         Assertion::maxLength($defaultCode, 3, 'defaultCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->defaultCode = $defaultCode;
@@ -289,13 +289,12 @@ abstract class ServiceAbstract
     /**
      * Set extraArgs
      *
-     * @param boolean $extraArgs
+     * @param bool $extraArgs
      *
      * @return static
      */
-    protected function setExtraArgs($extraArgs)
+    protected function setExtraArgs(bool $extraArgs): ServiceInterface
     {
-        Assertion::notNull($extraArgs, 'extraArgs value "%s" is null, but non null value was expected.');
         Assertion::between(intval($extraArgs), 0, 1, 'extraArgs provided "%s" is not a valid boolean value.');
         $extraArgs = (bool) $extraArgs;
 
@@ -307,7 +306,7 @@ abstract class ServiceAbstract
     /**
      * Get extraArgs
      *
-     * @return boolean
+     * @return bool
      */
     public function getExtraArgs(): bool
     {
@@ -315,13 +314,21 @@ abstract class ServiceAbstract
     }
 
     /**
-     * Set name
+     * Get name
      *
-     * @param \Ivoz\Provider\Domain\Model\Service\Name $name
+     * @return Name
+     */
+    public function getName(): Name
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name
      *
      * @return static
      */
-    protected function setName(Name $name)
+    protected function setName(Name $name): ServiceInterface
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -333,23 +340,21 @@ abstract class ServiceAbstract
     }
 
     /**
-     * Get name
+     * Get description
      *
-     * @return \Ivoz\Provider\Domain\Model\Service\Name
+     * @return Description
      */
-    public function getName()
+    public function getDescription(): Description
     {
-        return $this->name;
+        return $this->description;
     }
 
     /**
      * Set description
      *
-     * @param \Ivoz\Provider\Domain\Model\Service\Description $description
-     *
      * @return static
      */
-    protected function setDescription(Description $description)
+    protected function setDescription(Description $description): ServiceInterface
     {
         $isEqual = $this->description && $this->description->equals($description);
         if ($isEqual) {
@@ -360,14 +365,4 @@ abstract class ServiceAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return \Ivoz\Provider\Domain\Model\Service\Description
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-    // @codeCoverageIgnoreEnd
 }

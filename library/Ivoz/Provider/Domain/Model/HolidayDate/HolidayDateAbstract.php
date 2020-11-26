@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\HolidayDate;
 
@@ -6,35 +7,49 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Calendar\Calendar;
+use Ivoz\Provider\Domain\Model\Locution\Locution;
+use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
- * HolidayDateAbstract
- * @codeCoverageIgnore
- */
+* HolidayDateAbstract
+* @codeCoverageIgnore
+*/
 abstract class HolidayDateAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
     protected $name;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     protected $eventDate;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $wholeDayEvent = true;
 
     /**
-     * @var \DateTime | null
+     * @var \DateTimeInterface | null
      */
     protected $timeIn;
 
     /**
-     * @var \DateTime | null
+     * @var \DateTimeInterface | null
      */
     protected $timeOut;
 
@@ -50,38 +65,39 @@ abstract class HolidayDateAbstract
     protected $numberValue;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
+     * @var CalendarInterface
+     * inversedBy holidayDates
      */
     protected $calendar;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @var LocutionInterface
      */
     protected $locution;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @var ExtensionInterface
      */
     protected $extension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @var UserInterface
      */
     protected $voiceMailUser;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @var CountryInterface
      */
     protected $numberCountry;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($name, $eventDate, $wholeDayEvent)
-    {
+    protected function __construct(
+        $name,
+        $eventDate,
+        $wholeDayEvent
+    ) {
         $this->setName($name);
         $this->setEventDate($eventDate);
         $this->setWholeDayEvent($wholeDayEvent);
@@ -151,7 +167,7 @@ abstract class HolidayDateAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, HolidayDateDto::class);
 
@@ -170,8 +186,7 @@ abstract class HolidayDateAbstract
             ->setLocution($fkTransformer->transform($dto->getLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
-            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
-        ;
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
         $self->initChangelog();
 
@@ -185,7 +200,7 @@ abstract class HolidayDateAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, HolidayDateDto::class);
 
@@ -202,8 +217,6 @@ abstract class HolidayDateAbstract
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
-
-
 
         return $this;
     }
@@ -223,11 +236,11 @@ abstract class HolidayDateAbstract
             ->setTimeOut(self::getTimeOut())
             ->setRouteType(self::getRouteType())
             ->setNumberValue(self::getNumberValue())
-            ->setCalendar(\Ivoz\Provider\Domain\Model\Calendar\Calendar::entityToDto(self::getCalendar(), $depth))
-            ->setLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getLocution(), $depth))
-            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getExtension(), $depth))
-            ->setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getVoiceMailUser(), $depth))
-            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth));
+            ->setCalendar(Calendar::entityToDto(self::getCalendar(), $depth))
+            ->setLocution(Locution::entityToDto(self::getLocution(), $depth))
+            ->setExtension(Extension::entityToDto(self::getExtension(), $depth))
+            ->setVoiceMailUser(User::entityToDto(self::getVoiceMailUser(), $depth))
+            ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
     /**
@@ -250,7 +263,6 @@ abstract class HolidayDateAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -259,9 +271,8 @@ abstract class HolidayDateAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): HolidayDateInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -282,14 +293,12 @@ abstract class HolidayDateAbstract
     /**
      * Set eventDate
      *
-     * @param \DateTime $eventDate
+     * @param \DateTimeInterface $eventDate
      *
      * @return static
      */
-    protected function setEventDate($eventDate)
+    protected function setEventDate($eventDate): HolidayDateInterface
     {
-        Assertion::notNull($eventDate, 'eventDate value "%s" is null, but non null value was expected.');
-
         $this->eventDate = $eventDate;
 
         return $this;
@@ -298,23 +307,22 @@ abstract class HolidayDateAbstract
     /**
      * Get eventDate
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getEventDate(): \DateTime
+    public function getEventDate(): \DateTimeInterface
     {
-        return $this->eventDate;
+        return clone $this->eventDate;
     }
 
     /**
      * Set wholeDayEvent
      *
-     * @param boolean $wholeDayEvent
+     * @param bool $wholeDayEvent
      *
      * @return static
      */
-    protected function setWholeDayEvent($wholeDayEvent)
+    protected function setWholeDayEvent(bool $wholeDayEvent): HolidayDateInterface
     {
-        Assertion::notNull($wholeDayEvent, 'wholeDayEvent value "%s" is null, but non null value was expected.');
         Assertion::between(intval($wholeDayEvent), 0, 1, 'wholeDayEvent provided "%s" is not a valid boolean value.');
         $wholeDayEvent = (bool) $wholeDayEvent;
 
@@ -326,7 +334,7 @@ abstract class HolidayDateAbstract
     /**
      * Get wholeDayEvent
      *
-     * @return boolean
+     * @return bool
      */
     public function getWholeDayEvent(): bool
     {
@@ -336,11 +344,11 @@ abstract class HolidayDateAbstract
     /**
      * Set timeIn
      *
-     * @param \DateTime $timeIn | null
+     * @param \DateTimeInterface $timeIn | null
      *
      * @return static
      */
-    protected function setTimeIn($timeIn = null)
+    protected function setTimeIn($timeIn = null): HolidayDateInterface
     {
         $this->timeIn = $timeIn;
 
@@ -350,21 +358,21 @@ abstract class HolidayDateAbstract
     /**
      * Get timeIn
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getTimeIn()
+    public function getTimeIn(): ?\DateTimeInterface
     {
-        return $this->timeIn;
+        return !is_null($this->timeIn) ? clone $this->timeIn : null;
     }
 
     /**
      * Set timeOut
      *
-     * @param \DateTime $timeOut | null
+     * @param \DateTimeInterface $timeOut | null
      *
      * @return static
      */
-    protected function setTimeOut($timeOut = null)
+    protected function setTimeOut($timeOut = null): HolidayDateInterface
     {
         $this->timeOut = $timeOut;
 
@@ -374,11 +382,11 @@ abstract class HolidayDateAbstract
     /**
      * Get timeOut
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getTimeOut()
+    public function getTimeOut(): ?\DateTimeInterface
     {
-        return $this->timeOut;
+        return !is_null($this->timeOut) ? clone $this->timeOut : null;
     }
 
     /**
@@ -388,15 +396,19 @@ abstract class HolidayDateAbstract
      *
      * @return static
      */
-    protected function setRouteType($routeType = null)
+    protected function setRouteType(?string $routeType = null): HolidayDateInterface
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($routeType, [
-                HolidayDateInterface::ROUTETYPE_NUMBER,
-                HolidayDateInterface::ROUTETYPE_EXTENSION,
-                HolidayDateInterface::ROUTETYPE_VOICEMAIL
-            ], 'routeTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $routeType,
+                [
+                    HolidayDateInterface::ROUTETYPE_NUMBER,
+                    HolidayDateInterface::ROUTETYPE_EXTENSION,
+                    HolidayDateInterface::ROUTETYPE_VOICEMAIL,
+                ],
+                'routeTypevalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->routeType = $routeType;
@@ -409,7 +421,7 @@ abstract class HolidayDateAbstract
      *
      * @return string | null
      */
-    public function getRouteType()
+    public function getRouteType(): ?string
     {
         return $this->routeType;
     }
@@ -421,7 +433,7 @@ abstract class HolidayDateAbstract
      *
      * @return static
      */
-    protected function setNumberValue($numberValue = null)
+    protected function setNumberValue(?string $numberValue = null): HolidayDateInterface
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -437,7 +449,7 @@ abstract class HolidayDateAbstract
      *
      * @return string | null
      */
-    public function getNumberValue()
+    public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
@@ -445,11 +457,11 @@ abstract class HolidayDateAbstract
     /**
      * Set calendar
      *
-     * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar
+     * @param CalendarInterface
      *
      * @return static
      */
-    public function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar)
+    public function setCalendar(CalendarInterface $calendar): HolidayDateInterface
     {
         $this->calendar = $calendar;
 
@@ -459,9 +471,9 @@ abstract class HolidayDateAbstract
     /**
      * Get calendar
      *
-     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
+     * @return CalendarInterface
      */
-    public function getCalendar()
+    public function getCalendar(): CalendarInterface
     {
         return $this->calendar;
     }
@@ -469,11 +481,11 @@ abstract class HolidayDateAbstract
     /**
      * Set locution
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution | null
+     * @param LocutionInterface | null
      *
      * @return static
      */
-    protected function setLocution(\Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution = null)
+    protected function setLocution(?LocutionInterface $locution = null): HolidayDateInterface
     {
         $this->locution = $locution;
 
@@ -483,9 +495,9 @@ abstract class HolidayDateAbstract
     /**
      * Get locution
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface | null
+     * @return LocutionInterface | null
      */
-    public function getLocution()
+    public function getLocution(): ?LocutionInterface
     {
         return $this->locution;
     }
@@ -493,11 +505,11 @@ abstract class HolidayDateAbstract
     /**
      * Set extension
      *
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension | null
+     * @param ExtensionInterface | null
      *
      * @return static
      */
-    protected function setExtension(\Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension = null)
+    protected function setExtension(?ExtensionInterface $extension = null): HolidayDateInterface
     {
         $this->extension = $extension;
 
@@ -507,9 +519,9 @@ abstract class HolidayDateAbstract
     /**
      * Get extension
      *
-     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
+     * @return ExtensionInterface | null
      */
-    public function getExtension()
+    public function getExtension(): ?ExtensionInterface
     {
         return $this->extension;
     }
@@ -517,11 +529,11 @@ abstract class HolidayDateAbstract
     /**
      * Set voiceMailUser
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser | null
+     * @param UserInterface | null
      *
      * @return static
      */
-    protected function setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\UserInterface $voiceMailUser = null)
+    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): HolidayDateInterface
     {
         $this->voiceMailUser = $voiceMailUser;
 
@@ -531,9 +543,9 @@ abstract class HolidayDateAbstract
     /**
      * Get voiceMailUser
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getVoiceMailUser()
+    public function getVoiceMailUser(): ?UserInterface
     {
         return $this->voiceMailUser;
     }
@@ -541,11 +553,11 @@ abstract class HolidayDateAbstract
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
+     * @param CountryInterface | null
      *
      * @return static
      */
-    protected function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): HolidayDateInterface
     {
         $this->numberCountry = $numberCountry;
 
@@ -555,12 +567,11 @@ abstract class HolidayDateAbstract
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getNumberCountry()
+    public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;
     }
 
-    // @codeCoverageIgnoreEnd
 }

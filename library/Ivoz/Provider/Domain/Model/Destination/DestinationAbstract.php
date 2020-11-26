@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Destination;
 
@@ -6,13 +7,19 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Destination\Name;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 
 /**
- * DestinationAbstract
- * @codeCoverageIgnore
- */
+* DestinationAbstract
+* @codeCoverageIgnore
+*/
 abstract class DestinationAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,23 +31,17 @@ abstract class DestinationAbstract
     protected $name;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface | null
-     */
-    protected $tpDestination;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
      */
     protected $brand;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($prefix, Name $name)
-    {
+    protected function __construct(
+        $prefix,
+        Name $name
+    ) {
         $this->setPrefix($prefix);
         $this->setName($name);
     }
@@ -109,7 +110,7 @@ abstract class DestinationAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DestinationDto::class);
 
@@ -126,9 +127,7 @@ abstract class DestinationAbstract
         );
 
         $self
-            ->setTpDestination($fkTransformer->transform($dto->getTpDestination()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-        ;
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
         $self->initChangelog();
 
@@ -142,7 +141,7 @@ abstract class DestinationAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DestinationDto::class);
 
@@ -156,10 +155,7 @@ abstract class DestinationAbstract
         $this
             ->setPrefix($dto->getPrefix())
             ->setName($name)
-            ->setTpDestination($fkTransformer->transform($dto->getTpDestination()))
             ->setBrand($fkTransformer->transform($dto->getBrand()));
-
-
 
         return $this;
     }
@@ -177,8 +173,7 @@ abstract class DestinationAbstract
             ->setNameEs(self::getName()->getEs())
             ->setNameCa(self::getName()->getCa())
             ->setNameIt(self::getName()->getIt())
-            ->setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestination::entityToDto(self::getTpDestination(), $depth))
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**
@@ -192,11 +187,9 @@ abstract class DestinationAbstract
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
             'nameIt' => self::getName()->getIt(),
-            'tpDestinationId' => self::getTpDestination() ? self::getTpDestination()->getId() : null,
             'brandId' => self::getBrand()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set prefix
@@ -205,9 +198,8 @@ abstract class DestinationAbstract
      *
      * @return static
      */
-    protected function setPrefix($prefix)
+    protected function setPrefix(string $prefix): DestinationInterface
     {
-        Assertion::notNull($prefix, 'prefix value "%s" is null, but non null value was expected.');
         Assertion::maxLength($prefix, 24, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->prefix = $prefix;
@@ -226,61 +218,21 @@ abstract class DestinationAbstract
     }
 
     /**
-     * Set tpDestination
+     * Get name
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination | null
-     *
-     * @return static
+     * @return Name
      */
-    protected function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null)
+    public function getName(): Name
     {
-        $this->tpDestination = $tpDestination;
-
-        return $this;
-    }
-
-    /**
-     * Get tpDestination
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface | null
-     */
-    public function getTpDestination()
-    {
-        return $this->tpDestination;
-    }
-
-    /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return static
-     */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
-     */
-    public function getBrand()
-    {
-        return $this->brand;
+        return $this->name;
     }
 
     /**
      * Set name
      *
-     * @param \Ivoz\Provider\Domain\Model\Destination\Name $name
-     *
      * @return static
      */
-    protected function setName(Name $name)
+    protected function setName(Name $name): DestinationInterface
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -292,13 +244,27 @@ abstract class DestinationAbstract
     }
 
     /**
-     * Get name
+     * Set brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Destination\Name
+     * @param BrandInterface
+     *
+     * @return static
      */
-    public function getName()
+    protected function setBrand(BrandInterface $brand): DestinationInterface
     {
-        return $this->name;
+        $this->brand = $brand;
+
+        return $this;
     }
-    // @codeCoverageIgnoreEnd
+
+    /**
+     * Get brand
+     *
+     * @return BrandInterface
+     */
+    public function getBrand(): BrandInterface
+    {
+        return $this->brand;
+    }
+
 }

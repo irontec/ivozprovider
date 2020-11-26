@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\MatchListPattern;
 
@@ -6,13 +7,20 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\MatchList\MatchList;
+use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
- * MatchListPatternAbstract
- * @codeCoverageIgnore
- */
+* MatchListPatternAbstract
+* @codeCoverageIgnore
+*/
 abstract class MatchListPatternAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string | null
      */
@@ -25,33 +33,34 @@ abstract class MatchListPatternAbstract
     protected $type;
 
     /**
+     * column: regExp
      * @var string | null
      */
     protected $regexp;
 
     /**
+     * column: numberValue
      * @var string | null
      */
     protected $numbervalue;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     * @var MatchListInterface
+     * inversedBy patterns
      */
     protected $matchList;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @var CountryInterface
      */
     protected $numberCountry;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($type)
-    {
+    protected function __construct(
+        $type
+    ) {
         $this->setType($type);
     }
 
@@ -119,7 +128,7 @@ abstract class MatchListPatternAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, MatchListPatternDto::class);
 
@@ -132,8 +141,7 @@ abstract class MatchListPatternAbstract
             ->setRegexp($dto->getRegexp())
             ->setNumbervalue($dto->getNumbervalue())
             ->setMatchList($fkTransformer->transform($dto->getMatchList()))
-            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
-        ;
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
         $self->initChangelog();
 
@@ -147,7 +155,7 @@ abstract class MatchListPatternAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, MatchListPatternDto::class);
 
@@ -158,8 +166,6 @@ abstract class MatchListPatternAbstract
             ->setNumbervalue($dto->getNumbervalue())
             ->setMatchList($fkTransformer->transform($dto->getMatchList()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
-
-
 
         return $this;
     }
@@ -176,8 +182,8 @@ abstract class MatchListPatternAbstract
             ->setType(self::getType())
             ->setRegexp(self::getRegexp())
             ->setNumbervalue(self::getNumbervalue())
-            ->setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchList::entityToDto(self::getMatchList(), $depth))
-            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth));
+            ->setMatchList(MatchList::entityToDto(self::getMatchList(), $depth))
+            ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
     /**
@@ -194,7 +200,6 @@ abstract class MatchListPatternAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set description
@@ -203,7 +208,7 @@ abstract class MatchListPatternAbstract
      *
      * @return static
      */
-    protected function setDescription($description = null)
+    protected function setDescription(?string $description = null): MatchListPatternInterface
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 55, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -219,7 +224,7 @@ abstract class MatchListPatternAbstract
      *
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -231,14 +236,17 @@ abstract class MatchListPatternAbstract
      *
      * @return static
      */
-    protected function setType($type)
+    protected function setType(string $type): MatchListPatternInterface
     {
-        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($type, [
-            MatchListPatternInterface::TYPE_NUMBER,
-            MatchListPatternInterface::TYPE_REGEXP
-        ], 'typevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $type,
+            [
+                MatchListPatternInterface::TYPE_NUMBER,
+                MatchListPatternInterface::TYPE_REGEXP,
+            ],
+            'typevalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->type = $type;
 
@@ -262,7 +270,7 @@ abstract class MatchListPatternAbstract
      *
      * @return static
      */
-    protected function setRegexp($regexp = null)
+    protected function setRegexp(?string $regexp = null): MatchListPatternInterface
     {
         if (!is_null($regexp)) {
             Assertion::maxLength($regexp, 255, 'regexp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -278,7 +286,7 @@ abstract class MatchListPatternAbstract
      *
      * @return string | null
      */
-    public function getRegexp()
+    public function getRegexp(): ?string
     {
         return $this->regexp;
     }
@@ -290,7 +298,7 @@ abstract class MatchListPatternAbstract
      *
      * @return static
      */
-    protected function setNumbervalue($numbervalue = null)
+    protected function setNumbervalue(?string $numbervalue = null): MatchListPatternInterface
     {
         if (!is_null($numbervalue)) {
             Assertion::maxLength($numbervalue, 25, 'numbervalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -306,7 +314,7 @@ abstract class MatchListPatternAbstract
      *
      * @return string | null
      */
-    public function getNumbervalue()
+    public function getNumbervalue(): ?string
     {
         return $this->numbervalue;
     }
@@ -314,11 +322,11 @@ abstract class MatchListPatternAbstract
     /**
      * Set matchList
      *
-     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
+     * @param MatchListInterface
      *
      * @return static
      */
-    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList)
+    public function setMatchList(MatchListInterface $matchList): MatchListPatternInterface
     {
         $this->matchList = $matchList;
 
@@ -328,9 +336,9 @@ abstract class MatchListPatternAbstract
     /**
      * Get matchList
      *
-     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     * @return MatchListInterface
      */
-    public function getMatchList()
+    public function getMatchList(): MatchListInterface
     {
         return $this->matchList;
     }
@@ -338,11 +346,11 @@ abstract class MatchListPatternAbstract
     /**
      * Set numberCountry
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry | null
+     * @param CountryInterface | null
      *
      * @return static
      */
-    protected function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): MatchListPatternInterface
     {
         $this->numberCountry = $numberCountry;
 
@@ -352,12 +360,11 @@ abstract class MatchListPatternAbstract
     /**
      * Get numberCountry
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return CountryInterface | null
      */
-    public function getNumberCountry()
+    public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;
     }
 
-    // @codeCoverageIgnoreEnd
 }

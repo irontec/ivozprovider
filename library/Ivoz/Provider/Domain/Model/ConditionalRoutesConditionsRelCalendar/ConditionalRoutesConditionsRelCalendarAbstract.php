@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar;
 
@@ -6,31 +7,38 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
+use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition;
+use Ivoz\Provider\Domain\Model\Calendar\Calendar;
 
 /**
- * ConditionalRoutesConditionsRelCalendarAbstract
- * @codeCoverageIgnore
- */
+* ConditionalRoutesConditionsRelCalendarAbstract
+* @codeCoverageIgnore
+*/
 abstract class ConditionalRoutesConditionsRelCalendarAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
+     * @var ConditionalRoutesConditionInterface
+     * inversedBy relCalendars
      */
     protected $condition;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
+     * @var CalendarInterface
      */
     protected $calendar;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -97,16 +105,17 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelCalendarDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setCondition($fkTransformer->transform($dto->getCondition()))
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
-        ;
+            ->setCalendar($fkTransformer->transform($dto->getCalendar()));
 
         $self->initChangelog();
 
@@ -120,15 +129,13 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelCalendarDto::class);
 
         $this
             ->setCondition($fkTransformer->transform($dto->getCondition()))
             ->setCalendar($fkTransformer->transform($dto->getCalendar()));
-
-
 
         return $this;
     }
@@ -141,8 +148,8 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))
-            ->setCalendar(\Ivoz\Provider\Domain\Model\Calendar\Calendar::entityToDto(self::getCalendar(), $depth));
+            ->setCondition(ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))
+            ->setCalendar(Calendar::entityToDto(self::getCalendar(), $depth));
     }
 
     /**
@@ -155,16 +162,15 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
             'calendarId' => self::getCalendar()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
+     * @param ConditionalRoutesConditionInterface | null
      *
      * @return static
      */
-    public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null)
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelCalendarInterface
     {
         $this->condition = $condition;
 
@@ -174,9 +180,9 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
+     * @return ConditionalRoutesConditionInterface | null
      */
-    public function getCondition()
+    public function getCondition(): ?ConditionalRoutesConditionInterface
     {
         return $this->condition;
     }
@@ -184,11 +190,11 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     /**
      * Set calendar
      *
-     * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar
+     * @param CalendarInterface
      *
      * @return static
      */
-    protected function setCalendar(\Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendar)
+    protected function setCalendar(CalendarInterface $calendar): ConditionalRoutesConditionsRelCalendarInterface
     {
         $this->calendar = $calendar;
 
@@ -198,12 +204,11 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     /**
      * Get calendar
      *
-     * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
+     * @return CalendarInterface
      */
-    public function getCalendar()
+    public function getCalendar(): CalendarInterface
     {
         return $this->calendar;
     }
 
-    // @codeCoverageIgnoreEnd
 }

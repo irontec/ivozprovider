@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Locution;
 
@@ -6,13 +7,20 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Locution\EncodedFile;
+use Ivoz\Provider\Domain\Model\Locution\OriginalFile;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
 
 /**
- * LocutionAbstract
- * @codeCoverageIgnore
- */
+* LocutionAbstract
+* @codeCoverageIgnore
+*/
 abstract class LocutionAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -35,12 +43,9 @@ abstract class LocutionAbstract
     protected $originalFile;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
      */
     protected $company;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -119,7 +124,7 @@ abstract class LocutionAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, LocutionDto::class);
 
@@ -143,8 +148,7 @@ abstract class LocutionAbstract
 
         $self
             ->setStatus($dto->getStatus())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-        ;
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
         $self->initChangelog();
 
@@ -158,7 +162,7 @@ abstract class LocutionAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, LocutionDto::class);
 
@@ -181,8 +185,6 @@ abstract class LocutionAbstract
             ->setOriginalFile($originalFile)
             ->setCompany($fkTransformer->transform($dto->getCompany()));
 
-
-
         return $this;
     }
 
@@ -202,7 +204,7 @@ abstract class LocutionAbstract
             ->setOriginalFileFileSize(self::getOriginalFile()->getFileSize())
             ->setOriginalFileMimeType(self::getOriginalFile()->getMimeType())
             ->setOriginalFileBaseName(self::getOriginalFile()->getBaseName())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**
@@ -222,7 +224,6 @@ abstract class LocutionAbstract
             'companyId' => self::getCompany()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -231,9 +232,8 @@ abstract class LocutionAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): LocutionInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -258,16 +258,20 @@ abstract class LocutionAbstract
      *
      * @return static
      */
-    protected function setStatus($status = null)
+    protected function setStatus(?string $status = null): LocutionInterface
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($status, [
-                LocutionInterface::STATUS_PENDING,
-                LocutionInterface::STATUS_ENCODING,
-                LocutionInterface::STATUS_READY,
-                LocutionInterface::STATUS_ERROR
-            ], 'statusvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $status,
+                [
+                    LocutionInterface::STATUS_PENDING,
+                    LocutionInterface::STATUS_ENCODING,
+                    LocutionInterface::STATUS_READY,
+                    LocutionInterface::STATUS_ERROR,
+                ],
+                'statusvalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->status = $status;
@@ -280,43 +284,27 @@ abstract class LocutionAbstract
      *
      * @return string | null
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
     /**
-     * Set company
+     * Get encodedFile
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return static
+     * @return EncodedFile
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    public function getEncodedFile(): EncodedFile
     {
-        $this->company = $company;
-
-        return $this;
-    }
-
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
-     */
-    public function getCompany()
-    {
-        return $this->company;
+        return $this->encodedFile;
     }
 
     /**
      * Set encodedFile
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\EncodedFile $encodedFile
-     *
      * @return static
      */
-    protected function setEncodedFile(EncodedFile $encodedFile)
+    protected function setEncodedFile(EncodedFile $encodedFile): LocutionInterface
     {
         $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
         if ($isEqual) {
@@ -328,23 +316,21 @@ abstract class LocutionAbstract
     }
 
     /**
-     * Get encodedFile
+     * Get originalFile
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\EncodedFile
+     * @return OriginalFile
      */
-    public function getEncodedFile()
+    public function getOriginalFile(): OriginalFile
     {
-        return $this->encodedFile;
+        return $this->originalFile;
     }
 
     /**
      * Set originalFile
      *
-     * @param \Ivoz\Provider\Domain\Model\Locution\OriginalFile $originalFile
-     *
      * @return static
      */
-    protected function setOriginalFile(OriginalFile $originalFile)
+    protected function setOriginalFile(OriginalFile $originalFile): LocutionInterface
     {
         $isEqual = $this->originalFile && $this->originalFile->equals($originalFile);
         if ($isEqual) {
@@ -356,13 +342,27 @@ abstract class LocutionAbstract
     }
 
     /**
-     * Get originalFile
+     * Set company
      *
-     * @return \Ivoz\Provider\Domain\Model\Locution\OriginalFile
+     * @param CompanyInterface
+     *
+     * @return static
      */
-    public function getOriginalFile()
+    protected function setCompany(CompanyInterface $company): LocutionInterface
     {
-        return $this->originalFile;
+        $this->company = $company;
+
+        return $this;
     }
-    // @codeCoverageIgnoreEnd
+
+    /**
+     * Get company
+     *
+     * @return CompanyInterface
+     */
+    public function getCompany(): CompanyInterface
+    {
+        return $this->company;
+    }
+
 }

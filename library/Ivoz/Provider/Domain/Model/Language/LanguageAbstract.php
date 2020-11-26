@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Language;
 
@@ -6,13 +7,17 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Language\Name;
 
 /**
- * LanguageAbstract
- * @codeCoverageIgnore
- */
+* LanguageAbstract
+* @codeCoverageIgnore
+*/
 abstract class LanguageAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -23,14 +28,13 @@ abstract class LanguageAbstract
      */
     protected $name;
 
-
-    use ChangelogTrait;
-
     /**
      * Constructor
      */
-    protected function __construct($iden, Name $name)
-    {
+    protected function __construct(
+        $iden,
+        Name $name
+    ) {
         $this->setIden($iden);
         $this->setName($name);
     }
@@ -99,7 +103,7 @@ abstract class LanguageAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, LanguageDto::class);
 
@@ -115,6 +119,8 @@ abstract class LanguageAbstract
             $name
         );
 
+        ;
+
         $self->initChangelog();
 
         return $self;
@@ -127,7 +133,7 @@ abstract class LanguageAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, LanguageDto::class);
 
@@ -141,8 +147,6 @@ abstract class LanguageAbstract
         $this
             ->setIden($dto->getIden())
             ->setName($name);
-
-
 
         return $this;
     }
@@ -175,7 +179,6 @@ abstract class LanguageAbstract
             'nameIt' => self::getName()->getIt()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set iden
@@ -184,9 +187,8 @@ abstract class LanguageAbstract
      *
      * @return static
      */
-    protected function setIden($iden)
+    protected function setIden(string $iden): LanguageInterface
     {
-        Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
         Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->iden = $iden;
@@ -205,13 +207,21 @@ abstract class LanguageAbstract
     }
 
     /**
-     * Set name
+     * Get name
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\Name $name
+     * @return Name
+     */
+    public function getName(): Name
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name
      *
      * @return static
      */
-    protected function setName(Name $name)
+    protected function setName(Name $name): LanguageInterface
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -222,14 +232,4 @@ abstract class LanguageAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return \Ivoz\Provider\Domain\Model\Language\Name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-    // @codeCoverageIgnoreEnd
 }

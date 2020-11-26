@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler;
 
@@ -6,36 +7,43 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface;
+use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
+use Ivoz\Provider\Domain\Model\FixedCost\FixedCost;
+use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler;
 
 /**
- * FixedCostsRelInvoiceSchedulerAbstract
- * @codeCoverageIgnore
- */
+* FixedCostsRelInvoiceSchedulerAbstract
+* @codeCoverageIgnore
+*/
 abstract class FixedCostsRelInvoiceSchedulerAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $quantity;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface
+     * @var FixedCostInterface
      */
     protected $fixedCost;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
+     * @var InvoiceSchedulerInterface
+     * inversedBy relFixedCosts
      */
     protected $invoiceScheduler;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -102,17 +110,18 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setQuantity($dto->getQuantity())
             ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
-            ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()))
-        ;
+            ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()));
 
         $self->initChangelog();
 
@@ -126,7 +135,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
@@ -134,8 +143,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             ->setQuantity($dto->getQuantity())
             ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
             ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()));
-
-
 
         return $this;
     }
@@ -149,8 +156,8 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
         return self::createDto()
             ->setQuantity(self::getQuantity())
-            ->setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCost::entityToDto(self::getFixedCost(), $depth))
-            ->setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth));
+            ->setFixedCost(FixedCost::entityToDto(self::getFixedCost(), $depth))
+            ->setInvoiceScheduler(InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth));
     }
 
     /**
@@ -164,21 +171,18 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             'invoiceSchedulerId' => self::getInvoiceScheduler() ? self::getInvoiceScheduler()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set quantity
      *
-     * @param integer $quantity | null
+     * @param int $quantity | null
      *
      * @return static
      */
-    protected function setQuantity($quantity = null)
+    protected function setQuantity(?int $quantity = null): FixedCostsRelInvoiceSchedulerInterface
     {
         if (!is_null($quantity)) {
-            Assertion::integerish($quantity, 'quantity value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($quantity, 0, 'quantity provided "%s" is not greater or equal than "%s".');
-            $quantity = (int) $quantity;
         }
 
         $this->quantity = $quantity;
@@ -189,9 +193,9 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Get quantity
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getQuantity()
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
@@ -199,11 +203,11 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Set fixedCost
      *
-     * @param \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost
+     * @param FixedCostInterface
      *
      * @return static
      */
-    protected function setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface $fixedCost)
+    protected function setFixedCost(FixedCostInterface $fixedCost): FixedCostsRelInvoiceSchedulerInterface
     {
         $this->fixedCost = $fixedCost;
 
@@ -213,9 +217,9 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Get fixedCost
      *
-     * @return \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface
+     * @return FixedCostInterface
      */
-    public function getFixedCost()
+    public function getFixedCost(): FixedCostInterface
     {
         return $this->fixedCost;
     }
@@ -223,11 +227,11 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Set invoiceScheduler
      *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $invoiceScheduler | null
+     * @param InvoiceSchedulerInterface | null
      *
      * @return static
      */
-    public function setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $invoiceScheduler = null)
+    public function setInvoiceScheduler(?InvoiceSchedulerInterface $invoiceScheduler = null): FixedCostsRelInvoiceSchedulerInterface
     {
         $this->invoiceScheduler = $invoiceScheduler;
 
@@ -237,12 +241,11 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Get invoiceScheduler
      *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
+     * @return InvoiceSchedulerInterface | null
      */
-    public function getInvoiceScheduler()
+    public function getInvoiceScheduler(): ?InvoiceSchedulerInterface
     {
         return $this->invoiceScheduler;
     }
 
-    // @codeCoverageIgnoreEnd
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry;
 
@@ -6,31 +7,38 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
- * CompanyRelGeoIPCountryAbstract
- * @codeCoverageIgnore
- */
+* CompanyRelGeoIPCountryAbstract
+* @codeCoverageIgnore
+*/
 abstract class CompanyRelGeoIPCountryAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @var CompanyInterface
+     * inversedBy relCountries
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var CountryInterface
      */
     protected $country;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -97,16 +105,17 @@ abstract class CompanyRelGeoIPCountryAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CompanyRelGeoIPCountryDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()))
-        ;
+            ->setCountry($fkTransformer->transform($dto->getCountry()));
 
         $self->initChangelog();
 
@@ -120,15 +129,13 @@ abstract class CompanyRelGeoIPCountryAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CompanyRelGeoIPCountryDto::class);
 
         $this
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCountry($fkTransformer->transform($dto->getCountry()));
-
-
 
         return $this;
     }
@@ -141,8 +148,8 @@ abstract class CompanyRelGeoIPCountryAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setCountry(Country::entityToDto(self::getCountry(), $depth));
     }
 
     /**
@@ -151,20 +158,19 @@ abstract class CompanyRelGeoIPCountryAbstract
     protected function __toArray()
     {
         return [
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()->getId(),
             'countryId' => self::getCountry()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
+     * @param CompanyInterface
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    public function setCompany(CompanyInterface $company): CompanyRelGeoIPCountryInterface
     {
         $this->company = $company;
 
@@ -174,9 +180,9 @@ abstract class CompanyRelGeoIPCountryAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface
      */
-    public function getCompany()
+    public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
@@ -184,11 +190,11 @@ abstract class CompanyRelGeoIPCountryAbstract
     /**
      * Set country
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
+     * @param CountryInterface
      *
      * @return static
      */
-    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country)
+    protected function setCountry(CountryInterface $country): CompanyRelGeoIPCountryInterface
     {
         $this->country = $country;
 
@@ -198,12 +204,11 @@ abstract class CompanyRelGeoIPCountryAbstract
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return CountryInterface
      */
-    public function getCountry()
+    public function getCountry(): CountryInterface
     {
         return $this->country;
     }
 
-    // @codeCoverageIgnoreEnd
 }

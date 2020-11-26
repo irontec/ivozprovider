@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\DestinationRate;
 
@@ -6,13 +7,20 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
+use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup;
+use Ivoz\Provider\Domain\Model\Destination\Destination;
 
 /**
- * DestinationRateAbstract
- * @codeCoverageIgnore
- */
+* DestinationRateAbstract
+* @codeCoverageIgnore
+*/
 abstract class DestinationRateAbstract
 {
+    use ChangelogTrait;
+
     /**
      * column: rate
      * @var float
@@ -35,27 +43,16 @@ abstract class DestinationRateAbstract
     protected $groupIntervalStart = '0s';
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface | null
-     */
-    protected $tpRate;
-
-    /**
-     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface | null
-     */
-    protected $tpDestinationRate;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
+     * @var DestinationRateGroupInterface
+     * inversedBy destinationRates
      */
     protected $destinationRateGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     * @var DestinationInterface
+     * inversedBy destinationRates
      */
     protected $destination;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -136,7 +133,7 @@ abstract class DestinationRateAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DestinationRateDto::class);
 
@@ -148,11 +145,8 @@ abstract class DestinationRateAbstract
         );
 
         $self
-            ->setTpRate($fkTransformer->transform($dto->getTpRate()))
-            ->setTpDestinationRate($fkTransformer->transform($dto->getTpDestinationRate()))
             ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
-            ->setDestination($fkTransformer->transform($dto->getDestination()))
-        ;
+            ->setDestination($fkTransformer->transform($dto->getDestination()));
 
         $self->initChangelog();
 
@@ -166,7 +160,7 @@ abstract class DestinationRateAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DestinationRateDto::class);
 
@@ -175,12 +169,8 @@ abstract class DestinationRateAbstract
             ->setConnectFee($dto->getConnectFee())
             ->setRateIncrement($dto->getRateIncrement())
             ->setGroupIntervalStart($dto->getGroupIntervalStart())
-            ->setTpRate($fkTransformer->transform($dto->getTpRate()))
-            ->setTpDestinationRate($fkTransformer->transform($dto->getTpDestinationRate()))
             ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
             ->setDestination($fkTransformer->transform($dto->getDestination()));
-
-
 
         return $this;
     }
@@ -197,10 +187,8 @@ abstract class DestinationRateAbstract
             ->setConnectFee(self::getConnectFee())
             ->setRateIncrement(self::getRateIncrement())
             ->setGroupIntervalStart(self::getGroupIntervalStart())
-            ->setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRate::entityToDto(self::getTpRate(), $depth))
-            ->setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate::entityToDto(self::getTpDestinationRate(), $depth))
-            ->setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup::entityToDto(self::getDestinationRateGroup(), $depth))
-            ->setDestination(\Ivoz\Provider\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth));
+            ->setDestinationRateGroup(DestinationRateGroup::entityToDto(self::getDestinationRateGroup(), $depth))
+            ->setDestination(Destination::entityToDto(self::getDestination(), $depth));
     }
 
     /**
@@ -213,13 +201,10 @@ abstract class DestinationRateAbstract
             'connectFee' => self::getConnectFee(),
             'rateIncrement' => self::getRateIncrement(),
             'groupIntervalStart' => self::getGroupIntervalStart(),
-            'tpRateId' => self::getTpRate() ? self::getTpRate()->getId() : null,
-            'tpDestinationRateId' => self::getTpDestinationRate() ? self::getTpDestinationRate()->getId() : null,
             'destinationRateGroupId' => self::getDestinationRateGroup()->getId(),
             'destinationId' => self::getDestination()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set cost
@@ -228,12 +213,9 @@ abstract class DestinationRateAbstract
      *
      * @return static
      */
-    protected function setCost($cost)
+    protected function setCost(float $cost): DestinationRateInterface
     {
-        Assertion::notNull($cost, 'cost value "%s" is null, but non null value was expected.');
-        Assertion::numeric($cost);
-
-        $this->cost = (float) $cost;
+        $this->cost = $cost;
 
         return $this;
     }
@@ -255,12 +237,9 @@ abstract class DestinationRateAbstract
      *
      * @return static
      */
-    protected function setConnectFee($connectFee)
+    protected function setConnectFee(float $connectFee): DestinationRateInterface
     {
-        Assertion::notNull($connectFee, 'connectFee value "%s" is null, but non null value was expected.');
-        Assertion::numeric($connectFee);
-
-        $this->connectFee = (float) $connectFee;
+        $this->connectFee = $connectFee;
 
         return $this;
     }
@@ -282,9 +261,8 @@ abstract class DestinationRateAbstract
      *
      * @return static
      */
-    protected function setRateIncrement($rateIncrement)
+    protected function setRateIncrement(string $rateIncrement): DestinationRateInterface
     {
-        Assertion::notNull($rateIncrement, 'rateIncrement value "%s" is null, but non null value was expected.');
         Assertion::maxLength($rateIncrement, 16, 'rateIncrement value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->rateIncrement = $rateIncrement;
@@ -309,9 +287,8 @@ abstract class DestinationRateAbstract
      *
      * @return static
      */
-    protected function setGroupIntervalStart($groupIntervalStart)
+    protected function setGroupIntervalStart(string $groupIntervalStart): DestinationRateInterface
     {
-        Assertion::notNull($groupIntervalStart, 'groupIntervalStart value "%s" is null, but non null value was expected.');
         Assertion::maxLength($groupIntervalStart, 16, 'groupIntervalStart value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->groupIntervalStart = $groupIntervalStart;
@@ -330,61 +307,13 @@ abstract class DestinationRateAbstract
     }
 
     /**
-     * Set tpRate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate | null
-     *
-     * @return static
-     */
-    protected function setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate = null)
-    {
-        $this->tpRate = $tpRate;
-
-        return $this;
-    }
-
-    /**
-     * Get tpRate
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface | null
-     */
-    public function getTpRate()
-    {
-        return $this->tpRate;
-    }
-
-    /**
-     * Set tpDestinationRate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate | null
-     *
-     * @return static
-     */
-    protected function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate = null)
-    {
-        $this->tpDestinationRate = $tpDestinationRate;
-
-        return $this;
-    }
-
-    /**
-     * Get tpDestinationRate
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface | null
-     */
-    public function getTpDestinationRate()
-    {
-        return $this->tpDestinationRate;
-    }
-
-    /**
      * Set destinationRateGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup
+     * @param DestinationRateGroupInterface
      *
      * @return static
      */
-    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup)
+    public function setDestinationRateGroup(DestinationRateGroupInterface $destinationRateGroup): DestinationRateInterface
     {
         $this->destinationRateGroup = $destinationRateGroup;
 
@@ -394,9 +323,9 @@ abstract class DestinationRateAbstract
     /**
      * Get destinationRateGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
+     * @return DestinationRateGroupInterface
      */
-    public function getDestinationRateGroup()
+    public function getDestinationRateGroup(): DestinationRateGroupInterface
     {
         return $this->destinationRateGroup;
     }
@@ -404,11 +333,11 @@ abstract class DestinationRateAbstract
     /**
      * Set destination
      *
-     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
+     * @param DestinationInterface
      *
      * @return static
      */
-    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination)
+    public function setDestination(DestinationInterface $destination): DestinationRateInterface
     {
         $this->destination = $destination;
 
@@ -418,12 +347,11 @@ abstract class DestinationRateAbstract
     /**
      * Get destination
      *
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     * @return DestinationInterface
      */
-    public function getDestination()
+    public function getDestination(): DestinationInterface
     {
         return $this->destination;
     }
 
-    // @codeCoverageIgnoreEnd
 }

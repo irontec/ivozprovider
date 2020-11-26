@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
@@ -6,13 +7,22 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\Name;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\Description;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Currency\Currency;
 
 /**
- * RatingPlanGroupAbstract
- * @codeCoverageIgnore
- */
+* RatingPlanGroupAbstract
+* @codeCoverageIgnore
+*/
 abstract class RatingPlanGroupAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var Name | null
      */
@@ -24,23 +34,22 @@ abstract class RatingPlanGroupAbstract
     protected $description;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
+     * @var CurrencyInterface
      */
     protected $currency;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct(Name $name, Description $description)
-    {
+    protected function __construct(
+        Name $name,
+        Description $description
+    ) {
         $this->setName($name);
         $this->setDescription($description);
     }
@@ -109,7 +118,7 @@ abstract class RatingPlanGroupAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RatingPlanGroupDto::class);
 
@@ -134,8 +143,7 @@ abstract class RatingPlanGroupAbstract
 
         $self
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
-        ;
+            ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
         $self->initChangelog();
 
@@ -149,7 +157,7 @@ abstract class RatingPlanGroupAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RatingPlanGroupDto::class);
 
@@ -173,8 +181,6 @@ abstract class RatingPlanGroupAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
-
-
         return $this;
     }
 
@@ -194,8 +200,8 @@ abstract class RatingPlanGroupAbstract
             ->setDescriptionEs(self::getDescription()->getEs())
             ->setDescriptionCa(self::getDescription()->getCa())
             ->setDescriptionIt(self::getDescription()->getIt())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setCurrency(Currency::entityToDto(self::getCurrency(), $depth));
     }
 
     /**
@@ -216,64 +222,23 @@ abstract class RatingPlanGroupAbstract
             'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
-     * Set brand
+     * Get name
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return static
+     * @return Name
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    public function getName(): Name
     {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
-
-    /**
-     * Set currency
-     *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
-     *
-     * @return static
-     */
-    protected function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
-    {
-        $this->currency = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Get currency
-     *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
-     */
-    public function getCurrency()
-    {
-        return $this->currency;
+        return $this->name;
     }
 
     /**
      * Set name
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\Name $name
-     *
      * @return static
      */
-    protected function setName(Name $name)
+    protected function setName(Name $name): RatingPlanGroupInterface
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -285,23 +250,21 @@ abstract class RatingPlanGroupAbstract
     }
 
     /**
-     * Get name
+     * Get description
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\Name
+     * @return Description
      */
-    public function getName()
+    public function getDescription(): Description
     {
-        return $this->name;
+        return $this->description;
     }
 
     /**
      * Set description
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\Description $description
-     *
      * @return static
      */
-    protected function setDescription(Description $description)
+    protected function setDescription(Description $description): RatingPlanGroupInterface
     {
         $isEqual = $this->description && $this->description->equals($description);
         if ($isEqual) {
@@ -313,13 +276,51 @@ abstract class RatingPlanGroupAbstract
     }
 
     /**
-     * Get description
+     * Set brand
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\Description
+     * @param BrandInterface
+     *
+     * @return static
      */
-    public function getDescription()
+    protected function setBrand(BrandInterface $brand): RatingPlanGroupInterface
     {
-        return $this->description;
+        $this->brand = $brand;
+
+        return $this;
     }
-    // @codeCoverageIgnoreEnd
+
+    /**
+     * Get brand
+     *
+     * @return BrandInterface
+     */
+    public function getBrand(): BrandInterface
+    {
+        return $this->brand;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param CurrencyInterface | null
+     *
+     * @return static
+     */
+    protected function setCurrency(?CurrencyInterface $currency = null): RatingPlanGroupInterface
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return CurrencyInterface | null
+     */
+    public function getCurrency(): ?CurrencyInterface
+    {
+        return $this->currency;
+    }
+
 }

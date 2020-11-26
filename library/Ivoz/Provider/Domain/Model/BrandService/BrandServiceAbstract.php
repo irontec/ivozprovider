@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\BrandService;
 
@@ -6,36 +7,42 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Service\Service;
 
 /**
- * BrandServiceAbstract
- * @codeCoverageIgnore
- */
+* BrandServiceAbstract
+* @codeCoverageIgnore
+*/
 abstract class BrandServiceAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
     protected $code;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
+     * inversedBy services
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Service\ServiceInterface
+     * @var ServiceInterface
      */
     protected $service;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($code)
-    {
+    protected function __construct(
+        $code
+    ) {
         $this->setCode($code);
     }
 
@@ -103,7 +110,7 @@ abstract class BrandServiceAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, BrandServiceDto::class);
 
@@ -113,8 +120,7 @@ abstract class BrandServiceAbstract
 
         $self
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setService($fkTransformer->transform($dto->getService()))
-        ;
+            ->setService($fkTransformer->transform($dto->getService()));
 
         $self->initChangelog();
 
@@ -128,7 +134,7 @@ abstract class BrandServiceAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, BrandServiceDto::class);
 
@@ -136,8 +142,6 @@ abstract class BrandServiceAbstract
             ->setCode($dto->getCode())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setService($fkTransformer->transform($dto->getService()));
-
-
 
         return $this;
     }
@@ -151,8 +155,8 @@ abstract class BrandServiceAbstract
     {
         return self::createDto()
             ->setCode(self::getCode())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setService(\Ivoz\Provider\Domain\Model\Service\Service::entityToDto(self::getService(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setService(Service::entityToDto(self::getService(), $depth));
     }
 
     /**
@@ -166,7 +170,6 @@ abstract class BrandServiceAbstract
             'serviceId' => self::getService()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set code
@@ -175,9 +178,8 @@ abstract class BrandServiceAbstract
      *
      * @return static
      */
-    protected function setCode($code)
+    protected function setCode(string $code): BrandServiceInterface
     {
-        Assertion::notNull($code, 'code value "%s" is null, but non null value was expected.');
         Assertion::maxLength($code, 3, 'code value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->code = $code;
@@ -198,11 +200,11 @@ abstract class BrandServiceAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param BrandInterface
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    public function setBrand(BrandInterface $brand): BrandServiceInterface
     {
         $this->brand = $brand;
 
@@ -212,9 +214,9 @@ abstract class BrandServiceAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand()
+    public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
@@ -222,11 +224,11 @@ abstract class BrandServiceAbstract
     /**
      * Set service
      *
-     * @param \Ivoz\Provider\Domain\Model\Service\ServiceInterface $service
+     * @param ServiceInterface
      *
      * @return static
      */
-    protected function setService(\Ivoz\Provider\Domain\Model\Service\ServiceInterface $service)
+    protected function setService(ServiceInterface $service): BrandServiceInterface
     {
         $this->service = $service;
 
@@ -236,12 +238,11 @@ abstract class BrandServiceAbstract
     /**
      * Get service
      *
-     * @return \Ivoz\Provider\Domain\Model\Service\ServiceInterface
+     * @return ServiceInterface
      */
-    public function getService()
+    public function getService(): ServiceInterface
     {
         return $this->service;
     }
 
-    // @codeCoverageIgnoreEnd
 }

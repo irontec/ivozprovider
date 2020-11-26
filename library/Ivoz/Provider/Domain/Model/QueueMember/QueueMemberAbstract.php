@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\QueueMember;
 
@@ -6,36 +7,43 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Queue\Queue;
+use Ivoz\Provider\Domain\Model\User\User;
 
 /**
- * QueueMemberAbstract
- * @codeCoverageIgnore
- */
+* QueueMemberAbstract
+* @codeCoverageIgnore
+*/
 abstract class QueueMemberAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $penalty;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Queue\QueueInterface
+     * @var QueueInterface
      */
     protected $queue;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @var UserInterface
+     * inversedBy queueMembers
      */
     protected $user;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -102,17 +110,18 @@ abstract class QueueMemberAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, QueueMemberDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setPenalty($dto->getPenalty())
             ->setQueue($fkTransformer->transform($dto->getQueue()))
-            ->setUser($fkTransformer->transform($dto->getUser()))
-        ;
+            ->setUser($fkTransformer->transform($dto->getUser()));
 
         $self->initChangelog();
 
@@ -126,7 +135,7 @@ abstract class QueueMemberAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, QueueMemberDto::class);
 
@@ -134,8 +143,6 @@ abstract class QueueMemberAbstract
             ->setPenalty($dto->getPenalty())
             ->setQueue($fkTransformer->transform($dto->getQueue()))
             ->setUser($fkTransformer->transform($dto->getUser()));
-
-
 
         return $this;
     }
@@ -149,8 +156,8 @@ abstract class QueueMemberAbstract
     {
         return self::createDto()
             ->setPenalty(self::getPenalty())
-            ->setQueue(\Ivoz\Provider\Domain\Model\Queue\Queue::entityToDto(self::getQueue(), $depth))
-            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth));
+            ->setQueue(Queue::entityToDto(self::getQueue(), $depth))
+            ->setUser(User::entityToDto(self::getUser(), $depth));
     }
 
     /**
@@ -164,22 +171,16 @@ abstract class QueueMemberAbstract
             'userId' => self::getUser()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set penalty
      *
-     * @param integer $penalty | null
+     * @param int $penalty | null
      *
      * @return static
      */
-    protected function setPenalty($penalty = null)
+    protected function setPenalty(?int $penalty = null): QueueMemberInterface
     {
-        if (!is_null($penalty)) {
-            Assertion::integerish($penalty, 'penalty value "%s" is not an integer or a number castable to integer.');
-            $penalty = (int) $penalty;
-        }
-
         $this->penalty = $penalty;
 
         return $this;
@@ -188,9 +189,9 @@ abstract class QueueMemberAbstract
     /**
      * Get penalty
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getPenalty()
+    public function getPenalty(): ?int
     {
         return $this->penalty;
     }
@@ -198,11 +199,11 @@ abstract class QueueMemberAbstract
     /**
      * Set queue
      *
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue
+     * @param QueueInterface
      *
      * @return static
      */
-    protected function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue)
+    protected function setQueue(QueueInterface $queue): QueueMemberInterface
     {
         $this->queue = $queue;
 
@@ -212,9 +213,9 @@ abstract class QueueMemberAbstract
     /**
      * Get queue
      *
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface
+     * @return QueueInterface
      */
-    public function getQueue()
+    public function getQueue(): QueueInterface
     {
         return $this->queue;
     }
@@ -222,11 +223,11 @@ abstract class QueueMemberAbstract
     /**
      * Set user
      *
-     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     * @param UserInterface
      *
      * @return static
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user)
+    public function setUser(UserInterface $user): QueueMemberInterface
     {
         $this->user = $user;
 
@@ -236,12 +237,11 @@ abstract class QueueMemberAbstract
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
+     * @return UserInterface
      */
-    public function getUser()
+    public function getUser(): UserInterface
     {
         return $this->user;
     }
 
-    // @codeCoverageIgnoreEnd
 }

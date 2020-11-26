@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Feature;
 
@@ -6,13 +7,17 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Feature\Name;
 
 /**
- * FeatureAbstract
- * @codeCoverageIgnore
- */
+* FeatureAbstract
+* @codeCoverageIgnore
+*/
 abstract class FeatureAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -23,14 +28,13 @@ abstract class FeatureAbstract
      */
     protected $name;
 
-
-    use ChangelogTrait;
-
     /**
      * Constructor
      */
-    protected function __construct($iden, Name $name)
-    {
+    protected function __construct(
+        $iden,
+        Name $name
+    ) {
         $this->setIden($iden);
         $this->setName($name);
     }
@@ -99,7 +103,7 @@ abstract class FeatureAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, FeatureDto::class);
 
@@ -115,6 +119,8 @@ abstract class FeatureAbstract
             $name
         );
 
+        ;
+
         $self->initChangelog();
 
         return $self;
@@ -127,7 +133,7 @@ abstract class FeatureAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, FeatureDto::class);
 
@@ -141,8 +147,6 @@ abstract class FeatureAbstract
         $this
             ->setIden($dto->getIden())
             ->setName($name);
-
-
 
         return $this;
     }
@@ -175,7 +179,6 @@ abstract class FeatureAbstract
             'nameIt' => self::getName()->getIt()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set iden
@@ -184,9 +187,8 @@ abstract class FeatureAbstract
      *
      * @return static
      */
-    protected function setIden($iden)
+    protected function setIden(string $iden): FeatureInterface
     {
-        Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
         Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->iden = $iden;
@@ -205,13 +207,21 @@ abstract class FeatureAbstract
     }
 
     /**
-     * Set name
+     * Get name
      *
-     * @param \Ivoz\Provider\Domain\Model\Feature\Name $name
+     * @return Name
+     */
+    public function getName(): Name
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name
      *
      * @return static
      */
-    protected function setName(Name $name)
+    protected function setName(Name $name): FeatureInterface
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -222,14 +232,4 @@ abstract class FeatureAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return \Ivoz\Provider\Domain\Model\Feature\Name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-    // @codeCoverageIgnoreEnd
 }

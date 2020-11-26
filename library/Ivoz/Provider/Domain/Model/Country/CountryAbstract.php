@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Country;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Country\Name;
+use Ivoz\Provider\Domain\Model\Country\Zone;
 
 /**
- * CountryAbstract
- * @codeCoverageIgnore
- */
+* CountryAbstract
+* @codeCoverageIgnore
+*/
 abstract class CountryAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -33,14 +39,14 @@ abstract class CountryAbstract
      */
     protected $zone;
 
-
-    use ChangelogTrait;
-
     /**
      * Constructor
      */
-    protected function __construct($code, Name $name, Zone $zone)
-    {
+    protected function __construct(
+        $code,
+        Name $name,
+        Zone $zone
+    ) {
         $this->setCode($code);
         $this->setName($name);
         $this->setZone($zone);
@@ -110,7 +116,7 @@ abstract class CountryAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CountryDto::class);
 
@@ -135,8 +141,7 @@ abstract class CountryAbstract
         );
 
         $self
-            ->setCountryCode($dto->getCountryCode())
-        ;
+            ->setCountryCode($dto->getCountryCode());
 
         $self->initChangelog();
 
@@ -150,7 +155,7 @@ abstract class CountryAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, CountryDto::class);
 
@@ -173,8 +178,6 @@ abstract class CountryAbstract
             ->setCountryCode($dto->getCountryCode())
             ->setName($name)
             ->setZone($zone);
-
-
 
         return $this;
     }
@@ -217,7 +220,6 @@ abstract class CountryAbstract
             'zoneIt' => self::getZone()->getIt()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set code
@@ -226,9 +228,8 @@ abstract class CountryAbstract
      *
      * @return static
      */
-    protected function setCode($code)
+    protected function setCode(string $code): CountryInterface
     {
-        Assertion::notNull($code, 'code value "%s" is null, but non null value was expected.');
         Assertion::maxLength($code, 100, 'code value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->code = $code;
@@ -253,7 +254,7 @@ abstract class CountryAbstract
      *
      * @return static
      */
-    protected function setCountryCode($countryCode = null)
+    protected function setCountryCode(?string $countryCode = null): CountryInterface
     {
         if (!is_null($countryCode)) {
             Assertion::maxLength($countryCode, 10, 'countryCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -269,19 +270,27 @@ abstract class CountryAbstract
      *
      * @return string | null
      */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
     /**
-     * Set name
+     * Get name
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\Name $name
+     * @return Name
+     */
+    public function getName(): Name
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name
      *
      * @return static
      */
-    protected function setName(Name $name)
+    protected function setName(Name $name): CountryInterface
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -293,23 +302,21 @@ abstract class CountryAbstract
     }
 
     /**
-     * Get name
+     * Get zone
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\Name
+     * @return Zone
      */
-    public function getName()
+    public function getZone(): Zone
     {
-        return $this->name;
+        return $this->zone;
     }
 
     /**
      * Set zone
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\Zone $zone
-     *
      * @return static
      */
-    protected function setZone(Zone $zone)
+    protected function setZone(Zone $zone): CountryInterface
     {
         $isEqual = $this->zone && $this->zone->equals($zone);
         if ($isEqual) {
@@ -320,14 +327,4 @@ abstract class CountryAbstract
         return $this;
     }
 
-    /**
-     * Get zone
-     *
-     * @return \Ivoz\Provider\Domain\Model\Country\Zone
-     */
-    public function getZone()
-    {
-        return $this->zone;
-    }
-    // @codeCoverageIgnoreEnd
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\MaxUsageNotification;
 
@@ -6,13 +7,21 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
+use Ivoz\Provider\Domain\Model\Company\Company;
 
 /**
- * MaxUsageNotificationAbstract
- * @codeCoverageIgnore
- */
+* MaxUsageNotificationAbstract
+* @codeCoverageIgnore
+*/
 abstract class MaxUsageNotificationAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string | null
      */
@@ -24,28 +33,27 @@ abstract class MaxUsageNotificationAbstract
     protected $threshold = 0;
 
     /**
-     * @var \DateTime | null
+     * @var \DateTimeInterface | null
      */
     protected $lastSent;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @var NotificationTemplateInterface
+     */
+    protected $notificationTemplate;
+
+    /**
+     * @var CompanyInterface
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
-     */
-    protected $notificationTemplate;
-
-
-    use ChangelogTrait;
-
-    /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -112,19 +120,20 @@ abstract class MaxUsageNotificationAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, MaxUsageNotificationDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setToAddress($dto->getToAddress())
             ->setThreshold($dto->getThreshold())
             ->setLastSent($dto->getLastSent())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setNotificationTemplate($fkTransformer->transform($dto->getNotificationTemplate()))
-        ;
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
         $self->initChangelog();
 
@@ -138,7 +147,7 @@ abstract class MaxUsageNotificationAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, MaxUsageNotificationDto::class);
 
@@ -146,10 +155,8 @@ abstract class MaxUsageNotificationAbstract
             ->setToAddress($dto->getToAddress())
             ->setThreshold($dto->getThreshold())
             ->setLastSent($dto->getLastSent())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setNotificationTemplate($fkTransformer->transform($dto->getNotificationTemplate()));
-
-
+            ->setNotificationTemplate($fkTransformer->transform($dto->getNotificationTemplate()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()));
 
         return $this;
     }
@@ -165,8 +172,8 @@ abstract class MaxUsageNotificationAbstract
             ->setToAddress(self::getToAddress())
             ->setThreshold(self::getThreshold())
             ->setLastSent(self::getLastSent())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getNotificationTemplate(), $depth));
+            ->setNotificationTemplate(NotificationTemplate::entityToDto(self::getNotificationTemplate(), $depth))
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**
@@ -178,11 +185,10 @@ abstract class MaxUsageNotificationAbstract
             'toAddress' => self::getToAddress(),
             'threshold' => self::getThreshold(),
             'lastSent' => self::getLastSent(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null
+            'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null,
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set toAddress
@@ -191,7 +197,7 @@ abstract class MaxUsageNotificationAbstract
      *
      * @return static
      */
-    protected function setToAddress($toAddress = null)
+    protected function setToAddress(?string $toAddress = null): MaxUsageNotificationInterface
     {
         if (!is_null($toAddress)) {
             Assertion::maxLength($toAddress, 255, 'toAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -207,7 +213,7 @@ abstract class MaxUsageNotificationAbstract
      *
      * @return string | null
      */
-    public function getToAddress()
+    public function getToAddress(): ?string
     {
         return $this->toAddress;
     }
@@ -219,10 +225,9 @@ abstract class MaxUsageNotificationAbstract
      *
      * @return static
      */
-    protected function setThreshold($threshold = null)
+    protected function setThreshold(?float $threshold = null): MaxUsageNotificationInterface
     {
         if (!is_null($threshold)) {
-            Assertion::numeric($threshold);
             $threshold = (float) $threshold;
         }
 
@@ -236,7 +241,7 @@ abstract class MaxUsageNotificationAbstract
      *
      * @return float | null
      */
-    public function getThreshold()
+    public function getThreshold(): ?float
     {
         return $this->threshold;
     }
@@ -244,14 +249,18 @@ abstract class MaxUsageNotificationAbstract
     /**
      * Set lastSent
      *
-     * @param \DateTime $lastSent | null
+     * @param \DateTimeInterface $lastSent | null
      *
      * @return static
      */
-    protected function setLastSent($lastSent = null)
+    protected function setLastSent($lastSent = null): MaxUsageNotificationInterface
     {
         if (!is_null($lastSent)) {
-            $lastSent = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            Assertion::notNull(
+                $lastSent,
+                'lastSent value "%s" is null, but non null value was expected.'
+            );
+            $lastSent = DateTimeHelper::createOrFix(
                 $lastSent,
                 null
             );
@@ -269,45 +278,21 @@ abstract class MaxUsageNotificationAbstract
     /**
      * Get lastSent
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getLastSent()
+    public function getLastSent(): ?\DateTimeInterface
     {
         return !is_null($this->lastSent) ? clone $this->lastSent : null;
     }
 
     /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
-     *
-     * @return static
-     */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
-    {
-        $this->company = $company;
-
-        return $this;
-    }
-
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
      * Set notificationTemplate
      *
-     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate | null
+     * @param NotificationTemplateInterface | null
      *
      * @return static
      */
-    protected function setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $notificationTemplate = null)
+    protected function setNotificationTemplate(?NotificationTemplateInterface $notificationTemplate = null): MaxUsageNotificationInterface
     {
         $this->notificationTemplate = $notificationTemplate;
 
@@ -317,12 +302,35 @@ abstract class MaxUsageNotificationAbstract
     /**
      * Get notificationTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface | null
+     * @return NotificationTemplateInterface | null
      */
-    public function getNotificationTemplate()
+    public function getNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->notificationTemplate;
     }
 
-    // @codeCoverageIgnoreEnd
+    /**
+     * Set company
+     *
+     * @param CompanyInterface | null
+     *
+     * @return static
+     */
+    protected function setCompany(?CompanyInterface $company = null): MaxUsageNotificationInterface
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return CompanyInterface | null
+     */
+    public function getCompany(): ?CompanyInterface
+    {
+        return $this->company;
+    }
+
 }

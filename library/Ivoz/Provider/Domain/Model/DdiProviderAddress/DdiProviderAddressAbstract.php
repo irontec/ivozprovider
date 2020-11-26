@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderAddress;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
 
 /**
- * DdiProviderAddressAbstract
- * @codeCoverageIgnore
- */
+* DdiProviderAddressAbstract
+* @codeCoverageIgnore
+*/
 abstract class DdiProviderAddressAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string | null
      */
@@ -24,23 +30,18 @@ abstract class DdiProviderAddressAbstract
     protected $description;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface | null
-     */
-    protected $trunksAddress;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
+     * @var DdiProviderInterface
+     * inversedBy ddiProviderAddresses
      */
     protected $ddiProvider;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -107,18 +108,18 @@ abstract class DdiProviderAddressAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DdiProviderAddressDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setIp($dto->getIp())
             ->setDescription($dto->getDescription())
-            ->setTrunksAddress($fkTransformer->transform($dto->getTrunksAddress()))
-            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
-        ;
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
 
         $self->initChangelog();
 
@@ -132,17 +133,14 @@ abstract class DdiProviderAddressAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, DdiProviderAddressDto::class);
 
         $this
             ->setIp($dto->getIp())
             ->setDescription($dto->getDescription())
-            ->setTrunksAddress($fkTransformer->transform($dto->getTrunksAddress()))
             ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
-
-
 
         return $this;
     }
@@ -157,8 +155,7 @@ abstract class DdiProviderAddressAbstract
         return self::createDto()
             ->setIp(self::getIp())
             ->setDescription(self::getDescription())
-            ->setTrunksAddress(\Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddress::entityToDto(self::getTrunksAddress(), $depth))
-            ->setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::entityToDto(self::getDdiProvider(), $depth));
+            ->setDdiProvider(DdiProvider::entityToDto(self::getDdiProvider(), $depth));
     }
 
     /**
@@ -169,11 +166,9 @@ abstract class DdiProviderAddressAbstract
         return [
             'ip' => self::getIp(),
             'description' => self::getDescription(),
-            'trunksAddressId' => self::getTrunksAddress() ? self::getTrunksAddress()->getId() : null,
             'ddiProviderId' => self::getDdiProvider()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set ip
@@ -182,7 +177,7 @@ abstract class DdiProviderAddressAbstract
      *
      * @return static
      */
-    protected function setIp($ip = null)
+    protected function setIp(?string $ip = null): DdiProviderAddressInterface
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -198,7 +193,7 @@ abstract class DdiProviderAddressAbstract
      *
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
@@ -210,7 +205,7 @@ abstract class DdiProviderAddressAbstract
      *
      * @return static
      */
-    protected function setDescription($description = null)
+    protected function setDescription(?string $description = null): DdiProviderAddressInterface
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -226,43 +221,19 @@ abstract class DdiProviderAddressAbstract
      *
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * Set trunksAddress
-     *
-     * @param \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface $trunksAddress | null
-     *
-     * @return static
-     */
-    protected function setTrunksAddress(\Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface $trunksAddress = null)
-    {
-        $this->trunksAddress = $trunksAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get trunksAddress
-     *
-     * @return \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface | null
-     */
-    public function getTrunksAddress()
-    {
-        return $this->trunksAddress;
-    }
-
-    /**
      * Set ddiProvider
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider
+     * @param DdiProviderInterface
      *
      * @return static
      */
-    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider)
+    public function setDdiProvider(DdiProviderInterface $ddiProvider): DdiProviderAddressInterface
     {
         $this->ddiProvider = $ddiProvider;
 
@@ -272,12 +243,11 @@ abstract class DdiProviderAddressAbstract
     /**
      * Get ddiProvider
      *
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
+     * @return DdiProviderInterface
      */
-    public function getDdiProvider()
+    public function getDdiProvider(): DdiProviderInterface
     {
         return $this->ddiProvider;
     }
 
-    // @codeCoverageIgnoreEnd
 }

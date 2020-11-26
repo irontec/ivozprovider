@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\RatingProfile;
 
@@ -6,46 +7,58 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag;
 
 /**
- * RatingProfileAbstract
- * @codeCoverageIgnore
- */
+* RatingProfileAbstract
+* @codeCoverageIgnore
+*/
 abstract class RatingProfileAbstract
 {
-    /**
-     * @var \DateTime
-     */
-    protected $activationTime;
+    use ChangelogTrait;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @var \DateTimeInterface
+     */
+    protected $activationTime = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var CompanyInterface
+     * inversedBy ratingProfiles
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
+     * @var CarrierInterface
+     * inversedBy ratingProfiles
      */
     protected $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     * @var RatingPlanGroupInterface
      */
     protected $ratingPlanGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
+     * @var RoutingTagInterface
      */
     protected $routingTag;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($activationTime)
-    {
+    protected function __construct(
+        $activationTime
+    ) {
         $this->setActivationTime($activationTime);
     }
 
@@ -113,7 +126,7 @@ abstract class RatingProfileAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
 
@@ -125,8 +138,7 @@ abstract class RatingProfileAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
-            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()))
-        ;
+            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
         $self->initChangelog();
 
@@ -140,7 +152,7 @@ abstract class RatingProfileAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
 
@@ -150,8 +162,6 @@ abstract class RatingProfileAbstract
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
             ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
-
-
 
         return $this;
     }
@@ -165,10 +175,10 @@ abstract class RatingProfileAbstract
     {
         return self::createDto()
             ->setActivationTime(self::getActivationTime())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
-            ->setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup::entityToDto(self::getRatingPlanGroup(), $depth))
-            ->setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag::entityToDto(self::getRoutingTag(), $depth));
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setCarrier(Carrier::entityToDto(self::getCarrier(), $depth))
+            ->setRatingPlanGroup(RatingPlanGroup::entityToDto(self::getRatingPlanGroup(), $depth))
+            ->setRoutingTag(RoutingTag::entityToDto(self::getRoutingTag(), $depth));
     }
 
     /**
@@ -184,19 +194,18 @@ abstract class RatingProfileAbstract
             'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set activationTime
      *
-     * @param \DateTime $activationTime
+     * @param \DateTimeInterface $activationTime
      *
      * @return static
      */
-    protected function setActivationTime($activationTime)
+    protected function setActivationTime($activationTime): RatingProfileInterface
     {
-        Assertion::notNull($activationTime, 'activationTime value "%s" is null, but non null value was expected.');
-        $activationTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+
+        $activationTime = DateTimeHelper::createOrFix(
             $activationTime,
             'CURRENT_TIMESTAMP'
         );
@@ -213,9 +222,9 @@ abstract class RatingProfileAbstract
     /**
      * Get activationTime
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getActivationTime(): \DateTime
+    public function getActivationTime(): \DateTimeInterface
     {
         return clone $this->activationTime;
     }
@@ -223,11 +232,11 @@ abstract class RatingProfileAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
+     * @param CompanyInterface | null
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    public function setCompany(?CompanyInterface $company = null): RatingProfileInterface
     {
         $this->company = $company;
 
@@ -237,9 +246,9 @@ abstract class RatingProfileAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany()
+    public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
@@ -247,11 +256,11 @@ abstract class RatingProfileAbstract
     /**
      * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
+     * @param CarrierInterface | null
      *
      * @return static
      */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
+    public function setCarrier(?CarrierInterface $carrier = null): RatingProfileInterface
     {
         $this->carrier = $carrier;
 
@@ -261,9 +270,9 @@ abstract class RatingProfileAbstract
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
+     * @return CarrierInterface | null
      */
-    public function getCarrier()
+    public function getCarrier(): ?CarrierInterface
     {
         return $this->carrier;
     }
@@ -271,11 +280,11 @@ abstract class RatingProfileAbstract
     /**
      * Set ratingPlanGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
+     * @param RatingPlanGroupInterface
      *
      * @return static
      */
-    protected function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup)
+    protected function setRatingPlanGroup(RatingPlanGroupInterface $ratingPlanGroup): RatingProfileInterface
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
@@ -285,9 +294,9 @@ abstract class RatingProfileAbstract
     /**
      * Get ratingPlanGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     * @return RatingPlanGroupInterface
      */
-    public function getRatingPlanGroup()
+    public function getRatingPlanGroup(): RatingPlanGroupInterface
     {
         return $this->ratingPlanGroup;
     }
@@ -295,11 +304,11 @@ abstract class RatingProfileAbstract
     /**
      * Set routingTag
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag | null
+     * @param RoutingTagInterface | null
      *
      * @return static
      */
-    protected function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null)
+    protected function setRoutingTag(?RoutingTagInterface $routingTag = null): RatingProfileInterface
     {
         $this->routingTag = $routingTag;
 
@@ -309,12 +318,11 @@ abstract class RatingProfileAbstract
     /**
      * Get routingTag
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface | null
+     * @return RoutingTagInterface | null
      */
-    public function getRoutingTag()
+    public function getRoutingTag(): ?RoutingTagInterface
     {
         return $this->routingTag;
     }
 
-    // @codeCoverageIgnoreEnd
 }

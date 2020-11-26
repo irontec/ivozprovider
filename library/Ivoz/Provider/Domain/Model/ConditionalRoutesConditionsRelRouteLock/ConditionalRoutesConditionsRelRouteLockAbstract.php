@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock;
 
@@ -6,31 +7,38 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
+use Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition;
+use Ivoz\Provider\Domain\Model\RouteLock\RouteLock;
 
 /**
- * ConditionalRoutesConditionsRelRouteLockAbstract
- * @codeCoverageIgnore
- */
+* ConditionalRoutesConditionsRelRouteLockAbstract
+* @codeCoverageIgnore
+*/
 abstract class ConditionalRoutesConditionsRelRouteLockAbstract
 {
+    use ChangelogTrait;
+
     /**
-     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
+     * @var ConditionalRoutesConditionInterface
+     * inversedBy relRouteLocks
      */
     protected $condition;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface
+     * @var RouteLockInterface
      */
     protected $routeLock;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+
+    ) {
+
     }
 
     abstract public function getId();
@@ -97,16 +105,17 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelRouteLockDto::class);
 
-        $self = new static();
+        $self = new static(
+
+        );
 
         $self
             ->setCondition($fkTransformer->transform($dto->getCondition()))
-            ->setRouteLock($fkTransformer->transform($dto->getRouteLock()))
-        ;
+            ->setRouteLock($fkTransformer->transform($dto->getRouteLock()));
 
         $self->initChangelog();
 
@@ -120,15 +129,13 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelRouteLockDto::class);
 
         $this
             ->setCondition($fkTransformer->transform($dto->getCondition()))
             ->setRouteLock($fkTransformer->transform($dto->getRouteLock()));
-
-
 
         return $this;
     }
@@ -141,8 +148,8 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))
-            ->setRouteLock(\Ivoz\Provider\Domain\Model\RouteLock\RouteLock::entityToDto(self::getRouteLock(), $depth));
+            ->setCondition(ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))
+            ->setRouteLock(RouteLock::entityToDto(self::getRouteLock(), $depth));
     }
 
     /**
@@ -155,16 +162,15 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
             'routeLockId' => self::getRouteLock()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set condition
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition | null
+     * @param ConditionalRoutesConditionInterface | null
      *
      * @return static
      */
-    public function setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition = null)
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelRouteLockInterface
     {
         $this->condition = $condition;
 
@@ -174,9 +180,9 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     /**
      * Get condition
      *
-     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface | null
+     * @return ConditionalRoutesConditionInterface | null
      */
-    public function getCondition()
+    public function getCondition(): ?ConditionalRoutesConditionInterface
     {
         return $this->condition;
     }
@@ -184,11 +190,11 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     /**
      * Set routeLock
      *
-     * @param \Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface $routeLock
+     * @param RouteLockInterface
      *
      * @return static
      */
-    protected function setRouteLock(\Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface $routeLock)
+    protected function setRouteLock(RouteLockInterface $routeLock): ConditionalRoutesConditionsRelRouteLockInterface
     {
         $this->routeLock = $routeLock;
 
@@ -198,12 +204,11 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     /**
      * Get routeLock
      *
-     * @return \Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface
+     * @return RouteLockInterface
      */
-    public function getRouteLock()
+    public function getRouteLock(): RouteLockInterface
     {
         return $this->routeLock;
     }
 
-    // @codeCoverageIgnoreEnd
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
@@ -6,13 +7,28 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Domain\Domain;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
+use Ivoz\Provider\Domain\Model\Ddi\Ddi;
+use Ivoz\Provider\Domain\Model\Language\Language;
 
 /**
- * ResidentialDeviceAbstract
- * @codeCoverageIgnore
- */
+* ResidentialDeviceAbstract
+* @codeCoverageIgnore
+*/
 abstract class ResidentialDeviceAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -35,7 +51,7 @@ abstract class ResidentialDeviceAbstract
     protected $ip;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $port;
 
@@ -100,7 +116,7 @@ abstract class ResidentialDeviceAbstract
     protected $ddiIn = 'yes';
 
     /**
-     * @var integer
+     * @var int
      */
     protected $maxCalls = 1;
 
@@ -111,42 +127,41 @@ abstract class ResidentialDeviceAbstract
     protected $t38Passthrough = 'no';
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $rtpEncryption = false;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
+     * inversedBy residentialDevices
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
+     * @var DomainInterface
+     * inversedBy residentialDevices
      */
     protected $domain;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @var TransformationRuleSetInterface
      */
     protected $transformationRuleSet;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     * @var DdiInterface
      */
     protected $outgoingDdi;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
+     * @var LanguageInterface
      */
     protected $language;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -245,7 +260,7 @@ abstract class ResidentialDeviceAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ResidentialDeviceDto::class);
 
@@ -276,8 +291,7 @@ abstract class ResidentialDeviceAbstract
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
-            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-        ;
+            ->setLanguage($fkTransformer->transform($dto->getLanguage()));
 
         $self->initChangelog();
 
@@ -291,7 +305,7 @@ abstract class ResidentialDeviceAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, ResidentialDeviceDto::class);
 
@@ -320,8 +334,6 @@ abstract class ResidentialDeviceAbstract
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()));
-
-
 
         return $this;
     }
@@ -352,12 +364,12 @@ abstract class ResidentialDeviceAbstract
             ->setMaxCalls(self::getMaxCalls())
             ->setT38Passthrough(self::getT38Passthrough())
             ->setRtpEncryption(self::getRtpEncryption())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
-            ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getOutgoingDdi(), $depth))
-            ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto(self::getLanguage(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
+            ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth))
+            ->setLanguage(Language::entityToDto(self::getLanguage(), $depth));
     }
 
     /**
@@ -392,7 +404,6 @@ abstract class ResidentialDeviceAbstract
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -401,9 +412,8 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): ResidentialDeviceInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 65, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -428,9 +438,8 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setDescription($description)
+    protected function setDescription(string $description): ResidentialDeviceInterface
     {
-        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
@@ -455,15 +464,19 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setTransport($transport = null)
+    protected function setTransport(?string $transport = null): ResidentialDeviceInterface
     {
         if (!is_null($transport)) {
             Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($transport, [
-                ResidentialDeviceInterface::TRANSPORT_UDP,
-                ResidentialDeviceInterface::TRANSPORT_TCP,
-                ResidentialDeviceInterface::TRANSPORT_TLS
-            ], 'transportvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $transport,
+                [
+                    ResidentialDeviceInterface::TRANSPORT_UDP,
+                    ResidentialDeviceInterface::TRANSPORT_TCP,
+                    ResidentialDeviceInterface::TRANSPORT_TLS,
+                ],
+                'transportvalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->transport = $transport;
@@ -476,7 +489,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string | null
      */
-    public function getTransport()
+    public function getTransport(): ?string
     {
         return $this->transport;
     }
@@ -488,7 +501,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setIp($ip = null)
+    protected function setIp(?string $ip = null): ResidentialDeviceInterface
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -504,7 +517,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string | null
      */
-    public function getIp()
+    public function getIp(): ?string
     {
         return $this->ip;
     }
@@ -512,16 +525,14 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set port
      *
-     * @param integer $port | null
+     * @param int $port | null
      *
      * @return static
      */
-    protected function setPort($port = null)
+    protected function setPort(?int $port = null): ResidentialDeviceInterface
     {
         if (!is_null($port)) {
-            Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
-            $port = (int) $port;
         }
 
         $this->port = $port;
@@ -532,9 +543,9 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get port
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getPort()
+    public function getPort(): ?int
     {
         return $this->port;
     }
@@ -546,10 +557,8 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setAuthNeeded($authNeeded)
+    protected function setAuthNeeded(string $authNeeded): ResidentialDeviceInterface
     {
-        Assertion::notNull($authNeeded, 'authNeeded value "%s" is null, but non null value was expected.');
-
         $this->authNeeded = $authNeeded;
 
         return $this;
@@ -572,7 +581,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setPassword($password = null)
+    protected function setPassword(?string $password = null): ResidentialDeviceInterface
     {
         if (!is_null($password)) {
             Assertion::maxLength($password, 64, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -588,7 +597,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string | null
      */
-    public function getPassword()
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -600,9 +609,8 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setDisallow($disallow)
+    protected function setDisallow(string $disallow): ResidentialDeviceInterface
     {
-        Assertion::notNull($disallow, 'disallow value "%s" is null, but non null value was expected.');
         Assertion::maxLength($disallow, 200, 'disallow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->disallow = $disallow;
@@ -627,9 +635,8 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setAllow($allow)
+    protected function setAllow(string $allow): ResidentialDeviceInterface
     {
-        Assertion::notNull($allow, 'allow value "%s" is null, but non null value was expected.');
         Assertion::maxLength($allow, 200, 'allow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->allow = $allow;
@@ -654,13 +661,16 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setDirectMediaMethod($directMediaMethod)
+    protected function setDirectMediaMethod(string $directMediaMethod): ResidentialDeviceInterface
     {
-        Assertion::notNull($directMediaMethod, 'directMediaMethod value "%s" is null, but non null value was expected.');
-        Assertion::choice($directMediaMethod, [
-            ResidentialDeviceInterface::DIRECTMEDIAMETHOD_INVITE,
-            ResidentialDeviceInterface::DIRECTMEDIAMETHOD_UPDATE
-        ], 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $directMediaMethod,
+            [
+                ResidentialDeviceInterface::DIRECTMEDIAMETHOD_INVITE,
+                ResidentialDeviceInterface::DIRECTMEDIAMETHOD_UPDATE,
+            ],
+            'directMediaMethodvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->directMediaMethod = $directMediaMethod;
 
@@ -684,13 +694,16 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setCalleridUpdateHeader($calleridUpdateHeader)
+    protected function setCalleridUpdateHeader(string $calleridUpdateHeader): ResidentialDeviceInterface
     {
-        Assertion::notNull($calleridUpdateHeader, 'calleridUpdateHeader value "%s" is null, but non null value was expected.');
-        Assertion::choice($calleridUpdateHeader, [
-            ResidentialDeviceInterface::CALLERIDUPDATEHEADER_PAI,
-            ResidentialDeviceInterface::CALLERIDUPDATEHEADER_RPID
-        ], 'calleridUpdateHeadervalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $calleridUpdateHeader,
+            [
+                ResidentialDeviceInterface::CALLERIDUPDATEHEADER_PAI,
+                ResidentialDeviceInterface::CALLERIDUPDATEHEADER_RPID,
+            ],
+            'calleridUpdateHeadervalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->calleridUpdateHeader = $calleridUpdateHeader;
 
@@ -714,13 +727,16 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setUpdateCallerid($updateCallerid)
+    protected function setUpdateCallerid(string $updateCallerid): ResidentialDeviceInterface
     {
-        Assertion::notNull($updateCallerid, 'updateCallerid value "%s" is null, but non null value was expected.');
-        Assertion::choice($updateCallerid, [
-            ResidentialDeviceInterface::UPDATECALLERID_YES,
-            ResidentialDeviceInterface::UPDATECALLERID_NO
-        ], 'updateCalleridvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $updateCallerid,
+            [
+                ResidentialDeviceInterface::UPDATECALLERID_YES,
+                ResidentialDeviceInterface::UPDATECALLERID_NO,
+            ],
+            'updateCalleridvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->updateCallerid = $updateCallerid;
 
@@ -744,7 +760,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setFromDomain($fromDomain = null)
+    protected function setFromDomain(?string $fromDomain = null): ResidentialDeviceInterface
     {
         if (!is_null($fromDomain)) {
             Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -760,7 +776,7 @@ abstract class ResidentialDeviceAbstract
      *
      * @return string | null
      */
-    public function getFromDomain()
+    public function getFromDomain(): ?string
     {
         return $this->fromDomain;
     }
@@ -772,13 +788,16 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setDirectConnectivity($directConnectivity)
+    protected function setDirectConnectivity(string $directConnectivity): ResidentialDeviceInterface
     {
-        Assertion::notNull($directConnectivity, 'directConnectivity value "%s" is null, but non null value was expected.');
-        Assertion::choice($directConnectivity, [
-            ResidentialDeviceInterface::DIRECTCONNECTIVITY_YES,
-            ResidentialDeviceInterface::DIRECTCONNECTIVITY_NO
-        ], 'directConnectivityvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $directConnectivity,
+            [
+                ResidentialDeviceInterface::DIRECTCONNECTIVITY_YES,
+                ResidentialDeviceInterface::DIRECTCONNECTIVITY_NO,
+            ],
+            'directConnectivityvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->directConnectivity = $directConnectivity;
 
@@ -802,13 +821,16 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setDdiIn($ddiIn)
+    protected function setDdiIn(string $ddiIn): ResidentialDeviceInterface
     {
-        Assertion::notNull($ddiIn, 'ddiIn value "%s" is null, but non null value was expected.');
-        Assertion::choice($ddiIn, [
-            ResidentialDeviceInterface::DDIIN_YES,
-            ResidentialDeviceInterface::DDIIN_NO
-        ], 'ddiInvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $ddiIn,
+            [
+                ResidentialDeviceInterface::DDIIN_YES,
+                ResidentialDeviceInterface::DDIIN_NO,
+            ],
+            'ddiInvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->ddiIn = $ddiIn;
 
@@ -828,17 +850,15 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set maxCalls
      *
-     * @param integer $maxCalls
+     * @param int $maxCalls
      *
      * @return static
      */
-    protected function setMaxCalls($maxCalls)
+    protected function setMaxCalls(int $maxCalls): ResidentialDeviceInterface
     {
-        Assertion::notNull($maxCalls, 'maxCalls value "%s" is null, but non null value was expected.');
-        Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
-        $this->maxCalls = (int) $maxCalls;
+        $this->maxCalls = $maxCalls;
 
         return $this;
     }
@@ -846,7 +866,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get maxCalls
      *
-     * @return integer
+     * @return int
      */
     public function getMaxCalls(): int
     {
@@ -860,13 +880,16 @@ abstract class ResidentialDeviceAbstract
      *
      * @return static
      */
-    protected function setT38Passthrough($t38Passthrough)
+    protected function setT38Passthrough(string $t38Passthrough): ResidentialDeviceInterface
     {
-        Assertion::notNull($t38Passthrough, 't38Passthrough value "%s" is null, but non null value was expected.');
-        Assertion::choice($t38Passthrough, [
-            ResidentialDeviceInterface::T38PASSTHROUGH_YES,
-            ResidentialDeviceInterface::T38PASSTHROUGH_NO
-        ], 't38Passthroughvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $t38Passthrough,
+            [
+                ResidentialDeviceInterface::T38PASSTHROUGH_YES,
+                ResidentialDeviceInterface::T38PASSTHROUGH_NO,
+            ],
+            't38Passthroughvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->t38Passthrough = $t38Passthrough;
 
@@ -886,13 +909,12 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set rtpEncryption
      *
-     * @param boolean $rtpEncryption
+     * @param bool $rtpEncryption
      *
      * @return static
      */
-    protected function setRtpEncryption($rtpEncryption)
+    protected function setRtpEncryption(bool $rtpEncryption): ResidentialDeviceInterface
     {
-        Assertion::notNull($rtpEncryption, 'rtpEncryption value "%s" is null, but non null value was expected.');
         Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
         $rtpEncryption = (bool) $rtpEncryption;
 
@@ -904,7 +926,7 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get rtpEncryption
      *
-     * @return boolean
+     * @return bool
      */
     public function getRtpEncryption(): bool
     {
@@ -914,11 +936,11 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param BrandInterface
      *
      * @return static
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    public function setBrand(BrandInterface $brand): ResidentialDeviceInterface
     {
         $this->brand = $brand;
 
@@ -928,9 +950,9 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand()
+    public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
@@ -938,11 +960,11 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set domain
      *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain | null
+     * @param DomainInterface | null
      *
      * @return static
      */
-    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
+    public function setDomain(?DomainInterface $domain = null): ResidentialDeviceInterface
     {
         $this->domain = $domain;
 
@@ -952,9 +974,9 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get domain
      *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
+     * @return DomainInterface | null
      */
-    public function getDomain()
+    public function getDomain(): ?DomainInterface
     {
         return $this->domain;
     }
@@ -962,11 +984,11 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set company
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param CompanyInterface
      *
      * @return static
      */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    protected function setCompany(CompanyInterface $company): ResidentialDeviceInterface
     {
         $this->company = $company;
 
@@ -976,9 +998,9 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany()
+    public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
@@ -986,11 +1008,11 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet | null
+     * @param TransformationRuleSetInterface | null
      *
      * @return static
      */
-    protected function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
+    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): ResidentialDeviceInterface
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
@@ -1000,9 +1022,9 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface | null
+     * @return TransformationRuleSetInterface | null
      */
-    public function getTransformationRuleSet()
+    public function getTransformationRuleSet(): ?TransformationRuleSetInterface
     {
         return $this->transformationRuleSet;
     }
@@ -1010,11 +1032,11 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set outgoingDdi
      *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi | null
+     * @param DdiInterface | null
      *
      * @return static
      */
-    protected function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null)
+    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): ResidentialDeviceInterface
     {
         $this->outgoingDdi = $outgoingDdi;
 
@@ -1024,9 +1046,9 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get outgoingDdi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     * @return DdiInterface | null
      */
-    public function getOutgoingDdi()
+    public function getOutgoingDdi(): ?DdiInterface
     {
         return $this->outgoingDdi;
     }
@@ -1034,11 +1056,11 @@ abstract class ResidentialDeviceAbstract
     /**
      * Set language
      *
-     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language | null
+     * @param LanguageInterface | null
      *
      * @return static
      */
-    protected function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null)
+    protected function setLanguage(?LanguageInterface $language = null): ResidentialDeviceInterface
     {
         $this->language = $language;
 
@@ -1048,12 +1070,11 @@ abstract class ResidentialDeviceAbstract
     /**
      * Get language
      *
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
+     * @return LanguageInterface | null
      */
-    public function getLanguage()
+    public function getLanguage(): ?LanguageInterface
     {
         return $this->language;
     }
 
-    // @codeCoverageIgnoreEnd
 }

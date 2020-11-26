@@ -4,10 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Destination;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
 
 /**
 * DestinationDtoAbstract
@@ -58,7 +57,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     private $destinationRates;
 
     /**
-     * @var TpDestinationDto | null
+     * @var TpDestination | null
      */
     private $tpDestination;
 
@@ -85,8 +84,8 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
                 'ca',
                 'it',
             ],
-            'tpDestinationId' => 'tpDestination',
-            'brandId' => 'brand'
+            'brandId' => 'brand',
+            'tpDestinationId' => 'tpDestination'
         ];
     }
 
@@ -104,9 +103,9 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
                 'ca' => $this->getNameCa(),
                 'it' => $this->getNameIt(),
             ],
-            'tpDestination' => $this->getTpDestination(),
             'brand' => $this->getBrand(),
-            'destinationRates' => $this->getDestinationRates()
+            'destinationRates' => $this->getDestinationRates(),
+            'tpDestination' => $this->getTpDestination()
         ];
 
         if (!$hideSensitiveData) {
@@ -292,7 +291,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setDestinationRates(?array $destinationRates = null): self
+    public function setDestinationRates(?DestinationRateDto $destinationRates = null): self
     {
         $this->destinationRates = $destinationRates;
 
@@ -302,17 +301,17 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return DestinationRateDto[] | null
      */
-    public function getDestinationRates(): ?array
+    public function getDestinationRates(): ?DestinationRateDto
     {
         return $this->destinationRates;
     }
 
     /**
-     * @param TpDestinationDto | null
+     * @param TpDestination | null
      *
      * @return static
      */
-    public function setTpDestination(?TpDestinationDto $tpDestination = null): self
+    public function setTpDestination(?TpDestination $tpDestination = null): self
     {
         $this->tpDestination = $tpDestination;
 
@@ -320,9 +319,9 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return TpDestinationDto | null
+     * @return TpDestination | null
      */
-    public function getTpDestination(): ?TpDestinationDto
+    public function getTpDestination(): ?TpDestination
     {
         return $this->tpDestination;
     }
@@ -333,7 +332,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     public function setTpDestinationId($id): self
     {
         $value = !is_null($id)
-            ? new TpDestinationDto($id)
+            ? new TpDestination($id)
             : null;
 
         return $this->setTpDestination($value);

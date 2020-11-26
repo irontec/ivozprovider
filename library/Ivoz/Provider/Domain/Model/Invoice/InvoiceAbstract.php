@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
@@ -6,25 +7,40 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Invoice\Pdf;
+use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface;
+use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
+use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence;
+use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler;
 
 /**
- * InvoiceAbstract
- * @codeCoverageIgnore
- */
+* InvoiceAbstract
+* @codeCoverageIgnore
+*/
 abstract class InvoiceAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string | null
      */
     protected $number;
 
     /**
-     * @var \DateTime | null
+     * @var \DateTimeInterface | null
      */
     protected $inDate;
 
     /**
-     * @var \DateTime | null
+     * @var \DateTimeInterface | null
      */
     protected $outDate;
 
@@ -60,38 +76,36 @@ abstract class InvoiceAbstract
     protected $pdf;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface | null
+     * @var InvoiceTemplateInterface
      */
     protected $invoiceTemplate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface | null
+     * @var InvoiceNumberSequenceInterface
      */
     protected $numberSequence;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
+     * @var InvoiceSchedulerInterface
      */
     protected $scheduler;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct(Pdf $pdf)
-    {
+    protected function __construct(
+        Pdf $pdf
+    ) {
         $this->setPdf($pdf);
     }
 
@@ -159,7 +173,7 @@ abstract class InvoiceAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, InvoiceDto::class);
 
@@ -186,8 +200,7 @@ abstract class InvoiceAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()))
-            ->setScheduler($fkTransformer->transform($dto->getScheduler()))
-        ;
+            ->setScheduler($fkTransformer->transform($dto->getScheduler()));
 
         $self->initChangelog();
 
@@ -201,7 +214,7 @@ abstract class InvoiceAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, InvoiceDto::class);
 
@@ -227,8 +240,6 @@ abstract class InvoiceAbstract
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()))
             ->setScheduler($fkTransformer->transform($dto->getScheduler()));
 
-
-
         return $this;
     }
 
@@ -251,11 +262,11 @@ abstract class InvoiceAbstract
             ->setPdfFileSize(self::getPdf()->getFileSize())
             ->setPdfMimeType(self::getPdf()->getMimeType())
             ->setPdfBaseName(self::getPdf()->getBaseName())
-            ->setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate::entityToDto(self::getInvoiceTemplate(), $depth))
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence::entityToDto(self::getNumberSequence(), $depth))
-            ->setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler::entityToDto(self::getScheduler(), $depth));
+            ->setInvoiceTemplate(InvoiceTemplate::entityToDto(self::getInvoiceTemplate(), $depth))
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setNumberSequence(InvoiceNumberSequence::entityToDto(self::getNumberSequence(), $depth))
+            ->setScheduler(InvoiceScheduler::entityToDto(self::getScheduler(), $depth));
     }
 
     /**
@@ -282,7 +293,6 @@ abstract class InvoiceAbstract
             'schedulerId' => self::getScheduler() ? self::getScheduler()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set number
@@ -291,7 +301,7 @@ abstract class InvoiceAbstract
      *
      * @return static
      */
-    protected function setNumber($number = null)
+    protected function setNumber(?string $number = null): InvoiceInterface
     {
         if (!is_null($number)) {
             Assertion::maxLength($number, 30, 'number value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -307,7 +317,7 @@ abstract class InvoiceAbstract
      *
      * @return string | null
      */
-    public function getNumber()
+    public function getNumber(): ?string
     {
         return $this->number;
     }
@@ -315,14 +325,18 @@ abstract class InvoiceAbstract
     /**
      * Set inDate
      *
-     * @param \DateTime $inDate | null
+     * @param \DateTimeInterface $inDate | null
      *
      * @return static
      */
-    protected function setInDate($inDate = null)
+    protected function setInDate($inDate = null): InvoiceInterface
     {
         if (!is_null($inDate)) {
-            $inDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            Assertion::notNull(
+                $inDate,
+                'inDate value "%s" is null, but non null value was expected.'
+            );
+            $inDate = DateTimeHelper::createOrFix(
                 $inDate,
                 null
             );
@@ -340,9 +354,9 @@ abstract class InvoiceAbstract
     /**
      * Get inDate
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getInDate()
+    public function getInDate(): ?\DateTimeInterface
     {
         return !is_null($this->inDate) ? clone $this->inDate : null;
     }
@@ -350,14 +364,18 @@ abstract class InvoiceAbstract
     /**
      * Set outDate
      *
-     * @param \DateTime $outDate | null
+     * @param \DateTimeInterface $outDate | null
      *
      * @return static
      */
-    protected function setOutDate($outDate = null)
+    protected function setOutDate($outDate = null): InvoiceInterface
     {
         if (!is_null($outDate)) {
-            $outDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            Assertion::notNull(
+                $outDate,
+                'outDate value "%s" is null, but non null value was expected.'
+            );
+            $outDate = DateTimeHelper::createOrFix(
                 $outDate,
                 null
             );
@@ -375,9 +393,9 @@ abstract class InvoiceAbstract
     /**
      * Get outDate
      *
-     * @return \DateTime | null
+     * @return \DateTimeInterface | null
      */
-    public function getOutDate()
+    public function getOutDate(): ?\DateTimeInterface
     {
         return !is_null($this->outDate) ? clone $this->outDate : null;
     }
@@ -389,10 +407,9 @@ abstract class InvoiceAbstract
      *
      * @return static
      */
-    protected function setTotal($total = null)
+    protected function setTotal(?float $total = null): InvoiceInterface
     {
         if (!is_null($total)) {
-            Assertion::numeric($total);
             $total = (float) $total;
         }
 
@@ -406,7 +423,7 @@ abstract class InvoiceAbstract
      *
      * @return float | null
      */
-    public function getTotal()
+    public function getTotal(): ?float
     {
         return $this->total;
     }
@@ -418,10 +435,9 @@ abstract class InvoiceAbstract
      *
      * @return static
      */
-    protected function setTaxRate($taxRate = null)
+    protected function setTaxRate(?float $taxRate = null): InvoiceInterface
     {
         if (!is_null($taxRate)) {
-            Assertion::numeric($taxRate);
             $taxRate = (float) $taxRate;
         }
 
@@ -435,7 +451,7 @@ abstract class InvoiceAbstract
      *
      * @return float | null
      */
-    public function getTaxRate()
+    public function getTaxRate(): ?float
     {
         return $this->taxRate;
     }
@@ -447,10 +463,9 @@ abstract class InvoiceAbstract
      *
      * @return static
      */
-    protected function setTotalWithTax($totalWithTax = null)
+    protected function setTotalWithTax(?float $totalWithTax = null): InvoiceInterface
     {
         if (!is_null($totalWithTax)) {
-            Assertion::numeric($totalWithTax);
             $totalWithTax = (float) $totalWithTax;
         }
 
@@ -464,7 +479,7 @@ abstract class InvoiceAbstract
      *
      * @return float | null
      */
-    public function getTotalWithTax()
+    public function getTotalWithTax(): ?float
     {
         return $this->totalWithTax;
     }
@@ -476,16 +491,20 @@ abstract class InvoiceAbstract
      *
      * @return static
      */
-    protected function setStatus($status = null)
+    protected function setStatus(?string $status = null): InvoiceInterface
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 25, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($status, [
-                InvoiceInterface::STATUS_WAITING,
-                InvoiceInterface::STATUS_PROCESSING,
-                InvoiceInterface::STATUS_CREATED,
-                InvoiceInterface::STATUS_ERROR
-            ], 'statusvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $status,
+                [
+                    InvoiceInterface::STATUS_WAITING,
+                    InvoiceInterface::STATUS_PROCESSING,
+                    InvoiceInterface::STATUS_CREATED,
+                    InvoiceInterface::STATUS_ERROR,
+                ],
+                'statusvalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->status = $status;
@@ -498,7 +517,7 @@ abstract class InvoiceAbstract
      *
      * @return string | null
      */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -510,7 +529,7 @@ abstract class InvoiceAbstract
      *
      * @return static
      */
-    protected function setStatusMsg($statusMsg = null)
+    protected function setStatusMsg(?string $statusMsg = null): InvoiceInterface
     {
         if (!is_null($statusMsg)) {
             Assertion::maxLength($statusMsg, 140, 'statusMsg value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -526,139 +545,27 @@ abstract class InvoiceAbstract
      *
      * @return string | null
      */
-    public function getStatusMsg()
+    public function getStatusMsg(): ?string
     {
         return $this->statusMsg;
     }
 
     /**
-     * Set invoiceTemplate
+     * Get pdf
      *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate | null
-     *
-     * @return static
+     * @return Pdf
      */
-    protected function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null)
+    public function getPdf(): Pdf
     {
-        $this->invoiceTemplate = $invoiceTemplate;
-
-        return $this;
-    }
-
-    /**
-     * Get invoiceTemplate
-     *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface | null
-     */
-    public function getInvoiceTemplate()
-    {
-        return $this->invoiceTemplate;
-    }
-
-    /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return static
-     */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
-
-    /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return static
-     */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
-    {
-        $this->company = $company;
-
-        return $this;
-    }
-
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
-     * Set numberSequence
-     *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence | null
-     *
-     * @return static
-     */
-    protected function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null)
-    {
-        $this->numberSequence = $numberSequence;
-
-        return $this;
-    }
-
-    /**
-     * Get numberSequence
-     *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface | null
-     */
-    public function getNumberSequence()
-    {
-        return $this->numberSequence;
-    }
-
-    /**
-     * Set scheduler
-     *
-     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler | null
-     *
-     * @return static
-     */
-    protected function setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler = null)
-    {
-        $this->scheduler = $scheduler;
-
-        return $this;
-    }
-
-    /**
-     * Get scheduler
-     *
-     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
-     */
-    public function getScheduler()
-    {
-        return $this->scheduler;
+        return $this->pdf;
     }
 
     /**
      * Set pdf
      *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\Pdf $pdf
-     *
      * @return static
      */
-    protected function setPdf(Pdf $pdf)
+    protected function setPdf(Pdf $pdf): InvoiceInterface
     {
         $isEqual = $this->pdf && $this->pdf->equals($pdf);
         if ($isEqual) {
@@ -670,13 +577,123 @@ abstract class InvoiceAbstract
     }
 
     /**
-     * Get pdf
+     * Set invoiceTemplate
      *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\Pdf
+     * @param InvoiceTemplateInterface | null
+     *
+     * @return static
      */
-    public function getPdf()
+    protected function setInvoiceTemplate(?InvoiceTemplateInterface $invoiceTemplate = null): InvoiceInterface
     {
-        return $this->pdf;
+        $this->invoiceTemplate = $invoiceTemplate;
+
+        return $this;
     }
-    // @codeCoverageIgnoreEnd
+
+    /**
+     * Get invoiceTemplate
+     *
+     * @return InvoiceTemplateInterface | null
+     */
+    public function getInvoiceTemplate(): ?InvoiceTemplateInterface
+    {
+        return $this->invoiceTemplate;
+    }
+
+    /**
+     * Set brand
+     *
+     * @param BrandInterface
+     *
+     * @return static
+     */
+    protected function setBrand(BrandInterface $brand): InvoiceInterface
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Get brand
+     *
+     * @return BrandInterface
+     */
+    public function getBrand(): BrandInterface
+    {
+        return $this->brand;
+    }
+
+    /**
+     * Set company
+     *
+     * @param CompanyInterface
+     *
+     * @return static
+     */
+    protected function setCompany(CompanyInterface $company): InvoiceInterface
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return CompanyInterface
+     */
+    public function getCompany(): CompanyInterface
+    {
+        return $this->company;
+    }
+
+    /**
+     * Set numberSequence
+     *
+     * @param InvoiceNumberSequenceInterface | null
+     *
+     * @return static
+     */
+    protected function setNumberSequence(?InvoiceNumberSequenceInterface $numberSequence = null): InvoiceInterface
+    {
+        $this->numberSequence = $numberSequence;
+
+        return $this;
+    }
+
+    /**
+     * Get numberSequence
+     *
+     * @return InvoiceNumberSequenceInterface | null
+     */
+    public function getNumberSequence(): ?InvoiceNumberSequenceInterface
+    {
+        return $this->numberSequence;
+    }
+
+    /**
+     * Set scheduler
+     *
+     * @param InvoiceSchedulerInterface | null
+     *
+     * @return static
+     */
+    protected function setScheduler(?InvoiceSchedulerInterface $scheduler = null): InvoiceInterface
+    {
+        $this->scheduler = $scheduler;
+
+        return $this;
+    }
+
+    /**
+     * Get scheduler
+     *
+     * @return InvoiceSchedulerInterface | null
+     */
+    public function getScheduler(): ?InvoiceSchedulerInterface
+    {
+        return $this->scheduler;
+    }
+
 }

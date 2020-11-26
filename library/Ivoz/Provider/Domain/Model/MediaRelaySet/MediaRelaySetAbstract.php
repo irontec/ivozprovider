@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\MediaRelaySet;
 
@@ -6,13 +7,16 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
- * MediaRelaySetAbstract
- * @codeCoverageIgnore
- */
+* MediaRelaySetAbstract
+* @codeCoverageIgnore
+*/
 abstract class MediaRelaySetAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -23,14 +27,12 @@ abstract class MediaRelaySetAbstract
      */
     protected $description;
 
-
-    use ChangelogTrait;
-
     /**
      * Constructor
      */
-    protected function __construct($name)
-    {
+    protected function __construct(
+        $name
+    ) {
         $this->setName($name);
     }
 
@@ -98,7 +100,7 @@ abstract class MediaRelaySetAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, MediaRelaySetDto::class);
 
@@ -107,8 +109,7 @@ abstract class MediaRelaySetAbstract
         );
 
         $self
-            ->setDescription($dto->getDescription())
-        ;
+            ->setDescription($dto->getDescription());
 
         $self->initChangelog();
 
@@ -122,15 +123,13 @@ abstract class MediaRelaySetAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, MediaRelaySetDto::class);
 
         $this
             ->setName($dto->getName())
             ->setDescription($dto->getDescription());
-
-
 
         return $this;
     }
@@ -157,7 +156,6 @@ abstract class MediaRelaySetAbstract
             'description' => self::getDescription()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -166,9 +164,8 @@ abstract class MediaRelaySetAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): MediaRelaySetInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 32, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -193,7 +190,7 @@ abstract class MediaRelaySetAbstract
      *
      * @return static
      */
-    protected function setDescription($description = null)
+    protected function setDescription(?string $description = null): MediaRelaySetInterface
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -209,10 +206,9 @@ abstract class MediaRelaySetAbstract
      *
      * @return string | null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    // @codeCoverageIgnoreEnd
 }

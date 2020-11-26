@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\NotificationTemplate;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 
 /**
- * NotificationTemplateAbstract
- * @codeCoverageIgnore
- */
+* NotificationTemplateAbstract
+* @codeCoverageIgnore
+*/
 abstract class NotificationTemplateAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -25,18 +31,17 @@ abstract class NotificationTemplateAbstract
     protected $type;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @var BrandInterface
      */
     protected $brand;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($name, $type)
-    {
+    protected function __construct(
+        $name,
+        $type
+    ) {
         $this->setName($name);
         $this->setType($type);
     }
@@ -105,7 +110,7 @@ abstract class NotificationTemplateAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, NotificationTemplateDto::class);
 
@@ -115,8 +120,7 @@ abstract class NotificationTemplateAbstract
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-        ;
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
         $self->initChangelog();
 
@@ -130,7 +134,7 @@ abstract class NotificationTemplateAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, NotificationTemplateDto::class);
 
@@ -138,8 +142,6 @@ abstract class NotificationTemplateAbstract
             ->setName($dto->getName())
             ->setType($dto->getType())
             ->setBrand($fkTransformer->transform($dto->getBrand()));
-
-
 
         return $this;
     }
@@ -154,7 +156,7 @@ abstract class NotificationTemplateAbstract
         return self::createDto()
             ->setName(self::getName())
             ->setType(self::getType())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**
@@ -168,7 +170,6 @@ abstract class NotificationTemplateAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -177,9 +178,8 @@ abstract class NotificationTemplateAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): NotificationTemplateInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 55, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -204,19 +204,22 @@ abstract class NotificationTemplateAbstract
      *
      * @return static
      */
-    protected function setType($type)
+    protected function setType(string $type): NotificationTemplateInterface
     {
-        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($type, [
-            NotificationTemplateInterface::TYPE_VOICEMAIL,
-            NotificationTemplateInterface::TYPE_FAX,
-            NotificationTemplateInterface::TYPE_LIMIT,
-            NotificationTemplateInterface::TYPE_LOWBALANCE,
-            NotificationTemplateInterface::TYPE_INVOICE,
-            NotificationTemplateInterface::TYPE_CALLCSV,
-            NotificationTemplateInterface::TYPE_MAXDAILYUSAGE
-        ], 'typevalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $type,
+            [
+                NotificationTemplateInterface::TYPE_VOICEMAIL,
+                NotificationTemplateInterface::TYPE_FAX,
+                NotificationTemplateInterface::TYPE_LIMIT,
+                NotificationTemplateInterface::TYPE_LOWBALANCE,
+                NotificationTemplateInterface::TYPE_INVOICE,
+                NotificationTemplateInterface::TYPE_CALLCSV,
+                NotificationTemplateInterface::TYPE_MAXDAILYUSAGE,
+            ],
+            'typevalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->type = $type;
 
@@ -236,11 +239,11 @@ abstract class NotificationTemplateAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
+     * @param BrandInterface | null
      *
      * @return static
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    protected function setBrand(?BrandInterface $brand = null): NotificationTemplateInterface
     {
         $this->brand = $brand;
 
@@ -250,12 +253,11 @@ abstract class NotificationTemplateAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand()
+    public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    // @codeCoverageIgnoreEnd
 }

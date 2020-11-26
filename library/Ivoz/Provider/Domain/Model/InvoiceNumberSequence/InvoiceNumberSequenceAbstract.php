@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\InvoiceNumberSequence;
 
@@ -6,13 +7,18 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 
 /**
- * InvoiceNumberSequenceAbstract
- * @codeCoverageIgnore
- */
+* InvoiceNumberSequenceAbstract
+* @codeCoverageIgnore
+*/
 abstract class InvoiceNumberSequenceAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string
      */
@@ -24,12 +30,12 @@ abstract class InvoiceNumberSequenceAbstract
     protected $prefix = '';
 
     /**
-     * @var integer
+     * @var int
      */
     protected $sequenceLength;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $increment;
 
@@ -39,22 +45,19 @@ abstract class InvoiceNumberSequenceAbstract
     protected $latestValue = '';
 
     /**
-     * @var integer
+     * @var int
      */
     protected $iteration = 0;
 
     /**
-     * @var integer
+     * @var int
      */
-    protected $version;
+    protected $version = 1;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
      */
     protected $brand;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
@@ -139,7 +142,7 @@ abstract class InvoiceNumberSequenceAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, InvoiceNumberSequenceDto::class);
 
@@ -154,8 +157,7 @@ abstract class InvoiceNumberSequenceAbstract
 
         $self
             ->setLatestValue($dto->getLatestValue())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-        ;
+            ->setBrand($fkTransformer->transform($dto->getBrand()));
 
         $self->initChangelog();
 
@@ -169,7 +171,7 @@ abstract class InvoiceNumberSequenceAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, InvoiceNumberSequenceDto::class);
 
@@ -182,8 +184,6 @@ abstract class InvoiceNumberSequenceAbstract
             ->setIteration($dto->getIteration())
             ->setVersion($dto->getVersion())
             ->setBrand($fkTransformer->transform($dto->getBrand()));
-
-
 
         return $this;
     }
@@ -203,7 +203,7 @@ abstract class InvoiceNumberSequenceAbstract
             ->setLatestValue(self::getLatestValue())
             ->setIteration(self::getIteration())
             ->setVersion(self::getVersion())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**
@@ -222,7 +222,6 @@ abstract class InvoiceNumberSequenceAbstract
             'brandId' => self::getBrand()->getId()
         ];
     }
-    // @codeCoverageIgnoreStart
 
     /**
      * Set name
@@ -231,9 +230,8 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @return static
      */
-    protected function setName($name)
+    protected function setName(string $name): InvoiceNumberSequenceInterface
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 40, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -258,9 +256,8 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @return static
      */
-    protected function setPrefix($prefix)
+    protected function setPrefix(string $prefix): InvoiceNumberSequenceInterface
     {
-        Assertion::notNull($prefix, 'prefix value "%s" is null, but non null value was expected.');
         Assertion::maxLength($prefix, 20, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->prefix = $prefix;
@@ -281,17 +278,15 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * Set sequenceLength
      *
-     * @param integer $sequenceLength
+     * @param int $sequenceLength
      *
      * @return static
      */
-    protected function setSequenceLength($sequenceLength)
+    protected function setSequenceLength(int $sequenceLength): InvoiceNumberSequenceInterface
     {
-        Assertion::notNull($sequenceLength, 'sequenceLength value "%s" is null, but non null value was expected.');
-        Assertion::integerish($sequenceLength, 'sequenceLength value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($sequenceLength, 0, 'sequenceLength provided "%s" is not greater or equal than "%s".');
 
-        $this->sequenceLength = (int) $sequenceLength;
+        $this->sequenceLength = $sequenceLength;
 
         return $this;
     }
@@ -299,7 +294,7 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * Get sequenceLength
      *
-     * @return integer
+     * @return int
      */
     public function getSequenceLength(): int
     {
@@ -309,17 +304,15 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * Set increment
      *
-     * @param integer $increment
+     * @param int $increment
      *
      * @return static
      */
-    protected function setIncrement($increment)
+    protected function setIncrement(int $increment): InvoiceNumberSequenceInterface
     {
-        Assertion::notNull($increment, 'increment value "%s" is null, but non null value was expected.');
-        Assertion::integerish($increment, 'increment value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($increment, 0, 'increment provided "%s" is not greater or equal than "%s".');
 
-        $this->increment = (int) $increment;
+        $this->increment = $increment;
 
         return $this;
     }
@@ -327,7 +320,7 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * Get increment
      *
-     * @return integer
+     * @return int
      */
     public function getIncrement(): int
     {
@@ -341,7 +334,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @return static
      */
-    protected function setLatestValue($latestValue = null)
+    protected function setLatestValue(?string $latestValue = null): InvoiceNumberSequenceInterface
     {
         $this->latestValue = $latestValue;
 
@@ -353,7 +346,7 @@ abstract class InvoiceNumberSequenceAbstract
      *
      * @return string | null
      */
-    public function getLatestValue()
+    public function getLatestValue(): ?string
     {
         return $this->latestValue;
     }
@@ -361,17 +354,15 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * Set iteration
      *
-     * @param integer $iteration
+     * @param int $iteration
      *
      * @return static
      */
-    protected function setIteration($iteration)
+    protected function setIteration(int $iteration): InvoiceNumberSequenceInterface
     {
-        Assertion::notNull($iteration, 'iteration value "%s" is null, but non null value was expected.');
-        Assertion::integerish($iteration, 'iteration value "%s" is not an integer or a number castable to integer.');
         Assertion::greaterOrEqualThan($iteration, 0, 'iteration provided "%s" is not greater or equal than "%s".');
 
-        $this->iteration = (int) $iteration;
+        $this->iteration = $iteration;
 
         return $this;
     }
@@ -379,7 +370,7 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * Get iteration
      *
-     * @return integer
+     * @return int
      */
     public function getIteration(): int
     {
@@ -389,16 +380,13 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * Set version
      *
-     * @param integer $version
+     * @param int $version
      *
      * @return static
      */
-    protected function setVersion($version)
+    protected function setVersion(int $version): InvoiceNumberSequenceInterface
     {
-        Assertion::notNull($version, 'version value "%s" is null, but non null value was expected.');
-        Assertion::integerish($version, 'version value "%s" is not an integer or a number castable to integer.');
-
-        $this->version = (int) $version;
+        $this->version = $version;
 
         return $this;
     }
@@ -406,9 +394,9 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * Get version
      *
-     * @return integer
+     * @return int
      */
-    public function getVersion()
+    public function getVersion(): int
     {
         return $this->version;
     }
@@ -416,11 +404,11 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * Set brand
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param BrandInterface
      *
      * @return static
      */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    protected function setBrand(BrandInterface $brand): InvoiceNumberSequenceInterface
     {
         $this->brand = $brand;
 
@@ -430,12 +418,11 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand()
+    public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    // @codeCoverageIgnoreEnd
 }

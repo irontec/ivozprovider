@@ -1,14 +1,14 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\Country;
 
 use Assert\Assertion;
-use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
- * Name
- * @codeCoverageIgnore
- */
+* Name
+* @codeCoverageIgnore
+*/
 class Name
 {
     /**
@@ -35,12 +35,15 @@ class Name
      */
     protected $it;
 
-
     /**
      * Constructor
      */
-    public function __construct($en, $es, $ca, $it)
-    {
+    public function __construct(
+        $en,
+        $es,
+        $ca,
+        $it
+    ) {
         $this->setEn($en);
         $this->setEs($es);
         $this->setCa($ca);
@@ -59,9 +62,6 @@ class Name
             $this->getIt() === $name->getIt();
     }
 
-
-    // @codeCoverageIgnoreStart
-
     /**
      * Set en
      *
@@ -69,7 +69,7 @@ class Name
      *
      * @return static
      */
-    protected function setEn($en = null)
+    protected function setEn(?string $en = null): Name
     {
         if (!is_null($en)) {
             Assertion::maxLength($en, 100, 'en value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -85,7 +85,7 @@ class Name
      *
      * @return string | null
      */
-    public function getEn()
+    public function getEn(): ?string
     {
         return $this->en;
     }
@@ -97,7 +97,7 @@ class Name
      *
      * @return static
      */
-    protected function setEs($es = null)
+    protected function setEs(?string $es = null): Name
     {
         if (!is_null($es)) {
             Assertion::maxLength($es, 100, 'es value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -113,7 +113,7 @@ class Name
      *
      * @return string | null
      */
-    public function getEs()
+    public function getEs(): ?string
     {
         return $this->es;
     }
@@ -125,7 +125,7 @@ class Name
      *
      * @return static
      */
-    protected function setCa($ca = null)
+    protected function setCa(?string $ca = null): Name
     {
         if (!is_null($ca)) {
             Assertion::maxLength($ca, 100, 'ca value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -141,7 +141,7 @@ class Name
      *
      * @return string | null
      */
-    public function getCa()
+    public function getCa(): ?string
     {
         return $this->ca;
     }
@@ -153,7 +153,7 @@ class Name
      *
      * @return static
      */
-    protected function setIt($it = null)
+    protected function setIt(?string $it = null): Name
     {
         if (!is_null($it)) {
             Assertion::maxLength($it, 100, 'it value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -169,10 +169,9 @@ class Name
      *
      * @return string | null
      */
-    public function getIt()
+    public function getIt(): ?string
     {
         return $this->it;
     }
 
-    // @codeCoverageIgnoreEnd
 }
