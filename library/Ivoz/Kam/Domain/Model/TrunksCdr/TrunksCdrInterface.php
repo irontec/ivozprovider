@@ -2,29 +2,42 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksCdr;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* TrunksCdrInterface
+*/
 interface TrunksCdrInterface extends EntityInterface
 {
     const DIRECTION_INBOUND = 'inbound';
-    const DIRECTION_OUTBOUND = 'outbound';
 
+    const DIRECTION_OUTBOUND = 'outbound';
 
     public function isOutboundCall();
 
     /**
      * Get startTime
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getStartTime(): \DateTime;
+    public function getStartTime(): \DateTimeInterface;
 
     /**
      * Get endTime
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getEndTime(): \DateTime;
+    public function getEndTime(): \DateTimeInterface;
 
     /**
      * Get duration
@@ -38,150 +51,151 @@ interface TrunksCdrInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getCaller();
+    public function getCaller(): ?string;
 
     /**
      * Get callee
      *
      * @return string | null
      */
-    public function getCallee();
+    public function getCallee(): ?string;
 
     /**
      * Get callid
      *
      * @return string | null
      */
-    public function getCallid();
+    public function getCallid(): ?string;
 
     /**
      * Get callidHash
      *
      * @return string | null
      */
-    public function getCallidHash();
+    public function getCallidHash(): ?string;
 
     /**
      * Get xcallid
      *
      * @return string | null
      */
-    public function getXcallid();
+    public function getXcallid(): ?string;
 
     /**
      * Get diversion
      *
      * @return string | null
      */
-    public function getDiversion();
+    public function getDiversion(): ?string;
 
     /**
      * Get bounced
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getBounced();
+    public function getBounced(): ?bool;
 
     /**
      * Get parsed
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getParsed();
+    public function getParsed(): ?bool;
 
     /**
      * Get parserScheduledAt
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getParserScheduledAt(): \DateTime;
+    public function getParserScheduledAt(): \DateTimeInterface;
 
     /**
      * Get direction
      *
      * @return string | null
      */
-    public function getDirection();
+    public function getDirection(): ?string;
 
     /**
      * Get cgrid
      *
      * @return string | null
      */
-    public function getCgrid();
+    public function getCgrid(): ?string;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand();
+    public function getBrand(): ?BrandInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany();
+    public function getCompany(): ?CompanyInterface;
 
     /**
      * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
+     * @return CarrierInterface | null
      */
-    public function getCarrier();
+    public function getCarrier(): ?CarrierInterface;
 
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
+     * @return RetailAccountInterface | null
      */
-    public function getRetailAccount();
+    public function getRetailAccount(): ?RetailAccountInterface;
 
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
+     * @return ResidentialDeviceInterface | null
      */
-    public function getResidentialDevice();
+    public function getResidentialDevice(): ?ResidentialDeviceInterface;
 
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getUser();
+    public function getUser(): ?UserInterface;
 
     /**
      * Get friend
      *
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
+     * @return FriendInterface | null
      */
-    public function getFriend();
+    public function getFriend(): ?FriendInterface;
 
     /**
      * Get fax
      *
-     * @return \Ivoz\Provider\Domain\Model\Fax\FaxInterface | null
+     * @return FaxInterface | null
      */
-    public function getFax();
+    public function getFax(): ?FaxInterface;
 
     /**
      * Get ddi
      *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     * @return DdiInterface | null
      */
-    public function getDdi();
+    public function getDdi(): ?DdiInterface;
 
     /**
      * Get ddiProvider
      *
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
+     * @return DdiProviderInterface | null
      */
-    public function getDdiProvider();
+    public function getDdiProvider(): ?DdiProviderInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

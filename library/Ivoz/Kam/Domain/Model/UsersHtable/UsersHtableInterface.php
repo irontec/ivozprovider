@@ -4,6 +4,9 @@ namespace Ivoz\Kam\Domain\Model\UsersHtable;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* UsersHtableInterface
+*/
 interface UsersHtableInterface extends EntityInterface
 {
     /**
@@ -16,14 +19,14 @@ interface UsersHtableInterface extends EntityInterface
     /**
      * Get keyType
      *
-     * @return integer
+     * @return int
      */
     public function getKeyType(): int;
 
     /**
      * Get valueType
      *
-     * @return integer
+     * @return int
      */
     public function getValueType(): int;
 
@@ -37,7 +40,7 @@ interface UsersHtableInterface extends EntityInterface
     /**
      * Get expires
      *
-     * @return integer
+     * @return int
      */
     public function getExpires(): int;
 
@@ -45,4 +48,5 @@ interface UsersHtableInterface extends EntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

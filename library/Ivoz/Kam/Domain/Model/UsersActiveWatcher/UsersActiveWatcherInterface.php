@@ -4,6 +4,9 @@ namespace Ivoz\Kam\Domain\Model\UsersActiveWatcher;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* UsersActiveWatcherInterface
+*/
 interface UsersActiveWatcherInterface extends EntityInterface
 {
     /**
@@ -53,7 +56,7 @@ interface UsersActiveWatcherInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getEventId();
+    public function getEventId(): ?string;
 
     /**
      * Get toTag
@@ -79,14 +82,14 @@ interface UsersActiveWatcherInterface extends EntityInterface
     /**
      * Get localCseq
      *
-     * @return integer
+     * @return int
      */
     public function getLocalCseq(): int;
 
     /**
      * Get remoteCseq
      *
-     * @return integer
+     * @return int
      */
     public function getRemoteCseq(): int;
 
@@ -102,19 +105,19 @@ interface UsersActiveWatcherInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getRecordRoute();
+    public function getRecordRoute(): ?string;
 
     /**
      * Get expires
      *
-     * @return integer
+     * @return int
      */
     public function getExpires(): int;
 
     /**
      * Get status
      *
-     * @return integer
+     * @return int
      */
     public function getStatus(): int;
 
@@ -123,12 +126,12 @@ interface UsersActiveWatcherInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getReason();
+    public function getReason(): ?string;
 
     /**
      * Get version
      *
-     * @return integer
+     * @return int
      */
     public function getVersion(): int;
 
@@ -163,21 +166,21 @@ interface UsersActiveWatcherInterface extends EntityInterface
     /**
      * Get updated
      *
-     * @return integer
+     * @return int
      */
     public function getUpdated(): int;
 
     /**
      * Get updatedWinfo
      *
-     * @return integer
+     * @return int
      */
     public function getUpdatedWinfo(): int;
 
     /**
      * Get flags
      *
-     * @return integer
+     * @return int
      */
     public function getFlags(): int;
 
@@ -192,4 +195,5 @@ interface UsersActiveWatcherInterface extends EntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

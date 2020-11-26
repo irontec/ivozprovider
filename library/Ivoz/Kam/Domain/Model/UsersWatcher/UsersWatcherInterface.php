@@ -4,6 +4,9 @@ namespace Ivoz\Kam\Domain\Model\UsersWatcher;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* UsersWatcherInterface
+*/
 interface UsersWatcherInterface extends EntityInterface
 {
     /**
@@ -37,7 +40,7 @@ interface UsersWatcherInterface extends EntityInterface
     /**
      * Get status
      *
-     * @return integer
+     * @return int
      */
     public function getStatus(): int;
 
@@ -46,12 +49,12 @@ interface UsersWatcherInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getReason();
+    public function getReason(): ?string;
 
     /**
      * Get insertedTime
      *
-     * @return integer
+     * @return int
      */
     public function getInsertedTime(): int;
 
@@ -59,4 +62,5 @@ interface UsersWatcherInterface extends EntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

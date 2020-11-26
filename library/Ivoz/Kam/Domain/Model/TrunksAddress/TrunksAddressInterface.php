@@ -2,8 +2,12 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksAddress;
 
+use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TrunksAddressInterface
+*/
 interface TrunksAddressInterface extends LoggableEntityInterface
 {
     /**
@@ -15,7 +19,7 @@ interface TrunksAddressInterface extends LoggableEntityInterface
     /**
      * Get grp
      *
-     * @return integer
+     * @return int
      */
     public function getGrp(): int;
 
@@ -24,19 +28,19 @@ interface TrunksAddressInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getIpAddr();
+    public function getIpAddr(): ?string;
 
     /**
      * Get mask
      *
-     * @return integer
+     * @return int
      */
     public function getMask(): int;
 
     /**
      * Get port
      *
-     * @return integer
+     * @return int
      */
     public function getPort(): int;
 
@@ -45,26 +49,27 @@ interface TrunksAddressInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getTag();
+    public function getTag(): ?string;
 
     /**
      * Set ddiProviderAddress
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress
+     * @param DdiProviderAddress
      *
      * @return static
      */
-    public function setDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress);
+    public function setDdiProviderAddress(DdiProviderAddress $ddiProviderAddress): TrunksAddressInterface;
 
     /**
      * Get ddiProviderAddress
      *
-     * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
+     * @return DdiProviderAddress
      */
-    public function getDdiProviderAddress();
+    public function getDdiProviderAddress(): DdiProviderAddress;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

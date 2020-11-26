@@ -4,6 +4,9 @@ namespace Ivoz\Kam\Domain\Model\UsersPua;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* UsersPuaInterface
+*/
 interface UsersPuaInterface extends EntityInterface
 {
     /**
@@ -23,28 +26,28 @@ interface UsersPuaInterface extends EntityInterface
     /**
      * Get event
      *
-     * @return integer
+     * @return int
      */
     public function getEvent(): int;
 
     /**
      * Get expires
      *
-     * @return integer
+     * @return int
      */
     public function getExpires(): int;
 
     /**
      * Get desiredExpires
      *
-     * @return integer
+     * @return int
      */
     public function getDesiredExpires(): int;
 
     /**
      * Get flag
      *
-     * @return integer
+     * @return int
      */
     public function getFlag(): int;
 
@@ -60,7 +63,7 @@ interface UsersPuaInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getTupleId();
+    public function getTupleId(): ?string;
 
     /**
      * Get watcherUri
@@ -93,7 +96,7 @@ interface UsersPuaInterface extends EntityInterface
     /**
      * Get cseq
      *
-     * @return integer
+     * @return int
      */
     public function getCseq(): int;
 
@@ -102,7 +105,7 @@ interface UsersPuaInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getRecordRoute();
+    public function getRecordRoute(): ?string;
 
     /**
      * Get contact
@@ -121,7 +124,7 @@ interface UsersPuaInterface extends EntityInterface
     /**
      * Get version
      *
-     * @return integer
+     * @return int
      */
     public function getVersion(): int;
 
@@ -136,4 +139,5 @@ interface UsersPuaInterface extends EntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

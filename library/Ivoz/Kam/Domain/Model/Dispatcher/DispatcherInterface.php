@@ -2,8 +2,12 @@
 
 namespace Ivoz\Kam\Domain\Model\Dispatcher;
 
+use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* DispatcherInterface
+*/
 interface DispatcherInterface extends LoggableEntityInterface
 {
     /**
@@ -15,7 +19,7 @@ interface DispatcherInterface extends LoggableEntityInterface
     /**
      * Get setid
      *
-     * @return integer
+     * @return int
      */
     public function getSetid(): int;
 
@@ -29,14 +33,14 @@ interface DispatcherInterface extends LoggableEntityInterface
     /**
      * Get flags
      *
-     * @return integer
+     * @return int
      */
     public function getFlags(): int;
 
     /**
      * Get priority
      *
-     * @return integer
+     * @return int
      */
     public function getPriority(): int;
 
@@ -57,12 +61,13 @@ interface DispatcherInterface extends LoggableEntityInterface
     /**
      * Get applicationServer
      *
-     * @return \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface
+     * @return ApplicationServerInterface
      */
-    public function getApplicationServer();
+    public function getApplicationServer(): ApplicationServerInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

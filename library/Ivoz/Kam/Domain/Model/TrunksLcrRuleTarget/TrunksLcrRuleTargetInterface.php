@@ -2,8 +2,14 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget;
 
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TrunksLcrRuleTargetInterface
+*/
 interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
 {
     /**
@@ -15,56 +21,57 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
     /**
      * Get lcrId
      *
-     * @return integer
+     * @return int
      */
     public function getLcrId(): int;
 
     /**
      * Get priority
      *
-     * @return integer
+     * @return int
      */
     public function getPriority(): int;
 
     /**
      * Get weight
      *
-     * @return integer
+     * @return int
      */
     public function getWeight(): int;
 
     /**
      * Get rule
      *
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
+     * @return TrunksLcrRuleInterface
      */
-    public function getRule();
+    public function getRule(): TrunksLcrRuleInterface;
 
     /**
      * Get gw
      *
-     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
+     * @return TrunksLcrGatewayInterface
      */
-    public function getGw();
+    public function getGw(): TrunksLcrGatewayInterface;
 
     /**
      * Set outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     * @param OutgoingRoutingInterface
      *
      * @return static
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+    public function setOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): TrunksLcrRuleTargetInterface;
 
     /**
      * Get outgoingRouting
      *
-     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+     * @return OutgoingRoutingInterface
      */
-    public function getOutgoingRouting();
+    public function getOutgoingRouting(): OutgoingRoutingInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

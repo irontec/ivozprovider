@@ -4,6 +4,9 @@ namespace Ivoz\Kam\Domain\Model\UsersXcap;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* UsersXcapInterface
+*/
 interface UsersXcapInterface extends EntityInterface
 {
     /**
@@ -23,14 +26,14 @@ interface UsersXcapInterface extends EntityInterface
     /**
      * Get doc
      *
-     * @return string
+     * @return 
      */
-    public function getDoc(): string;
+    public function getDoc();
 
     /**
      * Get docType
      *
-     * @return integer
+     * @return int
      */
     public function getDocType(): int;
 
@@ -44,7 +47,7 @@ interface UsersXcapInterface extends EntityInterface
     /**
      * Get source
      *
-     * @return integer
+     * @return int
      */
     public function getSource(): int;
 
@@ -58,7 +61,7 @@ interface UsersXcapInterface extends EntityInterface
     /**
      * Get port
      *
-     * @return integer
+     * @return int
      */
     public function getPort(): int;
 
@@ -66,4 +69,5 @@ interface UsersXcapInterface extends EntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

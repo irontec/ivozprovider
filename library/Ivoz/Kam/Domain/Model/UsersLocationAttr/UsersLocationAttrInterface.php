@@ -4,6 +4,9 @@ namespace Ivoz\Kam\Domain\Model\UsersLocationAttr;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* UsersLocationAttrInterface
+*/
 interface UsersLocationAttrInterface extends EntityInterface
 {
     /**
@@ -25,7 +28,7 @@ interface UsersLocationAttrInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getDomain();
+    public function getDomain(): ?string;
 
     /**
      * Get aname
@@ -37,7 +40,7 @@ interface UsersLocationAttrInterface extends EntityInterface
     /**
      * Get atype
      *
-     * @return integer
+     * @return int
      */
     public function getAtype(): int;
 
@@ -51,12 +54,13 @@ interface UsersLocationAttrInterface extends EntityInterface
     /**
      * Get lastModified
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getLastModified(): \DateTime;
+    public function getLastModified(): \DateTimeInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

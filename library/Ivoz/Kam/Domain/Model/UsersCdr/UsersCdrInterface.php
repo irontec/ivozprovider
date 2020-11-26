@@ -2,8 +2,17 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersCdr;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* UsersCdrInterface
+*/
 interface UsersCdrInterface extends EntityInterface
 {
     /**
@@ -19,16 +28,16 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Get startTime
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getStartTime(): \DateTime;
+    public function getStartTime(): \DateTimeInterface;
 
     /**
      * Get endTime
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getEndTime(): \DateTime;
+    public function getEndTime(): \DateTimeInterface;
 
     /**
      * Get duration
@@ -42,115 +51,116 @@ interface UsersCdrInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getDirection();
+    public function getDirection(): ?string;
 
     /**
      * Get caller
      *
      * @return string | null
      */
-    public function getCaller();
+    public function getCaller(): ?string;
 
     /**
      * Get callee
      *
      * @return string | null
      */
-    public function getCallee();
+    public function getCallee(): ?string;
 
     /**
      * Get diversion
      *
      * @return string | null
      */
-    public function getDiversion();
+    public function getDiversion(): ?string;
 
     /**
      * Get referee
      *
      * @return string | null
      */
-    public function getReferee();
+    public function getReferee(): ?string;
 
     /**
      * Get referrer
      *
      * @return string | null
      */
-    public function getReferrer();
+    public function getReferrer(): ?string;
 
     /**
      * Get callid
      *
      * @return string | null
      */
-    public function getCallid();
+    public function getCallid(): ?string;
 
     /**
      * Get callidHash
      *
      * @return string | null
      */
-    public function getCallidHash();
+    public function getCallidHash(): ?string;
 
     /**
      * Get xcallid
      *
      * @return string | null
      */
-    public function getXcallid();
+    public function getXcallid(): ?string;
 
     /**
      * Get hidden
      *
-     * @return boolean
+     * @return bool
      */
     public function getHidden(): bool;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @return BrandInterface | null
      */
-    public function getBrand();
+    public function getBrand(): ?BrandInterface;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @return CompanyInterface | null
      */
-    public function getCompany();
+    public function getCompany(): ?CompanyInterface;
 
     /**
      * Get user
      *
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface | null
+     * @return UserInterface | null
      */
-    public function getUser();
+    public function getUser(): ?UserInterface;
 
     /**
      * Get friend
      *
-     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
+     * @return FriendInterface | null
      */
-    public function getFriend();
+    public function getFriend(): ?FriendInterface;
 
     /**
      * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface | null
+     * @return ResidentialDeviceInterface | null
      */
-    public function getResidentialDevice();
+    public function getResidentialDevice(): ?ResidentialDeviceInterface;
 
     /**
      * Get retailAccount
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface | null
+     * @return RetailAccountInterface | null
      */
-    public function getRetailAccount();
+    public function getRetailAccount(): ?RetailAccountInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

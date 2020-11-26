@@ -4,6 +4,9 @@ namespace Ivoz\Kam\Domain\Model\UsersPresentity;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* UsersPresentityInterface
+*/
 interface UsersPresentityInterface extends EntityInterface
 {
     /**
@@ -37,23 +40,23 @@ interface UsersPresentityInterface extends EntityInterface
     /**
      * Get expires
      *
-     * @return integer
+     * @return int
      */
     public function getExpires(): int;
 
     /**
      * Get receivedTime
      *
-     * @return integer
+     * @return int
      */
     public function getReceivedTime(): int;
 
     /**
      * Get body
      *
-     * @return string
+     * @return 
      */
-    public function getBody(): string;
+    public function getBody();
 
     /**
      * Get sender
@@ -65,7 +68,7 @@ interface UsersPresentityInterface extends EntityInterface
     /**
      * Get priority
      *
-     * @return integer
+     * @return int
      */
     public function getPriority(): int;
 
@@ -73,4 +76,5 @@ interface UsersPresentityInterface extends EntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

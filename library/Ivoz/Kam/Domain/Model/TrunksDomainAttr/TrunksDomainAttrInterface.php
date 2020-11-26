@@ -4,6 +4,9 @@ namespace Ivoz\Kam\Domain\Model\TrunksDomainAttr;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* TrunksDomainAttrInterface
+*/
 interface TrunksDomainAttrInterface extends EntityInterface
 {
     /**
@@ -23,7 +26,7 @@ interface TrunksDomainAttrInterface extends EntityInterface
     /**
      * Get type
      *
-     * @return integer
+     * @return int
      */
     public function getType(): int;
 
@@ -37,12 +40,13 @@ interface TrunksDomainAttrInterface extends EntityInterface
     /**
      * Get lastModified
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getLastModified(): \DateTime;
+    public function getLastModified(): \DateTimeInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

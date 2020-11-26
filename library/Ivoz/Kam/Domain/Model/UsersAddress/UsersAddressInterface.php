@@ -2,13 +2,18 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersAddress;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* UsersAddressInterface
+*/
 interface UsersAddressInterface extends EntityInterface
 {
-    public function setIpAddr($ipAddr = null);
 
-    public function setMask($mask = null);
+    public function setIpAddr(string $ipAddr = null): UsersAddressInterface;
+
+    public function setMask(int $mask = null): UsersAddressInterface;
 
     /**
      * Get sourceAddress
@@ -22,19 +27,19 @@ interface UsersAddressInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getIpAddr();
+    public function getIpAddr(): ?string;
 
     /**
      * Get mask
      *
-     * @return integer
+     * @return int
      */
     public function getMask(): int;
 
     /**
      * Get port
      *
-     * @return integer
+     * @return int
      */
     public function getPort(): int;
 
@@ -43,24 +48,25 @@ interface UsersAddressInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getTag();
+    public function getTag(): ?string;
 
     /**
      * Get description
      *
      * @return string | null
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * Get company
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return CompanyInterface
      */
-    public function getCompany();
+    public function getCompany(): CompanyInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

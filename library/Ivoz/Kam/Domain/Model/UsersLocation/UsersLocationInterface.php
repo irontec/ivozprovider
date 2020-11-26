@@ -4,6 +4,9 @@ namespace Ivoz\Kam\Domain\Model\UsersLocation;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 
+/**
+* UsersLocationInterface
+*/
 interface UsersLocationInterface extends EntityInterface
 {
     /**
@@ -25,7 +28,7 @@ interface UsersLocationInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getDomain();
+    public function getDomain(): ?string;
 
     /**
      * Get contact
@@ -39,21 +42,21 @@ interface UsersLocationInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getReceived();
+    public function getReceived(): ?string;
 
     /**
      * Get path
      *
      * @return string | null
      */
-    public function getPath();
+    public function getPath(): ?string;
 
     /**
      * Get expires
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getExpires(): \DateTime;
+    public function getExpires(): \DateTimeInterface;
 
     /**
      * Get q
@@ -72,28 +75,28 @@ interface UsersLocationInterface extends EntityInterface
     /**
      * Get cseq
      *
-     * @return integer
+     * @return int
      */
     public function getCseq(): int;
 
     /**
      * Get lastModified
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getLastModified(): \DateTime;
+    public function getLastModified(): \DateTimeInterface;
 
     /**
      * Get flags
      *
-     * @return integer
+     * @return int
      */
     public function getFlags(): int;
 
     /**
      * Get cflags
      *
-     * @return integer
+     * @return int
      */
     public function getCflags(): int;
 
@@ -109,54 +112,54 @@ interface UsersLocationInterface extends EntityInterface
      *
      * @return string | null
      */
-    public function getSocket();
+    public function getSocket(): ?string;
 
     /**
      * Get methods
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getMethods();
+    public function getMethods(): ?int;
 
     /**
      * Get instance
      *
      * @return string | null
      */
-    public function getInstance();
+    public function getInstance(): ?string;
 
     /**
      * Get regId
      *
-     * @return integer
+     * @return int
      */
     public function getRegId(): int;
 
     /**
      * Get serverId
      *
-     * @return integer
+     * @return int
      */
     public function getServerId(): int;
 
     /**
      * Get connectionId
      *
-     * @return integer
+     * @return int
      */
     public function getConnectionId(): int;
 
     /**
      * Get keepalive
      *
-     * @return integer
+     * @return int
      */
     public function getKeepalive(): int;
 
     /**
      * Get partition
      *
-     * @return integer
+     * @return int
      */
     public function getPartition(): int;
 
@@ -164,4 +167,5 @@ interface UsersLocationInterface extends EntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

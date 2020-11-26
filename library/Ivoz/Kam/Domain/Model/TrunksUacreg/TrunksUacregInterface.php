@@ -2,8 +2,13 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksUacreg;
 
+use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TrunksUacregInterface
+*/
 interface TrunksUacregInterface extends LoggableEntityInterface
 {
     /**
@@ -14,12 +19,12 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setAuthProxy($authProxy);
+    public function setAuthProxy(string $authProxy): TrunksUacregInterface;
 
     /**
      * @inheritdoc
      */
-    public function setLUuid($lUuid);
+    public function setLUuid(string $lUuid): TrunksUacregInterface;
 
     /**
      * Get lUuid
@@ -87,21 +92,21 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     /**
      * Get expires
      *
-     * @return integer
+     * @return int
      */
     public function getExpires(): int;
 
     /**
      * Get flags
      *
-     * @return integer
+     * @return int
      */
     public function getFlags(): int;
 
     /**
      * Get regDelay
      *
-     * @return integer
+     * @return int
      */
     public function getRegDelay(): int;
 
@@ -115,28 +120,29 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     /**
      * Set ddiProviderRegistration
      *
-     * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration
+     * @param DdiProviderRegistration
      *
      * @return static
      */
-    public function setDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration);
+    public function setDdiProviderRegistration(DdiProviderRegistration $ddiProviderRegistration): TrunksUacregInterface;
 
     /**
      * Get ddiProviderRegistration
      *
-     * @return \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface
+     * @return DdiProviderRegistration
      */
-    public function getDdiProviderRegistration();
+    public function getDdiProviderRegistration(): DdiProviderRegistration;
 
     /**
      * Get brand
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return BrandInterface
      */
-    public function getBrand();
+    public function getBrand(): BrandInterface;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }

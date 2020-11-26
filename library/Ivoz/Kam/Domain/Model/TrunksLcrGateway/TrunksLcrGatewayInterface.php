@@ -2,8 +2,12 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksLcrGateway;
 
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
+/**
+* TrunksLcrGatewayInterface
+*/
 interface TrunksLcrGatewayInterface extends LoggableEntityInterface
 {
     /**
@@ -15,7 +19,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     /**
      * Get lcrId
      *
-     * @return integer
+     * @return int
      */
     public function getLcrId(): int;
 
@@ -31,89 +35,90 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
      *
      * @return string | null
      */
-    public function getIp();
+    public function getIp(): ?string;
 
     /**
      * Get hostname
      *
      * @return string | null
      */
-    public function getHostname();
+    public function getHostname(): ?string;
 
     /**
      * Get port
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getPort();
+    public function getPort(): ?int;
 
     /**
      * Get params
      *
      * @return string | null
      */
-    public function getParams();
+    public function getParams(): ?string;
 
     /**
      * Get uriScheme
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getUriScheme();
+    public function getUriScheme(): ?int;
 
     /**
      * Get transport
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getTransport();
+    public function getTransport(): ?int;
 
     /**
      * Get strip
      *
-     * @return boolean | null
+     * @return bool | null
      */
-    public function getStrip();
+    public function getStrip(): ?bool;
 
     /**
      * Get prefix
      *
      * @return string | null
      */
-    public function getPrefix();
+    public function getPrefix(): ?string;
 
     /**
      * Get tag
      *
      * @return string | null
      */
-    public function getTag();
+    public function getTag(): ?string;
 
     /**
      * Get defunct
      *
-     * @return integer | null
+     * @return int | null
      */
-    public function getDefunct();
+    public function getDefunct(): ?int;
 
     /**
      * Set carrierServer
      *
-     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer | null
+     * @param CarrierServer | null
      *
      * @return static
      */
-    public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer = null);
+    public function setCarrierServer(?CarrierServer $carrierServer = null): TrunksLcrGatewayInterface;
 
     /**
      * Get carrierServer
      *
-     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface | null
+     * @return CarrierServer | null
      */
-    public function getCarrierServer();
+    public function getCarrierServer(): ?CarrierServer;
 
     /**
      * @return bool
      */
     public function isInitialized(): bool;
+
 }
