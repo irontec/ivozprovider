@@ -30,7 +30,7 @@ class TpRate extends TpRateAbstract implements TpRateInterface
      * @param string $rateIncrement
      * @return $this|TpRateAbstract|TpRateInterface
      */
-    public function setRateIncrement($rateIncrement)
+    public function setRateIncrement(string $rateIncrement): self
     {
         if (is_numeric($rateIncrement)) {
             $rateIncrement .= "s";
@@ -45,7 +45,7 @@ class TpRate extends TpRateAbstract implements TpRateInterface
      * @param string $groupIntervalStart
      * @return $this|TpRateAbstract|TpRateInterface
      */
-    public function setGroupIntervalStart($groupIntervalStart)
+    public function setGroupIntervalStart(string $groupIntervalStart): self
     {
         if (is_numeric($groupIntervalStart)) {
             $groupIntervalStart .= "s";
