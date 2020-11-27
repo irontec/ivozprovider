@@ -20,7 +20,7 @@ class RoutingTag extends RoutingTagAbstract implements RoutingTagInterface
         return parent::getChangeSet();
     }
 
-    protected function setTag($tag)
+    protected function setTag(string $tag): self
     {
         Assertion::regex(
             $tag,

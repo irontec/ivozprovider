@@ -68,7 +68,7 @@ class Ddi extends DdiAbstract implements DdiInterface
     /**
      * {@inheritDoc}
      */
-    public function setDdi($ddi)
+    public function setDdi(string $ddi): self
     {
         Assertion::regex($ddi, '/^[0-9]+$/');
         return parent::setDdi($ddi);
@@ -97,7 +97,7 @@ class Ddi extends DdiAbstract implements DdiInterface
         return $language->getIden();
     }
 
-    public function setRouteType($routeType = null)
+    public function setRouteType(?string $routeType = null): self
     {
         parent::setRouteType($routeType);
 

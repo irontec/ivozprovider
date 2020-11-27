@@ -29,7 +29,7 @@ class RoutingPattern extends RoutingPatternAbstract implements RoutingPatternInt
     /**
      * {@inheritDoc}
      */
-    public function setPrefix($prefix = null)
+    public function setPrefix(string$prefix = null): self
     {
         if (!empty($prefix)) {
             Assertion::regex($prefix, '/^\+[0-9]*/');

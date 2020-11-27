@@ -67,7 +67,7 @@ class Service extends ServiceAbstract implements ServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function setDefaultCode($defaultCode)
+    public function setDefaultCode(string $defaultCode): self
     {
         Assertion::regex($defaultCode, '/^[#0-9*]+$/');
         return parent::setDefaultCode($defaultCode);

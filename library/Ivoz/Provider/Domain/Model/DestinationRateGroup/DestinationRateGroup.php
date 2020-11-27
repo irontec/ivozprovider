@@ -126,7 +126,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
         }
     }
 
-    protected function setLastExecutionError($lastExecutionError = null)
+    protected function setLastExecutionError(?string $lastExecutionError = null): self
     {
         if (!is_null($lastExecutionError)) {
             $lastExecutionError = substr(

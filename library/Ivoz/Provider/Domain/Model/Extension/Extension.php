@@ -56,7 +56,7 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
     /**
      * {@inheritDoc}
      */
-    public function setNumber($number)
+    public function setNumber(string $number): self
     {
         Assertion::regex($number, '/^[0-9].*$/');
         return parent::setNumber($number);
@@ -65,7 +65,7 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
     /**
      * {@inheritDoc}
      */
-    public function setNumberValue($numberValue = null)
+    public function setNumberValue(?string $numberValue = null): self
     {
         if (!empty($numberValue)) {
             Assertion::regex($numberValue, '/^[0-9]+$/');

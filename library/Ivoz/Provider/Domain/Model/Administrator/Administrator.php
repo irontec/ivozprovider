@@ -33,7 +33,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
     /**
      * @inheritdoc
      */
-    public function setPass($pass = null)
+    public function setPass(string $pass = null): self
     {
         if ($this->isInitialized()
             && $pass === $this->getPass()

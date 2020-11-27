@@ -31,7 +31,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     /**
      * {@inheritDoc}
      */
-    public function setName($name)
+    public function setName(string $name): self
     {
         return parent::setName(trim($name));
     }
@@ -94,7 +94,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     /**
      * {@inheritDoc}
      */
-    public function setOnDemandRecordCode($onDemandRecordCode = null)
+    public function setOnDemandRecordCode(?string $onDemandRecordCode = null): self
     {
         if (!empty($onDemandRecordCode)) {
             Assertion::regex($onDemandRecordCode, '/^[0-9]+$/');
@@ -269,7 +269,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     /**
      * @inheritdoc
      */
-    public function setDomainUsers($domainUsers = null)
+    public function setDomainUsers(?string $domainUsers = null): self
     {
         if (is_string($domainUsers)) {
             $domainUsers = trim($domainUsers);

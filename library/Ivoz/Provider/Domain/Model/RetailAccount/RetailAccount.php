@@ -56,7 +56,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     /**
      * {@inheritDoc}
      */
-    public function setName($name)
+    public function setName(string $name): self
     {
         Assertion::regex($name, '/^[a-zA-Z0-9_*]+$/');
         return parent::setName($name);
@@ -65,7 +65,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     /**
      * {@inheritDoc}
      */
-    public function setIp($ip = null)
+    public function setIp(?string $ip = null): self
     {
         if (!empty($ip)) {
             Assertion::ip($ip);
@@ -76,7 +76,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     /**
      * {@inheritDoc}
      */
-    public function setPassword($password = null)
+    public function setPassword(?string $password = null): self
     {
         if (!empty($password)) {
             Assertion::regex(
@@ -87,7 +87,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
         return parent::setPassword($password);
     }
 
-    public function setPort($port = null)
+    public function setPort(?int $port = null): self
     {
         if (!empty($port)) {
             Assertion::lessThan($port, pow(2, 16), 'port provided "%s" is not lower than "%s".');
@@ -143,7 +143,6 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
         }
 
         $ddis = $this->getDdis($criteria);
-
 
         return array_shift($ddis);
     }

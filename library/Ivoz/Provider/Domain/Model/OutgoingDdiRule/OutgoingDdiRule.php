@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRule;
 
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface;
 
 /**
@@ -64,7 +65,7 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
      * Return forced Ddi for this rule
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
-    public function getForcedDdi()
+    public function getForcedDdi(): ?DdiInterface
     {
         $ddi = parent::getForcedDdi();
         if ($ddi) {

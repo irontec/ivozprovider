@@ -39,7 +39,7 @@ class ProxyTrunk extends ProxyTrunkAbstract implements ProxyTrunkInterface
      *
      * @return static
      */
-    protected function setIp($ip)
+    protected function setIp(string $ip): self
     {
         try {
             Assertion::ip($ip);

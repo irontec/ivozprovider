@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern;
 
 use Ivoz\Core\Domain\Assert\Assertion;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
  * OutgoingDdiRulesPattern
@@ -57,7 +58,7 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
      * @return static
      * @throws \Exception
      */
-    protected function setPrefix($prefix = null)
+    protected function setPrefix(?string $prefix = null): self
     {
         if ($this->getType() === OutgoingDdiRulesPatternInterface::TYPE_PREFIX) {
             Assertion::regex(
@@ -73,7 +74,7 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
      * Return forced Ddi for this rule pattern
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
-    public function getForcedDdi()
+    public function getForcedDdi(): DdiInterface
     {
         $ddi = parent::getForcedDdi();
         if ($ddi) {

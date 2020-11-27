@@ -34,7 +34,7 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
     /**
      * @inheritdoc
      */
-    public function setEmail($email)
+    public function setEmail(string $email): self
     {
         if (!empty($email)) {
             Assertion::email($email);
@@ -45,7 +45,7 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
     /**
      * @inheritdoc
      */
-    public function setFrequency($frequency)
+    public function setFrequency(int $frequency): self
     {
         Assertion::greaterOrEqualThan($frequency, 1);
         return parent::setFrequency($frequency);
@@ -78,7 +78,7 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
         }
     }
 
-    protected function setLastExecutionError($lastExecutionError = null)
+    protected function setLastExecutionError(?string $lastExecutionError = null): self
     {
         if (!is_null($lastExecutionError)) {
             $lastExecutionError = substr(

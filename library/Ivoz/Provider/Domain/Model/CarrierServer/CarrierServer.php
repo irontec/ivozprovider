@@ -90,7 +90,7 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
     /**
      * {@inheritDoc}
      */
-    public function setIp($ip = null)
+    public function setIp(?string $ip = null): self
     {
         if (!is_null($ip)) {
             Assertion::ip($ip);

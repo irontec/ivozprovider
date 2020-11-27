@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Fax;
 
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+
 /**
  * Fax
  */
@@ -41,7 +43,7 @@ class Fax extends FaxAbstract implements FaxInterface
         );
     }
 
-    public function setSendByEmail($sendByEmail)
+    public function setSendByEmail(bool $sendByEmail): self
     {
         $response = parent::setSendByEmail($sendByEmail);
         if ($this->getSendByEmail() == 0) {
@@ -53,7 +55,7 @@ class Fax extends FaxAbstract implements FaxInterface
     /**
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
-    public function getOutgoingDdi()
+    public function getOutgoingDdi(): DdiInterface
     {
         if (!is_null($this->outgoingDdi)) {
             return parent::getOutgoingDdi();

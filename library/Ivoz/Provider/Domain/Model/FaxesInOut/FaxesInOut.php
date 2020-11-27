@@ -57,7 +57,7 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
      *
      * @return self
      */
-    public function setCalldate($calldate = null)
+    public function setCalldate($calldate = null): self
     {
         if (!$calldate) {
             $calldate = new \DateTime(null, new \DateTimeZone('UTC'));

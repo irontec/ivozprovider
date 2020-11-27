@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\Friend;
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern;
 
 /**
@@ -126,7 +127,7 @@ class Friend extends FriendAbstract implements FriendInterface
             ->getExtension($number);
     }
 
-    protected function setName($name)
+    protected function setName(string $name): self
     {
         if (!empty($name)) {
             Assertion::regex(
@@ -144,7 +145,7 @@ class Friend extends FriendAbstract implements FriendInterface
      * @see FriendAbstract::setIp
      * @deprecated this method will be protected
      */
-    public function setIp($ip = null)
+    public function setIp(?string $ip = null): self
     {
         if (!empty($ip)) {
             Assertion::ip($ip);
@@ -157,7 +158,7 @@ class Friend extends FriendAbstract implements FriendInterface
      * @see FriendAbstract::setPort
      * @deprecated this method will be protected
      */
-    public function setPort($port = null)
+    public function setPort(?int $port = null): self
     {
         if (!empty($port)) {
             Assertion::regex((string) $port, '/^[0-9]+$/');
@@ -171,7 +172,7 @@ class Friend extends FriendAbstract implements FriendInterface
      * @see FriendAbstract::setPassword
      * @deprecated this method will be protected
      */
-    public function setPassword($password = null)
+    public function setPassword(?string $password = null): self
     {
         if (empty($password)) {
             $password = null;
@@ -291,7 +292,7 @@ class Friend extends FriendAbstract implements FriendInterface
      *
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface|null
      */
-    public function getOutgoingDdi()
+    public function getOutgoingDdi(): ?DdiInterface
     {
         $ddi = parent::getOutgoingDdi();
         if (empty($ddi)) {

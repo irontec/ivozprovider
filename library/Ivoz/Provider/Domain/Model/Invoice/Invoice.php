@@ -126,7 +126,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
         return $this->getStatus() === self::STATUS_WAITING;
     }
 
-    public function setNumber($number = null)
+    public function setNumber(?string $number = null): self
     {
         if ($number === '') {
             //Avoid unique key issues
@@ -155,7 +155,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
         return $newScheduledInvoice || $modifiedInvoice;
     }
 
-    protected function setStatusMsg($statusMsg = null)
+    protected function setStatusMsg(?string $statusMsg = null): self
     {
         if (!is_null($statusMsg)) {
             $statusMsg = substr(

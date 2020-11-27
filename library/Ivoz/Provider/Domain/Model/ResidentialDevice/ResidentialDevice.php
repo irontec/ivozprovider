@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
  * ResidentialDevice
@@ -62,7 +63,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * {@inheritDoc}
      */
-    public function setName($name)
+    public function setName(string $name): self
     {
         Assertion::regex($name, '/^[a-zA-Z0-9_*]+$/');
         return parent::setName($name);
@@ -71,7 +72,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * {@inheritDoc}
      */
-    public function setIp($ip = null)
+    public function setIp(?string $ip = null): self
     {
         if (!empty($ip)) {
             Assertion::ip($ip);
@@ -82,7 +83,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * {@inheritDoc}
      */
-    public function setPassword($password = null)
+    public function setPassword(?string $password = null): self
     {
         if (!empty($password)) {
             Assertion::regex(
@@ -93,7 +94,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
         return parent::setPassword($password);
     }
 
-    public function setPort($port = null)
+    public function setPort(?int $port = null): self
     {
         if (!empty($port)) {
             Assertion::lessThan($port, pow(2, 16), 'port provided "%s" is not lower than "%s".');
@@ -169,7 +170,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
      * If no Ddi is assigned, retrieve company's default Ddi
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | NULL
      */
-    public function getOutgoingDdi()
+    public function getOutgoingDdi(): ?DdiInterface
     {
         $ddi = parent::getOutgoingDdi();
         if (!is_null($ddi)) {

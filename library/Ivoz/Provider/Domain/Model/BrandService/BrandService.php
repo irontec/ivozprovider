@@ -33,7 +33,7 @@ class BrandService extends BrandServiceAbstract implements BrandServiceInterface
     /**
      * {@inheritDoc}
      */
-    public function setCode($code)
+    public function setCode(string $code): self
     {
         Assertion::regex($code, '/^[#0-9*]+$/');
         return parent::setCode($code);

@@ -2,6 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\User;
 
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
 
@@ -109,7 +112,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
     /**
      * @inheritdoc
      */
-    public function setPass($pass = null)
+    public function setPass(?string $pass = null): self
     {
         if ($pass === $this->getPass()) {
             return $this;
@@ -202,7 +205,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
      * If no Ddi is assigned, retrieve company's default Ddi
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
-    public function getOutgoingDdi()
+    public function getOutgoingDdi(): ?DdiInterface
     {
         $ddi = parent::getOutgoingDdi();
         if ($ddi) {
@@ -219,7 +222,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
      * If no OutgoingDdiRule is assigned, retrieve company's default OutgoingDdiRule
      * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface|null
      */
-    public function getOutgoingDdiRule()
+    public function getOutgoingDdiRule(): ?OutgoingDdiRuleInterface
     {
         $outgoingDdiRule = parent::getOutgoingDdiRule();
         if ($outgoingDdiRule) {
@@ -351,7 +354,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
      * returns company language if empty
      * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
      */
-    public function getLanguage()
+    public function getLanguage(): ?LanguageInterface
     {
         $language = parent::getLanguage();
         if ($language) {
@@ -373,7 +376,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             ->getIden();
     }
 
-    public function setEmail($email = null)
+    public function setEmail(?string $email = null): self
     {
         if ($email === '') {
             // '' is NULL (avoid triggering the UNIQUE KEY)

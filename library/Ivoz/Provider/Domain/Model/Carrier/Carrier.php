@@ -81,7 +81,7 @@ class Carrier extends CarrierAbstract implements CarrierInterface
      * @param ProxyTrunkInterface|null $proxyTrunks
      * @return CarrierAbstract
      */
-    protected function setProxyTrunk(ProxyTrunkInterface $proxyTrunks = null)
+    protected function setProxyTrunk(?ProxyTrunkInterface $proxyTrunks = null): self
     {
         if (is_null($proxyTrunks)) {
             throw new \DomainException('Local socket cannot be empty.', 70005);
