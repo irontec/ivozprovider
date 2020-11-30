@@ -89,4 +89,10 @@ class Carrier extends CarrierAbstract implements CarrierInterface
 
         return parent::setProxyTrunk($proxyTrunks);
     }
+
+    protected function setBalance($balance = null)
+    {
+        $balance = round($balance, 4);
+        return parent::setBalance($balance);
+    }
 }
