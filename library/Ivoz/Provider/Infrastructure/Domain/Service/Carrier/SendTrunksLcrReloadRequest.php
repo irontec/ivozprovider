@@ -30,6 +30,13 @@ class SendTrunksLcrReloadRequest implements CarrierLifecycleEventHandlerInterfac
      */
     public function execute(CarrierInterface $entity)
     {
+        $changeSet = $entity->getChangedFields();
+        if (in_array('balance', $changeSet)
+            && count($changeSet) === 1
+        ) {
+            return;
+        }
+
         $this->trunksClient->reloadLcr();
     }
 }
