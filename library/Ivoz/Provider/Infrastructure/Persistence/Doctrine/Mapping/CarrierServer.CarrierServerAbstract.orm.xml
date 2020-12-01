@@ -74,13 +74,12 @@
         <option name="fixed"/>
       </options>
     </field>
-    <one-to-one field="lcrGateway" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway" mapped-by="carrierServer" fetch="LAZY"/>
-    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\Carrier" inversed-by="servers" fetch="LAZY">
+    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\CarrierInterface" inversed-by="servers" fetch="LAZY">
       <join-columns>
         <join-column name="carrierId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\Brand" fetch="LAZY">
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>

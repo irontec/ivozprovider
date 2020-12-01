@@ -32,22 +32,22 @@
         <option name="unsigned">1</option>
       </options>
     </field>
-    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\Brand" fetch="LAZY">
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="transformationRuleSet" target-entity="Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet" fetch="LAZY">
+    <many-to-one field="transformationRuleSet" target-entity="Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface" fetch="LAZY">
       <join-columns>
         <join-column name="transformationRuleSetId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="currency" target-entity="Ivoz\Provider\Domain\Model\Currency\Currency" fetch="LAZY">
+    <many-to-one field="currency" target-entity="Ivoz\Provider\Domain\Model\Currency\CurrencyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="currencyId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="proxyTrunk" target-entity="Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk" fetch="LAZY">
+    <many-to-one field="proxyTrunk" target-entity="Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface" fetch="LAZY">
       <join-columns>
         <join-column name="proxyTrunkId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>

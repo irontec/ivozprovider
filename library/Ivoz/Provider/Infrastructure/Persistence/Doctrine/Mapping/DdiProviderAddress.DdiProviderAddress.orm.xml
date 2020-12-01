@@ -12,5 +12,6 @@
         <option name="unsigned">1</option>
       </options>
     </id>
+    <one-to-one field="trunksAddress" target-entity="Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface" mapped-by="ddiProviderAddress" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

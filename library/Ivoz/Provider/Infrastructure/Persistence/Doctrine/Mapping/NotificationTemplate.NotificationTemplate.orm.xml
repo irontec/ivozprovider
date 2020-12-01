@@ -12,6 +12,6 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="contents" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContent" mapped-by="notificationTemplate" fetch="LAZY"/>
+    <one-to-many field="contents" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface" mapped-by="notificationTemplate" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

@@ -12,7 +12,7 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="holidayDates" target-entity="Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate" mapped-by="calendar" fetch="LAZY"/>
-    <one-to-many field="calendarPeriods" target-entity="Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod" mapped-by="calendar" fetch="LAZY"/>
+    <one-to-many field="holidayDates" target-entity="Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface" mapped-by="calendar" fetch="LAZY"/>
+    <one-to-many field="calendarPeriods" target-entity="Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface" mapped-by="calendar" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

@@ -15,12 +15,12 @@
         <option name="comment">[enum:allow|deny]</option>
       </options>
     </field>
-    <many-to-one field="callAcl" target-entity="Ivoz\Provider\Domain\Model\CallAcl\CallAcl" inversed-by="relMatchLists" fetch="LAZY">
+    <many-to-one field="callAcl" target-entity="Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface" inversed-by="relMatchLists" fetch="LAZY">
       <join-columns>
         <join-column name="CallAclId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="matchList" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchList" fetch="LAZY">
+    <many-to-one field="matchList" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchListInterface" fetch="LAZY">
       <join-columns>
         <join-column name="matchListId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>

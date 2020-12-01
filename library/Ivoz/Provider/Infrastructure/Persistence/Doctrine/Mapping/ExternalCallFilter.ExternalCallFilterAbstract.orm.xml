@@ -31,52 +31,52 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" fetch="LAZY">
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="welcomeLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+    <many-to-one field="welcomeLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="welcomeLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="holidayLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+    <many-to-one field="holidayLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="holidayLocutionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="outOfScheduleLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+    <many-to-one field="outOfScheduleLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="outOfScheduleLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="holidayExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\Extension" fetch="LAZY">
+    <many-to-one field="holidayExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="holidayExtensionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="outOfScheduleExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\Extension" fetch="LAZY">
+    <many-to-one field="outOfScheduleExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="outOfScheduleExtensionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="holidayVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+    <many-to-one field="holidayVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
       <join-columns>
         <join-column name="holidayVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="outOfScheduleVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+    <many-to-one field="outOfScheduleVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
       <join-columns>
         <join-column name="outOfScheduleVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="holidayNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+    <many-to-one field="holidayNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
         <join-column name="holidayNumberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="outOfScheduleNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+    <many-to-one field="outOfScheduleNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
         <join-column name="outOfScheduleNumberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>

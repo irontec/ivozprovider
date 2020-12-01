@@ -12,8 +12,8 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="entries" target-entity="Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry" mapped-by="ivr" fetch="LAZY"/>
-    <one-to-many field="excludedExtensions" target-entity="Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension" mapped-by="ivr" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="entries" target-entity="Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface" mapped-by="ivr" fetch="LAZY"/>
+    <one-to-many field="excludedExtensions" target-entity="Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface" mapped-by="ivr" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>

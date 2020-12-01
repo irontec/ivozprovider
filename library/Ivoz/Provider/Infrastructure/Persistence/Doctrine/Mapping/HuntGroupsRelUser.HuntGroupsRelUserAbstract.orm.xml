@@ -26,17 +26,17 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="huntGroup" target-entity="Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup" inversed-by="huntGroupsRelUsers" fetch="LAZY">
+    <many-to-one field="huntGroup" target-entity="Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface" inversed-by="huntGroupsRelUsers" fetch="LAZY">
       <join-columns>
         <join-column name="huntGroupId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
       <join-columns>
         <join-column name="userId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
         <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>

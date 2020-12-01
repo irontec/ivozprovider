@@ -15,12 +15,12 @@
         <option name="comment">[enum:keep|force]</option>
       </options>
     </field>
-    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" fetch="LAZY">
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="forcedDdi" target-entity="Ivoz\Provider\Domain\Model\Ddi\Ddi" fetch="LAZY">
+    <many-to-one field="forcedDdi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
       <join-columns>
         <join-column name="forcedDdiId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>

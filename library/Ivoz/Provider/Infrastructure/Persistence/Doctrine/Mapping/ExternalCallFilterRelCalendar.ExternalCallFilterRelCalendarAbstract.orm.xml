@@ -6,7 +6,7 @@
         <join-column name="filterId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="calendar" target-entity="Ivoz\Provider\Domain\Model\Calendar\Calendar" fetch="LAZY">
+    <many-to-one field="calendar" target-entity="Ivoz\Provider\Domain\Model\Calendar\CalendarInterface" fetch="LAZY">
       <join-columns>
         <join-column name="calendarId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>

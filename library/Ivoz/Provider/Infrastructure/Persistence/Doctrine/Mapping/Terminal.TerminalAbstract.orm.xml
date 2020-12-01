@@ -62,17 +62,17 @@
         <option name="default">0</option>
       </options>
     </field>
-    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" inversed-by="terminals" fetch="LAZY">
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="terminals" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="domain" target-entity="Ivoz\Provider\Domain\Model\Domain\Domain" inversed-by="terminals" fetch="LAZY">
+    <many-to-one field="domain" target-entity="Ivoz\Provider\Domain\Model\Domain\DomainInterface" inversed-by="terminals" fetch="LAZY">
       <join-columns>
         <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="terminalModel" target-entity="Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel" fetch="LAZY">
+    <many-to-one field="terminalModel" target-entity="Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface" fetch="LAZY">
       <join-columns>
         <join-column name="TerminalModelId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>

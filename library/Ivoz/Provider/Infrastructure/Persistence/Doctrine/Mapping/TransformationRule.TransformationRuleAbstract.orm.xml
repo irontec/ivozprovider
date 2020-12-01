@@ -29,7 +29,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="transformationRuleSet" target-entity="Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet" inversed-by="rules" fetch="LAZY">
+    <many-to-one field="transformationRuleSet" target-entity="Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface" inversed-by="rules" fetch="LAZY">
       <join-columns>
         <join-column name="transformationRuleSetId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>

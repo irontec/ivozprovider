@@ -12,6 +12,6 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="conditions" target-entity="Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition" mapped-by="conditionalRoute" fetch="LAZY"/>
+    <one-to-many field="conditions" target-entity="Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface" mapped-by="conditionalRoute" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

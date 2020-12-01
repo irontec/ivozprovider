@@ -4,12 +4,12 @@
     <unique-constraints>
       <unique-constraint name="outgoingRoutingRelCarrier_carrier" columns="outgoingRoutingId,carrierId"/>
     </unique-constraints>
-    <many-to-one field="outgoingRouting" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting" inversed-by="relCarriers" fetch="LAZY">
+    <many-to-one field="outgoingRouting" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface" inversed-by="relCarriers" fetch="LAZY">
       <join-columns>
         <join-column name="outgoingRoutingId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\Carrier" inversed-by="outgoingRoutingsRelCarriers" fetch="LAZY">
+    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\CarrierInterface" inversed-by="outgoingRoutingsRelCarriers" fetch="LAZY">
       <join-columns>
         <join-column name="carrierId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>

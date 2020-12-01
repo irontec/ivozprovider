@@ -11,17 +11,17 @@
     <field name="inDate" type="datetime" column="inDate" nullable="false"/>
     <field name="outDate" type="datetime" column="outDate" nullable="false"/>
     <field name="createdOn" type="datetime" column="createdOn" nullable="false"/>
-    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" fetch="LAZY">
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\Brand" fetch="LAZY">
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="callCsvScheduler" target-entity="Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler" fetch="LAZY">
+    <many-to-one field="callCsvScheduler" target-entity="Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface" fetch="LAZY">
       <join-columns>
         <join-column name="callCsvSchedulerId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>

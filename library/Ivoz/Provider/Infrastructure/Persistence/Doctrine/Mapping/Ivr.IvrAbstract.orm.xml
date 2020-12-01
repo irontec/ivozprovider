@@ -47,57 +47,57 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" fetch="LAZY">
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="welcomeLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+    <many-to-one field="welcomeLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="welcomeLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="noInputLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+    <many-to-one field="noInputLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="noInputLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="errorLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+    <many-to-one field="errorLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="errorLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="successLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+    <many-to-one field="successLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="successLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="noInputExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\Extension" fetch="LAZY">
+    <many-to-one field="noInputExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="noInputExtensionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="errorExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\Extension" fetch="LAZY">
+    <many-to-one field="errorExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="errorExtensionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="noInputVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+    <many-to-one field="noInputVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
       <join-columns>
         <join-column name="noInputVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="errorVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+    <many-to-one field="errorVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
       <join-columns>
         <join-column name="errorVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="noInputNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+    <many-to-one field="noInputNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
         <join-column name="noInputNumberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="errorNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+    <many-to-one field="errorNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
         <join-column name="errorNumberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>

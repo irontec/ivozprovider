@@ -12,13 +12,13 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="pickUpRelUsers" target-entity="Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser" mapped-by="user" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="pickUpRelUsers" target-entity="Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface" mapped-by="user" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>
       </cascade>
     </one-to-many>
-    <one-to-many field="queueMembers" target-entity="Ivoz\Provider\Domain\Model\QueueMember\QueueMember" mapped-by="user" fetch="LAZY"/>
-    <one-to-many field="callForwardSettings" target-entity="Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting" mapped-by="user" fetch="LAZY"/>
+    <one-to-many field="queueMembers" target-entity="Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface" mapped-by="user" fetch="LAZY"/>
+    <one-to-many field="callForwardSettings" target-entity="Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface" mapped-by="user" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

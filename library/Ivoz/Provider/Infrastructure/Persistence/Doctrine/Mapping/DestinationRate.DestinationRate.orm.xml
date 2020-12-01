@@ -12,5 +12,7 @@
         <option name="unsigned">1</option>
       </options>
     </id>
+    <one-to-one field="tpRate" target-entity="Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface" mapped-by="destinationRate" fetch="LAZY"/>
+    <one-to-one field="tpDestinationRate" target-entity="Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface" mapped-by="destinationRate" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

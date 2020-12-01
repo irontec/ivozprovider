@@ -12,5 +12,6 @@
         <option name="unsigned">1</option>
       </options>
     </id>
+    <one-to-one field="trunksUacreg" target-entity="Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface" mapped-by="ddiProviderRegistration" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

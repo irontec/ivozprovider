@@ -4,12 +4,12 @@
     <unique-constraints>
       <unique-constraint name="featureRelCompany_feature_brand" columns="featureId,companyId"/>
     </unique-constraints>
-    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" inversed-by="relFeatures" fetch="LAZY">
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="relFeatures" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="feature" target-entity="Ivoz\Provider\Domain\Model\Feature\Feature" fetch="LAZY">
+    <many-to-one field="feature" target-entity="Ivoz\Provider\Domain\Model\Feature\FeatureInterface" fetch="LAZY">
       <join-columns>
         <join-column name="featureId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>

@@ -35,22 +35,22 @@
     </field>
     <field name="nextExecution" type="datetime" column="nextExecution" nullable="true"/>
     <field name="taxRate" type="decimal" column="taxRate" precision="10" scale="3" nullable="true"/>
-    <many-to-one field="invoiceTemplate" target-entity="Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate" fetch="LAZY">
+    <many-to-one field="invoiceTemplate" target-entity="Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface" fetch="LAZY">
       <join-columns>
         <join-column name="invoiceTemplateId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\Brand" fetch="LAZY">
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" fetch="LAZY">
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="numberSequence" target-entity="Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence" fetch="LAZY">
+    <many-to-one field="numberSequence" target-entity="Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface" fetch="LAZY">
       <join-columns>
         <join-column name="invoiceNumberSequenceId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>

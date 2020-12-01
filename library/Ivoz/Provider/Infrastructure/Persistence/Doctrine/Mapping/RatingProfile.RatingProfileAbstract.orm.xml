@@ -9,22 +9,22 @@
         <option name="default">CURRENT_TIMESTAMP</option>
       </options>
     </field>
-    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" inversed-by="ratingProfiles" fetch="LAZY">
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="ratingProfiles" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\Carrier" inversed-by="ratingProfiles" fetch="LAZY">
+    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\CarrierInterface" inversed-by="ratingProfiles" fetch="LAZY">
       <join-columns>
         <join-column name="carrierId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="ratingPlanGroup" target-entity="Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup" fetch="LAZY">
+    <many-to-one field="ratingPlanGroup" target-entity="Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface" fetch="LAZY">
       <join-columns>
         <join-column name="ratingPlanGroupId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="routingTag" target-entity="Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag" fetch="LAZY">
+    <many-to-one field="routingTag" target-entity="Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface" fetch="LAZY">
       <join-columns>
         <join-column name="routingTagId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>

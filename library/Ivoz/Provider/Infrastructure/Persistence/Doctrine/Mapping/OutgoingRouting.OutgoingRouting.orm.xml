@@ -12,10 +12,10 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-one field="tpLcrRule" target-entity="Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRule" mapped-by="outgoingRouting" fetch="LAZY"/>
-    <one-to-many field="lcrRules" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule" mapped-by="outgoingRouting" fetch="LAZY"/>
-    <one-to-many field="lcrRuleTargets" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget" mapped-by="outgoingRouting" fetch="LAZY"/>
-    <one-to-many field="relCarriers" target-entity="Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier" mapped-by="outgoingRouting" orphan-removal="true" fetch="LAZY">
+    <one-to-one field="tpLcrRule" target-entity="Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface" mapped-by="outgoingRouting" fetch="LAZY"/>
+    <one-to-many field="lcrRules" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface" mapped-by="outgoingRouting" fetch="LAZY"/>
+    <one-to-many field="lcrRuleTargets" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface" mapped-by="outgoingRouting" fetch="LAZY"/>
+    <one-to-many field="relCarriers" target-entity="Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface" mapped-by="outgoingRouting" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>

@@ -58,8 +58,7 @@
         <option name="default"/>
       </options>
     </field>
-    <one-to-one field="trunksUacreg" target-entity="Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg" mapped-by="ddiProviderRegistration" fetch="LAZY"/>
-    <many-to-one field="ddiProvider" target-entity="Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider" inversed-by="ddiProviderRegistrations" fetch="LAZY">
+    <many-to-one field="ddiProvider" target-entity="Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface" inversed-by="ddiProviderRegistrations" fetch="LAZY">
       <join-columns>
         <join-column name="ddiProviderId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>

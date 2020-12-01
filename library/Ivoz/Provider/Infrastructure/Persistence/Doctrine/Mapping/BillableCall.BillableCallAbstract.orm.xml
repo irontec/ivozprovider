@@ -56,6 +56,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="endpointName" type="string" length="65" column="endpointName" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="direction" type="string" column="direction" nullable="true">
       <options>
         <option name="fixed"/>
@@ -63,52 +68,47 @@
         <option name="default">outbound</option>
       </options>
     </field>
-    <field name="endpointName" type="string" length="65" column="endpointName" nullable="true">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
-    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\Brand" fetch="LAZY">
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" fetch="LAZY">
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\Carrier" fetch="LAZY">
+    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\CarrierInterface" fetch="LAZY">
       <join-columns>
         <join-column name="carrierId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="destination" target-entity="Ivoz\Provider\Domain\Model\Destination\Destination" fetch="LAZY">
+    <many-to-one field="destination" target-entity="Ivoz\Provider\Domain\Model\Destination\DestinationInterface" fetch="LAZY">
       <join-columns>
         <join-column name="destinationId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="ratingPlanGroup" target-entity="Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup" fetch="LAZY">
+    <many-to-one field="ratingPlanGroup" target-entity="Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface" fetch="LAZY">
       <join-columns>
         <join-column name="ratingPlanGroupId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="invoice" target-entity="Ivoz\Provider\Domain\Model\Invoice\Invoice" fetch="LAZY">
+    <many-to-one field="invoice" target-entity="Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface" fetch="LAZY">
       <join-columns>
         <join-column name="invoiceId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="trunksCdr" target-entity="Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr" fetch="LAZY">
+    <many-to-one field="trunksCdr" target-entity="Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface" fetch="LAZY">
       <join-columns>
         <join-column name="trunksCdrId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="ddi" target-entity="Ivoz\Provider\Domain\Model\Ddi\Ddi" fetch="LAZY">
+    <many-to-one field="ddi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
       <join-columns>
         <join-column name="ddiId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="ddiProvider" target-entity="Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider" fetch="LAZY">
+    <many-to-one field="ddiProvider" target-entity="Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface" fetch="LAZY">
       <join-columns>
         <join-column name="ddiProviderId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>

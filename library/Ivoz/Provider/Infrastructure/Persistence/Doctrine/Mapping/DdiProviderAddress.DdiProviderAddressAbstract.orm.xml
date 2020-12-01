@@ -11,7 +11,6 @@
         <option name="fixed"/>
       </options>
     </field>
-    <one-to-one field="trunksAddress" target-entity="Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface" mapped-by="ddiProviderAddress" fetch="LAZY"/>
     <many-to-one field="ddiProvider" target-entity="Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface" inversed-by="ddiProviderAddresses" fetch="LAZY">
       <join-columns>
         <join-column name="ddiProviderId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>

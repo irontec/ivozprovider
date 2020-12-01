@@ -12,6 +12,6 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="users" target-entity="Ivoz\Provider\Domain\Model\User\User" mapped-by="extension" fetch="LAZY"/>
+    <one-to-many field="users" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" mapped-by="extension" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

@@ -7,7 +7,7 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-one field="tpTiming" target-entity="Ivoz\Cgr\Domain\Model\TpTiming\TpTiming" mapped-by="ratingPlan" fetch="LAZY"/>
-    <one-to-one field="tpRatingPlan" target-entity="Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan" mapped-by="ratingPlan" fetch="LAZY"/>
+    <one-to-one field="tpTiming" target-entity="Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface" mapped-by="ratingPlan" fetch="LAZY"/>
+    <one-to-one field="tpRatingPlan" target-entity="Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface" mapped-by="ratingPlan" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

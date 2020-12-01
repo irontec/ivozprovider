@@ -36,32 +36,32 @@
         <option name="unsigned">1</option>
       </options>
     </field>
-    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\User" inversed-by="callForwardSettings" fetch="LAZY">
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" inversed-by="callForwardSettings" fetch="LAZY">
       <join-columns>
         <join-column name="userId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\Extension" fetch="LAZY">
+    <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="extensionId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="voiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+    <many-to-one field="voiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
       <join-columns>
         <join-column name="voiceMailUserId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
         <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice" inversed-by="callForwardSettings" fetch="LAZY">
+    <many-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" inversed-by="callForwardSettings" fetch="LAZY">
       <join-columns>
         <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="retailAccount" target-entity="Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount" inversed-by="callForwardSettings" fetch="LAZY">
+    <many-to-one field="retailAccount" target-entity="Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface" inversed-by="callForwardSettings" fetch="LAZY">
       <join-columns>
         <join-column name="retailAccountId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>

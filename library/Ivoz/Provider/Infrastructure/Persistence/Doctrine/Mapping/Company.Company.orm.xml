@@ -12,27 +12,27 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="extensions" target-entity="Ivoz\Provider\Domain\Model\Extension\Extension" mapped-by="company" fetch="LAZY"/>
-    <one-to-many field="ddis" target-entity="Ivoz\Provider\Domain\Model\Ddi\Ddi" mapped-by="company" fetch="LAZY"/>
-    <one-to-many field="friends" target-entity="Ivoz\Provider\Domain\Model\Friend\Friend" mapped-by="company" fetch="LAZY"/>
-    <one-to-many field="companyServices" target-entity="Ivoz\Provider\Domain\Model\CompanyService\CompanyService" mapped-by="company" fetch="LAZY"/>
-    <one-to-many field="terminals" target-entity="Ivoz\Provider\Domain\Model\Terminal\Terminal" mapped-by="company" fetch="LAZY"/>
-    <one-to-many field="ratingProfiles" target-entity="Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile" mapped-by="company" fetch="LAZY"/>
-    <one-to-many field="musicsOnHold" target-entity="Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold" mapped-by="company" fetch="LAZY"/>
-    <one-to-many field="recordings" target-entity="Ivoz\Provider\Domain\Model\Recording\Recording" mapped-by="company" fetch="LAZY"/>
-    <one-to-many field="relFeatures" target-entity="Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany" mapped-by="company" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="extensions" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" mapped-by="company" fetch="LAZY"/>
+    <one-to-many field="ddis" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" mapped-by="company" fetch="LAZY"/>
+    <one-to-many field="friends" target-entity="Ivoz\Provider\Domain\Model\Friend\FriendInterface" mapped-by="company" fetch="LAZY"/>
+    <one-to-many field="companyServices" target-entity="Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface" mapped-by="company" fetch="LAZY"/>
+    <one-to-many field="terminals" target-entity="Ivoz\Provider\Domain\Model\Terminal\TerminalInterface" mapped-by="company" fetch="LAZY"/>
+    <one-to-many field="ratingProfiles" target-entity="Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface" mapped-by="company" fetch="LAZY"/>
+    <one-to-many field="musicsOnHold" target-entity="Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface" mapped-by="company" fetch="LAZY"/>
+    <one-to-many field="recordings" target-entity="Ivoz\Provider\Domain\Model\Recording\RecordingInterface" mapped-by="company" fetch="LAZY"/>
+    <one-to-many field="relFeatures" target-entity="Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface" mapped-by="company" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>
       </cascade>
     </one-to-many>
-    <one-to-many field="relCodecs" target-entity="Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodec" mapped-by="company" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="relCodecs" target-entity="Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface" mapped-by="company" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>
       </cascade>
     </one-to-many>
-    <one-to-many field="relRoutingTags" target-entity="Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag" mapped-by="company" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="relRoutingTags" target-entity="Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface" mapped-by="company" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>

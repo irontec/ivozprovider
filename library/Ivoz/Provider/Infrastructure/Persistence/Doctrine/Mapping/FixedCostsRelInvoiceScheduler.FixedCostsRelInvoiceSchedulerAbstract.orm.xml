@@ -9,12 +9,12 @@
         <option name="unsigned">1</option>
       </options>
     </field>
-    <many-to-one field="fixedCost" target-entity="Ivoz\Provider\Domain\Model\FixedCost\FixedCost" fetch="LAZY">
+    <many-to-one field="fixedCost" target-entity="Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface" fetch="LAZY">
       <join-columns>
         <join-column name="fixedCostId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="invoiceScheduler" target-entity="Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler" inversed-by="relFixedCosts" fetch="LAZY">
+    <many-to-one field="invoiceScheduler" target-entity="Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface" inversed-by="relFixedCosts" fetch="LAZY">
       <join-columns>
         <join-column name="invoiceSchedulerId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>

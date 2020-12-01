@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <mapped-superclass name="Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListAbstract" table="external_call_filter_black_list_abstract">
-    <many-to-one field="filter" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter" inversed-by="blackLists" fetch="LAZY">
+    <many-to-one field="filter" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface" inversed-by="blackLists" fetch="LAZY">
       <join-columns>
         <join-column name="filterId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="matchlist" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchList" fetch="LAZY">
+    <many-to-one field="matchlist" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchListInterface" fetch="LAZY">
       <join-columns>
         <join-column name="matchListId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>

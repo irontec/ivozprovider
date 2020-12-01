@@ -22,12 +22,12 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="matchList" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchList" inversed-by="patterns" fetch="LAZY">
+    <many-to-one field="matchList" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchListInterface" inversed-by="patterns" fetch="LAZY">
       <join-columns>
         <join-column name="matchListId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
         <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>

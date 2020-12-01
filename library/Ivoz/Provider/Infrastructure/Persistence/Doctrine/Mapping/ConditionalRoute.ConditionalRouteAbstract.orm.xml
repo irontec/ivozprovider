@@ -22,52 +22,52 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" fetch="LAZY">
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="ivr" target-entity="Ivoz\Provider\Domain\Model\Ivr\Ivr" fetch="LAZY">
+    <many-to-one field="ivr" target-entity="Ivoz\Provider\Domain\Model\Ivr\IvrInterface" fetch="LAZY">
       <join-columns>
         <join-column name="ivrId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="huntGroup" target-entity="Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup" fetch="LAZY">
+    <many-to-one field="huntGroup" target-entity="Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface" fetch="LAZY">
       <join-columns>
         <join-column name="huntGroupId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="voicemailUser" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+    <many-to-one field="voicemailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
       <join-columns>
         <join-column name="voiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\User" fetch="LAZY">
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
       <join-columns>
         <join-column name="userId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="queue" target-entity="Ivoz\Provider\Domain\Model\Queue\Queue" fetch="LAZY">
+    <many-to-one field="queue" target-entity="Ivoz\Provider\Domain\Model\Queue\QueueInterface" fetch="LAZY">
       <join-columns>
         <join-column name="queueId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="locution" target-entity="Ivoz\Provider\Domain\Model\Locution\Locution" fetch="LAZY">
+    <many-to-one field="locution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="locutionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="conferenceRoom" target-entity="Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom" fetch="LAZY">
+    <many-to-one field="conferenceRoom" target-entity="Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface" fetch="LAZY">
       <join-columns>
         <join-column name="conferenceRoomId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\Extension" fetch="LAZY">
+    <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="extensionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+    <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
         <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>

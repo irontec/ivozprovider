@@ -12,13 +12,13 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="outgoingRoutings" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting" mapped-by="routingPattern" fetch="LAZY"/>
-    <one-to-many field="relPatternGroups" target-entity="Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern" mapped-by="routingPattern" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="outgoingRoutings" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface" mapped-by="routingPattern" fetch="LAZY"/>
+    <one-to-many field="relPatternGroups" target-entity="Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface" mapped-by="routingPattern" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>
       </cascade>
     </one-to-many>
-    <one-to-many field="lcrRules" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule" mapped-by="routingPattern" fetch="LAZY"/>
+    <one-to-many field="lcrRules" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface" mapped-by="routingPattern" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

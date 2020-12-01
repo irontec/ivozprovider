@@ -9,12 +9,12 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" inversed-by="companyServices" fetch="LAZY">
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="companyServices" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="service" target-entity="Ivoz\Provider\Domain\Model\Service\Service" fetch="LAZY">
+    <many-to-one field="service" target-entity="Ivoz\Provider\Domain\Model\Service\ServiceInterface" fetch="LAZY">
       <join-columns>
         <join-column name="serviceId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>

@@ -47,37 +47,37 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\Brand" inversed-by="outgoingRoutings" fetch="LAZY">
+    <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" inversed-by="outgoingRoutings" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\Company" fetch="LAZY">
+    <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\Carrier" inversed-by="outgoingRoutings" fetch="LAZY">
+    <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\CarrierInterface" inversed-by="outgoingRoutings" fetch="LAZY">
       <join-columns>
         <join-column name="carrierId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="routingPattern" target-entity="Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern" inversed-by="outgoingRoutings" fetch="LAZY">
+    <many-to-one field="routingPattern" target-entity="Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface" inversed-by="outgoingRoutings" fetch="LAZY">
       <join-columns>
         <join-column name="routingPatternId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="routingPatternGroup" target-entity="Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup" inversed-by="outgoingRoutings" fetch="LAZY">
+    <many-to-one field="routingPatternGroup" target-entity="Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface" inversed-by="outgoingRoutings" fetch="LAZY">
       <join-columns>
         <join-column name="routingPatternGroupId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="routingTag" target-entity="Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag" inversed-by="outgoingRoutings" fetch="LAZY">
+    <many-to-one field="routingTag" target-entity="Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface" inversed-by="outgoingRoutings" fetch="LAZY">
       <join-columns>
         <join-column name="routingTagId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="clidCountry" target-entity="Ivoz\Provider\Domain\Model\Country\Country" fetch="LAZY">
+    <many-to-one field="clidCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
         <join-column name="clidCountryId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>

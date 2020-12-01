@@ -27,17 +27,17 @@
         <option name="default">1</option>
       </options>
     </field>
-    <many-to-one field="outgoingDdiRule" target-entity="Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule" inversed-by="patterns" fetch="LAZY">
+    <many-to-one field="outgoingDdiRule" target-entity="Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface" inversed-by="patterns" fetch="LAZY">
       <join-columns>
         <join-column name="outgoingDDIRuleId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="matchList" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchList" fetch="LAZY">
+    <many-to-one field="matchList" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchListInterface" fetch="LAZY">
       <join-columns>
         <join-column name="matchListId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="forcedDdi" target-entity="Ivoz\Provider\Domain\Model\Ddi\Ddi" fetch="LAZY">
+    <many-to-one field="forcedDdi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
       <join-columns>
         <join-column name="forcedDdiId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>

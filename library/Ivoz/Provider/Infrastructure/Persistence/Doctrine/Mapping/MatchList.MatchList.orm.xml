@@ -12,6 +12,6 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="patterns" target-entity="Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern" mapped-by="matchList" fetch="LAZY"/>
+    <one-to-many field="patterns" target-entity="Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface" mapped-by="matchList" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

@@ -12,24 +12,24 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="companies" target-entity="Ivoz\Provider\Domain\Model\Company\Company" mapped-by="brand" fetch="LAZY"/>
-    <one-to-many field="services" target-entity="Ivoz\Provider\Domain\Model\BrandService\BrandService" mapped-by="brand" fetch="LAZY"/>
-    <one-to-many field="urls" target-entity="Ivoz\Provider\Domain\Model\WebPortal\WebPortal" mapped-by="brand" fetch="LAZY"/>
-    <one-to-many field="relFeatures" target-entity="Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand" mapped-by="brand" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="companies" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" mapped-by="brand" fetch="LAZY"/>
+    <one-to-many field="services" target-entity="Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface" mapped-by="brand" fetch="LAZY"/>
+    <one-to-many field="urls" target-entity="Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface" mapped-by="brand" fetch="LAZY"/>
+    <one-to-many field="relFeatures" target-entity="Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface" mapped-by="brand" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>
       </cascade>
     </one-to-many>
-    <one-to-many field="relProxyTrunks" target-entity="Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand" mapped-by="brand" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="relProxyTrunks" target-entity="Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface" mapped-by="brand" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>
       </cascade>
     </one-to-many>
-    <one-to-many field="residentialDevices" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice" mapped-by="brand" fetch="LAZY"/>
-    <one-to-many field="musicsOnHold" target-entity="Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold" mapped-by="brand" fetch="LAZY"/>
-    <one-to-many field="matchLists" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchList" mapped-by="brand" fetch="LAZY"/>
-    <one-to-many field="outgoingRoutings" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting" mapped-by="brand" fetch="LAZY"/>
+    <one-to-many field="residentialDevices" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" mapped-by="brand" fetch="LAZY"/>
+    <one-to-many field="musicsOnHold" target-entity="Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface" mapped-by="brand" fetch="LAZY"/>
+    <one-to-many field="matchLists" target-entity="Ivoz\Provider\Domain\Model\MatchList\MatchListInterface" mapped-by="brand" fetch="LAZY"/>
+    <one-to-many field="outgoingRoutings" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface" mapped-by="brand" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

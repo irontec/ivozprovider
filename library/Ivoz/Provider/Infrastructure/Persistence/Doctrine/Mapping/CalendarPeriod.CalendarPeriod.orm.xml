@@ -12,7 +12,7 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="relSchedules" target-entity="Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule" mapped-by="calendarPeriod" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="relSchedules" target-entity="Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface" mapped-by="calendarPeriod" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>

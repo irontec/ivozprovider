@@ -12,5 +12,6 @@
         <option name="unsigned">1</option>
       </options>
     </id>
+    <one-to-one field="lcrGateway" target-entity="Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface" mapped-by="carrierServer" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

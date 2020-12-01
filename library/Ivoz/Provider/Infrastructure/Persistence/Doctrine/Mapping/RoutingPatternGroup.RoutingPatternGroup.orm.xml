@@ -12,12 +12,12 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="relPatterns" target-entity="Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern" mapped-by="routingPatternGroup" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="relPatterns" target-entity="Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface" mapped-by="routingPatternGroup" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>
       </cascade>
     </one-to-many>
-    <one-to-many field="outgoingRoutings" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting" mapped-by="routingPatternGroup" fetch="LAZY"/>
+    <one-to-many field="outgoingRoutings" target-entity="Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface" mapped-by="routingPatternGroup" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

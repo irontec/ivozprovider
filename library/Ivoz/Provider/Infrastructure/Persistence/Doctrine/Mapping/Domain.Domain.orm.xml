@@ -12,8 +12,8 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="friends" target-entity="Ivoz\Provider\Domain\Model\Friend\Friend" mapped-by="domain" fetch="LAZY"/>
-    <one-to-many field="residentialDevices" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice" mapped-by="domain" fetch="LAZY"/>
-    <one-to-many field="terminals" target-entity="Ivoz\Provider\Domain\Model\Terminal\Terminal" mapped-by="domain" fetch="LAZY"/>
+    <one-to-many field="friends" target-entity="Ivoz\Provider\Domain\Model\Friend\FriendInterface" mapped-by="domain" fetch="LAZY"/>
+    <one-to-many field="residentialDevices" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" mapped-by="domain" fetch="LAZY"/>
+    <one-to-many field="terminals" target-entity="Ivoz\Provider\Domain\Model\Terminal\TerminalInterface" mapped-by="domain" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

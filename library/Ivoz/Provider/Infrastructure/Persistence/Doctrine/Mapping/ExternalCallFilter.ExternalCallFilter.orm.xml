@@ -12,25 +12,25 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="calendars" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar" mapped-by="filter" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="calendars" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface" mapped-by="filter" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>
       </cascade>
     </one-to-many>
-    <one-to-many field="blackLists" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList" mapped-by="filter" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="blackLists" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface" mapped-by="filter" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>
       </cascade>
     </one-to-many>
-    <one-to-many field="whiteLists" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteList" mapped-by="filter" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="whiteLists" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface" mapped-by="filter" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>
       </cascade>
     </one-to-many>
-    <one-to-many field="schedules" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule" mapped-by="filter" orphan-removal="true" fetch="LAZY">
+    <one-to-many field="schedules" target-entity="Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface" mapped-by="filter" orphan-removal="true" fetch="LAZY">
       <cascade>
         <cascade-remove/>
         <cascade-persist/>

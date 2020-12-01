@@ -17,14 +17,12 @@
         <option name="default">0s</option>
       </options>
     </field>
-    <one-to-one field="tpRate" target-entity="Ivoz\Cgr\Domain\Model\TpRate\TpRate" mapped-by="destinationRate" fetch="LAZY"/>
-    <one-to-one field="tpDestinationRate" target-entity="Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate" mapped-by="destinationRate" fetch="LAZY"/>
-    <many-to-one field="destinationRateGroup" target-entity="Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup" inversed-by="destinationRates" fetch="LAZY">
+    <many-to-one field="destinationRateGroup" target-entity="Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface" inversed-by="destinationRates" fetch="LAZY">
       <join-columns>
         <join-column name="destinationRateGroupId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="destination" target-entity="Ivoz\Provider\Domain\Model\Destination\Destination" inversed-by="destinationRates" fetch="LAZY">
+    <many-to-one field="destination" target-entity="Ivoz\Provider\Domain\Model\Destination\DestinationInterface" inversed-by="destinationRates" fetch="LAZY">
       <join-columns>
         <join-column name="destinationId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>

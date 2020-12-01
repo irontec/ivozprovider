@@ -4,8 +4,8 @@
     <unique-constraints>
       <unique-constraint name="brand_name" columns="name"/>
     </unique-constraints>
-    <embedded name="invoice" class="Ivoz\Provider\Domain\Model\Brand\Invoice" use-column-prefix="false" />
     <embedded name="logo" class="Ivoz\Provider\Domain\Model\Brand\Logo" use-column-prefix="false" />
+    <embedded name="invoice" class="Ivoz\Provider\Domain\Model\Brand\Invoice" use-column-prefix="false" />
     <field name="name" type="string" column="name" length="75" nullable="false">
       <options>
         <option name="fixed"/>
@@ -32,42 +32,42 @@
         <option name="default">0</option>
       </options>
     </field>
-    <many-to-one field="domain" target-entity="Ivoz\Provider\Domain\Model\Domain\Domain" fetch="LAZY">
+    <many-to-one field="domain" target-entity="Ivoz\Provider\Domain\Model\Domain\DomainInterface" fetch="LAZY">
       <join-columns>
         <join-column name="domainId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="language" target-entity="Ivoz\Provider\Domain\Model\Language\Language" fetch="LAZY">
+    <many-to-one field="language" target-entity="Ivoz\Provider\Domain\Model\Language\LanguageInterface" fetch="LAZY">
       <join-columns>
         <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="defaultTimezone" target-entity="Ivoz\Provider\Domain\Model\Timezone\Timezone" fetch="LAZY">
+    <many-to-one field="defaultTimezone" target-entity="Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface" fetch="LAZY">
       <join-columns>
         <join-column name="defaultTimezoneId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="currency" target-entity="Ivoz\Provider\Domain\Model\Currency\Currency" fetch="LAZY">
+    <many-to-one field="currency" target-entity="Ivoz\Provider\Domain\Model\Currency\CurrencyInterface" fetch="LAZY">
       <join-columns>
         <join-column name="currencyId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="voicemailNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate" fetch="LAZY">
+    <many-to-one field="voicemailNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
       <join-columns>
         <join-column name="vmNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="faxNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate" fetch="LAZY">
+    <many-to-one field="faxNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
       <join-columns>
         <join-column name="faxNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="invoiceNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate" fetch="LAZY">
+    <many-to-one field="invoiceNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
       <join-columns>
         <join-column name="invoiceNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="callCsvNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate" fetch="LAZY">
+    <many-to-one field="callCsvNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">
       <join-columns>
         <join-column name="callCsvNotificationTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>

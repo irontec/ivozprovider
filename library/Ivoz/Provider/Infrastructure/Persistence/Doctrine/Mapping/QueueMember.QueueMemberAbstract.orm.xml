@@ -6,12 +6,12 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <many-to-one field="queue" target-entity="Ivoz\Provider\Domain\Model\Queue\Queue" fetch="LAZY">
+    <many-to-one field="queue" target-entity="Ivoz\Provider\Domain\Model\Queue\QueueInterface" fetch="LAZY">
       <join-columns>
         <join-column name="queueId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\User" inversed-by="queueMembers" fetch="LAZY">
+    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" inversed-by="queueMembers" fetch="LAZY">
       <join-columns>
         <join-column name="userId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
       </join-columns>
