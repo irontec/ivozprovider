@@ -80,12 +80,18 @@ production:
     price:
       title: _('Price')
       type: text
+      search:
+        as: numeric
     duration:
       title: _('Duration')
       type: text
+      search:
+        as: numeric
     cost:
       title: _('Cost')
       type: text
+      search:
+        as: numeric
     carrierName:
       title: _('Carrier')
       type: text
