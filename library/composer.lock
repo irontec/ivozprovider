@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1275f5ccd312f903337b715a8b390c2d",
+    "content-hash": "316029fc0678fe6ee7cfd6baa2c7f1f3",
     "packages": [
         {
             "name": "api-platform/core",
@@ -845,6 +845,7 @@
                 "cache",
                 "caching"
             ],
+            "abandoned": true,
             "time": "2018-11-09T06:25:35+00:00"
         },
         {
@@ -1691,11 +1692,16 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "3.1",
+            "version": "3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/irontec/ivoz-api.git",
+                "reference": "1acb1e369a237e903290249b846c4a139b76cc39"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/c3f1ae4c1f822ce24d75a07ef24348b271ca483c",
-                "reference": "c3f1ae4c1f822ce24d75a07ef24348b271ca483c",
+                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/1acb1e369a237e903290249b846c4a139b76cc39",
+                "reference": "1acb1e369a237e903290249b846c4a139b76cc39",
                 "shasum": ""
             },
             "require": {
@@ -1736,26 +1742,26 @@
                 }
             ],
             "description": "Api library built on api-platform for ivozprovider",
-            "time": "2020-07-02T09:16:06+00:00"
+            "time": "2020-12-10T16:08:03+00:00"
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "3.3.1",
+            "version": "3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api-bundle.git",
-                "reference": "7de4286776923ac975e0a347cf4f973313fe4661"
+                "reference": "7cbd9f116765c9cee95fd7769dcd078567d2d8e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/7de4286776923ac975e0a347cf4f973313fe4661",
-                "reference": "7de4286776923ac975e0a347cf4f973313fe4661",
+                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/7cbd9f116765c9cee95fd7769dcd078567d2d8e7",
+                "reference": "7cbd9f116765c9cee95fd7769dcd078567d2d8e7",
                 "shasum": ""
             },
             "require": {
                 "api-platform/core": "2.2.*",
                 "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
-                "irontec/ivoz-api": "^3.0",
+                "irontec/ivoz-api": "^3.2",
                 "irontec/ivoz-core-bundle": "^3.0",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^1.5",
@@ -1787,7 +1793,7 @@
                 }
             ],
             "description": "Symfony bridge for ivoz-api",
-            "time": "2020-06-11T09:58:22+00:00"
+            "time": "2020-12-10T16:10:37+00:00"
         },
         {
             "name": "irontec/ivoz-core",
@@ -1947,8 +1953,7 @@
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "05c76c4cd71e69314bd20871776a1e9debe6cc78",
-                "shasum": null
+                "reference": "05c76c4cd71e69314bd20871776a1e9debe6cc78"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.1",
@@ -10839,5 +10844,6 @@
     },
     "platform-overrides": {
         "php": "7.0.19"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }

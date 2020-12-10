@@ -1539,11 +1539,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "3.1.0.0",
+            "version": "3.2.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-api",
-                "reference": "c3f1ae4c1f822ce24d75a07ef24348b271ca483c",
+                "reference": "1acb1e369a237e903290249b846c4a139b76cc39",
                 "shasum": null
             },
             "require": {
@@ -1589,17 +1589,17 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "3.3.1.0",
+            "version": "3.4.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-api-bundle",
-                "reference": "7de4286776923ac975e0a347cf4f973313fe4661",
+                "reference": "7cbd9f116765c9cee95fd7769dcd078567d2d8e7",
                 "shasum": null
             },
             "require": {
                 "api-platform/core": "2.2.*",
                 "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
-                "irontec/ivoz-api": "^3.0",
+                "irontec/ivoz-api": "^3.2",
                 "irontec/ivoz-core-bundle": "^3.0",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^1.5",
@@ -4276,7 +4276,7 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "3.4.43.0",
+            "version": "3.4.44.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/options-resolver",
@@ -4968,7 +4968,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "3.4.43.0",
+            "version": "3.4.44.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/process",
@@ -5077,7 +5077,7 @@
         },
         {
             "name": "symfony/property-info",
-            "version": "3.4.43.0",
+            "version": "3.4.44.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/property-info",
@@ -5350,7 +5350,7 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "3.4.43.0",
+            "version": "3.4.44.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/security-bundle",
@@ -5568,7 +5568,7 @@
         },
         {
             "name": "symfony/templating",
-            "version": "3.4.43.0",
+            "version": "3.4.44.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/templating",
@@ -5773,7 +5773,7 @@
         },
         {
             "name": "symfony/twig-bundle",
-            "version": "3.4.43.0",
+            "version": "3.4.44.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/twig-bundle",
