@@ -69,6 +69,7 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
             ->setUserId($user->getId())
             ->setContext($user->getVoiceMailContext())
             ->setMailbox($user->getVoiceMailUser())
+            ->setCallback('users')
             ->setFullname($fullName)
             ->setTz($user->getTimezone()->getTz());
 
