@@ -60,6 +60,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
             ->setResidentialDeviceId($residentialDevice->getId())
             ->setContext($residentialDevice->getVoiceMailContext())
             ->setMailbox($residentialDevice->getVoiceMailUser())
+            ->setCallback('residential')
             ->setTz($company->getDefaultTimezone()->getTz());
 
         $this->entityTools->persistDto(
