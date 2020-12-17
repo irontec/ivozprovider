@@ -47,6 +47,10 @@ Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEn
 Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress:
   itemOperations:
     get: ~
+    delete:
+      method: 'DELETE'
+      path: '/banned_addresses/antibruteforce/{id}'
+      route_name: 'antibruteforce_banned_address_delete_item'
   collectionOperations:
     get: ~
   attributes:
@@ -57,7 +61,8 @@ Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress:
           eq: "user.getBrand().getId()"
     write_access_control:
       ROLE_BRAND_ADMIN:
-        raw: "FALSE"
+        blocker:
+          eq: "'antibruteforce'"
 
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
   itemOperations:
