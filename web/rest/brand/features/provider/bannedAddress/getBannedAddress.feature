@@ -19,6 +19,12 @@ Feature: Manage banned addresses
               "lastTimeBanned": "2020-03-10 11:00:00",
               "id": 2,
               "company": 1
+          },
+          {
+              "ip": "8.8.8.9",
+              "lastTimeBanned": "2020-03-10 11:00:00",
+              "id": 3,
+              "company": 1
           }
       ]
     """
@@ -35,6 +41,7 @@ Feature: Manage banned addresses
       {
           "ip": "8.8.8.8",
           "blocker": "ipfilter",
+          "aor": "aor",
           "description": null,
           "lastTimeBanned": "2020-03-10 11:00:00",
           "id": 2,
