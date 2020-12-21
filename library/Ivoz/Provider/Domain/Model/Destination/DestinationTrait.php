@@ -5,10 +5,10 @@ namespace Ivoz\Provider\Domain\Model\Destination;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 
 /**
 * @codeCoverageIgnore
@@ -21,16 +21,16 @@ trait DestinationTrait
     protected $id;
 
     /**
-     * @var ArrayCollection
-     * DestinationRateInterface mappedBy destination
-     */
-    protected $destinationRates;
-
-    /**
      * @var TpDestinationInterface
      * mappedBy destination
      */
     protected $tpDestination;
+
+    /**
+     * @var ArrayCollection
+     * DestinationRateInterface mappedBy destination
+     */
+    protected $destinationRates;
 
     /**
      * Constructor
@@ -56,18 +56,18 @@ trait DestinationTrait
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getDestinationRates())) {
-            $self->replaceDestinationRates(
-                $fkTransformer->transformCollection(
-                    $dto->getDestinationRates()
-                )
-            );
-        }
-
         if (!is_null($dto->getTpDestination())) {
             $self->setTpDestination(
                 $fkTransformer->transform(
                     $dto->getTpDestination()
+                )
+            );
+        }
+
+        if (!is_null($dto->getDestinationRates())) {
+            $self->replaceDestinationRates(
+                $fkTransformer->transformCollection(
+                    $dto->getDestinationRates()
                 )
             );
         }
@@ -92,18 +92,18 @@ trait DestinationTrait
         ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getDestinationRates())) {
-            $this->replaceDestinationRates(
-                $fkTransformer->transformCollection(
-                    $dto->getDestinationRates()
-                )
-            );
-        }
-
         if (!is_null($dto->getTpDestination())) {
             $this->setTpDestination(
                 $fkTransformer->transform(
                     $dto->getTpDestination()
+                )
+            );
+        }
+
+        if (!is_null($dto->getDestinationRates())) {
+            $this->replaceDestinationRates(
+                $fkTransformer->transformCollection(
+                    $dto->getDestinationRates()
                 )
             );
         }
@@ -132,6 +132,26 @@ trait DestinationTrait
         return parent::__toArray() + [
             'id' => self::getId()
         ];
+    }
+
+    /**
+     * @var TpDestinationInterface
+     * mappedBy destination
+     */
+    public function setTpDestination(TpDestinationInterface $tpDestination): DestinationInterface
+    {
+        $this->tpDestination = $tpDestination;
+
+        return $this;
+    }
+
+    /**
+     * Get tpDestination
+     * @return TpDestinationInterface
+     */
+    public function getTpDestination(): ?TpDestinationInterface
+    {
+        return $this->tpDestination;
     }
 
     /**
@@ -209,26 +229,6 @@ trait DestinationTrait
         }
 
         return $this->destinationRates->toArray();
-    }
-
-    /**
-     * @var TpDestinationInterface
-     * mappedBy destination
-     */
-    public function setTpDestination(TpDestinationInterface $tpDestination): DestinationInterface
-    {
-        $this->tpDestination = $tpDestination;
-
-        return $this;
-    }
-
-    /**
-     * Get tpDestination
-     * @return TpDestinationInterface
-     */
-    public function getTpDestination(): ?TpDestinationInterface
-    {
-        return $this->tpDestination;
     }
 
 }
