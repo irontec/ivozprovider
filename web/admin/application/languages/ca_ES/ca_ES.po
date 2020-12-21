@@ -116,6 +116,9 @@ msgstr "Afegeix a %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Afegeix patró a %2s"
 
+msgid "Address successfully unbanned"
+msgstr "Dirección desbloqueada con éxito"
+
 msgid "Admin"
 msgstr "Administrador"
 
@@ -2199,6 +2202,9 @@ msgstr "Ajuda de preus"
 
 msgid "Priority"
 msgstr "Prioritat"
+
+msgid "Problems unbanning address"
+msgstr "Se produjo un error al desbloquedar la dirección"
 
 msgid "Processing"
 msgstr "Processant"
