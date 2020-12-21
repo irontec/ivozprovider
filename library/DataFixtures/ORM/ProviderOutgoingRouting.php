@@ -28,6 +28,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
             $this->setType("pattern");
             $this->setPriority(1);
             $this->setWeight(1);
+            $this->setStopper(false);
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
             $this->setCarrier($fixture->getReference('_reference_ProviderCarrier1'));
@@ -49,6 +50,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
             $this->setType("pattern");
             $this->setPriority(11);
             $this->setWeight(6);
+            $this->setStopper(false);
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCarrier($fixture->getReference('_reference_ProviderCarrier1'));
             $this->setRoutingPattern($fixture->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));

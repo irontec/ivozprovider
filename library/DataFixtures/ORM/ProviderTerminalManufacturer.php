@@ -34,6 +34,7 @@ class ProviderTerminalManufacturer extends Fixture
         (function () use ($fixture) {
             $this->setIden("Yealink");
             $this->setName("Yealink");
+            $this->setDescription('');
         })->call($item2);
 
         $this->addReference('_reference_ProviderTerminalManufacturerTerminalManufacturer2', $item2);
@@ -43,6 +44,7 @@ class ProviderTerminalManufacturer extends Fixture
         (function () use ($fixture) {
             $this->setIden("Cisco");
             $this->setName("Cisco");
+            $this->setDescription('');
         })->call($item3);
 
         $this->addReference('_reference_ProviderTerminalManufacturerTerminalManufacturer3', $item3);

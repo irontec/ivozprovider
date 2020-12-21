@@ -26,6 +26,7 @@ class ProviderResidentialDevice extends Fixture implements DependentFixtureInter
         $item1 = $this->createEntityInstance(ResidentialDevice::class);
         (function () use ($fixture) {
             $this->setName('residentialDevice');
+            $this->setDescription('');
             $this->setTransport('udp');
             $this->setAuthNeeded('yes');
             $this->setPassword('+rA778LidL');
@@ -35,6 +36,7 @@ class ProviderResidentialDevice extends Fixture implements DependentFixtureInter
             $this->setCalleridUpdateHeader('pai');
             $this->setUpdateCallerid('yes');
             $this->setDirectConnectivity('no');
+            $this->setRtpEncryption(false);
             $this->setBrand(
                 $fixture->getReference('_reference_ProviderBrand1')
             );

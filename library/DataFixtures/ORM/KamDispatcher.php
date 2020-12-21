@@ -25,6 +25,7 @@ class KamDispatcher extends Fixture implements DependentFixtureInterface
         (function () use ($fixture) {
             $this->setSetid(1);
             $this->setDestination("sip:127.0.0.1:6060");
+            $this->setAttrs('');
             $this->setFlags(0);
             $this->setPriority(0);
             $this->setDescription("as001");
@@ -39,6 +40,7 @@ class KamDispatcher extends Fixture implements DependentFixtureInterface
         (function () use ($fixture) {
             $this->setSetid(1);
             $this->setDestination("sip:127.1.1.1:6060");
+            $this->setAttrs('');
             $this->setFlags(0);
             $this->setPriority(0);
             $this->setDescription("test001");

@@ -29,6 +29,7 @@ class ProviderDestinationRateGroup extends Fixture implements DependentFixtureIn
         $item1 = $this->createEntityInstance(DestinationRateGroup::class);
         (function () use ($fixture) {
             $this->setStatus('inProgress');
+            $this->setDeductibleConnectionFee(false);
             $this->setName(new Name('Standard', 'Standard', 'Standard', 'Standard'));
             $this->setDescription(new Description('', '', '', ''));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
@@ -44,6 +45,7 @@ class ProviderDestinationRateGroup extends Fixture implements DependentFixtureIn
         $item2 = $this->createEntityInstance(DestinationRateGroup::class);
         (function () use ($fixture) {
             $this->setStatus('inProgress');
+            $this->setDeductibleConnectionFee(false);
             $this->setName(new Name('Fallback', 'Fallback', 'Fallback', 'Fallback'));
             $this->setDescription(new Description('', '', '', ''));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));

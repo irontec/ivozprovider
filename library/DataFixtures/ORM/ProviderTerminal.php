@@ -27,6 +27,7 @@ class ProviderTerminal extends Fixture implements DependentFixtureInterface
             $this->setDirectMediaMethod("invite");
             $this->setPassword("AUfVkn498_");
             $this->setMac("");
+            $this->setRtpEncryption(false);
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
             $this->setDomain($fixture->getReference('_reference_ProviderDomain3'));
             $this->setTerminalModel($fixture->getReference('_reference_ProviderTerminalModel1'));
@@ -42,6 +43,7 @@ class ProviderTerminal extends Fixture implements DependentFixtureInterface
             $this->setDirectMediaMethod("invite");
             $this->setPassword("fLgQYa6-57");
             $this->setMac("");
+            $this->setRtpEncryption(false);
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
             $this->setDomain($fixture->getReference('_reference_ProviderDomain3'));
             $this->setTerminalModel($fixture->getReference('_reference_ProviderTerminalModel1'));
@@ -57,6 +59,7 @@ class ProviderTerminal extends Fixture implements DependentFixtureInterface
             $this->setDirectMediaMethod("invite");
             $this->setPassword("fLgQYa6-56");
             $this->setMac("0011223344aa");
+            $this->setRtpEncryption(false);
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
             $this->setDomain($fixture->getReference('_reference_ProviderDomain3'));
             $this->setTerminalModel($fixture->getReference('_reference_ProviderTerminalModel1'));

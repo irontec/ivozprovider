@@ -41,6 +41,7 @@ class ProviderTerminalModel extends Fixture implements DependentFixtureInterface
         (function () use ($fixture) {
             $this->setIden("YealinkT21P_E2");
             $this->setName("YealinkT21P_E2");
+            $this->setDescription('');
             $this->setGenericUrlPattern("y000000000052.cfg");
             $this->setSpecificUrlPattern("{mac}");
             $this->setTerminalManufacturer($fixture->getReference('_reference_ProviderTerminalManufacturerTerminalManufacturer2'));

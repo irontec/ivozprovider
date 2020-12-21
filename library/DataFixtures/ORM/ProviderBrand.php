@@ -28,6 +28,7 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
             $this->setName("DemoBrand");
             $this->setDomainUsers("");
             $this->setRecordingsLimitEmail("");
+            $this->setMaxCalls(0);
             $this->setLogo(new Logo(null, null, null));
             $this->setInvoice(new Invoice('', '', '', '', '', '', ''));
             $this->setDomain($fixture->getReference('_reference_ProviderDomain6'));
@@ -44,6 +45,7 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
         (function () use ($fixture) {
             $this->setName("Irontec_e2e");
             $this->setDomainUsers("sip.irontec.com");
+            $this->setMaxCalls(0);
             $this->setLogo(new Logo(null, null, null));
             $this->setInvoice(new Invoice('', '', '', '', '', '', ''));
             $this->setDomain($fixture->getReference('_reference_ProviderDomain4'));

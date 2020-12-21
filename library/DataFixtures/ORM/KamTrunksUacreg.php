@@ -42,7 +42,6 @@ class KamTrunksUacreg extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
         $manager->flush();
     }
 
