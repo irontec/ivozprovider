@@ -190,6 +190,9 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.1.0"
     },
+    "lcobucci/clock": {
+        "version": "2.0.0"
+    },
     "lcobucci/jwt": {
         "version": "3.3.3"
     },
@@ -543,9 +546,6 @@
         "version": "v1.18.0"
     },
     "symfony/polyfill-php80": {
-        "version": "v1.18.0"
-    },
-    "symfony/polyfill-util": {
         "version": "v1.18.0"
     },
     "symfony/process": {

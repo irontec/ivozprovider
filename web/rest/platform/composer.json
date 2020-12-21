@@ -24,6 +24,10 @@
             }
         },
         {
+            "url": "https://github.com/symfony/polyfill-php56.git",
+            "type": "git"
+        },
+        {
             "packagist.org": false
         }
     ],
