@@ -125,8 +125,9 @@
                     $searchField.selectBoxIt({
                         theme: "jqueryui",
                         autoWidth: true,
-                        dynamicPositioning: false
-                    });
+                        dynamicPositioning: false,
+                        nativeMousedown: false
+            });
 
                     $_dialog.on('submit','form',function(e) {
                         e.preventDefault();
