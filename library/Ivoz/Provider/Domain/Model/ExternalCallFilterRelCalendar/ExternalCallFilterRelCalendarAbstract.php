@@ -8,10 +8,10 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
-use Ivoz\Provider\Domain\Model\Calendar\Calendar;
+use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter;
+use Ivoz\Provider\Domain\Model\Calendar\Calendar;
 
 /**
 * ExternalCallFilterRelCalendarAbstract
@@ -22,15 +22,15 @@ abstract class ExternalCallFilterRelCalendarAbstract
     use ChangelogTrait;
 
     /**
-     * @var CalendarInterface
-     */
-    protected $calendar;
-
-    /**
      * @var ExternalCallFilterInterface
      * inversedBy calendars
      */
     protected $filter;
+
+    /**
+     * @var CalendarInterface
+     */
+    protected $calendar;
 
     /**
      * Constructor
@@ -114,8 +114,8 @@ abstract class ExternalCallFilterRelCalendarAbstract
         );
 
         $self
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
-            ->setFilter($fkTransformer->transform($dto->getFilter()));
+            ->setFilter($fkTransformer->transform($dto->getFilter()))
+            ->setCalendar($fkTransformer->transform($dto->getCalendar()));
 
         $self->initChangelog();
 
@@ -134,8 +134,8 @@ abstract class ExternalCallFilterRelCalendarAbstract
         Assertion::isInstanceOf($dto, ExternalCallFilterRelCalendarDto::class);
 
         $this
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
-            ->setFilter($fkTransformer->transform($dto->getFilter()));
+            ->setFilter($fkTransformer->transform($dto->getFilter()))
+            ->setCalendar($fkTransformer->transform($dto->getCalendar()));
 
         return $this;
     }
@@ -148,8 +148,8 @@ abstract class ExternalCallFilterRelCalendarAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCalendar(Calendar::entityToDto(self::getCalendar(), $depth))
-            ->setFilter(ExternalCallFilter::entityToDto(self::getFilter(), $depth));
+            ->setFilter(ExternalCallFilter::entityToDto(self::getFilter(), $depth))
+            ->setCalendar(Calendar::entityToDto(self::getCalendar(), $depth));
     }
 
     /**
@@ -158,33 +158,9 @@ abstract class ExternalCallFilterRelCalendarAbstract
     protected function __toArray()
     {
         return [
-            'calendarId' => self::getCalendar()->getId(),
-            'filterId' => self::getFilter() ? self::getFilter()->getId() : null
+            'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
+            'calendarId' => self::getCalendar()->getId()
         ];
-    }
-
-    /**
-     * Set calendar
-     *
-     * @param CalendarInterface
-     *
-     * @return static
-     */
-    protected function setCalendar(CalendarInterface $calendar): ExternalCallFilterRelCalendarInterface
-    {
-        $this->calendar = $calendar;
-
-        return $this;
-    }
-
-    /**
-     * Get calendar
-     *
-     * @return CalendarInterface
-     */
-    public function getCalendar(): CalendarInterface
-    {
-        return $this->calendar;
     }
 
     /**
@@ -209,6 +185,30 @@ abstract class ExternalCallFilterRelCalendarAbstract
     public function getFilter(): ?ExternalCallFilterInterface
     {
         return $this->filter;
+    }
+
+    /**
+     * Set calendar
+     *
+     * @param CalendarInterface
+     *
+     * @return static
+     */
+    protected function setCalendar(CalendarInterface $calendar): ExternalCallFilterRelCalendarInterface
+    {
+        $this->calendar = $calendar;
+
+        return $this;
+    }
+
+    /**
+     * Get calendar
+     *
+     * @return CalendarInterface
+     */
+    public function getCalendar(): CalendarInterface
+    {
+        return $this->calendar;
     }
 
 }

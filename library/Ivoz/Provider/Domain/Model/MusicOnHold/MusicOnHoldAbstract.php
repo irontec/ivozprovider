@@ -8,8 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile;
 use Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile;
+use Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -35,14 +35,14 @@ abstract class MusicOnHoldAbstract
     protected $status;
 
     /**
-     * @var EncodedFile | null
-     */
-    protected $encodedFile;
-
-    /**
      * @var OriginalFile | null
      */
     protected $originalFile;
+
+    /**
+     * @var EncodedFile | null
+     */
+    protected $encodedFile;
 
     /**
      * @var BrandInterface
@@ -61,12 +61,12 @@ abstract class MusicOnHoldAbstract
      */
     protected function __construct(
         $name,
-        EncodedFile $encodedFile,
-        OriginalFile $originalFile
+        OriginalFile $originalFile,
+        EncodedFile $encodedFile
     ) {
         $this->setName($name);
-        $this->setEncodedFile($encodedFile);
         $this->setOriginalFile($originalFile);
+        $this->setEncodedFile($encodedFile);
     }
 
     abstract public function getId();
@@ -137,22 +137,22 @@ abstract class MusicOnHoldAbstract
     ) {
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
 
-        $encodedFile = new EncodedFile(
-            $dto->getEncodedFileFileSize(),
-            $dto->getEncodedFileMimeType(),
-            $dto->getEncodedFileBaseName()
-        );
-
         $originalFile = new OriginalFile(
             $dto->getOriginalFileFileSize(),
             $dto->getOriginalFileMimeType(),
             $dto->getOriginalFileBaseName()
         );
 
+        $encodedFile = new EncodedFile(
+            $dto->getEncodedFileFileSize(),
+            $dto->getEncodedFileMimeType(),
+            $dto->getEncodedFileBaseName()
+        );
+
         $self = new static(
             $dto->getName(),
-            $encodedFile,
-            $originalFile
+            $originalFile,
+            $encodedFile
         );
 
         $self
@@ -176,23 +176,23 @@ abstract class MusicOnHoldAbstract
     ) {
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
 
-        $encodedFile = new EncodedFile(
-            $dto->getEncodedFileFileSize(),
-            $dto->getEncodedFileMimeType(),
-            $dto->getEncodedFileBaseName()
-        );
-
         $originalFile = new OriginalFile(
             $dto->getOriginalFileFileSize(),
             $dto->getOriginalFileMimeType(),
             $dto->getOriginalFileBaseName()
         );
 
+        $encodedFile = new EncodedFile(
+            $dto->getEncodedFileFileSize(),
+            $dto->getEncodedFileMimeType(),
+            $dto->getEncodedFileBaseName()
+        );
+
         $this
             ->setName($dto->getName())
             ->setStatus($dto->getStatus())
-            ->setEncodedFile($encodedFile)
             ->setOriginalFile($originalFile)
+            ->setEncodedFile($encodedFile)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()));
 
@@ -209,12 +209,12 @@ abstract class MusicOnHoldAbstract
         return self::createDto()
             ->setName(self::getName())
             ->setStatus(self::getStatus())
-            ->setEncodedFileFileSize(self::getEncodedFile()->getFileSize())
-            ->setEncodedFileMimeType(self::getEncodedFile()->getMimeType())
-            ->setEncodedFileBaseName(self::getEncodedFile()->getBaseName())
             ->setOriginalFileFileSize(self::getOriginalFile()->getFileSize())
             ->setOriginalFileMimeType(self::getOriginalFile()->getMimeType())
             ->setOriginalFileBaseName(self::getOriginalFile()->getBaseName())
+            ->setEncodedFileFileSize(self::getEncodedFile()->getFileSize())
+            ->setEncodedFileMimeType(self::getEncodedFile()->getMimeType())
+            ->setEncodedFileBaseName(self::getEncodedFile()->getBaseName())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
@@ -227,12 +227,12 @@ abstract class MusicOnHoldAbstract
         return [
             'name' => self::getName(),
             'status' => self::getStatus(),
-            'encodedFileFileSize' => self::getEncodedFile()->getFileSize(),
-            'encodedFileMimeType' => self::getEncodedFile()->getMimeType(),
-            'encodedFileBaseName' => self::getEncodedFile()->getBaseName(),
             'originalFileFileSize' => self::getOriginalFile()->getFileSize(),
             'originalFileMimeType' => self::getOriginalFile()->getMimeType(),
             'originalFileBaseName' => self::getOriginalFile()->getBaseName(),
+            'encodedFileFileSize' => self::getEncodedFile()->getFileSize(),
+            'encodedFileMimeType' => self::getEncodedFile()->getMimeType(),
+            'encodedFileBaseName' => self::getEncodedFile()->getBaseName(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
@@ -303,32 +303,6 @@ abstract class MusicOnHoldAbstract
     }
 
     /**
-     * Get encodedFile
-     *
-     * @return EncodedFile
-     */
-    public function getEncodedFile(): EncodedFile
-    {
-        return $this->encodedFile;
-    }
-
-    /**
-     * Set encodedFile
-     *
-     * @return static
-     */
-    protected function setEncodedFile(EncodedFile $encodedFile): MusicOnHoldInterface
-    {
-        $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
-        if ($isEqual) {
-            return $this;
-        }
-
-        $this->encodedFile = $encodedFile;
-        return $this;
-    }
-
-    /**
      * Get originalFile
      *
      * @return OriginalFile
@@ -351,6 +325,32 @@ abstract class MusicOnHoldAbstract
         }
 
         $this->originalFile = $originalFile;
+        return $this;
+    }
+
+    /**
+     * Get encodedFile
+     *
+     * @return EncodedFile
+     */
+    public function getEncodedFile(): EncodedFile
+    {
+        return $this->encodedFile;
+    }
+
+    /**
+     * Set encodedFile
+     *
+     * @return static
+     */
+    protected function setEncodedFile(EncodedFile $encodedFile): MusicOnHoldInterface
+    {
+        $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
+        if ($isEqual) {
+            return $this;
+        }
+
+        $this->encodedFile = $encodedFile;
         return $this;
     }
 
