@@ -3,10 +3,10 @@
 namespace Ivoz\Provider\Domain\Model\Destination;
 
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
@@ -59,6 +59,18 @@ interface DestinationInterface extends LoggableEntityInterface
     public function isInitialized(): bool;
 
     /**
+     * @var TpDestinationInterface
+     * mappedBy destination
+     */
+    public function setTpDestination(TpDestinationInterface $tpDestination): DestinationInterface;
+
+    /**
+     * Get tpDestination
+     * @return TpDestinationInterface
+     */
+    public function getTpDestination(): ?TpDestinationInterface;
+
+    /**
      * Add destinationRate
      *
      * @param DestinationRateInterface $destinationRate
@@ -91,17 +103,5 @@ interface DestinationInterface extends LoggableEntityInterface
      * @return DestinationRateInterface[]
      */
     public function getDestinationRates(?Criteria $criteria = null): array;
-
-    /**
-     * @var TpDestinationInterface
-     * mappedBy destination
-     */
-    public function setTpDestination(TpDestinationInterface $tpDestination): DestinationInterface;
-
-    /**
-     * Get tpDestination
-     * @return TpDestinationInterface
-     */
-    public function getTpDestination(): ?TpDestinationInterface;
 
 }

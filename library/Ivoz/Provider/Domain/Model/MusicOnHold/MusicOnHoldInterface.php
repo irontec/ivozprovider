@@ -60,18 +60,18 @@ interface MusicOnHoldInterface extends LoggableEntityInterface, FileContainerInt
     public function getStatus(): ?string;
 
     /**
-     * Get encodedFile
-     *
-     * @return EncodedFile
-     */
-    public function getEncodedFile(): EncodedFile;
-
-    /**
      * Get originalFile
      *
      * @return OriginalFile
      */
     public function getOriginalFile(): OriginalFile;
+
+    /**
+     * Get encodedFile
+     *
+     * @return EncodedFile
+     */
+    public function getEncodedFile(): EncodedFile;
 
     /**
      * Set brand

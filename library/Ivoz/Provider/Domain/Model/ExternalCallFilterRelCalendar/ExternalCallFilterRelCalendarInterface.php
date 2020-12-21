@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar;
 
-use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
+use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
@@ -16,13 +16,6 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
      * @return array
      */
     public function getChangeSet();
-
-    /**
-     * Get calendar
-     *
-     * @return CalendarInterface
-     */
-    public function getCalendar(): CalendarInterface;
 
     /**
      * Set filter
@@ -39,6 +32,13 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
      * @return ExternalCallFilterInterface | null
      */
     public function getFilter(): ?ExternalCallFilterInterface;
+
+    /**
+     * Get calendar
+     *
+     * @return CalendarInterface
+     */
+    public function getCalendar(): CalendarInterface;
 
     /**
      * @return bool
