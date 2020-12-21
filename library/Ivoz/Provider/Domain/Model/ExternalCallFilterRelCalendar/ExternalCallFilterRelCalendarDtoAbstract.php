@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
-use Ivoz\Provider\Domain\Model\Calendar\CalendarDto;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto;
+use Ivoz\Provider\Domain\Model\Calendar\CalendarDto;
 
 /**
 * ExternalCallFilterRelCalendarDtoAbstract
@@ -21,14 +21,14 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
     private $id;
 
     /**
-     * @var CalendarDto | null
-     */
-    private $calendar;
-
-    /**
      * @var ExternalCallFilterDto | null
      */
     private $filter;
+
+    /**
+     * @var CalendarDto | null
+     */
+    private $calendar;
 
     public function __construct($id = null)
     {
@@ -46,8 +46,8 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
 
         return [
             'id' => 'id',
-            'calendarId' => 'calendar',
-            'filterId' => 'filter'
+            'filterId' => 'filter',
+            'calendarId' => 'calendar'
         ];
     }
 
@@ -58,8 +58,8 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
     {
         $response = [
             'id' => $this->getId(),
-            'calendar' => $this->getCalendar(),
-            'filter' => $this->getFilter()
+            'filter' => $this->getFilter(),
+            'calendar' => $this->getCalendar()
         ];
 
         if (!$hideSensitiveData) {
@@ -94,50 +94,6 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @param CalendarDto | null
-     *
-     * @return static
-     */
-    public function setCalendar(?CalendarDto $calendar = null): self
-    {
-        $this->calendar = $calendar;
-
-        return $this;
-    }
-
-    /**
-     * @return CalendarDto | null
-     */
-    public function getCalendar(): ?CalendarDto
-    {
-        return $this->calendar;
-    }
-
-    /**
-     * @return static
-     */
-    public function setCalendarId($id): self
-    {
-        $value = !is_null($id)
-            ? new CalendarDto($id)
-            : null;
-
-        return $this->setCalendar($value);
-    }
-
-    /**
-     * @return mixed | null
-     */
-    public function getCalendarId()
-    {
-        if ($dto = $this->getCalendar()) {
-            return $dto->getId();
-        }
-
-        return null;
     }
 
     /**
@@ -178,6 +134,50 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
     public function getFilterId()
     {
         if ($dto = $this->getFilter()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param CalendarDto | null
+     *
+     * @return static
+     */
+    public function setCalendar(?CalendarDto $calendar = null): self
+    {
+        $this->calendar = $calendar;
+
+        return $this;
+    }
+
+    /**
+     * @return CalendarDto | null
+     */
+    public function getCalendar(): ?CalendarDto
+    {
+        return $this->calendar;
+    }
+
+    /**
+     * @return static
+     */
+    public function setCalendarId($id): self
+    {
+        $value = !is_null($id)
+            ? new CalendarDto($id)
+            : null;
+
+        return $this->setCalendar($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getCalendarId()
+    {
+        if ($dto = $this->getCalendar()) {
             return $dto->getId();
         }
 

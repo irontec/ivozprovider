@@ -33,21 +33,6 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     /**
      * @var int | null
      */
-    private $encodedFileFileSize;
-
-    /**
-     * @var string | null
-     */
-    private $encodedFileMimeType;
-
-    /**
-     * @var string | null
-     */
-    private $encodedFileBaseName;
-
-    /**
-     * @var int | null
-     */
     private $originalFileFileSize;
 
     /**
@@ -59,6 +44,21 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
      * @var string | null
      */
     private $originalFileBaseName;
+
+    /**
+     * @var int | null
+     */
+    private $encodedFileFileSize;
+
+    /**
+     * @var string | null
+     */
+    private $encodedFileMimeType;
+
+    /**
+     * @var string | null
+     */
+    private $encodedFileBaseName;
 
     /**
      * @var BrandDto | null
@@ -88,12 +88,12 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
             'name' => 'name',
             'status' => 'status',
             'id' => 'id',
-            'encodedFile' => [
+            'originalFile' => [
                 'fileSize',
                 'mimeType',
                 'baseName',
             ],
-            'originalFile' => [
+            'encodedFile' => [
                 'fileSize',
                 'mimeType',
                 'baseName',
@@ -112,15 +112,15 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
             'name' => $this->getName(),
             'status' => $this->getStatus(),
             'id' => $this->getId(),
-            'encodedFile' => [
-                'fileSize' => $this->getEncodedFileFileSize(),
-                'mimeType' => $this->getEncodedFileMimeType(),
-                'baseName' => $this->getEncodedFileBaseName(),
-            ],
             'originalFile' => [
                 'fileSize' => $this->getOriginalFileFileSize(),
                 'mimeType' => $this->getOriginalFileMimeType(),
                 'baseName' => $this->getOriginalFileBaseName(),
+            ],
+            'encodedFile' => [
+                'fileSize' => $this->getEncodedFileFileSize(),
+                'mimeType' => $this->getEncodedFileMimeType(),
+                'baseName' => $this->getEncodedFileBaseName(),
             ],
             'brand' => $this->getBrand(),
             'company' => $this->getCompany()
@@ -201,66 +201,6 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param int $encodedFileFileSize | null
-     *
-     * @return static
-     */
-    public function setEncodedFileFileSize(?int $encodedFileFileSize = null): self
-    {
-        $this->encodedFileFileSize = $encodedFileFileSize;
-
-        return $this;
-    }
-
-    /**
-     * @return int | null
-     */
-    public function getEncodedFileFileSize(): ?int
-    {
-        return $this->encodedFileFileSize;
-    }
-
-    /**
-     * @param string $encodedFileMimeType | null
-     *
-     * @return static
-     */
-    public function setEncodedFileMimeType(?string $encodedFileMimeType = null): self
-    {
-        $this->encodedFileMimeType = $encodedFileMimeType;
-
-        return $this;
-    }
-
-    /**
-     * @return string | null
-     */
-    public function getEncodedFileMimeType(): ?string
-    {
-        return $this->encodedFileMimeType;
-    }
-
-    /**
-     * @param string $encodedFileBaseName | null
-     *
-     * @return static
-     */
-    public function setEncodedFileBaseName(?string $encodedFileBaseName = null): self
-    {
-        $this->encodedFileBaseName = $encodedFileBaseName;
-
-        return $this;
-    }
-
-    /**
-     * @return string | null
-     */
-    public function getEncodedFileBaseName(): ?string
-    {
-        return $this->encodedFileBaseName;
-    }
-
-    /**
      * @param int $originalFileFileSize | null
      *
      * @return static
@@ -318,6 +258,66 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     public function getOriginalFileBaseName(): ?string
     {
         return $this->originalFileBaseName;
+    }
+
+    /**
+     * @param int $encodedFileFileSize | null
+     *
+     * @return static
+     */
+    public function setEncodedFileFileSize(?int $encodedFileFileSize = null): self
+    {
+        $this->encodedFileFileSize = $encodedFileFileSize;
+
+        return $this;
+    }
+
+    /**
+     * @return int | null
+     */
+    public function getEncodedFileFileSize(): ?int
+    {
+        return $this->encodedFileFileSize;
+    }
+
+    /**
+     * @param string $encodedFileMimeType | null
+     *
+     * @return static
+     */
+    public function setEncodedFileMimeType(?string $encodedFileMimeType = null): self
+    {
+        $this->encodedFileMimeType = $encodedFileMimeType;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getEncodedFileMimeType(): ?string
+    {
+        return $this->encodedFileMimeType;
+    }
+
+    /**
+     * @param string $encodedFileBaseName | null
+     *
+     * @return static
+     */
+    public function setEncodedFileBaseName(?string $encodedFileBaseName = null): self
+    {
+        $this->encodedFileBaseName = $encodedFileBaseName;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getEncodedFileBaseName(): ?string
+    {
+        return $this->encodedFileBaseName;
     }
 
     /**
