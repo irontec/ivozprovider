@@ -15,10 +15,18 @@ function setup_media_relays()
     # Get Media relay control socket IP from debconf
     db_get ivozprovider/media_relay_control            || true
     MEDIA_RELAY_CONTROL=$RET
+    # Get Media relay min port from debconf
+    db_get ivozprovider/media_relay_minport            || true
+    MEDIA_RELAY_MINPORT=$RET
+    # Get Media relay max port from debconf
+    db_get ivozprovider/media_relay_maxport            || true
+    MEDIA_RELAY_MAXPORT=$RET
+
 
     # Configure Media relay IPs
     sed -i -r "s/(AUDIO_SOCK *= *).*/\1$MEDIA_RELAY_ADDRESS/"  /etc/default/rtpengine
     sed -i -r "s/(CONTROL_SOCK *= *).*/\1$MEDIA_RELAY_CONTROL:22223/"  /etc/default/rtpengine
+    sed -i -r "s/(EXTRA_OPTS *= *).*/\1\"-m $MEDIA_RELAY_MINPORT -M $MEDIA_RELAY_MAXPORT\"/"  /etc/default/rtpengine
 }
 
 #######################################################################################################################
