@@ -3,7 +3,7 @@ imports:
 
 api_platform:
     description: 'Brand REST API'
-    version: 2.15
+    version: 2.16.3
     collection:
         pagination:
             # The maximum number of items per page.
