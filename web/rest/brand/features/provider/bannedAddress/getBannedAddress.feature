@@ -16,12 +16,16 @@ Feature: Manage banned addresses
       [
           {
               "ip": "8.8.8.8",
+              "blocker": "ipfilter",
+              "aor": "aor",
               "lastTimeBanned": "2020-03-10 11:00:00",
               "id": 2,
               "company": 1
           },
           {
               "ip": "8.8.8.9",
+              "blocker": "antibruteforce",
+              "aor": "aor",
               "lastTimeBanned": "2020-03-10 11:00:00",
               "id": 3,
               "company": 1
