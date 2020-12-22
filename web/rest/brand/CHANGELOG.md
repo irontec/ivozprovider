@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.16.3
+* Added new string search filter modifiers:
+    - start: Starts with
+    - end: Ends with
+    - exact: Exact match
+    - partial: Contains
+
+These modifiers are incompatible with modifierless search parameters. For instance,
+if you are using "email=partial_domain" (partial search) and you want to append some [starts] filter
+you'll need to replace the former criteria by "email[partial]=partial_domain&email[start]=abc". Modifierless
+string search parameters are now deprecated and they'll be removed on next major relesase.
+
+* Added OR foreign key search filter modifiers:
+    - "company[]=1&company[]=2": company equals 1 or 2
+
+* Endpoints:
+    - Added [DELETE] /banned_addresses/antibruteforce/{id} 
+
+* Models:
+    - BannedAddress-collection
+        - Added blocker and aor properties
+
 ## 2.16.0
 * Endpoints:
     - /my/registration_summary
