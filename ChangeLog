@@ -1,3 +1,24 @@
+Tue, 22 Dec 2020 11:42:13 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.16.3 released
+
+    * Core
+        - Ensure numeric only fax destinations
+        - Avoid detecting balance changes for equal values
+
+    * Proxies
+        - Fix Bad From-URI in intervpbx call-forward
+        - Remove problematic CISHASH call in local router
+
+    * vPBX
+        - Fix voicemail callback context
+
+    * API
+        - Add endpoint to unban antibrute-force sources
+
+    * Portals
+        - Improve External Calls filter operation and speed
+
 Thu, 19 Nov 2020 12:35:13 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.16.2 released
