@@ -172,6 +172,7 @@ class Encoder
                     // Check this ddi has recording enabled
                     $ddi = $this->ddiRepository->findOneByDdiE164($recorder);
                     if (!$ddi) {
+                        $stats['error']++;
                         $this->logger->error(
                             sprintf("[Recordings][%s] Unable to find DDI for %s\n", $hashid, $recorder)
                         );
@@ -179,6 +180,7 @@ class Encoder
                     }
 
                     if (!in_array($ddi->getRecordCalls(), array('all', $direction), true)) {
+                        $stats['skipped']++;
                         $this->logger->info(
                             sprintf(
                                 "[Recordings][%s] %s has no %s recording enabled. Skipping.\n",
@@ -201,6 +203,20 @@ class Encoder
                 } else {
                     // This should not even be possible
                     $this->logger->error(sprintf("[Recordings][ERROR] Invalid CDR entries for %s\n", $callid));
+                    continue;
+                }
+
+                // Get company for this recording
+                $company = $kamAccCdr->getCompany();
+                if (! $company) {
+                    $stats['error']++;
+                    $this->logger->error(
+                        sprintf(
+                            "[Recordings][%s] Failed to get company for callid = %s\n",
+                            $hashid,
+                            $callid
+                        )
+                    );
                     continue;
                 }
 
@@ -256,7 +272,8 @@ class Encoder
                     . str_replace('+', '', $callee)
                     . '.mp3';
 
-                $recordingDto->setCompanyId($company->getId())
+                $recordingDto
+                    ->setCompanyId($company->getId())
                     ->setCalldate($callDate)
                     ->setType($type)
                     ->setRecorder($recorder)

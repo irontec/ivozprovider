@@ -81,11 +81,31 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
                             $where[$field] = $value;
                             break;
                         case 'lt':
+                            $argument = $field . '[lt]';
+                            $where[$argument] = $value;
                             $argument = $field . '[strictly_before]';
                             $where[$argument] = $value;
                             break;
                         case 'gt':
+                            $argument = $field . '[gt]';
+                            $where[$argument] = $value;
                             $argument = $field . '[strictly_after]';
+                            $where[$argument] = $value;
+                            break;
+                        case 'exact':
+                            $argument = $field . '[exact]';
+                            $where[$argument] = $value;
+                            break;
+                        case 'startsWith':
+                            $argument = $field . '[start]';
+                            $where[$argument] = $value;
+                            break;
+                        case 'contains':
+                            $argument = $field . '[partial]';
+                            $where[$argument] = $value;
+                            break;
+                        case 'endsWith':
+                            $argument = $field . '[end]';
                             $where[$argument] = $value;
                             break;
                     }

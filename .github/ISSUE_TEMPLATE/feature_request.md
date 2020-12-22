@@ -6,9 +6,9 @@ about: New functionalities or enhacing existing ones
 
 <!--
 This project only uses GitHub Issues for bugs in the code or feature requests.
-Please use this template only for feature and enhacement requests.
+Please use this template only for feature and enhancement requests.
 
-Be sure you have read the project FAQ before submiting an issue.
+Be sure you have read the project FAQ before submitting an issue.
 
   * https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md
 

@@ -1499,11 +1499,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.3",
+            "version": "2.5.4",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "a3f524413a4a16bd4cfd2e876435f3d8f8290387",
+                "reference": "f43aefe6873a42c557afe53f5b5de8f720fa9c17",
                 "shasum": null
             },
             "require": {
@@ -4162,7 +4162,7 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "3.4.43.0",
+            "version": "3.4.44.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/options-resolver",
@@ -4854,7 +4854,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "3.4.43.0",
+            "version": "3.4.44.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/process",
@@ -4963,7 +4963,7 @@
         },
         {
             "name": "symfony/property-info",
-            "version": "3.4.43.0",
+            "version": "3.4.44.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/property-info",
@@ -5236,7 +5236,7 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "3.4.43.0",
+            "version": "3.4.44.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/security-bundle",
@@ -5454,7 +5454,7 @@
         },
         {
             "name": "symfony/templating",
-            "version": "3.4.43.0",
+            "version": "3.4.44.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/templating",
@@ -5659,7 +5659,7 @@
         },
         {
             "name": "symfony/twig-bundle",
-            "version": "3.4.43.0",
+            "version": "3.4.44.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/twig-bundle",

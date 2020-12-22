@@ -3,4 +3,4 @@ imports:
 
 api_platform:
     description: 'Client REST API'
-    version: 2.15
+    version: 2.16.3

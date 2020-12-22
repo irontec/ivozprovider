@@ -16,6 +16,3 @@ services:
 
   Ivoz\Provider\Domain\Service\Extension\AliasImporter:
     public: true
-
-  Ivoz\Provider\Domain\Service\BannedAddress\Unban:
-    public: true

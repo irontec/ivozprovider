@@ -6,32 +6,41 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Infrastructure\Gearman\UsersClient;
 use Ivoz\Provider\Domain\Model\BannedAddress\BannedAddressInterface;
 use Ivoz\Provider\Domain\Model\BannedAddress\BannedAddressRepository;
+use Psr\Log\LoggerInterface;
 
-class Unban
+class Unban implements BannedAddressLifecycleEventHandlerInterface
 {
+    const PRE_REMOVE_PRIORITY = self::PRIORITY_HIGH;
+
     protected $entityTools;
     protected $bannedAddressRepository;
     protected $kamUsersClient;
+    protected $logger;
+
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_PRE_REMOVE => self::PRE_REMOVE_PRIORITY
+        ];
+    }
 
     public function __construct(
         EntityTools $entityTools,
         BannedAddressRepository $bannedAddressRepository,
-        UsersClient $kamUsersClient
+        UsersClient $kamUsersClient,
+        LoggerInterface $logger
     ) {
         $this->entityTools = $entityTools;
         $this->bannedAddressRepository = $bannedAddressRepository;
         $this->kamUsersClient = $kamUsersClient;
+        $this->logger = $logger;
     }
 
-    public function execute(int $pk) :bool
+    public function execute(BannedAddressInterface $bannedAddress)
     {
-        /** @var BannedAddressInterface | null $bannedAddress */
-        $bannedAddress = $this->bannedAddressRepository->find($pk);
-        if (!$bannedAddress) {
-            throw new \DomainException(sprintf(
-                'Banned address #%d was not found',
-                $pk
-            ));
+        $blockedByAntibruteForce = $bannedAddress->getBlocker() === BannedAddressInterface::BLOCKER_ANTIBRUTEFORCE;
+        if (! $blockedByAntibruteForce) {
+            return;
         }
 
         try {
@@ -40,11 +49,11 @@ class Unban
                 $bannedAddress->getIp()
             );
         } catch (\Exception $e) {
-            return false;
+            $this->logger->error(
+                $e->getMessage()
+            );
+
+            throw $e;
         }
-
-        $this->entityTools->remove($bannedAddress);
-
-        return true;
     }
 }

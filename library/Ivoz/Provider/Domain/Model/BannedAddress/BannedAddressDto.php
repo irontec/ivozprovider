@@ -11,7 +11,9 @@ class BannedAddressDto extends BannedAddressDtoAbstract
                 'ip' => 'ip',
                 'lastTimeBanned' => 'lastTimeBanned',
                 'id' => 'id',
-                'companyId' => 'company'
+                'companyId' => 'company',
+                'blocker' => 'blocker',
+                'aor' => 'aor'
             ];
         } else {
             $response = parent::getPropertyMap($context, $role);
