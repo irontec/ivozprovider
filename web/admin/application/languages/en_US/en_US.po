@@ -111,6 +111,9 @@ msgstr "Add of %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Add pattern to %2s"
 
+msgid "Address successfully unbanned"
+msgstr "Address successfully unbanned"
+
 msgid "Admin"
 msgstr "Admin"
 
@@ -2182,6 +2185,9 @@ msgstr "Prices Help"
 
 msgid "Priority"
 msgstr "Priority"
+
+msgid "Problems unbanning address"
+msgstr "Problems unbanning address"
 
 msgid "Processing"
 msgstr "Processing"

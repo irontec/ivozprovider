@@ -21,7 +21,7 @@ Ivoz\Provider\Domain\Model\BannedAddress\BannedAddressAbstract:
       length: 50
       options:
         fixed: false
-        comment: '[enum:antiflood|ipfilter]'
+        comment: '[enum:antiflood|ipfilter|antibruteforce]'
       column: blocker
     aor:
       type: string

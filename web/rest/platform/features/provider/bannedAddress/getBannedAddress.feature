@@ -16,6 +16,8 @@ Feature: Manage banned addresses
       [
           {
               "ip": "8.8.8.8",
+              "blocker": "antiflood",
+              "aor": "aor",
               "lastTimeBanned": "2020-03-10 11:00:00",
               "id": 1
           }
@@ -34,7 +36,7 @@ Feature: Manage banned addresses
       {
           "ip": "8.8.8.8",
           "blocker": "antiflood",
-          "aor": null,
+          "aor": "aor",
           "description": null,
           "lastTimeBanned": "2020-03-10 11:00:00",
           "id": 1

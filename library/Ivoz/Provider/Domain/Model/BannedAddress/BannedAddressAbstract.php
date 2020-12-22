@@ -19,7 +19,7 @@ abstract class BannedAddressAbstract
     protected $ip;
 
     /**
-     * comment: enum:antiflood|ipfilter
+     * comment: enum:antiflood|ipfilter|antibruteforce
      * @var string | null
      */
     protected $blocker;
@@ -244,7 +244,8 @@ abstract class BannedAddressAbstract
             Assertion::maxLength($blocker, 50, 'blocker value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($blocker, [
                 BannedAddressInterface::BLOCKER_ANTIFLOOD,
-                BannedAddressInterface::BLOCKER_IPFILTER
+                BannedAddressInterface::BLOCKER_IPFILTER,
+                BannedAddressInterface::BLOCKER_ANTIBRUTEFORCE
             ], 'blockervalue "%s" is not an element of the valid values: %s');
         }
 

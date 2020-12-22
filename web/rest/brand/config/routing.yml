@@ -56,3 +56,12 @@ get_my_registration_summary:
     _api_resource_class: 'Model\RegistrationSummary'
     _api_item_operation_name: 'get_my_registration_summary'
     _api_receive: false
+
+antibruteforce_banned_address_delete_item:
+  path: '/banned_addresses/antibruteforce/{id}.{_format}'
+  methods: ['DELETE']
+  defaults:
+    _api_item_operation_name: delete
+    _api_resource_class: Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress
+    _controller: api_platform.action.delete_item
+    _format: NULL
