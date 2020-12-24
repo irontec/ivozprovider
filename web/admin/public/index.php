@@ -1,8 +1,7 @@
 <?php
 require_once 'Zend/Registry.php';
 
-/** @var \Composer\Autoload\ClassLoader $loader */
-$loader = require __DIR__.'/../../rest/platform/vendor/autoload.php';
+require dirname(__DIR__).'/../rest/platform/config/bootstrap.php';
 
 $kernel = new Kernel('prod', false);
 $kernel->boot();
