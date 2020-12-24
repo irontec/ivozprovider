@@ -29,20 +29,8 @@ shift $(expr $OPTIND - 1 )
 
 pushd /opt/irontec/ivozprovider/schema
     while test $# -gt 0; do
-        bin/console provider:clear:interfaces ${VERBOSE_LEVEL} Ivoz/$1 --path ../library/
-        bin/console provider:generate:entities:abstract ${VERBOSE_LEVEL} Ivoz/$1 --path ../library/
-        bin/console provider:generate:traits ${VERBOSE_LEVEL} Ivoz/$1 --path ../library/
-        bin/console provider:generate:entities ${VERBOSE_LEVEL} Ivoz/$1 --path ../library/
-        bin/console provider:generate:interfaces ${VERBOSE_LEVEL} Ivoz/$1 --path ../library/
-        bin/console provider:generate:dtos:abstract ${VERBOSE_LEVEL} Ivoz/$1 --path ../library/
-        bin/console provider:generate:dtos ${VERBOSE_LEVEL} Ivoz/$1 --path ../library/
-        bin/console provider:generate:repositories ${VERBOSE_LEVEL} Ivoz/$1 --path ../library/
+        bin/console provider:make:entities $1
         shift
     done
 popd
 
-if [ ${CACHE_CLEAR} -eq 1 ]; then
-    pushd /opt/irontec/ivozprovider/library/
-        bin/cache-rm
-    popd
-fi
