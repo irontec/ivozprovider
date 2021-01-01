@@ -11,7 +11,7 @@ apt-get update
 
 Upgrade your installed ivozprovider-packages:
 ```
-dpkg --get-selections | grep ivozprovider | cut -f1 | xargs apt-get install
+apt install $(dpkg --get-selections | grep ivozprovider | cut -f1)
 ```
 
 Note: Using the previous command instead of tradicional `apt-get upgrade` will warranty new package depencencies to be pulled for installation.
