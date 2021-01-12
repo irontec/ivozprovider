@@ -1,6 +1,5 @@
 <?php
 
-
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
@@ -22,15 +21,12 @@ class IvozProvider_Klear_Ghost_Invoice extends KlearMatrix_Model_Field_Ghost_Abs
             )
         );
 
-        // Status Message translated to web language (if possible)
-        $statusMsg = Klear_Model_Gettext::gettextCheck(
-            sprintf(
-                "_('%s')",
-                ucfirst($invoice->getStatusMsg())
-            )
-        );
-
         if ($invoice->getStatus() === 'error') {
+            $statusMsg = htmlspecialchars(
+                $invoice->getStatusMsg(),
+                ENT_QUOTES
+            );
+
             return sprintf(
                 "%s <span class='ui-silk inline ui-silk-exclamation' title='%s'></span>",
                 $status,
