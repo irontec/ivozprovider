@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2fd4ccad8e6111b68d6e8edb4aa69d83",
+    "content-hash": "bfb96334b5f49961aab00e7234d657d0",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1318,42 +1318,6 @@
             }
         },
         {
-            "name": "h4cc/wkhtmltopdf-amd64",
-            "version": "0.12.3.0",
-            "dist": {
-                "type": "path",
-                "url": "../../library/vendor/h4cc/wkhtmltopdf-amd64",
-                "reference": "b80ce6720349e98cebac7e8a19426455805fa7e1",
-                "shasum": null
-            },
-            "bin": [
-                "bin/wkhtmltopdf-amd64"
-            ],
-            "type": "library",
-            "license": [
-                "LGPL Version 3"
-            ],
-            "authors": [
-                {
-                    "name": "Julius Beckmann",
-                    "email": "github@h4cc.de"
-                }
-            ],
-            "description": "Convert html to pdf using webkit (qtwebkit). Static linked linux binary for amd64 systems.",
-            "homepage": "http://wkhtmltopdf.org/",
-            "keywords": [
-                "binary",
-                "convert",
-                "pdf",
-                "snapshot",
-                "thumbnail",
-                "wkhtmltopdf"
-            ],
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
             "name": "incenteev/composer-parameter-handler",
             "version": "2.1.4.0",
             "dist": {
@@ -1818,6 +1782,46 @@
                 "jws",
                 "jwt",
                 "rest"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "mmadariaga/wkhtmltopdf-amd64",
+            "version": "0.12.6.0",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/mmadariaga/wkhtmltopdf-amd64",
+                "reference": "8f0f434d50d0f2832cb8b7bd7204535bee8951b3",
+                "shasum": null
+            },
+            "bin": [
+                "bin/wkhtmltopdf-amd64"
+            ],
+            "type": "library",
+            "license": [
+                "LGPL Version 3"
+            ],
+            "authors": [
+                {
+                    "name": "Julius Beckmann",
+                    "email": "github@h4cc.de"
+                },
+                {
+                    "name": "Mikel Madariaga",
+                    "email": "mikel@irontec.com"
+                }
+            ],
+            "description": "Convert html to pdf using webkit (qtwebkit). Static linked linux binary for amd64 systems.",
+            "homepage": "http://wkhtmltopdf.org/",
+            "keywords": [
+                "binary",
+                "convert",
+                "pdf",
+                "snapshot",
+                "thumbnail",
+                "wkhtmltopdf"
             ],
             "transport-options": {
                 "symlink": true

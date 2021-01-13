@@ -42,6 +42,10 @@
         {
             "url": "https://github.com/mmadariaga/TestDoubleBundle.git",
             "type": "git"
+        },
+        {
+            "url": "https://github.com/mmadariaga/wkhtmltopdf-amd64.git",
+            "type": "git"
         }
     ],
     "autoload-dev": {
@@ -63,11 +67,11 @@
         "php": ">=7.0.19",
         "debach/zend-mp3": "1.8.*",
         "doctrine/doctrine-migrations-bundle": "^1.2",
-        "h4cc/wkhtmltopdf-amd64": "0.12.3",
-        "irontec/ivoz-provider-bundle": "^2.5",
         "irontec/ivoz-api-bundle": "^3.4",
         "irontec/ivoz-dev-tools": "^4.0",
+        "irontec/ivoz-provider-bundle": "^2.5",
         "knplabs/knp-snappy": "0.4.3",
+        "mmadariaga/wkhtmltopdf-amd64": "0.12.6",
         "mmoreram/gearman-bundle": "^4.1",
         "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
         "phpxmlrpc/phpxmlrpc": "^4.0",
