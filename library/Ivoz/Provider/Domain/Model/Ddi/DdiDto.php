@@ -75,6 +75,7 @@ class DdiDto extends DdiDtoAbstract
     {
         $allowedFields = [
             'ddi',
+            'ddie164',
             'id',
             'companyId',
             'ddiProviderId',
@@ -88,6 +89,7 @@ class DdiDto extends DdiDtoAbstract
     {
         $allowedFields = [
             'ddi',
+            'ddie164',
             'recordCalls',
             'displayName',
             'routeType',
