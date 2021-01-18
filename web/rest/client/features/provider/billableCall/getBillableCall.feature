@@ -94,7 +94,7 @@ Feature: Retrieve billable calls
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be equal to:
+      And the JSON should be like:
     """
       {
           "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
@@ -110,26 +110,6 @@ Feature: Retrieve billable calls
           "endpointName": null,
           "direction": "outbound",
           "id": 1,
-          "ddi": {
-              "ddi": "123",
-              "recordCalls": "none",
-              "displayName": "",
-              "routeType": null,
-              "friendValue": "",
-              "id": 1,
-              "conferenceRoom": null,
-              "language": null,
-              "queue": null,
-              "externalCallFilter": null,
-              "user": null,
-              "ivr": null,
-              "huntGroup": null,
-              "fax": null,
-              "country": 68,
-              "residentialDevice": null,
-              "conditionalRoute": null,
-              "retailAccount": null
-          }
-
+          "ddi": "~"
       }
     """
