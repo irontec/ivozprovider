@@ -19,8 +19,8 @@ class TransformationRuleSetLifecycleServiceCollection implements LifecycleServic
         ],
         "on_commit" =>
         [
-            \Ivoz\Provider\Infrastructure\Domain\Service\TransformationRuleSet\SendUsersDialplanReloadRequest::class => 100,
-            \Ivoz\Provider\Infrastructure\Domain\Service\TransformationRuleSet\SendTrunksDialplanReloadRequest::class => 300,
+            \Ivoz\Provider\Domain\Service\TransformationRuleSet\SendUsersDialplanReloadRequest::class => 100,
+            \Ivoz\Provider\Domain\Service\TransformationRuleSet\SendTrunksDialplanReloadRequest::class => 300,
         ],
     ];
 

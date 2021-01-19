@@ -12,7 +12,7 @@ class UsersAddressLifecycleServiceCollection implements LifecycleServiceCollecti
     public static $bindedBaseServices = [
         "on_commit" =>
         [
-            \Ivoz\Kam\Infrastructure\Domain\Service\UsersAddress\SendUsersPermissionsReloadRequest::class => 200,
+            \Ivoz\Kam\Domain\Service\UsersAddress\SendUsersPermissionsReloadRequest::class => 200,
         ],
     ];
 
