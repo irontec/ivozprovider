@@ -551,6 +551,10 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
   collectionOperations:
     get: ~
   properties:
+    ddie164:
+      attributes:
+        swagger_context:
+          readOnly: true
     ddi:
       attributes:
         swagger_context:
