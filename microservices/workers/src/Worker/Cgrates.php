@@ -4,7 +4,7 @@ namespace Worker;
 
 use GearmanJob;
 use Ivoz\Cgr\Infrastructure\Cgrates\Service\ReloadService;
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Cgrates as CgratesJob;
+use Ivoz\Provider\Infrastructure\Gearman\Jobs\Cgrates as CgratesJob;
 use Mmoreram\GearmanBundle\Driver\Gearman;
 use Psr\Log\LoggerInterface;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;

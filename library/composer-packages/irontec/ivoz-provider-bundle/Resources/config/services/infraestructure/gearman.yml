@@ -3,7 +3,31 @@ services:
     autowire: true
     public: false
 
+  ###############################################
+  ## Jobs
+  ###############################################
 
+  Ivoz\Provider\Infrastructure\Gearman\Jobs\Cgrates:
+    arguments:
+      $settings: '%gearmand%'
+
+  Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer:
+    arguments:
+      $settings: '%gearmand%'
+
+  Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter:
+    arguments:
+      $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
+      $settings: '%gearmand%'
+
+  Ivoz\Provider\Infrastructure\Gearman\Jobs\Recoder:
+    arguments:
+      $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
+      $settings: '%gearmand%'
+
+  ###############################################
+  ## Services
+  ###############################################
   Ivoz\Kam\Infrastructure\Gearman\XmlRpcTrunksRequest:
     arguments:
       $enabled:
