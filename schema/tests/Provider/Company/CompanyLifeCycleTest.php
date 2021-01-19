@@ -4,25 +4,23 @@ namespace Tests\Provider\Company;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
+use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
+use Ivoz\Provider\Domain\Model\Fax\Fax;
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
+use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
+use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotification;
-use Ivoz\Provider\Infrastructure\Domain\Service\Company\SendUsersAddressPermissionsReloadRequest;
-use Ivoz\Provider\Infrastructure\Domain\Service\Company\SendUsersTrustedPermissionsReloadRequest;
-use Ivoz\Provider\Infrastructure\Domain\Service\Domain\SendUsersDomainReloadRequest;
+use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold;
+use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile;
+use Ivoz\Provider\Domain\Model\Recording\Recording;
+use Ivoz\Provider\Domain\Service\Company\SendUsersAddressPermissionsReloadRequest;
+use Ivoz\Provider\Domain\Service\Company\SendUsersTrustedPermissionsReloadRequest;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
-
-use Ivoz\Provider\Domain\Model\Locution\Locution;
-use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold;
-use Ivoz\Provider\Domain\Model\Recording\Recording;
-use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
-use Ivoz\Provider\Domain\Model\Fax\Fax;
-use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
-use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile;
-use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 
 class CompanyLifeCycleTest extends KernelTestCase
 {

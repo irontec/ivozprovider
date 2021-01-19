@@ -3,7 +3,7 @@
 namespace Tests\Provider\DdiProvider;
 
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderRepository;
-use Ivoz\Provider\Infrastructure\Domain\Service\DdiProvider\SendTrunksAddressPermissionsReloadRequest;
+use Ivoz\Provider\Domain\Service\DdiProvider\SendTrunksAddressPermissionsReloadRequest;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
