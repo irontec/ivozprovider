@@ -156,7 +156,7 @@ class Generator
 
         $this->logger->debug(self::LOGGER_PREFIX . ' Preparing templates');
         $templateEngine = new Handlebars;
-        ;
+
         $header = $templateEngine->render($templateModel->getTemplateHeader(), $variables);
         $body = $templateEngine->render($templateModel->getTemplate(), $variables);
         $footer = $templateEngine->render($templateModel->getTemplateFooter(), $variables);
@@ -169,6 +169,9 @@ class Generator
         $snappy->setOption('header-spacing', 3);
         $snappy->setOption('footer-html', $footer);
         $snappy->setOption('footer-spacing', 3);
+        $snappy->setOption('load-error-handling', 'ignore');
+        $snappy->setOption('enable-local-file-access', true);
+
         $content = $snappy->getOutputFromHtml($body);
         $snappy->removeTemporaryFiles();
 

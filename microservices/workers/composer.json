@@ -54,7 +54,7 @@
     },
     "require": {
         "php": ">=7.0.19",
-        "h4cc/wkhtmltopdf-amd64": "0.12.3",
+        "mmadariaga/wkhtmltopdf-amd64": "0.12.6",
         "irontec/ivoz-provider-bundle": "^2.0",
         "knplabs/knp-snappy": "0.4.3",
         "mmoreram/gearman-bundle": "^4.1",
