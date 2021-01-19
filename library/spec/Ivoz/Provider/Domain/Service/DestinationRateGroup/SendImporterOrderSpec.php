@@ -5,8 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Service\DestinationRateGroup;
 use Ivoz\Provider\Domain\Service\DestinationRateGroup\SendImporterOrder;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\RatesImporter;
+use Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use spec\HelperTrait;
 
