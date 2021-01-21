@@ -80,6 +80,7 @@ production:
     price:
       title: _('Price')
       type: text
+      required: false
       search:
         as: numeric
     duration:
@@ -90,6 +91,7 @@ production:
     cost:
       title: _('Cost')
       type: text
+      required: false
       search:
         as: numeric
     carrierName:

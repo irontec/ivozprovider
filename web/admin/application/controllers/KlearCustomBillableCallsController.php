@@ -108,6 +108,10 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
                             $argument = $field . '[end]';
                             $where[$argument] = $value;
                             break;
+                        case 'exists':
+                            $argument = $field . '[exists]';
+                            $where[$argument] = $value;
+                            break;
                     }
                 }
             }
