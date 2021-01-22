@@ -990,6 +990,9 @@ msgstr "Error de configuració"
 msgid "Error reloading modules. Please reload modules manually."
 msgstr "Error re-carregant mòduls. Si et plau re-carrega'ls manualment."
 
+msgid "Error saving record"
+msgstr "Error salvando el registro"
+
 msgid "Error target"
 msgstr "Error d'objectiu"
 
@@ -1276,6 +1279,11 @@ msgid "Holiday date"
 msgid_plural "Holiday dates"
 msgstr[0] "Festiu"
 msgstr[1] "Festius"
+
+msgid "Holiday date range"
+msgid_plural "Holiday dates range"
+msgstr[0] "Rango de festivo"
+msgstr[1] "Rango de festivos"
 
 msgid "Holiday importer system"
 msgstr "Sistema d'importació de festius"
@@ -2305,6 +2313,9 @@ msgstr "Regne"
 
 msgid "Record call"
 msgstr "Grava la trucada"
+
+msgid "Record successfully saved."
+msgstr "Registro salvado correctamente."
 
 msgid "Recorded file"
 msgstr "Fitxer de gravació"
