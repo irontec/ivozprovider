@@ -183,6 +183,10 @@ mappers:
         modelFile: HolidayDates,
         entity: 'Ivoz\\Provider\\Domain\\Model\\HolidayDate\\HolidayDate'
     }
+  - &HolidayDatesRange {
+        modelFile: HolidayDatesRange,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\HolidayDate\\HolidayDate'
+    }
   - &HuntGroups {
         modelFile: HuntGroups,
         entity: 'Ivoz\\Provider\\Domain\\Model\\HuntGroup\\HuntGroup'

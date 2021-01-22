@@ -66,6 +66,9 @@ production:
     holidayDatesNew_screen:
       <<: *holidayDatesNew_screenLink
       filterField: Calendar
+    holidayDatesRangeNew_screen:
+      <<: *holidayDatesRangeNew_screenLink
+      filterField: Calendar
     holidayDatesEdit_screen:
       <<: *holidayDatesEdit_screenLink
       

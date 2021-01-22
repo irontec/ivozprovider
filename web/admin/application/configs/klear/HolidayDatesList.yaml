@@ -39,6 +39,7 @@ production:
         title: _("Options")
         screens:
           holidayDatesNew_screen: ${auth.acls.HolidayDates.create}
+          holidayDatesRangeNew_screen: ${auth.acls.HolidayDates.create}
         dialogs:
           holidayDatesDel_dialog: ${auth.acls.HolidayDates.delete}
           importHolidayDates_dialog: ${auth.acls.HolidayDates.create}
@@ -76,6 +77,31 @@ production:
             numberValue: 3
             extension: 3
             voiceMailUser: 3
+
+    holidayDatesRangeNew_screen: &holidayDatesRangeNew_screenLink
+      <<: *HolidayDatesRange
+      module: default
+      controller: klear-custom-calendar
+      action: index
+      class: ui-silk-calendar-add
+      label: true
+      multiInstance: true
+      title: _("Add %s %2s", ngettext('Holiday date range', 'Holiday dates range', 1), "[format| (%parent%)]")
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
+      fields:
+        blacklist:
+          target: true
+      fixedPositions:
+        <<: *holidayDates_fixedPosLink
+        group1:
+          colsPerRow: 3
+          fields:
+            startDate: 1
+            endDate: 1
+            wholeDayEvent: 1
+            timeIn: 1
+            timeOut: 1
     holidayDatesEdit_screen: &holidayDatesEdit_screenLink
       <<: *HolidayDates
       controller: edit
