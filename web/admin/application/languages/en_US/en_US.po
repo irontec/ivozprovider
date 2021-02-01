@@ -979,6 +979,9 @@ msgstr "Error configuration"
 msgid "Error reloading modules. Please reload modules manually."
 msgstr "Error reloading modules. Please reload modules manually."
 
+msgid "Error saving record"
+msgstr "Error saving record"
+
 msgid "Error target"
 msgstr "Error target"
 
@@ -1264,6 +1267,11 @@ msgid "Holiday date"
 msgid_plural "Holiday dates"
 msgstr[0] "Holiday date"
 msgstr[1] "Holiday dates"
+
+msgid "Holiday date range"
+msgid_plural "Holiday dates range"
+msgstr[0] "Holiday date range"
+msgstr[1] "Holiday dates range"
 
 msgid "Holiday importer system"
 msgstr "Holiday importer system"
@@ -2288,6 +2296,9 @@ msgstr "Realm"
 
 msgid "Record call"
 msgstr "Record call"
+
+msgid "Record successfully saved."
+msgstr "Record successfully saved."
 
 msgid "Recorded file"
 msgstr "Recorded file"

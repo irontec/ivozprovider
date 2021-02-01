@@ -993,6 +993,9 @@ msgstr "Configuración Error"
 msgid "Error reloading modules. Please reload modules manually."
 msgstr "Error recargando módulos. Por favor recarge módulos manualmente."
 
+msgid "Error saving record"
+msgstr "Error salvando el registro"
+
 msgid "Error target"
 msgstr "Destino error"
 
@@ -1281,6 +1284,11 @@ msgid "Holiday date"
 msgid_plural "Holiday dates"
 msgstr[0] "Festivo"
 msgstr[1] "Festivos"
+
+msgid "Holiday date range"
+msgid_plural "Holiday dates range"
+msgstr[0] "Rango de festivo"
+msgstr[1] "Rango de festivos"
 
 msgid "Holiday importer system"
 msgstr "Importar festivos"
@@ -2318,6 +2326,9 @@ msgstr "Realm"
 
 msgid "Record call"
 msgstr "Grabar llamada"
+
+msgid "Record successfully saved."
+msgstr "Registro salvado correctamente."
 
 msgid "Recorded file"
 msgstr "Fichero grabado"
