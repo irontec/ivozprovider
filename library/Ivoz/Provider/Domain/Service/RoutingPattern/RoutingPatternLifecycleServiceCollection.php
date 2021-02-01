@@ -19,7 +19,7 @@ class RoutingPatternLifecycleServiceCollection implements LifecycleServiceCollec
         ],
         "on_commit" =>
         [
-            \Ivoz\Provider\Infrastructure\Domain\Service\RoutingPattern\SendTrunksLcrReloadRequest::class => 200,
+            \Ivoz\Provider\Domain\Service\RoutingPattern\SendTrunksLcrReloadRequest::class => 200,
         ],
     ];
 

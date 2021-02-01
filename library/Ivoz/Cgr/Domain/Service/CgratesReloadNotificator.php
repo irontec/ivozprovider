@@ -3,7 +3,7 @@
 namespace Ivoz\Cgr\Domain\Service;
 
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Cgrates;
+use Ivoz\Provider\Infrastructure\Gearman\Jobs\Cgrates;
 
 abstract class CgratesReloadNotificator implements LifecycleEventHandlerInterface
 {

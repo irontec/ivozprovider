@@ -19,7 +19,7 @@ class RoutingTagLifecycleServiceCollection implements LifecycleServiceCollection
         ],
         "on_commit" =>
         [
-            \Ivoz\Provider\Infrastructure\Domain\Service\RoutingTag\SendTrunksLcrReloadRequest::class => 200,
+            \Ivoz\Provider\Domain\Service\RoutingTag\SendTrunksLcrReloadRequest::class => 200,
         ],
     ];
 

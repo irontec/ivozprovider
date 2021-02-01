@@ -15,7 +15,7 @@ class TrunksUacregLifecycleServiceCollection implements LifecycleServiceCollecti
     public static $bindedBaseServices = [
         "on_commit" =>
         [
-            \Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg\SendTrunksUacRegReloadRequest::class => 200,
+            \Ivoz\Kam\Domain\Service\TrunksUacreg\SendTrunksUacRegReloadRequest::class => 200,
         ],
     ];
 

@@ -23,7 +23,7 @@ class OutgoingRoutingLifecycleServiceCollection implements LifecycleServiceColle
         ],
         "on_commit" =>
         [
-            \Ivoz\Provider\Infrastructure\Domain\Service\OutgoingRouting\SendTrunksLcrReloadRequest::class => 200,
+            \Ivoz\Provider\Domain\Service\OutgoingRouting\SendTrunksLcrReloadRequest::class => 200,
         ],
     ];
 
