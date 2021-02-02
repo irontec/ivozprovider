@@ -56,6 +56,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     private $externalIpCalls = '0';
 
     /**
+     * @var string
+     */
+    private $rejectCallMethod = 'rfc';
+
+    /**
      * @var boolean
      */
     private $voicemailEnabled = true;
@@ -182,6 +187,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'active' => 'active',
             'maxCalls' => 'maxCalls',
             'externalIpCalls' => 'externalIpCalls',
+            'rejectCallMethod' => 'rejectCallMethod',
             'voicemailEnabled' => 'voicemailEnabled',
             'voicemailSendMail' => 'voicemailSendMail',
             'voicemailAttachSound' => 'voicemailAttachSound',
@@ -217,6 +223,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'active' => $this->getActive(),
             'maxCalls' => $this->getMaxCalls(),
             'externalIpCalls' => $this->getExternalIpCalls(),
+            'rejectCallMethod' => $this->getRejectCallMethod(),
             'voicemailEnabled' => $this->getVoicemailEnabled(),
             'voicemailSendMail' => $this->getVoicemailSendMail(),
             'voicemailAttachSound' => $this->getVoicemailAttachSound(),
@@ -431,6 +438,26 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     public function getExternalIpCalls()
     {
         return $this->externalIpCalls;
+    }
+
+    /**
+     * @param string $rejectCallMethod
+     *
+     * @return static
+     */
+    public function setRejectCallMethod($rejectCallMethod = null)
+    {
+        $this->rejectCallMethod = $rejectCallMethod;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getRejectCallMethod()
+    {
+        return $this->rejectCallMethod;
     }
 
     /**

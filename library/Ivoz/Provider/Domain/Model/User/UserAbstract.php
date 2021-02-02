@@ -61,6 +61,12 @@ abstract class UserAbstract
     protected $externalIpCalls = '0';
 
     /**
+     * comment: enum:rfc|486|600
+     * @var string
+     */
+    protected $rejectCallMethod = 'rfc';
+
+    /**
      * @var boolean
      */
     protected $voicemailEnabled = true;
@@ -154,6 +160,7 @@ abstract class UserAbstract
         $active,
         $maxCalls,
         $externalIpCalls,
+        $rejectCallMethod,
         $voicemailEnabled,
         $voicemailSendMail,
         $voicemailAttachSound,
@@ -166,6 +173,7 @@ abstract class UserAbstract
         $this->setActive($active);
         $this->setMaxCalls($maxCalls);
         $this->setExternalIpCalls($externalIpCalls);
+        $this->setRejectCallMethod($rejectCallMethod);
         $this->setVoicemailEnabled($voicemailEnabled);
         $this->setVoicemailSendMail($voicemailSendMail);
         $this->setVoicemailAttachSound($voicemailAttachSound);
@@ -248,6 +256,7 @@ abstract class UserAbstract
             $dto->getActive(),
             $dto->getMaxCalls(),
             $dto->getExternalIpCalls(),
+            $dto->getRejectCallMethod(),
             $dto->getVoicemailEnabled(),
             $dto->getVoicemailSendMail(),
             $dto->getVoicemailAttachSound(),
@@ -297,6 +306,7 @@ abstract class UserAbstract
             ->setActive($dto->getActive())
             ->setMaxCalls($dto->getMaxCalls())
             ->setExternalIpCalls($dto->getExternalIpCalls())
+            ->setRejectCallMethod($dto->getRejectCallMethod())
             ->setVoicemailEnabled($dto->getVoicemailEnabled())
             ->setVoicemailSendMail($dto->getVoicemailSendMail())
             ->setVoicemailAttachSound($dto->getVoicemailAttachSound())
@@ -336,6 +346,7 @@ abstract class UserAbstract
             ->setActive(self::getActive())
             ->setMaxCalls(self::getMaxCalls())
             ->setExternalIpCalls(self::getExternalIpCalls())
+            ->setRejectCallMethod(self::getRejectCallMethod())
             ->setVoicemailEnabled(self::getVoicemailEnabled())
             ->setVoicemailSendMail(self::getVoicemailSendMail())
             ->setVoicemailAttachSound(self::getVoicemailAttachSound())
@@ -369,6 +380,7 @@ abstract class UserAbstract
             'active' => self::getActive(),
             'maxCalls' => self::getMaxCalls(),
             'externalIpCalls' => self::getExternalIpCalls(),
+            'rejectCallMethod' => self::getRejectCallMethod(),
             'voicemailEnabled' => self::getVoicemailEnabled(),
             'voicemailSendMail' => self::getVoicemailSendMail(),
             'voicemailAttachSound' => self::getVoicemailAttachSound(),
@@ -642,6 +654,38 @@ abstract class UserAbstract
     public function getExternalIpCalls(): string
     {
         return $this->externalIpCalls;
+    }
+
+    /**
+     * Set rejectCallMethod
+     *
+     * @param string $rejectCallMethod
+     *
+     * @return static
+     */
+    protected function setRejectCallMethod($rejectCallMethod)
+    {
+        Assertion::notNull($rejectCallMethod, 'rejectCallMethod value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($rejectCallMethod, 3, 'rejectCallMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($rejectCallMethod, [
+            UserInterface::REJECTCALLMETHOD_RFC,
+            UserInterface::REJECTCALLMETHOD_486,
+            UserInterface::REJECTCALLMETHOD_600
+        ], 'rejectCallMethodvalue "%s" is not an element of the valid values: %s');
+
+        $this->rejectCallMethod = $rejectCallMethod;
+
+        return $this;
+    }
+
+    /**
+     * Get rejectCallMethod
+     *
+     * @return string
+     */
+    public function getRejectCallMethod(): string
+    {
+        return $this->rejectCallMethod;
     }
 
     /**
