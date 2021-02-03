@@ -48,8 +48,8 @@ production:
           timezone: true
           extension: true
           terminal: true
+          outgoingDdi: true
           statusIcon: true
-          outgoingDDI: true
           callACL: true
           voicemailEnabled: true
           isBoss: true
@@ -139,7 +139,7 @@ production:
           fields:
             terminal: 2
             extension: 2
-            outgoingDDI: 3
+            outgoingDdi: 3
             outgoingDdiRule: 3
     usersEdit_screen: &usersEdit_screenLink
       <<: *Users
@@ -190,7 +190,7 @@ production:
           fields:
             terminal: 6
             extension: 6
-            outgoingDDI: 6
+            outgoingDdi: 6
             outgoingDdiRule: 6
             callACL: 6
             doNotDisturb: 6
