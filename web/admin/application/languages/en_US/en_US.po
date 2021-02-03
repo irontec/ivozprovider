@@ -431,6 +431,9 @@ msgid_plural "Call registries"
 msgstr[0] "Call registry"
 msgstr[1] "Call registries"
 
+msgid "Call rejection method"
+msgstr "Call rejection method"
+
 msgid "Call type"
 msgstr "Call type"
 
@@ -481,6 +484,12 @@ msgstr "Calls from non-granted IPs"
 
 msgid "Cancel"
 msgstr "Cancel"
+
+msgid "Cancel call in all devices"
+msgstr "Cancel call in all devices"
+
+msgid "Cancel call only in current device"
+msgstr "Cancel call only in current device"
 
 msgid "Cannot invoice calls from today in the future."
 msgstr "Cannot invoice calls from today in the future."
@@ -676,6 +685,15 @@ msgid_plural "Default Invoice templates"
 msgstr[0] "Default Invoice template"
 msgstr[1] "Default Invoice templates"
 
+msgid ""
+"Default behaviour cancels call in all devices for 600/603 response code and "
+"only in current device for 480/486. Choose whether you want to force one "
+"behaviour or another no matter response codes."
+msgstr ""
+"Default behaviour cancels call in all devices for 600/603 response code and "
+"only in current device for 480/486. Choose whether you want to force one "
+"behaviour or another no matter response codes."
+
 msgid "Default currency"
 msgstr "Default currency"
 
@@ -708,6 +726,9 @@ msgstr "Delete %s"
 
 msgid "Delete file"
 msgstr "Delete file"
+
+msgid "Depending on response code"
+msgstr "Depending on response code"
 
 msgid "Description"
 msgstr "Description"
