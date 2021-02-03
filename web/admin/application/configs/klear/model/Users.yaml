@@ -367,7 +367,25 @@ production:
         icon: help
         text: _("Enable calling from non-granted IP addresses for this user. It limits the number of outgoing calls to avoid toll-fraud. 'None' value makes outgoing calls unlimited as long as company IP policy is fulfilled.")
         label: _("Need help?")
-
+    rejectCallMethod:
+      title: _('Call rejection method')
+      type: select
+      defaultValue: 'rfc'
+      source:
+        data: inline
+        values:
+          'rfc':
+            title: _("Depending on response code")
+          '486':
+            title: _("Cancel call only in current device")
+          '600':
+            title: _("Cancel call in all devices")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Default behaviour cancels call in all devices for 600/603 response code and only in current device for 480/486. Choose whether you want to force one behaviour or another no matter response codes.")
+        label: _("Need help?")
     gsQRCode:
       title: _('QR Code')
       type: select

@@ -80,6 +80,7 @@ production:
           language: true
           externalIpCalls: true
           outgoingDdiRule: true
+          rejectCallMethod: true
       options:
         title: _("Options")
         screens:
@@ -125,6 +126,7 @@ production:
           transformationRuleSet: true
           externalIpCalls: true
           statusIcon: true
+          rejectCallMethod: true
       fixedPositions: &UsersFixedPositions_link
         group0:
           label: _("Personal data")
@@ -196,6 +198,7 @@ production:
             doNotDisturb: 6
             maxCalls: 6
             externalIpCalls: 6
+            rejectCallMethod: 10
         group5:
           label: _("Voicemail")
           colsPerRow: 2
