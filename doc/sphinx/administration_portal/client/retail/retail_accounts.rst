@@ -81,6 +81,11 @@ These are the configurable settings of *Retail accounts*:
         If set to 'yes', call won't be established unless it's possible to encryption its audio. If set to 'no',
         audio won't be encrypted.
 
+    Multi Contact
+        Same SIP credentials can be configured in multiple SIP devices. In that case, all devices ring
+        simultaneously when receiving a call. Setting this toggle to 'No' limits this behaviour so that
+        only latest registered SIP device rings.
+
 .. warning:: All retail accounts within a retail client will have the transcoding capabilities configured at client level.
 
 .. tip:: On retail account edit screen **id** field shows internal identification number assigned to the retail account.
