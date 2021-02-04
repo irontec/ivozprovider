@@ -97,6 +97,7 @@ Feature: Retrieve features rel brand
               "nif": "12345678A",
               "maxCalls": 0,
               "maxDailyUsage": 2,
+              "maxDailyUsageEmail": "no-replay@domain.net",
               "postalAddress": "Company Address",
               "postalCode": "54321",
               "town": "Company Town",
