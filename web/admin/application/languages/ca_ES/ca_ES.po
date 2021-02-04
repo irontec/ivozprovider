@@ -1890,6 +1890,9 @@ msgstr "Mes"
 msgid "Movement amount"
 msgstr "Quantitat moguda"
 
+msgid "Multi contact"
+msgstr "Multi contact"
+
 msgid "Multimedia"
 msgstr "Multimèdia"
 
@@ -2640,6 +2643,14 @@ msgstr "El servei té arguments extres"
 
 msgid "Set column configuration and continue."
 msgstr "Configura les columnes i continua."
+
+msgid ""
+"Set to 'No' to call only to latest registered SIP device instead of making "
+"all registered devices ring."
+msgstr ""
+"Configurar a 'No' para recibir las llamadas solamente en el último "
+"dispositivo SIP que se haya registrado. En caso contrario, sonarán todos los "
+"dispositivos con registro activo de forma simultánea."
 
 msgid "Settings"
 msgstr "Configuracions"
