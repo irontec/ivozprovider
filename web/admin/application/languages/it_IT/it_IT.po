@@ -440,6 +440,9 @@ msgid_plural "Call registries"
 msgstr[0] "Registro chiamate"
 msgstr[1] "Registri delle chiamate"
 
+msgid "Call rejection method"
+msgstr "Call rejection method"
+
 msgid "Call type"
 msgstr "Tipo di chiamata"
 
@@ -491,6 +494,12 @@ msgstr "Chiamate da IP non concessi"
 
 msgid "Cancel"
 msgstr "Annulla"
+
+msgid "Cancel call in all devices"
+msgstr "Cancel call in all devices"
+
+msgid "Cancel call only in current device"
+msgstr "Cancel call only in current device"
 
 msgid "Cannot invoice calls from today in the future."
 msgstr "Impossibile fatturare le chiamate da oggi in data futura."
@@ -686,6 +695,15 @@ msgid_plural "Default Invoice templates"
 msgstr[0] "Modello di fattura predefinito"
 msgstr[1] "Modelli di fattura predefinito"
 
+msgid ""
+"Default behaviour cancels call in all devices for 600/603 response code and "
+"only in current device for 480/486. Choose whether you want to force one "
+"behaviour or another no matter response codes."
+msgstr ""
+"Default behaviour cancels call in all devices for 600/603 response code and "
+"only in current device for 480/486. Choose whether you want to force one "
+"behaviour or another no matter response codes."
+
 msgid "Default currency"
 msgstr "Valuta predefinita"
 
@@ -722,6 +740,9 @@ msgstr "Elimina %s"
 
 msgid "Delete file"
 msgstr "Elimina file"
+
+msgid "Depending on response code"
+msgstr "Depending on response code"
 
 msgid "Description"
 msgstr "Descrizione"

@@ -90,11 +90,19 @@ Basic Configuration
     Call waiting
         Limits received calls when already handling this number of calls. Set 0 for unlimited.
 
-    Calls from non-granted IPs:
+    Calls from non-granted IPs
         Enable calling from non-granted IP addresses for this user. 
         It limits the number of outgoing calls to avoid toll-fraud. 
         'None' value makes outgoing calls unlimited as long as client IP 
         policy is fulfilled. Read :ref:`roadwarrior_users` for further reference.
+
+    Call Rejection Method
+        This setting allows configuring a behaviour on call rejection for users with several
+        SIP devices. In such scenarios, all devices ring simultaneously and call rejection must
+        choose whether rejecting call just in the device that declined or in all ringing devices.
+        Default behaviour is to cancel call in all devices for 600/603 response codes and only in
+        current device for 480/486. Choose whether you want to force one behaviour or another no
+        matter which response code your SIP device sends on call rejection.
 
 *********
 Voicemail

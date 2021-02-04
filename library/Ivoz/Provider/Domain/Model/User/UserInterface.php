@@ -14,6 +14,11 @@ interface UserInterface extends LoggableEntityInterface
     const EXTERNALIPCALLS_3 = '3';
 
 
+    const REJECTCALLMETHOD_RFC = 'rfc';
+    const REJECTCALLMETHOD_486 = '486';
+    const REJECTCALLMETHOD_600 = '600';
+
+
     /**
      * @return array
      */
@@ -193,6 +198,13 @@ interface UserInterface extends LoggableEntityInterface
      * @return string
      */
     public function getExternalIpCalls(): string;
+
+    /**
+     * Get rejectCallMethod
+     *
+     * @return string
+     */
+    public function getRejectCallMethod(): string;
 
     /**
      * Get voicemailEnabled
