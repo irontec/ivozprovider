@@ -41,6 +41,7 @@ production:
           t38Passthrough: true
           outgoingDdi: true
           rtpEncryption: true
+          multiContact: true
         order:
           name: true
           domain: true
@@ -117,6 +118,7 @@ production:
             transport: 4
             ip: 5
             port: 3
+            multiContact: 6
         group1:
           label: _("Geographic Configuration")
           colsPerRow: 12

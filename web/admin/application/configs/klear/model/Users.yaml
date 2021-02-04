@@ -403,6 +403,29 @@ production:
         icon: help
         text: _("Add QR Code to user portal to provision GS Wave mobile softphone")
         label: _("Need help?")
+    multiContact:
+      title: _('Multi contact')
+      type: select
+      defautlValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+            visualFilter:
+              show: [""]
+              hide: ["rejectCallMethod"]
+          '1':
+            title: _("Yes")
+            visualFilter:
+              show: ["rejectCallMethod"]
+              hide: [""]
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring.")
+        label: _("Need help?")
 staging:
   _extends: production
 testing:

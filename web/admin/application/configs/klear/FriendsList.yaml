@@ -48,6 +48,7 @@ production:
           interCompany: true
           alwaysApplyTransformations: true
           rtpEncryption: true
+          multiContact: true
         order:
           name: true
           domain: true
@@ -125,6 +126,7 @@ production:
           status: true
           t38Passthrough: true
           alwaysApplyTransformations: true
+          multiContact: true
       fixedPositions: &friends_FixedPositionsLink
         group0:
           label: _("Basic Configuration")
@@ -163,6 +165,7 @@ production:
             ddiIn: 2
             t38Passthrough: 2
             rtpEncryption: 2
+            multiContact: 2
       shortcutOption: N
 
     friendsEdit_screen: &friendsEdit_screenLink
