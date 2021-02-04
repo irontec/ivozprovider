@@ -78,6 +78,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     /**
      * @var boolean
      */
+    private $multiContact = true;
+
+    /**
+     * @var boolean
+     */
     private $gsQRCode = false;
 
     /**
@@ -191,6 +196,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'voicemailEnabled' => 'voicemailEnabled',
             'voicemailSendMail' => 'voicemailSendMail',
             'voicemailAttachSound' => 'voicemailAttachSound',
+            'multiContact' => 'multiContact',
             'gsQRCode' => 'gsQRCode',
             'id' => 'id',
             'companyId' => 'company',
@@ -227,6 +233,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'voicemailEnabled' => $this->getVoicemailEnabled(),
             'voicemailSendMail' => $this->getVoicemailSendMail(),
             'voicemailAttachSound' => $this->getVoicemailAttachSound(),
+            'multiContact' => $this->getMultiContact(),
             'gsQRCode' => $this->getGsQRCode(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
@@ -518,6 +525,26 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     public function getVoicemailAttachSound()
     {
         return $this->voicemailAttachSound;
+    }
+
+    /**
+     * @param boolean $multiContact
+     *
+     * @return static
+     */
+    public function setMultiContact($multiContact = null)
+    {
+        $this->multiContact = $multiContact;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getMultiContact()
+    {
+        return $this->multiContact;
     }
 
     /**

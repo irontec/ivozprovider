@@ -228,6 +228,13 @@ interface UserInterface extends LoggableEntityInterface
     public function getVoicemailAttachSound(): bool;
 
     /**
+     * Get multiContact
+     *
+     * @return boolean
+     */
+    public function getMultiContact(): bool;
+
+    /**
      * Get gsQRCode
      *
      * @return boolean
