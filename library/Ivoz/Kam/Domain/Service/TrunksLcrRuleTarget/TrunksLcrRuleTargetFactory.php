@@ -78,7 +78,7 @@ class TrunksLcrRuleTargetFactory
 
         // Share route weight between all carrier servers inside the carrier
         // This way an even distribution between Carriers is achieved, no matter how many CarrierServers they have
-        $ponderatedWeight = floor(10 * $outgoingRouting->getWeight() / count($lcrGateways));
+        $ponderatedWeight = ceil(10 * $outgoingRouting->getWeight() / count($lcrGateways));
 
         $lcrRuleTargets = [];
         $lcrRules = $outgoingRouting->getLcrRules();
