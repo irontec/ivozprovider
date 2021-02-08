@@ -1874,6 +1874,9 @@ msgstr "Month"
 msgid "Movement amount"
 msgstr "Movement amount"
 
+msgid "Multi contact"
+msgstr "Multi contact"
+
 msgid "Multimedia"
 msgstr "Multimedia"
 
@@ -2620,6 +2623,13 @@ msgstr "Service has extra arguments"
 
 msgid "Set column configuration and continue."
 msgstr "Set column configuration and continue."
+
+msgid ""
+"Set to 'No' to call only to latest registered SIP device instead of making "
+"all registered devices ring."
+msgstr ""
+"Set to 'No' to call only to latest registered SIP device instead of making "
+"all registered devices ring."
 
 msgid "Settings"
 msgstr "Settings"

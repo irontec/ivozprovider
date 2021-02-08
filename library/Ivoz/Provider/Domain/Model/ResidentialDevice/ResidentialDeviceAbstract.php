@@ -116,6 +116,11 @@ abstract class ResidentialDeviceAbstract
     protected $rtpEncryption = false;
 
     /**
+     * @var boolean
+     */
+    protected $multiContact = true;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -164,7 +169,8 @@ abstract class ResidentialDeviceAbstract
         $ddiIn,
         $maxCalls,
         $t38Passthrough,
-        $rtpEncryption
+        $rtpEncryption,
+        $multiContact
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -179,6 +185,7 @@ abstract class ResidentialDeviceAbstract
         $this->setMaxCalls($maxCalls);
         $this->setT38Passthrough($t38Passthrough);
         $this->setRtpEncryption($rtpEncryption);
+        $this->setMultiContact($multiContact);
     }
 
     abstract public function getId();
@@ -262,7 +269,8 @@ abstract class ResidentialDeviceAbstract
             $dto->getDdiIn(),
             $dto->getMaxCalls(),
             $dto->getT38Passthrough(),
-            $dto->getRtpEncryption()
+            $dto->getRtpEncryption(),
+            $dto->getMultiContact()
         );
 
         $self
@@ -314,6 +322,7 @@ abstract class ResidentialDeviceAbstract
             ->setMaxCalls($dto->getMaxCalls())
             ->setT38Passthrough($dto->getT38Passthrough())
             ->setRtpEncryption($dto->getRtpEncryption())
+            ->setMultiContact($dto->getMultiContact())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
@@ -352,6 +361,7 @@ abstract class ResidentialDeviceAbstract
             ->setMaxCalls(self::getMaxCalls())
             ->setT38Passthrough(self::getT38Passthrough())
             ->setRtpEncryption(self::getRtpEncryption())
+            ->setMultiContact(self::getMultiContact())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
@@ -384,6 +394,7 @@ abstract class ResidentialDeviceAbstract
             'maxCalls' => self::getMaxCalls(),
             't38Passthrough' => self::getT38Passthrough(),
             'rtpEncryption' => self::getRtpEncryption(),
+            'multiContact' => self::getMultiContact(),
             'brandId' => self::getBrand()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'companyId' => self::getCompany()->getId(),
@@ -909,6 +920,34 @@ abstract class ResidentialDeviceAbstract
     public function getRtpEncryption(): bool
     {
         return $this->rtpEncryption;
+    }
+
+    /**
+     * Set multiContact
+     *
+     * @param boolean $multiContact
+     *
+     * @return static
+     */
+    protected function setMultiContact($multiContact)
+    {
+        Assertion::notNull($multiContact, 'multiContact value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
+        $multiContact = (bool) $multiContact;
+
+        $this->multiContact = $multiContact;
+
+        return $this;
+    }
+
+    /**
+     * Get multiContact
+     *
+     * @return boolean
+     */
+    public function getMultiContact(): bool
+    {
+        return $this->multiContact;
     }
 
     /**

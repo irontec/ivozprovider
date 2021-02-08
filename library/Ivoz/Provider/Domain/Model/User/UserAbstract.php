@@ -84,6 +84,11 @@ abstract class UserAbstract
     /**
      * @var boolean
      */
+    protected $multiContact = true;
+
+    /**
+     * @var boolean
+     */
     protected $gsQRCode = false;
 
     /**
@@ -164,6 +169,7 @@ abstract class UserAbstract
         $voicemailEnabled,
         $voicemailSendMail,
         $voicemailAttachSound,
+        $multiContact,
         $gsQRCode
     ) {
         $this->setName($name);
@@ -177,6 +183,7 @@ abstract class UserAbstract
         $this->setVoicemailEnabled($voicemailEnabled);
         $this->setVoicemailSendMail($voicemailSendMail);
         $this->setVoicemailAttachSound($voicemailAttachSound);
+        $this->setMultiContact($multiContact);
         $this->setGsQRCode($gsQRCode);
     }
 
@@ -260,6 +267,7 @@ abstract class UserAbstract
             $dto->getVoicemailEnabled(),
             $dto->getVoicemailSendMail(),
             $dto->getVoicemailAttachSound(),
+            $dto->getMultiContact(),
             $dto->getGsQRCode()
         );
 
@@ -310,6 +318,7 @@ abstract class UserAbstract
             ->setVoicemailEnabled($dto->getVoicemailEnabled())
             ->setVoicemailSendMail($dto->getVoicemailSendMail())
             ->setVoicemailAttachSound($dto->getVoicemailAttachSound())
+            ->setMultiContact($dto->getMultiContact())
             ->setGsQRCode($dto->getGsQRCode())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
@@ -350,6 +359,7 @@ abstract class UserAbstract
             ->setVoicemailEnabled(self::getVoicemailEnabled())
             ->setVoicemailSendMail(self::getVoicemailSendMail())
             ->setVoicemailAttachSound(self::getVoicemailAttachSound())
+            ->setMultiContact(self::getMultiContact())
             ->setGsQRCode(self::getGsQRCode())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAcl::entityToDto(self::getCallAcl(), $depth))
@@ -384,6 +394,7 @@ abstract class UserAbstract
             'voicemailEnabled' => self::getVoicemailEnabled(),
             'voicemailSendMail' => self::getVoicemailSendMail(),
             'voicemailAttachSound' => self::getVoicemailAttachSound(),
+            'multiContact' => self::getMultiContact(),
             'gsQRCode' => self::getGsQRCode(),
             'companyId' => self::getCompany()->getId(),
             'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
@@ -770,6 +781,34 @@ abstract class UserAbstract
     public function getVoicemailAttachSound(): bool
     {
         return $this->voicemailAttachSound;
+    }
+
+    /**
+     * Set multiContact
+     *
+     * @param boolean $multiContact
+     *
+     * @return static
+     */
+    protected function setMultiContact($multiContact)
+    {
+        Assertion::notNull($multiContact, 'multiContact value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
+        $multiContact = (bool) $multiContact;
+
+        $this->multiContact = $multiContact;
+
+        return $this;
+    }
+
+    /**
+     * Get multiContact
+     *
+     * @return boolean
+     */
+    public function getMultiContact(): bool
+    {
+        return $this->multiContact;
     }
 
     /**

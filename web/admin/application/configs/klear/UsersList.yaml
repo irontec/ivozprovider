@@ -56,6 +56,8 @@ production:
           bossAssistant: true
           bossAssistantWhiteList: true
           PickUpRelUsers: true
+          multiContact: true
+          rejectCallMethod: true
         blacklist:
           email: true
           active: true
@@ -81,6 +83,7 @@ production:
           externalIpCalls: true
           outgoingDdiRule: true
           rejectCallMethod: true
+          multiContact: true
       options:
         title: _("Options")
         screens:
@@ -127,6 +130,7 @@ production:
           externalIpCalls: true
           statusIcon: true
           rejectCallMethod: true
+          multiContact: true
       fixedPositions: &UsersFixedPositions_link
         group0:
           label: _("Personal data")
@@ -198,6 +202,8 @@ production:
             doNotDisturb: 6
             maxCalls: 6
             externalIpCalls: 6
+            multiContact: 6
+            _empty: 6
             rejectCallMethod: 10
         group5:
           label: _("Voicemail")

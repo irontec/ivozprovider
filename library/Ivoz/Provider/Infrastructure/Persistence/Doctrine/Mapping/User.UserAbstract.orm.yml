@@ -100,6 +100,13 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
         default: '1'
         unsigned: true
       column: voicemailAttachSound
+    multiContact:
+      type: boolean
+      nullable: false
+      options:
+        default: '1'
+        unsigned: true
+      column: multiContact
     gsQRCode:
       type: boolean
       nullable: false
