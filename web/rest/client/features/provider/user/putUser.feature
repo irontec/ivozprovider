@@ -60,6 +60,7 @@ Feature: Update users
           "voicemailEnabled": true,
           "voicemailSendMail": true,
           "voicemailAttachSound": true,
+          "multiContact": true,
           "gsQRCode": false,
           "id": 1,
           "callAcl": null,
