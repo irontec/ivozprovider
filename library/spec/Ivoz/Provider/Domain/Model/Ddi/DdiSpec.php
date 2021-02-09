@@ -2,15 +2,14 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Ddi;
 
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\HelperTrait;
 
 class DdiSpec extends ObjectBehavior
@@ -29,9 +28,7 @@ class DdiSpec extends ObjectBehavior
 
     function let(
         CountryInterface $country,
-        DdiProviderInterface $ddiProvider,
-        BrandInterface $brand,
-        CompanyInterface $company
+        DdiProviderInterface $ddiProvider
     ) {
         $this->ddiProvider = $ddiProvider;
 
@@ -41,13 +38,22 @@ class DdiSpec extends ObjectBehavior
             ->setRecordCalls('none')
             ->setBillInboundCalls(0);
 
+        $brand = $this->getInstance(
+            Brand::class
+        );
+
+        $company = $this->getInstance(
+            Company::class,
+            ['brand' => $brand]
+        );
+
         $this->hydrate(
             $dto,
             [
                 'country' => $country->getWrappedObject(),
                 'ddiProvider' => $ddiProvider->getWrappedObject(),
-                'brand' =>  $brand->getWrappedObject(),
-                'company' => $company->getWrappedObject(),
+                'brand' =>  $brand,
+                'company' => $company,
             ]
         );
 
