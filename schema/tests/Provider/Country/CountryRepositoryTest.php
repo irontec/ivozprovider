@@ -20,6 +20,7 @@ class CountryRepositoryTest extends KernelTestCase
         $this->its_instantiable();
         $this->it_finds_by_country_code();
         $this->it_finds_by_country_code_and_code();
+        $this->it_finds_one_by_code();
     }
 
     public function its_instantiable()
@@ -71,6 +72,23 @@ class CountryRepositoryTest extends KernelTestCase
 
         $this->assertNotSame(
             $canada,
+            $eeuu
+        );
+    }
+
+    public function it_finds_one_by_code()
+    {
+        /** @var CountryRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Country::class);
+
+        $eeuu = $repository->findOneByCode(
+            'US'
+        );
+
+        $this->assertInstanceOf(
+            Country::class,
             $eeuu
         );
     }

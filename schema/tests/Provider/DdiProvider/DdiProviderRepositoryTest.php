@@ -26,6 +26,7 @@ class DdiProviderRepositoryTest extends KernelTestCase
         $this->it_finds_ids_by_brand_admin();
         $this->it_finds_ids_by_brand_and_proxyTrunk();
         $this->it_finds_ids_by_proxyTrunk();
+        $this->it_finds_names_by_brand();
     }
 
     public function its_instantiable()
@@ -117,6 +118,27 @@ class DdiProviderRepositoryTest extends KernelTestCase
 
         $this->assertNotEmpty(
             $result
+        );
+    }
+
+    public function it_finds_names_by_brand()
+    {
+        /** @var DdiProviderRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(DdiProvider::class);
+
+        $results = $repository->getNames(
+            1
+        );
+
+        $this->assertNotEmpty(
+            $results
+        );
+
+        $this->assertInternalType(
+            'string',
+            current($results)
         );
     }
 }
