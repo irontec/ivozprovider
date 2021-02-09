@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel;
+use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -18,5 +19,18 @@ class TerminalModelDoctrineRepository extends ServiceEntityRepository implements
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, TerminalModel::class);
+    }
+
+    /**
+     * @return TerminalModelInterface | null
+     */
+    public function findOneByName(string $name)
+    {
+        /** @var TerminalModelInterface $response */
+        $response = $this->findOneBy([
+            'name' => $name
+        ]);
+
+        return $response;
     }
 }
