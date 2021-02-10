@@ -1,0 +1,40 @@
+# stackhawk configuration for IvozProvider
+app:
+  # An applicationId obtained from the StackHawk platform.
+  applicationId: ${APP_ID} # (required)
+  # The environment for the applicationId defined in the StackHawk platform.
+  env: Development # (required)
+  # The url of your application to scan
+  host: ${API_HOST} # (required)
+  # The risk level of the app
+  riskLevel: MEDIUM # (optional)
+  #relaiive path to openAPI spec
+  api: ${BASE_PATH}/docs.json # (optional)
+  # The type of data sensitivity the web app maintains
+  # appDataType: PII # (optional)
+
+  # Authentication configuration for scanning as a user.
+  # Enabling will force the scanner to scan as an
+  # authenticated user of your app.
+  authentication:
+    loggedInIndicator: ".*2[0-9][0-9].*OK.*|.*3[0-9][0-9].*"
+    loggedOutIndicator: ".*4[0-9][0-9].*Unauthorized.*"
+    usernamePassword:
+      type: FORM
+      loginPath: ${BASE_PATH}/admin_login
+      usernameField: username
+      passwordField: password
+      scanUsername: ${ADMIN_USERNAME}
+      scanPassword: ${ADMIN_PASSWORD}
+    tokenExtraction:
+      type: TOKEN_PATH
+      value: "authentication.token"
+    # Token based authorization. If your app doesn't use cookies to maintain session/authorization state then
+    # you'll likely need to pass the token on every request to the authenticated routes of your application.
+    tokenAuthorization:
+      type: HEADER
+      value: Authorization
+      tokenType: Bearer
+    testPath:
+      path: ${BASE_PATH}/administrators
+      success: ".*200.*"
