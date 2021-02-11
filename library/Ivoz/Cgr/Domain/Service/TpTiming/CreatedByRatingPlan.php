@@ -4,6 +4,7 @@ namespace Ivoz\Cgr\Domain\Service\TpTiming;
 
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
 
+use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
@@ -50,6 +51,7 @@ class CreatedByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
         $brand = $ratingPlan->getRatingPlanGroup()->getBrand();
 
         // Update related timing or create a new one
+        /** @var TpTimingDto $tpTimingDto */
         $tpTimingDto = is_null($tpTiming)
             ? TpTiming::createDto()
             : $this->entityTools->entityToDto($tpTiming);

@@ -7,7 +7,6 @@ use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
-use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 
 /**
@@ -61,12 +60,10 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         if (is_null($domain)) {
             $domainDto = Domain::createDto();
         } else {
+            /** @var DomainDto $domainDto */
             $domainDto = $this->entityTools->entityToDto($domain);
         }
 
-        /**
-         * @var DomainDto $domainDto
-         */
         $domainDto
             ->setDomain($domainUsers)
             ->setDescription($brand->getName() . " proxyusers domain");

@@ -48,6 +48,7 @@ class CreatedByDdiProviderRegistration implements DdiProviderRegistrationLifecyc
     {
         $trunksUacreg = $ddiProviderRegistration->getTrunksUacreg();
 
+        /** @var TrunksUacregDto $trunksUacregDto */
         $trunksUacregDto = ($trunksUacreg)
             ? $this->entityTools->entityToDto($trunksUacreg)
             : new TrunksUacregDto();

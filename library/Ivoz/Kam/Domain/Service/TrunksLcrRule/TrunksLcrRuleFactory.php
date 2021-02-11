@@ -5,6 +5,7 @@ namespace Ivoz\Kam\Domain\Service\TrunksLcrRule;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
@@ -53,6 +54,7 @@ class TrunksLcrRuleFactory
         }
 
         $lcrRule = array_shift($lcrRules);
+        /** @var TrunksLcrRuleDto $lcrRuleDto */
         $lcrRuleDto = ($lcrRule)
             ? $this->entityTools->entityToDto($lcrRule)
             : TrunksLcrRule::createDto();

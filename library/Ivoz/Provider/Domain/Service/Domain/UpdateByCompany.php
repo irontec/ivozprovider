@@ -7,7 +7,6 @@ use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
-use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainRepository;
 use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 
@@ -65,13 +64,11 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
         $domain = $company->getDomain();
 
         // If domain field is filled, look for Domain entity or create a new one
+        /** @var DomainDto $domainDto */
         $domainDto = is_null($domain)
             ? Domain::createDto()
             : $this->entityTools->entityToDto($domain);
 
-        /**
-         * @var DomainDTO $domainDto
-         */
         $domainDto
             ->setDomain($name)
             ->setDescription($company->getName() . ' proxyusers domain');
