@@ -72,6 +72,8 @@ interface UserInterface extends LoggableEntityInterface
      */
     public function getOutgoingDdi();
 
+    public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null);
+
     /**
      * Get User outgoingDdiRule
      * If no OutgoingDdiRule is assigned, retrieve company's default OutgoingDdiRule

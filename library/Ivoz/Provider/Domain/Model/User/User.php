@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\User;
 
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
@@ -101,7 +102,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
             $this->setVoicemailSendMail(true);
         }
 
-        if ($this->getEmail()) {
+        if ($this->getEmail() && $this->getPass()) {
             $this->setActive(true);
         }
     }
@@ -212,6 +213,11 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
         return $this
             ->getCompany()
             ->getOutgoingDdi();
+    }
+
+    public function setOutgoingDdi(DdiInterface $outgoingDdi = null)
+    {
+        return parent::setOutgoingDdi($outgoingDdi);
     }
 
     /**

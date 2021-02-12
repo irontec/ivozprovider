@@ -41,8 +41,13 @@ class UpdateByUserSpec extends ObjectBehavior
     ) {
         $entity
             ->getExtension()
-            ->willReturn($extension)
-            ->shouldBecalled();
+            ->willReturn($extension->getWrappedObject())
+            ->shouldBeCalled();
+
+        $this
+            ->entityTools
+            ->entityToDto($extension)
+            ->willReturn(new ExtensionDto);
 
         $entity
             ->hasChanged('id')

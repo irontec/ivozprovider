@@ -162,10 +162,11 @@ class SimulatedCall
             throw new \DomainException(self::FALLBACK_ERROR_MSG);
         }
 
-        /** @var RatingPlanDto ratingPlan */
-        $instance->ratingPlanGroupDto = $entityTools->entityToDto(
+        /** @var RatingPlanGroupDto $ratingPlanGroupDto */
+        $ratingPlanGroupDto = $entityTools->entityToDto(
             $tpRatingPlan->getRatingPlan()->getRatingPlanGroup()
         );
+        $instance->ratingPlanGroupDto = $ratingPlanGroupDto;
         $destinationTag = $result->RatingFilters->{$ratingFilterId}->DestinationID;
 
         $tpDestination = $tpDestinationRepository
@@ -209,7 +210,9 @@ class SimulatedCall
         $tpRatingPlan = $tpRatingPlansRepository->findOneByTag($ratingPlanTag);
 
         if ($tpRatingPlan) {
-            $instance->tpRatingPlanDto = $entityTools->entityToDto($tpRatingPlan);
+            /** @var TpRatingPlanDto $tpRatingPlanDto */
+            $tpRatingPlanDto = $entityTools->entityToDto($tpRatingPlan);
+            $instance->tpRatingPlanDto = $tpRatingPlanDto;
         }
 
         if ($errorMsg === self::ERROR_UNAUTHORIZED_DESTINATION_MSG) {

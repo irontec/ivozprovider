@@ -126,6 +126,7 @@ class FaxReceiveStatusAction
             ->setFileBaseName($faxPdfName);
 
         $this->entityTools->persistDto($faxInDto, $faxIn, true);
+        /** @var FaxesInOutDto $faxInDto */
         $faxInDto = $this->entityTools->entityToDto($faxIn);
 
         $this->agi->verbose("Fax %s completed (%d pages)", $faxIn, $faxIn->getPages());
