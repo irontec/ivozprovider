@@ -102,7 +102,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
             $this->setVoicemailSendMail(true);
         }
 
-        if ($this->getEmail()) {
+        if ($this->getEmail() && $this->getPass()) {
             $this->setActive(true);
         }
     }
