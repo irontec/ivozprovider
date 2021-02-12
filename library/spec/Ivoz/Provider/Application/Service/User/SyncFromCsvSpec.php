@@ -3,6 +3,7 @@
 namespace spec\Ivoz\Provider\Application\Service\User;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Application\Service\User\CsvStaticValidator;
 use Ivoz\Provider\Application\Service\User\SyncFromCsv;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -35,6 +36,7 @@ class SyncFromCsvSpec extends ObjectBehavior
     private $ddi;
 
     private $entityTools;
+    private $csvStaticValidator;
 
     private $company;
     private $csv = <<<EOCSV
@@ -73,13 +75,18 @@ EOCSV;
             EntityTools::class
         );
 
+        $this->csvStaticValidator = $this->getTestDouble(
+            CsvStaticValidator::class
+        );
+
         $this->beConstructedWith(
             $this->companyRepository,
             $this->userFactory,
             $this->terminalFactory,
             $this->extensionFactory,
             $this->ddiFactory,
-            $this->entityTools
+            $this->entityTools,
+            $this->csvStaticValidator
         );
     }
 
