@@ -1539,11 +1539,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "3.3.1.0",
+            "version": "3.4.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "32cfac8a4af361b6f9ada01c046176591653ec36",
+                "reference": "0ff0288ed229f5fe5644cbef6d4e883ebdea7aaf",
                 "shasum": null
             },
             "require": {
@@ -1551,7 +1551,7 @@
                 "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
                 "graze/guzzle-jsonrpc": "3.2.*",
                 "guzzlehttp/guzzle": "^6.3",
-                "irontec/ivoz-core": "^3.0",
+                "irontec/ivoz-core": "^3.3",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "php": ">=7.0.19",
                 "symfony/expression-language": "3.4.*",
@@ -1589,18 +1589,18 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "3.4.0.0",
+            "version": "3.5.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api-bundle",
-                "reference": "7cbd9f116765c9cee95fd7769dcd078567d2d8e7",
+                "reference": "a6f44bc050c3166c75618392498e265be02f4137",
                 "shasum": null
             },
             "require": {
                 "api-platform/core": "2.2.*",
                 "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
-                "irontec/ivoz-api": "^3.2",
-                "irontec/ivoz-core-bundle": "^3.0",
+                "irontec/ivoz-api": "^3.4.1",
+                "irontec/ivoz-core-bundle": "^3.4",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^1.5",
                 "php": ">=7.0.19",
@@ -1636,11 +1636,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "3.2.2.0",
+            "version": "3.3.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-core",
-                "reference": "6a76cf916c185b8540c44aac507a598b5650042e",
+                "reference": "a7fb8db802568e44ff19be36f38b55bbda5b4ae9",
                 "shasum": null
             },
             "require": {
@@ -1686,17 +1686,17 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "3.3.1.0",
+            "version": "3.4.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "3498d3713d4aaf71a6f11f4c8816d48de6517d69",
+                "reference": "9e628723cc793d960af320d4e661abba3f7b36ca",
                 "shasum": null
             },
             "require": {
                 "doctrine/doctrine-bundle": "^1.6",
                 "doctrine/doctrine-cache-bundle": "^1.3",
-                "irontec/ivoz-core": "^3.2.2",
+                "irontec/ivoz-core": "^3.3.2",
                 "ocramius/proxy-manager": "~2.0",
                 "php": ">=7.0.19",
                 "symfony/monolog-bundle": "3.1.*",
@@ -1733,11 +1733,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.5",
+            "version": "2.5.7",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "3111baf4f16a3d63b9c0a1872ff0df1c93a62663",
+                "reference": "539b67c74278ffd64bfb12ad1ed73ccd62253329",
                 "shasum": null
             },
             "require": {
