@@ -34,3 +34,5 @@ parameters:
     gearmand:
         servers:
             - jobs.ivozprovider.local
+    sentinels:
+        - { host: 'data.ivozprovider.local', port: '26379' }
