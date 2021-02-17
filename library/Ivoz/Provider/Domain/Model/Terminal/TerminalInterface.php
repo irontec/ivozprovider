@@ -61,9 +61,9 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Get name
      *
-     * @return string | null
+     * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Get disallow
