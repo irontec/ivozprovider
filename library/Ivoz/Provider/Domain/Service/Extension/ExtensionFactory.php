@@ -45,14 +45,14 @@ class ExtensionFactory
             ->setNumber($extensionNumber)
             ->setRouteType(
                 ExtensionInterface::ROUTETYPE_USER
-            )
-            ->setUserId(
-                $user->getId()
             );
 
         $extension = $this->entityTools->dtoToEntity(
             $extensionDto
         );
+
+        $extension
+            ->setUser($user);
 
         return $extension;
     }
