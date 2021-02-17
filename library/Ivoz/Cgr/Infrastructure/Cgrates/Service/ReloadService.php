@@ -10,17 +10,17 @@ class ReloadService extends AbstractApiBasedService
 {
     const MUTEX_LOCK_NAME = 'cgr.reload';
 
-    private $mutext;
+    private $mutex;
 
     public function __construct(
         ClientInterface $jsonRpcClient,
-        MutexInterface $mutext
+        MutexInterface $mutex
     ) {
         parent::__construct(
             $jsonRpcClient
         );
 
-        $this->mutext = $mutext;
+        $this->mutex = $mutex;
     }
 
     /**
@@ -31,7 +31,7 @@ class ReloadService extends AbstractApiBasedService
     public function execute(string $tpid, bool $disableDestinations = true)
     {
         try {
-            $this->mutext->lock(
+            $this->mutex->lock(
                 self::MUTEX_LOCK_NAME,
                 1800
             );
@@ -48,7 +48,7 @@ class ReloadService extends AbstractApiBasedService
                 $payload
             );
         } finally {
-            $this->mutext->release();
+            $this->mutex->release();
         }
     }
 }
