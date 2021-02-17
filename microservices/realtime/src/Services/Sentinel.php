@@ -2,30 +2,18 @@
 
 namespace Services;
 
+use Ivoz\Core\Infrastructure\Persistence\Redis\RedisConf;
 use Model\Message;
-use Model\RedisConf;
-use Model\SentinelConf;
 use Psr\Log\LoggerInterface;
 use Swoole\Coroutine\Channel;
+use Ivoz\Core\Infrastructure\Persistence\Redis\Sentinel as SentinelBase;
 
-class Sentinel
+class Sentinel extends SentinelBase
 {
     const EVENT_SHUTDOWN = 'shutdown';
 
-    /** @var  LoggerInterface */
-    private $logger;
-
-    /** @var RedisConf[]  */
-    private $sentinels;
-
     /** @var Channel  */
     private $channel;
-
-    /** @var RedisConf */
-    private $master;
-
-    /** @var  RedisConf */
-    private $sentinel;
 
     /**
      * Sentinel constructor.
@@ -35,55 +23,12 @@ class Sentinel
         array $sentinelConfig,
         LoggerInterface $logger
     ) {
-        if (empty($sentinelConfig)) {
-            throw new \RuntimeException(
-                'Empty sentinel config found'
-            );
-        }
-
-        $this->logger = $logger;
-        $this->sentinels = $sentinelConfig;
-        $this->channel = new Channel(1);
-    }
-
-    public static function fromConfigArray(
-        array $config,
-        LoggerInterface $logger
-    ) {
-        $sentinelConfig = new SentinelConf($config);
-
-        return new static(
-            $sentinelConfig->get(),
+        parent::__construct(
+            $sentinelConfig,
             $logger
         );
-    }
 
-    public function resolveMaster(): RedisConf
-    {
-        for ($i = 0; $i < count($this->sentinels); $i++) {
-            try {
-                $config = $this->sentinels[$i];
-                $this->master = $this->getRedisMasterOrThrowException(
-                    $config
-                );
-
-                $this->sentinel = $config;
-
-                break;
-            } catch (\Exception $e) {
-                $this->logger->error(
-                    "ERROR: " . $e->getMessage()
-                );
-                continue;
-            }
-        }
-
-        return $this->master;
-    }
-
-    public function getRedisMasterConfig(): RedisConf
-    {
-        return $this->master;
+        $this->channel = new Channel(1);
     }
 
     public function getChannel(): Channel
@@ -147,46 +92,5 @@ class Sentinel
             $sentinelCo->close();
             break;
         }
-    }
-
-    private function getRedisMasterOrThrowException(RedisConf $config): RedisConf
-    {
-        // Swoole does not have sentinel support yet
-        $sentinel = new \RedisSentinel(
-            $config->getHost(),
-            $config->getPort()
-        );
-
-        $masters = $sentinel->masters();
-
-        if (empty($masters)) {
-            throw new \RuntimeException(
-                'No redis master found'
-            );
-        }
-
-        $masterName = $masters[0]['name'] ?? '';
-        if (!$masterName) {
-            throw new \RuntimeException(
-                'Unable to get redis master name'
-            );
-        }
-
-        $master = $sentinel->getMasterAddrByName(
-            $masterName
-        );
-
-        if (empty($masters)) {
-            throw new \RuntimeException(
-                'Unable to get redis master'
-            );
-        }
-        unset($sentinel);
-
-        return new RedisConf(
-            $master[0],
-            $master[1],
-            $masterName
-        );
     }
 }

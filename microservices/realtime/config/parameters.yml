@@ -1,6 +1,7 @@
+imports:
+    - { resource: "@ProviderBundle/Resources/config/parameters.yml" }
+
 parameters:
-    sentinels:
-      - {host: 'data.ivozprovider.local', port: '26379'}
     ws_host: '127.0.0.1'
     ws_port: 8081
     ws_worker_num: 1
