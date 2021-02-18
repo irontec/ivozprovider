@@ -7,9 +7,9 @@ production:
     terminalModel:
       title: ngettext('Terminal model', 'Terminal models', 1)
       type: select
-      required: true
       source:
         data: mapper
+        'null': _("Unassigned")
         config:
           entity: \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel
           fieldName:

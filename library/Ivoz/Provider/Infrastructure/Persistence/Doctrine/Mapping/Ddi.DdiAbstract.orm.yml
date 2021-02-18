@@ -194,7 +194,7 @@ Ivoz\Provider\Domain\Model\Ddi\DdiAbstract:
       joinColumns:
         countryId:
           referencedColumnName: id
-          nullable: false
+          nullable: true
           onDelete: cascade
       orphanRemoval: false
     residentialDevice:

@@ -5,6 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Model\Company;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use PhpSpec\ObjectBehavior;
@@ -19,18 +20,22 @@ class CompanySpec extends ObjectBehavior
     protected $brand;
     protected $timezone;
     protected $language;
+    protected $country;
 
     function let(
         BrandInterface $brand,
         TimezoneInterface $timezone,
-        LanguageInterface $language
+        LanguageInterface $language,
+        CountryInterface $country
     ) {
         $this->dto = $dto = new CompanyDto();
         $this->brand = $brand;
         $this->timezone = $timezone;
         $this->language = $language;
+        $this->country = $country;
 
-        $dto->setType('vpbx')
+        $dto
+            ->setType('vpbx')
             ->setName('')
             ->setNif('')
             ->setDistributeMethod('static')
@@ -40,12 +45,14 @@ class CompanySpec extends ObjectBehavior
             ->setTown('')
             ->setProvince('')
             ->setCountryName('')
+            ->setCountryId(1)
             ->setDomainUsers('something');
 
         $this->hydrate(
             $dto,
             [
-                'brand' => $brand->getWrappedObject()
+                'brand' => $brand->getWrappedObject(),
+                'country' => $country->getWrappedObject(),
             ]
         );
 
