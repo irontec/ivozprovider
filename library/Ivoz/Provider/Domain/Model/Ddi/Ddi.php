@@ -48,6 +48,11 @@ class Ddi extends DdiAbstract implements DdiInterface
 
     protected function sanitizeValues()
     {
+        if (! $this->getCountry()) {
+            $this->setCountry(
+                $this->getCompany()->getCountry()
+            );
+        }
         $country = $this->getCountry();
 
         $this->setDdie164(
