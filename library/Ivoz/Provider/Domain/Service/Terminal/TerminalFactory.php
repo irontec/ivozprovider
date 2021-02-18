@@ -35,13 +35,18 @@ class TerminalFactory
         string $mac
     ): TerminalInterface {
 
-        $terminalModel = $this->terminalModelRepository->findOneByName($model);
+        $terminalModelId = null;
+        if ($model) {
+            $terminalModel = $this->terminalModelRepository->findOneByName($model);
 
-        if (!$terminalModel) {
-            throw new \DomainException(
-                'terminal model not found',
-                404
-            );
+            if (!$terminalModel) {
+                throw new \DomainException(
+                    'terminal model not found',
+                    404
+                );
+            }
+
+            $terminalModelId = $terminalModel->getId();
         }
 
         $terminal = $this->terminalRepository->findOneByCompanyAndName(
@@ -71,7 +76,7 @@ class TerminalFactory
             ->setPassword($password)
             ->setMac($mac)
             ->setTerminalModelId(
-                $terminalModel->getId()
+                $terminalModelId
             )
             ->setCompanyId($companyId);
 
