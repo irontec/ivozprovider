@@ -60,7 +60,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      */
     public function setName($name = null)
     {
-        if (!empty($name)) {
+        if (! is_null($name)) {
             Assertion::regex($name, '/^[a-zA-Z0-9_*]+$/');
         }
 
