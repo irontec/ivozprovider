@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.17.0
+* Models:
+    - Company
+        - Set country as required property
+    - DDI
+        - Set recordCalls as required property
+        - Added ddie164 property
+    - Terminal
+        - Set name as required property
+    - User
+        - Added rejectCallMethod required property
+        - Added multiContact required property
+
 ## 2.16.3
 * Added new string search filter modifiers:
     - start: Starts with
