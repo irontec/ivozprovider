@@ -169,7 +169,7 @@ abstract class CompanyAbstract
     protected $applicationServer;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
      */
     protected $country;
 
@@ -517,7 +517,7 @@ abstract class CompanyAbstract
             'brandId' => self::getBrand()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null,
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
+            'countryId' => self::getCountry()->getId(),
             'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
@@ -1362,11 +1362,11 @@ abstract class CompanyAbstract
     /**
      * Set country
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country | null
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
      *
      * @return static
      */
-    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
+    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country)
     {
         $this->country = $country;
 
@@ -1376,7 +1376,7 @@ abstract class CompanyAbstract
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
      */
     public function getCountry()
     {
