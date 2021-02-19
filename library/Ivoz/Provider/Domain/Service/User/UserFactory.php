@@ -38,23 +38,35 @@ class UserFactory
                 $lastName
             );
 
-        if ($user instanceof UserInterface) {
-            return $user;
+        if (!$user && $email) {
+            $user = $this
+                ->userRepository
+                ->findOneByEmail(
+                    $email
+                );
         }
 
-        $userDto = new UserDto();
+        $userDto = $user instanceof UserInterface
+            ? $this->entityTools->entityToDto($user)
+            : new UserDto();
+
+        $active = $user instanceof UserInterface
+            ? $user->getActive()
+            : false;
+
         $userDto
             ->setCompanyId($companyId)
             ->setName($name)
             ->setLastname($lastName)
             ->setEmail($email)
-            ->setActive(false);
+            ->setActive($active);
 
         /** @var UserInterface $user */
         $user = $this
             ->entityTools
             ->dtoToEntity(
-                $userDto
+                $userDto,
+                $user
             );
 
         return $user;

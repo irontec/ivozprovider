@@ -43,4 +43,11 @@ interface UserRepository extends ObjectRepository, Selectable
         string $name,
         string $lastName
     );
+
+    /**
+     * @return UserInterface | null
+     */
+    public function findOneByEmail(
+        string $email
+    );
 }

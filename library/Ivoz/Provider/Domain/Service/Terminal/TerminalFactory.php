@@ -37,7 +37,7 @@ class TerminalFactory
 
         $terminalModelId = null;
         if ($model) {
-            $terminalModel = $this->terminalModelRepository->findOneByName($model);
+            $terminalModel = $this->terminalModelRepository->findOneByIden($model);
 
             if (!$terminalModel) {
                 throw new \DomainException(
@@ -66,11 +66,10 @@ class TerminalFactory
             }
         }
 
-        if ($terminal) {
-            return $terminal;
-        }
+        $terminalDto = $terminal instanceof TerminalInterface
+            ? $this->entityTools->entityToDto($terminal)
+            : new TerminalDto();
 
-        $terminalDto = new TerminalDto();
         $terminalDto
             ->setName($name)
             ->setPassword($password)
@@ -84,7 +83,8 @@ class TerminalFactory
         $terminal = $this
             ->entityTools
             ->dtoToEntity(
-                $terminalDto
+                $terminalDto,
+                $terminal
             );
 
         return $terminal;

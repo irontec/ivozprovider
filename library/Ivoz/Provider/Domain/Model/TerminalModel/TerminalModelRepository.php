@@ -10,5 +10,5 @@ interface TerminalModelRepository extends ObjectRepository, Selectable
     /**
      * @return TerminalModelInterface | null
      */
-    public function findOneByName(string $name);
+    public function findOneByIden(string $iden);
 }

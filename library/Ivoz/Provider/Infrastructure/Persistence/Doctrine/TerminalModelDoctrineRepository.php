@@ -24,11 +24,11 @@ class TerminalModelDoctrineRepository extends ServiceEntityRepository implements
     /**
      * @return TerminalModelInterface | null
      */
-    public function findOneByName(string $name)
+    public function findOneByIden(string $iden)
     {
         /** @var TerminalModelInterface $response */
         $response = $this->findOneBy([
-            'name' => $name
+            'iden' => $iden
         ]);
 
         return $response;

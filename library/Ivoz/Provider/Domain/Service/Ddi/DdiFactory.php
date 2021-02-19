@@ -84,11 +84,12 @@ class DdiFactory
                     'DDI already exists in another company'
                 );
             }
-
-            return $ddi;
         }
 
-        $ddiDto = new DdiDto();
+        $ddiDto = $ddi instanceof DdiInterface
+            ? $this->entityTools->entityToDto($ddi)
+            : new DdiDto();
+
         $ddiDto
             ->setDdi($ddiNumber)
             ->setCountryId(
@@ -107,8 +108,10 @@ class DdiFactory
             );
         }
 
+        /** @var DdiInterface $ddi */
         $ddi = $this->entityTools->dtoToEntity(
-            $ddiDto
+            $ddiDto,
+            $ddi
         );
 
         return $ddi;
