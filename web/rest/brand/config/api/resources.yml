@@ -72,7 +72,7 @@ Model\UsersMassImport:
             in: formData
             type: file
             required: true
-            description: "*name, *lastname, email, *terminal name,*terminal password, terminal model, mac, extension, *ddi country, *ddi number, ddi provider"
+            description: "*name, *lastname, email, terminal name,terminal password, terminal model, mac, extension, ddi country, ddi number, ddi provider"
 
 Model\RegistrationSummary:
   itemOperations:
