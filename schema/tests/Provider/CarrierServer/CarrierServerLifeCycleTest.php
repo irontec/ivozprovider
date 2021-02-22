@@ -177,9 +177,9 @@ class CarrierServerLifeCycleTest extends KernelTestCase
 
         $diff = $changelog->getData();
         $expectedSubset = [
-            'lcr_id' => '1',
+            'lcr_id' => 1,
             'priority' => 1,
-            'weight' => 3,
+            'weight' => 4,
             'ruleId' => 2,
             'gwId' => 3,
             'outgoingRoutingId' => 1,

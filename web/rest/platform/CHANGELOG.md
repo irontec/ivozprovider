@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.17.0
+* Models:
+    - Company
+        - Set country as required property
+    - DDI
+        - Removed country from required properties
+
 ## 2.16.3
 * Added new string search filter modifiers:
     - start: Starts with

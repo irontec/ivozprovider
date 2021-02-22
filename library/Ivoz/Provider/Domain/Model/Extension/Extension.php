@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Extension;
 
 use Assert\Assertion;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
+use \Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
  * Extension
@@ -51,6 +52,11 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
     protected function sanitizeValues()
     {
         $this->sanitizeRouteValues();
+    }
+
+    public function setUser(UserInterface $user = null)
+    {
+        return parent::setUser($user);
     }
 
     /**

@@ -24,7 +24,7 @@ class CarrierServerLifecycleServiceCollection implements LifecycleServiceCollect
         ],
         "on_commit" =>
         [
-            \Ivoz\Provider\Infrastructure\Domain\Service\CarrierServer\SendTrunksLcrReloadRequest::class => 200,
+            \Ivoz\Provider\Domain\Service\CarrierServer\SendTrunksLcrReloadRequest::class => 200,
         ],
     ];
 

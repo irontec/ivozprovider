@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Ddi;
 
 use Assert\Assertion;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
+use \Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
  * Ddi
@@ -47,6 +48,11 @@ class Ddi extends DdiAbstract implements DdiInterface
 
     protected function sanitizeValues()
     {
+        if (! $this->getCountry()) {
+            $this->setCountry(
+                $this->getCompany()->getCountry()
+            );
+        }
         $country = $this->getCountry();
 
         $this->setDdie164(

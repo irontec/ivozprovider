@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# run example: bin/run /api/platform
+source ~/.hawk/hawk.rc
+docker run \
+    -e API_KEY=${HAWK_API_KEY} \
+    -e APP_ID=${APP_ID} \
+    -e ADMIN_USERNAME=${ADMIN_USERNAME} \
+    -e ADMIN_PASSWORD=${ADMIN_PASSWORD} \
+    -e API_HOST=${API_HOST} \
+    -e BASE_PATH=$1 \
+    --rm -v $(pwd)/:/hawk:rw -it stackhawk/hawkscan:latest

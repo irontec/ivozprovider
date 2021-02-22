@@ -149,6 +149,13 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getRtpEncryption(): bool;
 
     /**
+     * Get multiContact
+     *
+     * @return boolean
+     */
+    public function getMultiContact(): bool;
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand

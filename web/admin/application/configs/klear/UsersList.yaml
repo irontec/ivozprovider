@@ -48,14 +48,16 @@ production:
           timezone: true
           extension: true
           terminal: true
+          outgoingDdi: true
           statusIcon: true
-          outgoingDDI: true
           callACL: true
           voicemailEnabled: true
           isBoss: true
           bossAssistant: true
           bossAssistantWhiteList: true
           PickUpRelUsers: true
+          multiContact: true
+          rejectCallMethod: true
         blacklist:
           email: true
           active: true
@@ -80,6 +82,8 @@ production:
           language: true
           externalIpCalls: true
           outgoingDdiRule: true
+          rejectCallMethod: true
+          multiContact: true
       options:
         title: _("Options")
         screens:
@@ -125,6 +129,8 @@ production:
           transformationRuleSet: true
           externalIpCalls: true
           statusIcon: true
+          rejectCallMethod: true
+          multiContact: true
       fixedPositions: &UsersFixedPositions_link
         group0:
           label: _("Personal data")
@@ -139,7 +145,7 @@ production:
           fields:
             terminal: 2
             extension: 2
-            outgoingDDI: 3
+            outgoingDdi: 3
             outgoingDdiRule: 3
     usersEdit_screen: &usersEdit_screenLink
       <<: *Users
@@ -190,12 +196,15 @@ production:
           fields:
             terminal: 6
             extension: 6
-            outgoingDDI: 6
+            outgoingDdi: 6
             outgoingDdiRule: 6
             callACL: 6
             doNotDisturb: 6
             maxCalls: 6
             externalIpCalls: 6
+            multiContact: 6
+            _empty: 6
+            rejectCallMethod: 10
         group5:
           label: _("Voicemail")
           colsPerRow: 2

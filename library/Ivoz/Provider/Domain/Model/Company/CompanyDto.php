@@ -182,7 +182,8 @@ class CompanyDto extends CompanyDtoAbstract
             'invoiceNotificationTemplateId',
             'callCsvNotificationTemplateId',
             'featureIds',
-            'maxDailyUsage'
+            'maxDailyUsage',
+            'maxDailyUsageEmail',
         ];
 
         return array_filter(

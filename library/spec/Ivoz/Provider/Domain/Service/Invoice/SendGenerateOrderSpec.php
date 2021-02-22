@@ -10,7 +10,7 @@ use PhpSpec\Exception\Example\FailureException;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Invoicer;
+use Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer;
 
 class SendGenerateOrderSpec extends ObjectBehavior
 {

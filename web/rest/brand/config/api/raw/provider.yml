@@ -324,6 +324,11 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
       required:
       - brand
       - company
+  properties:
+    ddie164:
+      attributes:
+        swagger_context:
+          readOnly: true
 
 Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
   attributes:

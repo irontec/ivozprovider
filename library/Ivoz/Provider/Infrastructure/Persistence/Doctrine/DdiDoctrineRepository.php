@@ -34,4 +34,18 @@ class DdiDoctrineRepository extends ServiceEntityRepository implements DdiReposi
 
         return $response;
     }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     */
+    public function findOneByDdiAndCountry(string $ddi, int $countryId)
+    {
+        /** @var DdiInterface $response */
+        $response = $this->findOneBy([
+            'ddi' => $ddi,
+            'country' => $countryId
+        ]);
+
+        return $response;
+    }
 }

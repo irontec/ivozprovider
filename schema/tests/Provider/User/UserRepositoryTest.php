@@ -20,6 +20,8 @@ class UserRepositoryTest extends KernelTestCase
         $this->it_finds_by_bossAssistantId();
         $this->it_gets_user_assistant_candidates();
         $this->it_gets_available_voicemails();
+        $this->it_searchs_one_by_company_and_name();
+        $this->it_searchs_one_by_email();
     }
 
     public function it_finds_by_bossAssistantId()
@@ -84,6 +86,42 @@ class UserRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             User::class,
             $users[0]
+        );
+    }
+
+    public function it_searchs_one_by_company_and_name()
+    {
+        /** @var UserRepository $userRepository */
+        $userRepository = $this->em
+            ->getRepository(User::class);
+
+        $user = $userRepository
+            ->findOneByCompanyAndName(
+                1,
+                'Alice',
+                'Allison'
+            );
+
+        $this->assertInstanceOf(
+            User::class,
+            $user
+        );
+    }
+
+    public function it_searchs_one_by_email()
+    {
+        /** @var UserRepository $userRepository */
+        $userRepository = $this->em
+            ->getRepository(User::class);
+
+        $user = $userRepository
+            ->findOneByEmail(
+                'alice@democompany.com'
+            );
+
+        $this->assertInstanceOf(
+            User::class,
+            $user
         );
     }
 }

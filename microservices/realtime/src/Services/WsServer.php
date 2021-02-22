@@ -2,7 +2,7 @@
 
 namespace Services;
 
-use Model\RedisConf;
+use Ivoz\Core\Infrastructure\Persistence\Redis\RedisConf;
 use Model\Subscriber;
 use Feeder\AbstractCall;
 use Psr\Log\LoggerInterface;

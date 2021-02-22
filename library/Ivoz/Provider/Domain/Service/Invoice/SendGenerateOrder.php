@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Invoicer;
+use Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 class SendGenerateOrder implements InvoiceLifecycleEventHandlerInterface

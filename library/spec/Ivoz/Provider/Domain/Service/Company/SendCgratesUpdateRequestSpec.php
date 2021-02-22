@@ -9,7 +9,7 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionRepository;
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Cgrates;
+use Ivoz\Provider\Infrastructure\Gearman\Jobs\Cgrates;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionInterface;
 

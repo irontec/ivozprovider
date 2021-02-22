@@ -15,8 +15,8 @@ class TransformationRuleLifecycleServiceCollection implements LifecycleServiceCo
     public static $bindedBaseServices = [
         "on_commit" =>
         [
-            \Ivoz\Provider\Infrastructure\Domain\Service\TransformationRule\SendUsersDialplanReloadRequest::class => 100,
-            \Ivoz\Provider\Infrastructure\Domain\Service\TransformationRule\SendTrunksDialplanReloadRequest::class => 300,
+            \Ivoz\Provider\Domain\Service\TransformationRule\SendUsersDialplanReloadRequest::class => 100,
+            \Ivoz\Provider\Domain\Service\TransformationRule\SendTrunksDialplanReloadRequest::class => 300,
         ],
     ];
 

@@ -19,7 +19,7 @@ class DomainLifecycleServiceCollection implements LifecycleServiceCollectionInte
         ],
         "on_commit" =>
         [
-            \Ivoz\Provider\Infrastructure\Domain\Service\Domain\SendUsersDomainReloadRequest::class => 200,
+            \Ivoz\Provider\Domain\Service\Domain\SendUsersDomainReloadRequest::class => 200,
         ],
     ];
 

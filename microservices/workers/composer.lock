@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2fd4ccad8e6111b68d6e8edb4aa69d83",
+    "content-hash": "bfb96334b5f49961aab00e7234d657d0",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1318,42 +1318,6 @@
             }
         },
         {
-            "name": "h4cc/wkhtmltopdf-amd64",
-            "version": "0.12.3.0",
-            "dist": {
-                "type": "path",
-                "url": "../../library/vendor/h4cc/wkhtmltopdf-amd64",
-                "reference": "b80ce6720349e98cebac7e8a19426455805fa7e1",
-                "shasum": null
-            },
-            "bin": [
-                "bin/wkhtmltopdf-amd64"
-            ],
-            "type": "library",
-            "license": [
-                "LGPL Version 3"
-            ],
-            "authors": [
-                {
-                    "name": "Julius Beckmann",
-                    "email": "github@h4cc.de"
-                }
-            ],
-            "description": "Convert html to pdf using webkit (qtwebkit). Static linked linux binary for amd64 systems.",
-            "homepage": "http://wkhtmltopdf.org/",
-            "keywords": [
-                "binary",
-                "convert",
-                "pdf",
-                "snapshot",
-                "thumbnail",
-                "wkhtmltopdf"
-            ],
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
             "name": "incenteev/composer-parameter-handler",
             "version": "2.1.4.0",
             "dist": {
@@ -1402,11 +1366,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "3.1.1.0",
+            "version": "3.3.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core",
-                "reference": "be3f185d8cc5a478d9a310f560b773281c999890",
+                "reference": "a7fb8db802568e44ff19be36f38b55bbda5b4ae9",
                 "shasum": null
             },
             "require": {
@@ -1452,17 +1416,17 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "3.2.0.0",
+            "version": "3.4.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "9e851318c21878572c6cb455bd3a4628c2a57ce1",
+                "reference": "9e628723cc793d960af320d4e661abba3f7b36ca",
                 "shasum": null
             },
             "require": {
                 "doctrine/doctrine-bundle": "^1.6",
                 "doctrine/doctrine-cache-bundle": "^1.3",
-                "irontec/ivoz-core": "^3.1",
+                "irontec/ivoz-core": "^3.3.2",
                 "ocramius/proxy-manager": "~2.0",
                 "php": ">=7.0.19",
                 "symfony/monolog-bundle": "3.1.*",
@@ -1499,18 +1463,18 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.4",
+            "version": "2.5.7",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "f43aefe6873a42c557afe53f5b5de8f720fa9c17",
+                "reference": "539b67c74278ffd64bfb12ad1ed73ccd62253329",
                 "shasum": null
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.1",
                 "incenteev/composer-parameter-handler": "^2.0",
-                "irontec/ivoz-core": "^3.0",
-                "irontec/ivoz-core-bundle": "^3.0",
+                "irontec/ivoz-core": "^3.2",
+                "irontec/ivoz-core-bundle": "^3.3",
                 "php": ">=7.0.19",
                 "sensio/distribution-bundle": "5.0.*",
                 "symfony/asset": "^3.4",
@@ -1818,6 +1782,46 @@
                 "jws",
                 "jwt",
                 "rest"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "mmadariaga/wkhtmltopdf-amd64",
+            "version": "0.12.6.0",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/mmadariaga/wkhtmltopdf-amd64",
+                "reference": "8f0f434d50d0f2832cb8b7bd7204535bee8951b3",
+                "shasum": null
+            },
+            "bin": [
+                "bin/wkhtmltopdf-amd64"
+            ],
+            "type": "library",
+            "license": [
+                "LGPL Version 3"
+            ],
+            "authors": [
+                {
+                    "name": "Julius Beckmann",
+                    "email": "github@h4cc.de"
+                },
+                {
+                    "name": "Mikel Madariaga",
+                    "email": "mikel@irontec.com"
+                }
+            ],
+            "description": "Convert html to pdf using webkit (qtwebkit). Static linked linux binary for amd64 systems.",
+            "homepage": "http://wkhtmltopdf.org/",
+            "keywords": [
+                "binary",
+                "convert",
+                "pdf",
+                "snapshot",
+                "thumbnail",
+                "wkhtmltopdf"
             ],
             "transport-options": {
                 "symlink": true

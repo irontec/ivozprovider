@@ -41,6 +41,7 @@ class UpdateByDdiProviderAddress implements DdiProviderAddressLifecycleEventHand
     {
         $trunksAddress = $ddiProviderAddress->getTrunksAddress();
 
+        /** @var TrunksAddressDto $trunksAddressDto */
         $trunksAddressDto = ($trunksAddress)
             ? $this->entityTools->entityToDto($trunksAddress)
             : new TrunksAddressDto();

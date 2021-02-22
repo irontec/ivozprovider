@@ -16,14 +16,17 @@ Feature: Retrieve ddis
       [
           {
               "ddi": "123",
+              "ddie164": "+34123",
               "id": 1
           },
           {
               "ddi": "124",
+              "ddie164": "+34124",
               "id": 2
           },
           {
               "ddi": "121",
+              "ddie164": "+34121",
               "id": 3
           }
       ]
@@ -40,6 +43,7 @@ Feature: Retrieve ddis
     """
       {
           "ddi": "123",
+          "ddie164": "+34123",
           "id": 1,
           "company": "~",
           "ddiProvider": {

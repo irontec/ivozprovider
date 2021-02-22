@@ -106,6 +106,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $rtpEncryption = false;
 
     /**
+     * @var boolean
+     */
+    private $multiContact = true;
+
+    /**
      * @var integer
      */
     private $id;
@@ -192,6 +197,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             't38Passthrough' => 't38Passthrough',
             'alwaysApplyTransformations' => 'alwaysApplyTransformations',
             'rtpEncryption' => 'rtpEncryption',
+            'multiContact' => 'multiContact',
             'id' => 'id',
             'companyId' => 'company',
             'domainId' => 'domain',
@@ -228,6 +234,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             't38Passthrough' => $this->getT38Passthrough(),
             'alwaysApplyTransformations' => $this->getAlwaysApplyTransformations(),
             'rtpEncryption' => $this->getRtpEncryption(),
+            'multiContact' => $this->getMultiContact(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
@@ -632,6 +639,26 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getRtpEncryption()
     {
         return $this->rtpEncryption;
+    }
+
+    /**
+     * @param boolean $multiContact
+     *
+     * @return static
+     */
+    public function setMultiContact($multiContact = null)
+    {
+        $this->multiContact = $multiContact;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getMultiContact()
+    {
+        return $this->multiContact;
     }
 
     /**

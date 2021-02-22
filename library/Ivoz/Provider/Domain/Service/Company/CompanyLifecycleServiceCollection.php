@@ -32,8 +32,8 @@ class CompanyLifecycleServiceCollection implements LifecycleServiceCollectionInt
         [
             \Ivoz\Provider\Domain\Service\Company\SearchBrokenThresholds::class => 10,
             \Ivoz\Provider\Domain\Service\Company\SendCgratesUpdateRequest::class => 200,
-            \Ivoz\Provider\Infrastructure\Domain\Service\Company\SendUsersAddressPermissionsReloadRequest::class => 200,
-            \Ivoz\Provider\Infrastructure\Domain\Service\Company\SendUsersTrustedPermissionsReloadRequest::class => 200,
+            \Ivoz\Provider\Domain\Service\Company\SendUsersAddressPermissionsReloadRequest::class => 200,
+            \Ivoz\Provider\Domain\Service\Company\SendUsersTrustedPermissionsReloadRequest::class => 200,
         ],
     ];
 

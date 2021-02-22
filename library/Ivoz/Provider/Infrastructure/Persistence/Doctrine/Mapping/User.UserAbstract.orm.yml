@@ -71,6 +71,14 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
         comment: '[enum:0|1|2|3]'
         default: '0'
       column: externalIpCalls
+    rejectCallMethod:
+      type: string
+      nullable: false
+      length: 3
+      options:
+        comment: '[enum:rfc|486|600]'
+        default: 'rfc'
+      column: rejectCallMethod
     voicemailEnabled:
       type: boolean
       nullable: false
@@ -92,6 +100,13 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
         default: '1'
         unsigned: true
       column: voicemailAttachSound
+    multiContact:
+      type: boolean
+      nullable: false
+      options:
+        default: '1'
+        unsigned: true
+      column: multiContact
     gsQRCode:
       type: boolean
       nullable: false

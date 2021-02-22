@@ -83,6 +83,13 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
       options:
         default: '0'
       column: rtpEncryption
+    multiContact:
+      type: boolean
+      nullable: false
+      options:
+        default: '1'
+        unsigned: true
+      column: multiContact
   manyToOne:
     brand:
       targetEntity: Ivoz\Provider\Domain\Model\Brand\BrandInterface

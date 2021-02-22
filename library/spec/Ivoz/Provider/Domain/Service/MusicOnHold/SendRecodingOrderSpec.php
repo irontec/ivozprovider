@@ -2,11 +2,9 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\MusicOnHold;
 
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder;
+use Ivoz\Provider\Infrastructure\Gearman\Jobs\Recoder;
 use Ivoz\Provider\Domain\Service\MusicOnHold\SendRecodingOrder;
-use PhpSpec\Exception\Example\PendingException;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class SendRecodingOrderSpec extends ObjectBehavior
 {

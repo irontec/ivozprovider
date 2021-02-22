@@ -139,6 +139,13 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceAbstract:
       options:
         default: '0'
       column: rtpEncryption
+    multiContact:
+      type: boolean
+      nullable: false
+      options:
+        default: '1'
+        unsigned: true
+      column: multiContact
   manyToOne:
     brand:
       targetEntity: Ivoz\Provider\Domain\Model\Brand\BrandInterface

@@ -196,12 +196,12 @@ production:
             title: _('Yes')
             visualFilter:
               show: ["ip", "port", "transport", "auth_needed"]
-              hide: []
+              hide: ["multiContact"]
           'no':
             title: _('No')
             visualFilter:
               hide: ["ip", "port", "transport", "auth_needed"]
-              show: []
+              show: ["multiContact"]
     ddiIn:
       title: _('DDI In')
       type: select
@@ -301,6 +301,23 @@ production:
         position: left
         icon: help
         text: _("Enable to force audio encryption. Call won't be established unless it is encrypted.")
+        label: _("Need help?")
+    multiContact:
+      title: _('Multi contact')
+      type: select
+      defautlValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring.")
         label: _("Need help?")
 staging:
   _extends: production

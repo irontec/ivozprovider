@@ -6,5 +6,4 @@ parameters:
         - %currentWorkingDirectory%/library/vendor/swoole/ide-helper/output/namespace/Http/Server.php
         - %currentWorkingDirectory%/library/vendor/swoole/ide-helper/output/namespace/WebSocket/Server.php
     ignoreErrors:
-        - '#RedisSentinel#'
         - '#Constant SWOOLE.* not found#'

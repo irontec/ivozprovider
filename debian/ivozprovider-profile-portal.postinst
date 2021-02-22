@@ -50,6 +50,10 @@ function setup_apache_config()
     [ ! -L /etc/apache2/sites-enabled/030-ivozprovider-prov.conf ] && /usr/sbin/a2ensite 030-ivozprovider-prov.conf
     [ ! -L /etc/apache2/sites-enabled/060-ivozprovider-api.conf ] && /usr/sbin/a2ensite 060-ivozprovider-api.conf
 
+    /bin/sed -i 's/^#ServerSignature Off/ServerSignature Off/g' 		/etc/apache2/conf-enabled/security.conf
+    /bin/sed -i 's/^ServerSignature On/#ServerSignature On/g' 		/etc/apache2/conf-enabled/security.conf
+    /bin/sed -i 's/^ServerTokens .*/ServerTokens Prod/g' 		/etc/apache2/conf-enabled/security.conf
+
     # Enable services
     /bin/systemctl enable apache2
     /bin/systemctl reload apache2

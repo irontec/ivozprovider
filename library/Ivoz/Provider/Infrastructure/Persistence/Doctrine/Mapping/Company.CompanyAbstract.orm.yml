@@ -254,7 +254,7 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
         countryId:
           referencedColumnName: id
           onDelete: cascade
-          nullable: true
+          nullable: false
       orphanRemoval: false
     currency:
       targetEntity: \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface

@@ -11,7 +11,8 @@ Feature: Update Ddis
       And I send a "PUT" request to "/ddis/1" with body:
     """
       {
-          "ddi": "1234",
+          "ddi": "0",
+          "ddie164": "0",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
@@ -26,7 +27,7 @@ Feature: Update Ddis
           "huntGroup": null,
           "fax": null,
           "ddiProvider": 1,
-          "country": 68,
+          "country": 0,
           "residentialDevice": null,
           "conditionalRoute": null
       }
@@ -37,7 +38,8 @@ Feature: Update Ddis
      And the JSON should be equal to:
     """
       {
-          "ddi": "1234",
+          "ddi": "123",
+          "ddie164": "+34123",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,

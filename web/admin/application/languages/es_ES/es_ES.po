@@ -438,6 +438,9 @@ msgid_plural "Call registries"
 msgstr[0] "Registro de llamadas"
 msgstr[1] "Registros de llamadas"
 
+msgid "Call rejection method"
+msgstr "Método de rechazo de llamadas"
+
 msgid "Call type"
 msgstr "Tipo de llamada"
 
@@ -488,6 +491,12 @@ msgstr "Llamadas desde IPs no autorizadas"
 
 msgid "Cancel"
 msgstr "Cancelar"
+
+msgid "Cancel call in all devices"
+msgstr "Cancelar llamada en todos los dispositivos"
+
+msgid "Cancel call only in current device"
+msgstr "Cancelar llamada solo en el dispositivo actual"
 
 msgid "Cannot invoice calls from today in the future."
 msgstr "No se pueden crear facturas en el dia actual o futuro."
@@ -683,6 +692,16 @@ msgid_plural "Default Invoice templates"
 msgstr[0] "Plantilla de factura por defecto"
 msgstr[1] "Plantillas de facturas por defecto"
 
+msgid ""
+"Default behaviour cancels call in all devices for 600/603 response code and "
+"only in current device for 480/486. Choose whether you want to force one "
+"behaviour or another no matter response codes."
+msgstr ""
+"Por defecto un 600/603 cancela la llamada en todos los dispositivos del "
+"usuario y un 480/486 la cancela solo en el dispositivo actual. Elige si "
+"quieres forzar uno de estos dos comportamientos independientemente del "
+"código de respuesta."
+
 msgid "Default currency"
 msgstr "Divisa por defecto"
 
@@ -719,6 +738,9 @@ msgstr "Borrar %s"
 
 msgid "Delete file"
 msgstr "Borrar fichero"
+
+msgid "Depending on response code"
+msgstr "Dependiendo del código de respuesta"
 
 msgid "Description"
 msgstr "Descripción"
@@ -992,6 +1014,9 @@ msgstr "Configuración Error"
 
 msgid "Error reloading modules. Please reload modules manually."
 msgstr "Error recargando módulos. Por favor recarge módulos manualmente."
+
+msgid "Error saving record"
+msgstr "Error salvando el registro"
 
 msgid "Error target"
 msgstr "Destino error"
@@ -1281,6 +1306,11 @@ msgid "Holiday date"
 msgid_plural "Holiday dates"
 msgstr[0] "Festivo"
 msgstr[1] "Festivos"
+
+msgid "Holiday date range"
+msgid_plural "Holiday dates range"
+msgstr[0] "Rango de festivo"
+msgstr[1] "Rango de festivos"
 
 msgid "Holiday importer system"
 msgstr "Importar festivos"
@@ -1871,6 +1901,9 @@ msgstr "Mes"
 msgid "Movement amount"
 msgstr "Cantidad"
 
+msgid "Multi contact"
+msgstr "Multi contact"
+
 msgid "Multimedia"
 msgstr "Multimedia"
 
@@ -2319,6 +2352,9 @@ msgstr "Realm"
 msgid "Record call"
 msgstr "Grabar llamada"
 
+msgid "Record successfully saved."
+msgstr "Registro salvado correctamente."
+
 msgid "Recorded file"
 msgstr "Fichero grabado"
 
@@ -2621,6 +2657,14 @@ msgstr "El servicio emplea argumentos extra"
 
 msgid "Set column configuration and continue."
 msgstr "Seleccione la configuración de columna y continuar"
+
+msgid ""
+"Set to 'No' to call only to latest registered SIP device instead of making "
+"all registered devices ring."
+msgstr ""
+"Configurar a 'No' para recibir las llamadas solamente en el último "
+"dispositivo SIP que se haya registrado. En caso contrario, sonarán todos los "
+"dispositivos con registro activo de forma simultánea."
 
 msgid "Settings"
 msgstr "Configuraciones"

@@ -16,7 +16,7 @@ Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract:
   fields:
     name:
       type: string
-      nullable: true
+      nullable: false
       length: 100
       options:
         fixed: false

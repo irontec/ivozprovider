@@ -101,6 +101,11 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     private $rtpEncryption = false;
 
     /**
+     * @var boolean
+     */
+    private $multiContact = true;
+
+    /**
      * @var integer
      */
     private $id;
@@ -186,6 +191,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'maxCalls' => 'maxCalls',
             't38Passthrough' => 't38Passthrough',
             'rtpEncryption' => 'rtpEncryption',
+            'multiContact' => 'multiContact',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -220,6 +226,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'maxCalls' => $this->getMaxCalls(),
             't38Passthrough' => $this->getT38Passthrough(),
             'rtpEncryption' => $this->getRtpEncryption(),
+            'multiContact' => $this->getMultiContact(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -604,6 +611,26 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getRtpEncryption()
     {
         return $this->rtpEncryption;
+    }
+
+    /**
+     * @param boolean $multiContact
+     *
+     * @return static
+     */
+    public function setMultiContact($multiContact = null)
+    {
+        $this->multiContact = $multiContact;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getMultiContact()
+    {
+        return $this->multiContact;
     }
 
     /**

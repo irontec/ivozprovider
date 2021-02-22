@@ -106,7 +106,7 @@ abstract class DdiAbstract
     protected $ddiProvider;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     protected $country;
 
@@ -335,7 +335,7 @@ abstract class DdiAbstract
             'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
             'faxId' => self::getFax() ? self::getFax()->getId() : null,
             'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null,
-            'countryId' => self::getCountry()->getId(),
+            'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
             'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
             'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
@@ -822,11 +822,11 @@ abstract class DdiAbstract
     /**
      * Set country
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country | null
      *
      * @return static
      */
-    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country)
+    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
     {
         $this->country = $country;
 
@@ -836,7 +836,7 @@ abstract class DdiAbstract
     /**
      * Get country
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry()
     {

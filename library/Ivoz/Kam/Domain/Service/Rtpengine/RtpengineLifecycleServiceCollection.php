@@ -15,8 +15,8 @@ class RtpengineLifecycleServiceCollection implements LifecycleServiceCollectionI
     public static $bindedBaseServices = [
         "on_commit" =>
         [
-            \Ivoz\Kam\Infrastructure\Domain\Service\Rtpengine\SendTrunksRtpengineReloadRequest::class => 200,
-            \Ivoz\Kam\Infrastructure\Domain\Service\Rtpengine\SendUsersRtpengineReloadRequest::class => 200,
+            \Ivoz\Kam\Domain\Service\Rtpengine\SendTrunksRtpengineReloadRequest::class => 200,
+            \Ivoz\Kam\Domain\Service\Rtpengine\SendUsersRtpengineReloadRequest::class => 200,
         ],
     ];
 
