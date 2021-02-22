@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiRepository;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderRepository;
 use Ivoz\Provider\Domain\Service\Ddi\DdiFactory;
@@ -91,9 +92,13 @@ class DdiFactorySpec extends ObjectBehavior
     function it_searches_for_existing_ddi()
     {
         $this->prepareExecution();
+        $inputArgs = $this->getArguments();
 
         $ddi = $this->getInstance(
-            Ddi::class
+            Ddi::class,
+            [
+                'company' => $inputArgs[0]
+            ]
         );
 
         $this
@@ -106,7 +111,7 @@ class DdiFactorySpec extends ObjectBehavior
             ->willReturn($ddi);
 
         $this->fromMassProvisioningCsv(
-            ...$this->getArguments()
+            ...$inputArgs
         );
     }
 
@@ -128,7 +133,8 @@ class DdiFactorySpec extends ObjectBehavior
         $this
             ->entityTools
             ->dtoToEntity(
-                Argument::type(DdiDto::class)
+                Argument::type(DdiDto::class),
+                null
             )
             ->shouldBeCalled()
             ->willReturn(
@@ -183,5 +189,26 @@ class DdiFactorySpec extends ObjectBehavior
                 Argument::any()
             )
             ->willReturn();
+
+        $this
+            ->entityTools
+            ->entityToDto(
+                Argument::type(DdiInterface::class)
+            )
+            ->willReturn(
+                new DdiDto()
+            );
+
+        $this
+            ->entityTools
+            ->dtoToEntity(
+                Argument::type(DdiDto::class),
+                Argument::any()
+            )
+            ->willReturn(
+                $this->getInstance(
+                    Ddi::class
+                )
+            );
     }
 }

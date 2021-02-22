@@ -3,8 +3,8 @@
 namespace spec\Ivoz\Provider\Domain\Service\User;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\User\UserDto;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
 use Ivoz\Provider\Domain\Service\User\UserFactory;
 use PhpSpec\ObjectBehavior;
@@ -38,8 +38,9 @@ class UserFactorySpec extends ObjectBehavior
 
     function it_search_for_existing_user()
     {
-        $user = $this->getTestDouble(
-            UserInterface::class
+        $user = $this->getInstance(
+            User::class,
+            ['active' => false]
         );
 
         $this
@@ -47,7 +48,14 @@ class UserFactorySpec extends ObjectBehavior
             ->findOneByCompanyAndName(
                 Argument::any(),
                 Argument::any(),
-                Argument::any(),
+                Argument::any()
+            )
+            ->shouldBeCalled()
+            ->willReturn();
+
+        $this
+            ->userRepository
+            ->findOneByEmail(
                 Argument::any()
             )
             ->shouldBeCalled()
@@ -58,7 +66,20 @@ class UserFactorySpec extends ObjectBehavior
             ->entityToDto(
                 Argument::any()
             )
-            ->shouldNotBeCalled();
+            ->shouldBeCalled()
+            ->willReturn(
+                new UserDto()
+            );
+
+        $this
+            ->entityTools
+            ->dtoToEntity(
+                Argument::type(UserDto::class),
+                Argument::type(User::class)
+            )
+            ->willReturn(
+                $user
+            );
 
         $this
             ->fromMassProvisioningCsv(
@@ -83,14 +104,23 @@ class UserFactorySpec extends ObjectBehavior
             ->shouldBeCalled()
             ->willReturn(null);
 
-        $user = $this->getTestDouble(
-            UserInterface::class
+        $this
+            ->userRepository
+            ->findOneByEmail(
+                Argument::any()
+            )
+            ->willReturn();
+
+        $user = $this->getInstance(
+            User::class,
+            ['active' => false]
         );
 
         $this
             ->entityTools
             ->dtoToEntity(
-                Argument::type(UserDto::class)
+                Argument::type(UserDto::class),
+                null
             )
             ->shouldBeCalled()
             ->willReturn($user);

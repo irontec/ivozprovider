@@ -18,6 +18,7 @@ class SyncFromCsv
     private $extensionFactory;
     private $ddiFactory;
     private $entityTools;
+    private $csvStaticValidator;
 
     public function __construct(
         CompanyRepository $companyRepository,
@@ -25,7 +26,8 @@ class SyncFromCsv
         TerminalFactory $terminalFactory,
         ExtensionFactory $extensionFactory,
         DdiFactory $ddiFactory,
-        EntityTools $entityTools
+        EntityTools $entityTools,
+        CsvStaticValidator $csvStaticValidator
     ) {
         $this->companyRepository = $companyRepository;
         $this->userFactory = $userFactory;
@@ -33,6 +35,7 @@ class SyncFromCsv
         $this->extensionFactory = $extensionFactory;
         $this->ddiFactory = $ddiFactory;
         $this->entityTools = $entityTools;
+        $this->csvStaticValidator = $csvStaticValidator;
     }
 
     /**
@@ -47,14 +50,28 @@ class SyncFromCsv
             trim($csv)
         );
 
-        $errors = [];
         foreach ($rows as $k => $row) {
-            $fields = str_getcsv(trim($row));
-            if (count($fields) < 11) {
-                $errors[$k+1] = 'Missing columns';
+            if (trim($row) == '') {
+                unset($rows[$k]);
                 continue;
             }
 
+            $rows[$k] = str_getcsv(trim($row));
+        }
+
+        try {
+            $this
+                ->csvStaticValidator
+                ->execute($rows);
+        } catch (\Exception $e) {
+            throw new \DomainException(
+                $e->getMessage(),
+                count($rows)
+            );
+        }
+
+        $errors = [];
+        foreach ($rows as $k => $fields) {
             $userArgs = array_splice($fields, 0, 3);
             $terminalArgs = array_splice($fields, 0, 4);
             $extensionArg = array_shift($fields);
@@ -65,16 +82,17 @@ class SyncFromCsv
                     $company->getId(),
                     ...$userArgs
                 );
+                $entities = [$user];
 
-                $terminal = $this->terminalFactory->fromMassProvisioningCsv(
-                    $company->getId(),
-                    ...$terminalArgs
-                );
+                $notEmptyTerminalArgs = count(array_filter($terminalArgs)) > 0;
+                if ($notEmptyTerminalArgs) {
+                    $terminal = $this->terminalFactory->fromMassProvisioningCsv(
+                        $company->getId(),
+                        ...$terminalArgs
+                    );
 
-                $entities = [
-                    $user,
-                    $terminal
-                ];
+                    $entities[] = $terminal;
+                }
 
                 if ($extensionArg) {
                     $extension = $this->extensionFactory->fromMassProvisioningCsv(
@@ -86,16 +104,19 @@ class SyncFromCsv
                     $entities[] = $extension;
                 }
 
-                $ddi = $this->ddiFactory->fromMassProvisioningCsv(
-                    $company,
-                    ...$outboundDdiArgs
-                );
-                $entities[] = $ddi;
+                $notEmptyDdiArgs = count(array_filter($outboundDdiArgs)) > 0;
+                if ($notEmptyDdiArgs) {
+                    $ddi = $this->ddiFactory->fromMassProvisioningCsv(
+                        $company,
+                        ...$outboundDdiArgs
+                    );
+                    $entities[] = $ddi;
+                }
 
                 $user
-                    ->setTerminal($terminal)
+                    ->setTerminal($terminal ?? null)
                     ->setExtension($extension ?? null)
-                    ->setOutgoingDdi($ddi);
+                    ->setOutgoingDdi($ddi ?? null);
 
                 $this->entityTools->persistFromArray(
                     $entities

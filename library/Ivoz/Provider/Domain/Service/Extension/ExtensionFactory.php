@@ -35,11 +35,10 @@ class ExtensionFactory
             $extensionNumber
         );
 
-        if ($extension) {
-            return $extension;
-        }
+        $extensionDto = $extension instanceof ExtensionInterface
+            ? $this->entityTools->entityToDto($extension)
+            : new ExtensionDto();
 
-        $extensionDto = new ExtensionDto();
         $extensionDto
             ->setCompanyId($companyId)
             ->setNumber($extensionNumber)
@@ -47,8 +46,10 @@ class ExtensionFactory
                 ExtensionInterface::ROUTETYPE_USER
             );
 
+        /** @var ExtensionInterface $extension */
         $extension = $this->entityTools->dtoToEntity(
-            $extensionDto
+            $extensionDto,
+            $extension
         );
 
         $extension

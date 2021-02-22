@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\Terminal;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
@@ -35,13 +36,18 @@ class TerminalFactory
         string $mac
     ): TerminalInterface {
 
-        $terminalModel = $this->terminalModelRepository->findOneByName($model);
+        $terminalModelId = null;
+        if ($model) {
+            $terminalModel = $this->terminalModelRepository->findOneByIden($model);
 
-        if (!$terminalModel) {
-            throw new \DomainException(
-                'terminal model not found',
-                404
-            );
+            if (!$terminalModel) {
+                throw new \DomainException(
+                    'terminal model not found',
+                    404
+                );
+            }
+
+            $terminalModelId = $terminalModel->getId();
         }
 
         $terminal = $this->terminalRepository->findOneByCompanyAndName(
@@ -61,17 +67,22 @@ class TerminalFactory
             }
         }
 
-        if ($terminal) {
-            return $terminal;
+        $terminalDto = $terminal instanceof TerminalInterface
+            ? $this->entityTools->entityToDto($terminal)
+            : new TerminalDto();
+
+        if (empty($password)) {
+            $password = $terminalDto->getPassword() !== ''
+                ? $terminalDto->getPassword()
+                : Terminal::randomPassword();
         }
 
-        $terminalDto = new TerminalDto();
         $terminalDto
             ->setName($name)
             ->setPassword($password)
             ->setMac($mac)
             ->setTerminalModelId(
-                $terminalModel->getId()
+                $terminalModelId
             )
             ->setCompanyId($companyId);
 
@@ -79,7 +90,8 @@ class TerminalFactory
         $terminal = $this
             ->entityTools
             ->dtoToEntity(
-                $terminalDto
+                $terminalDto,
+                $terminal
             );
 
         return $terminal;

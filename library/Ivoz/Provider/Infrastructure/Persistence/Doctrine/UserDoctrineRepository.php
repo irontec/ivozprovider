@@ -150,6 +150,20 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
         return $qb->getQuery()->getOneOrNullResult();
     }
 
+    /**
+     * @return UserInterface | null
+     */
+    public function findOneByEmail(
+        string $email
+    ) {
+        /** @var UserInterface | null $user */
+        $user = $this->findOneBy([
+            'email' => $email
+        ]);
+
+        return $user;
+    }
+
     private function getBrandUsersIdsOrderByTerminalExpireDateQuery(
         int $brandId,
         string $order,

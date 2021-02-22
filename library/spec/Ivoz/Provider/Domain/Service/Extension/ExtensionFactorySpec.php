@@ -8,6 +8,7 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionFactory;
@@ -43,6 +44,8 @@ class ExtensionFactorySpec extends ObjectBehavior
 
     function it_searches_if_extension_exists()
     {
+        $this->prepareExecution();
+
         $extension = $this->getInstance(
             Extension::class
         );
@@ -63,6 +66,8 @@ class ExtensionFactorySpec extends ObjectBehavior
 
     function it_creates_new_extension_if_necessary()
     {
+        $this->prepareExecution();
+
         $extension = $this->getInstance(
             Extension::class
         );
@@ -79,7 +84,8 @@ class ExtensionFactorySpec extends ObjectBehavior
         $this
             ->entityTools
             ->dtoToEntity(
-                Argument::type(ExtensionDto::class)
+                Argument::type(ExtensionDto::class),
+                null
             )
             ->shouldBeCalled()
             ->willReturn(
@@ -102,5 +108,27 @@ class ExtensionFactorySpec extends ObjectBehavior
             202,
             $this->getInstance(User::class)
         ];
+    }
+
+    private function prepareExecution()
+    {
+        $this
+            ->entityTools
+            ->entityToDto(
+                Argument::type(ExtensionInterface::class)
+            )
+            ->willReturn(new ExtensionDto());
+
+        $this
+            ->entityTools
+            ->dtoToEntity(
+                Argument::type(ExtensionDto::class),
+                Argument::any()
+            )
+            ->willReturn(
+                $this->getInstance(
+                    Extension::class
+                )
+            );
     }
 }

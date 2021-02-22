@@ -39,15 +39,19 @@ class DdiFactory
         string $ddiProviderName
     ): DdiInterface {
 
-        $country = $this->countryRepository->findOneByCode(
-            $countryCode
-        );
-
-        if (!$country) {
-            throw new \DomainException(
-                'country not found',
-                404
+        if ($countryCode) {
+            $country = $this->countryRepository->findOneByCode(
+                $countryCode
             );
+
+            if (!$country) {
+                throw new \DomainException(
+                    'country not found',
+                    404
+                );
+            }
+        } else {
+            $country =  $company->getCountry();
         }
 
         $ddiProvider = null;
@@ -75,10 +79,17 @@ class DdiFactory
             );
 
         if ($ddi) {
-            return $ddi;
+            if ($ddi->getCompany()->getId() !== $company->getId()) {
+                throw new \DomainException(
+                    'DDI already exists in another company'
+                );
+            }
         }
 
-        $ddiDto = new DdiDto();
+        $ddiDto = $ddi instanceof DdiInterface
+            ? $this->entityTools->entityToDto($ddi)
+            : new DdiDto();
+
         $ddiDto
             ->setDdi($ddiNumber)
             ->setCountryId(
@@ -97,8 +108,10 @@ class DdiFactory
             );
         }
 
+        /** @var DdiInterface $ddi */
         $ddi = $this->entityTools->dtoToEntity(
-            $ddiDto
+            $ddiDto,
+            $ddi
         );
 
         return $ddi;
