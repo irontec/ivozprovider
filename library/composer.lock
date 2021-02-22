@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5fa4853991ad813c4b82a1b6fb9519f8",
+    "content-hash": "22d8a55d576845af60a4ad875c2d19f5",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1913,7 +1913,8 @@
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "006da71d25a542283444e765de3f6f64ea44bff1"
+                "reference": "006da71d25a542283444e765de3f6f64ea44bff1",
+                "shasum": null
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.1",
@@ -1964,6 +1965,43 @@
             "transport-options": {
                 "symlink": false
             }
+        },
+        {
+            "name": "irontec/wkhtmltopdf-amd64",
+            "version": "0.12.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/irontec/wkhtmltopdf-amd64.git",
+                "reference": "a6187e5ef77c13c4fcd7416c9edd811b474a4e8b"
+            },
+            "bin": [
+                "bin/wkhtmltopdf-amd64"
+            ],
+            "type": "library",
+            "license": [
+                "LGPL Version 3"
+            ],
+            "authors": [
+                {
+                    "name": "Julius Beckmann",
+                    "email": "github@h4cc.de"
+                },
+                {
+                    "name": "Mikel Madariaga",
+                    "email": "mikel@irontec.com"
+                }
+            ],
+            "description": "Convert html to pdf using webkit (qtwebkit). Static linked linux binary for amd64 systems.",
+            "homepage": "http://wkhtmltopdf.org/",
+            "keywords": [
+                "binary",
+                "convert",
+                "pdf",
+                "snapshot",
+                "thumbnail",
+                "wkhtmltopdf"
+            ],
+            "time": "2021-02-23T08:44:04+00:00"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -2230,43 +2268,6 @@
                 "symfony"
             ],
             "time": "2020-06-14T13:20:35+00:00"
-        },
-        {
-            "name": "mmadariaga/wkhtmltopdf-amd64",
-            "version": "0.12.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mmadariaga/wkhtmltopdf-amd64.git",
-                "reference": "8f0f434d50d0f2832cb8b7bd7204535bee8951b3"
-            },
-            "bin": [
-                "bin/wkhtmltopdf-amd64"
-            ],
-            "type": "library",
-            "license": [
-                "LGPL Version 3"
-            ],
-            "authors": [
-                {
-                    "name": "Julius Beckmann",
-                    "email": "github@h4cc.de"
-                },
-                {
-                    "name": "Mikel Madariaga",
-                    "email": "mikel@irontec.com"
-                }
-            ],
-            "description": "Convert html to pdf using webkit (qtwebkit). Static linked linux binary for amd64 systems.",
-            "homepage": "http://wkhtmltopdf.org/",
-            "keywords": [
-                "binary",
-                "convert",
-                "pdf",
-                "snapshot",
-                "thumbnail",
-                "wkhtmltopdf"
-            ],
-            "time": "2021-01-12T14:12:15+00:00"
         },
         {
             "name": "mmoreram/gearman-bundle",
@@ -7772,7 +7773,7 @@
             "version": "1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mmadariaga/TestDoubleBundle.git",
+                "url": "https://github.com/irontec/TestDoubleBundle.git",
                 "reference": "8927771953f53317b54e6fd8fc05058f62570be6"
             },
             "require": {
@@ -10882,6 +10883,5 @@
     },
     "platform-overrides": {
         "php": "7.0.19"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }

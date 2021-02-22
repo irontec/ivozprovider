@@ -40,11 +40,11 @@
             }
         },
         {
-            "url": "https://github.com/mmadariaga/TestDoubleBundle.git",
+            "url": "https://github.com/irontec/TestDoubleBundle.git",
             "type": "git"
         },
         {
-            "url": "https://github.com/mmadariaga/wkhtmltopdf-amd64.git",
+            "url": "https://github.com/irontec/wkhtmltopdf-amd64.git",
             "type": "git"
         }
     ],
@@ -70,8 +70,8 @@
         "irontec/ivoz-api-bundle": "^3.4",
         "irontec/ivoz-dev-tools": "^4.0",
         "irontec/ivoz-provider-bundle": "^2.5",
+        "irontec/wkhtmltopdf-amd64": "0.12.6.1",
         "knplabs/knp-snappy": "0.4.3",
-        "mmadariaga/wkhtmltopdf-amd64": "0.12.6",
         "mmoreram/gearman-bundle": "^4.1",
         "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
         "phpxmlrpc/phpxmlrpc": "^4.0",
