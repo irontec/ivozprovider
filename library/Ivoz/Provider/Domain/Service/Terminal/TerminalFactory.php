@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\Terminal;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
@@ -69,6 +70,12 @@ class TerminalFactory
         $terminalDto = $terminal instanceof TerminalInterface
             ? $this->entityTools->entityToDto($terminal)
             : new TerminalDto();
+
+        if (empty($password)) {
+            $password = $terminalDto->getPassword() !== ''
+                ? $terminalDto->getPassword()
+                : Terminal::randomPassword();
+        }
 
         $terminalDto
             ->setName($name)

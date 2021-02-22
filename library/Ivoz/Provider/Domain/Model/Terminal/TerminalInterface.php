@@ -34,6 +34,8 @@ interface TerminalInterface extends LoggableEntityInterface
      */
     public function setPassword($password);
 
+    public static function randomPassword();
+
     public function getUser();
 
     /**
