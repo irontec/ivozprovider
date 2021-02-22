@@ -1,3 +1,32 @@
+Mon, 22 Feb 2021 12:12:13 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.17.0 released
+
+    * Cgrates
+        - Added reload mutex: ensures no parallel reloads
+
+    * Proxies
+        - Made multiContact per AoR configurable
+        - Add quality log messages on dialog end
+        - Fix LCR rule weight for carriers with more than 10 servers
+        - Fix per-branch WSS detector
+
+    * vPBX
+        - Added configurable call reject method
+
+    * API
+        - Added security testing tools for API
+        - Added /users/mass_import brand API endppoint in order to allow mass user/extension/terminal/ddi provision
+        - Improved api response codes: 422 Unprocessable Entity if the payload includes a non existing entity reference
+
+    * Provisioning
+        - Added support for certificate chains for Snom provisioning certificates
+
+    * Portals
+        - Updated invoice generator library in order to avoid some segmentation fault errors
+        - Allowed null/not null search operation on billable calls price and cost
+        - Added range holiday date creation screen
+
 Tue, 22 Dec 2020 11:42:13 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.16.3 released
