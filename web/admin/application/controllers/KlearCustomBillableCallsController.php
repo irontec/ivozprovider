@@ -255,30 +255,11 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
             );
         }
 
-        /** @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto $brandWebPortal */
-        $brandWebPortal = $dataGateway->findOneBy(
-            WebPortal::class,
-            [
-                'WebPortal.brand = :brandId AND WebPortal.urlType = :urlType',
-                [
-                    ':brandId' => $brandId,
-                    ':urlType' => 'brand'
-                ]
-            ]
-        );
-
         $adminToken = RestClient::exchangeAdminToken(
             $user->token,
             $brandAdmin->getUsername(),
-            'brand',
-            $brandWebPortal->getUrl()
+            'brand'
         );
-
-        if (isset($adminToken->token)) {
-            RestClient::setBaseUrl(
-                $brandWebPortal->getUrl()
-            );
-        }
 
         $apiClient = new RestClient(
             $adminToken->token,
@@ -308,30 +289,11 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
             );
         }
 
-        /** @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto $clientWebPortal */
-        $clientWebPortal = $dataGateway->findOneBy(
-            WebPortal::class,
-            [
-                'WebPortal.brand = :brandId AND WebPortal.urlType = :urlType',
-                [
-                    ':brandId' => $brandId,
-                    ':urlType' => 'admin'
-                ]
-            ]
-        );
-
         $clientToken = RestClient::exchangeAdminToken(
             $brandAdminToken,
             $clientAdmin->getUsername(),
-            'client',
-            $clientWebPortal->getUrl()
+            'client'
         );
-
-        if (isset($clientToken->token)) {
-            RestClient::setBaseUrl(
-                $clientWebPortal->getUrl()
-            );
-        }
 
         $apiClient = new RestClient(
             $clientToken->token,
