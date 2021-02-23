@@ -54,7 +54,7 @@ class Provision_IndexController extends Zend_Controller_Action
 
         $terminal = $this->_getTerminalByUrl($terminalUrl);
         if (!$terminal) {
-            return $this->_error(404, 'Terminal not found');
+            return $this->_error(404, 'Terminal not found for url ' . $terminalUrl);
         }
 
         $terminalModel = $terminal->getTerminalModel();
@@ -127,7 +127,7 @@ class Provision_IndexController extends Zend_Controller_Action
     protected function _error($errorNumber, $logMessage = null)
     {
         if ($logMessage) {
-            $this->logger->error($logMessage);
+            $this->logger->info($logMessage);
         }
 
         $this->getResponse()
