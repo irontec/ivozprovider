@@ -135,6 +135,9 @@
     "irontec/ivoz-provider-bundle": {
         "version": "2.5.3"
     },
+    "irontec/replacements": {
+        "version": "1.0.0.0"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },

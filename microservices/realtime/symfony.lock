@@ -124,6 +124,9 @@
     "irontec/ivoz-provider-bundle": {
         "version": "2.5.0"
     },
+    "irontec/replacements": {
+        "version": "1.0.0.0"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -439,9 +442,6 @@
         "version": "v1.18.0"
     },
     "symfony/polyfill-php80": {
-        "version": "v1.18.0"
-    },
-    "symfony/polyfill-util": {
         "version": "v1.18.0"
     },
     "symfony/process": {

@@ -92,6 +92,9 @@
     "incenteev/composer-parameter-handler": {
         "version": "v2.1.4"
     },
+    "irontec/gearman-bundle": {
+        "version": "v5.3"
+    },
     "irontec/ivoz-core": {
         "version": "4.0.1"
     },
@@ -100,6 +103,12 @@
     },
     "irontec/ivoz-provider-bundle": {
         "version": "2.5.4"
+    },
+    "irontec/replacements": {
+        "version": "1.0.0.0"
+    },
+    "irontec/wkhtmltopdf-amd64": {
+        "version": "dev-master"
     },
     "knplabs/knp-snappy": {
         "version": "0.4.3"
@@ -130,6 +139,12 @@
         "files": [
             "config/packages/lexik_jwt_authentication.yaml"
         ]
+    },
+    "mmadariaga/gearman-bundle": {
+        "version": "v5.3"
+    },
+    "mmadariaga/wkhtmltopdf-amd64": {
+        "version": "0.12.6.1"
     },
     "mmoreram/gearman-bundle": {
         "version": "4.1",

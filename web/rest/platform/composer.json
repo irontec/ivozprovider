@@ -57,6 +57,7 @@
     "require": {
         "irontec/ivoz-api-bundle": "^4.0",
         "irontec/ivoz-provider-bundle": "^2.0",
+        "irontec/replacements": "^1.0",
         "knplabs/knp-snappy": "^1.2",
         "symfony/flex": "^1.9",
         "twig/twig": "^3.0",

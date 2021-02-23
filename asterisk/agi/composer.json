@@ -51,6 +51,7 @@
     },
     "require": {
         "irontec/ivoz-provider-bundle": "^2.0",
+        "irontec/replacements": "^1.0",
         "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
         "symfony/flex": "^1.9"
     },

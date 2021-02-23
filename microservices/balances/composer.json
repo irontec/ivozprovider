@@ -48,6 +48,7 @@
     },
     "require": {
         "irontec/ivoz-provider-bundle": "^2.0",
+        "irontec/replacements": "^1.0",
         "symfony/flex": "^1.9"
     },
     "extra": {

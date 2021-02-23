@@ -42,11 +42,15 @@
             }
         },
         {
-            "url": "https://github.com/mmadariaga/TestDoubleBundle.git",
+            "url": "https://github.com/irontec/TestDoubleBundle.git",
             "type": "git"
         },
         {
-            "url": "https://github.com/mmadariaga/GearmanBundle.git",
+            "url": "https://github.com/irontec/GearmanBundle.git",
+            "type": "git"
+        },
+        {
+            "url": "https://github.com/irontec/wkhtmltopdf-amd64.git",
             "type": "git"
         }
     ],
@@ -71,17 +75,19 @@
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.7",
         "doctrine/persistence": "1.3.7",
-        "h4cc/wkhtmltopdf-amd64": "0.12.3",
+        "irontec/gearman-bundle": "^5.0",
         "irontec/ivoz-api-bundle": "^4.0.1",
         "irontec/ivoz-dev-tools": "^5.0",
         "irontec/ivoz-provider-bundle": "^2.5",
+        "irontec/replacements": "^1.0",
+        "irontec/wkhtmltopdf-amd64": "0.12.6.1",
         "knplabs/knp-snappy": "^1.2",
-        "mmoreram/gearman-bundle": "^5.0",
         "ocramius/package-versions": "^1.9",
         "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
         "phpxmlrpc/phpxmlrpc": "^4.0",
         "snc/redis-bundle": "^3.2",
         "symfony/polyfill-php56": "^1.20",
+        "symfony/polyfill-util": "^1.22",
         "xamin/handlebars.php": "^0.10.4"
     },
     "require-dev": {

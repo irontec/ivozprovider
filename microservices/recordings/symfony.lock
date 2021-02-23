@@ -98,6 +98,9 @@
     "irontec/ivoz-provider-bundle": {
         "version": "2.5.4"
     },
+    "irontec/replacements": {
+        "version": "1.0.0.0"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -329,9 +332,6 @@
         "version": "v1.18.0"
     },
     "symfony/polyfill-php80": {
-        "version": "v1.18.0"
-    },
-    "symfony/polyfill-util": {
         "version": "v1.18.0"
     },
     "symfony/property-access": {

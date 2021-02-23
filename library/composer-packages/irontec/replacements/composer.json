@@ -1,0 +1,22 @@
+{
+    "name": "irontec/replacements",
+    "version": "1.0.0.0",
+    "description": "Empty package replacement",
+    "license": "GPL-3.0-or-later",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Mikel Madariaga",
+            "email": "mikel@irontec.com"
+        }
+    ],
+    "autoload": {
+    },
+    "require": {
+        "php": ">=7.4"
+    },
+    "replace": {
+        "symfony/polyfill-php56": "*"
+    }
+}
