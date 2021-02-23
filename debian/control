@@ -2,7 +2,7 @@ Source: ivozprovider
 Section: php
 Priority: optional
 Build-Depends: debhelper, dh-systemd,
-    nodejs, compass-blueprint-plugin, git, openssh-client, curl, php7.4,
+    nodejs, npm, ruby-dev, git, openssh-client, curl, php7.4,
     python, make, python-sphinx-rtd-theme, gettext,
     python-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
     libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8), composer,
