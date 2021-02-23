@@ -1,1 +1,9 @@
+# Explict some packages because deboostrap fails with some virtuals
+# https://bugs.launchpad.net/ubuntu/+source/debootstrap/+bug/86536
+# https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1688537.html
+# libgnutls-openssl27
+# libgnutls30
+perl-openssl-defaults
+
+# Main iso package
 ivozprovider
