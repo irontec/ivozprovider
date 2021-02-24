@@ -116,6 +116,9 @@ msgstr "Afegeix a %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Afegeix patró a %2s"
 
+msgid "Address successfully unbanned"
+msgstr "Dirección desbloqueada con éxito"
+
 msgid "Admin"
 msgstr "Administrador"
 
@@ -433,6 +436,9 @@ msgid_plural "Call registries"
 msgstr[0] "Registre de trucades"
 msgstr[1] "Registres de trucades"
 
+msgid "Call rejection method"
+msgstr "Método de rechazo de llamadas"
+
 msgid "Call type"
 msgstr "Tipus de trucada"
 
@@ -483,6 +489,12 @@ msgstr "Trucades des d'IP no garantides"
 
 msgid "Cancel"
 msgstr "Cancel·la"
+
+msgid "Cancel call in all devices"
+msgstr "Cancelar llamada en todos los dispositivos"
+
+msgid "Cancel call only in current device"
+msgstr "Cancelar llamada solo en el dispositivo actual"
 
 msgid "Cannot invoice calls from today in the future."
 msgstr "No es poden facturar trucades d'avui en el futur."
@@ -678,6 +690,16 @@ msgid_plural "Default Invoice templates"
 msgstr[0] "Plantilla de factura per defecte"
 msgstr[1] "Plantilles de factures per defecte"
 
+msgid ""
+"Default behaviour cancels call in all devices for 600/603 response code and "
+"only in current device for 480/486. Choose whether you want to force one "
+"behaviour or another no matter response codes."
+msgstr ""
+"Por defecto un 600/603 cancela la llamada en todos los dispositivos del "
+"usuario y un 480/486 la cancela solo en el dispositivo actual. Elige si "
+"quieres forzar uno de estos dos comportamientos independientemente del "
+"código de respuesta."
+
 msgid "Default currency"
 msgstr "Moneda per defecte"
 
@@ -714,6 +736,9 @@ msgstr "Esborra %s"
 
 msgid "Delete file"
 msgstr "Esborra fitxer"
+
+msgid "Depending on response code"
+msgstr "Dependiendo del código de respuesta"
 
 msgid "Description"
 msgstr "Descripció"
@@ -772,8 +797,8 @@ msgstr "Ús del disc"
 msgid "Disk usage notification email"
 msgstr "Notificació d'ús de disc"
 
-msgid "Display Client Invoices section"
-msgstr "Mostra la secció de facturació del client"
+msgid "Display billing details to client"
+msgstr "Mostrar detalles de facturación al cliente"
 
 msgid "Display name"
 msgstr "Text en pantalla"
@@ -908,11 +933,11 @@ msgstr ""
 "d'IPs de l'empresa."
 
 msgid ""
-"Enable this option to display a section in Client's portal to download "
-"generated invoices."
+"Enable this option to display billing details in Client's portal (e.g. "
+"invoices, prices, etc.)."
 msgstr ""
-"Habilita aquesta opció per mostrar una secció al portal de client que "
-"permeti descarregar les factures generades."
+"Habilite esta opción para mostrar detalles de factura en el portal de "
+"cliente (e.g. facturas, precio de llamadas, etc.)"
 
 msgid ""
 "Enable this option to display delete button in Client's portal call "
@@ -986,6 +1011,9 @@ msgstr "Error de configuració"
 
 msgid "Error reloading modules. Please reload modules manually."
 msgstr "Error re-carregant mòduls. Si et plau re-carrega'ls manualment."
+
+msgid "Error saving record"
+msgstr "Error salvando el registro"
 
 msgid "Error target"
 msgstr "Error d'objectiu"
@@ -1273,6 +1301,11 @@ msgid "Holiday date"
 msgid_plural "Holiday dates"
 msgstr[0] "Festiu"
 msgstr[1] "Festius"
+
+msgid "Holiday date range"
+msgid_plural "Holiday dates range"
+msgstr[0] "Rango de festivo"
+msgstr[1] "Rango de festivos"
 
 msgid "Holiday importer system"
 msgstr "Sistema d'importació de festius"
@@ -1857,6 +1890,9 @@ msgstr "Mes"
 msgid "Movement amount"
 msgstr "Quantitat moguda"
 
+msgid "Multi contact"
+msgstr "Multi contact"
+
 msgid "Multimedia"
 msgstr "Multimèdia"
 
@@ -2200,6 +2236,9 @@ msgstr "Ajuda de preus"
 msgid "Priority"
 msgstr "Prioritat"
 
+msgid "Problems unbanning address"
+msgstr "Se produjo un error al desbloquedar la dirección"
+
 msgid "Processing"
 msgstr "Processant"
 
@@ -2299,6 +2338,9 @@ msgstr "Regne"
 
 msgid "Record call"
 msgstr "Grava la trucada"
+
+msgid "Record successfully saved."
+msgstr "Registro salvado correctamente."
 
 msgid "Recorded file"
 msgstr "Fitxer de gravació"
@@ -2601,6 +2643,14 @@ msgstr "El servei té arguments extres"
 
 msgid "Set column configuration and continue."
 msgstr "Configura les columnes i continua."
+
+msgid ""
+"Set to 'No' to call only to latest registered SIP device instead of making "
+"all registered devices ring."
+msgstr ""
+"Configurar a 'No' para recibir las llamadas solamente en el último "
+"dispositivo SIP que se haya registrado. En caso contrario, sonarán todos los "
+"dispositivos con registro activo de forma simultánea."
 
 msgid "Settings"
 msgstr "Configuracions"

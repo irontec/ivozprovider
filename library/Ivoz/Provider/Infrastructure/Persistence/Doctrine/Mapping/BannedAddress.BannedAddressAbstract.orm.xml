@@ -13,7 +13,7 @@
     <field name="blocker" type="string" column="blocker" length="50" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">[enum:antiflood|ipfilter]</option>
+        <option name="comment">[enum:antiflood|ipfilter|antibruteforce]</option>
       </options>
     </field>
     <field name="aor" type="string" column="aor" length="300" nullable="true">

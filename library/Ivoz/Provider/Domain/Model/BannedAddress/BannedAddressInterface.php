@@ -12,8 +12,8 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 interface BannedAddressInterface extends LoggableEntityInterface
 {
     const BLOCKER_ANTIFLOOD = 'antiflood';
-
     const BLOCKER_IPFILTER = 'ipfilter';
+    const BLOCKER_ANTIBRUTEFORCE = 'antibruteforce';
 
     /**
      * @codeCoverageIgnore

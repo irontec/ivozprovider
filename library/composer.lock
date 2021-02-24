@@ -2257,16 +2257,16 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.0.1",
+            "version": "4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api.git",
-                "reference": "a45ab9f2de4d5c962d475074533d35882b09a177"
+                "reference": "25ae2e27f6e32171966fc542c13d49a8a7a4a240"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/a45ab9f2de4d5c962d475074533d35882b09a177",
-                "reference": "a45ab9f2de4d5c962d475074533d35882b09a177",
+                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/25ae2e27f6e32171966fc542c13d49a8a7a4a240",
+                "reference": "25ae2e27f6e32171966fc542c13d49a8a7a4a240",
                 "shasum": ""
             },
             "require": {
@@ -2307,26 +2307,26 @@
                 }
             ],
             "description": "Api library built on api-platform for ivozprovider",
-            "time": "2020-12-24T11:36:48+00:00"
+            "time": "2021-02-23T12:26:52+00:00"
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "4.0.1",
+            "version": "4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api-bundle.git",
-                "reference": "828d4b0233e3760da0da350b6145261df761374c"
+                "reference": "9a80aaff0753dc0703263e6cf43b233990e7b2f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/828d4b0233e3760da0da350b6145261df761374c",
-                "reference": "828d4b0233e3760da0da350b6145261df761374c",
+                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/9a80aaff0753dc0703263e6cf43b233990e7b2f4",
+                "reference": "9a80aaff0753dc0703263e6cf43b233990e7b2f4",
                 "shasum": ""
             },
             "require": {
                 "gesdinet/jwt-refresh-token-bundle": "^0.9.1",
-                "irontec/ivoz-api": "^4.0",
-                "irontec/ivoz-core-bundle": "^4.0",
+                "irontec/ivoz-api": "^4.0.10",
+                "irontec/ivoz-core-bundle": "^4.0.6",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^2.0",
                 "php": ">=7.4"
@@ -2356,7 +2356,7 @@
                 }
             ],
             "description": "Symfony bridge for ivoz-api",
-            "time": "2020-12-14T09:28:57+00:00"
+            "time": "2021-02-23T12:32:52+00:00"
         },
         {
             "name": "irontec/ivoz-core",
@@ -10588,6 +10588,46 @@
                 }
             ],
             "time": "2020-12-24T11:14:44+00:00"
+        },
+        {
+            "name": "h4cc/wkhtmltopdf-amd64",
+            "version": "0.12.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/h4cc/wkhtmltopdf-amd64.git",
+                "reference": "b80ce6720349e98cebac7e8a19426455805fa7e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/h4cc/wkhtmltopdf-amd64/zipball/b80ce6720349e98cebac7e8a19426455805fa7e1",
+                "reference": "b80ce6720349e98cebac7e8a19426455805fa7e1",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/wkhtmltopdf-amd64"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL Version 3"
+            ],
+            "authors": [
+                {
+                    "name": "Julius Beckmann",
+                    "email": "github@h4cc.de"
+                }
+            ],
+            "description": "Convert html to pdf using webkit (qtwebkit). Static linked linux binary for amd64 systems.",
+            "homepage": "http://wkhtmltopdf.org/",
+            "keywords": [
+                "binary",
+                "convert",
+                "pdf",
+                "snapshot",
+                "thumbnail",
+                "wkhtmltopdf"
+            ],
+            "time": "2016-02-02T19:38:55+00:00"
         },
         {
             "name": "http-interop/http-middleware",

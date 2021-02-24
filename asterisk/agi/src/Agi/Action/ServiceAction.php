@@ -10,6 +10,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
@@ -472,6 +473,7 @@ class ServiceAction
         }
 
         // Create a new callForwardSetting if none found
+        /** @var CallForwardSettingDto $callForwardSettingDto */
         $callForwardSettingDto = $callForwardSetting
             ? $this->entityTools->entityToDto($callForwardSetting)
             : CallForwardSetting::createDto();

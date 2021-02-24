@@ -23,7 +23,7 @@ Template: ivozprovider/media_relay_address
 Type: string
 Default: 0.0.0.0
 Description:
- Proxy nodes has a local media relay configured with the node public IP address.
+ Proxy nodes have a local media relay configured with the node public IP address.
  .
  Enter Public Media relay IP address:
  .
@@ -37,7 +37,7 @@ Template: ivozprovider/media_relay_control
 Type: string
 Default: 127.0.0.1
 Description:
- Proxy nodes has a local media relay configured.
+ Proxy nodes have a local media relay configured.
  .
  Enter Private Media relay Control IP address used to communicate with SIP proxy:
  .
@@ -45,4 +45,32 @@ Description-es.UTF-8:
  Los nodos de Proxy cuentan con un Servidor de Media local configurado.
  .
  Introduzca la IP privada de Control para la comunicacion con el Proxy SIP:
+ .
+
+Template: ivozprovider/media_relay_minport
+Type: string
+Default: 13000
+Description:
+ Proxy nodes have a local media relay configured.
+ .
+ Enter minimum UDP port value:
+ .
+Description-es.UTF-8:
+ Los nodos de Proxy cuentan con un Servidor de Media local configurado.
+ .
+ Introduzca el valor del menor puerto UDP utilizado:
+ .
+
+Template: ivozprovider/media_relay_maxport
+Type: string
+Default: 19000
+Description:
+ Proxy nodes have a local media relay configured.
+ .
+ Enter maximum UDP port value:
+ .
+Description-es.UTF-8:
+ Los nodos de Proxy cuentan con un Servidor de Media local configurado.
+ .
+ Introduzca el valor del mayor puerto UDP utilizado:
  .

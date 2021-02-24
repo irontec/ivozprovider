@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\DestinationRateGroup;
 
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\RatesImporter;
+use Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 
 /**

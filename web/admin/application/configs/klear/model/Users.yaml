@@ -367,7 +367,25 @@ production:
         icon: help
         text: _("Enable calling from non-granted IP addresses for this user. It limits the number of outgoing calls to avoid toll-fraud. 'None' value makes outgoing calls unlimited as long as company IP policy is fulfilled.")
         label: _("Need help?")
-
+    rejectCallMethod:
+      title: _('Call rejection method')
+      type: select
+      defaultValue: 'rfc'
+      source:
+        data: inline
+        values:
+          'rfc':
+            title: _("Depending on response code")
+          '486':
+            title: _("Cancel call only in current device")
+          '600':
+            title: _("Cancel call in all devices")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Default behaviour cancels call in all devices for 600/603 response code and only in current device for 480/486. Choose whether you want to force one behaviour or another no matter response codes.")
+        label: _("Need help?")
     gsQRCode:
       title: _('QR Code')
       type: select
@@ -384,6 +402,29 @@ production:
         position: left
         icon: help
         text: _("Add QR Code to user portal to provision GS Wave mobile softphone")
+        label: _("Need help?")
+    multiContact:
+      title: _('Multi contact')
+      type: select
+      defautlValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+            visualFilter:
+              show: [""]
+              hide: ["rejectCallMethod"]
+          '1':
+            title: _("Yes")
+            visualFilter:
+              show: ["rejectCallMethod"]
+              hide: [""]
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring.")
         label: _("Need help?")
 staging:
   _extends: production

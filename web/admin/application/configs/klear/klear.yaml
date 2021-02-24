@@ -4,7 +4,7 @@ production:
     sitename: "Main administration portal"
     sitesubname: "Main website"
     logo: images/irontec.png
-    year: 2020
+    year: 2021
     lang: en
     langs:
       es:
@@ -254,7 +254,7 @@ production:
               description: _("List of %s", ngettext('External call', 'External calls', 0))
               class: ui-silk-application-view-list-world
             CallCsvSchedulersBrandList:
-              title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 1)
+              title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 0)
               class: ui-silk-application-view-list-schedule
               description: _("List of %s", ngettext('Call CSV scheduler', 'Call CSV schedulers', 0))
         Settings:
@@ -490,12 +490,12 @@ production:
           title: ngettext('Rating Profile', 'Rating Profiles', 0)
           class: ui-silk-money
           description: _("List of %s", ngettext('Rating Profile', 'Rating Profiles', 0))
-          showOnlyIf: $[${auth.brandFeatures.billing.enabled} && ${auth.acls.RatingProfiles.read}]
+          showOnlyIf: $[${auth.companyShowBilling} && ${auth.brandFeatures.billing.enabled} && ${auth.acls.RatingProfiles.read}]
         CompanyInvoicesList:
           title: ngettext('Invoice', 'Invoices', 0)
           class: ui-silk-report
           description: _("List of %s", ngettext('Invoice', 'Invoices', 0))
-          showOnlyIf: $[${auth.companyInvoices} && ${auth.acls.Invoices.read}]
+          showOnlyIf: $[${auth.companyShowBilling} && ${auth.acls.Invoices.read}]
         CallListsClient:
           title: _("Calls")
           class: ui-silk-application-view-list-telephone

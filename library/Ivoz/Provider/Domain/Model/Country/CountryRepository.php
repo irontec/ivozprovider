@@ -13,4 +13,10 @@ interface CountryRepository extends ObjectRepository, Selectable
      * @return CountryInterface|null
      */
     public function findOneByCountryCode(string $countryCode, string $code = null);
+
+    /**
+     * @param string $code
+     * @return CountryInterface|null
+     */
+    public function findOneByCode(string $code);
 }

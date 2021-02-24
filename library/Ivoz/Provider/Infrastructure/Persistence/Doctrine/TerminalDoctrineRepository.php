@@ -43,6 +43,33 @@ class TerminalDoctrineRepository extends ServiceEntityRepository implements Term
     }
 
     /**
+     * @return TerminalInterface | null
+     */
+    public function findOneByCompanyAndName(int $companyId, string $name)
+    {
+        /** @var TerminalInterface $response */
+        $response = $this->findOneBy([
+            'name' => $name,
+            'company' => $companyId
+        ]);
+
+        return $response;
+    }
+
+    /**
+     * @return TerminalInterface | null
+     */
+    public function findOneByMac(string $mac)
+    {
+        /** @var TerminalInterface $response */
+        $response = $this->findOneBy([
+            'mac' => $mac
+        ]);
+
+        return $response;
+    }
+
+    /**
      * @param int $companyId
      * @return string[]
      */

@@ -1,8 +1,7 @@
 <?php
 
 use Ivoz\Core\Application\Service\DataGateway;
-use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity;
-use Ivoz\Provider\Domain\Service\BannedAddress\Unban;
+use Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress;
 
 class KlearCustomBruteForceUnbanController extends Zend_Controller_Action
 {
@@ -32,15 +31,23 @@ class KlearCustomBruteForceUnbanController extends Zend_Controller_Action
         $pk = $this->getRequest()->getParam("pk");
 
         if ($this->getRequest()->getParam("apply")) {
-            $container = \Zend_Registry::get('container');
-            /** @var Unban $unbanService */
-            $unbanService = $container->get(
-                Unban::class
-            );
+            /** @var DataGateway $dataGateway */
+            $dataGateway = \Zend_Registry::get('data_gateway');
 
-            $result = $unbanService->execute($pk);
+            try {
+                $dataGateway->remove(
+                    BannedAddress::class,
+                    [$pk]
+                );
 
-            $msg = $result ? "Address successfully unbanned" : "Problems unbanning address";
+                $msg = $this->_helper->translate(
+                    "Address successfully unbanned"
+                );
+            } catch (\Exception $e) {
+                $msg = $this->_helper->translate(
+                    "Problems unbanning address"
+                );
+            }
 
             $data = [
                 'title' => $this->_helper->translate(

@@ -48,6 +48,10 @@ class CreateByScheduler
                 $scheduler,
                 $invoice
             );
+            $this->setExecutionError->execute(
+                $scheduler,
+                null
+            );
         } catch (\Exception $e) {
             $error = $e->getMessage();
             $name = $scheduler->getName();

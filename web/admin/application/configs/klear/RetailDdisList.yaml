@@ -27,11 +27,10 @@ production:
         order: &ddisFieldsOder_Link
           country: true
           ddi: true
-          ddiProvider: true
           displayName: true
           language: true
           retailAccount: true
-          routeType: true
+          ddiProvider: true
           target: true
           recordCalls: true
         options:
@@ -61,6 +60,7 @@ production:
           target: true
           brand: true
           target: true
+          routeType: true
       fixedPositions: &ddisFixedPositions_Link
         group0:
           label: _("Number data")

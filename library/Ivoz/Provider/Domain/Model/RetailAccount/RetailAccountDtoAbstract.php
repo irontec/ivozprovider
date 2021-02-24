@@ -76,7 +76,12 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     private $rtpEncryption = false;
 
     /**
-     * @var int
+     * @var boolean
+     */
+    private $multiContact = true;
+
+    /**
+     * @var integer
      */
     private $id;
 
@@ -146,6 +151,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'ddiIn' => 'ddiIn',
             't38Passthrough' => 't38Passthrough',
             'rtpEncryption' => 'rtpEncryption',
+            'multiContact' => 'multiContact',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -172,6 +178,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'ddiIn' => $this->getDdiIn(),
             't38Passthrough' => $this->getT38Passthrough(),
             'rtpEncryption' => $this->getRtpEncryption(),
+            'multiContact' => $this->getMultiContact(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -418,7 +425,28 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param int $id | null
+     * @param boolean $multiContact
+     *
+     * @return static
+     */
+    public function setMultiContact($multiContact = null)
+    {
+        $this->multiContact = $multiContact;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getMultiContact()
+    {
+        return $this->multiContact;
+    }
+
+    /**
+     * @param integer $id
+     *
      *
      * @return static
      */

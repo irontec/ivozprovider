@@ -47,6 +47,33 @@ Model\ActiveCalls:
           description: 'Company Id'
   collectionOperations: []
 
+Model\UsersMassImport:
+  itemOperations: []
+  collectionOperations:
+    post_users_mass_import:
+      access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+      method: 'POST'
+      path: '/users/mass_import'
+      route_name: 'post_users_mass_import'
+      swagger_context:
+        consumes:
+          - 'multipart/form-data'
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: company
+            in: formData
+            type: integer
+            required: true
+            description: 'Company Id'
+          - name: csv
+            in: formData
+            type: file
+            required: true
+            description: "*name, *lastname, email, terminal name,terminal password, terminal model, mac, extension, ddi country, ddi number, ddi provider"
+
 Model\RegistrationSummary:
   itemOperations:
     get_my_registration_summary:

@@ -46,7 +46,8 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
         }
 
         /** @var ExtensionDto $extensionDto */
-        $extensionDto = $this->entityTools
+        $extensionDto = $this
+            ->entityTools
             ->entityToDto($extension);
 
         $removed = ($user->hasChanged('id') && !$user->getId());

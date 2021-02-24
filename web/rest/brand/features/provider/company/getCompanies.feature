@@ -57,6 +57,7 @@ Feature: Retrieve companies
           "nif": "12345678A",
           "maxCalls": 0,
           "maxDailyUsage": 2,
+          "maxDailyUsageEmail": "no-replay@domain.net",
           "postalAddress": "Company Address",
           "postalCode": "54321",
           "town": "Company Town",
@@ -68,7 +69,7 @@ Feature: Retrieve companies
           "externallyextraopts": "",
           "billingMethod": "prepaid",
           "balance": 1.2,
-          "showInvoices": false,
+          "showInvoices": true,
           "id": 1,
           "language": {
               "iden": "es",

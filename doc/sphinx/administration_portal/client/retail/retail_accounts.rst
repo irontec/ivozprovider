@@ -62,7 +62,7 @@ These are the configurable settings of *Retail accounts*:
 
     Fallback Outgoing DDI
         External calls from this *retail account* will be presented with this DDI, **unless
-        the source presented matches a DDI belonging to the retail account**.
+        the source presented matches a DDI belonging to the retail client**.
 
     From domain
         Request from IvozProvider to this account will include this domain in
@@ -80,6 +80,11 @@ These are the configurable settings of *Retail accounts*:
     RTP Encryption
         If set to 'yes', call won't be established unless it's possible to encryption its audio. If set to 'no',
         audio won't be encrypted.
+
+    Multi Contact
+        Same SIP credentials can be configured in multiple SIP devices. In that case, all devices ring
+        simultaneously when receiving a call. Setting this toggle to 'No' limits this behaviour so that
+        only latest registered SIP device rings.
 
 .. warning:: All retail accounts within a retail client will have the transcoding capabilities configured at client level.
 

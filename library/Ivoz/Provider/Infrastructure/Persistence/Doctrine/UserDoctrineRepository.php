@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\User\User;
@@ -104,7 +105,7 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
     }
 
 
-    public function getBrandUsersIdsOrderByTerminalExpireDate(int $brandId, string $order = 'DESC')
+    public function getBrandUsersIdsOrderByTerminalExpireDate(int $brandId, string $order = 'DESC'): array
     {
         $query = $this->getBrandUsersIdsOrderByTerminalExpireDateQuery(
             $brandId,
@@ -122,6 +123,45 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
             $results,
             'userId'
         );
+    }
+
+    /**
+     * @return UserInterface | null
+     */
+    public function findOneByCompanyAndName(
+        int $companyId,
+        string $name,
+        string $lastName
+    ) {
+        $qb = $this->createQueryBuilder('self');
+
+        $criteria = [
+            ['company', 'eq', $companyId],
+            ['name', 'eq', $name],
+            ['lastname', 'eq', $lastName]
+        ];
+
+        $qb
+            ->select('self')
+            ->addCriteria(
+                CriteriaHelper::fromArray($criteria)
+            );
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
+    /**
+     * @return UserInterface | null
+     */
+    public function findOneByEmail(
+        string $email
+    ) {
+        /** @var UserInterface | null $user */
+        $user = $this->findOneBy([
+            'email' => $email
+        ]);
+
+        return $user;
     }
 
     private function getBrandUsersIdsOrderByTerminalExpireDateQuery(

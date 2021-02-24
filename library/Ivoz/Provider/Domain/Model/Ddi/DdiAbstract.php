@@ -371,7 +371,7 @@ abstract class DdiAbstract
             'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
             'faxId' => self::getFax() ? self::getFax()->getId() : null,
             'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null,
-            'countryId' => self::getCountry()->getId(),
+            'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
             'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
             'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
@@ -876,7 +876,7 @@ abstract class DdiAbstract
     /**
      * Get country
      *
-     * @return CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
      */
     public function getCountry(): CountryInterface
     {

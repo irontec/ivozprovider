@@ -25,7 +25,7 @@ abstract class TerminalAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var string
      */
     protected $name;
 
@@ -101,6 +101,7 @@ abstract class TerminalAbstract
      * Constructor
      */
     protected function __construct(
+        $name,
         $disallow,
         $allowAudio,
         $directMediaMethod,
@@ -108,6 +109,7 @@ abstract class TerminalAbstract
         $t38Passthrough,
         $rtpEncryption
     ) {
+        $this->setName($name);
         $this->setDisallow($disallow);
         $this->setAllowAudio($allowAudio);
         $this->setDirectMediaMethod($directMediaMethod);
@@ -185,6 +187,7 @@ abstract class TerminalAbstract
         Assertion::isInstanceOf($dto, TerminalDto::class);
 
         $self = new static(
+            $dto->getName(),
             $dto->getDisallow(),
             $dto->getAllowAudio(),
             $dto->getDirectMediaMethod(),
@@ -194,7 +197,6 @@ abstract class TerminalAbstract
         );
 
         $self
-            ->setName($dto->getName())
             ->setAllowVideo($dto->getAllowVideo())
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
@@ -284,15 +286,14 @@ abstract class TerminalAbstract
     /**
      * Set name
      *
-     * @param string $name | null
+     * @param string $name
      *
      * @return static
      */
     protected function setName(?string $name = null): TerminalInterface
     {
-        if (!is_null($name)) {
-            Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -302,9 +303,9 @@ abstract class TerminalAbstract
     /**
      * Get name
      *
-     * @return string | null
+     * @return string
      */
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }

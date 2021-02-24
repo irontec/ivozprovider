@@ -104,7 +104,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             $this->setVoicemailSendMail(true);
         }
 
-        if ($this->getEmail()) {
+        if ($this->getEmail() && $this->getPass()) {
             $this->setActive(true);
         }
     }
@@ -215,6 +215,11 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
         return $this
             ->getCompany()
             ->getOutgoingDdi();
+    }
+
+    public function setOutgoingDdi(?DdiInterface $outgoingDdi = null): UserInterface
+    {
+        return parent::setOutgoingDdi($outgoingDdi);
     }
 
     /**

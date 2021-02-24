@@ -87,8 +87,12 @@ abstract class RetailAccountAbstract
     protected $rtpEncryption = false;
 
     /**
-     * @var BrandInterface
-     * inversedBy residentialDevices
+     * @var boolean
+     */
+    protected $multiContact = true;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
 
@@ -122,7 +126,8 @@ abstract class RetailAccountAbstract
         $directConnectivity,
         $ddiIn,
         $t38Passthrough,
-        $rtpEncryption
+        $rtpEncryption,
+        $multiContact
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -130,6 +135,7 @@ abstract class RetailAccountAbstract
         $this->setDdiIn($ddiIn);
         $this->setT38Passthrough($t38Passthrough);
         $this->setRtpEncryption($rtpEncryption);
+        $this->setMultiContact($multiContact);
     }
 
     abstract public function getId();
@@ -206,7 +212,8 @@ abstract class RetailAccountAbstract
             $dto->getDirectConnectivity(),
             $dto->getDdiIn(),
             $dto->getT38Passthrough(),
-            $dto->getRtpEncryption()
+            $dto->getRtpEncryption(),
+            $dto->getMultiContact()
         );
 
         $self
@@ -249,6 +256,7 @@ abstract class RetailAccountAbstract
             ->setDdiIn($dto->getDdiIn())
             ->setT38Passthrough($dto->getT38Passthrough())
             ->setRtpEncryption($dto->getRtpEncryption())
+            ->setMultiContact($dto->getMultiContact())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
@@ -301,6 +309,7 @@ abstract class RetailAccountAbstract
             'ddiIn' => self::getDdiIn(),
             't38Passthrough' => self::getT38Passthrough(),
             'rtpEncryption' => self::getRtpEncryption(),
+            'multiContact' => self::getMultiContact(),
             'brandId' => self::getBrand()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'companyId' => self::getCompany()->getId(),
@@ -634,6 +643,34 @@ abstract class RetailAccountAbstract
     public function getRtpEncryption(): bool
     {
         return $this->rtpEncryption;
+    }
+
+    /**
+     * Set multiContact
+     *
+     * @param boolean $multiContact
+     *
+     * @return static
+     */
+    protected function setMultiContact($multiContact)
+    {
+        Assertion::notNull($multiContact, 'multiContact value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
+        $multiContact = (bool) $multiContact;
+
+        $this->multiContact = $multiContact;
+
+        return $this;
+    }
+
+    /**
+     * Get multiContact
+     *
+     * @return boolean
+     */
+    public function getMultiContact(): bool
+    {
+        return $this->multiContact;
     }
 
     /**

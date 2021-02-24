@@ -2,15 +2,13 @@
 
 namespace Tests\Provider\ApplicationServer;
 
-use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
-use Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleServiceCollection;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Tests\DbIntegrationTestHelperTrait;
+use Ivoz\Kam\Domain\Model\Dispatcher\Dispatcher;
 use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer;
 use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerDto;
-use Ivoz\Kam\Domain\Model\Dispatcher\Dispatcher;
-use Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\SendUsersDispatcherReloadRequest;
-use Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\SendTrunksDispatcherReloadRequest;
+use Ivoz\Provider\Domain\Service\ApplicationServer\SendTrunksDispatcherReloadRequest;
+use Ivoz\Provider\Domain\Service\ApplicationServer\SendUsersDispatcherReloadRequest;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Tests\DbIntegrationTestHelperTrait;
 
 class ApplicationServerLifeCycleTest extends KernelTestCase
 {

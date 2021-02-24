@@ -542,7 +542,7 @@ abstract class CompanyAbstract
             'brandId' => self::getBrand()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null,
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
+            'countryId' => self::getCountry()->getId(),
             'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
@@ -1371,11 +1371,11 @@ abstract class CompanyAbstract
     /**
      * Set country
      *
-     * @param CountryInterface | null
+     * @param CountryInterface
      *
      * @return static
      */
-    protected function setCountry(?CountryInterface $country = null): CompanyInterface
+    protected function setCountry(CountryInterface $country): CompanyInterface
     {
         $this->country = $country;
 
@@ -1385,7 +1385,7 @@ abstract class CompanyAbstract
     /**
      * Get country
      *
-     * @return CountryInterface | null
+     * @return CountryInterface
      */
     public function getCountry(): ?CountryInterface
     {

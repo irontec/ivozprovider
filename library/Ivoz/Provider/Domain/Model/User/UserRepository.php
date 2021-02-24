@@ -32,4 +32,22 @@ interface UserRepository extends ObjectRepository, Selectable
      * @return UserInterface[]
      */
     public function getAvailableVoicemails(UserInterface $user) :array;
+
+    public function getBrandUsersIdsOrderByTerminalExpireDate(int $brandId, string $order = 'DESC'): array;
+
+    /**
+     * @return UserInterface | null
+     */
+    public function findOneByCompanyAndName(
+        int $companyId,
+        string $name,
+        string $lastName
+    );
+
+    /**
+     * @return UserInterface | null
+     */
+    public function findOneByEmail(
+        string $email
+    );
 }

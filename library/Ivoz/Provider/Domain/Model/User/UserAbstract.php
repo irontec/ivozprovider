@@ -88,7 +88,13 @@ abstract class UserAbstract
     protected $externalIpCalls = '0';
 
     /**
-     * @var bool
+     * comment: enum:rfc|486|600
+     * @var string
+     */
+    protected $rejectCallMethod = 'rfc';
+
+    /**
+     * @var boolean
      */
     protected $voicemailEnabled = true;
 
@@ -104,6 +110,11 @@ abstract class UserAbstract
 
     /**
      * @var bool
+     */
+    protected $multiContact = true;
+
+    /**
+     * @var boolean
      */
     protected $gsQRCode = false;
 
@@ -180,9 +191,11 @@ abstract class UserAbstract
         $active,
         $maxCalls,
         $externalIpCalls,
+        $rejectCallMethod,
         $voicemailEnabled,
         $voicemailSendMail,
         $voicemailAttachSound,
+        $multiContact,
         $gsQRCode
     ) {
         $this->setName($name);
@@ -192,9 +205,11 @@ abstract class UserAbstract
         $this->setActive($active);
         $this->setMaxCalls($maxCalls);
         $this->setExternalIpCalls($externalIpCalls);
+        $this->setRejectCallMethod($rejectCallMethod);
         $this->setVoicemailEnabled($voicemailEnabled);
         $this->setVoicemailSendMail($voicemailSendMail);
         $this->setVoicemailAttachSound($voicemailAttachSound);
+        $this->setMultiContact($multiContact);
         $this->setGsQRCode($gsQRCode);
     }
 
@@ -274,9 +289,11 @@ abstract class UserAbstract
             $dto->getActive(),
             $dto->getMaxCalls(),
             $dto->getExternalIpCalls(),
+            $dto->getRejectCallMethod(),
             $dto->getVoicemailEnabled(),
             $dto->getVoicemailSendMail(),
             $dto->getVoicemailAttachSound(),
+            $dto->getMultiContact(),
             $dto->getGsQRCode()
         );
 
@@ -322,9 +339,11 @@ abstract class UserAbstract
             ->setActive($dto->getActive())
             ->setMaxCalls($dto->getMaxCalls())
             ->setExternalIpCalls($dto->getExternalIpCalls())
+            ->setRejectCallMethod($dto->getRejectCallMethod())
             ->setVoicemailEnabled($dto->getVoicemailEnabled())
             ->setVoicemailSendMail($dto->getVoicemailSendMail())
             ->setVoicemailAttachSound($dto->getVoicemailAttachSound())
+            ->setMultiContact($dto->getMultiContact())
             ->setGsQRCode($dto->getGsQRCode())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
@@ -359,9 +378,11 @@ abstract class UserAbstract
             ->setActive(self::getActive())
             ->setMaxCalls(self::getMaxCalls())
             ->setExternalIpCalls(self::getExternalIpCalls())
+            ->setRejectCallMethod(self::getRejectCallMethod())
             ->setVoicemailEnabled(self::getVoicemailEnabled())
             ->setVoicemailSendMail(self::getVoicemailSendMail())
             ->setVoicemailAttachSound(self::getVoicemailAttachSound())
+            ->setMultiContact(self::getMultiContact())
             ->setGsQRCode(self::getGsQRCode())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setCallAcl(CallAcl::entityToDto(self::getCallAcl(), $depth))
@@ -392,9 +413,11 @@ abstract class UserAbstract
             'active' => self::getActive(),
             'maxCalls' => self::getMaxCalls(),
             'externalIpCalls' => self::getExternalIpCalls(),
+            'rejectCallMethod' => self::getRejectCallMethod(),
             'voicemailEnabled' => self::getVoicemailEnabled(),
             'voicemailSendMail' => self::getVoicemailSendMail(),
             'voicemailAttachSound' => self::getVoicemailAttachSound(),
+            'multiContact' => self::getMultiContact(),
             'gsQRCode' => self::getGsQRCode(),
             'companyId' => self::getCompany()->getId(),
             'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
@@ -663,6 +686,38 @@ abstract class UserAbstract
     }
 
     /**
+     * Set rejectCallMethod
+     *
+     * @param string $rejectCallMethod
+     *
+     * @return static
+     */
+    protected function setRejectCallMethod($rejectCallMethod)
+    {
+        Assertion::notNull($rejectCallMethod, 'rejectCallMethod value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($rejectCallMethod, 3, 'rejectCallMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($rejectCallMethod, [
+            UserInterface::REJECTCALLMETHOD_RFC,
+            UserInterface::REJECTCALLMETHOD_486,
+            UserInterface::REJECTCALLMETHOD_600
+        ], 'rejectCallMethodvalue "%s" is not an element of the valid values: %s');
+
+        $this->rejectCallMethod = $rejectCallMethod;
+
+        return $this;
+    }
+
+    /**
+     * Get rejectCallMethod
+     *
+     * @return string
+     */
+    public function getRejectCallMethod(): string
+    {
+        return $this->rejectCallMethod;
+    }
+
+    /**
      * Set voicemailEnabled
      *
      * @param bool $voicemailEnabled
@@ -741,6 +796,34 @@ abstract class UserAbstract
     public function getVoicemailAttachSound(): bool
     {
         return $this->voicemailAttachSound;
+    }
+
+    /**
+     * Set multiContact
+     *
+     * @param boolean $multiContact
+     *
+     * @return static
+     */
+    protected function setMultiContact($multiContact)
+    {
+        Assertion::notNull($multiContact, 'multiContact value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
+        $multiContact = (bool) $multiContact;
+
+        $this->multiContact = $multiContact;
+
+        return $this;
+    }
+
+    /**
+     * Get multiContact
+     *
+     * @return boolean
+     */
+    public function getMultiContact(): bool
+    {
+        return $this->multiContact;
     }
 
     /**

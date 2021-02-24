@@ -3,10 +3,15 @@
 namespace Ivoz\Provider\Domain\Service\CallCsvReport;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Service\BillableCall\CsvExporter;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\CsvEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
 {
@@ -73,6 +78,12 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
             $scheduler
         );
 
+        $csvContent = $this->cleanSensitiveDataIfNecessary(
+            $csvContent,
+            $brand,
+            $company
+        );
+
         $tmpFilePath = tempnam(
             '/tmp',
             'BillableCallCsv'
@@ -113,5 +124,49 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
             $callCsvReport,
             $callCsvReportDto
         );
+    }
+
+    private function cleanSensitiveDataIfNecessary(
+        string $csv,
+        BrandInterface $brand = null,
+        CompanyInterface $company = null
+    ): string {
+        if ($brand) {
+            return $csv;
+        }
+
+        if (!$company) {
+            return $csv;
+        }
+
+        if ($company->getShowInvoices()) {
+            return $csv;
+        }
+
+        $rows = $this->csvToArray($csv);
+        if (empty($rows)) {
+            return $csv;
+        }
+
+        foreach ($rows as $key => $val) {
+            $rows[$key]['price'] = null;
+        }
+
+        return $this->arrayToCsv($rows);
+    }
+
+    private function csvToArray(string $csv): array
+    {
+        $serializer = new Serializer([new ObjectNormalizer()], [new CsvEncoder()]);
+
+        return $serializer->decode($csv, 'csv');
+    }
+
+    private function arrayToCsv(array $data): string
+    {
+        $serializer = new Serializer([new ObjectNormalizer()], [new CsvEncoder()]);
+
+        return $serializer->encode($data, 'csv');
+        ;
     }
 }

@@ -12,7 +12,7 @@ class TrunksAddressLifecycleServiceCollection implements LifecycleServiceCollect
     public static $bindedBaseServices = [
         "on_commit" =>
         [
-            \Ivoz\Kam\Infrastructure\Domain\Service\TrunksAddress\SendTrunksPermissionsReloadRequest::class => 200,
+            \Ivoz\Kam\Domain\Service\TrunksAddress\SendTrunksPermissionsReloadRequest::class => 200,
         ],
     ];
 

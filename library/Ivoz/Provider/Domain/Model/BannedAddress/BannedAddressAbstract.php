@@ -28,7 +28,7 @@ abstract class BannedAddressAbstract
     protected $ip;
 
     /**
-     * comment: enum:antiflood|ipfilter
+     * comment: enum:antiflood|ipfilter|antibruteforce
      * @var string | null
      */
     protected $blocker;
@@ -253,6 +253,7 @@ abstract class BannedAddressAbstract
                 [
                     BannedAddressInterface::BLOCKER_ANTIFLOOD,
                     BannedAddressInterface::BLOCKER_IPFILTER,
+                    BannedAddressInterface::BLOCKER_ANTIBRUTEFORCE
                 ],
                 'blockervalue "%s" is not an element of the valid values: %s'
             );

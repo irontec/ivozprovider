@@ -108,4 +108,18 @@ class DdiProviderDoctrineRepository extends ServiceEntityRepository implements D
 
         return $response;
     }
+
+    /**
+     * @return DdiProviderInterface | null
+     */
+    public function findOneByBrandAndName(int $brandId, string $name)
+    {
+        /** @var DdiProviderInterface $response */
+        $response = $this->findOneBy([
+            'brand' => $brandId,
+            'name' => $name
+        ]);
+
+        return $response;
+    }
 }

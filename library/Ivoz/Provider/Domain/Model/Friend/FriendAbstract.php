@@ -137,8 +137,12 @@ abstract class FriendAbstract
     protected $rtpEncryption = false;
 
     /**
-     * @var CompanyInterface
-     * inversedBy friends
+     * @var boolean
+     */
+    protected $multiContact = true;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
 
@@ -189,7 +193,8 @@ abstract class FriendAbstract
         $ddiIn,
         $t38Passthrough,
         $alwaysApplyTransformations,
-        $rtpEncryption
+        $rtpEncryption,
+        $multiContact
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -204,6 +209,7 @@ abstract class FriendAbstract
         $this->setT38Passthrough($t38Passthrough);
         $this->setAlwaysApplyTransformations($alwaysApplyTransformations);
         $this->setRtpEncryption($rtpEncryption);
+        $this->setMultiContact($multiContact);
     }
 
     abstract public function getId();
@@ -287,7 +293,8 @@ abstract class FriendAbstract
             $dto->getDdiIn(),
             $dto->getT38Passthrough(),
             $dto->getAlwaysApplyTransformations(),
-            $dto->getRtpEncryption()
+            $dto->getRtpEncryption(),
+            $dto->getMultiContact()
         );
 
         $self
@@ -341,6 +348,7 @@ abstract class FriendAbstract
             ->setT38Passthrough($dto->getT38Passthrough())
             ->setAlwaysApplyTransformations($dto->getAlwaysApplyTransformations())
             ->setRtpEncryption($dto->getRtpEncryption())
+            ->setMultiContact($dto->getMultiContact())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
@@ -413,6 +421,7 @@ abstract class FriendAbstract
             't38Passthrough' => self::getT38Passthrough(),
             'alwaysApplyTransformations' => self::getAlwaysApplyTransformations(),
             'rtpEncryption' => self::getRtpEncryption(),
+            'multiContact' => self::getMultiContact(),
             'companyId' => self::getCompany()->getId(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
@@ -980,6 +989,34 @@ abstract class FriendAbstract
     public function getRtpEncryption(): bool
     {
         return $this->rtpEncryption;
+    }
+
+    /**
+     * Set multiContact
+     *
+     * @param boolean $multiContact
+     *
+     * @return static
+     */
+    protected function setMultiContact($multiContact)
+    {
+        Assertion::notNull($multiContact, 'multiContact value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
+        $multiContact = (bool) $multiContact;
+
+        $this->multiContact = $multiContact;
+
+        return $this;
+    }
+
+    /**
+     * Get multiContact
+     *
+     * @return boolean
+     */
+    public function getMultiContact(): bool
+    {
+        return $this->multiContact;
     }
 
     /**

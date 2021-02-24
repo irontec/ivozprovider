@@ -451,4 +451,10 @@ class Company extends CompanyAbstract implements CompanyInterface
     {
         return $this->getType() === self::TYPE_WHOLESALE;
     }
+
+    protected function setBalance(?float $balance = null): CompanyInterface
+    {
+        $balance = round($balance, 4);
+        return parent::setBalance($balance);
+    }
 }

@@ -26,7 +26,9 @@ class TerminalSpec extends ObjectBehavior
         $this->company = $company;
         $this->domain = $domain;
 
-        $dto->setDisallow('Disallow')
+        $dto
+            ->setName('Name')
+            ->setDisallow('Disallow')
             ->setAllowAudio('allowAudio')
             ->setDirectMediaMethod('reinvite')
             ->setPassword('HZhN5z*j48');

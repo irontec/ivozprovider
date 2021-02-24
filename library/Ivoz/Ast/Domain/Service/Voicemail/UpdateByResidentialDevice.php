@@ -49,6 +49,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
             'residentialDevice' => $residentialDevice->getId()
         ]);
 
+        /** @var VoicemailDto $voicemailDto */
         $voicemailDto = is_null($voicemail)
             ? new VoicemailDto()
             : $this->entityTools->entityToDto($voicemail);
@@ -60,6 +61,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
             ->setResidentialDeviceId($residentialDevice->getId())
             ->setContext($residentialDevice->getVoiceMailContext())
             ->setMailbox($residentialDevice->getVoiceMailUser())
+            ->setCallback('residential')
             ->setTz($company->getDefaultTimezone()->getTz());
 
         $this->entityTools->persistDto(

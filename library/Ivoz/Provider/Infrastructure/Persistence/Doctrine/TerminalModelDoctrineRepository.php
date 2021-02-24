@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel;
+use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -18,5 +19,18 @@ class TerminalModelDoctrineRepository extends ServiceEntityRepository implements
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, TerminalModel::class);
+    }
+
+    /**
+     * @return TerminalModelInterface | null
+     */
+    public function findOneByIden(string $iden)
+    {
+        /** @var TerminalModelInterface $response */
+        $response = $this->findOneBy([
+            'iden' => $iden
+        ]);
+
+        return $response;
     }
 }

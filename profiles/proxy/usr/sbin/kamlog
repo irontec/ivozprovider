@@ -32,8 +32,13 @@ while (<>) {
         when (/(.*) CRITICAL: (.*)/) { say RED "$1 $2"; }
         when (/(.*) ERROR: (.*)/) { say RED "$1 $2"; }
         when (/(.*) WARNING: (.*)/) { say YELLOW "$1 $2"; }
-        when (/(.*) NOTICE: (.*)/) { say MAGENTA "$1 $2"; }
-        when (/(.*) INFO: (.*)/) { say GREEN "$1 $2"; }
+        when (/(.*) NOTICE: (.*log_write_cdr.*)/) { say BRIGHT_BLACK "$1 $2"; }
+        when (/(.*) NOTICE: (.*acc_log_request.*)/) { say BRIGHT_BLUE "$1 $2"; }
+        when (/(.*) NOTICE: (.*Related leg:.*)/) { say BLUE "$1 $2"; }
+        when (/(.*) NOTICE: (\[\w+\] Request: .*)/) { say MAGENTA "$1 $2"; }
+        when (/(.*) NOTICE: (\[\w+\] Response: .*)/) { say MAGENTA "$1 $2"; }
+        when (/(.*) NOTICE: (.*)/) { say GREEN "$1 $2"; }
+        when (/(.*) INFO: (.*)/) { say BRIGHT_BLACK "$1 $2"; }
         when (/(.*) DEBUG: (.*)/) { say CYAN "$1 $2"; }
         default { print WHITE $_; }
     }

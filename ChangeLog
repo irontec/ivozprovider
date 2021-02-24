@@ -1,4 +1,78 @@
-Web, 14 Oct 2020 09:59:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Mon, 22 Feb 2021 12:12:13 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.17.0 released
+
+    * Cgrates
+        - Added reload mutex: ensures no parallel reloads
+
+    * Proxies
+        - Made multiContact per AoR configurable
+        - Add quality log messages on dialog end
+        - Fix LCR rule weight for carriers with more than 10 servers
+        - Fix per-branch WSS detector
+
+    * vPBX
+        - Added configurable call reject method
+
+    * API
+        - Added security testing tools for API
+        - Added /users/mass_import brand API endppoint in order to allow mass user/extension/terminal/ddi provision
+        - Improved api response codes: 422 Unprocessable Entity if the payload includes a non existing entity reference
+
+    * Provisioning
+        - Added support for certificate chains for Snom provisioning certificates
+
+    * Portals
+        - Updated invoice generator library in order to avoid some segmentation fault errors
+        - Allowed null/not null search operation on billable calls price and cost
+        - Added range holiday date creation screen
+
+Tue, 22 Dec 2020 11:42:13 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.16.3 released
+
+    * Core
+        - Ensure numeric only fax destinations
+        - Avoid detecting balance changes for equal values
+
+    * Proxies
+        - Fix Bad From-URI in intervpbx call-forward
+        - Remove problematic CISHASH call in local router
+
+    * vPBX
+        - Fix voicemail callback context
+
+    * API
+        - Add endpoint to unban antibrute-force sources
+
+    * Portals
+        - Improve External Calls filter operation and speed
+
+Thu, 19 Nov 2020 12:35:13 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.16.2 released
+
+    * Core
+        - Fix invoice scheduler error message
+
+    * Proxies
+        - Antiflooding redesign
+        - Avoid inactivating gateways used in stopper rules
+        - Block basic SQL injection
+        - Reduce amount of log messages
+        - Ignore wrong Diversion headers from UACs
+        - Fix recording issues
+        - Fix R-URI correction mechanism in retail/wholesale to retail calls
+
+    * vPBX
+        - Add fake ringing for external ringall huntgroups
+
+    * Portals
+        - Hide/Show billing details to clients
+        - Show only currently anti brute-force banned addresses
+        - New +800 prefix for IUPN
+
+Wed, 14 Oct 2020 09:59:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.16.1 released
 
@@ -16,7 +90,7 @@ Web, 14 Oct 2020 09:59:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.c
         - Allow using brand level matchlists to clients
         - Show endpointName in BillableCalls view screen
 
-Web, 09 Sep 2020 09:49:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Wed, 09 Sep 2020 09:49:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.16.0 released
 
@@ -68,7 +142,7 @@ Web, 09 Sep 2020 09:49:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.c
         - Fixed client generic invoice template deletion
         - Added failure reason to price CSV importer
 
-Web, 10 Jun 2020 11:27:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Wed, 10 Jun 2020 11:27:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.15.2 released
 
@@ -101,7 +175,7 @@ Web, 10 Jun 2020 11:27:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.c
         - New Carrier / CarrierServer status icon
         - Fixed emulations issues
 
-Web, 12 May 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Tue, 12 May 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.15.1 released
 
@@ -128,7 +202,7 @@ Web, 12 May 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.c
         - New realtime calls filter form
         - Several realtime bug fixes
 
-Web, 08 Apr 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Wed, 08 Apr 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.15.0 released
 
@@ -170,7 +244,7 @@ Web, 08 Apr 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.c
         - Maximun items per page increased from 500 to 5k on client API and from 500 to 10k on brand and platform APIs.
         - Optimized memory usage on unpaginated API requests, especially with JSON response format
 
-Web, 05 Feb 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+Wed, 05 Feb 2020 15:13:22 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.14.1 released
 

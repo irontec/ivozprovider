@@ -8,11 +8,11 @@ about: Something is broken or not working
 This project only uses GitHub Issues for bugs in the code or feature requests.
 Please use this template only for bug reports.
 
-Be sure you have read the project FAQ before submiting an issue.
+Be sure you have read the project FAQ before submitting an issue.
 
   * https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md
 
-If you have trouble with your environment or a user question, please post them in ivozproider-users group
+If you have trouble with your environment or a user question, please post them in ivozprovider-users group
 
   * https://groups.google.com/forum/#!forum/ivozprovider-users
 

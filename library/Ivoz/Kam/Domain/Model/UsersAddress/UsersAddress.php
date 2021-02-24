@@ -21,6 +21,15 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
         return $this->id;
     }
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     protected function sanitizeValues()
     {
         $address = explode('/', $this->getSourceAddress());

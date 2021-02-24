@@ -73,7 +73,12 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     private $externalIpCalls = '0';
 
     /**
-     * @var bool
+     * @var string
+     */
+    private $rejectCallMethod = 'rfc';
+
+    /**
+     * @var boolean
      */
     private $voicemailEnabled = true;
 
@@ -89,6 +94,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
 
     /**
      * @var bool
+     */
+    private $multiContact = true;
+
+    /**
+     * @var boolean
      */
     private $gsQRCode = false;
 
@@ -196,9 +206,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'active' => 'active',
             'maxCalls' => 'maxCalls',
             'externalIpCalls' => 'externalIpCalls',
+            'rejectCallMethod' => 'rejectCallMethod',
             'voicemailEnabled' => 'voicemailEnabled',
             'voicemailSendMail' => 'voicemailSendMail',
             'voicemailAttachSound' => 'voicemailAttachSound',
+            'multiContact' => 'multiContact',
             'gsQRCode' => 'gsQRCode',
             'id' => 'id',
             'companyId' => 'company',
@@ -231,9 +243,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'active' => $this->getActive(),
             'maxCalls' => $this->getMaxCalls(),
             'externalIpCalls' => $this->getExternalIpCalls(),
+            'rejectCallMethod' => $this->getRejectCallMethod(),
             'voicemailEnabled' => $this->getVoicemailEnabled(),
             'voicemailSendMail' => $this->getVoicemailSendMail(),
             'voicemailAttachSound' => $this->getVoicemailAttachSound(),
+            'multiContact' => $this->getMultiContact(),
             'gsQRCode' => $this->getGsQRCode(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
@@ -448,7 +462,27 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param bool $voicemailEnabled | null
+     * @param string $rejectCallMethod
+     *
+     * @return static
+     */
+    public function setRejectCallMethod($rejectCallMethod = null)
+    {
+        $this->rejectCallMethod = $rejectCallMethod;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getRejectCallMethod()
+    {
+        return $this->rejectCallMethod;
+    }
+
+    /**
+     * @param boolean $voicemailEnabled
      *
      * @return static
      */
@@ -508,7 +542,27 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param bool $gsQRCode | null
+     * @param boolean $multiContact
+     *
+     * @return static
+     */
+    public function setMultiContact($multiContact = null)
+    {
+        $this->multiContact = $multiContact;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean | null
+     */
+    public function getMultiContact()
+    {
+        return $this->multiContact;
+    }
+
+    /**
+     * @param boolean $gsQRCode
      *
      * @return static
      */

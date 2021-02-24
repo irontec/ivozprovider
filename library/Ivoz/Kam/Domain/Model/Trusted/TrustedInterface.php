@@ -3,13 +3,18 @@
 namespace Ivoz\Kam\Domain\Model\Trusted;
 
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * TrustedInterface
 */
-interface TrustedInterface extends EntityInterface
+interface TrustedInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
+    public function getChangeSet();
 
     public function setSrcIp(string $srcIp = null): TrustedInterface;
 

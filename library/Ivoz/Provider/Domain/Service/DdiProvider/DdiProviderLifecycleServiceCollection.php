@@ -15,7 +15,7 @@ class DdiProviderLifecycleServiceCollection implements LifecycleServiceCollectio
     public static $bindedBaseServices = [
         "on_commit" =>
         [
-            \Ivoz\Provider\Infrastructure\Domain\Service\DdiProvider\SendTrunksAddressPermissionsReloadRequest::class => 200,
+            \Ivoz\Provider\Domain\Service\DdiProvider\SendTrunksAddressPermissionsReloadRequest::class => 200,
         ],
     ];
 

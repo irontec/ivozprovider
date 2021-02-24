@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Service\InvoiceScheduler;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Core\Domain\Model\SchedulerInterface;
+use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
 trait NextExecutionResolverTrait
@@ -97,6 +98,7 @@ trait NextExecutionResolverTrait
      */
     protected function setNextExecution(SchedulerInterface $scheduler, \DateTime $nextExecution)
     {
+        /** @var InvoiceSchedulerDto $schedulerDto */
         $schedulerDto = $this->entityTools->entityToDto($scheduler);
         $schedulerDto->setNextExecution(
             $nextExecution

@@ -53,7 +53,7 @@ class BannedAddressTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
-                'FALSE'
+                ['blocker', 'eq', "'antibruteforce'"]
             ]
         );
     }

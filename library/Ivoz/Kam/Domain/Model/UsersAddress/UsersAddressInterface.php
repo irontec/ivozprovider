@@ -3,13 +3,18 @@
 namespace Ivoz\Kam\Domain\Model\UsersAddress;
 
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * UsersAddressInterface
 */
-interface UsersAddressInterface extends EntityInterface
+interface UsersAddressInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
+    public function getChangeSet();
 
     public function setIpAddr(string $ipAddr = null): UsersAddressInterface;
 

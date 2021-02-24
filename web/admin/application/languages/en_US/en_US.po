@@ -111,6 +111,9 @@ msgstr "Add of %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Add pattern to %2s"
 
+msgid "Address successfully unbanned"
+msgstr "Address successfully unbanned"
+
 msgid "Admin"
 msgstr "Admin"
 
@@ -428,6 +431,9 @@ msgid_plural "Call registries"
 msgstr[0] "Call registry"
 msgstr[1] "Call registries"
 
+msgid "Call rejection method"
+msgstr "Call rejection method"
+
 msgid "Call type"
 msgstr "Call type"
 
@@ -478,6 +484,12 @@ msgstr "Calls from non-granted IPs"
 
 msgid "Cancel"
 msgstr "Cancel"
+
+msgid "Cancel call in all devices"
+msgstr "Cancel call in all devices"
+
+msgid "Cancel call only in current device"
+msgstr "Cancel call only in current device"
 
 msgid "Cannot invoice calls from today in the future."
 msgstr "Cannot invoice calls from today in the future."
@@ -673,6 +685,15 @@ msgid_plural "Default Invoice templates"
 msgstr[0] "Default Invoice template"
 msgstr[1] "Default Invoice templates"
 
+msgid ""
+"Default behaviour cancels call in all devices for 600/603 response code and "
+"only in current device for 480/486. Choose whether you want to force one "
+"behaviour or another no matter response codes."
+msgstr ""
+"Default behaviour cancels call in all devices for 600/603 response code and "
+"only in current device for 480/486. Choose whether you want to force one "
+"behaviour or another no matter response codes."
+
 msgid "Default currency"
 msgstr "Default currency"
 
@@ -705,6 +726,9 @@ msgstr "Delete %s"
 
 msgid "Delete file"
 msgstr "Delete file"
+
+msgid "Depending on response code"
+msgstr "Depending on response code"
 
 msgid "Description"
 msgstr "Description"
@@ -763,8 +787,8 @@ msgstr "Disk usage"
 msgid "Disk usage notification email"
 msgstr "Disk usage notification email"
 
-msgid "Display Client Invoices section"
-msgstr "Display Client Invoices section"
+msgid "Display billing details to client"
+msgstr "Display billing details to client"
 
 msgid "Display name"
 msgstr "Display name"
@@ -897,11 +921,11 @@ msgstr ""
 "calls unlimited as long as company IP policy is fulfilled."
 
 msgid ""
-"Enable this option to display a section in Client's portal to download "
-"generated invoices."
+"Enable this option to display billing details in Client's portal (e.g. "
+"invoices, prices, etc.)."
 msgstr ""
-"Enable this option to display a section in Client's portal to download "
-"generated invoices."
+"Enable this option to display billing details in Client's portal (e.g. "
+"invoices, prices, etc.)."
 
 msgid ""
 "Enable this option to display delete button in Client's portal call "
@@ -975,6 +999,9 @@ msgstr "Error configuration"
 
 msgid "Error reloading modules. Please reload modules manually."
 msgstr "Error reloading modules. Please reload modules manually."
+
+msgid "Error saving record"
+msgstr "Error saving record"
 
 msgid "Error target"
 msgstr "Error target"
@@ -1261,6 +1288,11 @@ msgid "Holiday date"
 msgid_plural "Holiday dates"
 msgstr[0] "Holiday date"
 msgstr[1] "Holiday dates"
+
+msgid "Holiday date range"
+msgid_plural "Holiday dates range"
+msgstr[0] "Holiday date range"
+msgstr[1] "Holiday dates range"
 
 msgid "Holiday importer system"
 msgstr "Holiday importer system"
@@ -1842,6 +1874,9 @@ msgstr "Month"
 msgid "Movement amount"
 msgstr "Movement amount"
 
+msgid "Multi contact"
+msgstr "Multi contact"
+
 msgid "Multimedia"
 msgstr "Multimedia"
 
@@ -2183,6 +2218,9 @@ msgstr "Prices Help"
 msgid "Priority"
 msgstr "Priority"
 
+msgid "Problems unbanning address"
+msgstr "Problems unbanning address"
+
 msgid "Processing"
 msgstr "Processing"
 
@@ -2282,6 +2320,9 @@ msgstr "Realm"
 
 msgid "Record call"
 msgstr "Record call"
+
+msgid "Record successfully saved."
+msgstr "Record successfully saved."
 
 msgid "Recorded file"
 msgstr "Recorded file"
@@ -2582,6 +2623,13 @@ msgstr "Service has extra arguments"
 
 msgid "Set column configuration and continue."
 msgstr "Set column configuration and continue."
+
+msgid ""
+"Set to 'No' to call only to latest registered SIP device instead of making "
+"all registered devices ring."
+msgstr ""
+"Set to 'No' to call only to latest registered SIP device instead of making "
+"all registered devices ring."
 
 msgid "Settings"
 msgstr "Settings"

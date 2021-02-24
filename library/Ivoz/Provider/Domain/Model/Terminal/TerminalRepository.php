@@ -16,6 +16,16 @@ interface TerminalRepository extends ObjectRepository, Selectable
     public function findOneByNameAndDomain(string $name, DomainInterface $domain);
 
     /**
+     * @return TerminalInterface | null
+     */
+    public function findOneByCompanyAndName(int $companyId, string $name);
+
+    /**
+     * @return TerminalInterface | null
+     */
+    public function findOneByMac(string $mac);
+
+    /**
      * @param int $companyId
      * @return string[]
      */

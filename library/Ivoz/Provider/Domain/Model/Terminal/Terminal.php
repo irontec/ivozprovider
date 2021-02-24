@@ -60,7 +60,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      */
     public function setName(?string $name = null): self
     {
-        if (!empty($name)) {
+        if (! is_null($name)) {
             Assertion::regex($name, '/^[a-zA-Z0-9_*]+$/');
         }
 
@@ -79,6 +79,28 @@ class Terminal extends TerminalAbstract implements TerminalInterface
         );
 
         return parent::setPassword($password);
+    }
+
+    public static function randomPassword()
+    {
+        $uppers = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+        $lowers = "abcdefghijkmnopqrstuvwxyz";
+        $numbers = "1234567890";
+        $symbols = '_-+*';
+
+        $randStr = '';
+        for ($i = 0; $i < 3; $i++) {
+            $randStr .= $uppers[rand(0, strlen($uppers) - 1)];
+        }
+        for ($i = 0; $i < 3; $i++) {
+            $randStr .= $lowers[rand(0, strlen($lowers) - 1)];
+        }
+        for ($i = 0; $i < 3; $i++) {
+            $randStr .= $numbers[rand(0, strlen($numbers) - 1)];
+        }
+        $randStr.= $symbols[rand(0, strlen($symbols) - 1)];
+
+        return str_shuffle($randStr);
     }
 
     public function getUser()

@@ -36,6 +36,16 @@ get_my_active_calls:
     _api_item_operation_name: 'get_my_active_calls'
     _api_receive: false
 
+post_users_mass_import:
+  path: '/users/mass_import'
+  methods: ['POST', 'GET']
+  defaults:
+    _controller: Controller\Provider\PostUsersMassImportAction
+    _api_resource_class: 'Model\UsersMassImport'
+    _api_item_operation_name: 'post_users_mass_import'
+    _api_collection_operation_name: 'post_users_mass_import'
+    _api_receive: false
+
 put_billable_call_rate_by_callid:
   path: '/billable_calls/{callid}/rate'
   methods: ['PUT']
@@ -53,3 +63,12 @@ get_my_registration_summary:
     _api_resource_class: 'Model\RegistrationSummary'
     _api_item_operation_name: 'get_my_registration_summary'
     _api_receive: false
+
+antibruteforce_banned_address_delete_item:
+  path: '/banned_addresses/antibruteforce/{id}.{_format}'
+  methods: ['DELETE']
+  defaults:
+    _api_item_operation_name: delete
+    _api_resource_class: Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress
+    _controller: api_platform.action.delete_item
+    _format: NULL

@@ -81,4 +81,15 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
             $this->getDstCountry()->getCountryCode() .
             $this->getDst();
     }
+
+    protected function setDst(?string $dst = null): FaxesInOutInterface
+    {
+        $dst = preg_replace(
+            '/[^0-9]/',
+            '',
+            $dst
+        );
+
+        return parent::setDst($dst);
+    }
 }

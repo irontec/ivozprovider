@@ -32,5 +32,7 @@ parameters:
     local_storage_path: /opt/irontec/ivozprovider/storage
     raw_recordings_dir: /opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/
     gearmand:
-        servers:
-            - jobs.ivozprovider.local
+      servers:
+        - jobs.ivozprovider.local
+    sentinels:
+        - { host: 'data.ivozprovider.local', port: '26379' }

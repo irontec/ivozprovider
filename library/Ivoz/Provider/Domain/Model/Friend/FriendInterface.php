@@ -270,6 +270,13 @@ interface FriendInterface extends LoggableEntityInterface
     public function getRtpEncryption(): bool;
 
     /**
+     * Get multiContact
+     *
+     * @return boolean
+     */
+    public function getMultiContact(): bool;
+
+    /**
      * Set company
      *
      * @param CompanyInterface

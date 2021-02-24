@@ -404,7 +404,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get country
      *
-     * @return CountryInterface | null
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
      */
     public function getCountry(): ?CountryInterface;
 

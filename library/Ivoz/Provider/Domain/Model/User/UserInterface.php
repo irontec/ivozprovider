@@ -33,6 +33,11 @@ interface UserInterface extends LoggableEntityInterface
 
     const EXTERNALIPCALLS_3 = '3';
 
+    const REJECTCALLMETHOD_RFC = 'rfc';
+    const REJECTCALLMETHOD_486 = '486';
+    const REJECTCALLMETHOD_600 = '600';
+
+
     /**
      * @return array
      */
@@ -85,6 +90,8 @@ interface UserInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getOutgoingDdi(): ?DdiInterface;
+
+    public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null);
 
     /**
      * Get User outgoingDdiRule
@@ -214,6 +221,13 @@ interface UserInterface extends LoggableEntityInterface
     public function getExternalIpCalls(): string;
 
     /**
+     * Get rejectCallMethod
+     *
+     * @return string
+     */
+    public function getRejectCallMethod(): string;
+
+    /**
      * Get voicemailEnabled
      *
      * @return bool
@@ -233,6 +247,13 @@ interface UserInterface extends LoggableEntityInterface
      * @return bool
      */
     public function getVoicemailAttachSound(): bool;
+
+    /**
+     * Get multiContact
+     *
+     * @return boolean
+     */
+    public function getMultiContact(): bool;
 
     /**
      * Get gsQRCode

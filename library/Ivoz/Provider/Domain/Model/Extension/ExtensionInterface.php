@@ -41,6 +41,8 @@ interface ExtensionInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
+    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
+
     /**
      * {@inheritDoc}
      */

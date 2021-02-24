@@ -41,4 +41,20 @@ class CountryDoctrineRepository extends ServiceEntityRepository implements Count
 
         return $response;
     }
+
+    /**
+     * @param string $code
+     * @return CountryInterface|null
+     */
+    public function findOneByCode(string $code)
+    {
+        $criteria = [
+            'code' => $code,
+        ];
+
+        /** @var CountryInterface | null $response */
+        $response = $this->findOneBy($criteria);
+
+        return $response;
+    }
 }

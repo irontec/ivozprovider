@@ -519,7 +519,7 @@ production:
         class: IvozProvider_Klear_Ghost_Companies
         method: getTypeIcon
     showInvoices:
-      title: _('Display Client Invoices section')
+      title: _('Display billing details to client')
       type: select
       defaultValue: 0
       source:
@@ -533,7 +533,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Enable this option to display a section in Client's portal to download generated invoices.")
+        text: _("Enable this option to display billing details in Client's portal (e.g. invoices, prices, etc.).")
         label: _("Need help?")
     externallyExtraOpts:
       title: _('Externally rater custom options')

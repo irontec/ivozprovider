@@ -37,27 +37,28 @@ Each entry shows this information:
         Shows how long the call lasted.
 
     Price
-        The money amount for the client.
+        The money amount for the client. Visible for *god* and *brand operator* and *Client administrator* if
+        *Display billing details to client* is enabled.
 
     Cost
-        The money amount for the brand (the money that the carrier will bill for the call).
+        Visible for *god* and *brand operator*, the money amount for the brand (the money that the carrier will bill for the call).
 
     Rating Plan
-        Rating plan used to set price for the call.
+        Rating plan used to set price for the call. Visible for *god* and *brand operator* and *Client administrator* if
+        *Display billing details to client* is enabled.
 
     Destination
-        Destination that matched the call for billing.
+        Destination that matched the call for billing. Visible for *god* and *brand operator* and *Client administrator* if
+        *Display billing details to client* is enabled.
 
     Carrier
-        Shows which :ref:`Carrier <carriers>` was used for
-        each outbound call.
+        Visible for *god* and *brand operator*, shows which :ref:`Carrier <carriers>` was used for each outbound call.
 
     DDI Provider
-        Shows which :ref:`DDI Provider <DDI Providers>` was used for
-        each inbound call.
+        Visible for *god* and *brand operator*, shows which :ref:`DDI Provider <DDI Providers>` was used for each inbound call.
 
     Invoice
-        Shows if a call is already included in any :ref:`Invoice <invoices>`.
+        Visible for *god* and *brand operator*, shows if a call is already included in any :ref:`Invoice <invoices>`.
 
     Call ID
         Shows the call ID of the call for troubleshooting and CSV export.

@@ -4,9 +4,13 @@ namespace spec;
 
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 trait HelperTrait
 {
+    /** @var ContainerInterface */
+    protected static $_serviceContainer;
+
     protected $prophet;
 
     /**
@@ -27,6 +31,36 @@ trait HelperTrait
             $instance,
             $data
         );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function getService(string $fqdn)
+    {
+        self::loadServiceContainer();
+        return self::$_serviceContainer->get($fqdn);
+    }
+
+    protected function setService(
+        string $fqdn,
+        $service
+    ) {
+        self::loadServiceContainer();
+        self::$_serviceContainer->set(
+            $fqdn,
+            $service
+        );
+    }
+
+    private static function loadServiceContainer()
+    {
+        if (!self::$_serviceContainer) {
+            require_once(__DIR__ . '/testapp/AppKernel.php');
+            $kernel = new \AppKernel('test', true);
+            $kernel->boot();
+            self::$_serviceContainer = $kernel->getContainer();
+        }
     }
 
     protected function updateInstance($instance, array $data = [])
