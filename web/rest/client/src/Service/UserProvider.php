@@ -19,9 +19,22 @@ class UserProvider implements UserProviderInterface, MutableUserProviderInterfac
      */
     protected function findUser(array $criteria)
     {
-        return $this
+        $admin = $this
             ->getRepository()
             ->findOneBy($criteria);
+
+        if ($admin) {
+            /**
+             * Initialize company because it's required in BillableCallNormalizer
+             * and queries during unpaginated fetching (unbuffered queries)
+             * are not allowed
+             */
+            $admin
+                ->getCompany()
+                ->getShowInvoices();
+        }
+
+        return $admin;
     }
 
     /**
