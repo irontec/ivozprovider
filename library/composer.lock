@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "22d8a55d576845af60a4ad875c2d19f5",
@@ -1913,8 +1913,7 @@
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "006da71d25a542283444e765de3f6f64ea44bff1",
-                "shasum": null
+                "reference": "006da71d25a542283444e765de3f6f64ea44bff1"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.1",
@@ -7773,7 +7772,7 @@
             "version": "1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/irontec/TestDoubleBundle.git",
+                "url": "https://github.com/mmadariaga/TestDoubleBundle.git",
                 "reference": "8927771953f53317b54e6fd8fc05058f62570be6"
             },
             "require": {
@@ -8170,46 +8169,6 @@
             ],
             "description": "A tool to automatically fix PHP code style",
             "time": "2020-06-27T23:57:46+00:00"
-        },
-        {
-            "name": "h4cc/wkhtmltopdf-amd64",
-            "version": "0.12.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/h4cc/wkhtmltopdf-amd64.git",
-                "reference": "b80ce6720349e98cebac7e8a19426455805fa7e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/h4cc/wkhtmltopdf-amd64/zipball/b80ce6720349e98cebac7e8a19426455805fa7e1",
-                "reference": "b80ce6720349e98cebac7e8a19426455805fa7e1",
-                "shasum": ""
-            },
-            "bin": [
-                "bin/wkhtmltopdf-amd64"
-            ],
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL Version 3"
-            ],
-            "authors": [
-                {
-                    "name": "Julius Beckmann",
-                    "email": "github@h4cc.de"
-                }
-            ],
-            "description": "Convert html to pdf using webkit (qtwebkit). Static linked linux binary for amd64 systems.",
-            "homepage": "http://wkhtmltopdf.org/",
-            "keywords": [
-                "binary",
-                "convert",
-                "pdf",
-                "snapshot",
-                "thumbnail",
-                "wkhtmltopdf"
-            ],
-            "time": "2016-02-02T19:38:55+00:00"
         },
         {
             "name": "http-interop/http-middleware",
@@ -10883,5 +10842,6 @@
     },
     "platform-overrides": {
         "php": "7.0.19"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
