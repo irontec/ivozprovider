@@ -109,11 +109,13 @@ production:
           title: ngettext('External call', 'External calls', 0)
           description: _("List of %s", ngettext('External call', 'External calls', 0))
           class: ui-silk-application-view-list-world
+          disabledCount: true
         BillableCallHistoricsList:
           title: ngettext('Historic external call', 'Historic external calls', 0)
           description: _("List of %s", ngettext('Historic external call', 'Historic external calls', 0))
           class: ui-silk-application-view-list-world
           showOnlyIf: false
+          disabledCount: true
         Infrastructure:
           title: _("Infrastructure")
           class: ui-silk-sitemap-color
@@ -258,6 +260,7 @@ production:
               title: ngettext('External call', 'External calls', 0)
               description: _("List of %s", ngettext('External call', 'External calls', 0))
               class: ui-silk-application-view-list-world
+              disabledCount: true
             CallCsvSchedulersBrandList:
               title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 0)
               class: ui-silk-application-view-list-schedule
@@ -520,6 +523,7 @@ production:
               description: _("List of %s", ngettext('External call', 'External calls', 0))
               class: ui-silk-application-view-list-world
               showOnlyIf: ${auth.acls.BillableCalls.read}
+              disabledCount: true
             CallCsvSchedulersList:
               title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 0)
               class: ui-silk-application-view-list-schedule
