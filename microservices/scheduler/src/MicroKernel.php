@@ -40,6 +40,7 @@ class MicroKernel extends Kernel
     {
         $routes->add('/', 'InvoiceSchedulerController:indexAction');
         $routes->add('/billable-calls', 'BillableCallController:indexAction');
+        $routes->add('/billable-calls-historic', 'BillableCallHistoricController:indexAction');
         $routes->add('/call-csv-to-email', 'CallCsvController:indexAction');
     }
 
