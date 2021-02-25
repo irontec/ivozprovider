@@ -131,63 +131,63 @@ interface BillableCallHistoricInterface extends LoggableEntityInterface
     /**
      * Get brand
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand();
 
     /**
      * Get company
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany();
 
     /**
      * Get carrier
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier();
 
     /**
      * Get destination
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null
      */
     public function getDestination();
 
     /**
      * Get ratingPlanGroup
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
      */
     public function getRatingPlanGroup();
 
     /**
      * Get invoice
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     public function getInvoice();
 
     /**
      * Get trunksCdr
      *
-     * @return integer | null
+     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
      */
     public function getTrunksCdr();
 
     /**
      * Get ddi
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getDdi();
 
     /**
      * Get ddiProvider
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
      */
     public function getDdiProvider();
 

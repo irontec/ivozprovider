@@ -88,52 +88,52 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
     /**
      * @var integer
      */
+    private $id;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     */
     private $brand;
 
     /**
-     * @var integer
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     private $company;
 
     /**
-     * @var integer
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
      */
     private $carrier;
 
     /**
-     * @var integer
+     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationDto | null
      */
     private $destination;
 
     /**
-     * @var integer
+     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto | null
      */
     private $ratingPlanGroup;
 
     /**
-     * @var integer
+     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto | null
      */
     private $invoice;
 
     /**
-     * @var integer
+     * @var \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto | null
      */
     private $trunksCdr;
 
     /**
-     * @var integer
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
      */
     private $ddi;
 
     /**
-     * @var integer
+     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
      */
     private $ddiProvider;
-
-    /**
-     * @var integer
-     */
-    private $id;
 
 
     use DtoNormalizer;
@@ -168,16 +168,16 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
             'endpointId' => 'endpointId',
             'endpointName' => 'endpointName',
             'direction' => 'direction',
-            'brand' => 'brand',
-            'company' => 'company',
-            'carrier' => 'carrier',
-            'destination' => 'destination',
-            'ratingPlanGroup' => 'ratingPlanGroup',
-            'invoice' => 'invoice',
-            'trunksCdr' => 'trunksCdr',
-            'ddi' => 'ddi',
-            'ddiProvider' => 'ddiProvider',
-            'id' => 'id'
+            'id' => 'id',
+            'brandId' => 'brand',
+            'companyId' => 'company',
+            'carrierId' => 'carrier',
+            'destinationId' => 'destination',
+            'ratingPlanGroupId' => 'ratingPlanGroup',
+            'invoiceId' => 'invoice',
+            'trunksCdrId' => 'trunksCdr',
+            'ddiId' => 'ddi',
+            'ddiProviderId' => 'ddiProvider'
         ];
     }
 
@@ -202,6 +202,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
             'endpointId' => $this->getEndpointId(),
             'endpointName' => $this->getEndpointName(),
             'direction' => $this->getDirection(),
+            'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
             'carrier' => $this->getCarrier(),
@@ -210,8 +211,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
             'invoice' => $this->getInvoice(),
             'trunksCdr' => $this->getTrunksCdr(),
             'ddi' => $this->getDdi(),
-            'ddiProvider' => $this->getDdiProvider(),
-            'id' => $this->getId()
+            'ddiProvider' => $this->getDdiProvider()
         ];
 
         if (!$hideSensitiveData) {
@@ -529,186 +529,6 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param integer $brand
-     *
-     * @return static
-     */
-    public function setBrand($brand = null)
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
-
-    /**
-     * @param integer $company
-     *
-     * @return static
-     */
-    public function setCompany($company = null)
-    {
-        $this->company = $company;
-
-        return $this;
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
-     * @param integer $carrier
-     *
-     * @return static
-     */
-    public function setCarrier($carrier = null)
-    {
-        $this->carrier = $carrier;
-
-        return $this;
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getCarrier()
-    {
-        return $this->carrier;
-    }
-
-    /**
-     * @param integer $destination
-     *
-     * @return static
-     */
-    public function setDestination($destination = null)
-    {
-        $this->destination = $destination;
-
-        return $this;
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getDestination()
-    {
-        return $this->destination;
-    }
-
-    /**
-     * @param integer $ratingPlanGroup
-     *
-     * @return static
-     */
-    public function setRatingPlanGroup($ratingPlanGroup = null)
-    {
-        $this->ratingPlanGroup = $ratingPlanGroup;
-
-        return $this;
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getRatingPlanGroup()
-    {
-        return $this->ratingPlanGroup;
-    }
-
-    /**
-     * @param integer $invoice
-     *
-     * @return static
-     */
-    public function setInvoice($invoice = null)
-    {
-        $this->invoice = $invoice;
-
-        return $this;
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getInvoice()
-    {
-        return $this->invoice;
-    }
-
-    /**
-     * @param integer $trunksCdr
-     *
-     * @return static
-     */
-    public function setTrunksCdr($trunksCdr = null)
-    {
-        $this->trunksCdr = $trunksCdr;
-
-        return $this;
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getTrunksCdr()
-    {
-        return $this->trunksCdr;
-    }
-
-    /**
-     * @param integer $ddi
-     *
-     * @return static
-     */
-    public function setDdi($ddi = null)
-    {
-        $this->ddi = $ddi;
-
-        return $this;
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getDdi()
-    {
-        return $this->ddi;
-    }
-
-    /**
-     * @param integer $ddiProvider
-     *
-     * @return static
-     */
-    public function setDdiProvider($ddiProvider = null)
-    {
-        $this->ddiProvider = $ddiProvider;
-
-        return $this;
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getDdiProvider()
-    {
-        return $this->ddiProvider;
-    }
-
-    /**
      * @param integer $id
      *
      * @return static
@@ -726,5 +546,419 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
+     *
+     * @return static
+     */
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setBrandId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            : null;
+
+        return $this->setBrand($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getBrandId()
+    {
+        if ($dto = $this->getBrand()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     *
+     * @return static
+     */
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
+
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
+     *
+     * @return static
+     */
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
+    {
+        $this->carrier = $carrier;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     */
+    public function getCarrier()
+    {
+        return $this->carrier;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setCarrierId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
+            : null;
+
+        return $this->setCarrier($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getCarrierId()
+    {
+        if ($dto = $this->getCarrier()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationDto $destination
+     *
+     * @return static
+     */
+    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationDto $destination = null)
+    {
+        $this->destination = $destination;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationDto | null
+     */
+    public function getDestination()
+    {
+        return $this->destination;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setDestinationId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Destination\DestinationDto($id)
+            : null;
+
+        return $this->setDestination($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDestinationId()
+    {
+        if ($dto = $this->getDestination()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto $ratingPlanGroup
+     *
+     * @return static
+     */
+    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto $ratingPlanGroup = null)
+    {
+        $this->ratingPlanGroup = $ratingPlanGroup;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto | null
+     */
+    public function getRatingPlanGroup()
+    {
+        return $this->ratingPlanGroup;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setRatingPlanGroupId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto($id)
+            : null;
+
+        return $this->setRatingPlanGroup($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getRatingPlanGroupId()
+    {
+        if ($dto = $this->getRatingPlanGroup()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto $invoice
+     *
+     * @return static
+     */
+    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceDto $invoice = null)
+    {
+        $this->invoice = $invoice;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto | null
+     */
+    public function getInvoice()
+    {
+        return $this->invoice;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setInvoiceId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto($id)
+            : null;
+
+        return $this->setInvoice($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getInvoiceId()
+    {
+        if ($dto = $this->getInvoice()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto $trunksCdr
+     *
+     * @return static
+     */
+    public function setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto $trunksCdr = null)
+    {
+        $this->trunksCdr = $trunksCdr;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto | null
+     */
+    public function getTrunksCdr()
+    {
+        return $this->trunksCdr;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setTrunksCdrId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto($id)
+            : null;
+
+        return $this->setTrunksCdr($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getTrunksCdrId()
+    {
+        if ($dto = $this->getTrunksCdr()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi
+     *
+     * @return static
+     */
+    public function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi = null)
+    {
+        $this->ddi = $ddi;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     */
+    public function getDdi()
+    {
+        return $this->ddi;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setDdiId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            : null;
+
+        return $this->setDdi($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDdiId()
+    {
+        if ($dto = $this->getDdi()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider
+     *
+     * @return static
+     */
+    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider = null)
+    {
+        $this->ddiProvider = $ddiProvider;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
+     */
+    public function getDdiProvider()
+    {
+        return $this->ddiProvider;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setDdiProviderId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto($id)
+            : null;
+
+        return $this->setDdiProvider($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDdiProviderId()
+    {
+        if ($dto = $this->getDdiProvider()) {
+            return $dto->getId();
+        }
+
+        return null;
     }
 }

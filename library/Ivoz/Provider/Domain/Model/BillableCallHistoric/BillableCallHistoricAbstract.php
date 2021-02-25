@@ -91,56 +91,47 @@ abstract class BillableCallHistoricAbstract
     protected $direction = 'outbound';
 
     /**
-     * column: brandId
-     * @var integer | null
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     protected $brand;
 
     /**
-     * column: companyId
-     * @var integer | null
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     protected $company;
 
     /**
-     * column: carrierId
-     * @var integer | null
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     protected $carrier;
 
     /**
-     * column: destinationId
-     * @var integer | null
+     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null
      */
     protected $destination;
 
     /**
-     * column: ratingPlanGroupId
-     * @var integer | null
+     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
      */
     protected $ratingPlanGroup;
 
     /**
-     * column: invoiceId
-     * @var integer | null
+     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     protected $invoice;
 
     /**
-     * column: trunksCdrId
-     * @var integer | null
+     * @var \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
      */
     protected $trunksCdr;
 
     /**
-     * column: ddiId
-     * @var integer | null
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     protected $ddi;
 
     /**
-     * column: ddiProviderId
-     * @var integer | null
+     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
      */
     protected $ddiProvider;
 
@@ -242,15 +233,15 @@ abstract class BillableCallHistoricAbstract
             ->setEndpointId($dto->getEndpointId())
             ->setEndpointName($dto->getEndpointName())
             ->setDirection($dto->getDirection())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setDestination($dto->getDestination())
-            ->setRatingPlanGroup($dto->getRatingPlanGroup())
-            ->setInvoice($dto->getInvoice())
-            ->setTrunksCdr($dto->getTrunksCdr())
-            ->setDdi($dto->getDdi())
-            ->setDdiProvider($dto->getDdiProvider())
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setDestination($fkTransformer->transform($dto->getDestination()))
+            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setInvoice($fkTransformer->transform($dto->getInvoice()))
+            ->setTrunksCdr($fkTransformer->transform($dto->getTrunksCdr()))
+            ->setDdi($fkTransformer->transform($dto->getDdi()))
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
         ;
 
         $self->initChangelog();
@@ -285,15 +276,15 @@ abstract class BillableCallHistoricAbstract
             ->setEndpointId($dto->getEndpointId())
             ->setEndpointName($dto->getEndpointName())
             ->setDirection($dto->getDirection())
-            ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setDestination($dto->getDestination())
-            ->setRatingPlanGroup($dto->getRatingPlanGroup())
-            ->setInvoice($dto->getInvoice())
-            ->setTrunksCdr($dto->getTrunksCdr())
-            ->setDdi($dto->getDdi())
-            ->setDdiProvider($dto->getDdiProvider());
+            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
+            ->setDestination($fkTransformer->transform($dto->getDestination()))
+            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setInvoice($fkTransformer->transform($dto->getInvoice()))
+            ->setTrunksCdr($fkTransformer->transform($dto->getTrunksCdr()))
+            ->setDdi($fkTransformer->transform($dto->getDdi()))
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
 
 
 
@@ -323,15 +314,15 @@ abstract class BillableCallHistoricAbstract
             ->setEndpointId(self::getEndpointId())
             ->setEndpointName(self::getEndpointName())
             ->setDirection(self::getDirection())
-            ->setBrand(self::getBrand())
-            ->setCompany(self::getCompany())
-            ->setCarrier(self::getCarrier())
-            ->setDestination(self::getDestination())
-            ->setRatingPlanGroup(self::getRatingPlanGroup())
-            ->setInvoice(self::getInvoice())
-            ->setTrunksCdr(self::getTrunksCdr())
-            ->setDdi(self::getDdi())
-            ->setDdiProvider(self::getDdiProvider());
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
+            ->setDestination(\Ivoz\Provider\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth))
+            ->setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup::entityToDto(self::getRatingPlanGroup(), $depth))
+            ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto(self::getInvoice(), $depth))
+            ->setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr::entityToDto(self::getTrunksCdr(), $depth))
+            ->setDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getDdi(), $depth))
+            ->setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::entityToDto(self::getDdiProvider(), $depth));
     }
 
     /**
@@ -355,15 +346,15 @@ abstract class BillableCallHistoricAbstract
             'endpointId' => self::getEndpointId(),
             'endpointName' => self::getEndpointName(),
             'direction' => self::getDirection(),
-            'brandId' => self::getBrand(),
-            'companyId' => self::getCompany(),
-            'carrierId' => self::getCarrier(),
-            'destinationId' => self::getDestination(),
-            'ratingPlanGroupId' => self::getRatingPlanGroup(),
-            'invoiceId' => self::getInvoice(),
-            'trunksCdrId' => self::getTrunksCdr(),
-            'ddiId' => self::getDdi(),
-            'ddiProviderId' => self::getDdiProvider()
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
+            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null,
+            'ratingPlanGroupId' => self::getRatingPlanGroup() ? self::getRatingPlanGroup()->getId() : null,
+            'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null,
+            'trunksCdrId' => self::getTrunksCdr() ? self::getTrunksCdr()->getId() : null,
+            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null,
+            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -807,18 +798,12 @@ abstract class BillableCallHistoricAbstract
     /**
      * Set brand
      *
-     * @param integer $brand | null
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
      *
      * @return static
      */
-    protected function setBrand($brand = null)
+    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
     {
-        if (!is_null($brand)) {
-            Assertion::integerish($brand, 'brand value "%s" is not an integer or a number castable to integer.');
-            Assertion::greaterOrEqualThan($brand, 0, 'brand provided "%s" is not greater or equal than "%s".');
-            $brand = (int) $brand;
-        }
-
         $this->brand = $brand;
 
         return $this;
@@ -827,7 +812,7 @@ abstract class BillableCallHistoricAbstract
     /**
      * Get brand
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
      */
     public function getBrand()
     {
@@ -837,18 +822,12 @@ abstract class BillableCallHistoricAbstract
     /**
      * Set company
      *
-     * @param integer $company | null
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
      *
      * @return static
      */
-    protected function setCompany($company = null)
+    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
-        if (!is_null($company)) {
-            Assertion::integerish($company, 'company value "%s" is not an integer or a number castable to integer.');
-            Assertion::greaterOrEqualThan($company, 0, 'company provided "%s" is not greater or equal than "%s".');
-            $company = (int) $company;
-        }
-
         $this->company = $company;
 
         return $this;
@@ -857,7 +836,7 @@ abstract class BillableCallHistoricAbstract
     /**
      * Get company
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
      */
     public function getCompany()
     {
@@ -867,18 +846,12 @@ abstract class BillableCallHistoricAbstract
     /**
      * Set carrier
      *
-     * @param integer $carrier | null
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
      *
      * @return static
      */
-    protected function setCarrier($carrier = null)
+    protected function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
-        if (!is_null($carrier)) {
-            Assertion::integerish($carrier, 'carrier value "%s" is not an integer or a number castable to integer.');
-            Assertion::greaterOrEqualThan($carrier, 0, 'carrier provided "%s" is not greater or equal than "%s".');
-            $carrier = (int) $carrier;
-        }
-
         $this->carrier = $carrier;
 
         return $this;
@@ -887,7 +860,7 @@ abstract class BillableCallHistoricAbstract
     /**
      * Get carrier
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
      */
     public function getCarrier()
     {
@@ -897,18 +870,12 @@ abstract class BillableCallHistoricAbstract
     /**
      * Set destination
      *
-     * @param integer $destination | null
+     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination | null
      *
      * @return static
      */
-    protected function setDestination($destination = null)
+    protected function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null)
     {
-        if (!is_null($destination)) {
-            Assertion::integerish($destination, 'destination value "%s" is not an integer or a number castable to integer.');
-            Assertion::greaterOrEqualThan($destination, 0, 'destination provided "%s" is not greater or equal than "%s".');
-            $destination = (int) $destination;
-        }
-
         $this->destination = $destination;
 
         return $this;
@@ -917,7 +884,7 @@ abstract class BillableCallHistoricAbstract
     /**
      * Get destination
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null
      */
     public function getDestination()
     {
@@ -927,18 +894,12 @@ abstract class BillableCallHistoricAbstract
     /**
      * Set ratingPlanGroup
      *
-     * @param integer $ratingPlanGroup | null
+     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup | null
      *
      * @return static
      */
-    protected function setRatingPlanGroup($ratingPlanGroup = null)
+    protected function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null)
     {
-        if (!is_null($ratingPlanGroup)) {
-            Assertion::integerish($ratingPlanGroup, 'ratingPlanGroup value "%s" is not an integer or a number castable to integer.');
-            Assertion::greaterOrEqualThan($ratingPlanGroup, 0, 'ratingPlanGroup provided "%s" is not greater or equal than "%s".');
-            $ratingPlanGroup = (int) $ratingPlanGroup;
-        }
-
         $this->ratingPlanGroup = $ratingPlanGroup;
 
         return $this;
@@ -947,7 +908,7 @@ abstract class BillableCallHistoricAbstract
     /**
      * Get ratingPlanGroup
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
      */
     public function getRatingPlanGroup()
     {
@@ -957,18 +918,12 @@ abstract class BillableCallHistoricAbstract
     /**
      * Set invoice
      *
-     * @param integer $invoice | null
+     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice | null
      *
      * @return static
      */
-    protected function setInvoice($invoice = null)
+    protected function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null)
     {
-        if (!is_null($invoice)) {
-            Assertion::integerish($invoice, 'invoice value "%s" is not an integer or a number castable to integer.');
-            Assertion::greaterOrEqualThan($invoice, 0, 'invoice provided "%s" is not greater or equal than "%s".');
-            $invoice = (int) $invoice;
-        }
-
         $this->invoice = $invoice;
 
         return $this;
@@ -977,7 +932,7 @@ abstract class BillableCallHistoricAbstract
     /**
      * Get invoice
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
      */
     public function getInvoice()
     {
@@ -987,18 +942,12 @@ abstract class BillableCallHistoricAbstract
     /**
      * Set trunksCdr
      *
-     * @param integer $trunksCdr | null
+     * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr | null
      *
      * @return static
      */
-    protected function setTrunksCdr($trunksCdr = null)
+    protected function setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr = null)
     {
-        if (!is_null($trunksCdr)) {
-            Assertion::integerish($trunksCdr, 'trunksCdr value "%s" is not an integer or a number castable to integer.');
-            Assertion::greaterOrEqualThan($trunksCdr, 0, 'trunksCdr provided "%s" is not greater or equal than "%s".');
-            $trunksCdr = (int) $trunksCdr;
-        }
-
         $this->trunksCdr = $trunksCdr;
 
         return $this;
@@ -1007,7 +956,7 @@ abstract class BillableCallHistoricAbstract
     /**
      * Get trunksCdr
      *
-     * @return integer | null
+     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
      */
     public function getTrunksCdr()
     {
@@ -1017,18 +966,12 @@ abstract class BillableCallHistoricAbstract
     /**
      * Set ddi
      *
-     * @param integer $ddi | null
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi | null
      *
      * @return static
      */
-    protected function setDdi($ddi = null)
+    protected function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi = null)
     {
-        if (!is_null($ddi)) {
-            Assertion::integerish($ddi, 'ddi value "%s" is not an integer or a number castable to integer.');
-            Assertion::greaterOrEqualThan($ddi, 0, 'ddi provided "%s" is not greater or equal than "%s".');
-            $ddi = (int) $ddi;
-        }
-
         $this->ddi = $ddi;
 
         return $this;
@@ -1037,7 +980,7 @@ abstract class BillableCallHistoricAbstract
     /**
      * Get ddi
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getDdi()
     {
@@ -1047,18 +990,12 @@ abstract class BillableCallHistoricAbstract
     /**
      * Set ddiProvider
      *
-     * @param integer $ddiProvider | null
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider | null
      *
      * @return static
      */
-    protected function setDdiProvider($ddiProvider = null)
+    protected function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null)
     {
-        if (!is_null($ddiProvider)) {
-            Assertion::integerish($ddiProvider, 'ddiProvider value "%s" is not an integer or a number castable to integer.');
-            Assertion::greaterOrEqualThan($ddiProvider, 0, 'ddiProvider provided "%s" is not greater or equal than "%s".');
-            $ddiProvider = (int) $ddiProvider;
-        }
-
         $this->ddiProvider = $ddiProvider;
 
         return $this;
@@ -1067,7 +1004,7 @@ abstract class BillableCallHistoricAbstract
     /**
      * Get ddiProvider
      *
-     * @return integer | null
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
      */
     public function getDdiProvider()
     {
