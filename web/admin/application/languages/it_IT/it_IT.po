@@ -1303,6 +1303,11 @@ msgstr "Appartenenza al gruppo"
 msgid "Hash based"
 msgstr "Basato su Hash"
 
+msgid "Historic external call"
+msgid_plural "Historic external calls"
+msgstr[0] "Cronologia chiamata esterna"
+msgstr[1] "Cronologia chiamate esterne"
+
 msgid "Holiday date"
 msgid_plural "Holiday dates"
 msgstr[0] "Data festività"
