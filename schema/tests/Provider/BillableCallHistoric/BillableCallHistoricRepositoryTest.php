@@ -16,20 +16,45 @@ class BillableCallHistoricRepositoryTest extends KernelTestCase
      */
     public function test_runner()
     {
-        $this->it_syncs_tables();
+        $this->it_copies_rows_from_billable_Calls();
+        $this->it_finds_max_id();
     }
 
-    private function it_syncs_tables()
+    private function it_copies_rows_from_billable_Calls()
     {
         /** @var BillableCallHistoricRepository $billableCallRepository */
         $billableCallRepository = $this->em
             ->getRepository(BillableCallHistoric::class);
 
-        $affectedRows = $billableCallRepository->sync();
+        $affectedRows = $billableCallRepository
+            ->copyBillableCallsByIds([
+                1,
+                2
+            ]);
 
-        $this->assertGreaterThan(
-            1,
+        $this->assertEquals(
+            2,
             $affectedRows
+        );
+    }
+
+    private function it_finds_max_id()
+    {
+        /** @var BillableCallHistoricRepository $billableCallRepository */
+        $billableCallRepository = $this->em
+            ->getRepository(BillableCallHistoric::class);
+
+        $expectedMaxId = 50;
+        $billableCallRepository
+            ->copyBillableCallsByIds([
+                $expectedMaxId
+            ]);
+
+        $maxId = $billableCallRepository->getMaxId();
+
+        $this->assertEquals(
+            $expectedMaxId,
+            $maxId
         );
     }
 }
