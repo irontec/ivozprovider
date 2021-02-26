@@ -1,0 +1,8 @@
+[Unit]
+Description=Run Ivozprovider scheduled historic call rotate task runner
+
+[Timer]
+OnCalendar=*-*-* 04:00:00
+
+[Install]
+WantedBy=timers.target
