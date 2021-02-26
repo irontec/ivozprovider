@@ -17,7 +17,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     /**
      * @var string
      */
-    private $type;
+    private $type = '';
 
     /**
      * @var string
@@ -25,17 +25,17 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     private $description = '';
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $priority;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $matchExpr;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $replaceExpr;
 
@@ -103,150 +103,91 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
         return $response;
     }
 
-    /**
-     * @param string $type | null
-     *
-     * @return static
-     */
-    public function setType(?string $type = null): self
+    public function setType(?string $type): static
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param int $priority | null
-     *
-     * @return static
-     */
-    public function setPriority(?int $priority = null): self
+    public function setPriority(?int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    /**
-     * @param string $matchExpr | null
-     *
-     * @return static
-     */
-    public function setMatchExpr(?string $matchExpr = null): self
+    public function setMatchExpr(?string $matchExpr): static
     {
         $this->matchExpr = $matchExpr;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getMatchExpr(): ?string
     {
         return $this->matchExpr;
     }
 
-    /**
-     * @param string $replaceExpr | null
-     *
-     * @return static
-     */
-    public function setReplaceExpr(?string $replaceExpr = null): self
+    public function setReplaceExpr(?string $replaceExpr): static
     {
         $this->replaceExpr = $replaceExpr;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getReplaceExpr(): ?string
     {
         return $this->replaceExpr;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param TransformationRuleSetDto | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet = null): self
+    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet): static
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
-    /**
-     * @return TransformationRuleSetDto | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetDto
     {
         return $this->transformationRuleSet;
     }
 
-    /**
-     * @return static
-     */
-    public function setTransformationRuleSetId($id): self
+    public function setTransformationRuleSetId($id): static
     {
         $value = !is_null($id)
             ? new TransformationRuleSetDto($id)
@@ -255,9 +196,6 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
         return $this->setTransformationRuleSet($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTransformationRuleSetId()
     {
         if ($dto = $this->getTransformationRuleSet()) {

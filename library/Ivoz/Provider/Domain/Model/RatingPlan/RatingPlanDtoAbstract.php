@@ -23,47 +23,47 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     private $weight = 10;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $timingType = 'always';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $timeIn;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $monday = true;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $tuesday = true;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $wednesday = true;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $thursday = true;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $friday = true;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $saturday = true;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $sunday = true;
 
@@ -162,250 +162,151 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param float $weight | null
-     *
-     * @return static
-     */
-    public function setWeight(?float $weight = null): self
+    public function setWeight(?float $weight): static
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getWeight(): ?float
     {
         return $this->weight;
     }
 
-    /**
-     * @param string $timingType | null
-     *
-     * @return static
-     */
-    public function setTimingType(?string $timingType = null): self
+    public function setTimingType(?string $timingType): static
     {
         $this->timingType = $timingType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTimingType(): ?string
     {
         return $this->timingType;
     }
 
-    /**
-     * @param \DateTimeInterface $timeIn | null
-     *
-     * @return static
-     */
-    public function setTimeIn($timeIn = null): self
+    public function setTimeIn(null|\DateTime|string $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getTimeIn()
+    public function getTimeIn(): \DateTime|string|null
     {
         return $this->timeIn;
     }
 
-    /**
-     * @param bool $monday | null
-     *
-     * @return static
-     */
-    public function setMonday(?bool $monday = null): self
+    public function setMonday(?bool $monday): static
     {
         $this->monday = $monday;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getMonday(): ?bool
     {
         return $this->monday;
     }
 
-    /**
-     * @param bool $tuesday | null
-     *
-     * @return static
-     */
-    public function setTuesday(?bool $tuesday = null): self
+    public function setTuesday(?bool $tuesday): static
     {
         $this->tuesday = $tuesday;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getTuesday(): ?bool
     {
         return $this->tuesday;
     }
 
-    /**
-     * @param bool $wednesday | null
-     *
-     * @return static
-     */
-    public function setWednesday(?bool $wednesday = null): self
+    public function setWednesday(?bool $wednesday): static
     {
         $this->wednesday = $wednesday;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getWednesday(): ?bool
     {
         return $this->wednesday;
     }
 
-    /**
-     * @param bool $thursday | null
-     *
-     * @return static
-     */
-    public function setThursday(?bool $thursday = null): self
+    public function setThursday(?bool $thursday): static
     {
         $this->thursday = $thursday;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getThursday(): ?bool
     {
         return $this->thursday;
     }
 
-    /**
-     * @param bool $friday | null
-     *
-     * @return static
-     */
-    public function setFriday(?bool $friday = null): self
+    public function setFriday(?bool $friday): static
     {
         $this->friday = $friday;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getFriday(): ?bool
     {
         return $this->friday;
     }
 
-    /**
-     * @param bool $saturday | null
-     *
-     * @return static
-     */
-    public function setSaturday(?bool $saturday = null): self
+    public function setSaturday(?bool $saturday): static
     {
         $this->saturday = $saturday;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getSaturday(): ?bool
     {
         return $this->saturday;
     }
 
-    /**
-     * @param bool $sunday | null
-     *
-     * @return static
-     */
-    public function setSunday(?bool $sunday = null): self
+    public function setSunday(?bool $sunday): static
     {
         $this->sunday = $sunday;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getSunday(): ?bool
     {
         return $this->sunday;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param RatingPlanGroupDto | null
-     *
-     * @return static
-     */
-    public function setRatingPlanGroup(?RatingPlanGroupDto $ratingPlanGroup = null): self
+    public function setRatingPlanGroup(?RatingPlanGroupDto $ratingPlanGroup): static
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
         return $this;
     }
 
-    /**
-     * @return RatingPlanGroupDto | null
-     */
     public function getRatingPlanGroup(): ?RatingPlanGroupDto
     {
         return $this->ratingPlanGroup;
     }
 
-    /**
-     * @return static
-     */
-    public function setRatingPlanGroupId($id): self
+    public function setRatingPlanGroupId($id): static
     {
         $value = !is_null($id)
             ? new RatingPlanGroupDto($id)
@@ -414,9 +315,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->setRatingPlanGroup($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRatingPlanGroupId()
     {
         if ($dto = $this->getRatingPlanGroup()) {
@@ -426,30 +324,19 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DestinationRateGroupDto | null
-     *
-     * @return static
-     */
-    public function setDestinationRateGroup(?DestinationRateGroupDto $destinationRateGroup = null): self
+    public function setDestinationRateGroup(?DestinationRateGroupDto $destinationRateGroup): static
     {
         $this->destinationRateGroup = $destinationRateGroup;
 
         return $this;
     }
 
-    /**
-     * @return DestinationRateGroupDto | null
-     */
     public function getDestinationRateGroup(): ?DestinationRateGroupDto
     {
         return $this->destinationRateGroup;
     }
 
-    /**
-     * @return static
-     */
-    public function setDestinationRateGroupId($id): self
+    public function setDestinationRateGroupId($id): static
     {
         $value = !is_null($id)
             ? new DestinationRateGroupDto($id)
@@ -458,9 +345,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->setDestinationRateGroup($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDestinationRateGroupId()
     {
         if ($dto = $this->getDestinationRateGroup()) {
@@ -470,30 +354,19 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TpTimingDto | null
-     *
-     * @return static
-     */
-    public function setTpTiming(?TpTimingDto $tpTiming = null): self
+    public function setTpTiming(?TpTimingDto $tpTiming): static
     {
         $this->tpTiming = $tpTiming;
 
         return $this;
     }
 
-    /**
-     * @return TpTimingDto | null
-     */
     public function getTpTiming(): ?TpTimingDto
     {
         return $this->tpTiming;
     }
 
-    /**
-     * @return static
-     */
-    public function setTpTimingId($id): self
+    public function setTpTimingId($id): static
     {
         $value = !is_null($id)
             ? new TpTimingDto($id)
@@ -502,9 +375,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->setTpTiming($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTpTimingId()
     {
         if ($dto = $this->getTpTiming()) {
@@ -514,30 +384,19 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TpRatingPlanDto | null
-     *
-     * @return static
-     */
-    public function setTpRatingPlan(?TpRatingPlanDto $tpRatingPlan = null): self
+    public function setTpRatingPlan(?TpRatingPlanDto $tpRatingPlan): static
     {
         $this->tpRatingPlan = $tpRatingPlan;
 
         return $this;
     }
 
-    /**
-     * @return TpRatingPlanDto | null
-     */
     public function getTpRatingPlan(): ?TpRatingPlanDto
     {
         return $this->tpRatingPlan;
     }
 
-    /**
-     * @return static
-     */
-    public function setTpRatingPlanId($id): self
+    public function setTpRatingPlanId($id): static
     {
         $value = !is_null($id)
             ? new TpRatingPlanDto($id)
@@ -546,9 +405,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->setTpRatingPlan($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTpRatingPlanId()
     {
         if ($dto = $this->getTpRatingPlan()) {

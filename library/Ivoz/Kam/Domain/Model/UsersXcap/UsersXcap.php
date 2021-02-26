@@ -2,9 +2,6 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersXcap;
 
-/**
- * UsersXcap
- */
 class UsersXcap extends UsersXcapAbstract implements UsersXcapInterface
 {
     use UsersXcapTrait;

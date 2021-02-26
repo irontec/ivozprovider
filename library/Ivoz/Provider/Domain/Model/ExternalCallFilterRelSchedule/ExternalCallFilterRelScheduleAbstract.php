@@ -22,7 +22,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
     use ChangelogTrait;
 
     /**
-     * @var ExternalCallFilterInterface
+     * @var ExternalCallFilterInterface | null
      * inversedBy schedules
      */
     protected $filter;
@@ -61,7 +61,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ExternalCallFilterRelScheduleDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class ExternalCallFilterRelScheduleAbstract
         ];
     }
 
-    /**
-     * Set filter
-     *
-     * @param ExternalCallFilterInterface | null
-     *
-     * @return static
-     */
-    public function setFilter(?ExternalCallFilterInterface $filter = null): ExternalCallFilterRelScheduleInterface
+    public function setFilter(?ExternalCallFilterInterface $filter = null): static
     {
         $this->filter = $filter;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get filter
-     *
-     * @return ExternalCallFilterInterface | null
-     */
     public function getFilter(): ?ExternalCallFilterInterface
     {
         return $this->filter;
     }
 
-    /**
-     * Set schedule
-     *
-     * @param ScheduleInterface
-     *
-     * @return static
-     */
-    protected function setSchedule(ScheduleInterface $schedule): ExternalCallFilterRelScheduleInterface
+    protected function setSchedule(ScheduleInterface $schedule): static
     {
         $this->schedule = $schedule;
 
         return $this;
     }
 
-    /**
-     * Get schedule
-     *
-     * @return ScheduleInterface
-     */
     public function getSchedule(): ScheduleInterface
     {
         return $this->schedule;

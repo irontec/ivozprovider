@@ -49,7 +49,7 @@ abstract class UsersPresentityAbstract
     protected $receivedTime;
 
     /**
-     * @var 
+     * @var string
      */
     protected $body;
 
@@ -108,7 +108,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return UsersPresentityDto
      */
     public static function createDto($id = null)
@@ -237,14 +237,7 @@ abstract class UsersPresentityAbstract
         ];
     }
 
-    /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return static
-     */
-    protected function setUsername(string $username): UsersPresentityInterface
+    protected function setUsername(string $username): static
     {
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -253,24 +246,12 @@ abstract class UsersPresentityAbstract
         return $this;
     }
 
-    /**
-     * Get username
-     *
-     * @return string
-     */
     public function getUsername(): string
     {
         return $this->username;
     }
 
-    /**
-     * Set domain
-     *
-     * @param string $domain
-     *
-     * @return static
-     */
-    protected function setDomain(string $domain): UsersPresentityInterface
+    protected function setDomain(string $domain): static
     {
         Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -279,24 +260,12 @@ abstract class UsersPresentityAbstract
         return $this;
     }
 
-    /**
-     * Get domain
-     *
-     * @return string
-     */
     public function getDomain(): string
     {
         return $this->domain;
     }
 
-    /**
-     * Set event
-     *
-     * @param string $event
-     *
-     * @return static
-     */
-    protected function setEvent(string $event): UsersPresentityInterface
+    protected function setEvent(string $event): static
     {
         Assertion::maxLength($event, 64, 'event value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -305,24 +274,12 @@ abstract class UsersPresentityAbstract
         return $this;
     }
 
-    /**
-     * Get event
-     *
-     * @return string
-     */
     public function getEvent(): string
     {
         return $this->event;
     }
 
-    /**
-     * Set etag
-     *
-     * @param string $etag
-     *
-     * @return static
-     */
-    protected function setEtag(string $etag): UsersPresentityInterface
+    protected function setEtag(string $etag): static
     {
         Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -331,96 +288,48 @@ abstract class UsersPresentityAbstract
         return $this;
     }
 
-    /**
-     * Get etag
-     *
-     * @return string
-     */
     public function getEtag(): string
     {
         return $this->etag;
     }
 
-    /**
-     * Set expires
-     *
-     * @param int $expires
-     *
-     * @return static
-     */
-    protected function setExpires(int $expires): UsersPresentityInterface
+    protected function setExpires(int $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    /**
-     * Get expires
-     *
-     * @return int
-     */
     public function getExpires(): int
     {
         return $this->expires;
     }
 
-    /**
-     * Set receivedTime
-     *
-     * @param int $receivedTime
-     *
-     * @return static
-     */
-    protected function setReceivedTime(int $receivedTime): UsersPresentityInterface
+    protected function setReceivedTime(int $receivedTime): static
     {
         $this->receivedTime = $receivedTime;
 
         return $this;
     }
 
-    /**
-     * Get receivedTime
-     *
-     * @return int
-     */
     public function getReceivedTime(): int
     {
         return $this->receivedTime;
     }
 
-    /**
-     * Set body
-     *
-     * @param  $body
-     *
-     * @return static
-     */
-    protected function setBody( $body): UsersPresentityInterface
+    protected function setBody(string $body): static
     {
         $this->body = $body;
 
         return $this;
     }
 
-    /**
-     * Get body
-     *
-     * @return 
-     */
-    public function getBody()
+    public function getBody(): string
     {
         return $this->body;
     }
 
-    /**
-     * Set sender
-     *
-     * @param string $sender
-     *
-     * @return static
-     */
-    protected function setSender(string $sender): UsersPresentityInterface
+    protected function setSender(string $sender): static
     {
         Assertion::maxLength($sender, 128, 'sender value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -429,35 +338,18 @@ abstract class UsersPresentityAbstract
         return $this;
     }
 
-    /**
-     * Get sender
-     *
-     * @return string
-     */
     public function getSender(): string
     {
         return $this->sender;
     }
 
-    /**
-     * Set priority
-     *
-     * @param int $priority
-     *
-     * @return static
-     */
-    protected function setPriority(int $priority): UsersPresentityInterface
+    protected function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * Get priority
-     *
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;

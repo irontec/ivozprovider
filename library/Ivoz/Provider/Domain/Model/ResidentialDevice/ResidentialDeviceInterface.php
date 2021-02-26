@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
@@ -12,7 +13,6 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * ResidentialDeviceInterface
@@ -63,19 +63,19 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setName(string $name): ResidentialDeviceInterface;
+    public function setName(string $name): static;
 
     /**
      * {@inheritDoc}
      */
-    public function setIp(string $ip = null): ResidentialDeviceInterface;
+    public function setIp(?string $ip = null): static;
 
     /**
      * {@inheritDoc}
      */
-    public function setPassword(string $password = null): ResidentialDeviceInterface;
+    public function setPassword(?string $password = null): static;
 
-    public function setPort(int $port = null): ResidentialDeviceInterface;
+    public function setPort(?int $port = null): static;
 
     /**
      * @return string
@@ -131,190 +131,56 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      */
     public function getVoiceMailContext();
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string;
 
-    /**
-     * Get transport
-     *
-     * @return string | null
-     */
     public function getTransport(): ?string;
 
-    /**
-     * Get ip
-     *
-     * @return string | null
-     */
     public function getIp(): ?string;
 
-    /**
-     * Get port
-     *
-     * @return int | null
-     */
     public function getPort(): ?int;
 
-    /**
-     * Get authNeeded
-     *
-     * @return string
-     */
     public function getAuthNeeded(): string;
 
-    /**
-     * Get password
-     *
-     * @return string | null
-     */
     public function getPassword(): ?string;
 
-    /**
-     * Get disallow
-     *
-     * @return string
-     */
     public function getDisallow(): string;
 
-    /**
-     * Get allow
-     *
-     * @return string
-     */
     public function getAllow(): string;
 
-    /**
-     * Get directMediaMethod
-     *
-     * @return string
-     */
     public function getDirectMediaMethod(): string;
 
-    /**
-     * Get calleridUpdateHeader
-     *
-     * @return string
-     */
     public function getCalleridUpdateHeader(): string;
 
-    /**
-     * Get updateCallerid
-     *
-     * @return string
-     */
     public function getUpdateCallerid(): string;
 
-    /**
-     * Get fromDomain
-     *
-     * @return string | null
-     */
     public function getFromDomain(): ?string;
 
-    /**
-     * Get directConnectivity
-     *
-     * @return string
-     */
     public function getDirectConnectivity(): string;
 
-    /**
-     * Get ddiIn
-     *
-     * @return string
-     */
     public function getDdiIn(): string;
 
-    /**
-     * Get maxCalls
-     *
-     * @return int
-     */
     public function getMaxCalls(): int;
 
-    /**
-     * Get t38Passthrough
-     *
-     * @return string
-     */
     public function getT38Passthrough(): string;
 
-    /**
-     * Get rtpEncryption
-     *
-     * @return bool
-     */
     public function getRtpEncryption(): bool;
 
-    /**
-     * Get multiContact
-     *
-     * @return boolean
-     */
     public function getMultiContact(): bool;
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    public function setBrand(BrandInterface $brand): ResidentialDeviceInterface;
+    public function setBrand(BrandInterface $brand): static;
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface;
 
-    /**
-     * Set domain
-     *
-     * @param DomainInterface | null
-     *
-     * @return static
-     */
-    public function setDomain(?DomainInterface $domain = null): ResidentialDeviceInterface;
+    public function setDomain(?DomainInterface $domain = null): static;
 
-    /**
-     * Get domain
-     *
-     * @return DomainInterface | null
-     */
     public function getDomain(): ?DomainInterface;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface;
 
-    /**
-     * Get transformationRuleSet
-     *
-     * @return TransformationRuleSetInterface | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
-    /**
-     * Get language
-     *
-     * @return LanguageInterface | null
-     */
     public function getLanguage(): ?LanguageInterface;
 
     /**
@@ -322,106 +188,28 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      */
     public function isInitialized(): bool;
 
-    /**
-     * Add psEndpoint
-     *
-     * @param PsEndpointInterface $psEndpoint
-     *
-     * @return static
-     */
     public function addPsEndpoint(PsEndpointInterface $psEndpoint): ResidentialDeviceInterface;
 
-    /**
-     * Remove psEndpoint
-     *
-     * @param PsEndpointInterface $psEndpoint
-     *
-     * @return static
-     */
     public function removePsEndpoint(PsEndpointInterface $psEndpoint): ResidentialDeviceInterface;
 
-    /**
-     * Replace psEndpoints
-     *
-     * @param ArrayCollection $psEndpoints of PsEndpointInterface
-     *
-     * @return static
-     */
     public function replacePsEndpoints(ArrayCollection $psEndpoints): ResidentialDeviceInterface;
 
-    /**
-     * Get psEndpoints
-     * @param Criteria | null $criteria
-     * @return PsEndpointInterface[]
-     */
     public function getPsEndpoints(?Criteria $criteria = null): array;
 
-    /**
-     * Add ddi
-     *
-     * @param DdiInterface $ddi
-     *
-     * @return static
-     */
     public function addDdi(DdiInterface $ddi): ResidentialDeviceInterface;
 
-    /**
-     * Remove ddi
-     *
-     * @param DdiInterface $ddi
-     *
-     * @return static
-     */
     public function removeDdi(DdiInterface $ddi): ResidentialDeviceInterface;
 
-    /**
-     * Replace ddis
-     *
-     * @param ArrayCollection $ddis of DdiInterface
-     *
-     * @return static
-     */
     public function replaceDdis(ArrayCollection $ddis): ResidentialDeviceInterface;
 
-    /**
-     * Get ddis
-     * @param Criteria | null $criteria
-     * @return DdiInterface[]
-     */
     public function getDdis(?Criteria $criteria = null): array;
 
-    /**
-     * Add callForwardSetting
-     *
-     * @param CallForwardSettingInterface $callForwardSetting
-     *
-     * @return static
-     */
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): ResidentialDeviceInterface;
 
-    /**
-     * Remove callForwardSetting
-     *
-     * @param CallForwardSettingInterface $callForwardSetting
-     *
-     * @return static
-     */
     public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): ResidentialDeviceInterface;
 
-    /**
-     * Replace callForwardSettings
-     *
-     * @param ArrayCollection $callForwardSettings of CallForwardSettingInterface
-     *
-     * @return static
-     */
     public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): ResidentialDeviceInterface;
 
-    /**
-     * Get callForwardSettings
-     * @param Criteria | null $criteria
-     * @return CallForwardSettingInterface[]
-     */
     public function getCallForwardSettings(?Criteria $criteria = null): array;
 
 }

@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\TerminalModel;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class TerminalModelLifecycleServiceCollection implements LifecycleServiceCollect
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, TerminalModelLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, TerminalModelLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

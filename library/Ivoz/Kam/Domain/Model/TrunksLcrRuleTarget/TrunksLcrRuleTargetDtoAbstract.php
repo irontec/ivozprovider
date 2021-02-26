@@ -105,110 +105,67 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $response;
     }
 
-    /**
-     * @param int $lcrId | null
-     *
-     * @return static
-     */
-    public function setLcrId(?int $lcrId = null): self
+    public function setLcrId(?int $lcrId): static
     {
         $this->lcrId = $lcrId;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getLcrId(): ?int
     {
         return $this->lcrId;
     }
 
-    /**
-     * @param int $priority | null
-     *
-     * @return static
-     */
-    public function setPriority(?int $priority = null): self
+    public function setPriority(?int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    /**
-     * @param int $weight | null
-     *
-     * @return static
-     */
-    public function setWeight(?int $weight = null): self
+    public function setWeight(?int $weight): static
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getWeight(): ?int
     {
         return $this->weight;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param TrunksLcrRuleDto | null
-     *
-     * @return static
-     */
-    public function setRule(?TrunksLcrRuleDto $rule = null): self
+    public function setRule(?TrunksLcrRuleDto $rule): static
     {
         $this->rule = $rule;
 
         return $this;
     }
 
-    /**
-     * @return TrunksLcrRuleDto | null
-     */
     public function getRule(): ?TrunksLcrRuleDto
     {
         return $this->rule;
     }
 
-    /**
-     * @return static
-     */
-    public function setRuleId($id): self
+    public function setRuleId($id): static
     {
         $value = !is_null($id)
             ? new TrunksLcrRuleDto($id)
@@ -217,9 +174,6 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->setRule($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRuleId()
     {
         if ($dto = $this->getRule()) {
@@ -229,30 +183,19 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return null;
     }
 
-    /**
-     * @param TrunksLcrGatewayDto | null
-     *
-     * @return static
-     */
-    public function setGw(?TrunksLcrGatewayDto $gw = null): self
+    public function setGw(?TrunksLcrGatewayDto $gw): static
     {
         $this->gw = $gw;
 
         return $this;
     }
 
-    /**
-     * @return TrunksLcrGatewayDto | null
-     */
     public function getGw(): ?TrunksLcrGatewayDto
     {
         return $this->gw;
     }
 
-    /**
-     * @return static
-     */
-    public function setGwId($id): self
+    public function setGwId($id): static
     {
         $value = !is_null($id)
             ? new TrunksLcrGatewayDto($id)
@@ -261,9 +204,6 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->setGw($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getGwId()
     {
         if ($dto = $this->getGw()) {
@@ -273,30 +213,19 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return null;
     }
 
-    /**
-     * @param OutgoingRoutingDto | null
-     *
-     * @return static
-     */
-    public function setOutgoingRouting(?OutgoingRoutingDto $outgoingRouting = null): self
+    public function setOutgoingRouting(?OutgoingRoutingDto $outgoingRouting): static
     {
         $this->outgoingRouting = $outgoingRouting;
 
         return $this;
     }
 
-    /**
-     * @return OutgoingRoutingDto | null
-     */
     public function getOutgoingRouting(): ?OutgoingRoutingDto
     {
         return $this->outgoingRouting;
     }
 
-    /**
-     * @return static
-     */
-    public function setOutgoingRoutingId($id): self
+    public function setOutgoingRoutingId($id): static
     {
         $value = !is_null($id)
             ? new OutgoingRoutingDto($id)
@@ -305,9 +234,6 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->setOutgoingRouting($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getOutgoingRoutingId()
     {
         if ($dto = $this->getOutgoingRouting()) {

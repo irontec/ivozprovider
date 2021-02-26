@@ -16,27 +16,27 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $ip;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $blocker;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $aor;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $description;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime|string|null
      */
     private $lastTimeBanned;
 
@@ -111,150 +111,91 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $ip | null
-     *
-     * @return static
-     */
-    public function setIp(?string $ip = null): self
+    public function setIp(?string $ip): static
     {
         $this->ip = $ip;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getIp(): ?string
     {
         return $this->ip;
     }
 
-    /**
-     * @param string $blocker | null
-     *
-     * @return static
-     */
-    public function setBlocker(?string $blocker = null): self
+    public function setBlocker(?string $blocker): static
     {
         $this->blocker = $blocker;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getBlocker(): ?string
     {
         return $this->blocker;
     }
 
-    /**
-     * @param string $aor | null
-     *
-     * @return static
-     */
-    public function setAor(?string $aor = null): self
+    public function setAor(?string $aor): static
     {
         $this->aor = $aor;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAor(): ?string
     {
         return $this->aor;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param \DateTimeInterface $lastTimeBanned | null
-     *
-     * @return static
-     */
-    public function setLastTimeBanned($lastTimeBanned = null): self
+    public function setLastTimeBanned(null|\DateTime|string $lastTimeBanned): static
     {
         $this->lastTimeBanned = $lastTimeBanned;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getLastTimeBanned()
+    public function getLastTimeBanned(): \DateTime|string|null
     {
         return $this->lastTimeBanned;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -263,9 +204,6 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -275,30 +213,19 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -307,9 +234,6 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {

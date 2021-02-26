@@ -83,7 +83,7 @@ abstract class UsersHtableAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return UsersHtableDto
      */
     public static function createDto($id = null)
@@ -196,14 +196,7 @@ abstract class UsersHtableAbstract
         ];
     }
 
-    /**
-     * Set keyName
-     *
-     * @param string $keyName
-     *
-     * @return static
-     */
-    protected function setKeyName(string $keyName): UsersHtableInterface
+    protected function setKeyName(string $keyName): static
     {
         Assertion::maxLength($keyName, 64, 'keyName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -212,72 +205,36 @@ abstract class UsersHtableAbstract
         return $this;
     }
 
-    /**
-     * Get keyName
-     *
-     * @return string
-     */
     public function getKeyName(): string
     {
         return $this->keyName;
     }
 
-    /**
-     * Set keyType
-     *
-     * @param int $keyType
-     *
-     * @return static
-     */
-    protected function setKeyType(int $keyType): UsersHtableInterface
+    protected function setKeyType(int $keyType): static
     {
         $this->keyType = $keyType;
 
         return $this;
     }
 
-    /**
-     * Get keyType
-     *
-     * @return int
-     */
     public function getKeyType(): int
     {
         return $this->keyType;
     }
 
-    /**
-     * Set valueType
-     *
-     * @param int $valueType
-     *
-     * @return static
-     */
-    protected function setValueType(int $valueType): UsersHtableInterface
+    protected function setValueType(int $valueType): static
     {
         $this->valueType = $valueType;
 
         return $this;
     }
 
-    /**
-     * Get valueType
-     *
-     * @return int
-     */
     public function getValueType(): int
     {
         return $this->valueType;
     }
 
-    /**
-     * Set keyValue
-     *
-     * @param string $keyValue
-     *
-     * @return static
-     */
-    protected function setKeyValue(string $keyValue): UsersHtableInterface
+    protected function setKeyValue(string $keyValue): static
     {
         Assertion::maxLength($keyValue, 128, 'keyValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -286,35 +243,18 @@ abstract class UsersHtableAbstract
         return $this;
     }
 
-    /**
-     * Get keyValue
-     *
-     * @return string
-     */
     public function getKeyValue(): string
     {
         return $this->keyValue;
     }
 
-    /**
-     * Set expires
-     *
-     * @param int $expires
-     *
-     * @return static
-     */
-    protected function setExpires(int $expires): UsersHtableInterface
+    protected function setExpires(int $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    /**
-     * Get expires
-     *
-     * @return int
-     */
     public function getExpires(): int
     {
         return $this->expires;

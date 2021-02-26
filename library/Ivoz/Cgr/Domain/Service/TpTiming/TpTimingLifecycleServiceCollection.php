@@ -2,6 +2,8 @@
 
 namespace Ivoz\Cgr\Domain\Service\TpTiming;
 
+use Assert\Assertion;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +21,9 @@ class TpTimingLifecycleServiceCollection implements LifecycleServiceCollectionIn
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, TpTimingLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, TpTimingLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

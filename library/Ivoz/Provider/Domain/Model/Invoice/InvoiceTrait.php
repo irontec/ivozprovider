@@ -112,13 +112,6 @@ trait InvoiceTrait
         ];
     }
 
-    /**
-     * Add relFixedCost
-     *
-     * @param FixedCostsRelInvoiceInterface $relFixedCost
-     *
-     * @return static
-     */
     public function addRelFixedCost(FixedCostsRelInvoiceInterface $relFixedCost): InvoiceInterface
     {
         $this->relFixedCosts->add($relFixedCost);
@@ -126,13 +119,6 @@ trait InvoiceTrait
         return $this;
     }
 
-    /**
-     * Remove relFixedCost
-     *
-     * @param FixedCostsRelInvoiceInterface $relFixedCost
-     *
-     * @return static
-     */
     public function removeRelFixedCost(FixedCostsRelInvoiceInterface $relFixedCost): InvoiceInterface
     {
         $this->relFixedCosts->removeElement($relFixedCost);
@@ -140,13 +126,6 @@ trait InvoiceTrait
         return $this;
     }
 
-    /**
-     * Replace relFixedCosts
-     *
-     * @param ArrayCollection $relFixedCosts of FixedCostsRelInvoiceInterface
-     *
-     * @return static
-     */
     public function replaceRelFixedCosts(ArrayCollection $relFixedCosts): InvoiceInterface
     {
         $updatedEntities = [];
@@ -175,11 +154,6 @@ trait InvoiceTrait
         return $this;
     }
 
-    /**
-     * Get relFixedCosts
-     * @param Criteria | null $criteria
-     * @return FixedCostsRelInvoiceInterface[]
-     */
     public function getRelFixedCosts(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

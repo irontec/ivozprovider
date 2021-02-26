@@ -207,13 +207,6 @@ trait CarrierTrait
         ];
     }
 
-    /**
-     * Add outgoingRouting
-     *
-     * @param OutgoingRoutingInterface $outgoingRouting
-     *
-     * @return static
-     */
     public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): CarrierInterface
     {
         $this->outgoingRoutings->add($outgoingRouting);
@@ -221,13 +214,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Remove outgoingRouting
-     *
-     * @param OutgoingRoutingInterface $outgoingRouting
-     *
-     * @return static
-     */
     public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): CarrierInterface
     {
         $this->outgoingRoutings->removeElement($outgoingRouting);
@@ -235,13 +221,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Replace outgoingRoutings
-     *
-     * @param ArrayCollection $outgoingRoutings of OutgoingRoutingInterface
-     *
-     * @return static
-     */
     public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): CarrierInterface
     {
         $updatedEntities = [];
@@ -270,11 +249,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Get outgoingRoutings
-     * @param Criteria | null $criteria
-     * @return OutgoingRoutingInterface[]
-     */
     public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -284,13 +258,6 @@ trait CarrierTrait
         return $this->outgoingRoutings->toArray();
     }
 
-    /**
-     * Add outgoingRoutingsRelCarrier
-     *
-     * @param OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
-     *
-     * @return static
-     */
     public function addOutgoingRoutingsRelCarrier(OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier): CarrierInterface
     {
         $this->outgoingRoutingsRelCarriers->add($outgoingRoutingsRelCarrier);
@@ -298,13 +265,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Remove outgoingRoutingsRelCarrier
-     *
-     * @param OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
-     *
-     * @return static
-     */
     public function removeOutgoingRoutingsRelCarrier(OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier): CarrierInterface
     {
         $this->outgoingRoutingsRelCarriers->removeElement($outgoingRoutingsRelCarrier);
@@ -312,13 +272,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Replace outgoingRoutingsRelCarriers
-     *
-     * @param ArrayCollection $outgoingRoutingsRelCarriers of OutgoingRoutingRelCarrierInterface
-     *
-     * @return static
-     */
     public function replaceOutgoingRoutingsRelCarriers(ArrayCollection $outgoingRoutingsRelCarriers): CarrierInterface
     {
         $updatedEntities = [];
@@ -347,11 +300,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Get outgoingRoutingsRelCarriers
-     * @param Criteria | null $criteria
-     * @return OutgoingRoutingRelCarrierInterface[]
-     */
     public function getOutgoingRoutingsRelCarriers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -361,13 +309,6 @@ trait CarrierTrait
         return $this->outgoingRoutingsRelCarriers->toArray();
     }
 
-    /**
-     * Add server
-     *
-     * @param CarrierServerInterface $server
-     *
-     * @return static
-     */
     public function addServer(CarrierServerInterface $server): CarrierInterface
     {
         $this->servers->add($server);
@@ -375,13 +316,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Remove server
-     *
-     * @param CarrierServerInterface $server
-     *
-     * @return static
-     */
     public function removeServer(CarrierServerInterface $server): CarrierInterface
     {
         $this->servers->removeElement($server);
@@ -389,13 +323,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Replace servers
-     *
-     * @param ArrayCollection $servers of CarrierServerInterface
-     *
-     * @return static
-     */
     public function replaceServers(ArrayCollection $servers): CarrierInterface
     {
         $updatedEntities = [];
@@ -424,11 +351,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Get servers
-     * @param Criteria | null $criteria
-     * @return CarrierServerInterface[]
-     */
     public function getServers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -438,13 +360,6 @@ trait CarrierTrait
         return $this->servers->toArray();
     }
 
-    /**
-     * Add ratingProfile
-     *
-     * @param RatingProfileInterface $ratingProfile
-     *
-     * @return static
-     */
     public function addRatingProfile(RatingProfileInterface $ratingProfile): CarrierInterface
     {
         $this->ratingProfiles->add($ratingProfile);
@@ -452,13 +367,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Remove ratingProfile
-     *
-     * @param RatingProfileInterface $ratingProfile
-     *
-     * @return static
-     */
     public function removeRatingProfile(RatingProfileInterface $ratingProfile): CarrierInterface
     {
         $this->ratingProfiles->removeElement($ratingProfile);
@@ -466,13 +374,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Replace ratingProfiles
-     *
-     * @param ArrayCollection $ratingProfiles of RatingProfileInterface
-     *
-     * @return static
-     */
     public function replaceRatingProfiles(ArrayCollection $ratingProfiles): CarrierInterface
     {
         $updatedEntities = [];
@@ -501,11 +402,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Get ratingProfiles
-     * @param Criteria | null $criteria
-     * @return RatingProfileInterface[]
-     */
     public function getRatingProfiles(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -515,13 +411,6 @@ trait CarrierTrait
         return $this->ratingProfiles->toArray();
     }
 
-    /**
-     * Add tpCdrStat
-     *
-     * @param TpCdrStatInterface $tpCdrStat
-     *
-     * @return static
-     */
     public function addTpCdrStat(TpCdrStatInterface $tpCdrStat): CarrierInterface
     {
         $this->tpCdrStats->add($tpCdrStat);
@@ -529,13 +418,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Remove tpCdrStat
-     *
-     * @param TpCdrStatInterface $tpCdrStat
-     *
-     * @return static
-     */
     public function removeTpCdrStat(TpCdrStatInterface $tpCdrStat): CarrierInterface
     {
         $this->tpCdrStats->removeElement($tpCdrStat);
@@ -543,13 +425,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Replace tpCdrStats
-     *
-     * @param ArrayCollection $tpCdrStats of TpCdrStatInterface
-     *
-     * @return static
-     */
     public function replaceTpCdrStats(ArrayCollection $tpCdrStats): CarrierInterface
     {
         $updatedEntities = [];
@@ -578,11 +453,6 @@ trait CarrierTrait
         return $this;
     }
 
-    /**
-     * Get tpCdrStats
-     * @param Criteria | null $criteria
-     * @return TpCdrStatInterface[]
-     */
     public function getTpCdrStats(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

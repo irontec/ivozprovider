@@ -23,7 +23,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var int
@@ -41,22 +41,22 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     private $allowExtensions = false;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $noInputRouteType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $noInputNumberValue;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $errorRouteType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $errorNumberValue;
 
@@ -212,210 +212,127 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param int $timeout | null
-     *
-     * @return static
-     */
-    public function setTimeout(?int $timeout = null): self
+    public function setTimeout(?int $timeout): static
     {
         $this->timeout = $timeout;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getTimeout(): ?int
     {
         return $this->timeout;
     }
 
-    /**
-     * @param int $maxDigits | null
-     *
-     * @return static
-     */
-    public function setMaxDigits(?int $maxDigits = null): self
+    public function setMaxDigits(?int $maxDigits): static
     {
         $this->maxDigits = $maxDigits;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMaxDigits(): ?int
     {
         return $this->maxDigits;
     }
 
-    /**
-     * @param bool $allowExtensions | null
-     *
-     * @return static
-     */
-    public function setAllowExtensions(?bool $allowExtensions = null): self
+    public function setAllowExtensions(?bool $allowExtensions): static
     {
         $this->allowExtensions = $allowExtensions;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getAllowExtensions(): ?bool
     {
         return $this->allowExtensions;
     }
 
-    /**
-     * @param string $noInputRouteType | null
-     *
-     * @return static
-     */
-    public function setNoInputRouteType(?string $noInputRouteType = null): self
+    public function setNoInputRouteType(?string $noInputRouteType): static
     {
         $this->noInputRouteType = $noInputRouteType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNoInputRouteType(): ?string
     {
         return $this->noInputRouteType;
     }
 
-    /**
-     * @param string $noInputNumberValue | null
-     *
-     * @return static
-     */
-    public function setNoInputNumberValue(?string $noInputNumberValue = null): self
+    public function setNoInputNumberValue(?string $noInputNumberValue): static
     {
         $this->noInputNumberValue = $noInputNumberValue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNoInputNumberValue(): ?string
     {
         return $this->noInputNumberValue;
     }
 
-    /**
-     * @param string $errorRouteType | null
-     *
-     * @return static
-     */
-    public function setErrorRouteType(?string $errorRouteType = null): self
+    public function setErrorRouteType(?string $errorRouteType): static
     {
         $this->errorRouteType = $errorRouteType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getErrorRouteType(): ?string
     {
         return $this->errorRouteType;
     }
 
-    /**
-     * @param string $errorNumberValue | null
-     *
-     * @return static
-     */
-    public function setErrorNumberValue(?string $errorNumberValue = null): self
+    public function setErrorNumberValue(?string $errorNumberValue): static
     {
         $this->errorNumberValue = $errorNumberValue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getErrorNumberValue(): ?string
     {
         return $this->errorNumberValue;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -424,9 +341,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -436,30 +350,19 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LocutionDto | null
-     *
-     * @return static
-     */
-    public function setWelcomeLocution(?LocutionDto $welcomeLocution = null): self
+    public function setWelcomeLocution(?LocutionDto $welcomeLocution): static
     {
         $this->welcomeLocution = $welcomeLocution;
 
         return $this;
     }
 
-    /**
-     * @return LocutionDto | null
-     */
     public function getWelcomeLocution(): ?LocutionDto
     {
         return $this->welcomeLocution;
     }
 
-    /**
-     * @return static
-     */
-    public function setWelcomeLocutionId($id): self
+    public function setWelcomeLocutionId($id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -468,9 +371,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setWelcomeLocution($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getWelcomeLocutionId()
     {
         if ($dto = $this->getWelcomeLocution()) {
@@ -480,30 +380,19 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LocutionDto | null
-     *
-     * @return static
-     */
-    public function setNoInputLocution(?LocutionDto $noInputLocution = null): self
+    public function setNoInputLocution(?LocutionDto $noInputLocution): static
     {
         $this->noInputLocution = $noInputLocution;
 
         return $this;
     }
 
-    /**
-     * @return LocutionDto | null
-     */
     public function getNoInputLocution(): ?LocutionDto
     {
         return $this->noInputLocution;
     }
 
-    /**
-     * @return static
-     */
-    public function setNoInputLocutionId($id): self
+    public function setNoInputLocutionId($id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -512,9 +401,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setNoInputLocution($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getNoInputLocutionId()
     {
         if ($dto = $this->getNoInputLocution()) {
@@ -524,30 +410,19 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LocutionDto | null
-     *
-     * @return static
-     */
-    public function setErrorLocution(?LocutionDto $errorLocution = null): self
+    public function setErrorLocution(?LocutionDto $errorLocution): static
     {
         $this->errorLocution = $errorLocution;
 
         return $this;
     }
 
-    /**
-     * @return LocutionDto | null
-     */
     public function getErrorLocution(): ?LocutionDto
     {
         return $this->errorLocution;
     }
 
-    /**
-     * @return static
-     */
-    public function setErrorLocutionId($id): self
+    public function setErrorLocutionId($id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -556,9 +431,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setErrorLocution($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getErrorLocutionId()
     {
         if ($dto = $this->getErrorLocution()) {
@@ -568,30 +440,19 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LocutionDto | null
-     *
-     * @return static
-     */
-    public function setSuccessLocution(?LocutionDto $successLocution = null): self
+    public function setSuccessLocution(?LocutionDto $successLocution): static
     {
         $this->successLocution = $successLocution;
 
         return $this;
     }
 
-    /**
-     * @return LocutionDto | null
-     */
     public function getSuccessLocution(): ?LocutionDto
     {
         return $this->successLocution;
     }
 
-    /**
-     * @return static
-     */
-    public function setSuccessLocutionId($id): self
+    public function setSuccessLocutionId($id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -600,9 +461,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setSuccessLocution($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getSuccessLocutionId()
     {
         if ($dto = $this->getSuccessLocution()) {
@@ -612,30 +470,19 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ExtensionDto | null
-     *
-     * @return static
-     */
-    public function setNoInputExtension(?ExtensionDto $noInputExtension = null): self
+    public function setNoInputExtension(?ExtensionDto $noInputExtension): static
     {
         $this->noInputExtension = $noInputExtension;
 
         return $this;
     }
 
-    /**
-     * @return ExtensionDto | null
-     */
     public function getNoInputExtension(): ?ExtensionDto
     {
         return $this->noInputExtension;
     }
 
-    /**
-     * @return static
-     */
-    public function setNoInputExtensionId($id): self
+    public function setNoInputExtensionId($id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -644,9 +491,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setNoInputExtension($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getNoInputExtensionId()
     {
         if ($dto = $this->getNoInputExtension()) {
@@ -656,30 +500,19 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ExtensionDto | null
-     *
-     * @return static
-     */
-    public function setErrorExtension(?ExtensionDto $errorExtension = null): self
+    public function setErrorExtension(?ExtensionDto $errorExtension): static
     {
         $this->errorExtension = $errorExtension;
 
         return $this;
     }
 
-    /**
-     * @return ExtensionDto | null
-     */
     public function getErrorExtension(): ?ExtensionDto
     {
         return $this->errorExtension;
     }
 
-    /**
-     * @return static
-     */
-    public function setErrorExtensionId($id): self
+    public function setErrorExtensionId($id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -688,9 +521,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setErrorExtension($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getErrorExtensionId()
     {
         if ($dto = $this->getErrorExtension()) {
@@ -700,30 +530,19 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setNoInputVoiceMailUser(?UserDto $noInputVoiceMailUser = null): self
+    public function setNoInputVoiceMailUser(?UserDto $noInputVoiceMailUser): static
     {
         $this->noInputVoiceMailUser = $noInputVoiceMailUser;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getNoInputVoiceMailUser(): ?UserDto
     {
         return $this->noInputVoiceMailUser;
     }
 
-    /**
-     * @return static
-     */
-    public function setNoInputVoiceMailUserId($id): self
+    public function setNoInputVoiceMailUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -732,9 +551,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setNoInputVoiceMailUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getNoInputVoiceMailUserId()
     {
         if ($dto = $this->getNoInputVoiceMailUser()) {
@@ -744,30 +560,19 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setErrorVoiceMailUser(?UserDto $errorVoiceMailUser = null): self
+    public function setErrorVoiceMailUser(?UserDto $errorVoiceMailUser): static
     {
         $this->errorVoiceMailUser = $errorVoiceMailUser;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getErrorVoiceMailUser(): ?UserDto
     {
         return $this->errorVoiceMailUser;
     }
 
-    /**
-     * @return static
-     */
-    public function setErrorVoiceMailUserId($id): self
+    public function setErrorVoiceMailUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -776,9 +581,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setErrorVoiceMailUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getErrorVoiceMailUserId()
     {
         if ($dto = $this->getErrorVoiceMailUser()) {
@@ -788,30 +590,19 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setNoInputNumberCountry(?CountryDto $noInputNumberCountry = null): self
+    public function setNoInputNumberCountry(?CountryDto $noInputNumberCountry): static
     {
         $this->noInputNumberCountry = $noInputNumberCountry;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getNoInputNumberCountry(): ?CountryDto
     {
         return $this->noInputNumberCountry;
     }
 
-    /**
-     * @return static
-     */
-    public function setNoInputNumberCountryId($id): self
+    public function setNoInputNumberCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -820,9 +611,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setNoInputNumberCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getNoInputNumberCountryId()
     {
         if ($dto = $this->getNoInputNumberCountry()) {
@@ -832,30 +620,19 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setErrorNumberCountry(?CountryDto $errorNumberCountry = null): self
+    public function setErrorNumberCountry(?CountryDto $errorNumberCountry): static
     {
         $this->errorNumberCountry = $errorNumberCountry;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getErrorNumberCountry(): ?CountryDto
     {
         return $this->errorNumberCountry;
     }
 
-    /**
-     * @return static
-     */
-    public function setErrorNumberCountryId($id): self
+    public function setErrorNumberCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -864,9 +641,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->setErrorNumberCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getErrorNumberCountryId()
     {
         if ($dto = $this->getErrorNumberCountry()) {
@@ -876,41 +650,25 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param IvrEntryDto[] | null
-     *
-     * @return static
-     */
-    public function setEntries(?array $entries = null): self
+    public function setEntries(?array $entries): static
     {
         $this->entries = $entries;
 
         return $this;
     }
 
-    /**
-     * @return IvrEntryDto[] | null
-     */
     public function getEntries(): ?array
     {
         return $this->entries;
     }
 
-    /**
-     * @param IvrExcludedExtensionDto[] | null
-     *
-     * @return static
-     */
-    public function setExcludedExtensions(?array $excludedExtensions = null): self
+    public function setExcludedExtensions(?array $excludedExtensions): static
     {
         $this->excludedExtensions = $excludedExtensions;
 
         return $this;
     }
 
-    /**
-     * @return IvrExcludedExtensionDto[] | null
-     */
     public function getExcludedExtensions(): ?array
     {
         return $this->excludedExtensions;

@@ -20,12 +20,12 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tag;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $destratesTag;
 
@@ -40,7 +40,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     private $weight = 10;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -110,170 +110,103 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $tpid | null
-     *
-     * @return static
-     */
-    public function setTpid(?string $tpid = null): self
+    public function setTpid(?string $tpid): static
     {
         $this->tpid = $tpid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
-    /**
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    public function setTag(?string $tag = null): self
+    public function setTag(?string $tag): static
     {
         $this->tag = $tag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * @param string $destratesTag | null
-     *
-     * @return static
-     */
-    public function setDestratesTag(?string $destratesTag = null): self
+    public function setDestratesTag(?string $destratesTag): static
     {
         $this->destratesTag = $destratesTag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDestratesTag(): ?string
     {
         return $this->destratesTag;
     }
 
-    /**
-     * @param string $timingTag | null
-     *
-     * @return static
-     */
-    public function setTimingTag(?string $timingTag = null): self
+    public function setTimingTag(?string $timingTag): static
     {
         $this->timingTag = $timingTag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTimingTag(): ?string
     {
         return $this->timingTag;
     }
 
-    /**
-     * @param float $weight | null
-     *
-     * @return static
-     */
-    public function setWeight(?float $weight = null): self
+    public function setWeight(?float $weight): static
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getWeight(): ?float
     {
         return $this->weight;
     }
 
-    /**
-     * @param \DateTimeInterface $createdAt | null
-     *
-     * @return static
-     */
-    public function setCreatedAt($createdAt = null): self
+    public function setCreatedAt(null|\DateTime|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime|string|null
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param RatingPlanDto | null
-     *
-     * @return static
-     */
-    public function setRatingPlan(?RatingPlanDto $ratingPlan = null): self
+    public function setRatingPlan(?RatingPlanDto $ratingPlan): static
     {
         $this->ratingPlan = $ratingPlan;
 
         return $this;
     }
 
-    /**
-     * @return RatingPlanDto | null
-     */
     public function getRatingPlan(): ?RatingPlanDto
     {
         return $this->ratingPlan;
     }
 
-    /**
-     * @return static
-     */
-    public function setRatingPlanId($id): self
+    public function setRatingPlanId($id): static
     {
         $value = !is_null($id)
             ? new RatingPlanDto($id)
@@ -282,9 +215,6 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->setRatingPlan($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRatingPlanId()
     {
         if ($dto = $this->getRatingPlan()) {

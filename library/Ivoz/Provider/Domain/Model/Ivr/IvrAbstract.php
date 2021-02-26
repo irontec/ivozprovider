@@ -75,52 +75,52 @@ abstract class IvrAbstract
     protected $company;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $welcomeLocution;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $noInputLocution;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $errorLocution;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $successLocution;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $noInputExtension;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $errorExtension;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $noInputVoiceMailUser;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $errorVoiceMailUser;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $noInputNumberCountry;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $errorNumberCountry;
 
@@ -159,7 +159,7 @@ abstract class IvrAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return IvrDto
      */
     public static function createDto($id = null)
@@ -328,14 +328,7 @@ abstract class IvrAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): IvrInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -344,24 +337,12 @@ abstract class IvrAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set timeout
-     *
-     * @param int $timeout
-     *
-     * @return static
-     */
-    protected function setTimeout(int $timeout): IvrInterface
+    protected function setTimeout(int $timeout): static
     {
         Assertion::greaterOrEqualThan($timeout, 0, 'timeout provided "%s" is not greater or equal than "%s".');
 
@@ -370,24 +351,12 @@ abstract class IvrAbstract
         return $this;
     }
 
-    /**
-     * Get timeout
-     *
-     * @return int
-     */
     public function getTimeout(): int
     {
         return $this->timeout;
     }
 
-    /**
-     * Set maxDigits
-     *
-     * @param int $maxDigits
-     *
-     * @return static
-     */
-    protected function setMaxDigits(int $maxDigits): IvrInterface
+    protected function setMaxDigits(int $maxDigits): static
     {
         Assertion::greaterOrEqualThan($maxDigits, 0, 'maxDigits provided "%s" is not greater or equal than "%s".');
 
@@ -396,24 +365,12 @@ abstract class IvrAbstract
         return $this;
     }
 
-    /**
-     * Get maxDigits
-     *
-     * @return int
-     */
     public function getMaxDigits(): int
     {
         return $this->maxDigits;
     }
 
-    /**
-     * Set allowExtensions
-     *
-     * @param bool $allowExtensions
-     *
-     * @return static
-     */
-    protected function setAllowExtensions(bool $allowExtensions): IvrInterface
+    protected function setAllowExtensions(bool $allowExtensions): static
     {
         Assertion::between(intval($allowExtensions), 0, 1, 'allowExtensions provided "%s" is not a valid boolean value.');
         $allowExtensions = (bool) $allowExtensions;
@@ -423,24 +380,12 @@ abstract class IvrAbstract
         return $this;
     }
 
-    /**
-     * Get allowExtensions
-     *
-     * @return bool
-     */
     public function getAllowExtensions(): bool
     {
         return $this->allowExtensions;
     }
 
-    /**
-     * Set noInputRouteType
-     *
-     * @param string $noInputRouteType | null
-     *
-     * @return static
-     */
-    protected function setNoInputRouteType(?string $noInputRouteType = null): IvrInterface
+    protected function setNoInputRouteType(?string $noInputRouteType = null): static
     {
         if (!is_null($noInputRouteType)) {
             Assertion::maxLength($noInputRouteType, 25, 'noInputRouteType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -460,24 +405,12 @@ abstract class IvrAbstract
         return $this;
     }
 
-    /**
-     * Get noInputRouteType
-     *
-     * @return string | null
-     */
     public function getNoInputRouteType(): ?string
     {
         return $this->noInputRouteType;
     }
 
-    /**
-     * Set noInputNumberValue
-     *
-     * @param string $noInputNumberValue | null
-     *
-     * @return static
-     */
-    protected function setNoInputNumberValue(?string $noInputNumberValue = null): IvrInterface
+    protected function setNoInputNumberValue(?string $noInputNumberValue = null): static
     {
         if (!is_null($noInputNumberValue)) {
             Assertion::maxLength($noInputNumberValue, 25, 'noInputNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -488,24 +421,12 @@ abstract class IvrAbstract
         return $this;
     }
 
-    /**
-     * Get noInputNumberValue
-     *
-     * @return string | null
-     */
     public function getNoInputNumberValue(): ?string
     {
         return $this->noInputNumberValue;
     }
 
-    /**
-     * Set errorRouteType
-     *
-     * @param string $errorRouteType | null
-     *
-     * @return static
-     */
-    protected function setErrorRouteType(?string $errorRouteType = null): IvrInterface
+    protected function setErrorRouteType(?string $errorRouteType = null): static
     {
         if (!is_null($errorRouteType)) {
             Assertion::maxLength($errorRouteType, 25, 'errorRouteType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -525,24 +446,12 @@ abstract class IvrAbstract
         return $this;
     }
 
-    /**
-     * Get errorRouteType
-     *
-     * @return string | null
-     */
     public function getErrorRouteType(): ?string
     {
         return $this->errorRouteType;
     }
 
-    /**
-     * Set errorNumberValue
-     *
-     * @param string $errorNumberValue | null
-     *
-     * @return static
-     */
-    protected function setErrorNumberValue(?string $errorNumberValue = null): IvrInterface
+    protected function setErrorNumberValue(?string $errorNumberValue = null): static
     {
         if (!is_null($errorNumberValue)) {
             Assertion::maxLength($errorNumberValue, 25, 'errorNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -553,275 +462,138 @@ abstract class IvrAbstract
         return $this;
     }
 
-    /**
-     * Get errorNumberValue
-     *
-     * @return string | null
-     */
     public function getErrorNumberValue(): ?string
     {
         return $this->errorNumberValue;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): IvrInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set welcomeLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setWelcomeLocution(?LocutionInterface $welcomeLocution = null): IvrInterface
+    protected function setWelcomeLocution(?LocutionInterface $welcomeLocution = null): static
     {
         $this->welcomeLocution = $welcomeLocution;
 
         return $this;
     }
 
-    /**
-     * Get welcomeLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getWelcomeLocution(): ?LocutionInterface
     {
         return $this->welcomeLocution;
     }
 
-    /**
-     * Set noInputLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setNoInputLocution(?LocutionInterface $noInputLocution = null): IvrInterface
+    protected function setNoInputLocution(?LocutionInterface $noInputLocution = null): static
     {
         $this->noInputLocution = $noInputLocution;
 
         return $this;
     }
 
-    /**
-     * Get noInputLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getNoInputLocution(): ?LocutionInterface
     {
         return $this->noInputLocution;
     }
 
-    /**
-     * Set errorLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setErrorLocution(?LocutionInterface $errorLocution = null): IvrInterface
+    protected function setErrorLocution(?LocutionInterface $errorLocution = null): static
     {
         $this->errorLocution = $errorLocution;
 
         return $this;
     }
 
-    /**
-     * Get errorLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getErrorLocution(): ?LocutionInterface
     {
         return $this->errorLocution;
     }
 
-    /**
-     * Set successLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setSuccessLocution(?LocutionInterface $successLocution = null): IvrInterface
+    protected function setSuccessLocution(?LocutionInterface $successLocution = null): static
     {
         $this->successLocution = $successLocution;
 
         return $this;
     }
 
-    /**
-     * Get successLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getSuccessLocution(): ?LocutionInterface
     {
         return $this->successLocution;
     }
 
-    /**
-     * Set noInputExtension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setNoInputExtension(?ExtensionInterface $noInputExtension = null): IvrInterface
+    protected function setNoInputExtension(?ExtensionInterface $noInputExtension = null): static
     {
         $this->noInputExtension = $noInputExtension;
 
         return $this;
     }
 
-    /**
-     * Get noInputExtension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getNoInputExtension(): ?ExtensionInterface
     {
         return $this->noInputExtension;
     }
 
-    /**
-     * Set errorExtension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setErrorExtension(?ExtensionInterface $errorExtension = null): IvrInterface
+    protected function setErrorExtension(?ExtensionInterface $errorExtension = null): static
     {
         $this->errorExtension = $errorExtension;
 
         return $this;
     }
 
-    /**
-     * Get errorExtension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getErrorExtension(): ?ExtensionInterface
     {
         return $this->errorExtension;
     }
 
-    /**
-     * Set noInputVoiceMailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setNoInputVoiceMailUser(?UserInterface $noInputVoiceMailUser = null): IvrInterface
+    protected function setNoInputVoiceMailUser(?UserInterface $noInputVoiceMailUser = null): static
     {
         $this->noInputVoiceMailUser = $noInputVoiceMailUser;
 
         return $this;
     }
 
-    /**
-     * Get noInputVoiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getNoInputVoiceMailUser(): ?UserInterface
     {
         return $this->noInputVoiceMailUser;
     }
 
-    /**
-     * Set errorVoiceMailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setErrorVoiceMailUser(?UserInterface $errorVoiceMailUser = null): IvrInterface
+    protected function setErrorVoiceMailUser(?UserInterface $errorVoiceMailUser = null): static
     {
         $this->errorVoiceMailUser = $errorVoiceMailUser;
 
         return $this;
     }
 
-    /**
-     * Get errorVoiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getErrorVoiceMailUser(): ?UserInterface
     {
         return $this->errorVoiceMailUser;
     }
 
-    /**
-     * Set noInputNumberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setNoInputNumberCountry(?CountryInterface $noInputNumberCountry = null): IvrInterface
+    protected function setNoInputNumberCountry(?CountryInterface $noInputNumberCountry = null): static
     {
         $this->noInputNumberCountry = $noInputNumberCountry;
 
         return $this;
     }
 
-    /**
-     * Get noInputNumberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNoInputNumberCountry(): ?CountryInterface
     {
         return $this->noInputNumberCountry;
     }
 
-    /**
-     * Set errorNumberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setErrorNumberCountry(?CountryInterface $errorNumberCountry = null): IvrInterface
+    protected function setErrorNumberCountry(?CountryInterface $errorNumberCountry = null): static
     {
         $this->errorNumberCountry = $errorNumberCountry;
 
         return $this;
     }
 
-    /**
-     * Get errorNumberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getErrorNumberCountry(): ?CountryInterface
     {
         return $this->errorNumberCountry;

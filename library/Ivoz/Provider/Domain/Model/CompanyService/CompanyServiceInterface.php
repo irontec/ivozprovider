@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\CompanyService;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * CompanyServiceInterface
@@ -20,36 +20,14 @@ interface CompanyServiceInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setCode(string $code): CompanyServiceInterface;
+    public function setCode(string $code): static;
 
-    /**
-     * Get code
-     *
-     * @return string
-     */
     public function getCode(): string;
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    public function setCompany(CompanyInterface $company): CompanyServiceInterface;
+    public function setCompany(CompanyInterface $company): static;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface;
 
-    /**
-     * Get service
-     *
-     * @return ServiceInterface
-     */
     public function getService(): ServiceInterface;
 
     /**

@@ -2,8 +2,8 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksAddress;
 
-use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress;
 
 /**
 * TrunksAddressInterface
@@ -16,55 +16,18 @@ interface TrunksAddressInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Get grp
-     *
-     * @return int
-     */
     public function getGrp(): int;
 
-    /**
-     * Get ipAddr
-     *
-     * @return string | null
-     */
     public function getIpAddr(): ?string;
 
-    /**
-     * Get mask
-     *
-     * @return int
-     */
     public function getMask(): int;
 
-    /**
-     * Get port
-     *
-     * @return int
-     */
     public function getPort(): int;
 
-    /**
-     * Get tag
-     *
-     * @return string | null
-     */
     public function getTag(): ?string;
 
-    /**
-     * Set ddiProviderAddress
-     *
-     * @param DdiProviderAddress
-     *
-     * @return static
-     */
-    public function setDdiProviderAddress(DdiProviderAddress $ddiProviderAddress): TrunksAddressInterface;
+    public function setDdiProviderAddress(DdiProviderAddress $ddiProviderAddress): static;
 
-    /**
-     * Get ddiProviderAddress
-     *
-     * @return DdiProviderAddress
-     */
     public function getDdiProviderAddress(): DdiProviderAddress;
 
     /**

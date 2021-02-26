@@ -28,7 +28,7 @@ abstract class UsersXcapAbstract
     protected $domain;
 
     /**
-     * @var 
+     * @var string
      */
     protected $doc;
 
@@ -102,7 +102,7 @@ abstract class UsersXcapAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return UsersXcapDto
      */
     public static function createDto($id = null)
@@ -227,14 +227,7 @@ abstract class UsersXcapAbstract
         ];
     }
 
-    /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return static
-     */
-    protected function setUsername(string $username): UsersXcapInterface
+    protected function setUsername(string $username): static
     {
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -243,24 +236,12 @@ abstract class UsersXcapAbstract
         return $this;
     }
 
-    /**
-     * Get username
-     *
-     * @return string
-     */
     public function getUsername(): string
     {
         return $this->username;
     }
 
-    /**
-     * Set domain
-     *
-     * @param string $domain
-     *
-     * @return static
-     */
-    protected function setDomain(string $domain): UsersXcapInterface
+    protected function setDomain(string $domain): static
     {
         Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -269,72 +250,36 @@ abstract class UsersXcapAbstract
         return $this;
     }
 
-    /**
-     * Get domain
-     *
-     * @return string
-     */
     public function getDomain(): string
     {
         return $this->domain;
     }
 
-    /**
-     * Set doc
-     *
-     * @param  $doc
-     *
-     * @return static
-     */
-    protected function setDoc( $doc): UsersXcapInterface
+    protected function setDoc(string $doc): static
     {
         $this->doc = $doc;
 
         return $this;
     }
 
-    /**
-     * Get doc
-     *
-     * @return 
-     */
-    public function getDoc()
+    public function getDoc(): string
     {
         return $this->doc;
     }
 
-    /**
-     * Set docType
-     *
-     * @param int $docType
-     *
-     * @return static
-     */
-    protected function setDocType(int $docType): UsersXcapInterface
+    protected function setDocType(int $docType): static
     {
         $this->docType = $docType;
 
         return $this;
     }
 
-    /**
-     * Get docType
-     *
-     * @return int
-     */
     public function getDocType(): int
     {
         return $this->docType;
     }
 
-    /**
-     * Set etag
-     *
-     * @param string $etag
-     *
-     * @return static
-     */
-    protected function setEtag(string $etag): UsersXcapInterface
+    protected function setEtag(string $etag): static
     {
         Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -343,48 +288,24 @@ abstract class UsersXcapAbstract
         return $this;
     }
 
-    /**
-     * Get etag
-     *
-     * @return string
-     */
     public function getEtag(): string
     {
         return $this->etag;
     }
 
-    /**
-     * Set source
-     *
-     * @param int $source
-     *
-     * @return static
-     */
-    protected function setSource(int $source): UsersXcapInterface
+    protected function setSource(int $source): static
     {
         $this->source = $source;
 
         return $this;
     }
 
-    /**
-     * Get source
-     *
-     * @return int
-     */
     public function getSource(): int
     {
         return $this->source;
     }
 
-    /**
-     * Set docUri
-     *
-     * @param string $docUri
-     *
-     * @return static
-     */
-    protected function setDocUri(string $docUri): UsersXcapInterface
+    protected function setDocUri(string $docUri): static
     {
         Assertion::maxLength($docUri, 255, 'docUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -393,35 +314,18 @@ abstract class UsersXcapAbstract
         return $this;
     }
 
-    /**
-     * Get docUri
-     *
-     * @return string
-     */
     public function getDocUri(): string
     {
         return $this->docUri;
     }
 
-    /**
-     * Set port
-     *
-     * @param int $port
-     *
-     * @return static
-     */
-    protected function setPort(int $port): UsersXcapInterface
+    protected function setPort(int $port): static
     {
         $this->port = $port;
 
         return $this;
     }
 
-    /**
-     * Get port
-     *
-     * @return int
-     */
     public function getPort(): int
     {
         return $this->port;

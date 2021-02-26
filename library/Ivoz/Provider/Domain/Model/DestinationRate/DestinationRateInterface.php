@@ -2,11 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\DestinationRate;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * DestinationRateInterface
@@ -39,87 +39,43 @@ interface DestinationRateInterface extends LoggableEntityInterface
      *
      * @inheritdoc
      */
-    public function setConnectFee(float $connectFee): DestinationRateInterface;
+    public function setConnectFee(float $connectFee): static;
 
     /**
      * Ensure Valid connectFee format
      *
      * @inheritdoc
      */
-    public function setCost(float $cost): DestinationRateInterface;
+    public function setCost(float $cost): static;
 
     /**
      * Ensure Group Interval Start has seconds suffix
      *
      * @inheritdoc
      */
-    public function setGroupIntervalStart(string $groupIntervalStart): DestinationRateInterface;
+    public function setGroupIntervalStart(string $groupIntervalStart): static;
 
     /**
      * Ensure Rating Increment has seconds suffix
      *
      * @inheritdoc
      */
-    public function setRateIncrement(string $rateIncrement): DestinationRateInterface;
+    public function setRateIncrement(string $rateIncrement): static;
 
-    /**
-     * Get cost
-     *
-     * @return float
-     */
     public function getCost(): float;
 
-    /**
-     * Get connectFee
-     *
-     * @return float
-     */
     public function getConnectFee(): float;
 
-    /**
-     * Get rateIncrement
-     *
-     * @return string
-     */
     public function getRateIncrement(): string;
 
-    /**
-     * Get groupIntervalStart
-     *
-     * @return string
-     */
     public function getGroupIntervalStart(): string;
 
-    /**
-     * Set destinationRateGroup
-     *
-     * @param DestinationRateGroupInterface
-     *
-     * @return static
-     */
-    public function setDestinationRateGroup(DestinationRateGroupInterface $destinationRateGroup): DestinationRateInterface;
+    public function setDestinationRateGroup(DestinationRateGroupInterface $destinationRateGroup): static;
 
-    /**
-     * Get destinationRateGroup
-     *
-     * @return DestinationRateGroupInterface
-     */
     public function getDestinationRateGroup(): DestinationRateGroupInterface;
 
-    /**
-     * Set destination
-     *
-     * @param DestinationInterface
-     *
-     * @return static
-     */
-    public function setDestination(DestinationInterface $destination): DestinationRateInterface;
+    public function setDestination(DestinationInterface $destination): static;
 
-    /**
-     * Get destination
-     *
-     * @return DestinationInterface
-     */
     public function getDestination(): DestinationInterface;
 
     /**
@@ -127,28 +83,12 @@ interface DestinationRateInterface extends LoggableEntityInterface
      */
     public function isInitialized(): bool;
 
-    /**
-     * @var TpRateInterface
-     * mappedBy destinationRate
-     */
-    public function setTpRate(TpRateInterface $tpRate): DestinationRateInterface;
+    public function setTpRate(TpRateInterface $tpRate): static;
 
-    /**
-     * Get tpRate
-     * @return TpRateInterface
-     */
     public function getTpRate(): ?TpRateInterface;
 
-    /**
-     * @var TpDestinationRateInterface
-     * mappedBy destinationRate
-     */
-    public function setTpDestinationRate(TpDestinationRateInterface $tpDestinationRate): DestinationRateInterface;
+    public function setTpDestinationRate(TpDestinationRateInterface $tpDestinationRate): static;
 
-    /**
-     * Get tpDestinationRate
-     * @return TpDestinationRateInterface
-     */
     public function getTpDestinationRate(): ?TpDestinationRateInterface;
 
 }

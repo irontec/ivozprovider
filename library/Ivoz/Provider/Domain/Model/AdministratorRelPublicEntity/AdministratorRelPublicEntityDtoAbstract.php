@@ -104,130 +104,79 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $response;
     }
 
-    /**
-     * @param bool $create | null
-     *
-     * @return static
-     */
-    public function setCreate(?bool $create = null): self
+    public function setCreate(?bool $create): static
     {
         $this->create = $create;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getCreate(): ?bool
     {
         return $this->create;
     }
 
-    /**
-     * @param bool $read | null
-     *
-     * @return static
-     */
-    public function setRead(?bool $read = null): self
+    public function setRead(?bool $read): static
     {
         $this->read = $read;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getRead(): ?bool
     {
         return $this->read;
     }
 
-    /**
-     * @param bool $update | null
-     *
-     * @return static
-     */
-    public function setUpdate(?bool $update = null): self
+    public function setUpdate(?bool $update): static
     {
         $this->update = $update;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getUpdate(): ?bool
     {
         return $this->update;
     }
 
-    /**
-     * @param bool $delete | null
-     *
-     * @return static
-     */
-    public function setDelete(?bool $delete = null): self
+    public function setDelete(?bool $delete): static
     {
         $this->delete = $delete;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getDelete(): ?bool
     {
         return $this->delete;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param AdministratorDto | null
-     *
-     * @return static
-     */
-    public function setAdministrator(?AdministratorDto $administrator = null): self
+    public function setAdministrator(?AdministratorDto $administrator): static
     {
         $this->administrator = $administrator;
 
         return $this;
     }
 
-    /**
-     * @return AdministratorDto | null
-     */
     public function getAdministrator(): ?AdministratorDto
     {
         return $this->administrator;
     }
 
-    /**
-     * @return static
-     */
-    public function setAdministratorId($id): self
+    public function setAdministratorId($id): static
     {
         $value = !is_null($id)
             ? new AdministratorDto($id)
@@ -236,9 +185,6 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $this->setAdministrator($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getAdministratorId()
     {
         if ($dto = $this->getAdministrator()) {
@@ -248,30 +194,19 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return null;
     }
 
-    /**
-     * @param PublicEntityDto | null
-     *
-     * @return static
-     */
-    public function setPublicEntity(?PublicEntityDto $publicEntity = null): self
+    public function setPublicEntity(?PublicEntityDto $publicEntity): static
     {
         $this->publicEntity = $publicEntity;
 
         return $this;
     }
 
-    /**
-     * @return PublicEntityDto | null
-     */
     public function getPublicEntity(): ?PublicEntityDto
     {
         return $this->publicEntity;
     }
 
-    /**
-     * @return static
-     */
-    public function setPublicEntityId($id): self
+    public function setPublicEntityId($id): static
     {
         $value = !is_null($id)
             ? new PublicEntityDto($id)
@@ -280,9 +215,6 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $this->setPublicEntity($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getPublicEntityId()
     {
         if ($dto = $this->getPublicEntity()) {

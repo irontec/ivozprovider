@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\TransformationRule;
 
-use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 
 /**
 * TransformationRuleInterface
@@ -27,57 +27,20 @@ interface TransformationRuleInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setMatchExpr(string $matchExpr = null): TransformationRuleInterface;
+    public function setMatchExpr(?string $matchExpr = null): static;
 
-    /**
-     * Get type
-     *
-     * @return string
-     */
     public function getType(): string;
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string;
 
-    /**
-     * Get priority
-     *
-     * @return int | null
-     */
     public function getPriority(): ?int;
 
-    /**
-     * Get matchExpr
-     *
-     * @return string | null
-     */
     public function getMatchExpr(): ?string;
 
-    /**
-     * Get replaceExpr
-     *
-     * @return string | null
-     */
     public function getReplaceExpr(): ?string;
 
-    /**
-     * Set transformationRuleSet
-     *
-     * @param TransformationRuleSetInterface | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): TransformationRuleInterface;
+    public function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): static;
 
-    /**
-     * Get transformationRuleSet
-     *
-     * @return TransformationRuleSetInterface | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
     /**

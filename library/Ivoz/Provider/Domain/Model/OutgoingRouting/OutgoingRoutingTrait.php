@@ -183,33 +183,19 @@ trait OutgoingRoutingTrait
         ];
     }
 
-    /**
-     * @var TpLcrRuleInterface
-     * mappedBy outgoingRouting
-     */
-    public function setTpLcrRule(TpLcrRuleInterface $tpLcrRule): OutgoingRoutingInterface
+    public function setTpLcrRule(TpLcrRuleInterface $tpLcrRule): static
     {
         $this->tpLcrRule = $tpLcrRule;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get tpLcrRule
-     * @return TpLcrRuleInterface
-     */
     public function getTpLcrRule(): ?TpLcrRuleInterface
     {
         return $this->tpLcrRule;
     }
 
-    /**
-     * Add lcrRule
-     *
-     * @param TrunksLcrRuleInterface $lcrRule
-     *
-     * @return static
-     */
     public function addLcrRule(TrunksLcrRuleInterface $lcrRule): OutgoingRoutingInterface
     {
         $this->lcrRules->add($lcrRule);
@@ -217,13 +203,6 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
-    /**
-     * Remove lcrRule
-     *
-     * @param TrunksLcrRuleInterface $lcrRule
-     *
-     * @return static
-     */
     public function removeLcrRule(TrunksLcrRuleInterface $lcrRule): OutgoingRoutingInterface
     {
         $this->lcrRules->removeElement($lcrRule);
@@ -231,13 +210,6 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
-    /**
-     * Replace lcrRules
-     *
-     * @param ArrayCollection $lcrRules of TrunksLcrRuleInterface
-     *
-     * @return static
-     */
     public function replaceLcrRules(ArrayCollection $lcrRules): OutgoingRoutingInterface
     {
         $updatedEntities = [];
@@ -266,11 +238,6 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
-    /**
-     * Get lcrRules
-     * @param Criteria | null $criteria
-     * @return TrunksLcrRuleInterface[]
-     */
     public function getLcrRules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -280,13 +247,6 @@ trait OutgoingRoutingTrait
         return $this->lcrRules->toArray();
     }
 
-    /**
-     * Add lcrRuleTarget
-     *
-     * @param TrunksLcrRuleTargetInterface $lcrRuleTarget
-     *
-     * @return static
-     */
     public function addLcrRuleTarget(TrunksLcrRuleTargetInterface $lcrRuleTarget): OutgoingRoutingInterface
     {
         $this->lcrRuleTargets->add($lcrRuleTarget);
@@ -294,13 +254,6 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
-    /**
-     * Remove lcrRuleTarget
-     *
-     * @param TrunksLcrRuleTargetInterface $lcrRuleTarget
-     *
-     * @return static
-     */
     public function removeLcrRuleTarget(TrunksLcrRuleTargetInterface $lcrRuleTarget): OutgoingRoutingInterface
     {
         $this->lcrRuleTargets->removeElement($lcrRuleTarget);
@@ -308,13 +261,6 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
-    /**
-     * Replace lcrRuleTargets
-     *
-     * @param ArrayCollection $lcrRuleTargets of TrunksLcrRuleTargetInterface
-     *
-     * @return static
-     */
     public function replaceLcrRuleTargets(ArrayCollection $lcrRuleTargets): OutgoingRoutingInterface
     {
         $updatedEntities = [];
@@ -343,11 +289,6 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
-    /**
-     * Get lcrRuleTargets
-     * @param Criteria | null $criteria
-     * @return TrunksLcrRuleTargetInterface[]
-     */
     public function getLcrRuleTargets(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -357,13 +298,6 @@ trait OutgoingRoutingTrait
         return $this->lcrRuleTargets->toArray();
     }
 
-    /**
-     * Add relCarrier
-     *
-     * @param OutgoingRoutingRelCarrierInterface $relCarrier
-     *
-     * @return static
-     */
     public function addRelCarrier(OutgoingRoutingRelCarrierInterface $relCarrier): OutgoingRoutingInterface
     {
         $this->relCarriers->add($relCarrier);
@@ -371,13 +305,6 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
-    /**
-     * Remove relCarrier
-     *
-     * @param OutgoingRoutingRelCarrierInterface $relCarrier
-     *
-     * @return static
-     */
     public function removeRelCarrier(OutgoingRoutingRelCarrierInterface $relCarrier): OutgoingRoutingInterface
     {
         $this->relCarriers->removeElement($relCarrier);
@@ -385,13 +312,6 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
-    /**
-     * Replace relCarriers
-     *
-     * @param ArrayCollection $relCarriers of OutgoingRoutingRelCarrierInterface
-     *
-     * @return static
-     */
     public function replaceRelCarriers(ArrayCollection $relCarriers): OutgoingRoutingInterface
     {
         $updatedEntities = [];
@@ -420,11 +340,6 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
-    /**
-     * Get relCarriers
-     * @param Criteria | null $criteria
-     * @return OutgoingRoutingRelCarrierInterface[]
-     */
     public function getRelCarriers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

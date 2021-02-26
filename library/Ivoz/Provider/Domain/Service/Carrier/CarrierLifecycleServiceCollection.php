@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Carrier;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -30,11 +31,9 @@ class CarrierLifecycleServiceCollection implements LifecycleServiceCollectionInt
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, CarrierLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, CarrierLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

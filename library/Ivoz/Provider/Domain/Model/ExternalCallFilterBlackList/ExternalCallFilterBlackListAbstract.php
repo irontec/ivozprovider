@@ -22,7 +22,7 @@ abstract class ExternalCallFilterBlackListAbstract
     use ChangelogTrait;
 
     /**
-     * @var ExternalCallFilterInterface
+     * @var ExternalCallFilterInterface | null
      * inversedBy blackLists
      */
     protected $filter;
@@ -61,7 +61,7 @@ abstract class ExternalCallFilterBlackListAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ExternalCallFilterBlackListDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class ExternalCallFilterBlackListAbstract
         ];
     }
 
-    /**
-     * Set filter
-     *
-     * @param ExternalCallFilterInterface | null
-     *
-     * @return static
-     */
-    public function setFilter(?ExternalCallFilterInterface $filter = null): ExternalCallFilterBlackListInterface
+    public function setFilter(?ExternalCallFilterInterface $filter = null): static
     {
         $this->filter = $filter;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get filter
-     *
-     * @return ExternalCallFilterInterface | null
-     */
     public function getFilter(): ?ExternalCallFilterInterface
     {
         return $this->filter;
     }
 
-    /**
-     * Set matchlist
-     *
-     * @param MatchListInterface
-     *
-     * @return static
-     */
-    protected function setMatchlist(MatchListInterface $matchlist): ExternalCallFilterBlackListInterface
+    protected function setMatchlist(MatchListInterface $matchlist): static
     {
         $this->matchlist = $matchlist;
 
         return $this;
     }
 
-    /**
-     * Get matchlist
-     *
-     * @return MatchListInterface
-     */
     public function getMatchlist(): MatchListInterface
     {
         return $this->matchlist;

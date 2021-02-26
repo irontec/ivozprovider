@@ -89,7 +89,7 @@ abstract class DestinationRateAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return DestinationRateDto
      */
     public static function createDto($id = null)
@@ -206,62 +206,31 @@ abstract class DestinationRateAbstract
         ];
     }
 
-    /**
-     * Set cost
-     *
-     * @param float $cost
-     *
-     * @return static
-     */
-    protected function setCost(float $cost): DestinationRateInterface
+    protected function setCost(float $cost): static
     {
         $this->cost = $cost;
 
         return $this;
     }
 
-    /**
-     * Get cost
-     *
-     * @return float
-     */
     public function getCost(): float
     {
         return $this->cost;
     }
 
-    /**
-     * Set connectFee
-     *
-     * @param float $connectFee
-     *
-     * @return static
-     */
-    protected function setConnectFee(float $connectFee): DestinationRateInterface
+    protected function setConnectFee(float $connectFee): static
     {
         $this->connectFee = $connectFee;
 
         return $this;
     }
 
-    /**
-     * Get connectFee
-     *
-     * @return float
-     */
     public function getConnectFee(): float
     {
         return $this->connectFee;
     }
 
-    /**
-     * Set rateIncrement
-     *
-     * @param string $rateIncrement
-     *
-     * @return static
-     */
-    protected function setRateIncrement(string $rateIncrement): DestinationRateInterface
+    protected function setRateIncrement(string $rateIncrement): static
     {
         Assertion::maxLength($rateIncrement, 16, 'rateIncrement value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -270,24 +239,12 @@ abstract class DestinationRateAbstract
         return $this;
     }
 
-    /**
-     * Get rateIncrement
-     *
-     * @return string
-     */
     public function getRateIncrement(): string
     {
         return $this->rateIncrement;
     }
 
-    /**
-     * Set groupIntervalStart
-     *
-     * @param string $groupIntervalStart
-     *
-     * @return static
-     */
-    protected function setGroupIntervalStart(string $groupIntervalStart): DestinationRateInterface
+    protected function setGroupIntervalStart(string $groupIntervalStart): static
     {
         Assertion::maxLength($groupIntervalStart, 16, 'groupIntervalStart value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -296,59 +253,32 @@ abstract class DestinationRateAbstract
         return $this;
     }
 
-    /**
-     * Get groupIntervalStart
-     *
-     * @return string
-     */
     public function getGroupIntervalStart(): string
     {
         return $this->groupIntervalStart;
     }
 
-    /**
-     * Set destinationRateGroup
-     *
-     * @param DestinationRateGroupInterface
-     *
-     * @return static
-     */
-    public function setDestinationRateGroup(DestinationRateGroupInterface $destinationRateGroup): DestinationRateInterface
+    public function setDestinationRateGroup(DestinationRateGroupInterface $destinationRateGroup): static
     {
         $this->destinationRateGroup = $destinationRateGroup;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get destinationRateGroup
-     *
-     * @return DestinationRateGroupInterface
-     */
     public function getDestinationRateGroup(): DestinationRateGroupInterface
     {
         return $this->destinationRateGroup;
     }
 
-    /**
-     * Set destination
-     *
-     * @param DestinationInterface
-     *
-     * @return static
-     */
-    public function setDestination(DestinationInterface $destination): DestinationRateInterface
+    public function setDestination(DestinationInterface $destination): static
     {
         $this->destination = $destination;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get destination
-     *
-     * @return DestinationInterface
-     */
     public function getDestination(): DestinationInterface
     {
         return $this->destination;

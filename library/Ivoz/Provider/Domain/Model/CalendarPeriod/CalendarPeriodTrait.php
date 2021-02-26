@@ -112,13 +112,6 @@ trait CalendarPeriodTrait
         ];
     }
 
-    /**
-     * Add relSchedule
-     *
-     * @param CalendarPeriodsRelScheduleInterface $relSchedule
-     *
-     * @return static
-     */
     public function addRelSchedule(CalendarPeriodsRelScheduleInterface $relSchedule): CalendarPeriodInterface
     {
         $this->relSchedules->add($relSchedule);
@@ -126,13 +119,6 @@ trait CalendarPeriodTrait
         return $this;
     }
 
-    /**
-     * Remove relSchedule
-     *
-     * @param CalendarPeriodsRelScheduleInterface $relSchedule
-     *
-     * @return static
-     */
     public function removeRelSchedule(CalendarPeriodsRelScheduleInterface $relSchedule): CalendarPeriodInterface
     {
         $this->relSchedules->removeElement($relSchedule);
@@ -140,13 +126,6 @@ trait CalendarPeriodTrait
         return $this;
     }
 
-    /**
-     * Replace relSchedules
-     *
-     * @param ArrayCollection $relSchedules of CalendarPeriodsRelScheduleInterface
-     *
-     * @return static
-     */
     public function replaceRelSchedules(ArrayCollection $relSchedules): CalendarPeriodInterface
     {
         $updatedEntities = [];
@@ -175,11 +154,6 @@ trait CalendarPeriodTrait
         return $this;
     }
 
-    /**
-     * Get relSchedules
-     * @param Criteria | null $criteria
-     * @return CalendarPeriodsRelScheduleInterface[]
-     */
     public function getRelSchedules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

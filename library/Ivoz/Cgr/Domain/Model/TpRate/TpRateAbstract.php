@@ -61,9 +61,9 @@ abstract class TpRateAbstract
 
     /**
      * column: created_at
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $createdAt = 'CURRENT_TIMESTAMP';
+    protected $createdAt;
 
     /**
      * @var DestinationRate
@@ -112,7 +112,7 @@ abstract class TpRateAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TpRateDto
      */
     public static function createDto($id = null)
@@ -241,14 +241,7 @@ abstract class TpRateAbstract
         ];
     }
 
-    /**
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return static
-     */
-    protected function setTpid(string $tpid): TpRateInterface
+    protected function setTpid(string $tpid): static
     {
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -257,24 +250,12 @@ abstract class TpRateAbstract
         return $this;
     }
 
-    /**
-     * Get tpid
-     *
-     * @return string
-     */
     public function getTpid(): string
     {
         return $this->tpid;
     }
 
-    /**
-     * Set tag
-     *
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    protected function setTag(?string $tag = null): TpRateInterface
+    protected function setTag(?string $tag = null): static
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -285,72 +266,36 @@ abstract class TpRateAbstract
         return $this;
     }
 
-    /**
-     * Get tag
-     *
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * Set connectFee
-     *
-     * @param float $connectFee
-     *
-     * @return static
-     */
-    protected function setConnectFee(float $connectFee): TpRateInterface
+    protected function setConnectFee(float $connectFee): static
     {
         $this->connectFee = $connectFee;
 
         return $this;
     }
 
-    /**
-     * Get connectFee
-     *
-     * @return float
-     */
     public function getConnectFee(): float
     {
         return $this->connectFee;
     }
 
-    /**
-     * Set rateCost
-     *
-     * @param float $rateCost
-     *
-     * @return static
-     */
-    protected function setRateCost(float $rateCost): TpRateInterface
+    protected function setRateCost(float $rateCost): static
     {
         $this->rateCost = $rateCost;
 
         return $this;
     }
 
-    /**
-     * Get rateCost
-     *
-     * @return float
-     */
     public function getRateCost(): float
     {
         return $this->rateCost;
     }
 
-    /**
-     * Set rateUnit
-     *
-     * @param string $rateUnit
-     *
-     * @return static
-     */
-    protected function setRateUnit(string $rateUnit): TpRateInterface
+    protected function setRateUnit(string $rateUnit): static
     {
         Assertion::maxLength($rateUnit, 16, 'rateUnit value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -359,24 +304,12 @@ abstract class TpRateAbstract
         return $this;
     }
 
-    /**
-     * Get rateUnit
-     *
-     * @return string
-     */
     public function getRateUnit(): string
     {
         return $this->rateUnit;
     }
 
-    /**
-     * Set rateIncrement
-     *
-     * @param string $rateIncrement
-     *
-     * @return static
-     */
-    protected function setRateIncrement(string $rateIncrement): TpRateInterface
+    protected function setRateIncrement(string $rateIncrement): static
     {
         Assertion::maxLength($rateIncrement, 16, 'rateIncrement value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -385,24 +318,12 @@ abstract class TpRateAbstract
         return $this;
     }
 
-    /**
-     * Get rateIncrement
-     *
-     * @return string
-     */
     public function getRateIncrement(): string
     {
         return $this->rateIncrement;
     }
 
-    /**
-     * Set groupIntervalStart
-     *
-     * @param string $groupIntervalStart
-     *
-     * @return static
-     */
-    protected function setGroupIntervalStart(string $groupIntervalStart): TpRateInterface
+    protected function setGroupIntervalStart(string $groupIntervalStart): static
     {
         Assertion::maxLength($groupIntervalStart, 16, 'groupIntervalStart value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -411,24 +332,12 @@ abstract class TpRateAbstract
         return $this;
     }
 
-    /**
-     * Get groupIntervalStart
-     *
-     * @return string
-     */
     public function getGroupIntervalStart(): string
     {
         return $this->groupIntervalStart;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTimeInterface $createdAt
-     *
-     * @return static
-     */
-    protected function setCreatedAt($createdAt): TpRateInterface
+    protected function setCreatedAt($createdAt): static
     {
 
         $createdAt = DateTimeHelper::createOrFix(
@@ -445,35 +354,19 @@ abstract class TpRateAbstract
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }
 
-    /**
-     * Set destinationRate
-     *
-     * @param DestinationRate
-     *
-     * @return static
-     */
-    public function setDestinationRate(DestinationRate $destinationRate): TpRateInterface
+    public function setDestinationRate(DestinationRate $destinationRate): static
     {
         $this->destinationRate = $destinationRate;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get destinationRate
-     *
-     * @return DestinationRate
-     */
     public function getDestinationRate(): DestinationRate
     {
         return $this->destinationRate;

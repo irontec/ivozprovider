@@ -56,17 +56,17 @@ abstract class CarrierAbstract
     protected $brand;
 
     /**
-     * @var TransformationRuleSetInterface
+     * @var TransformationRuleSetInterface | null
      */
     protected $transformationRuleSet;
 
     /**
-     * @var CurrencyInterface
+     * @var CurrencyInterface | null
      */
     protected $currency;
 
     /**
-     * @var ProxyTrunkInterface
+     * @var ProxyTrunkInterface | null
      */
     protected $proxyTrunk;
 
@@ -101,7 +101,7 @@ abstract class CarrierAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CarrierDto
      */
     public static function createDto($id = null)
@@ -230,14 +230,7 @@ abstract class CarrierAbstract
         ];
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return static
-     */
-    protected function setDescription(string $description): CarrierInterface
+    protected function setDescription(string $description): static
     {
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -246,24 +239,12 @@ abstract class CarrierAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): CarrierInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 200, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -272,24 +253,12 @@ abstract class CarrierAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set externallyRated
-     *
-     * @param bool $externallyRated | null
-     *
-     * @return static
-     */
-    protected function setExternallyRated(?bool $externallyRated = null): CarrierInterface
+    protected function setExternallyRated(?bool $externallyRated = null): static
     {
         if (!is_null($externallyRated)) {
             Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
@@ -301,24 +270,12 @@ abstract class CarrierAbstract
         return $this;
     }
 
-    /**
-     * Get externallyRated
-     *
-     * @return bool | null
-     */
     public function getExternallyRated(): ?bool
     {
         return $this->externallyRated;
     }
 
-    /**
-     * Set balance
-     *
-     * @param float $balance | null
-     *
-     * @return static
-     */
-    protected function setBalance(?float $balance = null): CarrierInterface
+    protected function setBalance(?float $balance = null): static
     {
         if (!is_null($balance)) {
             $balance = (float) $balance;
@@ -329,24 +286,12 @@ abstract class CarrierAbstract
         return $this;
     }
 
-    /**
-     * Get balance
-     *
-     * @return float | null
-     */
     public function getBalance(): ?float
     {
         return $this->balance;
     }
 
-    /**
-     * Set calculateCost
-     *
-     * @param bool $calculateCost | null
-     *
-     * @return static
-     */
-    protected function setCalculateCost(?bool $calculateCost = null): CarrierInterface
+    protected function setCalculateCost(?bool $calculateCost = null): static
     {
         if (!is_null($calculateCost)) {
             Assertion::between(intval($calculateCost), 0, 1, 'calculateCost provided "%s" is not a valid boolean value.');
@@ -358,107 +303,54 @@ abstract class CarrierAbstract
         return $this;
     }
 
-    /**
-     * Get calculateCost
-     *
-     * @return bool | null
-     */
     public function getCalculateCost(): ?bool
     {
         return $this->calculateCost;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    protected function setBrand(BrandInterface $brand): CarrierInterface
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set transformationRuleSet
-     *
-     * @param TransformationRuleSetInterface | null
-     *
-     * @return static
-     */
-    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): CarrierInterface
+    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): static
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
-    /**
-     * Get transformationRuleSet
-     *
-     * @return TransformationRuleSetInterface | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface
     {
         return $this->transformationRuleSet;
     }
 
-    /**
-     * Set currency
-     *
-     * @param CurrencyInterface | null
-     *
-     * @return static
-     */
-    protected function setCurrency(?CurrencyInterface $currency = null): CarrierInterface
+    protected function setCurrency(?CurrencyInterface $currency = null): static
     {
         $this->currency = $currency;
 
         return $this;
     }
 
-    /**
-     * Get currency
-     *
-     * @return CurrencyInterface | null
-     */
     public function getCurrency(): ?CurrencyInterface
     {
         return $this->currency;
     }
 
-    /**
-     * Set proxyTrunk
-     *
-     * @param ProxyTrunkInterface | null
-     *
-     * @return static
-     */
-    protected function setProxyTrunk(?ProxyTrunkInterface $proxyTrunk = null): CarrierInterface
+    protected function setProxyTrunk(?ProxyTrunkInterface $proxyTrunk = null): static
     {
         $this->proxyTrunk = $proxyTrunk;
 
         return $this;
     }
 
-    /**
-     * Get proxyTrunk
-     *
-     * @return ProxyTrunkInterface | null
-     */
     public function getProxyTrunk(): ?ProxyTrunkInterface
     {
         return $this->proxyTrunk;

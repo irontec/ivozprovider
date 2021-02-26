@@ -22,7 +22,7 @@ abstract class CompanyRelGeoIPCountryAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      * inversedBy relCountries
      */
     protected $company;
@@ -61,7 +61,7 @@ abstract class CompanyRelGeoIPCountryAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CompanyRelGeoIPCountryDto
      */
     public static function createDto($id = null)
@@ -158,54 +158,31 @@ abstract class CompanyRelGeoIPCountryAbstract
     protected function __toArray()
     {
         return [
-            'companyId' => self::getCompany()->getId(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'countryId' => self::getCountry()->getId()
         ];
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    public function setCompany(CompanyInterface $company): CompanyRelGeoIPCountryInterface
+    public function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
-    public function getCompany(): CompanyInterface
+    public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set country
-     *
-     * @param CountryInterface
-     *
-     * @return static
-     */
-    protected function setCountry(CountryInterface $country): CompanyRelGeoIPCountryInterface
+    protected function setCountry(CountryInterface $country): static
     {
         $this->country = $country;
 
         return $this;
     }
 
-    /**
-     * Get country
-     *
-     * @return CountryInterface
-     */
     public function getCountry(): CountryInterface
     {
         return $this->country;

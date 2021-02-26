@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\InvoiceNumberSequence;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class InvoiceNumberSequenceLifecycleServiceCollection implements LifecycleServic
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, InvoiceNumberSequenceLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, InvoiceNumberSequenceLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

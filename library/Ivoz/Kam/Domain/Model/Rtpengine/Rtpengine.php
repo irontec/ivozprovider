@@ -30,7 +30,7 @@ class Rtpengine extends RtpengineAbstract implements RtpengineInterface
         return parent::getChangeSet();
     }
 
-    public function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null): self
+    public function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null):  static
     {
         if (!is_null($mediaRelaySet)) {
             $this->setSetid(

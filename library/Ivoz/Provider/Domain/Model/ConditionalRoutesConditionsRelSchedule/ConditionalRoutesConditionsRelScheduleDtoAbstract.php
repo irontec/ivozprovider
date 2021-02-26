@@ -76,50 +76,31 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param ConditionalRoutesConditionDto | null
-     *
-     * @return static
-     */
-    public function setCondition(?ConditionalRoutesConditionDto $condition = null): self
+    public function setCondition(?ConditionalRoutesConditionDto $condition): static
     {
         $this->condition = $condition;
 
         return $this;
     }
 
-    /**
-     * @return ConditionalRoutesConditionDto | null
-     */
     public function getCondition(): ?ConditionalRoutesConditionDto
     {
         return $this->condition;
     }
 
-    /**
-     * @return static
-     */
-    public function setConditionId($id): self
+    public function setConditionId($id): static
     {
         $value = !is_null($id)
             ? new ConditionalRoutesConditionDto($id)
@@ -128,9 +109,6 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
         return $this->setCondition($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getConditionId()
     {
         if ($dto = $this->getCondition()) {
@@ -140,30 +118,19 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
         return null;
     }
 
-    /**
-     * @param ScheduleDto | null
-     *
-     * @return static
-     */
-    public function setSchedule(?ScheduleDto $schedule = null): self
+    public function setSchedule(?ScheduleDto $schedule): static
     {
         $this->schedule = $schedule;
 
         return $this;
     }
 
-    /**
-     * @return ScheduleDto | null
-     */
     public function getSchedule(): ?ScheduleDto
     {
         return $this->schedule;
     }
 
-    /**
-     * @return static
-     */
-    public function setScheduleId($id): self
+    public function setScheduleId($id): static
     {
         $value = !is_null($id)
             ? new ScheduleDto($id)
@@ -172,9 +139,6 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
         return $this->setSchedule($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getScheduleId()
     {
         if ($dto = $this->getSchedule()) {

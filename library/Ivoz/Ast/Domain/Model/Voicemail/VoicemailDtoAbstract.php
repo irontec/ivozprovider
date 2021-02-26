@@ -18,165 +18,165 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $context;
+    private $context = '';
 
     /**
      * @var string
      */
-    private $mailbox;
+    private $mailbox = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $password;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fullname;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $alias;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $email;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $pager;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $attach;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $attachfmt;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $serveremail;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $language;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tz;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $deleteVoicemail;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $saycid = 'yes';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $sendVoicemail;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $review;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tempgreetwarn;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $operator;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $envelope;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $sayduration;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $forcename;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $forcegreetings;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $callback;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $dialout;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $exitcontext;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $maxmsg;
 
     /**
-     * @var float | null
+     * @var float|null
      */
     private $volgain;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $imapuser;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $imappassword;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $imapserver;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $imapport;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $imapflags;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime|string|null
      */
     private $stamp;
 
@@ -307,710 +307,427 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $context | null
-     *
-     * @return static
-     */
-    public function setContext(?string $context = null): self
+    public function setContext(?string $context): static
     {
         $this->context = $context;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getContext(): ?string
     {
         return $this->context;
     }
 
-    /**
-     * @param string $mailbox | null
-     *
-     * @return static
-     */
-    public function setMailbox(?string $mailbox = null): self
+    public function setMailbox(?string $mailbox): static
     {
         $this->mailbox = $mailbox;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getMailbox(): ?string
     {
         return $this->mailbox;
     }
 
-    /**
-     * @param string $password | null
-     *
-     * @return static
-     */
-    public function setPassword(?string $password = null): self
+    public function setPassword(?string $password): static
     {
         $this->password = $password;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    /**
-     * @param string $fullname | null
-     *
-     * @return static
-     */
-    public function setFullname(?string $fullname = null): self
+    public function setFullname(?string $fullname): static
     {
         $this->fullname = $fullname;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFullname(): ?string
     {
         return $this->fullname;
     }
 
-    /**
-     * @param string $alias | null
-     *
-     * @return static
-     */
-    public function setAlias(?string $alias = null): self
+    public function setAlias(?string $alias): static
     {
         $this->alias = $alias;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAlias(): ?string
     {
         return $this->alias;
     }
 
-    /**
-     * @param string $email | null
-     *
-     * @return static
-     */
-    public function setEmail(?string $email = null): self
+    public function setEmail(?string $email): static
     {
         $this->email = $email;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * @param string $pager | null
-     *
-     * @return static
-     */
-    public function setPager(?string $pager = null): self
+    public function setPager(?string $pager): static
     {
         $this->pager = $pager;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPager(): ?string
     {
         return $this->pager;
     }
 
-    /**
-     * @param string $attach | null
-     *
-     * @return static
-     */
-    public function setAttach(?string $attach = null): self
+    public function setAttach(?string $attach): static
     {
         $this->attach = $attach;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAttach(): ?string
     {
         return $this->attach;
     }
 
-    /**
-     * @param string $attachfmt | null
-     *
-     * @return static
-     */
-    public function setAttachfmt(?string $attachfmt = null): self
+    public function setAttachfmt(?string $attachfmt): static
     {
         $this->attachfmt = $attachfmt;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAttachfmt(): ?string
     {
         return $this->attachfmt;
     }
 
-    /**
-     * @param string $serveremail | null
-     *
-     * @return static
-     */
-    public function setServeremail(?string $serveremail = null): self
+    public function setServeremail(?string $serveremail): static
     {
         $this->serveremail = $serveremail;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getServeremail(): ?string
     {
         return $this->serveremail;
     }
 
-    /**
-     * @param string $language | null
-     *
-     * @return static
-     */
-    public function setLanguage(?string $language = null): self
+    public function setLanguage(?string $language): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLanguage(): ?string
     {
         return $this->language;
     }
 
-    /**
-     * @param string $tz | null
-     *
-     * @return static
-     */
-    public function setTz(?string $tz = null): self
+    public function setTz(?string $tz): static
     {
         $this->tz = $tz;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTz(): ?string
     {
         return $this->tz;
     }
 
-    /**
-     * @param string $deleteVoicemail | null
-     *
-     * @return static
-     */
-    public function setDeleteVoicemail(?string $deleteVoicemail = null): self
+    public function setDeleteVoicemail(?string $deleteVoicemail): static
     {
         $this->deleteVoicemail = $deleteVoicemail;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDeleteVoicemail(): ?string
     {
         return $this->deleteVoicemail;
     }
 
-    /**
-     * @param string $saycid | null
-     *
-     * @return static
-     */
-    public function setSaycid(?string $saycid = null): self
+    public function setSaycid(?string $saycid): static
     {
         $this->saycid = $saycid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSaycid(): ?string
     {
         return $this->saycid;
     }
 
-    /**
-     * @param string $sendVoicemail | null
-     *
-     * @return static
-     */
-    public function setSendVoicemail(?string $sendVoicemail = null): self
+    public function setSendVoicemail(?string $sendVoicemail): static
     {
         $this->sendVoicemail = $sendVoicemail;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSendVoicemail(): ?string
     {
         return $this->sendVoicemail;
     }
 
-    /**
-     * @param string $review | null
-     *
-     * @return static
-     */
-    public function setReview(?string $review = null): self
+    public function setReview(?string $review): static
     {
         $this->review = $review;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getReview(): ?string
     {
         return $this->review;
     }
 
-    /**
-     * @param string $tempgreetwarn | null
-     *
-     * @return static
-     */
-    public function setTempgreetwarn(?string $tempgreetwarn = null): self
+    public function setTempgreetwarn(?string $tempgreetwarn): static
     {
         $this->tempgreetwarn = $tempgreetwarn;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTempgreetwarn(): ?string
     {
         return $this->tempgreetwarn;
     }
 
-    /**
-     * @param string $operator | null
-     *
-     * @return static
-     */
-    public function setOperator(?string $operator = null): self
+    public function setOperator(?string $operator): static
     {
         $this->operator = $operator;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getOperator(): ?string
     {
         return $this->operator;
     }
 
-    /**
-     * @param string $envelope | null
-     *
-     * @return static
-     */
-    public function setEnvelope(?string $envelope = null): self
+    public function setEnvelope(?string $envelope): static
     {
         $this->envelope = $envelope;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEnvelope(): ?string
     {
         return $this->envelope;
     }
 
-    /**
-     * @param int $sayduration | null
-     *
-     * @return static
-     */
-    public function setSayduration(?int $sayduration = null): self
+    public function setSayduration(?int $sayduration): static
     {
         $this->sayduration = $sayduration;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getSayduration(): ?int
     {
         return $this->sayduration;
     }
 
-    /**
-     * @param string $forcename | null
-     *
-     * @return static
-     */
-    public function setForcename(?string $forcename = null): self
+    public function setForcename(?string $forcename): static
     {
         $this->forcename = $forcename;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getForcename(): ?string
     {
         return $this->forcename;
     }
 
-    /**
-     * @param string $forcegreetings | null
-     *
-     * @return static
-     */
-    public function setForcegreetings(?string $forcegreetings = null): self
+    public function setForcegreetings(?string $forcegreetings): static
     {
         $this->forcegreetings = $forcegreetings;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getForcegreetings(): ?string
     {
         return $this->forcegreetings;
     }
 
-    /**
-     * @param string $callback | null
-     *
-     * @return static
-     */
-    public function setCallback(?string $callback = null): self
+    public function setCallback(?string $callback): static
     {
         $this->callback = $callback;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallback(): ?string
     {
         return $this->callback;
     }
 
-    /**
-     * @param string $dialout | null
-     *
-     * @return static
-     */
-    public function setDialout(?string $dialout = null): self
+    public function setDialout(?string $dialout): static
     {
         $this->dialout = $dialout;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDialout(): ?string
     {
         return $this->dialout;
     }
 
-    /**
-     * @param string $exitcontext | null
-     *
-     * @return static
-     */
-    public function setExitcontext(?string $exitcontext = null): self
+    public function setExitcontext(?string $exitcontext): static
     {
         $this->exitcontext = $exitcontext;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getExitcontext(): ?string
     {
         return $this->exitcontext;
     }
 
-    /**
-     * @param int $maxmsg | null
-     *
-     * @return static
-     */
-    public function setMaxmsg(?int $maxmsg = null): self
+    public function setMaxmsg(?int $maxmsg): static
     {
         $this->maxmsg = $maxmsg;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMaxmsg(): ?int
     {
         return $this->maxmsg;
     }
 
-    /**
-     * @param float $volgain | null
-     *
-     * @return static
-     */
-    public function setVolgain(?float $volgain = null): self
+    public function setVolgain(?float $volgain): static
     {
         $this->volgain = $volgain;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getVolgain(): ?float
     {
         return $this->volgain;
     }
 
-    /**
-     * @param string $imapuser | null
-     *
-     * @return static
-     */
-    public function setImapuser(?string $imapuser = null): self
+    public function setImapuser(?string $imapuser): static
     {
         $this->imapuser = $imapuser;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getImapuser(): ?string
     {
         return $this->imapuser;
     }
 
-    /**
-     * @param string $imappassword | null
-     *
-     * @return static
-     */
-    public function setImappassword(?string $imappassword = null): self
+    public function setImappassword(?string $imappassword): static
     {
         $this->imappassword = $imappassword;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getImappassword(): ?string
     {
         return $this->imappassword;
     }
 
-    /**
-     * @param string $imapserver | null
-     *
-     * @return static
-     */
-    public function setImapserver(?string $imapserver = null): self
+    public function setImapserver(?string $imapserver): static
     {
         $this->imapserver = $imapserver;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getImapserver(): ?string
     {
         return $this->imapserver;
     }
 
-    /**
-     * @param string $imapport | null
-     *
-     * @return static
-     */
-    public function setImapport(?string $imapport = null): self
+    public function setImapport(?string $imapport): static
     {
         $this->imapport = $imapport;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getImapport(): ?string
     {
         return $this->imapport;
     }
 
-    /**
-     * @param string $imapflags | null
-     *
-     * @return static
-     */
-    public function setImapflags(?string $imapflags = null): self
+    public function setImapflags(?string $imapflags): static
     {
         $this->imapflags = $imapflags;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getImapflags(): ?string
     {
         return $this->imapflags;
     }
 
-    /**
-     * @param \DateTimeInterface $stamp | null
-     *
-     * @return static
-     */
-    public function setStamp($stamp = null): self
+    public function setStamp(null|\DateTime|string $stamp): static
     {
         $this->stamp = $stamp;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getStamp()
+    public function getStamp(): \DateTime|string|null
     {
         return $this->stamp;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setUser(?UserDto $user = null): self
+    public function setUser(?UserDto $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
-    /**
-     * @return static
-     */
-    public function setUserId($id): self
+    public function setUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -1019,9 +736,6 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getUserId()
     {
         if ($dto = $this->getUser()) {
@@ -1031,30 +745,19 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ResidentialDeviceDto | null
-     *
-     * @return static
-     */
-    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice = null): self
+    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice): static
     {
         $this->residentialDevice = $residentialDevice;
 
         return $this;
     }
 
-    /**
-     * @return ResidentialDeviceDto | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceDto
     {
         return $this->residentialDevice;
     }
 
-    /**
-     * @return static
-     */
-    public function setResidentialDeviceId($id): self
+    public function setResidentialDeviceId($id): static
     {
         $value = !is_null($id)
             ? new ResidentialDeviceDto($id)
@@ -1063,9 +766,6 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->setResidentialDevice($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getResidentialDeviceId()
     {
         if ($dto = $this->getResidentialDevice()) {

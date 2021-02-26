@@ -148,11 +148,11 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
 
         switch ($this->getUnit()) {
             /** @see http://php.net/manual/es/dateinterval.createfromdatestring.php */
-            case 'month':
+            case CallCsvSchedulerInterface::UNIT_MONTH:
                 return new \DateInterval("P${frecuency}M");
-            case 'week':
+            case CallCsvSchedulerInterface::UNIT_WEEK:
                 return new \DateInterval("P${frecuency}W");
-            case 'day':
+            default:
                 return new \DateInterval("P${frecuency}D");
         }
     }
@@ -176,7 +176,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
         return $dto;
     }
 
-    protected function setLastExecutionError(?string $lastExecutionError = null): self
+    protected function setLastExecutionError(?string $lastExecutionError = null): static
     {
         if (!is_null($lastExecutionError)) {
             $lastExecutionError = substr(

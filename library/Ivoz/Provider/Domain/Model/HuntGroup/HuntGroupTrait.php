@@ -112,13 +112,6 @@ trait HuntGroupTrait
         ];
     }
 
-    /**
-     * Add huntGroupsRelUser
-     *
-     * @param HuntGroupsRelUserInterface $huntGroupsRelUser
-     *
-     * @return static
-     */
     public function addHuntGroupsRelUser(HuntGroupsRelUserInterface $huntGroupsRelUser): HuntGroupInterface
     {
         $this->huntGroupsRelUsers->add($huntGroupsRelUser);
@@ -126,13 +119,6 @@ trait HuntGroupTrait
         return $this;
     }
 
-    /**
-     * Remove huntGroupsRelUser
-     *
-     * @param HuntGroupsRelUserInterface $huntGroupsRelUser
-     *
-     * @return static
-     */
     public function removeHuntGroupsRelUser(HuntGroupsRelUserInterface $huntGroupsRelUser): HuntGroupInterface
     {
         $this->huntGroupsRelUsers->removeElement($huntGroupsRelUser);
@@ -140,13 +126,6 @@ trait HuntGroupTrait
         return $this;
     }
 
-    /**
-     * Replace huntGroupsRelUsers
-     *
-     * @param ArrayCollection $huntGroupsRelUsers of HuntGroupsRelUserInterface
-     *
-     * @return static
-     */
     public function replaceHuntGroupsRelUsers(ArrayCollection $huntGroupsRelUsers): HuntGroupInterface
     {
         $updatedEntities = [];
@@ -175,11 +154,6 @@ trait HuntGroupTrait
         return $this;
     }
 
-    /**
-     * Get huntGroupsRelUsers
-     * @param Criteria | null $criteria
-     * @return HuntGroupsRelUserInterface[]
-     */
     public function getHuntGroupsRelUsers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

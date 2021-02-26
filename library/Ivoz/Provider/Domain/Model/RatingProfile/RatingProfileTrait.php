@@ -111,13 +111,6 @@ trait RatingProfileTrait
         ];
     }
 
-    /**
-     * Add tpRatingProfile
-     *
-     * @param TpRatingProfileInterface $tpRatingProfile
-     *
-     * @return static
-     */
     public function addTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): RatingProfileInterface
     {
         $this->tpRatingProfiles->add($tpRatingProfile);
@@ -125,13 +118,6 @@ trait RatingProfileTrait
         return $this;
     }
 
-    /**
-     * Remove tpRatingProfile
-     *
-     * @param TpRatingProfileInterface $tpRatingProfile
-     *
-     * @return static
-     */
     public function removeTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): RatingProfileInterface
     {
         $this->tpRatingProfiles->removeElement($tpRatingProfile);
@@ -139,13 +125,6 @@ trait RatingProfileTrait
         return $this;
     }
 
-    /**
-     * Replace tpRatingProfiles
-     *
-     * @param ArrayCollection $tpRatingProfiles of TpRatingProfileInterface
-     *
-     * @return static
-     */
     public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles): RatingProfileInterface
     {
         $updatedEntities = [];
@@ -174,11 +153,6 @@ trait RatingProfileTrait
         return $this;
     }
 
-    /**
-     * Get tpRatingProfiles
-     * @param Criteria | null $criteria
-     * @return TpRatingProfileInterface[]
-     */
     public function getTpRatingProfiles(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

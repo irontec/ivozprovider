@@ -163,9 +163,9 @@ abstract class TpDerivedChargerAbstract
 
     /**
      * column: created_at
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $createdAt = 'CURRENT_TIMESTAMP';
+    protected $createdAt;
 
     /**
      * @var Brand
@@ -247,7 +247,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TpDerivedChargerDto
      */
     public static function createDto($id = null)
@@ -448,14 +448,7 @@ abstract class TpDerivedChargerAbstract
         ];
     }
 
-    /**
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return static
-     */
-    protected function setTpid(string $tpid): TpDerivedChargerInterface
+    protected function setTpid(string $tpid): static
     {
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -464,24 +457,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get tpid
-     *
-     * @return string
-     */
     public function getTpid(): string
     {
         return $this->tpid;
     }
 
-    /**
-     * Set loadid
-     *
-     * @param string $loadid
-     *
-     * @return static
-     */
-    protected function setLoadid(string $loadid): TpDerivedChargerInterface
+    protected function setLoadid(string $loadid): static
     {
         Assertion::maxLength($loadid, 64, 'loadid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -490,24 +471,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get loadid
-     *
-     * @return string
-     */
     public function getLoadid(): string
     {
         return $this->loadid;
     }
 
-    /**
-     * Set direction
-     *
-     * @param string $direction
-     *
-     * @return static
-     */
-    protected function setDirection(string $direction): TpDerivedChargerInterface
+    protected function setDirection(string $direction): static
     {
         Assertion::maxLength($direction, 8, 'direction value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -516,24 +485,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get direction
-     *
-     * @return string
-     */
     public function getDirection(): string
     {
         return $this->direction;
     }
 
-    /**
-     * Set tenant
-     *
-     * @param string $tenant
-     *
-     * @return static
-     */
-    protected function setTenant(string $tenant): TpDerivedChargerInterface
+    protected function setTenant(string $tenant): static
     {
         Assertion::maxLength($tenant, 64, 'tenant value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -542,24 +499,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get tenant
-     *
-     * @return string
-     */
     public function getTenant(): string
     {
         return $this->tenant;
     }
 
-    /**
-     * Set category
-     *
-     * @param string $category
-     *
-     * @return static
-     */
-    protected function setCategory(string $category): TpDerivedChargerInterface
+    protected function setCategory(string $category): static
     {
         Assertion::maxLength($category, 32, 'category value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -568,24 +513,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get category
-     *
-     * @return string
-     */
     public function getCategory(): string
     {
         return $this->category;
     }
 
-    /**
-     * Set account
-     *
-     * @param string $account
-     *
-     * @return static
-     */
-    protected function setAccount(string $account): TpDerivedChargerInterface
+    protected function setAccount(string $account): static
     {
         Assertion::maxLength($account, 64, 'account value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -594,24 +527,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get account
-     *
-     * @return string
-     */
     public function getAccount(): string
     {
         return $this->account;
     }
 
-    /**
-     * Set subject
-     *
-     * @param string $subject | null
-     *
-     * @return static
-     */
-    protected function setSubject(?string $subject = null): TpDerivedChargerInterface
+    protected function setSubject(?string $subject = null): static
     {
         if (!is_null($subject)) {
             Assertion::maxLength($subject, 64, 'subject value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -622,24 +543,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get subject
-     *
-     * @return string | null
-     */
     public function getSubject(): ?string
     {
         return $this->subject;
     }
 
-    /**
-     * Set destinationIds
-     *
-     * @param string $destinationIds | null
-     *
-     * @return static
-     */
-    protected function setDestinationIds(?string $destinationIds = null): TpDerivedChargerInterface
+    protected function setDestinationIds(?string $destinationIds = null): static
     {
         if (!is_null($destinationIds)) {
             Assertion::maxLength($destinationIds, 64, 'destinationIds value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -650,24 +559,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get destinationIds
-     *
-     * @return string | null
-     */
     public function getDestinationIds(): ?string
     {
         return $this->destinationIds;
     }
 
-    /**
-     * Set runid
-     *
-     * @param string $runid
-     *
-     * @return static
-     */
-    protected function setRunid(string $runid): TpDerivedChargerInterface
+    protected function setRunid(string $runid): static
     {
         Assertion::maxLength($runid, 64, 'runid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -676,24 +573,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get runid
-     *
-     * @return string
-     */
     public function getRunid(): string
     {
         return $this->runid;
     }
 
-    /**
-     * Set runFilters
-     *
-     * @param string $runFilters
-     *
-     * @return static
-     */
-    protected function setRunFilters(string $runFilters): TpDerivedChargerInterface
+    protected function setRunFilters(string $runFilters): static
     {
         Assertion::maxLength($runFilters, 32, 'runFilters value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -702,24 +587,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get runFilters
-     *
-     * @return string
-     */
     public function getRunFilters(): string
     {
         return $this->runFilters;
     }
 
-    /**
-     * Set reqTypeField
-     *
-     * @param string $reqTypeField
-     *
-     * @return static
-     */
-    protected function setReqTypeField(string $reqTypeField): TpDerivedChargerInterface
+    protected function setReqTypeField(string $reqTypeField): static
     {
         Assertion::maxLength($reqTypeField, 64, 'reqTypeField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -728,24 +601,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get reqTypeField
-     *
-     * @return string
-     */
     public function getReqTypeField(): string
     {
         return $this->reqTypeField;
     }
 
-    /**
-     * Set directionField
-     *
-     * @param string $directionField
-     *
-     * @return static
-     */
-    protected function setDirectionField(string $directionField): TpDerivedChargerInterface
+    protected function setDirectionField(string $directionField): static
     {
         Assertion::maxLength($directionField, 64, 'directionField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -754,24 +615,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get directionField
-     *
-     * @return string
-     */
     public function getDirectionField(): string
     {
         return $this->directionField;
     }
 
-    /**
-     * Set tenantField
-     *
-     * @param string $tenantField
-     *
-     * @return static
-     */
-    protected function setTenantField(string $tenantField): TpDerivedChargerInterface
+    protected function setTenantField(string $tenantField): static
     {
         Assertion::maxLength($tenantField, 64, 'tenantField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -780,24 +629,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get tenantField
-     *
-     * @return string
-     */
     public function getTenantField(): string
     {
         return $this->tenantField;
     }
 
-    /**
-     * Set categoryField
-     *
-     * @param string $categoryField
-     *
-     * @return static
-     */
-    protected function setCategoryField(string $categoryField): TpDerivedChargerInterface
+    protected function setCategoryField(string $categoryField): static
     {
         Assertion::maxLength($categoryField, 64, 'categoryField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -806,24 +643,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get categoryField
-     *
-     * @return string
-     */
     public function getCategoryField(): string
     {
         return $this->categoryField;
     }
 
-    /**
-     * Set accountField
-     *
-     * @param string $accountField
-     *
-     * @return static
-     */
-    protected function setAccountField(string $accountField): TpDerivedChargerInterface
+    protected function setAccountField(string $accountField): static
     {
         Assertion::maxLength($accountField, 64, 'accountField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -832,24 +657,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get accountField
-     *
-     * @return string
-     */
     public function getAccountField(): string
     {
         return $this->accountField;
     }
 
-    /**
-     * Set subjectField
-     *
-     * @param string $subjectField
-     *
-     * @return static
-     */
-    protected function setSubjectField(string $subjectField): TpDerivedChargerInterface
+    protected function setSubjectField(string $subjectField): static
     {
         Assertion::maxLength($subjectField, 64, 'subjectField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -858,24 +671,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get subjectField
-     *
-     * @return string
-     */
     public function getSubjectField(): string
     {
         return $this->subjectField;
     }
 
-    /**
-     * Set destinationField
-     *
-     * @param string $destinationField
-     *
-     * @return static
-     */
-    protected function setDestinationField(string $destinationField): TpDerivedChargerInterface
+    protected function setDestinationField(string $destinationField): static
     {
         Assertion::maxLength($destinationField, 64, 'destinationField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -884,24 +685,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get destinationField
-     *
-     * @return string
-     */
     public function getDestinationField(): string
     {
         return $this->destinationField;
     }
 
-    /**
-     * Set setupTimeField
-     *
-     * @param string $setupTimeField
-     *
-     * @return static
-     */
-    protected function setSetupTimeField(string $setupTimeField): TpDerivedChargerInterface
+    protected function setSetupTimeField(string $setupTimeField): static
     {
         Assertion::maxLength($setupTimeField, 64, 'setupTimeField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -910,24 +699,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get setupTimeField
-     *
-     * @return string
-     */
     public function getSetupTimeField(): string
     {
         return $this->setupTimeField;
     }
 
-    /**
-     * Set pddField
-     *
-     * @param string $pddField
-     *
-     * @return static
-     */
-    protected function setPddField(string $pddField): TpDerivedChargerInterface
+    protected function setPddField(string $pddField): static
     {
         Assertion::maxLength($pddField, 64, 'pddField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -936,24 +713,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get pddField
-     *
-     * @return string
-     */
     public function getPddField(): string
     {
         return $this->pddField;
     }
 
-    /**
-     * Set answerTimeField
-     *
-     * @param string $answerTimeField
-     *
-     * @return static
-     */
-    protected function setAnswerTimeField(string $answerTimeField): TpDerivedChargerInterface
+    protected function setAnswerTimeField(string $answerTimeField): static
     {
         Assertion::maxLength($answerTimeField, 64, 'answerTimeField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -962,24 +727,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get answerTimeField
-     *
-     * @return string
-     */
     public function getAnswerTimeField(): string
     {
         return $this->answerTimeField;
     }
 
-    /**
-     * Set usageField
-     *
-     * @param string $usageField
-     *
-     * @return static
-     */
-    protected function setUsageField(string $usageField): TpDerivedChargerInterface
+    protected function setUsageField(string $usageField): static
     {
         Assertion::maxLength($usageField, 64, 'usageField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -988,24 +741,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get usageField
-     *
-     * @return string
-     */
     public function getUsageField(): string
     {
         return $this->usageField;
     }
 
-    /**
-     * Set supplierField
-     *
-     * @param string $supplierField
-     *
-     * @return static
-     */
-    protected function setSupplierField(string $supplierField): TpDerivedChargerInterface
+    protected function setSupplierField(string $supplierField): static
     {
         Assertion::maxLength($supplierField, 64, 'supplierField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -1014,24 +755,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get supplierField
-     *
-     * @return string
-     */
     public function getSupplierField(): string
     {
         return $this->supplierField;
     }
 
-    /**
-     * Set disconnectCauseField
-     *
-     * @param string $disconnectCauseField
-     *
-     * @return static
-     */
-    protected function setDisconnectCauseField(string $disconnectCauseField): TpDerivedChargerInterface
+    protected function setDisconnectCauseField(string $disconnectCauseField): static
     {
         Assertion::maxLength($disconnectCauseField, 64, 'disconnectCauseField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -1040,24 +769,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get disconnectCauseField
-     *
-     * @return string
-     */
     public function getDisconnectCauseField(): string
     {
         return $this->disconnectCauseField;
     }
 
-    /**
-     * Set ratedTimeField
-     *
-     * @param string $ratedTimeField
-     *
-     * @return static
-     */
-    protected function setRatedTimeField(string $ratedTimeField): TpDerivedChargerInterface
+    protected function setRatedTimeField(string $ratedTimeField): static
     {
         Assertion::maxLength($ratedTimeField, 64, 'ratedTimeField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -1066,24 +783,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get ratedTimeField
-     *
-     * @return string
-     */
     public function getRatedTimeField(): string
     {
         return $this->ratedTimeField;
     }
 
-    /**
-     * Set costField
-     *
-     * @param string $costField
-     *
-     * @return static
-     */
-    protected function setCostField(string $costField): TpDerivedChargerInterface
+    protected function setCostField(string $costField): static
     {
         Assertion::maxLength($costField, 64, 'costField value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -1092,24 +797,12 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get costField
-     *
-     * @return string
-     */
     public function getCostField(): string
     {
         return $this->costField;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTimeInterface $createdAt
-     *
-     * @return static
-     */
-    protected function setCreatedAt($createdAt): TpDerivedChargerInterface
+    protected function setCreatedAt($createdAt): static
     {
 
         $createdAt = DateTimeHelper::createOrFix(
@@ -1126,35 +819,18 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }
 
-    /**
-     * Set brand
-     *
-     * @param Brand
-     *
-     * @return static
-     */
-    protected function setBrand(Brand $brand): TpDerivedChargerInterface
+    protected function setBrand(Brand $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return Brand
-     */
     public function getBrand(): Brand
     {
         return $this->brand;

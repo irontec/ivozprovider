@@ -16,30 +16,30 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $requestId;
+    private $requestId = '';
 
     /**
      * @var string
      */
-    private $class;
+    private $class = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $method;
 
     /**
-     * @var array | null
+     * @var array|null
      */
     private $arguments;
 
     /**
-     * @var array | null
+     * @var array|null
      */
     private $agent;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $createdOn;
 
@@ -109,162 +109,98 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $requestId | null
-     *
-     * @return static
-     */
-    public function setRequestId(?string $requestId = null): self
+    public function setRequestId(?string $requestId): static
     {
         $this->requestId = $requestId;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRequestId(): ?string
     {
         return $this->requestId;
     }
 
-    /**
-     * @param string $class | null
-     *
-     * @return static
-     */
-    public function setClass(?string $class = null): self
+    public function setClass(?string $class): static
     {
         $this->class = $class;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getClass(): ?string
     {
         return $this->class;
     }
 
-    /**
-     * @param string $method | null
-     *
-     * @return static
-     */
-    public function setMethod(?string $method = null): self
+    public function setMethod(?string $method): static
     {
         $this->method = $method;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getMethod(): ?string
     {
         return $this->method;
     }
 
-    /**
-     * @param array $arguments | null
-     *
-     * @return static
-     */
-    public function setArguments(?array $arguments = null): self
+    public function setArguments(?array $arguments): static
     {
         $this->arguments = $arguments;
 
         return $this;
     }
 
-    /**
-     * @return array | null
-     */
     public function getArguments(): ?array
     {
         return $this->arguments;
     }
 
-    /**
-     * @param array $agent | null
-     *
-     * @return static
-     */
-    public function setAgent(?array $agent = null): self
+    public function setAgent(?array $agent): static
     {
         $this->agent = $agent;
 
         return $this;
     }
 
-    /**
-     * @return array | null
-     */
     public function getAgent(): ?array
     {
         return $this->agent;
     }
 
-    /**
-     * @param \DateTimeInterface $createdOn | null
-     *
-     * @return static
-     */
-    public function setCreatedOn($createdOn = null): self
+    public function setCreatedOn(null|\DateTime|string $createdOn): static
     {
         $this->createdOn = $createdOn;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedOn()
+    public function getCreatedOn(): \DateTime|string|null
     {
         return $this->createdOn;
     }
 
-    /**
-     * @param int $microtime | null
-     *
-     * @return static
-     */
-    public function setMicrotime(?int $microtime = null): self
+    public function setMicrotime(?int $microtime): static
     {
         $this->microtime = $microtime;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMicrotime(): ?int
     {
         return $this->microtime;
     }
 
-    /**
-     * @param string $id | null
-     *
-     * @return static
-     */
-    public function setId(?string $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
-    public function getId(): ?string
+    public function getId()
     {
         return $this->id;
     }

@@ -16,70 +16,70 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $cgrid;
+    private $cgrid = '';
 
     /**
      * @var string
      */
-    private $runId;
+    private $runId = '';
 
     /**
      * @var string
      */
-    private $originHost;
+    private $originHost = '';
 
     /**
      * @var string
      */
-    private $source;
+    private $source = '';
 
     /**
      * @var string
      */
-    private $originId;
+    private $originId = '';
 
     /**
      * @var string
      */
-    private $tor;
+    private $tor = '';
 
     /**
      * @var string
      */
-    private $requestType;
+    private $requestType = '';
 
     /**
      * @var string
      */
-    private $tenant;
+    private $tenant = '';
 
     /**
      * @var string
      */
-    private $category;
+    private $category = '';
 
     /**
      * @var string
      */
-    private $account;
+    private $account = '';
 
     /**
      * @var string
      */
-    private $subject;
+    private $subject = '';
 
     /**
      * @var string
      */
-    private $destination;
+    private $destination = '';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $setupTime;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $answerTime;
 
@@ -91,12 +91,12 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $extraFields;
+    private $extraFields = '';
 
     /**
      * @var string
      */
-    private $costSource;
+    private $costSource = '';
 
     /**
      * @var float
@@ -111,20 +111,20 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $extraInfo;
+    private $extraInfo = '';
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime|string|null
      */
     private $createdAt;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime|string|null
      */
     private $updatedAt;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime|string|null
      */
     private $deletedAt;
 
@@ -221,482 +221,290 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $cgrid | null
-     *
-     * @return static
-     */
-    public function setCgrid(?string $cgrid = null): self
+    public function setCgrid(?string $cgrid): static
     {
         $this->cgrid = $cgrid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCgrid(): ?string
     {
         return $this->cgrid;
     }
 
-    /**
-     * @param string $runId | null
-     *
-     * @return static
-     */
-    public function setRunId(?string $runId = null): self
+    public function setRunId(?string $runId): static
     {
         $this->runId = $runId;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRunId(): ?string
     {
         return $this->runId;
     }
 
-    /**
-     * @param string $originHost | null
-     *
-     * @return static
-     */
-    public function setOriginHost(?string $originHost = null): self
+    public function setOriginHost(?string $originHost): static
     {
         $this->originHost = $originHost;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getOriginHost(): ?string
     {
         return $this->originHost;
     }
 
-    /**
-     * @param string $source | null
-     *
-     * @return static
-     */
-    public function setSource(?string $source = null): self
+    public function setSource(?string $source): static
     {
         $this->source = $source;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSource(): ?string
     {
         return $this->source;
     }
 
-    /**
-     * @param string $originId | null
-     *
-     * @return static
-     */
-    public function setOriginId(?string $originId = null): self
+    public function setOriginId(?string $originId): static
     {
         $this->originId = $originId;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getOriginId(): ?string
     {
         return $this->originId;
     }
 
-    /**
-     * @param string $tor | null
-     *
-     * @return static
-     */
-    public function setTor(?string $tor = null): self
+    public function setTor(?string $tor): static
     {
         $this->tor = $tor;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTor(): ?string
     {
         return $this->tor;
     }
 
-    /**
-     * @param string $requestType | null
-     *
-     * @return static
-     */
-    public function setRequestType(?string $requestType = null): self
+    public function setRequestType(?string $requestType): static
     {
         $this->requestType = $requestType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRequestType(): ?string
     {
         return $this->requestType;
     }
 
-    /**
-     * @param string $tenant | null
-     *
-     * @return static
-     */
-    public function setTenant(?string $tenant = null): self
+    public function setTenant(?string $tenant): static
     {
         $this->tenant = $tenant;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTenant(): ?string
     {
         return $this->tenant;
     }
 
-    /**
-     * @param string $category | null
-     *
-     * @return static
-     */
-    public function setCategory(?string $category = null): self
+    public function setCategory(?string $category): static
     {
         $this->category = $category;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCategory(): ?string
     {
         return $this->category;
     }
 
-    /**
-     * @param string $account | null
-     *
-     * @return static
-     */
-    public function setAccount(?string $account = null): self
+    public function setAccount(?string $account): static
     {
         $this->account = $account;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAccount(): ?string
     {
         return $this->account;
     }
 
-    /**
-     * @param string $subject | null
-     *
-     * @return static
-     */
-    public function setSubject(?string $subject = null): self
+    public function setSubject(?string $subject): static
     {
         $this->subject = $subject;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSubject(): ?string
     {
         return $this->subject;
     }
 
-    /**
-     * @param string $destination | null
-     *
-     * @return static
-     */
-    public function setDestination(?string $destination = null): self
+    public function setDestination(?string $destination): static
     {
         $this->destination = $destination;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDestination(): ?string
     {
         return $this->destination;
     }
 
-    /**
-     * @param \DateTimeInterface $setupTime | null
-     *
-     * @return static
-     */
-    public function setSetupTime($setupTime = null): self
+    public function setSetupTime(null|\DateTime|string $setupTime): static
     {
         $this->setupTime = $setupTime;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getSetupTime()
+    public function getSetupTime(): \DateTime|string|null
     {
         return $this->setupTime;
     }
 
-    /**
-     * @param \DateTimeInterface $answerTime | null
-     *
-     * @return static
-     */
-    public function setAnswerTime($answerTime = null): self
+    public function setAnswerTime(null|\DateTime|string $answerTime): static
     {
         $this->answerTime = $answerTime;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getAnswerTime()
+    public function getAnswerTime(): \DateTime|string|null
     {
         return $this->answerTime;
     }
 
-    /**
-     * @param int $usage | null
-     *
-     * @return static
-     */
-    public function setUsage(?int $usage = null): self
+    public function setUsage(?int $usage): static
     {
         $this->usage = $usage;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getUsage(): ?int
     {
         return $this->usage;
     }
 
-    /**
-     * @param string $extraFields | null
-     *
-     * @return static
-     */
-    public function setExtraFields(?string $extraFields = null): self
+    public function setExtraFields(?string $extraFields): static
     {
         $this->extraFields = $extraFields;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getExtraFields(): ?string
     {
         return $this->extraFields;
     }
 
-    /**
-     * @param string $costSource | null
-     *
-     * @return static
-     */
-    public function setCostSource(?string $costSource = null): self
+    public function setCostSource(?string $costSource): static
     {
         $this->costSource = $costSource;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCostSource(): ?string
     {
         return $this->costSource;
     }
 
-    /**
-     * @param float $cost | null
-     *
-     * @return static
-     */
-    public function setCost(?float $cost = null): self
+    public function setCost(?float $cost): static
     {
         $this->cost = $cost;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getCost(): ?float
     {
         return $this->cost;
     }
 
-    /**
-     * @param array $costDetails | null
-     *
-     * @return static
-     */
-    public function setCostDetails(?array $costDetails = null): self
+    public function setCostDetails(?array $costDetails): static
     {
         $this->costDetails = $costDetails;
 
         return $this;
     }
 
-    /**
-     * @return array | null
-     */
     public function getCostDetails(): ?array
     {
         return $this->costDetails;
     }
 
-    /**
-     * @param string $extraInfo | null
-     *
-     * @return static
-     */
-    public function setExtraInfo(?string $extraInfo = null): self
+    public function setExtraInfo(?string $extraInfo): static
     {
         $this->extraInfo = $extraInfo;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getExtraInfo(): ?string
     {
         return $this->extraInfo;
     }
 
-    /**
-     * @param \DateTimeInterface $createdAt | null
-     *
-     * @return static
-     */
-    public function setCreatedAt($createdAt = null): self
+    public function setCreatedAt(null|\DateTime|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime|string|null
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param \DateTimeInterface $updatedAt | null
-     *
-     * @return static
-     */
-    public function setUpdatedAt($updatedAt = null): self
+    public function setUpdatedAt(null|\DateTime|string $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): \DateTime|string|null
     {
         return $this->updatedAt;
     }
 
-    /**
-     * @param \DateTimeInterface $deletedAt | null
-     *
-     * @return static
-     */
-    public function setDeletedAt($deletedAt = null): self
+    public function setDeletedAt(null|\DateTime|string $deletedAt): static
     {
         $this->deletedAt = $deletedAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getDeletedAt()
+    public function getDeletedAt(): \DateTime|string|null
     {
         return $this->deletedAt;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

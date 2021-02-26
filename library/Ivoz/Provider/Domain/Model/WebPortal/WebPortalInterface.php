@@ -2,10 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\WebPortal;
 
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Core\Domain\Service\TempFile;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Core\Domain\Service\TempFile;
 
 /**
 * WebPortalInterface
@@ -29,69 +29,27 @@ interface WebPortalInterface extends LoggableEntityInterface, FileContainerInter
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null);
+    public function getFileObjects(?int $filter = null);
 
     /**
-     * {@inheritDoc}
-     */
-    public function setUrl(string $url): WebPortalInterface;
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl(): string;
-
-    /**
-     * Get klearTheme
-     *
-     * @return string | null
-     */
-    public function getKlearTheme(): ?string;
-
-    /**
-     * Get urlType
-     *
-     * @return string
-     */
-    public function getUrlType(): string;
-
-    /**
-     * Get name
-     *
-     * @return string | null
-     */
-    public function getName(): ?string;
-
-    /**
-     * Get userTheme
-     *
-     * @return string | null
-     */
-    public function getUserTheme(): ?string;
-
-    /**
-     * Get logo
-     *
-     * @return Logo
-     */
-    public function getLogo(): Logo;
-
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
      * @return static
      */
-    public function setBrand(?BrandInterface $brand = null): WebPortalInterface;
+    public function setUrl(string $url): static;
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
+    public function getUrl(): string;
+
+    public function getKlearTheme(): ?string;
+
+    public function getUrlType(): string;
+
+    public function getName(): ?string;
+
+    public function getUserTheme(): ?string;
+
+    public function getLogo(): Logo;
+
+    public function setBrand(?BrandInterface $brand = null): static;
+
     public function getBrand(): ?BrandInterface;
 
     /**

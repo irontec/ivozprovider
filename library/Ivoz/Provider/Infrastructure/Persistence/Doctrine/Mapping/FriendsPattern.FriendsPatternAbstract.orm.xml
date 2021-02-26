@@ -6,7 +6,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="regExp" type="string" column="regExp" length="255" nullable="false">
+    <field name="regExp" type="string" column="`regExp`" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>

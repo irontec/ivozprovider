@@ -58,9 +58,9 @@ abstract class TpTimingAbstract
 
     /**
      * column: created_at
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $createdAt = 'CURRENT_TIMESTAMP';
+    protected $createdAt;
 
     /**
      * @var RatingPlan
@@ -109,7 +109,7 @@ abstract class TpTimingAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TpTimingDto
      */
     public static function createDto($id = null)
@@ -238,14 +238,7 @@ abstract class TpTimingAbstract
         ];
     }
 
-    /**
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return static
-     */
-    protected function setTpid(string $tpid): TpTimingInterface
+    protected function setTpid(string $tpid): static
     {
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -254,24 +247,12 @@ abstract class TpTimingAbstract
         return $this;
     }
 
-    /**
-     * Get tpid
-     *
-     * @return string
-     */
     public function getTpid(): string
     {
         return $this->tpid;
     }
 
-    /**
-     * Set tag
-     *
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    protected function setTag(?string $tag = null): TpTimingInterface
+    protected function setTag(?string $tag = null): static
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -282,24 +263,12 @@ abstract class TpTimingAbstract
         return $this;
     }
 
-    /**
-     * Get tag
-     *
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * Set years
-     *
-     * @param string $years
-     *
-     * @return static
-     */
-    protected function setYears(string $years): TpTimingInterface
+    protected function setYears(string $years): static
     {
         Assertion::maxLength($years, 255, 'years value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -308,24 +277,12 @@ abstract class TpTimingAbstract
         return $this;
     }
 
-    /**
-     * Get years
-     *
-     * @return string
-     */
     public function getYears(): string
     {
         return $this->years;
     }
 
-    /**
-     * Set months
-     *
-     * @param string $months
-     *
-     * @return static
-     */
-    protected function setMonths(string $months): TpTimingInterface
+    protected function setMonths(string $months): static
     {
         Assertion::maxLength($months, 255, 'months value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -334,24 +291,12 @@ abstract class TpTimingAbstract
         return $this;
     }
 
-    /**
-     * Get months
-     *
-     * @return string
-     */
     public function getMonths(): string
     {
         return $this->months;
     }
 
-    /**
-     * Set monthDays
-     *
-     * @param string $monthDays
-     *
-     * @return static
-     */
-    protected function setMonthDays(string $monthDays): TpTimingInterface
+    protected function setMonthDays(string $monthDays): static
     {
         Assertion::maxLength($monthDays, 255, 'monthDays value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -360,24 +305,12 @@ abstract class TpTimingAbstract
         return $this;
     }
 
-    /**
-     * Get monthDays
-     *
-     * @return string
-     */
     public function getMonthDays(): string
     {
         return $this->monthDays;
     }
 
-    /**
-     * Set weekDays
-     *
-     * @param string $weekDays
-     *
-     * @return static
-     */
-    protected function setWeekDays(string $weekDays): TpTimingInterface
+    protected function setWeekDays(string $weekDays): static
     {
         Assertion::maxLength($weekDays, 255, 'weekDays value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -386,24 +319,12 @@ abstract class TpTimingAbstract
         return $this;
     }
 
-    /**
-     * Get weekDays
-     *
-     * @return string
-     */
     public function getWeekDays(): string
     {
         return $this->weekDays;
     }
 
-    /**
-     * Set time
-     *
-     * @param string $time
-     *
-     * @return static
-     */
-    protected function setTime(string $time): TpTimingInterface
+    protected function setTime(string $time): static
     {
         Assertion::maxLength($time, 32, 'time value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -412,24 +333,12 @@ abstract class TpTimingAbstract
         return $this;
     }
 
-    /**
-     * Get time
-     *
-     * @return string
-     */
     public function getTime(): string
     {
         return $this->time;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTimeInterface $createdAt
-     *
-     * @return static
-     */
-    protected function setCreatedAt($createdAt): TpTimingInterface
+    protected function setCreatedAt($createdAt): static
     {
 
         $createdAt = DateTimeHelper::createOrFix(
@@ -446,35 +355,19 @@ abstract class TpTimingAbstract
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }
 
-    /**
-     * Set ratingPlan
-     *
-     * @param RatingPlan
-     *
-     * @return static
-     */
-    public function setRatingPlan(RatingPlan $ratingPlan): TpTimingInterface
+    public function setRatingPlan(RatingPlan $ratingPlan): static
     {
         $this->ratingPlan = $ratingPlan;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get ratingPlan
-     *
-     * @return RatingPlan
-     */
     public function getRatingPlan(): RatingPlan
     {
         return $this->ratingPlan;

@@ -111,13 +111,6 @@ trait TransformationRuleSetTrait
         ];
     }
 
-    /**
-     * Add rule
-     *
-     * @param TransformationRuleInterface $rule
-     *
-     * @return static
-     */
     public function addRule(TransformationRuleInterface $rule): TransformationRuleSetInterface
     {
         $this->rules->add($rule);
@@ -125,13 +118,6 @@ trait TransformationRuleSetTrait
         return $this;
     }
 
-    /**
-     * Remove rule
-     *
-     * @param TransformationRuleInterface $rule
-     *
-     * @return static
-     */
     public function removeRule(TransformationRuleInterface $rule): TransformationRuleSetInterface
     {
         $this->rules->removeElement($rule);
@@ -139,13 +125,6 @@ trait TransformationRuleSetTrait
         return $this;
     }
 
-    /**
-     * Replace rules
-     *
-     * @param ArrayCollection $rules of TransformationRuleInterface
-     *
-     * @return static
-     */
     public function replaceRules(ArrayCollection $rules): TransformationRuleSetInterface
     {
         $updatedEntities = [];
@@ -174,11 +153,6 @@ trait TransformationRuleSetTrait
         return $this;
     }
 
-    /**
-     * Get rules
-     * @param Criteria | null $criteria
-     * @return TransformationRuleInterface[]
-     */
     public function getRules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

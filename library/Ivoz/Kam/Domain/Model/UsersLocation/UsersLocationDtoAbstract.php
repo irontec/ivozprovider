@@ -24,7 +24,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     private $username = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $domain;
 
@@ -34,17 +34,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     private $contact = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $received;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $path;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $expires = '2030-05-28 21:32:15';
 
@@ -64,7 +64,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     private $cseq = 1;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $lastModified = '1900-01-01 00:00:01';
 
@@ -84,17 +84,17 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     private $userAgent = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $socket;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $methods;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $instance;
 
@@ -214,462 +214,278 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $ruid | null
-     *
-     * @return static
-     */
-    public function setRuid(?string $ruid = null): self
+    public function setRuid(?string $ruid): static
     {
         $this->ruid = $ruid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRuid(): ?string
     {
         return $this->ruid;
     }
 
-    /**
-     * @param string $username | null
-     *
-     * @return static
-     */
-    public function setUsername(?string $username = null): self
+    public function setUsername(?string $username): static
     {
         $this->username = $username;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    /**
-     * @param string $domain | null
-     *
-     * @return static
-     */
-    public function setDomain(?string $domain = null): self
+    public function setDomain(?string $domain): static
     {
         $this->domain = $domain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDomain(): ?string
     {
         return $this->domain;
     }
 
-    /**
-     * @param string $contact | null
-     *
-     * @return static
-     */
-    public function setContact(?string $contact = null): self
+    public function setContact(?string $contact): static
     {
         $this->contact = $contact;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getContact(): ?string
     {
         return $this->contact;
     }
 
-    /**
-     * @param string $received | null
-     *
-     * @return static
-     */
-    public function setReceived(?string $received = null): self
+    public function setReceived(?string $received): static
     {
         $this->received = $received;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getReceived(): ?string
     {
         return $this->received;
     }
 
-    /**
-     * @param string $path | null
-     *
-     * @return static
-     */
-    public function setPath(?string $path = null): self
+    public function setPath(?string $path): static
     {
         $this->path = $path;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPath(): ?string
     {
         return $this->path;
     }
 
-    /**
-     * @param \DateTimeInterface $expires | null
-     *
-     * @return static
-     */
-    public function setExpires($expires = null): self
+    public function setExpires(null|\DateTime|string $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getExpires()
+    public function getExpires(): \DateTime|string|null
     {
         return $this->expires;
     }
 
-    /**
-     * @param float $q | null
-     *
-     * @return static
-     */
-    public function setQ(?float $q = null): self
+    public function setQ(?float $q): static
     {
         $this->q = $q;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getQ(): ?float
     {
         return $this->q;
     }
 
-    /**
-     * @param string $callid | null
-     *
-     * @return static
-     */
-    public function setCallid(?string $callid = null): self
+    public function setCallid(?string $callid): static
     {
         $this->callid = $callid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallid(): ?string
     {
         return $this->callid;
     }
 
-    /**
-     * @param int $cseq | null
-     *
-     * @return static
-     */
-    public function setCseq(?int $cseq = null): self
+    public function setCseq(?int $cseq): static
     {
         $this->cseq = $cseq;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getCseq(): ?int
     {
         return $this->cseq;
     }
 
-    /**
-     * @param \DateTimeInterface $lastModified | null
-     *
-     * @return static
-     */
-    public function setLastModified($lastModified = null): self
+    public function setLastModified(null|\DateTime|string $lastModified): static
     {
         $this->lastModified = $lastModified;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getLastModified()
+    public function getLastModified(): \DateTime|string|null
     {
         return $this->lastModified;
     }
 
-    /**
-     * @param int $flags | null
-     *
-     * @return static
-     */
-    public function setFlags(?int $flags = null): self
+    public function setFlags(?int $flags): static
     {
         $this->flags = $flags;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getFlags(): ?int
     {
         return $this->flags;
     }
 
-    /**
-     * @param int $cflags | null
-     *
-     * @return static
-     */
-    public function setCflags(?int $cflags = null): self
+    public function setCflags(?int $cflags): static
     {
         $this->cflags = $cflags;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getCflags(): ?int
     {
         return $this->cflags;
     }
 
-    /**
-     * @param string $userAgent | null
-     *
-     * @return static
-     */
-    public function setUserAgent(?string $userAgent = null): self
+    public function setUserAgent(?string $userAgent): static
     {
         $this->userAgent = $userAgent;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUserAgent(): ?string
     {
         return $this->userAgent;
     }
 
-    /**
-     * @param string $socket | null
-     *
-     * @return static
-     */
-    public function setSocket(?string $socket = null): self
+    public function setSocket(?string $socket): static
     {
         $this->socket = $socket;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSocket(): ?string
     {
         return $this->socket;
     }
 
-    /**
-     * @param int $methods | null
-     *
-     * @return static
-     */
-    public function setMethods(?int $methods = null): self
+    public function setMethods(?int $methods): static
     {
         $this->methods = $methods;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMethods(): ?int
     {
         return $this->methods;
     }
 
-    /**
-     * @param string $instance | null
-     *
-     * @return static
-     */
-    public function setInstance(?string $instance = null): self
+    public function setInstance(?string $instance): static
     {
         $this->instance = $instance;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getInstance(): ?string
     {
         return $this->instance;
     }
 
-    /**
-     * @param int $regId | null
-     *
-     * @return static
-     */
-    public function setRegId(?int $regId = null): self
+    public function setRegId(?int $regId): static
     {
         $this->regId = $regId;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getRegId(): ?int
     {
         return $this->regId;
     }
 
-    /**
-     * @param int $serverId | null
-     *
-     * @return static
-     */
-    public function setServerId(?int $serverId = null): self
+    public function setServerId(?int $serverId): static
     {
         $this->serverId = $serverId;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getServerId(): ?int
     {
         return $this->serverId;
     }
 
-    /**
-     * @param int $connectionId | null
-     *
-     * @return static
-     */
-    public function setConnectionId(?int $connectionId = null): self
+    public function setConnectionId(?int $connectionId): static
     {
         $this->connectionId = $connectionId;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getConnectionId(): ?int
     {
         return $this->connectionId;
     }
 
-    /**
-     * @param int $keepalive | null
-     *
-     * @return static
-     */
-    public function setKeepalive(?int $keepalive = null): self
+    public function setKeepalive(?int $keepalive): static
     {
         $this->keepalive = $keepalive;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getKeepalive(): ?int
     {
         return $this->keepalive;
     }
 
-    /**
-     * @param int $partition | null
-     *
-     * @return static
-     */
-    public function setPartition(?int $partition = null): self
+    public function setPartition(?int $partition): static
     {
         $this->partition = $partition;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPartition(): ?int
     {
         return $this->partition;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

@@ -76,50 +76,31 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CalendarPeriodDto | null
-     *
-     * @return static
-     */
-    public function setCalendarPeriod(?CalendarPeriodDto $calendarPeriod = null): self
+    public function setCalendarPeriod(?CalendarPeriodDto $calendarPeriod): static
     {
         $this->calendarPeriod = $calendarPeriod;
 
         return $this;
     }
 
-    /**
-     * @return CalendarPeriodDto | null
-     */
     public function getCalendarPeriod(): ?CalendarPeriodDto
     {
         return $this->calendarPeriod;
     }
 
-    /**
-     * @return static
-     */
-    public function setCalendarPeriodId($id): self
+    public function setCalendarPeriodId($id): static
     {
         $value = !is_null($id)
             ? new CalendarPeriodDto($id)
@@ -128,9 +109,6 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
         return $this->setCalendarPeriod($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCalendarPeriodId()
     {
         if ($dto = $this->getCalendarPeriod()) {
@@ -140,30 +118,19 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
         return null;
     }
 
-    /**
-     * @param ScheduleDto | null
-     *
-     * @return static
-     */
-    public function setSchedule(?ScheduleDto $schedule = null): self
+    public function setSchedule(?ScheduleDto $schedule): static
     {
         $this->schedule = $schedule;
 
         return $this;
     }
 
-    /**
-     * @return ScheduleDto | null
-     */
     public function getSchedule(): ?ScheduleDto
     {
         return $this->schedule;
     }
 
-    /**
-     * @return static
-     */
-    public function setScheduleId($id): self
+    public function setScheduleId($id): static
     {
         $value = !is_null($id)
             ? new ScheduleDto($id)
@@ -172,9 +139,6 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
         return $this->setSchedule($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getScheduleId()
     {
         if ($dto = $this->getSchedule()) {

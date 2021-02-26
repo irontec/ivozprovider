@@ -2,6 +2,7 @@
 
 namespace Ivoz\Kam\Domain\Service\Rtpengine;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -20,11 +21,9 @@ class RtpengineLifecycleServiceCollection implements LifecycleServiceCollectionI
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, RtpengineLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, RtpengineLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

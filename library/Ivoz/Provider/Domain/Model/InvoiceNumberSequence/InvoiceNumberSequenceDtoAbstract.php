@@ -17,7 +17,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var string
@@ -35,7 +35,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     private $increment;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $latestValue = '';
 
@@ -117,190 +117,115 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $prefix | null
-     *
-     * @return static
-     */
-    public function setPrefix(?string $prefix = null): self
+    public function setPrefix(?string $prefix): static
     {
         $this->prefix = $prefix;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
-    /**
-     * @param int $sequenceLength | null
-     *
-     * @return static
-     */
-    public function setSequenceLength(?int $sequenceLength = null): self
+    public function setSequenceLength(?int $sequenceLength): static
     {
         $this->sequenceLength = $sequenceLength;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getSequenceLength(): ?int
     {
         return $this->sequenceLength;
     }
 
-    /**
-     * @param int $increment | null
-     *
-     * @return static
-     */
-    public function setIncrement(?int $increment = null): self
+    public function setIncrement(?int $increment): static
     {
         $this->increment = $increment;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getIncrement(): ?int
     {
         return $this->increment;
     }
 
-    /**
-     * @param string $latestValue | null
-     *
-     * @return static
-     */
-    public function setLatestValue(?string $latestValue = null): self
+    public function setLatestValue(?string $latestValue): static
     {
         $this->latestValue = $latestValue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLatestValue(): ?string
     {
         return $this->latestValue;
     }
 
-    /**
-     * @param int $iteration | null
-     *
-     * @return static
-     */
-    public function setIteration(?int $iteration = null): self
+    public function setIteration(?int $iteration): static
     {
         $this->iteration = $iteration;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getIteration(): ?int
     {
         return $this->iteration;
     }
 
-    /**
-     * @param int $version | null
-     *
-     * @return static
-     */
-    public function setVersion(?int $version = null): self
+    public function setVersion(?int $version): static
     {
         $this->version = $version;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getVersion(): ?int
     {
         return $this->version;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -309,9 +234,6 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {

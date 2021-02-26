@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\RoutingTag;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -23,11 +24,9 @@ class RoutingTagLifecycleServiceCollection implements LifecycleServiceCollection
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, RoutingTagLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, RoutingTagLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

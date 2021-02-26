@@ -76,50 +76,31 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param ConditionalRoutesConditionDto | null
-     *
-     * @return static
-     */
-    public function setCondition(?ConditionalRoutesConditionDto $condition = null): self
+    public function setCondition(?ConditionalRoutesConditionDto $condition): static
     {
         $this->condition = $condition;
 
         return $this;
     }
 
-    /**
-     * @return ConditionalRoutesConditionDto | null
-     */
     public function getCondition(): ?ConditionalRoutesConditionDto
     {
         return $this->condition;
     }
 
-    /**
-     * @return static
-     */
-    public function setConditionId($id): self
+    public function setConditionId($id): static
     {
         $value = !is_null($id)
             ? new ConditionalRoutesConditionDto($id)
@@ -128,9 +109,6 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
         return $this->setCondition($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getConditionId()
     {
         if ($dto = $this->getCondition()) {
@@ -140,30 +118,19 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
         return null;
     }
 
-    /**
-     * @param RouteLockDto | null
-     *
-     * @return static
-     */
-    public function setRouteLock(?RouteLockDto $routeLock = null): self
+    public function setRouteLock(?RouteLockDto $routeLock): static
     {
         $this->routeLock = $routeLock;
 
         return $this;
     }
 
-    /**
-     * @return RouteLockDto | null
-     */
     public function getRouteLock(): ?RouteLockDto
     {
         return $this->routeLock;
     }
 
-    /**
-     * @return static
-     */
-    public function setRouteLockId($id): self
+    public function setRouteLockId($id): static
     {
         $value = !is_null($id)
             ? new RouteLockDto($id)
@@ -172,9 +139,6 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
         return $this->setRouteLock($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRouteLockId()
     {
         if ($dto = $this->getRouteLock()) {

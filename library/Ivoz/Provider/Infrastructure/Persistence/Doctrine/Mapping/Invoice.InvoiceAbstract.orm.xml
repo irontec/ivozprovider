@@ -28,7 +28,7 @@
     </field>
     <many-to-one field="invoiceTemplate" target-entity="Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="invoiceTemplateId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="invoiceTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
@@ -43,12 +43,12 @@
     </many-to-one>
     <many-to-one field="numberSequence" target-entity="Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="invoiceNumberSequenceId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="invoiceNumberSequenceId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="scheduler" target-entity="Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="invoiceSchedulerId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="invoiceSchedulerId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

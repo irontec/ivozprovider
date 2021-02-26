@@ -77,7 +77,7 @@ class TrunksLcrRuleFactory
                     ])
                 );
 
-                /** @var RoutingPatternGroupsRelPatternInterface $relPattern */
+                /** @var RoutingPatternGroupsRelPatternInterface|null $routingPatternGroupsRelPattern */
                 $routingPatternGroupsRelPattern = array_shift($routingPatternGroupsRelPatterns);
                 if ($routingPatternGroupsRelPattern) {
                     $lcrRuleDto->setRoutingPatternGroupsRelPatternId(

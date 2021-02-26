@@ -187,13 +187,6 @@ trait ExternalCallFilterTrait
         ];
     }
 
-    /**
-     * Add calendar
-     *
-     * @param ExternalCallFilterRelCalendarInterface $calendar
-     *
-     * @return static
-     */
     public function addCalendar(ExternalCallFilterRelCalendarInterface $calendar): ExternalCallFilterInterface
     {
         $this->calendars->add($calendar);
@@ -201,13 +194,6 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    /**
-     * Remove calendar
-     *
-     * @param ExternalCallFilterRelCalendarInterface $calendar
-     *
-     * @return static
-     */
     public function removeCalendar(ExternalCallFilterRelCalendarInterface $calendar): ExternalCallFilterInterface
     {
         $this->calendars->removeElement($calendar);
@@ -215,13 +201,6 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    /**
-     * Replace calendars
-     *
-     * @param ArrayCollection $calendars of ExternalCallFilterRelCalendarInterface
-     *
-     * @return static
-     */
     public function replaceCalendars(ArrayCollection $calendars): ExternalCallFilterInterface
     {
         $updatedEntities = [];
@@ -250,11 +229,6 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    /**
-     * Get calendars
-     * @param Criteria | null $criteria
-     * @return ExternalCallFilterRelCalendarInterface[]
-     */
     public function getCalendars(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -264,13 +238,6 @@ trait ExternalCallFilterTrait
         return $this->calendars->toArray();
     }
 
-    /**
-     * Add blackList
-     *
-     * @param ExternalCallFilterBlackListInterface $blackList
-     *
-     * @return static
-     */
     public function addBlackList(ExternalCallFilterBlackListInterface $blackList): ExternalCallFilterInterface
     {
         $this->blackLists->add($blackList);
@@ -278,13 +245,6 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    /**
-     * Remove blackList
-     *
-     * @param ExternalCallFilterBlackListInterface $blackList
-     *
-     * @return static
-     */
     public function removeBlackList(ExternalCallFilterBlackListInterface $blackList): ExternalCallFilterInterface
     {
         $this->blackLists->removeElement($blackList);
@@ -292,13 +252,6 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    /**
-     * Replace blackLists
-     *
-     * @param ArrayCollection $blackLists of ExternalCallFilterBlackListInterface
-     *
-     * @return static
-     */
     public function replaceBlackLists(ArrayCollection $blackLists): ExternalCallFilterInterface
     {
         $updatedEntities = [];
@@ -327,11 +280,6 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    /**
-     * Get blackLists
-     * @param Criteria | null $criteria
-     * @return ExternalCallFilterBlackListInterface[]
-     */
     public function getBlackLists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -341,13 +289,6 @@ trait ExternalCallFilterTrait
         return $this->blackLists->toArray();
     }
 
-    /**
-     * Add whiteList
-     *
-     * @param ExternalCallFilterWhiteListInterface $whiteList
-     *
-     * @return static
-     */
     public function addWhiteList(ExternalCallFilterWhiteListInterface $whiteList): ExternalCallFilterInterface
     {
         $this->whiteLists->add($whiteList);
@@ -355,13 +296,6 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    /**
-     * Remove whiteList
-     *
-     * @param ExternalCallFilterWhiteListInterface $whiteList
-     *
-     * @return static
-     */
     public function removeWhiteList(ExternalCallFilterWhiteListInterface $whiteList): ExternalCallFilterInterface
     {
         $this->whiteLists->removeElement($whiteList);
@@ -369,13 +303,6 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    /**
-     * Replace whiteLists
-     *
-     * @param ArrayCollection $whiteLists of ExternalCallFilterWhiteListInterface
-     *
-     * @return static
-     */
     public function replaceWhiteLists(ArrayCollection $whiteLists): ExternalCallFilterInterface
     {
         $updatedEntities = [];
@@ -404,11 +331,6 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    /**
-     * Get whiteLists
-     * @param Criteria | null $criteria
-     * @return ExternalCallFilterWhiteListInterface[]
-     */
     public function getWhiteLists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -418,13 +340,6 @@ trait ExternalCallFilterTrait
         return $this->whiteLists->toArray();
     }
 
-    /**
-     * Add schedule
-     *
-     * @param ExternalCallFilterRelScheduleInterface $schedule
-     *
-     * @return static
-     */
     public function addSchedule(ExternalCallFilterRelScheduleInterface $schedule): ExternalCallFilterInterface
     {
         $this->schedules->add($schedule);
@@ -432,13 +347,6 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    /**
-     * Remove schedule
-     *
-     * @param ExternalCallFilterRelScheduleInterface $schedule
-     *
-     * @return static
-     */
     public function removeSchedule(ExternalCallFilterRelScheduleInterface $schedule): ExternalCallFilterInterface
     {
         $this->schedules->removeElement($schedule);
@@ -446,13 +354,6 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    /**
-     * Replace schedules
-     *
-     * @param ArrayCollection $schedules of ExternalCallFilterRelScheduleInterface
-     *
-     * @return static
-     */
     public function replaceSchedules(ArrayCollection $schedules): ExternalCallFilterInterface
     {
         $updatedEntities = [];
@@ -481,11 +382,6 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    /**
-     * Get schedules
-     * @param Criteria | null $criteria
-     * @return ExternalCallFilterRelScheduleInterface[]
-     */
     public function getSchedules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

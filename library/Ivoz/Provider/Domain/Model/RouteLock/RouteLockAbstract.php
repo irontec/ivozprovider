@@ -72,7 +72,7 @@ abstract class RouteLockAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return RouteLockDto
      */
     public static function createDto($id = null)
@@ -181,14 +181,7 @@ abstract class RouteLockAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): RouteLockInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -197,24 +190,12 @@ abstract class RouteLockAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return static
-     */
-    protected function setDescription(string $description): RouteLockInterface
+    protected function setDescription(string $description): static
     {
         Assertion::maxLength($description, 100, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -223,24 +204,12 @@ abstract class RouteLockAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * Set open
-     *
-     * @param bool $open
-     *
-     * @return static
-     */
-    protected function setOpen(bool $open): RouteLockInterface
+    protected function setOpen(bool $open): static
     {
         Assertion::between(intval($open), 0, 1, 'open provided "%s" is not a valid boolean value.');
         $open = (bool) $open;
@@ -250,35 +219,18 @@ abstract class RouteLockAbstract
         return $this;
     }
 
-    /**
-     * Get open
-     *
-     * @return bool
-     */
     public function getOpen(): bool
     {
         return $this->open;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): RouteLockInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;

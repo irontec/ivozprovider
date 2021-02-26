@@ -58,12 +58,12 @@ abstract class TransformationRuleSetAbstract
     protected $name;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $country;
 
@@ -96,7 +96,7 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TransformationRuleSetDto
      */
     public static function createDto($id = null)
@@ -245,14 +245,7 @@ abstract class TransformationRuleSetAbstract
         ];
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description | null
-     *
-     * @return static
-     */
-    protected function setDescription(?string $description = null): TransformationRuleSetInterface
+    protected function setDescription(?string $description = null): static
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 250, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -263,24 +256,12 @@ abstract class TransformationRuleSetAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * Set internationalCode
-     *
-     * @param string $internationalCode | null
-     *
-     * @return static
-     */
-    protected function setInternationalCode(?string $internationalCode = null): TransformationRuleSetInterface
+    protected function setInternationalCode(?string $internationalCode = null): static
     {
         if (!is_null($internationalCode)) {
             Assertion::maxLength($internationalCode, 10, 'internationalCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -291,24 +272,12 @@ abstract class TransformationRuleSetAbstract
         return $this;
     }
 
-    /**
-     * Get internationalCode
-     *
-     * @return string | null
-     */
     public function getInternationalCode(): ?string
     {
         return $this->internationalCode;
     }
 
-    /**
-     * Set trunkPrefix
-     *
-     * @param string $trunkPrefix | null
-     *
-     * @return static
-     */
-    protected function setTrunkPrefix(?string $trunkPrefix = null): TransformationRuleSetInterface
+    protected function setTrunkPrefix(?string $trunkPrefix = null): static
     {
         if (!is_null($trunkPrefix)) {
             Assertion::maxLength($trunkPrefix, 5, 'trunkPrefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -319,24 +288,12 @@ abstract class TransformationRuleSetAbstract
         return $this;
     }
 
-    /**
-     * Get trunkPrefix
-     *
-     * @return string | null
-     */
     public function getTrunkPrefix(): ?string
     {
         return $this->trunkPrefix;
     }
 
-    /**
-     * Set areaCode
-     *
-     * @param string $areaCode | null
-     *
-     * @return static
-     */
-    protected function setAreaCode(?string $areaCode = null): TransformationRuleSetInterface
+    protected function setAreaCode(?string $areaCode = null): static
     {
         if (!is_null($areaCode)) {
             Assertion::maxLength($areaCode, 5, 'areaCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -347,24 +304,12 @@ abstract class TransformationRuleSetAbstract
         return $this;
     }
 
-    /**
-     * Get areaCode
-     *
-     * @return string | null
-     */
     public function getAreaCode(): ?string
     {
         return $this->areaCode;
     }
 
-    /**
-     * Set nationalLen
-     *
-     * @param int $nationalLen | null
-     *
-     * @return static
-     */
-    protected function setNationalLen(?int $nationalLen = null): TransformationRuleSetInterface
+    protected function setNationalLen(?int $nationalLen = null): static
     {
         if (!is_null($nationalLen)) {
             Assertion::greaterOrEqualThan($nationalLen, 0, 'nationalLen provided "%s" is not greater or equal than "%s".');
@@ -375,24 +320,12 @@ abstract class TransformationRuleSetAbstract
         return $this;
     }
 
-    /**
-     * Get nationalLen
-     *
-     * @return int | null
-     */
     public function getNationalLen(): ?int
     {
         return $this->nationalLen;
     }
 
-    /**
-     * Set generateRules
-     *
-     * @param bool $generateRules | null
-     *
-     * @return static
-     */
-    protected function setGenerateRules(?bool $generateRules = null): TransformationRuleSetInterface
+    protected function setGenerateRules(?bool $generateRules = null): static
     {
         if (!is_null($generateRules)) {
             Assertion::between(intval($generateRules), 0, 1, 'generateRules provided "%s" is not a valid boolean value.');
@@ -404,32 +337,17 @@ abstract class TransformationRuleSetAbstract
         return $this;
     }
 
-    /**
-     * Get generateRules
-     *
-     * @return bool | null
-     */
     public function getGenerateRules(): ?bool
     {
         return $this->generateRules;
     }
 
-    /**
-     * Get name
-     *
-     * @return Name
-     */
     public function getName(): Name
     {
         return $this->name;
     }
 
-    /**
-     * Set name
-     *
-     * @return static
-     */
-    protected function setName(Name $name): TransformationRuleSetInterface
+    protected function setName(Name $name): static
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -440,49 +358,25 @@ abstract class TransformationRuleSetAbstract
         return $this;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    protected function setBrand(?BrandInterface $brand = null): TransformationRuleSetInterface
+    protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set country
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setCountry(?CountryInterface $country = null): TransformationRuleSetInterface
+    protected function setCountry(?CountryInterface $country = null): static
     {
         $this->country = $country;
 
         return $this;
     }
 
-    /**
-     * Get country
-     *
-     * @return CountryInterface | null
-     */
     public function getCountry(): ?CountryInterface
     {
         return $this->country;

@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\FixedCostsRelInvoice;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class FixedCostsRelInvoiceLifecycleServiceCollection implements LifecycleService
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, FixedCostsRelInvoiceLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, FixedCostsRelInvoiceLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

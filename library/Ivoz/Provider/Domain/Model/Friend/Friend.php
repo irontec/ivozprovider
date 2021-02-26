@@ -127,7 +127,7 @@ class Friend extends FriendAbstract implements FriendInterface
             ->getExtension($number);
     }
 
-    protected function setName(string $name): self
+    protected function setName(string $name): static
     {
         if (!empty($name)) {
             Assertion::regex(
@@ -145,7 +145,7 @@ class Friend extends FriendAbstract implements FriendInterface
      * @see FriendAbstract::setIp
      * @deprecated this method will be protected
      */
-    public function setIp(?string $ip = null): self
+    public function setIp(?string $ip = null): static
     {
         if (!empty($ip)) {
             Assertion::ip($ip);
@@ -158,7 +158,7 @@ class Friend extends FriendAbstract implements FriendInterface
      * @see FriendAbstract::setPort
      * @deprecated this method will be protected
      */
-    public function setPort(?int $port = null): self
+    public function setPort(?int $port = null): static
     {
         if (!empty($port)) {
             Assertion::regex((string) $port, '/^[0-9]+$/');
@@ -172,7 +172,7 @@ class Friend extends FriendAbstract implements FriendInterface
      * @see FriendAbstract::setPassword
      * @deprecated this method will be protected
      */
-    public function setPassword(?string $password = null): self
+    public function setPassword(?string $password = null): static
     {
         if (empty($password)) {
             $password = null;

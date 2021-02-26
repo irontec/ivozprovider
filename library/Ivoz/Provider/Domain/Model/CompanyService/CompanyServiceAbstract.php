@@ -66,7 +66,7 @@ abstract class CompanyServiceAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CompanyServiceDto
      */
     public static function createDto($id = null)
@@ -171,14 +171,7 @@ abstract class CompanyServiceAbstract
         ];
     }
 
-    /**
-     * Set code
-     *
-     * @param string $code
-     *
-     * @return static
-     */
-    protected function setCode(string $code): CompanyServiceInterface
+    protected function setCode(string $code): static
     {
         Assertion::maxLength($code, 3, 'code value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -187,59 +180,31 @@ abstract class CompanyServiceAbstract
         return $this;
     }
 
-    /**
-     * Get code
-     *
-     * @return string
-     */
     public function getCode(): string
     {
         return $this->code;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    public function setCompany(CompanyInterface $company): CompanyServiceInterface
+    public function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set service
-     *
-     * @param ServiceInterface
-     *
-     * @return static
-     */
-    protected function setService(ServiceInterface $service): CompanyServiceInterface
+    protected function setService(ServiceInterface $service): static
     {
         $this->service = $service;
 
         return $this;
     }
 
-    /**
-     * Get service
-     *
-     * @return ServiceInterface
-     */
     public function getService(): ServiceInterface
     {
         return $this->service;

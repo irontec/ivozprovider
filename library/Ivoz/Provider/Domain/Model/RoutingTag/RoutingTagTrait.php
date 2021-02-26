@@ -135,13 +135,6 @@ trait RoutingTagTrait
         ];
     }
 
-    /**
-     * Add outgoingRouting
-     *
-     * @param OutgoingRoutingInterface $outgoingRouting
-     *
-     * @return static
-     */
     public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingTagInterface
     {
         $this->outgoingRoutings->add($outgoingRouting);
@@ -149,13 +142,6 @@ trait RoutingTagTrait
         return $this;
     }
 
-    /**
-     * Remove outgoingRouting
-     *
-     * @param OutgoingRoutingInterface $outgoingRouting
-     *
-     * @return static
-     */
     public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingTagInterface
     {
         $this->outgoingRoutings->removeElement($outgoingRouting);
@@ -163,13 +149,6 @@ trait RoutingTagTrait
         return $this;
     }
 
-    /**
-     * Replace outgoingRoutings
-     *
-     * @param ArrayCollection $outgoingRoutings of OutgoingRoutingInterface
-     *
-     * @return static
-     */
     public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingTagInterface
     {
         $updatedEntities = [];
@@ -198,11 +177,6 @@ trait RoutingTagTrait
         return $this;
     }
 
-    /**
-     * Get outgoingRoutings
-     * @param Criteria | null $criteria
-     * @return OutgoingRoutingInterface[]
-     */
     public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -212,13 +186,6 @@ trait RoutingTagTrait
         return $this->outgoingRoutings->toArray();
     }
 
-    /**
-     * Add relCompany
-     *
-     * @param CompanyRelRoutingTagInterface $relCompany
-     *
-     * @return static
-     */
     public function addRelCompany(CompanyRelRoutingTagInterface $relCompany): RoutingTagInterface
     {
         $this->relCompanies->add($relCompany);
@@ -226,13 +193,6 @@ trait RoutingTagTrait
         return $this;
     }
 
-    /**
-     * Remove relCompany
-     *
-     * @param CompanyRelRoutingTagInterface $relCompany
-     *
-     * @return static
-     */
     public function removeRelCompany(CompanyRelRoutingTagInterface $relCompany): RoutingTagInterface
     {
         $this->relCompanies->removeElement($relCompany);
@@ -240,13 +200,6 @@ trait RoutingTagTrait
         return $this;
     }
 
-    /**
-     * Replace relCompanies
-     *
-     * @param ArrayCollection $relCompanies of CompanyRelRoutingTagInterface
-     *
-     * @return static
-     */
     public function replaceRelCompanies(ArrayCollection $relCompanies): RoutingTagInterface
     {
         $updatedEntities = [];
@@ -275,11 +228,6 @@ trait RoutingTagTrait
         return $this;
     }
 
-    /**
-     * Get relCompanies
-     * @param Criteria | null $criteria
-     * @return CompanyRelRoutingTagInterface[]
-     */
     public function getRelCompanies(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

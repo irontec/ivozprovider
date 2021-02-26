@@ -95,122 +95,74 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $keyName | null
-     *
-     * @return static
-     */
-    public function setKeyName(?string $keyName = null): self
+    public function setKeyName(?string $keyName): static
     {
         $this->keyName = $keyName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getKeyName(): ?string
     {
         return $this->keyName;
     }
 
-    /**
-     * @param int $keyType | null
-     *
-     * @return static
-     */
-    public function setKeyType(?int $keyType = null): self
+    public function setKeyType(?int $keyType): static
     {
         $this->keyType = $keyType;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getKeyType(): ?int
     {
         return $this->keyType;
     }
 
-    /**
-     * @param int $valueType | null
-     *
-     * @return static
-     */
-    public function setValueType(?int $valueType = null): self
+    public function setValueType(?int $valueType): static
     {
         $this->valueType = $valueType;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getValueType(): ?int
     {
         return $this->valueType;
     }
 
-    /**
-     * @param string $keyValue | null
-     *
-     * @return static
-     */
-    public function setKeyValue(?string $keyValue = null): self
+    public function setKeyValue(?string $keyValue): static
     {
         $this->keyValue = $keyValue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getKeyValue(): ?string
     {
         return $this->keyValue;
     }
 
-    /**
-     * @param int $expires | null
-     *
-     * @return static
-     */
-    public function setExpires(?int $expires = null): self
+    public function setExpires(?int $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getExpires(): ?int
     {
         return $this->expires;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

@@ -16,17 +16,17 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $toAddress;
 
     /**
-     * @var float | null
+     * @var float|null
      */
     private $threshold = 0;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime|string|null
      */
     private $lastSent;
 
@@ -97,110 +97,67 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return $response;
     }
 
-    /**
-     * @param string $toAddress | null
-     *
-     * @return static
-     */
-    public function setToAddress(?string $toAddress = null): self
+    public function setToAddress(?string $toAddress): static
     {
         $this->toAddress = $toAddress;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getToAddress(): ?string
     {
         return $this->toAddress;
     }
 
-    /**
-     * @param float $threshold | null
-     *
-     * @return static
-     */
-    public function setThreshold(?float $threshold = null): self
+    public function setThreshold(?float $threshold): static
     {
         $this->threshold = $threshold;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getThreshold(): ?float
     {
         return $this->threshold;
     }
 
-    /**
-     * @param \DateTimeInterface $lastSent | null
-     *
-     * @return static
-     */
-    public function setLastSent($lastSent = null): self
+    public function setLastSent(null|\DateTime|string $lastSent): static
     {
         $this->lastSent = $lastSent;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getLastSent()
+    public function getLastSent(): \DateTime|string|null
     {
         return $this->lastSent;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param NotificationTemplateDto | null
-     *
-     * @return static
-     */
-    public function setNotificationTemplate(?NotificationTemplateDto $notificationTemplate = null): self
+    public function setNotificationTemplate(?NotificationTemplateDto $notificationTemplate): static
     {
         $this->notificationTemplate = $notificationTemplate;
 
         return $this;
     }
 
-    /**
-     * @return NotificationTemplateDto | null
-     */
     public function getNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->notificationTemplate;
     }
 
-    /**
-     * @return static
-     */
-    public function setNotificationTemplateId($id): self
+    public function setNotificationTemplateId($id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -209,9 +166,6 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return $this->setNotificationTemplate($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getNotificationTemplateId()
     {
         if ($dto = $this->getNotificationTemplate()) {
@@ -221,30 +175,19 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return null;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -253,9 +196,6 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {

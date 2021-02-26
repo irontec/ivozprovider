@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\ConditionalRoutesConditionsRelCalendar;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class ConditionalRoutesConditionsRelCalendarLifecycleServiceCollection implement
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, ConditionalRoutesConditionsRelCalendarLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, ConditionalRoutesConditionsRelCalendarLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

@@ -22,7 +22,7 @@ abstract class ExternalCallFilterRelCalendarAbstract
     use ChangelogTrait;
 
     /**
-     * @var ExternalCallFilterInterface
+     * @var ExternalCallFilterInterface | null
      * inversedBy calendars
      */
     protected $filter;
@@ -61,7 +61,7 @@ abstract class ExternalCallFilterRelCalendarAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ExternalCallFilterRelCalendarDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class ExternalCallFilterRelCalendarAbstract
         ];
     }
 
-    /**
-     * Set filter
-     *
-     * @param ExternalCallFilterInterface | null
-     *
-     * @return static
-     */
-    public function setFilter(?ExternalCallFilterInterface $filter = null): ExternalCallFilterRelCalendarInterface
+    public function setFilter(?ExternalCallFilterInterface $filter = null): static
     {
         $this->filter = $filter;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get filter
-     *
-     * @return ExternalCallFilterInterface | null
-     */
     public function getFilter(): ?ExternalCallFilterInterface
     {
         return $this->filter;
     }
 
-    /**
-     * Set calendar
-     *
-     * @param CalendarInterface
-     *
-     * @return static
-     */
-    protected function setCalendar(CalendarInterface $calendar): ExternalCallFilterRelCalendarInterface
+    protected function setCalendar(CalendarInterface $calendar): static
     {
         $this->calendar = $calendar;
 
         return $this;
     }
 
-    /**
-     * Get calendar
-     *
-     * @return CalendarInterface
-     */
     public function getCalendar(): CalendarInterface
     {
         return $this->calendar;

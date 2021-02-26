@@ -19,7 +19,7 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var int
@@ -90,70 +90,43 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -162,9 +135,6 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -174,30 +144,19 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -206,9 +165,6 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -218,21 +174,13 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param MatchListPatternDto[] | null
-     *
-     * @return static
-     */
-    public function setPatterns(?array $patterns = null): self
+    public function setPatterns(?array $patterns): static
     {
         $this->patterns = $patterns;
 
         return $this;
     }
 
-    /**
-     * @return MatchListPatternDto[] | null
-     */
     public function getPatterns(): ?array
     {
         return $this->patterns;

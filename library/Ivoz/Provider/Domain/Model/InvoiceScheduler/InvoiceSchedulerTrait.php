@@ -112,13 +112,6 @@ trait InvoiceSchedulerTrait
         ];
     }
 
-    /**
-     * Add relFixedCost
-     *
-     * @param FixedCostsRelInvoiceSchedulerInterface $relFixedCost
-     *
-     * @return static
-     */
     public function addRelFixedCost(FixedCostsRelInvoiceSchedulerInterface $relFixedCost): InvoiceSchedulerInterface
     {
         $this->relFixedCosts->add($relFixedCost);
@@ -126,13 +119,6 @@ trait InvoiceSchedulerTrait
         return $this;
     }
 
-    /**
-     * Remove relFixedCost
-     *
-     * @param FixedCostsRelInvoiceSchedulerInterface $relFixedCost
-     *
-     * @return static
-     */
     public function removeRelFixedCost(FixedCostsRelInvoiceSchedulerInterface $relFixedCost): InvoiceSchedulerInterface
     {
         $this->relFixedCosts->removeElement($relFixedCost);
@@ -140,13 +126,6 @@ trait InvoiceSchedulerTrait
         return $this;
     }
 
-    /**
-     * Replace relFixedCosts
-     *
-     * @param ArrayCollection $relFixedCosts of FixedCostsRelInvoiceSchedulerInterface
-     *
-     * @return static
-     */
     public function replaceRelFixedCosts(ArrayCollection $relFixedCosts): InvoiceSchedulerInterface
     {
         $updatedEntities = [];
@@ -175,11 +154,6 @@ trait InvoiceSchedulerTrait
         return $this;
     }
 
-    /**
-     * Get relFixedCosts
-     * @param Criteria | null $criteria
-     * @return FixedCostsRelInvoiceSchedulerInterface[]
-     */
     public function getRelFixedCosts(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

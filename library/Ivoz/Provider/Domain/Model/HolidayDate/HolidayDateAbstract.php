@@ -34,7 +34,7 @@ abstract class HolidayDateAbstract
     protected $name;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $eventDate;
 
@@ -44,12 +44,12 @@ abstract class HolidayDateAbstract
     protected $wholeDayEvent = true;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $timeIn;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $timeOut;
 
@@ -71,22 +71,22 @@ abstract class HolidayDateAbstract
     protected $calendar;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $locution;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $extension;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $voiceMailUser;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $numberCountry;
 
@@ -123,7 +123,7 @@ abstract class HolidayDateAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return HolidayDateDto
      */
     public static function createDto($id = null)
@@ -264,14 +264,7 @@ abstract class HolidayDateAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): HolidayDateInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -280,48 +273,24 @@ abstract class HolidayDateAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set eventDate
-     *
-     * @param \DateTimeInterface $eventDate
-     *
-     * @return static
-     */
-    protected function setEventDate($eventDate): HolidayDateInterface
+    protected function setEventDate($eventDate): static
     {
         $this->eventDate = $eventDate;
 
         return $this;
     }
 
-    /**
-     * Get eventDate
-     *
-     * @return \DateTimeInterface
-     */
-    public function getEventDate(): \DateTimeInterface
+    public function getEventDate(): \DateTime
     {
         return clone $this->eventDate;
     }
 
-    /**
-     * Set wholeDayEvent
-     *
-     * @param bool $wholeDayEvent
-     *
-     * @return static
-     */
-    protected function setWholeDayEvent(bool $wholeDayEvent): HolidayDateInterface
+    protected function setWholeDayEvent(bool $wholeDayEvent): static
     {
         Assertion::between(intval($wholeDayEvent), 0, 1, 'wholeDayEvent provided "%s" is not a valid boolean value.');
         $wholeDayEvent = (bool) $wholeDayEvent;
@@ -331,72 +300,36 @@ abstract class HolidayDateAbstract
         return $this;
     }
 
-    /**
-     * Get wholeDayEvent
-     *
-     * @return bool
-     */
     public function getWholeDayEvent(): bool
     {
         return $this->wholeDayEvent;
     }
 
-    /**
-     * Set timeIn
-     *
-     * @param \DateTimeInterface $timeIn | null
-     *
-     * @return static
-     */
-    protected function setTimeIn($timeIn = null): HolidayDateInterface
+    protected function setTimeIn($timeIn = null): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    /**
-     * Get timeIn
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getTimeIn(): ?\DateTimeInterface
+    public function getTimeIn(): ?\DateTime
     {
         return !is_null($this->timeIn) ? clone $this->timeIn : null;
     }
 
-    /**
-     * Set timeOut
-     *
-     * @param \DateTimeInterface $timeOut | null
-     *
-     * @return static
-     */
-    protected function setTimeOut($timeOut = null): HolidayDateInterface
+    protected function setTimeOut($timeOut = null): static
     {
         $this->timeOut = $timeOut;
 
         return $this;
     }
 
-    /**
-     * Get timeOut
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getTimeOut(): ?\DateTimeInterface
+    public function getTimeOut(): ?\DateTime
     {
         return !is_null($this->timeOut) ? clone $this->timeOut : null;
     }
 
-    /**
-     * Set routeType
-     *
-     * @param string $routeType | null
-     *
-     * @return static
-     */
-    protected function setRouteType(?string $routeType = null): HolidayDateInterface
+    protected function setRouteType(?string $routeType = null): static
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -416,24 +349,12 @@ abstract class HolidayDateAbstract
         return $this;
     }
 
-    /**
-     * Get routeType
-     *
-     * @return string | null
-     */
     public function getRouteType(): ?string
     {
         return $this->routeType;
     }
 
-    /**
-     * Set numberValue
-     *
-     * @param string $numberValue | null
-     *
-     * @return static
-     */
-    protected function setNumberValue(?string $numberValue = null): HolidayDateInterface
+    protected function setNumberValue(?string $numberValue = null): static
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -444,131 +365,67 @@ abstract class HolidayDateAbstract
         return $this;
     }
 
-    /**
-     * Get numberValue
-     *
-     * @return string | null
-     */
     public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
-    /**
-     * Set calendar
-     *
-     * @param CalendarInterface
-     *
-     * @return static
-     */
-    public function setCalendar(CalendarInterface $calendar): HolidayDateInterface
+    public function setCalendar(CalendarInterface $calendar): static
     {
         $this->calendar = $calendar;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get calendar
-     *
-     * @return CalendarInterface
-     */
     public function getCalendar(): CalendarInterface
     {
         return $this->calendar;
     }
 
-    /**
-     * Set locution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setLocution(?LocutionInterface $locution = null): HolidayDateInterface
+    protected function setLocution(?LocutionInterface $locution = null): static
     {
         $this->locution = $locution;
 
         return $this;
     }
 
-    /**
-     * Get locution
-     *
-     * @return LocutionInterface | null
-     */
     public function getLocution(): ?LocutionInterface
     {
         return $this->locution;
     }
 
-    /**
-     * Set extension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setExtension(?ExtensionInterface $extension = null): HolidayDateInterface
+    protected function setExtension(?ExtensionInterface $extension = null): static
     {
         $this->extension = $extension;
 
         return $this;
     }
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getExtension(): ?ExtensionInterface
     {
         return $this->extension;
     }
 
-    /**
-     * Set voiceMailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): HolidayDateInterface
+    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): static
     {
         $this->voiceMailUser = $voiceMailUser;
 
         return $this;
     }
 
-    /**
-     * Get voiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getVoiceMailUser(): ?UserInterface
     {
         return $this->voiceMailUser;
     }
 
-    /**
-     * Set numberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setNumberCountry(?CountryInterface $numberCountry = null): HolidayDateInterface
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;

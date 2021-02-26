@@ -42,7 +42,7 @@ abstract class BillableCallAbstract
     protected $callid;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $startTime;
 
@@ -114,47 +114,47 @@ abstract class BillableCallAbstract
     protected $direction = 'outbound';
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var CarrierInterface
+     * @var CarrierInterface | null
      */
     protected $carrier;
 
     /**
-     * @var DestinationInterface
+     * @var DestinationInterface | null
      */
     protected $destination;
 
     /**
-     * @var RatingPlanGroupInterface
+     * @var RatingPlanGroupInterface | null
      */
     protected $ratingPlanGroup;
 
     /**
-     * @var InvoiceInterface
+     * @var InvoiceInterface | null
      */
     protected $invoice;
 
     /**
-     * @var TrunksCdrInterface
+     * @var TrunksCdrInterface | null
      */
     protected $trunksCdr;
 
     /**
-     * @var DdiInterface
+     * @var DdiInterface | null
      */
     protected $ddi;
 
     /**
-     * @var DdiProviderInterface
+     * @var DdiProviderInterface | null
      */
     protected $ddiProvider;
 
@@ -187,7 +187,7 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return BillableCallDto
      */
     public static function createDto($id = null)
@@ -376,14 +376,7 @@ abstract class BillableCallAbstract
         ];
     }
 
-    /**
-     * Set callid
-     *
-     * @param string $callid | null
-     *
-     * @return static
-     */
-    protected function setCallid(?string $callid = null): BillableCallInterface
+    protected function setCallid(?string $callid = null): static
     {
         if (!is_null($callid)) {
             Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -394,24 +387,12 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get callid
-     *
-     * @return string | null
-     */
     public function getCallid(): ?string
     {
         return $this->callid;
     }
 
-    /**
-     * Set startTime
-     *
-     * @param \DateTimeInterface $startTime | null
-     *
-     * @return static
-     */
-    protected function setStartTime($startTime = null): BillableCallInterface
+    protected function setStartTime($startTime = null): static
     {
         if (!is_null($startTime)) {
             Assertion::notNull(
@@ -433,48 +414,24 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get startTime
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getStartTime(): ?\DateTimeInterface
+    public function getStartTime(): ?\DateTime
     {
         return !is_null($this->startTime) ? clone $this->startTime : null;
     }
 
-    /**
-     * Set duration
-     *
-     * @param float $duration
-     *
-     * @return static
-     */
-    protected function setDuration(float $duration): BillableCallInterface
+    protected function setDuration(float $duration): static
     {
         $this->duration = $duration;
 
         return $this;
     }
 
-    /**
-     * Get duration
-     *
-     * @return float
-     */
     public function getDuration(): float
     {
         return $this->duration;
     }
 
-    /**
-     * Set caller
-     *
-     * @param string $caller | null
-     *
-     * @return static
-     */
-    protected function setCaller(?string $caller = null): BillableCallInterface
+    protected function setCaller(?string $caller = null): static
     {
         if (!is_null($caller)) {
             Assertion::maxLength($caller, 128, 'caller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -485,24 +442,12 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get caller
-     *
-     * @return string | null
-     */
     public function getCaller(): ?string
     {
         return $this->caller;
     }
 
-    /**
-     * Set callee
-     *
-     * @param string $callee | null
-     *
-     * @return static
-     */
-    protected function setCallee(?string $callee = null): BillableCallInterface
+    protected function setCallee(?string $callee = null): static
     {
         if (!is_null($callee)) {
             Assertion::maxLength($callee, 128, 'callee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -513,24 +458,12 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get callee
-     *
-     * @return string | null
-     */
     public function getCallee(): ?string
     {
         return $this->callee;
     }
 
-    /**
-     * Set cost
-     *
-     * @param float $cost | null
-     *
-     * @return static
-     */
-    protected function setCost(?float $cost = null): BillableCallInterface
+    protected function setCost(?float $cost = null): static
     {
         if (!is_null($cost)) {
             $cost = (float) $cost;
@@ -541,24 +474,12 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get cost
-     *
-     * @return float | null
-     */
     public function getCost(): ?float
     {
         return $this->cost;
     }
 
-    /**
-     * Set price
-     *
-     * @param float $price | null
-     *
-     * @return static
-     */
-    protected function setPrice(?float $price = null): BillableCallInterface
+    protected function setPrice(?float $price = null): static
     {
         if (!is_null($price)) {
             $price = (float) $price;
@@ -569,48 +490,24 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get price
-     *
-     * @return float | null
-     */
     public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    /**
-     * Set priceDetails
-     *
-     * @param array $priceDetails | null
-     *
-     * @return static
-     */
-    protected function setPriceDetails(?array $priceDetails = null): BillableCallInterface
+    protected function setPriceDetails(?array $priceDetails = null): static
     {
         $this->priceDetails = $priceDetails;
 
         return $this;
     }
 
-    /**
-     * Get priceDetails
-     *
-     * @return array | null
-     */
     public function getPriceDetails(): ?array
     {
         return $this->priceDetails;
     }
 
-    /**
-     * Set carrierName
-     *
-     * @param string $carrierName | null
-     *
-     * @return static
-     */
-    protected function setCarrierName(?string $carrierName = null): BillableCallInterface
+    protected function setCarrierName(?string $carrierName = null): static
     {
         if (!is_null($carrierName)) {
             Assertion::maxLength($carrierName, 200, 'carrierName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -621,24 +518,12 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get carrierName
-     *
-     * @return string | null
-     */
     public function getCarrierName(): ?string
     {
         return $this->carrierName;
     }
 
-    /**
-     * Set destinationName
-     *
-     * @param string $destinationName | null
-     *
-     * @return static
-     */
-    protected function setDestinationName(?string $destinationName = null): BillableCallInterface
+    protected function setDestinationName(?string $destinationName = null): static
     {
         if (!is_null($destinationName)) {
             Assertion::maxLength($destinationName, 100, 'destinationName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -649,24 +534,12 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get destinationName
-     *
-     * @return string | null
-     */
     public function getDestinationName(): ?string
     {
         return $this->destinationName;
     }
 
-    /**
-     * Set ratingPlanName
-     *
-     * @param string $ratingPlanName | null
-     *
-     * @return static
-     */
-    protected function setRatingPlanName(?string $ratingPlanName = null): BillableCallInterface
+    protected function setRatingPlanName(?string $ratingPlanName = null): static
     {
         if (!is_null($ratingPlanName)) {
             Assertion::maxLength($ratingPlanName, 55, 'ratingPlanName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -677,24 +550,12 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get ratingPlanName
-     *
-     * @return string | null
-     */
     public function getRatingPlanName(): ?string
     {
         return $this->ratingPlanName;
     }
 
-    /**
-     * Set endpointType
-     *
-     * @param string $endpointType | null
-     *
-     * @return static
-     */
-    protected function setEndpointType(?string $endpointType = null): BillableCallInterface
+    protected function setEndpointType(?string $endpointType = null): static
     {
         if (!is_null($endpointType)) {
             Assertion::maxLength($endpointType, 55, 'endpointType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -716,24 +577,12 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get endpointType
-     *
-     * @return string | null
-     */
     public function getEndpointType(): ?string
     {
         return $this->endpointType;
     }
 
-    /**
-     * Set endpointId
-     *
-     * @param int $endpointId | null
-     *
-     * @return static
-     */
-    protected function setEndpointId(?int $endpointId = null): BillableCallInterface
+    protected function setEndpointId(?int $endpointId = null): static
     {
         if (!is_null($endpointId)) {
             Assertion::greaterOrEqualThan($endpointId, 0, 'endpointId provided "%s" is not greater or equal than "%s".');
@@ -744,24 +593,12 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get endpointId
-     *
-     * @return int | null
-     */
     public function getEndpointId(): ?int
     {
         return $this->endpointId;
     }
 
-    /**
-     * Set endpointName
-     *
-     * @param string $endpointName | null
-     *
-     * @return static
-     */
-    protected function setEndpointName(?string $endpointName = null): BillableCallInterface
+    protected function setEndpointName(?string $endpointName = null): static
     {
         if (!is_null($endpointName)) {
             Assertion::maxLength($endpointName, 65, 'endpointName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -772,24 +609,12 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get endpointName
-     *
-     * @return string | null
-     */
     public function getEndpointName(): ?string
     {
         return $this->endpointName;
     }
 
-    /**
-     * Set direction
-     *
-     * @param string $direction | null
-     *
-     * @return static
-     */
-    protected function setDirection(?string $direction = null): BillableCallInterface
+    protected function setDirection(?string $direction = null): static
     {
         if (!is_null($direction)) {
             Assertion::choice(
@@ -807,227 +632,114 @@ abstract class BillableCallAbstract
         return $this;
     }
 
-    /**
-     * Get direction
-     *
-     * @return string | null
-     */
     public function getDirection(): ?string
     {
         return $this->direction;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    protected function setBrand(?BrandInterface $brand = null): BillableCallInterface
+    protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    protected function setCompany(?CompanyInterface $company = null): BillableCallInterface
+    protected function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set carrier
-     *
-     * @param CarrierInterface | null
-     *
-     * @return static
-     */
-    protected function setCarrier(?CarrierInterface $carrier = null): BillableCallInterface
+    protected function setCarrier(?CarrierInterface $carrier = null): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * Get carrier
-     *
-     * @return CarrierInterface | null
-     */
     public function getCarrier(): ?CarrierInterface
     {
         return $this->carrier;
     }
 
-    /**
-     * Set destination
-     *
-     * @param DestinationInterface | null
-     *
-     * @return static
-     */
-    protected function setDestination(?DestinationInterface $destination = null): BillableCallInterface
+    protected function setDestination(?DestinationInterface $destination = null): static
     {
         $this->destination = $destination;
 
         return $this;
     }
 
-    /**
-     * Get destination
-     *
-     * @return DestinationInterface | null
-     */
     public function getDestination(): ?DestinationInterface
     {
         return $this->destination;
     }
 
-    /**
-     * Set ratingPlanGroup
-     *
-     * @param RatingPlanGroupInterface | null
-     *
-     * @return static
-     */
-    protected function setRatingPlanGroup(?RatingPlanGroupInterface $ratingPlanGroup = null): BillableCallInterface
+    protected function setRatingPlanGroup(?RatingPlanGroupInterface $ratingPlanGroup = null): static
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
         return $this;
     }
 
-    /**
-     * Get ratingPlanGroup
-     *
-     * @return RatingPlanGroupInterface | null
-     */
     public function getRatingPlanGroup(): ?RatingPlanGroupInterface
     {
         return $this->ratingPlanGroup;
     }
 
-    /**
-     * Set invoice
-     *
-     * @param InvoiceInterface | null
-     *
-     * @return static
-     */
-    protected function setInvoice(?InvoiceInterface $invoice = null): BillableCallInterface
+    protected function setInvoice(?InvoiceInterface $invoice = null): static
     {
         $this->invoice = $invoice;
 
         return $this;
     }
 
-    /**
-     * Get invoice
-     *
-     * @return InvoiceInterface | null
-     */
     public function getInvoice(): ?InvoiceInterface
     {
         return $this->invoice;
     }
 
-    /**
-     * Set trunksCdr
-     *
-     * @param TrunksCdrInterface | null
-     *
-     * @return static
-     */
-    protected function setTrunksCdr(?TrunksCdrInterface $trunksCdr = null): BillableCallInterface
+    protected function setTrunksCdr(?TrunksCdrInterface $trunksCdr = null): static
     {
         $this->trunksCdr = $trunksCdr;
 
         return $this;
     }
 
-    /**
-     * Get trunksCdr
-     *
-     * @return TrunksCdrInterface | null
-     */
     public function getTrunksCdr(): ?TrunksCdrInterface
     {
         return $this->trunksCdr;
     }
 
-    /**
-     * Set ddi
-     *
-     * @param DdiInterface | null
-     *
-     * @return static
-     */
-    protected function setDdi(?DdiInterface $ddi = null): BillableCallInterface
+    protected function setDdi(?DdiInterface $ddi = null): static
     {
         $this->ddi = $ddi;
 
         return $this;
     }
 
-    /**
-     * Get ddi
-     *
-     * @return DdiInterface | null
-     */
     public function getDdi(): ?DdiInterface
     {
         return $this->ddi;
     }
 
-    /**
-     * Set ddiProvider
-     *
-     * @param DdiProviderInterface | null
-     *
-     * @return static
-     */
-    protected function setDdiProvider(?DdiProviderInterface $ddiProvider = null): BillableCallInterface
+    protected function setDdiProvider(?DdiProviderInterface $ddiProvider = null): static
     {
         $this->ddiProvider = $ddiProvider;
 
         return $this;
     }
 
-    /**
-     * Get ddiProvider
-     *
-     * @return DdiProviderInterface | null
-     */
     public function getDdiProvider(): ?DdiProviderInterface
     {
         return $this->ddiProvider;

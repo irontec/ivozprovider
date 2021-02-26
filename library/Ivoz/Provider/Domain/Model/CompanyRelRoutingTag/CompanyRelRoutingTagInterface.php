@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\CompanyRelRoutingTag;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * CompanyRelRoutingTagInterface
@@ -17,36 +17,12 @@ interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyInterface $company = null): CompanyRelRoutingTagInterface;
+    public function setCompany(?CompanyInterface $company = null): static;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface;
 
-    /**
-     * Set routingTag
-     *
-     * @param RoutingTagInterface
-     *
-     * @return static
-     */
-    public function setRoutingTag(RoutingTagInterface $routingTag): CompanyRelRoutingTagInterface;
+    public function setRoutingTag(RoutingTagInterface $routingTag): static;
 
-    /**
-     * Get routingTag
-     *
-     * @return RoutingTagInterface
-     */
     public function getRoutingTag(): RoutingTagInterface;
 
     /**

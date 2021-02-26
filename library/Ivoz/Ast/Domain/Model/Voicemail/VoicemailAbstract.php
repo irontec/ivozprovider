@@ -185,17 +185,17 @@ abstract class VoicemailAbstract
     protected $imapflags;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $stamp;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $user;
 
     /**
-     * @var ResidentialDeviceInterface
+     * @var ResidentialDeviceInterface | null
      */
     protected $residentialDevice;
 
@@ -230,7 +230,7 @@ abstract class VoicemailAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return VoicemailDto
      */
     public static function createDto($id = null)
@@ -463,14 +463,7 @@ abstract class VoicemailAbstract
         ];
     }
 
-    /**
-     * Set context
-     *
-     * @param string $context
-     *
-     * @return static
-     */
-    protected function setContext(string $context): VoicemailInterface
+    protected function setContext(string $context): static
     {
         Assertion::maxLength($context, 80, 'context value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -479,24 +472,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get context
-     *
-     * @return string
-     */
     public function getContext(): string
     {
         return $this->context;
     }
 
-    /**
-     * Set mailbox
-     *
-     * @param string $mailbox
-     *
-     * @return static
-     */
-    protected function setMailbox(string $mailbox): VoicemailInterface
+    protected function setMailbox(string $mailbox): static
     {
         Assertion::maxLength($mailbox, 80, 'mailbox value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -505,24 +486,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get mailbox
-     *
-     * @return string
-     */
     public function getMailbox(): string
     {
         return $this->mailbox;
     }
 
-    /**
-     * Set password
-     *
-     * @param string $password | null
-     *
-     * @return static
-     */
-    protected function setPassword(?string $password = null): VoicemailInterface
+    protected function setPassword(?string $password = null): static
     {
         if (!is_null($password)) {
             Assertion::maxLength($password, 80, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -533,24 +502,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get password
-     *
-     * @return string | null
-     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    /**
-     * Set fullname
-     *
-     * @param string $fullname | null
-     *
-     * @return static
-     */
-    protected function setFullname(?string $fullname = null): VoicemailInterface
+    protected function setFullname(?string $fullname = null): static
     {
         if (!is_null($fullname)) {
             Assertion::maxLength($fullname, 80, 'fullname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -561,24 +518,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get fullname
-     *
-     * @return string | null
-     */
     public function getFullname(): ?string
     {
         return $this->fullname;
     }
 
-    /**
-     * Set alias
-     *
-     * @param string $alias | null
-     *
-     * @return static
-     */
-    protected function setAlias(?string $alias = null): VoicemailInterface
+    protected function setAlias(?string $alias = null): static
     {
         if (!is_null($alias)) {
             Assertion::maxLength($alias, 80, 'alias value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -589,24 +534,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get alias
-     *
-     * @return string | null
-     */
     public function getAlias(): ?string
     {
         return $this->alias;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email | null
-     *
-     * @return static
-     */
-    protected function setEmail(?string $email = null): VoicemailInterface
+    protected function setEmail(?string $email = null): static
     {
         if (!is_null($email)) {
             Assertion::maxLength($email, 80, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -617,24 +550,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get email
-     *
-     * @return string | null
-     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * Set pager
-     *
-     * @param string $pager | null
-     *
-     * @return static
-     */
-    protected function setPager(?string $pager = null): VoicemailInterface
+    protected function setPager(?string $pager = null): static
     {
         if (!is_null($pager)) {
             Assertion::maxLength($pager, 80, 'pager value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -645,48 +566,24 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get pager
-     *
-     * @return string | null
-     */
     public function getPager(): ?string
     {
         return $this->pager;
     }
 
-    /**
-     * Set attach
-     *
-     * @param string $attach | null
-     *
-     * @return static
-     */
-    protected function setAttach(?string $attach = null): VoicemailInterface
+    protected function setAttach(?string $attach = null): static
     {
         $this->attach = $attach;
 
         return $this;
     }
 
-    /**
-     * Get attach
-     *
-     * @return string | null
-     */
     public function getAttach(): ?string
     {
         return $this->attach;
     }
 
-    /**
-     * Set attachfmt
-     *
-     * @param string $attachfmt | null
-     *
-     * @return static
-     */
-    protected function setAttachfmt(?string $attachfmt = null): VoicemailInterface
+    protected function setAttachfmt(?string $attachfmt = null): static
     {
         if (!is_null($attachfmt)) {
             Assertion::maxLength($attachfmt, 10, 'attachfmt value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -697,24 +594,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get attachfmt
-     *
-     * @return string | null
-     */
     public function getAttachfmt(): ?string
     {
         return $this->attachfmt;
     }
 
-    /**
-     * Set serveremail
-     *
-     * @param string $serveremail | null
-     *
-     * @return static
-     */
-    protected function setServeremail(?string $serveremail = null): VoicemailInterface
+    protected function setServeremail(?string $serveremail = null): static
     {
         if (!is_null($serveremail)) {
             Assertion::maxLength($serveremail, 80, 'serveremail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -725,24 +610,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get serveremail
-     *
-     * @return string | null
-     */
     public function getServeremail(): ?string
     {
         return $this->serveremail;
     }
 
-    /**
-     * Set language
-     *
-     * @param string $language | null
-     *
-     * @return static
-     */
-    protected function setLanguage(?string $language = null): VoicemailInterface
+    protected function setLanguage(?string $language = null): static
     {
         if (!is_null($language)) {
             Assertion::maxLength($language, 20, 'language value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -753,24 +626,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get language
-     *
-     * @return string | null
-     */
     public function getLanguage(): ?string
     {
         return $this->language;
     }
 
-    /**
-     * Set tz
-     *
-     * @param string $tz | null
-     *
-     * @return static
-     */
-    protected function setTz(?string $tz = null): VoicemailInterface
+    protected function setTz(?string $tz = null): static
     {
         if (!is_null($tz)) {
             Assertion::maxLength($tz, 30, 'tz value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -781,264 +642,132 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get tz
-     *
-     * @return string | null
-     */
     public function getTz(): ?string
     {
         return $this->tz;
     }
 
-    /**
-     * Set deleteVoicemail
-     *
-     * @param string $deleteVoicemail | null
-     *
-     * @return static
-     */
-    protected function setDeleteVoicemail(?string $deleteVoicemail = null): VoicemailInterface
+    protected function setDeleteVoicemail(?string $deleteVoicemail = null): static
     {
         $this->deleteVoicemail = $deleteVoicemail;
 
         return $this;
     }
 
-    /**
-     * Get deleteVoicemail
-     *
-     * @return string | null
-     */
     public function getDeleteVoicemail(): ?string
     {
         return $this->deleteVoicemail;
     }
 
-    /**
-     * Set saycid
-     *
-     * @param string $saycid | null
-     *
-     * @return static
-     */
-    protected function setSaycid(?string $saycid = null): VoicemailInterface
+    protected function setSaycid(?string $saycid = null): static
     {
         $this->saycid = $saycid;
 
         return $this;
     }
 
-    /**
-     * Get saycid
-     *
-     * @return string | null
-     */
     public function getSaycid(): ?string
     {
         return $this->saycid;
     }
 
-    /**
-     * Set sendVoicemail
-     *
-     * @param string $sendVoicemail | null
-     *
-     * @return static
-     */
-    protected function setSendVoicemail(?string $sendVoicemail = null): VoicemailInterface
+    protected function setSendVoicemail(?string $sendVoicemail = null): static
     {
         $this->sendVoicemail = $sendVoicemail;
 
         return $this;
     }
 
-    /**
-     * Get sendVoicemail
-     *
-     * @return string | null
-     */
     public function getSendVoicemail(): ?string
     {
         return $this->sendVoicemail;
     }
 
-    /**
-     * Set review
-     *
-     * @param string $review | null
-     *
-     * @return static
-     */
-    protected function setReview(?string $review = null): VoicemailInterface
+    protected function setReview(?string $review = null): static
     {
         $this->review = $review;
 
         return $this;
     }
 
-    /**
-     * Get review
-     *
-     * @return string | null
-     */
     public function getReview(): ?string
     {
         return $this->review;
     }
 
-    /**
-     * Set tempgreetwarn
-     *
-     * @param string $tempgreetwarn | null
-     *
-     * @return static
-     */
-    protected function setTempgreetwarn(?string $tempgreetwarn = null): VoicemailInterface
+    protected function setTempgreetwarn(?string $tempgreetwarn = null): static
     {
         $this->tempgreetwarn = $tempgreetwarn;
 
         return $this;
     }
 
-    /**
-     * Get tempgreetwarn
-     *
-     * @return string | null
-     */
     public function getTempgreetwarn(): ?string
     {
         return $this->tempgreetwarn;
     }
 
-    /**
-     * Set operator
-     *
-     * @param string $operator | null
-     *
-     * @return static
-     */
-    protected function setOperator(?string $operator = null): VoicemailInterface
+    protected function setOperator(?string $operator = null): static
     {
         $this->operator = $operator;
 
         return $this;
     }
 
-    /**
-     * Get operator
-     *
-     * @return string | null
-     */
     public function getOperator(): ?string
     {
         return $this->operator;
     }
 
-    /**
-     * Set envelope
-     *
-     * @param string $envelope | null
-     *
-     * @return static
-     */
-    protected function setEnvelope(?string $envelope = null): VoicemailInterface
+    protected function setEnvelope(?string $envelope = null): static
     {
         $this->envelope = $envelope;
 
         return $this;
     }
 
-    /**
-     * Get envelope
-     *
-     * @return string | null
-     */
     public function getEnvelope(): ?string
     {
         return $this->envelope;
     }
 
-    /**
-     * Set sayduration
-     *
-     * @param int $sayduration | null
-     *
-     * @return static
-     */
-    protected function setSayduration(?int $sayduration = null): VoicemailInterface
+    protected function setSayduration(?int $sayduration = null): static
     {
         $this->sayduration = $sayduration;
 
         return $this;
     }
 
-    /**
-     * Get sayduration
-     *
-     * @return int | null
-     */
     public function getSayduration(): ?int
     {
         return $this->sayduration;
     }
 
-    /**
-     * Set forcename
-     *
-     * @param string $forcename | null
-     *
-     * @return static
-     */
-    protected function setForcename(?string $forcename = null): VoicemailInterface
+    protected function setForcename(?string $forcename = null): static
     {
         $this->forcename = $forcename;
 
         return $this;
     }
 
-    /**
-     * Get forcename
-     *
-     * @return string | null
-     */
     public function getForcename(): ?string
     {
         return $this->forcename;
     }
 
-    /**
-     * Set forcegreetings
-     *
-     * @param string $forcegreetings | null
-     *
-     * @return static
-     */
-    protected function setForcegreetings(?string $forcegreetings = null): VoicemailInterface
+    protected function setForcegreetings(?string $forcegreetings = null): static
     {
         $this->forcegreetings = $forcegreetings;
 
         return $this;
     }
 
-    /**
-     * Get forcegreetings
-     *
-     * @return string | null
-     */
     public function getForcegreetings(): ?string
     {
         return $this->forcegreetings;
     }
 
-    /**
-     * Set callback
-     *
-     * @param string $callback | null
-     *
-     * @return static
-     */
-    protected function setCallback(?string $callback = null): VoicemailInterface
+    protected function setCallback(?string $callback = null): static
     {
         if (!is_null($callback)) {
             Assertion::maxLength($callback, 80, 'callback value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1049,24 +778,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get callback
-     *
-     * @return string | null
-     */
     public function getCallback(): ?string
     {
         return $this->callback;
     }
 
-    /**
-     * Set dialout
-     *
-     * @param string $dialout | null
-     *
-     * @return static
-     */
-    protected function setDialout(?string $dialout = null): VoicemailInterface
+    protected function setDialout(?string $dialout = null): static
     {
         if (!is_null($dialout)) {
             Assertion::maxLength($dialout, 80, 'dialout value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1077,24 +794,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get dialout
-     *
-     * @return string | null
-     */
     public function getDialout(): ?string
     {
         return $this->dialout;
     }
 
-    /**
-     * Set exitcontext
-     *
-     * @param string $exitcontext | null
-     *
-     * @return static
-     */
-    protected function setExitcontext(?string $exitcontext = null): VoicemailInterface
+    protected function setExitcontext(?string $exitcontext = null): static
     {
         if (!is_null($exitcontext)) {
             Assertion::maxLength($exitcontext, 80, 'exitcontext value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1105,48 +810,24 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get exitcontext
-     *
-     * @return string | null
-     */
     public function getExitcontext(): ?string
     {
         return $this->exitcontext;
     }
 
-    /**
-     * Set maxmsg
-     *
-     * @param int $maxmsg | null
-     *
-     * @return static
-     */
-    protected function setMaxmsg(?int $maxmsg = null): VoicemailInterface
+    protected function setMaxmsg(?int $maxmsg = null): static
     {
         $this->maxmsg = $maxmsg;
 
         return $this;
     }
 
-    /**
-     * Get maxmsg
-     *
-     * @return int | null
-     */
     public function getMaxmsg(): ?int
     {
         return $this->maxmsg;
     }
 
-    /**
-     * Set volgain
-     *
-     * @param float $volgain | null
-     *
-     * @return static
-     */
-    protected function setVolgain(?float $volgain = null): VoicemailInterface
+    protected function setVolgain(?float $volgain = null): static
     {
         if (!is_null($volgain)) {
             $volgain = (float) $volgain;
@@ -1157,24 +838,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get volgain
-     *
-     * @return float | null
-     */
     public function getVolgain(): ?float
     {
         return $this->volgain;
     }
 
-    /**
-     * Set imapuser
-     *
-     * @param string $imapuser | null
-     *
-     * @return static
-     */
-    protected function setImapuser(?string $imapuser = null): VoicemailInterface
+    protected function setImapuser(?string $imapuser = null): static
     {
         if (!is_null($imapuser)) {
             Assertion::maxLength($imapuser, 80, 'imapuser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1185,24 +854,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get imapuser
-     *
-     * @return string | null
-     */
     public function getImapuser(): ?string
     {
         return $this->imapuser;
     }
 
-    /**
-     * Set imappassword
-     *
-     * @param string $imappassword | null
-     *
-     * @return static
-     */
-    protected function setImappassword(?string $imappassword = null): VoicemailInterface
+    protected function setImappassword(?string $imappassword = null): static
     {
         if (!is_null($imappassword)) {
             Assertion::maxLength($imappassword, 80, 'imappassword value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1213,24 +870,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get imappassword
-     *
-     * @return string | null
-     */
     public function getImappassword(): ?string
     {
         return $this->imappassword;
     }
 
-    /**
-     * Set imapserver
-     *
-     * @param string $imapserver | null
-     *
-     * @return static
-     */
-    protected function setImapserver(?string $imapserver = null): VoicemailInterface
+    protected function setImapserver(?string $imapserver = null): static
     {
         if (!is_null($imapserver)) {
             Assertion::maxLength($imapserver, 80, 'imapserver value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1241,24 +886,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get imapserver
-     *
-     * @return string | null
-     */
     public function getImapserver(): ?string
     {
         return $this->imapserver;
     }
 
-    /**
-     * Set imapport
-     *
-     * @param string $imapport | null
-     *
-     * @return static
-     */
-    protected function setImapport(?string $imapport = null): VoicemailInterface
+    protected function setImapport(?string $imapport = null): static
     {
         if (!is_null($imapport)) {
             Assertion::maxLength($imapport, 8, 'imapport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1269,24 +902,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get imapport
-     *
-     * @return string | null
-     */
     public function getImapport(): ?string
     {
         return $this->imapport;
     }
 
-    /**
-     * Set imapflags
-     *
-     * @param string $imapflags | null
-     *
-     * @return static
-     */
-    protected function setImapflags(?string $imapflags = null): VoicemailInterface
+    protected function setImapflags(?string $imapflags = null): static
     {
         if (!is_null($imapflags)) {
             Assertion::maxLength($imapflags, 80, 'imapflags value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1297,24 +918,12 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get imapflags
-     *
-     * @return string | null
-     */
     public function getImapflags(): ?string
     {
         return $this->imapflags;
     }
 
-    /**
-     * Set stamp
-     *
-     * @param \DateTimeInterface $stamp | null
-     *
-     * @return static
-     */
-    protected function setStamp($stamp = null): VoicemailInterface
+    protected function setStamp($stamp = null): static
     {
         if (!is_null($stamp)) {
             Assertion::notNull(
@@ -1336,59 +945,30 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * Get stamp
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getStamp(): ?\DateTimeInterface
+    public function getStamp(): ?\DateTime
     {
         return !is_null($this->stamp) ? clone $this->stamp : null;
     }
 
-    /**
-     * Set user
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setUser(?UserInterface $user = null): VoicemailInterface
+    protected function setUser(?UserInterface $user = null): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface
     {
         return $this->user;
     }
 
-    /**
-     * Set residentialDevice
-     *
-     * @param ResidentialDeviceInterface | null
-     *
-     * @return static
-     */
-    protected function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): VoicemailInterface
+    protected function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static
     {
         $this->residentialDevice = $residentialDevice;
 
         return $this;
     }
 
-    /**
-     * Get residentialDevice
-     *
-     * @return ResidentialDeviceInterface | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceInterface
     {
         return $this->residentialDevice;

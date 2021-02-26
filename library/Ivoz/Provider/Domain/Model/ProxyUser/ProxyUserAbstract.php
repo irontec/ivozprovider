@@ -56,7 +56,7 @@ abstract class ProxyUserAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ProxyUserDto
      */
     public static function createDto($id = null)
@@ -158,14 +158,7 @@ abstract class ProxyUserAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name | null
-     *
-     * @return static
-     */
-    protected function setName(?string $name = null): ProxyUserInterface
+    protected function setName(?string $name = null): static
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -176,24 +169,12 @@ abstract class ProxyUserAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * Set ip
-     *
-     * @param string $ip | null
-     *
-     * @return static
-     */
-    protected function setIp(?string $ip = null): ProxyUserInterface
+    protected function setIp(?string $ip = null): static
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -204,11 +185,6 @@ abstract class ProxyUserAbstract
         return $this;
     }
 
-    /**
-     * Get ip
-     *
-     * @return string | null
-     */
     public function getIp(): ?string
     {
         return $this->ip;

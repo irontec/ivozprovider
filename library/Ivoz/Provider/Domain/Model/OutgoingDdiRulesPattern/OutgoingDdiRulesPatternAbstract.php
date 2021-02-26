@@ -52,12 +52,12 @@ abstract class OutgoingDdiRulesPatternAbstract
     protected $outgoingDdiRule;
 
     /**
-     * @var MatchListInterface
+     * @var MatchListInterface | null
      */
     protected $matchList;
 
     /**
-     * @var DdiInterface
+     * @var DdiInterface | null
      */
     protected $forcedDdi;
 
@@ -94,7 +94,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return OutgoingDdiRulesPatternDto
      */
     public static function createDto($id = null)
@@ -215,14 +215,7 @@ abstract class OutgoingDdiRulesPatternAbstract
         ];
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return static
-     */
-    protected function setType(string $type): OutgoingDdiRulesPatternInterface
+    protected function setType(string $type): static
     {
         Assertion::maxLength($type, 20, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -239,24 +232,12 @@ abstract class OutgoingDdiRulesPatternAbstract
         return $this;
     }
 
-    /**
-     * Get type
-     *
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * Set prefix
-     *
-     * @param string $prefix | null
-     *
-     * @return static
-     */
-    protected function setPrefix(?string $prefix = null): OutgoingDdiRulesPatternInterface
+    protected function setPrefix(?string $prefix = null): static
     {
         if (!is_null($prefix)) {
             Assertion::maxLength($prefix, 10, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -267,24 +248,12 @@ abstract class OutgoingDdiRulesPatternAbstract
         return $this;
     }
 
-    /**
-     * Get prefix
-     *
-     * @return string | null
-     */
     public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
-    /**
-     * Set action
-     *
-     * @param string $action
-     *
-     * @return static
-     */
-    protected function setAction(string $action): OutgoingDdiRulesPatternInterface
+    protected function setAction(string $action): static
     {
         Assertion::maxLength($action, 10, 'action value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -301,107 +270,55 @@ abstract class OutgoingDdiRulesPatternAbstract
         return $this;
     }
 
-    /**
-     * Get action
-     *
-     * @return string
-     */
     public function getAction(): string
     {
         return $this->action;
     }
 
-    /**
-     * Set priority
-     *
-     * @param int $priority
-     *
-     * @return static
-     */
-    protected function setPriority(int $priority): OutgoingDdiRulesPatternInterface
+    protected function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * Get priority
-     *
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;
     }
 
-    /**
-     * Set outgoingDdiRule
-     *
-     * @param OutgoingDdiRuleInterface
-     *
-     * @return static
-     */
-    public function setOutgoingDdiRule(OutgoingDdiRuleInterface $outgoingDdiRule): OutgoingDdiRulesPatternInterface
+    public function setOutgoingDdiRule(OutgoingDdiRuleInterface $outgoingDdiRule): static
     {
         $this->outgoingDdiRule = $outgoingDdiRule;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get outgoingDdiRule
-     *
-     * @return OutgoingDdiRuleInterface
-     */
     public function getOutgoingDdiRule(): OutgoingDdiRuleInterface
     {
         return $this->outgoingDdiRule;
     }
 
-    /**
-     * Set matchList
-     *
-     * @param MatchListInterface | null
-     *
-     * @return static
-     */
-    protected function setMatchList(?MatchListInterface $matchList = null): OutgoingDdiRulesPatternInterface
+    protected function setMatchList(?MatchListInterface $matchList = null): static
     {
         $this->matchList = $matchList;
 
         return $this;
     }
 
-    /**
-     * Get matchList
-     *
-     * @return MatchListInterface | null
-     */
     public function getMatchList(): ?MatchListInterface
     {
         return $this->matchList;
     }
 
-    /**
-     * Set forcedDdi
-     *
-     * @param DdiInterface | null
-     *
-     * @return static
-     */
-    protected function setForcedDdi(?DdiInterface $forcedDdi = null): OutgoingDdiRulesPatternInterface
+    protected function setForcedDdi(?DdiInterface $forcedDdi = null): static
     {
         $this->forcedDdi = $forcedDdi;
 
         return $this;
     }
 
-    /**
-     * Get forcedDdi
-     *
-     * @return DdiInterface | null
-     */
     public function getForcedDdi(): ?DdiInterface
     {
         return $this->forcedDdi;

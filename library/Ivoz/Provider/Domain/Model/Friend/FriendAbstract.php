@@ -137,43 +137,44 @@ abstract class FriendAbstract
     protected $rtpEncryption = false;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $multiContact = true;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var CompanyInterface
+     * inversedBy friends
      */
     protected $company;
 
     /**
-     * @var DomainInterface
+     * @var DomainInterface | null
      * inversedBy friends
      */
     protected $domain;
 
     /**
-     * @var TransformationRuleSetInterface
+     * @var TransformationRuleSetInterface | null
      */
     protected $transformationRuleSet;
 
     /**
-     * @var CallAclInterface
+     * @var CallAclInterface | null
      */
     protected $callAcl;
 
     /**
-     * @var DdiInterface
+     * @var DdiInterface | null
      */
     protected $outgoingDdi;
 
     /**
-     * @var LanguageInterface
+     * @var LanguageInterface | null
      */
     protected $language;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      */
     protected $interCompany;
 
@@ -232,7 +233,7 @@ abstract class FriendAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return FriendDto
      */
     public static function createDto($id = null)
@@ -387,6 +388,7 @@ abstract class FriendAbstract
             ->setT38Passthrough(self::getT38Passthrough())
             ->setAlwaysApplyTransformations(self::getAlwaysApplyTransformations())
             ->setRtpEncryption(self::getRtpEncryption())
+            ->setMultiContact(self::getMultiContact())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
             ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
@@ -432,14 +434,7 @@ abstract class FriendAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): FriendInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 65, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -448,24 +443,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return static
-     */
-    protected function setDescription(string $description): FriendInterface
+    protected function setDescription(string $description): static
     {
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -474,24 +457,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * Set transport
-     *
-     * @param string $transport | null
-     *
-     * @return static
-     */
-    protected function setTransport(?string $transport = null): FriendInterface
+    protected function setTransport(?string $transport = null): static
     {
         if (!is_null($transport)) {
             Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -511,24 +482,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get transport
-     *
-     * @return string | null
-     */
     public function getTransport(): ?string
     {
         return $this->transport;
     }
 
-    /**
-     * Set ip
-     *
-     * @param string $ip | null
-     *
-     * @return static
-     */
-    protected function setIp(?string $ip = null): FriendInterface
+    protected function setIp(?string $ip = null): static
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -539,24 +498,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get ip
-     *
-     * @return string | null
-     */
     public function getIp(): ?string
     {
         return $this->ip;
     }
 
-    /**
-     * Set port
-     *
-     * @param int $port | null
-     *
-     * @return static
-     */
-    protected function setPort(?int $port = null): FriendInterface
+    protected function setPort(?int $port = null): static
     {
         if (!is_null($port)) {
             Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
@@ -567,24 +514,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get port
-     *
-     * @return int | null
-     */
     public function getPort(): ?int
     {
         return $this->port;
     }
 
-    /**
-     * Set password
-     *
-     * @param string $password | null
-     *
-     * @return static
-     */
-    protected function setPassword(?string $password = null): FriendInterface
+    protected function setPassword(?string $password = null): static
     {
         if (!is_null($password)) {
             Assertion::maxLength($password, 64, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -595,48 +530,24 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get password
-     *
-     * @return string | null
-     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    /**
-     * Set priority
-     *
-     * @param int $priority
-     *
-     * @return static
-     */
-    protected function setPriority(int $priority): FriendInterface
+    protected function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * Get priority
-     *
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;
     }
 
-    /**
-     * Set disallow
-     *
-     * @param string $disallow
-     *
-     * @return static
-     */
-    protected function setDisallow(string $disallow): FriendInterface
+    protected function setDisallow(string $disallow): static
     {
         Assertion::maxLength($disallow, 200, 'disallow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -645,24 +556,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get disallow
-     *
-     * @return string
-     */
     public function getDisallow(): string
     {
         return $this->disallow;
     }
 
-    /**
-     * Set allow
-     *
-     * @param string $allow
-     *
-     * @return static
-     */
-    protected function setAllow(string $allow): FriendInterface
+    protected function setAllow(string $allow): static
     {
         Assertion::maxLength($allow, 200, 'allow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -671,24 +570,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get allow
-     *
-     * @return string
-     */
     public function getAllow(): string
     {
         return $this->allow;
     }
 
-    /**
-     * Set directMediaMethod
-     *
-     * @param string $directMediaMethod
-     *
-     * @return static
-     */
-    protected function setDirectMediaMethod(string $directMediaMethod): FriendInterface
+    protected function setDirectMediaMethod(string $directMediaMethod): static
     {
         Assertion::choice(
             $directMediaMethod,
@@ -704,24 +591,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get directMediaMethod
-     *
-     * @return string
-     */
     public function getDirectMediaMethod(): string
     {
         return $this->directMediaMethod;
     }
 
-    /**
-     * Set calleridUpdateHeader
-     *
-     * @param string $calleridUpdateHeader
-     *
-     * @return static
-     */
-    protected function setCalleridUpdateHeader(string $calleridUpdateHeader): FriendInterface
+    protected function setCalleridUpdateHeader(string $calleridUpdateHeader): static
     {
         Assertion::choice(
             $calleridUpdateHeader,
@@ -737,24 +612,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get calleridUpdateHeader
-     *
-     * @return string
-     */
     public function getCalleridUpdateHeader(): string
     {
         return $this->calleridUpdateHeader;
     }
 
-    /**
-     * Set updateCallerid
-     *
-     * @param string $updateCallerid
-     *
-     * @return static
-     */
-    protected function setUpdateCallerid(string $updateCallerid): FriendInterface
+    protected function setUpdateCallerid(string $updateCallerid): static
     {
         Assertion::choice(
             $updateCallerid,
@@ -770,24 +633,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get updateCallerid
-     *
-     * @return string
-     */
     public function getUpdateCallerid(): string
     {
         return $this->updateCallerid;
     }
 
-    /**
-     * Set fromUser
-     *
-     * @param string $fromUser | null
-     *
-     * @return static
-     */
-    protected function setFromUser(?string $fromUser = null): FriendInterface
+    protected function setFromUser(?string $fromUser = null): static
     {
         if (!is_null($fromUser)) {
             Assertion::maxLength($fromUser, 190, 'fromUser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -798,24 +649,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get fromUser
-     *
-     * @return string | null
-     */
     public function getFromUser(): ?string
     {
         return $this->fromUser;
     }
 
-    /**
-     * Set fromDomain
-     *
-     * @param string $fromDomain | null
-     *
-     * @return static
-     */
-    protected function setFromDomain(?string $fromDomain = null): FriendInterface
+    protected function setFromDomain(?string $fromDomain = null): static
     {
         if (!is_null($fromDomain)) {
             Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -826,24 +665,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get fromDomain
-     *
-     * @return string | null
-     */
     public function getFromDomain(): ?string
     {
         return $this->fromDomain;
     }
 
-    /**
-     * Set directConnectivity
-     *
-     * @param string $directConnectivity
-     *
-     * @return static
-     */
-    protected function setDirectConnectivity(string $directConnectivity): FriendInterface
+    protected function setDirectConnectivity(string $directConnectivity): static
     {
         Assertion::maxLength($directConnectivity, 20, 'directConnectivity value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -861,24 +688,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get directConnectivity
-     *
-     * @return string
-     */
     public function getDirectConnectivity(): string
     {
         return $this->directConnectivity;
     }
 
-    /**
-     * Set ddiIn
-     *
-     * @param string $ddiIn
-     *
-     * @return static
-     */
-    protected function setDdiIn(string $ddiIn): FriendInterface
+    protected function setDdiIn(string $ddiIn): static
     {
         Assertion::choice(
             $ddiIn,
@@ -894,24 +709,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get ddiIn
-     *
-     * @return string
-     */
     public function getDdiIn(): string
     {
         return $this->ddiIn;
     }
 
-    /**
-     * Set t38Passthrough
-     *
-     * @param string $t38Passthrough
-     *
-     * @return static
-     */
-    protected function setT38Passthrough(string $t38Passthrough): FriendInterface
+    protected function setT38Passthrough(string $t38Passthrough): static
     {
         Assertion::choice(
             $t38Passthrough,
@@ -927,24 +730,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get t38Passthrough
-     *
-     * @return string
-     */
     public function getT38Passthrough(): string
     {
         return $this->t38Passthrough;
     }
 
-    /**
-     * Set alwaysApplyTransformations
-     *
-     * @param bool $alwaysApplyTransformations
-     *
-     * @return static
-     */
-    protected function setAlwaysApplyTransformations(bool $alwaysApplyTransformations): FriendInterface
+    protected function setAlwaysApplyTransformations(bool $alwaysApplyTransformations): static
     {
         Assertion::between(intval($alwaysApplyTransformations), 0, 1, 'alwaysApplyTransformations provided "%s" is not a valid boolean value.');
         $alwaysApplyTransformations = (bool) $alwaysApplyTransformations;
@@ -954,24 +745,12 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get alwaysApplyTransformations
-     *
-     * @return bool
-     */
     public function getAlwaysApplyTransformations(): bool
     {
         return $this->alwaysApplyTransformations;
     }
 
-    /**
-     * Set rtpEncryption
-     *
-     * @param bool $rtpEncryption
-     *
-     * @return static
-     */
-    protected function setRtpEncryption(bool $rtpEncryption): FriendInterface
+    protected function setRtpEncryption(bool $rtpEncryption): static
     {
         Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
         $rtpEncryption = (bool) $rtpEncryption;
@@ -981,26 +760,13 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get rtpEncryption
-     *
-     * @return bool
-     */
     public function getRtpEncryption(): bool
     {
         return $this->rtpEncryption;
     }
 
-    /**
-     * Set multiContact
-     *
-     * @param boolean $multiContact
-     *
-     * @return static
-     */
-    protected function setMultiContact($multiContact)
+    protected function setMultiContact(bool $multiContact): static
     {
-        Assertion::notNull($multiContact, 'multiContact value "%s" is null, but non null value was expected.');
         Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
         $multiContact = (bool) $multiContact;
 
@@ -1009,179 +775,92 @@ abstract class FriendAbstract
         return $this;
     }
 
-    /**
-     * Get multiContact
-     *
-     * @return boolean
-     */
     public function getMultiContact(): bool
     {
         return $this->multiContact;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    public function setCompany(CompanyInterface $company): FriendInterface
+    public function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set domain
-     *
-     * @param DomainInterface | null
-     *
-     * @return static
-     */
-    public function setDomain(?DomainInterface $domain = null): FriendInterface
+    public function setDomain(?DomainInterface $domain = null): static
     {
         $this->domain = $domain;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get domain
-     *
-     * @return DomainInterface | null
-     */
     public function getDomain(): ?DomainInterface
     {
         return $this->domain;
     }
 
-    /**
-     * Set transformationRuleSet
-     *
-     * @param TransformationRuleSetInterface | null
-     *
-     * @return static
-     */
-    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): FriendInterface
+    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): static
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
-    /**
-     * Get transformationRuleSet
-     *
-     * @return TransformationRuleSetInterface | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface
     {
         return $this->transformationRuleSet;
     }
 
-    /**
-     * Set callAcl
-     *
-     * @param CallAclInterface | null
-     *
-     * @return static
-     */
-    protected function setCallAcl(?CallAclInterface $callAcl = null): FriendInterface
+    protected function setCallAcl(?CallAclInterface $callAcl = null): static
     {
         $this->callAcl = $callAcl;
 
         return $this;
     }
 
-    /**
-     * Get callAcl
-     *
-     * @return CallAclInterface | null
-     */
     public function getCallAcl(): ?CallAclInterface
     {
         return $this->callAcl;
     }
 
-    /**
-     * Set outgoingDdi
-     *
-     * @param DdiInterface | null
-     *
-     * @return static
-     */
-    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): FriendInterface
+    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): static
     {
         $this->outgoingDdi = $outgoingDdi;
 
         return $this;
     }
 
-    /**
-     * Get outgoingDdi
-     *
-     * @return DdiInterface | null
-     */
     public function getOutgoingDdi(): ?DdiInterface
     {
         return $this->outgoingDdi;
     }
 
-    /**
-     * Set language
-     *
-     * @param LanguageInterface | null
-     *
-     * @return static
-     */
-    protected function setLanguage(?LanguageInterface $language = null): FriendInterface
+    protected function setLanguage(?LanguageInterface $language = null): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * Get language
-     *
-     * @return LanguageInterface | null
-     */
     public function getLanguage(): ?LanguageInterface
     {
         return $this->language;
     }
 
-    /**
-     * Set interCompany
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    protected function setInterCompany(?CompanyInterface $interCompany = null): FriendInterface
+    protected function setInterCompany(?CompanyInterface $interCompany = null): static
     {
         $this->interCompany = $interCompany;
 
         return $this;
     }
 
-    /**
-     * Get interCompany
-     *
-     * @return CompanyInterface | null
-     */
     public function getInterCompany(): ?CompanyInterface
     {
         return $this->interCompany;

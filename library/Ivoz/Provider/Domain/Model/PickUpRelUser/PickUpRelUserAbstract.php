@@ -22,13 +22,13 @@ abstract class PickUpRelUserAbstract
     use ChangelogTrait;
 
     /**
-     * @var PickUpGroupInterface
+     * @var PickUpGroupInterface | null
      * inversedBy relUsers
      */
     protected $pickUpGroup;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      * inversedBy pickUpRelUsers
      */
     protected $user;
@@ -62,7 +62,7 @@ abstract class PickUpRelUserAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return PickUpRelUserDto
      */
     public static function createDto($id = null)
@@ -164,49 +164,27 @@ abstract class PickUpRelUserAbstract
         ];
     }
 
-    /**
-     * Set pickUpGroup
-     *
-     * @param PickUpGroupInterface | null
-     *
-     * @return static
-     */
-    public function setPickUpGroup(?PickUpGroupInterface $pickUpGroup = null): PickUpRelUserInterface
+    public function setPickUpGroup(?PickUpGroupInterface $pickUpGroup = null): static
     {
         $this->pickUpGroup = $pickUpGroup;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get pickUpGroup
-     *
-     * @return PickUpGroupInterface | null
-     */
     public function getPickUpGroup(): ?PickUpGroupInterface
     {
         return $this->pickUpGroup;
     }
 
-    /**
-     * Set user
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    public function setUser(?UserInterface $user = null): PickUpRelUserInterface
+    public function setUser(?UserInterface $user = null): static
     {
         $this->user = $user;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface
     {
         return $this->user;

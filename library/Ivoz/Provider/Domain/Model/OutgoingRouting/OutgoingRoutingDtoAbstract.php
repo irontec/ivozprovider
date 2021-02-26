@@ -25,7 +25,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $type = 'group';
 
@@ -40,12 +40,12 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     private $weight = 1;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $routingMode = 'static';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $prefix;
 
@@ -55,12 +55,12 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     private $stopper = false;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $forceClid = false;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $clid;
 
@@ -201,210 +201,127 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $type | null
-     *
-     * @return static
-     */
-    public function setType(?string $type = null): self
+    public function setType(?string $type): static
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param int $priority | null
-     *
-     * @return static
-     */
-    public function setPriority(?int $priority = null): self
+    public function setPriority(?int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    /**
-     * @param int $weight | null
-     *
-     * @return static
-     */
-    public function setWeight(?int $weight = null): self
+    public function setWeight(?int $weight): static
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getWeight(): ?int
     {
         return $this->weight;
     }
 
-    /**
-     * @param string $routingMode | null
-     *
-     * @return static
-     */
-    public function setRoutingMode(?string $routingMode = null): self
+    public function setRoutingMode(?string $routingMode): static
     {
         $this->routingMode = $routingMode;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRoutingMode(): ?string
     {
         return $this->routingMode;
     }
 
-    /**
-     * @param string $prefix | null
-     *
-     * @return static
-     */
-    public function setPrefix(?string $prefix = null): self
+    public function setPrefix(?string $prefix): static
     {
         $this->prefix = $prefix;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
-    /**
-     * @param bool $stopper | null
-     *
-     * @return static
-     */
-    public function setStopper(?bool $stopper = null): self
+    public function setStopper(?bool $stopper): static
     {
         $this->stopper = $stopper;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getStopper(): ?bool
     {
         return $this->stopper;
     }
 
-    /**
-     * @param bool $forceClid | null
-     *
-     * @return static
-     */
-    public function setForceClid(?bool $forceClid = null): self
+    public function setForceClid(?bool $forceClid): static
     {
         $this->forceClid = $forceClid;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getForceClid(): ?bool
     {
         return $this->forceClid;
     }
 
-    /**
-     * @param string $clid | null
-     *
-     * @return static
-     */
-    public function setClid(?string $clid = null): self
+    public function setClid(?string $clid): static
     {
         $this->clid = $clid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getClid(): ?string
     {
         return $this->clid;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -413,9 +330,6 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -425,30 +339,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -457,9 +360,6 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -469,30 +369,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CarrierDto | null
-     *
-     * @return static
-     */
-    public function setCarrier(?CarrierDto $carrier = null): self
+    public function setCarrier(?CarrierDto $carrier): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * @return CarrierDto | null
-     */
     public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
-    /**
-     * @return static
-     */
-    public function setCarrierId($id): self
+    public function setCarrierId($id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -501,9 +390,6 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCarrierId()
     {
         if ($dto = $this->getCarrier()) {
@@ -513,30 +399,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param RoutingPatternDto | null
-     *
-     * @return static
-     */
-    public function setRoutingPattern(?RoutingPatternDto $routingPattern = null): self
+    public function setRoutingPattern(?RoutingPatternDto $routingPattern): static
     {
         $this->routingPattern = $routingPattern;
 
         return $this;
     }
 
-    /**
-     * @return RoutingPatternDto | null
-     */
     public function getRoutingPattern(): ?RoutingPatternDto
     {
         return $this->routingPattern;
     }
 
-    /**
-     * @return static
-     */
-    public function setRoutingPatternId($id): self
+    public function setRoutingPatternId($id): static
     {
         $value = !is_null($id)
             ? new RoutingPatternDto($id)
@@ -545,9 +420,6 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setRoutingPattern($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRoutingPatternId()
     {
         if ($dto = $this->getRoutingPattern()) {
@@ -557,30 +429,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param RoutingPatternGroupDto | null
-     *
-     * @return static
-     */
-    public function setRoutingPatternGroup(?RoutingPatternGroupDto $routingPatternGroup = null): self
+    public function setRoutingPatternGroup(?RoutingPatternGroupDto $routingPatternGroup): static
     {
         $this->routingPatternGroup = $routingPatternGroup;
 
         return $this;
     }
 
-    /**
-     * @return RoutingPatternGroupDto | null
-     */
     public function getRoutingPatternGroup(): ?RoutingPatternGroupDto
     {
         return $this->routingPatternGroup;
     }
 
-    /**
-     * @return static
-     */
-    public function setRoutingPatternGroupId($id): self
+    public function setRoutingPatternGroupId($id): static
     {
         $value = !is_null($id)
             ? new RoutingPatternGroupDto($id)
@@ -589,9 +450,6 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setRoutingPatternGroup($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRoutingPatternGroupId()
     {
         if ($dto = $this->getRoutingPatternGroup()) {
@@ -601,30 +459,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param RoutingTagDto | null
-     *
-     * @return static
-     */
-    public function setRoutingTag(?RoutingTagDto $routingTag = null): self
+    public function setRoutingTag(?RoutingTagDto $routingTag): static
     {
         $this->routingTag = $routingTag;
 
         return $this;
     }
 
-    /**
-     * @return RoutingTagDto | null
-     */
     public function getRoutingTag(): ?RoutingTagDto
     {
         return $this->routingTag;
     }
 
-    /**
-     * @return static
-     */
-    public function setRoutingTagId($id): self
+    public function setRoutingTagId($id): static
     {
         $value = !is_null($id)
             ? new RoutingTagDto($id)
@@ -633,9 +480,6 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setRoutingTag($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRoutingTagId()
     {
         if ($dto = $this->getRoutingTag()) {
@@ -645,30 +489,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setClidCountry(?CountryDto $clidCountry = null): self
+    public function setClidCountry(?CountryDto $clidCountry): static
     {
         $this->clidCountry = $clidCountry;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getClidCountry(): ?CountryDto
     {
         return $this->clidCountry;
     }
 
-    /**
-     * @return static
-     */
-    public function setClidCountryId($id): self
+    public function setClidCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -677,9 +510,6 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setClidCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getClidCountryId()
     {
         if ($dto = $this->getClidCountry()) {
@@ -689,30 +519,19 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TpLcrRuleDto | null
-     *
-     * @return static
-     */
-    public function setTpLcrRule(?TpLcrRuleDto $tpLcrRule = null): self
+    public function setTpLcrRule(?TpLcrRuleDto $tpLcrRule): static
     {
         $this->tpLcrRule = $tpLcrRule;
 
         return $this;
     }
 
-    /**
-     * @return TpLcrRuleDto | null
-     */
     public function getTpLcrRule(): ?TpLcrRuleDto
     {
         return $this->tpLcrRule;
     }
 
-    /**
-     * @return static
-     */
-    public function setTpLcrRuleId($id): self
+    public function setTpLcrRuleId($id): static
     {
         $value = !is_null($id)
             ? new TpLcrRuleDto($id)
@@ -721,9 +540,6 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->setTpLcrRule($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTpLcrRuleId()
     {
         if ($dto = $this->getTpLcrRule()) {
@@ -733,61 +549,37 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TrunksLcrRuleDto[] | null
-     *
-     * @return static
-     */
-    public function setLcrRules(?array $lcrRules = null): self
+    public function setLcrRules(?array $lcrRules): static
     {
         $this->lcrRules = $lcrRules;
 
         return $this;
     }
 
-    /**
-     * @return TrunksLcrRuleDto[] | null
-     */
     public function getLcrRules(): ?array
     {
         return $this->lcrRules;
     }
 
-    /**
-     * @param TrunksLcrRuleTargetDto[] | null
-     *
-     * @return static
-     */
-    public function setLcrRuleTargets(?array $lcrRuleTargets = null): self
+    public function setLcrRuleTargets(?array $lcrRuleTargets): static
     {
         $this->lcrRuleTargets = $lcrRuleTargets;
 
         return $this;
     }
 
-    /**
-     * @return TrunksLcrRuleTargetDto[] | null
-     */
     public function getLcrRuleTargets(): ?array
     {
         return $this->lcrRuleTargets;
     }
 
-    /**
-     * @param OutgoingRoutingRelCarrierDto[] | null
-     *
-     * @return static
-     */
-    public function setRelCarriers(?array $relCarriers = null): self
+    public function setRelCarriers(?array $relCarriers): static
     {
         $this->relCarriers = $relCarriers;
 
         return $this;
     }
 
-    /**
-     * @return OutgoingRoutingRelCarrierDto[] | null
-     */
     public function getRelCarriers(): ?array
     {
         return $this->relCarriers;

@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Extension;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -24,11 +25,9 @@ class ExtensionLifecycleServiceCollection implements LifecycleServiceCollectionI
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, ExtensionLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, ExtensionLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

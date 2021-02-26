@@ -20,22 +20,22 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $startDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $endDate;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $routeType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $numberValue;
 
@@ -135,130 +135,79 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param \DateTimeInterface $startDate | null
-     *
-     * @return static
-     */
-    public function setStartDate($startDate = null): self
+    public function setStartDate(null|\DateTime|string $startDate): static
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getStartDate()
+    public function getStartDate(): \DateTime|string|null
     {
         return $this->startDate;
     }
 
-    /**
-     * @param \DateTimeInterface $endDate | null
-     *
-     * @return static
-     */
-    public function setEndDate($endDate = null): self
+    public function setEndDate(null|\DateTime|string $endDate): static
     {
         $this->endDate = $endDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getEndDate()
+    public function getEndDate(): \DateTime|string|null
     {
         return $this->endDate;
     }
 
-    /**
-     * @param string $routeType | null
-     *
-     * @return static
-     */
-    public function setRouteType(?string $routeType = null): self
+    public function setRouteType(?string $routeType): static
     {
         $this->routeType = $routeType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRouteType(): ?string
     {
         return $this->routeType;
     }
 
-    /**
-     * @param string $numberValue | null
-     *
-     * @return static
-     */
-    public function setNumberValue(?string $numberValue = null): self
+    public function setNumberValue(?string $numberValue): static
     {
         $this->numberValue = $numberValue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CalendarDto | null
-     *
-     * @return static
-     */
-    public function setCalendar(?CalendarDto $calendar = null): self
+    public function setCalendar(?CalendarDto $calendar): static
     {
         $this->calendar = $calendar;
 
         return $this;
     }
 
-    /**
-     * @return CalendarDto | null
-     */
     public function getCalendar(): ?CalendarDto
     {
         return $this->calendar;
     }
 
-    /**
-     * @return static
-     */
-    public function setCalendarId($id): self
+    public function setCalendarId($id): static
     {
         $value = !is_null($id)
             ? new CalendarDto($id)
@@ -267,9 +216,6 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this->setCalendar($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCalendarId()
     {
         if ($dto = $this->getCalendar()) {
@@ -279,30 +225,19 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LocutionDto | null
-     *
-     * @return static
-     */
-    public function setLocution(?LocutionDto $locution = null): self
+    public function setLocution(?LocutionDto $locution): static
     {
         $this->locution = $locution;
 
         return $this;
     }
 
-    /**
-     * @return LocutionDto | null
-     */
     public function getLocution(): ?LocutionDto
     {
         return $this->locution;
     }
 
-    /**
-     * @return static
-     */
-    public function setLocutionId($id): self
+    public function setLocutionId($id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -311,9 +246,6 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this->setLocution($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getLocutionId()
     {
         if ($dto = $this->getLocution()) {
@@ -323,30 +255,19 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ExtensionDto | null
-     *
-     * @return static
-     */
-    public function setExtension(?ExtensionDto $extension = null): self
+    public function setExtension(?ExtensionDto $extension): static
     {
         $this->extension = $extension;
 
         return $this;
     }
 
-    /**
-     * @return ExtensionDto | null
-     */
     public function getExtension(): ?ExtensionDto
     {
         return $this->extension;
     }
 
-    /**
-     * @return static
-     */
-    public function setExtensionId($id): self
+    public function setExtensionId($id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -355,9 +276,6 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this->setExtension($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getExtensionId()
     {
         if ($dto = $this->getExtension()) {
@@ -367,30 +285,19 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setVoiceMailUser(?UserDto $voiceMailUser = null): self
+    public function setVoiceMailUser(?UserDto $voiceMailUser): static
     {
         $this->voiceMailUser = $voiceMailUser;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getVoiceMailUser(): ?UserDto
     {
         return $this->voiceMailUser;
     }
 
-    /**
-     * @return static
-     */
-    public function setVoiceMailUserId($id): self
+    public function setVoiceMailUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -399,9 +306,6 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this->setVoiceMailUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getVoiceMailUserId()
     {
         if ($dto = $this->getVoiceMailUser()) {
@@ -411,30 +315,19 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setNumberCountry(?CountryDto $numberCountry = null): self
+    public function setNumberCountry(?CountryDto $numberCountry): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getNumberCountry(): ?CountryDto
     {
         return $this->numberCountry;
     }
 
-    /**
-     * @return static
-     */
-    public function setNumberCountryId($id): self
+    public function setNumberCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -443,9 +336,6 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this->setNumberCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getNumberCountryId()
     {
         if ($dto = $this->getNumberCountry()) {
@@ -455,21 +345,13 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CalendarPeriodsRelScheduleDto[] | null
-     *
-     * @return static
-     */
-    public function setRelSchedules(?array $relSchedules = null): self
+    public function setRelSchedules(?array $relSchedules): static
     {
         $this->relSchedules = $relSchedules;
 
         return $this;
     }
 
-    /**
-     * @return CalendarPeriodsRelScheduleDto[] | null
-     */
     public function getRelSchedules(): ?array
     {
         return $this->relSchedules;

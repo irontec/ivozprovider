@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\CompanyRelRoutingTag;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class CompanyRelRoutingTagLifecycleServiceCollection implements LifecycleService
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, CompanyRelRoutingTagLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, CompanyRelRoutingTagLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

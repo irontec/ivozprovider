@@ -42,7 +42,7 @@ abstract class FaxAbstract
     protected $company;
 
     /**
-     * @var DdiInterface
+     * @var DdiInterface | null
      */
     protected $outgoingDdi;
 
@@ -77,7 +77,7 @@ abstract class FaxAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return FaxDto
      */
     public static function createDto($id = null)
@@ -190,14 +190,7 @@ abstract class FaxAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): FaxInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -206,24 +199,12 @@ abstract class FaxAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email | null
-     *
-     * @return static
-     */
-    protected function setEmail(?string $email = null): FaxInterface
+    protected function setEmail(?string $email = null): static
     {
         if (!is_null($email)) {
             Assertion::maxLength($email, 255, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -234,24 +215,12 @@ abstract class FaxAbstract
         return $this;
     }
 
-    /**
-     * Get email
-     *
-     * @return string | null
-     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * Set sendByEmail
-     *
-     * @param bool $sendByEmail
-     *
-     * @return static
-     */
-    protected function setSendByEmail(bool $sendByEmail): FaxInterface
+    protected function setSendByEmail(bool $sendByEmail): static
     {
         Assertion::between(intval($sendByEmail), 0, 1, 'sendByEmail provided "%s" is not a valid boolean value.');
         $sendByEmail = (bool) $sendByEmail;
@@ -261,59 +230,30 @@ abstract class FaxAbstract
         return $this;
     }
 
-    /**
-     * Get sendByEmail
-     *
-     * @return bool
-     */
     public function getSendByEmail(): bool
     {
         return $this->sendByEmail;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): FaxInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set outgoingDdi
-     *
-     * @param DdiInterface | null
-     *
-     * @return static
-     */
-    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): FaxInterface
+    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): static
     {
         $this->outgoingDdi = $outgoingDdi;
 
         return $this;
     }
 
-    /**
-     * Get outgoingDdi
-     *
-     * @return DdiInterface | null
-     */
     public function getOutgoingDdi(): ?DdiInterface
     {
         return $this->outgoingDdi;

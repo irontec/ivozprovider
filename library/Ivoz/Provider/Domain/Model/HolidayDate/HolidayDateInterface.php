@@ -2,12 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\HolidayDate;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * HolidayDateInterface
@@ -33,97 +33,30 @@ interface HolidayDateInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get eventDate
-     *
-     * @return \DateTimeInterface
-     */
-    public function getEventDate(): \DateTimeInterface;
+    public function getEventDate(): \DateTime;
 
-    /**
-     * Get wholeDayEvent
-     *
-     * @return bool
-     */
     public function getWholeDayEvent(): bool;
 
-    /**
-     * Get timeIn
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getTimeIn(): ?\DateTimeInterface;
+    public function getTimeIn(): ?\DateTime;
 
-    /**
-     * Get timeOut
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getTimeOut(): ?\DateTimeInterface;
+    public function getTimeOut(): ?\DateTime;
 
-    /**
-     * Get routeType
-     *
-     * @return string | null
-     */
     public function getRouteType(): ?string;
 
-    /**
-     * Get numberValue
-     *
-     * @return string | null
-     */
     public function getNumberValue(): ?string;
 
-    /**
-     * Set calendar
-     *
-     * @param CalendarInterface
-     *
-     * @return static
-     */
-    public function setCalendar(CalendarInterface $calendar): HolidayDateInterface;
+    public function setCalendar(CalendarInterface $calendar): static;
 
-    /**
-     * Get calendar
-     *
-     * @return CalendarInterface
-     */
     public function getCalendar(): CalendarInterface;
 
-    /**
-     * Get locution
-     *
-     * @return LocutionInterface | null
-     */
     public function getLocution(): ?LocutionInterface;
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getExtension(): ?ExtensionInterface;
 
-    /**
-     * Get voiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getVoiceMailUser(): ?UserInterface;
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface;
 
     /**

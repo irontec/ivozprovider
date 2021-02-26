@@ -12,7 +12,7 @@
         <option name="comment">[enum:number|regexp]</option>
       </options>
     </field>
-    <field name="regexp" type="string" column="regExp" length="255" nullable="true">
+    <field name="regexp" type="string" column="`regExp`" length="255" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

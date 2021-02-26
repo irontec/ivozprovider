@@ -26,10 +26,10 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $externallyRated = false;
 
@@ -119,110 +119,67 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param bool $externallyRated | null
-     *
-     * @return static
-     */
-    public function setExternallyRated(?bool $externallyRated = null): self
+    public function setExternallyRated(?bool $externallyRated): static
     {
         $this->externallyRated = $externallyRated;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getExternallyRated(): ?bool
     {
         return $this->externallyRated;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -231,9 +188,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -243,30 +197,19 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TransformationRuleSetDto | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet = null): self
+    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet): static
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
-    /**
-     * @return TransformationRuleSetDto | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetDto
     {
         return $this->transformationRuleSet;
     }
 
-    /**
-     * @return static
-     */
-    public function setTransformationRuleSetId($id): self
+    public function setTransformationRuleSetId($id): static
     {
         $value = !is_null($id)
             ? new TransformationRuleSetDto($id)
@@ -275,9 +218,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this->setTransformationRuleSet($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTransformationRuleSetId()
     {
         if ($dto = $this->getTransformationRuleSet()) {
@@ -287,30 +227,19 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ProxyTrunkDto | null
-     *
-     * @return static
-     */
-    public function setProxyTrunk(?ProxyTrunkDto $proxyTrunk = null): self
+    public function setProxyTrunk(?ProxyTrunkDto $proxyTrunk): static
     {
         $this->proxyTrunk = $proxyTrunk;
 
         return $this;
     }
 
-    /**
-     * @return ProxyTrunkDto | null
-     */
     public function getProxyTrunk(): ?ProxyTrunkDto
     {
         return $this->proxyTrunk;
     }
 
-    /**
-     * @return static
-     */
-    public function setProxyTrunkId($id): self
+    public function setProxyTrunkId($id): static
     {
         $value = !is_null($id)
             ? new ProxyTrunkDto($id)
@@ -319,9 +248,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this->setProxyTrunk($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getProxyTrunkId()
     {
         if ($dto = $this->getProxyTrunk()) {
@@ -331,41 +257,25 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DdiProviderRegistrationDto[] | null
-     *
-     * @return static
-     */
-    public function setDdiProviderRegistrations(?array $ddiProviderRegistrations = null): self
+    public function setDdiProviderRegistrations(?array $ddiProviderRegistrations): static
     {
         $this->ddiProviderRegistrations = $ddiProviderRegistrations;
 
         return $this;
     }
 
-    /**
-     * @return DdiProviderRegistrationDto[] | null
-     */
     public function getDdiProviderRegistrations(): ?array
     {
         return $this->ddiProviderRegistrations;
     }
 
-    /**
-     * @param DdiProviderAddressDto[] | null
-     *
-     * @return static
-     */
-    public function setDdiProviderAddresses(?array $ddiProviderAddresses = null): self
+    public function setDdiProviderAddresses(?array $ddiProviderAddresses): static
     {
         $this->ddiProviderAddresses = $ddiProviderAddresses;
 
         return $this;
     }
 
-    /**
-     * @return DdiProviderAddressDto[] | null
-     */
     public function getDdiProviderAddresses(): ?array
     {
         return $this->ddiProviderAddresses;

@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Service\BalanceNotification;
 
+use Ivoz\Core\Domain\Assert\Assertion;
+use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +21,9 @@ class BalanceNotificationLifecycleServiceCollection implements LifecycleServiceC
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, DomainEventSubscriberInterface::class);
         $this->services[$event][] = $service;
     }
 }

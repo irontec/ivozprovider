@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
@@ -9,7 +10,6 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * TerminalInterface
@@ -35,13 +35,13 @@ interface TerminalInterface extends LoggableEntityInterface
      * {@inheritDoc}
      * @throws \InvalidArgumentException
      */
-    public function setName(string $name = null): TerminalInterface;
+    public function setName(?string $name = null): static;
 
     /**
      * {@inheritDoc}
      * @throws \InvalidArgumentException
      */
-    public function setPassword(string $password): TerminalInterface;
+    public function setPassword(string $password): static;
 
     public static function randomPassword();
 
@@ -67,115 +67,36 @@ interface TerminalInterface extends LoggableEntityInterface
      */
     public function getAstPsEndpoint();
 
-    public function setMac(string $mac = null): TerminalInterface;
+    public function setMac(?string $mac = null): static;
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName(): ?string;
+    public function getName(): string;
 
-    /**
-     * Get disallow
-     *
-     * @return string
-     */
     public function getDisallow(): string;
 
-    /**
-     * Get allowAudio
-     *
-     * @return string
-     */
     public function getAllowAudio(): string;
 
-    /**
-     * Get allowVideo
-     *
-     * @return string | null
-     */
     public function getAllowVideo(): ?string;
 
-    /**
-     * Get directMediaMethod
-     *
-     * @return string
-     */
     public function getDirectMediaMethod(): string;
 
-    /**
-     * Get password
-     *
-     * @return string
-     */
     public function getPassword(): string;
 
-    /**
-     * Get mac
-     *
-     * @return string | null
-     */
     public function getMac(): ?string;
 
-    /**
-     * Get lastProvisionDate
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getLastProvisionDate(): ?\DateTimeInterface;
+    public function getLastProvisionDate(): ?\DateTime;
 
-    /**
-     * Get t38Passthrough
-     *
-     * @return string
-     */
     public function getT38Passthrough(): string;
 
-    /**
-     * Get rtpEncryption
-     *
-     * @return bool
-     */
     public function getRtpEncryption(): bool;
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    public function setCompany(CompanyInterface $company): TerminalInterface;
+    public function setCompany(CompanyInterface $company): static;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface;
 
-    /**
-     * Set domain
-     *
-     * @param DomainInterface | null
-     *
-     * @return static
-     */
-    public function setDomain(?DomainInterface $domain = null): TerminalInterface;
+    public function setDomain(?DomainInterface $domain = null): static;
 
-    /**
-     * Get domain
-     *
-     * @return DomainInterface | null
-     */
     public function getDomain(): ?DomainInterface;
 
-    /**
-     * Get terminalModel
-     *
-     * @return TerminalModelInterface | null
-     */
     public function getTerminalModel(): ?TerminalModelInterface;
 
     /**
@@ -183,72 +104,20 @@ interface TerminalInterface extends LoggableEntityInterface
      */
     public function isInitialized(): bool;
 
-    /**
-     * Add astPsEndpoint
-     *
-     * @param PsEndpointInterface $astPsEndpoint
-     *
-     * @return static
-     */
     public function addAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface;
 
-    /**
-     * Remove astPsEndpoint
-     *
-     * @param PsEndpointInterface $astPsEndpoint
-     *
-     * @return static
-     */
     public function removeAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface;
 
-    /**
-     * Replace astPsEndpoints
-     *
-     * @param ArrayCollection $astPsEndpoints of PsEndpointInterface
-     *
-     * @return static
-     */
     public function replaceAstPsEndpoints(ArrayCollection $astPsEndpoints): TerminalInterface;
 
-    /**
-     * Get astPsEndpoints
-     * @param Criteria | null $criteria
-     * @return PsEndpointInterface[]
-     */
     public function getAstPsEndpoints(?Criteria $criteria = null): array;
 
-    /**
-     * Add user
-     *
-     * @param UserInterface $user
-     *
-     * @return static
-     */
     public function addUser(UserInterface $user): TerminalInterface;
 
-    /**
-     * Remove user
-     *
-     * @param UserInterface $user
-     *
-     * @return static
-     */
     public function removeUser(UserInterface $user): TerminalInterface;
 
-    /**
-     * Replace users
-     *
-     * @param ArrayCollection $users of UserInterface
-     *
-     * @return static
-     */
     public function replaceUsers(ArrayCollection $users): TerminalInterface;
 
-    /**
-     * Get users
-     * @param Criteria | null $criteria
-     * @return UserInterface[]
-     */
     public function getUsers(?Criteria $criteria = null): array;
 
 }

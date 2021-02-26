@@ -56,7 +56,7 @@ abstract class ApplicationServerAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ApplicationServerDto
      */
     public static function createDto($id = null)
@@ -157,14 +157,7 @@ abstract class ApplicationServerAbstract
         ];
     }
 
-    /**
-     * Set ip
-     *
-     * @param string $ip
-     *
-     * @return static
-     */
-    protected function setIp(string $ip): ApplicationServerInterface
+    protected function setIp(string $ip): static
     {
         Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -173,24 +166,12 @@ abstract class ApplicationServerAbstract
         return $this;
     }
 
-    /**
-     * Get ip
-     *
-     * @return string
-     */
     public function getIp(): string
     {
         return $this->ip;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name | null
-     *
-     * @return static
-     */
-    protected function setName(?string $name = null): ApplicationServerInterface
+    protected function setName(?string $name = null): static
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 64, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -201,11 +182,6 @@ abstract class ApplicationServerAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;

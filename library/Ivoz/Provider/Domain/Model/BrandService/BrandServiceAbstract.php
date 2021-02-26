@@ -66,7 +66,7 @@ abstract class BrandServiceAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return BrandServiceDto
      */
     public static function createDto($id = null)
@@ -171,14 +171,7 @@ abstract class BrandServiceAbstract
         ];
     }
 
-    /**
-     * Set code
-     *
-     * @param string $code
-     *
-     * @return static
-     */
-    protected function setCode(string $code): BrandServiceInterface
+    protected function setCode(string $code): static
     {
         Assertion::maxLength($code, 3, 'code value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -187,59 +180,31 @@ abstract class BrandServiceAbstract
         return $this;
     }
 
-    /**
-     * Get code
-     *
-     * @return string
-     */
     public function getCode(): string
     {
         return $this->code;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    public function setBrand(BrandInterface $brand): BrandServiceInterface
+    public function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set service
-     *
-     * @param ServiceInterface
-     *
-     * @return static
-     */
-    protected function setService(ServiceInterface $service): BrandServiceInterface
+    protected function setService(ServiceInterface $service): static
     {
         $this->service = $service;
 
         return $this;
     }
 
-    /**
-     * Get service
-     *
-     * @return ServiceInterface
-     */
     public function getService(): ServiceInterface
     {
         return $this->service;

@@ -23,12 +23,12 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $callid;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime|string|null
      */
     private $startTime;
 
@@ -38,62 +38,62 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     private $duration = 0;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $caller;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $callee;
 
     /**
-     * @var float | null
+     * @var float|null
      */
     private $cost;
 
     /**
-     * @var float | null
+     * @var float|null
      */
     private $price;
 
     /**
-     * @var array | null
+     * @var array|null
      */
     private $priceDetails;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $carrierName;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $destinationName;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $ratingPlanName;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $endpointType;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $endpointId;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $endpointName;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $direction = 'outbound';
 
@@ -237,350 +237,211 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $callid | null
-     *
-     * @return static
-     */
-    public function setCallid(?string $callid = null): self
+    public function setCallid(?string $callid): static
     {
         $this->callid = $callid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallid(): ?string
     {
         return $this->callid;
     }
 
-    /**
-     * @param \DateTimeInterface $startTime | null
-     *
-     * @return static
-     */
-    public function setStartTime($startTime = null): self
+    public function setStartTime(null|\DateTime|string $startTime): static
     {
         $this->startTime = $startTime;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getStartTime()
+    public function getStartTime(): \DateTime|string|null
     {
         return $this->startTime;
     }
 
-    /**
-     * @param float $duration | null
-     *
-     * @return static
-     */
-    public function setDuration(?float $duration = null): self
+    public function setDuration(?float $duration): static
     {
         $this->duration = $duration;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getDuration(): ?float
     {
         return $this->duration;
     }
 
-    /**
-     * @param string $caller | null
-     *
-     * @return static
-     */
-    public function setCaller(?string $caller = null): self
+    public function setCaller(?string $caller): static
     {
         $this->caller = $caller;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCaller(): ?string
     {
         return $this->caller;
     }
 
-    /**
-     * @param string $callee | null
-     *
-     * @return static
-     */
-    public function setCallee(?string $callee = null): self
+    public function setCallee(?string $callee): static
     {
         $this->callee = $callee;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallee(): ?string
     {
         return $this->callee;
     }
 
-    /**
-     * @param float $cost | null
-     *
-     * @return static
-     */
-    public function setCost(?float $cost = null): self
+    public function setCost(?float $cost): static
     {
         $this->cost = $cost;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getCost(): ?float
     {
         return $this->cost;
     }
 
-    /**
-     * @param float $price | null
-     *
-     * @return static
-     */
-    public function setPrice(?float $price = null): self
+    public function setPrice(?float $price): static
     {
         $this->price = $price;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    /**
-     * @param array $priceDetails | null
-     *
-     * @return static
-     */
-    public function setPriceDetails(?array $priceDetails = null): self
+    public function setPriceDetails(?array $priceDetails): static
     {
         $this->priceDetails = $priceDetails;
 
         return $this;
     }
 
-    /**
-     * @return array | null
-     */
     public function getPriceDetails(): ?array
     {
         return $this->priceDetails;
     }
 
-    /**
-     * @param string $carrierName | null
-     *
-     * @return static
-     */
-    public function setCarrierName(?string $carrierName = null): self
+    public function setCarrierName(?string $carrierName): static
     {
         $this->carrierName = $carrierName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCarrierName(): ?string
     {
         return $this->carrierName;
     }
 
-    /**
-     * @param string $destinationName | null
-     *
-     * @return static
-     */
-    public function setDestinationName(?string $destinationName = null): self
+    public function setDestinationName(?string $destinationName): static
     {
         $this->destinationName = $destinationName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDestinationName(): ?string
     {
         return $this->destinationName;
     }
 
-    /**
-     * @param string $ratingPlanName | null
-     *
-     * @return static
-     */
-    public function setRatingPlanName(?string $ratingPlanName = null): self
+    public function setRatingPlanName(?string $ratingPlanName): static
     {
         $this->ratingPlanName = $ratingPlanName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRatingPlanName(): ?string
     {
         return $this->ratingPlanName;
     }
 
-    /**
-     * @param string $endpointType | null
-     *
-     * @return static
-     */
-    public function setEndpointType(?string $endpointType = null): self
+    public function setEndpointType(?string $endpointType): static
     {
         $this->endpointType = $endpointType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEndpointType(): ?string
     {
         return $this->endpointType;
     }
 
-    /**
-     * @param int $endpointId | null
-     *
-     * @return static
-     */
-    public function setEndpointId(?int $endpointId = null): self
+    public function setEndpointId(?int $endpointId): static
     {
         $this->endpointId = $endpointId;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getEndpointId(): ?int
     {
         return $this->endpointId;
     }
 
-    /**
-     * @param string $endpointName | null
-     *
-     * @return static
-     */
-    public function setEndpointName(?string $endpointName = null): self
+    public function setEndpointName(?string $endpointName): static
     {
         $this->endpointName = $endpointName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEndpointName(): ?string
     {
         return $this->endpointName;
     }
 
-    /**
-     * @param string $direction | null
-     *
-     * @return static
-     */
-    public function setDirection(?string $direction = null): self
+    public function setDirection(?string $direction): static
     {
         $this->direction = $direction;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDirection(): ?string
     {
         return $this->direction;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -589,9 +450,6 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -601,30 +459,19 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -633,9 +480,6 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -645,30 +489,19 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CarrierDto | null
-     *
-     * @return static
-     */
-    public function setCarrier(?CarrierDto $carrier = null): self
+    public function setCarrier(?CarrierDto $carrier): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * @return CarrierDto | null
-     */
     public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
-    /**
-     * @return static
-     */
-    public function setCarrierId($id): self
+    public function setCarrierId($id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -677,9 +510,6 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCarrierId()
     {
         if ($dto = $this->getCarrier()) {
@@ -689,30 +519,19 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DestinationDto | null
-     *
-     * @return static
-     */
-    public function setDestination(?DestinationDto $destination = null): self
+    public function setDestination(?DestinationDto $destination): static
     {
         $this->destination = $destination;
 
         return $this;
     }
 
-    /**
-     * @return DestinationDto | null
-     */
     public function getDestination(): ?DestinationDto
     {
         return $this->destination;
     }
 
-    /**
-     * @return static
-     */
-    public function setDestinationId($id): self
+    public function setDestinationId($id): static
     {
         $value = !is_null($id)
             ? new DestinationDto($id)
@@ -721,9 +540,6 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setDestination($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDestinationId()
     {
         if ($dto = $this->getDestination()) {
@@ -733,30 +549,19 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param RatingPlanGroupDto | null
-     *
-     * @return static
-     */
-    public function setRatingPlanGroup(?RatingPlanGroupDto $ratingPlanGroup = null): self
+    public function setRatingPlanGroup(?RatingPlanGroupDto $ratingPlanGroup): static
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
         return $this;
     }
 
-    /**
-     * @return RatingPlanGroupDto | null
-     */
     public function getRatingPlanGroup(): ?RatingPlanGroupDto
     {
         return $this->ratingPlanGroup;
     }
 
-    /**
-     * @return static
-     */
-    public function setRatingPlanGroupId($id): self
+    public function setRatingPlanGroupId($id): static
     {
         $value = !is_null($id)
             ? new RatingPlanGroupDto($id)
@@ -765,9 +570,6 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setRatingPlanGroup($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRatingPlanGroupId()
     {
         if ($dto = $this->getRatingPlanGroup()) {
@@ -777,30 +579,19 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param InvoiceDto | null
-     *
-     * @return static
-     */
-    public function setInvoice(?InvoiceDto $invoice = null): self
+    public function setInvoice(?InvoiceDto $invoice): static
     {
         $this->invoice = $invoice;
 
         return $this;
     }
 
-    /**
-     * @return InvoiceDto | null
-     */
     public function getInvoice(): ?InvoiceDto
     {
         return $this->invoice;
     }
 
-    /**
-     * @return static
-     */
-    public function setInvoiceId($id): self
+    public function setInvoiceId($id): static
     {
         $value = !is_null($id)
             ? new InvoiceDto($id)
@@ -809,9 +600,6 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setInvoice($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getInvoiceId()
     {
         if ($dto = $this->getInvoice()) {
@@ -821,30 +609,19 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TrunksCdrDto | null
-     *
-     * @return static
-     */
-    public function setTrunksCdr(?TrunksCdrDto $trunksCdr = null): self
+    public function setTrunksCdr(?TrunksCdrDto $trunksCdr): static
     {
         $this->trunksCdr = $trunksCdr;
 
         return $this;
     }
 
-    /**
-     * @return TrunksCdrDto | null
-     */
     public function getTrunksCdr(): ?TrunksCdrDto
     {
         return $this->trunksCdr;
     }
 
-    /**
-     * @return static
-     */
-    public function setTrunksCdrId($id): self
+    public function setTrunksCdrId($id): static
     {
         $value = !is_null($id)
             ? new TrunksCdrDto($id)
@@ -853,9 +630,6 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setTrunksCdr($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTrunksCdrId()
     {
         if ($dto = $this->getTrunksCdr()) {
@@ -865,30 +639,19 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DdiDto | null
-     *
-     * @return static
-     */
-    public function setDdi(?DdiDto $ddi = null): self
+    public function setDdi(?DdiDto $ddi): static
     {
         $this->ddi = $ddi;
 
         return $this;
     }
 
-    /**
-     * @return DdiDto | null
-     */
     public function getDdi(): ?DdiDto
     {
         return $this->ddi;
     }
 
-    /**
-     * @return static
-     */
-    public function setDdiId($id): self
+    public function setDdiId($id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)
@@ -897,9 +660,6 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setDdi($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDdiId()
     {
         if ($dto = $this->getDdi()) {
@@ -909,30 +669,19 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DdiProviderDto | null
-     *
-     * @return static
-     */
-    public function setDdiProvider(?DdiProviderDto $ddiProvider = null): self
+    public function setDdiProvider(?DdiProviderDto $ddiProvider): static
     {
         $this->ddiProvider = $ddiProvider;
 
         return $this;
     }
 
-    /**
-     * @return DdiProviderDto | null
-     */
     public function getDdiProvider(): ?DdiProviderDto
     {
         return $this->ddiProvider;
     }
 
-    /**
-     * @return static
-     */
-    public function setDdiProviderId($id): self
+    public function setDdiProviderId($id): static
     {
         $value = !is_null($id)
             ? new DdiProviderDto($id)
@@ -941,9 +690,6 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->setDdiProvider($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDdiProviderId()
     {
         if ($dto = $this->getDdiProvider()) {

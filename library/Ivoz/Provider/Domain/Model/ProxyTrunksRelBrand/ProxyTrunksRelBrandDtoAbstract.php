@@ -76,50 +76,31 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -128,9 +109,6 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -140,30 +118,19 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
         return null;
     }
 
-    /**
-     * @param ProxyTrunkDto | null
-     *
-     * @return static
-     */
-    public function setProxyTrunk(?ProxyTrunkDto $proxyTrunk = null): self
+    public function setProxyTrunk(?ProxyTrunkDto $proxyTrunk): static
     {
         $this->proxyTrunk = $proxyTrunk;
 
         return $this;
     }
 
-    /**
-     * @return ProxyTrunkDto | null
-     */
     public function getProxyTrunk(): ?ProxyTrunkDto
     {
         return $this->proxyTrunk;
     }
 
-    /**
-     * @return static
-     */
-    public function setProxyTrunkId($id): self
+    public function setProxyTrunkId($id): static
     {
         $value = !is_null($id)
             ? new ProxyTrunkDto($id)
@@ -172,9 +139,6 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
         return $this->setProxyTrunk($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getProxyTrunkId()
     {
         if ($dto = $this->getProxyTrunk()) {

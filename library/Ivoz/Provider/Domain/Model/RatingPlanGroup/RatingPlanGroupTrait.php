@@ -111,13 +111,6 @@ trait RatingPlanGroupTrait
         ];
     }
 
-    /**
-     * Add ratingPlan
-     *
-     * @param RatingPlanInterface $ratingPlan
-     *
-     * @return static
-     */
     public function addRatingPlan(RatingPlanInterface $ratingPlan): RatingPlanGroupInterface
     {
         $this->ratingPlan->add($ratingPlan);
@@ -125,13 +118,6 @@ trait RatingPlanGroupTrait
         return $this;
     }
 
-    /**
-     * Remove ratingPlan
-     *
-     * @param RatingPlanInterface $ratingPlan
-     *
-     * @return static
-     */
     public function removeRatingPlan(RatingPlanInterface $ratingPlan): RatingPlanGroupInterface
     {
         $this->ratingPlan->removeElement($ratingPlan);
@@ -139,13 +125,6 @@ trait RatingPlanGroupTrait
         return $this;
     }
 
-    /**
-     * Replace ratingPlan
-     *
-     * @param ArrayCollection $ratingPlan of RatingPlanInterface
-     *
-     * @return static
-     */
     public function replaceRatingPlan(ArrayCollection $ratingPlan): RatingPlanGroupInterface
     {
         $updatedEntities = [];
@@ -174,11 +153,6 @@ trait RatingPlanGroupTrait
         return $this;
     }
 
-    /**
-     * Get ratingPlan
-     * @param Criteria | null $criteria
-     * @return RatingPlanInterface[]
-     */
     public function getRatingPlan(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

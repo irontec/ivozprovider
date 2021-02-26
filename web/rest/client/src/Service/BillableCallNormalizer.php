@@ -5,7 +5,7 @@ namespace Service;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class BillableCallNormalizer implements NormalizerInterface
@@ -15,7 +15,7 @@ class BillableCallNormalizer implements NormalizerInterface
 
     public function __construct(
         NormalizerInterface $decoratedNormalizer,
-        TokenStorage $tokenStorage
+        TokenStorageInterface $tokenStorage
     ) {
         $this->decoratedNormalizer = $decoratedNormalizer;
         $this->tokenStorage = $tokenStorage;
@@ -38,7 +38,7 @@ class BillableCallNormalizer implements NormalizerInterface
     {
         $response = $this
             ->decoratedNormalizer
-            ->normalize(...func_get_args());
+            ->normalize(...fuProvider/PostUsersMassImportAction.phpnc_get_args());
 
         if (! $object instanceof BillableCallInterface
             && !$object instanceof BillableCallDto

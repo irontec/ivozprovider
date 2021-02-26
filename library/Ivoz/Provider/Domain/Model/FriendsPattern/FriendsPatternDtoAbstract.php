@@ -17,12 +17,12 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var string
      */
-    private $regExp;
+    private $regExp = '';
 
     /**
      * @var int
@@ -82,90 +82,55 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $regExp | null
-     *
-     * @return static
-     */
-    public function setRegExp(?string $regExp = null): self
+    public function setRegExp(?string $regExp): static
     {
         $this->regExp = $regExp;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRegExp(): ?string
     {
         return $this->regExp;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param FriendDto | null
-     *
-     * @return static
-     */
-    public function setFriend(?FriendDto $friend = null): self
+    public function setFriend(?FriendDto $friend): static
     {
         $this->friend = $friend;
 
         return $this;
     }
 
-    /**
-     * @return FriendDto | null
-     */
     public function getFriend(): ?FriendDto
     {
         return $this->friend;
     }
 
-    /**
-     * @return static
-     */
-    public function setFriendId($id): self
+    public function setFriendId($id): static
     {
         $value = !is_null($id)
             ? new FriendDto($id)
@@ -174,9 +139,6 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
         return $this->setFriend($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFriendId()
     {
         if ($dto = $this->getFriend()) {

@@ -16,22 +16,22 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $username;
+    private $username = '';
 
     /**
      * @var string
      */
-    private $domain;
+    private $domain = '';
 
     /**
      * @var string
      */
-    private $event;
+    private $event = '';
 
     /**
      * @var string
      */
-    private $etag;
+    private $etag = '';
 
     /**
      * @var int
@@ -44,14 +44,14 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     private $receivedTime;
 
     /**
-     * @var 
+     * @var string
      */
-    private $body;
+    private $body = '';
 
     /**
      * @var string
      */
-    private $sender;
+    private $sender = '';
 
     /**
      * @var int
@@ -123,202 +123,122 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $username | null
-     *
-     * @return static
-     */
-    public function setUsername(?string $username = null): self
+    public function setUsername(?string $username): static
     {
         $this->username = $username;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    /**
-     * @param string $domain | null
-     *
-     * @return static
-     */
-    public function setDomain(?string $domain = null): self
+    public function setDomain(?string $domain): static
     {
         $this->domain = $domain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDomain(): ?string
     {
         return $this->domain;
     }
 
-    /**
-     * @param string $event | null
-     *
-     * @return static
-     */
-    public function setEvent(?string $event = null): self
+    public function setEvent(?string $event): static
     {
         $this->event = $event;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEvent(): ?string
     {
         return $this->event;
     }
 
-    /**
-     * @param string $etag | null
-     *
-     * @return static
-     */
-    public function setEtag(?string $etag = null): self
+    public function setEtag(?string $etag): static
     {
         $this->etag = $etag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEtag(): ?string
     {
         return $this->etag;
     }
 
-    /**
-     * @param int $expires | null
-     *
-     * @return static
-     */
-    public function setExpires(?int $expires = null): self
+    public function setExpires(?int $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getExpires(): ?int
     {
         return $this->expires;
     }
 
-    /**
-     * @param int $receivedTime | null
-     *
-     * @return static
-     */
-    public function setReceivedTime(?int $receivedTime = null): self
+    public function setReceivedTime(?int $receivedTime): static
     {
         $this->receivedTime = $receivedTime;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getReceivedTime(): ?int
     {
         return $this->receivedTime;
     }
 
-    /**
-     * @param  $body | null
-     *
-     * @return static
-     */
-    public function setBody(? $body = null): self
+    public function setBody(?string $body): static
     {
         $this->body = $body;
 
         return $this;
     }
 
-    /**
-     * @return  | null
-     */
-    public function getBody()
+    public function getBody(): ?string
     {
         return $this->body;
     }
 
-    /**
-     * @param string $sender | null
-     *
-     * @return static
-     */
-    public function setSender(?string $sender = null): self
+    public function setSender(?string $sender): static
     {
         $this->sender = $sender;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSender(): ?string
     {
         return $this->sender;
     }
 
-    /**
-     * @param int $priority | null
-     *
-     * @return static
-     */
-    public function setPriority(?int $priority = null): self
+    public function setPriority(?int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

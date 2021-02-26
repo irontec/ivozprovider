@@ -111,13 +111,6 @@ trait OutgoingDdiRuleTrait
         ];
     }
 
-    /**
-     * Add pattern
-     *
-     * @param OutgoingDdiRulesPatternInterface $pattern
-     *
-     * @return static
-     */
     public function addPattern(OutgoingDdiRulesPatternInterface $pattern): OutgoingDdiRuleInterface
     {
         $this->patterns->add($pattern);
@@ -125,13 +118,6 @@ trait OutgoingDdiRuleTrait
         return $this;
     }
 
-    /**
-     * Remove pattern
-     *
-     * @param OutgoingDdiRulesPatternInterface $pattern
-     *
-     * @return static
-     */
     public function removePattern(OutgoingDdiRulesPatternInterface $pattern): OutgoingDdiRuleInterface
     {
         $this->patterns->removeElement($pattern);
@@ -139,13 +125,6 @@ trait OutgoingDdiRuleTrait
         return $this;
     }
 
-    /**
-     * Replace patterns
-     *
-     * @param ArrayCollection $patterns of OutgoingDdiRulesPatternInterface
-     *
-     * @return static
-     */
     public function replacePatterns(ArrayCollection $patterns): OutgoingDdiRuleInterface
     {
         $updatedEntities = [];
@@ -174,11 +153,6 @@ trait OutgoingDdiRuleTrait
         return $this;
     }
 
-    /**
-     * Get patterns
-     * @param Criteria | null $criteria
-     * @return OutgoingDdiRulesPatternInterface[]
-     */
     public function getPatterns(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

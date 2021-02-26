@@ -22,7 +22,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     use ChangelogTrait;
 
     /**
-     * @var ConditionalRoutesConditionInterface
+     * @var ConditionalRoutesConditionInterface | null
      * inversedBy relRouteLocks
      */
     protected $condition;
@@ -61,7 +61,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ConditionalRoutesConditionsRelRouteLockDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
         ];
     }
 
-    /**
-     * Set condition
-     *
-     * @param ConditionalRoutesConditionInterface | null
-     *
-     * @return static
-     */
-    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelRouteLockInterface
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): static
     {
         $this->condition = $condition;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get condition
-     *
-     * @return ConditionalRoutesConditionInterface | null
-     */
     public function getCondition(): ?ConditionalRoutesConditionInterface
     {
         return $this->condition;
     }
 
-    /**
-     * Set routeLock
-     *
-     * @param RouteLockInterface
-     *
-     * @return static
-     */
-    protected function setRouteLock(RouteLockInterface $routeLock): ConditionalRoutesConditionsRelRouteLockInterface
+    protected function setRouteLock(RouteLockInterface $routeLock): static
     {
         $this->routeLock = $routeLock;
 
         return $this;
     }
 
-    /**
-     * Get routeLock
-     *
-     * @return RouteLockInterface
-     */
     public function getRouteLock(): RouteLockInterface
     {
         return $this->routeLock;

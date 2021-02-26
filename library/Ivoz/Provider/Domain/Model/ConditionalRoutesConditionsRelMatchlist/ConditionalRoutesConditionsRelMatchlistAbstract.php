@@ -22,7 +22,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     use ChangelogTrait;
 
     /**
-     * @var ConditionalRoutesConditionInterface
+     * @var ConditionalRoutesConditionInterface | null
      * inversedBy relMatchlists
      */
     protected $condition;
@@ -61,7 +61,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ConditionalRoutesConditionsRelMatchlistDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
         ];
     }
 
-    /**
-     * Set condition
-     *
-     * @param ConditionalRoutesConditionInterface | null
-     *
-     * @return static
-     */
-    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelMatchlistInterface
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): static
     {
         $this->condition = $condition;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get condition
-     *
-     * @return ConditionalRoutesConditionInterface | null
-     */
     public function getCondition(): ?ConditionalRoutesConditionInterface
     {
         return $this->condition;
     }
 
-    /**
-     * Set matchlist
-     *
-     * @param MatchListInterface
-     *
-     * @return static
-     */
-    protected function setMatchlist(MatchListInterface $matchlist): ConditionalRoutesConditionsRelMatchlistInterface
+    protected function setMatchlist(MatchListInterface $matchlist): static
     {
         $this->matchlist = $matchlist;
 
         return $this;
     }
 
-    /**
-     * Get matchlist
-     *
-     * @return MatchListInterface
-     */
     public function getMatchlist(): MatchListInterface
     {
         return $this->matchlist;

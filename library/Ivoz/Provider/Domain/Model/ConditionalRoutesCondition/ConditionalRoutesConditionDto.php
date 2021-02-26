@@ -100,7 +100,7 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
         return $response;
     }
 
-    public function setMatchListIds(array $matchlistIds): self
+    public function setMatchListIds(array $matchlistIds): static
     {
         $this->matchListIds = $matchlistIds;
 
@@ -116,7 +116,7 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
         return $this;
     }
 
-    public function setCalendarIds(array $calendarIds): self
+    public function setCalendarIds(array $calendarIds): static
     {
         $this->calendarIds = $calendarIds;
 
@@ -133,7 +133,7 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
     }
 
 
-    public function setScheduleIds(array $scheduleIds): self
+    public function setScheduleIds(array $scheduleIds): static
     {
         $this->scheduleIds = $scheduleIds;
 
@@ -149,7 +149,7 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
         return $this;
     }
 
-    public function setRouteLockIds(array $routeLockIds): self
+    public function setRouteLockIds(array $routeLockIds): static
     {
         $this->routeLockIds = $routeLockIds;
 

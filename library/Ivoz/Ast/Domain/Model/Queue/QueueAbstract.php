@@ -108,7 +108,7 @@ abstract class QueueAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return QueueDto
      */
     public static function createDto($id = null)
@@ -245,14 +245,7 @@ abstract class QueueAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): QueueInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 128, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -261,24 +254,12 @@ abstract class QueueAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set periodicAnnounce
-     *
-     * @param string $periodicAnnounce | null
-     *
-     * @return static
-     */
-    protected function setPeriodicAnnounce(?string $periodicAnnounce = null): QueueInterface
+    protected function setPeriodicAnnounce(?string $periodicAnnounce = null): static
     {
         if (!is_null($periodicAnnounce)) {
             Assertion::maxLength($periodicAnnounce, 128, 'periodicAnnounce value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -289,227 +270,114 @@ abstract class QueueAbstract
         return $this;
     }
 
-    /**
-     * Get periodicAnnounce
-     *
-     * @return string | null
-     */
     public function getPeriodicAnnounce(): ?string
     {
         return $this->periodicAnnounce;
     }
 
-    /**
-     * Set periodicAnnounceFrequency
-     *
-     * @param int $periodicAnnounceFrequency | null
-     *
-     * @return static
-     */
-    protected function setPeriodicAnnounceFrequency(?int $periodicAnnounceFrequency = null): QueueInterface
+    protected function setPeriodicAnnounceFrequency(?int $periodicAnnounceFrequency = null): static
     {
         $this->periodicAnnounceFrequency = $periodicAnnounceFrequency;
 
         return $this;
     }
 
-    /**
-     * Get periodicAnnounceFrequency
-     *
-     * @return int | null
-     */
     public function getPeriodicAnnounceFrequency(): ?int
     {
         return $this->periodicAnnounceFrequency;
     }
 
-    /**
-     * Set timeout
-     *
-     * @param int $timeout | null
-     *
-     * @return static
-     */
-    protected function setTimeout(?int $timeout = null): QueueInterface
+    protected function setTimeout(?int $timeout = null): static
     {
         $this->timeout = $timeout;
 
         return $this;
     }
 
-    /**
-     * Get timeout
-     *
-     * @return int | null
-     */
     public function getTimeout(): ?int
     {
         return $this->timeout;
     }
 
-    /**
-     * Set autopause
-     *
-     * @param string $autopause
-     *
-     * @return static
-     */
-    protected function setAutopause(string $autopause): QueueInterface
+    protected function setAutopause(string $autopause): static
     {
         $this->autopause = $autopause;
 
         return $this;
     }
 
-    /**
-     * Get autopause
-     *
-     * @return string
-     */
     public function getAutopause(): string
     {
         return $this->autopause;
     }
 
-    /**
-     * Set ringinuse
-     *
-     * @param string $ringinuse
-     *
-     * @return static
-     */
-    protected function setRinginuse(string $ringinuse): QueueInterface
+    protected function setRinginuse(string $ringinuse): static
     {
         $this->ringinuse = $ringinuse;
 
         return $this;
     }
 
-    /**
-     * Get ringinuse
-     *
-     * @return string
-     */
     public function getRinginuse(): string
     {
         return $this->ringinuse;
     }
 
-    /**
-     * Set wrapuptime
-     *
-     * @param int $wrapuptime | null
-     *
-     * @return static
-     */
-    protected function setWrapuptime(?int $wrapuptime = null): QueueInterface
+    protected function setWrapuptime(?int $wrapuptime = null): static
     {
         $this->wrapuptime = $wrapuptime;
 
         return $this;
     }
 
-    /**
-     * Get wrapuptime
-     *
-     * @return int | null
-     */
     public function getWrapuptime(): ?int
     {
         return $this->wrapuptime;
     }
 
-    /**
-     * Set maxlen
-     *
-     * @param int $maxlen | null
-     *
-     * @return static
-     */
-    protected function setMaxlen(?int $maxlen = null): QueueInterface
+    protected function setMaxlen(?int $maxlen = null): static
     {
         $this->maxlen = $maxlen;
 
         return $this;
     }
 
-    /**
-     * Get maxlen
-     *
-     * @return int | null
-     */
     public function getMaxlen(): ?int
     {
         return $this->maxlen;
     }
 
-    /**
-     * Set strategy
-     *
-     * @param string $strategy | null
-     *
-     * @return static
-     */
-    protected function setStrategy(?string $strategy = null): QueueInterface
+    protected function setStrategy(?string $strategy = null): static
     {
         $this->strategy = $strategy;
 
         return $this;
     }
 
-    /**
-     * Get strategy
-     *
-     * @return string | null
-     */
     public function getStrategy(): ?string
     {
         return $this->strategy;
     }
 
-    /**
-     * Set weight
-     *
-     * @param int $weight | null
-     *
-     * @return static
-     */
-    protected function setWeight(?int $weight = null): QueueInterface
+    protected function setWeight(?int $weight = null): static
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    /**
-     * Get weight
-     *
-     * @return int | null
-     */
     public function getWeight(): ?int
     {
         return $this->weight;
     }
 
-    /**
-     * Set queue
-     *
-     * @param \Ivoz\Provider\Domain\Model\Queue\QueueInterface
-     *
-     * @return static
-     */
-    protected function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue): QueueInterface
+    protected function setQueue(\Ivoz\Provider\Domain\Model\Queue\QueueInterface $queue): static
     {
         $this->queue = $queue;
 
         return $this;
     }
 
-    /**
-     * Get queue
-     *
-     * @return \Ivoz\Provider\Domain\Model\Queue\QueueInterface
-     */
     public function getQueue(): \Ivoz\Provider\Domain\Model\Queue\QueueInterface
     {
         return $this->queue;

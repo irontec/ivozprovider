@@ -16,12 +16,12 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $presUri;
+    private $presUri = '';
 
     /**
      * @var string
      */
-    private $presId;
+    private $presId = '';
 
     /**
      * @var int
@@ -46,32 +46,32 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $etag;
+    private $etag = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tupleId;
 
     /**
      * @var string
      */
-    private $watcherUri;
+    private $watcherUri = '';
 
     /**
      * @var string
      */
-    private $callId;
+    private $callId = '';
 
     /**
      * @var string
      */
-    private $toTag;
+    private $toTag = '';
 
     /**
      * @var string
      */
-    private $fromTag;
+    private $fromTag = '';
 
     /**
      * @var int
@@ -79,19 +79,19 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     private $cseq;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $recordRoute;
 
     /**
      * @var string
      */
-    private $contact;
+    private $contact = '';
 
     /**
      * @var string
      */
-    private $remoteContact;
+    private $remoteContact = '';
 
     /**
      * @var int
@@ -101,7 +101,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $extraHeaders;
+    private $extraHeaders = '';
 
     /**
      * @var int
@@ -186,382 +186,230 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $presUri | null
-     *
-     * @return static
-     */
-    public function setPresUri(?string $presUri = null): self
+    public function setPresUri(?string $presUri): static
     {
         $this->presUri = $presUri;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPresUri(): ?string
     {
         return $this->presUri;
     }
 
-    /**
-     * @param string $presId | null
-     *
-     * @return static
-     */
-    public function setPresId(?string $presId = null): self
+    public function setPresId(?string $presId): static
     {
         $this->presId = $presId;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPresId(): ?string
     {
         return $this->presId;
     }
 
-    /**
-     * @param int $event | null
-     *
-     * @return static
-     */
-    public function setEvent(?int $event = null): self
+    public function setEvent(?int $event): static
     {
         $this->event = $event;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getEvent(): ?int
     {
         return $this->event;
     }
 
-    /**
-     * @param int $expires | null
-     *
-     * @return static
-     */
-    public function setExpires(?int $expires = null): self
+    public function setExpires(?int $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getExpires(): ?int
     {
         return $this->expires;
     }
 
-    /**
-     * @param int $desiredExpires | null
-     *
-     * @return static
-     */
-    public function setDesiredExpires(?int $desiredExpires = null): self
+    public function setDesiredExpires(?int $desiredExpires): static
     {
         $this->desiredExpires = $desiredExpires;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getDesiredExpires(): ?int
     {
         return $this->desiredExpires;
     }
 
-    /**
-     * @param int $flag | null
-     *
-     * @return static
-     */
-    public function setFlag(?int $flag = null): self
+    public function setFlag(?int $flag): static
     {
         $this->flag = $flag;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getFlag(): ?int
     {
         return $this->flag;
     }
 
-    /**
-     * @param string $etag | null
-     *
-     * @return static
-     */
-    public function setEtag(?string $etag = null): self
+    public function setEtag(?string $etag): static
     {
         $this->etag = $etag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEtag(): ?string
     {
         return $this->etag;
     }
 
-    /**
-     * @param string $tupleId | null
-     *
-     * @return static
-     */
-    public function setTupleId(?string $tupleId = null): self
+    public function setTupleId(?string $tupleId): static
     {
         $this->tupleId = $tupleId;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTupleId(): ?string
     {
         return $this->tupleId;
     }
 
-    /**
-     * @param string $watcherUri | null
-     *
-     * @return static
-     */
-    public function setWatcherUri(?string $watcherUri = null): self
+    public function setWatcherUri(?string $watcherUri): static
     {
         $this->watcherUri = $watcherUri;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getWatcherUri(): ?string
     {
         return $this->watcherUri;
     }
 
-    /**
-     * @param string $callId | null
-     *
-     * @return static
-     */
-    public function setCallId(?string $callId = null): self
+    public function setCallId(?string $callId): static
     {
         $this->callId = $callId;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallId(): ?string
     {
         return $this->callId;
     }
 
-    /**
-     * @param string $toTag | null
-     *
-     * @return static
-     */
-    public function setToTag(?string $toTag = null): self
+    public function setToTag(?string $toTag): static
     {
         $this->toTag = $toTag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getToTag(): ?string
     {
         return $this->toTag;
     }
 
-    /**
-     * @param string $fromTag | null
-     *
-     * @return static
-     */
-    public function setFromTag(?string $fromTag = null): self
+    public function setFromTag(?string $fromTag): static
     {
         $this->fromTag = $fromTag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFromTag(): ?string
     {
         return $this->fromTag;
     }
 
-    /**
-     * @param int $cseq | null
-     *
-     * @return static
-     */
-    public function setCseq(?int $cseq = null): self
+    public function setCseq(?int $cseq): static
     {
         $this->cseq = $cseq;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getCseq(): ?int
     {
         return $this->cseq;
     }
 
-    /**
-     * @param string $recordRoute | null
-     *
-     * @return static
-     */
-    public function setRecordRoute(?string $recordRoute = null): self
+    public function setRecordRoute(?string $recordRoute): static
     {
         $this->recordRoute = $recordRoute;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRecordRoute(): ?string
     {
         return $this->recordRoute;
     }
 
-    /**
-     * @param string $contact | null
-     *
-     * @return static
-     */
-    public function setContact(?string $contact = null): self
+    public function setContact(?string $contact): static
     {
         $this->contact = $contact;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getContact(): ?string
     {
         return $this->contact;
     }
 
-    /**
-     * @param string $remoteContact | null
-     *
-     * @return static
-     */
-    public function setRemoteContact(?string $remoteContact = null): self
+    public function setRemoteContact(?string $remoteContact): static
     {
         $this->remoteContact = $remoteContact;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRemoteContact(): ?string
     {
         return $this->remoteContact;
     }
 
-    /**
-     * @param int $version | null
-     *
-     * @return static
-     */
-    public function setVersion(?int $version = null): self
+    public function setVersion(?int $version): static
     {
         $this->version = $version;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getVersion(): ?int
     {
         return $this->version;
     }
 
-    /**
-     * @param string $extraHeaders | null
-     *
-     * @return static
-     */
-    public function setExtraHeaders(?string $extraHeaders = null): self
+    public function setExtraHeaders(?string $extraHeaders): static
     {
         $this->extraHeaders = $extraHeaders;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getExtraHeaders(): ?string
     {
         return $this->extraHeaders;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

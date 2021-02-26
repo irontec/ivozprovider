@@ -66,7 +66,7 @@ abstract class QueueMemberAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return QueueMemberDto
      */
     public static function createDto($id = null)
@@ -172,73 +172,38 @@ abstract class QueueMemberAbstract
         ];
     }
 
-    /**
-     * Set penalty
-     *
-     * @param int $penalty | null
-     *
-     * @return static
-     */
-    protected function setPenalty(?int $penalty = null): QueueMemberInterface
+    protected function setPenalty(?int $penalty = null): static
     {
         $this->penalty = $penalty;
 
         return $this;
     }
 
-    /**
-     * Get penalty
-     *
-     * @return int | null
-     */
     public function getPenalty(): ?int
     {
         return $this->penalty;
     }
 
-    /**
-     * Set queue
-     *
-     * @param QueueInterface
-     *
-     * @return static
-     */
-    protected function setQueue(QueueInterface $queue): QueueMemberInterface
+    protected function setQueue(QueueInterface $queue): static
     {
         $this->queue = $queue;
 
         return $this;
     }
 
-    /**
-     * Get queue
-     *
-     * @return QueueInterface
-     */
     public function getQueue(): QueueInterface
     {
         return $this->queue;
     }
 
-    /**
-     * Set user
-     *
-     * @param UserInterface
-     *
-     * @return static
-     */
-    public function setUser(UserInterface $user): QueueMemberInterface
+    public function setUser(UserInterface $user): static
     {
         $this->user = $user;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return UserInterface
-     */
     public function getUser(): UserInterface
     {
         return $this->user;

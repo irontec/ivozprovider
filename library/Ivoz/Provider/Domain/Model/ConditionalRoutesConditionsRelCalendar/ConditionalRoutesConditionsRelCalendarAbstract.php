@@ -22,7 +22,7 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     use ChangelogTrait;
 
     /**
-     * @var ConditionalRoutesConditionInterface
+     * @var ConditionalRoutesConditionInterface | null
      * inversedBy relCalendars
      */
     protected $condition;
@@ -61,7 +61,7 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ConditionalRoutesConditionsRelCalendarDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
         ];
     }
 
-    /**
-     * Set condition
-     *
-     * @param ConditionalRoutesConditionInterface | null
-     *
-     * @return static
-     */
-    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelCalendarInterface
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): static
     {
         $this->condition = $condition;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get condition
-     *
-     * @return ConditionalRoutesConditionInterface | null
-     */
     public function getCondition(): ?ConditionalRoutesConditionInterface
     {
         return $this->condition;
     }
 
-    /**
-     * Set calendar
-     *
-     * @param CalendarInterface
-     *
-     * @return static
-     */
-    protected function setCalendar(CalendarInterface $calendar): ConditionalRoutesConditionsRelCalendarInterface
+    protected function setCalendar(CalendarInterface $calendar): static
     {
         $this->calendar = $calendar;
 
         return $this;
     }
 
-    /**
-     * Get calendar
-     *
-     * @return CalendarInterface
-     */
     public function getCalendar(): CalendarInterface
     {
         return $this->calendar;

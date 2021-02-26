@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\RatingProfile;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -15,17 +16,15 @@ class RatingProfileLifecycleServiceCollection implements LifecycleServiceCollect
     public static $bindedBaseServices = [
         "post_persist" =>
         [
-            \Ivoz\Provider\Domain\Service\RatingProfile\CheckValidCurrency::class => 200,
             \Ivoz\Cgr\Domain\Service\TpRatingProfile\UpdateByRatingProfile::class => 200,
+            \Ivoz\Provider\Domain\Service\RatingProfile\CheckValidCurrency::class => 200,
             \Ivoz\Cgr\Domain\Service\TpRatingProfile\CreatedByCarrierRatingProfile::class => 201,
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, RatingProfileLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, RatingProfileLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

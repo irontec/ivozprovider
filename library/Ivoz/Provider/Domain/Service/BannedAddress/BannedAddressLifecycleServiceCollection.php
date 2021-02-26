@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\BannedAddress;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class BannedAddressLifecycleServiceCollection implements LifecycleServiceCollect
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, BannedAddressLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, BannedAddressLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

@@ -87,17 +87,18 @@ abstract class RetailAccountAbstract
     protected $rtpEncryption = false;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $multiContact = true;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var BrandInterface
+     * inversedBy residentialDevices
      */
     protected $brand;
 
     /**
-     * @var DomainInterface
+     * @var DomainInterface | null
      * inversedBy residentialDevices
      */
     protected $domain;
@@ -108,12 +109,12 @@ abstract class RetailAccountAbstract
     protected $company;
 
     /**
-     * @var TransformationRuleSetInterface
+     * @var TransformationRuleSetInterface | null
      */
     protected $transformationRuleSet;
 
     /**
-     * @var DdiInterface
+     * @var DdiInterface | null
      */
     protected $outgoingDdi;
 
@@ -158,7 +159,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return RetailAccountDto
      */
     public static function createDto($id = null)
@@ -285,6 +286,7 @@ abstract class RetailAccountAbstract
             ->setDdiIn(self::getDdiIn())
             ->setT38Passthrough(self::getT38Passthrough())
             ->setRtpEncryption(self::getRtpEncryption())
+            ->setMultiContact(self::getMultiContact())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setDomain(Domain::entityToDto(self::getDomain(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
@@ -318,14 +320,7 @@ abstract class RetailAccountAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): RetailAccountInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 65, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -334,24 +329,12 @@ abstract class RetailAccountAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return static
-     */
-    protected function setDescription(string $description): RetailAccountInterface
+    protected function setDescription(string $description): static
     {
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -360,24 +343,12 @@ abstract class RetailAccountAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * Set transport
-     *
-     * @param string $transport | null
-     *
-     * @return static
-     */
-    protected function setTransport(?string $transport = null): RetailAccountInterface
+    protected function setTransport(?string $transport = null): static
     {
         if (!is_null($transport)) {
             Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -397,24 +368,12 @@ abstract class RetailAccountAbstract
         return $this;
     }
 
-    /**
-     * Get transport
-     *
-     * @return string | null
-     */
     public function getTransport(): ?string
     {
         return $this->transport;
     }
 
-    /**
-     * Set ip
-     *
-     * @param string $ip | null
-     *
-     * @return static
-     */
-    protected function setIp(?string $ip = null): RetailAccountInterface
+    protected function setIp(?string $ip = null): static
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -425,24 +384,12 @@ abstract class RetailAccountAbstract
         return $this;
     }
 
-    /**
-     * Get ip
-     *
-     * @return string | null
-     */
     public function getIp(): ?string
     {
         return $this->ip;
     }
 
-    /**
-     * Set port
-     *
-     * @param int $port | null
-     *
-     * @return static
-     */
-    protected function setPort(?int $port = null): RetailAccountInterface
+    protected function setPort(?int $port = null): static
     {
         if (!is_null($port)) {
             Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
@@ -453,24 +400,12 @@ abstract class RetailAccountAbstract
         return $this;
     }
 
-    /**
-     * Get port
-     *
-     * @return int | null
-     */
     public function getPort(): ?int
     {
         return $this->port;
     }
 
-    /**
-     * Set password
-     *
-     * @param string $password | null
-     *
-     * @return static
-     */
-    protected function setPassword(?string $password = null): RetailAccountInterface
+    protected function setPassword(?string $password = null): static
     {
         if (!is_null($password)) {
             Assertion::maxLength($password, 64, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -481,24 +416,12 @@ abstract class RetailAccountAbstract
         return $this;
     }
 
-    /**
-     * Get password
-     *
-     * @return string | null
-     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    /**
-     * Set fromDomain
-     *
-     * @param string $fromDomain | null
-     *
-     * @return static
-     */
-    protected function setFromDomain(?string $fromDomain = null): RetailAccountInterface
+    protected function setFromDomain(?string $fromDomain = null): static
     {
         if (!is_null($fromDomain)) {
             Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -509,24 +432,12 @@ abstract class RetailAccountAbstract
         return $this;
     }
 
-    /**
-     * Get fromDomain
-     *
-     * @return string | null
-     */
     public function getFromDomain(): ?string
     {
         return $this->fromDomain;
     }
 
-    /**
-     * Set directConnectivity
-     *
-     * @param string $directConnectivity
-     *
-     * @return static
-     */
-    protected function setDirectConnectivity(string $directConnectivity): RetailAccountInterface
+    protected function setDirectConnectivity(string $directConnectivity): static
     {
         Assertion::choice(
             $directConnectivity,
@@ -542,24 +453,12 @@ abstract class RetailAccountAbstract
         return $this;
     }
 
-    /**
-     * Get directConnectivity
-     *
-     * @return string
-     */
     public function getDirectConnectivity(): string
     {
         return $this->directConnectivity;
     }
 
-    /**
-     * Set ddiIn
-     *
-     * @param string $ddiIn
-     *
-     * @return static
-     */
-    protected function setDdiIn(string $ddiIn): RetailAccountInterface
+    protected function setDdiIn(string $ddiIn): static
     {
         Assertion::choice(
             $ddiIn,
@@ -575,24 +474,12 @@ abstract class RetailAccountAbstract
         return $this;
     }
 
-    /**
-     * Get ddiIn
-     *
-     * @return string
-     */
     public function getDdiIn(): string
     {
         return $this->ddiIn;
     }
 
-    /**
-     * Set t38Passthrough
-     *
-     * @param string $t38Passthrough
-     *
-     * @return static
-     */
-    protected function setT38Passthrough(string $t38Passthrough): RetailAccountInterface
+    protected function setT38Passthrough(string $t38Passthrough): static
     {
         Assertion::choice(
             $t38Passthrough,
@@ -608,24 +495,12 @@ abstract class RetailAccountAbstract
         return $this;
     }
 
-    /**
-     * Get t38Passthrough
-     *
-     * @return string
-     */
     public function getT38Passthrough(): string
     {
         return $this->t38Passthrough;
     }
 
-    /**
-     * Set rtpEncryption
-     *
-     * @param bool $rtpEncryption
-     *
-     * @return static
-     */
-    protected function setRtpEncryption(bool $rtpEncryption): RetailAccountInterface
+    protected function setRtpEncryption(bool $rtpEncryption): static
     {
         Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
         $rtpEncryption = (bool) $rtpEncryption;
@@ -635,26 +510,13 @@ abstract class RetailAccountAbstract
         return $this;
     }
 
-    /**
-     * Get rtpEncryption
-     *
-     * @return bool
-     */
     public function getRtpEncryption(): bool
     {
         return $this->rtpEncryption;
     }
 
-    /**
-     * Set multiContact
-     *
-     * @param boolean $multiContact
-     *
-     * @return static
-     */
-    protected function setMultiContact($multiContact)
+    protected function setMultiContact(bool $multiContact): static
     {
-        Assertion::notNull($multiContact, 'multiContact value "%s" is null, but non null value was expected.');
         Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
         $multiContact = (bool) $multiContact;
 
@@ -663,131 +525,68 @@ abstract class RetailAccountAbstract
         return $this;
     }
 
-    /**
-     * Get multiContact
-     *
-     * @return boolean
-     */
     public function getMultiContact(): bool
     {
         return $this->multiContact;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    public function setBrand(BrandInterface $brand): RetailAccountInterface
+    public function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set domain
-     *
-     * @param DomainInterface | null
-     *
-     * @return static
-     */
-    public function setDomain(?DomainInterface $domain = null): RetailAccountInterface
+    public function setDomain(?DomainInterface $domain = null): static
     {
         $this->domain = $domain;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get domain
-     *
-     * @return DomainInterface | null
-     */
     public function getDomain(): ?DomainInterface
     {
         return $this->domain;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): RetailAccountInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set transformationRuleSet
-     *
-     * @param TransformationRuleSetInterface | null
-     *
-     * @return static
-     */
-    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): RetailAccountInterface
+    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): static
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
-    /**
-     * Get transformationRuleSet
-     *
-     * @return TransformationRuleSetInterface | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface
     {
         return $this->transformationRuleSet;
     }
 
-    /**
-     * Set outgoingDdi
-     *
-     * @param DdiInterface | null
-     *
-     * @return static
-     */
-    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): RetailAccountInterface
+    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): static
     {
         $this->outgoingDdi = $outgoingDdi;
 
         return $this;
     }
 
-    /**
-     * Get outgoingDdi
-     *
-     * @return DdiInterface | null
-     */
     public function getOutgoingDdi(): ?DdiInterface
     {
         return $this->outgoingDdi;

@@ -46,7 +46,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
         return $this->id;
     }
 
-    protected function setWeight(int $weight): self
+    protected function setWeight(int $weight): static
     {
         Assertion::between($weight, 1, 20, 'weight provided "%s" is not between "%s" and "%s"');
         return parent::setWeight($weight);

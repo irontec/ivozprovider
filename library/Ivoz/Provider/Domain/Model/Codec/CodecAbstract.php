@@ -66,7 +66,7 @@ abstract class CodecAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CodecDto
      */
     public static function createDto($id = null)
@@ -171,14 +171,7 @@ abstract class CodecAbstract
         ];
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return static
-     */
-    protected function setType(string $type): CodecInterface
+    protected function setType(string $type): static
     {
         Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -195,24 +188,12 @@ abstract class CodecAbstract
         return $this;
     }
 
-    /**
-     * Get type
-     *
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * Set iden
-     *
-     * @param string $iden
-     *
-     * @return static
-     */
-    protected function setIden(string $iden): CodecInterface
+    protected function setIden(string $iden): static
     {
         Assertion::maxLength($iden, 25, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -221,24 +202,12 @@ abstract class CodecAbstract
         return $this;
     }
 
-    /**
-     * Get iden
-     *
-     * @return string
-     */
     public function getIden(): string
     {
         return $this->iden;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): CodecInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -247,11 +216,6 @@ abstract class CodecAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;

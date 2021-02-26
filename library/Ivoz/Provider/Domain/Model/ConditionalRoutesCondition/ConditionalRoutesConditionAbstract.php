@@ -63,47 +63,47 @@ abstract class ConditionalRoutesConditionAbstract
     protected $conditionalRoute;
 
     /**
-     * @var IvrInterface
+     * @var IvrInterface | null
      */
     protected $ivr;
 
     /**
-     * @var HuntGroupInterface
+     * @var HuntGroupInterface | null
      */
     protected $huntGroup;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $voicemailUser;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $user;
 
     /**
-     * @var QueueInterface
+     * @var QueueInterface | null
      */
     protected $queue;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $locution;
 
     /**
-     * @var ConferenceRoomInterface
+     * @var ConferenceRoomInterface | null
      */
     protected $conferenceRoom;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $extension;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $numberCountry;
 
@@ -136,7 +136,7 @@ abstract class ConditionalRoutesConditionAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ConditionalRoutesConditionDto
      */
     public static function createDto($id = null)
@@ -285,38 +285,19 @@ abstract class ConditionalRoutesConditionAbstract
         ];
     }
 
-    /**
-     * Set priority
-     *
-     * @param int $priority
-     *
-     * @return static
-     */
-    protected function setPriority(int $priority): ConditionalRoutesConditionInterface
+    protected function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * Get priority
-     *
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;
     }
 
-    /**
-     * Set routeType
-     *
-     * @param string $routeType | null
-     *
-     * @return static
-     */
-    protected function setRouteType(?string $routeType = null): ConditionalRoutesConditionInterface
+    protected function setRouteType(?string $routeType = null): static
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -342,24 +323,12 @@ abstract class ConditionalRoutesConditionAbstract
         return $this;
     }
 
-    /**
-     * Get routeType
-     *
-     * @return string | null
-     */
     public function getRouteType(): ?string
     {
         return $this->routeType;
     }
 
-    /**
-     * Set numberValue
-     *
-     * @param string $numberValue | null
-     *
-     * @return static
-     */
-    protected function setNumberValue(?string $numberValue = null): ConditionalRoutesConditionInterface
+    protected function setNumberValue(?string $numberValue = null): static
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -370,24 +339,12 @@ abstract class ConditionalRoutesConditionAbstract
         return $this;
     }
 
-    /**
-     * Get numberValue
-     *
-     * @return string | null
-     */
     public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
-    /**
-     * Set friendValue
-     *
-     * @param string $friendValue | null
-     *
-     * @return static
-     */
-    protected function setFriendValue(?string $friendValue = null): ConditionalRoutesConditionInterface
+    protected function setFriendValue(?string $friendValue = null): static
     {
         if (!is_null($friendValue)) {
             Assertion::maxLength($friendValue, 25, 'friendValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -398,251 +355,127 @@ abstract class ConditionalRoutesConditionAbstract
         return $this;
     }
 
-    /**
-     * Get friendValue
-     *
-     * @return string | null
-     */
     public function getFriendValue(): ?string
     {
         return $this->friendValue;
     }
 
-    /**
-     * Set conditionalRoute
-     *
-     * @param ConditionalRouteInterface
-     *
-     * @return static
-     */
-    public function setConditionalRoute(ConditionalRouteInterface $conditionalRoute): ConditionalRoutesConditionInterface
+    public function setConditionalRoute(ConditionalRouteInterface $conditionalRoute): static
     {
         $this->conditionalRoute = $conditionalRoute;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get conditionalRoute
-     *
-     * @return ConditionalRouteInterface
-     */
     public function getConditionalRoute(): ConditionalRouteInterface
     {
         return $this->conditionalRoute;
     }
 
-    /**
-     * Set ivr
-     *
-     * @param IvrInterface | null
-     *
-     * @return static
-     */
-    protected function setIvr(?IvrInterface $ivr = null): ConditionalRoutesConditionInterface
+    protected function setIvr(?IvrInterface $ivr = null): static
     {
         $this->ivr = $ivr;
 
         return $this;
     }
 
-    /**
-     * Get ivr
-     *
-     * @return IvrInterface | null
-     */
     public function getIvr(): ?IvrInterface
     {
         return $this->ivr;
     }
 
-    /**
-     * Set huntGroup
-     *
-     * @param HuntGroupInterface | null
-     *
-     * @return static
-     */
-    protected function setHuntGroup(?HuntGroupInterface $huntGroup = null): ConditionalRoutesConditionInterface
+    protected function setHuntGroup(?HuntGroupInterface $huntGroup = null): static
     {
         $this->huntGroup = $huntGroup;
 
         return $this;
     }
 
-    /**
-     * Get huntGroup
-     *
-     * @return HuntGroupInterface | null
-     */
     public function getHuntGroup(): ?HuntGroupInterface
     {
         return $this->huntGroup;
     }
 
-    /**
-     * Set voicemailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setVoicemailUser(?UserInterface $voicemailUser = null): ConditionalRoutesConditionInterface
+    protected function setVoicemailUser(?UserInterface $voicemailUser = null): static
     {
         $this->voicemailUser = $voicemailUser;
 
         return $this;
     }
 
-    /**
-     * Get voicemailUser
-     *
-     * @return UserInterface | null
-     */
     public function getVoicemailUser(): ?UserInterface
     {
         return $this->voicemailUser;
     }
 
-    /**
-     * Set user
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setUser(?UserInterface $user = null): ConditionalRoutesConditionInterface
+    protected function setUser(?UserInterface $user = null): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface
     {
         return $this->user;
     }
 
-    /**
-     * Set queue
-     *
-     * @param QueueInterface | null
-     *
-     * @return static
-     */
-    protected function setQueue(?QueueInterface $queue = null): ConditionalRoutesConditionInterface
+    protected function setQueue(?QueueInterface $queue = null): static
     {
         $this->queue = $queue;
 
         return $this;
     }
 
-    /**
-     * Get queue
-     *
-     * @return QueueInterface | null
-     */
     public function getQueue(): ?QueueInterface
     {
         return $this->queue;
     }
 
-    /**
-     * Set locution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setLocution(?LocutionInterface $locution = null): ConditionalRoutesConditionInterface
+    protected function setLocution(?LocutionInterface $locution = null): static
     {
         $this->locution = $locution;
 
         return $this;
     }
 
-    /**
-     * Get locution
-     *
-     * @return LocutionInterface | null
-     */
     public function getLocution(): ?LocutionInterface
     {
         return $this->locution;
     }
 
-    /**
-     * Set conferenceRoom
-     *
-     * @param ConferenceRoomInterface | null
-     *
-     * @return static
-     */
-    protected function setConferenceRoom(?ConferenceRoomInterface $conferenceRoom = null): ConditionalRoutesConditionInterface
+    protected function setConferenceRoom(?ConferenceRoomInterface $conferenceRoom = null): static
     {
         $this->conferenceRoom = $conferenceRoom;
 
         return $this;
     }
 
-    /**
-     * Get conferenceRoom
-     *
-     * @return ConferenceRoomInterface | null
-     */
     public function getConferenceRoom(): ?ConferenceRoomInterface
     {
         return $this->conferenceRoom;
     }
 
-    /**
-     * Set extension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setExtension(?ExtensionInterface $extension = null): ConditionalRoutesConditionInterface
+    protected function setExtension(?ExtensionInterface $extension = null): static
     {
         $this->extension = $extension;
 
         return $this;
     }
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getExtension(): ?ExtensionInterface
     {
         return $this->extension;
     }
 
-    /**
-     * Set numberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setNumberCountry(?CountryInterface $numberCountry = null): ConditionalRoutesConditionInterface
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;

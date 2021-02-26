@@ -22,7 +22,7 @@ abstract class CalendarPeriodsRelScheduleAbstract
     use ChangelogTrait;
 
     /**
-     * @var CalendarPeriodInterface
+     * @var CalendarPeriodInterface | null
      * inversedBy relSchedules
      */
     protected $calendarPeriod;
@@ -61,7 +61,7 @@ abstract class CalendarPeriodsRelScheduleAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CalendarPeriodsRelScheduleDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class CalendarPeriodsRelScheduleAbstract
         ];
     }
 
-    /**
-     * Set calendarPeriod
-     *
-     * @param CalendarPeriodInterface | null
-     *
-     * @return static
-     */
-    public function setCalendarPeriod(?CalendarPeriodInterface $calendarPeriod = null): CalendarPeriodsRelScheduleInterface
+    public function setCalendarPeriod(?CalendarPeriodInterface $calendarPeriod = null): static
     {
         $this->calendarPeriod = $calendarPeriod;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get calendarPeriod
-     *
-     * @return CalendarPeriodInterface | null
-     */
     public function getCalendarPeriod(): ?CalendarPeriodInterface
     {
         return $this->calendarPeriod;
     }
 
-    /**
-     * Set schedule
-     *
-     * @param ScheduleInterface
-     *
-     * @return static
-     */
-    protected function setSchedule(ScheduleInterface $schedule): CalendarPeriodsRelScheduleInterface
+    protected function setSchedule(ScheduleInterface $schedule): static
     {
         $this->schedule = $schedule;
 
         return $this;
     }
 
-    /**
-     * Get schedule
-     *
-     * @return ScheduleInterface
-     */
     public function getSchedule(): ScheduleInterface
     {
         return $this->schedule;

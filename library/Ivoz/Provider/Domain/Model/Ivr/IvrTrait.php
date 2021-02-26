@@ -136,13 +136,6 @@ trait IvrTrait
         ];
     }
 
-    /**
-     * Add entry
-     *
-     * @param IvrEntryInterface $entry
-     *
-     * @return static
-     */
     public function addEntry(IvrEntryInterface $entry): IvrInterface
     {
         $this->entries->add($entry);
@@ -150,13 +143,6 @@ trait IvrTrait
         return $this;
     }
 
-    /**
-     * Remove entry
-     *
-     * @param IvrEntryInterface $entry
-     *
-     * @return static
-     */
     public function removeEntry(IvrEntryInterface $entry): IvrInterface
     {
         $this->entries->removeElement($entry);
@@ -164,13 +150,6 @@ trait IvrTrait
         return $this;
     }
 
-    /**
-     * Replace entries
-     *
-     * @param ArrayCollection $entries of IvrEntryInterface
-     *
-     * @return static
-     */
     public function replaceEntries(ArrayCollection $entries): IvrInterface
     {
         $updatedEntities = [];
@@ -199,11 +178,6 @@ trait IvrTrait
         return $this;
     }
 
-    /**
-     * Get entries
-     * @param Criteria | null $criteria
-     * @return IvrEntryInterface[]
-     */
     public function getEntries(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -213,13 +187,6 @@ trait IvrTrait
         return $this->entries->toArray();
     }
 
-    /**
-     * Add excludedExtension
-     *
-     * @param IvrExcludedExtensionInterface $excludedExtension
-     *
-     * @return static
-     */
     public function addExcludedExtension(IvrExcludedExtensionInterface $excludedExtension): IvrInterface
     {
         $this->excludedExtensions->add($excludedExtension);
@@ -227,13 +194,6 @@ trait IvrTrait
         return $this;
     }
 
-    /**
-     * Remove excludedExtension
-     *
-     * @param IvrExcludedExtensionInterface $excludedExtension
-     *
-     * @return static
-     */
     public function removeExcludedExtension(IvrExcludedExtensionInterface $excludedExtension): IvrInterface
     {
         $this->excludedExtensions->removeElement($excludedExtension);
@@ -241,13 +201,6 @@ trait IvrTrait
         return $this;
     }
 
-    /**
-     * Replace excludedExtensions
-     *
-     * @param ArrayCollection $excludedExtensions of IvrExcludedExtensionInterface
-     *
-     * @return static
-     */
     public function replaceExcludedExtensions(ArrayCollection $excludedExtensions): IvrInterface
     {
         $updatedEntities = [];
@@ -276,11 +229,6 @@ trait IvrTrait
         return $this;
     }
 
-    /**
-     * Get excludedExtensions
-     * @param Criteria | null $criteria
-     * @return IvrExcludedExtensionInterface[]
-     */
     public function getExcludedExtensions(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

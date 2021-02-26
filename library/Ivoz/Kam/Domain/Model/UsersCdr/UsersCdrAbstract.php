@@ -32,15 +32,15 @@ abstract class UsersCdrAbstract
 
     /**
      * column: start_time
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $startTime = '2000-01-01 00:00:00';
+    protected $startTime;
 
     /**
      * column: end_time
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $endTime = '2000-01-01 00:00:00';
+    protected $endTime;
 
     /**
      * @var float
@@ -98,32 +98,32 @@ abstract class UsersCdrAbstract
     protected $hidden = false;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $user;
 
     /**
-     * @var FriendInterface
+     * @var FriendInterface | null
      */
     protected $friend;
 
     /**
-     * @var ResidentialDeviceInterface
+     * @var ResidentialDeviceInterface | null
      */
     protected $residentialDevice;
 
     /**
-     * @var RetailAccountInterface
+     * @var RetailAccountInterface | null
      */
     protected $retailAccount;
 
@@ -162,7 +162,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return UsersCdrDto
      */
     public static function createDto($id = null)
@@ -331,14 +331,7 @@ abstract class UsersCdrAbstract
         ];
     }
 
-    /**
-     * Set startTime
-     *
-     * @param \DateTimeInterface $startTime
-     *
-     * @return static
-     */
-    protected function setStartTime($startTime): UsersCdrInterface
+    protected function setStartTime($startTime): static
     {
 
         $startTime = DateTimeHelper::createOrFix(
@@ -355,24 +348,12 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * Get startTime
-     *
-     * @return \DateTimeInterface
-     */
-    public function getStartTime(): \DateTimeInterface
+    public function getStartTime(): \DateTime
     {
         return clone $this->startTime;
     }
 
-    /**
-     * Set endTime
-     *
-     * @param \DateTimeInterface $endTime
-     *
-     * @return static
-     */
-    protected function setEndTime($endTime): UsersCdrInterface
+    protected function setEndTime($endTime): static
     {
 
         $endTime = DateTimeHelper::createOrFix(
@@ -389,72 +370,36 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * Get endTime
-     *
-     * @return \DateTimeInterface
-     */
-    public function getEndTime(): \DateTimeInterface
+    public function getEndTime(): \DateTime
     {
         return clone $this->endTime;
     }
 
-    /**
-     * Set duration
-     *
-     * @param float $duration
-     *
-     * @return static
-     */
-    protected function setDuration(float $duration): UsersCdrInterface
+    protected function setDuration(float $duration): static
     {
         $this->duration = $duration;
 
         return $this;
     }
 
-    /**
-     * Get duration
-     *
-     * @return float
-     */
     public function getDuration(): float
     {
         return $this->duration;
     }
 
-    /**
-     * Set direction
-     *
-     * @param string $direction | null
-     *
-     * @return static
-     */
-    protected function setDirection(?string $direction = null): UsersCdrInterface
+    protected function setDirection(?string $direction = null): static
     {
         $this->direction = $direction;
 
         return $this;
     }
 
-    /**
-     * Get direction
-     *
-     * @return string | null
-     */
     public function getDirection(): ?string
     {
         return $this->direction;
     }
 
-    /**
-     * Set caller
-     *
-     * @param string $caller | null
-     *
-     * @return static
-     */
-    protected function setCaller(?string $caller = null): UsersCdrInterface
+    protected function setCaller(?string $caller = null): static
     {
         if (!is_null($caller)) {
             Assertion::maxLength($caller, 128, 'caller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -465,24 +410,12 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * Get caller
-     *
-     * @return string | null
-     */
     public function getCaller(): ?string
     {
         return $this->caller;
     }
 
-    /**
-     * Set callee
-     *
-     * @param string $callee | null
-     *
-     * @return static
-     */
-    protected function setCallee(?string $callee = null): UsersCdrInterface
+    protected function setCallee(?string $callee = null): static
     {
         if (!is_null($callee)) {
             Assertion::maxLength($callee, 128, 'callee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -493,24 +426,12 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * Get callee
-     *
-     * @return string | null
-     */
     public function getCallee(): ?string
     {
         return $this->callee;
     }
 
-    /**
-     * Set diversion
-     *
-     * @param string $diversion | null
-     *
-     * @return static
-     */
-    protected function setDiversion(?string $diversion = null): UsersCdrInterface
+    protected function setDiversion(?string $diversion = null): static
     {
         if (!is_null($diversion)) {
             Assertion::maxLength($diversion, 64, 'diversion value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -521,24 +442,12 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * Get diversion
-     *
-     * @return string | null
-     */
     public function getDiversion(): ?string
     {
         return $this->diversion;
     }
 
-    /**
-     * Set referee
-     *
-     * @param string $referee | null
-     *
-     * @return static
-     */
-    protected function setReferee(?string $referee = null): UsersCdrInterface
+    protected function setReferee(?string $referee = null): static
     {
         if (!is_null($referee)) {
             Assertion::maxLength($referee, 128, 'referee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -549,24 +458,12 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * Get referee
-     *
-     * @return string | null
-     */
     public function getReferee(): ?string
     {
         return $this->referee;
     }
 
-    /**
-     * Set referrer
-     *
-     * @param string $referrer | null
-     *
-     * @return static
-     */
-    protected function setReferrer(?string $referrer = null): UsersCdrInterface
+    protected function setReferrer(?string $referrer = null): static
     {
         if (!is_null($referrer)) {
             Assertion::maxLength($referrer, 128, 'referrer value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -577,24 +474,12 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * Get referrer
-     *
-     * @return string | null
-     */
     public function getReferrer(): ?string
     {
         return $this->referrer;
     }
 
-    /**
-     * Set callid
-     *
-     * @param string $callid | null
-     *
-     * @return static
-     */
-    protected function setCallid(?string $callid = null): UsersCdrInterface
+    protected function setCallid(?string $callid = null): static
     {
         if (!is_null($callid)) {
             Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -605,24 +490,12 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * Get callid
-     *
-     * @return string | null
-     */
     public function getCallid(): ?string
     {
         return $this->callid;
     }
 
-    /**
-     * Set callidHash
-     *
-     * @param string $callidHash | null
-     *
-     * @return static
-     */
-    protected function setCallidHash(?string $callidHash = null): UsersCdrInterface
+    protected function setCallidHash(?string $callidHash = null): static
     {
         if (!is_null($callidHash)) {
             Assertion::maxLength($callidHash, 128, 'callidHash value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -633,24 +506,12 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * Get callidHash
-     *
-     * @return string | null
-     */
     public function getCallidHash(): ?string
     {
         return $this->callidHash;
     }
 
-    /**
-     * Set xcallid
-     *
-     * @param string $xcallid | null
-     *
-     * @return static
-     */
-    protected function setXcallid(?string $xcallid = null): UsersCdrInterface
+    protected function setXcallid(?string $xcallid = null): static
     {
         if (!is_null($xcallid)) {
             Assertion::maxLength($xcallid, 255, 'xcallid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -661,24 +522,12 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * Get xcallid
-     *
-     * @return string | null
-     */
     public function getXcallid(): ?string
     {
         return $this->xcallid;
     }
 
-    /**
-     * Set hidden
-     *
-     * @param bool $hidden
-     *
-     * @return static
-     */
-    protected function setHidden(bool $hidden): UsersCdrInterface
+    protected function setHidden(bool $hidden): static
     {
         Assertion::between(intval($hidden), 0, 1, 'hidden provided "%s" is not a valid boolean value.');
         $hidden = (bool) $hidden;
@@ -688,155 +537,78 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * Get hidden
-     *
-     * @return bool
-     */
     public function getHidden(): bool
     {
         return $this->hidden;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    protected function setBrand(?BrandInterface $brand = null): UsersCdrInterface
+    protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    protected function setCompany(?CompanyInterface $company = null): UsersCdrInterface
+    protected function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set user
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setUser(?UserInterface $user = null): UsersCdrInterface
+    protected function setUser(?UserInterface $user = null): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface
     {
         return $this->user;
     }
 
-    /**
-     * Set friend
-     *
-     * @param FriendInterface | null
-     *
-     * @return static
-     */
-    protected function setFriend(?FriendInterface $friend = null): UsersCdrInterface
+    protected function setFriend(?FriendInterface $friend = null): static
     {
         $this->friend = $friend;
 
         return $this;
     }
 
-    /**
-     * Get friend
-     *
-     * @return FriendInterface | null
-     */
     public function getFriend(): ?FriendInterface
     {
         return $this->friend;
     }
 
-    /**
-     * Set residentialDevice
-     *
-     * @param ResidentialDeviceInterface | null
-     *
-     * @return static
-     */
-    protected function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): UsersCdrInterface
+    protected function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static
     {
         $this->residentialDevice = $residentialDevice;
 
         return $this;
     }
 
-    /**
-     * Get residentialDevice
-     *
-     * @return ResidentialDeviceInterface | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceInterface
     {
         return $this->residentialDevice;
     }
 
-    /**
-     * Set retailAccount
-     *
-     * @param RetailAccountInterface | null
-     *
-     * @return static
-     */
-    protected function setRetailAccount(?RetailAccountInterface $retailAccount = null): UsersCdrInterface
+    protected function setRetailAccount(?RetailAccountInterface $retailAccount = null): static
     {
         $this->retailAccount = $retailAccount;
 
         return $this;
     }
 
-    /**
-     * Get retailAccount
-     *
-     * @return RetailAccountInterface | null
-     */
     public function getRetailAccount(): ?RetailAccountInterface
     {
         return $this->retailAccount;

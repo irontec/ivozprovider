@@ -2,11 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\MusicOnHold;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\TempFile;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Core\Domain\Service\FileContainerInterface;
 
 /**
 * MusicOnHoldInterface
@@ -30,7 +30,7 @@ interface MusicOnHoldInterface extends LoggableEntityInterface, FileContainerInt
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null);
+    public function getFileObjects(?int $filter = null);
 
     /**
      * @return string
@@ -45,64 +45,20 @@ interface MusicOnHoldInterface extends LoggableEntityInterface, FileContainerInt
      */
     public function addTmpFile(string $fldName, TempFile $file);
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get status
-     *
-     * @return string | null
-     */
     public function getStatus(): ?string;
 
-    /**
-     * Get originalFile
-     *
-     * @return OriginalFile
-     */
     public function getOriginalFile(): OriginalFile;
 
-    /**
-     * Get encodedFile
-     *
-     * @return EncodedFile
-     */
     public function getEncodedFile(): EncodedFile;
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandInterface $brand = null): MusicOnHoldInterface;
+    public function setBrand(?BrandInterface $brand = null): static;
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface;
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyInterface $company = null): MusicOnHoldInterface;
+    public function setCompany(?CompanyInterface $company = null): static;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface;
 
     /**

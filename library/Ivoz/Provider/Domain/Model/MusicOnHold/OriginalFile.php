@@ -54,14 +54,7 @@ class OriginalFile
             $this->getBaseName() === $originalFile->getBaseName();
     }
 
-    /**
-     * Set fileSize
-     *
-     * @param int $fileSize | null
-     *
-     * @return static
-     */
-    protected function setFileSize(?int $fileSize = null): OriginalFile
+    protected function setFileSize(?int $fileSize = null): static
     {
         if (!is_null($fileSize)) {
             Assertion::greaterOrEqualThan($fileSize, 0, 'fileSize provided "%s" is not greater or equal than "%s".');
@@ -72,24 +65,12 @@ class OriginalFile
         return $this;
     }
 
-    /**
-     * Get fileSize
-     *
-     * @return int | null
-     */
     public function getFileSize(): ?int
     {
         return $this->fileSize;
     }
 
-    /**
-     * Set mimeType
-     *
-     * @param string $mimeType | null
-     *
-     * @return static
-     */
-    protected function setMimeType(?string $mimeType = null): OriginalFile
+    protected function setMimeType(?string $mimeType = null): static
     {
         if (!is_null($mimeType)) {
             Assertion::maxLength($mimeType, 80, 'mimeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -100,24 +81,12 @@ class OriginalFile
         return $this;
     }
 
-    /**
-     * Get mimeType
-     *
-     * @return string | null
-     */
     public function getMimeType(): ?string
     {
         return $this->mimeType;
     }
 
-    /**
-     * Set baseName
-     *
-     * @param string $baseName | null
-     *
-     * @return static
-     */
-    protected function setBaseName(?string $baseName = null): OriginalFile
+    protected function setBaseName(?string $baseName = null): static
     {
         if (!is_null($baseName)) {
             Assertion::maxLength($baseName, 255, 'baseName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -128,11 +97,6 @@ class OriginalFile
         return $this;
     }
 
-    /**
-     * Get baseName
-     *
-     * @return string | null
-     */
     public function getBaseName(): ?string
     {
         return $this->baseName;

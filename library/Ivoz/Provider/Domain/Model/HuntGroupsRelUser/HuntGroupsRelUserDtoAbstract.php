@@ -17,22 +17,22 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     use DtoNormalizer;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $timeoutTime;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $priority;
 
     /**
      * @var string
      */
-    private $routeType;
+    private $routeType = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $numberValue;
 
@@ -112,130 +112,79 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return $response;
     }
 
-    /**
-     * @param int $timeoutTime | null
-     *
-     * @return static
-     */
-    public function setTimeoutTime(?int $timeoutTime = null): self
+    public function setTimeoutTime(?int $timeoutTime): static
     {
         $this->timeoutTime = $timeoutTime;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getTimeoutTime(): ?int
     {
         return $this->timeoutTime;
     }
 
-    /**
-     * @param int $priority | null
-     *
-     * @return static
-     */
-    public function setPriority(?int $priority = null): self
+    public function setPriority(?int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    /**
-     * @param string $routeType | null
-     *
-     * @return static
-     */
-    public function setRouteType(?string $routeType = null): self
+    public function setRouteType(?string $routeType): static
     {
         $this->routeType = $routeType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRouteType(): ?string
     {
         return $this->routeType;
     }
 
-    /**
-     * @param string $numberValue | null
-     *
-     * @return static
-     */
-    public function setNumberValue(?string $numberValue = null): self
+    public function setNumberValue(?string $numberValue): static
     {
         $this->numberValue = $numberValue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param HuntGroupDto | null
-     *
-     * @return static
-     */
-    public function setHuntGroup(?HuntGroupDto $huntGroup = null): self
+    public function setHuntGroup(?HuntGroupDto $huntGroup): static
     {
         $this->huntGroup = $huntGroup;
 
         return $this;
     }
 
-    /**
-     * @return HuntGroupDto | null
-     */
     public function getHuntGroup(): ?HuntGroupDto
     {
         return $this->huntGroup;
     }
 
-    /**
-     * @return static
-     */
-    public function setHuntGroupId($id): self
+    public function setHuntGroupId($id): static
     {
         $value = !is_null($id)
             ? new HuntGroupDto($id)
@@ -244,9 +193,6 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return $this->setHuntGroup($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getHuntGroupId()
     {
         if ($dto = $this->getHuntGroup()) {
@@ -256,30 +202,19 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setUser(?UserDto $user = null): self
+    public function setUser(?UserDto $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
-    /**
-     * @return static
-     */
-    public function setUserId($id): self
+    public function setUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -288,9 +223,6 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return $this->setUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getUserId()
     {
         if ($dto = $this->getUser()) {
@@ -300,30 +232,19 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setNumberCountry(?CountryDto $numberCountry = null): self
+    public function setNumberCountry(?CountryDto $numberCountry): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getNumberCountry(): ?CountryDto
     {
         return $this->numberCountry;
     }
 
-    /**
-     * @return static
-     */
-    public function setNumberCountryId($id): self
+    public function setNumberCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -332,9 +253,6 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return $this->setNumberCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getNumberCountryId()
     {
         if ($dto = $this->getNumberCountry()) {

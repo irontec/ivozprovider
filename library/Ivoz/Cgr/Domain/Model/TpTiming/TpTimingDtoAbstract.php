@@ -20,29 +20,29 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tag;
 
     /**
      * @var string
      */
-    private $years;
+    private $years = '';
 
     /**
      * @var string
      */
-    private $months;
+    private $months = '';
 
     /**
      * @var string
      */
-    private $monthDays;
+    private $monthDays = '';
 
     /**
      * @var string
      */
-    private $weekDays;
+    private $weekDays = '';
 
     /**
      * @var string
@@ -50,7 +50,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     private $time = '00:00:00';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -124,210 +124,127 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $tpid | null
-     *
-     * @return static
-     */
-    public function setTpid(?string $tpid = null): self
+    public function setTpid(?string $tpid): static
     {
         $this->tpid = $tpid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
-    /**
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    public function setTag(?string $tag = null): self
+    public function setTag(?string $tag): static
     {
         $this->tag = $tag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * @param string $years | null
-     *
-     * @return static
-     */
-    public function setYears(?string $years = null): self
+    public function setYears(?string $years): static
     {
         $this->years = $years;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getYears(): ?string
     {
         return $this->years;
     }
 
-    /**
-     * @param string $months | null
-     *
-     * @return static
-     */
-    public function setMonths(?string $months = null): self
+    public function setMonths(?string $months): static
     {
         $this->months = $months;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getMonths(): ?string
     {
         return $this->months;
     }
 
-    /**
-     * @param string $monthDays | null
-     *
-     * @return static
-     */
-    public function setMonthDays(?string $monthDays = null): self
+    public function setMonthDays(?string $monthDays): static
     {
         $this->monthDays = $monthDays;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getMonthDays(): ?string
     {
         return $this->monthDays;
     }
 
-    /**
-     * @param string $weekDays | null
-     *
-     * @return static
-     */
-    public function setWeekDays(?string $weekDays = null): self
+    public function setWeekDays(?string $weekDays): static
     {
         $this->weekDays = $weekDays;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getWeekDays(): ?string
     {
         return $this->weekDays;
     }
 
-    /**
-     * @param string $time | null
-     *
-     * @return static
-     */
-    public function setTime(?string $time = null): self
+    public function setTime(?string $time): static
     {
         $this->time = $time;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTime(): ?string
     {
         return $this->time;
     }
 
-    /**
-     * @param \DateTimeInterface $createdAt | null
-     *
-     * @return static
-     */
-    public function setCreatedAt($createdAt = null): self
+    public function setCreatedAt(null|\DateTime|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime|string|null
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param RatingPlanDto | null
-     *
-     * @return static
-     */
-    public function setRatingPlan(?RatingPlanDto $ratingPlan = null): self
+    public function setRatingPlan(?RatingPlanDto $ratingPlan): static
     {
         $this->ratingPlan = $ratingPlan;
 
         return $this;
     }
 
-    /**
-     * @return RatingPlanDto | null
-     */
     public function getRatingPlan(): ?RatingPlanDto
     {
         return $this->ratingPlan;
     }
 
-    /**
-     * @return static
-     */
-    public function setRatingPlanId($id): self
+    public function setRatingPlanId($id): static
     {
         $value = !is_null($id)
             ? new RatingPlanDto($id)
@@ -336,9 +253,6 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->setRatingPlan($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRatingPlanId()
     {
         if ($dto = $this->getRatingPlan()) {

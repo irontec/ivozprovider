@@ -56,7 +56,7 @@ abstract class MediaRelaySetAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return MediaRelaySetDto
      */
     public static function createDto($id = null)
@@ -157,14 +157,7 @@ abstract class MediaRelaySetAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): MediaRelaySetInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 32, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -173,24 +166,12 @@ abstract class MediaRelaySetAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description | null
-     *
-     * @return static
-     */
-    protected function setDescription(?string $description = null): MediaRelaySetInterface
+    protected function setDescription(?string $description = null): static
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -201,11 +182,6 @@ abstract class MediaRelaySetAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;

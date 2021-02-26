@@ -16,22 +16,22 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $description;
 
     /**
      * @var string
      */
-    private $type;
+    private $type = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $regexp;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $numbervalue;
 
@@ -104,130 +104,79 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $response;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $type | null
-     *
-     * @return static
-     */
-    public function setType(?string $type = null): self
+    public function setType(?string $type): static
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $regexp | null
-     *
-     * @return static
-     */
-    public function setRegexp(?string $regexp = null): self
+    public function setRegexp(?string $regexp): static
     {
         $this->regexp = $regexp;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRegexp(): ?string
     {
         return $this->regexp;
     }
 
-    /**
-     * @param string $numbervalue | null
-     *
-     * @return static
-     */
-    public function setNumbervalue(?string $numbervalue = null): self
+    public function setNumbervalue(?string $numbervalue): static
     {
         $this->numbervalue = $numbervalue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNumbervalue(): ?string
     {
         return $this->numbervalue;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param MatchListDto | null
-     *
-     * @return static
-     */
-    public function setMatchList(?MatchListDto $matchList = null): self
+    public function setMatchList(?MatchListDto $matchList): static
     {
         $this->matchList = $matchList;
 
         return $this;
     }
 
-    /**
-     * @return MatchListDto | null
-     */
     public function getMatchList(): ?MatchListDto
     {
         return $this->matchList;
     }
 
-    /**
-     * @return static
-     */
-    public function setMatchListId($id): self
+    public function setMatchListId($id): static
     {
         $value = !is_null($id)
             ? new MatchListDto($id)
@@ -236,9 +185,6 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this->setMatchList($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getMatchListId()
     {
         if ($dto = $this->getMatchList()) {
@@ -248,30 +194,19 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setNumberCountry(?CountryDto $numberCountry = null): self
+    public function setNumberCountry(?CountryDto $numberCountry): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getNumberCountry(): ?CountryDto
     {
         return $this->numberCountry;
     }
 
-    /**
-     * @return static
-     */
-    public function setNumberCountryId($id): self
+    public function setNumberCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -280,9 +215,6 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this->setNumberCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getNumberCountryId()
     {
         if ($dto = $this->getNumberCountry()) {

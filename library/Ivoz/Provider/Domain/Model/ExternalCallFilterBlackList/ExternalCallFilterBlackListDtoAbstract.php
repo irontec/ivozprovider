@@ -76,50 +76,31 @@ abstract class ExternalCallFilterBlackListDtoAbstract implements DataTransferObj
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param ExternalCallFilterDto | null
-     *
-     * @return static
-     */
-    public function setFilter(?ExternalCallFilterDto $filter = null): self
+    public function setFilter(?ExternalCallFilterDto $filter): static
     {
         $this->filter = $filter;
 
         return $this;
     }
 
-    /**
-     * @return ExternalCallFilterDto | null
-     */
     public function getFilter(): ?ExternalCallFilterDto
     {
         return $this->filter;
     }
 
-    /**
-     * @return static
-     */
-    public function setFilterId($id): self
+    public function setFilterId($id): static
     {
         $value = !is_null($id)
             ? new ExternalCallFilterDto($id)
@@ -128,9 +109,6 @@ abstract class ExternalCallFilterBlackListDtoAbstract implements DataTransferObj
         return $this->setFilter($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFilterId()
     {
         if ($dto = $this->getFilter()) {
@@ -140,30 +118,19 @@ abstract class ExternalCallFilterBlackListDtoAbstract implements DataTransferObj
         return null;
     }
 
-    /**
-     * @param MatchListDto | null
-     *
-     * @return static
-     */
-    public function setMatchlist(?MatchListDto $matchlist = null): self
+    public function setMatchlist(?MatchListDto $matchlist): static
     {
         $this->matchlist = $matchlist;
 
         return $this;
     }
 
-    /**
-     * @return MatchListDto | null
-     */
     public function getMatchlist(): ?MatchListDto
     {
         return $this->matchlist;
     }
 
-    /**
-     * @return static
-     */
-    public function setMatchlistId($id): self
+    public function setMatchlistId($id): static
     {
         $value = !is_null($id)
             ? new MatchListDto($id)
@@ -172,9 +139,6 @@ abstract class ExternalCallFilterBlackListDtoAbstract implements DataTransferObj
         return $this->setMatchlist($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getMatchlistId()
     {
         if ($dto = $this->getMatchlist()) {

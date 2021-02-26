@@ -2,6 +2,7 @@
 
 namespace Ivoz\Cgr\Domain\Service\TpRatingPlan;
 
+use Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class TpRatingPlanLifecycleServiceCollection implements LifecycleServiceCollecti
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, TpRatingPlanLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, TpRatingPlanLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

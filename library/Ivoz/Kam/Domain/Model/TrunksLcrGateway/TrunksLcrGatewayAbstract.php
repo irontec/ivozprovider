@@ -82,7 +82,7 @@ abstract class TrunksLcrGatewayAbstract
     protected $defunct;
 
     /**
-     * @var CarrierServer
+     * @var CarrierServer | null
      * inversedBy lcrGateway
      */
     protected $carrierServer;
@@ -118,7 +118,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TrunksLcrGatewayDto
      */
     public static function createDto($id = null)
@@ -263,14 +263,7 @@ abstract class TrunksLcrGatewayAbstract
         ];
     }
 
-    /**
-     * Set lcrId
-     *
-     * @param int $lcrId
-     *
-     * @return static
-     */
-    protected function setLcrId(int $lcrId): TrunksLcrGatewayInterface
+    protected function setLcrId(int $lcrId): static
     {
         Assertion::greaterOrEqualThan($lcrId, 0, 'lcrId provided "%s" is not greater or equal than "%s".');
 
@@ -279,24 +272,12 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    /**
-     * Get lcrId
-     *
-     * @return int
-     */
     public function getLcrId(): int
     {
         return $this->lcrId;
     }
 
-    /**
-     * Set gwName
-     *
-     * @param string $gwName
-     *
-     * @return static
-     */
-    protected function setGwName(string $gwName): TrunksLcrGatewayInterface
+    protected function setGwName(string $gwName): static
     {
         Assertion::maxLength($gwName, 200, 'gwName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -305,24 +286,12 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    /**
-     * Get gwName
-     *
-     * @return string
-     */
     public function getGwName(): string
     {
         return $this->gwName;
     }
 
-    /**
-     * Set ip
-     *
-     * @param string $ip | null
-     *
-     * @return static
-     */
-    protected function setIp(?string $ip = null): TrunksLcrGatewayInterface
+    protected function setIp(?string $ip = null): static
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -333,24 +302,12 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    /**
-     * Get ip
-     *
-     * @return string | null
-     */
     public function getIp(): ?string
     {
         return $this->ip;
     }
 
-    /**
-     * Set hostname
-     *
-     * @param string $hostname | null
-     *
-     * @return static
-     */
-    protected function setHostname(?string $hostname = null): TrunksLcrGatewayInterface
+    protected function setHostname(?string $hostname = null): static
     {
         if (!is_null($hostname)) {
             Assertion::maxLength($hostname, 64, 'hostname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -361,24 +318,12 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    /**
-     * Get hostname
-     *
-     * @return string | null
-     */
     public function getHostname(): ?string
     {
         return $this->hostname;
     }
 
-    /**
-     * Set port
-     *
-     * @param int $port | null
-     *
-     * @return static
-     */
-    protected function setPort(?int $port = null): TrunksLcrGatewayInterface
+    protected function setPort(?int $port = null): static
     {
         if (!is_null($port)) {
             Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
@@ -389,24 +334,12 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    /**
-     * Get port
-     *
-     * @return int | null
-     */
     public function getPort(): ?int
     {
         return $this->port;
     }
 
-    /**
-     * Set params
-     *
-     * @param string $params | null
-     *
-     * @return static
-     */
-    protected function setParams(?string $params = null): TrunksLcrGatewayInterface
+    protected function setParams(?string $params = null): static
     {
         if (!is_null($params)) {
             Assertion::maxLength($params, 64, 'params value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -417,24 +350,12 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    /**
-     * Get params
-     *
-     * @return string | null
-     */
     public function getParams(): ?string
     {
         return $this->params;
     }
 
-    /**
-     * Set uriScheme
-     *
-     * @param int $uriScheme | null
-     *
-     * @return static
-     */
-    protected function setUriScheme(?int $uriScheme = null): TrunksLcrGatewayInterface
+    protected function setUriScheme(?int $uriScheme = null): static
     {
         if (!is_null($uriScheme)) {
             Assertion::greaterOrEqualThan($uriScheme, 0, 'uriScheme provided "%s" is not greater or equal than "%s".');
@@ -445,24 +366,12 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    /**
-     * Get uriScheme
-     *
-     * @return int | null
-     */
     public function getUriScheme(): ?int
     {
         return $this->uriScheme;
     }
 
-    /**
-     * Set transport
-     *
-     * @param int $transport | null
-     *
-     * @return static
-     */
-    protected function setTransport(?int $transport = null): TrunksLcrGatewayInterface
+    protected function setTransport(?int $transport = null): static
     {
         if (!is_null($transport)) {
             Assertion::greaterOrEqualThan($transport, 0, 'transport provided "%s" is not greater or equal than "%s".');
@@ -473,24 +382,12 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    /**
-     * Get transport
-     *
-     * @return int | null
-     */
     public function getTransport(): ?int
     {
         return $this->transport;
     }
 
-    /**
-     * Set strip
-     *
-     * @param bool $strip | null
-     *
-     * @return static
-     */
-    protected function setStrip(?bool $strip = null): TrunksLcrGatewayInterface
+    protected function setStrip(?bool $strip = null): static
     {
         if (!is_null($strip)) {
             Assertion::between(intval($strip), 0, 1, 'strip provided "%s" is not a valid boolean value.');
@@ -502,24 +399,12 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    /**
-     * Get strip
-     *
-     * @return bool | null
-     */
     public function getStrip(): ?bool
     {
         return $this->strip;
     }
 
-    /**
-     * Set prefix
-     *
-     * @param string $prefix | null
-     *
-     * @return static
-     */
-    protected function setPrefix(?string $prefix = null): TrunksLcrGatewayInterface
+    protected function setPrefix(?string $prefix = null): static
     {
         if (!is_null($prefix)) {
             Assertion::maxLength($prefix, 16, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -530,24 +415,12 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    /**
-     * Get prefix
-     *
-     * @return string | null
-     */
     public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
-    /**
-     * Set tag
-     *
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    protected function setTag(?string $tag = null): TrunksLcrGatewayInterface
+    protected function setTag(?string $tag = null): static
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -558,24 +431,12 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    /**
-     * Get tag
-     *
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * Set defunct
-     *
-     * @param int $defunct | null
-     *
-     * @return static
-     */
-    protected function setDefunct(?int $defunct = null): TrunksLcrGatewayInterface
+    protected function setDefunct(?int $defunct = null): static
     {
         if (!is_null($defunct)) {
             Assertion::greaterOrEqualThan($defunct, 0, 'defunct provided "%s" is not greater or equal than "%s".');
@@ -586,35 +447,19 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    /**
-     * Get defunct
-     *
-     * @return int | null
-     */
     public function getDefunct(): ?int
     {
         return $this->defunct;
     }
 
-    /**
-     * Set carrierServer
-     *
-     * @param CarrierServer | null
-     *
-     * @return static
-     */
-    public function setCarrierServer(?CarrierServer $carrierServer = null): TrunksLcrGatewayInterface
+    public function setCarrierServer(?CarrierServer $carrierServer = null): static
     {
         $this->carrierServer = $carrierServer;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get carrierServer
-     *
-     * @return CarrierServer | null
-     */
     public function getCarrierServer(): ?CarrierServer
     {
         return $this->carrierServer;

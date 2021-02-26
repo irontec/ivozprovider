@@ -22,7 +22,7 @@ abstract class CompanyRelRoutingTagAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      * inversedBy relRoutingTags
      */
     protected $company;
@@ -62,7 +62,7 @@ abstract class CompanyRelRoutingTagAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CompanyRelRoutingTagDto
      */
     public static function createDto($id = null)
@@ -164,49 +164,27 @@ abstract class CompanyRelRoutingTagAbstract
         ];
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyInterface $company = null): CompanyRelRoutingTagInterface
+    public function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set routingTag
-     *
-     * @param RoutingTagInterface
-     *
-     * @return static
-     */
-    public function setRoutingTag(RoutingTagInterface $routingTag): CompanyRelRoutingTagInterface
+    public function setRoutingTag(RoutingTagInterface $routingTag): static
     {
         $this->routingTag = $routingTag;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get routingTag
-     *
-     * @return RoutingTagInterface
-     */
     public function getRoutingTag(): RoutingTagInterface
     {
         return $this->routingTag;

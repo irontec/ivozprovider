@@ -76,50 +76,31 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -128,9 +109,6 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -140,30 +118,19 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CodecDto | null
-     *
-     * @return static
-     */
-    public function setCodec(?CodecDto $codec = null): self
+    public function setCodec(?CodecDto $codec): static
     {
         $this->codec = $codec;
 
         return $this;
     }
 
-    /**
-     * @return CodecDto | null
-     */
     public function getCodec(): ?CodecDto
     {
         return $this->codec;
     }
 
-    /**
-     * @return static
-     */
-    public function setCodecId($id): self
+    public function setCodecId($id): static
     {
         $value = !is_null($id)
             ? new CodecDto($id)
@@ -172,9 +139,6 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
         return $this->setCodec($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCodecId()
     {
         if ($dto = $this->getCodec()) {

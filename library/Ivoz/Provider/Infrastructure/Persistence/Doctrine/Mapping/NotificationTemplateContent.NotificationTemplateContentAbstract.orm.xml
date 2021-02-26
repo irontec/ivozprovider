@@ -38,7 +38,7 @@
     </many-to-one>
     <many-to-one field="language" target-entity="Ivoz\Provider\Domain\Model\Language\LanguageInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

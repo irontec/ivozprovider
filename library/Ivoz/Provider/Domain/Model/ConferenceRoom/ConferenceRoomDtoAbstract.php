@@ -17,7 +17,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var bool
@@ -25,7 +25,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     private $pinProtected = false;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $pinCode;
 
@@ -96,130 +96,79 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param bool $pinProtected | null
-     *
-     * @return static
-     */
-    public function setPinProtected(?bool $pinProtected = null): self
+    public function setPinProtected(?bool $pinProtected): static
     {
         $this->pinProtected = $pinProtected;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getPinProtected(): ?bool
     {
         return $this->pinProtected;
     }
 
-    /**
-     * @param string $pinCode | null
-     *
-     * @return static
-     */
-    public function setPinCode(?string $pinCode = null): self
+    public function setPinCode(?string $pinCode): static
     {
         $this->pinCode = $pinCode;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPinCode(): ?string
     {
         return $this->pinCode;
     }
 
-    /**
-     * @param int $maxMembers | null
-     *
-     * @return static
-     */
-    public function setMaxMembers(?int $maxMembers = null): self
+    public function setMaxMembers(?int $maxMembers): static
     {
         $this->maxMembers = $maxMembers;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMaxMembers(): ?int
     {
         return $this->maxMembers;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -228,9 +177,6 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {

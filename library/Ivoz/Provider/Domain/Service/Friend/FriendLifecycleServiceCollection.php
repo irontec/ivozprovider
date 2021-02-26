@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Friend;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -27,11 +28,9 @@ class FriendLifecycleServiceCollection implements LifecycleServiceCollectionInte
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, FriendLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, FriendLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

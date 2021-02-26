@@ -16,12 +16,12 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $ip;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $description;
 
@@ -90,90 +90,55 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
         return $response;
     }
 
-    /**
-     * @param string $ip | null
-     *
-     * @return static
-     */
-    public function setIp(?string $ip = null): self
+    public function setIp(?string $ip): static
     {
         $this->ip = $ip;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getIp(): ?string
     {
         return $this->ip;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param DdiProviderDto | null
-     *
-     * @return static
-     */
-    public function setDdiProvider(?DdiProviderDto $ddiProvider = null): self
+    public function setDdiProvider(?DdiProviderDto $ddiProvider): static
     {
         $this->ddiProvider = $ddiProvider;
 
         return $this;
     }
 
-    /**
-     * @return DdiProviderDto | null
-     */
     public function getDdiProvider(): ?DdiProviderDto
     {
         return $this->ddiProvider;
     }
 
-    /**
-     * @return static
-     */
-    public function setDdiProviderId($id): self
+    public function setDdiProviderId($id): static
     {
         $value = !is_null($id)
             ? new DdiProviderDto($id)
@@ -182,9 +147,6 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
         return $this->setDdiProvider($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDdiProviderId()
     {
         if ($dto = $this->getDdiProvider()) {
@@ -194,30 +156,19 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
         return null;
     }
 
-    /**
-     * @param TrunksAddressDto | null
-     *
-     * @return static
-     */
-    public function setTrunksAddress(?TrunksAddressDto $trunksAddress = null): self
+    public function setTrunksAddress(?TrunksAddressDto $trunksAddress): static
     {
         $this->trunksAddress = $trunksAddress;
 
         return $this;
     }
 
-    /**
-     * @return TrunksAddressDto | null
-     */
     public function getTrunksAddress(): ?TrunksAddressDto
     {
         return $this->trunksAddress;
     }
 
-    /**
-     * @return static
-     */
-    public function setTrunksAddressId($id): self
+    public function setTrunksAddressId($id): static
     {
         $value = !is_null($id)
             ? new TrunksAddressDto($id)
@@ -226,9 +177,6 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
         return $this->setTrunksAddress($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTrunksAddressId()
     {
         if ($dto = $this->getTrunksAddress()) {

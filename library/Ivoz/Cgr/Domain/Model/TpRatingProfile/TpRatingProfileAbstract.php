@@ -78,18 +78,18 @@ abstract class TpRatingProfileAbstract
 
     /**
      * column: created_at
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $createdAt = 'CURRENT_TIMESTAMP';
+    protected $createdAt;
 
     /**
-     * @var RatingProfileInterface
+     * @var RatingProfileInterface | null
      * inversedBy tpRatingProfiles
      */
     protected $ratingProfile;
 
     /**
-     * @var OutgoingRoutingRelCarrierInterface
+     * @var OutgoingRoutingRelCarrierInterface | null
      * inversedBy tpRatingProfiles
      */
     protected $outgoingRoutingRelCarrier;
@@ -133,7 +133,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TpRatingProfileDto
      */
     public static function createDto($id = null)
@@ -278,14 +278,7 @@ abstract class TpRatingProfileAbstract
         ];
     }
 
-    /**
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return static
-     */
-    protected function setTpid(string $tpid): TpRatingProfileInterface
+    protected function setTpid(string $tpid): static
     {
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -294,24 +287,12 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    /**
-     * Get tpid
-     *
-     * @return string
-     */
     public function getTpid(): string
     {
         return $this->tpid;
     }
 
-    /**
-     * Set loadid
-     *
-     * @param string $loadid
-     *
-     * @return static
-     */
-    protected function setLoadid(string $loadid): TpRatingProfileInterface
+    protected function setLoadid(string $loadid): static
     {
         Assertion::maxLength($loadid, 64, 'loadid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -320,24 +301,12 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    /**
-     * Get loadid
-     *
-     * @return string
-     */
     public function getLoadid(): string
     {
         return $this->loadid;
     }
 
-    /**
-     * Set direction
-     *
-     * @param string $direction
-     *
-     * @return static
-     */
-    protected function setDirection(string $direction): TpRatingProfileInterface
+    protected function setDirection(string $direction): static
     {
         Assertion::maxLength($direction, 8, 'direction value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -346,24 +315,12 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    /**
-     * Get direction
-     *
-     * @return string
-     */
     public function getDirection(): string
     {
         return $this->direction;
     }
 
-    /**
-     * Set tenant
-     *
-     * @param string $tenant | null
-     *
-     * @return static
-     */
-    protected function setTenant(?string $tenant = null): TpRatingProfileInterface
+    protected function setTenant(?string $tenant = null): static
     {
         if (!is_null($tenant)) {
             Assertion::maxLength($tenant, 64, 'tenant value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -374,24 +331,12 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    /**
-     * Get tenant
-     *
-     * @return string | null
-     */
     public function getTenant(): ?string
     {
         return $this->tenant;
     }
 
-    /**
-     * Set category
-     *
-     * @param string $category
-     *
-     * @return static
-     */
-    protected function setCategory(string $category): TpRatingProfileInterface
+    protected function setCategory(string $category): static
     {
         Assertion::maxLength($category, 32, 'category value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -400,24 +345,12 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    /**
-     * Get category
-     *
-     * @return string
-     */
     public function getCategory(): string
     {
         return $this->category;
     }
 
-    /**
-     * Set subject
-     *
-     * @param string $subject | null
-     *
-     * @return static
-     */
-    protected function setSubject(?string $subject = null): TpRatingProfileInterface
+    protected function setSubject(?string $subject = null): static
     {
         if (!is_null($subject)) {
             Assertion::maxLength($subject, 64, 'subject value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -428,24 +361,12 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    /**
-     * Get subject
-     *
-     * @return string | null
-     */
     public function getSubject(): ?string
     {
         return $this->subject;
     }
 
-    /**
-     * Set activationTime
-     *
-     * @param string $activationTime
-     *
-     * @return static
-     */
-    protected function setActivationTime(string $activationTime): TpRatingProfileInterface
+    protected function setActivationTime(string $activationTime): static
     {
         Assertion::maxLength($activationTime, 32, 'activationTime value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -454,24 +375,12 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    /**
-     * Get activationTime
-     *
-     * @return string
-     */
     public function getActivationTime(): string
     {
         return $this->activationTime;
     }
 
-    /**
-     * Set ratingPlanTag
-     *
-     * @param string $ratingPlanTag | null
-     *
-     * @return static
-     */
-    protected function setRatingPlanTag(?string $ratingPlanTag = null): TpRatingProfileInterface
+    protected function setRatingPlanTag(?string $ratingPlanTag = null): static
     {
         if (!is_null($ratingPlanTag)) {
             Assertion::maxLength($ratingPlanTag, 64, 'ratingPlanTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -482,24 +391,12 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    /**
-     * Get ratingPlanTag
-     *
-     * @return string | null
-     */
     public function getRatingPlanTag(): ?string
     {
         return $this->ratingPlanTag;
     }
 
-    /**
-     * Set fallbackSubjects
-     *
-     * @param string $fallbackSubjects | null
-     *
-     * @return static
-     */
-    protected function setFallbackSubjects(?string $fallbackSubjects = null): TpRatingProfileInterface
+    protected function setFallbackSubjects(?string $fallbackSubjects = null): static
     {
         if (!is_null($fallbackSubjects)) {
             Assertion::maxLength($fallbackSubjects, 64, 'fallbackSubjects value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -510,24 +407,12 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    /**
-     * Get fallbackSubjects
-     *
-     * @return string | null
-     */
     public function getFallbackSubjects(): ?string
     {
         return $this->fallbackSubjects;
     }
 
-    /**
-     * Set cdrStatQueueIds
-     *
-     * @param string $cdrStatQueueIds | null
-     *
-     * @return static
-     */
-    protected function setCdrStatQueueIds(?string $cdrStatQueueIds = null): TpRatingProfileInterface
+    protected function setCdrStatQueueIds(?string $cdrStatQueueIds = null): static
     {
         if (!is_null($cdrStatQueueIds)) {
             Assertion::maxLength($cdrStatQueueIds, 64, 'cdrStatQueueIds value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -538,24 +423,12 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    /**
-     * Get cdrStatQueueIds
-     *
-     * @return string | null
-     */
     public function getCdrStatQueueIds(): ?string
     {
         return $this->cdrStatQueueIds;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTimeInterface $createdAt
-     *
-     * @return static
-     */
-    protected function setCreatedAt($createdAt): TpRatingProfileInterface
+    protected function setCreatedAt($createdAt): static
     {
 
         $createdAt = DateTimeHelper::createOrFix(
@@ -572,59 +445,32 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }
 
-    /**
-     * Set ratingProfile
-     *
-     * @param RatingProfileInterface | null
-     *
-     * @return static
-     */
-    public function setRatingProfile(?RatingProfileInterface $ratingProfile = null): TpRatingProfileInterface
+    public function setRatingProfile(?RatingProfileInterface $ratingProfile = null): static
     {
         $this->ratingProfile = $ratingProfile;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get ratingProfile
-     *
-     * @return RatingProfileInterface | null
-     */
     public function getRatingProfile(): ?RatingProfileInterface
     {
         return $this->ratingProfile;
     }
 
-    /**
-     * Set outgoingRoutingRelCarrier
-     *
-     * @param OutgoingRoutingRelCarrierInterface | null
-     *
-     * @return static
-     */
-    public function setOutgoingRoutingRelCarrier(?OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier = null): TpRatingProfileInterface
+    public function setOutgoingRoutingRelCarrier(?OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier = null): static
     {
         $this->outgoingRoutingRelCarrier = $outgoingRoutingRelCarrier;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get outgoingRoutingRelCarrier
-     *
-     * @return OutgoingRoutingRelCarrierInterface | null
-     */
     public function getOutgoingRoutingRelCarrier(): ?OutgoingRoutingRelCarrierInterface
     {
         return $this->outgoingRoutingRelCarrier;

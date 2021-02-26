@@ -28,20 +28,20 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $tenant;
+    private $tenant = '';
 
     /**
      * @var string
      */
-    private $account;
+    private $account = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $actionPlanTag;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $actionTriggersTag;
 
@@ -56,7 +56,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     private $disabled = false;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -139,230 +139,139 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $tpid | null
-     *
-     * @return static
-     */
-    public function setTpid(?string $tpid = null): self
+    public function setTpid(?string $tpid): static
     {
         $this->tpid = $tpid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
-    /**
-     * @param string $loadid | null
-     *
-     * @return static
-     */
-    public function setLoadid(?string $loadid = null): self
+    public function setLoadid(?string $loadid): static
     {
         $this->loadid = $loadid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLoadid(): ?string
     {
         return $this->loadid;
     }
 
-    /**
-     * @param string $tenant | null
-     *
-     * @return static
-     */
-    public function setTenant(?string $tenant = null): self
+    public function setTenant(?string $tenant): static
     {
         $this->tenant = $tenant;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTenant(): ?string
     {
         return $this->tenant;
     }
 
-    /**
-     * @param string $account | null
-     *
-     * @return static
-     */
-    public function setAccount(?string $account = null): self
+    public function setAccount(?string $account): static
     {
         $this->account = $account;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAccount(): ?string
     {
         return $this->account;
     }
 
-    /**
-     * @param string $actionPlanTag | null
-     *
-     * @return static
-     */
-    public function setActionPlanTag(?string $actionPlanTag = null): self
+    public function setActionPlanTag(?string $actionPlanTag): static
     {
         $this->actionPlanTag = $actionPlanTag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getActionPlanTag(): ?string
     {
         return $this->actionPlanTag;
     }
 
-    /**
-     * @param string $actionTriggersTag | null
-     *
-     * @return static
-     */
-    public function setActionTriggersTag(?string $actionTriggersTag = null): self
+    public function setActionTriggersTag(?string $actionTriggersTag): static
     {
         $this->actionTriggersTag = $actionTriggersTag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getActionTriggersTag(): ?string
     {
         return $this->actionTriggersTag;
     }
 
-    /**
-     * @param bool $allowNegative | null
-     *
-     * @return static
-     */
-    public function setAllowNegative(?bool $allowNegative = null): self
+    public function setAllowNegative(?bool $allowNegative): static
     {
         $this->allowNegative = $allowNegative;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getAllowNegative(): ?bool
     {
         return $this->allowNegative;
     }
 
-    /**
-     * @param bool $disabled | null
-     *
-     * @return static
-     */
-    public function setDisabled(?bool $disabled = null): self
+    public function setDisabled(?bool $disabled): static
     {
         $this->disabled = $disabled;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getDisabled(): ?bool
     {
         return $this->disabled;
     }
 
-    /**
-     * @param \DateTimeInterface $createdAt | null
-     *
-     * @return static
-     */
-    public function setCreatedAt($createdAt = null): self
+    public function setCreatedAt(null|\DateTime|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime|string|null
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -371,9 +280,6 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -383,30 +289,19 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CarrierDto | null
-     *
-     * @return static
-     */
-    public function setCarrier(?CarrierDto $carrier = null): self
+    public function setCarrier(?CarrierDto $carrier): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * @return CarrierDto | null
-     */
     public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
-    /**
-     * @return static
-     */
-    public function setCarrierId($id): self
+    public function setCarrierId($id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -415,9 +310,6 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCarrierId()
     {
         if ($dto = $this->getCarrier()) {

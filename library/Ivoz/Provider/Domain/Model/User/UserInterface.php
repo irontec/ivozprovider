@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\User;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
@@ -18,7 +19,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * UserInterface
@@ -34,9 +34,10 @@ interface UserInterface extends LoggableEntityInterface
     const EXTERNALIPCALLS_3 = '3';
 
     const REJECTCALLMETHOD_RFC = 'rfc';
-    const REJECTCALLMETHOD_486 = '486';
-    const REJECTCALLMETHOD_600 = '600';
 
+    const REJECTCALLMETHOD_486 = '486';
+
+    const REJECTCALLMETHOD_600 = '600';
 
     /**
      * @return array
@@ -50,7 +51,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * @inheritdoc
      */
-    public function setPass(string $pass = null): UserInterface;
+    public function setPass(?string $pass = null): static;
 
     /**
      * return associated endpoint with the user
@@ -91,7 +92,7 @@ interface UserInterface extends LoggableEntityInterface
      */
     public function getOutgoingDdi(): ?DdiInterface;
 
-    public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null);
+    public function setOutgoingDdi(?DdiInterface $outgoingDdi = null): static;
 
     /**
      * Get User outgoingDdiRule
@@ -150,197 +151,63 @@ interface UserInterface extends LoggableEntityInterface
      */
     public function getLanguageCode();
 
-    public function setEmail(string $email = null): UserInterface;
+    public function setEmail(?string $email = null): static;
 
     /**
      * @return string
      */
     public function getFullNameExtension();
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get lastname
-     *
-     * @return string
-     */
     public function getLastname(): string;
 
-    /**
-     * Get email
-     *
-     * @return string | null
-     */
     public function getEmail(): ?string;
 
-    /**
-     * Get pass
-     *
-     * @return string | null
-     */
     public function getPass(): ?string;
 
-    /**
-     * Get doNotDisturb
-     *
-     * @return bool
-     */
     public function getDoNotDisturb(): bool;
 
-    /**
-     * Get isBoss
-     *
-     * @return bool
-     */
     public function getIsBoss(): bool;
 
-    /**
-     * Get active
-     *
-     * @return bool
-     */
     public function getActive(): bool;
 
-    /**
-     * Get maxCalls
-     *
-     * @return int
-     */
     public function getMaxCalls(): int;
 
-    /**
-     * Get externalIpCalls
-     *
-     * @return string
-     */
     public function getExternalIpCalls(): string;
 
-    /**
-     * Get rejectCallMethod
-     *
-     * @return string
-     */
     public function getRejectCallMethod(): string;
 
-    /**
-     * Get voicemailEnabled
-     *
-     * @return bool
-     */
     public function getVoicemailEnabled(): bool;
 
-    /**
-     * Get voicemailSendMail
-     *
-     * @return bool
-     */
     public function getVoicemailSendMail(): bool;
 
-    /**
-     * Get voicemailAttachSound
-     *
-     * @return bool
-     */
     public function getVoicemailAttachSound(): bool;
 
-    /**
-     * Get multiContact
-     *
-     * @return boolean
-     */
     public function getMultiContact(): bool;
 
-    /**
-     * Get gsQRCode
-     *
-     * @return bool
-     */
     public function getGsQRCode(): bool;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface;
 
-    /**
-     * Get callAcl
-     *
-     * @return CallAclInterface | null
-     */
     public function getCallAcl(): ?CallAclInterface;
 
-    /**
-     * Get bossAssistant
-     *
-     * @return UserInterface | null
-     */
     public function getBossAssistant(): ?UserInterface;
 
-    /**
-     * Get bossAssistantWhiteList
-     *
-     * @return MatchListInterface | null
-     */
     public function getBossAssistantWhiteList(): ?MatchListInterface;
 
-    /**
-     * Get transformationRuleSet
-     *
-     * @return TransformationRuleSetInterface | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
-    /**
-     * Set terminal
-     *
-     * @param TerminalInterface | null
-     *
-     * @return static
-     */
-    public function setTerminal(?TerminalInterface $terminal = null): UserInterface;
+    public function setTerminal(?TerminalInterface $terminal = null): static;
 
-    /**
-     * Get terminal
-     *
-     * @return TerminalInterface | null
-     */
     public function getTerminal(): ?TerminalInterface;
 
-    /**
-     * Set extension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    public function setExtension(?ExtensionInterface $extension = null): UserInterface;
+    public function setExtension(?ExtensionInterface $extension = null): static;
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getExtension(): ?ExtensionInterface;
 
-    /**
-     * Get timezone
-     *
-     * @return TimezoneInterface | null
-     */
     public function getTimezone(): ?TimezoneInterface;
 
-    /**
-     * Get voicemailLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getVoicemailLocution(): ?LocutionInterface;
 
     /**
@@ -348,106 +215,28 @@ interface UserInterface extends LoggableEntityInterface
      */
     public function isInitialized(): bool;
 
-    /**
-     * Add pickUpRelUser
-     *
-     * @param PickUpRelUserInterface $pickUpRelUser
-     *
-     * @return static
-     */
     public function addPickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface;
 
-    /**
-     * Remove pickUpRelUser
-     *
-     * @param PickUpRelUserInterface $pickUpRelUser
-     *
-     * @return static
-     */
     public function removePickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface;
 
-    /**
-     * Replace pickUpRelUsers
-     *
-     * @param ArrayCollection $pickUpRelUsers of PickUpRelUserInterface
-     *
-     * @return static
-     */
     public function replacePickUpRelUsers(ArrayCollection $pickUpRelUsers): UserInterface;
 
-    /**
-     * Get pickUpRelUsers
-     * @param Criteria | null $criteria
-     * @return PickUpRelUserInterface[]
-     */
     public function getPickUpRelUsers(?Criteria $criteria = null): array;
 
-    /**
-     * Add queueMember
-     *
-     * @param QueueMemberInterface $queueMember
-     *
-     * @return static
-     */
     public function addQueueMember(QueueMemberInterface $queueMember): UserInterface;
 
-    /**
-     * Remove queueMember
-     *
-     * @param QueueMemberInterface $queueMember
-     *
-     * @return static
-     */
     public function removeQueueMember(QueueMemberInterface $queueMember): UserInterface;
 
-    /**
-     * Replace queueMembers
-     *
-     * @param ArrayCollection $queueMembers of QueueMemberInterface
-     *
-     * @return static
-     */
     public function replaceQueueMembers(ArrayCollection $queueMembers): UserInterface;
 
-    /**
-     * Get queueMembers
-     * @param Criteria | null $criteria
-     * @return QueueMemberInterface[]
-     */
     public function getQueueMembers(?Criteria $criteria = null): array;
 
-    /**
-     * Add callForwardSetting
-     *
-     * @param CallForwardSettingInterface $callForwardSetting
-     *
-     * @return static
-     */
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): UserInterface;
 
-    /**
-     * Remove callForwardSetting
-     *
-     * @param CallForwardSettingInterface $callForwardSetting
-     *
-     * @return static
-     */
     public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): UserInterface;
 
-    /**
-     * Replace callForwardSettings
-     *
-     * @param ArrayCollection $callForwardSettings of CallForwardSettingInterface
-     *
-     * @return static
-     */
     public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): UserInterface;
 
-    /**
-     * Get callForwardSettings
-     * @param Criteria | null $criteria
-     * @return CallForwardSettingInterface[]
-     */
     public function getCallForwardSettings(?Criteria $criteria = null): array;
 
     /**

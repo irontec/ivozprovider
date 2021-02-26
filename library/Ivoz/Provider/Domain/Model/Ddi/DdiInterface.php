@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Ddi;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
@@ -17,7 +18,6 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * DdiInterface
@@ -61,7 +61,7 @@ interface DdiInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setDdi(string $ddi): DdiInterface;
+    public function setDdi(string $ddi): static;
 
     /**
      * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
@@ -70,185 +70,59 @@ interface DdiInterface extends LoggableEntityInterface
 
     public function getLanguageCode();
 
-    public function setRouteType(string $routeType = null): DdiInterface;
+    public function setRouteType(?string $routeType = null): static;
 
     /**
      * @return string
      */
     public function getDdie164(): string;
 
-    /**
-     * Get ddi
-     *
-     * @return string
-     */
     public function getDdi(): string;
 
-    /**
-     * Get recordCalls
-     *
-     * @return string
-     */
     public function getRecordCalls(): string;
 
-    /**
-     * Get displayName
-     *
-     * @return string | null
-     */
     public function getDisplayName(): ?string;
 
-    /**
-     * Get routeType
-     *
-     * @return string | null
-     */
     public function getRouteType(): ?string;
 
-    /**
-     * Get billInboundCalls
-     *
-     * @return bool
-     */
     public function getBillInboundCalls(): bool;
 
-    /**
-     * Get friendValue
-     *
-     * @return string | null
-     */
     public function getFriendValue(): ?string;
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    public function setCompany(CompanyInterface $company): DdiInterface;
+    public function setCompany(CompanyInterface $company): static;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface;
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface;
 
-    /**
-     * Get conferenceRoom
-     *
-     * @return ConferenceRoomInterface | null
-     */
     public function getConferenceRoom(): ?ConferenceRoomInterface;
 
-    /**
-     * Get language
-     *
-     * @return LanguageInterface | null
-     */
     public function getLanguage(): ?LanguageInterface;
 
-    /**
-     * Get queue
-     *
-     * @return QueueInterface | null
-     */
     public function getQueue(): ?QueueInterface;
 
-    /**
-     * Get externalCallFilter
-     *
-     * @return ExternalCallFilterInterface | null
-     */
     public function getExternalCallFilter(): ?ExternalCallFilterInterface;
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface;
 
-    /**
-     * Get ivr
-     *
-     * @return IvrInterface | null
-     */
     public function getIvr(): ?IvrInterface;
 
-    /**
-     * Get huntGroup
-     *
-     * @return HuntGroupInterface | null
-     */
     public function getHuntGroup(): ?HuntGroupInterface;
 
-    /**
-     * Get fax
-     *
-     * @return FaxInterface | null
-     */
     public function getFax(): ?FaxInterface;
 
-    /**
-     * Get ddiProvider
-     *
-     * @return DdiProviderInterface | null
-     */
     public function getDdiProvider(): ?DdiProviderInterface;
 
-    /**
-     * Get country
-     *
-     * @return CountryInterface
-     */
-    public function getCountry(): CountryInterface;
+    public function getCountry(): ?CountryInterface;
 
-    /**
-     * Set residentialDevice
-     *
-     * @param ResidentialDeviceInterface | null
-     *
-     * @return static
-     */
-    public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): DdiInterface;
+    public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static;
 
-    /**
-     * Get residentialDevice
-     *
-     * @return ResidentialDeviceInterface | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceInterface;
 
-    /**
-     * Get conditionalRoute
-     *
-     * @return ConditionalRouteInterface | null
-     */
     public function getConditionalRoute(): ?ConditionalRouteInterface;
 
-    /**
-     * Set retailAccount
-     *
-     * @param RetailAccountInterface | null
-     *
-     * @return static
-     */
-    public function setRetailAccount(?RetailAccountInterface $retailAccount = null): DdiInterface;
+    public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static;
 
-    /**
-     * Get retailAccount
-     *
-     * @return RetailAccountInterface | null
-     */
     public function getRetailAccount(): ?RetailAccountInterface;
 
     /**

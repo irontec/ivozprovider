@@ -92,7 +92,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TerminalModelDto
      */
     public static function createDto($id = null)
@@ -217,14 +217,7 @@ abstract class TerminalModelAbstract
         ];
     }
 
-    /**
-     * Set iden
-     *
-     * @param string $iden
-     *
-     * @return static
-     */
-    protected function setIden(string $iden): TerminalModelInterface
+    protected function setIden(string $iden): static
     {
         Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -233,24 +226,12 @@ abstract class TerminalModelAbstract
         return $this;
     }
 
-    /**
-     * Get iden
-     *
-     * @return string
-     */
     public function getIden(): string
     {
         return $this->iden;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): TerminalModelInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -259,24 +240,12 @@ abstract class TerminalModelAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return static
-     */
-    protected function setDescription(string $description): TerminalModelInterface
+    protected function setDescription(string $description): static
     {
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -285,24 +254,12 @@ abstract class TerminalModelAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * Set genericTemplate
-     *
-     * @param string $genericTemplate | null
-     *
-     * @return static
-     */
-    protected function setGenericTemplate(?string $genericTemplate = null): TerminalModelInterface
+    protected function setGenericTemplate(?string $genericTemplate = null): static
     {
         if (!is_null($genericTemplate)) {
             Assertion::maxLength($genericTemplate, 65535, 'genericTemplate value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -313,24 +270,12 @@ abstract class TerminalModelAbstract
         return $this;
     }
 
-    /**
-     * Get genericTemplate
-     *
-     * @return string | null
-     */
     public function getGenericTemplate(): ?string
     {
         return $this->genericTemplate;
     }
 
-    /**
-     * Set specificTemplate
-     *
-     * @param string $specificTemplate | null
-     *
-     * @return static
-     */
-    protected function setSpecificTemplate(?string $specificTemplate = null): TerminalModelInterface
+    protected function setSpecificTemplate(?string $specificTemplate = null): static
     {
         if (!is_null($specificTemplate)) {
             Assertion::maxLength($specificTemplate, 65535, 'specificTemplate value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -341,24 +286,12 @@ abstract class TerminalModelAbstract
         return $this;
     }
 
-    /**
-     * Get specificTemplate
-     *
-     * @return string | null
-     */
     public function getSpecificTemplate(): ?string
     {
         return $this->specificTemplate;
     }
 
-    /**
-     * Set genericUrlPattern
-     *
-     * @param string $genericUrlPattern | null
-     *
-     * @return static
-     */
-    protected function setGenericUrlPattern(?string $genericUrlPattern = null): TerminalModelInterface
+    protected function setGenericUrlPattern(?string $genericUrlPattern = null): static
     {
         if (!is_null($genericUrlPattern)) {
             Assertion::maxLength($genericUrlPattern, 225, 'genericUrlPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -369,24 +302,12 @@ abstract class TerminalModelAbstract
         return $this;
     }
 
-    /**
-     * Get genericUrlPattern
-     *
-     * @return string | null
-     */
     public function getGenericUrlPattern(): ?string
     {
         return $this->genericUrlPattern;
     }
 
-    /**
-     * Set specificUrlPattern
-     *
-     * @param string $specificUrlPattern | null
-     *
-     * @return static
-     */
-    protected function setSpecificUrlPattern(?string $specificUrlPattern = null): TerminalModelInterface
+    protected function setSpecificUrlPattern(?string $specificUrlPattern = null): static
     {
         if (!is_null($specificUrlPattern)) {
             Assertion::maxLength($specificUrlPattern, 225, 'specificUrlPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -397,35 +318,18 @@ abstract class TerminalModelAbstract
         return $this;
     }
 
-    /**
-     * Get specificUrlPattern
-     *
-     * @return string | null
-     */
     public function getSpecificUrlPattern(): ?string
     {
         return $this->specificUrlPattern;
     }
 
-    /**
-     * Set terminalManufacturer
-     *
-     * @param TerminalManufacturerInterface
-     *
-     * @return static
-     */
-    protected function setTerminalManufacturer(TerminalManufacturerInterface $terminalManufacturer): TerminalModelInterface
+    protected function setTerminalManufacturer(TerminalManufacturerInterface $terminalManufacturer): static
     {
         $this->terminalManufacturer = $terminalManufacturer;
 
         return $this;
     }
 
-    /**
-     * Get terminalManufacturer
-     *
-     * @return TerminalManufacturerInterface
-     */
     public function getTerminalManufacturer(): TerminalManufacturerInterface
     {
         return $this->terminalManufacturer;

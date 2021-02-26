@@ -63,7 +63,7 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
      *
      * @inheritdoc
      */
-    public function setConnectFee(float $connectFee): self
+    public function setConnectFee(float $connectFee): static
     {
         Assertion::regex((string) $connectFee, '/^[0-9]{1,6}[.]{0,1}[0-9]*$/');
 
@@ -75,7 +75,7 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
      *
      * @inheritdoc
      */
-    public function setCost(float $cost): self
+    public function setCost(float $cost): static
     {
         Assertion::regex((string) $cost, '/^[0-9]{1,6}[.]{0,1}[0-9]*$/');
 
@@ -88,7 +88,7 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
      *
      * @inheritdoc
      */
-    public function setGroupIntervalStart(string $groupIntervalStart): self
+    public function setGroupIntervalStart(string $groupIntervalStart): static
     {
         if (!strpos($groupIntervalStart, 's')) {
             $groupIntervalStart .= 's';
@@ -102,7 +102,7 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
      *
      * @inheritdoc
      */
-    public function setRateIncrement(string $rateIncrement): self
+    public function setRateIncrement(string $rateIncrement): static
     {
         if (!strpos($rateIncrement, 's')) {
             $rateIncrement .= 's';

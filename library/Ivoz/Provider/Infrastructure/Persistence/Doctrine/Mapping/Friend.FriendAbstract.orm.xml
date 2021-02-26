@@ -117,6 +117,12 @@
         <option name="default">0</option>
       </options>
     </field>
+    <field name="multiContact" type="boolean" column="multiContact" nullable="false">
+      <options>
+        <option name="default">1</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="friends" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
@@ -129,22 +135,22 @@
     </many-to-one>
     <many-to-one field="transformationRuleSet" target-entity="Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="transformationRuleSetId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="transformationRuleSetId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="callAcl" target-entity="Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="callAclId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="callAclId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="outgoingDdi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="outgoingDdiId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="outgoingDdiId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="language" target-entity="Ivoz\Provider\Domain\Model\Language\LanguageInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="interCompany" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">

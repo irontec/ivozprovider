@@ -79,36 +79,36 @@ abstract class OutgoingRoutingAbstract
     protected $brand;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var CarrierInterface
+     * @var CarrierInterface | null
      * inversedBy outgoingRoutings
      */
     protected $carrier;
 
     /**
-     * @var RoutingPatternInterface
+     * @var RoutingPatternInterface | null
      * inversedBy outgoingRoutings
      */
     protected $routingPattern;
 
     /**
-     * @var RoutingPatternGroupInterface
+     * @var RoutingPatternGroupInterface | null
      * inversedBy outgoingRoutings
      */
     protected $routingPatternGroup;
 
     /**
-     * @var RoutingTagInterface
+     * @var RoutingTagInterface | null
      * inversedBy outgoingRoutings
      */
     protected $routingTag;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $clidCountry;
 
@@ -145,7 +145,7 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return OutgoingRoutingDto
      */
     public static function createDto($id = null)
@@ -298,38 +298,19 @@ abstract class OutgoingRoutingAbstract
         ];
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type | null
-     *
-     * @return static
-     */
-    protected function setType(?string $type = null): OutgoingRoutingInterface
+    protected function setType(?string $type = null): static
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * Get type
-     *
-     * @return string | null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * Set priority
-     *
-     * @param int $priority
-     *
-     * @return static
-     */
-    protected function setPriority(int $priority): OutgoingRoutingInterface
+    protected function setPriority(int $priority): static
     {
         Assertion::greaterOrEqualThan($priority, 0, 'priority provided "%s" is not greater or equal than "%s".');
 
@@ -338,24 +319,12 @@ abstract class OutgoingRoutingAbstract
         return $this;
     }
 
-    /**
-     * Get priority
-     *
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;
     }
 
-    /**
-     * Set weight
-     *
-     * @param int $weight
-     *
-     * @return static
-     */
-    protected function setWeight(int $weight): OutgoingRoutingInterface
+    protected function setWeight(int $weight): static
     {
         Assertion::greaterOrEqualThan($weight, 0, 'weight provided "%s" is not greater or equal than "%s".');
 
@@ -364,24 +333,12 @@ abstract class OutgoingRoutingAbstract
         return $this;
     }
 
-    /**
-     * Get weight
-     *
-     * @return int
-     */
     public function getWeight(): int
     {
         return $this->weight;
     }
 
-    /**
-     * Set routingMode
-     *
-     * @param string $routingMode | null
-     *
-     * @return static
-     */
-    protected function setRoutingMode(?string $routingMode = null): OutgoingRoutingInterface
+    protected function setRoutingMode(?string $routingMode = null): static
     {
         if (!is_null($routingMode)) {
             Assertion::maxLength($routingMode, 25, 'routingMode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -401,24 +358,12 @@ abstract class OutgoingRoutingAbstract
         return $this;
     }
 
-    /**
-     * Get routingMode
-     *
-     * @return string | null
-     */
     public function getRoutingMode(): ?string
     {
         return $this->routingMode;
     }
 
-    /**
-     * Set prefix
-     *
-     * @param string $prefix | null
-     *
-     * @return static
-     */
-    protected function setPrefix(?string $prefix = null): OutgoingRoutingInterface
+    protected function setPrefix(?string $prefix = null): static
     {
         if (!is_null($prefix)) {
             Assertion::maxLength($prefix, 25, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -429,24 +374,12 @@ abstract class OutgoingRoutingAbstract
         return $this;
     }
 
-    /**
-     * Get prefix
-     *
-     * @return string | null
-     */
     public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
-    /**
-     * Set stopper
-     *
-     * @param bool $stopper
-     *
-     * @return static
-     */
-    protected function setStopper(bool $stopper): OutgoingRoutingInterface
+    protected function setStopper(bool $stopper): static
     {
         Assertion::between(intval($stopper), 0, 1, 'stopper provided "%s" is not a valid boolean value.');
         $stopper = (bool) $stopper;
@@ -456,24 +389,12 @@ abstract class OutgoingRoutingAbstract
         return $this;
     }
 
-    /**
-     * Get stopper
-     *
-     * @return bool
-     */
     public function getStopper(): bool
     {
         return $this->stopper;
     }
 
-    /**
-     * Set forceClid
-     *
-     * @param bool $forceClid | null
-     *
-     * @return static
-     */
-    protected function setForceClid(?bool $forceClid = null): OutgoingRoutingInterface
+    protected function setForceClid(?bool $forceClid = null): static
     {
         if (!is_null($forceClid)) {
             Assertion::between(intval($forceClid), 0, 1, 'forceClid provided "%s" is not a valid boolean value.');
@@ -485,24 +406,12 @@ abstract class OutgoingRoutingAbstract
         return $this;
     }
 
-    /**
-     * Get forceClid
-     *
-     * @return bool | null
-     */
     public function getForceClid(): ?bool
     {
         return $this->forceClid;
     }
 
-    /**
-     * Set clid
-     *
-     * @param string $clid | null
-     *
-     * @return static
-     */
-    protected function setClid(?string $clid = null): OutgoingRoutingInterface
+    protected function setClid(?string $clid = null): static
     {
         if (!is_null($clid)) {
             Assertion::maxLength($clid, 25, 'clid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -513,179 +422,95 @@ abstract class OutgoingRoutingAbstract
         return $this;
     }
 
-    /**
-     * Get clid
-     *
-     * @return string | null
-     */
     public function getClid(): ?string
     {
         return $this->clid;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    public function setBrand(BrandInterface $brand): OutgoingRoutingInterface
+    public function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    protected function setCompany(?CompanyInterface $company = null): OutgoingRoutingInterface
+    protected function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set carrier
-     *
-     * @param CarrierInterface | null
-     *
-     * @return static
-     */
-    public function setCarrier(?CarrierInterface $carrier = null): OutgoingRoutingInterface
+    public function setCarrier(?CarrierInterface $carrier = null): static
     {
         $this->carrier = $carrier;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get carrier
-     *
-     * @return CarrierInterface | null
-     */
     public function getCarrier(): ?CarrierInterface
     {
         return $this->carrier;
     }
 
-    /**
-     * Set routingPattern
-     *
-     * @param RoutingPatternInterface | null
-     *
-     * @return static
-     */
-    public function setRoutingPattern(?RoutingPatternInterface $routingPattern = null): OutgoingRoutingInterface
+    public function setRoutingPattern(?RoutingPatternInterface $routingPattern = null): static
     {
         $this->routingPattern = $routingPattern;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get routingPattern
-     *
-     * @return RoutingPatternInterface | null
-     */
     public function getRoutingPattern(): ?RoutingPatternInterface
     {
         return $this->routingPattern;
     }
 
-    /**
-     * Set routingPatternGroup
-     *
-     * @param RoutingPatternGroupInterface | null
-     *
-     * @return static
-     */
-    public function setRoutingPatternGroup(?RoutingPatternGroupInterface $routingPatternGroup = null): OutgoingRoutingInterface
+    public function setRoutingPatternGroup(?RoutingPatternGroupInterface $routingPatternGroup = null): static
     {
         $this->routingPatternGroup = $routingPatternGroup;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get routingPatternGroup
-     *
-     * @return RoutingPatternGroupInterface | null
-     */
     public function getRoutingPatternGroup(): ?RoutingPatternGroupInterface
     {
         return $this->routingPatternGroup;
     }
 
-    /**
-     * Set routingTag
-     *
-     * @param RoutingTagInterface | null
-     *
-     * @return static
-     */
-    public function setRoutingTag(?RoutingTagInterface $routingTag = null): OutgoingRoutingInterface
+    public function setRoutingTag(?RoutingTagInterface $routingTag = null): static
     {
         $this->routingTag = $routingTag;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get routingTag
-     *
-     * @return RoutingTagInterface | null
-     */
     public function getRoutingTag(): ?RoutingTagInterface
     {
         return $this->routingTag;
     }
 
-    /**
-     * Set clidCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setClidCountry(?CountryInterface $clidCountry = null): OutgoingRoutingInterface
+    protected function setClidCountry(?CountryInterface $clidCountry = null): static
     {
         $this->clidCountry = $clidCountry;
 
         return $this;
     }
 
-    /**
-     * Get clidCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getClidCountry(): ?CountryInterface
     {
         return $this->clidCountry;

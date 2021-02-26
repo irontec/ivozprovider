@@ -2,13 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\IvrEntry;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * IvrEntryInterface
@@ -36,76 +36,24 @@ interface IvrEntryInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
-    /**
-     * Get entry
-     *
-     * @return string
-     */
     public function getEntry(): string;
 
-    /**
-     * Get routeType
-     *
-     * @return string
-     */
     public function getRouteType(): string;
 
-    /**
-     * Get numberValue
-     *
-     * @return string | null
-     */
     public function getNumberValue(): ?string;
 
-    /**
-     * Set ivr
-     *
-     * @param IvrInterface
-     *
-     * @return static
-     */
-    public function setIvr(IvrInterface $ivr): IvrEntryInterface;
+    public function setIvr(IvrInterface $ivr): static;
 
-    /**
-     * Get ivr
-     *
-     * @return IvrInterface
-     */
     public function getIvr(): IvrInterface;
 
-    /**
-     * Get welcomeLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getWelcomeLocution(): ?LocutionInterface;
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getExtension(): ?ExtensionInterface;
 
-    /**
-     * Get voiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getVoiceMailUser(): ?UserInterface;
 
-    /**
-     * Get conditionalRoute
-     *
-     * @return ConditionalRouteInterface | null
-     */
     public function getConditionalRoute(): ?ConditionalRouteInterface;
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface;
 
     /**

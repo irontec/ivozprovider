@@ -76,50 +76,31 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param RoutingPatternDto | null
-     *
-     * @return static
-     */
-    public function setRoutingPattern(?RoutingPatternDto $routingPattern = null): self
+    public function setRoutingPattern(?RoutingPatternDto $routingPattern): static
     {
         $this->routingPattern = $routingPattern;
 
         return $this;
     }
 
-    /**
-     * @return RoutingPatternDto | null
-     */
     public function getRoutingPattern(): ?RoutingPatternDto
     {
         return $this->routingPattern;
     }
 
-    /**
-     * @return static
-     */
-    public function setRoutingPatternId($id): self
+    public function setRoutingPatternId($id): static
     {
         $value = !is_null($id)
             ? new RoutingPatternDto($id)
@@ -128,9 +109,6 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
         return $this->setRoutingPattern($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRoutingPatternId()
     {
         if ($dto = $this->getRoutingPattern()) {
@@ -140,30 +118,19 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
         return null;
     }
 
-    /**
-     * @param RoutingPatternGroupDto | null
-     *
-     * @return static
-     */
-    public function setRoutingPatternGroup(?RoutingPatternGroupDto $routingPatternGroup = null): self
+    public function setRoutingPatternGroup(?RoutingPatternGroupDto $routingPatternGroup): static
     {
         $this->routingPatternGroup = $routingPatternGroup;
 
         return $this;
     }
 
-    /**
-     * @return RoutingPatternGroupDto | null
-     */
     public function getRoutingPatternGroup(): ?RoutingPatternGroupDto
     {
         return $this->routingPatternGroup;
     }
 
-    /**
-     * @return static
-     */
-    public function setRoutingPatternGroupId($id): self
+    public function setRoutingPatternGroupId($id): static
     {
         $value = !is_null($id)
             ? new RoutingPatternGroupDto($id)
@@ -172,9 +139,6 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
         return $this->setRoutingPatternGroup($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRoutingPatternGroupId()
     {
         if ($dto = $this->getRoutingPatternGroup()) {

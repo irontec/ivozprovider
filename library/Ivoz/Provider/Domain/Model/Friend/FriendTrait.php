@@ -135,13 +135,6 @@ trait FriendTrait
         ];
     }
 
-    /**
-     * Add psEndpoint
-     *
-     * @param PsEndpointInterface $psEndpoint
-     *
-     * @return static
-     */
     public function addPsEndpoint(PsEndpointInterface $psEndpoint): FriendInterface
     {
         $this->psEndpoints->add($psEndpoint);
@@ -149,13 +142,6 @@ trait FriendTrait
         return $this;
     }
 
-    /**
-     * Remove psEndpoint
-     *
-     * @param PsEndpointInterface $psEndpoint
-     *
-     * @return static
-     */
     public function removePsEndpoint(PsEndpointInterface $psEndpoint): FriendInterface
     {
         $this->psEndpoints->removeElement($psEndpoint);
@@ -163,13 +149,6 @@ trait FriendTrait
         return $this;
     }
 
-    /**
-     * Replace psEndpoints
-     *
-     * @param ArrayCollection $psEndpoints of PsEndpointInterface
-     *
-     * @return static
-     */
     public function replacePsEndpoints(ArrayCollection $psEndpoints): FriendInterface
     {
         $updatedEntities = [];
@@ -198,11 +177,6 @@ trait FriendTrait
         return $this;
     }
 
-    /**
-     * Get psEndpoints
-     * @param Criteria | null $criteria
-     * @return PsEndpointInterface[]
-     */
     public function getPsEndpoints(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -212,13 +186,6 @@ trait FriendTrait
         return $this->psEndpoints->toArray();
     }
 
-    /**
-     * Add pattern
-     *
-     * @param FriendsPatternInterface $pattern
-     *
-     * @return static
-     */
     public function addPattern(FriendsPatternInterface $pattern): FriendInterface
     {
         $this->patterns->add($pattern);
@@ -226,13 +193,6 @@ trait FriendTrait
         return $this;
     }
 
-    /**
-     * Remove pattern
-     *
-     * @param FriendsPatternInterface $pattern
-     *
-     * @return static
-     */
     public function removePattern(FriendsPatternInterface $pattern): FriendInterface
     {
         $this->patterns->removeElement($pattern);
@@ -240,13 +200,6 @@ trait FriendTrait
         return $this;
     }
 
-    /**
-     * Replace patterns
-     *
-     * @param ArrayCollection $patterns of FriendsPatternInterface
-     *
-     * @return static
-     */
     public function replacePatterns(ArrayCollection $patterns): FriendInterface
     {
         $updatedEntities = [];
@@ -275,11 +228,6 @@ trait FriendTrait
         return $this;
     }
 
-    /**
-     * Get patterns
-     * @param Criteria | null $criteria
-     * @return FriendsPatternInterface[]
-     */
     public function getPatterns(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

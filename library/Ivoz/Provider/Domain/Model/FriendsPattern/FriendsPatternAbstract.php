@@ -66,7 +66,7 @@ abstract class FriendsPatternAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return FriendsPatternDto
      */
     public static function createDto($id = null)
@@ -171,14 +171,7 @@ abstract class FriendsPatternAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): FriendsPatternInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -187,24 +180,12 @@ abstract class FriendsPatternAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set regExp
-     *
-     * @param string $regExp
-     *
-     * @return static
-     */
-    protected function setRegExp(string $regExp): FriendsPatternInterface
+    protected function setRegExp(string $regExp): static
     {
         Assertion::maxLength($regExp, 255, 'regExp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -213,35 +194,19 @@ abstract class FriendsPatternAbstract
         return $this;
     }
 
-    /**
-     * Get regExp
-     *
-     * @return string
-     */
     public function getRegExp(): string
     {
         return $this->regExp;
     }
 
-    /**
-     * Set friend
-     *
-     * @param FriendInterface
-     *
-     * @return static
-     */
-    public function setFriend(FriendInterface $friend): FriendsPatternInterface
+    public function setFriend(FriendInterface $friend): static
     {
         $this->friend = $friend;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get friend
-     *
-     * @return FriendInterface
-     */
     public function getFriend(): FriendInterface
     {
         return $this->friend;

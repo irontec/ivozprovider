@@ -21,12 +21,12 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $iden;
+    private $iden = '';
 
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var int
@@ -81,82 +81,50 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $type | null
-     *
-     * @return static
-     */
-    public function setType(?string $type = null): self
+    public function setType(?string $type): static
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $iden | null
-     *
-     * @return static
-     */
-    public function setIden(?string $iden = null): self
+    public function setIden(?string $iden): static
     {
         $this->iden = $iden;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getIden(): ?string
     {
         return $this->iden;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

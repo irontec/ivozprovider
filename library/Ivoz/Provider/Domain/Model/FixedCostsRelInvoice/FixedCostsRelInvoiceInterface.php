@@ -2,10 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoice;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface;
 use Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * FixedCostsRelInvoiceInterface
@@ -25,34 +25,12 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
      */
     public static function fromFixedCostsRelInvoiceScheduler(InvoiceInterface $invoice, FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler);
 
-    /**
-     * Get quantity
-     *
-     * @return int | null
-     */
     public function getQuantity(): ?int;
 
-    /**
-     * Get fixedCost
-     *
-     * @return FixedCostInterface
-     */
     public function getFixedCost(): FixedCostInterface;
 
-    /**
-     * Set invoice
-     *
-     * @param InvoiceInterface | null
-     *
-     * @return static
-     */
-    public function setInvoice(?InvoiceInterface $invoice = null): FixedCostsRelInvoiceInterface;
+    public function setInvoice(?InvoiceInterface $invoice = null): static;
 
-    /**
-     * Get invoice
-     *
-     * @return InvoiceInterface | null
-     */
     public function getInvoice(): ?InvoiceInterface;
 
     /**

@@ -111,13 +111,6 @@ trait NotificationTemplateTrait
         ];
     }
 
-    /**
-     * Add content
-     *
-     * @param NotificationTemplateContentInterface $content
-     *
-     * @return static
-     */
     public function addContent(NotificationTemplateContentInterface $content): NotificationTemplateInterface
     {
         $this->contents->add($content);
@@ -125,13 +118,6 @@ trait NotificationTemplateTrait
         return $this;
     }
 
-    /**
-     * Remove content
-     *
-     * @param NotificationTemplateContentInterface $content
-     *
-     * @return static
-     */
     public function removeContent(NotificationTemplateContentInterface $content): NotificationTemplateInterface
     {
         $this->contents->removeElement($content);
@@ -139,13 +125,6 @@ trait NotificationTemplateTrait
         return $this;
     }
 
-    /**
-     * Replace contents
-     *
-     * @param ArrayCollection $contents of NotificationTemplateContentInterface
-     *
-     * @return static
-     */
     public function replaceContents(ArrayCollection $contents): NotificationTemplateInterface
     {
         $updatedEntities = [];
@@ -174,11 +153,6 @@ trait NotificationTemplateTrait
         return $this;
     }
 
-    /**
-     * Get contents
-     * @param Criteria | null $criteria
-     * @return NotificationTemplateContentInterface[]
-     */
     public function getContents(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\BillableCall;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -15,11 +16,9 @@ class BillableCallLifecycleServiceCollection implements LifecycleServiceCollecti
     public static $bindedBaseServices = [
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, BillableCallLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

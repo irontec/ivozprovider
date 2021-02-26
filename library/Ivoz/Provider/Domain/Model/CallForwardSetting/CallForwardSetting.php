@@ -80,7 +80,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
      *
      * @throws \InvalidArgumentException
      */
-    public function setNumberValue(?string $numberValue = null): self
+    public function setNumberValue(?string $numberValue = null): static
     {
         if (!empty($numberValue)) {
             Assertion::regex($numberValue, '/^[0-9]+$/');

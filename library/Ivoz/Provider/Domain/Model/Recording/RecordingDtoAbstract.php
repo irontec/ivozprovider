@@ -15,12 +15,12 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $callid;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $calldate = 'CURRENT_TIMESTAMP';
 
@@ -35,17 +35,17 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     private $duration = 0;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $caller;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $callee;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $recorder;
 
@@ -55,17 +55,17 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $recordedFileFileSize;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $recordedFileMimeType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $recordedFileBaseName;
 
@@ -142,250 +142,151 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $callid | null
-     *
-     * @return static
-     */
-    public function setCallid(?string $callid = null): self
+    public function setCallid(?string $callid): static
     {
         $this->callid = $callid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallid(): ?string
     {
         return $this->callid;
     }
 
-    /**
-     * @param \DateTimeInterface $calldate | null
-     *
-     * @return static
-     */
-    public function setCalldate($calldate = null): self
+    public function setCalldate(null|\DateTime|string $calldate): static
     {
         $this->calldate = $calldate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCalldate()
+    public function getCalldate(): \DateTime|string|null
     {
         return $this->calldate;
     }
 
-    /**
-     * @param string $type | null
-     *
-     * @return static
-     */
-    public function setType(?string $type = null): self
+    public function setType(?string $type): static
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param float $duration | null
-     *
-     * @return static
-     */
-    public function setDuration(?float $duration = null): self
+    public function setDuration(?float $duration): static
     {
         $this->duration = $duration;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getDuration(): ?float
     {
         return $this->duration;
     }
 
-    /**
-     * @param string $caller | null
-     *
-     * @return static
-     */
-    public function setCaller(?string $caller = null): self
+    public function setCaller(?string $caller): static
     {
         $this->caller = $caller;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCaller(): ?string
     {
         return $this->caller;
     }
 
-    /**
-     * @param string $callee | null
-     *
-     * @return static
-     */
-    public function setCallee(?string $callee = null): self
+    public function setCallee(?string $callee): static
     {
         $this->callee = $callee;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallee(): ?string
     {
         return $this->callee;
     }
 
-    /**
-     * @param string $recorder | null
-     *
-     * @return static
-     */
-    public function setRecorder(?string $recorder = null): self
+    public function setRecorder(?string $recorder): static
     {
         $this->recorder = $recorder;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRecorder(): ?string
     {
         return $this->recorder;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param int $recordedFileFileSize | null
-     *
-     * @return static
-     */
-    public function setRecordedFileFileSize(?int $recordedFileFileSize = null): self
+    public function setRecordedFileFileSize(?int $recordedFileFileSize): static
     {
         $this->recordedFileFileSize = $recordedFileFileSize;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getRecordedFileFileSize(): ?int
     {
         return $this->recordedFileFileSize;
     }
 
-    /**
-     * @param string $recordedFileMimeType | null
-     *
-     * @return static
-     */
-    public function setRecordedFileMimeType(?string $recordedFileMimeType = null): self
+    public function setRecordedFileMimeType(?string $recordedFileMimeType): static
     {
         $this->recordedFileMimeType = $recordedFileMimeType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRecordedFileMimeType(): ?string
     {
         return $this->recordedFileMimeType;
     }
 
-    /**
-     * @param string $recordedFileBaseName | null
-     *
-     * @return static
-     */
-    public function setRecordedFileBaseName(?string $recordedFileBaseName = null): self
+    public function setRecordedFileBaseName(?string $recordedFileBaseName): static
     {
         $this->recordedFileBaseName = $recordedFileBaseName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRecordedFileBaseName(): ?string
     {
         return $this->recordedFileBaseName;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -394,9 +295,6 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {

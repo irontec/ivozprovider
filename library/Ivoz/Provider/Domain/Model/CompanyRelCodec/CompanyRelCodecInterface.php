@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\CompanyRelCodec;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Codec\CodecInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * CompanyRelCodecInterface
@@ -17,27 +17,10 @@ interface CompanyRelCodecInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyInterface $company = null): CompanyRelCodecInterface;
+    public function setCompany(?CompanyInterface $company = null): static;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface;
 
-    /**
-     * Get codec
-     *
-     * @return CodecInterface
-     */
     public function getCodec(): CodecInterface;
 
     /**

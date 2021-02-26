@@ -36,9 +36,9 @@ abstract class TpDestinationAbstract
 
     /**
      * column: created_at
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $createdAt = 'CURRENT_TIMESTAMP';
+    protected $createdAt;
 
     /**
      * @var Destination
@@ -79,7 +79,7 @@ abstract class TpDestinationAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TpDestinationDto
      */
     public static function createDto($id = null)
@@ -192,14 +192,7 @@ abstract class TpDestinationAbstract
         ];
     }
 
-    /**
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return static
-     */
-    protected function setTpid(string $tpid): TpDestinationInterface
+    protected function setTpid(string $tpid): static
     {
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -208,24 +201,12 @@ abstract class TpDestinationAbstract
         return $this;
     }
 
-    /**
-     * Get tpid
-     *
-     * @return string
-     */
     public function getTpid(): string
     {
         return $this->tpid;
     }
 
-    /**
-     * Set tag
-     *
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    protected function setTag(?string $tag = null): TpDestinationInterface
+    protected function setTag(?string $tag = null): static
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -236,24 +217,12 @@ abstract class TpDestinationAbstract
         return $this;
     }
 
-    /**
-     * Get tag
-     *
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * Set prefix
-     *
-     * @param string $prefix
-     *
-     * @return static
-     */
-    protected function setPrefix(string $prefix): TpDestinationInterface
+    protected function setPrefix(string $prefix): static
     {
         Assertion::maxLength($prefix, 24, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -262,24 +231,12 @@ abstract class TpDestinationAbstract
         return $this;
     }
 
-    /**
-     * Get prefix
-     *
-     * @return string
-     */
     public function getPrefix(): string
     {
         return $this->prefix;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTimeInterface $createdAt
-     *
-     * @return static
-     */
-    protected function setCreatedAt($createdAt): TpDestinationInterface
+    protected function setCreatedAt($createdAt): static
     {
 
         $createdAt = DateTimeHelper::createOrFix(
@@ -296,35 +253,19 @@ abstract class TpDestinationAbstract
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }
 
-    /**
-     * Set destination
-     *
-     * @param Destination
-     *
-     * @return static
-     */
-    public function setDestination(Destination $destination): TpDestinationInterface
+    public function setDestination(Destination $destination): static
     {
         $this->destination = $destination;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get destination
-     *
-     * @return Destination
-     */
     public function getDestination(): Destination
     {
         return $this->destination;

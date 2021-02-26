@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\MusicOnHold;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -22,8 +23,9 @@ class MusicOnHoldLifecycleServiceCollection implements LifecycleServiceCollectio
     /**
      * @return void
      */
-    protected function addService(string $event, MusicOnHoldLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, MusicOnHoldLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

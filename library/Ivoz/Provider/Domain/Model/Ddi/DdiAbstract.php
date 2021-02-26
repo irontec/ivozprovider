@@ -98,68 +98,68 @@ abstract class DdiAbstract
     protected $brand;
 
     /**
-     * @var ConferenceRoomInterface
+     * @var ConferenceRoomInterface | null
      */
     protected $conferenceRoom;
 
     /**
-     * @var LanguageInterface
+     * @var LanguageInterface | null
      */
     protected $language;
 
     /**
-     * @var QueueInterface
+     * @var QueueInterface | null
      */
     protected $queue;
 
     /**
-     * @var ExternalCallFilterInterface
+     * @var ExternalCallFilterInterface | null
      */
     protected $externalCallFilter;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $user;
 
     /**
-     * @var IvrInterface
+     * @var IvrInterface | null
      */
     protected $ivr;
 
     /**
-     * @var HuntGroupInterface
+     * @var HuntGroupInterface | null
      */
     protected $huntGroup;
 
     /**
-     * @var FaxInterface
+     * @var FaxInterface | null
      */
     protected $fax;
 
     /**
-     * @var DdiProviderInterface
+     * @var DdiProviderInterface | null
      */
     protected $ddiProvider;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $country;
 
     /**
-     * @var ResidentialDeviceInterface
+     * @var ResidentialDeviceInterface | null
      * inversedBy ddis
      */
     protected $residentialDevice;
 
     /**
-     * @var ConditionalRouteInterface
+     * @var ConditionalRouteInterface | null
      */
     protected $conditionalRoute;
 
     /**
-     * @var RetailAccountInterface
+     * @var RetailAccountInterface | null
      * inversedBy ddis
      */
     protected $retailAccount;
@@ -197,7 +197,7 @@ abstract class DdiAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return DdiDto
      */
     public static function createDto($id = null)
@@ -378,14 +378,7 @@ abstract class DdiAbstract
         ];
     }
 
-    /**
-     * Set ddi
-     *
-     * @param string $ddi
-     *
-     * @return static
-     */
-    protected function setDdi(string $ddi): DdiInterface
+    protected function setDdi(string $ddi): static
     {
         Assertion::maxLength($ddi, 25, 'ddi value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -394,24 +387,12 @@ abstract class DdiAbstract
         return $this;
     }
 
-    /**
-     * Get ddi
-     *
-     * @return string
-     */
     public function getDdi(): string
     {
         return $this->ddi;
     }
 
-    /**
-     * Set ddie164
-     *
-     * @param string $ddie164 | null
-     *
-     * @return static
-     */
-    protected function setDdie164(?string $ddie164 = null): DdiInterface
+    protected function setDdie164(?string $ddie164 = null): static
     {
         if (!is_null($ddie164)) {
             Assertion::maxLength($ddie164, 25, 'ddie164 value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -422,24 +403,12 @@ abstract class DdiAbstract
         return $this;
     }
 
-    /**
-     * Get ddie164
-     *
-     * @return string | null
-     */
     public function getDdie164(): ?string
     {
         return $this->ddie164;
     }
 
-    /**
-     * Set recordCalls
-     *
-     * @param string $recordCalls
-     *
-     * @return static
-     */
-    protected function setRecordCalls(string $recordCalls): DdiInterface
+    protected function setRecordCalls(string $recordCalls): static
     {
         Assertion::maxLength($recordCalls, 25, 'recordCalls value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -458,24 +427,12 @@ abstract class DdiAbstract
         return $this;
     }
 
-    /**
-     * Get recordCalls
-     *
-     * @return string
-     */
     public function getRecordCalls(): string
     {
         return $this->recordCalls;
     }
 
-    /**
-     * Set displayName
-     *
-     * @param string $displayName | null
-     *
-     * @return static
-     */
-    protected function setDisplayName(?string $displayName = null): DdiInterface
+    protected function setDisplayName(?string $displayName = null): static
     {
         if (!is_null($displayName)) {
             Assertion::maxLength($displayName, 50, 'displayName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -486,24 +443,12 @@ abstract class DdiAbstract
         return $this;
     }
 
-    /**
-     * Get displayName
-     *
-     * @return string | null
-     */
     public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
-    /**
-     * Set routeType
-     *
-     * @param string $routeType | null
-     *
-     * @return static
-     */
-    protected function setRouteType(?string $routeType = null): DdiInterface
+    protected function setRouteType(?string $routeType = null): static
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -530,24 +475,12 @@ abstract class DdiAbstract
         return $this;
     }
 
-    /**
-     * Get routeType
-     *
-     * @return string | null
-     */
     public function getRouteType(): ?string
     {
         return $this->routeType;
     }
 
-    /**
-     * Set billInboundCalls
-     *
-     * @param bool $billInboundCalls
-     *
-     * @return static
-     */
-    protected function setBillInboundCalls(bool $billInboundCalls): DdiInterface
+    protected function setBillInboundCalls(bool $billInboundCalls): static
     {
         Assertion::between(intval($billInboundCalls), 0, 1, 'billInboundCalls provided "%s" is not a valid boolean value.');
         $billInboundCalls = (bool) $billInboundCalls;
@@ -557,24 +490,12 @@ abstract class DdiAbstract
         return $this;
     }
 
-    /**
-     * Get billInboundCalls
-     *
-     * @return bool
-     */
     public function getBillInboundCalls(): bool
     {
         return $this->billInboundCalls;
     }
 
-    /**
-     * Set friendValue
-     *
-     * @param string $friendValue | null
-     *
-     * @return static
-     */
-    protected function setFriendValue(?string $friendValue = null): DdiInterface
+    protected function setFriendValue(?string $friendValue = null): static
     {
         if (!is_null($friendValue)) {
             Assertion::maxLength($friendValue, 25, 'friendValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -585,371 +506,189 @@ abstract class DdiAbstract
         return $this;
     }
 
-    /**
-     * Get friendValue
-     *
-     * @return string | null
-     */
     public function getFriendValue(): ?string
     {
         return $this->friendValue;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    public function setCompany(CompanyInterface $company): DdiInterface
+    public function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    protected function setBrand(BrandInterface $brand): DdiInterface
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set conferenceRoom
-     *
-     * @param ConferenceRoomInterface | null
-     *
-     * @return static
-     */
-    protected function setConferenceRoom(?ConferenceRoomInterface $conferenceRoom = null): DdiInterface
+    protected function setConferenceRoom(?ConferenceRoomInterface $conferenceRoom = null): static
     {
         $this->conferenceRoom = $conferenceRoom;
 
         return $this;
     }
 
-    /**
-     * Get conferenceRoom
-     *
-     * @return ConferenceRoomInterface | null
-     */
     public function getConferenceRoom(): ?ConferenceRoomInterface
     {
         return $this->conferenceRoom;
     }
 
-    /**
-     * Set language
-     *
-     * @param LanguageInterface | null
-     *
-     * @return static
-     */
-    protected function setLanguage(?LanguageInterface $language = null): DdiInterface
+    protected function setLanguage(?LanguageInterface $language = null): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * Get language
-     *
-     * @return LanguageInterface | null
-     */
     public function getLanguage(): ?LanguageInterface
     {
         return $this->language;
     }
 
-    /**
-     * Set queue
-     *
-     * @param QueueInterface | null
-     *
-     * @return static
-     */
-    protected function setQueue(?QueueInterface $queue = null): DdiInterface
+    protected function setQueue(?QueueInterface $queue = null): static
     {
         $this->queue = $queue;
 
         return $this;
     }
 
-    /**
-     * Get queue
-     *
-     * @return QueueInterface | null
-     */
     public function getQueue(): ?QueueInterface
     {
         return $this->queue;
     }
 
-    /**
-     * Set externalCallFilter
-     *
-     * @param ExternalCallFilterInterface | null
-     *
-     * @return static
-     */
-    protected function setExternalCallFilter(?ExternalCallFilterInterface $externalCallFilter = null): DdiInterface
+    protected function setExternalCallFilter(?ExternalCallFilterInterface $externalCallFilter = null): static
     {
         $this->externalCallFilter = $externalCallFilter;
 
         return $this;
     }
 
-    /**
-     * Get externalCallFilter
-     *
-     * @return ExternalCallFilterInterface | null
-     */
     public function getExternalCallFilter(): ?ExternalCallFilterInterface
     {
         return $this->externalCallFilter;
     }
 
-    /**
-     * Set user
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setUser(?UserInterface $user = null): DdiInterface
+    protected function setUser(?UserInterface $user = null): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface
     {
         return $this->user;
     }
 
-    /**
-     * Set ivr
-     *
-     * @param IvrInterface | null
-     *
-     * @return static
-     */
-    protected function setIvr(?IvrInterface $ivr = null): DdiInterface
+    protected function setIvr(?IvrInterface $ivr = null): static
     {
         $this->ivr = $ivr;
 
         return $this;
     }
 
-    /**
-     * Get ivr
-     *
-     * @return IvrInterface | null
-     */
     public function getIvr(): ?IvrInterface
     {
         return $this->ivr;
     }
 
-    /**
-     * Set huntGroup
-     *
-     * @param HuntGroupInterface | null
-     *
-     * @return static
-     */
-    protected function setHuntGroup(?HuntGroupInterface $huntGroup = null): DdiInterface
+    protected function setHuntGroup(?HuntGroupInterface $huntGroup = null): static
     {
         $this->huntGroup = $huntGroup;
 
         return $this;
     }
 
-    /**
-     * Get huntGroup
-     *
-     * @return HuntGroupInterface | null
-     */
     public function getHuntGroup(): ?HuntGroupInterface
     {
         return $this->huntGroup;
     }
 
-    /**
-     * Set fax
-     *
-     * @param FaxInterface | null
-     *
-     * @return static
-     */
-    protected function setFax(?FaxInterface $fax = null): DdiInterface
+    protected function setFax(?FaxInterface $fax = null): static
     {
         $this->fax = $fax;
 
         return $this;
     }
 
-    /**
-     * Get fax
-     *
-     * @return FaxInterface | null
-     */
     public function getFax(): ?FaxInterface
     {
         return $this->fax;
     }
 
-    /**
-     * Set ddiProvider
-     *
-     * @param DdiProviderInterface | null
-     *
-     * @return static
-     */
-    protected function setDdiProvider(?DdiProviderInterface $ddiProvider = null): DdiInterface
+    protected function setDdiProvider(?DdiProviderInterface $ddiProvider = null): static
     {
         $this->ddiProvider = $ddiProvider;
 
         return $this;
     }
 
-    /**
-     * Get ddiProvider
-     *
-     * @return DdiProviderInterface | null
-     */
     public function getDdiProvider(): ?DdiProviderInterface
     {
         return $this->ddiProvider;
     }
 
-    /**
-     * Set country
-     *
-     * @param CountryInterface
-     *
-     * @return static
-     */
-    protected function setCountry(CountryInterface $country): DdiInterface
+    protected function setCountry(?CountryInterface $country = null): static
     {
         $this->country = $country;
 
         return $this;
     }
 
-    /**
-     * Get country
-     *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
-     */
-    public function getCountry(): CountryInterface
+    public function getCountry(): ?CountryInterface
     {
         return $this->country;
     }
 
-    /**
-     * Set residentialDevice
-     *
-     * @param ResidentialDeviceInterface | null
-     *
-     * @return static
-     */
-    public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): DdiInterface
+    public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static
     {
         $this->residentialDevice = $residentialDevice;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get residentialDevice
-     *
-     * @return ResidentialDeviceInterface | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceInterface
     {
         return $this->residentialDevice;
     }
 
-    /**
-     * Set conditionalRoute
-     *
-     * @param ConditionalRouteInterface | null
-     *
-     * @return static
-     */
-    protected function setConditionalRoute(?ConditionalRouteInterface $conditionalRoute = null): DdiInterface
+    protected function setConditionalRoute(?ConditionalRouteInterface $conditionalRoute = null): static
     {
         $this->conditionalRoute = $conditionalRoute;
 
         return $this;
     }
 
-    /**
-     * Get conditionalRoute
-     *
-     * @return ConditionalRouteInterface | null
-     */
     public function getConditionalRoute(): ?ConditionalRouteInterface
     {
         return $this->conditionalRoute;
     }
 
-    /**
-     * Set retailAccount
-     *
-     * @param RetailAccountInterface | null
-     *
-     * @return static
-     */
-    public function setRetailAccount(?RetailAccountInterface $retailAccount = null): DdiInterface
+    public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static
     {
         $this->retailAccount = $retailAccount;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get retailAccount
-     *
-     * @return RetailAccountInterface | null
-     */
     public function getRetailAccount(): ?RetailAccountInterface
     {
         return $this->retailAccount;

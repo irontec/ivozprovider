@@ -83,7 +83,7 @@ abstract class TrunksAddressAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TrunksAddressDto
      */
     public static function createDto($id = null)
@@ -200,14 +200,7 @@ abstract class TrunksAddressAbstract
         ];
     }
 
-    /**
-     * Set grp
-     *
-     * @param int $grp
-     *
-     * @return static
-     */
-    protected function setGrp(int $grp): TrunksAddressInterface
+    protected function setGrp(int $grp): static
     {
         Assertion::greaterOrEqualThan($grp, 0, 'grp provided "%s" is not greater or equal than "%s".');
 
@@ -216,24 +209,12 @@ abstract class TrunksAddressAbstract
         return $this;
     }
 
-    /**
-     * Get grp
-     *
-     * @return int
-     */
     public function getGrp(): int
     {
         return $this->grp;
     }
 
-    /**
-     * Set ipAddr
-     *
-     * @param string $ipAddr | null
-     *
-     * @return static
-     */
-    protected function setIpAddr(?string $ipAddr = null): TrunksAddressInterface
+    protected function setIpAddr(?string $ipAddr = null): static
     {
         if (!is_null($ipAddr)) {
             Assertion::maxLength($ipAddr, 50, 'ipAddr value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -244,72 +225,36 @@ abstract class TrunksAddressAbstract
         return $this;
     }
 
-    /**
-     * Get ipAddr
-     *
-     * @return string | null
-     */
     public function getIpAddr(): ?string
     {
         return $this->ipAddr;
     }
 
-    /**
-     * Set mask
-     *
-     * @param int $mask
-     *
-     * @return static
-     */
-    protected function setMask(int $mask): TrunksAddressInterface
+    protected function setMask(int $mask): static
     {
         $this->mask = $mask;
 
         return $this;
     }
 
-    /**
-     * Get mask
-     *
-     * @return int
-     */
     public function getMask(): int
     {
         return $this->mask;
     }
 
-    /**
-     * Set port
-     *
-     * @param int $port
-     *
-     * @return static
-     */
-    protected function setPort(int $port): TrunksAddressInterface
+    protected function setPort(int $port): static
     {
         $this->port = $port;
 
         return $this;
     }
 
-    /**
-     * Get port
-     *
-     * @return int
-     */
     public function getPort(): int
     {
         return $this->port;
     }
 
-    /**
-     * Set tag
-     *
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    protected function setTag(?string $tag = null): TrunksAddressInterface
+    protected function setTag(?string $tag = null): static
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -320,35 +265,19 @@ abstract class TrunksAddressAbstract
         return $this;
     }
 
-    /**
-     * Get tag
-     *
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * Set ddiProviderAddress
-     *
-     * @param DdiProviderAddress
-     *
-     * @return static
-     */
-    public function setDdiProviderAddress(DdiProviderAddress $ddiProviderAddress): TrunksAddressInterface
+    public function setDdiProviderAddress(DdiProviderAddress $ddiProviderAddress): static
     {
         $this->ddiProviderAddress = $ddiProviderAddress;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get ddiProviderAddress
-     *
-     * @return DdiProviderAddress
-     */
     public function getDdiProviderAddress(): DdiProviderAddress
     {
         return $this->ddiProviderAddress;

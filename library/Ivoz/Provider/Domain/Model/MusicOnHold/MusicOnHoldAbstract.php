@@ -45,13 +45,13 @@ abstract class MusicOnHoldAbstract
     protected $encodedFile;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      * inversedBy musicsOnHold
      */
     protected $brand;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      * inversedBy musicsOnHold
      */
     protected $company;
@@ -89,7 +89,7 @@ abstract class MusicOnHoldAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return MusicOnHoldDto
      */
     public static function createDto($id = null)
@@ -238,14 +238,7 @@ abstract class MusicOnHoldAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): MusicOnHoldInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -254,24 +247,12 @@ abstract class MusicOnHoldAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set status
-     *
-     * @param string $status | null
-     *
-     * @return static
-     */
-    protected function setStatus(?string $status = null): MusicOnHoldInterface
+    protected function setStatus(?string $status = null): static
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -292,32 +273,17 @@ abstract class MusicOnHoldAbstract
         return $this;
     }
 
-    /**
-     * Get status
-     *
-     * @return string | null
-     */
     public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    /**
-     * Get originalFile
-     *
-     * @return OriginalFile
-     */
     public function getOriginalFile(): OriginalFile
     {
         return $this->originalFile;
     }
 
-    /**
-     * Set originalFile
-     *
-     * @return static
-     */
-    protected function setOriginalFile(OriginalFile $originalFile): MusicOnHoldInterface
+    protected function setOriginalFile(OriginalFile $originalFile): static
     {
         $isEqual = $this->originalFile && $this->originalFile->equals($originalFile);
         if ($isEqual) {
@@ -328,22 +294,12 @@ abstract class MusicOnHoldAbstract
         return $this;
     }
 
-    /**
-     * Get encodedFile
-     *
-     * @return EncodedFile
-     */
     public function getEncodedFile(): EncodedFile
     {
         return $this->encodedFile;
     }
 
-    /**
-     * Set encodedFile
-     *
-     * @return static
-     */
-    protected function setEncodedFile(EncodedFile $encodedFile): MusicOnHoldInterface
+    protected function setEncodedFile(EncodedFile $encodedFile): static
     {
         $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
         if ($isEqual) {
@@ -354,49 +310,27 @@ abstract class MusicOnHoldAbstract
         return $this;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandInterface $brand = null): MusicOnHoldInterface
+    public function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyInterface $company = null): MusicOnHoldInterface
+    public function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;

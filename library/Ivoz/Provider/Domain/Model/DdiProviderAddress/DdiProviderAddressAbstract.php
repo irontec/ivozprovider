@@ -64,7 +64,7 @@ abstract class DdiProviderAddressAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return DdiProviderAddressDto
      */
     public static function createDto($id = null)
@@ -170,14 +170,7 @@ abstract class DdiProviderAddressAbstract
         ];
     }
 
-    /**
-     * Set ip
-     *
-     * @param string $ip | null
-     *
-     * @return static
-     */
-    protected function setIp(?string $ip = null): DdiProviderAddressInterface
+    protected function setIp(?string $ip = null): static
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -188,24 +181,12 @@ abstract class DdiProviderAddressAbstract
         return $this;
     }
 
-    /**
-     * Get ip
-     *
-     * @return string | null
-     */
     public function getIp(): ?string
     {
         return $this->ip;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description | null
-     *
-     * @return static
-     */
-    protected function setDescription(?string $description = null): DdiProviderAddressInterface
+    protected function setDescription(?string $description = null): static
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -216,35 +197,19 @@ abstract class DdiProviderAddressAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * Set ddiProvider
-     *
-     * @param DdiProviderInterface
-     *
-     * @return static
-     */
-    public function setDdiProvider(DdiProviderInterface $ddiProvider): DdiProviderAddressInterface
+    public function setDdiProvider(DdiProviderInterface $ddiProvider): static
     {
         $this->ddiProvider = $ddiProvider;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get ddiProvider
-     *
-     * @return DdiProviderInterface
-     */
     public function getDdiProvider(): DdiProviderInterface
     {
         return $this->ddiProvider;

@@ -98,7 +98,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return InvoiceNumberSequenceDto
      */
     public static function createDto($id = null)
@@ -223,14 +223,7 @@ abstract class InvoiceNumberSequenceAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): InvoiceNumberSequenceInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 40, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -239,24 +232,12 @@ abstract class InvoiceNumberSequenceAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set prefix
-     *
-     * @param string $prefix
-     *
-     * @return static
-     */
-    protected function setPrefix(string $prefix): InvoiceNumberSequenceInterface
+    protected function setPrefix(string $prefix): static
     {
         Assertion::maxLength($prefix, 20, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -265,24 +246,12 @@ abstract class InvoiceNumberSequenceAbstract
         return $this;
     }
 
-    /**
-     * Get prefix
-     *
-     * @return string
-     */
     public function getPrefix(): string
     {
         return $this->prefix;
     }
 
-    /**
-     * Set sequenceLength
-     *
-     * @param int $sequenceLength
-     *
-     * @return static
-     */
-    protected function setSequenceLength(int $sequenceLength): InvoiceNumberSequenceInterface
+    protected function setSequenceLength(int $sequenceLength): static
     {
         Assertion::greaterOrEqualThan($sequenceLength, 0, 'sequenceLength provided "%s" is not greater or equal than "%s".');
 
@@ -291,24 +260,12 @@ abstract class InvoiceNumberSequenceAbstract
         return $this;
     }
 
-    /**
-     * Get sequenceLength
-     *
-     * @return int
-     */
     public function getSequenceLength(): int
     {
         return $this->sequenceLength;
     }
 
-    /**
-     * Set increment
-     *
-     * @param int $increment
-     *
-     * @return static
-     */
-    protected function setIncrement(int $increment): InvoiceNumberSequenceInterface
+    protected function setIncrement(int $increment): static
     {
         Assertion::greaterOrEqualThan($increment, 0, 'increment provided "%s" is not greater or equal than "%s".');
 
@@ -317,48 +274,24 @@ abstract class InvoiceNumberSequenceAbstract
         return $this;
     }
 
-    /**
-     * Get increment
-     *
-     * @return int
-     */
     public function getIncrement(): int
     {
         return $this->increment;
     }
 
-    /**
-     * Set latestValue
-     *
-     * @param string $latestValue | null
-     *
-     * @return static
-     */
-    protected function setLatestValue(?string $latestValue = null): InvoiceNumberSequenceInterface
+    protected function setLatestValue(?string $latestValue = null): static
     {
         $this->latestValue = $latestValue;
 
         return $this;
     }
 
-    /**
-     * Get latestValue
-     *
-     * @return string | null
-     */
     public function getLatestValue(): ?string
     {
         return $this->latestValue;
     }
 
-    /**
-     * Set iteration
-     *
-     * @param int $iteration
-     *
-     * @return static
-     */
-    protected function setIteration(int $iteration): InvoiceNumberSequenceInterface
+    protected function setIteration(int $iteration): static
     {
         Assertion::greaterOrEqualThan($iteration, 0, 'iteration provided "%s" is not greater or equal than "%s".');
 
@@ -367,59 +300,30 @@ abstract class InvoiceNumberSequenceAbstract
         return $this;
     }
 
-    /**
-     * Get iteration
-     *
-     * @return int
-     */
     public function getIteration(): int
     {
         return $this->iteration;
     }
 
-    /**
-     * Set version
-     *
-     * @param int $version
-     *
-     * @return static
-     */
-    protected function setVersion(int $version): InvoiceNumberSequenceInterface
+    protected function setVersion(int $version): static
     {
         $this->version = $version;
 
         return $this;
     }
 
-    /**
-     * Get version
-     *
-     * @return int
-     */
     public function getVersion(): int
     {
         return $this->version;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    protected function setBrand(BrandInterface $brand): InvoiceNumberSequenceInterface
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;

@@ -19,9 +19,9 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var string
@@ -34,7 +34,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     private $allowAudio = 'alaw';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $allowVideo;
 
@@ -49,12 +49,12 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     private $password = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $mac;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime|string|null
      */
     private $lastProvisionDate;
 
@@ -168,250 +168,151 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $disallow | null
-     *
-     * @return static
-     */
-    public function setDisallow(?string $disallow = null): self
+    public function setDisallow(?string $disallow): static
     {
         $this->disallow = $disallow;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDisallow(): ?string
     {
         return $this->disallow;
     }
 
-    /**
-     * @param string $allowAudio | null
-     *
-     * @return static
-     */
-    public function setAllowAudio(?string $allowAudio = null): self
+    public function setAllowAudio(?string $allowAudio): static
     {
         $this->allowAudio = $allowAudio;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAllowAudio(): ?string
     {
         return $this->allowAudio;
     }
 
-    /**
-     * @param string $allowVideo | null
-     *
-     * @return static
-     */
-    public function setAllowVideo(?string $allowVideo = null): self
+    public function setAllowVideo(?string $allowVideo): static
     {
         $this->allowVideo = $allowVideo;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAllowVideo(): ?string
     {
         return $this->allowVideo;
     }
 
-    /**
-     * @param string $directMediaMethod | null
-     *
-     * @return static
-     */
-    public function setDirectMediaMethod(?string $directMediaMethod = null): self
+    public function setDirectMediaMethod(?string $directMediaMethod): static
     {
         $this->directMediaMethod = $directMediaMethod;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDirectMediaMethod(): ?string
     {
         return $this->directMediaMethod;
     }
 
-    /**
-     * @param string $password | null
-     *
-     * @return static
-     */
-    public function setPassword(?string $password = null): self
+    public function setPassword(?string $password): static
     {
         $this->password = $password;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    /**
-     * @param string $mac | null
-     *
-     * @return static
-     */
-    public function setMac(?string $mac = null): self
+    public function setMac(?string $mac): static
     {
         $this->mac = $mac;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getMac(): ?string
     {
         return $this->mac;
     }
 
-    /**
-     * @param \DateTimeInterface $lastProvisionDate | null
-     *
-     * @return static
-     */
-    public function setLastProvisionDate($lastProvisionDate = null): self
+    public function setLastProvisionDate(null|\DateTime|string $lastProvisionDate): static
     {
         $this->lastProvisionDate = $lastProvisionDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getLastProvisionDate()
+    public function getLastProvisionDate(): \DateTime|string|null
     {
         return $this->lastProvisionDate;
     }
 
-    /**
-     * @param string $t38Passthrough | null
-     *
-     * @return static
-     */
-    public function setT38Passthrough(?string $t38Passthrough = null): self
+    public function setT38Passthrough(?string $t38Passthrough): static
     {
         $this->t38Passthrough = $t38Passthrough;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getT38Passthrough(): ?string
     {
         return $this->t38Passthrough;
     }
 
-    /**
-     * @param bool $rtpEncryption | null
-     *
-     * @return static
-     */
-    public function setRtpEncryption(?bool $rtpEncryption = null): self
+    public function setRtpEncryption(?bool $rtpEncryption): static
     {
         $this->rtpEncryption = $rtpEncryption;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getRtpEncryption(): ?bool
     {
         return $this->rtpEncryption;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -420,9 +321,6 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -432,30 +330,19 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DomainDto | null
-     *
-     * @return static
-     */
-    public function setDomain(?DomainDto $domain = null): self
+    public function setDomain(?DomainDto $domain): static
     {
         $this->domain = $domain;
 
         return $this;
     }
 
-    /**
-     * @return DomainDto | null
-     */
     public function getDomain(): ?DomainDto
     {
         return $this->domain;
     }
 
-    /**
-     * @return static
-     */
-    public function setDomainId($id): self
+    public function setDomainId($id): static
     {
         $value = !is_null($id)
             ? new DomainDto($id)
@@ -464,9 +351,6 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->setDomain($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDomainId()
     {
         if ($dto = $this->getDomain()) {
@@ -476,30 +360,19 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TerminalModelDto | null
-     *
-     * @return static
-     */
-    public function setTerminalModel(?TerminalModelDto $terminalModel = null): self
+    public function setTerminalModel(?TerminalModelDto $terminalModel): static
     {
         $this->terminalModel = $terminalModel;
 
         return $this;
     }
 
-    /**
-     * @return TerminalModelDto | null
-     */
     public function getTerminalModel(): ?TerminalModelDto
     {
         return $this->terminalModel;
     }
 
-    /**
-     * @return static
-     */
-    public function setTerminalModelId($id): self
+    public function setTerminalModelId($id): static
     {
         $value = !is_null($id)
             ? new TerminalModelDto($id)
@@ -508,9 +381,6 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->setTerminalModel($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTerminalModelId()
     {
         if ($dto = $this->getTerminalModel()) {
@@ -520,41 +390,25 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param PsEndpointDto[] | null
-     *
-     * @return static
-     */
-    public function setAstPsEndpoints(?array $astPsEndpoints = null): self
+    public function setAstPsEndpoints(?array $astPsEndpoints): static
     {
         $this->astPsEndpoints = $astPsEndpoints;
 
         return $this;
     }
 
-    /**
-     * @return PsEndpointDto[] | null
-     */
     public function getAstPsEndpoints(): ?array
     {
         return $this->astPsEndpoints;
     }
 
-    /**
-     * @param UserDto[] | null
-     *
-     * @return static
-     */
-    public function setUsers(?array $users = null): self
+    public function setUsers(?array $users): static
     {
         $this->users = $users;
 
         return $this;
     }
 
-    /**
-     * @return UserDto[] | null
-     */
     public function getUsers(): ?array
     {
         return $this->users;

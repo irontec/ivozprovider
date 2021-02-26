@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\ProxyTrunksRelBrand;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class ProxyTrunksRelBrandLifecycleServiceCollection implements LifecycleServiceC
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, ProxyTrunksRelBrandLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, ProxyTrunksRelBrandLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

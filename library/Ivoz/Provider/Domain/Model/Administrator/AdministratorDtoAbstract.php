@@ -20,12 +20,12 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $username;
+    private $username = '';
 
     /**
      * @var string
      */
-    private $pass;
+    private $pass = '';
 
     /**
      * @var string
@@ -43,12 +43,12 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     private $restricted = false;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $name;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $lastname;
 
@@ -140,190 +140,115 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $username | null
-     *
-     * @return static
-     */
-    public function setUsername(?string $username = null): self
+    public function setUsername(?string $username): static
     {
         $this->username = $username;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    /**
-     * @param string $pass | null
-     *
-     * @return static
-     */
-    public function setPass(?string $pass = null): self
+    public function setPass(?string $pass): static
     {
         $this->pass = $pass;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPass(): ?string
     {
         return $this->pass;
     }
 
-    /**
-     * @param string $email | null
-     *
-     * @return static
-     */
-    public function setEmail(?string $email = null): self
+    public function setEmail(?string $email): static
     {
         $this->email = $email;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * @param bool $active | null
-     *
-     * @return static
-     */
-    public function setActive(?bool $active = null): self
+    public function setActive(?bool $active): static
     {
         $this->active = $active;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getActive(): ?bool
     {
         return $this->active;
     }
 
-    /**
-     * @param bool $restricted | null
-     *
-     * @return static
-     */
-    public function setRestricted(?bool $restricted = null): self
+    public function setRestricted(?bool $restricted): static
     {
         $this->restricted = $restricted;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getRestricted(): ?bool
     {
         return $this->restricted;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $lastname | null
-     *
-     * @return static
-     */
-    public function setLastname(?string $lastname = null): self
+    public function setLastname(?string $lastname): static
     {
         $this->lastname = $lastname;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLastname(): ?string
     {
         return $this->lastname;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -332,9 +257,6 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -344,30 +266,19 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -376,9 +287,6 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -388,30 +296,19 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TimezoneDto | null
-     *
-     * @return static
-     */
-    public function setTimezone(?TimezoneDto $timezone = null): self
+    public function setTimezone(?TimezoneDto $timezone): static
     {
         $this->timezone = $timezone;
 
         return $this;
     }
 
-    /**
-     * @return TimezoneDto | null
-     */
     public function getTimezone(): ?TimezoneDto
     {
         return $this->timezone;
     }
 
-    /**
-     * @return static
-     */
-    public function setTimezoneId($id): self
+    public function setTimezoneId($id): static
     {
         $value = !is_null($id)
             ? new TimezoneDto($id)
@@ -420,9 +317,6 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->setTimezone($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTimezoneId()
     {
         if ($dto = $this->getTimezone()) {
@@ -432,21 +326,13 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param AdministratorRelPublicEntityDto[] | null
-     *
-     * @return static
-     */
-    public function setRelPublicEntities(?array $relPublicEntities = null): self
+    public function setRelPublicEntities(?array $relPublicEntities): static
     {
         $this->relPublicEntities = $relPublicEntities;
 
         return $this;
     }
 
-    /**
-     * @return AdministratorRelPublicEntityDto[] | null
-     */
     public function getRelPublicEntities(): ?array
     {
         return $this->relPublicEntities;

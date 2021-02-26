@@ -2,6 +2,7 @@
 
 namespace Ivoz\Kam\Domain\Service\TrunksAddress;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,8 +20,9 @@ class TrunksAddressLifecycleServiceCollection implements LifecycleServiceCollect
     /**
      * @return void
      */
-    protected function addService(string $event, TrunksAddressLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, TrunksAddressLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

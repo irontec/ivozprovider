@@ -18,10 +18,10 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $status;
 
@@ -31,32 +31,32 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $originalFileFileSize;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $originalFileMimeType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $originalFileBaseName;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $encodedFileFileSize;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $encodedFileMimeType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $encodedFileBaseName;
 
@@ -140,210 +140,127 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $status | null
-     *
-     * @return static
-     */
-    public function setStatus(?string $status = null): self
+    public function setStatus(?string $status): static
     {
         $this->status = $status;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param int $originalFileFileSize | null
-     *
-     * @return static
-     */
-    public function setOriginalFileFileSize(?int $originalFileFileSize = null): self
+    public function setOriginalFileFileSize(?int $originalFileFileSize): static
     {
         $this->originalFileFileSize = $originalFileFileSize;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getOriginalFileFileSize(): ?int
     {
         return $this->originalFileFileSize;
     }
 
-    /**
-     * @param string $originalFileMimeType | null
-     *
-     * @return static
-     */
-    public function setOriginalFileMimeType(?string $originalFileMimeType = null): self
+    public function setOriginalFileMimeType(?string $originalFileMimeType): static
     {
         $this->originalFileMimeType = $originalFileMimeType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getOriginalFileMimeType(): ?string
     {
         return $this->originalFileMimeType;
     }
 
-    /**
-     * @param string $originalFileBaseName | null
-     *
-     * @return static
-     */
-    public function setOriginalFileBaseName(?string $originalFileBaseName = null): self
+    public function setOriginalFileBaseName(?string $originalFileBaseName): static
     {
         $this->originalFileBaseName = $originalFileBaseName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getOriginalFileBaseName(): ?string
     {
         return $this->originalFileBaseName;
     }
 
-    /**
-     * @param int $encodedFileFileSize | null
-     *
-     * @return static
-     */
-    public function setEncodedFileFileSize(?int $encodedFileFileSize = null): self
+    public function setEncodedFileFileSize(?int $encodedFileFileSize): static
     {
         $this->encodedFileFileSize = $encodedFileFileSize;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getEncodedFileFileSize(): ?int
     {
         return $this->encodedFileFileSize;
     }
 
-    /**
-     * @param string $encodedFileMimeType | null
-     *
-     * @return static
-     */
-    public function setEncodedFileMimeType(?string $encodedFileMimeType = null): self
+    public function setEncodedFileMimeType(?string $encodedFileMimeType): static
     {
         $this->encodedFileMimeType = $encodedFileMimeType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEncodedFileMimeType(): ?string
     {
         return $this->encodedFileMimeType;
     }
 
-    /**
-     * @param string $encodedFileBaseName | null
-     *
-     * @return static
-     */
-    public function setEncodedFileBaseName(?string $encodedFileBaseName = null): self
+    public function setEncodedFileBaseName(?string $encodedFileBaseName): static
     {
         $this->encodedFileBaseName = $encodedFileBaseName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEncodedFileBaseName(): ?string
     {
         return $this->encodedFileBaseName;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -352,9 +269,6 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -364,30 +278,19 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -396,9 +299,6 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {

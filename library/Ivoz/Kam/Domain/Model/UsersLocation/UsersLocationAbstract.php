@@ -49,9 +49,9 @@ abstract class UsersLocationAbstract
     protected $path;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $expires = '2030-05-28 21:32:15';
+    protected $expires;
 
     /**
      * @var float
@@ -70,9 +70,9 @@ abstract class UsersLocationAbstract
 
     /**
      * column: last_modified
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $lastModified = '1900-01-01 00:00:01';
+    protected $lastModified;
 
     /**
      * @var int
@@ -192,7 +192,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return UsersLocationDto
      */
     public static function createDto($id = null)
@@ -373,14 +373,7 @@ abstract class UsersLocationAbstract
         ];
     }
 
-    /**
-     * Set ruid
-     *
-     * @param string $ruid
-     *
-     * @return static
-     */
-    protected function setRuid(string $ruid): UsersLocationInterface
+    protected function setRuid(string $ruid): static
     {
         Assertion::maxLength($ruid, 64, 'ruid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -389,24 +382,12 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * Get ruid
-     *
-     * @return string
-     */
     public function getRuid(): string
     {
         return $this->ruid;
     }
 
-    /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return static
-     */
-    protected function setUsername(string $username): UsersLocationInterface
+    protected function setUsername(string $username): static
     {
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -415,24 +396,12 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * Get username
-     *
-     * @return string
-     */
     public function getUsername(): string
     {
         return $this->username;
     }
 
-    /**
-     * Set domain
-     *
-     * @param string $domain | null
-     *
-     * @return static
-     */
-    protected function setDomain(?string $domain = null): UsersLocationInterface
+    protected function setDomain(?string $domain = null): static
     {
         if (!is_null($domain)) {
             Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -443,24 +412,12 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * Get domain
-     *
-     * @return string | null
-     */
     public function getDomain(): ?string
     {
         return $this->domain;
     }
 
-    /**
-     * Set contact
-     *
-     * @param string $contact
-     *
-     * @return static
-     */
-    protected function setContact(string $contact): UsersLocationInterface
+    protected function setContact(string $contact): static
     {
         Assertion::maxLength($contact, 512, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -469,24 +426,12 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * Get contact
-     *
-     * @return string
-     */
     public function getContact(): string
     {
         return $this->contact;
     }
 
-    /**
-     * Set received
-     *
-     * @param string $received | null
-     *
-     * @return static
-     */
-    protected function setReceived(?string $received = null): UsersLocationInterface
+    protected function setReceived(?string $received = null): static
     {
         if (!is_null($received)) {
             Assertion::maxLength($received, 128, 'received value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -497,24 +442,12 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * Get received
-     *
-     * @return string | null
-     */
     public function getReceived(): ?string
     {
         return $this->received;
     }
 
-    /**
-     * Set path
-     *
-     * @param string $path | null
-     *
-     * @return static
-     */
-    protected function setPath(?string $path = null): UsersLocationInterface
+    protected function setPath(?string $path = null): static
     {
         if (!is_null($path)) {
             Assertion::maxLength($path, 512, 'path value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -525,24 +458,12 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * Get path
-     *
-     * @return string | null
-     */
     public function getPath(): ?string
     {
         return $this->path;
     }
 
-    /**
-     * Set expires
-     *
-     * @param \DateTimeInterface $expires
-     *
-     * @return static
-     */
-    protected function setExpires($expires): UsersLocationInterface
+    protected function setExpires($expires): static
     {
 
         $expires = DateTimeHelper::createOrFix(
@@ -559,48 +480,24 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * Get expires
-     *
-     * @return \DateTimeInterface
-     */
-    public function getExpires(): \DateTimeInterface
+    public function getExpires(): \DateTime
     {
         return clone $this->expires;
     }
 
-    /**
-     * Set q
-     *
-     * @param float $q
-     *
-     * @return static
-     */
-    protected function setQ(float $q): UsersLocationInterface
+    protected function setQ(float $q): static
     {
         $this->q = $q;
 
         return $this;
     }
 
-    /**
-     * Get q
-     *
-     * @return float
-     */
     public function getQ(): float
     {
         return $this->q;
     }
 
-    /**
-     * Set callid
-     *
-     * @param string $callid
-     *
-     * @return static
-     */
-    protected function setCallid(string $callid): UsersLocationInterface
+    protected function setCallid(string $callid): static
     {
         Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -609,48 +506,24 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * Get callid
-     *
-     * @return string
-     */
     public function getCallid(): string
     {
         return $this->callid;
     }
 
-    /**
-     * Set cseq
-     *
-     * @param int $cseq
-     *
-     * @return static
-     */
-    protected function setCseq(int $cseq): UsersLocationInterface
+    protected function setCseq(int $cseq): static
     {
         $this->cseq = $cseq;
 
         return $this;
     }
 
-    /**
-     * Get cseq
-     *
-     * @return int
-     */
     public function getCseq(): int
     {
         return $this->cseq;
     }
 
-    /**
-     * Set lastModified
-     *
-     * @param \DateTimeInterface $lastModified
-     *
-     * @return static
-     */
-    protected function setLastModified($lastModified): UsersLocationInterface
+    protected function setLastModified($lastModified): static
     {
 
         $lastModified = DateTimeHelper::createOrFix(
@@ -667,72 +540,36 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * Get lastModified
-     *
-     * @return \DateTimeInterface
-     */
-    public function getLastModified(): \DateTimeInterface
+    public function getLastModified(): \DateTime
     {
         return clone $this->lastModified;
     }
 
-    /**
-     * Set flags
-     *
-     * @param int $flags
-     *
-     * @return static
-     */
-    protected function setFlags(int $flags): UsersLocationInterface
+    protected function setFlags(int $flags): static
     {
         $this->flags = $flags;
 
         return $this;
     }
 
-    /**
-     * Get flags
-     *
-     * @return int
-     */
     public function getFlags(): int
     {
         return $this->flags;
     }
 
-    /**
-     * Set cflags
-     *
-     * @param int $cflags
-     *
-     * @return static
-     */
-    protected function setCflags(int $cflags): UsersLocationInterface
+    protected function setCflags(int $cflags): static
     {
         $this->cflags = $cflags;
 
         return $this;
     }
 
-    /**
-     * Get cflags
-     *
-     * @return int
-     */
     public function getCflags(): int
     {
         return $this->cflags;
     }
 
-    /**
-     * Set userAgent
-     *
-     * @param string $userAgent
-     *
-     * @return static
-     */
-    protected function setUserAgent(string $userAgent): UsersLocationInterface
+    protected function setUserAgent(string $userAgent): static
     {
         Assertion::maxLength($userAgent, 255, 'userAgent value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -741,24 +578,12 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * Get userAgent
-     *
-     * @return string
-     */
     public function getUserAgent(): string
     {
         return $this->userAgent;
     }
 
-    /**
-     * Set socket
-     *
-     * @param string $socket | null
-     *
-     * @return static
-     */
-    protected function setSocket(?string $socket = null): UsersLocationInterface
+    protected function setSocket(?string $socket = null): static
     {
         if (!is_null($socket)) {
             Assertion::maxLength($socket, 64, 'socket value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -769,48 +594,24 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * Get socket
-     *
-     * @return string | null
-     */
     public function getSocket(): ?string
     {
         return $this->socket;
     }
 
-    /**
-     * Set methods
-     *
-     * @param int $methods | null
-     *
-     * @return static
-     */
-    protected function setMethods(?int $methods = null): UsersLocationInterface
+    protected function setMethods(?int $methods = null): static
     {
         $this->methods = $methods;
 
         return $this;
     }
 
-    /**
-     * Get methods
-     *
-     * @return int | null
-     */
     public function getMethods(): ?int
     {
         return $this->methods;
     }
 
-    /**
-     * Set instance
-     *
-     * @param string $instance | null
-     *
-     * @return static
-     */
-    protected function setInstance(?string $instance = null): UsersLocationInterface
+    protected function setInstance(?string $instance = null): static
     {
         if (!is_null($instance)) {
             Assertion::maxLength($instance, 255, 'instance value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -821,131 +622,66 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * Get instance
-     *
-     * @return string | null
-     */
     public function getInstance(): ?string
     {
         return $this->instance;
     }
 
-    /**
-     * Set regId
-     *
-     * @param int $regId
-     *
-     * @return static
-     */
-    protected function setRegId(int $regId): UsersLocationInterface
+    protected function setRegId(int $regId): static
     {
         $this->regId = $regId;
 
         return $this;
     }
 
-    /**
-     * Get regId
-     *
-     * @return int
-     */
     public function getRegId(): int
     {
         return $this->regId;
     }
 
-    /**
-     * Set serverId
-     *
-     * @param int $serverId
-     *
-     * @return static
-     */
-    protected function setServerId(int $serverId): UsersLocationInterface
+    protected function setServerId(int $serverId): static
     {
         $this->serverId = $serverId;
 
         return $this;
     }
 
-    /**
-     * Get serverId
-     *
-     * @return int
-     */
     public function getServerId(): int
     {
         return $this->serverId;
     }
 
-    /**
-     * Set connectionId
-     *
-     * @param int $connectionId
-     *
-     * @return static
-     */
-    protected function setConnectionId(int $connectionId): UsersLocationInterface
+    protected function setConnectionId(int $connectionId): static
     {
         $this->connectionId = $connectionId;
 
         return $this;
     }
 
-    /**
-     * Get connectionId
-     *
-     * @return int
-     */
     public function getConnectionId(): int
     {
         return $this->connectionId;
     }
 
-    /**
-     * Set keepalive
-     *
-     * @param int $keepalive
-     *
-     * @return static
-     */
-    protected function setKeepalive(int $keepalive): UsersLocationInterface
+    protected function setKeepalive(int $keepalive): static
     {
         $this->keepalive = $keepalive;
 
         return $this;
     }
 
-    /**
-     * Get keepalive
-     *
-     * @return int
-     */
     public function getKeepalive(): int
     {
         return $this->keepalive;
     }
 
-    /**
-     * Set partition
-     *
-     * @param int $partition
-     *
-     * @return static
-     */
-    protected function setPartition(int $partition): UsersLocationInterface
+    protected function setPartition(int $partition): static
     {
         $this->partition = $partition;
 
         return $this;
     }
 
-    /**
-     * Get partition
-     *
-     * @return int
-     */
     public function getPartition(): int
     {
         return $this->partition;

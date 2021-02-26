@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\ResidentialDevice;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -24,11 +25,9 @@ class ResidentialDeviceLifecycleServiceCollection implements LifecycleServiceCol
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, ResidentialDeviceLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, ResidentialDeviceLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

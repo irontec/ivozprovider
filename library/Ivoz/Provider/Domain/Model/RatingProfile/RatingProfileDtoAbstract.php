@@ -19,7 +19,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $activationTime = 'CURRENT_TIMESTAMP';
 
@@ -106,70 +106,43 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param \DateTimeInterface $activationTime | null
-     *
-     * @return static
-     */
-    public function setActivationTime($activationTime = null): self
+    public function setActivationTime(null|\DateTime|string $activationTime): static
     {
         $this->activationTime = $activationTime;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getActivationTime()
+    public function getActivationTime(): \DateTime|string|null
     {
         return $this->activationTime;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -178,9 +151,6 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -190,30 +160,19 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CarrierDto | null
-     *
-     * @return static
-     */
-    public function setCarrier(?CarrierDto $carrier = null): self
+    public function setCarrier(?CarrierDto $carrier): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * @return CarrierDto | null
-     */
     public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
-    /**
-     * @return static
-     */
-    public function setCarrierId($id): self
+    public function setCarrierId($id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -222,9 +181,6 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCarrierId()
     {
         if ($dto = $this->getCarrier()) {
@@ -234,30 +190,19 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param RatingPlanGroupDto | null
-     *
-     * @return static
-     */
-    public function setRatingPlanGroup(?RatingPlanGroupDto $ratingPlanGroup = null): self
+    public function setRatingPlanGroup(?RatingPlanGroupDto $ratingPlanGroup): static
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
         return $this;
     }
 
-    /**
-     * @return RatingPlanGroupDto | null
-     */
     public function getRatingPlanGroup(): ?RatingPlanGroupDto
     {
         return $this->ratingPlanGroup;
     }
 
-    /**
-     * @return static
-     */
-    public function setRatingPlanGroupId($id): self
+    public function setRatingPlanGroupId($id): static
     {
         $value = !is_null($id)
             ? new RatingPlanGroupDto($id)
@@ -266,9 +211,6 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->setRatingPlanGroup($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRatingPlanGroupId()
     {
         if ($dto = $this->getRatingPlanGroup()) {
@@ -278,30 +220,19 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param RoutingTagDto | null
-     *
-     * @return static
-     */
-    public function setRoutingTag(?RoutingTagDto $routingTag = null): self
+    public function setRoutingTag(?RoutingTagDto $routingTag): static
     {
         $this->routingTag = $routingTag;
 
         return $this;
     }
 
-    /**
-     * @return RoutingTagDto | null
-     */
     public function getRoutingTag(): ?RoutingTagDto
     {
         return $this->routingTag;
     }
 
-    /**
-     * @return static
-     */
-    public function setRoutingTagId($id): self
+    public function setRoutingTagId($id): static
     {
         $value = !is_null($id)
             ? new RoutingTagDto($id)
@@ -310,9 +241,6 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->setRoutingTag($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRoutingTagId()
     {
         if ($dto = $this->getRoutingTag()) {
@@ -322,21 +250,13 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TpRatingProfileDto[] | null
-     *
-     * @return static
-     */
-    public function setTpRatingProfiles(?array $tpRatingProfiles = null): self
+    public function setTpRatingProfiles(?array $tpRatingProfiles): static
     {
         $this->tpRatingProfiles = $tpRatingProfiles;
 
         return $this;
     }
 
-    /**
-     * @return TpRatingProfileDto[] | null
-     */
     public function getTpRatingProfiles(): ?array
     {
         return $this->tpRatingProfiles;

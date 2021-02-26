@@ -27,9 +27,9 @@ abstract class RecordingAbstract
     protected $callid;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $calldate = 'CURRENT_TIMESTAMP';
+    protected $calldate;
 
     /**
      * comment: enum:ondemand|ddi
@@ -103,7 +103,7 @@ abstract class RecordingAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return RecordingDto
      */
     public static function createDto($id = null)
@@ -248,14 +248,7 @@ abstract class RecordingAbstract
         ];
     }
 
-    /**
-     * Set callid
-     *
-     * @param string $callid | null
-     *
-     * @return static
-     */
-    protected function setCallid(?string $callid = null): RecordingInterface
+    protected function setCallid(?string $callid = null): static
     {
         if (!is_null($callid)) {
             Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -266,24 +259,12 @@ abstract class RecordingAbstract
         return $this;
     }
 
-    /**
-     * Get callid
-     *
-     * @return string | null
-     */
     public function getCallid(): ?string
     {
         return $this->callid;
     }
 
-    /**
-     * Set calldate
-     *
-     * @param \DateTimeInterface $calldate
-     *
-     * @return static
-     */
-    protected function setCalldate($calldate): RecordingInterface
+    protected function setCalldate($calldate): static
     {
 
         $calldate = DateTimeHelper::createOrFix(
@@ -300,24 +281,12 @@ abstract class RecordingAbstract
         return $this;
     }
 
-    /**
-     * Get calldate
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCalldate(): \DateTimeInterface
+    public function getCalldate(): \DateTime
     {
         return clone $this->calldate;
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return static
-     */
-    protected function setType(string $type): RecordingInterface
+    protected function setType(string $type): static
     {
         Assertion::choice(
             $type,
@@ -333,48 +302,24 @@ abstract class RecordingAbstract
         return $this;
     }
 
-    /**
-     * Get type
-     *
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * Set duration
-     *
-     * @param float $duration
-     *
-     * @return static
-     */
-    protected function setDuration(float $duration): RecordingInterface
+    protected function setDuration(float $duration): static
     {
         $this->duration = $duration;
 
         return $this;
     }
 
-    /**
-     * Get duration
-     *
-     * @return float
-     */
     public function getDuration(): float
     {
         return $this->duration;
     }
 
-    /**
-     * Set caller
-     *
-     * @param string $caller | null
-     *
-     * @return static
-     */
-    protected function setCaller(?string $caller = null): RecordingInterface
+    protected function setCaller(?string $caller = null): static
     {
         if (!is_null($caller)) {
             Assertion::maxLength($caller, 128, 'caller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -385,24 +330,12 @@ abstract class RecordingAbstract
         return $this;
     }
 
-    /**
-     * Get caller
-     *
-     * @return string | null
-     */
     public function getCaller(): ?string
     {
         return $this->caller;
     }
 
-    /**
-     * Set callee
-     *
-     * @param string $callee | null
-     *
-     * @return static
-     */
-    protected function setCallee(?string $callee = null): RecordingInterface
+    protected function setCallee(?string $callee = null): static
     {
         if (!is_null($callee)) {
             Assertion::maxLength($callee, 128, 'callee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -413,24 +346,12 @@ abstract class RecordingAbstract
         return $this;
     }
 
-    /**
-     * Get callee
-     *
-     * @return string | null
-     */
     public function getCallee(): ?string
     {
         return $this->callee;
     }
 
-    /**
-     * Set recorder
-     *
-     * @param string $recorder | null
-     *
-     * @return static
-     */
-    protected function setRecorder(?string $recorder = null): RecordingInterface
+    protected function setRecorder(?string $recorder = null): static
     {
         if (!is_null($recorder)) {
             Assertion::maxLength($recorder, 128, 'recorder value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -441,32 +362,17 @@ abstract class RecordingAbstract
         return $this;
     }
 
-    /**
-     * Get recorder
-     *
-     * @return string | null
-     */
     public function getRecorder(): ?string
     {
         return $this->recorder;
     }
 
-    /**
-     * Get recordedFile
-     *
-     * @return RecordedFile
-     */
     public function getRecordedFile(): RecordedFile
     {
         return $this->recordedFile;
     }
 
-    /**
-     * Set recordedFile
-     *
-     * @return static
-     */
-    protected function setRecordedFile(RecordedFile $recordedFile): RecordingInterface
+    protected function setRecordedFile(RecordedFile $recordedFile): static
     {
         $isEqual = $this->recordedFile && $this->recordedFile->equals($recordedFile);
         if ($isEqual) {
@@ -477,25 +383,14 @@ abstract class RecordingAbstract
         return $this;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    public function setCompany(CompanyInterface $company): RecordingInterface
+    public function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;

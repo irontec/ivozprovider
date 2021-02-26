@@ -2,11 +2,11 @@
 
 namespace Ivoz\Ast\Domain\Model\PsEndpoint;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * PsEndpointInterface
@@ -39,208 +39,60 @@ interface PsEndpointInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Get sorceryId
-     *
-     * @return string
-     */
     public function getSorceryId(): string;
 
-    /**
-     * Get fromDomain
-     *
-     * @return string | null
-     */
     public function getFromDomain(): ?string;
 
-    /**
-     * Get aors
-     *
-     * @return string | null
-     */
     public function getAors(): ?string;
 
-    /**
-     * Get callerid
-     *
-     * @return string | null
-     */
     public function getCallerid(): ?string;
 
-    /**
-     * Get context
-     *
-     * @return string
-     */
     public function getContext(): string;
 
-    /**
-     * Get disallow
-     *
-     * @return string
-     */
     public function getDisallow(): string;
 
-    /**
-     * Get allow
-     *
-     * @return string
-     */
     public function getAllow(): string;
 
-    /**
-     * Get directMedia
-     *
-     * @return string | null
-     */
     public function getDirectMedia(): ?string;
 
-    /**
-     * Get directMediaMethod
-     *
-     * @return string | null
-     */
     public function getDirectMediaMethod(): ?string;
 
-    /**
-     * Get mailboxes
-     *
-     * @return string | null
-     */
     public function getMailboxes(): ?string;
 
-    /**
-     * Get namedPickupGroup
-     *
-     * @return string | null
-     */
     public function getNamedPickupGroup(): ?string;
 
-    /**
-     * Get sendDiversion
-     *
-     * @return string | null
-     */
     public function getSendDiversion(): ?string;
 
-    /**
-     * Get sendPai
-     *
-     * @return string | null
-     */
     public function getSendPai(): ?string;
 
-    /**
-     * Get oneHundredRel
-     *
-     * @return string
-     */
     public function getOneHundredRel(): string;
 
-    /**
-     * Get outboundProxy
-     *
-     * @return string | null
-     */
     public function getOutboundProxy(): ?string;
 
-    /**
-     * Get trustIdInbound
-     *
-     * @return string | null
-     */
     public function getTrustIdInbound(): ?string;
 
-    /**
-     * Get t38Udptl
-     *
-     * @return string
-     */
     public function getT38Udptl(): string;
 
-    /**
-     * Get t38UdptlEc
-     *
-     * @return string
-     */
     public function getT38UdptlEc(): string;
 
-    /**
-     * Get t38UdptlMaxdatagram
-     *
-     * @return int
-     */
     public function getT38UdptlMaxdatagram(): int;
 
-    /**
-     * Get t38UdptlNat
-     *
-     * @return string
-     */
     public function getT38UdptlNat(): string;
 
-    /**
-     * Set terminal
-     *
-     * @param TerminalInterface | null
-     *
-     * @return static
-     */
-    public function setTerminal(?TerminalInterface $terminal = null): PsEndpointInterface;
+    public function setTerminal(?TerminalInterface $terminal = null): static;
 
-    /**
-     * Get terminal
-     *
-     * @return TerminalInterface | null
-     */
     public function getTerminal(): ?TerminalInterface;
 
-    /**
-     * Set friend
-     *
-     * @param FriendInterface | null
-     *
-     * @return static
-     */
-    public function setFriend(?FriendInterface $friend = null): PsEndpointInterface;
+    public function setFriend(?FriendInterface $friend = null): static;
 
-    /**
-     * Get friend
-     *
-     * @return FriendInterface | null
-     */
     public function getFriend(): ?FriendInterface;
 
-    /**
-     * Set residentialDevice
-     *
-     * @param ResidentialDeviceInterface | null
-     *
-     * @return static
-     */
-    public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): PsEndpointInterface;
+    public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static;
 
-    /**
-     * Get residentialDevice
-     *
-     * @return ResidentialDeviceInterface | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceInterface;
 
-    /**
-     * Set retailAccount
-     *
-     * @param RetailAccountInterface | null
-     *
-     * @return static
-     */
-    public function setRetailAccount(?RetailAccountInterface $retailAccount = null): PsEndpointInterface;
+    public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static;
 
-    /**
-     * Get retailAccount
-     *
-     * @return RetailAccountInterface | null
-     */
     public function getRetailAccount(): ?RetailAccountInterface;
 
     /**

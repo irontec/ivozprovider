@@ -20,7 +20,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     private $grp = 1;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $ipAddr;
 
@@ -35,7 +35,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     private $port = 0;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tag;
 
@@ -103,150 +103,91 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param int $grp | null
-     *
-     * @return static
-     */
-    public function setGrp(?int $grp = null): self
+    public function setGrp(?int $grp): static
     {
         $this->grp = $grp;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getGrp(): ?int
     {
         return $this->grp;
     }
 
-    /**
-     * @param string $ipAddr | null
-     *
-     * @return static
-     */
-    public function setIpAddr(?string $ipAddr = null): self
+    public function setIpAddr(?string $ipAddr): static
     {
         $this->ipAddr = $ipAddr;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getIpAddr(): ?string
     {
         return $this->ipAddr;
     }
 
-    /**
-     * @param int $mask | null
-     *
-     * @return static
-     */
-    public function setMask(?int $mask = null): self
+    public function setMask(?int $mask): static
     {
         $this->mask = $mask;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMask(): ?int
     {
         return $this->mask;
     }
 
-    /**
-     * @param int $port | null
-     *
-     * @return static
-     */
-    public function setPort(?int $port = null): self
+    public function setPort(?int $port): static
     {
         $this->port = $port;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPort(): ?int
     {
         return $this->port;
     }
 
-    /**
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    public function setTag(?string $tag = null): self
+    public function setTag(?string $tag): static
     {
         $this->tag = $tag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param DdiProviderAddressDto | null
-     *
-     * @return static
-     */
-    public function setDdiProviderAddress(?DdiProviderAddressDto $ddiProviderAddress = null): self
+    public function setDdiProviderAddress(?DdiProviderAddressDto $ddiProviderAddress): static
     {
         $this->ddiProviderAddress = $ddiProviderAddress;
 
         return $this;
     }
 
-    /**
-     * @return DdiProviderAddressDto | null
-     */
     public function getDdiProviderAddress(): ?DdiProviderAddressDto
     {
         return $this->ddiProviderAddress;
     }
 
-    /**
-     * @return static
-     */
-    public function setDdiProviderAddressId($id): self
+    public function setDdiProviderAddressId($id): static
     {
         $value = !is_null($id)
             ? new DdiProviderAddressDto($id)
@@ -255,9 +196,6 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
         return $this->setDdiProviderAddress($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDdiProviderAddressId()
     {
         if ($dto = $this->getDdiProviderAddress()) {

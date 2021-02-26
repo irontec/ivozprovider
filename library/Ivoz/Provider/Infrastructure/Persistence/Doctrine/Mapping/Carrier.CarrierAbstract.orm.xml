@@ -39,17 +39,17 @@
     </many-to-one>
     <many-to-one field="transformationRuleSet" target-entity="Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="transformationRuleSetId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="transformationRuleSetId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="currency" target-entity="Ivoz\Provider\Domain\Model\Currency\CurrencyInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="currencyId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="currencyId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="proxyTrunk" target-entity="Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="proxyTrunkId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="proxyTrunkId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

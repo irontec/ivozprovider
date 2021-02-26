@@ -26,12 +26,12 @@ abstract class ScheduleAbstract
     protected $name;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $timeIn;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $timeout;
 
@@ -108,7 +108,7 @@ abstract class ScheduleAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ScheduleDto
      */
     public static function createDto($id = null)
@@ -245,14 +245,7 @@ abstract class ScheduleAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): ScheduleInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -261,72 +254,36 @@ abstract class ScheduleAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set timeIn
-     *
-     * @param \DateTimeInterface $timeIn
-     *
-     * @return static
-     */
-    protected function setTimeIn($timeIn): ScheduleInterface
+    protected function setTimeIn($timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    /**
-     * Get timeIn
-     *
-     * @return \DateTimeInterface
-     */
-    public function getTimeIn(): \DateTimeInterface
+    public function getTimeIn(): \DateTime
     {
         return clone $this->timeIn;
     }
 
-    /**
-     * Set timeout
-     *
-     * @param \DateTimeInterface $timeout
-     *
-     * @return static
-     */
-    protected function setTimeout($timeout): ScheduleInterface
+    protected function setTimeout($timeout): static
     {
         $this->timeout = $timeout;
 
         return $this;
     }
 
-    /**
-     * Get timeout
-     *
-     * @return \DateTimeInterface
-     */
-    public function getTimeout(): \DateTimeInterface
+    public function getTimeout(): \DateTime
     {
         return clone $this->timeout;
     }
 
-    /**
-     * Set monday
-     *
-     * @param bool $monday | null
-     *
-     * @return static
-     */
-    protected function setMonday(?bool $monday = null): ScheduleInterface
+    protected function setMonday(?bool $monday = null): static
     {
         if (!is_null($monday)) {
             Assertion::between(intval($monday), 0, 1, 'monday provided "%s" is not a valid boolean value.');
@@ -338,24 +295,12 @@ abstract class ScheduleAbstract
         return $this;
     }
 
-    /**
-     * Get monday
-     *
-     * @return bool | null
-     */
     public function getMonday(): ?bool
     {
         return $this->monday;
     }
 
-    /**
-     * Set tuesday
-     *
-     * @param bool $tuesday | null
-     *
-     * @return static
-     */
-    protected function setTuesday(?bool $tuesday = null): ScheduleInterface
+    protected function setTuesday(?bool $tuesday = null): static
     {
         if (!is_null($tuesday)) {
             Assertion::between(intval($tuesday), 0, 1, 'tuesday provided "%s" is not a valid boolean value.');
@@ -367,24 +312,12 @@ abstract class ScheduleAbstract
         return $this;
     }
 
-    /**
-     * Get tuesday
-     *
-     * @return bool | null
-     */
     public function getTuesday(): ?bool
     {
         return $this->tuesday;
     }
 
-    /**
-     * Set wednesday
-     *
-     * @param bool $wednesday | null
-     *
-     * @return static
-     */
-    protected function setWednesday(?bool $wednesday = null): ScheduleInterface
+    protected function setWednesday(?bool $wednesday = null): static
     {
         if (!is_null($wednesday)) {
             Assertion::between(intval($wednesday), 0, 1, 'wednesday provided "%s" is not a valid boolean value.');
@@ -396,24 +329,12 @@ abstract class ScheduleAbstract
         return $this;
     }
 
-    /**
-     * Get wednesday
-     *
-     * @return bool | null
-     */
     public function getWednesday(): ?bool
     {
         return $this->wednesday;
     }
 
-    /**
-     * Set thursday
-     *
-     * @param bool $thursday | null
-     *
-     * @return static
-     */
-    protected function setThursday(?bool $thursday = null): ScheduleInterface
+    protected function setThursday(?bool $thursday = null): static
     {
         if (!is_null($thursday)) {
             Assertion::between(intval($thursday), 0, 1, 'thursday provided "%s" is not a valid boolean value.');
@@ -425,24 +346,12 @@ abstract class ScheduleAbstract
         return $this;
     }
 
-    /**
-     * Get thursday
-     *
-     * @return bool | null
-     */
     public function getThursday(): ?bool
     {
         return $this->thursday;
     }
 
-    /**
-     * Set friday
-     *
-     * @param bool $friday | null
-     *
-     * @return static
-     */
-    protected function setFriday(?bool $friday = null): ScheduleInterface
+    protected function setFriday(?bool $friday = null): static
     {
         if (!is_null($friday)) {
             Assertion::between(intval($friday), 0, 1, 'friday provided "%s" is not a valid boolean value.');
@@ -454,24 +363,12 @@ abstract class ScheduleAbstract
         return $this;
     }
 
-    /**
-     * Get friday
-     *
-     * @return bool | null
-     */
     public function getFriday(): ?bool
     {
         return $this->friday;
     }
 
-    /**
-     * Set saturday
-     *
-     * @param bool $saturday | null
-     *
-     * @return static
-     */
-    protected function setSaturday(?bool $saturday = null): ScheduleInterface
+    protected function setSaturday(?bool $saturday = null): static
     {
         if (!is_null($saturday)) {
             Assertion::between(intval($saturday), 0, 1, 'saturday provided "%s" is not a valid boolean value.');
@@ -483,24 +380,12 @@ abstract class ScheduleAbstract
         return $this;
     }
 
-    /**
-     * Get saturday
-     *
-     * @return bool | null
-     */
     public function getSaturday(): ?bool
     {
         return $this->saturday;
     }
 
-    /**
-     * Set sunday
-     *
-     * @param bool $sunday | null
-     *
-     * @return static
-     */
-    protected function setSunday(?bool $sunday = null): ScheduleInterface
+    protected function setSunday(?bool $sunday = null): static
     {
         if (!is_null($sunday)) {
             Assertion::between(intval($sunday), 0, 1, 'sunday provided "%s" is not a valid boolean value.');
@@ -512,35 +397,18 @@ abstract class ScheduleAbstract
         return $this;
     }
 
-    /**
-     * Get sunday
-     *
-     * @return bool | null
-     */
     public function getSunday(): ?bool
     {
         return $this->sunday;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): ScheduleInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;

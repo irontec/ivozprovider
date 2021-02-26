@@ -2,10 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\Locution;
 
-use Ivoz\Core\Domain\Service\TempFile;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Core\Domain\Service\TempFile;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
 * LocutionInterface
@@ -29,7 +29,7 @@ interface LocutionInterface extends LoggableEntityInterface, FileContainerInterf
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null);
+    public function getFileObjects(?int $filter = null);
 
     /**
      * Add TempFile and set status to pending
@@ -39,39 +39,14 @@ interface LocutionInterface extends LoggableEntityInterface, FileContainerInterf
      */
     public function addTmpFile(string $fldName, TempFile $file);
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get status
-     *
-     * @return string | null
-     */
     public function getStatus(): ?string;
 
-    /**
-     * Get encodedFile
-     *
-     * @return EncodedFile
-     */
     public function getEncodedFile(): EncodedFile;
 
-    /**
-     * Get originalFile
-     *
-     * @return OriginalFile
-     */
     public function getOriginalFile(): OriginalFile;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface;
 
     /**

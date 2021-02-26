@@ -83,50 +83,31 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param OutgoingRoutingDto | null
-     *
-     * @return static
-     */
-    public function setOutgoingRouting(?OutgoingRoutingDto $outgoingRouting = null): self
+    public function setOutgoingRouting(?OutgoingRoutingDto $outgoingRouting): static
     {
         $this->outgoingRouting = $outgoingRouting;
 
         return $this;
     }
 
-    /**
-     * @return OutgoingRoutingDto | null
-     */
     public function getOutgoingRouting(): ?OutgoingRoutingDto
     {
         return $this->outgoingRouting;
     }
 
-    /**
-     * @return static
-     */
-    public function setOutgoingRoutingId($id): self
+    public function setOutgoingRoutingId($id): static
     {
         $value = !is_null($id)
             ? new OutgoingRoutingDto($id)
@@ -135,9 +116,6 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $this->setOutgoingRouting($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getOutgoingRoutingId()
     {
         if ($dto = $this->getOutgoingRouting()) {
@@ -147,30 +125,19 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return null;
     }
 
-    /**
-     * @param CarrierDto | null
-     *
-     * @return static
-     */
-    public function setCarrier(?CarrierDto $carrier = null): self
+    public function setCarrier(?CarrierDto $carrier): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * @return CarrierDto | null
-     */
     public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
-    /**
-     * @return static
-     */
-    public function setCarrierId($id): self
+    public function setCarrierId($id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -179,9 +146,6 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $this->setCarrier($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCarrierId()
     {
         if ($dto = $this->getCarrier()) {
@@ -191,21 +155,13 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return null;
     }
 
-    /**
-     * @param TpRatingProfileDto[] | null
-     *
-     * @return static
-     */
-    public function setTpRatingProfiles(?array $tpRatingProfiles = null): self
+    public function setTpRatingProfiles(?array $tpRatingProfiles): static
     {
         $this->tpRatingProfiles = $tpRatingProfiles;
 
         return $this;
     }
 
-    /**
-     * @return TpRatingProfileDto[] | null
-     */
     public function getTpRatingProfiles(): ?array
     {
         return $this->tpRatingProfiles;

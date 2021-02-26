@@ -31,7 +31,7 @@ abstract class NotificationTemplateAbstract
     protected $type;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      */
     protected $brand;
 
@@ -66,7 +66,7 @@ abstract class NotificationTemplateAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return NotificationTemplateDto
      */
     public static function createDto($id = null)
@@ -171,14 +171,7 @@ abstract class NotificationTemplateAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): NotificationTemplateInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 55, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -187,24 +180,12 @@ abstract class NotificationTemplateAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return static
-     */
-    protected function setType(string $type): NotificationTemplateInterface
+    protected function setType(string $type): static
     {
         Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -226,35 +207,18 @@ abstract class NotificationTemplateAbstract
         return $this;
     }
 
-    /**
-     * Get type
-     *
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    protected function setBrand(?BrandInterface $brand = null): NotificationTemplateInterface
+    protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;

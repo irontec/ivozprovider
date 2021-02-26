@@ -38,7 +38,7 @@
     </many-to-one>
     <many-to-one field="welcomeLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="welcomeLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="welcomeLocutionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="holidayLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
@@ -48,37 +48,37 @@
     </many-to-one>
     <many-to-one field="outOfScheduleLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="outOfScheduleLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="outOfScheduleLocutionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="holidayExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="holidayExtensionId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="holidayExtensionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="outOfScheduleExtension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="outOfScheduleExtensionId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="outOfScheduleExtensionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="holidayVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="holidayVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="holidayVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="outOfScheduleVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="outOfScheduleVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="outOfScheduleVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="holidayNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="holidayNumberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="holidayNumberCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="outOfScheduleNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="outOfScheduleNumberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="outOfScheduleNumberCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

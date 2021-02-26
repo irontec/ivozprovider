@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Service\CallForwardSetting;
 
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
-use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
 

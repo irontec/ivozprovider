@@ -33,7 +33,7 @@ class TransformationRuleSet extends TransformationRuleSetAbstract implements Tra
     /**
      * {@inheritDoc}
      */
-    public function setInternationalCode(?string $internationalCode = null): self
+    public function setInternationalCode(?string $internationalCode = null): static
     {
         if (!empty($internationalCode)) {
             Assertion::regex($internationalCode, '/^[0-9]{2,10}$/');
@@ -45,7 +45,7 @@ class TransformationRuleSet extends TransformationRuleSetAbstract implements Tra
     /**
      * {@inheritDoc}
      */
-    public function setTrunkPrefix(?string $trunkPrefix = null): self
+    public function setTrunkPrefix(?string $trunkPrefix = null): static
     {
         if (!empty($trunkPrefix)) {
             Assertion::regex($trunkPrefix, '/^[0-9]+$/');

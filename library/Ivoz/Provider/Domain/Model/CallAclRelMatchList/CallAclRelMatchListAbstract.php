@@ -33,7 +33,7 @@ abstract class CallAclRelMatchListAbstract
     protected $policy;
 
     /**
-     * @var CallAclInterface
+     * @var CallAclInterface | null
      * inversedBy relMatchLists
      */
     protected $callAcl;
@@ -74,7 +74,7 @@ abstract class CallAclRelMatchListAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CallAclRelMatchListDto
      */
     public static function createDto($id = null)
@@ -183,38 +183,19 @@ abstract class CallAclRelMatchListAbstract
         ];
     }
 
-    /**
-     * Set priority
-     *
-     * @param int $priority
-     *
-     * @return static
-     */
-    protected function setPriority(int $priority): CallAclRelMatchListInterface
+    protected function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * Get priority
-     *
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;
     }
 
-    /**
-     * Set policy
-     *
-     * @param string $policy
-     *
-     * @return static
-     */
-    protected function setPolicy(string $policy): CallAclRelMatchListInterface
+    protected function setPolicy(string $policy): static
     {
         Assertion::maxLength($policy, 25, 'policy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -231,59 +212,31 @@ abstract class CallAclRelMatchListAbstract
         return $this;
     }
 
-    /**
-     * Get policy
-     *
-     * @return string
-     */
     public function getPolicy(): string
     {
         return $this->policy;
     }
 
-    /**
-     * Set callAcl
-     *
-     * @param CallAclInterface | null
-     *
-     * @return static
-     */
-    public function setCallAcl(?CallAclInterface $callAcl = null): CallAclRelMatchListInterface
+    public function setCallAcl(?CallAclInterface $callAcl = null): static
     {
         $this->callAcl = $callAcl;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get callAcl
-     *
-     * @return CallAclInterface | null
-     */
     public function getCallAcl(): ?CallAclInterface
     {
         return $this->callAcl;
     }
 
-    /**
-     * Set matchList
-     *
-     * @param MatchListInterface
-     *
-     * @return static
-     */
-    protected function setMatchList(MatchListInterface $matchList): CallAclRelMatchListInterface
+    protected function setMatchList(MatchListInterface $matchList): static
     {
         $this->matchList = $matchList;
 
         return $this;
     }
 
-    /**
-     * Get matchList
-     *
-     * @return MatchListInterface
-     */
     public function getMatchList(): MatchListInterface
     {
         return $this->matchList;

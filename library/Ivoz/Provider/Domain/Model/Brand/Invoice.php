@@ -82,14 +82,7 @@ class Invoice
             $this->getRegistryData() === $invoice->getRegistryData();
     }
 
-    /**
-     * Set nif
-     *
-     * @param string $nif
-     *
-     * @return static
-     */
-    protected function setNif(string $nif): Invoice
+    protected function setNif(string $nif): static
     {
         Assertion::maxLength($nif, 25, 'nif value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -98,24 +91,12 @@ class Invoice
         return $this;
     }
 
-    /**
-     * Get nif
-     *
-     * @return string
-     */
     public function getNif(): string
     {
         return $this->nif;
     }
 
-    /**
-     * Set postalAddress
-     *
-     * @param string $postalAddress
-     *
-     * @return static
-     */
-    protected function setPostalAddress(string $postalAddress): Invoice
+    protected function setPostalAddress(string $postalAddress): static
     {
         Assertion::maxLength($postalAddress, 255, 'postalAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -124,24 +105,12 @@ class Invoice
         return $this;
     }
 
-    /**
-     * Get postalAddress
-     *
-     * @return string
-     */
     public function getPostalAddress(): string
     {
         return $this->postalAddress;
     }
 
-    /**
-     * Set postalCode
-     *
-     * @param string $postalCode
-     *
-     * @return static
-     */
-    protected function setPostalCode(string $postalCode): Invoice
+    protected function setPostalCode(string $postalCode): static
     {
         Assertion::maxLength($postalCode, 10, 'postalCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -150,24 +119,12 @@ class Invoice
         return $this;
     }
 
-    /**
-     * Get postalCode
-     *
-     * @return string
-     */
     public function getPostalCode(): string
     {
         return $this->postalCode;
     }
 
-    /**
-     * Set town
-     *
-     * @param string $town
-     *
-     * @return static
-     */
-    protected function setTown(string $town): Invoice
+    protected function setTown(string $town): static
     {
         Assertion::maxLength($town, 255, 'town value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -176,24 +133,12 @@ class Invoice
         return $this;
     }
 
-    /**
-     * Get town
-     *
-     * @return string
-     */
     public function getTown(): string
     {
         return $this->town;
     }
 
-    /**
-     * Set province
-     *
-     * @param string $province
-     *
-     * @return static
-     */
-    protected function setProvince(string $province): Invoice
+    protected function setProvince(string $province): static
     {
         Assertion::maxLength($province, 255, 'province value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -202,24 +147,12 @@ class Invoice
         return $this;
     }
 
-    /**
-     * Get province
-     *
-     * @return string
-     */
     public function getProvince(): string
     {
         return $this->province;
     }
 
-    /**
-     * Set country
-     *
-     * @param string $country
-     *
-     * @return static
-     */
-    protected function setCountry(string $country): Invoice
+    protected function setCountry(string $country): static
     {
         Assertion::maxLength($country, 255, 'country value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -228,24 +161,12 @@ class Invoice
         return $this;
     }
 
-    /**
-     * Get country
-     *
-     * @return string
-     */
     public function getCountry(): string
     {
         return $this->country;
     }
 
-    /**
-     * Set registryData
-     *
-     * @param string $registryData | null
-     *
-     * @return static
-     */
-    protected function setRegistryData(?string $registryData = null): Invoice
+    protected function setRegistryData(?string $registryData = null): static
     {
         if (!is_null($registryData)) {
             Assertion::maxLength($registryData, 1024, 'registryData value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -256,11 +177,6 @@ class Invoice
         return $this;
     }
 
-    /**
-     * Get registryData
-     *
-     * @return string | null
-     */
     public function getRegistryData(): ?string
     {
         return $this->registryData;

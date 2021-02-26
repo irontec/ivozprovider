@@ -76,50 +76,31 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param ExternalCallFilterDto | null
-     *
-     * @return static
-     */
-    public function setFilter(?ExternalCallFilterDto $filter = null): self
+    public function setFilter(?ExternalCallFilterDto $filter): static
     {
         $this->filter = $filter;
 
         return $this;
     }
 
-    /**
-     * @return ExternalCallFilterDto | null
-     */
     public function getFilter(): ?ExternalCallFilterDto
     {
         return $this->filter;
     }
 
-    /**
-     * @return static
-     */
-    public function setFilterId($id): self
+    public function setFilterId($id): static
     {
         $value = !is_null($id)
             ? new ExternalCallFilterDto($id)
@@ -128,9 +109,6 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
         return $this->setFilter($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFilterId()
     {
         if ($dto = $this->getFilter()) {
@@ -140,30 +118,19 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
         return null;
     }
 
-    /**
-     * @param ScheduleDto | null
-     *
-     * @return static
-     */
-    public function setSchedule(?ScheduleDto $schedule = null): self
+    public function setSchedule(?ScheduleDto $schedule): static
     {
         $this->schedule = $schedule;
 
         return $this;
     }
 
-    /**
-     * @return ScheduleDto | null
-     */
     public function getSchedule(): ?ScheduleDto
     {
         return $this->schedule;
     }
 
-    /**
-     * @return static
-     */
-    public function setScheduleId($id): self
+    public function setScheduleId($id): static
     {
         $value = !is_null($id)
             ? new ScheduleDto($id)
@@ -172,9 +139,6 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
         return $this->setSchedule($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getScheduleId()
     {
         if ($dto = $this->getSchedule()) {

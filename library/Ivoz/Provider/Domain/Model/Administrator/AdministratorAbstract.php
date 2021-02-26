@@ -60,17 +60,17 @@ abstract class AdministratorAbstract
     protected $lastname;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var TimezoneInterface
+     * @var TimezoneInterface | null
      */
     protected $timezone;
 
@@ -111,7 +111,7 @@ abstract class AdministratorAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return AdministratorDto
      */
     public static function createDto($id = null)
@@ -244,14 +244,7 @@ abstract class AdministratorAbstract
         ];
     }
 
-    /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return static
-     */
-    protected function setUsername(string $username): AdministratorInterface
+    protected function setUsername(string $username): static
     {
         Assertion::maxLength($username, 65, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -260,24 +253,12 @@ abstract class AdministratorAbstract
         return $this;
     }
 
-    /**
-     * Get username
-     *
-     * @return string
-     */
     public function getUsername(): string
     {
         return $this->username;
     }
 
-    /**
-     * Set pass
-     *
-     * @param string $pass
-     *
-     * @return static
-     */
-    protected function setPass(string $pass): AdministratorInterface
+    protected function setPass(string $pass): static
     {
         Assertion::maxLength($pass, 80, 'pass value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -286,24 +267,12 @@ abstract class AdministratorAbstract
         return $this;
     }
 
-    /**
-     * Get pass
-     *
-     * @return string
-     */
     public function getPass(): string
     {
         return $this->pass;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return static
-     */
-    protected function setEmail(string $email): AdministratorInterface
+    protected function setEmail(string $email): static
     {
         Assertion::maxLength($email, 100, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -312,24 +281,12 @@ abstract class AdministratorAbstract
         return $this;
     }
 
-    /**
-     * Get email
-     *
-     * @return string
-     */
     public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * Set active
-     *
-     * @param bool $active
-     *
-     * @return static
-     */
-    protected function setActive(bool $active): AdministratorInterface
+    protected function setActive(bool $active): static
     {
         Assertion::between(intval($active), 0, 1, 'active provided "%s" is not a valid boolean value.');
         $active = (bool) $active;
@@ -339,24 +296,12 @@ abstract class AdministratorAbstract
         return $this;
     }
 
-    /**
-     * Get active
-     *
-     * @return bool
-     */
     public function getActive(): bool
     {
         return $this->active;
     }
 
-    /**
-     * Set restricted
-     *
-     * @param bool $restricted
-     *
-     * @return static
-     */
-    protected function setRestricted(bool $restricted): AdministratorInterface
+    protected function setRestricted(bool $restricted): static
     {
         Assertion::between(intval($restricted), 0, 1, 'restricted provided "%s" is not a valid boolean value.');
         $restricted = (bool) $restricted;
@@ -366,24 +311,12 @@ abstract class AdministratorAbstract
         return $this;
     }
 
-    /**
-     * Get restricted
-     *
-     * @return bool
-     */
     public function getRestricted(): bool
     {
         return $this->restricted;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name | null
-     *
-     * @return static
-     */
-    protected function setName(?string $name = null): AdministratorInterface
+    protected function setName(?string $name = null): static
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -394,24 +327,12 @@ abstract class AdministratorAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * Set lastname
-     *
-     * @param string $lastname | null
-     *
-     * @return static
-     */
-    protected function setLastname(?string $lastname = null): AdministratorInterface
+    protected function setLastname(?string $lastname = null): static
     {
         if (!is_null($lastname)) {
             Assertion::maxLength($lastname, 100, 'lastname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -422,83 +343,42 @@ abstract class AdministratorAbstract
         return $this;
     }
 
-    /**
-     * Get lastname
-     *
-     * @return string | null
-     */
     public function getLastname(): ?string
     {
         return $this->lastname;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    protected function setBrand(?BrandInterface $brand = null): AdministratorInterface
+    protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    protected function setCompany(?CompanyInterface $company = null): AdministratorInterface
+    protected function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set timezone
-     *
-     * @param TimezoneInterface | null
-     *
-     * @return static
-     */
-    protected function setTimezone(?TimezoneInterface $timezone = null): AdministratorInterface
+    protected function setTimezone(?TimezoneInterface $timezone = null): static
     {
         $this->timezone = $timezone;
 
         return $this;
     }
 
-    /**
-     * Get timezone
-     *
-     * @return TimezoneInterface | null
-     */
     public function getTimezone(): ?TimezoneInterface
     {
         return $this->timezone;

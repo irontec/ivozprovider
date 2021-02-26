@@ -10,7 +10,7 @@ use Ivoz\Core\Domain\Service\EntityEventSubscriber;
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\Changelog\ChangelogRepository;
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\Constraint\ArraySubset;
+use DMS\PHPUnitExtensions\ArraySubset\Constraint\ArraySubset;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\KernelInterface;

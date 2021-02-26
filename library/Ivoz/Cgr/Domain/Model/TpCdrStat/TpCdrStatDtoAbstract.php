@@ -22,7 +22,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $tag;
+    private $tag = '';
 
     /**
      * @var int
@@ -42,7 +42,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $metrics;
+    private $metrics = '';
 
     /**
      * @var string
@@ -145,7 +145,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
     private $actionTriggers = '';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -257,590 +257,355 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $tpid | null
-     *
-     * @return static
-     */
-    public function setTpid(?string $tpid = null): self
+    public function setTpid(?string $tpid): static
     {
         $this->tpid = $tpid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
-    /**
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    public function setTag(?string $tag = null): self
+    public function setTag(?string $tag): static
     {
         $this->tag = $tag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * @param int $queueLength | null
-     *
-     * @return static
-     */
-    public function setQueueLength(?int $queueLength = null): self
+    public function setQueueLength(?int $queueLength): static
     {
         $this->queueLength = $queueLength;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getQueueLength(): ?int
     {
         return $this->queueLength;
     }
 
-    /**
-     * @param string $timeWindow | null
-     *
-     * @return static
-     */
-    public function setTimeWindow(?string $timeWindow = null): self
+    public function setTimeWindow(?string $timeWindow): static
     {
         $this->timeWindow = $timeWindow;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTimeWindow(): ?string
     {
         return $this->timeWindow;
     }
 
-    /**
-     * @param string $saveInterval | null
-     *
-     * @return static
-     */
-    public function setSaveInterval(?string $saveInterval = null): self
+    public function setSaveInterval(?string $saveInterval): static
     {
         $this->saveInterval = $saveInterval;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSaveInterval(): ?string
     {
         return $this->saveInterval;
     }
 
-    /**
-     * @param string $metrics | null
-     *
-     * @return static
-     */
-    public function setMetrics(?string $metrics = null): self
+    public function setMetrics(?string $metrics): static
     {
         $this->metrics = $metrics;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getMetrics(): ?string
     {
         return $this->metrics;
     }
 
-    /**
-     * @param string $setupInterval | null
-     *
-     * @return static
-     */
-    public function setSetupInterval(?string $setupInterval = null): self
+    public function setSetupInterval(?string $setupInterval): static
     {
         $this->setupInterval = $setupInterval;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSetupInterval(): ?string
     {
         return $this->setupInterval;
     }
 
-    /**
-     * @param string $tors | null
-     *
-     * @return static
-     */
-    public function setTors(?string $tors = null): self
+    public function setTors(?string $tors): static
     {
         $this->tors = $tors;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTors(): ?string
     {
         return $this->tors;
     }
 
-    /**
-     * @param string $cdrHosts | null
-     *
-     * @return static
-     */
-    public function setCdrHosts(?string $cdrHosts = null): self
+    public function setCdrHosts(?string $cdrHosts): static
     {
         $this->cdrHosts = $cdrHosts;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCdrHosts(): ?string
     {
         return $this->cdrHosts;
     }
 
-    /**
-     * @param string $cdrSources | null
-     *
-     * @return static
-     */
-    public function setCdrSources(?string $cdrSources = null): self
+    public function setCdrSources(?string $cdrSources): static
     {
         $this->cdrSources = $cdrSources;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCdrSources(): ?string
     {
         return $this->cdrSources;
     }
 
-    /**
-     * @param string $reqTypes | null
-     *
-     * @return static
-     */
-    public function setReqTypes(?string $reqTypes = null): self
+    public function setReqTypes(?string $reqTypes): static
     {
         $this->reqTypes = $reqTypes;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getReqTypes(): ?string
     {
         return $this->reqTypes;
     }
 
-    /**
-     * @param string $directions | null
-     *
-     * @return static
-     */
-    public function setDirections(?string $directions = null): self
+    public function setDirections(?string $directions): static
     {
         $this->directions = $directions;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDirections(): ?string
     {
         return $this->directions;
     }
 
-    /**
-     * @param string $tenants | null
-     *
-     * @return static
-     */
-    public function setTenants(?string $tenants = null): self
+    public function setTenants(?string $tenants): static
     {
         $this->tenants = $tenants;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTenants(): ?string
     {
         return $this->tenants;
     }
 
-    /**
-     * @param string $categories | null
-     *
-     * @return static
-     */
-    public function setCategories(?string $categories = null): self
+    public function setCategories(?string $categories): static
     {
         $this->categories = $categories;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCategories(): ?string
     {
         return $this->categories;
     }
 
-    /**
-     * @param string $accounts | null
-     *
-     * @return static
-     */
-    public function setAccounts(?string $accounts = null): self
+    public function setAccounts(?string $accounts): static
     {
         $this->accounts = $accounts;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAccounts(): ?string
     {
         return $this->accounts;
     }
 
-    /**
-     * @param string $subjects | null
-     *
-     * @return static
-     */
-    public function setSubjects(?string $subjects = null): self
+    public function setSubjects(?string $subjects): static
     {
         $this->subjects = $subjects;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSubjects(): ?string
     {
         return $this->subjects;
     }
 
-    /**
-     * @param string $destinationIds | null
-     *
-     * @return static
-     */
-    public function setDestinationIds(?string $destinationIds = null): self
+    public function setDestinationIds(?string $destinationIds): static
     {
         $this->destinationIds = $destinationIds;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDestinationIds(): ?string
     {
         return $this->destinationIds;
     }
 
-    /**
-     * @param string $ppdInterval | null
-     *
-     * @return static
-     */
-    public function setPpdInterval(?string $ppdInterval = null): self
+    public function setPpdInterval(?string $ppdInterval): static
     {
         $this->ppdInterval = $ppdInterval;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPpdInterval(): ?string
     {
         return $this->ppdInterval;
     }
 
-    /**
-     * @param string $usageInterval | null
-     *
-     * @return static
-     */
-    public function setUsageInterval(?string $usageInterval = null): self
+    public function setUsageInterval(?string $usageInterval): static
     {
         $this->usageInterval = $usageInterval;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUsageInterval(): ?string
     {
         return $this->usageInterval;
     }
 
-    /**
-     * @param string $suppliers | null
-     *
-     * @return static
-     */
-    public function setSuppliers(?string $suppliers = null): self
+    public function setSuppliers(?string $suppliers): static
     {
         $this->suppliers = $suppliers;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSuppliers(): ?string
     {
         return $this->suppliers;
     }
 
-    /**
-     * @param string $disconnectCauses | null
-     *
-     * @return static
-     */
-    public function setDisconnectCauses(?string $disconnectCauses = null): self
+    public function setDisconnectCauses(?string $disconnectCauses): static
     {
         $this->disconnectCauses = $disconnectCauses;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDisconnectCauses(): ?string
     {
         return $this->disconnectCauses;
     }
 
-    /**
-     * @param string $mediationRunids | null
-     *
-     * @return static
-     */
-    public function setMediationRunids(?string $mediationRunids = null): self
+    public function setMediationRunids(?string $mediationRunids): static
     {
         $this->mediationRunids = $mediationRunids;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getMediationRunids(): ?string
     {
         return $this->mediationRunids;
     }
 
-    /**
-     * @param string $ratedAccounts | null
-     *
-     * @return static
-     */
-    public function setRatedAccounts(?string $ratedAccounts = null): self
+    public function setRatedAccounts(?string $ratedAccounts): static
     {
         $this->ratedAccounts = $ratedAccounts;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRatedAccounts(): ?string
     {
         return $this->ratedAccounts;
     }
 
-    /**
-     * @param string $ratedSubjects | null
-     *
-     * @return static
-     */
-    public function setRatedSubjects(?string $ratedSubjects = null): self
+    public function setRatedSubjects(?string $ratedSubjects): static
     {
         $this->ratedSubjects = $ratedSubjects;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRatedSubjects(): ?string
     {
         return $this->ratedSubjects;
     }
 
-    /**
-     * @param string $costInterval | null
-     *
-     * @return static
-     */
-    public function setCostInterval(?string $costInterval = null): self
+    public function setCostInterval(?string $costInterval): static
     {
         $this->costInterval = $costInterval;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCostInterval(): ?string
     {
         return $this->costInterval;
     }
 
-    /**
-     * @param string $actionTriggers | null
-     *
-     * @return static
-     */
-    public function setActionTriggers(?string $actionTriggers = null): self
+    public function setActionTriggers(?string $actionTriggers): static
     {
         $this->actionTriggers = $actionTriggers;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getActionTriggers(): ?string
     {
         return $this->actionTriggers;
     }
 
-    /**
-     * @param \DateTimeInterface $createdAt | null
-     *
-     * @return static
-     */
-    public function setCreatedAt($createdAt = null): self
+    public function setCreatedAt(null|\DateTime|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime|string|null
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CarrierDto | null
-     *
-     * @return static
-     */
-    public function setCarrier(?CarrierDto $carrier = null): self
+    public function setCarrier(?CarrierDto $carrier): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * @return CarrierDto | null
-     */
     public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
-    /**
-     * @return static
-     */
-    public function setCarrierId($id): self
+    public function setCarrierId($id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -849,9 +614,6 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCarrierId()
     {
         if ($dto = $this->getCarrier()) {

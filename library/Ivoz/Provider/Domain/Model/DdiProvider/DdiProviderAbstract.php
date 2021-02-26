@@ -44,12 +44,12 @@ abstract class DdiProviderAbstract
     protected $brand;
 
     /**
-     * @var TransformationRuleSetInterface
+     * @var TransformationRuleSetInterface | null
      */
     protected $transformationRuleSet;
 
     /**
-     * @var ProxyTrunkInterface
+     * @var ProxyTrunkInterface | null
      */
     protected $proxyTrunk;
 
@@ -84,7 +84,7 @@ abstract class DdiProviderAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return DdiProviderDto
      */
     public static function createDto($id = null)
@@ -201,14 +201,7 @@ abstract class DdiProviderAbstract
         ];
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return static
-     */
-    protected function setDescription(string $description): DdiProviderInterface
+    protected function setDescription(string $description): static
     {
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -217,24 +210,12 @@ abstract class DdiProviderAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): DdiProviderInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 200, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -243,24 +224,12 @@ abstract class DdiProviderAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set externallyRated
-     *
-     * @param bool $externallyRated | null
-     *
-     * @return static
-     */
-    protected function setExternallyRated(?bool $externallyRated = null): DdiProviderInterface
+    protected function setExternallyRated(?bool $externallyRated = null): static
     {
         if (!is_null($externallyRated)) {
             Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
@@ -272,83 +241,42 @@ abstract class DdiProviderAbstract
         return $this;
     }
 
-    /**
-     * Get externallyRated
-     *
-     * @return bool | null
-     */
     public function getExternallyRated(): ?bool
     {
         return $this->externallyRated;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    protected function setBrand(BrandInterface $brand): DdiProviderInterface
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set transformationRuleSet
-     *
-     * @param TransformationRuleSetInterface | null
-     *
-     * @return static
-     */
-    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): DdiProviderInterface
+    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): static
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
-    /**
-     * Get transformationRuleSet
-     *
-     * @return TransformationRuleSetInterface | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface
     {
         return $this->transformationRuleSet;
     }
 
-    /**
-     * Set proxyTrunk
-     *
-     * @param ProxyTrunkInterface | null
-     *
-     * @return static
-     */
-    protected function setProxyTrunk(?ProxyTrunkInterface $proxyTrunk = null): DdiProviderInterface
+    protected function setProxyTrunk(?ProxyTrunkInterface $proxyTrunk = null): static
     {
         $this->proxyTrunk = $proxyTrunk;
 
         return $this;
     }
 
-    /**
-     * Get proxyTrunk
-     *
-     * @return ProxyTrunkInterface | null
-     */
     public function getProxyTrunk(): ?ProxyTrunkInterface
     {
         return $this->proxyTrunk;

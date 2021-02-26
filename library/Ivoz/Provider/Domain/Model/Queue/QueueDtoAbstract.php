@@ -19,62 +19,62 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $name;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $maxWaitTime;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $timeoutTargetType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $timeoutNumberValue;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $maxlen;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fullTargetType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fullNumberValue;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $periodicAnnounceFrequency;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $memberCallRest;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $memberCallTimeout;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $strategy;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $weight;
 
@@ -226,310 +226,187 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param int $maxWaitTime | null
-     *
-     * @return static
-     */
-    public function setMaxWaitTime(?int $maxWaitTime = null): self
+    public function setMaxWaitTime(?int $maxWaitTime): static
     {
         $this->maxWaitTime = $maxWaitTime;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMaxWaitTime(): ?int
     {
         return $this->maxWaitTime;
     }
 
-    /**
-     * @param string $timeoutTargetType | null
-     *
-     * @return static
-     */
-    public function setTimeoutTargetType(?string $timeoutTargetType = null): self
+    public function setTimeoutTargetType(?string $timeoutTargetType): static
     {
         $this->timeoutTargetType = $timeoutTargetType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTimeoutTargetType(): ?string
     {
         return $this->timeoutTargetType;
     }
 
-    /**
-     * @param string $timeoutNumberValue | null
-     *
-     * @return static
-     */
-    public function setTimeoutNumberValue(?string $timeoutNumberValue = null): self
+    public function setTimeoutNumberValue(?string $timeoutNumberValue): static
     {
         $this->timeoutNumberValue = $timeoutNumberValue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTimeoutNumberValue(): ?string
     {
         return $this->timeoutNumberValue;
     }
 
-    /**
-     * @param int $maxlen | null
-     *
-     * @return static
-     */
-    public function setMaxlen(?int $maxlen = null): self
+    public function setMaxlen(?int $maxlen): static
     {
         $this->maxlen = $maxlen;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMaxlen(): ?int
     {
         return $this->maxlen;
     }
 
-    /**
-     * @param string $fullTargetType | null
-     *
-     * @return static
-     */
-    public function setFullTargetType(?string $fullTargetType = null): self
+    public function setFullTargetType(?string $fullTargetType): static
     {
         $this->fullTargetType = $fullTargetType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFullTargetType(): ?string
     {
         return $this->fullTargetType;
     }
 
-    /**
-     * @param string $fullNumberValue | null
-     *
-     * @return static
-     */
-    public function setFullNumberValue(?string $fullNumberValue = null): self
+    public function setFullNumberValue(?string $fullNumberValue): static
     {
         $this->fullNumberValue = $fullNumberValue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFullNumberValue(): ?string
     {
         return $this->fullNumberValue;
     }
 
-    /**
-     * @param int $periodicAnnounceFrequency | null
-     *
-     * @return static
-     */
-    public function setPeriodicAnnounceFrequency(?int $periodicAnnounceFrequency = null): self
+    public function setPeriodicAnnounceFrequency(?int $periodicAnnounceFrequency): static
     {
         $this->periodicAnnounceFrequency = $periodicAnnounceFrequency;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPeriodicAnnounceFrequency(): ?int
     {
         return $this->periodicAnnounceFrequency;
     }
 
-    /**
-     * @param int $memberCallRest | null
-     *
-     * @return static
-     */
-    public function setMemberCallRest(?int $memberCallRest = null): self
+    public function setMemberCallRest(?int $memberCallRest): static
     {
         $this->memberCallRest = $memberCallRest;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMemberCallRest(): ?int
     {
         return $this->memberCallRest;
     }
 
-    /**
-     * @param int $memberCallTimeout | null
-     *
-     * @return static
-     */
-    public function setMemberCallTimeout(?int $memberCallTimeout = null): self
+    public function setMemberCallTimeout(?int $memberCallTimeout): static
     {
         $this->memberCallTimeout = $memberCallTimeout;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMemberCallTimeout(): ?int
     {
         return $this->memberCallTimeout;
     }
 
-    /**
-     * @param string $strategy | null
-     *
-     * @return static
-     */
-    public function setStrategy(?string $strategy = null): self
+    public function setStrategy(?string $strategy): static
     {
         $this->strategy = $strategy;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getStrategy(): ?string
     {
         return $this->strategy;
     }
 
-    /**
-     * @param int $weight | null
-     *
-     * @return static
-     */
-    public function setWeight(?int $weight = null): self
+    public function setWeight(?int $weight): static
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getWeight(): ?int
     {
         return $this->weight;
     }
 
-    /**
-     * @param int $preventMissedCalls | null
-     *
-     * @return static
-     */
-    public function setPreventMissedCalls(?int $preventMissedCalls = null): self
+    public function setPreventMissedCalls(?int $preventMissedCalls): static
     {
         $this->preventMissedCalls = $preventMissedCalls;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPreventMissedCalls(): ?int
     {
         return $this->preventMissedCalls;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -538,9 +415,6 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -550,30 +424,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LocutionDto | null
-     *
-     * @return static
-     */
-    public function setPeriodicAnnounceLocution(?LocutionDto $periodicAnnounceLocution = null): self
+    public function setPeriodicAnnounceLocution(?LocutionDto $periodicAnnounceLocution): static
     {
         $this->periodicAnnounceLocution = $periodicAnnounceLocution;
 
         return $this;
     }
 
-    /**
-     * @return LocutionDto | null
-     */
     public function getPeriodicAnnounceLocution(): ?LocutionDto
     {
         return $this->periodicAnnounceLocution;
     }
 
-    /**
-     * @return static
-     */
-    public function setPeriodicAnnounceLocutionId($id): self
+    public function setPeriodicAnnounceLocutionId($id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -582,9 +445,6 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setPeriodicAnnounceLocution($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getPeriodicAnnounceLocutionId()
     {
         if ($dto = $this->getPeriodicAnnounceLocution()) {
@@ -594,30 +454,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LocutionDto | null
-     *
-     * @return static
-     */
-    public function setTimeoutLocution(?LocutionDto $timeoutLocution = null): self
+    public function setTimeoutLocution(?LocutionDto $timeoutLocution): static
     {
         $this->timeoutLocution = $timeoutLocution;
 
         return $this;
     }
 
-    /**
-     * @return LocutionDto | null
-     */
     public function getTimeoutLocution(): ?LocutionDto
     {
         return $this->timeoutLocution;
     }
 
-    /**
-     * @return static
-     */
-    public function setTimeoutLocutionId($id): self
+    public function setTimeoutLocutionId($id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -626,9 +475,6 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setTimeoutLocution($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTimeoutLocutionId()
     {
         if ($dto = $this->getTimeoutLocution()) {
@@ -638,30 +484,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ExtensionDto | null
-     *
-     * @return static
-     */
-    public function setTimeoutExtension(?ExtensionDto $timeoutExtension = null): self
+    public function setTimeoutExtension(?ExtensionDto $timeoutExtension): static
     {
         $this->timeoutExtension = $timeoutExtension;
 
         return $this;
     }
 
-    /**
-     * @return ExtensionDto | null
-     */
     public function getTimeoutExtension(): ?ExtensionDto
     {
         return $this->timeoutExtension;
     }
 
-    /**
-     * @return static
-     */
-    public function setTimeoutExtensionId($id): self
+    public function setTimeoutExtensionId($id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -670,9 +505,6 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setTimeoutExtension($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTimeoutExtensionId()
     {
         if ($dto = $this->getTimeoutExtension()) {
@@ -682,30 +514,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setTimeoutVoiceMailUser(?UserDto $timeoutVoiceMailUser = null): self
+    public function setTimeoutVoiceMailUser(?UserDto $timeoutVoiceMailUser): static
     {
         $this->timeoutVoiceMailUser = $timeoutVoiceMailUser;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getTimeoutVoiceMailUser(): ?UserDto
     {
         return $this->timeoutVoiceMailUser;
     }
 
-    /**
-     * @return static
-     */
-    public function setTimeoutVoiceMailUserId($id): self
+    public function setTimeoutVoiceMailUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -714,9 +535,6 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setTimeoutVoiceMailUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTimeoutVoiceMailUserId()
     {
         if ($dto = $this->getTimeoutVoiceMailUser()) {
@@ -726,30 +544,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LocutionDto | null
-     *
-     * @return static
-     */
-    public function setFullLocution(?LocutionDto $fullLocution = null): self
+    public function setFullLocution(?LocutionDto $fullLocution): static
     {
         $this->fullLocution = $fullLocution;
 
         return $this;
     }
 
-    /**
-     * @return LocutionDto | null
-     */
     public function getFullLocution(): ?LocutionDto
     {
         return $this->fullLocution;
     }
 
-    /**
-     * @return static
-     */
-    public function setFullLocutionId($id): self
+    public function setFullLocutionId($id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -758,9 +565,6 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setFullLocution($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFullLocutionId()
     {
         if ($dto = $this->getFullLocution()) {
@@ -770,30 +574,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ExtensionDto | null
-     *
-     * @return static
-     */
-    public function setFullExtension(?ExtensionDto $fullExtension = null): self
+    public function setFullExtension(?ExtensionDto $fullExtension): static
     {
         $this->fullExtension = $fullExtension;
 
         return $this;
     }
 
-    /**
-     * @return ExtensionDto | null
-     */
     public function getFullExtension(): ?ExtensionDto
     {
         return $this->fullExtension;
     }
 
-    /**
-     * @return static
-     */
-    public function setFullExtensionId($id): self
+    public function setFullExtensionId($id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -802,9 +595,6 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setFullExtension($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFullExtensionId()
     {
         if ($dto = $this->getFullExtension()) {
@@ -814,30 +604,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setFullVoiceMailUser(?UserDto $fullVoiceMailUser = null): self
+    public function setFullVoiceMailUser(?UserDto $fullVoiceMailUser): static
     {
         $this->fullVoiceMailUser = $fullVoiceMailUser;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getFullVoiceMailUser(): ?UserDto
     {
         return $this->fullVoiceMailUser;
     }
 
-    /**
-     * @return static
-     */
-    public function setFullVoiceMailUserId($id): self
+    public function setFullVoiceMailUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -846,9 +625,6 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setFullVoiceMailUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFullVoiceMailUserId()
     {
         if ($dto = $this->getFullVoiceMailUser()) {
@@ -858,30 +634,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setTimeoutNumberCountry(?CountryDto $timeoutNumberCountry = null): self
+    public function setTimeoutNumberCountry(?CountryDto $timeoutNumberCountry): static
     {
         $this->timeoutNumberCountry = $timeoutNumberCountry;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getTimeoutNumberCountry(): ?CountryDto
     {
         return $this->timeoutNumberCountry;
     }
 
-    /**
-     * @return static
-     */
-    public function setTimeoutNumberCountryId($id): self
+    public function setTimeoutNumberCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -890,9 +655,6 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setTimeoutNumberCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTimeoutNumberCountryId()
     {
         if ($dto = $this->getTimeoutNumberCountry()) {
@@ -902,30 +664,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setFullNumberCountry(?CountryDto $fullNumberCountry = null): self
+    public function setFullNumberCountry(?CountryDto $fullNumberCountry): static
     {
         $this->fullNumberCountry = $fullNumberCountry;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getFullNumberCountry(): ?CountryDto
     {
         return $this->fullNumberCountry;
     }
 
-    /**
-     * @return static
-     */
-    public function setFullNumberCountryId($id): self
+    public function setFullNumberCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -934,9 +685,6 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setFullNumberCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFullNumberCountryId()
     {
         if ($dto = $this->getFullNumberCountry()) {

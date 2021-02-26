@@ -35,7 +35,7 @@ class InvoiceNumberSequence extends InvoiceNumberSequenceAbstract implements Inv
      *
      * @inheritdoc
      */
-    protected function setVersion(int $version): self
+    protected function setVersion(int $version): static
     {
         return $this;
     }

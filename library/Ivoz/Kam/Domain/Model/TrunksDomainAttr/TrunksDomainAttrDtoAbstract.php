@@ -16,12 +16,12 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $did;
+    private $did = '';
 
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var int
@@ -31,10 +31,10 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $value;
+    private $value = '';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $lastModified = '1900-01-01 00:00:01';
 
@@ -95,122 +95,74 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
         return $response;
     }
 
-    /**
-     * @param string $did | null
-     *
-     * @return static
-     */
-    public function setDid(?string $did = null): self
+    public function setDid(?string $did): static
     {
         $this->did = $did;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDid(): ?string
     {
         return $this->did;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param int $type | null
-     *
-     * @return static
-     */
-    public function setType(?int $type = null): self
+    public function setType(?int $type): static
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getType(): ?int
     {
         return $this->type;
     }
 
-    /**
-     * @param string $value | null
-     *
-     * @return static
-     */
-    public function setValue(?string $value = null): self
+    public function setValue(?string $value): static
     {
         $this->value = $value;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getValue(): ?string
     {
         return $this->value;
     }
 
-    /**
-     * @param \DateTimeInterface $lastModified | null
-     *
-     * @return static
-     */
-    public function setLastModified($lastModified = null): self
+    public function setLastModified(null|\DateTime|string $lastModified): static
     {
         $this->lastModified = $lastModified;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getLastModified()
+    public function getLastModified(): \DateTime|string|null
     {
         return $this->lastModified;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

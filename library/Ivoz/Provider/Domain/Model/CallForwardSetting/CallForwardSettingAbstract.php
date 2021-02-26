@@ -61,34 +61,34 @@ abstract class CallForwardSettingAbstract
     protected $enabled = true;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      * inversedBy callForwardSettings
      */
     protected $user;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $extension;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $voiceMailUser;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $numberCountry;
 
     /**
-     * @var ResidentialDeviceInterface
+     * @var ResidentialDeviceInterface | null
      * inversedBy callForwardSettings
      */
     protected $residentialDevice;
 
     /**
-     * @var RetailAccountInterface
+     * @var RetailAccountInterface | null
      * inversedBy callForwardSettings
      */
     protected $retailAccount;
@@ -128,7 +128,7 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CallForwardSettingDto
      */
     public static function createDto($id = null)
@@ -269,14 +269,7 @@ abstract class CallForwardSettingAbstract
         ];
     }
 
-    /**
-     * Set callTypeFilter
-     *
-     * @param string $callTypeFilter
-     *
-     * @return static
-     */
-    protected function setCallTypeFilter(string $callTypeFilter): CallForwardSettingInterface
+    protected function setCallTypeFilter(string $callTypeFilter): static
     {
         Assertion::maxLength($callTypeFilter, 25, 'callTypeFilter value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -294,24 +287,12 @@ abstract class CallForwardSettingAbstract
         return $this;
     }
 
-    /**
-     * Get callTypeFilter
-     *
-     * @return string
-     */
     public function getCallTypeFilter(): string
     {
         return $this->callTypeFilter;
     }
 
-    /**
-     * Set callForwardType
-     *
-     * @param string $callForwardType
-     *
-     * @return static
-     */
-    protected function setCallForwardType(string $callForwardType): CallForwardSettingInterface
+    protected function setCallForwardType(string $callForwardType): static
     {
         Assertion::maxLength($callForwardType, 25, 'callForwardType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -330,24 +311,12 @@ abstract class CallForwardSettingAbstract
         return $this;
     }
 
-    /**
-     * Get callForwardType
-     *
-     * @return string
-     */
     public function getCallForwardType(): string
     {
         return $this->callForwardType;
     }
 
-    /**
-     * Set targetType
-     *
-     * @param string $targetType | null
-     *
-     * @return static
-     */
-    protected function setTargetType(?string $targetType = null): CallForwardSettingInterface
+    protected function setTargetType(?string $targetType = null): static
     {
         if (!is_null($targetType)) {
             Assertion::maxLength($targetType, 25, 'targetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -367,24 +336,12 @@ abstract class CallForwardSettingAbstract
         return $this;
     }
 
-    /**
-     * Get targetType
-     *
-     * @return string | null
-     */
     public function getTargetType(): ?string
     {
         return $this->targetType;
     }
 
-    /**
-     * Set numberValue
-     *
-     * @param string $numberValue | null
-     *
-     * @return static
-     */
-    protected function setNumberValue(?string $numberValue = null): CallForwardSettingInterface
+    protected function setNumberValue(?string $numberValue = null): static
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -395,48 +352,24 @@ abstract class CallForwardSettingAbstract
         return $this;
     }
 
-    /**
-     * Get numberValue
-     *
-     * @return string | null
-     */
     public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
-    /**
-     * Set noAnswerTimeout
-     *
-     * @param int $noAnswerTimeout
-     *
-     * @return static
-     */
-    protected function setNoAnswerTimeout(int $noAnswerTimeout): CallForwardSettingInterface
+    protected function setNoAnswerTimeout(int $noAnswerTimeout): static
     {
         $this->noAnswerTimeout = $noAnswerTimeout;
 
         return $this;
     }
 
-    /**
-     * Get noAnswerTimeout
-     *
-     * @return int
-     */
     public function getNoAnswerTimeout(): int
     {
         return $this->noAnswerTimeout;
     }
 
-    /**
-     * Set enabled
-     *
-     * @param bool $enabled
-     *
-     * @return static
-     */
-    protected function setEnabled(bool $enabled): CallForwardSettingInterface
+    protected function setEnabled(bool $enabled): static
     {
         Assertion::between(intval($enabled), 0, 1, 'enabled provided "%s" is not a valid boolean value.');
         $enabled = (bool) $enabled;
@@ -446,155 +379,81 @@ abstract class CallForwardSettingAbstract
         return $this;
     }
 
-    /**
-     * Get enabled
-     *
-     * @return bool
-     */
     public function getEnabled(): bool
     {
         return $this->enabled;
     }
 
-    /**
-     * Set user
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    public function setUser(?UserInterface $user = null): CallForwardSettingInterface
+    public function setUser(?UserInterface $user = null): static
     {
         $this->user = $user;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface
     {
         return $this->user;
     }
 
-    /**
-     * Set extension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setExtension(?ExtensionInterface $extension = null): CallForwardSettingInterface
+    protected function setExtension(?ExtensionInterface $extension = null): static
     {
         $this->extension = $extension;
 
         return $this;
     }
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getExtension(): ?ExtensionInterface
     {
         return $this->extension;
     }
 
-    /**
-     * Set voiceMailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): CallForwardSettingInterface
+    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): static
     {
         $this->voiceMailUser = $voiceMailUser;
 
         return $this;
     }
 
-    /**
-     * Get voiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getVoiceMailUser(): ?UserInterface
     {
         return $this->voiceMailUser;
     }
 
-    /**
-     * Set numberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setNumberCountry(?CountryInterface $numberCountry = null): CallForwardSettingInterface
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;
     }
 
-    /**
-     * Set residentialDevice
-     *
-     * @param ResidentialDeviceInterface | null
-     *
-     * @return static
-     */
-    public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): CallForwardSettingInterface
+    public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static
     {
         $this->residentialDevice = $residentialDevice;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get residentialDevice
-     *
-     * @return ResidentialDeviceInterface | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceInterface
     {
         return $this->residentialDevice;
     }
 
-    /**
-     * Set retailAccount
-     *
-     * @param RetailAccountInterface | null
-     *
-     * @return static
-     */
-    public function setRetailAccount(?RetailAccountInterface $retailAccount = null): CallForwardSettingInterface
+    public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static
     {
         $this->retailAccount = $retailAccount;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get retailAccount
-     *
-     * @return RetailAccountInterface | null
-     */
     public function getRetailAccount(): ?RetailAccountInterface
     {
         return $this->retailAccount;

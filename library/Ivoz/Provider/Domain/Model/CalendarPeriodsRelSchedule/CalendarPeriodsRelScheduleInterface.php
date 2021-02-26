@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface;
 use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * CalendarPeriodsRelScheduleInterface
@@ -17,27 +17,10 @@ interface CalendarPeriodsRelScheduleInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Set calendarPeriod
-     *
-     * @param CalendarPeriodInterface | null
-     *
-     * @return static
-     */
-    public function setCalendarPeriod(?CalendarPeriodInterface $calendarPeriod = null): CalendarPeriodsRelScheduleInterface;
+    public function setCalendarPeriod(?CalendarPeriodInterface $calendarPeriod = null): static;
 
-    /**
-     * Get calendarPeriod
-     *
-     * @return CalendarPeriodInterface | null
-     */
     public function getCalendarPeriod(): ?CalendarPeriodInterface;
 
-    /**
-     * Get schedule
-     *
-     * @return ScheduleInterface
-     */
     public function getSchedule(): ScheduleInterface;
 
     /**

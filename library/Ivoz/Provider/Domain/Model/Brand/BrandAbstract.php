@@ -66,12 +66,12 @@ abstract class BrandAbstract
     protected $invoice;
 
     /**
-     * @var DomainInterface
+     * @var DomainInterface | null
      */
     protected $domain;
 
     /**
-     * @var LanguageInterface
+     * @var LanguageInterface | null
      */
     protected $language;
 
@@ -81,32 +81,32 @@ abstract class BrandAbstract
     protected $defaultTimezone;
 
     /**
-     * @var CurrencyInterface
+     * @var CurrencyInterface | null
      */
     protected $currency;
 
     /**
-     * @var NotificationTemplateInterface
+     * @var NotificationTemplateInterface | null
      */
     protected $voicemailNotificationTemplate;
 
     /**
-     * @var NotificationTemplateInterface
+     * @var NotificationTemplateInterface | null
      */
     protected $faxNotificationTemplate;
 
     /**
-     * @var NotificationTemplateInterface
+     * @var NotificationTemplateInterface | null
      */
     protected $invoiceNotificationTemplate;
 
     /**
-     * @var NotificationTemplateInterface
+     * @var NotificationTemplateInterface | null
      */
     protected $callCsvNotificationTemplate;
 
     /**
-     * @var NotificationTemplateInterface
+     * @var NotificationTemplateInterface | null
      */
     protected $maxDailyUsageNotificationTemplate;
 
@@ -145,7 +145,7 @@ abstract class BrandAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return BrandDto
      */
     public static function createDto($id = null)
@@ -350,14 +350,7 @@ abstract class BrandAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): BrandInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 75, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -366,24 +359,12 @@ abstract class BrandAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set domainUsers
-     *
-     * @param string $domainUsers | null
-     *
-     * @return static
-     */
-    protected function setDomainUsers(?string $domainUsers = null): BrandInterface
+    protected function setDomainUsers(?string $domainUsers = null): static
     {
         if (!is_null($domainUsers)) {
             Assertion::maxLength($domainUsers, 190, 'domainUsers value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -394,48 +375,24 @@ abstract class BrandAbstract
         return $this;
     }
 
-    /**
-     * Get domainUsers
-     *
-     * @return string | null
-     */
     public function getDomainUsers(): ?string
     {
         return $this->domainUsers;
     }
 
-    /**
-     * Set recordingsLimitMB
-     *
-     * @param int $recordingsLimitMB | null
-     *
-     * @return static
-     */
-    protected function setRecordingsLimitMB(?int $recordingsLimitMB = null): BrandInterface
+    protected function setRecordingsLimitMB(?int $recordingsLimitMB = null): static
     {
         $this->recordingsLimitMB = $recordingsLimitMB;
 
         return $this;
     }
 
-    /**
-     * Get recordingsLimitMB
-     *
-     * @return int | null
-     */
     public function getRecordingsLimitMB(): ?int
     {
         return $this->recordingsLimitMB;
     }
 
-    /**
-     * Set recordingsLimitEmail
-     *
-     * @param string $recordingsLimitEmail | null
-     *
-     * @return static
-     */
-    protected function setRecordingsLimitEmail(?string $recordingsLimitEmail = null): BrandInterface
+    protected function setRecordingsLimitEmail(?string $recordingsLimitEmail = null): static
     {
         if (!is_null($recordingsLimitEmail)) {
             Assertion::maxLength($recordingsLimitEmail, 250, 'recordingsLimitEmail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -446,24 +403,12 @@ abstract class BrandAbstract
         return $this;
     }
 
-    /**
-     * Get recordingsLimitEmail
-     *
-     * @return string | null
-     */
     public function getRecordingsLimitEmail(): ?string
     {
         return $this->recordingsLimitEmail;
     }
 
-    /**
-     * Set maxCalls
-     *
-     * @param int $maxCalls
-     *
-     * @return static
-     */
-    protected function setMaxCalls(int $maxCalls): BrandInterface
+    protected function setMaxCalls(int $maxCalls): static
     {
         Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
@@ -472,32 +417,17 @@ abstract class BrandAbstract
         return $this;
     }
 
-    /**
-     * Get maxCalls
-     *
-     * @return int
-     */
     public function getMaxCalls(): int
     {
         return $this->maxCalls;
     }
 
-    /**
-     * Get logo
-     *
-     * @return Logo
-     */
     public function getLogo(): Logo
     {
         return $this->logo;
     }
 
-    /**
-     * Set logo
-     *
-     * @return static
-     */
-    protected function setLogo(Logo $logo): BrandInterface
+    protected function setLogo(Logo $logo): static
     {
         $isEqual = $this->logo && $this->logo->equals($logo);
         if ($isEqual) {
@@ -508,22 +438,12 @@ abstract class BrandAbstract
         return $this;
     }
 
-    /**
-     * Get invoice
-     *
-     * @return Invoice
-     */
     public function getInvoice(): Invoice
     {
         return $this->invoice;
     }
 
-    /**
-     * Set invoice
-     *
-     * @return static
-     */
-    protected function setInvoice(Invoice $invoice): BrandInterface
+    protected function setInvoice(Invoice $invoice): static
     {
         $isEqual = $this->invoice && $this->invoice->equals($invoice);
         if ($isEqual) {
@@ -534,217 +454,109 @@ abstract class BrandAbstract
         return $this;
     }
 
-    /**
-     * Set domain
-     *
-     * @param DomainInterface | null
-     *
-     * @return static
-     */
-    protected function setDomain(?DomainInterface $domain = null): BrandInterface
+    protected function setDomain(?DomainInterface $domain = null): static
     {
         $this->domain = $domain;
 
         return $this;
     }
 
-    /**
-     * Get domain
-     *
-     * @return DomainInterface | null
-     */
     public function getDomain(): ?DomainInterface
     {
         return $this->domain;
     }
 
-    /**
-     * Set language
-     *
-     * @param LanguageInterface | null
-     *
-     * @return static
-     */
-    protected function setLanguage(?LanguageInterface $language = null): BrandInterface
+    protected function setLanguage(?LanguageInterface $language = null): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * Get language
-     *
-     * @return LanguageInterface | null
-     */
     public function getLanguage(): ?LanguageInterface
     {
         return $this->language;
     }
 
-    /**
-     * Set defaultTimezone
-     *
-     * @param TimezoneInterface
-     *
-     * @return static
-     */
-    protected function setDefaultTimezone(TimezoneInterface $defaultTimezone): BrandInterface
+    protected function setDefaultTimezone(TimezoneInterface $defaultTimezone): static
     {
         $this->defaultTimezone = $defaultTimezone;
 
         return $this;
     }
 
-    /**
-     * Get defaultTimezone
-     *
-     * @return TimezoneInterface
-     */
     public function getDefaultTimezone(): TimezoneInterface
     {
         return $this->defaultTimezone;
     }
 
-    /**
-     * Set currency
-     *
-     * @param CurrencyInterface | null
-     *
-     * @return static
-     */
-    protected function setCurrency(?CurrencyInterface $currency = null): BrandInterface
+    protected function setCurrency(?CurrencyInterface $currency = null): static
     {
         $this->currency = $currency;
 
         return $this;
     }
 
-    /**
-     * Get currency
-     *
-     * @return CurrencyInterface | null
-     */
     public function getCurrency(): ?CurrencyInterface
     {
         return $this->currency;
     }
 
-    /**
-     * Set voicemailNotificationTemplate
-     *
-     * @param NotificationTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setVoicemailNotificationTemplate(?NotificationTemplateInterface $voicemailNotificationTemplate = null): BrandInterface
+    protected function setVoicemailNotificationTemplate(?NotificationTemplateInterface $voicemailNotificationTemplate = null): static
     {
         $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * Get voicemailNotificationTemplate
-     *
-     * @return NotificationTemplateInterface | null
-     */
     public function getVoicemailNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->voicemailNotificationTemplate;
     }
 
-    /**
-     * Set faxNotificationTemplate
-     *
-     * @param NotificationTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setFaxNotificationTemplate(?NotificationTemplateInterface $faxNotificationTemplate = null): BrandInterface
+    protected function setFaxNotificationTemplate(?NotificationTemplateInterface $faxNotificationTemplate = null): static
     {
         $this->faxNotificationTemplate = $faxNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * Get faxNotificationTemplate
-     *
-     * @return NotificationTemplateInterface | null
-     */
     public function getFaxNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->faxNotificationTemplate;
     }
 
-    /**
-     * Set invoiceNotificationTemplate
-     *
-     * @param NotificationTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setInvoiceNotificationTemplate(?NotificationTemplateInterface $invoiceNotificationTemplate = null): BrandInterface
+    protected function setInvoiceNotificationTemplate(?NotificationTemplateInterface $invoiceNotificationTemplate = null): static
     {
         $this->invoiceNotificationTemplate = $invoiceNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * Get invoiceNotificationTemplate
-     *
-     * @return NotificationTemplateInterface | null
-     */
     public function getInvoiceNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->invoiceNotificationTemplate;
     }
 
-    /**
-     * Set callCsvNotificationTemplate
-     *
-     * @param NotificationTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setCallCsvNotificationTemplate(?NotificationTemplateInterface $callCsvNotificationTemplate = null): BrandInterface
+    protected function setCallCsvNotificationTemplate(?NotificationTemplateInterface $callCsvNotificationTemplate = null): static
     {
         $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * Get callCsvNotificationTemplate
-     *
-     * @return NotificationTemplateInterface | null
-     */
     public function getCallCsvNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->callCsvNotificationTemplate;
     }
 
-    /**
-     * Set maxDailyUsageNotificationTemplate
-     *
-     * @param NotificationTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setMaxDailyUsageNotificationTemplate(?NotificationTemplateInterface $maxDailyUsageNotificationTemplate = null): BrandInterface
+    protected function setMaxDailyUsageNotificationTemplate(?NotificationTemplateInterface $maxDailyUsageNotificationTemplate = null): static
     {
         $this->maxDailyUsageNotificationTemplate = $maxDailyUsageNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * Get maxDailyUsageNotificationTemplate
-     *
-     * @return NotificationTemplateInterface | null
-     */
     public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->maxDailyUsageNotificationTemplate;

@@ -17,25 +17,25 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $description;
 
     /**
      * @var string
      */
-    private $template;
+    private $template = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $templateHeader;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $templateFooter;
 
@@ -103,150 +103,91 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $template | null
-     *
-     * @return static
-     */
-    public function setTemplate(?string $template = null): self
+    public function setTemplate(?string $template): static
     {
         $this->template = $template;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTemplate(): ?string
     {
         return $this->template;
     }
 
-    /**
-     * @param string $templateHeader | null
-     *
-     * @return static
-     */
-    public function setTemplateHeader(?string $templateHeader = null): self
+    public function setTemplateHeader(?string $templateHeader): static
     {
         $this->templateHeader = $templateHeader;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTemplateHeader(): ?string
     {
         return $this->templateHeader;
     }
 
-    /**
-     * @param string $templateFooter | null
-     *
-     * @return static
-     */
-    public function setTemplateFooter(?string $templateFooter = null): self
+    public function setTemplateFooter(?string $templateFooter): static
     {
         $this->templateFooter = $templateFooter;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTemplateFooter(): ?string
     {
         return $this->templateFooter;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -255,9 +196,6 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {

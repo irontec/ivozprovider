@@ -19,10 +19,10 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $description;
 
@@ -96,90 +96,55 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -188,9 +153,6 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -200,41 +162,25 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return null;
     }
 
-    /**
-     * @param RoutingPatternGroupsRelPatternDto[] | null
-     *
-     * @return static
-     */
-    public function setRelPatterns(?array $relPatterns = null): self
+    public function setRelPatterns(?array $relPatterns): static
     {
         $this->relPatterns = $relPatterns;
 
         return $this;
     }
 
-    /**
-     * @return RoutingPatternGroupsRelPatternDto[] | null
-     */
     public function getRelPatterns(): ?array
     {
         return $this->relPatterns;
     }
 
-    /**
-     * @param OutgoingRoutingDto[] | null
-     *
-     * @return static
-     */
-    public function setOutgoingRoutings(?array $outgoingRoutings = null): self
+    public function setOutgoingRoutings(?array $outgoingRoutings): static
     {
         $this->outgoingRoutings = $outgoingRoutings;
 
         return $this;
     }
 
-    /**
-     * @return OutgoingRoutingDto[] | null
-     */
     public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;

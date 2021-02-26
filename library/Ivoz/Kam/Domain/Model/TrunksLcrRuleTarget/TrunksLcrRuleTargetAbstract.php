@@ -88,7 +88,7 @@ abstract class TrunksLcrRuleTargetAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TrunksLcrRuleTargetDto
      */
     public static function createDto($id = null)
@@ -205,14 +205,7 @@ abstract class TrunksLcrRuleTargetAbstract
         ];
     }
 
-    /**
-     * Set lcrId
-     *
-     * @param int $lcrId
-     *
-     * @return static
-     */
-    protected function setLcrId(int $lcrId): TrunksLcrRuleTargetInterface
+    protected function setLcrId(int $lcrId): static
     {
         Assertion::greaterOrEqualThan($lcrId, 0, 'lcrId provided "%s" is not greater or equal than "%s".');
 
@@ -221,24 +214,12 @@ abstract class TrunksLcrRuleTargetAbstract
         return $this;
     }
 
-    /**
-     * Get lcrId
-     *
-     * @return int
-     */
     public function getLcrId(): int
     {
         return $this->lcrId;
     }
 
-    /**
-     * Set priority
-     *
-     * @param int $priority
-     *
-     * @return static
-     */
-    protected function setPriority(int $priority): TrunksLcrRuleTargetInterface
+    protected function setPriority(int $priority): static
     {
         Assertion::greaterOrEqualThan($priority, 0, 'priority provided "%s" is not greater or equal than "%s".');
 
@@ -247,24 +228,12 @@ abstract class TrunksLcrRuleTargetAbstract
         return $this;
     }
 
-    /**
-     * Get priority
-     *
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;
     }
 
-    /**
-     * Set weight
-     *
-     * @param int $weight
-     *
-     * @return static
-     */
-    protected function setWeight(int $weight): TrunksLcrRuleTargetInterface
+    protected function setWeight(int $weight): static
     {
         Assertion::greaterOrEqualThan($weight, 0, 'weight provided "%s" is not greater or equal than "%s".');
 
@@ -273,83 +242,43 @@ abstract class TrunksLcrRuleTargetAbstract
         return $this;
     }
 
-    /**
-     * Get weight
-     *
-     * @return int
-     */
     public function getWeight(): int
     {
         return $this->weight;
     }
 
-    /**
-     * Set rule
-     *
-     * @param TrunksLcrRuleInterface
-     *
-     * @return static
-     */
-    protected function setRule(TrunksLcrRuleInterface $rule): TrunksLcrRuleTargetInterface
+    protected function setRule(TrunksLcrRuleInterface $rule): static
     {
         $this->rule = $rule;
 
         return $this;
     }
 
-    /**
-     * Get rule
-     *
-     * @return TrunksLcrRuleInterface
-     */
     public function getRule(): TrunksLcrRuleInterface
     {
         return $this->rule;
     }
 
-    /**
-     * Set gw
-     *
-     * @param TrunksLcrGatewayInterface
-     *
-     * @return static
-     */
-    protected function setGw(TrunksLcrGatewayInterface $gw): TrunksLcrRuleTargetInterface
+    protected function setGw(TrunksLcrGatewayInterface $gw): static
     {
         $this->gw = $gw;
 
         return $this;
     }
 
-    /**
-     * Get gw
-     *
-     * @return TrunksLcrGatewayInterface
-     */
     public function getGw(): TrunksLcrGatewayInterface
     {
         return $this->gw;
     }
 
-    /**
-     * Set outgoingRouting
-     *
-     * @param OutgoingRoutingInterface
-     *
-     * @return static
-     */
-    public function setOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): TrunksLcrRuleTargetInterface
+    public function setOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): static
     {
         $this->outgoingRouting = $outgoingRouting;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get outgoingRouting
-     *
-     * @return OutgoingRoutingInterface
-     */
     public function getOutgoingRouting(): OutgoingRoutingInterface
     {
         return $this->outgoingRouting;

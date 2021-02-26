@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\FriendsPattern;
 
-use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 
 /**
 * FriendsPatternInterface
@@ -16,34 +16,12 @@ interface FriendsPatternInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get regExp
-     *
-     * @return string
-     */
     public function getRegExp(): string;
 
-    /**
-     * Set friend
-     *
-     * @param FriendInterface
-     *
-     * @return static
-     */
-    public function setFriend(FriendInterface $friend): FriendsPatternInterface;
+    public function setFriend(FriendInterface $friend): static;
 
-    /**
-     * Get friend
-     *
-     * @return FriendInterface
-     */
     public function getFriend(): FriendInterface;
 
     /**

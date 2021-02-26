@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\ExternalCallFilterRelSchedule;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class ExternalCallFilterRelScheduleLifecycleServiceCollection implements Lifecyc
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, ExternalCallFilterRelScheduleLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, ExternalCallFilterRelScheduleLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

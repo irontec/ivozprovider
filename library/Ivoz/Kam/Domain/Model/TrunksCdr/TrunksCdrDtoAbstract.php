@@ -24,12 +24,12 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $startTime = '2000-01-01 00:00:00';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $endTime = '2000-01-01 00:00:00';
 
@@ -39,57 +39,57 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     private $duration = 0;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $caller;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $callee;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $callid;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $callidHash;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $xcallid;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $diversion;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $bounced;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $parsed = false;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $parserScheduledAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $direction;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $cgrid;
 
@@ -238,330 +238,199 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param \DateTimeInterface $startTime | null
-     *
-     * @return static
-     */
-    public function setStartTime($startTime = null): self
+    public function setStartTime(null|\DateTime|string $startTime): static
     {
         $this->startTime = $startTime;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getStartTime()
+    public function getStartTime(): \DateTime|string|null
     {
         return $this->startTime;
     }
 
-    /**
-     * @param \DateTimeInterface $endTime | null
-     *
-     * @return static
-     */
-    public function setEndTime($endTime = null): self
+    public function setEndTime(null|\DateTime|string $endTime): static
     {
         $this->endTime = $endTime;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getEndTime()
+    public function getEndTime(): \DateTime|string|null
     {
         return $this->endTime;
     }
 
-    /**
-     * @param float $duration | null
-     *
-     * @return static
-     */
-    public function setDuration(?float $duration = null): self
+    public function setDuration(?float $duration): static
     {
         $this->duration = $duration;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getDuration(): ?float
     {
         return $this->duration;
     }
 
-    /**
-     * @param string $caller | null
-     *
-     * @return static
-     */
-    public function setCaller(?string $caller = null): self
+    public function setCaller(?string $caller): static
     {
         $this->caller = $caller;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCaller(): ?string
     {
         return $this->caller;
     }
 
-    /**
-     * @param string $callee | null
-     *
-     * @return static
-     */
-    public function setCallee(?string $callee = null): self
+    public function setCallee(?string $callee): static
     {
         $this->callee = $callee;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallee(): ?string
     {
         return $this->callee;
     }
 
-    /**
-     * @param string $callid | null
-     *
-     * @return static
-     */
-    public function setCallid(?string $callid = null): self
+    public function setCallid(?string $callid): static
     {
         $this->callid = $callid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallid(): ?string
     {
         return $this->callid;
     }
 
-    /**
-     * @param string $callidHash | null
-     *
-     * @return static
-     */
-    public function setCallidHash(?string $callidHash = null): self
+    public function setCallidHash(?string $callidHash): static
     {
         $this->callidHash = $callidHash;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallidHash(): ?string
     {
         return $this->callidHash;
     }
 
-    /**
-     * @param string $xcallid | null
-     *
-     * @return static
-     */
-    public function setXcallid(?string $xcallid = null): self
+    public function setXcallid(?string $xcallid): static
     {
         $this->xcallid = $xcallid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getXcallid(): ?string
     {
         return $this->xcallid;
     }
 
-    /**
-     * @param string $diversion | null
-     *
-     * @return static
-     */
-    public function setDiversion(?string $diversion = null): self
+    public function setDiversion(?string $diversion): static
     {
         $this->diversion = $diversion;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDiversion(): ?string
     {
         return $this->diversion;
     }
 
-    /**
-     * @param bool $bounced | null
-     *
-     * @return static
-     */
-    public function setBounced(?bool $bounced = null): self
+    public function setBounced(?bool $bounced): static
     {
         $this->bounced = $bounced;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getBounced(): ?bool
     {
         return $this->bounced;
     }
 
-    /**
-     * @param bool $parsed | null
-     *
-     * @return static
-     */
-    public function setParsed(?bool $parsed = null): self
+    public function setParsed(?bool $parsed): static
     {
         $this->parsed = $parsed;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getParsed(): ?bool
     {
         return $this->parsed;
     }
 
-    /**
-     * @param \DateTimeInterface $parserScheduledAt | null
-     *
-     * @return static
-     */
-    public function setParserScheduledAt($parserScheduledAt = null): self
+    public function setParserScheduledAt(null|\DateTime|string $parserScheduledAt): static
     {
         $this->parserScheduledAt = $parserScheduledAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getParserScheduledAt()
+    public function getParserScheduledAt(): \DateTime|string|null
     {
         return $this->parserScheduledAt;
     }
 
-    /**
-     * @param string $direction | null
-     *
-     * @return static
-     */
-    public function setDirection(?string $direction = null): self
+    public function setDirection(?string $direction): static
     {
         $this->direction = $direction;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDirection(): ?string
     {
         return $this->direction;
     }
 
-    /**
-     * @param string $cgrid | null
-     *
-     * @return static
-     */
-    public function setCgrid(?string $cgrid = null): self
+    public function setCgrid(?string $cgrid): static
     {
         $this->cgrid = $cgrid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCgrid(): ?string
     {
         return $this->cgrid;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -570,9 +439,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -582,30 +448,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -614,9 +469,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -626,30 +478,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CarrierDto | null
-     *
-     * @return static
-     */
-    public function setCarrier(?CarrierDto $carrier = null): self
+    public function setCarrier(?CarrierDto $carrier): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * @return CarrierDto | null
-     */
     public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
-    /**
-     * @return static
-     */
-    public function setCarrierId($id): self
+    public function setCarrierId($id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -658,9 +499,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCarrierId()
     {
         if ($dto = $this->getCarrier()) {
@@ -670,30 +508,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param RetailAccountDto | null
-     *
-     * @return static
-     */
-    public function setRetailAccount(?RetailAccountDto $retailAccount = null): self
+    public function setRetailAccount(?RetailAccountDto $retailAccount): static
     {
         $this->retailAccount = $retailAccount;
 
         return $this;
     }
 
-    /**
-     * @return RetailAccountDto | null
-     */
     public function getRetailAccount(): ?RetailAccountDto
     {
         return $this->retailAccount;
     }
 
-    /**
-     * @return static
-     */
-    public function setRetailAccountId($id): self
+    public function setRetailAccountId($id): static
     {
         $value = !is_null($id)
             ? new RetailAccountDto($id)
@@ -702,9 +529,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setRetailAccount($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRetailAccountId()
     {
         if ($dto = $this->getRetailAccount()) {
@@ -714,30 +538,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ResidentialDeviceDto | null
-     *
-     * @return static
-     */
-    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice = null): self
+    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice): static
     {
         $this->residentialDevice = $residentialDevice;
 
         return $this;
     }
 
-    /**
-     * @return ResidentialDeviceDto | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceDto
     {
         return $this->residentialDevice;
     }
 
-    /**
-     * @return static
-     */
-    public function setResidentialDeviceId($id): self
+    public function setResidentialDeviceId($id): static
     {
         $value = !is_null($id)
             ? new ResidentialDeviceDto($id)
@@ -746,9 +559,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setResidentialDevice($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getResidentialDeviceId()
     {
         if ($dto = $this->getResidentialDevice()) {
@@ -758,30 +568,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setUser(?UserDto $user = null): self
+    public function setUser(?UserDto $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
-    /**
-     * @return static
-     */
-    public function setUserId($id): self
+    public function setUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -790,9 +589,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getUserId()
     {
         if ($dto = $this->getUser()) {
@@ -802,30 +598,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param FriendDto | null
-     *
-     * @return static
-     */
-    public function setFriend(?FriendDto $friend = null): self
+    public function setFriend(?FriendDto $friend): static
     {
         $this->friend = $friend;
 
         return $this;
     }
 
-    /**
-     * @return FriendDto | null
-     */
     public function getFriend(): ?FriendDto
     {
         return $this->friend;
     }
 
-    /**
-     * @return static
-     */
-    public function setFriendId($id): self
+    public function setFriendId($id): static
     {
         $value = !is_null($id)
             ? new FriendDto($id)
@@ -834,9 +619,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setFriend($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFriendId()
     {
         if ($dto = $this->getFriend()) {
@@ -846,30 +628,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param FaxDto | null
-     *
-     * @return static
-     */
-    public function setFax(?FaxDto $fax = null): self
+    public function setFax(?FaxDto $fax): static
     {
         $this->fax = $fax;
 
         return $this;
     }
 
-    /**
-     * @return FaxDto | null
-     */
     public function getFax(): ?FaxDto
     {
         return $this->fax;
     }
 
-    /**
-     * @return static
-     */
-    public function setFaxId($id): self
+    public function setFaxId($id): static
     {
         $value = !is_null($id)
             ? new FaxDto($id)
@@ -878,9 +649,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setFax($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFaxId()
     {
         if ($dto = $this->getFax()) {
@@ -890,30 +658,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DdiDto | null
-     *
-     * @return static
-     */
-    public function setDdi(?DdiDto $ddi = null): self
+    public function setDdi(?DdiDto $ddi): static
     {
         $this->ddi = $ddi;
 
         return $this;
     }
 
-    /**
-     * @return DdiDto | null
-     */
     public function getDdi(): ?DdiDto
     {
         return $this->ddi;
     }
 
-    /**
-     * @return static
-     */
-    public function setDdiId($id): self
+    public function setDdiId($id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)
@@ -922,9 +679,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setDdi($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDdiId()
     {
         if ($dto = $this->getDdi()) {
@@ -934,30 +688,19 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DdiProviderDto | null
-     *
-     * @return static
-     */
-    public function setDdiProvider(?DdiProviderDto $ddiProvider = null): self
+    public function setDdiProvider(?DdiProviderDto $ddiProvider): static
     {
         $this->ddiProvider = $ddiProvider;
 
         return $this;
     }
 
-    /**
-     * @return DdiProviderDto | null
-     */
     public function getDdiProvider(): ?DdiProviderDto
     {
         return $this->ddiProvider;
     }
 
-    /**
-     * @return static
-     */
-    public function setDdiProviderId($id): self
+    public function setDdiProviderId($id): static
     {
         $value = !is_null($id)
             ? new DdiProviderDto($id)
@@ -966,9 +709,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setDdiProvider($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDdiProviderId()
     {
         if ($dto = $this->getDdiProvider()) {

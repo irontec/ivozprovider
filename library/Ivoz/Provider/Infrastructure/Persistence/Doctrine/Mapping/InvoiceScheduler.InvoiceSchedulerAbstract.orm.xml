@@ -37,7 +37,7 @@
     <field name="taxRate" type="decimal" column="taxRate" precision="10" scale="3" nullable="true"/>
     <many-to-one field="invoiceTemplate" target-entity="Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="invoiceTemplateId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="invoiceTemplateId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">

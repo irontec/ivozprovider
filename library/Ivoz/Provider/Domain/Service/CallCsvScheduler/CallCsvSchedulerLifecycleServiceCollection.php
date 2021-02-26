@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\CallCsvScheduler;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -20,11 +21,9 @@ class CallCsvSchedulerLifecycleServiceCollection implements LifecycleServiceColl
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, CallCsvSchedulerLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, CallCsvSchedulerLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

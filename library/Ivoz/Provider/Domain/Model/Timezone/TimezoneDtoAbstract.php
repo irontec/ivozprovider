@@ -17,10 +17,10 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $tz;
+    private $tz = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $comment = '';
 
@@ -114,170 +114,103 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $tz | null
-     *
-     * @return static
-     */
-    public function setTz(?string $tz = null): self
+    public function setTz(?string $tz): static
     {
         $this->tz = $tz;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTz(): ?string
     {
         return $this->tz;
     }
 
-    /**
-     * @param string $comment | null
-     *
-     * @return static
-     */
-    public function setComment(?string $comment = null): self
+    public function setComment(?string $comment): static
     {
         $this->comment = $comment;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param string $labelEn | null
-     *
-     * @return static
-     */
-    public function setLabelEn(?string $labelEn = null): self
+    public function setLabelEn(?string $labelEn): static
     {
         $this->labelEn = $labelEn;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLabelEn(): ?string
     {
         return $this->labelEn;
     }
 
-    /**
-     * @param string $labelEs | null
-     *
-     * @return static
-     */
-    public function setLabelEs(?string $labelEs = null): self
+    public function setLabelEs(?string $labelEs): static
     {
         $this->labelEs = $labelEs;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLabelEs(): ?string
     {
         return $this->labelEs;
     }
 
-    /**
-     * @param string $labelCa | null
-     *
-     * @return static
-     */
-    public function setLabelCa(?string $labelCa = null): self
+    public function setLabelCa(?string $labelCa): static
     {
         $this->labelCa = $labelCa;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLabelCa(): ?string
     {
         return $this->labelCa;
     }
 
-    /**
-     * @param string $labelIt | null
-     *
-     * @return static
-     */
-    public function setLabelIt(?string $labelIt = null): self
+    public function setLabelIt(?string $labelIt): static
     {
         $this->labelIt = $labelIt;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLabelIt(): ?string
     {
         return $this->labelIt;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setCountry(?CountryDto $country = null): self
+    public function setCountry(?CountryDto $country): static
     {
         $this->country = $country;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getCountry(): ?CountryDto
     {
         return $this->country;
     }
 
-    /**
-     * @return static
-     */
-    public function setCountryId($id): self
+    public function setCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -286,9 +219,6 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $this->setCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCountryId()
     {
         if ($dto = $this->getCountry()) {

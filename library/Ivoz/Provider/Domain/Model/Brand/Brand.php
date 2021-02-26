@@ -54,7 +54,7 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
      * @inheritdoc
      * @see BrandAbstract::setDomainUsers
      */
-    public function setDomainUsers(?string $domainUsers = null): self
+    public function setDomainUsers(?string $domainUsers = null): static
     {
         return parent::setDomainUsers(trim($domainUsers));
     }

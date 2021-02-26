@@ -22,7 +22,7 @@ abstract class ProxyTrunksRelBrandAbstract
     use ChangelogTrait;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      * inversedBy relProxyTrunks
      */
     protected $brand;
@@ -61,7 +61,7 @@ abstract class ProxyTrunksRelBrandAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ProxyTrunksRelBrandDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class ProxyTrunksRelBrandAbstract
         ];
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandInterface $brand = null): ProxyTrunksRelBrandInterface
+    public function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set proxyTrunk
-     *
-     * @param ProxyTrunkInterface
-     *
-     * @return static
-     */
-    protected function setProxyTrunk(ProxyTrunkInterface $proxyTrunk): ProxyTrunksRelBrandInterface
+    protected function setProxyTrunk(ProxyTrunkInterface $proxyTrunk): static
     {
         $this->proxyTrunk = $proxyTrunk;
 
         return $this;
     }
 
-    /**
-     * Get proxyTrunk
-     *
-     * @return ProxyTrunkInterface
-     */
     public function getProxyTrunk(): ProxyTrunkInterface
     {
         return $this->proxyTrunk;

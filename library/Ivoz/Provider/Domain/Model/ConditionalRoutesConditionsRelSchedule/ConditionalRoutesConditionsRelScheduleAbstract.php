@@ -22,7 +22,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     use ChangelogTrait;
 
     /**
-     * @var ConditionalRoutesConditionInterface
+     * @var ConditionalRoutesConditionInterface | null
      * inversedBy relSchedules
      */
     protected $condition;
@@ -61,7 +61,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ConditionalRoutesConditionsRelScheduleDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
         ];
     }
 
-    /**
-     * Set condition
-     *
-     * @param ConditionalRoutesConditionInterface | null
-     *
-     * @return static
-     */
-    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelScheduleInterface
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): static
     {
         $this->condition = $condition;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get condition
-     *
-     * @return ConditionalRoutesConditionInterface | null
-     */
     public function getCondition(): ?ConditionalRoutesConditionInterface
     {
         return $this->condition;
     }
 
-    /**
-     * Set schedule
-     *
-     * @param ScheduleInterface
-     *
-     * @return static
-     */
-    protected function setSchedule(ScheduleInterface $schedule): ConditionalRoutesConditionsRelScheduleInterface
+    protected function setSchedule(ScheduleInterface $schedule): static
     {
         $this->schedule = $schedule;
 
         return $this;
     }
 
-    /**
-     * Get schedule
-     *
-     * @return ScheduleInterface
-     */
     public function getSchedule(): ScheduleInterface
     {
         return $this->schedule;

@@ -108,6 +108,12 @@
         <option name="default">0</option>
       </options>
     </field>
+    <field name="multiContact" type="boolean" column="multiContact" nullable="false">
+      <options>
+        <option name="default">1</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" inversed-by="residentialDevices" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>

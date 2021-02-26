@@ -76,50 +76,31 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param ConditionalRoutesConditionDto | null
-     *
-     * @return static
-     */
-    public function setCondition(?ConditionalRoutesConditionDto $condition = null): self
+    public function setCondition(?ConditionalRoutesConditionDto $condition): static
     {
         $this->condition = $condition;
 
         return $this;
     }
 
-    /**
-     * @return ConditionalRoutesConditionDto | null
-     */
     public function getCondition(): ?ConditionalRoutesConditionDto
     {
         return $this->condition;
     }
 
-    /**
-     * @return static
-     */
-    public function setConditionId($id): self
+    public function setConditionId($id): static
     {
         $value = !is_null($id)
             ? new ConditionalRoutesConditionDto($id)
@@ -128,9 +109,6 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
         return $this->setCondition($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getConditionId()
     {
         if ($dto = $this->getCondition()) {
@@ -140,30 +118,19 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
         return null;
     }
 
-    /**
-     * @param CalendarDto | null
-     *
-     * @return static
-     */
-    public function setCalendar(?CalendarDto $calendar = null): self
+    public function setCalendar(?CalendarDto $calendar): static
     {
         $this->calendar = $calendar;
 
         return $this;
     }
 
-    /**
-     * @return CalendarDto | null
-     */
     public function getCalendar(): ?CalendarDto
     {
         return $this->calendar;
     }
 
-    /**
-     * @return static
-     */
-    public function setCalendarId($id): self
+    public function setCalendarId($id): static
     {
         $value = !is_null($id)
             ? new CalendarDto($id)
@@ -172,9 +139,6 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
         return $this->setCalendar($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCalendarId()
     {
         if ($dto = $this->getCalendar()) {

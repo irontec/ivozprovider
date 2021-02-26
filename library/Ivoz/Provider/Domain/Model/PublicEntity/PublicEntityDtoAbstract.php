@@ -16,10 +16,10 @@ abstract class PublicEntityDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $iden;
+    private $iden = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fqdn;
 
@@ -44,22 +44,22 @@ abstract class PublicEntityDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $nameEn;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $nameEs;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $nameCa;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $nameIt;
 
@@ -127,201 +127,121 @@ abstract class PublicEntityDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $iden | null
-     *
-     * @return static
-     */
-    public function setIden(?string $iden = null): self
+    public function setIden(?string $iden): static
     {
         $this->iden = $iden;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getIden(): ?string
     {
         return $this->iden;
     }
 
-    /**
-     * @param string $fqdn | null
-     *
-     * @return static
-     */
-    public function setFqdn(?string $fqdn = null): self
+    public function setFqdn(?string $fqdn): static
     {
         $this->fqdn = $fqdn;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFqdn(): ?string
     {
         return $this->fqdn;
     }
 
-    /**
-     * @param bool $platform | null
-     *
-     * @return static
-     */
-    public function setPlatform(?bool $platform = null): self
+    public function setPlatform(?bool $platform): static
     {
         $this->platform = $platform;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getPlatform(): ?bool
     {
         return $this->platform;
     }
 
-    /**
-     * @param bool $brand | null
-     *
-     * @return static
-     */
-    public function setBrand(?bool $brand = null): self
+    public function setBrand(?bool $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getBrand(): ?bool
     {
         return $this->brand;
     }
 
-    /**
-     * @param bool $client | null
-     *
-     * @return static
-     */
-    public function setClient(?bool $client = null): self
+    public function setClient(?bool $client): static
     {
         $this->client = $client;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getClient(): ?bool
     {
         return $this->client;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param string $nameEn | null
-     *
-     * @return static
-     */
-    public function setNameEn(?string $nameEn = null): self
+    public function setNameEn(?string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameEn(): ?string
     {
         return $this->nameEn;
     }
 
-    /**
-     * @param string $nameEs | null
-     *
-     * @return static
-     */
-    public function setNameEs(?string $nameEs = null): self
+    public function setNameEs(?string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameEs(): ?string
     {
         return $this->nameEs;
     }
 
-    /**
-     * @param string $nameCa | null
-     *
-     * @return static
-     */
-    public function setNameCa(?string $nameCa = null): self
+    public function setNameCa(?string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameCa(): ?string
     {
         return $this->nameCa;
     }
 
-    /**
-     * @param string $nameIt | null
-     *
-     * @return static
-     */
-    public function setNameIt(?string $nameIt = null): self
+    public function setNameIt(?string $nameIt): static
     {
         $this->nameIt = $nameIt;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameIt(): ?string
     {
         return $this->nameIt;

@@ -22,7 +22,7 @@ abstract class CompanyRelCodecAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      * inversedBy relCodecs
      */
     protected $company;
@@ -61,7 +61,7 @@ abstract class CompanyRelCodecAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CompanyRelCodecDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class CompanyRelCodecAbstract
         ];
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyInterface $company = null): CompanyRelCodecInterface
+    public function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set codec
-     *
-     * @param CodecInterface
-     *
-     * @return static
-     */
-    protected function setCodec(CodecInterface $codec): CompanyRelCodecInterface
+    protected function setCodec(CodecInterface $codec): static
     {
         $this->codec = $codec;
 
         return $this;
     }
 
-    /**
-     * Get codec
-     *
-     * @return CodecInterface
-     */
     public function getCodec(): CodecInterface
     {
         return $this->codec;

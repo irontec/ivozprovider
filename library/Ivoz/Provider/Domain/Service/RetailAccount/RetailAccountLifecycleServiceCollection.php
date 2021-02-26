@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\RetailAccount;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -23,11 +24,9 @@ class RetailAccountLifecycleServiceCollection implements LifecycleServiceCollect
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, RetailAccountLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, RetailAccountLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

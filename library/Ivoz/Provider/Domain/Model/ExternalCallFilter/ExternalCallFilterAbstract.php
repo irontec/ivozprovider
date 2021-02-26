@@ -60,47 +60,47 @@ abstract class ExternalCallFilterAbstract
     protected $company;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $welcomeLocution;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $holidayLocution;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $outOfScheduleLocution;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $holidayExtension;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $outOfScheduleExtension;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $holidayVoiceMailUser;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $outOfScheduleVoiceMailUser;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $holidayNumberCountry;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $outOfScheduleNumberCountry;
 
@@ -133,7 +133,7 @@ abstract class ExternalCallFilterAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ExternalCallFilterDto
      */
     public static function createDto($id = null)
@@ -286,14 +286,7 @@ abstract class ExternalCallFilterAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): ExternalCallFilterInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -302,24 +295,12 @@ abstract class ExternalCallFilterAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set holidayTargetType
-     *
-     * @param string $holidayTargetType | null
-     *
-     * @return static
-     */
-    protected function setHolidayTargetType(?string $holidayTargetType = null): ExternalCallFilterInterface
+    protected function setHolidayTargetType(?string $holidayTargetType = null): static
     {
         if (!is_null($holidayTargetType)) {
             Assertion::maxLength($holidayTargetType, 25, 'holidayTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -339,24 +320,12 @@ abstract class ExternalCallFilterAbstract
         return $this;
     }
 
-    /**
-     * Get holidayTargetType
-     *
-     * @return string | null
-     */
     public function getHolidayTargetType(): ?string
     {
         return $this->holidayTargetType;
     }
 
-    /**
-     * Set holidayNumberValue
-     *
-     * @param string $holidayNumberValue | null
-     *
-     * @return static
-     */
-    protected function setHolidayNumberValue(?string $holidayNumberValue = null): ExternalCallFilterInterface
+    protected function setHolidayNumberValue(?string $holidayNumberValue = null): static
     {
         if (!is_null($holidayNumberValue)) {
             Assertion::maxLength($holidayNumberValue, 25, 'holidayNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -367,24 +336,12 @@ abstract class ExternalCallFilterAbstract
         return $this;
     }
 
-    /**
-     * Get holidayNumberValue
-     *
-     * @return string | null
-     */
     public function getHolidayNumberValue(): ?string
     {
         return $this->holidayNumberValue;
     }
 
-    /**
-     * Set outOfScheduleTargetType
-     *
-     * @param string $outOfScheduleTargetType | null
-     *
-     * @return static
-     */
-    protected function setOutOfScheduleTargetType(?string $outOfScheduleTargetType = null): ExternalCallFilterInterface
+    protected function setOutOfScheduleTargetType(?string $outOfScheduleTargetType = null): static
     {
         if (!is_null($outOfScheduleTargetType)) {
             Assertion::maxLength($outOfScheduleTargetType, 25, 'outOfScheduleTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -404,24 +361,12 @@ abstract class ExternalCallFilterAbstract
         return $this;
     }
 
-    /**
-     * Get outOfScheduleTargetType
-     *
-     * @return string | null
-     */
     public function getOutOfScheduleTargetType(): ?string
     {
         return $this->outOfScheduleTargetType;
     }
 
-    /**
-     * Set outOfScheduleNumberValue
-     *
-     * @param string $outOfScheduleNumberValue | null
-     *
-     * @return static
-     */
-    protected function setOutOfScheduleNumberValue(?string $outOfScheduleNumberValue = null): ExternalCallFilterInterface
+    protected function setOutOfScheduleNumberValue(?string $outOfScheduleNumberValue = null): static
     {
         if (!is_null($outOfScheduleNumberValue)) {
             Assertion::maxLength($outOfScheduleNumberValue, 25, 'outOfScheduleNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -432,251 +377,126 @@ abstract class ExternalCallFilterAbstract
         return $this;
     }
 
-    /**
-     * Get outOfScheduleNumberValue
-     *
-     * @return string | null
-     */
     public function getOutOfScheduleNumberValue(): ?string
     {
         return $this->outOfScheduleNumberValue;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): ExternalCallFilterInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set welcomeLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setWelcomeLocution(?LocutionInterface $welcomeLocution = null): ExternalCallFilterInterface
+    protected function setWelcomeLocution(?LocutionInterface $welcomeLocution = null): static
     {
         $this->welcomeLocution = $welcomeLocution;
 
         return $this;
     }
 
-    /**
-     * Get welcomeLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getWelcomeLocution(): ?LocutionInterface
     {
         return $this->welcomeLocution;
     }
 
-    /**
-     * Set holidayLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setHolidayLocution(?LocutionInterface $holidayLocution = null): ExternalCallFilterInterface
+    protected function setHolidayLocution(?LocutionInterface $holidayLocution = null): static
     {
         $this->holidayLocution = $holidayLocution;
 
         return $this;
     }
 
-    /**
-     * Get holidayLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getHolidayLocution(): ?LocutionInterface
     {
         return $this->holidayLocution;
     }
 
-    /**
-     * Set outOfScheduleLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setOutOfScheduleLocution(?LocutionInterface $outOfScheduleLocution = null): ExternalCallFilterInterface
+    protected function setOutOfScheduleLocution(?LocutionInterface $outOfScheduleLocution = null): static
     {
         $this->outOfScheduleLocution = $outOfScheduleLocution;
 
         return $this;
     }
 
-    /**
-     * Get outOfScheduleLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getOutOfScheduleLocution(): ?LocutionInterface
     {
         return $this->outOfScheduleLocution;
     }
 
-    /**
-     * Set holidayExtension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setHolidayExtension(?ExtensionInterface $holidayExtension = null): ExternalCallFilterInterface
+    protected function setHolidayExtension(?ExtensionInterface $holidayExtension = null): static
     {
         $this->holidayExtension = $holidayExtension;
 
         return $this;
     }
 
-    /**
-     * Get holidayExtension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getHolidayExtension(): ?ExtensionInterface
     {
         return $this->holidayExtension;
     }
 
-    /**
-     * Set outOfScheduleExtension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setOutOfScheduleExtension(?ExtensionInterface $outOfScheduleExtension = null): ExternalCallFilterInterface
+    protected function setOutOfScheduleExtension(?ExtensionInterface $outOfScheduleExtension = null): static
     {
         $this->outOfScheduleExtension = $outOfScheduleExtension;
 
         return $this;
     }
 
-    /**
-     * Get outOfScheduleExtension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getOutOfScheduleExtension(): ?ExtensionInterface
     {
         return $this->outOfScheduleExtension;
     }
 
-    /**
-     * Set holidayVoiceMailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setHolidayVoiceMailUser(?UserInterface $holidayVoiceMailUser = null): ExternalCallFilterInterface
+    protected function setHolidayVoiceMailUser(?UserInterface $holidayVoiceMailUser = null): static
     {
         $this->holidayVoiceMailUser = $holidayVoiceMailUser;
 
         return $this;
     }
 
-    /**
-     * Get holidayVoiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getHolidayVoiceMailUser(): ?UserInterface
     {
         return $this->holidayVoiceMailUser;
     }
 
-    /**
-     * Set outOfScheduleVoiceMailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setOutOfScheduleVoiceMailUser(?UserInterface $outOfScheduleVoiceMailUser = null): ExternalCallFilterInterface
+    protected function setOutOfScheduleVoiceMailUser(?UserInterface $outOfScheduleVoiceMailUser = null): static
     {
         $this->outOfScheduleVoiceMailUser = $outOfScheduleVoiceMailUser;
 
         return $this;
     }
 
-    /**
-     * Get outOfScheduleVoiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getOutOfScheduleVoiceMailUser(): ?UserInterface
     {
         return $this->outOfScheduleVoiceMailUser;
     }
 
-    /**
-     * Set holidayNumberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setHolidayNumberCountry(?CountryInterface $holidayNumberCountry = null): ExternalCallFilterInterface
+    protected function setHolidayNumberCountry(?CountryInterface $holidayNumberCountry = null): static
     {
         $this->holidayNumberCountry = $holidayNumberCountry;
 
         return $this;
     }
 
-    /**
-     * Get holidayNumberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getHolidayNumberCountry(): ?CountryInterface
     {
         return $this->holidayNumberCountry;
     }
 
-    /**
-     * Set outOfScheduleNumberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setOutOfScheduleNumberCountry(?CountryInterface $outOfScheduleNumberCountry = null): ExternalCallFilterInterface
+    protected function setOutOfScheduleNumberCountry(?CountryInterface $outOfScheduleNumberCountry = null): static
     {
         $this->outOfScheduleNumberCountry = $outOfScheduleNumberCountry;
 
         return $this;
     }
 
-    /**
-     * Get outOfScheduleNumberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getOutOfScheduleNumberCountry(): ?CountryInterface
     {
         return $this->outOfScheduleNumberCountry;

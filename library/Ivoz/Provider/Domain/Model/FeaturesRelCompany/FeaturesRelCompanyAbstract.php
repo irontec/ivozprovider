@@ -22,7 +22,7 @@ abstract class FeaturesRelCompanyAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      * inversedBy relFeatures
      */
     protected $company;
@@ -61,7 +61,7 @@ abstract class FeaturesRelCompanyAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return FeaturesRelCompanyDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class FeaturesRelCompanyAbstract
         ];
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyInterface $company = null): FeaturesRelCompanyInterface
+    public function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set feature
-     *
-     * @param FeatureInterface
-     *
-     * @return static
-     */
-    protected function setFeature(FeatureInterface $feature): FeaturesRelCompanyInterface
+    protected function setFeature(FeatureInterface $feature): static
     {
         $this->feature = $feature;
 
         return $this;
     }
 
-    /**
-     * Get feature
-     *
-     * @return FeatureInterface
-     */
     public function getFeature(): FeatureInterface
     {
         return $this->feature;

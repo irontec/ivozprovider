@@ -134,33 +134,19 @@ trait DestinationTrait
         ];
     }
 
-    /**
-     * @var TpDestinationInterface
-     * mappedBy destination
-     */
-    public function setTpDestination(TpDestinationInterface $tpDestination): DestinationInterface
+    public function setTpDestination(TpDestinationInterface $tpDestination): static
     {
         $this->tpDestination = $tpDestination;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get tpDestination
-     * @return TpDestinationInterface
-     */
     public function getTpDestination(): ?TpDestinationInterface
     {
         return $this->tpDestination;
     }
 
-    /**
-     * Add destinationRate
-     *
-     * @param DestinationRateInterface $destinationRate
-     *
-     * @return static
-     */
     public function addDestinationRate(DestinationRateInterface $destinationRate): DestinationInterface
     {
         $this->destinationRates->add($destinationRate);
@@ -168,13 +154,6 @@ trait DestinationTrait
         return $this;
     }
 
-    /**
-     * Remove destinationRate
-     *
-     * @param DestinationRateInterface $destinationRate
-     *
-     * @return static
-     */
     public function removeDestinationRate(DestinationRateInterface $destinationRate): DestinationInterface
     {
         $this->destinationRates->removeElement($destinationRate);
@@ -182,13 +161,6 @@ trait DestinationTrait
         return $this;
     }
 
-    /**
-     * Replace destinationRates
-     *
-     * @param ArrayCollection $destinationRates of DestinationRateInterface
-     *
-     * @return static
-     */
     public function replaceDestinationRates(ArrayCollection $destinationRates): DestinationInterface
     {
         $updatedEntities = [];
@@ -217,11 +189,6 @@ trait DestinationTrait
         return $this;
     }
 
-    /**
-     * Get destinationRates
-     * @param Criteria | null $criteria
-     * @return DestinationRateInterface[]
-     */
     public function getDestinationRates(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

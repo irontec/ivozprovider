@@ -35,7 +35,7 @@ class Destination extends DestinationAbstract implements DestinationInterface
      *
      * @inheritdoc
      */
-    public function setPrefix(string $prefix): self
+    public function setPrefix(string $prefix): static
     {
         Assertion::regex($prefix, '/^\\+[0-9]+$/');
 

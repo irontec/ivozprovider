@@ -48,7 +48,7 @@ abstract class InvoiceSchedulerAbstract
     protected $email;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $lastExecution;
 
@@ -58,7 +58,7 @@ abstract class InvoiceSchedulerAbstract
     protected $lastExecutionError;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $nextExecution;
 
@@ -68,7 +68,7 @@ abstract class InvoiceSchedulerAbstract
     protected $taxRate;
 
     /**
-     * @var InvoiceTemplateInterface
+     * @var InvoiceTemplateInterface | null
      */
     protected $invoiceTemplate;
 
@@ -83,7 +83,7 @@ abstract class InvoiceSchedulerAbstract
     protected $company;
 
     /**
-     * @var InvoiceNumberSequenceInterface
+     * @var InvoiceNumberSequenceInterface | null
      */
     protected $numberSequence;
 
@@ -122,7 +122,7 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return InvoiceSchedulerDto
      */
     public static function createDto($id = null)
@@ -263,14 +263,7 @@ abstract class InvoiceSchedulerAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): InvoiceSchedulerInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 40, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -279,24 +272,12 @@ abstract class InvoiceSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set unit
-     *
-     * @param string $unit
-     *
-     * @return static
-     */
-    protected function setUnit(string $unit): InvoiceSchedulerInterface
+    protected function setUnit(string $unit): static
     {
         Assertion::maxLength($unit, 30, 'unit value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -314,24 +295,12 @@ abstract class InvoiceSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get unit
-     *
-     * @return string
-     */
     public function getUnit(): string
     {
         return $this->unit;
     }
 
-    /**
-     * Set frequency
-     *
-     * @param int $frequency
-     *
-     * @return static
-     */
-    protected function setFrequency(int $frequency): InvoiceSchedulerInterface
+    protected function setFrequency(int $frequency): static
     {
         Assertion::greaterOrEqualThan($frequency, 0, 'frequency provided "%s" is not greater or equal than "%s".');
 
@@ -340,24 +309,12 @@ abstract class InvoiceSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get frequency
-     *
-     * @return int
-     */
     public function getFrequency(): int
     {
         return $this->frequency;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return static
-     */
-    protected function setEmail(string $email): InvoiceSchedulerInterface
+    protected function setEmail(string $email): static
     {
         Assertion::maxLength($email, 140, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -366,24 +323,12 @@ abstract class InvoiceSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get email
-     *
-     * @return string
-     */
     public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * Set lastExecution
-     *
-     * @param \DateTimeInterface $lastExecution | null
-     *
-     * @return static
-     */
-    protected function setLastExecution($lastExecution = null): InvoiceSchedulerInterface
+    protected function setLastExecution($lastExecution = null): static
     {
         if (!is_null($lastExecution)) {
             Assertion::notNull(
@@ -405,24 +350,12 @@ abstract class InvoiceSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get lastExecution
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getLastExecution(): ?\DateTimeInterface
+    public function getLastExecution(): ?\DateTime
     {
         return !is_null($this->lastExecution) ? clone $this->lastExecution : null;
     }
 
-    /**
-     * Set lastExecutionError
-     *
-     * @param string $lastExecutionError | null
-     *
-     * @return static
-     */
-    protected function setLastExecutionError(?string $lastExecutionError = null): InvoiceSchedulerInterface
+    protected function setLastExecutionError(?string $lastExecutionError = null): static
     {
         if (!is_null($lastExecutionError)) {
             Assertion::maxLength($lastExecutionError, 300, 'lastExecutionError value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -433,24 +366,12 @@ abstract class InvoiceSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get lastExecutionError
-     *
-     * @return string | null
-     */
     public function getLastExecutionError(): ?string
     {
         return $this->lastExecutionError;
     }
 
-    /**
-     * Set nextExecution
-     *
-     * @param \DateTimeInterface $nextExecution | null
-     *
-     * @return static
-     */
-    protected function setNextExecution($nextExecution = null): InvoiceSchedulerInterface
+    protected function setNextExecution($nextExecution = null): static
     {
         if (!is_null($nextExecution)) {
             Assertion::notNull(
@@ -472,24 +393,12 @@ abstract class InvoiceSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get nextExecution
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getNextExecution(): ?\DateTimeInterface
+    public function getNextExecution(): ?\DateTime
     {
         return !is_null($this->nextExecution) ? clone $this->nextExecution : null;
     }
 
-    /**
-     * Set taxRate
-     *
-     * @param float $taxRate | null
-     *
-     * @return static
-     */
-    protected function setTaxRate(?float $taxRate = null): InvoiceSchedulerInterface
+    protected function setTaxRate(?float $taxRate = null): static
     {
         if (!is_null($taxRate)) {
             $taxRate = (float) $taxRate;
@@ -500,107 +409,54 @@ abstract class InvoiceSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get taxRate
-     *
-     * @return float | null
-     */
     public function getTaxRate(): ?float
     {
         return $this->taxRate;
     }
 
-    /**
-     * Set invoiceTemplate
-     *
-     * @param InvoiceTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setInvoiceTemplate(?InvoiceTemplateInterface $invoiceTemplate = null): InvoiceSchedulerInterface
+    protected function setInvoiceTemplate(?InvoiceTemplateInterface $invoiceTemplate = null): static
     {
         $this->invoiceTemplate = $invoiceTemplate;
 
         return $this;
     }
 
-    /**
-     * Get invoiceTemplate
-     *
-     * @return InvoiceTemplateInterface | null
-     */
     public function getInvoiceTemplate(): ?InvoiceTemplateInterface
     {
         return $this->invoiceTemplate;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    protected function setBrand(BrandInterface $brand): InvoiceSchedulerInterface
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): InvoiceSchedulerInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set numberSequence
-     *
-     * @param InvoiceNumberSequenceInterface | null
-     *
-     * @return static
-     */
-    protected function setNumberSequence(?InvoiceNumberSequenceInterface $numberSequence = null): InvoiceSchedulerInterface
+    protected function setNumberSequence(?InvoiceNumberSequenceInterface $numberSequence = null): static
     {
         $this->numberSequence = $numberSequence;
 
         return $this;
     }
 
-    /**
-     * Get numberSequence
-     *
-     * @return InvoiceNumberSequenceInterface | null
-     */
     public function getNumberSequence(): ?InvoiceNumberSequenceInterface
     {
         return $this->numberSequence;

@@ -45,7 +45,7 @@ class Queue extends QueueAbstract implements QueueInterface
     /**
      * {@inheritDoc}
      */
-    public function setName(?string $name = null): self
+    public function setName(?string $name = null): static
     {
         Assertion::regex($name, '/^[a-zA-Z0-9_-]+$/');
         return parent::setName($name);
@@ -110,7 +110,7 @@ class Queue extends QueueAbstract implements QueueInterface
             $this->getFullNumberValue();
     }
 
-    public function setMaxWaitTime(?int $maxWaitTime = null): self
+    public function setMaxWaitTime(?int $maxWaitTime = null): static
     {
         if ($maxWaitTime == 0) {
             $maxWaitTime = null;
@@ -119,7 +119,7 @@ class Queue extends QueueAbstract implements QueueInterface
         return parent::setMaxWaitTime($maxWaitTime);
     }
 
-    public function setMaxlen(?int $maxlen = null): self
+    public function setMaxlen(?int $maxlen = null): static
     {
         if ($maxlen == 0) {
             $maxlen = null;

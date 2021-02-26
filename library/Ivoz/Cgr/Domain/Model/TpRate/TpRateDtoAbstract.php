@@ -20,7 +20,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tag;
 
@@ -42,7 +42,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $rateIncrement;
+    private $rateIncrement = '';
 
     /**
      * @var string
@@ -50,7 +50,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     private $groupIntervalStart = '0s';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -124,210 +124,127 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $tpid | null
-     *
-     * @return static
-     */
-    public function setTpid(?string $tpid = null): self
+    public function setTpid(?string $tpid): static
     {
         $this->tpid = $tpid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
-    /**
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    public function setTag(?string $tag = null): self
+    public function setTag(?string $tag): static
     {
         $this->tag = $tag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * @param float $connectFee | null
-     *
-     * @return static
-     */
-    public function setConnectFee(?float $connectFee = null): self
+    public function setConnectFee(?float $connectFee): static
     {
         $this->connectFee = $connectFee;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getConnectFee(): ?float
     {
         return $this->connectFee;
     }
 
-    /**
-     * @param float $rateCost | null
-     *
-     * @return static
-     */
-    public function setRateCost(?float $rateCost = null): self
+    public function setRateCost(?float $rateCost): static
     {
         $this->rateCost = $rateCost;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getRateCost(): ?float
     {
         return $this->rateCost;
     }
 
-    /**
-     * @param string $rateUnit | null
-     *
-     * @return static
-     */
-    public function setRateUnit(?string $rateUnit = null): self
+    public function setRateUnit(?string $rateUnit): static
     {
         $this->rateUnit = $rateUnit;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRateUnit(): ?string
     {
         return $this->rateUnit;
     }
 
-    /**
-     * @param string $rateIncrement | null
-     *
-     * @return static
-     */
-    public function setRateIncrement(?string $rateIncrement = null): self
+    public function setRateIncrement(?string $rateIncrement): static
     {
         $this->rateIncrement = $rateIncrement;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRateIncrement(): ?string
     {
         return $this->rateIncrement;
     }
 
-    /**
-     * @param string $groupIntervalStart | null
-     *
-     * @return static
-     */
-    public function setGroupIntervalStart(?string $groupIntervalStart = null): self
+    public function setGroupIntervalStart(?string $groupIntervalStart): static
     {
         $this->groupIntervalStart = $groupIntervalStart;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getGroupIntervalStart(): ?string
     {
         return $this->groupIntervalStart;
     }
 
-    /**
-     * @param \DateTimeInterface $createdAt | null
-     *
-     * @return static
-     */
-    public function setCreatedAt($createdAt = null): self
+    public function setCreatedAt(null|\DateTime|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime|string|null
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param DestinationRateDto | null
-     *
-     * @return static
-     */
-    public function setDestinationRate(?DestinationRateDto $destinationRate = null): self
+    public function setDestinationRate(?DestinationRateDto $destinationRate): static
     {
         $this->destinationRate = $destinationRate;
 
         return $this;
     }
 
-    /**
-     * @return DestinationRateDto | null
-     */
     public function getDestinationRate(): ?DestinationRateDto
     {
         return $this->destinationRate;
     }
 
-    /**
-     * @return static
-     */
-    public function setDestinationRateId($id): self
+    public function setDestinationRateId($id): static
     {
         $value = !is_null($id)
             ? new DestinationRateDto($id)
@@ -336,9 +253,6 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->setDestinationRate($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDestinationRateId()
     {
         if ($dto = $this->getDestinationRate()) {

@@ -15,32 +15,32 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $srcIp;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $proto;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fromPattern;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $ruriPattern;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tag;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $description;
 
@@ -117,190 +117,115 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $srcIp | null
-     *
-     * @return static
-     */
-    public function setSrcIp(?string $srcIp = null): self
+    public function setSrcIp(?string $srcIp): static
     {
         $this->srcIp = $srcIp;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSrcIp(): ?string
     {
         return $this->srcIp;
     }
 
-    /**
-     * @param string $proto | null
-     *
-     * @return static
-     */
-    public function setProto(?string $proto = null): self
+    public function setProto(?string $proto): static
     {
         $this->proto = $proto;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getProto(): ?string
     {
         return $this->proto;
     }
 
-    /**
-     * @param string $fromPattern | null
-     *
-     * @return static
-     */
-    public function setFromPattern(?string $fromPattern = null): self
+    public function setFromPattern(?string $fromPattern): static
     {
         $this->fromPattern = $fromPattern;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFromPattern(): ?string
     {
         return $this->fromPattern;
     }
 
-    /**
-     * @param string $ruriPattern | null
-     *
-     * @return static
-     */
-    public function setRuriPattern(?string $ruriPattern = null): self
+    public function setRuriPattern(?string $ruriPattern): static
     {
         $this->ruriPattern = $ruriPattern;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRuriPattern(): ?string
     {
         return $this->ruriPattern;
     }
 
-    /**
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    public function setTag(?string $tag = null): self
+    public function setTag(?string $tag): static
     {
         $this->tag = $tag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param int $priority | null
-     *
-     * @return static
-     */
-    public function setPriority(?int $priority = null): self
+    public function setPriority(?int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -309,9 +234,6 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {

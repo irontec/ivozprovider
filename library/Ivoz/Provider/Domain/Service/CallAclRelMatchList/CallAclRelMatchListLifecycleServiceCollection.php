@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\CallAclRelMatchList;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class CallAclRelMatchListLifecycleServiceCollection implements LifecycleServiceC
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, CallAclRelMatchListLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, CallAclRelMatchListLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

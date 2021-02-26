@@ -16,17 +16,17 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $username;
+    private $username = '';
 
     /**
      * @var string
      */
-    private $domain;
+    private $domain = '';
 
     /**
-     * @var 
+     * @var string
      */
-    private $doc;
+    private $doc = '';
 
     /**
      * @var int
@@ -36,7 +36,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $etag;
+    private $etag = '';
 
     /**
      * @var int
@@ -46,7 +46,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $docUri;
+    private $docUri = '';
 
     /**
      * @var int
@@ -116,182 +116,110 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $username | null
-     *
-     * @return static
-     */
-    public function setUsername(?string $username = null): self
+    public function setUsername(?string $username): static
     {
         $this->username = $username;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    /**
-     * @param string $domain | null
-     *
-     * @return static
-     */
-    public function setDomain(?string $domain = null): self
+    public function setDomain(?string $domain): static
     {
         $this->domain = $domain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDomain(): ?string
     {
         return $this->domain;
     }
 
-    /**
-     * @param  $doc | null
-     *
-     * @return static
-     */
-    public function setDoc(? $doc = null): self
+    public function setDoc(?string $doc): static
     {
         $this->doc = $doc;
 
         return $this;
     }
 
-    /**
-     * @return  | null
-     */
-    public function getDoc()
+    public function getDoc(): ?string
     {
         return $this->doc;
     }
 
-    /**
-     * @param int $docType | null
-     *
-     * @return static
-     */
-    public function setDocType(?int $docType = null): self
+    public function setDocType(?int $docType): static
     {
         $this->docType = $docType;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getDocType(): ?int
     {
         return $this->docType;
     }
 
-    /**
-     * @param string $etag | null
-     *
-     * @return static
-     */
-    public function setEtag(?string $etag = null): self
+    public function setEtag(?string $etag): static
     {
         $this->etag = $etag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEtag(): ?string
     {
         return $this->etag;
     }
 
-    /**
-     * @param int $source | null
-     *
-     * @return static
-     */
-    public function setSource(?int $source = null): self
+    public function setSource(?int $source): static
     {
         $this->source = $source;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getSource(): ?int
     {
         return $this->source;
     }
 
-    /**
-     * @param string $docUri | null
-     *
-     * @return static
-     */
-    public function setDocUri(?string $docUri = null): self
+    public function setDocUri(?string $docUri): static
     {
         $this->docUri = $docUri;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDocUri(): ?string
     {
         return $this->docUri;
     }
 
-    /**
-     * @param int $port | null
-     *
-     * @return static
-     */
-    public function setPort(?int $port = null): self
+    public function setPort(?int $port): static
     {
         $this->port = $port;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPort(): ?int
     {
         return $this->port;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

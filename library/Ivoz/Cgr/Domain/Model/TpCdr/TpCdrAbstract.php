@@ -84,13 +84,13 @@ abstract class TpCdrAbstract
 
     /**
      * column: setup_time
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $setupTime;
 
     /**
      * column: answer_time
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $answerTime;
 
@@ -130,19 +130,19 @@ abstract class TpCdrAbstract
 
     /**
      * column: created_at
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $createdAt;
 
     /**
      * column: updated_at
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $updatedAt;
 
     /**
      * column: deleted_at
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $deletedAt;
 
@@ -213,7 +213,7 @@ abstract class TpCdrAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TpCdrDto
      */
     public static function createDto($id = null)
@@ -398,14 +398,7 @@ abstract class TpCdrAbstract
         ];
     }
 
-    /**
-     * Set cgrid
-     *
-     * @param string $cgrid
-     *
-     * @return static
-     */
-    protected function setCgrid(string $cgrid): TpCdrInterface
+    protected function setCgrid(string $cgrid): static
     {
         Assertion::maxLength($cgrid, 40, 'cgrid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -414,24 +407,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get cgrid
-     *
-     * @return string
-     */
     public function getCgrid(): string
     {
         return $this->cgrid;
     }
 
-    /**
-     * Set runId
-     *
-     * @param string $runId
-     *
-     * @return static
-     */
-    protected function setRunId(string $runId): TpCdrInterface
+    protected function setRunId(string $runId): static
     {
         Assertion::maxLength($runId, 64, 'runId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -440,24 +421,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get runId
-     *
-     * @return string
-     */
     public function getRunId(): string
     {
         return $this->runId;
     }
 
-    /**
-     * Set originHost
-     *
-     * @param string $originHost
-     *
-     * @return static
-     */
-    protected function setOriginHost(string $originHost): TpCdrInterface
+    protected function setOriginHost(string $originHost): static
     {
         Assertion::maxLength($originHost, 64, 'originHost value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -466,24 +435,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get originHost
-     *
-     * @return string
-     */
     public function getOriginHost(): string
     {
         return $this->originHost;
     }
 
-    /**
-     * Set source
-     *
-     * @param string $source
-     *
-     * @return static
-     */
-    protected function setSource(string $source): TpCdrInterface
+    protected function setSource(string $source): static
     {
         Assertion::maxLength($source, 64, 'source value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -492,24 +449,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get source
-     *
-     * @return string
-     */
     public function getSource(): string
     {
         return $this->source;
     }
 
-    /**
-     * Set originId
-     *
-     * @param string $originId
-     *
-     * @return static
-     */
-    protected function setOriginId(string $originId): TpCdrInterface
+    protected function setOriginId(string $originId): static
     {
         Assertion::maxLength($originId, 128, 'originId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -518,24 +463,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get originId
-     *
-     * @return string
-     */
     public function getOriginId(): string
     {
         return $this->originId;
     }
 
-    /**
-     * Set tor
-     *
-     * @param string $tor
-     *
-     * @return static
-     */
-    protected function setTor(string $tor): TpCdrInterface
+    protected function setTor(string $tor): static
     {
         Assertion::maxLength($tor, 16, 'tor value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -544,24 +477,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get tor
-     *
-     * @return string
-     */
     public function getTor(): string
     {
         return $this->tor;
     }
 
-    /**
-     * Set requestType
-     *
-     * @param string $requestType
-     *
-     * @return static
-     */
-    protected function setRequestType(string $requestType): TpCdrInterface
+    protected function setRequestType(string $requestType): static
     {
         Assertion::maxLength($requestType, 24, 'requestType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -570,24 +491,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get requestType
-     *
-     * @return string
-     */
     public function getRequestType(): string
     {
         return $this->requestType;
     }
 
-    /**
-     * Set tenant
-     *
-     * @param string $tenant
-     *
-     * @return static
-     */
-    protected function setTenant(string $tenant): TpCdrInterface
+    protected function setTenant(string $tenant): static
     {
         Assertion::maxLength($tenant, 64, 'tenant value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -596,24 +505,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get tenant
-     *
-     * @return string
-     */
     public function getTenant(): string
     {
         return $this->tenant;
     }
 
-    /**
-     * Set category
-     *
-     * @param string $category
-     *
-     * @return static
-     */
-    protected function setCategory(string $category): TpCdrInterface
+    protected function setCategory(string $category): static
     {
         Assertion::maxLength($category, 32, 'category value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -622,24 +519,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get category
-     *
-     * @return string
-     */
     public function getCategory(): string
     {
         return $this->category;
     }
 
-    /**
-     * Set account
-     *
-     * @param string $account
-     *
-     * @return static
-     */
-    protected function setAccount(string $account): TpCdrInterface
+    protected function setAccount(string $account): static
     {
         Assertion::maxLength($account, 128, 'account value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -648,24 +533,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get account
-     *
-     * @return string
-     */
     public function getAccount(): string
     {
         return $this->account;
     }
 
-    /**
-     * Set subject
-     *
-     * @param string $subject
-     *
-     * @return static
-     */
-    protected function setSubject(string $subject): TpCdrInterface
+    protected function setSubject(string $subject): static
     {
         Assertion::maxLength($subject, 128, 'subject value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -674,24 +547,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get subject
-     *
-     * @return string
-     */
     public function getSubject(): string
     {
         return $this->subject;
     }
 
-    /**
-     * Set destination
-     *
-     * @param string $destination
-     *
-     * @return static
-     */
-    protected function setDestination(string $destination): TpCdrInterface
+    protected function setDestination(string $destination): static
     {
         Assertion::maxLength($destination, 128, 'destination value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -700,24 +561,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get destination
-     *
-     * @return string
-     */
     public function getDestination(): string
     {
         return $this->destination;
     }
 
-    /**
-     * Set setupTime
-     *
-     * @param \DateTimeInterface $setupTime
-     *
-     * @return static
-     */
-    protected function setSetupTime($setupTime): TpCdrInterface
+    protected function setSetupTime($setupTime): static
     {
 
         $setupTime = DateTimeHelper::createOrFix(
@@ -734,24 +583,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get setupTime
-     *
-     * @return \DateTimeInterface
-     */
-    public function getSetupTime(): \DateTimeInterface
+    public function getSetupTime(): \DateTime
     {
         return clone $this->setupTime;
     }
 
-    /**
-     * Set answerTime
-     *
-     * @param \DateTimeInterface $answerTime
-     *
-     * @return static
-     */
-    protected function setAnswerTime($answerTime): TpCdrInterface
+    protected function setAnswerTime($answerTime): static
     {
 
         $answerTime = DateTimeHelper::createOrFix(
@@ -768,72 +605,36 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get answerTime
-     *
-     * @return \DateTimeInterface
-     */
-    public function getAnswerTime(): \DateTimeInterface
+    public function getAnswerTime(): \DateTime
     {
         return clone $this->answerTime;
     }
 
-    /**
-     * Set usage
-     *
-     * @param int $usage
-     *
-     * @return static
-     */
-    protected function setUsage(int $usage): TpCdrInterface
+    protected function setUsage(int $usage): static
     {
         $this->usage = $usage;
 
         return $this;
     }
 
-    /**
-     * Get usage
-     *
-     * @return int
-     */
     public function getUsage(): int
     {
         return $this->usage;
     }
 
-    /**
-     * Set extraFields
-     *
-     * @param string $extraFields
-     *
-     * @return static
-     */
-    protected function setExtraFields(string $extraFields): TpCdrInterface
+    protected function setExtraFields(string $extraFields): static
     {
         $this->extraFields = $extraFields;
 
         return $this;
     }
 
-    /**
-     * Get extraFields
-     *
-     * @return string
-     */
     public function getExtraFields(): string
     {
         return $this->extraFields;
     }
 
-    /**
-     * Set costSource
-     *
-     * @param string $costSource
-     *
-     * @return static
-     */
-    protected function setCostSource(string $costSource): TpCdrInterface
+    protected function setCostSource(string $costSource): static
     {
         Assertion::maxLength($costSource, 64, 'costSource value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -842,96 +643,48 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get costSource
-     *
-     * @return string
-     */
     public function getCostSource(): string
     {
         return $this->costSource;
     }
 
-    /**
-     * Set cost
-     *
-     * @param float $cost
-     *
-     * @return static
-     */
-    protected function setCost(float $cost): TpCdrInterface
+    protected function setCost(float $cost): static
     {
         $this->cost = $cost;
 
         return $this;
     }
 
-    /**
-     * Get cost
-     *
-     * @return float
-     */
     public function getCost(): float
     {
         return $this->cost;
     }
 
-    /**
-     * Set costDetails
-     *
-     * @param array $costDetails
-     *
-     * @return static
-     */
-    protected function setCostDetails(array $costDetails): TpCdrInterface
+    protected function setCostDetails(array $costDetails): static
     {
         $this->costDetails = $costDetails;
 
         return $this;
     }
 
-    /**
-     * Get costDetails
-     *
-     * @return array
-     */
     public function getCostDetails(): array
     {
         return $this->costDetails;
     }
 
-    /**
-     * Set extraInfo
-     *
-     * @param string $extraInfo
-     *
-     * @return static
-     */
-    protected function setExtraInfo(string $extraInfo): TpCdrInterface
+    protected function setExtraInfo(string $extraInfo): static
     {
         $this->extraInfo = $extraInfo;
 
         return $this;
     }
 
-    /**
-     * Get extraInfo
-     *
-     * @return string
-     */
     public function getExtraInfo(): string
     {
         return $this->extraInfo;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTimeInterface $createdAt | null
-     *
-     * @return static
-     */
-    protected function setCreatedAt($createdAt = null): TpCdrInterface
+    protected function setCreatedAt($createdAt = null): static
     {
         if (!is_null($createdAt)) {
             Assertion::notNull(
@@ -953,24 +706,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTime
     {
         return !is_null($this->createdAt) ? clone $this->createdAt : null;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTimeInterface $updatedAt | null
-     *
-     * @return static
-     */
-    protected function setUpdatedAt($updatedAt = null): TpCdrInterface
+    protected function setUpdatedAt($updatedAt = null): static
     {
         if (!is_null($updatedAt)) {
             Assertion::notNull(
@@ -992,24 +733,12 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTime
     {
         return !is_null($this->updatedAt) ? clone $this->updatedAt : null;
     }
 
-    /**
-     * Set deletedAt
-     *
-     * @param \DateTimeInterface $deletedAt | null
-     *
-     * @return static
-     */
-    protected function setDeletedAt($deletedAt = null): TpCdrInterface
+    protected function setDeletedAt($deletedAt = null): static
     {
         if (!is_null($deletedAt)) {
             Assertion::notNull(
@@ -1031,12 +760,7 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * Get deletedAt
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getDeletedAt(): ?\DateTimeInterface
+    public function getDeletedAt(): ?\DateTime
     {
         return !is_null($this->deletedAt) ? clone $this->deletedAt : null;
     }

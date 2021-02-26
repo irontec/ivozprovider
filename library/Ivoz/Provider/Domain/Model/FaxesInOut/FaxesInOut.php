@@ -50,14 +50,7 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
         return $this->id;
     }
 
-    /**
-     * Set calldate
-     *
-     * @param \DateTime | null $calldate
-     *
-     * @return self
-     */
-    public function setCalldate($calldate = null): self
+    public function setCalldate($calldate = null): static
     {
         if (!$calldate) {
             $calldate = new \DateTime(null, new \DateTimeZone('UTC'));
@@ -82,7 +75,7 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
             $this->getDst();
     }
 
-    protected function setDst(?string $dst = null): FaxesInOutInterface
+    protected function setDst(?string $dst = null): static
     {
         $dst = preg_replace(
             '/[^0-9]/',

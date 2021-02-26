@@ -15,25 +15,10 @@ interface TerminalManufacturerInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Get iden
-     *
-     * @return string
-     */
     public function getIden(): string;
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string;
 
     /**

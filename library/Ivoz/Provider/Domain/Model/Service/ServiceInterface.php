@@ -18,41 +18,16 @@ interface ServiceInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setDefaultCode(string $defaultCode): ServiceInterface;
+    public function setDefaultCode(string $defaultCode): static;
 
-    /**
-     * Get iden
-     *
-     * @return string
-     */
     public function getIden(): string;
 
-    /**
-     * Get defaultCode
-     *
-     * @return string
-     */
     public function getDefaultCode(): string;
 
-    /**
-     * Get extraArgs
-     *
-     * @return bool
-     */
     public function getExtraArgs(): bool;
 
-    /**
-     * Get name
-     *
-     * @return Name
-     */
     public function getName(): Name;
 
-    /**
-     * Get description
-     *
-     * @return Description
-     */
     public function getDescription(): Description;
 
     /**

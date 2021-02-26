@@ -36,7 +36,7 @@ abstract class ChangelogAbstract
     protected $data = [];
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $createdOn;
 
@@ -85,7 +85,7 @@ abstract class ChangelogAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ChangelogDto
      */
     public static function createDto($id = null)
@@ -202,14 +202,7 @@ abstract class ChangelogAbstract
         ];
     }
 
-    /**
-     * Set entity
-     *
-     * @param string $entity
-     *
-     * @return static
-     */
-    protected function setEntity(string $entity): ChangelogInterface
+    protected function setEntity(string $entity): static
     {
         Assertion::maxLength($entity, 150, 'entity value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -218,24 +211,12 @@ abstract class ChangelogAbstract
         return $this;
     }
 
-    /**
-     * Get entity
-     *
-     * @return string
-     */
     public function getEntity(): string
     {
         return $this->entity;
     }
 
-    /**
-     * Set entityId
-     *
-     * @param string $entityId
-     *
-     * @return static
-     */
-    protected function setEntityId(string $entityId): ChangelogInterface
+    protected function setEntityId(string $entityId): static
     {
         Assertion::maxLength($entityId, 36, 'entityId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -244,48 +225,24 @@ abstract class ChangelogAbstract
         return $this;
     }
 
-    /**
-     * Get entityId
-     *
-     * @return string
-     */
     public function getEntityId(): string
     {
         return $this->entityId;
     }
 
-    /**
-     * Set data
-     *
-     * @param array $data | null
-     *
-     * @return static
-     */
-    protected function setData(?array $data = null): ChangelogInterface
+    protected function setData(?array $data = null): static
     {
         $this->data = $data;
 
         return $this;
     }
 
-    /**
-     * Get data
-     *
-     * @return array | null
-     */
     public function getData(): ?array
     {
         return $this->data;
     }
 
-    /**
-     * Set createdOn
-     *
-     * @param \DateTimeInterface $createdOn
-     *
-     * @return static
-     */
-    protected function setCreatedOn($createdOn): ChangelogInterface
+    protected function setCreatedOn($createdOn): static
     {
 
         $createdOn = DateTimeHelper::createOrFix(
@@ -302,59 +259,30 @@ abstract class ChangelogAbstract
         return $this;
     }
 
-    /**
-     * Get createdOn
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedOn(): \DateTimeInterface
+    public function getCreatedOn(): \DateTime
     {
         return clone $this->createdOn;
     }
 
-    /**
-     * Set microtime
-     *
-     * @param int $microtime
-     *
-     * @return static
-     */
-    protected function setMicrotime(int $microtime): ChangelogInterface
+    protected function setMicrotime(int $microtime): static
     {
         $this->microtime = $microtime;
 
         return $this;
     }
 
-    /**
-     * Get microtime
-     *
-     * @return int
-     */
     public function getMicrotime(): int
     {
         return $this->microtime;
     }
 
-    /**
-     * Set command
-     *
-     * @param CommandlogInterface
-     *
-     * @return static
-     */
-    protected function setCommand(CommandlogInterface $command): ChangelogInterface
+    protected function setCommand(CommandlogInterface $command): static
     {
         $this->command = $command;
 
         return $this;
     }
 
-    /**
-     * Get command
-     *
-     * @return CommandlogInterface
-     */
     public function getCommand(): CommandlogInterface
     {
         return $this->command;

@@ -63,14 +63,7 @@ class File
             $this->getImporterArguments() === $file->getImporterArguments();
     }
 
-    /**
-     * Set fileSize
-     *
-     * @param int $fileSize | null
-     *
-     * @return static
-     */
-    protected function setFileSize(?int $fileSize = null): File
+    protected function setFileSize(?int $fileSize = null): static
     {
         if (!is_null($fileSize)) {
             Assertion::greaterOrEqualThan($fileSize, 0, 'fileSize provided "%s" is not greater or equal than "%s".');
@@ -81,24 +74,12 @@ class File
         return $this;
     }
 
-    /**
-     * Get fileSize
-     *
-     * @return int | null
-     */
     public function getFileSize(): ?int
     {
         return $this->fileSize;
     }
 
-    /**
-     * Set mimeType
-     *
-     * @param string $mimeType | null
-     *
-     * @return static
-     */
-    protected function setMimeType(?string $mimeType = null): File
+    protected function setMimeType(?string $mimeType = null): static
     {
         if (!is_null($mimeType)) {
             Assertion::maxLength($mimeType, 80, 'mimeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -109,24 +90,12 @@ class File
         return $this;
     }
 
-    /**
-     * Get mimeType
-     *
-     * @return string | null
-     */
     public function getMimeType(): ?string
     {
         return $this->mimeType;
     }
 
-    /**
-     * Set baseName
-     *
-     * @param string $baseName | null
-     *
-     * @return static
-     */
-    protected function setBaseName(?string $baseName = null): File
+    protected function setBaseName(?string $baseName = null): static
     {
         if (!is_null($baseName)) {
             Assertion::maxLength($baseName, 255, 'baseName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -137,35 +106,18 @@ class File
         return $this;
     }
 
-    /**
-     * Get baseName
-     *
-     * @return string | null
-     */
     public function getBaseName(): ?string
     {
         return $this->baseName;
     }
 
-    /**
-     * Set importerArguments
-     *
-     * @param array $importerArguments | null
-     *
-     * @return static
-     */
-    protected function setImporterArguments(?array $importerArguments = null): File
+    protected function setImporterArguments(?array $importerArguments = null): static
     {
         $this->importerArguments = $importerArguments;
 
         return $this;
     }
 
-    /**
-     * Get importerArguments
-     *
-     * @return array | null
-     */
     public function getImporterArguments(): ?array
     {
         return $this->importerArguments;

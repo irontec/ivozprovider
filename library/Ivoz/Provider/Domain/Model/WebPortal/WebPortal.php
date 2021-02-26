@@ -67,9 +67,9 @@ class WebPortal extends WebPortalAbstract implements FileContainerInterface, Web
     }
 
     /**
-     * {@inheritDoc}
+     * @return static
      */
-    public function setUrl(string $url): self
+    public function setUrl(string $url): static
     {
         Assertion::regex($url, '#^https://.*$#');
         return parent::setUrl($url);

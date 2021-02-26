@@ -54,7 +54,7 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
         $this->sanitizeRouteValues();
     }
 
-    public function setUser(?UserInterface $user = null): ExtensionInterface
+    public function setUser(?UserInterface $user = null): static
     {
         return parent::setUser($user);
     }
@@ -62,7 +62,7 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
     /**
      * {@inheritDoc}
      */
-    public function setNumber(string $number): self
+    public function setNumber(string $number): static
     {
         Assertion::regex($number, '/^[0-9].*$/');
         return parent::setNumber($number);
@@ -71,7 +71,7 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
     /**
      * {@inheritDoc}
      */
-    public function setNumberValue(?string $numberValue = null): self
+    public function setNumberValue(?string $numberValue = null): static
     {
         if (!empty($numberValue)) {
             Assertion::regex($numberValue, '/^[0-9]+$/');

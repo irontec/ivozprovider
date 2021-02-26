@@ -51,7 +51,7 @@ abstract class MatchListPatternAbstract
     protected $matchList;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $numberCountry;
 
@@ -84,7 +84,7 @@ abstract class MatchListPatternAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return MatchListPatternDto
      */
     public static function createDto($id = null)
@@ -201,14 +201,7 @@ abstract class MatchListPatternAbstract
         ];
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description | null
-     *
-     * @return static
-     */
-    protected function setDescription(?string $description = null): MatchListPatternInterface
+    protected function setDescription(?string $description = null): static
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 55, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -219,24 +212,12 @@ abstract class MatchListPatternAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return static
-     */
-    protected function setType(string $type): MatchListPatternInterface
+    protected function setType(string $type): static
     {
         Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -253,24 +234,12 @@ abstract class MatchListPatternAbstract
         return $this;
     }
 
-    /**
-     * Get type
-     *
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * Set regexp
-     *
-     * @param string $regexp | null
-     *
-     * @return static
-     */
-    protected function setRegexp(?string $regexp = null): MatchListPatternInterface
+    protected function setRegexp(?string $regexp = null): static
     {
         if (!is_null($regexp)) {
             Assertion::maxLength($regexp, 255, 'regexp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -281,24 +250,12 @@ abstract class MatchListPatternAbstract
         return $this;
     }
 
-    /**
-     * Get regexp
-     *
-     * @return string | null
-     */
     public function getRegexp(): ?string
     {
         return $this->regexp;
     }
 
-    /**
-     * Set numbervalue
-     *
-     * @param string $numbervalue | null
-     *
-     * @return static
-     */
-    protected function setNumbervalue(?string $numbervalue = null): MatchListPatternInterface
+    protected function setNumbervalue(?string $numbervalue = null): static
     {
         if (!is_null($numbervalue)) {
             Assertion::maxLength($numbervalue, 25, 'numbervalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -309,59 +266,31 @@ abstract class MatchListPatternAbstract
         return $this;
     }
 
-    /**
-     * Get numbervalue
-     *
-     * @return string | null
-     */
     public function getNumbervalue(): ?string
     {
         return $this->numbervalue;
     }
 
-    /**
-     * Set matchList
-     *
-     * @param MatchListInterface
-     *
-     * @return static
-     */
-    public function setMatchList(MatchListInterface $matchList): MatchListPatternInterface
+    public function setMatchList(MatchListInterface $matchList): static
     {
         $this->matchList = $matchList;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get matchList
-     *
-     * @return MatchListInterface
-     */
     public function getMatchList(): MatchListInterface
     {
         return $this->matchList;
     }
 
-    /**
-     * Set numberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setNumberCountry(?CountryInterface $numberCountry = null): MatchListPatternInterface
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;

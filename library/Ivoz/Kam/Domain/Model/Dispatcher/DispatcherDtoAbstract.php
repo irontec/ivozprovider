@@ -110,170 +110,103 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param int $setid | null
-     *
-     * @return static
-     */
-    public function setSetid(?int $setid = null): self
+    public function setSetid(?int $setid): static
     {
         $this->setid = $setid;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getSetid(): ?int
     {
         return $this->setid;
     }
 
-    /**
-     * @param string $destination | null
-     *
-     * @return static
-     */
-    public function setDestination(?string $destination = null): self
+    public function setDestination(?string $destination): static
     {
         $this->destination = $destination;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDestination(): ?string
     {
         return $this->destination;
     }
 
-    /**
-     * @param int $flags | null
-     *
-     * @return static
-     */
-    public function setFlags(?int $flags = null): self
+    public function setFlags(?int $flags): static
     {
         $this->flags = $flags;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getFlags(): ?int
     {
         return $this->flags;
     }
 
-    /**
-     * @param int $priority | null
-     *
-     * @return static
-     */
-    public function setPriority(?int $priority = null): self
+    public function setPriority(?int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    /**
-     * @param string $attrs | null
-     *
-     * @return static
-     */
-    public function setAttrs(?string $attrs = null): self
+    public function setAttrs(?string $attrs): static
     {
         $this->attrs = $attrs;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAttrs(): ?string
     {
         return $this->attrs;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param ApplicationServerDto | null
-     *
-     * @return static
-     */
-    public function setApplicationServer(?ApplicationServerDto $applicationServer = null): self
+    public function setApplicationServer(?ApplicationServerDto $applicationServer): static
     {
         $this->applicationServer = $applicationServer;
 
         return $this;
     }
 
-    /**
-     * @return ApplicationServerDto | null
-     */
     public function getApplicationServer(): ?ApplicationServerDto
     {
         return $this->applicationServer;
     }
 
-    /**
-     * @return static
-     */
-    public function setApplicationServerId($id): self
+    public function setApplicationServerId($id): static
     {
         $value = !is_null($id)
             ? new ApplicationServerDto($id)
@@ -282,9 +215,6 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $this->setApplicationServer($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getApplicationServerId()
     {
         if ($dto = $this->getApplicationServer()) {

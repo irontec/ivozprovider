@@ -17,10 +17,10 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $sourceAddress;
+    private $sourceAddress = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $ipAddr;
 
@@ -35,12 +35,12 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     private $port = 0;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tag;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $description;
 
@@ -110,170 +110,103 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $sourceAddress | null
-     *
-     * @return static
-     */
-    public function setSourceAddress(?string $sourceAddress = null): self
+    public function setSourceAddress(?string $sourceAddress): static
     {
         $this->sourceAddress = $sourceAddress;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSourceAddress(): ?string
     {
         return $this->sourceAddress;
     }
 
-    /**
-     * @param string $ipAddr | null
-     *
-     * @return static
-     */
-    public function setIpAddr(?string $ipAddr = null): self
+    public function setIpAddr(?string $ipAddr): static
     {
         $this->ipAddr = $ipAddr;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getIpAddr(): ?string
     {
         return $this->ipAddr;
     }
 
-    /**
-     * @param int $mask | null
-     *
-     * @return static
-     */
-    public function setMask(?int $mask = null): self
+    public function setMask(?int $mask): static
     {
         $this->mask = $mask;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMask(): ?int
     {
         return $this->mask;
     }
 
-    /**
-     * @param int $port | null
-     *
-     * @return static
-     */
-    public function setPort(?int $port = null): self
+    public function setPort(?int $port): static
     {
         $this->port = $port;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPort(): ?int
     {
         return $this->port;
     }
 
-    /**
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    public function setTag(?string $tag = null): self
+    public function setTag(?string $tag): static
     {
         $this->tag = $tag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -282,9 +215,6 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {

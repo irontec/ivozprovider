@@ -65,7 +65,7 @@ abstract class RoutingTagAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return RoutingTagDto
      */
     public static function createDto($id = null)
@@ -170,14 +170,7 @@ abstract class RoutingTagAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): RoutingTagInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 80, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -186,24 +179,12 @@ abstract class RoutingTagAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return static
-     */
-    protected function setTag(string $tag): RoutingTagInterface
+    protected function setTag(string $tag): static
     {
         Assertion::maxLength($tag, 15, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -212,35 +193,18 @@ abstract class RoutingTagAbstract
         return $this;
     }
 
-    /**
-     * Get tag
-     *
-     * @return string
-     */
     public function getTag(): string
     {
         return $this->tag;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    protected function setBrand(BrandInterface $brand): RoutingTagInterface
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;

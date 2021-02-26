@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\CallForwardSetting;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class CallForwardSettingLifecycleServiceCollection implements LifecycleServiceCo
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, CallForwardSettingLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, CallForwardSettingLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

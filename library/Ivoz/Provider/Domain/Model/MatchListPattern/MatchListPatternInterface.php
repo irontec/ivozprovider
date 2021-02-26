@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\MatchListPattern;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * MatchListPatternInterface
@@ -27,55 +27,18 @@ interface MatchListPatternInterface extends LoggableEntityInterface
      */
     public function getNumberE164();
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string;
 
-    /**
-     * Get type
-     *
-     * @return string
-     */
     public function getType(): string;
 
-    /**
-     * Get regexp
-     *
-     * @return string | null
-     */
     public function getRegexp(): ?string;
 
-    /**
-     * Get numbervalue
-     *
-     * @return string | null
-     */
     public function getNumbervalue(): ?string;
 
-    /**
-     * Set matchList
-     *
-     * @param MatchListInterface
-     *
-     * @return static
-     */
-    public function setMatchList(MatchListInterface $matchList): MatchListPatternInterface;
+    public function setMatchList(MatchListInterface $matchList): static;
 
-    /**
-     * Get matchList
-     *
-     * @return MatchListInterface
-     */
     public function getMatchList(): MatchListInterface;
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface;
 
     /**

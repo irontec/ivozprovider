@@ -76,50 +76,31 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param PickUpGroupDto | null
-     *
-     * @return static
-     */
-    public function setPickUpGroup(?PickUpGroupDto $pickUpGroup = null): self
+    public function setPickUpGroup(?PickUpGroupDto $pickUpGroup): static
     {
         $this->pickUpGroup = $pickUpGroup;
 
         return $this;
     }
 
-    /**
-     * @return PickUpGroupDto | null
-     */
     public function getPickUpGroup(): ?PickUpGroupDto
     {
         return $this->pickUpGroup;
     }
 
-    /**
-     * @return static
-     */
-    public function setPickUpGroupId($id): self
+    public function setPickUpGroupId($id): static
     {
         $value = !is_null($id)
             ? new PickUpGroupDto($id)
@@ -128,9 +109,6 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
         return $this->setPickUpGroup($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getPickUpGroupId()
     {
         if ($dto = $this->getPickUpGroup()) {
@@ -140,30 +118,19 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setUser(?UserDto $user = null): self
+    public function setUser(?UserDto $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
-    /**
-     * @return static
-     */
-    public function setUserId($id): self
+    public function setUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -172,9 +139,6 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getUserId()
     {
         if ($dto = $this->getUser()) {

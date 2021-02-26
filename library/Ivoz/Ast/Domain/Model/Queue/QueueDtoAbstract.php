@@ -17,20 +17,20 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $periodicAnnounce;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $periodicAnnounceFrequency;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $timeout;
 
@@ -45,22 +45,22 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     private $ringinuse = 'no';
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $wrapuptime;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $maxlen;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $strategy;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $weight;
 
@@ -138,250 +138,151 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $periodicAnnounce | null
-     *
-     * @return static
-     */
-    public function setPeriodicAnnounce(?string $periodicAnnounce = null): self
+    public function setPeriodicAnnounce(?string $periodicAnnounce): static
     {
         $this->periodicAnnounce = $periodicAnnounce;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPeriodicAnnounce(): ?string
     {
         return $this->periodicAnnounce;
     }
 
-    /**
-     * @param int $periodicAnnounceFrequency | null
-     *
-     * @return static
-     */
-    public function setPeriodicAnnounceFrequency(?int $periodicAnnounceFrequency = null): self
+    public function setPeriodicAnnounceFrequency(?int $periodicAnnounceFrequency): static
     {
         $this->periodicAnnounceFrequency = $periodicAnnounceFrequency;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPeriodicAnnounceFrequency(): ?int
     {
         return $this->periodicAnnounceFrequency;
     }
 
-    /**
-     * @param int $timeout | null
-     *
-     * @return static
-     */
-    public function setTimeout(?int $timeout = null): self
+    public function setTimeout(?int $timeout): static
     {
         $this->timeout = $timeout;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getTimeout(): ?int
     {
         return $this->timeout;
     }
 
-    /**
-     * @param string $autopause | null
-     *
-     * @return static
-     */
-    public function setAutopause(?string $autopause = null): self
+    public function setAutopause(?string $autopause): static
     {
         $this->autopause = $autopause;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAutopause(): ?string
     {
         return $this->autopause;
     }
 
-    /**
-     * @param string $ringinuse | null
-     *
-     * @return static
-     */
-    public function setRinginuse(?string $ringinuse = null): self
+    public function setRinginuse(?string $ringinuse): static
     {
         $this->ringinuse = $ringinuse;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRinginuse(): ?string
     {
         return $this->ringinuse;
     }
 
-    /**
-     * @param int $wrapuptime | null
-     *
-     * @return static
-     */
-    public function setWrapuptime(?int $wrapuptime = null): self
+    public function setWrapuptime(?int $wrapuptime): static
     {
         $this->wrapuptime = $wrapuptime;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getWrapuptime(): ?int
     {
         return $this->wrapuptime;
     }
 
-    /**
-     * @param int $maxlen | null
-     *
-     * @return static
-     */
-    public function setMaxlen(?int $maxlen = null): self
+    public function setMaxlen(?int $maxlen): static
     {
         $this->maxlen = $maxlen;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMaxlen(): ?int
     {
         return $this->maxlen;
     }
 
-    /**
-     * @param string $strategy | null
-     *
-     * @return static
-     */
-    public function setStrategy(?string $strategy = null): self
+    public function setStrategy(?string $strategy): static
     {
         $this->strategy = $strategy;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getStrategy(): ?string
     {
         return $this->strategy;
     }
 
-    /**
-     * @param int $weight | null
-     *
-     * @return static
-     */
-    public function setWeight(?int $weight = null): self
+    public function setWeight(?int $weight): static
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getWeight(): ?int
     {
         return $this->weight;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param QueueDto | null
-     *
-     * @return static
-     */
-    public function setQueue(?QueueDto $queue = null): self
+    public function setQueue(?QueueDto $queue): static
     {
         $this->queue = $queue;
 
         return $this;
     }
 
-    /**
-     * @return QueueDto | null
-     */
     public function getQueue(): ?QueueDto
     {
         return $this->queue;
     }
 
-    /**
-     * @return static
-     */
-    public function setQueueId($id): self
+    public function setQueueId($id): static
     {
         $value = !is_null($id)
             ? new QueueDto($id)
@@ -390,9 +291,6 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->setQueue($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getQueueId()
     {
         if ($dto = $this->getQueue()) {

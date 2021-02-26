@@ -111,13 +111,6 @@ trait DestinationRateGroupTrait
         ];
     }
 
-    /**
-     * Add destinationRate
-     *
-     * @param DestinationRateInterface $destinationRate
-     *
-     * @return static
-     */
     public function addDestinationRate(DestinationRateInterface $destinationRate): DestinationRateGroupInterface
     {
         $this->destinationRates->add($destinationRate);
@@ -125,13 +118,6 @@ trait DestinationRateGroupTrait
         return $this;
     }
 
-    /**
-     * Remove destinationRate
-     *
-     * @param DestinationRateInterface $destinationRate
-     *
-     * @return static
-     */
     public function removeDestinationRate(DestinationRateInterface $destinationRate): DestinationRateGroupInterface
     {
         $this->destinationRates->removeElement($destinationRate);
@@ -139,13 +125,6 @@ trait DestinationRateGroupTrait
         return $this;
     }
 
-    /**
-     * Replace destinationRates
-     *
-     * @param ArrayCollection $destinationRates of DestinationRateInterface
-     *
-     * @return static
-     */
     public function replaceDestinationRates(ArrayCollection $destinationRates): DestinationRateGroupInterface
     {
         $updatedEntities = [];
@@ -174,11 +153,6 @@ trait DestinationRateGroupTrait
         return $this;
     }
 
-    /**
-     * Get destinationRates
-     * @param Criteria | null $criteria
-     * @return DestinationRateInterface[]
-     */
     public function getDestinationRates(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

@@ -33,7 +33,7 @@ class DdiProviderAddress extends DdiProviderAddressAbstract implements DdiProvid
     /**
      * @inheritdoc
      */
-    public function setIp(?string $ip = null): self
+    public function setIp(?string $ip = null): static
     {
         Assertion::ip($ip);
 

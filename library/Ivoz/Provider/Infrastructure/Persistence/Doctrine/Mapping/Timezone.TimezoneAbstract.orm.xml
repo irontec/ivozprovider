@@ -15,7 +15,7 @@
     </field>
     <many-to-one field="country" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="countryId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="countryId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

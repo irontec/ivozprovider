@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\AdministratorRelPublicEntity;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -22,8 +23,9 @@ class AdministratorRelPublicEntityLifecycleServiceCollection implements Lifecycl
     /**
      * @return void
      */
-    protected function addService(string $event, AdministratorRelPublicEntityLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, AdministratorRelPublicEntityLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

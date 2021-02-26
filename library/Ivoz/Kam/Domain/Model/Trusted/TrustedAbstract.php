@@ -91,7 +91,7 @@ abstract class TrustedAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TrustedDto
      */
     public static function createDto($id = null)
@@ -216,14 +216,7 @@ abstract class TrustedAbstract
         ];
     }
 
-    /**
-     * Set srcIp
-     *
-     * @param string $srcIp | null
-     *
-     * @return static
-     */
-    protected function setSrcIp(?string $srcIp = null): TrustedInterface
+    protected function setSrcIp(?string $srcIp = null): static
     {
         if (!is_null($srcIp)) {
             Assertion::maxLength($srcIp, 50, 'srcIp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -234,24 +227,12 @@ abstract class TrustedAbstract
         return $this;
     }
 
-    /**
-     * Get srcIp
-     *
-     * @return string | null
-     */
     public function getSrcIp(): ?string
     {
         return $this->srcIp;
     }
 
-    /**
-     * Set proto
-     *
-     * @param string $proto | null
-     *
-     * @return static
-     */
-    protected function setProto(?string $proto = null): TrustedInterface
+    protected function setProto(?string $proto = null): static
     {
         if (!is_null($proto)) {
             Assertion::maxLength($proto, 4, 'proto value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -262,24 +243,12 @@ abstract class TrustedAbstract
         return $this;
     }
 
-    /**
-     * Get proto
-     *
-     * @return string | null
-     */
     public function getProto(): ?string
     {
         return $this->proto;
     }
 
-    /**
-     * Set fromPattern
-     *
-     * @param string $fromPattern | null
-     *
-     * @return static
-     */
-    protected function setFromPattern(?string $fromPattern = null): TrustedInterface
+    protected function setFromPattern(?string $fromPattern = null): static
     {
         if (!is_null($fromPattern)) {
             Assertion::maxLength($fromPattern, 64, 'fromPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -290,24 +259,12 @@ abstract class TrustedAbstract
         return $this;
     }
 
-    /**
-     * Get fromPattern
-     *
-     * @return string | null
-     */
     public function getFromPattern(): ?string
     {
         return $this->fromPattern;
     }
 
-    /**
-     * Set ruriPattern
-     *
-     * @param string $ruriPattern | null
-     *
-     * @return static
-     */
-    protected function setRuriPattern(?string $ruriPattern = null): TrustedInterface
+    protected function setRuriPattern(?string $ruriPattern = null): static
     {
         if (!is_null($ruriPattern)) {
             Assertion::maxLength($ruriPattern, 64, 'ruriPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -318,24 +275,12 @@ abstract class TrustedAbstract
         return $this;
     }
 
-    /**
-     * Get ruriPattern
-     *
-     * @return string | null
-     */
     public function getRuriPattern(): ?string
     {
         return $this->ruriPattern;
     }
 
-    /**
-     * Set tag
-     *
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    protected function setTag(?string $tag = null): TrustedInterface
+    protected function setTag(?string $tag = null): static
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -346,24 +291,12 @@ abstract class TrustedAbstract
         return $this;
     }
 
-    /**
-     * Get tag
-     *
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description | null
-     *
-     * @return static
-     */
-    protected function setDescription(?string $description = null): TrustedInterface
+    protected function setDescription(?string $description = null): static
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -374,59 +307,30 @@ abstract class TrustedAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * Set priority
-     *
-     * @param int $priority
-     *
-     * @return static
-     */
-    protected function setPriority(int $priority): TrustedInterface
+    protected function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * Get priority
-     *
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): TrustedInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;

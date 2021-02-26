@@ -16,7 +16,7 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
     use DtoNormalizer;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $quantity;
 
@@ -83,70 +83,43 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
         return $response;
     }
 
-    /**
-     * @param int $quantity | null
-     *
-     * @return static
-     */
-    public function setQuantity(?int $quantity = null): self
+    public function setQuantity(?int $quantity): static
     {
         $this->quantity = $quantity;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param FixedCostDto | null
-     *
-     * @return static
-     */
-    public function setFixedCost(?FixedCostDto $fixedCost = null): self
+    public function setFixedCost(?FixedCostDto $fixedCost): static
     {
         $this->fixedCost = $fixedCost;
 
         return $this;
     }
 
-    /**
-     * @return FixedCostDto | null
-     */
     public function getFixedCost(): ?FixedCostDto
     {
         return $this->fixedCost;
     }
 
-    /**
-     * @return static
-     */
-    public function setFixedCostId($id): self
+    public function setFixedCostId($id): static
     {
         $value = !is_null($id)
             ? new FixedCostDto($id)
@@ -155,9 +128,6 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
         return $this->setFixedCost($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFixedCostId()
     {
         if ($dto = $this->getFixedCost()) {
@@ -167,30 +137,19 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
         return null;
     }
 
-    /**
-     * @param InvoiceDto | null
-     *
-     * @return static
-     */
-    public function setInvoice(?InvoiceDto $invoice = null): self
+    public function setInvoice(?InvoiceDto $invoice): static
     {
         $this->invoice = $invoice;
 
         return $this;
     }
 
-    /**
-     * @return InvoiceDto | null
-     */
     public function getInvoice(): ?InvoiceDto
     {
         return $this->invoice;
     }
 
-    /**
-     * @return static
-     */
-    public function setInvoiceId($id): self
+    public function setInvoiceId($id): static
     {
         $value = !is_null($id)
             ? new InvoiceDto($id)
@@ -199,9 +158,6 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
         return $this->setInvoice($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getInvoiceId()
     {
         if ($dto = $this->getInvoice()) {

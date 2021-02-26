@@ -132,41 +132,27 @@ trait DestinationRateTrait
         ];
     }
 
-    /**
-     * @var TpRateInterface
-     * mappedBy destinationRate
-     */
-    public function setTpRate(TpRateInterface $tpRate): DestinationRateInterface
+    public function setTpRate(TpRateInterface $tpRate): static
     {
         $this->tpRate = $tpRate;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get tpRate
-     * @return TpRateInterface
-     */
     public function getTpRate(): ?TpRateInterface
     {
         return $this->tpRate;
     }
 
-    /**
-     * @var TpDestinationRateInterface
-     * mappedBy destinationRate
-     */
-    public function setTpDestinationRate(TpDestinationRateInterface $tpDestinationRate): DestinationRateInterface
+    public function setTpDestinationRate(TpDestinationRateInterface $tpDestinationRate): static
     {
         $this->tpDestinationRate = $tpDestinationRate;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get tpDestinationRate
-     * @return TpDestinationRateInterface
-     */
     public function getTpDestinationRate(): ?TpDestinationRateInterface
     {
         return $this->tpDestinationRate;

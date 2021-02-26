@@ -132,41 +132,27 @@ trait RatingPlanTrait
         ];
     }
 
-    /**
-     * @var TpTimingInterface
-     * mappedBy ratingPlan
-     */
-    public function setTpTiming(TpTimingInterface $tpTiming): RatingPlanInterface
+    public function setTpTiming(TpTimingInterface $tpTiming): static
     {
         $this->tpTiming = $tpTiming;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get tpTiming
-     * @return TpTimingInterface
-     */
     public function getTpTiming(): ?TpTimingInterface
     {
         return $this->tpTiming;
     }
 
-    /**
-     * @var TpRatingPlanInterface
-     * mappedBy ratingPlan
-     */
-    public function setTpRatingPlan(TpRatingPlanInterface $tpRatingPlan): RatingPlanInterface
+    public function setTpRatingPlan(TpRatingPlanInterface $tpRatingPlan): static
     {
         $this->tpRatingPlan = $tpRatingPlan;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get tpRatingPlan
-     * @return TpRatingPlanInterface
-     */
     public function getTpRatingPlan(): ?TpRatingPlanInterface
     {
         return $this->tpRatingPlan;

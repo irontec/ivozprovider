@@ -65,7 +65,7 @@ abstract class TerminalManufacturerAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TerminalManufacturerDto
      */
     public static function createDto($id = null)
@@ -170,14 +170,7 @@ abstract class TerminalManufacturerAbstract
         ];
     }
 
-    /**
-     * Set iden
-     *
-     * @param string $iden
-     *
-     * @return static
-     */
-    protected function setIden(string $iden): TerminalManufacturerInterface
+    protected function setIden(string $iden): static
     {
         Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -186,24 +179,12 @@ abstract class TerminalManufacturerAbstract
         return $this;
     }
 
-    /**
-     * Get iden
-     *
-     * @return string
-     */
     public function getIden(): string
     {
         return $this->iden;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): TerminalManufacturerInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -212,24 +193,12 @@ abstract class TerminalManufacturerAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return static
-     */
-    protected function setDescription(string $description): TerminalManufacturerInterface
+    protected function setDescription(string $description): static
     {
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -238,11 +207,6 @@ abstract class TerminalManufacturerAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;

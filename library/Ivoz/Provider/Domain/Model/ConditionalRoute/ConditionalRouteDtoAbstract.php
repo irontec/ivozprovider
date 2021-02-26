@@ -26,20 +26,20 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $routetype;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $numbervalue;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $friendvalue;
 
@@ -174,130 +174,79 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $routetype | null
-     *
-     * @return static
-     */
-    public function setRoutetype(?string $routetype = null): self
+    public function setRoutetype(?string $routetype): static
     {
         $this->routetype = $routetype;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRoutetype(): ?string
     {
         return $this->routetype;
     }
 
-    /**
-     * @param string $numbervalue | null
-     *
-     * @return static
-     */
-    public function setNumbervalue(?string $numbervalue = null): self
+    public function setNumbervalue(?string $numbervalue): static
     {
         $this->numbervalue = $numbervalue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNumbervalue(): ?string
     {
         return $this->numbervalue;
     }
 
-    /**
-     * @param string $friendvalue | null
-     *
-     * @return static
-     */
-    public function setFriendvalue(?string $friendvalue = null): self
+    public function setFriendvalue(?string $friendvalue): static
     {
         $this->friendvalue = $friendvalue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFriendvalue(): ?string
     {
         return $this->friendvalue;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -306,9 +255,6 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -318,30 +264,19 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    /**
-     * @param IvrDto | null
-     *
-     * @return static
-     */
-    public function setIvr(?IvrDto $ivr = null): self
+    public function setIvr(?IvrDto $ivr): static
     {
         $this->ivr = $ivr;
 
         return $this;
     }
 
-    /**
-     * @return IvrDto | null
-     */
     public function getIvr(): ?IvrDto
     {
         return $this->ivr;
     }
 
-    /**
-     * @return static
-     */
-    public function setIvrId($id): self
+    public function setIvrId($id): static
     {
         $value = !is_null($id)
             ? new IvrDto($id)
@@ -350,9 +285,6 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setIvr($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getIvrId()
     {
         if ($dto = $this->getIvr()) {
@@ -362,30 +294,19 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    /**
-     * @param HuntGroupDto | null
-     *
-     * @return static
-     */
-    public function setHuntGroup(?HuntGroupDto $huntGroup = null): self
+    public function setHuntGroup(?HuntGroupDto $huntGroup): static
     {
         $this->huntGroup = $huntGroup;
 
         return $this;
     }
 
-    /**
-     * @return HuntGroupDto | null
-     */
     public function getHuntGroup(): ?HuntGroupDto
     {
         return $this->huntGroup;
     }
 
-    /**
-     * @return static
-     */
-    public function setHuntGroupId($id): self
+    public function setHuntGroupId($id): static
     {
         $value = !is_null($id)
             ? new HuntGroupDto($id)
@@ -394,9 +315,6 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setHuntGroup($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getHuntGroupId()
     {
         if ($dto = $this->getHuntGroup()) {
@@ -406,30 +324,19 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setVoicemailUser(?UserDto $voicemailUser = null): self
+    public function setVoicemailUser(?UserDto $voicemailUser): static
     {
         $this->voicemailUser = $voicemailUser;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getVoicemailUser(): ?UserDto
     {
         return $this->voicemailUser;
     }
 
-    /**
-     * @return static
-     */
-    public function setVoicemailUserId($id): self
+    public function setVoicemailUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -438,9 +345,6 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setVoicemailUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getVoicemailUserId()
     {
         if ($dto = $this->getVoicemailUser()) {
@@ -450,30 +354,19 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setUser(?UserDto $user = null): self
+    public function setUser(?UserDto $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
-    /**
-     * @return static
-     */
-    public function setUserId($id): self
+    public function setUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -482,9 +375,6 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getUserId()
     {
         if ($dto = $this->getUser()) {
@@ -494,30 +384,19 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    /**
-     * @param QueueDto | null
-     *
-     * @return static
-     */
-    public function setQueue(?QueueDto $queue = null): self
+    public function setQueue(?QueueDto $queue): static
     {
         $this->queue = $queue;
 
         return $this;
     }
 
-    /**
-     * @return QueueDto | null
-     */
     public function getQueue(): ?QueueDto
     {
         return $this->queue;
     }
 
-    /**
-     * @return static
-     */
-    public function setQueueId($id): self
+    public function setQueueId($id): static
     {
         $value = !is_null($id)
             ? new QueueDto($id)
@@ -526,9 +405,6 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setQueue($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getQueueId()
     {
         if ($dto = $this->getQueue()) {
@@ -538,30 +414,19 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    /**
-     * @param LocutionDto | null
-     *
-     * @return static
-     */
-    public function setLocution(?LocutionDto $locution = null): self
+    public function setLocution(?LocutionDto $locution): static
     {
         $this->locution = $locution;
 
         return $this;
     }
 
-    /**
-     * @return LocutionDto | null
-     */
     public function getLocution(): ?LocutionDto
     {
         return $this->locution;
     }
 
-    /**
-     * @return static
-     */
-    public function setLocutionId($id): self
+    public function setLocutionId($id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -570,9 +435,6 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setLocution($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getLocutionId()
     {
         if ($dto = $this->getLocution()) {
@@ -582,30 +444,19 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    /**
-     * @param ConferenceRoomDto | null
-     *
-     * @return static
-     */
-    public function setConferenceRoom(?ConferenceRoomDto $conferenceRoom = null): self
+    public function setConferenceRoom(?ConferenceRoomDto $conferenceRoom): static
     {
         $this->conferenceRoom = $conferenceRoom;
 
         return $this;
     }
 
-    /**
-     * @return ConferenceRoomDto | null
-     */
     public function getConferenceRoom(): ?ConferenceRoomDto
     {
         return $this->conferenceRoom;
     }
 
-    /**
-     * @return static
-     */
-    public function setConferenceRoomId($id): self
+    public function setConferenceRoomId($id): static
     {
         $value = !is_null($id)
             ? new ConferenceRoomDto($id)
@@ -614,9 +465,6 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setConferenceRoom($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getConferenceRoomId()
     {
         if ($dto = $this->getConferenceRoom()) {
@@ -626,30 +474,19 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    /**
-     * @param ExtensionDto | null
-     *
-     * @return static
-     */
-    public function setExtension(?ExtensionDto $extension = null): self
+    public function setExtension(?ExtensionDto $extension): static
     {
         $this->extension = $extension;
 
         return $this;
     }
 
-    /**
-     * @return ExtensionDto | null
-     */
     public function getExtension(): ?ExtensionDto
     {
         return $this->extension;
     }
 
-    /**
-     * @return static
-     */
-    public function setExtensionId($id): self
+    public function setExtensionId($id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -658,9 +495,6 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setExtension($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getExtensionId()
     {
         if ($dto = $this->getExtension()) {
@@ -670,30 +504,19 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setNumberCountry(?CountryDto $numberCountry = null): self
+    public function setNumberCountry(?CountryDto $numberCountry): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getNumberCountry(): ?CountryDto
     {
         return $this->numberCountry;
     }
 
-    /**
-     * @return static
-     */
-    public function setNumberCountryId($id): self
+    public function setNumberCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -702,9 +525,6 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this->setNumberCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getNumberCountryId()
     {
         if ($dto = $this->getNumberCountry()) {
@@ -714,21 +534,13 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    /**
-     * @param ConditionalRoutesConditionDto[] | null
-     *
-     * @return static
-     */
-    public function setConditions(?array $conditions = null): self
+    public function setConditions(?array $conditions): static
     {
         $this->conditions = $conditions;
 
         return $this;
     }
 
-    /**
-     * @return ConditionalRoutesConditionDto[] | null
-     */
     public function getConditions(): ?array
     {
         return $this->conditions;

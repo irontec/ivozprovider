@@ -16,6 +16,7 @@ use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface;
+use Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface;
 use Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface;
 use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface;
 
@@ -86,6 +87,13 @@ trait CompanyTrait
 
     /**
      * @var ArrayCollection
+     * CompanyRelGeoIPCountryInterface mappedBy company
+     * orphanRemoval
+     */
+    protected $relCountries;
+
+    /**
+     * @var ArrayCollection
      * CompanyRelCodecInterface mappedBy company
      * orphanRemoval
      */
@@ -113,6 +121,7 @@ trait CompanyTrait
         $this->musicsOnHold = new ArrayCollection();
         $this->recordings = new ArrayCollection();
         $this->relFeatures = new ArrayCollection();
+        $this->relCountries = new ArrayCollection();
         $this->relCodecs = new ArrayCollection();
         $this->relRoutingTags = new ArrayCollection();
     }
@@ -200,6 +209,14 @@ trait CompanyTrait
             $self->replaceRelFeatures(
                 $fkTransformer->transformCollection(
                     $dto->getRelFeatures()
+                )
+            );
+        }
+
+        if (!is_null($dto->getRelCountries())) {
+            $self->replaceRelCountries(
+                $fkTransformer->transformCollection(
+                    $dto->getRelCountries()
                 )
             );
         }
@@ -312,6 +329,14 @@ trait CompanyTrait
             );
         }
 
+        if (!is_null($dto->getRelCountries())) {
+            $this->replaceRelCountries(
+                $fkTransformer->transformCollection(
+                    $dto->getRelCountries()
+                )
+            );
+        }
+
         if (!is_null($dto->getRelCodecs())) {
             $this->replaceRelCodecs(
                 $fkTransformer->transformCollection(
@@ -354,13 +379,6 @@ trait CompanyTrait
         ];
     }
 
-    /**
-     * Add extension
-     *
-     * @param ExtensionInterface $extension
-     *
-     * @return static
-     */
     public function addExtension(ExtensionInterface $extension): CompanyInterface
     {
         $this->extensions->add($extension);
@@ -368,13 +386,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Remove extension
-     *
-     * @param ExtensionInterface $extension
-     *
-     * @return static
-     */
     public function removeExtension(ExtensionInterface $extension): CompanyInterface
     {
         $this->extensions->removeElement($extension);
@@ -382,13 +393,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Replace extensions
-     *
-     * @param ArrayCollection $extensions of ExtensionInterface
-     *
-     * @return static
-     */
     public function replaceExtensions(ArrayCollection $extensions): CompanyInterface
     {
         $updatedEntities = [];
@@ -417,11 +421,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Get extensions
-     * @param Criteria | null $criteria
-     * @return ExtensionInterface[]
-     */
     public function getExtensions(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -431,13 +430,6 @@ trait CompanyTrait
         return $this->extensions->toArray();
     }
 
-    /**
-     * Add ddi
-     *
-     * @param DdiInterface $ddi
-     *
-     * @return static
-     */
     public function addDdi(DdiInterface $ddi): CompanyInterface
     {
         $this->ddis->add($ddi);
@@ -445,13 +437,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Remove ddi
-     *
-     * @param DdiInterface $ddi
-     *
-     * @return static
-     */
     public function removeDdi(DdiInterface $ddi): CompanyInterface
     {
         $this->ddis->removeElement($ddi);
@@ -459,13 +444,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Replace ddis
-     *
-     * @param ArrayCollection $ddis of DdiInterface
-     *
-     * @return static
-     */
     public function replaceDdis(ArrayCollection $ddis): CompanyInterface
     {
         $updatedEntities = [];
@@ -494,11 +472,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Get ddis
-     * @param Criteria | null $criteria
-     * @return DdiInterface[]
-     */
     public function getDdis(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -508,13 +481,6 @@ trait CompanyTrait
         return $this->ddis->toArray();
     }
 
-    /**
-     * Add friend
-     *
-     * @param FriendInterface $friend
-     *
-     * @return static
-     */
     public function addFriend(FriendInterface $friend): CompanyInterface
     {
         $this->friends->add($friend);
@@ -522,13 +488,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Remove friend
-     *
-     * @param FriendInterface $friend
-     *
-     * @return static
-     */
     public function removeFriend(FriendInterface $friend): CompanyInterface
     {
         $this->friends->removeElement($friend);
@@ -536,13 +495,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Replace friends
-     *
-     * @param ArrayCollection $friends of FriendInterface
-     *
-     * @return static
-     */
     public function replaceFriends(ArrayCollection $friends): CompanyInterface
     {
         $updatedEntities = [];
@@ -571,11 +523,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Get friends
-     * @param Criteria | null $criteria
-     * @return FriendInterface[]
-     */
     public function getFriends(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -585,13 +532,6 @@ trait CompanyTrait
         return $this->friends->toArray();
     }
 
-    /**
-     * Add companyService
-     *
-     * @param CompanyServiceInterface $companyService
-     *
-     * @return static
-     */
     public function addCompanyService(CompanyServiceInterface $companyService): CompanyInterface
     {
         $this->companyServices->add($companyService);
@@ -599,13 +539,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Remove companyService
-     *
-     * @param CompanyServiceInterface $companyService
-     *
-     * @return static
-     */
     public function removeCompanyService(CompanyServiceInterface $companyService): CompanyInterface
     {
         $this->companyServices->removeElement($companyService);
@@ -613,13 +546,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Replace companyServices
-     *
-     * @param ArrayCollection $companyServices of CompanyServiceInterface
-     *
-     * @return static
-     */
     public function replaceCompanyServices(ArrayCollection $companyServices): CompanyInterface
     {
         $updatedEntities = [];
@@ -648,11 +574,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Get companyServices
-     * @param Criteria | null $criteria
-     * @return CompanyServiceInterface[]
-     */
     public function getCompanyServices(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -662,13 +583,6 @@ trait CompanyTrait
         return $this->companyServices->toArray();
     }
 
-    /**
-     * Add terminal
-     *
-     * @param TerminalInterface $terminal
-     *
-     * @return static
-     */
     public function addTerminal(TerminalInterface $terminal): CompanyInterface
     {
         $this->terminals->add($terminal);
@@ -676,13 +590,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Remove terminal
-     *
-     * @param TerminalInterface $terminal
-     *
-     * @return static
-     */
     public function removeTerminal(TerminalInterface $terminal): CompanyInterface
     {
         $this->terminals->removeElement($terminal);
@@ -690,13 +597,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Replace terminals
-     *
-     * @param ArrayCollection $terminals of TerminalInterface
-     *
-     * @return static
-     */
     public function replaceTerminals(ArrayCollection $terminals): CompanyInterface
     {
         $updatedEntities = [];
@@ -725,11 +625,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Get terminals
-     * @param Criteria | null $criteria
-     * @return TerminalInterface[]
-     */
     public function getTerminals(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -739,13 +634,6 @@ trait CompanyTrait
         return $this->terminals->toArray();
     }
 
-    /**
-     * Add ratingProfile
-     *
-     * @param RatingProfileInterface $ratingProfile
-     *
-     * @return static
-     */
     public function addRatingProfile(RatingProfileInterface $ratingProfile): CompanyInterface
     {
         $this->ratingProfiles->add($ratingProfile);
@@ -753,13 +641,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Remove ratingProfile
-     *
-     * @param RatingProfileInterface $ratingProfile
-     *
-     * @return static
-     */
     public function removeRatingProfile(RatingProfileInterface $ratingProfile): CompanyInterface
     {
         $this->ratingProfiles->removeElement($ratingProfile);
@@ -767,13 +648,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Replace ratingProfiles
-     *
-     * @param ArrayCollection $ratingProfiles of RatingProfileInterface
-     *
-     * @return static
-     */
     public function replaceRatingProfiles(ArrayCollection $ratingProfiles): CompanyInterface
     {
         $updatedEntities = [];
@@ -802,11 +676,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Get ratingProfiles
-     * @param Criteria | null $criteria
-     * @return RatingProfileInterface[]
-     */
     public function getRatingProfiles(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -816,13 +685,6 @@ trait CompanyTrait
         return $this->ratingProfiles->toArray();
     }
 
-    /**
-     * Add musicsOnHold
-     *
-     * @param MusicOnHoldInterface $musicsOnHold
-     *
-     * @return static
-     */
     public function addMusicsOnHold(MusicOnHoldInterface $musicsOnHold): CompanyInterface
     {
         $this->musicsOnHold->add($musicsOnHold);
@@ -830,13 +692,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Remove musicsOnHold
-     *
-     * @param MusicOnHoldInterface $musicsOnHold
-     *
-     * @return static
-     */
     public function removeMusicsOnHold(MusicOnHoldInterface $musicsOnHold): CompanyInterface
     {
         $this->musicsOnHold->removeElement($musicsOnHold);
@@ -844,13 +699,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Replace musicsOnHold
-     *
-     * @param ArrayCollection $musicsOnHold of MusicOnHoldInterface
-     *
-     * @return static
-     */
     public function replaceMusicsOnHold(ArrayCollection $musicsOnHold): CompanyInterface
     {
         $updatedEntities = [];
@@ -879,11 +727,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Get musicsOnHold
-     * @param Criteria | null $criteria
-     * @return MusicOnHoldInterface[]
-     */
     public function getMusicsOnHold(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -893,13 +736,6 @@ trait CompanyTrait
         return $this->musicsOnHold->toArray();
     }
 
-    /**
-     * Add recording
-     *
-     * @param RecordingInterface $recording
-     *
-     * @return static
-     */
     public function addRecording(RecordingInterface $recording): CompanyInterface
     {
         $this->recordings->add($recording);
@@ -907,13 +743,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Remove recording
-     *
-     * @param RecordingInterface $recording
-     *
-     * @return static
-     */
     public function removeRecording(RecordingInterface $recording): CompanyInterface
     {
         $this->recordings->removeElement($recording);
@@ -921,13 +750,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Replace recordings
-     *
-     * @param ArrayCollection $recordings of RecordingInterface
-     *
-     * @return static
-     */
     public function replaceRecordings(ArrayCollection $recordings): CompanyInterface
     {
         $updatedEntities = [];
@@ -956,11 +778,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Get recordings
-     * @param Criteria | null $criteria
-     * @return RecordingInterface[]
-     */
     public function getRecordings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -970,13 +787,6 @@ trait CompanyTrait
         return $this->recordings->toArray();
     }
 
-    /**
-     * Add relFeature
-     *
-     * @param FeaturesRelCompanyInterface $relFeature
-     *
-     * @return static
-     */
     public function addRelFeature(FeaturesRelCompanyInterface $relFeature): CompanyInterface
     {
         $this->relFeatures->add($relFeature);
@@ -984,13 +794,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Remove relFeature
-     *
-     * @param FeaturesRelCompanyInterface $relFeature
-     *
-     * @return static
-     */
     public function removeRelFeature(FeaturesRelCompanyInterface $relFeature): CompanyInterface
     {
         $this->relFeatures->removeElement($relFeature);
@@ -998,13 +801,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Replace relFeatures
-     *
-     * @param ArrayCollection $relFeatures of FeaturesRelCompanyInterface
-     *
-     * @return static
-     */
     public function replaceRelFeatures(ArrayCollection $relFeatures): CompanyInterface
     {
         $updatedEntities = [];
@@ -1033,11 +829,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Get relFeatures
-     * @param Criteria | null $criteria
-     * @return FeaturesRelCompanyInterface[]
-     */
     public function getRelFeatures(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -1047,13 +838,57 @@ trait CompanyTrait
         return $this->relFeatures->toArray();
     }
 
-    /**
-     * Add relCodec
-     *
-     * @param CompanyRelCodecInterface $relCodec
-     *
-     * @return static
-     */
+    public function addRelCountry(CompanyRelGeoIPCountryInterface $relCountry): CompanyInterface
+    {
+        $this->relCountries->add($relCountry);
+
+        return $this;
+    }
+
+    public function removeRelCountry(CompanyRelGeoIPCountryInterface $relCountry): CompanyInterface
+    {
+        $this->relCountries->removeElement($relCountry);
+
+        return $this;
+    }
+
+    public function replaceRelCountries(ArrayCollection $relCountries): CompanyInterface
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($relCountries as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setCompany($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->relCountries as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->relCountries->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->relCountries->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addRelCountry($entity);
+        }
+
+        return $this;
+    }
+
+    public function getRelCountries(Criteria $criteria = null): array
+    {
+        if (!is_null($criteria)) {
+            return $this->relCountries->matching($criteria)->toArray();
+        }
+
+        return $this->relCountries->toArray();
+    }
+
     public function addRelCodec(CompanyRelCodecInterface $relCodec): CompanyInterface
     {
         $this->relCodecs->add($relCodec);
@@ -1061,13 +896,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Remove relCodec
-     *
-     * @param CompanyRelCodecInterface $relCodec
-     *
-     * @return static
-     */
     public function removeRelCodec(CompanyRelCodecInterface $relCodec): CompanyInterface
     {
         $this->relCodecs->removeElement($relCodec);
@@ -1075,13 +903,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Replace relCodecs
-     *
-     * @param ArrayCollection $relCodecs of CompanyRelCodecInterface
-     *
-     * @return static
-     */
     public function replaceRelCodecs(ArrayCollection $relCodecs): CompanyInterface
     {
         $updatedEntities = [];
@@ -1110,11 +931,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Get relCodecs
-     * @param Criteria | null $criteria
-     * @return CompanyRelCodecInterface[]
-     */
     public function getRelCodecs(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -1124,13 +940,6 @@ trait CompanyTrait
         return $this->relCodecs->toArray();
     }
 
-    /**
-     * Add relRoutingTag
-     *
-     * @param CompanyRelRoutingTagInterface $relRoutingTag
-     *
-     * @return static
-     */
     public function addRelRoutingTag(CompanyRelRoutingTagInterface $relRoutingTag): CompanyInterface
     {
         $this->relRoutingTags->add($relRoutingTag);
@@ -1138,13 +947,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Remove relRoutingTag
-     *
-     * @param CompanyRelRoutingTagInterface $relRoutingTag
-     *
-     * @return static
-     */
     public function removeRelRoutingTag(CompanyRelRoutingTagInterface $relRoutingTag): CompanyInterface
     {
         $this->relRoutingTags->removeElement($relRoutingTag);
@@ -1152,13 +954,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Replace relRoutingTags
-     *
-     * @param ArrayCollection $relRoutingTags of CompanyRelRoutingTagInterface
-     *
-     * @return static
-     */
     public function replaceRelRoutingTags(ArrayCollection $relRoutingTags): CompanyInterface
     {
         $updatedEntities = [];
@@ -1187,11 +982,6 @@ trait CompanyTrait
         return $this;
     }
 
-    /**
-     * Get relRoutingTags
-     * @param Criteria | null $criteria
-     * @return CompanyRelRoutingTagInterface[]
-     */
     public function getRelRoutingTags(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

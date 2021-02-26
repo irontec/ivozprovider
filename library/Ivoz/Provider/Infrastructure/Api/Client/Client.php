@@ -105,7 +105,7 @@ class Client implements ApiClientInterface
      * @return ResponseInterface
      * @throws \RuntimeException
      */
-    protected function request($method, $uri = '', array $options)
+    protected function request($method, $uri, array $options)
     {
         try {
             return $this->httpClient->request(

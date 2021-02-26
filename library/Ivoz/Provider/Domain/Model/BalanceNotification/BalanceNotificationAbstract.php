@@ -35,22 +35,22 @@ abstract class BalanceNotificationAbstract
     protected $threshold = 0;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $lastSent;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var CarrierInterface
+     * @var CarrierInterface | null
      */
     protected $carrier;
 
     /**
-     * @var NotificationTemplateInterface
+     * @var NotificationTemplateInterface | null
      */
     protected $notificationTemplate;
 
@@ -83,7 +83,7 @@ abstract class BalanceNotificationAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return BalanceNotificationDto
      */
     public static function createDto($id = null)
@@ -201,14 +201,7 @@ abstract class BalanceNotificationAbstract
         ];
     }
 
-    /**
-     * Set toAddress
-     *
-     * @param string $toAddress | null
-     *
-     * @return static
-     */
-    protected function setToAddress(?string $toAddress = null): BalanceNotificationInterface
+    protected function setToAddress(?string $toAddress = null): static
     {
         if (!is_null($toAddress)) {
             Assertion::maxLength($toAddress, 255, 'toAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -219,24 +212,12 @@ abstract class BalanceNotificationAbstract
         return $this;
     }
 
-    /**
-     * Get toAddress
-     *
-     * @return string | null
-     */
     public function getToAddress(): ?string
     {
         return $this->toAddress;
     }
 
-    /**
-     * Set threshold
-     *
-     * @param float $threshold | null
-     *
-     * @return static
-     */
-    protected function setThreshold(?float $threshold = null): BalanceNotificationInterface
+    protected function setThreshold(?float $threshold = null): static
     {
         if (!is_null($threshold)) {
             $threshold = (float) $threshold;
@@ -247,24 +228,12 @@ abstract class BalanceNotificationAbstract
         return $this;
     }
 
-    /**
-     * Get threshold
-     *
-     * @return float | null
-     */
     public function getThreshold(): ?float
     {
         return $this->threshold;
     }
 
-    /**
-     * Set lastSent
-     *
-     * @param \DateTimeInterface $lastSent | null
-     *
-     * @return static
-     */
-    protected function setLastSent($lastSent = null): BalanceNotificationInterface
+    protected function setLastSent($lastSent = null): static
     {
         if (!is_null($lastSent)) {
             Assertion::notNull(
@@ -286,83 +255,42 @@ abstract class BalanceNotificationAbstract
         return $this;
     }
 
-    /**
-     * Get lastSent
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getLastSent(): ?\DateTimeInterface
+    public function getLastSent(): ?\DateTime
     {
         return !is_null($this->lastSent) ? clone $this->lastSent : null;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    protected function setCompany(?CompanyInterface $company = null): BalanceNotificationInterface
+    protected function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set carrier
-     *
-     * @param CarrierInterface | null
-     *
-     * @return static
-     */
-    protected function setCarrier(?CarrierInterface $carrier = null): BalanceNotificationInterface
+    protected function setCarrier(?CarrierInterface $carrier = null): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * Get carrier
-     *
-     * @return CarrierInterface | null
-     */
     public function getCarrier(): ?CarrierInterface
     {
         return $this->carrier;
     }
 
-    /**
-     * Set notificationTemplate
-     *
-     * @param NotificationTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setNotificationTemplate(?NotificationTemplateInterface $notificationTemplate = null): BalanceNotificationInterface
+    protected function setNotificationTemplate(?NotificationTemplateInterface $notificationTemplate = null): static
     {
         $this->notificationTemplate = $notificationTemplate;
 
         return $this;
     }
 
-    /**
-     * Get notificationTemplate
-     *
-     * @return NotificationTemplateInterface | null
-     */
     public function getNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->notificationTemplate;

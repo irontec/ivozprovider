@@ -59,7 +59,7 @@ abstract class FeatureAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return FeatureDto
      */
     public static function createDto($id = null)
@@ -180,14 +180,7 @@ abstract class FeatureAbstract
         ];
     }
 
-    /**
-     * Set iden
-     *
-     * @param string $iden
-     *
-     * @return static
-     */
-    protected function setIden(string $iden): FeatureInterface
+    protected function setIden(string $iden): static
     {
         Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -196,32 +189,17 @@ abstract class FeatureAbstract
         return $this;
     }
 
-    /**
-     * Get iden
-     *
-     * @return string
-     */
     public function getIden(): string
     {
         return $this->iden;
     }
 
-    /**
-     * Get name
-     *
-     * @return Name
-     */
     public function getName(): Name
     {
         return $this->name;
     }
 
-    /**
-     * Set name
-     *
-     * @return static
-     */
-    protected function setName(Name $name): FeatureInterface
+    protected function setName(Name $name): static
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {

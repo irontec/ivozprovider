@@ -76,50 +76,31 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -128,9 +109,6 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -140,30 +118,19 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
         return null;
     }
 
-    /**
-     * @param RoutingTagDto | null
-     *
-     * @return static
-     */
-    public function setRoutingTag(?RoutingTagDto $routingTag = null): self
+    public function setRoutingTag(?RoutingTagDto $routingTag): static
     {
         $this->routingTag = $routingTag;
 
         return $this;
     }
 
-    /**
-     * @return RoutingTagDto | null
-     */
     public function getRoutingTag(): ?RoutingTagDto
     {
         return $this->routingTag;
     }
 
-    /**
-     * @return static
-     */
-    public function setRoutingTagId($id): self
+    public function setRoutingTagId($id): static
     {
         $value = !is_null($id)
             ? new RoutingTagDto($id)
@@ -172,9 +139,6 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
         return $this->setRoutingTag($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRoutingTagId()
     {
         if ($dto = $this->getRoutingTag()) {

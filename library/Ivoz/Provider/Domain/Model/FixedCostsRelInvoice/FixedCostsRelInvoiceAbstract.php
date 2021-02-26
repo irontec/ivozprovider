@@ -32,7 +32,7 @@ abstract class FixedCostsRelInvoiceAbstract
     protected $fixedCost;
 
     /**
-     * @var InvoiceInterface
+     * @var InvoiceInterface | null
      * inversedBy relFixedCosts
      */
     protected $invoice;
@@ -66,7 +66,7 @@ abstract class FixedCostsRelInvoiceAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return FixedCostsRelInvoiceDto
      */
     public static function createDto($id = null)
@@ -172,14 +172,7 @@ abstract class FixedCostsRelInvoiceAbstract
         ];
     }
 
-    /**
-     * Set quantity
-     *
-     * @param int $quantity | null
-     *
-     * @return static
-     */
-    protected function setQuantity(?int $quantity = null): FixedCostsRelInvoiceInterface
+    protected function setQuantity(?int $quantity = null): static
     {
         if (!is_null($quantity)) {
             Assertion::greaterOrEqualThan($quantity, 0, 'quantity provided "%s" is not greater or equal than "%s".');
@@ -190,59 +183,31 @@ abstract class FixedCostsRelInvoiceAbstract
         return $this;
     }
 
-    /**
-     * Get quantity
-     *
-     * @return int | null
-     */
     public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
-    /**
-     * Set fixedCost
-     *
-     * @param FixedCostInterface
-     *
-     * @return static
-     */
-    protected function setFixedCost(FixedCostInterface $fixedCost): FixedCostsRelInvoiceInterface
+    protected function setFixedCost(FixedCostInterface $fixedCost): static
     {
         $this->fixedCost = $fixedCost;
 
         return $this;
     }
 
-    /**
-     * Get fixedCost
-     *
-     * @return FixedCostInterface
-     */
     public function getFixedCost(): FixedCostInterface
     {
         return $this->fixedCost;
     }
 
-    /**
-     * Set invoice
-     *
-     * @param InvoiceInterface | null
-     *
-     * @return static
-     */
-    public function setInvoice(?InvoiceInterface $invoice = null): FixedCostsRelInvoiceInterface
+    public function setInvoice(?InvoiceInterface $invoice = null): static
     {
         $this->invoice = $invoice;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get invoice
-     *
-     * @return InvoiceInterface | null
-     */
     public function getInvoice(): ?InvoiceInterface
     {
         return $this->invoice;

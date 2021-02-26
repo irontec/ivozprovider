@@ -135,13 +135,6 @@ trait CalendarTrait
         ];
     }
 
-    /**
-     * Add holidayDate
-     *
-     * @param HolidayDateInterface $holidayDate
-     *
-     * @return static
-     */
     public function addHolidayDate(HolidayDateInterface $holidayDate): CalendarInterface
     {
         $this->holidayDates->add($holidayDate);
@@ -149,13 +142,6 @@ trait CalendarTrait
         return $this;
     }
 
-    /**
-     * Remove holidayDate
-     *
-     * @param HolidayDateInterface $holidayDate
-     *
-     * @return static
-     */
     public function removeHolidayDate(HolidayDateInterface $holidayDate): CalendarInterface
     {
         $this->holidayDates->removeElement($holidayDate);
@@ -163,13 +149,6 @@ trait CalendarTrait
         return $this;
     }
 
-    /**
-     * Replace holidayDates
-     *
-     * @param ArrayCollection $holidayDates of HolidayDateInterface
-     *
-     * @return static
-     */
     public function replaceHolidayDates(ArrayCollection $holidayDates): CalendarInterface
     {
         $updatedEntities = [];
@@ -198,11 +177,6 @@ trait CalendarTrait
         return $this;
     }
 
-    /**
-     * Get holidayDates
-     * @param Criteria | null $criteria
-     * @return HolidayDateInterface[]
-     */
     public function getHolidayDates(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -212,13 +186,6 @@ trait CalendarTrait
         return $this->holidayDates->toArray();
     }
 
-    /**
-     * Add calendarPeriod
-     *
-     * @param CalendarPeriodInterface $calendarPeriod
-     *
-     * @return static
-     */
     public function addCalendarPeriod(CalendarPeriodInterface $calendarPeriod): CalendarInterface
     {
         $this->calendarPeriods->add($calendarPeriod);
@@ -226,13 +193,6 @@ trait CalendarTrait
         return $this;
     }
 
-    /**
-     * Remove calendarPeriod
-     *
-     * @param CalendarPeriodInterface $calendarPeriod
-     *
-     * @return static
-     */
     public function removeCalendarPeriod(CalendarPeriodInterface $calendarPeriod): CalendarInterface
     {
         $this->calendarPeriods->removeElement($calendarPeriod);
@@ -240,13 +200,6 @@ trait CalendarTrait
         return $this;
     }
 
-    /**
-     * Replace calendarPeriods
-     *
-     * @param ArrayCollection $calendarPeriods of CalendarPeriodInterface
-     *
-     * @return static
-     */
     public function replaceCalendarPeriods(ArrayCollection $calendarPeriods): CalendarInterface
     {
         $updatedEntities = [];
@@ -275,11 +228,6 @@ trait CalendarTrait
         return $this;
     }
 
-    /**
-     * Get calendarPeriods
-     * @param Criteria | null $criteria
-     * @return CalendarPeriodInterface[]
-     */
     public function getCalendarPeriods(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

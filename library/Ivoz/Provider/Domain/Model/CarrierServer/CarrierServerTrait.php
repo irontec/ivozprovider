@@ -109,21 +109,14 @@ trait CarrierServerTrait
         ];
     }
 
-    /**
-     * @var TrunksLcrGatewayInterface
-     * mappedBy carrierServer
-     */
-    public function setLcrGateway(TrunksLcrGatewayInterface $lcrGateway): CarrierServerInterface
+    public function setLcrGateway(TrunksLcrGatewayInterface $lcrGateway): static
     {
         $this->lcrGateway = $lcrGateway;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get lcrGateway
-     * @return TrunksLcrGatewayInterface
-     */
     public function getLcrGateway(): ?TrunksLcrGatewayInterface
     {
         return $this->lcrGateway;

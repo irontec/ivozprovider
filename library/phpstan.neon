@@ -6,3 +6,5 @@ parameters:
         - "*/coverage/*"
         - %currentWorkingDirectory%/library/Ivoz/Api/Behat/Context/FeatureContext.php
         - %currentWorkingDirectory%/library/Ivoz/Provider/Domain/Service/Invoice/Generator.php
+    ignoreErrors:
+        - '#Unsafe usage of new static\(\)#'

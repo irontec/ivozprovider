@@ -66,7 +66,7 @@ abstract class CurrencyAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CurrencyDto
      */
     public static function createDto($id = null)
@@ -191,14 +191,7 @@ abstract class CurrencyAbstract
         ];
     }
 
-    /**
-     * Set iden
-     *
-     * @param string $iden
-     *
-     * @return static
-     */
-    protected function setIden(string $iden): CurrencyInterface
+    protected function setIden(string $iden): static
     {
         Assertion::maxLength($iden, 10, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -207,24 +200,12 @@ abstract class CurrencyAbstract
         return $this;
     }
 
-    /**
-     * Get iden
-     *
-     * @return string
-     */
     public function getIden(): string
     {
         return $this->iden;
     }
 
-    /**
-     * Set symbol
-     *
-     * @param string $symbol
-     *
-     * @return static
-     */
-    protected function setSymbol(string $symbol): CurrencyInterface
+    protected function setSymbol(string $symbol): static
     {
         Assertion::maxLength($symbol, 5, 'symbol value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -233,32 +214,17 @@ abstract class CurrencyAbstract
         return $this;
     }
 
-    /**
-     * Get symbol
-     *
-     * @return string
-     */
     public function getSymbol(): string
     {
         return $this->symbol;
     }
 
-    /**
-     * Get name
-     *
-     * @return Name
-     */
     public function getName(): Name
     {
         return $this->name;
     }
 
-    /**
-     * Set name
-     *
-     * @return static
-     */
-    protected function setName(Name $name): CurrencyInterface
+    protected function setName(Name $name): static
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {

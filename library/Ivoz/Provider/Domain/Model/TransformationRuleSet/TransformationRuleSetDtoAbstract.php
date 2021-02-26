@@ -17,32 +17,32 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $description;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $internationalCode = '00';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $trunkPrefix = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $areaCode = '';
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $nationalLen = 9;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $generateRules = false;
 
@@ -54,22 +54,22 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     /**
      * @var string
      */
-    private $nameEn;
+    private $nameEn = '';
 
     /**
      * @var string
      */
-    private $nameEs;
+    private $nameEs = '';
 
     /**
      * @var string
      */
-    private $nameCa;
+    private $nameCa = '';
 
     /**
      * @var string
      */
-    private $nameIt;
+    private $nameIt = '';
 
     /**
      * @var BrandDto | null
@@ -157,250 +157,151 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $response;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $internationalCode | null
-     *
-     * @return static
-     */
-    public function setInternationalCode(?string $internationalCode = null): self
+    public function setInternationalCode(?string $internationalCode): static
     {
         $this->internationalCode = $internationalCode;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getInternationalCode(): ?string
     {
         return $this->internationalCode;
     }
 
-    /**
-     * @param string $trunkPrefix | null
-     *
-     * @return static
-     */
-    public function setTrunkPrefix(?string $trunkPrefix = null): self
+    public function setTrunkPrefix(?string $trunkPrefix): static
     {
         $this->trunkPrefix = $trunkPrefix;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTrunkPrefix(): ?string
     {
         return $this->trunkPrefix;
     }
 
-    /**
-     * @param string $areaCode | null
-     *
-     * @return static
-     */
-    public function setAreaCode(?string $areaCode = null): self
+    public function setAreaCode(?string $areaCode): static
     {
         $this->areaCode = $areaCode;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAreaCode(): ?string
     {
         return $this->areaCode;
     }
 
-    /**
-     * @param int $nationalLen | null
-     *
-     * @return static
-     */
-    public function setNationalLen(?int $nationalLen = null): self
+    public function setNationalLen(?int $nationalLen): static
     {
         $this->nationalLen = $nationalLen;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getNationalLen(): ?int
     {
         return $this->nationalLen;
     }
 
-    /**
-     * @param bool $generateRules | null
-     *
-     * @return static
-     */
-    public function setGenerateRules(?bool $generateRules = null): self
+    public function setGenerateRules(?bool $generateRules): static
     {
         $this->generateRules = $generateRules;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getGenerateRules(): ?bool
     {
         return $this->generateRules;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param string $nameEn | null
-     *
-     * @return static
-     */
-    public function setNameEn(?string $nameEn = null): self
+    public function setNameEn(?string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameEn(): ?string
     {
         return $this->nameEn;
     }
 
-    /**
-     * @param string $nameEs | null
-     *
-     * @return static
-     */
-    public function setNameEs(?string $nameEs = null): self
+    public function setNameEs(?string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameEs(): ?string
     {
         return $this->nameEs;
     }
 
-    /**
-     * @param string $nameCa | null
-     *
-     * @return static
-     */
-    public function setNameCa(?string $nameCa = null): self
+    public function setNameCa(?string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameCa(): ?string
     {
         return $this->nameCa;
     }
 
-    /**
-     * @param string $nameIt | null
-     *
-     * @return static
-     */
-    public function setNameIt(?string $nameIt = null): self
+    public function setNameIt(?string $nameIt): static
     {
         $this->nameIt = $nameIt;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameIt(): ?string
     {
         return $this->nameIt;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -409,9 +310,6 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -421,30 +319,19 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setCountry(?CountryDto $country = null): self
+    public function setCountry(?CountryDto $country): static
     {
         $this->country = $country;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getCountry(): ?CountryDto
     {
         return $this->country;
     }
 
-    /**
-     * @return static
-     */
-    public function setCountryId($id): self
+    public function setCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -453,9 +340,6 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $this->setCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCountryId()
     {
         if ($dto = $this->getCountry()) {
@@ -465,21 +349,13 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return null;
     }
 
-    /**
-     * @param TransformationRuleDto[] | null
-     *
-     * @return static
-     */
-    public function setRules(?array $rules = null): self
+    public function setRules(?array $rules): static
     {
         $this->rules = $rules;
 
         return $this;
     }
 
-    /**
-     * @return TransformationRuleDto[] | null
-     */
     public function getRules(): ?array
     {
         return $this->rules;

@@ -135,13 +135,6 @@ trait DdiProviderTrait
         ];
     }
 
-    /**
-     * Add ddiProviderRegistration
-     *
-     * @param DdiProviderRegistrationInterface $ddiProviderRegistration
-     *
-     * @return static
-     */
     public function addDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): DdiProviderInterface
     {
         $this->ddiProviderRegistrations->add($ddiProviderRegistration);
@@ -149,13 +142,6 @@ trait DdiProviderTrait
         return $this;
     }
 
-    /**
-     * Remove ddiProviderRegistration
-     *
-     * @param DdiProviderRegistrationInterface $ddiProviderRegistration
-     *
-     * @return static
-     */
     public function removeDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): DdiProviderInterface
     {
         $this->ddiProviderRegistrations->removeElement($ddiProviderRegistration);
@@ -163,13 +149,6 @@ trait DdiProviderTrait
         return $this;
     }
 
-    /**
-     * Replace ddiProviderRegistrations
-     *
-     * @param ArrayCollection $ddiProviderRegistrations of DdiProviderRegistrationInterface
-     *
-     * @return static
-     */
     public function replaceDdiProviderRegistrations(ArrayCollection $ddiProviderRegistrations): DdiProviderInterface
     {
         $updatedEntities = [];
@@ -198,11 +177,6 @@ trait DdiProviderTrait
         return $this;
     }
 
-    /**
-     * Get ddiProviderRegistrations
-     * @param Criteria | null $criteria
-     * @return DdiProviderRegistrationInterface[]
-     */
     public function getDdiProviderRegistrations(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -212,13 +186,6 @@ trait DdiProviderTrait
         return $this->ddiProviderRegistrations->toArray();
     }
 
-    /**
-     * Add ddiProviderAddress
-     *
-     * @param DdiProviderAddressInterface $ddiProviderAddress
-     *
-     * @return static
-     */
     public function addDdiProviderAddress(DdiProviderAddressInterface $ddiProviderAddress): DdiProviderInterface
     {
         $this->ddiProviderAddresses->add($ddiProviderAddress);
@@ -226,13 +193,6 @@ trait DdiProviderTrait
         return $this;
     }
 
-    /**
-     * Remove ddiProviderAddress
-     *
-     * @param DdiProviderAddressInterface $ddiProviderAddress
-     *
-     * @return static
-     */
     public function removeDdiProviderAddress(DdiProviderAddressInterface $ddiProviderAddress): DdiProviderInterface
     {
         $this->ddiProviderAddresses->removeElement($ddiProviderAddress);
@@ -240,13 +200,6 @@ trait DdiProviderTrait
         return $this;
     }
 
-    /**
-     * Replace ddiProviderAddresses
-     *
-     * @param ArrayCollection $ddiProviderAddresses of DdiProviderAddressInterface
-     *
-     * @return static
-     */
     public function replaceDdiProviderAddresses(ArrayCollection $ddiProviderAddresses): DdiProviderInterface
     {
         $updatedEntities = [];
@@ -275,11 +228,6 @@ trait DdiProviderTrait
         return $this;
     }
 
-    /**
-     * Get ddiProviderAddresses
-     * @param Criteria | null $criteria
-     * @return DdiProviderAddressInterface[]
-     */
     public function getDdiProviderAddresses(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

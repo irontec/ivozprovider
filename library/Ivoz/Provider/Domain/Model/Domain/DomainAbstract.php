@@ -63,7 +63,7 @@ abstract class DomainAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return DomainDto
      */
     public static function createDto($id = null)
@@ -168,14 +168,7 @@ abstract class DomainAbstract
         ];
     }
 
-    /**
-     * Set domain
-     *
-     * @param string $domain
-     *
-     * @return static
-     */
-    protected function setDomain(string $domain): DomainInterface
+    protected function setDomain(string $domain): static
     {
         Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -184,48 +177,24 @@ abstract class DomainAbstract
         return $this;
     }
 
-    /**
-     * Get domain
-     *
-     * @return string
-     */
     public function getDomain(): string
     {
         return $this->domain;
     }
 
-    /**
-     * Set pointsTo
-     *
-     * @param string $pointsTo
-     *
-     * @return static
-     */
-    protected function setPointsTo(string $pointsTo): DomainInterface
+    protected function setPointsTo(string $pointsTo): static
     {
         $this->pointsTo = $pointsTo;
 
         return $this;
     }
 
-    /**
-     * Get pointsTo
-     *
-     * @return string
-     */
     public function getPointsTo(): string
     {
         return $this->pointsTo;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description | null
-     *
-     * @return static
-     */
-    protected function setDescription(?string $description = null): DomainInterface
+    protected function setDescription(?string $description = null): static
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -236,11 +205,6 @@ abstract class DomainAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;

@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\TerminalModel;
 
-use Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface;
 
 /**
 * TerminalModelInterface
@@ -19,72 +19,32 @@ interface TerminalModelInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function setIden(string $iden): TerminalModelInterface;
+    public function setIden(string $iden): static;
 
     /**
      * {@inheritdoc}
      */
-    public function setGenericTemplate(string $genericTemplate = null): TerminalModelInterface;
+    public function setGenericTemplate(?string $genericTemplate = null): static;
 
     /**
      * {@inheritdoc}
      */
-    public function setSpecificTemplate(string $specificTemplate = null): TerminalModelInterface;
+    public function setSpecificTemplate(?string $specificTemplate = null): static;
 
-    /**
-     * Get iden
-     *
-     * @return string
-     */
     public function getIden(): string;
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string;
 
-    /**
-     * Get genericTemplate
-     *
-     * @return string | null
-     */
     public function getGenericTemplate(): ?string;
 
-    /**
-     * Get specificTemplate
-     *
-     * @return string | null
-     */
     public function getSpecificTemplate(): ?string;
 
-    /**
-     * Get genericUrlPattern
-     *
-     * @return string | null
-     */
     public function getGenericUrlPattern(): ?string;
 
-    /**
-     * Get specificUrlPattern
-     *
-     * @return string | null
-     */
     public function getSpecificUrlPattern(): ?string;
 
-    /**
-     * Get terminalManufacturer
-     *
-     * @return TerminalManufacturerInterface
-     */
     public function getTerminalManufacturer(): TerminalManufacturerInterface;
 
     /**

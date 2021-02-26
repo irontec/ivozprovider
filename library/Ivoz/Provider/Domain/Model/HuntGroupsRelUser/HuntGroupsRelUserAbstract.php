@@ -45,18 +45,18 @@ abstract class HuntGroupsRelUserAbstract
     protected $numberValue;
 
     /**
-     * @var HuntGroupInterface
+     * @var HuntGroupInterface | null
      * inversedBy huntGroupsRelUsers
      */
     protected $huntGroup;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $user;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $numberCountry;
 
@@ -89,7 +89,7 @@ abstract class HuntGroupsRelUserAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return HuntGroupsRelUserDto
      */
     public static function createDto($id = null)
@@ -210,62 +210,31 @@ abstract class HuntGroupsRelUserAbstract
         ];
     }
 
-    /**
-     * Set timeoutTime
-     *
-     * @param int $timeoutTime | null
-     *
-     * @return static
-     */
-    protected function setTimeoutTime(?int $timeoutTime = null): HuntGroupsRelUserInterface
+    protected function setTimeoutTime(?int $timeoutTime = null): static
     {
         $this->timeoutTime = $timeoutTime;
 
         return $this;
     }
 
-    /**
-     * Get timeoutTime
-     *
-     * @return int | null
-     */
     public function getTimeoutTime(): ?int
     {
         return $this->timeoutTime;
     }
 
-    /**
-     * Set priority
-     *
-     * @param int $priority | null
-     *
-     * @return static
-     */
-    protected function setPriority(?int $priority = null): HuntGroupsRelUserInterface
+    protected function setPriority(?int $priority = null): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * Get priority
-     *
-     * @return int | null
-     */
     public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    /**
-     * Set routeType
-     *
-     * @param string $routeType
-     *
-     * @return static
-     */
-    protected function setRouteType(string $routeType): HuntGroupsRelUserInterface
+    protected function setRouteType(string $routeType): static
     {
         Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -282,24 +251,12 @@ abstract class HuntGroupsRelUserAbstract
         return $this;
     }
 
-    /**
-     * Get routeType
-     *
-     * @return string
-     */
     public function getRouteType(): string
     {
         return $this->routeType;
     }
 
-    /**
-     * Set numberValue
-     *
-     * @param string $numberValue | null
-     *
-     * @return static
-     */
-    protected function setNumberValue(?string $numberValue = null): HuntGroupsRelUserInterface
+    protected function setNumberValue(?string $numberValue = null): static
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -310,83 +267,43 @@ abstract class HuntGroupsRelUserAbstract
         return $this;
     }
 
-    /**
-     * Get numberValue
-     *
-     * @return string | null
-     */
     public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
-    /**
-     * Set huntGroup
-     *
-     * @param HuntGroupInterface | null
-     *
-     * @return static
-     */
-    public function setHuntGroup(?HuntGroupInterface $huntGroup = null): HuntGroupsRelUserInterface
+    public function setHuntGroup(?HuntGroupInterface $huntGroup = null): static
     {
         $this->huntGroup = $huntGroup;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get huntGroup
-     *
-     * @return HuntGroupInterface | null
-     */
     public function getHuntGroup(): ?HuntGroupInterface
     {
         return $this->huntGroup;
     }
 
-    /**
-     * Set user
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setUser(?UserInterface $user = null): HuntGroupsRelUserInterface
+    protected function setUser(?UserInterface $user = null): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface
     {
         return $this->user;
     }
 
-    /**
-     * Set numberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setNumberCountry(?CountryInterface $numberCountry = null): HuntGroupsRelUserInterface
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;

@@ -30,20 +30,20 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var string
      */
-    private $lastname;
+    private $lastname = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $email;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $pass;
 
@@ -78,7 +78,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     private $rejectCallMethod = 'rfc';
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $voicemailEnabled = true;
 
@@ -98,7 +98,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     private $multiContact = true;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $gsQRCode = false;
 
@@ -281,350 +281,211 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $lastname | null
-     *
-     * @return static
-     */
-    public function setLastname(?string $lastname = null): self
+    public function setLastname(?string $lastname): static
     {
         $this->lastname = $lastname;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLastname(): ?string
     {
         return $this->lastname;
     }
 
-    /**
-     * @param string $email | null
-     *
-     * @return static
-     */
-    public function setEmail(?string $email = null): self
+    public function setEmail(?string $email): static
     {
         $this->email = $email;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * @param string $pass | null
-     *
-     * @return static
-     */
-    public function setPass(?string $pass = null): self
+    public function setPass(?string $pass): static
     {
         $this->pass = $pass;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPass(): ?string
     {
         return $this->pass;
     }
 
-    /**
-     * @param bool $doNotDisturb | null
-     *
-     * @return static
-     */
-    public function setDoNotDisturb(?bool $doNotDisturb = null): self
+    public function setDoNotDisturb(?bool $doNotDisturb): static
     {
         $this->doNotDisturb = $doNotDisturb;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getDoNotDisturb(): ?bool
     {
         return $this->doNotDisturb;
     }
 
-    /**
-     * @param bool $isBoss | null
-     *
-     * @return static
-     */
-    public function setIsBoss(?bool $isBoss = null): self
+    public function setIsBoss(?bool $isBoss): static
     {
         $this->isBoss = $isBoss;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getIsBoss(): ?bool
     {
         return $this->isBoss;
     }
 
-    /**
-     * @param bool $active | null
-     *
-     * @return static
-     */
-    public function setActive(?bool $active = null): self
+    public function setActive(?bool $active): static
     {
         $this->active = $active;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getActive(): ?bool
     {
         return $this->active;
     }
 
-    /**
-     * @param int $maxCalls | null
-     *
-     * @return static
-     */
-    public function setMaxCalls(?int $maxCalls = null): self
+    public function setMaxCalls(?int $maxCalls): static
     {
         $this->maxCalls = $maxCalls;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMaxCalls(): ?int
     {
         return $this->maxCalls;
     }
 
-    /**
-     * @param string $externalIpCalls | null
-     *
-     * @return static
-     */
-    public function setExternalIpCalls(?string $externalIpCalls = null): self
+    public function setExternalIpCalls(?string $externalIpCalls): static
     {
         $this->externalIpCalls = $externalIpCalls;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getExternalIpCalls(): ?string
     {
         return $this->externalIpCalls;
     }
 
-    /**
-     * @param string $rejectCallMethod
-     *
-     * @return static
-     */
-    public function setRejectCallMethod($rejectCallMethod = null)
+    public function setRejectCallMethod(?string $rejectCallMethod): static
     {
         $this->rejectCallMethod = $rejectCallMethod;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
-    public function getRejectCallMethod()
+    public function getRejectCallMethod(): ?string
     {
         return $this->rejectCallMethod;
     }
 
-    /**
-     * @param boolean $voicemailEnabled
-     *
-     * @return static
-     */
-    public function setVoicemailEnabled(?bool $voicemailEnabled = null): self
+    public function setVoicemailEnabled(?bool $voicemailEnabled): static
     {
         $this->voicemailEnabled = $voicemailEnabled;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getVoicemailEnabled(): ?bool
     {
         return $this->voicemailEnabled;
     }
 
-    /**
-     * @param bool $voicemailSendMail | null
-     *
-     * @return static
-     */
-    public function setVoicemailSendMail(?bool $voicemailSendMail = null): self
+    public function setVoicemailSendMail(?bool $voicemailSendMail): static
     {
         $this->voicemailSendMail = $voicemailSendMail;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getVoicemailSendMail(): ?bool
     {
         return $this->voicemailSendMail;
     }
 
-    /**
-     * @param bool $voicemailAttachSound | null
-     *
-     * @return static
-     */
-    public function setVoicemailAttachSound(?bool $voicemailAttachSound = null): self
+    public function setVoicemailAttachSound(?bool $voicemailAttachSound): static
     {
         $this->voicemailAttachSound = $voicemailAttachSound;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getVoicemailAttachSound(): ?bool
     {
         return $this->voicemailAttachSound;
     }
 
-    /**
-     * @param boolean $multiContact
-     *
-     * @return static
-     */
-    public function setMultiContact($multiContact = null)
+    public function setMultiContact(?bool $multiContact): static
     {
         $this->multiContact = $multiContact;
 
         return $this;
     }
 
-    /**
-     * @return boolean | null
-     */
-    public function getMultiContact()
+    public function getMultiContact(): ?bool
     {
         return $this->multiContact;
     }
 
-    /**
-     * @param boolean $gsQRCode
-     *
-     * @return static
-     */
-    public function setGsQRCode(?bool $gsQRCode = null): self
+    public function setGsQRCode(?bool $gsQRCode): static
     {
         $this->gsQRCode = $gsQRCode;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getGsQRCode(): ?bool
     {
         return $this->gsQRCode;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -633,9 +494,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -645,30 +503,19 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CallAclDto | null
-     *
-     * @return static
-     */
-    public function setCallAcl(?CallAclDto $callAcl = null): self
+    public function setCallAcl(?CallAclDto $callAcl): static
     {
         $this->callAcl = $callAcl;
 
         return $this;
     }
 
-    /**
-     * @return CallAclDto | null
-     */
     public function getCallAcl(): ?CallAclDto
     {
         return $this->callAcl;
     }
 
-    /**
-     * @return static
-     */
-    public function setCallAclId($id): self
+    public function setCallAclId($id): static
     {
         $value = !is_null($id)
             ? new CallAclDto($id)
@@ -677,9 +524,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setCallAcl($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCallAclId()
     {
         if ($dto = $this->getCallAcl()) {
@@ -689,30 +533,19 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setBossAssistant(?UserDto $bossAssistant = null): self
+    public function setBossAssistant(?UserDto $bossAssistant): static
     {
         $this->bossAssistant = $bossAssistant;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getBossAssistant(): ?UserDto
     {
         return $this->bossAssistant;
     }
 
-    /**
-     * @return static
-     */
-    public function setBossAssistantId($id): self
+    public function setBossAssistantId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -721,9 +554,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setBossAssistant($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBossAssistantId()
     {
         if ($dto = $this->getBossAssistant()) {
@@ -733,30 +563,19 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param MatchListDto | null
-     *
-     * @return static
-     */
-    public function setBossAssistantWhiteList(?MatchListDto $bossAssistantWhiteList = null): self
+    public function setBossAssistantWhiteList(?MatchListDto $bossAssistantWhiteList): static
     {
         $this->bossAssistantWhiteList = $bossAssistantWhiteList;
 
         return $this;
     }
 
-    /**
-     * @return MatchListDto | null
-     */
     public function getBossAssistantWhiteList(): ?MatchListDto
     {
         return $this->bossAssistantWhiteList;
     }
 
-    /**
-     * @return static
-     */
-    public function setBossAssistantWhiteListId($id): self
+    public function setBossAssistantWhiteListId($id): static
     {
         $value = !is_null($id)
             ? new MatchListDto($id)
@@ -765,9 +584,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setBossAssistantWhiteList($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBossAssistantWhiteListId()
     {
         if ($dto = $this->getBossAssistantWhiteList()) {
@@ -777,30 +593,19 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TransformationRuleSetDto | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet = null): self
+    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet): static
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
-    /**
-     * @return TransformationRuleSetDto | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetDto
     {
         return $this->transformationRuleSet;
     }
 
-    /**
-     * @return static
-     */
-    public function setTransformationRuleSetId($id): self
+    public function setTransformationRuleSetId($id): static
     {
         $value = !is_null($id)
             ? new TransformationRuleSetDto($id)
@@ -809,9 +614,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setTransformationRuleSet($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTransformationRuleSetId()
     {
         if ($dto = $this->getTransformationRuleSet()) {
@@ -821,30 +623,19 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LanguageDto | null
-     *
-     * @return static
-     */
-    public function setLanguage(?LanguageDto $language = null): self
+    public function setLanguage(?LanguageDto $language): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * @return LanguageDto | null
-     */
     public function getLanguage(): ?LanguageDto
     {
         return $this->language;
     }
 
-    /**
-     * @return static
-     */
-    public function setLanguageId($id): self
+    public function setLanguageId($id): static
     {
         $value = !is_null($id)
             ? new LanguageDto($id)
@@ -853,9 +644,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setLanguage($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getLanguageId()
     {
         if ($dto = $this->getLanguage()) {
@@ -865,30 +653,19 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TerminalDto | null
-     *
-     * @return static
-     */
-    public function setTerminal(?TerminalDto $terminal = null): self
+    public function setTerminal(?TerminalDto $terminal): static
     {
         $this->terminal = $terminal;
 
         return $this;
     }
 
-    /**
-     * @return TerminalDto | null
-     */
     public function getTerminal(): ?TerminalDto
     {
         return $this->terminal;
     }
 
-    /**
-     * @return static
-     */
-    public function setTerminalId($id): self
+    public function setTerminalId($id): static
     {
         $value = !is_null($id)
             ? new TerminalDto($id)
@@ -897,9 +674,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setTerminal($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTerminalId()
     {
         if ($dto = $this->getTerminal()) {
@@ -909,30 +683,19 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ExtensionDto | null
-     *
-     * @return static
-     */
-    public function setExtension(?ExtensionDto $extension = null): self
+    public function setExtension(?ExtensionDto $extension): static
     {
         $this->extension = $extension;
 
         return $this;
     }
 
-    /**
-     * @return ExtensionDto | null
-     */
     public function getExtension(): ?ExtensionDto
     {
         return $this->extension;
     }
 
-    /**
-     * @return static
-     */
-    public function setExtensionId($id): self
+    public function setExtensionId($id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -941,9 +704,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setExtension($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getExtensionId()
     {
         if ($dto = $this->getExtension()) {
@@ -953,30 +713,19 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TimezoneDto | null
-     *
-     * @return static
-     */
-    public function setTimezone(?TimezoneDto $timezone = null): self
+    public function setTimezone(?TimezoneDto $timezone): static
     {
         $this->timezone = $timezone;
 
         return $this;
     }
 
-    /**
-     * @return TimezoneDto | null
-     */
     public function getTimezone(): ?TimezoneDto
     {
         return $this->timezone;
     }
 
-    /**
-     * @return static
-     */
-    public function setTimezoneId($id): self
+    public function setTimezoneId($id): static
     {
         $value = !is_null($id)
             ? new TimezoneDto($id)
@@ -985,9 +734,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setTimezone($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTimezoneId()
     {
         if ($dto = $this->getTimezone()) {
@@ -997,30 +743,19 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DdiDto | null
-     *
-     * @return static
-     */
-    public function setOutgoingDdi(?DdiDto $outgoingDdi = null): self
+    public function setOutgoingDdi(?DdiDto $outgoingDdi): static
     {
         $this->outgoingDdi = $outgoingDdi;
 
         return $this;
     }
 
-    /**
-     * @return DdiDto | null
-     */
     public function getOutgoingDdi(): ?DdiDto
     {
         return $this->outgoingDdi;
     }
 
-    /**
-     * @return static
-     */
-    public function setOutgoingDdiId($id): self
+    public function setOutgoingDdiId($id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)
@@ -1029,9 +764,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingDdi($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getOutgoingDdiId()
     {
         if ($dto = $this->getOutgoingDdi()) {
@@ -1041,30 +773,19 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param OutgoingDdiRuleDto | null
-     *
-     * @return static
-     */
-    public function setOutgoingDdiRule(?OutgoingDdiRuleDto $outgoingDdiRule = null): self
+    public function setOutgoingDdiRule(?OutgoingDdiRuleDto $outgoingDdiRule): static
     {
         $this->outgoingDdiRule = $outgoingDdiRule;
 
         return $this;
     }
 
-    /**
-     * @return OutgoingDdiRuleDto | null
-     */
     public function getOutgoingDdiRule(): ?OutgoingDdiRuleDto
     {
         return $this->outgoingDdiRule;
     }
 
-    /**
-     * @return static
-     */
-    public function setOutgoingDdiRuleId($id): self
+    public function setOutgoingDdiRuleId($id): static
     {
         $value = !is_null($id)
             ? new OutgoingDdiRuleDto($id)
@@ -1073,9 +794,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingDdiRule($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getOutgoingDdiRuleId()
     {
         if ($dto = $this->getOutgoingDdiRule()) {
@@ -1085,30 +803,19 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LocutionDto | null
-     *
-     * @return static
-     */
-    public function setVoicemailLocution(?LocutionDto $voicemailLocution = null): self
+    public function setVoicemailLocution(?LocutionDto $voicemailLocution): static
     {
         $this->voicemailLocution = $voicemailLocution;
 
         return $this;
     }
 
-    /**
-     * @return LocutionDto | null
-     */
     public function getVoicemailLocution(): ?LocutionDto
     {
         return $this->voicemailLocution;
     }
 
-    /**
-     * @return static
-     */
-    public function setVoicemailLocutionId($id): self
+    public function setVoicemailLocutionId($id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -1117,9 +824,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->setVoicemailLocution($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getVoicemailLocutionId()
     {
         if ($dto = $this->getVoicemailLocution()) {
@@ -1129,61 +833,37 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param PickUpRelUserDto[] | null
-     *
-     * @return static
-     */
-    public function setPickUpRelUsers(?array $pickUpRelUsers = null): self
+    public function setPickUpRelUsers(?array $pickUpRelUsers): static
     {
         $this->pickUpRelUsers = $pickUpRelUsers;
 
         return $this;
     }
 
-    /**
-     * @return PickUpRelUserDto[] | null
-     */
     public function getPickUpRelUsers(): ?array
     {
         return $this->pickUpRelUsers;
     }
 
-    /**
-     * @param QueueMemberDto[] | null
-     *
-     * @return static
-     */
-    public function setQueueMembers(?array $queueMembers = null): self
+    public function setQueueMembers(?array $queueMembers): static
     {
         $this->queueMembers = $queueMembers;
 
         return $this;
     }
 
-    /**
-     * @return QueueMemberDto[] | null
-     */
     public function getQueueMembers(): ?array
     {
         return $this->queueMembers;
     }
 
-    /**
-     * @param CallForwardSettingDto[] | null
-     *
-     * @return static
-     */
-    public function setCallForwardSettings(?array $callForwardSettings = null): self
+    public function setCallForwardSettings(?array $callForwardSettings): static
     {
         $this->callForwardSettings = $callForwardSettings;
 
         return $this;
     }
 
-    /**
-     * @return CallForwardSettingDto[] | null
-     */
     public function getCallForwardSettings(): ?array
     {
         return $this->callForwardSettings;

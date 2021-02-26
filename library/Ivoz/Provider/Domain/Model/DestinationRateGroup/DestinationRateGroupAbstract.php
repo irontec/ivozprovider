@@ -61,7 +61,7 @@ abstract class DestinationRateGroupAbstract
     protected $brand;
 
     /**
-     * @var CurrencyInterface
+     * @var CurrencyInterface | null
      */
     protected $currency;
 
@@ -100,7 +100,7 @@ abstract class DestinationRateGroupAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return DestinationRateGroupDto
      */
     public static function createDto($id = null)
@@ -285,14 +285,7 @@ abstract class DestinationRateGroupAbstract
         ];
     }
 
-    /**
-     * Set status
-     *
-     * @param string $status | null
-     *
-     * @return static
-     */
-    protected function setStatus(?string $status = null): DestinationRateGroupInterface
+    protected function setStatus(?string $status = null): static
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -313,24 +306,12 @@ abstract class DestinationRateGroupAbstract
         return $this;
     }
 
-    /**
-     * Get status
-     *
-     * @return string | null
-     */
     public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    /**
-     * Set lastExecutionError
-     *
-     * @param string $lastExecutionError | null
-     *
-     * @return static
-     */
-    protected function setLastExecutionError(?string $lastExecutionError = null): DestinationRateGroupInterface
+    protected function setLastExecutionError(?string $lastExecutionError = null): static
     {
         if (!is_null($lastExecutionError)) {
             Assertion::maxLength($lastExecutionError, 300, 'lastExecutionError value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -341,24 +322,12 @@ abstract class DestinationRateGroupAbstract
         return $this;
     }
 
-    /**
-     * Get lastExecutionError
-     *
-     * @return string | null
-     */
     public function getLastExecutionError(): ?string
     {
         return $this->lastExecutionError;
     }
 
-    /**
-     * Set deductibleConnectionFee
-     *
-     * @param bool $deductibleConnectionFee
-     *
-     * @return static
-     */
-    protected function setDeductibleConnectionFee(bool $deductibleConnectionFee): DestinationRateGroupInterface
+    protected function setDeductibleConnectionFee(bool $deductibleConnectionFee): static
     {
         Assertion::between(intval($deductibleConnectionFee), 0, 1, 'deductibleConnectionFee provided "%s" is not a valid boolean value.');
         $deductibleConnectionFee = (bool) $deductibleConnectionFee;
@@ -368,32 +337,17 @@ abstract class DestinationRateGroupAbstract
         return $this;
     }
 
-    /**
-     * Get deductibleConnectionFee
-     *
-     * @return bool
-     */
     public function getDeductibleConnectionFee(): bool
     {
         return $this->deductibleConnectionFee;
     }
 
-    /**
-     * Get name
-     *
-     * @return Name
-     */
     public function getName(): Name
     {
         return $this->name;
     }
 
-    /**
-     * Set name
-     *
-     * @return static
-     */
-    protected function setName(Name $name): DestinationRateGroupInterface
+    protected function setName(Name $name): static
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -404,22 +358,12 @@ abstract class DestinationRateGroupAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return Description
-     */
     public function getDescription(): Description
     {
         return $this->description;
     }
 
-    /**
-     * Set description
-     *
-     * @return static
-     */
-    protected function setDescription(Description $description): DestinationRateGroupInterface
+    protected function setDescription(Description $description): static
     {
         $isEqual = $this->description && $this->description->equals($description);
         if ($isEqual) {
@@ -430,22 +374,12 @@ abstract class DestinationRateGroupAbstract
         return $this;
     }
 
-    /**
-     * Get file
-     *
-     * @return File
-     */
     public function getFile(): File
     {
         return $this->file;
     }
 
-    /**
-     * Set file
-     *
-     * @return static
-     */
-    protected function setFile(File $file): DestinationRateGroupInterface
+    protected function setFile(File $file): static
     {
         $isEqual = $this->file && $this->file->equals($file);
         if ($isEqual) {
@@ -456,49 +390,25 @@ abstract class DestinationRateGroupAbstract
         return $this;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    protected function setBrand(BrandInterface $brand): DestinationRateGroupInterface
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set currency
-     *
-     * @param CurrencyInterface | null
-     *
-     * @return static
-     */
-    protected function setCurrency(?CurrencyInterface $currency = null): DestinationRateGroupInterface
+    protected function setCurrency(?CurrencyInterface $currency = null): static
     {
         $this->currency = $currency;
 
         return $this;
     }
 
-    /**
-     * Get currency
-     *
-     * @return CurrencyInterface | null
-     */
     public function getCurrency(): ?CurrencyInterface
     {
         return $this->currency;

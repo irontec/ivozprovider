@@ -65,17 +65,17 @@ abstract class TpAccountActionAbstract
 
     /**
      * column: created_at
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $createdAt = 'CURRENT_TIMESTAMP';
+    protected $createdAt;
 
     /**
-     * @var Company
+     * @var Company | null
      */
     protected $company;
 
     /**
-     * @var Carrier
+     * @var Carrier | null
      */
     protected $carrier;
 
@@ -120,7 +120,7 @@ abstract class TpAccountActionAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TpAccountActionDto
      */
     public static function createDto($id = null)
@@ -257,14 +257,7 @@ abstract class TpAccountActionAbstract
         ];
     }
 
-    /**
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return static
-     */
-    protected function setTpid(string $tpid): TpAccountActionInterface
+    protected function setTpid(string $tpid): static
     {
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -273,24 +266,12 @@ abstract class TpAccountActionAbstract
         return $this;
     }
 
-    /**
-     * Get tpid
-     *
-     * @return string
-     */
     public function getTpid(): string
     {
         return $this->tpid;
     }
 
-    /**
-     * Set loadid
-     *
-     * @param string $loadid
-     *
-     * @return static
-     */
-    protected function setLoadid(string $loadid): TpAccountActionInterface
+    protected function setLoadid(string $loadid): static
     {
         Assertion::maxLength($loadid, 64, 'loadid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -299,24 +280,12 @@ abstract class TpAccountActionAbstract
         return $this;
     }
 
-    /**
-     * Get loadid
-     *
-     * @return string
-     */
     public function getLoadid(): string
     {
         return $this->loadid;
     }
 
-    /**
-     * Set tenant
-     *
-     * @param string $tenant
-     *
-     * @return static
-     */
-    protected function setTenant(string $tenant): TpAccountActionInterface
+    protected function setTenant(string $tenant): static
     {
         Assertion::maxLength($tenant, 64, 'tenant value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -325,24 +294,12 @@ abstract class TpAccountActionAbstract
         return $this;
     }
 
-    /**
-     * Get tenant
-     *
-     * @return string
-     */
     public function getTenant(): string
     {
         return $this->tenant;
     }
 
-    /**
-     * Set account
-     *
-     * @param string $account
-     *
-     * @return static
-     */
-    protected function setAccount(string $account): TpAccountActionInterface
+    protected function setAccount(string $account): static
     {
         Assertion::maxLength($account, 64, 'account value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -351,24 +308,12 @@ abstract class TpAccountActionAbstract
         return $this;
     }
 
-    /**
-     * Get account
-     *
-     * @return string
-     */
     public function getAccount(): string
     {
         return $this->account;
     }
 
-    /**
-     * Set actionPlanTag
-     *
-     * @param string $actionPlanTag | null
-     *
-     * @return static
-     */
-    protected function setActionPlanTag(?string $actionPlanTag = null): TpAccountActionInterface
+    protected function setActionPlanTag(?string $actionPlanTag = null): static
     {
         if (!is_null($actionPlanTag)) {
             Assertion::maxLength($actionPlanTag, 64, 'actionPlanTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -379,24 +324,12 @@ abstract class TpAccountActionAbstract
         return $this;
     }
 
-    /**
-     * Get actionPlanTag
-     *
-     * @return string | null
-     */
     public function getActionPlanTag(): ?string
     {
         return $this->actionPlanTag;
     }
 
-    /**
-     * Set actionTriggersTag
-     *
-     * @param string $actionTriggersTag | null
-     *
-     * @return static
-     */
-    protected function setActionTriggersTag(?string $actionTriggersTag = null): TpAccountActionInterface
+    protected function setActionTriggersTag(?string $actionTriggersTag = null): static
     {
         if (!is_null($actionTriggersTag)) {
             Assertion::maxLength($actionTriggersTag, 64, 'actionTriggersTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -407,24 +340,12 @@ abstract class TpAccountActionAbstract
         return $this;
     }
 
-    /**
-     * Get actionTriggersTag
-     *
-     * @return string | null
-     */
     public function getActionTriggersTag(): ?string
     {
         return $this->actionTriggersTag;
     }
 
-    /**
-     * Set allowNegative
-     *
-     * @param bool $allowNegative
-     *
-     * @return static
-     */
-    protected function setAllowNegative(bool $allowNegative): TpAccountActionInterface
+    protected function setAllowNegative(bool $allowNegative): static
     {
         Assertion::between(intval($allowNegative), 0, 1, 'allowNegative provided "%s" is not a valid boolean value.');
         $allowNegative = (bool) $allowNegative;
@@ -434,24 +355,12 @@ abstract class TpAccountActionAbstract
         return $this;
     }
 
-    /**
-     * Get allowNegative
-     *
-     * @return bool
-     */
     public function getAllowNegative(): bool
     {
         return $this->allowNegative;
     }
 
-    /**
-     * Set disabled
-     *
-     * @param bool $disabled
-     *
-     * @return static
-     */
-    protected function setDisabled(bool $disabled): TpAccountActionInterface
+    protected function setDisabled(bool $disabled): static
     {
         Assertion::between(intval($disabled), 0, 1, 'disabled provided "%s" is not a valid boolean value.');
         $disabled = (bool) $disabled;
@@ -461,24 +370,12 @@ abstract class TpAccountActionAbstract
         return $this;
     }
 
-    /**
-     * Get disabled
-     *
-     * @return bool
-     */
     public function getDisabled(): bool
     {
         return $this->disabled;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTimeInterface $createdAt
-     *
-     * @return static
-     */
-    protected function setCreatedAt($createdAt): TpAccountActionInterface
+    protected function setCreatedAt($createdAt): static
     {
 
         $createdAt = DateTimeHelper::createOrFix(
@@ -495,59 +392,30 @@ abstract class TpAccountActionAbstract
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }
 
-    /**
-     * Set company
-     *
-     * @param Company | null
-     *
-     * @return static
-     */
-    protected function setCompany(?Company $company = null): TpAccountActionInterface
+    protected function setCompany(?Company $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return Company | null
-     */
     public function getCompany(): ?Company
     {
         return $this->company;
     }
 
-    /**
-     * Set carrier
-     *
-     * @param Carrier | null
-     *
-     * @return static
-     */
-    protected function setCarrier(?Carrier $carrier = null): TpAccountActionInterface
+    protected function setCarrier(?Carrier $carrier = null): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * Get carrier
-     *
-     * @return Carrier | null
-     */
     public function getCarrier(): ?Carrier
     {
         return $this->carrier;

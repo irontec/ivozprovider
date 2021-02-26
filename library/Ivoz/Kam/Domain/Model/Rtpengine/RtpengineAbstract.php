@@ -41,9 +41,9 @@ abstract class RtpengineAbstract
     protected $disabled = false;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $stamp = '2000-01-01 00:00:00';
+    protected $stamp;
 
     /**
      * @var string | null
@@ -51,7 +51,7 @@ abstract class RtpengineAbstract
     protected $description;
 
     /**
-     * @var MediaRelaySetInterface
+     * @var MediaRelaySetInterface | null
      */
     protected $mediaRelaySet;
 
@@ -92,7 +92,7 @@ abstract class RtpengineAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return RtpengineDto
      */
     public static function createDto($id = null)
@@ -213,38 +213,19 @@ abstract class RtpengineAbstract
         ];
     }
 
-    /**
-     * Set setid
-     *
-     * @param int $setid
-     *
-     * @return static
-     */
-    protected function setSetid(int $setid): RtpengineInterface
+    protected function setSetid(int $setid): static
     {
         $this->setid = $setid;
 
         return $this;
     }
 
-    /**
-     * Get setid
-     *
-     * @return int
-     */
     public function getSetid(): int
     {
         return $this->setid;
     }
 
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return static
-     */
-    protected function setUrl(string $url): RtpengineInterface
+    protected function setUrl(string $url): static
     {
         Assertion::maxLength($url, 64, 'url value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -253,24 +234,12 @@ abstract class RtpengineAbstract
         return $this;
     }
 
-    /**
-     * Get url
-     *
-     * @return string
-     */
     public function getUrl(): string
     {
         return $this->url;
     }
 
-    /**
-     * Set weight
-     *
-     * @param int $weight
-     *
-     * @return static
-     */
-    protected function setWeight(int $weight): RtpengineInterface
+    protected function setWeight(int $weight): static
     {
         Assertion::greaterOrEqualThan($weight, 0, 'weight provided "%s" is not greater or equal than "%s".');
 
@@ -279,24 +248,12 @@ abstract class RtpengineAbstract
         return $this;
     }
 
-    /**
-     * Get weight
-     *
-     * @return int
-     */
     public function getWeight(): int
     {
         return $this->weight;
     }
 
-    /**
-     * Set disabled
-     *
-     * @param bool $disabled
-     *
-     * @return static
-     */
-    protected function setDisabled(bool $disabled): RtpengineInterface
+    protected function setDisabled(bool $disabled): static
     {
         Assertion::between(intval($disabled), 0, 1, 'disabled provided "%s" is not a valid boolean value.');
         $disabled = (bool) $disabled;
@@ -306,24 +263,12 @@ abstract class RtpengineAbstract
         return $this;
     }
 
-    /**
-     * Get disabled
-     *
-     * @return bool
-     */
     public function getDisabled(): bool
     {
         return $this->disabled;
     }
 
-    /**
-     * Set stamp
-     *
-     * @param \DateTimeInterface $stamp
-     *
-     * @return static
-     */
-    protected function setStamp($stamp): RtpengineInterface
+    protected function setStamp($stamp): static
     {
 
         $stamp = DateTimeHelper::createOrFix(
@@ -340,24 +285,12 @@ abstract class RtpengineAbstract
         return $this;
     }
 
-    /**
-     * Get stamp
-     *
-     * @return \DateTimeInterface
-     */
-    public function getStamp(): \DateTimeInterface
+    public function getStamp(): \DateTime
     {
         return clone $this->stamp;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description | null
-     *
-     * @return static
-     */
-    protected function setDescription(?string $description = null): RtpengineInterface
+    protected function setDescription(?string $description = null): static
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -368,35 +301,18 @@ abstract class RtpengineAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * Set mediaRelaySet
-     *
-     * @param MediaRelaySetInterface | null
-     *
-     * @return static
-     */
-    protected function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null): RtpengineInterface
+    protected function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null): static
     {
         $this->mediaRelaySet = $mediaRelaySet;
 
         return $this;
     }
 
-    /**
-     * Get mediaRelaySet
-     *
-     * @return MediaRelaySetInterface | null
-     */
     public function getMediaRelaySet(): ?MediaRelaySetInterface
     {
         return $this->mediaRelaySet;

@@ -68,9 +68,9 @@ abstract class TpDestinationRateAbstract
 
     /**
      * column: created_at
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $createdAt = 'CURRENT_TIMESTAMP';
+    protected $createdAt;
 
     /**
      * @var DestinationRate
@@ -117,7 +117,7 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TpDestinationRateDto
      */
     public static function createDto($id = null)
@@ -250,14 +250,7 @@ abstract class TpDestinationRateAbstract
         ];
     }
 
-    /**
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return static
-     */
-    protected function setTpid(string $tpid): TpDestinationRateInterface
+    protected function setTpid(string $tpid): static
     {
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -266,24 +259,12 @@ abstract class TpDestinationRateAbstract
         return $this;
     }
 
-    /**
-     * Get tpid
-     *
-     * @return string
-     */
     public function getTpid(): string
     {
         return $this->tpid;
     }
 
-    /**
-     * Set tag
-     *
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    protected function setTag(?string $tag = null): TpDestinationRateInterface
+    protected function setTag(?string $tag = null): static
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -294,24 +275,12 @@ abstract class TpDestinationRateAbstract
         return $this;
     }
 
-    /**
-     * Get tag
-     *
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * Set destinationsTag
-     *
-     * @param string $destinationsTag | null
-     *
-     * @return static
-     */
-    protected function setDestinationsTag(?string $destinationsTag = null): TpDestinationRateInterface
+    protected function setDestinationsTag(?string $destinationsTag = null): static
     {
         if (!is_null($destinationsTag)) {
             Assertion::maxLength($destinationsTag, 64, 'destinationsTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -322,24 +291,12 @@ abstract class TpDestinationRateAbstract
         return $this;
     }
 
-    /**
-     * Get destinationsTag
-     *
-     * @return string | null
-     */
     public function getDestinationsTag(): ?string
     {
         return $this->destinationsTag;
     }
 
-    /**
-     * Set ratesTag
-     *
-     * @param string $ratesTag | null
-     *
-     * @return static
-     */
-    protected function setRatesTag(?string $ratesTag = null): TpDestinationRateInterface
+    protected function setRatesTag(?string $ratesTag = null): static
     {
         if (!is_null($ratesTag)) {
             Assertion::maxLength($ratesTag, 64, 'ratesTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -350,24 +307,12 @@ abstract class TpDestinationRateAbstract
         return $this;
     }
 
-    /**
-     * Get ratesTag
-     *
-     * @return string | null
-     */
     public function getRatesTag(): ?string
     {
         return $this->ratesTag;
     }
 
-    /**
-     * Set roundingMethod
-     *
-     * @param string $roundingMethod
-     *
-     * @return static
-     */
-    protected function setRoundingMethod(string $roundingMethod): TpDestinationRateInterface
+    protected function setRoundingMethod(string $roundingMethod): static
     {
         Assertion::maxLength($roundingMethod, 255, 'roundingMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -384,72 +329,36 @@ abstract class TpDestinationRateAbstract
         return $this;
     }
 
-    /**
-     * Get roundingMethod
-     *
-     * @return string
-     */
     public function getRoundingMethod(): string
     {
         return $this->roundingMethod;
     }
 
-    /**
-     * Set roundingDecimals
-     *
-     * @param int $roundingDecimals
-     *
-     * @return static
-     */
-    protected function setRoundingDecimals(int $roundingDecimals): TpDestinationRateInterface
+    protected function setRoundingDecimals(int $roundingDecimals): static
     {
         $this->roundingDecimals = $roundingDecimals;
 
         return $this;
     }
 
-    /**
-     * Get roundingDecimals
-     *
-     * @return int
-     */
     public function getRoundingDecimals(): int
     {
         return $this->roundingDecimals;
     }
 
-    /**
-     * Set maxCost
-     *
-     * @param float $maxCost
-     *
-     * @return static
-     */
-    protected function setMaxCost(float $maxCost): TpDestinationRateInterface
+    protected function setMaxCost(float $maxCost): static
     {
         $this->maxCost = $maxCost;
 
         return $this;
     }
 
-    /**
-     * Get maxCost
-     *
-     * @return float
-     */
     public function getMaxCost(): float
     {
         return $this->maxCost;
     }
 
-    /**
-     * Set maxCostStrategy
-     *
-     * @param string $maxCostStrategy
-     *
-     * @return static
-     */
-    protected function setMaxCostStrategy(string $maxCostStrategy): TpDestinationRateInterface
+    protected function setMaxCostStrategy(string $maxCostStrategy): static
     {
         Assertion::maxLength($maxCostStrategy, 16, 'maxCostStrategy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -458,24 +367,12 @@ abstract class TpDestinationRateAbstract
         return $this;
     }
 
-    /**
-     * Get maxCostStrategy
-     *
-     * @return string
-     */
     public function getMaxCostStrategy(): string
     {
         return $this->maxCostStrategy;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTimeInterface $createdAt
-     *
-     * @return static
-     */
-    protected function setCreatedAt($createdAt): TpDestinationRateInterface
+    protected function setCreatedAt($createdAt): static
     {
 
         $createdAt = DateTimeHelper::createOrFix(
@@ -492,35 +389,19 @@ abstract class TpDestinationRateAbstract
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }
 
-    /**
-     * Set destinationRate
-     *
-     * @param DestinationRate
-     *
-     * @return static
-     */
-    public function setDestinationRate(DestinationRate $destinationRate): TpDestinationRateInterface
+    public function setDestinationRate(DestinationRate $destinationRate): static
     {
         $this->destinationRate = $destinationRate;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get destinationRate
-     *
-     * @return DestinationRate
-     */
     public function getDestinationRate(): DestinationRate
     {
         return $this->destinationRate;

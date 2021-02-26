@@ -63,13 +63,13 @@ abstract class TrunksLcrRuleAbstract
     protected $enabled = 1;
 
     /**
-     * @var RoutingPatternInterface
+     * @var RoutingPatternInterface | null
      * inversedBy lcrRules
      */
     protected $routingPattern;
 
     /**
-     * @var RoutingPatternGroupsRelPatternInterface
+     * @var RoutingPatternGroupsRelPatternInterface | null
      */
     protected $routingPatternGroupsRelPattern;
 
@@ -112,7 +112,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TrunksLcrRuleDto
      */
     public static function createDto($id = null)
@@ -245,14 +245,7 @@ abstract class TrunksLcrRuleAbstract
         ];
     }
 
-    /**
-     * Set lcrId
-     *
-     * @param int $lcrId
-     *
-     * @return static
-     */
-    protected function setLcrId(int $lcrId): TrunksLcrRuleInterface
+    protected function setLcrId(int $lcrId): static
     {
         Assertion::greaterOrEqualThan($lcrId, 0, 'lcrId provided "%s" is not greater or equal than "%s".');
 
@@ -261,24 +254,12 @@ abstract class TrunksLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get lcrId
-     *
-     * @return int
-     */
     public function getLcrId(): int
     {
         return $this->lcrId;
     }
 
-    /**
-     * Set prefix
-     *
-     * @param string $prefix | null
-     *
-     * @return static
-     */
-    protected function setPrefix(?string $prefix = null): TrunksLcrRuleInterface
+    protected function setPrefix(?string $prefix = null): static
     {
         if (!is_null($prefix)) {
             Assertion::maxLength($prefix, 100, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -289,24 +270,12 @@ abstract class TrunksLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get prefix
-     *
-     * @return string | null
-     */
     public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
-    /**
-     * Set fromUri
-     *
-     * @param string $fromUri | null
-     *
-     * @return static
-     */
-    protected function setFromUri(?string $fromUri = null): TrunksLcrRuleInterface
+    protected function setFromUri(?string $fromUri = null): static
     {
         if (!is_null($fromUri)) {
             Assertion::maxLength($fromUri, 255, 'fromUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -317,24 +286,12 @@ abstract class TrunksLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get fromUri
-     *
-     * @return string | null
-     */
     public function getFromUri(): ?string
     {
         return $this->fromUri;
     }
 
-    /**
-     * Set requestUri
-     *
-     * @param string $requestUri | null
-     *
-     * @return static
-     */
-    protected function setRequestUri(?string $requestUri = null): TrunksLcrRuleInterface
+    protected function setRequestUri(?string $requestUri = null): static
     {
         if (!is_null($requestUri)) {
             Assertion::maxLength($requestUri, 100, 'requestUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -345,24 +302,12 @@ abstract class TrunksLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get requestUri
-     *
-     * @return string | null
-     */
     public function getRequestUri(): ?string
     {
         return $this->requestUri;
     }
 
-    /**
-     * Set mtTvalue
-     *
-     * @param string $mtTvalue | null
-     *
-     * @return static
-     */
-    protected function setMtTvalue(?string $mtTvalue = null): TrunksLcrRuleInterface
+    protected function setMtTvalue(?string $mtTvalue = null): static
     {
         if (!is_null($mtTvalue)) {
             Assertion::maxLength($mtTvalue, 128, 'mtTvalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -373,24 +318,12 @@ abstract class TrunksLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get mtTvalue
-     *
-     * @return string | null
-     */
     public function getMtTvalue(): ?string
     {
         return $this->mtTvalue;
     }
 
-    /**
-     * Set stopper
-     *
-     * @param int $stopper
-     *
-     * @return static
-     */
-    protected function setStopper(int $stopper): TrunksLcrRuleInterface
+    protected function setStopper(int $stopper): static
     {
         Assertion::greaterOrEqualThan($stopper, 0, 'stopper provided "%s" is not greater or equal than "%s".');
 
@@ -399,24 +332,12 @@ abstract class TrunksLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get stopper
-     *
-     * @return int
-     */
     public function getStopper(): int
     {
         return $this->stopper;
     }
 
-    /**
-     * Set enabled
-     *
-     * @param int $enabled
-     *
-     * @return static
-     */
-    protected function setEnabled(int $enabled): TrunksLcrRuleInterface
+    protected function setEnabled(int $enabled): static
     {
         Assertion::greaterOrEqualThan($enabled, 0, 'enabled provided "%s" is not greater or equal than "%s".');
 
@@ -425,83 +346,44 @@ abstract class TrunksLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get enabled
-     *
-     * @return int
-     */
     public function getEnabled(): int
     {
         return $this->enabled;
     }
 
-    /**
-     * Set routingPattern
-     *
-     * @param RoutingPatternInterface | null
-     *
-     * @return static
-     */
-    public function setRoutingPattern(?RoutingPatternInterface $routingPattern = null): TrunksLcrRuleInterface
+    public function setRoutingPattern(?RoutingPatternInterface $routingPattern = null): static
     {
         $this->routingPattern = $routingPattern;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get routingPattern
-     *
-     * @return RoutingPatternInterface | null
-     */
     public function getRoutingPattern(): ?RoutingPatternInterface
     {
         return $this->routingPattern;
     }
 
-    /**
-     * Set routingPatternGroupsRelPattern
-     *
-     * @param RoutingPatternGroupsRelPatternInterface | null
-     *
-     * @return static
-     */
-    protected function setRoutingPatternGroupsRelPattern(?RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern = null): TrunksLcrRuleInterface
+    protected function setRoutingPatternGroupsRelPattern(?RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern = null): static
     {
         $this->routingPatternGroupsRelPattern = $routingPatternGroupsRelPattern;
 
         return $this;
     }
 
-    /**
-     * Get routingPatternGroupsRelPattern
-     *
-     * @return RoutingPatternGroupsRelPatternInterface | null
-     */
     public function getRoutingPatternGroupsRelPattern(): ?RoutingPatternGroupsRelPatternInterface
     {
         return $this->routingPatternGroupsRelPattern;
     }
 
-    /**
-     * Set outgoingRouting
-     *
-     * @param OutgoingRoutingInterface
-     *
-     * @return static
-     */
-    public function setOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): TrunksLcrRuleInterface
+    public function setOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): static
     {
         $this->outgoingRouting = $outgoingRouting;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get outgoingRouting
-     *
-     * @return OutgoingRoutingInterface
-     */
     public function getOutgoingRouting(): OutgoingRoutingInterface
     {
         return $this->outgoingRouting;

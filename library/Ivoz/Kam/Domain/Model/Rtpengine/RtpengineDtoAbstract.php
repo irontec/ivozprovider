@@ -22,7 +22,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $url;
+    private $url = '';
 
     /**
      * @var int
@@ -35,12 +35,12 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     private $disabled = false;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $stamp = '2000-01-01 00:00:00';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $description;
 
@@ -110,170 +110,103 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param int $setid | null
-     *
-     * @return static
-     */
-    public function setSetid(?int $setid = null): self
+    public function setSetid(?int $setid): static
     {
         $this->setid = $setid;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getSetid(): ?int
     {
         return $this->setid;
     }
 
-    /**
-     * @param string $url | null
-     *
-     * @return static
-     */
-    public function setUrl(?string $url = null): self
+    public function setUrl(?string $url): static
     {
         $this->url = $url;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @param int $weight | null
-     *
-     * @return static
-     */
-    public function setWeight(?int $weight = null): self
+    public function setWeight(?int $weight): static
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getWeight(): ?int
     {
         return $this->weight;
     }
 
-    /**
-     * @param bool $disabled | null
-     *
-     * @return static
-     */
-    public function setDisabled(?bool $disabled = null): self
+    public function setDisabled(?bool $disabled): static
     {
         $this->disabled = $disabled;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getDisabled(): ?bool
     {
         return $this->disabled;
     }
 
-    /**
-     * @param \DateTimeInterface $stamp | null
-     *
-     * @return static
-     */
-    public function setStamp($stamp = null): self
+    public function setStamp(null|\DateTime|string $stamp): static
     {
         $this->stamp = $stamp;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getStamp()
+    public function getStamp(): \DateTime|string|null
     {
         return $this->stamp;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param MediaRelaySetDto | null
-     *
-     * @return static
-     */
-    public function setMediaRelaySet(?MediaRelaySetDto $mediaRelaySet = null): self
+    public function setMediaRelaySet(?MediaRelaySetDto $mediaRelaySet): static
     {
         $this->mediaRelaySet = $mediaRelaySet;
 
         return $this;
     }
 
-    /**
-     * @return MediaRelaySetDto | null
-     */
     public function getMediaRelaySet(): ?MediaRelaySetDto
     {
         return $this->mediaRelaySet;
     }
 
-    /**
-     * @return static
-     */
-    public function setMediaRelaySetId($id): self
+    public function setMediaRelaySetId($id): static
     {
         $value = !is_null($id)
             ? new MediaRelaySetDto($id)
@@ -282,9 +215,6 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->setMediaRelaySet($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getMediaRelaySetId()
     {
         if ($dto = $this->getMediaRelaySet()) {

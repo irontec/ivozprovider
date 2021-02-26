@@ -111,13 +111,6 @@ trait AdministratorTrait
         ];
     }
 
-    /**
-     * Add relPublicEntity
-     *
-     * @param AdministratorRelPublicEntityInterface $relPublicEntity
-     *
-     * @return static
-     */
     public function addRelPublicEntity(AdministratorRelPublicEntityInterface $relPublicEntity): AdministratorInterface
     {
         $this->relPublicEntities->add($relPublicEntity);
@@ -125,13 +118,6 @@ trait AdministratorTrait
         return $this;
     }
 
-    /**
-     * Remove relPublicEntity
-     *
-     * @param AdministratorRelPublicEntityInterface $relPublicEntity
-     *
-     * @return static
-     */
     public function removeRelPublicEntity(AdministratorRelPublicEntityInterface $relPublicEntity): AdministratorInterface
     {
         $this->relPublicEntities->removeElement($relPublicEntity);
@@ -139,13 +125,6 @@ trait AdministratorTrait
         return $this;
     }
 
-    /**
-     * Replace relPublicEntities
-     *
-     * @param ArrayCollection $relPublicEntities of AdministratorRelPublicEntityInterface
-     *
-     * @return static
-     */
     public function replaceRelPublicEntities(ArrayCollection $relPublicEntities): AdministratorInterface
     {
         $updatedEntities = [];
@@ -174,11 +153,6 @@ trait AdministratorTrait
         return $this;
     }
 
-    /**
-     * Get relPublicEntities
-     * @param Criteria | null $criteria
-     * @return AdministratorRelPublicEntityInterface[]
-     */
     public function getRelPublicEntities(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

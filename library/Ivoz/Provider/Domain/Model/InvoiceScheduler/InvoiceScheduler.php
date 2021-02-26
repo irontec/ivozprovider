@@ -34,7 +34,7 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
     /**
      * @inheritdoc
      */
-    public function setEmail(string $email): self
+    public function setEmail(string $email): static
     {
         if (!empty($email)) {
             Assertion::email($email);
@@ -45,7 +45,7 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
     /**
      * @inheritdoc
      */
-    public function setFrequency(int $frequency): self
+    public function setFrequency(int $frequency): static
     {
         Assertion::greaterOrEqualThan($frequency, 1);
         return parent::setFrequency($frequency);
@@ -69,16 +69,16 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
 
         switch ($this->getUnit()) {
             /** @see http://php.net/manual/es/dateinterval.createfromdatestring.php */
-            case 'year':
+            case InvoiceSchedulerInterface::UNIT_YEAR:
                 return new \DateInterval("P${frecuency}Y");
-            case 'month':
+            case InvoiceSchedulerInterface::UNIT_MONTH:
                 return new \DateInterval("P${frecuency}M");
-            case 'week':
+            default:
                 return new \DateInterval("P${frecuency}W");
         }
     }
 
-    protected function setLastExecutionError(?string $lastExecutionError = null): self
+    protected function setLastExecutionError(?string $lastExecutionError = null): static
     {
         if (!is_null($lastExecutionError)) {
             $lastExecutionError = substr(

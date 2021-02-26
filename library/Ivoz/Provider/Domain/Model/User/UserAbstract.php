@@ -94,7 +94,7 @@ abstract class UserAbstract
     protected $rejectCallMethod = 'rfc';
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $voicemailEnabled = true;
 
@@ -114,7 +114,7 @@ abstract class UserAbstract
     protected $multiContact = true;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $gsQRCode = false;
 
@@ -124,59 +124,59 @@ abstract class UserAbstract
     protected $company;
 
     /**
-     * @var CallAclInterface
+     * @var CallAclInterface | null
      */
     protected $callAcl;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $bossAssistant;
 
     /**
-     * @var MatchListInterface
+     * @var MatchListInterface | null
      */
     protected $bossAssistantWhiteList;
 
     /**
-     * @var TransformationRuleSetInterface
+     * @var TransformationRuleSetInterface | null
      */
     protected $transformationRuleSet;
 
     /**
-     * @var LanguageInterface
+     * @var LanguageInterface | null
      */
     protected $language;
 
     /**
-     * @var TerminalInterface
+     * @var TerminalInterface | null
      * inversedBy users
      */
     protected $terminal;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      * inversedBy users
      */
     protected $extension;
 
     /**
-     * @var TimezoneInterface
+     * @var TimezoneInterface | null
      */
     protected $timezone;
 
     /**
-     * @var DdiInterface
+     * @var DdiInterface | null
      */
     protected $outgoingDdi;
 
     /**
-     * @var OutgoingDdiRuleInterface
+     * @var OutgoingDdiRuleInterface | null
      */
     protected $outgoingDdiRule;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $voicemailLocution;
 
@@ -233,7 +233,7 @@ abstract class UserAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return UserDto
      */
     public static function createDto($id = null)
@@ -434,14 +434,7 @@ abstract class UserAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): UserInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -450,24 +443,12 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set lastname
-     *
-     * @param string $lastname
-     *
-     * @return static
-     */
-    protected function setLastname(string $lastname): UserInterface
+    protected function setLastname(string $lastname): static
     {
         Assertion::maxLength($lastname, 100, 'lastname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -476,24 +457,12 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get lastname
-     *
-     * @return string
-     */
     public function getLastname(): string
     {
         return $this->lastname;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email | null
-     *
-     * @return static
-     */
-    protected function setEmail(?string $email = null): UserInterface
+    protected function setEmail(?string $email = null): static
     {
         if (!is_null($email)) {
             Assertion::maxLength($email, 100, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -504,24 +473,12 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get email
-     *
-     * @return string | null
-     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * Set pass
-     *
-     * @param string $pass | null
-     *
-     * @return static
-     */
-    protected function setPass(?string $pass = null): UserInterface
+    protected function setPass(?string $pass = null): static
     {
         if (!is_null($pass)) {
             Assertion::maxLength($pass, 80, 'pass value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -532,24 +489,12 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get pass
-     *
-     * @return string | null
-     */
     public function getPass(): ?string
     {
         return $this->pass;
     }
 
-    /**
-     * Set doNotDisturb
-     *
-     * @param bool $doNotDisturb
-     *
-     * @return static
-     */
-    protected function setDoNotDisturb(bool $doNotDisturb): UserInterface
+    protected function setDoNotDisturb(bool $doNotDisturb): static
     {
         Assertion::between(intval($doNotDisturb), 0, 1, 'doNotDisturb provided "%s" is not a valid boolean value.');
         $doNotDisturb = (bool) $doNotDisturb;
@@ -559,24 +504,12 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get doNotDisturb
-     *
-     * @return bool
-     */
     public function getDoNotDisturb(): bool
     {
         return $this->doNotDisturb;
     }
 
-    /**
-     * Set isBoss
-     *
-     * @param bool $isBoss
-     *
-     * @return static
-     */
-    protected function setIsBoss(bool $isBoss): UserInterface
+    protected function setIsBoss(bool $isBoss): static
     {
         Assertion::between(intval($isBoss), 0, 1, 'isBoss provided "%s" is not a valid boolean value.');
         $isBoss = (bool) $isBoss;
@@ -586,24 +519,12 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get isBoss
-     *
-     * @return bool
-     */
     public function getIsBoss(): bool
     {
         return $this->isBoss;
     }
 
-    /**
-     * Set active
-     *
-     * @param bool $active
-     *
-     * @return static
-     */
-    protected function setActive(bool $active): UserInterface
+    protected function setActive(bool $active): static
     {
         Assertion::between(intval($active), 0, 1, 'active provided "%s" is not a valid boolean value.');
         $active = (bool) $active;
@@ -613,24 +534,12 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get active
-     *
-     * @return bool
-     */
     public function getActive(): bool
     {
         return $this->active;
     }
 
-    /**
-     * Set maxCalls
-     *
-     * @param int $maxCalls
-     *
-     * @return static
-     */
-    protected function setMaxCalls(int $maxCalls): UserInterface
+    protected function setMaxCalls(int $maxCalls): static
     {
         Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
@@ -639,24 +548,12 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get maxCalls
-     *
-     * @return int
-     */
     public function getMaxCalls(): int
     {
         return $this->maxCalls;
     }
 
-    /**
-     * Set externalIpCalls
-     *
-     * @param string $externalIpCalls
-     *
-     * @return static
-     */
-    protected function setExternalIpCalls(string $externalIpCalls): UserInterface
+    protected function setExternalIpCalls(string $externalIpCalls): static
     {
         Assertion::maxLength($externalIpCalls, 1, 'externalIpCalls value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -675,56 +572,35 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get externalIpCalls
-     *
-     * @return string
-     */
     public function getExternalIpCalls(): string
     {
         return $this->externalIpCalls;
     }
 
-    /**
-     * Set rejectCallMethod
-     *
-     * @param string $rejectCallMethod
-     *
-     * @return static
-     */
-    protected function setRejectCallMethod($rejectCallMethod)
+    protected function setRejectCallMethod(string $rejectCallMethod): static
     {
-        Assertion::notNull($rejectCallMethod, 'rejectCallMethod value "%s" is null, but non null value was expected.');
         Assertion::maxLength($rejectCallMethod, 3, 'rejectCallMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($rejectCallMethod, [
-            UserInterface::REJECTCALLMETHOD_RFC,
-            UserInterface::REJECTCALLMETHOD_486,
-            UserInterface::REJECTCALLMETHOD_600
-        ], 'rejectCallMethodvalue "%s" is not an element of the valid values: %s');
+        Assertion::choice(
+            $rejectCallMethod,
+            [
+                UserInterface::REJECTCALLMETHOD_RFC,
+                UserInterface::REJECTCALLMETHOD_486,
+                UserInterface::REJECTCALLMETHOD_600,
+            ],
+            'rejectCallMethodvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->rejectCallMethod = $rejectCallMethod;
 
         return $this;
     }
 
-    /**
-     * Get rejectCallMethod
-     *
-     * @return string
-     */
     public function getRejectCallMethod(): string
     {
         return $this->rejectCallMethod;
     }
 
-    /**
-     * Set voicemailEnabled
-     *
-     * @param bool $voicemailEnabled
-     *
-     * @return static
-     */
-    protected function setVoicemailEnabled(bool $voicemailEnabled): UserInterface
+    protected function setVoicemailEnabled(bool $voicemailEnabled): static
     {
         Assertion::between(intval($voicemailEnabled), 0, 1, 'voicemailEnabled provided "%s" is not a valid boolean value.');
         $voicemailEnabled = (bool) $voicemailEnabled;
@@ -734,24 +610,12 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get voicemailEnabled
-     *
-     * @return bool
-     */
     public function getVoicemailEnabled(): bool
     {
         return $this->voicemailEnabled;
     }
 
-    /**
-     * Set voicemailSendMail
-     *
-     * @param bool $voicemailSendMail
-     *
-     * @return static
-     */
-    protected function setVoicemailSendMail(bool $voicemailSendMail): UserInterface
+    protected function setVoicemailSendMail(bool $voicemailSendMail): static
     {
         Assertion::between(intval($voicemailSendMail), 0, 1, 'voicemailSendMail provided "%s" is not a valid boolean value.');
         $voicemailSendMail = (bool) $voicemailSendMail;
@@ -761,24 +625,12 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get voicemailSendMail
-     *
-     * @return bool
-     */
     public function getVoicemailSendMail(): bool
     {
         return $this->voicemailSendMail;
     }
 
-    /**
-     * Set voicemailAttachSound
-     *
-     * @param bool $voicemailAttachSound
-     *
-     * @return static
-     */
-    protected function setVoicemailAttachSound(bool $voicemailAttachSound): UserInterface
+    protected function setVoicemailAttachSound(bool $voicemailAttachSound): static
     {
         Assertion::between(intval($voicemailAttachSound), 0, 1, 'voicemailAttachSound provided "%s" is not a valid boolean value.');
         $voicemailAttachSound = (bool) $voicemailAttachSound;
@@ -788,26 +640,13 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get voicemailAttachSound
-     *
-     * @return bool
-     */
     public function getVoicemailAttachSound(): bool
     {
         return $this->voicemailAttachSound;
     }
 
-    /**
-     * Set multiContact
-     *
-     * @param boolean $multiContact
-     *
-     * @return static
-     */
-    protected function setMultiContact($multiContact)
+    protected function setMultiContact(bool $multiContact): static
     {
-        Assertion::notNull($multiContact, 'multiContact value "%s" is null, but non null value was expected.');
         Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
         $multiContact = (bool) $multiContact;
 
@@ -816,24 +655,12 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get multiContact
-     *
-     * @return boolean
-     */
     public function getMultiContact(): bool
     {
         return $this->multiContact;
     }
 
-    /**
-     * Set gsQRCode
-     *
-     * @param bool $gsQRCode
-     *
-     * @return static
-     */
-    protected function setGsQRCode(bool $gsQRCode): UserInterface
+    protected function setGsQRCode(bool $gsQRCode): static
     {
         Assertion::between(intval($gsQRCode), 0, 1, 'gsQRCode provided "%s" is not a valid boolean value.');
         $gsQRCode = (bool) $gsQRCode;
@@ -843,299 +670,152 @@ abstract class UserAbstract
         return $this;
     }
 
-    /**
-     * Get gsQRCode
-     *
-     * @return bool
-     */
     public function getGsQRCode(): bool
     {
         return $this->gsQRCode;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): UserInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set callAcl
-     *
-     * @param CallAclInterface | null
-     *
-     * @return static
-     */
-    protected function setCallAcl(?CallAclInterface $callAcl = null): UserInterface
+    protected function setCallAcl(?CallAclInterface $callAcl = null): static
     {
         $this->callAcl = $callAcl;
 
         return $this;
     }
 
-    /**
-     * Get callAcl
-     *
-     * @return CallAclInterface | null
-     */
     public function getCallAcl(): ?CallAclInterface
     {
         return $this->callAcl;
     }
 
-    /**
-     * Set bossAssistant
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setBossAssistant(?UserInterface $bossAssistant = null): UserInterface
+    protected function setBossAssistant(?UserInterface $bossAssistant = null): static
     {
         $this->bossAssistant = $bossAssistant;
 
         return $this;
     }
 
-    /**
-     * Get bossAssistant
-     *
-     * @return UserInterface | null
-     */
     public function getBossAssistant(): ?UserInterface
     {
         return $this->bossAssistant;
     }
 
-    /**
-     * Set bossAssistantWhiteList
-     *
-     * @param MatchListInterface | null
-     *
-     * @return static
-     */
-    protected function setBossAssistantWhiteList(?MatchListInterface $bossAssistantWhiteList = null): UserInterface
+    protected function setBossAssistantWhiteList(?MatchListInterface $bossAssistantWhiteList = null): static
     {
         $this->bossAssistantWhiteList = $bossAssistantWhiteList;
 
         return $this;
     }
 
-    /**
-     * Get bossAssistantWhiteList
-     *
-     * @return MatchListInterface | null
-     */
     public function getBossAssistantWhiteList(): ?MatchListInterface
     {
         return $this->bossAssistantWhiteList;
     }
 
-    /**
-     * Set transformationRuleSet
-     *
-     * @param TransformationRuleSetInterface | null
-     *
-     * @return static
-     */
-    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): UserInterface
+    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): static
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
-    /**
-     * Get transformationRuleSet
-     *
-     * @return TransformationRuleSetInterface | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface
     {
         return $this->transformationRuleSet;
     }
 
-    /**
-     * Set language
-     *
-     * @param LanguageInterface | null
-     *
-     * @return static
-     */
-    protected function setLanguage(?LanguageInterface $language = null): UserInterface
+    protected function setLanguage(?LanguageInterface $language = null): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * Get language
-     *
-     * @return LanguageInterface | null
-     */
     public function getLanguage(): ?LanguageInterface
     {
         return $this->language;
     }
 
-    /**
-     * Set terminal
-     *
-     * @param TerminalInterface | null
-     *
-     * @return static
-     */
-    public function setTerminal(?TerminalInterface $terminal = null): UserInterface
+    public function setTerminal(?TerminalInterface $terminal = null): static
     {
         $this->terminal = $terminal;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get terminal
-     *
-     * @return TerminalInterface | null
-     */
     public function getTerminal(): ?TerminalInterface
     {
         return $this->terminal;
     }
 
-    /**
-     * Set extension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    public function setExtension(?ExtensionInterface $extension = null): UserInterface
+    public function setExtension(?ExtensionInterface $extension = null): static
     {
         $this->extension = $extension;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getExtension(): ?ExtensionInterface
     {
         return $this->extension;
     }
 
-    /**
-     * Set timezone
-     *
-     * @param TimezoneInterface | null
-     *
-     * @return static
-     */
-    protected function setTimezone(?TimezoneInterface $timezone = null): UserInterface
+    protected function setTimezone(?TimezoneInterface $timezone = null): static
     {
         $this->timezone = $timezone;
 
         return $this;
     }
 
-    /**
-     * Get timezone
-     *
-     * @return TimezoneInterface | null
-     */
     public function getTimezone(): ?TimezoneInterface
     {
         return $this->timezone;
     }
 
-    /**
-     * Set outgoingDdi
-     *
-     * @param DdiInterface | null
-     *
-     * @return static
-     */
-    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): UserInterface
+    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): static
     {
         $this->outgoingDdi = $outgoingDdi;
 
         return $this;
     }
 
-    /**
-     * Get outgoingDdi
-     *
-     * @return DdiInterface | null
-     */
     public function getOutgoingDdi(): ?DdiInterface
     {
         return $this->outgoingDdi;
     }
 
-    /**
-     * Set outgoingDdiRule
-     *
-     * @param OutgoingDdiRuleInterface | null
-     *
-     * @return static
-     */
-    protected function setOutgoingDdiRule(?OutgoingDdiRuleInterface $outgoingDdiRule = null): UserInterface
+    protected function setOutgoingDdiRule(?OutgoingDdiRuleInterface $outgoingDdiRule = null): static
     {
         $this->outgoingDdiRule = $outgoingDdiRule;
 
         return $this;
     }
 
-    /**
-     * Get outgoingDdiRule
-     *
-     * @return OutgoingDdiRuleInterface | null
-     */
     public function getOutgoingDdiRule(): ?OutgoingDdiRuleInterface
     {
         return $this->outgoingDdiRule;
     }
 
-    /**
-     * Set voicemailLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setVoicemailLocution(?LocutionInterface $voicemailLocution = null): UserInterface
+    protected function setVoicemailLocution(?LocutionInterface $voicemailLocution = null): static
     {
         $this->voicemailLocution = $voicemailLocution;
 
         return $this;
     }
 
-    /**
-     * Get voicemailLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getVoicemailLocution(): ?LocutionInterface
     {
         return $this->voicemailLocution;

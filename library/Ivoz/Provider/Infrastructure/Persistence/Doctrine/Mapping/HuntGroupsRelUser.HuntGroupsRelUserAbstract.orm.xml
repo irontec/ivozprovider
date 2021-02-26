@@ -38,7 +38,7 @@
     </many-to-one>
     <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

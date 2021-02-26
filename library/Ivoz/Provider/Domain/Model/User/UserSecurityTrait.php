@@ -6,8 +6,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 trait UserSecurityTrait
 {
-    abstract public function getEmail();
-    abstract public function getPass();
+    abstract public function getEmail(): ?string;
+    abstract public function getPass(): ?string;
     abstract public function getActive(): bool;
 
     /**

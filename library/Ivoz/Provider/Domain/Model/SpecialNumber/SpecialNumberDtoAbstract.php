@@ -18,10 +18,10 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $number;
+    private $number = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $numberE164;
 
@@ -97,110 +97,67 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $number | null
-     *
-     * @return static
-     */
-    public function setNumber(?string $number = null): self
+    public function setNumber(?string $number): static
     {
         $this->number = $number;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNumber(): ?string
     {
         return $this->number;
     }
 
-    /**
-     * @param string $numberE164 | null
-     *
-     * @return static
-     */
-    public function setNumberE164(?string $numberE164 = null): self
+    public function setNumberE164(?string $numberE164): static
     {
         $this->numberE164 = $numberE164;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNumberE164(): ?string
     {
         return $this->numberE164;
     }
 
-    /**
-     * @param int $disableCDR | null
-     *
-     * @return static
-     */
-    public function setDisableCDR(?int $disableCDR = null): self
+    public function setDisableCDR(?int $disableCDR): static
     {
         $this->disableCDR = $disableCDR;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getDisableCDR(): ?int
     {
         return $this->disableCDR;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -209,9 +166,6 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -221,30 +175,19 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setCountry(?CountryDto $country = null): self
+    public function setCountry(?CountryDto $country): static
     {
         $this->country = $country;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getCountry(): ?CountryDto
     {
         return $this->country;
     }
 
-    /**
-     * @return static
-     */
-    public function setCountryId($id): self
+    public function setCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -253,9 +196,6 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         return $this->setCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCountryId()
     {
         if ($dto = $this->getCountry()) {

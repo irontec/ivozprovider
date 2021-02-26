@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\ProxyTrunk;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class ProxyTrunkLifecycleServiceCollection implements LifecycleServiceCollection
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, ProxyTrunkLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, ProxyTrunkLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

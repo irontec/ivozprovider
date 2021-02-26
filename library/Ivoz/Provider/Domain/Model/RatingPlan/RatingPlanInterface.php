@@ -2,11 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\RatingPlan;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * RatingPlanInterface
@@ -40,97 +40,30 @@ interface RatingPlanInterface extends LoggableEntityInterface
      */
     public function getCgrTimingTag();
 
-    /**
-     * Get weight
-     *
-     * @return float
-     */
     public function getWeight(): float;
 
-    /**
-     * Get timingType
-     *
-     * @return string | null
-     */
     public function getTimingType(): ?string;
 
-    /**
-     * Get timeIn
-     *
-     * @return \DateTimeInterface
-     */
-    public function getTimeIn(): \DateTimeInterface;
+    public function getTimeIn(): \DateTime;
 
-    /**
-     * Get monday
-     *
-     * @return bool | null
-     */
     public function getMonday(): ?bool;
 
-    /**
-     * Get tuesday
-     *
-     * @return bool | null
-     */
     public function getTuesday(): ?bool;
 
-    /**
-     * Get wednesday
-     *
-     * @return bool | null
-     */
     public function getWednesday(): ?bool;
 
-    /**
-     * Get thursday
-     *
-     * @return bool | null
-     */
     public function getThursday(): ?bool;
 
-    /**
-     * Get friday
-     *
-     * @return bool | null
-     */
     public function getFriday(): ?bool;
 
-    /**
-     * Get saturday
-     *
-     * @return bool | null
-     */
     public function getSaturday(): ?bool;
 
-    /**
-     * Get sunday
-     *
-     * @return bool | null
-     */
     public function getSunday(): ?bool;
 
-    /**
-     * Set ratingPlanGroup
-     *
-     * @param RatingPlanGroupInterface
-     *
-     * @return static
-     */
-    public function setRatingPlanGroup(RatingPlanGroupInterface $ratingPlanGroup): RatingPlanInterface;
+    public function setRatingPlanGroup(RatingPlanGroupInterface $ratingPlanGroup): static;
 
-    /**
-     * Get ratingPlanGroup
-     *
-     * @return RatingPlanGroupInterface
-     */
     public function getRatingPlanGroup(): RatingPlanGroupInterface;
 
-    /**
-     * Get destinationRateGroup
-     *
-     * @return DestinationRateGroupInterface
-     */
     public function getDestinationRateGroup(): DestinationRateGroupInterface;
 
     /**
@@ -138,28 +71,12 @@ interface RatingPlanInterface extends LoggableEntityInterface
      */
     public function isInitialized(): bool;
 
-    /**
-     * @var TpTimingInterface
-     * mappedBy ratingPlan
-     */
-    public function setTpTiming(TpTimingInterface $tpTiming): RatingPlanInterface;
+    public function setTpTiming(TpTimingInterface $tpTiming): static;
 
-    /**
-     * Get tpTiming
-     * @return TpTimingInterface
-     */
     public function getTpTiming(): ?TpTimingInterface;
 
-    /**
-     * @var TpRatingPlanInterface
-     * mappedBy ratingPlan
-     */
-    public function setTpRatingPlan(TpRatingPlanInterface $tpRatingPlan): RatingPlanInterface;
+    public function setTpRatingPlan(TpRatingPlanInterface $tpRatingPlan): static;
 
-    /**
-     * Get tpRatingPlan
-     * @return TpRatingPlanInterface
-     */
     public function getTpRatingPlan(): ?TpRatingPlanInterface;
 
 }

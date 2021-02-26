@@ -16,7 +16,7 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     /**
      * @var string
      */
-    private $iden;
+    private $iden = '';
 
     /**
      * @var string
@@ -81,82 +81,50 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
         return $response;
     }
 
-    /**
-     * @param string $iden | null
-     *
-     * @return static
-     */
-    public function setIden(?string $iden = null): self
+    public function setIden(?string $iden): static
     {
         $this->iden = $iden;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getIden(): ?string
     {
         return $this->iden;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

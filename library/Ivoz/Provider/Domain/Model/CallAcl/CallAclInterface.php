@@ -2,11 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\CallAcl;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * CallAclInterface
@@ -29,25 +29,10 @@ interface CallAclInterface extends LoggableEntityInterface
      */
     public function dstIsCallable($dst);
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get defaultPolicy
-     *
-     * @return string
-     */
     public function getDefaultPolicy(): string;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface;
 
     /**
@@ -55,38 +40,12 @@ interface CallAclInterface extends LoggableEntityInterface
      */
     public function isInitialized(): bool;
 
-    /**
-     * Add relMatchList
-     *
-     * @param CallAclRelMatchListInterface $relMatchList
-     *
-     * @return static
-     */
     public function addRelMatchList(CallAclRelMatchListInterface $relMatchList): CallAclInterface;
 
-    /**
-     * Remove relMatchList
-     *
-     * @param CallAclRelMatchListInterface $relMatchList
-     *
-     * @return static
-     */
     public function removeRelMatchList(CallAclRelMatchListInterface $relMatchList): CallAclInterface;
 
-    /**
-     * Replace relMatchLists
-     *
-     * @param ArrayCollection $relMatchLists of CallAclRelMatchListInterface
-     *
-     * @return static
-     */
     public function replaceRelMatchLists(ArrayCollection $relMatchLists): CallAclInterface;
 
-    /**
-     * Get relMatchLists
-     * @param Criteria | null $criteria
-     * @return CallAclRelMatchListInterface[]
-     */
     public function getRelMatchLists(?Criteria $criteria = null): array;
 
 }

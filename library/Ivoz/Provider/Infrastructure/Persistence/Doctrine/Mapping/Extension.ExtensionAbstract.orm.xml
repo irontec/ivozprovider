@@ -32,37 +32,37 @@
     </many-to-one>
     <many-to-one field="ivr" target-entity="Ivoz\Provider\Domain\Model\Ivr\IvrInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="ivrId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="ivrId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="huntGroup" target-entity="Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="huntGroupId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="huntGroupId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="conferenceRoom" target-entity="Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="conferenceRoomId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="conferenceRoomId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="userId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="userId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="queue" target-entity="Ivoz\Provider\Domain\Model\Queue\QueueInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="queueId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="queueId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="conditionalRoute" target-entity="Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="conditionalRouteId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="conditionalRouteId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

@@ -62,14 +62,7 @@ class Zone
             $this->getIt() === $zone->getIt();
     }
 
-    /**
-     * Set en
-     *
-     * @param string $en
-     *
-     * @return static
-     */
-    protected function setEn(string $en): Zone
+    protected function setEn(string $en): static
     {
         Assertion::maxLength($en, 55, 'en value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -78,24 +71,12 @@ class Zone
         return $this;
     }
 
-    /**
-     * Get en
-     *
-     * @return string
-     */
     public function getEn(): string
     {
         return $this->en;
     }
 
-    /**
-     * Set es
-     *
-     * @param string $es
-     *
-     * @return static
-     */
-    protected function setEs(string $es): Zone
+    protected function setEs(string $es): static
     {
         Assertion::maxLength($es, 55, 'es value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -104,24 +85,12 @@ class Zone
         return $this;
     }
 
-    /**
-     * Get es
-     *
-     * @return string
-     */
     public function getEs(): string
     {
         return $this->es;
     }
 
-    /**
-     * Set ca
-     *
-     * @param string $ca
-     *
-     * @return static
-     */
-    protected function setCa(string $ca): Zone
+    protected function setCa(string $ca): static
     {
         Assertion::maxLength($ca, 55, 'ca value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -130,24 +99,12 @@ class Zone
         return $this;
     }
 
-    /**
-     * Get ca
-     *
-     * @return string
-     */
     public function getCa(): string
     {
         return $this->ca;
     }
 
-    /**
-     * Set it
-     *
-     * @param string $it
-     *
-     * @return static
-     */
-    protected function setIt(string $it): Zone
+    protected function setIt(string $it): static
     {
         Assertion::maxLength($it, 55, 'it value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -156,11 +113,6 @@ class Zone
         return $this;
     }
 
-    /**
-     * Get it
-     *
-     * @return string
-     */
     public function getIt(): string
     {
         return $this->it;

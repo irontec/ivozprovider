@@ -30,20 +30,20 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $domainUsers;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $recordingsLimitMB;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $recordingsLimitEmail;
 
@@ -58,52 +58,52 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $logoFileSize;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $logoMimeType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $logoBaseName;
 
     /**
      * @var string
      */
-    private $invoiceNif;
+    private $invoiceNif = '';
 
     /**
      * @var string
      */
-    private $invoicePostalAddress;
+    private $invoicePostalAddress = '';
 
     /**
      * @var string
      */
-    private $invoicePostalCode;
+    private $invoicePostalCode = '';
 
     /**
      * @var string
      */
-    private $invoiceTown;
+    private $invoiceTown = '';
 
     /**
      * @var string
      */
-    private $invoiceProvince;
+    private $invoiceProvince = '';
 
     /**
      * @var string
      */
-    private $invoiceCountry;
+    private $invoiceCountry = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $invoiceRegistryData;
 
@@ -304,350 +304,211 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $domainUsers | null
-     *
-     * @return static
-     */
-    public function setDomainUsers(?string $domainUsers = null): self
+    public function setDomainUsers(?string $domainUsers): static
     {
         $this->domainUsers = $domainUsers;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDomainUsers(): ?string
     {
         return $this->domainUsers;
     }
 
-    /**
-     * @param int $recordingsLimitMB | null
-     *
-     * @return static
-     */
-    public function setRecordingsLimitMB(?int $recordingsLimitMB = null): self
+    public function setRecordingsLimitMB(?int $recordingsLimitMB): static
     {
         $this->recordingsLimitMB = $recordingsLimitMB;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getRecordingsLimitMB(): ?int
     {
         return $this->recordingsLimitMB;
     }
 
-    /**
-     * @param string $recordingsLimitEmail | null
-     *
-     * @return static
-     */
-    public function setRecordingsLimitEmail(?string $recordingsLimitEmail = null): self
+    public function setRecordingsLimitEmail(?string $recordingsLimitEmail): static
     {
         $this->recordingsLimitEmail = $recordingsLimitEmail;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRecordingsLimitEmail(): ?string
     {
         return $this->recordingsLimitEmail;
     }
 
-    /**
-     * @param int $maxCalls | null
-     *
-     * @return static
-     */
-    public function setMaxCalls(?int $maxCalls = null): self
+    public function setMaxCalls(?int $maxCalls): static
     {
         $this->maxCalls = $maxCalls;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMaxCalls(): ?int
     {
         return $this->maxCalls;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param int $logoFileSize | null
-     *
-     * @return static
-     */
-    public function setLogoFileSize(?int $logoFileSize = null): self
+    public function setLogoFileSize(?int $logoFileSize): static
     {
         $this->logoFileSize = $logoFileSize;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getLogoFileSize(): ?int
     {
         return $this->logoFileSize;
     }
 
-    /**
-     * @param string $logoMimeType | null
-     *
-     * @return static
-     */
-    public function setLogoMimeType(?string $logoMimeType = null): self
+    public function setLogoMimeType(?string $logoMimeType): static
     {
         $this->logoMimeType = $logoMimeType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLogoMimeType(): ?string
     {
         return $this->logoMimeType;
     }
 
-    /**
-     * @param string $logoBaseName | null
-     *
-     * @return static
-     */
-    public function setLogoBaseName(?string $logoBaseName = null): self
+    public function setLogoBaseName(?string $logoBaseName): static
     {
         $this->logoBaseName = $logoBaseName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLogoBaseName(): ?string
     {
         return $this->logoBaseName;
     }
 
-    /**
-     * @param string $invoiceNif | null
-     *
-     * @return static
-     */
-    public function setInvoiceNif(?string $invoiceNif = null): self
+    public function setInvoiceNif(?string $invoiceNif): static
     {
         $this->invoiceNif = $invoiceNif;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getInvoiceNif(): ?string
     {
         return $this->invoiceNif;
     }
 
-    /**
-     * @param string $invoicePostalAddress | null
-     *
-     * @return static
-     */
-    public function setInvoicePostalAddress(?string $invoicePostalAddress = null): self
+    public function setInvoicePostalAddress(?string $invoicePostalAddress): static
     {
         $this->invoicePostalAddress = $invoicePostalAddress;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getInvoicePostalAddress(): ?string
     {
         return $this->invoicePostalAddress;
     }
 
-    /**
-     * @param string $invoicePostalCode | null
-     *
-     * @return static
-     */
-    public function setInvoicePostalCode(?string $invoicePostalCode = null): self
+    public function setInvoicePostalCode(?string $invoicePostalCode): static
     {
         $this->invoicePostalCode = $invoicePostalCode;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getInvoicePostalCode(): ?string
     {
         return $this->invoicePostalCode;
     }
 
-    /**
-     * @param string $invoiceTown | null
-     *
-     * @return static
-     */
-    public function setInvoiceTown(?string $invoiceTown = null): self
+    public function setInvoiceTown(?string $invoiceTown): static
     {
         $this->invoiceTown = $invoiceTown;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getInvoiceTown(): ?string
     {
         return $this->invoiceTown;
     }
 
-    /**
-     * @param string $invoiceProvince | null
-     *
-     * @return static
-     */
-    public function setInvoiceProvince(?string $invoiceProvince = null): self
+    public function setInvoiceProvince(?string $invoiceProvince): static
     {
         $this->invoiceProvince = $invoiceProvince;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getInvoiceProvince(): ?string
     {
         return $this->invoiceProvince;
     }
 
-    /**
-     * @param string $invoiceCountry | null
-     *
-     * @return static
-     */
-    public function setInvoiceCountry(?string $invoiceCountry = null): self
+    public function setInvoiceCountry(?string $invoiceCountry): static
     {
         $this->invoiceCountry = $invoiceCountry;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getInvoiceCountry(): ?string
     {
         return $this->invoiceCountry;
     }
 
-    /**
-     * @param string $invoiceRegistryData | null
-     *
-     * @return static
-     */
-    public function setInvoiceRegistryData(?string $invoiceRegistryData = null): self
+    public function setInvoiceRegistryData(?string $invoiceRegistryData): static
     {
         $this->invoiceRegistryData = $invoiceRegistryData;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getInvoiceRegistryData(): ?string
     {
         return $this->invoiceRegistryData;
     }
 
-    /**
-     * @param DomainDto | null
-     *
-     * @return static
-     */
-    public function setDomain(?DomainDto $domain = null): self
+    public function setDomain(?DomainDto $domain): static
     {
         $this->domain = $domain;
 
         return $this;
     }
 
-    /**
-     * @return DomainDto | null
-     */
     public function getDomain(): ?DomainDto
     {
         return $this->domain;
     }
 
-    /**
-     * @return static
-     */
-    public function setDomainId($id): self
+    public function setDomainId($id): static
     {
         $value = !is_null($id)
             ? new DomainDto($id)
@@ -656,9 +517,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setDomain($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDomainId()
     {
         if ($dto = $this->getDomain()) {
@@ -668,30 +526,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LanguageDto | null
-     *
-     * @return static
-     */
-    public function setLanguage(?LanguageDto $language = null): self
+    public function setLanguage(?LanguageDto $language): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * @return LanguageDto | null
-     */
     public function getLanguage(): ?LanguageDto
     {
         return $this->language;
     }
 
-    /**
-     * @return static
-     */
-    public function setLanguageId($id): self
+    public function setLanguageId($id): static
     {
         $value = !is_null($id)
             ? new LanguageDto($id)
@@ -700,9 +547,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setLanguage($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getLanguageId()
     {
         if ($dto = $this->getLanguage()) {
@@ -712,30 +556,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TimezoneDto | null
-     *
-     * @return static
-     */
-    public function setDefaultTimezone(?TimezoneDto $defaultTimezone = null): self
+    public function setDefaultTimezone(?TimezoneDto $defaultTimezone): static
     {
         $this->defaultTimezone = $defaultTimezone;
 
         return $this;
     }
 
-    /**
-     * @return TimezoneDto | null
-     */
     public function getDefaultTimezone(): ?TimezoneDto
     {
         return $this->defaultTimezone;
     }
 
-    /**
-     * @return static
-     */
-    public function setDefaultTimezoneId($id): self
+    public function setDefaultTimezoneId($id): static
     {
         $value = !is_null($id)
             ? new TimezoneDto($id)
@@ -744,9 +577,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setDefaultTimezone($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDefaultTimezoneId()
     {
         if ($dto = $this->getDefaultTimezone()) {
@@ -756,30 +586,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CurrencyDto | null
-     *
-     * @return static
-     */
-    public function setCurrency(?CurrencyDto $currency = null): self
+    public function setCurrency(?CurrencyDto $currency): static
     {
         $this->currency = $currency;
 
         return $this;
     }
 
-    /**
-     * @return CurrencyDto | null
-     */
     public function getCurrency(): ?CurrencyDto
     {
         return $this->currency;
     }
 
-    /**
-     * @return static
-     */
-    public function setCurrencyId($id): self
+    public function setCurrencyId($id): static
     {
         $value = !is_null($id)
             ? new CurrencyDto($id)
@@ -788,9 +607,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setCurrency($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCurrencyId()
     {
         if ($dto = $this->getCurrency()) {
@@ -800,30 +616,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param NotificationTemplateDto | null
-     *
-     * @return static
-     */
-    public function setVoicemailNotificationTemplate(?NotificationTemplateDto $voicemailNotificationTemplate = null): self
+    public function setVoicemailNotificationTemplate(?NotificationTemplateDto $voicemailNotificationTemplate): static
     {
         $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * @return NotificationTemplateDto | null
-     */
     public function getVoicemailNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->voicemailNotificationTemplate;
     }
 
-    /**
-     * @return static
-     */
-    public function setVoicemailNotificationTemplateId($id): self
+    public function setVoicemailNotificationTemplateId($id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -832,9 +637,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setVoicemailNotificationTemplate($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getVoicemailNotificationTemplateId()
     {
         if ($dto = $this->getVoicemailNotificationTemplate()) {
@@ -844,30 +646,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param NotificationTemplateDto | null
-     *
-     * @return static
-     */
-    public function setFaxNotificationTemplate(?NotificationTemplateDto $faxNotificationTemplate = null): self
+    public function setFaxNotificationTemplate(?NotificationTemplateDto $faxNotificationTemplate): static
     {
         $this->faxNotificationTemplate = $faxNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * @return NotificationTemplateDto | null
-     */
     public function getFaxNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->faxNotificationTemplate;
     }
 
-    /**
-     * @return static
-     */
-    public function setFaxNotificationTemplateId($id): self
+    public function setFaxNotificationTemplateId($id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -876,9 +667,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setFaxNotificationTemplate($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFaxNotificationTemplateId()
     {
         if ($dto = $this->getFaxNotificationTemplate()) {
@@ -888,30 +676,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param NotificationTemplateDto | null
-     *
-     * @return static
-     */
-    public function setInvoiceNotificationTemplate(?NotificationTemplateDto $invoiceNotificationTemplate = null): self
+    public function setInvoiceNotificationTemplate(?NotificationTemplateDto $invoiceNotificationTemplate): static
     {
         $this->invoiceNotificationTemplate = $invoiceNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * @return NotificationTemplateDto | null
-     */
     public function getInvoiceNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->invoiceNotificationTemplate;
     }
 
-    /**
-     * @return static
-     */
-    public function setInvoiceNotificationTemplateId($id): self
+    public function setInvoiceNotificationTemplateId($id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -920,9 +697,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setInvoiceNotificationTemplate($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getInvoiceNotificationTemplateId()
     {
         if ($dto = $this->getInvoiceNotificationTemplate()) {
@@ -932,30 +706,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param NotificationTemplateDto | null
-     *
-     * @return static
-     */
-    public function setCallCsvNotificationTemplate(?NotificationTemplateDto $callCsvNotificationTemplate = null): self
+    public function setCallCsvNotificationTemplate(?NotificationTemplateDto $callCsvNotificationTemplate): static
     {
         $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * @return NotificationTemplateDto | null
-     */
     public function getCallCsvNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->callCsvNotificationTemplate;
     }
 
-    /**
-     * @return static
-     */
-    public function setCallCsvNotificationTemplateId($id): self
+    public function setCallCsvNotificationTemplateId($id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -964,9 +727,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setCallCsvNotificationTemplate($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCallCsvNotificationTemplateId()
     {
         if ($dto = $this->getCallCsvNotificationTemplate()) {
@@ -976,30 +736,19 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param NotificationTemplateDto | null
-     *
-     * @return static
-     */
-    public function setMaxDailyUsageNotificationTemplate(?NotificationTemplateDto $maxDailyUsageNotificationTemplate = null): self
+    public function setMaxDailyUsageNotificationTemplate(?NotificationTemplateDto $maxDailyUsageNotificationTemplate): static
     {
         $this->maxDailyUsageNotificationTemplate = $maxDailyUsageNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * @return NotificationTemplateDto | null
-     */
     public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->maxDailyUsageNotificationTemplate;
     }
 
-    /**
-     * @return static
-     */
-    public function setMaxDailyUsageNotificationTemplateId($id): self
+    public function setMaxDailyUsageNotificationTemplateId($id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -1008,9 +757,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->setMaxDailyUsageNotificationTemplate($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getMaxDailyUsageNotificationTemplateId()
     {
         if ($dto = $this->getMaxDailyUsageNotificationTemplate()) {
@@ -1020,181 +766,109 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CompanyDto[] | null
-     *
-     * @return static
-     */
-    public function setCompanies(?array $companies = null): self
+    public function setCompanies(?array $companies): static
     {
         $this->companies = $companies;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto[] | null
-     */
     public function getCompanies(): ?array
     {
         return $this->companies;
     }
 
-    /**
-     * @param BrandServiceDto[] | null
-     *
-     * @return static
-     */
-    public function setServices(?array $services = null): self
+    public function setServices(?array $services): static
     {
         $this->services = $services;
 
         return $this;
     }
 
-    /**
-     * @return BrandServiceDto[] | null
-     */
     public function getServices(): ?array
     {
         return $this->services;
     }
 
-    /**
-     * @param WebPortalDto[] | null
-     *
-     * @return static
-     */
-    public function setUrls(?array $urls = null): self
+    public function setUrls(?array $urls): static
     {
         $this->urls = $urls;
 
         return $this;
     }
 
-    /**
-     * @return WebPortalDto[] | null
-     */
     public function getUrls(): ?array
     {
         return $this->urls;
     }
 
-    /**
-     * @param FeaturesRelBrandDto[] | null
-     *
-     * @return static
-     */
-    public function setRelFeatures(?array $relFeatures = null): self
+    public function setRelFeatures(?array $relFeatures): static
     {
         $this->relFeatures = $relFeatures;
 
         return $this;
     }
 
-    /**
-     * @return FeaturesRelBrandDto[] | null
-     */
     public function getRelFeatures(): ?array
     {
         return $this->relFeatures;
     }
 
-    /**
-     * @param ProxyTrunksRelBrandDto[] | null
-     *
-     * @return static
-     */
-    public function setRelProxyTrunks(?array $relProxyTrunks = null): self
+    public function setRelProxyTrunks(?array $relProxyTrunks): static
     {
         $this->relProxyTrunks = $relProxyTrunks;
 
         return $this;
     }
 
-    /**
-     * @return ProxyTrunksRelBrandDto[] | null
-     */
     public function getRelProxyTrunks(): ?array
     {
         return $this->relProxyTrunks;
     }
 
-    /**
-     * @param ResidentialDeviceDto[] | null
-     *
-     * @return static
-     */
-    public function setResidentialDevices(?array $residentialDevices = null): self
+    public function setResidentialDevices(?array $residentialDevices): static
     {
         $this->residentialDevices = $residentialDevices;
 
         return $this;
     }
 
-    /**
-     * @return ResidentialDeviceDto[] | null
-     */
     public function getResidentialDevices(): ?array
     {
         return $this->residentialDevices;
     }
 
-    /**
-     * @param MusicOnHoldDto[] | null
-     *
-     * @return static
-     */
-    public function setMusicsOnHold(?array $musicsOnHold = null): self
+    public function setMusicsOnHold(?array $musicsOnHold): static
     {
         $this->musicsOnHold = $musicsOnHold;
 
         return $this;
     }
 
-    /**
-     * @return MusicOnHoldDto[] | null
-     */
     public function getMusicsOnHold(): ?array
     {
         return $this->musicsOnHold;
     }
 
-    /**
-     * @param MatchListDto[] | null
-     *
-     * @return static
-     */
-    public function setMatchLists(?array $matchLists = null): self
+    public function setMatchLists(?array $matchLists): static
     {
         $this->matchLists = $matchLists;
 
         return $this;
     }
 
-    /**
-     * @return MatchListDto[] | null
-     */
     public function getMatchLists(): ?array
     {
         return $this->matchLists;
     }
 
-    /**
-     * @param OutgoingRoutingDto[] | null
-     *
-     * @return static
-     */
-    public function setOutgoingRoutings(?array $outgoingRoutings = null): self
+    public function setOutgoingRoutings(?array $outgoingRoutings): static
     {
         $this->outgoingRoutings = $outgoingRoutings;
 
         return $this;
     }
 
-    /**
-     * @return OutgoingRoutingDto[] | null
-     */
     public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;

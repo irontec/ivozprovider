@@ -109,21 +109,14 @@ trait DdiProviderRegistrationTrait
         ];
     }
 
-    /**
-     * @var TrunksUacregInterface
-     * mappedBy ddiProviderRegistration
-     */
-    public function setTrunksUacreg(TrunksUacregInterface $trunksUacreg): DdiProviderRegistrationInterface
+    public function setTrunksUacreg(TrunksUacregInterface $trunksUacreg): static
     {
         $this->trunksUacreg = $trunksUacreg;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get trunksUacreg
-     * @return TrunksUacregInterface
-     */
     public function getTrunksUacreg(): ?TrunksUacregInterface
     {
         return $this->trunksUacreg;

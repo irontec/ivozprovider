@@ -52,7 +52,7 @@ abstract class WebPortalAbstract
     protected $logo;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      * inversedBy urls
      */
     protected $brand;
@@ -90,7 +90,7 @@ abstract class WebPortalAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return WebPortalDto
      */
     public static function createDto($id = null)
@@ -227,14 +227,7 @@ abstract class WebPortalAbstract
         ];
     }
 
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return static
-     */
-    protected function setUrl(string $url): WebPortalInterface
+    protected function setUrl(string $url): static
     {
         Assertion::maxLength($url, 255, 'url value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -243,24 +236,12 @@ abstract class WebPortalAbstract
         return $this;
     }
 
-    /**
-     * Get url
-     *
-     * @return string
-     */
     public function getUrl(): string
     {
         return $this->url;
     }
 
-    /**
-     * Set klearTheme
-     *
-     * @param string $klearTheme | null
-     *
-     * @return static
-     */
-    protected function setKlearTheme(?string $klearTheme = null): WebPortalInterface
+    protected function setKlearTheme(?string $klearTheme = null): static
     {
         if (!is_null($klearTheme)) {
             Assertion::maxLength($klearTheme, 200, 'klearTheme value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -271,24 +252,12 @@ abstract class WebPortalAbstract
         return $this;
     }
 
-    /**
-     * Get klearTheme
-     *
-     * @return string | null
-     */
     public function getKlearTheme(): ?string
     {
         return $this->klearTheme;
     }
 
-    /**
-     * Set urlType
-     *
-     * @param string $urlType
-     *
-     * @return static
-     */
-    protected function setUrlType(string $urlType): WebPortalInterface
+    protected function setUrlType(string $urlType): static
     {
         Assertion::maxLength($urlType, 25, 'urlType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -307,24 +276,12 @@ abstract class WebPortalAbstract
         return $this;
     }
 
-    /**
-     * Get urlType
-     *
-     * @return string
-     */
     public function getUrlType(): string
     {
         return $this->urlType;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name | null
-     *
-     * @return static
-     */
-    protected function setName(?string $name = null): WebPortalInterface
+    protected function setName(?string $name = null): static
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 200, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -335,24 +292,12 @@ abstract class WebPortalAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * Set userTheme
-     *
-     * @param string $userTheme | null
-     *
-     * @return static
-     */
-    protected function setUserTheme(?string $userTheme = null): WebPortalInterface
+    protected function setUserTheme(?string $userTheme = null): static
     {
         if (!is_null($userTheme)) {
             Assertion::maxLength($userTheme, 200, 'userTheme value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -363,32 +308,17 @@ abstract class WebPortalAbstract
         return $this;
     }
 
-    /**
-     * Get userTheme
-     *
-     * @return string | null
-     */
     public function getUserTheme(): ?string
     {
         return $this->userTheme;
     }
 
-    /**
-     * Get logo
-     *
-     * @return Logo
-     */
     public function getLogo(): Logo
     {
         return $this->logo;
     }
 
-    /**
-     * Set logo
-     *
-     * @return static
-     */
-    protected function setLogo(Logo $logo): WebPortalInterface
+    protected function setLogo(Logo $logo): static
     {
         $isEqual = $this->logo && $this->logo->equals($logo);
         if ($isEqual) {
@@ -399,25 +329,14 @@ abstract class WebPortalAbstract
         return $this;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandInterface $brand = null): WebPortalInterface
+    public function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;

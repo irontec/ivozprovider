@@ -74,9 +74,9 @@ abstract class TpLcrRuleAbstract
 
     /**
      * column: activation_time
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $activationTime = 'CURRENT_TIMESTAMP';
+    protected $activationTime;
 
     /**
      * @var float
@@ -85,12 +85,12 @@ abstract class TpLcrRuleAbstract
 
     /**
      * column: created_at
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $createdAt = 'CURRENT_TIMESTAMP';
+    protected $createdAt;
 
     /**
-     * @var OutgoingRouting
+     * @var OutgoingRouting | null
      * inversedBy tpLcrRule
      */
     protected $outgoingRouting;
@@ -142,7 +142,7 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TpLcrRuleDto
      */
     public static function createDto($id = null)
@@ -291,14 +291,7 @@ abstract class TpLcrRuleAbstract
         ];
     }
 
-    /**
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return static
-     */
-    protected function setTpid(string $tpid): TpLcrRuleInterface
+    protected function setTpid(string $tpid): static
     {
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -307,24 +300,12 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get tpid
-     *
-     * @return string
-     */
     public function getTpid(): string
     {
         return $this->tpid;
     }
 
-    /**
-     * Set direction
-     *
-     * @param string $direction
-     *
-     * @return static
-     */
-    protected function setDirection(string $direction): TpLcrRuleInterface
+    protected function setDirection(string $direction): static
     {
         Assertion::maxLength($direction, 8, 'direction value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -333,24 +314,12 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get direction
-     *
-     * @return string
-     */
     public function getDirection(): string
     {
         return $this->direction;
     }
 
-    /**
-     * Set tenant
-     *
-     * @param string $tenant
-     *
-     * @return static
-     */
-    protected function setTenant(string $tenant): TpLcrRuleInterface
+    protected function setTenant(string $tenant): static
     {
         Assertion::maxLength($tenant, 64, 'tenant value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -359,24 +328,12 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get tenant
-     *
-     * @return string
-     */
     public function getTenant(): string
     {
         return $this->tenant;
     }
 
-    /**
-     * Set category
-     *
-     * @param string $category
-     *
-     * @return static
-     */
-    protected function setCategory(string $category): TpLcrRuleInterface
+    protected function setCategory(string $category): static
     {
         Assertion::maxLength($category, 32, 'category value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -385,24 +342,12 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get category
-     *
-     * @return string
-     */
     public function getCategory(): string
     {
         return $this->category;
     }
 
-    /**
-     * Set account
-     *
-     * @param string $account
-     *
-     * @return static
-     */
-    protected function setAccount(string $account): TpLcrRuleInterface
+    protected function setAccount(string $account): static
     {
         Assertion::maxLength($account, 64, 'account value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -411,24 +356,12 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get account
-     *
-     * @return string
-     */
     public function getAccount(): string
     {
         return $this->account;
     }
 
-    /**
-     * Set subject
-     *
-     * @param string $subject | null
-     *
-     * @return static
-     */
-    protected function setSubject(?string $subject = null): TpLcrRuleInterface
+    protected function setSubject(?string $subject = null): static
     {
         if (!is_null($subject)) {
             Assertion::maxLength($subject, 64, 'subject value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -439,24 +372,12 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get subject
-     *
-     * @return string | null
-     */
     public function getSubject(): ?string
     {
         return $this->subject;
     }
 
-    /**
-     * Set destinationTag
-     *
-     * @param string $destinationTag | null
-     *
-     * @return static
-     */
-    protected function setDestinationTag(?string $destinationTag = null): TpLcrRuleInterface
+    protected function setDestinationTag(?string $destinationTag = null): static
     {
         if (!is_null($destinationTag)) {
             Assertion::maxLength($destinationTag, 64, 'destinationTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -467,24 +388,12 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get destinationTag
-     *
-     * @return string | null
-     */
     public function getDestinationTag(): ?string
     {
         return $this->destinationTag;
     }
 
-    /**
-     * Set rpCategory
-     *
-     * @param string $rpCategory
-     *
-     * @return static
-     */
-    protected function setRpCategory(string $rpCategory): TpLcrRuleInterface
+    protected function setRpCategory(string $rpCategory): static
     {
         Assertion::maxLength($rpCategory, 32, 'rpCategory value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -493,24 +402,12 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get rpCategory
-     *
-     * @return string
-     */
     public function getRpCategory(): string
     {
         return $this->rpCategory;
     }
 
-    /**
-     * Set strategy
-     *
-     * @param string $strategy
-     *
-     * @return static
-     */
-    protected function setStrategy(string $strategy): TpLcrRuleInterface
+    protected function setStrategy(string $strategy): static
     {
         Assertion::maxLength($strategy, 18, 'strategy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -519,24 +416,12 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get strategy
-     *
-     * @return string
-     */
     public function getStrategy(): string
     {
         return $this->strategy;
     }
 
-    /**
-     * Set strategyParams
-     *
-     * @param string $strategyParams | null
-     *
-     * @return static
-     */
-    protected function setStrategyParams(?string $strategyParams = null): TpLcrRuleInterface
+    protected function setStrategyParams(?string $strategyParams = null): static
     {
         if (!is_null($strategyParams)) {
             Assertion::maxLength($strategyParams, 256, 'strategyParams value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -547,24 +432,12 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get strategyParams
-     *
-     * @return string | null
-     */
     public function getStrategyParams(): ?string
     {
         return $this->strategyParams;
     }
 
-    /**
-     * Set activationTime
-     *
-     * @param \DateTimeInterface $activationTime
-     *
-     * @return static
-     */
-    protected function setActivationTime($activationTime): TpLcrRuleInterface
+    protected function setActivationTime($activationTime): static
     {
 
         $activationTime = DateTimeHelper::createOrFix(
@@ -581,48 +454,24 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get activationTime
-     *
-     * @return \DateTimeInterface
-     */
-    public function getActivationTime(): \DateTimeInterface
+    public function getActivationTime(): \DateTime
     {
         return clone $this->activationTime;
     }
 
-    /**
-     * Set weight
-     *
-     * @param float $weight
-     *
-     * @return static
-     */
-    protected function setWeight(float $weight): TpLcrRuleInterface
+    protected function setWeight(float $weight): static
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    /**
-     * Get weight
-     *
-     * @return float
-     */
     public function getWeight(): float
     {
         return $this->weight;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTimeInterface $createdAt
-     *
-     * @return static
-     */
-    protected function setCreatedAt($createdAt): TpLcrRuleInterface
+    protected function setCreatedAt($createdAt): static
     {
 
         $createdAt = DateTimeHelper::createOrFix(
@@ -639,35 +488,19 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }
 
-    /**
-     * Set outgoingRouting
-     *
-     * @param OutgoingRouting | null
-     *
-     * @return static
-     */
-    public function setOutgoingRouting(?OutgoingRouting $outgoingRouting = null): TpLcrRuleInterface
+    public function setOutgoingRouting(?OutgoingRouting $outgoingRouting = null): static
     {
         $this->outgoingRouting = $outgoingRouting;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get outgoingRouting
-     *
-     * @return OutgoingRouting | null
-     */
     public function getOutgoingRouting(): ?OutgoingRouting
     {
         return $this->outgoingRouting;

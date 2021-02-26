@@ -168,9 +168,9 @@ abstract class TpCdrStatAbstract
 
     /**
      * column: created_at
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $createdAt = 'CURRENT_TIMESTAMP';
+    protected $createdAt;
 
     /**
      * @var CarrierInterface
@@ -259,7 +259,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TpCdrStatDto
      */
     public static function createDto($id = null)
@@ -464,14 +464,7 @@ abstract class TpCdrStatAbstract
         ];
     }
 
-    /**
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return static
-     */
-    protected function setTpid(string $tpid): TpCdrStatInterface
+    protected function setTpid(string $tpid): static
     {
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -480,24 +473,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get tpid
-     *
-     * @return string
-     */
     public function getTpid(): string
     {
         return $this->tpid;
     }
 
-    /**
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return static
-     */
-    protected function setTag(string $tag): TpCdrStatInterface
+    protected function setTag(string $tag): static
     {
         Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -506,48 +487,24 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get tag
-     *
-     * @return string
-     */
     public function getTag(): string
     {
         return $this->tag;
     }
 
-    /**
-     * Set queueLength
-     *
-     * @param int $queueLength
-     *
-     * @return static
-     */
-    protected function setQueueLength(int $queueLength): TpCdrStatInterface
+    protected function setQueueLength(int $queueLength): static
     {
         $this->queueLength = $queueLength;
 
         return $this;
     }
 
-    /**
-     * Get queueLength
-     *
-     * @return int
-     */
     public function getQueueLength(): int
     {
         return $this->queueLength;
     }
 
-    /**
-     * Set timeWindow
-     *
-     * @param string $timeWindow
-     *
-     * @return static
-     */
-    protected function setTimeWindow(string $timeWindow): TpCdrStatInterface
+    protected function setTimeWindow(string $timeWindow): static
     {
         Assertion::maxLength($timeWindow, 8, 'timeWindow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -556,24 +513,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get timeWindow
-     *
-     * @return string
-     */
     public function getTimeWindow(): string
     {
         return $this->timeWindow;
     }
 
-    /**
-     * Set saveInterval
-     *
-     * @param string $saveInterval
-     *
-     * @return static
-     */
-    protected function setSaveInterval(string $saveInterval): TpCdrStatInterface
+    protected function setSaveInterval(string $saveInterval): static
     {
         Assertion::maxLength($saveInterval, 8, 'saveInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -582,24 +527,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get saveInterval
-     *
-     * @return string
-     */
     public function getSaveInterval(): string
     {
         return $this->saveInterval;
     }
 
-    /**
-     * Set metrics
-     *
-     * @param string $metrics
-     *
-     * @return static
-     */
-    protected function setMetrics(string $metrics): TpCdrStatInterface
+    protected function setMetrics(string $metrics): static
     {
         Assertion::maxLength($metrics, 64, 'metrics value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -608,24 +541,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get metrics
-     *
-     * @return string
-     */
     public function getMetrics(): string
     {
         return $this->metrics;
     }
 
-    /**
-     * Set setupInterval
-     *
-     * @param string $setupInterval
-     *
-     * @return static
-     */
-    protected function setSetupInterval(string $setupInterval): TpCdrStatInterface
+    protected function setSetupInterval(string $setupInterval): static
     {
         Assertion::maxLength($setupInterval, 64, 'setupInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -634,24 +555,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get setupInterval
-     *
-     * @return string
-     */
     public function getSetupInterval(): string
     {
         return $this->setupInterval;
     }
 
-    /**
-     * Set tors
-     *
-     * @param string $tors
-     *
-     * @return static
-     */
-    protected function setTors(string $tors): TpCdrStatInterface
+    protected function setTors(string $tors): static
     {
         Assertion::maxLength($tors, 64, 'tors value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -660,24 +569,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get tors
-     *
-     * @return string
-     */
     public function getTors(): string
     {
         return $this->tors;
     }
 
-    /**
-     * Set cdrHosts
-     *
-     * @param string $cdrHosts
-     *
-     * @return static
-     */
-    protected function setCdrHosts(string $cdrHosts): TpCdrStatInterface
+    protected function setCdrHosts(string $cdrHosts): static
     {
         Assertion::maxLength($cdrHosts, 64, 'cdrHosts value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -686,24 +583,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get cdrHosts
-     *
-     * @return string
-     */
     public function getCdrHosts(): string
     {
         return $this->cdrHosts;
     }
 
-    /**
-     * Set cdrSources
-     *
-     * @param string $cdrSources
-     *
-     * @return static
-     */
-    protected function setCdrSources(string $cdrSources): TpCdrStatInterface
+    protected function setCdrSources(string $cdrSources): static
     {
         Assertion::maxLength($cdrSources, 64, 'cdrSources value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -712,24 +597,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get cdrSources
-     *
-     * @return string
-     */
     public function getCdrSources(): string
     {
         return $this->cdrSources;
     }
 
-    /**
-     * Set reqTypes
-     *
-     * @param string $reqTypes
-     *
-     * @return static
-     */
-    protected function setReqTypes(string $reqTypes): TpCdrStatInterface
+    protected function setReqTypes(string $reqTypes): static
     {
         Assertion::maxLength($reqTypes, 64, 'reqTypes value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -738,24 +611,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get reqTypes
-     *
-     * @return string
-     */
     public function getReqTypes(): string
     {
         return $this->reqTypes;
     }
 
-    /**
-     * Set directions
-     *
-     * @param string $directions
-     *
-     * @return static
-     */
-    protected function setDirections(string $directions): TpCdrStatInterface
+    protected function setDirections(string $directions): static
     {
         Assertion::maxLength($directions, 8, 'directions value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -764,24 +625,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get directions
-     *
-     * @return string
-     */
     public function getDirections(): string
     {
         return $this->directions;
     }
 
-    /**
-     * Set tenants
-     *
-     * @param string $tenants
-     *
-     * @return static
-     */
-    protected function setTenants(string $tenants): TpCdrStatInterface
+    protected function setTenants(string $tenants): static
     {
         Assertion::maxLength($tenants, 64, 'tenants value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -790,24 +639,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get tenants
-     *
-     * @return string
-     */
     public function getTenants(): string
     {
         return $this->tenants;
     }
 
-    /**
-     * Set categories
-     *
-     * @param string $categories
-     *
-     * @return static
-     */
-    protected function setCategories(string $categories): TpCdrStatInterface
+    protected function setCategories(string $categories): static
     {
         Assertion::maxLength($categories, 32, 'categories value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -816,24 +653,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get categories
-     *
-     * @return string
-     */
     public function getCategories(): string
     {
         return $this->categories;
     }
 
-    /**
-     * Set accounts
-     *
-     * @param string $accounts
-     *
-     * @return static
-     */
-    protected function setAccounts(string $accounts): TpCdrStatInterface
+    protected function setAccounts(string $accounts): static
     {
         Assertion::maxLength($accounts, 32, 'accounts value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -842,24 +667,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get accounts
-     *
-     * @return string
-     */
     public function getAccounts(): string
     {
         return $this->accounts;
     }
 
-    /**
-     * Set subjects
-     *
-     * @param string $subjects
-     *
-     * @return static
-     */
-    protected function setSubjects(string $subjects): TpCdrStatInterface
+    protected function setSubjects(string $subjects): static
     {
         Assertion::maxLength($subjects, 64, 'subjects value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -868,24 +681,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get subjects
-     *
-     * @return string
-     */
     public function getSubjects(): string
     {
         return $this->subjects;
     }
 
-    /**
-     * Set destinationIds
-     *
-     * @param string $destinationIds
-     *
-     * @return static
-     */
-    protected function setDestinationIds(string $destinationIds): TpCdrStatInterface
+    protected function setDestinationIds(string $destinationIds): static
     {
         Assertion::maxLength($destinationIds, 64, 'destinationIds value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -894,24 +695,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get destinationIds
-     *
-     * @return string
-     */
     public function getDestinationIds(): string
     {
         return $this->destinationIds;
     }
 
-    /**
-     * Set ppdInterval
-     *
-     * @param string $ppdInterval
-     *
-     * @return static
-     */
-    protected function setPpdInterval(string $ppdInterval): TpCdrStatInterface
+    protected function setPpdInterval(string $ppdInterval): static
     {
         Assertion::maxLength($ppdInterval, 64, 'ppdInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -920,24 +709,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get ppdInterval
-     *
-     * @return string
-     */
     public function getPpdInterval(): string
     {
         return $this->ppdInterval;
     }
 
-    /**
-     * Set usageInterval
-     *
-     * @param string $usageInterval
-     *
-     * @return static
-     */
-    protected function setUsageInterval(string $usageInterval): TpCdrStatInterface
+    protected function setUsageInterval(string $usageInterval): static
     {
         Assertion::maxLength($usageInterval, 64, 'usageInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -946,24 +723,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get usageInterval
-     *
-     * @return string
-     */
     public function getUsageInterval(): string
     {
         return $this->usageInterval;
     }
 
-    /**
-     * Set suppliers
-     *
-     * @param string $suppliers
-     *
-     * @return static
-     */
-    protected function setSuppliers(string $suppliers): TpCdrStatInterface
+    protected function setSuppliers(string $suppliers): static
     {
         Assertion::maxLength($suppliers, 64, 'suppliers value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -972,24 +737,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get suppliers
-     *
-     * @return string
-     */
     public function getSuppliers(): string
     {
         return $this->suppliers;
     }
 
-    /**
-     * Set disconnectCauses
-     *
-     * @param string $disconnectCauses
-     *
-     * @return static
-     */
-    protected function setDisconnectCauses(string $disconnectCauses): TpCdrStatInterface
+    protected function setDisconnectCauses(string $disconnectCauses): static
     {
         Assertion::maxLength($disconnectCauses, 64, 'disconnectCauses value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -998,24 +751,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get disconnectCauses
-     *
-     * @return string
-     */
     public function getDisconnectCauses(): string
     {
         return $this->disconnectCauses;
     }
 
-    /**
-     * Set mediationRunids
-     *
-     * @param string $mediationRunids
-     *
-     * @return static
-     */
-    protected function setMediationRunids(string $mediationRunids): TpCdrStatInterface
+    protected function setMediationRunids(string $mediationRunids): static
     {
         Assertion::maxLength($mediationRunids, 64, 'mediationRunids value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -1024,24 +765,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get mediationRunids
-     *
-     * @return string
-     */
     public function getMediationRunids(): string
     {
         return $this->mediationRunids;
     }
 
-    /**
-     * Set ratedAccounts
-     *
-     * @param string $ratedAccounts
-     *
-     * @return static
-     */
-    protected function setRatedAccounts(string $ratedAccounts): TpCdrStatInterface
+    protected function setRatedAccounts(string $ratedAccounts): static
     {
         Assertion::maxLength($ratedAccounts, 32, 'ratedAccounts value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -1050,24 +779,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get ratedAccounts
-     *
-     * @return string
-     */
     public function getRatedAccounts(): string
     {
         return $this->ratedAccounts;
     }
 
-    /**
-     * Set ratedSubjects
-     *
-     * @param string $ratedSubjects
-     *
-     * @return static
-     */
-    protected function setRatedSubjects(string $ratedSubjects): TpCdrStatInterface
+    protected function setRatedSubjects(string $ratedSubjects): static
     {
         Assertion::maxLength($ratedSubjects, 64, 'ratedSubjects value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -1076,24 +793,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get ratedSubjects
-     *
-     * @return string
-     */
     public function getRatedSubjects(): string
     {
         return $this->ratedSubjects;
     }
 
-    /**
-     * Set costInterval
-     *
-     * @param string $costInterval
-     *
-     * @return static
-     */
-    protected function setCostInterval(string $costInterval): TpCdrStatInterface
+    protected function setCostInterval(string $costInterval): static
     {
         Assertion::maxLength($costInterval, 24, 'costInterval value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -1102,24 +807,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get costInterval
-     *
-     * @return string
-     */
     public function getCostInterval(): string
     {
         return $this->costInterval;
     }
 
-    /**
-     * Set actionTriggers
-     *
-     * @param string $actionTriggers
-     *
-     * @return static
-     */
-    protected function setActionTriggers(string $actionTriggers): TpCdrStatInterface
+    protected function setActionTriggers(string $actionTriggers): static
     {
         Assertion::maxLength($actionTriggers, 64, 'actionTriggers value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -1128,24 +821,12 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get actionTriggers
-     *
-     * @return string
-     */
     public function getActionTriggers(): string
     {
         return $this->actionTriggers;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTimeInterface $createdAt
-     *
-     * @return static
-     */
-    protected function setCreatedAt($createdAt): TpCdrStatInterface
+    protected function setCreatedAt($createdAt): static
     {
 
         $createdAt = DateTimeHelper::createOrFix(
@@ -1162,35 +843,19 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }
 
-    /**
-     * Set carrier
-     *
-     * @param CarrierInterface
-     *
-     * @return static
-     */
-    public function setCarrier(CarrierInterface $carrier): TpCdrStatInterface
+    public function setCarrier(CarrierInterface $carrier): static
     {
         $this->carrier = $carrier;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get carrier
-     *
-     * @return CarrierInterface
-     */
     public function getCarrier(): CarrierInterface
     {
         return $this->carrier;

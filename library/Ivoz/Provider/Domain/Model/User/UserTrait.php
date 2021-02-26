@@ -160,13 +160,6 @@ trait UserTrait
         ];
     }
 
-    /**
-     * Add pickUpRelUser
-     *
-     * @param PickUpRelUserInterface $pickUpRelUser
-     *
-     * @return static
-     */
     public function addPickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface
     {
         $this->pickUpRelUsers->add($pickUpRelUser);
@@ -174,13 +167,6 @@ trait UserTrait
         return $this;
     }
 
-    /**
-     * Remove pickUpRelUser
-     *
-     * @param PickUpRelUserInterface $pickUpRelUser
-     *
-     * @return static
-     */
     public function removePickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface
     {
         $this->pickUpRelUsers->removeElement($pickUpRelUser);
@@ -188,13 +174,6 @@ trait UserTrait
         return $this;
     }
 
-    /**
-     * Replace pickUpRelUsers
-     *
-     * @param ArrayCollection $pickUpRelUsers of PickUpRelUserInterface
-     *
-     * @return static
-     */
     public function replacePickUpRelUsers(ArrayCollection $pickUpRelUsers): UserInterface
     {
         $updatedEntities = [];
@@ -223,11 +202,6 @@ trait UserTrait
         return $this;
     }
 
-    /**
-     * Get pickUpRelUsers
-     * @param Criteria | null $criteria
-     * @return PickUpRelUserInterface[]
-     */
     public function getPickUpRelUsers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -237,13 +211,6 @@ trait UserTrait
         return $this->pickUpRelUsers->toArray();
     }
 
-    /**
-     * Add queueMember
-     *
-     * @param QueueMemberInterface $queueMember
-     *
-     * @return static
-     */
     public function addQueueMember(QueueMemberInterface $queueMember): UserInterface
     {
         $this->queueMembers->add($queueMember);
@@ -251,13 +218,6 @@ trait UserTrait
         return $this;
     }
 
-    /**
-     * Remove queueMember
-     *
-     * @param QueueMemberInterface $queueMember
-     *
-     * @return static
-     */
     public function removeQueueMember(QueueMemberInterface $queueMember): UserInterface
     {
         $this->queueMembers->removeElement($queueMember);
@@ -265,13 +225,6 @@ trait UserTrait
         return $this;
     }
 
-    /**
-     * Replace queueMembers
-     *
-     * @param ArrayCollection $queueMembers of QueueMemberInterface
-     *
-     * @return static
-     */
     public function replaceQueueMembers(ArrayCollection $queueMembers): UserInterface
     {
         $updatedEntities = [];
@@ -300,11 +253,6 @@ trait UserTrait
         return $this;
     }
 
-    /**
-     * Get queueMembers
-     * @param Criteria | null $criteria
-     * @return QueueMemberInterface[]
-     */
     public function getQueueMembers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -314,13 +262,6 @@ trait UserTrait
         return $this->queueMembers->toArray();
     }
 
-    /**
-     * Add callForwardSetting
-     *
-     * @param CallForwardSettingInterface $callForwardSetting
-     *
-     * @return static
-     */
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): UserInterface
     {
         $this->callForwardSettings->add($callForwardSetting);
@@ -328,13 +269,6 @@ trait UserTrait
         return $this;
     }
 
-    /**
-     * Remove callForwardSetting
-     *
-     * @param CallForwardSettingInterface $callForwardSetting
-     *
-     * @return static
-     */
     public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): UserInterface
     {
         $this->callForwardSettings->removeElement($callForwardSetting);
@@ -342,13 +276,6 @@ trait UserTrait
         return $this;
     }
 
-    /**
-     * Replace callForwardSettings
-     *
-     * @param ArrayCollection $callForwardSettings of CallForwardSettingInterface
-     *
-     * @return static
-     */
     public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): UserInterface
     {
         $updatedEntities = [];
@@ -377,11 +304,6 @@ trait UserTrait
         return $this;
     }
 
-    /**
-     * Get callForwardSettings
-     * @param Criteria | null $criteria
-     * @return CallForwardSettingInterface[]
-     */
     public function getCallForwardSettings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

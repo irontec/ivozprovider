@@ -40,9 +40,9 @@ abstract class TrunksDomainAttrAbstract
 
     /**
      * column: last_modified
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $lastModified = '1900-01-01 00:00:01';
+    protected $lastModified;
 
     /**
      * Constructor
@@ -81,7 +81,7 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TrunksDomainAttrDto
      */
     public static function createDto($id = null)
@@ -194,14 +194,7 @@ abstract class TrunksDomainAttrAbstract
         ];
     }
 
-    /**
-     * Set did
-     *
-     * @param string $did
-     *
-     * @return static
-     */
-    protected function setDid(string $did): TrunksDomainAttrInterface
+    protected function setDid(string $did): static
     {
         Assertion::maxLength($did, 190, 'did value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -210,24 +203,12 @@ abstract class TrunksDomainAttrAbstract
         return $this;
     }
 
-    /**
-     * Get did
-     *
-     * @return string
-     */
     public function getDid(): string
     {
         return $this->did;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): TrunksDomainAttrInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 32, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -236,24 +217,12 @@ abstract class TrunksDomainAttrAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set type
-     *
-     * @param int $type
-     *
-     * @return static
-     */
-    protected function setType(int $type): TrunksDomainAttrInterface
+    protected function setType(int $type): static
     {
         Assertion::greaterOrEqualThan($type, 0, 'type provided "%s" is not greater or equal than "%s".');
 
@@ -262,24 +231,12 @@ abstract class TrunksDomainAttrAbstract
         return $this;
     }
 
-    /**
-     * Get type
-     *
-     * @return int
-     */
     public function getType(): int
     {
         return $this->type;
     }
 
-    /**
-     * Set value
-     *
-     * @param string $value
-     *
-     * @return static
-     */
-    protected function setValue(string $value): TrunksDomainAttrInterface
+    protected function setValue(string $value): static
     {
         Assertion::maxLength($value, 255, 'value value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -288,24 +245,12 @@ abstract class TrunksDomainAttrAbstract
         return $this;
     }
 
-    /**
-     * Get value
-     *
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->value;
     }
 
-    /**
-     * Set lastModified
-     *
-     * @param \DateTimeInterface $lastModified
-     *
-     * @return static
-     */
-    protected function setLastModified($lastModified): TrunksDomainAttrInterface
+    protected function setLastModified($lastModified): static
     {
 
         $lastModified = DateTimeHelper::createOrFix(
@@ -322,12 +267,7 @@ abstract class TrunksDomainAttrAbstract
         return $this;
     }
 
-    /**
-     * Get lastModified
-     *
-     * @return \DateTimeInterface
-     */
-    public function getLastModified(): \DateTimeInterface
+    public function getLastModified(): \DateTime
     {
         return clone $this->lastModified;
     }

@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * ConditionalRoutesConditionsRelCalendarInterface
@@ -17,27 +17,10 @@ interface ConditionalRoutesConditionsRelCalendarInterface extends LoggableEntity
      */
     public function getChangeSet();
 
-    /**
-     * Set condition
-     *
-     * @param ConditionalRoutesConditionInterface | null
-     *
-     * @return static
-     */
-    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelCalendarInterface;
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): static;
 
-    /**
-     * Get condition
-     *
-     * @return ConditionalRoutesConditionInterface | null
-     */
     public function getCondition(): ?ConditionalRoutesConditionInterface;
 
-    /**
-     * Get calendar
-     *
-     * @return CalendarInterface
-     */
     public function getCalendar(): CalendarInterface;
 
     /**

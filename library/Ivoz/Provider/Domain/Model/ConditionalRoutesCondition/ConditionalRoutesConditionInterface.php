@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
@@ -17,7 +18,6 @@ use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * ConditionalRoutesConditionInterface
@@ -119,111 +119,34 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      */
     public function getMatchData();
 
-    /**
-     * Get priority
-     *
-     * @return int
-     */
     public function getPriority(): int;
 
-    /**
-     * Get routeType
-     *
-     * @return string | null
-     */
     public function getRouteType(): ?string;
 
-    /**
-     * Get numberValue
-     *
-     * @return string | null
-     */
     public function getNumberValue(): ?string;
 
-    /**
-     * Get friendValue
-     *
-     * @return string | null
-     */
     public function getFriendValue(): ?string;
 
-    /**
-     * Set conditionalRoute
-     *
-     * @param ConditionalRouteInterface
-     *
-     * @return static
-     */
-    public function setConditionalRoute(ConditionalRouteInterface $conditionalRoute): ConditionalRoutesConditionInterface;
+    public function setConditionalRoute(ConditionalRouteInterface $conditionalRoute): static;
 
-    /**
-     * Get conditionalRoute
-     *
-     * @return ConditionalRouteInterface
-     */
     public function getConditionalRoute(): ConditionalRouteInterface;
 
-    /**
-     * Get ivr
-     *
-     * @return IvrInterface | null
-     */
     public function getIvr(): ?IvrInterface;
 
-    /**
-     * Get huntGroup
-     *
-     * @return HuntGroupInterface | null
-     */
     public function getHuntGroup(): ?HuntGroupInterface;
 
-    /**
-     * Get voicemailUser
-     *
-     * @return UserInterface | null
-     */
     public function getVoicemailUser(): ?UserInterface;
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface;
 
-    /**
-     * Get queue
-     *
-     * @return QueueInterface | null
-     */
     public function getQueue(): ?QueueInterface;
 
-    /**
-     * Get locution
-     *
-     * @return LocutionInterface | null
-     */
     public function getLocution(): ?LocutionInterface;
 
-    /**
-     * Get conferenceRoom
-     *
-     * @return ConferenceRoomInterface | null
-     */
     public function getConferenceRoom(): ?ConferenceRoomInterface;
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getExtension(): ?ExtensionInterface;
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface;
 
     /**
@@ -231,140 +154,36 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      */
     public function isInitialized(): bool;
 
-    /**
-     * Add relMatchlist
-     *
-     * @param ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
-     *
-     * @return static
-     */
     public function addRelMatchlist(ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist): ConditionalRoutesConditionInterface;
 
-    /**
-     * Remove relMatchlist
-     *
-     * @param ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
-     *
-     * @return static
-     */
     public function removeRelMatchlist(ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist): ConditionalRoutesConditionInterface;
 
-    /**
-     * Replace relMatchlists
-     *
-     * @param ArrayCollection $relMatchlists of ConditionalRoutesConditionsRelMatchlistInterface
-     *
-     * @return static
-     */
     public function replaceRelMatchlists(ArrayCollection $relMatchlists): ConditionalRoutesConditionInterface;
 
-    /**
-     * Get relMatchlists
-     * @param Criteria | null $criteria
-     * @return ConditionalRoutesConditionsRelMatchlistInterface[]
-     */
     public function getRelMatchlists(?Criteria $criteria = null): array;
 
-    /**
-     * Add relSchedule
-     *
-     * @param ConditionalRoutesConditionsRelScheduleInterface $relSchedule
-     *
-     * @return static
-     */
     public function addRelSchedule(ConditionalRoutesConditionsRelScheduleInterface $relSchedule): ConditionalRoutesConditionInterface;
 
-    /**
-     * Remove relSchedule
-     *
-     * @param ConditionalRoutesConditionsRelScheduleInterface $relSchedule
-     *
-     * @return static
-     */
     public function removeRelSchedule(ConditionalRoutesConditionsRelScheduleInterface $relSchedule): ConditionalRoutesConditionInterface;
 
-    /**
-     * Replace relSchedules
-     *
-     * @param ArrayCollection $relSchedules of ConditionalRoutesConditionsRelScheduleInterface
-     *
-     * @return static
-     */
     public function replaceRelSchedules(ArrayCollection $relSchedules): ConditionalRoutesConditionInterface;
 
-    /**
-     * Get relSchedules
-     * @param Criteria | null $criteria
-     * @return ConditionalRoutesConditionsRelScheduleInterface[]
-     */
     public function getRelSchedules(?Criteria $criteria = null): array;
 
-    /**
-     * Add relCalendar
-     *
-     * @param ConditionalRoutesConditionsRelCalendarInterface $relCalendar
-     *
-     * @return static
-     */
     public function addRelCalendar(ConditionalRoutesConditionsRelCalendarInterface $relCalendar): ConditionalRoutesConditionInterface;
 
-    /**
-     * Remove relCalendar
-     *
-     * @param ConditionalRoutesConditionsRelCalendarInterface $relCalendar
-     *
-     * @return static
-     */
     public function removeRelCalendar(ConditionalRoutesConditionsRelCalendarInterface $relCalendar): ConditionalRoutesConditionInterface;
 
-    /**
-     * Replace relCalendars
-     *
-     * @param ArrayCollection $relCalendars of ConditionalRoutesConditionsRelCalendarInterface
-     *
-     * @return static
-     */
     public function replaceRelCalendars(ArrayCollection $relCalendars): ConditionalRoutesConditionInterface;
 
-    /**
-     * Get relCalendars
-     * @param Criteria | null $criteria
-     * @return ConditionalRoutesConditionsRelCalendarInterface[]
-     */
     public function getRelCalendars(?Criteria $criteria = null): array;
 
-    /**
-     * Add relRouteLock
-     *
-     * @param ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
-     *
-     * @return static
-     */
     public function addRelRouteLock(ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock): ConditionalRoutesConditionInterface;
 
-    /**
-     * Remove relRouteLock
-     *
-     * @param ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
-     *
-     * @return static
-     */
     public function removeRelRouteLock(ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock): ConditionalRoutesConditionInterface;
 
-    /**
-     * Replace relRouteLocks
-     *
-     * @param ArrayCollection $relRouteLocks of ConditionalRoutesConditionsRelRouteLockInterface
-     *
-     * @return static
-     */
     public function replaceRelRouteLocks(ArrayCollection $relRouteLocks): ConditionalRoutesConditionInterface;
 
-    /**
-     * Get relRouteLocks
-     * @param Criteria | null $criteria
-     * @return ConditionalRoutesConditionsRelRouteLockInterface[]
-     */
     public function getRelRouteLocks(?Criteria $criteria = null): array;
 
     /**

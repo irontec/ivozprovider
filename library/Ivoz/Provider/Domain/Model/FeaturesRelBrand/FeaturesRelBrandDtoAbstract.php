@@ -76,50 +76,31 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -128,9 +109,6 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -140,30 +118,19 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    /**
-     * @param FeatureDto | null
-     *
-     * @return static
-     */
-    public function setFeature(?FeatureDto $feature = null): self
+    public function setFeature(?FeatureDto $feature): static
     {
         $this->feature = $feature;
 
         return $this;
     }
 
-    /**
-     * @return FeatureDto | null
-     */
     public function getFeature(): ?FeatureDto
     {
         return $this->feature;
     }
 
-    /**
-     * @return static
-     */
-    public function setFeatureId($id): self
+    public function setFeatureId($id): static
     {
         $value = !is_null($id)
             ? new FeatureDto($id)
@@ -172,9 +139,6 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
         return $this->setFeature($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFeatureId()
     {
         if ($dto = $this->getFeature()) {

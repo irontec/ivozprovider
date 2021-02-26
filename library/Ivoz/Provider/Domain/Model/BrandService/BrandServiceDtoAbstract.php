@@ -18,7 +18,7 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $code;
+    private $code = '';
 
     /**
      * @var int
@@ -83,70 +83,43 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $code | null
-     *
-     * @return static
-     */
-    public function setCode(?string $code = null): self
+    public function setCode(?string $code): static
     {
         $this->code = $code;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCode(): ?string
     {
         return $this->code;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -155,9 +128,6 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -167,30 +137,19 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ServiceDto | null
-     *
-     * @return static
-     */
-    public function setService(?ServiceDto $service = null): self
+    public function setService(?ServiceDto $service): static
     {
         $this->service = $service;
 
         return $this;
     }
 
-    /**
-     * @return ServiceDto | null
-     */
     public function getService(): ?ServiceDto
     {
         return $this->service;
     }
 
-    /**
-     * @return static
-     */
-    public function setServiceId($id): self
+    public function setServiceId($id): static
     {
         $value = !is_null($id)
             ? new ServiceDto($id)
@@ -199,9 +158,6 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
         return $this->setService($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getServiceId()
     {
         if ($dto = $this->getService()) {

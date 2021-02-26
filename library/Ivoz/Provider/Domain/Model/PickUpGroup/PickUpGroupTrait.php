@@ -112,13 +112,6 @@ trait PickUpGroupTrait
         ];
     }
 
-    /**
-     * Add relUser
-     *
-     * @param PickUpRelUserInterface $relUser
-     *
-     * @return static
-     */
     public function addRelUser(PickUpRelUserInterface $relUser): PickUpGroupInterface
     {
         $this->relUsers->add($relUser);
@@ -126,13 +119,6 @@ trait PickUpGroupTrait
         return $this;
     }
 
-    /**
-     * Remove relUser
-     *
-     * @param PickUpRelUserInterface $relUser
-     *
-     * @return static
-     */
     public function removeRelUser(PickUpRelUserInterface $relUser): PickUpGroupInterface
     {
         $this->relUsers->removeElement($relUser);
@@ -140,13 +126,6 @@ trait PickUpGroupTrait
         return $this;
     }
 
-    /**
-     * Replace relUsers
-     *
-     * @param ArrayCollection $relUsers of PickUpRelUserInterface
-     *
-     * @return static
-     */
     public function replaceRelUsers(ArrayCollection $relUsers): PickUpGroupInterface
     {
         $updatedEntities = [];
@@ -175,11 +154,6 @@ trait PickUpGroupTrait
         return $this;
     }
 
-    /**
-     * Get relUsers
-     * @param Criteria | null $criteria
-     * @return PickUpRelUserInterface[]
-     */
     public function getRelUsers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

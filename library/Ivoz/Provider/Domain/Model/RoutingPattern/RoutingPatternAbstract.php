@@ -74,7 +74,7 @@ abstract class RoutingPatternAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return RoutingPatternDto
      */
     public static function createDto($id = null)
@@ -223,14 +223,7 @@ abstract class RoutingPatternAbstract
         ];
     }
 
-    /**
-     * Set prefix
-     *
-     * @param string $prefix
-     *
-     * @return static
-     */
-    protected function setPrefix(string $prefix): RoutingPatternInterface
+    protected function setPrefix(string $prefix): static
     {
         Assertion::maxLength($prefix, 80, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -239,32 +232,17 @@ abstract class RoutingPatternAbstract
         return $this;
     }
 
-    /**
-     * Get prefix
-     *
-     * @return string
-     */
     public function getPrefix(): string
     {
         return $this->prefix;
     }
 
-    /**
-     * Get name
-     *
-     * @return Name
-     */
     public function getName(): Name
     {
         return $this->name;
     }
 
-    /**
-     * Set name
-     *
-     * @return static
-     */
-    protected function setName(Name $name): RoutingPatternInterface
+    protected function setName(Name $name): static
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -275,22 +253,12 @@ abstract class RoutingPatternAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return Description
-     */
     public function getDescription(): Description
     {
         return $this->description;
     }
 
-    /**
-     * Set description
-     *
-     * @return static
-     */
-    protected function setDescription(Description $description): RoutingPatternInterface
+    protected function setDescription(Description $description): static
     {
         $isEqual = $this->description && $this->description->equals($description);
         if ($isEqual) {
@@ -301,25 +269,13 @@ abstract class RoutingPatternAbstract
         return $this;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    protected function setBrand(BrandInterface $brand): RoutingPatternInterface
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;

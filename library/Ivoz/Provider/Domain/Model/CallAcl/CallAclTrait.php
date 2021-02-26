@@ -112,13 +112,6 @@ trait CallAclTrait
         ];
     }
 
-    /**
-     * Add relMatchList
-     *
-     * @param CallAclRelMatchListInterface $relMatchList
-     *
-     * @return static
-     */
     public function addRelMatchList(CallAclRelMatchListInterface $relMatchList): CallAclInterface
     {
         $this->relMatchLists->add($relMatchList);
@@ -126,13 +119,6 @@ trait CallAclTrait
         return $this;
     }
 
-    /**
-     * Remove relMatchList
-     *
-     * @param CallAclRelMatchListInterface $relMatchList
-     *
-     * @return static
-     */
     public function removeRelMatchList(CallAclRelMatchListInterface $relMatchList): CallAclInterface
     {
         $this->relMatchLists->removeElement($relMatchList);
@@ -140,13 +126,6 @@ trait CallAclTrait
         return $this;
     }
 
-    /**
-     * Replace relMatchLists
-     *
-     * @param ArrayCollection $relMatchLists of CallAclRelMatchListInterface
-     *
-     * @return static
-     */
     public function replaceRelMatchLists(ArrayCollection $relMatchLists): CallAclInterface
     {
         $updatedEntities = [];
@@ -175,11 +154,6 @@ trait CallAclTrait
         return $this;
     }
 
-    /**
-     * Get relMatchLists
-     * @param Criteria | null $criteria
-     * @return CallAclRelMatchListInterface[]
-     */
     public function getRelMatchLists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

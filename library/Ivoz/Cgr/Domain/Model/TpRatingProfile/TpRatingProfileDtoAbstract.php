@@ -31,7 +31,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     private $direction = '*out';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tenant;
 
@@ -41,7 +41,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     private $category = 'call';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $subject;
 
@@ -51,22 +51,22 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     private $activationTime = '1970-01-01 00:00:00';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $ratingPlanTag;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fallbackSubjects;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $cdrStatQueueIds;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -153,270 +153,163 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $tpid | null
-     *
-     * @return static
-     */
-    public function setTpid(?string $tpid = null): self
+    public function setTpid(?string $tpid): static
     {
         $this->tpid = $tpid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
-    /**
-     * @param string $loadid | null
-     *
-     * @return static
-     */
-    public function setLoadid(?string $loadid = null): self
+    public function setLoadid(?string $loadid): static
     {
         $this->loadid = $loadid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLoadid(): ?string
     {
         return $this->loadid;
     }
 
-    /**
-     * @param string $direction | null
-     *
-     * @return static
-     */
-    public function setDirection(?string $direction = null): self
+    public function setDirection(?string $direction): static
     {
         $this->direction = $direction;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDirection(): ?string
     {
         return $this->direction;
     }
 
-    /**
-     * @param string $tenant | null
-     *
-     * @return static
-     */
-    public function setTenant(?string $tenant = null): self
+    public function setTenant(?string $tenant): static
     {
         $this->tenant = $tenant;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTenant(): ?string
     {
         return $this->tenant;
     }
 
-    /**
-     * @param string $category | null
-     *
-     * @return static
-     */
-    public function setCategory(?string $category = null): self
+    public function setCategory(?string $category): static
     {
         $this->category = $category;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCategory(): ?string
     {
         return $this->category;
     }
 
-    /**
-     * @param string $subject | null
-     *
-     * @return static
-     */
-    public function setSubject(?string $subject = null): self
+    public function setSubject(?string $subject): static
     {
         $this->subject = $subject;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSubject(): ?string
     {
         return $this->subject;
     }
 
-    /**
-     * @param string $activationTime | null
-     *
-     * @return static
-     */
-    public function setActivationTime(?string $activationTime = null): self
+    public function setActivationTime(?string $activationTime): static
     {
         $this->activationTime = $activationTime;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getActivationTime(): ?string
     {
         return $this->activationTime;
     }
 
-    /**
-     * @param string $ratingPlanTag | null
-     *
-     * @return static
-     */
-    public function setRatingPlanTag(?string $ratingPlanTag = null): self
+    public function setRatingPlanTag(?string $ratingPlanTag): static
     {
         $this->ratingPlanTag = $ratingPlanTag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRatingPlanTag(): ?string
     {
         return $this->ratingPlanTag;
     }
 
-    /**
-     * @param string $fallbackSubjects | null
-     *
-     * @return static
-     */
-    public function setFallbackSubjects(?string $fallbackSubjects = null): self
+    public function setFallbackSubjects(?string $fallbackSubjects): static
     {
         $this->fallbackSubjects = $fallbackSubjects;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFallbackSubjects(): ?string
     {
         return $this->fallbackSubjects;
     }
 
-    /**
-     * @param string $cdrStatQueueIds | null
-     *
-     * @return static
-     */
-    public function setCdrStatQueueIds(?string $cdrStatQueueIds = null): self
+    public function setCdrStatQueueIds(?string $cdrStatQueueIds): static
     {
         $this->cdrStatQueueIds = $cdrStatQueueIds;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCdrStatQueueIds(): ?string
     {
         return $this->cdrStatQueueIds;
     }
 
-    /**
-     * @param \DateTimeInterface $createdAt | null
-     *
-     * @return static
-     */
-    public function setCreatedAt($createdAt = null): self
+    public function setCreatedAt(null|\DateTime|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime|string|null
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param RatingProfileDto | null
-     *
-     * @return static
-     */
-    public function setRatingProfile(?RatingProfileDto $ratingProfile = null): self
+    public function setRatingProfile(?RatingProfileDto $ratingProfile): static
     {
         $this->ratingProfile = $ratingProfile;
 
         return $this;
     }
 
-    /**
-     * @return RatingProfileDto | null
-     */
     public function getRatingProfile(): ?RatingProfileDto
     {
         return $this->ratingProfile;
     }
 
-    /**
-     * @return static
-     */
-    public function setRatingProfileId($id): self
+    public function setRatingProfileId($id): static
     {
         $value = !is_null($id)
             ? new RatingProfileDto($id)
@@ -425,9 +318,6 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->setRatingProfile($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRatingProfileId()
     {
         if ($dto = $this->getRatingProfile()) {
@@ -437,30 +327,19 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param OutgoingRoutingRelCarrierDto | null
-     *
-     * @return static
-     */
-    public function setOutgoingRoutingRelCarrier(?OutgoingRoutingRelCarrierDto $outgoingRoutingRelCarrier = null): self
+    public function setOutgoingRoutingRelCarrier(?OutgoingRoutingRelCarrierDto $outgoingRoutingRelCarrier): static
     {
         $this->outgoingRoutingRelCarrier = $outgoingRoutingRelCarrier;
 
         return $this;
     }
 
-    /**
-     * @return OutgoingRoutingRelCarrierDto | null
-     */
     public function getOutgoingRoutingRelCarrier(): ?OutgoingRoutingRelCarrierDto
     {
         return $this->outgoingRoutingRelCarrier;
     }
 
-    /**
-     * @return static
-     */
-    public function setOutgoingRoutingRelCarrierId($id): self
+    public function setOutgoingRoutingRelCarrierId($id): static
     {
         $value = !is_null($id)
             ? new OutgoingRoutingRelCarrierDto($id)
@@ -469,9 +348,6 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingRoutingRelCarrier($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getOutgoingRoutingRelCarrierId()
     {
         if ($dto = $this->getOutgoingRoutingRelCarrier()) {

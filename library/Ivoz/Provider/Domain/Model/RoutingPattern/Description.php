@@ -62,14 +62,7 @@ class Description
             $this->getIt() === $description->getIt();
     }
 
-    /**
-     * Set en
-     *
-     * @param string $en | null
-     *
-     * @return static
-     */
-    protected function setEn(?string $en = null): Description
+    protected function setEn(?string $en = null): static
     {
         if (!is_null($en)) {
             Assertion::maxLength($en, 55, 'en value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -80,24 +73,12 @@ class Description
         return $this;
     }
 
-    /**
-     * Get en
-     *
-     * @return string | null
-     */
     public function getEn(): ?string
     {
         return $this->en;
     }
 
-    /**
-     * Set es
-     *
-     * @param string $es | null
-     *
-     * @return static
-     */
-    protected function setEs(?string $es = null): Description
+    protected function setEs(?string $es = null): static
     {
         if (!is_null($es)) {
             Assertion::maxLength($es, 55, 'es value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -108,24 +89,12 @@ class Description
         return $this;
     }
 
-    /**
-     * Get es
-     *
-     * @return string | null
-     */
     public function getEs(): ?string
     {
         return $this->es;
     }
 
-    /**
-     * Set ca
-     *
-     * @param string $ca | null
-     *
-     * @return static
-     */
-    protected function setCa(?string $ca = null): Description
+    protected function setCa(?string $ca = null): static
     {
         if (!is_null($ca)) {
             Assertion::maxLength($ca, 55, 'ca value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -136,24 +105,12 @@ class Description
         return $this;
     }
 
-    /**
-     * Get ca
-     *
-     * @return string | null
-     */
     public function getCa(): ?string
     {
         return $this->ca;
     }
 
-    /**
-     * Set it
-     *
-     * @param string $it | null
-     *
-     * @return static
-     */
-    protected function setIt(?string $it = null): Description
+    protected function setIt(?string $it = null): static
     {
         if (!is_null($it)) {
             Assertion::maxLength($it, 55, 'it value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -164,11 +121,6 @@ class Description
         return $this;
     }
 
-    /**
-     * Get it
-     *
-     * @return string | null
-     */
     public function getIt(): ?string
     {
         return $this->it;

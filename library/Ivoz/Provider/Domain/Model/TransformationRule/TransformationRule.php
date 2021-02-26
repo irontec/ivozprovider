@@ -33,7 +33,7 @@ class TransformationRule extends TransformationRuleAbstract implements Transform
     /**
      * {@inheritDoc}
      */
-    public function setMatchExpr(?string $matchExpr = null): self
+    public function setMatchExpr(?string $matchExpr = null): static
     {
         if (!is_null($matchExpr)) {
             Assertion::regexFormat($matchExpr);

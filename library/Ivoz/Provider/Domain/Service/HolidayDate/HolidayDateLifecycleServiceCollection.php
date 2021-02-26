@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\HolidayDate;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class HolidayDateLifecycleServiceCollection implements LifecycleServiceCollectio
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, HolidayDateLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, HolidayDateLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

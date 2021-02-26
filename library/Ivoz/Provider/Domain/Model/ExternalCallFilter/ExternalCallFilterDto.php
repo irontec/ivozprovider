@@ -116,7 +116,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
         );
     }
 
-    public function setCalendarIds(array $calendarIds): self
+    public function setCalendarIds(array $calendarIds): static
     {
         $this->calendarIds = $calendarIds;
 
@@ -132,7 +132,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
         return $this;
     }
 
-    public function setScheduleIds(array $scheduleIds): self
+    public function setScheduleIds(array $scheduleIds): static
     {
         $this->scheduleIds = $scheduleIds;
 
@@ -148,7 +148,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
         return $this;
     }
 
-    public function setWhiteListIds(array $whiteListIds): self
+    public function setWhiteListIds(array $whiteListIds): static
     {
         $this->whiteListIds = $whiteListIds;
 
@@ -164,7 +164,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
         return $this;
     }
 
-    public function setBlackListIds(array $blackListIds): self
+    public function setBlackListIds(array $blackListIds): static
     {
         $this->blackListIds = $blackListIds;
 

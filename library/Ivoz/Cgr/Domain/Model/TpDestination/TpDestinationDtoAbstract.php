@@ -20,17 +20,17 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tag;
 
     /**
      * @var string
      */
-    private $prefix;
+    private $prefix = '';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -96,130 +96,79 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $tpid | null
-     *
-     * @return static
-     */
-    public function setTpid(?string $tpid = null): self
+    public function setTpid(?string $tpid): static
     {
         $this->tpid = $tpid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
-    /**
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    public function setTag(?string $tag = null): self
+    public function setTag(?string $tag): static
     {
         $this->tag = $tag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * @param string $prefix | null
-     *
-     * @return static
-     */
-    public function setPrefix(?string $prefix = null): self
+    public function setPrefix(?string $prefix): static
     {
         $this->prefix = $prefix;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
-    /**
-     * @param \DateTimeInterface $createdAt | null
-     *
-     * @return static
-     */
-    public function setCreatedAt($createdAt = null): self
+    public function setCreatedAt(null|\DateTime|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime|string|null
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param DestinationDto | null
-     *
-     * @return static
-     */
-    public function setDestination(?DestinationDto $destination = null): self
+    public function setDestination(?DestinationDto $destination): static
     {
         $this->destination = $destination;
 
         return $this;
     }
 
-    /**
-     * @return DestinationDto | null
-     */
     public function getDestination(): ?DestinationDto
     {
         return $this->destination;
     }
 
-    /**
-     * @return static
-     */
-    public function setDestinationId($id): self
+    public function setDestinationId($id): static
     {
         $value = !is_null($id)
             ? new DestinationDto($id)
@@ -228,9 +177,6 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
         return $this->setDestination($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDestinationId()
     {
         if ($dto = $this->getDestination()) {

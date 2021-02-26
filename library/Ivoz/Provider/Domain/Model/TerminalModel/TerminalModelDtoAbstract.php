@@ -17,7 +17,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $iden;
+    private $iden = '';
 
     /**
      * @var string
@@ -30,22 +30,22 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     private $description = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $genericTemplate;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $specificTemplate;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $genericUrlPattern;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $specificUrlPattern;
 
@@ -117,190 +117,115 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $iden | null
-     *
-     * @return static
-     */
-    public function setIden(?string $iden = null): self
+    public function setIden(?string $iden): static
     {
         $this->iden = $iden;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getIden(): ?string
     {
         return $this->iden;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $genericTemplate | null
-     *
-     * @return static
-     */
-    public function setGenericTemplate(?string $genericTemplate = null): self
+    public function setGenericTemplate(?string $genericTemplate): static
     {
         $this->genericTemplate = $genericTemplate;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getGenericTemplate(): ?string
     {
         return $this->genericTemplate;
     }
 
-    /**
-     * @param string $specificTemplate | null
-     *
-     * @return static
-     */
-    public function setSpecificTemplate(?string $specificTemplate = null): self
+    public function setSpecificTemplate(?string $specificTemplate): static
     {
         $this->specificTemplate = $specificTemplate;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSpecificTemplate(): ?string
     {
         return $this->specificTemplate;
     }
 
-    /**
-     * @param string $genericUrlPattern | null
-     *
-     * @return static
-     */
-    public function setGenericUrlPattern(?string $genericUrlPattern = null): self
+    public function setGenericUrlPattern(?string $genericUrlPattern): static
     {
         $this->genericUrlPattern = $genericUrlPattern;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getGenericUrlPattern(): ?string
     {
         return $this->genericUrlPattern;
     }
 
-    /**
-     * @param string $specificUrlPattern | null
-     *
-     * @return static
-     */
-    public function setSpecificUrlPattern(?string $specificUrlPattern = null): self
+    public function setSpecificUrlPattern(?string $specificUrlPattern): static
     {
         $this->specificUrlPattern = $specificUrlPattern;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSpecificUrlPattern(): ?string
     {
         return $this->specificUrlPattern;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param TerminalManufacturerDto | null
-     *
-     * @return static
-     */
-    public function setTerminalManufacturer(?TerminalManufacturerDto $terminalManufacturer = null): self
+    public function setTerminalManufacturer(?TerminalManufacturerDto $terminalManufacturer): static
     {
         $this->terminalManufacturer = $terminalManufacturer;
 
         return $this;
     }
 
-    /**
-     * @return TerminalManufacturerDto | null
-     */
     public function getTerminalManufacturer(): ?TerminalManufacturerDto
     {
         return $this->terminalManufacturer;
     }
 
-    /**
-     * @return static
-     */
-    public function setTerminalManufacturerId($id): self
+    public function setTerminalManufacturerId($id): static
     {
         $value = !is_null($id)
             ? new TerminalManufacturerDto($id)
@@ -309,9 +234,6 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
         return $this->setTerminalManufacturer($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTerminalManufacturerId()
     {
         if ($dto = $this->getTerminalManufacturer()) {

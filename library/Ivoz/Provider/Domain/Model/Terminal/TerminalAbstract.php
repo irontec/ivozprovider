@@ -65,7 +65,7 @@ abstract class TerminalAbstract
     protected $mac;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $lastProvisionDate;
 
@@ -87,13 +87,13 @@ abstract class TerminalAbstract
     protected $company;
 
     /**
-     * @var DomainInterface
+     * @var DomainInterface | null
      * inversedBy terminals
      */
     protected $domain;
 
     /**
-     * @var TerminalModelInterface
+     * @var TerminalModelInterface | null
      */
     protected $terminalModel;
 
@@ -138,7 +138,7 @@ abstract class TerminalAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TerminalDto
      */
     public static function createDto($id = null)
@@ -283,16 +283,8 @@ abstract class TerminalAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(?string $name = null): TerminalInterface
+    protected function setName(string $name): static
     {
-        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
@@ -300,24 +292,12 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set disallow
-     *
-     * @param string $disallow
-     *
-     * @return static
-     */
-    protected function setDisallow(string $disallow): TerminalInterface
+    protected function setDisallow(string $disallow): static
     {
         Assertion::maxLength($disallow, 200, 'disallow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -326,24 +306,12 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    /**
-     * Get disallow
-     *
-     * @return string
-     */
     public function getDisallow(): string
     {
         return $this->disallow;
     }
 
-    /**
-     * Set allowAudio
-     *
-     * @param string $allowAudio
-     *
-     * @return static
-     */
-    protected function setAllowAudio(string $allowAudio): TerminalInterface
+    protected function setAllowAudio(string $allowAudio): static
     {
         Assertion::maxLength($allowAudio, 200, 'allowAudio value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -352,24 +320,12 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    /**
-     * Get allowAudio
-     *
-     * @return string
-     */
     public function getAllowAudio(): string
     {
         return $this->allowAudio;
     }
 
-    /**
-     * Set allowVideo
-     *
-     * @param string $allowVideo | null
-     *
-     * @return static
-     */
-    protected function setAllowVideo(?string $allowVideo = null): TerminalInterface
+    protected function setAllowVideo(?string $allowVideo = null): static
     {
         if (!is_null($allowVideo)) {
             Assertion::maxLength($allowVideo, 200, 'allowVideo value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -380,24 +336,12 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    /**
-     * Get allowVideo
-     *
-     * @return string | null
-     */
     public function getAllowVideo(): ?string
     {
         return $this->allowVideo;
     }
 
-    /**
-     * Set directMediaMethod
-     *
-     * @param string $directMediaMethod
-     *
-     * @return static
-     */
-    protected function setDirectMediaMethod(string $directMediaMethod): TerminalInterface
+    protected function setDirectMediaMethod(string $directMediaMethod): static
     {
         Assertion::choice(
             $directMediaMethod,
@@ -414,24 +358,12 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    /**
-     * Get directMediaMethod
-     *
-     * @return string
-     */
     public function getDirectMediaMethod(): string
     {
         return $this->directMediaMethod;
     }
 
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return static
-     */
-    protected function setPassword(string $password): TerminalInterface
+    protected function setPassword(string $password): static
     {
         Assertion::maxLength($password, 25, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -440,24 +372,12 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    /**
-     * Get password
-     *
-     * @return string
-     */
     public function getPassword(): string
     {
         return $this->password;
     }
 
-    /**
-     * Set mac
-     *
-     * @param string $mac | null
-     *
-     * @return static
-     */
-    protected function setMac(?string $mac = null): TerminalInterface
+    protected function setMac(?string $mac = null): static
     {
         if (!is_null($mac)) {
             Assertion::maxLength($mac, 12, 'mac value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -468,24 +388,12 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    /**
-     * Get mac
-     *
-     * @return string | null
-     */
     public function getMac(): ?string
     {
         return $this->mac;
     }
 
-    /**
-     * Set lastProvisionDate
-     *
-     * @param \DateTimeInterface $lastProvisionDate | null
-     *
-     * @return static
-     */
-    protected function setLastProvisionDate($lastProvisionDate = null): TerminalInterface
+    protected function setLastProvisionDate($lastProvisionDate = null): static
     {
         if (!is_null($lastProvisionDate)) {
             Assertion::notNull(
@@ -507,24 +415,12 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    /**
-     * Get lastProvisionDate
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getLastProvisionDate(): ?\DateTimeInterface
+    public function getLastProvisionDate(): ?\DateTime
     {
         return !is_null($this->lastProvisionDate) ? clone $this->lastProvisionDate : null;
     }
 
-    /**
-     * Set t38Passthrough
-     *
-     * @param string $t38Passthrough
-     *
-     * @return static
-     */
-    protected function setT38Passthrough(string $t38Passthrough): TerminalInterface
+    protected function setT38Passthrough(string $t38Passthrough): static
     {
         Assertion::choice(
             $t38Passthrough,
@@ -540,24 +436,12 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    /**
-     * Get t38Passthrough
-     *
-     * @return string
-     */
     public function getT38Passthrough(): string
     {
         return $this->t38Passthrough;
     }
 
-    /**
-     * Set rtpEncryption
-     *
-     * @param bool $rtpEncryption
-     *
-     * @return static
-     */
-    protected function setRtpEncryption(bool $rtpEncryption): TerminalInterface
+    protected function setRtpEncryption(bool $rtpEncryption): static
     {
         Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
         $rtpEncryption = (bool) $rtpEncryption;
@@ -567,83 +451,44 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    /**
-     * Get rtpEncryption
-     *
-     * @return bool
-     */
     public function getRtpEncryption(): bool
     {
         return $this->rtpEncryption;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    public function setCompany(CompanyInterface $company): TerminalInterface
+    public function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set domain
-     *
-     * @param DomainInterface | null
-     *
-     * @return static
-     */
-    public function setDomain(?DomainInterface $domain = null): TerminalInterface
+    public function setDomain(?DomainInterface $domain = null): static
     {
         $this->domain = $domain;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get domain
-     *
-     * @return DomainInterface | null
-     */
     public function getDomain(): ?DomainInterface
     {
         return $this->domain;
     }
 
-    /**
-     * Set terminalModel
-     *
-     * @param TerminalModelInterface | null
-     *
-     * @return static
-     */
-    protected function setTerminalModel(?TerminalModelInterface $terminalModel = null): TerminalInterface
+    protected function setTerminalModel(?TerminalModelInterface $terminalModel = null): static
     {
         $this->terminalModel = $terminalModel;
 
         return $this;
     }
 
-    /**
-     * Get terminalModel
-     *
-     * @return TerminalModelInterface | null
-     */
     public function getTerminalModel(): ?TerminalModelInterface
     {
         return $this->terminalModel;

@@ -76,50 +76,31 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -128,9 +109,6 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -140,30 +118,19 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setCountry(?CountryDto $country = null): self
+    public function setCountry(?CountryDto $country): static
     {
         $this->country = $country;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getCountry(): ?CountryDto
     {
         return $this->country;
     }
 
-    /**
-     * @return static
-     */
-    public function setCountryId($id): self
+    public function setCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -172,9 +139,6 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
         return $this->setCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCountryId()
     {
         if ($dto = $this->getCountry()) {

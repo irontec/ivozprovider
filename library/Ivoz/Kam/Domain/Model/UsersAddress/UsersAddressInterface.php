@@ -2,8 +2,8 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersAddress;
 
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
 * UsersAddressInterface
@@ -16,57 +16,22 @@ interface UsersAddressInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    public function setIpAddr(string $ipAddr = null): UsersAddressInterface;
+    public function setIpAddr(?string $ipAddr = null): static;
 
-    public function setMask(int $mask = null): UsersAddressInterface;
+    public function setMask(?int $mask = null): static;
 
-    /**
-     * Get sourceAddress
-     *
-     * @return string
-     */
     public function getSourceAddress(): string;
 
-    /**
-     * Get ipAddr
-     *
-     * @return string | null
-     */
     public function getIpAddr(): ?string;
 
-    /**
-     * Get mask
-     *
-     * @return int
-     */
     public function getMask(): int;
 
-    /**
-     * Get port
-     *
-     * @return int
-     */
     public function getPort(): int;
 
-    /**
-     * Get tag
-     *
-     * @return string | null
-     */
     public function getTag(): ?string;
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface;
 
     /**

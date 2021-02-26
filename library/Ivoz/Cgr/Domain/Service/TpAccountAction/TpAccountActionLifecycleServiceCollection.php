@@ -2,6 +2,8 @@
 
 namespace Ivoz\Cgr\Domain\Service\TpAccountAction;
 
+use Assert\Assertion;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -15,11 +17,9 @@ class TpAccountActionLifecycleServiceCollection implements LifecycleServiceColle
     public static $bindedBaseServices = [
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, TpAccountActionLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, TpAccountActionLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

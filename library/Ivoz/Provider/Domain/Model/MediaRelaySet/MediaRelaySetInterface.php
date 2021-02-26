@@ -15,18 +15,8 @@ interface MediaRelaySetInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string;
 
     /**

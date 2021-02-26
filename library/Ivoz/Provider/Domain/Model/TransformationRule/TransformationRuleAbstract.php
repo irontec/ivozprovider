@@ -46,7 +46,7 @@ abstract class TransformationRuleAbstract
     protected $replaceExpr;
 
     /**
-     * @var TransformationRuleSetInterface
+     * @var TransformationRuleSetInterface | null
      * inversedBy rules
      */
     protected $transformationRuleSet;
@@ -82,7 +82,7 @@ abstract class TransformationRuleAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TransformationRuleDto
      */
     public static function createDto($id = null)
@@ -199,14 +199,7 @@ abstract class TransformationRuleAbstract
         ];
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return static
-     */
-    protected function setType(string $type): TransformationRuleInterface
+    protected function setType(string $type): static
     {
         Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -225,24 +218,12 @@ abstract class TransformationRuleAbstract
         return $this;
     }
 
-    /**
-     * Get type
-     *
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return static
-     */
-    protected function setDescription(string $description): TransformationRuleInterface
+    protected function setDescription(string $description): static
     {
         Assertion::maxLength($description, 64, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -251,24 +232,12 @@ abstract class TransformationRuleAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * Set priority
-     *
-     * @param int $priority | null
-     *
-     * @return static
-     */
-    protected function setPriority(?int $priority = null): TransformationRuleInterface
+    protected function setPriority(?int $priority = null): static
     {
         if (!is_null($priority)) {
             Assertion::greaterOrEqualThan($priority, 0, 'priority provided "%s" is not greater or equal than "%s".');
@@ -279,24 +248,12 @@ abstract class TransformationRuleAbstract
         return $this;
     }
 
-    /**
-     * Get priority
-     *
-     * @return int | null
-     */
     public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    /**
-     * Set matchExpr
-     *
-     * @param string $matchExpr | null
-     *
-     * @return static
-     */
-    protected function setMatchExpr(?string $matchExpr = null): TransformationRuleInterface
+    protected function setMatchExpr(?string $matchExpr = null): static
     {
         if (!is_null($matchExpr)) {
             Assertion::maxLength($matchExpr, 128, 'matchExpr value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -307,24 +264,12 @@ abstract class TransformationRuleAbstract
         return $this;
     }
 
-    /**
-     * Get matchExpr
-     *
-     * @return string | null
-     */
     public function getMatchExpr(): ?string
     {
         return $this->matchExpr;
     }
 
-    /**
-     * Set replaceExpr
-     *
-     * @param string $replaceExpr | null
-     *
-     * @return static
-     */
-    protected function setReplaceExpr(?string $replaceExpr = null): TransformationRuleInterface
+    protected function setReplaceExpr(?string $replaceExpr = null): static
     {
         if (!is_null($replaceExpr)) {
             Assertion::maxLength($replaceExpr, 128, 'replaceExpr value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -335,35 +280,19 @@ abstract class TransformationRuleAbstract
         return $this;
     }
 
-    /**
-     * Get replaceExpr
-     *
-     * @return string | null
-     */
     public function getReplaceExpr(): ?string
     {
         return $this->replaceExpr;
     }
 
-    /**
-     * Set transformationRuleSet
-     *
-     * @param TransformationRuleSetInterface | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): TransformationRuleInterface
+    public function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): static
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get transformationRuleSet
-     *
-     * @return TransformationRuleSetInterface | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface
     {
         return $this->transformationRuleSet;

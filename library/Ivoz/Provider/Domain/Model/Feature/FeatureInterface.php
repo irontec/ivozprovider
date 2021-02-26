@@ -15,18 +15,8 @@ interface FeatureInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Get iden
-     *
-     * @return string
-     */
     public function getIden(): string;
 
-    /**
-     * Get name
-     *
-     * @return Name
-     */
     public function getName(): Name;
 
     /**

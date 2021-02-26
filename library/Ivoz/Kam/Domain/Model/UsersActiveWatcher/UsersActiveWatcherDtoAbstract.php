@@ -16,27 +16,27 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @var string
      */
-    private $presentityUri;
+    private $presentityUri = '';
 
     /**
      * @var string
      */
-    private $watcherUsername;
+    private $watcherUsername = '';
 
     /**
      * @var string
      */
-    private $watcherDomain;
+    private $watcherDomain = '';
 
     /**
      * @var string
      */
-    private $toUser;
+    private $toUser = '';
 
     /**
      * @var string
      */
-    private $toDomain;
+    private $toDomain = '';
 
     /**
      * @var string
@@ -44,24 +44,24 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     private $event = 'presence';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $eventId;
 
     /**
      * @var string
      */
-    private $toTag;
+    private $toTag = '';
 
     /**
      * @var string
      */
-    private $fromTag;
+    private $fromTag = '';
 
     /**
      * @var string
      */
-    private $callid;
+    private $callid = '';
 
     /**
      * @var int
@@ -76,10 +76,10 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @var string
      */
-    private $contact;
+    private $contact = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $recordRoute;
 
@@ -94,7 +94,7 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     private $status = 2;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $reason;
 
@@ -106,22 +106,22 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @var string
      */
-    private $socketInfo;
+    private $socketInfo = '';
 
     /**
      * @var string
      */
-    private $localContact;
+    private $localContact = '';
 
     /**
      * @var string
      */
-    private $fromUser;
+    private $fromUser = '';
 
     /**
      * @var string
      */
-    private $fromDomain;
+    private $fromDomain = '';
 
     /**
      * @var int
@@ -242,542 +242,326 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
         return $response;
     }
 
-    /**
-     * @param string $presentityUri | null
-     *
-     * @return static
-     */
-    public function setPresentityUri(?string $presentityUri = null): self
+    public function setPresentityUri(?string $presentityUri): static
     {
         $this->presentityUri = $presentityUri;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPresentityUri(): ?string
     {
         return $this->presentityUri;
     }
 
-    /**
-     * @param string $watcherUsername | null
-     *
-     * @return static
-     */
-    public function setWatcherUsername(?string $watcherUsername = null): self
+    public function setWatcherUsername(?string $watcherUsername): static
     {
         $this->watcherUsername = $watcherUsername;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getWatcherUsername(): ?string
     {
         return $this->watcherUsername;
     }
 
-    /**
-     * @param string $watcherDomain | null
-     *
-     * @return static
-     */
-    public function setWatcherDomain(?string $watcherDomain = null): self
+    public function setWatcherDomain(?string $watcherDomain): static
     {
         $this->watcherDomain = $watcherDomain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getWatcherDomain(): ?string
     {
         return $this->watcherDomain;
     }
 
-    /**
-     * @param string $toUser | null
-     *
-     * @return static
-     */
-    public function setToUser(?string $toUser = null): self
+    public function setToUser(?string $toUser): static
     {
         $this->toUser = $toUser;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getToUser(): ?string
     {
         return $this->toUser;
     }
 
-    /**
-     * @param string $toDomain | null
-     *
-     * @return static
-     */
-    public function setToDomain(?string $toDomain = null): self
+    public function setToDomain(?string $toDomain): static
     {
         $this->toDomain = $toDomain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getToDomain(): ?string
     {
         return $this->toDomain;
     }
 
-    /**
-     * @param string $event | null
-     *
-     * @return static
-     */
-    public function setEvent(?string $event = null): self
+    public function setEvent(?string $event): static
     {
         $this->event = $event;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEvent(): ?string
     {
         return $this->event;
     }
 
-    /**
-     * @param string $eventId | null
-     *
-     * @return static
-     */
-    public function setEventId(?string $eventId = null): self
+    public function setEventId(?string $eventId): static
     {
         $this->eventId = $eventId;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEventId(): ?string
     {
         return $this->eventId;
     }
 
-    /**
-     * @param string $toTag | null
-     *
-     * @return static
-     */
-    public function setToTag(?string $toTag = null): self
+    public function setToTag(?string $toTag): static
     {
         $this->toTag = $toTag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getToTag(): ?string
     {
         return $this->toTag;
     }
 
-    /**
-     * @param string $fromTag | null
-     *
-     * @return static
-     */
-    public function setFromTag(?string $fromTag = null): self
+    public function setFromTag(?string $fromTag): static
     {
         $this->fromTag = $fromTag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFromTag(): ?string
     {
         return $this->fromTag;
     }
 
-    /**
-     * @param string $callid | null
-     *
-     * @return static
-     */
-    public function setCallid(?string $callid = null): self
+    public function setCallid(?string $callid): static
     {
         $this->callid = $callid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallid(): ?string
     {
         return $this->callid;
     }
 
-    /**
-     * @param int $localCseq | null
-     *
-     * @return static
-     */
-    public function setLocalCseq(?int $localCseq = null): self
+    public function setLocalCseq(?int $localCseq): static
     {
         $this->localCseq = $localCseq;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getLocalCseq(): ?int
     {
         return $this->localCseq;
     }
 
-    /**
-     * @param int $remoteCseq | null
-     *
-     * @return static
-     */
-    public function setRemoteCseq(?int $remoteCseq = null): self
+    public function setRemoteCseq(?int $remoteCseq): static
     {
         $this->remoteCseq = $remoteCseq;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getRemoteCseq(): ?int
     {
         return $this->remoteCseq;
     }
 
-    /**
-     * @param string $contact | null
-     *
-     * @return static
-     */
-    public function setContact(?string $contact = null): self
+    public function setContact(?string $contact): static
     {
         $this->contact = $contact;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getContact(): ?string
     {
         return $this->contact;
     }
 
-    /**
-     * @param string $recordRoute | null
-     *
-     * @return static
-     */
-    public function setRecordRoute(?string $recordRoute = null): self
+    public function setRecordRoute(?string $recordRoute): static
     {
         $this->recordRoute = $recordRoute;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRecordRoute(): ?string
     {
         return $this->recordRoute;
     }
 
-    /**
-     * @param int $expires | null
-     *
-     * @return static
-     */
-    public function setExpires(?int $expires = null): self
+    public function setExpires(?int $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getExpires(): ?int
     {
         return $this->expires;
     }
 
-    /**
-     * @param int $status | null
-     *
-     * @return static
-     */
-    public function setStatus(?int $status = null): self
+    public function setStatus(?int $status): static
     {
         $this->status = $status;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getStatus(): ?int
     {
         return $this->status;
     }
 
-    /**
-     * @param string $reason | null
-     *
-     * @return static
-     */
-    public function setReason(?string $reason = null): self
+    public function setReason(?string $reason): static
     {
         $this->reason = $reason;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getReason(): ?string
     {
         return $this->reason;
     }
 
-    /**
-     * @param int $version | null
-     *
-     * @return static
-     */
-    public function setVersion(?int $version = null): self
+    public function setVersion(?int $version): static
     {
         $this->version = $version;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getVersion(): ?int
     {
         return $this->version;
     }
 
-    /**
-     * @param string $socketInfo | null
-     *
-     * @return static
-     */
-    public function setSocketInfo(?string $socketInfo = null): self
+    public function setSocketInfo(?string $socketInfo): static
     {
         $this->socketInfo = $socketInfo;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSocketInfo(): ?string
     {
         return $this->socketInfo;
     }
 
-    /**
-     * @param string $localContact | null
-     *
-     * @return static
-     */
-    public function setLocalContact(?string $localContact = null): self
+    public function setLocalContact(?string $localContact): static
     {
         $this->localContact = $localContact;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLocalContact(): ?string
     {
         return $this->localContact;
     }
 
-    /**
-     * @param string $fromUser | null
-     *
-     * @return static
-     */
-    public function setFromUser(?string $fromUser = null): self
+    public function setFromUser(?string $fromUser): static
     {
         $this->fromUser = $fromUser;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFromUser(): ?string
     {
         return $this->fromUser;
     }
 
-    /**
-     * @param string $fromDomain | null
-     *
-     * @return static
-     */
-    public function setFromDomain(?string $fromDomain = null): self
+    public function setFromDomain(?string $fromDomain): static
     {
         $this->fromDomain = $fromDomain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFromDomain(): ?string
     {
         return $this->fromDomain;
     }
 
-    /**
-     * @param int $updated | null
-     *
-     * @return static
-     */
-    public function setUpdated(?int $updated = null): self
+    public function setUpdated(?int $updated): static
     {
         $this->updated = $updated;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getUpdated(): ?int
     {
         return $this->updated;
     }
 
-    /**
-     * @param int $updatedWinfo | null
-     *
-     * @return static
-     */
-    public function setUpdatedWinfo(?int $updatedWinfo = null): self
+    public function setUpdatedWinfo(?int $updatedWinfo): static
     {
         $this->updatedWinfo = $updatedWinfo;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getUpdatedWinfo(): ?int
     {
         return $this->updatedWinfo;
     }
 
-    /**
-     * @param int $flags | null
-     *
-     * @return static
-     */
-    public function setFlags(?int $flags = null): self
+    public function setFlags(?int $flags): static
     {
         $this->flags = $flags;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getFlags(): ?int
     {
         return $this->flags;
     }
 
-    /**
-     * @param string $userAgent | null
-     *
-     * @return static
-     */
-    public function setUserAgent(?string $userAgent = null): self
+    public function setUserAgent(?string $userAgent): static
     {
         $this->userAgent = $userAgent;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUserAgent(): ?string
     {
         return $this->userAgent;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

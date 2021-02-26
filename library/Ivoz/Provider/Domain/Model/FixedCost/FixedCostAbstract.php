@@ -68,7 +68,7 @@ abstract class FixedCostAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return FixedCostDto
      */
     public static function createDto($id = null)
@@ -177,14 +177,7 @@ abstract class FixedCostAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): FixedCostInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 255, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -193,48 +186,24 @@ abstract class FixedCostAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description | null
-     *
-     * @return static
-     */
-    protected function setDescription(?string $description = null): FixedCostInterface
+    protected function setDescription(?string $description = null): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * Set cost
-     *
-     * @param float $cost | null
-     *
-     * @return static
-     */
-    protected function setCost(?float $cost = null): FixedCostInterface
+    protected function setCost(?float $cost = null): static
     {
         if (!is_null($cost)) {
             $cost = (float) $cost;
@@ -245,35 +214,18 @@ abstract class FixedCostAbstract
         return $this;
     }
 
-    /**
-     * Get cost
-     *
-     * @return float | null
-     */
     public function getCost(): ?float
     {
         return $this->cost;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    protected function setBrand(BrandInterface $brand): FixedCostInterface
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;

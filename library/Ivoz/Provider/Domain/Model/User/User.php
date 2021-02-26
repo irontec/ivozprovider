@@ -112,7 +112,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
     /**
      * @inheritdoc
      */
-    public function setPass(?string $pass = null): self
+    public function setPass(?string $pass = null): static
     {
         if ($pass === $this->getPass()) {
             return $this;
@@ -217,7 +217,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             ->getOutgoingDdi();
     }
 
-    public function setOutgoingDdi(?DdiInterface $outgoingDdi = null): UserInterface
+    public function setOutgoingDdi(?DdiInterface $outgoingDdi = null): static
     {
         return parent::setOutgoingDdi($outgoingDdi);
     }
@@ -381,7 +381,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             ->getIden();
     }
 
-    public function setEmail(?string $email = null): self
+    public function setEmail(?string $email = null): static
     {
         if ($email === '') {
             // '' is NULL (avoid triggering the UNIQUE KEY)

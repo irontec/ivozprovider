@@ -111,13 +111,6 @@ trait ConditionalRouteTrait
         ];
     }
 
-    /**
-     * Add condition
-     *
-     * @param ConditionalRoutesConditionInterface $condition
-     *
-     * @return static
-     */
     public function addCondition(ConditionalRoutesConditionInterface $condition): ConditionalRouteInterface
     {
         $this->conditions->add($condition);
@@ -125,13 +118,6 @@ trait ConditionalRouteTrait
         return $this;
     }
 
-    /**
-     * Remove condition
-     *
-     * @param ConditionalRoutesConditionInterface $condition
-     *
-     * @return static
-     */
     public function removeCondition(ConditionalRoutesConditionInterface $condition): ConditionalRouteInterface
     {
         $this->conditions->removeElement($condition);
@@ -139,13 +125,6 @@ trait ConditionalRouteTrait
         return $this;
     }
 
-    /**
-     * Replace conditions
-     *
-     * @param ArrayCollection $conditions of ConditionalRoutesConditionInterface
-     *
-     * @return static
-     */
     public function replaceConditions(ArrayCollection $conditions): ConditionalRouteInterface
     {
         $updatedEntities = [];
@@ -174,11 +153,6 @@ trait ConditionalRouteTrait
         return $this;
     }
 
-    /**
-     * Get conditions
-     * @param Criteria | null $criteria
-     * @return ConditionalRoutesConditionInterface[]
-     */
     public function getConditions(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

@@ -43,7 +43,7 @@ class Fax extends FaxAbstract implements FaxInterface
         );
     }
 
-    public function setSendByEmail(bool $sendByEmail): self
+    public function setSendByEmail(bool $sendByEmail): static
     {
         $response = parent::setSendByEmail($sendByEmail);
         if ($this->getSendByEmail() == 0) {

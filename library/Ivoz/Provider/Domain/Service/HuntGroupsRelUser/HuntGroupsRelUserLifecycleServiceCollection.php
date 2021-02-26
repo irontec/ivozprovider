@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\HuntGroupsRelUser;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class HuntGroupsRelUserLifecycleServiceCollection implements LifecycleServiceCol
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, HuntGroupsRelUserLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, HuntGroupsRelUserLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

@@ -169,17 +169,17 @@ abstract class CompanyAbstract
     protected $showInvoices = false;
 
     /**
-     * @var LanguageInterface
+     * @var LanguageInterface | null
      */
     protected $language;
 
     /**
-     * @var MediaRelaySetInterface
+     * @var MediaRelaySetInterface | null
      */
     protected $mediaRelaySets;
 
     /**
-     * @var TimezoneInterface
+     * @var TimezoneInterface | null
      */
     protected $defaultTimezone;
 
@@ -190,12 +190,12 @@ abstract class CompanyAbstract
     protected $brand;
 
     /**
-     * @var DomainInterface
+     * @var DomainInterface | null
      */
     protected $domain;
 
     /**
-     * @var ApplicationServerInterface
+     * @var ApplicationServerInterface | null
      */
     protected $applicationServer;
 
@@ -205,47 +205,47 @@ abstract class CompanyAbstract
     protected $country;
 
     /**
-     * @var CurrencyInterface
+     * @var CurrencyInterface | null
      */
     protected $currency;
 
     /**
-     * @var TransformationRuleSetInterface
+     * @var TransformationRuleSetInterface | null
      */
     protected $transformationRuleSet;
 
     /**
-     * @var DdiInterface
+     * @var DdiInterface | null
      */
     protected $outgoingDdi;
 
     /**
-     * @var OutgoingDdiRuleInterface
+     * @var OutgoingDdiRuleInterface | null
      */
     protected $outgoingDdiRule;
 
     /**
-     * @var NotificationTemplateInterface
+     * @var NotificationTemplateInterface | null
      */
     protected $voicemailNotificationTemplate;
 
     /**
-     * @var NotificationTemplateInterface
+     * @var NotificationTemplateInterface | null
      */
     protected $faxNotificationTemplate;
 
     /**
-     * @var NotificationTemplateInterface
+     * @var NotificationTemplateInterface | null
      */
     protected $invoiceNotificationTemplate;
 
     /**
-     * @var NotificationTemplateInterface
+     * @var NotificationTemplateInterface | null
      */
     protected $callCsvNotificationTemplate;
 
     /**
-     * @var NotificationTemplateInterface
+     * @var NotificationTemplateInterface | null
      */
     protected $maxDailyUsageNotificationTemplate;
 
@@ -302,7 +302,7 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CompanyDto
      */
     public static function createDto($id = null)
@@ -555,14 +555,7 @@ abstract class CompanyAbstract
         ];
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return static
-     */
-    protected function setType(string $type): CompanyInterface
+    protected function setType(string $type): static
     {
         Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -581,24 +574,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get type
-     *
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): CompanyInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 80, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -607,24 +588,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set domainUsers
-     *
-     * @param string $domainUsers | null
-     *
-     * @return static
-     */
-    protected function setDomainUsers(?string $domainUsers = null): CompanyInterface
+    protected function setDomainUsers(?string $domainUsers = null): static
     {
         if (!is_null($domainUsers)) {
             Assertion::maxLength($domainUsers, 190, 'domainUsers value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -635,24 +604,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get domainUsers
-     *
-     * @return string | null
-     */
     public function getDomainUsers(): ?string
     {
         return $this->domainUsers;
     }
 
-    /**
-     * Set nif
-     *
-     * @param string $nif
-     *
-     * @return static
-     */
-    protected function setNif(string $nif): CompanyInterface
+    protected function setNif(string $nif): static
     {
         Assertion::maxLength($nif, 25, 'nif value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -661,24 +618,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get nif
-     *
-     * @return string
-     */
     public function getNif(): string
     {
         return $this->nif;
     }
 
-    /**
-     * Set distributeMethod
-     *
-     * @param string $distributeMethod
-     *
-     * @return static
-     */
-    protected function setDistributeMethod(string $distributeMethod): CompanyInterface
+    protected function setDistributeMethod(string $distributeMethod): static
     {
         Assertion::maxLength($distributeMethod, 25, 'distributeMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -696,24 +641,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get distributeMethod
-     *
-     * @return string
-     */
     public function getDistributeMethod(): string
     {
         return $this->distributeMethod;
     }
 
-    /**
-     * Set maxCalls
-     *
-     * @param int $maxCalls
-     *
-     * @return static
-     */
-    protected function setMaxCalls(int $maxCalls): CompanyInterface
+    protected function setMaxCalls(int $maxCalls): static
     {
         Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
@@ -722,24 +655,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get maxCalls
-     *
-     * @return int
-     */
     public function getMaxCalls(): int
     {
         return $this->maxCalls;
     }
 
-    /**
-     * Set maxDailyUsage
-     *
-     * @param int $maxDailyUsage
-     *
-     * @return static
-     */
-    protected function setMaxDailyUsage(int $maxDailyUsage): CompanyInterface
+    protected function setMaxDailyUsage(int $maxDailyUsage): static
     {
         Assertion::greaterOrEqualThan($maxDailyUsage, 0, 'maxDailyUsage provided "%s" is not greater or equal than "%s".');
 
@@ -748,24 +669,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get maxDailyUsage
-     *
-     * @return int
-     */
     public function getMaxDailyUsage(): int
     {
         return $this->maxDailyUsage;
     }
 
-    /**
-     * Set currentDayUsage
-     *
-     * @param float $currentDayUsage | null
-     *
-     * @return static
-     */
-    protected function setCurrentDayUsage(?float $currentDayUsage = null): CompanyInterface
+    protected function setCurrentDayUsage(?float $currentDayUsage = null): static
     {
         if (!is_null($currentDayUsage)) {
             $currentDayUsage = (float) $currentDayUsage;
@@ -776,24 +685,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get currentDayUsage
-     *
-     * @return float | null
-     */
     public function getCurrentDayUsage(): ?float
     {
         return $this->currentDayUsage;
     }
 
-    /**
-     * Set maxDailyUsageEmail
-     *
-     * @param string $maxDailyUsageEmail | null
-     *
-     * @return static
-     */
-    protected function setMaxDailyUsageEmail(?string $maxDailyUsageEmail = null): CompanyInterface
+    protected function setMaxDailyUsageEmail(?string $maxDailyUsageEmail = null): static
     {
         if (!is_null($maxDailyUsageEmail)) {
             Assertion::maxLength($maxDailyUsageEmail, 100, 'maxDailyUsageEmail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -804,24 +701,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get maxDailyUsageEmail
-     *
-     * @return string | null
-     */
     public function getMaxDailyUsageEmail(): ?string
     {
         return $this->maxDailyUsageEmail;
     }
 
-    /**
-     * Set postalAddress
-     *
-     * @param string $postalAddress
-     *
-     * @return static
-     */
-    protected function setPostalAddress(string $postalAddress): CompanyInterface
+    protected function setPostalAddress(string $postalAddress): static
     {
         Assertion::maxLength($postalAddress, 255, 'postalAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -830,24 +715,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get postalAddress
-     *
-     * @return string
-     */
     public function getPostalAddress(): string
     {
         return $this->postalAddress;
     }
 
-    /**
-     * Set postalCode
-     *
-     * @param string $postalCode
-     *
-     * @return static
-     */
-    protected function setPostalCode(string $postalCode): CompanyInterface
+    protected function setPostalCode(string $postalCode): static
     {
         Assertion::maxLength($postalCode, 10, 'postalCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -856,24 +729,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get postalCode
-     *
-     * @return string
-     */
     public function getPostalCode(): string
     {
         return $this->postalCode;
     }
 
-    /**
-     * Set town
-     *
-     * @param string $town
-     *
-     * @return static
-     */
-    protected function setTown(string $town): CompanyInterface
+    protected function setTown(string $town): static
     {
         Assertion::maxLength($town, 255, 'town value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -882,24 +743,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get town
-     *
-     * @return string
-     */
     public function getTown(): string
     {
         return $this->town;
     }
 
-    /**
-     * Set province
-     *
-     * @param string $province
-     *
-     * @return static
-     */
-    protected function setProvince(string $province): CompanyInterface
+    protected function setProvince(string $province): static
     {
         Assertion::maxLength($province, 255, 'province value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -908,24 +757,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get province
-     *
-     * @return string
-     */
     public function getProvince(): string
     {
         return $this->province;
     }
 
-    /**
-     * Set countryName
-     *
-     * @param string $countryName
-     *
-     * @return static
-     */
-    protected function setCountryName(string $countryName): CompanyInterface
+    protected function setCountryName(string $countryName): static
     {
         Assertion::maxLength($countryName, 255, 'countryName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -934,24 +771,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get countryName
-     *
-     * @return string
-     */
     public function getCountryName(): string
     {
         return $this->countryName;
     }
 
-    /**
-     * Set ipfilter
-     *
-     * @param bool $ipfilter | null
-     *
-     * @return static
-     */
-    protected function setIpfilter(?bool $ipfilter = null): CompanyInterface
+    protected function setIpfilter(?bool $ipfilter = null): static
     {
         if (!is_null($ipfilter)) {
             Assertion::between(intval($ipfilter), 0, 1, 'ipfilter provided "%s" is not a valid boolean value.');
@@ -963,48 +788,24 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get ipfilter
-     *
-     * @return bool | null
-     */
     public function getIpfilter(): ?bool
     {
         return $this->ipfilter;
     }
 
-    /**
-     * Set onDemandRecord
-     *
-     * @param int $onDemandRecord | null
-     *
-     * @return static
-     */
-    protected function setOnDemandRecord(?int $onDemandRecord = null): CompanyInterface
+    protected function setOnDemandRecord(?int $onDemandRecord = null): static
     {
         $this->onDemandRecord = $onDemandRecord;
 
         return $this;
     }
 
-    /**
-     * Get onDemandRecord
-     *
-     * @return int | null
-     */
     public function getOnDemandRecord(): ?int
     {
         return $this->onDemandRecord;
     }
 
-    /**
-     * Set allowRecordingRemoval
-     *
-     * @param bool $allowRecordingRemoval
-     *
-     * @return static
-     */
-    protected function setAllowRecordingRemoval(bool $allowRecordingRemoval): CompanyInterface
+    protected function setAllowRecordingRemoval(bool $allowRecordingRemoval): static
     {
         Assertion::between(intval($allowRecordingRemoval), 0, 1, 'allowRecordingRemoval provided "%s" is not a valid boolean value.');
         $allowRecordingRemoval = (bool) $allowRecordingRemoval;
@@ -1014,24 +815,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get allowRecordingRemoval
-     *
-     * @return bool
-     */
     public function getAllowRecordingRemoval(): bool
     {
         return $this->allowRecordingRemoval;
     }
 
-    /**
-     * Set onDemandRecordCode
-     *
-     * @param string $onDemandRecordCode | null
-     *
-     * @return static
-     */
-    protected function setOnDemandRecordCode(?string $onDemandRecordCode = null): CompanyInterface
+    protected function setOnDemandRecordCode(?string $onDemandRecordCode = null): static
     {
         if (!is_null($onDemandRecordCode)) {
             Assertion::maxLength($onDemandRecordCode, 3, 'onDemandRecordCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1042,24 +831,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get onDemandRecordCode
-     *
-     * @return string | null
-     */
     public function getOnDemandRecordCode(): ?string
     {
         return $this->onDemandRecordCode;
     }
 
-    /**
-     * Set externallyextraopts
-     *
-     * @param string $externallyextraopts | null
-     *
-     * @return static
-     */
-    protected function setExternallyextraopts(?string $externallyextraopts = null): CompanyInterface
+    protected function setExternallyextraopts(?string $externallyextraopts = null): static
     {
         if (!is_null($externallyextraopts)) {
             Assertion::maxLength($externallyextraopts, 65535, 'externallyextraopts value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1070,48 +847,24 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get externallyextraopts
-     *
-     * @return string | null
-     */
     public function getExternallyextraopts(): ?string
     {
         return $this->externallyextraopts;
     }
 
-    /**
-     * Set recordingsLimitMB
-     *
-     * @param int $recordingsLimitMB | null
-     *
-     * @return static
-     */
-    protected function setRecordingsLimitMB(?int $recordingsLimitMB = null): CompanyInterface
+    protected function setRecordingsLimitMB(?int $recordingsLimitMB = null): static
     {
         $this->recordingsLimitMB = $recordingsLimitMB;
 
         return $this;
     }
 
-    /**
-     * Get recordingsLimitMB
-     *
-     * @return int | null
-     */
     public function getRecordingsLimitMB(): ?int
     {
         return $this->recordingsLimitMB;
     }
 
-    /**
-     * Set recordingsLimitEmail
-     *
-     * @param string $recordingsLimitEmail | null
-     *
-     * @return static
-     */
-    protected function setRecordingsLimitEmail(?string $recordingsLimitEmail = null): CompanyInterface
+    protected function setRecordingsLimitEmail(?string $recordingsLimitEmail = null): static
     {
         if (!is_null($recordingsLimitEmail)) {
             Assertion::maxLength($recordingsLimitEmail, 250, 'recordingsLimitEmail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -1122,24 +875,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get recordingsLimitEmail
-     *
-     * @return string | null
-     */
     public function getRecordingsLimitEmail(): ?string
     {
         return $this->recordingsLimitEmail;
     }
 
-    /**
-     * Set billingMethod
-     *
-     * @param string $billingMethod
-     *
-     * @return static
-     */
-    protected function setBillingMethod(string $billingMethod): CompanyInterface
+    protected function setBillingMethod(string $billingMethod): static
     {
         Assertion::maxLength($billingMethod, 25, 'billingMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -1157,24 +898,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get billingMethod
-     *
-     * @return string
-     */
     public function getBillingMethod(): string
     {
         return $this->billingMethod;
     }
 
-    /**
-     * Set balance
-     *
-     * @param float $balance | null
-     *
-     * @return static
-     */
-    protected function setBalance(?float $balance = null): CompanyInterface
+    protected function setBalance(?float $balance = null): static
     {
         if (!is_null($balance)) {
             $balance = (float) $balance;
@@ -1185,24 +914,12 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get balance
-     *
-     * @return float | null
-     */
     public function getBalance(): ?float
     {
         return $this->balance;
     }
 
-    /**
-     * Set showInvoices
-     *
-     * @param bool $showInvoices | null
-     *
-     * @return static
-     */
-    protected function setShowInvoices(?bool $showInvoices = null): CompanyInterface
+    protected function setShowInvoices(?bool $showInvoices = null): static
     {
         if (!is_null($showInvoices)) {
             Assertion::between(intval($showInvoices), 0, 1, 'showInvoices provided "%s" is not a valid boolean value.');
@@ -1214,395 +931,199 @@ abstract class CompanyAbstract
         return $this;
     }
 
-    /**
-     * Get showInvoices
-     *
-     * @return bool | null
-     */
     public function getShowInvoices(): ?bool
     {
         return $this->showInvoices;
     }
 
-    /**
-     * Set language
-     *
-     * @param LanguageInterface | null
-     *
-     * @return static
-     */
-    protected function setLanguage(?LanguageInterface $language = null): CompanyInterface
+    protected function setLanguage(?LanguageInterface $language = null): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * Get language
-     *
-     * @return LanguageInterface | null
-     */
     public function getLanguage(): ?LanguageInterface
     {
         return $this->language;
     }
 
-    /**
-     * Set mediaRelaySets
-     *
-     * @param MediaRelaySetInterface | null
-     *
-     * @return static
-     */
-    protected function setMediaRelaySets(?MediaRelaySetInterface $mediaRelaySets = null): CompanyInterface
+    protected function setMediaRelaySets(?MediaRelaySetInterface $mediaRelaySets = null): static
     {
         $this->mediaRelaySets = $mediaRelaySets;
 
         return $this;
     }
 
-    /**
-     * Get mediaRelaySets
-     *
-     * @return MediaRelaySetInterface | null
-     */
     public function getMediaRelaySets(): ?MediaRelaySetInterface
     {
         return $this->mediaRelaySets;
     }
 
-    /**
-     * Set defaultTimezone
-     *
-     * @param TimezoneInterface | null
-     *
-     * @return static
-     */
-    protected function setDefaultTimezone(?TimezoneInterface $defaultTimezone = null): CompanyInterface
+    protected function setDefaultTimezone(?TimezoneInterface $defaultTimezone = null): static
     {
         $this->defaultTimezone = $defaultTimezone;
 
         return $this;
     }
 
-    /**
-     * Get defaultTimezone
-     *
-     * @return TimezoneInterface | null
-     */
     public function getDefaultTimezone(): ?TimezoneInterface
     {
         return $this->defaultTimezone;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    public function setBrand(BrandInterface $brand): CompanyInterface
+    public function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set domain
-     *
-     * @param DomainInterface | null
-     *
-     * @return static
-     */
-    protected function setDomain(?DomainInterface $domain = null): CompanyInterface
+    protected function setDomain(?DomainInterface $domain = null): static
     {
         $this->domain = $domain;
 
         return $this;
     }
 
-    /**
-     * Get domain
-     *
-     * @return DomainInterface | null
-     */
     public function getDomain(): ?DomainInterface
     {
         return $this->domain;
     }
 
-    /**
-     * Set applicationServer
-     *
-     * @param ApplicationServerInterface | null
-     *
-     * @return static
-     */
-    protected function setApplicationServer(?ApplicationServerInterface $applicationServer = null): CompanyInterface
+    protected function setApplicationServer(?ApplicationServerInterface $applicationServer = null): static
     {
         $this->applicationServer = $applicationServer;
 
         return $this;
     }
 
-    /**
-     * Get applicationServer
-     *
-     * @return ApplicationServerInterface | null
-     */
     public function getApplicationServer(): ?ApplicationServerInterface
     {
         return $this->applicationServer;
     }
 
-    /**
-     * Set country
-     *
-     * @param CountryInterface
-     *
-     * @return static
-     */
-    protected function setCountry(CountryInterface $country): CompanyInterface
+    protected function setCountry(CountryInterface $country): static
     {
         $this->country = $country;
 
         return $this;
     }
 
-    /**
-     * Get country
-     *
-     * @return CountryInterface
-     */
-    public function getCountry(): ?CountryInterface
+    public function getCountry(): CountryInterface
     {
         return $this->country;
     }
 
-    /**
-     * Set currency
-     *
-     * @param CurrencyInterface | null
-     *
-     * @return static
-     */
-    protected function setCurrency(?CurrencyInterface $currency = null): CompanyInterface
+    protected function setCurrency(?CurrencyInterface $currency = null): static
     {
         $this->currency = $currency;
 
         return $this;
     }
 
-    /**
-     * Get currency
-     *
-     * @return CurrencyInterface | null
-     */
     public function getCurrency(): ?CurrencyInterface
     {
         return $this->currency;
     }
 
-    /**
-     * Set transformationRuleSet
-     *
-     * @param TransformationRuleSetInterface | null
-     *
-     * @return static
-     */
-    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): CompanyInterface
+    protected function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): static
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
-    /**
-     * Get transformationRuleSet
-     *
-     * @return TransformationRuleSetInterface | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface
     {
         return $this->transformationRuleSet;
     }
 
-    /**
-     * Set outgoingDdi
-     *
-     * @param DdiInterface | null
-     *
-     * @return static
-     */
-    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): CompanyInterface
+    protected function setOutgoingDdi(?DdiInterface $outgoingDdi = null): static
     {
         $this->outgoingDdi = $outgoingDdi;
 
         return $this;
     }
 
-    /**
-     * Get outgoingDdi
-     *
-     * @return DdiInterface | null
-     */
     public function getOutgoingDdi(): ?DdiInterface
     {
         return $this->outgoingDdi;
     }
 
-    /**
-     * Set outgoingDdiRule
-     *
-     * @param OutgoingDdiRuleInterface | null
-     *
-     * @return static
-     */
-    protected function setOutgoingDdiRule(?OutgoingDdiRuleInterface $outgoingDdiRule = null): CompanyInterface
+    protected function setOutgoingDdiRule(?OutgoingDdiRuleInterface $outgoingDdiRule = null): static
     {
         $this->outgoingDdiRule = $outgoingDdiRule;
 
         return $this;
     }
 
-    /**
-     * Get outgoingDdiRule
-     *
-     * @return OutgoingDdiRuleInterface | null
-     */
     public function getOutgoingDdiRule(): ?OutgoingDdiRuleInterface
     {
         return $this->outgoingDdiRule;
     }
 
-    /**
-     * Set voicemailNotificationTemplate
-     *
-     * @param NotificationTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setVoicemailNotificationTemplate(?NotificationTemplateInterface $voicemailNotificationTemplate = null): CompanyInterface
+    protected function setVoicemailNotificationTemplate(?NotificationTemplateInterface $voicemailNotificationTemplate = null): static
     {
         $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * Get voicemailNotificationTemplate
-     *
-     * @return NotificationTemplateInterface | null
-     */
     public function getVoicemailNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->voicemailNotificationTemplate;
     }
 
-    /**
-     * Set faxNotificationTemplate
-     *
-     * @param NotificationTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setFaxNotificationTemplate(?NotificationTemplateInterface $faxNotificationTemplate = null): CompanyInterface
+    protected function setFaxNotificationTemplate(?NotificationTemplateInterface $faxNotificationTemplate = null): static
     {
         $this->faxNotificationTemplate = $faxNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * Get faxNotificationTemplate
-     *
-     * @return NotificationTemplateInterface | null
-     */
     public function getFaxNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->faxNotificationTemplate;
     }
 
-    /**
-     * Set invoiceNotificationTemplate
-     *
-     * @param NotificationTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setInvoiceNotificationTemplate(?NotificationTemplateInterface $invoiceNotificationTemplate = null): CompanyInterface
+    protected function setInvoiceNotificationTemplate(?NotificationTemplateInterface $invoiceNotificationTemplate = null): static
     {
         $this->invoiceNotificationTemplate = $invoiceNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * Get invoiceNotificationTemplate
-     *
-     * @return NotificationTemplateInterface | null
-     */
     public function getInvoiceNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->invoiceNotificationTemplate;
     }
 
-    /**
-     * Set callCsvNotificationTemplate
-     *
-     * @param NotificationTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setCallCsvNotificationTemplate(?NotificationTemplateInterface $callCsvNotificationTemplate = null): CompanyInterface
+    protected function setCallCsvNotificationTemplate(?NotificationTemplateInterface $callCsvNotificationTemplate = null): static
     {
         $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * Get callCsvNotificationTemplate
-     *
-     * @return NotificationTemplateInterface | null
-     */
     public function getCallCsvNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->callCsvNotificationTemplate;
     }
 
-    /**
-     * Set maxDailyUsageNotificationTemplate
-     *
-     * @param NotificationTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setMaxDailyUsageNotificationTemplate(?NotificationTemplateInterface $maxDailyUsageNotificationTemplate = null): CompanyInterface
+    protected function setMaxDailyUsageNotificationTemplate(?NotificationTemplateInterface $maxDailyUsageNotificationTemplate = null): static
     {
         $this->maxDailyUsageNotificationTemplate = $maxDailyUsageNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * Get maxDailyUsageNotificationTemplate
-     *
-     * @return NotificationTemplateInterface | null
-     */
     public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->maxDailyUsageNotificationTemplate;

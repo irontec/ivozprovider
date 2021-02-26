@@ -19,25 +19,10 @@ interface CodecInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Get type
-     *
-     * @return string
-     */
     public function getType(): string;
 
-    /**
-     * Get iden
-     *
-     * @return string
-     */
     public function getIden(): string;
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
     /**

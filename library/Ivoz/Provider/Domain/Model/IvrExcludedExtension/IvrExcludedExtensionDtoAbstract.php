@@ -76,50 +76,31 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param IvrDto | null
-     *
-     * @return static
-     */
-    public function setIvr(?IvrDto $ivr = null): self
+    public function setIvr(?IvrDto $ivr): static
     {
         $this->ivr = $ivr;
 
         return $this;
     }
 
-    /**
-     * @return IvrDto | null
-     */
     public function getIvr(): ?IvrDto
     {
         return $this->ivr;
     }
 
-    /**
-     * @return static
-     */
-    public function setIvrId($id): self
+    public function setIvrId($id): static
     {
         $value = !is_null($id)
             ? new IvrDto($id)
@@ -128,9 +109,6 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
         return $this->setIvr($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getIvrId()
     {
         if ($dto = $this->getIvr()) {
@@ -140,30 +118,19 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
         return null;
     }
 
-    /**
-     * @param ExtensionDto | null
-     *
-     * @return static
-     */
-    public function setExtension(?ExtensionDto $extension = null): self
+    public function setExtension(?ExtensionDto $extension): static
     {
         $this->extension = $extension;
 
         return $this;
     }
 
-    /**
-     * @return ExtensionDto | null
-     */
     public function getExtension(): ?ExtensionDto
     {
         return $this->extension;
     }
 
-    /**
-     * @return static
-     */
-    public function setExtensionId($id): self
+    public function setExtensionId($id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -172,9 +139,6 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
         return $this->setExtension($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getExtensionId()
     {
         if ($dto = $this->getExtension()) {

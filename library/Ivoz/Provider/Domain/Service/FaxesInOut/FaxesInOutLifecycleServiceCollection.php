@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\FaxesInOut;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class FaxesInOutLifecycleServiceCollection implements LifecycleServiceCollection
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, FaxesInOutLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, FaxesInOutLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

@@ -31,10 +31,10 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $ddi;
+    private $ddi = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $ddie164;
 
@@ -44,12 +44,12 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     private $recordCalls = 'none';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $displayName;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $routeType;
 
@@ -59,7 +59,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     private $billInboundCalls = false;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $friendValue;
 
@@ -229,190 +229,115 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $ddi | null
-     *
-     * @return static
-     */
-    public function setDdi(?string $ddi = null): self
+    public function setDdi(?string $ddi): static
     {
         $this->ddi = $ddi;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDdi(): ?string
     {
         return $this->ddi;
     }
 
-    /**
-     * @param string $ddie164 | null
-     *
-     * @return static
-     */
-    public function setDdie164(?string $ddie164 = null): self
+    public function setDdie164(?string $ddie164): static
     {
         $this->ddie164 = $ddie164;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDdie164(): ?string
     {
         return $this->ddie164;
     }
 
-    /**
-     * @param string $recordCalls | null
-     *
-     * @return static
-     */
-    public function setRecordCalls(?string $recordCalls = null): self
+    public function setRecordCalls(?string $recordCalls): static
     {
         $this->recordCalls = $recordCalls;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRecordCalls(): ?string
     {
         return $this->recordCalls;
     }
 
-    /**
-     * @param string $displayName | null
-     *
-     * @return static
-     */
-    public function setDisplayName(?string $displayName = null): self
+    public function setDisplayName(?string $displayName): static
     {
         $this->displayName = $displayName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
-    /**
-     * @param string $routeType | null
-     *
-     * @return static
-     */
-    public function setRouteType(?string $routeType = null): self
+    public function setRouteType(?string $routeType): static
     {
         $this->routeType = $routeType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRouteType(): ?string
     {
         return $this->routeType;
     }
 
-    /**
-     * @param bool $billInboundCalls | null
-     *
-     * @return static
-     */
-    public function setBillInboundCalls(?bool $billInboundCalls = null): self
+    public function setBillInboundCalls(?bool $billInboundCalls): static
     {
         $this->billInboundCalls = $billInboundCalls;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getBillInboundCalls(): ?bool
     {
         return $this->billInboundCalls;
     }
 
-    /**
-     * @param string $friendValue | null
-     *
-     * @return static
-     */
-    public function setFriendValue(?string $friendValue = null): self
+    public function setFriendValue(?string $friendValue): static
     {
         $this->friendValue = $friendValue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFriendValue(): ?string
     {
         return $this->friendValue;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -421,9 +346,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -433,30 +355,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -465,9 +376,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -477,30 +385,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ConferenceRoomDto | null
-     *
-     * @return static
-     */
-    public function setConferenceRoom(?ConferenceRoomDto $conferenceRoom = null): self
+    public function setConferenceRoom(?ConferenceRoomDto $conferenceRoom): static
     {
         $this->conferenceRoom = $conferenceRoom;
 
         return $this;
     }
 
-    /**
-     * @return ConferenceRoomDto | null
-     */
     public function getConferenceRoom(): ?ConferenceRoomDto
     {
         return $this->conferenceRoom;
     }
 
-    /**
-     * @return static
-     */
-    public function setConferenceRoomId($id): self
+    public function setConferenceRoomId($id): static
     {
         $value = !is_null($id)
             ? new ConferenceRoomDto($id)
@@ -509,9 +406,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setConferenceRoom($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getConferenceRoomId()
     {
         if ($dto = $this->getConferenceRoom()) {
@@ -521,30 +415,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LanguageDto | null
-     *
-     * @return static
-     */
-    public function setLanguage(?LanguageDto $language = null): self
+    public function setLanguage(?LanguageDto $language): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * @return LanguageDto | null
-     */
     public function getLanguage(): ?LanguageDto
     {
         return $this->language;
     }
 
-    /**
-     * @return static
-     */
-    public function setLanguageId($id): self
+    public function setLanguageId($id): static
     {
         $value = !is_null($id)
             ? new LanguageDto($id)
@@ -553,9 +436,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setLanguage($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getLanguageId()
     {
         if ($dto = $this->getLanguage()) {
@@ -565,30 +445,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param QueueDto | null
-     *
-     * @return static
-     */
-    public function setQueue(?QueueDto $queue = null): self
+    public function setQueue(?QueueDto $queue): static
     {
         $this->queue = $queue;
 
         return $this;
     }
 
-    /**
-     * @return QueueDto | null
-     */
     public function getQueue(): ?QueueDto
     {
         return $this->queue;
     }
 
-    /**
-     * @return static
-     */
-    public function setQueueId($id): self
+    public function setQueueId($id): static
     {
         $value = !is_null($id)
             ? new QueueDto($id)
@@ -597,9 +466,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setQueue($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getQueueId()
     {
         if ($dto = $this->getQueue()) {
@@ -609,30 +475,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ExternalCallFilterDto | null
-     *
-     * @return static
-     */
-    public function setExternalCallFilter(?ExternalCallFilterDto $externalCallFilter = null): self
+    public function setExternalCallFilter(?ExternalCallFilterDto $externalCallFilter): static
     {
         $this->externalCallFilter = $externalCallFilter;
 
         return $this;
     }
 
-    /**
-     * @return ExternalCallFilterDto | null
-     */
     public function getExternalCallFilter(): ?ExternalCallFilterDto
     {
         return $this->externalCallFilter;
     }
 
-    /**
-     * @return static
-     */
-    public function setExternalCallFilterId($id): self
+    public function setExternalCallFilterId($id): static
     {
         $value = !is_null($id)
             ? new ExternalCallFilterDto($id)
@@ -641,9 +496,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setExternalCallFilter($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getExternalCallFilterId()
     {
         if ($dto = $this->getExternalCallFilter()) {
@@ -653,30 +505,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setUser(?UserDto $user = null): self
+    public function setUser(?UserDto $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
-    /**
-     * @return static
-     */
-    public function setUserId($id): self
+    public function setUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -685,9 +526,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getUserId()
     {
         if ($dto = $this->getUser()) {
@@ -697,30 +535,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param IvrDto | null
-     *
-     * @return static
-     */
-    public function setIvr(?IvrDto $ivr = null): self
+    public function setIvr(?IvrDto $ivr): static
     {
         $this->ivr = $ivr;
 
         return $this;
     }
 
-    /**
-     * @return IvrDto | null
-     */
     public function getIvr(): ?IvrDto
     {
         return $this->ivr;
     }
 
-    /**
-     * @return static
-     */
-    public function setIvrId($id): self
+    public function setIvrId($id): static
     {
         $value = !is_null($id)
             ? new IvrDto($id)
@@ -729,9 +556,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setIvr($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getIvrId()
     {
         if ($dto = $this->getIvr()) {
@@ -741,30 +565,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param HuntGroupDto | null
-     *
-     * @return static
-     */
-    public function setHuntGroup(?HuntGroupDto $huntGroup = null): self
+    public function setHuntGroup(?HuntGroupDto $huntGroup): static
     {
         $this->huntGroup = $huntGroup;
 
         return $this;
     }
 
-    /**
-     * @return HuntGroupDto | null
-     */
     public function getHuntGroup(): ?HuntGroupDto
     {
         return $this->huntGroup;
     }
 
-    /**
-     * @return static
-     */
-    public function setHuntGroupId($id): self
+    public function setHuntGroupId($id): static
     {
         $value = !is_null($id)
             ? new HuntGroupDto($id)
@@ -773,9 +586,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setHuntGroup($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getHuntGroupId()
     {
         if ($dto = $this->getHuntGroup()) {
@@ -785,30 +595,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param FaxDto | null
-     *
-     * @return static
-     */
-    public function setFax(?FaxDto $fax = null): self
+    public function setFax(?FaxDto $fax): static
     {
         $this->fax = $fax;
 
         return $this;
     }
 
-    /**
-     * @return FaxDto | null
-     */
     public function getFax(): ?FaxDto
     {
         return $this->fax;
     }
 
-    /**
-     * @return static
-     */
-    public function setFaxId($id): self
+    public function setFaxId($id): static
     {
         $value = !is_null($id)
             ? new FaxDto($id)
@@ -817,9 +616,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setFax($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFaxId()
     {
         if ($dto = $this->getFax()) {
@@ -829,30 +625,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DdiProviderDto | null
-     *
-     * @return static
-     */
-    public function setDdiProvider(?DdiProviderDto $ddiProvider = null): self
+    public function setDdiProvider(?DdiProviderDto $ddiProvider): static
     {
         $this->ddiProvider = $ddiProvider;
 
         return $this;
     }
 
-    /**
-     * @return DdiProviderDto | null
-     */
     public function getDdiProvider(): ?DdiProviderDto
     {
         return $this->ddiProvider;
     }
 
-    /**
-     * @return static
-     */
-    public function setDdiProviderId($id): self
+    public function setDdiProviderId($id): static
     {
         $value = !is_null($id)
             ? new DdiProviderDto($id)
@@ -861,9 +646,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setDdiProvider($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDdiProviderId()
     {
         if ($dto = $this->getDdiProvider()) {
@@ -873,30 +655,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setCountry(?CountryDto $country = null): self
+    public function setCountry(?CountryDto $country): static
     {
         $this->country = $country;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getCountry(): ?CountryDto
     {
         return $this->country;
     }
 
-    /**
-     * @return static
-     */
-    public function setCountryId($id): self
+    public function setCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -905,9 +676,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCountryId()
     {
         if ($dto = $this->getCountry()) {
@@ -917,30 +685,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ResidentialDeviceDto | null
-     *
-     * @return static
-     */
-    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice = null): self
+    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice): static
     {
         $this->residentialDevice = $residentialDevice;
 
         return $this;
     }
 
-    /**
-     * @return ResidentialDeviceDto | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceDto
     {
         return $this->residentialDevice;
     }
 
-    /**
-     * @return static
-     */
-    public function setResidentialDeviceId($id): self
+    public function setResidentialDeviceId($id): static
     {
         $value = !is_null($id)
             ? new ResidentialDeviceDto($id)
@@ -949,9 +706,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setResidentialDevice($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getResidentialDeviceId()
     {
         if ($dto = $this->getResidentialDevice()) {
@@ -961,30 +715,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ConditionalRouteDto | null
-     *
-     * @return static
-     */
-    public function setConditionalRoute(?ConditionalRouteDto $conditionalRoute = null): self
+    public function setConditionalRoute(?ConditionalRouteDto $conditionalRoute): static
     {
         $this->conditionalRoute = $conditionalRoute;
 
         return $this;
     }
 
-    /**
-     * @return ConditionalRouteDto | null
-     */
     public function getConditionalRoute(): ?ConditionalRouteDto
     {
         return $this->conditionalRoute;
     }
 
-    /**
-     * @return static
-     */
-    public function setConditionalRouteId($id): self
+    public function setConditionalRouteId($id): static
     {
         $value = !is_null($id)
             ? new ConditionalRouteDto($id)
@@ -993,9 +736,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setConditionalRoute($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getConditionalRouteId()
     {
         if ($dto = $this->getConditionalRoute()) {
@@ -1005,30 +745,19 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param RetailAccountDto | null
-     *
-     * @return static
-     */
-    public function setRetailAccount(?RetailAccountDto $retailAccount = null): self
+    public function setRetailAccount(?RetailAccountDto $retailAccount): static
     {
         $this->retailAccount = $retailAccount;
 
         return $this;
     }
 
-    /**
-     * @return RetailAccountDto | null
-     */
     public function getRetailAccount(): ?RetailAccountDto
     {
         return $this->retailAccount;
     }
 
-    /**
-     * @return static
-     */
-    public function setRetailAccountId($id): self
+    public function setRetailAccountId($id): static
     {
         $value = !is_null($id)
             ? new RetailAccountDto($id)
@@ -1037,9 +766,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->setRetailAccount($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRetailAccountId()
     {
         if ($dto = $this->getRetailAccount()) {

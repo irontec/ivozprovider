@@ -27,18 +27,18 @@ abstract class RatingProfileAbstract
     use ChangelogTrait;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $activationTime = 'CURRENT_TIMESTAMP';
+    protected $activationTime;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      * inversedBy ratingProfiles
      */
     protected $company;
 
     /**
-     * @var CarrierInterface
+     * @var CarrierInterface | null
      * inversedBy ratingProfiles
      */
     protected $carrier;
@@ -49,7 +49,7 @@ abstract class RatingProfileAbstract
     protected $ratingPlanGroup;
 
     /**
-     * @var RoutingTagInterface
+     * @var RoutingTagInterface | null
      */
     protected $routingTag;
 
@@ -82,7 +82,7 @@ abstract class RatingProfileAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return RatingProfileDto
      */
     public static function createDto($id = null)
@@ -195,14 +195,7 @@ abstract class RatingProfileAbstract
         ];
     }
 
-    /**
-     * Set activationTime
-     *
-     * @param \DateTimeInterface $activationTime
-     *
-     * @return static
-     */
-    protected function setActivationTime($activationTime): RatingProfileInterface
+    protected function setActivationTime($activationTime): static
     {
 
         $activationTime = DateTimeHelper::createOrFix(
@@ -219,107 +212,56 @@ abstract class RatingProfileAbstract
         return $this;
     }
 
-    /**
-     * Get activationTime
-     *
-     * @return \DateTimeInterface
-     */
-    public function getActivationTime(): \DateTimeInterface
+    public function getActivationTime(): \DateTime
     {
         return clone $this->activationTime;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyInterface $company = null): RatingProfileInterface
+    public function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set carrier
-     *
-     * @param CarrierInterface | null
-     *
-     * @return static
-     */
-    public function setCarrier(?CarrierInterface $carrier = null): RatingProfileInterface
+    public function setCarrier(?CarrierInterface $carrier = null): static
     {
         $this->carrier = $carrier;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get carrier
-     *
-     * @return CarrierInterface | null
-     */
     public function getCarrier(): ?CarrierInterface
     {
         return $this->carrier;
     }
 
-    /**
-     * Set ratingPlanGroup
-     *
-     * @param RatingPlanGroupInterface
-     *
-     * @return static
-     */
-    protected function setRatingPlanGroup(RatingPlanGroupInterface $ratingPlanGroup): RatingProfileInterface
+    protected function setRatingPlanGroup(RatingPlanGroupInterface $ratingPlanGroup): static
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
         return $this;
     }
 
-    /**
-     * Get ratingPlanGroup
-     *
-     * @return RatingPlanGroupInterface
-     */
     public function getRatingPlanGroup(): RatingPlanGroupInterface
     {
         return $this->ratingPlanGroup;
     }
 
-    /**
-     * Set routingTag
-     *
-     * @param RoutingTagInterface | null
-     *
-     * @return static
-     */
-    protected function setRoutingTag(?RoutingTagInterface $routingTag = null): RatingProfileInterface
+    protected function setRoutingTag(?RoutingTagInterface $routingTag = null): static
     {
         $this->routingTag = $routingTag;
 
         return $this;
     }
 
-    /**
-     * Get routingTag
-     *
-     * @return RoutingTagInterface | null
-     */
     public function getRoutingTag(): ?RoutingTagInterface
     {
         return $this->routingTag;

@@ -19,7 +19,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $domain;
+    private $domain = '';
 
     /**
      * @var string
@@ -27,7 +27,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     private $pointsTo = 'proxyusers';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $description;
 
@@ -102,141 +102,85 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $domain | null
-     *
-     * @return static
-     */
-    public function setDomain(?string $domain = null): self
+    public function setDomain(?string $domain): static
     {
         $this->domain = $domain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDomain(): ?string
     {
         return $this->domain;
     }
 
-    /**
-     * @param string $pointsTo | null
-     *
-     * @return static
-     */
-    public function setPointsTo(?string $pointsTo = null): self
+    public function setPointsTo(?string $pointsTo): static
     {
         $this->pointsTo = $pointsTo;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPointsTo(): ?string
     {
         return $this->pointsTo;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param FriendDto[] | null
-     *
-     * @return static
-     */
-    public function setFriends(?array $friends = null): self
+    public function setFriends(?array $friends): static
     {
         $this->friends = $friends;
 
         return $this;
     }
 
-    /**
-     * @return FriendDto[] | null
-     */
     public function getFriends(): ?array
     {
         return $this->friends;
     }
 
-    /**
-     * @param ResidentialDeviceDto[] | null
-     *
-     * @return static
-     */
-    public function setResidentialDevices(?array $residentialDevices = null): self
+    public function setResidentialDevices(?array $residentialDevices): static
     {
         $this->residentialDevices = $residentialDevices;
 
         return $this;
     }
 
-    /**
-     * @return ResidentialDeviceDto[] | null
-     */
     public function getResidentialDevices(): ?array
     {
         return $this->residentialDevices;
     }
 
-    /**
-     * @param TerminalDto[] | null
-     *
-     * @return static
-     */
-    public function setTerminals(?array $terminals = null): self
+    public function setTerminals(?array $terminals): static
     {
         $this->terminals = $terminals;
 
         return $this;
     }
 
-    /**
-     * @return TerminalDto[] | null
-     */
     public function getTerminals(): ?array
     {
         return $this->terminals;

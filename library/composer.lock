@@ -2257,16 +2257,16 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.1",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api.git",
-                "reference": "25ae2e27f6e32171966fc542c13d49a8a7a4a240"
+                "reference": "7f0e4ba87f95d28a69161fb6970eb0a97a47dd92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/25ae2e27f6e32171966fc542c13d49a8a7a4a240",
-                "reference": "25ae2e27f6e32171966fc542c13d49a8a7a4a240",
+                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/7f0e4ba87f95d28a69161fb6970eb0a97a47dd92",
+                "reference": "7f0e4ba87f95d28a69161fb6970eb0a97a47dd92",
                 "shasum": ""
             },
             "require": {
@@ -2307,20 +2307,20 @@
                 }
             ],
             "description": "Api library built on api-platform for ivozprovider",
-            "time": "2021-02-23T12:26:52+00:00"
+            "time": "2021-03-09T16:25:09+00:00"
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "4.1",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api-bundle.git",
-                "reference": "9a80aaff0753dc0703263e6cf43b233990e7b2f4"
+                "reference": "6fda917043d29e69866fa6f9e899a5a7ea28645b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/9a80aaff0753dc0703263e6cf43b233990e7b2f4",
-                "reference": "9a80aaff0753dc0703263e6cf43b233990e7b2f4",
+                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/6fda917043d29e69866fa6f9e899a5a7ea28645b",
+                "reference": "6fda917043d29e69866fa6f9e899a5a7ea28645b",
                 "shasum": ""
             },
             "require": {
@@ -2356,20 +2356,20 @@
                 }
             ],
             "description": "Symfony bridge for ivoz-api",
-            "time": "2021-02-23T12:32:52+00:00"
+            "time": "2021-03-01T16:35:53+00:00"
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.1",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "fbb1d5bb30f2de2c02d444cba2fb966fbd9800b2"
+                "reference": "17126385d3e5dfd467497970f47eec83eec9ec44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/fbb1d5bb30f2de2c02d444cba2fb966fbd9800b2",
-                "reference": "fbb1d5bb30f2de2c02d444cba2fb966fbd9800b2",
+                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/17126385d3e5dfd467497970f47eec83eec9ec44",
+                "reference": "17126385d3e5dfd467497970f47eec83eec9ec44",
                 "shasum": ""
             },
             "require": {
@@ -2410,20 +2410,20 @@
                 }
             ],
             "description": "Core library for ivozprovider",
-            "time": "2021-02-23T10:32:00+00:00"
+            "time": "2021-03-09T14:36:13+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "4.1",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core-bundle.git",
-                "reference": "700e5327fd2a5a52acd9489062ef9320e9b33c1c"
+                "reference": "d174d9f7670f494e487c9eb172808de75e621523"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/700e5327fd2a5a52acd9489062ef9320e9b33c1c",
-                "reference": "700e5327fd2a5a52acd9489062ef9320e9b33c1c",
+                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/d174d9f7670f494e487c9eb172808de75e621523",
+                "reference": "d174d9f7670f494e487c9eb172808de75e621523",
                 "shasum": ""
             },
             "require": {
@@ -2460,7 +2460,7 @@
                 }
             ],
             "description": "Symfony bridge for ivoz-core",
-            "time": "2021-02-23T11:06:04+00:00"
+            "time": "2021-03-01T16:24:08+00:00"
         },
         {
             "name": "irontec/ivoz-dev-tools",

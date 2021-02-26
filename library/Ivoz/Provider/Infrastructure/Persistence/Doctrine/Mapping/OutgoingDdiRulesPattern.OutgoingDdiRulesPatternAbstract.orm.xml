@@ -39,7 +39,7 @@
     </many-to-one>
     <many-to-one field="forcedDdi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="forcedDdiId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="forcedDdiId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

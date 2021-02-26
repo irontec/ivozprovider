@@ -80,7 +80,7 @@ abstract class LocutionAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return LocutionDto
      */
     public static function createDto($id = null)
@@ -225,14 +225,7 @@ abstract class LocutionAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): LocutionInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -241,24 +234,12 @@ abstract class LocutionAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set status
-     *
-     * @param string $status | null
-     *
-     * @return static
-     */
-    protected function setStatus(?string $status = null): LocutionInterface
+    protected function setStatus(?string $status = null): static
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -279,32 +260,17 @@ abstract class LocutionAbstract
         return $this;
     }
 
-    /**
-     * Get status
-     *
-     * @return string | null
-     */
     public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    /**
-     * Get encodedFile
-     *
-     * @return EncodedFile
-     */
     public function getEncodedFile(): EncodedFile
     {
         return $this->encodedFile;
     }
 
-    /**
-     * Set encodedFile
-     *
-     * @return static
-     */
-    protected function setEncodedFile(EncodedFile $encodedFile): LocutionInterface
+    protected function setEncodedFile(EncodedFile $encodedFile): static
     {
         $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
         if ($isEqual) {
@@ -315,22 +281,12 @@ abstract class LocutionAbstract
         return $this;
     }
 
-    /**
-     * Get originalFile
-     *
-     * @return OriginalFile
-     */
     public function getOriginalFile(): OriginalFile
     {
         return $this->originalFile;
     }
 
-    /**
-     * Set originalFile
-     *
-     * @return static
-     */
-    protected function setOriginalFile(OriginalFile $originalFile): LocutionInterface
+    protected function setOriginalFile(OriginalFile $originalFile): static
     {
         $isEqual = $this->originalFile && $this->originalFile->equals($originalFile);
         if ($isEqual) {
@@ -341,25 +297,13 @@ abstract class LocutionAbstract
         return $this;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): LocutionInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;

@@ -20,17 +20,17 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tag;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $destinationsTag;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $ratesTag;
 
@@ -55,7 +55,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     private $maxCostStrategy = '';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -131,230 +131,139 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $response;
     }
 
-    /**
-     * @param string $tpid | null
-     *
-     * @return static
-     */
-    public function setTpid(?string $tpid = null): self
+    public function setTpid(?string $tpid): static
     {
         $this->tpid = $tpid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
-    /**
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    public function setTag(?string $tag = null): self
+    public function setTag(?string $tag): static
     {
         $this->tag = $tag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * @param string $destinationsTag | null
-     *
-     * @return static
-     */
-    public function setDestinationsTag(?string $destinationsTag = null): self
+    public function setDestinationsTag(?string $destinationsTag): static
     {
         $this->destinationsTag = $destinationsTag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDestinationsTag(): ?string
     {
         return $this->destinationsTag;
     }
 
-    /**
-     * @param string $ratesTag | null
-     *
-     * @return static
-     */
-    public function setRatesTag(?string $ratesTag = null): self
+    public function setRatesTag(?string $ratesTag): static
     {
         $this->ratesTag = $ratesTag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRatesTag(): ?string
     {
         return $this->ratesTag;
     }
 
-    /**
-     * @param string $roundingMethod | null
-     *
-     * @return static
-     */
-    public function setRoundingMethod(?string $roundingMethod = null): self
+    public function setRoundingMethod(?string $roundingMethod): static
     {
         $this->roundingMethod = $roundingMethod;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRoundingMethod(): ?string
     {
         return $this->roundingMethod;
     }
 
-    /**
-     * @param int $roundingDecimals | null
-     *
-     * @return static
-     */
-    public function setRoundingDecimals(?int $roundingDecimals = null): self
+    public function setRoundingDecimals(?int $roundingDecimals): static
     {
         $this->roundingDecimals = $roundingDecimals;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getRoundingDecimals(): ?int
     {
         return $this->roundingDecimals;
     }
 
-    /**
-     * @param float $maxCost | null
-     *
-     * @return static
-     */
-    public function setMaxCost(?float $maxCost = null): self
+    public function setMaxCost(?float $maxCost): static
     {
         $this->maxCost = $maxCost;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getMaxCost(): ?float
     {
         return $this->maxCost;
     }
 
-    /**
-     * @param string $maxCostStrategy | null
-     *
-     * @return static
-     */
-    public function setMaxCostStrategy(?string $maxCostStrategy = null): self
+    public function setMaxCostStrategy(?string $maxCostStrategy): static
     {
         $this->maxCostStrategy = $maxCostStrategy;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getMaxCostStrategy(): ?string
     {
         return $this->maxCostStrategy;
     }
 
-    /**
-     * @param \DateTimeInterface $createdAt | null
-     *
-     * @return static
-     */
-    public function setCreatedAt($createdAt = null): self
+    public function setCreatedAt(null|\DateTime|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime|string|null
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param DestinationRateDto | null
-     *
-     * @return static
-     */
-    public function setDestinationRate(?DestinationRateDto $destinationRate = null): self
+    public function setDestinationRate(?DestinationRateDto $destinationRate): static
     {
         $this->destinationRate = $destinationRate;
 
         return $this;
     }
 
-    /**
-     * @return DestinationRateDto | null
-     */
     public function getDestinationRate(): ?DestinationRateDto
     {
         return $this->destinationRate;
     }
 
-    /**
-     * @return static
-     */
-    public function setDestinationRateId($id): self
+    public function setDestinationRateId($id): static
     {
         $value = !is_null($id)
             ? new DestinationRateDto($id)
@@ -363,9 +272,6 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->setDestinationRate($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDestinationRateId()
     {
         if ($dto = $this->getDestinationRate()) {

@@ -57,6 +57,12 @@
         <option name="default">0</option>
       </options>
     </field>
+    <field name="rejectCallMethod" type="string" column="rejectCallMethod" length="3" nullable="false">
+      <options>
+        <option name="comment">[enum:rfc|486|600]</option>
+        <option name="default">rfc</option>
+      </options>
+    </field>
     <field name="voicemailEnabled" type="boolean" column="voicemailEnabled" nullable="false">
       <options>
         <option name="default">1</option>
@@ -70,6 +76,12 @@
       </options>
     </field>
     <field name="voicemailAttachSound" type="boolean" column="voicemailAttachSound" nullable="false">
+      <options>
+        <option name="default">1</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="multiContact" type="boolean" column="multiContact" nullable="false">
       <options>
         <option name="default">1</option>
         <option name="unsigned">1</option>

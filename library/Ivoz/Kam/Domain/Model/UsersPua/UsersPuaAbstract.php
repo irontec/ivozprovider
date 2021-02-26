@@ -177,7 +177,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return UsersPuaDto
      */
     public static function createDto($id = null)
@@ -342,14 +342,7 @@ abstract class UsersPuaAbstract
         ];
     }
 
-    /**
-     * Set presUri
-     *
-     * @param string $presUri
-     *
-     * @return static
-     */
-    protected function setPresUri(string $presUri): UsersPuaInterface
+    protected function setPresUri(string $presUri): static
     {
         Assertion::maxLength($presUri, 128, 'presUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -358,24 +351,12 @@ abstract class UsersPuaAbstract
         return $this;
     }
 
-    /**
-     * Get presUri
-     *
-     * @return string
-     */
     public function getPresUri(): string
     {
         return $this->presUri;
     }
 
-    /**
-     * Set presId
-     *
-     * @param string $presId
-     *
-     * @return static
-     */
-    protected function setPresId(string $presId): UsersPuaInterface
+    protected function setPresId(string $presId): static
     {
         Assertion::maxLength($presId, 255, 'presId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -384,120 +365,60 @@ abstract class UsersPuaAbstract
         return $this;
     }
 
-    /**
-     * Get presId
-     *
-     * @return string
-     */
     public function getPresId(): string
     {
         return $this->presId;
     }
 
-    /**
-     * Set event
-     *
-     * @param int $event
-     *
-     * @return static
-     */
-    protected function setEvent(int $event): UsersPuaInterface
+    protected function setEvent(int $event): static
     {
         $this->event = $event;
 
         return $this;
     }
 
-    /**
-     * Get event
-     *
-     * @return int
-     */
     public function getEvent(): int
     {
         return $this->event;
     }
 
-    /**
-     * Set expires
-     *
-     * @param int $expires
-     *
-     * @return static
-     */
-    protected function setExpires(int $expires): UsersPuaInterface
+    protected function setExpires(int $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    /**
-     * Get expires
-     *
-     * @return int
-     */
     public function getExpires(): int
     {
         return $this->expires;
     }
 
-    /**
-     * Set desiredExpires
-     *
-     * @param int $desiredExpires
-     *
-     * @return static
-     */
-    protected function setDesiredExpires(int $desiredExpires): UsersPuaInterface
+    protected function setDesiredExpires(int $desiredExpires): static
     {
         $this->desiredExpires = $desiredExpires;
 
         return $this;
     }
 
-    /**
-     * Get desiredExpires
-     *
-     * @return int
-     */
     public function getDesiredExpires(): int
     {
         return $this->desiredExpires;
     }
 
-    /**
-     * Set flag
-     *
-     * @param int $flag
-     *
-     * @return static
-     */
-    protected function setFlag(int $flag): UsersPuaInterface
+    protected function setFlag(int $flag): static
     {
         $this->flag = $flag;
 
         return $this;
     }
 
-    /**
-     * Get flag
-     *
-     * @return int
-     */
     public function getFlag(): int
     {
         return $this->flag;
     }
 
-    /**
-     * Set etag
-     *
-     * @param string $etag
-     *
-     * @return static
-     */
-    protected function setEtag(string $etag): UsersPuaInterface
+    protected function setEtag(string $etag): static
     {
         Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -506,24 +427,12 @@ abstract class UsersPuaAbstract
         return $this;
     }
 
-    /**
-     * Get etag
-     *
-     * @return string
-     */
     public function getEtag(): string
     {
         return $this->etag;
     }
 
-    /**
-     * Set tupleId
-     *
-     * @param string $tupleId | null
-     *
-     * @return static
-     */
-    protected function setTupleId(?string $tupleId = null): UsersPuaInterface
+    protected function setTupleId(?string $tupleId = null): static
     {
         if (!is_null($tupleId)) {
             Assertion::maxLength($tupleId, 64, 'tupleId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -534,24 +443,12 @@ abstract class UsersPuaAbstract
         return $this;
     }
 
-    /**
-     * Get tupleId
-     *
-     * @return string | null
-     */
     public function getTupleId(): ?string
     {
         return $this->tupleId;
     }
 
-    /**
-     * Set watcherUri
-     *
-     * @param string $watcherUri
-     *
-     * @return static
-     */
-    protected function setWatcherUri(string $watcherUri): UsersPuaInterface
+    protected function setWatcherUri(string $watcherUri): static
     {
         Assertion::maxLength($watcherUri, 128, 'watcherUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -560,24 +457,12 @@ abstract class UsersPuaAbstract
         return $this;
     }
 
-    /**
-     * Get watcherUri
-     *
-     * @return string
-     */
     public function getWatcherUri(): string
     {
         return $this->watcherUri;
     }
 
-    /**
-     * Set callId
-     *
-     * @param string $callId
-     *
-     * @return static
-     */
-    protected function setCallId(string $callId): UsersPuaInterface
+    protected function setCallId(string $callId): static
     {
         Assertion::maxLength($callId, 255, 'callId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -586,24 +471,12 @@ abstract class UsersPuaAbstract
         return $this;
     }
 
-    /**
-     * Get callId
-     *
-     * @return string
-     */
     public function getCallId(): string
     {
         return $this->callId;
     }
 
-    /**
-     * Set toTag
-     *
-     * @param string $toTag
-     *
-     * @return static
-     */
-    protected function setToTag(string $toTag): UsersPuaInterface
+    protected function setToTag(string $toTag): static
     {
         Assertion::maxLength($toTag, 64, 'toTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -612,24 +485,12 @@ abstract class UsersPuaAbstract
         return $this;
     }
 
-    /**
-     * Get toTag
-     *
-     * @return string
-     */
     public function getToTag(): string
     {
         return $this->toTag;
     }
 
-    /**
-     * Set fromTag
-     *
-     * @param string $fromTag
-     *
-     * @return static
-     */
-    protected function setFromTag(string $fromTag): UsersPuaInterface
+    protected function setFromTag(string $fromTag): static
     {
         Assertion::maxLength($fromTag, 64, 'fromTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -638,48 +499,24 @@ abstract class UsersPuaAbstract
         return $this;
     }
 
-    /**
-     * Get fromTag
-     *
-     * @return string
-     */
     public function getFromTag(): string
     {
         return $this->fromTag;
     }
 
-    /**
-     * Set cseq
-     *
-     * @param int $cseq
-     *
-     * @return static
-     */
-    protected function setCseq(int $cseq): UsersPuaInterface
+    protected function setCseq(int $cseq): static
     {
         $this->cseq = $cseq;
 
         return $this;
     }
 
-    /**
-     * Get cseq
-     *
-     * @return int
-     */
     public function getCseq(): int
     {
         return $this->cseq;
     }
 
-    /**
-     * Set recordRoute
-     *
-     * @param string $recordRoute | null
-     *
-     * @return static
-     */
-    protected function setRecordRoute(?string $recordRoute = null): UsersPuaInterface
+    protected function setRecordRoute(?string $recordRoute = null): static
     {
         if (!is_null($recordRoute)) {
             Assertion::maxLength($recordRoute, 65535, 'recordRoute value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -690,24 +527,12 @@ abstract class UsersPuaAbstract
         return $this;
     }
 
-    /**
-     * Get recordRoute
-     *
-     * @return string | null
-     */
     public function getRecordRoute(): ?string
     {
         return $this->recordRoute;
     }
 
-    /**
-     * Set contact
-     *
-     * @param string $contact
-     *
-     * @return static
-     */
-    protected function setContact(string $contact): UsersPuaInterface
+    protected function setContact(string $contact): static
     {
         Assertion::maxLength($contact, 128, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -716,24 +541,12 @@ abstract class UsersPuaAbstract
         return $this;
     }
 
-    /**
-     * Get contact
-     *
-     * @return string
-     */
     public function getContact(): string
     {
         return $this->contact;
     }
 
-    /**
-     * Set remoteContact
-     *
-     * @param string $remoteContact
-     *
-     * @return static
-     */
-    protected function setRemoteContact(string $remoteContact): UsersPuaInterface
+    protected function setRemoteContact(string $remoteContact): static
     {
         Assertion::maxLength($remoteContact, 128, 'remoteContact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -742,48 +555,24 @@ abstract class UsersPuaAbstract
         return $this;
     }
 
-    /**
-     * Get remoteContact
-     *
-     * @return string
-     */
     public function getRemoteContact(): string
     {
         return $this->remoteContact;
     }
 
-    /**
-     * Set version
-     *
-     * @param int $version
-     *
-     * @return static
-     */
-    protected function setVersion(int $version): UsersPuaInterface
+    protected function setVersion(int $version): static
     {
         $this->version = $version;
 
         return $this;
     }
 
-    /**
-     * Get version
-     *
-     * @return int
-     */
     public function getVersion(): int
     {
         return $this->version;
     }
 
-    /**
-     * Set extraHeaders
-     *
-     * @param string $extraHeaders
-     *
-     * @return static
-     */
-    protected function setExtraHeaders(string $extraHeaders): UsersPuaInterface
+    protected function setExtraHeaders(string $extraHeaders): static
     {
         Assertion::maxLength($extraHeaders, 65535, 'extraHeaders value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -792,11 +581,6 @@ abstract class UsersPuaAbstract
         return $this;
     }
 
-    /**
-     * Get extraHeaders
-     *
-     * @return string
-     */
     public function getExtraHeaders(): string
     {
         return $this->extraHeaders;

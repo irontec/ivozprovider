@@ -111,13 +111,6 @@ trait OutgoingRoutingRelCarrierTrait
         ];
     }
 
-    /**
-     * Add tpRatingProfile
-     *
-     * @param TpRatingProfileInterface $tpRatingProfile
-     *
-     * @return static
-     */
     public function addTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): OutgoingRoutingRelCarrierInterface
     {
         $this->tpRatingProfiles->add($tpRatingProfile);
@@ -125,13 +118,6 @@ trait OutgoingRoutingRelCarrierTrait
         return $this;
     }
 
-    /**
-     * Remove tpRatingProfile
-     *
-     * @param TpRatingProfileInterface $tpRatingProfile
-     *
-     * @return static
-     */
     public function removeTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): OutgoingRoutingRelCarrierInterface
     {
         $this->tpRatingProfiles->removeElement($tpRatingProfile);
@@ -139,13 +125,6 @@ trait OutgoingRoutingRelCarrierTrait
         return $this;
     }
 
-    /**
-     * Replace tpRatingProfiles
-     *
-     * @param ArrayCollection $tpRatingProfiles of TpRatingProfileInterface
-     *
-     * @return static
-     */
     public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles): OutgoingRoutingRelCarrierInterface
     {
         $updatedEntities = [];
@@ -174,11 +153,6 @@ trait OutgoingRoutingRelCarrierTrait
         return $this;
     }
 
-    /**
-     * Get tpRatingProfiles
-     * @param Criteria | null $criteria
-     * @return TpRatingProfileInterface[]
-     */
     public function getTpRatingProfiles(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

@@ -22,7 +22,7 @@ abstract class IvrExcludedExtensionAbstract
     use ChangelogTrait;
 
     /**
-     * @var IvrInterface
+     * @var IvrInterface | null
      * inversedBy excludedExtensions
      */
     protected $ivr;
@@ -61,7 +61,7 @@ abstract class IvrExcludedExtensionAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return IvrExcludedExtensionDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class IvrExcludedExtensionAbstract
         ];
     }
 
-    /**
-     * Set ivr
-     *
-     * @param IvrInterface | null
-     *
-     * @return static
-     */
-    public function setIvr(?IvrInterface $ivr = null): IvrExcludedExtensionInterface
+    public function setIvr(?IvrInterface $ivr = null): static
     {
         $this->ivr = $ivr;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get ivr
-     *
-     * @return IvrInterface | null
-     */
     public function getIvr(): ?IvrInterface
     {
         return $this->ivr;
     }
 
-    /**
-     * Set extension
-     *
-     * @param ExtensionInterface
-     *
-     * @return static
-     */
-    protected function setExtension(ExtensionInterface $extension): IvrExcludedExtensionInterface
+    protected function setExtension(ExtensionInterface $extension): static
     {
         $this->extension = $extension;
 
         return $this;
     }
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface
-     */
     public function getExtension(): ExtensionInterface
     {
         return $this->extension;

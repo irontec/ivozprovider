@@ -32,7 +32,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     protected $fixedCost;
 
     /**
-     * @var InvoiceSchedulerInterface
+     * @var InvoiceSchedulerInterface | null
      * inversedBy relFixedCosts
      */
     protected $invoiceScheduler;
@@ -66,7 +66,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return FixedCostsRelInvoiceSchedulerDto
      */
     public static function createDto($id = null)
@@ -172,14 +172,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         ];
     }
 
-    /**
-     * Set quantity
-     *
-     * @param int $quantity | null
-     *
-     * @return static
-     */
-    protected function setQuantity(?int $quantity = null): FixedCostsRelInvoiceSchedulerInterface
+    protected function setQuantity(?int $quantity = null): static
     {
         if (!is_null($quantity)) {
             Assertion::greaterOrEqualThan($quantity, 0, 'quantity provided "%s" is not greater or equal than "%s".');
@@ -190,59 +183,31 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get quantity
-     *
-     * @return int | null
-     */
     public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
-    /**
-     * Set fixedCost
-     *
-     * @param FixedCostInterface
-     *
-     * @return static
-     */
-    protected function setFixedCost(FixedCostInterface $fixedCost): FixedCostsRelInvoiceSchedulerInterface
+    protected function setFixedCost(FixedCostInterface $fixedCost): static
     {
         $this->fixedCost = $fixedCost;
 
         return $this;
     }
 
-    /**
-     * Get fixedCost
-     *
-     * @return FixedCostInterface
-     */
     public function getFixedCost(): FixedCostInterface
     {
         return $this->fixedCost;
     }
 
-    /**
-     * Set invoiceScheduler
-     *
-     * @param InvoiceSchedulerInterface | null
-     *
-     * @return static
-     */
-    public function setInvoiceScheduler(?InvoiceSchedulerInterface $invoiceScheduler = null): FixedCostsRelInvoiceSchedulerInterface
+    public function setInvoiceScheduler(?InvoiceSchedulerInterface $invoiceScheduler = null): static
     {
         $this->invoiceScheduler = $invoiceScheduler;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get invoiceScheduler
-     *
-     * @return InvoiceSchedulerInterface | null
-     */
     public function getInvoiceScheduler(): ?InvoiceSchedulerInterface
     {
         return $this->invoiceScheduler;

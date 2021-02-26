@@ -87,7 +87,7 @@ abstract class AdministratorRelPublicEntityAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return AdministratorRelPublicEntityDto
      */
     public static function createDto($id = null)
@@ -204,14 +204,7 @@ abstract class AdministratorRelPublicEntityAbstract
         ];
     }
 
-    /**
-     * Set create
-     *
-     * @param bool $create
-     *
-     * @return static
-     */
-    protected function setCreate(bool $create): AdministratorRelPublicEntityInterface
+    protected function setCreate(bool $create): static
     {
         Assertion::between(intval($create), 0, 1, 'create provided "%s" is not a valid boolean value.');
         $create = (bool) $create;
@@ -221,24 +214,12 @@ abstract class AdministratorRelPublicEntityAbstract
         return $this;
     }
 
-    /**
-     * Get create
-     *
-     * @return bool
-     */
     public function getCreate(): bool
     {
         return $this->create;
     }
 
-    /**
-     * Set read
-     *
-     * @param bool $read
-     *
-     * @return static
-     */
-    protected function setRead(bool $read): AdministratorRelPublicEntityInterface
+    protected function setRead(bool $read): static
     {
         Assertion::between(intval($read), 0, 1, 'read provided "%s" is not a valid boolean value.');
         $read = (bool) $read;
@@ -248,24 +229,12 @@ abstract class AdministratorRelPublicEntityAbstract
         return $this;
     }
 
-    /**
-     * Get read
-     *
-     * @return bool
-     */
     public function getRead(): bool
     {
         return $this->read;
     }
 
-    /**
-     * Set update
-     *
-     * @param bool $update
-     *
-     * @return static
-     */
-    protected function setUpdate(bool $update): AdministratorRelPublicEntityInterface
+    protected function setUpdate(bool $update): static
     {
         Assertion::between(intval($update), 0, 1, 'update provided "%s" is not a valid boolean value.');
         $update = (bool) $update;
@@ -275,24 +244,12 @@ abstract class AdministratorRelPublicEntityAbstract
         return $this;
     }
 
-    /**
-     * Get update
-     *
-     * @return bool
-     */
     public function getUpdate(): bool
     {
         return $this->update;
     }
 
-    /**
-     * Set delete
-     *
-     * @param bool $delete
-     *
-     * @return static
-     */
-    protected function setDelete(bool $delete): AdministratorRelPublicEntityInterface
+    protected function setDelete(bool $delete): static
     {
         Assertion::between(intval($delete), 0, 1, 'delete provided "%s" is not a valid boolean value.');
         $delete = (bool) $delete;
@@ -302,59 +259,31 @@ abstract class AdministratorRelPublicEntityAbstract
         return $this;
     }
 
-    /**
-     * Get delete
-     *
-     * @return bool
-     */
     public function getDelete(): bool
     {
         return $this->delete;
     }
 
-    /**
-     * Set administrator
-     *
-     * @param AdministratorInterface
-     *
-     * @return static
-     */
-    public function setAdministrator(AdministratorInterface $administrator): AdministratorRelPublicEntityInterface
+    public function setAdministrator(AdministratorInterface $administrator): static
     {
         $this->administrator = $administrator;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get administrator
-     *
-     * @return AdministratorInterface
-     */
     public function getAdministrator(): AdministratorInterface
     {
         return $this->administrator;
     }
 
-    /**
-     * Set publicEntity
-     *
-     * @param PublicEntityInterface
-     *
-     * @return static
-     */
-    protected function setPublicEntity(PublicEntityInterface $publicEntity): AdministratorRelPublicEntityInterface
+    protected function setPublicEntity(PublicEntityInterface $publicEntity): static
     {
         $this->publicEntity = $publicEntity;
 
         return $this;
     }
 
-    /**
-     * Get publicEntity
-     *
-     * @return PublicEntityInterface
-     */
     public function getPublicEntity(): PublicEntityInterface
     {
         return $this->publicEntity;

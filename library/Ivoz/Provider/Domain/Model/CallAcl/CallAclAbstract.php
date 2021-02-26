@@ -66,7 +66,7 @@ abstract class CallAclAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CallAclDto
      */
     public static function createDto($id = null)
@@ -171,14 +171,7 @@ abstract class CallAclAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): CallAclInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -187,24 +180,12 @@ abstract class CallAclAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set defaultPolicy
-     *
-     * @param string $defaultPolicy
-     *
-     * @return static
-     */
-    protected function setDefaultPolicy(string $defaultPolicy): CallAclInterface
+    protected function setDefaultPolicy(string $defaultPolicy): static
     {
         Assertion::maxLength($defaultPolicy, 10, 'defaultPolicy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -221,35 +202,18 @@ abstract class CallAclAbstract
         return $this;
     }
 
-    /**
-     * Get defaultPolicy
-     *
-     * @return string
-     */
     public function getDefaultPolicy(): string
     {
         return $this->defaultPolicy;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): CallAclInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;

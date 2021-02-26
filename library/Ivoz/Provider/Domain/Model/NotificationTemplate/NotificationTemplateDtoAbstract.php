@@ -18,12 +18,12 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var string
      */
-    private $type;
+    private $type = '';
 
     /**
      * @var int
@@ -89,90 +89,55 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $type | null
-     *
-     * @return static
-     */
-    public function setType(?string $type = null): self
+    public function setType(?string $type): static
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -181,9 +146,6 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -193,21 +155,13 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
         return null;
     }
 
-    /**
-     * @param NotificationTemplateContentDto[] | null
-     *
-     * @return static
-     */
-    public function setContents(?array $contents = null): self
+    public function setContents(?array $contents): static
     {
         $this->contents = $contents;
 
         return $this;
     }
 
-    /**
-     * @return NotificationTemplateContentDto[] | null
-     */
     public function getContents(): ?array
     {
         return $this->contents;

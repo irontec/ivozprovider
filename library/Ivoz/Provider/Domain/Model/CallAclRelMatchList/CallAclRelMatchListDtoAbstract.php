@@ -23,7 +23,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     /**
      * @var string
      */
-    private $policy;
+    private $policy = '';
 
     /**
      * @var int
@@ -90,90 +90,55 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $response;
     }
 
-    /**
-     * @param int $priority | null
-     *
-     * @return static
-     */
-    public function setPriority(?int $priority = null): self
+    public function setPriority(?int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    /**
-     * @param string $policy | null
-     *
-     * @return static
-     */
-    public function setPolicy(?string $policy = null): self
+    public function setPolicy(?string $policy): static
     {
         $this->policy = $policy;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPolicy(): ?string
     {
         return $this->policy;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CallAclDto | null
-     *
-     * @return static
-     */
-    public function setCallAcl(?CallAclDto $callAcl = null): self
+    public function setCallAcl(?CallAclDto $callAcl): static
     {
         $this->callAcl = $callAcl;
 
         return $this;
     }
 
-    /**
-     * @return CallAclDto | null
-     */
     public function getCallAcl(): ?CallAclDto
     {
         return $this->callAcl;
     }
 
-    /**
-     * @return static
-     */
-    public function setCallAclId($id): self
+    public function setCallAclId($id): static
     {
         $value = !is_null($id)
             ? new CallAclDto($id)
@@ -182,9 +147,6 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $this->setCallAcl($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCallAclId()
     {
         if ($dto = $this->getCallAcl()) {
@@ -194,30 +156,19 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return null;
     }
 
-    /**
-     * @param MatchListDto | null
-     *
-     * @return static
-     */
-    public function setMatchList(?MatchListDto $matchList = null): self
+    public function setMatchList(?MatchListDto $matchList): static
     {
         $this->matchList = $matchList;
 
         return $this;
     }
 
-    /**
-     * @return MatchListDto | null
-     */
     public function getMatchList(): ?MatchListDto
     {
         return $this->matchList;
     }
 
-    /**
-     * @return static
-     */
-    public function setMatchListId($id): self
+    public function setMatchListId($id): static
     {
         $value = !is_null($id)
             ? new MatchListDto($id)
@@ -226,9 +177,6 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $this->setMatchList($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getMatchListId()
     {
         if ($dto = $this->getMatchList()) {

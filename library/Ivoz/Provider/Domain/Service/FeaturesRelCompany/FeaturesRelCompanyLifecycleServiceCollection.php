@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\FeaturesRelCompany;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class FeaturesRelCompanyLifecycleServiceCollection implements LifecycleServiceCo
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, FeaturesRelCompanyLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, FeaturesRelCompanyLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

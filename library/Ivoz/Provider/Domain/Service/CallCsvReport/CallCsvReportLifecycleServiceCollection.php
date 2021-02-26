@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\CallCsvReport;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -23,11 +24,9 @@ class CallCsvReportLifecycleServiceCollection implements LifecycleServiceCollect
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, CallCsvReportLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, CallCsvReportLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

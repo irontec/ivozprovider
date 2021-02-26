@@ -16,17 +16,17 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $presentityUri;
+    private $presentityUri = '';
 
     /**
      * @var string
      */
-    private $watcherUsername;
+    private $watcherUsername = '';
 
     /**
      * @var string
      */
-    private $watcherDomain;
+    private $watcherDomain = '';
 
     /**
      * @var string
@@ -39,7 +39,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     private $status;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $reason;
 
@@ -109,162 +109,98 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $presentityUri | null
-     *
-     * @return static
-     */
-    public function setPresentityUri(?string $presentityUri = null): self
+    public function setPresentityUri(?string $presentityUri): static
     {
         $this->presentityUri = $presentityUri;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPresentityUri(): ?string
     {
         return $this->presentityUri;
     }
 
-    /**
-     * @param string $watcherUsername | null
-     *
-     * @return static
-     */
-    public function setWatcherUsername(?string $watcherUsername = null): self
+    public function setWatcherUsername(?string $watcherUsername): static
     {
         $this->watcherUsername = $watcherUsername;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getWatcherUsername(): ?string
     {
         return $this->watcherUsername;
     }
 
-    /**
-     * @param string $watcherDomain | null
-     *
-     * @return static
-     */
-    public function setWatcherDomain(?string $watcherDomain = null): self
+    public function setWatcherDomain(?string $watcherDomain): static
     {
         $this->watcherDomain = $watcherDomain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getWatcherDomain(): ?string
     {
         return $this->watcherDomain;
     }
 
-    /**
-     * @param string $event | null
-     *
-     * @return static
-     */
-    public function setEvent(?string $event = null): self
+    public function setEvent(?string $event): static
     {
         $this->event = $event;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEvent(): ?string
     {
         return $this->event;
     }
 
-    /**
-     * @param int $status | null
-     *
-     * @return static
-     */
-    public function setStatus(?int $status = null): self
+    public function setStatus(?int $status): static
     {
         $this->status = $status;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getStatus(): ?int
     {
         return $this->status;
     }
 
-    /**
-     * @param string $reason | null
-     *
-     * @return static
-     */
-    public function setReason(?string $reason = null): self
+    public function setReason(?string $reason): static
     {
         $this->reason = $reason;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getReason(): ?string
     {
         return $this->reason;
     }
 
-    /**
-     * @param int $insertedTime | null
-     *
-     * @return static
-     */
-    public function setInsertedTime(?int $insertedTime = null): self
+    public function setInsertedTime(?int $insertedTime): static
     {
         $this->insertedTime = $insertedTime;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getInsertedTime(): ?int
     {
         return $this->insertedTime;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

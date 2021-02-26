@@ -85,7 +85,7 @@ abstract class PublicEntityAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return PublicEntityDto
      */
     public static function createDto($id = null)
@@ -222,14 +222,7 @@ abstract class PublicEntityAbstract
         ];
     }
 
-    /**
-     * Set iden
-     *
-     * @param string $iden
-     *
-     * @return static
-     */
-    protected function setIden(string $iden): PublicEntityInterface
+    protected function setIden(string $iden): static
     {
         Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -238,24 +231,12 @@ abstract class PublicEntityAbstract
         return $this;
     }
 
-    /**
-     * Get iden
-     *
-     * @return string
-     */
     public function getIden(): string
     {
         return $this->iden;
     }
 
-    /**
-     * Set fqdn
-     *
-     * @param string $fqdn | null
-     *
-     * @return static
-     */
-    protected function setFqdn(?string $fqdn = null): PublicEntityInterface
+    protected function setFqdn(?string $fqdn = null): static
     {
         if (!is_null($fqdn)) {
             Assertion::maxLength($fqdn, 200, 'fqdn value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -266,24 +247,12 @@ abstract class PublicEntityAbstract
         return $this;
     }
 
-    /**
-     * Get fqdn
-     *
-     * @return string | null
-     */
     public function getFqdn(): ?string
     {
         return $this->fqdn;
     }
 
-    /**
-     * Set platform
-     *
-     * @param bool $platform
-     *
-     * @return static
-     */
-    protected function setPlatform(bool $platform): PublicEntityInterface
+    protected function setPlatform(bool $platform): static
     {
         Assertion::between(intval($platform), 0, 1, 'platform provided "%s" is not a valid boolean value.');
         $platform = (bool) $platform;
@@ -293,24 +262,12 @@ abstract class PublicEntityAbstract
         return $this;
     }
 
-    /**
-     * Get platform
-     *
-     * @return bool
-     */
     public function getPlatform(): bool
     {
         return $this->platform;
     }
 
-    /**
-     * Set brand
-     *
-     * @param bool $brand
-     *
-     * @return static
-     */
-    protected function setBrand(bool $brand): PublicEntityInterface
+    protected function setBrand(bool $brand): static
     {
         Assertion::between(intval($brand), 0, 1, 'brand provided "%s" is not a valid boolean value.');
         $brand = (bool) $brand;
@@ -320,24 +277,12 @@ abstract class PublicEntityAbstract
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return bool
-     */
     public function getBrand(): bool
     {
         return $this->brand;
     }
 
-    /**
-     * Set client
-     *
-     * @param bool $client
-     *
-     * @return static
-     */
-    protected function setClient(bool $client): PublicEntityInterface
+    protected function setClient(bool $client): static
     {
         Assertion::between(intval($client), 0, 1, 'client provided "%s" is not a valid boolean value.');
         $client = (bool) $client;
@@ -347,32 +292,17 @@ abstract class PublicEntityAbstract
         return $this;
     }
 
-    /**
-     * Get client
-     *
-     * @return bool
-     */
     public function getClient(): bool
     {
         return $this->client;
     }
 
-    /**
-     * Get name
-     *
-     * @return Name
-     */
     public function getName(): Name
     {
         return $this->name;
     }
 
-    /**
-     * Set name
-     *
-     * @return static
-     */
-    protected function setName(Name $name): PublicEntityInterface
+    protected function setName(Name $name): static
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {

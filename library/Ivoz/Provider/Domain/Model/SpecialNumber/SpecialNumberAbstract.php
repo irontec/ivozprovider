@@ -37,7 +37,7 @@ abstract class SpecialNumberAbstract
     protected $disableCDR = 1;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      */
     protected $brand;
 
@@ -77,7 +77,7 @@ abstract class SpecialNumberAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return SpecialNumberDto
      */
     public static function createDto($id = null)
@@ -190,14 +190,7 @@ abstract class SpecialNumberAbstract
         ];
     }
 
-    /**
-     * Set number
-     *
-     * @param string $number
-     *
-     * @return static
-     */
-    protected function setNumber(string $number): SpecialNumberInterface
+    protected function setNumber(string $number): static
     {
         Assertion::maxLength($number, 25, 'number value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -206,24 +199,12 @@ abstract class SpecialNumberAbstract
         return $this;
     }
 
-    /**
-     * Get number
-     *
-     * @return string
-     */
     public function getNumber(): string
     {
         return $this->number;
     }
 
-    /**
-     * Set numberE164
-     *
-     * @param string $numberE164 | null
-     *
-     * @return static
-     */
-    protected function setNumberE164(?string $numberE164 = null): SpecialNumberInterface
+    protected function setNumberE164(?string $numberE164 = null): static
     {
         if (!is_null($numberE164)) {
             Assertion::maxLength($numberE164, 25, 'numberE164 value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -234,24 +215,12 @@ abstract class SpecialNumberAbstract
         return $this;
     }
 
-    /**
-     * Get numberE164
-     *
-     * @return string | null
-     */
     public function getNumberE164(): ?string
     {
         return $this->numberE164;
     }
 
-    /**
-     * Set disableCDR
-     *
-     * @param int $disableCDR
-     *
-     * @return static
-     */
-    protected function setDisableCDR(int $disableCDR): SpecialNumberInterface
+    protected function setDisableCDR(int $disableCDR): static
     {
         Assertion::greaterOrEqualThan($disableCDR, 0, 'disableCDR provided "%s" is not greater or equal than "%s".');
 
@@ -260,59 +229,30 @@ abstract class SpecialNumberAbstract
         return $this;
     }
 
-    /**
-     * Get disableCDR
-     *
-     * @return int
-     */
     public function getDisableCDR(): int
     {
         return $this->disableCDR;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    protected function setBrand(?BrandInterface $brand = null): SpecialNumberInterface
+    protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set country
-     *
-     * @param CountryInterface
-     *
-     * @return static
-     */
-    protected function setCountry(CountryInterface $country): SpecialNumberInterface
+    protected function setCountry(CountryInterface $country): static
     {
         $this->country = $country;
 
         return $this;
     }
 
-    /**
-     * Get country
-     *
-     * @return CountryInterface
-     */
     public function getCountry(): CountryInterface
     {
         return $this->country;

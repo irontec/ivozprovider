@@ -65,47 +65,47 @@ abstract class ConditionalRouteAbstract
     protected $company;
 
     /**
-     * @var IvrInterface
+     * @var IvrInterface | null
      */
     protected $ivr;
 
     /**
-     * @var HuntGroupInterface
+     * @var HuntGroupInterface | null
      */
     protected $huntGroup;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $voicemailUser;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $user;
 
     /**
-     * @var QueueInterface
+     * @var QueueInterface | null
      */
     protected $queue;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $locution;
 
     /**
-     * @var ConferenceRoomInterface
+     * @var ConferenceRoomInterface | null
      */
     protected $conferenceRoom;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $extension;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $numberCountry;
 
@@ -138,7 +138,7 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ConditionalRouteDto
      */
     public static function createDto($id = null)
@@ -287,14 +287,7 @@ abstract class ConditionalRouteAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): ConditionalRouteInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -303,24 +296,12 @@ abstract class ConditionalRouteAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set routetype
-     *
-     * @param string $routetype | null
-     *
-     * @return static
-     */
-    protected function setRoutetype(?string $routetype = null): ConditionalRouteInterface
+    protected function setRoutetype(?string $routetype = null): static
     {
         if (!is_null($routetype)) {
             Assertion::maxLength($routetype, 25, 'routetype value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -346,24 +327,12 @@ abstract class ConditionalRouteAbstract
         return $this;
     }
 
-    /**
-     * Get routetype
-     *
-     * @return string | null
-     */
     public function getRoutetype(): ?string
     {
         return $this->routetype;
     }
 
-    /**
-     * Set numbervalue
-     *
-     * @param string $numbervalue | null
-     *
-     * @return static
-     */
-    protected function setNumbervalue(?string $numbervalue = null): ConditionalRouteInterface
+    protected function setNumbervalue(?string $numbervalue = null): static
     {
         if (!is_null($numbervalue)) {
             Assertion::maxLength($numbervalue, 25, 'numbervalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -374,24 +343,12 @@ abstract class ConditionalRouteAbstract
         return $this;
     }
 
-    /**
-     * Get numbervalue
-     *
-     * @return string | null
-     */
     public function getNumbervalue(): ?string
     {
         return $this->numbervalue;
     }
 
-    /**
-     * Set friendvalue
-     *
-     * @param string $friendvalue | null
-     *
-     * @return static
-     */
-    protected function setFriendvalue(?string $friendvalue = null): ConditionalRouteInterface
+    protected function setFriendvalue(?string $friendvalue = null): static
     {
         if (!is_null($friendvalue)) {
             Assertion::maxLength($friendvalue, 25, 'friendvalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -402,251 +359,126 @@ abstract class ConditionalRouteAbstract
         return $this;
     }
 
-    /**
-     * Get friendvalue
-     *
-     * @return string | null
-     */
     public function getFriendvalue(): ?string
     {
         return $this->friendvalue;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): ConditionalRouteInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set ivr
-     *
-     * @param IvrInterface | null
-     *
-     * @return static
-     */
-    protected function setIvr(?IvrInterface $ivr = null): ConditionalRouteInterface
+    protected function setIvr(?IvrInterface $ivr = null): static
     {
         $this->ivr = $ivr;
 
         return $this;
     }
 
-    /**
-     * Get ivr
-     *
-     * @return IvrInterface | null
-     */
     public function getIvr(): ?IvrInterface
     {
         return $this->ivr;
     }
 
-    /**
-     * Set huntGroup
-     *
-     * @param HuntGroupInterface | null
-     *
-     * @return static
-     */
-    protected function setHuntGroup(?HuntGroupInterface $huntGroup = null): ConditionalRouteInterface
+    protected function setHuntGroup(?HuntGroupInterface $huntGroup = null): static
     {
         $this->huntGroup = $huntGroup;
 
         return $this;
     }
 
-    /**
-     * Get huntGroup
-     *
-     * @return HuntGroupInterface | null
-     */
     public function getHuntGroup(): ?HuntGroupInterface
     {
         return $this->huntGroup;
     }
 
-    /**
-     * Set voicemailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setVoicemailUser(?UserInterface $voicemailUser = null): ConditionalRouteInterface
+    protected function setVoicemailUser(?UserInterface $voicemailUser = null): static
     {
         $this->voicemailUser = $voicemailUser;
 
         return $this;
     }
 
-    /**
-     * Get voicemailUser
-     *
-     * @return UserInterface | null
-     */
     public function getVoicemailUser(): ?UserInterface
     {
         return $this->voicemailUser;
     }
 
-    /**
-     * Set user
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setUser(?UserInterface $user = null): ConditionalRouteInterface
+    protected function setUser(?UserInterface $user = null): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface
     {
         return $this->user;
     }
 
-    /**
-     * Set queue
-     *
-     * @param QueueInterface | null
-     *
-     * @return static
-     */
-    protected function setQueue(?QueueInterface $queue = null): ConditionalRouteInterface
+    protected function setQueue(?QueueInterface $queue = null): static
     {
         $this->queue = $queue;
 
         return $this;
     }
 
-    /**
-     * Get queue
-     *
-     * @return QueueInterface | null
-     */
     public function getQueue(): ?QueueInterface
     {
         return $this->queue;
     }
 
-    /**
-     * Set locution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setLocution(?LocutionInterface $locution = null): ConditionalRouteInterface
+    protected function setLocution(?LocutionInterface $locution = null): static
     {
         $this->locution = $locution;
 
         return $this;
     }
 
-    /**
-     * Get locution
-     *
-     * @return LocutionInterface | null
-     */
     public function getLocution(): ?LocutionInterface
     {
         return $this->locution;
     }
 
-    /**
-     * Set conferenceRoom
-     *
-     * @param ConferenceRoomInterface | null
-     *
-     * @return static
-     */
-    protected function setConferenceRoom(?ConferenceRoomInterface $conferenceRoom = null): ConditionalRouteInterface
+    protected function setConferenceRoom(?ConferenceRoomInterface $conferenceRoom = null): static
     {
         $this->conferenceRoom = $conferenceRoom;
 
         return $this;
     }
 
-    /**
-     * Get conferenceRoom
-     *
-     * @return ConferenceRoomInterface | null
-     */
     public function getConferenceRoom(): ?ConferenceRoomInterface
     {
         return $this->conferenceRoom;
     }
 
-    /**
-     * Set extension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setExtension(?ExtensionInterface $extension = null): ConditionalRouteInterface
+    protected function setExtension(?ExtensionInterface $extension = null): static
     {
         $this->extension = $extension;
 
         return $this;
     }
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getExtension(): ?ExtensionInterface
     {
         return $this->extension;
     }
 
-    /**
-     * Set numberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setNumberCountry(?CountryInterface $numberCountry = null): ConditionalRouteInterface
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;

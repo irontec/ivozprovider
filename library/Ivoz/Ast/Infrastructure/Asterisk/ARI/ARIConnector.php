@@ -57,7 +57,7 @@ class ARIConnector
      * Initialize connection handler options that can be used for multiple
      * further requests.
      *
-     * @return resource cURL handler on success, FALSE otherwise
+     * @return \CurlHandle cURL handler on success, FALSE otherwise
      */
     private function _createConnectionHandler()
     {
@@ -78,7 +78,8 @@ class ARIConnector
      * @param resource $ch cURL handler previusly initializated
      * @param string $url HTTP URL
      * @param array $postdata key/value array to be converted into JSON POST body
-     * @return TRUE on success, FALSE otherwise
+     * @return string|bool true on success or false on failure. However, if the CURLOPT_RETURNTRANSFER
+     * option is set, it will return the result on success, false on failure.
      */
     private function _post($ch, $url, $postdata)
     {

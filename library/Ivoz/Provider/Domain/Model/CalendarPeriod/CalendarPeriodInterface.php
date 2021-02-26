@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\CalendarPeriod;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -10,7 +11,6 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * CalendarPeriodInterface
@@ -38,76 +38,24 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
 
     public function isOutOfSchedule();
 
-    /**
-     * Get startDate
-     *
-     * @return \DateTimeInterface
-     */
-    public function getStartDate(): \DateTimeInterface;
+    public function getStartDate(): \DateTime;
 
-    /**
-     * Get endDate
-     *
-     * @return \DateTimeInterface
-     */
-    public function getEndDate(): \DateTimeInterface;
+    public function getEndDate(): \DateTime;
 
-    /**
-     * Get routeType
-     *
-     * @return string | null
-     */
     public function getRouteType(): ?string;
 
-    /**
-     * Get numberValue
-     *
-     * @return string | null
-     */
     public function getNumberValue(): ?string;
 
-    /**
-     * Set calendar
-     *
-     * @param CalendarInterface
-     *
-     * @return static
-     */
-    public function setCalendar(CalendarInterface $calendar): CalendarPeriodInterface;
+    public function setCalendar(CalendarInterface $calendar): static;
 
-    /**
-     * Get calendar
-     *
-     * @return CalendarInterface
-     */
     public function getCalendar(): CalendarInterface;
 
-    /**
-     * Get locution
-     *
-     * @return LocutionInterface | null
-     */
     public function getLocution(): ?LocutionInterface;
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getExtension(): ?ExtensionInterface;
 
-    /**
-     * Get voiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getVoiceMailUser(): ?UserInterface;
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface;
 
     /**
@@ -115,38 +63,12 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
      */
     public function isInitialized(): bool;
 
-    /**
-     * Add relSchedule
-     *
-     * @param CalendarPeriodsRelScheduleInterface $relSchedule
-     *
-     * @return static
-     */
     public function addRelSchedule(CalendarPeriodsRelScheduleInterface $relSchedule): CalendarPeriodInterface;
 
-    /**
-     * Remove relSchedule
-     *
-     * @param CalendarPeriodsRelScheduleInterface $relSchedule
-     *
-     * @return static
-     */
     public function removeRelSchedule(CalendarPeriodsRelScheduleInterface $relSchedule): CalendarPeriodInterface;
 
-    /**
-     * Replace relSchedules
-     *
-     * @param ArrayCollection $relSchedules of CalendarPeriodsRelScheduleInterface
-     *
-     * @return static
-     */
     public function replaceRelSchedules(ArrayCollection $relSchedules): CalendarPeriodInterface;
 
-    /**
-     * Get relSchedules
-     * @param Criteria | null $criteria
-     * @return CalendarPeriodsRelScheduleInterface[]
-     */
     public function getRelSchedules(?Criteria $criteria = null): array;
 
     /**

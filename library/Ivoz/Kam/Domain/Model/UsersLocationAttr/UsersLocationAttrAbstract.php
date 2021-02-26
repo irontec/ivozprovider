@@ -50,9 +50,9 @@ abstract class UsersLocationAttrAbstract
 
     /**
      * column: last_modified
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $lastModified = '1900-01-01 00:00:01';
+    protected $lastModified;
 
     /**
      * Constructor
@@ -93,7 +93,7 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return UsersLocationAttrDto
      */
     public static function createDto($id = null)
@@ -214,14 +214,7 @@ abstract class UsersLocationAttrAbstract
         ];
     }
 
-    /**
-     * Set ruid
-     *
-     * @param string $ruid
-     *
-     * @return static
-     */
-    protected function setRuid(string $ruid): UsersLocationAttrInterface
+    protected function setRuid(string $ruid): static
     {
         Assertion::maxLength($ruid, 64, 'ruid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -230,24 +223,12 @@ abstract class UsersLocationAttrAbstract
         return $this;
     }
 
-    /**
-     * Get ruid
-     *
-     * @return string
-     */
     public function getRuid(): string
     {
         return $this->ruid;
     }
 
-    /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return static
-     */
-    protected function setUsername(string $username): UsersLocationAttrInterface
+    protected function setUsername(string $username): static
     {
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -256,24 +237,12 @@ abstract class UsersLocationAttrAbstract
         return $this;
     }
 
-    /**
-     * Get username
-     *
-     * @return string
-     */
     public function getUsername(): string
     {
         return $this->username;
     }
 
-    /**
-     * Set domain
-     *
-     * @param string $domain | null
-     *
-     * @return static
-     */
-    protected function setDomain(?string $domain = null): UsersLocationAttrInterface
+    protected function setDomain(?string $domain = null): static
     {
         if (!is_null($domain)) {
             Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -284,24 +253,12 @@ abstract class UsersLocationAttrAbstract
         return $this;
     }
 
-    /**
-     * Get domain
-     *
-     * @return string | null
-     */
     public function getDomain(): ?string
     {
         return $this->domain;
     }
 
-    /**
-     * Set aname
-     *
-     * @param string $aname
-     *
-     * @return static
-     */
-    protected function setAname(string $aname): UsersLocationAttrInterface
+    protected function setAname(string $aname): static
     {
         Assertion::maxLength($aname, 64, 'aname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -310,48 +267,24 @@ abstract class UsersLocationAttrAbstract
         return $this;
     }
 
-    /**
-     * Get aname
-     *
-     * @return string
-     */
     public function getAname(): string
     {
         return $this->aname;
     }
 
-    /**
-     * Set atype
-     *
-     * @param int $atype
-     *
-     * @return static
-     */
-    protected function setAtype(int $atype): UsersLocationAttrInterface
+    protected function setAtype(int $atype): static
     {
         $this->atype = $atype;
 
         return $this;
     }
 
-    /**
-     * Get atype
-     *
-     * @return int
-     */
     public function getAtype(): int
     {
         return $this->atype;
     }
 
-    /**
-     * Set avalue
-     *
-     * @param string $avalue
-     *
-     * @return static
-     */
-    protected function setAvalue(string $avalue): UsersLocationAttrInterface
+    protected function setAvalue(string $avalue): static
     {
         Assertion::maxLength($avalue, 255, 'avalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -360,24 +293,12 @@ abstract class UsersLocationAttrAbstract
         return $this;
     }
 
-    /**
-     * Get avalue
-     *
-     * @return string
-     */
     public function getAvalue(): string
     {
         return $this->avalue;
     }
 
-    /**
-     * Set lastModified
-     *
-     * @param \DateTimeInterface $lastModified
-     *
-     * @return static
-     */
-    protected function setLastModified($lastModified): UsersLocationAttrInterface
+    protected function setLastModified($lastModified): static
     {
 
         $lastModified = DateTimeHelper::createOrFix(
@@ -394,12 +315,7 @@ abstract class UsersLocationAttrAbstract
         return $this;
     }
 
-    /**
-     * Get lastModified
-     *
-     * @return \DateTimeInterface
-     */
-    public function getLastModified(): \DateTimeInterface
+    public function getLastModified(): \DateTime
     {
         return clone $this->lastModified;
     }

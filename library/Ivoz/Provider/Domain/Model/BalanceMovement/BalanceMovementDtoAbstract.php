@@ -16,17 +16,17 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var float | null
+     * @var float|null
      */
     private $amount = 0;
 
     /**
-     * @var float | null
+     * @var float|null
      */
     private $balance = 0;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime|string|null
      */
     private $createdOn = 'CURRENT_TIMESTAMP';
 
@@ -97,110 +97,67 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param float $amount | null
-     *
-     * @return static
-     */
-    public function setAmount(?float $amount = null): self
+    public function setAmount(?float $amount): static
     {
         $this->amount = $amount;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getAmount(): ?float
     {
         return $this->amount;
     }
 
-    /**
-     * @param float $balance | null
-     *
-     * @return static
-     */
-    public function setBalance(?float $balance = null): self
+    public function setBalance(?float $balance): static
     {
         $this->balance = $balance;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getBalance(): ?float
     {
         return $this->balance;
     }
 
-    /**
-     * @param \DateTimeInterface $createdOn | null
-     *
-     * @return static
-     */
-    public function setCreatedOn($createdOn = null): self
+    public function setCreatedOn(null|\DateTime|string $createdOn): static
     {
         $this->createdOn = $createdOn;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedOn()
+    public function getCreatedOn(): \DateTime|string|null
     {
         return $this->createdOn;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -209,9 +166,6 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -221,30 +175,19 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CarrierDto | null
-     *
-     * @return static
-     */
-    public function setCarrier(?CarrierDto $carrier = null): self
+    public function setCarrier(?CarrierDto $carrier): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * @return CarrierDto | null
-     */
     public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
-    /**
-     * @return static
-     */
-    public function setCarrierId($id): self
+    public function setCarrierId($id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -253,9 +196,6 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCarrierId()
     {
         if ($dto = $this->getCarrier()) {

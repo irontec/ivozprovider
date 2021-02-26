@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -11,8 +13,6 @@ use Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterfac
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Core\Domain\Service\TempFile;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Core\Domain\Service\FileContainerInterface;
 
 /**
 * InvoiceInterface
@@ -36,115 +36,45 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null);
+    public function getFileObjects(?int $filter = null);
 
     /**
      * @return bool
      */
     public function isWaiting(): bool;
 
-    public function setNumber(string $number = null): InvoiceInterface;
+    public function setNumber(?string $number = null): static;
 
     public function mustRunInvoicer(): bool;
 
     public function mustCheckValidity(): bool;
 
-    /**
-     * Get number
-     *
-     * @return string | null
-     */
     public function getNumber(): ?string;
 
-    /**
-     * Get inDate
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getInDate(): ?\DateTimeInterface;
+    public function getInDate(): ?\DateTime;
 
-    /**
-     * Get outDate
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getOutDate(): ?\DateTimeInterface;
+    public function getOutDate(): ?\DateTime;
 
-    /**
-     * Get total
-     *
-     * @return float | null
-     */
     public function getTotal(): ?float;
 
-    /**
-     * Get taxRate
-     *
-     * @return float | null
-     */
     public function getTaxRate(): ?float;
 
-    /**
-     * Get totalWithTax
-     *
-     * @return float | null
-     */
     public function getTotalWithTax(): ?float;
 
-    /**
-     * Get status
-     *
-     * @return string | null
-     */
     public function getStatus(): ?string;
 
-    /**
-     * Get statusMsg
-     *
-     * @return string | null
-     */
     public function getStatusMsg(): ?string;
 
-    /**
-     * Get pdf
-     *
-     * @return Pdf
-     */
     public function getPdf(): Pdf;
 
-    /**
-     * Get invoiceTemplate
-     *
-     * @return InvoiceTemplateInterface | null
-     */
     public function getInvoiceTemplate(): ?InvoiceTemplateInterface;
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface;
 
-    /**
-     * Get numberSequence
-     *
-     * @return InvoiceNumberSequenceInterface | null
-     */
     public function getNumberSequence(): ?InvoiceNumberSequenceInterface;
 
-    /**
-     * Get scheduler
-     *
-     * @return InvoiceSchedulerInterface | null
-     */
     public function getScheduler(): ?InvoiceSchedulerInterface;
 
     /**
@@ -152,38 +82,12 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
      */
     public function isInitialized(): bool;
 
-    /**
-     * Add relFixedCost
-     *
-     * @param FixedCostsRelInvoiceInterface $relFixedCost
-     *
-     * @return static
-     */
     public function addRelFixedCost(FixedCostsRelInvoiceInterface $relFixedCost): InvoiceInterface;
 
-    /**
-     * Remove relFixedCost
-     *
-     * @param FixedCostsRelInvoiceInterface $relFixedCost
-     *
-     * @return static
-     */
     public function removeRelFixedCost(FixedCostsRelInvoiceInterface $relFixedCost): InvoiceInterface;
 
-    /**
-     * Replace relFixedCosts
-     *
-     * @param ArrayCollection $relFixedCosts of FixedCostsRelInvoiceInterface
-     *
-     * @return static
-     */
     public function replaceRelFixedCosts(ArrayCollection $relFixedCosts): InvoiceInterface;
 
-    /**
-     * Get relFixedCosts
-     * @param Criteria | null $criteria
-     * @return FixedCostsRelInvoiceInterface[]
-     */
     public function getRelFixedCosts(?Criteria $criteria = null): array;
 
     /**

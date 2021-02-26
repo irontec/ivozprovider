@@ -187,13 +187,6 @@ trait ConditionalRoutesConditionTrait
         ];
     }
 
-    /**
-     * Add relMatchlist
-     *
-     * @param ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
-     *
-     * @return static
-     */
     public function addRelMatchlist(ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist): ConditionalRoutesConditionInterface
     {
         $this->relMatchlists->add($relMatchlist);
@@ -201,13 +194,6 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    /**
-     * Remove relMatchlist
-     *
-     * @param ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
-     *
-     * @return static
-     */
     public function removeRelMatchlist(ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist): ConditionalRoutesConditionInterface
     {
         $this->relMatchlists->removeElement($relMatchlist);
@@ -215,13 +201,6 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    /**
-     * Replace relMatchlists
-     *
-     * @param ArrayCollection $relMatchlists of ConditionalRoutesConditionsRelMatchlistInterface
-     *
-     * @return static
-     */
     public function replaceRelMatchlists(ArrayCollection $relMatchlists): ConditionalRoutesConditionInterface
     {
         $updatedEntities = [];
@@ -250,11 +229,6 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    /**
-     * Get relMatchlists
-     * @param Criteria | null $criteria
-     * @return ConditionalRoutesConditionsRelMatchlistInterface[]
-     */
     public function getRelMatchlists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -264,13 +238,6 @@ trait ConditionalRoutesConditionTrait
         return $this->relMatchlists->toArray();
     }
 
-    /**
-     * Add relSchedule
-     *
-     * @param ConditionalRoutesConditionsRelScheduleInterface $relSchedule
-     *
-     * @return static
-     */
     public function addRelSchedule(ConditionalRoutesConditionsRelScheduleInterface $relSchedule): ConditionalRoutesConditionInterface
     {
         $this->relSchedules->add($relSchedule);
@@ -278,13 +245,6 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    /**
-     * Remove relSchedule
-     *
-     * @param ConditionalRoutesConditionsRelScheduleInterface $relSchedule
-     *
-     * @return static
-     */
     public function removeRelSchedule(ConditionalRoutesConditionsRelScheduleInterface $relSchedule): ConditionalRoutesConditionInterface
     {
         $this->relSchedules->removeElement($relSchedule);
@@ -292,13 +252,6 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    /**
-     * Replace relSchedules
-     *
-     * @param ArrayCollection $relSchedules of ConditionalRoutesConditionsRelScheduleInterface
-     *
-     * @return static
-     */
     public function replaceRelSchedules(ArrayCollection $relSchedules): ConditionalRoutesConditionInterface
     {
         $updatedEntities = [];
@@ -327,11 +280,6 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    /**
-     * Get relSchedules
-     * @param Criteria | null $criteria
-     * @return ConditionalRoutesConditionsRelScheduleInterface[]
-     */
     public function getRelSchedules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -341,13 +289,6 @@ trait ConditionalRoutesConditionTrait
         return $this->relSchedules->toArray();
     }
 
-    /**
-     * Add relCalendar
-     *
-     * @param ConditionalRoutesConditionsRelCalendarInterface $relCalendar
-     *
-     * @return static
-     */
     public function addRelCalendar(ConditionalRoutesConditionsRelCalendarInterface $relCalendar): ConditionalRoutesConditionInterface
     {
         $this->relCalendars->add($relCalendar);
@@ -355,13 +296,6 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    /**
-     * Remove relCalendar
-     *
-     * @param ConditionalRoutesConditionsRelCalendarInterface $relCalendar
-     *
-     * @return static
-     */
     public function removeRelCalendar(ConditionalRoutesConditionsRelCalendarInterface $relCalendar): ConditionalRoutesConditionInterface
     {
         $this->relCalendars->removeElement($relCalendar);
@@ -369,13 +303,6 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    /**
-     * Replace relCalendars
-     *
-     * @param ArrayCollection $relCalendars of ConditionalRoutesConditionsRelCalendarInterface
-     *
-     * @return static
-     */
     public function replaceRelCalendars(ArrayCollection $relCalendars): ConditionalRoutesConditionInterface
     {
         $updatedEntities = [];
@@ -404,11 +331,6 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    /**
-     * Get relCalendars
-     * @param Criteria | null $criteria
-     * @return ConditionalRoutesConditionsRelCalendarInterface[]
-     */
     public function getRelCalendars(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -418,13 +340,6 @@ trait ConditionalRoutesConditionTrait
         return $this->relCalendars->toArray();
     }
 
-    /**
-     * Add relRouteLock
-     *
-     * @param ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
-     *
-     * @return static
-     */
     public function addRelRouteLock(ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock): ConditionalRoutesConditionInterface
     {
         $this->relRouteLocks->add($relRouteLock);
@@ -432,13 +347,6 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    /**
-     * Remove relRouteLock
-     *
-     * @param ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
-     *
-     * @return static
-     */
     public function removeRelRouteLock(ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock): ConditionalRoutesConditionInterface
     {
         $this->relRouteLocks->removeElement($relRouteLock);
@@ -446,13 +354,6 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    /**
-     * Replace relRouteLocks
-     *
-     * @param ArrayCollection $relRouteLocks of ConditionalRoutesConditionsRelRouteLockInterface
-     *
-     * @return static
-     */
     public function replaceRelRouteLocks(ArrayCollection $relRouteLocks): ConditionalRoutesConditionInterface
     {
         $updatedEntities = [];
@@ -481,11 +382,6 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    /**
-     * Get relRouteLocks
-     * @param Criteria | null $criteria
-     * @return ConditionalRoutesConditionsRelRouteLockInterface[]
-     */
     public function getRelRouteLocks(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

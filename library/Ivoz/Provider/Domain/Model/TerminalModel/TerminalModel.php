@@ -33,7 +33,7 @@ class TerminalModel extends TerminalModelAbstract implements TerminalModelInterf
     /**
      * {@inheritDoc}
      */
-    public function setIden(string $iden): self
+    public function setIden(string $iden): static
     {
         Assertion::regex($iden, '/^[a-zA-Z0-9_-]+$/');
         return parent::setIden($iden);
@@ -42,7 +42,7 @@ class TerminalModel extends TerminalModelAbstract implements TerminalModelInterf
     /**
      * {@inheritdoc}
      */
-    public function setGenericTemplate(?string $genericTemplate = null): self
+    public function setGenericTemplate(?string $genericTemplate = null): static
     {
         return parent::setGenericTemplate(
             $this->_sanitizeTemplate($genericTemplate)
@@ -52,7 +52,7 @@ class TerminalModel extends TerminalModelAbstract implements TerminalModelInterf
     /**
      * {@inheritdoc}
      */
-    public function setSpecificTemplate(?string $specificTemplate = null): self
+    public function setSpecificTemplate(?string $specificTemplate = null): static
     {
         return parent::setSpecificTemplate(
             $this->_sanitizeTemplate($specificTemplate)

@@ -19,7 +19,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $prefix;
+    private $prefix = '';
 
     /**
      * @var int
@@ -27,22 +27,22 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $nameEn;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $nameEs;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $nameCa;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $nameIt;
 
@@ -122,150 +122,91 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $prefix | null
-     *
-     * @return static
-     */
-    public function setPrefix(?string $prefix = null): self
+    public function setPrefix(?string $prefix): static
     {
         $this->prefix = $prefix;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param string $nameEn | null
-     *
-     * @return static
-     */
-    public function setNameEn(?string $nameEn = null): self
+    public function setNameEn(?string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameEn(): ?string
     {
         return $this->nameEn;
     }
 
-    /**
-     * @param string $nameEs | null
-     *
-     * @return static
-     */
-    public function setNameEs(?string $nameEs = null): self
+    public function setNameEs(?string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameEs(): ?string
     {
         return $this->nameEs;
     }
 
-    /**
-     * @param string $nameCa | null
-     *
-     * @return static
-     */
-    public function setNameCa(?string $nameCa = null): self
+    public function setNameCa(?string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameCa(): ?string
     {
         return $this->nameCa;
     }
 
-    /**
-     * @param string $nameIt | null
-     *
-     * @return static
-     */
-    public function setNameIt(?string $nameIt = null): self
+    public function setNameIt(?string $nameIt): static
     {
         $this->nameIt = $nameIt;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameIt(): ?string
     {
         return $this->nameIt;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -274,9 +215,6 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -286,30 +224,19 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TpDestinationDto | null
-     *
-     * @return static
-     */
-    public function setTpDestination(?TpDestinationDto $tpDestination = null): self
+    public function setTpDestination(?TpDestinationDto $tpDestination): static
     {
         $this->tpDestination = $tpDestination;
 
         return $this;
     }
 
-    /**
-     * @return TpDestinationDto | null
-     */
     public function getTpDestination(): ?TpDestinationDto
     {
         return $this->tpDestination;
     }
 
-    /**
-     * @return static
-     */
-    public function setTpDestinationId($id): self
+    public function setTpDestinationId($id): static
     {
         $value = !is_null($id)
             ? new TpDestinationDto($id)
@@ -318,9 +245,6 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $this->setTpDestination($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTpDestinationId()
     {
         if ($dto = $this->getTpDestination()) {
@@ -330,21 +254,13 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DestinationRateDto[] | null
-     *
-     * @return static
-     */
-    public function setDestinationRates(?array $destinationRates = null): self
+    public function setDestinationRates(?array $destinationRates): static
     {
         $this->destinationRates = $destinationRates;
 
         return $this;
     }
 
-    /**
-     * @return DestinationRateDto[] | null
-     */
     public function getDestinationRates(): ?array
     {
         return $this->destinationRates;

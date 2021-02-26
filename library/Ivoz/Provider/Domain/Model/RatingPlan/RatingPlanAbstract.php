@@ -36,7 +36,7 @@ abstract class RatingPlanAbstract
 
     /**
      * column: time_in
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $timeIn;
 
@@ -117,7 +117,7 @@ abstract class RatingPlanAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return RatingPlanDto
      */
     public static function createDto($id = null)
@@ -258,38 +258,19 @@ abstract class RatingPlanAbstract
         ];
     }
 
-    /**
-     * Set weight
-     *
-     * @param float $weight
-     *
-     * @return static
-     */
-    protected function setWeight(float $weight): RatingPlanInterface
+    protected function setWeight(float $weight): static
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    /**
-     * Get weight
-     *
-     * @return float
-     */
     public function getWeight(): float
     {
         return $this->weight;
     }
 
-    /**
-     * Set timingType
-     *
-     * @param string $timingType | null
-     *
-     * @return static
-     */
-    protected function setTimingType(?string $timingType = null): RatingPlanInterface
+    protected function setTimingType(?string $timingType = null): static
     {
         if (!is_null($timingType)) {
             Assertion::maxLength($timingType, 10, 'timingType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -308,48 +289,24 @@ abstract class RatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get timingType
-     *
-     * @return string | null
-     */
     public function getTimingType(): ?string
     {
         return $this->timingType;
     }
 
-    /**
-     * Set timeIn
-     *
-     * @param \DateTimeInterface $timeIn
-     *
-     * @return static
-     */
-    protected function setTimeIn($timeIn): RatingPlanInterface
+    protected function setTimeIn($timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    /**
-     * Get timeIn
-     *
-     * @return \DateTimeInterface
-     */
-    public function getTimeIn(): \DateTimeInterface
+    public function getTimeIn(): \DateTime
     {
         return clone $this->timeIn;
     }
 
-    /**
-     * Set monday
-     *
-     * @param bool $monday | null
-     *
-     * @return static
-     */
-    protected function setMonday(?bool $monday = null): RatingPlanInterface
+    protected function setMonday(?bool $monday = null): static
     {
         if (!is_null($monday)) {
             Assertion::between(intval($monday), 0, 1, 'monday provided "%s" is not a valid boolean value.');
@@ -361,24 +318,12 @@ abstract class RatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get monday
-     *
-     * @return bool | null
-     */
     public function getMonday(): ?bool
     {
         return $this->monday;
     }
 
-    /**
-     * Set tuesday
-     *
-     * @param bool $tuesday | null
-     *
-     * @return static
-     */
-    protected function setTuesday(?bool $tuesday = null): RatingPlanInterface
+    protected function setTuesday(?bool $tuesday = null): static
     {
         if (!is_null($tuesday)) {
             Assertion::between(intval($tuesday), 0, 1, 'tuesday provided "%s" is not a valid boolean value.');
@@ -390,24 +335,12 @@ abstract class RatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get tuesday
-     *
-     * @return bool | null
-     */
     public function getTuesday(): ?bool
     {
         return $this->tuesday;
     }
 
-    /**
-     * Set wednesday
-     *
-     * @param bool $wednesday | null
-     *
-     * @return static
-     */
-    protected function setWednesday(?bool $wednesday = null): RatingPlanInterface
+    protected function setWednesday(?bool $wednesday = null): static
     {
         if (!is_null($wednesday)) {
             Assertion::between(intval($wednesday), 0, 1, 'wednesday provided "%s" is not a valid boolean value.');
@@ -419,24 +352,12 @@ abstract class RatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get wednesday
-     *
-     * @return bool | null
-     */
     public function getWednesday(): ?bool
     {
         return $this->wednesday;
     }
 
-    /**
-     * Set thursday
-     *
-     * @param bool $thursday | null
-     *
-     * @return static
-     */
-    protected function setThursday(?bool $thursday = null): RatingPlanInterface
+    protected function setThursday(?bool $thursday = null): static
     {
         if (!is_null($thursday)) {
             Assertion::between(intval($thursday), 0, 1, 'thursday provided "%s" is not a valid boolean value.');
@@ -448,24 +369,12 @@ abstract class RatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get thursday
-     *
-     * @return bool | null
-     */
     public function getThursday(): ?bool
     {
         return $this->thursday;
     }
 
-    /**
-     * Set friday
-     *
-     * @param bool $friday | null
-     *
-     * @return static
-     */
-    protected function setFriday(?bool $friday = null): RatingPlanInterface
+    protected function setFriday(?bool $friday = null): static
     {
         if (!is_null($friday)) {
             Assertion::between(intval($friday), 0, 1, 'friday provided "%s" is not a valid boolean value.');
@@ -477,24 +386,12 @@ abstract class RatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get friday
-     *
-     * @return bool | null
-     */
     public function getFriday(): ?bool
     {
         return $this->friday;
     }
 
-    /**
-     * Set saturday
-     *
-     * @param bool $saturday | null
-     *
-     * @return static
-     */
-    protected function setSaturday(?bool $saturday = null): RatingPlanInterface
+    protected function setSaturday(?bool $saturday = null): static
     {
         if (!is_null($saturday)) {
             Assertion::between(intval($saturday), 0, 1, 'saturday provided "%s" is not a valid boolean value.');
@@ -506,24 +403,12 @@ abstract class RatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get saturday
-     *
-     * @return bool | null
-     */
     public function getSaturday(): ?bool
     {
         return $this->saturday;
     }
 
-    /**
-     * Set sunday
-     *
-     * @param bool $sunday | null
-     *
-     * @return static
-     */
-    protected function setSunday(?bool $sunday = null): RatingPlanInterface
+    protected function setSunday(?bool $sunday = null): static
     {
         if (!is_null($sunday)) {
             Assertion::between(intval($sunday), 0, 1, 'sunday provided "%s" is not a valid boolean value.');
@@ -535,59 +420,31 @@ abstract class RatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get sunday
-     *
-     * @return bool | null
-     */
     public function getSunday(): ?bool
     {
         return $this->sunday;
     }
 
-    /**
-     * Set ratingPlanGroup
-     *
-     * @param RatingPlanGroupInterface
-     *
-     * @return static
-     */
-    public function setRatingPlanGroup(RatingPlanGroupInterface $ratingPlanGroup): RatingPlanInterface
+    public function setRatingPlanGroup(RatingPlanGroupInterface $ratingPlanGroup): static
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get ratingPlanGroup
-     *
-     * @return RatingPlanGroupInterface
-     */
     public function getRatingPlanGroup(): RatingPlanGroupInterface
     {
         return $this->ratingPlanGroup;
     }
 
-    /**
-     * Set destinationRateGroup
-     *
-     * @param DestinationRateGroupInterface
-     *
-     * @return static
-     */
-    protected function setDestinationRateGroup(DestinationRateGroupInterface $destinationRateGroup): RatingPlanInterface
+    protected function setDestinationRateGroup(DestinationRateGroupInterface $destinationRateGroup): static
     {
         $this->destinationRateGroup = $destinationRateGroup;
 
         return $this;
     }
 
-    /**
-     * Get destinationRateGroup
-     *
-     * @return DestinationRateGroupInterface
-     */
     public function getDestinationRateGroup(): DestinationRateGroupInterface
     {
         return $this->destinationRateGroup;

@@ -95,7 +95,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return UsersWatcherDto
      */
     public static function createDto($id = null)
@@ -216,14 +216,7 @@ abstract class UsersWatcherAbstract
         ];
     }
 
-    /**
-     * Set presentityUri
-     *
-     * @param string $presentityUri
-     *
-     * @return static
-     */
-    protected function setPresentityUri(string $presentityUri): UsersWatcherInterface
+    protected function setPresentityUri(string $presentityUri): static
     {
         Assertion::maxLength($presentityUri, 128, 'presentityUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -232,24 +225,12 @@ abstract class UsersWatcherAbstract
         return $this;
     }
 
-    /**
-     * Get presentityUri
-     *
-     * @return string
-     */
     public function getPresentityUri(): string
     {
         return $this->presentityUri;
     }
 
-    /**
-     * Set watcherUsername
-     *
-     * @param string $watcherUsername
-     *
-     * @return static
-     */
-    protected function setWatcherUsername(string $watcherUsername): UsersWatcherInterface
+    protected function setWatcherUsername(string $watcherUsername): static
     {
         Assertion::maxLength($watcherUsername, 64, 'watcherUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -258,24 +239,12 @@ abstract class UsersWatcherAbstract
         return $this;
     }
 
-    /**
-     * Get watcherUsername
-     *
-     * @return string
-     */
     public function getWatcherUsername(): string
     {
         return $this->watcherUsername;
     }
 
-    /**
-     * Set watcherDomain
-     *
-     * @param string $watcherDomain
-     *
-     * @return static
-     */
-    protected function setWatcherDomain(string $watcherDomain): UsersWatcherInterface
+    protected function setWatcherDomain(string $watcherDomain): static
     {
         Assertion::maxLength($watcherDomain, 190, 'watcherDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -284,24 +253,12 @@ abstract class UsersWatcherAbstract
         return $this;
     }
 
-    /**
-     * Get watcherDomain
-     *
-     * @return string
-     */
     public function getWatcherDomain(): string
     {
         return $this->watcherDomain;
     }
 
-    /**
-     * Set event
-     *
-     * @param string $event
-     *
-     * @return static
-     */
-    protected function setEvent(string $event): UsersWatcherInterface
+    protected function setEvent(string $event): static
     {
         Assertion::maxLength($event, 64, 'event value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -310,48 +267,24 @@ abstract class UsersWatcherAbstract
         return $this;
     }
 
-    /**
-     * Get event
-     *
-     * @return string
-     */
     public function getEvent(): string
     {
         return $this->event;
     }
 
-    /**
-     * Set status
-     *
-     * @param int $status
-     *
-     * @return static
-     */
-    protected function setStatus(int $status): UsersWatcherInterface
+    protected function setStatus(int $status): static
     {
         $this->status = $status;
 
         return $this;
     }
 
-    /**
-     * Get status
-     *
-     * @return int
-     */
     public function getStatus(): int
     {
         return $this->status;
     }
 
-    /**
-     * Set reason
-     *
-     * @param string $reason | null
-     *
-     * @return static
-     */
-    protected function setReason(?string $reason = null): UsersWatcherInterface
+    protected function setReason(?string $reason = null): static
     {
         if (!is_null($reason)) {
             Assertion::maxLength($reason, 64, 'reason value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -362,35 +295,18 @@ abstract class UsersWatcherAbstract
         return $this;
     }
 
-    /**
-     * Get reason
-     *
-     * @return string | null
-     */
     public function getReason(): ?string
     {
         return $this->reason;
     }
 
-    /**
-     * Set insertedTime
-     *
-     * @param int $insertedTime
-     *
-     * @return static
-     */
-    protected function setInsertedTime(int $insertedTime): UsersWatcherInterface
+    protected function setInsertedTime(int $insertedTime): static
     {
         $this->insertedTime = $insertedTime;
 
         return $this;
     }
 
-    /**
-     * Get insertedTime
-     *
-     * @return int
-     */
     public function getInsertedTime(): int
     {
         return $this->insertedTime;

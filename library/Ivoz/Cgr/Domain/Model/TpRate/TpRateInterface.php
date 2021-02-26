@@ -2,8 +2,8 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpRate;
 
-use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
 
 /**
 * TpRateInterface
@@ -15,90 +15,32 @@ interface TpRateInterface extends LoggableEntityInterface
 
     /**
      * Validate RateIncrement has valid unit
-     *
-     * @param string $rateIncrement
-     * @return $this|TpRateAbstract|TpRateInterface
      */
-    public function setRateIncrement(string $rateIncrement): TpRateInterface;
+    public function setRateIncrement(string $rateIncrement): static;
 
     /**
      * Validate GroupIntervalStart has valid unit
-     *
-     * @param string $groupIntervalStart
-     * @return $this|TpRateAbstract|TpRateInterface
      */
-    public function setGroupIntervalStart(string $groupIntervalStart): TpRateInterface;
+    public function setGroupIntervalStart(string $groupIntervalStart): static;
 
-    /**
-     * Get tpid
-     *
-     * @return string
-     */
     public function getTpid(): string;
 
-    /**
-     * Get tag
-     *
-     * @return string | null
-     */
     public function getTag(): ?string;
 
-    /**
-     * Get connectFee
-     *
-     * @return float
-     */
     public function getConnectFee(): float;
 
-    /**
-     * Get rateCost
-     *
-     * @return float
-     */
     public function getRateCost(): float;
 
-    /**
-     * Get rateUnit
-     *
-     * @return string
-     */
     public function getRateUnit(): string;
 
-    /**
-     * Get rateIncrement
-     *
-     * @return string
-     */
     public function getRateIncrement(): string;
 
-    /**
-     * Get groupIntervalStart
-     *
-     * @return string
-     */
     public function getGroupIntervalStart(): string;
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
-    /**
-     * Set destinationRate
-     *
-     * @param DestinationRate
-     *
-     * @return static
-     */
-    public function setDestinationRate(DestinationRate $destinationRate): TpRateInterface;
+    public function setDestinationRate(DestinationRate $destinationRate): static;
 
-    /**
-     * Get destinationRate
-     *
-     * @return DestinationRate
-     */
     public function getDestinationRate(): DestinationRate;
 
     /**

@@ -50,7 +50,7 @@ class DdiProviderRegistrationStatus
         return $this->registered;
     }
 
-    private function setRegistered(bool $registered): self
+    private function setRegistered(bool $registered):  static
     {
         $this->registered = $registered;
 
@@ -62,7 +62,7 @@ class DdiProviderRegistrationStatus
         return $this->inProgress;
     }
 
-    private function setInProgress(bool $inProgress): self
+    private function setInProgress(bool $inProgress):  static
     {
         $this->inProgress = $inProgress;
 
@@ -77,7 +77,7 @@ class DdiProviderRegistrationStatus
         return $this->expires;
     }
 
-    private function setExpires(int $expires = null): self
+    private function setExpires(int $expires = null):  static
     {
         $this->expires = $expires;
 

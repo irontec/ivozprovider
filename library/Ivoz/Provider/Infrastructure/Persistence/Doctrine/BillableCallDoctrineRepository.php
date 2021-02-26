@@ -205,11 +205,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         return $trunkCdrIds;
     }
 
-    /**
-     * @inheritdoc
-     * @see BillableCallRepository::resetPricingData
-     */
-    public function resetPricingData(array $ids)
+    public function resetPricingData(array $ids): int
     {
         $qb = $this
             ->createQueryBuilder('self')
@@ -230,11 +226,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         );
     }
 
-    /**
-     * @inheritdoc
-     * @see BillableCallRepository::resetInvoiceId
-     */
-    public function resetInvoiceId(int $invoiceId)
+    public function resetInvoiceId(int $invoiceId): int
     {
         $qb = $this
             ->createQueryBuilder('self')
@@ -250,11 +242,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         );
     }
 
-    /**
-     * @inheritdoc
-     * @see BillableCallRepository::setInvoiceId
-     */
-    public function setInvoiceId(InvoiceInterface $invoice)
+    public function setInvoiceId(InvoiceInterface $invoice): int
     {
         $conditions = $this->getConditionsByInvoice($invoice);
 
@@ -275,7 +263,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         );
 
         if (empty($targetIds)) {
-            return;
+            return 0;
         }
 
         $qb = $this

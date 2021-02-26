@@ -44,7 +44,7 @@ class InvoiceTemplate extends InvoiceTemplateAbstract implements InvoiceTemplate
     /**
      * @inheritdoc
      */
-    public function setTemplate(string $template): self
+    public function setTemplate(string $template): static
     {
         if (empty($template)) {
             throw new \DomainException('Template cannot be empty', 80000);

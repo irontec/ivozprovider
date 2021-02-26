@@ -77,6 +77,8 @@ class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface,
         if ($this->getCompany()) {
             return 'company' . $this->getCompany()->getId();
         }
+
+        return '';
     }
 
 

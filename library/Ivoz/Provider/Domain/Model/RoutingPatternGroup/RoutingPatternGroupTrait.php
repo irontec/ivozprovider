@@ -136,13 +136,6 @@ trait RoutingPatternGroupTrait
         ];
     }
 
-    /**
-     * Add relPattern
-     *
-     * @param RoutingPatternGroupsRelPatternInterface $relPattern
-     *
-     * @return static
-     */
     public function addRelPattern(RoutingPatternGroupsRelPatternInterface $relPattern): RoutingPatternGroupInterface
     {
         $this->relPatterns->add($relPattern);
@@ -150,13 +143,6 @@ trait RoutingPatternGroupTrait
         return $this;
     }
 
-    /**
-     * Remove relPattern
-     *
-     * @param RoutingPatternGroupsRelPatternInterface $relPattern
-     *
-     * @return static
-     */
     public function removeRelPattern(RoutingPatternGroupsRelPatternInterface $relPattern): RoutingPatternGroupInterface
     {
         $this->relPatterns->removeElement($relPattern);
@@ -164,13 +150,6 @@ trait RoutingPatternGroupTrait
         return $this;
     }
 
-    /**
-     * Replace relPatterns
-     *
-     * @param ArrayCollection $relPatterns of RoutingPatternGroupsRelPatternInterface
-     *
-     * @return static
-     */
     public function replaceRelPatterns(ArrayCollection $relPatterns): RoutingPatternGroupInterface
     {
         $updatedEntities = [];
@@ -199,11 +178,6 @@ trait RoutingPatternGroupTrait
         return $this;
     }
 
-    /**
-     * Get relPatterns
-     * @param Criteria | null $criteria
-     * @return RoutingPatternGroupsRelPatternInterface[]
-     */
     public function getRelPatterns(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -213,13 +187,6 @@ trait RoutingPatternGroupTrait
         return $this->relPatterns->toArray();
     }
 
-    /**
-     * Add outgoingRouting
-     *
-     * @param OutgoingRoutingInterface $outgoingRouting
-     *
-     * @return static
-     */
     public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingPatternGroupInterface
     {
         $this->outgoingRoutings->add($outgoingRouting);
@@ -227,13 +194,6 @@ trait RoutingPatternGroupTrait
         return $this;
     }
 
-    /**
-     * Remove outgoingRouting
-     *
-     * @param OutgoingRoutingInterface $outgoingRouting
-     *
-     * @return static
-     */
     public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingPatternGroupInterface
     {
         $this->outgoingRoutings->removeElement($outgoingRouting);
@@ -241,13 +201,6 @@ trait RoutingPatternGroupTrait
         return $this;
     }
 
-    /**
-     * Replace outgoingRoutings
-     *
-     * @param ArrayCollection $outgoingRoutings of OutgoingRoutingInterface
-     *
-     * @return static
-     */
     public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingPatternGroupInterface
     {
         $updatedEntities = [];
@@ -276,11 +229,6 @@ trait RoutingPatternGroupTrait
         return $this;
     }
 
-    /**
-     * Get outgoingRoutings
-     * @param Criteria | null $criteria
-     * @return OutgoingRoutingInterface[]
-     */
     public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

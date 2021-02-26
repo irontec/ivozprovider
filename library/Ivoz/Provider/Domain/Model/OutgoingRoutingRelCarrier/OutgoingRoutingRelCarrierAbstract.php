@@ -22,7 +22,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
     use ChangelogTrait;
 
     /**
-     * @var OutgoingRoutingInterface
+     * @var OutgoingRoutingInterface | null
      * inversedBy relCarriers
      */
     protected $outgoingRouting;
@@ -62,7 +62,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return OutgoingRoutingRelCarrierDto
      */
     public static function createDto($id = null)
@@ -164,49 +164,27 @@ abstract class OutgoingRoutingRelCarrierAbstract
         ];
     }
 
-    /**
-     * Set outgoingRouting
-     *
-     * @param OutgoingRoutingInterface | null
-     *
-     * @return static
-     */
-    public function setOutgoingRouting(?OutgoingRoutingInterface $outgoingRouting = null): OutgoingRoutingRelCarrierInterface
+    public function setOutgoingRouting(?OutgoingRoutingInterface $outgoingRouting = null): static
     {
         $this->outgoingRouting = $outgoingRouting;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get outgoingRouting
-     *
-     * @return OutgoingRoutingInterface | null
-     */
     public function getOutgoingRouting(): ?OutgoingRoutingInterface
     {
         return $this->outgoingRouting;
     }
 
-    /**
-     * Set carrier
-     *
-     * @param CarrierInterface
-     *
-     * @return static
-     */
-    public function setCarrier(CarrierInterface $carrier): OutgoingRoutingRelCarrierInterface
+    public function setCarrier(CarrierInterface $carrier): static
     {
         $this->carrier = $carrier;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get carrier
-     *
-     * @return CarrierInterface
-     */
     public function getCarrier(): CarrierInterface
     {
         return $this->carrier;

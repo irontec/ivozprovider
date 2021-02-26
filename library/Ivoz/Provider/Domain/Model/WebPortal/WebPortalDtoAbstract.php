@@ -17,25 +17,25 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $url;
+    private $url = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $klearTheme = '';
 
     /**
      * @var string
      */
-    private $urlType;
+    private $urlType = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $name = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $userTheme = '';
 
@@ -45,17 +45,17 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $logoFileSize;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $logoMimeType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $logoBaseName;
 
@@ -128,210 +128,127 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $url | null
-     *
-     * @return static
-     */
-    public function setUrl(?string $url = null): self
+    public function setUrl(?string $url): static
     {
         $this->url = $url;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @param string $klearTheme | null
-     *
-     * @return static
-     */
-    public function setKlearTheme(?string $klearTheme = null): self
+    public function setKlearTheme(?string $klearTheme): static
     {
         $this->klearTheme = $klearTheme;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getKlearTheme(): ?string
     {
         return $this->klearTheme;
     }
 
-    /**
-     * @param string $urlType | null
-     *
-     * @return static
-     */
-    public function setUrlType(?string $urlType = null): self
+    public function setUrlType(?string $urlType): static
     {
         $this->urlType = $urlType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUrlType(): ?string
     {
         return $this->urlType;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $userTheme | null
-     *
-     * @return static
-     */
-    public function setUserTheme(?string $userTheme = null): self
+    public function setUserTheme(?string $userTheme): static
     {
         $this->userTheme = $userTheme;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUserTheme(): ?string
     {
         return $this->userTheme;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param int $logoFileSize | null
-     *
-     * @return static
-     */
-    public function setLogoFileSize(?int $logoFileSize = null): self
+    public function setLogoFileSize(?int $logoFileSize): static
     {
         $this->logoFileSize = $logoFileSize;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getLogoFileSize(): ?int
     {
         return $this->logoFileSize;
     }
 
-    /**
-     * @param string $logoMimeType | null
-     *
-     * @return static
-     */
-    public function setLogoMimeType(?string $logoMimeType = null): self
+    public function setLogoMimeType(?string $logoMimeType): static
     {
         $this->logoMimeType = $logoMimeType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLogoMimeType(): ?string
     {
         return $this->logoMimeType;
     }
 
-    /**
-     * @param string $logoBaseName | null
-     *
-     * @return static
-     */
-    public function setLogoBaseName(?string $logoBaseName = null): self
+    public function setLogoBaseName(?string $logoBaseName): static
     {
         $this->logoBaseName = $logoBaseName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLogoBaseName(): ?string
     {
         return $this->logoBaseName;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -340,9 +257,6 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {

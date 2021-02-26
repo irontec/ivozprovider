@@ -58,7 +58,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      * {@inheritDoc}
      * @throws \InvalidArgumentException
      */
-    public function setName(?string $name = null): self
+    public function setName(?string $name = null): static
     {
         if (! is_null($name)) {
             Assertion::regex($name, '/^[a-zA-Z0-9_*]+$/');
@@ -71,7 +71,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      * {@inheritDoc}
      * @throws \InvalidArgumentException
      */
-    public function setPassword(string $password): self
+    public function setPassword(string $password): static
     {
         Assertion::regex(
             $password,
@@ -162,7 +162,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
         return array_shift($astPsEndpoints);
     }
 
-    public function setMac(?string $mac = null): self
+    public function setMac(?string $mac = null): static
     {
         if (!$mac) {
             $mac = null;

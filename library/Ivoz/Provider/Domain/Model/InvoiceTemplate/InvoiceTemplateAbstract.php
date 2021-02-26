@@ -45,7 +45,7 @@ abstract class InvoiceTemplateAbstract
     protected $templateFooter;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      */
     protected $brand;
 
@@ -80,7 +80,7 @@ abstract class InvoiceTemplateAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return InvoiceTemplateDto
      */
     public static function createDto($id = null)
@@ -197,14 +197,7 @@ abstract class InvoiceTemplateAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): InvoiceTemplateInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 55, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -213,24 +206,12 @@ abstract class InvoiceTemplateAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description | null
-     *
-     * @return static
-     */
-    protected function setDescription(?string $description = null): InvoiceTemplateInterface
+    protected function setDescription(?string $description = null): static
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 300, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -241,24 +222,12 @@ abstract class InvoiceTemplateAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * Set template
-     *
-     * @param string $template
-     *
-     * @return static
-     */
-    protected function setTemplate(string $template): InvoiceTemplateInterface
+    protected function setTemplate(string $template): static
     {
         Assertion::maxLength($template, 65535, 'template value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -267,24 +236,12 @@ abstract class InvoiceTemplateAbstract
         return $this;
     }
 
-    /**
-     * Get template
-     *
-     * @return string
-     */
     public function getTemplate(): string
     {
         return $this->template;
     }
 
-    /**
-     * Set templateHeader
-     *
-     * @param string $templateHeader | null
-     *
-     * @return static
-     */
-    protected function setTemplateHeader(?string $templateHeader = null): InvoiceTemplateInterface
+    protected function setTemplateHeader(?string $templateHeader = null): static
     {
         if (!is_null($templateHeader)) {
             Assertion::maxLength($templateHeader, 65535, 'templateHeader value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -295,24 +252,12 @@ abstract class InvoiceTemplateAbstract
         return $this;
     }
 
-    /**
-     * Get templateHeader
-     *
-     * @return string | null
-     */
     public function getTemplateHeader(): ?string
     {
         return $this->templateHeader;
     }
 
-    /**
-     * Set templateFooter
-     *
-     * @param string $templateFooter | null
-     *
-     * @return static
-     */
-    protected function setTemplateFooter(?string $templateFooter = null): InvoiceTemplateInterface
+    protected function setTemplateFooter(?string $templateFooter = null): static
     {
         if (!is_null($templateFooter)) {
             Assertion::maxLength($templateFooter, 65535, 'templateFooter value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -323,35 +268,18 @@ abstract class InvoiceTemplateAbstract
         return $this;
     }
 
-    /**
-     * Get templateFooter
-     *
-     * @return string | null
-     */
     public function getTemplateFooter(): ?string
     {
         return $this->templateFooter;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    protected function setBrand(?BrandInterface $brand = null): InvoiceTemplateInterface
+    protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;

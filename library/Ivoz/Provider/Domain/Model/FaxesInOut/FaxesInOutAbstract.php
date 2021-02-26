@@ -24,7 +24,7 @@ abstract class FaxesInOutAbstract
     use ChangelogTrait;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $calldate;
 
@@ -65,7 +65,7 @@ abstract class FaxesInOutAbstract
     protected $fax;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $dstCountry;
 
@@ -100,7 +100,7 @@ abstract class FaxesInOutAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return FaxesInOutDto
      */
     public static function createDto($id = null)
@@ -245,14 +245,7 @@ abstract class FaxesInOutAbstract
         ];
     }
 
-    /**
-     * Set calldate
-     *
-     * @param \DateTimeInterface $calldate
-     *
-     * @return static
-     */
-    protected function setCalldate($calldate): FaxesInOutInterface
+    protected function setCalldate($calldate): static
     {
 
         $calldate = DateTimeHelper::createOrFix(
@@ -269,24 +262,12 @@ abstract class FaxesInOutAbstract
         return $this;
     }
 
-    /**
-     * Get calldate
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCalldate(): \DateTimeInterface
+    public function getCalldate(): \DateTime
     {
         return clone $this->calldate;
     }
 
-    /**
-     * Set src
-     *
-     * @param string $src | null
-     *
-     * @return static
-     */
-    protected function setSrc(?string $src = null): FaxesInOutInterface
+    protected function setSrc(?string $src = null): static
     {
         if (!is_null($src)) {
             Assertion::maxLength($src, 128, 'src value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -297,24 +278,12 @@ abstract class FaxesInOutAbstract
         return $this;
     }
 
-    /**
-     * Get src
-     *
-     * @return string | null
-     */
     public function getSrc(): ?string
     {
         return $this->src;
     }
 
-    /**
-     * Set dst
-     *
-     * @param string $dst | null
-     *
-     * @return static
-     */
-    protected function setDst(?string $dst = null): FaxesInOutInterface
+    protected function setDst(?string $dst = null): static
     {
         if (!is_null($dst)) {
             Assertion::maxLength($dst, 128, 'dst value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -325,24 +294,12 @@ abstract class FaxesInOutAbstract
         return $this;
     }
 
-    /**
-     * Get dst
-     *
-     * @return string | null
-     */
     public function getDst(): ?string
     {
         return $this->dst;
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type | null
-     *
-     * @return static
-     */
-    protected function setType(?string $type = null): FaxesInOutInterface
+    protected function setType(?string $type = null): static
     {
         if (!is_null($type)) {
             Assertion::maxLength($type, 20, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -361,24 +318,12 @@ abstract class FaxesInOutAbstract
         return $this;
     }
 
-    /**
-     * Get type
-     *
-     * @return string | null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * Set pages
-     *
-     * @param string $pages | null
-     *
-     * @return static
-     */
-    protected function setPages(?string $pages = null): FaxesInOutInterface
+    protected function setPages(?string $pages = null): static
     {
         if (!is_null($pages)) {
             Assertion::maxLength($pages, 64, 'pages value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -389,56 +334,29 @@ abstract class FaxesInOutAbstract
         return $this;
     }
 
-    /**
-     * Get pages
-     *
-     * @return string | null
-     */
     public function getPages(): ?string
     {
         return $this->pages;
     }
 
-    /**
-     * Set status
-     *
-     * @param string $status | null
-     *
-     * @return static
-     */
-    protected function setStatus(?string $status = null): FaxesInOutInterface
+    protected function setStatus(?string $status = null): static
     {
         $this->status = $status;
 
         return $this;
     }
 
-    /**
-     * Get status
-     *
-     * @return string | null
-     */
     public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    /**
-     * Get file
-     *
-     * @return File
-     */
     public function getFile(): File
     {
         return $this->file;
     }
 
-    /**
-     * Set file
-     *
-     * @return static
-     */
-    protected function setFile(File $file): FaxesInOutInterface
+    protected function setFile(File $file): static
     {
         $isEqual = $this->file && $this->file->equals($file);
         if ($isEqual) {
@@ -449,49 +367,25 @@ abstract class FaxesInOutAbstract
         return $this;
     }
 
-    /**
-     * Set fax
-     *
-     * @param FaxInterface
-     *
-     * @return static
-     */
-    protected function setFax(FaxInterface $fax): FaxesInOutInterface
+    protected function setFax(FaxInterface $fax): static
     {
         $this->fax = $fax;
 
         return $this;
     }
 
-    /**
-     * Get fax
-     *
-     * @return FaxInterface
-     */
     public function getFax(): FaxInterface
     {
         return $this->fax;
     }
 
-    /**
-     * Set dstCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setDstCountry(?CountryInterface $dstCountry = null): FaxesInOutInterface
+    protected function setDstCountry(?CountryInterface $dstCountry = null): static
     {
         $this->dstCountry = $dstCountry;
 
         return $this;
     }
 
-    /**
-     * Get dstCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getDstCountry(): ?CountryInterface
     {
         return $this->dstCountry;

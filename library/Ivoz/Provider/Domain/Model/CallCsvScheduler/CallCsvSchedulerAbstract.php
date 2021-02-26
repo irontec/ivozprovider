@@ -68,7 +68,7 @@ abstract class CallCsvSchedulerAbstract
     protected $email;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $lastExecution;
 
@@ -78,62 +78,62 @@ abstract class CallCsvSchedulerAbstract
     protected $lastExecutionError;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $nextExecution;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var NotificationTemplateInterface
+     * @var NotificationTemplateInterface | null
      */
     protected $callCsvNotificationTemplate;
 
     /**
-     * @var DdiInterface
+     * @var DdiInterface | null
      */
     protected $ddi;
 
     /**
-     * @var CarrierInterface
+     * @var CarrierInterface | null
      */
     protected $carrier;
 
     /**
-     * @var RetailAccountInterface
+     * @var RetailAccountInterface | null
      */
     protected $retailAccount;
 
     /**
-     * @var ResidentialDeviceInterface
+     * @var ResidentialDeviceInterface | null
      */
     protected $residentialDevice;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $user;
 
     /**
-     * @var FaxInterface
+     * @var FaxInterface | null
      */
     protected $fax;
 
     /**
-     * @var FriendInterface
+     * @var FriendInterface | null
      */
     protected $friend;
 
     /**
-     * @var DdiProviderInterface
+     * @var DdiProviderInterface | null
      */
     protected $ddiProvider;
 
@@ -172,7 +172,7 @@ abstract class CallCsvSchedulerAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CallCsvSchedulerDto
      */
     public static function createDto($id = null)
@@ -341,14 +341,7 @@ abstract class CallCsvSchedulerAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): CallCsvSchedulerInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 40, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -357,24 +350,12 @@ abstract class CallCsvSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set unit
-     *
-     * @param string $unit
-     *
-     * @return static
-     */
-    protected function setUnit(string $unit): CallCsvSchedulerInterface
+    protected function setUnit(string $unit): static
     {
         Assertion::maxLength($unit, 30, 'unit value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -392,24 +373,12 @@ abstract class CallCsvSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get unit
-     *
-     * @return string
-     */
     public function getUnit(): string
     {
         return $this->unit;
     }
 
-    /**
-     * Set frequency
-     *
-     * @param int $frequency
-     *
-     * @return static
-     */
-    protected function setFrequency(int $frequency): CallCsvSchedulerInterface
+    protected function setFrequency(int $frequency): static
     {
         Assertion::greaterOrEqualThan($frequency, 0, 'frequency provided "%s" is not greater or equal than "%s".');
 
@@ -418,24 +387,12 @@ abstract class CallCsvSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get frequency
-     *
-     * @return int
-     */
     public function getFrequency(): int
     {
         return $this->frequency;
     }
 
-    /**
-     * Set callDirection
-     *
-     * @param string $callDirection | null
-     *
-     * @return static
-     */
-    protected function setCallDirection(?string $callDirection = null): CallCsvSchedulerInterface
+    protected function setCallDirection(?string $callDirection = null): static
     {
         if (!is_null($callDirection)) {
             Assertion::choice(
@@ -453,24 +410,12 @@ abstract class CallCsvSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get callDirection
-     *
-     * @return string | null
-     */
     public function getCallDirection(): ?string
     {
         return $this->callDirection;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return static
-     */
-    protected function setEmail(string $email): CallCsvSchedulerInterface
+    protected function setEmail(string $email): static
     {
         Assertion::maxLength($email, 140, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -479,24 +424,12 @@ abstract class CallCsvSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get email
-     *
-     * @return string
-     */
     public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * Set lastExecution
-     *
-     * @param \DateTimeInterface $lastExecution | null
-     *
-     * @return static
-     */
-    protected function setLastExecution($lastExecution = null): CallCsvSchedulerInterface
+    protected function setLastExecution($lastExecution = null): static
     {
         if (!is_null($lastExecution)) {
             Assertion::notNull(
@@ -518,24 +451,12 @@ abstract class CallCsvSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get lastExecution
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getLastExecution(): ?\DateTimeInterface
+    public function getLastExecution(): ?\DateTime
     {
         return !is_null($this->lastExecution) ? clone $this->lastExecution : null;
     }
 
-    /**
-     * Set lastExecutionError
-     *
-     * @param string $lastExecutionError | null
-     *
-     * @return static
-     */
-    protected function setLastExecutionError(?string $lastExecutionError = null): CallCsvSchedulerInterface
+    protected function setLastExecutionError(?string $lastExecutionError = null): static
     {
         if (!is_null($lastExecutionError)) {
             Assertion::maxLength($lastExecutionError, 300, 'lastExecutionError value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -546,24 +467,12 @@ abstract class CallCsvSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get lastExecutionError
-     *
-     * @return string | null
-     */
     public function getLastExecutionError(): ?string
     {
         return $this->lastExecutionError;
     }
 
-    /**
-     * Set nextExecution
-     *
-     * @param \DateTimeInterface $nextExecution | null
-     *
-     * @return static
-     */
-    protected function setNextExecution($nextExecution = null): CallCsvSchedulerInterface
+    protected function setNextExecution($nextExecution = null): static
     {
         if (!is_null($nextExecution)) {
             Assertion::notNull(
@@ -585,275 +494,138 @@ abstract class CallCsvSchedulerAbstract
         return $this;
     }
 
-    /**
-     * Get nextExecution
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getNextExecution(): ?\DateTimeInterface
+    public function getNextExecution(): ?\DateTime
     {
         return !is_null($this->nextExecution) ? clone $this->nextExecution : null;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    protected function setBrand(?BrandInterface $brand = null): CallCsvSchedulerInterface
+    protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    protected function setCompany(?CompanyInterface $company = null): CallCsvSchedulerInterface
+    protected function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set callCsvNotificationTemplate
-     *
-     * @param NotificationTemplateInterface | null
-     *
-     * @return static
-     */
-    protected function setCallCsvNotificationTemplate(?NotificationTemplateInterface $callCsvNotificationTemplate = null): CallCsvSchedulerInterface
+    protected function setCallCsvNotificationTemplate(?NotificationTemplateInterface $callCsvNotificationTemplate = null): static
     {
         $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
 
         return $this;
     }
 
-    /**
-     * Get callCsvNotificationTemplate
-     *
-     * @return NotificationTemplateInterface | null
-     */
     public function getCallCsvNotificationTemplate(): ?NotificationTemplateInterface
     {
         return $this->callCsvNotificationTemplate;
     }
 
-    /**
-     * Set ddi
-     *
-     * @param DdiInterface | null
-     *
-     * @return static
-     */
-    protected function setDdi(?DdiInterface $ddi = null): CallCsvSchedulerInterface
+    protected function setDdi(?DdiInterface $ddi = null): static
     {
         $this->ddi = $ddi;
 
         return $this;
     }
 
-    /**
-     * Get ddi
-     *
-     * @return DdiInterface | null
-     */
     public function getDdi(): ?DdiInterface
     {
         return $this->ddi;
     }
 
-    /**
-     * Set carrier
-     *
-     * @param CarrierInterface | null
-     *
-     * @return static
-     */
-    protected function setCarrier(?CarrierInterface $carrier = null): CallCsvSchedulerInterface
+    protected function setCarrier(?CarrierInterface $carrier = null): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * Get carrier
-     *
-     * @return CarrierInterface | null
-     */
     public function getCarrier(): ?CarrierInterface
     {
         return $this->carrier;
     }
 
-    /**
-     * Set retailAccount
-     *
-     * @param RetailAccountInterface | null
-     *
-     * @return static
-     */
-    protected function setRetailAccount(?RetailAccountInterface $retailAccount = null): CallCsvSchedulerInterface
+    protected function setRetailAccount(?RetailAccountInterface $retailAccount = null): static
     {
         $this->retailAccount = $retailAccount;
 
         return $this;
     }
 
-    /**
-     * Get retailAccount
-     *
-     * @return RetailAccountInterface | null
-     */
     public function getRetailAccount(): ?RetailAccountInterface
     {
         return $this->retailAccount;
     }
 
-    /**
-     * Set residentialDevice
-     *
-     * @param ResidentialDeviceInterface | null
-     *
-     * @return static
-     */
-    protected function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): CallCsvSchedulerInterface
+    protected function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static
     {
         $this->residentialDevice = $residentialDevice;
 
         return $this;
     }
 
-    /**
-     * Get residentialDevice
-     *
-     * @return ResidentialDeviceInterface | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceInterface
     {
         return $this->residentialDevice;
     }
 
-    /**
-     * Set user
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setUser(?UserInterface $user = null): CallCsvSchedulerInterface
+    protected function setUser(?UserInterface $user = null): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface
     {
         return $this->user;
     }
 
-    /**
-     * Set fax
-     *
-     * @param FaxInterface | null
-     *
-     * @return static
-     */
-    protected function setFax(?FaxInterface $fax = null): CallCsvSchedulerInterface
+    protected function setFax(?FaxInterface $fax = null): static
     {
         $this->fax = $fax;
 
         return $this;
     }
 
-    /**
-     * Get fax
-     *
-     * @return FaxInterface | null
-     */
     public function getFax(): ?FaxInterface
     {
         return $this->fax;
     }
 
-    /**
-     * Set friend
-     *
-     * @param FriendInterface | null
-     *
-     * @return static
-     */
-    protected function setFriend(?FriendInterface $friend = null): CallCsvSchedulerInterface
+    protected function setFriend(?FriendInterface $friend = null): static
     {
         $this->friend = $friend;
 
         return $this;
     }
 
-    /**
-     * Get friend
-     *
-     * @return FriendInterface | null
-     */
     public function getFriend(): ?FriendInterface
     {
         return $this->friend;
     }
 
-    /**
-     * Set ddiProvider
-     *
-     * @param DdiProviderInterface | null
-     *
-     * @return static
-     */
-    protected function setDdiProvider(?DdiProviderInterface $ddiProvider = null): CallCsvSchedulerInterface
+    protected function setDdiProvider(?DdiProviderInterface $ddiProvider = null): static
     {
         $this->ddiProvider = $ddiProvider;
 
         return $this;
     }
 
-    /**
-     * Get ddiProvider
-     *
-     * @return DdiProviderInterface | null
-     */
     public function getDdiProvider(): ?DdiProviderInterface
     {
         return $this->ddiProvider;

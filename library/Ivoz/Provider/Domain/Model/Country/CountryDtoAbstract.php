@@ -19,7 +19,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     private $code = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $countryCode;
 
@@ -29,22 +29,22 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $nameEn;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $nameEs;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $nameCa;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $nameIt;
 
@@ -138,221 +138,133 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $code | null
-     *
-     * @return static
-     */
-    public function setCode(?string $code = null): self
+    public function setCode(?string $code): static
     {
         $this->code = $code;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCode(): ?string
     {
         return $this->code;
     }
 
-    /**
-     * @param string $countryCode | null
-     *
-     * @return static
-     */
-    public function setCountryCode(?string $countryCode = null): self
+    public function setCountryCode(?string $countryCode): static
     {
         $this->countryCode = $countryCode;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param string $nameEn | null
-     *
-     * @return static
-     */
-    public function setNameEn(?string $nameEn = null): self
+    public function setNameEn(?string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameEn(): ?string
     {
         return $this->nameEn;
     }
 
-    /**
-     * @param string $nameEs | null
-     *
-     * @return static
-     */
-    public function setNameEs(?string $nameEs = null): self
+    public function setNameEs(?string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameEs(): ?string
     {
         return $this->nameEs;
     }
 
-    /**
-     * @param string $nameCa | null
-     *
-     * @return static
-     */
-    public function setNameCa(?string $nameCa = null): self
+    public function setNameCa(?string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameCa(): ?string
     {
         return $this->nameCa;
     }
 
-    /**
-     * @param string $nameIt | null
-     *
-     * @return static
-     */
-    public function setNameIt(?string $nameIt = null): self
+    public function setNameIt(?string $nameIt): static
     {
         $this->nameIt = $nameIt;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameIt(): ?string
     {
         return $this->nameIt;
     }
 
-    /**
-     * @param string $zoneEn | null
-     *
-     * @return static
-     */
-    public function setZoneEn(?string $zoneEn = null): self
+    public function setZoneEn(?string $zoneEn): static
     {
         $this->zoneEn = $zoneEn;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getZoneEn(): ?string
     {
         return $this->zoneEn;
     }
 
-    /**
-     * @param string $zoneEs | null
-     *
-     * @return static
-     */
-    public function setZoneEs(?string $zoneEs = null): self
+    public function setZoneEs(?string $zoneEs): static
     {
         $this->zoneEs = $zoneEs;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getZoneEs(): ?string
     {
         return $this->zoneEs;
     }
 
-    /**
-     * @param string $zoneCa | null
-     *
-     * @return static
-     */
-    public function setZoneCa(?string $zoneCa = null): self
+    public function setZoneCa(?string $zoneCa): static
     {
         $this->zoneCa = $zoneCa;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getZoneCa(): ?string
     {
         return $this->zoneCa;
     }
 
-    /**
-     * @param string $zoneIt | null
-     *
-     * @return static
-     */
-    public function setZoneIt(?string $zoneIt = null): self
+    public function setZoneIt(?string $zoneIt): static
     {
         $this->zoneIt = $zoneIt;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getZoneIt(): ?string
     {
         return $this->zoneIt;

@@ -48,9 +48,9 @@ abstract class TpRatingPlanAbstract
 
     /**
      * column: created_at
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $createdAt = 'CURRENT_TIMESTAMP';
+    protected $createdAt;
 
     /**
      * @var RatingPlan
@@ -93,7 +93,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TpRatingPlanDto
      */
     public static function createDto($id = null)
@@ -214,14 +214,7 @@ abstract class TpRatingPlanAbstract
         ];
     }
 
-    /**
-     * Set tpid
-     *
-     * @param string $tpid
-     *
-     * @return static
-     */
-    protected function setTpid(string $tpid): TpRatingPlanInterface
+    protected function setTpid(string $tpid): static
     {
         Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -230,24 +223,12 @@ abstract class TpRatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get tpid
-     *
-     * @return string
-     */
     public function getTpid(): string
     {
         return $this->tpid;
     }
 
-    /**
-     * Set tag
-     *
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    protected function setTag(?string $tag = null): TpRatingPlanInterface
+    protected function setTag(?string $tag = null): static
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -258,24 +239,12 @@ abstract class TpRatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get tag
-     *
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * Set destratesTag
-     *
-     * @param string $destratesTag | null
-     *
-     * @return static
-     */
-    protected function setDestratesTag(?string $destratesTag = null): TpRatingPlanInterface
+    protected function setDestratesTag(?string $destratesTag = null): static
     {
         if (!is_null($destratesTag)) {
             Assertion::maxLength($destratesTag, 64, 'destratesTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -286,24 +255,12 @@ abstract class TpRatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get destratesTag
-     *
-     * @return string | null
-     */
     public function getDestratesTag(): ?string
     {
         return $this->destratesTag;
     }
 
-    /**
-     * Set timingTag
-     *
-     * @param string $timingTag
-     *
-     * @return static
-     */
-    protected function setTimingTag(string $timingTag): TpRatingPlanInterface
+    protected function setTimingTag(string $timingTag): static
     {
         Assertion::maxLength($timingTag, 64, 'timingTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -312,48 +269,24 @@ abstract class TpRatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get timingTag
-     *
-     * @return string
-     */
     public function getTimingTag(): string
     {
         return $this->timingTag;
     }
 
-    /**
-     * Set weight
-     *
-     * @param float $weight
-     *
-     * @return static
-     */
-    protected function setWeight(float $weight): TpRatingPlanInterface
+    protected function setWeight(float $weight): static
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    /**
-     * Get weight
-     *
-     * @return float
-     */
     public function getWeight(): float
     {
         return $this->weight;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTimeInterface $createdAt
-     *
-     * @return static
-     */
-    protected function setCreatedAt($createdAt): TpRatingPlanInterface
+    protected function setCreatedAt($createdAt): static
     {
 
         $createdAt = DateTimeHelper::createOrFix(
@@ -370,35 +303,19 @@ abstract class TpRatingPlanAbstract
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }
 
-    /**
-     * Set ratingPlan
-     *
-     * @param RatingPlan
-     *
-     * @return static
-     */
-    public function setRatingPlan(RatingPlan $ratingPlan): TpRatingPlanInterface
+    public function setRatingPlan(RatingPlan $ratingPlan): static
     {
         $this->ratingPlan = $ratingPlan;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get ratingPlan
-     *
-     * @return RatingPlan
-     */
     public function getRatingPlan(): RatingPlan
     {
         return $this->ratingPlan;

@@ -32,7 +32,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $tenant;
+    private $tenant = '';
 
     /**
      * @var string
@@ -45,12 +45,12 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     private $account = '*any';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $subject = '*any';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $destinationIds = '*any';
 
@@ -140,7 +140,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     private $costField = '*default';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -250,570 +250,343 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
         return $response;
     }
 
-    /**
-     * @param string $tpid | null
-     *
-     * @return static
-     */
-    public function setTpid(?string $tpid = null): self
+    public function setTpid(?string $tpid): static
     {
         $this->tpid = $tpid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTpid(): ?string
     {
         return $this->tpid;
     }
 
-    /**
-     * @param string $loadid | null
-     *
-     * @return static
-     */
-    public function setLoadid(?string $loadid = null): self
+    public function setLoadid(?string $loadid): static
     {
         $this->loadid = $loadid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLoadid(): ?string
     {
         return $this->loadid;
     }
 
-    /**
-     * @param string $direction | null
-     *
-     * @return static
-     */
-    public function setDirection(?string $direction = null): self
+    public function setDirection(?string $direction): static
     {
         $this->direction = $direction;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDirection(): ?string
     {
         return $this->direction;
     }
 
-    /**
-     * @param string $tenant | null
-     *
-     * @return static
-     */
-    public function setTenant(?string $tenant = null): self
+    public function setTenant(?string $tenant): static
     {
         $this->tenant = $tenant;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTenant(): ?string
     {
         return $this->tenant;
     }
 
-    /**
-     * @param string $category | null
-     *
-     * @return static
-     */
-    public function setCategory(?string $category = null): self
+    public function setCategory(?string $category): static
     {
         $this->category = $category;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCategory(): ?string
     {
         return $this->category;
     }
 
-    /**
-     * @param string $account | null
-     *
-     * @return static
-     */
-    public function setAccount(?string $account = null): self
+    public function setAccount(?string $account): static
     {
         $this->account = $account;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAccount(): ?string
     {
         return $this->account;
     }
 
-    /**
-     * @param string $subject | null
-     *
-     * @return static
-     */
-    public function setSubject(?string $subject = null): self
+    public function setSubject(?string $subject): static
     {
         $this->subject = $subject;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSubject(): ?string
     {
         return $this->subject;
     }
 
-    /**
-     * @param string $destinationIds | null
-     *
-     * @return static
-     */
-    public function setDestinationIds(?string $destinationIds = null): self
+    public function setDestinationIds(?string $destinationIds): static
     {
         $this->destinationIds = $destinationIds;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDestinationIds(): ?string
     {
         return $this->destinationIds;
     }
 
-    /**
-     * @param string $runid | null
-     *
-     * @return static
-     */
-    public function setRunid(?string $runid = null): self
+    public function setRunid(?string $runid): static
     {
         $this->runid = $runid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRunid(): ?string
     {
         return $this->runid;
     }
 
-    /**
-     * @param string $runFilters | null
-     *
-     * @return static
-     */
-    public function setRunFilters(?string $runFilters = null): self
+    public function setRunFilters(?string $runFilters): static
     {
         $this->runFilters = $runFilters;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRunFilters(): ?string
     {
         return $this->runFilters;
     }
 
-    /**
-     * @param string $reqTypeField | null
-     *
-     * @return static
-     */
-    public function setReqTypeField(?string $reqTypeField = null): self
+    public function setReqTypeField(?string $reqTypeField): static
     {
         $this->reqTypeField = $reqTypeField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getReqTypeField(): ?string
     {
         return $this->reqTypeField;
     }
 
-    /**
-     * @param string $directionField | null
-     *
-     * @return static
-     */
-    public function setDirectionField(?string $directionField = null): self
+    public function setDirectionField(?string $directionField): static
     {
         $this->directionField = $directionField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDirectionField(): ?string
     {
         return $this->directionField;
     }
 
-    /**
-     * @param string $tenantField | null
-     *
-     * @return static
-     */
-    public function setTenantField(?string $tenantField = null): self
+    public function setTenantField(?string $tenantField): static
     {
         $this->tenantField = $tenantField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTenantField(): ?string
     {
         return $this->tenantField;
     }
 
-    /**
-     * @param string $categoryField | null
-     *
-     * @return static
-     */
-    public function setCategoryField(?string $categoryField = null): self
+    public function setCategoryField(?string $categoryField): static
     {
         $this->categoryField = $categoryField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCategoryField(): ?string
     {
         return $this->categoryField;
     }
 
-    /**
-     * @param string $accountField | null
-     *
-     * @return static
-     */
-    public function setAccountField(?string $accountField = null): self
+    public function setAccountField(?string $accountField): static
     {
         $this->accountField = $accountField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAccountField(): ?string
     {
         return $this->accountField;
     }
 
-    /**
-     * @param string $subjectField | null
-     *
-     * @return static
-     */
-    public function setSubjectField(?string $subjectField = null): self
+    public function setSubjectField(?string $subjectField): static
     {
         $this->subjectField = $subjectField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSubjectField(): ?string
     {
         return $this->subjectField;
     }
 
-    /**
-     * @param string $destinationField | null
-     *
-     * @return static
-     */
-    public function setDestinationField(?string $destinationField = null): self
+    public function setDestinationField(?string $destinationField): static
     {
         $this->destinationField = $destinationField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDestinationField(): ?string
     {
         return $this->destinationField;
     }
 
-    /**
-     * @param string $setupTimeField | null
-     *
-     * @return static
-     */
-    public function setSetupTimeField(?string $setupTimeField = null): self
+    public function setSetupTimeField(?string $setupTimeField): static
     {
         $this->setupTimeField = $setupTimeField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSetupTimeField(): ?string
     {
         return $this->setupTimeField;
     }
 
-    /**
-     * @param string $pddField | null
-     *
-     * @return static
-     */
-    public function setPddField(?string $pddField = null): self
+    public function setPddField(?string $pddField): static
     {
         $this->pddField = $pddField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPddField(): ?string
     {
         return $this->pddField;
     }
 
-    /**
-     * @param string $answerTimeField | null
-     *
-     * @return static
-     */
-    public function setAnswerTimeField(?string $answerTimeField = null): self
+    public function setAnswerTimeField(?string $answerTimeField): static
     {
         $this->answerTimeField = $answerTimeField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAnswerTimeField(): ?string
     {
         return $this->answerTimeField;
     }
 
-    /**
-     * @param string $usageField | null
-     *
-     * @return static
-     */
-    public function setUsageField(?string $usageField = null): self
+    public function setUsageField(?string $usageField): static
     {
         $this->usageField = $usageField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUsageField(): ?string
     {
         return $this->usageField;
     }
 
-    /**
-     * @param string $supplierField | null
-     *
-     * @return static
-     */
-    public function setSupplierField(?string $supplierField = null): self
+    public function setSupplierField(?string $supplierField): static
     {
         $this->supplierField = $supplierField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSupplierField(): ?string
     {
         return $this->supplierField;
     }
 
-    /**
-     * @param string $disconnectCauseField | null
-     *
-     * @return static
-     */
-    public function setDisconnectCauseField(?string $disconnectCauseField = null): self
+    public function setDisconnectCauseField(?string $disconnectCauseField): static
     {
         $this->disconnectCauseField = $disconnectCauseField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDisconnectCauseField(): ?string
     {
         return $this->disconnectCauseField;
     }
 
-    /**
-     * @param string $ratedTimeField | null
-     *
-     * @return static
-     */
-    public function setRatedTimeField(?string $ratedTimeField = null): self
+    public function setRatedTimeField(?string $ratedTimeField): static
     {
         $this->ratedTimeField = $ratedTimeField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRatedTimeField(): ?string
     {
         return $this->ratedTimeField;
     }
 
-    /**
-     * @param string $costField | null
-     *
-     * @return static
-     */
-    public function setCostField(?string $costField = null): self
+    public function setCostField(?string $costField): static
     {
         $this->costField = $costField;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCostField(): ?string
     {
         return $this->costField;
     }
 
-    /**
-     * @param \DateTimeInterface $createdAt | null
-     *
-     * @return static
-     */
-    public function setCreatedAt($createdAt = null): self
+    public function setCreatedAt(null|\DateTime|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime|string|null
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -822,9 +595,6 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {

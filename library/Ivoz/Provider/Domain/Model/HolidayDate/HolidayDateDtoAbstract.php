@@ -21,10 +21,10 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $eventDate;
 
@@ -34,22 +34,22 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     private $wholeDayEvent = true;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime|string|null
      */
     private $timeIn;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime|string|null
      */
     private $timeOut;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $routeType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $numberValue;
 
@@ -149,190 +149,115 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param \DateTimeInterface $eventDate | null
-     *
-     * @return static
-     */
-    public function setEventDate($eventDate = null): self
+    public function setEventDate(null|\DateTime|string $eventDate): static
     {
         $this->eventDate = $eventDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getEventDate()
+    public function getEventDate(): \DateTime|string|null
     {
         return $this->eventDate;
     }
 
-    /**
-     * @param bool $wholeDayEvent | null
-     *
-     * @return static
-     */
-    public function setWholeDayEvent(?bool $wholeDayEvent = null): self
+    public function setWholeDayEvent(?bool $wholeDayEvent): static
     {
         $this->wholeDayEvent = $wholeDayEvent;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getWholeDayEvent(): ?bool
     {
         return $this->wholeDayEvent;
     }
 
-    /**
-     * @param \DateTimeInterface $timeIn | null
-     *
-     * @return static
-     */
-    public function setTimeIn($timeIn = null): self
+    public function setTimeIn(null|\DateTime|string $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getTimeIn()
+    public function getTimeIn(): \DateTime|string|null
     {
         return $this->timeIn;
     }
 
-    /**
-     * @param \DateTimeInterface $timeOut | null
-     *
-     * @return static
-     */
-    public function setTimeOut($timeOut = null): self
+    public function setTimeOut(null|\DateTime|string $timeOut): static
     {
         $this->timeOut = $timeOut;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getTimeOut()
+    public function getTimeOut(): \DateTime|string|null
     {
         return $this->timeOut;
     }
 
-    /**
-     * @param string $routeType | null
-     *
-     * @return static
-     */
-    public function setRouteType(?string $routeType = null): self
+    public function setRouteType(?string $routeType): static
     {
         $this->routeType = $routeType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRouteType(): ?string
     {
         return $this->routeType;
     }
 
-    /**
-     * @param string $numberValue | null
-     *
-     * @return static
-     */
-    public function setNumberValue(?string $numberValue = null): self
+    public function setNumberValue(?string $numberValue): static
     {
         $this->numberValue = $numberValue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CalendarDto | null
-     *
-     * @return static
-     */
-    public function setCalendar(?CalendarDto $calendar = null): self
+    public function setCalendar(?CalendarDto $calendar): static
     {
         $this->calendar = $calendar;
 
         return $this;
     }
 
-    /**
-     * @return CalendarDto | null
-     */
     public function getCalendar(): ?CalendarDto
     {
         return $this->calendar;
     }
 
-    /**
-     * @return static
-     */
-    public function setCalendarId($id): self
+    public function setCalendarId($id): static
     {
         $value = !is_null($id)
             ? new CalendarDto($id)
@@ -341,9 +266,6 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->setCalendar($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCalendarId()
     {
         if ($dto = $this->getCalendar()) {
@@ -353,30 +275,19 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LocutionDto | null
-     *
-     * @return static
-     */
-    public function setLocution(?LocutionDto $locution = null): self
+    public function setLocution(?LocutionDto $locution): static
     {
         $this->locution = $locution;
 
         return $this;
     }
 
-    /**
-     * @return LocutionDto | null
-     */
     public function getLocution(): ?LocutionDto
     {
         return $this->locution;
     }
 
-    /**
-     * @return static
-     */
-    public function setLocutionId($id): self
+    public function setLocutionId($id): static
     {
         $value = !is_null($id)
             ? new LocutionDto($id)
@@ -385,9 +296,6 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->setLocution($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getLocutionId()
     {
         if ($dto = $this->getLocution()) {
@@ -397,30 +305,19 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ExtensionDto | null
-     *
-     * @return static
-     */
-    public function setExtension(?ExtensionDto $extension = null): self
+    public function setExtension(?ExtensionDto $extension): static
     {
         $this->extension = $extension;
 
         return $this;
     }
 
-    /**
-     * @return ExtensionDto | null
-     */
     public function getExtension(): ?ExtensionDto
     {
         return $this->extension;
     }
 
-    /**
-     * @return static
-     */
-    public function setExtensionId($id): self
+    public function setExtensionId($id): static
     {
         $value = !is_null($id)
             ? new ExtensionDto($id)
@@ -429,9 +326,6 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->setExtension($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getExtensionId()
     {
         if ($dto = $this->getExtension()) {
@@ -441,30 +335,19 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setVoiceMailUser(?UserDto $voiceMailUser = null): self
+    public function setVoiceMailUser(?UserDto $voiceMailUser): static
     {
         $this->voiceMailUser = $voiceMailUser;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getVoiceMailUser(): ?UserDto
     {
         return $this->voiceMailUser;
     }
 
-    /**
-     * @return static
-     */
-    public function setVoiceMailUserId($id): self
+    public function setVoiceMailUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -473,9 +356,6 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->setVoiceMailUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getVoiceMailUserId()
     {
         if ($dto = $this->getVoiceMailUser()) {
@@ -485,30 +365,19 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setNumberCountry(?CountryDto $numberCountry = null): self
+    public function setNumberCountry(?CountryDto $numberCountry): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getNumberCountry(): ?CountryDto
     {
         return $this->numberCountry;
     }
 
-    /**
-     * @return static
-     */
-    public function setNumberCountryId($id): self
+    public function setNumberCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -517,9 +386,6 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->setNumberCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getNumberCountryId()
     {
         if ($dto = $this->getNumberCountry()) {

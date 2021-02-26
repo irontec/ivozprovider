@@ -19,17 +19,17 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     /**
      * @var string
      */
-    private $type;
+    private $type = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $prefix;
 
     /**
      * @var string
      */
-    private $action;
+    private $action = '';
 
     /**
      * @var int
@@ -112,130 +112,79 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $response;
     }
 
-    /**
-     * @param string $type | null
-     *
-     * @return static
-     */
-    public function setType(?string $type = null): self
+    public function setType(?string $type): static
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $prefix | null
-     *
-     * @return static
-     */
-    public function setPrefix(?string $prefix = null): self
+    public function setPrefix(?string $prefix): static
     {
         $this->prefix = $prefix;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
-    /**
-     * @param string $action | null
-     *
-     * @return static
-     */
-    public function setAction(?string $action = null): self
+    public function setAction(?string $action): static
     {
         $this->action = $action;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAction(): ?string
     {
         return $this->action;
     }
 
-    /**
-     * @param int $priority | null
-     *
-     * @return static
-     */
-    public function setPriority(?int $priority = null): self
+    public function setPriority(?int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param OutgoingDdiRuleDto | null
-     *
-     * @return static
-     */
-    public function setOutgoingDdiRule(?OutgoingDdiRuleDto $outgoingDdiRule = null): self
+    public function setOutgoingDdiRule(?OutgoingDdiRuleDto $outgoingDdiRule): static
     {
         $this->outgoingDdiRule = $outgoingDdiRule;
 
         return $this;
     }
 
-    /**
-     * @return OutgoingDdiRuleDto | null
-     */
     public function getOutgoingDdiRule(): ?OutgoingDdiRuleDto
     {
         return $this->outgoingDdiRule;
     }
 
-    /**
-     * @return static
-     */
-    public function setOutgoingDdiRuleId($id): self
+    public function setOutgoingDdiRuleId($id): static
     {
         $value = !is_null($id)
             ? new OutgoingDdiRuleDto($id)
@@ -244,9 +193,6 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->setOutgoingDdiRule($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getOutgoingDdiRuleId()
     {
         if ($dto = $this->getOutgoingDdiRule()) {
@@ -256,30 +202,19 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return null;
     }
 
-    /**
-     * @param MatchListDto | null
-     *
-     * @return static
-     */
-    public function setMatchList(?MatchListDto $matchList = null): self
+    public function setMatchList(?MatchListDto $matchList): static
     {
         $this->matchList = $matchList;
 
         return $this;
     }
 
-    /**
-     * @return MatchListDto | null
-     */
     public function getMatchList(): ?MatchListDto
     {
         return $this->matchList;
     }
 
-    /**
-     * @return static
-     */
-    public function setMatchListId($id): self
+    public function setMatchListId($id): static
     {
         $value = !is_null($id)
             ? new MatchListDto($id)
@@ -288,9 +223,6 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->setMatchList($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getMatchListId()
     {
         if ($dto = $this->getMatchList()) {
@@ -300,30 +232,19 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return null;
     }
 
-    /**
-     * @param DdiDto | null
-     *
-     * @return static
-     */
-    public function setForcedDdi(?DdiDto $forcedDdi = null): self
+    public function setForcedDdi(?DdiDto $forcedDdi): static
     {
         $this->forcedDdi = $forcedDdi;
 
         return $this;
     }
 
-    /**
-     * @return DdiDto | null
-     */
     public function getForcedDdi(): ?DdiDto
     {
         return $this->forcedDdi;
     }
 
-    /**
-     * @return static
-     */
-    public function setForcedDdiId($id): self
+    public function setForcedDdiId($id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)
@@ -332,9 +253,6 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->setForcedDdi($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getForcedDdiId()
     {
         if ($dto = $this->getForcedDdi()) {

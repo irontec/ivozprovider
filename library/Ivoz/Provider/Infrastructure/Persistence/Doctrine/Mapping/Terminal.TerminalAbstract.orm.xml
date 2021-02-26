@@ -8,7 +8,7 @@
       <unique-constraint name="terminal_name_domain" columns="name,domainId"/>
       <unique-constraint name="terminal_mac" columns="mac"/>
     </unique-constraints>
-    <field name="name" type="string" column="name" length="100" nullable="true">
+    <field name="name" type="string" column="name" length="100" nullable="false">
       <options>
         <option name="fixed"/>
       </options>

@@ -75,22 +75,22 @@ abstract class HuntGroupAbstract
     protected $company;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $noAnswerLocution;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $noAnswerExtension;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $noAnswerVoiceMailUser;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $noAnswerNumberCountry;
 
@@ -131,7 +131,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return HuntGroupDto
      */
     public static function createDto($id = null)
@@ -276,14 +276,7 @@ abstract class HuntGroupAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): HuntGroupInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -292,24 +285,12 @@ abstract class HuntGroupAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return static
-     */
-    protected function setDescription(string $description): HuntGroupInterface
+    protected function setDescription(string $description): static
     {
         Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -318,24 +299,12 @@ abstract class HuntGroupAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * Set strategy
-     *
-     * @param string $strategy
-     *
-     * @return static
-     */
-    protected function setStrategy(string $strategy): HuntGroupInterface
+    protected function setStrategy(string $strategy): static
     {
         Assertion::maxLength($strategy, 25, 'strategy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -354,48 +323,24 @@ abstract class HuntGroupAbstract
         return $this;
     }
 
-    /**
-     * Get strategy
-     *
-     * @return string
-     */
     public function getStrategy(): string
     {
         return $this->strategy;
     }
 
-    /**
-     * Set ringAllTimeout
-     *
-     * @param int $ringAllTimeout | null
-     *
-     * @return static
-     */
-    protected function setRingAllTimeout(?int $ringAllTimeout = null): HuntGroupInterface
+    protected function setRingAllTimeout(?int $ringAllTimeout = null): static
     {
         $this->ringAllTimeout = $ringAllTimeout;
 
         return $this;
     }
 
-    /**
-     * Get ringAllTimeout
-     *
-     * @return int | null
-     */
     public function getRingAllTimeout(): ?int
     {
         return $this->ringAllTimeout;
     }
 
-    /**
-     * Set noAnswerTargetType
-     *
-     * @param string $noAnswerTargetType | null
-     *
-     * @return static
-     */
-    protected function setNoAnswerTargetType(?string $noAnswerTargetType = null): HuntGroupInterface
+    protected function setNoAnswerTargetType(?string $noAnswerTargetType = null): static
     {
         if (!is_null($noAnswerTargetType)) {
             Assertion::maxLength($noAnswerTargetType, 25, 'noAnswerTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -415,24 +360,12 @@ abstract class HuntGroupAbstract
         return $this;
     }
 
-    /**
-     * Get noAnswerTargetType
-     *
-     * @return string | null
-     */
     public function getNoAnswerTargetType(): ?string
     {
         return $this->noAnswerTargetType;
     }
 
-    /**
-     * Set noAnswerNumberValue
-     *
-     * @param string $noAnswerNumberValue | null
-     *
-     * @return static
-     */
-    protected function setNoAnswerNumberValue(?string $noAnswerNumberValue = null): HuntGroupInterface
+    protected function setNoAnswerNumberValue(?string $noAnswerNumberValue = null): static
     {
         if (!is_null($noAnswerNumberValue)) {
             Assertion::maxLength($noAnswerNumberValue, 25, 'noAnswerNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -443,24 +376,12 @@ abstract class HuntGroupAbstract
         return $this;
     }
 
-    /**
-     * Get noAnswerNumberValue
-     *
-     * @return string | null
-     */
     public function getNoAnswerNumberValue(): ?string
     {
         return $this->noAnswerNumberValue;
     }
 
-    /**
-     * Set preventMissedCalls
-     *
-     * @param int $preventMissedCalls
-     *
-     * @return static
-     */
-    protected function setPreventMissedCalls(int $preventMissedCalls): HuntGroupInterface
+    protected function setPreventMissedCalls(int $preventMissedCalls): static
     {
         Assertion::greaterOrEqualThan($preventMissedCalls, 0, 'preventMissedCalls provided "%s" is not greater or equal than "%s".');
 
@@ -469,24 +390,12 @@ abstract class HuntGroupAbstract
         return $this;
     }
 
-    /**
-     * Get preventMissedCalls
-     *
-     * @return int
-     */
     public function getPreventMissedCalls(): int
     {
         return $this->preventMissedCalls;
     }
 
-    /**
-     * Set allowCallForwards
-     *
-     * @param int $allowCallForwards
-     *
-     * @return static
-     */
-    protected function setAllowCallForwards(int $allowCallForwards): HuntGroupInterface
+    protected function setAllowCallForwards(int $allowCallForwards): static
     {
         Assertion::greaterOrEqualThan($allowCallForwards, 0, 'allowCallForwards provided "%s" is not greater or equal than "%s".');
 
@@ -495,131 +404,66 @@ abstract class HuntGroupAbstract
         return $this;
     }
 
-    /**
-     * Get allowCallForwards
-     *
-     * @return int
-     */
     public function getAllowCallForwards(): int
     {
         return $this->allowCallForwards;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): HuntGroupInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set noAnswerLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setNoAnswerLocution(?LocutionInterface $noAnswerLocution = null): HuntGroupInterface
+    protected function setNoAnswerLocution(?LocutionInterface $noAnswerLocution = null): static
     {
         $this->noAnswerLocution = $noAnswerLocution;
 
         return $this;
     }
 
-    /**
-     * Get noAnswerLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getNoAnswerLocution(): ?LocutionInterface
     {
         return $this->noAnswerLocution;
     }
 
-    /**
-     * Set noAnswerExtension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setNoAnswerExtension(?ExtensionInterface $noAnswerExtension = null): HuntGroupInterface
+    protected function setNoAnswerExtension(?ExtensionInterface $noAnswerExtension = null): static
     {
         $this->noAnswerExtension = $noAnswerExtension;
 
         return $this;
     }
 
-    /**
-     * Get noAnswerExtension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getNoAnswerExtension(): ?ExtensionInterface
     {
         return $this->noAnswerExtension;
     }
 
-    /**
-     * Set noAnswerVoiceMailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setNoAnswerVoiceMailUser(?UserInterface $noAnswerVoiceMailUser = null): HuntGroupInterface
+    protected function setNoAnswerVoiceMailUser(?UserInterface $noAnswerVoiceMailUser = null): static
     {
         $this->noAnswerVoiceMailUser = $noAnswerVoiceMailUser;
 
         return $this;
     }
 
-    /**
-     * Get noAnswerVoiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getNoAnswerVoiceMailUser(): ?UserInterface
     {
         return $this->noAnswerVoiceMailUser;
     }
 
-    /**
-     * Set noAnswerNumberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setNoAnswerNumberCountry(?CountryInterface $noAnswerNumberCountry = null): HuntGroupInterface
+    protected function setNoAnswerNumberCountry(?CountryInterface $noAnswerNumberCountry = null): static
     {
         $this->noAnswerNumberCountry = $noAnswerNumberCountry;
 
         return $this;
     }
 
-    /**
-     * Get noAnswerNumberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNoAnswerNumberCountry(): ?CountryInterface
     {
         return $this->noAnswerNumberCountry;

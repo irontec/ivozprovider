@@ -30,11 +30,7 @@ class DdiProvider extends DdiProviderAbstract implements DdiProviderInterface
         return $this->id;
     }
 
-    /**
-     * @param ProxyTrunkInterface|null $proxyTrunks
-     * @return DdiProviderAbstract
-     */
-    protected function setProxyTrunk(?ProxyTrunkInterface  $proxyTrunks = null): self
+    protected function setProxyTrunk(?ProxyTrunkInterface  $proxyTrunks = null): static
     {
         if (is_null($proxyTrunks)) {
             throw new \DomainException('Local socket cannot be empty.', 70005);

@@ -44,17 +44,17 @@ abstract class BannedAddressAbstract
     protected $description;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
     protected $lastTimeBanned;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      */
     protected $company;
 
@@ -87,7 +87,7 @@ abstract class BannedAddressAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return BannedAddressDto
      */
     public static function createDto($id = null)
@@ -209,14 +209,7 @@ abstract class BannedAddressAbstract
         ];
     }
 
-    /**
-     * Set ip
-     *
-     * @param string $ip | null
-     *
-     * @return static
-     */
-    protected function setIp(?string $ip = null): BannedAddressInterface
+    protected function setIp(?string $ip = null): static
     {
         if (!is_null($ip)) {
             Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -227,24 +220,12 @@ abstract class BannedAddressAbstract
         return $this;
     }
 
-    /**
-     * Get ip
-     *
-     * @return string | null
-     */
     public function getIp(): ?string
     {
         return $this->ip;
     }
 
-    /**
-     * Set blocker
-     *
-     * @param string $blocker | null
-     *
-     * @return static
-     */
-    protected function setBlocker(?string $blocker = null): BannedAddressInterface
+    protected function setBlocker(?string $blocker = null): static
     {
         if (!is_null($blocker)) {
             Assertion::maxLength($blocker, 50, 'blocker value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -253,7 +234,7 @@ abstract class BannedAddressAbstract
                 [
                     BannedAddressInterface::BLOCKER_ANTIFLOOD,
                     BannedAddressInterface::BLOCKER_IPFILTER,
-                    BannedAddressInterface::BLOCKER_ANTIBRUTEFORCE
+                    BannedAddressInterface::BLOCKER_ANTIBRUTEFORCE,
                 ],
                 'blockervalue "%s" is not an element of the valid values: %s'
             );
@@ -264,24 +245,12 @@ abstract class BannedAddressAbstract
         return $this;
     }
 
-    /**
-     * Get blocker
-     *
-     * @return string | null
-     */
     public function getBlocker(): ?string
     {
         return $this->blocker;
     }
 
-    /**
-     * Set aor
-     *
-     * @param string $aor | null
-     *
-     * @return static
-     */
-    protected function setAor(?string $aor = null): BannedAddressInterface
+    protected function setAor(?string $aor = null): static
     {
         if (!is_null($aor)) {
             Assertion::maxLength($aor, 300, 'aor value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -292,24 +261,12 @@ abstract class BannedAddressAbstract
         return $this;
     }
 
-    /**
-     * Get aor
-     *
-     * @return string | null
-     */
     public function getAor(): ?string
     {
         return $this->aor;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description | null
-     *
-     * @return static
-     */
-    protected function setDescription(?string $description = null): BannedAddressInterface
+    protected function setDescription(?string $description = null): static
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 100, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -320,24 +277,12 @@ abstract class BannedAddressAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * Set lastTimeBanned
-     *
-     * @param \DateTimeInterface $lastTimeBanned | null
-     *
-     * @return static
-     */
-    protected function setLastTimeBanned($lastTimeBanned = null): BannedAddressInterface
+    protected function setLastTimeBanned($lastTimeBanned = null): static
     {
         if (!is_null($lastTimeBanned)) {
             Assertion::notNull(
@@ -359,59 +304,30 @@ abstract class BannedAddressAbstract
         return $this;
     }
 
-    /**
-     * Get lastTimeBanned
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getLastTimeBanned(): ?\DateTimeInterface
+    public function getLastTimeBanned(): ?\DateTime
     {
         return !is_null($this->lastTimeBanned) ? clone $this->lastTimeBanned : null;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    protected function setBrand(?BrandInterface $brand = null): BannedAddressInterface
+    protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    protected function setCompany(?CompanyInterface $company = null): BannedAddressInterface
+    protected function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;

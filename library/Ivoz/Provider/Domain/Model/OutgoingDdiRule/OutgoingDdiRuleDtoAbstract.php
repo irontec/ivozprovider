@@ -19,12 +19,12 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var string
      */
-    private $defaultAction;
+    private $defaultAction = '';
 
     /**
      * @var int
@@ -97,90 +97,55 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $defaultAction | null
-     *
-     * @return static
-     */
-    public function setDefaultAction(?string $defaultAction = null): self
+    public function setDefaultAction(?string $defaultAction): static
     {
         $this->defaultAction = $defaultAction;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDefaultAction(): ?string
     {
         return $this->defaultAction;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -189,9 +154,6 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -201,30 +163,19 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DdiDto | null
-     *
-     * @return static
-     */
-    public function setForcedDdi(?DdiDto $forcedDdi = null): self
+    public function setForcedDdi(?DdiDto $forcedDdi): static
     {
         $this->forcedDdi = $forcedDdi;
 
         return $this;
     }
 
-    /**
-     * @return DdiDto | null
-     */
     public function getForcedDdi(): ?DdiDto
     {
         return $this->forcedDdi;
     }
 
-    /**
-     * @return static
-     */
-    public function setForcedDdiId($id): self
+    public function setForcedDdiId($id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)
@@ -233,9 +184,6 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this->setForcedDdi($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getForcedDdiId()
     {
         if ($dto = $this->getForcedDdi()) {
@@ -245,21 +193,13 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param OutgoingDdiRulesPatternDto[] | null
-     *
-     * @return static
-     */
-    public function setPatterns(?array $patterns = null): self
+    public function setPatterns(?array $patterns): static
     {
         $this->patterns = $patterns;
 
         return $this;
     }
 
-    /**
-     * @return OutgoingDdiRulesPatternDto[] | null
-     */
     public function getPatterns(): ?array
     {
         return $this->patterns;

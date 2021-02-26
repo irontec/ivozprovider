@@ -76,50 +76,31 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
         return $response;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -128,9 +109,6 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -140,30 +118,19 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
         return null;
     }
 
-    /**
-     * @param FeatureDto | null
-     *
-     * @return static
-     */
-    public function setFeature(?FeatureDto $feature = null): self
+    public function setFeature(?FeatureDto $feature): static
     {
         $this->feature = $feature;
 
         return $this;
     }
 
-    /**
-     * @return FeatureDto | null
-     */
     public function getFeature(): ?FeatureDto
     {
         return $this->feature;
     }
 
-    /**
-     * @return static
-     */
-    public function setFeatureId($id): self
+    public function setFeatureId($id): static
     {
         $value = !is_null($id)
             ? new FeatureDto($id)
@@ -172,9 +139,6 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
         return $this->setFeature($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFeatureId()
     {
         if ($dto = $this->getFeature()) {

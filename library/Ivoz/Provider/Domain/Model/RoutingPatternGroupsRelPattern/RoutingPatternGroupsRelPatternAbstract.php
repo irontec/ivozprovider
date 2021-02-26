@@ -22,13 +22,13 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     use ChangelogTrait;
 
     /**
-     * @var RoutingPatternInterface
+     * @var RoutingPatternInterface | null
      * inversedBy relPatternGroups
      */
     protected $routingPattern;
 
     /**
-     * @var RoutingPatternGroupInterface
+     * @var RoutingPatternGroupInterface | null
      * inversedBy relPatterns
      */
     protected $routingPatternGroup;
@@ -62,7 +62,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return RoutingPatternGroupsRelPatternDto
      */
     public static function createDto($id = null)
@@ -164,49 +164,27 @@ abstract class RoutingPatternGroupsRelPatternAbstract
         ];
     }
 
-    /**
-     * Set routingPattern
-     *
-     * @param RoutingPatternInterface | null
-     *
-     * @return static
-     */
-    public function setRoutingPattern(?RoutingPatternInterface $routingPattern = null): RoutingPatternGroupsRelPatternInterface
+    public function setRoutingPattern(?RoutingPatternInterface $routingPattern = null): static
     {
         $this->routingPattern = $routingPattern;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get routingPattern
-     *
-     * @return RoutingPatternInterface | null
-     */
     public function getRoutingPattern(): ?RoutingPatternInterface
     {
         return $this->routingPattern;
     }
 
-    /**
-     * Set routingPatternGroup
-     *
-     * @param RoutingPatternGroupInterface | null
-     *
-     * @return static
-     */
-    public function setRoutingPatternGroup(?RoutingPatternGroupInterface $routingPatternGroup = null): RoutingPatternGroupsRelPatternInterface
+    public function setRoutingPatternGroup(?RoutingPatternGroupInterface $routingPatternGroup = null): static
     {
         $this->routingPatternGroup = $routingPatternGroup;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get routingPatternGroup
-     *
-     * @return RoutingPatternGroupInterface | null
-     */
     public function getRoutingPatternGroup(): ?RoutingPatternGroupInterface
     {
         return $this->routingPatternGroup;

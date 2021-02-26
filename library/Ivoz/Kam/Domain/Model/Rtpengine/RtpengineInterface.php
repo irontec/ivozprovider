@@ -2,8 +2,8 @@
 
 namespace Ivoz\Kam\Domain\Model\Rtpengine;
 
-use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 
 /**
 * RtpengineInterface
@@ -16,55 +16,20 @@ interface RtpengineInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    public function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null): RtpengineInterface;
+    public function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null): static;
 
-    /**
-     * Get setid
-     *
-     * @return int
-     */
     public function getSetid(): int;
 
-    /**
-     * Get url
-     *
-     * @return string
-     */
     public function getUrl(): string;
 
-    /**
-     * Get weight
-     *
-     * @return int
-     */
     public function getWeight(): int;
 
-    /**
-     * Get disabled
-     *
-     * @return bool
-     */
     public function getDisabled(): bool;
 
-    /**
-     * Get stamp
-     *
-     * @return \DateTimeInterface
-     */
-    public function getStamp(): \DateTimeInterface;
+    public function getStamp(): \DateTime;
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string;
 
-    /**
-     * Get mediaRelaySet
-     *
-     * @return MediaRelaySetInterface | null
-     */
     public function getMediaRelaySet(): ?MediaRelaySetInterface;
 
     /**

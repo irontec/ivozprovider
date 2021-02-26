@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\RoutingPattern;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -23,11 +24,9 @@ class RoutingPatternLifecycleServiceCollection implements LifecycleServiceCollec
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, RoutingPatternLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, RoutingPatternLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

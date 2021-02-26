@@ -61,37 +61,37 @@ abstract class ExtensionAbstract
     protected $company;
 
     /**
-     * @var IvrInterface
+     * @var IvrInterface | null
      */
     protected $ivr;
 
     /**
-     * @var HuntGroupInterface
+     * @var HuntGroupInterface | null
      */
     protected $huntGroup;
 
     /**
-     * @var ConferenceRoomInterface
+     * @var ConferenceRoomInterface | null
      */
     protected $conferenceRoom;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $user;
 
     /**
-     * @var QueueInterface
+     * @var QueueInterface | null
      */
     protected $queue;
 
     /**
-     * @var ConditionalRouteInterface
+     * @var ConditionalRouteInterface | null
      */
     protected $conditionalRoute;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $numberCountry;
 
@@ -124,7 +124,7 @@ abstract class ExtensionAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ExtensionDto
      */
     public static function createDto($id = null)
@@ -265,14 +265,7 @@ abstract class ExtensionAbstract
         ];
     }
 
-    /**
-     * Set number
-     *
-     * @param string $number
-     *
-     * @return static
-     */
-    protected function setNumber(string $number): ExtensionInterface
+    protected function setNumber(string $number): static
     {
         Assertion::maxLength($number, 10, 'number value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -281,24 +274,12 @@ abstract class ExtensionAbstract
         return $this;
     }
 
-    /**
-     * Get number
-     *
-     * @return string
-     */
     public function getNumber(): string
     {
         return $this->number;
     }
 
-    /**
-     * Set routeType
-     *
-     * @param string $routeType | null
-     *
-     * @return static
-     */
-    protected function setRouteType(?string $routeType = null): ExtensionInterface
+    protected function setRouteType(?string $routeType = null): static
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -323,24 +304,12 @@ abstract class ExtensionAbstract
         return $this;
     }
 
-    /**
-     * Get routeType
-     *
-     * @return string | null
-     */
     public function getRouteType(): ?string
     {
         return $this->routeType;
     }
 
-    /**
-     * Set numberValue
-     *
-     * @param string $numberValue | null
-     *
-     * @return static
-     */
-    protected function setNumberValue(?string $numberValue = null): ExtensionInterface
+    protected function setNumberValue(?string $numberValue = null): static
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -351,24 +320,12 @@ abstract class ExtensionAbstract
         return $this;
     }
 
-    /**
-     * Get numberValue
-     *
-     * @return string | null
-     */
     public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
-    /**
-     * Set friendValue
-     *
-     * @param string $friendValue | null
-     *
-     * @return static
-     */
-    protected function setFriendValue(?string $friendValue = null): ExtensionInterface
+    protected function setFriendValue(?string $friendValue = null): static
     {
         if (!is_null($friendValue)) {
             Assertion::maxLength($friendValue, 25, 'friendValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -379,203 +336,103 @@ abstract class ExtensionAbstract
         return $this;
     }
 
-    /**
-     * Get friendValue
-     *
-     * @return string | null
-     */
     public function getFriendValue(): ?string
     {
         return $this->friendValue;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    public function setCompany(CompanyInterface $company): ExtensionInterface
+    public function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set ivr
-     *
-     * @param IvrInterface | null
-     *
-     * @return static
-     */
-    protected function setIvr(?IvrInterface $ivr = null): ExtensionInterface
+    protected function setIvr(?IvrInterface $ivr = null): static
     {
         $this->ivr = $ivr;
 
         return $this;
     }
 
-    /**
-     * Get ivr
-     *
-     * @return IvrInterface | null
-     */
     public function getIvr(): ?IvrInterface
     {
         return $this->ivr;
     }
 
-    /**
-     * Set huntGroup
-     *
-     * @param HuntGroupInterface | null
-     *
-     * @return static
-     */
-    protected function setHuntGroup(?HuntGroupInterface $huntGroup = null): ExtensionInterface
+    protected function setHuntGroup(?HuntGroupInterface $huntGroup = null): static
     {
         $this->huntGroup = $huntGroup;
 
         return $this;
     }
 
-    /**
-     * Get huntGroup
-     *
-     * @return HuntGroupInterface | null
-     */
     public function getHuntGroup(): ?HuntGroupInterface
     {
         return $this->huntGroup;
     }
 
-    /**
-     * Set conferenceRoom
-     *
-     * @param ConferenceRoomInterface | null
-     *
-     * @return static
-     */
-    protected function setConferenceRoom(?ConferenceRoomInterface $conferenceRoom = null): ExtensionInterface
+    protected function setConferenceRoom(?ConferenceRoomInterface $conferenceRoom = null): static
     {
         $this->conferenceRoom = $conferenceRoom;
 
         return $this;
     }
 
-    /**
-     * Get conferenceRoom
-     *
-     * @return ConferenceRoomInterface | null
-     */
     public function getConferenceRoom(): ?ConferenceRoomInterface
     {
         return $this->conferenceRoom;
     }
 
-    /**
-     * Set user
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setUser(?UserInterface $user = null): ExtensionInterface
+    protected function setUser(?UserInterface $user = null): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface
     {
         return $this->user;
     }
 
-    /**
-     * Set queue
-     *
-     * @param QueueInterface | null
-     *
-     * @return static
-     */
-    protected function setQueue(?QueueInterface $queue = null): ExtensionInterface
+    protected function setQueue(?QueueInterface $queue = null): static
     {
         $this->queue = $queue;
 
         return $this;
     }
 
-    /**
-     * Get queue
-     *
-     * @return QueueInterface | null
-     */
     public function getQueue(): ?QueueInterface
     {
         return $this->queue;
     }
 
-    /**
-     * Set conditionalRoute
-     *
-     * @param ConditionalRouteInterface | null
-     *
-     * @return static
-     */
-    protected function setConditionalRoute(?ConditionalRouteInterface $conditionalRoute = null): ExtensionInterface
+    protected function setConditionalRoute(?ConditionalRouteInterface $conditionalRoute = null): static
     {
         $this->conditionalRoute = $conditionalRoute;
 
         return $this;
     }
 
-    /**
-     * Get conditionalRoute
-     *
-     * @return ConditionalRouteInterface | null
-     */
     public function getConditionalRoute(): ?ConditionalRouteInterface
     {
         return $this->conditionalRoute;
     }
 
-    /**
-     * Set numberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setNumberCountry(?CountryInterface $numberCountry = null): ExtensionInterface
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;

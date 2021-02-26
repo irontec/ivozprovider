@@ -89,7 +89,7 @@ abstract class UsersAddressAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return UsersAddressDto
      */
     public static function createDto($id = null)
@@ -210,14 +210,7 @@ abstract class UsersAddressAbstract
         ];
     }
 
-    /**
-     * Set sourceAddress
-     *
-     * @param string $sourceAddress
-     *
-     * @return static
-     */
-    protected function setSourceAddress(string $sourceAddress): UsersAddressInterface
+    protected function setSourceAddress(string $sourceAddress): static
     {
         Assertion::maxLength($sourceAddress, 100, 'sourceAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -226,24 +219,12 @@ abstract class UsersAddressAbstract
         return $this;
     }
 
-    /**
-     * Get sourceAddress
-     *
-     * @return string
-     */
     public function getSourceAddress(): string
     {
         return $this->sourceAddress;
     }
 
-    /**
-     * Set ipAddr
-     *
-     * @param string $ipAddr | null
-     *
-     * @return static
-     */
-    protected function setIpAddr(?string $ipAddr = null): UsersAddressInterface
+    protected function setIpAddr(?string $ipAddr = null): static
     {
         if (!is_null($ipAddr)) {
             Assertion::maxLength($ipAddr, 50, 'ipAddr value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -254,72 +235,36 @@ abstract class UsersAddressAbstract
         return $this;
     }
 
-    /**
-     * Get ipAddr
-     *
-     * @return string | null
-     */
     public function getIpAddr(): ?string
     {
         return $this->ipAddr;
     }
 
-    /**
-     * Set mask
-     *
-     * @param int $mask
-     *
-     * @return static
-     */
-    protected function setMask(int $mask): UsersAddressInterface
+    protected function setMask(int $mask): static
     {
         $this->mask = $mask;
 
         return $this;
     }
 
-    /**
-     * Get mask
-     *
-     * @return int
-     */
     public function getMask(): int
     {
         return $this->mask;
     }
 
-    /**
-     * Set port
-     *
-     * @param int $port
-     *
-     * @return static
-     */
-    protected function setPort(int $port): UsersAddressInterface
+    protected function setPort(int $port): static
     {
         $this->port = $port;
 
         return $this;
     }
 
-    /**
-     * Get port
-     *
-     * @return int
-     */
     public function getPort(): int
     {
         return $this->port;
     }
 
-    /**
-     * Set tag
-     *
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    protected function setTag(?string $tag = null): UsersAddressInterface
+    protected function setTag(?string $tag = null): static
     {
         if (!is_null($tag)) {
             Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -330,24 +275,12 @@ abstract class UsersAddressAbstract
         return $this;
     }
 
-    /**
-     * Get tag
-     *
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description | null
-     *
-     * @return static
-     */
-    protected function setDescription(?string $description = null): UsersAddressInterface
+    protected function setDescription(?string $description = null): static
     {
         if (!is_null($description)) {
             Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -358,35 +291,18 @@ abstract class UsersAddressAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): UsersAddressInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;

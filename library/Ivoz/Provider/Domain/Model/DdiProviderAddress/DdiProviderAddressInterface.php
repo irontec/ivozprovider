@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderAddress;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 use Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * DdiProviderAddressInterface
@@ -20,36 +20,14 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
     /**
      * @inheritdoc
      */
-    public function setIp(string $ip = null): DdiProviderAddressInterface;
+    public function setIp(?string $ip = null): static;
 
-    /**
-     * Get ip
-     *
-     * @return string | null
-     */
     public function getIp(): ?string;
 
-    /**
-     * Get description
-     *
-     * @return string | null
-     */
     public function getDescription(): ?string;
 
-    /**
-     * Set ddiProvider
-     *
-     * @param DdiProviderInterface
-     *
-     * @return static
-     */
-    public function setDdiProvider(DdiProviderInterface $ddiProvider): DdiProviderAddressInterface;
+    public function setDdiProvider(DdiProviderInterface $ddiProvider): static;
 
-    /**
-     * Get ddiProvider
-     *
-     * @return DdiProviderInterface
-     */
     public function getDdiProvider(): DdiProviderInterface;
 
     /**
@@ -57,16 +35,8 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
      */
     public function isInitialized(): bool;
 
-    /**
-     * @var TrunksAddressInterface
-     * mappedBy ddiProviderAddress
-     */
-    public function setTrunksAddress(TrunksAddressInterface $trunksAddress): DdiProviderAddressInterface;
+    public function setTrunksAddress(TrunksAddressInterface $trunksAddress): static;
 
-    /**
-     * Get trunksAddress
-     * @return TrunksAddressInterface
-     */
     public function getTrunksAddress(): ?TrunksAddressInterface;
 
 }

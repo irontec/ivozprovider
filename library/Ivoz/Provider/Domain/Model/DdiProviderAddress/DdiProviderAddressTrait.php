@@ -109,21 +109,14 @@ trait DdiProviderAddressTrait
         ];
     }
 
-    /**
-     * @var TrunksAddressInterface
-     * mappedBy ddiProviderAddress
-     */
-    public function setTrunksAddress(TrunksAddressInterface $trunksAddress): DdiProviderAddressInterface
+    public function setTrunksAddress(TrunksAddressInterface $trunksAddress): static
     {
         $this->trunksAddress = $trunksAddress;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get trunksAddress
-     * @return TrunksAddressInterface
-     */
     public function getTrunksAddress(): ?TrunksAddressInterface
     {
         return $this->trunksAddress;

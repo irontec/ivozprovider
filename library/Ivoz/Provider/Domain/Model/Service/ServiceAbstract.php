@@ -81,7 +81,7 @@ abstract class ServiceAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ServiceDto
      */
     public static function createDto($id = null)
@@ -234,14 +234,7 @@ abstract class ServiceAbstract
         ];
     }
 
-    /**
-     * Set iden
-     *
-     * @param string $iden
-     *
-     * @return static
-     */
-    protected function setIden(string $iden): ServiceInterface
+    protected function setIden(string $iden): static
     {
         Assertion::maxLength($iden, 50, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -250,24 +243,12 @@ abstract class ServiceAbstract
         return $this;
     }
 
-    /**
-     * Get iden
-     *
-     * @return string
-     */
     public function getIden(): string
     {
         return $this->iden;
     }
 
-    /**
-     * Set defaultCode
-     *
-     * @param string $defaultCode
-     *
-     * @return static
-     */
-    protected function setDefaultCode(string $defaultCode): ServiceInterface
+    protected function setDefaultCode(string $defaultCode): static
     {
         Assertion::maxLength($defaultCode, 3, 'defaultCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -276,24 +257,12 @@ abstract class ServiceAbstract
         return $this;
     }
 
-    /**
-     * Get defaultCode
-     *
-     * @return string
-     */
     public function getDefaultCode(): string
     {
         return $this->defaultCode;
     }
 
-    /**
-     * Set extraArgs
-     *
-     * @param bool $extraArgs
-     *
-     * @return static
-     */
-    protected function setExtraArgs(bool $extraArgs): ServiceInterface
+    protected function setExtraArgs(bool $extraArgs): static
     {
         Assertion::between(intval($extraArgs), 0, 1, 'extraArgs provided "%s" is not a valid boolean value.');
         $extraArgs = (bool) $extraArgs;
@@ -303,32 +272,17 @@ abstract class ServiceAbstract
         return $this;
     }
 
-    /**
-     * Get extraArgs
-     *
-     * @return bool
-     */
     public function getExtraArgs(): bool
     {
         return $this->extraArgs;
     }
 
-    /**
-     * Get name
-     *
-     * @return Name
-     */
     public function getName(): Name
     {
         return $this->name;
     }
 
-    /**
-     * Set name
-     *
-     * @return static
-     */
-    protected function setName(Name $name): ServiceInterface
+    protected function setName(Name $name): static
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -339,22 +293,12 @@ abstract class ServiceAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return Description
-     */
     public function getDescription(): Description
     {
         return $this->description;
     }
 
-    /**
-     * Set description
-     *
-     * @return static
-     */
-    protected function setDescription(Description $description): ServiceInterface
+    protected function setDescription(Description $description): static
     {
         $isEqual = $this->description && $this->description->equals($description);
         if ($isEqual) {

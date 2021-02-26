@@ -22,7 +22,7 @@ abstract class FeaturesRelBrandAbstract
     use ChangelogTrait;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      * inversedBy relFeatures
      */
     protected $brand;
@@ -61,7 +61,7 @@ abstract class FeaturesRelBrandAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return FeaturesRelBrandDto
      */
     public static function createDto($id = null)
@@ -163,49 +163,26 @@ abstract class FeaturesRelBrandAbstract
         ];
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandInterface $brand = null): FeaturesRelBrandInterface
+    public function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set feature
-     *
-     * @param FeatureInterface
-     *
-     * @return static
-     */
-    protected function setFeature(FeatureInterface $feature): FeaturesRelBrandInterface
+    protected function setFeature(FeatureInterface $feature): static
     {
         $this->feature = $feature;
 
         return $this;
     }
 
-    /**
-     * Get feature
-     *
-     * @return FeatureInterface
-     */
     public function getFeature(): FeatureInterface
     {
         return $this->feature;

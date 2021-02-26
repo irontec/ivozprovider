@@ -16,32 +16,32 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $calldate;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $src;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $dst;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $type = 'Out';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $pages;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $status;
 
@@ -51,17 +51,17 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $fileFileSize;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fileMimeType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fileBaseName;
 
@@ -143,230 +143,139 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param \DateTimeInterface $calldate | null
-     *
-     * @return static
-     */
-    public function setCalldate($calldate = null): self
+    public function setCalldate(null|\DateTime|string $calldate): static
     {
         $this->calldate = $calldate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCalldate()
+    public function getCalldate(): \DateTime|string|null
     {
         return $this->calldate;
     }
 
-    /**
-     * @param string $src | null
-     *
-     * @return static
-     */
-    public function setSrc(?string $src = null): self
+    public function setSrc(?string $src): static
     {
         $this->src = $src;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSrc(): ?string
     {
         return $this->src;
     }
 
-    /**
-     * @param string $dst | null
-     *
-     * @return static
-     */
-    public function setDst(?string $dst = null): self
+    public function setDst(?string $dst): static
     {
         $this->dst = $dst;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDst(): ?string
     {
         return $this->dst;
     }
 
-    /**
-     * @param string $type | null
-     *
-     * @return static
-     */
-    public function setType(?string $type = null): self
+    public function setType(?string $type): static
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $pages | null
-     *
-     * @return static
-     */
-    public function setPages(?string $pages = null): self
+    public function setPages(?string $pages): static
     {
         $this->pages = $pages;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPages(): ?string
     {
         return $this->pages;
     }
 
-    /**
-     * @param string $status | null
-     *
-     * @return static
-     */
-    public function setStatus(?string $status = null): self
+    public function setStatus(?string $status): static
     {
         $this->status = $status;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param int $fileFileSize | null
-     *
-     * @return static
-     */
-    public function setFileFileSize(?int $fileFileSize = null): self
+    public function setFileFileSize(?int $fileFileSize): static
     {
         $this->fileFileSize = $fileFileSize;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getFileFileSize(): ?int
     {
         return $this->fileFileSize;
     }
 
-    /**
-     * @param string $fileMimeType | null
-     *
-     * @return static
-     */
-    public function setFileMimeType(?string $fileMimeType = null): self
+    public function setFileMimeType(?string $fileMimeType): static
     {
         $this->fileMimeType = $fileMimeType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFileMimeType(): ?string
     {
         return $this->fileMimeType;
     }
 
-    /**
-     * @param string $fileBaseName | null
-     *
-     * @return static
-     */
-    public function setFileBaseName(?string $fileBaseName = null): self
+    public function setFileBaseName(?string $fileBaseName): static
     {
         $this->fileBaseName = $fileBaseName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFileBaseName(): ?string
     {
         return $this->fileBaseName;
     }
 
-    /**
-     * @param FaxDto | null
-     *
-     * @return static
-     */
-    public function setFax(?FaxDto $fax = null): self
+    public function setFax(?FaxDto $fax): static
     {
         $this->fax = $fax;
 
         return $this;
     }
 
-    /**
-     * @return FaxDto | null
-     */
     public function getFax(): ?FaxDto
     {
         return $this->fax;
     }
 
-    /**
-     * @return static
-     */
-    public function setFaxId($id): self
+    public function setFaxId($id): static
     {
         $value = !is_null($id)
             ? new FaxDto($id)
@@ -375,9 +284,6 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $this->setFax($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFaxId()
     {
         if ($dto = $this->getFax()) {
@@ -387,30 +293,19 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CountryDto | null
-     *
-     * @return static
-     */
-    public function setDstCountry(?CountryDto $dstCountry = null): self
+    public function setDstCountry(?CountryDto $dstCountry): static
     {
         $this->dstCountry = $dstCountry;
 
         return $this;
     }
 
-    /**
-     * @return CountryDto | null
-     */
     public function getDstCountry(): ?CountryDto
     {
         return $this->dstCountry;
     }
 
-    /**
-     * @return static
-     */
-    public function setDstCountryId($id): self
+    public function setDstCountryId($id): static
     {
         $value = !is_null($id)
             ? new CountryDto($id)
@@ -419,9 +314,6 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $this->setDstCountry($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDstCountryId()
     {
         if ($dto = $this->getDstCountry()) {

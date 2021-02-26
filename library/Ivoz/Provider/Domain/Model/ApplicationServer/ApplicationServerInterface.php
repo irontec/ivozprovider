@@ -15,18 +15,8 @@ interface ApplicationServerInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Get ip
-     *
-     * @return string
-     */
     public function getIp(): string;
 
-    /**
-     * Get name
-     *
-     * @return string | null
-     */
     public function getName(): ?string;
 
     /**

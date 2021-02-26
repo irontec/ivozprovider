@@ -22,55 +22,55 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $gwName;
+    private $gwName = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $ip;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $hostname;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $port;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $params;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $uriScheme;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $transport;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $strip;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $prefix;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $tag;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $defunct;
 
@@ -152,290 +152,175 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         return $response;
     }
 
-    /**
-     * @param int $lcrId | null
-     *
-     * @return static
-     */
-    public function setLcrId(?int $lcrId = null): self
+    public function setLcrId(?int $lcrId): static
     {
         $this->lcrId = $lcrId;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getLcrId(): ?int
     {
         return $this->lcrId;
     }
 
-    /**
-     * @param string $gwName | null
-     *
-     * @return static
-     */
-    public function setGwName(?string $gwName = null): self
+    public function setGwName(?string $gwName): static
     {
         $this->gwName = $gwName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getGwName(): ?string
     {
         return $this->gwName;
     }
 
-    /**
-     * @param string $ip | null
-     *
-     * @return static
-     */
-    public function setIp(?string $ip = null): self
+    public function setIp(?string $ip): static
     {
         $this->ip = $ip;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getIp(): ?string
     {
         return $this->ip;
     }
 
-    /**
-     * @param string $hostname | null
-     *
-     * @return static
-     */
-    public function setHostname(?string $hostname = null): self
+    public function setHostname(?string $hostname): static
     {
         $this->hostname = $hostname;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getHostname(): ?string
     {
         return $this->hostname;
     }
 
-    /**
-     * @param int $port | null
-     *
-     * @return static
-     */
-    public function setPort(?int $port = null): self
+    public function setPort(?int $port): static
     {
         $this->port = $port;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPort(): ?int
     {
         return $this->port;
     }
 
-    /**
-     * @param string $params | null
-     *
-     * @return static
-     */
-    public function setParams(?string $params = null): self
+    public function setParams(?string $params): static
     {
         $this->params = $params;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getParams(): ?string
     {
         return $this->params;
     }
 
-    /**
-     * @param int $uriScheme | null
-     *
-     * @return static
-     */
-    public function setUriScheme(?int $uriScheme = null): self
+    public function setUriScheme(?int $uriScheme): static
     {
         $this->uriScheme = $uriScheme;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getUriScheme(): ?int
     {
         return $this->uriScheme;
     }
 
-    /**
-     * @param int $transport | null
-     *
-     * @return static
-     */
-    public function setTransport(?int $transport = null): self
+    public function setTransport(?int $transport): static
     {
         $this->transport = $transport;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getTransport(): ?int
     {
         return $this->transport;
     }
 
-    /**
-     * @param bool $strip | null
-     *
-     * @return static
-     */
-    public function setStrip(?bool $strip = null): self
+    public function setStrip(?bool $strip): static
     {
         $this->strip = $strip;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getStrip(): ?bool
     {
         return $this->strip;
     }
 
-    /**
-     * @param string $prefix | null
-     *
-     * @return static
-     */
-    public function setPrefix(?string $prefix = null): self
+    public function setPrefix(?string $prefix): static
     {
         $this->prefix = $prefix;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
-    /**
-     * @param string $tag | null
-     *
-     * @return static
-     */
-    public function setTag(?string $tag = null): self
+    public function setTag(?string $tag): static
     {
         $this->tag = $tag;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTag(): ?string
     {
         return $this->tag;
     }
 
-    /**
-     * @param int $defunct | null
-     *
-     * @return static
-     */
-    public function setDefunct(?int $defunct = null): self
+    public function setDefunct(?int $defunct): static
     {
         $this->defunct = $defunct;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getDefunct(): ?int
     {
         return $this->defunct;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CarrierServerDto | null
-     *
-     * @return static
-     */
-    public function setCarrierServer(?CarrierServerDto $carrierServer = null): self
+    public function setCarrierServer(?CarrierServerDto $carrierServer): static
     {
         $this->carrierServer = $carrierServer;
 
         return $this;
     }
 
-    /**
-     * @return CarrierServerDto | null
-     */
     public function getCarrierServer(): ?CarrierServerDto
     {
         return $this->carrierServer;
     }
 
-    /**
-     * @return static
-     */
-    public function setCarrierServerId($id): self
+    public function setCarrierServerId($id): static
     {
         $value = !is_null($id)
             ? new CarrierServerDto($id)
@@ -444,9 +329,6 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         return $this->setCarrierServer($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCarrierServerId()
     {
         if ($dto = $this->getCarrierServer()) {

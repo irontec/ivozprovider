@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Friend;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
@@ -12,7 +13,6 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * FriendInterface
@@ -83,21 +83,21 @@ interface FriendInterface extends LoggableEntityInterface
      * @see FriendAbstract::setIp
      * @deprecated this method will be protected
      */
-    public function setIp(string $ip = null): FriendInterface;
+    public function setIp(?string $ip = null): static;
 
     /**
      * {@inheritDoc}
      * @see FriendAbstract::setPort
      * @deprecated this method will be protected
      */
-    public function setPort(int $port = null): FriendInterface;
+    public function setPort(?int $port = null): static;
 
     /**
      * {@inheritDoc}
      * @see FriendAbstract::setPassword
      * @deprecated this method will be protected
      */
-    public function setPassword(string $password = null): FriendInterface;
+    public function setPassword(?string $password = null): static;
 
     /**
      * @return string
@@ -136,204 +136,60 @@ interface FriendInterface extends LoggableEntityInterface
      */
     public function getOutgoingDdi(): ?DdiInterface;
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string;
 
-    /**
-     * Get transport
-     *
-     * @return string | null
-     */
     public function getTransport(): ?string;
 
-    /**
-     * Get ip
-     *
-     * @return string | null
-     */
     public function getIp(): ?string;
 
-    /**
-     * Get port
-     *
-     * @return int | null
-     */
     public function getPort(): ?int;
 
-    /**
-     * Get password
-     *
-     * @return string | null
-     */
     public function getPassword(): ?string;
 
-    /**
-     * Get priority
-     *
-     * @return int
-     */
     public function getPriority(): int;
 
-    /**
-     * Get disallow
-     *
-     * @return string
-     */
     public function getDisallow(): string;
 
-    /**
-     * Get allow
-     *
-     * @return string
-     */
     public function getAllow(): string;
 
-    /**
-     * Get directMediaMethod
-     *
-     * @return string
-     */
     public function getDirectMediaMethod(): string;
 
-    /**
-     * Get calleridUpdateHeader
-     *
-     * @return string
-     */
     public function getCalleridUpdateHeader(): string;
 
-    /**
-     * Get updateCallerid
-     *
-     * @return string
-     */
     public function getUpdateCallerid(): string;
 
-    /**
-     * Get fromUser
-     *
-     * @return string | null
-     */
     public function getFromUser(): ?string;
 
-    /**
-     * Get fromDomain
-     *
-     * @return string | null
-     */
     public function getFromDomain(): ?string;
 
-    /**
-     * Get directConnectivity
-     *
-     * @return string
-     */
     public function getDirectConnectivity(): string;
 
-    /**
-     * Get ddiIn
-     *
-     * @return string
-     */
     public function getDdiIn(): string;
 
-    /**
-     * Get t38Passthrough
-     *
-     * @return string
-     */
     public function getT38Passthrough(): string;
 
-    /**
-     * Get alwaysApplyTransformations
-     *
-     * @return bool
-     */
     public function getAlwaysApplyTransformations(): bool;
 
-    /**
-     * Get rtpEncryption
-     *
-     * @return bool
-     */
     public function getRtpEncryption(): bool;
 
-    /**
-     * Get multiContact
-     *
-     * @return boolean
-     */
     public function getMultiContact(): bool;
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    public function setCompany(CompanyInterface $company): FriendInterface;
+    public function setCompany(CompanyInterface $company): static;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface;
 
-    /**
-     * Set domain
-     *
-     * @param DomainInterface | null
-     *
-     * @return static
-     */
-    public function setDomain(?DomainInterface $domain = null): FriendInterface;
+    public function setDomain(?DomainInterface $domain = null): static;
 
-    /**
-     * Get domain
-     *
-     * @return DomainInterface | null
-     */
     public function getDomain(): ?DomainInterface;
 
-    /**
-     * Get transformationRuleSet
-     *
-     * @return TransformationRuleSetInterface | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
-    /**
-     * Get callAcl
-     *
-     * @return CallAclInterface | null
-     */
     public function getCallAcl(): ?CallAclInterface;
 
-    /**
-     * Get language
-     *
-     * @return LanguageInterface | null
-     */
     public function getLanguage(): ?LanguageInterface;
 
-    /**
-     * Get interCompany
-     *
-     * @return CompanyInterface | null
-     */
     public function getInterCompany(): ?CompanyInterface;
 
     /**
@@ -341,72 +197,20 @@ interface FriendInterface extends LoggableEntityInterface
      */
     public function isInitialized(): bool;
 
-    /**
-     * Add psEndpoint
-     *
-     * @param PsEndpointInterface $psEndpoint
-     *
-     * @return static
-     */
     public function addPsEndpoint(PsEndpointInterface $psEndpoint): FriendInterface;
 
-    /**
-     * Remove psEndpoint
-     *
-     * @param PsEndpointInterface $psEndpoint
-     *
-     * @return static
-     */
     public function removePsEndpoint(PsEndpointInterface $psEndpoint): FriendInterface;
 
-    /**
-     * Replace psEndpoints
-     *
-     * @param ArrayCollection $psEndpoints of PsEndpointInterface
-     *
-     * @return static
-     */
     public function replacePsEndpoints(ArrayCollection $psEndpoints): FriendInterface;
 
-    /**
-     * Get psEndpoints
-     * @param Criteria | null $criteria
-     * @return PsEndpointInterface[]
-     */
     public function getPsEndpoints(?Criteria $criteria = null): array;
 
-    /**
-     * Add pattern
-     *
-     * @param FriendsPatternInterface $pattern
-     *
-     * @return static
-     */
     public function addPattern(FriendsPatternInterface $pattern): FriendInterface;
 
-    /**
-     * Remove pattern
-     *
-     * @param FriendsPatternInterface $pattern
-     *
-     * @return static
-     */
     public function removePattern(FriendsPatternInterface $pattern): FriendInterface;
 
-    /**
-     * Replace patterns
-     *
-     * @param ArrayCollection $patterns of FriendsPatternInterface
-     *
-     * @return static
-     */
     public function replacePatterns(ArrayCollection $patterns): FriendInterface;
 
-    /**
-     * Get patterns
-     * @param Criteria | null $criteria
-     * @return FriendsPatternInterface[]
-     */
     public function getPatterns(?Criteria $criteria = null): array;
 
 }

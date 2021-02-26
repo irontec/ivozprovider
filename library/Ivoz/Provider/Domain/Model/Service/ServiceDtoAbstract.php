@@ -21,7 +21,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $defaultCode;
+    private $defaultCode = '';
 
     /**
      * @var bool
@@ -145,241 +145,145 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $iden | null
-     *
-     * @return static
-     */
-    public function setIden(?string $iden = null): self
+    public function setIden(?string $iden): static
     {
         $this->iden = $iden;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getIden(): ?string
     {
         return $this->iden;
     }
 
-    /**
-     * @param string $defaultCode | null
-     *
-     * @return static
-     */
-    public function setDefaultCode(?string $defaultCode = null): self
+    public function setDefaultCode(?string $defaultCode): static
     {
         $this->defaultCode = $defaultCode;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDefaultCode(): ?string
     {
         return $this->defaultCode;
     }
 
-    /**
-     * @param bool $extraArgs | null
-     *
-     * @return static
-     */
-    public function setExtraArgs(?bool $extraArgs = null): self
+    public function setExtraArgs(?bool $extraArgs): static
     {
         $this->extraArgs = $extraArgs;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getExtraArgs(): ?bool
     {
         return $this->extraArgs;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param string $nameEn | null
-     *
-     * @return static
-     */
-    public function setNameEn(?string $nameEn = null): self
+    public function setNameEn(?string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameEn(): ?string
     {
         return $this->nameEn;
     }
 
-    /**
-     * @param string $nameEs | null
-     *
-     * @return static
-     */
-    public function setNameEs(?string $nameEs = null): self
+    public function setNameEs(?string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameEs(): ?string
     {
         return $this->nameEs;
     }
 
-    /**
-     * @param string $nameCa | null
-     *
-     * @return static
-     */
-    public function setNameCa(?string $nameCa = null): self
+    public function setNameCa(?string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameCa(): ?string
     {
         return $this->nameCa;
     }
 
-    /**
-     * @param string $nameIt | null
-     *
-     * @return static
-     */
-    public function setNameIt(?string $nameIt = null): self
+    public function setNameIt(?string $nameIt): static
     {
         $this->nameIt = $nameIt;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNameIt(): ?string
     {
         return $this->nameIt;
     }
 
-    /**
-     * @param string $descriptionEn | null
-     *
-     * @return static
-     */
-    public function setDescriptionEn(?string $descriptionEn = null): self
+    public function setDescriptionEn(?string $descriptionEn): static
     {
         $this->descriptionEn = $descriptionEn;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescriptionEn(): ?string
     {
         return $this->descriptionEn;
     }
 
-    /**
-     * @param string $descriptionEs | null
-     *
-     * @return static
-     */
-    public function setDescriptionEs(?string $descriptionEs = null): self
+    public function setDescriptionEs(?string $descriptionEs): static
     {
         $this->descriptionEs = $descriptionEs;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescriptionEs(): ?string
     {
         return $this->descriptionEs;
     }
 
-    /**
-     * @param string $descriptionCa | null
-     *
-     * @return static
-     */
-    public function setDescriptionCa(?string $descriptionCa = null): self
+    public function setDescriptionCa(?string $descriptionCa): static
     {
         $this->descriptionCa = $descriptionCa;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescriptionCa(): ?string
     {
         return $this->descriptionCa;
     }
 
-    /**
-     * @param string $descriptionIt | null
-     *
-     * @return static
-     */
-    public function setDescriptionIt(?string $descriptionIt = null): self
+    public function setDescriptionIt(?string $descriptionIt): static
     {
         $this->descriptionIt = $descriptionIt;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescriptionIt(): ?string
     {
         return $this->descriptionIt;

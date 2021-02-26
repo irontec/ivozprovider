@@ -24,7 +24,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var string
@@ -32,22 +32,22 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $description = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $transport;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $ip;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $port;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $password;
 
@@ -82,12 +82,12 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $updateCallerid = 'yes';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fromUser;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fromDomain;
 
@@ -117,12 +117,12 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $rtpEncryption = false;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $multiContact = true;
 
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 
@@ -269,450 +269,271 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $transport | null
-     *
-     * @return static
-     */
-    public function setTransport(?string $transport = null): self
+    public function setTransport(?string $transport): static
     {
         $this->transport = $transport;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTransport(): ?string
     {
         return $this->transport;
     }
 
-    /**
-     * @param string $ip | null
-     *
-     * @return static
-     */
-    public function setIp(?string $ip = null): self
+    public function setIp(?string $ip): static
     {
         $this->ip = $ip;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getIp(): ?string
     {
         return $this->ip;
     }
 
-    /**
-     * @param int $port | null
-     *
-     * @return static
-     */
-    public function setPort(?int $port = null): self
+    public function setPort(?int $port): static
     {
         $this->port = $port;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPort(): ?int
     {
         return $this->port;
     }
 
-    /**
-     * @param string $password | null
-     *
-     * @return static
-     */
-    public function setPassword(?string $password = null): self
+    public function setPassword(?string $password): static
     {
         $this->password = $password;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    /**
-     * @param int $priority | null
-     *
-     * @return static
-     */
-    public function setPriority(?int $priority = null): self
+    public function setPriority(?int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    /**
-     * @param string $disallow | null
-     *
-     * @return static
-     */
-    public function setDisallow(?string $disallow = null): self
+    public function setDisallow(?string $disallow): static
     {
         $this->disallow = $disallow;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDisallow(): ?string
     {
         return $this->disallow;
     }
 
-    /**
-     * @param string $allow | null
-     *
-     * @return static
-     */
-    public function setAllow(?string $allow = null): self
+    public function setAllow(?string $allow): static
     {
         $this->allow = $allow;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAllow(): ?string
     {
         return $this->allow;
     }
 
-    /**
-     * @param string $directMediaMethod | null
-     *
-     * @return static
-     */
-    public function setDirectMediaMethod(?string $directMediaMethod = null): self
+    public function setDirectMediaMethod(?string $directMediaMethod): static
     {
         $this->directMediaMethod = $directMediaMethod;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDirectMediaMethod(): ?string
     {
         return $this->directMediaMethod;
     }
 
-    /**
-     * @param string $calleridUpdateHeader | null
-     *
-     * @return static
-     */
-    public function setCalleridUpdateHeader(?string $calleridUpdateHeader = null): self
+    public function setCalleridUpdateHeader(?string $calleridUpdateHeader): static
     {
         $this->calleridUpdateHeader = $calleridUpdateHeader;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCalleridUpdateHeader(): ?string
     {
         return $this->calleridUpdateHeader;
     }
 
-    /**
-     * @param string $updateCallerid | null
-     *
-     * @return static
-     */
-    public function setUpdateCallerid(?string $updateCallerid = null): self
+    public function setUpdateCallerid(?string $updateCallerid): static
     {
         $this->updateCallerid = $updateCallerid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUpdateCallerid(): ?string
     {
         return $this->updateCallerid;
     }
 
-    /**
-     * @param string $fromUser | null
-     *
-     * @return static
-     */
-    public function setFromUser(?string $fromUser = null): self
+    public function setFromUser(?string $fromUser): static
     {
         $this->fromUser = $fromUser;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFromUser(): ?string
     {
         return $this->fromUser;
     }
 
-    /**
-     * @param string $fromDomain | null
-     *
-     * @return static
-     */
-    public function setFromDomain(?string $fromDomain = null): self
+    public function setFromDomain(?string $fromDomain): static
     {
         $this->fromDomain = $fromDomain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFromDomain(): ?string
     {
         return $this->fromDomain;
     }
 
-    /**
-     * @param string $directConnectivity | null
-     *
-     * @return static
-     */
-    public function setDirectConnectivity(?string $directConnectivity = null): self
+    public function setDirectConnectivity(?string $directConnectivity): static
     {
         $this->directConnectivity = $directConnectivity;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDirectConnectivity(): ?string
     {
         return $this->directConnectivity;
     }
 
-    /**
-     * @param string $ddiIn | null
-     *
-     * @return static
-     */
-    public function setDdiIn(?string $ddiIn = null): self
+    public function setDdiIn(?string $ddiIn): static
     {
         $this->ddiIn = $ddiIn;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDdiIn(): ?string
     {
         return $this->ddiIn;
     }
 
-    /**
-     * @param string $t38Passthrough | null
-     *
-     * @return static
-     */
-    public function setT38Passthrough(?string $t38Passthrough = null): self
+    public function setT38Passthrough(?string $t38Passthrough): static
     {
         $this->t38Passthrough = $t38Passthrough;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getT38Passthrough(): ?string
     {
         return $this->t38Passthrough;
     }
 
-    /**
-     * @param bool $alwaysApplyTransformations | null
-     *
-     * @return static
-     */
-    public function setAlwaysApplyTransformations(?bool $alwaysApplyTransformations = null): self
+    public function setAlwaysApplyTransformations(?bool $alwaysApplyTransformations): static
     {
         $this->alwaysApplyTransformations = $alwaysApplyTransformations;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getAlwaysApplyTransformations(): ?bool
     {
         return $this->alwaysApplyTransformations;
     }
 
-    /**
-     * @param bool $rtpEncryption | null
-     *
-     * @return static
-     */
-    public function setRtpEncryption(?bool $rtpEncryption = null): self
+    public function setRtpEncryption(?bool $rtpEncryption): static
     {
         $this->rtpEncryption = $rtpEncryption;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getRtpEncryption(): ?bool
     {
         return $this->rtpEncryption;
     }
 
-    /**
-     * @param boolean $multiContact
-     *
-     * @return static
-     */
-    public function setMultiContact($multiContact = null)
+    public function setMultiContact(?bool $multiContact): static
     {
         $this->multiContact = $multiContact;
 
         return $this;
     }
 
-    /**
-     * @return boolean | null
-     */
-    public function getMultiContact()
+    public function getMultiContact(): ?bool
     {
         return $this->multiContact;
     }
 
-    /**
-     * @param integer $id
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -721,9 +542,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -733,30 +551,19 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DomainDto | null
-     *
-     * @return static
-     */
-    public function setDomain(?DomainDto $domain = null): self
+    public function setDomain(?DomainDto $domain): static
     {
         $this->domain = $domain;
 
         return $this;
     }
 
-    /**
-     * @return DomainDto | null
-     */
     public function getDomain(): ?DomainDto
     {
         return $this->domain;
     }
 
-    /**
-     * @return static
-     */
-    public function setDomainId($id): self
+    public function setDomainId($id): static
     {
         $value = !is_null($id)
             ? new DomainDto($id)
@@ -765,9 +572,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->setDomain($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDomainId()
     {
         if ($dto = $this->getDomain()) {
@@ -777,30 +581,19 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TransformationRuleSetDto | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet = null): self
+    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet): static
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
-    /**
-     * @return TransformationRuleSetDto | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetDto
     {
         return $this->transformationRuleSet;
     }
 
-    /**
-     * @return static
-     */
-    public function setTransformationRuleSetId($id): self
+    public function setTransformationRuleSetId($id): static
     {
         $value = !is_null($id)
             ? new TransformationRuleSetDto($id)
@@ -809,9 +602,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->setTransformationRuleSet($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTransformationRuleSetId()
     {
         if ($dto = $this->getTransformationRuleSet()) {
@@ -821,30 +611,19 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CallAclDto | null
-     *
-     * @return static
-     */
-    public function setCallAcl(?CallAclDto $callAcl = null): self
+    public function setCallAcl(?CallAclDto $callAcl): static
     {
         $this->callAcl = $callAcl;
 
         return $this;
     }
 
-    /**
-     * @return CallAclDto | null
-     */
     public function getCallAcl(): ?CallAclDto
     {
         return $this->callAcl;
     }
 
-    /**
-     * @return static
-     */
-    public function setCallAclId($id): self
+    public function setCallAclId($id): static
     {
         $value = !is_null($id)
             ? new CallAclDto($id)
@@ -853,9 +632,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->setCallAcl($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCallAclId()
     {
         if ($dto = $this->getCallAcl()) {
@@ -865,30 +641,19 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param DdiDto | null
-     *
-     * @return static
-     */
-    public function setOutgoingDdi(?DdiDto $outgoingDdi = null): self
+    public function setOutgoingDdi(?DdiDto $outgoingDdi): static
     {
         $this->outgoingDdi = $outgoingDdi;
 
         return $this;
     }
 
-    /**
-     * @return DdiDto | null
-     */
     public function getOutgoingDdi(): ?DdiDto
     {
         return $this->outgoingDdi;
     }
 
-    /**
-     * @return static
-     */
-    public function setOutgoingDdiId($id): self
+    public function setOutgoingDdiId($id): static
     {
         $value = !is_null($id)
             ? new DdiDto($id)
@@ -897,9 +662,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->setOutgoingDdi($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getOutgoingDdiId()
     {
         if ($dto = $this->getOutgoingDdi()) {
@@ -909,30 +671,19 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param LanguageDto | null
-     *
-     * @return static
-     */
-    public function setLanguage(?LanguageDto $language = null): self
+    public function setLanguage(?LanguageDto $language): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * @return LanguageDto | null
-     */
     public function getLanguage(): ?LanguageDto
     {
         return $this->language;
     }
 
-    /**
-     * @return static
-     */
-    public function setLanguageId($id): self
+    public function setLanguageId($id): static
     {
         $value = !is_null($id)
             ? new LanguageDto($id)
@@ -941,9 +692,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->setLanguage($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getLanguageId()
     {
         if ($dto = $this->getLanguage()) {
@@ -953,30 +701,19 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setInterCompany(?CompanyDto $interCompany = null): self
+    public function setInterCompany(?CompanyDto $interCompany): static
     {
         $this->interCompany = $interCompany;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getInterCompany(): ?CompanyDto
     {
         return $this->interCompany;
     }
 
-    /**
-     * @return static
-     */
-    public function setInterCompanyId($id): self
+    public function setInterCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -985,9 +722,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->setInterCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getInterCompanyId()
     {
         if ($dto = $this->getInterCompany()) {
@@ -997,41 +731,25 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param PsEndpointDto[] | null
-     *
-     * @return static
-     */
-    public function setPsEndpoints(?array $psEndpoints = null): self
+    public function setPsEndpoints(?array $psEndpoints): static
     {
         $this->psEndpoints = $psEndpoints;
 
         return $this;
     }
 
-    /**
-     * @return PsEndpointDto[] | null
-     */
     public function getPsEndpoints(): ?array
     {
         return $this->psEndpoints;
     }
 
-    /**
-     * @param FriendsPatternDto[] | null
-     *
-     * @return static
-     */
-    public function setPatterns(?array $patterns = null): self
+    public function setPatterns(?array $patterns): static
     {
         $this->patterns = $patterns;
 
         return $this;
     }
 
-    /**
-     * @return FriendsPatternDto[] | null
-     */
     public function getPatterns(): ?array
     {
         return $this->patterns;

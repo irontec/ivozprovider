@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\Schedule;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use DateTime;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * ScheduleInterface
@@ -25,81 +25,26 @@ interface ScheduleInterface extends LoggableEntityInterface
      */
     public function isOnSchedule(DateTime $time);
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get timeIn
-     *
-     * @return \DateTimeInterface
-     */
-    public function getTimeIn(): \DateTimeInterface;
+    public function getTimeIn(): \DateTime;
 
-    /**
-     * Get timeout
-     *
-     * @return \DateTimeInterface
-     */
-    public function getTimeout(): \DateTimeInterface;
+    public function getTimeout(): \DateTime;
 
-    /**
-     * Get monday
-     *
-     * @return bool | null
-     */
     public function getMonday(): ?bool;
 
-    /**
-     * Get tuesday
-     *
-     * @return bool | null
-     */
     public function getTuesday(): ?bool;
 
-    /**
-     * Get wednesday
-     *
-     * @return bool | null
-     */
     public function getWednesday(): ?bool;
 
-    /**
-     * Get thursday
-     *
-     * @return bool | null
-     */
     public function getThursday(): ?bool;
 
-    /**
-     * Get friday
-     *
-     * @return bool | null
-     */
     public function getFriday(): ?bool;
 
-    /**
-     * Get saturday
-     *
-     * @return bool | null
-     */
     public function getSaturday(): ?bool;
 
-    /**
-     * Get sunday
-     *
-     * @return bool | null
-     */
     public function getSunday(): ?bool;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface;
 
     /**

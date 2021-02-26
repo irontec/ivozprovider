@@ -50,22 +50,19 @@ interface BillableCallRepository extends ObjectRepository, Selectable
     public function idsToTrunkCdrId(array $ids);
 
     /**
-     * @param array $ids
-     * @return void
+     * @return int affected rows
      */
-    public function resetPricingData(array $ids);
+    public function resetPricingData(array $ids): int;
 
     /**
-     * @param int $invoiceId
-     * @return void
+     * @return int affected rows
      */
-    public function resetInvoiceId(int $invoiceId);
+    public function resetInvoiceId(int $invoiceId): int;
 
     /**
-     * @param InvoiceInterface $invoice
-     * @return void
+     * @return int affected rows
      */
-    public function setInvoiceId(InvoiceInterface $invoice);
+    public function setInvoiceId(InvoiceInterface $invoice): int;
 
     /**
      * @param InvoiceInterface $invoice

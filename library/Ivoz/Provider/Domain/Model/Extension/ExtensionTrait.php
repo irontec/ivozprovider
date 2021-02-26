@@ -111,13 +111,6 @@ trait ExtensionTrait
         ];
     }
 
-    /**
-     * Add user
-     *
-     * @param UserInterface $user
-     *
-     * @return static
-     */
     public function addUser(UserInterface $user): ExtensionInterface
     {
         $this->users->add($user);
@@ -125,13 +118,6 @@ trait ExtensionTrait
         return $this;
     }
 
-    /**
-     * Remove user
-     *
-     * @param UserInterface $user
-     *
-     * @return static
-     */
     public function removeUser(UserInterface $user): ExtensionInterface
     {
         $this->users->removeElement($user);
@@ -139,13 +125,6 @@ trait ExtensionTrait
         return $this;
     }
 
-    /**
-     * Replace users
-     *
-     * @param ArrayCollection $users of UserInterface
-     *
-     * @return static
-     */
     public function replaceUsers(ArrayCollection $users): ExtensionInterface
     {
         $updatedEntities = [];
@@ -174,11 +153,6 @@ trait ExtensionTrait
         return $this;
     }
 
-    /**
-     * Get users
-     * @param Criteria | null $criteria
-     * @return UserInterface[]
-     */
     public function getUsers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

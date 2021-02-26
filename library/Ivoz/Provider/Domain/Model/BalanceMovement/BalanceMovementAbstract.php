@@ -33,17 +33,17 @@ abstract class BalanceMovementAbstract
     protected $balance = 0;
 
     /**
-     * @var \DateTimeInterface | null
+     * @var \DateTime | null
      */
-    protected $createdOn = 'CURRENT_TIMESTAMP';
+    protected $createdOn;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var CarrierInterface
+     * @var CarrierInterface | null
      */
     protected $carrier;
 
@@ -76,7 +76,7 @@ abstract class BalanceMovementAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return BalanceMovementDto
      */
     public static function createDto($id = null)
@@ -190,14 +190,7 @@ abstract class BalanceMovementAbstract
         ];
     }
 
-    /**
-     * Set amount
-     *
-     * @param float $amount | null
-     *
-     * @return static
-     */
-    protected function setAmount(?float $amount = null): BalanceMovementInterface
+    protected function setAmount(?float $amount = null): static
     {
         if (!is_null($amount)) {
             $amount = (float) $amount;
@@ -208,24 +201,12 @@ abstract class BalanceMovementAbstract
         return $this;
     }
 
-    /**
-     * Get amount
-     *
-     * @return float | null
-     */
     public function getAmount(): ?float
     {
         return $this->amount;
     }
 
-    /**
-     * Set balance
-     *
-     * @param float $balance | null
-     *
-     * @return static
-     */
-    protected function setBalance(?float $balance = null): BalanceMovementInterface
+    protected function setBalance(?float $balance = null): static
     {
         if (!is_null($balance)) {
             $balance = (float) $balance;
@@ -236,24 +217,12 @@ abstract class BalanceMovementAbstract
         return $this;
     }
 
-    /**
-     * Get balance
-     *
-     * @return float | null
-     */
     public function getBalance(): ?float
     {
         return $this->balance;
     }
 
-    /**
-     * Set createdOn
-     *
-     * @param \DateTimeInterface $createdOn | null
-     *
-     * @return static
-     */
-    protected function setCreatedOn($createdOn = null): BalanceMovementInterface
+    protected function setCreatedOn($createdOn = null): static
     {
         if (!is_null($createdOn)) {
             Assertion::notNull(
@@ -275,59 +244,30 @@ abstract class BalanceMovementAbstract
         return $this;
     }
 
-    /**
-     * Get createdOn
-     *
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedOn(): ?\DateTimeInterface
+    public function getCreatedOn(): ?\DateTime
     {
         return !is_null($this->createdOn) ? clone $this->createdOn : null;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    protected function setCompany(?CompanyInterface $company = null): BalanceMovementInterface
+    protected function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set carrier
-     *
-     * @param CarrierInterface | null
-     *
-     * @return static
-     */
-    protected function setCarrier(?CarrierInterface $carrier = null): BalanceMovementInterface
+    protected function setCarrier(?CarrierInterface $carrier = null): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * Get carrier
-     *
-     * @return CarrierInterface | null
-     */
     public function getCarrier(): ?CarrierInterface
     {
         return $this->carrier;

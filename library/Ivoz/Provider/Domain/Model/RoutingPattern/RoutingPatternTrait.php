@@ -160,13 +160,6 @@ trait RoutingPatternTrait
         ];
     }
 
-    /**
-     * Add outgoingRouting
-     *
-     * @param OutgoingRoutingInterface $outgoingRouting
-     *
-     * @return static
-     */
     public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingPatternInterface
     {
         $this->outgoingRoutings->add($outgoingRouting);
@@ -174,13 +167,6 @@ trait RoutingPatternTrait
         return $this;
     }
 
-    /**
-     * Remove outgoingRouting
-     *
-     * @param OutgoingRoutingInterface $outgoingRouting
-     *
-     * @return static
-     */
     public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingPatternInterface
     {
         $this->outgoingRoutings->removeElement($outgoingRouting);
@@ -188,13 +174,6 @@ trait RoutingPatternTrait
         return $this;
     }
 
-    /**
-     * Replace outgoingRoutings
-     *
-     * @param ArrayCollection $outgoingRoutings of OutgoingRoutingInterface
-     *
-     * @return static
-     */
     public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingPatternInterface
     {
         $updatedEntities = [];
@@ -223,11 +202,6 @@ trait RoutingPatternTrait
         return $this;
     }
 
-    /**
-     * Get outgoingRoutings
-     * @param Criteria | null $criteria
-     * @return OutgoingRoutingInterface[]
-     */
     public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -237,13 +211,6 @@ trait RoutingPatternTrait
         return $this->outgoingRoutings->toArray();
     }
 
-    /**
-     * Add relPatternGroup
-     *
-     * @param RoutingPatternGroupsRelPatternInterface $relPatternGroup
-     *
-     * @return static
-     */
     public function addRelPatternGroup(RoutingPatternGroupsRelPatternInterface $relPatternGroup): RoutingPatternInterface
     {
         $this->relPatternGroups->add($relPatternGroup);
@@ -251,13 +218,6 @@ trait RoutingPatternTrait
         return $this;
     }
 
-    /**
-     * Remove relPatternGroup
-     *
-     * @param RoutingPatternGroupsRelPatternInterface $relPatternGroup
-     *
-     * @return static
-     */
     public function removeRelPatternGroup(RoutingPatternGroupsRelPatternInterface $relPatternGroup): RoutingPatternInterface
     {
         $this->relPatternGroups->removeElement($relPatternGroup);
@@ -265,13 +225,6 @@ trait RoutingPatternTrait
         return $this;
     }
 
-    /**
-     * Replace relPatternGroups
-     *
-     * @param ArrayCollection $relPatternGroups of RoutingPatternGroupsRelPatternInterface
-     *
-     * @return static
-     */
     public function replaceRelPatternGroups(ArrayCollection $relPatternGroups): RoutingPatternInterface
     {
         $updatedEntities = [];
@@ -300,11 +253,6 @@ trait RoutingPatternTrait
         return $this;
     }
 
-    /**
-     * Get relPatternGroups
-     * @param Criteria | null $criteria
-     * @return RoutingPatternGroupsRelPatternInterface[]
-     */
     public function getRelPatternGroups(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -314,13 +262,6 @@ trait RoutingPatternTrait
         return $this->relPatternGroups->toArray();
     }
 
-    /**
-     * Add lcrRule
-     *
-     * @param TrunksLcrRuleInterface $lcrRule
-     *
-     * @return static
-     */
     public function addLcrRule(TrunksLcrRuleInterface $lcrRule): RoutingPatternInterface
     {
         $this->lcrRules->add($lcrRule);
@@ -328,13 +269,6 @@ trait RoutingPatternTrait
         return $this;
     }
 
-    /**
-     * Remove lcrRule
-     *
-     * @param TrunksLcrRuleInterface $lcrRule
-     *
-     * @return static
-     */
     public function removeLcrRule(TrunksLcrRuleInterface $lcrRule): RoutingPatternInterface
     {
         $this->lcrRules->removeElement($lcrRule);
@@ -342,13 +276,6 @@ trait RoutingPatternTrait
         return $this;
     }
 
-    /**
-     * Replace lcrRules
-     *
-     * @param ArrayCollection $lcrRules of TrunksLcrRuleInterface
-     *
-     * @return static
-     */
     public function replaceLcrRules(ArrayCollection $lcrRules): RoutingPatternInterface
     {
         $updatedEntities = [];
@@ -377,11 +304,6 @@ trait RoutingPatternTrait
         return $this;
     }
 
-    /**
-     * Get lcrRules
-     * @param Criteria | null $criteria
-     * @return TrunksLcrRuleInterface[]
-     */
     public function getLcrRules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

@@ -38,7 +38,7 @@ abstract class OutgoingDdiRuleAbstract
     protected $company;
 
     /**
-     * @var DdiInterface
+     * @var DdiInterface | null
      */
     protected $forcedDdi;
 
@@ -73,7 +73,7 @@ abstract class OutgoingDdiRuleAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return OutgoingDdiRuleDto
      */
     public static function createDto($id = null)
@@ -182,14 +182,7 @@ abstract class OutgoingDdiRuleAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): OutgoingDdiRuleInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -198,24 +191,12 @@ abstract class OutgoingDdiRuleAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set defaultAction
-     *
-     * @param string $defaultAction
-     *
-     * @return static
-     */
-    protected function setDefaultAction(string $defaultAction): OutgoingDdiRuleInterface
+    protected function setDefaultAction(string $defaultAction): static
     {
         Assertion::maxLength($defaultAction, 10, 'defaultAction value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -232,59 +213,30 @@ abstract class OutgoingDdiRuleAbstract
         return $this;
     }
 
-    /**
-     * Get defaultAction
-     *
-     * @return string
-     */
     public function getDefaultAction(): string
     {
         return $this->defaultAction;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): OutgoingDdiRuleInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set forcedDdi
-     *
-     * @param DdiInterface | null
-     *
-     * @return static
-     */
-    protected function setForcedDdi(?DdiInterface $forcedDdi = null): OutgoingDdiRuleInterface
+    protected function setForcedDdi(?DdiInterface $forcedDdi = null): static
     {
         $this->forcedDdi = $forcedDdi;
 
         return $this;
     }
 
-    /**
-     * Get forcedDdi
-     *
-     * @return DdiInterface | null
-     */
     public function getForcedDdi(): ?DdiInterface
     {
         return $this->forcedDdi;

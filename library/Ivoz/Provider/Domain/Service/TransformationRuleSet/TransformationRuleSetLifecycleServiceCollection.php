@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\TransformationRuleSet;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -24,9 +25,9 @@ class TransformationRuleSetLifecycleServiceCollection implements LifecycleServic
         ],
     ];
 
-
-    protected function addService(string $event, TransformationRuleSetLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, TransformationRuleSetLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

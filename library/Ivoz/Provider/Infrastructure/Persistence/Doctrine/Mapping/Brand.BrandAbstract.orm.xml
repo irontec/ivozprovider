@@ -39,7 +39,7 @@
     </many-to-one>
     <many-to-one field="language" target-entity="Ivoz\Provider\Domain\Model\Language\LanguageInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="defaultTimezone" target-entity="Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface" fetch="LAZY">
@@ -49,7 +49,7 @@
     </many-to-one>
     <many-to-one field="currency" target-entity="Ivoz\Provider\Domain\Model\Currency\CurrencyInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="currencyId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="currencyId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="voicemailNotificationTemplate" target-entity="Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface" fetch="LAZY">

@@ -4,6 +4,9 @@
     <indexes>
       <index name="billableCall_startTime_idx" columns="startTime"/>
       <index name="billableCall_callid_idx" columns="callid"/>
+      <index name="billableCall_callee_idx" columns="callee"/>
+      <index name="billableCall_caller_idx" columns="caller"/>
+      <index name="billableCall_brand_company_idx" columns="brandId,companyId"/>
     </indexes>
     <field name="callid" type="string" column="callid" length="255" nullable="true">
       <options>

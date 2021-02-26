@@ -9,8 +9,8 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Model\UsersMassImport;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class PostUsersMassImportAction
 {
@@ -21,8 +21,8 @@ class PostUsersMassImportAction
     protected $syncFromCsv;
 
     public function __construct(
-        TokenStorage $tokenStorage,
-        Serializer $serializer,
+        TokenStorageInterface $tokenStorage,
+        SerializerInterface $serializer,
         RequestStack $requestStack,
         CompanyRepository $companyRepository,
         SyncFromCsv $syncFromCsv

@@ -22,17 +22,17 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     private $sentTo = '';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $inDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $outDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $createdOn;
 
@@ -42,17 +42,17 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $csvFileSize;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $csvMimeType;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $csvBaseName;
 
@@ -137,190 +137,115 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $sentTo | null
-     *
-     * @return static
-     */
-    public function setSentTo(?string $sentTo = null): self
+    public function setSentTo(?string $sentTo): static
     {
         $this->sentTo = $sentTo;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSentTo(): ?string
     {
         return $this->sentTo;
     }
 
-    /**
-     * @param \DateTimeInterface $inDate | null
-     *
-     * @return static
-     */
-    public function setInDate($inDate = null): self
+    public function setInDate(null|\DateTime|string $inDate): static
     {
         $this->inDate = $inDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getInDate()
+    public function getInDate(): \DateTime|string|null
     {
         return $this->inDate;
     }
 
-    /**
-     * @param \DateTimeInterface $outDate | null
-     *
-     * @return static
-     */
-    public function setOutDate($outDate = null): self
+    public function setOutDate(null|\DateTime|string $outDate): static
     {
         $this->outDate = $outDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getOutDate()
+    public function getOutDate(): \DateTime|string|null
     {
         return $this->outDate;
     }
 
-    /**
-     * @param \DateTimeInterface $createdOn | null
-     *
-     * @return static
-     */
-    public function setCreatedOn($createdOn = null): self
+    public function setCreatedOn(null|\DateTime|string $createdOn): static
     {
         $this->createdOn = $createdOn;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedOn()
+    public function getCreatedOn(): \DateTime|string|null
     {
         return $this->createdOn;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param int $csvFileSize | null
-     *
-     * @return static
-     */
-    public function setCsvFileSize(?int $csvFileSize = null): self
+    public function setCsvFileSize(?int $csvFileSize): static
     {
         $this->csvFileSize = $csvFileSize;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getCsvFileSize(): ?int
     {
         return $this->csvFileSize;
     }
 
-    /**
-     * @param string $csvMimeType | null
-     *
-     * @return static
-     */
-    public function setCsvMimeType(?string $csvMimeType = null): self
+    public function setCsvMimeType(?string $csvMimeType): static
     {
         $this->csvMimeType = $csvMimeType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCsvMimeType(): ?string
     {
         return $this->csvMimeType;
     }
 
-    /**
-     * @param string $csvBaseName | null
-     *
-     * @return static
-     */
-    public function setCsvBaseName(?string $csvBaseName = null): self
+    public function setCsvBaseName(?string $csvBaseName): static
     {
         $this->csvBaseName = $csvBaseName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCsvBaseName(): ?string
     {
         return $this->csvBaseName;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -329,9 +254,6 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -341,30 +263,19 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -373,9 +284,6 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -385,30 +293,19 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CallCsvSchedulerDto | null
-     *
-     * @return static
-     */
-    public function setCallCsvScheduler(?CallCsvSchedulerDto $callCsvScheduler = null): self
+    public function setCallCsvScheduler(?CallCsvSchedulerDto $callCsvScheduler): static
     {
         $this->callCsvScheduler = $callCsvScheduler;
 
         return $this;
     }
 
-    /**
-     * @return CallCsvSchedulerDto | null
-     */
     public function getCallCsvScheduler(): ?CallCsvSchedulerDto
     {
         return $this->callCsvScheduler;
     }
 
-    /**
-     * @return static
-     */
-    public function setCallCsvSchedulerId($id): self
+    public function setCallCsvSchedulerId($id): static
     {
         $value = !is_null($id)
             ? new CallCsvSchedulerDto($id)
@@ -417,9 +314,6 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->setCallCsvScheduler($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCallCsvSchedulerId()
     {
         if ($dto = $this->getCallCsvScheduler()) {

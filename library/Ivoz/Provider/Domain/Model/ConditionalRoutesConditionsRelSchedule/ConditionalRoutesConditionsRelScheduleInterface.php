@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
 use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * ConditionalRoutesConditionsRelScheduleInterface
@@ -17,27 +17,10 @@ interface ConditionalRoutesConditionsRelScheduleInterface extends LoggableEntity
      */
     public function getChangeSet();
 
-    /**
-     * Set condition
-     *
-     * @param ConditionalRoutesConditionInterface | null
-     *
-     * @return static
-     */
-    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): ConditionalRoutesConditionsRelScheduleInterface;
+    public function setCondition(?ConditionalRoutesConditionInterface $condition = null): static;
 
-    /**
-     * Get condition
-     *
-     * @return ConditionalRoutesConditionInterface | null
-     */
     public function getCondition(): ?ConditionalRoutesConditionInterface;
 
-    /**
-     * Get schedule
-     *
-     * @return ScheduleInterface
-     */
     public function getSchedule(): ScheduleInterface;
 
     /**

@@ -39,7 +39,7 @@ abstract class RatingPlanGroupAbstract
     protected $brand;
 
     /**
-     * @var CurrencyInterface
+     * @var CurrencyInterface | null
      */
     protected $currency;
 
@@ -74,7 +74,7 @@ abstract class RatingPlanGroupAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return RatingPlanGroupDto
      */
     public static function createDto($id = null)
@@ -223,22 +223,12 @@ abstract class RatingPlanGroupAbstract
         ];
     }
 
-    /**
-     * Get name
-     *
-     * @return Name
-     */
     public function getName(): Name
     {
         return $this->name;
     }
 
-    /**
-     * Set name
-     *
-     * @return static
-     */
-    protected function setName(Name $name): RatingPlanGroupInterface
+    protected function setName(Name $name): static
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -249,22 +239,12 @@ abstract class RatingPlanGroupAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return Description
-     */
     public function getDescription(): Description
     {
         return $this->description;
     }
 
-    /**
-     * Set description
-     *
-     * @return static
-     */
-    protected function setDescription(Description $description): RatingPlanGroupInterface
+    protected function setDescription(Description $description): static
     {
         $isEqual = $this->description && $this->description->equals($description);
         if ($isEqual) {
@@ -275,49 +255,25 @@ abstract class RatingPlanGroupAbstract
         return $this;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    protected function setBrand(BrandInterface $brand): RatingPlanGroupInterface
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set currency
-     *
-     * @param CurrencyInterface | null
-     *
-     * @return static
-     */
-    protected function setCurrency(?CurrencyInterface $currency = null): RatingPlanGroupInterface
+    protected function setCurrency(?CurrencyInterface $currency = null): static
     {
         $this->currency = $currency;
 
         return $this;
     }
 
-    /**
-     * Get currency
-     *
-     * @return CurrencyInterface | null
-     */
     public function getCurrency(): ?CurrencyInterface
     {
         return $this->currency;

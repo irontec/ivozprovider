@@ -100,47 +100,47 @@ abstract class QueueAbstract
     protected $company;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $periodicAnnounceLocution;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $timeoutLocution;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $timeoutExtension;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $timeoutVoiceMailUser;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $fullLocution;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $fullExtension;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $fullVoiceMailUser;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $timeoutNumberCountry;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $fullNumberCountry;
 
@@ -173,7 +173,7 @@ abstract class QueueAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return QueueDto
      */
     public static function createDto($id = null)
@@ -358,14 +358,7 @@ abstract class QueueAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name | null
-     *
-     * @return static
-     */
-    protected function setName(?string $name = null): QueueInterface
+    protected function setName(?string $name = null): static
     {
         if (!is_null($name)) {
             Assertion::maxLength($name, 128, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -376,48 +369,24 @@ abstract class QueueAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * Set maxWaitTime
-     *
-     * @param int $maxWaitTime | null
-     *
-     * @return static
-     */
-    protected function setMaxWaitTime(?int $maxWaitTime = null): QueueInterface
+    protected function setMaxWaitTime(?int $maxWaitTime = null): static
     {
         $this->maxWaitTime = $maxWaitTime;
 
         return $this;
     }
 
-    /**
-     * Get maxWaitTime
-     *
-     * @return int | null
-     */
     public function getMaxWaitTime(): ?int
     {
         return $this->maxWaitTime;
     }
 
-    /**
-     * Set timeoutTargetType
-     *
-     * @param string $timeoutTargetType | null
-     *
-     * @return static
-     */
-    protected function setTimeoutTargetType(?string $timeoutTargetType = null): QueueInterface
+    protected function setTimeoutTargetType(?string $timeoutTargetType = null): static
     {
         if (!is_null($timeoutTargetType)) {
             Assertion::maxLength($timeoutTargetType, 25, 'timeoutTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -437,24 +406,12 @@ abstract class QueueAbstract
         return $this;
     }
 
-    /**
-     * Get timeoutTargetType
-     *
-     * @return string | null
-     */
     public function getTimeoutTargetType(): ?string
     {
         return $this->timeoutTargetType;
     }
 
-    /**
-     * Set timeoutNumberValue
-     *
-     * @param string $timeoutNumberValue | null
-     *
-     * @return static
-     */
-    protected function setTimeoutNumberValue(?string $timeoutNumberValue = null): QueueInterface
+    protected function setTimeoutNumberValue(?string $timeoutNumberValue = null): static
     {
         if (!is_null($timeoutNumberValue)) {
             Assertion::maxLength($timeoutNumberValue, 25, 'timeoutNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -465,48 +422,24 @@ abstract class QueueAbstract
         return $this;
     }
 
-    /**
-     * Get timeoutNumberValue
-     *
-     * @return string | null
-     */
     public function getTimeoutNumberValue(): ?string
     {
         return $this->timeoutNumberValue;
     }
 
-    /**
-     * Set maxlen
-     *
-     * @param int $maxlen | null
-     *
-     * @return static
-     */
-    protected function setMaxlen(?int $maxlen = null): QueueInterface
+    protected function setMaxlen(?int $maxlen = null): static
     {
         $this->maxlen = $maxlen;
 
         return $this;
     }
 
-    /**
-     * Get maxlen
-     *
-     * @return int | null
-     */
     public function getMaxlen(): ?int
     {
         return $this->maxlen;
     }
 
-    /**
-     * Set fullTargetType
-     *
-     * @param string $fullTargetType | null
-     *
-     * @return static
-     */
-    protected function setFullTargetType(?string $fullTargetType = null): QueueInterface
+    protected function setFullTargetType(?string $fullTargetType = null): static
     {
         if (!is_null($fullTargetType)) {
             Assertion::maxLength($fullTargetType, 25, 'fullTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -526,24 +459,12 @@ abstract class QueueAbstract
         return $this;
     }
 
-    /**
-     * Get fullTargetType
-     *
-     * @return string | null
-     */
     public function getFullTargetType(): ?string
     {
         return $this->fullTargetType;
     }
 
-    /**
-     * Set fullNumberValue
-     *
-     * @param string $fullNumberValue | null
-     *
-     * @return static
-     */
-    protected function setFullNumberValue(?string $fullNumberValue = null): QueueInterface
+    protected function setFullNumberValue(?string $fullNumberValue = null): static
     {
         if (!is_null($fullNumberValue)) {
             Assertion::maxLength($fullNumberValue, 25, 'fullNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -554,144 +475,72 @@ abstract class QueueAbstract
         return $this;
     }
 
-    /**
-     * Get fullNumberValue
-     *
-     * @return string | null
-     */
     public function getFullNumberValue(): ?string
     {
         return $this->fullNumberValue;
     }
 
-    /**
-     * Set periodicAnnounceFrequency
-     *
-     * @param int $periodicAnnounceFrequency | null
-     *
-     * @return static
-     */
-    protected function setPeriodicAnnounceFrequency(?int $periodicAnnounceFrequency = null): QueueInterface
+    protected function setPeriodicAnnounceFrequency(?int $periodicAnnounceFrequency = null): static
     {
         $this->periodicAnnounceFrequency = $periodicAnnounceFrequency;
 
         return $this;
     }
 
-    /**
-     * Get periodicAnnounceFrequency
-     *
-     * @return int | null
-     */
     public function getPeriodicAnnounceFrequency(): ?int
     {
         return $this->periodicAnnounceFrequency;
     }
 
-    /**
-     * Set memberCallRest
-     *
-     * @param int $memberCallRest | null
-     *
-     * @return static
-     */
-    protected function setMemberCallRest(?int $memberCallRest = null): QueueInterface
+    protected function setMemberCallRest(?int $memberCallRest = null): static
     {
         $this->memberCallRest = $memberCallRest;
 
         return $this;
     }
 
-    /**
-     * Get memberCallRest
-     *
-     * @return int | null
-     */
     public function getMemberCallRest(): ?int
     {
         return $this->memberCallRest;
     }
 
-    /**
-     * Set memberCallTimeout
-     *
-     * @param int $memberCallTimeout | null
-     *
-     * @return static
-     */
-    protected function setMemberCallTimeout(?int $memberCallTimeout = null): QueueInterface
+    protected function setMemberCallTimeout(?int $memberCallTimeout = null): static
     {
         $this->memberCallTimeout = $memberCallTimeout;
 
         return $this;
     }
 
-    /**
-     * Get memberCallTimeout
-     *
-     * @return int | null
-     */
     public function getMemberCallTimeout(): ?int
     {
         return $this->memberCallTimeout;
     }
 
-    /**
-     * Set strategy
-     *
-     * @param string $strategy | null
-     *
-     * @return static
-     */
-    protected function setStrategy(?string $strategy = null): QueueInterface
+    protected function setStrategy(?string $strategy = null): static
     {
         $this->strategy = $strategy;
 
         return $this;
     }
 
-    /**
-     * Get strategy
-     *
-     * @return string | null
-     */
     public function getStrategy(): ?string
     {
         return $this->strategy;
     }
 
-    /**
-     * Set weight
-     *
-     * @param int $weight | null
-     *
-     * @return static
-     */
-    protected function setWeight(?int $weight = null): QueueInterface
+    protected function setWeight(?int $weight = null): static
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    /**
-     * Get weight
-     *
-     * @return int | null
-     */
     public function getWeight(): ?int
     {
         return $this->weight;
     }
 
-    /**
-     * Set preventMissedCalls
-     *
-     * @param int $preventMissedCalls
-     *
-     * @return static
-     */
-    protected function setPreventMissedCalls(int $preventMissedCalls): QueueInterface
+    protected function setPreventMissedCalls(int $preventMissedCalls): static
     {
         Assertion::greaterOrEqualThan($preventMissedCalls, 0, 'preventMissedCalls provided "%s" is not greater or equal than "%s".');
 
@@ -700,251 +549,126 @@ abstract class QueueAbstract
         return $this;
     }
 
-    /**
-     * Get preventMissedCalls
-     *
-     * @return int
-     */
     public function getPreventMissedCalls(): int
     {
         return $this->preventMissedCalls;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): QueueInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set periodicAnnounceLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setPeriodicAnnounceLocution(?LocutionInterface $periodicAnnounceLocution = null): QueueInterface
+    protected function setPeriodicAnnounceLocution(?LocutionInterface $periodicAnnounceLocution = null): static
     {
         $this->periodicAnnounceLocution = $periodicAnnounceLocution;
 
         return $this;
     }
 
-    /**
-     * Get periodicAnnounceLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getPeriodicAnnounceLocution(): ?LocutionInterface
     {
         return $this->periodicAnnounceLocution;
     }
 
-    /**
-     * Set timeoutLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setTimeoutLocution(?LocutionInterface $timeoutLocution = null): QueueInterface
+    protected function setTimeoutLocution(?LocutionInterface $timeoutLocution = null): static
     {
         $this->timeoutLocution = $timeoutLocution;
 
         return $this;
     }
 
-    /**
-     * Get timeoutLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getTimeoutLocution(): ?LocutionInterface
     {
         return $this->timeoutLocution;
     }
 
-    /**
-     * Set timeoutExtension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setTimeoutExtension(?ExtensionInterface $timeoutExtension = null): QueueInterface
+    protected function setTimeoutExtension(?ExtensionInterface $timeoutExtension = null): static
     {
         $this->timeoutExtension = $timeoutExtension;
 
         return $this;
     }
 
-    /**
-     * Get timeoutExtension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getTimeoutExtension(): ?ExtensionInterface
     {
         return $this->timeoutExtension;
     }
 
-    /**
-     * Set timeoutVoiceMailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setTimeoutVoiceMailUser(?UserInterface $timeoutVoiceMailUser = null): QueueInterface
+    protected function setTimeoutVoiceMailUser(?UserInterface $timeoutVoiceMailUser = null): static
     {
         $this->timeoutVoiceMailUser = $timeoutVoiceMailUser;
 
         return $this;
     }
 
-    /**
-     * Get timeoutVoiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getTimeoutVoiceMailUser(): ?UserInterface
     {
         return $this->timeoutVoiceMailUser;
     }
 
-    /**
-     * Set fullLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setFullLocution(?LocutionInterface $fullLocution = null): QueueInterface
+    protected function setFullLocution(?LocutionInterface $fullLocution = null): static
     {
         $this->fullLocution = $fullLocution;
 
         return $this;
     }
 
-    /**
-     * Get fullLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getFullLocution(): ?LocutionInterface
     {
         return $this->fullLocution;
     }
 
-    /**
-     * Set fullExtension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setFullExtension(?ExtensionInterface $fullExtension = null): QueueInterface
+    protected function setFullExtension(?ExtensionInterface $fullExtension = null): static
     {
         $this->fullExtension = $fullExtension;
 
         return $this;
     }
 
-    /**
-     * Get fullExtension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getFullExtension(): ?ExtensionInterface
     {
         return $this->fullExtension;
     }
 
-    /**
-     * Set fullVoiceMailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setFullVoiceMailUser(?UserInterface $fullVoiceMailUser = null): QueueInterface
+    protected function setFullVoiceMailUser(?UserInterface $fullVoiceMailUser = null): static
     {
         $this->fullVoiceMailUser = $fullVoiceMailUser;
 
         return $this;
     }
 
-    /**
-     * Get fullVoiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getFullVoiceMailUser(): ?UserInterface
     {
         return $this->fullVoiceMailUser;
     }
 
-    /**
-     * Set timeoutNumberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setTimeoutNumberCountry(?CountryInterface $timeoutNumberCountry = null): QueueInterface
+    protected function setTimeoutNumberCountry(?CountryInterface $timeoutNumberCountry = null): static
     {
         $this->timeoutNumberCountry = $timeoutNumberCountry;
 
         return $this;
     }
 
-    /**
-     * Get timeoutNumberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getTimeoutNumberCountry(): ?CountryInterface
     {
         return $this->timeoutNumberCountry;
     }
 
-    /**
-     * Set fullNumberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setFullNumberCountry(?CountryInterface $fullNumberCountry = null): QueueInterface
+    protected function setFullNumberCountry(?CountryInterface $fullNumberCountry = null): static
     {
         $this->fullNumberCountry = $fullNumberCountry;
 
         return $this;
     }
 
-    /**
-     * Get fullNumberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getFullNumberCountry(): ?CountryInterface
     {
         return $this->fullNumberCountry;

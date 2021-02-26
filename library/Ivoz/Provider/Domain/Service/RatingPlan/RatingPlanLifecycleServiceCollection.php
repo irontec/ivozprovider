@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\RatingPlan;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -30,11 +31,9 @@ class RatingPlanLifecycleServiceCollection implements LifecycleServiceCollection
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, RatingPlanLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, RatingPlanLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

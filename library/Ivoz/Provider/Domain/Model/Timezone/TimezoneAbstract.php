@@ -36,7 +36,7 @@ abstract class TimezoneAbstract
     protected $label;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $country;
 
@@ -71,7 +71,7 @@ abstract class TimezoneAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TimezoneDto
      */
     public static function createDto($id = null)
@@ -200,14 +200,7 @@ abstract class TimezoneAbstract
         ];
     }
 
-    /**
-     * Set tz
-     *
-     * @param string $tz
-     *
-     * @return static
-     */
-    protected function setTz(string $tz): TimezoneInterface
+    protected function setTz(string $tz): static
     {
         Assertion::maxLength($tz, 255, 'tz value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -216,24 +209,12 @@ abstract class TimezoneAbstract
         return $this;
     }
 
-    /**
-     * Get tz
-     *
-     * @return string
-     */
     public function getTz(): string
     {
         return $this->tz;
     }
 
-    /**
-     * Set comment
-     *
-     * @param string $comment | null
-     *
-     * @return static
-     */
-    protected function setComment(?string $comment = null): TimezoneInterface
+    protected function setComment(?string $comment = null): static
     {
         if (!is_null($comment)) {
             Assertion::maxLength($comment, 150, 'comment value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -244,32 +225,17 @@ abstract class TimezoneAbstract
         return $this;
     }
 
-    /**
-     * Get comment
-     *
-     * @return string | null
-     */
     public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    /**
-     * Get label
-     *
-     * @return Label
-     */
     public function getLabel(): Label
     {
         return $this->label;
     }
 
-    /**
-     * Set label
-     *
-     * @return static
-     */
-    protected function setLabel(Label $label): TimezoneInterface
+    protected function setLabel(Label $label): static
     {
         $isEqual = $this->label && $this->label->equals($label);
         if ($isEqual) {
@@ -280,25 +246,13 @@ abstract class TimezoneAbstract
         return $this;
     }
 
-    /**
-     * Set country
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setCountry(?CountryInterface $country = null): TimezoneInterface
+    protected function setCountry(?CountryInterface $country = null): static
     {
         $this->country = $country;
 
         return $this;
     }
 
-    /**
-     * Get country
-     *
-     * @return CountryInterface | null
-     */
     public function getCountry(): ?CountryInterface
     {
         return $this->country;

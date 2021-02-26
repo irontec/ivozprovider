@@ -15,18 +15,8 @@ interface ProxyTrunkInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Get name
-     *
-     * @return string | null
-     */
     public function getName(): ?string;
 
-    /**
-     * Get ip
-     *
-     * @return string
-     */
     public function getIp(): string;
 
     /**

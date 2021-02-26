@@ -63,7 +63,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * {@inheritDoc}
      */
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         Assertion::regex($name, '/^[a-zA-Z0-9_*]+$/');
         return parent::setName($name);
@@ -72,7 +72,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * {@inheritDoc}
      */
-    public function setIp(?string $ip = null): self
+    public function setIp(?string $ip = null): static
     {
         if (!empty($ip)) {
             Assertion::ip($ip);
@@ -83,7 +83,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * {@inheritDoc}
      */
-    public function setPassword(?string $password = null): self
+    public function setPassword(?string $password = null): static
     {
         if (!empty($password)) {
             Assertion::regex(
@@ -94,7 +94,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
         return parent::setPassword($password);
     }
 
-    public function setPort(?int $port = null): self
+    public function setPort(?int $port = null): static
     {
         if (!empty($port)) {
             Assertion::lessThan($port, pow(2, 16), 'port provided "%s" is not lower than "%s".');

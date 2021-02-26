@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\QueueMember;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * QueueMemberInterface
@@ -17,34 +17,12 @@ interface QueueMemberInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Get penalty
-     *
-     * @return int | null
-     */
     public function getPenalty(): ?int;
 
-    /**
-     * Get queue
-     *
-     * @return QueueInterface
-     */
     public function getQueue(): QueueInterface;
 
-    /**
-     * Set user
-     *
-     * @param UserInterface
-     *
-     * @return static
-     */
-    public function setUser(UserInterface $user): QueueMemberInterface;
+    public function setUser(UserInterface $user): static;
 
-    /**
-     * Get user
-     *
-     * @return UserInterface
-     */
     public function getUser(): UserInterface;
 
     /**

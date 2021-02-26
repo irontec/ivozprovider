@@ -167,310 +167,187 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $lUuid | null
-     *
-     * @return static
-     */
-    public function setLUuid(?string $lUuid = null): self
+    public function setLUuid(?string $lUuid): static
     {
         $this->lUuid = $lUuid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLUuid(): ?string
     {
         return $this->lUuid;
     }
 
-    /**
-     * @param string $lUsername | null
-     *
-     * @return static
-     */
-    public function setLUsername(?string $lUsername = null): self
+    public function setLUsername(?string $lUsername): static
     {
         $this->lUsername = $lUsername;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLUsername(): ?string
     {
         return $this->lUsername;
     }
 
-    /**
-     * @param string $lDomain | null
-     *
-     * @return static
-     */
-    public function setLDomain(?string $lDomain = null): self
+    public function setLDomain(?string $lDomain): static
     {
         $this->lDomain = $lDomain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getLDomain(): ?string
     {
         return $this->lDomain;
     }
 
-    /**
-     * @param string $rUsername | null
-     *
-     * @return static
-     */
-    public function setRUsername(?string $rUsername = null): self
+    public function setRUsername(?string $rUsername): static
     {
         $this->rUsername = $rUsername;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRUsername(): ?string
     {
         return $this->rUsername;
     }
 
-    /**
-     * @param string $rDomain | null
-     *
-     * @return static
-     */
-    public function setRDomain(?string $rDomain = null): self
+    public function setRDomain(?string $rDomain): static
     {
         $this->rDomain = $rDomain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRDomain(): ?string
     {
         return $this->rDomain;
     }
 
-    /**
-     * @param string $realm | null
-     *
-     * @return static
-     */
-    public function setRealm(?string $realm = null): self
+    public function setRealm(?string $realm): static
     {
         $this->realm = $realm;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRealm(): ?string
     {
         return $this->realm;
     }
 
-    /**
-     * @param string $authUsername | null
-     *
-     * @return static
-     */
-    public function setAuthUsername(?string $authUsername = null): self
+    public function setAuthUsername(?string $authUsername): static
     {
         $this->authUsername = $authUsername;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAuthUsername(): ?string
     {
         return $this->authUsername;
     }
 
-    /**
-     * @param string $authPassword | null
-     *
-     * @return static
-     */
-    public function setAuthPassword(?string $authPassword = null): self
+    public function setAuthPassword(?string $authPassword): static
     {
         $this->authPassword = $authPassword;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAuthPassword(): ?string
     {
         return $this->authPassword;
     }
 
-    /**
-     * @param string $authProxy | null
-     *
-     * @return static
-     */
-    public function setAuthProxy(?string $authProxy = null): self
+    public function setAuthProxy(?string $authProxy): static
     {
         $this->authProxy = $authProxy;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAuthProxy(): ?string
     {
         return $this->authProxy;
     }
 
-    /**
-     * @param int $expires | null
-     *
-     * @return static
-     */
-    public function setExpires(?int $expires = null): self
+    public function setExpires(?int $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getExpires(): ?int
     {
         return $this->expires;
     }
 
-    /**
-     * @param int $flags | null
-     *
-     * @return static
-     */
-    public function setFlags(?int $flags = null): self
+    public function setFlags(?int $flags): static
     {
         $this->flags = $flags;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getFlags(): ?int
     {
         return $this->flags;
     }
 
-    /**
-     * @param int $regDelay | null
-     *
-     * @return static
-     */
-    public function setRegDelay(?int $regDelay = null): self
+    public function setRegDelay(?int $regDelay): static
     {
         $this->regDelay = $regDelay;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getRegDelay(): ?int
     {
         return $this->regDelay;
     }
 
-    /**
-     * @param string $authHa1 | null
-     *
-     * @return static
-     */
-    public function setAuthHa1(?string $authHa1 = null): self
+    public function setAuthHa1(?string $authHa1): static
     {
         $this->authHa1 = $authHa1;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAuthHa1(): ?string
     {
         return $this->authHa1;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param DdiProviderRegistrationDto | null
-     *
-     * @return static
-     */
-    public function setDdiProviderRegistration(?DdiProviderRegistrationDto $ddiProviderRegistration = null): self
+    public function setDdiProviderRegistration(?DdiProviderRegistrationDto $ddiProviderRegistration): static
     {
         $this->ddiProviderRegistration = $ddiProviderRegistration;
 
         return $this;
     }
 
-    /**
-     * @return DdiProviderRegistrationDto | null
-     */
     public function getDdiProviderRegistration(): ?DdiProviderRegistrationDto
     {
         return $this->ddiProviderRegistration;
     }
 
-    /**
-     * @return static
-     */
-    public function setDdiProviderRegistrationId($id): self
+    public function setDdiProviderRegistrationId($id): static
     {
         $value = !is_null($id)
             ? new DdiProviderRegistrationDto($id)
@@ -479,9 +356,6 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->setDdiProviderRegistration($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getDdiProviderRegistrationId()
     {
         if ($dto = $this->getDdiProviderRegistration()) {
@@ -491,30 +365,19 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -523,9 +386,6 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {

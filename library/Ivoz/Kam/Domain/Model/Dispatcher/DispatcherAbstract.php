@@ -93,7 +93,7 @@ abstract class DispatcherAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return DispatcherDto
      */
     public static function createDto($id = null)
@@ -214,38 +214,19 @@ abstract class DispatcherAbstract
         ];
     }
 
-    /**
-     * Set setid
-     *
-     * @param int $setid
-     *
-     * @return static
-     */
-    protected function setSetid(int $setid): DispatcherInterface
+    protected function setSetid(int $setid): static
     {
         $this->setid = $setid;
 
         return $this;
     }
 
-    /**
-     * Get setid
-     *
-     * @return int
-     */
     public function getSetid(): int
     {
         return $this->setid;
     }
 
-    /**
-     * Set destination
-     *
-     * @param string $destination
-     *
-     * @return static
-     */
-    protected function setDestination(string $destination): DispatcherInterface
+    protected function setDestination(string $destination): static
     {
         Assertion::maxLength($destination, 192, 'destination value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -254,72 +235,36 @@ abstract class DispatcherAbstract
         return $this;
     }
 
-    /**
-     * Get destination
-     *
-     * @return string
-     */
     public function getDestination(): string
     {
         return $this->destination;
     }
 
-    /**
-     * Set flags
-     *
-     * @param int $flags
-     *
-     * @return static
-     */
-    protected function setFlags(int $flags): DispatcherInterface
+    protected function setFlags(int $flags): static
     {
         $this->flags = $flags;
 
         return $this;
     }
 
-    /**
-     * Get flags
-     *
-     * @return int
-     */
     public function getFlags(): int
     {
         return $this->flags;
     }
 
-    /**
-     * Set priority
-     *
-     * @param int $priority
-     *
-     * @return static
-     */
-    protected function setPriority(int $priority): DispatcherInterface
+    protected function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
         return $this;
     }
 
-    /**
-     * Get priority
-     *
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;
     }
 
-    /**
-     * Set attrs
-     *
-     * @param string $attrs
-     *
-     * @return static
-     */
-    protected function setAttrs(string $attrs): DispatcherInterface
+    protected function setAttrs(string $attrs): static
     {
         Assertion::maxLength($attrs, 128, 'attrs value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -328,24 +273,12 @@ abstract class DispatcherAbstract
         return $this;
     }
 
-    /**
-     * Get attrs
-     *
-     * @return string
-     */
     public function getAttrs(): string
     {
         return $this->attrs;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return static
-     */
-    protected function setDescription(string $description): DispatcherInterface
+    protected function setDescription(string $description): static
     {
         Assertion::maxLength($description, 64, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -354,35 +287,18 @@ abstract class DispatcherAbstract
         return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * Set applicationServer
-     *
-     * @param ApplicationServerInterface
-     *
-     * @return static
-     */
-    protected function setApplicationServer(ApplicationServerInterface $applicationServer): DispatcherInterface
+    protected function setApplicationServer(ApplicationServerInterface $applicationServer): static
     {
         $this->applicationServer = $applicationServer;
 
         return $this;
     }
 
-    /**
-     * Get applicationServer
-     *
-     * @return ApplicationServerInterface
-     */
     public function getApplicationServer(): ApplicationServerInterface
     {
         return $this->applicationServer;

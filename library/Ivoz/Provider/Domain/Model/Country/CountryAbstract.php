@@ -72,7 +72,7 @@ abstract class CountryAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CountryDto
      */
     public static function createDto($id = null)
@@ -221,14 +221,7 @@ abstract class CountryAbstract
         ];
     }
 
-    /**
-     * Set code
-     *
-     * @param string $code
-     *
-     * @return static
-     */
-    protected function setCode(string $code): CountryInterface
+    protected function setCode(string $code): static
     {
         Assertion::maxLength($code, 100, 'code value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -237,24 +230,12 @@ abstract class CountryAbstract
         return $this;
     }
 
-    /**
-     * Get code
-     *
-     * @return string
-     */
     public function getCode(): string
     {
         return $this->code;
     }
 
-    /**
-     * Set countryCode
-     *
-     * @param string $countryCode | null
-     *
-     * @return static
-     */
-    protected function setCountryCode(?string $countryCode = null): CountryInterface
+    protected function setCountryCode(?string $countryCode = null): static
     {
         if (!is_null($countryCode)) {
             Assertion::maxLength($countryCode, 10, 'countryCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -265,32 +246,17 @@ abstract class CountryAbstract
         return $this;
     }
 
-    /**
-     * Get countryCode
-     *
-     * @return string | null
-     */
     public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
-    /**
-     * Get name
-     *
-     * @return Name
-     */
     public function getName(): Name
     {
         return $this->name;
     }
 
-    /**
-     * Set name
-     *
-     * @return static
-     */
-    protected function setName(Name $name): CountryInterface
+    protected function setName(Name $name): static
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -301,22 +267,12 @@ abstract class CountryAbstract
         return $this;
     }
 
-    /**
-     * Get zone
-     *
-     * @return Zone
-     */
     public function getZone(): Zone
     {
         return $this->zone;
     }
 
-    /**
-     * Set zone
-     *
-     * @return static
-     */
-    protected function setZone(Zone $zone): CountryInterface
+    protected function setZone(Zone $zone): static
     {
         $isEqual = $this->zone && $this->zone->equals($zone);
         if ($isEqual) {

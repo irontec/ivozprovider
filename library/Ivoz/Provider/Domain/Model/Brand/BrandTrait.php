@@ -305,13 +305,6 @@ trait BrandTrait
         ];
     }
 
-    /**
-     * Add company
-     *
-     * @param CompanyInterface $company
-     *
-     * @return static
-     */
     public function addCompany(CompanyInterface $company): BrandInterface
     {
         $this->companies->add($company);
@@ -319,13 +312,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Remove company
-     *
-     * @param CompanyInterface $company
-     *
-     * @return static
-     */
     public function removeCompany(CompanyInterface $company): BrandInterface
     {
         $this->companies->removeElement($company);
@@ -333,13 +319,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Replace companies
-     *
-     * @param ArrayCollection $companies of CompanyInterface
-     *
-     * @return static
-     */
     public function replaceCompanies(ArrayCollection $companies): BrandInterface
     {
         $updatedEntities = [];
@@ -368,11 +347,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Get companies
-     * @param Criteria | null $criteria
-     * @return CompanyInterface[]
-     */
     public function getCompanies(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -382,13 +356,6 @@ trait BrandTrait
         return $this->companies->toArray();
     }
 
-    /**
-     * Add service
-     *
-     * @param BrandServiceInterface $service
-     *
-     * @return static
-     */
     public function addService(BrandServiceInterface $service): BrandInterface
     {
         $this->services->add($service);
@@ -396,13 +363,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Remove service
-     *
-     * @param BrandServiceInterface $service
-     *
-     * @return static
-     */
     public function removeService(BrandServiceInterface $service): BrandInterface
     {
         $this->services->removeElement($service);
@@ -410,13 +370,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Replace services
-     *
-     * @param ArrayCollection $services of BrandServiceInterface
-     *
-     * @return static
-     */
     public function replaceServices(ArrayCollection $services): BrandInterface
     {
         $updatedEntities = [];
@@ -445,11 +398,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Get services
-     * @param Criteria | null $criteria
-     * @return BrandServiceInterface[]
-     */
     public function getServices(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -459,13 +407,6 @@ trait BrandTrait
         return $this->services->toArray();
     }
 
-    /**
-     * Add url
-     *
-     * @param WebPortalInterface $url
-     *
-     * @return static
-     */
     public function addUrl(WebPortalInterface $url): BrandInterface
     {
         $this->urls->add($url);
@@ -473,13 +414,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Remove url
-     *
-     * @param WebPortalInterface $url
-     *
-     * @return static
-     */
     public function removeUrl(WebPortalInterface $url): BrandInterface
     {
         $this->urls->removeElement($url);
@@ -487,13 +421,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Replace urls
-     *
-     * @param ArrayCollection $urls of WebPortalInterface
-     *
-     * @return static
-     */
     public function replaceUrls(ArrayCollection $urls): BrandInterface
     {
         $updatedEntities = [];
@@ -522,11 +449,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Get urls
-     * @param Criteria | null $criteria
-     * @return WebPortalInterface[]
-     */
     public function getUrls(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -536,13 +458,6 @@ trait BrandTrait
         return $this->urls->toArray();
     }
 
-    /**
-     * Add relFeature
-     *
-     * @param FeaturesRelBrandInterface $relFeature
-     *
-     * @return static
-     */
     public function addRelFeature(FeaturesRelBrandInterface $relFeature): BrandInterface
     {
         $this->relFeatures->add($relFeature);
@@ -550,13 +465,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Remove relFeature
-     *
-     * @param FeaturesRelBrandInterface $relFeature
-     *
-     * @return static
-     */
     public function removeRelFeature(FeaturesRelBrandInterface $relFeature): BrandInterface
     {
         $this->relFeatures->removeElement($relFeature);
@@ -564,13 +472,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Replace relFeatures
-     *
-     * @param ArrayCollection $relFeatures of FeaturesRelBrandInterface
-     *
-     * @return static
-     */
     public function replaceRelFeatures(ArrayCollection $relFeatures): BrandInterface
     {
         $updatedEntities = [];
@@ -599,11 +500,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Get relFeatures
-     * @param Criteria | null $criteria
-     * @return FeaturesRelBrandInterface[]
-     */
     public function getRelFeatures(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -613,13 +509,6 @@ trait BrandTrait
         return $this->relFeatures->toArray();
     }
 
-    /**
-     * Add relProxyTrunk
-     *
-     * @param ProxyTrunksRelBrandInterface $relProxyTrunk
-     *
-     * @return static
-     */
     public function addRelProxyTrunk(ProxyTrunksRelBrandInterface $relProxyTrunk): BrandInterface
     {
         $this->relProxyTrunks->add($relProxyTrunk);
@@ -627,13 +516,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Remove relProxyTrunk
-     *
-     * @param ProxyTrunksRelBrandInterface $relProxyTrunk
-     *
-     * @return static
-     */
     public function removeRelProxyTrunk(ProxyTrunksRelBrandInterface $relProxyTrunk): BrandInterface
     {
         $this->relProxyTrunks->removeElement($relProxyTrunk);
@@ -641,13 +523,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Replace relProxyTrunks
-     *
-     * @param ArrayCollection $relProxyTrunks of ProxyTrunksRelBrandInterface
-     *
-     * @return static
-     */
     public function replaceRelProxyTrunks(ArrayCollection $relProxyTrunks): BrandInterface
     {
         $updatedEntities = [];
@@ -676,11 +551,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Get relProxyTrunks
-     * @param Criteria | null $criteria
-     * @return ProxyTrunksRelBrandInterface[]
-     */
     public function getRelProxyTrunks(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -690,13 +560,6 @@ trait BrandTrait
         return $this->relProxyTrunks->toArray();
     }
 
-    /**
-     * Add residentialDevice
-     *
-     * @param ResidentialDeviceInterface $residentialDevice
-     *
-     * @return static
-     */
     public function addResidentialDevice(ResidentialDeviceInterface $residentialDevice): BrandInterface
     {
         $this->residentialDevices->add($residentialDevice);
@@ -704,13 +567,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Remove residentialDevice
-     *
-     * @param ResidentialDeviceInterface $residentialDevice
-     *
-     * @return static
-     */
     public function removeResidentialDevice(ResidentialDeviceInterface $residentialDevice): BrandInterface
     {
         $this->residentialDevices->removeElement($residentialDevice);
@@ -718,13 +574,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Replace residentialDevices
-     *
-     * @param ArrayCollection $residentialDevices of ResidentialDeviceInterface
-     *
-     * @return static
-     */
     public function replaceResidentialDevices(ArrayCollection $residentialDevices): BrandInterface
     {
         $updatedEntities = [];
@@ -753,11 +602,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Get residentialDevices
-     * @param Criteria | null $criteria
-     * @return ResidentialDeviceInterface[]
-     */
     public function getResidentialDevices(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -767,13 +611,6 @@ trait BrandTrait
         return $this->residentialDevices->toArray();
     }
 
-    /**
-     * Add musicsOnHold
-     *
-     * @param MusicOnHoldInterface $musicsOnHold
-     *
-     * @return static
-     */
     public function addMusicsOnHold(MusicOnHoldInterface $musicsOnHold): BrandInterface
     {
         $this->musicsOnHold->add($musicsOnHold);
@@ -781,13 +618,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Remove musicsOnHold
-     *
-     * @param MusicOnHoldInterface $musicsOnHold
-     *
-     * @return static
-     */
     public function removeMusicsOnHold(MusicOnHoldInterface $musicsOnHold): BrandInterface
     {
         $this->musicsOnHold->removeElement($musicsOnHold);
@@ -795,13 +625,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Replace musicsOnHold
-     *
-     * @param ArrayCollection $musicsOnHold of MusicOnHoldInterface
-     *
-     * @return static
-     */
     public function replaceMusicsOnHold(ArrayCollection $musicsOnHold): BrandInterface
     {
         $updatedEntities = [];
@@ -830,11 +653,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Get musicsOnHold
-     * @param Criteria | null $criteria
-     * @return MusicOnHoldInterface[]
-     */
     public function getMusicsOnHold(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -844,13 +662,6 @@ trait BrandTrait
         return $this->musicsOnHold->toArray();
     }
 
-    /**
-     * Add matchList
-     *
-     * @param MatchListInterface $matchList
-     *
-     * @return static
-     */
     public function addMatchList(MatchListInterface $matchList): BrandInterface
     {
         $this->matchLists->add($matchList);
@@ -858,13 +669,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Remove matchList
-     *
-     * @param MatchListInterface $matchList
-     *
-     * @return static
-     */
     public function removeMatchList(MatchListInterface $matchList): BrandInterface
     {
         $this->matchLists->removeElement($matchList);
@@ -872,13 +676,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Replace matchLists
-     *
-     * @param ArrayCollection $matchLists of MatchListInterface
-     *
-     * @return static
-     */
     public function replaceMatchLists(ArrayCollection $matchLists): BrandInterface
     {
         $updatedEntities = [];
@@ -907,11 +704,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Get matchLists
-     * @param Criteria | null $criteria
-     * @return MatchListInterface[]
-     */
     public function getMatchLists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -921,13 +713,6 @@ trait BrandTrait
         return $this->matchLists->toArray();
     }
 
-    /**
-     * Add outgoingRouting
-     *
-     * @param OutgoingRoutingInterface $outgoingRouting
-     *
-     * @return static
-     */
     public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): BrandInterface
     {
         $this->outgoingRoutings->add($outgoingRouting);
@@ -935,13 +720,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Remove outgoingRouting
-     *
-     * @param OutgoingRoutingInterface $outgoingRouting
-     *
-     * @return static
-     */
     public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): BrandInterface
     {
         $this->outgoingRoutings->removeElement($outgoingRouting);
@@ -949,13 +727,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Replace outgoingRoutings
-     *
-     * @param ArrayCollection $outgoingRoutings of OutgoingRoutingInterface
-     *
-     * @return static
-     */
     public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): BrandInterface
     {
         $updatedEntities = [];
@@ -984,11 +755,6 @@ trait BrandTrait
         return $this;
     }
 
-    /**
-     * Get outgoingRoutings
-     * @param Criteria | null $criteria
-     * @return OutgoingRoutingInterface[]
-     */
     public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

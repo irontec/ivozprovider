@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\ApplicationServer;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -24,11 +25,9 @@ class ApplicationServerLifecycleServiceCollection implements LifecycleServiceCol
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, ApplicationServerLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, ApplicationServerLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

@@ -113,7 +113,7 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return DdiProviderRegistrationDto
      */
     public static function createDto($id = null)
@@ -246,14 +246,7 @@ abstract class DdiProviderRegistrationAbstract
         ];
     }
 
-    /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return static
-     */
-    protected function setUsername(string $username): DdiProviderRegistrationInterface
+    protected function setUsername(string $username): static
     {
         Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -262,24 +255,12 @@ abstract class DdiProviderRegistrationAbstract
         return $this;
     }
 
-    /**
-     * Get username
-     *
-     * @return string
-     */
     public function getUsername(): string
     {
         return $this->username;
     }
 
-    /**
-     * Set domain
-     *
-     * @param string $domain
-     *
-     * @return static
-     */
-    protected function setDomain(string $domain): DdiProviderRegistrationInterface
+    protected function setDomain(string $domain): static
     {
         Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -288,24 +269,12 @@ abstract class DdiProviderRegistrationAbstract
         return $this;
     }
 
-    /**
-     * Get domain
-     *
-     * @return string
-     */
     public function getDomain(): string
     {
         return $this->domain;
     }
 
-    /**
-     * Set realm
-     *
-     * @param string $realm
-     *
-     * @return static
-     */
-    protected function setRealm(string $realm): DdiProviderRegistrationInterface
+    protected function setRealm(string $realm): static
     {
         Assertion::maxLength($realm, 64, 'realm value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -314,24 +283,12 @@ abstract class DdiProviderRegistrationAbstract
         return $this;
     }
 
-    /**
-     * Get realm
-     *
-     * @return string
-     */
     public function getRealm(): string
     {
         return $this->realm;
     }
 
-    /**
-     * Set authUsername
-     *
-     * @param string $authUsername
-     *
-     * @return static
-     */
-    protected function setAuthUsername(string $authUsername): DdiProviderRegistrationInterface
+    protected function setAuthUsername(string $authUsername): static
     {
         Assertion::maxLength($authUsername, 64, 'authUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -340,24 +297,12 @@ abstract class DdiProviderRegistrationAbstract
         return $this;
     }
 
-    /**
-     * Get authUsername
-     *
-     * @return string
-     */
     public function getAuthUsername(): string
     {
         return $this->authUsername;
     }
 
-    /**
-     * Set authPassword
-     *
-     * @param string $authPassword
-     *
-     * @return static
-     */
-    protected function setAuthPassword(string $authPassword): DdiProviderRegistrationInterface
+    protected function setAuthPassword(string $authPassword): static
     {
         Assertion::maxLength($authPassword, 64, 'authPassword value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -366,24 +311,12 @@ abstract class DdiProviderRegistrationAbstract
         return $this;
     }
 
-    /**
-     * Get authPassword
-     *
-     * @return string
-     */
     public function getAuthPassword(): string
     {
         return $this->authPassword;
     }
 
-    /**
-     * Set authProxy
-     *
-     * @param string $authProxy
-     *
-     * @return static
-     */
-    protected function setAuthProxy(string $authProxy): DdiProviderRegistrationInterface
+    protected function setAuthProxy(string $authProxy): static
     {
         Assertion::maxLength($authProxy, 64, 'authProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -392,48 +325,24 @@ abstract class DdiProviderRegistrationAbstract
         return $this;
     }
 
-    /**
-     * Get authProxy
-     *
-     * @return string
-     */
     public function getAuthProxy(): string
     {
         return $this->authProxy;
     }
 
-    /**
-     * Set expires
-     *
-     * @param int $expires
-     *
-     * @return static
-     */
-    protected function setExpires(int $expires): DdiProviderRegistrationInterface
+    protected function setExpires(int $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    /**
-     * Get expires
-     *
-     * @return int
-     */
     public function getExpires(): int
     {
         return $this->expires;
     }
 
-    /**
-     * Set multiDdi
-     *
-     * @param bool $multiDdi | null
-     *
-     * @return static
-     */
-    protected function setMultiDdi(?bool $multiDdi = null): DdiProviderRegistrationInterface
+    protected function setMultiDdi(?bool $multiDdi = null): static
     {
         if (!is_null($multiDdi)) {
             Assertion::between(intval($multiDdi), 0, 1, 'multiDdi provided "%s" is not a valid boolean value.');
@@ -445,24 +354,12 @@ abstract class DdiProviderRegistrationAbstract
         return $this;
     }
 
-    /**
-     * Get multiDdi
-     *
-     * @return bool | null
-     */
     public function getMultiDdi(): ?bool
     {
         return $this->multiDdi;
     }
 
-    /**
-     * Set contactUsername
-     *
-     * @param string $contactUsername
-     *
-     * @return static
-     */
-    protected function setContactUsername(string $contactUsername): DdiProviderRegistrationInterface
+    protected function setContactUsername(string $contactUsername): static
     {
         Assertion::maxLength($contactUsername, 64, 'contactUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -471,35 +368,19 @@ abstract class DdiProviderRegistrationAbstract
         return $this;
     }
 
-    /**
-     * Get contactUsername
-     *
-     * @return string
-     */
     public function getContactUsername(): string
     {
         return $this->contactUsername;
     }
 
-    /**
-     * Set ddiProvider
-     *
-     * @param DdiProviderInterface
-     *
-     * @return static
-     */
-    public function setDdiProvider(DdiProviderInterface $ddiProvider): DdiProviderRegistrationInterface
+    public function setDdiProvider(DdiProviderInterface $ddiProvider): static
     {
         $this->ddiProvider = $ddiProvider;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get ddiProvider
-     *
-     * @return DdiProviderInterface
-     */
     public function getDdiProvider(): DdiProviderInterface
     {
         return $this->ddiProvider;

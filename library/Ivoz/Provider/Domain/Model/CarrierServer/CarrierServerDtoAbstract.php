@@ -17,37 +17,37 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $ip;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $hostname;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $port;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $uriScheme;
 
     /**
-     * @var int | null
+     * @var int|null
      */
     private $transport;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $sendPAI = false;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $sendRPID = false;
 
@@ -57,32 +57,32 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     private $authNeeded = 'no';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $authUser;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $authPassword;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $sipProxy;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $outboundProxy;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fromUser;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fromDomain;
 
@@ -182,330 +182,199 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $ip | null
-     *
-     * @return static
-     */
-    public function setIp(?string $ip = null): self
+    public function setIp(?string $ip): static
     {
         $this->ip = $ip;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getIp(): ?string
     {
         return $this->ip;
     }
 
-    /**
-     * @param string $hostname | null
-     *
-     * @return static
-     */
-    public function setHostname(?string $hostname = null): self
+    public function setHostname(?string $hostname): static
     {
         $this->hostname = $hostname;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getHostname(): ?string
     {
         return $this->hostname;
     }
 
-    /**
-     * @param int $port | null
-     *
-     * @return static
-     */
-    public function setPort(?int $port = null): self
+    public function setPort(?int $port): static
     {
         $this->port = $port;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getPort(): ?int
     {
         return $this->port;
     }
 
-    /**
-     * @param int $uriScheme | null
-     *
-     * @return static
-     */
-    public function setUriScheme(?int $uriScheme = null): self
+    public function setUriScheme(?int $uriScheme): static
     {
         $this->uriScheme = $uriScheme;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getUriScheme(): ?int
     {
         return $this->uriScheme;
     }
 
-    /**
-     * @param int $transport | null
-     *
-     * @return static
-     */
-    public function setTransport(?int $transport = null): self
+    public function setTransport(?int $transport): static
     {
         $this->transport = $transport;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getTransport(): ?int
     {
         return $this->transport;
     }
 
-    /**
-     * @param bool $sendPAI | null
-     *
-     * @return static
-     */
-    public function setSendPAI(?bool $sendPAI = null): self
+    public function setSendPAI(?bool $sendPAI): static
     {
         $this->sendPAI = $sendPAI;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getSendPAI(): ?bool
     {
         return $this->sendPAI;
     }
 
-    /**
-     * @param bool $sendRPID | null
-     *
-     * @return static
-     */
-    public function setSendRPID(?bool $sendRPID = null): self
+    public function setSendRPID(?bool $sendRPID): static
     {
         $this->sendRPID = $sendRPID;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getSendRPID(): ?bool
     {
         return $this->sendRPID;
     }
 
-    /**
-     * @param string $authNeeded | null
-     *
-     * @return static
-     */
-    public function setAuthNeeded(?string $authNeeded = null): self
+    public function setAuthNeeded(?string $authNeeded): static
     {
         $this->authNeeded = $authNeeded;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAuthNeeded(): ?string
     {
         return $this->authNeeded;
     }
 
-    /**
-     * @param string $authUser | null
-     *
-     * @return static
-     */
-    public function setAuthUser(?string $authUser = null): self
+    public function setAuthUser(?string $authUser): static
     {
         $this->authUser = $authUser;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAuthUser(): ?string
     {
         return $this->authUser;
     }
 
-    /**
-     * @param string $authPassword | null
-     *
-     * @return static
-     */
-    public function setAuthPassword(?string $authPassword = null): self
+    public function setAuthPassword(?string $authPassword): static
     {
         $this->authPassword = $authPassword;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAuthPassword(): ?string
     {
         return $this->authPassword;
     }
 
-    /**
-     * @param string $sipProxy | null
-     *
-     * @return static
-     */
-    public function setSipProxy(?string $sipProxy = null): self
+    public function setSipProxy(?string $sipProxy): static
     {
         $this->sipProxy = $sipProxy;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSipProxy(): ?string
     {
         return $this->sipProxy;
     }
 
-    /**
-     * @param string $outboundProxy | null
-     *
-     * @return static
-     */
-    public function setOutboundProxy(?string $outboundProxy = null): self
+    public function setOutboundProxy(?string $outboundProxy): static
     {
         $this->outboundProxy = $outboundProxy;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getOutboundProxy(): ?string
     {
         return $this->outboundProxy;
     }
 
-    /**
-     * @param string $fromUser | null
-     *
-     * @return static
-     */
-    public function setFromUser(?string $fromUser = null): self
+    public function setFromUser(?string $fromUser): static
     {
         $this->fromUser = $fromUser;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFromUser(): ?string
     {
         return $this->fromUser;
     }
 
-    /**
-     * @param string $fromDomain | null
-     *
-     * @return static
-     */
-    public function setFromDomain(?string $fromDomain = null): self
+    public function setFromDomain(?string $fromDomain): static
     {
         $this->fromDomain = $fromDomain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFromDomain(): ?string
     {
         return $this->fromDomain;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CarrierDto | null
-     *
-     * @return static
-     */
-    public function setCarrier(?CarrierDto $carrier = null): self
+    public function setCarrier(?CarrierDto $carrier): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * @return CarrierDto | null
-     */
     public function getCarrier(): ?CarrierDto
     {
         return $this->carrier;
     }
 
-    /**
-     * @return static
-     */
-    public function setCarrierId($id): self
+    public function setCarrierId($id): static
     {
         $value = !is_null($id)
             ? new CarrierDto($id)
@@ -514,9 +383,6 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $this->setCarrier($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCarrierId()
     {
         if ($dto = $this->getCarrier()) {
@@ -526,30 +392,19 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -558,9 +413,6 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -570,30 +422,19 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TrunksLcrGatewayDto | null
-     *
-     * @return static
-     */
-    public function setLcrGateway(?TrunksLcrGatewayDto $lcrGateway = null): self
+    public function setLcrGateway(?TrunksLcrGatewayDto $lcrGateway): static
     {
         $this->lcrGateway = $lcrGateway;
 
         return $this;
     }
 
-    /**
-     * @return TrunksLcrGatewayDto | null
-     */
     public function getLcrGateway(): ?TrunksLcrGatewayDto
     {
         return $this->lcrGateway;
     }
 
-    /**
-     * @return static
-     */
-    public function setLcrGatewayId($id): self
+    public function setLcrGatewayId($id): static
     {
         $value = !is_null($id)
             ? new TrunksLcrGatewayDto($id)
@@ -602,9 +443,6 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $this->setLcrGateway($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getLcrGatewayId()
     {
         if ($dto = $this->getLcrGateway()) {

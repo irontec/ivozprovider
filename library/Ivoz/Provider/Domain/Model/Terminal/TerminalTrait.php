@@ -135,13 +135,6 @@ trait TerminalTrait
         ];
     }
 
-    /**
-     * Add astPsEndpoint
-     *
-     * @param PsEndpointInterface $astPsEndpoint
-     *
-     * @return static
-     */
     public function addAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface
     {
         $this->astPsEndpoints->add($astPsEndpoint);
@@ -149,13 +142,6 @@ trait TerminalTrait
         return $this;
     }
 
-    /**
-     * Remove astPsEndpoint
-     *
-     * @param PsEndpointInterface $astPsEndpoint
-     *
-     * @return static
-     */
     public function removeAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface
     {
         $this->astPsEndpoints->removeElement($astPsEndpoint);
@@ -163,13 +149,6 @@ trait TerminalTrait
         return $this;
     }
 
-    /**
-     * Replace astPsEndpoints
-     *
-     * @param ArrayCollection $astPsEndpoints of PsEndpointInterface
-     *
-     * @return static
-     */
     public function replaceAstPsEndpoints(ArrayCollection $astPsEndpoints): TerminalInterface
     {
         $updatedEntities = [];
@@ -198,11 +177,6 @@ trait TerminalTrait
         return $this;
     }
 
-    /**
-     * Get astPsEndpoints
-     * @param Criteria | null $criteria
-     * @return PsEndpointInterface[]
-     */
     public function getAstPsEndpoints(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -212,13 +186,6 @@ trait TerminalTrait
         return $this->astPsEndpoints->toArray();
     }
 
-    /**
-     * Add user
-     *
-     * @param UserInterface $user
-     *
-     * @return static
-     */
     public function addUser(UserInterface $user): TerminalInterface
     {
         $this->users->add($user);
@@ -226,13 +193,6 @@ trait TerminalTrait
         return $this;
     }
 
-    /**
-     * Remove user
-     *
-     * @param UserInterface $user
-     *
-     * @return static
-     */
     public function removeUser(UserInterface $user): TerminalInterface
     {
         $this->users->removeElement($user);
@@ -240,13 +200,6 @@ trait TerminalTrait
         return $this;
     }
 
-    /**
-     * Replace users
-     *
-     * @param ArrayCollection $users of UserInterface
-     *
-     * @return static
-     */
     public function replaceUsers(ArrayCollection $users): TerminalInterface
     {
         $updatedEntities = [];
@@ -275,11 +228,6 @@ trait TerminalTrait
         return $this;
     }
 
-    /**
-     * Get users
-     * @param Criteria | null $criteria
-     * @return UserInterface[]
-     */
     public function getUsers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

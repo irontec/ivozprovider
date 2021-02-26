@@ -111,13 +111,6 @@ trait MatchListTrait
         ];
     }
 
-    /**
-     * Add pattern
-     *
-     * @param MatchListPatternInterface $pattern
-     *
-     * @return static
-     */
     public function addPattern(MatchListPatternInterface $pattern): MatchListInterface
     {
         $this->patterns->add($pattern);
@@ -125,13 +118,6 @@ trait MatchListTrait
         return $this;
     }
 
-    /**
-     * Remove pattern
-     *
-     * @param MatchListPatternInterface $pattern
-     *
-     * @return static
-     */
     public function removePattern(MatchListPatternInterface $pattern): MatchListInterface
     {
         $this->patterns->removeElement($pattern);
@@ -139,13 +125,6 @@ trait MatchListTrait
         return $this;
     }
 
-    /**
-     * Replace patterns
-     *
-     * @param ArrayCollection $patterns of MatchListPatternInterface
-     *
-     * @return static
-     */
     public function replacePatterns(ArrayCollection $patterns): MatchListInterface
     {
         $updatedEntities = [];
@@ -174,11 +153,6 @@ trait MatchListTrait
         return $this;
     }
 
-    /**
-     * Get patterns
-     * @param Criteria | null $criteria
-     * @return MatchListPatternInterface[]
-     */
     public function getPatterns(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

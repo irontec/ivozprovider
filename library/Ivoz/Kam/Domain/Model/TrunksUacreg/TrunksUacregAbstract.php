@@ -159,7 +159,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TrunksUacregDto
      */
     public static function createDto($id = null)
@@ -312,14 +312,7 @@ abstract class TrunksUacregAbstract
         ];
     }
 
-    /**
-     * Set lUuid
-     *
-     * @param string $lUuid
-     *
-     * @return static
-     */
-    protected function setLUuid(string $lUuid): TrunksUacregInterface
+    protected function setLUuid(string $lUuid): static
     {
         Assertion::maxLength($lUuid, 64, 'lUuid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -328,24 +321,12 @@ abstract class TrunksUacregAbstract
         return $this;
     }
 
-    /**
-     * Get lUuid
-     *
-     * @return string
-     */
     public function getLUuid(): string
     {
         return $this->lUuid;
     }
 
-    /**
-     * Set lUsername
-     *
-     * @param string $lUsername
-     *
-     * @return static
-     */
-    protected function setLUsername(string $lUsername): TrunksUacregInterface
+    protected function setLUsername(string $lUsername): static
     {
         Assertion::maxLength($lUsername, 64, 'lUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -354,24 +335,12 @@ abstract class TrunksUacregAbstract
         return $this;
     }
 
-    /**
-     * Get lUsername
-     *
-     * @return string
-     */
     public function getLUsername(): string
     {
         return $this->lUsername;
     }
 
-    /**
-     * Set lDomain
-     *
-     * @param string $lDomain
-     *
-     * @return static
-     */
-    protected function setLDomain(string $lDomain): TrunksUacregInterface
+    protected function setLDomain(string $lDomain): static
     {
         Assertion::maxLength($lDomain, 190, 'lDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -380,24 +349,12 @@ abstract class TrunksUacregAbstract
         return $this;
     }
 
-    /**
-     * Get lDomain
-     *
-     * @return string
-     */
     public function getLDomain(): string
     {
         return $this->lDomain;
     }
 
-    /**
-     * Set rUsername
-     *
-     * @param string $rUsername
-     *
-     * @return static
-     */
-    protected function setRUsername(string $rUsername): TrunksUacregInterface
+    protected function setRUsername(string $rUsername): static
     {
         Assertion::maxLength($rUsername, 64, 'rUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -406,24 +363,12 @@ abstract class TrunksUacregAbstract
         return $this;
     }
 
-    /**
-     * Get rUsername
-     *
-     * @return string
-     */
     public function getRUsername(): string
     {
         return $this->rUsername;
     }
 
-    /**
-     * Set rDomain
-     *
-     * @param string $rDomain
-     *
-     * @return static
-     */
-    protected function setRDomain(string $rDomain): TrunksUacregInterface
+    protected function setRDomain(string $rDomain): static
     {
         Assertion::maxLength($rDomain, 190, 'rDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -432,24 +377,12 @@ abstract class TrunksUacregAbstract
         return $this;
     }
 
-    /**
-     * Get rDomain
-     *
-     * @return string
-     */
     public function getRDomain(): string
     {
         return $this->rDomain;
     }
 
-    /**
-     * Set realm
-     *
-     * @param string $realm
-     *
-     * @return static
-     */
-    protected function setRealm(string $realm): TrunksUacregInterface
+    protected function setRealm(string $realm): static
     {
         Assertion::maxLength($realm, 64, 'realm value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -458,24 +391,12 @@ abstract class TrunksUacregAbstract
         return $this;
     }
 
-    /**
-     * Get realm
-     *
-     * @return string
-     */
     public function getRealm(): string
     {
         return $this->realm;
     }
 
-    /**
-     * Set authUsername
-     *
-     * @param string $authUsername
-     *
-     * @return static
-     */
-    protected function setAuthUsername(string $authUsername): TrunksUacregInterface
+    protected function setAuthUsername(string $authUsername): static
     {
         Assertion::maxLength($authUsername, 64, 'authUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -484,24 +405,12 @@ abstract class TrunksUacregAbstract
         return $this;
     }
 
-    /**
-     * Get authUsername
-     *
-     * @return string
-     */
     public function getAuthUsername(): string
     {
         return $this->authUsername;
     }
 
-    /**
-     * Set authPassword
-     *
-     * @param string $authPassword
-     *
-     * @return static
-     */
-    protected function setAuthPassword(string $authPassword): TrunksUacregInterface
+    protected function setAuthPassword(string $authPassword): static
     {
         Assertion::maxLength($authPassword, 64, 'authPassword value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -510,24 +419,12 @@ abstract class TrunksUacregAbstract
         return $this;
     }
 
-    /**
-     * Get authPassword
-     *
-     * @return string
-     */
     public function getAuthPassword(): string
     {
         return $this->authPassword;
     }
 
-    /**
-     * Set authProxy
-     *
-     * @param string $authProxy
-     *
-     * @return static
-     */
-    protected function setAuthProxy(string $authProxy): TrunksUacregInterface
+    protected function setAuthProxy(string $authProxy): static
     {
         Assertion::maxLength($authProxy, 64, 'authProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -536,96 +433,48 @@ abstract class TrunksUacregAbstract
         return $this;
     }
 
-    /**
-     * Get authProxy
-     *
-     * @return string
-     */
     public function getAuthProxy(): string
     {
         return $this->authProxy;
     }
 
-    /**
-     * Set expires
-     *
-     * @param int $expires
-     *
-     * @return static
-     */
-    protected function setExpires(int $expires): TrunksUacregInterface
+    protected function setExpires(int $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    /**
-     * Get expires
-     *
-     * @return int
-     */
     public function getExpires(): int
     {
         return $this->expires;
     }
 
-    /**
-     * Set flags
-     *
-     * @param int $flags
-     *
-     * @return static
-     */
-    protected function setFlags(int $flags): TrunksUacregInterface
+    protected function setFlags(int $flags): static
     {
         $this->flags = $flags;
 
         return $this;
     }
 
-    /**
-     * Get flags
-     *
-     * @return int
-     */
     public function getFlags(): int
     {
         return $this->flags;
     }
 
-    /**
-     * Set regDelay
-     *
-     * @param int $regDelay
-     *
-     * @return static
-     */
-    protected function setRegDelay(int $regDelay): TrunksUacregInterface
+    protected function setRegDelay(int $regDelay): static
     {
         $this->regDelay = $regDelay;
 
         return $this;
     }
 
-    /**
-     * Get regDelay
-     *
-     * @return int
-     */
     public function getRegDelay(): int
     {
         return $this->regDelay;
     }
 
-    /**
-     * Set authHa1
-     *
-     * @param string $authHa1
-     *
-     * @return static
-     */
-    protected function setAuthHa1(string $authHa1): TrunksUacregInterface
+    protected function setAuthHa1(string $authHa1): static
     {
         Assertion::maxLength($authHa1, 128, 'authHa1 value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -634,59 +483,31 @@ abstract class TrunksUacregAbstract
         return $this;
     }
 
-    /**
-     * Get authHa1
-     *
-     * @return string
-     */
     public function getAuthHa1(): string
     {
         return $this->authHa1;
     }
 
-    /**
-     * Set ddiProviderRegistration
-     *
-     * @param DdiProviderRegistration
-     *
-     * @return static
-     */
-    public function setDdiProviderRegistration(DdiProviderRegistration $ddiProviderRegistration): TrunksUacregInterface
+    public function setDdiProviderRegistration(DdiProviderRegistration $ddiProviderRegistration): static
     {
         $this->ddiProviderRegistration = $ddiProviderRegistration;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get ddiProviderRegistration
-     *
-     * @return DdiProviderRegistration
-     */
     public function getDdiProviderRegistration(): DdiProviderRegistration
     {
         return $this->ddiProviderRegistration;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    protected function setBrand(BrandInterface $brand): TrunksUacregInterface
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;

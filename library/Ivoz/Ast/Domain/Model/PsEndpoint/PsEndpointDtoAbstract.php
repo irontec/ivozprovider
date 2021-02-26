@@ -20,20 +20,20 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $sorceryId;
+    private $sorceryId = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fromDomain;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $aors;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $callerid;
 
@@ -53,32 +53,32 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     private $allow = 'all';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $directMedia = 'yes';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $directMediaMethod = 'update';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $mailboxes;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $namedPickupGroup;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $sendDiversion = 'yes';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $sendPai = 'yes';
 
@@ -88,12 +88,12 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     private $oneHundredRel = 'no';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $outboundProxy;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $trustIdInbound;
 
@@ -232,450 +232,271 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $sorceryId | null
-     *
-     * @return static
-     */
-    public function setSorceryId(?string $sorceryId = null): self
+    public function setSorceryId(?string $sorceryId): static
     {
         $this->sorceryId = $sorceryId;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSorceryId(): ?string
     {
         return $this->sorceryId;
     }
 
-    /**
-     * @param string $fromDomain | null
-     *
-     * @return static
-     */
-    public function setFromDomain(?string $fromDomain = null): self
+    public function setFromDomain(?string $fromDomain): static
     {
         $this->fromDomain = $fromDomain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFromDomain(): ?string
     {
         return $this->fromDomain;
     }
 
-    /**
-     * @param string $aors | null
-     *
-     * @return static
-     */
-    public function setAors(?string $aors = null): self
+    public function setAors(?string $aors): static
     {
         $this->aors = $aors;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAors(): ?string
     {
         return $this->aors;
     }
 
-    /**
-     * @param string $callerid | null
-     *
-     * @return static
-     */
-    public function setCallerid(?string $callerid = null): self
+    public function setCallerid(?string $callerid): static
     {
         $this->callerid = $callerid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallerid(): ?string
     {
         return $this->callerid;
     }
 
-    /**
-     * @param string $context | null
-     *
-     * @return static
-     */
-    public function setContext(?string $context = null): self
+    public function setContext(?string $context): static
     {
         $this->context = $context;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getContext(): ?string
     {
         return $this->context;
     }
 
-    /**
-     * @param string $disallow | null
-     *
-     * @return static
-     */
-    public function setDisallow(?string $disallow = null): self
+    public function setDisallow(?string $disallow): static
     {
         $this->disallow = $disallow;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDisallow(): ?string
     {
         return $this->disallow;
     }
 
-    /**
-     * @param string $allow | null
-     *
-     * @return static
-     */
-    public function setAllow(?string $allow = null): self
+    public function setAllow(?string $allow): static
     {
         $this->allow = $allow;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAllow(): ?string
     {
         return $this->allow;
     }
 
-    /**
-     * @param string $directMedia | null
-     *
-     * @return static
-     */
-    public function setDirectMedia(?string $directMedia = null): self
+    public function setDirectMedia(?string $directMedia): static
     {
         $this->directMedia = $directMedia;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDirectMedia(): ?string
     {
         return $this->directMedia;
     }
 
-    /**
-     * @param string $directMediaMethod | null
-     *
-     * @return static
-     */
-    public function setDirectMediaMethod(?string $directMediaMethod = null): self
+    public function setDirectMediaMethod(?string $directMediaMethod): static
     {
         $this->directMediaMethod = $directMediaMethod;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDirectMediaMethod(): ?string
     {
         return $this->directMediaMethod;
     }
 
-    /**
-     * @param string $mailboxes | null
-     *
-     * @return static
-     */
-    public function setMailboxes(?string $mailboxes = null): self
+    public function setMailboxes(?string $mailboxes): static
     {
         $this->mailboxes = $mailboxes;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getMailboxes(): ?string
     {
         return $this->mailboxes;
     }
 
-    /**
-     * @param string $namedPickupGroup | null
-     *
-     * @return static
-     */
-    public function setNamedPickupGroup(?string $namedPickupGroup = null): self
+    public function setNamedPickupGroup(?string $namedPickupGroup): static
     {
         $this->namedPickupGroup = $namedPickupGroup;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getNamedPickupGroup(): ?string
     {
         return $this->namedPickupGroup;
     }
 
-    /**
-     * @param string $sendDiversion | null
-     *
-     * @return static
-     */
-    public function setSendDiversion(?string $sendDiversion = null): self
+    public function setSendDiversion(?string $sendDiversion): static
     {
         $this->sendDiversion = $sendDiversion;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSendDiversion(): ?string
     {
         return $this->sendDiversion;
     }
 
-    /**
-     * @param string $sendPai | null
-     *
-     * @return static
-     */
-    public function setSendPai(?string $sendPai = null): self
+    public function setSendPai(?string $sendPai): static
     {
         $this->sendPai = $sendPai;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSendPai(): ?string
     {
         return $this->sendPai;
     }
 
-    /**
-     * @param string $oneHundredRel | null
-     *
-     * @return static
-     */
-    public function setOneHundredRel(?string $oneHundredRel = null): self
+    public function setOneHundredRel(?string $oneHundredRel): static
     {
         $this->oneHundredRel = $oneHundredRel;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getOneHundredRel(): ?string
     {
         return $this->oneHundredRel;
     }
 
-    /**
-     * @param string $outboundProxy | null
-     *
-     * @return static
-     */
-    public function setOutboundProxy(?string $outboundProxy = null): self
+    public function setOutboundProxy(?string $outboundProxy): static
     {
         $this->outboundProxy = $outboundProxy;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getOutboundProxy(): ?string
     {
         return $this->outboundProxy;
     }
 
-    /**
-     * @param string $trustIdInbound | null
-     *
-     * @return static
-     */
-    public function setTrustIdInbound(?string $trustIdInbound = null): self
+    public function setTrustIdInbound(?string $trustIdInbound): static
     {
         $this->trustIdInbound = $trustIdInbound;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getTrustIdInbound(): ?string
     {
         return $this->trustIdInbound;
     }
 
-    /**
-     * @param string $t38Udptl | null
-     *
-     * @return static
-     */
-    public function setT38Udptl(?string $t38Udptl = null): self
+    public function setT38Udptl(?string $t38Udptl): static
     {
         $this->t38Udptl = $t38Udptl;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getT38Udptl(): ?string
     {
         return $this->t38Udptl;
     }
 
-    /**
-     * @param string $t38UdptlEc | null
-     *
-     * @return static
-     */
-    public function setT38UdptlEc(?string $t38UdptlEc = null): self
+    public function setT38UdptlEc(?string $t38UdptlEc): static
     {
         $this->t38UdptlEc = $t38UdptlEc;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getT38UdptlEc(): ?string
     {
         return $this->t38UdptlEc;
     }
 
-    /**
-     * @param int $t38UdptlMaxdatagram | null
-     *
-     * @return static
-     */
-    public function setT38UdptlMaxdatagram(?int $t38UdptlMaxdatagram = null): self
+    public function setT38UdptlMaxdatagram(?int $t38UdptlMaxdatagram): static
     {
         $this->t38UdptlMaxdatagram = $t38UdptlMaxdatagram;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getT38UdptlMaxdatagram(): ?int
     {
         return $this->t38UdptlMaxdatagram;
     }
 
-    /**
-     * @param string $t38UdptlNat | null
-     *
-     * @return static
-     */
-    public function setT38UdptlNat(?string $t38UdptlNat = null): self
+    public function setT38UdptlNat(?string $t38UdptlNat): static
     {
         $this->t38UdptlNat = $t38UdptlNat;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getT38UdptlNat(): ?string
     {
         return $this->t38UdptlNat;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param TerminalDto | null
-     *
-     * @return static
-     */
-    public function setTerminal(?TerminalDto $terminal = null): self
+    public function setTerminal(?TerminalDto $terminal): static
     {
         $this->terminal = $terminal;
 
         return $this;
     }
 
-    /**
-     * @return TerminalDto | null
-     */
     public function getTerminal(): ?TerminalDto
     {
         return $this->terminal;
     }
 
-    /**
-     * @return static
-     */
-    public function setTerminalId($id): self
+    public function setTerminalId($id): static
     {
         $value = !is_null($id)
             ? new TerminalDto($id)
@@ -684,9 +505,6 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->setTerminal($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTerminalId()
     {
         if ($dto = $this->getTerminal()) {
@@ -696,30 +514,19 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param FriendDto | null
-     *
-     * @return static
-     */
-    public function setFriend(?FriendDto $friend = null): self
+    public function setFriend(?FriendDto $friend): static
     {
         $this->friend = $friend;
 
         return $this;
     }
 
-    /**
-     * @return FriendDto | null
-     */
     public function getFriend(): ?FriendDto
     {
         return $this->friend;
     }
 
-    /**
-     * @return static
-     */
-    public function setFriendId($id): self
+    public function setFriendId($id): static
     {
         $value = !is_null($id)
             ? new FriendDto($id)
@@ -728,9 +535,6 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->setFriend($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFriendId()
     {
         if ($dto = $this->getFriend()) {
@@ -740,30 +544,19 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ResidentialDeviceDto | null
-     *
-     * @return static
-     */
-    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice = null): self
+    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice): static
     {
         $this->residentialDevice = $residentialDevice;
 
         return $this;
     }
 
-    /**
-     * @return ResidentialDeviceDto | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceDto
     {
         return $this->residentialDevice;
     }
 
-    /**
-     * @return static
-     */
-    public function setResidentialDeviceId($id): self
+    public function setResidentialDeviceId($id): static
     {
         $value = !is_null($id)
             ? new ResidentialDeviceDto($id)
@@ -772,9 +565,6 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->setResidentialDevice($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getResidentialDeviceId()
     {
         if ($dto = $this->getResidentialDevice()) {
@@ -784,30 +574,19 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param RetailAccountDto | null
-     *
-     * @return static
-     */
-    public function setRetailAccount(?RetailAccountDto $retailAccount = null): self
+    public function setRetailAccount(?RetailAccountDto $retailAccount): static
     {
         $this->retailAccount = $retailAccount;
 
         return $this;
     }
 
-    /**
-     * @return RetailAccountDto | null
-     */
     public function getRetailAccount(): ?RetailAccountDto
     {
         return $this->retailAccount;
     }
 
-    /**
-     * @return static
-     */
-    public function setRetailAccountId($id): self
+    public function setRetailAccountId($id): static
     {
         $value = !is_null($id)
             ? new RetailAccountDto($id)
@@ -816,9 +595,6 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->setRetailAccount($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRetailAccountId()
     {
         if ($dto = $this->getRetailAccount()) {

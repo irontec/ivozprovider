@@ -24,7 +24,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     private $username = '';
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $domain;
 
@@ -44,7 +44,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     private $avalue = '';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $lastModified = '1900-01-01 00:00:01';
 
@@ -109,162 +109,98 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $response;
     }
 
-    /**
-     * @param string $ruid | null
-     *
-     * @return static
-     */
-    public function setRuid(?string $ruid = null): self
+    public function setRuid(?string $ruid): static
     {
         $this->ruid = $ruid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getRuid(): ?string
     {
         return $this->ruid;
     }
 
-    /**
-     * @param string $username | null
-     *
-     * @return static
-     */
-    public function setUsername(?string $username = null): self
+    public function setUsername(?string $username): static
     {
         $this->username = $username;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    /**
-     * @param string $domain | null
-     *
-     * @return static
-     */
-    public function setDomain(?string $domain = null): self
+    public function setDomain(?string $domain): static
     {
         $this->domain = $domain;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDomain(): ?string
     {
         return $this->domain;
     }
 
-    /**
-     * @param string $aname | null
-     *
-     * @return static
-     */
-    public function setAname(?string $aname = null): self
+    public function setAname(?string $aname): static
     {
         $this->aname = $aname;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAname(): ?string
     {
         return $this->aname;
     }
 
-    /**
-     * @param int $atype | null
-     *
-     * @return static
-     */
-    public function setAtype(?int $atype = null): self
+    public function setAtype(?int $atype): static
     {
         $this->atype = $atype;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getAtype(): ?int
     {
         return $this->atype;
     }
 
-    /**
-     * @param string $avalue | null
-     *
-     * @return static
-     */
-    public function setAvalue(?string $avalue = null): self
+    public function setAvalue(?string $avalue): static
     {
         $this->avalue = $avalue;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getAvalue(): ?string
     {
         return $this->avalue;
     }
 
-    /**
-     * @param \DateTimeInterface $lastModified | null
-     *
-     * @return static
-     */
-    public function setLastModified($lastModified = null): self
+    public function setLastModified(null|\DateTime|string $lastModified): static
     {
         $this->lastModified = $lastModified;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getLastModified()
+    public function getLastModified(): \DateTime|string|null
     {
         return $this->lastModified;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

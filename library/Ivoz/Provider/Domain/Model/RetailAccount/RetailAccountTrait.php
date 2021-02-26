@@ -159,13 +159,6 @@ trait RetailAccountTrait
         ];
     }
 
-    /**
-     * Add psEndpoint
-     *
-     * @param PsEndpointInterface $psEndpoint
-     *
-     * @return static
-     */
     public function addPsEndpoint(PsEndpointInterface $psEndpoint): RetailAccountInterface
     {
         $this->psEndpoints->add($psEndpoint);
@@ -173,13 +166,6 @@ trait RetailAccountTrait
         return $this;
     }
 
-    /**
-     * Remove psEndpoint
-     *
-     * @param PsEndpointInterface $psEndpoint
-     *
-     * @return static
-     */
     public function removePsEndpoint(PsEndpointInterface $psEndpoint): RetailAccountInterface
     {
         $this->psEndpoints->removeElement($psEndpoint);
@@ -187,13 +173,6 @@ trait RetailAccountTrait
         return $this;
     }
 
-    /**
-     * Replace psEndpoints
-     *
-     * @param ArrayCollection $psEndpoints of PsEndpointInterface
-     *
-     * @return static
-     */
     public function replacePsEndpoints(ArrayCollection $psEndpoints): RetailAccountInterface
     {
         $updatedEntities = [];
@@ -222,11 +201,6 @@ trait RetailAccountTrait
         return $this;
     }
 
-    /**
-     * Get psEndpoints
-     * @param Criteria | null $criteria
-     * @return PsEndpointInterface[]
-     */
     public function getPsEndpoints(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -236,13 +210,6 @@ trait RetailAccountTrait
         return $this->psEndpoints->toArray();
     }
 
-    /**
-     * Add ddi
-     *
-     * @param DdiInterface $ddi
-     *
-     * @return static
-     */
     public function addDdi(DdiInterface $ddi): RetailAccountInterface
     {
         $this->ddis->add($ddi);
@@ -250,13 +217,6 @@ trait RetailAccountTrait
         return $this;
     }
 
-    /**
-     * Remove ddi
-     *
-     * @param DdiInterface $ddi
-     *
-     * @return static
-     */
     public function removeDdi(DdiInterface $ddi): RetailAccountInterface
     {
         $this->ddis->removeElement($ddi);
@@ -264,13 +224,6 @@ trait RetailAccountTrait
         return $this;
     }
 
-    /**
-     * Replace ddis
-     *
-     * @param ArrayCollection $ddis of DdiInterface
-     *
-     * @return static
-     */
     public function replaceDdis(ArrayCollection $ddis): RetailAccountInterface
     {
         $updatedEntities = [];
@@ -299,11 +252,6 @@ trait RetailAccountTrait
         return $this;
     }
 
-    /**
-     * Get ddis
-     * @param Criteria | null $criteria
-     * @return DdiInterface[]
-     */
     public function getDdis(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -313,13 +261,6 @@ trait RetailAccountTrait
         return $this->ddis->toArray();
     }
 
-    /**
-     * Add callForwardSetting
-     *
-     * @param CallForwardSettingInterface $callForwardSetting
-     *
-     * @return static
-     */
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): RetailAccountInterface
     {
         $this->callForwardSettings->add($callForwardSetting);
@@ -327,13 +268,6 @@ trait RetailAccountTrait
         return $this;
     }
 
-    /**
-     * Remove callForwardSetting
-     *
-     * @param CallForwardSettingInterface $callForwardSetting
-     *
-     * @return static
-     */
     public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): RetailAccountInterface
     {
         $this->callForwardSettings->removeElement($callForwardSetting);
@@ -341,13 +275,6 @@ trait RetailAccountTrait
         return $this;
     }
 
-    /**
-     * Replace callForwardSettings
-     *
-     * @param ArrayCollection $callForwardSettings of CallForwardSettingInterface
-     *
-     * @return static
-     */
     public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): RetailAccountInterface
     {
         $updatedEntities = [];
@@ -376,11 +303,6 @@ trait RetailAccountTrait
         return $this;
     }
 
-    /**
-     * Get callForwardSettings
-     * @param Criteria | null $criteria
-     * @return CallForwardSettingInterface[]
-     */
     public function getCallForwardSettings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

@@ -29,12 +29,12 @@ abstract class CalendarPeriodAbstract
     use ChangelogTrait;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $startDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $endDate;
 
@@ -56,22 +56,22 @@ abstract class CalendarPeriodAbstract
     protected $calendar;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $locution;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $extension;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $voiceMailUser;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $numberCountry;
 
@@ -106,7 +106,7 @@ abstract class CalendarPeriodAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CalendarPeriodDto
      */
     public static function createDto($id = null)
@@ -235,62 +235,31 @@ abstract class CalendarPeriodAbstract
         ];
     }
 
-    /**
-     * Set startDate
-     *
-     * @param \DateTimeInterface $startDate
-     *
-     * @return static
-     */
-    protected function setStartDate($startDate): CalendarPeriodInterface
+    protected function setStartDate($startDate): static
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    /**
-     * Get startDate
-     *
-     * @return \DateTimeInterface
-     */
-    public function getStartDate(): \DateTimeInterface
+    public function getStartDate(): \DateTime
     {
         return clone $this->startDate;
     }
 
-    /**
-     * Set endDate
-     *
-     * @param \DateTimeInterface $endDate
-     *
-     * @return static
-     */
-    protected function setEndDate($endDate): CalendarPeriodInterface
+    protected function setEndDate($endDate): static
     {
         $this->endDate = $endDate;
 
         return $this;
     }
 
-    /**
-     * Get endDate
-     *
-     * @return \DateTimeInterface
-     */
-    public function getEndDate(): \DateTimeInterface
+    public function getEndDate(): \DateTime
     {
         return clone $this->endDate;
     }
 
-    /**
-     * Set routeType
-     *
-     * @param string $routeType | null
-     *
-     * @return static
-     */
-    protected function setRouteType(?string $routeType = null): CalendarPeriodInterface
+    protected function setRouteType(?string $routeType = null): static
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -310,24 +279,12 @@ abstract class CalendarPeriodAbstract
         return $this;
     }
 
-    /**
-     * Get routeType
-     *
-     * @return string | null
-     */
     public function getRouteType(): ?string
     {
         return $this->routeType;
     }
 
-    /**
-     * Set numberValue
-     *
-     * @param string $numberValue | null
-     *
-     * @return static
-     */
-    protected function setNumberValue(?string $numberValue = null): CalendarPeriodInterface
+    protected function setNumberValue(?string $numberValue = null): static
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -338,131 +295,67 @@ abstract class CalendarPeriodAbstract
         return $this;
     }
 
-    /**
-     * Get numberValue
-     *
-     * @return string | null
-     */
     public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
-    /**
-     * Set calendar
-     *
-     * @param CalendarInterface
-     *
-     * @return static
-     */
-    public function setCalendar(CalendarInterface $calendar): CalendarPeriodInterface
+    public function setCalendar(CalendarInterface $calendar): static
     {
         $this->calendar = $calendar;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get calendar
-     *
-     * @return CalendarInterface
-     */
     public function getCalendar(): CalendarInterface
     {
         return $this->calendar;
     }
 
-    /**
-     * Set locution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setLocution(?LocutionInterface $locution = null): CalendarPeriodInterface
+    protected function setLocution(?LocutionInterface $locution = null): static
     {
         $this->locution = $locution;
 
         return $this;
     }
 
-    /**
-     * Get locution
-     *
-     * @return LocutionInterface | null
-     */
     public function getLocution(): ?LocutionInterface
     {
         return $this->locution;
     }
 
-    /**
-     * Set extension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setExtension(?ExtensionInterface $extension = null): CalendarPeriodInterface
+    protected function setExtension(?ExtensionInterface $extension = null): static
     {
         $this->extension = $extension;
 
         return $this;
     }
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getExtension(): ?ExtensionInterface
     {
         return $this->extension;
     }
 
-    /**
-     * Set voiceMailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): CalendarPeriodInterface
+    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): static
     {
         $this->voiceMailUser = $voiceMailUser;
 
         return $this;
     }
 
-    /**
-     * Get voiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getVoiceMailUser(): ?UserInterface
     {
         return $this->voiceMailUser;
     }
 
-    /**
-     * Set numberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setNumberCountry(?CountryInterface $numberCountry = null): CalendarPeriodInterface
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;

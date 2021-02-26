@@ -66,7 +66,7 @@ abstract class DestinationAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return DestinationDto
      */
     public static function createDto($id = null)
@@ -191,14 +191,7 @@ abstract class DestinationAbstract
         ];
     }
 
-    /**
-     * Set prefix
-     *
-     * @param string $prefix
-     *
-     * @return static
-     */
-    protected function setPrefix(string $prefix): DestinationInterface
+    protected function setPrefix(string $prefix): static
     {
         Assertion::maxLength($prefix, 24, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -207,32 +200,17 @@ abstract class DestinationAbstract
         return $this;
     }
 
-    /**
-     * Get prefix
-     *
-     * @return string
-     */
     public function getPrefix(): string
     {
         return $this->prefix;
     }
 
-    /**
-     * Get name
-     *
-     * @return Name
-     */
     public function getName(): Name
     {
         return $this->name;
     }
 
-    /**
-     * Set name
-     *
-     * @return static
-     */
-    protected function setName(Name $name): DestinationInterface
+    protected function setName(Name $name): static
     {
         $isEqual = $this->name && $this->name->equals($name);
         if ($isEqual) {
@@ -243,25 +221,13 @@ abstract class DestinationAbstract
         return $this;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    protected function setBrand(BrandInterface $brand): DestinationInterface
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface
     {
         return $this->brand;

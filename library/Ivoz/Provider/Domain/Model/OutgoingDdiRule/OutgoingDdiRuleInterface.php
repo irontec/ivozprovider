@@ -2,12 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRule;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * OutgoingDdiRuleInterface
@@ -39,25 +39,10 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
      */
     public function getOutgoingDdi($originalDdi, $e164destination, $prefix = '');
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * Get defaultAction
-     *
-     * @return string
-     */
     public function getDefaultAction(): string;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface;
 
     /**
@@ -65,38 +50,12 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
      */
     public function isInitialized(): bool;
 
-    /**
-     * Add pattern
-     *
-     * @param OutgoingDdiRulesPatternInterface $pattern
-     *
-     * @return static
-     */
     public function addPattern(OutgoingDdiRulesPatternInterface $pattern): OutgoingDdiRuleInterface;
 
-    /**
-     * Remove pattern
-     *
-     * @param OutgoingDdiRulesPatternInterface $pattern
-     *
-     * @return static
-     */
     public function removePattern(OutgoingDdiRulesPatternInterface $pattern): OutgoingDdiRuleInterface;
 
-    /**
-     * Replace patterns
-     *
-     * @param ArrayCollection $patterns of OutgoingDdiRulesPatternInterface
-     *
-     * @return static
-     */
     public function replacePatterns(ArrayCollection $patterns): OutgoingDdiRuleInterface;
 
-    /**
-     * Get patterns
-     * @param Criteria | null $criteria
-     * @return OutgoingDdiRulesPatternInterface[]
-     */
     public function getPatterns(?Criteria $criteria = null): array;
 
 }

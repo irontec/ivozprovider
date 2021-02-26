@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\DdiProviderAddress;
 
+use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -19,11 +20,9 @@ class DdiProviderAddressLifecycleServiceCollection implements LifecycleServiceCo
         ],
     ];
 
-    /**
-     * @return void
-     */
-    protected function addService(string $event, DdiProviderAddressLifecycleEventHandlerInterface $service)
+    protected function addService(string $event, $service): void
     {
+        Assertion::isInstanceOf($service, DdiProviderAddressLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }

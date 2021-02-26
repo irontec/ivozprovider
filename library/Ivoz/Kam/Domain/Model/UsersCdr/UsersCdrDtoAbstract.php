@@ -20,12 +20,12 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $startTime = '2000-01-01 00:00:00';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $endTime = '2000-01-01 00:00:00';
 
@@ -35,47 +35,47 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     private $duration = 0;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $direction;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $caller;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $callee;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $diversion;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $referee;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $referrer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $callid;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $callidHash;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $xcallid;
 
@@ -199,310 +199,187 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param \DateTimeInterface $startTime | null
-     *
-     * @return static
-     */
-    public function setStartTime($startTime = null): self
+    public function setStartTime(null|\DateTime|string $startTime): static
     {
         $this->startTime = $startTime;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getStartTime()
+    public function getStartTime(): \DateTime|string|null
     {
         return $this->startTime;
     }
 
-    /**
-     * @param \DateTimeInterface $endTime | null
-     *
-     * @return static
-     */
-    public function setEndTime($endTime = null): self
+    public function setEndTime(null|\DateTime|string $endTime): static
     {
         $this->endTime = $endTime;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getEndTime()
+    public function getEndTime(): \DateTime|string|null
     {
         return $this->endTime;
     }
 
-    /**
-     * @param float $duration | null
-     *
-     * @return static
-     */
-    public function setDuration(?float $duration = null): self
+    public function setDuration(?float $duration): static
     {
         $this->duration = $duration;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getDuration(): ?float
     {
         return $this->duration;
     }
 
-    /**
-     * @param string $direction | null
-     *
-     * @return static
-     */
-    public function setDirection(?string $direction = null): self
+    public function setDirection(?string $direction): static
     {
         $this->direction = $direction;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDirection(): ?string
     {
         return $this->direction;
     }
 
-    /**
-     * @param string $caller | null
-     *
-     * @return static
-     */
-    public function setCaller(?string $caller = null): self
+    public function setCaller(?string $caller): static
     {
         $this->caller = $caller;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCaller(): ?string
     {
         return $this->caller;
     }
 
-    /**
-     * @param string $callee | null
-     *
-     * @return static
-     */
-    public function setCallee(?string $callee = null): self
+    public function setCallee(?string $callee): static
     {
         $this->callee = $callee;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallee(): ?string
     {
         return $this->callee;
     }
 
-    /**
-     * @param string $diversion | null
-     *
-     * @return static
-     */
-    public function setDiversion(?string $diversion = null): self
+    public function setDiversion(?string $diversion): static
     {
         $this->diversion = $diversion;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDiversion(): ?string
     {
         return $this->diversion;
     }
 
-    /**
-     * @param string $referee | null
-     *
-     * @return static
-     */
-    public function setReferee(?string $referee = null): self
+    public function setReferee(?string $referee): static
     {
         $this->referee = $referee;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getReferee(): ?string
     {
         return $this->referee;
     }
 
-    /**
-     * @param string $referrer | null
-     *
-     * @return static
-     */
-    public function setReferrer(?string $referrer = null): self
+    public function setReferrer(?string $referrer): static
     {
         $this->referrer = $referrer;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getReferrer(): ?string
     {
         return $this->referrer;
     }
 
-    /**
-     * @param string $callid | null
-     *
-     * @return static
-     */
-    public function setCallid(?string $callid = null): self
+    public function setCallid(?string $callid): static
     {
         $this->callid = $callid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallid(): ?string
     {
         return $this->callid;
     }
 
-    /**
-     * @param string $callidHash | null
-     *
-     * @return static
-     */
-    public function setCallidHash(?string $callidHash = null): self
+    public function setCallidHash(?string $callidHash): static
     {
         $this->callidHash = $callidHash;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getCallidHash(): ?string
     {
         return $this->callidHash;
     }
 
-    /**
-     * @param string $xcallid | null
-     *
-     * @return static
-     */
-    public function setXcallid(?string $xcallid = null): self
+    public function setXcallid(?string $xcallid): static
     {
         $this->xcallid = $xcallid;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getXcallid(): ?string
     {
         return $this->xcallid;
     }
 
-    /**
-     * @param bool $hidden | null
-     *
-     * @return static
-     */
-    public function setHidden(?bool $hidden = null): self
+    public function setHidden(?bool $hidden): static
     {
         $this->hidden = $hidden;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getHidden(): ?bool
     {
         return $this->hidden;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -511,9 +388,6 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -523,30 +397,19 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CompanyDto | null
-     *
-     * @return static
-     */
-    public function setCompany(?CompanyDto $company = null): self
+    public function setCompany(?CompanyDto $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * @return CompanyDto | null
-     */
     public function getCompany(): ?CompanyDto
     {
         return $this->company;
     }
 
-    /**
-     * @return static
-     */
-    public function setCompanyId($id): self
+    public function setCompanyId($id): static
     {
         $value = !is_null($id)
             ? new CompanyDto($id)
@@ -555,9 +418,6 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setCompany($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
@@ -567,30 +427,19 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param UserDto | null
-     *
-     * @return static
-     */
-    public function setUser(?UserDto $user = null): self
+    public function setUser(?UserDto $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * @return UserDto | null
-     */
     public function getUser(): ?UserDto
     {
         return $this->user;
     }
 
-    /**
-     * @return static
-     */
-    public function setUserId($id): self
+    public function setUserId($id): static
     {
         $value = !is_null($id)
             ? new UserDto($id)
@@ -599,9 +448,6 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setUser($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getUserId()
     {
         if ($dto = $this->getUser()) {
@@ -611,30 +457,19 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param FriendDto | null
-     *
-     * @return static
-     */
-    public function setFriend(?FriendDto $friend = null): self
+    public function setFriend(?FriendDto $friend): static
     {
         $this->friend = $friend;
 
         return $this;
     }
 
-    /**
-     * @return FriendDto | null
-     */
     public function getFriend(): ?FriendDto
     {
         return $this->friend;
     }
 
-    /**
-     * @return static
-     */
-    public function setFriendId($id): self
+    public function setFriendId($id): static
     {
         $value = !is_null($id)
             ? new FriendDto($id)
@@ -643,9 +478,6 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setFriend($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getFriendId()
     {
         if ($dto = $this->getFriend()) {
@@ -655,30 +487,19 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ResidentialDeviceDto | null
-     *
-     * @return static
-     */
-    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice = null): self
+    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice): static
     {
         $this->residentialDevice = $residentialDevice;
 
         return $this;
     }
 
-    /**
-     * @return ResidentialDeviceDto | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceDto
     {
         return $this->residentialDevice;
     }
 
-    /**
-     * @return static
-     */
-    public function setResidentialDeviceId($id): self
+    public function setResidentialDeviceId($id): static
     {
         $value = !is_null($id)
             ? new ResidentialDeviceDto($id)
@@ -687,9 +508,6 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setResidentialDevice($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getResidentialDeviceId()
     {
         if ($dto = $this->getResidentialDevice()) {
@@ -699,30 +517,19 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param RetailAccountDto | null
-     *
-     * @return static
-     */
-    public function setRetailAccount(?RetailAccountDto $retailAccount = null): self
+    public function setRetailAccount(?RetailAccountDto $retailAccount): static
     {
         $this->retailAccount = $retailAccount;
 
         return $this;
     }
 
-    /**
-     * @return RetailAccountDto | null
-     */
     public function getRetailAccount(): ?RetailAccountDto
     {
         return $this->retailAccount;
     }
 
-    /**
-     * @return static
-     */
-    public function setRetailAccountId($id): self
+    public function setRetailAccountId($id): static
     {
         $value = !is_null($id)
             ? new RetailAccountDto($id)
@@ -731,9 +538,6 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setRetailAccount($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getRetailAccountId()
     {
         if ($dto = $this->getRetailAccount()) {

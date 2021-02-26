@@ -40,15 +40,15 @@ abstract class TrunksCdrAbstract
 
     /**
      * column: start_time
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $startTime = '2000-01-01 00:00:00';
+    protected $startTime;
 
     /**
      * column: end_time
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $endTime = '2000-01-01 00:00:00';
+    protected $endTime;
 
     /**
      * @var float
@@ -96,9 +96,9 @@ abstract class TrunksCdrAbstract
     protected $parsed = false;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
-    protected $parserScheduledAt = 'CURRENT_TIMESTAMP';
+    protected $parserScheduledAt;
 
     /**
      * comment: enum:inbound|outbound
@@ -112,52 +112,52 @@ abstract class TrunksCdrAbstract
     protected $cgrid;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var CarrierInterface
+     * @var CarrierInterface | null
      */
     protected $carrier;
 
     /**
-     * @var RetailAccountInterface
+     * @var RetailAccountInterface | null
      */
     protected $retailAccount;
 
     /**
-     * @var ResidentialDeviceInterface
+     * @var ResidentialDeviceInterface | null
      */
     protected $residentialDevice;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $user;
 
     /**
-     * @var FriendInterface
+     * @var FriendInterface | null
      */
     protected $friend;
 
     /**
-     * @var FaxInterface
+     * @var FaxInterface | null
      */
     protected $fax;
 
     /**
-     * @var DdiInterface
+     * @var DdiInterface | null
      */
     protected $ddi;
 
     /**
-     * @var DdiProviderInterface
+     * @var DdiProviderInterface | null
      */
     protected $ddiProvider;
 
@@ -196,7 +196,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return TrunksCdrDto
      */
     public static function createDto($id = null)
@@ -385,14 +385,7 @@ abstract class TrunksCdrAbstract
         ];
     }
 
-    /**
-     * Set startTime
-     *
-     * @param \DateTimeInterface $startTime
-     *
-     * @return static
-     */
-    protected function setStartTime($startTime): TrunksCdrInterface
+    protected function setStartTime($startTime): static
     {
 
         $startTime = DateTimeHelper::createOrFix(
@@ -409,24 +402,12 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get startTime
-     *
-     * @return \DateTimeInterface
-     */
-    public function getStartTime(): \DateTimeInterface
+    public function getStartTime(): \DateTime
     {
         return clone $this->startTime;
     }
 
-    /**
-     * Set endTime
-     *
-     * @param \DateTimeInterface $endTime
-     *
-     * @return static
-     */
-    protected function setEndTime($endTime): TrunksCdrInterface
+    protected function setEndTime($endTime): static
     {
 
         $endTime = DateTimeHelper::createOrFix(
@@ -443,48 +424,24 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get endTime
-     *
-     * @return \DateTimeInterface
-     */
-    public function getEndTime(): \DateTimeInterface
+    public function getEndTime(): \DateTime
     {
         return clone $this->endTime;
     }
 
-    /**
-     * Set duration
-     *
-     * @param float $duration
-     *
-     * @return static
-     */
-    protected function setDuration(float $duration): TrunksCdrInterface
+    protected function setDuration(float $duration): static
     {
         $this->duration = $duration;
 
         return $this;
     }
 
-    /**
-     * Get duration
-     *
-     * @return float
-     */
     public function getDuration(): float
     {
         return $this->duration;
     }
 
-    /**
-     * Set caller
-     *
-     * @param string $caller | null
-     *
-     * @return static
-     */
-    protected function setCaller(?string $caller = null): TrunksCdrInterface
+    protected function setCaller(?string $caller = null): static
     {
         if (!is_null($caller)) {
             Assertion::maxLength($caller, 128, 'caller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -495,24 +452,12 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get caller
-     *
-     * @return string | null
-     */
     public function getCaller(): ?string
     {
         return $this->caller;
     }
 
-    /**
-     * Set callee
-     *
-     * @param string $callee | null
-     *
-     * @return static
-     */
-    protected function setCallee(?string $callee = null): TrunksCdrInterface
+    protected function setCallee(?string $callee = null): static
     {
         if (!is_null($callee)) {
             Assertion::maxLength($callee, 128, 'callee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -523,24 +468,12 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get callee
-     *
-     * @return string | null
-     */
     public function getCallee(): ?string
     {
         return $this->callee;
     }
 
-    /**
-     * Set callid
-     *
-     * @param string $callid | null
-     *
-     * @return static
-     */
-    protected function setCallid(?string $callid = null): TrunksCdrInterface
+    protected function setCallid(?string $callid = null): static
     {
         if (!is_null($callid)) {
             Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -551,24 +484,12 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get callid
-     *
-     * @return string | null
-     */
     public function getCallid(): ?string
     {
         return $this->callid;
     }
 
-    /**
-     * Set callidHash
-     *
-     * @param string $callidHash | null
-     *
-     * @return static
-     */
-    protected function setCallidHash(?string $callidHash = null): TrunksCdrInterface
+    protected function setCallidHash(?string $callidHash = null): static
     {
         if (!is_null($callidHash)) {
             Assertion::maxLength($callidHash, 128, 'callidHash value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -579,24 +500,12 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get callidHash
-     *
-     * @return string | null
-     */
     public function getCallidHash(): ?string
     {
         return $this->callidHash;
     }
 
-    /**
-     * Set xcallid
-     *
-     * @param string $xcallid | null
-     *
-     * @return static
-     */
-    protected function setXcallid(?string $xcallid = null): TrunksCdrInterface
+    protected function setXcallid(?string $xcallid = null): static
     {
         if (!is_null($xcallid)) {
             Assertion::maxLength($xcallid, 255, 'xcallid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -607,24 +516,12 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get xcallid
-     *
-     * @return string | null
-     */
     public function getXcallid(): ?string
     {
         return $this->xcallid;
     }
 
-    /**
-     * Set diversion
-     *
-     * @param string $diversion | null
-     *
-     * @return static
-     */
-    protected function setDiversion(?string $diversion = null): TrunksCdrInterface
+    protected function setDiversion(?string $diversion = null): static
     {
         if (!is_null($diversion)) {
             Assertion::maxLength($diversion, 64, 'diversion value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -635,24 +532,12 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get diversion
-     *
-     * @return string | null
-     */
     public function getDiversion(): ?string
     {
         return $this->diversion;
     }
 
-    /**
-     * Set bounced
-     *
-     * @param bool $bounced | null
-     *
-     * @return static
-     */
-    protected function setBounced(?bool $bounced = null): TrunksCdrInterface
+    protected function setBounced(?bool $bounced = null): static
     {
         if (!is_null($bounced)) {
             Assertion::between(intval($bounced), 0, 1, 'bounced provided "%s" is not a valid boolean value.');
@@ -664,24 +549,12 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get bounced
-     *
-     * @return bool | null
-     */
     public function getBounced(): ?bool
     {
         return $this->bounced;
     }
 
-    /**
-     * Set parsed
-     *
-     * @param bool $parsed | null
-     *
-     * @return static
-     */
-    protected function setParsed(?bool $parsed = null): TrunksCdrInterface
+    protected function setParsed(?bool $parsed = null): static
     {
         if (!is_null($parsed)) {
             Assertion::between(intval($parsed), 0, 1, 'parsed provided "%s" is not a valid boolean value.');
@@ -693,24 +566,12 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get parsed
-     *
-     * @return bool | null
-     */
     public function getParsed(): ?bool
     {
         return $this->parsed;
     }
 
-    /**
-     * Set parserScheduledAt
-     *
-     * @param \DateTimeInterface $parserScheduledAt
-     *
-     * @return static
-     */
-    protected function setParserScheduledAt($parserScheduledAt): TrunksCdrInterface
+    protected function setParserScheduledAt($parserScheduledAt): static
     {
 
         $parserScheduledAt = DateTimeHelper::createOrFix(
@@ -727,24 +588,12 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get parserScheduledAt
-     *
-     * @return \DateTimeInterface
-     */
-    public function getParserScheduledAt(): \DateTimeInterface
+    public function getParserScheduledAt(): \DateTime
     {
         return clone $this->parserScheduledAt;
     }
 
-    /**
-     * Set direction
-     *
-     * @param string $direction | null
-     *
-     * @return static
-     */
-    protected function setDirection(?string $direction = null): TrunksCdrInterface
+    protected function setDirection(?string $direction = null): static
     {
         if (!is_null($direction)) {
             Assertion::choice(
@@ -762,24 +611,12 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get direction
-     *
-     * @return string | null
-     */
     public function getDirection(): ?string
     {
         return $this->direction;
     }
 
-    /**
-     * Set cgrid
-     *
-     * @param string $cgrid | null
-     *
-     * @return static
-     */
-    protected function setCgrid(?string $cgrid = null): TrunksCdrInterface
+    protected function setCgrid(?string $cgrid = null): static
     {
         if (!is_null($cgrid)) {
             Assertion::maxLength($cgrid, 40, 'cgrid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -790,251 +627,126 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * Get cgrid
-     *
-     * @return string | null
-     */
     public function getCgrid(): ?string
     {
         return $this->cgrid;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    protected function setBrand(?BrandInterface $brand = null): TrunksCdrInterface
+    protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    protected function setCompany(?CompanyInterface $company = null): TrunksCdrInterface
+    protected function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set carrier
-     *
-     * @param CarrierInterface | null
-     *
-     * @return static
-     */
-    protected function setCarrier(?CarrierInterface $carrier = null): TrunksCdrInterface
+    protected function setCarrier(?CarrierInterface $carrier = null): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * Get carrier
-     *
-     * @return CarrierInterface | null
-     */
     public function getCarrier(): ?CarrierInterface
     {
         return $this->carrier;
     }
 
-    /**
-     * Set retailAccount
-     *
-     * @param RetailAccountInterface | null
-     *
-     * @return static
-     */
-    protected function setRetailAccount(?RetailAccountInterface $retailAccount = null): TrunksCdrInterface
+    protected function setRetailAccount(?RetailAccountInterface $retailAccount = null): static
     {
         $this->retailAccount = $retailAccount;
 
         return $this;
     }
 
-    /**
-     * Get retailAccount
-     *
-     * @return RetailAccountInterface | null
-     */
     public function getRetailAccount(): ?RetailAccountInterface
     {
         return $this->retailAccount;
     }
 
-    /**
-     * Set residentialDevice
-     *
-     * @param ResidentialDeviceInterface | null
-     *
-     * @return static
-     */
-    protected function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): TrunksCdrInterface
+    protected function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static
     {
         $this->residentialDevice = $residentialDevice;
 
         return $this;
     }
 
-    /**
-     * Get residentialDevice
-     *
-     * @return ResidentialDeviceInterface | null
-     */
     public function getResidentialDevice(): ?ResidentialDeviceInterface
     {
         return $this->residentialDevice;
     }
 
-    /**
-     * Set user
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setUser(?UserInterface $user = null): TrunksCdrInterface
+    protected function setUser(?UserInterface $user = null): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return UserInterface | null
-     */
     public function getUser(): ?UserInterface
     {
         return $this->user;
     }
 
-    /**
-     * Set friend
-     *
-     * @param FriendInterface | null
-     *
-     * @return static
-     */
-    protected function setFriend(?FriendInterface $friend = null): TrunksCdrInterface
+    protected function setFriend(?FriendInterface $friend = null): static
     {
         $this->friend = $friend;
 
         return $this;
     }
 
-    /**
-     * Get friend
-     *
-     * @return FriendInterface | null
-     */
     public function getFriend(): ?FriendInterface
     {
         return $this->friend;
     }
 
-    /**
-     * Set fax
-     *
-     * @param FaxInterface | null
-     *
-     * @return static
-     */
-    protected function setFax(?FaxInterface $fax = null): TrunksCdrInterface
+    protected function setFax(?FaxInterface $fax = null): static
     {
         $this->fax = $fax;
 
         return $this;
     }
 
-    /**
-     * Get fax
-     *
-     * @return FaxInterface | null
-     */
     public function getFax(): ?FaxInterface
     {
         return $this->fax;
     }
 
-    /**
-     * Set ddi
-     *
-     * @param DdiInterface | null
-     *
-     * @return static
-     */
-    protected function setDdi(?DdiInterface $ddi = null): TrunksCdrInterface
+    protected function setDdi(?DdiInterface $ddi = null): static
     {
         $this->ddi = $ddi;
 
         return $this;
     }
 
-    /**
-     * Get ddi
-     *
-     * @return DdiInterface | null
-     */
     public function getDdi(): ?DdiInterface
     {
         return $this->ddi;
     }
 
-    /**
-     * Set ddiProvider
-     *
-     * @param DdiProviderInterface | null
-     *
-     * @return static
-     */
-    protected function setDdiProvider(?DdiProviderInterface $ddiProvider = null): TrunksCdrInterface
+    protected function setDdiProvider(?DdiProviderInterface $ddiProvider = null): static
     {
         $this->ddiProvider = $ddiProvider;
 
         return $this;
     }
 
-    /**
-     * Get ddiProvider
-     *
-     * @return DdiProviderInterface | null
-     */
     public function getDdiProvider(): ?DdiProviderInterface
     {
         return $this->ddiProvider;

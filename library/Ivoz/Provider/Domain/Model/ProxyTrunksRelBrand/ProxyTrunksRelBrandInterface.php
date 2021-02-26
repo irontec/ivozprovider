@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * ProxyTrunksRelBrandInterface
@@ -17,27 +17,10 @@ interface ProxyTrunksRelBrandInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandInterface $brand = null): ProxyTrunksRelBrandInterface;
+    public function setBrand(?BrandInterface $brand = null): static;
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface;
 
-    /**
-     * Get proxyTrunk
-     *
-     * @return ProxyTrunkInterface
-     */
     public function getProxyTrunk(): ProxyTrunkInterface;
 
     /**

@@ -31,17 +31,17 @@ abstract class CallCsvReportAbstract
     protected $sentTo = '';
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $inDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $outDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $createdOn;
 
@@ -51,17 +51,17 @@ abstract class CallCsvReportAbstract
     protected $csv;
 
     /**
-     * @var CompanyInterface
+     * @var CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var BrandInterface
+     * @var BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var CallCsvSchedulerInterface
+     * @var CallCsvSchedulerInterface | null
      */
     protected $callCsvScheduler;
 
@@ -102,7 +102,7 @@ abstract class CallCsvReportAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CallCsvReportDto
      */
     public static function createDto($id = null)
@@ -243,14 +243,7 @@ abstract class CallCsvReportAbstract
         ];
     }
 
-    /**
-     * Set sentTo
-     *
-     * @param string $sentTo
-     *
-     * @return static
-     */
-    protected function setSentTo(string $sentTo): CallCsvReportInterface
+    protected function setSentTo(string $sentTo): static
     {
         Assertion::maxLength($sentTo, 250, 'sentTo value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -259,24 +252,12 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    /**
-     * Get sentTo
-     *
-     * @return string
-     */
     public function getSentTo(): string
     {
         return $this->sentTo;
     }
 
-    /**
-     * Set inDate
-     *
-     * @param \DateTimeInterface $inDate
-     *
-     * @return static
-     */
-    protected function setInDate($inDate): CallCsvReportInterface
+    protected function setInDate($inDate): static
     {
 
         $inDate = DateTimeHelper::createOrFix(
@@ -293,24 +274,12 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    /**
-     * Get inDate
-     *
-     * @return \DateTimeInterface
-     */
-    public function getInDate(): \DateTimeInterface
+    public function getInDate(): \DateTime
     {
         return clone $this->inDate;
     }
 
-    /**
-     * Set outDate
-     *
-     * @param \DateTimeInterface $outDate
-     *
-     * @return static
-     */
-    protected function setOutDate($outDate): CallCsvReportInterface
+    protected function setOutDate($outDate): static
     {
 
         $outDate = DateTimeHelper::createOrFix(
@@ -327,24 +296,12 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    /**
-     * Get outDate
-     *
-     * @return \DateTimeInterface
-     */
-    public function getOutDate(): \DateTimeInterface
+    public function getOutDate(): \DateTime
     {
         return clone $this->outDate;
     }
 
-    /**
-     * Set createdOn
-     *
-     * @param \DateTimeInterface $createdOn
-     *
-     * @return static
-     */
-    protected function setCreatedOn($createdOn): CallCsvReportInterface
+    protected function setCreatedOn($createdOn): static
     {
 
         $createdOn = DateTimeHelper::createOrFix(
@@ -361,32 +318,17 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    /**
-     * Get createdOn
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedOn(): \DateTimeInterface
+    public function getCreatedOn(): \DateTime
     {
         return clone $this->createdOn;
     }
 
-    /**
-     * Get csv
-     *
-     * @return Csv
-     */
     public function getCsv(): Csv
     {
         return $this->csv;
     }
 
-    /**
-     * Set csv
-     *
-     * @return static
-     */
-    protected function setCsv(Csv $csv): CallCsvReportInterface
+    protected function setCsv(Csv $csv): static
     {
         $isEqual = $this->csv && $this->csv->equals($csv);
         if ($isEqual) {
@@ -397,73 +339,37 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface | null
-     *
-     * @return static
-     */
-    protected function setCompany(?CompanyInterface $company = null): CallCsvReportInterface
+    protected function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface | null
-     *
-     * @return static
-     */
-    protected function setBrand(?BrandInterface $brand = null): CallCsvReportInterface
+    protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface | null
-     */
     public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set callCsvScheduler
-     *
-     * @param CallCsvSchedulerInterface | null
-     *
-     * @return static
-     */
-    protected function setCallCsvScheduler(?CallCsvSchedulerInterface $callCsvScheduler = null): CallCsvReportInterface
+    protected function setCallCsvScheduler(?CallCsvSchedulerInterface $callCsvScheduler = null): static
     {
         $this->callCsvScheduler = $callCsvScheduler;
 
         return $this;
     }
 
-    /**
-     * Get callCsvScheduler
-     *
-     * @return CallCsvSchedulerInterface | null
-     */
     public function getCallCsvScheduler(): ?CallCsvSchedulerInterface
     {
         return $this->callCsvScheduler;

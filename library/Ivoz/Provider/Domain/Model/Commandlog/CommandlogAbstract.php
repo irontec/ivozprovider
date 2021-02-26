@@ -44,7 +44,7 @@ abstract class CommandlogAbstract
     protected $agent = [];
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime
      */
     protected $createdOn;
 
@@ -88,7 +88,7 @@ abstract class CommandlogAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return CommandlogDto
      */
     public static function createDto($id = null)
@@ -209,38 +209,19 @@ abstract class CommandlogAbstract
         ];
     }
 
-    /**
-     * Set requestId
-     *
-     * @param string $requestId
-     *
-     * @return static
-     */
-    protected function setRequestId(string $requestId): CommandlogInterface
+    protected function setRequestId(string $requestId): static
     {
         $this->requestId = $requestId;
 
         return $this;
     }
 
-    /**
-     * Get requestId
-     *
-     * @return string
-     */
     public function getRequestId(): string
     {
         return $this->requestId;
     }
 
-    /**
-     * Set class
-     *
-     * @param string $class
-     *
-     * @return static
-     */
-    protected function setClass(string $class): CommandlogInterface
+    protected function setClass(string $class): static
     {
         Assertion::maxLength($class, 50, 'class value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -249,24 +230,12 @@ abstract class CommandlogAbstract
         return $this;
     }
 
-    /**
-     * Get class
-     *
-     * @return string
-     */
     public function getClass(): string
     {
         return $this->class;
     }
 
-    /**
-     * Set method
-     *
-     * @param string $method | null
-     *
-     * @return static
-     */
-    protected function setMethod(?string $method = null): CommandlogInterface
+    protected function setMethod(?string $method = null): static
     {
         if (!is_null($method)) {
             Assertion::maxLength($method, 64, 'method value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -277,72 +246,36 @@ abstract class CommandlogAbstract
         return $this;
     }
 
-    /**
-     * Get method
-     *
-     * @return string | null
-     */
     public function getMethod(): ?string
     {
         return $this->method;
     }
 
-    /**
-     * Set arguments
-     *
-     * @param array $arguments | null
-     *
-     * @return static
-     */
-    protected function setArguments(?array $arguments = null): CommandlogInterface
+    protected function setArguments(?array $arguments = null): static
     {
         $this->arguments = $arguments;
 
         return $this;
     }
 
-    /**
-     * Get arguments
-     *
-     * @return array | null
-     */
     public function getArguments(): ?array
     {
         return $this->arguments;
     }
 
-    /**
-     * Set agent
-     *
-     * @param array $agent | null
-     *
-     * @return static
-     */
-    protected function setAgent(?array $agent = null): CommandlogInterface
+    protected function setAgent(?array $agent = null): static
     {
         $this->agent = $agent;
 
         return $this;
     }
 
-    /**
-     * Get agent
-     *
-     * @return array | null
-     */
     public function getAgent(): ?array
     {
         return $this->agent;
     }
 
-    /**
-     * Set createdOn
-     *
-     * @param \DateTimeInterface $createdOn
-     *
-     * @return static
-     */
-    protected function setCreatedOn($createdOn): CommandlogInterface
+    protected function setCreatedOn($createdOn): static
     {
 
         $createdOn = DateTimeHelper::createOrFix(
@@ -359,35 +292,18 @@ abstract class CommandlogAbstract
         return $this;
     }
 
-    /**
-     * Get createdOn
-     *
-     * @return \DateTimeInterface
-     */
-    public function getCreatedOn(): \DateTimeInterface
+    public function getCreatedOn(): \DateTime
     {
         return clone $this->createdOn;
     }
 
-    /**
-     * Set microtime
-     *
-     * @param int $microtime
-     *
-     * @return static
-     */
-    protected function setMicrotime(int $microtime): CommandlogInterface
+    protected function setMicrotime(int $microtime): static
     {
         $this->microtime = $microtime;
 
         return $this;
     }
 
-    /**
-     * Get microtime
-     *
-     * @return int
-     */
     public function getMicrotime(): int
     {
         return $this->microtime;

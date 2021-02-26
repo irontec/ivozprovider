@@ -54,7 +54,7 @@ abstract class NotificationTemplateContentAbstract
     protected $notificationTemplate;
 
     /**
-     * @var LanguageInterface
+     * @var LanguageInterface | null
      */
     protected $language;
 
@@ -91,7 +91,7 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return NotificationTemplateContentDto
      */
     public static function createDto($id = null)
@@ -212,14 +212,7 @@ abstract class NotificationTemplateContentAbstract
         ];
     }
 
-    /**
-     * Set fromName
-     *
-     * @param string $fromName | null
-     *
-     * @return static
-     */
-    protected function setFromName(?string $fromName = null): NotificationTemplateContentInterface
+    protected function setFromName(?string $fromName = null): static
     {
         if (!is_null($fromName)) {
             Assertion::maxLength($fromName, 255, 'fromName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -230,24 +223,12 @@ abstract class NotificationTemplateContentAbstract
         return $this;
     }
 
-    /**
-     * Get fromName
-     *
-     * @return string | null
-     */
     public function getFromName(): ?string
     {
         return $this->fromName;
     }
 
-    /**
-     * Set fromAddress
-     *
-     * @param string $fromAddress | null
-     *
-     * @return static
-     */
-    protected function setFromAddress(?string $fromAddress = null): NotificationTemplateContentInterface
+    protected function setFromAddress(?string $fromAddress = null): static
     {
         if (!is_null($fromAddress)) {
             Assertion::maxLength($fromAddress, 255, 'fromAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -258,24 +239,12 @@ abstract class NotificationTemplateContentAbstract
         return $this;
     }
 
-    /**
-     * Get fromAddress
-     *
-     * @return string | null
-     */
     public function getFromAddress(): ?string
     {
         return $this->fromAddress;
     }
 
-    /**
-     * Set subject
-     *
-     * @param string $subject
-     *
-     * @return static
-     */
-    protected function setSubject(string $subject): NotificationTemplateContentInterface
+    protected function setSubject(string $subject): static
     {
         Assertion::maxLength($subject, 255, 'subject value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -284,24 +253,12 @@ abstract class NotificationTemplateContentAbstract
         return $this;
     }
 
-    /**
-     * Get subject
-     *
-     * @return string
-     */
     public function getSubject(): string
     {
         return $this->subject;
     }
 
-    /**
-     * Set body
-     *
-     * @param string $body
-     *
-     * @return static
-     */
-    protected function setBody(string $body): NotificationTemplateContentInterface
+    protected function setBody(string $body): static
     {
         Assertion::maxLength($body, 65535, 'body value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -310,24 +267,12 @@ abstract class NotificationTemplateContentAbstract
         return $this;
     }
 
-    /**
-     * Get body
-     *
-     * @return string
-     */
     public function getBody(): string
     {
         return $this->body;
     }
 
-    /**
-     * Set bodyType
-     *
-     * @param string $bodyType
-     *
-     * @return static
-     */
-    protected function setBodyType(string $bodyType): NotificationTemplateContentInterface
+    protected function setBodyType(string $bodyType): static
     {
         Assertion::maxLength($bodyType, 25, 'bodyType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -344,59 +289,31 @@ abstract class NotificationTemplateContentAbstract
         return $this;
     }
 
-    /**
-     * Get bodyType
-     *
-     * @return string
-     */
     public function getBodyType(): string
     {
         return $this->bodyType;
     }
 
-    /**
-     * Set notificationTemplate
-     *
-     * @param NotificationTemplateInterface
-     *
-     * @return static
-     */
-    public function setNotificationTemplate(NotificationTemplateInterface $notificationTemplate): NotificationTemplateContentInterface
+    public function setNotificationTemplate(NotificationTemplateInterface $notificationTemplate): static
     {
         $this->notificationTemplate = $notificationTemplate;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get notificationTemplate
-     *
-     * @return NotificationTemplateInterface
-     */
     public function getNotificationTemplate(): NotificationTemplateInterface
     {
         return $this->notificationTemplate;
     }
 
-    /**
-     * Set language
-     *
-     * @param LanguageInterface | null
-     *
-     * @return static
-     */
-    protected function setLanguage(?LanguageInterface $language = null): NotificationTemplateContentInterface
+    protected function setLanguage(?LanguageInterface $language = null): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * Get language
-     *
-     * @return LanguageInterface | null
-     */
     public function getLanguage(): ?LanguageInterface
     {
         return $this->language;

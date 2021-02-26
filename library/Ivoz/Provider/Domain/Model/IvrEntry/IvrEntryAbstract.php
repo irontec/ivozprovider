@@ -52,27 +52,27 @@ abstract class IvrEntryAbstract
     protected $ivr;
 
     /**
-     * @var LocutionInterface
+     * @var LocutionInterface | null
      */
     protected $welcomeLocution;
 
     /**
-     * @var ExtensionInterface
+     * @var ExtensionInterface | null
      */
     protected $extension;
 
     /**
-     * @var UserInterface
+     * @var UserInterface | null
      */
     protected $voiceMailUser;
 
     /**
-     * @var ConditionalRouteInterface
+     * @var ConditionalRouteInterface | null
      */
     protected $conditionalRoute;
 
     /**
-     * @var CountryInterface
+     * @var CountryInterface | null
      */
     protected $numberCountry;
 
@@ -107,7 +107,7 @@ abstract class IvrEntryAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return IvrEntryDto
      */
     public static function createDto($id = null)
@@ -236,14 +236,7 @@ abstract class IvrEntryAbstract
         ];
     }
 
-    /**
-     * Set entry
-     *
-     * @param string $entry
-     *
-     * @return static
-     */
-    protected function setEntry(string $entry): IvrEntryInterface
+    protected function setEntry(string $entry): static
     {
         Assertion::maxLength($entry, 40, 'entry value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -252,24 +245,12 @@ abstract class IvrEntryAbstract
         return $this;
     }
 
-    /**
-     * Get entry
-     *
-     * @return string
-     */
     public function getEntry(): string
     {
         return $this->entry;
     }
 
-    /**
-     * Set routeType
-     *
-     * @param string $routeType
-     *
-     * @return static
-     */
-    protected function setRouteType(string $routeType): IvrEntryInterface
+    protected function setRouteType(string $routeType): static
     {
         Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
@@ -288,24 +269,12 @@ abstract class IvrEntryAbstract
         return $this;
     }
 
-    /**
-     * Get routeType
-     *
-     * @return string
-     */
     public function getRouteType(): string
     {
         return $this->routeType;
     }
 
-    /**
-     * Set numberValue
-     *
-     * @param string $numberValue | null
-     *
-     * @return static
-     */
-    protected function setNumberValue(?string $numberValue = null): IvrEntryInterface
+    protected function setNumberValue(?string $numberValue = null): static
     {
         if (!is_null($numberValue)) {
             Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -316,155 +285,79 @@ abstract class IvrEntryAbstract
         return $this;
     }
 
-    /**
-     * Get numberValue
-     *
-     * @return string | null
-     */
     public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
 
-    /**
-     * Set ivr
-     *
-     * @param IvrInterface
-     *
-     * @return static
-     */
-    public function setIvr(IvrInterface $ivr): IvrEntryInterface
+    public function setIvr(IvrInterface $ivr): static
     {
         $this->ivr = $ivr;
 
+        /** @var  $this */
         return $this;
     }
 
-    /**
-     * Get ivr
-     *
-     * @return IvrInterface
-     */
     public function getIvr(): IvrInterface
     {
         return $this->ivr;
     }
 
-    /**
-     * Set welcomeLocution
-     *
-     * @param LocutionInterface | null
-     *
-     * @return static
-     */
-    protected function setWelcomeLocution(?LocutionInterface $welcomeLocution = null): IvrEntryInterface
+    protected function setWelcomeLocution(?LocutionInterface $welcomeLocution = null): static
     {
         $this->welcomeLocution = $welcomeLocution;
 
         return $this;
     }
 
-    /**
-     * Get welcomeLocution
-     *
-     * @return LocutionInterface | null
-     */
     public function getWelcomeLocution(): ?LocutionInterface
     {
         return $this->welcomeLocution;
     }
 
-    /**
-     * Set extension
-     *
-     * @param ExtensionInterface | null
-     *
-     * @return static
-     */
-    protected function setExtension(?ExtensionInterface $extension = null): IvrEntryInterface
+    protected function setExtension(?ExtensionInterface $extension = null): static
     {
         $this->extension = $extension;
 
         return $this;
     }
 
-    /**
-     * Get extension
-     *
-     * @return ExtensionInterface | null
-     */
     public function getExtension(): ?ExtensionInterface
     {
         return $this->extension;
     }
 
-    /**
-     * Set voiceMailUser
-     *
-     * @param UserInterface | null
-     *
-     * @return static
-     */
-    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): IvrEntryInterface
+    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): static
     {
         $this->voiceMailUser = $voiceMailUser;
 
         return $this;
     }
 
-    /**
-     * Get voiceMailUser
-     *
-     * @return UserInterface | null
-     */
     public function getVoiceMailUser(): ?UserInterface
     {
         return $this->voiceMailUser;
     }
 
-    /**
-     * Set conditionalRoute
-     *
-     * @param ConditionalRouteInterface | null
-     *
-     * @return static
-     */
-    protected function setConditionalRoute(?ConditionalRouteInterface $conditionalRoute = null): IvrEntryInterface
+    protected function setConditionalRoute(?ConditionalRouteInterface $conditionalRoute = null): static
     {
         $this->conditionalRoute = $conditionalRoute;
 
         return $this;
     }
 
-    /**
-     * Get conditionalRoute
-     *
-     * @return ConditionalRouteInterface | null
-     */
     public function getConditionalRoute(): ?ConditionalRouteInterface
     {
         return $this->conditionalRoute;
     }
 
-    /**
-     * Set numberCountry
-     *
-     * @param CountryInterface | null
-     *
-     * @return static
-     */
-    protected function setNumberCountry(?CountryInterface $numberCountry = null): IvrEntryInterface
+    protected function setNumberCountry(?CountryInterface $numberCountry = null): static
     {
         $this->numberCountry = $numberCountry;
 
         return $this;
     }
 
-    /**
-     * Get numberCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;

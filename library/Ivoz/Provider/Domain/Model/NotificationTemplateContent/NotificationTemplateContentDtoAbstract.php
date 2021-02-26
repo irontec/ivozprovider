@@ -16,24 +16,24 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     use DtoNormalizer;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fromName;
 
     /**
-     * @var string | null
+     * @var string|null
      */
     private $fromAddress;
 
     /**
      * @var string
      */
-    private $subject;
+    private $subject = '';
 
     /**
      * @var string
      */
-    private $body;
+    private $body = '';
 
     /**
      * @var string
@@ -111,150 +111,91 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $response;
     }
 
-    /**
-     * @param string $fromName | null
-     *
-     * @return static
-     */
-    public function setFromName(?string $fromName = null): self
+    public function setFromName(?string $fromName): static
     {
         $this->fromName = $fromName;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFromName(): ?string
     {
         return $this->fromName;
     }
 
-    /**
-     * @param string $fromAddress | null
-     *
-     * @return static
-     */
-    public function setFromAddress(?string $fromAddress = null): self
+    public function setFromAddress(?string $fromAddress): static
     {
         $this->fromAddress = $fromAddress;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getFromAddress(): ?string
     {
         return $this->fromAddress;
     }
 
-    /**
-     * @param string $subject | null
-     *
-     * @return static
-     */
-    public function setSubject(?string $subject = null): self
+    public function setSubject(?string $subject): static
     {
         $this->subject = $subject;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getSubject(): ?string
     {
         return $this->subject;
     }
 
-    /**
-     * @param string $body | null
-     *
-     * @return static
-     */
-    public function setBody(?string $body = null): self
+    public function setBody(?string $body): static
     {
         $this->body = $body;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getBody(): ?string
     {
         return $this->body;
     }
 
-    /**
-     * @param string $bodyType | null
-     *
-     * @return static
-     */
-    public function setBodyType(?string $bodyType = null): self
+    public function setBodyType(?string $bodyType): static
     {
         $this->bodyType = $bodyType;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getBodyType(): ?string
     {
         return $this->bodyType;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param NotificationTemplateDto | null
-     *
-     * @return static
-     */
-    public function setNotificationTemplate(?NotificationTemplateDto $notificationTemplate = null): self
+    public function setNotificationTemplate(?NotificationTemplateDto $notificationTemplate): static
     {
         $this->notificationTemplate = $notificationTemplate;
 
         return $this;
     }
 
-    /**
-     * @return NotificationTemplateDto | null
-     */
     public function getNotificationTemplate(): ?NotificationTemplateDto
     {
         return $this->notificationTemplate;
     }
 
-    /**
-     * @return static
-     */
-    public function setNotificationTemplateId($id): self
+    public function setNotificationTemplateId($id): static
     {
         $value = !is_null($id)
             ? new NotificationTemplateDto($id)
@@ -263,9 +204,6 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->setNotificationTemplate($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getNotificationTemplateId()
     {
         if ($dto = $this->getNotificationTemplate()) {
@@ -275,30 +213,19 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return null;
     }
 
-    /**
-     * @param LanguageDto | null
-     *
-     * @return static
-     */
-    public function setLanguage(?LanguageDto $language = null): self
+    public function setLanguage(?LanguageDto $language): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * @return LanguageDto | null
-     */
     public function getLanguage(): ?LanguageDto
     {
         return $this->language;
     }
 
-    /**
-     * @return static
-     */
-    public function setLanguageId($id): self
+    public function setLanguageId($id): static
     {
         $value = !is_null($id)
             ? new LanguageDto($id)
@@ -307,9 +234,6 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->setLanguage($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getLanguageId()
     {
         if ($dto = $this->getLanguage()) {

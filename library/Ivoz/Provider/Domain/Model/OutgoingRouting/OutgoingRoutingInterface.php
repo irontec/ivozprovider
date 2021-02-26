@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -15,7 +16,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface;
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 /**
 * OutgoingRoutingInterface
@@ -60,154 +60,44 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      */
     public function hasRoutingPattern(RoutingPatternInterface $pattern);
 
-    /**
-     * Get type
-     *
-     * @return string | null
-     */
     public function getType(): ?string;
 
-    /**
-     * Get priority
-     *
-     * @return int
-     */
     public function getPriority(): int;
 
-    /**
-     * Get weight
-     *
-     * @return int
-     */
     public function getWeight(): int;
 
-    /**
-     * Get routingMode
-     *
-     * @return string | null
-     */
     public function getRoutingMode(): ?string;
 
-    /**
-     * Get prefix
-     *
-     * @return string | null
-     */
     public function getPrefix(): ?string;
 
-    /**
-     * Get stopper
-     *
-     * @return bool
-     */
     public function getStopper(): bool;
 
-    /**
-     * Get forceClid
-     *
-     * @return bool | null
-     */
     public function getForceClid(): ?bool;
 
-    /**
-     * Get clid
-     *
-     * @return string | null
-     */
     public function getClid(): ?string;
 
-    /**
-     * Set brand
-     *
-     * @param BrandInterface
-     *
-     * @return static
-     */
-    public function setBrand(BrandInterface $brand): OutgoingRoutingInterface;
+    public function setBrand(BrandInterface $brand): static;
 
-    /**
-     * Get brand
-     *
-     * @return BrandInterface
-     */
     public function getBrand(): BrandInterface;
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface | null
-     */
     public function getCompany(): ?CompanyInterface;
 
-    /**
-     * Set carrier
-     *
-     * @param CarrierInterface | null
-     *
-     * @return static
-     */
-    public function setCarrier(?CarrierInterface $carrier = null): OutgoingRoutingInterface;
+    public function setCarrier(?CarrierInterface $carrier = null): static;
 
-    /**
-     * Get carrier
-     *
-     * @return CarrierInterface | null
-     */
     public function getCarrier(): ?CarrierInterface;
 
-    /**
-     * Set routingPattern
-     *
-     * @param RoutingPatternInterface | null
-     *
-     * @return static
-     */
-    public function setRoutingPattern(?RoutingPatternInterface $routingPattern = null): OutgoingRoutingInterface;
+    public function setRoutingPattern(?RoutingPatternInterface $routingPattern = null): static;
 
-    /**
-     * Get routingPattern
-     *
-     * @return RoutingPatternInterface | null
-     */
     public function getRoutingPattern(): ?RoutingPatternInterface;
 
-    /**
-     * Set routingPatternGroup
-     *
-     * @param RoutingPatternGroupInterface | null
-     *
-     * @return static
-     */
-    public function setRoutingPatternGroup(?RoutingPatternGroupInterface $routingPatternGroup = null): OutgoingRoutingInterface;
+    public function setRoutingPatternGroup(?RoutingPatternGroupInterface $routingPatternGroup = null): static;
 
-    /**
-     * Get routingPatternGroup
-     *
-     * @return RoutingPatternGroupInterface | null
-     */
     public function getRoutingPatternGroup(): ?RoutingPatternGroupInterface;
 
-    /**
-     * Set routingTag
-     *
-     * @param RoutingTagInterface | null
-     *
-     * @return static
-     */
-    public function setRoutingTag(?RoutingTagInterface $routingTag = null): OutgoingRoutingInterface;
+    public function setRoutingTag(?RoutingTagInterface $routingTag = null): static;
 
-    /**
-     * Get routingTag
-     *
-     * @return RoutingTagInterface | null
-     */
     public function getRoutingTag(): ?RoutingTagInterface;
 
-    /**
-     * Get clidCountry
-     *
-     * @return CountryInterface | null
-     */
     public function getClidCountry(): ?CountryInterface;
 
     /**
@@ -215,118 +105,32 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      */
     public function isInitialized(): bool;
 
-    /**
-     * @var TpLcrRuleInterface
-     * mappedBy outgoingRouting
-     */
-    public function setTpLcrRule(TpLcrRuleInterface $tpLcrRule): OutgoingRoutingInterface;
+    public function setTpLcrRule(TpLcrRuleInterface $tpLcrRule): static;
 
-    /**
-     * Get tpLcrRule
-     * @return TpLcrRuleInterface
-     */
     public function getTpLcrRule(): ?TpLcrRuleInterface;
 
-    /**
-     * Add lcrRule
-     *
-     * @param TrunksLcrRuleInterface $lcrRule
-     *
-     * @return static
-     */
     public function addLcrRule(TrunksLcrRuleInterface $lcrRule): OutgoingRoutingInterface;
 
-    /**
-     * Remove lcrRule
-     *
-     * @param TrunksLcrRuleInterface $lcrRule
-     *
-     * @return static
-     */
     public function removeLcrRule(TrunksLcrRuleInterface $lcrRule): OutgoingRoutingInterface;
 
-    /**
-     * Replace lcrRules
-     *
-     * @param ArrayCollection $lcrRules of TrunksLcrRuleInterface
-     *
-     * @return static
-     */
     public function replaceLcrRules(ArrayCollection $lcrRules): OutgoingRoutingInterface;
 
-    /**
-     * Get lcrRules
-     * @param Criteria | null $criteria
-     * @return TrunksLcrRuleInterface[]
-     */
     public function getLcrRules(?Criteria $criteria = null): array;
 
-    /**
-     * Add lcrRuleTarget
-     *
-     * @param TrunksLcrRuleTargetInterface $lcrRuleTarget
-     *
-     * @return static
-     */
     public function addLcrRuleTarget(TrunksLcrRuleTargetInterface $lcrRuleTarget): OutgoingRoutingInterface;
 
-    /**
-     * Remove lcrRuleTarget
-     *
-     * @param TrunksLcrRuleTargetInterface $lcrRuleTarget
-     *
-     * @return static
-     */
     public function removeLcrRuleTarget(TrunksLcrRuleTargetInterface $lcrRuleTarget): OutgoingRoutingInterface;
 
-    /**
-     * Replace lcrRuleTargets
-     *
-     * @param ArrayCollection $lcrRuleTargets of TrunksLcrRuleTargetInterface
-     *
-     * @return static
-     */
     public function replaceLcrRuleTargets(ArrayCollection $lcrRuleTargets): OutgoingRoutingInterface;
 
-    /**
-     * Get lcrRuleTargets
-     * @param Criteria | null $criteria
-     * @return TrunksLcrRuleTargetInterface[]
-     */
     public function getLcrRuleTargets(?Criteria $criteria = null): array;
 
-    /**
-     * Add relCarrier
-     *
-     * @param OutgoingRoutingRelCarrierInterface $relCarrier
-     *
-     * @return static
-     */
     public function addRelCarrier(OutgoingRoutingRelCarrierInterface $relCarrier): OutgoingRoutingInterface;
 
-    /**
-     * Remove relCarrier
-     *
-     * @param OutgoingRoutingRelCarrierInterface $relCarrier
-     *
-     * @return static
-     */
     public function removeRelCarrier(OutgoingRoutingRelCarrierInterface $relCarrier): OutgoingRoutingInterface;
 
-    /**
-     * Replace relCarriers
-     *
-     * @param ArrayCollection $relCarriers of OutgoingRoutingRelCarrierInterface
-     *
-     * @return static
-     */
     public function replaceRelCarriers(ArrayCollection $relCarriers): OutgoingRoutingInterface;
 
-    /**
-     * Get relCarriers
-     * @param Criteria | null $criteria
-     * @return OutgoingRoutingRelCarrierInterface[]
-     */
     public function getRelCarriers(?Criteria $criteria = null): array;
 
 }

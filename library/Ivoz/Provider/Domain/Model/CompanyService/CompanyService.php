@@ -46,7 +46,7 @@ class CompanyService extends CompanyServiceAbstract implements CompanyServiceInt
     /**
      * {@inheritDoc}
      */
-    public function setCode(string $code): self
+    public function setCode(string $code): static
     {
         Assertion::regex($code, '/^[#0-9*]+$/');
         return parent::setCode($code);

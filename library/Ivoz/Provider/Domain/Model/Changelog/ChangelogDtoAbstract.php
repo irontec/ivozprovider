@@ -17,20 +17,20 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $entity;
+    private $entity = '';
 
     /**
      * @var string
      */
-    private $entityId;
+    private $entityId = '';
 
     /**
-     * @var array | null
+     * @var array|null
      */
     private $data;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTime|string
      */
     private $createdOn;
 
@@ -103,150 +103,91 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $entity | null
-     *
-     * @return static
-     */
-    public function setEntity(?string $entity = null): self
+    public function setEntity(?string $entity): static
     {
         $this->entity = $entity;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEntity(): ?string
     {
         return $this->entity;
     }
 
-    /**
-     * @param string $entityId | null
-     *
-     * @return static
-     */
-    public function setEntityId(?string $entityId = null): self
+    public function setEntityId(?string $entityId): static
     {
         $this->entityId = $entityId;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getEntityId(): ?string
     {
         return $this->entityId;
     }
 
-    /**
-     * @param array $data | null
-     *
-     * @return static
-     */
-    public function setData(?array $data = null): self
+    public function setData(?array $data): static
     {
         $this->data = $data;
 
         return $this;
     }
 
-    /**
-     * @return array | null
-     */
     public function getData(): ?array
     {
         return $this->data;
     }
 
-    /**
-     * @param \DateTimeInterface $createdOn | null
-     *
-     * @return static
-     */
-    public function setCreatedOn($createdOn = null): self
+    public function setCreatedOn(null|\DateTime|string $createdOn): static
     {
         $this->createdOn = $createdOn;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface | null
-     */
-    public function getCreatedOn()
+    public function getCreatedOn(): \DateTime|string|null
     {
         return $this->createdOn;
     }
 
-    /**
-     * @param int $microtime | null
-     *
-     * @return static
-     */
-    public function setMicrotime(?int $microtime = null): self
+    public function setMicrotime(?int $microtime): static
     {
         $this->microtime = $microtime;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
     public function getMicrotime(): ?int
     {
         return $this->microtime;
     }
 
-    /**
-     * @param string $id | null
-     *
-     * @return static
-     */
-    public function setId(?string $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
-    public function getId(): ?string
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param CommandlogDto | null
-     *
-     * @return static
-     */
-    public function setCommand(?CommandlogDto $command = null): self
+    public function setCommand(?CommandlogDto $command): static
     {
         $this->command = $command;
 
         return $this;
     }
 
-    /**
-     * @return CommandlogDto | null
-     */
     public function getCommand(): ?CommandlogDto
     {
         return $this->command;
     }
 
-    /**
-     * @return static
-     */
-    public function setCommandId($id): self
+    public function setCommandId($id): static
     {
         $value = !is_null($id)
             ? new CommandlogDto($id)
@@ -255,9 +196,6 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
         return $this->setCommand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCommandId()
     {
         if ($dto = $this->getCommand()) {

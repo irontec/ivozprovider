@@ -58,7 +58,7 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
      * @return static
      * @throws \Exception
      */
-    protected function setPrefix(?string $prefix = null): self
+    protected function setPrefix(?string $prefix = null): static
     {
         if ($this->getType() === OutgoingDdiRulesPatternInterface::TYPE_PREFIX) {
             Assertion::regex(

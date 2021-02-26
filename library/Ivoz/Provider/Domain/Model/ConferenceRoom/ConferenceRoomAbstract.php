@@ -77,7 +77,7 @@ abstract class ConferenceRoomAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return ConferenceRoomDto
      */
     public static function createDto($id = null)
@@ -190,14 +190,7 @@ abstract class ConferenceRoomAbstract
         ];
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return static
-     */
-    protected function setName(string $name): ConferenceRoomInterface
+    protected function setName(string $name): static
     {
         Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
@@ -206,24 +199,12 @@ abstract class ConferenceRoomAbstract
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set pinProtected
-     *
-     * @param bool $pinProtected
-     *
-     * @return static
-     */
-    protected function setPinProtected(bool $pinProtected): ConferenceRoomInterface
+    protected function setPinProtected(bool $pinProtected): static
     {
         Assertion::between(intval($pinProtected), 0, 1, 'pinProtected provided "%s" is not a valid boolean value.');
         $pinProtected = (bool) $pinProtected;
@@ -233,24 +214,12 @@ abstract class ConferenceRoomAbstract
         return $this;
     }
 
-    /**
-     * Get pinProtected
-     *
-     * @return bool
-     */
     public function getPinProtected(): bool
     {
         return $this->pinProtected;
     }
 
-    /**
-     * Set pinCode
-     *
-     * @param string $pinCode | null
-     *
-     * @return static
-     */
-    protected function setPinCode(?string $pinCode = null): ConferenceRoomInterface
+    protected function setPinCode(?string $pinCode = null): static
     {
         if (!is_null($pinCode)) {
             Assertion::maxLength($pinCode, 6, 'pinCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -261,24 +230,12 @@ abstract class ConferenceRoomAbstract
         return $this;
     }
 
-    /**
-     * Get pinCode
-     *
-     * @return string | null
-     */
     public function getPinCode(): ?string
     {
         return $this->pinCode;
     }
 
-    /**
-     * Set maxMembers
-     *
-     * @param int $maxMembers
-     *
-     * @return static
-     */
-    protected function setMaxMembers(int $maxMembers): ConferenceRoomInterface
+    protected function setMaxMembers(int $maxMembers): static
     {
         Assertion::greaterOrEqualThan($maxMembers, 0, 'maxMembers provided "%s" is not greater or equal than "%s".');
 
@@ -287,35 +244,18 @@ abstract class ConferenceRoomAbstract
         return $this;
     }
 
-    /**
-     * Get maxMembers
-     *
-     * @return int
-     */
     public function getMaxMembers(): int
     {
         return $this->maxMembers;
     }
 
-    /**
-     * Set company
-     *
-     * @param CompanyInterface
-     *
-     * @return static
-     */
-    protected function setCompany(CompanyInterface $company): ConferenceRoomInterface
+    protected function setCompany(CompanyInterface $company): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return CompanyInterface
-     */
     public function getCompany(): CompanyInterface
     {
         return $this->company;

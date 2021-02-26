@@ -30,20 +30,20 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $externallyRated = false;
 
     /**
-     * @var float | null
+     * @var float|null
      */
     private $balance = 0;
 
     /**
-     * @var bool | null
+     * @var bool|null
      */
     private $calculateCost = false;
 
@@ -162,150 +162,91 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    /**
-     * @param string $description | null
-     *
-     * @return static
-     */
-    public function setDescription(?string $description = null): self
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $name | null
-     *
-     * @return static
-     */
-    public function setName(?string $name = null): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string | null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param bool $externallyRated | null
-     *
-     * @return static
-     */
-    public function setExternallyRated(?bool $externallyRated = null): self
+    public function setExternallyRated(?bool $externallyRated): static
     {
         $this->externallyRated = $externallyRated;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getExternallyRated(): ?bool
     {
         return $this->externallyRated;
     }
 
-    /**
-     * @param float $balance | null
-     *
-     * @return static
-     */
-    public function setBalance(?float $balance = null): self
+    public function setBalance(?float $balance): static
     {
         $this->balance = $balance;
 
         return $this;
     }
 
-    /**
-     * @return float | null
-     */
     public function getBalance(): ?float
     {
         return $this->balance;
     }
 
-    /**
-     * @param bool $calculateCost | null
-     *
-     * @return static
-     */
-    public function setCalculateCost(?bool $calculateCost = null): self
+    public function setCalculateCost(?bool $calculateCost): static
     {
         $this->calculateCost = $calculateCost;
 
         return $this;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getCalculateCost(): ?bool
     {
         return $this->calculateCost;
     }
 
-    /**
-     * @param int $id | null
-     *
-     * @return static
-     */
-    public function setId(?int $id = null): self
+    public function setId($id): static
     {
         $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return int | null
-     */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param BrandDto | null
-     *
-     * @return static
-     */
-    public function setBrand(?BrandDto $brand = null): self
+    public function setBrand(?BrandDto $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * @return BrandDto | null
-     */
     public function getBrand(): ?BrandDto
     {
         return $this->brand;
     }
 
-    /**
-     * @return static
-     */
-    public function setBrandId($id): self
+    public function setBrandId($id): static
     {
         $value = !is_null($id)
             ? new BrandDto($id)
@@ -314,9 +255,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->setBrand($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
@@ -326,30 +264,19 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param TransformationRuleSetDto | null
-     *
-     * @return static
-     */
-    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet = null): self
+    public function setTransformationRuleSet(?TransformationRuleSetDto $transformationRuleSet): static
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
-    /**
-     * @return TransformationRuleSetDto | null
-     */
     public function getTransformationRuleSet(): ?TransformationRuleSetDto
     {
         return $this->transformationRuleSet;
     }
 
-    /**
-     * @return static
-     */
-    public function setTransformationRuleSetId($id): self
+    public function setTransformationRuleSetId($id): static
     {
         $value = !is_null($id)
             ? new TransformationRuleSetDto($id)
@@ -358,9 +285,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->setTransformationRuleSet($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getTransformationRuleSetId()
     {
         if ($dto = $this->getTransformationRuleSet()) {
@@ -370,30 +294,19 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param CurrencyDto | null
-     *
-     * @return static
-     */
-    public function setCurrency(?CurrencyDto $currency = null): self
+    public function setCurrency(?CurrencyDto $currency): static
     {
         $this->currency = $currency;
 
         return $this;
     }
 
-    /**
-     * @return CurrencyDto | null
-     */
     public function getCurrency(): ?CurrencyDto
     {
         return $this->currency;
     }
 
-    /**
-     * @return static
-     */
-    public function setCurrencyId($id): self
+    public function setCurrencyId($id): static
     {
         $value = !is_null($id)
             ? new CurrencyDto($id)
@@ -402,9 +315,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->setCurrency($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getCurrencyId()
     {
         if ($dto = $this->getCurrency()) {
@@ -414,30 +324,19 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param ProxyTrunkDto | null
-     *
-     * @return static
-     */
-    public function setProxyTrunk(?ProxyTrunkDto $proxyTrunk = null): self
+    public function setProxyTrunk(?ProxyTrunkDto $proxyTrunk): static
     {
         $this->proxyTrunk = $proxyTrunk;
 
         return $this;
     }
 
-    /**
-     * @return ProxyTrunkDto | null
-     */
     public function getProxyTrunk(): ?ProxyTrunkDto
     {
         return $this->proxyTrunk;
     }
 
-    /**
-     * @return static
-     */
-    public function setProxyTrunkId($id): self
+    public function setProxyTrunkId($id): static
     {
         $value = !is_null($id)
             ? new ProxyTrunkDto($id)
@@ -446,9 +345,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->setProxyTrunk($value);
     }
 
-    /**
-     * @return mixed | null
-     */
     public function getProxyTrunkId()
     {
         if ($dto = $this->getProxyTrunk()) {
@@ -458,101 +354,61 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    /**
-     * @param OutgoingRoutingDto[] | null
-     *
-     * @return static
-     */
-    public function setOutgoingRoutings(?array $outgoingRoutings = null): self
+    public function setOutgoingRoutings(?array $outgoingRoutings): static
     {
         $this->outgoingRoutings = $outgoingRoutings;
 
         return $this;
     }
 
-    /**
-     * @return OutgoingRoutingDto[] | null
-     */
     public function getOutgoingRoutings(): ?array
     {
         return $this->outgoingRoutings;
     }
 
-    /**
-     * @param OutgoingRoutingRelCarrierDto[] | null
-     *
-     * @return static
-     */
-    public function setOutgoingRoutingsRelCarriers(?array $outgoingRoutingsRelCarriers = null): self
+    public function setOutgoingRoutingsRelCarriers(?array $outgoingRoutingsRelCarriers): static
     {
         $this->outgoingRoutingsRelCarriers = $outgoingRoutingsRelCarriers;
 
         return $this;
     }
 
-    /**
-     * @return OutgoingRoutingRelCarrierDto[] | null
-     */
     public function getOutgoingRoutingsRelCarriers(): ?array
     {
         return $this->outgoingRoutingsRelCarriers;
     }
 
-    /**
-     * @param CarrierServerDto[] | null
-     *
-     * @return static
-     */
-    public function setServers(?array $servers = null): self
+    public function setServers(?array $servers): static
     {
         $this->servers = $servers;
 
         return $this;
     }
 
-    /**
-     * @return CarrierServerDto[] | null
-     */
     public function getServers(): ?array
     {
         return $this->servers;
     }
 
-    /**
-     * @param RatingProfileDto[] | null
-     *
-     * @return static
-     */
-    public function setRatingProfiles(?array $ratingProfiles = null): self
+    public function setRatingProfiles(?array $ratingProfiles): static
     {
         $this->ratingProfiles = $ratingProfiles;
 
         return $this;
     }
 
-    /**
-     * @return RatingProfileDto[] | null
-     */
     public function getRatingProfiles(): ?array
     {
         return $this->ratingProfiles;
     }
 
-    /**
-     * @param TpCdrStatDto[] | null
-     *
-     * @return static
-     */
-    public function setTpCdrStats(?array $tpCdrStats = null): self
+    public function setTpCdrStats(?array $tpCdrStats): static
     {
         $this->tpCdrStats = $tpCdrStats;
 
         return $this;
     }
 
-    /**
-     * @return TpCdrStatDto[] | null
-     */
     public function getTpCdrStats(): ?array
     {
         return $this->tpCdrStats;
