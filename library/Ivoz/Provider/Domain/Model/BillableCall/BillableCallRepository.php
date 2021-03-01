@@ -95,4 +95,14 @@ interface BillableCallRepository extends ObjectRepository, Selectable
      * @return \Generator
      */
     public function getGeneratorByConditions(array $conditions, int $batchSize, array $order = null);
+
+    /**
+     * @throws \Doctrine\ORM\NoResultException
+     */
+    public function getMinStartTime(int $fromId = 0): \DateTime;
+
+    /**
+     * @return int[]
+     */
+    public function getIdsInRange(int $fromId, \DateTime $beforeDate, int $limit): array;
 }

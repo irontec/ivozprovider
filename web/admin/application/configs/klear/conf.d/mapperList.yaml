@@ -16,13 +16,17 @@ mappers:
         entity: 'Ivoz\\Provider\\Domain\\Model\\BalanceNotification\\BalanceNotification'
     }
   - &BannedAddresses {
-    modelFile: BannedAddresses,
-    entity: 'Ivoz\\Provider\\Domain\\Model\\BannedAddress\\BannedAddress'
+        modelFile: BannedAddresses,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\BannedAddress\\BannedAddress'
   }
   - &BillableCalls {
         modelFile: BillableCalls,
         entity: 'Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall'
     }
+  - &BillableCallHistorics {
+        modelFile: BillableCallHistorics,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\BillableCallHistoric\\BillableCallHistoric'
+  }
   - &BrandServices {
         modelFile: BrandServices,
         entity: 'Ivoz\\Provider\\Domain\\Model\\BrandService\\BrandService'

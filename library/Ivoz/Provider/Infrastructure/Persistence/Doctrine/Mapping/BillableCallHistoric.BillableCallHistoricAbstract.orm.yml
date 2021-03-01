@@ -1,0 +1,227 @@
+Ivoz\Provider\Domain\Model\BillableCallHistoric\BillableCallHistoricAbstract:
+  type: mappedSuperclass
+  indexes:
+    billableCallHistoric_startTime_idx:
+      columns:
+      - startTime
+    billableCallHistoric_callid_idx:
+      columns:
+      - callid
+    billableCallHistoric_caller_idx:
+      columns:
+      - caller
+    billableCallHistoric_callee_idx:
+      columns:
+      - callee
+    billableCallHistoric_brand_company_idx:
+      columns:
+      - brandId
+      - companyId
+    billableCallHistoric_company_idx:
+      columns:
+      - companyId
+  fields:
+    callid:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+    startTime:
+      type: datetime
+      nullable: true
+      column: startTime
+    duration:
+      type: float
+      nullable: false
+      precision: 10
+      scale: 3
+      options:
+        default: 0.0
+    caller:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    callee:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    cost:
+      type: decimal
+      precision: 20
+      scale: 4
+      nullable: true
+    price:
+      type: decimal
+      precision: 20
+      scale: 4
+      nullable: true
+    priceDetails:
+      type: json_array
+      nullable: true
+      column: priceDetails
+    carrierName:
+      type: string
+      nullable: true
+      length: 200
+      options:
+        fixed: false
+      column: carrierName
+    destinationName:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+      column: destinationName
+    ratingPlanName:
+      type: string
+      nullable: true
+      length: 55
+      options:
+        fixed: false
+      column: ratingPlanName
+    endpointType:
+      type: string
+      nullable: true
+      length: 55
+      options:
+        fixed: false
+        comment: '[enum:RetailAccount|ResidentialDevice|User|Friend|Fax]'
+      column: endpointType
+    endpointId:
+      type: integer
+      nullable: true
+      options:
+        unsigned: true
+        fixed: false
+      column: endpointId
+    endpointName:
+      type: string
+      nullable: true
+      length: 65
+      options:
+        fixed: false
+      column: endpointName
+    direction:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+        comment: '[enum:inbound|outbound]'
+        default: 'outbound'
+  manyToOne:
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    carrier:
+      targetEntity: \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        carrierId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    destination:
+      targetEntity: \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        destinationId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    ratingPlanGroup:
+      targetEntity: \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ratingPlanGroupId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    invoice:
+      targetEntity: \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        invoiceId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    trunksCdr:
+      targetEntity: \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        trunksCdrId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    ddi:
+      targetEntity: \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ddiId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    ddiProvider:
+      targetEntity: \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ddiProviderId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+

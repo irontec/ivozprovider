@@ -1,0 +1,7 @@
+[Unit]
+Description=Run Ivozprovider scheduled historic call rotate task
+
+[Service]
+Type=oneshot
+ExecStart=/opt/irontec/ivozprovider/microservices/scheduler/bin/run-billable-calls-historic
+

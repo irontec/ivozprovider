@@ -8,6 +8,8 @@ services:
 
   BillableCallController:
     class: "BillableCallController"
+  BillableCallHistoricController:
+    class: "BillableCallHistoricController"
   InvoiceSchedulerController:
     class: "InvoiceSchedulerController"
   CallCsvController:

@@ -1,0 +1,135 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\BillableCallHistoric\BillableCallHistoric
+  fields:
+    startTime:
+      title: _('Start time')
+      type: picker
+      defaultValue: 2000-01-01 00:00:00
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    callid:
+      title: _('Call ID')
+      type: text
+      maxLength: 128
+    caller:
+      title: _('Caller')
+      type: text
+      maxLength: 128
+    callee:
+      title: _('Callee')
+      type: text
+      maxLength: 128
+    destinationName:
+      title: _('Destination')
+      type: text
+      maxLength: 100
+    direction:
+      title: _('Direction')
+      type: select
+      source:
+        data: inline
+        values:
+          'inbound':
+            title: _('Inbound')
+          'outbound':
+            title: _('Outbound')
+    company:
+      title: ngettext('Client', 'Clients', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          filterClass: IvozProvider_Klear_Filter_BillableCallsBrand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+    brand:
+      title: ngettext('Brand', 'Brands', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Brand.name: asc
+        'null': _("Unassigned")
+    invoice:
+      title: ngettext('Invoice', 'Invoices', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Invoice\Invoice
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order:
+            Invoice.number: asc
+        'null': _("Unassigned")
+    price:
+      title: _('Price')
+      type: text
+      required: false
+      search:
+        as: numeric
+    duration:
+      title: _('Duration')
+      type: text
+      search:
+        as: numeric
+    cost:
+      title: _('Cost')
+      type: text
+      required: false
+      search:
+        as: numeric
+    carrierName:
+      title: _('Carrier')
+      type: text
+    ratingPlanName:
+      title: _('Rating plan')
+      type: text
+    endpointType:
+      title: _('Endpoint type')
+      type: text
+    endpointId:
+      title: _('Endpoint id')
+      type: text
+    endpointName:
+      title: _('Endpoint name')
+      type: text
+    ddiProvider:
+      title: ngettext('DDI Provider', 'DDI Providers', 1)
+      type: select
+      required: false
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+            - name
+            template: '%name%'
+          order:
+            DdiProvider.description: asc
+        'null': _("Unassigned")
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
