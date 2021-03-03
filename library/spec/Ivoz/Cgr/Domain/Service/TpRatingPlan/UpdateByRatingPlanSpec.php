@@ -160,6 +160,7 @@ class UpdateByRatingPlanSpec extends ObjectBehavior
         $this
             ->ratingPlan
             ->setTpRatingPlan($this->tpRatingPlan)
+            ->willReturn($this->ratingPlan)
             ->shouldBecalled();
 
         $this->execute(

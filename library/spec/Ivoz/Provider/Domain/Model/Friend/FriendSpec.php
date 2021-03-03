@@ -2,13 +2,18 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Friend;
 
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Domain\Domain;
+use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class FriendSpec extends ObjectBehavior
 {
@@ -19,10 +24,28 @@ class FriendSpec extends ObjectBehavior
      */
     protected $dto;
 
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
+
     function let(
         CompanyInterface $company,
         DomainInterface $domain
     ) {
+        $domainDto = new DomainDto();
+        $domain = $this->getInstance(
+            Domain::class
+        );
+
+        $companyDto = new CompanyDto();
+        $company = $this->getterProphecy(
+            $this->getTestDouble(Company::class),
+            [
+                'getId' => 1,
+                'getDomain' => $domain,
+            ]
+        );
 
         $this->dto = $dto = new FriendDto();
         $dto->setName('Name')
@@ -36,26 +59,16 @@ class FriendSpec extends ObjectBehavior
             ->setDirectMediaMethod('invite')
             ->setCalleridUpdateHeader('rpid')
             ->setUpdateCallerid('yes')
-            ->setDirectConnectivity('yes');
+            ->setDirectConnectivity('yes')
+            ->setCompany($companyDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'company' => $company->getWrappedObject()
-            ]
-        );
-
-        $company
-            ->getId()
-            ->willReturn(1);
-
-        $company
-            ->getDomain()
-            ->willReturn($domain);
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$companyDto, $company->reveal()],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -71,19 +84,19 @@ class FriendSpec extends ObjectBehavior
 
         $this
             ->shouldThrow('\Exception')
-            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
+            ->duringUpdateFromDto($dto, $this->transformer);
 
         $dto->setName('$dollar');
 
         $this
             ->shouldThrow('\Exception')
-            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
+            ->duringUpdateFromDto($dto, new $this->transformer);
 
         $dto->setName('#something');
 
         $this
             ->shouldThrow('\Exception')
-            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
+            ->duringUpdateFromDto($dto, $this->transformer);
     }
 
     function it_accepts_valid_names()
@@ -93,7 +106,7 @@ class FriendSpec extends ObjectBehavior
 
         $this
             ->shouldNotThrow('\Exception')
-            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
+            ->duringUpdateFromDto($dto, $this->transformer);
     }
 
     function it_throws_exception_on_invalid_ip()
@@ -128,10 +141,6 @@ class FriendSpec extends ObjectBehavior
 
     function it_throws_an_exception_on_non_numeric_port()
     {
-        $this
-            ->shouldThrow('\Exception')
-            ->during('setPort', ['a3']);
-
         $this
             ->shouldThrow('\Exception')
             ->during('setPort', ['65536']);

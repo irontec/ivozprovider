@@ -2,12 +2,11 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\WebPortal;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto;
-use Ivoz\Provider\Domain\Model\WebPortal\Logo;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\DtoToEntityFakeTransformer;
 use spec\HelperTrait;
 
@@ -23,24 +22,23 @@ class WebPortalSpec extends ObjectBehavior
     function let(
         BrandInterface $brand
     ) {
+        $brandDto = new BrandDto();
         $this->dto = $dto = new WebPortalDto();
 
         $dto->setUrl('https://something.net')
             ->setUrlType('user')
             ->setLogoFileSize(50)
             ->setLogoMimeType('')
-            ->setLogoBaseName('logo.png');
+            ->setLogoBaseName('logo.png')
+            ->setBrand($brandDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'brand' => $brand->getWrappedObject()
-            ]
-        );
+        $transformer = new DtoToEntityFakeTransformer([
+            [$brandDto, $brand->getWrappedObject()]
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $transformer]
         );
     }
 

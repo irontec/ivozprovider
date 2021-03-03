@@ -2,15 +2,24 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Company;
 
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Country\Country;
+use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Language\Language;
+use Ivoz\Provider\Domain\Model\Language\LanguageDto;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\Timezone\Timezone;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class CompanySpec extends ObjectBehavior
 {
@@ -22,18 +31,30 @@ class CompanySpec extends ObjectBehavior
     protected $language;
     protected $country;
 
-    function let(
-        BrandInterface $brand,
-        TimezoneInterface $timezone,
-        LanguageInterface $language,
-        CountryInterface $country
-    ) {
-        $this->dto = $dto = new CompanyDto();
-        $this->brand = $brand;
-        $this->timezone = $timezone;
-        $this->language = $language;
-        $this->country = $country;
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
 
+    function let()
+    {
+        $this->language = $this->getInstance(Language::class);
+        $this->timezone = $this->getInstance(Timezone::class);
+
+        $brandDto = new BrandDto();
+        $this->brand = $this->getterProphecy(
+            $this->getTestDouble(Brand::class),
+            [
+                'getId' => 1,
+                'getDefaultTimezone' => $this->timezone,
+                'getLanguage' => $this->language,
+            ]
+        );
+
+        $countryDto = new CountryDto();
+        $this->country = $this->getInstance(Country::class);
+
+        $this->dto = $dto = new CompanyDto();
         $dto
             ->setType('vpbx')
             ->setName('')
@@ -46,31 +67,18 @@ class CompanySpec extends ObjectBehavior
             ->setProvince('')
             ->setCountryName('')
             ->setCountryId(1)
-            ->setDomainUsers('something');
+            ->setDomainUsers('something')
+            ->setBrand($brandDto)
+            ->setCountry($countryDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'brand' => $brand->getWrappedObject(),
-                'country' => $country->getWrappedObject(),
-            ]
-        );
-
-        $brand
-            ->getId()
-            ->willReturn(1);
-
-        $brand
-            ->getDefaultTimezone()
-            ->willReturn($timezone);
-
-        $brand
-            ->getLanguage()
-            ->willReturn($language);
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$brandDto, $this->brand->reveal()],
+            [$countryDto, $this->country],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -104,7 +112,7 @@ class CompanySpec extends ObjectBehavior
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this
@@ -120,7 +128,7 @@ class CompanySpec extends ObjectBehavior
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this
@@ -136,7 +144,7 @@ class CompanySpec extends ObjectBehavior
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this
@@ -154,7 +162,7 @@ class CompanySpec extends ObjectBehavior
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this
@@ -172,7 +180,7 @@ class CompanySpec extends ObjectBehavior
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this

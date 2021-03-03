@@ -167,6 +167,7 @@ class CreatedByDestinationSpec extends ObjectBehavior
             ->setTpDestination(
                 $this->tpDestinationDto
             )
+            ->willReturn($this->destinationDto)
             ->shouldBeCalled();
 
         $this

@@ -2,13 +2,16 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use spec\DtoToEntityFakeTransformer;
 use spec\HelperTrait;
 
 class ExternalCallFilterSpec extends ObjectBehavior
@@ -16,27 +19,32 @@ class ExternalCallFilterSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var ExtensionDto
+     * @var ExternalCallFilterDto
      */
     protected $dto;
 
-    function let(
-        CompanyInterface $company
-    ) {
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    protected $transformer;
+
+    function let()
+    {
+        $companyDto = new CompanyDto();
+        $company = $this->getInstance(Company::class);
 
         $this->dto = $dto = new ExternalCallFilterDto();
-        $dto->setName('name');
+        $dto
+            ->setName('name')
+            ->setCompany($companyDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'company' => $company->getWrappedObject()
-            ]
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$companyDto, $company]
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -45,22 +53,29 @@ class ExternalCallFilterSpec extends ObjectBehavior
         $this->shouldHaveType(ExternalCallFilter::class);
     }
 
-    function it_resets_holiday_targets_but_current_value(
-        UserInterface $holidayVoiceMailUser,
-        ExtensionInterface $holidayExtension
-    ) {
+    function it_resets_holiday_targets_but_current_value()
+    {
+        $holidayVoiceMailUserDto = new UserDto();
+        $holidayVoiceMailUser = $this->getInstance(
+            User::class
+        );
+
+        $holidayExtensionDto = new ExtensionDto();
+        $holidayExtension = $this->getInstance(
+            Extension::class
+        );
+
         $this
             ->dto
-            ->setHolidayTargetType('number');
+            ->setHolidayTargetType('number')
+            ->setHolidayNumberValue('1234')
+            ->setHolidayExtension($holidayExtensionDto)
+            ->setHolidayVoiceMailUser($holidayVoiceMailUserDto);
 
-        $this->hydrate(
-            $this->dto,
-            [
-                'holidayNumberValue'   => '1234',
-                'holidayExtension'     => $holidayExtension->getWrappedObject(),
-                'holidayVoiceMailUser' => $holidayVoiceMailUser->getWrappedObject()
-            ]
-        );
+        $this->transformer->appendFixedTransforms([
+            [$holidayExtensionDto, $holidayExtension],
+            [$holidayVoiceMailUserDto, $holidayVoiceMailUser],
+        ]);
 
         $this
             ->getHolidayExtension()
@@ -71,23 +86,29 @@ class ExternalCallFilterSpec extends ObjectBehavior
             ->shouldBe(null);
     }
 
+    function it_resets_outOfSchedule_targets_but_current_value()
+    {
+        $outOfScheduleVoiceMailUserDto = new UserDto();
+        $outOfScheduleVoiceMailUser = $this->getInstance(
+            User::class
+        );
 
-    function it_resets_outOfSchedule_targets_but_current_value(
-        UserInterface $outOfScheduleVoiceMailUser,
-        ExtensionInterface $outOfScheduleExtension
-    ) {
+        $outOfScheduleExtensionDto = new ExtensionDto();
+        $outOfScheduleExtension = $this->getInstance(
+            Extension::class
+        );
+
         $this
             ->dto
-            ->setHolidayTargetType('number');
+            ->setHolidayTargetType('number')
+            ->setHolidayNumberValue('1234')
+            ->setOutOfScheduleExtension($outOfScheduleExtensionDto)
+            ->setOutOfScheduleVoiceMailUser($outOfScheduleVoiceMailUserDto);
 
-        $this->hydrate(
-            $this->dto,
-            [
-                'outOfScheduleNumberValue'   => '1234',
-                'outOfScheduleExtension'     => $outOfScheduleExtension->getWrappedObject(),
-                'outOfScheduleVoiceMailUser' => $outOfScheduleVoiceMailUser->getWrappedObject()
-            ]
-        );
+        $this->transformer->appendFixedTransforms([
+            [$outOfScheduleExtensionDto, $outOfScheduleExtension],
+            [$outOfScheduleVoiceMailUserDto, $outOfScheduleVoiceMailUser],
+        ]);
 
         $this
             ->getOutOfScheduleExtension()

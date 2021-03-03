@@ -2,7 +2,6 @@
 
 namespace spec\Ivoz\Cgr\Domain\Service\TpLcrRule;
 
-use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto;
 use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleDto;
 use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface;
 use Ivoz\Cgr\Domain\Service\TpLcrRule\CreatedByOutgoingRouting;
@@ -136,6 +135,7 @@ class CreatedByOutgoingRoutingSpec extends ObjectBehavior
         $this
             ->outgoingRouting
             ->setTpLcrRule($this->tpLcrRule)
+            ->willReturn($this->outgoingRouting)
             ->shouldBeCalled();
 
         $this

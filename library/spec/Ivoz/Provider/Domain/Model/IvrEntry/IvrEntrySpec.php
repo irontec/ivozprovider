@@ -3,15 +3,23 @@
 namespace spec\Ivoz\Provider\Domain\Model\IvrEntry;
 
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute;
+use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
+use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry;
 use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryDto;
+use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class IvrEntrySpec extends ObjectBehavior
 {
@@ -22,25 +30,29 @@ class IvrEntrySpec extends ObjectBehavior
      */
     protected $dto;
 
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
+
     function let(
         IvrInterface $ivr
     ) {
+        $ivrDto = new IvrDto();
         $this->dto = $dto = new IvrEntryDto();
         $dto
             ->setEntry('Entry')
             ->setRouteType('number')
-            ->setNumberValue('946002020');
+            ->setNumberValue('946002020')
+            ->setIvr($ivrDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'ivr' => $ivr->getWrappedObject(),
-            ]
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$ivrDto, $ivr->getWrappedObject()]
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -49,28 +61,42 @@ class IvrEntrySpec extends ObjectBehavior
         $this->shouldHaveType(IvrEntry::class);
     }
 
-    function it_resets_targets_but_current(
-        ExtensionInterface $extension,
-        UserInterface $voiceMailUser,
-        ConditionalRouteInterface $conditionalRoute
-    ) {
+    function it_resets_targets_but_current()
+    {
+        $extension = $this->getInstance(
+            Extension::class
+        );
+        $extensionDto = new ExtensionDto();
+
+        $voiceMailUser = $this->getInstance(
+            User::class
+        );
+        $voiceMailUserDto = new UserDto();
+
+        $conditionalRoute = $this->getInstance(
+            ConditionalRoute::class
+        );
+        $conditionalRouteDto = new ConditionalRouteDto();
+
         $dto = clone $this->dto;
         $dto
             ->setRouteType('number')
-            ->setNumberValue('946002020');
+            ->setNumberValue('946002020')
+            ->setExtension($extensionDto)
+            ->setVoiceMailUser($voiceMailUserDto)
+            ->setConditionalRoute($conditionalRouteDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'extension'        => $extension->getWrappedObject(),
-                'voiceMailUser'    => $voiceMailUser->getWrappedObject(),
-                'conditionalRoute' => $conditionalRoute->getWrappedObject()
-            ]
-        );
+        $this
+            ->transformer
+            ->appendFixedTransforms([
+                [$extensionDto, $extension],
+                [$voiceMailUserDto, $voiceMailUser],
+                [$conditionalRouteDto, $conditionalRoute],
+            ]);
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this

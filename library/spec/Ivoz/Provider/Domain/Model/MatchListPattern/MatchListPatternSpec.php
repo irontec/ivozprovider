@@ -2,39 +2,40 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\MatchListPattern;
 
+use Ivoz\Provider\Domain\Model\MatchList\MatchListDto;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern;
 use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class MatchListPatternSpec extends ObjectBehavior
 {
     use HelperTrait;
 
     /**
-     * @var ExtensionDto
+     * @var MatchListPatternDto
      */
     protected $dto;
 
     function let(
         MatchListInterface $matchList
     ) {
+        $matchListDto = new MatchListDto();
         $this->dto = $dto = new MatchListPatternDto();
         $dto
-            ->setType('number');
+            ->setType('number')
+            ->setMatchList($matchListDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'matchList' => $matchList->getWrappedObject(),
-            ]
-        );
+        $transformer = new DtoToEntityFakeTransformer([
+            [$matchListDto, $matchList->getWrappedObject()]
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $transformer]
         );
     }
 

@@ -2,41 +2,49 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\OutgoingDdiRule;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class OutgoingDdiRuleSpec extends ObjectBehavior
 {
     use HelperTrait;
 
     /**
-     * @var ExtensionDto
+     * @var OutgoingDdiRuleDto
      */
     protected $dto;
+
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
 
     function let(
         CompanyInterface $company
     ) {
         $this->dto = $dto = new OutgoingDdiRuleDto();
 
-        $dto->setName('Name');
-        $dto->setDefaultAction('force');
+        $companyDto = new CompanyDto();
+        $dto
+            ->setName('Name')
+            ->setDefaultAction('force')
+            ->setCompany($companyDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'company' => $company->getWrappedObject()
-            ]
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$companyDto, $company->getWrappedObject()],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -48,12 +56,14 @@ class OutgoingDdiRuleSpec extends ObjectBehavior
     function it_keeps_value_when_default_action_is_force(
         DdiInterface $ddi
     ) {
-        $ddi = $ddi->getWrappedObject();
+        $ddiDto = new DdiDto();
+        $this
+            ->dto
+            ->setForcedDdi($ddiDto);
 
-        $this->hydrate(
-            $this->dto,
-            ['forcedDdi' => $ddi]
-        );
+        $this->transformer->appendFixedTransforms([
+            [$ddiDto, $ddi->getWrappedObject()]
+        ]);
 
         $this
             ->getForcedDdi()
@@ -63,16 +73,16 @@ class OutgoingDdiRuleSpec extends ObjectBehavior
     function it_resets_forced_ddi_when_default_action_is_keep(
         DdiInterface $ddi
     ) {
+        $ddiDto = new DdiDto();
+
         $this
             ->dto
-            ->setDefaultAction('keep');
+            ->setDefaultAction('keep')
+            ->setForcedDdi($ddiDto);
 
-        $ddi = $ddi->getWrappedObject();
-
-        $this->hydrate(
-            $this->dto,
-            ['forcedDdi' => $ddi]
-        );
+        $this->transformer->appendFixedTransforms([
+            [$ddiDto, $ddi->getWrappedObject()]
+        ]);
 
         $this
             ->getForcedDdi()

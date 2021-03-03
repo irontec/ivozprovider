@@ -2,13 +2,14 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Terminal;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class TerminalSpec extends ObjectBehavior
 {
@@ -18,6 +19,8 @@ class TerminalSpec extends ObjectBehavior
     protected $company;
     protected $domain;
 
+    private $transformer;
+
     function let(
         CompanyInterface $company,
         DomainInterface $domain
@@ -26,32 +29,31 @@ class TerminalSpec extends ObjectBehavior
         $this->company = $company;
         $this->domain = $domain;
 
+        $companyDto = new CompanyDto();
+
         $dto
             ->setName('Name')
             ->setDisallow('Disallow')
             ->setAllowAudio('allowAudio')
             ->setDirectMediaMethod('reinvite')
-            ->setPassword('HZhN5z*j48');
-
-        $this->hydrate(
-            $dto,
-            [
-                'company' => $company->getWrappedObject()
-            ]
-        );
+            ->setPassword('HZhN5z*j48')
+            ->setCompany($companyDto);
 
         $company
             ->getId()
             ->willReturn(1);
 
-
         $company
             ->getDomain()
             ->willReturn($domain);
 
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$companyDto, $company->getWrappedObject()]
+        ]);
+
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -95,17 +97,11 @@ class TerminalSpec extends ObjectBehavior
     function it_sets_domain_by_company()
     {
         $dto = clone $this->dto;
-        $this->hydrate(
-            $dto,
-            [
-                'domain' => null,
-                'company' => $this->company->getWrappedObject()
-            ]
-        );
+        $dto->setDomain(null);
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this

@@ -113,7 +113,7 @@ class SendFaxFileSpec extends ObjectBehavior
         $this
             ->ariConnector
             ->sendFaxfileRequest(Argument::any())
-            ->willThrow(new \Exception())
+            ->willThrow(new \Exception(''))
             ->shouldBeCalled();
 
         $this
@@ -123,6 +123,7 @@ class SendFaxFileSpec extends ObjectBehavior
 
         $faxesInOutDto
             ->setStatus('error')
+            ->willReturn($faxesInOutDto)
             ->shouldBeCalled();
 
         $this

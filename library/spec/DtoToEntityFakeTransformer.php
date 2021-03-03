@@ -5,9 +5,23 @@ namespace spec;
 use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
-class DtoToEntityFakeTransformer implements \Ivoz\Core\Application\ForeignKeyTransformerInterface
+class DtoToEntityFakeTransformer implements ForeignKeyTransformerInterface
 {
+    private $fixedTransforms;
+    public function __construct(array $fixedTransforms = [])
+    {
+        $this->fixedTransforms = $fixedTransforms;
+    }
+
+    public function appendFixedTransforms(array $fixedTransforms)
+    {
+        foreach ($fixedTransforms as $fixedTransform) {
+            $this->fixedTransforms[] = $fixedTransform;
+        }
+    }
+
     /**
      * @param string $entityName
      * @param DataTransferObjectInterface|mixed $element
@@ -15,6 +29,12 @@ class DtoToEntityFakeTransformer implements \Ivoz\Core\Application\ForeignKeyTra
      */
     public function transform($element, $persist = true)
     {
+        foreach ($this->fixedTransforms as $fixedTransformation) {
+            if ($element === $fixedTransformation[0]) {
+                return $fixedTransformation[1];
+            }
+        }
+
         return $element;
     }
 

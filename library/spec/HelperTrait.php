@@ -161,6 +161,8 @@ trait HelperTrait
                 $prophecy->shouldBeCalled();
             }
         }
+
+        return $double;
     }
 
     protected function setterProphecy($double, array $values, $shouldBeCalled = true)

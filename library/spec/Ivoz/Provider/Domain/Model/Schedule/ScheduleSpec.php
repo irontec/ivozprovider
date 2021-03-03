@@ -2,11 +2,13 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Schedule;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Schedule\Schedule;
 use Ivoz\Provider\Domain\Model\Schedule\ScheduleDto;
 use PhpSpec\ObjectBehavior;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class ScheduleSpec extends ObjectBehavior
 {
@@ -36,6 +38,8 @@ class ScheduleSpec extends ObjectBehavior
             $this->utc
         );
 
+        $companyDto = new CompanyDto();
+
         $dto
             ->setName('testSchedule')
             ->setTimeIn($timeIn)
@@ -46,19 +50,20 @@ class ScheduleSpec extends ObjectBehavior
             ->setThursday(true)
             ->setFriday(true)
             ->setSaturday(true)
-            ->setSunday(true);
+            ->setSunday(true)
+            ->setCompany($companyDto);
 
-        $company = $this->getTestDouble(CompanyInterface::class);
-        $this->hydrate(
-            $dto,
-            [
-                'company' => $company->reveal(),
-            ]
+        $company = $this->getTestDouble(
+            CompanyInterface::class
         );
+
+        $transformer = new DtoToEntityFakeTransformer([
+            [$companyDto, $company->reveal()]
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $transformer]
         );
     }
 

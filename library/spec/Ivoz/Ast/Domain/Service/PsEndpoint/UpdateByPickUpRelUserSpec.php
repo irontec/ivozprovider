@@ -105,6 +105,7 @@ class UpdateByPickUpRelUserSpec extends ObjectBehavior
         $this
             ->psEndpointDto
             ->setNamedPickupGroup('1,2,3')
+            ->willReturn($this->psEndpointDto)
             ->shouldBeCalled();
 
         $this->execute($this->pickUpRelUser);

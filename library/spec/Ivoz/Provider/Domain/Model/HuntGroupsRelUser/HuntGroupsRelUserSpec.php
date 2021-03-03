@@ -2,14 +2,15 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\HuntGroupsRelUser;
 
-use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
 use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser;
 use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserDto;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class HuntGroupsRelUserSpec extends ObjectBehavior
 {
@@ -20,10 +21,16 @@ class HuntGroupsRelUserSpec extends ObjectBehavior
      */
     private $dto;
 
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
+
     public function let()
     {
         $this->dto = new HuntGroupsRelUserDto();
 
+        $huntGroupDto = new HuntGroupDto();
         $huntGroup = $this->getTestDouble(
             HuntGroupInterface::class
         );
@@ -35,6 +42,7 @@ class HuntGroupsRelUserSpec extends ObjectBehavior
             false
         );
 
+        $userDto = new UserDto();
         $user = $this->getTestDouble(
             UserInterface::class
         );
@@ -42,20 +50,19 @@ class HuntGroupsRelUserSpec extends ObjectBehavior
         $this
             ->dto
             ->setPriority(1)
-            ->setTimeoutTime(1);
+            ->setTimeoutTime(1)
+            ->setRouteType('user')
+            ->setHuntGroup($huntGroupDto)
+            ->setUser($userDto);
 
-        $this->hydrate(
-            $this->dto,
-            [
-                'huntGroup' => $huntGroup->reveal(),
-                'user' => $user->reveal(),
-                'routeType' => 'user',
-            ]
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$huntGroupDto, $huntGroup->reveal()],
+            [$userDto, $user->reveal()],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$this->dto, new \spec\DtoToEntityFakeTransformer()]
+            [$this->dto, $this->transformer]
         );
     }
 
@@ -71,7 +78,7 @@ class HuntGroupsRelUserSpec extends ObjectBehavior
 
         $this
             ->shouldThrow('\Exception')
-            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
+            ->duringUpdateFromDto($dto, $this->transformer);
     }
 
     function it_throws_exception_on_empty_priority()
@@ -81,56 +88,65 @@ class HuntGroupsRelUserSpec extends ObjectBehavior
 
         $this
             ->shouldThrow('\Exception')
-            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
+            ->duringUpdateFromDto($dto, $this->transformer);
     }
 
     function it_allows_empty_timeout_and_priority_with_ringall_strategy()
     {
+        $huntGroupDto = new HuntGroupDto();
+        /** @var HuntGroupInterface $huntGroup */
+        $huntGroup = $this->getterProphecy(
+            $this->getTestDouble(
+                HuntGroupInterface::class
+            ),
+            [
+                'getStrategy' => HuntGroupInterface::STRATEGY_RINGALL,
+            ],
+            true
+        );
+
         $dto = clone $this->dto;
         $dto
             ->setTimeoutTime(null)
-            ->setPriority(null);
+            ->setPriority(null)
+            ->setHuntGroup($huntGroupDto);
 
-        /** @var HuntGroupInterface $huntGroup */
-        $huntGroup = $this->getTestDouble(
-            HuntGroupInterface::class
-        );
-
-        $huntGroup
-            ->getStrategy()
-            ->willReturn(HuntGroupInterface::STRATEGY_RINGALL)
-            ->shouldBeCalled();
-
-        $this->hydrate(
-            $dto,
-            ['huntGroup' => $huntGroup->reveal()]
-        );
+        $this
+            ->transformer
+            ->appendFixedTransforms([
+                [$huntGroupDto, $huntGroup->reveal()]
+            ]);
 
         $this
             ->shouldNotThrow('\Exception')
-            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
+            ->duringUpdateFromDto($dto, $this->transformer);
     }
 
     function it_allows_empty_priority_with_random_strategy()
     {
         $dto = clone $this->dto;
-        $dto->setPriority(null);
 
+        $huntGroupDto = new HuntGroupDto();
         /** @var HuntGroupInterface $huntGroup */
         $huntGroup = $this->getTestDouble(
             HuntGroupInterface::class
         );
         $huntGroup
             ->getStrategy()
-            ->willReturn(HuntGroupInterface::STRATEGY_RANDOM);
+            ->willReturn(
+                HuntGroupInterface::STRATEGY_RANDOM
+            );
 
-        $this->hydrate(
-            $dto,
-            ['huntGroup' => $huntGroup->reveal()]
-        );
+        $dto
+            ->setPriority(null)
+            ->setHuntGroup($huntGroupDto);
+
+        $this->transformer->appendFixedTransforms([
+            [$huntGroupDto, $huntGroup]
+        ]);
 
         $this
             ->shouldNotThrow('\Exception')
-            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
+            ->duringUpdateFromDto($dto, $this->transformer);
     }
 }

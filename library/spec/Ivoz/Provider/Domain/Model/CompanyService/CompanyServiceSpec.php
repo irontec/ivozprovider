@@ -2,37 +2,53 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\CompanyService;
 
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
+use Ivoz\Provider\Domain\Model\Service\Service;
+use Ivoz\Provider\Domain\Model\Service\ServiceDto;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class CompanyServiceSpec extends ObjectBehavior
 {
     use HelperTrait;
     protected $dto;
 
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
+
     function let(
         ServiceInterface $service,
         CompanyInterface $company
     ) {
-        $this->dto = $dto = new CompanyServiceDto();
-        $dto->setCode('123');
+        $serviceDto = new ServiceDto();
+        $service = $this->getInstance(Service::class);
 
-        $this->hydrate(
-            $dto,
-            [
-                'service' => $service->getWrappedObject(),
-                'company' => $company->getWrappedObject(),
-            ]
-        );
+        $companyDto = new CompanyDto();
+        $company = $this->getInstance(Company::class);
+
+        $this->dto = $dto = new CompanyServiceDto();
+        $dto
+            ->setCode('123')
+            ->setService($serviceDto)
+            ->setCompany($companyDto);
+
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$serviceDto, $service],
+            [$companyDto, $company],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 

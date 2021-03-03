@@ -3,14 +3,12 @@
 namespace spec\Ivoz\Provider\Domain\Service\CompanyService;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\BrandService\BrandService;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
-use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Service\Service;
 use Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices;
@@ -134,7 +132,7 @@ class PropagateBrandServicesSpec extends ObjectBehavior
             BrandService::class,
             [
                 'service' => $service,
-                'code' => 2
+                'code' => '2'
             ]
         );
 

@@ -3,49 +3,65 @@
 namespace spec\Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern;
 
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\MatchList\MatchListDto;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
-use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule;
+use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternDto;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class OutgoingDdiRulesPatternSpec extends ObjectBehavior
 {
     use HelperTrait;
 
     /**
-     * @var ExtensionDto
+     * @var OutgoingDdiRulesPatternDto
      */
     protected $dto;
+
+    /**
+     * @var OutgoingDdiRuleInterface
+     */
+    protected $outgoingDdiRule;
+
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
 
     function let(
         MatchListInterface $matchList,
         OutgoingDdiRuleInterface $outgoingDdiRule
     ) {
+        $this->outgoingDdiRule = $outgoingDdiRule;
+
+        $matchListDto = new MatchListDto();
+        $outgoingDdiRuleDto = new OutgoingDdiRuleDto();
         $this->dto = $dto = new OutgoingDdiRulesPatternDto();
 
-        $dto->setType(
-            OutgoingDdiRulesPatternInterface::TYPE_DESTINATION
-        );
-        $dto->setAction('force');
-        $dto->setPriority(1);
+        $dto
+            ->setType(
+                OutgoingDdiRulesPatternInterface::TYPE_DESTINATION
+            )
+            ->setAction('force')
+            ->setPriority(1)
+            ->setMatchList($matchListDto)
+            ->setOutgoingDdiRule($outgoingDdiRuleDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'matchList' => $matchList->getWrappedObject(),
-                'outgoingDdiRule' => $outgoingDdiRule->getWrappedObject(),
-            ]
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$matchListDto, $matchList->getWrappedObject()],
+            [$outgoingDdiRuleDto, $outgoingDdiRule->getWrappedObject()],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -58,11 +74,17 @@ class OutgoingDdiRulesPatternSpec extends ObjectBehavior
         DdiInterface $ddi
     ) {
         $ddi = $ddi->getWrappedObject();
+        $ddiDto = new DdiDto();
 
-        $this->hydrate(
-            $this->dto,
-            ['forcedDdi' => $ddi]
-        );
+        $this
+            ->dto
+            ->setForcedDdi($ddiDto);
+
+        $this
+            ->transformer
+            ->appendFixedTransforms([
+                [$ddiDto, $ddi]
+            ]);
 
         $this
             ->getForcedDdi()
@@ -86,7 +108,7 @@ class OutgoingDdiRulesPatternSpec extends ObjectBehavior
 
             $response = $this->updateFromDto(
                 $this->dto,
-                new \spec\DtoToEntityFakeTransformer()
+                $this->transformer
             );
 
             $this
@@ -120,31 +142,21 @@ class OutgoingDdiRulesPatternSpec extends ObjectBehavior
 
     function it_return_company_outgoing_ddi_when_no_forced_ddi(
         DdiInterface $ddi,
-        OutgoingDdiRuleInterface $outgoingDdiRule,
         CompanyInterface $company,
         DdiInterface $companyOutgoingDdi
     ) {
-        $this
-            ->dto
-            ->setAction('keep');
-
-        $outgoingDdiRule
-            ->getCompany()
-            ->wilLReturn($company);
-
-        $outgoingDdiRule
-            ->getId()
-            ->willReturn(1);
-
-        $company
-            ->getOutgoingDdi()
-            ->willReturn($companyOutgoingDdi);
-
-        $this->hydrate(
-            $this->dto,
+        $this->getterProphecy(
+            $this->outgoingDdiRule,
             [
-                'forcedDdi' => $ddi->getWrappedObject(),
-                'outgoingDdiRule' => $outgoingDdiRule->getWrappedObject()
+                'getId' => 1,
+                'getCompany' => $company->getWrappedObject(),
+            ]
+        );
+
+        $this->getterProphecy(
+            $company,
+            [
+                'getOutgoingDdi' => $companyOutgoingDdi->getWrappedObject(),
             ]
         );
 

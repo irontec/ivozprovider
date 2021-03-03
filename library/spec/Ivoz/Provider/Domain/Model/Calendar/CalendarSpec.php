@@ -2,15 +2,18 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Calendar;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\Calendar\Calendar;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarDto;
-use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate;
+use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\DtoToEntityFakeTransformer;
 use spec\HelperTrait;
-use Doctrine\Common\Collections\ArrayCollection;
 
 class CalendarSpec extends ObjectBehavior
 {
@@ -22,52 +25,66 @@ class CalendarSpec extends ObjectBehavior
     protected $holidayDate;
     protected $holidayDate2;
 
-    function let(
-        CompanyInterface $company,
-        HolidayDateInterface $holidayDate,
-        HolidayDateInterface $holidayDate2
-    ) {
-        $this->dto = $dto = new CalendarDto();
-        $dto->setName('Calendar');
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
 
-        $this->company = $company;
-        $this->holidayDate = $holidayDate;
+    function let()
+    {
+        $companyDto = new CompanyDto();
+        $this->company = $this->getInstance(Company::class);
 
-        $this
-            ->holidayDate
-            ->getId()
-            ->willReturn(1);
-
-        $this->holidayDate
-            ->setCalendar(Argument::type(Calendar::class))
-            ->willReturn();
-
-
-        $this->holidayDate2 = $holidayDate2;
-        $this->holidayDate2
-            ->getId()
-            ->willReturn(2);
-
-        $this->holidayDate2
-            ->setCalendar(Argument::type(Calendar::class))
-            ->willReturn();
-
-        $holidayDates = [
-            $holidayDate->getWrappedObject(),
-            $holidayDate2->getWrappedObject()
-        ];
-
-        $this->hydrate(
-            $dto,
+        $holidayDateDto = new HolidayDateDto();
+        $this->holidayDate = $this->getterProphecy(
+            $this->getTestDouble(HolidayDate::class),
             [
-                'company' => $company->getWrappedObject(),
-                'holidayDates' => $holidayDates
+                'getId' => 1
             ]
         );
+        $this->fluentSetterProphecy(
+            $this->holidayDate,
+            [
+                'setCalendar' => Argument::type(Calendar::class),
+            ],
+            false
+        );
+
+        $holidayDate2Dto = new HolidayDateDto();
+        $this->holidayDate2 = $this->getterProphecy(
+            $this->getTestDouble(HolidayDate::class),
+            [
+                'getId' => 2
+            ]
+        );
+        $this->fluentSetterProphecy(
+            $this->holidayDate2,
+            [
+                'setCalendar' => Argument::type(Calendar::class),
+            ],
+            false
+        );
+
+        $holidayDates = [
+            $holidayDateDto,
+            $holidayDate2Dto
+        ];
+
+        $this->dto = $dto = new CalendarDto();
+        $dto
+            ->setName('Calendar')
+            ->setCompany($companyDto)
+            ->setHolidayDates($holidayDates);
+
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$companyDto, $this->company],
+            [$holidayDateDto, $this->holidayDate->reveal()],
+            [$holidayDate2Dto, $this->holidayDate2->reveal()],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -90,7 +107,7 @@ class CalendarSpec extends ObjectBehavior
 
         $holidayDates
             ->matching(
-                Argument::type(\Doctrine\Common\Collections\Criteria::class)
+                Argument::type(Criteria::class)
             )
             ->willReturn(new ArrayCollection([true]));
 
@@ -105,7 +122,7 @@ class CalendarSpec extends ObjectBehavior
 
         $holidayDates
             ->matching(
-                Argument::type(\Doctrine\Common\Collections\Criteria::class)
+                Argument::type(Criteria::class)
             )
             ->willReturn(new ArrayCollection([]));
 

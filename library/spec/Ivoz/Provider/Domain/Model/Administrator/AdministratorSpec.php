@@ -4,12 +4,16 @@ namespace spec\Ivoz\Provider\Domain\Model\Administrator;
 
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorDto;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class AdministratorSpec extends ObjectBehavior
 {
@@ -31,39 +35,50 @@ class AdministratorSpec extends ObjectBehavior
     protected $timezone;
 
     /**
-     * @var CarrierServerDto
+     * @var AdministratorDto
      */
     protected $dto;
+
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
 
     function let(
         BrandInterface $brand,
         CompanyInterface $company,
         TimezoneInterface $timezone
     ) {
+        $brandDto = new BrandDto();
         $this->brand = $brand;
+
+        $companyDto = new CompanyDto();
         $this->company = $company;
+
+        $timezoneDto = new TimezoneDto();
         $this->timezone = $timezone;
 
         $this->dto = $dto = new AdministratorDto();
-        $dto->setUsername("admin");
-        $dto->setPass('changeme');
-        $dto->setEmail("admin@example.com");
-        $dto->setActive(true);
-        $dto->setName("admin");
-        $dto->setLastname("ivozprovider");
+        $dto
+            ->setUsername("admin")
+            ->setPass('changeme')
+            ->setEmail("admin@example.com")
+            ->setActive(true)
+            ->setName("admin")
+            ->setLastname("ivozprovider")
+            ->setBrand($brandDto)
+            ->setCompany($companyDto)
+            ->setTimezone($timezoneDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'brand' => $brand->getWrappedObject(),
-                'company' => $company->getWrappedObject(),
-                'timezone' => $timezone->getWrappedObject(),
-            ]
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$brandDto, $brand->getWrappedObject()],
+            [$companyDto, $company->getWrappedObject()],
+            [$timezoneDto, $timezone->getWrappedObject()],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 

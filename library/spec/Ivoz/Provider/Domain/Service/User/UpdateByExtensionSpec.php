@@ -90,7 +90,8 @@ class UpdateByExtensionSpec extends ObjectBehavior
 
         $prevUserDto
             ->setExtension(null)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+            ->willReturn($prevUserDto);
 
         $this->entityTools
             ->persistDto(
@@ -191,7 +192,8 @@ class UpdateByExtensionSpec extends ObjectBehavior
 
         $userDto
             ->setExtension($extensionDto)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+            ->willReturn($userDto);
 
         $this
             ->entityTools

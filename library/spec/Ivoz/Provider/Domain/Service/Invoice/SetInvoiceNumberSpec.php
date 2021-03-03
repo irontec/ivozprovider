@@ -90,6 +90,7 @@ class SetInvoiceNumberSpec extends ObjectBehavior
 
         $invoiceDto
             ->setNumber(3)
+            ->willReturn($invoiceDto)
             ->shouldBeCalled();
 
         $this->execute($invoice);

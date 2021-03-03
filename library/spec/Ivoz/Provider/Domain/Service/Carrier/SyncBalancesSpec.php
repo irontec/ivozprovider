@@ -2,17 +2,17 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Carrier;
 
+use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 use Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface;
 use Ivoz\Provider\Domain\Service\Carrier\SyncBalances;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Psr\Log\LoggerInterface;
-use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 use spec\HelperTrait;
 
 class SyncBalancesSpec extends ObjectBehavior
@@ -112,7 +112,7 @@ class SyncBalancesSpec extends ObjectBehavior
             )
             ->shouldBeCalled();
 
-        $this->updateCarriers(1, [1]);
+        $this->updateCarriers($carrierId, [1]);
     }
 
     function it_logs_not_found_carriers()
@@ -153,6 +153,7 @@ class SyncBalancesSpec extends ObjectBehavior
                 'id' => $carrierId,
                 'balance' => $balance,
                 'name' => 'carrier1',
+                'brand' => $this->getInstance(Brand::class),
             ]
         );
 

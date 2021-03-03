@@ -153,11 +153,13 @@ class UpdatedByDestinationRateSpec extends ObjectBehavior
         $this
             ->prepareExecution();
 
-        $this->destinationRateDto
+        $this
+            ->destinationRateDto
             ->setTpRate(
                 $this->tpRateDto
             )
-        ->shouldbeCalled();
+            ->willReturn($this->destinationRateDto)
+            ->shouldbeCalled();
 
         $this
             ->entityTools

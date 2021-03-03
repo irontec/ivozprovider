@@ -5,9 +5,11 @@ namespace spec\Ivoz\Cgr\Domain\Model\TpRate;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRate;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateDto;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class TpRateSpec extends ObjectBehavior
 {
@@ -20,10 +22,20 @@ class TpRateSpec extends ObjectBehavior
 
     protected $destinationRate;
 
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
+
     function let()
     {
-
         $utc = new \DateTimeZone('UTC');
+
+        $destinationRateDto = new DestinationRateDto();
+        $this->destinationRate = $this->getTestDouble(
+            DestinationRate::class,
+            true
+        );
 
         $this->dto = $dto = new TpRateDto();
         $dto
@@ -39,21 +51,16 @@ class TpRateSpec extends ObjectBehavior
                     '2019-01-22 12:51:32',
                     new \DateTimeZone('UTC')
                 )
-            );
+            )
+            ->setDestinationRate($destinationRateDto);
 
-        $this->destinationRate = $this->getTestDouble(
-            DestinationRate::class,
-            true
-        );
-
-        $this->hydrate(
-            $dto,
-            ['destinationRate' => $this->destinationRate->reveal()]
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$destinationRateDto, $this->destinationRate->reveal()]
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -70,7 +77,7 @@ class TpRateSpec extends ObjectBehavior
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this
@@ -86,7 +93,7 @@ class TpRateSpec extends ObjectBehavior
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this

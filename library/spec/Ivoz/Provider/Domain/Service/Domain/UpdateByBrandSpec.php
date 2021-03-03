@@ -225,6 +225,7 @@ class UpdateByBrandSpec extends ObjectBehavior
 
         $brandDto
             ->setDomain(Argument::type(DomainDto::class))
+            ->willReturn($brandDto)
             ->shouldBeCalled();
     }
 }

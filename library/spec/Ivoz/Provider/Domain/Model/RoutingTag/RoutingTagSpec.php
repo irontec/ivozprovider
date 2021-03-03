@@ -2,12 +2,13 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\RoutingTag;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class RoutingTagSpec extends ObjectBehavior
 {
@@ -20,6 +21,8 @@ class RoutingTagSpec extends ObjectBehavior
 
     protected $brand;
 
+    private $transformer;
+
     function let()
     {
         $this->dto = $dto = new RoutingTagDto();
@@ -28,20 +31,20 @@ class RoutingTagSpec extends ObjectBehavior
             true
         );
 
+        $brandDto = new BrandDto();
+
         $dto
             ->setName('Name')
-            ->setTag('987#');
+            ->setTag('987#')
+            ->setBrand($brandDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'brand' => $this->brand->reveal()
-            ]
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$brandDto, $this->brand->reveal()]
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -49,7 +52,6 @@ class RoutingTagSpec extends ObjectBehavior
     {
         $this->shouldHaveType(RoutingTag::class);
     }
-
 
     function it_throws_exception_on_invalid_tag_format()
     {
@@ -64,7 +66,7 @@ class RoutingTagSpec extends ObjectBehavior
 
             $response = $this->updateFromDto(
                 $this->dto,
-                new \spec\DtoToEntityFakeTransformer()
+                $this->transformer
             );
 
             $this
@@ -73,7 +75,6 @@ class RoutingTagSpec extends ObjectBehavior
         }
 
         $invalidTagd = [
-            null,
             '123',
             '1234#'
         ];
@@ -89,7 +90,7 @@ class RoutingTagSpec extends ObjectBehavior
                     'updateFromDto',
                     [
                         $this->dto,
-                        new \spec\DtoToEntityFakeTransformer()
+                        $this->transformer
                     ]
                 );
         }

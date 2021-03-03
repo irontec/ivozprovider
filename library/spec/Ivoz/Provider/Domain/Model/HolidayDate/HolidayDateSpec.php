@@ -2,13 +2,18 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\HolidayDate;
 
+use Ivoz\Provider\Domain\Model\Calendar\Calendar;
+use Ivoz\Provider\Domain\Model\Calendar\CalendarDto;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
+use Ivoz\Provider\Domain\Model\Country\Country;
+use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class HolidayDateSpec extends ObjectBehavior
 {
@@ -16,10 +21,32 @@ class HolidayDateSpec extends ObjectBehavior
 
     protected $dto;
 
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
+
     function let(
         CountryInterface $country,
         CalendarInterface $calendar
     ) {
+        $countryDto = new CountryDto();
+        $country = $this->getterProphecy(
+            $this->getTestDouble(
+                Country::class
+            ),
+            [
+                'getId' => 1,
+                'getCountryCode' => '34'
+            ],
+            false
+        );
+
+        $calendarDto = new CalendarDto();
+        $calendar = $this->getInstance(
+            Calendar::class
+        );
+
         $this->dto = $dto = new HolidayDateDto();
         $dto
             ->setName('Name')
@@ -28,28 +55,18 @@ class HolidayDateSpec extends ObjectBehavior
             )
             ->setWholeDayEvent(1)
             ->setRouteType('number')
-            ->setNumberValue('733648484');
+            ->setNumberValue('733648484')
+            ->setNumberCountry($countryDto)
+            ->setCalendar($calendarDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'numberCountry' => $country->getWrappedObject(),
-                'calendar' => $calendar->getWrappedObject(),
-            ]
-        );
-
-        $this->getterProphecy(
-            $country,
-            [
-                'getId' => 1,
-                'getCountryCode' => '34'
-            ],
-            false
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$countryDto, $country->reveal()],
+            [$calendarDto, $calendar],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -65,7 +82,10 @@ class HolidayDateSpec extends ObjectBehavior
             ->setTimeIn(new \DateTime('2 days ago'))
             ->setTimeOut(new \DateTime('1 days ago'));
 
-        $this->updateFromDto($this->dto, new \spec\DtoToEntityFakeTransformer());
+        $this->updateFromDto(
+            $this->dto,
+            $this->transformer
+        );
 
         $this
             ->getTimeIn()
@@ -75,7 +95,6 @@ class HolidayDateSpec extends ObjectBehavior
             ->getTimeOut()
             ->shouldReturn(null);
     }
-
 
     function it_checks_if_time_makes_sense()
     {
@@ -87,14 +106,20 @@ class HolidayDateSpec extends ObjectBehavior
 
         $this
             ->shouldThrow('\DomainException')
-            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
+            ->duringUpdateFromDto(
+                $dto,
+                $this->transformer
+            );
     }
 
     function it_resolves_e164_munber_value()
     {
         $this->dto
             ->setNumberValue('12345678');
-        $this->updateFromDto($this->dto, new \spec\DtoToEntityFakeTransformer());
+        $this->updateFromDto(
+            $this->dto,
+            $this->transformer
+        );
 
         $this
             ->getNumberValueE164()

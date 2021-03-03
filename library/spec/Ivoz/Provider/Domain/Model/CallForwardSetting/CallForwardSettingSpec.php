@@ -5,11 +5,11 @@ namespace spec\Ivoz\Provider\Domain\Model\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use spec\DtoToEntityFakeTransformer;
 use spec\HelperTrait;
 
 class CallForwardSettingSpec extends ObjectBehavior
@@ -20,6 +20,11 @@ class CallForwardSettingSpec extends ObjectBehavior
     protected $dto;
     protected $user;
     protected $retailAccount;
+
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
 
     function let()
     {
@@ -35,6 +40,7 @@ class CallForwardSettingSpec extends ObjectBehavior
             true
         );
 
+        $this->transformer = new DtoToEntityFakeTransformer();
         $this->prepareExecution(
             $this->dto,
             $this->retailAccount
@@ -42,7 +48,7 @@ class CallForwardSettingSpec extends ObjectBehavior
 
         $this->beConstructedThrough(
             'fromDto',
-            [$this->dto, new \spec\DtoToEntityFakeTransformer()]
+            [$this->dto, $this->transformer]
         );
     }
 
@@ -98,7 +104,7 @@ class CallForwardSettingSpec extends ObjectBehavior
                 ->shouldNotThrow('\Exception')
                 ->during('updateFromDto', [
                     $dto,
-                    new \spec\DtoToEntityFakeTransformer()
+                    $this->transformer
                 ]);
         }
 
@@ -109,26 +115,28 @@ class CallForwardSettingSpec extends ObjectBehavior
                 ->shouldThrow('\Exception')
                 ->during('updateFromDto', [
                     $dto,
-                    new \spec\DtoToEntityFakeTransformer()
+                    $this->transformer
                 ]);
         }
     }
 
     private function prepareExecution(
-        $dto,
-        $retailAccount = null
+        CallForwardSettingDto $dto,
+        $retailAccount
     ) {
+        $retailAccountDto = new RetailAccountDto();
+
         $dto
             ->setCallTypeFilter('internal')
             ->setCallForwardType(
                 CallForwardSettingInterface::CALLFORWARDTYPE_INCONDITIONAL
             )
             ->setTargetType('extension')
-            ->setNoAnswerTimeout(10);
+            ->setNoAnswerTimeout(10)
+            ->setRetailAccount($retailAccountDto);
 
-        $this->hydrate(
-            $dto,
-            ['retailAccount' => $retailAccount->reveal()]
-        );
+        $this->transformer->appendFixedTransforms([
+            [$retailAccountDto, $retailAccount->reveal()]
+        ]);
     }
 }

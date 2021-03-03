@@ -2,7 +2,11 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Invoice;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
@@ -10,6 +14,7 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class InvoiceSpec extends ObjectBehavior
 {
@@ -20,29 +25,41 @@ class InvoiceSpec extends ObjectBehavior
      */
     protected $dto;
 
-    function let(
-        BrandInterface $brand,
-        CompanyInterface $company
-    ) {
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
+
+    function let()
+    {
+        $brand = $this->getInstance(
+            Brand::class
+        );
+        $brandDto = new BrandDto();
+
+        $company = $this->getInstance(
+            Company::class
+        );
+        $companyDto = new CompanyDto();
+
         $this->dto = $dto = new InvoiceDto();
         $dto
             ->setId(1)
             ->setNumber('123')
             ->setPdfFileSize(560)
             ->setPdfMimeType('')
-            ->setPdfBaseName('file.pdf');
+            ->setPdfBaseName('file.pdf')
+            ->setBrand($brandDto)
+            ->setCompany($companyDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'brand' => $brand->getWrappedObject(),
-                'company' => $company->getWrappedObject()
-            ]
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$brandDto, $brand],
+            [$companyDto, $company],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -61,7 +78,7 @@ class InvoiceSpec extends ObjectBehavior
         $dto->setTaxRate(1);
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this
@@ -82,7 +99,7 @@ class InvoiceSpec extends ObjectBehavior
         $dto->setTaxRate(1);
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this
@@ -99,7 +116,7 @@ class InvoiceSpec extends ObjectBehavior
         $dto->setTaxRate(1.0);
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this
@@ -116,7 +133,7 @@ class InvoiceSpec extends ObjectBehavior
         $dto->setTaxRate(1.0);
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this
@@ -133,7 +150,7 @@ class InvoiceSpec extends ObjectBehavior
         $dto->setTaxRate(1.0);
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this

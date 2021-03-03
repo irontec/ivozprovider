@@ -103,6 +103,7 @@ class UpdateByCarrierServerSpec extends ObjectBehavior
             ->setLcrGateway(
                 Argument::type(TrunksLcrGatewayDto::class)
             )
+            ->willReturn($this->carrierServerDto)
             ->shouldBeCalled();
 
         $this->execute(
@@ -141,6 +142,7 @@ class UpdateByCarrierServerSpec extends ObjectBehavior
             ->setLcrGateway(
                 $lcrGatewayDto
             )
+            ->willReturn($this->carrierServerDto)
             ->shouldBeCalled();
 
         $this->execute(

@@ -4,11 +4,15 @@ namespace spec\Ivoz\Provider\Domain\Model\BalanceMovement;
 
 use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement;
 use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovementDto;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class BalanceMovementSpec extends ObjectBehavior
 {
@@ -29,6 +33,11 @@ class BalanceMovementSpec extends ObjectBehavior
      */
     protected $dto;
 
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
+
     function let(
         CompanyInterface $company,
         CarrierInterface $carrier
@@ -38,9 +47,11 @@ class BalanceMovementSpec extends ObjectBehavior
 
         $this->dto = $dto = new BalanceMovementDto();
 
+        $this->transformer = new DtoToEntityFakeTransformer();
+
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -51,13 +62,18 @@ class BalanceMovementSpec extends ObjectBehavior
 
     function it_resets_company_when_carrier_is_set()
     {
-        $this->hydrate(
-            $this->dto,
-            [
-                'company' => $this->company->getWrappedObject(),
-                'carrier' => $this->carrier->getWrappedObject(),
-            ]
-        );
+        $companyDto = new CompanyDto();
+        $carrierDto = new CarrierDto();
+
+        $this
+            ->dto
+            ->setCompany($companyDto)
+            ->setCarrier($carrierDto);
+
+        $this->transformer->appendFixedTransforms([
+            [$companyDto, $this->company->getWrappedObject()],
+            [$carrierDto, $this->carrier->getWrappedObject()],
+        ]);
 
         $this
             ->getCarrier()

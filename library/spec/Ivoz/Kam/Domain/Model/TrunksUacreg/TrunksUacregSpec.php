@@ -4,12 +4,17 @@ namespace spec\Ivoz\Kam\Domain\Model\TrunksUacreg;
 
 use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg;
 use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration;
+use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class TrunksUacregSpec extends ObjectBehavior
 {
@@ -17,14 +22,26 @@ class TrunksUacregSpec extends ObjectBehavior
 
     protected $dto;
 
-    function let(
-        BrandInterface $brand,
-        DdiProviderRegistrationInterface $ddiProviderRegistration
-    ) {
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
 
+    function let()
+    {
+        $brandDto = new BrandDto();
+        $brand = $this->getTestDouble(Brand::class);
+        $brand
+            ->getId()
+            ->willReturn(1);
+
+        $ddiProviderRegistrationDto = new DdiProviderRegistrationDto();
+        $ddiProviderRegistration = $this->getTestDouble(DdiProviderRegistration::class);
+        $ddiProviderRegistration
+            ->getId()
+            ->willReturn(1);
 
         $this->dto = $dto = new TrunksUacregDto();
-
         $dto->setLUuid('')
             ->setLUsername('')
             ->setLDomain('')
@@ -36,27 +53,18 @@ class TrunksUacregSpec extends ObjectBehavior
             ->setAuthProxy('sips:127.0.0.1')
             ->setExpires(1)
             ->setFlags(1)
-            ->setRegDelay(1);
+            ->setRegDelay(1)
+            ->setBrand($brandDto)
+            ->setDdiProviderRegistration($ddiProviderRegistrationDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'brand' => $brand->getWrappedObject(),
-                'ddiProviderRegistration' => $ddiProviderRegistration->getWrappedObject()
-            ]
-        );
-
-        $brand
-            ->getId()
-            ->willReturn(1);
-
-        $ddiProviderRegistration
-            ->getId()
-            ->willReturn(1);
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$brandDto, $brand->reveal()],
+            [$ddiProviderRegistrationDto, $ddiProviderRegistration->reveal()]
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 

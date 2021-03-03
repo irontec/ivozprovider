@@ -98,6 +98,7 @@ class CsvAttacherSpec extends ObjectBehavior
         $this
             ->callCsvReportDto
             ->setCsvBaseName('CompanyName-20180101-20180101.csv')
+            ->willReturn($this->callCsvReportDto)
             ->shouldBeCalled();
 
         $this->execute(
@@ -114,6 +115,7 @@ class CsvAttacherSpec extends ObjectBehavior
 
         $this->callCsvReportDto
             ->setCsvBaseName(Argument::containingString('BrandName-'))
+            ->willReturn($this->callCsvReportDto)
             ->shouldBeCalled();
 
         $this->execute(
@@ -147,8 +149,10 @@ class CsvAttacherSpec extends ObjectBehavior
             true
         );
 
-        $this->callCsvReportDto
-            ->setCsvBaseName('CompanyName-20180102-20180102.csv');
+        $this
+            ->callCsvReportDto
+            ->setCsvBaseName('CompanyName-20180102-20180102.csv')
+            ->willReturn($this->callCsvReportDto);
 
         $this->execute(
             $this->callCsvReport

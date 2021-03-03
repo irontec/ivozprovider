@@ -3,14 +3,21 @@
 namespace spec\Ivoz\Provider\Domain\Model\Ddi;
 
 use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Country\Country;
+use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use PhpSpec\ObjectBehavior;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class DdiSpec extends ObjectBehavior
 {
@@ -26,48 +33,56 @@ class DdiSpec extends ObjectBehavior
      */
     protected $ddiProvider;
 
-    function let(
-        CountryInterface $country,
-        DdiProviderInterface $ddiProvider
-    ) {
-        $this->ddiProvider = $ddiProvider;
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
 
-        $this->dto = $dto = new DdiDto();
-        $dto
-            ->setDdi('123')
-            ->setRecordCalls('none')
-            ->setBillInboundCalls(0);
+    function let()
+    {
+        $countryDto = new CountryDto();
+        $country = $this->getterProphecy(
+            $this->getTestDouble(Country::class),
+            [
+                'getId' => 1,
+                'getCountryCode' => '34',
+            ]
+        );
 
+        $brandDto = new BrandDto();
         $brand = $this->getInstance(
             Brand::class
         );
 
+        $companyDto = new CompanyDto();
         $company = $this->getInstance(
             Company::class,
             ['brand' => $brand]
         );
 
-        $this->hydrate(
-            $dto,
-            [
-                'country' => $country->getWrappedObject(),
-                'ddiProvider' => $ddiProvider->getWrappedObject(),
-                'brand' =>  $brand,
-                'company' => $company,
-            ]
-        );
+        $ddiProviderDto = new DdiProviderDto();
+        $this->ddiProvider = $this->getTestDouble(DdiProvider::class);
 
-        $country
-            ->getCountryCode()
-            ->willReturn('34');
+        $this->dto = $dto = new DdiDto();
+        $dto
+            ->setDdi('123')
+            ->setRecordCalls('none')
+            ->setBillInboundCalls(0)
+            ->setCountry($countryDto)
+            ->setDdiProvider($ddiProviderDto)
+            ->setBrand($brandDto)
+            ->setCompany($companyDto);
 
-        $country
-            ->getId()
-            ->willReturn(1);
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$countryDto, $country->reveal()],
+            [$ddiProviderDto, $this->ddiProvider->reveal()],
+            [$brandDto, $brand],
+            [$companyDto, $company],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 

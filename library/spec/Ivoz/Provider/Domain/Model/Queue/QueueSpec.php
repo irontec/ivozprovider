@@ -2,33 +2,37 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Queue;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Queue\Queue;
 use Ivoz\Provider\Domain\Model\Queue\QueueDto;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\HelperTrait;
 
 class QueueSpec extends ObjectBehavior
 {
     use HelperTrait;
 
+    private $dto;
+
+    private $transformer;
+
     public function let(
         CompanyInterface $company
     ) {
-        $dto = new QueueDto();
-        $dto->setName('Name');
+        $companyDto = new CompanyDto();
+        $this->dto = new QueueDto();
+        $this->dto
+            ->setName('Name')
+            ->setCompany($companyDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'company' => $company->getWrappedObject()
-            ]
-        );
+        $this->transformer = new \spec\DtoToEntityFakeTransformer([
+            [$companyDto, $company->getWrappedObject()]
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$this->dto, $this->transformer]
         );
     }
 
@@ -59,29 +63,23 @@ class QueueSpec extends ObjectBehavior
             ->during('setName', ['Some_value_2']);
     }
 
-    function it_turns_empty_maxWaitTime_to_null()
+    function it_turns_zero_maxWaitTime_to_null()
     {
-        $this->setMaxWaitTime('');
-
-        $this
-            ->getMaxWaitTime()
-            ->shouldBe(null);
-
-        $this->setMaxWaitTime(0);
+        $dto = clone $this->dto;
+        $dto
+            ->setMaxWaitTime(0);
+        $this->updateFromDto(
+            $dto,
+            $this->transformer
+        );
 
         $this
             ->getMaxWaitTime()
             ->shouldBe(null);
     }
 
-    function it_turns_empty_maxlen_to_null()
+    function it_turns_zero_maxlen_to_null()
     {
-        $this->setMaxlen('');
-
-        $this
-            ->getMaxlen()
-            ->shouldBe(null);
-
         $this->setMaxlen(0);
 
         $this

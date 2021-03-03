@@ -2,11 +2,15 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\CarrierServer;
 
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto;
 use PhpSpec\ObjectBehavior;
+use spec\DtoToEntityFakeTransformer;
 use spec\HelperTrait;
 
 class CarrierServerSpec extends ObjectBehavior
@@ -18,32 +22,40 @@ class CarrierServerSpec extends ObjectBehavior
      */
     protected $dto;
 
-    function let(
-        BrandInterface $brand,
-        CarrierInterface $carrier
-    ) {
-        $this->dto = $dto = new CarrierServerDto();
-        $dto->setAuthNeeded('yes');
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
 
-        $carrier
-            ->getId()
-            ->willReturn(1);
+    function let()
+    {
+        $brandDto = new BrandDto();
+        $brand = $this->getInstance(Brand::class);
 
-        $carrier
-            ->getBrand()
-            ->willReturn($brand);
-
-        $this->hydrate(
-            $dto,
+        $carrierDto = new CarrierDto();
+        $carrier = $this->getterProphecy(
+            $this->getTestDouble(Carrier::class, true),
             [
-                'brand' => $brand->getWrappedObject(),
-                'carrier' => $carrier->getWrappedObject()
-            ]
+                'getId' => 1,
+                'getBrand' => $brand,
+            ],
+            false
         );
+
+        $this->dto = $dto = new CarrierServerDto();
+        $dto
+            ->setAuthNeeded('yes')
+            ->setBrand($brandDto)
+            ->setCarrier($carrierDto);
+
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$brandDto, $brand],
+            [$carrierDto, $carrier->reveal()]
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -83,19 +95,34 @@ class CarrierServerSpec extends ObjectBehavior
     }
 
     function it_sets_brand_when_not_new_and_changed_carrierId(
-        CarrierInterface $newCarrier,
-        BrandInterface $brand
+        CarrierInterface $newCarrier
     ) {
-        $dto = clone $this->dto;
-
-        $newCarrier
-            ->getBrand()
-            ->willReturn($brand);
-
-        $this->hydrate(
-            $dto,
-            ['carrier' => $newCarrier->getWrappedObject()]
+        $brand = $this->getInstance(
+            Brand::class
         );
+
+        $newCarrierDto = new CarrierDto();
+        $newCarrier = $this->getterProphecy(
+            $this->getTestDouble(
+                Carrier::class,
+                true
+            ),
+            [
+                'getId' => 1,
+                'getBrand' => $brand,
+            ],
+            true
+        );
+
+        $this
+            ->dto
+            ->setCarrier($newCarrierDto);
+
+        $this
+            ->transformer
+            ->appendFixedTransforms([
+                [$newCarrierDto, $newCarrier->reveal()]
+            ]);
 
         $this->hydrate(
             $this->getWrappedObject(),
@@ -117,7 +144,7 @@ class CarrierServerSpec extends ObjectBehavior
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this

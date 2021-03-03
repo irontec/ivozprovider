@@ -4,6 +4,7 @@ namespace spec\Ivoz\Provider\Domain\Service\InvoiceScheduler;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
@@ -67,6 +68,7 @@ class NextExecutionResolverSpec extends ObjectBehavior
             ->setNextExecution(
                 Argument::type(\DateTime::class)
             )
+            ->willReturn($schedulerDto)
             ->shouldBeCalled();
 
         $this
@@ -81,11 +83,17 @@ class NextExecutionResolverSpec extends ObjectBehavior
         );
     }
 
+    function it_updates_next_execution_if_lastExecution_has_changed()
+    {
+        $schedulerDto = $this->getTestDouble(InvoiceSchedulerDto::class);
+        $schedulerDto
+            ->setNextExecution(
+                Argument::type(\DateTime::class)
+            )
+            ->shouldBeCalled()
+            ->willReturn($schedulerDto->reveal());
 
-    function it_updates_next_execution_if_lastExecution_has_changed(
-        InvoiceSchedulerInterface $scheduler,
-        InvoiceSchedulerDto $schedulerDto
-    ) {
+        $scheduler = $this->getTestDouble(InvoiceScheduler::class);
         $this->getterProphecy(
             $scheduler,
             [
@@ -115,16 +123,12 @@ class NextExecutionResolverSpec extends ObjectBehavior
             ->willReturn($schedulerDto)
             ->shouldBeCalled();
 
-        $schedulerDto
-            ->setNextExecution(
-                Argument::type(\DateTime::class)
-            )
-            ->shouldBeCalled();
+
 
         $this
             ->entityTools
             ->updateEntityByDto(
-                $scheduler,
+                $scheduler->reveal(),
                 $schedulerDto
             )->shouldBeCalled();
 

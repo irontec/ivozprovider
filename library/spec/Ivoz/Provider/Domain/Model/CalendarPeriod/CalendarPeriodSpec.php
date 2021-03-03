@@ -2,11 +2,12 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\CalendarPeriod;
 
-use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
+use Ivoz\Provider\Domain\Model\Calendar\Calendar;
+use Ivoz\Provider\Domain\Model\Calendar\CalendarDto;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodDto;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use spec\DtoToEntityFakeTransformer;
 use spec\HelperTrait;
 
 class CalendarPeriodSpec extends ObjectBehavior
@@ -15,9 +16,16 @@ class CalendarPeriodSpec extends ObjectBehavior
 
     protected $dto;
 
-    function let(
-        CalendarInterface $calendar
-    ) {
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
+
+    function let()
+    {
+        $calendarDto = new CalendarDto();
+        $calendar = $this->getInstance(Calendar::class);
+
         $this->dto = $dto = new CalendarPeriodDto();
         $dto
             ->setStartDate(
@@ -25,18 +33,18 @@ class CalendarPeriodSpec extends ObjectBehavior
             )
             ->setEndDate(
                 new \DateTime('now', new \DateTimeZone('UTC'))
+            )
+            ->setCalendar(
+                $calendarDto
             );
 
-        $this->hydrate(
-            $dto,
-            [
-                'calendar' => $calendar->getWrappedObject(),
-            ]
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$calendarDto, $calendar]
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -54,6 +62,6 @@ class CalendarPeriodSpec extends ObjectBehavior
 
         $this
             ->shouldThrow('\DomainException')
-            ->duringUpdateFromDto($dto, new \spec\DtoToEntityFakeTransformer());
+            ->duringUpdateFromDto($dto, $this->transformer);
     }
 }

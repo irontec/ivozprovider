@@ -2,6 +2,8 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\ConferenceRoom;
 
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto;
@@ -9,29 +11,36 @@ use PhpSpec\Exception\Example\FailureException;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class ConferenceRoomSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    function let(
-        CompanyInterface $company
-    ) {
-        $dto = new  ConferenceRoomDto();
-        $dto->setName('Name')
-            ->setPinProtected(1)
-            ->setMaxMembers(1);
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
 
-        $this->hydrate(
-            $dto,
-            [
-                'company' => $company->getWrappedObject()
-            ]
-        );
+    function let()
+    {
+        $companyDto = new CompanyDto();
+        $company = $this->getInstance(Company::class);
+
+        $dto = new ConferenceRoomDto();
+        $dto
+            ->setName('Name')
+            ->setPinProtected(1)
+            ->setMaxMembers(1)
+            ->setCompany($companyDto);
+
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$companyDto, $company]
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -40,48 +49,54 @@ class ConferenceRoomSpec extends ObjectBehavior
         $this->shouldHaveType(ConferenceRoom::class);
     }
 
-    function it_resets_pincode_when_not_pin_protected(
-        CompanyInterface $company
-    ) {
+    function it_resets_pincode_when_not_pin_protected()
+    {
+        $companyDto = new CompanyDto();
+        $company = $this->getInstance(Company::class);
+
         /** @var ConferenceRoomDto $dto */
         $dto = $this->toDto()->getWrappedObject();
         $dto
             ->setPinCode((string) 1234)
-            ->setPinProtected(0);
+            ->setPinProtected(0)
+            ->setCompany($companyDto);
 
-        $this->hydrate(
-            $dto,
-            ['company' => $company->getWrappedObject()]
-        );
+        $this->transformer->appendFixedTransforms([
+            [$companyDto, $company]
+        ]);
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
+
         $this
             ->getPinCode()
             ->shouldBe(null);
     }
 
-    function it_doesnt_change_pincode_if_pin_protected(
-        CompanyInterface $company
-    ) {
+    function it_doesnt_change_pincode_if_pin_protected()
+    {
+        $companyDto = new CompanyDto();
+        $company = $this->getInstance(Company::class);
         $pinCode = '1234';
 
         /** @var ConferenceRoomDto $dto */
         $dto = $this->toDto()->getWrappedObject();
         $dto
             ->setPinCode($pinCode)
-            ->setPinProtected(1);
+            ->setPinProtected(1)
+            ->setCompany($companyDto);
 
-        $this->hydrate(
-            $dto,
-            ['company' => $company->getWrappedObject()]
-        );
+        $this
+            ->transformer
+            ->appendFixedTransforms([
+                [$companyDto, $company]
+            ]);
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this

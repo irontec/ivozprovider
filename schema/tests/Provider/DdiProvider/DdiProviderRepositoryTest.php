@@ -136,8 +136,7 @@ class DdiProviderRepositoryTest extends KernelTestCase
             $results
         );
 
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             current($results)
         );
     }

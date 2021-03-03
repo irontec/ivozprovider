@@ -226,6 +226,7 @@ class UpdateByTpCdrSpec extends ObjectBehavior
             ->setCost(
                 $cost
             )
+            ->willReturn($billableCallDto)
             ->shouldBeCalled();
 
         $this->handle(
@@ -256,7 +257,7 @@ class UpdateByTpCdrSpec extends ObjectBehavior
             TrunksCdr::class,
             [
                 'id' => 1,
-                'cgrid' => 2,
+                'cgrid' => '2',
             ]
         );
 

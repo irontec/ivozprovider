@@ -2,13 +2,14 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\User;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\User\UserDto;
-use Ivoz\Provider\Infrastructure\Api\Timezone\UserTimezoneInjector;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use spec\DtoToEntityFakeTransformer;
 use spec\HelperTrait;
 
 class UserSpec extends ObjectBehavior
@@ -21,6 +22,8 @@ class UserSpec extends ObjectBehavior
     protected $dto;
 
     protected $company;
+    protected $timezone;
+    protected $transformer;
 
     function let()
     {
@@ -29,10 +32,13 @@ class UserSpec extends ObjectBehavior
             true
         );
 
-        $timezone = $this->getTestDouble(
+        $this->timezone = $this->getTestDouble(
             TimezoneInterface::class,
             true
         );
+
+        $companyDto = new CompanyDto();
+        $timeZoneDto = new TimezoneDto();
 
         $this->dto = $dto = new UserDto();
         $dto
@@ -40,19 +46,18 @@ class UserSpec extends ObjectBehavior
             ->setLastname('lastname')
             ->setActive(true)
             ->setEmail('test@irontec.com')
-            ->setPass('changeme');
+            ->setPass('changeme')
+            ->setCompany($companyDto)
+            ->setTimezone($timeZoneDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'company' => $this->company->reveal(),
-                'timezone' => $timezone->reveal()
-            ]
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$companyDto, $this->company->reveal()],
+            [$timeZoneDto, $this->timezone->reveal()],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -73,7 +78,7 @@ class UserSpec extends ObjectBehavior
             ->shouldThrow('DomainException')
             ->during(
                 'fromDto',
-                [$dto, new \spec\DtoToEntityFakeTransformer()]
+                [$dto, $this->transformer]
             );
     }
 }

@@ -171,6 +171,7 @@ class UpdatedByDestinationRateSpec extends ObjectBehavior
             ->setTpDestinationRate(
                 $this->tpDestinationRateDto
             )
+            ->willReturn($this->destinationRateDto)
             ->shouldBeCalled();
 
         $this->entityTools

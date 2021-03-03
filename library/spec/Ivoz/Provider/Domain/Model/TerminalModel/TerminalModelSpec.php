@@ -2,12 +2,13 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\TerminalModel;
 
+use Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerDto;
 use Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelDto;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class TerminalModelSpec extends ObjectBehavior
 {
@@ -16,21 +17,21 @@ class TerminalModelSpec extends ObjectBehavior
     function let(
         TerminalManufacturerInterface $terminalManufacturer
     ) {
+        $terminalManufacturerDto = new TerminalManufacturerDto();
+
         $dto = new TerminalModelDto();
         $dto->setIden('Iden')
             ->setName('Name')
-            ->setDescription('Description');
+            ->setDescription('Description')
+            ->setTerminalManufacturer($terminalManufacturerDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'terminalManufacturer' => $terminalManufacturer->getWrappedObject()
-            ]
-        );
+        $transformer = new DtoToEntityFakeTransformer([
+            [$terminalManufacturerDto, $terminalManufacturer->getWrappedObject()],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $transformer]
         );
     }
 

@@ -112,9 +112,11 @@ class SyncBalancesSpec extends ObjectBehavior
 
         $companyDto
             ->setBalance($balance)
+            ->willReturn($companyDto)
             ->shouldBeCalled();
 
-        $this->entityTools
+        $this
+            ->entityTools
             ->persistDto($companyDto, $company)
             ->shouldBeCalled();
 

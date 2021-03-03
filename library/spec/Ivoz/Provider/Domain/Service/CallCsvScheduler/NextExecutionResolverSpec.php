@@ -53,6 +53,7 @@ class NextExecutionResolverSpec extends ObjectBehavior
             ->setNextExecution(
                 Argument::type(\DateTime::class)
             )
+            ->willReturn($schedulerDto)
             ->shouldBeCalled();
 
         $this->execute($scheduler);
@@ -71,6 +72,7 @@ class NextExecutionResolverSpec extends ObjectBehavior
             ->setNextExecution(
                 Argument::type(\DateTime::class)
             )
+            ->willReturn($schedulerDto)
             ->shouldBeCalled();
 
         $this->execute($scheduler);
@@ -156,6 +158,7 @@ class NextExecutionResolverSpec extends ObjectBehavior
                         $expectedNextExecution
                     )
                 )
+                ->willReturn($schedulerDto)
                 ->shouldBeCalled();
 
             $this->execute($scheduler);

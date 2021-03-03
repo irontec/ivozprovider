@@ -10,7 +10,6 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class UpdateByExtensionSpec extends ObjectBehavior
 {
@@ -116,6 +115,7 @@ class UpdateByExtensionSpec extends ObjectBehavior
 
         $psEndpointDto
             ->setCallerid('Name <ExtensionNumber>')
+            ->willReturn($psEndpointDto)
             ->shouldBeCalled();
 
         $user
@@ -124,6 +124,7 @@ class UpdateByExtensionSpec extends ObjectBehavior
 
         $psEndpointDto
             ->setMailboxes('userVoiceMail')
+            ->willReturn($psEndpointDto)
             ->shouldBeCalled();
 
         $user
@@ -132,6 +133,7 @@ class UpdateByExtensionSpec extends ObjectBehavior
 
         $psEndpointDto
             ->setNamedPickupGroup(1)
+            ->willReturn($psEndpointDto)
             ->shouldBeCalled();
 
         $this

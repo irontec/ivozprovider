@@ -2,13 +2,14 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\ResidentialDevice;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\HelperTrait;
 
 class ResidentialDeviceSpec extends ObjectBehavior
@@ -33,6 +34,9 @@ class ResidentialDeviceSpec extends ObjectBehavior
         $this->dto = $dto = new ResidentialDeviceDto();
         $this->brand = $brand;
 
+        $companyDto = new CompanyDto();
+        $brandDto = new BrandDto();
+
         $dto->setName('Name')
             ->setDescription('Desc')
             ->setTransport('udp')
@@ -42,7 +46,9 @@ class ResidentialDeviceSpec extends ObjectBehavior
             ->setDirectMediaMethod('invite')
             ->setCalleridUpdateHeader('pai')
             ->setUpdateCallerid('yes')
-            ->setDirectConnectivity('yes');
+            ->setDirectConnectivity('yes')
+            ->setCompany($companyDto)
+            ->setBrand($brandDto);
 
         $company
             ->getId()
@@ -52,17 +58,14 @@ class ResidentialDeviceSpec extends ObjectBehavior
             ->getBrand()
             ->willReturn($brand);
 
-        $this->hydrate(
-            $dto,
-            [
-                'company' => $company->getWrappedObject(),
-                'brand' => $brand->getWrappedObject()
-            ]
-        );
+        $transformer = new \spec\DtoToEntityFakeTransformer([
+            [$companyDto, $company->getWrappedObject()],
+            [$brandDto, $brand->getWrappedObject()],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $transformer]
         );
     }
 
@@ -119,18 +122,11 @@ class ResidentialDeviceSpec extends ObjectBehavior
             ->during('setIp', ['2001:db8:a0b:12f0::1']);
     }
 
-    function it_throws_an_exception_on_non_numeric_port()
-    {
-        $this
-            ->shouldThrow('\Exception')
-            ->during('setPort', ['a3']);
-    }
-
     function it_accepts_numeric_port()
     {
         $this
             ->shouldNotThrow('\Exception')
-            ->during('setPort', ['80']);
+            ->during('setPort', [80]);
     }
 
     function it_throws_an_exception_on_invalid_password()

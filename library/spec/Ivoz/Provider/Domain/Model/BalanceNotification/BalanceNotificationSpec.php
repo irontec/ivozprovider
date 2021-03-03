@@ -4,12 +4,16 @@ namespace spec\Ivoz\Provider\Domain\Model\BalanceNotification;
 
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationDto;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\Language\Language;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use spec\DtoToEntityFakeTransformer;
 use spec\HelperTrait;
 
 class BalanceNotificationSpec extends ObjectBehavior
@@ -27,22 +31,27 @@ class BalanceNotificationSpec extends ObjectBehavior
     protected $carrier;
 
     /**
-     * @var BalanceMovementDto
+     * @var BalanceNotificationDto
      */
     protected $dto;
 
-    function let(
-        CompanyInterface $company,
-        CarrierInterface $carrier
-    ) {
-        $this->company = $company;
-        $this->carrier = $carrier;
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
+
+    function let()
+    {
+        $this->company = $this->getTestDouble(Company::class);
+        $this->carrier = $this->getTestDouble(Carrier::class);
 
         $this->dto = $dto = new BalanceNotificationDto();
 
+        $this->transformer = new DtoToEntityFakeTransformer();
+
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -53,18 +62,25 @@ class BalanceNotificationSpec extends ObjectBehavior
 
     function it_resets_company_when_carrier_is_set()
     {
-        $this->hydrate(
-            $this->dto,
-            [
-                'company' => $this->company->getWrappedObject(),
-                'carrier' => $this->carrier->getWrappedObject(),
-            ]
-        );
+        $companyDto = new CompanyDto();
+        $company = $this->company->reveal();
+        $carrierDto = new CarrierDto();
+        $carrier = $this->carrier->reveal();
+
+        $this->transformer->appendFixedTransforms([
+            [$companyDto, $company],
+            [$carrierDto, $carrier],
+        ]);
+
+        $this
+            ->dto
+            ->setCompany($companyDto)
+            ->setCarrier($carrierDto);
 
         $this
             ->getCarrier()
             ->shouldReturn(
-                $this->carrier->getWrappedObject()
+                $carrier
             );
 
         $this
@@ -79,10 +95,11 @@ class BalanceNotificationSpec extends ObjectBehavior
             ->shouldReturn(null);
     }
 
-    function it_resolves_language_through_carrier(
-        BrandInterface $brand,
-        LanguageInterface $language
-    ) {
+    function it_resolves_language_through_carrier()
+    {
+        $brand = $this->getTestDouble(Brand::class);
+        $language = $this->getInstance(Language::class);
+
         $this
             ->carrier
             ->getId()
@@ -97,12 +114,15 @@ class BalanceNotificationSpec extends ObjectBehavior
             ->getLanguage()
             ->willReturn($language);
 
-        $this->hydrate(
-            $this->dto,
-            [
-                'carrier' => $this->carrier->getWrappedObject(),
-            ]
-        );
+        $carrierDto = new CarrierDto();
+        $carrier = $this->carrier->reveal();
+        $this
+            ->dto
+            ->setCarrier($carrierDto);
+
+        $this->transformer->appendFixedTransforms([
+            [$carrierDto, $carrier]
+        ]);
 
         $this
             ->getLanguage()
@@ -114,9 +134,11 @@ class BalanceNotificationSpec extends ObjectBehavior
             ->shouldNotBecalled();
     }
 
-    function it_resolves_language_through_company(
-        LanguageInterface $language
-    ) {
+    function it_resolves_language_through_company()
+    {
+        $language = $this->getInstance(Language::class);
+
+        $companyDto = new CompanyDto();
         $this
             ->company
             ->getId()
@@ -127,12 +149,13 @@ class BalanceNotificationSpec extends ObjectBehavior
             ->getLanguage()
             ->willReturn($language);
 
-        $this->hydrate(
-            $this->dto,
-            [
-                'company' => $this->company->getWrappedObject(),
-            ]
-        );
+        $this
+            ->dto
+            ->setCompany($companyDto);
+
+        $this->transformer->appendFixedTransforms([
+            [$companyDto, $this->company->reveal()]
+        ]);
 
         $this
             ->getLanguage()
@@ -141,17 +164,19 @@ class BalanceNotificationSpec extends ObjectBehavior
 
     function it_can_resolve_entityName_through_its_carrier()
     {
-        $this->hydrate(
-            $this->dto,
-            [
-                'carrier' => $this->carrier->getWrappedObject(),
-            ]
-        );
+        $carrierDto = new CarrierDto();
+        $this
+            ->dto
+            ->setCarrier($carrierDto);
 
         $this
             ->carrier
             ->getId()
             ->willReturn(1);
+
+        $this->transformer->appendFixedTransforms([
+            [$carrierDto, $this->carrier->reveal()]
+        ]);
 
         $this
             ->carrier
@@ -165,12 +190,10 @@ class BalanceNotificationSpec extends ObjectBehavior
 
     function it_can_resolve_entityName_through_its_company()
     {
-        $this->hydrate(
-            $this->dto,
-            [
-                'company' => $this->company->getWrappedObject(),
-            ]
-        );
+        $companyDto = new CompanyDto();
+        $this
+            ->dto
+            ->setCompany($companyDto);
 
         $this
             ->company
@@ -181,6 +204,10 @@ class BalanceNotificationSpec extends ObjectBehavior
             ->company
             ->getName()
             ->willReturn('CompanyName');
+
+        $this->transformer->appendFixedTransforms([
+            [$companyDto, $this->company->reveal()]
+        ]);
 
         $this
             ->getEntityName()

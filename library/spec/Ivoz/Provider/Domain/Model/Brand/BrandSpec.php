@@ -7,11 +7,14 @@ use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface;
+use Ivoz\Provider\Domain\Model\Language\LanguageDto;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
+use spec\DtoToEntityFakeTransformer;
 
 class BrandSpec extends ObjectBehavior
 {
@@ -37,13 +40,19 @@ class BrandSpec extends ObjectBehavior
      */
     protected $timezone;
 
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
+
     public function let()
     {
+        $this->transformer = new DtoToEntityFakeTransformer();
         $this->prepareExecution();
 
         $this->beConstructedThrough(
             'fromDto',
-            [$this->dto, new \spec\DtoToEntityFakeTransformer()]
+            [$this->dto, $this->transformer]
         );
     }
 
@@ -51,24 +60,27 @@ class BrandSpec extends ObjectBehavior
     {
         $this->domain =  $this->getTestDouble(DomainInterface::class);
         $this->language =  $this->getTestDouble(LanguageInterface::class);
+
+        $timezoneDto = new TimezoneDto();
         $this->timezone = $this->getTestDouble(TimezoneInterface::class);
 
         $this->dto = new BrandDto();
 
-        $this->hydrate(
-            $this->dto,
-            [
-                'name' => '',
-                'invoiceNif' => '',
-                'invoicePostalAddress' => '',
-                'invoicePostalCode' => '',
-                'invoiceTown' => '',
-                'invoiceProvince' => '',
-                'invoiceCountry' => '',
-                'invoiceRegistryData' => '',
-                'defaultTimezone' => $this->timezone->reveal()
-            ]
-        );
+        $this
+            ->dto
+            ->setName('')
+            ->setInvoiceNif('')
+            ->setInvoicePostalAddress('')
+            ->setInvoicePostalCode('')
+            ->setInvoiceTown('')
+            ->setInvoiceProvince('')
+            ->setInvoiceCountry('')
+            ->setInvoiceRegistryData('')
+            ->setDefaultTimezone($timezoneDto);
+
+        $this->transformer->appendFixedTransforms([
+            [$timezoneDto, $this->timezone->reveal()]
+        ]);
     }
 
     function it_is_initializable()
@@ -86,7 +98,7 @@ class BrandSpec extends ObjectBehavior
 
         $this->updateFromDto(
             $dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this
@@ -100,21 +112,24 @@ class BrandSpec extends ObjectBehavior
             ->getLanguageCode()
             ->shouldReturn('en');
 
+        $languageDto = new LanguageDto();
         $this
             ->language
             ->getIden()
             ->willReturn('myLang');
 
-        $this->hydrate(
-            $this->dto,
-            [
-                'language' => $this->language->reveal()
-            ]
-        );
+        $this
+            ->dto
+            ->setLanguage($languageDto);
+
+
+        $this->transformer->appendFixedTransforms([
+            [$languageDto, $this->language->reveal()]
+        ]);
 
         $this->updateFromDto(
             $this->dto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this
@@ -195,7 +210,7 @@ class BrandSpec extends ObjectBehavior
 
         $this->updateFromDto(
             $updateDto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this
@@ -223,7 +238,7 @@ class BrandSpec extends ObjectBehavior
 
         $this->updateFromDto(
             $updateDto,
-            new \spec\DtoToEntityFakeTransformer()
+            $this->transformer
         );
 
         $this

@@ -2,44 +2,59 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\HuntGroup;
 
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
+use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use spec\DtoToEntityFakeTransformer;
 
 class HuntGroupSpec extends ObjectBehavior
 {
     use HelperTrait;
 
     /**
-     * @var ExtensionDto
+     * @var HuntGroupDto
      */
     protected $dto;
 
-    function let(
-        CompanyInterface $company
-    ) {
+    /**
+     * @var DtoToEntityFakeTransformer
+     */
+    private $transformer;
+
+    function let()
+    {
+        $companyDto = new CompanyDto();
+        $company = $this->getInstance(
+            Company::class
+        );
+
         $this->dto = $dto = new HuntGroupDto();
+
         $dto
             ->setName('name')
             ->setDescription('Description')
             ->setStrategy('ringAll')
-            ->setRingAllTimeout(1);
+            ->setRingAllTimeout(1)
+            ->setCompany($companyDto);
 
-        $this->hydrate(
-            $dto,
-            [
-                'company' => $company->getWrappedObject()
-            ]
-        );
+        $this->transformer = new DtoToEntityFakeTransformer([
+            [$companyDto, $company],
+        ]);
 
         $this->beConstructedThrough(
             'fromDto',
-            [$dto, new \spec\DtoToEntityFakeTransformer()]
+            [$dto, $this->transformer]
         );
     }
 
@@ -52,18 +67,27 @@ class HuntGroupSpec extends ObjectBehavior
         UserInterface $noAnswerVoiceMailUser,
         ExtensionInterface $noAnswerExtension
     ) {
-        $this
-            ->dto
-            ->setNoAnswerTargetType('number');
-
-        $this->hydrate(
-            $this->dto,
-            [
-                'noAnswerNumberValue'   => '1234',
-                'noAnswerExtension'     => $noAnswerExtension->getWrappedObject(),
-                'noAnswerVoiceMailUser' => $noAnswerVoiceMailUser->getWrappedObject()
-            ]
+        $noAnswerVoiceMailUserDto = new UserDto();
+        $noAnswerVoiceMailUser = $this->getInstance(
+            User::class
         );
+
+        $noAnswerExtensionDto = new ExtensionDto();
+        $noAnswerExtension = $this->getInstance(
+            Extension::class
+        );
+
+        $this->dto
+            ->setNoAnswerTargetType('number')
+            ->setNoAnswerNumberValue('1234')
+            ->setNoAnswerExtension($noAnswerExtensionDto)
+            ->setNoAnswerVoiceMailUser($noAnswerVoiceMailUserDto)
+        ;
+
+        $this->transformer->appendFixedTransforms([
+            [$noAnswerExtensionDto, $noAnswerExtension],
+            [$noAnswerVoiceMailUserDto, $noAnswerVoiceMailUser],
+        ]);
 
         $this
             ->getNoAnswerExtension()
