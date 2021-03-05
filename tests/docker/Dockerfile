@@ -1,9 +1,8 @@
-FROM debian:stretch
+FROM debian:buster
 
 MAINTAINER Mikel Madariaga <mikel@irontec.com>
 
-RUN echo deb http://packages.irontec.com/debian bleeding main extra >> /etc/apt/sources.list
-RUN echo deb http://repo.percona.com/apt stretch main >> /etc/apt/sources.list
+RUN echo 'deb [trusted=yes] http://packages.irontec.com/debian halliday main extra' >> /etc/apt/sources.list
 
 RUN apt-get update
 RUN apt-get install --assume-yes --force-yes \
@@ -17,23 +16,22 @@ RUN apt-get install --assume-yes --force-yes \
         sqlite3 \
         sphinx-intl \
         nodejs \
-        php7.0 \
-        php7.0-cli \
-        php7.0-mysql \
-        php7.0-xml \
-        php7.0-gd \
-        php7.0-mbstring \
-        php7.0-sqlite3 \
-        php7.0-igbinary \
-        php7.0-curl \
-        php7.0-fpm \
-        php-yaml \
-        php-gearman \
-        php-mailparse \
-        php-imagick \
-        php-xdebug \
-        php-zip \
-        percona-toolkit
+		npm \
+        php7.4 \
+        php7.4-cli \
+        php7.4-mysql \
+        php7.4-xml \
+        php7.4-gd \
+        php7.4-mbstring \
+        php7.4-sqlite3 \
+        php7.4-igbinary \
+        php7.4-curl \
+        php7.4-yaml \
+        php7.4-gearman \
+        php7.4-mailparse \
+        php7.4-imagick \
+        php7.4-xdebug \
+        php7.4-zip
 RUN apt-get clean
 
 # Create jenkins user (configurable)
@@ -50,7 +48,7 @@ RUN npm install -g swagger-cli
 # Base project
 USER $UNAME
 RUN mkdir -p /opt/irontec
-RUN git clone -b bleeding --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
+RUN git clone -b halliday --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
 
 # Install phpunit 6.5.14
 RUN mkdir -p /opt/phpunit/
