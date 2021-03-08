@@ -180,11 +180,17 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
     {
         $dataGateway = Zend_Registry::get('data_gateway');
 
+        $where = [
+            'Administrator.company = :companyId',
+            'Administrator.active = 1',
+            'Administrator.restricted = 0'
+        ];
+
         /** @var \Ivoz\Provider\Domain\Model\Administrator\AdministratorDto $clientAdmin */
         $clientAdmin = $dataGateway->findOneBy(
             Administrator::class,
             [
-                'Administrator.company = :companyId AND Administrator.active = 1',
+                implode(' AND ', $where),
                 [':companyId' => $company->getId()]
             ]
         );
@@ -230,7 +236,6 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
     }
 
     /**
-     * @param $dataGateway
      * @param $company
      * @param $user
      * @return mixed
@@ -239,11 +244,18 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
     {
         $dataGateway = Zend_Registry::get('data_gateway');
 
+        $where = [
+            'Administrator.company IS NULL',
+            'Administrator.brand = :brandId',
+            'Administrator.active = 1',
+            'Administrator.restricted = 0',
+        ];
+
         /** @var \Ivoz\Provider\Domain\Model\Administrator\AdministratorDto $brandAdmin */
         $brandAdmin = $dataGateway->findOneBy(
             Administrator::class,
             [
-                'Administrator.brand = :brandId AND Administrator.active = 1 AND Administrator.company IS NULL',
+                implode(' AND ', $where),
                 [':brandId' => $company->getBrandId()]
             ]
         );
