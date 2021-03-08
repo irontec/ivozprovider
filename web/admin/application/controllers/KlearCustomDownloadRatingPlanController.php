@@ -159,7 +159,7 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
                 $ratingPlanGroupDto->getId()
             );
 
-            $response->setHeader('Content-Length', mb_strlen($response));
+            $response->setHeader('Content-Length', mb_strlen($responseContent));
             $response->setHeader('Content-Type', 'text/csv');
             $response->setHeader('Content-disposition', 'attachment; filename='. $fileName .'.csv');
         } catch (\Exception $e) {
