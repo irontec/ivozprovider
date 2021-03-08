@@ -202,30 +202,11 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
             );
         }
 
-        /** @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto $clientWebPortal */
-        $clientWebPortal = $dataGateway->findOneBy(
-            WebPortal::class,
-            [
-                'WebPortal.brand = :brandId AND WebPortal.urlType = :urlType',
-                [
-                    ':brandId' => $company->getBrandId(),
-                    ':urlType' => 'admin'
-                ]
-            ]
-        );
-
         $clientToken = RestClient::exchangeAdminToken(
             $adminToken,
             $clientAdmin->getUsername(),
-            'client',
-            $clientWebPortal->getUrl()
+            'client'
         );
-
-        if (isset($clientToken->token)) {
-            RestClient::setBaseUrl(
-                $clientWebPortal->getUrl()
-            );
-        }
 
         $apiClient = new RestClient(
             $clientToken->token,
@@ -266,23 +247,10 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
             );
         }
 
-        /** @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto $brandWebPortal */
-        $brandWebPortal = $dataGateway->findOneBy(
-            WebPortal::class,
-            [
-                'WebPortal.brand = :brandId AND WebPortal.urlType = :urlType',
-                [
-                    ':brandId' => $company->getBrandId(),
-                    ':urlType' => 'brand'
-                ]
-            ]
-        );
-
         $adminToken = RestClient::exchangeAdminToken(
             $user->token,
             $brandAdmin->getUsername(),
-            'brand',
-            $brandWebPortal->getUrl()
+            'brand'
         );
 
         return $adminToken;
@@ -290,50 +258,17 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
 
     private function renewToken($user, CompanyDto $company)
     {
-        $dataGateway = Zend_Registry::get('data_gateway');
-
-        $portal = null;
         $api = 'platform';
-
         if ($user->isBrandOperator) {
-            /** @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto $brandWebPortal */
-            $brandWebPortal = $dataGateway->findOneBy(
-                WebPortal::class,
-                [
-                    'WebPortal.brand = :brandId AND WebPortal.urlType = :urlType',
-                    [
-                        ':brandId' => $company->getBrandId(),
-                        ':urlType' => 'brand'
-                    ]
-                ]
-            );
-
-            $portal = $brandWebPortal->getUrl();
             $api = 'brand';
         } elseif ($user->isCompanyAdmin) {
-
-            /** @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto $clientWebPortal */
-            $clientWebPortal = $dataGateway->findOneBy(
-                WebPortal::class,
-                [
-                    'WebPortal.brand = :brandId AND WebPortal.urlType = :urlType',
-                    [
-                        ':brandId' => $company->getBrandId(),
-                        ':urlType' => 'admin'
-                    ]
-                ]
-            );
-
-            $portal = $clientWebPortal->getUrl();
             $api = 'client';
         }
 
         $user->token = RestClient::getRefreshedToken(
             $user->refreshToken,
-            $portal,
+            null,
             $api
         );
-
-        return;
     }
 }
