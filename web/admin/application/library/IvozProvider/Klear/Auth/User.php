@@ -84,7 +84,7 @@ class User extends \Klear_Model_UserAdvanced
     {
         $this->brand = $brand;
         $this->brandId = $brand->getId();
-        $this->brandName = $brand->getName();
+        $this->brandName = htmlentities($brand->getName());
         $this->brandSetted = true;
     }
 
@@ -114,7 +114,7 @@ class User extends \Klear_Model_UserAdvanced
         $this->company = $company;
         $this->companyId = $company->getId();
         $this->companyCountryId = $company->getCountryId();
-        $this->companyName = $company->getName();
+        $this->companyName = htmlentities($company->getName());
         $this->companyType = $company->getType();
         $this->companyVPBX = $company->getType() === CompanyInterface::TYPE_VPBX;
         $this->companyNotVPBX = $company->getType() != CompanyInterface::TYPE_VPBX;
