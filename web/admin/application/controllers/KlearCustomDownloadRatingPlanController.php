@@ -159,7 +159,7 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
                 $ratingPlanGroupDto->getId()
             );
 
-            $response->setHeader('Content-Length', mb_strlen($response));
+            $response->setHeader('Content-Length', mb_strlen($responseContent));
             $response->setHeader('Content-Type', 'text/csv');
             $response->setHeader('Content-disposition', 'attachment; filename='. $fileName .'.csv');
         } catch (\Exception $e) {
@@ -180,11 +180,17 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
     {
         $dataGateway = Zend_Registry::get('data_gateway');
 
+        $where = [
+            'Administrator.company = :companyId',
+            'Administrator.active = 1',
+            'Administrator.restricted = 0'
+        ];
+
         /** @var \Ivoz\Provider\Domain\Model\Administrator\AdministratorDto $clientAdmin */
         $clientAdmin = $dataGateway->findOneBy(
             Administrator::class,
             [
-                'Administrator.company = :companyId AND Administrator.active = 1',
+                implode(' AND ', $where),
                 [':companyId' => $company->getId()]
             ]
         );
@@ -196,30 +202,11 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
             );
         }
 
-        /** @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto $clientWebPortal */
-        $clientWebPortal = $dataGateway->findOneBy(
-            WebPortal::class,
-            [
-                'WebPortal.brand = :brandId AND WebPortal.urlType = :urlType',
-                [
-                    ':brandId' => $company->getBrandId(),
-                    ':urlType' => 'admin'
-                ]
-            ]
-        );
-
         $clientToken = RestClient::exchangeAdminToken(
             $adminToken,
             $clientAdmin->getUsername(),
-            'client',
-            $clientWebPortal->getUrl()
+            'client'
         );
-
-        if (isset($clientToken->token)) {
-            RestClient::setBaseUrl(
-                $clientWebPortal->getUrl()
-            );
-        }
 
         $apiClient = new RestClient(
             $clientToken->token,
@@ -230,7 +217,6 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
     }
 
     /**
-     * @param $dataGateway
      * @param $company
      * @param $user
      * @return mixed
@@ -239,11 +225,18 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
     {
         $dataGateway = Zend_Registry::get('data_gateway');
 
+        $where = [
+            'Administrator.company IS NULL',
+            'Administrator.brand = :brandId',
+            'Administrator.active = 1',
+            'Administrator.restricted = 0',
+        ];
+
         /** @var \Ivoz\Provider\Domain\Model\Administrator\AdministratorDto $brandAdmin */
         $brandAdmin = $dataGateway->findOneBy(
             Administrator::class,
             [
-                'Administrator.brand = :brandId AND Administrator.active = 1 AND Administrator.company IS NULL',
+                implode(' AND ', $where),
                 [':brandId' => $company->getBrandId()]
             ]
         );
@@ -254,23 +247,10 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
             );
         }
 
-        /** @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto $brandWebPortal */
-        $brandWebPortal = $dataGateway->findOneBy(
-            WebPortal::class,
-            [
-                'WebPortal.brand = :brandId AND WebPortal.urlType = :urlType',
-                [
-                    ':brandId' => $company->getBrandId(),
-                    ':urlType' => 'brand'
-                ]
-            ]
-        );
-
         $adminToken = RestClient::exchangeAdminToken(
             $user->token,
             $brandAdmin->getUsername(),
-            'brand',
-            $brandWebPortal->getUrl()
+            'brand'
         );
 
         return $adminToken;
@@ -278,50 +258,17 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
 
     private function renewToken($user, CompanyDto $company)
     {
-        $dataGateway = Zend_Registry::get('data_gateway');
-
-        $portal = null;
         $api = 'platform';
-
         if ($user->isBrandOperator) {
-            /** @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto $brandWebPortal */
-            $brandWebPortal = $dataGateway->findOneBy(
-                WebPortal::class,
-                [
-                    'WebPortal.brand = :brandId AND WebPortal.urlType = :urlType',
-                    [
-                        ':brandId' => $company->getBrandId(),
-                        ':urlType' => 'brand'
-                    ]
-                ]
-            );
-
-            $portal = $brandWebPortal->getUrl();
             $api = 'brand';
         } elseif ($user->isCompanyAdmin) {
-
-            /** @var \Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto $clientWebPortal */
-            $clientWebPortal = $dataGateway->findOneBy(
-                WebPortal::class,
-                [
-                    'WebPortal.brand = :brandId AND WebPortal.urlType = :urlType',
-                    [
-                        ':brandId' => $company->getBrandId(),
-                        ':urlType' => 'admin'
-                    ]
-                ]
-            );
-
-            $portal = $clientWebPortal->getUrl();
             $api = 'client';
         }
 
         $user->token = RestClient::getRefreshedToken(
             $user->refreshToken,
-            $portal,
+            null,
             $api
         );
-
-        return;
     }
 }
