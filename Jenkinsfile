@@ -85,18 +85,17 @@ pipeline {
                 stage ('phpstan') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-phpstan'
-                            args '--volume ${WORKSPACE}:/opt/irontec/ivozprovider/ --entrypoint ""'
+                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            reuseNode true
                         }
                     }
                     steps {
-                        sh '/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run'
                         sh '/opt/irontec/ivozprovider/library/bin/test-phpstan'
                     }
                     post {
                         success { notifySuccessGithub() }
                         failure { notifyFailureGithub() }
-                        always  { cleanWs() }
                     }
                 }
                 stage ('codestyle') {

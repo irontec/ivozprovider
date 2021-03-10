@@ -11,7 +11,7 @@ run_test () {
     echo "== $1"
     echo "======================"
 
-    phpstan analyse \
+    library/vendor/bin/phpstan analyse \
         --level 4 \
         --ansi \
         --no-progress \
