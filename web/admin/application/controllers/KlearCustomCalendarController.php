@@ -52,10 +52,12 @@ class KlearCustomCalendarController extends KlearMatrix_NewController
         }
 
         $request = $this->getRequest();
-        $startDate = new DateTime(
+        $targetColumn = $columns->getColFromDbName('startDate');
+
+        $startDate = $targetColumn->filterValue(
             $request->getPost('startDate')
         );
-        $endDate = new DateTime(
+        $endDate = $targetColumn->filterValue(
             $request->getPost('endDate')
         );
 
