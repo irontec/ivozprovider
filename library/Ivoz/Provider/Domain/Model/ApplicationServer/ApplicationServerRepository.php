@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\ApplicationServer;
 
 use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 
 interface ApplicationServerRepository extends ObjectRepository, Selectable
 {

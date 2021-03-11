@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
 use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 
 interface TerminalRepository extends ObjectRepository, Selectable

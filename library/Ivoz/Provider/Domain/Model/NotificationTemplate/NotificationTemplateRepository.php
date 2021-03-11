@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\NotificationTemplate;
 
 use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
 
 interface NotificationTemplateRepository extends ObjectRepository, Selectable

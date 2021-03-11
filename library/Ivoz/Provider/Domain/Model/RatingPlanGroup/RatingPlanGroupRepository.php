@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
 use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 
 interface RatingPlanGroupRepository extends ObjectRepository, Selectable
 {

@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\BillableCall;
 
 use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 interface BillableCallRepository extends ObjectRepository, Selectable

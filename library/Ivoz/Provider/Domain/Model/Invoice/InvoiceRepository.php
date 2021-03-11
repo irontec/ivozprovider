@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
 use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 
 interface InvoiceRepository extends ObjectRepository, Selectable
 {

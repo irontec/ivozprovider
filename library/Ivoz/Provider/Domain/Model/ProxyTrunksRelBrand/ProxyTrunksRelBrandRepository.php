@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand;
 
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 

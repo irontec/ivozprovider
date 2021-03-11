@@ -3,7 +3,7 @@
 namespace Ivoz\Kam\Domain\Model\UsersLocation;
 
 use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 
 interface UsersLocationRepository extends ObjectRepository
 {

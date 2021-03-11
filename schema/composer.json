@@ -53,7 +53,7 @@
     },
     "require": {
         "doctrine/doctrine-migrations-bundle": "^3.0",
-        "gesdinet/jwt-refresh-token-bundle": "^0.9.1",
+        "gesdinet/jwt-refresh-token-bundle": "^0.11.1",
         "graze/guzzle-jsonrpc": "3.2.*",
         "guzzlehttp/guzzle": "^6.3",
         "irontec/ivoz-dev-tools": "^5.0",

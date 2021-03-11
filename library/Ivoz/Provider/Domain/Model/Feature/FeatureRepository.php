@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Feature;
 
 use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 
 interface FeatureRepository extends ObjectRepository, Selectable
 {

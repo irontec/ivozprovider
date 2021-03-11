@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Infrastructure\Api\Security\User;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;

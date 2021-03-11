@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoice;
 
 use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 
 interface FixedCostsRelInvoiceRepository extends ObjectRepository, Selectable
 {

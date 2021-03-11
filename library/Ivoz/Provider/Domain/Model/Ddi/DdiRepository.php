@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Ddi;
 
 use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 
 interface DdiRepository extends ObjectRepository, Selectable
 {

@@ -11,11 +11,9 @@ return [
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true, 'tests_e2e' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['test' => true, 'tests_e2e' => true],
     DocteurKlein\TestDoubleBundle::class => ['test' => true],
-
     Ivoz\CoreBundle\CoreBundle::class => ['all' => true],
     Ivoz\ProviderBundle\ProviderBundle::class => ['all' => true],
     IvozDevTools\CommandlogBundle\CommandlogBundle::class => ['all' => true],
-
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['all' => true],
     IvozDevTools\EntityGeneratorBundle\EntityGeneratorBundle::class => ['all' => true],
 ];

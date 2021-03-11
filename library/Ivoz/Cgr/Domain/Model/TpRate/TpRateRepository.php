@@ -3,7 +3,7 @@
 namespace Ivoz\Cgr\Domain\Model\TpRate;
 
 use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 
 interface TpRateRepository extends ObjectRepository, Selectable
 {

@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\RouteLock;
 
 use Doctrine\Common\Collections\Selectable;
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 
 interface RouteLockRepository extends ObjectRepository, Selectable
 {
