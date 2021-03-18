@@ -12,7 +12,7 @@ pushd /opt/irontec/ivozprovider/web/rest/brand
     fi
 
     # Access control tests
-    SYMFONY_PHPUNIT_VERSION=8.5.8 vendor/bin/simple-phpunit
+    vendor/bin/simple-phpunit
 
     # Integration tests
     vendor/bin/behat -f progress -o std -f junit -o results

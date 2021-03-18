@@ -64,7 +64,8 @@
     "require-dev": {
         "docteurklein/test-double-bundle": "^1.2",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
-        "phpunit/phpunit": "^8.0",
+        "phpunit/phpunit": "^9.4.4",
+        "dms/phpunit-arraysubset-asserts": "^0.2.1",
         "squizlabs/php_codesniffer": "3.3.*",
         "symfony/phpunit-bridge": "^5.1.6",
         "symfony/maker-bundle": "^1.2"

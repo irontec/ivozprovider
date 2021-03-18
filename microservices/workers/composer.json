@@ -47,7 +47,7 @@
         }
     },
     "require": {
-        "irontec/wkhtmltopdf-amd64": "dev-master",
+        "irontec/wkhtmltopdf-amd64": "0.12.6.1",
         "irontec/ivoz-provider-bundle": "^2.5",
         "irontec/replacements": "^1.0",
         "knplabs/knp-snappy": "^1.2",

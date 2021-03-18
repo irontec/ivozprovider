@@ -10,7 +10,7 @@ class QueueMemberTest extends KernelTestCase
 {
     use \Ivoz\Tests\AccessControlTestHelperTrait;
 
-    protected function getResourceClass()
+    protected function getResourceClass(): string
     {
         return QueueMember::class;
     }

@@ -10,7 +10,7 @@ class FixedCostsRelInvoiceSchedulerSchedulerTest extends KernelTestCase
 {
     use \Ivoz\Tests\AccessControlTestHelperTrait;
 
-    protected function getResourceClass()
+    protected function getResourceClass(): string
     {
         return FixedCostsRelInvoiceScheduler::class;
     }

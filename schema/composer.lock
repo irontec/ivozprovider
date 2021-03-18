@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "baefb0fceffd9a4c1b13e7ebc8dd3ed3",
+    "content-hash": "a2d51a6cdcaf0a5a8c1215079ed168b7",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -418,11 +418,11 @@
         },
         {
             "name": "doctrine/common",
-            "version": "3.1.1",
+            "version": "3.1.x-dev",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/doctrine/common",
-                "reference": "2afde5a9844126bc311cd5f548b5475e75f800d3"
+                "reference": "a036d90c303f3163b5be8b8fde9b6755b2be4a3a"
             },
             "require": {
                 "doctrine/persistence": "^2.0",
@@ -434,7 +434,8 @@
                 "phpstan/phpstan-phpunit": "^0.12",
                 "phpunit/phpunit": "^7.5.20 || ^8.5 || ^9.0",
                 "squizlabs/php_codesniffer": "^3.0",
-                "symfony/phpunit-bridge": "^4.0.5"
+                "symfony/phpunit-bridge": "^4.0.5",
+                "vimeo/psalm": "^4.4"
             },
             "type": "library",
             "autoload": {
@@ -584,11 +585,11 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "2.2.3",
+            "version": "2.3.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/doctrine/doctrine-bundle",
-                "reference": "015fdd490074d4daa891e2d1df998dc35ba54924"
+                "reference": "8b922578bdee2243a26202b13df795e170efaef8"
             },
             "require": {
                 "doctrine/dbal": "^2.9.0|^3.0",
@@ -1346,11 +1347,11 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/egulias/email-validator",
-                "reference": "62c3b73c581c834885acf6e120b412b76acc495a"
+                "reference": "c81f18a3efb941d8c4d2e025f6183b5c6d697307"
             },
             "require": {
                 "doctrine/lexer": "^1.2",
@@ -1405,11 +1406,11 @@
         },
         {
             "name": "gesdinet/jwt-refresh-token-bundle",
-            "version": "v0.9.1",
+            "version": "v0.11.1",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/gesdinet/jwt-refresh-token-bundle",
-                "reference": "1f2729e45b5eb28d6461d94dadeb0211a96754e8"
+                "reference": "81f15cca6690c77f591d7d903775fd3da8778829"
             },
             "require": {
                 "lexik/jwt-authentication-bundle": "^1.1|^2.0@dev",
@@ -1647,11 +1648,11 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.7.0",
+            "version": "1.8.1",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/guzzlehttp/psr7",
-                "reference": "53330f47520498c0ae1f61f7e2c90f55690c06a3"
+                "reference": "35ea11d335fd638b5882ff1725228b3d35496ab1"
             },
             "require": {
                 "php": ">=5.4.0",
@@ -1905,11 +1906,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.15",
+            "version": "2.5.16",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "5c5b7c6d6f2a0a199515783286d116634af47eb0"
+                "reference": "214a3e19d41afe7c1115ab88d57b16ae48d3fdcb"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -1930,6 +1931,7 @@
                 "symfony/property-access": "^5.1",
                 "symfony/property-info": "^5.1",
                 "symfony/serializer": "^5.1",
+                "symfony/stopwatch": "^5.1",
                 "symfony/templating": "^5.1",
                 "symfony/translation": "^5.1",
                 "symfony/twig-bundle": "^5.1",
@@ -2292,11 +2294,11 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "4.1.2",
+            "version": "4.1.3",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/lcobucci/jwt",
-                "reference": "c544710aa18e079baf0027ca4c8236913f46945b"
+                "reference": "1e66927ea937c199539f8a8a35e284b6667c4f2c"
             },
             "require": {
                 "ext-hash": "*",
@@ -2614,15 +2616,15 @@
         },
         {
             "name": "ocramius/proxy-manager",
-            "version": "2.8.0",
+            "version": "2.10.1",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/ocramius/proxy-manager",
-                "reference": "ac1dd414fd114cfc0da9930e0ab46063c2f5e62a"
+                "reference": "8e85357b800125dea30b7083a6bf1800801ad98b"
             },
             "require": {
+                "composer-runtime-api": "^2.0.0",
                 "laminas/laminas-code": "^3.4.1",
-                "ocramius/package-versions": "^1.8.0",
                 "php": "~7.4.1",
                 "webimpress/safe-writer": "^2.0.1"
             },
@@ -2632,15 +2634,16 @@
                 "zendframework/zend-stdlib": "<3.2.1"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^6.0.0",
+                "codelicia/xulieta": "^0.1.2",
+                "doctrine/coding-standard": "^8.1.0",
                 "ext-phar": "*",
-                "infection/infection": "^0.16.2",
-                "nikic/php-parser": "^4.4.0",
-                "phpbench/phpbench": "^0.17.0",
-                "phpunit/phpunit": "^9.1.1",
-                "slevomat/coding-standard": "^5.0.4",
-                "squizlabs/php_codesniffer": "^3.5.4",
-                "vimeo/psalm": "^3.11.1"
+                "infection/infection": "^0.16.4",
+                "nikic/php-parser": "^4.6.0",
+                "phpbench/phpbench": "^0.17.1",
+                "phpunit/phpunit": "^9.2.5",
+                "slevomat/coding-standard": "^6.3.10",
+                "squizlabs/php_codesniffer": "^3.5.5",
+                "vimeo/psalm": "^3.12.2"
             },
             "suggest": {
                 "laminas/laminas-json": "To have the JsonRpc adapter (Remote Object feature)",
@@ -3216,11 +3219,11 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v5.2.4",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/cache",
-                "reference": "d15fb2576cdbe2c40d7c851e62f85b0faff3dd3d"
+                "reference": "093d69bb10c959553c8beb828b8d4ea250a247dd"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3348,11 +3351,11 @@
         },
         {
             "name": "symfony/config",
-            "version": "v5.2.3",
+            "version": "5.x-dev",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/config",
-                "reference": "50e0e1314a3b2609d32b6a5a0d0fb5342494c4ab"
+                "reference": "212d54675bf203ff8aef7d8cee8eecfb72f4a263"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3405,11 +3408,11 @@
         },
         {
             "name": "symfony/console",
-            "version": "v5.2.5",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/console",
-                "reference": "938ebbadae1b0a9c9d1ec313f87f9708609f1b79"
+                "reference": "35f039df40a3b335ebf310f244cb242b3a83ac8d"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3538,11 +3541,11 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v5.2.5",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/dependency-injection",
-                "reference": "be0c7926f5729b15e4e79fd2bf917cac584b1970"
+                "reference": "1e66194bed2a69fa395d26bf1067e5e34483afac"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3650,11 +3653,11 @@
         },
         {
             "name": "symfony/doctrine-bridge",
-            "version": "v5.2.5",
+            "version": "5.2.x-dev",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/doctrine-bridge",
-                "reference": "9e2c53f3e8f8a6ccecd80de5c2c8b71beeca7fc8"
+                "reference": "72b6d743c6108e2b8d15ab94e1a8a224c4d0d144"
             },
             "require": {
                 "doctrine/event-manager": "~1.0",
@@ -3792,11 +3795,11 @@
         },
         {
             "name": "symfony/error-handler",
-            "version": "v5.2.3",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/error-handler",
-                "reference": "48f18b3609e120ea66d59142c23dc53e9562c26d"
+                "reference": "bdb7fb4188da7f4211e4b88350ba0dfdad002b03"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -3840,11 +3843,11 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v5.2.3",
+            "version": "5.x-dev",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/event-dispatcher",
-                "reference": "4f9760f8074978ad82e2ce854dff79a71fe45367"
+                "reference": "d08d6ec121a425897951900ab692b612a61d6240"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -4005,11 +4008,11 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v5.2.3",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/filesystem",
-                "reference": "262d033b57c73e8b59cd6e68a45c528318b15038"
+                "reference": "8c86a82f51658188119e62cff0a050a12d09836f"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -4046,11 +4049,11 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v5.2.3",
+            "version": "5.x-dev",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/finder",
-                "reference": "4adc8d172d602008c204c2e16956f99257248e03"
+                "reference": "0d639a0943822626290d169965804f79400e6a04"
             },
             "require": {
                 "php": ">=7.2.5"
@@ -4132,11 +4135,11 @@
         },
         {
             "name": "symfony/form",
-            "version": "v5.2.5",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/form",
-                "reference": "66fecedebe5c5fc6dc9553e8f311342ac711ed3a"
+                "reference": "40fbaed8d4238e37fdd1fecce8e0678a3eb0e48b"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -4212,11 +4215,11 @@
         },
         {
             "name": "symfony/framework-bundle",
-            "version": "v5.2.5",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/framework-bundle",
-                "reference": "4dae531503072a57cf26f7f4beb4c3ef8a061f8f"
+                "reference": "8889da18c6faa76c6149a90e6542be4afe723f2f"
             },
             "require": {
                 "ext-xml": "*",
@@ -4450,11 +4453,11 @@
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v5.2.5",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/http-kernel",
-                "reference": "b8c63ef63c2364e174c3b3e0ba0bf83455f97f73"
+                "reference": "f34de4c61ca46df73857f7f36b9a3805bdd7e3b2"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -4669,24 +4672,24 @@
         },
         {
             "name": "symfony/monolog-bundle",
-            "version": "v3.6.0",
+            "version": "v3.7.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/monolog-bundle",
-                "reference": "e495f5c7e4e672ffef4357d4a4d85f010802f940"
+                "reference": "4054b2e940a25195ae15f0a49ab0c51718922eb4"
             },
             "require": {
                 "monolog/monolog": "~1.22 || ~2.0",
-                "php": ">=5.6",
-                "symfony/config": "~3.4 || ~4.0 || ^5.0",
-                "symfony/dependency-injection": "~3.4.10 || ^4.0.10 || ^5.0",
-                "symfony/http-kernel": "~3.4 || ~4.0 || ^5.0",
-                "symfony/monolog-bridge": "~3.4 || ~4.0 || ^5.0"
+                "php": ">=7.1.3",
+                "symfony/config": "~4.4 || ^5.0",
+                "symfony/dependency-injection": "^4.4 || ^5.0",
+                "symfony/http-kernel": "~4.4 || ^5.0",
+                "symfony/monolog-bridge": "~4.4 || ^5.0"
             },
             "require-dev": {
-                "symfony/console": "~3.4 || ~4.0 || ^5.0",
-                "symfony/phpunit-bridge": "^4.4 || ^5.0",
-                "symfony/yaml": "~3.4 || ~4.0 || ^5.0"
+                "symfony/console": "~4.4 || ^5.0",
+                "symfony/phpunit-bridge": "^5.1",
+                "symfony/yaml": "~4.4 || ^5.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -4712,11 +4715,11 @@
                 },
                 {
                     "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony MonologBundle",
-            "homepage": "http://symfony.com",
+            "homepage": "https://symfony.com",
             "keywords": [
                 "log",
                 "logging"
@@ -5560,11 +5563,11 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v5.2.3",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/routing",
-                "reference": "348b5917e56546c6d96adbf21d7f92c9ef563661"
+                "reference": "31fba555f178afd04d54fd26953501b2c3f0c6e6"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -5629,11 +5632,11 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "v5.2.5",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/security-bundle",
-                "reference": "e6b7c0cc8f0ef361c7dd5cb8d048863addea26e5"
+                "reference": "26550782d6e6db6fbfd7702ae0ccef7964c3535d"
             },
             "require": {
                 "ext-xml": "*",
@@ -5707,11 +5710,11 @@
         },
         {
             "name": "symfony/security-core",
-            "version": "v5.2.5",
+            "version": "5.x-dev",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/security-core",
-                "reference": "688b21a293a7e4168e8e493a97625ac24280629f"
+                "reference": "9dcedab1c2c637fc9a377b3a9313a61087609760"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -5871,11 +5874,11 @@
         },
         {
             "name": "symfony/security-http",
-            "version": "v5.2.5",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/security-http",
-                "reference": "e7947dac6e632b40aea74f6f556c75761d1ab1e6"
+                "reference": "a4b3d122ee0c263850ca1ed620faa1b3a8e7584b"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6072,11 +6075,11 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v5.2.1",
+            "version": "v5.2.4",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/stopwatch",
-                "reference": "2b105c0354f39a63038a1d8bf776ee92852813af"
+                "reference": "b12274acfab9d9850c52583d136a24398cdf1a0c"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6104,7 +6107,7 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony Stopwatch Component",
+            "description": "Provides a way to profile code",
             "homepage": "https://symfony.com",
             "transport-options": {
                 "symlink": true,
@@ -6113,11 +6116,11 @@
         },
         {
             "name": "symfony/string",
-            "version": "v5.2.3",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/string",
-                "reference": "c95468897f408dd0aca2ff582074423dd0455122"
+                "reference": "ad0bd91bce2054103f5eaa18ebeba8d3bc2a0572"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6280,11 +6283,11 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v5.2.5",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/translation",
-                "reference": "0947ab1e3aabd22a6bef393874b2555d2bb976da"
+                "reference": "2cc7f45d96db9adfcf89adf4401d9dfed509f4e1"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6409,11 +6412,11 @@
         },
         {
             "name": "symfony/twig-bridge",
-            "version": "v5.2.5",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/twig-bridge",
-                "reference": "f3b6854071486b20d27ba5f3148cf9fba73f670f"
+                "reference": "a65d8d38c66f147f29b73d53d14e8c9a983653b8"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6457,9 +6460,9 @@
                 "symfony/web-link": "^4.4|^5.0",
                 "symfony/workflow": "^5.2",
                 "symfony/yaml": "^4.4|^5.0",
-                "twig/cssinliner-extra": "^2.12",
-                "twig/inky-extra": "^2.12",
-                "twig/markdown-extra": "^2.12"
+                "twig/cssinliner-extra": "^2.12|^3",
+                "twig/inky-extra": "^2.12|^3",
+                "twig/markdown-extra": "^2.12|^3"
             },
             "suggest": {
                 "symfony/asset": "For using the AssetExtension",
@@ -6574,11 +6577,11 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v5.2.5",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/validator",
-                "reference": "456a3d95947e99c4c70e64c09833eed56095086c"
+                "reference": "67354644f9baba3cc122134c255b7461b7e0fe31"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6664,11 +6667,11 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v5.2.5",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/var-dumper",
-                "reference": "002ab5a36702adf0c9a11e6d8836623253e9045e"
+                "reference": "89412a68ea2e675b4e44f260a5666729f77f668e"
             },
             "require": {
                 "php": ">=7.2.5",
@@ -6972,6 +6975,48 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "dms/phpunit-arraysubset-asserts",
+            "version": "v0.2.1",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/dms/phpunit-arraysubset-asserts",
+                "reference": "8e3673a70019a60df484e36fc3271d63cbdc40ea"
+            },
+            "require": {
+                "php": "^7.3|^8.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "require-dev": {
+                "dms/coding-standard": "^1.0",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DMS\\PHPUnitExtensions\\ArraySubset\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "DMS\\PHPUnitExtensions\\ArraySubset\\Tests\\": "tests"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Dohms",
+                    "email": "rdohms@gmail.com"
+                }
+            ],
+            "description": "This package provides ArraySubset and related asserts once deprecated in PHPUnit 8",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
         {
             "name": "docteurklein/test-double-bundle",
             "version": "1.2",
@@ -7286,11 +7331,11 @@
         },
         {
             "name": "phar-io/version",
-            "version": "3.0.4",
+            "version": "3.1.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/phar-io/version",
-                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451"
+                "reference": "bae7c545bef187884426f042434e561ab1ddb182"
             },
             "require": {
                 "php": "^7.2 || ^8.0"
@@ -7479,11 +7524,11 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.12.2",
+            "version": "1.13.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/phpspec/prophecy",
-                "reference": "245710e971a030f42e08f4912863805570f23d39"
+                "reference": "be1996ed8adc35c3fd795488a653f4b518be70ea"
             },
             "require": {
                 "doctrine/instantiator": "^1.2",
@@ -7543,34 +7588,38 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "7.0.14",
+            "version": "9.2.5",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/phpunit/php-code-coverage",
-                "reference": "bb7c9a210c72e4709cdde67f8b7362f672f2225c"
+                "reference": "f3e026641cc91909d421802dd3ac7827ebfd97e1"
             },
             "require": {
                 "ext-dom": "*",
+                "ext-libxml": "*",
                 "ext-xmlwriter": "*",
-                "php": ">=7.2",
-                "phpunit/php-file-iterator": "^2.0.2",
-                "phpunit/php-text-template": "^1.2.1",
-                "phpunit/php-token-stream": "^3.1.1 || ^4.0",
-                "sebastian/code-unit-reverse-lookup": "^1.0.1",
-                "sebastian/environment": "^4.2.2",
-                "sebastian/version": "^2.0.1",
-                "theseer/tokenizer": "^1.1.3"
+                "nikic/php-parser": "^4.10.2",
+                "php": ">=7.3",
+                "phpunit/php-file-iterator": "^3.0.3",
+                "phpunit/php-text-template": "^2.0.2",
+                "sebastian/code-unit-reverse-lookup": "^2.0.2",
+                "sebastian/complexity": "^2.0",
+                "sebastian/environment": "^5.1.2",
+                "sebastian/lines-of-code": "^1.0.3",
+                "sebastian/version": "^3.0.1",
+                "theseer/tokenizer": "^1.2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.2.2"
+                "phpunit/phpunit": "^9.3"
             },
             "suggest": {
-                "ext-xdebug": "^2.7.2"
+                "ext-pcov": "*",
+                "ext-xdebug": "*"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "7.0-dev"
+                    "dev-master": "9.2-dev"
                 }
             },
             "autoload": {
@@ -7611,22 +7660,22 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "2.0.3",
+            "version": "3.0.5",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/phpunit/php-file-iterator",
-                "reference": "4b49fb70f067272b659ef0174ff9ca40fdaa6357"
+                "reference": "aa4be8575f26070b100fccb67faabb28f21f66f8"
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.5"
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -7659,17 +7708,82 @@
             }
         },
         {
+            "name": "phpunit/php-invoker",
+            "version": "3.1.1",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/phpunit/php-invoker",
+                "reference": "5a10147d0aaf65b58940a0b72f71c9ac0423cc67"
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "ext-pcntl": "*",
+                "phpunit/phpunit": "^9.3"
+            },
+            "suggest": {
+                "ext-pcntl": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "autoload-dev": {
+                "classmap": [
+                    "tests/_fixture/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Invoke callables with a timeout",
+            "homepage": "https://github.com/sebastianbergmann/php-invoker/",
+            "keywords": [
+                "process"
+            ],
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/php-invoker/issues"
+            },
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "phpunit/php-text-template",
-            "version": "1.2.1",
+            "version": "2.0.4",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/phpunit/php-text-template",
-                "reference": "31f8b717e51d9a2afca6c9f046f5d69fc27c8686"
+                "reference": "5da5f67fc95621df9ff4c4e5a84d6a8a2acf7c28"
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "src/"
@@ -7700,22 +7814,22 @@
         },
         {
             "name": "phpunit/php-timer",
-            "version": "2.1.3",
+            "version": "5.0.3",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/phpunit/php-timer",
-                "reference": "2454ae1765516d20c4ffe103d85a58a9a3bd5662"
+                "reference": "5a63ce20ed1b5bf577850e2c4e87f4aa902afbd2"
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.5"
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1-dev"
+                    "dev-master": "5.0-dev"
                 }
             },
             "autoload": {
@@ -7747,60 +7861,12 @@
             }
         },
         {
-            "name": "phpunit/php-token-stream",
-            "version": "4.0.4",
-            "dist": {
-                "type": "path",
-                "url": "../library/vendor/phpunit/php-token-stream",
-                "reference": "a853a0e183b9db7eed023d7933a858fa1c8d25a3"
-            },
-            "require": {
-                "ext-tokenizer": "*",
-                "php": "^7.3 || ^8.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.0-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                }
-            ],
-            "description": "Wrapper around PHP's tokenizer extension.",
-            "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
-            "keywords": [
-                "tokenizer"
-            ],
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/php-token-stream/issues"
-            },
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
             "name": "phpunit/phpunit",
-            "version": "8.5.13",
+            "version": "9.5.3",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/phpunit/phpunit",
-                "reference": "8e86be391a58104ef86037ba8a846524528d784e"
+                "reference": "27241ac75fc37ecf862b6e002bf713b6566cbe41"
             },
             "require": {
                 "doctrine/instantiator": "^1.3.1",
@@ -7810,32 +7876,35 @@
                 "ext-mbstring": "*",
                 "ext-xml": "*",
                 "ext-xmlwriter": "*",
-                "myclabs/deep-copy": "^1.10.0",
+                "myclabs/deep-copy": "^1.10.1",
                 "phar-io/manifest": "^2.0.1",
                 "phar-io/version": "^3.0.2",
-                "php": ">=7.2",
-                "phpspec/prophecy": "^1.10.3",
-                "phpunit/php-code-coverage": "^7.0.12",
-                "phpunit/php-file-iterator": "^2.0.2",
-                "phpunit/php-text-template": "^1.2.1",
-                "phpunit/php-timer": "^2.1.2",
-                "sebastian/comparator": "^3.0.2",
-                "sebastian/diff": "^3.0.2",
-                "sebastian/environment": "^4.2.3",
-                "sebastian/exporter": "^3.1.2",
-                "sebastian/global-state": "^3.0.0",
-                "sebastian/object-enumerator": "^3.0.3",
-                "sebastian/resource-operations": "^2.0.1",
-                "sebastian/type": "^1.1.3",
-                "sebastian/version": "^2.0.1"
+                "php": ">=7.3",
+                "phpspec/prophecy": "^1.12.1",
+                "phpunit/php-code-coverage": "^9.2.3",
+                "phpunit/php-file-iterator": "^3.0.5",
+                "phpunit/php-invoker": "^3.1.1",
+                "phpunit/php-text-template": "^2.0.3",
+                "phpunit/php-timer": "^5.0.2",
+                "sebastian/cli-parser": "^1.0.1",
+                "sebastian/code-unit": "^1.0.6",
+                "sebastian/comparator": "^4.0.5",
+                "sebastian/diff": "^4.0.3",
+                "sebastian/environment": "^5.1.3",
+                "sebastian/exporter": "^4.0.3",
+                "sebastian/global-state": "^5.0.1",
+                "sebastian/object-enumerator": "^4.0.3",
+                "sebastian/resource-operations": "^3.0.3",
+                "sebastian/type": "^2.3",
+                "sebastian/version": "^3.0.2"
             },
             "require-dev": {
-                "ext-pdo": "*"
+                "ext-pdo": "*",
+                "phpspec/prophecy-phpunit": "^2.0.1"
             },
             "suggest": {
                 "ext-soap": "*",
-                "ext-xdebug": "*",
-                "phpunit/php-invoker": "^2.0.0"
+                "ext-xdebug": "*"
             },
             "bin": [
                 "phpunit"
@@ -7843,12 +7912,15 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "8.5-dev"
+                    "dev-master": "9.5-dev"
                 }
             },
             "autoload": {
                 "classmap": [
                     "src/"
+                ],
+                "files": [
+                    "src/Framework/Assert/Functions.php"
                 ]
             },
             "autoload-dev": {
@@ -7856,7 +7928,6 @@
                     "tests/"
                 ],
                 "files": [
-                    "src/Framework/Assert/Functions.php",
                     "tests/_files/CoverageNamespacedFunctionTest.php",
                     "tests/_files/CoveredFunction.php",
                     "tests/_files/NamespaceCoveredFunction.php"
@@ -7888,23 +7959,122 @@
             }
         },
         {
-            "name": "sebastian/code-unit-reverse-lookup",
-            "version": "1.0.2",
+            "name": "sebastian/cli-parser",
+            "version": "1.0.1",
             "dist": {
                 "type": "path",
-                "url": "../library/vendor/sebastian/code-unit-reverse-lookup",
-                "reference": "1de8cd5c010cb153fcd68b8d0f64606f523f7619"
+                "url": "../library/vendor/sebastian/cli-parser",
+                "reference": "442e7c7e687e42adc03470c7b668bc4b2402c0b2"
             },
             "require": {
-                "php": ">=5.6"
+                "php": ">=7.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.5"
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Library for parsing CLI options",
+            "homepage": "https://github.com/sebastianbergmann/cli-parser",
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/cli-parser/issues"
+            },
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "sebastian/code-unit",
+            "version": "1.0.8",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/sebastian/code-unit",
+                "reference": "1fc9f64c0927627ef78ba436c9b17d967e68e120"
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "autoload-dev": {
+                "classmap": [
+                    "tests/_fixture"
+                ],
+                "files": [
+                    "tests/_fixture/file_with_multiple_code_units.php",
+                    "tests/_fixture/function.php"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Collection of value objects that represent the PHP code units",
+            "homepage": "https://github.com/sebastianbergmann/code-unit",
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/code-unit/issues"
+            },
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "sebastian/code-unit-reverse-lookup",
+            "version": "2.0.3",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/sebastian/code-unit-reverse-lookup",
+                "reference": "ac91f01ccec49fb77bdc6fd1e548bc70f7faa3e5"
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -7930,24 +8100,24 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "3.0.3",
+            "version": "4.0.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/sebastian/comparator",
-                "reference": "1071dfcef776a57013124ff35e1fc41ccd294758"
+                "reference": "55f4261989e546dc112258c7a75935a81a7ce382"
             },
             "require": {
-                "php": ">=7.1",
-                "sebastian/diff": "^3.0",
-                "sebastian/exporter": "^3.1"
+                "php": ">=7.3",
+                "sebastian/diff": "^4.0",
+                "sebastian/exporter": "^4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.5"
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -7994,24 +8164,70 @@
             }
         },
         {
-            "name": "sebastian/diff",
-            "version": "3.0.3",
+            "name": "sebastian/complexity",
+            "version": "2.0.2",
             "dist": {
                 "type": "path",
-                "url": "../library/vendor/sebastian/diff",
-                "reference": "14f72dd46eaf2f2293cbe79c93cc0bc43161a211"
+                "url": "../library/vendor/sebastian/complexity",
+                "reference": "739b35e53379900cc9ac327b2147867b8b6efd88"
             },
             "require": {
-                "php": ">=7.1"
+                "nikic/php-parser": "^4.7",
+                "php": ">=7.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.5 || ^8.0",
-                "symfony/process": "^2 || ^3.3 || ^4"
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Library for calculating the complexity of PHP code units",
+            "homepage": "https://github.com/sebastianbergmann/complexity",
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/complexity/issues"
+            },
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "sebastian/diff",
+            "version": "4.0.4",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/sebastian/diff",
+                "reference": "3461e3fccc7cfdfc2720be910d3bd73c69be590d"
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3",
+                "symfony/process": "^4.2 || ^5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -8052,17 +8268,17 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "4.2.4",
+            "version": "5.1.3",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/sebastian/environment",
-                "reference": "d47bbbad83711771f167c72d4e3f25f7fcc1f8b0"
+                "reference": "388b6ced16caa751030f6a69e588299fa09200ac"
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.5"
+                "phpunit/phpunit": "^9.3"
             },
             "suggest": {
                 "ext-posix": "*"
@@ -8070,7 +8286,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -8101,24 +8317,24 @@
         },
         {
             "name": "sebastian/exporter",
-            "version": "3.1.3",
+            "version": "4.0.3",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/sebastian/exporter",
-                "reference": "6b853149eab67d4da22291d36f5b0631c0fd856e"
+                "reference": "d89cc98761b8cb5a1a235a6b703ae50d34080e65"
             },
             "require": {
-                "php": ">=7.0",
-                "sebastian/recursion-context": "^3.0"
+                "php": ">=7.3",
+                "sebastian/recursion-context": "^4.0"
             },
             "require-dev": {
                 "ext-mbstring": "*",
-                "phpunit/phpunit": "^6.0"
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1.x-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -8164,20 +8380,20 @@
         },
         {
             "name": "sebastian/global-state",
-            "version": "3.0.1",
+            "version": "5.0.2",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/sebastian/global-state",
-                "reference": "474fb9edb7ab891665d3bfc6317f42a0a150454b"
+                "reference": "a90ccbddffa067b51f574dea6eb25d5680839455"
             },
             "require": {
-                "php": ">=7.2",
-                "sebastian/object-reflector": "^1.1.1",
-                "sebastian/recursion-context": "^3.0"
+                "php": ">=7.3",
+                "sebastian/object-reflector": "^2.0",
+                "sebastian/recursion-context": "^4.0"
             },
             "require-dev": {
                 "ext-dom": "*",
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^9.3"
             },
             "suggest": {
                 "ext-uopz": "*"
@@ -8185,7 +8401,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "5.0-dev"
                 }
             },
             "autoload": {
@@ -8221,25 +8437,71 @@
             }
         },
         {
-            "name": "sebastian/object-enumerator",
-            "version": "3.0.4",
+            "name": "sebastian/lines-of-code",
+            "version": "1.0.3",
             "dist": {
                 "type": "path",
-                "url": "../library/vendor/sebastian/object-enumerator",
-                "reference": "e67f6d32ebd0c749cf9d1dbd9f226c727043cdf2"
+                "url": "../library/vendor/sebastian/lines-of-code",
+                "reference": "c1c2e997aa3146983ed888ad08b15470a2e22ecc"
             },
             "require": {
-                "php": ">=7.0",
-                "sebastian/object-reflector": "^1.1.1",
-                "sebastian/recursion-context": "^3.0"
+                "nikic/php-parser": "^4.6",
+                "php": ">=7.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0"
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Library for counting the lines of code in PHP source code",
+            "homepage": "https://github.com/sebastianbergmann/lines-of-code",
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/lines-of-code/issues"
+            },
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "sebastian/object-enumerator",
+            "version": "4.0.4",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/sebastian/object-enumerator",
+                "reference": "5c9eeac41b290a3712d88851518825ad78f45c71"
+            },
+            "require": {
+                "php": ">=7.3",
+                "sebastian/object-reflector": "^2.0",
+                "sebastian/recursion-context": "^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -8270,22 +8532,22 @@
         },
         {
             "name": "sebastian/object-reflector",
-            "version": "1.1.2",
+            "version": "2.0.4",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/sebastian/object-reflector",
-                "reference": "9b8772b9cbd456ab45d4a598d2dd1a1bced6363d"
+                "reference": "b4f479ebdbf63ac605d183ece17d8d7fe49c15c7"
             },
             "require": {
-                "php": ">=7.0"
+                "php": ">=7.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0"
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -8316,22 +8578,22 @@
         },
         {
             "name": "sebastian/recursion-context",
-            "version": "3.0.1",
+            "version": "4.0.4",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/sebastian/recursion-context",
-                "reference": "367dcba38d6e1977be014dc4b22f47a484dac7fb"
+                "reference": "cd9d8cf3c5804de4341c283ed787f099f5506172"
             },
             "require": {
-                "php": ">=7.0"
+                "php": ">=7.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0"
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -8365,19 +8627,22 @@
         },
         {
             "name": "sebastian/resource-operations",
-            "version": "2.0.2",
+            "version": "3.0.3",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/sebastian/resource-operations",
-                "reference": "31d35ca87926450c44eae7e2611d45a7a65ea8b3"
+                "reference": "0f4443cb3a1d92ce809899753bc0d5d5a8dd19a8"
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -8403,22 +8668,22 @@
         },
         {
             "name": "sebastian/type",
-            "version": "1.1.4",
+            "version": "2.3.1",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/sebastian/type",
-                "reference": "0150cfbc4495ed2df3872fb31b26781e4e077eb4"
+                "reference": "81cd61ab7bbf2de744aba0ea61fae32f721df3d2"
             },
             "require": {
-                "php": ">=7.2"
+                "php": ">=7.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.2"
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -8456,19 +8721,19 @@
         },
         {
             "name": "sebastian/version",
-            "version": "2.0.1",
+            "version": "3.0.2",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/sebastian/version",
-                "reference": "99732be0ddb3361e16ad77b68ba41efc8e979019"
+                "reference": "c6c1022351a901512170118436c764e473f6de8c"
             },
             "require": {
-                "php": ">=5.6"
+                "php": ">=7.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -8550,36 +8815,36 @@
         },
         {
             "name": "symfony/maker-bundle",
-            "version": "1.27.0",
+            "version": "v1.30.2",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/maker-bundle",
-                "reference": "a47408fa6e39034a5abe324a46f4e6733266267a"
+                "reference": "a395a85aa4ded6c1fa3da118d60329b64b6c2acd"
             },
             "require": {
                 "doctrine/inflector": "^1.2|^2.0",
                 "nikic/php-parser": "^4.0",
                 "php": ">=7.1.3",
-                "symfony/config": "^3.4|^4.0|^5.0",
-                "symfony/console": "^3.4|^4.0|^5.0",
-                "symfony/dependency-injection": "^3.4|^4.0|^5.0",
+                "symfony/config": "^4.0|^5.0",
+                "symfony/console": "^4.0|^5.0",
+                "symfony/dependency-injection": "^4.0|^5.0",
                 "symfony/deprecation-contracts": "^2.2",
-                "symfony/filesystem": "^3.4|^4.0|^5.0",
-                "symfony/finder": "^3.4|^4.0|^5.0",
-                "symfony/framework-bundle": "^3.4|^4.0|^5.0",
-                "symfony/http-kernel": "^3.4|^4.0|^5.0"
+                "symfony/filesystem": "^4.0|^5.0",
+                "symfony/finder": "^4.0|^5.0",
+                "symfony/framework-bundle": "^4.0|^5.0",
+                "symfony/http-kernel": "^4.0|^5.0"
             },
             "require-dev": {
                 "composer/semver": "^3.0@dev",
                 "doctrine/doctrine-bundle": "^1.8|^2.0",
                 "doctrine/orm": "^2.3",
                 "friendsofphp/php-cs-fixer": "^2.8",
-                "friendsoftwig/twigcs": "^3.1.2",
+                "friendsoftwig/twigcs": "^4.1.0|^5.0.0",
                 "symfony/http-client": "^4.3|^5.0",
                 "symfony/phpunit-bridge": "^4.3|^5.0",
-                "symfony/process": "^3.4|^4.0|^5.0",
-                "symfony/security-core": "^3.4|^4.0|^5.0",
-                "symfony/yaml": "^3.4|^4.0|^5.0"
+                "symfony/process": "^4.0|^5.0",
+                "symfony/security-core": "^4.0|^5.0",
+                "symfony/yaml": "^4.0|^5.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -8621,11 +8886,11 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v5.2.1",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/phpunit-bridge",
-                "reference": "235823f6d215c9bd930a47a496e62c1354cde55b"
+                "reference": "f2f94fd78379cdcdef09dd5025af791301913968"
             },
             "require": {
                 "php": ">=5.5.9"
@@ -8674,7 +8939,7 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony PHPUnit Bridge",
+            "description": "Provides utilities for PHPUnit, especially user deprecation notices management",
             "homepage": "https://symfony.com",
             "transport-options": {
                 "symlink": true,
@@ -8779,5 +9044,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

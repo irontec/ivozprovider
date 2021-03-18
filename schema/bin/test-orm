@@ -10,5 +10,5 @@ pushd /opt/irontec/ivozprovider/schema
     fi
 
     # Run tests
-    SYMFONY_PHPUNIT_VERSION=8.5.8 vendor/bin/simple-phpunit
+    vendor/bin/simple-phpunit
 popd

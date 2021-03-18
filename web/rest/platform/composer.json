@@ -73,7 +73,8 @@
         "behatch/contexts": "^3.3",
         "docteurklein/test-double-bundle": "^1.0",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
-        "phpunit/phpunit": "^8.0",
+        "phpunit/phpunit": "^9.4.4",
+        "dms/phpunit-arraysubset-asserts": "^0.2.1",
         "symfony/phpunit-bridge": "^5.0"
     },
     "extra": {

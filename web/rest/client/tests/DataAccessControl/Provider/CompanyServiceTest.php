@@ -10,7 +10,7 @@ class CompanyServiceTest extends KernelTestCase
 {
     use \Ivoz\Tests\AccessControlTestHelperTrait;
 
-    protected function getResourceClass()
+    protected function getResourceClass(): string
     {
         return CompanyService::class;
     }
