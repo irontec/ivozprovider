@@ -17,21 +17,21 @@ RUN apt-get install --assume-yes --force-yes \
         sphinx-intl \
         nodejs \
 		npm \
-        php7.4 \
-        php7.4-cli \
-        php7.4-mysql \
-        php7.4-xml \
-        php7.4-gd \
-        php7.4-mbstring \
-        php7.4-sqlite3 \
-        php7.4-igbinary \
-        php7.4-curl \
-        php7.4-yaml \
-        php7.4-gearman \
-        php7.4-mailparse \
-        php7.4-imagick \
-        php7.4-xdebug \
-        php7.4-zip
+        php8.0 \
+        php8.0-cli \
+        php8.0-mysql \
+        php8.0-xml \
+        php8.0-gd \
+        php8.0-mbstring \
+        php8.0-sqlite3 \
+        php8.0-igbinary \
+        php8.0-curl \
+        php8.0-yaml \
+        php8.0-gearman \
+        php8.0-mailparse \
+        php8.0-imagick \
+        php8.0-xdebug \
+        php8.0-zip
 RUN apt-get clean
 
 # Create jenkins user (configurable)
@@ -56,7 +56,7 @@ RUN wget https://github.com/sebastianbergmann/phpunit/archive/6.5.14.zip -O /opt
 RUN unzip /opt/phpunit/phpunit.zip -d /opt/phpunit/
 
 # Get dependencies
-RUN /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-progress
+RUN /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-progress --ignore-platform-reqs
 
 # Store the main project vendor
 RUN cp -r /opt/irontec/ivozprovider/library/vendor/    /opt/library-vendor

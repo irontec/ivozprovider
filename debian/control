@@ -2,11 +2,11 @@ Source: ivozprovider
 Section: php
 Priority: optional
 Build-Depends: debhelper, dh-systemd,
-    nodejs, npm, ruby-dev, git, openssh-client, curl, php7.4,
+    nodejs, npm, ruby-dev, git, openssh-client, curl, php8.0,
     python, make, python-sphinx-rtd-theme, gettext,
     python-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
     libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8), composer,
-    php7.4-mbstring, php7.4-xml, php7.4-zip, php7.4-mailparse, php7.4-gearman
+    php8.0-mbstring, php8.0-xml, php8.0-zip, php8.0-mailparse, php8.0-gearman
 Standards-Version: 3.9.6
 Maintainer: Irontec IvozProvider Team <ivozprovider@irontec.com>
 
@@ -51,8 +51,8 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-asterisk-config (=${binary:Version}),
     ivozprovider-asterisk-sounds,
     ivozprovider-asterisk,
-    php7.4-igbinary,
-    php7.4-gearman,
+    php8.0-igbinary,
+    php8.0-gearman,
     sngrep,
     ghostscript,
     libtiff-tools
@@ -88,16 +88,16 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     apache2,
     ssl-cert,
     ghostscript,
-    php7.4,
-    php7.4-igbinary,
-    php7.4-mysql,
-    php7.4-imagick,
-    php7.4-mbstring,
-    php7.4-curl,
-    php7.4-gearman,
-    php7.4-yaml,
-    php7.4-gd,
-    php7.4-zip,
+    php8.0,
+    php8.0-igbinary,
+    php8.0-mysql,
+    php8.0-imagick,
+    php8.0-mbstring,
+    php8.0-curl,
+    php8.0-gearman,
+    php8.0-yaml,
+    php8.0-gd,
+    php8.0-zip,
     ivozprovider-web-admin (=${binary:Version}),
     ivozprovider-web-user (=${binary:Version}),
     gearman-job-server,
@@ -188,7 +188,7 @@ Package: ivozprovider-schema
 Architecture: all
 Section: database
 Priority: optional
-Pre-Depends: ivozprovider-common-library (=${binary:Version}), bind9, php7.4-mysql, php7.4-xml, mysql-server
+Pre-Depends: ivozprovider-common-library (=${binary:Version}), bind9, php8.0-mysql, php8.0-xml, mysql-server
 Conflicts: ivozprovider-scheme
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
@@ -220,7 +220,7 @@ Package: ivozprovider-web-rest
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), apache2, libapache2-mod-php7.4
+Depends: ivozprovider-common-library (=${binary:Version}), apache2, libapache2-mod-php8.0
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Rest API files
  .
@@ -228,7 +228,7 @@ Description: IVOZ Provider - Rest API files
 Package: ivozprovider-common-library
 Architecture: all
 Section: php
-Depends: php7.4-cli, php7.4-mysql, php7.4-mbstring, php7.4-xml, acl, klear-library, php7.4-mailparse, php7.4-intl
+Depends: php8.0-cli, php8.0-mysql, php8.0-mbstring, php8.0-xml, acl, klear-library, php8.0-mailparse, php8.0-intl
 Provides: ivozprovider-data-library
 Conflicts: ivozprovider-data-library
 Priority: optional
@@ -249,7 +249,7 @@ Description: IVOZ Provider - Recordings - Symfony microservice
 Package: ivozprovider-async-workers
 Architecture: all
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), php7.4-gearman
+Depends: ivozprovider-common-library (=${binary:Version}), php8.0-gearman
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Async Workers - Symfony microservice
  .
@@ -265,7 +265,7 @@ Description: IVOZ Provider - Scheduled tasks runner - Symfony microservice
 Package: ivozprovider-balances
 Architecture: all
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), php7.4-gearman
+Depends: ivozprovider-common-library (=${binary:Version}), php8.0-gearman
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Rating updater - Symfony microservice
   .
@@ -273,7 +273,7 @@ Description: IVOZ Provider - Rating updater - Symfony microservice
 Package: ivozprovider-realtime
 Architecture: all
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), php7.4-redis, php7.4-swoole
+Depends: ivozprovider-common-library (=${binary:Version}), php8.0-redis, php8.0-swoole
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Realtime Websocket server - Symfony microservice
   .
