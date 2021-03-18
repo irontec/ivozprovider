@@ -1,5 +1,5 @@
 {
-    "name": "irontec/ivozprovider/agi",
+    "name": "irontec/ivozprovider-agi",
     "description": "Multitenant solution for VoIP telephony providers (Recordings module)",
     "authors": [
         {
