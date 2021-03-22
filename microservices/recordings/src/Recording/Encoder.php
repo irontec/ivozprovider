@@ -232,6 +232,7 @@ class Encoder
                     $metadata,
                     $convertMp3
                 ]);
+                $convertProcess->setTimeout(120);
                 $convertProcess->mustRun();
 
                 if ($convertProcess->getExitCode() != 0) {
