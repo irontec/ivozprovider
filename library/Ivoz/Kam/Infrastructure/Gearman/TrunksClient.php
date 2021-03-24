@@ -107,7 +107,8 @@ class TrunksClient implements TrunksClientInterface
     {
         $response = $this->sendRequest(
             self::LCR_DUMP_GWS_ACTION,
-            [$gw_id]
+            [$gw_id],
+            2
         );
 
         if (!isset($response->result)) {
