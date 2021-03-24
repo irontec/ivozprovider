@@ -75,7 +75,8 @@ class UsersClient implements UsersClientInterface
             [
                 'srcban',
                 $aor . '::' . $ip
-            ]
+            ],
+            10
         );
 
         return;
