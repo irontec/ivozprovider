@@ -108,7 +108,7 @@ class FaxDial extends RouteHandlerAbstract
             "-sOutputFile=". $tifFile,
             $pdfFile
         ]);
-        $process->mustRun();
+        $process->run();
 
         /** @var FaxesInOutDto $faxOutDto */
         $faxOutDto = $this->entityTools->entityToDto($faxOut);
