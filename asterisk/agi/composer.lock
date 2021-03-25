@@ -1556,11 +1556,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.2",
+            "version": "4.2.1",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core",
-                "reference": "98479f80c9071ea2259732cfe4d5edd105b2cd24"
+                "reference": "34dff6621a3ee950b37110fe86a0cd38eb67363d"
             },
             "require": {
                 "beberlei/assert": "2.9.*",
@@ -1652,11 +1652,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.16",
+            "version": "2.5.17",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "214a3e19d41afe7c1115ab88d57b16ae48d3fdcb"
+                "reference": "0809c31ed6083b59602bc13bcfb52a8d0e14b4eb"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -2564,14 +2564,14 @@
         },
         {
             "name": "psr/cache",
-            "version": "1.0.1",
+            "version": "2.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/psr/cache",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
+                "reference": "213f9dbc5b9bfbc4f8db86d2838dc968752ce13b"
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=8.0.0"
             },
             "type": "library",
             "extra": {
@@ -2590,7 +2590,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for caching libraries",
@@ -3115,15 +3115,15 @@
         },
         {
             "name": "symfony/cache-contracts",
-            "version": "v2.2.0",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/cache-contracts",
-                "reference": "8034ca0b61d4dd967f3698aaa1da2507b631d0cb"
+                "reference": "c0446463729b89dd4fa62e9aeecc80287323615d"
             },
             "require": {
                 "php": ">=7.2.5",
-                "psr/cache": "^1.0"
+                "psr/cache": "^1.0|^2.0|^3.0"
             },
             "suggest": {
                 "symfony/cache-implementation": ""
@@ -3131,7 +3131,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-main": "2.4-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",

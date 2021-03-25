@@ -10,7 +10,7 @@ parameters:
     database_user: root
     database_password: changeme
     database_unix_socket: ~
-    database_version: 5.7
+    database_version: 8.0
     api_platform_base_url: 'https://localhost/api/platform/index.html'
     api_brand_base_url: 'https://localhost/api/brand/index.html'
     api_client_base_url: 'https://localhost/api/client/index.html'

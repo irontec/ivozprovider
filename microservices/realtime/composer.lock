@@ -8,17 +8,17 @@
     "packages": [
         {
             "name": "api-platform/core",
-            "version": "v2.6.3",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/api-platform/core",
-                "reference": "1ba77218dfe61ca9e6cff1bbb3e9a4a6658d4538"
+                "reference": "9c348d2b4fdc55b55f202a91878e2f4dd8d6cf99"
             },
             "require": {
                 "doctrine/inflector": "^1.0 || ^2.0",
                 "fig/link-util": "^1.0",
                 "php": ">=7.1",
-                "psr/cache": "^1.0",
+                "psr/cache": "^1.0 || ^2.0 || ^3.0",
                 "psr/container": "^1.0",
                 "symfony/http-foundation": "^4.4 || ^5.1",
                 "symfony/http-kernel": "^4.4 || ^5.1",
@@ -30,7 +30,7 @@
             },
             "conflict": {
                 "doctrine/common": "<2.7",
-                "doctrine/mongodb-odm": "<2.0",
+                "doctrine/mongodb-odm": "<2.1",
                 "doctrine/persistence": "<1.3"
             },
             "require-dev": {
@@ -40,7 +40,7 @@
                 "doctrine/common": "^2.11 || ^3.0",
                 "doctrine/data-fixtures": "^1.2.2",
                 "doctrine/doctrine-bundle": "^1.12 || ^2.0",
-                "doctrine/mongodb-odm": "^2.0",
+                "doctrine/mongodb-odm": "^2.1",
                 "doctrine/mongodb-odm-bundle": "^4.0",
                 "doctrine/orm": "^2.6.4 || ^3.0",
                 "elasticsearch/elasticsearch": "^6.0 || ^7.0",
@@ -1398,21 +1398,21 @@
         },
         {
             "name": "fig/link-util",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/fig/link-util",
-                "reference": "5d7b8d04ed3393b4b59968ca1e906fb7186d81e8"
+                "reference": "10e52348a2e9ad4581f2bf3e16458f0861a88c6a"
             },
             "require": {
-                "php": ">=5.5.0",
-                "psr/link": "~1.0@dev"
+                "php": ">=8.0.0",
+                "psr/link": "^1.1.0 | ^2.0.0"
             },
             "provide": {
                 "psr/link-implementation": "1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.1",
+                "phpunit/phpunit": "^9",
                 "squizlabs/php_codesniffer": "^2.3.1"
             },
             "type": "library",
@@ -1817,11 +1817,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.2.1",
+            "version": "4.2.2",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-api",
-                "reference": "f080098eb73838974631a321016b643ef470857d"
+                "reference": "26b56c86b58f493b4f4bf389d11104550a25b271"
             },
             "require": {
                 "api-platform/core": "^2.5",
@@ -1911,11 +1911,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.2",
+            "version": "4.2.1",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core",
-                "reference": "98479f80c9071ea2259732cfe4d5edd105b2cd24"
+                "reference": "34dff6621a3ee950b37110fe86a0cd38eb67363d"
             },
             "require": {
                 "beberlei/assert": "2.9.*",
@@ -2007,11 +2007,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.16",
+            "version": "2.5.17",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "214a3e19d41afe7c1115ab88d57b16ae48d3fdcb"
+                "reference": "0809c31ed6083b59602bc13bcfb52a8d0e14b4eb"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -2896,14 +2896,14 @@
         },
         {
             "name": "psr/cache",
-            "version": "1.0.1",
+            "version": "2.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/psr/cache",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
+                "reference": "213f9dbc5b9bfbc4f8db86d2838dc968752ce13b"
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=8.0.0"
             },
             "type": "library",
             "extra": {
@@ -2922,7 +2922,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for caching libraries",
@@ -3066,14 +3066,14 @@
         },
         {
             "name": "psr/link",
-            "version": "1.0.0",
+            "version": "1.1.1",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/psr/link",
-                "reference": "eea8e8662d5cd3ae4517c9b864493f59fca95562"
+                "reference": "846c25f58a1f02b93a00f2404e3626b6bf9b7807"
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=8.0.0"
             },
             "type": "library",
             "extra": {
@@ -3096,6 +3096,7 @@
                 }
             ],
             "description": "Common interfaces for HTTP links",
+            "homepage": "https://github.com/php-fig/link",
             "keywords": [
                 "http",
                 "http-link",
@@ -3492,15 +3493,15 @@
         },
         {
             "name": "symfony/cache-contracts",
-            "version": "v2.2.0",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/cache-contracts",
-                "reference": "8034ca0b61d4dd967f3698aaa1da2507b631d0cb"
+                "reference": "c0446463729b89dd4fa62e9aeecc80287323615d"
             },
             "require": {
                 "php": ">=7.2.5",
-                "psr/cache": "^1.0"
+                "psr/cache": "^1.0|^2.0|^3.0"
             },
             "suggest": {
                 "symfony/cache-implementation": ""
@@ -3508,7 +3509,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-main": "2.4-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
