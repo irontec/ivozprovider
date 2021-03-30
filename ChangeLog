@@ -1,3 +1,27 @@
+Tue, 30 Mar 2021 16:59:13 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.17.1 released
+
+    * Core
+        - Fix recordings on SSRC change scenarios (fixes incomplete recordings)
+        - Convert long call recordings to MP3 properly
+
+    * Proxies
+        - RTP timeout call hangup
+        - Several BLF related fixes
+        - Send OPTIONS using right local socket
+
+    * vPBX
+        - Faxes are now marked as error if call is not answered
+
+    * API
+        - Added text/csv response type to client/billable_calls
+
+    * Portals
+        - Skip record count on large tables in dashboard (makes portal faster)
+        - Fix holiday date creation for non english languages
+        - Fix rating plan download issues
+
 Mon, 22 Feb 2021 12:12:13 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.17.0 released
