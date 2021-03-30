@@ -5,7 +5,7 @@ imports:
 
 doctrine:
   dbal:
-    schema_filter: "/^(?!kam_version|changelog|sm_costs|tp_versions$).*/"
+    schema_filter: "/^(?!kam_version|changelog|sm_costs|tp_versions|BillableCallHistorics$).*/"
   orm:
     mappings:
       JWTRefreshTokenEntity:

@@ -28,6 +28,8 @@ class BillableCallRepositoryTest extends KernelTestCase
         $this->it_finds_rerateable_cgrids_in_group();
         $this->it_transforms_ids_to_trunkCdrId();
         $this->it_counts_unrated_calls_in_range();
+        $this->it_finds_min_start_time();
+        $this->it_finds_ids_in_range();
     }
 
     private function it_finds_outgoing_call_by_callid()
@@ -312,6 +314,51 @@ class BillableCallRepositoryTest extends KernelTestCase
         $this->assertInternalType(
             'int',
             $response
+        );
+    }
+
+    private function it_finds_min_start_time()
+    {
+        /** @var BillableCallRepository $billableCallRepository */
+        $billableCallRepository = $this->em
+            ->getRepository(BillableCall::class);
+
+        /** @var BillableCallInterface $billableCall */
+        $billableCall = $billableCallRepository->find(1);
+
+        $response = $billableCallRepository
+            ->getMinStartTime(0);
+
+        $this->assertEquals(
+            $response,
+            $billableCall->getStartTime()
+        );
+    }
+
+    private function it_finds_ids_in_range()
+    {
+        /** @var BillableCallRepository $billableCallRepository */
+        $billableCallRepository = $this->em
+            ->getRepository(BillableCall::class);
+
+        /** @var BillableCallInterface $billableCall3 */
+        $billableCall3 = $billableCallRepository->find(3);
+
+        $ids = $billableCallRepository
+            ->getIdsInRange(
+                0,
+                $billableCall3->getStartTime(),
+                1000
+            );
+
+        $this->assertInternalType(
+            'array',
+            $ids
+        );
+
+        $this->assertCount(
+            2,
+            $ids
         );
     }
 }

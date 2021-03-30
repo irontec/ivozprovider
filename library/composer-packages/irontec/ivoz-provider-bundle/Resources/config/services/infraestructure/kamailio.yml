@@ -15,13 +15,17 @@ services:
   Ivoz\Kam\Infrastructure\Kamailio\RpcClient::Trunks:
     class: Ivoz\Kam\Infrastructure\Kamailio\RpcClient
     factory: ['Ivoz\Kam\Infrastructure\Kamailio\RpcClient', 'factory']
-    arguments: ['trunks.ivozprovider.local:8001']
+    arguments:
+      - 'trunks.ivozprovider.local:8001'
+      - {'connect_timeout': 2, 'timeout': 0}
     tags:
     - { name: test_double, fake: 'Ivoz\Kam\Infrastructure\Kamailio\FakeRpcClient' }
 
   Ivoz\Kam\Infrastructure\Kamailio\RpcClient::Users:
     class: Ivoz\Kam\Infrastructure\Kamailio\RpcClient
     factory: ['Ivoz\Kam\Infrastructure\Kamailio\RpcClient', 'factory']
-    arguments: ['users.ivozprovider.local:8000']
+    arguments:
+      - 'users.ivozprovider.local:8000'
+      - { 'connect_timeout': 2, 'timeout': 0 }
     tags:
     - { name: test_double, fake: 'Ivoz\Kam\Infrastructure\Kamailio\FakeRpcClient' }

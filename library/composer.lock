@@ -1862,16 +1862,16 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "4.0.1",
+            "version": "4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-dev-tools.git",
-                "reference": "8734bdf5f6f1b821339a12be570e932b9b5b6376"
+                "reference": "f92e1b8ef36d11c96497b58af0d8d3fb02c130d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/8734bdf5f6f1b821339a12be570e932b9b5b6376",
-                "reference": "8734bdf5f6f1b821339a12be570e932b9b5b6376",
+                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/f92e1b8ef36d11c96497b58af0d8d3fb02c130d5",
+                "reference": "f92e1b8ef36d11c96497b58af0d8d3fb02c130d5",
                 "shasum": ""
             },
             "require": {
@@ -1905,16 +1905,15 @@
                 }
             ],
             "description": "DevTools for ivozprovider",
-            "time": "2020-06-11T13:52:10+00:00"
+            "time": "2021-03-09T10:44:56+00:00"
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.7",
+            "version": "2.5.8",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "006da71d25a542283444e765de3f6f64ea44bff1",
-                "shasum": null
+                "reference": "31ebbcf8f1f9718d42dc9d374563996aac1edd46"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.1",
@@ -8170,46 +8169,6 @@
             ],
             "description": "A tool to automatically fix PHP code style",
             "time": "2020-06-27T23:57:46+00:00"
-        },
-        {
-            "name": "h4cc/wkhtmltopdf-amd64",
-            "version": "0.12.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/h4cc/wkhtmltopdf-amd64.git",
-                "reference": "b80ce6720349e98cebac7e8a19426455805fa7e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/h4cc/wkhtmltopdf-amd64/zipball/b80ce6720349e98cebac7e8a19426455805fa7e1",
-                "reference": "b80ce6720349e98cebac7e8a19426455805fa7e1",
-                "shasum": ""
-            },
-            "bin": [
-                "bin/wkhtmltopdf-amd64"
-            ],
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL Version 3"
-            ],
-            "authors": [
-                {
-                    "name": "Julius Beckmann",
-                    "email": "github@h4cc.de"
-                }
-            ],
-            "description": "Convert html to pdf using webkit (qtwebkit). Static linked linux binary for amd64 systems.",
-            "homepage": "http://wkhtmltopdf.org/",
-            "keywords": [
-                "binary",
-                "convert",
-                "pdf",
-                "snapshot",
-                "thumbnail",
-                "wkhtmltopdf"
-            ],
-            "time": "2016-02-02T19:38:55+00:00"
         },
         {
             "name": "http-interop/http-middleware",

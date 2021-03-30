@@ -20,6 +20,11 @@ class Encoder
     const RECORDING_SIZE_MIN = 512;
 
     /**
+     * Recording created this seconds ago will be ignored
+     */
+    const RECORDING_AGE_MIN = 10;
+
+    /**
      * @var TrunksCdrRepository
      */
     protected $trunksCdrRepository;
@@ -89,6 +94,13 @@ class Encoder
 
                 // Only handle files
                 if (!is_file($filenameabs)) {
+                    continue;
+                }
+
+                // Ignore recent files
+                $age = time() - filemtime($filenameabs);
+                if ($age <= self::RECORDING_AGE_MIN) {
+                    $this->logger->info(sprintf("[Recordings] Ignoring too young file %s [%d sec]\n", $filename, $age));
                     continue;
                 }
 
@@ -232,6 +244,7 @@ class Encoder
                     $metadata,
                     $convertMp3
                 ]);
+                $convertProcess->setTimeout(120);
                 $convertProcess->mustRun();
 
                 if ($convertProcess->getExitCode() != 0) {

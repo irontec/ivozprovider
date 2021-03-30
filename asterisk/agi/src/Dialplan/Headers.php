@@ -90,7 +90,7 @@ class Headers extends RouteHandlerAbstract
             // Get retailAccount from channel variables
             $retailAccountId = $this->agi->getVariable("RETAILACCOUNTID");
             if (!empty($retailAccountId)) {
-                $this->agi->setSIPHeader("X-Info-RetailAccount", $retailAccountId);
+                $this->agi->setSIPHeader("X-Info-RetailAccountId", $retailAccountId);
             }
 
             // Get user from channel variables

@@ -1284,6 +1284,11 @@ msgstr "Group belonging"
 msgid "Hash based"
 msgstr "Hash based"
 
+msgid "Historic external call"
+msgid_plural "Historic external calls"
+msgstr[0] "Historic external call"
+msgstr[1] "Historic external calls"
+
 msgid "Holiday date"
 msgid_plural "Holiday dates"
 msgstr[0] "Holiday date"
