@@ -27,6 +27,7 @@ class IvozProvider_Klear_Filter_HolidayDateSelectLocution implements KlearMatrix
         $dataGateway = \Zend_Registry::get('data_gateway');
         switch ($currentItemName) {
             case "holidayDatesNew_screen":
+            case "holidayDatesRangeNew_screen":
                 if ($parentId) {
 
                     /** @var CalendarDto $calendarDto */
