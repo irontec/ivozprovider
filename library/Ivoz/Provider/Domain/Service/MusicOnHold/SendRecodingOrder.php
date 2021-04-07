@@ -37,6 +37,10 @@ class SendRecodingOrder implements MusicOnHoldLifecycleEventHandlerInterface
      */
     public function execute(MusicOnHoldInterface $entity)
     {
+        if ($entity->hasBeenDeleted()) {
+            return;
+        }
+
         $pendingStatus = $entity->getStatus() === 'pending';
         $statusHasChanged = $entity->hasChanged('status');
 
