@@ -174,6 +174,6 @@ module.exports = {
   elements: {
     caption: { selector: currentTab + 'table.kMatrix caption' },
     rows: { selector: currentTab + 'table.kMatrix tr' },
-    addBtn: { selector: currentTab + 'div.generalOptionsToolbar a.screen' },
+    addBtn: { selector: currentTab + 'div.generalOptionsToolbar a.screen:first-of-type' },
   }
 };

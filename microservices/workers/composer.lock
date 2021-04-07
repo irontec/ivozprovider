@@ -1708,11 +1708,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.17",
+            "version": "2.5.18",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "0809c31ed6083b59602bc13bcfb52a8d0e14b4eb"
+                "reference": "a591d9033e87a2c049c9076b5d609384caa56dd1"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",

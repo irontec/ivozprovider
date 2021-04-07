@@ -19,7 +19,7 @@ module.exports = {
   "custom_assertions_path" : "",
   "selenium" : {
     "start_process" : true,
-    "server_path" : "/opt/selenium/selenium-server-standalone-3.5.3.jar",
+    "server_path" : "/opt/selenium/selenium-server-standalone-3.141.59.jar",
     "log_path" : "",
     "port" : 4444,
     "cli_args" : {

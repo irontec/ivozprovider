@@ -1,7 +1,7 @@
 @company
 @matchLists
 @company09
-@company09-1
+@company09-2
 
 Feature: MatchLists admin page
   As a main operator

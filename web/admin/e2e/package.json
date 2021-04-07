@@ -17,7 +17,7 @@
     "reCreateDb": "npm run dropDb; npm run createDb",
     "dropDb": "../../../schema/bin/console doctrine:database:drop --force -e test_e2e",
     "createDb": "../../../schema/bin/console doctrine:database:create -e test_e2e",
-    "loadDbSchema": "../../../schema/bin/console doctrine:database:import ../../../schema/initial.sql -e test_e2e",
+    "loadDbSchema": "mysql ivozprovider_e2e < ../../../schema/initial.sql",
     "updateDbSchema": "../../../schema/bin/console doctrine:migrations:migrate --quiet -e test_e2e",
     "clearEnv": "npm run clearScreenshots; npm run cacheClear",
     "clearScreenshots": "rm -fr errors/*",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "chromedriver": "2.36.*",
+    "chromedriver": "88.0.*",
     "cucumber": "3.0.*",
     "cucumber-junit": "1.7.*",
     "cucumber-pretty": "git+https://github.com/mmadariaga/cucumber-pretty.git",

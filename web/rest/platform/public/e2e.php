@@ -3,6 +3,8 @@
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
+putenv("APP_ENV=test_e2e");
+$_SERVER['APP_ENV'] = getenv('APP_ENV');
 require dirname(__DIR__).'/config/bootstrap.php';
 
 if ($_SERVER['APP_DEBUG']) {
