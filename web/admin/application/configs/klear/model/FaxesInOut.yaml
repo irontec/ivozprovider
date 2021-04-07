@@ -80,6 +80,7 @@ production:
       source:
         data: fso
         size_limit: 20M
+        extensions: [ pdf ]
         options:
           download:
             external: true
