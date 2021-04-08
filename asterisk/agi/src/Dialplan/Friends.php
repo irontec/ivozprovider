@@ -123,7 +123,6 @@ class Friends extends RouteHandlerAbstract
 
         // Check if this extension starts with '*' code
         if (strpos($exten, '*') === 0) {
-            /** @var CompanyServiceInterface $service */
             if (($service = $company->getService($exten))) {
                 // Handle service code
                 $this->serviceAction

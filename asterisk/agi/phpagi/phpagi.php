@@ -906,7 +906,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer{strlen($buffer)-1})) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
                 $proceed = true;
             }
         }
@@ -917,7 +917,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer{strlen($buffer)-1}));
+        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]));
     }
 
     /**
@@ -935,7 +935,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer{strlen($buffer)-1})) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
                 $proceed = true;
             }
         }
@@ -946,7 +946,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer{strlen($buffer)-1}));
+        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]));
     }
 
     /**
@@ -964,7 +964,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer{strlen($buffer)-1})) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
                 $proceed = true;
             }
         }
@@ -975,7 +975,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer{strlen($buffer)-1}));
+        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]));
     }
 
     /**
@@ -993,7 +993,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer{strlen($buffer)-1})) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
                 $proceed = true;
             }
         }
@@ -1004,7 +1004,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer{strlen($buffer)-1}));
+        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]));
     }
 
     /**
@@ -1025,7 +1025,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer{strlen($buffer)-1})) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
                 $proceed = true;
             }
         }
@@ -1036,7 +1036,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer{strlen($buffer)-1}), 'endpos'=>0);
+        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]), 'endpos'=>0);
     }
 
     /**
@@ -1054,7 +1054,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer{strlen($buffer)-1})) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
                 $proceed = true;
             }
         }
@@ -1065,7 +1065,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer{strlen($buffer)-1}), 'endpos'=>0);
+        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]), 'endpos'=>0);
     }
 
     /**
@@ -1083,7 +1083,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer{strlen($buffer)-1})) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
                 $proceed = true;
             }
         }
@@ -1094,7 +1094,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer{strlen($buffer)-1}), 'endpos'=>0);
+        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]), 'endpos'=>0);
     }
 
     /**
@@ -1111,7 +1111,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer{strlen($buffer)-1})) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
                 $proceed = true;
             }
         }
@@ -1122,7 +1122,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer{strlen($buffer)-1}));
+        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]));
     }
 
     /**
@@ -1208,7 +1208,7 @@ class AGI
         $choice = null;
         while (is_null($choice)) {
             foreach ($choices as $prompt) {
-                if ($prompt{0} == '*') {
+                if ($prompt[0] == '*') {
                     $ret = $this->text2wav(substr($prompt, 1), $keys);
                 } else {
                     $ret = $this->stream_file($prompt, $keys);
@@ -1271,8 +1271,8 @@ class AGI
         $ret = array('name'=>'', 'protocol'=>'', 'username'=>'', 'host'=>'', 'port'=>'');
         $callerid = trim($callerid);
 
-        if ($callerid{0} == '"' || $callerid{0} == "'") {
-            $d = $callerid{0};
+        if ($callerid[0] == '"' || $callerid[0] == "'") {
+            $d = $callerid[0];
             $callerid = explode($d, substr($callerid, 1));
             $ret['name'] = array_shift($callerid);
             $callerid = join($d, $callerid);
@@ -1446,7 +1446,7 @@ class AGI
             $result = $this->get_data('beep');
             foreach (explode('*', $result['result']) as $code) {
                 if ($command) {
-                    switch ($code{0}) {
+                    switch ($code[0]) {
                         case '2':
                             $text = substr($text, 0, strlen($text) - 1);
                             break; // backspace
@@ -1499,7 +1499,7 @@ class AGI
     function say_punctuation($text, $escape_digits = '', $frequency = 8000)
     {
         for ($i = 0; $i < strlen($text); $i++) {
-            switch ($text{$i}) {
+            switch ($text[$i]) {
                 case ' ':
                     $ret .= 'SPACE ';
                 case ',':
@@ -1599,7 +1599,7 @@ class AGI
                     $ret .= 'TILDE ';
                     break;
                 default:
-                    $ret .= $text{$i} . ' ';
+                    $ret .= $text[$i] . ' ';
                     break;
             }
         }
@@ -1665,7 +1665,7 @@ class AGI
         // Irontec. Replace multiples spaces with only one.
         $str = preg_replace("/\s+/", " ", $str);
 
-        if ($str{0} == '-') { // we have a multiline response!
+        if ($str[0] == '-') { // we have a multiline response!
             $count = 0;
             $str = substr($str, 1) . "\n";
             $line = fgets($this->in, 4096);
@@ -1692,11 +1692,11 @@ class AGI
             foreach ($parse as $token) {
                 if ($in_token) { // we previously hit a token starting with ')' but not ending in ')'
                     $ret['data'] .= ' ' . trim($token, '() ');
-                    if ($token{strlen($token)-1} == ')') {
+                    if ($token[strlen($token)-1] == ')') {
                         $in_token = false;
                     }
-                } elseif ($token{0} == '(') {
-                    if ($token{strlen($token)-1} != ')') {
+                } elseif ($token[0] == '(') {
+                    if ($token[strlen($token)-1] != ')') {
                         $in_token = true;
                     }
                     $ret['data'] .= ' ' . trim($token, '() ');
@@ -1915,15 +1915,15 @@ function phpagi_error_handler($level, $message, $file, $line, $context)
         // make sure message is fully readable (convert unprintable chars to hex representation)
         $ret = '';
         for ($i = 0; $i < strlen($message); $i++) {
-            $c = ord($message{$i});
+            $c = ord($message[$i]);
             if ($c == 10 || $c == 13 || $c == 9) {
-                $ret .= $message{$i};
+                $ret .= $message[$i];
             } elseif ($c < 16) {
                 $ret .= '\x0' . dechex($c);
             } elseif ($c < 32 || $c > 127) {
                 $ret .= '\x' . dechex($c);
             } else {
-                $ret .= $message{$i};
+                $ret .= $message[$i];
             }
         }
         $message = $ret;

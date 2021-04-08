@@ -53,6 +53,7 @@ class FeatureContext extends BaseFeatureContext
      */
     public function setUserApiContext(BeforeScenarioScope $scope)
     {
+        /** @var \FriendsOfBehat\SymfonyExtension\Context\Environment\InitializedSymfonyExtensionEnvironment $environment */
         $environment = $scope->getEnvironment();
 
         foreach ($environment->getContextClasses() as $contextName) {

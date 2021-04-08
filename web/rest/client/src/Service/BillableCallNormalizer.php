@@ -38,7 +38,7 @@ class BillableCallNormalizer implements NormalizerInterface
     {
         $response = $this
             ->decoratedNormalizer
-            ->normalize(...fuProvider/PostUsersMassImportAction.phpnc_get_args());
+            ->normalize(...func_get_args());
 
         if (! $object instanceof BillableCallInterface
             && !$object instanceof BillableCallDto

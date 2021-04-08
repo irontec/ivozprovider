@@ -8,10 +8,7 @@ use Agi\Agents\ResidentialAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
-use Ivoz\Provider\Domain\Model\BrandService\BrandService;
-use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
-use Ivoz\Provider\Domain\Model\Service\Service;
 use RouteHandlerAbstract;
 
 class Residentials extends RouteHandlerAbstract
@@ -109,7 +106,6 @@ class Residentials extends RouteHandlerAbstract
 
         // Check if this extension starts with '*' code
         if (strpos($exten, '*') === 0) {
-            /** @var BrandServiceInterface $service */
             if (($service = $brand->getService($exten))) {
                 $this->agi->verbose("Number %s belongs to a %s.", $exten, $service);
 

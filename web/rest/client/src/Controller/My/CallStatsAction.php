@@ -6,14 +6,13 @@ use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Model\CallStats as CallStatsModel;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class CallStatsAction
 {
     /**
-     * @var TokenStorage
+     * @var TokenStorageInterface
      */
     protected $tokenStorage;
 

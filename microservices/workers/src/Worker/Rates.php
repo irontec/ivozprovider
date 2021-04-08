@@ -139,12 +139,13 @@ class Rates
                 ->getFile()
                 ->getImporterArguments();
 
-            $csvEncoder = new CsvEncoder(
-                $importerArguments['delimiter'] ?? ',',
-                $importerArguments['enclosure'] ?? '"',
-                $importerArguments['scape'] ?? '\\'
-            );
+            $csvEncoderSettings = [
+                CsvEncoder::DELIMITER_KEY => $importerArguments['delimiter'] ?? ',',
+                CsvEncoder::ENCLOSURE_KEY => $importerArguments['enclosure'] ?? '"',
+                CsvEncoder::ESCAPE_CHAR_KEY => $importerArguments['scape'] ?? '\\'
+            ];
 
+            $csvEncoder = new CsvEncoder($csvEncoderSettings);
             $serializer = new Serializer([new ObjectNormalizer()], [$csvEncoder]);
             $csvContents = file_get_contents($destinationRateGroupDto->getFilePath());
             if ($importerArguments['ignoreFirst']) {

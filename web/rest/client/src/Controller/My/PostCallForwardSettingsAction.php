@@ -11,27 +11,10 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class PostCallForwardSettingsAction
 {
-    /**
-     * @var TokenStorageInterface
-     */
     protected $tokenStorage;
-
-    /**
-     * @var SerializerInterface
-     */
     protected $serializer;
-
-    /**
-     * @var RequestStack
-     */
     protected $requestStack;
 
-    /**
-     * PutProfileAction constructor.
-     * @param TokenStorageInterface $tokenStorage
-     * @param SerializerInterface $serializer
-     * @param RequestStack $requestStack
-     */
     public function __construct(
         TokenStorageInterface $tokenStorage,
         SerializerInterface $serializer,

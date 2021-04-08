@@ -24,7 +24,7 @@ class RedisPool
     private $connected = false;
 
     public function __construct(
-        int $poolSize = 5,
+        int $poolSize,
         int $db,
         LoggerInterface $logger
     ) {

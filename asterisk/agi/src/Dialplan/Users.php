@@ -180,7 +180,6 @@ class Users extends RouteHandlerAbstract
                 return;
             }
 
-            /** @var CompanyServiceInterface $service */
             if (($service = $company->getService($exten))) {
                 // Handle service code
                 $this->serviceAction

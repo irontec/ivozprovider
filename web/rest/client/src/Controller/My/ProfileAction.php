@@ -4,13 +4,9 @@ namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class ProfileAction
 {
-    /**
-     * @var TokenStorage
-     */
     protected $tokenStorage;
 
     public function __construct(

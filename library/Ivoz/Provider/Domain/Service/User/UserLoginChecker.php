@@ -19,6 +19,7 @@ class UserLoginChecker implements UserCheckerInterface
             return;
         }
 
+        /** @var AdministratorInterface|UserInterface $admin */
         if (!$admin->isEnabled()) {
             throw new CustomUserMessageAccountStatusException(
                 'Your user account was disabled.'

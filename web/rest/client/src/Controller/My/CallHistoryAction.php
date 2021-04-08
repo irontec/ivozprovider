@@ -79,16 +79,12 @@ class CallHistoryAction
         $calls = $response instanceof Paginator
             ? $response->getIterator()
             : new \ArrayIterator($response);
+
         $this->setUserTimezone($user, $calls);
 
         return $response;
     }
 
-    /**
-     * @param UserInterface $user
-     * @param \Traversable $calls
-     * @return Paginator
-     */
     protected function setUserTimezone(UserInterface $user, \Traversable $calls)
     {
         $userTimeZone = $user->getTimezone();
