@@ -57,7 +57,6 @@ class FeatureContext extends BaseFeatureContext
         $environment = $scope->getEnvironment();
 
         foreach ($environment->getContextClasses() as $contextName) {
-
             $context = $environment->getContext($contextName);
 
             if ($context instanceof RawMinkContext) {

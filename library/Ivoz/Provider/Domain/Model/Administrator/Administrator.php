@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
 use \Symfony\Component\Security\Core\User\UserInterface;
+
 /**
  * Administrator
  */

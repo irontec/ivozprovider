@@ -99,7 +99,8 @@ class UpdateByDomainSpec extends ObjectBehavior
             ->psEndpointDto
             ->setFromDomain('testDomain')
             ->shouldBeCalled()
-            ->willReturn($this->psEndpointDto);;
+            ->willReturn($this->psEndpointDto);
+        ;
 
         $this
             ->entityPersister

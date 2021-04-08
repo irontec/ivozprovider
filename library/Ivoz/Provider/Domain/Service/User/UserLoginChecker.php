@@ -12,10 +12,11 @@ class UserLoginChecker implements UserCheckerInterface
 {
     public function checkPreAuth(SymfonyUserInterface $admin)
     {
-        if (
-            !$admin instanceof UserInterface
-            && !$admin instanceof AdministratorInterface
-        ) {
+        $isTargetClass =
+            $admin instanceof UserInterface
+            || $admin instanceof AdministratorInterface;
+
+        if (!$isTargetClass) {
             return;
         }
 

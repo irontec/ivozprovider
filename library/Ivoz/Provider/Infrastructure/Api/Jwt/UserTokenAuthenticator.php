@@ -88,7 +88,7 @@ class UserTokenAuthenticator extends JWTTokenAuthenticator
 
         if ($userProvider instanceof MutableUserProviderInterface) {
             $provider = $userProvider;
-        } else if ($userProvider instanceof ChainUserProvider) {
+        } elseif ($userProvider instanceof ChainUserProvider) {
             foreach ($userProvider->getProviders() as $provider) {
                 if ($provider instanceof MutableUserProviderInterface) {
                     break;

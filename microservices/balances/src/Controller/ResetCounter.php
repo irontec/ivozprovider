@@ -22,7 +22,6 @@ class ResetCounter
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
         ResetDailyUsageCounters $resetDailyUsageCounters
-
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
@@ -39,5 +38,4 @@ class ResetCounter
 
         return new Response("Company daily usage counters reset successfully!\n");
     }
-
 }

@@ -38,7 +38,7 @@ trait ImporterControllerTrait
          * Initialize action controller here
          */
         if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) ||
-            (!is_object($this->_mainRouter)) ) {
+            (!is_object($this->_mainRouter))) {
             throw new \Zend_Exception("", Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
