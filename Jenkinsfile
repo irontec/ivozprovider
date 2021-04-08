@@ -24,7 +24,7 @@ pipeline {
     // ------------------------------------------------------------------------
     environment {
         SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
-        SYMFONY_PHPUNIT_VERSION = "8.5.8"
+        SYMFONY_PHPUNIT_VERSION = "9.5.3"
     }
 
     stages {
