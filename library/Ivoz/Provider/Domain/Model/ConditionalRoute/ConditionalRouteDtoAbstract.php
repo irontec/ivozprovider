@@ -545,5 +545,4 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     {
         return $this->conditions;
     }
-
 }

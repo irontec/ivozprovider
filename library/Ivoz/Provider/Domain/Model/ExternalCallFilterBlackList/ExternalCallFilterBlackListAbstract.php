@@ -35,10 +35,8 @@ abstract class ExternalCallFilterBlackListAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -109,9 +107,7 @@ abstract class ExternalCallFilterBlackListAbstract
     ) {
         Assertion::isInstanceOf($dto, ExternalCallFilterBlackListDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setFilter($fkTransformer->transform($dto->getFilter()))
@@ -187,5 +183,4 @@ abstract class ExternalCallFilterBlackListAbstract
     {
         return $this->matchlist;
     }
-
 }

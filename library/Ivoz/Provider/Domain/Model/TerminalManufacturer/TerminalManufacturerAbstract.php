@@ -211,5 +211,4 @@ abstract class TerminalManufacturerAbstract
     {
         return $this->description;
     }
-
 }

@@ -184,5 +184,4 @@ abstract class PickUpGroupAbstract
     {
         return $this->company;
     }
-
 }

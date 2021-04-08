@@ -328,5 +328,4 @@ abstract class InvoiceNumberSequenceAbstract
     {
         return $this->brand;
     }
-
 }

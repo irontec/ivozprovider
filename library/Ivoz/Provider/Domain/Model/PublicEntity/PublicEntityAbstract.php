@@ -312,5 +312,4 @@ abstract class PublicEntityAbstract
         $this->name = $name;
         return $this;
     }
-
 }

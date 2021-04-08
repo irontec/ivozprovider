@@ -385,5 +385,4 @@ abstract class DdiProviderRegistrationAbstract
     {
         return $this->ddiProvider;
     }
-
 }

@@ -128,5 +128,4 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

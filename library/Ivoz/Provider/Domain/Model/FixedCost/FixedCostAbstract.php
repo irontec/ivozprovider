@@ -230,5 +230,4 @@ abstract class FixedCostAbstract
     {
         return $this->brand;
     }
-
 }

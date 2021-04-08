@@ -91,5 +91,4 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

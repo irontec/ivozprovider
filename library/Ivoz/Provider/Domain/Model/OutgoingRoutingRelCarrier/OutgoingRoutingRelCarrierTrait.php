@@ -161,5 +161,4 @@ trait OutgoingRoutingRelCarrierTrait
 
         return $this->tpRatingProfiles->toArray();
     }
-
 }

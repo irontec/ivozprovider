@@ -816,5 +816,4 @@ abstract class ResidentialDeviceAbstract
     {
         return $this->language;
     }
-
 }

@@ -322,5 +322,4 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

@@ -223,5 +223,4 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

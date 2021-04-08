@@ -437,5 +437,4 @@ abstract class ExtensionAbstract
     {
         return $this->numberCountry;
     }
-
 }

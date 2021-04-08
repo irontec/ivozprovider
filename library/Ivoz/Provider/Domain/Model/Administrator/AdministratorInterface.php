@@ -107,5 +107,4 @@ interface AdministratorInterface extends LoggableEntityInterface
      * @see UserInterface::eraseCredentials()
      */
     public function eraseCredentials();
-
 }

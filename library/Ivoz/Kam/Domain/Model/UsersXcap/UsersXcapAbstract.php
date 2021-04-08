@@ -330,5 +330,4 @@ abstract class UsersXcapAbstract
     {
         return $this->port;
     }
-
 }

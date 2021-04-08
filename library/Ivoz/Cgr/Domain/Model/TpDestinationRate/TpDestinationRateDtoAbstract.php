@@ -280,5 +280,4 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
 
         return null;
     }
-
 }

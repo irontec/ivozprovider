@@ -223,5 +223,4 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

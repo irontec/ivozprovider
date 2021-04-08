@@ -308,5 +308,4 @@ abstract class HuntGroupsRelUserAbstract
     {
         return $this->numberCountry;
     }
-
 }

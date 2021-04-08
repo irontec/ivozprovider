@@ -307,5 +307,4 @@ abstract class UsersAddressAbstract
     {
         return $this->company;
     }
-
 }

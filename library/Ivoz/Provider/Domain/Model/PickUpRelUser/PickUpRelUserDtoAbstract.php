@@ -147,5 +147,4 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

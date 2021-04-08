@@ -48,5 +48,4 @@ interface MatchListInterface extends LoggableEntityInterface
     public function replacePatterns(ArrayCollection $patterns): MatchListInterface;
 
     public function getPatterns(?Criteria $criteria = null): array;
-
 }

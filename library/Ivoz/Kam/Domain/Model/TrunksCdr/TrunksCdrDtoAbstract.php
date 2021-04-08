@@ -717,5 +717,4 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

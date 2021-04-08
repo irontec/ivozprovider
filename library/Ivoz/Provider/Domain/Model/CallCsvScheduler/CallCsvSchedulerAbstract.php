@@ -630,5 +630,4 @@ abstract class CallCsvSchedulerAbstract
     {
         return $this->ddiProvider;
     }
-
 }

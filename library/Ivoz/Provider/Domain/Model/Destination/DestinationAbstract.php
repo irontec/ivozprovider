@@ -232,5 +232,4 @@ abstract class DestinationAbstract
     {
         return $this->brand;
     }
-
 }

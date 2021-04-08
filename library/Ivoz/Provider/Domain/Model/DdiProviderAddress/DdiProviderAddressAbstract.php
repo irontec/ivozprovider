@@ -38,10 +38,8 @@ abstract class DdiProviderAddressAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -112,9 +110,7 @@ abstract class DdiProviderAddressAbstract
     ) {
         Assertion::isInstanceOf($dto, DdiProviderAddressDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setIp($dto->getIp())
@@ -214,5 +210,4 @@ abstract class DdiProviderAddressAbstract
     {
         return $this->ddiProvider;
     }
-
 }

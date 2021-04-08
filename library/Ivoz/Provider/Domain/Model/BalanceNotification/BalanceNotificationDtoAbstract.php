@@ -242,5 +242,4 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
 
         return null;
     }
-
 }

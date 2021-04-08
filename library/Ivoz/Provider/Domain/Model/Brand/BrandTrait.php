@@ -763,5 +763,4 @@ trait BrandTrait
 
         return $this->outgoingRoutings->toArray();
     }
-
 }

@@ -266,5 +266,4 @@ abstract class RatingProfileAbstract
     {
         return $this->routingTag;
     }
-
 }

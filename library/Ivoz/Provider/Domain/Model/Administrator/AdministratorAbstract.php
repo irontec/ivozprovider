@@ -383,5 +383,4 @@ abstract class AdministratorAbstract
     {
         return $this->timezone;
     }
-
 }

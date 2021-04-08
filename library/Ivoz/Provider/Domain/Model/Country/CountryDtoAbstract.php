@@ -269,5 +269,4 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     {
         return $this->zoneIt;
     }
-
 }

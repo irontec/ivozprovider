@@ -162,5 +162,4 @@ trait InvoiceSchedulerTrait
 
         return $this->relFixedCosts->toArray();
     }
-
 }

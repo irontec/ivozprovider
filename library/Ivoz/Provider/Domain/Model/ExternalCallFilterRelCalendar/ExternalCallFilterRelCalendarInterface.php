@@ -27,5 +27,4 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

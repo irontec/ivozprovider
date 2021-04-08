@@ -1128,5 +1128,4 @@ abstract class CompanyAbstract
     {
         return $this->maxDailyUsageNotificationTemplate;
     }
-
 }

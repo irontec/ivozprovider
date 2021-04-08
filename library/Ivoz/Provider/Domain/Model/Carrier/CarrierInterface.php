@@ -103,5 +103,4 @@ interface CarrierInterface extends LoggableEntityInterface
     public function replaceTpCdrStats(ArrayCollection $tpCdrStats): CarrierInterface;
 
     public function getTpCdrStats(?Criteria $criteria = null): array;
-
 }

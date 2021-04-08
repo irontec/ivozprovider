@@ -147,5 +147,4 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

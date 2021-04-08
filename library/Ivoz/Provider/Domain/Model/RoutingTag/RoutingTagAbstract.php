@@ -209,5 +209,4 @@ abstract class RoutingTagAbstract
     {
         return $this->brand;
     }
-
 }

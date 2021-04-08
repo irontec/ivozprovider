@@ -246,5 +246,4 @@ abstract class PublicEntityDtoAbstract implements DataTransferObjectInterface
     {
         return $this->nameIt;
     }
-
 }

@@ -860,5 +860,4 @@ abstract class TpCdrStatAbstract
     {
         return $this->carrier;
     }
-
 }

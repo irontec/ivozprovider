@@ -354,5 +354,4 @@ abstract class UsersPresentityAbstract
     {
         return $this->priority;
     }
-
 }

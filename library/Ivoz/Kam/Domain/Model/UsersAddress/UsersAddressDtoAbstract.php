@@ -223,5 +223,4 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

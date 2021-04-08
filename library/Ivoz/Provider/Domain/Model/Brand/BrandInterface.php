@@ -226,5 +226,4 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }

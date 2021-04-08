@@ -45,5 +45,4 @@ interface MatchListPatternInterface extends LoggableEntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

@@ -101,5 +101,4 @@ class Csv
     {
         return $this->baseName;
     }
-
 }

@@ -52,5 +52,4 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingPatternGroupInterface;
 
     public function getOutgoingRoutings(?Criteria $criteria = null): array;
-
 }

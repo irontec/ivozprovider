@@ -356,5 +356,4 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     {
         return $this->relSchedules;
     }
-
 }

@@ -184,5 +184,4 @@ abstract class CalendarAbstract
     {
         return $this->company;
     }
-
 }

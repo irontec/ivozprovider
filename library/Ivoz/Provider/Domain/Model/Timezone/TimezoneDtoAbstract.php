@@ -227,5 +227,4 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

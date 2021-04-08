@@ -241,5 +241,4 @@ abstract class OutgoingDdiRuleAbstract
     {
         return $this->forcedDdi;
     }
-
 }

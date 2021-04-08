@@ -308,5 +308,4 @@ abstract class CommandlogAbstract
     {
         return $this->microtime;
     }
-
 }

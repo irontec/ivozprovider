@@ -337,5 +337,4 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     {
         return $this->relPublicEntities;
     }
-
 }

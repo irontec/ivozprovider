@@ -236,5 +236,4 @@ trait CalendarTrait
 
         return $this->calendarPeriods->toArray();
     }
-
 }

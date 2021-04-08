@@ -40,5 +40,4 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
     public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles): OutgoingRoutingRelCarrierInterface;
 
     public function getTpRatingProfiles(?Criteria $criteria = null): array;
-
 }

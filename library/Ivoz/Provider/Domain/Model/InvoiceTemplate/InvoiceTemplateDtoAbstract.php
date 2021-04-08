@@ -204,5 +204,4 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

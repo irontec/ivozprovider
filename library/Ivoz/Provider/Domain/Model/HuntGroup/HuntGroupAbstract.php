@@ -468,5 +468,4 @@ abstract class HuntGroupAbstract
     {
         return $this->noAnswerNumberCountry;
     }
-
 }

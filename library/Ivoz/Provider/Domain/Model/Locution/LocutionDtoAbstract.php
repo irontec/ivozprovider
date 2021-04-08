@@ -269,5 +269,4 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

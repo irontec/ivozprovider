@@ -47,5 +47,4 @@ interface CallAclInterface extends LoggableEntityInterface
     public function replaceRelMatchLists(ArrayCollection $relMatchLists): CallAclInterface;
 
     public function getRelMatchLists(?Criteria $criteria = null): array;
-
 }

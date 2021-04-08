@@ -185,5 +185,4 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
     {
         return $this->patterns;
     }
-
 }

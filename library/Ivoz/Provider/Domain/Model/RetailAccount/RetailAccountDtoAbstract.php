@@ -545,5 +545,4 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     {
         return $this->callForwardSettings;
     }
-
 }

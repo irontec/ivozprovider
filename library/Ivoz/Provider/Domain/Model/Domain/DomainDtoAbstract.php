@@ -185,5 +185,4 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     {
         return $this->terminals;
     }
-
 }

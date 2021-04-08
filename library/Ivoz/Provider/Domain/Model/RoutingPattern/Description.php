@@ -125,5 +125,4 @@ class Description
     {
         return $this->it;
     }
-
 }

@@ -147,5 +147,4 @@ abstract class ExternalCallFilterWhiteListDtoAbstract implements DataTransferObj
 
         return null;
     }
-
 }

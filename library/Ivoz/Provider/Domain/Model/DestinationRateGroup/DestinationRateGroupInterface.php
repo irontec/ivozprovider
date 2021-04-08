@@ -108,5 +108,4 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface, FileCon
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }

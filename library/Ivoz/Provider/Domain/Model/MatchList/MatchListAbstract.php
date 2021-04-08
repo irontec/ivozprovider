@@ -209,5 +209,4 @@ abstract class MatchListAbstract
     {
         return $this->company;
     }
-
 }

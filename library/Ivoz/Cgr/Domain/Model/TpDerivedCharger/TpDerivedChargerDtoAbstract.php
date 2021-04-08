@@ -603,5 +603,4 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
 
         return null;
     }
-
 }

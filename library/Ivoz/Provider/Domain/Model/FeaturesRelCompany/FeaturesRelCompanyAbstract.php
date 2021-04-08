@@ -35,10 +35,8 @@ abstract class FeaturesRelCompanyAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -109,9 +107,7 @@ abstract class FeaturesRelCompanyAbstract
     ) {
         Assertion::isInstanceOf($dto, FeaturesRelCompanyDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
@@ -187,5 +183,4 @@ abstract class FeaturesRelCompanyAbstract
     {
         return $this->feature;
     }
-
 }

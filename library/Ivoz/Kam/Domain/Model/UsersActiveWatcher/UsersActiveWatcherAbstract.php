@@ -787,5 +787,4 @@ abstract class UsersActiveWatcherAbstract
     {
         return $this->userAgent;
     }
-
 }

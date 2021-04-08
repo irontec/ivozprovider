@@ -74,5 +74,4 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

@@ -81,5 +81,4 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }

@@ -432,5 +432,4 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     {
         return $this->huntGroupsRelUsers;
     }
-
 }

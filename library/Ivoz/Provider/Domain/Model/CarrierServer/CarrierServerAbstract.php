@@ -534,5 +534,4 @@ abstract class CarrierServerAbstract
     {
         return $this->brand;
     }
-
 }

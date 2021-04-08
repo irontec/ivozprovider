@@ -82,5 +82,4 @@ interface TpCdrInterface extends EntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

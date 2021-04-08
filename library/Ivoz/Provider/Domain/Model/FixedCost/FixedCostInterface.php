@@ -28,5 +28,4 @@ interface FixedCostInterface extends LoggableEntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

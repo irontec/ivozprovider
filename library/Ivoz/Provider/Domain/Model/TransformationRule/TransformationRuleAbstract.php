@@ -297,5 +297,4 @@ abstract class TransformationRuleAbstract
     {
         return $this->transformationRuleSet;
     }
-
 }

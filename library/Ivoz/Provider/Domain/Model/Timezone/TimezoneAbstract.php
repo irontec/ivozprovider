@@ -257,5 +257,4 @@ abstract class TimezoneAbstract
     {
         return $this->country;
     }
-
 }

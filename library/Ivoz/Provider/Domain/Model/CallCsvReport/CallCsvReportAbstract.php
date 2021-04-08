@@ -374,5 +374,4 @@ abstract class CallCsvReportAbstract
     {
         return $this->callCsvScheduler;
     }
-
 }

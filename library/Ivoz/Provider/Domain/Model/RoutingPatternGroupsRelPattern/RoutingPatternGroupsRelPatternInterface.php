@@ -26,5 +26,4 @@ interface RoutingPatternGroupsRelPatternInterface extends LoggableEntityInterfac
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

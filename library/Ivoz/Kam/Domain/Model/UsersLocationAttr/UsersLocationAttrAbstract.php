@@ -319,5 +319,4 @@ abstract class UsersLocationAttrAbstract
     {
         return clone $this->lastModified;
     }
-
 }

@@ -27,5 +27,4 @@ interface ConditionalRoutesConditionsRelMatchlistInterface extends LoggableEntit
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

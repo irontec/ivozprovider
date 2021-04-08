@@ -223,5 +223,4 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

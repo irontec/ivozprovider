@@ -356,5 +356,4 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

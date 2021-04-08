@@ -242,5 +242,4 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

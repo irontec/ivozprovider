@@ -166,5 +166,4 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

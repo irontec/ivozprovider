@@ -220,5 +220,4 @@ abstract class CodecAbstract
     {
         return $this->name;
     }
-
 }

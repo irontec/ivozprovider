@@ -613,5 +613,4 @@ abstract class UsersCdrAbstract
     {
         return $this->retailAccount;
     }
-
 }

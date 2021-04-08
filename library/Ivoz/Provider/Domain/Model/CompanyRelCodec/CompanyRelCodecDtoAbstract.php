@@ -147,5 +147,4 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

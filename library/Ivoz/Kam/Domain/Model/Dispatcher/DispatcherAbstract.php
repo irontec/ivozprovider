@@ -303,5 +303,4 @@ abstract class DispatcherAbstract
     {
         return $this->applicationServer;
     }
-
 }

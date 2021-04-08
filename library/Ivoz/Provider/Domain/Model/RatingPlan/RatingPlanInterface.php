@@ -78,5 +78,4 @@ interface RatingPlanInterface extends LoggableEntityInterface
     public function setTpRatingPlan(TpRatingPlanInterface $tpRatingPlan): static;
 
     public function getTpRatingPlan(): ?TpRatingPlanInterface;
-
 }

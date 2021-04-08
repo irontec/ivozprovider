@@ -148,5 +148,4 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): RetailAccountInterface;
 
     public function getCallForwardSettings(?Criteria $criteria = null): array;
-
 }

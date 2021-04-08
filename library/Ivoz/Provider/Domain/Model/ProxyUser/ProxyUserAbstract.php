@@ -30,10 +30,8 @@ abstract class ProxyUserAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -104,9 +102,7 @@ abstract class ProxyUserAbstract
     ) {
         Assertion::isInstanceOf($dto, ProxyUserDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setName($dto->getName())
@@ -189,5 +185,4 @@ abstract class ProxyUserAbstract
     {
         return $this->ip;
     }
-
 }

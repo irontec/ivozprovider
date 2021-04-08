@@ -751,5 +751,4 @@ abstract class TrunksCdrAbstract
     {
         return $this->ddiProvider;
     }
-
 }

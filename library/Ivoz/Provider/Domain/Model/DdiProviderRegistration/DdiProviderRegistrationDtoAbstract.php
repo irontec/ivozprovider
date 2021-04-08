@@ -318,5 +318,4 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
 
         return null;
     }
-
 }

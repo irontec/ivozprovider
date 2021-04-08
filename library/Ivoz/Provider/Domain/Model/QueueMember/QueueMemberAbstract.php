@@ -40,10 +40,8 @@ abstract class QueueMemberAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -114,9 +112,7 @@ abstract class QueueMemberAbstract
     ) {
         Assertion::isInstanceOf($dto, QueueMemberDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setPenalty($dto->getPenalty())
@@ -208,5 +204,4 @@ abstract class QueueMemberAbstract
     {
         return $this->user;
     }
-
 }

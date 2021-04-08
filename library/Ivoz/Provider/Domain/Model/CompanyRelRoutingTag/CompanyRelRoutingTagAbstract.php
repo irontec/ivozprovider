@@ -36,10 +36,8 @@ abstract class CompanyRelRoutingTagAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -110,9 +108,7 @@ abstract class CompanyRelRoutingTagAbstract
     ) {
         Assertion::isInstanceOf($dto, CompanyRelRoutingTagDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
@@ -189,5 +185,4 @@ abstract class CompanyRelRoutingTagAbstract
     {
         return $this->routingTag;
     }
-
 }

@@ -501,5 +501,4 @@ abstract class ExternalCallFilterAbstract
     {
         return $this->outOfScheduleNumberCountry;
     }
-
 }

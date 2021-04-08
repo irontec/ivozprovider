@@ -242,5 +242,4 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

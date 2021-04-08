@@ -242,5 +242,4 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

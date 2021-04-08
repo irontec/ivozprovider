@@ -23,5 +23,4 @@ interface ProxyTrunkInterface extends LoggableEntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

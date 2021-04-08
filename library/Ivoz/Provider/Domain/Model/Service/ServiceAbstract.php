@@ -308,5 +308,4 @@ abstract class ServiceAbstract
         $this->description = $description;
         return $this;
     }
-
 }

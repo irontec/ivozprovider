@@ -413,5 +413,4 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

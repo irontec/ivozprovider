@@ -382,5 +382,4 @@ abstract class QueueAbstract
     {
         return $this->queue;
     }
-
 }

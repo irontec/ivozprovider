@@ -211,5 +211,4 @@ abstract class FriendsPatternAbstract
     {
         return $this->friend;
     }
-
 }

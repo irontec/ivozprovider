@@ -61,10 +61,8 @@ abstract class BannedAddressAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -135,9 +133,7 @@ abstract class BannedAddressAbstract
     ) {
         Assertion::isInstanceOf($dto, BannedAddressDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setIp($dto->getIp())
@@ -332,5 +328,4 @@ abstract class BannedAddressAbstract
     {
         return $this->company;
     }
-
 }

@@ -464,5 +464,4 @@ abstract class TrunksLcrGatewayAbstract
     {
         return $this->carrierServer;
     }
-
 }

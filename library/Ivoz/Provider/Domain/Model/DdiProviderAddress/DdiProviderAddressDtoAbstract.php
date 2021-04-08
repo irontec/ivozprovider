@@ -185,5 +185,4 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
 
         return null;
     }
-
 }

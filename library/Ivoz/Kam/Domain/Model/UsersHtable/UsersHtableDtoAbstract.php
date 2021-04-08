@@ -166,5 +166,4 @@ abstract class UsersHtableDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

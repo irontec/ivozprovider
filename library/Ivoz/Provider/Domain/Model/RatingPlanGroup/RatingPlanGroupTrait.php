@@ -161,5 +161,4 @@ trait RatingPlanGroupTrait
 
         return $this->ratingPlan->toArray();
     }
-
 }

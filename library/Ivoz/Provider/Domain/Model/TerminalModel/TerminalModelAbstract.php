@@ -334,5 +334,4 @@ abstract class TerminalModelAbstract
     {
         return $this->terminalManufacturer;
     }
-
 }

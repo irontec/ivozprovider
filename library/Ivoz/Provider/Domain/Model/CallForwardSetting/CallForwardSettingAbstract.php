@@ -458,5 +458,4 @@ abstract class CallForwardSettingAbstract
     {
         return $this->retailAccount;
     }
-
 }

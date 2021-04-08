@@ -475,5 +475,4 @@ abstract class TpRatingProfileAbstract
     {
         return $this->outgoingRoutingRelCarrier;
     }
-
 }

@@ -161,5 +161,4 @@ trait ConditionalRouteTrait
 
         return $this->conditions->toArray();
     }
-
 }

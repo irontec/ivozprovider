@@ -36,10 +36,8 @@ abstract class PickUpRelUserAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -110,9 +108,7 @@ abstract class PickUpRelUserAbstract
     ) {
         Assertion::isInstanceOf($dto, PickUpRelUserDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setPickUpGroup($fkTransformer->transform($dto->getPickUpGroup()))
@@ -189,5 +185,4 @@ abstract class PickUpRelUserAbstract
     {
         return $this->user;
     }
-
 }

@@ -27,5 +27,4 @@ interface CompanyRelCodecInterface extends LoggableEntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

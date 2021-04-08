@@ -162,5 +162,4 @@ trait HuntGroupTrait
 
         return $this->huntGroupsRelUsers->toArray();
     }
-
 }

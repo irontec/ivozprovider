@@ -161,5 +161,4 @@ trait ExtensionTrait
 
         return $this->users->toArray();
     }
-
 }

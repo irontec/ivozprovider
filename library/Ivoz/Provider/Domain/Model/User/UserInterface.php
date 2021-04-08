@@ -265,5 +265,4 @@ interface UserInterface extends LoggableEntityInterface
      * @see UserInterface::eraseCredentials()
      */
     public function eraseCredentials();
-
 }

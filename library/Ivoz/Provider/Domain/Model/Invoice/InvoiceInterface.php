@@ -111,5 +111,4 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }

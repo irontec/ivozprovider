@@ -311,5 +311,4 @@ abstract class UsersWatcherAbstract
     {
         return $this->insertedTime;
     }
-
 }

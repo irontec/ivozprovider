@@ -299,5 +299,4 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

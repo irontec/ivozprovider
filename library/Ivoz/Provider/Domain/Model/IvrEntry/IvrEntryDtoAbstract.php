@@ -356,5 +356,4 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

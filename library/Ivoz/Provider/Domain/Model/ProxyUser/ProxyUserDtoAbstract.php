@@ -109,5 +109,4 @@ abstract class ProxyUserDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

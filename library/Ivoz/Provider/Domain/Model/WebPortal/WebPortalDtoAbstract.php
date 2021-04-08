@@ -265,5 +265,4 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

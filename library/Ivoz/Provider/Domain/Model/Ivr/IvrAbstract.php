@@ -598,5 +598,4 @@ abstract class IvrAbstract
     {
         return $this->errorNumberCountry;
     }
-
 }

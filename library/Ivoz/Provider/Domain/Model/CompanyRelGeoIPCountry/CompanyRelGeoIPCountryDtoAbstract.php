@@ -147,5 +147,4 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
 
         return null;
     }
-
 }

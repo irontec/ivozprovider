@@ -237,5 +237,4 @@ trait IvrTrait
 
         return $this->excludedExtensions->toArray();
     }
-
 }

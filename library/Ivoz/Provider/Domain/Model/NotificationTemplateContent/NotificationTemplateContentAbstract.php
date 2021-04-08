@@ -318,5 +318,4 @@ abstract class NotificationTemplateContentAbstract
     {
         return $this->language;
     }
-
 }

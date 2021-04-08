@@ -101,5 +101,4 @@ class OriginalFile
     {
         return $this->baseName;
     }
-
 }

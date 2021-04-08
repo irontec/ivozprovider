@@ -322,5 +322,4 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

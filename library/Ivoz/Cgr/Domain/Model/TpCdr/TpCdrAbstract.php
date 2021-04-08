@@ -764,5 +764,4 @@ abstract class TpCdrAbstract
     {
         return !is_null($this->deletedAt) ? clone $this->deletedAt : null;
     }
-
 }

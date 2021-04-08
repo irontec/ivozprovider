@@ -868,5 +868,4 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     {
         return $this->callForwardSettings;
     }
-
 }

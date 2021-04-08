@@ -147,5 +147,4 @@ abstract class ProxyTrunksRelBrandDtoAbstract implements DataTransferObjectInter
 
         return null;
     }
-
 }

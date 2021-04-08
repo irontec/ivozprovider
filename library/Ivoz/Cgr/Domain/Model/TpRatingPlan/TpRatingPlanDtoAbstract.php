@@ -223,5 +223,4 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

@@ -395,5 +395,4 @@ abstract class RecordingAbstract
     {
         return $this->company;
     }
-
 }

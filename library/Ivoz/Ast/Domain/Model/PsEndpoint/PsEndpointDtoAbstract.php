@@ -603,5 +603,4 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

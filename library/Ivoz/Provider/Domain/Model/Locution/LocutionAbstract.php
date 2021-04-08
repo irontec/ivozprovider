@@ -308,5 +308,4 @@ abstract class LocutionAbstract
     {
         return $this->company;
     }
-
 }

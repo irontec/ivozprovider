@@ -561,5 +561,4 @@ abstract class BrandAbstract
     {
         return $this->maxDailyUsageNotificationTemplate;
     }
-
 }

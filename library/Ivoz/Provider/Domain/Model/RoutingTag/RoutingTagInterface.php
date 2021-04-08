@@ -51,5 +51,4 @@ interface RoutingTagInterface extends LoggableEntityInterface
     public function replaceRelCompanies(ArrayCollection $relCompanies): RoutingTagInterface;
 
     public function getRelCompanies(?Criteria $criteria = null): array;
-
 }

@@ -372,5 +372,4 @@ abstract class TpTimingAbstract
     {
         return $this->ratingPlan;
     }
-
 }

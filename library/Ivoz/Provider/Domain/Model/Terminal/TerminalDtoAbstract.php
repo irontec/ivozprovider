@@ -413,5 +413,4 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     {
         return $this->users;
     }
-
 }

@@ -449,5 +449,4 @@ abstract class RatingPlanAbstract
     {
         return $this->destinationRateGroup;
     }
-
 }

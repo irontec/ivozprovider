@@ -602,5 +602,4 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     {
         return $this->relRouteLocks;
     }
-
 }

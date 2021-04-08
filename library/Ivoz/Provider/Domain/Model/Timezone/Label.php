@@ -117,5 +117,4 @@ class Label
     {
         return $this->it;
     }
-
 }

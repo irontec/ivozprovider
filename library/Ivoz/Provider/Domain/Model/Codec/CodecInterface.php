@@ -29,5 +29,4 @@ interface CodecInterface extends LoggableEntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

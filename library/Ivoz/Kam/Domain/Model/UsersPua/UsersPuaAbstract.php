@@ -585,5 +585,4 @@ abstract class UsersPuaAbstract
     {
         return $this->extraHeaders;
     }
-
 }

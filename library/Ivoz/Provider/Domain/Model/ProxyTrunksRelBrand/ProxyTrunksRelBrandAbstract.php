@@ -35,10 +35,8 @@ abstract class ProxyTrunksRelBrandAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -109,9 +107,7 @@ abstract class ProxyTrunksRelBrandAbstract
     ) {
         Assertion::isInstanceOf($dto, ProxyTrunksRelBrandDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setBrand($fkTransformer->transform($dto->getBrand()))
@@ -187,5 +183,4 @@ abstract class ProxyTrunksRelBrandAbstract
     {
         return $this->proxyTrunk;
     }
-
 }

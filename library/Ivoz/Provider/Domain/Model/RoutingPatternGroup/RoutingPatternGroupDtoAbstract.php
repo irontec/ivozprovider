@@ -185,5 +185,4 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
     {
         return $this->outgoingRoutings;
     }
-
 }

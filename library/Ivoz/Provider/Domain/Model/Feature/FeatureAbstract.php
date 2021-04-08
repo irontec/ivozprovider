@@ -209,5 +209,4 @@ abstract class FeatureAbstract
         $this->name = $name;
         return $this;
     }
-
 }

@@ -54,5 +54,4 @@ interface DdiProviderInterface extends LoggableEntityInterface
     public function replaceDdiProviderAddresses(ArrayCollection $ddiProviderAddresses): DdiProviderInterface;
 
     public function getDdiProviderAddresses(?Criteria $criteria = null): array;
-
 }

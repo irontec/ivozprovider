@@ -204,5 +204,4 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

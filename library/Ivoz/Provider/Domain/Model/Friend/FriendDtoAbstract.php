@@ -754,5 +754,4 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     {
         return $this->patterns;
     }
-
 }

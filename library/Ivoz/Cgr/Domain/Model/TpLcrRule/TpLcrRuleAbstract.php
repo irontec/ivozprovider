@@ -505,5 +505,4 @@ abstract class TpLcrRuleAbstract
     {
         return $this->outgoingRouting;
     }
-
 }

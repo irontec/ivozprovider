@@ -307,5 +307,4 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

@@ -686,5 +686,4 @@ abstract class UsersLocationAbstract
     {
         return $this->partition;
     }
-
 }

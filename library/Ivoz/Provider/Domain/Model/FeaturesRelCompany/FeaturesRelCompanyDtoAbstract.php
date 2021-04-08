@@ -147,5 +147,4 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
 
         return null;
     }
-
 }

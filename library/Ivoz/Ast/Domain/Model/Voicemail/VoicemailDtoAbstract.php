@@ -774,5 +774,4 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

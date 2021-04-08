@@ -281,5 +281,4 @@ abstract class DdiProviderAbstract
     {
         return $this->proxyTrunk;
     }
-
 }

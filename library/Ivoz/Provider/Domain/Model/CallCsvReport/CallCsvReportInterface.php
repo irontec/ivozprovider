@@ -72,5 +72,4 @@ interface CallCsvReportInterface extends LoggableEntityInterface, FileContainerI
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }

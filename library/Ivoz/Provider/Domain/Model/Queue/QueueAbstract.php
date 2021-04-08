@@ -673,5 +673,4 @@ abstract class QueueAbstract
     {
         return $this->fullNumberCountry;
     }
-
 }

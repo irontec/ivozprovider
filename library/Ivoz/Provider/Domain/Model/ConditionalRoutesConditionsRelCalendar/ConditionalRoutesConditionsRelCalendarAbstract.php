@@ -35,10 +35,8 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -109,9 +107,7 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     ) {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelCalendarDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setCondition($fkTransformer->transform($dto->getCondition()))
@@ -187,5 +183,4 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     {
         return $this->calendar;
     }
-
 }

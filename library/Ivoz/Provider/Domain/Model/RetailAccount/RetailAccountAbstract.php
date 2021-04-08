@@ -591,5 +591,4 @@ abstract class RetailAccountAbstract
     {
         return $this->outgoingDdi;
     }
-
 }

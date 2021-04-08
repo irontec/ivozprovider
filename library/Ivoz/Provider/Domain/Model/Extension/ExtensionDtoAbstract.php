@@ -469,5 +469,4 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     {
         return $this->users;
     }
-
 }

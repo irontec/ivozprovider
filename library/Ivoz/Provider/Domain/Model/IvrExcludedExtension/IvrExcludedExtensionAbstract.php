@@ -35,10 +35,8 @@ abstract class IvrExcludedExtensionAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -109,9 +107,7 @@ abstract class IvrExcludedExtensionAbstract
     ) {
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setIvr($fkTransformer->transform($dto->getIvr()))
@@ -187,5 +183,4 @@ abstract class IvrExcludedExtensionAbstract
     {
         return $this->extension;
     }
-
 }

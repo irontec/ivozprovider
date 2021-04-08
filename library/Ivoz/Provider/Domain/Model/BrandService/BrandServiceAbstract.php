@@ -209,5 +209,4 @@ abstract class BrandServiceAbstract
     {
         return $this->service;
     }
-
 }

@@ -109,5 +109,4 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
     {
         return $this->id;
     }
-
 }

@@ -565,5 +565,4 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     {
         return $this->id;
     }
-
 }

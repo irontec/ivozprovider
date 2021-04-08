@@ -356,5 +356,4 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

@@ -204,5 +204,4 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
 
         return null;
     }
-
 }

@@ -236,5 +236,4 @@ trait RoutingTagTrait
 
         return $this->relCompanies->toArray();
     }
-
 }

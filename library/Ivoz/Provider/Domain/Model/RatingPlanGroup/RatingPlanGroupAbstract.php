@@ -278,5 +278,4 @@ abstract class RatingPlanGroupAbstract
     {
         return $this->currency;
     }
-
 }

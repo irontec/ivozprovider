@@ -412,5 +412,4 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
 
         return null;
     }
-
 }

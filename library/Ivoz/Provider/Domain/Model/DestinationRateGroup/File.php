@@ -122,5 +122,4 @@ class File
     {
         return $this->importerArguments;
     }
-
 }

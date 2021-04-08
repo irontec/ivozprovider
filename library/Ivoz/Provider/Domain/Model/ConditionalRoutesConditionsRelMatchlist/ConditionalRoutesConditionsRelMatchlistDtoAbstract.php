@@ -147,5 +147,4 @@ abstract class ConditionalRoutesConditionsRelMatchlistDtoAbstract implements Dat
 
         return null;
     }
-
 }

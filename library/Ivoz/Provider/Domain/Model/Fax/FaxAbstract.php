@@ -258,5 +258,4 @@ abstract class FaxAbstract
     {
         return $this->outgoingDdi;
     }
-
 }

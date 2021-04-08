@@ -204,5 +204,4 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

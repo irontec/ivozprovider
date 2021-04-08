@@ -271,5 +271,4 @@ abstract class TrunksDomainAttrAbstract
     {
         return clone $this->lastModified;
     }
-
 }

@@ -22,7 +22,6 @@ trait MatchListPatternTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-
     }
 
     abstract protected function sanitizeValues();
@@ -88,5 +87,4 @@ trait MatchListPatternTrait
             'id' => self::getId()
         ];
     }
-
 }

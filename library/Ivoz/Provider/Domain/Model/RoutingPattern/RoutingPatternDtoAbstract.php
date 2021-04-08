@@ -345,5 +345,4 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     {
         return $this->lcrRules;
     }
-
 }

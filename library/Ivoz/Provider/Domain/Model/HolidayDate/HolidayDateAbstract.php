@@ -430,5 +430,4 @@ abstract class HolidayDateAbstract
     {
         return $this->numberCountry;
     }
-
 }

@@ -348,5 +348,4 @@ trait OutgoingRoutingTrait
 
         return $this->relCarriers->toArray();
     }
-
 }

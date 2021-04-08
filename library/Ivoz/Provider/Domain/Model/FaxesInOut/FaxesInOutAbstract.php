@@ -390,5 +390,4 @@ abstract class FaxesInOutAbstract
     {
         return $this->dstCountry;
     }
-
 }

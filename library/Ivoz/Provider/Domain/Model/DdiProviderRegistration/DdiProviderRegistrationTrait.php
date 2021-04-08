@@ -29,7 +29,6 @@ trait DdiProviderRegistrationTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-
     }
 
     abstract protected function sanitizeValues();
@@ -121,5 +120,4 @@ trait DdiProviderRegistrationTrait
     {
         return $this->trunksUacreg;
     }
-
 }

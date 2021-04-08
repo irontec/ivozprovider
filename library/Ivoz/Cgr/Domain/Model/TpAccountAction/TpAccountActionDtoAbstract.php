@@ -318,5 +318,4 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

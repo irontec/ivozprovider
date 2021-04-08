@@ -259,5 +259,4 @@ abstract class UsersHtableAbstract
     {
         return $this->expires;
     }
-
 }

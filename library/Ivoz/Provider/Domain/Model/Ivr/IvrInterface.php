@@ -123,5 +123,4 @@ interface IvrInterface extends LoggableEntityInterface
     public function replaceExcludedExtensions(ArrayCollection $excludedExtensions): IvrInterface;
 
     public function getExcludedExtensions(?Criteria $criteria = null): array;
-
 }

@@ -218,5 +218,4 @@ abstract class CallAclAbstract
     {
         return $this->company;
     }
-
 }

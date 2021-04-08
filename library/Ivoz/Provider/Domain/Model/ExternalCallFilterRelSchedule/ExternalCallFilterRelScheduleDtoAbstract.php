@@ -147,5 +147,4 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
 
         return null;
     }
-
 }

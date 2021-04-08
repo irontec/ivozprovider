@@ -166,5 +166,4 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
     {
         return $this->calendarPeriods;
     }
-
 }

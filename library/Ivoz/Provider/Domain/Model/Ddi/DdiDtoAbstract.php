@@ -774,5 +774,4 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

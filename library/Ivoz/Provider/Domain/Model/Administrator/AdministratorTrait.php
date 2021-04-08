@@ -161,5 +161,4 @@ trait AdministratorTrait
 
         return $this->relPublicEntities->toArray();
     }
-
 }

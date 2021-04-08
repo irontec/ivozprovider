@@ -242,5 +242,4 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
 
         return null;
     }
-
 }

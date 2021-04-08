@@ -170,5 +170,4 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
     {
         return $this->nameIt;
     }
-
 }

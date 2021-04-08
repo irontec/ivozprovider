@@ -82,5 +82,4 @@ interface MusicOnHoldInterface extends LoggableEntityInterface, FileContainerInt
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }

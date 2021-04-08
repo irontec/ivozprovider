@@ -236,5 +236,4 @@ trait TerminalTrait
 
         return $this->users->toArray();
     }
-
 }

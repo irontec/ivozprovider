@@ -865,5 +865,4 @@ abstract class FriendAbstract
     {
         return $this->interCompany;
     }
-
 }

@@ -147,5 +147,4 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
 
         return null;
     }
-
 }

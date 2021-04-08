@@ -261,5 +261,4 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

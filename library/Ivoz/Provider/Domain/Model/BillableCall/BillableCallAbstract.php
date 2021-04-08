@@ -744,5 +744,4 @@ abstract class BillableCallAbstract
     {
         return $this->ddiProvider;
     }
-
 }

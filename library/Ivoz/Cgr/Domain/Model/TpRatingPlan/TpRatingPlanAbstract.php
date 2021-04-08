@@ -320,5 +320,4 @@ abstract class TpRatingPlanAbstract
     {
         return $this->ratingPlan;
     }
-
 }

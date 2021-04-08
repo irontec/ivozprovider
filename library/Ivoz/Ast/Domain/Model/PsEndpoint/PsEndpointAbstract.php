@@ -766,5 +766,4 @@ abstract class PsEndpointAbstract
     {
         return $this->retailAccount;
     }
-
 }

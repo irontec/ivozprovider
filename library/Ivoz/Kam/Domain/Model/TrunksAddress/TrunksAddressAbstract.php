@@ -282,5 +282,4 @@ abstract class TrunksAddressAbstract
     {
         return $this->ddiProviderAddress;
     }
-
 }

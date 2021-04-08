@@ -365,5 +365,4 @@ interface CompanyInterface extends LoggableEntityInterface
     public function replaceRelRoutingTags(ArrayCollection $relRoutingTags): CompanyInterface;
 
     public function getRelRoutingTags(?Criteria $criteria = null): array;
-
 }

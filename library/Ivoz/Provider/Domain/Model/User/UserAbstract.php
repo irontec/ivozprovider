@@ -820,5 +820,4 @@ abstract class UserAbstract
     {
         return $this->voicemailLocution;
     }
-
 }

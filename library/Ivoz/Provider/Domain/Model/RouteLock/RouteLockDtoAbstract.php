@@ -166,5 +166,4 @@ abstract class RouteLockDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

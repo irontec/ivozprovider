@@ -693,5 +693,4 @@ abstract class DdiAbstract
     {
         return $this->retailAccount;
     }
-
 }

@@ -235,5 +235,4 @@ abstract class RouteLockAbstract
     {
         return $this->company;
     }
-
 }

@@ -413,5 +413,4 @@ abstract class DestinationRateGroupAbstract
     {
         return $this->currency;
     }
-
 }

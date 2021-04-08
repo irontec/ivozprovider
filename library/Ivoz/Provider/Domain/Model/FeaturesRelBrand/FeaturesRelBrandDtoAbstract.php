@@ -147,5 +147,4 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
 
         return null;
     }
-
 }

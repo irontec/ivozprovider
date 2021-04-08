@@ -326,5 +326,4 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     {
         return $this->ratingPlan;
     }
-
 }

@@ -280,5 +280,4 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     {
         return $this->ddiProviderAddresses;
     }
-
 }

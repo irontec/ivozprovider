@@ -63,5 +63,4 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     public function replaceRatingPlan(ArrayCollection $ratingPlan): RatingPlanGroupInterface;
 
     public function getRatingPlan(?Criteria $criteria = null): array;
-
 }

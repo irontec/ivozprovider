@@ -101,5 +101,4 @@ class Logo
     {
         return $this->baseName;
     }
-
 }

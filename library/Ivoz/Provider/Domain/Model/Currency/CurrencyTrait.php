@@ -22,7 +22,6 @@ trait CurrencyTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-
     }
 
     abstract protected function sanitizeValues();
@@ -88,5 +87,4 @@ trait CurrencyTrait
             'id' => self::getId()
         ];
     }
-
 }

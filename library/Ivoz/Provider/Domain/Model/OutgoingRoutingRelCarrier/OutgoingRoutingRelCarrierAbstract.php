@@ -36,10 +36,8 @@ abstract class OutgoingRoutingRelCarrierAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -110,9 +108,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
     ) {
         Assertion::isInstanceOf($dto, OutgoingRoutingRelCarrierDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
@@ -189,5 +185,4 @@ abstract class OutgoingRoutingRelCarrierAbstract
     {
         return $this->carrier;
     }
-
 }

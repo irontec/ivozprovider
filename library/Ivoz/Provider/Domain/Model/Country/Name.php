@@ -125,5 +125,4 @@ class Name
     {
         return $this->it;
     }
-
 }

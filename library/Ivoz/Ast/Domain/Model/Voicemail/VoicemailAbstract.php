@@ -973,5 +973,4 @@ abstract class VoicemailAbstract
     {
         return $this->residentialDevice;
     }
-
 }

@@ -147,5 +147,4 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
 
         return null;
     }
-
 }

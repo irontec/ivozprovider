@@ -35,5 +35,4 @@ interface PickUpGroupInterface extends LoggableEntityInterface
     public function replaceRelUsers(ArrayCollection $relUsers): PickUpGroupInterface;
 
     public function getRelUsers(?Criteria $criteria = null): array;
-
 }

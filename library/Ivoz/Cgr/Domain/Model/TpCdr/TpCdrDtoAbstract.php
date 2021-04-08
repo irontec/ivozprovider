@@ -508,5 +508,4 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

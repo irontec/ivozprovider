@@ -186,5 +186,4 @@ abstract class ProxyTrunkAbstract
     {
         return $this->ip;
     }
-
 }

@@ -360,5 +360,4 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     {
         return $this->rules;
     }
-
 }

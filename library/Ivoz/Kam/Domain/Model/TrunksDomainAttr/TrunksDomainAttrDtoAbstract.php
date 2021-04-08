@@ -166,5 +166,4 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     {
         return $this->id;
     }
-
 }

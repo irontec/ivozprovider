@@ -529,5 +529,4 @@ abstract class InvoiceAbstract
     {
         return $this->scheduler;
     }
-
 }

@@ -27,5 +27,4 @@ interface ConditionalRoutesConditionsRelRouteLockInterface extends LoggableEntit
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

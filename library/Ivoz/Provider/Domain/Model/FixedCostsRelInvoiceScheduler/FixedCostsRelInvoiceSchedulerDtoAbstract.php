@@ -166,5 +166,4 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
 
         return null;
     }
-
 }

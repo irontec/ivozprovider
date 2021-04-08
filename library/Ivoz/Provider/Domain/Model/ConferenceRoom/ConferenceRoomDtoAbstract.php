@@ -185,5 +185,4 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

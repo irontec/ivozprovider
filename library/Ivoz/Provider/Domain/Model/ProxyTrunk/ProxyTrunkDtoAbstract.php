@@ -109,5 +109,4 @@ abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

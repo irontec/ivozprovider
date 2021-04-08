@@ -259,5 +259,4 @@ abstract class TrunksHtableAbstract
     {
         return $this->expires;
     }
-
 }

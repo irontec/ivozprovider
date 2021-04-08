@@ -128,5 +128,4 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     {
         return $this->id;
     }
-
 }

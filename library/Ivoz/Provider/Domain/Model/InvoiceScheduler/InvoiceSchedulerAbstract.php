@@ -461,5 +461,4 @@ abstract class InvoiceSchedulerAbstract
     {
         return $this->numberSequence;
     }
-
 }

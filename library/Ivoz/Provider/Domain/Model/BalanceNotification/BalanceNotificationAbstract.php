@@ -57,10 +57,8 @@ abstract class BalanceNotificationAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -131,9 +129,7 @@ abstract class BalanceNotificationAbstract
     ) {
         Assertion::isInstanceOf($dto, BalanceNotificationDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setToAddress($dto->getToAddress())
@@ -295,5 +291,4 @@ abstract class BalanceNotificationAbstract
     {
         return $this->notificationTemplate;
     }
-
 }

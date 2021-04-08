@@ -413,5 +413,4 @@ abstract class ScheduleAbstract
     {
         return $this->company;
     }
-
 }

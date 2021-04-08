@@ -257,5 +257,4 @@ abstract class SpecialNumberAbstract
     {
         return $this->country;
     }
-
 }

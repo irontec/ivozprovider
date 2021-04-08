@@ -209,5 +209,4 @@ abstract class CompanyServiceAbstract
     {
         return $this->service;
     }
-
 }

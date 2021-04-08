@@ -515,5 +515,4 @@ abstract class OutgoingRoutingAbstract
     {
         return $this->clidCountry;
     }
-
 }

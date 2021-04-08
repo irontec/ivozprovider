@@ -311,5 +311,4 @@ trait RetailAccountTrait
 
         return $this->callForwardSettings->toArray();
     }
-
 }

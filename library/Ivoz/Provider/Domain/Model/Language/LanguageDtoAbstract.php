@@ -170,5 +170,4 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
     {
         return $this->nameIt;
     }
-
 }

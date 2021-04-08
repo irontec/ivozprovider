@@ -209,5 +209,4 @@ abstract class DomainAbstract
     {
         return $this->description;
     }
-
 }

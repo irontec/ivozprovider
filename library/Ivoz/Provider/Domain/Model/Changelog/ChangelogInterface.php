@@ -33,5 +33,4 @@ interface ChangelogInterface extends EntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

@@ -166,5 +166,4 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

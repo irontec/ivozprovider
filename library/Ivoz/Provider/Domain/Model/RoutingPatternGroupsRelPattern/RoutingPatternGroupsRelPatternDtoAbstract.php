@@ -147,5 +147,4 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
 
         return null;
     }
-
 }

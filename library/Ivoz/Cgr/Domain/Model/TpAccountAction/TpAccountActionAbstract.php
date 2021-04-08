@@ -420,5 +420,4 @@ abstract class TpAccountActionAbstract
     {
         return $this->carrier;
     }
-
 }

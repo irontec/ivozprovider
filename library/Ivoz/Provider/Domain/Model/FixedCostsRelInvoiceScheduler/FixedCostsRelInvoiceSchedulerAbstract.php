@@ -40,10 +40,8 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -114,9 +112,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     ) {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setQuantity($dto->getQuantity())
@@ -212,5 +208,4 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
         return $this->invoiceScheduler;
     }
-
 }

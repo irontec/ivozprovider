@@ -36,7 +36,6 @@ trait RatingPlanTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-
     }
 
     abstract protected function sanitizeValues();
@@ -157,5 +156,4 @@ trait RatingPlanTrait
     {
         return $this->tpRatingPlan;
     }
-
 }

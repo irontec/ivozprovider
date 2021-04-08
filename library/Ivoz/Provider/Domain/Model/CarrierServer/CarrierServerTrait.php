@@ -29,7 +29,6 @@ trait CarrierServerTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-
     }
 
     abstract protected function sanitizeValues();
@@ -121,5 +120,4 @@ trait CarrierServerTrait
     {
         return $this->lcrGateway;
     }
-
 }

@@ -394,5 +394,4 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

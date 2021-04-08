@@ -35,10 +35,8 @@ abstract class FeaturesRelBrandAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -109,9 +107,7 @@ abstract class FeaturesRelBrandAbstract
     ) {
         Assertion::isInstanceOf($dto, FeaturesRelBrandDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setBrand($fkTransformer->transform($dto->getBrand()))
@@ -187,5 +183,4 @@ abstract class FeaturesRelBrandAbstract
     {
         return $this->feature;
     }
-
 }

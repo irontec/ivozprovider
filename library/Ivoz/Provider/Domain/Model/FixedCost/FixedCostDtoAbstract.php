@@ -166,5 +166,4 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

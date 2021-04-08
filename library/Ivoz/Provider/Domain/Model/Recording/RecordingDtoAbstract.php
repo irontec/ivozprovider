@@ -303,5 +303,4 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

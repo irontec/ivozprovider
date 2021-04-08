@@ -337,5 +337,4 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
 
         return null;
     }
-
 }

@@ -70,5 +70,4 @@ interface LocutionInterface extends LoggableEntityInterface, FileContainerInterf
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }

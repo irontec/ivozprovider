@@ -204,5 +204,4 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
 
         return null;
     }
-
 }

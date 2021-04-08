@@ -489,5 +489,4 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

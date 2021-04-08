@@ -283,5 +283,4 @@ abstract class TrunksLcrRuleTargetAbstract
     {
         return $this->outgoingRouting;
     }
-
 }

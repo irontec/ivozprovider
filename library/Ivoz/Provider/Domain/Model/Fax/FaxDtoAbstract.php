@@ -204,5 +204,4 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

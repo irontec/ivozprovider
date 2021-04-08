@@ -483,5 +483,4 @@ abstract class ConditionalRouteAbstract
     {
         return $this->numberCountry;
     }
-
 }

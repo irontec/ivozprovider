@@ -362,5 +362,4 @@ abstract class IvrEntryAbstract
     {
         return $this->numberCountry;
     }
-
 }

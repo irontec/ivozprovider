@@ -287,5 +287,4 @@ abstract class ChangelogAbstract
     {
         return $this->command;
     }
-
 }

@@ -461,5 +461,4 @@ trait CarrierTrait
 
         return $this->tpCdrStats->toArray();
     }
-
 }

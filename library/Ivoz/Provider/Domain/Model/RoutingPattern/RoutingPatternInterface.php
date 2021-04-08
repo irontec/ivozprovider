@@ -59,5 +59,4 @@ interface RoutingPatternInterface extends LoggableEntityInterface
     public function replaceLcrRules(ArrayCollection $lcrRules): RoutingPatternInterface;
 
     public function getLcrRules(?Criteria $criteria = null): array;
-
 }

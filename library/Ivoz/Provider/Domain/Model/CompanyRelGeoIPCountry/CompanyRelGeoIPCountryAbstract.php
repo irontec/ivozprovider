@@ -35,10 +35,8 @@ abstract class CompanyRelGeoIPCountryAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -109,9 +107,7 @@ abstract class CompanyRelGeoIPCountryAbstract
     ) {
         Assertion::isInstanceOf($dto, CompanyRelGeoIPCountryDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
@@ -187,5 +183,4 @@ abstract class CompanyRelGeoIPCountryAbstract
     {
         return $this->country;
     }
-
 }

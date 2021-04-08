@@ -493,5 +493,4 @@ abstract class TerminalAbstract
     {
         return $this->terminalModel;
     }
-
 }

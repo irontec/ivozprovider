@@ -282,5 +282,4 @@ abstract class CountryAbstract
         $this->zone = $zone;
         return $this;
     }
-
 }

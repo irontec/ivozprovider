@@ -185,5 +185,4 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

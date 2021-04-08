@@ -261,5 +261,4 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
 
         return null;
     }
-
 }

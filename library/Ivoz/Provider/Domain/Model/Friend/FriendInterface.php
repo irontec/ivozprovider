@@ -212,5 +212,4 @@ interface FriendInterface extends LoggableEntityInterface
     public function replacePatterns(ArrayCollection $patterns): FriendInterface;
 
     public function getPatterns(?Criteria $criteria = null): array;
-
 }

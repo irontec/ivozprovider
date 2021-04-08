@@ -360,5 +360,4 @@ abstract class CalendarPeriodAbstract
     {
         return $this->numberCountry;
     }
-
 }

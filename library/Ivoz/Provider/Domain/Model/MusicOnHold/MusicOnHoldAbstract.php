@@ -335,5 +335,4 @@ abstract class MusicOnHoldAbstract
     {
         return $this->company;
     }
-
 }

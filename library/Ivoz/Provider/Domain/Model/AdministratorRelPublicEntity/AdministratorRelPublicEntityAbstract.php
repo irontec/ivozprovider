@@ -288,5 +288,4 @@ abstract class AdministratorRelPublicEntityAbstract
     {
         return $this->publicEntity;
     }
-
 }

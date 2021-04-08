@@ -147,5 +147,4 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
 
         return null;
     }
-
 }

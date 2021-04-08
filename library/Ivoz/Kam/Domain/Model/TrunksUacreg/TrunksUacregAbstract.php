@@ -512,5 +512,4 @@ abstract class TrunksUacregAbstract
     {
         return $this->brand;
     }
-
 }

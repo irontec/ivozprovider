@@ -109,5 +109,4 @@ abstract class MediaRelaySetDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

@@ -147,5 +147,4 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
     {
         return $this->relUsers;
     }
-
 }

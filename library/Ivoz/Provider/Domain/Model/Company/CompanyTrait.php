@@ -990,5 +990,4 @@ trait CompanyTrait
 
         return $this->relRoutingTags->toArray();
     }
-
 }

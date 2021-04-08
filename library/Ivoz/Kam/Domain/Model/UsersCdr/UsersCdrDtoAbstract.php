@@ -546,5 +546,4 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

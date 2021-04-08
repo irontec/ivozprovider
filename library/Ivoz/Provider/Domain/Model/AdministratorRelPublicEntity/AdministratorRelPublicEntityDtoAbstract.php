@@ -223,5 +223,4 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
 
         return null;
     }
-
 }

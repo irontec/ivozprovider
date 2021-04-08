@@ -204,5 +204,4 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

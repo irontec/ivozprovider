@@ -260,5 +260,4 @@ abstract class ConferenceRoomAbstract
     {
         return $this->company;
     }
-
 }

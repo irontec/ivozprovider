@@ -355,5 +355,4 @@ abstract class CarrierAbstract
     {
         return $this->proxyTrunk;
     }
-
 }

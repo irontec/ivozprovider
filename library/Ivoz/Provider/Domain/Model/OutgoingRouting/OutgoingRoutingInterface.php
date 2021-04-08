@@ -132,5 +132,4 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function replaceRelCarriers(ArrayCollection $relCarriers): OutgoingRoutingInterface;
 
     public function getRelCarriers(?Criteria $criteria = null): array;
-
 }

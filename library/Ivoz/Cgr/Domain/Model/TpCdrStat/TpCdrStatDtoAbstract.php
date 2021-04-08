@@ -622,5 +622,4 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

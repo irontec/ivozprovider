@@ -261,5 +261,4 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
 
         return null;
     }
-
 }

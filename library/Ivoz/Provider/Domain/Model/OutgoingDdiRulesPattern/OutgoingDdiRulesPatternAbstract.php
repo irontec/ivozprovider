@@ -323,5 +323,4 @@ abstract class OutgoingDdiRulesPatternAbstract
     {
         return $this->forcedDdi;
     }
-
 }

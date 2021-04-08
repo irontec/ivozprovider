@@ -716,5 +716,4 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     {
         return $this->callForwardSettings;
     }
-
 }

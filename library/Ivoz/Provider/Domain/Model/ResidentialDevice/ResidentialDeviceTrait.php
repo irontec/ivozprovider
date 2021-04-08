@@ -311,5 +311,4 @@ trait ResidentialDeviceTrait
 
         return $this->callForwardSettings->toArray();
     }
-
 }

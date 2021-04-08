@@ -30,5 +30,4 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

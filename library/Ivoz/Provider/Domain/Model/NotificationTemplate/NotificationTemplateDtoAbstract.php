@@ -166,5 +166,4 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     {
         return $this->contents;
     }
-
 }

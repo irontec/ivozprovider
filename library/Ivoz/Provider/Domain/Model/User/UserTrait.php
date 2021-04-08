@@ -312,5 +312,4 @@ trait UserTrait
 
         return $this->callForwardSettings->toArray();
     }
-
 }

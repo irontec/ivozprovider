@@ -204,5 +204,4 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

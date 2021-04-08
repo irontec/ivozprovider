@@ -60,5 +60,4 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function replaceRules(ArrayCollection $rules): TransformationRuleSetInterface;
 
     public function getRules(?Criteria $criteria = null): array;
-
 }

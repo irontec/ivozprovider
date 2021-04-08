@@ -698,5 +698,4 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

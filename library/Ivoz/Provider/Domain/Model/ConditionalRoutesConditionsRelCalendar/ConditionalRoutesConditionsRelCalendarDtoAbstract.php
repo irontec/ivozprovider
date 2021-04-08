@@ -147,5 +147,4 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
 
         return null;
     }
-
 }

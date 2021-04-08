@@ -61,5 +61,4 @@ interface CalendarInterface extends LoggableEntityInterface
     public function replaceCalendarPeriods(ArrayCollection $calendarPeriods): CalendarInterface;
 
     public function getCalendarPeriods(?Criteria $criteria = null): array;
-
 }

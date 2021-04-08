@@ -147,5 +147,4 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
 
         return null;
     }
-
 }

@@ -641,5 +641,4 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
 
         return null;
     }
-
 }

@@ -181,5 +181,4 @@ class Invoice
     {
         return $this->registryData;
     }
-
 }

@@ -162,5 +162,4 @@ trait CalendarPeriodTrait
 
         return $this->relSchedules->toArray();
     }
-
 }

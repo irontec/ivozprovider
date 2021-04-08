@@ -280,5 +280,4 @@ abstract class RoutingPatternAbstract
     {
         return $this->brand;
     }
-
 }

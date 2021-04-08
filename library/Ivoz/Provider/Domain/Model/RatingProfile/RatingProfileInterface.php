@@ -55,5 +55,4 @@ interface RatingProfileInterface extends LoggableEntityInterface
     public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles): RatingProfileInterface;
 
     public function getTpRatingProfiles(?Criteria $criteria = null): array;
-
 }

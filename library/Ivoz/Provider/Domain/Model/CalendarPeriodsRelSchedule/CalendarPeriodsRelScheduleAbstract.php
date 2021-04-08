@@ -35,10 +35,8 @@ abstract class CalendarPeriodsRelScheduleAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -109,9 +107,7 @@ abstract class CalendarPeriodsRelScheduleAbstract
     ) {
         Assertion::isInstanceOf($dto, CalendarPeriodsRelScheduleDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setCalendarPeriod($fkTransformer->transform($dto->getCalendarPeriod()))
@@ -187,5 +183,4 @@ abstract class CalendarPeriodsRelScheduleAbstract
     {
         return $this->schedule;
     }
-
 }

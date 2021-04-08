@@ -54,5 +54,4 @@ interface DomainInterface extends LoggableEntityInterface
     public function replaceTerminals(ArrayCollection $terminals): DomainInterface;
 
     public function getTerminals(?Criteria $criteria = null): array;
-
 }

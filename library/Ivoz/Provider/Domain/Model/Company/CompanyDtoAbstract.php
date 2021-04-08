@@ -1358,5 +1358,4 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     {
         return $this->relRoutingTags;
     }
-
 }

@@ -493,5 +493,4 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     {
         return $this->relFixedCosts;
     }
-
 }

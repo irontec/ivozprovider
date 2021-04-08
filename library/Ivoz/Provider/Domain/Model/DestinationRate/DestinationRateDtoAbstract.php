@@ -299,5 +299,4 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

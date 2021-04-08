@@ -119,5 +119,4 @@ interface TerminalInterface extends LoggableEntityInterface
     public function replaceUsers(ArrayCollection $users): TerminalInterface;
 
     public function getUsers(?Criteria $criteria = null): array;
-
 }

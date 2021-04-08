@@ -242,5 +242,4 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
 
         return null;
     }
-
 }

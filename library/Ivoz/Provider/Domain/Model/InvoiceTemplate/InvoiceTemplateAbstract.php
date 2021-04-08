@@ -284,5 +284,4 @@ abstract class InvoiceTemplateAbstract
     {
         return $this->brand;
     }
-
 }

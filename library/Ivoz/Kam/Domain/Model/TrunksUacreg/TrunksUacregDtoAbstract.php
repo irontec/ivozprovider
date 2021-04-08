@@ -394,5 +394,4 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

@@ -186,5 +186,4 @@ abstract class ApplicationServerAbstract
     {
         return $this->name;
     }
-
 }

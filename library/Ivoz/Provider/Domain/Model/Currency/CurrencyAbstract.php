@@ -234,5 +234,4 @@ abstract class CurrencyAbstract
         $this->name = $name;
         return $this;
     }
-
 }

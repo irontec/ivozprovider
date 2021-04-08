@@ -211,5 +211,4 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): ResidentialDeviceInterface;
 
     public function getCallForwardSettings(?Criteria $criteria = null): array;
-
 }

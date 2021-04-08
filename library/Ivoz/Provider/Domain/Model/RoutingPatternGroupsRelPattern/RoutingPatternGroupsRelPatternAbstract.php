@@ -36,10 +36,8 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -110,9 +108,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     ) {
         Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
@@ -189,5 +185,4 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     {
         return $this->routingPatternGroup;
     }
-
 }

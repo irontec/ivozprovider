@@ -451,5 +451,4 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

@@ -242,5 +242,4 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
 
         return null;
     }
-
 }

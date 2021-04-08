@@ -189,5 +189,4 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
     {
         return $this->nameIt;
     }
-
 }

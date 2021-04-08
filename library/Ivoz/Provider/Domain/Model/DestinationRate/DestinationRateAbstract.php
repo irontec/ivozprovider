@@ -283,5 +283,4 @@ abstract class DestinationRateAbstract
     {
         return $this->destination;
     }
-
 }

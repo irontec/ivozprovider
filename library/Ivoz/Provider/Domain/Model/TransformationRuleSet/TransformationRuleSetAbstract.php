@@ -381,5 +381,4 @@ abstract class TransformationRuleSetAbstract
     {
         return $this->country;
     }
-
 }

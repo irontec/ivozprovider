@@ -28,5 +28,4 @@ interface TimezoneInterface extends LoggableEntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

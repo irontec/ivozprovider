@@ -209,5 +209,4 @@ abstract class RoutingPatternGroupAbstract
     {
         return $this->brand;
     }
-
 }

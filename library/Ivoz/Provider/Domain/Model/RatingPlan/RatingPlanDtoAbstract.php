@@ -413,5 +413,4 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

@@ -166,5 +166,4 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
 
         return null;
     }
-
 }

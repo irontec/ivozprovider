@@ -261,5 +261,4 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

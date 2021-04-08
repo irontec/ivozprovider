@@ -270,5 +270,4 @@ abstract class TpDestinationAbstract
     {
         return $this->destination;
     }
-
 }

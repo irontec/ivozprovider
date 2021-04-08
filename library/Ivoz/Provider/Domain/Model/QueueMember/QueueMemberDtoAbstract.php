@@ -166,5 +166,4 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

@@ -288,5 +288,4 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     {
         return $this->descriptionIt;
     }
-
 }

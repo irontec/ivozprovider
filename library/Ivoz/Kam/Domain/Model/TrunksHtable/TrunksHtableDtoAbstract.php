@@ -166,5 +166,4 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
 }

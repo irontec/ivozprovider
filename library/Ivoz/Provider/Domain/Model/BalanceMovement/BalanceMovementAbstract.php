@@ -50,10 +50,8 @@ abstract class BalanceMovementAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-
-    ) {
-
+    protected function __construct()
+    {
     }
 
     abstract public function getId();
@@ -124,9 +122,7 @@ abstract class BalanceMovementAbstract
     ) {
         Assertion::isInstanceOf($dto, BalanceMovementDto::class);
 
-        $self = new static(
-
-        );
+        $self = new static();
 
         $self
             ->setAmount($dto->getAmount())
@@ -272,5 +268,4 @@ abstract class BalanceMovementAbstract
     {
         return $this->carrier;
     }
-
 }

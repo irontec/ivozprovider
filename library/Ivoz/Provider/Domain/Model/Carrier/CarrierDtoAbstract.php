@@ -413,5 +413,4 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     {
         return $this->tpCdrStats;
     }
-
 }

@@ -162,5 +162,4 @@ trait InvoiceTrait
 
         return $this->relFixedCosts->toArray();
     }
-
 }

@@ -204,5 +204,4 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     {
         return $this->id;
     }
-
 }

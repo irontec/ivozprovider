@@ -335,5 +335,4 @@ abstract class TrustedAbstract
     {
         return $this->company;
     }
-
 }

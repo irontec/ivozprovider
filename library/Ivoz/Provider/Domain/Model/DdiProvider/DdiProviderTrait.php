@@ -236,5 +236,4 @@ trait DdiProviderTrait
 
         return $this->ddiProviderAddresses->toArray();
     }
-
 }

@@ -223,5 +223,4 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
 
         return null;
     }
-
 }

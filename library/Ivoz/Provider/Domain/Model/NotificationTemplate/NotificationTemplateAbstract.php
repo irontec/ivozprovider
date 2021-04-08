@@ -223,5 +223,4 @@ abstract class NotificationTemplateAbstract
     {
         return $this->brand;
     }
-
 }

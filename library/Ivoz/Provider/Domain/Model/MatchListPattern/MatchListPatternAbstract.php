@@ -295,5 +295,4 @@ abstract class MatchListPatternAbstract
     {
         return $this->numberCountry;
     }
-
 }

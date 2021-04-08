@@ -835,5 +835,4 @@ abstract class TpDerivedChargerAbstract
     {
         return $this->brand;
     }
-
 }

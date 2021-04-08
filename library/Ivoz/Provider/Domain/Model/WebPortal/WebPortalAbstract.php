@@ -341,5 +341,4 @@ abstract class WebPortalAbstract
     {
         return $this->brand;
     }
-
 }

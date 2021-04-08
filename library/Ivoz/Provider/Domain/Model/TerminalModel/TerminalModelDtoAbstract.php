@@ -242,5 +242,4 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
 }

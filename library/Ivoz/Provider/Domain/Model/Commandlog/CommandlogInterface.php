@@ -34,5 +34,4 @@ interface CommandlogInterface extends EntityInterface
      * @return bool
      */
     public function isInitialized(): bool;
-
 }

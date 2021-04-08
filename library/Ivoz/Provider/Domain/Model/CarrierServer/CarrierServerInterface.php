@@ -66,5 +66,4 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function setLcrGateway(TrunksLcrGatewayInterface $lcrGateway): static;
 
     public function getLcrGateway(): ?TrunksLcrGatewayInterface;
-
 }
