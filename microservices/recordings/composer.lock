@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "59b3d95dbfa84fa778f81ad35db9f471",
+    "content-hash": "c73ca7a68203e3abe21b675afb36ba7a",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -190,35 +190,6 @@
                 }
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "debach/zend-mp3",
-            "version": "1.8.1",
-            "dist": {
-                "type": "path",
-                "url": "../../library/vendor/debach/zend-mp3",
-                "reference": "17b523ad57f283ddf3a116bc0eff22cb9d1b4b27"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Zend_": "lib/"
-                }
-            },
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sven Vollbehr"
-                }
-            ],
-            "description": "The best PHP library for Object-Oriented media file information reading and writing.",
-            "homepage": "https://code.google.com/p/php-reader/",
             "transport-options": {
                 "symlink": true,
                 "relative": true
@@ -1769,6 +1740,35 @@
                 }
             ],
             "description": "Empty package replacement",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "irontec/zend-mp3",
+            "version": "1.8.3",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/irontec/zend-mp3",
+                "reference": "578477c872340f426736eb40bb52d19cbd3212f2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Zend_": "lib/"
+                }
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sven Vollbehr"
+                }
+            ],
+            "description": "The best PHP library for Object-Oriented media file information reading and writing.",
+            "homepage": "https://code.google.com/p/php-reader/",
             "transport-options": {
                 "symlink": true,
                 "relative": true

@@ -52,6 +52,10 @@
         {
             "url": "https://github.com/irontec/wkhtmltopdf-amd64.git",
             "type": "git"
+        },
+        {
+            "url": "https://github.com/irontec/zend-mp3.git",
+            "type": "git"
         }
     ],
     "autoload-dev": {
@@ -68,7 +72,6 @@
     },
     "require": {
         "php": ">=7.4.6",
-        "debach/zend-mp3": "1.8.*",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
         "doctrine/persistence": "^2.1",
@@ -78,6 +81,7 @@
         "irontec/ivoz-provider-bundle": "^2.5",
         "irontec/replacements": "^1.0",
         "irontec/wkhtmltopdf-amd64": "0.12.6.1",
+        "irontec/zend-mp3": "^1.8",
         "knplabs/knp-snappy": "^1.2",
         "laminas/laminas-code": "^3.4",
         "ocramius/package-versions": "^1.9",
@@ -103,7 +107,7 @@
         "friendsofphp/php-cs-fixer": "^2.16",
         "http-interop/http-middleware": "^0.5",
         "overtrue/phplint": "^1.0",
-        "phpspec/phpspec": "^6.0",
+        "phpspec/phpspec": "^7.0",
         "phpstan/phpstan": "^0.12.81",
         "phpstan/phpstan-beberlei-assert": "^0.12.6",
         "phpstan/phpstan-doctrine": "^0.12.33",

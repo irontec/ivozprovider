@@ -47,9 +47,9 @@
         }
     },
     "require": {
-        "debach/zend-mp3": "1.8.*",
         "irontec/ivoz-provider-bundle": "^2.0",
         "irontec/replacements": "^1.0",
+        "irontec/zend-mp3": "^1.8",
         "symfony/flex": "^1.9"
     },
     "extra": {

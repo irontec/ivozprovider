@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0170cc9131cf71cd275e802bd55b7217",
+    "content-hash": "cb5f37b054f18e13df96e7bac2968657",
     "packages": [
         {
             "name": "api-platform/core",
@@ -353,39 +353,6 @@
                 }
             ],
             "time": "2020-11-11T10:22:58+00:00"
-        },
-        {
-            "name": "debach/zend-mp3",
-            "version": "1.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/debach/zend-mp3.git",
-                "reference": "17b523ad57f283ddf3a116bc0eff22cb9d1b4b27"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/debach/zend-mp3/zipball/17b523ad57f283ddf3a116bc0eff22cb9d1b4b27",
-                "reference": "17b523ad57f283ddf3a116bc0eff22cb9d1b4b27",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Zend_": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sven Vollbehr"
-                }
-            ],
-            "description": "The best PHP library for Object-Oriented media file information reading and writing.",
-            "homepage": "https://code.google.com/p/php-reader/",
-            "time": "2016-01-04T13:23:44+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -2645,6 +2612,32 @@
                 "wkhtmltopdf"
             ],
             "time": "2021-02-23T08:44:04+00:00"
+        },
+        {
+            "name": "irontec/zend-mp3",
+            "version": "1.8.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/irontec/zend-mp3.git",
+                "reference": "578477c872340f426736eb40bb52d19cbd3212f2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Zend_": "lib/"
+                }
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sven Vollbehr"
+                }
+            ],
+            "description": "The best PHP library for Object-Oriented media file information reading and writing.",
+            "homepage": "https://code.google.com/p/php-reader/",
+            "time": "2021-04-12T07:44:25+00:00"
         },
         {
             "name": "knplabs/knp-snappy",
@@ -11702,30 +11695,30 @@
         },
         {
             "name": "phpspec/phpspec",
-            "version": "6.3.1",
+            "version": "7.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "6f3de03e235ab817aff35cc76aceb09826c3c4f8"
+                "reference": "26e814250e76711235a30b6f1a7695181934f230"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/6f3de03e235ab817aff35cc76aceb09826c3c4f8",
-                "reference": "6f3de03e235ab817aff35cc76aceb09826c3c4f8",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/26e814250e76711235a30b6f1a7695181934f230",
+                "reference": "26e814250e76711235a30b6f1a7695181934f230",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.5",
                 "ext-tokenizer": "*",
-                "php": "^7.2 || 8.0.*",
+                "php": "^7.3 || 8.0.*",
                 "phpspec/php-diff": "^1.0.0",
                 "phpspec/prophecy": "^1.9",
-                "sebastian/exporter": "^1.0 || ^2.0 || ^3.0 || ^4.0",
-                "symfony/console": "^3.4 || ^4.0 || ^5.0",
-                "symfony/event-dispatcher": "^3.4 || ^4.0 || ^5.0",
-                "symfony/finder": "^3.4 || ^4.0 || ^5.0",
-                "symfony/process": "^3.4 || ^4.0 || ^5.0",
-                "symfony/yaml": "^3.4 || ^4.0 || ^5.0"
+                "sebastian/exporter": "^3.0 || ^4.0",
+                "symfony/console": "^3.4 || ^4.4 || ^5.0",
+                "symfony/event-dispatcher": "^3.4 || ^4.4 || ^5.0",
+                "symfony/finder": "^3.4 || ^4.4 || ^5.0",
+                "symfony/process": "^3.4 || ^4.4 || ^5.0",
+                "symfony/yaml": "^3.4 || ^4.4 || ^5.0"
             },
             "conflict": {
                 "sebastian/comparator": "<1.2.4"
@@ -11744,7 +11737,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.3.x-dev"
+                    "dev-main": "7.0.x-dev"
                 }
             },
             "autoload": {
@@ -11784,9 +11777,9 @@
             ],
             "support": {
                 "issues": "https://github.com/phpspec/phpspec/issues",
-                "source": "https://github.com/phpspec/phpspec/tree/6.3.1"
+                "source": "https://github.com/phpspec/phpspec/tree/7.0.1"
             },
-            "time": "2020-12-29T14:47:41+00:00"
+            "time": "2020-12-29T14:51:04+00:00"
         },
         {
             "name": "phpspec/prophecy",

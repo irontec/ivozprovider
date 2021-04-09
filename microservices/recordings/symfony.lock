@@ -5,9 +5,6 @@
     "beberlei/doctrineextensions": {
         "version": "v1.2.7"
     },
-    "debach/zend-mp3": {
-        "version": "1.8.1"
-    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -97,6 +94,9 @@
     },
     "irontec/replacements": {
         "version": "1.0.0.0"
+    },
+    "irontec/zend-mp3": {
+        "version": "1.8.2"
     },
     "laminas/laminas-code": {
         "version": "3.4.1"
