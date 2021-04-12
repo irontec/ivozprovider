@@ -234,7 +234,7 @@ pipeline {
                 stage ('schema') {
                     steps {
                         script {
-                            docker.image('percona/percona-server:8.0').withRun('-e "MYSQL_ROOT_PASSWORD=changeme"') { c ->
+                            docker.image('percona/percona-server:8.0').withRun('-e "MYSQL_ROOT_PASSWORD=changeme"', '--default-authentication-plugin=mysql_native_password') { c ->
                                 docker.image('percona/percona-server:8.0').inside("--link ${c.id}:data.ivozprovider.local") {
                                     /* Wait until mysql service is up */
                                     sh 'while ! mysqladmin ping -hdata.ivozprovider.local --silent; do sleep 1; done'
