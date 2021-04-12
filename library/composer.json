@@ -56,6 +56,10 @@
         {
             "url": "https://github.com/irontec/zend-mp3.git",
             "type": "git"
+        },
+        {
+            "url": "https://github.com/irontec/prophecy.git",
+            "type": "git"
         }
     ],
     "autoload-dev": {
@@ -79,6 +83,7 @@
         "irontec/ivoz-api-bundle": "^4.1.3",
         "irontec/ivoz-dev-tools": "^5.0",
         "irontec/ivoz-provider-bundle": "^2.5",
+        "irontec/prophecy": "^1.13",
         "irontec/replacements": "^1.0",
         "irontec/wkhtmltopdf-amd64": "0.12.6.1",
         "irontec/zend-mp3": "^1.8",

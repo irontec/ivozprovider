@@ -175,6 +175,9 @@
     "irontec/ivoz-provider-bundle": {
         "version": "2.5.2"
     },
+    "irontec/prophecy": {
+        "version": "1.13.1"
+    },
     "irontec/replacements": {
         "version": "1.0.0.0"
     },
@@ -261,9 +264,6 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.3.0"
-    },
-    "phpspec/prophecy": {
-        "version": "1.11.1"
     },
     "phpunit/php-code-coverage": {
         "version": "7.0.10"
