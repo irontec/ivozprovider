@@ -13,6 +13,7 @@ RUN apt-get install --assume-yes --force-yes \
         unzip \
         curl \
         wget \
+        percona-toolkit \
         sqlite3 \
         sphinx-intl \
         nodejs \

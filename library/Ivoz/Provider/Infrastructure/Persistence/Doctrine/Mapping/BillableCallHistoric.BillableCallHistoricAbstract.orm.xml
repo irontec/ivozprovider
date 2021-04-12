@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <mapped-superclass name="Ivoz\Provider\Domain\Model\BillableCallHistoric\BillableCallHistoricAbstract" table="billable_call_historic_abstract">
+        <indexes>
+            <index name="billableCallHistoric_startTime_idx" columns="startTime"/>
+            <index name="billableCallHistoric_callid_idx" columns="callid"/>
+            <index name="billableCallHistoric_callee_idx" columns="callee"/>
+            <index name="billableCallHistoric_caller_idx" columns="caller"/>
+            <index name="billableCallHistoric_brand_company_idx" columns="brandId,companyId"/>
+        </indexes>
+        <field name="callid" type="string" column="callid" length="255" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="startTime" type="datetime" column="startTime" nullable="true"/>
+        <field name="duration" type="float" column="duration" precision="10" scale="3" nullable="false">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="caller" type="string" column="caller" length="128" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="callee" type="string" column="callee" length="128" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="cost" type="decimal" column="cost" precision="20" scale="4" nullable="true"/>
+        <field name="price" type="decimal" column="price" precision="20" scale="4" nullable="true"/>
+        <field name="priceDetails" type="json_array" column="priceDetails" nullable="true"/>
+        <field name="carrierName" type="string" column="carrierName" length="200" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="destinationName" type="string" column="destinationName" length="100" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="ratingPlanName" type="string" column="ratingPlanName" length="55" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="endpointType" type="string" column="endpointType" length="55" nullable="true">
+            <options>
+                <option name="fixed"/>
+                <option name="comment">[enum:RetailAccount|ResidentialDevice|User|Friend|Fax]</option>
+            </options>
+        </field>
+        <field name="endpointId" type="integer" column="endpointId" nullable="true">
+            <options>
+                <option name="unsigned">1</option>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="endpointName" type="string" length="65" column="endpointName" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="direction" type="string" column="direction" nullable="true">
+            <options>
+                <option name="fixed"/>
+                <option name="comment">[enum:inbound|outbound]</option>
+                <option name="default">outbound</option>
+            </options>
+        </field>
+        <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
+            <join-columns>
+                <join-column name="brandId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+            </join-columns>
+        </many-to-one>
+        <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" fetch="LAZY">
+            <join-columns>
+                <join-column name="companyId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+            </join-columns>
+        </many-to-one>
+        <many-to-one field="carrier" target-entity="Ivoz\Provider\Domain\Model\Carrier\CarrierInterface" fetch="LAZY">
+            <join-columns>
+                <join-column name="carrierId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+            </join-columns>
+        </many-to-one>
+        <many-to-one field="destination" target-entity="Ivoz\Provider\Domain\Model\Destination\DestinationInterface" fetch="LAZY">
+            <join-columns>
+                <join-column name="destinationId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+            </join-columns>
+        </many-to-one>
+        <many-to-one field="ratingPlanGroup" target-entity="Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface" fetch="LAZY">
+            <join-columns>
+                <join-column name="ratingPlanGroupId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+            </join-columns>
+        </many-to-one>
+        <many-to-one field="invoice" target-entity="Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface" fetch="LAZY">
+            <join-columns>
+                <join-column name="invoiceId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+            </join-columns>
+        </many-to-one>
+        <many-to-one field="trunksCdr" target-entity="Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface" fetch="LAZY">
+            <join-columns>
+                <join-column name="trunksCdrId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+            </join-columns>
+        </many-to-one>
+        <many-to-one field="ddi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
+            <join-columns>
+                <join-column name="ddiId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+            </join-columns>
+        </many-to-one>
+        <many-to-one field="ddiProvider" target-entity="Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface" fetch="LAZY">
+            <join-columns>
+                <join-column name="ddiProviderId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+            </join-columns>
+        </many-to-one>
+    </mapped-superclass>
+</doctrine-mapping>

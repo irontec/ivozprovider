@@ -348,8 +348,7 @@ class BillableCallRepositoryTest extends KernelTestCase
                 1000
             );
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $ids
         );
 

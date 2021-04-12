@@ -23,6 +23,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress
       Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface:
         Ivoz\Provider\Domain\Model\BillableCall\BillableCall
+      Ivoz\Provider\Domain\Model\BillableCallHistoric\BillableCallHistoricInterface:
+        Ivoz\Provider\Domain\Model\BillableCallHistoric\BillableCallHistoric
       Ivoz\Provider\Domain\Model\Brand\BrandInterface:
         Ivoz\Provider\Domain\Model\Brand\Brand
       Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface:

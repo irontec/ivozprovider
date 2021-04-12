@@ -3,19 +3,34 @@
 namespace Ivoz\Provider\Domain\Model\BillableCallHistoric;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 
+/**
+* BillableCallHistoricInterface
+*/
 interface BillableCallHistoricInterface extends LoggableEntityInterface
 {
     const ENDPOINTTYPE_RETAILACCOUNT = 'RetailAccount';
+
     const ENDPOINTTYPE_RESIDENTIALDEVICE = 'ResidentialDevice';
+
     const ENDPOINTTYPE_USER = 'User';
+
     const ENDPOINTTYPE_FRIEND = 'Friend';
+
     const ENDPOINTTYPE_FAX = 'Fax';
 
-
     const DIRECTION_INBOUND = 'inbound';
-    const DIRECTION_OUTBOUND = 'outbound';
 
+    const DIRECTION_OUTBOUND = 'outbound';
 
     /**
      * @codeCoverageIgnore
@@ -23,173 +38,53 @@ interface BillableCallHistoricInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Get callid
-     *
-     * @return string | null
-     */
-    public function getCallid();
+    public function getCallid(): ?string;
 
-    /**
-     * Get startTime
-     *
-     * @return \DateTime | null
-     */
-    public function getStartTime();
+    public function getStartTime(): ?\DateTime;
 
-    /**
-     * Get duration
-     *
-     * @return float
-     */
     public function getDuration(): float;
 
-    /**
-     * Get caller
-     *
-     * @return string | null
-     */
-    public function getCaller();
+    public function getCaller(): ?string;
 
-    /**
-     * Get callee
-     *
-     * @return string | null
-     */
-    public function getCallee();
+    public function getCallee(): ?string;
 
-    /**
-     * Get cost
-     *
-     * @return float | null
-     */
-    public function getCost();
+    public function getCost(): ?float;
 
-    /**
-     * Get price
-     *
-     * @return float | null
-     */
-    public function getPrice();
+    public function getPrice(): ?float;
 
-    /**
-     * Get priceDetails
-     *
-     * @return array | null
-     */
-    public function getPriceDetails();
+    public function getPriceDetails(): ?array;
 
-    /**
-     * Get carrierName
-     *
-     * @return string | null
-     */
-    public function getCarrierName();
+    public function getCarrierName(): ?string;
 
-    /**
-     * Get destinationName
-     *
-     * @return string | null
-     */
-    public function getDestinationName();
+    public function getDestinationName(): ?string;
 
-    /**
-     * Get ratingPlanName
-     *
-     * @return string | null
-     */
-    public function getRatingPlanName();
+    public function getRatingPlanName(): ?string;
 
-    /**
-     * Get endpointType
-     *
-     * @return string | null
-     */
-    public function getEndpointType();
+    public function getEndpointType(): ?string;
 
-    /**
-     * Get endpointId
-     *
-     * @return integer | null
-     */
-    public function getEndpointId();
+    public function getEndpointId(): ?int;
 
-    /**
-     * Get endpointName
-     *
-     * @return string | null
-     */
-    public function getEndpointName();
+    public function getEndpointName(): ?string;
 
-    /**
-     * Get direction
-     *
-     * @return string | null
-     */
-    public function getDirection();
+    public function getDirection(): ?string;
 
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
-     */
-    public function getBrand();
+    public function getBrand(): ?BrandInterface;
 
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
-     */
-    public function getCompany();
+    public function getCompany(): ?CompanyInterface;
 
-    /**
-     * Get carrier
-     *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
-     */
-    public function getCarrier();
+    public function getCarrier(): ?CarrierInterface;
 
-    /**
-     * Get destination
-     *
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null
-     */
-    public function getDestination();
+    public function getDestination(): ?DestinationInterface;
 
-    /**
-     * Get ratingPlanGroup
-     *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
-     */
-    public function getRatingPlanGroup();
+    public function getRatingPlanGroup(): ?RatingPlanGroupInterface;
 
-    /**
-     * Get invoice
-     *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
-     */
-    public function getInvoice();
+    public function getInvoice(): ?InvoiceInterface;
 
-    /**
-     * Get trunksCdr
-     *
-     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
-     */
-    public function getTrunksCdr();
+    public function getTrunksCdr(): ?TrunksCdrInterface;
 
-    /**
-     * Get ddi
-     *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
-     */
-    public function getDdi();
+    public function getDdi(): ?DdiInterface;
 
-    /**
-     * Get ddiProvider
-     *
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
-     */
-    public function getDdiProvider();
+    public function getDdiProvider(): ?DdiProviderInterface;
 
     /**
      * @return bool

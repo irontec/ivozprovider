@@ -9,7 +9,7 @@ use Doctrine\ORM\Query;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Provider\Domain\Model\BillableCallHistoric\BillableCallHistoric;
 use Ivoz\Provider\Domain\Model\BillableCallHistoric\BillableCallHistoricRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * BillableCallHistoricDoctrineRepository
@@ -22,7 +22,7 @@ class BillableCallHistoricDoctrineRepository extends ServiceEntityRepository imp
     protected $queryRunner;
 
     public function __construct(
-        RegistryInterface $registry,
+        ManagerRegistry $registry,
         DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, BillableCallHistoric::class);

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Ivoz\Provider\Domain\Model\BillableCallHistoric;
 
@@ -6,13 +7,35 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
+use Ivoz\Provider\Domain\Model\Destination\Destination;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
+use Ivoz\Provider\Domain\Model\Invoice\Invoice;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
+use Ivoz\Provider\Domain\Model\Ddi\Ddi;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
 
 /**
- * BillableCallHistoricAbstract
- * @codeCoverageIgnore
- */
+* BillableCallHistoricAbstract
+* @codeCoverageIgnore
+*/
 abstract class BillableCallHistoricAbstract
 {
+    use ChangelogTrait;
+
     /**
      * @var string | null
      */
@@ -26,7 +49,7 @@ abstract class BillableCallHistoricAbstract
     /**
      * @var float
      */
-    protected $duration = 0.0;
+    protected $duration = 0;
 
     /**
      * @var string | null
@@ -51,7 +74,7 @@ abstract class BillableCallHistoricAbstract
     /**
      * @var array | null
      */
-    protected $priceDetails;
+    protected $priceDetails = [];
 
     /**
      * @var string | null
@@ -75,7 +98,7 @@ abstract class BillableCallHistoricAbstract
     protected $endpointType;
 
     /**
-     * @var integer | null
+     * @var int | null
      */
     protected $endpointId;
 
@@ -91,58 +114,56 @@ abstract class BillableCallHistoricAbstract
     protected $direction = 'outbound';
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
+     * @var BrandInterface | null
      */
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
+     * @var CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
+     * @var CarrierInterface | null
      */
     protected $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null
+     * @var DestinationInterface | null
      */
     protected $destination;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
+     * @var RatingPlanGroupInterface | null
      */
     protected $ratingPlanGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
+     * @var InvoiceInterface | null
      */
     protected $invoice;
 
     /**
-     * @var \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
+     * @var TrunksCdrInterface | null
      */
     protected $trunksCdr;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     * @var DdiInterface | null
      */
     protected $ddi;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
+     * @var DdiProviderInterface | null
      */
     protected $ddiProvider;
-
-
-    use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($duration)
-    {
+    protected function __construct(
+        $duration
+    ) {
         $this->setDuration($duration);
     }
 
@@ -166,7 +187,7 @@ abstract class BillableCallHistoricAbstract
     }
 
     /**
-     * @param null $id
+     * @param mixed $id
      * @return BillableCallHistoricDto
      */
     public static function createDto($id = null)
@@ -210,7 +231,7 @@ abstract class BillableCallHistoricAbstract
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, BillableCallHistoricDto::class);
 
@@ -241,8 +262,7 @@ abstract class BillableCallHistoricAbstract
             ->setInvoice($fkTransformer->transform($dto->getInvoice()))
             ->setTrunksCdr($fkTransformer->transform($dto->getTrunksCdr()))
             ->setDdi($fkTransformer->transform($dto->getDdi()))
-            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()))
-        ;
+            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
 
         $self->initChangelog();
 
@@ -256,7 +276,7 @@ abstract class BillableCallHistoricAbstract
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
-        \Ivoz\Core\Application\ForeignKeyTransformerInterface $fkTransformer
+        ForeignKeyTransformerInterface $fkTransformer
     ) {
         Assertion::isInstanceOf($dto, BillableCallHistoricDto::class);
 
@@ -286,8 +306,6 @@ abstract class BillableCallHistoricAbstract
             ->setDdi($fkTransformer->transform($dto->getDdi()))
             ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
 
-
-
         return $this;
     }
 
@@ -314,15 +332,15 @@ abstract class BillableCallHistoricAbstract
             ->setEndpointId(self::getEndpointId())
             ->setEndpointName(self::getEndpointName())
             ->setDirection(self::getDirection())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
-            ->setDestination(\Ivoz\Provider\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth))
-            ->setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup::entityToDto(self::getRatingPlanGroup(), $depth))
-            ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto(self::getInvoice(), $depth))
-            ->setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr::entityToDto(self::getTrunksCdr(), $depth))
-            ->setDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getDdi(), $depth))
-            ->setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::entityToDto(self::getDdiProvider(), $depth));
+            ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
+            ->setCompany(Company::entityToDto(self::getCompany(), $depth))
+            ->setCarrier(Carrier::entityToDto(self::getCarrier(), $depth))
+            ->setDestination(Destination::entityToDto(self::getDestination(), $depth))
+            ->setRatingPlanGroup(RatingPlanGroup::entityToDto(self::getRatingPlanGroup(), $depth))
+            ->setInvoice(Invoice::entityToDto(self::getInvoice(), $depth))
+            ->setTrunksCdr(TrunksCdr::entityToDto(self::getTrunksCdr(), $depth))
+            ->setDdi(Ddi::entityToDto(self::getDdi(), $depth))
+            ->setDdiProvider(DdiProvider::entityToDto(self::getDdiProvider(), $depth));
     }
 
     /**
@@ -357,16 +375,8 @@ abstract class BillableCallHistoricAbstract
             'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
         ];
     }
-    // @codeCoverageIgnoreStart
 
-    /**
-     * Set callid
-     *
-     * @param string $callid | null
-     *
-     * @return static
-     */
-    protected function setCallid($callid = null)
+    protected function setCallid(?string $callid = null): static
     {
         if (!is_null($callid)) {
             Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -377,27 +387,19 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get callid
-     *
-     * @return string | null
-     */
-    public function getCallid()
+    public function getCallid(): ?string
     {
         return $this->callid;
     }
 
-    /**
-     * Set startTime
-     *
-     * @param \DateTime $startTime | null
-     *
-     * @return static
-     */
-    protected function setStartTime($startTime = null)
+    protected function setStartTime($startTime = null): static
     {
         if (!is_null($startTime)) {
-            $startTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            Assertion::notNull(
+                $startTime,
+                'startTime value "%s" is null, but non null value was expected.'
+            );
+            $startTime = DateTimeHelper::createOrFix(
                 $startTime,
                 null
             );
@@ -412,51 +414,24 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get startTime
-     *
-     * @return \DateTime | null
-     */
-    public function getStartTime()
+    public function getStartTime(): ?\DateTime
     {
         return !is_null($this->startTime) ? clone $this->startTime : null;
     }
 
-    /**
-     * Set duration
-     *
-     * @param float $duration
-     *
-     * @return static
-     */
-    protected function setDuration($duration)
+    protected function setDuration(float $duration): static
     {
-        Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
-        Assertion::numeric($duration);
-
-        $this->duration = (float) $duration;
+        $this->duration = $duration;
 
         return $this;
     }
 
-    /**
-     * Get duration
-     *
-     * @return float
-     */
     public function getDuration(): float
     {
         return $this->duration;
     }
 
-    /**
-     * Set caller
-     *
-     * @param string $caller | null
-     *
-     * @return static
-     */
-    protected function setCaller($caller = null)
+    protected function setCaller(?string $caller = null): static
     {
         if (!is_null($caller)) {
             Assertion::maxLength($caller, 128, 'caller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -467,24 +442,12 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get caller
-     *
-     * @return string | null
-     */
-    public function getCaller()
+    public function getCaller(): ?string
     {
         return $this->caller;
     }
 
-    /**
-     * Set callee
-     *
-     * @param string $callee | null
-     *
-     * @return static
-     */
-    protected function setCallee($callee = null)
+    protected function setCallee(?string $callee = null): static
     {
         if (!is_null($callee)) {
             Assertion::maxLength($callee, 128, 'callee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -495,27 +458,14 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get callee
-     *
-     * @return string | null
-     */
-    public function getCallee()
+    public function getCallee(): ?string
     {
         return $this->callee;
     }
 
-    /**
-     * Set cost
-     *
-     * @param float $cost | null
-     *
-     * @return static
-     */
-    protected function setCost($cost = null)
+    protected function setCost(?float $cost = null): static
     {
         if (!is_null($cost)) {
-            Assertion::numeric($cost);
             $cost = (float) $cost;
         }
 
@@ -524,27 +474,14 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get cost
-     *
-     * @return float | null
-     */
-    public function getCost()
+    public function getCost(): ?float
     {
         return $this->cost;
     }
 
-    /**
-     * Set price
-     *
-     * @param float $price | null
-     *
-     * @return static
-     */
-    protected function setPrice($price = null)
+    protected function setPrice(?float $price = null): static
     {
         if (!is_null($price)) {
-            Assertion::numeric($price);
             $price = (float) $price;
         }
 
@@ -553,48 +490,24 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get price
-     *
-     * @return float | null
-     */
-    public function getPrice()
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    /**
-     * Set priceDetails
-     *
-     * @param array $priceDetails | null
-     *
-     * @return static
-     */
-    protected function setPriceDetails($priceDetails = null)
+    protected function setPriceDetails(?array $priceDetails = null): static
     {
         $this->priceDetails = $priceDetails;
 
         return $this;
     }
 
-    /**
-     * Get priceDetails
-     *
-     * @return array | null
-     */
-    public function getPriceDetails()
+    public function getPriceDetails(): ?array
     {
         return $this->priceDetails;
     }
 
-    /**
-     * Set carrierName
-     *
-     * @param string $carrierName | null
-     *
-     * @return static
-     */
-    protected function setCarrierName($carrierName = null)
+    protected function setCarrierName(?string $carrierName = null): static
     {
         if (!is_null($carrierName)) {
             Assertion::maxLength($carrierName, 200, 'carrierName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -605,24 +518,12 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get carrierName
-     *
-     * @return string | null
-     */
-    public function getCarrierName()
+    public function getCarrierName(): ?string
     {
         return $this->carrierName;
     }
 
-    /**
-     * Set destinationName
-     *
-     * @param string $destinationName | null
-     *
-     * @return static
-     */
-    protected function setDestinationName($destinationName = null)
+    protected function setDestinationName(?string $destinationName = null): static
     {
         if (!is_null($destinationName)) {
             Assertion::maxLength($destinationName, 100, 'destinationName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -633,24 +534,12 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get destinationName
-     *
-     * @return string | null
-     */
-    public function getDestinationName()
+    public function getDestinationName(): ?string
     {
         return $this->destinationName;
     }
 
-    /**
-     * Set ratingPlanName
-     *
-     * @param string $ratingPlanName | null
-     *
-     * @return static
-     */
-    protected function setRatingPlanName($ratingPlanName = null)
+    protected function setRatingPlanName(?string $ratingPlanName = null): static
     {
         if (!is_null($ratingPlanName)) {
             Assertion::maxLength($ratingPlanName, 55, 'ratingPlanName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -661,34 +550,26 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get ratingPlanName
-     *
-     * @return string | null
-     */
-    public function getRatingPlanName()
+    public function getRatingPlanName(): ?string
     {
         return $this->ratingPlanName;
     }
 
-    /**
-     * Set endpointType
-     *
-     * @param string $endpointType | null
-     *
-     * @return static
-     */
-    protected function setEndpointType($endpointType = null)
+    protected function setEndpointType(?string $endpointType = null): static
     {
         if (!is_null($endpointType)) {
             Assertion::maxLength($endpointType, 55, 'endpointType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-            Assertion::choice($endpointType, [
-                BillableCallHistoricInterface::ENDPOINTTYPE_RETAILACCOUNT,
-                BillableCallHistoricInterface::ENDPOINTTYPE_RESIDENTIALDEVICE,
-                BillableCallHistoricInterface::ENDPOINTTYPE_USER,
-                BillableCallHistoricInterface::ENDPOINTTYPE_FRIEND,
-                BillableCallHistoricInterface::ENDPOINTTYPE_FAX
-            ], 'endpointTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $endpointType,
+                [
+                    BillableCallHistoricInterface::ENDPOINTTYPE_RETAILACCOUNT,
+                    BillableCallHistoricInterface::ENDPOINTTYPE_RESIDENTIALDEVICE,
+                    BillableCallHistoricInterface::ENDPOINTTYPE_USER,
+                    BillableCallHistoricInterface::ENDPOINTTYPE_FRIEND,
+                    BillableCallHistoricInterface::ENDPOINTTYPE_FAX,
+                ],
+                'endpointTypevalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->endpointType = $endpointType;
@@ -696,29 +577,15 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get endpointType
-     *
-     * @return string | null
-     */
-    public function getEndpointType()
+    public function getEndpointType(): ?string
     {
         return $this->endpointType;
     }
 
-    /**
-     * Set endpointId
-     *
-     * @param integer $endpointId | null
-     *
-     * @return static
-     */
-    protected function setEndpointId($endpointId = null)
+    protected function setEndpointId(?int $endpointId = null): static
     {
         if (!is_null($endpointId)) {
-            Assertion::integerish($endpointId, 'endpointId value "%s" is not an integer or a number castable to integer.');
             Assertion::greaterOrEqualThan($endpointId, 0, 'endpointId provided "%s" is not greater or equal than "%s".');
-            $endpointId = (int) $endpointId;
         }
 
         $this->endpointId = $endpointId;
@@ -726,24 +593,12 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get endpointId
-     *
-     * @return integer | null
-     */
-    public function getEndpointId()
+    public function getEndpointId(): ?int
     {
         return $this->endpointId;
     }
 
-    /**
-     * Set endpointName
-     *
-     * @param string $endpointName | null
-     *
-     * @return static
-     */
-    protected function setEndpointName($endpointName = null)
+    protected function setEndpointName(?string $endpointName = null): static
     {
         if (!is_null($endpointName)) {
             Assertion::maxLength($endpointName, 65, 'endpointName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
@@ -754,30 +609,22 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get endpointName
-     *
-     * @return string | null
-     */
-    public function getEndpointName()
+    public function getEndpointName(): ?string
     {
         return $this->endpointName;
     }
 
-    /**
-     * Set direction
-     *
-     * @param string $direction | null
-     *
-     * @return static
-     */
-    protected function setDirection($direction = null)
+    protected function setDirection(?string $direction = null): static
     {
         if (!is_null($direction)) {
-            Assertion::choice($direction, [
-                BillableCallHistoricInterface::DIRECTION_INBOUND,
-                BillableCallHistoricInterface::DIRECTION_OUTBOUND
-            ], 'directionvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice(
+                $direction,
+                [
+                    BillableCallHistoricInterface::DIRECTION_INBOUND,
+                    BillableCallHistoricInterface::DIRECTION_OUTBOUND,
+                ],
+                'directionvalue "%s" is not an element of the valid values: %s'
+            );
         }
 
         $this->direction = $direction;
@@ -785,231 +632,116 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * Get direction
-     *
-     * @return string | null
-     */
-    public function getDirection()
+    public function getDirection(): ?string
     {
         return $this->direction;
     }
 
-    /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand | null
-     *
-     * @return static
-     */
-    protected function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface | null
-     */
-    public function getBrand()
+    public function getBrand(): ?BrandInterface
     {
         return $this->brand;
     }
 
-    /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company | null
-     *
-     * @return static
-     */
-    protected function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    protected function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface | null
-     */
-    public function getCompany()
+    public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    /**
-     * Set carrier
-     *
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier | null
-     *
-     * @return static
-     */
-    protected function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
+    protected function setCarrier(?CarrierInterface $carrier = null): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    /**
-     * Get carrier
-     *
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface | null
-     */
-    public function getCarrier()
+    public function getCarrier(): ?CarrierInterface
     {
         return $this->carrier;
     }
 
-    /**
-     * Set destination
-     *
-     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination | null
-     *
-     * @return static
-     */
-    protected function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null)
+    protected function setDestination(?DestinationInterface $destination = null): static
     {
         $this->destination = $destination;
 
         return $this;
     }
 
-    /**
-     * Get destination
-     *
-     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null
-     */
-    public function getDestination()
+    public function getDestination(): ?DestinationInterface
     {
         return $this->destination;
     }
 
-    /**
-     * Set ratingPlanGroup
-     *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup | null
-     *
-     * @return static
-     */
-    protected function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null)
+    protected function setRatingPlanGroup(?RatingPlanGroupInterface $ratingPlanGroup = null): static
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
         return $this;
     }
 
-    /**
-     * Get ratingPlanGroup
-     *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface | null
-     */
-    public function getRatingPlanGroup()
+    public function getRatingPlanGroup(): ?RatingPlanGroupInterface
     {
         return $this->ratingPlanGroup;
     }
 
-    /**
-     * Set invoice
-     *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice | null
-     *
-     * @return static
-     */
-    protected function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null)
+    protected function setInvoice(?InvoiceInterface $invoice = null): static
     {
         $this->invoice = $invoice;
 
         return $this;
     }
 
-    /**
-     * Get invoice
-     *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface | null
-     */
-    public function getInvoice()
+    public function getInvoice(): ?InvoiceInterface
     {
         return $this->invoice;
     }
 
-    /**
-     * Set trunksCdr
-     *
-     * @param \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr | null
-     *
-     * @return static
-     */
-    protected function setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface $trunksCdr = null)
+    protected function setTrunksCdr(?TrunksCdrInterface $trunksCdr = null): static
     {
         $this->trunksCdr = $trunksCdr;
 
         return $this;
     }
 
-    /**
-     * Get trunksCdr
-     *
-     * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface | null
-     */
-    public function getTrunksCdr()
+    public function getTrunksCdr(): ?TrunksCdrInterface
     {
         return $this->trunksCdr;
     }
 
-    /**
-     * Set ddi
-     *
-     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi | null
-     *
-     * @return static
-     */
-    protected function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi = null)
+    protected function setDdi(?DdiInterface $ddi = null): static
     {
         $this->ddi = $ddi;
 
         return $this;
     }
 
-    /**
-     * Get ddi
-     *
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
-     */
-    public function getDdi()
+    public function getDdi(): ?DdiInterface
     {
         return $this->ddi;
     }
 
-    /**
-     * Set ddiProvider
-     *
-     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider | null
-     *
-     * @return static
-     */
-    protected function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null)
+    protected function setDdiProvider(?DdiProviderInterface $ddiProvider = null): static
     {
         $this->ddiProvider = $ddiProvider;
 
         return $this;
     }
 
-    /**
-     * Get ddiProvider
-     *
-     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface | null
-     */
-    public function getDdiProvider()
+    public function getDdiProvider(): ?DdiProviderInterface
     {
         return $this->ddiProvider;
     }
-
-    // @codeCoverageIgnoreEnd
 }
