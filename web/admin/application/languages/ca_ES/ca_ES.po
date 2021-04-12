@@ -1297,6 +1297,11 @@ msgstr "Pertinença a grups"
 msgid "Hash based"
 msgstr "Basat en Hash"
 
+msgid "Historic external call"
+msgid_plural "Historic external calls"
+msgstr[0] "Històric de trucade externe"
+msgstr[1] "Històric de trucades externes"
+
 msgid "Holiday date"
 msgid_plural "Holiday dates"
 msgstr[0] "Festiu"

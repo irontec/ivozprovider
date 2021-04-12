@@ -19,6 +19,7 @@ class IvozProvider_Klear_Filter_BillableCallsBrand implements KlearMatrix_Model_
 
         $filteredScreens = [
             "BillableCallsBrandList",
+            "BillableCallHistoricsBrandList",
         ];
 
         if (!in_array($currentItemName, $filteredScreens)) {

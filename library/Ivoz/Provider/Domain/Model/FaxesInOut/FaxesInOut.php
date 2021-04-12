@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
+use Assert\Assertion;
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 
@@ -77,12 +78,8 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
 
     protected function setDst(?string $dst = null): static
     {
-        $dst = preg_replace(
-            '/[^0-9]/',
-            '',
-            $dst
-        );
-
+        $dst = str_replace(['+', ' '], '', $dst);
+        Assertion::regex($dst, '/^[0-9]+$/');
         return parent::setDst($dst);
     }
 }

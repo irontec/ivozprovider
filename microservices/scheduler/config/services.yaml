@@ -20,6 +20,9 @@ services:
     BillableCallController:
         class: "BillableCallController"
         public: true
+    BillableCallHistoricController:
+        class: "BillableCallHistoricController"
+        public: true
     InvoiceSchedulerController:
         class: "InvoiceSchedulerController"
         public: true

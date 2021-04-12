@@ -6,7 +6,12 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
   itemOperations:
     get: ~
   collectionOperations:
-    get: ~
+    get:
+      swagger_context:
+        produces:
+          - 'application/json'
+          - 'application/ld+json'
+          - 'text/csv'
   attributes:
     pagination_client_enabled: true
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'

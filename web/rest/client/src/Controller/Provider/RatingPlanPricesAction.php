@@ -115,7 +115,7 @@ class RatingPlanPricesAction
             );
         }
 
-        if ($ratingPlanGroup->getBrand() !== $admin->getBrand()) {
+        if ($ratingPlanGroup->getBrand() !== $admin->getCompany()->getBrand()) {
             return new Response(
                 Response::$statusTexts[Response::HTTP_FORBIDDEN],
                 Response::HTTP_FORBIDDEN

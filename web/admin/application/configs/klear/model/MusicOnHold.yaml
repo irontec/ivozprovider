@@ -35,6 +35,7 @@ production:
       source:
         data: fso
         size_limit: 20M
+        extensions: [ wav, mp3 ]
         options:
           download:
             external: true

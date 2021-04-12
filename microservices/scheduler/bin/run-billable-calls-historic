@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\HttpFoundation\Request;
+
+// require Composer's autoloader
+require __DIR__.'/../vendor/autoload.php';
+
+require __DIR__.'/../src/MicroKernel.php';
+
+$input = new ArgvInput();
+$env = $input->getParameterOption(['--env', '-e'], getenv('SYMFONY_ENV') ?: 'dev');
+
+$kernel = new MicroKernel($env, false);
+$request = new Request([], [], [], [], [], ['REQUEST_URI' => '/billable-calls-historic']);
+
+$response = $kernel->handle($request);
+$response->send();
+$kernel->terminate($request, $response);

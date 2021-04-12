@@ -1,0 +1,131 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: billableCallHistoricsList_screen
+
+  screens: &billableCallHistorics_screensLink
+    billableCallHistoricsList_screen: &billableCallHistoricsList_screenLink
+      controller: list
+      csv: false
+      order:
+        field:
+          - BillableCallHistoric.startTime
+        type: desc
+      pagination:
+        items: 25
+      <<: *BillableCallHistorics
+      class: ui-silk-application-view-list
+      title: _("List of %s %2s", ngettext('Historic external call', 'Historic external calls', 0), "[format| (%parent%)]")
+      options:
+        commands:
+          exportBillableCallHistoricsToCsv_command: ${auth.acls.BillableCallHistorics.read}
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/platform/external_calls.html"
+      fields: &billableCallHistorics_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            billableCallHistoricsView_screen: ${auth.acls.BillableCallHistorics.read}
+          default: billableCallHistoricsView_screen
+        blacklist: &billableCallHistorics_blacklistLink
+          callid: true
+          ratingPlanName: true
+          destinationName: true
+          carrierName: true
+          ddiProvider: true
+          endpointType: true
+          endpointId: true
+          endpointName: true
+        order:
+          startTime: true
+          brand: true
+          company: true
+          direction: true
+          caller: true
+          callee: true
+          duration: true
+          direction: true
+          price: true
+          cost: true
+          invoice: true
+    billableCallHistoricsView_screen: &billableCallHistoricsView_screenLink
+      <<: *BillableCallHistorics
+      controller: edit
+      class: ui-silk-eye
+      label: false
+      disableSave: true
+      labelOnPostAction: _("View %s %2s", ngettext('External call', 'External calls', 1), "[format| (%item%)]")
+      title: _("View %s %2s", ngettext('External call', 'External calls', 1), "[format| (%item%)]")
+      fields: &billableCallHistoricsView_fieldsLink
+        order:
+          brand: true
+          company: true
+          startTime: true
+          duration: true
+          direction: true
+          caller: true
+          callee: true
+          price: true
+          cost: true
+          ratingPlanName: true
+          destinationName: true
+          carrierName: true
+          ddiProvider: true
+          invoice: true
+          callid: true
+      fixedPositions:
+        group0:
+          label: _("Basic Information")
+          colsPerRow: 12
+          fields:
+            brand: 6
+            company: 6
+            startTime: 6
+            duration: 6
+            direction: 6
+            caller: 6
+            callee: 6
+        group1:
+          label: _("Billing Information")
+          colsPerRow: 12
+          fields:
+            price: 6
+            cost: 6
+            ratingPlanName: 6
+            destinationName: 6
+            carrierName: 6
+            ddiProvider: 6
+            invoice: 6
+        group2:
+          label: _("Extra Information")
+          colsPerRow: 12
+          fields:
+            callid: 12
+            endpointType: 4
+            endpointId: 4
+            endpointName: 4
+
+  commands: &exportBillableCallHistoricsToCsv_commandsLink
+    exportBillableCallHistoricsToCsv_command: &exportBillableCallHistoricsToCsv_commandLink
+      <<: *BillableCallHistorics
+      title: _("Export to CSV")
+      label: true
+      module: default
+      controller: klear-custom-billable-calls
+      action: export-to-csv
+      class:  ui-silk-page-white-database
+      forcedValues: []
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

@@ -11,7 +11,12 @@ apt-get update
 
 Upgrade your installed ivozprovider-packages:
 ```
-apt install $(dpkg --get-selections | grep ivozprovider | cut -f1)
+apt-get install $(dpkg --get-selections | grep ivozprovider | cut -f1)
+```
+
+Also upgrade klear web framework packages:
+```
+apt-get install klear klear-matrix klear-library
 ```
 
 Note: Using the previous command instead of tradicional `apt-get upgrade` will warranty new package depencencies to be pulled for installation.

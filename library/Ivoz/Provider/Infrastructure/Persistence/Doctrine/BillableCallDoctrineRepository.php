@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
@@ -364,5 +365,59 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ['startTime', 'lte', $utcOutDate->format(self::MYSQL_DATETIME_FORMAT)],
             ['direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
         ];
+    }
+
+    /**
+     * @param int $fromId
+     * @return \DateTime
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getMinStartTime(int $fromId = 0): \DateTime
+    {
+        $query =
+            'SELECT MIN(B.startTime) FROM '
+            . BillableCall::Class
+            . ' B WHERE B.id > %d';
+
+        $minStartTime = sprintf(
+            $query,
+            $fromId
+        );
+
+        $response = (new Query($this->_em))
+            ->setDQL($minStartTime)
+            ->getSingleScalarResult();
+
+        return new \DateTime(
+            $response,
+            new \DateTimeZone('UTC')
+        );
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getIdsInRange(int $fromId, \DateTime $beforeDate, int $limit): array
+    {
+        $query = sprintf(
+            'SELECT B.id FROM '
+            . BillableCall::Class
+            . ' B WHERE B.id > %d'
+            . ' AND B.startTime < \'%s\''
+            . ' ORDER BY B.id ASC',
+            $fromId,
+            $beforeDate->format('Y-m-d H:i:s')
+        );
+
+        $ids = (new Query($this->_em))
+            ->setMaxResults($limit)
+            ->setDQL($query)
+            ->getResult();
+
+        return array_column(
+            $ids,
+            'id'
+        );
     }
 }

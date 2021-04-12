@@ -168,6 +168,7 @@ function enable_services()
     /bin/systemctl enable ivozprovider-balances.timer
     /bin/systemctl enable ivozprovider-counters.timer
     /bin/systemctl enable ivozprovider-scheduler.timer
+    /bin/systemctl enable ivozprovider-scheduler-historic-calls.timer
     /bin/systemctl enable ivozprovider-cdrs.timer
     /bin/systemctl enable cgrates
 }

@@ -6,6 +6,10 @@ billable-calls:
   path: /billable-calls
   controller: BillableCallController:indexAction
 
+billable-calls-historic:
+  path: /billable-calls-historic
+  controller: BillableCallHistoricController:indexAction
+
 call-csv-to-email:
   path: /call-csv-to-email
   controller: CallCsvController:indexAction

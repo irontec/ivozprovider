@@ -1,3 +1,4 @@
 microservices/scheduler /opt/irontec/ivozprovider/microservices/
 debian/systemd/ivozprovider-scheduler.timer /lib/systemd/system
+debian/systemd/ivozprovider-scheduler-historic-calls.timer /lib/systemd/system
 debian/systemd/ivozprovider-cdrs.timer /lib/systemd/system
