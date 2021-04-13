@@ -612,6 +612,9 @@ msgstr "Continue"
 msgid "Control Panel"
 msgstr "Control Panel"
 
+msgid "Copy callid"
+msgstr "Copy callid"
+
 msgid "Cost"
 msgstr "Cost"
 
