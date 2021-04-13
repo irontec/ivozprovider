@@ -11,8 +11,8 @@
 function setup_php()
 {
     # Enable php environment variables
-    /bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' 		/etc/php/7.0/cli/php.ini
-    /bin/sed -i 's/;*date.timezone =.*/date.timezone = UTC/g'                   /etc/php/7.0/cli/php.ini
+    /bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' 		/etc/php/8.0/cli/php.ini
+    /bin/sed -i 's/;*date.timezone =.*/date.timezone = UTC/g'                   /etc/php/8.0/cli/php.ini
 }
 
 #######################################################################################################################
