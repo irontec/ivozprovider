@@ -418,7 +418,7 @@
         },
         {
             "name": "doctrine/common",
-            "version": "3.1.x-dev",
+            "version": "3.1.2",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/doctrine/common",
@@ -749,7 +749,7 @@
         },
         {
             "name": "doctrine/event-manager",
-            "version": "1.1.x-dev",
+            "version": "1.1.1",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/doctrine/event-manager",
@@ -1767,11 +1767,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.2.1",
+            "version": "4.2.5",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core",
-                "reference": "34dff6621a3ee950b37110fe86a0cd38eb67363d"
+                "reference": "b414eae75161a45ca658612ab1515e9189daa46a"
             },
             "require": {
                 "beberlei/assert": "2.9.*",
@@ -1817,15 +1817,15 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "4.1.1",
+            "version": "4.2.2",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "d174d9f7670f494e487c9eb172808de75e621523"
+                "reference": "274e99feeaf1741df67c579e77d8073f46b0fbb5"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
-                "irontec/ivoz-core": "^4.0.1",
+                "irontec/ivoz-core": "^4.2.5",
                 "ocramius/proxy-manager": "~2.0",
                 "php": ">=7.4",
                 "symfony/monolog-bundle": "^3.5",
@@ -1906,11 +1906,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.18",
+            "version": "2.5.19",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "a591d9033e87a2c049c9076b5d609384caa56dd1"
+                "reference": "9da283d4693b42f29f3376d9858fb7cfb4332995"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -3351,7 +3351,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "5.x-dev",
+            "version": "v5.2.4",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/config",
@@ -3653,7 +3653,7 @@
         },
         {
             "name": "symfony/doctrine-bridge",
-            "version": "5.2.x-dev",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/doctrine-bridge",
@@ -3843,7 +3843,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "5.x-dev",
+            "version": "v5.2.4",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/event-dispatcher",
@@ -4049,7 +4049,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "5.x-dev",
+            "version": "v5.2.4",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/finder",
@@ -4731,7 +4731,7 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v5.2.3",
+            "version": "v5.2.4",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/options-resolver",
@@ -5710,7 +5710,7 @@
         },
         {
             "name": "symfony/security-core",
-            "version": "5.x-dev",
+            "version": "v5.2.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/security-core",
@@ -6355,7 +6355,7 @@
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "dev-master",
+            "version": "v2.3.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/translation-contracts",
@@ -6734,7 +6734,7 @@
         },
         {
             "name": "symfony/var-exporter",
-            "version": "v5.2.3",
+            "version": "v5.2.4",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/var-exporter",
@@ -9047,5 +9047,8 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
+    "platform-overrides": {
+        "php": "7.4"
+    },
     "plugin-api-version": "2.0.0"
 }
