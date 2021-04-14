@@ -183,9 +183,6 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
 
     public function getLanguage(): ?LanguageInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addPsEndpoint(PsEndpointInterface $psEndpoint): ResidentialDeviceInterface;

@@ -62,8 +62,5 @@ interface UsersActiveWatcherInterface extends EntityInterface
 
     public function getUserAgent(): string;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

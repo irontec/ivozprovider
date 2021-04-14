@@ -23,8 +23,5 @@ interface ProxyTrunksRelBrandInterface extends LoggableEntityInterface
 
     public function getProxyTrunk(): ProxyTrunkInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

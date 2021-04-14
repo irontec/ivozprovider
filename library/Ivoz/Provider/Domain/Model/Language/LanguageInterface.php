@@ -19,8 +19,5 @@ interface LanguageInterface extends LoggableEntityInterface
 
     public function getName(): Name;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

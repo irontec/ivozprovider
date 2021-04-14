@@ -19,8 +19,5 @@ interface ProxyTrunkInterface extends LoggableEntityInterface
 
     public function getIp(): string;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

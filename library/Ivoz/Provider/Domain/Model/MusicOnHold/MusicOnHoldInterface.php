@@ -61,9 +61,6 @@ interface MusicOnHoldInterface extends LoggableEntityInterface, FileContainerInt
 
     public function getCompany(): ?CompanyInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     /**

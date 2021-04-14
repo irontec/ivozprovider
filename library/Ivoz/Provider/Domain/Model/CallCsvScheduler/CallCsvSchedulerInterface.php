@@ -87,8 +87,5 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     public function getDdiProvider(): ?DdiProviderInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

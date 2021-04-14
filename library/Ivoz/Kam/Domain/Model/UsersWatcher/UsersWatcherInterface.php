@@ -24,8 +24,5 @@ interface UsersWatcherInterface extends EntityInterface
 
     public function getInsertedTime(): int;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

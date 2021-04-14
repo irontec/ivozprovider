@@ -32,8 +32,5 @@ interface RtpengineInterface extends LoggableEntityInterface
 
     public function getMediaRelaySet(): ?MediaRelaySetInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

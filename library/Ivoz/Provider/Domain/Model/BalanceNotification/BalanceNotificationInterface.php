@@ -40,8 +40,5 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
 
     public function getNotificationTemplate(): ?NotificationTemplateInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

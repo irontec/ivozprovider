@@ -44,8 +44,5 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
 
     public function getCarrierServer(): ?CarrierServer;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

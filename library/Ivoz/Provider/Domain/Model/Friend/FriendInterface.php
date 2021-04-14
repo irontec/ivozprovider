@@ -192,9 +192,6 @@ interface FriendInterface extends LoggableEntityInterface
 
     public function getInterCompany(): ?CompanyInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addPsEndpoint(PsEndpointInterface $psEndpoint): FriendInterface;

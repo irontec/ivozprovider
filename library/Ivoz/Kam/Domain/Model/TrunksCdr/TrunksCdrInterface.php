@@ -73,8 +73,5 @@ interface TrunksCdrInterface extends EntityInterface
 
     public function getDdiProvider(): ?DdiProviderInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

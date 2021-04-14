@@ -29,8 +29,5 @@ interface ChangelogInterface extends EntityInterface
 
     public function getCommand(): CommandlogInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

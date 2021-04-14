@@ -34,9 +34,6 @@ interface DdiProviderInterface extends LoggableEntityInterface
 
     public function getProxyTrunk(): ?ProxyTrunkInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): DdiProviderInterface;

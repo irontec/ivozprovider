@@ -30,8 +30,5 @@ interface BrandServiceInterface extends LoggableEntityInterface
 
     public function getService(): ServiceInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

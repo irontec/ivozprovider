@@ -30,9 +30,6 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
 
     public function getDdiProvider(): DdiProviderInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function setTrunksAddress(TrunksAddressInterface $trunksAddress): static;

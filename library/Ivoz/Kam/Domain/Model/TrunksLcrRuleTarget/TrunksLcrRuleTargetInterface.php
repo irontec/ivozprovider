@@ -32,8 +32,5 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
 
     public function getOutgoingRouting(): OutgoingRoutingInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

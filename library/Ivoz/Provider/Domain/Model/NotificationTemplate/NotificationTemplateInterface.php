@@ -48,9 +48,6 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
 
     public function getBrand(): ?BrandInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addContent(NotificationTemplateContentInterface $content): NotificationTemplateInterface;

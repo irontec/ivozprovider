@@ -37,8 +37,5 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
 
     public function getLanguage(): ?LanguageInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

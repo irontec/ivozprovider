@@ -25,8 +25,5 @@ interface TpDestinationInterface extends LoggableEntityInterface
 
     public function getDestination(): Destination;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

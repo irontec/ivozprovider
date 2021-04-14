@@ -99,9 +99,6 @@ interface TerminalInterface extends LoggableEntityInterface
 
     public function getTerminalModel(): ?TerminalModelInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface;

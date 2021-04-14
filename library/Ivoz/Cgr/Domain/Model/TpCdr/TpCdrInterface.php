@@ -78,8 +78,5 @@ interface TpCdrInterface extends EntityInterface
 
     public function getDeletedAt(): ?\DateTime;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

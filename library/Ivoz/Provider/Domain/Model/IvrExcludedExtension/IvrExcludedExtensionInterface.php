@@ -20,8 +20,5 @@ interface IvrExcludedExtensionInterface extends LoggableEntityInterface
 
     public function getExtension(): ExtensionInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

@@ -265,9 +265,6 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addExtension(ExtensionInterface $extension): CompanyInterface;

@@ -79,9 +79,6 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface, FileCon
 
     public function getCurrency(): ?CurrencyInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addDestinationRate(DestinationRateInterface $destinationRate): DestinationRateGroupInterface;

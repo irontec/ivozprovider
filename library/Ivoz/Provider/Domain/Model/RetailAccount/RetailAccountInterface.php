@@ -120,9 +120,6 @@ interface RetailAccountInterface extends LoggableEntityInterface
 
     public function getOutgoingDdi(): ?DdiInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addPsEndpoint(PsEndpointInterface $psEndpoint): RetailAccountInterface;

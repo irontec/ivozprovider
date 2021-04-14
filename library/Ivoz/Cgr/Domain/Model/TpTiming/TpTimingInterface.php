@@ -31,8 +31,5 @@ interface TpTimingInterface extends EntityInterface
 
     public function getRatingPlan(): RatingPlan;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

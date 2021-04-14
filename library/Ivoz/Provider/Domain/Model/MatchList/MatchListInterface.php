@@ -36,9 +36,6 @@ interface MatchListInterface extends LoggableEntityInterface
 
     public function getCompany(): ?CompanyInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addPattern(MatchListPatternInterface $pattern): MatchListInterface;

@@ -30,8 +30,5 @@ interface CommandlogInterface extends EntityInterface
 
     public function getMicrotime(): int;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

@@ -136,9 +136,6 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
 
     public function getOutOfScheduleNumberCountry(): ?CountryInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addCalendar(ExternalCallFilterRelCalendarInterface $calendar): ExternalCallFilterInterface;

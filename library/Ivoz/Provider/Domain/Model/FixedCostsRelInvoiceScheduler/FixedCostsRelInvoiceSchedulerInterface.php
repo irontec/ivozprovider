@@ -25,8 +25,5 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
 
     public function getInvoiceScheduler(): ?InvoiceSchedulerInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

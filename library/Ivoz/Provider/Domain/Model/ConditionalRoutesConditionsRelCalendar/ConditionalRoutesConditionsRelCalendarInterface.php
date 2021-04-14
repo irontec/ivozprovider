@@ -23,8 +23,5 @@ interface ConditionalRoutesConditionsRelCalendarInterface extends LoggableEntity
 
     public function getCalendar(): CalendarInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

@@ -28,9 +28,6 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
 
     public function getCarrier(): CarrierInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): OutgoingRoutingRelCarrierInterface;

@@ -86,8 +86,5 @@ interface VoicemailInterface extends LoggableEntityInterface
 
     public function getResidentialDevice(): ?ResidentialDeviceInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

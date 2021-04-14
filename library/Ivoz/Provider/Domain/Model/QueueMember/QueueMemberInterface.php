@@ -25,8 +25,5 @@ interface QueueMemberInterface extends LoggableEntityInterface
 
     public function getUser(): UserInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

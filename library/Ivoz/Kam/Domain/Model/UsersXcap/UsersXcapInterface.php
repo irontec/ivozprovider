@@ -26,8 +26,5 @@ interface UsersXcapInterface extends EntityInterface
 
     public function getPort(): int;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

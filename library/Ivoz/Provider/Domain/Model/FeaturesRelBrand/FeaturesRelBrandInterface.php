@@ -23,8 +23,5 @@ interface FeaturesRelBrandInterface extends LoggableEntityInterface
 
     public function getFeature(): FeatureInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

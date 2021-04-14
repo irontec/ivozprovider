@@ -27,8 +27,5 @@ interface BalanceMovementInterface extends LoggableEntityInterface
 
     public function getCarrier(): ?CarrierInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

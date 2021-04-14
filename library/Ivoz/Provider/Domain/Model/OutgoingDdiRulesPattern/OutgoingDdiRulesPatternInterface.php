@@ -46,8 +46,5 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
 
     public function getMatchList(): ?MatchListInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }
