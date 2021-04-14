@@ -88,7 +88,7 @@ class Cgrates extends AbstractJob
     /**
      * @return void
      */
-    public function send()
+    public function send(): void
     {
         if (self::$alreadySent) {
             return;

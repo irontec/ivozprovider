@@ -8,7 +8,6 @@ use Ivoz\Provider\Domain\Service\Invoice\InvoiceLifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Service\Invoice\SendGenerateOrder;
 use PhpSpec\Exception\Example\FailureException;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\HelperTrait;
 use Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer;
 
@@ -51,7 +50,9 @@ class SendGenerateOrderSpec extends ObjectBehavior
 
         $this
             ->invoicer
-            ->send(null)
+            ->send()
+            ->will(function () {
+            })
             ->shouldBeCalled();
 
         $this->execute($invoice->reveal());
@@ -92,7 +93,6 @@ class SendGenerateOrderSpec extends ObjectBehavior
             $this->invoicer,
             [
                 'setId' => 1,
-                'send' => null,
             ],
             false
         );

@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ###############################################
+  ## Jobs
+  ###############################################
+
+  Ivoz\Provider\Domain\Job\InvoicerJobInterface:
+    alias: Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer
+
+  Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer:
+    arguments:
+      $settings: '%gearmand%'

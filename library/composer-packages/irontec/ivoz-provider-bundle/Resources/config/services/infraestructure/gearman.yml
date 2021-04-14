@@ -11,10 +11,6 @@ services:
     arguments:
       $settings: '%gearmand%'
 
-  Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer:
-    arguments:
-      $settings: '%gearmand%'
-
   Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter:
     arguments:
       $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
