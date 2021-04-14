@@ -3,8 +3,8 @@
 namespace Worker;
 
 use GearmanJob;
+use Ivoz\Cgr\Domain\Job\RaterReloadInterface;
 use Ivoz\Cgr\Infrastructure\Cgrates\Service\ReloadService;
-use Ivoz\Provider\Infrastructure\Gearman\Jobs\Cgrates as CgratesJob;
 use Mmoreram\GearmanBundle\Driver\Gearman;
 use Psr\Log\LoggerInterface;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
@@ -60,7 +60,7 @@ class Cgrates
             $serializedJob->sendComplete("DONE");
             $this->registerCommand('Worker', 'cgrates');
 
-            /** @var CgratesJob $job */
+            /** @var RaterReloadInterface $job */
             $job = igbinary_unserialize($serializedJob->workload());
 
             $this->logger->info(

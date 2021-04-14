@@ -2,22 +2,21 @@
 
 namespace Ivoz\Provider\Domain\Service\Company;
 
+use Ivoz\Cgr\Domain\Job\RaterReloadInterface;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionRepository;
 use Ivoz\Cgr\Domain\Service\CgratesReloadNotificator;
 use Ivoz\Cgr\Infrastructure\Cgrates\Service\SetMaxUsageThresholdService;
-use Ivoz\Provider\Infrastructure\Gearman\Jobs\Cgrates;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class SendCgratesUpdateRequest extends CgratesReloadNotificator implements CompanyLifecycleEventHandlerInterface
 {
-
     protected $tpAccountActionRepository;
     protected $setMaxUsageThresholdService;
 
     public function __construct(
         TpAccountActionRepository $tpAccountActionRepository,
         SetMaxUsageThresholdService $setMaxUsageThresholdService,
-        Cgrates $cgratesReloadJob
+        RaterReloadInterface $cgratesReloadJob
     ) {
         $this->tpAccountActionRepository = $tpAccountActionRepository;
         $this->setMaxUsageThresholdService = $setMaxUsageThresholdService;
@@ -33,7 +32,8 @@ class SendCgratesUpdateRequest extends CgratesReloadNotificator implements Compa
             return;
         }
 
-        if ($company->isNew()) {
+        /** isNew will always return false ON_COMMIT */
+        if ($company->hasChanged('id')) {
             $this->sendReloadJob($company);
             return;
         }

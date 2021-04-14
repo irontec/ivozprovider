@@ -1,10 +1,11 @@
 <?php
 
-namespace Ivoz\Provider\Infrastructure\Gearman\Jobs;
+namespace Ivoz\Cgr\Infrastructure\Gearman\Jobs;
 
+use Ivoz\Cgr\Domain\Job\RaterReloadInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\AbstractJob;
 
-class Cgrates extends AbstractJob
+class Cgrates extends AbstractJob implements RaterReloadInterface
 {
     private static $alreadySent = false;
 
@@ -48,46 +49,30 @@ class Cgrates extends AbstractJob
         return $this->tpid;
     }
 
-    /**
-     * @return string | null
-     */
-    public function getNotifyThresholdForAccount()
+    public function getNotifyThresholdForAccount(): ?string
     {
         return $this->notifyThresholdForAccount;
     }
 
-    /**
-     * @param string | null $notifyThresholdForAccount
-     */
-    public function setNotifyThresholdForAccount($notifyThresholdForAccount)
+    public function setNotifyThresholdForAccount(?String $notifyThresholdForAccount): self
     {
         $this->notifyThresholdForAccount = $notifyThresholdForAccount;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function getDisableDestinations(): bool
     {
         return $this->disableDestinations;
     }
 
-    /**
-     * @param bool $disableDestinations
-     * @return self
-     */
-    public function setDisableDestinations(bool $disableDestinations)
+    public function setDisableDestinations(bool $disableDestinations): self
     {
         $this->disableDestinations = $disableDestinations;
 
         return $this;
     }
 
-    /**
-     * @return void
-     */
     public function send(): void
     {
         if (self::$alreadySent) {

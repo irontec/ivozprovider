@@ -6,10 +6,18 @@ services:
   ###############################################
   ## Jobs
   ###############################################
+  # Invoicer
+  Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer:
+    arguments:
+      $settings: '%gearmand%'
 
   Ivoz\Provider\Domain\Job\InvoicerJobInterface:
     alias: Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer
 
-  Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer:
+  # Cgrates reload
+  Ivoz\Cgr\Infrastructure\Gearman\Jobs\Cgrates:
     arguments:
       $settings: '%gearmand%'
+
+  Ivoz\Cgr\Domain\Job\RaterReloadInterface:
+    alias: Ivoz\Cgr\Infrastructure\Gearman\Jobs\Cgrates
