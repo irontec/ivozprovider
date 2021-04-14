@@ -17,7 +17,7 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
  * Proxy:
    - Provides **SIP communication** with Providers and Users terminals
    - Provides **media relay** between endpoints
-   - Powered by [Kamailo SIP Server 5.1](https://www.kamailio.org/w/)
+   - Powered by [Kamailo SIP Server 5.4](https://www.kamailio.org/w/)
 
  * Portal:
    - Provides **Web interfaces** for all platform roles
@@ -27,12 +27,12 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
 
  * Application Server:
    - Provides **PBX features** and runs configured logics
-   - Powered by [Asterisk 13 LTS](http://www.asterisk.org/) with [PJSIP](http://www.pjsip.org/) channel driver
+   - Powered by [Asterisk 18 LTS](http://www.asterisk.org/) with [PJSIP](http://www.pjsip.org/) channel driver
    - Logics implemented in PHP using fastagi AGI
 
  * Data:
    - Provides database and shared storage for the rest of machines
-   - Powered by [MySQL 5.7 Server](http://www.mysql.com/)
+   - Powered by [Percona Server 8.0](https://www.percona.com/software/mysql-database/percona-server)
 
 And [many others](https://irontec.github.io/ivozprovider/en/artemis/basics/intro/what_is_inside.html) open source projects.
 
