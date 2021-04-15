@@ -21,3 +21,11 @@ services:
 
   Ivoz\Cgr\Domain\Job\RaterReloadInterface:
     alias: Ivoz\Cgr\Infrastructure\Gearman\Jobs\Cgrates
+
+  Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter:
+    arguments:
+      $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
+      $settings: '%gearmand%'
+
+  Ivoz\Provider\Domain\Job\RatesImporterJobInterface:
+    alias: Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter

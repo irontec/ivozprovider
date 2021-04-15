@@ -3,8 +3,9 @@
 namespace Ivoz\Provider\Infrastructure\Gearman\Jobs;
 
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\AbstractJob;
+use Ivoz\Provider\Domain\Job\RatesImporterJobInterface;
 
-class RatesImporter extends AbstractJob
+class RatesImporter extends AbstractJob implements RatesImporterJobInterface
 {
     /**
      * @var array
@@ -27,7 +28,7 @@ class RatesImporter extends AbstractJob
      * @param array $params
      * @return $this
      */
-    public function setParams($params)
+    public function setParams(array $params)
     {
         $this->params = $params;
         return $this;
@@ -36,7 +37,7 @@ class RatesImporter extends AbstractJob
     /**
      * @return array
      */
-    public function getParams()
+    public function getParams(): array
     {
         return $this->params;
     }

@@ -2,10 +2,10 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\DestinationRateGroup;
 
+use Ivoz\Provider\Domain\Job\RatesImporterJobInterface;
 use Ivoz\Provider\Domain\Service\DestinationRateGroup\SendImporterOrder;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use spec\HelperTrait;
 
@@ -14,17 +14,12 @@ class SendImporterOrderSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var RatesImporter
+     * @var RatesImporterJobInterface
      */
     protected $importer;
 
-    /**
-     * SendImporterOrder constructor.
-     *
-     * @param RatesImporter $importer
-     */
     public function let(
-        RatesImporter $importer
+        RatesImporterJobInterface $importer
     ) {
         $this->importer = $importer;
 

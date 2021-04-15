@@ -2,29 +2,18 @@
 
 namespace Ivoz\Provider\Domain\Service\DestinationRateGroup;
 
-use Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter;
+use Ivoz\Provider\Domain\Job\RatesImporterJobInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 
-/**
- * Class SendImporterOrder
- *
- * @package namespace Ivoz\Cgr\Domain\Service\DestinationRateGroup
- * @lifecycle on_commit
- */
 class SendImporterOrder implements DestinationRateGroupLifecycleEventHandlerInterface
 {
     /**
-     * @var RatesImporter
+     * @var RatesImporterJobInterface
      */
     protected $importer;
 
-    /**
-     * SendImporterOrder constructor.
-     *
-     * @param RatesImporter $importer
-     */
     public function __construct(
-        RatesImporter $importer
+        RatesImporterJobInterface $importer
     ) {
         $this->importer = $importer;
     }
