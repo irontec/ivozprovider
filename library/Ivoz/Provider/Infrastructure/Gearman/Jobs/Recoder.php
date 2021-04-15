@@ -3,8 +3,9 @@
 namespace Ivoz\Provider\Infrastructure\Gearman\Jobs;
 
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\AbstractJob;
+use Ivoz\Provider\Domain\Job\RecoderJobInterface;
 
-class Recoder extends AbstractJob
+class Recoder extends AbstractJob implements RecoderJobInterface
 {
     /**
      * @var integer

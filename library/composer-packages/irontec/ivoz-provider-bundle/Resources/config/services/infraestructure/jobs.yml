@@ -22,6 +22,7 @@ services:
   Ivoz\Cgr\Domain\Job\RaterReloadInterface:
     alias: Ivoz\Cgr\Infrastructure\Gearman\Jobs\Cgrates
 
+  # Rates importer
   Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter:
     arguments:
       $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
@@ -29,3 +30,12 @@ services:
 
   Ivoz\Provider\Domain\Job\RatesImporterJobInterface:
     alias: Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter
+
+  # Audio Recoder
+  Ivoz\Provider\Infrastructure\Gearman\Jobs\Recoder:
+    arguments:
+      $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
+      $settings: '%gearmand%'
+
+  Ivoz\Provider\Domain\Job\RecoderJobInterface:
+    alias: Ivoz\Provider\Infrastructure\Gearman\Jobs\Recoder
