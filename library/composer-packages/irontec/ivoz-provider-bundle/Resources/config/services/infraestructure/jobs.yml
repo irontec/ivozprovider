@@ -7,12 +7,12 @@ services:
   ## Jobs
   ###############################################
   # Invoicer
-  Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer:
+  Ivoz\Provider\Infrastructure\Redis\Job\Invoicer:
     arguments:
-      $settings: '%gearmand%'
+      $redisDb: '%redis_jobs_db%'
 
   Ivoz\Provider\Domain\Job\InvoicerJobInterface:
-    alias: Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer
+    alias: Ivoz\Provider\Infrastructure\Redis\Job\Invoicer
 
   # Cgrates reload
   Ivoz\Cgr\Infrastructure\Gearman\Jobs\Cgrates:

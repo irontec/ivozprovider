@@ -37,3 +37,4 @@ parameters:
             - jobs.ivozprovider.local
     sentinels:
         - { host: 'data.ivozprovider.local', port: '26379' }
+    redis_jobs_db: 2

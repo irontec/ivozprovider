@@ -9,7 +9,7 @@ use Ivoz\Provider\Domain\Service\Invoice\SendGenerateOrder;
 use PhpSpec\Exception\Example\FailureException;
 use PhpSpec\ObjectBehavior;
 use spec\HelperTrait;
-use Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer;
+use Ivoz\Provider\Infrastructure\Redis\Jobs\Invoicer;
 
 class SendGenerateOrderSpec extends ObjectBehavior
 {

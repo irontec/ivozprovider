@@ -2,28 +2,21 @@
 
 namespace Worker;
 
-use GearmanJob;
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Service\TempFile;
+use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
+use Ivoz\Core\Infrastructure\Persistence\Redis\Sentinel;
+use Ivoz\Provider\Domain\Job\InvoicerJobInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Service\Invoice\Generator;
-use Mmoreram\GearmanBundle\Driver\Gearman;
 use Psr\Log\LoggerInterface;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Application\RegisterCommandTrait;
+use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @Gearman\Work(
- *     name = "Invoices",
- *     description = "Handle Invoices files related async tasks",
- *     service = "Worker\Invoices",
- *     iterations = 1
- * )
- */
 class Invoices
 {
     use RegisterCommandTrait;
@@ -34,6 +27,8 @@ class Invoices
     private $invoiceRepository;
     private $billableCallRepository;
     private $generator;
+    private $redisMasterFactory;
+    private $redisDb;
     private $logger;
 
     public function __construct(
@@ -43,6 +38,8 @@ class Invoices
         InvoiceRepository $invoiceRepository,
         BillableCallRepository $billableCallRepository,
         Generator $generator,
+        RedisMasterFactory $redisMasterFactory,
+        int $redisDb,
         LoggerInterface $logger
     ) {
         $this->eventPublisher = $eventPublisher;
@@ -51,26 +48,15 @@ class Invoices
         $this->invoiceRepository = $invoiceRepository;
         $this->billableCallRepository = $billableCallRepository;
         $this->generator = $generator;
+        $this->redisMasterFactory = $redisMasterFactory;
+        $this->redisDb = $redisDb;
         $this->logger = $logger;
     }
 
-    /**
-     * @Gearman\Job(
-     *     name = "create",
-     *     description = "Create new invoice"
-     * )
-     *
-     * @param GearmanJob $serializedJob Serialized object with job parameters
-     * @return bool | null
-     */
-    public function create(GearmanJob $serializedJob)
+    public function create()
     {
         try {
-            // Thanks Gearmand, you've done your job
-            $serializedJob->sendComplete("DONE");
-
-            $job = igbinary_unserialize($serializedJob->workload());
-            $id = $job->getId();
+            $id = $this->getInvoiceId();
 
             $this->registerCommand('Worker', 'invoices', ['id' => $id]);
 
@@ -135,8 +121,30 @@ class Invoices
                 $invoice,
                 true
             );
+        } finally {
+            return new Response('');
         }
+    }
 
-        return true;
+    private function getInvoiceId()
+    {
+        $redisMaster = $this
+            ->redisMasterFactory
+            ->create(
+                $this->redisDb
+            );
+
+        try {
+            $timeoutSeconds = 60 * 60;
+            $response = $redisMaster->blPop(
+                [InvoicerJobInterface::CHANNEL],
+                $timeoutSeconds
+            );
+
+            return intval(end($response));
+        } catch (\RedisException $e) {
+            $this->logger->error('Invoicer timeout');
+            exit(1);
+        }
     }
 }

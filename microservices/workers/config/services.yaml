@@ -31,6 +31,7 @@ services:
     Worker\Invoices:
         arguments:
             $logger: '@monolog.logger.workers'
+            $redisDb: '%redis_jobs_db%'
         public: true
 
     Worker\Cgrates:

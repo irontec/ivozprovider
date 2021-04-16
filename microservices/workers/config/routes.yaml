@@ -1,3 +1,7 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+invoicer:
+  path: /invoicer
+  controller: Worker\Invoices::create

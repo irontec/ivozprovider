@@ -4,9 +4,9 @@ namespace Ivoz\Provider\Domain\Job;
 
 interface InvoicerJobInterface
 {
-    const CHANNEL = 'WorkerInvoices~create';
+    const CHANNEL = 'InvoicesCreate';
 
-    public function setId(int|string $id);
+    public function setId(int $id);
 
     public function send(): void;
 }
