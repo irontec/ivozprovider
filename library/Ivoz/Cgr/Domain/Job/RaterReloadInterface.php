@@ -4,6 +4,8 @@ namespace Ivoz\Cgr\Domain\Job;
 
 interface RaterReloadInterface
 {
+    const CHANNEL = 'CgratesReload';
+
     public function setTpid(string $tpid): self;
 
     public function getTpid(): string;

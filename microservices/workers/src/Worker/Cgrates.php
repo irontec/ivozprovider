@@ -2,23 +2,15 @@
 
 namespace Worker;
 
-use GearmanJob;
 use Ivoz\Cgr\Domain\Job\RaterReloadInterface;
 use Ivoz\Cgr\Infrastructure\Cgrates\Service\ReloadService;
-use Mmoreram\GearmanBundle\Driver\Gearman;
+use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Psr\Log\LoggerInterface;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Application\RegisterCommandTrait;
+use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @Gearman\Work(
- *     name = "Cgrates",
- *     description = "Handle Cgrates related async tasks",*
- *     service = "Worker\Cgrates",
- *     iterations = 1
- * )
- */
 class Cgrates
 {
     use RegisterCommandTrait;
@@ -26,66 +18,89 @@ class Cgrates
     private $eventPublisher;
     private $requestId;
     private $reloadService;
+    private $redisMasterFactory;
+    private $redisDb;
     private $logger;
 
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
         ReloadService $reloadService,
+        RedisMasterFactory $redisMasterFactory,
+        int $redisDb,
         LoggerInterface $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
         $this->reloadService = $reloadService;
+        $this->redisMasterFactory = $redisMasterFactory;
+        $this->redisDb = $redisDb;
         $this->logger = $logger;
     }
 
-    /**
-     * Send CGRateS reload request
-     *
-     * @Gearman\Job(
-     *     name = "reload",
-     *     description = "Reload a given tpid in CGRateS"
-     * )
-     *
-     * @param GearmanJob $serializedJob Serialized object with job parameters
-     * @return boolean
-     *
-     * @throws \Exception
-     */
-    public function reload(GearmanJob $serializedJob)
+    public function reload()
     {
         try {
-            // Thanks Gearmand, you've done your job
-            $serializedJob->sendComplete("DONE");
             $this->registerCommand('Worker', 'cgrates');
 
-            /** @var RaterReloadInterface $job */
-            $job = igbinary_unserialize($serializedJob->workload());
+            $job = $this->getJobPayload();
 
             $this->logger->info(
-                'ApierV1.LoadTariffPlanFromStorDb GEARMAN payload ' . var_export($job, true)
+                'ApierV1.LoadTariffPlanFromStorDb job payload ' . var_export($job, true)
             );
 
-            $cgratesTpid = $job->getTpid();
-
-            $this->logger->info(sprintf("ApierV1.LoadTariffPlanFromStorDb GEARMAN Reloading Tpid %s through CGRateS API", $cgratesTpid));
+            $cgratesTpid = $job['tpid'];
+            $this->logger->info(
+                sprintf(
+                    "ApierV1.LoadTariffPlanFromStorDb job Reloading Tpid %s through CGRateS API",
+                    $cgratesTpid
+                )
+            );
 
             $this
                 ->reloadService
                 ->execute(
                     $cgratesTpid,
-                    $job->getDisableDestinations()
+                    $job['disableDestinations']
                 );
 
-            $this->logger->info(sprintf("ApierV1.LoadTariffPlanFromStorDb GEARMAN Reloaded Tpid %s through CGRateS API", $cgratesTpid));
-            // Done!
-            return true;
+            $this->logger->info(
+                sprintf(
+                    "ApierV1.LoadTariffPlanFromStorDb job Reloaded Tpid %s through CGRateS API",
+                    $cgratesTpid
+                )
+            );
         } catch (\Exception $e) {
             $this->logger->error(
                 $e->getMessage()
             );
 
+            exit(1);
+        } finally {
+            return new Response('');
+        }
+    }
+
+
+    private function getJobPayload(): array
+    {
+        $redisMaster = $this
+            ->redisMasterFactory
+            ->create(
+                $this->redisDb
+            );
+
+        try {
+            $timeoutSeconds = 60 * 60;
+            $response = $redisMaster->blPop(
+                [RaterReloadInterface::CHANNEL],
+                $timeoutSeconds
+            );
+
+            $data = end($response);
+            return \json_decode($data, true);
+        } catch (\RedisException $e) {
+            $this->logger->error('Invoicer timeout');
             exit(1);
         }
     }
