@@ -27,6 +27,7 @@ services:
         arguments:
             $em: '@=service("doctrine.orm.entity_manager")'
             $logger: '@monolog.logger.workers'
+            $redisDb: '%redis_jobs_db%'
 
     Worker\Invoices:
         arguments:

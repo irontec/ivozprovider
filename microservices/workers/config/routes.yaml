@@ -9,3 +9,7 @@ invoicer:
 cgrates-reload:
   path: /cgrates-reloader
   controller: Worker\Cgrates::reload
+
+rates-import:
+  path: /rates-import
+  controller: Worker\Rates::import
