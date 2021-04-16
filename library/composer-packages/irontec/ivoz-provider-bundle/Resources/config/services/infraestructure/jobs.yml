@@ -23,13 +23,12 @@ services:
     alias: Ivoz\Cgr\Infrastructure\Redis\Job\Cgrates
 
   # Rates importer
-  Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter:
+  Ivoz\Provider\Infrastructure\Redis\Job\RatesImporter:
     arguments:
-      $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
-      $settings: '%gearmand%'
+      $redisDb: '%redis_jobs_db%'
 
   Ivoz\Provider\Domain\Job\RatesImporterJobInterface:
-    alias: Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter
+    alias: Ivoz\Provider\Infrastructure\Redis\Job\RatesImporter
 
   # Audio Recoder
   Ivoz\Provider\Infrastructure\Gearman\Jobs\Recoder:
