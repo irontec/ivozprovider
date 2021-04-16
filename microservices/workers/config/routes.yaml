@@ -5,3 +5,7 @@
 invoicer:
   path: /invoicer
   controller: Worker\Invoices::create
+
+cgrates-reload:
+  path: /cgrates-reloader
+  controller: Worker\Cgrates::reload

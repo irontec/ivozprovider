@@ -15,12 +15,12 @@ services:
     alias: Ivoz\Provider\Infrastructure\Redis\Job\Invoicer
 
   # Cgrates reload
-  Ivoz\Cgr\Infrastructure\Gearman\Jobs\Cgrates:
+  Ivoz\Cgr\Infrastructure\Redis\Job\Cgrates:
     arguments:
-      $settings: '%gearmand%'
+      $redisDb: '%redis_jobs_db%'
 
   Ivoz\Cgr\Domain\Job\RaterReloadInterface:
-    alias: Ivoz\Cgr\Infrastructure\Gearman\Jobs\Cgrates
+    alias: Ivoz\Cgr\Infrastructure\Redis\Job\Cgrates
 
   # Rates importer
   Ivoz\Provider\Infrastructure\Gearman\Jobs\RatesImporter:
