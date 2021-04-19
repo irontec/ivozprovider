@@ -13,3 +13,7 @@ cgrates-reload:
 rates-import:
   path: /rates-import
   controller: Worker\Rates::import
+
+multimedia-encoder:
+  path: /multimedia-encoder
+  controller: Worker\Multimedia::encode
