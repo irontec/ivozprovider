@@ -4,24 +4,17 @@ namespace Worker;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
+use Ivoz\Provider\Domain\Job\RecoderJobInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Symfony\Bridge\Monolog\Logger;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Process\Process;
-use Mmoreram\GearmanBundle\Driver\Gearman;
-use GearmanJob;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Application\RegisterCommandTrait;
 
-/**
- * @Gearman\Work(
- *     name = "Multimedia",
- *     description = "Handle Multimedia files related async tasks",*
- *     service = "Worker\Multimedia",
- *     iterations = 1
- * )
- */
 class Multimedia
 {
     use RegisterCommandTrait;
@@ -30,6 +23,8 @@ class Multimedia
     private $requestId;
     private $em;
     private $entityTools;
+    private $redisMasterFactory;
+    private $redisDb;
     private $logger;
 
     public function __construct(
@@ -37,39 +32,28 @@ class Multimedia
         RequestId $requestId,
         EntityManagerInterface $em,
         EntityTools $entityTools,
+        RedisMasterFactory $redisMasterFactory,
+        int $redisDb,
         Logger $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
         $this->em = $em;
         $this->entityTools = $entityTools;
+        $this->redisMasterFactory = $redisMasterFactory;
+        $this->redisDb = $redisDb;
         $this->logger = $logger;
     }
 
-    /**
-     * Encode requested file to MP3
-     *
-     * @Gearman\Job(
-     *     name = "encode",
-     *     description = "Decode files to WAV"
-     * )
-     *
-     * @param GearmanJob $serializedJob Serialized object with job parameters
-     * @return boolean
-     *
-     * @throws \Exception
-     */
-    public function encode(GearmanJob $serializedJob)
+    public function encode()
     {
         try {
-            // Thanks Gearmand, you've done your job
-            $serializedJob->sendComplete("DONE");
             $this->registerCommand('Worker', 'multimedia');
 
-            $job = igbinary_unserialize($serializedJob->workload());
+            $job = $this->getJobPayload();
 
-            $entityId = $job->getId();
-            $entityName = $job->getEntityName();
+            $entityId = $job['id'];
+            $entityName = $job['entityName'];
             $entityNameSegments = explode('\\', $entityName);
             $entityClass = end($entityNameSegments);
 
@@ -159,6 +143,30 @@ class Multimedia
         }
 
         // Done!
-        return true;
+        return new Response('');
+    }
+
+
+    private function getJobPayload(): array
+    {
+        $redisMaster = $this
+            ->redisMasterFactory
+            ->create(
+                $this->redisDb
+            );
+
+        try {
+            $timeoutSeconds = 60 * 60;
+            $response = $redisMaster->blPop(
+                [RecoderJobInterface::CHANNEL],
+                $timeoutSeconds
+            );
+
+            $data = end($response);
+            return \json_decode($data, true);
+        } catch (\RedisException $e) {
+            $this->logger->error('Invoicer timeout');
+            exit(1);
+        }
     }
 }

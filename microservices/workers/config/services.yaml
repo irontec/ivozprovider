@@ -21,6 +21,7 @@ services:
         public: true
         arguments:
             $logger: '@monolog.logger.workers'
+            $redisDb: '%redis_jobs_db%'
 
     Worker\Rates:
         public: true

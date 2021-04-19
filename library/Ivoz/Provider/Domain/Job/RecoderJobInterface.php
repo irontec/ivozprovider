@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Job;
 
 interface RecoderJobInterface
 {
+    const CHANNEL = 'MultimediaEncode';
+
     public function setId($id): self;
 
     public function getId(): int;
