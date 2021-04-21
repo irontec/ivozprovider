@@ -17,3 +17,11 @@ rates-import:
 multimedia-encoder:
   path: /multimedia-encoder
   controller: Worker\Multimedia::encode
+
+kam-rpc-request:
+  path: /kam-rpc-request
+  controller: Worker\KamRpc::send
+
+kam-rpc-delayed:
+  path: /kam-rpc-delayed
+  controller: Worker\KamRpc::delayed

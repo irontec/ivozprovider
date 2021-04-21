@@ -3,36 +3,28 @@
 namespace Worker;
 
 use Doctrine\ORM\EntityManagerInterface;
-use GearmanJob;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Application\RegisterCommandTrait;
+use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
+use Ivoz\Kam\Domain\Job\RpcJobInterface;
 use Ivoz\Kam\Infrastructure\Kamailio\RpcClient;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkRepository;
 use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser;
 use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserRepository;
-use Mmoreram\GearmanBundle\Driver\Gearman;
 use Monolog\Logger;
-use PhpXmlRpc\Client;
-use PhpXmlRpc\Request;
-use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\RegisterCommandTrait;
+use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @Gearman\Work(
- *     name = "Xmlrpc",
- *     description = "Handle XMLRPC requests related async tasks",
- *     service = "Worker\Xmlrpc",
- *     iterations = 1
- * )
- */
-class Xmlrpc
+class KamRpc
 {
     use RegisterCommandTrait;
 
     private $eventPublisher;
     private $requestId;
     private $em;
+    private $redisMasterFactory;
+    private $redisDb;
     private $logger;
     private $retryInterval = 180;
 
@@ -40,40 +32,31 @@ class Xmlrpc
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
         EntityManagerInterface $em,
+        RedisMasterFactory $redisMasterFactory,
+        int $redisDb,
         Logger $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
         $this->em = $em;
+        $this->redisMasterFactory = $redisMasterFactory;
+        $this->redisDb = $redisDb;
         $this->logger = $logger;
     }
 
-    /**
-     * Send Inmmediate XMLRPC request to Kamailio Proxies
-     *
-     *
-     * @Gearman\Job(
-     *     name = "immediate",
-     *     description = "Send XMLRPC request immediatly"
-     * )
-     *
-     * @param GearmanJob $serializedJob Object with job parameters
-     * @return boolean
-     */
-    public function immediate(GearmanJob $serializedJob)
+    public function send()
     {
         try {
-            // Thanks Gearmand, you've done your job
-            $serializedJob->sendComplete("DONE");
-            $this->registerCommand('Worker', 'xmlrpc');
+            $this->registerCommand('Worker', 'rpc::immediate');
 
-            /** @var \Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc $job */
-            $job = igbinary_unserialize($serializedJob->workload());
+            $job = $this->getJobPayload(
+                RpcJobInterface::CHANNEL
+            );
 
-            return $this->sendRpcRequest(
-                $job->getRpcEntity(),
-                $job->getRpcPort(),
-                $job->getRpcMethod()
+            $this->sendRpcRequest(
+                $job['rpcEntity'],
+                $job['rpcPort'],
+                $job['rpcMethod']
             );
         } catch (\Exception $e) {
             $this->logger->error(
@@ -82,46 +65,41 @@ class Xmlrpc
 
             exit(1);
         }
+
+        return new Response('');
     }
 
-    /**
-     * Send delayed XMLRPC request to Kamailio Proxies
-     *
-     * @param GearmanJob $serializedJob Object with job parameters
-     *
-     * @return boolean
-     *
-     * @Gearman\Job(
-     *     name = "delayed",
-     *     description = "Send XMLRPC request delayed"
-     * )
-     */
-    public function delayed(GearmanJob $serializedJob)
+    public function delayed()
     {
         try {
+            $this->registerCommand('Worker', 'rpc::delayed');
 
-            /** @var \Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc $job */
-            $job = igbinary_unserialize($serializedJob->workload());
+            $job = $this->getJobPayload(
+                RpcJobInterface::CHANNEL_RETRY_ON_ERROR
+            );
 
             $success = $this->sendRpcRequest(
-                $job->getRpcEntity(),
-                $job->getRpcPort(),
-                $job->getRpcMethod()
+                $job['rpcEntity'],
+                $job['rpcPort'],
+                $job['rpcMethod']
             );
 
             if (!$success) {
                 $this->logger->info(sprintf(
                     "[KAM-RPC] Delayed %s job request failed: Retrying in %d seconds.",
-                    $job->getRpcMethod(),
+                    $job['rpcMethod'],
                     $this->retryInterval
                 ));
-                sleep($this->retryInterval);
-                exit(GEARMAN_WORK_ERROR);
-            }
 
-            // Thanks Gearmand, you've done your job
-            $serializedJob->sendComplete("DONE");
-            return $success;
+                sleep($this->retryInterval);
+
+                $this->reEnqueueJob(
+                    RpcJobInterface::CHANNEL_RETRY_ON_ERROR,
+                    $job
+                );
+
+                exit(1);
+            }
         } catch (\Exception $e) {
             $this->logger->error(
                 $e->getMessage()
@@ -129,6 +107,8 @@ class Xmlrpc
 
             exit(1);
         }
+
+        return new Response('');
     }
 
     /**
@@ -196,6 +176,54 @@ class Xmlrpc
             ));
             return false;
         }
+        return true;
+    }
+
+
+    private function getJobPayload(string $channel): array
+    {
+        $redisMaster = $this
+            ->redisMasterFactory
+            ->create(
+                $this->redisDb
+            );
+
+        try {
+            $timeoutSeconds = 60 * 60;
+            $response = $redisMaster->blPop(
+                [$channel],
+                $timeoutSeconds
+            );
+
+            $data = end($response);
+            return \json_decode($data, true);
+        } catch (\RedisException $e) {
+            $this->logger->error('KamRpc timeout: ' . $e->getMessage());
+            exit(1);
+        }
+    }
+
+    private function reEnqueueJob(string $channel, array $data): bool
+    {
+        $redisMaster = $this
+            ->redisMasterFactory
+            ->create(
+                $this->redisDb
+            );
+
+        try {
+            $redisMaster->lPush(
+                $channel,
+                \json_encode($data)
+            );
+
+            $redisMaster->close();
+        } catch (\RedisException $e) {
+            $this->logger->error('KamRpc timeout: ' . $e->getMessage());
+
+            return false;
+        }
+
         return true;
     }
 }
