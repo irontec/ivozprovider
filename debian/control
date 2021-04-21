@@ -6,7 +6,7 @@ Build-Depends: debhelper, dh-systemd,
     python, make, python-sphinx-rtd-theme, gettext,
     python-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
     libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8), composer,
-    php8.0-mbstring, php8.0-xml, php8.0-zip, php8.0-mailparse, php8.0-gearman
+    php8.0-mbstring, php8.0-xml, php8.0-zip, php8.0-mailparse
 Standards-Version: 3.9.6
 Maintainer: Irontec IvozProvider Team <ivozprovider@irontec.com>
 
@@ -52,7 +52,6 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-asterisk-sounds,
     ivozprovider-asterisk,
     php8.0-igbinary,
-    php8.0-gearman,
     sngrep,
     ghostscript,
     libtiff-tools
@@ -69,7 +68,6 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-schema (=${binary:Version}),
     ivozprovider-balances (=${binary:Version}),
     libstring-crc32-perl,
-    libgearman-client-perl,
     redis-server,
     redis-sentinel
 Homepage: http://www.irontec.com
@@ -94,14 +92,11 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     php8.0-imagick,
     php8.0-mbstring,
     php8.0-curl,
-    php8.0-gearman,
     php8.0-yaml,
     php8.0-gd,
     php8.0-zip,
     ivozprovider-web-admin (=${binary:Version}),
     ivozprovider-web-user (=${binary:Version}),
-    gearman-job-server,
-    gearman,
     supervisor,
     ffmpeg,
     sox,
@@ -249,7 +244,7 @@ Description: IVOZ Provider - Recordings - Symfony microservice
 Package: ivozprovider-async-workers
 Architecture: all
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), php8.0-gearman
+Depends: ivozprovider-common-library (=${binary:Version})
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Async Workers - Symfony microservice
  .
@@ -265,7 +260,7 @@ Description: IVOZ Provider - Scheduled tasks runner - Symfony microservice
 Package: ivozprovider-balances
 Architecture: all
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), php8.0-gearman
+Depends: ivozprovider-common-library (=${binary:Version})
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Rating updater - Symfony microservice
   .

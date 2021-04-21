@@ -38,7 +38,6 @@ RUN apt-get update && apt-get install -y \
     sqlite3 \
     php7.0-sqlite3 \
     php7.0-igbinary \
-    php-gearman \
     php-mailparse \
     php-imagick \
     php7.0-curl \

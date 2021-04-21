@@ -89,9 +89,6 @@
     "incenteev/composer-parameter-handler": {
         "version": "v2.1.4"
     },
-    "irontec/gearman-bundle": {
-        "version": "v5.3"
-    },
     "irontec/ivoz-core": {
         "version": "4.0.1"
     },
