@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\BannedAddress;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Kam\Infrastructure\Gearman\UsersClient;
+use Ivoz\Kam\Infrastructure\Kamailio\UsersClient;
 use Ivoz\Provider\Domain\Model\BannedAddress\BannedAddressInterface;
 use Ivoz\Provider\Domain\Model\BannedAddress\BannedAddressRepository;
 use Psr\Log\LoggerInterface;

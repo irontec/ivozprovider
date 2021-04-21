@@ -29,3 +29,22 @@ services:
       - { 'connect_timeout': 2, 'timeout': 0 }
     tags:
     - { name: test_double, fake: 'Ivoz\Kam\Infrastructure\Kamailio\FakeRpcClient' }
+
+  ###############################################
+  ## Kam API Clients
+  ###############################################
+
+  # Trunks RPC client
+  Ivoz\Kam\Infrastructure\Kamailio\TrunksClient:
+    arguments:
+      $rpcClient: '@Ivoz\Kam\Infrastructure\Kamailio\RpcClient::Trunks'
+  Ivoz\Kam\Domain\Service\TrunksClientInterface:
+    alias: 'Ivoz\Kam\Infrastructure\Kamailio\TrunksClient'
+    public: true
+
+  # Users RPC client
+  Ivoz\Kam\Infrastructure\Kamailio\UsersClient:
+    arguments:
+      $rpcClient: '@Ivoz\Kam\Infrastructure\Kamailio\RpcClient::Users'
+  Ivoz\Kam\Domain\Service\UsersClientInterface:
+    alias: 'Ivoz\Kam\Infrastructure\Kamailio\UsersClient'

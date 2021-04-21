@@ -22,17 +22,17 @@ interface UsersClientInterface
         self::BANNED_ADDRESS_UNBAN
     ];
 
-    public function reloadDispatcher();
+    public function reloadDispatcher(): void;
 
-    public function reloadDomain();
+    public function reloadDomain(): void;
 
-    public function reloadTrustedPermissions();
+    public function reloadTrustedPermissions(): void;
 
-    public function reloadAddressPermissions();
+    public function reloadAddressPermissions(): void;
 
-    public function reloadDialplan();
+    public function reloadDialplan(): void;
 
-    public function reloadRtpengine();
+    public function reloadRtpengine(): void;
 
-    public function unban(string $aor, string $ip);
+    public function unban(string $aor, string $ip): void;
 }
