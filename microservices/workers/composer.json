@@ -51,7 +51,6 @@
         "irontec/ivoz-provider-bundle": "^2.5",
         "irontec/replacements": "^1.0",
         "knplabs/knp-snappy": "^1.2",
-        "irontec/gearman-bundle": "^5.0",
         "phpxmlrpc/phpxmlrpc": "^4.0",
         "symfony/flex": "^1.9",
         "xamin/handlebars.php": "^0.10.4"

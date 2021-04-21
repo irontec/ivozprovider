@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fba9f4841ca3fa4869a11299739df7a",
+    "content-hash": "4bd058e396b9b2ecdc788883a2de050a",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1548,62 +1548,6 @@
             "homepage": "https://github.com/Incenteev/ParameterHandler",
             "keywords": [
                 "parameters management"
-            ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "irontec/gearman-bundle",
-            "version": "5.3.1",
-            "dist": {
-                "type": "path",
-                "url": "../../library/vendor/irontec/gearman-bundle",
-                "reference": "c75d1e060bf1aa869da5628e6323208a228b7b49"
-            },
-            "require": {
-                "doctrine/common": "^2.10|^3.1",
-                "ext-gearman": "*",
-                "php": "^7.3",
-                "symfony/cache": "^4.4|^5.0",
-                "symfony/config": "^4.4|^5.0",
-                "symfony/console": "^4.4|^5.0",
-                "symfony/finder": "^4.4|^5.0",
-                "symfony/framework-bundle": "^4.4|^5.0",
-                "symfony/http-kernel": "^4.4|^5.0",
-                "symfony/options-resolver": "^4.4|^5.0"
-            },
-            "replace": {
-                "mmoreramerino/gearman-bundle": "dev-master"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Mmoreram\\GearmanBundle\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marc Morera",
-                    "email": "yuhu@mmoreram.com"
-                },
-                {
-                    "name": "Matt Daum",
-                    "email": "matt@setfive.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://github.com/mmoreram/GearmanBundle/contributors"
-                }
-            ],
-            "description": "Adds gearman support to your Symfony 4 and 5 project",
-            "homepage": "https://github.com/mmadariaga/GearmanBundle",
-            "keywords": [
-                "gearman"
             ],
             "transport-options": {
                 "symlink": true,

@@ -29,7 +29,6 @@ RUN apt-get install --assume-yes --force-yes \
         php8.0-igbinary \
         php8.0-curl \
         php8.0-yaml \
-        php8.0-gearman \
         php8.0-mailparse \
         php8.0-imagick \
         php8.0-xdebug \
