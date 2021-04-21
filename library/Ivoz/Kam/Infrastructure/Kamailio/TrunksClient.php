@@ -1,69 +1,65 @@
 <?php
 
-namespace Ivoz\Kam\Infrastructure\Gearman;
+namespace Ivoz\Kam\Infrastructure\Kamailio;
 
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Client\XmlRpcTrunksRequestInterface;
+use Ivoz\Kam\Infrastructure\Redis\Job\TrunksRpcJob;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
-use Ivoz\Kam\Infrastructure\Kamailio\JsonRpcRequestTrait;
-use Ivoz\Kam\Infrastructure\Kamailio\RpcClient;
 use Psr\Log\LoggerInterface;
 
 class TrunksClient implements TrunksClientInterface
 {
-    use JsonRpcRequestTrait;
+    use RpcRequestTrait;
 
-    protected $rpcClient;
-    protected $germanClient;
-    protected $logger;
+    private $rpcJob;
 
     public function __construct(
         RpcClient $rpcClient,
-        XmlRpcTrunksRequestInterface $germanClient,
+        TrunksRpcJob $rpcJob,
         LoggerInterface $logger
     ) {
         $this->rpcClient = $rpcClient;
-        $this->germanClient = $germanClient;
+        $this->rpcJob = $rpcJob;
         $this->logger = $logger;
     }
 
-    public function reloadDialplan()
+    public function reloadDialplan(): void
     {
-        return $this->germanClient->send(
+        $this->rpcJob->send(
             self::DIALPLAN_RELOAD_ACTION
         );
     }
 
-    public function reloadDispatcher()
+    public function reloadDispatcher(): void
     {
-        return $this->germanClient->send(
+        $this->rpcJob->send(
             self::DISPATCHER_RELOAD_ACTION
         );
     }
 
-    public function reloadLcr()
+    public function reloadLcr(): void
     {
-        return $this->germanClient->send(
+        $this->rpcJob->send(
             self::LCR_RELOAD_ACTION
         );
     }
 
-    public function reloadTrustedPermissions()
+    public function reloadTrustedPermissions(): void
     {
-        return $this->germanClient->send(
+        $this->rpcJob->send(
             self::PERMISSIONS_TRUSTED_RELOAD_ACTION
         );
     }
 
-    public function reloadAddressPermissions()
+    public function reloadAddressPermissions(): void
     {
-        return $this->germanClient->send(
+        $this->rpcJob->send(
             self::PERMISSIONS_ADDRESS_RELOAD_ACTION
         );
     }
 
-    public function reloadUacReg()
+    public function reloadUacReg(): void
     {
-        return $this->germanClient->send(
+        $this->rpcJob->send(
             self::UAC_REG_RELOAD_ACTION,
             true
         );
@@ -139,9 +135,9 @@ class TrunksClient implements TrunksClientInterface
         return (array) $response->result;
     }
 
-    public function reloadRtpengine()
+    public function reloadRtpengine(): void
     {
-        return $this->germanClient->send(
+        $this->rpcJob->send(
             self::RTPENGINE_RELOAD_ACTION
         );
     }

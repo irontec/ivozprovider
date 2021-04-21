@@ -2,7 +2,6 @@
 
 namespace Ivoz\Cgr\Infrastructure\Cgrates\Service;
 
-use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ApiClient;

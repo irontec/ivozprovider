@@ -37,3 +37,12 @@ services:
 
   Ivoz\Provider\Domain\Job\RecoderJobInterface:
     alias: Ivoz\Provider\Infrastructure\Redis\Job\Recoder
+
+  # Kamailio RPC calls
+  Ivoz\Kam\Infrastructure\Redis\Job\TrunksRpcJob:
+    arguments:
+      $redisDb: '%redis_jobs_db%'
+
+  Ivoz\Kam\Infrastructure\Redis\Job\UserRpcJob:
+    arguments:
+      $redisDb: '%redis_jobs_db%'
