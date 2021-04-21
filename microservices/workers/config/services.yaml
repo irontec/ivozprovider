@@ -42,7 +42,8 @@ services:
             $redisDb: '%redis_jobs_db%'
         public: true
 
-    Worker\Xmlrpc:
+    Worker\KamRpc:
         public: true
         arguments:
             $logger: '@monolog.logger.workers'
+            $redisDb: '%redis_jobs_db%'
