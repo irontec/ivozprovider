@@ -1911,11 +1911,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.2.5",
+            "version": "4.3.1",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-core",
-                "reference": "b414eae75161a45ca658612ab1515e9189daa46a"
+                "reference": "2f04a3ab6448b3c2f95efc2ce98b49030c747664"
             },
             "require": {
                 "beberlei/assert": "2.9.*",
@@ -1961,15 +1961,15 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "4.2.2",
+            "version": "4.3",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "274e99feeaf1741df67c579e77d8073f46b0fbb5"
+                "reference": "16d483fa122a361d08744092cb78fceafdf94f57"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
-                "irontec/ivoz-core": "^4.2.5",
+                "irontec/ivoz-core": "^4.3",
                 "ocramius/proxy-manager": "~2.0",
                 "php": ">=7.4",
                 "symfony/monolog-bundle": "^3.5",
