@@ -6,6 +6,7 @@ use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
 /**
@@ -55,7 +56,7 @@ class Company extends CompanyAbstract implements CompanyInterface
             );
         }
 
-        if (!$this->getLanguage()) {
+        if (!parent::getLanguage()) {
             $this->setLanguage(
                 // @todo create a shortcut
                 $this->getBrand()->getLanguage()
@@ -217,16 +218,25 @@ class Company extends CompanyAbstract implements CompanyInterface
         return array_shift($terminals);
     }
 
+    public function getLanguage(): LanguageInterface
+    {
+        /**
+         * @see Company::sanitizeValues
+         * @var LanguageInterface $language
+         */
+        $language = parent::getLanguage();
+
+        return $language;
+    }
+
     /**
      * @return string
      */
     public function getLanguageCode(): string
     {
-        $language = $this->getLanguage();
-        if (! $language) {
-            return $this->getBrand()->getLanguageCode();
-        }
-        return $language->getIden();
+        return $this
+            ->getLanguage()
+            ->getIden();
     }
 
     /**

@@ -38,12 +38,6 @@ class NotifyMaxDailyUsage
             : new MaxUsageNotificationDto();
 
         $language = $company->getLanguage();
-        if (!$language) {
-            $language = $company
-                ->getBrand()
-                ->getLanguage();
-        }
-
         $notificationTemplateContent = $notificationTemplate->getContentsByLanguage($language);
 
         $subject = $this->parseNotificationSubject(

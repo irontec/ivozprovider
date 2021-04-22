@@ -96,6 +96,8 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getTerminal($name);
 
+    public function getLanguage(): LanguageInterface;
+
     /**
      * @return string
      */
@@ -230,8 +232,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getBalance(): ?float;
 
     public function getShowInvoices(): ?bool;
-
-    public function getLanguage(): ?LanguageInterface;
 
     public function getMediaRelaySets(): ?MediaRelaySetInterface;
 
