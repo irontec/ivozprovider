@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+export APP_ENV=test
+
+pushd /opt/irontec/ivozprovider/web/rest/user
+
+    if [ "$1" != "--skip-db" ]; then
+        # Prepare dataset
+        bin/prepare-test-db
+    fi
+
+    # Access control tests
+    SYMFONY_PHPUNIT_VERSION=9.5.3 vendor/bin/simple-phpunit
+
+    # Integration tests
+    vendor/bin/behat -f progress -o std -f junit -o results
+popd

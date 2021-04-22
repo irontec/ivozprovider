@@ -1,0 +1,160 @@
+########################################
+## Raw
+########################################
+
+Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
+  itemOperations:
+    post_my_call_forward_settings:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'POST'
+      path: '/my/call_forward_settings'
+      route_name: 'post_my_call_forward_settings'
+      swagger_context:
+        consumes: ["application/ld+json"]
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters:
+        - name: 'CallForwardSetting'
+          in: 'body'
+          description: 'The updated CallForwardSetting resource'
+          schema:
+            $ref: '#/definitions/CallForwardSetting'
+  collectionOperations:
+    get_my_call_forward_settings:
+      depth: 1
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'GET'
+      path: '/my/call_forward_settings'
+      route_name: 'get_my_call_forward_settings'
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+      swagger_context:
+        parameters: []
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+  attributes:
+    access_control: '"ROLE_COMPANY_USER" in roles'
+
+Ivoz\Provider\Domain\Model\Country\Name:
+Ivoz\Provider\Domain\Model\Country\Zone:
+Ivoz\Provider\Domain\Model\Country\Country:
+  itemOperations:
+    get_my_company_country:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'GET'
+      path: '/my/company_country'
+      route_name: 'get_my_company_country'
+      operation_normalization_context: 'detailed'
+      normalization_context:
+        groups: ['detailed']
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters: []
+  collectionOperations: []
+  attributes:
+    pagination_client_enabled: true
+    access_control: '"ROLE_COMPANY_USER" in roles'
+
+Ivoz\Provider\Domain\Model\Extension\Extension:
+  itemOperations: []
+  collectionOperations:
+    get_my_company_extensions:
+      method: 'GET'
+      path: '/my/extensions'
+      route_name: 'get_my_company_extensions'
+      normalization_context:
+      - collection
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters: []
+  attributes:
+    access_control: '"ROLE_COMPANY_USER" in roles'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\Timezone\Timezone:
+  itemOperations: []
+  collectionOperations: []
+
+Ivoz\Provider\Domain\Model\User\User:
+  itemOperations:
+    get_my_profile:
+      depth: 1
+      method: 'GET'
+      path: '/my/profile'
+      route_name: 'get_my_profile'
+      operation_normalization_context: 'myProfile'
+      normalization_context:
+        groups: ['myProfile']
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters: []
+    put_my_profile:
+      attributes:
+        depth: 1
+      method: 'PUT'
+      path: '/my/profile'
+      route_name: 'put_my_profile'
+      operation_normalization_context: 'updateMyProfile'
+      denormalization_context:
+        groups: ['updateMyProfile']
+      normalization_context:
+        groups: ['myProfile']
+      swagger_context:
+        tags:
+        - My
+        consumes: ["application/ld+json"]
+        parameters:
+        - name: 'user'
+          in: 'body'
+          description: 'The updated User resource'
+          schema:
+            $ref: '#/definitions/User-updateMyProfile'
+  collectionOperations:
+    get_my_company_assistants:
+      method: 'GET'
+      path: '/my/company_assistants'
+      route_name: 'get_my_company_assistants'
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters: []
+    get_my_company_voicemails:
+      method: 'GET'
+      path: '/my/company_voicemails'
+      route_name: 'get_my_company_voicemails'
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters: []
+  attributes:
+    access_control: '"ROLE_COMPANY_USER" in roles'
+    swagger_context:
+      required:
+      - company

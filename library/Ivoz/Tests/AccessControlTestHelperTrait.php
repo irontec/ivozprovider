@@ -8,6 +8,7 @@ use Ivoz\Api\Core\Security\DataAccessControlParser;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\JWTUserToken;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -66,12 +67,10 @@ trait AccessControlTestHelperTrait
             ->get('request_stack')
             ->push($request);
 
-        $adminRepository = $this
-            ->serviceContainer
-            ->get(AdministratorRepository::class);
+        $repository = $this->getRepository();
 
-        /** @var AdministratorInterface $admin */
-        $admin = $adminRepository->findOneBy(
+        /** @var AdministratorInterface | UserInterface $admin */
+        $admin = $repository->findOneBy(
             $this->getAdminCriteria()
         );
 
@@ -103,7 +102,6 @@ trait AccessControlTestHelperTrait
 
         $accessControlEvaluatorReflection = $parserReflection->getProperty('accessControlEvaluator');
         $accessControlEvaluatorReflection->setAccessible(true);
-
 
         $accessControllMock = $this
             ->getMockBuilder(AccessControlEvaluator::class)
@@ -140,6 +138,13 @@ trait AccessControlTestHelperTrait
             $this->dataAccessControlParser,
             $accessControllMock
         );
+    }
+
+    protected function getRepository()
+    {
+        return $this
+            ->serviceContainer
+            ->get(AdministratorRepository::class);
     }
 
     protected function resetDatabase()
