@@ -70,9 +70,6 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     public function getNumberSequence(): ?InvoiceNumberSequenceInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addRelFixedCost(FixedCostsRelInvoiceSchedulerInterface $relFixedCost): InvoiceSchedulerInterface;

@@ -1,3 +1,27 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+invoicer:
+  path: /invoicer
+  controller: Worker\Invoices::create
+
+cgrates-reload:
+  path: /cgrates-reloader
+  controller: Worker\Cgrates::reload
+
+rates-import:
+  path: /rates-import
+  controller: Worker\Rates::import
+
+multimedia-encoder:
+  path: /multimedia-encoder
+  controller: Worker\Multimedia::encode
+
+kam-rpc-request:
+  path: /kam-rpc-request
+  controller: Worker\KamRpc::send
+
+kam-rpc-delayed:
+  path: /kam-rpc-delayed
+  controller: Worker\KamRpc::delayed

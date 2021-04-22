@@ -2,9 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Service\Carrier;
 
+use Ivoz\Cgr\Domain\Job\RaterReloadInterface;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionRepository;
 use Ivoz\Cgr\Domain\Service\CgratesReloadNotificator;
-use Ivoz\Provider\Infrastructure\Gearman\Jobs\Cgrates;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 
 class SendCgratesReloadRequest extends CgratesReloadNotificator implements CarrierLifecycleEventHandlerInterface
@@ -14,7 +14,7 @@ class SendCgratesReloadRequest extends CgratesReloadNotificator implements Carri
 
     public function __construct(
         TpAccountActionRepository $tpAccountActionRepository,
-        Cgrates $cgratesReloadJob
+        RaterReloadInterface $cgratesReloadJob
     ) {
         $this->tpAccountActionRepository = $tpAccountActionRepository;
         parent::__construct($cgratesReloadJob);

@@ -43,8 +43,5 @@ interface TransformationRuleInterface extends LoggableEntityInterface
 
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

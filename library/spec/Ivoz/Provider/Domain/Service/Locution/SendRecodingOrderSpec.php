@@ -3,7 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Service\Locution;
 
 use Ivoz\Provider\Domain\Service\Locution\SendRecodingOrder;
-use Ivoz\Provider\Infrastructure\Gearman\Jobs\Recoder;
+use Ivoz\Provider\Infrastructure\Redis\Job\Recoder;
 use PhpSpec\ObjectBehavior;
 
 class SendRecodingOrderSpec extends ObjectBehavior

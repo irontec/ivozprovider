@@ -95,9 +95,6 @@ interface ExtensionInterface extends LoggableEntityInterface
 
     public function getNumberCountry(): ?CountryInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addUser(UserInterface $user): ExtensionInterface;

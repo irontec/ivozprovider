@@ -6,7 +6,7 @@ use Graze\GuzzleHttp\JsonRpc\Message\Request;
 use Graze\GuzzleHttp\JsonRpc\Message\Response;
 use Psr\Log\LoggerInterface;
 
-trait JsonRpcRequestTrait
+trait RpcRequestTrait
 {
     /**
      * @var RpcClient
@@ -19,12 +19,9 @@ trait JsonRpcRequestTrait
     protected $logger;
 
     /**
-     * @param string $method
-     * @param array $payload
      * @throws \RuntimeException
-     * @return \stdClass
      */
-    private function sendRequest($method, array $payload = [], int $timeout = null)
+    private function sendRequest($method, array $payload = [], int $timeout = null): \stdClass
     {
         /** @var Request $request */
         $request = $this

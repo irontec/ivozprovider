@@ -46,8 +46,5 @@ interface UsersPuaInterface extends EntityInterface
 
     public function getExtraHeaders(): string;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

@@ -2,6 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Company;
 
+use Ivoz\Cgr\Domain\Job\RaterReloadInterface;
 use Ivoz\Cgr\Infrastructure\Cgrates\Service\SetMaxUsageThresholdService;
 use Ivoz\Provider\Domain\Model\Brand\Brandinterface;
 use Ivoz\Provider\Domain\Service\Company\SendCgratesUpdateRequest;
@@ -9,7 +10,6 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionRepository;
-use Ivoz\Provider\Infrastructure\Gearman\Jobs\Cgrates;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionInterface;
 
@@ -27,7 +27,7 @@ class SendCgratesUpdateRequestSpec extends ObjectBehavior
     public function let(
         TpAccountActionRepository $tpAccountActionRepository,
         SetMaxUsageThresholdService $setMaxUsageThresholdService,
-        Cgrates $cgratesReloadJob
+        RaterReloadInterface $cgratesReloadJob
     ) {
         $this->tpAccountActionRepository = $tpAccountActionRepository;
         $this->setMaxUsageThresholdService = $setMaxUsageThresholdService;
@@ -61,7 +61,7 @@ class SendCgratesUpdateRequestSpec extends ObjectBehavior
 
         $this
             ->company
-            ->isNew()
+            ->hasChanged('id')
             ->shouldNotBeCalled();
 
         $this->execute(
@@ -75,7 +75,7 @@ class SendCgratesUpdateRequestSpec extends ObjectBehavior
 
         $this
             ->company
-            ->isNew()
+            ->hasChanged('id')
             ->willReturn(true)
             ->shouldbeCalled();
 
@@ -155,7 +155,6 @@ class SendCgratesUpdateRequestSpec extends ObjectBehavior
             $company,
             [
                 'hasBeenDeleted' => false,
-                'isNew' => false,
                 'getId' => $companyId,
                 'getCgrSubject' => 'c1',
                 'getBrand' => $brand,
@@ -163,6 +162,10 @@ class SendCgratesUpdateRequestSpec extends ObjectBehavior
             ],
             false
         );
+
+        $company
+            ->hasChanged('id')
+            ->willReturn(false);
 
         $company
             ->hasChanged('billingMethod')

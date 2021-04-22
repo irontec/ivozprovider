@@ -30,8 +30,5 @@ interface TrunksAddressInterface extends LoggableEntityInterface
 
     public function getDdiProviderAddress(): DdiProviderAddress;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

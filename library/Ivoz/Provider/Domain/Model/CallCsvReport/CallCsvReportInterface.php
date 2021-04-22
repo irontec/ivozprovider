@@ -46,9 +46,6 @@ interface CallCsvReportInterface extends LoggableEntityInterface, FileContainerI
 
     public function getCallCsvScheduler(): ?CallCsvSchedulerInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     /**

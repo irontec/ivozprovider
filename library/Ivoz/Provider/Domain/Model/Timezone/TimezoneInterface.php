@@ -24,8 +24,5 @@ interface TimezoneInterface extends LoggableEntityInterface
 
     public function getCountry(): ?CountryInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

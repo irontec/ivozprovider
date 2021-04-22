@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\MusicOnHold;
 
-use Ivoz\Provider\Infrastructure\Gearman\Jobs\Recoder;
+use Ivoz\Provider\Infrastructure\Redis\Job\Recoder;
 use Ivoz\Provider\Domain\Service\MusicOnHold\SendRecodingOrder;
 use PhpSpec\ObjectBehavior;
 

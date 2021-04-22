@@ -77,9 +77,6 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
 
     public function getScheduler(): ?InvoiceSchedulerInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addRelFixedCost(FixedCostsRelInvoiceInterface $relFixedCost): InvoiceInterface;

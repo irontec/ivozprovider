@@ -23,8 +23,5 @@ interface ConditionalRoutesConditionsRelScheduleInterface extends LoggableEntity
 
     public function getSchedule(): ScheduleInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

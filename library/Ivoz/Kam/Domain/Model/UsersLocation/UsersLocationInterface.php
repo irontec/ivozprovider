@@ -54,8 +54,5 @@ interface UsersLocationInterface extends EntityInterface
 
     public function getPartition(): int;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

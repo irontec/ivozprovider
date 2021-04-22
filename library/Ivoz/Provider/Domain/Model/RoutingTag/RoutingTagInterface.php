@@ -31,9 +31,6 @@ interface RoutingTagInterface extends LoggableEntityInterface
 
     public function getBrand(): BrandInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingTagInterface;

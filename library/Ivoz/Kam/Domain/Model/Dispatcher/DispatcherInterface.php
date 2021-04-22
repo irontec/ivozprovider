@@ -30,8 +30,5 @@ interface DispatcherInterface extends LoggableEntityInterface
 
     public function getApplicationServer(): ApplicationServerInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

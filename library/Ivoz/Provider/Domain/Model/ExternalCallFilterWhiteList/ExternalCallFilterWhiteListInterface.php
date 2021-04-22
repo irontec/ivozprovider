@@ -23,8 +23,5 @@ interface ExternalCallFilterWhiteListInterface extends LoggableEntityInterface
 
     public function getMatchlist(): MatchListInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

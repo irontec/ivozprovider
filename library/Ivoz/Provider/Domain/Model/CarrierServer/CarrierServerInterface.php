@@ -58,9 +58,6 @@ interface CarrierServerInterface extends LoggableEntityInterface
 
     public function getBrand(): BrandInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function setLcrGateway(TrunksLcrGatewayInterface $lcrGateway): static;

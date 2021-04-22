@@ -2,37 +2,29 @@
 
 namespace Worker;
 
+use Assert\Assertion;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateRepository;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateRepository;
 use Ivoz\Cgr\Infrastructure\Cgrates\Service\ReloadService;
+use Ivoz\Core\Application\RegisterCommandTrait;
+use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Application\Service\EntityTools;
-use GearmanJob;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
+use Ivoz\Provider\Domain\Job\RatesImporterJobInterface;
 use Ivoz\Provider\Domain\Model\Destination\DestinationRepository;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateRepository;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupRepository;
-use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
-use Mmoreram\GearmanBundle\Driver\Gearman;
 use Symfony\Bridge\Monolog\Logger;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\RegisterCommandTrait;
-use Assert\Assertion;
 
-/**
- * @Gearman\Work(
- *     name = "Rates",
- *     description = "Handle Rates related async tasks",
- *     service = "Worker\Rates",
- *     iterations = 1
- * )
- */
 class Rates
 {
     const CHUNK_SIZE = 100;
@@ -49,6 +41,8 @@ class Rates
     private $tpRateRepository;
     private $tpDestinationRateRepository;
     private $entityTools;
+    private $redisMasterFactory;
+    private $redisDb;
     private $logger;
     private $destinationRateGroupRepository;
     private $reloadService;
@@ -64,6 +58,8 @@ class Rates
         TpRateRepository $tpRateRepository,
         TpDestinationRateRepository $tpDestinationRateRepository,
         EntityTools $entityTools,
+        RedisMasterFactory $redisMasterFactory,
+        int $redisDb,
         Logger $logger,
         ReloadService $reloadService
     ) {
@@ -77,29 +73,16 @@ class Rates
         $this->tpDestinationRateRepository = $tpDestinationRateRepository;
         $this->tpRateRepository = $tpRateRepository;
         $this->entityTools = $entityTools;
+        $this->redisMasterFactory = $redisMasterFactory;
+        $this->redisDb = $redisDb;
         $this->logger = $logger;
         $this->reloadService = $reloadService;
     }
 
-    /**
-     * @Gearman\Job(
-     *     name = "import",
-     *     description = "Import Pricing data from CSV file"
-     * )
-     *
-     * @param GearmanJob $serializedJob Serialized object with job parameters
-     * @return boolean
-     * @throws \Exception
-     */
-    public function import(GearmanJob $serializedJob)
+    public function import()
     {
         try {
-            // Thanks Gearmand, you've done your job
-            $serializedJob->sendComplete("DONE");
-            $this->registerCommand('Worker', 'rates');
-
-            $job = igbinary_unserialize($serializedJob->workload());
-            $params = $job->getParams();
+            $params = $this->getJobPayload();
 
             /** @var DestinationRateGroupInterface | null $destinationRateGroup */
             $destinationRateGroup = $this->destinationRateGroupRepository->find(
@@ -445,6 +428,29 @@ class Rates
             $this->logger->error('Service reload failed');
         }
 
-        return true;
+        return new Response('');
+    }
+
+    private function getJobPayload(): array
+    {
+        $redisMaster = $this
+            ->redisMasterFactory
+            ->create(
+                $this->redisDb
+            );
+
+        try {
+            $timeoutSeconds = 60 * 60;
+            $response = $redisMaster->blPop(
+                [RatesImporterJobInterface::CHANNEL],
+                $timeoutSeconds
+            );
+
+            $data = end($response);
+            return \json_decode($data, true);
+        } catch (\RedisException $e) {
+            $this->logger->error('Invoicer timeout');
+            exit(1);
+        }
     }
 }

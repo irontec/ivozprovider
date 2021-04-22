@@ -24,8 +24,5 @@ interface FriendsPatternInterface extends LoggableEntityInterface
 
     public function getFriend(): FriendInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

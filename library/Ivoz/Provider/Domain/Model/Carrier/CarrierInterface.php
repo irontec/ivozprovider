@@ -59,9 +59,6 @@ interface CarrierInterface extends LoggableEntityInterface
 
     public function getProxyTrunk(): ?ProxyTrunkInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): CarrierInterface;

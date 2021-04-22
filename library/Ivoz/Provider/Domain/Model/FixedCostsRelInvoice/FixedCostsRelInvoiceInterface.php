@@ -33,8 +33,5 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
 
     public function getInvoice(): ?InvoiceInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

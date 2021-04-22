@@ -43,9 +43,6 @@ interface RatingProfileInterface extends LoggableEntityInterface
 
     public function getRoutingTag(): ?RoutingTagInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): RatingProfileInterface;

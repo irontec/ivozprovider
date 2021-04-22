@@ -31,8 +31,5 @@ interface AdministratorRelPublicEntityInterface extends LoggableEntityInterface
 
     public function getPublicEntity(): PublicEntityInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

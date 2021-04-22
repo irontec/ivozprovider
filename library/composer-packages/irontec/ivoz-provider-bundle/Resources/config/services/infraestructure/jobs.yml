@@ -1,0 +1,48 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ###############################################
+  ## Jobs
+  ###############################################
+  # Invoicer
+  Ivoz\Provider\Infrastructure\Redis\Job\Invoicer:
+    arguments:
+      $redisDb: '%redis_jobs_db%'
+
+  Ivoz\Provider\Domain\Job\InvoicerJobInterface:
+    alias: Ivoz\Provider\Infrastructure\Redis\Job\Invoicer
+
+  # Cgrates reload
+  Ivoz\Cgr\Infrastructure\Redis\Job\Cgrates:
+    arguments:
+      $redisDb: '%redis_jobs_db%'
+
+  Ivoz\Cgr\Domain\Job\RaterReloadInterface:
+    alias: Ivoz\Cgr\Infrastructure\Redis\Job\Cgrates
+
+  # Rates importer
+  Ivoz\Provider\Infrastructure\Redis\Job\RatesImporter:
+    arguments:
+      $redisDb: '%redis_jobs_db%'
+
+  Ivoz\Provider\Domain\Job\RatesImporterJobInterface:
+    alias: Ivoz\Provider\Infrastructure\Redis\Job\RatesImporter
+
+  # Audio Recoder
+  Ivoz\Provider\Infrastructure\Redis\Job\Recoder:
+    arguments:
+      $redisDb: '%redis_jobs_db%'
+
+  Ivoz\Provider\Domain\Job\RecoderJobInterface:
+    alias: Ivoz\Provider\Infrastructure\Redis\Job\Recoder
+
+  # Kamailio RPC calls
+  Ivoz\Kam\Infrastructure\Redis\Job\TrunksRpcJob:
+    arguments:
+      $redisDb: '%redis_jobs_db%'
+
+  Ivoz\Kam\Infrastructure\Redis\Job\UserRpcJob:
+    arguments:
+      $redisDb: '%redis_jobs_db%'

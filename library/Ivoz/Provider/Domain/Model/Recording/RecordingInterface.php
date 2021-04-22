@@ -47,9 +47,6 @@ interface RecordingInterface extends LoggableEntityInterface, FileContainerInter
 
     public function getCompany(): CompanyInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     /**

@@ -95,8 +95,5 @@ interface PsEndpointInterface extends LoggableEntityInterface
 
     public function getRetailAccount(): ?RetailAccountInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

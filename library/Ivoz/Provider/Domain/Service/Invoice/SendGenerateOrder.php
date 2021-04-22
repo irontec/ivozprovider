@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
-use Ivoz\Provider\Infrastructure\Gearman\Jobs\Invoicer;
+use Ivoz\Provider\Domain\Job\InvoicerJobInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 class SendGenerateOrder implements InvoiceLifecycleEventHandlerInterface
@@ -10,7 +10,7 @@ class SendGenerateOrder implements InvoiceLifecycleEventHandlerInterface
     protected $invoicer;
 
     public function __construct(
-        Invoicer $invoicer
+        InvoicerJobInterface $invoicer
     ) {
         $this->invoicer = $invoicer;
     }
@@ -32,7 +32,8 @@ class SendGenerateOrder implements InvoiceLifecycleEventHandlerInterface
             return;
         }
 
-        $this->invoicer
+        $this
+            ->invoicer
             ->setId($invoice->getId())
             ->send();
     }

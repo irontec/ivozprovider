@@ -24,8 +24,5 @@ interface UsersLocationAttrInterface extends EntityInterface
 
     public function getLastModified(): \DateTime;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

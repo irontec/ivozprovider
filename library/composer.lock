@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "403c28323958df9c3070cd92e1d95386",
+    "content-hash": "4fb4987d08a72338bd76ef4b7470fd43",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2156,59 +2156,6 @@
             "time": "2020-03-17T21:10:00+00:00"
         },
         {
-            "name": "irontec/gearman-bundle",
-            "version": "5.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/irontec/GearmanBundle.git",
-                "reference": "c75d1e060bf1aa869da5628e6323208a228b7b49"
-            },
-            "require": {
-                "doctrine/common": "^2.10|^3.1",
-                "ext-gearman": "*",
-                "php": "^7.3",
-                "symfony/cache": "^4.4|^5.0",
-                "symfony/config": "^4.4|^5.0",
-                "symfony/console": "^4.4|^5.0",
-                "symfony/finder": "^4.4|^5.0",
-                "symfony/framework-bundle": "^4.4|^5.0",
-                "symfony/http-kernel": "^4.4|^5.0",
-                "symfony/options-resolver": "^4.4|^5.0"
-            },
-            "replace": {
-                "mmoreramerino/gearman-bundle": "dev-master"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Mmoreram\\GearmanBundle\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marc Morera",
-                    "email": "yuhu@mmoreram.com"
-                },
-                {
-                    "name": "Matt Daum",
-                    "email": "matt@setfive.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://github.com/mmoreram/GearmanBundle/contributors"
-                }
-            ],
-            "description": "Adds gearman support to your Symfony 4 and 5 project",
-            "homepage": "https://github.com/mmadariaga/GearmanBundle",
-            "keywords": [
-                "gearman"
-            ],
-            "time": "2021-03-11T16:27:14+00:00"
-        },
-        {
             "name": "irontec/ivoz-api",
             "version": "4.2.4",
             "source": {
@@ -2320,16 +2267,16 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.2.1",
+            "version": "4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "34dff6621a3ee950b37110fe86a0cd38eb67363d"
+                "reference": "2f04a3ab6448b3c2f95efc2ce98b49030c747664"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/34dff6621a3ee950b37110fe86a0cd38eb67363d",
-                "reference": "34dff6621a3ee950b37110fe86a0cd38eb67363d",
+                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/2f04a3ab6448b3c2f95efc2ce98b49030c747664",
+                "reference": "2f04a3ab6448b3c2f95efc2ce98b49030c747664",
                 "shasum": ""
             },
             "require": {
@@ -2372,27 +2319,27 @@
             "description": "Core library for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-core/issues",
-                "source": "https://github.com/irontec/ivoz-core/tree/4.2.1"
+                "source": "https://github.com/irontec/ivoz-core/tree/4.3.1"
             },
-            "time": "2021-03-23T09:06:47+00:00"
+            "time": "2021-04-21T09:11:18+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "4.1.1",
+            "version": "4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core-bundle.git",
-                "reference": "d174d9f7670f494e487c9eb172808de75e621523"
+                "reference": "16d483fa122a361d08744092cb78fceafdf94f57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/d174d9f7670f494e487c9eb172808de75e621523",
-                "reference": "d174d9f7670f494e487c9eb172808de75e621523",
+                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/16d483fa122a361d08744092cb78fceafdf94f57",
+                "reference": "16d483fa122a361d08744092cb78fceafdf94f57",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
-                "irontec/ivoz-core": "^4.0.1",
+                "irontec/ivoz-core": "^4.3",
                 "ocramius/proxy-manager": "~2.0",
                 "php": ">=7.4",
                 "symfony/monolog-bundle": "^3.5",
@@ -2426,9 +2373,9 @@
             "description": "Symfony bridge for ivoz-core",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-core-bundle/issues",
-                "source": "https://github.com/irontec/ivoz-core-bundle/tree/4.1.1"
+                "source": "https://github.com/irontec/ivoz-core-bundle/tree/4.3"
             },
-            "time": "2021-03-01T16:24:08+00:00"
+            "time": "2021-04-21T08:44:02+00:00"
         },
         {
             "name": "irontec/ivoz-dev-tools",
@@ -2483,11 +2430,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.18",
+            "version": "2.5.19",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "3b1027895881fda3a3fe21a460385c5c6f079480"
+                "reference": "77be019304361c6367e84d4b0a947459480ce03e"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -14310,6 +14257,9 @@
     },
     "platform-dev": {
         "ext-pcntl": "*"
+    },
+    "platform-overrides": {
+        "php": "7.4"
     },
     "plugin-api-version": "2.0.0"
 }

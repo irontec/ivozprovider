@@ -71,9 +71,6 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     public function getTimezone(): ?TimezoneInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addRelPublicEntity(AdministratorRelPublicEntityInterface $relPublicEntity): AdministratorInterface;

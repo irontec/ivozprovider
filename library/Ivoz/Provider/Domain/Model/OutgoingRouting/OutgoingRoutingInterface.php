@@ -100,9 +100,6 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
 
     public function getClidCountry(): ?CountryInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function setTpLcrRule(TpLcrRuleInterface $tpLcrRule): static;

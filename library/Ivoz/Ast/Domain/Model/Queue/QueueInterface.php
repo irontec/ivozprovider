@@ -37,8 +37,5 @@ interface QueueInterface extends LoggableEntityInterface
 
     public function getQueue(): \Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

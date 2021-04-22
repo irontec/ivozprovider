@@ -21,24 +21,29 @@ services:
         public: true
         arguments:
             $logger: '@monolog.logger.workers'
+            $redisDb: '%redis_jobs_db%'
 
     Worker\Rates:
         public: true
         arguments:
             $em: '@=service("doctrine.orm.entity_manager")'
             $logger: '@monolog.logger.workers'
+            $redisDb: '%redis_jobs_db%'
 
     Worker\Invoices:
         arguments:
             $logger: '@monolog.logger.workers'
+            $redisDb: '%redis_jobs_db%'
         public: true
 
     Worker\Cgrates:
         arguments:
             $logger: '@monolog.logger.workers'
+            $redisDb: '%redis_jobs_db%'
         public: true
 
-    Worker\Xmlrpc:
+    Worker\KamRpc:
         public: true
         arguments:
             $logger: '@monolog.logger.workers'
+            $redisDb: '%redis_jobs_db%'

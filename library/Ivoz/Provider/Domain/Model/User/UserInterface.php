@@ -210,9 +210,6 @@ interface UserInterface extends LoggableEntityInterface
 
     public function getVoicemailLocution(): ?LocutionInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     public function addPickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface;

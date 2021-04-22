@@ -45,9 +45,6 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
 
     public function getNumberCountry(): ?CountryInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 
     /**

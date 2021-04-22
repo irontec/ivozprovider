@@ -63,8 +63,5 @@ interface UsersCdrInterface extends EntityInterface
 
     public function getRetailAccount(): ?RetailAccountInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

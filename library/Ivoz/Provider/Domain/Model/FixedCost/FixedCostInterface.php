@@ -24,8 +24,5 @@ interface FixedCostInterface extends LoggableEntityInterface
 
     public function getBrand(): BrandInterface;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

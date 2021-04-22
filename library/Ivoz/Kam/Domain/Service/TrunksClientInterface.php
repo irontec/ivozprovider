@@ -48,21 +48,21 @@ interface TrunksClientInterface
 
     public function isCgrEnabled();
 
-    public function reloadDialplan();
+    public function reloadDialplan(): void;
 
-    public function reloadDispatcher();
+    public function reloadDispatcher(): void;
 
-    public function reloadLcr();
+    public function reloadLcr(): void;
 
-    public function reloadTrustedPermissions();
+    public function reloadTrustedPermissions(): void;
 
-    public function reloadAddressPermissions();
+    public function reloadAddressPermissions(): void;
 
-    public function reloadUacReg();
+    public function reloadUacReg(): void;
 
     public function getUacRegistrationInfo($luuid): array;
 
     public function getLcrGatewayInfo($gw_id): array;
 
-    public function reloadRtpengine();
+    public function reloadRtpengine(): void;
 }

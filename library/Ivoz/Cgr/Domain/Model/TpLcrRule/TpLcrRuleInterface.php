@@ -46,8 +46,5 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
 
     public function getOutgoingRouting(): ?OutgoingRouting;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

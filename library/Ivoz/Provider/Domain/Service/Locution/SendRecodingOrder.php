@@ -2,23 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Service\Locution;
 
-use Ivoz\Provider\Infrastructure\Gearman\Jobs\Recoder;
+use Ivoz\Provider\Domain\Job\RecoderJobInterface;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 
-/**
- * Class RecodingOrder
- * @package Ivoz\Provider\Domain\Service\Locution
- */
 class SendRecodingOrder implements LocutionLifecycleEventHandlerInterface
 {
-    /**
-     * @var Recoder
-     */
     protected $recoder;
 
     public function __construct(
-        Recoder $recoder
+        RecoderJobInterface $recoder
     ) {
         $this->recoder = $recoder;
     }

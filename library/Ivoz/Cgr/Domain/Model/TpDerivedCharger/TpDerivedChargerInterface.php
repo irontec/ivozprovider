@@ -70,8 +70,5 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
 
     public function getBrand(): Brand;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

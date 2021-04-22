@@ -20,8 +20,5 @@ interface UsersHtableInterface extends EntityInterface
 
     public function getExpires(): int;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }

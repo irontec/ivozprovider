@@ -29,8 +29,5 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
 
     public function getRatingPlan(): RatingPlan;
 
-    /**
-     * @return bool
-     */
     public function isInitialized(): bool;
 }
