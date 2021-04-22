@@ -59,7 +59,7 @@ abstract class BrandAbstract
     protected $domain;
 
     /**
-     * @var LanguageInterface | null
+     * @var LanguageInterface
      */
     protected $language;
 
@@ -325,7 +325,7 @@ abstract class BrandAbstract
             'invoiceCountry' => self::getInvoice()->getCountry(),
             'invoiceRegistryData' => self::getInvoice()->getRegistryData(),
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
+            'languageId' => self::getLanguage()->getId(),
             'defaultTimezoneId' => self::getDefaultTimezone()->getId(),
             'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
             'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
@@ -452,14 +452,14 @@ abstract class BrandAbstract
         return $this->domain;
     }
 
-    protected function setLanguage(?LanguageInterface $language = null): static
+    protected function setLanguage(LanguageInterface $language): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    public function getLanguage(): ?LanguageInterface
+    public function getLanguage(): LanguageInterface
     {
         return $this->language;
     }
