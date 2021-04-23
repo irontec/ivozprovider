@@ -28,19 +28,6 @@ Model\Token:
           required: true
           description: 'Target client admin user name'
 
-Model\WebTheme:
-  itemOperations:
-    get:
-      method: 'GET'
-      path: '/my/web_theme'
-      route_name: 'get_my_web_theme'
-      swagger_context:
-        tags:
-          - My
-        parameters: []
-  collectionOperations: {}
-
-
 Model\RatingPlanPrices:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
@@ -62,49 +49,6 @@ Model\RatingPlanPrices:
           type: integer
           required: true
           description: 'Rating plan group Id'
-
-Model\UserStatus:
-  attributes:
-    access_control: '"ROLE_COMPANY_USER" in roles'
-  itemOperations:
-    get:
-      method: 'GET'
-      path: '/my/status'
-      route_name: 'get_my_status'
-      swagger_context:
-        tags:
-          - My
-        parameters: []
-  collectionOperations: {}
-
-Model\CallStats:
-  attributes:
-    access_control: '"ROLE_COMPANY_USER" in roles'
-  itemOperations:
-    get:
-      method: 'GET'
-      path: '/my/call_stats'
-      route_name: 'get_my_call_stats'
-      swagger_context:
-        tags:
-          - My
-        parameters: []
-  collectionOperations: {}
-
-Model\RegistrationSummary:
-  itemOperations:
-    get_my_registration_summary:
-      access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
-      method: 'GET'
-      path: '/my/registration_summary'
-      route_name: 'get_my_registration_summary'
-      swagger_context:
-        produces:
-        - 'application/json'
-        tags:
-        - My
-        parameters: []
-  collectionOperations: []
 
 Model\ActiveCalls:
   itemOperations:

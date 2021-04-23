@@ -1,2 +1,2 @@
 gesdinet_jwt_refresh_token:
-  user_provider: 'Service\UserProvider::Administrator'
+  user_provider: 'Service\UserProvider'
