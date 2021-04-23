@@ -82,7 +82,7 @@ production:
           balance: true
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
-          calculateCos: ${auth.brandFeatures.billing.disabled}
+          calculateCost: ${auth.brandFeatures.billing.disabled}
           currency: ${auth.brandFeatures.billing.disabled}
           balance: true
           acd: true
