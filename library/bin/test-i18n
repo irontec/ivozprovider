@@ -12,8 +12,7 @@ pushd /opt/irontec/ivozprovider/doc/sphinx
     # Check there is no pending files to be commited
     if [ -n "$(git status -s .)" ]; then
         echo "These translation changes have not been commited."
-        git --no-pager diff
-        EXITCODE=1
+        git --no-pager diff .
     fi
 
 # @TODO
