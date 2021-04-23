@@ -24,6 +24,10 @@ pushd /opt/irontec/ivozprovider
     ./microservices/workers/bin/console > /dev/null
 
     if [ "$1" == "--full" ]; then
+
+        echo "testing rest/user"
+        ./web/rest/user/bin/console > /dev/null
+
         echo "testing rest/client"
         ./web/rest/client/bin/console > /dev/null
 

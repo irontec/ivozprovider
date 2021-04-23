@@ -12,6 +12,9 @@ rm -fr /opt/irontec/ivozprovider/web/rest/brand/var/cache/prod/*
 rm -fr /opt/irontec/ivozprovider/web/rest/client/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/web/rest/client/var/cache/prod/*
 
+rm -fr /opt/irontec/ivozprovider/web/rest/user/var/cache/dev/*
+rm -fr /opt/irontec/ivozprovider/web/rest/user/var/cache/prod/*
+
 rm -fr /opt/irontec/ivozprovider/asterisk/agi/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/asterisk/agi/var/cache/prod/*
 

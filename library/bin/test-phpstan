@@ -29,4 +29,5 @@ run_test microservices/workers src
 run_test microservices/realtime src
 run_test web/rest/brand src
 run_test web/rest/client src
+run_test web/rest/user src
 run_test web/rest/platform src
