@@ -13,6 +13,8 @@ Currently there is only one special treatment: **Disable CDR**. Setting this to 
 
 - Prevent outgoing external calls from being listed in following sections:
 
+  - *Active Calls*
+
   - *External Calls*
 
   - *Call Registry* (both client portal and user portal)
@@ -23,7 +25,7 @@ Currently there is only one special treatment: **Disable CDR**. Setting this to 
 
   - CSV defined by :ref:`Call CSV schedulers`
 
-  - API response of related enpoints
+  - API response of related endpoints
 
 - Do not call CGRateS for these calls: call will be allowed no matter if active pricing plan allows it.
 
