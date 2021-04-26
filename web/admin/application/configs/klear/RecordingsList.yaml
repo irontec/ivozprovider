@@ -38,14 +38,14 @@ production:
         options:
           title: _("Options")
           screens:
-            recordingsEdit_screen: ${auth.acls.Recordings.update}
+            recordingsEdit_screen: ${auth.acls.Recordings.read}
           dialogs:
-            recordingsDel_dialog: ${auth.companyRecordingRemoval}
+            recordingsDel_dialog: $[${auth.acls.Recordings.delete} && ${auth.companyRecordingRemoval}]
           default: recordingsEdit_screen
       options:
         title: _("Options")
         dialogs:
-          recordingsDel_dialog: ${auth.companyRecordingRemoval}
+          recordingsDel_dialog: $[${auth.acls.Recordings.delete} && ${auth.companyRecordingRemoval}]
         commands:
           recordingsRecordedFileMultiDownload_command: ${auth.acls.Recordings.read}
     recordingsEdit_screen: &recordingsEdit_screenLink
