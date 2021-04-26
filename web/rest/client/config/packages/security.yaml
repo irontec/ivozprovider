@@ -4,12 +4,10 @@ security:
 
     providers:
         admin_orm:
-            id: 'Service\UserProvider::Administrator'
-        user_orm:
-            id: 'Service\UserProvider::User'
+            id: 'Service\UserProvider'
         any:
             chain:
-                providers: ['admin_orm', 'user_orm']
+                providers: ['admin_orm']
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -36,20 +34,6 @@ security:
                 username_parameter: username
                 password_parameter: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
-                require_previous_session: false
-
-        user_login:
-            pattern:  ^/user_login
-            stateless: true
-            anonymous: true
-            provider: user_orm
-            user_checker: Ivoz\Provider\Domain\Service\User\UserLoginChecker
-            form_login:
-                check_path: /user_login
-                username_parameter: email
-                password_parameter: password
-                success_handler: Ivoz\Provider\Infrastructure\Api\Jwt\UserAuthenticationSuccessHandler
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
 
@@ -93,5 +77,4 @@ security:
         - { path: ^/user_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/token/exchange, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/.+, roles: ROLE_USER }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }

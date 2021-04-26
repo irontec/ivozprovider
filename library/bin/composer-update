@@ -46,4 +46,7 @@ pushd /opt/irontec/ivozprovider/web/rest/client
     composer update $*
 popd
 
+pushd /opt/irontec/ivozprovider/web/rest/user
+    composer update $*
+popd
 

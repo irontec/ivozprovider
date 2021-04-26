@@ -69,7 +69,7 @@ angular
     function retrieveConstants() {
         var location = window.location;
         return {
-            'urlRest': 'https://' + location.hostname + '/api/client/'
+            'urlRest': 'https://' + location.hostname + '/api/user/'
         };
     }
 

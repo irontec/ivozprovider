@@ -1,0 +1,26 @@
+default:
+  calls:
+    error_reporting: 16383 # E_ALL & ~E_USER_DEPRECATED
+  suites:
+    default:
+      contexts:
+        - Service\Behat\FeatureContext
+        - Behat\MinkExtension\Context\MinkContext
+        - Behatch\Context\RestContext
+        - Behatch\Context\JsonContext
+        - Ivoz\Api\Behat\Context\JsonContext
+#        - Ivoz\Api\Behat\Context\CoverageContext: {}
+  extensions:
+    FriendsOfBehat\SymfonyExtension:
+      bootstrap: features/bootstrap/bootstrap.php
+      kernel:
+        environment: "test"
+        debug: true
+        path: "src/Kernel.php"
+        class: "Kernel"
+    Behat\MinkExtension:
+      base_url: "https://ivozprovider/"
+      sessions:
+        default:
+          symfony: ~
+    Behatch\Extension: ~

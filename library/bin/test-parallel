@@ -1,0 +1,11 @@
+#!/bin/bash
+
+pushd /opt/irontec/ivozprovider
+    ./library/bin/test-phpspec &
+    ./schema/bin/test-orm &
+    ./web/rest/platform/bin/test-api &
+    ./web/rest/brand/bin/test-api &
+    ./web/rest/client/bin/test-api &
+    wait
+    echo "> DONE!!!!"
+popd

@@ -1,0 +1,43 @@
+########################################
+## Custom models
+########################################
+
+Model\WebTheme:
+  itemOperations:
+    get:
+      method: 'GET'
+      path: '/my/web_theme'
+      route_name: 'get_my_web_theme'
+      swagger_context:
+        tags:
+          - My
+        parameters: []
+  collectionOperations: {}
+
+Model\UserStatus:
+  attributes:
+    access_control: '"ROLE_COMPANY_USER" in roles'
+  itemOperations:
+    get:
+      method: 'GET'
+      path: '/my/status'
+      route_name: 'get_my_status'
+      swagger_context:
+        tags:
+          - My
+        parameters: []
+  collectionOperations: {}
+
+Model\CallStats:
+  attributes:
+    access_control: '"ROLE_COMPANY_USER" in roles'
+  itemOperations:
+    get:
+      method: 'GET'
+      path: '/my/call_stats'
+      route_name: 'get_my_call_stats'
+      swagger_context:
+        tags:
+          - My
+        parameters: []
+  collectionOperations: {}

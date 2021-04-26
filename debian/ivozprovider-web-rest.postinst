@@ -27,8 +27,6 @@ if [ -d /opt/irontec/ivozprovider/web/rest/brand/ ]; then
 
         # Create project cache
         bin/console cache:clear --no-warmup -q -n
-        # generate swagger spec
-        bin/console api:swagger:export > web/swagger.json
     popd
 fi
 
@@ -40,8 +38,18 @@ if [ -d /opt/irontec/ivozprovider/web/rest/client/ ]; then
 
         # Create project cache
         bin/console cache:clear --no-warmup -q -n
-        # generate swagger spec
-        bin/console api:swagger:export > web/swagger.json
+    popd
+fi
+
+
+if [ -d /opt/irontec/ivozprovider/web/rest/user/ ]; then
+    pushd /opt/irontec/ivozprovider/web/rest/user/
+        # Set proper var permissions
+        setfacl -dR -m u:www-data:rwX -m u:root:rwX var
+        setfacl  -R -m u:www-data:rwX -m u:root:rwX var
+
+        # Create project cache
+        bin/console cache:clear --no-warmup -q -n
     popd
 fi
 

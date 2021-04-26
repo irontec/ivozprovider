@@ -22,6 +22,7 @@ build_webrest: build_library
 	cd web/rest/platform ; composer --no-interaction --ignore-platform-reqs --no-dev --no-progress --optimize-autoloader install
 	cd web/rest/brand ; composer --no-interaction --ignore-platform-reqs --no-dev --no-progress --optimize-autoloader install
 	cd web/rest/client ; composer --no-interaction --ignore-platform-reqs --no-dev --no-progress --optimize-autoloader install
+	cd web/rest/user ; composer --no-interaction --ignore-platform-reqs --no-dev --no-progress --optimize-autoloader install
 
 build_webadmin: build_library
 	cd web/admin ; msgfmt -o application/languages/es_ES/es_ES.mo application/languages/es_ES/es_ES.po

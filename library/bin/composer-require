@@ -43,3 +43,7 @@ popd
 pushd /opt/irontec/ivozprovider/web/rest/client
     composer require $*
 popd
+
+pushd /opt/irontec/ivozprovider/web/rest/user
+    composer require $*
+popd

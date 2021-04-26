@@ -23,5 +23,8 @@ cp /opt/irontec/ivozprovider/schema/var/cache/test/db.sqlite.back /opt/irontec/i
 mkdir -m 777 -p /opt/irontec/ivozprovider/web/rest/client/var/cache/test
 cp /opt/irontec/ivozprovider/schema/var/cache/test/db.sqlite.back /opt/irontec/ivozprovider/web/rest/client/var/cache/test/db.sqlite.back
 
+mkdir -m 777 -p /opt/irontec/ivozprovider/web/rest/user/var/cache/test
+cp /opt/irontec/ivozprovider/schema/var/cache/test/db.sqlite.back /opt/irontec/ivozprovider/web/rest/user/var/cache/test/db.sqlite.back
+
 # Run requested command
 exec $*

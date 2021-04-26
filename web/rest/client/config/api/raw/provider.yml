@@ -189,49 +189,13 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
     get: ~
     put: ~
     delete: ~
-    post_my_call_forward_settings:
-      access_control: '"ROLE_COMPANY_USER" in roles'
-      method: 'POST'
-      path: '/my/call_forward_settings'
-      route_name: 'post_my_call_forward_settings'
-      swagger_context:
-        consumes: ["application/ld+json"]
-        produces:
-        - 'application/json'
-        - 'application/ld+json'
-        tags:
-        - My
-        parameters:
-        - name: 'CallForwardSetting'
-          in: 'body'
-          description: 'The updated CallForwardSetting resource'
-          schema:
-            $ref: '#/definitions/CallForwardSetting'
+
   collectionOperations:
     get: ~
     post: ~
-    get_my_call_forward_settings:
-      depth: 1
-      access_control: '"ROLE_COMPANY_USER" in roles'
-      method: 'GET'
-      path: '/my/call_forward_settings'
-      route_name: 'get_my_call_forward_settings'
-      operation_normalization_context: 'detailedCollection'
-      normalization_context:
-        groups: ['detailedCollection']
-      swagger_context:
-        parameters: []
-        produces:
-        - 'application/json'
-        - 'application/ld+json'
-        tags:
-        - My
   attributes:
-    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
+    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod()))'
     read_access_control:
-      ROLE_COMPANY_USER:
-        user:
-          eq: "user.getId()"
       ROLE_COMPANY_ADMIN:
       - or:
         - inherited:
@@ -241,9 +205,6 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
         - inherited:
             retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
     write_access_control:
-      ROLE_COMPANY_USER:
-        user:
-          eq: "user.getId()"
       ROLE_COMPANY_ADMIN:
       - or:
         - inheritedOrNull:
@@ -528,26 +489,11 @@ Ivoz\Provider\Domain\Model\Country\Zone:
 Ivoz\Provider\Domain\Model\Country\Country:
   itemOperations:
     get: ~
-    get_my_company_country:
-      access_control: '"ROLE_COMPANY_USER" in roles'
-      method: 'GET'
-      path: '/my/company_country'
-      route_name: 'get_my_company_country'
-      operation_normalization_context: 'detailed'
-      normalization_context:
-        groups: ['detailed']
-      swagger_context:
-        produces:
-        - 'application/json'
-        - 'application/ld+json'
-        tags:
-        - My
-        parameters: []
   collectionOperations:
     get: ~
   attributes:
     pagination_client_enabled: true
-    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
 
 Ivoz\Provider\Domain\Model\Ddi\Ddi:
   itemOperations:
@@ -619,20 +565,6 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
   collectionOperations:
     get: ~
     post: ~
-    get_my_company_extensions:
-      access_control: '"ROLE_COMPANY_USER" in roles'
-      method: 'GET'
-      path: '/my/extensions'
-      route_name: 'get_my_company_extensions'
-      normalization_context:
-      - collection
-      swagger_context:
-        produces:
-        - 'application/json'
-        - 'application/ld+json'
-        tags:
-        - My
-        parameters: []
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
@@ -1137,7 +1069,7 @@ Ivoz\Provider\Domain\Model\Language\Language:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
 Ivoz\Provider\Domain\Model\Language\Name:
 
 Ivoz\Provider\Domain\Model\Locution\Locution:
@@ -1587,11 +1519,9 @@ Ivoz\Provider\Domain\Model\Timezone\Timezone:
     get: ~
   attributes:
     pagination_client_enabled: true
-    access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        raw: 'FALSE'
-      ROLE_COMPANY_USER:
         raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
@@ -1620,89 +1550,21 @@ Ivoz\Provider\Domain\Model\User\User:
     put:
       operation_normalization_context: 'withPickupGroups'
     delete: ~
-    get_my_profile:
-      access_control: '"ROLE_COMPANY_USER" in roles'
-      depth: 1
-      method: 'GET'
-      path: '/my/profile'
-      route_name: 'get_my_profile'
-      operation_normalization_context: 'myProfile'
-      normalization_context:
-        groups: ['myProfile']
-      swagger_context:
-        produces:
-        - 'application/json'
-        - 'application/ld+json'
-        tags:
-        - My
-        parameters: []
-    put_my_profile:
-      access_control: '"ROLE_COMPANY_USER" in roles'
-      attributes:
-        depth: 1
-      method: 'PUT'
-      path: '/my/profile'
-      route_name: 'put_my_profile'
-      operation_normalization_context: 'updateMyProfile'
-      denormalization_context:
-        groups: ['updateMyProfile']
-      normalization_context:
-        groups: ['myProfile']
-      swagger_context:
-        tags:
-        - My
-        consumes: ["application/ld+json"]
-        parameters:
-        - name: 'user'
-          in: 'body'
-          description: 'The updated User resource'
-          schema:
-            $ref: '#/definitions/User-updateMyProfile'
   collectionOperations:
     get: ~
     post:
       operation_normalization_context: 'withPickupGroups'
       depth: 1
-    get_my_company_assistants:
-      access_control: '"ROLE_COMPANY_USER" in roles'
-      method: 'GET'
-      path: '/my/company_assistants'
-      route_name: 'get_my_company_assistants'
-      swagger_context:
-        produces:
-        - 'application/json'
-        - 'application/ld+json'
-        tags:
-        - My
-        parameters: []
-    get_my_company_voicemails:
-      access_control: '"ROLE_COMPANY_USER" in roles'
-      method: 'GET'
-      path: '/my/company_voicemails'
-      route_name: 'get_my_company_voicemails'
-      swagger_context:
-        produces:
-        - 'application/json'
-        - 'application/ld+json'
-        tags:
-        - My
-        parameters: []
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
-      ROLE_COMPANY_USER:
-        id:
-          eq: "user.getId()"
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
     write_access_control:
-      ROLE_COMPANY_USER:
-        id:
-          eq: "user.getId()"
       ROLE_COMPANY_ADMIN:
       - and:
         - company:

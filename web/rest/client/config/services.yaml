@@ -24,13 +24,7 @@ services:
     DataFixtures\:
         resource: '../../../../library/DataFixtures/*'
 
-    Service\UserProvider::User:
-        class: Service\UserProvider
-        arguments:
-            $identifierField: 'email'
-            $entityClass: 'Ivoz\Provider\Domain\Model\User\User'
-
-    Service\UserProvider::Administrator:
+    Service\UserProvider:
         class: Service\UserProvider
         arguments:
             $identifierField: 'username'
@@ -45,7 +39,7 @@ services:
 
     Ivoz\Api\Operation\ExchangeToken:
         arguments:
-            $userProvider: '@Service\UserProvider::Administrator'
+            $userProvider: '@Service\UserProvider'
             $requiredInputRole: 'ROLE_BRAND_ADMIN'
             $requiredOutputRole: 'ROLE_COMPANY_ADMIN'
 
@@ -59,10 +53,6 @@ services:
     #######################################
     Controller\Auth\:
         resource: '../src/Controller/Auth/*'
-        tags: ['controller.service_arguments']
-
-    Controller\My\:
-        resource: '../src/Controller/My/*'
         tags: ['controller.service_arguments']
 
     Controller\Provider\:

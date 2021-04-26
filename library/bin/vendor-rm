@@ -1,0 +1,21 @@
+#!/bin/bash
+
+rm -fr /opt/irontec/ivozprovider/schema/vendor/*
+
+rm -fr /opt/irontec/ivozprovider/web/rest/platform/vendor/*
+
+rm -fr /opt/irontec/ivozprovider/web/rest/brand/vendor/*
+
+rm -fr /opt/irontec/ivozprovider/web/rest/client/vendor/*
+
+rm -fr /opt/irontec/ivozprovider/asterisk/agi/vendor/*
+
+rm -fr /opt/irontec/ivozprovider/microservices/scheduler/vendor/*
+
+rm -fr /opt/irontec/ivozprovider/microservices/recordings/vendor/*
+
+rm -fr /opt/irontec/ivozprovider/microservices/workers/vendor/*
+
+rm -fr /opt/irontec/ivozprovider/microservices/balances/vendor/*
+
+rm -fr /opt/irontec/ivozprovider/microservices/realtime/vendor/*

@@ -12,19 +12,11 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
   attributes:
     pagination_client_enabled: true
     access_control: >-
-      (
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
-      )
-      || ("ROLE_COMPANY_USER" in roles)
     read_access_control:
       ROLE_COMPANY_ADMIN:
-        company:
-          eq: "user.getCompany().getId()"
-        hidden:
-          eq: 0
-      ROLE_COMPANY_USER:
         company:
           eq: "user.getCompany().getId()"
         hidden:
@@ -38,14 +30,4 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
         - 'application/json'
         - 'application/ld+json'
         - 'text/csv'
-    get_my_call_history:
-      method: 'GET'
-      path: '/my/call_history'
-      route_name: 'get_my_call_history'
-      swagger_context:
-        produces:
-        - 'application/json'
-        - 'application/ld+json'
-        - 'text/csv'
-        tags:
-        - My
+

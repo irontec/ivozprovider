@@ -6,6 +6,7 @@ pushd /opt/irontec/ivozprovider
     ./web/rest/platform/bin/test-api-with-coverage
     ./web/rest/brand/bin/test-api-with-coverage
     ./web/rest/client/bin/test-api-with-coverage
+    ./web/rest/user/bin/test-api-with-coverage
 
     ./library/bin/combine-coverage
 popd
