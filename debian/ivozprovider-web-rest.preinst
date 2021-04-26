@@ -30,4 +30,13 @@ if [ -d /opt/irontec/ivozprovider/web/rest/client/ ]; then
     popd
 fi
 
+if [ -d /opt/irontec/ivozprovider/web/rest/user/ ]; then
+    pushd /opt/irontec/ivozprovider/web/rest/user/
+        # Remove existing old cache
+        rm -fr var/cache
+        # Remove existing vendor (will be replaced with new package contents)
+        rm -fr vendor
+    popd
+fi
+
 :
