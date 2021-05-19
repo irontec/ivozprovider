@@ -408,18 +408,52 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
+     * @param int $fromId
+     * @param \DateTime $date
+     * @return int
+     */
+    public function getMaxIdUntilDate(int $fromId, \DateTime $date): int
+    {
+        $query =
+            'SELECT MAX(B.id) FROM '
+            . BillableCall::Class
+            . ' B WHERE B.startTime <= \'%s\''
+            . ' AND B.id > %d';
+
+        $maxId = sprintf(
+            $query,
+            $date->format(self::MYSQL_DATETIME_FORMAT),
+            $fromId
+        );
+
+        try {
+            $response = (new Query($this->_em))
+                ->setDQL($maxId)
+                ->getSingleScalarResult();
+        } catch (\Exception $e) {
+            return $fromId;
+        }
+
+        if (is_null($response)) {
+            return $fromId;
+        }
+
+        return (int) $response;
+    }
+
+    /**
      * @return int[]
      */
-    public function getIdsInRange(int $fromId, \DateTime $beforeDate, int $limit): array
+    public function getIdsInRange(int $fromId, int $untilId, int $limit): array
     {
         $query = sprintf(
             'SELECT B.id FROM '
             . BillableCall::Class
             . ' B WHERE B.id > %d'
-            . ' AND B.startTime < \'%s\''
+            . ' AND B.id <= %d'
             . ' ORDER BY B.id ASC',
             $fromId,
-            $beforeDate->format('Y-m-d H:i:s')
+            $untilId
         );
 
         $ids = (new Query($this->_em))

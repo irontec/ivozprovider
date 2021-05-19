@@ -32,7 +32,7 @@ class BillableCallHistoricController
     {
         try {
             $this->registerCommand('Scheduler', 'billableCallHistoric');
-            $this->importFromBillableCalls->execute();
+            $affectedRows = $this->importFromBillableCalls->execute();
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage());
             return new Response(
@@ -41,6 +41,9 @@ class BillableCallHistoricController
             );
         }
 
-        return new Response("BillableCallHistoric rotation done!\n", 200);
+        return new Response(
+            "BillableCallHistoric rotation done! " . $affectedRows . " rows rotated\n",
+            200
+        );
     }
 }
