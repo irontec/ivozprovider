@@ -101,8 +101,11 @@ interface BillableCallRepository extends ObjectRepository, Selectable
      */
     public function getMinStartTime(int $fromId = 0): \DateTime;
 
+
+    public function getMaxIdUntilDate(int $fromId, \DateTime $date): int;
+
     /**
      * @return int[]
      */
-    public function getIdsInRange(int $fromId, \DateTime $beforeDate, int $limit): array;
+    public function getIdsInRange(int $fromId, int $untilId, int $limit): array;
 }

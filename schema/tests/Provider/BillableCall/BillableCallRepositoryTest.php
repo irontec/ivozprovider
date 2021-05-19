@@ -30,6 +30,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         $this->it_counts_unrated_calls_in_range();
         $this->it_finds_min_start_time();
         $this->it_finds_ids_in_range();
+        $this->it_finds_max_id_until_date();
     }
 
     private function it_finds_outgoing_call_by_callid()
@@ -335,6 +336,27 @@ class BillableCallRepositoryTest extends KernelTestCase
         );
     }
 
+    private function it_finds_max_id_until_date()
+    {
+        /** @var BillableCallRepository $billableCallRepository */
+        $billableCallRepository = $this->em
+            ->getRepository(BillableCall::class);
+
+        /** @var BillableCallInterface $billableCall2 */
+        $billableCall2 = $billableCallRepository->find(2);
+
+        $maxId = $billableCallRepository
+            ->getMaxIdUntilDate(
+                0,
+                $billableCall2->getStartTime()
+            );
+
+        $this->assertEquals(
+            2,
+            $maxId
+        );
+    }
+
     private function it_finds_ids_in_range()
     {
         /** @var BillableCallRepository $billableCallRepository */
@@ -347,7 +369,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         $ids = $billableCallRepository
             ->getIdsInRange(
                 0,
-                $billableCall3->getStartTime(),
+                $billableCall3->getId(),
                 1000
             );
 
@@ -357,7 +379,7 @@ class BillableCallRepositoryTest extends KernelTestCase
         );
 
         $this->assertCount(
-            2,
+            3,
             $ids
         );
     }
