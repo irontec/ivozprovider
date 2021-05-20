@@ -42,7 +42,7 @@ class PersistErrorHandler implements PersistErrorHandlerInterface
         if ($isDuplicatedEmailError) {
             throw new \DomainException(
                 'Duplicated prefix',
-                2202,
+                2203,
                 $exception
             );
         }

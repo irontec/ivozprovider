@@ -32,8 +32,8 @@ production:
   adminErrors:
     2001: _("SIP Domain can't be empty")
     2201: _("Email already in use")
-    2202: _("Duplicated prefix")
     2202: _("Duplicated priority")
+    2203: _("Duplicated prefix")
     2301: _("Deductible Connection Fee cannot be changed")
   connectorErrors:
     9001: _("No Application Server available.")
