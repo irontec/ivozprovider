@@ -69,7 +69,7 @@ You can browse online documentation in different formats:
 
 ## Feedback & Questions
 
-Any feedback is also welcomed at [#ivozprovider irc channel](https://webchat.freenode.net/?channels=ivozprovider) at irc.freenode.net
+Any feedback is also welcomed at [#ivozprovider irc channel](https://kiwiirc.com/nextclient/irc.libera.chat/#ivozprovider) at irc.libera.chat
 
 You can read frequently asked questions [here](https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md).
 

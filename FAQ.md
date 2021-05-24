@@ -48,7 +48,7 @@ That address must be present in your network interfaces in order to bind service
 We don't provide any kind of free support for installations. If you have trouble, you can contact our sales department
 at comercial@irontec.com or ask in [ivozprovider-users](https://groups.google.com/forum/#!forum/ivozprovider-users) group.
 
-If by any chance you receive support in the group or #ivozprovider freenode IRC channel by any developer, it's most
+If by any chance you receive support in the group or #ivozprovider Libera.Chat IRC channel by any developer, it's most
 probably provided during spare time, so be thankful for the people giving part of their time.
 
 ### I have found a bug
