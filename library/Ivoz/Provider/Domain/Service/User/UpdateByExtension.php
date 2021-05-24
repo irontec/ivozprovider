@@ -62,7 +62,8 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
 
         $originalValue = $extension->getInitialValue('userId');
 
-        // If this extension was pointing to a user and number has changed
+        // If this extension was pointing to a user (that used it as screen extension) and
+        // now points to a different user/element, set user screen extension to null
         if ($originalValue && ($originalValue != $currentValue)) {
             /**
              * @var UserInterface | null $prevUser
@@ -81,15 +82,17 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
                     $prevUser
                 );
 
-            $prevUserDto
-                ->setExtension(null);
+            if ($prevUserDto->getExtensionId() == $extension->getId()) {
+                $prevUserDto
+                    ->setExtension(null);
 
-            $this->entityTools
-                ->persistDto(
-                    $prevUserDto,
-                    $prevUser,
-                    false
-                );
+                $this->entityTools
+                    ->persistDto(
+                        $prevUserDto,
+                        $prevUser,
+                        false
+                    );
+            }
         }
 
         $routeType = $extension->getRouteType();
