@@ -126,7 +126,7 @@ class ResidentialCallAction
             }
         }
 
-        return ($timeout)?:"";
+        return ($timeout)?:"10800";
     }
 
     /**

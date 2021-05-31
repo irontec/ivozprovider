@@ -211,7 +211,7 @@ class UserCallAction
     {
         // Ignore user timeout if User call forwards are disabled
         if (!$this->allowCallForwards) {
-            return "";
+            return "10800";
         }
 
         $timeout = null;
@@ -235,7 +235,7 @@ class UserCallAction
             }
         }
 
-        return ($timeout)?:"";
+        return ($timeout)?:"10800";
     }
 
     /**
