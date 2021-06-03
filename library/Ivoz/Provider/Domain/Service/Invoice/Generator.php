@@ -188,8 +188,6 @@ class Generator
         $invoiceTz = new \DateTimeZone(
             $company->getDefaultTimezone()->getTz()
         );
-        $utcTz = new \DateTimeZone('UTC');
-
         $currencySymbol = $company->getCurrencySymbol();
 
         $callsPerType = [];
