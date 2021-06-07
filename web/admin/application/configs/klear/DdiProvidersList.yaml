@@ -41,6 +41,7 @@ production:
           description: true
         blacklist:
           externallyRated: true
+          mediaRelaySets: ${auth.isNotMainOperator}
       options:
         title: _("Options")
         screens:
@@ -63,14 +64,16 @@ production:
           <<: *PeerContractsOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
+          mediaRelaySets: ${auth.isNotMainOperator}
       fixedPositions: &ddiProvidersNew_fixedPositionsLink
         group0:
           label: _("Basic Configuration")
           colsPerRow: 12
           fields:
-            name: 6
-            proxyTrunks: 6
-            description: 12
+            name: 5
+            description: 7
+            proxyTrunk: 6
+            mediaRelaySets: 6
         group1:
           label: _("Extra Configuration")
           colsPerRow: 6
@@ -91,6 +94,7 @@ production:
           <<: *PeerContractsOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
+          mediaRelaySets: ${auth.isNotMainOperator}
       fixedPositions:
         <<: *ddiProvidersNew_fixedPositionsLink
 
