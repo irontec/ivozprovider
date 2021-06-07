@@ -58,6 +58,11 @@ abstract class CarrierAbstract
      */
     protected $proxyTrunk;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface | null
+     */
+    protected $mediaRelaySets;
+
 
     use ChangelogTrait;
 
@@ -151,6 +156,7 @@ abstract class CarrierAbstract
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
+            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
         ;
 
         $self->initChangelog();
@@ -178,7 +184,8 @@ abstract class CarrierAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
-            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
+            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
+            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()));
 
 
 
@@ -201,7 +208,8 @@ abstract class CarrierAbstract
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
             ->setCurrency(\Ivoz\Provider\Domain\Model\Currency\Currency::entityToDto(self::getCurrency(), $depth))
-            ->setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth));
+            ->setProxyTrunk(\Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth))
+            ->setMediaRelaySets(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet::entityToDto(self::getMediaRelaySets(), $depth));
     }
 
     /**
@@ -218,7 +226,8 @@ abstract class CarrierAbstract
             'brandId' => self::getBrand()->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
-            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null
+            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null,
+            'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -458,6 +467,30 @@ abstract class CarrierAbstract
     public function getProxyTrunk()
     {
         return $this->proxyTrunk;
+    }
+
+    /**
+     * Set mediaRelaySets
+     *
+     * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySets | null
+     *
+     * @return static
+     */
+    protected function setMediaRelaySets(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySets = null)
+    {
+        $this->mediaRelaySets = $mediaRelaySets;
+
+        return $this;
+    }
+
+    /**
+     * Get mediaRelaySets
+     *
+     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface | null
+     */
+    public function getMediaRelaySets()
+    {
+        return $this->mediaRelaySets;
     }
 
     // @codeCoverageIgnoreEnd
