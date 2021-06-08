@@ -1,5 +1,39 @@
 # Changelog
 
+## 2.17.2
+* Endpoints:
+    - /countries:
+        - Added name.ca[end], name.ca[exact], name.ca[exists], name.ca[partial] and name.ca[start] filter parameters 
+        - Added name.it[end], name.it[exact], name.it[exists], name.it[partial] and name.ca[start] filter parameters
+        - Added _order[name.ca] and _order[name.it] querystring arguments
+    - /currencies:
+        - Added name.ca, name.ca[end], name.ca[exact], name.ca[partial] and name.ca[start] filter parameters
+        - Added name.it, name.it[end], name.it[exact], name.it[partial] and name.it[start] filter parameters
+        - Added _order[name.ca] and _order[name.it] querystring arguments
+    - /destination_rate_groups:
+        - Added name.ca[end], name.ca[exact], name.ca[partial] and name.ca[start] filter parameters
+        - Added name.it[end], name.it[exact], name.it[partial] and name.it[start] filter parameters
+        - Added _order[name.ca] and _order[name.it] querystring arguments
+    - /destinations:
+        - Added name.ca[end], name.ca[exact], name.ca[exists], name.ca[partial] and name.ca[start] filter parameters
+        - Added name.it[end], name.it[exact], name.it[exists], name.it[partial] and name.ca[start] filter parameters
+        - Added _order[name.ca] and _order[name.it] querystring arguments
+    - /rating_plan_groups:
+        - Added name.ca[end], name.ca[exact], name.ca[partial] and name.ca[start] filter parameters
+        - Added name.it[end], name.it[exact], name.it[partial] and name.it[start] filter parameters
+        - Added _order[name.ca] and _order[name.it] querystring arguments
+    - /residential_devices:
+        - Added authNeeded[end], authNeeded[exact], authNeeded[partial] and authNeeded[start] filter parameters
+        - Added transport[end], transport[exact], transport[exists], transport[partial] and transport[start] filter parameters
+        - Added _order[authNeeded] and _order[transport] querystring arguments
+    - /retail_accounts:
+        - Added transport[end], transport[exact], transport[exists], transport[partial] and transport[start] filter parameters
+        - Added _order[transport] querystring arguments
+    - /routing_patterns
+        - Added name.ca[end], name.ca[exact], name.ca[partial] and name.ca[start] filter parameters
+        - Added name.it[end], name.it[exact], name.it[partial] and name.it[start] filter parameters
+        - Added _order[name.ca] and _order[name.it] querystring arguments
+
 ## 2.17.0
 * Endpoints:
     - Added [POST] /users/mass_import
