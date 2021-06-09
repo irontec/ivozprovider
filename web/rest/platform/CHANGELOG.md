@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.17.2
+* Endpoints:
+    - Added name.ca[end], name.ca[exact], name.ca[exists], name.ca[partial], name.ca[start] filter parameter for on /countries
+    - Added name.it[end], name.it[exact], name.it[exists], name.it[partial], name.ca[start] filter parameter for on /countries
+    - Added _order[name.ca] and _order[name.it] querystring arguments on /countries
+
 ## 2.17.0
 * Models:
     - Company

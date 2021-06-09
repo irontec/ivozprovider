@@ -1652,16 +1652,16 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "3.4.3",
+            "version": "3.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api.git",
-                "reference": "0ff0288ed229f5fe5644cbef6d4e883ebdea7aaf"
+                "reference": "72d289949b53e0f4d1e1f5ae3e7bd5f5729e129b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/0ff0288ed229f5fe5644cbef6d4e883ebdea7aaf",
-                "reference": "0ff0288ed229f5fe5644cbef6d4e883ebdea7aaf",
+                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/72d289949b53e0f4d1e1f5ae3e7bd5f5729e129b",
+                "reference": "72d289949b53e0f4d1e1f5ae3e7bd5f5729e129b",
                 "shasum": ""
             },
             "require": {
@@ -1702,7 +1702,7 @@
                 }
             ],
             "description": "Api library built on api-platform for ivozprovider",
-            "time": "2021-02-11T09:38:30+00:00"
+            "time": "2021-06-08T13:33:44+00:00"
         },
         {
             "name": "irontec/ivoz-api-bundle",
@@ -2265,16 +2265,6 @@
                 "jwt",
                 "rest",
                 "symfony"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/chalasr",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/lexik/jwt-authentication-bundle",
-                    "type": "tidelift"
-                }
             ],
             "time": "2021-05-12T09:32:35+00:00"
         },
@@ -6036,20 +6026,6 @@
             ],
             "description": "Symfony Security Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2021-05-19T12:03:21+00:00"
         },
         {
@@ -7680,6 +7656,7 @@
                 "Context",
                 "Symfony2"
             ],
+            "abandoned": true,
             "time": "2017-12-05T13:58:49+00:00"
         },
         {
