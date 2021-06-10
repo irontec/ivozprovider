@@ -432,9 +432,7 @@ msgstr[0] "Enregistrament de trucades"
 msgstr[1] "Enregistraments de trucada"
 
 msgid "Call registry"
-msgid_plural "Call registries"
-msgstr[0] "Registre de trucades"
-msgstr[1] "Registres de trucades"
+msgstr "Registre de trucades"
 
 msgid "Call rejection method"
 msgstr "Método de rechazo de llamadas"

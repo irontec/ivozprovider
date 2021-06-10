@@ -9,7 +9,7 @@ production:
     defaultScreen: billableCallsList_screen
 
   screens: &billableCallsClient_screensLink
-    billableCallsList_screen: &billableCallsList_screenLink
+    billableCallsList_screen: &billableCallsClientList_screenLink
       controller: list
       order:
         field:
@@ -19,19 +19,19 @@ production:
         items: 25
       <<: *BillableCalls
       class: ui-silk-application-view-list
-      title: _("List of %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('External call', 'External calls', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedCompany
       info:
         <<: *documentationLink
         href: "/doc/en/administration_portal/client/vpbx/calls/external_calls.html"
-      fields: &billableCalls_fieldsLink
+      fields: &billableCallsClient_fieldsLink
         options:
           title: _("Options")
           screens:
             billableCallsView_screen: ${auth.acls.BillableCalls.read}
           default: billableCallsView_screen
-        blacklist:
+        blacklist: &billableCallsClient_blacklistLink
           brand: true
           company: true
           invoice: true
@@ -59,15 +59,15 @@ production:
         title: _("Options")
         commands:
           exportBillableCallsToCsv_command: ${auth.acls.BillableCalls.read}
-    billableCallsView_screen:
+    billableCallsView_screen: &billableCallsClientView_screenLink
       <<: *BillableCalls
       controller: edit
       class: ui-silk-eye
       label: false
       disableSave: true
-      labelOnPostAction: _("View %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%item%)]")
-      title: _("View %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%item%)]")
-      fields:
+      labelOnPostAction: _("View %s %2s", ngettext('External call', 'External calls', 1), "[format| (%item%)]")
+      title: _("View %s %2s", ngettext('External call', 'External calls', 1), "[format| (%item%)]")
+      fields: &billableCallsClientView_fieldsLink
         blacklist:
           brand: true
           company: true

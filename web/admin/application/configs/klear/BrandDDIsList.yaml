@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
+#include BillableCallsList.yaml
 
 production:
   main:
@@ -25,6 +26,10 @@ production:
           - Ddi.country asc
           - Ddi.ddi asc
       fields:
+        options:
+          title: _("Options")
+          screens:
+            billableCallsList_screen: ${auth.acls.BillableCalls.read}
         order: &dDIsFieldsOder_Link
           country: true
           ddi: true
@@ -49,6 +54,34 @@ production:
           language: true
           conditionalRoute: true
           retailAccount: true
+
+    billableCallsList_screen:
+      <<: *billableCallsList_screenLink
+      class: ui-silk-application-view-list
+      filterField: Ddi
+      parentOptionCustomizer:
+      - recordCount
+      fields:
+        <<: *billableCalls_fieldsLink
+        blacklist:
+          <<: *billableCalls_blacklistLink
+          brand: true
+        options:
+          title: _("Options")
+          screens:
+            billableCallsView_screen: ${auth.acls.BillableCalls.read}
+          default: billableCallsView_screen
+    billableCallsView_screen:
+      <<: *billableCallsView_screenLink
+      fields:
+        <<: *billableCallsView_fieldsLink
+        blacklist:
+          brand: true
+
+  commands:
+    exportBillableCallsToCsv_command:
+      <<: *exportBillableCallsToCsv_commandLink
+
 staging: 
   _extends: production
 testing:
