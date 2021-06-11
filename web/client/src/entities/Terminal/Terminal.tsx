@@ -1,32 +1,28 @@
 import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface from 'entities/EntityInterface';
+import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
-import Form from 'entities/Terminal/Form'
+import Form from './Form'
 
-const columns = {
-    'id': _('Id'),
-    'name': _('Name'),
-    'mac': _('MAC'),
-    'lastProvisionDate': _('Last provision date'),
-    'disallow': _('Disallowed audio codecs'),
-    'allowAudio': _('Allowed audio codecs'),
-    'allowVideo': _('Allowed video codecs'),
-    'directMediaMethod': _('CallerID update method'),
-    'password': _('Password'),
-    't38Passthrough': _('Enable T.38 passthrough'),
-    'rtpEncryption': _('RTP encryption'),
-    'terminalModel': _('Terminal model'),
-};
-
-const properties = {
-    name: {
+const properties:PropertiesList = {
+    'id': {
+        label: _('Id')
+    },
+    'name': {
+        label:_('Name'),
         helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
     },
-    password: {
-        helpText: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'")
+    'mac': {
+        label: _('MAC'),
     },
-    allowAudio: {
+    'lastProvisionDate': {
+        label: _('Last provision date'),
+    },
+    'disallow': {
+        label: _('Disallowed audio codecs'),
+    },
+    'allowAudio': {
+        label: _('Allowed audio codecs'),
         enum: {
             'alaw': 'alaw - G.711 a-law',
             'ulaw': 'ulaw - G.711 u-law',
@@ -39,34 +35,46 @@ const properties = {
             'opus': 'opus - Opus codec',
         }
     },
-    t38Passthrough: {
+    'allowVideo': {
+        label: _('Allowed video codecs'),
+        enum: {
+            'h264': 'h264 - H.264',
+            '__null__': _("Disabled"),
+        }
+    },
+    'directMediaMethod': {
+        label: _('CallerID update method'),
+    },
+    'password': {
+        label: _('Password'),
+        helpText: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'")
+    },
+    't38Passthrough': {
+        label: _('Enable T.38 passthrough'),
         enum: {
             'yes': _('Yes'),
             'no': _('No'),
         }
     },
-    allowVideo: {
-        values: {
-            'h264': 'h264 - H.264',
-            '__null__': _("Disabled"),
-        }
-    },
-    rtpEncryption: {
-        values: {
+    'rtpEncryption': {
+        label: _('RTP encryption'),
+        enum: {
             '0': _('No'),
             '1': _('Yes'),
         },
         helpText: _("Enable to force audio encryption. Call won't be established unless it is encrypted.")
-    }
+    },
+    'terminalModel': {
+        label: _('Terminal model'),
+    },
 };
 
 const terminal:EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Terminal',
-    title: _('Terminal', {count: 1}),
+    title: _('Terminal', {count: 2}),
     path: '/terminals',
-    columns,
     properties,
     Form
 };

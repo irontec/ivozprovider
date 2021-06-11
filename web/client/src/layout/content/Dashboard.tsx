@@ -13,11 +13,13 @@ const Dashboard = (props:dashboardProps) => {
         <Grid item xs={6}>
             <ul>
                 <li>
-                    Users
+                    <Link to={entities.User.path}>
+                        {entities.User.title}
+                    </Link>
                 </li>
                 <li>
                     <Link to={entities.Terminal.path}>
-                    {entities.Terminal.title}
+                        {entities.Terminal.title}
                     </Link>
                 </li>
                 <li>

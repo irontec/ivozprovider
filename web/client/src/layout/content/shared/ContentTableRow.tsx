@@ -23,7 +23,7 @@ interface propsType {
 export default function ContentTableRow(props: propsType) {
 
   const classes = useStyles();
-  const {entityService, row, path, setLoading } = props;
+  const {entityService, row, path, setLoading} = props;
 
   const columns = entityService.getCollectionColumns();
   const acl = entityService.getAcls();

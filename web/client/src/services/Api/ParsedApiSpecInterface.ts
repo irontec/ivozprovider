@@ -1,9 +1,15 @@
+import React from 'react';
+
 interface KeyValList {
+    [key: string]: any
+}
+
+interface KeyNumList {
     [key: string]: number
 }
 
 export interface ActionModelSpec {
-    parameters: KeyValList,
+    parameters: KeyNumList,
     paths: Array<any>,
     properties: Array<any>,
     required: Array<string>,
@@ -33,14 +39,14 @@ export interface ScalarProperty {
     description?: string,
     maxLength?: number,
     default?: any,
-    enum?: Array<string|number>,
-    label: string,
-    helpText?: string,
+    enum?: Array<string|number>|KeyValList,
+    label: string|React.ReactElement,
+    helpText?: string|React.ReactElement,
 }
 
 export interface FkProperty {
     $ref: string,
-    label: string,
+    label: string|React.ReactElement,
     helpText?: string,
 }
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     TableCell, TableHead, TableRow, TableSortLabel
 } from '@material-ui/core';

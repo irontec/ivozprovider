@@ -8,7 +8,7 @@ import ContentTable from './shared/ContentTable';
 import EntityService from 'services/Entity/EntityService';
 
 const List = function (props: any) {
-    const { history, location, foreignKeyResolver } = props;
+    const { path, history, location, foreignKeyResolver } = props;
     const { entityService }: {entityService: EntityService } = props;
 
     const [loading, setLoading] = useState(true);
@@ -62,12 +62,9 @@ const List = function (props: any) {
                 const orderByFld = `_order[${orderBy}]`;
                 params[orderByFld] = orderDirection;
 
-                let path = entityService.getCollectionPath();
-                if (!path) {
-                    throw new Error('Unknown collection path');
-                }
-
                 const containsCriteria = Object.keys(where).length > 0;
+                let reqPath = path;
+
                 if (containsCriteria) {
 
                     let criteria: Array<string> = [];
@@ -85,11 +82,11 @@ const List = function (props: any) {
                         );
                     }
 
-                    path = path + '?' + criteria.join('&');
+                    reqPath = path + '?' + criteria.join('&');
                 }
 
                 apiGet({
-                    path,
+                    path: reqPath,
                     params,
                     successCallback: async (data: any, headers: any) => {
 
@@ -110,7 +107,8 @@ const List = function (props: any) {
         },
         [
             loading, foreignKeyResolver, entityService, where,
-            orderBy, orderDirection, page, rowsPerPage, apiGet
+            orderBy, orderDirection, page, rowsPerPage, apiGet,
+            path
         ]
     );
 
@@ -130,6 +128,7 @@ const List = function (props: any) {
             setLoading={setLoading}
             where={where}
             setWhere={applyFilters}
+            path={path}
         />
     );
 }

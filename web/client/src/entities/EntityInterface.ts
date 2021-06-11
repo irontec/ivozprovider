@@ -1,3 +1,4 @@
+import { PropertySpec } from "services/Api/ParsedApiSpecInterface";
 import EntityService from "services/Entity/EntityService";
 
 export type ListDecoratorPropsType = {
@@ -15,6 +16,10 @@ type AclType = {
     delete: boolean,
 };
 
+export type PropertiesList = {
+    [index:string]: Partial<PropertySpec>
+};
+
 export default interface EntityInterface {
     initialValues: any,
     validator: (values: any) => any,
@@ -29,8 +34,7 @@ export default interface EntityInterface {
     iden: string,
     title: string | JSX.Element,
     path: string,
-    columns: any,
-    properties: any,
+    properties: PropertiesList,
     defaultOrderBy: string,
     icon: JSX.Element
 }

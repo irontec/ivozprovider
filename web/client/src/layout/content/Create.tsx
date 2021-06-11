@@ -20,7 +20,7 @@ interface CreateProps extends EntityInterface {
 
 const Create = (props:CreateProps) => {
 
-  const { marshaller, path, history, title, columns } = props;
+  const { marshaller, path, history, title, properties } = props;
   const { Form: EntityForm, entityService }: { Form: any, entityService:EntityService } = props;
   const [error, setError] = useState(null);
   const apiPost = useStoreActions((actions:any) => {
@@ -55,15 +55,13 @@ const Create = (props:CreateProps) => {
     ...props.initialValues
   }
 
-  for (const idx in columns) {
+  for (const idx in properties) {
     if (initialValues[idx] !== undefined) {
       continue;
     }
 
     initialValues[idx] = '';
   }
-
-  console.log('initialValues', initialValues);
 
   const formik:useFormikType = useFormik({
     initialValues: initialValues,

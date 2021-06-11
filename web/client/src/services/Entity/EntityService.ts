@@ -1,6 +1,6 @@
 import EntityInterface, { ListDecoratorPropsType } from "entities/EntityInterface";
 import { FunctionComponent } from "react";
-import { ActionsSpec, PropertyList, ActionModelList, ScalarProperty } from "services/Api/ParsedApiSpecInterface";
+import { ActionsSpec, PropertyList, ActionModelList, ScalarProperty, ActionModelSpec } from "services/Api/ParsedApiSpecInterface";
 
 export default class EntityService
 {
@@ -8,23 +8,25 @@ export default class EntityService
         private actions:ActionsSpec,
         private properties:PropertyList,
         private entityConfig:EntityInterface
-    ) {}
+    ) {
+    }
 
     public getColumns(): PropertyList
     {
         const response:PropertyList = {};
 
-        for (const idx in this.entityConfig.columns) {
+        for (const idx in this.entityConfig.properties) {
             if (!this.properties[idx]) {
                 continue;
             }
 
             const propertyOverwrite = this.entityConfig.properties[idx] || {};
+            const label = this.entityConfig.properties[idx].label || '';
 
             response[idx] = {
                 ...this.properties[idx],
                 ...propertyOverwrite,
-                label: this.entityConfig.columns[idx]
+                label
             };
         }
 
@@ -35,7 +37,8 @@ export default class EntityService
     {
         const columns = this.getColumns();
         const collectionAction = this.getFromModelList(
-            this.actions?.get?.collection || {}
+            this.actions?.get?.collection || {},
+            this.entityConfig.path
         );
         const collectionActionFields = Object.keys(collectionAction?.properties || {});
 
@@ -72,47 +75,47 @@ export default class EntityService
         return response;
     }
 
-    public getCollectionPath(idx: string|null = null): string|null
+    public getCollectionPath(path: string|null = null): string|null
     {
         const collectionAction = this.actions?.get?.collection || {};
 
-        const action = this.getFromModelList(collectionAction, idx);
+        const action = this.getFromModelList(collectionAction, path);
 
         return action?.paths[0];
     }
 
-    public getItemPath(idx: string|null = null): string|null
+    public getItemPath(path: string|null = null): string|null
     {
         const itemActions = this.actions?.get?.item || {};
 
-        const action = this.getFromModelList(itemActions, idx);
+        const action = this.getFromModelList(itemActions, path);
 
         return action?.paths[0];
     }
 
-    public getPostPath(idx: string|null = null): string|null
+    public getPostPath(path: string|null = null): string|null
     {
         const itemActions = this.actions?.post || {};
 
-        const action = this.getFromModelList(itemActions, idx);
+        const action = this.getFromModelList(itemActions, path);
 
         return action?.paths[0];
     }
 
-    public getPutPath(idx: string|null = null): string|null
+    public getPutPath(path: string|null = null): string|null
     {
         const itemActions = this.actions?.put || {};
 
-        const action = this.getFromModelList(itemActions, idx);
+        const action = this.getFromModelList(itemActions, path);
 
         return action?.paths[0];
     }
 
-    public getDeletePath(idx: string|null = null): string|null
+    public getDeletePath(path: string|null = null): string|null
     {
         const itemActions = this.actions?.delete || {};
 
-        const action = this.getFromModelList(itemActions, idx);
+        const action = this.getFromModelList(itemActions, path);
 
         return action?.paths[0];
     }
@@ -219,13 +222,21 @@ export default class EntityService
         return filters;
     }
 
-    private getFromModelList(modelList: ActionModelList, idx: string|null = null)
+    private getFromModelList(modelList: ActionModelList, path: string|null = null): ActionModelSpec|null
     {
-        if (idx && modelList[idx]) {
-            return modelList[idx];
+        if (path) {
+            const filteresModelList:ActionModelList = {};
+            for (const idx in modelList) {
+                if (! modelList[idx].paths.includes(path)) {
+                    continue;
+                }
+
+                filteresModelList[idx] = modelList[idx];
+            }
+
+            return this.getFromModelList(filteresModelList, null);
         }
 
-        //Return first otherwise
         const collectionModels = Object.keys(modelList);
 
         if (collectionModels.length) {

@@ -153,8 +153,8 @@ export default class ApiSpecParser {
         });
     }
 
-    public getEntityBasePath(entityNameRoot: string): string {
-
+    public getEntityBasePath(entityNameRoot: string): string
+    {
         const underScored = entityNameRoot.replace(/([A-Z])/g, (upperString:string) => {
             return "_" + upperString.toLowerCase();
         });
@@ -162,8 +162,8 @@ export default class ApiSpecParser {
         return '/' + underScored.slice(1);
     }
 
-    private getEntityPaths(entityNameRoot: string, apiSpec: OpenApiSpecInterface): Object {
-
+    private getEntityPaths(entityNameRoot: string, apiSpec: OpenApiSpecInterface): Object
+    {
         /* eslint-disable */
         entityNameRoot = entityNameRoot.replace('-', '\-');
         const pattern = `^\#\/definitions\/${entityNameRoot}$`;

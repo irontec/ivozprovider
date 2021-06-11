@@ -46,7 +46,7 @@ export default class FormFieldFactory
         if ((property as FkProperty).$ref) {
 
             if (!choices) {
-                return (<LinearProgress />);
+                return (<div className={fld}><LinearProgress /></div>);
             }
 
             return (
@@ -63,9 +63,6 @@ export default class FormFieldFactory
         } else if ((property as ScalarProperty).type === 'boolean') {
 
             const checked = !!(this.formik.values[fld]);
-            console.log('value', this.formik.values[fld]);
-            console.log('checked', checked);
-            // debugger;
 
             return (
                 <FormControlLabel

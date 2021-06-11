@@ -1,4 +1,5 @@
 import defaultEntityBehavior from '../DefaultEntityBehavior';
+import TerminalModelSelectOptions from '../TerminalModel/SelectOptions';
 import { useEffect, useState } from 'react';
 
 const Form = (props:any) => {
@@ -12,37 +13,21 @@ const Form = (props:any) => {
     useEffect(
         () => {
             if (loadingFks) {
-                if (!mounted || fkChoices?.terminalModel) {
-                    return;
-                }
+                TerminalModelSelectOptions((options:any) => {
+                    setFkChoices({
+                        ...fkChoices,
+                        terminalModel: options
+                    });
+                });
 
-                defaultEntityBehavior.fetchFks(
-                    '/terminal_models',
-                    ['id', 'name'],
-                    (data:any) => {
-                        if (!mounted) {
-                            return;
-                        }
-
-                        const options:any = {};
-                        for (const item of data) {
-                            options[item.id] = item.name;
-                        }
-
-                        setFkChoices({
-                            ...fkChoices,
-                            terminalModel: options
-                        });
-                        setLoadingFks(false);
-                    }
-                );
+                setLoadingFks(false);
             }
 
             return function umount() {
                 setMounted(false);
             };
         },
-        [loadingFks, mounted, fkChoices]
+        [loadingFks, fkChoices]
     );
 
     return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);

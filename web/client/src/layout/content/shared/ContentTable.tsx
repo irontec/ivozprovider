@@ -15,6 +15,7 @@ import EntityService from 'services/Entity/EntityService';
 
 interface propsType {
   loading?: boolean,
+  path: string,
   setLoading: Function,
   entityService: EntityService,
   headers: { [id: string]: string },
@@ -33,6 +34,7 @@ interface propsType {
 export default function ContentTable(props: propsType) {
   const classes = useStyles();
   const {
+    path,
     entityService,
     headers,
     rows,
@@ -50,7 +52,6 @@ export default function ContentTable(props: propsType) {
 
   const columns = entityService.getColumns();
   const acl = entityService.getAcls();
-  const path = entityService.getCollectionPath() as string;
 
   const [showFilters, setShowFilters] = useState(false);
   const handleFiltersClose = (event: any) => {
@@ -149,6 +150,7 @@ export default function ContentTable(props: propsType) {
 
       <Table size="medium">
         <ContentTableHead
+          path={path}
           entityService={entityService}
           classes={classes}
           order={orderDirection}

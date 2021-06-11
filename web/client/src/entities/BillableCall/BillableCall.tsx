@@ -1,15 +1,23 @@
 import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface from 'entities/EntityInterface';
+import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
 import EntityService from 'services/Entity/EntityService';
 import defaultEntityBehavior from '../DefaultEntityBehavior';
 import _ from 'services/Translations/translate';
 
-const columns = {
-    id: "id",
-    ddi: "ddi",
-    duration: "duration",
-    price: "price"
+const properties:PropertiesList = {
+    id:  {
+        label: "id",
+    },
+    ddi: {
+        label: "ddi",
+    },
+    duration: {
+        label: "duration",
+    },
+    price: {
+        label: "price"
+    },
 };
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
@@ -28,9 +36,9 @@ const calendar:EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'BillableCall',
-    title: _('billable calls'),
+    title: _('Billable calls', {count: 2}),
     path: '/billable_calls',
-    columns,
+    properties,
     foreignKeyResolver,
 
 };

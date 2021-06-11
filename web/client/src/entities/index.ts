@@ -2,6 +2,7 @@
 import Calendar from './Calendar/Calendar';
 import BillableCall from './BillableCall/BillableCall';
 import Terminal from './Terminal/Terminal';
+import User from './User/User';
 import EntityInterface from 'entities/EntityInterface';
 
 interface EntityList {
@@ -11,7 +12,8 @@ interface EntityList {
 const entities:EntityList = {
   Calendar,
   BillableCall,
-  Terminal
+  Terminal,
+  User
 };
 
 export default entities;
