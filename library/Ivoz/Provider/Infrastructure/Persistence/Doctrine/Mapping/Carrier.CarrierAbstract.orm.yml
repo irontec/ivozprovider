@@ -86,3 +86,15 @@ Ivoz\Provider\Domain\Model\Carrier\CarrierAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
+    mediaRelaySets:
+      targetEntity: \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        mediaRelaySetsId:
+          referencedColumnName: id
+          onDelete: set null
+          onUpdate: cascade
+      orphanRemoval: false

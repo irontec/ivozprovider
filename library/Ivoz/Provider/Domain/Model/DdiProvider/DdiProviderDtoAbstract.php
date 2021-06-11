@@ -46,6 +46,11 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     private $proxyTrunk;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto | null
+     */
+    private $mediaRelaySets;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto[] | null
      */
     private $ddiProviderRegistrations = null;
@@ -79,7 +84,8 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'brandId' => 'brand',
             'transformationRuleSetId' => 'transformationRuleSet',
-            'proxyTrunkId' => 'proxyTrunk'
+            'proxyTrunkId' => 'proxyTrunk',
+            'mediaRelaySetsId' => 'mediaRelaySets'
         ];
     }
 
@@ -96,6 +102,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'proxyTrunk' => $this->getProxyTrunk(),
+            'mediaRelaySets' => $this->getMediaRelaySets(),
             'ddiProviderRegistrations' => $this->getDdiProviderRegistrations(),
             'ddiProviderAddresses' => $this->getDdiProviderAddresses()
         ];
@@ -326,6 +333,52 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     public function getProxyTrunkId()
     {
         if ($dto = $this->getProxyTrunk()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto $mediaRelaySets
+     *
+     * @return static
+     */
+    public function setMediaRelaySets(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto $mediaRelaySets = null)
+    {
+        $this->mediaRelaySets = $mediaRelaySets;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto | null
+     */
+    public function getMediaRelaySets()
+    {
+        return $this->mediaRelaySets;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setMediaRelaySetsId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto($id)
+            : null;
+
+        return $this->setMediaRelaySets($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getMediaRelaySetsId()
+    {
+        if ($dto = $this->getMediaRelaySets()) {
             return $dto->getId();
         }
 
