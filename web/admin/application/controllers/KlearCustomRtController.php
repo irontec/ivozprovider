@@ -282,6 +282,8 @@ class KlearCustomRtController extends Zend_Controller_Action
             'min' => $this->_helper->translate('min'),
             'sec' => $this->_helper->translate('sec'),
             'filterFields' => $this->_helper->translate('Filter fields'),
+            'copyCallId' => $this->_helper->translate('Copy callid'),
+            'options' => $this->_helper->translate('Options'),
         ];
     }
 

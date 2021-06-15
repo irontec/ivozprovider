@@ -21,6 +21,7 @@
             <th class="ui-widget-header caller" style="width: 150px;">${translations.caller}</th>
             <th class="ui-widget-header callee" style="width: 150px;">${translations.callee}</th>
             <th class="ui-widget-header operator">${translations.carrier}</th>
+            <th class="ui-widget-header options">${translations.options}</th>
         </tr>
     </thead>
     <tbody>
@@ -28,25 +29,27 @@
             <td class="ui-widget-content context">
                 <span class="direction"></span>
                 <span class="event"></span>
-                &nbsp;
                 <span class="time"></span>
             </td>
             <td class="ui-widget-content company"></td>
             <td class="ui-widget-content caller"></td>
             <td class="ui-widget-content callee"></td>
             <td class="ui-widget-content operator"></td>
+            <td class="ui-widget-content options">
+                <span title="${translations.copyCallId}" class="copyCallId ui-silk inline ui-silk-page-copy"></span>
+            </td>
         </tr>
         <tr class="feedback error">
-            <td class="ui-widget-content" colspan="5">Error: socket closed</td>
+            <td class="ui-widget-content" colspan="6">Error: socket closed</td>
         </tr>
         <tr class="feedback connecting">
-            <td class="ui-widget-content" colspan="5">${translations.connecting}...</td>
+            <td class="ui-widget-content" colspan="6">${translations.connecting}...</td>
         </tr>
         <tr class="feedback loading">
-            <td class="ui-widget-content" colspan="5">${translations.loading}...</td>
+            <td class="ui-widget-content" colspan="6">${translations.loading}...</td>
         </tr>
         <tr class="feedback none">
-            <td class="ui-widget-content" colspan="5">
+            <td class="ui-widget-content" colspan="6">
                 <span class="ui-silk inline ui-silk-sleep"></span>${translations.noCalls}.
             </td>
         </tr>

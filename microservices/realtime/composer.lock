@@ -1897,18 +1897,18 @@
         },
         {
             "name": "lexik/jwt-authentication-bundle",
-            "version": "2.8.0.0",
+            "version": "2.10.7.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/lexik/jwt-authentication-bundle",
-                "reference": "0b136a3b8b2125a85dc0ae64527e8c86cbe574f1",
+                "reference": "79ba5af396c4f4e64fe9c8b9af65f8441fdb44cf",
                 "shasum": null
             },
             "require": {
                 "ext-openssl": "*",
-                "lcobucci/jwt": "^3.2",
+                "lcobucci/jwt": "^3.2|^4.0",
                 "namshi/jose": "^7.2",
-                "php": "^5.6|^7.0",
+                "php": ">=5.6",
                 "symfony/framework-bundle": "^3.4|^4.0|^5.0",
                 "symfony/security-bundle": "^3.4|^4.0|^5.0"
             },
@@ -5271,11 +5271,11 @@
         },
         {
             "name": "symfony/security",
-            "version": "3.4.43.0",
+            "version": "3.4.49.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/security",
-                "reference": "d80836d3fff1878590a3ec68a8770dccfad8c5de",
+                "reference": "ac1af40e3e0a183f80f0ff8c3d22b18bfb74dbb3",
                 "shasum": null
             },
             "require": {
@@ -5313,11 +5313,6 @@
                 "symfony/validator": "For using the user password constraint"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Security\\": ""

@@ -92,6 +92,11 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->setExtension(null)
             ->shouldBeCalled();
 
+        $prevUserDto
+            ->getExtensionId()
+            ->willReturn(1)
+            ->shouldBeCalled();
+
         $this->entityTools
             ->persistDto(
                 $prevUserDto,
@@ -205,13 +210,13 @@ class UpdateByExtensionSpec extends ObjectBehavior
         $this->execute($extension);
     }
 
-    private function prepareExecution(ExtensionInterface $entity, UserInterface $user)
+    private function prepareExecution(ExtensionInterface $extension, UserInterface $user)
     {
-        $entity
+        $extension
             ->hasChanged('userId')
             ->willReturn(true);
 
-        $entity
+        $extension
             ->getUser()
             ->willReturn($user);
 
@@ -219,12 +224,16 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->getId()
             ->willReturn(1);
 
-        $entity
+        $extension
             ->getInitialValue('userId')
             ->willReturn(1);
 
-        $entity
+        $extension
             ->getRouteType()
             ->willReturn(null);
+
+        $extension
+            ->getId()
+            ->willReturn(1);
     }
 }

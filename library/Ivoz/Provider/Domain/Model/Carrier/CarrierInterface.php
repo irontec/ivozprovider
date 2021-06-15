@@ -93,6 +93,13 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getProxyTrunk();
 
     /**
+     * Get mediaRelaySets
+     *
+     * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface | null
+     */
+    public function getMediaRelaySets();
+
+    /**
      * @return bool
      */
     public function isInitialized(): bool;

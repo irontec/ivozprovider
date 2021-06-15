@@ -279,21 +279,28 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             return;
         }
 
-        $qb = $this
-            ->createQueryBuilder('self')
-            ->update($this->_entityName, 'self')
-            ->set('self.invoice', ':invoiceId')
-            ->setParameter(':invoiceId', $invoice->getId())
-            ->addCriteria(
-                CriteriaHelper::fromArray([
-                    ['id', 'in', $targetIds],
-                ])
-            );
+        $targetIdChunks = array_chunk($targetIds, 2500);
+        $affectedRows = 0;
 
-        return $this->queryRunner->execute(
-            $this->getEntityName(),
-            $qb->getQuery()
-        );
+        foreach ($targetIdChunks as $targetIds) {
+            $qb = $this
+                ->createQueryBuilder('self')
+                ->update($this->_entityName, 'self')
+                ->set('self.invoice', ':invoiceId')
+                ->setParameter(':invoiceId', $invoice->getId())
+                ->addCriteria(
+                    CriteriaHelper::fromArray([
+                        ['id', 'in', $targetIds],
+                    ])
+                );
+
+            $affectedRows += $this->queryRunner->execute(
+                $this->getEntityName(),
+                $qb->getQuery()
+            );
+        }
+
+        return $affectedRows;
     }
 
     public function getGeneratorByInvoice(InvoiceInterface $invoice)

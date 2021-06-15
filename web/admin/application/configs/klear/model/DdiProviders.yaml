@@ -62,6 +62,21 @@ production:
         icon: help
         text: _("Local address used in SIP signalling with this DDI Provider.")
         label: _("Need help?")
+    mediaRelaySets:
+      title: _('Media relay Set')
+      type: select
+      defaultValue: 'null'
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet
+          fieldName:
+            fields:
+            - name
+            template: '%name%'
+          order:
+            MediaRelaySet.name: asc
+        'null': _("Client's default")
 staging:
   _extends: production
 testing:

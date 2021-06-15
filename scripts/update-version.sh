@@ -36,7 +36,7 @@ if [ -z "$MAJOR" ] || [ -z "$MINOR" ] || [ -z "$PATCH" ]; then
 fi
 
 # Update package version
-grep -q $VERSION debian/changelog
+grep -q -F $VERSION debian/changelog
 if [ $? -ne 0 ]; then
     # Set the current version as stable:
     dch --controlmaint --release ""

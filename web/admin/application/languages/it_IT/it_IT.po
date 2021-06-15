@@ -436,9 +436,7 @@ msgstr[0] "Call recording"
 msgstr[1] "Call recordings"
 
 msgid "Call registry"
-msgid_plural "Call registries"
-msgstr[0] "Registro chiamate"
-msgstr[1] "Registri delle chiamate"
+msgstr "Registro chiamate"
 
 msgid "Call rejection method"
 msgstr "Call rejection method"
@@ -621,6 +619,9 @@ msgstr "Continua"
 
 msgid "Control Panel"
 msgstr "Pannello di controllo"
+
+msgid "Copy callid"
+msgstr "Copia il callid"
 
 msgid "Cost"
 msgstr "Costo"

@@ -91,7 +91,7 @@ Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract:
     namedPickupGroup:
       type: string
       nullable: true
-      length: 40
+      length: 255
       options:
         fixed: false
       column: named_pickup_group

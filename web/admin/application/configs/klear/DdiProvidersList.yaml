@@ -4,6 +4,7 @@
 #include DdisList.yaml
 #include DdiProviderAddressesList.yaml
 #include DdiProviderRegistrationsList.yaml
+#include BillableCallsList.yaml
 
 production:
   main:
@@ -30,6 +31,7 @@ production:
             ddiProviderAddressesList_screen: true
             ddiProviderRegistrationsList_screen: true
             ddisList_screen: ${auth.acls.DDIs.read}
+            billableCallsList_screen: ${auth.acls.BillableCalls.read}
           dialogs:
             ddiProvidersDel_dialog: true
           default: ddiProvidersEdit_screen
@@ -39,6 +41,7 @@ production:
           description: true
         blacklist:
           externallyRated: true
+          mediaRelaySets: ${auth.isNotMainOperator}
       options:
         title: _("Options")
         screens:
@@ -61,14 +64,16 @@ production:
           <<: *PeerContractsOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
+          mediaRelaySets: ${auth.isNotMainOperator}
       fixedPositions: &ddiProvidersNew_fixedPositionsLink
         group0:
           label: _("Basic Configuration")
           colsPerRow: 12
           fields:
-            name: 6
-            proxyTrunks: 6
-            description: 12
+            name: 5
+            description: 7
+            proxyTrunk: 6
+            mediaRelaySets: 6
         group1:
           label: _("Extra Configuration")
           colsPerRow: 6
@@ -89,6 +94,7 @@ production:
           <<: *PeerContractsOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
+          mediaRelaySets: ${auth.isNotMainOperator}
       fixedPositions:
         <<: *ddiProvidersNew_fixedPositionsLink
 
@@ -157,6 +163,29 @@ production:
         screens:
         dialogs:
 
+    billableCallsList_screen:
+      <<: *billableCallsList_screenLink
+      class: ui-silk-application-view-list
+      filterField: DdiProvider
+      parentOptionCustomizer:
+      - recordCount
+      fields:
+        <<: *billableCalls_fieldsLink
+        blacklist:
+          <<: *billableCalls_blacklistLink
+          brand: true
+        options:
+          title: _("Options")
+          screens:
+            billableCallsView_screen: ${auth.acls.BillableCalls.read}
+          default: billableCallsView_screen
+    billableCallsView_screen:
+      <<: *billableCallsView_screenLink
+      fields:
+        <<: *billableCallsView_fieldsLink
+        blacklist:
+          brand: true
+
   dialogs: &ddiProviders_dialogsLink
     ddiProvidersDel_dialog: &ddiProvidersDel_dialogLink
       <<: *DdiProviders
@@ -173,6 +202,10 @@ production:
     <<: *ddiProviderAddresses_dialogsLink
     # DDI Provider Registry dialogs
     <<: *ddiProviderRegistrations_dialogsLink
+
+  commands:
+    exportBillableCallsToCsv_command:
+      <<: *exportBillableCallsToCsv_commandLink
 
 staging:
   _extends: production

@@ -15,6 +15,7 @@
             <th class="ui-widget-header context" style="width: 150px;">${translations.duration}</th>
             <th class="ui-widget-header owner">${translations.owner}</th>
             <th class="ui-widget-header party">${translations.party}</th>
+            <th class="ui-widget-header options">${translations.options}</th>
         </tr>
     </thead>
     <tbody>
@@ -22,23 +23,25 @@
             <td class="ui-widget-content context">
                 <span class="direction"></span>
                 <span class="event"></span>
-                &nbsp;
                 <span class="time"></span>
             </td>
             <td class="ui-widget-content owner"></td>
             <td class="ui-widget-content party"></td>
+            <td class="ui-widget-content options">
+                <span title="${translations.copyCallId}" class="copyCallId ui-silk inline ui-silk-page-copy"></span>
+            </td>
         </tr>
         <tr class="feedback error">
-            <td class="ui-widget-content" colspan="3">Error: socket closed...</td>
+            <td class="ui-widget-content" colspan="4">Error: socket closed...</td>
         </tr>
         <tr class="feedback connecting">
-            <td class="ui-widget-content" colspan="3">${translations.connecting}...</td>
+            <td class="ui-widget-content" colspan="4">${translations.connecting}...</td>
         </tr>
         <tr class="feedback loading">
-            <td class="ui-widget-content" colspan="3">${translations.loading}...</td>
+            <td class="ui-widget-content" colspan="4">${translations.loading}...</td>
         </tr>
         <tr class="feedback none">
-            <td class="ui-widget-content" colspan="3">
+            <td class="ui-widget-content" colspan="4">
                 <span class="ui-silk inline ui-silk-sleep"></span>${translations.noCalls}.
             </td>
         </tr>

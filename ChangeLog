@@ -1,3 +1,38 @@
+Tue, 15 Jun 2021 10:43:39 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.17.2 released
+
+    * Core
+        - Set invoiceId by iterating chunks in order to avoid lock timeouts
+        - Fix screen extension auto assignment logic
+
+    * Proxies
+        - Add carrier/ddiprovider mediarelay-set relationship
+        - Fix ddiProvider detection logic
+        - Avoid resolving vPBX client domains in PUBLISH
+        - Call rtpengine_delete for CANCELs
+
+    * vPBX
+        - Increase named pickup group size
+        - Set maxcall duration to 3 hours as in proxies
+
+    * Provisioning
+        - Add Yealink new CA chain file
+        - Remove redundant snom provisioning lines
+
+    * API
+        - Fix filter issues
+
+    * Portals
+        - Show External Calls option in related entities
+        - Fix client Recordings section ACL
+        - Skip calls to special numbers in Active Calls
+        - Copy callid when call direction icon is clicked in Active Calls
+        - Add file extension filters for Locutions, MOH and Faxes
+        - Fix holiday date range locution filter
+        - Round price totals up with 2 decimals
+        - Blacklist non-relevant fields in intervPBX, BrandUserList and Carriers.
+
 Tue, 30 Mar 2021 16:59:13 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.17.1 released

@@ -54,6 +54,8 @@ production:
           externalIpCalls: true
           outgoingDdiRule: true
           outgoingDdi: true
+          rejectCallMethod: true
+          multiContact: true
 
 staging:
   _extends: production

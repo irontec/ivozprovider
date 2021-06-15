@@ -166,7 +166,9 @@
                 $(".direction",_tr).html(
                     self._icons.directions[data.Direction]
                 );
-
+                $(".copyCallId",_tr).on('click', function () {
+                    self.copyTextToClipboard(data['ID']);
+                });
 
                 $(".brand",_tr).html(data.Brand);
                 $(".operator",_tr).html(operator);
@@ -643,6 +645,16 @@
                 + '/wss';
 
             return response;
+        },
+        copyTextToClipboard: function (text) {
+          if (!navigator.clipboard) {
+            return;
+          }
+          navigator.clipboard.writeText(text).then(function() {
+            console.log('Call id copied: ' + text);
+          }, function(err) {
+            console.error('Could not copy text', err);
+          });
         }
     });
 

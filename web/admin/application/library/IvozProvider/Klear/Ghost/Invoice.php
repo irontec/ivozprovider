@@ -50,7 +50,7 @@ class IvozProvider_Klear_Ghost_Invoice extends KlearMatrix_Model_Field_Ghost_Abs
         );
 
         return sprintf(
-            "%s %s",
+            "%.2f %s",
             $invoice->getTotal(),
             $currencySymbol
         );
@@ -69,7 +69,7 @@ class IvozProvider_Klear_Ghost_Invoice extends KlearMatrix_Model_Field_Ghost_Abs
         );
 
         return sprintf(
-            "%s %s",
+            "%.2f %s",
             $invoice->getTotalWithTax(),
             $currencySymbol
         );

@@ -36,7 +36,7 @@ class UserTokenAuthenticator extends JWTTokenAuthenticator
         $this->jwtManager = $jwtManager;
         $this->tokenStorage = $tokenStorage;
 
-        parent::__construct($jwtManager, $dispatcher, $tokenExtractor);
+        parent::__construct($jwtManager, $dispatcher, $tokenExtractor, $tokenStorage);
     }
 
     public function supports(Request $request)
