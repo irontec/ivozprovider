@@ -145,11 +145,11 @@ export default class EntityService
             ? true
             : false;
 
-        const update:boolean = this.entityConfig.acl.update && this.actions.post
+        const update:boolean = this.entityConfig.acl.update && this.actions.put
             ? true
             : false;
 
-        const remove:boolean = this.entityConfig.acl.delete && this.actions.post
+        const remove:boolean = this.entityConfig.acl.delete && this.actions.delete
             ? true
             : false;
 

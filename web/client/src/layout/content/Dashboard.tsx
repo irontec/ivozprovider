@@ -23,10 +23,14 @@ const Dashboard = (props:dashboardProps) => {
                     </Link>
                 </li>
                 <li>
-                    Extensions
+                    <Link to={entities.Extension.path}>
+                        {entities.Extension.title}
+                    </Link>
                 </li>
                 <li>
-                    DDIs
+                    <Link to={entities.Ddi.path}>
+                        {entities.Ddi.title}
+                    </Link>
                 </li>
                 <li className="submenu">
                     <h3>Routing endpoints</h3>
