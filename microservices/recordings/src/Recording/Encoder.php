@@ -173,6 +173,9 @@ class Encoder
                     $type = 'ddi';
                     $direction = $kamAccCdr->getDirection();
 
+                    /* @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand */
+                    $brand = $kamAccCdr->getBrand();
+
                     if ($direction == 'outbound') {
                         // If call first leg, caller is who activated the recording
                         $recorder = $kamAccCdr->getCaller();
