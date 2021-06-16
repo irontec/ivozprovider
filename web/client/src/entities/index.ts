@@ -5,6 +5,8 @@ import Terminal from './Terminal/Terminal';
 import User from './User/User';
 import Extension from './Extension/Extension';
 import Ddi from './Ddi/Ddi';
+import Ivr from './Ivr/Ivr';
+import HuntGroup from './HuntGroup/HuntGroup';
 import EntityInterface from 'entities/EntityInterface';
 
 interface EntityList {
@@ -17,7 +19,9 @@ const entities:EntityList = {
   Terminal,
   User,
   Extension,
-  Ddi
+  Ddi,
+  Ivr,
+  HuntGroup,
 };
 
 export default entities;

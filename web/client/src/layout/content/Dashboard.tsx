@@ -37,10 +37,14 @@ const Dashboard = (props:dashboardProps) => {
                     <div>
                         <ul>
                             <li>
-                                IVRs
+                                <Link to={entities.Ivr.path}>
+                                    {entities.Ivr.title}
+                                </Link>
                             </li>
                             <li>
-                                Hunt Groups
+                                <Link to={entities.HuntGroup.path}>
+                                    {entities.HuntGroup.title}
+                                </Link>
                             </li>
                             <li>
                                 Queues

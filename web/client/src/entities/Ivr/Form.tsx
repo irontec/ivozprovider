@@ -1,12 +1,9 @@
 import defaultEntityBehavior from '../DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import CountrySelectOptions from 'entities/Country/SelectOptions';
-import IvrSelectOptions from 'entities/Ivr/SelectOptions';
-import HuntGroupSelectOptions from 'entities/HuntGroup/SelectOptions';
-import ConferenceRoomSelectOptions from 'entities/ConferenceRoom/SelectOptions';
+import LocutionSelectOptions from 'entities/Locution/SelectOptions';
+import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
-import QueueSelectOptions from 'entities/Queue/SelectOptions';
-import ConditionalRouteSelectOptions from 'entities/ConditionalRoute/SelectOptions';
 
 const Form = (props:any) => {
 
@@ -21,38 +18,37 @@ const Form = (props:any) => {
 
             if (loadingFks) {
 
+                LocutionSelectOptions((options:any) => {
+                    setFkChoices((fkChoices:any) => {
+                        return {
+                            ...fkChoices,
+                            welcomeLocution: options,
+                            noInputLocution: options,
+                            errorLocution: options,
+                            successLocution: options,
+                        }
+                    });
+                });
+
+                //@TODO
+                // excludedExtensions
+
                 CountrySelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
                         return {
                             ...fkChoices,
-                            numberCountry: options
+                            noInputNumberCountry: options,
+                            errorNumberCountry: options,
                         }
                     });
                 });
 
-                IvrSelectOptions((options:any) => {
+                ExtensionSelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
                         return {
                             ...fkChoices,
-                            ivr: options
-                        }
-                    });
-                });
-
-                HuntGroupSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            huntGroup: options
-                        }
-                    });
-                });
-
-                ConferenceRoomSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            conferenceRoom: options
+                            noInputExtension: options,
+                            errorExtension: options,
                         }
                     });
                 });
@@ -61,25 +57,8 @@ const Form = (props:any) => {
                     setFkChoices((fkChoices:any) => {
                         return {
                             ...fkChoices,
-                            user: options
-                        }
-                    });
-                });
-
-                QueueSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            queue: options
-                        }
-                    });
-                });
-
-                ConditionalRouteSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            conditionalRoute: options
+                            noInputVoiceMailUser: options,
+                            errorVoiceMailUser: options,
                         }
                     });
                 });
