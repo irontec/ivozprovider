@@ -7,6 +7,8 @@ import Extension from './Extension/Extension';
 import Ddi from './Ddi/Ddi';
 import Ivr from './Ivr/Ivr';
 import HuntGroup from './HuntGroup/HuntGroup';
+import Queue from './Queue/Queue';
+import ConditionalRoute from './ConditionalRoute/ConditionalRoute';
 import EntityInterface from 'entities/EntityInterface';
 
 interface EntityList {
@@ -22,6 +24,8 @@ const entities:EntityList = {
   Ddi,
   Ivr,
   HuntGroup,
+  Queue,
+  ConditionalRoute,
 };
 
 export default entities;

@@ -14,9 +14,11 @@ const Form = (props:any) => {
         () => {
             if (loadingFks) {
                 TerminalModelSelectOptions((options:any) => {
-                    setFkChoices({
-                        ...fkChoices,
-                        terminalModel: options
+                    setFkChoices((fkChoices:any) => {
+                        return {
+                            ...fkChoices,
+                            terminalModel: options
+                        }
                     });
                 });
 

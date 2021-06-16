@@ -47,10 +47,14 @@ const Dashboard = (props:dashboardProps) => {
                                 </Link>
                             </li>
                             <li>
-                                Queues
+                                <Link to={entities.Queue.path}>
+                                    {entities.Queue.title}
+                                </Link>
                             </li>
                             <li>
-                                Conditional Routes
+                                <Link to={entities.ConditionalRoute.path}>
+                                    {entities.ConditionalRoute.title}
+                                </Link>
                             </li>
                             <li>
                                 Friends
