@@ -9,6 +9,8 @@ import Ivr from './Ivr/Ivr';
 import HuntGroup from './HuntGroup/HuntGroup';
 import Queue from './Queue/Queue';
 import ConditionalRoute from './ConditionalRoute/ConditionalRoute';
+import Friend from './Friend/Friend';
+import ConferenceRoom from './ConferenceRoom/ConferenceRoom';
 import EntityInterface from 'entities/EntityInterface';
 
 interface EntityList {
@@ -26,6 +28,8 @@ const entities:EntityList = {
   HuntGroup,
   Queue,
   ConditionalRoute,
+  Friend,
+  ConferenceRoom,
 };
 
 export default entities;

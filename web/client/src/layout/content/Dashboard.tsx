@@ -57,10 +57,14 @@ const Dashboard = (props:dashboardProps) => {
                                 </Link>
                             </li>
                             <li>
-                                Friends
+                                <Link to={entities.Friend.path}>
+                                    {entities.Friend.title}
+                                </Link>
                             </li>
                             <li>
-                                Conference rooms
+                                <Link to={entities.ConferenceRoom.path}>
+                                    {entities.ConferenceRoom.title}
+                                </Link>
                             </li>
                         </ul>
                     </div>
