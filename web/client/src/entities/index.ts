@@ -14,7 +14,8 @@ import ConferenceRoom from './ConferenceRoom/ConferenceRoom';
 import ExternalCallFilter from './ExternalCallFilter/ExternalCallFilter';
 import Schedule from './Schedule/Schedule';
 import MatchList from './MatchList/MatchList';
-
+import RouteLock from './RouteLock/RouteLock';
+import OutgoingDdiRule from './OutgoingDdiRule/OutgoingDdiRule';
 
 interface EntityList {
   [name:string]: EntityInterface
@@ -35,7 +36,9 @@ const entities:EntityList = {
   ConferenceRoom,
   ExternalCallFilter,
   Schedule,
-  MatchList
+  MatchList,
+  RouteLock,
+  OutgoingDdiRule
 };
 
 export default entities;

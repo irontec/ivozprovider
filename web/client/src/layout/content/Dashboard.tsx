@@ -94,7 +94,9 @@ const Dashboard = (props:dashboardProps) => {
                                 </Link>
                             </li>
                             <li>
-                                Route Locks
+                                <Link to={entities.RouteLock.path}>
+                                    {entities.RouteLock.title}
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -108,7 +110,9 @@ const Dashboard = (props:dashboardProps) => {
                     <div>
                         <ul>
                             <li>
-                                Outgoing DDI Rules
+                                <Link to={entities.OutgoingDdiRule.path}>
+                                    {entities.OutgoingDdiRule.title}
+                                </Link>
                             </li>
                             <li>
                                 Pick up groups
