@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
+#include BillableCallsClientList.yaml
 
 production:
   main:
@@ -38,6 +39,7 @@ production:
           screens:
             ddisEdit_screen: $[${auth.isNotCompanyOperator} && ${auth.acls.DDIs.update}]
             ddisEditLimited_screen: $[${auth.isCompanyOperator} && ${auth.acls.DDIs.update}]
+            billableCallsList_screen: ${auth.acls.BillableCalls.read}
           dialogs:
             ddisDel_dialog: $[${auth.isNotCompanyOperator} && ${auth.acls.DDIs.delete}]
           default: ddisEdit_screen
@@ -160,6 +162,27 @@ production:
       fixedPositions:
         <<: *ddisFixedPositions_Link
 
+    billableCallsList_screen:
+      <<: *billableCallsClientList_screenLink
+      class: ui-silk-application-view-list
+      filterField: Ddi
+      parentOptionCustomizer:
+      - recordCount
+      fields:
+        <<: *billableCallsClient_fieldsLink
+        blacklist:
+          <<: *billableCallsClient_blacklistLink
+          brand: true
+        options:
+          title: _("Options")
+          screens:
+            billableCallsView_screen: ${auth.acls.BillableCalls.read}
+          default: billableCallsView_screen
+    billableCallsView_screen:
+      <<: *billableCallsClientView_screenLink
+      fields:
+        <<: *billableCallsClientView_fieldsLink
+
   dialogs: &ddis_dialogsLink
     ddisDel_dialog: &ddisDel_dialogLink
       <<: *Ddis
@@ -197,6 +220,8 @@ production:
       <<: *Ddis
       controller: File
       action: free-upload
+    exportBillableCallsToCsv_command:
+      <<: *exportBillableCallsToCsv_commandLink
 
 staging:
   _extends: production

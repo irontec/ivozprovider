@@ -678,11 +678,11 @@
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/doctrine/doctrine-migrations-bundle",
-                "reference": "b8de89fe811e62f1dea8cf9aafda0ea45ca6f1f3"
+                "reference": "0a9a4ffdb8713d0b7f2bbc04b0bbfa2991b2a238"
             },
             "require": {
                 "doctrine/doctrine-bundle": "~1.0|~2.0",
@@ -700,11 +700,6 @@
                 "phpunit/phpunit": "^7.0|^8.0|^9.0"
             },
             "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Bundle\\MigrationsBundle\\": ""

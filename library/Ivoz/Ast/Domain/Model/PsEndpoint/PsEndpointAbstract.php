@@ -560,7 +560,7 @@ abstract class PsEndpointAbstract
     protected function setNamedPickupGroup(?string $namedPickupGroup = null): static
     {
         if (!is_null($namedPickupGroup)) {
-            Assertion::maxLength($namedPickupGroup, 40, 'namedPickupGroup value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::maxLength($namedPickupGroup, 255, 'namedPickupGroup value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->namedPickupGroup = $namedPickupGroup;

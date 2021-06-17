@@ -823,8 +823,8 @@ msgstr ""
 #: ../../basic_concepts/intro/getting_help.rst:14
 msgid ""
 "IRC Channel `#ivozprovider "
-"<https://webchat.freenode.net/?channels=ivozprovider>`_ at "
-"irc.freenode.net"
+"<https://kiwiirc.com/nextclient/irc.libera.chat/#ivozprovider>`_ at "
+"irc.libera.chat"
 msgstr ""
 
 #: ../../basic_concepts/intro/getting_help.rst:17

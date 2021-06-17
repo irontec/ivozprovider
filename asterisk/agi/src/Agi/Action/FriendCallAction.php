@@ -82,7 +82,7 @@ class FriendCallAction
         $this->agi->setVariable("DIAL_EXT", $number);
         $this->agi->setVariable("DIAL_DST", "PJSIP/$endpointName");
         $this->agi->setVariable("__DIAL_ENDPOINT", $endpointName);
-        $this->agi->setVariable("DIAL_TIMEOUT", "");
+        $this->agi->setVariable("DIAL_TIMEOUT", "10800");
         $this->agi->setVariable("DIAL_OPTS", $options);
 
         // Redirect to the calling dialplan context

@@ -101,7 +101,7 @@ class Invoices
             $this->logger->info("[INVOICER] Status = created");
         } catch (\Exception $e) {
             $this->logger->info("[INVOICER] Status = error");
-            $this->logger->error("[INVOICER] Error was: ".$e->getMessage());
+            $this->logger->error("[INVOICER] Error was: " . $e->getMessage());
 
             if (!isset($invoiceDto)) {
                 exit(1);

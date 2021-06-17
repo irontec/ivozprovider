@@ -1,5 +1,37 @@
 # Changelog
 
+## 2.17.2
+* Endpoints:
+    - /call_forward_settings:
+        - Removed noAnswerTimeout, noAnswerTimeout[between], noAnswerTimeout[gt], noAnswerTimeout[gte], 
+          noAnswerTimeout[lt] and noAnswerTimeout[lte] filter parameters
+        - Removed numberValue, numberValue[end], numberValue[exact], numberValue[exists], numberValue[partial] 
+          and numberValue[start] filter parameters
+        - Removed _order[noAnswerTimeout] and _order[numberValue] querystring arguments
+    - /countries:
+        - Added name.ca[end], name.ca[exact], name.ca[exists], name.ca[partial] and name.ca[start] filter parameters
+        - Added name.it[end], name.it[exact], name.it[exists], name.it[partial] and name.ca[start] filter parameters
+        - Added _order[name.ca] and _order[name.it] querystring arguments
+    - /my/call_history:
+        - Added callidHash[end], callidHash[exact], callidHash[exists], callidHash[partial] and callidHash[start] filter parameters
+        - Added callid[end], callid[exact], callid[exists], callid[partial] and callid[start] filter parameters
+        - Added diversion[end], diversion[exact], diversion[exists], diversion[partial] and diversion[start] filter parameters
+        - Added referee[end], referee[exact], referee[exists], referee[partial] and referee[start] filter parameters
+        - Added referrer[end], referrer[exact], referrer[exists], referrer[partial], referrer[start] filter parameters
+        - Added xcallid[end], xcallid[exact], xcallid[exists], xcallid[partial] and xcallid[start] filter parameters
+        - Added _order[callidHash], _order[callid], _order[diversion], _order[referee], _order[referrer] and _order[xcallid] querystring arguments
+    - /residential_devices:
+        - Added transport[end], transport[exact], transport[exists], transport[partial] and transport[start] filter parameters
+        - Added _order[transport] querystring arguments
+    - /retail_accounts:
+        - Added transport[end], transport[exact], transport[exists], transport[partial] and transport[start] filter parameters
+        - Added _order[transport] querystring arguments
+    - /terminals:
+        - Added lastProvisionDate[after], lastProvisionDate[before], lastProvisionDate[exists], lastProvisionDate[start],
+          lastProvisionDate[strictly_after] and lastProvisionDate[strictly_before] filter parameters
+        - Added mac[end], mac[exact], mac[exists], mac[partial] and mac[start] filter parameters
+        - Added _order[lastProvisionDate] and _order[mac] querystring arguments
+
 ## 2.17.0
 * Models:
     - Company

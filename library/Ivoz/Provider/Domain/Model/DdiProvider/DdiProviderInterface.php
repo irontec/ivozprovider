@@ -6,6 +6,7 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
@@ -33,6 +34,8 @@ interface DdiProviderInterface extends LoggableEntityInterface
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
 
     public function getProxyTrunk(): ?ProxyTrunkInterface;
+
+    public function getMediaRelaySets(): ?MediaRelaySetInterface;
 
     public function isInitialized(): bool;
 

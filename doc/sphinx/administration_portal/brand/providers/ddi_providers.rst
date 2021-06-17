@@ -25,6 +25,12 @@ This are the fields that define a carrier:
         Selected address will be used as source address for signalling with this DDI provider. Brand operator can choose among
         addresses assigned by main operator via :ref:`Brands`. Read :ref:`Proxy Trunks` for further details.
 
+    Media relay set
+        Media-relays can be grouped in sets to reserve capacities or on a geographical purpose. Selected set will be used
+        in calls through this specific DDI Provider. This field in only seen by Global administrator (aka God).
+
+.. hint:: If you want carrier-side media handled by the same mediarelay set than client-side, select "Client's default".
+
 DDI Provider Addresses
 **********************
 

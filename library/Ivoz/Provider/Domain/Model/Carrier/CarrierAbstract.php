@@ -12,10 +12,12 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
 use Ivoz\Provider\Domain\Model\Currency\Currency;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 
 /**
 * CarrierAbstract
@@ -69,6 +71,11 @@ abstract class CarrierAbstract
      * @var ProxyTrunkInterface | null
      */
     protected $proxyTrunk;
+
+    /**
+     * @var MediaRelaySetInterface | null
+     */
+    protected $mediaRelaySets;
 
     /**
      * Constructor
@@ -161,7 +168,8 @@ abstract class CarrierAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
-            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
+            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
+            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()));
 
         $self->initChangelog();
 
@@ -188,7 +196,8 @@ abstract class CarrierAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
-            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
+            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
+            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()));
 
         return $this;
     }
@@ -209,7 +218,8 @@ abstract class CarrierAbstract
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
             ->setCurrency(Currency::entityToDto(self::getCurrency(), $depth))
-            ->setProxyTrunk(ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth));
+            ->setProxyTrunk(ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth))
+            ->setMediaRelaySets(MediaRelaySet::entityToDto(self::getMediaRelaySets(), $depth));
     }
 
     /**
@@ -226,7 +236,8 @@ abstract class CarrierAbstract
             'brandId' => self::getBrand()->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
-            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null
+            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null,
+            'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null
         ];
     }
 
@@ -354,5 +365,17 @@ abstract class CarrierAbstract
     public function getProxyTrunk(): ?ProxyTrunkInterface
     {
         return $this->proxyTrunk;
+    }
+
+    protected function setMediaRelaySets(?MediaRelaySetInterface $mediaRelaySets = null): static
+    {
+        $this->mediaRelaySets = $mediaRelaySets;
+
+        return $this;
+    }
+
+    public function getMediaRelaySets(): ?MediaRelaySetInterface
+    {
+        return $this->mediaRelaySets;
     }
 }

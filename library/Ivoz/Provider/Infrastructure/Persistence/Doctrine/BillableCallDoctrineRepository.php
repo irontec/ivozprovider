@@ -267,21 +267,28 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             return 0;
         }
 
-        $qb = $this
-            ->createQueryBuilder('self')
-            ->update($this->_entityName, 'self')
-            ->set('self.invoice', ':invoiceId')
-            ->setParameter(':invoiceId', $invoice->getId())
-            ->addCriteria(
-                CriteriaHelper::fromArray([
-                    ['id', 'in', $targetIds],
-                ])
-            );
+        $targetIdChunks = array_chunk($targetIds, 2500);
+        $affectedRows = 0;
 
-        return $this->queryRunner->execute(
-            $this->getEntityName(),
-            $qb->getQuery()
-        );
+        foreach ($targetIdChunks as $targetIds) {
+            $qb = $this
+                ->createQueryBuilder('self')
+                ->update($this->_entityName, 'self')
+                ->set('self.invoice', ':invoiceId')
+                ->setParameter(':invoiceId', $invoice->getId())
+                ->addCriteria(
+                    CriteriaHelper::fromArray([
+                        ['id', 'in', $targetIds],
+                    ])
+                );
+
+            $affectedRows += $this->queryRunner->execute(
+                $this->getEntityName(),
+                $qb->getQuery()
+            );
+        }
+
+        return $affectedRows;
     }
 
     public function getGeneratorByInvoice(InvoiceInterface $invoice)
@@ -396,18 +403,52 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
+     * @param int $fromId
+     * @param \DateTime $date
+     * @return int
+     */
+    public function getMaxIdUntilDate(int $fromId, \DateTime $date): int
+    {
+        $query =
+            'SELECT MAX(B.id) FROM '
+            . BillableCall::Class
+            . ' B WHERE B.startTime <= \'%s\''
+            . ' AND B.id > %d';
+
+        $maxId = sprintf(
+            $query,
+            $date->format(self::MYSQL_DATETIME_FORMAT),
+            $fromId
+        );
+
+        try {
+            $response = (new Query($this->_em))
+                ->setDQL($maxId)
+                ->getSingleScalarResult();
+        } catch (\Exception $e) {
+            return $fromId;
+        }
+
+        if (is_null($response)) {
+            return $fromId;
+        }
+
+        return (int) $response;
+    }
+
+    /**
      * @return int[]
      */
-    public function getIdsInRange(int $fromId, \DateTime $beforeDate, int $limit): array
+    public function getIdsInRange(int $fromId, int $untilId, int $limit): array
     {
         $query = sprintf(
             'SELECT B.id FROM '
             . BillableCall::Class
             . ' B WHERE B.id > %d'
-            . ' AND B.startTime < \'%s\''
+            . ' AND B.id <= %d'
             . ' ORDER BY B.id ASC',
             $fromId,
-            $beforeDate->format('Y-m-d H:i:s')
+            $untilId
         );
 
         $ids = (new Query($this->_em))

@@ -12,7 +12,7 @@ In order of preference:
 - GitHub: https://github.com/irontec/ivozprovider
 
 - IRC Channel `#ivozprovider
-  <https://webchat.freenode.net/?channels=ivozprovider>`_ at irc.freenode.net
+  <https://kiwiirc.com/nextclient/irc.libera.chat/#ivozprovider>`_ at irc.libera.chat
 
 - email: vozip+ivozprovider@irontec.com
 

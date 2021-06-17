@@ -4,7 +4,7 @@ Media relay sets
 Media relays are in charge of bridging RTP traffic of established calls. Like
 the Application Servers, they can scale horizontally as much as required.
 
-Media relays are organized in groups so they can be assigned to a client. Each
+Media relays are organized in groups so they can be assigned to a client/provider. Each
 element of the group has a **metric** that allows non-equal load balancing
 within the same group (i.e. media-relay1 metric 1; media-relay2 metric 2:
 the second media relay will handle two times the calls than the first one).

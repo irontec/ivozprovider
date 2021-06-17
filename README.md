@@ -51,7 +51,7 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/ar
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
 |oldstable (oasis 1.7) | [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-amd64.iso)| [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-i386.iso)|
-|stable (artemis 2.17.1) | [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.17~2.17.1-artemis-amd64.iso)| |
+|stable (artemis 2.17.2) | [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.17~2.17.2-artemis-amd64.iso)| |
 |testing (halliday 3.x) | |
 
 
@@ -69,7 +69,7 @@ You can browse online documentation in different formats:
 
 ## Feedback & Questions
 
-Any feedback is also welcomed at [#ivozprovider irc channel](https://webchat.freenode.net/?channels=ivozprovider) at irc.freenode.net
+Any feedback is also welcomed at [#ivozprovider irc channel](https://kiwiirc.com/nextclient/irc.libera.chat/#ivozprovider) at irc.libera.chat
 
 You can read frequently asked questions [here](https://github.com/irontec/ivozprovider/blob/bleeding/FAQ.md).
 

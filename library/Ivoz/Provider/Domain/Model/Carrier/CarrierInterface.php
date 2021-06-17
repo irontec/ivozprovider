@@ -7,6 +7,7 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
@@ -58,6 +59,8 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getCurrency(): ?CurrencyInterface;
 
     public function getProxyTrunk(): ?ProxyTrunkInterface;
+
+    public function getMediaRelaySets(): ?MediaRelaySetInterface;
 
     public function isInitialized(): bool;
 

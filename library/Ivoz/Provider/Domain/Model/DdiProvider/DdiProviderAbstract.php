@@ -11,9 +11,11 @@ use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
+use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
 
 /**
 * DdiProviderAbstract
@@ -52,6 +54,11 @@ abstract class DdiProviderAbstract
      * @var ProxyTrunkInterface | null
      */
     protected $proxyTrunk;
+
+    /**
+     * @var MediaRelaySetInterface | null
+     */
+    protected $mediaRelaySets;
 
     /**
      * Constructor
@@ -141,7 +148,8 @@ abstract class DdiProviderAbstract
             ->setExternallyRated($dto->getExternallyRated())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
-            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
+            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
+            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()));
 
         $self->initChangelog();
 
@@ -165,7 +173,8 @@ abstract class DdiProviderAbstract
             ->setExternallyRated($dto->getExternallyRated())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
-            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
+            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
+            ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()));
 
         return $this;
     }
@@ -183,7 +192,8 @@ abstract class DdiProviderAbstract
             ->setExternallyRated(self::getExternallyRated())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setTransformationRuleSet(TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
-            ->setProxyTrunk(ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth));
+            ->setProxyTrunk(ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth))
+            ->setMediaRelaySets(MediaRelaySet::entityToDto(self::getMediaRelaySets(), $depth));
     }
 
     /**
@@ -197,7 +207,8 @@ abstract class DdiProviderAbstract
             'externallyRated' => self::getExternallyRated(),
             'brandId' => self::getBrand()->getId(),
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null
+            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null,
+            'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null
         ];
     }
 
@@ -280,5 +291,17 @@ abstract class DdiProviderAbstract
     public function getProxyTrunk(): ?ProxyTrunkInterface
     {
         return $this->proxyTrunk;
+    }
+
+    protected function setMediaRelaySets(?MediaRelaySetInterface $mediaRelaySets = null): static
+    {
+        $this->mediaRelaySets = $mediaRelaySets;
+
+        return $this;
+    }
+
+    public function getMediaRelaySets(): ?MediaRelaySetInterface
+    {
+        return $this->mediaRelaySets;
     }
 }

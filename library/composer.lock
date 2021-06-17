@@ -906,16 +906,16 @@
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
-                "reference": "b8de89fe811e62f1dea8cf9aafda0ea45ca6f1f3"
+                "reference": "0a9a4ffdb8713d0b7f2bbc04b0bbfa2991b2a238"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/b8de89fe811e62f1dea8cf9aafda0ea45ca6f1f3",
-                "reference": "b8de89fe811e62f1dea8cf9aafda0ea45ca6f1f3",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/0a9a4ffdb8713d0b7f2bbc04b0bbfa2991b2a238",
+                "reference": "0a9a4ffdb8713d0b7f2bbc04b0bbfa2991b2a238",
                 "shasum": ""
             },
             "require": {
@@ -934,11 +934,6 @@
                 "phpunit/phpunit": "^7.0|^8.0|^9.0"
             },
             "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Bundle\\MigrationsBundle\\": ""
@@ -972,6 +967,10 @@
                 "migrations",
                 "schema"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/DoctrineMigrationsBundle/issues",
+                "source": "https://github.com/doctrine/DoctrineMigrationsBundle/tree/3.0.3"
+            },
             "funding": [
                 {
                     "url": "https://www.doctrine-project.org/sponsorship.html",
@@ -986,7 +985,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-23T15:13:22+00:00"
+            "time": "2021-03-18T21:01:51+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -2157,16 +2156,16 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.2.4",
+            "version": "4.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api.git",
-                "reference": "cf92152e8b428a021b4fcbe99812a49a84a014dd"
+                "reference": "ee81c9ec21790814ab450026115719b34cd0efaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/cf92152e8b428a021b4fcbe99812a49a84a014dd",
-                "reference": "cf92152e8b428a021b4fcbe99812a49a84a014dd",
+                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/ee81c9ec21790814ab450026115719b34cd0efaa",
+                "reference": "ee81c9ec21790814ab450026115719b34cd0efaa",
                 "shasum": ""
             },
             "require": {
@@ -2208,9 +2207,9 @@
             "description": "Api library built on api-platform for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-api/issues",
-                "source": "https://github.com/irontec/ivoz-api/tree/4.2.4"
+                "source": "https://github.com/irontec/ivoz-api/tree/4.2.6"
             },
-            "time": "2021-04-08T10:25:03+00:00"
+            "time": "2021-06-17T14:31:04+00:00"
         },
         {
             "name": "irontec/ivoz-api-bundle",
@@ -10600,7 +10599,8 @@
                 "Context",
                 "Symfony2"
             ],
-            "time": "2020-02-27T08:40:50+00:00"
+            "abandoned": true,
+            "time": "2017-12-05T13:58:49+00:00"
         },
         {
             "name": "composer/semver",

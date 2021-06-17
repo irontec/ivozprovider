@@ -36,5 +36,10 @@
         <join-column name="proxyTrunkId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="mediaRelaySets" target-entity="Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="mediaRelaySetsId" referenced-column-name="id" on-delete="SET NULL"/>
+      </join-columns>
+    </many-to-one>
   </mapped-superclass>
 </doctrine-mapping>

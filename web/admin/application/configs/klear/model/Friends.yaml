@@ -286,6 +286,8 @@ production:
                 - t38Passthrough
                 - rtpEncryption
                 - multiContact
+                - outgoingDdi
+                - alwaysApplyTransformations
               show:
                 - interCompany
     interCompany:

@@ -46,6 +46,7 @@ production:
           proxyTrunks: true
           balance: true
           proxyTrunk: true
+          mediaRelaySets: true
           statusIcon: true
         blacklist:
           externallyRated: true
@@ -55,6 +56,7 @@ production:
           balance: ${auth.brandFeatures.billing.disabled}
           acd: true
           asr: true
+          mediaRelaySets: ${auth.isNotMainOperator}
       options:
         title: _("Options")
         screens:
@@ -88,14 +90,16 @@ production:
           acd: true
           asr: true
           statusIcon: true
+          mediaRelaySets: ${auth.isNotMainOperator}
       fixedPositions: &carriersNew_fixedPositionsLink
         group0:
           label: _("Basic Configuration")
           colsPerRow: 12
           fields:
-            name: 6
-            proxyTrunks: 6
-            description: 12
+            name: 5
+            description: 7
+            proxyTrunk: 6
+            mediaRelaySets: 6
         group1:
           label: _("Extra Configuration")
           colsPerRow: 6
@@ -130,6 +134,7 @@ production:
           acd: true
           asr: true
           statusIcon: true
+          mediaRelaySets: ${auth.isNotMainOperator}
       fixedPositions:
         <<: *carriersNew_fixedPositionsLink
 
