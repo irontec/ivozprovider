@@ -11,6 +11,7 @@ import Queue from './Queue/Queue';
 import ConditionalRoute from './ConditionalRoute/ConditionalRoute';
 import Friend from './Friend/Friend';
 import ConferenceRoom from './ConferenceRoom/ConferenceRoom';
+import ExternalCallFilter from './ExternalCallFilter/ExternalCallFilter';
 import EntityInterface from 'entities/EntityInterface';
 
 interface EntityList {
@@ -30,6 +31,7 @@ const entities:EntityList = {
   ConditionalRoute,
   Friend,
   ConferenceRoom,
+  ExternalCallFilter,
 };
 
 export default entities;

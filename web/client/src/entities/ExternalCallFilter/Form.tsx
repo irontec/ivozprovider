@@ -1,9 +1,9 @@
 import defaultEntityBehavior from '../DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
-import CallAclSelectOptions from 'entities/CallAcl/SelectOptions';
-import TransformationRuleSetSelectOptions from 'entities/TransformationRuleSet/SelectOptions';
-import DdiSelectOptions from 'entities/Ddi/SelectOptions';
-import LanguageSelectOptions from 'entities/Language/SelectOptions';
+import LocutionSelectOptions from 'entities/Locution/SelectOptions';
+import CountrySelectOptions from 'entities/Country/SelectOptions';
+import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
+import UserSelectOptions from 'entities/User/SelectOptions';
 const Form = (props:any) => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
@@ -16,41 +16,48 @@ const Form = (props:any) => {
         () => {
             if (loadingFks) {
 
-                //@TODO domain
-                //@TODO interCompany
+                //@TODO schedules
+                //@TODO calendars
+                //@TODO whiteLists
+                //@TODO blackLists
 
-                CallAclSelectOptions((options:any) => {
+                LocutionSelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
                         return {
                             ...fkChoices,
-                            callACL: options,
+                            welcomeLocution: options,
+                            holidayLocution: options,
+                            outOfScheduleLocution: options,
                         }
                     });
                 });
 
-                TransformationRuleSetSelectOptions((options:any) => {
+                CountrySelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
                         return {
                             ...fkChoices,
-                            transformationRuleSet: options,
+                            holidayNumberCountry: options,
+                            outOfScheduleNumberCountry: options,
                         }
                     });
                 });
 
-                DdiSelectOptions((options:any) => {
+                ExtensionSelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
                         return {
                             ...fkChoices,
-                            outgoingDdi: options,
+                            holidayExtension: options,
+                            outOfScheduleExtension: options,
                         }
                     });
                 });
 
-                LanguageSelectOptions((options:any) => {
+                UserSelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
                         return {
                             ...fkChoices,
-                            language: options,
+                            holidayVoiceMailUser: options,
+                            outOfScheduleVoiceMailUser: options,
                         }
                     });
                 });

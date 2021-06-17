@@ -1,6 +1,5 @@
 import defaultEntityBehavior from '../DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
-import ExternalCallFilterSelectOptions from 'entities/ExternalCallFilter/SelectOptions';
 import LocutionSelectOptions from 'entities/Locution/SelectOptions';
 import IvrSelectOptions from 'entities/Ivr/SelectOptions';
 import HuntGroupSelectOptions from 'entities/HuntGroup/SelectOptions';

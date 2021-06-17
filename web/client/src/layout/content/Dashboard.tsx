@@ -74,10 +74,14 @@ const Dashboard = (props:dashboardProps) => {
                     <div>
                         <ul>
                             <li>
-                                External call filters
+                                <Link to={entities.ExternalCallFilter.path}>
+                                    {entities.ExternalCallFilter.title}
+                                </Link>
                             </li>
                             <li>
-                                Calendars
+                                <Link to={entities.Calendar.path}>
+                                    {entities.Calendar.title}
+                                </Link>
                             </li>
                             <li>
                                 Schedules
