@@ -16,6 +16,8 @@ import Schedule from './Schedule/Schedule';
 import MatchList from './MatchList/MatchList';
 import RouteLock from './RouteLock/RouteLock';
 import OutgoingDdiRule from './OutgoingDdiRule/OutgoingDdiRule';
+import PickUpGroup from './PickUpGroup/PickUpGroup';
+import CallAcl from './CallAcl/CallAcl';
 
 interface EntityList {
   [name:string]: EntityInterface
@@ -38,7 +40,9 @@ const entities:EntityList = {
   Schedule,
   MatchList,
   RouteLock,
-  OutgoingDdiRule
+  OutgoingDdiRule,
+  PickUpGroup,
+  CallAcl
 };
 
 export default entities;

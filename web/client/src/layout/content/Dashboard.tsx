@@ -115,10 +115,14 @@ const Dashboard = (props:dashboardProps) => {
                                 </Link>
                             </li>
                             <li>
-                                Pick up groups
+                                <Link to={entities.PickUpGroup.path}>
+                                    {entities.PickUpGroup.title}
+                                </Link>
                             </li>
                             <li>
-                                Call ACLs
+                                <Link to={entities.CallAcl.path}>
+                                    {entities.CallAcl.title}
+                                </Link>
                             </li>
                         </ul>
                     </div>
