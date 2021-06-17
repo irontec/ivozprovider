@@ -84,10 +84,14 @@ const Dashboard = (props:dashboardProps) => {
                                 </Link>
                             </li>
                             <li>
-                                Schedules
+                                <Link to={entities.Schedule.path}>
+                                    {entities.Schedule.title}
+                                </Link>
                             </li>
                             <li>
-                                Match Lists
+                                <Link to={entities.MatchList.path}>
+                                    {entities.MatchList.title}
+                                </Link>
                             </li>
                             <li>
                                 Route Locks

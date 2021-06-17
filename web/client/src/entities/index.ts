@@ -1,4 +1,4 @@
-
+import EntityInterface from 'entities/EntityInterface';
 import Calendar from './Calendar/Calendar';
 import BillableCall from './BillableCall/BillableCall';
 import Terminal from './Terminal/Terminal';
@@ -12,7 +12,9 @@ import ConditionalRoute from './ConditionalRoute/ConditionalRoute';
 import Friend from './Friend/Friend';
 import ConferenceRoom from './ConferenceRoom/ConferenceRoom';
 import ExternalCallFilter from './ExternalCallFilter/ExternalCallFilter';
-import EntityInterface from 'entities/EntityInterface';
+import Schedule from './Schedule/Schedule';
+import MatchList from './MatchList/MatchList';
+
 
 interface EntityList {
   [name:string]: EntityInterface
@@ -32,6 +34,8 @@ const entities:EntityList = {
   Friend,
   ConferenceRoom,
   ExternalCallFilter,
+  Schedule,
+  MatchList
 };
 
 export default entities;

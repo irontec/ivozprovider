@@ -141,6 +141,23 @@ export default class FormFieldFactory
                         margin="normal"
                     />
                 );
+            } else if ((property as ScalarProperty).format === 'time') {
+                return (
+                    <TextField
+                        name={fld}
+                        type="time"
+                        label={property.label}
+                        value={this.formik.values[fld]}
+                        disabled={disabled}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        onChange={this.formik.handleChange}
+                        error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
+                        helperText={this.formik.touched[fld] && this.formik.errors[fld]}
+                        margin="normal"
+                    />
+                );
             }
 
             return (
