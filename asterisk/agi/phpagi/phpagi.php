@@ -136,7 +136,7 @@ class AGI
      * @param string $config is the name of the config file to parse
      * @param array $optconfig is an array of configuration vars and vals, stuffed into $this->config['phpagi']
      */
-    function AGI($config = null, $optconfig = array())
+    function __construct($config = null, $optconfig = array())
     {
         // load config
         if (!is_null($config) && file_exists($config)) {
@@ -700,7 +700,7 @@ class AGI
     {
         $location = $this->source_location();
         $value = str_replace("\n", '\n', addslashes($value));
-        return $this->evaluate("SET VARIABLE $variable \"$value\" $location");
+        return $this->evaluate("SET VARIABLE $variable \"$value\"");
     }
 
     /**

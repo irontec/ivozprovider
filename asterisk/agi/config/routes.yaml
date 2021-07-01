@@ -1,75 +1,75 @@
-dialplan/users:
-  path: '/dialplan/users'
+Dialplan/Users:
+  path: '/Dialplan/Users'
   controller: 'kernel:handleRequestAction'
 
-dialplan/userstatus:
-  path: '/dialplan/userstatus'
+Dialplan/UserStatus:
+  path: '/Dialplan/UserStatus'
   controller: 'kernel:handleRequestAction'
 
-dialplan/trunks:
-  path: '/dialplan/trunks'
+Dialplan/Trunks:
+  path: '/Dialplan/Trunks'
   controller: 'kernel:handleRequestAction'
 
-dialplan/residentials:
-  path: '/dialplan/residentials'
+Dialplan/Residentials:
+  path: '/Dialplan/Residentials'
   controller: 'kernel:handleRequestAction'
 
-dialplan/retails:
-  path: '/dialplan/retails'
+Dialplan/Retails:
+  path: '/Dialplan/Retails'
   controller: 'kernel:handleRequestAction'
 
-dialplan/residentialstatus:
-  path: '/dialplan/residentialstatus'
+Dialplan/ResidentialStatus:
+  path: '/Dialplan/ResidentialStatus'
   controller: 'kernel:handleRequestAction'
 
-dialplan/friends:
-  path: '/dialplan/friends'
+Dialplan/Friends:
+  path: '/Dialplan/Friends'
   controller: 'kernel:handleRequestAction'
 
-dialplan/headers:
-  path: '/dialplan/headers'
+Dialplan/Headers:
+  path: '/Dialplan/Headers'
   controller: 'kernel:handleRequestAction'
 
-dialplan/huntgroups:
-  path: '/dialplan/huntgroups'
+Dialplan/HuntGroups:
+  path: '/Dialplan/HuntGroups'
   controller: 'kernel:handleRequestAction'
 
-dialplan/huntgroupstatus:
-  path: '/dialplan/huntgroupstatus'
+Dialplan/HuntGroupStatus:
+  path: '/Dialplan/HuntGroupStatus'
   controller: 'kernel:handleRequestAction'
 
-dialplan/huntgroupmember:
-  path: '/dialplan/huntgroupmember'
+Dialplan/HuntGroupMember:
+  path: '/Dialplan/HuntGroupMember'
   controller: 'kernel:handleRequestAction'
 
-dialplan/queues:
-  path: '/dialplan/queues'
+Dialplan/Queues:
+  path: '/Dialplan/Queues'
   controller: 'kernel:handleRequestAction'
 
-dialplan/queuestatus:
-  path: '/dialplan/queuestatus'
+Dialplan/QueueStatus:
+  path: '/Dialplan/QueueStatus'
   controller: 'kernel:handleRequestAction'
 
-dialplan/faxdial:
-  path: '/dialplan/faxdial'
+Dialplan/Faxdial:
+  path: '/Dialplan/Faxdial'
   controller: 'kernel:handleRequestAction'
 
-dialplan/faxdialstatus:
-  path: '/dialplan/faxdialstatus'
+Dialplan/FaxdialStatus:
+  path: '/Dialplan/FaxdialStatus'
   controller: 'kernel:handleRequestAction'
 
-dialplan/faxsend:
-  path: '/dialplan/faxsend'
+Dialplan/FaxSend:
+  path: '/Dialplan/FaxSend'
   controller: 'kernel:handleRequestAction'
 
-dialplan/faxsendstatus:
-  path: '/dialplan/faxsendstatus'
+Dialplan/FaxSendStatus:
+  path: '/Dialplan/FaxSendstatus'
   controller: 'kernel:handleRequestAction'
 
-dialplan/faxreceivestatus:
-  path: '/dialplan/faxreceivestatus'
+Dialplan/FaxReceiveStatus:
+  path: '/Dialplan/FaxReceiveStatus'
   controller: 'kernel:handleRequestAction'
 
-voicemail/sender:
-  path: '/voicemail/sender'
+Voicemail/Sender:
+  path: '/Voicemail/Sender'
   controller: 'kernel:handleRequestAction'
