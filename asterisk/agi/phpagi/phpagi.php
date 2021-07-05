@@ -700,7 +700,7 @@ class AGI
     {
         $location = $this->source_location();
         $value = str_replace("\n", '\n', addslashes($value));
-        return $this->evaluate("SET VARIABLE $variable \"$value\"");
+        return $this->evaluate("SET VARIABLE $variable \"$value\" $location");
     }
 
     /**
