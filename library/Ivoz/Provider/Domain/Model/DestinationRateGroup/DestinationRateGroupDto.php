@@ -28,6 +28,8 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
             unset($response['brandId']);
         }
 
+        $response['filePath'] = 'filePath';
+
         return $response;
     }
 
