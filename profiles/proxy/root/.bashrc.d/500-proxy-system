@@ -7,8 +7,8 @@ alias kamtail-proxyusers='journalctl -u kamailio@users -f -a | kamlog'
 alias kamtail-proxytrunks='journalctl -u kamailio@trunks -f -a | kamlog'
 
 # Kamcmd wrappers
-alias kamcmd-proxyusers='/usr/sbin/kamcmd -s /tmp/kamailio_proxyusers_ctl'
-alias kamcmd-proxytrunks='/usr/sbin/kamcmd -s /tmp/kamailio_proxytrunks_ctl'
+alias kamcmd-proxyusers='/usr/sbin/kamcmd -s /run/kamailio/kamailio_proxyusers_ctl'
+alias kamcmd-proxytrunks='/usr/sbin/kamcmd -s /run/kamailio/kamailio_proxytrunks_ctl'
 alias kamcmd='echo Disabled by IvozProvider, use kamcmd-proxyusers/kamcmd-proxytrunks instead, please'
 
 # kamctl wrapper to avoid using it
