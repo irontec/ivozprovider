@@ -9,7 +9,7 @@
     <unique-constraints>
       <unique-constraint name="kam_users_pua_idx" columns="etag,tuple_id,call_id,from_tag"/>
     </unique-constraints>
-    <field name="presUri" type="string" column="pres_uri" length="128" nullable="false">
+    <field name="presUri" type="string" column="pres_uri" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -39,7 +39,7 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="etag" type="string" column="etag" length="64" nullable="false">
+    <field name="etag" type="string" column="etag" length="128" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -49,7 +49,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="watcherUri" type="string" column="watcher_uri" length="128" nullable="false">
+    <field name="watcherUri" type="string" column="watcher_uri" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -59,12 +59,12 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="toTag" type="string" column="to_tag" length="64" nullable="false">
+    <field name="toTag" type="string" column="to_tag" length="128" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="fromTag" type="string" column="from_tag" length="64" nullable="false">
+    <field name="fromTag" type="string" column="from_tag" length="128" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -79,12 +79,12 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="contact" type="string" column="contact" length="128" nullable="false">
+    <field name="contact" type="string" column="contact" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="remoteContact" type="string" column="remote_contact" length="128" nullable="false">
+    <field name="remoteContact" type="string" column="remote_contact" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>

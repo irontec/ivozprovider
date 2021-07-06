@@ -6,6 +6,7 @@
     </indexes>
     <unique-constraints>
       <unique-constraint name="kam_users_presentity_idx" columns="username,domain,event,etag"/>
+      <unique-constraint name="ruid_idx" columns="ruid"/>
     </unique-constraints>
     <field name="username" type="string" column="username" length="64" nullable="false">
       <options>
@@ -22,7 +23,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="etag" type="string" column="etag" length="64" nullable="false">
+    <field name="etag" type="string" column="etag" length="128" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -42,7 +43,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="sender" type="string" column="sender" length="128" nullable="false">
+    <field name="sender" type="string" column="sender" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -51,6 +52,11 @@
       <options>
         <option name="unsigned"/>
         <option name="default">0</option>
+      </options>
+    </field>
+    <field name="ruid" type="string" column="ruid" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
       </options>
     </field>
   </mapped-superclass>

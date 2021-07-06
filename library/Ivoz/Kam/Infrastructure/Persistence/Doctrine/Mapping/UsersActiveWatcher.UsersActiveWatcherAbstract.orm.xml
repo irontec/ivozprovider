@@ -10,7 +10,7 @@
     <unique-constraints>
       <unique-constraint name="kam_users_active_watchers_idx" columns="callid,to_tag,from_tag"/>
     </unique-constraints>
-    <field name="presentityUri" type="string" column="presentity_uri" length="128" nullable="false">
+    <field name="presentityUri" type="string" column="presentity_uri" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -46,12 +46,12 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="toTag" type="string" column="to_tag" length="64" nullable="false">
+    <field name="toTag" type="string" column="to_tag" length="128" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="fromTag" type="string" column="from_tag" length="64" nullable="false">
+    <field name="fromTag" type="string" column="from_tag" length="128" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -71,7 +71,7 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="contact" type="string" column="contact" length="128" nullable="false">
+    <field name="contact" type="string" column="contact" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -108,7 +108,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="localContact" type="string" column="local_contact" length="128" nullable="false">
+    <field name="localContact" type="string" column="local_contact" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>

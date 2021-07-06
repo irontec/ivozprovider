@@ -52,7 +52,7 @@
         <option name="default"/>
       </options>
     </field>
-    <field name="authProxy" type="string" column="auth_proxy" length="64" nullable="false">
+    <field name="authProxy" type="string" column="auth_proxy" length="255" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="default"/>
@@ -77,6 +77,12 @@
       </options>
     </field>
     <field name="authHa1" type="string" column="auth_ha1" length="128" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="socket" type="string" column="socket" length="128" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="default"/>

@@ -34,7 +34,7 @@
         <option name="default">0</option>
       </options>
     </field>
-    <field name="avalue" type="string" column="avalue" length="255" nullable="false">
+    <field name="avalue" type="string" column="avalue" length="512" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="default"/>

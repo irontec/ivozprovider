@@ -4,7 +4,7 @@
     <unique-constraints>
       <unique-constraint name="kam_users_watchers_idx" columns="presentity_uri,watcher_username,watcher_domain,event"/>
     </unique-constraints>
-    <field name="presentityUri" type="string" column="presentity_uri" length="128" nullable="false">
+    <field name="presentityUri" type="string" column="presentity_uri" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
