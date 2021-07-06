@@ -52,6 +52,8 @@ interface TrunksUacregInterface extends LoggableEntityInterface
 
     public function getAuthHa1(): string;
 
+    public function getSocket(): string;
+
     public function setDdiProviderRegistration(DdiProviderRegistration $ddiProviderRegistration): static;
 
     public function getDdiProviderRegistration(): DdiProviderRegistration;

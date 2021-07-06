@@ -436,7 +436,7 @@ abstract class UsersActiveWatcherAbstract
 
     protected function setPresentityUri(string $presentityUri): static
     {
-        Assertion::maxLength($presentityUri, 128, 'presentityUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($presentityUri, 255, 'presentityUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->presentityUri = $presentityUri;
 
@@ -536,7 +536,7 @@ abstract class UsersActiveWatcherAbstract
 
     protected function setToTag(string $toTag): static
     {
-        Assertion::maxLength($toTag, 64, 'toTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($toTag, 128, 'toTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->toTag = $toTag;
 
@@ -550,7 +550,7 @@ abstract class UsersActiveWatcherAbstract
 
     protected function setFromTag(string $fromTag): static
     {
-        Assertion::maxLength($fromTag, 64, 'fromTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($fromTag, 128, 'fromTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->fromTag = $fromTag;
 
@@ -602,7 +602,7 @@ abstract class UsersActiveWatcherAbstract
 
     protected function setContact(string $contact): static
     {
-        Assertion::maxLength($contact, 128, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($contact, 255, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->contact = $contact;
 
@@ -698,7 +698,7 @@ abstract class UsersActiveWatcherAbstract
 
     protected function setLocalContact(string $localContact): static
     {
-        Assertion::maxLength($localContact, 128, 'localContact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($localContact, 255, 'localContact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->localContact = $localContact;
 

@@ -59,6 +59,11 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     private $priority = 0;
 
     /**
+     * @var string|null
+     */
+    private $ruid;
+
+    /**
      * @var int
      */
     private $id;
@@ -87,6 +92,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
             'body' => 'body',
             'sender' => 'sender',
             'priority' => 'priority',
+            'ruid' => 'ruid',
             'id' => 'id'
         ];
     }
@@ -106,6 +112,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
             'body' => $this->getBody(),
             'sender' => $this->getSender(),
             'priority' => $this->getPriority(),
+            'ruid' => $this->getRuid(),
             'id' => $this->getId()
         ];
 
@@ -229,6 +236,18 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     public function getPriority(): ?int
     {
         return $this->priority;
+    }
+
+    public function setRuid(?string $ruid): static
+    {
+        $this->ruid = $ruid;
+
+        return $this;
+    }
+
+    public function getRuid(): ?string
+    {
+        return $this->ruid;
     }
 
     public function setId($id): static

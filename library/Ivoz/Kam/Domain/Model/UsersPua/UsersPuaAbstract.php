@@ -344,7 +344,7 @@ abstract class UsersPuaAbstract
 
     protected function setPresUri(string $presUri): static
     {
-        Assertion::maxLength($presUri, 128, 'presUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($presUri, 255, 'presUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->presUri = $presUri;
 
@@ -420,7 +420,7 @@ abstract class UsersPuaAbstract
 
     protected function setEtag(string $etag): static
     {
-        Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($etag, 128, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->etag = $etag;
 
@@ -450,7 +450,7 @@ abstract class UsersPuaAbstract
 
     protected function setWatcherUri(string $watcherUri): static
     {
-        Assertion::maxLength($watcherUri, 128, 'watcherUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($watcherUri, 255, 'watcherUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->watcherUri = $watcherUri;
 
@@ -478,7 +478,7 @@ abstract class UsersPuaAbstract
 
     protected function setToTag(string $toTag): static
     {
-        Assertion::maxLength($toTag, 64, 'toTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($toTag, 128, 'toTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->toTag = $toTag;
 
@@ -492,7 +492,7 @@ abstract class UsersPuaAbstract
 
     protected function setFromTag(string $fromTag): static
     {
-        Assertion::maxLength($fromTag, 64, 'fromTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($fromTag, 128, 'fromTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->fromTag = $fromTag;
 
@@ -534,7 +534,7 @@ abstract class UsersPuaAbstract
 
     protected function setContact(string $contact): static
     {
-        Assertion::maxLength($contact, 128, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($contact, 255, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->contact = $contact;
 
@@ -548,7 +548,7 @@ abstract class UsersPuaAbstract
 
     protected function setRemoteContact(string $remoteContact): static
     {
-        Assertion::maxLength($remoteContact, 128, 'remoteContact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($remoteContact, 255, 'remoteContact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->remoteContact = $remoteContact;
 

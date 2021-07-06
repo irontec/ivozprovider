@@ -96,6 +96,11 @@ abstract class TrunksUacregAbstract
     protected $authHa1 = '';
 
     /**
+     * @var string
+     */
+    protected $socket = '';
+
+    /**
      * @var DdiProviderRegistration
      * inversedBy trunksUacreg
      */
@@ -122,7 +127,8 @@ abstract class TrunksUacregAbstract
         $expires,
         $flags,
         $regDelay,
-        $authHa1
+        $authHa1,
+        $socket
     ) {
         $this->setLUuid($lUuid);
         $this->setLUsername($lUsername);
@@ -137,6 +143,7 @@ abstract class TrunksUacregAbstract
         $this->setFlags($flags);
         $this->setRegDelay($regDelay);
         $this->setAuthHa1($authHa1);
+        $this->setSocket($socket);
     }
 
     abstract public function getId();
@@ -220,7 +227,8 @@ abstract class TrunksUacregAbstract
             $dto->getExpires(),
             $dto->getFlags(),
             $dto->getRegDelay(),
-            $dto->getAuthHa1()
+            $dto->getAuthHa1(),
+            $dto->getSocket()
         );
 
         $self
@@ -257,6 +265,7 @@ abstract class TrunksUacregAbstract
             ->setFlags($dto->getFlags())
             ->setRegDelay($dto->getRegDelay())
             ->setAuthHa1($dto->getAuthHa1())
+            ->setSocket($dto->getSocket())
             ->setDdiProviderRegistration($fkTransformer->transform($dto->getDdiProviderRegistration()))
             ->setBrand($fkTransformer->transform($dto->getBrand()));
 
@@ -284,6 +293,7 @@ abstract class TrunksUacregAbstract
             ->setFlags(self::getFlags())
             ->setRegDelay(self::getRegDelay())
             ->setAuthHa1(self::getAuthHa1())
+            ->setSocket(self::getSocket())
             ->setDdiProviderRegistration(DdiProviderRegistration::entityToDto(self::getDdiProviderRegistration(), $depth))
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
@@ -307,6 +317,7 @@ abstract class TrunksUacregAbstract
             'flags' => self::getFlags(),
             'reg_delay' => self::getRegDelay(),
             'auth_ha1' => self::getAuthHa1(),
+            'socket' => self::getSocket(),
             'ddiProviderRegistrationId' => self::getDdiProviderRegistration()->getId(),
             'brandId' => self::getBrand()->getId()
         ];
@@ -426,7 +437,7 @@ abstract class TrunksUacregAbstract
 
     protected function setAuthProxy(string $authProxy): static
     {
-        Assertion::maxLength($authProxy, 64, 'authProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($authProxy, 255, 'authProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->authProxy = $authProxy;
 
@@ -486,6 +497,20 @@ abstract class TrunksUacregAbstract
     public function getAuthHa1(): string
     {
         return $this->authHa1;
+    }
+
+    protected function setSocket(string $socket): static
+    {
+        Assertion::maxLength($socket, 128, 'socket value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->socket = $socket;
+
+        return $this;
+    }
+
+    public function getSocket(): string
+    {
+        return $this->socket;
     }
 
     public function setDdiProviderRegistration(DdiProviderRegistration $ddiProviderRegistration): static

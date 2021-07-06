@@ -64,6 +64,11 @@ abstract class UsersPresentityAbstract
     protected $priority = 0;
 
     /**
+     * @var string | null
+     */
+    protected $ruid;
+
+    /**
      * Constructor
      */
     protected function __construct(
@@ -168,7 +173,8 @@ abstract class UsersPresentityAbstract
             $dto->getPriority()
         );
 
-        ;
+        $self
+            ->setRuid($dto->getRuid());
 
         $self->initChangelog();
 
@@ -195,7 +201,8 @@ abstract class UsersPresentityAbstract
             ->setReceivedTime($dto->getReceivedTime())
             ->setBody($dto->getBody())
             ->setSender($dto->getSender())
-            ->setPriority($dto->getPriority());
+            ->setPriority($dto->getPriority())
+            ->setRuid($dto->getRuid());
 
         return $this;
     }
@@ -216,7 +223,8 @@ abstract class UsersPresentityAbstract
             ->setReceivedTime(self::getReceivedTime())
             ->setBody(self::getBody())
             ->setSender(self::getSender())
-            ->setPriority(self::getPriority());
+            ->setPriority(self::getPriority())
+            ->setRuid(self::getRuid());
     }
 
     /**
@@ -233,7 +241,8 @@ abstract class UsersPresentityAbstract
             'received_time' => self::getReceivedTime(),
             'body' => self::getBody(),
             'sender' => self::getSender(),
-            'priority' => self::getPriority()
+            'priority' => self::getPriority(),
+            'ruid' => self::getRuid()
         ];
     }
 
@@ -281,7 +290,7 @@ abstract class UsersPresentityAbstract
 
     protected function setEtag(string $etag): static
     {
-        Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($etag, 128, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->etag = $etag;
 
@@ -331,7 +340,7 @@ abstract class UsersPresentityAbstract
 
     protected function setSender(string $sender): static
     {
-        Assertion::maxLength($sender, 128, 'sender value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($sender, 255, 'sender value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->sender = $sender;
 
@@ -353,5 +362,21 @@ abstract class UsersPresentityAbstract
     public function getPriority(): int
     {
         return $this->priority;
+    }
+
+    protected function setRuid(?string $ruid = null): static
+    {
+        if (!is_null($ruid)) {
+            Assertion::maxLength($ruid, 64, 'ruid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->ruid = $ruid;
+
+        return $this;
+    }
+
+    public function getRuid(): ?string
+    {
+        return $this->ruid;
     }
 }

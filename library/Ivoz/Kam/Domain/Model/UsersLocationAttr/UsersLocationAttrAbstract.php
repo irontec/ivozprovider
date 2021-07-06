@@ -286,7 +286,7 @@ abstract class UsersLocationAttrAbstract
 
     protected function setAvalue(string $avalue): static
     {
-        Assertion::maxLength($avalue, 255, 'avalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($avalue, 512, 'avalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->avalue = $avalue;
 

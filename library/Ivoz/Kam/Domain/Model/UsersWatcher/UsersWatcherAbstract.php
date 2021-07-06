@@ -218,7 +218,7 @@ abstract class UsersWatcherAbstract
 
     protected function setPresentityUri(string $presentityUri): static
     {
-        Assertion::maxLength($presentityUri, 128, 'presentityUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($presentityUri, 255, 'presentityUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->presentityUri = $presentityUri;
 

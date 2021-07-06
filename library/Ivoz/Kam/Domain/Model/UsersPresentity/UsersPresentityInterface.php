@@ -28,5 +28,7 @@ interface UsersPresentityInterface extends EntityInterface
 
     public function getPriority(): int;
 
+    public function getRuid(): ?string;
+
     public function isInitialized(): bool;
 }

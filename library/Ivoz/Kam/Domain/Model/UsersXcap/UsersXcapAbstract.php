@@ -281,7 +281,7 @@ abstract class UsersXcapAbstract
 
     protected function setEtag(string $etag): static
     {
-        Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($etag, 128, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->etag = $etag;
 
