@@ -50,12 +50,12 @@ Dialplan/QueueStatus:
   path: '/Dialplan/QueueStatus'
   controller: 'kernel:handleRequestAction'
 
-Dialplan/Faxdial:
-  path: '/Dialplan/Faxdial'
+Dialplan/FaxDial:
+  path: '/Dialplan/FaxDial'
   controller: 'kernel:handleRequestAction'
 
-Dialplan/FaxdialStatus:
-  path: '/Dialplan/FaxdialStatus'
+Dialplan/FaxDialStatus:
+  path: '/Dialplan/FaxDialStatus'
   controller: 'kernel:handleRequestAction'
 
 Dialplan/FaxSend:
@@ -63,7 +63,7 @@ Dialplan/FaxSend:
   controller: 'kernel:handleRequestAction'
 
 Dialplan/FaxSendStatus:
-  path: '/Dialplan/FaxSendstatus'
+  path: '/Dialplan/FaxSendStatus'
   controller: 'kernel:handleRequestAction'
 
 Dialplan/FaxReceiveStatus:
