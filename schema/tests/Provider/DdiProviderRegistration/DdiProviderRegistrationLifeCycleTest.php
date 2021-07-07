@@ -130,7 +130,8 @@ class DdiProviderRegistrationLifeCycleTest extends KernelTestCase
             'id' => 2,
             'auth_ha1' => '',
             'flags' => 0,
-            'reg_delay' => 0.
+            'reg_delay' => 0,
+            'socket' => ''
         ];
 
         $this->assertEquals(
