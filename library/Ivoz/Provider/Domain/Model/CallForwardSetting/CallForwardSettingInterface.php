@@ -52,6 +52,8 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      */
     public function getRouteType();
 
+    public function getCallForwardTarget();
+
     /**
      * Get callTypeFilter
      *
