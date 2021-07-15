@@ -66,7 +66,23 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
-                'name' => 'name'
+                'name' => 'name',
+
+                'holidayTargetType' => 'holidayTargetType',
+                'holidayNumberValue' => 'holidayNumberValue',
+                'holidayLocutionId' => 'holidayLocution',
+                'holidayExtensionId' => 'holidayExtension',
+                'holidayVoiceMailUserId' => 'holidayVoiceMailUser',
+                'holidayNumberCountryId' => 'holidayNumberCountry',
+
+                'outOfScheduleTargetType' => 'outOfScheduleTargetType',
+                'outOfScheduleNumberValue' => 'outOfScheduleNumberValue',
+                'outOfScheduleLocutionId' => 'outOfScheduleLocution',
+                'outOfScheduleExtensionId' => 'outOfScheduleExtension',
+                'outOfScheduleVoiceMailUserId' => 'outOfScheduleVoiceMailUser',
+                'outOfScheduleNumberCountryId' => 'outOfScheduleNumberCountry'
+
+
             ];
         }
 

@@ -30,9 +30,23 @@ class DdiDto extends DdiDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
+                'countryId' => 'country',
                 'ddi' => 'ddi',
                 'ddie164' => 'ddie164',
-                'routeType' => 'routeType'
+                'externalCallFilterId' => 'externalCallFilter',
+                'routeType' => 'routeType',
+                'friendValue' => 'friendValue',
+                'conferenceRoomId' => 'conferenceRoom',
+                'languageId' => 'language',
+                'queueId' => 'queue',
+                'userId' => 'user',
+                'ivrId' => 'ivr',
+                'huntGroupId' => 'huntGroup',
+                'faxId' => 'fax',
+                'ddiProviderId' => 'ddiProvider',
+                'residentialDeviceId' => 'residentialDevice',
+                'conditionalRouteId' => 'conditionalRoute',
+                'retailAccountId' => 'retailAccount'
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

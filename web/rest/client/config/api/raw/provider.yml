@@ -615,6 +615,12 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
       required:
       - company
 
+Ivoz\Provider\Domain\Model\Domain\Domain:
+  itemOperations: []
+  collectionOperations: []
+  attributes:
+    access_control: 'FALSE'
+
 Ivoz\Provider\Domain\Model\Extension\Extension:
   collectionOperations:
     get: ~

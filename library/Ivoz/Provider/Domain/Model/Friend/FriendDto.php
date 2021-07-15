@@ -97,7 +97,10 @@ class FriendDto extends FriendDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
-                'name' => 'name'
+                'name' => 'name',
+                'domainId' => 'domain',
+                'description' => 'description',
+                'priority' => 'priority',
             ];
         }
 
