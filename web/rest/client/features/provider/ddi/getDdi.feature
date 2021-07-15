@@ -18,9 +18,22 @@ Feature: Retrieve Ddis
               "ddi": "123",
               "ddie164": "+34123",
               "routeType": null,
-              "id": 1
+              "friendValue": "",
+              "id": 1,
+              "conferenceRoom": null,
+              "language": null,
+              "queue": null,
+              "externalCallFilter": null,
+              "user": null,
+              "ivr": null,
+              "huntGroup": null,
+              "fax": null,
+              "country": 68,
+              "residentialDevice": null,
+              "conditionalRoute": null,
+              "retailAccount": null
           }
-      ] 
+      ]
     """
 
   Scenario: Retrieve certain Ddi json

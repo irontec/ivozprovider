@@ -16,11 +16,41 @@ Feature: Retrieve IVRs
       [
           {
               "name": "testIvrCustom",
-              "id": 1
+              "timeout": 6,
+              "allowExtensions": false,
+              "noInputRouteType": "number",
+              "noInputNumberValue": "946002020",
+              "errorRouteType": "voicemail",
+              "errorNumberValue": null,
+              "id": 1,
+              "noInputLocution": null,
+              "errorLocution": null,
+              "successLocution": 1,
+              "noInputExtension": null,
+              "errorExtension": null,
+              "noInputVoiceMailUser": null,
+              "errorVoiceMailUser": 1,
+              "noInputNumberCountry": 68,
+              "errorNumberCountry": null
           },
           {
               "name": "testIvrCustom2",
-              "id": 2
+              "timeout": 6,
+              "allowExtensions": false,
+              "noInputRouteType": "extension",
+              "noInputNumberValue": null,
+              "errorRouteType": "voicemail",
+              "errorNumberValue": null,
+              "id": 2,
+              "noInputLocution": null,
+              "errorLocution": null,
+              "successLocution": 1,
+              "noInputExtension": 1,
+              "errorExtension": null,
+              "noInputVoiceMailUser": null,
+              "errorVoiceMailUser": 1,
+              "noInputNumberCountry": null,
+              "errorNumberCountry": null
           }
       ]
     """

@@ -17,7 +17,10 @@ Feature: Retrieve locutions
           {
               "name": "testLocution",
               "status": null,
-              "id": 1
+              "id": 1,
+              "originalFile": {
+                  "baseName": "locution.mp3"
+              }
           }
       ]
     """

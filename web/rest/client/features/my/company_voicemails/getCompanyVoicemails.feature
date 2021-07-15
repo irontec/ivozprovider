@@ -17,12 +17,18 @@ Feature: Retrieve company voicemails
           {
               "name": "Alice",
               "lastname": "Allison",
-              "id": 1
+              "id": 1,
+              "terminal": 1,
+              "extension": null,
+              "outgoingDdi": null
           },
           {
               "name": "Bob",
               "lastname": "Bobson",
-              "id": 2
+              "id": 2,
+              "terminal": 2,
+              "extension": null,
+              "outgoingDdi": null
           }
       ]
     """
