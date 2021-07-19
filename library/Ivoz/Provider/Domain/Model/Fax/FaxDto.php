@@ -15,7 +15,8 @@ class FaxDto extends FaxDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'email' => 'email',
-                'sendByEmail' => 'sendByEmail'
+                'sendByEmail' => 'sendByEmail',
+                'outgoingDdiId' => 'outgoingDdi'
             ];
         }
 

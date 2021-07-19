@@ -12,7 +12,7 @@ class RatingPlanGroupDto extends RatingPlanGroupDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
-                'name' => ['en','es'],
+                'name' => ['en','es','ca','it'],
                 'brandId' => 'brand',
                 'currencyId' => 'currency'
             ];

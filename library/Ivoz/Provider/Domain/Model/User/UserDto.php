@@ -74,6 +74,9 @@ class UserDto extends UserDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'lastname' => 'lastname',
+                'terminalId' => 'terminal',
+                'extensionId' => 'extension',
+                'outgoingDdiId' => 'outgoingDdi',
             ];
 
             if ($role === 'ROLE_BRAND_ADMIN') {

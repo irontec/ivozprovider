@@ -17,6 +17,7 @@ Feature: Retrieve conference rooms
           {
               "name": "testConferenceRoom",
               "pinProtected": true,
+              "pinCode": "4321",
               "maxMembers": 1,
               "id": 1
           }

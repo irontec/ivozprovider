@@ -18,7 +18,8 @@ Feature: Retrieve faxes status
               "name": "Test Fax",
               "email": null,
               "sendByEmail": false,
-              "id": 1
+              "id": 1,
+              "outgoingDdi": null
           }
       ]
     """

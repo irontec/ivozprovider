@@ -33,7 +33,22 @@ class IvrDto extends IvrDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
-                'name' => 'name'
+                'name' => 'name',
+                'timeout' => 'timeout',
+                'allowExtensions' => 'allowExtensions',
+                'noInputRouteType' => 'noInputRouteType',
+                'noInputNumberValue' => 'noInputNumberValue',
+                'errorRouteType' => 'errorRouteType',
+                'errorNumberValue' => 'errorNumberValue',
+                'noInputLocutionId' => 'noInputLocution',
+                'errorLocutionId' => 'errorLocution',
+                'successLocutionId' => 'successLocution',
+                'noInputExtensionId' => 'noInputExtension',
+                'errorExtensionId' => 'errorExtension',
+                'noInputVoiceMailUserId' => 'noInputVoiceMailUser',
+                'errorVoiceMailUserId' => 'errorVoiceMailUser',
+                'noInputNumberCountryId' => 'noInputNumberCountry',
+                'errorNumberCountryId' => 'errorNumberCountry'
             ];
         }
 

@@ -14,7 +14,8 @@ class OutgoingDdiRuleDto extends OutgoingDdiRuleDtoAbstract
             return [
                 'id' => 'id',
                 'name' => 'name',
-                'defaultAction' => 'defaultAction'
+                'defaultAction' => 'defaultAction',
+                'forcedDdiId' => 'forcedDdi'
             ];
         }
 

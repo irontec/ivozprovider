@@ -18,7 +18,8 @@ class LocutionDto extends LocutionDtoAbstract
             return [
                 'id' => 'id',
                 'name' => 'name',
-                'status' => 'status'
+                'status' => 'status',
+                'originalFile' => ['baseName'],
             ];
         }
 

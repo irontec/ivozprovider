@@ -16,6 +16,11 @@ Feature: Retrieve queues
       [
           {
               "name": "testQueue",
+              "maxWaitTime": 20,
+              "maxlen": 5,
+              "memberCallRest": 0,
+              "memberCallTimeout": 1,
+              "strategy": "rrmemory",
               "weight": 5,
               "id": 1
           }

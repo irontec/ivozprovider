@@ -14,7 +14,12 @@ class QueueDto extends QueueDtoAbstract
             return [
                 'id' => 'id',
                 'name' => 'name',
-                'weight' => 'weight'
+                'weight' => 'weight',
+                'strategy' => 'strategy',
+                'memberCallTimeout' => 'memberCallTimeout',
+                'memberCallRest' => 'memberCallRest',
+                'maxWaitTime' => 'maxWaitTime',
+                'maxlen' => 'maxlen',
             ];
         }
 

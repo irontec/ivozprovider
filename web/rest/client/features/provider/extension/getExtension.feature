@@ -16,15 +16,45 @@ Feature: Retrieve extensions
       [
           {
               "number": "101",
-              "id": 1
+              "routeType": "user",
+              "numberValue": null,
+              "friendValue": null,
+              "id": 1,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": 1,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": null
           },
           {
               "number": "102",
-              "id": 2
+              "routeType": "user",
+              "numberValue": null,
+              "friendValue": null,
+              "id": 2,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": 2,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": null
           },
           {
               "number": "12346",
-              "id": 3
+              "routeType": "number",
+              "numberValue": "946006060",
+              "friendValue": null,
+              "id": 3,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": null,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": 68
           }
       ]
     """

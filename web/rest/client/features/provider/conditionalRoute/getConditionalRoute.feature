@@ -17,12 +17,34 @@ Feature: Retrieve conditional routes
           {
               "name": "testConditional",
               "routetype": "user",
-              "id": 1
+              "numbervalue": null,
+              "friendvalue": null,
+              "id": 1,
+              "ivr": null,
+              "huntGroup": null,
+              "voicemailUser": null,
+              "user": 1,
+              "queue": null,
+              "locution": null,
+              "conferenceRoom": null,
+              "extension": null,
+              "numberCountry": null
           },
           {
               "name": "testConditional2",
               "routetype": "user",
-              "id": 2
+              "numbervalue": null,
+              "friendvalue": null,
+              "id": 2,
+              "ivr": null,
+              "huntGroup": null,
+              "voicemailUser": null,
+              "user": 2,
+              "queue": null,
+              "locution": null,
+              "conferenceRoom": null,
+              "extension": null,
+              "numberCountry": null
           }
       ]
     """

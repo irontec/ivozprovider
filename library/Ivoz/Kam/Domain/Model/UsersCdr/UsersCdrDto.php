@@ -19,8 +19,17 @@ class UsersCdrDto extends UsersCdrDtoAbstract
                 'duration' => 'duration',
                 'direction' => 'direction',
                 'caller' => 'caller',
-                'callee' => 'callee'
+                'callee' => 'callee',
             ];
+
+            if ($role !== 'ROLE_COMPANY_USER') {
+                $response += [
+                    'userId' => 'user',
+                    'friendId' => 'friend',
+                    'residentialDeviceId' => 'residentialDevice',
+                    'retailAccountId' => 'retailAccount'
+                ];
+            }
         } else {
             $response = parent::getPropertyMap(...func_get_args());
         }

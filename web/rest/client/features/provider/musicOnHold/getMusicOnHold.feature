@@ -17,7 +17,10 @@ Feature: Retrieve music on holds
           {
               "name": "Something good",
               "status": null,
-              "id": 2
+              "id": 2,
+              "originalFile": {
+                  "baseName": null
+              }
           }
       ]
     """
