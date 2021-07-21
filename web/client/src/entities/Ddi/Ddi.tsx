@@ -3,6 +3,22 @@ import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import Form from './Form';
+import genericForeignKeyResolver, { remapFk } from 'services/genericForeigKeyResolver';
+import entities from '../index';
+import EntityService from 'services/Entity/EntityService';
+
+const allRoutableFields = [
+    'ivr',
+    'huntGroup',
+    'user',
+    'fax',
+    'conferenceRoom',
+    'friendValue',
+    'queue',
+    'residentialDevice',
+    'conditionalRoute',
+    'retailAccount',
+];
 
 const properties:PropertiesList = {
     'ddi': {
@@ -14,7 +30,6 @@ const properties:PropertiesList = {
     'routeType': {
         label: _('Route type'),
         enum: {
-            '__null__': _("Unassigned"),
             'user': _('User'),
             'ivr': _('IVR'),
             'huntGroup': _('Hunt Group'),
@@ -25,6 +40,53 @@ const properties:PropertiesList = {
             'residential': _('Residential Device'),
             'conditional': _('Conditional Route'),
             'retail': _('Retail Account'),
+        },
+        'null': _("Unassigned"),
+        visualToggle: {
+            '__null__':{
+                show: [],
+                hide: allRoutableFields,
+            },
+            'user': {
+                show: [ 'user' ],
+                hide: allRoutableFields,
+            },
+            'ivr': {
+                show: [ 'ivr' ],
+                hide: allRoutableFields,
+            },
+            'huntGroup': {
+                show: [ 'huntGroup' ],
+                hide: allRoutableFields,
+            },
+            'fax': {
+                show: [ 'fax' ],
+                hide: allRoutableFields,
+            },
+            'conferenceRoom': {
+                show: [ 'conferenceRoom' ],
+                hide: allRoutableFields,
+            },
+            'friend': {
+                show: [ 'friendValue' ],
+                hide: allRoutableFields,
+            },
+            'queue': {
+                show: [ 'queue' ],
+                hide: allRoutableFields,
+            },
+            'residential': {
+                show: [ 'residentialDevice', 'recordCalls' ],
+                hide: allRoutableFields,
+            },
+            'conditional': {
+                show: [ 'conditionalRoute' ],
+                hide: allRoutableFields,
+            },
+            'retail': {
+                show: [ 'retailAccount' ],
+                hide: allRoutableFields,
+            },
         }
     },
     'recordCalls': {
@@ -56,11 +118,6 @@ const properties:PropertiesList = {
     'friendValue': {
         label: _('Friend value'),
     },
-    'ddiProvider': {
-        //@TODO missing in the API
-        label: _('DDI Provider'),
-        helpText: _("This assignment has no functional purpose, it is just for DDI Provider <-> DDI navigation in some brand level sections.")
-    },
     'country': {
         label: _('Country'),
     },
@@ -81,14 +138,172 @@ const properties:PropertiesList = {
     },
 };
 
+const columns = [
+    'country',
+    'ddi',
+    'externalCallFilter',
+    'routeType',
+    'target',
+];
+
+async function foreignKeyResolver(data: any, entityService: EntityService) {
+
+    const promises= [];
+    const {
+        User, Ivr, HuntGroup, ConferenceRoom, Queue, ConditionalRoute,
+        Fax, ResidentialDevice, ExternalCallFilter
+    } = entities;
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'externalCallFilter',
+            ExternalCallFilter.path,
+            ExternalCallFilter.toStr
+        )
+    );
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'user',
+            User.path,
+            User.toStr
+        )
+    );
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'ivr',
+            Ivr.path,
+            Ivr.toStr,
+        )
+    );
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'huntGroup',
+            HuntGroup.path,
+            HuntGroup.toStr,
+        )
+    );
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'fax',
+            Fax.path,
+            Fax.toStr,
+        )
+    );
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'conferenceRoom',
+            ConferenceRoom.path,
+            ConferenceRoom.toStr,
+        )
+    );
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'residentialDevice',
+            ResidentialDevice.path,
+            ResidentialDevice.toStr,
+        )
+    );
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'queue',
+            Queue.path,
+            Queue.toStr,
+        )
+    );
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'conditionalRoute',
+            ConditionalRoute.path,
+            ConditionalRoute.toStr,
+        )
+    );
+
+    await Promise.all(promises);
+
+
+    for (const idx in data) {
+
+        switch(data[idx].routeType) {
+
+            case 'user':
+                remapFk(data[idx], 'user', 'target');
+                break;
+            case 'ivr':
+                remapFk(data[idx], 'ivr', 'target');
+                break;
+            case 'huntGroup':
+                remapFk(data[idx], 'huntGroup', 'target');
+                break;
+            case 'fax':
+                remapFk(data[idx], 'fax', 'target');
+                break;
+            case 'conferenceRoom':
+                remapFk(data[idx], 'conferenceRoom', 'target');
+                break;
+            case 'friend':
+                remapFk(data[idx], 'friendValue', 'target');
+                break;
+            case 'queue':
+                remapFk(data[idx], 'queue', 'target');
+                break;
+            case 'residential':
+                remapFk(data[idx], 'residentialDevice', 'target');
+                break;
+            case 'conditional':
+                remapFk(data[idx], 'conditionalRoute', 'target');
+                break;
+            case 'retail':
+                remapFk(data[idx], 'retailAccount', 'target');
+                break;
+            default:
+                console.error('Unkown route type ' + data[idx].routeType);
+                data[idx].target = '';
+                break;
+        }
+
+        delete data[idx].user;
+        delete data[idx].ivr;
+        delete data[idx].huntGroup;
+        delete data[idx].fax;
+        delete data[idx].conferenceRoom;
+        delete data[idx].residentialDevice;
+        delete data[idx].friendValue;
+        delete data[idx].queue;
+        delete data[idx].conditionalRoute;
+        delete data[idx].retailAccount;
+    }
+
+    return data;
+}
+
 const ddi:EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Ddi',
     title: _('DDI', {count: 2}),
     path: '/ddis',
+    toStr: (row:any) => row.ddie164,
+    columns,
     properties,
-    Form
+    Form,
+    foreignKeyResolver
 };
 
 export default ddi;

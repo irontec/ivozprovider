@@ -4,19 +4,15 @@ import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 
 const properties:PropertiesList = {
-    'name': {
-        label: _('Name'),
-    },
-    //@TODO originalFile
 };
 
-const musicOnHold:EntityInterface = {
+const residentialDevice:EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
-    iden: 'MusicOnHold',
-    title: _('Music on hold', {count: 2}),
-    path: '/music_on_holds',
-    properties
+    iden: 'ResidentialDevice',
+    title: _('Residential device', {count: 2}),
+    path: '/residential_devices',
+    properties,
 };
 
-export default musicOnHold;
+export default residentialDevice;

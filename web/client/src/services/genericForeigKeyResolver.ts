@@ -1,8 +1,12 @@
 import ApiClient from './Api/ApiClient';
 
-type AsyncFunction = (value: any) => Promise<string>;
-
-export default async function genericForeignKeyResolver(data: any, fkFld: string, entityEndpoint: string, fkIdenFld: string, callback?: AsyncFunction) {
+export default async function genericForeignKeyResolver(
+    data: any,
+    fkFld: string,
+    entityEndpoint: string,
+    toStr: Function,
+    addLink: boolean = true
+) {
     const ids: Array<number> = [];
     for (const idx in data) {
         if (data[idx][fkFld]) {
@@ -28,11 +32,7 @@ export default async function genericForeignKeyResolver(data: any, fkFld: string
 
                 const entityReducer = async (accumulator: any, value: any) => {
 
-                    if (callback) {
-                        accumulator[value.id] = await callback(value);
-                    } else {
-                        accumulator[value.id] = value[fkIdenFld];
-                    }
+                    accumulator[value.id] = toStr(value);
 
                     return accumulator;
                 };
@@ -47,7 +47,9 @@ export default async function genericForeignKeyResolver(data: any, fkFld: string
 
                         const fk = data[idx][fkFld];
                         data[idx][`${fkFld}Id`] = data[idx][fkFld];
-                        data[idx][`${fkFld}Link`] = `${entityEndpoint}?_criteria={"id":{"type":"eq","value":"${fk}"}}`;
+                        if (addLink) {
+                            data[idx][`${fkFld}Link`] = `${entityEndpoint}/${fk}/update`;
+                        }
                         data[idx][fkFld] = entities[fk];
                     }
                 }
@@ -57,3 +59,10 @@ export default async function genericForeignKeyResolver(data: any, fkFld: string
 
     return data;
 };
+
+export const remapFk = (row:any, from:string, to:string) => {
+
+    row[to] = row[from];
+    row[`${to}Id`] = row[`${from}Id`];
+    row[`${to}Link`] = row[`${from}Link`];
+}

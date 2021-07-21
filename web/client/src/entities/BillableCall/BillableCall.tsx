@@ -5,6 +5,7 @@ import EntityService from 'services/Entity/EntityService';
 import defaultEntityBehavior from '../DefaultEntityBehavior';
 import _ from 'services/Translations/translate';
 import Form from './Form';
+import entities from '../index';
 
 const properties:PropertiesList = {
     'startTime':  {
@@ -63,15 +64,31 @@ const properties:PropertiesList = {
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
 
-    data = await genericForeignKeyResolver(
-        data,
-        'ddi',
-        '/ddis',
-        'ddi'
+    const promises= [];
+    const { Ddi } = entities;
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'ddi',
+            Ddi.path,
+            Ddi.toStr,
+        )
     );
+
+    await Promise.all(promises);
 
     return data;
 }
+
+const columns = [
+    'startTime',
+    'direction',
+    'caller',
+    'callee',
+    'duration',
+    'price',
+];
 
 const billableCall:EntityInterface = {
     ...defaultEntityBehavior,
@@ -80,9 +97,9 @@ const billableCall:EntityInterface = {
     title: _('External call', {count: 2}),
     path: '/billable_calls',
     properties,
+    columns,
     foreignKeyResolver,
     Form
-
 };
 
 export default billableCall;

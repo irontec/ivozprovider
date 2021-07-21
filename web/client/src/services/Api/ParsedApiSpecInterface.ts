@@ -32,6 +32,19 @@ export interface ActionsSpec {
     delete?: ActionModelList
 }
 
+export interface visualToggleList {
+    [fldName:string]: visualToggleValue
+};
+
+export interface visualToggleValue {
+    [value:string]: visualToggle
+};
+
+export interface visualToggle {
+    show: Array<string>,
+    hide: Array<string>,
+}
+
 export interface ScalarProperty {
     type?: string,
     format?: string,
@@ -39,7 +52,9 @@ export interface ScalarProperty {
     description?: string,
     maxLength?: number,
     default?: any,
-    enum?: Array<string|number>|KeyValList,
+    enum?: KeyValList,
+    null?: string|React.ReactElement,
+    visualToggle?:visualToggleValue
     label: string|React.ReactElement,
     required: boolean,
     helpText?: string|React.ReactElement,
@@ -48,11 +63,12 @@ export interface ScalarProperty {
 export interface FkProperty {
     $ref: string,
     label: string|React.ReactElement,
+    null?: string|React.ReactElement,
     required: boolean,
     helpText?: string,
 }
 
-export type PropertySpec =  ScalarProperty |FkProperty;
+export type PropertySpec =  ScalarProperty | FkProperty;
 
 export interface PropertyList {
     [key: string]: PropertySpec

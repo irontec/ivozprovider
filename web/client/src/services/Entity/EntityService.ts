@@ -1,6 +1,9 @@
-import EntityInterface, { ListDecoratorPropsType } from "entities/EntityInterface";
+import EntityInterface, { ListDecoratorPropsType, PropertiesList } from "entities/EntityInterface";
 import { FunctionComponent } from "react";
-import { ActionsSpec, PropertyList, ActionModelList, ScalarProperty, ActionModelSpec } from "services/Api/ParsedApiSpecInterface";
+import {
+    ActionsSpec, PropertyList, ActionModelList, ScalarProperty,
+    ActionModelSpec, visualToggleList
+} from "services/Api/ParsedApiSpecInterface";
 
 export default class EntityService
 {
@@ -11,17 +14,42 @@ export default class EntityService
     ) {
     }
 
+    public getProperties(): PropertiesList
+    {
+        const response:PropertiesList = {};
+        const properties = this.entityConfig.properties;
+
+        for (const idx in properties) {
+
+            const propertyOverwrite = properties[idx] || {};
+            const label = properties[idx].label || '';
+
+            response[idx] = {
+                ...this.properties[idx],
+                ...propertyOverwrite,
+                label
+            };
+        }
+
+        return response;
+    }
+
     public getColumns(): PropertyList
     {
         const response:PropertyList = {};
+        const properties = this.entityConfig.properties;
+        const columns = this.entityConfig.columns.length
+            ? this.entityConfig.columns
+            : Object.keys(properties);
 
-        for (const idx in this.entityConfig.properties) {
-            if (!this.properties[idx]) {
+        for (const idx of columns) {
+            if (!this.properties[idx] && !properties[idx]) {
+                //console.warn(`skipping property ${idx}`);
                 continue;
             }
 
-            const propertyOverwrite = this.entityConfig.properties[idx] || {};
-            const label = this.entityConfig.properties[idx].label || '';
+            const propertyOverwrite = properties[idx] || {};
+            const label = properties[idx].label || '';
 
             response[idx] = {
                 ...this.properties[idx],
@@ -35,7 +63,7 @@ export default class EntityService
 
     public getCollectionColumns(): PropertyList
     {
-        const columns = this.getColumns();
+        const allColumns = this.getColumns();
         const collectionAction = this.getFromModelList(
             this.actions?.get?.collection || {},
             this.entityConfig.path
@@ -43,15 +71,72 @@ export default class EntityService
         const collectionActionFields = Object.keys(collectionAction?.properties || {});
 
         const response:PropertyList = {};
-        for (const colName in columns) {
-            if (!collectionActionFields.includes(colName)) {
+        const restrictedColumns = this.entityConfig.columns.length
+            ? this.entityConfig.columns
+            : collectionActionFields;
+
+        for (const colName in allColumns) {
+            if (!restrictedColumns.includes(colName)) {
                 continue;
             }
 
-            response[colName] = columns[colName];
+            response[colName] = allColumns[colName];
         }
 
         return response;
+    }
+
+    public getVisualToggleRules(): visualToggleList
+    {
+        const rules:visualToggleList = {};
+        const properties = this.entityConfig.properties;
+        for (const idx in properties) {
+            const visualToggle = (properties[idx] as ScalarProperty).visualToggle;
+            if (!visualToggle) {
+                continue;
+            }
+
+            rules[idx] = visualToggle;
+        }
+
+        return rules;
+    }
+
+    public getVisualToggles():any
+    {
+        const properties = this.entityConfig.properties;
+        const visualToggles = Object.keys(properties).reduce(
+            (accumulator:any, fldName:string) => {
+              accumulator[fldName] = true;
+              return accumulator;
+            },
+            {}
+        );
+
+        return visualToggles;
+    }
+
+    public updateVisualToggle(fld:string, value:any, visualToggles:any)
+    {
+        const rules = this.getVisualToggleRules();
+
+        if (!rules[fld]) {
+          return visualToggles;
+        }
+
+        if (!rules[fld][value]) {
+          return visualToggles;
+        }
+
+        for (const hideFld of rules[fld][value]['hide']) {
+          visualToggles[hideFld] = false;
+        }
+
+        for (const showFld of rules[fld][value]['show']) {
+            visualToggles[showFld] = true;
+        }
+
+        return visualToggles;
     }
 
     public getDefultValues()
@@ -61,14 +146,17 @@ export default class EntityService
 
         for (const idx in columns) {
 
-            if (!(columns[idx] as ScalarProperty).default) {
+            const column:ScalarProperty = columns[idx];
+            if (!column.default && !column.enum) {
                 continue;
             }
 
-            if ((columns[idx] as ScalarProperty).type === 'boolean') {
-                response[idx] = parseInt((columns[idx] as ScalarProperty).default);
+            if (!column.default) {
+                response[idx] = Object.keys(column.enum as any)[0];
+            } else if (column.type === 'boolean') {
+                response[idx] = parseInt(column.default);
             } else {
-                response[idx] = (columns[idx] as ScalarProperty).default;
+                response[idx] = column.default;
             }
         }
 

@@ -1,8 +1,11 @@
 import SettingsApplications from '@material-ui/icons/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
+import EntityService from 'services/Entity/EntityService';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
+import _ from 'services/Translations/translate';
 import Form from './Form'
+import entities from '../index';
 
 const properties:PropertiesList = {
     'name': {
@@ -37,8 +40,8 @@ const properties:PropertiesList = {
         label: _('Allowed video codecs'),
         enum: {
             'h264': 'h264 - H.264',
-            '__null__': _("Disabled"),
-        }
+        },
+        'null': _("Disabled"),
     },
     'directMediaMethod': {
         label: _('CallerID update method'),
@@ -65,7 +68,31 @@ const properties:PropertiesList = {
     'terminalModel': {
         label: _('Terminal model'),
     },
+    'domain': {
+        label: _('Domain'),
+    },
 };
+
+
+async function foreignKeyResolver(data: any, entityService: EntityService) {
+
+    const promises= [];
+    const { TerminalModel } = entities;
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'terminalModel',
+            TerminalModel.path,
+            TerminalModel.toStr,
+            TerminalModel.acl.update
+        )
+    );
+
+    await Promise.all(promises);
+
+    return data;
+}
 
 const terminal:EntityInterface = {
     ...defaultEntityBehavior,
@@ -73,8 +100,10 @@ const terminal:EntityInterface = {
     iden: 'Terminal',
     title: _('Terminal', {count: 2}),
     path: '/terminals',
+    toStr: (row:any) => row.name,
     properties,
-    Form
+    Form,
+    foreignKeyResolver
 };
 
 export default terminal;

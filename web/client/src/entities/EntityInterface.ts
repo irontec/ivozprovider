@@ -1,9 +1,10 @@
-import { PropertySpec } from "services/Api/ParsedApiSpecInterface";
+import { PropertyList, PropertySpec } from "services/Api/ParsedApiSpecInterface";
 import EntityService from "services/Entity/EntityService";
 
 export type ListDecoratorPropsType = {
     field: string,
-    row: any
+    row: any,
+    property: Partial<PropertySpec>
 };
 export type ListDecoratorType = (props:ListDecoratorPropsType) => any;
 
@@ -23,8 +24,8 @@ export type PropertiesList = {
 export default interface EntityInterface {
     initialValues: any,
     validator: (values: any) => any,
-    marshaller: (T: any) => any,
-    unmarshaller:(T: any) => any,
+    marshaller: (T: any, properties: PropertiesList) => any,
+    unmarshaller:(T: any, properties: PropertiesList) => any,
     foreignKeyResolver: foreignKeyResolverType,
     foreignKeyGetter: foreignKeyGetterType,
     Form: React.FunctionComponent,
@@ -34,7 +35,9 @@ export default interface EntityInterface {
     iden: string,
     title: string | JSX.Element,
     path: string,
+    columns: Array<string>,
     properties: PropertiesList,
+    toStr: Function,
     defaultOrderBy: string,
     icon: JSX.Element
 }

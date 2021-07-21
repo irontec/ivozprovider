@@ -114,24 +114,25 @@ const Form = (props:any) => {
             ]
         },
         {
-            legend: _('Filters'),
-            fields: [
-                'callDirection',
-                'ddi',
-                'retailAccount',
-                'residentialDevice',
-                'user',
-                'fax',
-                'friend',
-            ]
-        },
-        {
             legend: _('Time Information'),
             fields: [
                 'frequency',
                 'unit',
                 'nextExecution',
                 'lastExecution',
+            ]
+        },
+        {
+            legend: _('Filters'),
+            fields: [
+                'callDirection',
+                'ddi',
+                'retailAccount',
+                'residentialDevice',
+                'endpointType',
+                'user',
+                'fax',
+                'friend',
             ]
         },
     ];

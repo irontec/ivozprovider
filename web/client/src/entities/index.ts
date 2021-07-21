@@ -1,7 +1,9 @@
 import EntityInterface from 'entities/EntityInterface';
 import Calendar from './Calendar/Calendar';
+import Country from './Country/Country';
 import BillableCall from './BillableCall/BillableCall';
 import Terminal from './Terminal/Terminal';
+import TerminalModel from './TerminalModel/TerminalModel';
 import User from './User/User';
 import Extension from './Extension/Extension';
 import Ddi from './Ddi/Ddi';
@@ -26,6 +28,8 @@ import RatingProfile from './RatingProfile/RatingProfile';
 import UsersCdr from './UsersCdr/UsersCdr';
 import callCsvScheduler from './CallCsvScheduler/CallCsvScheduler';
 import Recording from './Recording/Recording';
+import ResidentialDevice from './ResidentialDevice/ResidentialDevice';
+import RetailAccount from './RetailAccount/RetailAccount';
 
 interface EntityList {
   [name:string]: EntityInterface
@@ -33,8 +37,10 @@ interface EntityList {
 
 const entities:EntityList = {
   Calendar,
+  Country,
   BillableCall,
   Terminal,
+  TerminalModel,
   User,
   Extension,
   Ddi,
@@ -58,7 +64,9 @@ const entities:EntityList = {
   RatingProfile,
   UsersCdr,
   CallCsvScheduler: callCsvScheduler,
-  Recording
+  Recording,
+  ResidentialDevice,
+  RetailAccount
 };
 
 export default entities;

@@ -197,7 +197,7 @@ const Form = (props:any) => {
             legend: _('Group belonging'),
             fields: [
                 'pickupGroupIds',
-                'HuntGroupsRelUsers',
+                //@todo 'HuntGroupsRelUsers',
             ]
         }
     ];

@@ -3,20 +3,16 @@ import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 
-const properties:PropertiesList = {
-    'name': {
-        label: _('Name'),
-    },
-    //@TODO originalFile
-};
+const properties:PropertiesList = {};
 
-const musicOnHold:EntityInterface = {
+const country:EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
-    iden: 'MusicOnHold',
-    title: _('Music on hold', {count: 2}),
-    path: '/music_on_holds',
-    properties
+    iden: 'Country',
+    title: _('Country', {count: 2}),
+    path: '/countries',
+    toStr: (row:any) => `${row.name.en}`, //@TODO detect language
+    properties,
 };
 
-export default musicOnHold;
+export default country;

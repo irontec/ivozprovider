@@ -16,7 +16,7 @@ interface EditProps extends EntityInterface {
   entityService: EntityService,
   history:any,
   match:any,
-  row: any
+  row: any,
 }
 
 const EditForm = (props: EditProps) => {
@@ -28,6 +28,11 @@ const EditForm = (props: EditProps) => {
   const entityId = match.params.id;
 
   const [error, setError] = useState(null);
+
+  const initialValues = unmarshaller(
+    row,
+    entityService.getProperties()
+  );
 
   const apiPut = useStoreActions((actions:any) => {
     return actions.api.put
@@ -44,7 +49,7 @@ const EditForm = (props: EditProps) => {
     try {
       await apiPut({
         path: putPath.replace('{id}', entityId),
-        values: marshaller(values)
+        values: marshaller(values, entityService.getProperties())
       });
 
       setError(null);
@@ -58,7 +63,7 @@ const EditForm = (props: EditProps) => {
   };
 
   const formik:useFormikType = useFormik({
-    initialValues: unmarshaller(row),
+    initialValues,
     validate: props.validator,
     onSubmit: submit,
   });

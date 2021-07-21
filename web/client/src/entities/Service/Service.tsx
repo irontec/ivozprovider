@@ -28,13 +28,32 @@ const properties:PropertiesList = {
     },
 };
 
+const columns = [
+    'iden',
+    //@todo name
+    'defaultCode',
+];
+
+const ListDecorator = (props: any) => {
+
+    let value = defaultEntityBehavior.ListDecorator(props);
+
+    if (props.field === 'defaultCode') {
+        value = '*' + value;
+    }
+
+    return value;
+}
+
 const service:EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Service',
     title: _('Service', {count: 2}),
     path: '/services',
-    properties
+    properties,
+    columns,
+    ListDecorator,
 };
 
 export default service;

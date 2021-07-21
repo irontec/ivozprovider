@@ -35,6 +35,14 @@ const properties:PropertiesList = {
     },
 };
 
+const columns = [
+    'calldate',
+    'type',
+    'caller',
+    'callee',
+    'duration',
+];
+
 const recording:EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
@@ -42,6 +50,7 @@ const recording:EntityInterface = {
     title: _('Recording', {count: 2}),
     path: '/recordings',
     properties,
+    columns,
 };
 
 export default recording;

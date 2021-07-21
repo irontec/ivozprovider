@@ -19,12 +19,16 @@ const properties:PropertiesList = {
         }
     },
 
-    //@TODO open
-    //@TODO status
     //@TODO openExtension
     //@TODO closeExtension
     //@TODO toggleExtension
 };
+
+const columns = [
+    'name',
+    'description',
+    'open',
+];
 
 const routeLock:EntityInterface = {
     ...defaultEntityBehavior,
@@ -33,6 +37,7 @@ const routeLock:EntityInterface = {
     title: _('Route Lock', {count: 2}),
     path: '/route_locks',
     properties,
+    columns,
     Form
 };
 

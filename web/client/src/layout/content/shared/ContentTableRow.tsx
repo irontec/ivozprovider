@@ -12,6 +12,7 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import ConfirmDialog from './ConfirmDialog';
 import EntityService from 'services/Entity/EntityService';
 import { useStoreActions } from 'easy-peasy';
+import { ScalarProperty } from 'services/Api/ParsedApiSpecInterface';
 
 interface propsType {
   entityService: EntityService,
@@ -58,13 +59,16 @@ export default function ContentTableRow(props: propsType) {
   return (
     <TableRow hover key={row.id}>
       {Object.keys(columns).map((key: string) => {
-        const value = row[key];
+        const column = columns[key];
+        const enumValues:any = (column as ScalarProperty).enum;
+        let value = row[key];
         const isBoolean = typeof value === "boolean";
+
         let response = value;
 
-        if (isBoolean && value) {
+        if (isBoolean && !enumValues && value) {
           response = <CheckBoxIcon className={classes.boolIcon} />;
-        } else if (isBoolean) {
+        } else if (isBoolean && !enumValues) {
           response = <CheckBoxOutlineBlankIcon className={classes.boolIcon} />;
         } else if (row[`${key}Link`]) {
             response =
@@ -76,7 +80,7 @@ export default function ContentTableRow(props: propsType) {
               </Link>
         } else {
 
-          response = <ListDecorator field={key} row={row} />
+          response = <ListDecorator field={key} row={row} property={column} />
         }
 
         return <TableCell key={key}>{response}</TableCell>;

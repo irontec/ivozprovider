@@ -11,7 +11,8 @@ export default class FormFieldFactory
 
     constructor(
         private entityService: EntityService,
-        private formik: useFormikType
+        private formik: useFormikType,
+        private changeHandler: (event: any) => void
     ) {
         this.styles = makeStyles((theme: Theme) => ({
             switch: {
@@ -46,9 +47,9 @@ export default class FormFieldFactory
 
     private getProperty(fld: string): PropertySpec
     {
-        const properties = this.entityService.getColumns();
+        const properties = this.entityService.getProperties();
 
-        return properties[fld];
+        return (properties[fld] as PropertySpec);
     }
 
     private getInputField(fld:string, choices?:any)
@@ -63,6 +64,10 @@ export default class FormFieldFactory
                 return (<div className={classes.linearProgress}><LinearProgress /></div>);
             }
 
+            if (property.null) {
+                choices['__null__'] = property.null;
+            }
+
             return (
                 <Dropdown
                     name={fld}
@@ -70,11 +75,40 @@ export default class FormFieldFactory
                     value={this.formik.values[fld]}
                     required={property.required}
                     disabled={disabled}
-                    onChange={this.formik.handleChange}
+                    onChange={this.changeHandler}
                     choices={choices}
                 />
             );
+        }
 
+        if ((property as ScalarProperty).enum) {
+
+            const enumValues:any = (property as ScalarProperty).enum;
+
+            if (Array.isArray(enumValues)) {
+                choices = choices || {};
+                for (const enumValue of enumValues) {
+                    choices[enumValue] = enumValue;
+                }
+            } else {
+                choices = enumValues;
+            }
+
+            if (property.null) {
+                choices['__null__'] = property.null;
+            }
+
+            return (
+                <Dropdown
+                    name={fld}
+                    label={property.label}
+                    value={this.formik.values[fld]}
+                    required={property.required}
+                    disabled={disabled}
+                    onChange={this.changeHandler}
+                    choices={choices}
+                />
+            );
         }
 
         if ((property as ScalarProperty).type === 'boolean') {
@@ -89,7 +123,7 @@ export default class FormFieldFactory
                             checked={checked}
                             required={property.required}
                             disabled={disabled}
-                            onChange={this.formik.handleChange}
+                            onChange={this.changeHandler}
                         />}
                         label={property.label}
                     />
@@ -107,7 +141,7 @@ export default class FormFieldFactory
                     disabled={disabled}
                     label={property.label}
                     InputLabelProps={{ shrink: true, required: property.required }}
-                    onChange={this.formik.handleChange}
+                    onChange={this.changeHandler}
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                     fullWidth={true}
@@ -119,32 +153,6 @@ export default class FormFieldFactory
         }
 
         if ((property as ScalarProperty).type === 'string') {
-
-            if ((property as ScalarProperty).enum) {
-
-                const enumValues:any = (property as ScalarProperty).enum;
-
-                if (Array.isArray(enumValues)) {
-                    choices = choices || {};
-                    for (const enumValue of enumValues) {
-                        choices[enumValue] = enumValue;
-                    }
-                } else {
-                    choices = enumValues;
-                }
-
-                return (
-                    <Dropdown
-                        name={fld}
-                        label={property.label}
-                        value={this.formik.values[fld]}
-                        required={property.required}
-                        disabled={disabled}
-                        onChange={this.formik.handleChange}
-                        choices={choices}
-                    />
-                );
-            }
 
             if ((property as ScalarProperty).format === 'date-time') {
                 return (
@@ -158,7 +166,7 @@ export default class FormFieldFactory
                         disabled={disabled}
                         label={property.label}
                         InputLabelProps={{ shrink: true, required: property.required }}
-                        onChange={this.formik.handleChange}
+                        onChange={this.changeHandler}
                         error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                         helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                         fullWidth={true}
@@ -178,7 +186,7 @@ export default class FormFieldFactory
                         disabled={disabled}
                         label={property.label}
                         InputLabelProps={{ shrink: true, required: property.required }}
-                        onChange={this.formik.handleChange}
+                        onChange={this.changeHandler}
                         error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                         helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                         fullWidth={true}
@@ -197,7 +205,7 @@ export default class FormFieldFactory
                     disabled={disabled}
                     label={property.label}
                     InputLabelProps={{ shrink: true, required: property.required }}
-                    onChange={this.formik.handleChange}
+                    onChange={this.changeHandler}
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                     fullWidth={true}

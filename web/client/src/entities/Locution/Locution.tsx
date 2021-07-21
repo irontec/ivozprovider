@@ -8,9 +8,7 @@ const properties:PropertiesList = {
     'name': {
         label: _('Name'),
     },
-    //@TODO recordingExtension
     //@TODO originalFile
-    //@TODO encodedFile
     'status': {
         label: _('Status'),
         enum: {

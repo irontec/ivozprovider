@@ -14,6 +14,8 @@ const properties:PropertiesList = {
     'routingTag': {
         label: _('Routing Tag'),
     },
+    //@todo routingTag
+    //@todo carrierId
 };
 
 const ratingProfile:EntityInterface = {

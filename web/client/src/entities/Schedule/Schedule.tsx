@@ -39,6 +39,12 @@ const properties:PropertiesList = {
     }
 };
 
+const columns = [
+    'name',
+    'timeIn',
+    'timeout'
+];
+
 const schedule:EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
@@ -46,6 +52,7 @@ const schedule:EntityInterface = {
     title: _('Schedule', {count: 2}),
     path: '/schedules',
     properties,
+    columns,
     Form
 };
 

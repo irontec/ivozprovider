@@ -5,27 +5,45 @@ import { useFormikType } from 'services/Form/types';
 import ApiClient from "services/Api/ApiClient";
 import { Grid, makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import { ScalarProperty } from 'services/Api/ParsedApiSpecInterface';
+import { PropertiesList } from './EntityInterface';
 
 export const initialValues = {};
 
 export const validator = (values: any) => {
+
     return {};
 }
 
-export const marshaller = (values: any) => {
+export const marshaller = (values: any, properties: PropertiesList) => {
 
     for (const idx in values) {
-        if (values[idx] !== '__null__') {
+
+        const property:any = properties[idx];
+
+        if (property?.type === "boolean") {
+            values[idx] = values[idx] === '0'
+                ? false
+                : true;
+
             continue;
         }
 
-        values[idx] = null;
+        if (property?.$ref && values[idx] === '') {
+            values[idx] = null;
+
+            continue;
+        }
+
+        if (values[idx] === '__null__') {
+            values[idx] = null;
+        }
     }
 
     return values;
 }
 
-export const unmarshaller = (row: any) => {
+export const unmarshaller = (row: any, properties: PropertiesList) => {
 
     const normalizedData:any = {};
 
@@ -35,14 +53,23 @@ export const unmarshaller = (row: any) => {
 
     for (const idx in row) {
         if (row[idx] == null) {
+
             // formik doesn't like null values
-            normalizedData[idx] = '';
+            const property = properties[idx];
+            normalizedData[idx] = property?.null
+                ? '__null__'
+                : '';
+
         } else if (typeof row[idx] === 'object' && row[idx].id) {
             // flatten foreign keys
             normalizedData[idx] = row[idx].id;
         } else if (typeof row[idx] === 'string' && row[idx].match(dateTimeRegExp)) {
             // formik datetime format: "yyyy-MM-ddThh:mm" followed by optional ":ss" or ":ss.SSS"
             normalizedData[idx] = row[idx].replace(' ', 'T');
+        } else if (properties[idx] && (properties[idx] as ScalarProperty).type === "boolean") {
+            normalizedData[idx] = row[idx] === true
+                ? 1
+                : 0;
         } else {
             normalizedData[idx] = row[idx];
         }
@@ -57,7 +84,7 @@ export const foreignKeyGetter = async () => {
     return {};
 };
 
-export const columns = {};
+export const columns = [];
 
 export const properties = {};
 
@@ -69,8 +96,23 @@ export const acl = {
 };
 
 export const ListDecorator = (props: any) => {
-    const {field, row} = props;
-    return row[field] || '';
+
+    const {field, row, property} = props;
+    let value = row[field];
+
+    if (property.enum) {
+        if (property.enum[value]) {
+            value = property.enum[value];
+        }
+    }
+
+    if (!value && property.null) {
+        value = property.null;
+    }
+
+    return value !== null
+        ? value
+        : '';
 }
 
 export const RowIcons = (props:any) => {
@@ -93,14 +135,20 @@ const useStyles = makeStyles((theme: any) => ({
     grid: {
         paddingLeft: '15px',
         marginBottom: '15px',
+    },
+    hidden: {
+        display: 'none',
+    },
+    visible: {
+        display: 'block',
     }
 }));
 
 const Form = (props: any) => {
 
-    const { entityService, formik }: { entityService: EntityService, formik: useFormikType } = props;
+    const { entityService, formik }:
+          { entityService: EntityService, formik: useFormikType } = props;
     const { fkChoices } = props;
-    const formFieldFactory = new FormFieldFactory(entityService, formik);
 
     const columns = entityService.getColumns();
     const columnNames = Object.keys(columns);
@@ -117,11 +165,51 @@ const Form = (props: any) => {
 
     const classes = useStyles();
 
+    let initialVisualToggles = entityService.getVisualToggles();
+    const initialValues = formik.initialValues;
+    for (const idx in initialValues) {
+      initialVisualToggles = entityService.updateVisualToggle(
+        idx,
+        initialValues[idx],
+        initialVisualToggles,
+      );
+    }
+
+    const [visualToggles, setVisualToggles] = React.useState(initialVisualToggles);
+
+    const formOnChangeHandler = (e: React.ChangeEvent<any>): void => {
+
+        formik.handleChange(e);
+
+        const { name, value} = e.target;
+        const updatedVisualToggles = entityService.updateVisualToggle(
+          name,
+          value,
+          {...visualToggles},
+        );
+
+        setVisualToggles(updatedVisualToggles);
+    };
+
+    const formFieldFactory = new FormFieldFactory(entityService, formik, formOnChangeHandler);
+
     return (
         <React.Fragment>
         {groups.map((group:FieldsetGroups, idx:number) => {
+
+            const visible = group.fields.reduce(
+                (acc:boolean, fld:string) => {
+                    return acc || visualToggles[fld];
+                },
+                false
+            );
+
+            const className = visible
+                ? classes.visible
+                : classes.hidden;
+
             return (
-                <React.Fragment key={idx}>
+                <div key={idx} className={className}>
                     <Typography variant="h6" color="inherit" gutterBottom  className={classes.legend}>
                         {group.legend}
                     </Typography>
@@ -132,21 +220,23 @@ const Form = (props: any) => {
                                 ? fkChoices[columnName]
                                 : null;
 
+                            const className = visualToggles[columnName]
+                                ? classes.visible
+                                : classes.hidden;
+
                             return (
-                                <Grid item xs={12} md={6} lg={4} key={idx}>
+                                <Grid item xs={12} md={6} lg={4} key={idx} className={className}>
                                     {formFieldFactory.getFormField(columnName, choices)}
                                 </Grid>
                             );
                         })}
                     </Grid>
-                </React.Fragment>
+                </div>
             );
         })}
         </React.Fragment>
     );
 };
-
-
 
 const fetchFks = (endpoint: string, properties: Array<string>, setter: Function) =>
 {
@@ -174,6 +264,7 @@ const DefaultEntityBehavior = {
     properties,
     acl,
     ListDecorator,
+    toStr: (row:any) => (row.id || '[*]'),
     RowIcons,
     Form,
     fetchFks,

@@ -11,10 +11,24 @@ const properties:PropertiesList = {
     'callDirection': {
         label: _('Direction'),
         enum: {
-            '__null__': _('Both'), //@TODO __null__ marshaller
             'outbound': _('Outbound'),
             'inbound': _('Inbound'),
-        }
+        },
+        'null': _('Both'),
+        /*visualToggle: {
+            '__null__': {
+                show: [],
+                hide: ['carrier', 'ddiProvider'],
+            },
+            'outbound': {
+                show: ['carrier'],
+                hide: ['ddiProvider'],
+            },
+            'inbound': {
+                show: ['ddiProvider'],
+                hide: ['carrier'],
+            },
+        }*/
     },
     'frequency': {
         label: _('Frequency'),
@@ -53,6 +67,33 @@ const properties:PropertiesList = {
     'residentialDevice': {
         label: _('Residential Device'),
     },
+    'endpointType': {
+        label: _('Endpoint type'),
+        enum: {
+            user: _('User'),
+            fax: _('Fax'),
+            friend: _('Friend'),
+        },
+        'null': _('All'),
+        visualToggle: {
+            '__null__': {
+                show: [],
+                hide: ['user', 'fax', 'friend'],
+            },
+            'user': {
+                show: ['user'],
+                hide: ['fax', 'friend'],
+            },
+            'fax': {
+                show: ['fax'],
+                hide: ['user', 'friend'],
+            },
+            'friend': {
+                show: ['friend'],
+                hide: ['user', 'fax', 'friend'],
+            }
+        }
+    },
     'user': {
         label: _('User'),
     },
@@ -64,6 +105,50 @@ const properties:PropertiesList = {
     },
 };
 
+const columns = [
+    'name',
+    'callDirection',
+    'email',
+    'frequency',
+    'unit',
+    'lastExecution',
+    'nextExecution',
+];
+
+export const marshaller = (values: any, properties: PropertiesList) => {
+
+    if(values.endpointType) {
+        delete values.endpointType;
+    };
+
+    const response = defaultEntityBehavior.marshaller(
+        values,
+        properties
+    );
+
+    return response;
+}
+
+export const unmarshaller = (row: any, properties: PropertiesList) => {
+
+    const response = defaultEntityBehavior.unmarshaller(
+        row,
+        properties
+    );
+
+    if (response.user) {
+        response.endpointType = 'user';
+    } else if (response.fax) {
+        response.endpointType = 'fax';
+    } else if (response.friend) {
+        response.endpointType = 'friend';
+    } else {
+        response.endpointType = '__null__';
+    }
+
+    return response;
+};
+
 const callCsvScheduler:EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
@@ -71,7 +156,10 @@ const callCsvScheduler:EntityInterface = {
     title: _('Call csv scheduler', {count: 2}),
     path: '/call_csv_schedulers',
     properties,
-    Form
+    columns,
+    Form,
+    marshaller,
+    unmarshaller
 };
 
 export default callCsvScheduler;

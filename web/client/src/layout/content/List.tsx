@@ -8,11 +8,11 @@ import ContentTable from './shared/ContentTable';
 import EntityService from 'services/Entity/EntityService';
 
 const List = function (props: any) {
-    const { path, history, location, foreignKeyResolver } = props;
+    const { path, history, location, foreignKeyResolver, unmarshaller } = props;
     const { entityService }: {entityService: EntityService } = props;
 
     const [loading, setLoading] = useState(true);
-    const [rows, setRows] = useState([]);
+    const [rows, setRows] = useState<Array<any>>([]);
     const [headers, setHeaders] = useState<{ [id: string]: string }>({});
     const [page, setPage] = useState<number>(1);
     const [rowsPerPage, setRowsPerPage] = useState<number>(10);
@@ -38,8 +38,8 @@ const List = function (props: any) {
 
     const applyFilters = (where: any) => {
 
-        const search = Object.keys(where).length ?
-            '?_criteria=' + JSON.stringify(where)
+        const search = Object.keys(where).length
+            ? '?_criteria=' + JSON.stringify(where)
             : '';
 
         history.push({
@@ -74,7 +74,6 @@ const List = function (props: any) {
                             : where[name].type;
                         const value = where[name].value;
 
-
                         criteria.push(
                             encodeURIComponent(`${name}[${type}]`)
                             + '='
@@ -96,7 +95,15 @@ const List = function (props: any) {
 
                         foreignKeyResolver(data, entityService)
                             .then((data: any) => {
-                                setRows(data);
+
+                                const fixedData = [];
+                                for (const idx in data) {
+                                    fixedData.push(
+                                        data[idx],
+                                    );
+                                }
+
+                                setRows(fixedData);
                                 setLoading(false);
                             });
                     }
@@ -108,7 +115,7 @@ const List = function (props: any) {
         [
             loading, foreignKeyResolver, entityService, where,
             orderBy, orderDirection, page, rowsPerPage, apiGet,
-            path
+            path, unmarshaller
         ]
     );
 

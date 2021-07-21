@@ -83,6 +83,16 @@ const properties:PropertiesList = {
         enum: {
             'yes': _('Yes'),
             'no': _('No'),
+        },
+        visualToggle: {
+            'yes': {
+                show: ['direct_media_method', 'callerid_update_header'],
+                hide: [],
+            },
+            'no': {
+                show: [],
+                hide: ['direct_media_method', 'callerid_update_header'],
+            },
         }
     },
     'fromDomain': {
@@ -98,6 +108,75 @@ const properties:PropertiesList = {
             'yes': _('Direct'),
             'no': _('Register'),
             'intervpbx': _('Inter vPBX'),
+        },
+        visualToggle: {
+            'yes': {
+                show: [
+                    'name',
+                    'domain',
+                    'password',
+                    'ip',
+                    'port',
+                    'transport',
+                    'ddiIn',
+                    'allow',
+                    'fromUser',
+                    'fromDomain',
+                    'language',
+                    'transformationRuleSet',
+                    'callACL',
+                    'rtpEncryption',
+                ],
+                hide: [
+                    'interCompany',
+                    'multiContact',
+                ],
+            },
+            'no': {
+                show: [
+                    'name',
+                    'password',
+                    'ddiIn',
+                    'allow',
+                    'fromUser',
+                    'fromDomain',
+                    'language',
+                    'transformationRuleSet',
+                    'callACL',
+                    'rtpEncryption',
+                    'multiContact',
+                ],
+                hide: [
+                    'ip',
+                    'port',
+                    'transport',
+                    'interCompany',
+                ],
+            },
+            'intervpbx': {
+                show: [
+                    'interCompany'
+                ],
+                hide: [
+                    'name',
+                    'ip',
+                    'port',
+                    'transport',
+                    'password',
+                    'ddiIn',
+                    'allow',
+                    'fromUser',
+                    'fromDomain',
+                    'language',
+                    'transformationRuleSet',
+                    'callACL',
+                    't38Passthrough',
+                    'rtpEncryption',
+                    'multiContact',
+                    'outgoingDdi',
+                    'alwaysApplyTransformations',
+                ],
+            },
         }
     },
     'interCompany': {

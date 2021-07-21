@@ -13,6 +13,16 @@ const properties:PropertiesList = {
         enum: {
             '0': _("No"),
             '1': _("yes"),
+        },
+        visualToggle: {
+            '0': {
+                show: [],
+                hide: ['pinCode'],
+            },
+            '1': {
+                show: ['pinCode'],
+                hide: [],
+            },
         }
     },
     'pinCode': {
@@ -29,6 +39,7 @@ const conferenceRoom:EntityInterface = {
     iden: 'ConferenceRoom',
     title: _('Conference room', {count: 2}),
     path: '/conference_rooms',
+    toStr: (row:any) => row.name,
     properties,
     Form
 };

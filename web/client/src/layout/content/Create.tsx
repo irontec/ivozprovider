@@ -36,7 +36,7 @@ const Create = (props:CreateProps) => {
 
         await apiPost({
           path,
-          values: marshaller(values),
+          values: marshaller(values, entityService.getColumns()),
           contentType: 'application/json',
         });
         setError(null);

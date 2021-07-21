@@ -4,6 +4,20 @@ import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import Form from './Form'
 
+const timeoutFields = [
+    'timeoutNumberCountry',
+    'timeoutNumberValue',
+    'timeoutExtension',
+    'timeoutVoiceMailUser',
+];
+
+const fullFields = [
+    'fullNumberCountry',
+    'fullNumberValue',
+    'fullExtension',
+    'fullVoiceMailUser',
+];
+
 const properties:PropertiesList = {
     'name': {
         label:_('Name'),
@@ -19,10 +33,28 @@ const properties:PropertiesList = {
     'timeoutTargetType': {
         label:_('Timeout route'),
         enum: {
-            '__null__': _("Unassigned"),
             'number': _('Number'),
             'extension': _('Extension'),
             'voicemail': _('Voicemail'),
+        },
+        'null': _("Unassigned"),
+        visualToggle: {
+            '__null__': {
+                show: [],
+                hide: timeoutFields,
+            },
+            'number': {
+                show: ['timeoutNumberCountry', 'timeoutNumberValue'],
+                hide: timeoutFields,
+            },
+            'extension': {
+                show: ['timeoutExtension'],
+                hide: timeoutFields,
+            },
+            'voicemail': {
+                show: ['timeoutVoiceMailUser'],
+                hide: timeoutFields,
+            },
         }
     },
     'timeoutNumberCountry': {
@@ -47,10 +79,28 @@ const properties:PropertiesList = {
     'fullTargetType': {
         label:_('Full queue route'),
         enum: {
-            '__null__': _("Unassigned"),
             'number': _('Number'),
             'extension': _('Extension'),
             'voicemail': _('Voicemail'),
+        },
+        'null': _("Unassigned"),
+        visualToggle: {
+            '__null__': {
+                show: [],
+                hide: fullFields,
+            },
+            'number': {
+                show: ['fullNumberCountry', 'fullNumberValue'],
+                hide: fullFields,
+            },
+            'extension': {
+                show: ['fullExtension'],
+                hide: fullFields,
+            },
+            'voicemail': {
+                show: ['fullVoiceMailUser'],
+                hide: fullFields,
+            },
         }
     },
     'fullNumberCountry': {
@@ -105,13 +155,25 @@ const properties:PropertiesList = {
     },
 };
 
+const columns = [
+    'name',
+    'weight',
+    'strategy',
+    'memberCallTimeout',
+    'memberCallRest',
+    'maxWaitTime',
+    'maxlen',
+];
+
 const queue:EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Queue',
     title: _('Queue', {count: 2}),
     path: '/queues',
+    toStr: (row:any) => row.name,
     properties,
+    columns,
     Form
 };
 
