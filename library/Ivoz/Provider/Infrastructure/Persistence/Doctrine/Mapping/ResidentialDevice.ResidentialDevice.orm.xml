@@ -13,6 +13,7 @@
       </options>
     </id>
     <one-to-many field="psEndpoints" target-entity="Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface" mapped-by="residentialDevice" fetch="LAZY"/>
+    <one-to-one field="psIdentify" target-entity="Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface" mapped-by="residentialDevice" fetch="LAZY"/>
     <one-to-many field="ddis" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" mapped-by="residentialDevice" fetch="LAZY"/>
     <one-to-many field="callForwardSettings" target-entity="Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface" mapped-by="residentialDevice" fetch="LAZY"/>
   </entity>

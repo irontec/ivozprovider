@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyAbstract" table="ps_identify_abstract">
+    <indexes>
+      <index name="psIdentify_sorcery_idx" columns="sorcery_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="psIdentify_terminal" columns="terminalId"/>
+      <unique-constraint name="psIdentify_friend" columns="friendId"/>
+      <unique-constraint name="psIdentify_residential_device" columns="residentialDeviceId"/>
+      <unique-constraint name="psIdentify_retail_account" columns="retailAccountId"/>
+    </unique-constraints>
+    <field name="sorceryId" type="string" column="sorcery_id" length="40" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="endpoint" type="string" column="endpoint" length="40" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="match" type="string" column="`match`" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="matchHeader" type="string" column="match_header" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="srvLookups" type="string" column="srv_lookups" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">false</option>
+      </options>
+    </field>
+    <one-to-one field="terminal" target-entity="Ivoz\Provider\Domain\Model\Terminal\TerminalInterface" inversed-by="psIdentify" fetch="LAZY">
+      <join-columns>
+        <join-column name="terminalId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="friend" target-entity="Ivoz\Provider\Domain\Model\Friend\FriendInterface" inversed-by="psIdentify" fetch="LAZY">
+      <join-columns>
+        <join-column name="friendId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" inversed-by="psIdentify" fetch="LAZY">
+      <join-columns>
+        <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="retailAccount" target-entity="Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface" inversed-by="psIdentify" fetch="LAZY">
+      <join-columns>
+        <join-column name="retailAccountId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </one-to-one>
+  </mapped-superclass>
+</doctrine-mapping>

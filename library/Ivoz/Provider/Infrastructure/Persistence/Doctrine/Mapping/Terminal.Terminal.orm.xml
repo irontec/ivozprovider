@@ -13,6 +13,7 @@
       </options>
     </id>
     <one-to-many field="astPsEndpoints" target-entity="Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface" mapped-by="terminal" fetch="LAZY"/>
+    <one-to-one field="psIdentify" target-entity="Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface" mapped-by="terminal" fetch="LAZY"/>
     <one-to-many field="users" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" mapped-by="terminal" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>
