@@ -3,7 +3,7 @@
 namespace Ivoz\Cgr\Domain\Model\TpTiming;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 
 /**
 * TpTimingInterface
@@ -27,9 +27,9 @@ interface TpTimingInterface extends EntityInterface
 
     public function getCreatedAt(): \DateTime;
 
-    public function setRatingPlan(RatingPlan $ratingPlan): static;
+    public function setRatingPlan(RatingPlanInterface $ratingPlan): static;
 
-    public function getRatingPlan(): RatingPlan;
+    public function getRatingPlan(): RatingPlanInterface;
 
     public function isInitialized(): bool;
 }

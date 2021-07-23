@@ -3,7 +3,7 @@
 namespace Ivoz\Kam\Domain\Model\TrunksAddress;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress;
+use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface;
 
 /**
 * TrunksAddressInterface
@@ -26,9 +26,9 @@ interface TrunksAddressInterface extends LoggableEntityInterface
 
     public function getTag(): ?string;
 
-    public function setDdiProviderAddress(DdiProviderAddress $ddiProviderAddress): static;
+    public function setDdiProviderAddress(DdiProviderAddressInterface $ddiProviderAddress): static;
 
-    public function getDdiProviderAddress(): DdiProviderAddress;
+    public function getDdiProviderAddress(): DdiProviderAddressInterface;
 
     public function isInitialized(): bool;
 }

@@ -9,6 +9,7 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Provider\Domain\Model\Destination\Destination;
 
 /**
@@ -41,7 +42,7 @@ abstract class TpDestinationAbstract
     protected $createdAt;
 
     /**
-     * @var Destination
+     * @var DestinationInterface
      * inversedBy tpDestination
      */
     protected $destination;
@@ -258,7 +259,7 @@ abstract class TpDestinationAbstract
         return clone $this->createdAt;
     }
 
-    public function setDestination(Destination $destination): static
+    public function setDestination(DestinationInterface $destination): static
     {
         $this->destination = $destination;
 
@@ -266,7 +267,7 @@ abstract class TpDestinationAbstract
         return $this;
     }
 
-    public function getDestination(): Destination
+    public function getDestination(): DestinationInterface
     {
         return $this->destination;
     }

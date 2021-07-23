@@ -3,7 +3,7 @@
 namespace Ivoz\Cgr\Domain\Model\TpRate;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 
 /**
 * TpRateInterface
@@ -39,9 +39,9 @@ interface TpRateInterface extends LoggableEntityInterface
 
     public function getCreatedAt(): \DateTime;
 
-    public function setDestinationRate(DestinationRate $destinationRate): static;
+    public function setDestinationRate(DestinationRateInterface $destinationRate): static;
 
-    public function getDestinationRate(): DestinationRate;
+    public function getDestinationRate(): DestinationRateInterface;
 
     public function isInitialized(): bool;
 }

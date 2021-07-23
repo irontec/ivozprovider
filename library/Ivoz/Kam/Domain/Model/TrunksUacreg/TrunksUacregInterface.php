@@ -3,7 +3,7 @@
 namespace Ivoz\Kam\Domain\Model\TrunksUacreg;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration;
+use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 
 /**
@@ -54,9 +54,9 @@ interface TrunksUacregInterface extends LoggableEntityInterface
 
     public function getSocket(): string;
 
-    public function setDdiProviderRegistration(DdiProviderRegistration $ddiProviderRegistration): static;
+    public function setDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): static;
 
-    public function getDdiProviderRegistration(): DdiProviderRegistration;
+    public function getDdiProviderRegistration(): DdiProviderRegistrationInterface;
 
     public function getBrand(): BrandInterface;
 

@@ -8,6 +8,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface;
 use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress;
 
 /**
@@ -45,7 +46,7 @@ abstract class TrunksAddressAbstract
     protected $tag;
 
     /**
-     * @var DdiProviderAddress
+     * @var DdiProviderAddressInterface
      * inversedBy trunksAddress
      */
     protected $ddiProviderAddress;
@@ -270,7 +271,7 @@ abstract class TrunksAddressAbstract
         return $this->tag;
     }
 
-    public function setDdiProviderAddress(DdiProviderAddress $ddiProviderAddress): static
+    public function setDdiProviderAddress(DdiProviderAddressInterface $ddiProviderAddress): static
     {
         $this->ddiProviderAddress = $ddiProviderAddress;
 
@@ -278,7 +279,7 @@ abstract class TrunksAddressAbstract
         return $this;
     }
 
-    public function getDdiProviderAddress(): DdiProviderAddress
+    public function getDdiProviderAddress(): DdiProviderAddressInterface
     {
         return $this->ddiProviderAddress;
     }

@@ -8,8 +8,9 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration;
+use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 
 /**
@@ -101,7 +102,7 @@ abstract class TrunksUacregAbstract
     protected $socket = '';
 
     /**
-     * @var DdiProviderRegistration
+     * @var DdiProviderRegistrationInterface
      * inversedBy trunksUacreg
      */
     protected $ddiProviderRegistration;
@@ -513,7 +514,7 @@ abstract class TrunksUacregAbstract
         return $this->socket;
     }
 
-    public function setDdiProviderRegistration(DdiProviderRegistration $ddiProviderRegistration): static
+    public function setDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): static
     {
         $this->ddiProviderRegistration = $ddiProviderRegistration;
 
@@ -521,7 +522,7 @@ abstract class TrunksUacregAbstract
         return $this;
     }
 
-    public function getDdiProviderRegistration(): DdiProviderRegistration
+    public function getDdiProviderRegistration(): DdiProviderRegistrationInterface
     {
         return $this->ddiProviderRegistration;
     }

@@ -3,8 +3,8 @@
 namespace Ivoz\Cgr\Domain\Model\TpAccountAction;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\Company\Company;
-use Ivoz\Provider\Domain\Model\Carrier\Carrier;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 
 /**
 * TpAccountActionInterface
@@ -35,9 +35,9 @@ interface TpAccountActionInterface extends LoggableEntityInterface
 
     public function getCreatedAt(): \DateTime;
 
-    public function getCompany(): ?Company;
+    public function getCompany(): ?CompanyInterface;
 
-    public function getCarrier(): ?Carrier;
+    public function getCarrier(): ?CarrierInterface;
 
     public function isInitialized(): bool;
 }

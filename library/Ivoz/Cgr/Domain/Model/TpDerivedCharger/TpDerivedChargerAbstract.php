@@ -9,6 +9,7 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 
 /**
@@ -168,7 +169,7 @@ abstract class TpDerivedChargerAbstract
     protected $createdAt;
 
     /**
-     * @var Brand
+     * @var BrandInterface
      */
     protected $brand;
 
@@ -824,14 +825,14 @@ abstract class TpDerivedChargerAbstract
         return clone $this->createdAt;
     }
 
-    protected function setBrand(Brand $brand): static
+    protected function setBrand(BrandInterface $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    public function getBrand(): Brand
+    public function getBrand(): BrandInterface
     {
         return $this->brand;
     }

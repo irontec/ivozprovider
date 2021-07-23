@@ -9,6 +9,7 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
 
 /**
@@ -73,7 +74,7 @@ abstract class TpDestinationRateAbstract
     protected $createdAt;
 
     /**
-     * @var DestinationRate
+     * @var DestinationRateInterface
      * inversedBy tpDestinationRate
      */
     protected $destinationRate;
@@ -394,7 +395,7 @@ abstract class TpDestinationRateAbstract
         return clone $this->createdAt;
     }
 
-    public function setDestinationRate(DestinationRate $destinationRate): static
+    public function setDestinationRate(DestinationRateInterface $destinationRate): static
     {
         $this->destinationRate = $destinationRate;
 
@@ -402,7 +403,7 @@ abstract class TpDestinationRateAbstract
         return $this;
     }
 
-    public function getDestinationRate(): DestinationRate
+    public function getDestinationRate(): DestinationRateInterface
     {
         return $this->destinationRate;
     }

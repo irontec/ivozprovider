@@ -8,6 +8,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer;
 
 /**
@@ -82,7 +83,7 @@ abstract class TrunksLcrGatewayAbstract
     protected $defunct;
 
     /**
-     * @var CarrierServer | null
+     * @var CarrierServerInterface | null
      * inversedBy lcrGateway
      */
     protected $carrierServer;
@@ -452,7 +453,7 @@ abstract class TrunksLcrGatewayAbstract
         return $this->defunct;
     }
 
-    public function setCarrierServer(?CarrierServer $carrierServer = null): static
+    public function setCarrierServer(?CarrierServerInterface $carrierServer = null): static
     {
         $this->carrierServer = $carrierServer;
 
@@ -460,7 +461,7 @@ abstract class TrunksLcrGatewayAbstract
         return $this;
     }
 
-    public function getCarrierServer(): ?CarrierServer
+    public function getCarrierServer(): ?CarrierServerInterface
     {
         return $this->carrierServer;
     }
