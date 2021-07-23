@@ -9,6 +9,7 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 
 /**
@@ -90,7 +91,7 @@ abstract class TpLcrRuleAbstract
     protected $createdAt;
 
     /**
-     * @var OutgoingRouting | null
+     * @var OutgoingRoutingInterface | null
      * inversedBy tpLcrRule
      */
     protected $outgoingRouting;
@@ -493,7 +494,7 @@ abstract class TpLcrRuleAbstract
         return clone $this->createdAt;
     }
 
-    public function setOutgoingRouting(?OutgoingRouting $outgoingRouting = null): static
+    public function setOutgoingRouting(?OutgoingRoutingInterface $outgoingRouting = null): static
     {
         $this->outgoingRouting = $outgoingRouting;
 
@@ -501,7 +502,7 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    public function getOutgoingRouting(): ?OutgoingRouting
+    public function getOutgoingRouting(): ?OutgoingRoutingInterface
     {
         return $this->outgoingRouting;
     }

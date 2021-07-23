@@ -3,7 +3,7 @@
 namespace Ivoz\Cgr\Domain\Model\TpLcrRule;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 
 /**
 * TpLcrRuleInterface
@@ -42,9 +42,9 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
 
     public function getCreatedAt(): \DateTime;
 
-    public function setOutgoingRouting(?OutgoingRouting $outgoingRouting = null): static;
+    public function setOutgoingRouting(?OutgoingRoutingInterface $outgoingRouting = null): static;
 
-    public function getOutgoingRouting(): ?OutgoingRouting;
+    public function getOutgoingRouting(): ?OutgoingRoutingInterface;
 
     public function isInitialized(): bool;
 }

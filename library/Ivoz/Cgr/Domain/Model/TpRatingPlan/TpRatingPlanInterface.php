@@ -3,7 +3,7 @@
 namespace Ivoz\Cgr\Domain\Model\TpRatingPlan;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 
 /**
 * TpRatingPlanInterface
@@ -25,9 +25,9 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
 
     public function getCreatedAt(): \DateTime;
 
-    public function setRatingPlan(RatingPlan $ratingPlan): static;
+    public function setRatingPlan(RatingPlanInterface $ratingPlan): static;
 
-    public function getRatingPlan(): RatingPlan;
+    public function getRatingPlan(): RatingPlanInterface;
 
     public function isInitialized(): bool;
 }

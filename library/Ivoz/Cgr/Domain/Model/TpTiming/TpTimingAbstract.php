@@ -9,6 +9,7 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
 
 /**
@@ -63,7 +64,7 @@ abstract class TpTimingAbstract
     protected $createdAt;
 
     /**
-     * @var RatingPlan
+     * @var RatingPlanInterface
      * inversedBy tpTiming
      */
     protected $ratingPlan;
@@ -360,7 +361,7 @@ abstract class TpTimingAbstract
         return clone $this->createdAt;
     }
 
-    public function setRatingPlan(RatingPlan $ratingPlan): static
+    public function setRatingPlan(RatingPlanInterface $ratingPlan): static
     {
         $this->ratingPlan = $ratingPlan;
 
@@ -368,7 +369,7 @@ abstract class TpTimingAbstract
         return $this;
     }
 
-    public function getRatingPlan(): RatingPlan
+    public function getRatingPlan(): RatingPlanInterface
     {
         return $this->ratingPlan;
     }

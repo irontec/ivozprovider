@@ -9,6 +9,8 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 
@@ -70,12 +72,12 @@ abstract class TpAccountActionAbstract
     protected $createdAt;
 
     /**
-     * @var Company | null
+     * @var CompanyInterface | null
      */
     protected $company;
 
     /**
-     * @var Carrier | null
+     * @var CarrierInterface | null
      */
     protected $carrier;
 
@@ -397,26 +399,26 @@ abstract class TpAccountActionAbstract
         return clone $this->createdAt;
     }
 
-    protected function setCompany(?Company $company = null): static
+    protected function setCompany(?CompanyInterface $company = null): static
     {
         $this->company = $company;
 
         return $this;
     }
 
-    public function getCompany(): ?Company
+    public function getCompany(): ?CompanyInterface
     {
         return $this->company;
     }
 
-    protected function setCarrier(?Carrier $carrier = null): static
+    protected function setCarrier(?CarrierInterface $carrier = null): static
     {
         $this->carrier = $carrier;
 
         return $this;
     }
 
-    public function getCarrier(): ?Carrier
+    public function getCarrier(): ?CarrierInterface
     {
         return $this->carrier;
     }

@@ -3,7 +3,7 @@
 namespace Ivoz\Kam\Domain\Model\TrunksLcrGateway;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 
 /**
 * TrunksLcrGatewayInterface
@@ -40,9 +40,9 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
 
     public function getDefunct(): ?int;
 
-    public function setCarrierServer(?CarrierServer $carrierServer = null): static;
+    public function setCarrierServer(?CarrierServerInterface $carrierServer = null): static;
 
-    public function getCarrierServer(): ?CarrierServer;
+    public function getCarrierServer(): ?CarrierServerInterface;
 
     public function isInitialized(): bool;
 }

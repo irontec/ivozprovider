@@ -3,7 +3,7 @@
 namespace Ivoz\Cgr\Domain\Model\TpDerivedCharger;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 
 /**
 * TpDerivedChargerInterface
@@ -68,7 +68,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
 
     public function getCreatedAt(): \DateTime;
 
-    public function getBrand(): Brand;
+    public function getBrand(): BrandInterface;
 
     public function isInitialized(): bool;
 }
