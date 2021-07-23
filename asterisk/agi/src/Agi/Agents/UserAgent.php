@@ -133,7 +133,7 @@ class UserAgent implements AgentInterface
     public function isT38PassthroughEnabled()
     {
         $terminal = $this->user->getTerminal();
-        $psEndpoint = $terminal->getAstPsEndpoint();
+        $psEndpoint = $terminal->getPsEndpoint();
 
         return $psEndpoint->getT38Udptl() == TerminalInterface::T38PASSTHROUGH_YES;
     }

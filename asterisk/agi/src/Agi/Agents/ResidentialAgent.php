@@ -140,7 +140,7 @@ class ResidentialAgent implements AgentInterface
      */
     public function isT38PassthroughEnabled()
     {
-        $psEndpoint = $this->residential->getAstPsEndpoint();
+        $psEndpoint = $this->residential->getPsEndpoint();
 
         return $psEndpoint->getT38Udptl() == ResidentialDeviceInterface::T38PASSTHROUGH_YES;
     }

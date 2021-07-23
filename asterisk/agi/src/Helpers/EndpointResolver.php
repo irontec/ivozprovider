@@ -107,7 +107,7 @@ class EndpointResolver
         );
 
         /** @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $endpoint */
-        $endpoint = $terminal->getAstPsEndpoint();
+        $endpoint = $terminal->getPsEndpoint();
         Assertion::notNull(
             $endpoint,
             sprintf('No endpoint found for "%s".', $endpointNum)
