@@ -10,6 +10,7 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\Language\LanguageDto;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternDto;
 
@@ -162,6 +163,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $interCompany;
 
     /**
+     * @var PsIdentifyDto | null
+     */
+    private $psIdentify;
+
+    /**
      * @var PsEndpointDto[] | null
      */
     private $psEndpoints;
@@ -213,7 +219,8 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'callAclId' => 'callAcl',
             'outgoingDdiId' => 'outgoingDdi',
             'languageId' => 'language',
-            'interCompanyId' => 'interCompany'
+            'interCompanyId' => 'interCompany',
+            'psIdentifyId' => 'psIdentify'
         ];
     }
 
@@ -251,6 +258,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'outgoingDdi' => $this->getOutgoingDdi(),
             'language' => $this->getLanguage(),
             'interCompany' => $this->getInterCompany(),
+            'psIdentify' => $this->getPsIdentify(),
             'psEndpoints' => $this->getPsEndpoints(),
             'patterns' => $this->getPatterns()
         ];
@@ -725,6 +733,36 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getInterCompanyId()
     {
         if ($dto = $this->getInterCompany()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setPsIdentify(?PsIdentifyDto $psIdentify): static
+    {
+        $this->psIdentify = $psIdentify;
+
+        return $this;
+    }
+
+    public function getPsIdentify(): ?PsIdentifyDto
+    {
+        return $this->psIdentify;
+    }
+
+    public function setPsIdentifyId($id): static
+    {
+        $value = !is_null($id)
+            ? new PsIdentifyDto($id)
+            : null;
+
+        return $this->setPsIdentify($value);
+    }
+
+    public function getPsIdentifyId()
+    {
+        if ($dto = $this->getPsIdentify()) {
             return $dto->getId();
         }
 

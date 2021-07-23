@@ -3,10 +3,10 @@
 namespace Ivoz\Ast\Domain\Model\PsIdentify;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\Terminal\Terminal;
-use Ivoz\Provider\Domain\Model\Friend\Friend;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 
 /**
 * PsIdentifyInterface
@@ -31,21 +31,21 @@ interface PsIdentifyInterface extends LoggableEntityInterface
 
     public function getSrvLookups(): string;
 
-    public function setTerminal(?Terminal $terminal = null): static;
+    public function setTerminal(?TerminalInterface $terminal = null): static;
 
-    public function getTerminal(): ?Terminal;
+    public function getTerminal(): ?TerminalInterface;
 
-    public function setFriend(?Friend $friend = null): static;
+    public function setFriend(?FriendInterface $friend = null): static;
 
-    public function getFriend(): ?Friend;
+    public function getFriend(): ?FriendInterface;
 
-    public function setResidentialDevice(?ResidentialDevice $residentialDevice = null): static;
+    public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static;
 
-    public function getResidentialDevice(): ?ResidentialDevice;
+    public function getResidentialDevice(): ?ResidentialDeviceInterface;
 
-    public function setRetailAccount(?RetailAccount $retailAccount = null): static;
+    public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static;
 
-    public function getRetailAccount(): ?RetailAccount;
+    public function getRetailAccount(): ?RetailAccountInterface;
 
     public function isInitialized(): bool;
 }

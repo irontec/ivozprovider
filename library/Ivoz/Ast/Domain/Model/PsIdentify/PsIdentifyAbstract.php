@@ -8,6 +8,10 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
@@ -50,25 +54,25 @@ abstract class PsIdentifyAbstract
     protected $srvLookups = 'false';
 
     /**
-     * @var Terminal | null
+     * @var TerminalInterface | null
      * inversedBy psIdentify
      */
     protected $terminal;
 
     /**
-     * @var Friend | null
+     * @var FriendInterface | null
      * inversedBy psIdentify
      */
     protected $friend;
 
     /**
-     * @var ResidentialDevice | null
+     * @var ResidentialDeviceInterface | null
      * inversedBy psIdentify
      */
     protected $residentialDevice;
 
     /**
-     * @var RetailAccount | null
+     * @var RetailAccountInterface | null
      * inversedBy psIdentify
      */
     protected $retailAccount;
@@ -309,7 +313,7 @@ abstract class PsIdentifyAbstract
         return $this->srvLookups;
     }
 
-    public function setTerminal(?Terminal $terminal = null): static
+    public function setTerminal(?TerminalInterface $terminal = null): static
     {
         $this->terminal = $terminal;
 
@@ -317,12 +321,12 @@ abstract class PsIdentifyAbstract
         return $this;
     }
 
-    public function getTerminal(): ?Terminal
+    public function getTerminal(): ?TerminalInterface
     {
         return $this->terminal;
     }
 
-    public function setFriend(?Friend $friend = null): static
+    public function setFriend(?FriendInterface $friend = null): static
     {
         $this->friend = $friend;
 
@@ -330,12 +334,12 @@ abstract class PsIdentifyAbstract
         return $this;
     }
 
-    public function getFriend(): ?Friend
+    public function getFriend(): ?FriendInterface
     {
         return $this->friend;
     }
 
-    public function setResidentialDevice(?ResidentialDevice $residentialDevice = null): static
+    public function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static
     {
         $this->residentialDevice = $residentialDevice;
 
@@ -343,12 +347,12 @@ abstract class PsIdentifyAbstract
         return $this;
     }
 
-    public function getResidentialDevice(): ?ResidentialDevice
+    public function getResidentialDevice(): ?ResidentialDeviceInterface
     {
         return $this->residentialDevice;
     }
 
-    public function setRetailAccount(?RetailAccount $retailAccount = null): static
+    public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static
     {
         $this->retailAccount = $retailAccount;
 
@@ -356,7 +360,7 @@ abstract class PsIdentifyAbstract
         return $this;
     }
 
-    public function getRetailAccount(): ?RetailAccount
+    public function getRetailAccount(): ?RetailAccountInterface
     {
         return $this->retailAccount;
     }

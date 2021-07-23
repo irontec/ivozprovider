@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\Terminal;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
@@ -19,6 +20,12 @@ trait TerminalTrait
      * @var int
      */
     protected $id;
+
+    /**
+     * @var PsIdentifyInterface
+     * mappedBy terminal
+     */
+    protected $psIdentify;
 
     /**
      * @var ArrayCollection
@@ -57,6 +64,14 @@ trait TerminalTrait
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getPsIdentify())) {
+            $self->setPsIdentify(
+                $fkTransformer->transform(
+                    $dto->getPsIdentify()
+                )
+            );
+        }
+
         if (!is_null($dto->getAstPsEndpoints())) {
             $self->replaceAstPsEndpoints(
                 $fkTransformer->transformCollection(
@@ -93,6 +108,14 @@ trait TerminalTrait
         ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getPsIdentify())) {
+            $this->setPsIdentify(
+                $fkTransformer->transform(
+                    $dto->getPsIdentify()
+                )
+            );
+        }
+
         if (!is_null($dto->getAstPsEndpoints())) {
             $this->replaceAstPsEndpoints(
                 $fkTransformer->transformCollection(
@@ -133,6 +156,19 @@ trait TerminalTrait
         return parent::__toArray() + [
             'id' => self::getId()
         ];
+    }
+
+    public function setPsIdentify(PsIdentifyInterface $psIdentify): static
+    {
+        $this->psIdentify = $psIdentify;
+
+        /** @var  $this */
+        return $this;
+    }
+
+    public function getPsIdentify(): ?PsIdentifyInterface
+    {
+        return $this->psIdentify;
     }
 
     public function addAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface

@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
@@ -184,6 +185,10 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getLanguage(): ?LanguageInterface;
 
     public function isInitialized(): bool;
+
+    public function setPsIdentify(PsIdentifyInterface $psIdentify): static;
+
+    public function getPsIdentify(): ?PsIdentifyInterface;
 
     public function addPsEndpoint(PsEndpointInterface $psEndpoint): ResidentialDeviceInterface;
 

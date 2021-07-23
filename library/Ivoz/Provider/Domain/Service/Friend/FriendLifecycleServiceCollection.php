@@ -21,6 +21,7 @@ class FriendLifecycleServiceCollection implements LifecycleServiceCollectionInte
         "post_persist" =>
         [
             \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByFriend::class => 10,
+            \Ivoz\Ast\Domain\Service\PsIdentify\UpdateByFriend::class => 200,
         ],
         "error_handler" =>
         [

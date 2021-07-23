@@ -21,6 +21,7 @@ class TerminalLifecycleServiceCollection implements LifecycleServiceCollectionIn
         "post_persist" =>
         [
             \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByTerminal::class => 10,
+            \Ivoz\Ast\Domain\Service\PsIdentify\UpdateByTerminal::class => 200,
         ],
     ];
 

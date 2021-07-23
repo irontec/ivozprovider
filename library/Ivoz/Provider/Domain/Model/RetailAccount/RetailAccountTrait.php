@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
@@ -20,6 +21,12 @@ trait RetailAccountTrait
      * @var int
      */
     protected $id;
+
+    /**
+     * @var PsIdentifyInterface
+     * mappedBy retailAccount
+     */
+    protected $psIdentify;
 
     /**
      * @var ArrayCollection
@@ -65,6 +72,14 @@ trait RetailAccountTrait
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getPsIdentify())) {
+            $self->setPsIdentify(
+                $fkTransformer->transform(
+                    $dto->getPsIdentify()
+                )
+            );
+        }
+
         if (!is_null($dto->getPsEndpoints())) {
             $self->replacePsEndpoints(
                 $fkTransformer->transformCollection(
@@ -109,6 +124,14 @@ trait RetailAccountTrait
         ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getPsIdentify())) {
+            $this->setPsIdentify(
+                $fkTransformer->transform(
+                    $dto->getPsIdentify()
+                )
+            );
+        }
+
         if (!is_null($dto->getPsEndpoints())) {
             $this->replacePsEndpoints(
                 $fkTransformer->transformCollection(
@@ -157,6 +180,19 @@ trait RetailAccountTrait
         return parent::__toArray() + [
             'id' => self::getId()
         ];
+    }
+
+    public function setPsIdentify(PsIdentifyInterface $psIdentify): static
+    {
+        $this->psIdentify = $psIdentify;
+
+        /** @var  $this */
+        return $this;
+    }
+
+    public function getPsIdentify(): ?PsIdentifyInterface
+    {
+        return $this->psIdentify;
     }
 
     public function addPsEndpoint(PsEndpointInterface $psEndpoint): RetailAccountInterface
