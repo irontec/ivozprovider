@@ -92,7 +92,7 @@ class UpdateByDomainSpec extends ObjectBehavior
 
         $this
             ->friend
-            ->getAstPsEndpoint()
+            ->getPsEndpoint()
             ->willReturn($this->psEndpoint);
 
         $this
@@ -134,7 +134,7 @@ class UpdateByDomainSpec extends ObjectBehavior
 
         $this
             ->residentialDevice
-            ->getAstPsEndpoint()
+            ->getPsEndpoint()
             ->willReturn($this->psEndpoint);
 
         $this
@@ -170,7 +170,7 @@ class UpdateByDomainSpec extends ObjectBehavior
 
         $this
             ->terminal
-            ->getAstPsEndpoint()
+            ->getPsEndpoint()
             ->willReturn($this->psEndpoint);
 
         $this

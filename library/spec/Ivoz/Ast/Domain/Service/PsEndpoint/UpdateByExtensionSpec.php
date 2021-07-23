@@ -91,7 +91,7 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $terminal
-            ->getAstPsEndpoint()
+            ->getPsEndpoint()
             ->willReturn($psEndpoint)
             ->shouldBeCalled();
 
