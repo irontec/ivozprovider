@@ -3,6 +3,7 @@
 namespace Tests\Provider\ResidentialDevice;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentify;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -107,6 +108,7 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             ResidentialDevice::class,
             PsEndpoint::class,
+            PsIdentify::class,
             Voicemail::class
         ]);
     }

@@ -3,6 +3,7 @@
 namespace Tests\Provider\Friend;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentify;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -88,6 +89,7 @@ class FriendLifeCycleTestLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             Friend::class,
             PsEndpoint::class,
+            PsIdentify::class,
         ]);
     }
 
