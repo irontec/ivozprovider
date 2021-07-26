@@ -126,25 +126,25 @@
         <option name="default">no</option>
       </options>
     </field>
-    <many-to-one field="terminal" target-entity="Ivoz\Provider\Domain\Model\Terminal\TerminalInterface" inversed-by="astPsEndpoints" fetch="LAZY">
+    <one-to-one field="terminal" target-entity="Ivoz\Provider\Domain\Model\Terminal\TerminalInterface" inversed-by="psEndpoint" fetch="LAZY">
       <join-columns>
         <join-column name="terminalId" referenced-column-name="id" on-delete="CASCADE"/>
       </join-columns>
-    </many-to-one>
-    <many-to-one field="friend" target-entity="Ivoz\Provider\Domain\Model\Friend\FriendInterface" inversed-by="psEndpoints" fetch="LAZY">
+    </one-to-one>
+    <one-to-one field="friend" target-entity="Ivoz\Provider\Domain\Model\Friend\FriendInterface" inversed-by="psEndpoint" fetch="LAZY">
       <join-columns>
         <join-column name="friendId" referenced-column-name="id" on-delete="CASCADE"/>
       </join-columns>
-    </many-to-one>
-    <many-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" inversed-by="psEndpoints" fetch="LAZY">
+    </one-to-one>
+    <one-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" inversed-by="psEndpoint" fetch="LAZY">
       <join-columns>
         <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="CASCADE"/>
       </join-columns>
-    </many-to-one>
-    <many-to-one field="retailAccount" target-entity="Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface" inversed-by="psEndpoints" fetch="LAZY">
+    </one-to-one>
+    <one-to-one field="retailAccount" target-entity="Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface" inversed-by="psEndpoint" fetch="LAZY">
       <join-columns>
         <join-column name="retailAccountId" referenced-column-name="id" on-delete="CASCADE"/>
       </join-columns>
-    </many-to-one>
+    </one-to-one>
   </mapped-superclass>
 </doctrine-mapping>

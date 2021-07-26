@@ -12,7 +12,7 @@
         <option name="unsigned">1</option>
       </options>
     </id>
-    <one-to-many field="psEndpoints" target-entity="Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface" mapped-by="friend" fetch="LAZY"/>
+    <one-to-one field="psEndpoint" target-entity="Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface" mapped-by="friend" fetch="LAZY"/>
     <one-to-one field="psIdentify" target-entity="Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface" mapped-by="friend" fetch="LAZY"/>
     <one-to-many field="patterns" target-entity="Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface" mapped-by="friend" fetch="LAZY"/>
   </entity>
