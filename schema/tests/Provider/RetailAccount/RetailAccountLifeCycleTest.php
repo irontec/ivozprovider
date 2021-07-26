@@ -3,6 +3,7 @@
 namespace Tests\Provider\RetailAccount;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentify;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -99,7 +100,8 @@ class RetailAccountLifeCycleTest extends KernelTestCase
     {
         $this->assetChangedEntities([
             RetailAccount::class,
-            PsEndpoint::class
+            PsEndpoint::class,
+            PsIdentify::class,
         ]);
     }
 

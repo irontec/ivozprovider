@@ -21,6 +21,7 @@ class RetailAccountLifecycleServiceCollection implements LifecycleServiceCollect
         "post_persist" =>
         [
             \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByRetailAccount::class => 200,
+            \Ivoz\Ast\Domain\Service\PsIdentify\UpdateByRetailAccount::class => 200,
         ],
     ];
 

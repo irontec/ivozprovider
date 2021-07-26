@@ -2007,11 +2007,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.19",
+            "version": "2.5.20",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "9da283d4693b42f29f3376d9858fb7cfb4332995"
+                "reference": "5145e3c1797f9198f2627adb452a31f16a771361"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",

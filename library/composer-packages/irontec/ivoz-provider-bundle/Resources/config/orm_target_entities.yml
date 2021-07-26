@@ -5,6 +5,8 @@ doctrine:
         Ivoz\Ast\Domain\Model\Hint\Voicemail
       Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface:
         Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint
+      Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface:
+        Ivoz\Ast\Domain\Model\PsIdentify\PsIdentify
       Ivoz\Ast\Domain\Model\Queue\QueueInterface:
         Ivoz\Ast\Domain\Model\Queue\Queue
       Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface:

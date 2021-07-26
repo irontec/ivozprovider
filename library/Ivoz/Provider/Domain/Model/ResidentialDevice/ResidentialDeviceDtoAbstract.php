@@ -10,6 +10,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\Language\LanguageDto;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
 
@@ -152,6 +153,11 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     private $language;
 
     /**
+     * @var PsIdentifyDto | null
+     */
+    private $psIdentify;
+
+    /**
      * @var PsEndpointDto[] | null
      */
     private $psEndpoints;
@@ -206,7 +212,8 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'companyId' => 'company',
             'transformationRuleSetId' => 'transformationRuleSet',
             'outgoingDdiId' => 'outgoingDdi',
-            'languageId' => 'language'
+            'languageId' => 'language',
+            'psIdentifyId' => 'psIdentify'
         ];
     }
 
@@ -242,6 +249,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingDdi' => $this->getOutgoingDdi(),
             'language' => $this->getLanguage(),
+            'psIdentify' => $this->getPsIdentify(),
             'psEndpoints' => $this->getPsEndpoints(),
             'ddis' => $this->getDdis(),
             'callForwardSettings' => $this->getCallForwardSettings()
@@ -675,6 +683,36 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getLanguageId()
     {
         if ($dto = $this->getLanguage()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setPsIdentify(?PsIdentifyDto $psIdentify): static
+    {
+        $this->psIdentify = $psIdentify;
+
+        return $this;
+    }
+
+    public function getPsIdentify(): ?PsIdentifyDto
+    {
+        return $this->psIdentify;
+    }
+
+    public function setPsIdentifyId($id): static
+    {
+        $value = !is_null($id)
+            ? new PsIdentifyDto($id)
+            : null;
+
+        return $this->setPsIdentify($value);
+    }
+
+    public function getPsIdentifyId()
+    {
+        if ($dto = $this->getPsIdentify()) {
             return $dto->getId();
         }
 

@@ -7,6 +7,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelDto;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 
@@ -89,6 +90,11 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     private $terminalModel;
 
     /**
+     * @var PsIdentifyDto | null
+     */
+    private $psIdentify;
+
+    /**
      * @var PsEndpointDto[] | null
      */
     private $astPsEndpoints;
@@ -126,7 +132,8 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'companyId' => 'company',
             'domainId' => 'domain',
-            'terminalModelId' => 'terminalModel'
+            'terminalModelId' => 'terminalModel',
+            'psIdentifyId' => 'psIdentify'
         ];
     }
 
@@ -150,6 +157,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
             'terminalModel' => $this->getTerminalModel(),
+            'psIdentify' => $this->getPsIdentify(),
             'astPsEndpoints' => $this->getAstPsEndpoints(),
             'users' => $this->getUsers()
         ];
@@ -384,6 +392,36 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     public function getTerminalModelId()
     {
         if ($dto = $this->getTerminalModel()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setPsIdentify(?PsIdentifyDto $psIdentify): static
+    {
+        $this->psIdentify = $psIdentify;
+
+        return $this;
+    }
+
+    public function getPsIdentify(): ?PsIdentifyDto
+    {
+        return $this->psIdentify;
+    }
+
+    public function setPsIdentifyId($id): static
+    {
+        $value = !is_null($id)
+            ? new PsIdentifyDto($id)
+            : null;
+
+        return $this->setPsIdentify($value);
+    }
+
+    public function getPsIdentifyId()
+    {
+        if ($dto = $this->getPsIdentify()) {
             return $dto->getId();
         }
 

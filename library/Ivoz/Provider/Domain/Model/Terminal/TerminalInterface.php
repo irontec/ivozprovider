@@ -6,6 +6,7 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
@@ -100,6 +101,10 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getTerminalModel(): ?TerminalModelInterface;
 
     public function isInitialized(): bool;
+
+    public function setPsIdentify(PsIdentifyInterface $psIdentify): static;
+
+    public function getPsIdentify(): ?PsIdentifyInterface;
 
     public function addAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface;
 
