@@ -97,19 +97,6 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     }
 
     /**
-     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface|mixed
-     */
-    public function getAstPsEndpoint()
-    {
-        $astPsEnpoints = $this->getPsEndpoints(
-            Criteria::create()->setMaxResults(1)
-        );
-
-        return current($astPsEnpoints);
-    }
-
-
-    /**
      * @return string
      */
     public function getSorcery()

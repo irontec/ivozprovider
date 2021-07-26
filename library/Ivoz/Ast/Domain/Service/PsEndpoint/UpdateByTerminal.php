@@ -88,7 +88,7 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
             );
 
         $terminal
-            ->addAstPsEndpoint($endpoint);
+            ->setPsEndpoint($endpoint);
 
         $this->entityTools
             ->persist($terminal);

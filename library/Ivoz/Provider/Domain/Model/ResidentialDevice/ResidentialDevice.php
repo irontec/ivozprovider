@@ -130,16 +130,6 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     }
 
     /**
-     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface|mixed
-     */
-    public function getAstPsEndpoint()
-    {
-        $psEndpoints = $this->getPsEndpoints();
-
-        return array_shift($psEndpoints);
-    }
-
-    /**
      * @return string
      */
     public function getLanguageCode()

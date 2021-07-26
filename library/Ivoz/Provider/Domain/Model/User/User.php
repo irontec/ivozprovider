@@ -143,8 +143,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             return null;
         }
 
-        $endpoints = $terminal->getAstPsEndpoints();
-        return array_shift($endpoints);
+        return $terminal->getPsEndpoint();
     }
 
     /**
