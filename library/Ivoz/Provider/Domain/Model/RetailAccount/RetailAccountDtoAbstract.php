@@ -9,8 +9,8 @@ use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
-use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
 
 /**
@@ -112,14 +112,14 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     private $outgoingDdi;
 
     /**
+     * @var PsEndpointDto | null
+     */
+    private $psEndpoint;
+
+    /**
      * @var PsIdentifyDto | null
      */
     private $psIdentify;
-
-    /**
-     * @var PsEndpointDto[] | null
-     */
-    private $psEndpoints;
 
     /**
      * @var DdiDto[] | null
@@ -164,6 +164,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'companyId' => 'company',
             'transformationRuleSetId' => 'transformationRuleSet',
             'outgoingDdiId' => 'outgoingDdi',
+            'psEndpointId' => 'psEndpoint',
             'psIdentifyId' => 'psIdentify'
         ];
     }
@@ -192,8 +193,8 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingDdi' => $this->getOutgoingDdi(),
+            'psEndpoint' => $this->getPsEndpoint(),
             'psIdentify' => $this->getPsIdentify(),
-            'psEndpoints' => $this->getPsEndpoints(),
             'ddis' => $this->getDdis(),
             'callForwardSettings' => $this->getCallForwardSettings()
         ];
@@ -518,6 +519,36 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    public function setPsEndpoint(?PsEndpointDto $psEndpoint): static
+    {
+        $this->psEndpoint = $psEndpoint;
+
+        return $this;
+    }
+
+    public function getPsEndpoint(): ?PsEndpointDto
+    {
+        return $this->psEndpoint;
+    }
+
+    public function setPsEndpointId($id): static
+    {
+        $value = !is_null($id)
+            ? new PsEndpointDto($id)
+            : null;
+
+        return $this->setPsEndpoint($value);
+    }
+
+    public function getPsEndpointId()
+    {
+        if ($dto = $this->getPsEndpoint()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
     public function setPsIdentify(?PsIdentifyDto $psIdentify): static
     {
         $this->psIdentify = $psIdentify;
@@ -546,18 +577,6 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         }
 
         return null;
-    }
-
-    public function setPsEndpoints(?array $psEndpoints): static
-    {
-        $this->psEndpoints = $psEndpoints;
-
-        return $this;
-    }
-
-    public function getPsEndpoints(): ?array
-    {
-        return $this->psEndpoints;
     }
 
     public function setDdis(?array $ddis): static

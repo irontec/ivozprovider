@@ -7,8 +7,8 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelDto;
-use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 
 /**
@@ -90,14 +90,14 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     private $terminalModel;
 
     /**
+     * @var PsEndpointDto | null
+     */
+    private $psEndpoint;
+
+    /**
      * @var PsIdentifyDto | null
      */
     private $psIdentify;
-
-    /**
-     * @var PsEndpointDto[] | null
-     */
-    private $astPsEndpoints;
 
     /**
      * @var UserDto[] | null
@@ -133,6 +133,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
             'companyId' => 'company',
             'domainId' => 'domain',
             'terminalModelId' => 'terminalModel',
+            'psEndpointId' => 'psEndpoint',
             'psIdentifyId' => 'psIdentify'
         ];
     }
@@ -157,8 +158,8 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
             'terminalModel' => $this->getTerminalModel(),
+            'psEndpoint' => $this->getPsEndpoint(),
             'psIdentify' => $this->getPsIdentify(),
-            'astPsEndpoints' => $this->getAstPsEndpoints(),
             'users' => $this->getUsers()
         ];
 
@@ -398,6 +399,36 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    public function setPsEndpoint(?PsEndpointDto $psEndpoint): static
+    {
+        $this->psEndpoint = $psEndpoint;
+
+        return $this;
+    }
+
+    public function getPsEndpoint(): ?PsEndpointDto
+    {
+        return $this->psEndpoint;
+    }
+
+    public function setPsEndpointId($id): static
+    {
+        $value = !is_null($id)
+            ? new PsEndpointDto($id)
+            : null;
+
+        return $this->setPsEndpoint($value);
+    }
+
+    public function getPsEndpointId()
+    {
+        if ($dto = $this->getPsEndpoint()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
     public function setPsIdentify(?PsIdentifyDto $psIdentify): static
     {
         $this->psIdentify = $psIdentify;
@@ -426,18 +457,6 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         }
 
         return null;
-    }
-
-    public function setAstPsEndpoints(?array $astPsEndpoints): static
-    {
-        $this->astPsEndpoints = $astPsEndpoints;
-
-        return $this;
-    }
-
-    public function getAstPsEndpoints(): ?array
-    {
-        return $this->astPsEndpoints;
     }
 
     public function setUsers(?array $users): static

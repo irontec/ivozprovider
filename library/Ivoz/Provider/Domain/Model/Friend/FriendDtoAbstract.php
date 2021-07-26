@@ -10,8 +10,8 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\Language\LanguageDto;
-use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternDto;
 
 /**
@@ -163,14 +163,14 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $interCompany;
 
     /**
+     * @var PsEndpointDto | null
+     */
+    private $psEndpoint;
+
+    /**
      * @var PsIdentifyDto | null
      */
     private $psIdentify;
-
-    /**
-     * @var PsEndpointDto[] | null
-     */
-    private $psEndpoints;
 
     /**
      * @var FriendsPatternDto[] | null
@@ -220,6 +220,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'outgoingDdiId' => 'outgoingDdi',
             'languageId' => 'language',
             'interCompanyId' => 'interCompany',
+            'psEndpointId' => 'psEndpoint',
             'psIdentifyId' => 'psIdentify'
         ];
     }
@@ -258,8 +259,8 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'outgoingDdi' => $this->getOutgoingDdi(),
             'language' => $this->getLanguage(),
             'interCompany' => $this->getInterCompany(),
+            'psEndpoint' => $this->getPsEndpoint(),
             'psIdentify' => $this->getPsIdentify(),
-            'psEndpoints' => $this->getPsEndpoints(),
             'patterns' => $this->getPatterns()
         ];
 
@@ -739,6 +740,36 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
+    public function setPsEndpoint(?PsEndpointDto $psEndpoint): static
+    {
+        $this->psEndpoint = $psEndpoint;
+
+        return $this;
+    }
+
+    public function getPsEndpoint(): ?PsEndpointDto
+    {
+        return $this->psEndpoint;
+    }
+
+    public function setPsEndpointId($id): static
+    {
+        $value = !is_null($id)
+            ? new PsEndpointDto($id)
+            : null;
+
+        return $this->setPsEndpoint($value);
+    }
+
+    public function getPsEndpointId()
+    {
+        if ($dto = $this->getPsEndpoint()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
     public function setPsIdentify(?PsIdentifyDto $psIdentify): static
     {
         $this->psIdentify = $psIdentify;
@@ -767,18 +798,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         }
 
         return null;
-    }
-
-    public function setPsEndpoints(?array $psEndpoints): static
-    {
-        $this->psEndpoints = $psEndpoints;
-
-        return $this;
-    }
-
-    public function getPsEndpoints(): ?array
-    {
-        return $this->psEndpoints;
     }
 
     public function setPatterns(?array $patterns): static

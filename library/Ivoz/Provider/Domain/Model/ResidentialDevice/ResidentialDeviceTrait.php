@@ -5,11 +5,11 @@ namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
 /**
@@ -23,16 +23,16 @@ trait ResidentialDeviceTrait
     protected $id;
 
     /**
+     * @var PsEndpointInterface
+     * mappedBy residentialDevice
+     */
+    protected $psEndpoint;
+
+    /**
      * @var PsIdentifyInterface
      * mappedBy residentialDevice
      */
     protected $psIdentify;
-
-    /**
-     * @var ArrayCollection
-     * PsEndpointInterface mappedBy residentialDevice
-     */
-    protected $psEndpoints;
 
     /**
      * @var ArrayCollection
@@ -52,7 +52,6 @@ trait ResidentialDeviceTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-        $this->psEndpoints = new ArrayCollection();
         $this->ddis = new ArrayCollection();
         $this->callForwardSettings = new ArrayCollection();
     }
@@ -72,18 +71,18 @@ trait ResidentialDeviceTrait
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getPsIdentify())) {
-            $self->setPsIdentify(
+        if (!is_null($dto->getPsEndpoint())) {
+            $self->setPsEndpoint(
                 $fkTransformer->transform(
-                    $dto->getPsIdentify()
+                    $dto->getPsEndpoint()
                 )
             );
         }
 
-        if (!is_null($dto->getPsEndpoints())) {
-            $self->replacePsEndpoints(
-                $fkTransformer->transformCollection(
-                    $dto->getPsEndpoints()
+        if (!is_null($dto->getPsIdentify())) {
+            $self->setPsIdentify(
+                $fkTransformer->transform(
+                    $dto->getPsIdentify()
                 )
             );
         }
@@ -124,18 +123,18 @@ trait ResidentialDeviceTrait
         ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getPsIdentify())) {
-            $this->setPsIdentify(
+        if (!is_null($dto->getPsEndpoint())) {
+            $this->setPsEndpoint(
                 $fkTransformer->transform(
-                    $dto->getPsIdentify()
+                    $dto->getPsEndpoint()
                 )
             );
         }
 
-        if (!is_null($dto->getPsEndpoints())) {
-            $this->replacePsEndpoints(
-                $fkTransformer->transformCollection(
-                    $dto->getPsEndpoints()
+        if (!is_null($dto->getPsIdentify())) {
+            $this->setPsIdentify(
+                $fkTransformer->transform(
+                    $dto->getPsIdentify()
                 )
             );
         }
@@ -182,6 +181,19 @@ trait ResidentialDeviceTrait
         ];
     }
 
+    public function setPsEndpoint(PsEndpointInterface $psEndpoint): static
+    {
+        $this->psEndpoint = $psEndpoint;
+
+        /** @var  $this */
+        return $this;
+    }
+
+    public function getPsEndpoint(): ?PsEndpointInterface
+    {
+        return $this->psEndpoint;
+    }
+
     public function setPsIdentify(PsIdentifyInterface $psIdentify): static
     {
         $this->psIdentify = $psIdentify;
@@ -193,57 +205,6 @@ trait ResidentialDeviceTrait
     public function getPsIdentify(): ?PsIdentifyInterface
     {
         return $this->psIdentify;
-    }
-
-    public function addPsEndpoint(PsEndpointInterface $psEndpoint): ResidentialDeviceInterface
-    {
-        $this->psEndpoints->add($psEndpoint);
-
-        return $this;
-    }
-
-    public function removePsEndpoint(PsEndpointInterface $psEndpoint): ResidentialDeviceInterface
-    {
-        $this->psEndpoints->removeElement($psEndpoint);
-
-        return $this;
-    }
-
-    public function replacePsEndpoints(ArrayCollection $psEndpoints): ResidentialDeviceInterface
-    {
-        $updatedEntities = [];
-        $fallBackId = -1;
-        foreach ($psEndpoints as $entity) {
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
-            $entity->setResidentialDevice($this);
-        }
-        $updatedEntityKeys = array_keys($updatedEntities);
-
-        foreach ($this->psEndpoints as $key => $entity) {
-            $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
-                $this->psEndpoints->set($key, $updatedEntities[$identity]);
-            } else {
-                $this->psEndpoints->remove($key);
-            }
-            unset($updatedEntities[$identity]);
-        }
-
-        foreach ($updatedEntities as $entity) {
-            $this->addPsEndpoint($entity);
-        }
-
-        return $this;
-    }
-
-    public function getPsEndpoints(Criteria $criteria = null): array
-    {
-        if (!is_null($criteria)) {
-            return $this->psEndpoints->matching($criteria)->toArray();
-        }
-
-        return $this->psEndpoints->toArray();
     }
 
     public function addDdi(DdiInterface $ddi): ResidentialDeviceInterface

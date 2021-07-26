@@ -145,25 +145,25 @@ abstract class PsEndpointAbstract
 
     /**
      * @var TerminalInterface | null
-     * inversedBy astPsEndpoints
+     * inversedBy psEndpoint
      */
     protected $terminal;
 
     /**
      * @var FriendInterface | null
-     * inversedBy psEndpoints
+     * inversedBy psEndpoint
      */
     protected $friend;
 
     /**
      * @var ResidentialDeviceInterface | null
-     * inversedBy psEndpoints
+     * inversedBy psEndpoint
      */
     protected $residentialDevice;
 
     /**
      * @var RetailAccountInterface | null
-     * inversedBy psEndpoints
+     * inversedBy psEndpoint
      */
     protected $retailAccount;
 
