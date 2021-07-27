@@ -41,7 +41,7 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
 
         foreach ($friends as $friend) {
             if (!$friend->getFromDomain()) {
-                $this->updateEndpoint($friend->getAstPsEndpoint(), $entity->getDomain());
+                $this->updateEndpoint($friend->getPsEndpoint(), $entity->getDomain());
             }
         }
 
@@ -50,7 +50,7 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
 
         foreach ($residentialDevices as $residentialDevice) {
             if (!$residentialDevice->getFromDomain()) {
-                $this->updateEndpoint($residentialDevice->getAstPsEndpoint(), $entity->getDomain());
+                $this->updateEndpoint($residentialDevice->getPsEndpoint(), $entity->getDomain());
             }
         }
 
@@ -59,7 +59,7 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
 
         foreach ($terminals as $terminal) {
             $this->updateEndpoint(
-                $terminal->getAstPsEndpoint(),
+                $terminal->getPsEndpoint(),
                 $entity->getDomain()
             );
         }

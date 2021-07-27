@@ -9,11 +9,11 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
-use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
+use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface;
 
 /**
 * FriendInterface
@@ -122,11 +122,6 @@ interface FriendInterface extends LoggableEntityInterface
      */
     public function isAllowedToCall($exten);
 
-    /**
-     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface|mixed
-     */
-    public function getAstPsEndpoint();
-
     public function getLanguageCode();
 
     /**
@@ -195,17 +190,13 @@ interface FriendInterface extends LoggableEntityInterface
 
     public function isInitialized(): bool;
 
+    public function setPsEndpoint(PsEndpointInterface $psEndpoint): static;
+
+    public function getPsEndpoint(): ?PsEndpointInterface;
+
     public function setPsIdentify(PsIdentifyInterface $psIdentify): static;
 
     public function getPsIdentify(): ?PsIdentifyInterface;
-
-    public function addPsEndpoint(PsEndpointInterface $psEndpoint): FriendInterface;
-
-    public function removePsEndpoint(PsEndpointInterface $psEndpoint): FriendInterface;
-
-    public function replacePsEndpoints(ArrayCollection $psEndpoints): FriendInterface;
-
-    public function getPsEndpoints(?Criteria $criteria = null): array;
 
     public function addPattern(FriendsPatternInterface $pattern): FriendInterface;
 

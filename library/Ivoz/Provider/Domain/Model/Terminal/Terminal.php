@@ -152,16 +152,6 @@ class Terminal extends TerminalAbstract implements TerminalInterface
         return $allow_audio;
     }
 
-    /**
-     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface | null
-     */
-    public function getAstPsEndpoint()
-    {
-        $astPsEndpoints = $this->getAstPsEndpoints();
-
-        return array_shift($astPsEndpoints);
-    }
-
     public function setMac(?string $mac = null): static
     {
         if (!$mac) {

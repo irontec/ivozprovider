@@ -6,11 +6,11 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
-use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
 * TerminalInterface
@@ -63,11 +63,6 @@ interface TerminalInterface extends LoggableEntityInterface
      */
     public function getAllow();
 
-    /**
-     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface | null
-     */
-    public function getAstPsEndpoint();
-
     public function setMac(?string $mac = null): static;
 
     public function getName(): string;
@@ -102,17 +97,13 @@ interface TerminalInterface extends LoggableEntityInterface
 
     public function isInitialized(): bool;
 
+    public function setPsEndpoint(PsEndpointInterface $psEndpoint): static;
+
+    public function getPsEndpoint(): ?PsEndpointInterface;
+
     public function setPsIdentify(PsIdentifyInterface $psIdentify): static;
 
     public function getPsIdentify(): ?PsIdentifyInterface;
-
-    public function addAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface;
-
-    public function removeAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface;
-
-    public function replaceAstPsEndpoints(ArrayCollection $astPsEndpoints): TerminalInterface;
-
-    public function getAstPsEndpoints(?Criteria $criteria = null): array;
 
     public function addUser(UserInterface $user): TerminalInterface;
 

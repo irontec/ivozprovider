@@ -8,8 +8,8 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
-use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
@@ -66,11 +66,6 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function setPort(?int $port = null): static;
 
     /**
-     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface|mixed
-     */
-    public function getAstPsEndpoint();
-
-    /**
      * @return string
      */
     public function getSorcery();
@@ -123,17 +118,13 @@ interface RetailAccountInterface extends LoggableEntityInterface
 
     public function isInitialized(): bool;
 
+    public function setPsEndpoint(PsEndpointInterface $psEndpoint): static;
+
+    public function getPsEndpoint(): ?PsEndpointInterface;
+
     public function setPsIdentify(PsIdentifyInterface $psIdentify): static;
 
     public function getPsIdentify(): ?PsIdentifyInterface;
-
-    public function addPsEndpoint(PsEndpointInterface $psEndpoint): RetailAccountInterface;
-
-    public function removePsEndpoint(PsEndpointInterface $psEndpoint): RetailAccountInterface;
-
-    public function replacePsEndpoints(ArrayCollection $psEndpoints): RetailAccountInterface;
-
-    public function getPsEndpoints(?Criteria $criteria = null): array;
 
     public function addDdi(DdiInterface $ddi): RetailAccountInterface;
 

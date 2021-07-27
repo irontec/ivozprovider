@@ -113,7 +113,7 @@ class FriendAgent implements AgentInterface
      */
     public function isT38PassthroughEnabled()
     {
-        $psEndpoint = $this->friend->getAstPsEndpoint();
+        $psEndpoint = $this->friend->getPsEndpoint();
 
         return $psEndpoint->getT38Udptl() == FriendInterface::T38PASSTHROUGH_YES;
     }

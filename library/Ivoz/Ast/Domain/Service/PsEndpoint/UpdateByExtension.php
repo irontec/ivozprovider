@@ -64,7 +64,7 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
         }
 
         // Update terminal endpoint
-        $endpoint = $terminal->getAstPsEndpoint();
+        $endpoint = $terminal->getPsEndpoint();
         if (!$endpoint) {
             return;
         }

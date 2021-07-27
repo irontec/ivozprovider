@@ -5,11 +5,11 @@ namespace Ivoz\Provider\Domain\Model\Terminal;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
+use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
 * @codeCoverageIgnore
@@ -22,16 +22,16 @@ trait TerminalTrait
     protected $id;
 
     /**
+     * @var PsEndpointInterface
+     * mappedBy terminal
+     */
+    protected $psEndpoint;
+
+    /**
      * @var PsIdentifyInterface
      * mappedBy terminal
      */
     protected $psIdentify;
-
-    /**
-     * @var ArrayCollection
-     * PsEndpointInterface mappedBy terminal
-     */
-    protected $astPsEndpoints;
 
     /**
      * @var ArrayCollection
@@ -45,7 +45,6 @@ trait TerminalTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-        $this->astPsEndpoints = new ArrayCollection();
         $this->users = new ArrayCollection();
     }
 
@@ -64,18 +63,18 @@ trait TerminalTrait
     ) {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getPsIdentify())) {
-            $self->setPsIdentify(
+        if (!is_null($dto->getPsEndpoint())) {
+            $self->setPsEndpoint(
                 $fkTransformer->transform(
-                    $dto->getPsIdentify()
+                    $dto->getPsEndpoint()
                 )
             );
         }
 
-        if (!is_null($dto->getAstPsEndpoints())) {
-            $self->replaceAstPsEndpoints(
-                $fkTransformer->transformCollection(
-                    $dto->getAstPsEndpoints()
+        if (!is_null($dto->getPsIdentify())) {
+            $self->setPsIdentify(
+                $fkTransformer->transform(
+                    $dto->getPsIdentify()
                 )
             );
         }
@@ -108,18 +107,18 @@ trait TerminalTrait
         ForeignKeyTransformerInterface $fkTransformer
     ) {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getPsIdentify())) {
-            $this->setPsIdentify(
+        if (!is_null($dto->getPsEndpoint())) {
+            $this->setPsEndpoint(
                 $fkTransformer->transform(
-                    $dto->getPsIdentify()
+                    $dto->getPsEndpoint()
                 )
             );
         }
 
-        if (!is_null($dto->getAstPsEndpoints())) {
-            $this->replaceAstPsEndpoints(
-                $fkTransformer->transformCollection(
-                    $dto->getAstPsEndpoints()
+        if (!is_null($dto->getPsIdentify())) {
+            $this->setPsIdentify(
+                $fkTransformer->transform(
+                    $dto->getPsIdentify()
                 )
             );
         }
@@ -158,6 +157,19 @@ trait TerminalTrait
         ];
     }
 
+    public function setPsEndpoint(PsEndpointInterface $psEndpoint): static
+    {
+        $this->psEndpoint = $psEndpoint;
+
+        /** @var  $this */
+        return $this;
+    }
+
+    public function getPsEndpoint(): ?PsEndpointInterface
+    {
+        return $this->psEndpoint;
+    }
+
     public function setPsIdentify(PsIdentifyInterface $psIdentify): static
     {
         $this->psIdentify = $psIdentify;
@@ -169,57 +181,6 @@ trait TerminalTrait
     public function getPsIdentify(): ?PsIdentifyInterface
     {
         return $this->psIdentify;
-    }
-
-    public function addAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface
-    {
-        $this->astPsEndpoints->add($astPsEndpoint);
-
-        return $this;
-    }
-
-    public function removeAstPsEndpoint(PsEndpointInterface $astPsEndpoint): TerminalInterface
-    {
-        $this->astPsEndpoints->removeElement($astPsEndpoint);
-
-        return $this;
-    }
-
-    public function replaceAstPsEndpoints(ArrayCollection $astPsEndpoints): TerminalInterface
-    {
-        $updatedEntities = [];
-        $fallBackId = -1;
-        foreach ($astPsEndpoints as $entity) {
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
-            $entity->setTerminal($this);
-        }
-        $updatedEntityKeys = array_keys($updatedEntities);
-
-        foreach ($this->astPsEndpoints as $key => $entity) {
-            $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
-                $this->astPsEndpoints->set($key, $updatedEntities[$identity]);
-            } else {
-                $this->astPsEndpoints->remove($key);
-            }
-            unset($updatedEntities[$identity]);
-        }
-
-        foreach ($updatedEntities as $entity) {
-            $this->addAstPsEndpoint($entity);
-        }
-
-        return $this;
-    }
-
-    public function getAstPsEndpoints(Criteria $criteria = null): array
-    {
-        if (!is_null($criteria)) {
-            return $this->astPsEndpoints->matching($criteria)->toArray();
-        }
-
-        return $this->astPsEndpoints->toArray();
     }
 
     public function addUser(UserInterface $user): TerminalInterface
