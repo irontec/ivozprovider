@@ -41,7 +41,8 @@ Feature: Create call forward setting
           "voiceMailUser": null,
           "numberCountry": 68,
           "residentialDevice": null,
-          "retailAccount": null
+          "retailAccount": null,
+          "cfwToRetailAccount": null
       }
     """
 

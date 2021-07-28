@@ -41,6 +41,7 @@ Feature: Update call forward settings
           "voiceMailUser": null,
           "numberCountry": 1,
           "residentialDevice": null,
-          "retailAccount": null
+          "retailAccount": null,
+          "cfwToRetailAccount": null
       }
     """
