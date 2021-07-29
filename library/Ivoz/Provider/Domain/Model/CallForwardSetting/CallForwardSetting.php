@@ -53,6 +53,9 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
 
         $retailAccount = $this->getRetailAccount();
         if (!$retailAccount) {
+            // DDI criteria is only supported for retail call-forwards
+            $this->setDdi(null);
+
             return;
         }
 
