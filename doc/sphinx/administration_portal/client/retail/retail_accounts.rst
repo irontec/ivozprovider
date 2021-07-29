@@ -121,6 +121,9 @@ Unreachable call forward will be executed whenever the retail account cannot be 
 
 - Accounts using SIP register: when no answer is received from last contact address or when no active register is found.
 
+You can also add called DDI as call-forward criteria, making it apply only when a certain DDI is called. These call-forward
+settings have precedence over call-forward with no DDI selected (Any DDI).
+
 .. tip:: Unconditional call forward has precedence over unreacheable call forward.
 
 .. warning:: Retail accounts marked as T.38 won't have any call forward settings.
