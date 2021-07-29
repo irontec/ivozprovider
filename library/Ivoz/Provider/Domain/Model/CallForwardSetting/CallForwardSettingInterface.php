@@ -173,6 +173,13 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getCfwToRetailAccount();
 
     /**
+     * Get ddi
+     *
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     */
+    public function getDdi();
+
+    /**
      * @return bool
      */
     public function isInitialized(): bool;

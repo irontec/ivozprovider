@@ -81,6 +81,11 @@ abstract class CallForwardSettingAbstract
      */
     protected $cfwToRetailAccount;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     */
+    protected $ddi;
+
 
     use ChangelogTrait;
 
@@ -184,6 +189,7 @@ abstract class CallForwardSettingAbstract
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
             ->setCfwToRetailAccount($fkTransformer->transform($dto->getCfwToRetailAccount()))
+            ->setDdi($fkTransformer->transform($dto->getDdi()))
         ;
 
         $self->initChangelog();
@@ -215,7 +221,8 @@ abstract class CallForwardSettingAbstract
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
-            ->setCfwToRetailAccount($fkTransformer->transform($dto->getCfwToRetailAccount()));
+            ->setCfwToRetailAccount($fkTransformer->transform($dto->getCfwToRetailAccount()))
+            ->setDdi($fkTransformer->transform($dto->getDdi()));
 
 
 
@@ -242,7 +249,8 @@ abstract class CallForwardSettingAbstract
             ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth))
             ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
             ->setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::entityToDto(self::getRetailAccount(), $depth))
-            ->setCfwToRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::entityToDto(self::getCfwToRetailAccount(), $depth));
+            ->setCfwToRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::entityToDto(self::getCfwToRetailAccount(), $depth))
+            ->setDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getDdi(), $depth));
     }
 
     /**
@@ -263,7 +271,8 @@ abstract class CallForwardSettingAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null,
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
             'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null,
-            'cfwToRetailAccountId' => self::getCfwToRetailAccount() ? self::getCfwToRetailAccount()->getId() : null
+            'cfwToRetailAccountId' => self::getCfwToRetailAccount() ? self::getCfwToRetailAccount()->getId() : null,
+            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -616,6 +625,30 @@ abstract class CallForwardSettingAbstract
     public function getCfwToRetailAccount()
     {
         return $this->cfwToRetailAccount;
+    }
+
+    /**
+     * Set ddi
+     *
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi | null
+     *
+     * @return static
+     */
+    protected function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi = null)
+    {
+        $this->ddi = $ddi;
+
+        return $this;
+    }
+
+    /**
+     * Get ddi
+     *
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
+     */
+    public function getDdi()
+    {
+        return $this->ddi;
     }
 
     // @codeCoverageIgnoreEnd
