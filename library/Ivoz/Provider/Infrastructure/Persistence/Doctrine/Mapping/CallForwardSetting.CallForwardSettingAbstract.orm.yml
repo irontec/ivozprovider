@@ -129,3 +129,15 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
           nullable: true
           onDelete: cascade
       orphanRemoval: false
+    ddi:
+      targetEntity: \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ddiId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+
