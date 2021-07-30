@@ -42,7 +42,8 @@ Feature: Create call forward setting
           "numberCountry": 68,
           "residentialDevice": null,
           "retailAccount": null,
-          "cfwToRetailAccount": null
+          "cfwToRetailAccount": null,
+          "ddi": null
       }
     """
 
