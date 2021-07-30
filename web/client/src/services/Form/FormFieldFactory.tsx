@@ -4,6 +4,7 @@ import EntityService from 'services/Entity/EntityService';
 import { useFormikType } from './types';
 import Dropdown from 'services/Form/Field/Dropdown';
 import React from 'react';
+import Autocomplete from './Field/Autocomplete';
 
 export default class FormFieldFactory
 {
@@ -57,8 +58,9 @@ export default class FormFieldFactory
         const property = this.getProperty(fld);
         const disabled = (property as ScalarProperty).readOnly;
         const classes:any = this.styles();
+        const multiSelect = (property as ScalarProperty).type === 'array';
 
-        if ((property as FkProperty).$ref) {
+        if ((property as FkProperty).$ref || multiSelect) {
 
             if (!choices) {
                 return (<div className={classes.linearProgress}><LinearProgress /></div>);
@@ -69,10 +71,11 @@ export default class FormFieldFactory
             }
 
             return (
-                <Dropdown
+                <Autocomplete
                     name={fld}
                     label={property.label}
                     value={this.formik.values[fld]}
+                    multiple={multiSelect}
                     required={property.required}
                     disabled={disabled}
                     onChange={this.changeHandler}
@@ -216,6 +219,7 @@ export default class FormFieldFactory
             );
         }
 
+        console.log('TODO FIELD TYPE', property);
         return (<span>TODO FIELD TYPE {(property as ScalarProperty).type}</span>)
     }
 }

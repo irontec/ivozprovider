@@ -11,6 +11,7 @@ import LanguageSelectOptions from 'entities/Language/SelectOptions';
 import TransformationRuleSetSelectOptions from 'entities/TransformationRuleSet/SelectOptions';
 import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import UserSelectOptions from './SelectOptions';
+import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
 import _ from 'services/Translations/translate';
 
 const Form = (props:any) => {
@@ -125,6 +126,15 @@ const Form = (props:any) => {
                     });
                 });
 
+                PickUpGroupSelectOptions((options:any) => {
+                    setFkChoices((fkChoices:any) => {
+                        return {
+                            ...fkChoices,
+                            pickupGroupIds: options
+                        }
+                    });
+                });
+
                 setLoadingFks(false);
             }
 
@@ -140,7 +150,7 @@ const Form = (props:any) => {
             legend: _('Personal data'),
             fields: [
                 'name',
-                'language', //
+                'language',
                 'lastname',
                 'email',
             ]

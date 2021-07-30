@@ -4,7 +4,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  OutlinedInput
+  OutlinedInput,
 } from '@material-ui/core';
 import EntityInterface from 'entities/EntityInterface';
 

@@ -191,7 +191,11 @@ const Form = (props: any) => {
         setVisualToggles(updatedVisualToggles);
     };
 
-    const formFieldFactory = new FormFieldFactory(entityService, formik, formOnChangeHandler);
+    const formFieldFactory = new FormFieldFactory(
+        entityService,
+        formik,
+        formOnChangeHandler
+    );
 
     return (
         <React.Fragment>
