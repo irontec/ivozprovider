@@ -170,8 +170,8 @@ const properties:PropertiesList = {
     }
 };
 
-async function foreignKeyResolver(data: any, entityService: EntityService) {
-
+async function foreignKeyResolver(data: any, entityService: EntityService)
+{
     const promises= [];
     const { Ddi, Extension, Terminal } = entities;
 

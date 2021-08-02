@@ -120,13 +120,11 @@ const properties:PropertiesList = {
     },
     'whiteListIds': {
         label: _('White Lists'),
-        helpText: _("Incoming numbers that match this lists will be always ACCEPTED without checking this filter configuration.")
-        //@TODO multiselect
+        helpText: _("Incoming numbers that match this lists will be always ACCEPTED without checking this filter configuration."),
     },
     'blackListIds': {
         label: _('Black Lists'),
         helpText: _("Incoming numbers that match this lists will be always REJECTED without checking this filter configuration."),
-        //@TODO multiselect
     },
     'holidayTarget': {
         label: _('Holiday target')

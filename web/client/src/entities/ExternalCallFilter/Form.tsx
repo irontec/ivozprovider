@@ -5,6 +5,9 @@ import CountrySelectOptions from 'entities/Country/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
 import _ from 'services/Translations/translate';
+import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
+import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
+import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
 
 const Form = (props:any) => {
 
@@ -17,11 +20,6 @@ const Form = (props:any) => {
     useEffect(
         () => {
             if (loadingFks) {
-
-                //@TODO schedules
-                //@TODO calendars
-                //@TODO whiteLists
-                //@TODO blackLists
 
                 LocutionSelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
@@ -60,6 +58,34 @@ const Form = (props:any) => {
                             ...fkChoices,
                             holidayVoiceMailUser: options,
                             outOfScheduleVoiceMailUser: options,
+                        }
+                    });
+                });
+
+                MatchListSelectOptions((options:any) => {
+                    setFkChoices((fkChoices:any) => {
+                        return {
+                            ...fkChoices,
+                            whiteListIds: options,
+                            blackListIds: options,
+                        }
+                    });
+                });
+
+                ScheduleSelectOptions((options:any) => {
+                    setFkChoices((fkChoices:any) => {
+                        return {
+                            ...fkChoices,
+                            scheduleIds: options,
+                        }
+                    });
+                });
+
+                CalendarSelectOptions((options:any) => {
+                    setFkChoices((fkChoices:any) => {
+                        return {
+                            ...fkChoices,
+                            calendarIds: options,
                         }
                     });
                 });

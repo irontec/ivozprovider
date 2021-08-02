@@ -50,6 +50,7 @@ const Form = (props:any) => {
                             ...fkChoices,
                             noInputExtension: options,
                             errorExtension: options,
+                            excludedExtensionIds: options,
                         }
                     });
                 });

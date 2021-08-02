@@ -54,17 +54,16 @@ const properties:PropertiesList = {
         visualToggle: {
             '0': {
                 show: [],
-                hide: ['excludedExtensions'],
+                hide: ['excludedExtensionIds'],
             },
             '1': {
-                show: ['excludedExtensions'],
+                show: ['excludedExtensionIds'],
                 hide: [],
             },
         }
     },
     'excludedExtensionIds': {
         label: _('Excluded Extension'),
-        //@TODO multiselect
     },
     'noInputRouteType': {
         label: _('No input target type'),
