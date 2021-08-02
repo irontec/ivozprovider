@@ -88,6 +88,12 @@
         <option name="default"/>
       </options>
     </field>
+    <field name="contactAddr" type="string" column="contact_addr" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
     <one-to-one field="ddiProviderRegistration" target-entity="Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface" inversed-by="trunksUacreg" fetch="LAZY">
       <join-columns>
         <join-column name="ddiProviderRegistrationId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
