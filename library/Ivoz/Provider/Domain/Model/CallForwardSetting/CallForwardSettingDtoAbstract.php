@@ -80,6 +80,11 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
      */
     private $cfwToRetailAccount;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     */
+    private $ddi;
+
 
     use DtoNormalizer;
 
@@ -111,7 +116,8 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'numberCountryId' => 'numberCountry',
             'residentialDeviceId' => 'residentialDevice',
             'retailAccountId' => 'retailAccount',
-            'cfwToRetailAccountId' => 'cfwToRetailAccount'
+            'cfwToRetailAccountId' => 'cfwToRetailAccount',
+            'ddiId' => 'ddi'
         ];
     }
 
@@ -134,7 +140,8 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'numberCountry' => $this->getNumberCountry(),
             'residentialDevice' => $this->getResidentialDevice(),
             'retailAccount' => $this->getRetailAccount(),
-            'cfwToRetailAccount' => $this->getCfwToRetailAccount()
+            'cfwToRetailAccount' => $this->getCfwToRetailAccount(),
+            'ddi' => $this->getDdi()
         ];
 
         if (!$hideSensitiveData) {
@@ -607,6 +614,52 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     public function getCfwToRetailAccountId()
     {
         if ($dto = $this->getCfwToRetailAccount()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi
+     *
+     * @return static
+     */
+    public function setDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiDto $ddi = null)
+    {
+        $this->ddi = $ddi;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiDto | null
+     */
+    public function getDdi()
+    {
+        return $this->ddi;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setDdiId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            : null;
+
+        return $this->setDdi($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDdiId()
+    {
+        if ($dto = $this->getDdi()) {
             return $dto->getId();
         }
 

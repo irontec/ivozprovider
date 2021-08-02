@@ -42,6 +42,7 @@ Feature: Update call forward settings
           "numberCountry": 1,
           "residentialDevice": null,
           "retailAccount": null,
-          "cfwToRetailAccount": null
+          "cfwToRetailAccount": null,
+          "ddi": null
       }
     """

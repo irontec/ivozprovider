@@ -31,6 +31,22 @@ production:
           order:
             ResidentialDevice.name: asc
       default: true
+    ddi:
+      title: ngettext('Called DDI', 'Called DDIs', 1)
+      type: select
+      required: false
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Ddi\Ddi
+          fieldName:
+            fields:
+              - ddie164
+            template: '%ddie164%'
+          order:
+            Ddi.ddie164: asc
+        'null': _("Any")
+      default: true
     cfwToretailAccount:
       title:  ngettext('Retail Account', 'Retail Accounts', 1)
       type: select
