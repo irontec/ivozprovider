@@ -17,7 +17,8 @@ class TransformationRuleSetDto extends TransformationRuleSetDtoAbstract
                 'trunkPrefix' => 'trunkPrefix',
                 'areaCode' => 'areaCode',
                 'nationalLen' => 'nationalLen',
-                'id' => 'id'
+                'id' => 'id',
+                'name' => ['en','es','ca','it'],
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

@@ -16,6 +16,11 @@ services:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Brand'
 
   ##########################################
+  ## CallAcl
+  ##########################################
+  Ivoz\Provider\Application\Service\CallAcl\CallAclDtoAssembler: ~
+
+  ##########################################
   ## WebPortal
   ##########################################
   Ivoz\Provider\Application\Service\WebPortal\WebPortalAssembler:

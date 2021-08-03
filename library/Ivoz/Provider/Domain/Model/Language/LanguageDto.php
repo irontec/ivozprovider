@@ -30,6 +30,7 @@ class LanguageDto extends LanguageDtoAbstract
             return [
                 'id' => 'id',
                 'iden' => 'iden',
+                'name' => ['en','es','ca','it'],
             ];
         }
 

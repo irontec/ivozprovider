@@ -90,6 +90,17 @@ Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule
       - schedule
 
 Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
+  itemOperations:
+    get:
+      operation_normalization_context: 'withMatchListIds'
+    put:
+      operation_normalization_context: 'withMatchListIds'
+    delete: ~
+  collectionOperations:
+    get: ~
+    post:
+      operation_normalization_context: 'withMatchListIds'
+      depth: 1
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
@@ -99,6 +110,9 @@ Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    normalization_context:
+      groups: ['withExcludedExtensions']
+
     swagger_context:
       required:
       - company
