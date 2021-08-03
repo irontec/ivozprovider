@@ -127,6 +127,9 @@ production:
       title: _("Edit %s %2s", ngettext('IVR', 'IVRs', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedCompany
+      defaultValues:
+        noInputNumberCountry: ${auth.companyCountryId}
+        errorNumberCountry: ${auth.companyCountryId}
       fields:
         order:
           name: true

@@ -131,6 +131,8 @@ production:
         <<: *forcedBrand
         <<: *forcedCompany
       title: _("Edit %s %2s", ngettext('DDI', 'DDIs', 1), "[format| (%item%)]")
+      defaultValues:
+        country: ${auth.companyCountryId}
       fields:
         order:
           <<: *ddisFieldsOder_Link

@@ -90,6 +90,8 @@ production:
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Call forward setting', 'Call forward settings', 1), "[format| (%item%)]")
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
       fields: &callForwardSettingsEditFields_Link
         blacklist: &callForwardSettingsEditBlacklist_Link
           targetTypeValue: true
