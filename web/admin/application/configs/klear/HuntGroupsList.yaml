@@ -90,6 +90,8 @@ production:
       title: _("Edit %s %2s", ngettext('Hunt Group', 'Hunt Groups', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedCompany
+      defaultValues:
+        noAnswerNumberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           <<: *huntGroupsBlacklist_Link

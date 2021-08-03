@@ -94,6 +94,8 @@ production:
       forcedValues:
         <<: *forcedCompany
       title: _("Edit %s %2s", ngettext('Extension', 'Extensions', 1), "[format| (%item%)]")
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           target: true
