@@ -1,3 +1,24 @@
+Tue, 03 Aug 2021 14:04:28 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.18.0 released
+
+    * Portals
+        - Fix country selector default value on edit screens
+
+    * Proxies
+        - Do not force prio 0 for blocking outgoing routes
+        - Fix realtime in carrier failover scenarios
+        - Remove X-headers to carriers in wholesale calls
+        - Detect LCR Kamailio module inconsistent states
+
+    * Retail
+        - Add retail to retail call-forward
+        - Add called DDI as retail call-forward criteria
+
+    * API
+        - Fix destination rate groups file uploads
+        - Add many missing fields into API collection responses
+
 Tue, 15 Jun 2021 10:43:39 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.17.2 released
