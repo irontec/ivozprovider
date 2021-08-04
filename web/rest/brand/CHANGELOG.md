@@ -1,5 +1,38 @@
 # Changelog
 
+## 2.18.0
+* Endpoints:
+    - Allow to filter collections by id
+    - /destination_rate_groups
+        - Removed unnecessary file filter parameter
+    - /friends
+        - Added description[end|exact|partial|start] filter parameter
+        - Added domain filter parameter
+        - Added priority[between|gt|gte|lt|lte] filter parameter
+        - Added description and priority to order parameters
+    - /invoices:
+        - Added numberSequence filter parameter
+        - Added scheduler filter parameter
+
+* Model
+    - Ddi-collection
+        - Added country property
+        - Added ddiProvider property
+    - DestinationRateGroup and DestinationRateGroup-collection
+        - Added file property
+        - Added filePath readonly property
+    - DestinationRateGroup_File:
+        - Added model
+    - Fax-collection:
+        - Added outgoingDdi property
+    - Friend-collection:
+        - Added domain property
+        - Added description property
+        - Added priority property
+    - User-collection:
+        - Added terminal property
+        - Added outgoingDdi property
+
 ## 2.17.2
 * Endpoints:
     - /countries:
