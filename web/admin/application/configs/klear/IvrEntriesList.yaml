@@ -77,6 +77,8 @@ production:
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('IVR entry', 'IVR entries', 1), "[format| (%item%)]")
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           target: true

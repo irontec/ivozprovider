@@ -9,6 +9,7 @@ class RouteLockDto extends RouteLockDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'name' => 'name',
+                'description' => 'description',
                 'open' => 'open',
                 'id' => 'id',
             ];

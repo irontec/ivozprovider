@@ -1366,11 +1366,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "3.3.6.0",
+            "version": "3.3.7.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core",
-                "reference": "b2a66c63f7b78b99da9baea77e5bf882b9e61413",
+                "reference": "7fb4dac1900acd9ca0b3e8f63ffe494090cbe3ee",
                 "shasum": null
             },
             "require": {

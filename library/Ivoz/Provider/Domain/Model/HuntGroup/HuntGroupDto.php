@@ -14,6 +14,7 @@ class HuntGroupDto extends HuntGroupDtoAbstract
             return [
                 'id' => 'id',
                 'name' => 'name',
+                'description' => 'description',
                 'strategy' => 'strategy'
             ];
         }

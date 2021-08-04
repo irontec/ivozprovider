@@ -89,7 +89,9 @@ class TerminalDto extends TerminalDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'mac' => 'mac',
-                'lastProvisionDate' => 'lastProvisionDate'
+                'lastProvisionDate' => 'lastProvisionDate',
+                'domainId' => 'domain',
+                'terminalModelId' => 'terminalModel'
             ];
         }
 

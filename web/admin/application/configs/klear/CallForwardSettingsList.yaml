@@ -13,9 +13,10 @@ production:
       <<: *CallForwardSettings
       class: ui-silk-telephone-go
       title: _("List of %s %2s", ngettext('Call forward setting', 'Call forward settings', 0), "[format| (%parent%)]")
-      fields:
+      fields: &callForwardSettingsListFields_Link
         order:
           enabled: true
+          ddi: true
           callTypeFilter: true
           callForwardType: true
           targetType: true
@@ -27,7 +28,7 @@ production:
           dialogs:
             callForwardSettingsDel_dialog: ${auth.acls.CallForwardSettings.delete}
           default: callForwardSettingsEdit_screen
-        blacklist:
+        blacklist: &callForwardSettingsListBlacklist_Link
           numberCountry: true
           numberValue: true
           extension: true
@@ -35,6 +36,7 @@ production:
           noAnswerTimeout: true
           user: true
           residentialDevice: true
+          cfwToretailAccount: true
       options:
         title: _("Options")
         screens:
@@ -52,8 +54,8 @@ production:
       shortcutOption: N
       defaultValues:
         numberCountry: ${auth.companyCountryId}
-      fields:
-        blacklist:
+      fields: &callForwardSettingsNewFields_Link
+        blacklist: &callForwardSettingsNewBlacklist_Link
           targetTypeValue: true
           user: true
           residentialDevice: true
@@ -61,14 +63,17 @@ production:
         order: &callForwardSettingsOrder_Link
           enabled: true
           targetType: true
+          noAnswerTimeout: true
+          ddi: true
       fixedPositions: &callForwardSettingsFixedPositions_Link
         group0:
-          colsPerRow: 4
+          colsPerRow: 12
           fields:
-            enabled: 1
-            callTypeFilter: 1
-            callForwardType: 1
-            noAnswerTimeout: 1
+            enabled: 4
+            callTypeFilter: 4
+            callForwardType: 4
+            noAnswerTimeout: 4
+            ddi: 4
         group1:
           colsPerRow: 6
           fields:
@@ -77,6 +82,7 @@ production:
             numberValue: 2
             extension: 3
             voiceMailUser: 3
+            cfwToretailAccount: 3
 
     callForwardSettingsEdit_screen: &callForwardSettingsEdit_screenLink 
       <<: *CallForwardSettings
@@ -84,8 +90,10 @@ production:
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Call forward setting', 'Call forward settings', 1), "[format| (%item%)]")
-      fields:
-        blacklist:
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
+      fields: &callForwardSettingsEditFields_Link
+        blacklist: &callForwardSettingsEditBlacklist_Link
           targetTypeValue: true
           user: true
           residentialDevice: true

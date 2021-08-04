@@ -101,6 +101,8 @@ production:
       title: _("Edit %s %2s", ngettext('Conditional Route', 'Conditional Routes', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedCompany
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           <<: *conditionalRoutesBlacklist_link

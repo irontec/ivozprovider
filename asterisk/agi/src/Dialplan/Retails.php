@@ -3,12 +3,11 @@
 namespace Dialplan;
 
 use Agi\Action\ExternalNumberAction;
-use Agi\Action\ServiceAction;
+use Agi\Action\RetailCallAction;
 use Agi\Agents\RetailAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use RouteHandlerAbstract;
 
 class Retails extends RouteHandlerAbstract
@@ -34,23 +33,31 @@ class Retails extends RouteHandlerAbstract
     protected $externalNumberAction;
 
     /**
+     * @var RetailCallAction
+     */
+    protected $retailCallAction;
+
+    /**
      * Retails constructor.
      *
      * @param Wrapper $agi
      * @param ChannelInfo $channelInfo
      * @param EndpointResolver $endpointResolver
      * @param ExternalNumberAction $externalNumberAction
+     * @param RetailCallAction $retailCallAction
      */
     public function __construct(
         Wrapper $agi,
         ChannelInfo $channelInfo,
         EndpointResolver $endpointResolver,
-        ExternalNumberAction $externalNumberAction
+        ExternalNumberAction $externalNumberAction,
+        RetailCallAction $retailCallAction
     ) {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->endpointResolver = $endpointResolver;
         $this->externalNumberAction = $externalNumberAction;
+        $this->retailCallAction = $retailCallAction;
     }
 
     /**
@@ -69,7 +76,6 @@ class Retails extends RouteHandlerAbstract
 
         // Set Company/Brand/Generic Music class
         $company = $retailAccount->getCompany();
-        $brand = $company->getBrand();
         $this->agi->setVariable("__COMPANYID", $company->getId());
         $this->agi->setVariable("CHANNEL(language)", $company->getLanguageCode());
 
@@ -98,9 +104,17 @@ class Retails extends RouteHandlerAbstract
         // Some feedback for asterisk cli
         $this->agi->notice("Processing outgoing call from \e[0;36m%s\e[0;93m to number %s", $retailAccount, $exten);
 
-        // All retail account calls are handled as external
-        $this->externalNumberAction
-            ->setDestination($exten)
-            ->process();
+        $cfwDestination= $this->agi->getSIPHeader('X-Info-Cfw-Destination');
+        if ($cfwDestination) {
+            $dstRetailAccount = $this->endpointResolver->getRetailFromEndpoint($cfwDestination);
+            $this->retailCallAction
+                ->setRetailAccount($dstRetailAccount)
+                ->process();
+        } else {
+            // Remaining retail account calls are handled as external
+            $this->externalNumberAction
+                ->setDestination($exten)
+                ->process();
+        }
     }
 }

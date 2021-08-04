@@ -14,8 +14,9 @@ class ConferenceRoomDto extends ConferenceRoomDtoAbstract
             return [
                 'id' => 'id',
                 'name' => 'name',
+                'maxMembers' => 'maxMembers',
                 'pinProtected' => 'pinProtected',
-                'maxMembers' => 'maxMembers'
+                'pinCode' => 'pinCode',
             ];
         }
 

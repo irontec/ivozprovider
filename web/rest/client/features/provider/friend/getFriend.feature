@@ -16,7 +16,10 @@ Feature: Retrieve friends
       [
           {
               "name": "testFriend",
-              "id": 1
+              "description": "",
+              "priority": 1,
+              "id": 1,
+              "domain": 3
           }
       ]
     """

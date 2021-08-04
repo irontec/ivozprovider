@@ -70,6 +70,8 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Match List Pattern', 'Match List Patterns', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Match List Pattern', 'Match List Patterns', 1), "[format| (%item%)]")
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           matchValue: true

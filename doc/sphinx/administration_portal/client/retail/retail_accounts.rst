@@ -103,17 +103,26 @@ There is no voicemail service for retail clients.
 Call forwarding settings
 ========================
 
-There are 2 types of call forward settings for retail accounts, both pointing to an external number:
+There are 2 types of call forward settings for retail accounts:
 
 - Unconditional call forward.
 
 - Unreachable call forward.
 
-The last one will be called whenever the retail account cannot be reached:
+You can point both types to 2 different destination:
+
+- An external number.
+
+- Another retail account within the same retail client.
+
+Unreachable call forward will be executed whenever the retail account cannot be reached:
 
 - Direct connectivity accounts: when no answer is received from defined address.
 
 - Accounts using SIP register: when no answer is received from last contact address or when no active register is found.
+
+You can also add called DDI as call-forward criteria, making it apply only when a certain DDI is called. These call-forward
+settings have precedence over call-forward with no DDI selected (Any DDI).
 
 .. tip:: Unconditional call forward has precedence over unreacheable call forward.
 

@@ -71,6 +71,8 @@ production:
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Hunt Group', 'Hunt Groups', 1), "[format| (%parent%)]")
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           user: true

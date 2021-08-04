@@ -131,6 +131,9 @@ production:
       title: _("Edit %s %2s", ngettext('Queue', 'Queues', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedCompany
+      defaultValues:
+        timeoutNumberCountry: ${auth.companyCountryId}
+        fullNumberCountry: ${auth.companyCountryId}
       fields:
         order:
           <<: *Queues_orderLink

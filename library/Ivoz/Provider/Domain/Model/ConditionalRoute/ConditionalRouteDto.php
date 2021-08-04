@@ -14,7 +14,18 @@ class ConditionalRouteDto extends ConditionalRouteDtoAbstract
             return [
                 'id' => 'id',
                 'name' => 'name',
-                'routetype' => 'routetype'
+                'locutionId' => 'locution',
+                'routetype' => 'routetype',
+                'numbervalue' => 'numbervalue',
+                'friendvalue' => 'friendvalue',
+                'ivrId' => 'ivr',
+                'huntGroupId' => 'huntGroup',
+                'voicemailUserId' => 'voicemailUser',
+                'userId' => 'user',
+                'queueId' => 'queue',
+                'conferenceRoomId' => 'conferenceRoom',
+                'extensionId' => 'extension',
+                'numberCountryId' => 'numberCountry'
             ];
         }
 

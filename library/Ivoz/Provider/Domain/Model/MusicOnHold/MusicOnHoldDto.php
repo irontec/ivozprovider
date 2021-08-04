@@ -17,7 +17,8 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
             return [
                 'id' => 'id',
                 'name' => 'name',
-                'status' => 'status'
+                'status' => 'status',
+                'originalFile' => ['baseName'],
             ];
         }
 

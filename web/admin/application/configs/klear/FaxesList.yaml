@@ -183,6 +183,8 @@ production:
       filterField: Fax
       forcedValues:
         "self::type": 'Out'
+      defaultValues:
+        dstCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           calldate: true

@@ -194,6 +194,9 @@ msgid_plural "Antiflood banned IPs"
 msgstr[0] "IP bloqueada antiflood"
 msgstr[1] "IPs bloqueadas antiflood"
 
+msgid "Any"
+msgstr "Cualquiera"
+
 msgid "Application Server"
 msgid_plural "Application Servers"
 msgstr[0] "Servidor de Aplicación"
@@ -447,6 +450,11 @@ msgstr "Llamada en espera"
 
 msgid "Calldate"
 msgstr "Fecha"
+
+msgid "Called DDI"
+msgid_plural "Called DDIs"
+msgstr[0] "DDI llamado"
+msgstr[1] "DDIs llamados"
 
 msgid "Callee"
 msgstr "Llamado"

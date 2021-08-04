@@ -10,10 +10,27 @@ class ExtensionDto extends ExtensionDtoAbstract
      */
     public static function getPropertyMap(string $context = '', string $role = null)
     {
-        if ($context === self::CONTEXT_COLLECTION) {
+        if ($context === self::CONTEXT_COLLECTION && $role === 'ROLE_COMPANY_USER') {
             return [
                 'id' => 'id',
                 'number' => 'number'
+            ];
+        }
+
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'number' => 'number',
+                'routeType' => 'routeType',
+                'numberValue' => 'numberValue',
+                'friendValue' => 'friendValue',
+                'ivrId' => 'ivr',
+                'huntGroupId' => 'huntGroup',
+                'conferenceRoomId' => 'conferenceRoom',
+                'userId' => 'user',
+                'queueId' => 'queue',
+                'conditionalRouteId' => 'conditionalRoute',
+                'numberCountryId' => 'numberCountry'
             ];
         }
 

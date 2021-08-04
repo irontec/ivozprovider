@@ -15,7 +15,7 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
             $response = [
                 'status' => 'status',
                 'id' => 'id',
-                'name' => ['en', 'es'],
+                'name' => ['en', 'es','ca','it'],
                 'file' => ['fileSize', 'mimeType', 'baseName', 'importerArguments'],
                 'brandId' => 'brand',
                 'currencyId' => 'currency'
