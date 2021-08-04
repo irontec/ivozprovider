@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.18.0
+* Endpoints:
+    - Allow to filter collections by id
+
+* Models:
+    - Carrier
+        - Added mediaRelaySets property
+    - DdiProvider
+        - Added mediaRelaySets property
+
 ## 2.17.2
 * Endpoints:
     - Added name.ca[end], name.ca[exact], name.ca[exists], name.ca[partial], name.ca[start] filter parameter for on /countries

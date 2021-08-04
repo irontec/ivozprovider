@@ -1,5 +1,182 @@
 # Changelog
 
+## 2.18.0
+* Endpoints:
+    - Allow to filter collections by id
+    - /call_forward_settings
+        - Added cfwToRetailAccount filter parameter
+        - Added ddi filter parameter
+    - /conditional_routes
+        - Added friendvalue[start|end|exact|exists|partial] filter parameter
+        - Added numbervalue[start|end|exact|exists|partial] filter parameter
+        - Added friendvalue and numbervalue sort options
+    - /conference_rooms:
+        - Added pinCode[start|end|exact|exists|partial] filter parameter
+        - Added pinCode sort option
+    - /ddis:
+        - Added friendvalue[start|end|exact|exists|partial] filter parameter
+        - Added friendvalue sort option
+    - /extensions:
+        - Added friendvalue[start|end|exact|exists|partial] filter parameter
+        - Added numbervalue[start|end|exact|exists|partial] filter parameter
+        - Added routeType[start|end|exact|exists|partial] filter parameter
+        - Added friendvalue, numbervalue and routeType sort options
+    - /external_call_filters:
+        - Added holidayNumberValue[start|end|exact|exists|partial] filter parameter
+        - Added holidayTargetType[start|end|exact|exists|partial] filter parameter
+        - Added outOfScheduleNumberValue[start|end|exact|exists|partial] filter parameter
+        - Added outOfScheduleTargetType[start|end|exact|exists|partial] filter parameter
+        - Added holidayNumberValue, holidayTargetType, outOfScheduleNumberValue, outOfScheduleTargetType sort options
+    - /friends:
+        - Added description[start|end|exact|exists|partial] filter parameter
+        - Added domain filter parameter
+        - Added priority[start|end|exact|exists|partial] filter parameter
+        - Added description and priority sort options
+    - /hunt_groups:
+        - Added description[start|end|exact|exists|partial] filter parameter
+        - Added description sort option
+    - /ivrs:
+        - Added allowExtensions filter parameter
+        - Added errorNumberValue[start|end|exact|exists|partial] filter parameter
+        - Added errorRouteType filter parameter
+        - Added noInputNumberValue[start|end|exact|exists|partial] filter parameter
+        - Added noInputRouteType[start|end|exact|exists|partial] filter parameter
+        - Added timeout[between|gt|gte|lt|lte] filter parameter
+        - Added allowExtensions, errorNumberValue, errorRouteType, noInputNumberValue, noInputRouteType and timeout sort options
+    - /locutions:
+        - Added originalFile.baseName[start|end|exact|exists|partial] filter parameter
+        - Added originalFile.fileSize[between|gt|gte|lt|lte|exists] filter parameter
+        - Added originalFile.mimeType[start|end|exact|exists|partial] filter parameter
+        - Added originalFile.baseName, originalFile.fileSize and originalFile.mimeType sort options
+    - /music_on_holds:
+        - Added originalFile.baseName[start|end|exact|exists|partial] filter parameter
+        - Added originalFile.fileSize[between|gt|gte|lt|lte|exists] filter parameter
+        - Added originalFile.mimeType[start|end|exact|exists|partial] filter parameter
+        - Added originalFile.baseName, originalFile.fileSize and originalFile.mimeType sort options
+    - /queues:
+        - Added maxWaitTime[between|gt|gte|lt|lte|exists] filter parameter
+        - Added maxlen[between|gt|gte|lt|lte|exists] filter parameter
+        - Added memberCallRest[between|gt|gte|lt|lte|exists] filter parameter
+        - Added memberCallTimeout[between|gt|gte|lt|lte|exists] filter parameter
+        - Added strategy[start|end|exact|exists|partial] filter parameter
+        - Added maxWaitTime, maxlen, memberCallRest, memberCallTimeout and strategy sort options
+    - /route_locks:
+        - Added description[start|end|exact|exists|partial] filter parameter
+        - Added description sort option
+    - /terminals:
+        - Added domain filter parameter
+
+* Model
+    - CallForwardSetting, CallForwardSetting-detailed
+        - Added "retail" value into targetType enum options
+        - Added cfwToRetailAccount property
+        - Added ddi property
+    - CallForwardSetting-detailedCollection
+        - Added "retail" value into targetType enum options
+    - ConditionalRoute-collection:
+        - Added locution property
+        - Added numbervalue property
+        - Added friendvalue property
+        - Added ivr property
+        - Added huntGroup property
+        - Added voicemailUser property
+        - Added user property
+        - Added queue property
+        - Added conferenceRoom property
+        - Added extension property
+        - Added numberCountry property
+    - ConferenceRoom-collection:
+        - Added maxMembers property
+        - Added pinCode property
+    - Ddi-collection:
+        - Added country property
+        - Added externalCallFilter property
+        - Added friendValue property
+        - Added conferenceRoom property
+        - Added language property
+        - Added queue property
+        - Added user property
+        - Added ivr property
+        - Added huntGroup property
+        - Added fax property
+        - Added residentialDevice property
+        - Added conditionalRoute property
+        - Added retailAccount property
+    - Extension-collection:
+        - Added routeType property
+        - Added numberValue property
+        - Added friendValue property
+        - Added ivr property
+        - Added huntGroup property
+        - Added conferenceRoom property
+        - Added user property
+        - Added queue property
+        - Added conditionalRoute property
+        - Added numberCountry property
+    - ExternalCallFilter-collection:
+        - Added holidayTargetType property
+        - Added holidayNumberValue property
+        - Added holidayLocution property
+        - Added holidayExtension property
+        - Added holidayVoiceMailUser property
+        - Added holidayNumberCountry property
+        - Added outOfScheduleTargetType property
+        - Added outOfScheduleNumberValue property
+        - Added outOfScheduleLocution property
+        - Added outOfScheduleExtension property
+        - Added outOfScheduleVoiceMailUser property
+        - Added outOfScheduleNumberCountry property
+    - Fax-collection:
+        - Added outgoingDdi property
+    - Friend-collection:
+        - Added domain property
+        - Added description property
+        - Added priority property
+    - HuntGroup-collection:
+        - Added description property
+    - Ivr-collection:
+        - Added timeout property
+        - Added allowExtensions property
+        - Added noInputRouteType property
+        - Added noInputNumberValue property
+        - Added errorRouteType property
+        - Added errorNumberValue property
+        - Added noInputLocution property
+        - Added errorLocution property
+        - Added successLocution property
+        - Added noInputExtension property
+        - Added errorExtension property
+        - Added noInputVoiceMailUser property
+        - Added errorVoiceMailUser property
+        - Added noInputNumberCountry property
+        - Added errorNumberCountry property
+    - Locution-collection:
+        - Added originalFile property
+    - MusicOnHold-collection:
+        - Added originalFile property
+    - OutgoingDdiRule-collection:
+        - Added forcedDdi property
+    - Queue-collection:
+        - Added strategy property
+        - Added memberCallTimeout property
+        - Added memberCallRest property
+        - Added maxWaitTime property
+        - Added maxlen property
+    - RouteLock-collection:
+        - Added description property
+    - Terminal-collection:
+        - Added domain property
+        - Added terminalModel property
+    - User-collection:
+        - Added terminal property
+        - Added extension property
+        - Added outgoingDdi property
+    - UsersCdr-collection:
+        - Added user property
+        - Added friend property
+        - Added residentialDevice property
+        - Added retailAccount property
+
 ## 2.17.2
 * Endpoints:
     - /call_forward_settings:
