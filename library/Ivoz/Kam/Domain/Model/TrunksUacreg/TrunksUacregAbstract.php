@@ -102,6 +102,12 @@ abstract class TrunksUacregAbstract
     protected $socket = '';
 
     /**
+     * column: contact_addr
+     * @var string
+     */
+    protected $contactAddr = '';
+
+    /**
      * @var DdiProviderRegistrationInterface
      * inversedBy trunksUacreg
      */
@@ -129,7 +135,8 @@ abstract class TrunksUacregAbstract
         $flags,
         $regDelay,
         $authHa1,
-        $socket
+        $socket,
+        $contactAddr
     ) {
         $this->setLUuid($lUuid);
         $this->setLUsername($lUsername);
@@ -145,6 +152,7 @@ abstract class TrunksUacregAbstract
         $this->setRegDelay($regDelay);
         $this->setAuthHa1($authHa1);
         $this->setSocket($socket);
+        $this->setContactAddr($contactAddr);
     }
 
     abstract public function getId();
@@ -229,7 +237,8 @@ abstract class TrunksUacregAbstract
             $dto->getFlags(),
             $dto->getRegDelay(),
             $dto->getAuthHa1(),
-            $dto->getSocket()
+            $dto->getSocket(),
+            $dto->getContactAddr()
         );
 
         $self
@@ -267,6 +276,7 @@ abstract class TrunksUacregAbstract
             ->setRegDelay($dto->getRegDelay())
             ->setAuthHa1($dto->getAuthHa1())
             ->setSocket($dto->getSocket())
+            ->setContactAddr($dto->getContactAddr())
             ->setDdiProviderRegistration($fkTransformer->transform($dto->getDdiProviderRegistration()))
             ->setBrand($fkTransformer->transform($dto->getBrand()));
 
@@ -295,6 +305,7 @@ abstract class TrunksUacregAbstract
             ->setRegDelay(self::getRegDelay())
             ->setAuthHa1(self::getAuthHa1())
             ->setSocket(self::getSocket())
+            ->setContactAddr(self::getContactAddr())
             ->setDdiProviderRegistration(DdiProviderRegistration::entityToDto(self::getDdiProviderRegistration(), $depth))
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
@@ -319,6 +330,7 @@ abstract class TrunksUacregAbstract
             'reg_delay' => self::getRegDelay(),
             'auth_ha1' => self::getAuthHa1(),
             'socket' => self::getSocket(),
+            'contact_addr' => self::getContactAddr(),
             'ddiProviderRegistrationId' => self::getDdiProviderRegistration()->getId(),
             'brandId' => self::getBrand()->getId()
         ];
@@ -512,6 +524,20 @@ abstract class TrunksUacregAbstract
     public function getSocket(): string
     {
         return $this->socket;
+    }
+
+    protected function setContactAddr(string $contactAddr): static
+    {
+        Assertion::maxLength($contactAddr, 255, 'contactAddr value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->contactAddr = $contactAddr;
+
+        return $this;
+    }
+
+    public function getContactAddr(): string
+    {
+        return $this->contactAddr;
     }
 
     public function setDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): static

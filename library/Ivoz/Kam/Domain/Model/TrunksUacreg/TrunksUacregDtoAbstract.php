@@ -86,6 +86,11 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     private $socket = '';
 
     /**
+     * @var string
+     */
+    private $contactAddr = '';
+
+    /**
      * @var int
      */
     private $id;
@@ -129,6 +134,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
             'regDelay' => 'regDelay',
             'authHa1' => 'authHa1',
             'socket' => 'socket',
+            'contactAddr' => 'contactAddr',
             'id' => 'id',
             'ddiProviderRegistrationId' => 'ddiProviderRegistration',
             'brandId' => 'brand'
@@ -155,6 +161,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
             'regDelay' => $this->getRegDelay(),
             'authHa1' => $this->getAuthHa1(),
             'socket' => $this->getSocket(),
+            'contactAddr' => $this->getContactAddr(),
             'id' => $this->getId(),
             'ddiProviderRegistration' => $this->getDdiProviderRegistration(),
             'brand' => $this->getBrand()
@@ -340,6 +347,18 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     public function getSocket(): ?string
     {
         return $this->socket;
+    }
+
+    public function setContactAddr(?string $contactAddr): static
+    {
+        $this->contactAddr = $contactAddr;
+
+        return $this;
+    }
+
+    public function getContactAddr(): ?string
+    {
+        return $this->contactAddr;
     }
 
     public function setId($id): static
