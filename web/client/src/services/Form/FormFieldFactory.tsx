@@ -5,6 +5,7 @@ import { useFormikType } from './types';
 import Dropdown from 'services/Form/Field/Dropdown';
 import React from 'react';
 import Autocomplete from './Field/Autocomplete';
+import CustomComponent from './Field/CustomComponent';
 
 export default class FormFieldFactory
 {
@@ -15,17 +16,19 @@ export default class FormFieldFactory
         private formik: useFormikType,
         private changeHandler: (event: any) => void
     ) {
-        this.styles = makeStyles((theme: Theme) => ({
-            switch: {
-                marginTop: '10px',
-            },
-            inputText: {
-                marginTop: '0px',
-            },
-            linearProgress: {
-                paddingTop: '60px',
-            }
-          }));
+        this.styles = makeStyles((theme: Theme) => {
+            return {
+                switch: {
+                    marginTop: '10px',
+                },
+                inputText: {
+                    marginTop: '0px',
+                },
+                linearProgress: {
+                    paddingTop: '60px',
+                },
+            };
+        });
     }
 
     public getFormField(fld:string, choices?:any)
@@ -59,6 +62,12 @@ export default class FormFieldFactory
         const disabled = (property as ScalarProperty).readOnly;
         const classes:any = this.styles();
         const multiSelect = (property as ScalarProperty).type === 'array';
+
+        if ((property as ScalarProperty).component) {
+            return (
+                <CustomComponent property={property} values={this.formik.values}  />
+            );
+        }
 
         if ((property as FkProperty).$ref || multiSelect) {
 

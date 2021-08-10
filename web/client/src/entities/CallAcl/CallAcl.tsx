@@ -4,7 +4,7 @@ import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import Form from './Form'
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -15,14 +15,14 @@ const properties:PropertiesList = {
             'deny': _('deny'),
         }
     },
-    //@TODO CallAclRelMatchLists subscreen list
+    //@TODO POSPONED CallAclRelMatchLists subscreen list
 };
 
 const callAcl:EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'CallAcl',
-    title: _('Call ACL', {count: 2}),
+    title: _('Call ACLs', { count: 2 }),
     path: '/call_acls',
     properties,
     Form

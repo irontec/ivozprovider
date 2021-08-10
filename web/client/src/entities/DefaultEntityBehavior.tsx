@@ -100,6 +100,12 @@ export const ListDecorator = (props: any) => {
     const {field, row, property} = props;
     let value = row[field];
 
+    if (property.component) {
+        return (
+            <property.component {...row} />
+        );
+    }
+
     if (property.enum) {
         if (property.enum[value]) {
             value = property.enum[value];
@@ -242,8 +248,7 @@ const Form = (props: any) => {
     );
 };
 
-const fetchFks = (endpoint: string, properties: Array<string>, setter: Function) =>
-{
+const fetchFks = (endpoint: string, properties: Array<string>, setter: Function) => {
     ApiClient.get(
         endpoint,
         {

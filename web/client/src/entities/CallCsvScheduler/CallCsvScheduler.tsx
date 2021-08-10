@@ -3,6 +3,7 @@ import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import Form from './Form';
+import LastExecution from './Field/LastExecution';
 
 const properties:PropertiesList = {
     'name': {
@@ -47,7 +48,7 @@ const properties:PropertiesList = {
     },
     'lastExecution': {
         label: _('Last execution'),
-        //@TODO IvozProvider_Klear_Ghost_SchedulerSuccess
+        component: LastExecution,
     },
     'nextExecution': {
         label: _('Next execution'),

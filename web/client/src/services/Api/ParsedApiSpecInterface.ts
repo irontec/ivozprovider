@@ -53,17 +53,18 @@ export interface ScalarProperty {
     maxLength?: number,
     default?: any,
     enum?: KeyValList,
-    null?: string|React.ReactElement,
+    null?: string|React.ReactElement<any>,
     visualToggle?:visualToggleValue
-    label: string|React.ReactElement,
+    label: string|React.ReactElement<any>,
+    component?: React.FunctionComponent<any>,
     required: boolean,
-    helpText?: string|React.ReactElement,
+    helpText?: string|React.ReactElement<any>,
 }
 
 export interface FkProperty {
     $ref: string,
-    label: string|React.ReactElement,
-    null?: string|React.ReactElement,
+    label: string|React.ReactElement<any>,
+    null?: string|React.ReactElement<any>,
     required: boolean,
     helpText?: string,
 }
