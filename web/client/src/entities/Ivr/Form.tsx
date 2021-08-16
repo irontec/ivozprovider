@@ -31,9 +31,6 @@ const Form = (props:any) => {
                     });
                 });
 
-                //@TODO
-                // excludedExtensions
-
                 CountrySelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
                         return {

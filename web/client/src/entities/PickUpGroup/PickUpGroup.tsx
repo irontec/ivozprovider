@@ -2,14 +2,38 @@ import SettingsApplications from '@material-ui/icons/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
-import Form from './Form'
+import Form from './Form';
+import entities from '../index';
+import EntityService from 'services/Entity/EntityService';
+import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
 
 const properties:PropertiesList = {
     'name': {
         label: _('Name'),
     },
-    //@TODO relUsers multiselect
+    userIds: {
+        label: _('User'),
+    }
 };
+
+async function foreignKeyResolver(data: any, entityService: EntityService) {
+
+    const promises= [];
+    const { User } = entities;
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'userIds',
+            User.path,
+            User.toStr,
+        )
+    );
+
+    await Promise.all(promises);
+
+    return data;
+}
 
 const pickUpGroup:EntityInterface = {
     ...defaultEntityBehavior,
@@ -18,7 +42,8 @@ const pickUpGroup:EntityInterface = {
     title: _('Pick up group', {count: 2}),
     path: '/pick_up_groups',
     properties,
-    Form
+    Form,
+    foreignKeyResolver
 };
 
 export default pickUpGroup;

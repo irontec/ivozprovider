@@ -1,4 +1,3 @@
-
 import OpenApiSpecInterface from './OpenApiSpecInterface';
 import ParsedApiSpecInterface from './ParsedApiSpecInterface';
 

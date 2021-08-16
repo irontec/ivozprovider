@@ -2,6 +2,7 @@ import SettingsApplications from '@material-ui/icons/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import StatusIcon from './Field/StatusIcon';
 import Form from './Form';
 
 const properties:PropertiesList = {
@@ -99,7 +100,6 @@ const properties:PropertiesList = {
         label: _('From domain'),
     },
     'fromUser': {
-        //@TODO missing in the API
         label: _('From user'),
     },
     'directConnectivity': {
@@ -180,7 +180,7 @@ const properties:PropertiesList = {
         }
     },
     'interCompany': {
-        //@TODO missing in the API
+        //@TODO POSPONED missing in the API
         label: _('Target client'),
     },
     'ddiIn': {
@@ -202,7 +202,6 @@ const properties:PropertiesList = {
         },
     },
     'alwaysApplyTransformations': {
-        //@TODO missing in the API
         label: _('Always apply transformations'),
         enum: {
             '0': _('Yes'),
@@ -211,7 +210,6 @@ const properties:PropertiesList = {
         helpText: _("Enable to force numeric transformation on numbers in Extensions or numbers matching any Friend regexp. Otherwise, those numbers won't traverse numeric transformations rules.")
     },
     'rtpEncryption': {
-        //@TODO missing in the API
         label: _('RTP encryption'),
         enum: {
             '0': _('Yes'),
@@ -220,7 +218,6 @@ const properties:PropertiesList = {
         helpText: _("Enable to force audio encryption. Call won't be established unless it is encrypted.")
     },
     'multiContact': {
-        //@TODO missing in the API
         label: _('Multi contact'),
         enum: {
             '0': _('Yes'),
@@ -228,7 +225,19 @@ const properties:PropertiesList = {
         },
         helpText: _("Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring.")
     },
+    statusIcon: {
+        label: _('Status'),
+        component: StatusIcon
+    }
 };
+
+const columns = [
+    'name',
+    'domain',
+    'description',
+    'priority',
+    'statusIcon',
+];
 
 const friend:EntityInterface = {
     ...defaultEntityBehavior,
@@ -237,6 +246,7 @@ const friend:EntityInterface = {
     title: _('Friend', {count: 2}),
     path: '/friends',
     properties,
+    columns,
     Form
 };
 

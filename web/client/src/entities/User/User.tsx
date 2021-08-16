@@ -50,7 +50,7 @@ const properties:PropertiesList = {
     /*'statusIcon': _('Status'),*/
     'extension': {
         label: _('Screen Extension'),
-        'null': _('Unassigned'),
+        null: _('Unassigned'),
     },
     'outgoingDdi': {
         label: _('Outgoing DDI'),

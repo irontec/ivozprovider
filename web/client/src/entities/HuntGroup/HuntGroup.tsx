@@ -90,7 +90,7 @@ const properties:PropertiesList = {
                 hide: routableFields,
             },
         },
-        'null': _('Unassigned'),
+        null: _('Unassigned'),
     },
     'noAnswerLocution': {
         label: _('No answer locution'),

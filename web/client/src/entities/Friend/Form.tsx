@@ -18,8 +18,7 @@ const Form = (props:any) => {
         () => {
             if (loadingFks) {
 
-                //@TODO domain
-                //@TODO interCompany
+                //@TODO POSPONED interCompany
 
                 CallAclSelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
@@ -80,7 +79,7 @@ const Form = (props:any) => {
                 'transport',
                 'ip',
                 'port',
-                //'alwaysApplyTransformations',
+                'alwaysApplyTransformations',
             ]
         },
         {
@@ -97,16 +96,22 @@ const Form = (props:any) => {
                 'outgoingDdi',
             ]
         },
-                {
+        {
             legend: _('Advanced Configuration'),
             fields: [
-                //'fromUser',
+                'fromUser',
                 'fromDomain',
                 'allow',
                 'ddiIn',
                 't38Passthrough',
-                //'rtpEncryption',
-                //'multiContact',
+                'rtpEncryption',
+                'multiContact',
+            ]
+        },
+        {
+            legend: '',
+            fields: [
+                'statusIcon',
             ]
         },
     ];

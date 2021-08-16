@@ -41,7 +41,7 @@ const properties:PropertiesList = {
             'conditional': _('Conditional Route'),
             'retail': _('Retail Account'),
         },
-        'null': _("Unassigned"),
+        null: _("Unassigned"),
         visualToggle: {
             '__null__':{
                 show: [],

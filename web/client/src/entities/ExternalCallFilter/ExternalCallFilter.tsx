@@ -41,7 +41,7 @@ const properties:PropertiesList = {
             'extension': _('Extension'),
             'voicemail': _('Voicemail'),
         },
-        'null': _('Unassigned'),
+        null: _('Unassigned'),
         visualToggle: {
             '__null__': {
                 show: [],
@@ -80,7 +80,7 @@ const properties:PropertiesList = {
             'extension': _('Extension'),
             'voicemail': _('Voicemail'),
         },
-        'null': _('Unassigned'),
+        null: _('Unassigned'),
         visualToggle: {
             '__null__': {
                 show: [],

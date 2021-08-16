@@ -33,7 +33,7 @@ const properties:PropertiesList = {
     },
     'outgoingDdi': {
         label: _('Outgoing DDI'),
-        //@TODO 'null': _("Client's default")
+        null: _("Client's default")
     },
 };
 
@@ -63,7 +63,6 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
     return data;
 }
 
-
 const fax:EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
@@ -74,7 +73,10 @@ const fax:EntityInterface = {
     properties,
     columns,
     Form,
-    foreignKeyResolver
+    foreignKeyResolver,
+    initialValues: {
+        outgoingDdi: null,
+    }
 };
 
 export default fax;

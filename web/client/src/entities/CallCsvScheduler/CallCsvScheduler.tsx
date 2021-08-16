@@ -15,21 +15,7 @@ const properties:PropertiesList = {
             'outbound': _('Outbound'),
             'inbound': _('Inbound'),
         },
-        'null': _('Both'),
-        /*visualToggle: {
-            '__null__': {
-                show: [],
-                hide: ['carrier', 'ddiProvider'],
-            },
-            'outbound': {
-                show: ['carrier'],
-                hide: ['ddiProvider'],
-            },
-            'inbound': {
-                show: ['ddiProvider'],
-                hide: ['carrier'],
-            },
-        }*/
+        null: _('Both'),
     },
     'frequency': {
         label: _('Frequency'),
@@ -75,7 +61,7 @@ const properties:PropertiesList = {
             fax: _('Fax'),
             friend: _('Friend'),
         },
-        'null': _('All'),
+        null: _('All'),
         visualToggle: {
             '__null__': {
                 show: [],

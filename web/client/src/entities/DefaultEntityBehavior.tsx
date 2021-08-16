@@ -5,8 +5,9 @@ import { useFormikType } from 'services/Form/types';
 import ApiClient from "services/Api/ApiClient";
 import { Grid, makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import { ScalarProperty } from 'services/Api/ParsedApiSpecInterface';
+import { PropertySpec, ScalarProperty } from 'services/Api/ParsedApiSpecInterface';
 import { PropertiesList } from './EntityInterface';
+import ViewFieldValue from 'services/Form/Field/ViewFieldValue';
 
 export const initialValues = {};
 
@@ -102,7 +103,7 @@ export const ListDecorator = (props: any) => {
 
     if (property.component) {
         return (
-            <property.component {...row} />
+            <property.component _context={'read'} {...row} />
         );
     }
 
@@ -248,6 +249,53 @@ const Form = (props: any) => {
     );
 };
 
+
+const View = (props: any) => {
+
+    const { entityService, row }: { entityService: EntityService, row:any } = props;
+
+    const columns = entityService.getColumns();
+    const columnNames = Object.keys(columns);
+
+    let groups:Array<FieldsetGroups> = [];
+    if (props.groups) {
+        groups = props.groups;
+    } else {
+        groups.push({
+            legend: "",
+            fields: columnNames
+        });
+    }
+
+    const classes = useStyles();
+
+    return (
+        <React.Fragment>
+        {groups.map((group:FieldsetGroups, idx:number) => {
+            return (
+                <div key={idx}>
+                    <Typography variant="h6" color="inherit" gutterBottom  className={classes.legend}>
+                        {group.legend}
+                    </Typography>
+                    <Grid container spacing={3} className={classes.grid}>
+                        {group.fields.map((columnName:string, idx: number) => {
+
+                            const properties = entityService.getProperties();
+                            const property = (properties[columnName] as PropertySpec);
+                            return (
+                                <Grid item xs={12} md={6} lg={4} key={idx}>
+                                    <ViewFieldValue property={property} values={row} columnName={columnName} />
+                                </Grid>
+                            );
+                        })}
+                    </Grid>
+                </div>
+            );
+        })}
+        </React.Fragment>
+    );
+};
+
 const fetchFks = (endpoint: string, properties: Array<string>, setter: Function) => {
     ApiClient.get(
         endpoint,
@@ -276,6 +324,7 @@ const DefaultEntityBehavior = {
     toStr: (row:any) => (row.id || '[*]'),
     RowIcons,
     Form,
+    View,
     fetchFks,
     defaultOrderBy: 'id',
 };

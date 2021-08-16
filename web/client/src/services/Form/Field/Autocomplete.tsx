@@ -53,7 +53,7 @@ const Autocomplete = (props: AutocompleteProps) => {
         }
       })
     },
-    [multiple]
+    [multiple, onChange, name]
   );
 
   const getOptionLabel = useCallback(

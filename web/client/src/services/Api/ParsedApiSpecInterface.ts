@@ -45,6 +45,16 @@ export interface visualToggle {
     hide: Array<string>,
 }
 
+enum customComponentContext {
+    write="write",
+    read="read",
+}
+
+export interface propertyCustomComponent extends React.FunctionComponent<any> {
+    _context?: customComponentContext,
+    _columnName?: string
+}
+
 export interface ScalarProperty {
     type?: string,
     format?: string,
@@ -56,7 +66,7 @@ export interface ScalarProperty {
     null?: string|React.ReactElement<any>,
     visualToggle?:visualToggleValue
     label: string|React.ReactElement<any>,
-    component?: React.FunctionComponent<any>,
+    component?: propertyCustomComponent,
     required: boolean,
     helpText?: string|React.ReactElement<any>,
 }

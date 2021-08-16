@@ -2,6 +2,7 @@ import SettingsApplications from '@material-ui/icons/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import { getI18n } from 'react-i18next';
 
 const properties:PropertiesList = {};
 
@@ -11,7 +12,10 @@ const country:EntityInterface = {
     iden: 'Country',
     title: _('Country', {count: 2}),
     path: '/countries',
-    toStr: (row:any) => `${row.name.en}`, //@TODO detect language
+    toStr: (row:any) => {
+        const language = getI18n().language;
+        return row.name[language];
+    },
     properties,
 };
 

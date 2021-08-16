@@ -15,8 +15,6 @@ const Form = (props:any) => {
         () => {
             if (loadingFks) {
 
-                //@TODO domain
-                //@TODO interCompany
                 DdiSelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
                         return {

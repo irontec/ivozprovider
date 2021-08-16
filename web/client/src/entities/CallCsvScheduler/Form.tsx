@@ -1,7 +1,6 @@
 import defaultEntityBehavior, { FieldsetGroups } from '../DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import DdiSelectOptions from 'entities/Ddi/SelectOptions';
-import CarrierSelectOptions from 'entities/Carrier/SelectOptions';
 import RetailAccountSelectOptions from 'entities/RetailAccount/SelectOptions';
 import ResidentialDeviceSelectOptions from 'entities/ResidentialDevice/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
@@ -28,15 +27,6 @@ const Form = (props:any) => {
                         return {
                             ...fkChoices,
                             ddi: options
-                        }
-                    });
-                });
-
-                CarrierSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            carrier: options
                         }
                     });
                 });

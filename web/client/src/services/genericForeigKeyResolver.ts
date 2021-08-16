@@ -11,13 +11,20 @@ export default async function genericForeignKeyResolver(
     for (const idx in data) {
         if (data[idx][fkFld]) {
 
-            if (ids.includes(data[idx][fkFld])) {
-                continue;
-            }
+            const val = data[idx][fkFld];
+            const iterableValues:Array<any> = Array.isArray(val)
+                ? val
+                : [val];
 
-            ids.push(
-                data[idx][fkFld]
-            );
+            for (const value of iterableValues) {
+                if (ids.includes(value)) {
+                    continue;
+                }
+
+                ids.push(
+                    value
+                );
+            }
         }
     }
 
@@ -46,6 +53,15 @@ export default async function genericForeignKeyResolver(
                     if (data[idx][fkFld]) {
 
                         const fk = data[idx][fkFld];
+                        if (Array.isArray(fk)) {
+                            for (const key in fk) {
+                                fk[key] = entities[fk[key]];
+                            }
+
+                            data[idx][fkFld] = fk.join(', ');
+                            continue;
+                        }
+
                         data[idx][`${fkFld}Id`] = data[idx][fkFld];
                         if (addLink) {
                             data[idx][`${fkFld}Link`] = `${entityEndpoint}/${fk}/update`;

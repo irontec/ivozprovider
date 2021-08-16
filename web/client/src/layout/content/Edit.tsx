@@ -1,70 +1,94 @@
-import { useState, useEffect } from 'react';
+import { useState, FunctionComponent } from 'react';
 import { withRouter } from "react-router-dom";
+import { FormikHelpers, useFormik } from 'formik';
+import {
+  Button,
+  makeStyles
+} from '@material-ui/core';
+import ErrorMessage from './shared/ErrorMessage';
 import EntityService from 'services/Entity/EntityService';
 import EntityInterface from 'entities/EntityInterface';
-import EditForm from './EditForm';
+import { useFormikType } from 'services/Form/types';
 import { useStoreActions } from 'easy-peasy';
+import _ from 'services/Translations/translate';
+import withRowData from './withRowData';
 
 interface EditProps extends EntityInterface {
   entityService: EntityService,
   history:any,
-  match:any
+  match:any,
+  row: any,
 }
 
-const Edit = (props: EditProps) => {
+const Edit:any = (props: EditProps) => {
 
-  const { match } = props;
-  const { entityService }: {entityService: EntityService } = props;
+  const { marshaller, unmarshaller, history, match, row } = props;
+  const { Form: EntityForm, entityService }: { Form: any, entityService: EntityService } = props;
 
+  const classes = useStyles();
   const entityId = match.params.id;
 
-  const [loading, setLoading] = useState(true);
-  const [row, setRow] = useState({});
+  const [error, setError] = useState(null);
 
-  const apiGet = useStoreActions((actions:any) => {
-      return actions.api.get
-  });
-
-  useEffect(
-    () => {
-
-      let umounted:boolean = false;
-      if (loading) {
-
-        const itemPath = entityService.getItemPath();
-        if (!itemPath) {
-          throw new Error('Unknown item path');
-        }
-
-        apiGet({
-          path: itemPath.replace('{id}', entityId),
-          params: {},
-          successCallback: async (data: any) => {
-
-            if (umounted) {
-              return;
-            }
-
-            setRow(data);
-            setLoading(false);
-          }
-        });
-      }
-
-      return function umount() {
-        umounted = true;
-      };
-    },
-    [loading, entityId, entityService, apiGet]
+  const initialValues = unmarshaller(
+    row,
+    entityService.getProperties()
   );
 
-  if (loading) {
-    return null;
-  }
+  const apiPut = useStoreActions((actions:any) => {
+    return actions.api.put
+  });
+
+  const submit = async (values: any, actions: FormikHelpers<any>) => {
+
+    const { setSubmitting } = actions;
+    const putPath = entityService.getPutPath();
+    if (!putPath) {
+      throw new Error('Unknown item path');
+    }
+
+    try {
+      await apiPut({
+        path: putPath.replace('{id}', entityId),
+        values: marshaller(values, entityService.getProperties())
+      });
+
+      setError(null);
+      history.goBack();
+    } catch (error) {
+      console.error(error);
+      setError(error.toString());
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const formik:useFormikType = useFormik({
+    initialValues,
+    validate: props.validator,
+    onSubmit: submit,
+  });
 
   return (
-    <EditForm row={row} {...props} />
+    <div>
+      <form onSubmit={formik.handleSubmit}>
+        <EntityForm formik={formik} edit={true} classes={classes} {...props} />
+        <br />
+        <Button color="primary" variant="contained" type="submit">
+          {_('Save')}
+        </Button>
+        {error && <ErrorMessage message={error} />}
+      </form>
+    </div>
   )
 };
 
-export default withRouter<any, any>(Edit);
+const useStyles = makeStyles((theme: any) => ({
+  dropDown: {
+    minWidth: '250px'
+  }
+}));
+
+export default withRouter<any, any>(
+  withRowData(Edit)
+);

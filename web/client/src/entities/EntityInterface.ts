@@ -29,6 +29,7 @@ export default interface EntityInterface {
     foreignKeyResolver: foreignKeyResolverType,
     foreignKeyGetter: foreignKeyGetterType,
     Form: React.FunctionComponent,
+    View: React.FunctionComponent,
     ListDecorator: ListDecoratorType,
     RowIcons: React.FunctionComponent,
     acl: AclType,

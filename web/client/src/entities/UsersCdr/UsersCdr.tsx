@@ -9,38 +9,48 @@ import entities from '../index';
 const properties:PropertiesList = {
     'startTime': {
         label: _('Start time'),
+        readOnly: true,
     },
     'duration': {
         label: _('Duration'),
+        readOnly: true,
     },
     'direction': {
         label: _('Direction'),
         enum: {
             'inbound': _("Inbound"),
             'outbound': _("Outbound"),
-        }
+        },
+        readOnly: true,
     },
     'caller': {
         label: _('Source'),
+        readOnly: true,
     },
     'callee': {
         label: _('Destination'),
+        readOnly: true,
     },
     'callid': {
         label: _('Callid'),
+        readOnly: true,
     },
     'xcallid': {
         label: _('Xcallid'),
+        readOnly: true,
     },
     'callidHash': {
         label: _('CallidHash'),
+        readOnly: true,
     },
     'owner': {
         label: _('Owner'),
+        readOnly: true,
         //@TODO IvozProvider_Klear_Ghost_UsersCdr
     },
     'party': {
         label: _('Party'),
+        readOnly: true,
         //@TODO IvozProvider_Klear_Ghost_UsersCdr
     },
 };

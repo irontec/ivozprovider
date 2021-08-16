@@ -4,7 +4,7 @@ import React from 'react';
 
 const CustomComponent = (props:any) =>
 {
-    const {property, values} = props;
+    const {property, values, columnName} = props;
     const classes:any = styles();
 
     const PropertyComponent = (property as ScalarProperty).component as React.FunctionComponent<any>;
@@ -18,7 +18,7 @@ const CustomComponent = (props:any) =>
                         <span>{property.label}</span>
                     </legend>
                     <div className={classes.customComponentContainer}>
-                        <PropertyComponent {...values} />
+                        <PropertyComponent  _context={'write'} _columnName={columnName} {...values} />
                     </div>
                 </fieldset>
             </div>

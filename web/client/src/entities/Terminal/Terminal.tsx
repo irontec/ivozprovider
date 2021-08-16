@@ -17,7 +17,7 @@ const properties:PropertiesList = {
     },
     'lastProvisionDate': {
         label: _('Last provision date'),
-        readOnly: true //@TODO set into API spec
+        readOnly: true //@TODO POSPONED  set into API spec
     },
     'disallow': {
         label: _('Disallowed audio codecs'),
@@ -41,7 +41,7 @@ const properties:PropertiesList = {
         enum: {
             'h264': 'h264 - H.264',
         },
-        'null': _("Disabled"),
+        null: _("Disabled"),
     },
     'directMediaMethod': {
         label: _('CallerID update method'),

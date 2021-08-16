@@ -8,7 +8,7 @@ const properties:PropertiesList = {
     'name': {
         label: _('Name'),
     },
-    //@TODO originalFile
+    //@TODO POSPONED originalFile
     'status': {
         label: _('Status'),
         enum: {

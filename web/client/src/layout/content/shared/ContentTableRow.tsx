@@ -8,11 +8,13 @@ import { Link } from "react-router-dom";
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import PanoramaIcon from '@material-ui/icons/Panorama';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import ConfirmDialog from './ConfirmDialog';
 import EntityService from 'services/Entity/EntityService';
 import { useStoreActions } from 'easy-peasy';
 import { ScalarProperty } from 'services/Api/ParsedApiSpecInterface';
+import _ from 'services/Translations/translate';
 
 interface propsType {
   entityService: EntityService,
@@ -86,13 +88,18 @@ export default function ContentTableRow(props: propsType) {
         return <TableCell key={key}>{response}</TableCell>;
       })}
       <TableCell key="actions" className={classes.actionCell}>
-        {acl.update && <Tooltip title="Edit" placement="bottom">
+        {acl.update && <Tooltip title={_('Edit')} placement="bottom">
           <Link to={`${path}/${row.id}/update`} className={classes.link}>
             <EditIcon />
           </Link>
         </Tooltip>}
+        {!acl.update && <Tooltip title={_('View')} placement="bottom">
+          <Link to={`${path}/${row.id}/detailed`} className={classes.link}>
+            <PanoramaIcon />
+          </Link>
+        </Tooltip>}
         &nbsp;
-        {acl.delete && <Tooltip title="Delete" placement="bottom">
+        {acl.delete && <Tooltip title={_('Delete')} placement="bottom">
           <DeleteIcon
             onClick={() => setShowDelete(true)}
             className={classes.delete}

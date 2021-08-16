@@ -1,4 +1,5 @@
 import defaultEntityBehavior from '../DefaultEntityBehavior';
+import { getI18n } from 'react-i18next';
 
 const RatingPlanGroupSelectOptions = (callback: Function) => {
 
@@ -10,8 +11,8 @@ const RatingPlanGroupSelectOptions = (callback: Function) => {
 
             const options:any = {};
             for (const item of data) {
-                //@TODO detect language
-                options[item.id] = item.name.en;
+                const language = getI18n().language;
+                options[item.id] = item.name[language];
             }
 
             callback(options);

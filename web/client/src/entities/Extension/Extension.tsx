@@ -36,7 +36,7 @@ const properties:PropertiesList = {
             'queue': _('Queue'),
             'conditional': _('Conditional Route'),
         },
-        'null': _("Unassigned"),
+        null: _("Unassigned"),
         visualToggle: {
             '__null__': {
                 show: [],

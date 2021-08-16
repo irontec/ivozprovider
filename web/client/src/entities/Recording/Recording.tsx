@@ -2,6 +2,7 @@ import SettingsApplications from '@material-ui/icons/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import TypeGhost from './Field/TypeGhost';
 
 const properties:PropertiesList = {
     'callid': {
@@ -28,7 +29,7 @@ const properties:PropertiesList = {
     },
     'typeGhost': {
         label: _('Type'),
-        //@TODO IvozProvider_Klear_Ghost_RecordingsType
+        component: TypeGhost,
     },
     'recordedFile': {
         label: _('Recorded file'),
@@ -37,7 +38,7 @@ const properties:PropertiesList = {
 
 const columns = [
     'calldate',
-    'type',
+    'typeGhost',
     'caller',
     'callee',
     'duration',
