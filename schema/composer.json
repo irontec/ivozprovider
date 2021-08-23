@@ -59,7 +59,8 @@
         "irontec/ivoz-dev-tools": "^5.0",
         "irontec/ivoz-provider-bundle": "^2.5.11",
         "irontec/replacements": "^1.0",
-        "symfony/flex": "^1.9"
+        "symfony/flex": "^1.9",
+        "symfony/maker-bundle": "^1.2"
     },
     "require-dev": {
         "docteurklein/test-double-bundle": "^1.2",
@@ -68,8 +69,7 @@
         "phpunit/phpunit": "^9.4.4",
         "dms/phpunit-arraysubset-asserts": "^0.2.1",
         "squizlabs/php_codesniffer": "^4.0",
-        "symfony/phpunit-bridge": "^5.1.6",
-        "symfony/maker-bundle": "^1.2"
+        "symfony/phpunit-bridge": "^5.1.6"
     },
     "extra": {
         "symfony-assets-install": "relative",

@@ -92,6 +92,7 @@
         "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
         "phpxmlrpc/phpxmlrpc": "^4.0",
         "snc/redis-bundle": "^3.2",
+        "symfony/maker-bundle": "^1.2",
         "symfony/polyfill-php56": "^1.20",
         "symfony/polyfill-util": "^1.22",
         "xamin/handlebars.php": "^0.10.4"
@@ -119,7 +120,6 @@
         "phpunit/phpunit": "^9.5.3",
         "squizlabs/php_codesniffer": "^4.0",
         "swoole/ide-helper": "^4.3.4",
-        "symfony/maker-bundle": "^1.2",
         "symfony/phpunit-bridge": "^5.1",
         "vimeo/psalm": "^3.2"
     }
