@@ -15,4 +15,4 @@ cat ../package.list | xargs apt-get download -t halliday
 popd
 
 # Generate iso file
-build-simple-cdd --force-root --conf simple-cdd.conf --verbose --force-preseed --dist buster
+build-simple-cdd --force-root --conf simple-cdd.conf --verbose --force-preseed --dist bullseye

@@ -54,7 +54,6 @@ klear-library
 klear-matrix
 libapache2-mod-php8.0
 libbcg729-0
-libbcg729-0-dbg
 libbcg729-dev
 libgd3
 libicu65
@@ -69,11 +68,10 @@ libpcre2-8-0
 libpcre2-dev
 libpcre2-posix2
 libzip4
-mysql-client
 mysql-common
-mysql-community-client
-mysql-community-server
-mysql-server
+percona-server-client
+percona-server-common
+percona-server-server
 php8.0
 php8.0-cli
 php8.0-common
