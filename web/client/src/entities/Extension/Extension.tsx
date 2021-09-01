@@ -19,13 +19,13 @@ const allRoutableFields = [
     'conditionalRoute',
 ];
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'number': {
         label: _('Number'),
         helpText: _('Minimal length: 2')
     },
     'routeType': {
-        label:_('Route type'),
+        label: _('Route type'),
         enum: {
             'user': _('User'),
             'ivr': _('IVR'),
@@ -116,7 +116,7 @@ const columns = [
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
 
-    const promises= [];
+    const promises = [];
     const { User, Country, Ivr, HuntGroup, ConferenceRoom, Queue, ConditionalRoute } = entities;
 
     promises.push(
@@ -133,7 +133,7 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
             data,
             'numberCountry',
             Country.path,
-            (row:any) => `${row.countryCode}`,
+            (row: any) => `${row.countryCode}`,
         )
     );
 
@@ -184,9 +184,13 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
 
     await Promise.all(promises);
 
+    if (!Array.isArray(data)) {
+        return data;
+    }
+
     for (const idx in data) {
 
-        switch(data[idx].routeType) {
+        switch (data[idx].routeType) {
 
             case 'user':
                 remapFk(data[idx], 'user', 'target');
@@ -235,13 +239,13 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
     return data;
 }
 
-const extension:EntityInterface = {
+const extension: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Extension',
-    title: _('Extension', {count: 2}),
+    title: _('Extension', { count: 2 }),
     path: '/extensions',
-    toStr: (row:any) => row.number,
+    toStr: (row: any) => row.number,
     columns,
     properties,
     Form,

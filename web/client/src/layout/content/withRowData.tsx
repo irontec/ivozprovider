@@ -1,36 +1,29 @@
 import { useState, useEffect, FunctionComponent, ComponentClass } from 'react';
 import EntityService from 'services/Entity/EntityService';
-import EntityInterface from 'entities/EntityInterface';
 import { useStoreActions } from 'easy-peasy';
 import hoistStatics from "hoist-non-react-statics";
 
-interface RouteProps extends EntityInterface {
-  entityService: EntityService,
-  history:any,
-  match:any
-}
-
-const withRowData = (Component:FunctionComponent|ComponentClass): FunctionComponent => {
+const withRowData = (Component: FunctionComponent | ComponentClass): FunctionComponent => {
 
   const displayName = `withRowData(${Component.displayName || Component.name})`;
-  const C:any = (props:any) => {
+  const C: any = (props: any) => {
 
     const { match } = props;
-    const { entityService }: {entityService: EntityService } = props;
+    const { entityService }: { entityService: EntityService } = props;
 
     const entityId = match.params.id;
 
     const [loading, setLoading] = useState(true);
     const [row, setRow] = useState({});
 
-    const apiGet = useStoreActions((actions:any) => {
-        return actions.api.get
+    const apiGet = useStoreActions((actions: any) => {
+      return actions.api.get
     });
 
     useEffect(
       () => {
 
-        let umounted:boolean = false;
+        let umounted: boolean = false;
         if (loading) {
 
           const itemPath = entityService.getItemPath();

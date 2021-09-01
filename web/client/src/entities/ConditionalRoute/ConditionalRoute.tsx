@@ -216,6 +216,10 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
 
     await Promise.all(promises);
 
+    if (!Array.isArray(data)) {
+        return data;
+    }
+
     for (const idx in data) {
 
         switch(data[idx].routetype) {

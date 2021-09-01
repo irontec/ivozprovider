@@ -4,14 +4,13 @@ import { getI18n } from 'react-i18next';
 const RatingPlanGroupSelectOptions = (callback: Function) => {
 
     defaultEntityBehavior.fetchFks(
-        //@TODO add endpoint
         '/rating_plan_groups',
         ['id', 'name'],
-        (data:any) => {
+        (data: any) => {
 
-            const options:any = {};
+            const options: any = {};
             for (const item of data) {
-                const language = getI18n().language;
+                const language = getI18n().language.substring(0, 2);
                 options[item.id] = item.name[language];
             }
 

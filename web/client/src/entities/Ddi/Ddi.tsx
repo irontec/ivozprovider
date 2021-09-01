@@ -20,12 +20,12 @@ const allRoutableFields = [
     'retailAccount',
 ];
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'ddi': {
         label: _('DDI'),
     },
     'externalCallFilter': {
-        label:_('External call filter'),
+        label: _('External call filter'),
     },
     'routeType': {
         label: _('Route type'),
@@ -43,48 +43,48 @@ const properties:PropertiesList = {
         },
         null: _("Unassigned"),
         visualToggle: {
-            '__null__':{
+            '__null__': {
                 show: [],
                 hide: allRoutableFields,
             },
             'user': {
-                show: [ 'user' ],
+                show: ['user'],
                 hide: allRoutableFields,
             },
             'ivr': {
-                show: [ 'ivr' ],
+                show: ['ivr'],
                 hide: allRoutableFields,
             },
             'huntGroup': {
-                show: [ 'huntGroup' ],
+                show: ['huntGroup'],
                 hide: allRoutableFields,
             },
             'fax': {
-                show: [ 'fax' ],
+                show: ['fax'],
                 hide: allRoutableFields,
             },
             'conferenceRoom': {
-                show: [ 'conferenceRoom' ],
+                show: ['conferenceRoom'],
                 hide: allRoutableFields,
             },
             'friend': {
-                show: [ 'friendValue' ],
+                show: ['friendValue'],
                 hide: allRoutableFields,
             },
             'queue': {
-                show: [ 'queue' ],
+                show: ['queue'],
                 hide: allRoutableFields,
             },
             'residential': {
-                show: [ 'residentialDevice', 'recordCalls' ],
+                show: ['residentialDevice', 'recordCalls'],
                 hide: allRoutableFields,
             },
             'conditional': {
-                show: [ 'conditionalRoute' ],
+                show: ['conditionalRoute'],
                 hide: allRoutableFields,
             },
             'retail': {
-                show: [ 'retailAccount' ],
+                show: ['retailAccount'],
                 hide: allRoutableFields,
             },
         }
@@ -148,7 +148,7 @@ const columns = [
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
 
-    const promises= [];
+    const promises = [];
     const {
         User, Ivr, HuntGroup, ConferenceRoom, Queue, ConditionalRoute,
         Fax, ResidentialDevice, ExternalCallFilter
@@ -237,10 +237,13 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
 
     await Promise.all(promises);
 
+    if (!Array.isArray(data)) {
+        return data;
+    }
 
     for (const idx in data) {
 
-        switch(data[idx].routeType) {
+        switch (data[idx].routeType) {
 
             case 'user':
                 remapFk(data[idx], 'user', 'target');
@@ -293,13 +296,13 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
     return data;
 }
 
-const ddi:EntityInterface = {
+const ddi: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Ddi',
-    title: _('DDI', {count: 2}),
+    title: _('DDI', { count: 2 }),
     path: '/ddis',
-    toStr: (row:any) => row.ddie164,
+    toStr: (row: any) => row.ddie164,
     columns,
     properties,
     Form,

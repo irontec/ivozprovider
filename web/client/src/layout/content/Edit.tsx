@@ -1,4 +1,4 @@
-import { useState, FunctionComponent } from 'react';
+import { useState } from 'react';
 import { withRouter } from "react-router-dom";
 import { FormikHelpers, useFormik } from 'formik';
 import {
@@ -15,12 +15,12 @@ import withRowData from './withRowData';
 
 interface EditProps extends EntityInterface {
   entityService: EntityService,
-  history:any,
-  match:any,
+  history: any,
+  match: any,
   row: any,
 }
 
-const Edit:any = (props: EditProps) => {
+const Edit: any = (props: EditProps) => {
 
   const { marshaller, unmarshaller, history, match, row } = props;
   const { Form: EntityForm, entityService }: { Form: any, entityService: EntityService } = props;
@@ -35,7 +35,7 @@ const Edit:any = (props: EditProps) => {
     entityService.getProperties()
   );
 
-  const apiPut = useStoreActions((actions:any) => {
+  const apiPut = useStoreActions((actions: any) => {
     return actions.api.put
   });
 
@@ -63,7 +63,7 @@ const Edit:any = (props: EditProps) => {
     }
   };
 
-  const formik:useFormikType = useFormik({
+  const formik: useFormikType = useFormik({
     initialValues,
     validate: props.validator,
     onSubmit: submit,

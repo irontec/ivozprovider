@@ -5,8 +5,9 @@ import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
 import EntityService from 'services/Entity/EntityService';
 import entities from '../index';
+import View from './View';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'startTime': {
         label: _('Start time'),
         readOnly: true,
@@ -46,16 +47,53 @@ const properties:PropertiesList = {
     'owner': {
         label: _('Owner'),
         readOnly: true,
-        //@TODO IvozProvider_Klear_Ghost_UsersCdr
     },
     'party': {
         label: _('Party'),
         readOnly: true,
-        //@TODO IvozProvider_Klear_Ghost_UsersCdr
     },
 };
 
-async function foreignKeyResolver(data: any, entityService: EntityService) {
+function ownerAndPartyResolver(row: any, addLinks: boolean = true) {
+
+    if (row.user) {
+        row.owner = row.user;
+        if (addLinks) {
+            row.ownerId = row.userId;
+            row.ownerLink = row.userLink;
+        }
+    } else if (row.friend) {
+        row.owner = row.friend;
+        if (addLinks) {
+            row.ownerId = row.friendId;
+            row.ownerLink = row.friendLink;
+        }
+    } else if (row.retailAccount) {
+        row.owner = row.retailAccount;
+        row.ownerId = row.retailAccountId;
+        row.ownerLink = row.retailAccountLink;
+    } else if (row.residentialDevice) {
+        row.owner = row.residentialDevice;
+        if (addLinks) {
+            row.ownerId = row.residentialDeviceId;
+            row.ownerLink = row.residentialDeviceLink;
+        }
+    } else if (row.direction === 'outbound') {
+        row.owner = row.caller;
+    } else {
+        row.owner = row.callee;
+    }
+
+    if (row.direction === 'outbound') {
+        row.party = row.callee;
+    } else {
+        row.party = row.caller;
+    }
+
+    return row;
+}
+
+export async function foreignKeyResolver(data: any, entityService: EntityService) {
 
     const promises = [];
     const { User, Friend, ResidentialDevice, RetailAccount } = entities;
@@ -98,35 +136,12 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
 
     await Promise.all(promises);
 
+    if (!Array.isArray(data)) {
+        return data;
+    }
+
     for (const idx in data) {
-        if (data[idx].user) {
-            data[idx].owner =  data[idx].user;
-            data[idx].ownerId =  data[idx].userId;
-            data[idx].ownerLink =  data[idx].userLink;
-        } else if (data[idx].friend) {
-            data[idx].owner =  data[idx].friend;
-            data[idx].ownerId =  data[idx].friendId;
-            data[idx].ownerLink =  data[idx].friendLink;
-        } else if (data[idx].retailAccount) {
-            data[idx].owner = data[idx].retailAccount;
-            data[idx].ownerId = data[idx].retailAccountId;
-            data[idx].ownerLink = data[idx].retailAccountLink;
-        } else if (data[idx].residentialDevice) {
-            data[idx].owner = data[idx].residentialDevice;
-            data[idx].ownerId = data[idx].residentialDeviceId;
-            data[idx].ownerLink = data[idx].residentialDeviceLink;
-        } else if (data[idx].direction === 'outbound') {
-            data[idx].owner = data[idx].caller;
-        } else {
-            data[idx].owner = data[idx].callee;
-        }
-
-        if (data[idx].direction === 'outbound') {
-            data[idx].party = data[idx].callee;
-        } else {
-            data[idx].party = data[idx].caller;
-        }
-
+        data[idx] = ownerAndPartyResolver(data[idx]);
         data[idx].duration = Math.round(data[idx].duration);
     }
 
@@ -141,15 +156,16 @@ const columns = [
     'duration',
 ];
 
-const usersCdr:EntityInterface = {
+const usersCdr: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'UsersCdr',
-    title: _('Call', {count: 2}),
+    title: _('Call', { count: 2 }),
     path: '/users_cdrs',
     properties,
     columns,
-    foreignKeyResolver
+    foreignKeyResolver,
+    View: View,
 };
 
 export default usersCdr;

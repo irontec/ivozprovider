@@ -8,8 +8,9 @@ import ContentTable from './shared/ContentTable';
 import EntityService from 'services/Entity/EntityService';
 
 const List = function (props: any) {
+
     const { path, history, location, foreignKeyResolver, unmarshaller } = props;
-    const { entityService }: {entityService: EntityService } = props;
+    const { entityService }: { entityService: EntityService } = props;
 
     const [loading, setLoading] = useState(true);
     const [rows, setRows] = useState<Array<any>>([]);
@@ -17,7 +18,7 @@ const List = function (props: any) {
     const [page, setPage] = useState<number>(1);
     const [rowsPerPage, setRowsPerPage] = useState<number>(10);
 
-    const apiGet = useStoreActions((actions:any) => {
+    const apiGet = useStoreActions((actions: any) => {
         return actions.api.get
     });
 
@@ -110,7 +111,7 @@ const List = function (props: any) {
                 });
             }
 
-            return function umount() {};
+            return function umount() { };
         },
         [
             loading, foreignKeyResolver, entityService, where,

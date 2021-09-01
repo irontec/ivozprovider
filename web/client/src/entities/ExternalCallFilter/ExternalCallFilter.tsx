@@ -21,7 +21,7 @@ const outOfScheduleFields = [
     'outOfScheduleVoiceMailUser',
 ];
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -47,7 +47,7 @@ const properties:PropertiesList = {
                 show: [],
                 hide: holidayFields,
             },
-            'number':{
+            'number': {
                 show: ['holidayNumberValue', 'holidayNumberCountry'],
                 hide: holidayFields,
             },
@@ -90,7 +90,7 @@ const properties:PropertiesList = {
                 show: ['outOfScheduleNumberValue', 'outOfScheduleNumberCountry'],
                 hide: outOfScheduleFields,
             },
-            'extension':{
+            'extension': {
                 show: ['outOfScheduleExtension'],
                 hide: outOfScheduleFields,
             },
@@ -144,7 +144,7 @@ const columns = [
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
 
-    const promises= [];
+    const promises = [];
     const {
         User, Extension, Country, Locution
     } = entities;
@@ -225,9 +225,13 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
 
     await Promise.all(promises);
 
+    if (!Array.isArray(data)) {
+        return data;
+    }
+
     for (const idx in data) {
 
-        switch(data[idx].holidayTargetType) {
+        switch (data[idx].holidayTargetType) {
             case null:
                 data[idx].holidayTarget = '';
                 break;
@@ -249,7 +253,7 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
                 break;
         }
 
-        switch(data[idx].outOfScheduleTargetType) {
+        switch (data[idx].outOfScheduleTargetType) {
             case null:
                 data[idx].outOfScheduleTarget = '';
                 break;
@@ -285,13 +289,13 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
     return data;
 }
 
-const externalCallFilter:EntityInterface = {
+const externalCallFilter: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'ExternalCallFilter',
-    title: _('External call filter', {count: 2}),
+    title: _('External call filter', { count: 2 }),
     path: '/external_call_filters',
-    toStr: (row:any) => row.name,
+    toStr: (row: any) => row.name,
     properties,
     columns,
     Form,

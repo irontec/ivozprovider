@@ -7,13 +7,22 @@ interface ViewValueProps {
     values: any,
 }
 
-const ViewFieldValue = (props:ViewValueProps) =>
-{
-    let {property, columnName} = props;
+const ViewFieldValue = (props: ViewValueProps) => {
+    let { property, columnName } = props;
 
     if (!(property as ScalarProperty).component) {
-        const component = (innerProps:any) => {
-            return (<span>{innerProps[columnName]}</span>)
+
+        const component = (innerProps: any) => {
+
+            let val = innerProps[columnName];
+            if (typeof val === 'object') {
+                val = JSON.stringify(val);
+            } else if ((props.property as ScalarProperty).enum) {
+                const enumValues: any = (props.property as ScalarProperty).enum;
+                val = enumValues[val];
+            }
+
+            return (<span>{val}</span>);
         };
 
         property = {

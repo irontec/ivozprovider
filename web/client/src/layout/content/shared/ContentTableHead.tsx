@@ -45,6 +45,11 @@ const ContentTableHead = function (props: any) {
                         </TableSortLabel>
                     </TableCell>
                 ))}
+                <TableCell
+                    key={'empty slot'}
+                    align='left'
+                    padding='default'
+                ></TableCell>
             </TableRow>
         </TableHead>
     );

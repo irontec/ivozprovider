@@ -7,12 +7,27 @@ export default async function genericForeignKeyResolver(
     toStr: Function,
     addLink: boolean = true
 ) {
+    if (typeof data !== 'object') {
+        return data;
+    }
+
+    if (!Array.isArray(data) && (typeof data[fkFld] !== 'object' || data[fkFld] === null)) {
+        return data;
+    }
+
+    if (!Array.isArray(data)) {
+        // Just flat view's detailed model
+        data[fkFld] = toStr(data[fkFld]);
+
+        return data;
+    }
+
     const ids: Array<number> = [];
     for (const idx in data) {
         if (data[idx][fkFld]) {
 
             const val = data[idx][fkFld];
-            const iterableValues:Array<any> = Array.isArray(val)
+            const iterableValues: Array<any> = Array.isArray(val)
                 ? val
                 : [val];
 
@@ -76,7 +91,7 @@ export default async function genericForeignKeyResolver(
     return data;
 };
 
-export const remapFk = (row:any, from:string, to:string) => {
+export const remapFk = (row: any, from: string, to: string) => {
 
     row[to] = row[from];
     row[`${to}Id`] = row[`${from}Id`];

@@ -21,12 +21,12 @@ const errorFields = [
     'errorVoiceMailUser',
 ];
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
     'welcomeLocution': {
-        label:_('Welcome locution'),
+        label: _('Welcome locution'),
     },
     'noInputLocution': {
         label: _('No input locution'),
@@ -161,7 +161,7 @@ const columns = [
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
 
-    const promises= [];
+    const promises = [];
     const {
         Extension, User, Country,
     } = entities;
@@ -189,7 +189,7 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
             data,
             'noInputNumberCountry',
             Country.path,
-            (row:any) => `${row.countryCode}`,
+            (row: any) => `${row.countryCode}`,
         )
     );
 
@@ -216,15 +216,19 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
             data,
             'errorNumberCountry',
             Country.path,
-            (row:any) => `${row.countryCode}`,
+            (row: any) => `${row.countryCode}`,
         )
     );
 
     await Promise.all(promises);
 
+    if (!Array.isArray(data)) {
+        return data;
+    }
+
     for (const idx in data) {
 
-        switch(data[idx].noInputRouteType) {
+        switch (data[idx].noInputRouteType) {
             case 'number':
                 data[idx].errorTarget =
                     data[idx].noInputNumberCountry
@@ -243,7 +247,7 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
                 break;
         }
 
-        switch(data[idx].errorRouteType) {
+        switch (data[idx].errorRouteType) {
             case 'number':
                 data[idx].errorTarget =
                     data[idx].errorNumberCountry
@@ -276,13 +280,13 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
     return data;
 }
 
-const ivr:EntityInterface = {
+const ivr: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Ivr',
-    title: _('IVR', {count: 2}),
+    title: _('IVR', { count: 2 }),
     path: '/ivrs',
-    toStr: (row:any) => row.name,
+    toStr: (row: any) => row.name,
     properties,
     columns,
     Form,

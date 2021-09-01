@@ -66,7 +66,7 @@ const entities:EntityList = {
   CallCsvScheduler: callCsvScheduler,
   Recording,
   ResidentialDevice,
-  RetailAccount
+  RetailAccount,
 };
 
 export default entities;

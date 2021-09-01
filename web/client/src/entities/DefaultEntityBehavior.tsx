@@ -16,11 +16,12 @@ export const validator = (values: any) => {
     return {};
 }
 
+// formik compatible format => API format
 export const marshaller = (values: any, properties: PropertiesList) => {
 
     for (const idx in values) {
 
-        const property:any = properties[idx];
+        const property: any = properties[idx];
 
         if (property?.type === "boolean") {
             values[idx] = values[idx] === '0'
@@ -44,9 +45,10 @@ export const marshaller = (values: any, properties: PropertiesList) => {
     return values;
 }
 
+// API Response format => formik compatible format
 export const unmarshaller = (row: any, properties: PropertiesList) => {
 
-    const normalizedData:any = {};
+    const normalizedData: any = {};
 
     // eslint-disable-next-line
     const dateTimePattern = `^[0-9]{4}\-[0-9]{2}\-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$`;
@@ -98,7 +100,7 @@ export const acl = {
 
 export const ListDecorator = (props: any) => {
 
-    const {field, row, property} = props;
+    const { field, row, property } = props;
     let value = row[field];
 
     if (property.component) {
@@ -122,14 +124,14 @@ export const ListDecorator = (props: any) => {
         : '';
 }
 
-export const RowIcons = (props:any) => {
+export const RowIcons = (props: any) => {
     return (
         <React.Fragment />
     );
 };
 
 export type FieldsetGroups = {
-    legend: string|React.ReactElement,
+    legend: string | React.ReactElement,
     fields: Array<string>
 }
 
@@ -154,13 +156,13 @@ const useStyles = makeStyles((theme: any) => ({
 const Form = (props: any) => {
 
     const { entityService, formik }:
-          { entityService: EntityService, formik: useFormikType } = props;
+        { entityService: EntityService, formik: useFormikType } = props;
     const { fkChoices } = props;
 
     const columns = entityService.getColumns();
     const columnNames = Object.keys(columns);
 
-    let groups:Array<FieldsetGroups> = [];
+    let groups: Array<FieldsetGroups> = [];
     if (props.groups) {
         groups = props.groups;
     } else {
@@ -175,11 +177,11 @@ const Form = (props: any) => {
     let initialVisualToggles = entityService.getVisualToggles();
     const initialValues = formik.initialValues;
     for (const idx in initialValues) {
-      initialVisualToggles = entityService.updateVisualToggle(
-        idx,
-        initialValues[idx],
-        initialVisualToggles,
-      );
+        initialVisualToggles = entityService.updateVisualToggle(
+            idx,
+            initialValues[idx],
+            initialVisualToggles,
+        );
     }
 
     const [visualToggles, setVisualToggles] = React.useState(initialVisualToggles);
@@ -188,11 +190,11 @@ const Form = (props: any) => {
 
         formik.handleChange(e);
 
-        const { name, value} = e.target;
+        const { name, value } = e.target;
         const updatedVisualToggles = entityService.updateVisualToggle(
-          name,
-          value,
-          {...visualToggles},
+            name,
+            value,
+            { ...visualToggles },
         );
 
         setVisualToggles(updatedVisualToggles);
@@ -206,45 +208,45 @@ const Form = (props: any) => {
 
     return (
         <React.Fragment>
-        {groups.map((group:FieldsetGroups, idx:number) => {
+            {groups.map((group: FieldsetGroups, idx: number) => {
 
-            const visible = group.fields.reduce(
-                (acc:boolean, fld:string) => {
-                    return acc || visualToggles[fld];
-                },
-                false
-            );
+                const visible = group.fields.reduce(
+                    (acc: boolean, fld: string) => {
+                        return acc || visualToggles[fld];
+                    },
+                    false
+                );
 
-            const className = visible
-                ? classes.visible
-                : classes.hidden;
+                const className = visible
+                    ? classes.visible
+                    : classes.hidden;
 
-            return (
-                <div key={idx} className={className}>
-                    <Typography variant="h6" color="inherit" gutterBottom  className={classes.legend}>
-                        {group.legend}
-                    </Typography>
-                    <Grid container spacing={3} className={classes.grid}>
-                        {group.fields.map((columnName:string, idx: number) => {
+                return (
+                    <div key={idx} className={className}>
+                        <Typography variant="h6" color="inherit" gutterBottom className={classes.legend}>
+                            {group.legend}
+                        </Typography>
+                        <Grid container spacing={3} className={classes.grid}>
+                            {group.fields.map((columnName: string, idx: number) => {
 
-                            const choices = fkChoices
-                                ? fkChoices[columnName]
-                                : null;
+                                const choices = fkChoices
+                                    ? fkChoices[columnName]
+                                    : null;
 
-                            const className = visualToggles[columnName]
-                                ? classes.visible
-                                : classes.hidden;
+                                const className = visualToggles[columnName]
+                                    ? classes.visible
+                                    : classes.hidden;
 
-                            return (
-                                <Grid item xs={12} md={6} lg={4} key={idx} className={className}>
-                                    {formFieldFactory.getFormField(columnName, choices)}
-                                </Grid>
-                            );
-                        })}
-                    </Grid>
-                </div>
-            );
-        })}
+                                return (
+                                    <Grid item xs={12} md={6} lg={4} key={idx} className={className}>
+                                        {formFieldFactory.getFormField(columnName, choices)}
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
+                    </div>
+                );
+            })}
         </React.Fragment>
     );
 };
@@ -252,12 +254,12 @@ const Form = (props: any) => {
 
 const View = (props: any) => {
 
-    const { entityService, row }: { entityService: EntityService, row:any } = props;
+    const { entityService, row }: { entityService: EntityService, row: any } = props;
 
     const columns = entityService.getColumns();
     const columnNames = Object.keys(columns);
 
-    let groups:Array<FieldsetGroups> = [];
+    let groups: Array<FieldsetGroups> = [];
     if (props.groups) {
         groups = props.groups;
     } else {
@@ -271,27 +273,27 @@ const View = (props: any) => {
 
     return (
         <React.Fragment>
-        {groups.map((group:FieldsetGroups, idx:number) => {
-            return (
-                <div key={idx}>
-                    <Typography variant="h6" color="inherit" gutterBottom  className={classes.legend}>
-                        {group.legend}
-                    </Typography>
-                    <Grid container spacing={3} className={classes.grid}>
-                        {group.fields.map((columnName:string, idx: number) => {
+            {groups.map((group: FieldsetGroups, idx: number) => {
+                return (
+                    <div key={idx}>
+                        <Typography variant="h6" color="inherit" gutterBottom className={classes.legend}>
+                            {group.legend}
+                        </Typography>
+                        <Grid container spacing={3} className={classes.grid}>
+                            {group.fields.map((columnName: string, idx: number) => {
 
-                            const properties = entityService.getProperties();
-                            const property = (properties[columnName] as PropertySpec);
-                            return (
-                                <Grid item xs={12} md={6} lg={4} key={idx}>
-                                    <ViewFieldValue property={property} values={row} columnName={columnName} />
-                                </Grid>
-                            );
-                        })}
-                    </Grid>
-                </div>
-            );
-        })}
+                                const properties = entityService.getProperties();
+                                const property = (properties[columnName] as PropertySpec);
+                                return (
+                                    <Grid item xs={12} md={6} lg={4} key={idx}>
+                                        <ViewFieldValue property={property} values={row} columnName={columnName} />
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
+                    </div>
+                );
+            })}
         </React.Fragment>
     );
 };
@@ -321,7 +323,9 @@ const DefaultEntityBehavior = {
     properties,
     acl,
     ListDecorator,
-    toStr: (row:any) => (row.id || '[*]'),
+    toStr: (row: any) => {
+        return (row.id || '[*]');
+    },
     RowIcons,
     Form,
     View,

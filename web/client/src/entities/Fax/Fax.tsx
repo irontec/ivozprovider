@@ -7,7 +7,7 @@ import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import Form from './Form';
 import entities from '../index';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -46,7 +46,7 @@ const columns = [
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
 
-    const promises= [];
+    const promises = [];
     const { Ddi } = entities;
 
     promises.push(
@@ -60,16 +60,20 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
 
     await Promise.all(promises);
 
+    if (!Array.isArray(data)) {
+        return data;
+    }
+
     return data;
 }
 
-const fax:EntityInterface = {
+const fax: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Fax',
-    title: _('Fax', {count: 2}),
+    title: _('Fax', { count: 2 }),
     path: '/faxes',
-    toStr: (row:any) => row.name,
+    toStr: (row: any) => row.name,
     properties,
     columns,
     Form,

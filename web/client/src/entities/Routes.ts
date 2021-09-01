@@ -11,17 +11,16 @@ export type RouteSpec = {
     entity: EntityInterface,
     component: Function
 };
-const routes:Array<RouteSpec> = [];
+const routes: Array<RouteSpec> = [];
 
 export const parseRoutes = (apiSpec: ParsedApiSpecInterface) => {
 
-    const routes:Array<RouteSpec> = [];
+    const routes: Array<RouteSpec> = [];
 
     for (const name in entities) {
         const entity = entities[name];
 
         if (!apiSpec[entity.iden]) {
-            console.log('entity not found', entity.iden);
             continue;
         }
 

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import RatingPlanGroupSelectOptions from 'entities/RatingPlanGroup/SelectOptions';
 import RoutingTagSelectOptions from 'entities/RoutingTag/SelectOptions';
 
-const Form = (props:any) => {
+const Form = (props: any) => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
@@ -14,8 +14,8 @@ const Form = (props:any) => {
     useEffect(
         () => {
             if (loadingFks) {
-                RatingPlanGroupSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                RatingPlanGroupSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             ratingPlanGroup: options,
@@ -23,8 +23,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                RoutingTagSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                RoutingTagSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             routingTag: options,
@@ -42,7 +42,7 @@ const Form = (props:any) => {
         [loadingFks, fkChoices]
     );
 
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
+    return (<DefaultEntityForm fkChoices={fkChoices} {...props} />);
 }
 
 export default Form;
