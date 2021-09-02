@@ -3,6 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Service\CallForwardSetting;
 
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
+use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Infrastructure\Persistence\Doctrine\CallForwardSettingDoctrineRepository;
 use Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness;
@@ -10,7 +11,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
-use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 class CheckUniquenessSpec extends ObjectBehavior
 {
@@ -187,18 +187,8 @@ class CheckUniquenessSpec extends ObjectBehavior
     {
         $this->prepareExecution();
 
-        $ddi = $this->getTestDouble(
-            DdiInterface::class,
-            false
-        );
-
-        $ddiId = 10;
-        $this->getterProphecy(
-            $ddi,
-            [
-                'getId' => $ddiId,
-            ],
-            true
+        $ddi = $this->getInstance(
+            Ddi::class
         );
 
         $this->getterProphecy(
@@ -212,7 +202,7 @@ class CheckUniquenessSpec extends ObjectBehavior
 
         $criteria = $this->getCriteriaArgument(
             'inconditional',
-            $ddiId
+            $ddi
         );
 
         $this
