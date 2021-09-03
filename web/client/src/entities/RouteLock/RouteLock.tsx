@@ -4,7 +4,7 @@ import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import Form from './Form';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -18,23 +18,31 @@ const properties:PropertiesList = {
             '1': _("Opened"),
         }
     },
-
-    //@TODO openExtension
-    //@TODO closeExtension
-    //@TODO toggleExtension
+    'closeExtension': {
+        label: _('Close extension'),
+    },
+    'openExtension': {
+        label: _('Open extension'),
+    },
+    'toggleExtension': {
+        label: _('Toggle extension'),
+    },
 };
 
 const columns = [
     'name',
     'description',
     'open',
+    'closeExtension',
+    'openExtension',
+    'toggleExtension',
 ];
 
-const routeLock:EntityInterface = {
+const routeLock: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'RouteLock',
-    title: _('Route Lock', {count: 2}),
+    title: _('Route Lock', { count: 2 }),
     path: '/route_locks',
     properties,
     columns,

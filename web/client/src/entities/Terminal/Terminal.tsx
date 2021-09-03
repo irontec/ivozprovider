@@ -17,7 +17,6 @@ const properties:PropertiesList = {
     },
     'lastProvisionDate': {
         label: _('Last provision date'),
-        readOnly: true //@TODO POSPONED  set into API spec
     },
     'disallow': {
         label: _('Disallowed audio codecs'),

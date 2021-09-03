@@ -2,34 +2,35 @@ import SettingsApplications from '@material-ui/icons/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
-import Form from './Form'
-import RatingPlanGroup from '../RatingPlanGroup/RatingPlanGroup';
 import EntityService from 'services/Entity/EntityService';
 import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
+import entities from '../index';
+import Form from './Form';
 
 const properties: PropertiesList = {
-    'activationTime': {
-        label: _('Activation time'),
+    service: {
+        //@TODO Filter by current & unassigned
+        label: _('Service'),
     },
-    'ratingPlanGroup': {
-        label: _('Rating plan'),
-    },
-    'routingTag': {
-        label: _('Routing Tag'),
-        //@TODO fetch routingTag value
+    code: {
+        label: _('Code'),
+        prefix: (<span className="asterisc">*</span>),
+        //@TODO pattern: '[#0-9*]+'
+        helpText: _('Allowed characters are 0-9, * and #')
     },
 };
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
 
     const promises = [];
+    const { Service } = entities;
 
     promises.push(
         genericForeignKeyResolver(
             data,
-            'ratingPlanGroup',
-            RatingPlanGroup.path,
-            RatingPlanGroup.toStr,
+            'service',
+            Service.path,
+            Service.toStr,
             false
         )
     );
@@ -39,15 +40,21 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
     return data;
 }
 
-const ratingProfile: EntityInterface = {
+const columns = [
+    'service',
+    'code',
+];
+
+const companyService: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
-    iden: 'RatingProfile',
-    title: _('Rating profile', { count: 2 }),
-    path: '/rating_profiles',
+    iden: 'CompanyService',
+    title: _('Service', { count: 2 }),
+    path: '/company_services',
     properties,
-    Form,
+    columns,
     foreignKeyResolver,
+    Form
 };
 
-export default ratingProfile;
+export default companyService;

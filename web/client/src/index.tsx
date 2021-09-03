@@ -8,9 +8,10 @@ import storeModel from './store';
 import i18n from './i18n';
 import './index.css';
 
-const currentLanguage = i18n.language === 'es'
+const currentLanguage = i18n.language.substring(0, 2) === 'es'
   ? 'esES'
   : 'enUS';
+
 const theme = createMuiTheme({}, locales[currentLanguage]);
 
 const store = createStore(storeModel);

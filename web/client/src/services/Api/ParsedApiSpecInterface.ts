@@ -33,11 +33,11 @@ export interface ActionsSpec {
 }
 
 export interface visualToggleList {
-    [fldName:string]: visualToggleValue
+    [fldName: string]: visualToggleValue
 };
 
 export interface visualToggleValue {
-    [value:string]: visualToggle
+    [value: string]: visualToggle
 };
 
 export interface visualToggle {
@@ -46,8 +46,8 @@ export interface visualToggle {
 }
 
 enum customComponentContext {
-    write="write",
-    read="read",
+    write = "write",
+    read = "read",
 }
 
 export interface propertyCustomComponent extends React.FunctionComponent<any> {
@@ -63,23 +63,26 @@ export interface ScalarProperty {
     maxLength?: number,
     default?: any,
     enum?: KeyValList,
-    null?: string|React.ReactElement<any>,
-    visualToggle?:visualToggleValue
-    label: string|React.ReactElement<any>,
+    null?: string | React.ReactElement<any>,
+    visualToggle?: visualToggleValue
+    label: string | React.ReactElement<any>,
+    prefix?: string | React.ReactElement<any>,
     component?: propertyCustomComponent,
     required: boolean,
-    helpText?: string|React.ReactElement<any>,
+    pattern: RegExp,
+    helpText?: string | React.ReactElement<any>,
 }
 
 export interface FkProperty {
     $ref: string,
-    label: string|React.ReactElement<any>,
-    null?: string|React.ReactElement<any>,
+    label: string | React.ReactElement<any>,
+    prefix?: string | React.ReactElement<any>,
+    null?: string | React.ReactElement<any>,
     required: boolean,
     helpText?: string,
 }
 
-export type PropertySpec =  ScalarProperty | FkProperty;
+export type PropertySpec = ScalarProperty | FkProperty;
 
 export interface PropertyList {
     [key: string]: PropertySpec

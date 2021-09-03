@@ -22,7 +22,9 @@ const ViewFieldValue = (props: ViewValueProps) => {
                 val = enumValues[val];
             }
 
-            return (<span>{val}</span>);
+            const prefix = property?.prefix || '';
+
+            return (<span>{prefix}{val}</span>);
         };
 
         property = {

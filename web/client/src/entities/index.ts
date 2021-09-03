@@ -23,19 +23,20 @@ import callAcl from './CallAcl/CallAcl';
 import Locution from './Locution/Locution';
 import MusicOnHold from './MusicOnHold/MusicOnHold';
 import Fax from './Fax/Fax';
-import Service from './Service/Service';
+import CompanyService from './CompanyService/CompanyService';
 import RatingProfile from './RatingProfile/RatingProfile';
 import UsersCdr from './UsersCdr/UsersCdr';
 import callCsvScheduler from './CallCsvScheduler/CallCsvScheduler';
 import Recording from './Recording/Recording';
 import ResidentialDevice from './ResidentialDevice/ResidentialDevice';
 import RetailAccount from './RetailAccount/RetailAccount';
+import Service from './Service/Service';
 
 interface EntityList {
-  [name:string]: EntityInterface
+  [name: string]: EntityInterface
 }
 
-const entities:EntityList = {
+const entities: EntityList = {
   Calendar,
   Country,
   BillableCall,
@@ -60,6 +61,7 @@ const entities:EntityList = {
   Locution,
   MusicOnHold,
   Fax,
+  CompanyService,
   Service,
   RatingProfile,
   UsersCdr,

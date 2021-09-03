@@ -6,7 +6,7 @@ import ApiClient from "services/Api/ApiClient";
 import { Grid, makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { PropertySpec, ScalarProperty } from 'services/Api/ParsedApiSpecInterface';
-import { PropertiesList } from './EntityInterface';
+import EntityInterface, { PropertiesList } from './EntityInterface';
 import ViewFieldValue from 'services/Form/Field/ViewFieldValue';
 
 export const initialValues = {};
@@ -153,10 +153,19 @@ const useStyles = makeStyles((theme: any) => ({
     }
 }));
 
-const Form = (props: any) => {
 
-    const { entityService, formik }:
-        { entityService: EntityService, formik: useFormikType } = props;
+export type EntityFormProps = EntityInterface & {
+    create?: boolean,
+    edit?: boolean,
+    entityService: EntityService,
+    formik: useFormikType,
+    groups: Array<FieldsetGroups>,
+    fkChoices: any,
+};
+
+const Form = (props: EntityFormProps) => {
+
+    const { entityService, formik } = props;
     const { fkChoices } = props;
 
     const columns = entityService.getColumns();

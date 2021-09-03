@@ -5,18 +5,16 @@ import {
     ActionModelSpec, visualToggleList
 } from "services/Api/ParsedApiSpecInterface";
 
-export default class EntityService
-{
+export default class EntityService {
     constructor(
-        private actions:ActionsSpec,
-        private properties:PropertyList,
-        private entityConfig:EntityInterface
+        private actions: ActionsSpec,
+        private properties: PropertyList,
+        private entityConfig: EntityInterface
     ) {
     }
 
-    public getProperties(): PropertiesList
-    {
-        const response:PropertiesList = {};
+    public getProperties(): PropertiesList {
+        const response: PropertiesList = {};
         const properties = this.entityConfig.properties;
 
         for (const idx in properties) {
@@ -34,9 +32,8 @@ export default class EntityService
         return response;
     }
 
-    public getColumns(): PropertyList
-    {
-        const response:PropertyList = {};
+    public getColumns(): PropertyList {
+        const response: PropertyList = {};
         const properties = this.entityConfig.properties;
         const columns = this.entityConfig.columns.length
             ? this.entityConfig.columns
@@ -61,8 +58,7 @@ export default class EntityService
         return response;
     }
 
-    public getCollectionColumns(): PropertyList
-    {
+    public getCollectionColumns(): PropertyList {
         const allColumns = this.getColumns();
         const collectionAction = this.getFromModelList(
             this.actions?.get?.collection || {},
@@ -70,7 +66,7 @@ export default class EntityService
         );
         const collectionActionFields = Object.keys(collectionAction?.properties || {});
 
-        const response:PropertyList = {};
+        const response: PropertyList = {};
         const restrictedColumns = this.entityConfig.columns.length
             ? this.entityConfig.columns
             : collectionActionFields;
@@ -86,9 +82,8 @@ export default class EntityService
         return response;
     }
 
-    public getVisualToggleRules(): visualToggleList
-    {
-        const rules:visualToggleList = {};
+    public getVisualToggleRules(): visualToggleList {
+        const rules: visualToggleList = {};
         const properties = this.entityConfig.properties;
         for (const idx in properties) {
             const visualToggle = (properties[idx] as ScalarProperty).visualToggle;
@@ -102,13 +97,12 @@ export default class EntityService
         return rules;
     }
 
-    public getVisualToggles():any
-    {
+    public getVisualToggles(): any {
         const properties = this.entityConfig.properties;
         const visualToggles = Object.keys(properties).reduce(
-            (accumulator:any, fldName:string) => {
-              accumulator[fldName] = true;
-              return accumulator;
+            (accumulator: any, fldName: string) => {
+                accumulator[fldName] = true;
+                return accumulator;
             },
             {}
         );
@@ -116,20 +110,19 @@ export default class EntityService
         return visualToggles;
     }
 
-    public updateVisualToggle(fld:string, value:any, visualToggles:any)
-    {
+    public updateVisualToggle(fld: string, value: any, visualToggles: any) {
         const rules = this.getVisualToggleRules();
 
         if (!rules[fld]) {
-          return visualToggles;
+            return visualToggles;
         }
 
         if (!rules[fld][value]) {
-          return visualToggles;
+            return visualToggles;
         }
 
         for (const hideFld of rules[fld][value]['hide']) {
-          visualToggles[hideFld] = false;
+            visualToggles[hideFld] = false;
         }
 
         for (const showFld of rules[fld][value]['show']) {
@@ -139,15 +132,17 @@ export default class EntityService
         return visualToggles;
     }
 
-    public getDefultValues()
-    {
-        const response:any = {};
+    public getDefultValues() {
+        const response: any = {};
         const columns = this.getColumns();
 
         for (const idx in columns) {
 
-            const column:ScalarProperty = columns[idx];
+            const column: ScalarProperty = columns[idx];
             if (!column.default && !column.enum) {
+                if (column.type === 'array') {
+                    response[idx] = [];
+                }
                 continue;
             }
 
@@ -163,8 +158,7 @@ export default class EntityService
         return response;
     }
 
-    public getCollectionPath(path: string|null = null): string|null
-    {
+    public getCollectionPath(path: string | null = null): string | null {
         const collectionAction = this.actions?.get?.collection || {};
 
         const action = this.getFromModelList(collectionAction, path);
@@ -172,8 +166,7 @@ export default class EntityService
         return action?.paths[0];
     }
 
-    public getItemPath(path: string|null = null): string|null
-    {
+    public getItemPath(path: string | null = null): string | null {
         const itemActions = this.actions?.get?.item || {};
 
         const action = this.getFromModelList(itemActions, path);
@@ -181,8 +174,7 @@ export default class EntityService
         return action?.paths[0];
     }
 
-    public getPostPath(path: string|null = null): string|null
-    {
+    public getPostPath(path: string | null = null): string | null {
         const itemActions = this.actions?.post || {};
 
         const action = this.getFromModelList(itemActions, path);
@@ -190,8 +182,7 @@ export default class EntityService
         return action?.paths[0];
     }
 
-    public getPutPath(path: string|null = null): string|null
-    {
+    public getPutPath(path: string | null = null): string | null {
         const itemActions = this.actions?.put || {};
 
         const action = this.getFromModelList(itemActions, path);
@@ -199,8 +190,7 @@ export default class EntityService
         return action?.paths[0];
     }
 
-    public getDeletePath(path: string|null = null): string|null
-    {
+    public getDeletePath(path: string | null = null): string | null {
         const itemActions = this.actions?.delete || {};
 
         const action = this.getFromModelList(itemActions, path);
@@ -208,36 +198,32 @@ export default class EntityService
         return action?.paths[0];
     }
 
-    public getTitle()
-    {
+    public getTitle() {
         return this.entityConfig.title;
     }
 
-    public getOrderBy(): string
-    {
+    public getOrderBy(): string {
         return this.entityConfig?.defaultOrderBy || 'id';
     }
 
-    public getOrderDirection(): string
-    {
+    public getOrderDirection(): string {
         return 'desc';
     }
 
-    public getAcls()
-    {
-        const create:boolean = this.entityConfig.acl.create && this.actions.post
+    public getAcls() {
+        const create: boolean = this.entityConfig.acl.create && this.actions.post
             ? true
             : false;
 
-        const read:boolean = this.entityConfig.acl.read && this.actions.get
+        const read: boolean = this.entityConfig.acl.read && this.actions.get
             ? true
             : false;
 
-        const update:boolean = this.entityConfig.acl.update && this.actions.put
+        const update: boolean = this.entityConfig.acl.update && this.actions.put
             ? true
             : false;
 
-        const remove:boolean = this.entityConfig.acl.delete && this.actions.delete
+        const remove: boolean = this.entityConfig.acl.delete && this.actions.delete
             ? true
             : false;
 
@@ -251,45 +237,40 @@ export default class EntityService
         return acl;
     }
 
-    public getForeignKeyGetter()
-    {
+    public getForeignKeyGetter() {
         return this.entityConfig.foreignKeyGetter;
     }
 
-    public getListDecorator(): React.FunctionComponent<ListDecoratorPropsType>
-    {
+    public getListDecorator(): React.FunctionComponent<ListDecoratorPropsType> {
         return this.entityConfig.ListDecorator;
     }
 
-    public getRowActions(): FunctionComponent
-    {
+    public getRowActions(): FunctionComponent {
         return this.entityConfig.RowIcons;
     }
 
-    public getPropertyFilters(propertyName: string, path?:string): Array<string>
-    {
+    public getPropertyFilters(propertyName: string, path?: string): Array<string> {
         const filters = this.getFilters(path);
 
         return filters[propertyName] || [];
     }
 
-    private getFilters(path?:string): any
-    {
+    private getFilters(path?: string): any {
         const collectionAction = this.actions?.get?.collection || {};
         const action = this.getFromModelList(collectionAction, path);
         if (!action) {
             return {};
         }
 
-        const filters:any = {};
+        const filters: any = {};
         // eslint-disable-next-line
         const filterRegExp = new RegExp(/^([^\[]+)\[?([^\]]*)\]?/);
-        const parameters:any = action.parameters || {};
+        const parameters: any = action.parameters || {};
 
         for (const idx in parameters) {
 
             const name = parameters[idx].name;
-            let [,fieldName, modifier] = name.match(filterRegExp);
+            let [, fieldName, modifier] = name.match(filterRegExp);
             if (!modifier) {
                 modifier = parameters[idx].type === 'string'
                     ? 'exact'
@@ -310,12 +291,11 @@ export default class EntityService
         return filters;
     }
 
-    private getFromModelList(modelList: ActionModelList, path: string|null = null): ActionModelSpec|null
-    {
+    private getFromModelList(modelList: ActionModelList, path: string | null = null): ActionModelSpec | null {
         if (path) {
-            const filteresModelList:ActionModelList = {};
+            const filteresModelList: ActionModelList = {};
             for (const idx in modelList) {
-                if (! modelList[idx].paths.includes(path)) {
+                if (!modelList[idx].paths.includes(path)) {
                     continue;
                 }
 

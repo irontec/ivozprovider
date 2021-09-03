@@ -85,7 +85,9 @@ export default function ContentTableRow(props: propsType) {
           response = <ListDecorator field={key} row={row} property={column} />
         }
 
-        return <TableCell key={key}>{response}</TableCell>;
+        const prefix = column?.prefix || '';
+
+        return <TableCell key={key}>{prefix}{response}</TableCell>;
       })}
       <TableCell key="actions" className={classes.actionCell}>
         {acl.update && <Tooltip title={_('Edit')} placement="bottom">

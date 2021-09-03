@@ -1,59 +1,20 @@
 import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
+import EntityInterface from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import { getI18n } from 'react-i18next';
 
-const properties:PropertiesList = {
-    'iden': {
-        label:_('Iden'),
-    },
-    'name': {
-        label:_('Name'),
-    },
-    'description': {
-        label:_('Description'),
-    },
-    'defaultCode': {
-        label:_('Code'),
-        //@TODO prefix: '<span class="asterisc">*</span>'
-        //@TODO pattern: '[#0-9*]+'
-        helpText: _('Future brands will have services enabled with this codes by default')
-    },
-    'extraArgs': {
-        label:_('Service has extra arguments'),
-        enum: {
-            '0': _('No'),
-            '1': _('Yes'),
-        }
-    },
-};
-
-const columns = [
-    'iden',
-    //@todo name
-    'defaultCode',
-];
-
-const ListDecorator = (props: any) => {
-
-    let value = defaultEntityBehavior.ListDecorator(props);
-
-    if (props.field === 'defaultCode') {
-        value = '*' + value;
-    }
-
-    return value;
-}
-
-const service:EntityInterface = {
+const companyService: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Service',
-    title: _('Service', {count: 2}),
+    title: _('Service', { count: 2 }),
     path: '/services',
-    properties,
-    columns,
-    ListDecorator,
+    toStr: (row: any) => {
+        const language = getI18n().language.substring(0, 2);
+
+        return row?.name[language]
+    },
 };
 
-export default service;
+export default companyService;

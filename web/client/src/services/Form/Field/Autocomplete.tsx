@@ -8,10 +8,10 @@ import EntityInterface from 'entities/EntityInterface';
 interface AutocompleteProps extends EntityInterface {
   name: string,
   label: string,
-  value:any,
+  value: any,
   multiple: boolean,
-  required:boolean,
-  disabled:boolean,
+  required: boolean,
+  disabled: boolean,
   onChange: (event: any) => void,
   choices: any
 }
@@ -28,22 +28,22 @@ const Autocomplete = (props: AutocompleteProps) => {
     () => {
       const arrayValue = [];
       for (const idx in choices) {
-        arrayValue.push({value: idx, label: choices[idx]});
+        arrayValue.push({ value: idx, label: choices[idx] });
       }
 
       setArrayChoices(arrayValue);
       setLoading(false);
 
-      return function umount() {};
+      return function umount() { };
     },
     [choices]
   );
 
   const onChangeWrapper = useCallback(
-    (e:any, option:any) => {
+    (e: any, option: any) => {
 
       const selectedValue = multiple
-        ? option.map((item:any) => typeof item === 'object' ? item.value : item)
+        ? option.map((item: any) => typeof item === 'object' ? item.value : item)
         : option?.value;
 
       onChange({
@@ -57,12 +57,12 @@ const Autocomplete = (props: AutocompleteProps) => {
   );
 
   const getOptionLabel = useCallback(
-    (value:any) => {
+    (value: any) => {
 
       if (typeof value !== 'object') {
         value = arrayChoices.find(
           // eslint-disable-next-line
-          (option:any) => option.value == value
+          (option: any) => option.value == value
         );
       }
 
@@ -90,7 +90,7 @@ const Autocomplete = (props: AutocompleteProps) => {
   );
 
   const renderInput = useCallback(
-    (params:any) => {
+    (params: any) => {
 
       const InputProps = {
         ...params.InputProps,
@@ -116,18 +116,18 @@ const Autocomplete = (props: AutocompleteProps) => {
   }
 
   return (
-      <MuiAutocomplete
-        value={value}
-        multiple={multiple}
-        disabled={disabled}
-        onChange={onChangeWrapper}
-        options={arrayChoices}
-        getOptionLabel={getOptionLabel}
-        getOptionSelected={getOptionSelected}
-        filterSelectedOptions
-        renderInput={renderInput}
+    <MuiAutocomplete
+      value={value}
+      multiple={multiple}
+      disabled={disabled}
+      onChange={onChangeWrapper}
+      options={arrayChoices}
+      getOptionLabel={getOptionLabel}
+      getOptionSelected={getOptionSelected}
+      filterSelectedOptions
+      renderInput={renderInput}
 
-      />
+    />
   );
 };
 

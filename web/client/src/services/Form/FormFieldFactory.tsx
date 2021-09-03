@@ -1,4 +1,4 @@
-import { FormControlLabel, TextField, Switch, FormHelperText, LinearProgress, FormControl, makeStyles, Theme } from '@material-ui/core';
+import { FormControlLabel, TextField, Switch, FormHelperText, LinearProgress, FormControl, makeStyles, Theme, InputAdornment } from '@material-ui/core';
 import { ScalarProperty, FkProperty, PropertySpec } from 'services/Api/ParsedApiSpecInterface';
 import EntityService from 'services/Entity/EntityService';
 import { useFormikType } from './types';
@@ -7,9 +7,8 @@ import React from 'react';
 import Autocomplete from './Field/Autocomplete';
 import CustomComponent from './Field/CustomComponent';
 
-export default class FormFieldFactory
-{
-    private styles:any;
+export default class FormFieldFactory {
+    private styles: any;
 
     constructor(
         private entityService: EntityService,
@@ -31,8 +30,7 @@ export default class FormFieldFactory
         });
     }
 
-    public getFormField(fld:string, choices?:any)
-    {
+    public getFormField(fld: string, choices?: any) {
         const property = this.getProperty(fld);
         if (!property) {
             console.error(`Property ${fld} was not found`);
@@ -49,23 +47,22 @@ export default class FormFieldFactory
         );
     }
 
-    private getProperty(fld: string): PropertySpec
-    {
+    private getProperty(fld: string): PropertySpec {
         const properties = this.entityService.getProperties();
 
         return (properties[fld] as PropertySpec);
     }
 
-    private getInputField(fld:string, choices?:any)
-    {
+    private getInputField(fld: string, choices?: any) {
         const property = this.getProperty(fld);
+
         const disabled = (property as ScalarProperty).readOnly;
-        const classes:any = this.styles();
+        const classes: any = this.styles();
         const multiSelect = (property as ScalarProperty).type === 'array';
 
         if ((property as ScalarProperty).component) {
             return (
-                <CustomComponent property={property} values={this.formik.values}  />
+                <CustomComponent property={property} values={this.formik.values} />
             );
         }
 
@@ -95,7 +92,7 @@ export default class FormFieldFactory
 
         if ((property as ScalarProperty).enum) {
 
-            const enumValues:any = (property as ScalarProperty).enum;
+            const enumValues: any = (property as ScalarProperty).enum;
 
             if (Array.isArray(enumValues)) {
                 choices = choices || {};
@@ -143,6 +140,13 @@ export default class FormFieldFactory
             );
         }
 
+        const inputProps: any = {};
+        if (property.prefix) {
+            inputProps.startAdornment = (
+                <InputAdornment position="start">{property.prefix}</InputAdornment>
+            );
+        }
+
         if ((property as ScalarProperty).type === 'integer') {
 
             return (
@@ -160,6 +164,7 @@ export default class FormFieldFactory
                     className={classes.inputText}
                     margin="normal"
                     variant="outlined"
+                    InputProps={inputProps}
                 />
             );
         }
@@ -185,6 +190,7 @@ export default class FormFieldFactory
                         className={classes.inputText}
                         margin="normal"
                         variant="outlined"
+                        InputProps={inputProps}
                     />
                 );
             }
@@ -205,6 +211,7 @@ export default class FormFieldFactory
                         className={classes.inputText}
                         margin="normal"
                         variant="outlined"
+                        InputProps={inputProps}
                     />
                 );
             }
@@ -224,6 +231,7 @@ export default class FormFieldFactory
                     className={classes.inputText}
                     margin="normal"
                     variant="outlined"
+                    InputProps={inputProps}
                 />
             );
         }
