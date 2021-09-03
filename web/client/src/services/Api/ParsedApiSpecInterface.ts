@@ -69,7 +69,7 @@ export interface ScalarProperty {
     prefix?: string | React.ReactElement<any>,
     component?: propertyCustomComponent,
     required: boolean,
-    pattern: RegExp,
+    pattern?: RegExp,
     helpText?: string | React.ReactElement<any>,
 }
 

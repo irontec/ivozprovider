@@ -14,8 +14,8 @@ const properties: PropertiesList = {
     },
     code: {
         label: _('Code'),
-        prefix: (<span className="asterisc">*</span>),
-        //@TODO pattern: '[#0-9*]+'
+        prefix: (<span>*</span>),
+        pattern: new RegExp('^[#0-9*]+$'),
         helpText: _('Allowed characters are 0-9, * and #')
     },
 };

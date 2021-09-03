@@ -65,7 +65,9 @@ const Edit: any = (props: EditProps) => {
 
   const formik: useFormikType = useFormik({
     initialValues,
-    validate: props.validator,
+    validate: (values: any) => {
+      return props.validator(values, props.properties);
+    },
     onSubmit: submit,
   });
 

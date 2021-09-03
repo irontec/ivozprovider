@@ -14,43 +14,43 @@ import _ from 'services/Translations/translate';
 
 interface CreateProps extends EntityInterface {
   entityService: EntityService,
-  history:any,
-  match:any
+  history: any,
+  match: any
 }
 
-const Create = (props:CreateProps) => {
+const Create = (props: CreateProps) => {
 
   const { marshaller, unmarshaller, path, history, properties } = props;
-  const { Form: EntityForm, entityService }: { Form: any, entityService:EntityService } = props;
+  const { Form: EntityForm, entityService }: { Form: any, entityService: EntityService } = props;
   const [error, setError] = useState(null);
-  const apiPost = useStoreActions((actions:any) => {
-      return actions.api.post
+  const apiPost = useStoreActions((actions: any) => {
+    return actions.api.post
   });
   const classes = useStyles();
 
-  const submit =  async (values:any , actions: FormikHelpers<any>) => {
+  const submit = async (values: any, actions: FormikHelpers<any>) => {
 
-      const {setSubmitting} = actions;
+    const { setSubmitting } = actions;
 
-      try {
+    try {
 
-        await apiPost({
-          path,
-          values: marshaller(values, entityService.getColumns()),
-          contentType: 'application/json',
-        });
-        setError(null);
-        history.push(path);
+      await apiPost({
+        path,
+        values: marshaller(values, entityService.getColumns()),
+        contentType: 'application/json',
+      });
+      setError(null);
+      history.push(path);
 
-      } catch (error) {
-        console.error(error);
-        setError(error.toString());
-      } finally {
-        setSubmitting(false);
-      }
+    } catch (error) {
+      console.error(error);
+      setError(error.toString());
+    } finally {
+      setSubmitting(false);
+    }
   };
 
-  let initialValues:any = {
+  let initialValues: any = {
     ...entityService.getDefultValues(),
     ...props.initialValues
   }
@@ -68,9 +68,11 @@ const Create = (props:CreateProps) => {
     properties
   );
 
-  const formik:useFormikType = useFormik({
+  const formik: useFormikType = useFormik({
     initialValues: initialValues,
-    validate: props.validator,
+    validate: (values: any) => {
+      return props.validator(values, props.properties);
+    },
     onSubmit: submit,
   });
 
@@ -82,13 +84,13 @@ const Create = (props:CreateProps) => {
         <Button color="primary" variant="contained" type="submit">
           {_('Save')}
         </Button>
-        { error && <ErrorMessage message={error} /> }
+        {error && <ErrorMessage message={error} />}
       </form>
     </div>
   )
 };
 
-const useStyles = makeStyles((theme:any) => ({
+const useStyles = makeStyles((theme: any) => ({
   dropDown: {
     minWidth: '250px'
   }

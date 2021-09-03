@@ -6,6 +6,7 @@ import Dropdown from 'services/Form/Field/Dropdown';
 import React from 'react';
 import Autocomplete from './Field/Autocomplete';
 import CustomComponent from './Field/CustomComponent';
+import { Alert } from '@material-ui/lab';
 
 export default class FormFieldFactory {
     private styles: any;
@@ -40,6 +41,7 @@ export default class FormFieldFactory {
         return (
             <React.Fragment>
                 {this.getInputField(fld, choices)}
+                {this.formik.errors[fld] && <Alert severity="error">{this.formik.errors[fld]}</Alert>}
                 {property.helpText && <FormHelperText variant={'outlined'}>
                     {property.helpText}
                 </FormHelperText>}

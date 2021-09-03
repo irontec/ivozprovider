@@ -24,7 +24,7 @@ export type PropertiesList = {
 
 export default interface EntityInterface {
     initialValues: any,
-    validator: (values: any) => any,
+    validator: (values: any, properties: PropertiesList) => any,
     marshaller: (T: any, properties: PropertiesList) => any,
     unmarshaller: (T: any, properties: PropertiesList) => any,
     foreignKeyResolver: foreignKeyResolverType,

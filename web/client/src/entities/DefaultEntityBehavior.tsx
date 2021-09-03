@@ -11,9 +11,18 @@ import ViewFieldValue from 'services/Form/Field/ViewFieldValue';
 
 export const initialValues = {};
 
-export const validator = (values: any) => {
+export const validator = (values: any, properties: PropertiesList) => {
 
-    return {};
+    const response: any = {};
+    for (const idx in values) {
+
+        const pattern: RegExp | undefined = (properties[idx] as ScalarProperty)?.pattern;
+        if (pattern && !values[idx].match(pattern)) {
+            response[idx] = 'invalid pattern';
+        }
+    }
+
+    return response;
 }
 
 // formik compatible format => API format
