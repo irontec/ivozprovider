@@ -109,3 +109,8 @@ services:
   Ivoz\Provider\Application\Service\DestinationRateGroup\DestinationRateGroupDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::DestinationRateGroup'
+
+  ##########################################
+  ## RouteLock
+  ##########################################
+  Ivoz\Provider\Application\Service\RouteLock\RouteLockDtoAssembler: ~
