@@ -37,7 +37,8 @@ services:
   Ivoz\Api\Core\Security\DataAccessControlParser:
     calls:
       - [ addRepository, ['matchListRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList")']]
-
+      - [ addRepository, ['ratingProfileRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile")']]
+      - [ addRepository, ['companyRelRoutingTagRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\CompanyRelRoutingTag\\CompanyRelRoutingTag")']]
 
   #######################################
   ## Controllers
