@@ -7,6 +7,7 @@ use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Fax\Fax;

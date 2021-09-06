@@ -2,6 +2,7 @@
 namespace Tests\Provider\Brand;
 
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;
+use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern;
@@ -90,7 +91,8 @@ class BrandLifeCycleTest extends KernelTestCase
             Domain::class,
             FeaturesRelBrand::class,
             Brand::class,
-            ProxyTrunksRelBrand::class
+            ProxyTrunksRelBrand::class,
+            CompanyRelRoutingTag::class,
         ]);
     }
 
