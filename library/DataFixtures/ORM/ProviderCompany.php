@@ -106,6 +106,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setIpfilter(true);
             $this->setOnDemandRecord(0);
             $this->setOnDemandRecordCode("");
+            $this->setShowInvoices(true);
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));

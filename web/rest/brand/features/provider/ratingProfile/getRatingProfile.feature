@@ -20,7 +20,7 @@ Feature: Retrieve rating profile
               "company": 1,
               "carrier": 1,
               "ratingPlanGroup": 1,
-              "routingTag": null
+              "routingTag": 1
           },
           {
               "activationTime": "2018-02-02 21:20:20",

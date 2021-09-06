@@ -12,7 +12,10 @@ Feature: Create route locks
     """
       {
           "name": "New Lock",
-          "open": false
+          "open": false,
+          "closeExtension": "readOnly",
+          "openExtension": "readOnly",
+          "toggleExtension": "readOnly"
       }
     """
     Then the response status code should be 201
@@ -24,7 +27,10 @@ Feature: Create route locks
           "name": "New Lock",
           "description": "",
           "open": false,
-          "id": 3
+          "id": 3,
+          "closeExtension": "",
+          "openExtension": "",
+          "toggleExtension": ""
       }
     """
 
@@ -41,6 +47,9 @@ Feature: Create route locks
           "name": "New Lock",
           "description": "",
           "open": false,
-          "id": 3
+          "id": 3,
+          "closeExtension": "",
+          "openExtension": "",
+          "toggleExtension": ""
       }
     """

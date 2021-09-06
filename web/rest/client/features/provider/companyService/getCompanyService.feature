@@ -16,15 +16,18 @@ Feature: Retrieve company services
       [
           {
               "code": "94",
-              "id": 1
+              "id": 1,
+              "service": 1
           },
           {
               "code": "95",
-              "id": 2
+              "id": 2,
+              "service": 2
           },
           {
               "code": "93",
-              "id": 3
+              "id": 3,
+              "service": 3
           }
       ]
     """
