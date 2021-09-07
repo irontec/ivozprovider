@@ -53,4 +53,25 @@ class BrandServiceRepositoryTest extends KernelTestCase
             $results[0]
         );
     }
+
+
+    public function its_finds_services_by_brandId()
+    {
+        /** @var BrandServiceRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(BrandService::class);
+
+        $results = $repository->getServiceIdsByBrand(1);
+
+        $this->assertInternalType(
+            'array',
+            $results
+        );
+
+        $this->assertInternalType(
+            'int',
+            $results[0]
+        );
+    }
 }
