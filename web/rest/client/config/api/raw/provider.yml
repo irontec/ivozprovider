@@ -90,6 +90,12 @@ Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule
       - schedule
 
 Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
+  itemOperations:
+    get:
+      operation_normalization_context: 'withMatchListIds'
+    put: ~
+    delete: ~
+  collectionOperations: ~
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
@@ -99,6 +105,9 @@ Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
+    normalization_context:
+      groups: ['withExcludedExtensions']
+
     swagger_context:
       required:
       - company
@@ -1275,7 +1284,8 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
       operation_normalization_context: 'withUsers'
     delete: ~
   collectionOperations:
-    get: ~
+    get:
+      operation_normalization_context: 'collection'
     post:
       operation_normalization_context: 'withUsers'
       depth: 1
@@ -1380,11 +1390,24 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
       - company
 
 Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
   attributes:
-    access_control: 'FALSE'
-    pagination_enabled: false
-  itemOperations: []
-  collectionOperations: []
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.brandHasFeature('billing')
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        id:
+          in: 'ratingProfileRepository.getRatingPlanGroupIdsByCompany(user.getCompany().getId())'
+        brand:
+          eq: "user.getCompany().getBrand().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
   itemOperations:
@@ -1521,6 +1544,25 @@ Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
       required:
       - company
 
+Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        id:
+          in: 'companyRelRoutingTagRepository.getRoutingTagIdsByCompany(user.getCompany().getId())'
+        brand:
+          eq: "user.getCompany().getBrand().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        raw: 'FALSE'
+
 Ivoz\Provider\Domain\Model\Schedule\Schedule:
   attributes:
     access_control: >-
@@ -1575,6 +1617,11 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
     swagger_context:
       required:
       - company
+  properties:
+    lastProvisionDate:
+      attributes:
+        swagger_context:
+          readOnly: true
 
 Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
   itemOperations:

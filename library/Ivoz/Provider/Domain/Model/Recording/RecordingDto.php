@@ -20,6 +20,7 @@ class RecordingDto extends RecordingDtoAbstract
                 'duration' => 'duration',
                 'caller' => 'caller',
                 'callee' => 'callee',
+                'recorder' => 'recorder',
                 'id' => 'id'
             ];
         }

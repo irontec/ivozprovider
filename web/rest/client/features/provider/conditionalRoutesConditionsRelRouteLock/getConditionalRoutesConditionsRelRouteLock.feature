@@ -54,7 +54,10 @@ Feature: Retrieve conditional routes conditions route lock
               "name": "Lock name",
               "description": "Lock description",
               "open": true,
-              "id": 1
+              "id": 1,
+              "closeExtension": "",
+              "openExtension": "",
+              "toggleExtension": ""
           }
       }
     """

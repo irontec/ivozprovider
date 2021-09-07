@@ -18,6 +18,7 @@ Feature: Retrieve friends status
               "name": "testFriend",
               "description": "",
               "priority": 1,
+              "directConnectivity": "yes",
               "id": 1,
               "domain": 3
           }

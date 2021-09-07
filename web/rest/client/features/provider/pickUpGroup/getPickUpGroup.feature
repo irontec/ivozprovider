@@ -16,7 +16,10 @@ Feature: Retrieve pick up groups
       [
         {
             "name": "pick up group",
-            "id": 1
+            "id": 1,
+            "userIds": [
+              1
+            ]
         }
       ]
     """
@@ -33,6 +36,8 @@ Feature: Retrieve pick up groups
       {
           "name": "pick up group",
           "id": 1,
-          "userIds": []
+          "userIds": [
+            1
+          ]
       }
     """

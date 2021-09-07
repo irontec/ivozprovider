@@ -21,6 +21,7 @@ Feature: Retrieve call CSV scheduler
               "callDirection": "outbound",
               "email": "something@domain.net",
               "lastExecution": "2018-12-01 09:00:00",
+              "lastExecutionError": "",
               "nextExecution": "2018-12-02 09:00:00",
               "id": 2
           }

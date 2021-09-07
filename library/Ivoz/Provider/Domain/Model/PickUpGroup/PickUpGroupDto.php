@@ -11,7 +11,8 @@ class PickUpGroupDto extends PickUpGroupDtoAbstract
 
     const CONTEXTS_WITH_USERS = [
         self::CONTEXT_WITH_USERS,
-        self::CONTEXT_DETAILED
+        self::CONTEXT_DETAILED,
+        self::CONTEXT_COLLECTION,
     ];
 
     /**
@@ -33,7 +34,8 @@ class PickUpGroupDto extends PickUpGroupDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
-                'name' => 'name'
+                'name' => 'name',
+                'userIds' => 'userIds',
             ];
         }
 

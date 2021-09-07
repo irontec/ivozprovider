@@ -21,6 +21,7 @@ Feature: Retrieve recordings
               "duration": 3,
               "caller": "34946002020",
               "callee": "34946002021",
+              "recorder": null,
               "id": 1
           }
       ]
