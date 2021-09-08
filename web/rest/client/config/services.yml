@@ -39,6 +39,7 @@ services:
       - [ addRepository, ['matchListRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList")']]
       - [ addRepository, ['ratingProfileRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile")']]
       - [ addRepository, ['companyRelRoutingTagRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\CompanyRelRoutingTag\\CompanyRelRoutingTag")']]
+      - [ addRepository, ['brandServiceRepository', '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\BrandService\\BrandService")']]
 
   #######################################
   ## Controllers

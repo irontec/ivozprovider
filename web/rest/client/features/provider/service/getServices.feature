@@ -49,18 +49,6 @@ Feature: Retrieve services
                   "ca": "ca",
                   "it": "it"
               }
-          },
-          {
-              "iden": "RecordLocution",
-              "defaultCode": "00",
-              "extraArgs": true,
-              "id": 4,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              }
           }
       ]
     """
