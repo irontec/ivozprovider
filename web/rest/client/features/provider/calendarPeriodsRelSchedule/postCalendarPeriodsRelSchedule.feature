@@ -35,7 +35,7 @@ Feature: Create calendar periods rel schedules
               "numberCountry": null
           },
           "schedule": {
-              "name": "",
+              "name": null,
               "timeIn": null,
               "timeout": null,
               "monday": false,
