@@ -29,7 +29,7 @@ final class Version20210413112300 extends AbstractMigration
         $this->addSql("ALTER TABLE kam_users_location_attrs CHANGE COLUMN avalue avalue VARCHAR(512) NOT NULL DEFAULT ''");
         $this->addSql("ALTER TABLE kam_users_presentity CHANGE COLUMN etag etag VARCHAR(128) NOT NULL");
         $this->addSql("ALTER TABLE kam_users_presentity ADD COLUMN ruid VARCHAR(64)");
-        $this->addSql("CREATE UNIQUE INDEX ruid_idx ON kam_users_presentity (ruid)");
+        $this->addSql("CREATE UNIQUE INDEX kam_users_presentity_ruid_idx ON kam_users_presentity (ruid)");
         $this->addSql("UPDATE kam_version SET table_version=5 WHERE TABLE_NAME='kam_users_presentity'");
         $this->addSql("ALTER TABLE kam_users_pua CHANGE COLUMN etag etag VARCHAR(128) NOT NULL");
         $this->addSql("ALTER TABLE kam_users_xcap CHANGE COLUMN etag etag VARCHAR(128) NOT NULL");
