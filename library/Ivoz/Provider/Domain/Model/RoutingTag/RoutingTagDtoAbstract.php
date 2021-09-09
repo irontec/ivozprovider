@@ -19,12 +19,12 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string
      */
-    private $tag = '';
+    private $tag;
 
     /**
      * @var int

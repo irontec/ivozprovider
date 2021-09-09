@@ -44,7 +44,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string|null
@@ -54,7 +54,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $nif = '';
+    private $nif;
 
     /**
      * @var string
@@ -84,27 +84,27 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $postalAddress = '';
+    private $postalAddress;
 
     /**
      * @var string
      */
-    private $postalCode = '';
+    private $postalCode;
 
     /**
      * @var string
      */
-    private $town = '';
+    private $town;
 
     /**
      * @var string
      */
-    private $province = '';
+    private $province;
 
     /**
      * @var string
      */
-    private $countryName = '';
+    private $countryName;
 
     /**
      * @var bool|null

@@ -31,7 +31,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $ddi = '';
+    private $ddi;
 
     /**
      * @var string|null

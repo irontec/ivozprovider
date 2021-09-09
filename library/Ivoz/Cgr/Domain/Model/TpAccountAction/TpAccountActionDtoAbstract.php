@@ -28,12 +28,12 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $tenant = '';
+    private $tenant;
 
     /**
      * @var string
      */
-    private $account = '';
+    private $account;
 
     /**
      * @var string|null

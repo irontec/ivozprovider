@@ -21,12 +21,12 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     /**
      * @var string
      */
-    private $callTypeFilter = '';
+    private $callTypeFilter;
 
     /**
      * @var string
      */
-    private $callForwardType = '';
+    private $callForwardType;
 
     /**
      * @var string|null

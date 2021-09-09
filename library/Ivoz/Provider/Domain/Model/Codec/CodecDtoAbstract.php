@@ -21,12 +21,12 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $iden = '';
+    private $iden;
 
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var int

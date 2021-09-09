@@ -18,12 +18,12 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string
      */
-    private $type = '';
+    private $type;
 
     /**
      * @var int

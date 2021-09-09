@@ -16,7 +16,7 @@ abstract class FeatureDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $iden = '';
+    private $iden;
 
     /**
      * @var int

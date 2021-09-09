@@ -39,42 +39,42 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @var string
      */
-    private $nameEn = '';
+    private $nameEn;
 
     /**
      * @var string
      */
-    private $nameEs = '';
+    private $nameEs;
 
     /**
      * @var string
      */
-    private $nameCa = '';
+    private $nameCa;
 
     /**
      * @var string
      */
-    private $nameIt = '';
+    private $nameIt;
 
     /**
      * @var string
      */
-    private $descriptionEn = '';
+    private $descriptionEn;
 
     /**
      * @var string
      */
-    private $descriptionEs = '';
+    private $descriptionEs;
 
     /**
      * @var string
      */
-    private $descriptionCa = '';
+    private $descriptionCa;
 
     /**
      * @var string
      */
-    private $descriptionIt = '';
+    private $descriptionIt;
 
     /**
      * @var int|null

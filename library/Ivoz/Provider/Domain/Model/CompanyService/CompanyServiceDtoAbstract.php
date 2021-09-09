@@ -18,7 +18,7 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $code = '';
+    private $code;
 
     /**
      * @var int

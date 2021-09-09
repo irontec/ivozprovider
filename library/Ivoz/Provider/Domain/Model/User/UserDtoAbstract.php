@@ -30,12 +30,12 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string
      */
-    private $lastname = '';
+    private $lastname;
 
     /**
      * @var string|null

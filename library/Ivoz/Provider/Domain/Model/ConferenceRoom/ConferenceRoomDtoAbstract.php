@@ -17,7 +17,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var bool

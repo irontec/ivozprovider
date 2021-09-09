@@ -17,12 +17,12 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string
      */
-    private $regExp = '';
+    private $regExp;
 
     /**
      * @var int

@@ -18,7 +18,7 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $number = '';
+    private $number;
 
     /**
      * @var string|null

@@ -17,7 +17,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string|null
@@ -27,7 +27,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $template = '';
+    private $template;
 
     /**
      * @var string|null

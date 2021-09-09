@@ -17,7 +17,7 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string|null

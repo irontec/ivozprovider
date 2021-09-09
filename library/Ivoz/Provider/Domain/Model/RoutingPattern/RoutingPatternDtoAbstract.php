@@ -20,7 +20,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $prefix = '';
+    private $prefix;
 
     /**
      * @var int
@@ -30,22 +30,22 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $nameEn = '';
+    private $nameEn;
 
     /**
      * @var string
      */
-    private $nameEs = '';
+    private $nameEs;
 
     /**
      * @var string
      */
-    private $nameCa = '';
+    private $nameCa;
 
     /**
      * @var string
      */
-    private $nameIt = '';
+    private $nameIt;
 
     /**
      * @var string|null

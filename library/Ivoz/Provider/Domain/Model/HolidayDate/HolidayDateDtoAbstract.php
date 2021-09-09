@@ -21,7 +21,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var \DateTime|string

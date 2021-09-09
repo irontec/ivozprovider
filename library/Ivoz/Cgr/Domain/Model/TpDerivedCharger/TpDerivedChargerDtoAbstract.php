@@ -32,7 +32,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $tenant = '';
+    private $tenant;
 
     /**
      * @var string

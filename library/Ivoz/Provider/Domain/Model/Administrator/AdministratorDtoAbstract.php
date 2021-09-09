@@ -20,12 +20,12 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $username = '';
+    private $username;
 
     /**
      * @var string
      */
-    private $pass = '';
+    private $pass;
 
     /**
      * @var string

@@ -16,27 +16,27 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @var string
      */
-    private $presentityUri = '';
+    private $presentityUri;
 
     /**
      * @var string
      */
-    private $watcherUsername = '';
+    private $watcherUsername;
 
     /**
      * @var string
      */
-    private $watcherDomain = '';
+    private $watcherDomain;
 
     /**
      * @var string
      */
-    private $toUser = '';
+    private $toUser;
 
     /**
      * @var string
      */
-    private $toDomain = '';
+    private $toDomain;
 
     /**
      * @var string
@@ -51,17 +51,17 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @var string
      */
-    private $toTag = '';
+    private $toTag;
 
     /**
      * @var string
      */
-    private $fromTag = '';
+    private $fromTag;
 
     /**
      * @var string
      */
-    private $callid = '';
+    private $callid;
 
     /**
      * @var int
@@ -76,7 +76,7 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @var string
      */
-    private $contact = '';
+    private $contact;
 
     /**
      * @var string|null
@@ -106,22 +106,22 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     /**
      * @var string
      */
-    private $socketInfo = '';
+    private $socketInfo;
 
     /**
      * @var string
      */
-    private $localContact = '';
+    private $localContact;
 
     /**
      * @var string
      */
-    private $fromUser = '';
+    private $fromUser;
 
     /**
      * @var string
      */
-    private $fromDomain = '';
+    private $fromDomain;
 
     /**
      * @var int

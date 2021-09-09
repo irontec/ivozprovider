@@ -16,22 +16,22 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $username = '';
+    private $username;
 
     /**
      * @var string
      */
-    private $domain = '';
+    private $domain;
 
     /**
      * @var string
      */
-    private $event = '';
+    private $event;
 
     /**
      * @var string
      */
-    private $etag = '';
+    private $etag;
 
     /**
      * @var int
@@ -46,12 +46,12 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $body = '';
+    private $body;
 
     /**
      * @var string
      */
-    private $sender = '';
+    private $sender;
 
     /**
      * @var int

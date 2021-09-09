@@ -21,7 +21,7 @@ abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $ip = '';
+    private $ip;
 
     /**
      * @var int

@@ -32,7 +32,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $strategy = '';
+    private $strategy;
 
     /**
      * @var int|null

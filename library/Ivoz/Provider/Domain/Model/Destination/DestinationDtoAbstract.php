@@ -19,7 +19,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $prefix = '';
+    private $prefix;
 
     /**
      * @var int

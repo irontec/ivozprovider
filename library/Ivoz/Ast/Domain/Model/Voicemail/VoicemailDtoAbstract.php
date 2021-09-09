@@ -18,12 +18,12 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $context = '';
+    private $context;
 
     /**
      * @var string
      */
-    private $mailbox = '';
+    private $mailbox;
 
     /**
      * @var string|null

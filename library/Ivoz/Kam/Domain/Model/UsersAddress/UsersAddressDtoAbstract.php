@@ -17,7 +17,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $sourceAddress = '';
+    private $sourceAddress;
 
     /**
      * @var string|null

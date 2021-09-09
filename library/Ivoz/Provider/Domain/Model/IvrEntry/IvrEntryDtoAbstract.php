@@ -22,12 +22,12 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $entry = '';
+    private $entry;
 
     /**
      * @var string
      */
-    private $routeType = '';
+    private $routeType;
 
     /**
      * @var string|null

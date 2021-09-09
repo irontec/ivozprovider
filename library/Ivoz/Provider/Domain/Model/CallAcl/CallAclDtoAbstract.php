@@ -18,12 +18,12 @@ abstract class CallAclDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string
      */
-    private $defaultPolicy = '';
+    private $defaultPolicy;
 
     /**
      * @var int

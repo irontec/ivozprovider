@@ -17,7 +17,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $tz = '';
+    private $tz;
 
     /**
      * @var string|null

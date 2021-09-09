@@ -23,7 +23,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     /**
      * @var string
      */
-    private $policy = '';
+    private $policy;
 
     /**
      * @var int

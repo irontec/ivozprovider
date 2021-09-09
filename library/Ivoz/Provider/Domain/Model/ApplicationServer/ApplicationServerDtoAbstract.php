@@ -16,7 +16,7 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
     /**
      * @var string
      */
-    private $ip = '';
+    private $ip;
 
     /**
      * @var string|null

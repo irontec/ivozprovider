@@ -29,7 +29,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     /**
      * @var string
      */
-    private $routeType = '';
+    private $routeType;
 
     /**
      * @var string|null

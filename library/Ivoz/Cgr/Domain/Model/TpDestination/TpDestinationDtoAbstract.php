@@ -27,7 +27,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $prefix = '';
+    private $prefix;
 
     /**
      * @var \DateTime|string

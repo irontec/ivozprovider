@@ -17,12 +17,12 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $entity = '';
+    private $entity;
 
     /**
      * @var string
      */
-    private $entityId = '';
+    private $entityId;
 
     /**
      * @var array|null

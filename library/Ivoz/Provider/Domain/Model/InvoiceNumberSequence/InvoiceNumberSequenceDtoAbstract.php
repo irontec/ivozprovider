@@ -17,7 +17,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string
