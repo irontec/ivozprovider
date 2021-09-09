@@ -64,7 +64,11 @@ class BrandDto extends BrandDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
-                'name' => 'name'
+                'name' => 'name',
+                'invoice' => ['nif', 'postalCode'],
+                'logo' => ['fileSize','mimeType','baseName'],
+                'domainUsers' => 'domainUsers',
+                //@TODO relProxyTrunks
             ];
         } else {
             $response = parent::getPropertyMap($context);
@@ -114,6 +118,11 @@ class BrandDto extends BrandDtoAbstract
             'languageId',
             'defaultTimezoneId',
             'currencyId',
+            'voicemailNotificationTemplateId',
+            'faxNotificationTemplateId',
+            'invoiceNotificationTemplateId',
+            'callCsvNotificationTemplateId',
+            'maxDailyUsageNotificationTemplateId',
         ];
 
         return array_filter(
