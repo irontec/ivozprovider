@@ -6,7 +6,7 @@
     </indexes>
     <unique-constraints>
       <unique-constraint name="kam_users_presentity_idx" columns="username,domain,event,etag"/>
-      <unique-constraint name="ruid_idx" columns="ruid"/>
+      <unique-constraint name="kam_users_presentity_ruid_idx" columns="ruid"/>
     </unique-constraints>
     <field name="username" type="string" column="username" length="64" nullable="false">
       <options>
