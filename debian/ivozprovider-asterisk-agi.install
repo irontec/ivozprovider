@@ -1,2 +1,2 @@
-asterisk/agi/* /opt/irontec/ivozprovider/asterisk/agi/
+asterisk/agi/ /opt/irontec/ivozprovider/asterisk/
 debian/systemd/fastagi.socket /lib/systemd/system
