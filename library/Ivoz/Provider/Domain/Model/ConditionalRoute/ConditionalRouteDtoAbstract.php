@@ -26,7 +26,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string|null

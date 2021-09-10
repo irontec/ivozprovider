@@ -30,7 +30,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string|null
@@ -75,32 +75,32 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $invoiceNif = '';
+    private $invoiceNif;
 
     /**
      * @var string
      */
-    private $invoicePostalAddress = '';
+    private $invoicePostalAddress;
 
     /**
      * @var string
      */
-    private $invoicePostalCode = '';
+    private $invoicePostalCode;
 
     /**
      * @var string
      */
-    private $invoiceTown = '';
+    private $invoiceTown;
 
     /**
      * @var string
      */
-    private $invoiceProvince = '';
+    private $invoiceProvince;
 
     /**
      * @var string
      */
-    private $invoiceCountry = '';
+    private $invoiceCountry;
 
     /**
      * @var string|null

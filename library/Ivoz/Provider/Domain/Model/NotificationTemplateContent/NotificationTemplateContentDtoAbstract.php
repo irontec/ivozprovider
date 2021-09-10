@@ -28,12 +28,12 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     /**
      * @var string
      */
-    private $subject = '';
+    private $subject;
 
     /**
      * @var string
      */
-    private $body = '';
+    private $body;
 
     /**
      * @var string

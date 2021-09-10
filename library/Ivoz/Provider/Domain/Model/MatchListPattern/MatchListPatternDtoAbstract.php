@@ -23,7 +23,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $type = '';
+    private $type;
 
     /**
      * @var string|null

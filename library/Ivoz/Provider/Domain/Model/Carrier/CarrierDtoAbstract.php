@@ -31,7 +31,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var bool|null

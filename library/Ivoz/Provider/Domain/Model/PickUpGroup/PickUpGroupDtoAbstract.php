@@ -18,7 +18,7 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var int

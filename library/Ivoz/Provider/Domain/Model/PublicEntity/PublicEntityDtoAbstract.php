@@ -16,7 +16,7 @@ abstract class PublicEntityDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $iden = '';
+    private $iden;
 
     /**
      * @var string|null

@@ -42,7 +42,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $rateIncrement = '';
+    private $rateIncrement;
 
     /**
      * @var string

@@ -16,12 +16,12 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $did = '';
+    private $did;
 
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var int
@@ -31,7 +31,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $value = '';
+    private $value;
 
     /**
      * @var \DateTime|string

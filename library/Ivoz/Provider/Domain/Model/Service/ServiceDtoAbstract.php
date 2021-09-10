@@ -21,7 +21,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $defaultCode = '';
+    private $defaultCode;
 
     /**
      * @var bool

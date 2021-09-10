@@ -23,7 +23,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var int

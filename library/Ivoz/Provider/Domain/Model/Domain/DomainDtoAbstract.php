@@ -19,7 +19,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $domain = '';
+    private $domain;
 
     /**
      * @var string

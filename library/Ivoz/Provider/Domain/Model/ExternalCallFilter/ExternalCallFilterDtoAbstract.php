@@ -25,7 +25,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string|null

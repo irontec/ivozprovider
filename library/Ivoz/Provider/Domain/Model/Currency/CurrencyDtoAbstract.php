@@ -16,12 +16,12 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $iden = '';
+    private $iden;
 
     /**
      * @var string
      */
-    private $symbol = '';
+    private $symbol;
 
     /**
      * @var int

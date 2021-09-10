@@ -16,17 +16,17 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $presentityUri = '';
+    private $presentityUri;
 
     /**
      * @var string
      */
-    private $watcherUsername = '';
+    private $watcherUsername;
 
     /**
      * @var string
      */
-    private $watcherDomain = '';
+    private $watcherDomain;
 
     /**
      * @var string

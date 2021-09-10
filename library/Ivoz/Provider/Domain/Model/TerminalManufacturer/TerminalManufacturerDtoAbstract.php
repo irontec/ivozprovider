@@ -16,7 +16,7 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     /**
      * @var string
      */
-    private $iden = '';
+    private $iden;
 
     /**
      * @var string

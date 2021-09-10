@@ -27,22 +27,22 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $years = '';
+    private $years;
 
     /**
      * @var string
      */
-    private $months = '';
+    private $months;
 
     /**
      * @var string
      */
-    private $monthDays = '';
+    private $monthDays;
 
     /**
      * @var string
      */
-    private $weekDays = '';
+    private $weekDays;
 
     /**
      * @var string

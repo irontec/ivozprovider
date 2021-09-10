@@ -27,7 +27,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string
@@ -47,7 +47,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $email = '';
+    private $email;
 
     /**
      * @var \DateTime|string|null

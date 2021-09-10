@@ -2378,16 +2378,16 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "5.2.2",
+            "version": "5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-dev-tools.git",
-                "reference": "00be9ad336ccd5ad0586657e96cfcef5a131ad04"
+                "reference": "8b7d00333eb485632777a7e7e0fb23c795bb5902"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/00be9ad336ccd5ad0586657e96cfcef5a131ad04",
-                "reference": "00be9ad336ccd5ad0586657e96cfcef5a131ad04",
+                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/8b7d00333eb485632777a7e7e0fb23c795bb5902",
+                "reference": "8b7d00333eb485632777a7e7e0fb23c795bb5902",
                 "shasum": ""
             },
             "require": {
@@ -2421,7 +2421,11 @@
                 }
             ],
             "description": "DevTools for ivozprovider",
-            "time": "2021-07-23T09:59:41+00:00"
+            "support": {
+                "issues": "https://github.com/irontec/ivoz-dev-tools/issues",
+                "source": "https://github.com/irontec/ivoz-dev-tools/tree/5.2.3"
+            },
+            "time": "2021-09-09T10:13:56+00:00"
         },
         {
             "name": "irontec/ivoz-provider-bundle",

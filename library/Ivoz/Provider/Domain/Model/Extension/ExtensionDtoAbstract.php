@@ -24,7 +24,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $number = '';
+    private $number;
 
     /**
      * @var string|null

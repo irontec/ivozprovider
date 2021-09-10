@@ -27,12 +27,12 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $tenant = '';
+    private $tenant;
 
     /**
      * @var string
      */
-    private $category = '';
+    private $category;
 
     /**
      * @var string
@@ -52,7 +52,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $rpCategory = '';
+    private $rpCategory;
 
     /**
      * @var string

@@ -54,22 +54,22 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     /**
      * @var string
      */
-    private $nameEn = '';
+    private $nameEn;
 
     /**
      * @var string
      */
-    private $nameEs = '';
+    private $nameEs;
 
     /**
      * @var string
      */
-    private $nameCa = '';
+    private $nameCa;
 
     /**
      * @var string
      */
-    private $nameIt = '';
+    private $nameIt;
 
     /**
      * @var BrandDto | null

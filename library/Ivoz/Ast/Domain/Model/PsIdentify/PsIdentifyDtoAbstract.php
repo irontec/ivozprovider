@@ -20,7 +20,7 @@ abstract class PsIdentifyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $sorceryId = '';
+    private $sorceryId;
 
     /**
      * @var string|null

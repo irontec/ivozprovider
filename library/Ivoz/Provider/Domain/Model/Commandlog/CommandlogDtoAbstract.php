@@ -16,12 +16,12 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $requestId = '';
+    private $requestId;
 
     /**
      * @var string
      */
-    private $class = '';
+    private $class;
 
     /**
      * @var string|null

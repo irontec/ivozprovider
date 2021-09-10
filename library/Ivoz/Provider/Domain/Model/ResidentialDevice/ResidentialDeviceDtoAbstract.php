@@ -25,7 +25,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string

@@ -17,7 +17,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $url = '';
+    private $url;
 
     /**
      * @var string|null
@@ -27,7 +27,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $urlType = '';
+    private $urlType;
 
     /**
      * @var string|null

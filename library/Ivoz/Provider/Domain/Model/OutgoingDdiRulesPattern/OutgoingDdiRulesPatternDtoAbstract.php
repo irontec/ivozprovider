@@ -19,7 +19,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     /**
      * @var string
      */
-    private $type = '';
+    private $type;
 
     /**
      * @var string|null
@@ -29,7 +29,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     /**
      * @var string
      */
-    private $action = '';
+    private $action;
 
     /**
      * @var int

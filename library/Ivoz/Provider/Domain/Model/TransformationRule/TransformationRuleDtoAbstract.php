@@ -17,7 +17,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     /**
      * @var string
      */
-    private $type = '';
+    private $type;
 
     /**
      * @var string

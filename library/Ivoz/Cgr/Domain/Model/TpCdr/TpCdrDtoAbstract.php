@@ -16,62 +16,62 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $cgrid = '';
+    private $cgrid;
 
     /**
      * @var string
      */
-    private $runId = '';
+    private $runId;
 
     /**
      * @var string
      */
-    private $originHost = '';
+    private $originHost;
 
     /**
      * @var string
      */
-    private $source = '';
+    private $source;
 
     /**
      * @var string
      */
-    private $originId = '';
+    private $originId;
 
     /**
      * @var string
      */
-    private $tor = '';
+    private $tor;
 
     /**
      * @var string
      */
-    private $requestType = '';
+    private $requestType;
 
     /**
      * @var string
      */
-    private $tenant = '';
+    private $tenant;
 
     /**
      * @var string
      */
-    private $category = '';
+    private $category;
 
     /**
      * @var string
      */
-    private $account = '';
+    private $account;
 
     /**
      * @var string
      */
-    private $subject = '';
+    private $subject;
 
     /**
      * @var string
      */
-    private $destination = '';
+    private $destination;
 
     /**
      * @var \DateTime|string
@@ -91,12 +91,12 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $extraFields = '';
+    private $extraFields;
 
     /**
      * @var string
      */
-    private $costSource = '';
+    private $costSource;
 
     /**
      * @var float
@@ -111,7 +111,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $extraInfo = '';
+    private $extraInfo;
 
     /**
      * @var \DateTime|string|null

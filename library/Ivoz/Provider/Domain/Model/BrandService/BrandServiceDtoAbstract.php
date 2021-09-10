@@ -18,7 +18,7 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $code = '';
+    private $code;
 
     /**
      * @var int

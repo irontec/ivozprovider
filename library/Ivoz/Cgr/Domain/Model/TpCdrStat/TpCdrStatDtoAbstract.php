@@ -22,7 +22,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $tag = '';
+    private $tag;
 
     /**
      * @var int
@@ -42,7 +42,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $metrics = '';
+    private $metrics;
 
     /**
      * @var string

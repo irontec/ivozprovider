@@ -22,7 +22,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $gwName = '';
+    private $gwName;
 
     /**
      * @var string|null

@@ -22,7 +22,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $url = '';
+    private $url;
 
     /**
      * @var int

@@ -19,7 +19,7 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string|null

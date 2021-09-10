@@ -30,7 +30,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $rateIncrement = '';
+    private $rateIncrement;
 
     /**
      * @var string

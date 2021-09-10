@@ -19,12 +19,12 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $name = '';
+    private $name;
 
     /**
      * @var string
      */
-    private $defaultAction = '';
+    private $defaultAction;
 
     /**
      * @var int

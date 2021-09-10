@@ -17,7 +17,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $iden = '';
+    private $iden;
 
     /**
      * @var string

@@ -16,7 +16,7 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $iden = '';
+    private $iden;
 
     /**
      * @var int

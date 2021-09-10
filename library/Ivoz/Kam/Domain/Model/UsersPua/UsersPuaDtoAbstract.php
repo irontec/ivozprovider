@@ -16,12 +16,12 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $presUri = '';
+    private $presUri;
 
     /**
      * @var string
      */
-    private $presId = '';
+    private $presId;
 
     /**
      * @var int
@@ -46,7 +46,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $etag = '';
+    private $etag;
 
     /**
      * @var string|null
@@ -56,22 +56,22 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $watcherUri = '';
+    private $watcherUri;
 
     /**
      * @var string
      */
-    private $callId = '';
+    private $callId;
 
     /**
      * @var string
      */
-    private $toTag = '';
+    private $toTag;
 
     /**
      * @var string
      */
-    private $fromTag = '';
+    private $fromTag;
 
     /**
      * @var int
@@ -86,12 +86,12 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $contact = '';
+    private $contact;
 
     /**
      * @var string
      */
-    private $remoteContact = '';
+    private $remoteContact;
 
     /**
      * @var int
@@ -101,7 +101,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $extraHeaders = '';
+    private $extraHeaders;
 
     /**
      * @var int
