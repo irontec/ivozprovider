@@ -74,12 +74,12 @@ class HuntGroupAction
         // Configure the list of users to be called
         if ($huntGroup->getStrategy() == HuntGroupInterface::STRATEGY_RINGALL) {
             $this->agi->setVariable("HG_ID", $huntGroup->getId());
-            $this->agi->setVariable("HG_ENDPOINTLIST", join($huntGroupEndpoints, '&'));
+            $this->agi->setVariable("HG_ENDPOINTLIST", join('&', $huntGroupEndpoints));
             $this->agi->setVariable("HG_TIMEOUTLIST", $huntGroup->getRingAllTimeout());
         } else {
             $this->agi->setVariable("HG_ID", $huntGroup->getId());
-            $this->agi->setVariable("HG_ENDPOINTLIST", join($huntGroupEndpoints, ';'));
-            $this->agi->setVariable("HG_TIMEOUTLIST", join($huntGroupTimeouts, ';'));
+            $this->agi->setVariable("HG_ENDPOINTLIST", join(';', $huntGroupEndpoints));
+            $this->agi->setVariable("HG_TIMEOUTLIST", join(';', $huntGroupTimeouts));
         }
 
         // Start calling the first user

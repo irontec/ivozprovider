@@ -99,8 +99,8 @@ class HuntGroupStatusAction
         }
 
         // Update pending extensions
-        $this->agi->setVariable("HG_ENDPOINTLIST", join($huntGroupEndpoints, ';'));
-        $this->agi->setVariable("HG_TIMEOUTLIST", join($huntGroupTimeouts, ';'));
+        $this->agi->setVariable("HG_ENDPOINTLIST", join(';', $huntGroupEndpoints));
+        $this->agi->setVariable("HG_TIMEOUTLIST", join(';', $huntGroupTimeouts));
 
         // Call next!
         $this->agi->redirect('call-huntgroup');
