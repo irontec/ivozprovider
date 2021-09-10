@@ -16,7 +16,16 @@ Feature: Manage brands
       [
           {
               "name": "DemoBrand",
-              "id": 1
+              "id": 1,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              },
+              "invoice": {
+                  "nif": "",
+                  "postalCode": ""
+              }
           }
       ]
     """
@@ -57,7 +66,7 @@ Feature: Manage brands
               }
           },
           "defaultTimezone": {
-              "tz": "Europe/Madrid",
+              "tz": "Europe\/Madrid",
               "comment": "mainland",
               "id": 145,
               "label": {
@@ -70,7 +79,7 @@ Feature: Manage brands
           },
           "currency": {
               "iden": "EUR",
-              "symbol": "€",
+              "symbol": "\u20ac",
               "id": 1,
               "name": {
                   "en": "Euro",
@@ -78,6 +87,11 @@ Feature: Manage brands
                   "ca": "Euro",
                   "it": "Euro"
               }
-          }
+          },
+          "voicemailNotificationTemplate": null,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null
       }
     """
