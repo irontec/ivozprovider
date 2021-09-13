@@ -7,5 +7,8 @@ use Doctrine\Common\Persistence\ObjectRepository;
 
 interface ServiceRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @return ServiceInterface[]
+     */
+    public function getServicesInGroup(array $ids);
 }
