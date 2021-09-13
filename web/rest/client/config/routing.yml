@@ -39,6 +39,15 @@ get_my_rating_plan_prices:
     _api_collection_operation_name: 'get_my_rating_plan_prices'
     _api_receive: false
 
+get_services_unassigned:
+  path: '/services/unassigned'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\ServicesUnassignedAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Service\Service'
+    _api_collection_operation_name: 'get_services_unassigned'
+    _api_receive: false
+
 get_my_status:
   path: '/my/status'
   methods: ['GET']

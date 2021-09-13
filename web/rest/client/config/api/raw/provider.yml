@@ -1579,9 +1579,29 @@ Ivoz\Provider\Domain\Model\Schedule\Schedule:
 
 Ivoz\Provider\Domain\Model\Service\Service:
   itemOperations:
-    get: ~
+    get:
+      method: 'GET'
+      path: '/services/{id}'
+      requirements:
+        id: '\d+'
   collectionOperations:
     get: ~
+    get_services_unassigned:
+      method: 'GET'
+      path: '/services/unassigned'
+      route_name: 'get_services_unassigned'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: _includeId
+            in: query
+            type: integer
+            required: false
+            description: 'Ensure certain service id is included'
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
