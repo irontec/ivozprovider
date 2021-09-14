@@ -61,6 +61,18 @@ Feature: Retrieve services
                   "ca": "ca",
                   "it": "it"
               }
+          },
+          {
+              "iden": "CloseLock",
+              "defaultCode": "30",
+              "extraArgs": true,
+              "id": 5,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           }
       ]
     """

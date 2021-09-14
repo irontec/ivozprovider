@@ -22,7 +22,7 @@ Feature: Create brand servers
     """
       {
           "code": "11",
-          "id": 4,
+          "id": 5,
           "service": 4
       }
     """
@@ -30,7 +30,7 @@ Feature: Create brand servers
   Scenario: Retrieve created brand service
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "brand_services/4"
+      And I send a "GET" request to "brand_services/5"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -38,7 +38,7 @@ Feature: Create brand servers
     """
       {
           "code": "11",
-          "id": 4,
+          "id": 5,
           "service": {
               "iden": "RecordLocution",
               "defaultCode": "00",
