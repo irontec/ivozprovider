@@ -1,74 +1,77 @@
-import EntityInterface from 'entities/EntityInterface';
-import Calendar from './Calendar/Calendar';
-import Country from './Country/Country';
 import BillableCall from './BillableCall/BillableCall';
-import Terminal from './Terminal/Terminal';
-import TerminalModel from './TerminalModel/TerminalModel';
-import User from './User/User';
-import Extension from './Extension/Extension';
-import Ddi from './Ddi/Ddi';
-import Ivr from './Ivr/Ivr';
-import HuntGroup from './HuntGroup/HuntGroup';
-import Queue from './Queue/Queue';
+import Calendar from './Calendar/Calendar';
+import callAcl from './CallAcl/CallAcl';
+import callCsvScheduler from './CallCsvScheduler/CallCsvScheduler';
+import CompanyService from './CompanyService/CompanyService';
 import conditionalRoute from './ConditionalRoute/ConditionalRoute';
-import Friend from './Friend/Friend';
 import ConferenceRoom from './ConferenceRoom/ConferenceRoom';
+import Country from './Country/Country';
+import Ddi from './Ddi/Ddi';
+import EntityInterface from 'entities/EntityInterface';
+import Extension from './Extension/Extension';
 import ExternalCallFilter from './ExternalCallFilter/ExternalCallFilter';
-import Schedule from './Schedule/Schedule';
+import Fax from './Fax/Fax';
+import Friend from './Friend/Friend';
+import HuntGroup from './HuntGroup/HuntGroup';
+import Ivr from './Ivr/Ivr';
+import Locution from './Locution/Locution';
 import MatchList from './MatchList/MatchList';
-import RouteLock from './RouteLock/RouteLock';
+import MusicOnHold from './MusicOnHold/MusicOnHold';
 import OutgoingDdiRule from './OutgoingDdiRule/OutgoingDdiRule';
 import PickUpGroup from './PickUpGroup/PickUpGroup';
-import callAcl from './CallAcl/CallAcl';
-import Locution from './Locution/Locution';
-import MusicOnHold from './MusicOnHold/MusicOnHold';
-import Fax from './Fax/Fax';
-import CompanyService from './CompanyService/CompanyService';
+import Queue from './Queue/Queue';
 import RatingProfile from './RatingProfile/RatingProfile';
-import UsersCdr from './UsersCdr/UsersCdr';
-import callCsvScheduler from './CallCsvScheduler/CallCsvScheduler';
 import Recording from './Recording/Recording';
 import ResidentialDevice from './ResidentialDevice/ResidentialDevice';
 import RetailAccount from './RetailAccount/RetailAccount';
+import RouteLock from './RouteLock/RouteLock';
+import RoutingTag from './RoutingTag/RoutingTag';
+import Schedule from './Schedule/Schedule';
 import Service from './Service/Service';
+import Terminal from './Terminal/Terminal';
+import TerminalModel from './TerminalModel/TerminalModel';
+import User from './User/User';
+import UsersCdr from './UsersCdr/UsersCdr';
+
 
 interface EntityList {
   [name: string]: EntityInterface
 }
 
 const entities: EntityList = {
-  Calendar,
-  Country,
   BillableCall,
-  Terminal,
-  TerminalModel,
-  User,
-  Extension,
-  Ddi,
-  Ivr,
-  HuntGroup,
-  Queue,
+  Calendar,
+  CallAcl: callAcl,
+  CallCsvScheduler: callCsvScheduler,
+  CompanyService,
   ConditionalRoute: conditionalRoute,
-  Friend,
   ConferenceRoom,
+  Country,
+  Ddi,
+  Extension,
   ExternalCallFilter,
-  Schedule,
+  Fax,
+  Friend,
+  HuntGroup,
+  Ivr,
+  Locution,
   MatchList,
-  RouteLock,
+  MusicOnHold,
   OutgoingDdiRule,
   PickUpGroup,
-  CallAcl: callAcl,
-  Locution,
-  MusicOnHold,
-  Fax,
-  CompanyService,
-  Service,
+  Queue,
   RatingProfile,
-  UsersCdr,
-  CallCsvScheduler: callCsvScheduler,
   Recording,
   ResidentialDevice,
   RetailAccount,
+  RouteLock,
+  RoutingTag,
+  Schedule,
+  Service,
+  Terminal,
+  TerminalModel,
+  User,
+  UsersCdr,
 };
 
 export default entities;

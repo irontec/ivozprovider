@@ -31,7 +31,7 @@ export default class FormFieldFactory {
         });
     }
 
-    public getFormField(fld: string, choices?: any) {
+    public getFormField(fld: string, choices?: any, readOnly: boolean = false) {
         const property = this.getProperty(fld);
         if (!property) {
             console.error(`Property ${fld} was not found`);
@@ -40,7 +40,7 @@ export default class FormFieldFactory {
 
         return (
             <React.Fragment>
-                {this.getInputField(fld, choices)}
+                {this.getInputField(fld, choices, readOnly)}
                 {this.formik.errors[fld] && <Alert severity="error">{this.formik.errors[fld]}</Alert>}
                 {property.helpText && <FormHelperText variant={'outlined'}>
                     {property.helpText}
@@ -55,10 +55,11 @@ export default class FormFieldFactory {
         return (properties[fld] as PropertySpec);
     }
 
-    private getInputField(fld: string, choices?: any) {
+    private getInputField(fld: string, choices: any, readOnly: boolean) {
         const property = this.getProperty(fld);
 
-        const disabled = (property as ScalarProperty).readOnly;
+        const disabled = (property as ScalarProperty).readOnly || readOnly;
+
         const classes: any = this.styles();
         const multiSelect = (property as ScalarProperty).type === 'array';
 

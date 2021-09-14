@@ -1,10 +1,15 @@
 import defaultEntityBehavior from '../DefaultEntityBehavior';
 import Service from './Service';
 
-const ServiceSelectOptions = (callback: Function) => {
+const ServiceSelectOptions = (callback: Function, includeId?: number) => {
+
+    let path = `${Service.path}/unassigned`;
+    if (includeId) {
+        path += `?_includeId=${includeId}`;
+    }
 
     defaultEntityBehavior.fetchFks(
-        Service.path,
+        path,
         ['id', 'name'],
         (data: any) => {
             const options: any = {};

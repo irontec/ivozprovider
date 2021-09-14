@@ -6,7 +6,7 @@ import DdiSelectOptions from 'entities/Ddi/SelectOptions';
 import LanguageSelectOptions from 'entities/Language/SelectOptions';
 import _ from 'services/Translations/translate';
 
-const Form = (props:any) => {
+const Form = (props: any) => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
@@ -18,10 +18,8 @@ const Form = (props:any) => {
         () => {
             if (loadingFks) {
 
-                //@TODO POSPONED interCompany
-
-                CallAclSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                CallAclSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             callAcl: options,
@@ -29,8 +27,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                TransformationRuleSetSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                TransformationRuleSetSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             transformationRuleSet: options,
@@ -38,8 +36,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                DdiSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                DdiSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             outgoingDdi: options,
@@ -47,8 +45,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                LanguageSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                LanguageSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             language: options,
@@ -66,7 +64,7 @@ const Form = (props:any) => {
         [loadingFks, fkChoices]
     );
 
-    const groups:Array<FieldsetGroups> = [
+    const groups: Array<FieldsetGroups> = [
         {
             legend: _('Basic Configuration'),
             fields: [
@@ -75,7 +73,6 @@ const Form = (props:any) => {
                 'description',
                 'name',
                 'password',
-                //'interCompany',
                 'transport',
                 'ip',
                 'port',
@@ -116,7 +113,7 @@ const Form = (props:any) => {
         },
     ];
 
-    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props}  />);
+    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props} />);
 }
 
 export default Form;

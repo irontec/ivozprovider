@@ -5,7 +5,7 @@ import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import StatusIcon from './Field/StatusIcon';
 import Form from './Form';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
         helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'")
@@ -128,7 +128,6 @@ const properties:PropertiesList = {
                     'rtpEncryption',
                 ],
                 hide: [
-                    'interCompany',
                     'multiContact',
                 ],
             },
@@ -150,13 +149,10 @@ const properties:PropertiesList = {
                     'ip',
                     'port',
                     'transport',
-                    'interCompany',
                 ],
             },
             'intervpbx': {
-                show: [
-                    'interCompany'
-                ],
+                show: [],
                 hide: [
                     'name',
                     'ip',
@@ -178,10 +174,6 @@ const properties:PropertiesList = {
                 ],
             },
         }
-    },
-    'interCompany': {
-        //@TODO POSPONED missing in the API
-        label: _('Target client'),
     },
     'ddiIn': {
         label: _('DDI In'),
@@ -239,11 +231,11 @@ const columns = [
     'statusIcon',
 ];
 
-const friend:EntityInterface = {
+const friend: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Friend',
-    title: _('Friend', {count: 2}),
+    title: _('Friend', { count: 2 }),
     path: '/friends',
     properties,
     columns,

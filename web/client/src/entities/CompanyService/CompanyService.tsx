@@ -9,7 +9,6 @@ import Form from './Form';
 
 const properties: PropertiesList = {
     service: {
-        //@TODO Filter by current & unassigned
         label: _('Service'),
     },
     code: {

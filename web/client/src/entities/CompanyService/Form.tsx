@@ -15,14 +15,17 @@ const Form = (props: any) => {
 
             if (loadingFks) {
 
-                ServiceSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            service: options
-                        }
-                    });
-                });
+                ServiceSelectOptions(
+                    (options: any) => {
+                        setFkChoices((fkChoices: any) => {
+                            return {
+                                ...fkChoices,
+                                service: options
+                            }
+                        });
+                    },
+                    props.formik.initialValues?.service
+                );
 
                 setLoadingFks(false);
             }
@@ -31,7 +34,7 @@ const Form = (props: any) => {
                 setMounted(false);
             };
         },
-        [loadingFks, fkChoices]
+        [loadingFks, fkChoices, props.formik.initialValues?.service]
     );
 
     const groups: Array<FieldsetGroups> = [
@@ -44,15 +47,12 @@ const Form = (props: any) => {
         }
     ];
 
-    const properties = props.properties;
-    if (props.edit) {
-        properties.service = {
-            ...properties.service,
-            readOnly: true,
-        }
-    }
+    const readOnlyProperties = {
+        service: props.edit ? true : false,
+    };
 
-    return (<DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} properties={properties} />);
+
+    return (<DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} readOnlyProperties={readOnlyProperties} />);
 }
 
 export default Form;

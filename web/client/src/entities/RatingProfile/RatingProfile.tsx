@@ -4,6 +4,7 @@ import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import Form from './Form'
 import RatingPlanGroup from '../RatingPlanGroup/RatingPlanGroup';
+import entities from '../index';
 import EntityService from 'services/Entity/EntityService';
 import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
 
@@ -16,7 +17,6 @@ const properties: PropertiesList = {
     },
     'routingTag': {
         label: _('Routing Tag'),
-        //@TODO fetch routingTag value
     },
 };
 
@@ -24,12 +24,24 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
 
     const promises = [];
 
+    const { RoutingTag } = entities;
+
     promises.push(
         genericForeignKeyResolver(
             data,
             'ratingPlanGroup',
             RatingPlanGroup.path,
             RatingPlanGroup.toStr,
+            false
+        )
+    );
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'routingTag',
+            RoutingTag.path,
+            RoutingTag.toStr,
             false
         )
     );

@@ -162,7 +162,6 @@ const useStyles = makeStyles((theme: any) => ({
     }
 }));
 
-
 export type EntityFormProps = EntityInterface & {
     create?: boolean,
     edit?: boolean,
@@ -170,11 +169,12 @@ export type EntityFormProps = EntityInterface & {
     formik: useFormikType,
     groups: Array<FieldsetGroups>,
     fkChoices: any,
+    readOnlyProperties?: { [attribute: string]: boolean },
 };
 
 const Form = (props: EntityFormProps) => {
 
-    const { entityService, formik } = props;
+    const { entityService, formik, readOnlyProperties } = props;
     const { fkChoices } = props;
 
     const columns = entityService.getColumns();
@@ -255,9 +255,13 @@ const Form = (props: EntityFormProps) => {
                                     ? classes.visible
                                     : classes.hidden;
 
+                                const readOnly = readOnlyProperties && readOnlyProperties[columnName]
+                                    ? true
+                                    : false;
+
                                 return (
                                     <Grid item xs={12} md={6} lg={4} key={idx} className={className}>
-                                        {formFieldFactory.getFormField(columnName, choices)}
+                                        {formFieldFactory.getFormField(columnName, choices, readOnly)}
                                     </Grid>
                                 );
                             })}
