@@ -1227,6 +1227,10 @@ Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
       required:
       - company
 
+Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile: ~
+Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile: ~
+
+
 Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
   attributes:
     access_control: >-
