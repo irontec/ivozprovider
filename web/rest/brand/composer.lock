@@ -1539,18 +1539,18 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "3.4.9",
+            "version": "3.5",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "3119dcb066bf1bd463b687db260e5ec0afc4b0b4"
+                "reference": "7a490ac69a5a0febb5940178a3cd7a7afb1e864f"
             },
             "require": {
                 "api-platform/core": "2.2.*",
                 "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
                 "graze/guzzle-jsonrpc": "3.2.*",
                 "guzzlehttp/guzzle": "^6.3",
-                "irontec/ivoz-core": "^3.3",
+                "irontec/ivoz-core": "^3.3.9",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "php": ">=7.0.19",
                 "symfony/expression-language": "3.4.*",
@@ -6470,7 +6470,8 @@
                 "testing"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6529,7 +6530,8 @@
                 "parser"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6590,7 +6592,8 @@
                 "web"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6647,7 +6650,8 @@
                 "testing"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6701,7 +6705,8 @@
                 "web"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6757,7 +6762,8 @@
                 "symfony"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6802,7 +6808,8 @@
                 "transliterator"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6855,7 +6862,8 @@
                 "Symfony2"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6889,7 +6897,8 @@
             ],
             "description": "Easily create test doubles using symfony DIC",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6948,7 +6957,8 @@
                 "database"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7005,7 +7015,8 @@
                 "Persistence"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7088,7 +7099,8 @@
                 "schema"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7134,7 +7146,8 @@
                 "object graph"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7187,7 +7200,8 @@
                 "issues": "https://github.com/phar-io/manifest/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7232,7 +7246,8 @@
                 "issues": "https://github.com/phar-io/version/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7281,7 +7296,8 @@
                 "static analysis"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7335,7 +7351,8 @@
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7380,7 +7397,8 @@
                 }
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7443,7 +7461,8 @@
                 "Stub"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7504,7 +7523,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7550,7 +7570,8 @@
                 "irc": "irc://irc.freenode.net/phpunit"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7589,7 +7610,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-text-template/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7636,7 +7658,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-timer/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7683,7 +7706,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-token-stream/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7774,7 +7798,8 @@
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7836,7 +7861,8 @@
                 "issues": "https://github.com/sebastianbergmann/phpunit-mock-objects/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7876,7 +7902,8 @@
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7940,7 +7967,8 @@
                 "equality"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7987,7 +8015,8 @@
                 "diff"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8032,7 +8061,8 @@
                 "xdebug"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8094,7 +8124,8 @@
                 "exporter"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8148,7 +8179,8 @@
                 "global state"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8195,7 +8227,8 @@
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8240,7 +8273,8 @@
             "description": "Allows reflection of object attributes, including inherited and non-public ones",
             "homepage": "https://github.com/sebastianbergmann/object-reflector/",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8288,7 +8322,8 @@
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8325,7 +8360,8 @@
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8366,7 +8402,8 @@
                 "issues": "https://github.com/sebastianbergmann/version/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8518,7 +8555,8 @@
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8579,7 +8617,8 @@
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8617,7 +8656,8 @@
                 "issues": "https://github.com/theseer/tokenizer/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -8667,7 +8707,8 @@
                 "validate"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         }
     ],

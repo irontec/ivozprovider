@@ -1539,18 +1539,18 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "3.4.9",
+            "version": "3.5",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-api",
-                "reference": "3119dcb066bf1bd463b687db260e5ec0afc4b0b4"
+                "reference": "7a490ac69a5a0febb5940178a3cd7a7afb1e864f"
             },
             "require": {
                 "api-platform/core": "2.2.*",
                 "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
                 "graze/guzzle-jsonrpc": "3.2.*",
                 "guzzlehttp/guzzle": "^6.3",
-                "irontec/ivoz-core": "^3.3",
+                "irontec/ivoz-core": "^3.3.9",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "php": ">=7.0.19",
                 "symfony/expression-language": "3.4.*",
@@ -6340,7 +6340,8 @@
                 "static analysis"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6394,7 +6395,8 @@
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6439,7 +6441,8 @@
                 }
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6472,7 +6475,8 @@
             ],
             "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6553,7 +6557,8 @@
                 "tests"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6616,7 +6621,8 @@
                 "Stub"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6680,7 +6686,8 @@
                 "equality"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6727,7 +6734,8 @@
                 "diff"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6789,7 +6797,8 @@
                 "exporter"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6837,7 +6846,8 @@
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6869,7 +6879,8 @@
             ],
             "description": "IDE help files for Swoole.",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6919,7 +6930,8 @@
                 "validate"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         }
     ],

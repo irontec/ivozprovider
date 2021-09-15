@@ -6182,7 +6182,8 @@
             ],
             "description": "Easily create test doubles using symfony DIC",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6241,7 +6242,8 @@
                 "database"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6298,7 +6300,8 @@
                 "Persistence"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6344,7 +6347,8 @@
                 "object graph"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6397,7 +6401,8 @@
                 "issues": "https://github.com/phar-io/manifest/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6442,7 +6447,8 @@
                 "issues": "https://github.com/phar-io/version/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6491,7 +6497,8 @@
                 "static analysis"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6545,7 +6552,8 @@
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6590,7 +6598,8 @@
                 }
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6653,7 +6662,8 @@
                 "Stub"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6714,7 +6724,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6760,7 +6771,8 @@
                 "irc": "irc://irc.freenode.net/phpunit"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6799,7 +6811,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-text-template/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6846,7 +6859,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-timer/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6893,7 +6907,8 @@
                 "issues": "https://github.com/sebastianbergmann/php-token-stream/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6984,7 +6999,8 @@
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7046,7 +7062,8 @@
                 "issues": "https://github.com/sebastianbergmann/phpunit-mock-objects/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7086,7 +7103,8 @@
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7150,7 +7168,8 @@
                 "equality"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7197,7 +7216,8 @@
                 "diff"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7242,7 +7262,8 @@
                 "xdebug"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7304,7 +7325,8 @@
                 "exporter"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7358,7 +7380,8 @@
                 "global state"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7405,7 +7428,8 @@
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7450,7 +7474,8 @@
             "description": "Allows reflection of object attributes, including inherited and non-public ones",
             "homepage": "https://github.com/sebastianbergmann/object-reflector/",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7498,7 +7523,8 @@
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7535,7 +7561,8 @@
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7576,7 +7603,8 @@
                 "issues": "https://github.com/sebastianbergmann/version/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7625,7 +7653,8 @@
             ],
             "description": "This bundle generates code for you",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7737,7 +7766,8 @@
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7775,7 +7805,8 @@
                 "issues": "https://github.com/theseer/tokenizer/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -7825,7 +7856,8 @@
                 "validate"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         }
     ],
