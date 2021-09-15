@@ -1702,6 +1702,10 @@
                 }
             ],
             "description": "Api library built on api-platform for ivozprovider",
+            "support": {
+                "issues": "https://github.com/irontec/ivoz-api/issues",
+                "source": "https://github.com/irontec/ivoz-api/tree/3.4.9"
+            },
             "time": "2021-07-07T07:54:32+00:00"
         },
         {
@@ -1757,16 +1761,16 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "3.3.7",
+            "version": "3.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "7fb4dac1900acd9ca0b3e8f63ffe494090cbe3ee"
+                "reference": "2d2fb1b9c31578cd0c482f47e5eaec6cd07f2fc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/7fb4dac1900acd9ca0b3e8f63ffe494090cbe3ee",
-                "reference": "7fb4dac1900acd9ca0b3e8f63ffe494090cbe3ee",
+                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/2d2fb1b9c31578cd0c482f47e5eaec6cd07f2fc6",
+                "reference": "2d2fb1b9c31578cd0c482f47e5eaec6cd07f2fc6",
                 "shasum": ""
             },
             "require": {
@@ -1807,7 +1811,7 @@
                 }
             ],
             "description": "Core library for ivozprovider",
-            "time": "2021-07-14T14:29:53+00:00"
+            "time": "2021-09-16T09:06:37+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
@@ -10092,6 +10096,7 @@
             ],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
+            "abandoned": true,
             "time": "2015-07-28T20:34:47+00:00"
         },
         {
