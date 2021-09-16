@@ -158,7 +158,7 @@ This is file content
           "id": 3,
           "logo": {
               "fileSize": 20,
-              "mimeType": "text/plain; charset=us-ascii",
+              "mimeType": "text/plain",
               "baseName": "uploadable"
           },
           "invoice": {
