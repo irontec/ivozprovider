@@ -325,10 +325,6 @@ class Version20191226104551 extends LoggableMigration
                     </div>
                 </div>
                 {{/if}}
-                <div class="tr bold center">
-                    <div class="th">Llamadas</div>
-                    <div class="td bold">{{callData.callSumaryTotals.totalPrice}} {{invoice.currency}}</div>
-                </div>
                 <div class="tr bold">
                     <div class="th">Total:</div>
                     <div class="td bold">{{totals.totalPrice}} {{invoice.currency}}</div>
@@ -621,10 +617,6 @@ class Version20191226104551 extends LoggableMigration
                     </div>
                 </div>
                 {{/if}}
-                <div class="tr bold center">
-                    <div class="th">Llamadas</div>
-                    <div class="td bold">{{callData.callSumaryTotals.totalPrice}} {{invoice.currency}}</div>
-                </div>
                 <div class="tr bold">
                     <div class="th">Total:</div>
                     <div class="td bold">{{totals.totalPrice}} {{invoice.currency}}</div>
