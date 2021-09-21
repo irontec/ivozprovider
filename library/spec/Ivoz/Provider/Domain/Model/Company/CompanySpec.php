@@ -5,6 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Model\Company;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
@@ -56,17 +57,23 @@ class CompanySpec extends ObjectBehavior
             ]
         );
 
-        $brand
-            ->getId()
-            ->willReturn(1);
+        $this->getterProphecy(
+            $brand,
+            [
+                'getId' => 1,
+                'getDefaultTimezone' => $timezone,
+                'getLanguage' => $language,
+            ],
+            true
+        );
 
-        $brand
-            ->getDefaultTimezone()
-            ->willReturn($timezone);
-
-        $brand
-            ->getLanguage()
-            ->willReturn($language);
+        $this->getterProphecy(
+            $brand,
+            [
+                'getDomain' => null,
+            ],
+            false
+        );
 
         $this->beConstructedThrough(
             'fromDto',
@@ -126,6 +133,59 @@ class CompanySpec extends ObjectBehavior
         $this
             ->getOnDemandRecord()
             ->shouldBe(0);
+    }
+
+    function it_requires_validates_company_type_in_order_to_set_onDemandRecord()
+    {
+        $allowed = [
+            CompanyInterface::TYPE_VPBX,
+            CompanyInterface::TYPE_RESIDENTIAL
+        ];
+
+        $unallowed = [
+            CompanyInterface::TYPE_WHOLESALE,
+            CompanyInterface::TYPE_RETAIL
+        ];
+
+        $dtoToEntityFakeTransformer = new \spec\DtoToEntityFakeTransformer();
+
+        foreach ($unallowed as $type) {
+
+            /** @var CompanyDto $vpbxDto */
+            $dto = clone $this->dto;
+            $dto
+                ->setType($type)
+                ->setOnDemandRecord(1);
+
+            $this
+                ->shouldThrow('\DomainException')
+                ->during(
+                    'updateFromDto',
+                    [
+                        $dto,
+                        $dtoToEntityFakeTransformer
+                    ]
+                );
+        }
+
+        foreach ($allowed as $type) {
+
+            /** @var CompanyDto $vpbxDto */
+            $dto = clone $this->dto;
+            $dto
+                ->setType($type)
+                ->setOnDemandRecord(1);
+
+            $this
+                ->shouldNotThrow('\DomainException')
+                ->during(
+                    'updateFromDto',
+                    [
+                        $dto,
+                        $dtoToEntityFakeTransformer
+                    ]
+                );
+        }
     }
 
     function it_turns_empty_onDemandRecordCode_into_empty_string()
