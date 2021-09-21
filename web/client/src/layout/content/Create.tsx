@@ -34,11 +34,15 @@ const Create = (props: CreateProps) => {
 
     try {
 
+      const payload = marshaller(values, entityService.getColumns());
+      const formData = entityService.prepareFormData(payload);
+
       await apiPost({
         path,
-        values: marshaller(values, entityService.getColumns()),
+        values: formData,
         contentType: 'application/json',
       });
+
       setError(null);
       history.push(path);
 

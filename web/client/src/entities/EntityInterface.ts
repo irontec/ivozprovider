@@ -1,5 +1,5 @@
 import { EntityFormProps } from './../../.history/src/entities/DefaultEntityBehavior_20210903123211';
-import { PropertyList, PropertySpec } from "services/Api/ParsedApiSpecInterface";
+import { PropertySpec } from "services/Api/ParsedApiSpecInterface";
 import EntityService from "services/Entity/EntityService";
 
 export type ListDecoratorPropsType = {

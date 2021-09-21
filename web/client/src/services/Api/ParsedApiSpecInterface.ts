@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSXElementConstructor } from 'react';
 
 interface KeyValList {
     [key: string]: any
@@ -50,10 +50,12 @@ enum customComponentContext {
     read = "read",
 }
 
-export interface propertyCustomComponent extends React.FunctionComponent<any> {
+export interface propertyCustomComponentProps {
     _context?: customComponentContext,
     _columnName?: string
 }
+
+export type PropertyCustomComponent<P extends propertyCustomComponentProps> = (props: P) => JSX.Element;
 
 export interface ScalarProperty {
     type?: string,
@@ -67,7 +69,7 @@ export interface ScalarProperty {
     visualToggle?: visualToggleValue
     label: string | React.ReactElement<any>,
     prefix?: string | React.ReactElement<any>,
-    component?: propertyCustomComponent,
+    component?: PropertyCustomComponent<any>,
     required: boolean,
     pattern?: RegExp,
     helpText?: string | React.ReactElement<any>,

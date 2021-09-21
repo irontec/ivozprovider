@@ -48,9 +48,13 @@ const Edit: any = (props: EditProps) => {
     }
 
     try {
+
+      const payload = marshaller(values, entityService.getColumns());
+      const formData = entityService.prepareFormData(payload);
+
       await apiPut({
         path: putPath.replace('{id}', entityId),
-        values: marshaller(values, entityService.getProperties())
+        values: formData
       });
 
       setError(null);

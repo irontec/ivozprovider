@@ -1,13 +1,15 @@
 import { makeStyles, Theme } from '@material-ui/core';
-import { ScalarProperty } from 'services/Api/ParsedApiSpecInterface';
-import React from 'react';
+import { PropertyCustomComponent, propertyCustomComponentProps, PropertySpec } from 'services/Api/ParsedApiSpecInterface';
 
-const CustomComponent = (props:any) =>
+interface CustomComponentWrapperProps extends propertyCustomComponentProps {
+    property: PropertySpec,
+    children: React.ReactElement,
+};
+
+const CustomComponentWrapper:PropertyCustomComponent<CustomComponentWrapperProps> = (props:CustomComponentWrapperProps) =>
 {
-    const {property, values, columnName} = props;
+    const {property} = props;
     const classes:any = styles();
-
-    const PropertyComponent = (property as ScalarProperty).component as React.FunctionComponent<any>;
 
     return (
         <div className={classes.fieldsetRoot}>
@@ -18,7 +20,7 @@ const CustomComponent = (props:any) =>
                         <span>{property.label}</span>
                     </legend>
                     <div className={classes.customComponentContainer}>
-                        <PropertyComponent  _context={'write'} _columnName={columnName} {...values} />
+                        {props.children}
                     </div>
                 </fieldset>
             </div>
@@ -78,4 +80,4 @@ const styles = makeStyles((theme: Theme) => {
     };
 });
 
-export default CustomComponent;
+export default CustomComponentWrapper;

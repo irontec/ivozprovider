@@ -3,18 +3,21 @@ import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
-    //@TODO POSPONED originalFile
+    originalFile: {
+        label: _('Uploaded file'),
+        type: 'file'
+    }
 };
 
-const musicOnHold:EntityInterface = {
+const musicOnHold: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'MusicOnHold',
-    title: _('Music on hold', {count: 2}),
+    title: _('Music on hold', { count: 2 }),
     path: '/music_on_holds',
     properties
 };

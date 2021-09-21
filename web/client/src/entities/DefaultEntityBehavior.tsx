@@ -25,14 +25,22 @@ export const validator = (values: any, properties: PropertiesList) => {
     return response;
 }
 
-// formik compatible format => API format
 export const marshaller = (values: any, properties: PropertiesList) => {
 
     for (const idx in values) {
 
         const property: any = properties[idx];
 
-        if (property?.type === "boolean") {
+        if (property?.type === 'file') {
+
+            if (values[idx].file) {
+                values[idx] = values[idx].file;
+            }
+
+            continue;
+        }
+
+        if (property?.type === 'boolean') {
             values[idx] = values[idx] === '0'
                 ? false
                 : true;
@@ -116,6 +124,10 @@ export const ListDecorator = (props: any) => {
         return (
             <property.component _context={'read'} {...row} />
         );
+    }
+
+    if (property.type === 'file') {
+        return value.baseName;
     }
 
     if (property.enum) {

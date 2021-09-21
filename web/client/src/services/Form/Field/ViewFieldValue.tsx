@@ -1,5 +1,5 @@
-import { PropertySpec, ScalarProperty } from "services/Api/ParsedApiSpecInterface";
-import CustomComponent from "./CustomComponent";
+import { PropertyCustomComponent, PropertySpec, ScalarProperty } from "services/Api/ParsedApiSpecInterface";
+import CustomComponentWrapper from "./CustomComponentWrapper";
 
 interface ViewValueProps {
     columnName: string,
@@ -8,11 +8,11 @@ interface ViewValueProps {
 }
 
 const ViewFieldValue = (props: ViewValueProps) => {
-    let { property, columnName } = props;
+    let { property, columnName, values } = props;
 
     if (!(property as ScalarProperty).component) {
 
-        const component = (innerProps: any) => {
+        const component:PropertyCustomComponent<any> = (innerProps: any) => {
 
             let val = innerProps[columnName];
             if (typeof val === 'object') {
@@ -29,12 +29,16 @@ const ViewFieldValue = (props: ViewValueProps) => {
 
         property = {
             ...property,
-            component: (component as any)
+            component
         }
     }
 
+    const PropertyComponent = (property as ScalarProperty).component as PropertyCustomComponent<any>;
+
     return (
-        <CustomComponent {...props} property={property} columnName={columnName} />
+        <CustomComponentWrapper property={property}>
+            <PropertyComponent _context={'read'} _columnName={columnName} {...values} />
+        </CustomComponentWrapper>
     );
 }
 

@@ -158,6 +158,35 @@ export default class EntityService {
         return response;
     }
 
+    public prepareFormData(payload: any) {
+
+        const files: { [idx: string]: File } = {};
+        for (const idx in payload) {
+            if (payload[idx] instanceof File) {
+                files[idx] = payload[idx];
+                delete payload[idx];
+            }
+        }
+
+        const isMultiPart = Object.keys(files).length > 0;
+        if (!isMultiPart) {
+            return payload;
+        }
+
+        const formData = new FormData();
+
+        formData.append(
+            this.getIden(true),
+            JSON.stringify(payload)
+        );
+
+        for (const idx in files) {
+            formData.append(idx, files[idx]);
+        }
+
+        return formData;
+    };
+
     public getCollectionPath(path: string | null = null): string | null {
         const collectionAction = this.actions?.get?.collection || {};
 
@@ -253,6 +282,16 @@ export default class EntityService {
         const filters = this.getFilters(path);
 
         return filters[propertyName] || [];
+    }
+
+    private getIden(lcFirst: boolean = false) {
+        const response = this.entityConfig.iden;
+
+        if (lcFirst) {
+            return response.charAt(0).toLowerCase() + response.slice(1);
+        }
+
+        return response;
     }
 
     private getFilters(path?: string): any {

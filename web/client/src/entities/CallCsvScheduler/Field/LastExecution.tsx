@@ -1,12 +1,13 @@
 import { makeStyles, Tooltip } from '@material-ui/core';
+import { PropertyCustomComponent, propertyCustomComponentProps } from 'services/Api/ParsedApiSpecInterface';
 import _ from 'services/Translations/translate';
 
-interface LastExecutionProps {
+type LastExecutionProps = propertyCustomComponentProps & {
     lastExecution: string,
     lastExecutionError: string
 }
 
-const LastExecution = (props: LastExecutionProps) => {
+const LastExecution:PropertyCustomComponent<LastExecutionProps> = (props: LastExecutionProps) => {
 
     const classes = listDecoratorStyles();
 

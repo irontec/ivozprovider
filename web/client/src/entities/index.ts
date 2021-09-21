@@ -35,10 +35,10 @@ import UsersCdr from './UsersCdr/UsersCdr';
 
 
 interface EntityList {
-  [name: string]: EntityInterface
+  [name: string]: Readonly<EntityInterface>
 }
 
-const entities: EntityList = {
+const entities: Readonly<EntityList> = {
   BillableCall,
   Calendar,
   CallAcl: callAcl,
@@ -73,5 +73,7 @@ const entities: EntityList = {
   User,
   UsersCdr,
 };
+
+Object.freeze(entities);
 
 export default entities;

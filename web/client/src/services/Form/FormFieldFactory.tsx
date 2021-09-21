@@ -1,12 +1,13 @@
 import { FormControlLabel, TextField, Switch, FormHelperText, LinearProgress, FormControl, makeStyles, Theme, InputAdornment } from '@material-ui/core';
-import { ScalarProperty, FkProperty, PropertySpec } from 'services/Api/ParsedApiSpecInterface';
+import { ScalarProperty, FkProperty, PropertySpec, PropertyCustomComponent } from 'services/Api/ParsedApiSpecInterface';
 import EntityService from 'services/Entity/EntityService';
 import { useFormikType } from './types';
 import Dropdown from 'services/Form/Field/Dropdown';
 import React from 'react';
 import Autocomplete from './Field/Autocomplete';
-import CustomComponent from './Field/CustomComponent';
+import CustomComponentWrapper from './Field/CustomComponentWrapper';
 import { Alert } from '@material-ui/lab';
+import FileUploader from './Field/FileUploader';
 
 export default class FormFieldFactory {
     private styles: any;
@@ -26,7 +27,7 @@ export default class FormFieldFactory {
                 },
                 linearProgress: {
                     paddingTop: '60px',
-                },
+                }
             };
         });
     }
@@ -62,14 +63,20 @@ export default class FormFieldFactory {
 
         const classes: any = this.styles();
         const multiSelect = (property as ScalarProperty).type === 'array';
+        const fileUpload = (property as ScalarProperty).type === 'file';
 
         if ((property as ScalarProperty).component) {
+
+            const PropertyComponent = (property as ScalarProperty).component as PropertyCustomComponent<any>;
+
             return (
-                <CustomComponent property={property} values={this.formik.values} />
+                <CustomComponentWrapper property={property}>
+                    <PropertyComponent _context={'write'} _columnName={fld} {...this.formik.values} />
+                </CustomComponentWrapper>
             );
         }
 
-        if ((property as FkProperty).$ref || multiSelect) {
+        if (!fileUpload && ((property as FkProperty).$ref || multiSelect)) {
 
             if (!choices) {
                 return (<div className={classes.linearProgress}><LinearProgress /></div>);
@@ -147,6 +154,18 @@ export default class FormFieldFactory {
         if (property.prefix) {
             inputProps.startAdornment = (
                 <InputAdornment position="start">{property.prefix}</InputAdornment>
+            );
+        }
+
+        if (fileUpload) {
+
+            return (
+                <FileUploader
+                    property={property}
+                    columnName={fld}
+                    values={this.formik.values}
+                    changeHandler={this.changeHandler}
+                />
             );
         }
 
