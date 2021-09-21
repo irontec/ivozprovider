@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a684d88f24e5198ca79ee9d5d39203c0",
+    "content-hash": "e927ef8cc127d5b8dd8bb616055f93a3",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -12,8 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/beberlei/assert",
-                "reference": "124317de301b7c91d5fce34c98bba2c6925bec95",
-                "shasum": null
+                "reference": "124317de301b7c91d5fce34c98bba2c6925bec95"
             },
             "require": {
                 "ext-mbstring": "*",
@@ -73,7 +72,8 @@
                 "validation"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -82,8 +82,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/beberlei/doctrineextensions",
-                "reference": "a41f8b541f2e9b31f7cd43c91d6d88d9963f091c",
-                "shasum": null
+                "reference": "a41f8b541f2e9b31f7cd43c91d6d88d9963f091c"
             },
             "require": {
                 "php": ">=5.4"
@@ -128,7 +127,8 @@
                 "orm"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -137,8 +137,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/composer/ca-bundle",
-                "reference": "95c63ab2117a72f48f5a55da9740a3273d45b7fd",
-                "shasum": null
+                "reference": "95c63ab2117a72f48f5a55da9740a3273d45b7fd"
             },
             "require": {
                 "ext-openssl": "*",
@@ -189,7 +188,8 @@
                 "issues": "https://github.com/composer/ca-bundle/issues"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -198,8 +198,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/annotations",
-                "reference": "54cacc9b81758b14e3ce750f205a393d52339e97",
-                "shasum": null
+                "reference": "54cacc9b81758b14e3ce750f205a393d52339e97"
             },
             "require": {
                 "doctrine/lexer": "1.*",
@@ -258,7 +257,8 @@
                 "parser"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -267,8 +267,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/cache",
-                "reference": "eb152c5100571c7a45470ff2a35095ab3f3b900b",
-                "shasum": null
+                "reference": "eb152c5100571c7a45470ff2a35095ab3f3b900b"
             },
             "require": {
                 "php": "~5.5|~7.0"
@@ -329,7 +328,8 @@
                 "caching"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -338,8 +338,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/collections",
-                "reference": "1a4fb7e902202c33cce8c55989b945612943c2ba",
-                "shasum": null
+                "reference": "1a4fb7e902202c33cce8c55989b945612943c2ba"
             },
             "require": {
                 "php": "^5.6 || ^7.0"
@@ -397,7 +396,8 @@
                 "iterator"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -406,8 +406,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/common",
-                "reference": "4acb8f89626baafede6ee5475bc5844096eba8a9",
-                "shasum": null
+                "reference": "4acb8f89626baafede6ee5475bc5844096eba8a9"
             },
             "require": {
                 "doctrine/annotations": "1.*",
@@ -466,7 +465,8 @@
                 "spl"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -475,8 +475,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/dbal",
-                "reference": "729340d8d1eec8f01bff708e12e449a3415af873",
-                "shasum": null
+                "reference": "729340d8d1eec8f01bff708e12e449a3415af873"
             },
             "archive": {
                 "exclude": [
@@ -544,7 +543,8 @@
                 "queryobject"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -553,8 +553,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/doctrine-bundle",
-                "reference": "907dafe1ba73c4c3b0f0ae8cfc1b9958c002e58c",
-                "shasum": null
+                "reference": "907dafe1ba73c4c3b0f0ae8cfc1b9958c002e58c"
             },
             "require": {
                 "doctrine/dbal": "^2.5.12",
@@ -630,7 +629,8 @@
                 "Persistence"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -639,8 +639,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/doctrine-cache-bundle",
-                "reference": "5514c90d9fb595e1095e6d66ebb98ce9ef049927",
-                "shasum": null
+                "reference": "5514c90d9fb595e1095e6d66ebb98ce9ef049927"
             },
             "require": {
                 "doctrine/cache": "^1.4.2",
@@ -722,7 +721,8 @@
                 "caching"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -731,8 +731,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/inflector",
-                "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462",
-                "shasum": null
+                "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462"
             },
             "require": {
                 "php": "^7.0"
@@ -790,7 +789,8 @@
                 "string"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -799,8 +799,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/instantiator",
-                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d",
-                "shasum": null
+                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d"
             },
             "require": {
                 "php": ">=5.3,<8.0-DEV"
@@ -847,7 +846,8 @@
                 "instantiate"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -856,8 +856,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/lexer",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8",
-                "shasum": null
+                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8"
             },
             "require": {
                 "php": ">=5.3.2"
@@ -908,7 +907,8 @@
                 "php"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -917,8 +917,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/orm",
-                "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754",
-                "shasum": null
+                "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754"
             },
             "archive": {
                 "exclude": [
@@ -1000,7 +999,8 @@
                 "orm"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1009,8 +1009,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/egulias/email-validator",
-                "reference": "840d5603eb84cc81a6a0382adac3293e57c1c64c",
-                "shasum": null
+                "reference": "840d5603eb84cc81a6a0382adac3293e57c1c64c"
             },
             "require": {
                 "doctrine/lexer": "^1.0.1",
@@ -1059,7 +1058,8 @@
                 "validator"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1068,8 +1068,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/graze/guzzle-jsonrpc",
-                "reference": "c4513b7659534792b906723158a8388f54275a61",
-                "shasum": null
+                "reference": "c4513b7659534792b906723158a8388f54275a61"
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.0",
@@ -1119,7 +1118,8 @@
                 "rpc"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1128,8 +1128,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/guzzlehttp/guzzle",
-                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
-                "shasum": null
+                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e"
             },
             "require": {
                 "ext-json": "*",
@@ -1187,7 +1186,8 @@
                 "web service"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1196,8 +1196,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/guzzlehttp/promises",
-                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
-                "shasum": null
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
             },
             "require": {
                 "php": ">=5.5.0"
@@ -1242,7 +1241,8 @@
                 "promise"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1251,8 +1251,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/guzzlehttp/psr7",
-                "reference": "239400de7a173fe9901b9ac7c06497751f00727a",
-                "shasum": null
+                "reference": "239400de7a173fe9901b9ac7c06497751f00727a"
             },
             "require": {
                 "php": ">=5.4.0",
@@ -1314,7 +1313,8 @@
                 "url"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1323,8 +1323,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/incenteev/composer-parameter-handler",
-                "reference": "084befb11ec21faeadcddefb88b66132775ff59b",
-                "shasum": null
+                "reference": "084befb11ec21faeadcddefb88b66132775ff59b"
             },
             "require": {
                 "php": ">=5.3.3",
@@ -1361,17 +1360,17 @@
                 "parameters management"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "3.3.7.0",
+            "version": "3.3.9",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core",
-                "reference": "7fb4dac1900acd9ca0b3e8f63ffe494090cbe3ee",
-                "shasum": null
+                "reference": "2d2fb1b9c31578cd0c482f47e5eaec6cd07f2fc6"
             },
             "require": {
                 "beberlei/assert": "2.9.*",
@@ -1411,7 +1410,8 @@
             ],
             "description": "Core library for ivozprovider",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1420,8 +1420,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "9e628723cc793d960af320d4e661abba3f7b36ca",
-                "shasum": null
+                "reference": "9e628723cc793d960af320d4e661abba3f7b36ca"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^1.6",
@@ -1458,7 +1457,8 @@
             ],
             "description": "Symfony bridge for ivoz-core",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1467,8 +1467,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "bf63c0c60b4c0f676556fbb36f60691007ced249",
-                "shasum": null
+                "reference": "bf63c0c60b4c0f676556fbb36f60691007ced249"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.1",
@@ -1526,8 +1525,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/jdorn/sql-formatter",
-                "reference": "64990d96e0959dff8e059dfcdc1af130728d92bc",
-                "shasum": null
+                "reference": "64990d96e0959dff8e059dfcdc1af130728d92bc"
             },
             "require": {
                 "php": ">=5.2.4"
@@ -1563,7 +1561,8 @@
                 "sql"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1572,8 +1571,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/lcobucci/jwt",
-                "reference": "56f10808089e38623345e28af2f2d5e4eb579455",
-                "shasum": null
+                "reference": "56f10808089e38623345e28af2f2d5e4eb579455"
             },
             "require": {
                 "ext-mbstring": "*",
@@ -1622,7 +1620,8 @@
                 "JWT"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1631,8 +1630,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/lexik/jwt-authentication-bundle",
-                "reference": "79ba5af396c4f4e64fe9c8b9af65f8441fdb44cf",
-                "shasum": null
+                "reference": "79ba5af396c4f4e64fe9c8b9af65f8441fdb44cf"
             },
             "require": {
                 "ext-openssl": "*",
@@ -1723,7 +1721,8 @@
                 "rest"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1732,8 +1731,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/monolog/monolog",
-                "reference": "1817faadd1846cd08be9a49e905dc68823bc38c0",
-                "shasum": null
+                "reference": "1817faadd1846cd08be9a49e905dc68823bc38c0"
             },
             "require": {
                 "php": ">=5.3.0",
@@ -1807,7 +1805,8 @@
                 "psr-3"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1816,8 +1815,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/namshi/jose",
-                "reference": "89a24d7eb3040e285dd5925fcad992378b82bcff",
-                "shasum": null
+                "reference": "89a24d7eb3040e285dd5925fcad992378b82bcff"
             },
             "require": {
                 "ext-date": "*",
@@ -1871,7 +1869,8 @@
                 "token"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1880,8 +1879,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/ocramius/package-versions",
-                "reference": "ad8a245decad4897cc6b432743913dad0d69753c",
-                "shasum": null
+                "reference": "ad8a245decad4897cc6b432743913dad0d69753c"
             },
             "require": {
                 "composer-plugin-api": "^1.0",
@@ -1929,7 +1927,8 @@
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -1938,8 +1937,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/ocramius/proxy-manager",
-                "reference": "a55d08229f4f614bf335759ed0cf63378feeb2e6",
-                "shasum": null
+                "reference": "a55d08229f4f614bf335759ed0cf63378feeb2e6"
             },
             "require": {
                 "ocramius/package-versions": "^1.0",
@@ -1997,7 +1995,8 @@
                 "service proxies"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2006,8 +2005,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/paragonie/random_compat",
-                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
-                "shasum": null
+                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95"
             },
             "require": {
                 "php": "^7"
@@ -2043,7 +2041,8 @@
                 "source": "https://github.com/paragonie/random_compat"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2052,8 +2051,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/php-mime-mail-parser/php-mime-mail-parser",
-                "reference": "4769e942ed0dbbdd7882fc390b119d625463c8af",
-                "shasum": null
+                "reference": "4769e942ed0dbbdd7882fc390b119d625463c8af"
             },
             "require": {
                 "ext-mailparse": "*",
@@ -2119,7 +2117,8 @@
                 "mime"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2128,8 +2127,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/psr/cache",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
-                "shasum": null
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
             },
             "require": {
                 "php": ">=5.3.0"
@@ -2161,7 +2159,8 @@
                 "psr-6"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2170,8 +2169,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/psr/container",
-                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
-                "shasum": null
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f"
             },
             "require": {
                 "php": ">=5.3.0"
@@ -2206,7 +2204,8 @@
                 "psr-11"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2215,8 +2214,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/psr/http-message",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
-                "shasum": null
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
             },
             "require": {
                 "php": ">=5.3.0"
@@ -2252,7 +2250,8 @@
                 "response"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2261,8 +2260,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/psr/log",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
-                "shasum": null
+                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
             },
             "require": {
                 "php": ">=5.3.0"
@@ -2295,7 +2293,8 @@
                 "psr-3"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2304,8 +2303,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/psr/simple-cache",
-                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
-                "shasum": null
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
             },
             "require": {
                 "php": ">=5.3.0"
@@ -2339,7 +2337,8 @@
                 "simple-cache"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2348,8 +2347,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/ralouphie/getallheaders",
-                "reference": "120b605dfeb996808c31b6477290a714d356e822",
-                "shasum": null
+                "reference": "120b605dfeb996808c31b6477290a714d356e822"
             },
             "require": {
                 "php": ">=5.6"
@@ -2380,7 +2378,8 @@
             ],
             "description": "A polyfill for getallheaders.",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2389,8 +2388,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/ramsey/uuid",
-                "reference": "7e1633a6964b48589b142d60542f9ed31bd37a92",
-                "shasum": null
+                "reference": "7e1633a6964b48589b142d60542f9ed31bd37a92"
             },
             "require": {
                 "ext-json": "*",
@@ -2493,7 +2491,8 @@
                 "wiki": "https://github.com/ramsey/uuid/wiki"
             },
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2502,8 +2501,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/sensio/distribution-bundle",
-                "reference": "80a38234bde8321fb92aa0b8c27978a272bb4baf",
-                "shasum": null
+                "reference": "80a38234bde8321fb92aa0b8c27978a272bb4baf"
             },
             "require": {
                 "php": ">=5.3.9",
@@ -2541,7 +2539,8 @@
                 "distribution"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2550,8 +2549,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/sensiolabs/security-checker",
-                "reference": "46be3f58adac13084497961e10eed9a7fb4d44d1",
-                "shasum": null
+                "reference": "46be3f58adac13084497961e10eed9a7fb4d44d1"
             },
             "require": {
                 "composer/ca-bundle": "^1.0",
@@ -2583,7 +2581,8 @@
             ],
             "description": "A security checker for your composer.lock",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2592,8 +2591,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/swiftmailer/swiftmailer",
-                "reference": "149cfdf118b169f7840bbe3ef0d4bc795d1780c9",
-                "shasum": null
+                "reference": "149cfdf118b169f7840bbe3ef0d4bc795d1780c9"
             },
             "require": {
                 "egulias/email-validator": "~2.0",
@@ -2646,7 +2644,8 @@
                 "mailer"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2655,8 +2654,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/asset",
-                "reference": "86dc86fe186790d2e8d5a87cd50066d387dcc04c",
-                "shasum": null
+                "reference": "86dc86fe186790d2e8d5a87cd50066d387dcc04c"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -2707,8 +2705,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/cache",
-                "reference": "0dc6b972cfd110df3bc317b9d6033243b41b4f4f",
-                "shasum": null
+                "reference": "0dc6b972cfd110df3bc317b9d6033243b41b4f4f"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -2764,7 +2761,8 @@
                 "psr6"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2773,8 +2771,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/class-loader",
-                "reference": "e4636a4f23f157278a19e5db160c63de0da297d8",
-                "shasum": null
+                "reference": "e4636a4f23f157278a19e5db160c63de0da297d8"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -2825,8 +2822,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/config",
-                "reference": "9e2aa97f0d51f114983666f5aa362426d53e004a",
-                "shasum": null
+                "reference": "9e2aa97f0d51f114983666f5aa362426d53e004a"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -2876,7 +2872,8 @@
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2885,8 +2882,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/console",
-                "reference": "afc7189694d2c59546cf24ea606a236fa46a966e",
-                "shasum": null
+                "reference": "afc7189694d2c59546cf24ea606a236fa46a966e"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -2944,7 +2940,8 @@
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -2953,8 +2950,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/debug",
-                "reference": "7ce874f4432d8b11cc45a80cc5130a6e2609728d",
-                "shasum": null
+                "reference": "7ce874f4432d8b11cc45a80cc5130a6e2609728d"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -2996,7 +2992,8 @@
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -3005,8 +3002,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/debug-bundle",
-                "reference": "823be58018c34f902bfd41df8419e9533984163c",
-                "shasum": null
+                "reference": "823be58018c34f902bfd41df8419e9533984163c"
             },
             "require": {
                 "ext-xml": "*",
@@ -3066,8 +3062,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/dependency-injection",
-                "reference": "3a14abc01c36e81fc1c4c48b42c103b9dd892ed3",
-                "shasum": null
+                "reference": "3a14abc01c36e81fc1c4c48b42c103b9dd892ed3"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3124,7 +3119,8 @@
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -3133,8 +3129,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/doctrine-bridge",
-                "reference": "595cce17d5c646f2741bf72a2ec608d0ea2dd21d",
-                "shasum": null
+                "reference": "595cce17d5c646f2741bf72a2ec608d0ea2dd21d"
             },
             "require": {
                 "doctrine/common": "~2.4",
@@ -3201,7 +3196,8 @@
             "description": "Symfony Doctrine Bridge",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -3210,8 +3206,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/dotenv",
-                "reference": "22577db70b4fbd2e93d6b331ce2ae5f3d49f20e6",
-                "shasum": null
+                "reference": "22577db70b4fbd2e93d6b331ce2ae5f3d49f20e6"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -3263,8 +3258,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/event-dispatcher",
-                "reference": "14d978f8e8555f2de719c00eb65376be7d2e9081",
-                "shasum": null
+                "reference": "14d978f8e8555f2de719c00eb65376be7d2e9081"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -3322,8 +3316,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/expression-language",
-                "reference": "56de5bb3d653aca3a8641cb788f80646033275c9",
-                "shasum": null
+                "reference": "56de5bb3d653aca3a8641cb788f80646033275c9"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3360,7 +3353,8 @@
             "description": "Symfony ExpressionLanguage Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -3369,8 +3363,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/filesystem",
-                "reference": "0f625d0cb1e59c8c4ba61abb170125175218ff10",
-                "shasum": null
+                "reference": "0f625d0cb1e59c8c4ba61abb170125175218ff10"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3415,8 +3408,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/finder",
-                "reference": "5ec813ccafa8164ef21757e8c725d3a57da59200",
-                "shasum": null
+                "reference": "5ec813ccafa8164ef21757e8c725d3a57da59200"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -3460,8 +3452,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/form",
-                "reference": "d9c944e4d69dda3585f9639e4dedf2255793d5b0",
-                "shasum": null
+                "reference": "d9c944e4d69dda3585f9639e4dedf2255793d5b0"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3529,7 +3520,8 @@
             "description": "Symfony Form Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -3538,8 +3530,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/framework-bundle",
-                "reference": "7c8345e3ec1d9a2aa65451b9c1024720cd06ebc6",
-                "shasum": null
+                "reference": "7c8345e3ec1d9a2aa65451b9c1024720cd06ebc6"
             },
             "require": {
                 "ext-xml": "*",
@@ -3640,7 +3631,8 @@
             "description": "Symfony FrameworkBundle",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -3649,8 +3641,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/http-foundation",
-                "reference": "5219dba1253aa07ed3ad82f73c08146fb3f517d0",
-                "shasum": null
+                "reference": "5219dba1253aa07ed3ad82f73c08146fb3f517d0"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3690,7 +3681,8 @@
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -3699,8 +3691,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/http-kernel",
-                "reference": "4a1c6b310806adce0f299411951d06747edf9e28",
-                "shasum": null
+                "reference": "4a1c6b310806adce0f299411951d06747edf9e28"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3776,7 +3767,8 @@
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -3785,8 +3777,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/inflector",
-                "reference": "540e39d07cff9824eaf4fee2c9f489304e54d0c2",
-                "shasum": null
+                "reference": "540e39d07cff9824eaf4fee2c9f489304e54d0c2"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3839,8 +3830,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/intl",
-                "reference": "0c47952617207bba74bb42e58764f4a4adef087e",
-                "shasum": null
+                "reference": "0c47952617207bba74bb42e58764f4a4adef087e"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3901,7 +3891,8 @@
                 "localization"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -3910,8 +3901,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/monolog-bridge",
-                "reference": "2b53ee83ce4f77835e4edc5c69f028f716f83cf8",
-                "shasum": null
+                "reference": "2b53ee83ce4f77835e4edc5c69f028f716f83cf8"
             },
             "require": {
                 "monolog/monolog": "~1.19",
@@ -3964,7 +3954,8 @@
             "description": "Symfony Monolog Bridge",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -3973,8 +3964,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/monolog-bundle",
-                "reference": "2b41b8b6d2c6edb1a5494f02f8e4129be2a44784",
-                "shasum": null
+                "reference": "2b41b8b6d2c6edb1a5494f02f8e4129be2a44784"
             },
             "require": {
                 "monolog/monolog": "~1.22",
@@ -4023,7 +4013,8 @@
                 "logging"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4032,8 +4023,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/options-resolver",
-                "reference": "0edf31d2e34f4adb72dd4d2e4a8aa21f84b943e5",
-                "shasum": null
+                "reference": "0edf31d2e34f4adb72dd4d2e4a8aa21f84b943e5"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -4073,7 +4063,8 @@
                 "options"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4082,8 +4073,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-apcu",
-                "reference": "f1d94a98e364f4b84252331a40cb7987b847e241",
-                "shasum": null
+                "reference": "f1d94a98e364f4b84252331a40cb7987b847e241"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4138,8 +4128,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-ctype",
-                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454",
-                "shasum": null
+                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4187,7 +4176,8 @@
                 "portable"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4196,8 +4186,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-iconv",
-                "reference": "6c2f78eb8f5ab8eaea98f6d414a5915f2e0fce36",
-                "shasum": null
+                "reference": "6c2f78eb8f5ab8eaea98f6d414a5915f2e0fce36"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4246,7 +4235,8 @@
                 "shim"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4255,8 +4245,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-icu",
-                "reference": "4e45a6e39041a9cc78835b11abc47874ae302a55",
-                "shasum": null
+                "reference": "4e45a6e39041a9cc78835b11abc47874ae302a55"
             },
             "require": {
                 "php": ">=5.3.3",
@@ -4304,7 +4293,8 @@
                 "shim"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4313,8 +4303,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-idn",
-                "reference": "5dcab1bc7146cf8c1beaa4502a3d9be344334251",
-                "shasum": null
+                "reference": "5dcab1bc7146cf8c1beaa4502a3d9be344334251"
             },
             "require": {
                 "php": ">=5.3.3",
@@ -4371,7 +4360,8 @@
                 "shim"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4380,8 +4370,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-normalizer",
-                "reference": "37078a8dd4a2a1e9ab0231af7c6cb671b2ed5a7e",
-                "shasum": null
+                "reference": "37078a8dd4a2a1e9ab0231af7c6cb671b2ed5a7e"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4434,7 +4423,8 @@
                 "shim"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4443,8 +4433,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-mbstring",
-                "reference": "a6977d63bf9a0ad4c65cd352709e230876f9904a",
-                "shasum": null
+                "reference": "a6977d63bf9a0ad4c65cd352709e230876f9904a"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4493,7 +4482,8 @@
                 "shim"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4502,8 +4492,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php56",
-                "reference": "13df84e91cd168f247c2f2ec82cc0fa24901c011",
-                "shasum": null
+                "reference": "13df84e91cd168f247c2f2ec82cc0fa24901c011"
             },
             "require": {
                 "php": ">=5.3.3",
@@ -4549,7 +4538,8 @@
                 "shim"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4558,8 +4548,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php70",
-                "reference": "0dd93f2c578bdc9c72697eaa5f1dd25644e618d3",
-                "shasum": null
+                "reference": "0dd93f2c578bdc9c72697eaa5f1dd25644e618d3"
             },
             "require": {
                 "paragonie/random_compat": "~1.0|~2.0|~9.99",
@@ -4608,7 +4597,8 @@
                 "shim"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4617,8 +4607,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php72",
-                "reference": "639447d008615574653fb3bc60d1986d7172eaae",
-                "shasum": null
+                "reference": "639447d008615574653fb3bc60d1986d7172eaae"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4663,7 +4652,8 @@
                 "shim"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4672,8 +4662,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-util",
-                "reference": "46b910c71e9828f8ec2aa7a0314de1130d9b295a",
-                "shasum": null
+                "reference": "46b910c71e9828f8ec2aa7a0314de1130d9b295a"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4715,7 +4704,8 @@
                 "shim"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4724,8 +4714,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/process",
-                "reference": "af8d812d75fcdf2eae30928b42396fe17df137e4",
-                "shasum": null
+                "reference": "af8d812d75fcdf2eae30928b42396fe17df137e4"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -4760,7 +4749,8 @@
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4769,8 +4759,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/property-access",
-                "reference": "0be88586f85142ab5f82ab14e5a04b17739ef7bd",
-                "shasum": null
+                "reference": "0be88586f85142ab5f82ab14e5a04b17739ef7bd"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -4824,7 +4813,8 @@
                 "reflection"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4833,8 +4823,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/property-info",
-                "reference": "7b5c6a3791182d359dbf3211f388687b262c6fe1",
-                "shasum": null
+                "reference": "7b5c6a3791182d359dbf3211f388687b262c6fe1"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -4896,7 +4885,8 @@
                 "validator"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -4905,8 +4895,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/proxy-manager-bridge",
-                "reference": "8807231226867bc74467671dba78d9a924a1181a",
-                "shasum": null
+                "reference": "8807231226867bc74467671dba78d9a924a1181a"
             },
             "require": {
                 "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
@@ -4955,8 +4944,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/routing",
-                "reference": "58381b7b815c1e3afaf60a534fbf769157fe5fe7",
-                "shasum": null
+                "reference": "58381b7b815c1e3afaf60a534fbf769157fe5fe7"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -5018,7 +5006,8 @@
                 "routing"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5027,8 +5016,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/security",
-                "reference": "ac1af40e3e0a183f80f0ff8c3d22b18bfb74dbb3",
-                "shasum": null
+                "reference": "ac1af40e3e0a183f80f0ff8c3d22b18bfb74dbb3"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5092,7 +5080,8 @@
             "description": "Symfony Security Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5101,8 +5090,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/security-bundle",
-                "reference": "b753a4c8b01b7cdcf0630ef792ee1b0e2bd2c3c5",
-                "shasum": null
+                "reference": "b753a4c8b01b7cdcf0630ef792ee1b0e2bd2c3c5"
             },
             "require": {
                 "ext-xml": "*",
@@ -5174,7 +5162,8 @@
             "description": "Symfony SecurityBundle",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5183,8 +5172,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/serializer",
-                "reference": "f64adecb8428febda812166bdc4baa99c039fc74",
-                "shasum": null
+                "reference": "f64adecb8428febda812166bdc4baa99c039fc74"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5249,7 +5237,8 @@
             "description": "Symfony Serializer Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5258,8 +5247,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/swiftmailer-bundle",
-                "reference": "defa9bdfc0191ed70b389cb93c550c6c82cf1745",
-                "shasum": null
+                "reference": "defa9bdfc0191ed70b389cb93c550c6c82cf1745"
             },
             "require": {
                 "php": ">=7.0.0",
@@ -5310,7 +5298,8 @@
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5319,8 +5308,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/templating",
-                "reference": "a1a9717979e1d6468221ce279b11062ea28c1630",
-                "shasum": null
+                "reference": "a1a9717979e1d6468221ce279b11062ea28c1630"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5362,7 +5350,8 @@
             "description": "Symfony Templating Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5371,8 +5360,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/translation",
-                "reference": "600b84224bf482441cd4d0026eba78755d2e2b34",
-                "shasum": null
+                "reference": "600b84224bf482441cd4d0026eba78755d2e2b34"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5428,7 +5416,8 @@
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5437,8 +5426,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/twig-bridge",
-                "reference": "a70a77e115f2456778abb33345ea38e2991a6b55",
-                "shasum": null
+                "reference": "a70a77e115f2456778abb33345ea38e2991a6b55"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5515,7 +5503,8 @@
             "description": "Symfony Twig Bridge",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5524,8 +5513,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/twig-bundle",
-                "reference": "ba4dc6a5059dca6b7e036cd111fbe7447ba3ceee",
-                "shasum": null
+                "reference": "ba4dc6a5059dca6b7e036cd111fbe7447ba3ceee"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5586,7 +5574,8 @@
             "description": "Symfony TwigBundle",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5595,8 +5584,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/validator",
-                "reference": "008b41843e9e1a871ce13417c7e35ac1395e1bf2",
-                "shasum": null
+                "reference": "008b41843e9e1a871ce13417c7e35ac1395e1bf2"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5668,7 +5656,8 @@
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5677,8 +5666,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/var-dumper",
-                "reference": "276cdd86063d42f9468cd26dab32daf546765050",
-                "shasum": null
+                "reference": "276cdd86063d42f9468cd26dab32daf546765050"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5733,7 +5721,8 @@
                 "dump"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5742,8 +5731,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/yaml",
-                "reference": "e7fa05917ae931332a42d65b577ece4d497aad81",
-                "shasum": null
+                "reference": "e7fa05917ae931332a42d65b577ece4d497aad81"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5788,7 +5776,8 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5797,8 +5786,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/twig/twig",
-                "reference": "18772e0190734944277ee97a02a9a6c6555fcd94",
-                "shasum": null
+                "reference": "18772e0190734944277ee97a02a9a6c6555fcd94"
             },
             "require": {
                 "php": "^7.0",
@@ -5854,7 +5842,8 @@
                 "templating"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -5863,8 +5852,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/zendframework/zend-code",
-                "reference": "2899c17f83a7207f2d7f53ec2f421204d3beea27",
-                "shasum": null
+                "reference": "2899c17f83a7207f2d7f53ec2f421204d3beea27"
             },
             "require": {
                 "php": "^5.6 || 7.0.0 - 7.0.4 || ^7.0.6",
@@ -5938,8 +5926,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/zendframework/zend-eventmanager",
-                "reference": "a5e2583a211f73604691586b8406ff7296a946dd",
-                "shasum": null
+                "reference": "a5e2583a211f73604691586b8406ff7296a946dd"
             },
             "require": {
                 "php": "^5.6 || ^7.0"
@@ -6022,5 +6009,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.0.19"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }

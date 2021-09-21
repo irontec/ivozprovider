@@ -82,12 +82,25 @@ class BrandDto extends BrandDtoAbstract
             $response = self::filterFieldsForBrandAdmin($response);
         }
 
-        $response['logoPath'] = 'logoPath';
         unset($response['recordingsLimitMB']);
         unset($response['recordingsLimitEmail']);
         unset($response['domainId']);
 
         return $response;
+    }
+
+    public function denormalize(array $data, string $context, string $role = '')
+    {
+        $contextProperties = self::getPropertyMap($context, $role);
+
+        if ($context === self::CONTEXT_SIMPLE) {
+            $contextProperties['logo'][] = 'path';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
     }
 
     public function normalize(string $context, string $role = '')

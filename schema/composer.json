@@ -1,5 +1,5 @@
 {
-    "name": "irontec/ivozprovider/schema",
+    "name": "ivozprovider/schema",
     "description": "Multitenant solution for VoIP telephony providers (Migration handler)",
     "authors": [
         {

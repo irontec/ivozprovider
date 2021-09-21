@@ -24,7 +24,6 @@ class LocutionDto extends LocutionDtoAbstract
         }
 
         $response = parent::getPropertyMap(...func_get_args());
-        $response['originalFilePath'] = 'originalFilePath';
 
         if ($role === 'ROLE_COMPANY_ADMIN') {
             unset($response['companyId']);
@@ -38,6 +37,10 @@ class LocutionDto extends LocutionDtoAbstract
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
             $contextProperties['companyId'] = 'company';
+        }
+
+        if ($context === self::CONTEXT_SIMPLE) {
+            $contextProperties['originalFile'][] = 'path';
         }
 
         $this->setByContext(
