@@ -1,26 +1,33 @@
 
-import React from 'react';
-import ErrorIcon from '@material-ui/icons/Error';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { styled } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import ErrorIcon from '@mui/icons-material/Error';
 import Message from './Message';
 
-export default function ErrorMessage(props:any) {
+export default function ErrorMessage(props: any) {
 
     const { message } = props;
-    const classes = useStyles();
-
     return (
-        <Message
-            message={message}
-            contentStyles={classes.error}
-            Icon={ErrorIcon}
-        />
+        <StyledErrorMessage message={message} />
     );
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-    error: {
-        backgroundColor: theme.palette.error.dark,
-        color: 'white'
+const StyledErrorMessage = styled(
+    (props: any) => {
+        const { className, message } = props;
+        return (
+            <Message
+                className={className}
+                message={message}
+                Icon={ErrorIcon}
+            />
+        );
     }
-}));
+)(
+    ({ theme }: { theme: Theme }) => {
+        return {
+            backgroundColor: theme.palette.error.dark,
+            color: 'white'
+        }
+    }
+);

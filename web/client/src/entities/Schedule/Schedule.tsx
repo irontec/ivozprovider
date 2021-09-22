@@ -1,10 +1,10 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import Form from './Form';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -45,11 +45,11 @@ const columns = [
     'timeout'
 ];
 
-const schedule:EntityInterface = {
+const schedule: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Schedule',
-    title: _('Schedule', {count: 2}),
+    title: _('Schedule', { count: 2 }),
     path: '/schedules',
     properties,
     columns,

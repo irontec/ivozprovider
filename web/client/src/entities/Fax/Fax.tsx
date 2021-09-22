@@ -1,4 +1,4 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import EntityService from 'services/Entity/EntityService';

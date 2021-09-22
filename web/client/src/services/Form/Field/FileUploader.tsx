@@ -1,8 +1,9 @@
-import { Button, makeStyles } from '@material-ui/core';
+import { Button } from '@mui/material';
 import { PropertySpec } from "services/Api/ParsedApiSpecInterface";
 import CustomComponentWrapper from "./CustomComponentWrapper";
-import BackupIcon from '@material-ui/icons/Backup';
-import { ChangeEvent, DragEvent, useCallback, useRef, useState } from 'react';
+import BackupIcon from '@mui/icons-material/Backup';
+import { ChangeEvent, DragEvent, useCallback, useState } from 'react';
+import { StyledFileUploaderContainer, StyledFileNameContainer, StyledUploadButtonContainer, StyledUploadButtonLabel } from './FileUploader.styles';
 
 interface ViewValueProps {
     columnName: string,
@@ -11,25 +12,22 @@ interface ViewValueProps {
     changeHandler: Function,
 }
 
-interface makeStylesProps {
-    hover: boolean
-}
-
 const FileUploader = (props: ViewValueProps) => {
 
     let { property, columnName, values, changeHandler } = props;
 
-    const [hover, setHover] = useState(false);
-    const dragZoneRef = useRef(null);
+    const [hover, setHover] = useState<boolean>(false);
+    const [hoverCount, setHoverCount] = useState<number>(0);
 
     const handleDragEnter = useCallback(
         (e: DragEvent) => {
             e.preventDefault();
             e.stopPropagation();
 
-            setHover(true);
+            setHover(hoverCount >= 0);
+            setHoverCount(hoverCount + 1);
         },
-        [],
+        [hoverCount],
     );
 
     const handleDragOver = useCallback(
@@ -45,9 +43,10 @@ const FileUploader = (props: ViewValueProps) => {
             e.preventDefault();
             e.stopPropagation();
 
-            setHover(false);
+            setHover(hoverCount > 1);
+            setHoverCount(hoverCount - 1);
         },
-        [],
+        [hoverCount],
     );
 
     type fileContainerEvent = Pick<ChangeEvent<{ files: FileList }>, 'target'>
@@ -95,11 +94,6 @@ const FileUploader = (props: ViewValueProps) => {
         [onChange],
     );
 
-
-    const classes = useStyles({
-        hover
-    });
-
     const id = `${columnName}-file-upload`;
     const fileName = values[columnName]?.file
         ? values[columnName].file?.name
@@ -113,16 +107,15 @@ const FileUploader = (props: ViewValueProps) => {
 
     return (
         <CustomComponentWrapper property={property}>
-            <div
-                className={classes.container}
-                ref={dragZoneRef}
+            <StyledFileUploaderContainer
+                hover={hover}
                 onDrop={handleDrop}
                 onDragEnter={handleDragEnter}
                 onDragLeave={handleDragLeave}
                 onDragOver={handleDragOver}
             >
                 <input
-                    className={classes.displayNone}
+                    style={{ display: 'none' }}
                     id={id}
                     type="file"
                     onChange={(event) => {
@@ -141,49 +134,18 @@ const FileUploader = (props: ViewValueProps) => {
                         });
                     }}
                 />
-                <div className={classes.uploadButtonContainer}>
-                    < label
-                        htmlFor={id}
-                        className={classes.button}
-                    >
-                        <Button variant="contained" color="primary" component="span">
+                <StyledUploadButtonContainer>
+                    <StyledUploadButtonLabel htmlFor={id}>
+                        <Button variant="contained" component="span">
                             <BackupIcon />
                         </Button>
-                    </label>
-                </div>
-                {fileName && <div className={classes.fileName}>{fileName} ({fileSizeMb}MB)</div>}
-            </div>
+                    </StyledUploadButtonLabel>
+                </StyledUploadButtonContainer>
+                {fileName && <StyledFileNameContainer>{fileName} ({fileSizeMb}MB)</StyledFileNameContainer>}
+            </StyledFileUploaderContainer>
 
         </CustomComponentWrapper >
     );
 }
-
-const useStyles = makeStyles((theme: any) => ({
-    container: {
-        display: 'flex',
-        flexDirection: 'row-reverse',
-        alignItems: 'flex-end',
-        justifyContent: 'space-between',
-        opacity: (props: makeStylesProps) => props.hover ? 0.5 : 1,
-        "& *": {
-            pointerEvents: 'none',
-        }
-    },
-    fileName: {
-        alignItems: 'flex-start',
-        flexGrow: 1,
-        alignSelf: 'center',
-    },
-    uploadButtonContainer: {
-        alignSelf: 'center',
-        alignItems: 'flex-end',
-    },
-    button: {
-        cursor: 'pointer',
-    },
-    displayNone: {
-        display: 'none',
-    }
-}));
 
 export default FileUploader;

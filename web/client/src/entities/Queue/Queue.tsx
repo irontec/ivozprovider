@@ -1,4 +1,4 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
@@ -18,20 +18,20 @@ const fullFields = [
     'fullVoiceMailUser',
 ];
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
-        label:_('Name'),
+        label: _('Name'),
         helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '-'"),
     },
     'maxWaitTime': {
-        label:_('Max wait time'),
+        label: _('Max wait time'),
         helpText: _('If no queue member answers before time this seconds, the timeout queue logic will be activated. Leave empty to disable.'),
     },
     'timeoutLocution': {
-        label:_('Locution'),
+        label: _('Locution'),
     },
     'timeoutTargetType': {
-        label:_('Timeout route'),
+        label: _('Timeout route'),
         enum: {
             'number': _('Number'),
             'extension': _('Extension'),
@@ -58,26 +58,26 @@ const properties:PropertiesList = {
         }
     },
     'timeoutNumberCountry': {
-        label:_('Country'),
+        label: _('Country'),
     },
     'timeoutNumberValue': {
-        label:_('Number'),
+        label: _('Number'),
     },
     'timeoutExtension': {
-        label:_('Extension'),
+        label: _('Extension'),
     },
     'timeoutVoiceMailUser': {
-        label:_('Voicemail'),
+        label: _('Voicemail'),
     },
     'maxlen': {
-        label:_('Max queue length'),
+        label: _('Max queue length'),
         helpText: _('Max number of unattended calls that this queue can have. When this value has been reached, full queue logic will be activated on new calls. Leave empty to disable.'),
     },
     'fullLocution': {
-        label:_('Full queue Locution'),
+        label: _('Full queue Locution'),
     },
     'fullTargetType': {
-        label:_('Full queue route'),
+        label: _('Full queue route'),
         enum: {
             'number': _('Number'),
             'extension': _('Extension'),
@@ -165,13 +165,13 @@ const columns = [
     'maxlen',
 ];
 
-const queue:EntityInterface = {
+const queue: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Queue',
-    title: _('Queue', {count: 2}),
+    title: _('Queue', { count: 2 }),
     path: '/queues',
-    toStr: (row:any) => row.name,
+    toStr: (row: any) => row.name,
     properties,
     columns,
     Form

@@ -1,74 +1,71 @@
 import { withRouter } from "react-router-dom";
-import { makeStyles } from '@material-ui/core';
 import entities from '../../entities/index';
-import { Link } from "react-router-dom";
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 import _ from 'services/Translations/translate';
+import { StyledDashboardLink } from './Dashboard.styles';
 
 interface dashboardProps {
 }
 
 const Dashboard = (props: dashboardProps) => {
 
-    const classes = useStyles();
-
     return (
         <Grid container spacing={3}>
             <Grid item xs={6}>
                 <ul>
                     <li>
-                        <Link to={entities.User.path} className={classes.link}>
+                        <StyledDashboardLink to={entities.User.path}>
                             {entities.User.title}
-                        </Link>
+                        </StyledDashboardLink>
                     </li>
                     <li>
-                        <Link to={entities.Terminal.path} className={classes.link}>
+                        <StyledDashboardLink to={entities.Terminal.path}>
                             {entities.Terminal.title}
-                        </Link>
+                        </StyledDashboardLink>
                     </li>
                     <li>
-                        <Link to={entities.Extension.path} className={classes.link}>
+                        <StyledDashboardLink to={entities.Extension.path}>
                             {entities.Extension.title}
-                        </Link>
+                        </StyledDashboardLink>
                     </li>
                     <li>
-                        <Link to={entities.Ddi.path} className={classes.link}>
+                        <StyledDashboardLink to={entities.Ddi.path}>
                             {entities.Ddi.title}
-                        </Link>
+                        </StyledDashboardLink>
                     </li>
                     <li className="submenu">
                         <h3>{_('Routing endpoints')}</h3>
                         <div>
                             <ul>
                                 <li>
-                                    <Link to={entities.Ivr.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.Ivr.path}>
                                         {entities.Ivr.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.HuntGroup.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.HuntGroup.path}>
                                         {entities.HuntGroup.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.Queue.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.Queue.path}>
                                         {entities.Queue.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.ConditionalRoute.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.ConditionalRoute.path}>
                                         {entities.ConditionalRoute.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.Friend.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.Friend.path}>
                                         {entities.Friend.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.ConferenceRoom.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.ConferenceRoom.path}>
                                         {entities.ConferenceRoom.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                             </ul>
                         </div>
@@ -78,29 +75,29 @@ const Dashboard = (props: dashboardProps) => {
                         <div>
                             <ul>
                                 <li>
-                                    <Link to={entities.ExternalCallFilter.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.ExternalCallFilter.path}>
                                         {entities.ExternalCallFilter.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.Calendar.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.Calendar.path}>
                                         {entities.Calendar.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.Schedule.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.Schedule.path}>
                                         {entities.Schedule.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.MatchList.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.MatchList.path}>
                                         {entities.MatchList.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.RouteLock.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.RouteLock.path}>
                                         {entities.RouteLock.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                             </ul>
                         </div>
@@ -114,19 +111,19 @@ const Dashboard = (props: dashboardProps) => {
                         <div>
                             <ul>
                                 <li>
-                                    <Link to={entities.OutgoingDdiRule.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.OutgoingDdiRule.path}>
                                         {entities.OutgoingDdiRule.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.PickUpGroup.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.PickUpGroup.path}>
                                         {entities.PickUpGroup.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.CallAcl.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.CallAcl.path}>
                                         {entities.CallAcl.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                             </ul>
                         </div>
@@ -136,32 +133,32 @@ const Dashboard = (props: dashboardProps) => {
                         <div>
                             <ul>
                                 <li>
-                                    <Link to={entities.Locution.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.Locution.path}>
                                         {entities.Locution.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.MusicOnHold.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.MusicOnHold.path}>
                                         {entities.MusicOnHold.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <Link to={entities.Fax.path} className={classes.link}>
+                        <StyledDashboardLink to={entities.Fax.path}>
                             {entities.Fax.title}
-                        </Link>
+                        </StyledDashboardLink>
                     </li>
                     <li>
-                        <Link to={entities.CompanyService.path} className={classes.link}>
+                        <StyledDashboardLink to={entities.CompanyService.path}>
                             {entities.CompanyService.title}
-                        </Link>
+                        </StyledDashboardLink>
                     </li>
                     <li>
-                        <Link to={entities.RatingProfile.path} className={classes.link}>
+                        <StyledDashboardLink to={entities.RatingProfile.path}>
                             {entities.RatingProfile.title}
-                        </Link>
+                        </StyledDashboardLink>
                     </li>
                     <li>
                         Invoices
@@ -174,24 +171,24 @@ const Dashboard = (props: dashboardProps) => {
                                     Active calls
                                 </li>
                                 <li>
-                                    <Link to={entities.UsersCdr.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.UsersCdr.path}>
                                         {entities.UsersCdr.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.BillableCall.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.BillableCall.path}>
                                         {entities.BillableCall.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.CallCsvScheduler.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.CallCsvScheduler.path}>
                                         {entities.CallCsvScheduler.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <Link to={entities.Recording.path} className={classes.link}>
+                                    <StyledDashboardLink to={entities.Recording.path}>
                                         {entities.Recording.title}
-                                    </Link>
+                                    </StyledDashboardLink>
                                 </li>
                             </ul>
                         </div>
@@ -201,15 +198,5 @@ const Dashboard = (props: dashboardProps) => {
         </Grid>
     );
 };
-
-
-const useStyles = makeStyles((theme: any) => {
-    return ({
-        link: {
-            'color': theme.palette.primary.dark,
-            'text-decoration': 'none',
-        },
-    })
-});
 
 export default withRouter<any, any>(Dashboard);

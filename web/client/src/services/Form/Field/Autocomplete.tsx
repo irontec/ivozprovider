@@ -1,8 +1,8 @@
 import { withRouter } from "react-router-dom";
 import ReactDOMServer from 'react-dom/server';
 import { useEffect, useState, useCallback } from 'react';
-import { TextField, } from '@material-ui/core';
-import MuiAutocomplete from '@material-ui/lab/Autocomplete';
+import { TextField, } from '@mui/material';
+import MuiAutocomplete from '@mui/material/Autocomplete';
 import EntityInterface from 'entities/EntityInterface';
 
 interface AutocompleteProps extends EntityInterface {
@@ -77,7 +77,7 @@ const Autocomplete = (props: AutocompleteProps) => {
     [arrayChoices]
   );
 
-  const getOptionSelected = useCallback(
+  const isOptionEqualToValue = useCallback(
     (option: any, value: any): boolean => {
       // eslint-disable-next-line
       if (option.value == value) {
@@ -101,7 +101,6 @@ const Autocomplete = (props: AutocompleteProps) => {
         <TextField
           {...params}
           name={name}
-          variant="outlined"
           label={label}
           InputProps={InputProps}
           InputLabelProps={{ shrink: true, required: required }}
@@ -123,7 +122,7 @@ const Autocomplete = (props: AutocompleteProps) => {
       onChange={onChangeWrapper}
       options={arrayChoices}
       getOptionLabel={getOptionLabel}
-      getOptionSelected={getOptionSelected}
+      isOptionEqualToValue={isOptionEqualToValue}
       filterSelectedOptions
       renderInput={renderInput}
 

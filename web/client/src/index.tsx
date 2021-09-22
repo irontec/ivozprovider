@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import * as locales from '@material-ui/core/locale';
+import { ThemeProvider, createTheme, StyledEngineProvider } from '@mui/material';
+import * as locales from '@mui/material/locale';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StoreProvider, createStore } from "easy-peasy";
@@ -12,17 +12,18 @@ const currentLanguage = i18n.language.substring(0, 2) === 'es'
   ? 'esES'
   : 'enUS';
 
-const theme = createMuiTheme({}, locales[currentLanguage]);
-
+const theme = createTheme({}, locales[currentLanguage]);
 const store = createStore(storeModel);
 
 ReactDOM.render(
   //<React.StrictMode>
-  <ThemeProvider theme={theme}>
-    <StoreProvider store={store}>
-      <App />
-    </StoreProvider>
-  </ThemeProvider>
+  <StyledEngineProvider injectFirst>
+    <ThemeProvider theme={theme}>
+      <StoreProvider store={store}>
+        <App />
+      </StoreProvider>
+    </ThemeProvider>
+  </StyledEngineProvider>
   //</React.StrictMode>
   ,
   document.getElementById('root')

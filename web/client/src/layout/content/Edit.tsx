@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { withRouter } from "react-router-dom";
 import { FormikHelpers, useFormik } from 'formik';
-import {
-  Button,
-  makeStyles
-} from '@material-ui/core';
+import { Button } from '@mui/material';
 import ErrorMessage from './shared/ErrorMessage';
 import EntityService from 'services/Entity/EntityService';
 import EntityInterface from 'entities/EntityInterface';
@@ -25,7 +22,6 @@ const Edit: any = (props: EditProps) => {
   const { marshaller, unmarshaller, history, match, row } = props;
   const { Form: EntityForm, entityService }: { Form: any, entityService: EntityService } = props;
 
-  const classes = useStyles();
   const entityId = match.params.id;
 
   const [error, setError] = useState(null);
@@ -78,9 +74,9 @@ const Edit: any = (props: EditProps) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <EntityForm formik={formik} edit={true} classes={classes} {...props} />
+        <EntityForm formik={formik} edit={true} {...props} />
         <br />
-        <Button color="primary" variant="contained" type="submit">
+        <Button variant="contained" type="submit">
           {_('Save')}
         </Button>
         {error && <ErrorMessage message={error} />}
@@ -88,12 +84,6 @@ const Edit: any = (props: EditProps) => {
     </div>
   )
 };
-
-const useStyles = makeStyles((theme: any) => ({
-  dropDown: {
-    minWidth: '250px'
-  }
-}));
 
 export default withRouter<any, any>(
   withRowData(Edit)

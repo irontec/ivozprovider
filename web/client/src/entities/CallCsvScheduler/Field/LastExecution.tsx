@@ -1,15 +1,14 @@
-import { makeStyles, Tooltip } from '@material-ui/core';
+import { Tooltip } from '@mui/material';
 import { PropertyCustomComponent, propertyCustomComponentProps } from 'services/Api/ParsedApiSpecInterface';
 import _ from 'services/Translations/translate';
+import { StyledLastExecutionErrorMsg, StyledLastExecutionSuccessMsg } from './LastExecution.styles';
 
 type LastExecutionProps = propertyCustomComponentProps & {
     lastExecution: string,
     lastExecutionError: string
 }
 
-const LastExecution:PropertyCustomComponent<LastExecutionProps> = (props: LastExecutionProps) => {
-
-    const classes = listDecoratorStyles();
+const LastExecution: PropertyCustomComponent<LastExecutionProps> = (props: LastExecutionProps) => {
 
     let { lastExecution, lastExecutionError } = props;
     lastExecution = lastExecution.replace('T', ' ');
@@ -18,7 +17,7 @@ const LastExecution:PropertyCustomComponent<LastExecutionProps> = (props: LastEx
         return (
             <span>
                 <Tooltip title={lastExecutionError}>
-                    <span className={classes.error}>&#9888;</span>
+                    <StyledLastExecutionErrorMsg>&#9888;</StyledLastExecutionErrorMsg>
                 </Tooltip>
                 {lastExecution}
             </span>
@@ -28,30 +27,11 @@ const LastExecution:PropertyCustomComponent<LastExecutionProps> = (props: LastEx
     return (
         <span>
             <Tooltip title={_('Successful execution')}>
-                <span className={classes.success}>&#10004;</span>
+                <StyledLastExecutionSuccessMsg>&#10004;</StyledLastExecutionSuccessMsg>
             </Tooltip>
             {lastExecution}
         </span>
     );
 }
-
-const listDecoratorStyles = makeStyles((theme: any) => ({
-    error: {
-      color: 'red',
-      fontWeight: 'bold',
-      fontSize: '1.5em',
-      lineHeight: '20px',
-      verticalAlign: 'middle',
-      paddingRight: '5px',
-    },
-    success: {
-      color: 'green',
-      fontWeight: 'bold',
-      fontSize: '1.5em',
-      lineHeight: '20px',
-      verticalAlign: 'middle',
-      paddingRight: '5px',
-    },
-}));
 
 export default LastExecution;

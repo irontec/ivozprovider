@@ -1,7 +1,5 @@
 import { useState, useEffect, ReactNode } from 'react';
-import {
-    withStyles
-} from '@material-ui/core';
+import { withStyles } from '@mui/styles';
 import FilterDialog from './FilterDialog';
 import ContentFilterRow from './ContentFilterRow';
 import _ from 'services/Translations/translate';

@@ -1,4 +1,4 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
 import EntityService from 'services/Entity/EntityService';
@@ -7,64 +7,64 @@ import _ from 'services/Translations/translate';
 import Form from './Form';
 import entities from '../index';
 
-const properties:PropertiesList = {
-    'startTime':  {
+const properties: PropertiesList = {
+    'startTime': {
         label: 'Start time',
     },
-    'callid':  {
+    'callid': {
         label: 'Call ID',
     },
-    'caller':  {
+    'caller': {
         label: 'Caller',
     },
-    'callee':  {
+    'callee': {
         label: 'Callee',
     },
-    'destinationName':  {
+    'destinationName': {
         label: 'Destination',
     },
-    'direction':  {
+    'direction': {
         label: 'Direction',
         enum: {
             'inbound': _('Inbound'),
             'outbound': _('Outbound'),
         }
     },
-    'invoice':  {
+    'invoice': {
         label: 'Invoice',
     },
-    'price':  {
+    'price': {
         label: 'Price',
     },
-    'duration':  {
+    'duration': {
         label: 'Duration',
     },
-    'cost':  {
+    'cost': {
         label: 'Cost',
     },
-    'carrierName':  {
+    'carrierName': {
         label: 'Carrier',
     },
-    'ratingPlanName':  {
+    'ratingPlanName': {
         label: 'Rating plan',
     },
-    'endpointType':  {
+    'endpointType': {
         label: 'Endpoint type',
     },
-    'endpointId':  {
+    'endpointId': {
         label: 'Endpoint id',
     },
-    'endpointName':  {
+    'endpointName': {
         label: 'Endpoint name',
     },
-    'ddiProvider':  {
+    'ddiProvider': {
         label: 'DDI Provider',
     },
 };
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
 
-    const promises= [];
+    const promises = [];
     const { Ddi } = entities;
 
     promises.push(
@@ -90,11 +90,11 @@ const columns = [
     'price',
 ];
 
-const billableCall:EntityInterface = {
+const billableCall: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'BillableCall',
-    title: _('External call', {count: 2}),
+    title: _('External call', { count: 2 }),
     path: '/billable_calls',
     properties,
     columns,

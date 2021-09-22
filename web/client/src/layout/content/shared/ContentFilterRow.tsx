@@ -1,8 +1,7 @@
 import React, { useState, MouseEvent, ChangeEvent } from 'react';
-import {
-    TextField, withStyles, Grid, Menu, MenuItem, IconButton
-} from '@material-ui/core';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import { TextField, Grid, Menu, MenuItem, IconButton } from '@mui/material';
+import { withStyles } from '@mui/styles';
+import Autocomplete from '@mui/material/Autocomplete';
 import FilterIconFactory from 'icons/FilterIconFactory';
 
 const ContentFilterRow = function (props: any) {
@@ -84,7 +83,6 @@ const ContentFilterRow = function (props: any) {
                     anchorEl={anchorRef.current}
                     open={open}
                     onClose={handleClose}
-                    getContentAnchorEl={null}
                     anchorOrigin={{
                         vertical: 'top',
                         horizontal: 'right',
@@ -139,7 +137,7 @@ const ContentFilterRow = function (props: any) {
                             }}
                             style={{ minWidth: '200px' }}
                             renderInput={(params: any) => (
-                                <TextField {...params} name={columnName} label={columnName} variant="outlined" fullWidth />
+                                <TextField {...params} name={columnName} label={columnName} fullWidth />
                             )}
                         />
                     }

@@ -1,4 +1,4 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import EntityService from 'services/Entity/EntityService';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
@@ -7,9 +7,9 @@ import _ from 'services/Translations/translate';
 import Form from './Form'
 import entities from '../index';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
-        label:_('Name'),
+        label: _('Name'),
         helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
     },
     'mac': {
@@ -75,7 +75,7 @@ const properties:PropertiesList = {
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
 
-    const promises= [];
+    const promises = [];
     const { TerminalModel } = entities;
 
     promises.push(
@@ -93,13 +93,13 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
     return data;
 }
 
-const terminal:EntityInterface = {
+const terminal: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Terminal',
-    title: _('Terminal', {count: 2}),
+    title: _('Terminal', { count: 2 }),
     path: '/terminals',
-    toStr: (row:any) => row.name,
+    toStr: (row: any) => row.name,
     properties,
     Form,
     foreignKeyResolver

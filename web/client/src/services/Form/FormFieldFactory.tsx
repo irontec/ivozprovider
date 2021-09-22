@@ -1,4 +1,6 @@
-import { FormControlLabel, TextField, Switch, FormHelperText, LinearProgress, FormControl, makeStyles, Theme, InputAdornment } from '@material-ui/core';
+import {
+    FormControlLabel, Switch, FormHelperText, LinearProgress, InputAdornment
+} from '@mui/material';
 import { ScalarProperty, FkProperty, PropertySpec, PropertyCustomComponent } from 'services/Api/ParsedApiSpecInterface';
 import EntityService from 'services/Entity/EntityService';
 import { useFormikType } from './types';
@@ -6,30 +8,17 @@ import Dropdown from 'services/Form/Field/Dropdown';
 import React from 'react';
 import Autocomplete from './Field/Autocomplete';
 import CustomComponentWrapper from './Field/CustomComponentWrapper';
-import { Alert } from '@material-ui/lab';
+import Alert from '@mui/material/Alert';
 import FileUploader from './Field/FileUploader';
+import { StyledSwitchFormControl, StyledtextField, StyledLinearProgress } from './FormFieldFactory.styles';
 
 export default class FormFieldFactory {
-    private styles: any;
 
     constructor(
         private entityService: EntityService,
         private formik: useFormikType,
         private changeHandler: (event: any) => void
     ) {
-        this.styles = makeStyles((theme: Theme) => {
-            return {
-                switch: {
-                    marginTop: '10px',
-                },
-                inputText: {
-                    marginTop: '0px',
-                },
-                linearProgress: {
-                    paddingTop: '60px',
-                }
-            };
-        });
     }
 
     public getFormField(fld: string, choices?: any, readOnly: boolean = false) {
@@ -61,7 +50,6 @@ export default class FormFieldFactory {
 
         const disabled = (property as ScalarProperty).readOnly || readOnly;
 
-        const classes: any = this.styles();
         const multiSelect = (property as ScalarProperty).type === 'array';
         const fileUpload = (property as ScalarProperty).type === 'file';
 
@@ -79,7 +67,7 @@ export default class FormFieldFactory {
         if (!fileUpload && ((property as FkProperty).$ref || multiSelect)) {
 
             if (!choices) {
-                return (<div className={classes.linearProgress}><LinearProgress /></div>);
+                return (<StyledLinearProgress><LinearProgress /></StyledLinearProgress>);
             }
 
             if (property.null) {
@@ -135,7 +123,7 @@ export default class FormFieldFactory {
             const checked = !!(this.formik.values[fld]);
 
             return (
-                <FormControl className={classes.switch} fullWidth={true} variant="outlined">
+                <StyledSwitchFormControl>
                     <FormControlLabel
                         control={<Switch
                             name={fld}
@@ -146,13 +134,13 @@ export default class FormFieldFactory {
                         />}
                         label={property.label}
                     />
-                </FormControl>
+                </StyledSwitchFormControl>
             );
         }
 
-        const inputProps: any = {};
+        const InputProps: any = {};
         if (property.prefix) {
-            inputProps.startAdornment = (
+            InputProps.startAdornment = (
                 <InputAdornment position="start">{property.prefix}</InputAdornment>
             );
         }
@@ -172,21 +160,17 @@ export default class FormFieldFactory {
         if ((property as ScalarProperty).type === 'integer') {
 
             return (
-                <TextField
+                <StyledtextField
                     name={fld}
                     type="number"
                     value={this.formik.values[fld]}
                     disabled={disabled}
                     label={property.label}
-                    InputLabelProps={{ shrink: true, required: property.required }}
+                    required={property.required}
                     onChange={this.changeHandler}
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] && this.formik.errors[fld]}
-                    fullWidth={true}
-                    className={classes.inputText}
-                    margin="normal"
-                    variant="outlined"
-                    InputProps={inputProps}
+                    InputProps={InputProps}
                 />
             );
         }
@@ -195,7 +179,7 @@ export default class FormFieldFactory {
 
             if ((property as ScalarProperty).format === 'date-time') {
                 return (
-                    <TextField
+                    <StyledtextField
                         name={fld}
                         type="datetime-local"
                         value={this.formik.values[fld]}
@@ -204,56 +188,45 @@ export default class FormFieldFactory {
                         }}
                         disabled={disabled}
                         label={property.label}
-                        InputLabelProps={{ shrink: true, required: property.required }}
+                        required={property.required}
                         onChange={this.changeHandler}
                         error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                         helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                         fullWidth={true}
-                        className={classes.inputText}
-                        margin="normal"
-                        variant="outlined"
-                        InputProps={inputProps}
+                        InputProps={InputProps}
                     />
                 );
             }
 
             if ((property as ScalarProperty).format === 'time') {
                 return (
-                    <TextField
+                    <StyledtextField
                         name={fld}
                         type="time"
                         value={this.formik.values[fld]}
                         disabled={disabled}
                         label={property.label}
-                        InputLabelProps={{ shrink: true, required: property.required }}
+                        required={property.required}
                         onChange={this.changeHandler}
                         error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                         helperText={this.formik.touched[fld] && this.formik.errors[fld]}
-                        fullWidth={true}
-                        className={classes.inputText}
-                        margin="normal"
-                        variant="outlined"
-                        InputProps={inputProps}
+                        InputProps={InputProps}
                     />
                 );
             }
 
             return (
-                <TextField
+                <StyledtextField
                     name={fld}
                     type="text"
                     value={this.formik.values[fld]}
                     disabled={disabled}
                     label={property.label}
-                    InputLabelProps={{ shrink: true, required: property.required }}
+                    required={property.required}
                     onChange={this.changeHandler}
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] && this.formik.errors[fld]}
-                    fullWidth={true}
-                    className={classes.inputText}
-                    margin="normal"
-                    variant="outlined"
-                    InputProps={inputProps}
+                    InputProps={InputProps}
                 />
             );
         }

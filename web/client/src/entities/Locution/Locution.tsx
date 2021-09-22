@@ -1,10 +1,10 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import Form from './Form';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -20,11 +20,11 @@ const properties:PropertiesList = {
     }
 };
 
-const locution:EntityInterface = {
+const locution: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Locution',
-    title: _('Locution', {count: 2}),
+    title: _('Locution', { count: 2 }),
     path: '/locutions',
     properties,
     Form

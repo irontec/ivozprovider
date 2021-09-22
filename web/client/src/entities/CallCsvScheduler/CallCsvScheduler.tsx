@@ -1,11 +1,11 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import Form from './Form';
 import LastExecution from './Field/LastExecution';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -104,7 +104,7 @@ const columns = [
 
 export const marshaller = (values: any, properties: PropertiesList) => {
 
-    if(values.endpointType) {
+    if (values.endpointType) {
         delete values.endpointType;
     };
 
@@ -136,11 +136,11 @@ export const unmarshaller = (row: any, properties: PropertiesList) => {
     return response;
 };
 
-const callCsvScheduler:EntityInterface = {
+const callCsvScheduler: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'CallCsvScheduler',
-    title: _('Call csv scheduler', {count: 2}),
+    title: _('Call csv scheduler', { count: 2 }),
     path: '/call_csv_schedulers',
     properties,
     columns,

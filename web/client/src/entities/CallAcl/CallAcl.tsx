@@ -1,4 +1,4 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
@@ -18,7 +18,7 @@ const properties: PropertiesList = {
     //@TODO POSPONED CallAclRelMatchLists subscreen list
 };
 
-const callAcl:EntityInterface = {
+const callAcl: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'CallAcl',

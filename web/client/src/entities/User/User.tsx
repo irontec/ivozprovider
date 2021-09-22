@@ -1,4 +1,4 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
@@ -7,7 +7,7 @@ import EntityService from 'services/Entity/EntityService';
 import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
 import entities from '../index';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -23,7 +23,7 @@ const properties:PropertiesList = {
     },
     'active': {
         label: _('Active'),
-        enum:  {
+        enum: {
             '0': _('No'),
             '1': _('Yes'),
         },
@@ -111,10 +111,10 @@ const properties:PropertiesList = {
         }
     },
     'voicemailLocution': {
-        label:_('Voicemail Locution'),
+        label: _('Voicemail Locution'),
     },
     'voicemailSendMail': {
-        label:_('Voicemail send mail'),
+        label: _('Voicemail send mail'),
         enum: {
             '0': _('No'),
             '1': _('Yes'),
@@ -159,20 +159,19 @@ const properties:PropertiesList = {
         },
         visualToggle: {
             '0': {
-              show: [],
-              hide: ['rejectCallMethod'],
+                show: [],
+                hide: ['rejectCallMethod'],
             },
             '1': {
-              show: ['rejectCallMethod'],
-              hide: [],
+                show: ['rejectCallMethod'],
+                hide: [],
             },
         }
     }
 };
 
-async function foreignKeyResolver(data: any, entityService: EntityService)
-{
-    const promises= [];
+async function foreignKeyResolver(data: any, entityService: EntityService) {
+    const promises = [];
     const { Ddi, Extension, Terminal } = entities;
 
     promises.push(
@@ -207,13 +206,13 @@ async function foreignKeyResolver(data: any, entityService: EntityService)
     return data;
 }
 
-const user:EntityInterface = {
+const user: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'User',
-    title: _('User', {count: 2}),
+    title: _('User', { count: 2 }),
     path: '/users',
-    toStr: (row:any) => `${row.name} ${row.lastname}`,
+    toStr: (row: any) => `${row.name} ${row.lastname}`,
     properties,
     Form,
     foreignKeyResolver

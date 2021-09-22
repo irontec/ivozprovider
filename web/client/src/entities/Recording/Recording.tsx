@@ -1,10 +1,10 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import TypeGhost from './Field/TypeGhost';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'callid': {
         label: _('Callid'),
     },
@@ -44,11 +44,11 @@ const columns = [
     'duration',
 ];
 
-const recording:EntityInterface = {
+const recording: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Recording',
-    title: _('Recording', {count: 2}),
+    title: _('Recording', { count: 2 }),
     path: '/recordings',
     properties,
     columns,

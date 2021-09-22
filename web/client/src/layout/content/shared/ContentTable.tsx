@@ -1,20 +1,18 @@
 /* eslint-disable no-script-url */
 
 import React, { useState, MouseEvent } from 'react';
-import {
-  Table, TablePagination, TableBody, Tooltip, Fab, makeStyles, Chip
-} from '@material-ui/core';
-import { Link } from "react-router-dom";
-import SearchIcon from '@material-ui/icons/Search';
-import QueueIcon from '@material-ui/icons/Queue';
+import { Table, TablePagination, TableBody, Tooltip, Fab } from '@mui/material';
+import QueueIcon from '@mui/icons-material/Queue';
+import SearchIcon from '@mui/icons-material/Search';
 import ContentFilter, { getFilterTypeLabel, getFilterLabel } from './ContentFilter';
 import ContentTableHead from './ContentTableHead';
 import FilterIconFactory from 'icons/FilterIconFactory';
 import ContentTableRow from './ContentTableRow';
 import EntityService from 'services/Entity/EntityService';
 import _ from 'services/Translations/translate';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import * as locales from '@material-ui/core/locale';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import * as locales from '@mui/material/locale';
+import { StyledActionButtonContainer, StyledLink, StyledFab, StyledChip, StyledChipIcon } from './ContentTable.styles';
 
 interface propsType {
   loading?: boolean,
@@ -35,7 +33,6 @@ interface propsType {
 }
 
 export default function ContentTable(props: propsType) {
-  const classes = useStyles();
   const {
     path,
     entityService,
@@ -82,26 +79,23 @@ export default function ContentTable(props: propsType) {
 
   return (
     <React.Fragment>
-      <div className={classes.title}>
+      <StyledActionButtonContainer>
         <div />
-        <div className={classes.fabContainer}>
+        <div>
           <Tooltip title={_('Search')}>
-            <Fab
-              color="secondary" size="small" variant="extended" className={classes.fab}
-              onClick={filterButtonHandler}
-            >
+            <StyledFab onClick={filterButtonHandler}>
               <SearchIcon />
-            </Fab>
+            </StyledFab>
           </Tooltip>
-          {acl.create && <Link to={`${path}/create`} className={classes.link}>
+          {acl.create && <StyledLink to={`${path}/create`}>
             <Tooltip title="Add">
               <Fab color="secondary" size="small" variant="extended">
                 <QueueIcon />
               </Fab>
             </Tooltip>
-          </Link>}
+          </StyledLink>}
         </div>
-      </div>
+      </StyledActionButtonContainer>
 
       <ContentFilter
         entityService={entityService}
@@ -122,10 +116,9 @@ export default function ContentTable(props: propsType) {
           const fieldStr = columns[fldName].label;
 
           const icon = (
-            <div className={classes.chipIconContainer}>
-              <span className={classes.chipPrefix}>{fieldStr}</span>
+            <StyledChipIcon fieldName={fieldStr}>
               <FilterIconFactory name={criteria[fldName].type} fontSize='small' />
-            </div>
+            </StyledChipIcon>
           );
 
           const tooltip = (<span>
@@ -139,13 +132,12 @@ export default function ContentTable(props: propsType) {
               key={idx}
               title={tooltip}
             >
-              <Chip
+              <StyledChip
                 icon={icon}
                 label={getFilterLabel(criteria[fldName])}
                 onDelete={() => {
                   removeFilter(fldName);
                 }}
-                className={classes.chip}
               />
             </Tooltip>
           );
@@ -156,7 +148,6 @@ export default function ContentTable(props: propsType) {
         <ContentTableHead
           path={path}
           entityService={entityService}
-          classes={classes}
           order={orderDirection}
           orderBy={orderBy}
           onRequestSort={setSort}
@@ -175,7 +166,7 @@ export default function ContentTable(props: propsType) {
           })}
         </TableBody>
       </Table>
-      <ThemeProvider theme={(outerTheme) => createMuiTheme(outerTheme, locales['esES'])}>
+      <ThemeProvider theme={(outerTheme) => createTheme(outerTheme, locales['esES'])}>
         <TablePagination
           component="div"
           page={page - 1}
@@ -188,11 +179,11 @@ export default function ContentTable(props: propsType) {
           nextIconButtonProps={{
             'aria-label': 'next page',
           }}
-          onChangePage={(event: any, newPage: any) => {
+          onPageChange={(event: any, newPage: any) => {
             setPage(newPage + 1);
             setLoading(true);
           }}
-          onChangeRowsPerPage={(newRowsPerpage: any) => {
+          onRowsPerPageChange={(newRowsPerpage: any) => {
             setRowsPerPage(newRowsPerpage.target.value);
             setLoading(true);
           }}
@@ -201,45 +192,3 @@ export default function ContentTable(props: propsType) {
     </React.Fragment >
   );
 }
-
-
-const useStyles = makeStyles((theme: any) => ({
-  title: {
-    display: 'flex',
-    justifyContent: 'space-between'
-  },
-  link: {
-    textDecoration: 'none',
-    color: 'inherit',
-  },
-  fabContainer: {
-    alignContent: 'flex-end'
-  },
-  fab: {
-    marginRight: '10px'
-  },
-  visuallyHidden: {
-    border: 0,
-    clip: 'rect(0 0 0 0)',
-    height: 1,
-    margin: -1,
-    overflow: 'hidden',
-    padding: 0,
-    position: 'absolute',
-    top: 20,
-    width: 1,
-  },
-  chip: {
-    margin: '0 5px',
-  },
-  chipIconContainer: {
-    paddingTop: '5px',
-  },
-  chipPrefix: {
-    display: 'inline-flex',
-    userSelect: 'none',
-    paddingLeft: '12px',
-    paddingRight: '5px',
-    verticalAlign: 'super',
-  }
-}));

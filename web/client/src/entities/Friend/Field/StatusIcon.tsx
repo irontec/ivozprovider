@@ -1,8 +1,6 @@
 import _ from 'services/Translations/translate';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import RotateLeftIcon from '@material-ui/icons/RotateLeft';
-import { makeStyles, Tooltip } from '@material-ui/core';
-import React from 'react';
+import { Tooltip } from '@mui/material';
+import { StyledStatusIconArrowForwardIcon, StyledStatusIconRotateLeftIcon } from './StatusIcon.styles';
 
 interface StatusIconProps {
     directConnectivity: string,
@@ -11,7 +9,6 @@ interface StatusIconProps {
 
 const StatusIcon = (props: StatusIconProps) => {
 
-    const classes = statusStyles();
     const { directConnectivity, _context } = props;
     const writeContext = (_context === 'write');
 
@@ -20,7 +17,7 @@ const StatusIcon = (props: StatusIconProps) => {
         if (writeContext) {
             return (
                 <span>
-                    <ArrowForwardIcon className={classes.green} />
+                    <StyledStatusIconArrowForwardIcon />
                     {_('Direct connectivity')}
                 </span>
             );
@@ -28,7 +25,7 @@ const StatusIcon = (props: StatusIconProps) => {
 
         return (
             <Tooltip title={_('Direct connectivity')}>
-                <ArrowForwardIcon className={classes.green} />
+                <StyledStatusIconArrowForwardIcon />
             </Tooltip>
         );
     }
@@ -38,7 +35,7 @@ const StatusIcon = (props: StatusIconProps) => {
         if (writeContext) {
             return (
                 <span>
-                    <RotateLeftIcon className={classes.green} />
+                    <StyledStatusIconRotateLeftIcon />
                     {_('Inter company connectivity')}
                 </span>
             );
@@ -46,7 +43,7 @@ const StatusIcon = (props: StatusIconProps) => {
 
         return (
             <Tooltip title={_('Inter company connectivity')}>
-                <RotateLeftIcon className={classes.green} />
+                <StyledStatusIconRotateLeftIcon />
             </Tooltip>
         );
     }
@@ -54,13 +51,5 @@ const StatusIcon = (props: StatusIconProps) => {
     //@TODO POSPONED else RegisterStatus::getLocationStatus
     return (<span />);
 }
-
-
-const statusStyles = makeStyles((theme: any) => ({
-    green: {
-      color: 'green',
-      verticalAlign: 'bottom',
-    },
-}));
 
 export default StatusIcon;

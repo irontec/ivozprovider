@@ -1,11 +1,11 @@
 import {
     TableCell, TableHead, TableRow, TableSortLabel
-} from '@material-ui/core';
+} from '@mui/material';
+import { StyledTableSortLabelVisuallyHidden } from './ContentTableHead.styles';
 
 const ContentTableHead = function (props: any) {
     const {
         entityService,
-        classes,
         order,
         orderBy,
         onRequestSort
@@ -28,7 +28,7 @@ const ContentTableHead = function (props: any) {
                     <TableCell
                         key={key}
                         align='left'
-                        padding='default'
+                        padding='normal'
                         sortDirection={orderBy === key ? order : false}
                     >
                         <TableSortLabel
@@ -38,9 +38,9 @@ const ContentTableHead = function (props: any) {
                         >
                             {columns[key].label}
                             {orderBy === key ? (
-                                <span className={classes.visuallyHidden}>
+                                <StyledTableSortLabelVisuallyHidden>
                                     {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                </span>
+                                </StyledTableSortLabelVisuallyHidden>
                             ) : null}
                         </TableSortLabel>
                     </TableCell>
@@ -48,7 +48,7 @@ const ContentTableHead = function (props: any) {
                 <TableCell
                     key={'empty slot'}
                     align='left'
-                    padding='default'
+                    padding='normal'
                 ></TableCell>
             </TableRow>
         </TableHead>

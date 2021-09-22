@@ -9,8 +9,8 @@ import LowerThan from './lowerThan';
 import LowerThanEqual from './lowerThanEqual';
 import GreaterThan from './greaterThan';
 import GreaterThanEqual from './greaterThanEqual';
-import NotInterestedIcon from '@material-ui/icons/NotInterested';
-import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import NotInterestedIcon from '@mui/icons-material/NotInterested';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 
 export default function FilterIconFactory(props: any = {}) {
 

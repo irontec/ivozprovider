@@ -1,9 +1,9 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
 import _ from 'services/Translations/translate';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
 
 };
 
@@ -14,13 +14,13 @@ export const acl = {
     delete: false,
 };
 
-const terminal:EntityInterface = {
+const terminal: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'TerminalModel',
-    title: _('Terminal model', {count: 2}),
+    title: _('Terminal model', { count: 2 }),
     path: '/terminal_models',
-    toStr: (row:any) => row.name,
+    toStr: (row: any) => row.name,
     properties,
     acl
 };

@@ -1,4 +1,4 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
@@ -20,12 +20,12 @@ const routableFields = [
     'extension',
 ];
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
     'locution': {
-        label:_('Locution'),
+        label: _('Locution'),
     },
     'routetype': {
         label: _('Route type'),
@@ -128,7 +128,7 @@ const columns = [
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
 
-    const promises= [];
+    const promises = [];
     const {
         User, HuntGroup, ConferenceRoom, Queue, Ivr, Extension, Country, Friend
     } = entities;
@@ -222,7 +222,7 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
 
     for (const idx in data) {
 
-        switch(data[idx].routetype) {
+        switch (data[idx].routetype) {
             case 'user':
                 remapFk(data[idx], 'user', 'target');
                 break;
@@ -273,13 +273,13 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
     return data;
 }
 
-const conditionalRoute:EntityInterface = {
+const conditionalRoute: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'ConditionalRoute',
-    title: _('Conditional Route', {count: 2}),
+    title: _('Conditional Route', { count: 2 }),
     path: '/conditional_routes',
-    toStr: (row:any) => row.name,
+    toStr: (row: any) => row.name,
     properties,
     columns,
     Form,

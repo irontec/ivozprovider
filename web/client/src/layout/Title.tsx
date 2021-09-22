@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 
-export default function Title(props:any) {
+export default function Title(props: any) {
   return (
     <Typography component="h2" variant="h6" color="inherit" gutterBottom>
       {props.children}

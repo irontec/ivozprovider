@@ -1,4 +1,4 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
 import _ from 'services/Translations/translate';
 import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
@@ -7,7 +7,7 @@ import EntityService from 'services/Entity/EntityService';
 import entities from '../index';
 import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -36,7 +36,7 @@ const properties:PropertiesList = {
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
 
-    const promises= [];
+    const promises = [];
     const { Ddi } = entities;
 
     promises.push(
@@ -60,11 +60,11 @@ const columns = [
     'forcedDdi',
 ];
 
-const outgoingDdiRule:EntityInterface = {
+const outgoingDdiRule: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'OutgoingDdiRule',
-    title: _('Outgoing DDI Rule', {count: 2}),
+    title: _('Outgoing DDI Rule', { count: 2 }),
     path: '/outgoing_ddi_rules',
     properties,
     columns,

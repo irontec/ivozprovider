@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { withRouter } from "react-router-dom";
 import { FormikHelpers, useFormik } from 'formik';
-import {
-  Button,
-  makeStyles
-} from '@material-ui/core';
+import { Button } from '@mui/material';
 import ErrorMessage from './shared/ErrorMessage';
 import EntityService from 'services/Entity/EntityService';
 import EntityInterface from 'entities/EntityInterface';
@@ -26,7 +23,6 @@ const Create = (props: CreateProps) => {
   const apiPost = useStoreActions((actions: any) => {
     return actions.api.post
   });
-  const classes = useStyles();
 
   const submit = async (values: any, actions: FormikHelpers<any>) => {
 
@@ -83,9 +79,9 @@ const Create = (props: CreateProps) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <EntityForm formik={formik} create={true} classes={classes} {...props} />
+        <EntityForm formik={formik} create={true} {...props} />
         <br />
-        <Button color="primary" variant="contained" type="submit">
+        <Button variant="contained" type="submit">
           {_('Save')}
         </Button>
         {error && <ErrorMessage message={error} />}
@@ -93,11 +89,5 @@ const Create = (props: CreateProps) => {
     </div>
   )
 };
-
-const useStyles = makeStyles((theme: any) => ({
-  dropDown: {
-    minWidth: '250px'
-  }
-}));
 
 export default withRouter<any, any>(Create);

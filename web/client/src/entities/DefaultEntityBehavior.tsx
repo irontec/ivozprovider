@@ -3,11 +3,11 @@ import EntityService from 'services/Entity/EntityService';
 import FormFieldFactory from 'services/Form/FormFieldFactory';
 import { useFormikType } from 'services/Form/types';
 import ApiClient from "services/Api/ApiClient";
-import { Grid, makeStyles } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import { Grid } from '@mui/material';
 import { PropertySpec, ScalarProperty } from 'services/Api/ParsedApiSpecInterface';
 import EntityInterface, { PropertiesList } from './EntityInterface';
 import ViewFieldValue from 'services/Form/Field/ViewFieldValue';
+import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
 
 export const initialValues = {};
 
@@ -156,24 +156,6 @@ export type FieldsetGroups = {
     fields: Array<string>
 }
 
-const useStyles = makeStyles((theme: any) => ({
-    legend: {
-        marginBottom: '40px',
-        paddingBottom: '10px',
-        borderBottom: '1px solid #aaa',
-    },
-    grid: {
-        paddingLeft: '15px',
-        marginBottom: '15px',
-    },
-    hidden: {
-        display: 'none',
-    },
-    visible: {
-        display: 'block',
-    }
-}));
-
 export type EntityFormProps = EntityInterface & {
     create?: boolean,
     edit?: boolean,
@@ -201,8 +183,6 @@ const Form = (props: EntityFormProps) => {
             fields: columnNames
         });
     }
-
-    const classes = useStyles();
 
     let initialVisualToggles = entityService.getVisualToggles();
     const initialValues = formik.initialValues;
@@ -247,37 +227,37 @@ const Form = (props: EntityFormProps) => {
                     false
                 );
 
-                const className = visible
-                    ? classes.visible
-                    : classes.hidden;
+                const visibilityStyles = visible
+                    ? { display: 'block' }
+                    : { display: 'none' };
 
                 return (
-                    <div key={idx} className={className}>
-                        <Typography variant="h6" color="inherit" gutterBottom className={classes.legend}>
+                    <div key={idx} style={visibilityStyles}>
+                        <StyledGroupLegend>
                             {group.legend}
-                        </Typography>
-                        <Grid container spacing={3} className={classes.grid}>
+                        </StyledGroupLegend>
+                        <StyledGroupGrid>
                             {group.fields.map((columnName: string, idx: number) => {
 
                                 const choices = fkChoices
                                     ? fkChoices[columnName]
                                     : null;
 
-                                const className = visualToggles[columnName]
-                                    ? classes.visible
-                                    : classes.hidden;
+                                const visibilityStyles = visualToggles[columnName]
+                                    ? { display: 'block' }
+                                    : { display: 'none' };
 
                                 const readOnly = readOnlyProperties && readOnlyProperties[columnName]
                                     ? true
                                     : false;
 
                                 return (
-                                    <Grid item xs={12} md={6} lg={4} key={idx} className={className}>
+                                    <Grid item xs={12} md={6} lg={4} key={idx} style={visibilityStyles}>
                                         {formFieldFactory.getFormField(columnName, choices, readOnly)}
                                     </Grid>
                                 );
                             })}
-                        </Grid>
+                        </StyledGroupGrid>
                     </div>
                 );
             })}
@@ -303,17 +283,15 @@ const View = (props: any) => {
         });
     }
 
-    const classes = useStyles();
-
     return (
         <React.Fragment>
             {groups.map((group: FieldsetGroups, idx: number) => {
                 return (
                     <div key={idx}>
-                        <Typography variant="h6" color="inherit" gutterBottom className={classes.legend}>
+                        <StyledGroupLegend>
                             {group.legend}
-                        </Typography>
-                        <Grid container spacing={3} className={classes.grid}>
+                        </StyledGroupLegend>
+                        <StyledGroupGrid>
                             {group.fields.map((columnName: string, idx: number) => {
 
                                 const properties = entityService.getProperties();
@@ -324,7 +302,7 @@ const View = (props: any) => {
                                     </Grid>
                                 );
                             })}
-                        </Grid>
+                        </StyledGroupGrid>
                     </div>
                 );
             })}

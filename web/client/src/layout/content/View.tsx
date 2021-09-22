@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { withRouter } from "react-router-dom";
-import { makeStyles } from '@material-ui/core';
 import EntityService from 'services/Entity/EntityService';
 import EntityInterface from 'entities/EntityInterface';
 import withRowData from './withRowData';
@@ -16,7 +15,6 @@ interface ViewProps extends EntityInterface {
 const View: any = (props: ViewProps) => {
 
   const { View: EntityView, row, entityService, foreignKeyResolver } = props;
-  const classes = useStyles();
   const [parsedData, setParsedData] = useState<any>({});
   const [foreignKeysResolved, setForeignKeysResolved] = useState<boolean>(false);
 
@@ -32,16 +30,10 @@ const View: any = (props: ViewProps) => {
 
   return (
     <div>
-      <EntityView {...props} classes={classes} row={parsedData} />
+      <EntityView {...props} row={parsedData} />
     </div>
   )
 };
-
-const useStyles = makeStyles((theme: any) => ({
-  dropDown: {
-    minWidth: '250px'
-  }
-}));
 
 export default withRouter<any, any>(
   withRowData(

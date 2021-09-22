@@ -1,14 +1,13 @@
-import { makeStyles, Container, Grid, Paper, LinearProgress, CssBaseline } from '@material-ui/core';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { Grid, LinearProgress, CssBaseline } from '@mui/material';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { BrowserRouter as Router } from "react-router-dom";
-import DateFnsAdapter from "@date-io/date-fns";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import { Header, Footer } from './layout/index';
 import AppRoutes from './AppRoutes';
+import { StyledAppContent, StyledAppBarSpacer, StyledAppApiLoading, StyledAppPaper, StyledContainer, StyledAppFlexDiv } from './App.styles';
 
 export default function App() {
-
-  const classes = useStyles();
 
   const apiSpecInitFn = useStoreActions((actions: any) => actions.apiSpec.init);
   const authInit = useStoreActions((actions: any) => actions.auth.init);
@@ -21,62 +20,37 @@ export default function App() {
 
   if (!apiSpec || Object.keys(apiSpec).length === 0) {
     return (
-      <div className={classes.loading}>
+      <StyledAppApiLoading>
         <LinearProgress />
         <br />
         Loading API definition...
-      </div>
+      </StyledAppApiLoading>
     );
   }
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsAdapter}>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
       <CssBaseline />
-      <div className={classes.root}>
+      <StyledAppFlexDiv>
         <Router>
           <Header loggedIn={!!token} />
-          <main className={classes.content}>
-            <div className={classes.appBarSpacer} />
-            <Container maxWidth={'lg'} className={classes.container}>
+          <StyledAppContent>
+            <StyledAppBarSpacer />
+            <StyledContainer maxWidth={'lg'}>
               <Grid container spacing={3}>
                 <Grid item xs={12}>
-                  <Paper className={classes.paper}>
-                      <AppRoutes token={token} apiSpec={apiSpec} />
-                  </Paper>
+                  <StyledAppPaper>
+                    <AppRoutes token={token} apiSpec={apiSpec} />
+                  </StyledAppPaper>
                 </Grid>
                 <Grid item xs={12}>
                   <Footer />
                 </Grid>
               </Grid>
-            </Container>
-          </main>
+            </StyledContainer>
+          </StyledAppContent>
         </Router>
-      </div>
-    </MuiPickersUtilsProvider>
+      </StyledAppFlexDiv>
+    </LocalizationProvider>
   );
 }
-
-const useStyles = makeStyles((theme: any) => ({
-  loading: {
-    'text-align': 'center',
-  },
-  root: {
-    display: 'flex'
-  },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    flexFlow: 'row wrap',
-    height: '100vh',
-    overflow: 'auto'
-  },
-  container: {
-    padding: theme.spacing(2),
-    marginLeft: 0,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    overflow: 'auto',
-    maxWidth: 'none'
-  }
-}));

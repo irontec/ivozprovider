@@ -1,16 +1,13 @@
+import { useState } from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import SnackbarContent from '@mui/material/SnackbarContent';
+import IconButton from '@mui/material/IconButton';
+import { StyledCloseIcon, StyledSnackbarContentMessageContainer } from './Message.styles';
 
-import React, { useState } from 'react';
-import Snackbar from '@material-ui/core/Snackbar';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
-import CloseIcon from '@material-ui/icons/Close';
-import IconButton from '@material-ui/core/IconButton';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+export default function Message(props: any) {
 
-export default function Message(props:any) {
-
-    const { message, contentStyles, icon } = props;
+    const { message, className, icon } = props;
     const [open, setOpen] = useState(true);
-    const classes = useStyles();
 
     const handleClose = () => {
         setOpen(false);
@@ -27,33 +24,19 @@ export default function Message(props:any) {
             onClose={handleClose}
         >
             <SnackbarContent
-                className={contentStyles}
+                className={className}
                 message={
-                    <span id="client-snackbar" className={classes.message}>
+                    <StyledSnackbarContentMessageContainer>
                         {icon}
-                        { message }
-                    </span>
+                        {message}
+                    </StyledSnackbarContentMessageContainer>
                 }
                 action={[
                     <IconButton key="close" aria-label="close" color="inherit" onClick={handleClose}>
-                        <CloseIcon className={classes.icon} />
+                        <StyledCloseIcon />
                     </IconButton>,
                 ]}
             />
         </Snackbar>
     );
 }
-
-const useStyles = makeStyles((theme: Theme) => ({
-    icon: {
-        fontSize: 20,
-    },
-    iconVariant: {
-        opacity: 0.9,
-        marginRight: theme.spacing(1),
-    },
-    message: {
-        display: 'flex',
-        alignItems: 'center',
-    },
-}));

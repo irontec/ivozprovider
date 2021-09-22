@@ -1,26 +1,32 @@
-
-import React from 'react';
-import InfoIcon from '@material-ui/icons/Info';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { styled } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import InfoIcon from '@mui/icons-material/Info';
 import Message from './Message';
 
-export default function InfoMessage(props:any) {
+export default function InfoMessage(props: any) {
 
     const { message } = props;
-    const classes = useStyles();
-
     return (
-        <Message
-            message={message}
-            contentStyles={classes.msg}
-            Icon={InfoIcon}
-        />
+        <StyledInfoMessage message={message} />
     );
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-    msg: {
-        backgroundColor: '#616161',
-        color: 'white'
+const StyledInfoMessage = styled(
+    (props: any) => {
+        const { className, message } = props;
+        return (
+            <Message
+                className={className}
+                message={message}
+                Icon={InfoIcon}
+            />
+        );
     }
-}));
+)(
+    ({ theme }: { theme: Theme }) => {
+        return {
+            backgroundColor: '#616161',
+            color: 'white'
+        }
+    }
+);
