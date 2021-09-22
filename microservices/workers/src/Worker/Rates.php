@@ -346,13 +346,15 @@ class Rates
                 }
             }
 
-            /**
-             * Create any missing tp_destinations from Destination table
-             */
-            $this->logger->debug('About to insert tp_destinations');
-            $this
-                ->tpDestinationRepository
-                ->syncWithBusiness();
+            if (!$disableDestinations) {
+                /**
+                 * Create any missing tp_destinations from Destination table
+                 */
+                $this->logger->debug('About to insert tp_destinations');
+                $this
+                    ->tpDestinationRepository
+                    ->syncWithBusiness();
+            }
 
             /**
              *  Update DestinationRates with each CSV row
