@@ -10,7 +10,7 @@ interface TpDestinationRepository extends ObjectRepository, Selectable
     /**
      * @return int affected rows
      */
-    public function syncWithBusiness();
+    public function syncWithBusiness($brandId);
 
     /**
      * @param string $destinationTag

@@ -353,7 +353,7 @@ class Rates
                 $this->logger->debug('About to insert tp_destinations');
                 $this
                     ->tpDestinationRepository
-                    ->syncWithBusiness();
+                    ->syncWithBusiness($brandId);
             }
 
             /**
