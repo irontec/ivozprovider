@@ -89,6 +89,19 @@ class Company extends CompanyAbstract implements CompanyInterface
                 );
             }
         }
+
+        $allowedOndemandRecord = in_array(
+            $this->getType(),
+            [
+                self::TYPE_VPBX,
+                self::TYPE_RESIDENTIAL
+            ],
+            true
+        );
+
+        if ($this->getOnDemandRecord() && ! $allowedOndemandRecord) {
+            throw new \DomainException('On demand record is only allowed on vpbx and residential clients');
+        }
     }
 
     /**
