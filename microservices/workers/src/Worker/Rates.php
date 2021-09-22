@@ -336,9 +336,14 @@ class Rates
             $this->logger->debug('About to insert Destinations');
             $destinationChunks = array_chunk($destinations, self::CHUNK_SIZE);
             foreach ($destinationChunks as $destination) {
-                $this
+                $affectedRows = $this
                     ->destinationRepository
                     ->insertIgnoreFromArray($destination);
+
+                // Reload CGRateS destinations only if new prefixes have been added
+                if ($affectedRows > 0) {
+                    $disableDestinations = false;
+                }
             }
 
             /**
@@ -373,14 +378,9 @@ class Rates
             $this->logger->debug('About to insert DestinationRates');
             $tpDestinationRateChunks = array_chunk($destinationRates, self::CHUNK_SIZE);
             foreach ($tpDestinationRateChunks as $destinationRates) {
-                $affectedRows = $this
+                $this
                     ->destinationRateRepository
                     ->insertIgnoreFromArray($destinationRates);
-
-                // Reload CGRateS destinations only if new prefixes have been added
-                if ($affectedRows > 0) {
-                    $disableDestinations = false;
-                }
             }
 
             /**
