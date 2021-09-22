@@ -3,13 +3,12 @@ import { PropertyCustomComponent, propertyCustomComponentProps, PropertySpec } f
 
 interface CustomComponentWrapperProps extends propertyCustomComponentProps {
     property: PropertySpec,
-    children: React.ReactElement,
+    children: React.ReactElement | React.ReactElement[],
 };
 
-const CustomComponentWrapper:PropertyCustomComponent<CustomComponentWrapperProps> = (props:CustomComponentWrapperProps) =>
-{
-    const {property} = props;
-    const classes:any = styles();
+const CustomComponentWrapper: PropertyCustomComponent<CustomComponentWrapperProps> = (props: CustomComponentWrapperProps) => {
+    const { property } = props;
+    const classes: any = styles();
 
     return (
         <div className={classes.fieldsetRoot}>

@@ -1,5 +1,5 @@
 import { thunk } from 'easy-peasy';
-import ApiClient from 'services/Api/ApiClient';
+import ApiClient, { ApiError } from 'services/Api/ApiClient';
 
 interface apiGetRequestParams {
   path: string,
@@ -24,6 +24,20 @@ interface apiDeleteRequestParams {
   successCallback: () => Promise<any>
 }
 
+const handleApiErrors = (error: ApiError | null, getStoreActions: Function) => {
+
+  if (!error) {
+    throw error;
+  }
+
+  if ([400, 401].includes(error?.status || -1)) {
+    const actions: any = getStoreActions();
+    actions.auth.resetToken();
+  }
+
+  throw error;
+};
+
 const api = {
   errorMsg: null,
   ////////////////////////////////////////
@@ -40,13 +54,9 @@ const api = {
         successCallback
       );
     } catch (error) {
-      console.log('api get error', error);
-      if ([400, 401].includes(error?.status)) {
-        const actions: any = getStoreActions();
-        actions.auth.resetToken();
-      }
 
-      throw error;
+      console.log('api get error', error);
+      handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
   ////////////////////////////////////////
@@ -64,12 +74,7 @@ const api = {
       );
     } catch (error) {
       console.log('api post error', error);
-      if ([400, 401].includes(error?.status)) {
-        const actions: any = getStoreActions();
-        actions.auth.resetToken();
-      }
-
-      throw error;
+      handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
   ////////////////////////////////////////
@@ -86,12 +91,7 @@ const api = {
       );
     } catch (error) {
       console.log('api put error', error);
-      if ([400, 401].includes(error?.status)) {
-        const actions: any = getStoreActions();
-        actions.auth.resetToken();
-      }
-
-      throw error;
+      handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
   ////////////////////////////////////////
@@ -107,12 +107,7 @@ const api = {
       );
     } catch (error) {
       console.log('api delete error', error);
-      if ([400, 401].includes(error?.status)) {
-        const actions: any = getStoreActions();
-        actions.auth.resetToken();
-      }
-
-      throw error;
+      handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
 };

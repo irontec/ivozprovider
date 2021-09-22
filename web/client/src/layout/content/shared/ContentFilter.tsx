@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import {
     withStyles
 } from '@material-ui/core';
@@ -68,6 +68,16 @@ export const getFilterLabel = (filter: any) => {
     return '[' + filter.label.join(', ') + ']';
 }
 
+export interface CriteriaFilterValue {
+    value: string,
+    label: ReactNode,
+    type: string,
+}
+
+export interface CriteriaFilterValues {
+    [name: string]: CriteriaFilterValue | null,
+}
+
 const ContentFilterMenu = function (props: any) {
 
     const {
@@ -81,7 +91,7 @@ const ContentFilterMenu = function (props: any) {
 
     const [loading, setLoading] = useState<boolean>(true);
     const [foreignEntities, setForeignEntities] = useState<any>({});
-    const [criteria, setCriteria] = useState<any>({ ...currentFilter });
+    const [criteria, setCriteria] = useState<CriteriaFilterValues>({ ...currentFilter });
     const columns = entityService.getColumns();
     const foreignKeyGetter = entityService.getForeignKeyGetter();
 
@@ -111,7 +121,7 @@ const ContentFilterMenu = function (props: any) {
             ? { type: filterType, value, label }
             : null;
 
-        const filter = {
+        const filter: CriteriaFilterValues = {
             [fld]: filterValue
         };
 
@@ -134,13 +144,19 @@ const ContentFilterMenu = function (props: any) {
                     return null;
                 }
 
-                const propertyFilterTypes = filterTypes.filter((type:any) => {
+                const propertyFilterTypes = filterTypes.filter((type: any) => {
                     return propertyFilter.includes(type.value);
                 });
 
-                const hasValue = criteria[key] && criteria[key].value;
+                if (!criteria[key]) {
+                    return null;
+                }
+
+                const currentCriteria = criteria[key] as CriteriaFilterValue;
+
+                const hasValue = criteria[key] && currentCriteria.value;
                 const currentFilterType = hasValue
-                    ? criteria[key].type
+                    ? currentCriteria.type
                     : '';
 
                 let currentFilterValues: any = {
@@ -148,20 +164,20 @@ const ContentFilterMenu = function (props: any) {
                     type: currentFilterType
                 };
 
-                const isArrayValue = hasValue && Array.isArray(criteria[key].value);
+                const isArrayValue = hasValue && Array.isArray(currentCriteria.value);
 
                 if (isArrayValue) {
-                    const valueNumber = criteria[key].value.length;
+                    const valueNumber = currentCriteria.value.length;
                     currentFilterValues.value = [];
 
                     for (let i = 0; i < valueNumber; i++) {
                         currentFilterValues.value.push({
-                            id: criteria[key].value[i],
-                            label: criteria[key].label[i] || null
+                            id: currentCriteria.value[i],
+                            label: currentCriteria.label || null
                         });
                     }
                 } else if (hasValue) {
-                    currentFilterValues.value = criteria[key].value;
+                    currentFilterValues.value = currentCriteria.value;
                 }
 
                 return (

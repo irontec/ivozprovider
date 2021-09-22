@@ -1,7 +1,8 @@
-import axios from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import config from 'config';
 
 type AsyncFunction = (data: any, headers: any) => Promise<void>
+export type ApiError = AxiosResponse | null;
 
 class ApiClient {
     static setToken(token: string) {
@@ -27,12 +28,17 @@ class ApiClient {
 
         } catch (error) {
 
-            if (error.response.status === 403) {
-                await callback([], error.response.headers);
+            if (!error) {
+                throw error;
+            }
+
+            const axiosError = error as AxiosError;
+            if (axiosError?.response?.status === 403) {
+                await callback([], axiosError.response.headers);
                 return;
             }
 
-            throw error.response;
+            throw axiosError.response;
         }
     }
 
@@ -52,15 +58,39 @@ class ApiClient {
             params = reqParams;
         }
 
-        return await axios.post(config.API_URL + endpoint, params, reqConfig);
+        try {
+            return await axios.post(config.API_URL + endpoint, params, reqConfig);
+        } catch (error) {
+            if (!error) {
+                throw error;
+            }
+
+            throw (error as AxiosError).response;
+        }
     }
 
     static async put(endpoint: string, params: any = undefined) {
-        return await axios.put(config.API_URL + endpoint, params);
+        try {
+            return await axios.put(config.API_URL + endpoint, params);
+        } catch (error) {
+            if (!error) {
+                throw error;
+            }
+
+            throw (error as AxiosError).response;
+        }
     }
 
     static async delete(endpoint: string, params: any = undefined) {
-        return await axios.delete(config.API_URL + endpoint, params);
+        try {
+            return await axios.delete(config.API_URL + endpoint, params);
+        } catch (error) {
+            if (!error) {
+                throw error;
+            }
+
+            throw (error as AxiosError).response;
+        }
     }
 }
 

@@ -1,15 +1,16 @@
 /* eslint-disable no-script-url */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useStoreActions } from 'easy-peasy';
 import queryString from 'query-string';
 import { withRouter } from "react-router-dom";
-import ContentTable from './shared/ContentTable';
+import ContentTable from '../shared/ContentTable';
 import EntityService from 'services/Entity/EntityService';
+import useFilterRequestPath from './useFilterRequestPath';
 
 const List = function (props: any) {
 
-    const { path, history, location, foreignKeyResolver, unmarshaller } = props;
+    const { path, history, location, foreignKeyResolver } = props;
     const { entityService }: { entityService: EntityService } = props;
 
     const [loading, setLoading] = useState(true);
@@ -51,43 +52,33 @@ const List = function (props: any) {
         setLoading(true);
     }
 
+    const reqPath = useFilterRequestPath({
+        where,
+        basePath: path,
+    });
+
+    const paginationParams = useMemo(
+        () => {
+            const paginationParams: any = {
+                _itemsPerPage: rowsPerPage,
+                _page: page
+            };
+
+            const orderByFld = `_order[${orderBy}]`;
+            paginationParams[orderByFld] = orderDirection;
+
+            return paginationParams;
+        },
+        [rowsPerPage, page, orderBy, orderDirection]
+    );
+
     useEffect(
         () => {
             if (loading) {
 
-                const params: any = {
-                    _itemsPerPage: rowsPerPage,
-                    _page: page
-                };
-
-                const orderByFld = `_order[${orderBy}]`;
-                params[orderByFld] = orderDirection;
-
-                const containsCriteria = Object.keys(where).length > 0;
-                let reqPath = path;
-
-                if (containsCriteria) {
-
-                    let criteria: Array<string> = [];
-                    for (const name in where) {
-                        const type = ['eq', 'exact'].includes(where[name].type)
-                            ? ''
-                            : where[name].type;
-                        const value = where[name].value;
-
-                        criteria.push(
-                            encodeURIComponent(`${name}[${type}]`)
-                            + '='
-                            + encodeURIComponent(value)
-                        );
-                    }
-
-                    reqPath = path + '?' + criteria.join('&');
-                }
-
                 apiGet({
                     path: reqPath,
-                    params,
+                    params: paginationParams,
                     successCallback: async (data: any, headers: any) => {
 
                         if (headers) {
@@ -114,9 +105,8 @@ const List = function (props: any) {
             return function umount() { };
         },
         [
-            loading, foreignKeyResolver, entityService, where,
-            orderBy, orderDirection, page, rowsPerPage, apiGet,
-            path, unmarshaller
+            loading, foreignKeyResolver, entityService,
+            apiGet, reqPath, paginationParams
         ]
     );
 
