@@ -1,5 +1,52 @@
 # Changelog
 
+## 2.18.1
+* Endpoints:
+    - /brands:
+      - Added domainUsers[end|exact|exists|partial|start] filter parameters
+      - Added invoice.country[end|exact|exists|partial|start] filter parameters
+      - Added invoice.nif[end|exact|exists|partial|start] filter parameters
+      - Added invoice.postalAddress[end|exact|exists|partial|start] filter parameters
+      - Added invoice.postalCode[end|exact|exists|partial|start] filter parameters
+      - Added invoice.province[end|exact|exists|partial|start] filter parameters
+      - Added invoice.registryData[end|exact|exists|partial|start] filter parameters
+      - Added invoice.town[end|exact|exists|partial|start] filter parameters
+      - Added logo.baseName[end|exact|exists|partial|start] filter parameters
+      - Added logo.fileSize[between|exists|gt|gte|lt|lte] filter parameters
+      - Added logo.mimeType[end|exact|exists|partial|start] filter parameters
+      - Added _order[domainUsers], _order[invoice.country], _order[invoice.nif], _order[invoice.postalAddress], _order[invoice.postalCode], _order[invoice.province], _order[invoice.registryData], _order[invoice.town], _order[logo.baseName], _order[logo.fileSize] and _order[logo.mimeType] querystring arguments
+
+    - /languages:
+      - Added name.ca[end|exact|exists|partial|start] filter parameters
+      - Added name.en[end|exact|exists|partial|start] filter parameters
+      - Added name.es[end|exact|exists|partial|start] filter parameters
+      - Added name.it[end|exact|exists|partial|start] filter parameters
+      - Added _order[name.ca], _order[name.en], _order[name.es] and _order[name.it] querystring arguments
+
+    - /services:
+      - Added name.ca[end|exact|exists|partial|start] filter parameters
+      - Added name.en[end|exact|exists|partial|start] filter parameters
+      - Added name.es[end|exact|exists|partial|start] filter parameters
+      - Added name.it[end|exact|exists|partial|start] filter parameters
+      - Added _order[name.ca], _order[name.en], _order[name.es] and _order[name.it] querystring arguments
+
+* Models:
+    - Brand:
+      - Removed logoPath property
+    - Brand-collection:
+      - Removed logoPath property
+      - Added invoice property
+      - Added logo property
+      - Added domainUsers property
+    - Brand-detailed:
+      - Removed logoPath property
+    - Brand-withFeatures:
+      - Removed logoPath property
+    - Language-collection:
+      - Added name property
+    - Service-collection:
+      - Added name property
+
 ## 2.18.0
 * Endpoints:
     - Allow to filter collections by id
