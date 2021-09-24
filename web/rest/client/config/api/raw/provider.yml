@@ -105,9 +105,6 @@ Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-    normalization_context:
-      groups: ['withExcludedExtensions']
-
     swagger_context:
       required:
       - company
