@@ -15,11 +15,11 @@ Call forward services
 =====================
 
 Call forward services (unconditional, no answer, busy and unreachable) are **only available for residential clients**
-and allow adding **call forward to national phone numbers**.
+and allow adding **call forward to national phone numbers and to voicemail**.
 
 All residential **clients within a brand use the same codes** to access to this feature, those defined in this section.
 
-.. note:: Call forward to voicemail or to numbers outside company's country is not supported using services codes.
+.. note:: Call forward to numbers outside company's country is not supported using services codes.
              Use web portal instead.
 
 .. rubric:: Enabling a call forward setting
@@ -27,6 +27,10 @@ All residential **clients within a brand use the same codes** to access to this 
 To enable a call forward of a given type to forward calls to a national number, residential device must call to defined
 service code followed by destination number. This will create and enable (or modify if already exists one) a call
 forward of given type to that national number.
+
+To enable a call forward of a given type to forward calls to voicemail, residential device must call to defined
+service code followed by '*'. This will create and enable (or modify if already exists one) a call
+forward of given type to voicemail.
 
 .. rubric:: Disabling a call forward setting
 
