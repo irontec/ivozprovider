@@ -472,6 +472,11 @@ class ServiceAction
             return;
         }
 
+        // Determine forward type based on dialed number
+        $targetType = $destination == "*"
+            ? CallForwardSettingInterface::TARGETTYPE_VOICEMAIL
+            : CallForwardSettingInterface::TARGETTYPE_NUMBER;
+
         // Create a new callForwardSetting if none found
         /** @var CallForwardSettingDto $callForwardSettingDto */
         $callForwardSettingDto = $callForwardSetting
@@ -483,10 +488,14 @@ class ServiceAction
             ->setResidentialDeviceId($caller->getId())
             ->setCallTypeFilter(CallForwardSettingInterface::CALLTYPEFILTER_BOTH)
             ->setCallForwardType($callForwardType)
-            ->setTargetType(CallForwardSettingInterface::TARGETTYPE_NUMBER)
-            ->setNumberCountryId($companyCountry->getId())
-            ->setNumberValue($destination)
+            ->setTargetType($targetType)
             ->setNoAnswerTimeout(10);
+
+        if ($targetType == CallForwardSettingInterface::TARGETTYPE_NUMBER) {
+            $callForwardSettingDto
+                ->setNumberCountryId($companyCountry->getId())
+                ->setNumberValue($destination);
+        }
 
         try {
             $this->entityTools
