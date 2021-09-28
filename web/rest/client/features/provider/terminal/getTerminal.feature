@@ -59,15 +59,13 @@ Feature: Retrieve terminals
           "password": "AUfVkn498_",
           "mac": null,
           "lastProvisionDate": null,
+          "t38Passthrough": "no",
+          "rtpEncryption": false,
           "id": 1,
           "terminalModel": {
               "iden": "Generic",
               "name": "Generic SIP Model",
               "description": "Generic SIP Model",
-              "genericTemplate": "",
-              "specificTemplate": "",
-              "genericUrlPattern": "",
-              "specificUrlPattern": "",
               "id": 1
           }
       }

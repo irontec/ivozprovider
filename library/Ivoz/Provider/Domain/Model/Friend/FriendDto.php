@@ -101,6 +101,7 @@ class FriendDto extends FriendDtoAbstract
                 'domainId' => 'domain',
                 'description' => 'description',
                 'priority' => 'priority',
+                'directConnectivity' => 'directConnectivity',
             ];
         }
 
@@ -141,6 +142,7 @@ class FriendDto extends FriendDtoAbstract
             'password',
             'priority',
             'allow',
+            'fromUser',
             'fromDomain',
             'directConnectivity',
             'ddiIn',
@@ -174,10 +176,14 @@ class FriendDto extends FriendDtoAbstract
             'password',
             'priority',
             'allow',
+            'fromUser',
             'fromDomain',
             'directConnectivity',
             'ddiIn',
             't38Passthrough',
+            'alwaysApplyTransformations',
+            'rtpEncryption',
+            'multiContact',
             'id',
             'transformationRuleSetId',
             'callAclId',

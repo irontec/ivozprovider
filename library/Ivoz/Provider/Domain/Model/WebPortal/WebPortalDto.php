@@ -21,7 +21,6 @@ class WebPortalDto extends WebPortalDtoAbstract
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
-            $response['logoPath'] = 'logoPath';
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -36,6 +35,10 @@ class WebPortalDto extends WebPortalDtoAbstract
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
+        }
+
+        if ($context === self::CONTEXT_SIMPLE) {
+            $contextProperties['logo'][] = 'path';
         }
 
         $this->setByContext(

@@ -86,9 +86,8 @@ production:
         <<: *forcedCompany
         ddiIn: "yes"
       fields:
-        readOnly:
-          interCompany: ${auth.isCompanyOperator}
         blacklist: &friends_blacklistLink
+          interCompany: ${auth.isCompanyOperator}
           domain: true
           directMediaMethod: true
           updateCallerid: true
@@ -182,9 +181,8 @@ production:
       fields:
         order:
           <<: *friends_orderLink
-        readOnly:
-          interCompany: ${auth.isCompanyOperator}
         blacklist:
+          interCompany: ${auth.isCompanyOperator}
           domain: true
           directMediaMethod: true
           updateCallerid: true

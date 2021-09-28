@@ -31,11 +31,11 @@ class TpDestinationDoctrineRepository extends ServiceEntityRepository implements
     /**
      * @return int affected rows
      */
-    public function syncWithBusiness()
+    public function syncWithBusiness($brandId)
     {
         $tpDestinationInsert =
             'INSERT IGNORE INTO tp_destinations (tpid, tag, prefix, destinationId)'
-            . ' SELECT CONCAT("b", brandId), CONCAT("b", brandId, "dst", id), prefix, id FROM Destinations';
+            . " SELECT CONCAT('b', brandId), CONCAT('b', brandId, 'dst', id), prefix, id FROM Destinations WHERE brandId='$brandId'";
 
         $nativeQuery = new NativeQuery(
             $this->_em

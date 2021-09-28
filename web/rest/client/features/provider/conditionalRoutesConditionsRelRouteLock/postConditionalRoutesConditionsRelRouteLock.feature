@@ -59,7 +59,10 @@ Feature: Create conditional routes conditions route lock
               "name": "Test Lock",
               "description": "Test Lock",
               "open": true,
-              "id": 2
+              "id": 2,
+              "closeExtension": "",
+              "openExtension": "",
+              "toggleExtension": ""
           }
       }
     """

@@ -57,7 +57,11 @@ class FriendTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
-                'FALSE',
+                [
+                    'company',
+                    'in',
+                    'companyRepository.getSupervisedCompanyIdsByAdmin(user)',
+                ]
             ]
         );
     }

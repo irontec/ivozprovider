@@ -19,4 +19,31 @@ class CompanyRelRoutingTagDoctrineRepository extends ServiceEntityRepository imp
     {
         parent::__construct($registry, CompanyRelRoutingTag::class);
     }
+
+    /**
+     * Used by client API access controls
+     * @return int[]
+     */
+    public function getRoutingTagIdsByCompany(int $companyId): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('IDENTITY(self.routingTag) AS routingTag')
+            ->where(
+                $expression->eq('self.company', $companyId)
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_map(
+            function ($val) {
+                return $val !== null
+                    ? intval($val)
+                    : null;
+            },
+            array_column($result, 'routingTag')
+        );
+    }
 }

@@ -14,14 +14,34 @@ Feature: Manage brands
       And the JSON should be equal to:
     """
       [
-        {
-            "name": "DemoBrand",
-            "id": 1
-        },
-        {
-            "name": "Irontec_e2e",
-            "id": 2
-        }
+          {
+              "name": "DemoBrand",
+              "domainUsers": "",
+              "id": 1,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              },
+              "invoice": {
+                  "nif": "",
+                  "postalCode": ""
+              }
+          },
+          {
+              "name": "Irontec_e2e",
+              "domainUsers": "sip.irontec.com",
+              "id": 2,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              },
+              "invoice": {
+                  "nif": "",
+                  "postalCode": ""
+              }
+          }
       ]
     """
 

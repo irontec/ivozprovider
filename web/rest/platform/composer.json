@@ -1,5 +1,5 @@
 {
-    "name": "irontec/ivozprovider/rest-api",
+    "name": "ivozprovider/rest-api",
     "description": "Multitenant solution for VoIP telephony providers (Rest-API)",
     "authors": [
         {

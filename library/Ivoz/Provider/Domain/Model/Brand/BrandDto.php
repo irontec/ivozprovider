@@ -64,7 +64,11 @@ class BrandDto extends BrandDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
-                'name' => 'name'
+                'name' => 'name',
+                'invoice' => ['nif', 'postalCode'],
+                'logo' => ['fileSize','mimeType','baseName'],
+                'domainUsers' => 'domainUsers',
+                //@TODO relProxyTrunks
             ];
         } else {
             $response = parent::getPropertyMap($context);
@@ -78,12 +82,25 @@ class BrandDto extends BrandDtoAbstract
             $response = self::filterFieldsForBrandAdmin($response);
         }
 
-        $response['logoPath'] = 'logoPath';
         unset($response['recordingsLimitMB']);
         unset($response['recordingsLimitEmail']);
         unset($response['domainId']);
 
         return $response;
+    }
+
+    public function denormalize(array $data, string $context, string $role = '')
+    {
+        $contextProperties = self::getPropertyMap($context, $role);
+
+        if ($context === self::CONTEXT_SIMPLE) {
+            $contextProperties['logo'][] = 'path';
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
     }
 
     public function normalize(string $context, string $role = '')
@@ -114,6 +131,11 @@ class BrandDto extends BrandDtoAbstract
             'languageId',
             'defaultTimezoneId',
             'currencyId',
+            'voicemailNotificationTemplateId',
+            'faxNotificationTemplateId',
+            'invoiceNotificationTemplateId',
+            'callCsvNotificationTemplateId',
+            'maxDailyUsageNotificationTemplateId',
         ];
 
         return array_filter(

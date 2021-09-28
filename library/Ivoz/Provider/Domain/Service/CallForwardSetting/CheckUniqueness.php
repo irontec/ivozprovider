@@ -225,7 +225,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
         $ddi = $entity->getDdi();
 
         if ($ddi) {
-            $criteria[] = ['ddi', 'eq', $ddi->getId()];
+            $criteria[] = ['ddi', 'eq', $ddi];
         }
 
         return CriteriaHelper::fromArray($criteria);

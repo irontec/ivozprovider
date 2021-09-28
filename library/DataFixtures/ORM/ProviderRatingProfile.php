@@ -36,6 +36,9 @@ class ProviderRatingProfile extends Fixture implements DependentFixtureInterface
             $this->setCarrier(
                 $fixture->getReference('_reference_ProviderCarrier1')
             );
+            $this->setRoutingTag(
+                $fixture->getReference('_reference_ProviderRoutingTag1')
+            );
         })->call($item1);
 
         $this->addReference('_reference_ProviderRatingProfile1', $item1);

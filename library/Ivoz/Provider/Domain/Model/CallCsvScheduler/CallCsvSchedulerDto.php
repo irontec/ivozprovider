@@ -60,6 +60,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
                 'callDirection' => 'callDirection',
                 'email' => 'email',
                 'lastExecution' => 'lastExecution',
+                'lastExecutionError' => 'lastExecutionError',
                 'nextExecution' => 'nextExecution'
 
             ];

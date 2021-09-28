@@ -20,7 +20,13 @@ Feature: Retrieve transformation rule sets
               "trunkPrefix": "",
               "areaCode": "",
               "nationalLen": 9,
-              "id": 1
+              "id": 1,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           }
       ]
     """

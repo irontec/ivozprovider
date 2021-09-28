@@ -1,5 +1,5 @@
 {
-    "name": "irontec/ivozprovider/workers",
+    "name": "ivozprovider/workers",
     "description": "Multitenant solution for VoIP telephony providers (Async workers)",
     "authors": [
         {

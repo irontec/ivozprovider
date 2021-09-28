@@ -1,3 +1,31 @@
+Tue, 28 Sep 2021 11:47:06 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.18.1 released
+
+    * Portals
+        - Show User-Agent in anti-bruteforce section
+        - Allow generic matchlists in OutgoingDdiRules
+
+    * Invoices
+        - Reduce tax decimal precision
+
+    * Core
+        - Recover DisableDestination in CGRateS reload
+
+    * Retail
+        - Fix retail2retail call-forward creation issues
+        - Fix DDI filter in retail2retail call-forward
+
+    * Residential
+        - New call-forward to voicemail via services
+
+    * API
+        - Fixed client API security filter in [GET] /services
+        - Removed inaccessible property from API spec in models with uploadable files
+        - Added /api/client/services/unassigned endpoint
+        - Added many fields into collection response models (Check out API changelog for more details)
+        - Removed genericTemplate, specificTemplate, genericUrlPattern and specificUrlPattern properties from TerminalModel response model in client API because client admins should never have had access to this properties
+
 Tue, 03 Aug 2021 14:04:28 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.18.0 released

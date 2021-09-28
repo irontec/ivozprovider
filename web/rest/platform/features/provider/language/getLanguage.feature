@@ -16,19 +16,43 @@ Feature: Retrieve languages
       [
           {
               "iden": "es",
-              "id": 1
+              "id": 1,
+              "name": {
+                  "en": "es",
+                  "es": "es",
+                  "ca": "es",
+                  "it": "es"
+              }
           },
           {
               "iden": "en",
-              "id": 2
+              "id": 2,
+              "name": {
+                  "en": "en",
+                  "es": "en",
+                  "ca": "en",
+                  "it": "en"
+              }
           },
           {
               "iden": "ca",
-              "id": 3
+              "id": 3,
+              "name": {
+                  "en": "ca",
+                  "es": "ca",
+                  "ca": "ca",
+                  "it": "ca"
+              }
           },
           {
               "iden": "it",
-              "id": 4
+              "id": 4,
+              "name": {
+                  "en": "it",
+                  "es": "it",
+                  "ca": "it",
+                  "it": "it"
+              }
           }
       ]
     """

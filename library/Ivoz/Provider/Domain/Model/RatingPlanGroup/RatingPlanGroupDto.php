@@ -20,7 +20,7 @@ class RatingPlanGroupDto extends RatingPlanGroupDtoAbstract
             $response = parent::getPropertyMap(...func_get_args());
         }
 
-        if ($role === 'ROLE_BRAND_ADMIN') {
+        if (in_array($role, ['ROLE_BRAND_ADMIN', 'ROLE_COMPANY_ADMIN'])) {
             unset($response['brandId']);
         }
 

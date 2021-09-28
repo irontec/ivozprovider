@@ -28,8 +28,6 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
             unset($response['brandId']);
         }
 
-        $response['filePath'] = 'filePath';
-
         return $response;
     }
 
@@ -38,6 +36,10 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
+        }
+
+        if ($context === self::CONTEXT_SIMPLE) {
+            $contextProperties['file'][] = 'path';
         }
 
         $this->setByContext(

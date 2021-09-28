@@ -19,6 +19,7 @@ class CompanyServiceRepositoryTest extends KernelTestCase
     {
         $this->its_instantiable();
         $this->it_finds_company_services();
+        $this->it_finds_serviceIds_by_company();
     }
 
     public function its_instantiable()
@@ -49,6 +50,28 @@ class CompanyServiceRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             CompanyServiceInterface::class,
             $response
+        );
+    }
+
+    public function it_finds_serviceIds_by_company()
+    {
+        /** @var CompanyServiceRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(CompanyService::class);
+
+        $response = $repository->findServiceIdsByCompany(
+            1
+        );
+
+        $this->assertInternalType(
+            'array',
+            $response
+        );
+
+        $this->assertInternalType(
+            'int',
+            $response[0]
         );
     }
 }

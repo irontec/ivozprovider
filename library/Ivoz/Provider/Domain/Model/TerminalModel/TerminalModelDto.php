@@ -18,6 +18,36 @@ class TerminalModelDto extends TerminalModelDtoAbstract
             ];
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        $response = parent::getPropertyMap(...func_get_args());
+
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            return self::filterFieldsForCompanyAdmin($response);
+        }
+
+        return $response;
+    }
+
+    private static function filterFieldsForCompanyAdmin(array $response): array
+    {
+        $allowedFields = [
+            'id' => 'id',
+            'iden' => 'iden',
+            'name' => 'name',
+            'description' => 'description',
+            'terminalManufacturerId' => 'terminalManufacturer'
+        ];
+
+        return self::filterFields($response, $allowedFields);
+    }
+
+    private static function filterFields(array $response, array $allowedFields): array
+    {
+        return array_filter(
+            $response,
+            function ($key) use ($allowedFields) {
+                return in_array($key, $allowedFields, true);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
     }
 }

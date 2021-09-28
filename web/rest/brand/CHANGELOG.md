@@ -1,5 +1,95 @@
 # Changelog
 
+## 2.18.1
+* Endpoints:
+    - /brands:
+      - Added callCsvNotificationTemplate and callCsvNotificationTemplate[exists] filter parameters
+      - Added faxNotificationTemplate and faxNotificationTemplate[exists] filter parameters
+      - Added invoice.country[end|exact|exists|partial|start] filter parameters
+      - Added invoice.nif[end|exact|exists|partial|start] filter parameters
+      - Added invoice.postalAddress[end|exact|exists|partial|start] filter parameters
+      - Added invoice.postalCode[end|exact|exists|partial|start] filter parameters
+      - Added invoice.province[end|exact|exists|partial|start] filter parameters
+      - Added invoice.registryData[end|exact|exists|partial|start] filter parameters
+      - Added invoice.town[end|exact|exists|partial|start] filter parameters
+      - Added invoiceNotificationTemplate and invoiceNotificationTemplate[exists] filter parameters
+      - Added logo.baseName[end|exact|exists|partial|start] filter parameters
+      - Added logo.fileSize[between|exists|gt|gte|lt|lte] filter parameters
+      - Added logo.mimeType[end|exact|exists|partial|start] filter parameters
+      - Added maxDailyUsageNotificationTemplate and maxDailyUsageNotificationTemplate[exists] filter parameters
+      - Added voicemailNotificationTemplate and voicemailNotificationTemplate[exists] filter parameters
+      - Added _order[invoice.country], _order[invoice.nif], _order[invoice.postalAddress], _order[invoice.postalCode], _order[invoice.province], _order[invoice.registryData], _order[invoice.town], _order[logo.baseName], _order[logo.fileSize] and _order[logo.mimeType] querystring arguments
+
+    - /call_csv_schedulers:
+      - Added lastExecutionError[end|exact|exists|partial|start] filter parameters
+      - Added _order[lastExecutionError] querystring argument
+
+    - /friends:
+      - Added [POST] endpoint
+      - Added directConnectivity[end|exact|exists|partial|start] filter parameters
+      - Added _order[directConnectivity] querystring argument
+
+    - /friends/{id}:
+      - Added [GET], [PUT] and [DELETE] endpoints
+
+    - /languages:
+      - Added name.ca[end|exact|exists|partial|start] filter parameters
+      - Added name.en[end|exact|exists|partial|start] filter parameters
+      - Added name.es[end|exact|exists|partial|start] filter parameters
+      - Added name.it[end|exact|exists|partial|start] filter parameters
+      - Added _order[name.ca], _order[name.en], _order[name.es] and _order[name.it] querystring arguments
+
+    - /routing_tags
+      - Added tag[end|exact|exists|partial|start] filter parameters
+      - Added _order[tag] querystring param
+
+    - /services:
+      - Added name.ca[end|exact|exists|partial|start] filter parameters
+      - Added name.en[end|exact|exists|partial|start] filter parameters
+      - Added name.es[end|exact|exists|partial|start] filter parameters
+      - Added name.it[end|exact|exists|partial|start] filter parameters
+      - Added _order[name.ca], _order[name.en], _order[name.es] and _order[name.it] querystring arguments
+
+    - /transformation_rule_sets:
+      - Added name.ca[end|exact|exists|partial|start] filter parameters
+      - Added name.en[end|exact|exists|partial|start] filter parameters
+      - Added name.es[end|exact|exists|partial|start] filter parameters
+      - Added name.it[end|exact|exists|partial|start] filter parameters
+      - Added _order[name.ca], _order[name.en], _order[name.es] and _order[name.it] querystring arguments
+
+* Models:
+    - Brand and Brand-detailed:
+      - Removed logoPath property
+      - Added voicemailNotificationTemplate property
+      - Added faxNotificationTemplate property
+      - Added invoiceNotificationTemplate property
+      - Added callCsvNotificationTemplate property
+      - Added maxDailyUsageNotificationTemplate property
+    - Brand-collection:
+      - Removed logoPath property
+      - Added invoice property
+      - Added logo property
+    - CallCsvScheduler-collection:
+      - Added lastExecutionError property
+    - DestinationRateGroup, DestinationRateGroup-collection and DestinationRateGroup-detailed:
+      - Removed filePath property
+    - Friend:
+      - Added fromUser property
+    - Friend-collection:
+      - Added directConnectivity property
+    - Friend-detailed
+      - Added model
+    - Language-collection:
+      - Added name property
+    - RoutingTag-collection:
+      - Added tag property
+    - Service-collection:
+      - Added name property
+    - TransformationRuleSet-collection:
+      - Added name property
+    - WebPortal-detailed:
+      - Removed logoPath property
+
 ## 2.18.0
 * Endpoints:
     - Allow to filter collections by id

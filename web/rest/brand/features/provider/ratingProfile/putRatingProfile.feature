@@ -29,6 +29,6 @@ Feature: Update rating profile
           "company": 2,
           "carrier": null,
           "ratingPlanGroup": 1,
-          "routingTag": null
+          "routingTag": 1
       }
     """

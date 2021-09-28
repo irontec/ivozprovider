@@ -17,12 +17,14 @@ Feature: Retrieve rating profiles
           {
               "activationTime": "2018-02-02 21:20:20",
               "id": 1,
-              "ratingPlanGroup": 1
+              "ratingPlanGroup": 1,
+              "routingTag": 1
           },
           {
               "activationTime": "2018-02-02 21:20:20",
               "id": 2,
-              "ratingPlanGroup": 2
+              "ratingPlanGroup": 2,
+              "routingTag": 1
           }
       ]
     """
@@ -39,6 +41,11 @@ Feature: Retrieve rating profiles
       {
           "activationTime": "2018-02-02 21:20:20",
           "id": 1,
-          "ratingPlanGroup": "~"
+          "ratingPlanGroup": "~",
+          "routingTag": {
+              "name": "TagName",
+              "tag": "123#",
+              "id": 1
+          }
       }
     """
