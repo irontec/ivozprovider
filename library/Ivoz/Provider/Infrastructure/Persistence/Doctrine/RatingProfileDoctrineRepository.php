@@ -19,4 +19,27 @@ class RatingProfileDoctrineRepository extends ServiceEntityRepository implements
     {
         parent::__construct($registry, RatingProfile::class);
     }
+
+    /**
+     * Used by client API access controls
+     * @return int[]
+     */
+    public function getRatingPlanGroupIdsByCompany(int $companyId): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('IDENTITY(self.ratingPlanGroup) AS ratingPlanGroup')
+            ->where(
+                $expression->eq('self.company', $companyId)
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_map(
+            'intval',
+            array_column($result, 'ratingPlanGroup')
+        );
+    }
 }

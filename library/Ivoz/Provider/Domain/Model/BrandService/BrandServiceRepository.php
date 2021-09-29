@@ -20,4 +20,10 @@ interface BrandServiceRepository extends ObjectRepository, Selectable
      * @return BrandServiceInterface[]
      */
     public function findByBrandId($id);
+
+    /**
+     * Used by client API access controls
+     * @return int[]
+     */
+    public function getServiceIdsByBrand(int $brandId): array;
 }

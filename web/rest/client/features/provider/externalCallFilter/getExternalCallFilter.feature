@@ -16,7 +16,19 @@ Feature: Retrieve external call filters
       [
           {
               "name": "testFilter",
-              "id": 1
+              "holidayTargetType": null,
+              "holidayNumberValue": null,
+              "outOfScheduleTargetType": null,
+              "outOfScheduleNumberValue": null,
+              "id": 1,
+              "holidayLocution": null,
+              "outOfScheduleLocution": null,
+              "holidayExtension": null,
+              "outOfScheduleExtension": null,
+              "holidayVoiceMailUser": null,
+              "outOfScheduleVoiceMailUser": null,
+              "holidayNumberCountry": null,
+              "outOfScheduleNumberCountry": null
           }
       ]
     """

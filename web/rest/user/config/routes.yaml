@@ -17,6 +17,24 @@ gesdinet_jwt_refresh_token:
 ###############################
 ## Custom routes
 ###############################
+get_my_rating_plan_prices:
+  path: '/rating_plan_groups/{id}/prices'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\RatingPlanPricesAction
+    _api_resource_class: 'Model\RatingPlanPrices'
+    _api_collection_operation_name: 'get_my_rating_plan_prices'
+    _api_receive: false
+
+get_services_unassigned:
+  path: '/services/unassigned'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\ServicesUnassignedAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Service\Service'
+    _api_collection_operation_name: 'get_services_unassigned'
+    _api_receive: false
+
 get_my_status:
   path: '/my/status'
   methods: ['GET']
@@ -125,3 +143,20 @@ get_my_call_history:
     _api_collection_operation_name: 'get_my_call_history'
     _api_receive: false
 
+get_my_registration_summary:
+  path: '/my/registration_summary'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\RegistrationSummaryAction
+    _api_resource_class: 'Model\RegistrationSummary'
+    _api_item_operation_name: 'get_my_registration_summary'
+    _api_receive: false
+
+get_my_active_calls:
+  path: '/my/active_calls'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\ActiveCallsAction
+    _api_resource_class: 'Model\ActiveCalls'
+    _api_item_operation_name: 'get_my_active_calls'
+    _api_receive: false

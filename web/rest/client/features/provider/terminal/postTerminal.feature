@@ -35,7 +35,7 @@ Feature: Create terminals
           "directMediaMethod": "invite",
           "password": "ZGthe7E2+5",
           "mac": null,
-          "lastProvisionDate": "1970-03-04 11:12:13",
+          "lastProvisionDate": null,
           "t38Passthrough": "no",
           "rtpEncryption": false,
           "id": 4,
@@ -60,16 +60,14 @@ Feature: Create terminals
           "directMediaMethod": "invite",
           "password": "ZGthe7E2+5",
           "mac": null,
-          "lastProvisionDate": "1970-03-04 11:12:13",
+          "lastProvisionDate": null,
+          "t38Passthrough": "no",
+          "rtpEncryption": false,
           "id": 4,
           "terminalModel": {
               "iden": "Generic",
               "name": "Generic SIP Model",
               "description": "Generic SIP Model",
-              "genericTemplate": "",
-              "specificTemplate": "",
-              "genericUrlPattern": "",
-              "specificUrlPattern": "",
               "id": 1
           }
       }

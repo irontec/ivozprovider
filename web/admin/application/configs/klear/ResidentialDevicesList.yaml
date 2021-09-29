@@ -192,6 +192,11 @@ production:
     callForwardSettingsList_screen:
       <<: *callForwardSettingsList_screenLink
       filterField: residentialDevice
+      fields:
+        <<: *callForwardSettingsListFields_Link
+        blacklist:
+          <<: *callForwardSettingsListBlacklist_Link
+          ddi: true
       parentOptionCustomizer:
         - recordCount
       forcedValues:
@@ -199,11 +204,21 @@ production:
     callForwardSettingsNew_screen:
       <<: *callForwardSettingsNew_screenLink
       filterField: residentialDevice
+      fields:
+        <<: *callForwardSettingsNewFields_Link
+        blacklist:
+          <<: *callForwardSettingsNewBlacklist_Link
+          ddi: true
       forcedValues:
         callTypeFilter: both
     callForwardSettingsEdit_screen:
       <<: *callForwardSettingsEdit_screenLink
       filterField: residentialDevice
+      fields:
+        <<: *callForwardSettingsEditFields_Link
+        blacklist:
+          <<: *callForwardSettingsEditBlacklist_Link
+          ddi: true
       forcedValues:
         callTypeFilter: both
 

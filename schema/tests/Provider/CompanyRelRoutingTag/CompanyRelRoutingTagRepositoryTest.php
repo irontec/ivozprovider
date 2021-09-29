@@ -17,6 +17,7 @@ class CompanyRelRoutingTagRepositoryTest extends KernelTestCase
     public function test_runner()
     {
         $this->its_instantiable();
+        $this->it_gets_routing_tag_ids_by_company();
     }
 
     public function its_instantiable()
@@ -29,6 +30,24 @@ class CompanyRelRoutingTagRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             CompanyRelRoutingTagRepository::class,
             $repository
+        );
+    }
+
+    public function it_gets_routing_tag_ids_by_company()
+    {
+        /** @var CompanyRelRoutingTagRepository $companyRelRoutingTagRepository */
+        $companyRelRoutingTagRepository = $this->em
+            ->getRepository(CompanyRelRoutingTag::class);
+
+        $ratingPlanGroupIds = $companyRelRoutingTagRepository
+            ->getRoutingTagIdsByCompany(3);
+
+        $this->assertIsArray(
+            $ratingPlanGroupIds
+        );
+
+        $this->assertIsint(
+            $ratingPlanGroupIds[0]
         );
     }
 }

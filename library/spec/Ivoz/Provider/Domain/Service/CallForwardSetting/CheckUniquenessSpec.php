@@ -3,6 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Service\CallForwardSetting;
 
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
+use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Infrastructure\Persistence\Doctrine\CallForwardSettingDoctrineRepository;
 use Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness;
@@ -55,6 +56,11 @@ class CheckUniquenessSpec extends ObjectBehavior
             ->entity
             ->getUser()
             ->willReturn($user);
+
+        $this
+            ->entity
+            ->getDdi()
+            ->willReturn(null);
     }
 
     function it_is_initializable()
@@ -177,31 +183,88 @@ class CheckUniquenessSpec extends ObjectBehavior
             ->during('execute', [$this->entity, false]);
     }
 
+    function it_throws_exception_on_already_existing_inconditional_ddi_specific_call_forward()
+    {
+        $this->prepareExecution();
+
+        $ddi = $this->getInstance(
+            Ddi::class
+        );
+
+        $this->getterProphecy(
+            $this->entity,
+            [
+                'getCallForwardType' => 'inconditional',
+                'getDdi' => $ddi,
+            ],
+            true
+        );
+
+        $criteria = $this->getCriteriaArgument(
+            'inconditional',
+            $ddi
+        );
+
+        $this
+            ->callForwardSettingRepository
+            ->matching(
+                $criteria
+            )
+            ->willReturn(new ArrayCollection(['Something']));
+
+        $message = "There is already a inconditional call forward with that call type.";
+        $exception = new \DomainException($message, 30001);
+
+        $this
+            ->shouldThrow($exception)
+            ->during('execute', [$this->entity, false]);
+    }
+
     ////////////////////////////////////////////////////////
     ///
     ////////////////////////////////////////////////////////
 
-    protected function getCallForwardTypeArgumentFilter($expectedCallForwardType)
+    protected function getCallForwardTypeArgumentFilter($expectedCallForwardType, $ddi = null)
     {
-        return function ($criteria) use ($expectedCallForwardType) {
+        return function ($criteria) use ($expectedCallForwardType, $ddi) {
             $whereConditions = $criteria
                 ->getWhereExpression()
                 ->getExpressionList();
 
-            $callForwardTypeCondition = end($whereConditions);
+            $callForwardTypePosition = count($whereConditions) - 1;
+            if ($ddi) {
+                $callForwardTypePosition--;
+            }
+
+            $callForwardTypeCondition = $whereConditions[$callForwardTypePosition];
             $type = $callForwardTypeCondition
                 ->getValue()
                 ->getValue();
 
-            return $type === $expectedCallForwardType;
+            $match = $type === $expectedCallForwardType;
+            if (!$match) {
+                return false;
+            }
+
+            if (!$ddi) {
+                return true;
+            }
+
+            $ddiCondition = end($whereConditions);
+            $type = $ddiCondition
+                ->getValue()
+                ->getValue();
+
+            return $type === $ddi;
         };
     }
 
-    protected function getCriteriaArgument($expectedCallForwardType)
+    protected function getCriteriaArgument($expectedCallForwardType, $ddi = null)
     {
         return Argument::that(
             $this->getCallForwardTypeArgumentFilter(
-                $expectedCallForwardType
+                $expectedCallForwardType,
+                $ddi
             )
         );
     }

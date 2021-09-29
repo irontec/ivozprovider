@@ -13,4 +13,9 @@ interface CompanyServiceRepository extends ObjectRepository, Selectable
      * @return CompanyServiceInterface | null
      */
     public function findCompanyService($companyId, $serviceId);
+
+    /**
+     * @return int[]
+     */
+    public function findServiceIdsByCompany(int $companyId);
 }

@@ -9,7 +9,8 @@ class RoutingTagDto extends RoutingTagDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
-                'name' => 'name'
+                'name' => 'name',
+                'tag' => 'tag',
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

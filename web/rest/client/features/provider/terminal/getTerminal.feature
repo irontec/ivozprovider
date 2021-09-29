@@ -18,19 +18,25 @@ Feature: Retrieve terminals
               "name": "alice",
               "mac": null,
               "lastProvisionDate": null,
-              "id": 1
+              "id": 1,
+              "domain": 3,
+              "terminalModel": 1
           },
           {
               "name": "bob",
               "mac": null,
               "lastProvisionDate": null,
-              "id": 2
+              "id": 2,
+              "domain": 3,
+              "terminalModel": 1
           },
           {
               "name": "testTerminal",
               "mac": "0011223344aa",
               "lastProvisionDate": null,
-              "id": 3
+              "id": 3,
+              "domain": 3,
+              "terminalModel": 1
           }
       ]
     """
@@ -53,15 +59,13 @@ Feature: Retrieve terminals
           "password": "AUfVkn498_",
           "mac": null,
           "lastProvisionDate": null,
+          "t38Passthrough": "no",
+          "rtpEncryption": false,
           "id": 1,
           "terminalModel": {
               "iden": "Generic",
               "name": "Generic SIP Model",
               "description": "Generic SIP Model",
-              "genericTemplate": "",
-              "specificTemplate": "",
-              "genericUrlPattern": "",
-              "specificUrlPattern": "",
               "id": 1
           }
       }

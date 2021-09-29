@@ -13,11 +13,13 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
+use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 
 /**
 * CallForwardSettingAbstract
@@ -40,7 +42,7 @@ abstract class CallForwardSettingAbstract
     protected $callForwardType;
 
     /**
-     * comment: enum:number|extension|voicemail
+     * comment: enum:number|extension|voicemail|retail
      * @var string | null
      */
     protected $targetType;
@@ -92,6 +94,16 @@ abstract class CallForwardSettingAbstract
      * inversedBy callForwardSettings
      */
     protected $retailAccount;
+
+    /**
+     * @var RetailAccountInterface | null
+     */
+    protected $cfwToRetailAccount;
+
+    /**
+     * @var DdiInterface | null
+     */
+    protected $ddi;
 
     /**
      * Constructor
@@ -191,7 +203,9 @@ abstract class CallForwardSettingAbstract
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
-            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
+            ->setCfwToRetailAccount($fkTransformer->transform($dto->getCfwToRetailAccount()))
+            ->setDdi($fkTransformer->transform($dto->getDdi()));
 
         $self->initChangelog();
 
@@ -221,7 +235,9 @@ abstract class CallForwardSettingAbstract
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
-            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
+            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
+            ->setCfwToRetailAccount($fkTransformer->transform($dto->getCfwToRetailAccount()))
+            ->setDdi($fkTransformer->transform($dto->getDdi()));
 
         return $this;
     }
@@ -245,7 +261,9 @@ abstract class CallForwardSettingAbstract
             ->setVoiceMailUser(User::entityToDto(self::getVoiceMailUser(), $depth))
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth))
             ->setResidentialDevice(ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
-            ->setRetailAccount(RetailAccount::entityToDto(self::getRetailAccount(), $depth));
+            ->setRetailAccount(RetailAccount::entityToDto(self::getRetailAccount(), $depth))
+            ->setCfwToRetailAccount(RetailAccount::entityToDto(self::getCfwToRetailAccount(), $depth))
+            ->setDdi(Ddi::entityToDto(self::getDdi(), $depth));
     }
 
     /**
@@ -265,7 +283,9 @@ abstract class CallForwardSettingAbstract
             'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null,
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
+            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null,
+            'cfwToRetailAccountId' => self::getCfwToRetailAccount() ? self::getCfwToRetailAccount()->getId() : null,
+            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null
         ];
     }
 
@@ -326,6 +346,7 @@ abstract class CallForwardSettingAbstract
                     CallForwardSettingInterface::TARGETTYPE_NUMBER,
                     CallForwardSettingInterface::TARGETTYPE_EXTENSION,
                     CallForwardSettingInterface::TARGETTYPE_VOICEMAIL,
+                    CallForwardSettingInterface::TARGETTYPE_RETAIL,
                 ],
                 'targetTypevalue "%s" is not an element of the valid values: %s'
             );
@@ -457,5 +478,29 @@ abstract class CallForwardSettingAbstract
     public function getRetailAccount(): ?RetailAccountInterface
     {
         return $this->retailAccount;
+    }
+
+    protected function setCfwToRetailAccount(?RetailAccountInterface $cfwToRetailAccount = null): static
+    {
+        $this->cfwToRetailAccount = $cfwToRetailAccount;
+
+        return $this;
+    }
+
+    public function getCfwToRetailAccount(): ?RetailAccountInterface
+    {
+        return $this->cfwToRetailAccount;
+    }
+
+    protected function setDdi(?DdiInterface $ddi = null): static
+    {
+        $this->ddi = $ddi;
+
+        return $this;
+    }
+
+    public function getDdi(): ?DdiInterface
+    {
+        return $this->ddi;
     }
 }

@@ -177,6 +177,10 @@ services:
         lazy: true
         arguments: ~
 
+    Agi\Action\RetailCallAction:
+        lazy: true
+        arguments: ~
+
     Agi\Action\ResidentialStatusAction:
         lazy: true
         arguments: ~

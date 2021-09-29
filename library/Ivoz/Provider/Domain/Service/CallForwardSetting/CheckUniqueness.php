@@ -52,14 +52,14 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
             $entity->getCallTypeFilter()
         );
 
-        if ($entity->getCallTypeFilter() === 'both') {
-            $callTypeFilterConditions[] = 'external';
-            $callTypeFilterConditions[] = 'internal';
+        if ($entity->getCallTypeFilter() === CallForwardSettingInterface::CALLTYPEFILTER_BOTH) {
+            $callTypeFilterConditions[] = CallForwardSettingInterface::CALLTYPEFILTER_EXTERNAL;
+            $callTypeFilterConditions[] = CallForwardSettingInterface::CALLTYPEFILTER_INTERNAL;
         } else {
-            $callTypeFilterConditions[] = 'both';
+            $callTypeFilterConditions[] = CallForwardSettingInterface::CALLTYPEFILTER_BOTH;
         }
 
-        $isInconditional = ($entity->getCallForwardType() === 'inconditional');
+        $isInconditional = ($entity->getCallForwardType() === CallForwardSettingInterface::CALLFORWARDTYPE_INCONDITIONAL);
         if ($isInconditional) {
             $inconditionalCallForwardsConditions = $this->getInconditionalCallForwardsCondition(
                 $entity,
@@ -75,7 +75,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
             }
         }
 
-        $isBusy = ($entity->getCallForwardType() === 'busy');
+        $isBusy = ($entity->getCallForwardType() === CallForwardSettingInterface::CALLFORWARDTYPE_BUSY);
         if ($isBusy) {
             $busyCallForwardsConditions = $this->getBusyCallForwardsConditions(
                 $entity,
@@ -91,7 +91,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
             }
         }
 
-        $isNoAnswer = ($entity->getCallForwardType() === 'noAnswer');
+        $isNoAnswer = ($entity->getCallForwardType() === CallForwardSettingInterface::CALLFORWARDTYPE_NOANSWER);
         if ($isNoAnswer) {
             $noAnswerCallForwardsConditions = $this->getNoAnswerCallForwardsConditions(
                 $entity,
@@ -107,7 +107,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
             }
         }
 
-        $isUserNotRegistered = ($entity->getCallForwardType() === "userNotRegistered");
+        $isUserNotRegistered = ($entity->getCallForwardType() === CallForwardSettingInterface::CALLFORWARDTYPE_USERNOTREGISTERED);
         if ($isUserNotRegistered) {
             $userNotRegisteredCallForwardsConditions = $this->getUserNotRegisteredCallForwardsConditions(
                 $entity,
@@ -219,6 +219,12 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
             $criteria[] = [
                 'callForwardType', 'eq', $callForwardType
             ];
+        }
+
+        $ddi = $entity->getDdi();
+
+        if ($ddi) {
+            $criteria[] = ['ddi', 'eq', $ddi];
         }
 
         return CriteriaHelper::fromArray($criteria);

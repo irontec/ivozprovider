@@ -16,6 +16,7 @@ Feature: Retrieve hunt groups
       [
           {
               "name": "testHuntGroup",
+              "description": "desc",
               "strategy": "ringAll",
               "id": 1
           }

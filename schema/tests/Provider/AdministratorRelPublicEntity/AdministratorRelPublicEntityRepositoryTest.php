@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity;
 
-class AdministratorRelAdministratorRelPublicEntityRepositoryTest extends KernelTestCase
+class AdministratorRelPublicEntityRepositoryTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait {
         enableChangelog as _enableChangelog;

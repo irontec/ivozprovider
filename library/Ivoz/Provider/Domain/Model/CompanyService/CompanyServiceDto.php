@@ -13,7 +13,8 @@ class CompanyServiceDto extends CompanyServiceDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
-                'code' => 'code'
+                'code' => 'code',
+                'serviceId' => 'service'
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

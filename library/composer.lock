@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "418a1c0d68c7e504ebbbd3315f43bfd7",
+    "content-hash": "9af09c17d2b47eace1a80449c45fc2a8",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2156,23 +2156,23 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.2.6",
+            "version": "4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api.git",
-                "reference": "ee81c9ec21790814ab450026115719b34cd0efaa"
+                "reference": "032290865ac8043419c17ec62af2f18c402c6477"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/ee81c9ec21790814ab450026115719b34cd0efaa",
-                "reference": "ee81c9ec21790814ab450026115719b34cd0efaa",
+                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/032290865ac8043419c17ec62af2f18c402c6477",
+                "reference": "032290865ac8043419c17ec62af2f18c402c6477",
                 "shasum": ""
             },
             "require": {
                 "api-platform/core": "^2.5",
                 "graze/guzzle-jsonrpc": "3.2.*",
                 "guzzlehttp/guzzle": "^6.3",
-                "irontec/ivoz-core": "^4.2",
+                "irontec/ivoz-core": "^4.4.3",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "php": ">=7.4",
                 "symfony/expression-language": "^5.1",
@@ -2207,9 +2207,9 @@
             "description": "Api library built on api-platform for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-api/issues",
-                "source": "https://github.com/irontec/ivoz-api/tree/4.2.6"
+                "source": "https://github.com/irontec/ivoz-api/tree/4.3"
             },
-            "time": "2021-06-17T14:31:04+00:00"
+            "time": "2021-09-29T11:20:11+00:00"
         },
         {
             "name": "irontec/ivoz-api-bundle",
@@ -2266,16 +2266,16 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.3.1",
+            "version": "4.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "2f04a3ab6448b3c2f95efc2ce98b49030c747664"
+                "reference": "e121acb330636f19d1310f97485e726f7ead709a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/2f04a3ab6448b3c2f95efc2ce98b49030c747664",
-                "reference": "2f04a3ab6448b3c2f95efc2ce98b49030c747664",
+                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/e121acb330636f19d1310f97485e726f7ead709a",
+                "reference": "e121acb330636f19d1310f97485e726f7ead709a",
                 "shasum": ""
             },
             "require": {
@@ -2318,9 +2318,9 @@
             "description": "Core library for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-core/issues",
-                "source": "https://github.com/irontec/ivoz-core/tree/4.3.1"
+                "source": "https://github.com/irontec/ivoz-core/tree/4.x"
             },
-            "time": "2021-04-21T09:11:18+00:00"
+            "time": "2021-09-29T13:51:24+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
@@ -2429,18 +2429,18 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.20",
+            "version": "2.5.21",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "f638b333b3259e6e0541c7f53ad407fb07219bc0"
+                "reference": "bb0cccda1bb50aea5c56a898fcc45f1e1b33b492"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
                 "incenteev/composer-parameter-handler": "^2.1",
-                "irontec/ivoz-core": "^4.0",
+                "irontec/ivoz-core": "^4.4.3",
                 "irontec/ivoz-core-bundle": "^4.0",
-                "php": ">=7.0.19",
+                "php": ">=8.0",
                 "symfony/asset": "^5.1",
                 "symfony/console": "^5.1",
                 "symfony/debug-bundle": "^5.1",
@@ -14253,7 +14253,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.4.6"
+        "php": ">=8.0"
     },
     "platform-dev": {
         "ext-pcntl": "*"

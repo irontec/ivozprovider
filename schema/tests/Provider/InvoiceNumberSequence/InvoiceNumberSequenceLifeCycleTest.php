@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 
-class InvoiceNumberSequenceLifeCycleTestLifeCycleTest extends KernelTestCase
+class InvoiceNumberSequenceLifeCycleTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 

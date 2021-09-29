@@ -78,7 +78,6 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
                 break;
             case self::ROUTINGMODE_BLOCK:
                 $this->setCarrier(null);
-                $this->setPriority(0);
                 $this->setStopper(true);
                 break;
             default:

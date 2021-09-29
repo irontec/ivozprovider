@@ -17,7 +17,8 @@ Feature: Retrieve outgoing ddi rules
           {
               "name": "testRule",
               "defaultAction": "keep",
-              "id": 1
+              "id": 1,
+              "forcedDdi": null
           }
       ]
     """

@@ -18,13 +18,17 @@ Feature: Retrieve users
               "name": "Alice",
               "lastname": "Allison",
               "id": 1,
-              "company": 1
+              "company": 1,
+              "terminal": 1,
+              "outgoingDdi": null
           },
           {
               "name": "Bob",
               "lastname": "Bobson",
               "id": 2,
-              "company": 1
+              "company": 1,
+              "terminal": 2,
+              "outgoingDdi": null
           }
       ]
     """

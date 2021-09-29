@@ -246,12 +246,27 @@ production:
       filterField: User
       parentOptionCustomizer:
         - recordCount
+      fields:
+        <<: *callForwardSettingsListFields_Link
+        blacklist:
+          <<: *callForwardSettingsListBlacklist_Link
+          ddi: true
     callForwardSettingsNew_screen:
       <<: *callForwardSettingsNew_screenLink
       filterField: User
+      fields:
+        <<: *callForwardSettingsNewFields_Link
+        blacklist:
+          <<: *callForwardSettingsNewBlacklist_Link
+          ddi: true
     callForwardSettingsEdit_screen:
       <<: *callForwardSettingsEdit_screenLink
       filterField: User
+      fields:
+        <<: *callForwardSettingsEditFields_Link
+        blacklist:
+          <<: *callForwardSettingsEditBlacklist_Link
+          ddi: true
 
   dialogs: &users_dialogsLink
     usersDel_dialog: &usersDel_dialogLink

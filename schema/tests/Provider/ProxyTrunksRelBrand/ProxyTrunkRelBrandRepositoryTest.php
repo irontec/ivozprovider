@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand;
 
-class ProxyTrunksRelBrandRepositoryTest extends KernelTestCase
+class ProxyTrunkRelBrandRepositoryTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 

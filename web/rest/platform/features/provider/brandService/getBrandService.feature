@@ -25,6 +25,10 @@ Feature: Retrieve brandService
           {
               "code": "93",
               "id": 3
+          },
+          {
+              "code": "93",
+              "id": 4
           }
       ]
     """

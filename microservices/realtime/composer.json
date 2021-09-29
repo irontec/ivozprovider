@@ -1,5 +1,5 @@
 {
-    "name": "irontec/ivozprovider-realtime",
+    "name": "ivozprovider/realtime",
     "description": "Multitenant solution for VoIP telephony providers (websocket server)",
     "authors": [
         {

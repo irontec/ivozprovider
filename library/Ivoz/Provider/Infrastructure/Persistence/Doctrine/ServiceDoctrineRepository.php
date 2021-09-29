@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\Service\Service;
+use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use Ivoz\Provider\Domain\Model\Service\ServiceRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -18,5 +19,22 @@ class ServiceDoctrineRepository extends ServiceEntityRepository implements Servi
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Service::class);
+    }
+
+    /**
+     * @return ServiceInterface[]
+     */
+    public function getServicesInGroup(array $ids)
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $query = $qb
+            ->select('s')
+            ->where(
+                $qb->expr()->in('s.id', $ids)
+            )
+            ->getQuery();
+
+        return $query->getResult();
     }
 }

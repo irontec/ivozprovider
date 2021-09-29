@@ -18,25 +18,61 @@ Feature: Retrieve services
               "iden": "DirectPickUp",
               "defaultCode": "94",
               "extraArgs": true,
-              "id": 1
+              "id": 1,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           },
           {
               "iden": "GroupPickUp",
               "defaultCode": "95",
               "extraArgs": false,
-              "id": 2
+              "id": 2,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           },
           {
               "iden": "Voicemail",
               "defaultCode": "93",
               "extraArgs": true,
-              "id": 3
+              "id": 3,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           },
           {
               "iden": "RecordLocution",
               "defaultCode": "00",
               "extraArgs": true,
-              "id": 4
+              "id": 4,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
+          },
+          {
+              "iden": "CloseLock",
+              "defaultCode": "30",
+              "extraArgs": true,
+              "id": 5,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           }
       ]
     """

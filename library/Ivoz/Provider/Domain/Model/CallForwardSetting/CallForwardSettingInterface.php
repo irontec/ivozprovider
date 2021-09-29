@@ -8,6 +8,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
 * CallForwardSettingInterface
@@ -33,6 +34,8 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     const TARGETTYPE_EXTENSION = 'extension';
 
     const TARGETTYPE_VOICEMAIL = 'voicemail';
+
+    const TARGETTYPE_RETAIL = 'retail';
 
     /**
      * @codeCoverageIgnore
@@ -63,6 +66,8 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      */
     public function getRouteType();
 
+    public function getCallForwardTarget();
+
     public function getCallTypeFilter(): string;
 
     public function getCallForwardType(): string;
@@ -92,6 +97,10 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static;
 
     public function getRetailAccount(): ?RetailAccountInterface;
+
+    public function getCfwToRetailAccount(): ?RetailAccountInterface;
+
+    public function getDdi(): ?DdiInterface;
 
     public function isInitialized(): bool;
 

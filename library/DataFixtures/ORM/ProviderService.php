@@ -74,6 +74,20 @@ class ProviderService extends Fixture
         $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
+
+        $item5 = $this->createEntityInstance(Service::class);
+        (function () use ($fixture) {
+            $this->setIden("CloseLock");
+            $this->setDefaultCode("30");
+            $this->setExtraArgs(true);
+            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->setDescription(new Description('en', 'es', 'ca', 'it'));
+        })->call($item5);
+
+        $this->addReference('_reference_ProviderService5', $item5);
+        $this->sanitizeEntityValues($item5);
+        $manager->persist($item5);
+
         $manager->flush();
     }
 }

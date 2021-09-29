@@ -9,7 +9,7 @@ use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 
-class FriendLifeCycleTestLifeCycleTest extends KernelTestCase
+class FriendLifeCycleTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 

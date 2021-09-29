@@ -34,6 +34,11 @@ class ServiceTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
+                [
+                    'id',
+                    'in',
+                    'brandServiceRepository.getServiceIdsByBrand(user.getCompany().getBrand().getId())',
+                ],
             ]
         );
     }
@@ -52,6 +57,7 @@ class ServiceTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
+                'FALSE'
             ]
         );
     }

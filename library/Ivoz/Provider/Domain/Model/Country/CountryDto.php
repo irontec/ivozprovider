@@ -16,7 +16,7 @@ class CountryDto extends CountryDtoAbstract
                 'id' => 'id',
                 'code' => 'code',
                 'countryCode' => 'countryCode',
-                'name' => ['en', 'es']
+                'name' => ['en', 'es','ca','it']
             ];
         }
 

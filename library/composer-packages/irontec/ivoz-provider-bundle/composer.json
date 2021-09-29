@@ -1,6 +1,6 @@
 {
     "name": "irontec/ivoz-provider-bundle",
-    "version": "2.5.20",
+    "version": "2.5.21",
     "type": "symfony-bundle",
     "description": "Symfony bridge for IvozProvider",
     "license": "GPL-3.0-or-later",
@@ -26,8 +26,8 @@
         }
     },
     "require": {
-        "php": ">=7.0.19",
-        "irontec/ivoz-core": "^4.0",
+        "php": ">=8.0",
+        "irontec/ivoz-core": "^4.4.3",
         "irontec/ivoz-core-bundle": "^4.0",
         "symfony/flex": "^1.0",
         "symfony/asset": "^5.1",

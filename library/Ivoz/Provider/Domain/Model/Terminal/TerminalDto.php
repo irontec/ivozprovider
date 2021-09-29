@@ -40,25 +40,6 @@ class TerminalDto extends TerminalDtoAbstract
         $this->domainName = $name;
     }
 
-    public function normalize(string $context, string $role = '')
-    {
-        $response = parent::normalize(...func_get_args());
-
-        if (!isset($response['status'])) {
-            return $response;
-        }
-
-        /**
-         * @var int $key
-         * @var RegistrationStatus $status
-         */
-        foreach ($response['status'] as $key => $status) {
-            $response['status'][$key] = $status->toArray();
-        }
-
-        return $response;
-    }
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore
@@ -70,11 +51,11 @@ class TerminalDto extends TerminalDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'domainName' => 'domainName',
-                'status' => [
+                'status' => [[
                     'contact',
                     'expires',
                     'userAgent'
-                ]
+                ]]
             ];
 
             if ($role === 'ROLE_BRAND_ADMIN') {
@@ -89,7 +70,9 @@ class TerminalDto extends TerminalDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'mac' => 'mac',
-                'lastProvisionDate' => 'lastProvisionDate'
+                'lastProvisionDate' => 'lastProvisionDate',
+                'domainId' => 'domain',
+                'terminalModelId' => 'terminalModel'
             ];
         }
 
@@ -123,7 +106,12 @@ class TerminalDto extends TerminalDtoAbstract
     {
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;
-        $response['status'] = $this->status;
+        $response['status'] = array_map(
+            function (RegistrationStatus $registrationStatus) {
+                return $registrationStatus->toArray();
+            },
+            $this->status
+        );
 
         return $response;
     }

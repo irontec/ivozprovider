@@ -36,4 +36,28 @@ class CompanyServiceDoctrineRepository extends ServiceEntityRepository implement
 
         return $response;
     }
+
+    /**
+     * @return int[]
+     */
+    public function findServiceIdsByCompany(int $companyId)
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('IDENTITY(self.service) as service')
+            ->where(
+                $expression->eq('self.company', $companyId)
+            );
+
+        $result = $qb
+            ->getQuery()
+            ->getScalarResult();
+
+        return array_map(
+            'intval',
+            array_column($result, 'service')
+        );
+    }
 }

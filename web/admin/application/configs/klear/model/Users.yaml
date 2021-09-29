@@ -230,7 +230,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\MatchList\MatchList
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_MatchList
           fieldName:
             fields:
               - name

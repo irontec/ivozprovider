@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 
 /**
 * CallForwardSettingDtoAbstract
@@ -83,6 +84,16 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
      */
     private $retailAccount;
 
+    /**
+     * @var RetailAccountDto | null
+     */
+    private $cfwToRetailAccount;
+
+    /**
+     * @var DdiDto | null
+     */
+    private $ddi;
+
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -110,7 +121,9 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'voiceMailUserId' => 'voiceMailUser',
             'numberCountryId' => 'numberCountry',
             'residentialDeviceId' => 'residentialDevice',
-            'retailAccountId' => 'retailAccount'
+            'retailAccountId' => 'retailAccount',
+            'cfwToRetailAccountId' => 'cfwToRetailAccount',
+            'ddiId' => 'ddi'
         ];
     }
 
@@ -132,7 +145,9 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'voiceMailUser' => $this->getVoiceMailUser(),
             'numberCountry' => $this->getNumberCountry(),
             'residentialDevice' => $this->getResidentialDevice(),
-            'retailAccount' => $this->getRetailAccount()
+            'retailAccount' => $this->getRetailAccount(),
+            'cfwToRetailAccount' => $this->getCfwToRetailAccount(),
+            'ddi' => $this->getDdi()
         ];
 
         if (!$hideSensitiveData) {
@@ -407,6 +422,66 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     public function getRetailAccountId()
     {
         if ($dto = $this->getRetailAccount()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setCfwToRetailAccount(?RetailAccountDto $cfwToRetailAccount): static
+    {
+        $this->cfwToRetailAccount = $cfwToRetailAccount;
+
+        return $this;
+    }
+
+    public function getCfwToRetailAccount(): ?RetailAccountDto
+    {
+        return $this->cfwToRetailAccount;
+    }
+
+    public function setCfwToRetailAccountId($id): static
+    {
+        $value = !is_null($id)
+            ? new RetailAccountDto($id)
+            : null;
+
+        return $this->setCfwToRetailAccount($value);
+    }
+
+    public function getCfwToRetailAccountId()
+    {
+        if ($dto = $this->getCfwToRetailAccount()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setDdi(?DdiDto $ddi): static
+    {
+        $this->ddi = $ddi;
+
+        return $this;
+    }
+
+    public function getDdi(): ?DdiDto
+    {
+        return $this->ddi;
+    }
+
+    public function setDdiId($id): static
+    {
+        $value = !is_null($id)
+            ? new DdiDto($id)
+            : null;
+
+        return $this->setDdi($value);
+    }
+
+    public function getDdiId()
+    {
+        if ($dto = $this->getDdi()) {
             return $dto->getId();
         }
 

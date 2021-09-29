@@ -16,7 +16,7 @@
     <field name="targetType" type="string" column="targetType" length="25" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">[enum:number|extension|voicemail]</option>
+        <option name="comment">[enum:number|extension|voicemail|retail]</option>
       </options>
     </field>
     <field name="numberValue" type="string" column="numberValue" length="25" nullable="true">
@@ -64,6 +64,16 @@
     <many-to-one field="retailAccount" target-entity="Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface" inversed-by="callForwardSettings" fetch="LAZY">
       <join-columns>
         <join-column name="retailAccountId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="cfwToRetailAccount" target-entity="Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="cfwToRetailAccountId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="ddi" target-entity="Ivoz\Provider\Domain\Model\Ddi\DdiInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="ddiId" referenced-column-name="id" on-delete="SET NULL" />
       </join-columns>
     </many-to-one>
   </mapped-superclass>

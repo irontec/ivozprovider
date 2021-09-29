@@ -25,7 +25,6 @@ class Generator
     protected $fixedCostTotal = 0;
     protected $fixedCosts = array();
     protected $totals = array();
-    protected $pricingPlanCache = [];
 
     /**
      * @var InvoiceRepository
@@ -300,8 +299,8 @@ class Generator
         $total = $callSumaryTotals['totalPrice'] + $this->fixedCostTotal;
         $total = ceil($total*100) / 100;
 
-        $totalTaxex = ceil(($total*$invoice->getTaxRate()/100)*10000)/10000;
-        $totalWithTaxex = ceil(($totalTaxex + $total)*100)/100;
+        $totalTaxex = ceil(($total*$invoice->getTaxRate()/100)*100)/100;
+        $totalWithTaxex = $totalTaxex + $total;
 
         $this->totals = array(
             'totalPrice' => $total,

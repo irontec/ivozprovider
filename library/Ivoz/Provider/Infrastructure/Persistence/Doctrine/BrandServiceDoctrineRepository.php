@@ -55,4 +55,27 @@ class BrandServiceDoctrineRepository extends ServiceEntityRepository implements 
             'brand' => $id
         ]);
     }
+
+    /**
+     * Used by client API access controls
+     * @return int[]
+     */
+    public function getServiceIdsByBrand(int $brandId): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('IDENTITY(self.service) AS service')
+            ->where(
+                $expression->eq('self.brand', $brandId)
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_map(
+            'intval',
+            array_column($result, 'service')
+        );
+    }
 }

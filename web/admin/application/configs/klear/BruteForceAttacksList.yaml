@@ -35,7 +35,6 @@ production:
           lastTimeBanned: true
         blacklist:
           blocker: true
-          description: true
 
   dialogs:
     bruteForceUnban_dialog: &bruteForceUnban_dialogLink

@@ -4,22 +4,16 @@ namespace spec\Ivoz\Provider\Domain\Model\Company;
 
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
-use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Language\Language;
-use Ivoz\Provider\Domain\Model\Language\LanguageDto;
-use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\Timezone\Timezone;
-use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
-use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
-use spec\HelperTrait;
 use spec\DtoToEntityFakeTransformer;
+use spec\HelperTrait;
 
 class CompanySpec extends ObjectBehavior
 {
@@ -49,6 +43,14 @@ class CompanySpec extends ObjectBehavior
                 'getDefaultTimezone' => $this->timezone,
                 'getLanguage' => $this->language,
             ]
+        );
+
+        $this->brand = $this->getterProphecy(
+            $this->brand,
+            [
+                'getDomain' => null,
+            ],
+            false
         );
 
         $countryDto = new CountryDto();
@@ -134,6 +136,57 @@ class CompanySpec extends ObjectBehavior
         $this
             ->getOnDemandRecord()
             ->shouldBe(0);
+    }
+
+    function it_requires_validates_company_type_in_order_to_set_onDemandRecord()
+    {
+        $allowed = [
+            CompanyInterface::TYPE_VPBX,
+            CompanyInterface::TYPE_RESIDENTIAL
+        ];
+
+        $unallowed = [
+            CompanyInterface::TYPE_WHOLESALE,
+            CompanyInterface::TYPE_RETAIL
+        ];
+
+        foreach ($unallowed as $type) {
+
+            /** @var CompanyDto $vpbxDto */
+            $dto = clone $this->dto;
+            $dto
+                ->setType($type)
+                ->setOnDemandRecord(1);
+
+            $this
+                ->shouldThrow('\DomainException')
+                ->during(
+                    'updateFromDto',
+                    [
+                        $dto,
+                        $this->transformer
+                    ]
+                );
+        }
+
+        foreach ($allowed as $type) {
+
+            /** @var CompanyDto $vpbxDto */
+            $dto = clone $this->dto;
+            $dto
+                ->setType($type)
+                ->setOnDemandRecord(1);
+
+            $this
+                ->shouldNotThrow('\DomainException')
+                ->during(
+                    'updateFromDto',
+                    [
+                        $dto,
+                        $this->transformer
+                    ]
+                );
+        }
     }
 
     function it_turns_empty_onDemandRecordCode_into_empty_string()

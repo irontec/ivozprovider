@@ -16,7 +16,11 @@ Feature: Retrieve friends
       [
           {
               "name": "testFriend",
-              "id": 1
+              "description": "",
+              "priority": 1,
+              "directConnectivity": "yes",
+              "id": 1,
+              "domain": 3
           }
       ]
     """
@@ -28,7 +32,7 @@ Feature: Retrieve friends
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
+    And the JSON should be equal to:
     """
       {
           "name": "testFriend",
@@ -39,10 +43,14 @@ Feature: Retrieve friends
           "password": "SDG3qd2j6+",
           "priority": 1,
           "allow": "alaw",
+          "fromUser": null,
           "fromDomain": "",
           "directConnectivity": "yes",
           "ddiIn": "yes",
           "t38Passthrough": "no",
+          "alwaysApplyTransformations": false,
+          "rtpEncryption": false,
+          "multiContact": true,
           "id": 1,
           "transformationRuleSet": null,
           "callAcl": null,

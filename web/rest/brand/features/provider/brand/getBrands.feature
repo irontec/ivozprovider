@@ -16,7 +16,16 @@ Feature: Manage brands
       [
           {
               "name": "DemoBrand",
-              "id": 1
+              "id": 1,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              },
+              "invoice": {
+                  "nif": "",
+                  "postalCode": ""
+              }
           }
       ]
     """
@@ -78,6 +87,11 @@ Feature: Manage brands
                   "ca": "Euro",
                   "it": "Euro"
               }
-          }
+          },
+          "voicemailNotificationTemplate": null,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null
       }
     """

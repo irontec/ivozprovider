@@ -35,7 +35,7 @@ Feature: Update terminals
           "directMediaMethod": "invite",
           "password": "ZGthe7E2+1",
           "mac": "aabbccddeeff",
-          "lastProvisionDate": "1970-01-01 10:10:10",
+          "lastProvisionDate": null,
           "t38Passthrough": "no",
           "rtpEncryption": false,
           "id": 1,

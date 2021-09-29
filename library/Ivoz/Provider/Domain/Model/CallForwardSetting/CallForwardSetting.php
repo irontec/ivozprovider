@@ -53,6 +53,9 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
 
         $retailAccount = $this->getRetailAccount();
         if (!$retailAccount) {
+            // DDI criteria is only supported for retail call-forwards
+            $this->setDdi(null);
+
             return;
         }
 
@@ -148,5 +151,14 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
     public function getRouteType()
     {
         return $this->getTargetType();
+    }
+
+    public function getCallForwardTarget()
+    {
+        if ($this->getRouteType() == CallForwardSettingInterface::TARGETTYPE_RETAIL) {
+            return $this->getCfwToRetailAccount()->getName();
+        }
+
+        return $this->getTarget();
     }
 }

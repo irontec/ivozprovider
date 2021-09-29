@@ -404,6 +404,7 @@ Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate:
 
 Ivoz\Provider\Domain\Model\DestinationRateGroup\Name:
 Ivoz\Provider\Domain\Model\DestinationRateGroup\Description:
+Ivoz\Provider\Domain\Model\DestinationRateGroup\File:
 Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
@@ -518,12 +519,13 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
       ROLE_BRAND_ADMIN:
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
-    write_access_control:
-      ROLE_BRAND_ADMIN:
-        raw: 'FALSE'
-  itemOperations: []
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
   collectionOperations:
     get: ~
+    post: ~
     get_status_collection:
       method: 'GET'
       path: 'friends/status'

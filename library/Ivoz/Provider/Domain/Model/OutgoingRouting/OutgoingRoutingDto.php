@@ -94,13 +94,4 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
 
         $this->setRelCarriers($relCarriers);
     }
-
-    public function setRoutingMode(?string $routingMode = null): static
-    {
-        if ($routingMode === OutgoingRoutingInterface::ROUTINGMODE_BLOCK) {
-            // klear visual filter fix
-            $this->setPriority(0);
-        }
-        return parent::setRoutingMode($routingMode);
-    }
 }

@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
 
-class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
+class OutgoingRoutingLifeCycleTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 

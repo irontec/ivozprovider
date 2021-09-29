@@ -6,25 +6,37 @@
   @createSchema
   Scenario: Create a destination rate group
     Given I add Brand Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/destination_rate_groups" with body:
+     When I add "Content-Type" header equal to "multipart/form-data; boundary=------IvozProviderFormBoundaryFUBrG71LG0e8DuZ8"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" multipart request to "/destination_rate_groups" with body:
     """
-      {
-          "name": {
-              "en": "New DR",
-              "es": "New DR",
-              "ca": "New DR",
-              "it": "New DR"
-          },
-          "description": {
-              "en": "",
-              "es": "",
-              "ca": "",
-              "it": ""
-          },
-          "currency": "1"
-      }
+------IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+Content-Disposition: form-data; name="destinationRateGroup"
+
+{
+    "name": {
+        "en": "New DR",
+        "es": "New DR",
+        "ca": "New DR",
+        "it": "New DR"
+    },
+    "description": {
+        "en": "",
+        "es": "",
+        "ca": "",
+        "it": ""
+    },
+    "currency": "1"
+}
+------IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+Content-Disposition: form-data; name="file"; filename="prices.csv"
+Content-Type: text/csv
+
+"Spain",+34,0.012,0.012,1
+"Portugal",+351,0.008,0.008,1
+"France",+33,0.012,0.012,1
+------IvozProviderFormBoundaryFUBrG71LG0e8DuZ8--
+
     """
     Then the response status code should be 201
     And the response should be in JSON
@@ -32,7 +44,7 @@
     And the JSON should be equal to:
     """
       {
-          "status": null,
+          "status": "waiting",
           "lastExecutionError": null,
           "deductibleConnectionFee": false,
           "id": 3,
@@ -49,9 +61,9 @@
               "it": ""
           },
           "file": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null,
+              "fileSize": 84,
+              "mimeType": "text/plain; charset=us-ascii",
+              "baseName": "prices.csv",
               "importerArguments": []
           },
           "currency": 1
@@ -68,7 +80,7 @@
     And the JSON should be like:
     """
       {
-          "status": null,
+          "status": "waiting",
           "lastExecutionError": null,
           "deductibleConnectionFee": false,
           "id": 3,
@@ -85,9 +97,9 @@
               "it": ""
           },
           "file": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null,
+              "fileSize": 84,
+              "mimeType": "text/plain; charset=us-ascii",
+              "baseName": "prices.csv",
               "importerArguments": []
           },
           "currency": "~"

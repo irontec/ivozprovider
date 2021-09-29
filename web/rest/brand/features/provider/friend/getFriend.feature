@@ -16,7 +16,11 @@ Feature: Retrieve friends status
       [
           {
               "name": "testFriend",
-              "id": 1
+              "description": "",
+              "priority": 1,
+              "directConnectivity": "yes",
+              "id": 1,
+              "domain": 3
           }
       ]
     """

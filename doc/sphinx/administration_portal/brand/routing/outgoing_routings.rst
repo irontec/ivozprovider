@@ -124,8 +124,7 @@ Carrier election process can combine static and LCR routes:
 Blocking routes
 ===============
 
-Blocking routes are the only routes with **priority 0**. This enforcement makes them be **evaluated first**. They are
-*Stopper* routes as whenever they apply, call is dropped and no further route is evaluated.
+Blocking routes are *Stopper* routes as whenever they apply, call is dropped and no further route is evaluated.
 
 .. tip:: Using these routes, it is easy to make a group with unwanted call prefixes and reject all calls to those
          destinations for every client (or for one particular client).

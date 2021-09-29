@@ -3,6 +3,7 @@ Brute-force attacks
 *******************
 
 *SIP address + IP address* combinations listed here have been blocked (for 12 hours) by *Anti brute-force* mechanism.
+User-Agent may be shown in *Description* column.
 
 .. tip:: You can unblock any source using green flag button of each row.
 

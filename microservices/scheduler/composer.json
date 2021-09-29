@@ -1,5 +1,5 @@
 {
-    "name": "irontec/ivozprovider-scheduler",
+    "name": "ivozprovider/scheduler",
     "description": "Multitenant solution for VoIP telephony providers (scheduled task runner module)",
     "authors": [
         {

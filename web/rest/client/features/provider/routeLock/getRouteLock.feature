@@ -16,13 +16,21 @@ Feature: Retrieve route locks
       [
           {
               "name": "Lock name",
+              "description": "Lock description",
               "open": true,
-              "id": 1
+              "id": 1,
+              "closeExtension": "",
+              "openExtension": "",
+              "toggleExtension": ""
           },
           {
               "name": "Test Lock",
+              "description": "Test Lock",
               "open": true,
-              "id": 2
+              "id": 2,
+              "closeExtension": "",
+              "openExtension": "",
+              "toggleExtension": ""
           }
       ]
     """
@@ -40,6 +48,9 @@ Feature: Retrieve route locks
           "name": "Lock name",
           "description": "Lock description",
           "open": true,
-          "id": 1
+          "id": 1,
+          "closeExtension": "",
+          "openExtension": "",
+          "toggleExtension": ""
       }
     """
