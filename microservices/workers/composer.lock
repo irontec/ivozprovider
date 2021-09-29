@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4bd058e396b9b2ecdc788883a2de050a",
+    "content-hash": "0c6994c9193c5d247bc3d2d568d345e2",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1556,11 +1556,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.3.1",
+            "version": "4.4",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core",
-                "reference": "2f04a3ab6448b3c2f95efc2ce98b49030c747664"
+                "reference": "e121acb330636f19d1310f97485e726f7ead709a"
             },
             "require": {
                 "beberlei/assert": "2.9.*",
@@ -1652,18 +1652,18 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.20",
+            "version": "2.5.22",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "5145e3c1797f9198f2627adb452a31f16a771361"
+                "reference": "ee73eb336697c9f38e734fcc9ca3b4f386a1294b"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
                 "incenteev/composer-parameter-handler": "^2.1",
-                "irontec/ivoz-core": "^4.0",
+                "irontec/ivoz-core": "^4.3.3",
                 "irontec/ivoz-core-bundle": "^4.0",
-                "php": ">=7.0.19",
+                "php": ">=8.0",
                 "symfony/asset": "^5.1",
                 "symfony/console": "^5.1",
                 "symfony/debug-bundle": "^5.1",

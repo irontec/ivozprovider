@@ -76,6 +76,7 @@
     },
     "require": {
         "php": ">=8.0",
+        "irontec/ivoz-core": "4.4",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
         "doctrine/persistence": "^2.1",
