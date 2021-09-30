@@ -137,7 +137,7 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     /**
      * Get currency
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
      */
     public function getCurrency();
 
