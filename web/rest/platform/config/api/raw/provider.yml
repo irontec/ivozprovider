@@ -98,6 +98,16 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
       ROLE_SUPER_ADMIN:
         raw: "id > 0 or id === null"
 
+Ivoz\Provider\Domain\Model\Currency\Currency:
+  itemOperations: []
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    write_access_control:
+      ROLE_SUPER_ADMIN:
+        raw: "FALSE"
+
 Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity:
   itemOperations:
     get:
