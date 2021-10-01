@@ -1,4 +1,4 @@
-import _ from 'services/Translations/translate';
+import _ from 'lib/services/translations/translate';
 import { Tooltip } from '@mui/material';
 import { StyledStatusIconArrowForwardIcon, StyledStatusIconRotateLeftIcon } from './StatusIcon.styles';
 

@@ -1,7 +1,7 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
-import _ from 'services/Translations/translate';
-import EntityInterface from 'entities/EntityInterface';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import _ from 'lib/services/translations/translate';
+import EntityInterface from 'lib/entities/EntityInterface';
 import { getI18n } from 'react-i18next';
 
 const ratingPlanGroup: EntityInterface = {

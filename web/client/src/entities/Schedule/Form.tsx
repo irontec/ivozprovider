@@ -1,4 +1,4 @@
-import defaultEntityBehavior, { FieldsetGroups } from '../DefaultEntityBehavior';
+import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 
 const Form = (props:any) => {
 

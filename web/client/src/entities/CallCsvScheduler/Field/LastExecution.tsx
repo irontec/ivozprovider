@@ -1,6 +1,6 @@
 import { Tooltip } from '@mui/material';
-import { PropertyCustomComponent, propertyCustomComponentProps } from 'services/Api/ParsedApiSpecInterface';
-import _ from 'services/Translations/translate';
+import { PropertyCustomComponent, propertyCustomComponentProps } from 'lib/services/api/ParsedApiSpecInterface';
+import _ from 'lib/services/translations/translate';
 import { StyledLastExecutionErrorMsg, StyledLastExecutionSuccessMsg } from './LastExecution.styles';
 
 type LastExecutionProps = propertyCustomComponentProps & {

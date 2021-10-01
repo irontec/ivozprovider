@@ -1,4 +1,4 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { getI18n } from 'react-i18next';
 
 const TransformationRuleSetSelectOptions = (callback: Function) => {

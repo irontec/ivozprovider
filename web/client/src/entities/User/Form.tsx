@@ -1,4 +1,4 @@
-import defaultEntityBehavior, { FieldsetGroups } from '../DefaultEntityBehavior';
+import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import TerminalSelectOptions from 'entities/Terminal/SelectOptions';
 import CallAclSelectOptions from 'entities/CallAcl/SelectOptions';
@@ -12,7 +12,7 @@ import TransformationRuleSetSelectOptions from 'entities/TransformationRuleSet/S
 import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import UserSelectOptions from './SelectOptions';
 import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
-import _ from 'services/Translations/translate';
+import _ from 'lib/services/translations/translate';
 
 const Form = (props: any) => {
 

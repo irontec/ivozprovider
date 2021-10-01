@@ -1,7 +1,7 @@
-import defaultEntityBehavior, { FieldsetGroups } from '../DefaultEntityBehavior';
+import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import DdiSelectOptions from 'entities/Ddi/SelectOptions';
-import _ from 'services/Translations/translate';
+import _ from 'lib/services/translations/translate';
 
 const Form = (props:any) => {
 

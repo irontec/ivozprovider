@@ -1,4 +1,4 @@
-import defaultEntityBehavior, { FieldsetGroups } from '../DefaultEntityBehavior';
+import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import LocutionSelectOptions from 'entities/Locution/SelectOptions';
 import IvrSelectOptions from 'entities/Ivr/SelectOptions';
@@ -8,7 +8,7 @@ import CountrySelectOptions from 'entities/Country/SelectOptions';
 import QueueSelectOptions from 'entities/Queue/SelectOptions';
 import ConferenceRoomSelectOptions from 'entities/ConferenceRoom/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
-import _ from 'services/Translations/translate';
+import _ from 'lib/services/translations/translate';
 
 const Form = (props:any) => {
 

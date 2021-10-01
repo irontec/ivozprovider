@@ -1,10 +1,10 @@
-import defaultEntityBehavior, { FieldsetGroups } from '../DefaultEntityBehavior';
+import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import CallAclSelectOptions from 'entities/CallAcl/SelectOptions';
 import TransformationRuleSetSelectOptions from 'entities/TransformationRuleSet/SelectOptions';
 import DdiSelectOptions from 'entities/Ddi/SelectOptions';
 import LanguageSelectOptions from 'entities/Language/SelectOptions';
-import _ from 'services/Translations/translate';
+import _ from 'lib/services/translations/translate';
 
 const Form = (props:any) => {
 

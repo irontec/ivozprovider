@@ -1,4 +1,4 @@
-import defaultEntityBehavior, { FieldsetGroups } from '../DefaultEntityBehavior';
+import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import CountrySelectOptions from 'entities/Country/SelectOptions';
 import IvrSelectOptions from 'entities/Ivr/SelectOptions';

@@ -1,4 +1,4 @@
-import defaultEntityBehavior, { FieldsetGroups } from '../DefaultEntityBehavior';
+import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import ExternalCallFilterSelectOptions from 'entities/ExternalCallFilter/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
@@ -13,7 +13,7 @@ import LanguageSelectOptions from 'entities/Language/SelectOptions';
 import QueueSelectOptions from 'entities/Queue/SelectOptions';
 import ConditionalRouteSelectOptions from 'entities/ConditionalRoute/SelectOptions';
 import RetailAccountSelectOptions from 'entities/RetailAccount/SelectOptions';
-import _ from 'services/Translations/translate';
+import _ from 'lib/services/translations/translate';
 
 const Form = (props:any) => {
 

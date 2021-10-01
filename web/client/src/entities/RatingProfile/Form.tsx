@@ -1,4 +1,4 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import RatingPlanGroupSelectOptions from 'entities/RatingPlanGroup/SelectOptions';
 import RoutingTagSelectOptions from 'entities/RoutingTag/SelectOptions';

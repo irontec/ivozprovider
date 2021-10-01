@@ -1,9 +1,9 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
-import EntityService from 'services/Entity/EntityService';
-import defaultEntityBehavior from '../DefaultEntityBehavior';
-import _ from 'services/Translations/translate';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
+import EntityService from 'lib/services/entity/EntityService';
+import DefaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import _ from 'lib/services/translations/translate';
 import Form from './Form';
 import entities from '../index';
 
@@ -91,7 +91,7 @@ const columns = [
 ];
 
 const billableCall: EntityInterface = {
-    ...defaultEntityBehavior,
+    ...DefaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'BillableCall',
     title: _('External call', { count: 2 }),

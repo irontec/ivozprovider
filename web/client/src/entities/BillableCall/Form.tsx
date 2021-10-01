@@ -1,4 +1,4 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import InvoiceSelectOptions from 'entities/Invoice/SelectOptions';
 import DdiProviderSelectOptions from 'entities/DdiProvider/SelectOptions';

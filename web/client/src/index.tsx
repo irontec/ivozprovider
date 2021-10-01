@@ -1,12 +1,13 @@
 import ReactDOM from 'react-dom';
 import { ThemeProvider, createTheme, StyledEngineProvider } from '@mui/material';
 import * as locales from '@mui/material/locale';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StoreProvider, createStore } from "easy-peasy";
 import storeModel from './store';
 import i18n from './i18n';
 import './index.css';
+import App, { AppRoutesProps } from 'lib/App';
+import AppRoutes from './AppRoutes';
 
 const currentLanguage = i18n.language.substring(0, 2) === 'es'
   ? 'esES'
@@ -20,7 +21,11 @@ ReactDOM.render(
   <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
       <StoreProvider store={store}>
-        <App />
+        <App>
+          {(props: AppRoutesProps) => {
+            return (<AppRoutes {...props} />);
+          }}
+        </App>
       </StoreProvider>
     </ThemeProvider>
   </StyledEngineProvider>

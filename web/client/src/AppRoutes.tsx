@@ -1,12 +1,14 @@
 import { Switch, Route } from "react-router-dom";
 
-import { Dashboard, Login } from 'layout/content/index';
-import EntityService from "services/Entity/EntityService";
-import { RouteSpec, parseRoutes } from 'entities/Routes';
+import Dashboard from './Dashboard';
+import { Login } from 'lib/layout/content/index';
+import EntityService from "lib/services/entity/EntityService";
+import { RouteSpec, parseRoutes } from 'lib/entities/Routes';
 import { useStoreActions } from "easy-peasy";
 import { useEffect } from "react";
+import { AppRoutesProps } from "lib/App";
 
-export default function AppRoutes(props:any) {
+export default function AppRoutes(props:AppRoutesProps) {
 
   const { token, apiSpec } = props;
 

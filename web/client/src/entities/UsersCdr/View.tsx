@@ -1,5 +1,5 @@
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
-import EntityService from 'services/Entity/EntityService';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import EntityService from 'lib/services/entity/EntityService';
 import { foreignKeyResolver } from './UsersCdr';
 import { useState, useEffect } from 'react';
 

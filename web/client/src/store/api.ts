@@ -1,5 +1,5 @@
 import { thunk } from 'easy-peasy';
-import ApiClient, { ApiError } from 'services/Api/ApiClient';
+import ApiClient, { ApiError } from 'lib/services/api/ApiClient';
 
 interface apiGetRequestParams {
   path: string,

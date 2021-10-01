@@ -1,11 +1,11 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import _ from 'lib/services/translations/translate';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
-import EntityService from 'services/Entity/EntityService';
+import EntityService from 'lib/services/entity/EntityService';
 import entities from '../index';
-import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
+import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 
 const properties: PropertiesList = {
     'name': {

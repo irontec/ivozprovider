@@ -1,5 +1,5 @@
-import defaultEntityBehavior, { FieldsetGroups } from '../DefaultEntityBehavior';
-import _ from 'services/Translations/translate';
+import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
+import _ from 'lib/services/translations/translate';
 
 const Form = (props: any) => {
 

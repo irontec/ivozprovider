@@ -1,7 +1,7 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
-import _ from 'services/Translations/translate';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import _ from 'lib/services/translations/translate';
 
 const properties: PropertiesList = {
 

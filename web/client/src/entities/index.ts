@@ -1,13 +1,13 @@
 import BillableCall from './BillableCall/BillableCall';
 import Calendar from './Calendar/Calendar';
-import callAcl from './CallAcl/CallAcl';
-import callCsvScheduler from './CallCsvScheduler/CallCsvScheduler';
+import CallAcl from './CallAcl/CallAcl';
+import CallCsvScheduler from './CallCsvScheduler/CallCsvScheduler';
 import CompanyService from './CompanyService/CompanyService';
-import conditionalRoute from './ConditionalRoute/ConditionalRoute';
+import ConditionalRoute from './ConditionalRoute/ConditionalRoute';
 import ConferenceRoom from './ConferenceRoom/ConferenceRoom';
 import Country from './Country/Country';
 import Ddi from './Ddi/Ddi';
-import EntityInterface from 'entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import Extension from './Extension/Extension';
 import ExternalCallFilter from './ExternalCallFilter/ExternalCallFilter';
 import Fax from './Fax/Fax';
@@ -33,7 +33,6 @@ import TerminalModel from './TerminalModel/TerminalModel';
 import User from './User/User';
 import UsersCdr from './UsersCdr/UsersCdr';
 
-
 interface EntityList {
   [name: string]: Readonly<EntityInterface>
 }
@@ -41,10 +40,10 @@ interface EntityList {
 const entities: Readonly<EntityList> = {
   BillableCall,
   Calendar,
-  CallAcl: callAcl,
-  CallCsvScheduler: callCsvScheduler,
+  CallAcl,
+  CallCsvScheduler,
   CompanyService,
-  ConditionalRoute: conditionalRoute,
+  ConditionalRoute,
   ConferenceRoom,
   Country,
   Ddi,
@@ -73,7 +72,5 @@ const entities: Readonly<EntityList> = {
   User,
   UsersCdr,
 };
-
-Object.freeze(entities);
 
 export default entities;

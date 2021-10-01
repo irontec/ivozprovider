@@ -1,7 +1,7 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import _ from 'lib/services/translations/translate';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
 
 const properties: PropertiesList = {
@@ -18,7 +18,7 @@ const properties: PropertiesList = {
     //@TODO POSPONED CallAclRelMatchLists subscreen list
 };
 
-const callAcl: EntityInterface = {
+const CallAcl: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'CallAcl',
@@ -28,4 +28,4 @@ const callAcl: EntityInterface = {
     Form
 };
 
-export default callAcl;
+export default CallAcl;

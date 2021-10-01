@@ -1,4 +1,4 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Schedule from './Schedule';
 
 const ScheduleSelectOptions = (callback: Function) => {

@@ -1,4 +1,4 @@
-import _ from 'services/Translations/translate';
+import _ from 'lib/services/translations/translate';
 
 interface LastExecutionProps {
     type: string,

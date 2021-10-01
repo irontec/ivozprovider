@@ -1,4 +1,4 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Service from './Service';
 
 const ServiceSelectOptions = (callback: Function, includeId?: number) => {

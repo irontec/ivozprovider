@@ -1,7 +1,7 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import _ from 'lib/services/translations/translate';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import LastExecution from './Field/LastExecution';
 
@@ -136,7 +136,7 @@ export const unmarshaller = (row: any, properties: PropertiesList) => {
     return response;
 };
 
-const callCsvScheduler: EntityInterface = {
+const CallCsvScheduler: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'CallCsvScheduler',
@@ -149,4 +149,4 @@ const callCsvScheduler: EntityInterface = {
     unmarshaller
 };
 
-export default callCsvScheduler;
+export default CallCsvScheduler;

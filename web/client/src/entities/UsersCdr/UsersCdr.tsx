@@ -1,9 +1,9 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
-import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
-import EntityService from 'services/Entity/EntityService';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import _ from 'lib/services/translations/translate';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
+import EntityService from 'lib/services/entity/EntityService';
 import entities from '../index';
 import View from './View';
 

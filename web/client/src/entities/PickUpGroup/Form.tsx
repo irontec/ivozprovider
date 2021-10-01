@@ -1,4 +1,4 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import UserSelectOptions from 'entities/User/SelectOptions';
 
