@@ -65,7 +65,7 @@ abstract class BrandAbstract
     protected $defaultTimezone;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
+     * @var \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
      */
     protected $currency;
 
@@ -331,7 +331,7 @@ abstract class BrandAbstract
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'defaultTimezoneId' => self::getDefaultTimezone()->getId(),
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
+            'currencyId' => self::getCurrency()->getId(),
             'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
             'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null,
             'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null,
@@ -556,11 +556,11 @@ abstract class BrandAbstract
     /**
      * Set currency
      *
-     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency | null
+     * @param \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency
      *
      * @return static
      */
-    protected function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency = null)
+    protected function setCurrency(\Ivoz\Provider\Domain\Model\Currency\CurrencyInterface $currency)
     {
         $this->currency = $currency;
 
@@ -570,7 +570,7 @@ abstract class BrandAbstract
     /**
      * Get currency
      *
-     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface | null
+     * @return \Ivoz\Provider\Domain\Model\Currency\CurrencyInterface
      */
     public function getCurrency()
     {

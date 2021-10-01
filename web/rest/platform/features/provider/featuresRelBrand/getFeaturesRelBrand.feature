@@ -83,7 +83,8 @@ Feature: Retrieve features rel brand
                   "registryData": ""
               },
               "language": 1,
-              "defaultTimezone": 145
+              "defaultTimezone": 145,
+              "currency": 1
           },
           "feature": {
               "iden": "queues",

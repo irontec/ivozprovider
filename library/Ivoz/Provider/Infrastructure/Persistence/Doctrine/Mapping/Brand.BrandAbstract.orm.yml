@@ -90,7 +90,8 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
       joinColumns:
         currencyId:
           referencedColumnName: id
-          onDelete: set null
+          nullable: false
+          onDelete: RESTRICT
       orphanRemoval: false
     voicemailNotificationTemplate:
       targetEntity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
