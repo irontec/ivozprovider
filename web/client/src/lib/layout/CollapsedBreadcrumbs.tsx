@@ -3,7 +3,8 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import { useStoreState } from 'easy-peasy';
 import _ from 'lib/services/translations/translate';
 import {
-  StyledCollapsedBreadcrumbsLink, StyledCollapsedBreadcrumbsNavigateNextIcon, StyledCollapsedBreadcrumbsTypography, StyledHomeIcon
+  StyledCollapsedBreadcrumbsLink, StyledCollapsedBreadcrumbsNavigateNextIcon,
+  StyledCollapsedBreadcrumbsTypography, StyledHomeIcon
 } from './CollapsedBreadcrumbs.styles';
 
 export default function CollapsedBreadcrumbs() {

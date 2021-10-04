@@ -1,7 +1,7 @@
 import { Grid, LinearProgress, CssBaseline } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import { Header, Footer } from 'lib/layout/index';
 import { StyledAppContent, StyledAppBarSpacer, StyledAppApiLoading, StyledAppPaper, StyledContainer, StyledAppFlexDiv } from './App.styles';
@@ -26,6 +26,7 @@ export default function App(props: AppProps) {
 
   const token = useStoreState((state: any) => state.auth.token);
   const apiSpec = useStoreState((state: any) => state.apiSpec.spec);
+  const basename = process.env.PUBLIC_URL;
 
   if (!apiSpec || Object.keys(apiSpec).length === 0) {
     return (
@@ -41,7 +42,7 @@ export default function App(props: AppProps) {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <CssBaseline />
       <StyledAppFlexDiv>
-        <Router>
+        <BrowserRouter basename={basename}>
           <Header loggedIn={!!token} />
           <StyledAppContent>
             <StyledAppBarSpacer />
@@ -58,7 +59,7 @@ export default function App(props: AppProps) {
               </Grid>
             </StyledContainer>
           </StyledAppContent>
-        </Router>
+        </BrowserRouter>
       </StyledAppFlexDiv>
     </LocalizationProvider>
   );

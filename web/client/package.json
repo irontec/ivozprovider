@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/client",
   "proxy": "https://10.10.3.21/",
   "dependencies": {
     "@date-io/date-fns": "^2.10.8",
