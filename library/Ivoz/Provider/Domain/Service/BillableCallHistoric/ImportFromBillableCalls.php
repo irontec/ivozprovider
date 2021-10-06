@@ -11,18 +11,11 @@ class ImportFromBillableCalls
     const SYNC_CHUNK_SIZE = 500;
     const SLEEP_BETWEEN_LOOPS = 2;
 
-    protected $billableCallRepository;
-    protected $billableCallHistoricRepository;
-    protected $logger;
-
     public function __construct(
-        BillableCallRepository $billableCallRepository,
-        BillableCallHistoricRepository $billableCallHistoricRepository,
-        LoggerInterface $logger
+        private BillableCallRepository $billableCallRepository,
+        private BillableCallHistoricRepository $billableCallHistoricRepository,
+        private LoggerInterface $logger
     ) {
-        $this->billableCallRepository = $billableCallRepository;
-        $this->billableCallHistoricRepository = $billableCallHistoricRepository;
-        $this->logger = $logger;
     }
 
     /**

@@ -15,22 +15,10 @@ use Ivoz\Provider\Domain\Model\User\UserRepository;
  */
 class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var UserRepository
-     */
-    protected $userRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        UserRepository $userRepository
+        private EntityTools $entityTools,
+        private UserRepository $userRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->userRepository = $userRepository;
     }
 
     public static function getSubscribedEvents()

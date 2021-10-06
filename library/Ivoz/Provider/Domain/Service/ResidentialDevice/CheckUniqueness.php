@@ -15,20 +15,9 @@ class CheckUniqueness implements ResidentialDeviceLifecycleEventHandlerInterface
 {
     const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var RetailAccountRepository
-     */
-    protected $retailAccountRepository;
-
     public function __construct(
-        RetailAccountRepository $retailAccountRepository
+        private RetailAccountRepository $retailAccountRepository
     ) {
-        $this->retailAccountRepository = $retailAccountRepository;
     }
 
     public static function getSubscribedEvents()

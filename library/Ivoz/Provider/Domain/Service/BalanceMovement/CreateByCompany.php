@@ -8,12 +8,9 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class CreateByCompany
 {
-    protected $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public function execute(

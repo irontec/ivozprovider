@@ -11,23 +11,11 @@ use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 
 class CreateByCompany implements CompanyLifecycleEventHandlerInterface
 {
-
-    protected $entityPersister;
-    protected $tpAccountActionRepository;
-    protected $entityTools;
-
-    /**
-     * UpdateByDestinationTpAccountAction constructor.
-     * @param EntityPersisterInterface $entityPersister
-     */
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        TpAccountActionRepository $tpAccountActionRepository,
-        EntityTools $entityTools
+        private EntityPersisterInterface $entityPersister,
+        private TpAccountActionRepository $tpAccountActionRepository,
+        private EntityTools $entityTools
     ) {
-        $this->entityPersister = $entityPersister;
-        $this->tpAccountActionRepository = $tpAccountActionRepository;
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

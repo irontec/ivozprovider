@@ -11,18 +11,11 @@ use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelRepository;
 
 class TerminalFactory
 {
-    protected $terminalRepository;
-    protected $terminalModelRepository;
-    protected $entityTools;
-
     public function __construct(
-        TerminalRepository $terminalRepository,
-        TerminalModelRepository $terminalModelRepository,
-        EntityTools $entityTools
+        private TerminalRepository $terminalRepository,
+        private TerminalModelRepository $terminalModelRepository,
+        private EntityTools $entityTools
     ) {
-        $this->terminalRepository = $terminalRepository;
-        $this->terminalModelRepository = $terminalModelRepository;
-        $this->entityTools = $entityTools;
     }
 
     /**

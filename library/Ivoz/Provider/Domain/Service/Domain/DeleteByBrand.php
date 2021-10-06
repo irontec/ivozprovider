@@ -15,12 +15,9 @@ class DeleteByBrand implements BrandLifecycleEventHandlerInterface
 {
     const POST_REMOVE_PRIORITY = 10;
 
-    protected $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

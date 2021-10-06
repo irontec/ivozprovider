@@ -13,22 +13,10 @@ use Ivoz\Provider\Domain\Service\Friend\FriendLifecycleEventHandlerInterface;
 
 class UpdateByFriend implements FriendLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var PsEndpointRepository
-     */
-    protected $psEndpointRepository;
-
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        PsEndpointRepository $psEndpointRepository
+        private EntityPersisterInterface $entityPersister,
+        private PsEndpointRepository $psEndpointRepository
     ) {
-        $this->entityPersister = $entityPersister;
-        $this->psEndpointRepository = $psEndpointRepository;
     }
 
     public static function getSubscribedEvents()

@@ -17,22 +17,10 @@ class SearchBrokenThresholds implements CarrierLifecycleEventHandlerInterface
 {
     const ON_COMMIT_PRIORITY = 10;
 
-    /**
-     * @var BalanceNotificationRepository
-     */
-    protected $balanceNotificationRepository;
-
-    /**
-     * @var DomainEventPublisher
-     */
-    protected $domainEventPublisher;
-
     public function __construct(
-        BalanceNotificationRepository $balanceNotificationRepository,
-        DomainEventPublisher $domainEventPublisher
+        private BalanceNotificationRepository $balanceNotificationRepository,
+        private DomainEventPublisher $domainEventPublisher
     ) {
-        $this->balanceNotificationRepository = $balanceNotificationRepository;
-        $this->domainEventPublisher = $domainEventPublisher;
     }
 
     public static function getSubscribedEvents()

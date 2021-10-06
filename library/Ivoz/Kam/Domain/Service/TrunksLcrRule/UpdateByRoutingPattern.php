@@ -15,27 +15,10 @@ class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInter
 {
     const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var TrunksLcrRuleFactory
-     */
-    protected $trunksLcrRuleFactory;
-
-    /**
-     * @var OutgoingRoutingRepository
-     */
-    protected $outgoingRoutingRepository;
-
-    /**
-     * UpdateByRoutingPattern constructor.
-     * @param TrunksLcrRuleFactory $trunksLcrRuleFactory
-     * @param OutgoingRoutingRepository $outgoingRoutingRepository
-     */
     public function __construct(
-        TrunksLcrRuleFactory $trunksLcrRuleFactory,
-        OutgoingRoutingRepository $outgoingRoutingRepository
+        private TrunksLcrRuleFactory $trunksLcrRuleFactory,
+        private OutgoingRoutingRepository $outgoingRoutingRepository
     ) {
-        $this->trunksLcrRuleFactory = $trunksLcrRuleFactory;
-        $this->outgoingRoutingRepository = $outgoingRoutingRepository;
     }
 
     public static function getSubscribedEvents()

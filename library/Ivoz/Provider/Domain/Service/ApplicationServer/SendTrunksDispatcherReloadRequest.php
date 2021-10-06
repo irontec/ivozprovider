@@ -9,12 +9,9 @@ class SendTrunksDispatcherReloadRequest implements ApplicationServerLifecycleEve
 {
     const ON_COMMIT_PRIORITY = self::PRIORITY_LOW;
 
-    protected $trunksGearmanClient;
-
     public function __construct(
-        TrunksClientInterface $trunksGearmanClient
+        private TrunksClientInterface $trunksGearmanClient
     ) {
-        $this->trunksGearmanClient = $trunksGearmanClient;
     }
 
     public static function getSubscribedEvents()

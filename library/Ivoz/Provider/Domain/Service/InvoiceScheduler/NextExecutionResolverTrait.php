@@ -13,7 +13,7 @@ trait NextExecutionResolverTrait
     /**
      * @var EntityTools
      */
-    protected $entityTools;
+    private $entityTools;
 
     /**
      * @see http://php.net/manual/es/datetime.formats.relative.php

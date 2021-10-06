@@ -13,22 +13,10 @@ use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
  */
 class SendFaxFile implements FaxesInOutLifecycleEventHandlerInterface
 {
-    /**
-     * @var ARIConnector
-     */
-    protected $ariConnector;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
     public function __construct(
-        ARIConnector $ariConnector,
-        EntityTools $entityTools
+        private ARIConnector $ariConnector,
+        private EntityTools $entityTools
     ) {
-        $this->ariConnector = $ariConnector;
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

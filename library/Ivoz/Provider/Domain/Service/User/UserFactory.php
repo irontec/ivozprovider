@@ -9,15 +9,10 @@ use Ivoz\Provider\Domain\Model\User\UserRepository;
 
 class UserFactory
 {
-    protected $userRepository;
-    protected $entityTools;
-
     public function __construct(
-        UserRepository $userRepository,
-        EntityTools $entityTools
+        private UserRepository $userRepository,
+        private EntityTools $entityTools
     ) {
-        $this->userRepository = $userRepository;
-        $this->entityTools = $entityTools;
     }
 
     /**

@@ -8,15 +8,10 @@ use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 
 class SearchBrokenMaxDailyUsage implements CompanyLifecycleEventHandlerInterface
 {
-    protected $notificationTemplateRepository;
-    protected $notifyMaxDailyUsage;
-
     public function __construct(
-        NotificationTemplateRepository $notificationTemplateRepository,
-        NotifyMaxDailyUsage $notifyMaxDailyUsage
+        private NotificationTemplateRepository $notificationTemplateRepository,
+        private NotifyMaxDailyUsage $notifyMaxDailyUsage
     ) {
-        $this->notificationTemplateRepository = $notificationTemplateRepository;
-        $this->notifyMaxDailyUsage = $notifyMaxDailyUsage;
     }
 
     public static function getSubscribedEvents()

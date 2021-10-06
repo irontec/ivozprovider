@@ -11,21 +11,12 @@ class MigrateFromUnparsedTrunksCdr
 {
     const BATCH_SIZE = 100;
 
-    protected $trunksCdrRepository;
-    protected $entityTools;
-    protected $migrateFromTrunksCdr;
-    protected $logger;
-
     public function __construct(
-        TrunksCdrRepository  $trunksCdrRepository,
-        EntityTools $entityTools,
-        MigrateFromTrunksCdr $migrateFromTrunksCdr,
-        LoggerInterface $logger
+        private TrunksCdrRepository  $trunksCdrRepository,
+        private EntityTools $entityTools,
+        private MigrateFromTrunksCdr $migrateFromTrunksCdr,
+        private LoggerInterface $logger
     ) {
-        $this->trunksCdrRepository = $trunksCdrRepository;
-        $this->entityTools = $entityTools;
-        $this->migrateFromTrunksCdr = $migrateFromTrunksCdr;
-        $this->logger = $logger;
     }
 
     /**

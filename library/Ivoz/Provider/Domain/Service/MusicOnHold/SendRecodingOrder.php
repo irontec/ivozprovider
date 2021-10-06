@@ -10,12 +10,9 @@ class SendRecodingOrder implements MusicOnHoldLifecycleEventHandlerInterface
 {
     const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
-    protected $recoder;
-
     public function __construct(
-        RecoderJobInterface $recoder
+        private RecoderJobInterface $recoder
     ) {
-        $this->recoder = $recoder;
     }
 
     public static function getSubscribedEvents()

@@ -16,18 +16,11 @@ use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
  */
 class TrunksLcrRuleTargetFactory
 {
-    protected $trunksLcrRuleTargetRepository;
-    protected $trunksLcrGatewayRepository;
-    protected $entityTools;
-
     public function __construct(
-        TrunksLcrRuleTargetRepository $trunksLcrRuleTargetRepository,
-        TrunksLcrGatewayRepository $trunksLcrGatewayRepository,
-        EntityTools $entityTools
+        private TrunksLcrRuleTargetRepository $trunksLcrRuleTargetRepository,
+        private TrunksLcrGatewayRepository $trunksLcrGatewayRepository,
+        private EntityTools $entityTools
     ) {
-        $this->trunksLcrRuleTargetRepository = $trunksLcrRuleTargetRepository;
-        $this->trunksLcrGatewayRepository = $trunksLcrGatewayRepository;
-        $this->entityTools = $entityTools;
     }
 
     /**

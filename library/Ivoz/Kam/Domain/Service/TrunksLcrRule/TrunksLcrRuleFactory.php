@@ -13,20 +13,9 @@ use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGrou
 
 class TrunksLcrRuleFactory
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * TrunksLcrRuleFactory constructor.
-     *
-     * @param EntityTools $entityTools
-     */
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     /**

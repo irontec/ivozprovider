@@ -10,21 +10,12 @@ use Psr\Log\LoggerInterface;
 
 class SetExecutionError
 {
-    private $entityTools;
-    protected $logger;
-    protected $fixedCostsRelInvoiceByScheduler;
-    protected $updateLastExecutionDate;
-
     public function __construct(
-        EntityTools $entityTools,
-        LoggerInterface $logger,
-        FixedCostsRelInvoiceByScheduler $fixedCostsRelInvoiceByScheduler,
-        UpdateLastExecutionDate $updateLastExecutionDate
+        private EntityTools $entityTools,
+        private LoggerInterface $logger,
+        private FixedCostsRelInvoiceByScheduler $fixedCostsRelInvoiceByScheduler,
+        private UpdateLastExecutionDate $updateLastExecutionDate
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->fixedCostsRelInvoiceByScheduler = $fixedCostsRelInvoiceByScheduler;
-        $this->updateLastExecutionDate = $updateLastExecutionDate;
     }
 
     /**

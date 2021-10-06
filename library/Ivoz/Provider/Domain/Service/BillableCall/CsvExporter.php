@@ -53,12 +53,9 @@ class CsvExporter
         'friendId',
     ];
 
-    protected $apiClient;
-
     public function __construct(
-        ApiClientInterface $apiClient
+        private ApiClientInterface $apiClient
     ) {
-        $this->apiClient = $apiClient;
     }
 
     /**

@@ -10,22 +10,10 @@ use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
 
 class UpdateByUser implements UserLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var VoicemailRepository
-     */
-    protected $voicemailRepository;
-
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        VoicemailRepository $voicemailRepository
+        private EntityPersisterInterface $entityPersister,
+        private VoicemailRepository $voicemailRepository
     ) {
-        $this->entityPersister = $entityPersister;
-        $this->voicemailRepository = $voicemailRepository;
     }
 
     public static function getSubscribedEvents()

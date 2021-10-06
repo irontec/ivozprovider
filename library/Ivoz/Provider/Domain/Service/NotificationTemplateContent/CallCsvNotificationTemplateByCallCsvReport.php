@@ -8,15 +8,9 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateReposito
 
 class CallCsvNotificationTemplateByCallCsvReport
 {
-    /**
-     * @var NotificationTemplateRepository
-     */
-    protected $notificationTemplateRepository;
-
     public function __construct(
-        NotificationTemplateRepository $notificationTemplateRepository
+        private NotificationTemplateRepository $notificationTemplateRepository
     ) {
-        $this->notificationTemplateRepository = $notificationTemplateRepository;
     }
 
     /**

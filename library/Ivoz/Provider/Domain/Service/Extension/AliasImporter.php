@@ -11,18 +11,11 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
 
 class AliasImporter
 {
-    protected $entityTools;
-    protected $countryRepository;
-    protected $extensionRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        CountryRepository $countryRepository,
-        ExtensionRepository $extensionRepository
+        private EntityTools $entityTools,
+        private CountryRepository $countryRepository,
+        private ExtensionRepository $extensionRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->countryRepository = $countryRepository;
-        $this->extensionRepository = $extensionRepository;
     }
 
     /**

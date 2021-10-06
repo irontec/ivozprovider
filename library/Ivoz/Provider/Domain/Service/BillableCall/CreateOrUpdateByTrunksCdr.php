@@ -18,24 +18,13 @@ use Ivoz\Provider\Domain\Model\User\UserRepository;
 
 class CreateOrUpdateByTrunksCdr
 {
-    protected $entityTools;
-    protected $retailAccountRepository;
-    protected $residentialDeviceRepository;
-    protected $userRepository;
-    protected $friendRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        RetailAccountRepository $retailAccountRepository,
-        ResidentialDeviceRepository $residentialDeviceRepository,
-        UserRepository $userRepository,
-        FriendRepository $friendRepository
+        private EntityTools $entityTools,
+        private RetailAccountRepository $retailAccountRepository,
+        private ResidentialDeviceRepository $residentialDeviceRepository,
+        private UserRepository $userRepository,
+        private FriendRepository $friendRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->retailAccountRepository = $retailAccountRepository;
-        $this->residentialDeviceRepository = $residentialDeviceRepository;
-        $this->userRepository = $userRepository;
-        $this->friendRepository = $friendRepository;
     }
 
     /**

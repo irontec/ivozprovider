@@ -13,29 +13,11 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterfac
 
 class NotifyMaxDailyUsage
 {
-    /**
-     * @var MaxUsageNotificationRepository
-     */
-    protected $maxUsageNotificationRepository;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var MailerClientInterface
-     */
-    protected $mailer;
-
     public function __construct(
-        MaxUsageNotificationRepository $maxUsageNotificationRepository,
-        EntityTools $entityTools,
-        MailerClientInterface $mailer
+        private MaxUsageNotificationRepository $maxUsageNotificationRepository,
+        private EntityTools $entityTools,
+        private MailerClientInterface $mailer
     ) {
-        $this->maxUsageNotificationRepository = $maxUsageNotificationRepository;
-        $this->entityTools = $entityTools;
-        $this->mailer = $mailer;
     }
 
     /**

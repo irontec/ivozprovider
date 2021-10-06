@@ -12,23 +12,11 @@ use Ivoz\Provider\Domain\Service\ResidentialDevice\ResidentialDeviceLifecycleEve
 
 class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var PsEndpointRepository
-     */
-    protected $psEndpointRepository;
-
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        PsEndpointRepository $psEndpointRepository
-    ) {
         //@todo use entityTools instead
-        $this->entityPersister = $entityPersister;
-        $this->psEndpointRepository = $psEndpointRepository;
+        private EntityPersisterInterface $entityPersister,
+        private PsEndpointRepository $psEndpointRepository
+    ) {
     }
 
     public static function getSubscribedEvents()

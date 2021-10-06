@@ -9,12 +9,9 @@ class SendTrunksDialplanReloadRequest implements TransformationRuleSetLifecycleE
 {
     const ON_COMMIT_PRIORITY = self::PRIORITY_LOW;
 
-    protected $trunksClient;
-
     public function __construct(
-        TrunksClientInterface $trunksClient
+        private TrunksClientInterface $trunksClient
     ) {
-        $this->trunksClient = $trunksClient;
     }
 
     public static function getSubscribedEvents()

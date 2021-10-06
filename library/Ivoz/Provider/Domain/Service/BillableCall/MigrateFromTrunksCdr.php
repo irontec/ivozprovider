@@ -12,24 +12,13 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 
 class MigrateFromTrunksCdr
 {
-    protected $billableCallRepository;
-    protected $createOrUpdateBillableCallByTrunksCdr;
-    protected $domainEventPublisher;
-    protected $entityTools;
-    protected $setParsed;
-
     public function __construct(
-        BillableCallRepository $billableCallRepository,
-        CreateOrUpdateByTrunksCdr $createOrUpdateBillableCallByTrunksCdr,
-        EntityTools $entityTools,
-        DomainEventPublisher $domainEventPublisher,
-        SetParsed $setParsed
+        private BillableCallRepository $billableCallRepository,
+        private CreateOrUpdateByTrunksCdr $createOrUpdateBillableCallByTrunksCdr,
+        private EntityTools $entityTools,
+        private DomainEventPublisher $domainEventPublisher,
+        private SetParsed $setParsed
     ) {
-        $this->billableCallRepository = $billableCallRepository;
-        $this->createOrUpdateBillableCallByTrunksCdr = $createOrUpdateBillableCallByTrunksCdr;
-        $this->domainEventPublisher = $domainEventPublisher;
-        $this->entityTools = $entityTools;
-        $this->setParsed = $setParsed;
     }
 
     /**

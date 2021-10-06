@@ -15,20 +15,9 @@ class CheckUniqueness implements TerminalLifecycleEventHandlerInterface
 {
     const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var FriendRepository
-     */
-    protected $friendRepository;
-
     public function __construct(
-        FriendRepository $friendRepository
+        private FriendRepository $friendRepository
     ) {
-        $this->friendRepository = $friendRepository;
     }
 
     public static function getSubscribedEvents()

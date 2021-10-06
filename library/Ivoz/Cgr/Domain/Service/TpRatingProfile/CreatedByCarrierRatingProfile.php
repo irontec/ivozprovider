@@ -10,28 +10,10 @@ class CreatedByCarrierRatingProfile implements RatingProfileLifecycleEventHandle
 {
     const POST_PERSIST_PRIORITY = UpdateByRatingProfile::POST_PERSIST_PRIORITY + 1;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var CreatedByOutgoingRoutingRelCarrier
-     */
-    protected $createByOutgoingRoutingRelCarrier;
-
-    /**
-     * CreatedByOutgoingRouting constructor.
-     *
-     * @param EntityTools $entityTools
-     * @param CreatedByOutgoingRoutingRelCarrier $createByOutgoingRouting
-     */
     public function __construct(
-        EntityTools $entityTools,
-        CreatedByOutgoingRoutingRelCarrier $createByOutgoingRouting
+        private EntityTools $entityTools,
+        private CreatedByOutgoingRoutingRelCarrier $createByOutgoingRoutingRelCarrier
     ) {
-        $this->entityTools = $entityTools;
-        $this->createByOutgoingRoutingRelCarrier = $createByOutgoingRouting;
     }
 
     public static function getSubscribedEvents()

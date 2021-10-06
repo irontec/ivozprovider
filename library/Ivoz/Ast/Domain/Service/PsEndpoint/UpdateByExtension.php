@@ -15,15 +15,9 @@ use Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleEventHandlerInterfa
  */
 class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

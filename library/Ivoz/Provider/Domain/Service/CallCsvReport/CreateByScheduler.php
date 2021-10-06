@@ -13,21 +13,12 @@ use Psr\Log\LoggerInterface;
 
 class CreateByScheduler
 {
-    private $entityTools;
-    protected $logger;
-    protected $updateLastExecutionDate;
-    protected $setExecutionError;
-
     public function __construct(
-        EntityTools $entityTools,
-        LoggerInterface $logger,
-        UpdateLastExecutionDate $updateLastExecutionDate,
-        SetExecutionError $setExecutionError
+        private EntityTools $entityTools,
+        private LoggerInterface $logger,
+        private UpdateLastExecutionDate $updateLastExecutionDate,
+        private SetExecutionError $setExecutionError
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->updateLastExecutionDate = $updateLastExecutionDate;
-        $this->setExecutionError = $setExecutionError;
     }
 
     /**

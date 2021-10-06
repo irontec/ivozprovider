@@ -9,15 +9,9 @@ use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
 
 class UpdateByUser implements UserLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

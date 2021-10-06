@@ -9,15 +9,10 @@ use Psr\Log\LoggerInterface;
 
 class UpdateLastExecutionDate
 {
-    private $entityTools;
-    protected $logger;
-
     public function __construct(
-        EntityTools $entityTools,
-        LoggerInterface $logger
+        private EntityTools $entityTools,
+        private LoggerInterface $logger
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
     }
 
     /**

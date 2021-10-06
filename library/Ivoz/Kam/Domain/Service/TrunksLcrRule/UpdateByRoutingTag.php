@@ -14,20 +14,9 @@ class UpdateByRoutingTag implements RoutingTagLifecycleEventHandlerInterface
 {
     const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var TrunksLcrRuleFactory
-     */
-    protected $trunksLcrRuleFactory;
-
-    /**
-     * UpdateByRoutingTag constructor.
-     *
-     * @param TrunksLcrRuleFactory $trunksLcrRuleFactory
-     */
     public function __construct(
-        TrunksLcrRuleFactory $trunksLcrRuleFactory
+        private TrunksLcrRuleFactory $trunksLcrRuleFactory
     ) {
-        $this->trunksLcrRuleFactory = $trunksLcrRuleFactory;
     }
 
     public static function getSubscribedEvents()

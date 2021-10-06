@@ -14,20 +14,9 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
 {
     const POST_PERSIST_PRIORITY = LcrRuleUpdateByOutgoingRouting::POST_PERSIST_PRIORITY + 10;
 
-    /**
-     * @var TrunksLcrRuleTargetFactory
-     */
-    protected $trunksLcrRuleTargetFactory;
-
-    /**
-     * UpdateByOutgoingRoutingBinding constructor.
-     *
-     * @param TrunksLcrRuleTargetFactory $trunksLcrRuleTargetFactory
-     */
     public function __construct(
-        TrunksLcrRuleTargetFactory $trunksLcrRuleTargetFactory
+        private TrunksLcrRuleTargetFactory $trunksLcrRuleTargetFactory
     ) {
-        $this->trunksLcrRuleTargetFactory = $trunksLcrRuleTargetFactory;
     }
 
     public static function getSubscribedEvents()

@@ -9,12 +9,9 @@ class SendUsersDispatcherReloadRequest implements ApplicationServerLifecycleEven
 {
     const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
 
-    protected $usersGearmanClient;
-
     public function __construct(
-        UsersClientInterface $usersGearmanClient
+        private UsersClientInterface $usersGearmanClient
     ) {
-        $this->usersGearmanClient = $usersGearmanClient;
     }
 
     public static function getSubscribedEvents()

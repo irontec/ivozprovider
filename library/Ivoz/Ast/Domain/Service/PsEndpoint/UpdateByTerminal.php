@@ -11,22 +11,10 @@ use Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleEventHandlerInterface
 
 class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var PsEndpointRepository
-     */
-    protected $psEndpointRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        PsEndpointRepository $psEndpointRepository
+        private EntityTools $entityTools,
+        private PsEndpointRepository $psEndpointRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->psEndpointRepository = $psEndpointRepository;
     }
 
     public static function getSubscribedEvents()

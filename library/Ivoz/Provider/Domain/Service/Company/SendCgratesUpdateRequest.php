@@ -10,16 +10,11 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class SendCgratesUpdateRequest extends CgratesReloadNotificator implements CompanyLifecycleEventHandlerInterface
 {
-    protected $tpAccountActionRepository;
-    protected $setMaxUsageThresholdService;
-
     public function __construct(
-        TpAccountActionRepository $tpAccountActionRepository,
-        SetMaxUsageThresholdService $setMaxUsageThresholdService,
+        private TpAccountActionRepository $tpAccountActionRepository,
+        private SetMaxUsageThresholdService $setMaxUsageThresholdService,
         RaterReloadInterface $cgratesReloadJob
     ) {
-        $this->tpAccountActionRepository = $tpAccountActionRepository;
-        $this->setMaxUsageThresholdService = $setMaxUsageThresholdService;
         parent::__construct($cgratesReloadJob);
     }
 

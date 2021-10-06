@@ -16,18 +16,12 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
     const POST_PERSIST_PRIORITY = TpRateUpdatedByDestinationRate::POST_PERSIST_PRIORITY + 1;
 
     /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
      * CreatedByTpDestinationRate constructor.
      * @param EntityTools $entityTools
      */
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     /**

@@ -16,22 +16,10 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     const SENSELESS_IN_OUT_DATE = 50005;
     const FORBIDDEN_FUTURE_DATES = 50006;
 
-    /**
-     * @var BillableCallRepository
-     */
-    protected $billableCallRepository;
-
-    /**
-     * @var InvoiceRepository
-     */
-    protected $invoiveRepository;
-
     public function __construct(
-        BillableCallRepository $billableCallRepository,
-        InvoiceRepository $invoiveRepository
+        private BillableCallRepository $billableCallRepository,
+        private InvoiceRepository $invoiveRepository
     ) {
-        $this->billableCallRepository = $billableCallRepository;
-        $this->invoiveRepository = $invoiveRepository;
     }
 
     public static function getSubscribedEvents()

@@ -12,15 +12,10 @@ final class CreateAcls implements AdministratorLifecycleEventHandlerInterface
 {
     const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    private $publicEntityRepository;
-    private $entityTools;
-
     public function __construct(
-        PublicEntityRepository $publicEntityRepository,
-        EntityTools $entityTools
+        private PublicEntityRepository $publicEntityRepository,
+        private EntityTools $entityTools
     ) {
-        $this->publicEntityRepository = $publicEntityRepository;
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

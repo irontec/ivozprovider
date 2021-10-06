@@ -13,15 +13,9 @@ use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGrou
  */
 class CreateAndPersist
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
     public function __construct(
-        EntityPersisterInterface $entityPersister
+        private EntityPersisterInterface $entityPersister
     ) {
-        $this->entityPersister = $entityPersister;
     }
 
     /**
