@@ -9,20 +9,20 @@ import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
 import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
 
-const Form = (props:any) => {
+const Form = (props: any) => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
+    const [mounted, setMounted] = useState<boolean>(true);
     const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
-            if (loadingFks) {
+            if (mounted && loadingFks) {
 
-                LocutionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                LocutionSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             welcomeLocution: options,
@@ -32,8 +32,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                CountrySelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                CountrySelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             holidayNumberCountry: options,
@@ -42,8 +42,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                ExtensionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                ExtensionSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             holidayExtension: options,
@@ -52,8 +52,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                UserSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                UserSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             holidayVoiceMailUser: options,
@@ -62,8 +62,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                MatchListSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                MatchListSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             whiteListIds: options,
@@ -72,8 +72,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                ScheduleSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                ScheduleSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             scheduleIds: options,
@@ -81,8 +81,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                CalendarSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                CalendarSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             calendarIds: options,
@@ -100,7 +100,7 @@ const Form = (props:any) => {
         [loadingFks, fkChoices]
     );
 
-    const groups:Array<FieldsetGroups> = [
+    const groups: Array<FieldsetGroups> = [
         {
             legend: _('Basic Info'),
             fields: [
@@ -141,7 +141,7 @@ const Form = (props:any) => {
         },
     ];
 
-    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props}  />);
+    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props} />);
 }
 
 export default Form;

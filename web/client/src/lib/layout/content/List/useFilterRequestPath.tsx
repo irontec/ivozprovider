@@ -15,15 +15,16 @@ function useFilterRequestPath(props: useRequestPathProps) {
         where, basePath
     } = props;
     const [reqPath, setReqPath] = useState<string>(basePath);
+    const [mounted, setMounted] = useState<boolean>(true);
 
     useEffect(
         () => {
 
             const containsCriteria = Object.keys(where).length > 0;
 
-            if (containsCriteria) {
+            if (mounted && containsCriteria) {
 
-                let criteria: Array<string> = [];
+                const criteria: Array<string> = [];
                 for (const name in where) {
 
                     if (!where[name] || !where[name]?.type) {
@@ -46,7 +47,9 @@ function useFilterRequestPath(props: useRequestPathProps) {
                 setReqPath(basePath + '?' + criteria.join('&'));
             }
 
-            return function umount() { };
+            return function umount() {
+                setMounted(false);
+            };
         },
         [
             where, basePath,

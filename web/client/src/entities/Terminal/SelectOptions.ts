@@ -1,13 +1,13 @@
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const TerminalSelectOptions = (callback: Function) => {
+const TerminalSelectOptions = (callback: FetchFksCallback) => {
 
     defaultEntityBehavior.fetchFks(
         '/terminals',
         ['id', 'name'],
-        (data:any) => {
+        (data: any) => {
 
-            const options:any = {};
+            const options: any = {};
             for (const item of data) {
                 options[item.id] = item.name;
             }

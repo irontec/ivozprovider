@@ -11,17 +11,18 @@ import CustomComponentWrapper from './Field/CustomComponentWrapper';
 import Alert from '@mui/material/Alert';
 import FileUploader from './Field/FileUploader';
 import { StyledSwitchFormControl, StyledtextField, StyledLinearProgress } from './FormFieldFactory.styles';
+import { FormOnChangeEvent } from 'lib/entities/DefaultEntityBehavior';
 
 export default class FormFieldFactory {
 
     constructor(
         private entityService: EntityService,
         private formik: useFormikType,
-        private changeHandler: (event: any) => void
+        private changeHandler: (event: FormOnChangeEvent) => void
     ) {
     }
 
-    public getFormField(fld: string, choices?: any, readOnly: boolean = false) {
+    public getFormField(fld: string, choices?: any, readOnly = false) {
         const property = this.getProperty(fld);
         if (!property) {
             console.error(`Property ${fld} was not found`);

@@ -9,21 +9,21 @@ import FriendSelectOptions from 'entities/Friend/SelectOptions';
 import DdiProviderSelectOptions from 'entities/DdiProvider/SelectOptions';
 import _ from 'lib/services/translations/translate';
 
-const Form = (props:any) => {
+const Form = (props: any) => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
+    const [mounted, setMounted] = useState<boolean>(true);
     const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
 
-            if (loadingFks) {
+            if (mounted && loadingFks) {
 
-                DdiSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                DdiSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             ddi: options
@@ -31,8 +31,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                RetailAccountSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                RetailAccountSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             retailAccount: options
@@ -40,8 +40,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                ResidentialDeviceSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                ResidentialDeviceSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             residentialDevice: options
@@ -49,8 +49,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                UserSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                UserSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             user: options
@@ -58,8 +58,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                FaxSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                FaxSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             fax: options
@@ -67,8 +67,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                FriendSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                FriendSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             friend: options
@@ -76,8 +76,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                DdiProviderSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                DdiProviderSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             ddiProvider: options
@@ -95,7 +95,7 @@ const Form = (props:any) => {
         [loadingFks, fkChoices]
     );
 
-    const groups:Array<FieldsetGroups> = [
+    const groups: Array<FieldsetGroups> = [
         {
             legend: _('Basic Information'),
             fields: [
@@ -127,7 +127,7 @@ const Form = (props:any) => {
         },
     ];
 
-    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props}  />);
+    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props} />);
 }
 
 export default Form;

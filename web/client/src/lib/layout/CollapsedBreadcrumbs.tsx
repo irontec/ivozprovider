@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import { useStoreState } from 'easy-peasy';
 import _ from 'lib/services/translations/translate';

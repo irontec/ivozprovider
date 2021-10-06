@@ -11,15 +11,15 @@ const Form = (props: any) => {
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
+    const [mounted, setMounted] = useState<boolean>(true);
     const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
-            if (loadingFks) {
+            if (mounted && loadingFks) {
 
                 CallAclSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             callAcl: options,
@@ -28,7 +28,7 @@ const Form = (props: any) => {
                 });
 
                 TransformationRuleSetSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             transformationRuleSet: options,
@@ -37,7 +37,7 @@ const Form = (props: any) => {
                 });
 
                 DdiSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             outgoingDdi: options,
@@ -46,7 +46,7 @@ const Form = (props: any) => {
                 });
 
                 LanguageSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             language: options,

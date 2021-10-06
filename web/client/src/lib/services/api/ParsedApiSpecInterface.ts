@@ -34,11 +34,11 @@ export interface ActionsSpec {
 
 export interface visualToggleList {
     [fldName: string]: visualToggleValue
-};
+}
 
 export interface visualToggleValue {
     [value: string]: visualToggle
-};
+}
 
 export interface visualToggle {
     show: Array<string>,

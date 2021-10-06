@@ -51,7 +51,7 @@ class ApiClient {
 
         if (contentType === 'application/x-www-form-urlencoded') {
             const reqParams = new URLSearchParams();
-            for (var idx in params) {
+            for (const idx in params) {
                 reqParams.append(idx, params[idx]);
             }
 

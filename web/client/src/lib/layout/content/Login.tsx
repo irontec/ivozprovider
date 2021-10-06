@@ -96,4 +96,4 @@ export default function Login(props: any) {
       </StyledLoginContainer>
     </Container>
   )
-};
+}

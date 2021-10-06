@@ -1,13 +1,11 @@
-import { withRouter } from "react-router-dom";
 import ReactDOMServer from 'react-dom/server';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, ReactElement, JSXElementConstructor } from 'react';
 import { TextField, } from '@mui/material';
 import MuiAutocomplete from '@mui/material/Autocomplete';
-import EntityInterface from 'lib/entities/EntityInterface';
 
-interface AutocompleteProps extends EntityInterface {
+interface AutocompleteProps {
   name: string,
-  label: string,
+  label: string | ReactElement<any, string | JSXElementConstructor<any>>,
   value: any,
   multiple: boolean,
   required: boolean,
@@ -22,19 +20,25 @@ const Autocomplete = (props: AutocompleteProps) => {
   const value = props.value || null;
 
   const [arrayChoices, setArrayChoices] = useState<Array<any>>([]);
+  const [mounted, setMounted] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(
     () => {
-      const arrayValue = [];
-      for (const idx in choices) {
-        arrayValue.push({ value: idx, label: choices[idx] });
+
+      if (mounted && loading) {
+        const arrayValue = [];
+        for (const idx in choices) {
+          arrayValue.push({ value: idx, label: choices[idx] });
+        }
+
+        setArrayChoices(arrayValue);
+        setLoading(false);
       }
 
-      setArrayChoices(arrayValue);
-      setLoading(false);
-
-      return function umount() { };
+      return function umount() {
+        setMounted(false);
+      };
     },
     [choices]
   );
@@ -130,4 +134,4 @@ const Autocomplete = (props: AutocompleteProps) => {
   );
 };
 
-export default withRouter<any, any>(Autocomplete);
+export default Autocomplete;

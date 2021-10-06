@@ -1,16 +1,15 @@
-import { withRouter } from "react-router-dom";
 import {
   FormControl,
   InputLabel,
   MenuItem,
   Select,
-  OutlinedInput,
+  OutlinedInput
 } from '@mui/material';
-import EntityInterface from 'lib/entities/EntityInterface';
+import { JSXElementConstructor, ReactElement } from 'react';
 
-interface SelectProps extends EntityInterface {
+interface SelectProps {
   name: string,
-  label: string,
+  label: string | ReactElement<any, string | JSXElementConstructor<any>>,
   value: any,
   required: boolean,
   disabled: boolean,
@@ -49,4 +48,4 @@ const Dropdown = (props: SelectProps) => {
   );
 };
 
-export default withRouter<any, any>(Dropdown);
+export default Dropdown;

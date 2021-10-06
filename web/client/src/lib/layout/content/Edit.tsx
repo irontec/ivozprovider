@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { withRouter } from "react-router-dom";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import { FormikHelpers, useFormik } from 'formik';
 import { Button } from '@mui/material';
 import ErrorMessage from './shared/ErrorMessage';
@@ -17,7 +17,7 @@ interface EditProps extends EntityInterface {
   row: any,
 }
 
-const Edit: any = (props: EditProps) => {
+const Edit: any = (props: EditProps & RouteComponentProps) => {
 
   const { marshaller, unmarshaller, history, match, row } = props;
   const { Form: EntityForm, entityService }: { Form: any, entityService: EntityService } = props;

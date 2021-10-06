@@ -106,7 +106,7 @@ export const marshaller = (values: any, properties: PropertiesList) => {
 
     if (values.endpointType) {
         delete values.endpointType;
-    };
+    }
 
     const response = defaultEntityBehavior.marshaller(
         values,

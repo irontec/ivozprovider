@@ -8,11 +8,12 @@ interface ViewValueProps {
 }
 
 const ViewFieldValue = (props: ViewValueProps) => {
-    let { property, columnName, values } = props;
+    const { columnName, values } = props;
+    let { property } = props;
 
     if (!(property as ScalarProperty).component) {
 
-        const component:PropertyCustomComponent<any> = (innerProps: any) => {
+        const component: PropertyCustomComponent<any> = (innerProps: any) => {
 
             let val = innerProps[columnName];
             if (typeof val === 'object') {

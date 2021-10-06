@@ -10,21 +10,21 @@ import ConferenceRoomSelectOptions from 'entities/ConferenceRoom/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import _ from 'lib/services/translations/translate';
 
-const Form = (props:any) => {
+const Form = (props: any) => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
+    const [mounted, setMounted] = useState<boolean>(true);
     const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
 
-            if (loadingFks) {
+            if (mounted && loadingFks) {
 
-                LocutionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                LocutionSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             locution: options
@@ -32,8 +32,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                IvrSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                IvrSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             ivr: options
@@ -41,8 +41,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                HuntGroupSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                HuntGroupSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             huntGroup: options
@@ -50,8 +50,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                UserSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                UserSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             voicemailUser: options,
@@ -60,8 +60,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                CountrySelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                CountrySelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             numberCountry: options,
@@ -69,8 +69,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                QueueSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                QueueSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             queue: options,
@@ -78,8 +78,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                ConferenceRoomSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                ConferenceRoomSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             conferenceRoom: options,
@@ -87,8 +87,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                ExtensionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                ExtensionSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             extension: options,
@@ -106,7 +106,7 @@ const Form = (props:any) => {
         [loadingFks, fkChoices]
     );
 
-    const groups:Array<FieldsetGroups> = [
+    const groups: Array<FieldsetGroups> = [
         {
             legend: _('Basic Configuration'),
             fields: [
@@ -132,7 +132,7 @@ const Form = (props:any) => {
         },
     ];
 
-    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props}  />);
+    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props} />);
 }
 
 export default Form;

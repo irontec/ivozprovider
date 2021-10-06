@@ -1,12 +1,12 @@
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const HuntGroupSelectOptions = (callback: Function) => {
+const HuntGroupSelectOptions = (callback: FetchFksCallback) => {
 
     defaultEntityBehavior.fetchFks(
         '/hunt_groups',
         ['id', 'name'],
-        (data:any) => {
-            const options:any = {};
+        (data: any) => {
+            const options: any = {};
             for (const item of data) {
                 options[item.id] = item.name;
             }

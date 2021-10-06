@@ -31,7 +31,7 @@ const specStore = {
 
       return new Promise((resolve, reject) => {
 
-        let storedSpec = sessionStorage.getItem('apiSpec');
+        const storedSpec = sessionStorage.getItem('apiSpec');
         if (storedSpec) {
           actions.setSpec(
             JSON.parse(storedSpec)

@@ -1,6 +1,6 @@
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const ConditionalRouteSelectOptions = (callback: Function) => {
+const ConditionalRouteSelectOptions = (callback: FetchFksCallback) => {
 
     defaultEntityBehavior.fetchFks(
         '/conditional_routes',

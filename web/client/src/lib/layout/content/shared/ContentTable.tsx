@@ -4,7 +4,7 @@ import React, { useState, MouseEvent } from 'react';
 import { Table, TablePagination, TableBody, Tooltip, Fab } from '@mui/material';
 import QueueIcon from '@mui/icons-material/Queue';
 import SearchIcon from '@mui/icons-material/Search';
-import ContentFilter, { getFilterTypeLabel, getFilterLabel } from './ContentFilter';
+import ContentFilter, { getFilterTypeLabel, getFilterLabel, CriteriaFilterValues } from './ContentFilter';
 import ContentTableHead from './ContentTableHead';
 import FilterIconFactory from 'icons/FilterIconFactory';
 import ContentTableRow from './ContentTableRow';
@@ -14,22 +14,24 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as locales from '@mui/material/locale';
 import { StyledActionButtonContainer, StyledLink, StyledFab, StyledChip, StyledChipIcon } from './ContentTable.styles';
 
+type sortType = 'asc' | 'desc';
+
 interface propsType {
   loading?: boolean,
   path: string,
-  setLoading: Function,
+  setLoading: (loading: boolean) => void,
   entityService: EntityService,
   headers: { [id: string]: string },
   rowsPerPage: number,
-  setRowsPerPage: Function,
+  setRowsPerPage: (loading: number) => void,
   orderBy: string,
   orderDirection: string,
-  setSort: Function,
+  setSort: (property: string, sortType: sortType) => void,
   page: number,
-  setPage: Function,
+  setPage: (page: number) => void,
   rows: any,
   where: any,
-  setWhere: Function
+  setWhere: (where: CriteriaFilterValues) => void
 }
 
 export default function ContentTable(props: propsType) {

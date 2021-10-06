@@ -1,4 +1,3 @@
-
 import { List, Create, Edit, View } from 'lib/layout/content/index';
 import ParsedApiSpecInterface from 'lib/services/api/ParsedApiSpecInterface';
 import EntityService from 'lib/services/entity/EntityService';
@@ -9,7 +8,7 @@ export type RouteSpec = {
     key: string,
     path: string,
     entity: EntityInterface,
-    component: Function
+    component: React.ComponentClass<any, any>
 };
 const routes: Array<RouteSpec> = [];
 

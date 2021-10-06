@@ -185,7 +185,7 @@ export default class EntityService {
         }
 
         return formData;
-    };
+    }
 
     public getCollectionPath(path: string | null = null): string | null {
         const collectionAction = this.actions?.get?.collection || {};
@@ -284,7 +284,7 @@ export default class EntityService {
         return filters[propertyName] || [];
     }
 
-    private getIden(lcFirst: boolean = false) {
+    private getIden(lcFirst = false) {
         const response = this.entityConfig.iden;
 
         if (lcFirst) {
@@ -309,7 +309,10 @@ export default class EntityService {
         for (const idx in parameters) {
 
             const name = parameters[idx].name;
-            let [, fieldName, modifier] = name.match(filterRegExp);
+
+            const match = name.match(filterRegExp);
+            const fieldName = match[1];
+            let modifier = match[2] || null;
             if (!modifier) {
                 modifier = parameters[idx].type === 'string'
                     ? 'exact'

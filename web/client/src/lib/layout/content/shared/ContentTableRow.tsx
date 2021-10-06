@@ -17,7 +17,7 @@ interface propsType {
   entityService: EntityService,
   row: any,
   path: string,
-  setLoading: Function
+  setLoading: (loading: boolean) => void
 }
 
 export default function ContentTableRow(props: propsType) {
@@ -59,7 +59,7 @@ export default function ContentTableRow(props: propsType) {
       {Object.keys(columns).map((key: string) => {
         const column = columns[key];
         const enumValues: any = (column as ScalarProperty).enum;
-        let value = row[key];
+        const value = row[key];
         const isBoolean = typeof value === "boolean";
 
         let response = value;

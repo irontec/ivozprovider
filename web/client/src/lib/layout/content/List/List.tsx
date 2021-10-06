@@ -3,16 +3,17 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useStoreActions } from 'easy-peasy';
 import queryString from 'query-string';
-import { withRouter } from "react-router-dom";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import ContentTable from '../shared/ContentTable';
 import EntityService from 'lib/services/entity/EntityService';
 import useFilterRequestPath from './useFilterRequestPath';
 
-const List = function (props: any) {
+const List = function (props: any & RouteComponentProps) {
 
     const { path, history, location, foreignKeyResolver } = props;
     const { entityService }: { entityService: EntityService } = props;
 
+    const [mounted, setMounted] = useState<boolean>(true);
     const [loading, setLoading] = useState(true);
     const [rows, setRows] = useState<Array<any>>([]);
     const [headers, setHeaders] = useState<{ [id: string]: string }>({});
@@ -74,7 +75,7 @@ const List = function (props: any) {
 
     useEffect(
         () => {
-            if (loading) {
+            if (mounted && loading) {
 
                 apiGet({
                     path: reqPath,
@@ -102,7 +103,9 @@ const List = function (props: any) {
                 });
             }
 
-            return function umount() { };
+            return function umount() {
+                setMounted(false);
+            };
         },
         [
             loading, foreignKeyResolver, entityService,

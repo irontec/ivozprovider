@@ -1,0 +1,9 @@
+#!/bin/bash
+
+pushd /opt/irontec/ivozprovider/web/client
+    # Install required dependencies
+    yarnpkg install
+
+    # Run linter
+    yarnpkg lint
+popd

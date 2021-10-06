@@ -87,6 +87,7 @@ const ContentFilterMenu = function (props: any) {
         path
     } = props;
 
+    const [mounted, setMounted] = useState<boolean>(true);
     const [loading, setLoading] = useState<boolean>(true);
     const [foreignEntities, setForeignEntities] = useState<any>({});
     const [criteria, setCriteria] = useState<CriteriaFilterValues>({ ...currentFilter });
@@ -95,15 +96,18 @@ const ContentFilterMenu = function (props: any) {
 
     useEffect(
         () => {
-            if (loading) {
+            if (mounted && loading) {
                 foreignKeyGetter()
                     .then((foreignEntities: any) => {
+                        if (!mounted) return;
                         setForeignEntities(foreignEntities);
                         setLoading(false);
                     });
             }
 
-            return function umount() { };
+            return function umount() {
+                setMounted(false);
+            };
         },
         [loading, foreignKeyGetter]
     );
@@ -157,7 +161,7 @@ const ContentFilterMenu = function (props: any) {
                     ? currentCriteria.type
                     : '';
 
-                let currentFilterValues: any = {
+                const currentFilterValues: any = {
                     value: '',
                     type: currentFilterType
                 };

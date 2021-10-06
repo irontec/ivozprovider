@@ -3,19 +3,19 @@ import { useEffect, useState } from 'react';
 import DdiSelectOptions from 'entities/Ddi/SelectOptions';
 import _ from 'lib/services/translations/translate';
 
-const Form = (props:any) => {
+const Form = (props: any) => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
+    const [mounted, setMounted] = useState<boolean>(true);
     const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
-            if (loadingFks) {
-                DdiSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+            if (mounted && loadingFks) {
+                DdiSelectOptions((options: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             forcedDdi: options
@@ -33,7 +33,7 @@ const Form = (props:any) => {
         [loadingFks, fkChoices]
     );
 
-    const groups:Array<FieldsetGroups> = [
+    const groups: Array<FieldsetGroups> = [
         {
             legend: _('Basic Configuration'),
             fields: [
@@ -49,7 +49,7 @@ const Form = (props:any) => {
         },
     ];
 
-    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props}  />);
+    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props} />);
 }
 
 export default Form;

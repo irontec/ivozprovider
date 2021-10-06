@@ -7,17 +7,17 @@ const Form = (props: any) => {
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
+    const [mounted, setMounted] = useState<boolean>(true);
     const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
 
-            if (loadingFks) {
+            if (mounted && loadingFks) {
 
                 ServiceSelectOptions(
                     (options: any) => {
-                        setFkChoices((fkChoices: any) => {
+                        mounted && setFkChoices((fkChoices: any) => {
                             return {
                                 ...fkChoices,
                                 service: options

@@ -1,7 +1,7 @@
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import Calendar from './Calendar';
 
-const CalendarSelectOptions = (callback: Function) => {
+const CalendarSelectOptions = (callback: FetchFksCallback ) => {
 
     defaultEntityBehavior.fetchFks(
         Calendar.path,

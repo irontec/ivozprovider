@@ -1,6 +1,6 @@
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const ExternalCallFilterSelectOptions = (callback: Function) => {
+const ExternalCallFilterSelectOptions = (callback: FetchFksCallback) => {
 
     defaultEntityBehavior.fetchFks(
         '/external_call_filters',
