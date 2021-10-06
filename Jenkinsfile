@@ -215,6 +215,22 @@ pipeline {
                         failure { notifyFailureGithub() }
                     }
                 }
+                stage ('web-client') {
+                    agent {
+                        docker {
+                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            reuseNode true
+                        }
+                    }
+                    steps {
+                        sh '/opt/irontec/ivozprovider/web/client/bin/test-build'
+                    }
+                    post {
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
+                    }
+                }
                 stage ('orm') {
                     agent {
                         docker {
