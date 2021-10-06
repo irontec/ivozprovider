@@ -1,5 +1,6 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
+import UserSelectOptions from 'entities/User/SelectOptions';
 
 const Form = (props:any) => {
 
@@ -12,16 +13,14 @@ const Form = (props:any) => {
     useEffect(
         () => {
             if (loadingFks) {
-                /*LocutionSelectOptions((options:any) => {
+                UserSelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
                         return {
                             ...fkChoices,
-                            timeoutLocution: options,
-                            fullLocution: options,
-                            periodicAnnounceLocution: options,
+                            userIds: options,
                         }
                     });
-                });*/
+                });
 
                 setLoadingFks(false);
             }

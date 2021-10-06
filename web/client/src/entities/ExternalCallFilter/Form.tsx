@@ -1,9 +1,14 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import LocutionSelectOptions from 'entities/Locution/SelectOptions';
 import CountrySelectOptions from 'entities/Country/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
+import _ from 'lib/services/translations/translate';
+import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
+import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
+import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
+
 const Form = (props:any) => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
@@ -15,11 +20,6 @@ const Form = (props:any) => {
     useEffect(
         () => {
             if (loadingFks) {
-
-                //@TODO schedules
-                //@TODO calendars
-                //@TODO whiteLists
-                //@TODO blackLists
 
                 LocutionSelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
@@ -62,6 +62,34 @@ const Form = (props:any) => {
                     });
                 });
 
+                MatchListSelectOptions((options:any) => {
+                    setFkChoices((fkChoices:any) => {
+                        return {
+                            ...fkChoices,
+                            whiteListIds: options,
+                            blackListIds: options,
+                        }
+                    });
+                });
+
+                ScheduleSelectOptions((options:any) => {
+                    setFkChoices((fkChoices:any) => {
+                        return {
+                            ...fkChoices,
+                            scheduleIds: options,
+                        }
+                    });
+                });
+
+                CalendarSelectOptions((options:any) => {
+                    setFkChoices((fkChoices:any) => {
+                        return {
+                            ...fkChoices,
+                            calendarIds: options,
+                        }
+                    });
+                });
+
                 setLoadingFks(false);
             }
 
@@ -72,7 +100,48 @@ const Form = (props:any) => {
         [loadingFks, fkChoices]
     );
 
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
+    const groups:Array<FieldsetGroups> = [
+        {
+            legend: _('Basic Info'),
+            fields: [
+                'name',
+                'welcomeLocution',
+            ]
+        },
+        {
+            legend: _('Filtering info'),
+            fields: [
+                'whiteListIds',
+                'blackListIds',
+            ]
+        },
+        {
+            legend: _('Holidays configuration'),
+            fields: [
+                'calendarIds',
+                'holidayLocution',
+                'holidayTargetType',
+                'holidayNumberCountry',
+                'holidayNumberValue',
+                'holidayExtension',
+                'holidayVoiceMailUser',
+            ]
+        },
+        {
+            legend: _('Out of schedule configuration'),
+            fields: [
+                'scheduleIds',
+                'outOfScheduleLocution',
+                'outOfScheduleTargetType',
+                'outOfScheduleNumberCountry',
+                'outOfScheduleNumberValue',
+                'outOfScheduleExtension',
+                'outOfScheduleVoiceMailUser',
+            ]
+        },
+    ];
+
+    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props}  />);
 }
 
 export default Form;

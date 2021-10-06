@@ -1,4 +1,4 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import TerminalSelectOptions from 'entities/Terminal/SelectOptions';
 import CallAclSelectOptions from 'entities/CallAcl/SelectOptions';
@@ -11,8 +11,10 @@ import LanguageSelectOptions from 'entities/Language/SelectOptions';
 import TransformationRuleSetSelectOptions from 'entities/TransformationRuleSet/SelectOptions';
 import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import UserSelectOptions from './SelectOptions';
+import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
+import _ from 'lib/services/translations/translate';
 
-const Form = (props:any) => {
+const Form = (props: any) => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
@@ -25,8 +27,8 @@ const Form = (props:any) => {
 
             if (loadingFks) {
 
-                UserSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                UserSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             bossAssistant: options
@@ -34,8 +36,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                MatchListSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                MatchListSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             bossAssistantWhiteList: options
@@ -43,8 +45,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                TransformationRuleSetSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                TransformationRuleSetSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             transformationRuleSet: options
@@ -52,8 +54,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                LanguageSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                LanguageSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             language: options
@@ -61,8 +63,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                ExtensionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                ExtensionSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             extension: options
@@ -70,8 +72,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                TimezoneSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                TimezoneSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             timezone: options
@@ -79,8 +81,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                DdiSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                DdiSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             outgoingDdi: options
@@ -88,8 +90,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                OutgoingDdiRuleSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                OutgoingDdiRuleSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             outgoingDdiRule: options
@@ -97,8 +99,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                LocutionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                LocutionSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             voicemailLocution: options
@@ -106,8 +108,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                TerminalSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                TerminalSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             terminal: options
@@ -115,11 +117,20 @@ const Form = (props:any) => {
                     });
                 });
 
-                CallAclSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                CallAclSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             callAcl: options
+                        }
+                    });
+                });
+
+                PickUpGroupSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
+                        return {
+                            ...fkChoices,
+                            pickupGroupIds: options
                         }
                     });
                 });
@@ -134,7 +145,76 @@ const Form = (props:any) => {
         [loadingFks, fkChoices]
     );
 
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
+    const groups: Array<FieldsetGroups> = [
+        {
+            legend: _('Personal data'),
+            fields: [
+                'name',
+                'language',
+                'lastname',
+                'email',
+            ]
+        },
+        {
+            legend: _('Geographic Configuration'),
+            fields: [
+                //'language',
+                'timezone',
+                'transformationRuleSet',
+            ]
+        },
+        {
+            legend: _('Login Info'),
+            fields: [
+                'active',
+                'pass',
+                'gsQRCode',
+            ]
+        },
+        {
+            legend: _('Boss-Assistant'),
+            fields: [
+                'isBoss',
+                'bossAssistant',
+                'bossAssistantWhiteList',
+            ]
+        },
+        {
+            legend: _('Basic Configuration'),
+            fields: [
+                'terminal',
+                'extension',
+                'outgoingDdi',
+                'outgoingDdiRule',
+                'callAcl',
+                'doNotDisturb',
+                'maxCalls',
+                'externalIpCalls',
+                'multiContact',
+                'rejectCallMethod',
+            ]
+        },
+        {
+            legend: _('Voicemail'),
+            fields: [
+                'voicemailEnabled',
+                'voicemailLocution',
+                'voicemailSendMail',
+                'voicemailAttachSound',
+            ]
+        },
+        {
+            legend: _('Group belonging'),
+            fields: [
+                'pickupGroupIds',
+                //@TODO 'HuntGroupsRelUsers',
+            ]
+        }
+    ];
+
+    return (
+        <DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props} />
+    );
 }
 
 export default Form;

@@ -1,24 +1,49 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
-import Form from './Form'
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import _ from 'lib/services/translations/translate';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import Form from './Form';
+import entities from '../index';
+import EntityService from 'lib/services/entity/EntityService';
+import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
-    //@TODO relUsers multiselect
+    userIds: {
+        label: _('User'),
+    }
 };
 
-const terminal:EntityInterface = {
+async function foreignKeyResolver(data: any, entityService: EntityService) {
+
+    const promises = [];
+    const { User } = entities;
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'userIds',
+            User.path,
+            User.toStr,
+        )
+    );
+
+    await Promise.all(promises);
+
+    return data;
+}
+
+const pickUpGroup: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'PickUpGroup',
-    title: _('Pick Up Group', {count: 2}),
+    title: _('Pick up group', { count: 2 }),
     path: '/pick_up_groups',
     properties,
-    Form
+    Form,
+    foreignKeyResolver
 };
 
-export default terminal;
+export default pickUpGroup;

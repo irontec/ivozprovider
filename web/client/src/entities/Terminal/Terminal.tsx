@@ -1,15 +1,15 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityService from 'lib/services/entity/EntityService';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
+import _ from 'lib/services/translations/translate';
 import Form from './Form'
+import entities from '../index';
 
-const properties:PropertiesList = {
-    'id': {
-        label: _('Id')
-    },
+const properties: PropertiesList = {
     'name': {
-        label:_('Name'),
+        label: _('Name'),
         helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
     },
     'mac': {
@@ -39,8 +39,8 @@ const properties:PropertiesList = {
         label: _('Allowed video codecs'),
         enum: {
             'h264': 'h264 - H.264',
-            '__null__': _("Disabled"),
-        }
+        },
+        null: _("Disabled"),
     },
     'directMediaMethod': {
         label: _('CallerID update method'),
@@ -67,16 +67,42 @@ const properties:PropertiesList = {
     'terminalModel': {
         label: _('Terminal model'),
     },
+    'domain': {
+        label: _('Domain'),
+    },
 };
 
-const terminal:EntityInterface = {
+
+async function foreignKeyResolver(data: any, entityService: EntityService) {
+
+    const promises = [];
+    const { TerminalModel } = entities;
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'terminalModel',
+            TerminalModel.path,
+            TerminalModel.toStr,
+            TerminalModel.acl.update
+        )
+    );
+
+    await Promise.all(promises);
+
+    return data;
+}
+
+const terminal: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Terminal',
-    title: _('Terminal', {count: 2}),
+    title: _('Terminal', { count: 2 }),
     path: '/terminals',
+    toStr: (row: any) => row.name,
     properties,
-    Form
+    Form,
+    foreignKeyResolver
 };
 
 export default terminal;

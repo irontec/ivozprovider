@@ -1,9 +1,10 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import CountrySelectOptions from 'entities/Country/SelectOptions';
 import LocutionSelectOptions from 'entities/Locution/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
+import _ from 'lib/services/translations/translate';
 
 const Form = (props:any) => {
 
@@ -30,9 +31,6 @@ const Form = (props:any) => {
                     });
                 });
 
-                //@TODO
-                // excludedExtensions
-
                 CountrySelectOptions((options:any) => {
                     setFkChoices((fkChoices:any) => {
                         return {
@@ -49,6 +47,7 @@ const Form = (props:any) => {
                             ...fkChoices,
                             noInputExtension: options,
                             errorExtension: options,
+                            excludedExtensionIds: options,
                         }
                     });
                 });
@@ -73,7 +72,49 @@ const Form = (props:any) => {
         [loadingFks, fkChoices]
     );
 
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
+    const groups:Array<FieldsetGroups> = [
+        {
+            legend: _('Basic Configuration'),
+            fields: [
+                'name',
+                'timeout',
+                'maxDigits',
+                'welcomeLocution',
+                'successLocution',
+            ]
+        },
+        {
+            legend: _('Extension dialing'),
+            fields: [
+                'allowExtensions',
+                'excludedExtensionIds',
+            ]
+        },
+        {
+            legend: _('No input configuration'),
+            fields: [
+                'noInputLocution',
+                'noInputRouteType',
+                'noInputNumberCountry',
+                'noInputNumberValue',
+                'noInputExtension',
+                'noInputVoiceMailUser',
+            ]
+        },
+        {
+            legend: _('Error configuration'),
+            fields: [
+                'errorLocution',
+                'errorRouteType',
+                'errorNumberCountry',
+                'errorNumberValue',
+                'errorExtension',
+                'errorVoiceMailUser',
+            ]
+        },
+    ];
+
+    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props}  />);
 }
 
 export default Form;

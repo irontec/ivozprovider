@@ -1,6 +1,6 @@
 import { action, thunk } from 'easy-peasy';
-import ApiClient from 'services/Api/ApiClient';
-import ApiSpecParser from 'services/Api/ApiSpecParser';
+import ApiClient from 'lib/services/api/ApiClient';
+import ApiSpecParser from 'lib/services/api/ApiSpecParser';
 
 const specStore = {
   spec: {},

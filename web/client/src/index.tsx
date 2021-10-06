@@ -1,18 +1,34 @@
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { ThemeProvider, createTheme, StyledEngineProvider } from '@mui/material';
+import * as locales from '@mui/material/locale';
 import reportWebVitals from './reportWebVitals';
 import { StoreProvider, createStore } from "easy-peasy";
 import storeModel from './store';
-import './i18n';
+import i18n from './i18n';
+import './index.css';
+import App, { AppRoutesProps } from 'lib/App';
+import AppRoutes from './AppRoutes';
 
+const currentLanguage = i18n.language.substring(0, 2) === 'es'
+  ? 'esES'
+  : 'enUS';
+
+const theme = createTheme({}, locales[currentLanguage]);
 const store = createStore(storeModel);
 
 ReactDOM.render(
   //<React.StrictMode>
+  <StyledEngineProvider injectFirst>
+    <ThemeProvider theme={theme}>
       <StoreProvider store={store}>
-        <App />
+        <App>
+          {(props: AppRoutesProps) => {
+            return (<AppRoutes {...props} />);
+          }}
+        </App>
       </StoreProvider>
+    </ThemeProvider>
+  </StyledEngineProvider>
   //</React.StrictMode>
   ,
   document.getElementById('root')

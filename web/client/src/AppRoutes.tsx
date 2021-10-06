@@ -1,14 +1,16 @@
 import { Switch, Route } from "react-router-dom";
 
-import { Dashboard, Login } from 'layout/content/index';
-import EntityService from "services/Entity/EntityService";
-import Routes, { RouteSpec } from 'entities/Routes';
+import Dashboard from './Dashboard';
+import { Login } from 'lib/layout/content/index';
+import EntityService from "lib/services/entity/EntityService";
+import { RouteSpec, parseRoutes } from 'lib/entities/Routes';
 import { useStoreActions } from "easy-peasy";
 import { useEffect } from "react";
+import { AppRoutesProps } from "lib/App";
 
-export default function AppRoutes(props:any) {
+export default function AppRoutes(props:AppRoutesProps) {
 
-  const { token } = props;
+  const { token, apiSpec } = props;
 
   if (!token) {
     return (<Login />);
@@ -19,7 +21,7 @@ export default function AppRoutes(props:any) {
       <Route exact key='login' path='/'>
         <DashboardRoute loggedIn={!!token} />
       </Route>
-      {token && Routes.map((route: RouteSpec, key:number) => (
+      {token && parseRoutes(apiSpec).map((route: RouteSpec, key:number) => (
         <Route exact key={route.key} path={route.path}>
           <RouteContent route={route} {...props} />
         </Route>
@@ -50,13 +52,17 @@ const RouteContent = (props:any) => {
   const setRoute = useStoreActions((actions:any) => {
     return actions.route.setRoute;
   });
+  const setRouteName = useStoreActions((actions:any) => {
+    return actions.route.setName;
+  });
 
   const path = route.path;
   useEffect(
     () => {
       setRoute(path);
+      setRouteName(route.entity.title);
     },
-    [path, setRoute]
+    [path, route.entity.title, setRoute, setRouteName]
   );
 
   const entity = route.entity;

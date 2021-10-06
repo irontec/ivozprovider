@@ -1,4 +1,4 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 
 const FaxSelectOptions = (callback: Function) => {
 

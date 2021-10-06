@@ -1,9 +1,10 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import _ from 'lib/services/translations/translate';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import Form from './Form';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -38,13 +39,21 @@ const properties:PropertiesList = {
     }
 };
 
-const terminal:EntityInterface = {
+const columns = [
+    'name',
+    'timeIn',
+    'timeout'
+];
+
+const schedule: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Schedule',
-    title: _('Schedule', {count: 2}),
+    title: _('Schedule', { count: 2 }),
     path: '/schedules',
-    properties
+    properties,
+    columns,
+    Form
 };
 
-export default terminal;
+export default schedule;

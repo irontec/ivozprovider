@@ -1,4 +1,5 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import Country from './Country';
 
 const CountrySelectOptions = (callback: Function) => {
 
@@ -8,8 +9,7 @@ const CountrySelectOptions = (callback: Function) => {
         (data:any) => {
             const options:any = {};
             for (const item of data) {
-                //@TODO detect language
-                options[item.id] = `${item.name.en} (${item.countryCode})`;
+                options[item.id] = `${Country.toStr(item)} (${item.countryCode})`;
             }
 
             callback(options);

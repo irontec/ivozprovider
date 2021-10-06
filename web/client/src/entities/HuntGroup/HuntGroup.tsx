@@ -1,10 +1,17 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import _ from 'lib/services/translations/translate';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 
-const properties:PropertiesList = {
+const routableFields = [
+    'noAnswerNumberCountry',
+    'noAnswerNumberValue',
+    'noAnswerExtension',
+    'noAnswerVoiceMailUser',
+];
+
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -18,6 +25,24 @@ const properties:PropertiesList = {
             'linear': _('Linear'),
             'roundRobin': _('Round Robin'),
             'random': _('Random')
+        },
+        visualToggle: {
+            'ringAll': {
+                show: ['ringAllTimeout'],
+                hide: [],
+            },
+            'linear': {
+                show: [],
+                hide: ['ringAllTimeout'],
+            },
+            'roundRobin': {
+                show: [],
+                hide: ['ringAllTimeout'],
+            },
+            'random': {
+                show: [],
+                hide: ['ringAllTimeout'],
+            },
         },
         helpText: _('Determines the order users will be called')
     },
@@ -43,11 +68,29 @@ const properties:PropertiesList = {
     'noAnswerTargetType': {
         label: _('Timeout target type'),
         enum: {
-            '__null__': _('Unassigned'),
             'number': _('Number'),
             'extension': _('Extension'),
             'voicemail': _('Voicemail'),
-        }
+        },
+        visualToggle: {
+            '__null__': {
+                show: [],
+                hide: routableFields,
+            },
+            'number': {
+                show: ['noAnswerNumberCountry', 'noAnswerNumberValue'],
+                hide: routableFields,
+            },
+            'extension': {
+                show: ['noAnswerExtension'],
+                hide: routableFields,
+            },
+            'voicemail': {
+                show: ['noAnswerVoiceMailUser'],
+                hide: routableFields,
+            },
+        },
+        null: _('Unassigned'),
     },
     'noAnswerLocution': {
         label: _('No answer locution'),
@@ -66,14 +109,15 @@ const properties:PropertiesList = {
     },
 };
 
-const extension:EntityInterface = {
+const huntGroup: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'HuntGroup',
-    title: _('Hunt Group', {count: 2}),
+    title: _('Hunt Group', { count: 2 }),
     path: '/hunt_groups',
+    toStr: (row: any) => row.name,
     properties,
     Form
 };
 
-export default extension;
+export default huntGroup;

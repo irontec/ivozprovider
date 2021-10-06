@@ -1,46 +1,105 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
-import EntityService from 'services/Entity/EntityService';
-import defaultEntityBehavior from '../DefaultEntityBehavior';
-import _ from 'services/Translations/translate';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
+import EntityService from 'lib/services/entity/EntityService';
+import DefaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import _ from 'lib/services/translations/translate';
+import Form from './Form';
+import entities from '../index';
 
-const properties:PropertiesList = {
-    id:  {
-        label: "id",
+const properties: PropertiesList = {
+    'startTime': {
+        label: 'Start time',
     },
-    ddi: {
-        label: "ddi",
+    'callid': {
+        label: 'Call ID',
     },
-    duration: {
-        label: "duration",
+    'caller': {
+        label: 'Caller',
     },
-    price: {
-        label: "price"
+    'callee': {
+        label: 'Callee',
+    },
+    'destinationName': {
+        label: 'Destination',
+    },
+    'direction': {
+        label: 'Direction',
+        enum: {
+            'inbound': _('Inbound'),
+            'outbound': _('Outbound'),
+        }
+    },
+    'invoice': {
+        label: 'Invoice',
+    },
+    'price': {
+        label: 'Price',
+    },
+    'duration': {
+        label: 'Duration',
+    },
+    'cost': {
+        label: 'Cost',
+    },
+    'carrierName': {
+        label: 'Carrier',
+    },
+    'ratingPlanName': {
+        label: 'Rating plan',
+    },
+    'endpointType': {
+        label: 'Endpoint type',
+    },
+    'endpointId': {
+        label: 'Endpoint id',
+    },
+    'endpointName': {
+        label: 'Endpoint name',
+    },
+    'ddiProvider': {
+        label: 'DDI Provider',
     },
 };
 
 async function foreignKeyResolver(data: any, entityService: EntityService) {
 
-    data = await genericForeignKeyResolver(
-        data,
-        'ddi',
-        '/ddis',
-        'ddi'
+    const promises = [];
+    const { Ddi } = entities;
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'ddi',
+            Ddi.path,
+            Ddi.toStr,
+        )
     );
+
+    await Promise.all(promises);
 
     return data;
 }
 
-const calendar:EntityInterface = {
-    ...defaultEntityBehavior,
+const columns = [
+    'startTime',
+    'direction',
+    'caller',
+    'callee',
+    'duration',
+    'price',
+];
+
+const billableCall: EntityInterface = {
+    ...DefaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'BillableCall',
-    title: _('Billable calls', {count: 2}),
+    title: _('External call', { count: 2 }),
     path: '/billable_calls',
     properties,
+    columns,
     foreignKeyResolver,
-
+    Form
 };
 
-export default calendar;
+export default billableCall;

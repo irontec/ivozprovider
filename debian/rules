@@ -30,6 +30,10 @@ build_webadmin: build_library
 	cd web/admin ; msgfmt -o application/languages/ca_ES/ca_ES.mo application/languages/ca_ES/ca_ES.po
 	cd web/admin ; msgfmt -o application/languages/it_IT/it_IT.mo application/languages/it_IT/it_IT.po
 
+build_webclient:
+	cd web/client ; yarnpkg install
+	cd web/client ; yarnpkg build
+
 build_webuser: build_library build_webadmin
 	cd web/user ; gem install --install-dir $(GEM_PATH) compass
 	#cd web/user ; npm install bower grunt-cli karma grunt-karma
@@ -49,7 +53,7 @@ build_microservices: build_library
 build_schema: build_library
 	cd schema ; composer --no-interaction --ignore-platform-reqs --no-dev --no-progress --optimize-autoloader install
 
-override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_schema build_webuser
+override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_schema build_webclient build_webuser
 
 override_dh_install:
 	dh_install

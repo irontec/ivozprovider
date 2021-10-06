@@ -1,5 +1,5 @@
 import { action, thunk } from 'easy-peasy';
-import ApiClient from 'services/Api/ApiClient';
+import ApiClient from 'lib/services/api/ApiClient';
 
 const auth = {
   token: null,

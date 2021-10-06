@@ -1,9 +1,10 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import _ from 'lib/services/translations/translate';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import Form from './Form';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -17,21 +18,35 @@ const properties:PropertiesList = {
             '1': _("Opened"),
         }
     },
-
-    //@TODO open
-    //@TODO status
-    //@TODO openExtension
-    //@TODO closeExtension
-    //@TODO toggleExtension
+    'closeExtension': {
+        label: _('Close extension'),
+    },
+    'openExtension': {
+        label: _('Open extension'),
+    },
+    'toggleExtension': {
+        label: _('Toggle extension'),
+    },
 };
 
-const terminal:EntityInterface = {
+const columns = [
+    'name',
+    'description',
+    'open',
+    'closeExtension',
+    'openExtension',
+    'toggleExtension',
+];
+
+const routeLock: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'RouteLock',
-    title: _('Route Lock', {count: 2}),
+    title: _('Route Lock', { count: 2 }),
     path: '/route_locks',
-    properties
+    properties,
+    columns,
+    Form
 };
 
-export default terminal;
+export default routeLock;

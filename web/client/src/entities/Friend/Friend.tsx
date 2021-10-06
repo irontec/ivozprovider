@@ -1,10 +1,11 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import _ from 'lib/services/translations/translate';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import StatusIcon from './Field/StatusIcon';
 import Form from './Form';
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
         helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'")
@@ -34,7 +35,7 @@ const properties:PropertiesList = {
         label: _('Password'),
         helpText: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'"),
     },
-    'callACL': {
+    'callAcl': {
         label: _('Call ACL'),
     },
     'transformationRuleSet': {
@@ -83,6 +84,16 @@ const properties:PropertiesList = {
         enum: {
             'yes': _('Yes'),
             'no': _('No'),
+        },
+        visualToggle: {
+            'yes': {
+                show: ['direct_media_method', 'callerid_update_header'],
+                hide: [],
+            },
+            'no': {
+                show: [],
+                hide: ['direct_media_method', 'callerid_update_header'],
+            },
         }
     },
     'fromDomain': {
@@ -97,10 +108,72 @@ const properties:PropertiesList = {
             'yes': _('Direct'),
             'no': _('Register'),
             'intervpbx': _('Inter vPBX'),
+        },
+        visualToggle: {
+            'yes': {
+                show: [
+                    'name',
+                    'domain',
+                    'password',
+                    'ip',
+                    'port',
+                    'transport',
+                    'ddiIn',
+                    'allow',
+                    'fromUser',
+                    'fromDomain',
+                    'language',
+                    'transformationRuleSet',
+                    'callACL',
+                    'rtpEncryption',
+                ],
+                hide: [
+                    'multiContact',
+                ],
+            },
+            'no': {
+                show: [
+                    'name',
+                    'password',
+                    'ddiIn',
+                    'allow',
+                    'fromUser',
+                    'fromDomain',
+                    'language',
+                    'transformationRuleSet',
+                    'callACL',
+                    'rtpEncryption',
+                    'multiContact',
+                ],
+                hide: [
+                    'ip',
+                    'port',
+                    'transport',
+                ],
+            },
+            'intervpbx': {
+                show: [],
+                hide: [
+                    'name',
+                    'ip',
+                    'port',
+                    'transport',
+                    'password',
+                    'ddiIn',
+                    'allow',
+                    'fromUser',
+                    'fromDomain',
+                    'language',
+                    'transformationRuleSet',
+                    'callACL',
+                    't38Passthrough',
+                    'rtpEncryption',
+                    'multiContact',
+                    'outgoingDdi',
+                    'alwaysApplyTransformations',
+                ],
+            },
         }
-    },
-    'interCompany': {
-        label: _('Target client'),
     },
     'ddiIn': {
         label: _('DDI In'),
@@ -144,16 +217,29 @@ const properties:PropertiesList = {
         },
         helpText: _("Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring.")
     },
+    statusIcon: {
+        label: _('Status'),
+        component: StatusIcon
+    }
 };
 
-const extension:EntityInterface = {
+const columns = [
+    'name',
+    'domain',
+    'description',
+    'priority',
+    'statusIcon',
+];
+
+const friend: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'Friend',
-    title: _('Friend', {count: 2}),
+    title: _('Friend', { count: 2 }),
     path: '/friends',
     properties,
+    columns,
     Form
 };
 
-export default extension;
+export default friend;

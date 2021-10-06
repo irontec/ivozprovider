@@ -6,7 +6,7 @@ Build-Depends: debhelper (>=9.2),
     python3, make, python3-sphinx-rtd-theme, gettext,
     python3-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
     libjs-jquery (>=1.11.3), python3-alabaster (>=0.7.8), composer,
-    php8.0-mbstring, php8.0-xml, php8.0-zip, php8.0-mailparse
+    php8.0-mbstring, php8.0-xml, php8.0-zip, php8.0-mailparse, yarnpkg
 Standards-Version: 3.9.6
 Maintainer: Irontec IvozProvider Team <ivozprovider@irontec.com>
 
@@ -97,6 +97,7 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     php8.0-zip,
     ivozprovider-web-admin (=${binary:Version}),
     ivozprovider-web-user (=${binary:Version}),
+    ivozprovider-web-client (=${binary:Version}),
     supervisor,
     ffmpeg,
     sox,
@@ -199,6 +200,17 @@ Homepage: http://www.irontec.com
 Description: IVOZ Provider - Admin Web - Klear based web interface
  Portals using klear and zendframework 1
  .
+
+Package: ivozprovider-web-client
+Architecture: all
+Section: php
+Priority: optional
+Conflicts: ivozprovider-userweb
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Client Web - React based client web interface
+ Client webapp using React and Bootstrap
+ .
+
 
 Package: ivozprovider-web-user
 Architecture: all

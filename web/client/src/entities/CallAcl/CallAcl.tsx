@@ -1,10 +1,10 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import _ from 'lib/services/translations/translate';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
 
-const properties:PropertiesList = {
+const properties: PropertiesList = {
     'name': {
         label: _('Name'),
     },
@@ -15,17 +15,17 @@ const properties:PropertiesList = {
             'deny': _('deny'),
         }
     },
-    //@TODO CallAclRelMatchLists subscreen list
+    //@TODO POSPONED CallAclRelMatchLists subscreen list
 };
 
-const terminal:EntityInterface = {
+const CallAcl: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'CallAcl',
-    title: _('Call ACLs', {count: 2}),
+    title: _('Call ACLs', { count: 2 }),
     path: '/call_acls',
     properties,
     Form
 };
 
-export default terminal;
+export default CallAcl;

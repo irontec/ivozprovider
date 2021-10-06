@@ -22,7 +22,7 @@
     "jsx": "react-jsx"
   },
   "include": [
+    "lib",
     "src",
-    "translations"
   ]
 }
