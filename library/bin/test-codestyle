@@ -21,7 +21,7 @@ if [ -z "$CHANGED_FILES" ]; then
 fi
 
 cd /opt/irontec/ivozprovider/
-library/vendor/bin/phpcbf -p --standard=PSR2 --extensions=php \
+library/vendor/bin/phpcbf -p --standard=PSR12 --extensions=php \
     --ignore='vendor,coverage,var,DoctrineMigrations,config.php' \
     $CHANGED_FILES
 
