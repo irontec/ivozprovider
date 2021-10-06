@@ -6,7 +6,7 @@ import { StyledFieldsetRoot, StyledFieldset } from './CustomComponentWrapper.sty
 interface CustomComponentWrapperProps extends propertyCustomComponentProps {
     property: PropertySpec,
     children: React.ReactElement | React.ReactElement[],
-};
+}
 
 const CustomComponentWrapper: PropertyCustomComponent<CustomComponentWrapperProps> = (props: CustomComponentWrapperProps) => {
     const { property } = props;

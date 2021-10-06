@@ -4,17 +4,18 @@ import CustomComponentWrapper from "./CustomComponentWrapper";
 import BackupIcon from '@mui/icons-material/Backup';
 import { ChangeEvent, DragEvent, useCallback, useState } from 'react';
 import { StyledFileUploaderContainer, StyledFileNameContainer, StyledUploadButtonContainer, StyledUploadButtonLabel } from './FileUploader.styles';
+import { FormOnChangeEvent } from 'lib/entities/DefaultEntityBehavior';
 
 interface ViewValueProps {
     columnName: string,
     property: PropertySpec,
     values: any,
-    changeHandler: Function,
+    changeHandler: (e: FormOnChangeEvent) => void,
 }
 
 const FileUploader = (props: ViewValueProps) => {
 
-    let { property, columnName, values, changeHandler } = props;
+    const { property, columnName, values, changeHandler } = props;
 
     const [hover, setHover] = useState<boolean>(false);
     const [hoverCount, setHoverCount] = useState<number>(0);
@@ -64,12 +65,13 @@ const FileUploader = (props: ViewValueProps) => {
                 ...{ file: files[0] }
             };
 
-            changeHandler({
+            const changeEvent = {
                 target: {
                     name: columnName,
                     value: value,
                 }
-            });
+            } as ChangeEvent<HTMLInputElement>;
+            changeHandler(changeEvent);
         },
         [changeHandler, columnName, values],
     );
@@ -126,12 +128,13 @@ const FileUploader = (props: ViewValueProps) => {
                             ...{ file: files[0] }
                         };
 
-                        changeHandler({
+                        const changeEvent = {
                             target: {
                                 name: columnName,
                                 value: value,
                             }
-                        });
+                        } as ChangeEvent<HTMLInputElement>;
+                        changeHandler(changeEvent);
                     }}
                 />
                 <StyledUploadButtonContainer>

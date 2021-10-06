@@ -6,19 +6,19 @@ import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
 import _ from 'lib/services/translations/translate';
 
-const Form = (props:any) => {
+const Form = (props: any) => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
+    const [mounted, setMounted] = useState<boolean>(true);
     const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
-            if (loadingFks) {
-                LocutionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+            if (mounted && loadingFks) {
+                LocutionSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             timeoutLocution: options,
@@ -28,8 +28,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                CountrySelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                CountrySelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             timeoutNumberCountry: options,
@@ -38,8 +38,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                ExtensionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                ExtensionSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             timeoutExtension: options,
@@ -48,8 +48,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                UserSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                UserSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             timeoutVoiceMailUser: options,
@@ -68,7 +68,7 @@ const Form = (props:any) => {
         [loadingFks, fkChoices]
     );
 
-    const groups:Array<FieldsetGroups> = [
+    const groups: Array<FieldsetGroups> = [
         {
             legend: _('Basic Configuration'),
             fields: [
@@ -118,7 +118,7 @@ const Form = (props:any) => {
         },
     ];
 
-    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props}  />);
+    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props} />);
 }
 
 export default Form;

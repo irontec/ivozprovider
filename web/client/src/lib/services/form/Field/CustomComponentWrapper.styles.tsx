@@ -73,7 +73,7 @@ export const StyledFieldset = styled(
 )(
     ({ theme }: { theme: Theme }) => {
 
-        var borderColor = theme.palette.mode === 'light'
+        const borderColor = theme.palette.mode === 'light'
             ? 'rgba(0, 0, 0, 0.23)'
             : 'rgba(255, 255, 255, 0.23)';
 

@@ -10,6 +10,7 @@ import { StyledAppBar, StyledFilterDialogTypography } from './FilterDialog.style
 const Transition = React.forwardRef<unknown, TransitionProps>((props: any, ref) => {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+Transition.displayName = 'FilterDialogTransition';
 
 export default function FullScreenDialog(props: any) {
 

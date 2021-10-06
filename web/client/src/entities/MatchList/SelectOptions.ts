@@ -1,13 +1,13 @@
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const MatchListSelectOptions = (callback: Function) => {
+const MatchListSelectOptions = (callback: FetchFksCallback) => {
 
     defaultEntityBehavior.fetchFks(
         '/match_lists',
         ['id', 'name'],
-        (data:any) => {
+        (data: any) => {
 
-            const options:any = {};
+            const options: any = {};
             for (const item of data) {
                 options[item.id] = item.name;
             }

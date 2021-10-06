@@ -1,4 +1,4 @@
-import OpenApiSpecInterface from './OpenApiSpecInterface';
+import OpenApiSpecInterface, { OpenApiPaths } from './OpenApiSpecInterface';
 import ParsedApiSpecInterface from './ParsedApiSpecInterface';
 
 type KeyValList = {
@@ -14,8 +14,8 @@ export default class ApiSpecParser {
 
     private parseSpec(apiSpec: OpenApiSpecInterface): ParsedApiSpecInterface {
 
-        let responseData:any = {};
-        for (let modelName in apiSpec.definitions) {
+        const responseData: any = {};
+        for (const modelName in apiSpec.definitions) {
 
             const entityNameRoot = modelName.split('-').shift() as string;
 
@@ -34,13 +34,13 @@ export default class ApiSpecParser {
             };
         }
 
-        const response:any = {};
+        const response: any = {};
         for (const modelName in responseData) {
             response[modelName] = {
                 properties: {}
             };
 
-            const properties:KeyValList = [];
+            const properties: KeyValList = [];
             for (const modelVariant in responseData[modelName]) {
                 const paths = responseData[modelName][modelVariant].paths;
 
@@ -64,7 +64,7 @@ export default class ApiSpecParser {
                     }
 
                     const variantData = responseData[modelName][modelVariant];
-                    const modelVariantPaths:any = paths[method];
+                    const modelVariantPaths: any = paths[method];
 
                     if (method !== 'get') {
 
@@ -129,51 +129,45 @@ export default class ApiSpecParser {
         return response;
     }
 
-    private isCollection(paths:any)
-    {
+    private isCollection(paths: any) {
         const collectionPaths = this.getCollectionPaths(paths);
 
         return collectionPaths.length > 0;
     }
 
-    private getCollectionPaths(paths:any)
-    {
-        return Object.keys(paths).filter((key:string) => {
+    private getCollectionPaths(paths: any) {
+        return Object.keys(paths).filter((key: string) => {
             return paths[key]?.responses['200']?.schema?.items;
         })
     }
 
-    private isItem(paths:any)
-    {
+    private isItem(paths: any) {
         const itemPaths = this.getItemPaths(paths);
 
         return itemPaths.length > 0;
     }
 
-    private getItemPaths(paths:any)
-    {
-        return Object.keys(paths).filter((key:string) => {
+    private getItemPaths(paths: any) {
+        return Object.keys(paths).filter((key: string) => {
             return paths[key]?.responses['200']?.schema?.$ref;
         });
     }
 
-    public getEntityBasePath(entityNameRoot: string): string
-    {
-        const underScored = entityNameRoot.replace(/([A-Z])/g, (upperString:string) => {
+    public getEntityBasePath(entityNameRoot: string): string {
+        const underScored = entityNameRoot.replace(/([A-Z])/g, (upperString: string) => {
             return "_" + upperString.toLowerCase();
         });
 
         return '/' + underScored.slice(1);
     }
 
-    private getEntityPaths(entityNameRoot: string, apiSpec: OpenApiSpecInterface): Object
-    {
+    private getEntityPaths(entityNameRoot: string, apiSpec: OpenApiSpecInterface): OpenApiPaths {
         /* eslint-disable */
         entityNameRoot = entityNameRoot.replace('-', '\-');
         const pattern = `^\#\/definitions\/${entityNameRoot}$`;
         /* eslint-enable */
         const regExp = new RegExp(pattern);
-        const endpoints:any = {};
+        const endpoints: OpenApiPaths = {};
 
         for (const endpoint in apiSpec.paths) {
             for (const method in apiSpec.paths[endpoint]) {
@@ -193,7 +187,7 @@ export default class ApiSpecParser {
                     && (this.filterByResponseSchema(action, regExp)).length > 0
                     && this.isUploadAction(action);
 
-                if (! matches.length && !uploadActionMatch) {
+                if (!matches.length && !uploadActionMatch) {
                     continue;
                 }
 
@@ -218,34 +212,31 @@ export default class ApiSpecParser {
         return endpoints;
     }
 
-    private filterByRequestSchema(action:any, regExp:RegExp): Array<string>
-    {
+    private filterByRequestSchema(action: any, regExp: RegExp): Array<string> {
         return Object
             .values(action.parameters)
-            .map((parameter:any) => parameter?.schema?.$ref)
-            .filter((ref:string) => {
+            .map((parameter: any) => parameter?.schema?.$ref)
+            .filter((ref: string) => {
                 return ref && ref.search(regExp) === 0;
             });
     }
 
-    private filterByResponseSchema(action:any, regExp:RegExp): Array<string>
-    {
+    private filterByResponseSchema(action: any, regExp: RegExp): Array<string> {
         return Object
             .values(action.responses)
-            .map((response:any) => response.schema)
-            .map((schema:any) => {
+            .map((response: any) => response.schema)
+            .map((schema: any) => {
                 return schema?.items?.$ref ?? schema?.$ref;
             })
-            .filter((ref:string) => {
+            .filter((ref: string) => {
                 return ref && ref.search(regExp) === 0;
             });
     }
 
-    private isUploadAction(action:any): boolean
-    {
-        const fileParams:Array<any> = action
+    private isUploadAction(action: any): boolean {
+        const fileParams: Array<any> = action
             .parameters
-            .filter((param:any) => {
+            .filter((param: any) => {
                 return param.type === 'file';
             });
 

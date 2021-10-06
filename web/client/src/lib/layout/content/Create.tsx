@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { withRouter } from "react-router-dom";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import { FormikHelpers, useFormik } from 'formik';
 import { Button } from '@mui/material';
 import ErrorMessage from './shared/ErrorMessage';
@@ -15,7 +15,7 @@ interface CreateProps extends EntityInterface {
   match: any
 }
 
-const Create = (props: CreateProps) => {
+const Create = (props: CreateProps & RouteComponentProps) => {
 
   const { marshaller, unmarshaller, path, history, properties } = props;
   const { Form: EntityForm, entityService }: { Form: any, entityService: EntityService } = props;

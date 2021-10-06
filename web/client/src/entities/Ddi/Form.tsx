@@ -15,21 +15,21 @@ import ConditionalRouteSelectOptions from 'entities/ConditionalRoute/SelectOptio
 import RetailAccountSelectOptions from 'entities/RetailAccount/SelectOptions';
 import _ from 'lib/services/translations/translate';
 
-const Form = (props:any) => {
+const Form = (props: any) => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
+    const [mounted, setMounted] = useState<boolean>(true);
     const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
 
-            if (loadingFks) {
+            if (mounted && loadingFks) {
 
-                ExternalCallFilterSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                ExternalCallFilterSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             externalCallFilter: options
@@ -37,8 +37,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                UserSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                UserSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             user: options
@@ -46,8 +46,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                IvrSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                IvrSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             ivr: options
@@ -55,8 +55,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                HuntGroupSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                HuntGroupSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             huntGroup: options
@@ -64,8 +64,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                FaxSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                FaxSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             fax: options
@@ -73,8 +73,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                ConferenceRoomSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                ConferenceRoomSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             conferenceRoom: options
@@ -82,8 +82,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                ResidentialDeviceSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                ResidentialDeviceSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             residentialDevice: options
@@ -91,8 +91,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                DdiProviderSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                DdiProviderSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             ddiProvider: options
@@ -100,8 +100,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                CountrySelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                CountrySelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             country: options
@@ -109,8 +109,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                LanguageSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                LanguageSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             language: options
@@ -118,8 +118,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                QueueSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                QueueSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             queue: options
@@ -127,8 +127,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                ConditionalRouteSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                ConditionalRouteSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             conditionalRoute: options
@@ -136,8 +136,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                RetailAccountSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                RetailAccountSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             retailAccount: options
@@ -155,7 +155,7 @@ const Form = (props:any) => {
         [loadingFks, fkChoices]
     );
 
-    const groups:Array<FieldsetGroups> = [
+    const groups: Array<FieldsetGroups> = [
         {
             legend: _('Number data'),
             fields: [
@@ -196,7 +196,7 @@ const Form = (props:any) => {
         },
     ];
 
-    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props}  />);
+    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props} />);
 }
 
 export default Form;

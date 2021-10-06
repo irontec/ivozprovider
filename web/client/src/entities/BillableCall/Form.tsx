@@ -3,21 +3,21 @@ import { useEffect, useState } from 'react';
 import InvoiceSelectOptions from 'entities/Invoice/SelectOptions';
 import DdiProviderSelectOptions from 'entities/DdiProvider/SelectOptions';
 
-const Form = (props:any) => {
+const Form = (props: any) => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
+    const [mounted, setMounted] = useState<boolean>(true);
     const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
 
-            if (loadingFks) {
+            if (mounted && loadingFks) {
 
-                InvoiceSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                InvoiceSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             invoice: options
@@ -25,8 +25,8 @@ const Form = (props:any) => {
                     });
                 });
 
-                DdiProviderSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                DdiProviderSelectOptions((options: any) => {
+                    setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             ddiProvider: options
@@ -44,7 +44,7 @@ const Form = (props:any) => {
         [loadingFks, fkChoices]
     );
 
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
+    return (<DefaultEntityForm fkChoices={fkChoices} {...props} />);
 }
 
 export default Form;

@@ -16,6 +16,7 @@ const Transition: ComponentType<any> = forwardRef(
     return <Slide direction="up" ref={ref} {...props} />;
   }
 );
+Transition.displayName = 'ConfirmDialogTransition';
 
 export default function ConfirmDialog(props: any) {
 

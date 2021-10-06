@@ -13,7 +13,8 @@ const withRowData = (Component: FunctionComponent | ComponentClass): FunctionCom
 
     const entityId = match.params.id;
 
-    const [loading, setLoading] = useState(true);
+    const [mounted, setMounted] = useState<boolean>(true);
+    const [loading, setLoading] = useState(true)
     const [row, setRow] = useState({});
 
     const apiGet = useStoreActions((actions: any) => {
@@ -23,8 +24,7 @@ const withRowData = (Component: FunctionComponent | ComponentClass): FunctionCom
     useEffect(
       () => {
 
-        let umounted: boolean = false;
-        if (loading) {
+        if (mounted && loading) {
 
           const itemPath = entityService.getItemPath();
           if (!itemPath) {
@@ -36,7 +36,7 @@ const withRowData = (Component: FunctionComponent | ComponentClass): FunctionCom
             params: {},
             successCallback: async (data: any) => {
 
-              if (umounted) {
+              if (!mounted) {
                 return;
               }
 
@@ -47,7 +47,7 @@ const withRowData = (Component: FunctionComponent | ComponentClass): FunctionCom
         }
 
         return function umount() {
-          umounted = true;
+          setMounted(false);
         };
       },
       [loading, entityId, entityService, apiGet]

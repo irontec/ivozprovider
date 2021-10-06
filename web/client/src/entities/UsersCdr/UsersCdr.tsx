@@ -54,7 +54,7 @@ const properties: PropertiesList = {
     },
 };
 
-function ownerAndPartyResolver(row: any, addLinks: boolean = true) {
+function ownerAndPartyResolver(row: any, addLinks = true) {
 
     if (row.user) {
         row.owner = row.user;

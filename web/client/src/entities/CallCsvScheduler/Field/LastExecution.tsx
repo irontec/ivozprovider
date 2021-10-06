@@ -10,8 +10,8 @@ type LastExecutionProps = propertyCustomComponentProps & {
 
 const LastExecution: PropertyCustomComponent<LastExecutionProps> = (props: LastExecutionProps) => {
 
-    let { lastExecution, lastExecutionError } = props;
-    lastExecution = lastExecution.replace('T', ' ');
+    const lastExecution = props.lastExecution.replace('T', ' ');
+    const { lastExecutionError } = props;
 
     if (lastExecutionError) {
         return (

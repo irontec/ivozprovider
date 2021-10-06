@@ -1,12 +1,12 @@
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const InvoiceSelectOptions = (callback: Function) => {
+const InvoiceSelectOptions = (callback: FetchFksCallback) => {
 
     defaultEntityBehavior.fetchFks(
         '/invoices',
         ['id', 'number'],
-        (data:any) => {
-            const options:any = {};
+        (data: any) => {
+            const options: any = {};
             for (const item of data) {
                 options[item.id] = item.number;
             }

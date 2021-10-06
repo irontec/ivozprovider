@@ -39,7 +39,7 @@ export default interface EntityInterface {
     path: string,
     columns: Array<string>,
     properties: PropertiesList,
-    toStr: Function,
+    toStr: (row: { [key: string]: any; }) => string,
     defaultOrderBy: string,
     icon: JSX.Element
 }

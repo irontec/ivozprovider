@@ -1,4 +1,4 @@
-import { thunk } from 'easy-peasy';
+import { Actions, thunk } from 'easy-peasy';
 import ApiClient, { ApiError } from 'lib/services/api/ApiClient';
 
 interface apiGetRequestParams {
@@ -24,7 +24,7 @@ interface apiDeleteRequestParams {
   successCallback: () => Promise<any>
 }
 
-const handleApiErrors = (error: ApiError | null, getStoreActions: Function) => {
+const handleApiErrors = (error: ApiError | null, getStoreActions: () => Actions<any>) => {
 
   if (!error) {
     throw error;

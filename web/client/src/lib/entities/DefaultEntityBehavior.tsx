@@ -166,6 +166,9 @@ export type EntityFormProps = EntityInterface & {
     readOnlyProperties?: { [attribute: string]: boolean },
 };
 
+
+export type FormOnChangeEvent = React.ChangeEvent<{ name: string, value: any }>;
+
 const Form = (props: EntityFormProps) => {
 
     const { entityService, formik, readOnlyProperties } = props;
@@ -196,7 +199,7 @@ const Form = (props: EntityFormProps) => {
 
     const [visualToggles, setVisualToggles] = React.useState(initialVisualToggles);
 
-    const formOnChangeHandler = (e: React.ChangeEvent<any>): void => {
+    const formOnChangeHandler = (e: FormOnChangeEvent): void => {
 
         formik.handleChange(e);
 
@@ -265,7 +268,6 @@ const Form = (props: EntityFormProps) => {
     );
 };
 
-
 const View = (props: any) => {
 
     const { entityService, row }: { entityService: EntityService, row: any } = props;
@@ -310,7 +312,9 @@ const View = (props: any) => {
     );
 };
 
-const fetchFks = (endpoint: string, properties: Array<string>, setter: Function) => {
+export type FetchFksCallback = (data: { [key: string]: any }) => void;
+
+const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksCallback) => {
     ApiClient.get(
         endpoint,
         {

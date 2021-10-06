@@ -4,8 +4,8 @@ export default async function genericForeignKeyResolver(
     data: any,
     fkFld: string,
     entityEndpoint: string,
-    toStr: Function,
-    addLink: boolean = true
+    toStr: (row: { [key: string]: any }) => string,
+    addLink = true
 ) {
     if (typeof data !== 'object') {
         return data;
@@ -89,7 +89,7 @@ export default async function genericForeignKeyResolver(
     }
 
     return data;
-};
+}
 
 export const remapFk = (row: any, from: string, to: string) => {
 

@@ -27,4 +27,4 @@ export default async function genericForeignKeyGetter(entityEndpoint: string, fk
     );
 
     return entities;
-};
+}
