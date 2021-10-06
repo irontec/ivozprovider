@@ -10,6 +10,8 @@ use Symfony\Bridge\Monolog\Logger;
 
 abstract class AbstractBalanceOperation
 {
+    private string $lastError;
+
     public function __construct(
         protected EntityTools $entityTools,
         protected Logger $logger,

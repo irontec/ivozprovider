@@ -60,6 +60,7 @@ class TerminalFactory
             }
         }
 
+        /** @var TerminalDto $terminalDto */
         $terminalDto = $terminal instanceof TerminalInterface
             ? $this->entityTools->entityToDto($terminal)
             : new TerminalDto();

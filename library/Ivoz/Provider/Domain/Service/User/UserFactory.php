@@ -41,13 +41,12 @@ class UserFactory
                 );
         }
 
+        /** @var UserDto $userDto */
         $userDto = $user instanceof UserInterface
             ? $this->entityTools->entityToDto($user)
             : new UserDto();
 
-        $active = $user instanceof UserInterface
-            ? $user->getActive()
-            : false;
+        $active = $user instanceof UserInterface && $user->getActive();
 
         $userDto
             ->setCompanyId($companyId)

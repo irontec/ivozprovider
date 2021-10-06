@@ -77,6 +77,7 @@ class DdiFactory
             }
         }
 
+        /** @var DdiDto $ddiDto */
         $ddiDto = $ddi instanceof DdiInterface
             ? $this->entityTools->entityToDto($ddi)
             : new DdiDto();

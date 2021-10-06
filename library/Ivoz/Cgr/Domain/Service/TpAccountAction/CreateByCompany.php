@@ -3,6 +3,7 @@
 namespace Ivoz\Cgr\Domain\Service\TpAccountAction;
 
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
+use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionDto;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionRepository;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
@@ -49,6 +50,7 @@ class CreateByCompany implements CompanyLifecycleEventHandlerInterface
                     $company->getId()
                 );
 
+            /** @var TpAccountActionDto  $accountActionDto */
             $accountActionDto = $this->entityTools->entityToDto(
                 $accountAction
             );

@@ -6,6 +6,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
@@ -37,6 +38,7 @@ class CreateOrUpdateByTrunksCdr
         TrunksCdrInterface $trunksCdr,
         BillableCallInterface $billableCall = null
     ) {
+        /** @var BillableCallDto $billableCallDto */
         $billableCallDto = $billableCall
             ? $this->entityTools->entityToDto($billableCall)
             : BillableCall::createDto();

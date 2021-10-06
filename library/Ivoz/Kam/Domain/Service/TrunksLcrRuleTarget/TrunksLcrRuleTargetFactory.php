@@ -7,6 +7,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayRepository;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget;
+use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetDto;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 
@@ -84,6 +85,7 @@ class TrunksLcrRuleTargetFactory
                     $lcrGateway
                 );
 
+                /** @var TrunksLcrRuleTargetDto $lcrRuleTargetDto */
                 $lcrRuleTargetDto = $lcrRuleTarget
                     ? $this->entityTools->entityToDto($lcrRuleTarget)
                     : TrunksLcrRuleTarget::createDto();

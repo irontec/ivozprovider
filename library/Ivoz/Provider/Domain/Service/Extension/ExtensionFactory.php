@@ -30,6 +30,7 @@ class ExtensionFactory
             $extensionNumber
         );
 
+        /** @var ExtensionDto $extensionDto */
         $extensionDto = $extension instanceof ExtensionInterface
             ? $this->entityTools->entityToDto($extension)
             : new ExtensionDto();

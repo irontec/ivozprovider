@@ -6,6 +6,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
 
@@ -28,7 +29,7 @@ class AliasImporter
         $this->assertValidData($data);
 
         foreach ($data as $line) {
-            list($extensionNumber, $countryPrefix, $number) = $line;
+            [$extensionNumber, $countryPrefix, $number] = $line;
             $countryIden = $line[3] ?? null;
 
             $this->queueForPersist(
@@ -66,7 +67,7 @@ class AliasImporter
                 'CSV column number should be equal or lower than 4 at line ' . $lineNum
             );
 
-            list($extensionNumber, $countryPrefix, $number) = $line;
+            [$extensionNumber, $countryPrefix, $number] = $line;
             $countryIden = $line[4] ?? null;
 
             Assertion::integerish(
@@ -128,6 +129,7 @@ class AliasImporter
             );
         }
 
+        /** @var ExtensionDto $extensionDto */
         $extensionDto = $extension
             ? $this->entityTools->entityToDto($extension)
             : Extension::createDto();
