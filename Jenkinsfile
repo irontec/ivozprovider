@@ -224,7 +224,7 @@ pipeline {
                         }
                     }
                     steps {
-                        sh '/opt/irontec/ivozprovider/web/client/bin/test-build'
+                        sh '/opt/irontec/ivozprovider/web/client/bin/test-lint'
                     }
                     post {
                         success { notifySuccessGithub() }
