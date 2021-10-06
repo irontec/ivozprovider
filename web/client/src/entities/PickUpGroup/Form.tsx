@@ -14,7 +14,7 @@ const Form = (props: any) => {
         () => {
             if (mounted && loadingFks) {
                 UserSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             userIds: options,

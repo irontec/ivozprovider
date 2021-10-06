@@ -17,7 +17,7 @@ const Form = (props: any) => {
             if (mounted && loadingFks) {
 
                 InvoiceSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             invoice: options
@@ -26,7 +26,7 @@ const Form = (props: any) => {
                 });
 
                 DdiProviderSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             ddiProvider: options

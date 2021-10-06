@@ -15,7 +15,7 @@ const Form = (props: any) => {
         () => {
             if (mounted && loadingFks) {
                 TerminalModelSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             terminalModel: options

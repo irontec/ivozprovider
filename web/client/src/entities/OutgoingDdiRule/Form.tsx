@@ -15,7 +15,7 @@ const Form = (props: any) => {
         () => {
             if (mounted && loadingFks) {
                 DdiSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             forcedDdi: options

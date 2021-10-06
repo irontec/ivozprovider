@@ -24,7 +24,7 @@ const Form = (props: any) => {
             if (mounted && loadingFks) {
 
                 LocutionSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             locution: options
@@ -33,7 +33,7 @@ const Form = (props: any) => {
                 });
 
                 IvrSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             ivr: options
@@ -42,7 +42,7 @@ const Form = (props: any) => {
                 });
 
                 HuntGroupSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             huntGroup: options
@@ -51,7 +51,7 @@ const Form = (props: any) => {
                 });
 
                 UserSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             voicemailUser: options,
@@ -61,7 +61,7 @@ const Form = (props: any) => {
                 });
 
                 CountrySelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             numberCountry: options,
@@ -70,7 +70,7 @@ const Form = (props: any) => {
                 });
 
                 QueueSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             queue: options,
@@ -79,7 +79,7 @@ const Form = (props: any) => {
                 });
 
                 ConferenceRoomSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             conferenceRoom: options,
@@ -88,7 +88,7 @@ const Form = (props: any) => {
                 });
 
                 ExtensionSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             extension: options,

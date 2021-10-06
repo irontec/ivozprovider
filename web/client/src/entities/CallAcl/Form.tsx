@@ -14,7 +14,7 @@ const Form = (props: any) => {
         () => {
             if (mounted && loadingFks) {
                 /*LocutionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
+                    mounted && setFkChoices((fkChoices:any) => {
                         return {
                             ...fkChoices,
                             timeoutLocution: options,

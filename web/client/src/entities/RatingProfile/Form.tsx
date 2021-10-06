@@ -15,7 +15,7 @@ const Form = (props: any) => {
         () => {
             if (mounted && loadingFks) {
                 RatingPlanGroupSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             ratingPlanGroup: options,
@@ -24,7 +24,7 @@ const Form = (props: any) => {
                 });
 
                 RoutingTagSelectOptions((options: any) => {
-                    setFkChoices((fkChoices: any) => {
+                    mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
                             routingTag: options,

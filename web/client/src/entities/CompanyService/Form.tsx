@@ -17,7 +17,7 @@ const Form = (props: any) => {
 
                 ServiceSelectOptions(
                     (options: any) => {
-                        setFkChoices((fkChoices: any) => {
+                        mounted && setFkChoices((fkChoices: any) => {
                             return {
                                 ...fkChoices,
                                 service: options
