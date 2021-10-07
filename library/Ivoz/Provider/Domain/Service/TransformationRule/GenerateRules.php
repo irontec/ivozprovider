@@ -14,21 +14,12 @@ use Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLife
  */
 class GenerateRules implements TransformationRuleSetLifecycleEventHandlerInterface
 {
-    protected $entityTools;
-    protected $generateInRules;
-    protected $generateOutRules;
-    protected $disableGenerateRules;
-
     public function __construct(
-        EntityTools $entityTools,
-        GenerateInRules $generateInRules,
-        GenerateOutRules $generateOutRules,
-        DisableGenerateRules $disableGenerateRules
+        private EntityTools $entityTools,
+        private GenerateInRules $generateInRules,
+        private GenerateOutRules $generateOutRules,
+        private DisableGenerateRules $disableGenerateRules
     ) {
-        $this->entityTools = $entityTools;
-        $this->generateInRules = $generateInRules;
-        $this->generateOutRules = $generateOutRules;
-        $this->disableGenerateRules = $disableGenerateRules;
     }
 
     public static function getSubscribedEvents()

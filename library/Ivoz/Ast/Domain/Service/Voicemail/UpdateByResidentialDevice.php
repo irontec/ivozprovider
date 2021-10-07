@@ -13,22 +13,10 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
 {
     const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var VoicemailRepository
-     */
-    protected $voicemailRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        VoicemailRepository $voicemailRepository
+        private EntityTools $entityTools,
+        private VoicemailRepository $voicemailRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->voicemailRepository = $voicemailRepository;
     }
 
     public static function getSubscribedEvents()

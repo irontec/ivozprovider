@@ -17,29 +17,11 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
 {
     const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var CsvExporter
-     */
-    protected $csvExporter;
-
-    /**
-     * @var Filesystem
-     */
-    protected $fs;
-
     public function __construct(
-        EntityTools $entityTools,
-        CsvExporter $csvExporter,
-        Filesystem $fs
+        private EntityTools $entityTools,
+        private CsvExporter $csvExporter,
+        private Filesystem $fs
     ) {
-        $this->entityTools = $entityTools;
-        $this->csvExporter = $csvExporter;
-        $this->fs = $fs;
     }
 
     public static function getSubscribedEvents()

@@ -19,14 +19,9 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
     const NO_ANSWER_CALL_FORWARD_EXCEPTION = 30003;
     const USER_NOT_REGISTERED_CALL_FORWARD_EXCEPTION = 30004;
 
-    /**
-     * @var CallForwardSettingRepository
-     */
-    protected $callForwardSettingRepository;
-
-    public function __construct(CallForwardSettingRepository $callForwardSettingRepository)
-    {
-        $this->callForwardSettingRepository = $callForwardSettingRepository;
+    public function __construct(
+        private CallForwardSettingRepository $callForwardSettingRepository
+    ) {
     }
 
     public static function getSubscribedEvents()

@@ -13,24 +13,13 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
 {
     const PRE_PERSIST_PRIORITY = CheckValidity::PRE_PERSIST_PRIORITY - 1;
 
-    protected $billableCallRepository;
-    protected $rerateCallService;
-    protected $migrateFromTrunksCdr;
-    protected $entityTools;
-    protected $trunksClient;
-
     public function __construct(
-        BillableCallRepository $billableCallRepository,
-        RerateCallServiceInterface $rerateCallService,
-        MigrateFromTrunksCdr $migrateFromTrunksCdr,
-        EntityTools $entityTools,
-        TrunksClientInterface $trunksClient
+        private BillableCallRepository $billableCallRepository,
+        private RerateCallServiceInterface $rerateCallService,
+        private MigrateFromTrunksCdr $migrateFromTrunksCdr,
+        private EntityTools $entityTools,
+        private TrunksClientInterface $trunksClient
     ) {
-        $this->billableCallRepository = $billableCallRepository;
-        $this->rerateCallService = $rerateCallService;
-        $this->migrateFromTrunksCdr = $migrateFromTrunksCdr;
-        $this->entityTools = $entityTools;
-        $this->trunksClient = $trunksClient;
     }
 
     public static function getSubscribedEvents()

@@ -6,19 +6,11 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 
-/**
- * Class NextExecutionResolver
- */
 class NextExecutionResolver implements InvoiceSchedulerLifecycleEventHandlerInterface
 {
     use NextExecutionResolverTrait;
 
     const PRE_PERSIST_PRIORITY = LifecycleEventHandlerInterface::PRIORITY_NORMAL;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
 
     public function __construct(
         EntityTools $entityTools

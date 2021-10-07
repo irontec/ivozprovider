@@ -9,18 +9,11 @@ use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 
 class AvoidRemovingInUseAddresses implements ProxyTrunksRelBrandLifecycleEventHandlerInterface
 {
-    protected $entityTools;
-    protected $carrierRepository;
-    protected $ddiProviderRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        CarrierRepository $carrierRepository,
-        DdiProviderRepository $ddiProviderRepository
+        private EntityTools $entityTools,
+        private CarrierRepository $carrierRepository,
+        private DdiProviderRepository $ddiProviderRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->carrierRepository = $carrierRepository;
-        $this->ddiProviderRepository = $ddiProviderRepository;
     }
 
     public static function getSubscribedEvents()

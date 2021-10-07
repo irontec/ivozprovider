@@ -13,15 +13,9 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
 {
     const POST_PERSIST_PRIORITY = 10;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

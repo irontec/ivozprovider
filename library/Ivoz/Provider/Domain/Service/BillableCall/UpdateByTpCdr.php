@@ -15,24 +15,13 @@ use Psr\Log\LoggerInterface;
 
 class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
 {
-    protected $tpCdrRepository;
-    protected $updateDtoByDefaultRunTpCdr;
-    protected $processExternalCdr;
-    protected $entityTools;
-    protected $logger;
-
     public function __construct(
-        TpCdrRepository $tpCdrRepository,
-        UpdateDtoByDefaultRunTpCdr $updateDtoByDefaultRunTpCdr,
-        ProcessExternalCdr $processExternalCdr,
-        EntityTools $entityTools,
-        LoggerInterface $logger
+        private TpCdrRepository $tpCdrRepository,
+        private UpdateDtoByDefaultRunTpCdr $updateDtoByDefaultRunTpCdr,
+        private ProcessExternalCdr $processExternalCdr,
+        private EntityTools $entityTools,
+        private LoggerInterface $logger
     ) {
-        $this->tpCdrRepository = $tpCdrRepository;
-        $this->updateDtoByDefaultRunTpCdr = $updateDtoByDefaultRunTpCdr;
-        $this->processExternalCdr = $processExternalCdr;
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
     }
 
     /**

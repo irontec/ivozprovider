@@ -4,31 +4,17 @@ namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
-use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Service\ResidentialDevice\ResidentialDeviceLifecycleEventHandlerInterface;
 
 class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var PsEndpointRepository
-     */
-    protected $psEndpointRepository;
-
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        PsEndpointRepository $psEndpointRepository
+        private EntityTools $entityTools,
+        private PsEndpointRepository $psEndpointRepository
     ) {
-        //@todo use entityTools instead
-        $this->entityPersister = $entityPersister;
-        $this->psEndpointRepository = $psEndpointRepository;
     }
 
     public static function getSubscribedEvents()
@@ -89,6 +75,6 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
             $endpointDto->setDirectMedia('yes');
         }
 
-        $this->entityPersister->persistDto($endpointDto, $endpoint);
+        $this->entityTools->persistDto($endpointDto, $endpoint);
     }
 }

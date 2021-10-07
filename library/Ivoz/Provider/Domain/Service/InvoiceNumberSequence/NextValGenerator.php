@@ -10,12 +10,9 @@ use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterf
  */
 class NextValGenerator
 {
-    protected $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     /**

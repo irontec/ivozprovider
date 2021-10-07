@@ -16,29 +16,11 @@ use Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist
  */
 class UpdateByRoutingPatternAndCountry
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var RoutingPatternGroupRepository
-     */
-    protected $routingPatternGroupRepository;
-
-    /**
-     * @var CreateAndPersistRoutingPatternGroupsRelPattern
-     */
-    protected $createAndPersistRoutingPatternGroupsRelPattern;
-
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        RoutingPatternGroupRepository $routingPatternGroupRepository,
-        CreateAndPersistRoutingPatternGroupsRelPattern $createAndPersistRoutingPatternGroupsRelPattern
+        private EntityPersisterInterface $entityPersister,
+        private RoutingPatternGroupRepository $routingPatternGroupRepository,
+        private CreateAndPersistRoutingPatternGroupsRelPattern $createAndPersistRoutingPatternGroupsRelPattern
     ) {
-        $this->entityPersister = $entityPersister;
-        $this->routingPatternGroupRepository = $routingPatternGroupRepository;
-        $this->createAndPersistRoutingPatternGroupsRelPattern = $createAndPersistRoutingPatternGroupsRelPattern;
     }
 
     /**

@@ -6,6 +6,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
@@ -18,24 +19,13 @@ use Ivoz\Provider\Domain\Model\User\UserRepository;
 
 class CreateOrUpdateByTrunksCdr
 {
-    protected $entityTools;
-    protected $retailAccountRepository;
-    protected $residentialDeviceRepository;
-    protected $userRepository;
-    protected $friendRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        RetailAccountRepository $retailAccountRepository,
-        ResidentialDeviceRepository $residentialDeviceRepository,
-        UserRepository $userRepository,
-        FriendRepository $friendRepository
+        private EntityTools $entityTools,
+        private RetailAccountRepository $retailAccountRepository,
+        private ResidentialDeviceRepository $residentialDeviceRepository,
+        private UserRepository $userRepository,
+        private FriendRepository $friendRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->retailAccountRepository = $retailAccountRepository;
-        $this->residentialDeviceRepository = $residentialDeviceRepository;
-        $this->userRepository = $userRepository;
-        $this->friendRepository = $friendRepository;
     }
 
     /**
@@ -48,6 +38,7 @@ class CreateOrUpdateByTrunksCdr
         TrunksCdrInterface $trunksCdr,
         BillableCallInterface $billableCall = null
     ) {
+        /** @var BillableCallDto $billableCallDto */
         $billableCallDto = $billableCall
             ? $this->entityTools->entityToDto($billableCall)
             : BillableCall::createDto();

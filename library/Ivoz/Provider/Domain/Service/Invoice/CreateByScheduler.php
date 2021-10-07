@@ -15,24 +15,13 @@ use Psr\Log\LoggerInterface;
 
 class CreateByScheduler
 {
-    private $entityTools;
-    protected $logger;
-    protected $fixedCostsRelInvoiceByScheduler;
-    protected $updateLastExecutionDate;
-    protected $setExecutionError;
-
     public function __construct(
-        EntityTools $entityTools,
-        LoggerInterface $logger,
-        FixedCostsRelInvoiceByScheduler $fixedCostsRelInvoiceByScheduler,
-        UpdateLastExecutionDate $updateLastExecutionDate,
-        SetExecutionError $setExecutionError
+        private EntityTools $entityTools,
+        private LoggerInterface $logger,
+        private FixedCostsRelInvoiceByScheduler $fixedCostsRelInvoiceByScheduler,
+        private UpdateLastExecutionDate $updateLastExecutionDate,
+        private SetExecutionError $setExecutionError
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->fixedCostsRelInvoiceByScheduler = $fixedCostsRelInvoiceByScheduler;
-        $this->updateLastExecutionDate = $updateLastExecutionDate;
-        $this->setExecutionError = $setExecutionError;
     }
 
     /**

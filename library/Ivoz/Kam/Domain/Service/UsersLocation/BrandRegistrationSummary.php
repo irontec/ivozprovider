@@ -13,30 +13,15 @@ use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
 
 class BrandRegistrationSummary
 {
-    protected $domainRepository;
-    protected $usersLocationRepository;
-    protected $companyRepository;
-    protected $terminalRepository;
-    protected $friendRepository;
-    protected $residentialDeviceRepository;
-    protected $retailAccountRepository;
-
     public function __construct(
-        DomainRepository $domainRepository,
-        UsersLocationRepository $usersLocationRepository,
-        CompanyRepository $companyRepository,
-        TerminalRepository $terminalRepository,
-        FriendRepository $friendRepository,
-        ResidentialDeviceRepository $residentialDeviceRepository,
-        RetailAccountRepository $retailAccountRepository
+        private DomainRepository $domainRepository,
+        private UsersLocationRepository $usersLocationRepository,
+        private CompanyRepository $companyRepository,
+        private TerminalRepository $terminalRepository,
+        private FriendRepository $friendRepository,
+        private ResidentialDeviceRepository $residentialDeviceRepository,
+        private RetailAccountRepository $retailAccountRepository
     ) {
-        $this->domainRepository = $domainRepository;
-        $this->usersLocationRepository = $usersLocationRepository;
-        $this->companyRepository = $companyRepository;
-        $this->terminalRepository = $terminalRepository;
-        $this->friendRepository = $friendRepository;
-        $this->residentialDeviceRepository = $residentialDeviceRepository;
-        $this->retailAccountRepository = $retailAccountRepository;
     }
 
     /**

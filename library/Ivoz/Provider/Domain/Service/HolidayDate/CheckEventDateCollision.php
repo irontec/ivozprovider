@@ -13,15 +13,9 @@ class CheckEventDateCollision implements HolidayDateLifecycleEventHandlerInterfa
 {
     const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var HolidayDateRepository
-     */
-    protected $holidayDateRepository;
-
     public function __construct(
-        HolidayDateRepository $holidayDateRepository
+        private HolidayDateRepository $holidayDateRepository
     ) {
-        $this->holidayDateRepository = $holidayDateRepository;
     }
 
     public static function getSubscribedEvents()

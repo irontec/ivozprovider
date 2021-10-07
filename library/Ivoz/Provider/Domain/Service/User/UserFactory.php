@@ -9,15 +9,10 @@ use Ivoz\Provider\Domain\Model\User\UserRepository;
 
 class UserFactory
 {
-    protected $userRepository;
-    protected $entityTools;
-
     public function __construct(
-        UserRepository $userRepository,
-        EntityTools $entityTools
+        private UserRepository $userRepository,
+        private EntityTools $entityTools
     ) {
-        $this->userRepository = $userRepository;
-        $this->entityTools = $entityTools;
     }
 
     /**
@@ -46,13 +41,12 @@ class UserFactory
                 );
         }
 
+        /** @var UserDto $userDto */
         $userDto = $user instanceof UserInterface
             ? $this->entityTools->entityToDto($user)
             : new UserDto();
 
-        $active = $user instanceof UserInterface
-            ? $user->getActive()
-            : false;
+        $active = $user instanceof UserInterface && $user->getActive();
 
         $userDto
             ->setCompanyId($companyId)

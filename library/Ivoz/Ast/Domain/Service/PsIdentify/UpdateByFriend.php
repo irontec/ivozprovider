@@ -9,19 +9,9 @@ use Ivoz\Provider\Domain\Service\Friend\FriendLifecycleEventHandlerInterface;
 
 class UpdateByFriend implements FriendLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * UpdateByFriend constructor.
-     * @param EntityTools $entityTools
-     */
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

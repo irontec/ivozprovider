@@ -7,22 +7,10 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
 {
-    /**
-     * @var string
-     */
-    protected $localStoragePath;
-
-    /**
-     * @var Filesystem
-     */
-    protected $fs;
-
     public function __construct(
-        string $localStoragePath,
-        Filesystem $fs
+        private string $localStoragePath,
+        private Filesystem $fs
     ) {
-        $this->localStoragePath = $localStoragePath;
-        $this->fs = $fs;
     }
 
     public static function getSubscribedEvents()

@@ -12,28 +12,19 @@ class Unban implements BannedAddressLifecycleEventHandlerInterface
 {
     const PRE_REMOVE_PRIORITY = self::PRIORITY_HIGH;
 
-    protected $entityTools;
-    protected $bannedAddressRepository;
-    protected $kamUsersClient;
-    protected $logger;
+    public function __construct(
+        private EntityTools $entityTools,
+        private BannedAddressRepository $bannedAddressRepository,
+        private UsersClient $kamUsersClient,
+        private LoggerInterface $logger
+    ) {
+    }
 
     public static function getSubscribedEvents()
     {
         return [
             self::EVENT_PRE_REMOVE => self::PRE_REMOVE_PRIORITY
         ];
-    }
-
-    public function __construct(
-        EntityTools $entityTools,
-        BannedAddressRepository $bannedAddressRepository,
-        UsersClient $kamUsersClient,
-        LoggerInterface $logger
-    ) {
-        $this->entityTools = $entityTools;
-        $this->bannedAddressRepository = $bannedAddressRepository;
-        $this->kamUsersClient = $kamUsersClient;
-        $this->logger = $logger;
     }
 
     public function execute(BannedAddressInterface $bannedAddress)

@@ -17,28 +17,10 @@ class RemoveByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
 {
     const POST_PERSIST_PRIORITY = UpdateByOutgoingRouting::POST_PERSIST_PRIORITY + 10;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var TrunksLcrRuleRepository
-     */
-    protected $trunksLcrRuleRepository;
-
-    /**
-     * RemoveByOutgoingRouting constructor.
-     *
-     * @param EntityTools $entityTools
-     * @param TrunksLcrRuleRepository $trunksLcrRuleRepository
-     */
     public function __construct(
-        EntityTools $entityTools,
-        TrunksLcrRuleRepository $trunksLcrRuleRepository
+        private EntityTools $entityTools,
+        private TrunksLcrRuleRepository $trunksLcrRuleRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->trunksLcrRuleRepository = $trunksLcrRuleRepository;
     }
 
     public static function getSubscribedEvents()

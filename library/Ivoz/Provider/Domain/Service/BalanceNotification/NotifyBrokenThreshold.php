@@ -16,36 +16,12 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateReposito
 
 class NotifyBrokenThreshold implements DomainEventSubscriberInterface
 {
-    /**
-     * @var NotificationTemplateRepository
-     */
-    protected $notificationTemplateRepository;
-
-    /**
-     * @var BalanceNotificationRepository
-     */
-    protected $balanceNotificationRepository;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var MailerClientInterface
-     */
-    protected $mailer;
-
     public function __construct(
-        NotificationTemplateRepository $notificationTemplateRepository,
-        BalanceNotificationRepository $balanceNotificationRepository,
-        EntityTools $entityTools,
-        MailerClientInterface $mailer
+        private NotificationTemplateRepository $notificationTemplateRepository,
+        private BalanceNotificationRepository $balanceNotificationRepository,
+        private EntityTools $entityTools,
+        private MailerClientInterface $mailer
     ) {
-        $this->notificationTemplateRepository = $notificationTemplateRepository;
-        $this->balanceNotificationRepository = $balanceNotificationRepository;
-        $this->entityTools = $entityTools;
-        $this->mailer = $mailer;
     }
 
     /**

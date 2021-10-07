@@ -15,7 +15,7 @@ services:
       $client: '@Ivoz\Cgr\Infrastructure\Cgrates\Service\CarrierBalanceService'
       $syncBalanceService: '@Ivoz\Provider\Domain\Service\Carrier\SyncBalances'
       $carrierRepository: '@Ivoz\Provider\Domain\Model\Carrier\CarrierRepository'
-      $createByCarrier: '@Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCarrier'
+      $createBalanceMovementByCarrier: '@Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCarrier'
 
   Ivoz\Provider\Domain\Service\Carrier\IncrementBalance:
     public: true

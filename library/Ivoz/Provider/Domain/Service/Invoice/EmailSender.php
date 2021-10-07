@@ -12,33 +12,15 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
     const ON_COMMIT_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_LOW;
 
     /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var \Swift_Mailer
-     */
-    protected $mailer;
-
-    /**
-     * @var NotificationTemplateRepository
-     */
-    protected $notificationTemplateRepository;
-
-    /**
      * Sender constructor.
      * @param EntityTools $entityTools
      * @param \Swift_Mailer $mailer
      */
     public function __construct(
-        EntityTools $entityTools,
-        \Swift_Mailer $mailer,
-        NotificationTemplateRepository $notificationTemplateRepository
+        private EntityTools $entityTools,
+        private \Swift_Mailer $mailer,
+        private NotificationTemplateRepository $notificationTemplateRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->mailer = $mailer;
-        $this->notificationTemplateRepository = $notificationTemplateRepository;
     }
 
     public static function getSubscribedEvents()

@@ -11,15 +11,10 @@ final class RemoveAcls implements AdministratorLifecycleEventHandlerInterface
 {
     const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    private $administratorRelPublicEntityRepository;
-    private $entityTools;
-
     public function __construct(
-        AdministratorRelPublicEntityRepository $administratorRelPublicEntityRepository,
-        EntityTools $entityTools
+        private AdministratorRelPublicEntityRepository $administratorRelPublicEntityRepository,
+        private EntityTools $entityTools
     ) {
-        $this->administratorRelPublicEntityRepository = $administratorRelPublicEntityRepository;
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

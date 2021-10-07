@@ -12,15 +12,9 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
  */
 class GenerateOutRules
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
     public function __construct(
-        EntityPersisterInterface $entityPersister
+        private EntityPersisterInterface $entityPersister
     ) {
-        $this->entityPersister = $entityPersister;
     }
 
     /**

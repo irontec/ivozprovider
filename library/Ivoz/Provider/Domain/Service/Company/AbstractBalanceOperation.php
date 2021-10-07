@@ -10,29 +10,16 @@ use Symfony\Bridge\Monolog\Logger;
 
 abstract class AbstractBalanceOperation
 {
-
-    protected $entityTools;
-    protected $logger;
-    protected $client;
-    protected $companyRepository;
-    protected $syncBalanceService;
-    protected $lastError;
-    protected $createBalanceMovementByCompany;
+    private string $lastError;
 
     public function __construct(
-        EntityTools $entityTools,
-        Logger $logger,
-        CompanyBalanceServiceInterface $client,
-        CompanyRepository $companyRepository,
-        SyncBalances $syncBalanceService,
-        CreateByCompany $createByCompany
+        protected EntityTools $entityTools,
+        protected Logger $logger,
+        protected CompanyBalanceServiceInterface $client,
+        protected CompanyRepository $companyRepository,
+        protected SyncBalances $syncBalanceService,
+        protected CreateByCompany $createBalanceMovementByCompany
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->client = $client;
-        $this->companyRepository = $companyRepository;
-        $this->syncBalanceService = $syncBalanceService;
-        $this->createBalanceMovementByCompany = $createByCompany;
     }
 
     /**

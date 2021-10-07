@@ -14,15 +14,10 @@ class DeleteProtection implements ProxyTrunkLifecycleEventHandlerInterface
 {
     const PRE_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
 
-    protected $carrierRepository;
-    protected $ddiProviderRepository;
-
     public function __construct(
-        CarrierRepository $carrierRepository,
-        DdiProviderRepository $ddiProviderRepository
+        private CarrierRepository $carrierRepository,
+        private DdiProviderRepository $ddiProviderRepository
     ) {
-        $this->carrierRepository = $carrierRepository;
-        $this->ddiProviderRepository = $ddiProviderRepository;
     }
 
     public static function getSubscribedEvents()

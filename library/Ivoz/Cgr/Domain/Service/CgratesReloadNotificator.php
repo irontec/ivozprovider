@@ -9,12 +9,9 @@ abstract class CgratesReloadNotificator implements LifecycleEventHandlerInterfac
 {
     const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
-    protected $cgratesReloadJob;
-
     public function __construct(
-        RaterReloadInterface $cgratesReloadJob
+        private RaterReloadInterface $cgratesReloadJob
     ) {
-        $this->cgratesReloadJob = $cgratesReloadJob;
     }
 
     /**

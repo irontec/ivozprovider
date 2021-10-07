@@ -18,22 +18,10 @@ use Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleEventHandlerInterfa
  */
 class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
 {
-    /**
-     * @var UserRepository
-     */
-    protected $userRepository;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
     public function __construct(
-        UserRepository $userRepository,
-        EntityTools $entityTools
+        private UserRepository $userRepository,
+        private EntityTools $entityTools
     ) {
-        $this->userRepository = $userRepository;
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

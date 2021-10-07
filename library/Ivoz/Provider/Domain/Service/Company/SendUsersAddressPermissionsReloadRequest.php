@@ -9,12 +9,9 @@ class SendUsersAddressPermissionsReloadRequest implements CompanyLifecycleEventH
 {
     const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
-    protected $usersClient;
-
     public function __construct(
-        UsersClientInterface $usersClient
+        private UsersClientInterface $usersClient
     ) {
-        $this->usersClient = $usersClient;
     }
 
     public static function getSubscribedEvents()
