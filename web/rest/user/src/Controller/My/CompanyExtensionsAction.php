@@ -3,12 +3,10 @@
 namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class CompanyExtensionsAction
 {
@@ -34,7 +32,6 @@ class CompanyExtensionsAction
         /** @var UserInterface $user */
         $user = $token->getUser();
 
-        /** @var CompanyInterface $company */
         $company = $user->getCompany();
 
         return $this

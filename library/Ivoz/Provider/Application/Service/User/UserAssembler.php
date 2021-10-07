@@ -24,7 +24,6 @@ class UserAssembler implements CustomEntityAssemblerInterface
     ) {
         Assertion::isInstanceOf($user, UserInterface::class);
 
-        /** @var UserDto $userDto */
         $oldPass = $userDto->getOldPass();
         if ($oldPass && !password_verify($oldPass, $user->getPass())) {
             throw new \DomainException('Invalid password');

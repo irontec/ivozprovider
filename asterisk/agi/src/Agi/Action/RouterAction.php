@@ -482,7 +482,6 @@ class RouterAction
         // Look for the friend that handles this destination
         $caller = $this->channelInfo->getChannelCaller();
 
-        /** @var CompanyInterface $company */
         $company = $caller->getCompany();
         $friend = $company->getFriend($this->routeFriendDestination);
 
