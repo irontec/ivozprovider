@@ -384,7 +384,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     {
         $query =
             'SELECT MIN(B.startTime) FROM '
-            . BillableCall::Class
+            . BillableCall::class
             . ' B WHERE B.id > %d';
 
         $minStartTime = sprintf(
@@ -411,7 +411,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     {
         $query =
             'SELECT MAX(B.id) FROM '
-            . BillableCall::Class
+            . BillableCall::class
             . ' B WHERE B.startTime <= \'%s\''
             . ' AND B.id > %d';
 
@@ -443,7 +443,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     {
         $query = sprintf(
             'SELECT B.id FROM '
-            . BillableCall::Class
+            . BillableCall::class
             . ' B WHERE B.id > %d'
             . ' AND B.id <= %d'
             . ' ORDER BY B.id ASC',
