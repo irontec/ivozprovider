@@ -27,7 +27,7 @@ class InvoiceSchedulerDoctrineRepository extends ServiceEntityRepository impleme
     public function getPendingSchedulers()
     {
         $now = new \DateTime(
-            null,
+            'now',
             new \DateTimeZone('UTC')
         );
 

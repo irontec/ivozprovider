@@ -49,7 +49,7 @@ class InvoiceNumberSequence extends InvoiceNumberSequenceAbstract implements Inv
     {
         $iteration = $this->getIteration() + 1;
         $sequence = str_pad(
-            $this->getIncrement() * $iteration,
+            (string) ($this->getIncrement() * $iteration),
             $this->getSequenceLength(),
             '0',
             STR_PAD_LEFT

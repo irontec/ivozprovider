@@ -29,7 +29,7 @@ class UpdateLastExecutionDate
         $invoiceSchedulerDto
             ->setLastExecution(
                 new \DateTime(
-                    null,
+                    'now',
                     new \DateTimeZone('UTC')
                 )
             );

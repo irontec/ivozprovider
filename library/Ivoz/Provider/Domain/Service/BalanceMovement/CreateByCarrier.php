@@ -15,7 +15,7 @@ class CreateByCarrier
 
     public function execute(
         CarrierInterface $carrier,
-        $amount,
+        ?float $amount,
         $balance
     ) {
         // Store this transaction in a BalanceMovement

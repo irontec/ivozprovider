@@ -109,7 +109,7 @@ class BillingService implements BillingServiceInterface
 
         return SimulatedCall::fromCgRatesResponse(
             $stringResponse,
-            substr($payload['Usage'], 0, -1),
+            (int) substr($payload['Usage'], 0, -1),
             $this->entityTools
         );
     }

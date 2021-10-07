@@ -3,7 +3,7 @@
 namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
@@ -35,6 +35,7 @@ class CompanyAssistantsAction
             throw new ResourceClassNotFoundException('User not found');
         }
 
+        /** @var UserInterface $user */
         $user = $token->getUser();
 
         return $this

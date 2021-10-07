@@ -29,13 +29,7 @@ abstract class AbstractBalanceOperation
      */
     abstract public function execute($companyId, float $amount);
 
-    /**
-     * @param string $amount
-     * @param array $response
-     * @param CompanyInterface $company
-     * @return bool|mixed
-     */
-    protected function handleResponse($amount, array $response, CompanyInterface $company)
+    protected function handleResponse(?float $amount, array $response, CompanyInterface $company): bool
     {
         $success = false;
         if (isset($response['error']) && $response['error']) {

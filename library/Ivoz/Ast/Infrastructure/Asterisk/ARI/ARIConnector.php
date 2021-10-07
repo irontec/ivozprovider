@@ -75,7 +75,7 @@ class ARIConnector
      * handler. In case of error, curl_error can be used to retrieve a
      * descriptive problem text.
      *
-     * @param resource $ch cURL handler previusly initializated
+     * @param \CurlHandle $ch cURL handler previusly initializated
      * @param string $url HTTP URL
      * @param array $postdata key/value array to be converted into JSON POST body
      * @return string|bool true on success or false on failure. However, if the CURLOPT_RETURNTRANSFER

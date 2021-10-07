@@ -15,7 +15,7 @@ class CreateByCompany
 
     public function execute(
         CompanyInterface $company,
-        $amount,
+        ?float $amount,
         $balance
     ) {
         // Store this transaction in a BalanceMovement

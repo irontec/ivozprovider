@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Doctrine\Persistence\ManagerRegistry;

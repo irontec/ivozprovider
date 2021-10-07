@@ -120,7 +120,10 @@ class AliasImporter
 
         $extension = $this
             ->extensionRepository
-            ->findCompanyExtension($companyId, $extensionNumber);
+            ->findCompanyExtension(
+                $companyId,
+                $extensionNumber
+            );
 
         if (!is_null($extension)) {
             $this->assertExtensionCanBeUpdated(
@@ -161,7 +164,7 @@ class AliasImporter
     }
 
     private function assertExtensionCanBeUpdated(
-        int $extensionNumber,
+        string $extensionNumber,
         ExtensionInterface $extension
     ) {
         $errorMsg =

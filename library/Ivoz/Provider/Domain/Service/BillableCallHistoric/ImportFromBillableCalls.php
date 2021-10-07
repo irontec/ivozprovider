@@ -68,7 +68,7 @@ class ImportFromBillableCalls
     private function getRotateUntilId(int $fromId): int
     {
         $utc =  new \DateTimeZone('UTC');
-        $now = new \DateTime(null, $utc);
+        $now = new \DateTime('now', $utc);
         $yearAgo = (clone $now)->modify('-1 year');
 
         $fromDate = $this->billableCallRepository->getMinStartTime($fromId);
