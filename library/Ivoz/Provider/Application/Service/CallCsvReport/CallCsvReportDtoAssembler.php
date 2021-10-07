@@ -12,12 +12,9 @@ use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
 
 class CallCsvReportDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $storagePathResolver;
-
     public function __construct(
-        StoragePathResolverCollection $storagePathResolver
+        private StoragePathResolverCollection $storagePathResolver
     ) {
-        $this->storagePathResolver = $storagePathResolver;
     }
 
     /**

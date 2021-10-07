@@ -19,30 +19,17 @@ class Multimedia
 {
     use RegisterCommandTrait;
 
-    private $eventPublisher;
-    private $requestId;
-    private $em;
-    private $entityTools;
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
-        EntityManagerInterface $em,
-        EntityTools $entityTools,
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        Logger $logger
+        private EntityManagerInterface $em,
+        private EntityTools $entityTools,
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private Logger $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->em = $em;
-        $this->entityTools = $entityTools;
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
     }
 
     public function encode()

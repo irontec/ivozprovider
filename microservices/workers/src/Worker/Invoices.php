@@ -21,36 +21,19 @@ class Invoices
 {
     use RegisterCommandTrait;
 
-    private $eventPublisher;
-    private $requestId;
-    private $entityTools;
-    private $invoiceRepository;
-    private $billableCallRepository;
-    private $generator;
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
-        EntityTools $entityTools,
-        InvoiceRepository $invoiceRepository,
-        BillableCallRepository $billableCallRepository,
-        Generator $generator,
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        LoggerInterface $logger
+        private EntityTools $entityTools,
+        private InvoiceRepository $invoiceRepository,
+        private BillableCallRepository $billableCallRepository,
+        private Generator $generator,
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private LoggerInterface $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->entityTools = $entityTools;
-        $this->invoiceRepository = $invoiceRepository;
-        $this->billableCallRepository = $billableCallRepository;
-        $this->generator = $generator;
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
     }
 
     public function create()

@@ -9,22 +9,10 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class CallForwardSettingsAction
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    protected $tokenStorage;
-
-    /**
-     * @var CallForwardSettingRepository
-     */
-    protected $callForwardSettingRepository;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        CallForwardSettingRepository $callForwardSettingRepository
+        private TokenStorageInterface $tokenStorage,
+        private CallForwardSettingRepository $callForwardSettingRepository
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->callForwardSettingRepository = $callForwardSettingRepository;
     }
 
     public function __invoke()

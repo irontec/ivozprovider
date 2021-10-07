@@ -12,18 +12,11 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class ActiveCallsAction
 {
-    protected $tokenStorage;
-    protected $requestStack;
-    protected $apiClient;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        RequestStack $requestStack,
-        TrunksClientInterface $apiClient
+        private TokenStorageInterface $tokenStorage,
+        private RequestStack $requestStack,
+        private TrunksClientInterface $apiClient
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->requestStack = $requestStack;
-        $this->apiClient = $apiClient;
     }
 
     public function __invoke()

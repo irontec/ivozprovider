@@ -12,12 +12,9 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 class InvoiceDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $storagePathResolver;
-
     public function __construct(
-        StoragePathResolverCollection $storagePathResolver
+        private StoragePathResolverCollection $storagePathResolver
     ) {
-        $this->storagePathResolver = $storagePathResolver;
     }
 
     /**

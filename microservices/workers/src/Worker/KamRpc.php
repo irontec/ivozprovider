@@ -20,28 +20,19 @@ class KamRpc
 {
     use RegisterCommandTrait;
 
-    private $eventPublisher;
-    private $requestId;
-    private $em;
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
+    /** @todo retryInterval should be a constant */
     private $retryInterval = 180;
 
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
-        EntityManagerInterface $em,
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        Logger $logger
+        private EntityManagerInterface $em,
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private Logger $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->em = $em;
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
     }
 
     public function send()

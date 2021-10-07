@@ -11,18 +11,11 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class PostCallForwardSettingsAction
 {
-    protected $tokenStorage;
-    protected $serializer;
-    protected $requestStack;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        SerializerInterface $serializer,
-        RequestStack $requestStack
+        private TokenStorageInterface $tokenStorage,
+        private SerializerInterface $serializer,
+        private RequestStack $requestStack
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->serializer = $serializer;
-        $this->requestStack = $requestStack;
     }
 
     public function __invoke()

@@ -19,26 +19,14 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
 
 class CallHistoryAction
 {
-    protected $tokenStorage;
-
-    /**
-     * @var EntityRepository | UsersCdrRepository
-     */
-    protected $usersCdrRepository;
-
-    protected $collectionExtensions;
-
     protected $request;
 
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        UsersCdrRepository $usersCdrRepository,
-        CollectionExtensionList $collectionExtensions,
+        private TokenStorageInterface $tokenStorage,
+        private UsersCdrRepository $usersCdrRepository,
+        private CollectionExtensionList $collectionExtensions,
         RequestStack $requestStack
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->usersCdrRepository = $usersCdrRepository;
-        $this->collectionExtensions = $collectionExtensions;
         $this->request = $requestStack->getCurrentRequest();
     }
 

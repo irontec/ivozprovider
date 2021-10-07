@@ -18,36 +18,12 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class RatingPlanPricesAction
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    protected $tokenStorage;
-
-    /**
-     * @var RatingPlanGroupRepository
-     */
-    protected $ratingPlanGroupRepository;
-
-    /**
-     * @var CollectionExtensionList
-     */
-    protected $collectionExtensions;
-
-    /**
-     * @var RequestStack
-     */
-    protected $requestStack;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        RatingPlanGroupRepository $ratingPlanGroupRepository,
-        CollectionExtensionList $collectionExtensions,
-        RequestStack $requestStack
+        private TokenStorageInterface $tokenStorage,
+        private RatingPlanGroupRepository $ratingPlanGroupRepository,
+        private CollectionExtensionList $collectionExtensions,
+        private RequestStack $requestStack
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->ratingPlanGroupRepository = $ratingPlanGroupRepository;
-        $this->collectionExtensions = $collectionExtensions;
-        $this->requestStack = $requestStack;
     }
 
     public function __invoke()

@@ -11,21 +11,14 @@ class BillableCallController
 {
     use RegisterCommandTrait;
 
-    private $billableCallFromTrunksCdr;
-    private $eventPublisher;
-    private $requestId;
-    private $logger;
-
     public function __construct(
-        BillableCallFromTrunksCdr $billableCallFromTrunksCdr,
+        private BillableCallFromTrunksCdr $billableCallFromTrunksCdr,
+        private LoggerInterface $logger,
         DomainEventPublisher $eventPublisher,
-        RequestId $requestId,
-        LoggerInterface $logger
+        RequestId $requestId
     ) {
-        $this->billableCallFromTrunksCdr = $billableCallFromTrunksCdr;
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->logger = $logger;
     }
 
     public function indexAction()

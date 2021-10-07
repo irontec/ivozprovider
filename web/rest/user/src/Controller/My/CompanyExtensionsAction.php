@@ -10,15 +10,10 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class CompanyExtensionsAction
 {
-    protected $tokenStorage;
-    protected $extensionRepository;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        ExtensionRepository $extensionRepository
+        private TokenStorageInterface $tokenStorage,
+        private ExtensionRepository $extensionRepository
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->extensionRepository = $extensionRepository;
     }
 
     public function __invoke()

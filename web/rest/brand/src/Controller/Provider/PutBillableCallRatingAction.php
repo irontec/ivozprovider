@@ -14,21 +14,12 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class PutBillableCallRatingAction
 {
-    protected $tokenStorage;
-    protected $serializer;
-    protected $requestStack;
-    protected $billableCallRepository;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        SerializerInterface $serializer,
-        RequestStack $requestStack,
-        BillableCallRepository $billableCallRepository
+        private TokenStorageInterface $tokenStorage,
+        private SerializerInterface $serializer,
+        private RequestStack $requestStack,
+        private BillableCallRepository $billableCallRepository
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->serializer = $serializer;
-        $this->requestStack = $requestStack;
-        $this->billableCallRepository = $billableCallRepository;
     }
 
     public function __invoke()

@@ -14,24 +14,13 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class PostUsersMassImportAction
 {
-    protected $tokenStorage;
-    protected $serializer;
-    protected $requestStack;
-    protected $companyRepository;
-    protected $syncFromCsv;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        SerializerInterface $serializer,
-        RequestStack $requestStack,
-        CompanyRepository $companyRepository,
-        SyncFromCsv $syncFromCsv
+        private TokenStorageInterface $tokenStorage,
+        private SerializerInterface $serializer,
+        private RequestStack $requestStack,
+        private CompanyRepository $companyRepository,
+        private SyncFromCsv $syncFromCsv
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->serializer = $serializer;
-        $this->requestStack = $requestStack;
-        $this->companyRepository = $companyRepository;
-        $this->syncFromCsv = $syncFromCsv;
     }
 
     public function __invoke()

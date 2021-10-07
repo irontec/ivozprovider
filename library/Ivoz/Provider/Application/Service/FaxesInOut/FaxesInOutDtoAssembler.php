@@ -12,12 +12,9 @@ use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 
 class FaxesInOutDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $storagePathResolver;
-
     public function __construct(
-        StoragePathResolverCollection $storagePathResolver
+        private StoragePathResolverCollection $storagePathResolver
     ) {
-        $this->storagePathResolver = $storagePathResolver;
     }
 
     /**

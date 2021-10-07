@@ -15,21 +15,12 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class RegistrationSummaryAction
 {
-    protected $requestStack;
-    protected $tokenStorage;
-    protected $companyRegistrationSummary;
-    protected $brandRegistrationSummary;
-
     public function __construct(
-        RequestStack $requestStack,
-        TokenStorageInterface $tokenStorage,
-        CompanyRegistrationSummary $companyRegistrationSummary,
-        BrandRegistrationSummary $brandRegistrationSummary
+        private RequestStack $requestStack,
+        private TokenStorageInterface $tokenStorage,
+        private CompanyRegistrationSummary $companyRegistrationSummary,
+        private BrandRegistrationSummary $brandRegistrationSummary
     ) {
-        $this->requestStack = $requestStack;
-        $this->tokenStorage = $tokenStorage;
-        $this->companyRegistrationSummary = $companyRegistrationSummary;
-        $this->brandRegistrationSummary = $brandRegistrationSummary;
     }
 
     public function __invoke()

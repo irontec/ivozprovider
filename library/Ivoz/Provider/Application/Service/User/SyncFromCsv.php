@@ -13,29 +13,14 @@ use Ivoz\Provider\Domain\Service\User\UserFactory;
 
 class SyncFromCsv
 {
-    private $userFactory;
-    private $terminalFactory;
-    private $extensionFactory;
-    private $ddiFactory;
-    private $entityTools;
-    private $csvStaticValidator;
-
     public function __construct(
-        CompanyRepository $companyRepository,
-        UserFactory $userFactory,
-        TerminalFactory $terminalFactory,
-        ExtensionFactory $extensionFactory,
-        DdiFactory $ddiFactory,
-        EntityTools $entityTools,
-        CsvStaticValidator $csvStaticValidator
+        private UserFactory $userFactory,
+        private TerminalFactory $terminalFactory,
+        private ExtensionFactory $extensionFactory,
+        private DdiFactory $ddiFactory,
+        private EntityTools $entityTools,
+        private CsvStaticValidator $csvStaticValidator
     ) {
-        $this->companyRepository = $companyRepository;
-        $this->userFactory = $userFactory;
-        $this->terminalFactory = $terminalFactory;
-        $this->extensionFactory = $extensionFactory;
-        $this->ddiFactory = $ddiFactory;
-        $this->entityTools = $entityTools;
-        $this->csvStaticValidator = $csvStaticValidator;
     }
 
     /**

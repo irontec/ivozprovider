@@ -11,25 +11,11 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class PutProfileAction
 {
-    protected $tokenStorage;
-
-    /**
-     * @var SerializerInterface|DecoderInterface|DenormalizerInterface
-     */
-    protected $serializer;
-    protected $requestStack;
-
-    /**
-     * PutProfileAction constructor.
-     */
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        SerializerInterface $serializer,
-        RequestStack $requestStack
+        private TokenStorageInterface $tokenStorage,
+        private SerializerInterface $serializer,
+        private RequestStack $requestStack
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->serializer = $serializer;
-        $this->requestStack = $requestStack;
     }
 
     public function __invoke()

@@ -11,15 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TokenExchangeAction
 {
-    private $requestStack;
-    private $exchangeToken;
-
     public function __construct(
-        RequestStack $requestStack,
-        ExchangeToken $exchangeToken
+        private RequestStack $requestStack,
+        private ExchangeToken $exchangeToken
     ) {
-        $this->requestStack = $requestStack;
-        $this->exchangeToken = $exchangeToken;
     }
 
     /**

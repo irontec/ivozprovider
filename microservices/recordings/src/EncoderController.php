@@ -8,18 +8,11 @@ use Service\Encoder;
 
 class EncoderController
 {
-    protected $encoder;
-    protected $domainEventPublisher;
-    protected $requestId;
-
     public function __construct(
-        Encoder $encoder,
-        DomainEventPublisher $domainEventPublisher,
-        RequestId $requestId
+        private Encoder $encoder,
+        private DomainEventPublisher $domainEventPublisher,
+        private RequestId $requestId
     ) {
-        $this->encoder = $encoder;
-        $this->domainEventPublisher = $domainEventPublisher;
-        $this->requestId = $requestId;
     }
 
     public function index()
