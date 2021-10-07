@@ -130,7 +130,7 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
             return $csv;
         }
 
-        foreach ($rows as $key => $val) {
+        foreach (array_keys($rows) as $key) {
             $rows[$key]['price'] = null;
         }
 

@@ -62,7 +62,7 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
             ->setRoundingMethod($roundingMethod)
             ->setRatesTag($destinationRate->getCgrRatesTag());
 
-        $tpDestinationRate = $this->entityTools->persistDto(
+        $this->entityTools->persistDto(
             $tpDestinationRateDto,
             $tpDestinationRate,
             true

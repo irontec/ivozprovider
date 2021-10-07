@@ -150,9 +150,7 @@ class UserDto extends UserDtoAbstract
      */
     public function denormalize(array $data, string $context, string $role = '')
     {
-        if ($role === 'ROLE_COMPANY_ADMIN') {
-            $contextProperties['companyId'] = 'company';
-        } else {
+        if ($role !== 'ROLE_COMPANY_ADMIN') {
             if (isset($data['oldPass'])) {
                 $this->setOldPass($data['oldPass']);
             } else {

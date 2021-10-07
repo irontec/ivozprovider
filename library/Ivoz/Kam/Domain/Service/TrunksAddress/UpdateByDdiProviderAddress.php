@@ -46,7 +46,7 @@ class UpdateByDdiProviderAddress implements DdiProviderAddressLifecycleEventHand
             ->setGrp($ddiProviderAddress->getDdiProvider()->getId())
             ->setDdiProviderAddressId($ddiProviderAddress->getId());
 
-        $trunksAddress = $this->entityTools->persistDto(
+        $this->entityTools->persistDto(
             $trunksAddressDto,
             $trunksAddress,
             true

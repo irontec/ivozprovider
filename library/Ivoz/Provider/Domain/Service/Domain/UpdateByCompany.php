@@ -60,7 +60,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
             ->setDomain($name)
             ->setDescription($company->getName() . ' proxyusers domain');
 
-        $domain = $this->entityTools
+        $this->entityTools
             ->persistDto(
                 $domainDto,
                 $domain,

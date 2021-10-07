@@ -53,7 +53,7 @@ class CreatedByDestination implements DestinationLifecycleEventHandlerInterface
             ->setDestinationId($destination->getId())
             ->setTag($destination->getCgrTag());
 
-        $tpDestination = $this->entityTools->persistDto(
+        $this->entityTools->persistDto(
             $tpDestinationDto,
             $tpDestination,
             true

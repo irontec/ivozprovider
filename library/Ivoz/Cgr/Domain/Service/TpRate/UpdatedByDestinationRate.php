@@ -55,7 +55,7 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
             ->setRateIncrement($destinationRate->getRateIncrement())
             ->setGroupIntervalStart($destinationRate->getGroupIntervalStart());
 
-        $tpRate = $this
+        $this
             ->entityTools
             ->persistDto(
                 $tpRateDto,

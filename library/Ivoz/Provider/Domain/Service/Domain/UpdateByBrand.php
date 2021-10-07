@@ -62,7 +62,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
             ->setDomain($domainUsers)
             ->setDescription($brand->getName() . " proxyusers domain");
 
-        $domain = $this
+        $this
             ->entityTools
             ->persistDto($domainDto, $domain, true);
 
