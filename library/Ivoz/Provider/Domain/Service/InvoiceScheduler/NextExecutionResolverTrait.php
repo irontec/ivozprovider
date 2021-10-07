@@ -26,7 +26,7 @@ trait NextExecutionResolverTrait
         $dateTimeZone = new \DateTimeZone($timeZone->getTz());
 
         $nextExecution = new \DateTime(
-            null,
+            'now',
             $dateTimeZone
         );
 

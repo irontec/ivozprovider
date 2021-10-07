@@ -91,7 +91,7 @@ class NotifyMaxDailyUsage
             )
             ->setLastSent(
                 new \DateTime(
-                    null,
+                    'now',
                     new \DateTimeZone('UTC')
                 )
             );

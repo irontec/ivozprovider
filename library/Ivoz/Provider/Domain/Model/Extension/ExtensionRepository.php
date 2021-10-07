@@ -15,9 +15,7 @@ interface ExtensionRepository extends ObjectRepository, Selectable
     public function findByCompanyId($id);
 
     /**
-     * @param int $companyId
-     * @param int $extensionNumber
      * @return ExtensionInterface | null
      */
-    public function findCompanyExtension(int $companyId, int $extensionNumber);
+    public function findCompanyExtension(int $companyId, string $extensionNumber);
 }

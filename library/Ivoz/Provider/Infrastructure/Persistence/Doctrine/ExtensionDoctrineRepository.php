@@ -36,11 +36,9 @@ class ExtensionDoctrineRepository extends ServiceEntityRepository implements Ext
     }
 
     /**
-     * @param int $companyId
-     * @param int $extensionNumber
      * @return ExtensionInterface | null
      */
-    public function findCompanyExtension(int $companyId, int $extensionNumber)
+    public function findCompanyExtension(int $companyId, string $extensionNumber)
     {
         /** @var ExtensionInterface | null $response */
         $response = $this->findOneBy([

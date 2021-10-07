@@ -95,7 +95,12 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
 
         /** @var BalanceNotificationDto $balanceNotificationDto */
         $balanceNotificationDto = $this->entityTools->entityToDto($balanceNotification);
-        $balanceNotificationDto->setLastSent(new \DateTime(null, new \DateTimeZone('UTC')));
+        $balanceNotificationDto->setLastSent(
+            new \DateTime(
+                'now',
+                new \DateTimeZone('UTC')
+            )
+        );
         $this->entityTools->persistDto(
             $balanceNotificationDto,
             $balanceNotification,

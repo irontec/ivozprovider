@@ -29,13 +29,7 @@ abstract class AbstractBalanceOperation
      */
     abstract public function execute($carrierId, float $amount);
 
-    /**
-     * @param string $amount
-     * @param array $response
-     * @param CarrierInterface $carrier
-     * @return boolean
-     */
-    protected function handleResponse($amount, array $response, CarrierInterface $carrier)
+    protected function handleResponse(?float $amount, array $response, CarrierInterface $carrier): bool
     {
         if (!empty($response['error'])) {
             $this->lastError = $response['error'];

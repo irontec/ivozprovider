@@ -34,7 +34,7 @@ class Rtpengine extends RtpengineAbstract implements RtpengineInterface
     {
         if (!is_null($mediaRelaySet)) {
             $this->setSetid(
-                (string) $mediaRelaySet->getId()
+                $mediaRelaySet->getId()
             );
         }
 

@@ -369,7 +369,7 @@ class ServiceAction
         if ($routeLock) {
             /** @var RouteLockDto $routeLockDto */
             $routeLockDto = $this->entityTools->entityToDto($routeLock);
-            $routeLockDto->setOpen(1);
+            $routeLockDto->setOpen(true);
             $this->entityTools->persistDto($routeLockDto, $routeLock);
             $this->printRouteLockStatus($routeLock);
         }
@@ -381,7 +381,7 @@ class ServiceAction
         if ($routeLock) {
             /** @var RouteLockDto $routeLockDto */
             $routeLockDto = $this->entityTools->entityToDto($routeLock);
-            $routeLockDto->setOpen(0);
+            $routeLockDto->setOpen(false);
             $this->entityTools->persistDto($routeLockDto, $routeLock);
             $this->printRouteLockStatus($routeLock);
         }
@@ -393,7 +393,9 @@ class ServiceAction
         if ($routeLock) {
             /** @var RouteLockDto $routeLockDto */
             $routeLockDto = $this->entityTools->entityToDto($routeLock);
-            $routeLockDto->setOpen($routeLock->isOpen() ? 0 : 1);
+            $routeLockDto->setOpen(
+                !$routeLock->isOpen()
+            );
             $this->entityTools->persistDto($routeLockDto, $routeLock);
             $this->printRouteLockStatus($routeLock);
         }

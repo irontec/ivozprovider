@@ -92,7 +92,7 @@ class CreateByScheduler
         $reportDto
             ->setInDate($inDate)
             ->setOutDate($outDate)
-            ->setCreatedOn(new \DateTime(null, $utc))
+            ->setCreatedOn(new \DateTime('now', $utc))
             ->setBrandId($brandId)
             ->setCompanyId($companyId)
             ->setCallCsvSchedulerId(

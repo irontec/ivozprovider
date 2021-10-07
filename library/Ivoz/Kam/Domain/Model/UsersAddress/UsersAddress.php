@@ -35,6 +35,9 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
         $address = explode('/', $this->getSourceAddress());
         $ip = array_shift($address);
         $mask = array_shift($address);
+        if ($mask) {
+            $mask = (int) $mask;
+        }
 
         // Save validated values
         $this->setIpAddr($ip);

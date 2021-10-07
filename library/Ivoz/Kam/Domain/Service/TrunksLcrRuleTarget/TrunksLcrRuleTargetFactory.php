@@ -94,7 +94,7 @@ class TrunksLcrRuleTargetFactory
                     ->setRuleId($lcrRule->getId())
                     ->setGwId($lcrGateway->getId())
                     ->setPriority($outgoingRouting->getPriority())
-                    ->setWeight($ponderatedWeight)
+                    ->setWeight((int) $ponderatedWeight)
                     ->setOutgoingRoutingId($outgoingRouting->getId());
 
                 //we're creating new entities every time
