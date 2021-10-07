@@ -51,6 +51,9 @@
         "irontec/replacements": "^1.0",
         "symfony/flex": "^1.9"
     },
+    "require-dev": {
+        "vimeo/psalm": "^4.0"
+    },
     "extra": {
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
