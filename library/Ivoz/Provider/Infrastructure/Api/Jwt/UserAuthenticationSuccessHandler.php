@@ -2,10 +2,11 @@
 
 namespace Ivoz\Provider\Infrastructure\Api\Jwt;
 
-use Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationSuccessHandler as OriginalAuthenticationSuccessHandler;
+use Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationSuccessHandler;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class UserAuthenticationSuccessHandler extends OriginalAuthenticationSuccessHandler
+/** @psalm-suppress InvalidExtendClass */
+class UserAuthenticationSuccessHandler extends AuthenticationSuccessHandler
 {
     /**
      * @inheritdoc
