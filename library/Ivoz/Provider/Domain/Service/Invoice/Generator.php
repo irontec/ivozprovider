@@ -324,8 +324,8 @@ class Generator
     }
 
     /**
-     * @param string|number $value
-     * @param string|number $value2
+     * @param string|float|int $value
+     * @param string|float|int $value2
      * @return string
      */
     protected function sumAndFormat($value, $value2)
@@ -336,8 +336,8 @@ class Generator
     }
 
     /**
-     * @param string|number $value
-     * @param string|number $value2
+     * @param string|float|int $value
+     * @param string|float|int $value2
      * @return float
      */
     protected function sumConcepts($value, $value2)
@@ -355,7 +355,7 @@ class Generator
     }
 
     /**
-     * @param string|number $value
+     * @param string|float|int $value
      * @param int $decimals
      * @return string
      */
@@ -367,7 +367,7 @@ class Generator
     }
 
     /**
-     * @param string|number $value
+     * @param string|float|int $value
      * @param int $decimals
      * @return float
      */
