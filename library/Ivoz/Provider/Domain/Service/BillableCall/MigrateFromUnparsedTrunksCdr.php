@@ -12,7 +12,7 @@ class MigrateFromUnparsedTrunksCdr
     const BATCH_SIZE = 100;
 
     public function __construct(
-        private TrunksCdrRepository  $trunksCdrRepository,
+        private TrunksCdrRepository $trunksCdrRepository,
         private EntityTools $entityTools,
         private MigrateFromTrunksCdr $migrateFromTrunksCdr,
         private LoggerInterface $logger

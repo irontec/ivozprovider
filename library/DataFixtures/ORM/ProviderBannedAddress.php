@@ -21,7 +21,7 @@ class ProviderBannedAddress extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(BannedAddress::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(BannedAddress::class);
         (function () use ($fixture) {
             $this->setIp("8.8.8.8");

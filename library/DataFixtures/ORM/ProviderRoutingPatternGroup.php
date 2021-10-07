@@ -20,7 +20,7 @@ class ProviderRoutingPatternGroup extends Fixture implements DependentFixtureInt
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(RoutingPatternGroup::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item7 = $this->createEntityInstance(RoutingPatternGroup::class);
         (function () use ($fixture) {
             $this->setName("Europe");
@@ -43,7 +43,7 @@ class ProviderRoutingPatternGroup extends Fixture implements DependentFixtureInt
         $this->sanitizeEntityValues($item21);
         $manager->persist($item21);
 
-    
+
         $manager->flush();
     }
 

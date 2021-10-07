@@ -2,8 +2,8 @@
 
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Feature\Feature;
-use \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
-use \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto;
+use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
+use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto;
 
 /**
  * Class IvozProvider_Klear_Filter_ResidentialFeatures

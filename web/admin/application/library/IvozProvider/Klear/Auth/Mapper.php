@@ -1,4 +1,5 @@
 <?php
+
 namespace IvozProvider\Klear\Auth;
 
 use Ivoz\Core\Application\Service\DataGateway;
@@ -51,7 +52,7 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
         $administrator = $this->dataGateway->findOneBy(
             Administrator::class,
             [
-                "Administrator.username = '$login'".
+                "Administrator.username = '$login'" .
                 " AND " .
                 "Administrator.active = 1"
             ]
@@ -80,7 +81,7 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
 
         $user
             ->setId($operator->getId())
-            ->setUserName($operator->getName(). ' '. $operator->getLastName())
+            ->setUserName($operator->getName() . ' ' . $operator->getLastName())
             ->setLogin($operator->getUsername())
             ->setEmail($operator->getEmail())
             ->setPassword($operator->getPass())

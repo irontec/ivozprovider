@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Service\ConditionalRoutesConditionsRelRouteLock;
 
 use Ivoz\Core\Domain\Service\AvoidEntityUpdatesAbstract;

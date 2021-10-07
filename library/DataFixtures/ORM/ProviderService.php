@@ -21,7 +21,7 @@ class ProviderService extends Fixture
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Service::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(Service::class);
         (function () use ($fixture) {
             $this->setIden("DirectPickUp");

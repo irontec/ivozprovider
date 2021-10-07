@@ -125,7 +125,8 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
             );
         }
 
-        if ($user->isMainOperator && $endpoint === self::BRAND_ENDPOINT
+        if (
+            $user->isMainOperator && $endpoint === self::BRAND_ENDPOINT
         ) {
             $brandId = $user->brandId;
 
@@ -134,7 +135,8 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
                 $brandId,
                 $user
             );
-        } elseif ($user->isMainOperator && $endpoint === self::CLIENT_ENDPOINT
+        } elseif (
+            $user->isMainOperator && $endpoint === self::CLIENT_ENDPOINT
         ) {
             $brandId = $user->brandId;
             $companyId = $user->companyId;
@@ -150,7 +152,8 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
                 $brandId,
                 $brandClient->getToken()
             );
-        } elseif ($user->isBrandOperator && $endpoint === self::CLIENT_ENDPOINT
+        } elseif (
+            $user->isBrandOperator && $endpoint === self::CLIENT_ENDPOINT
         ) {
             $brandId = $user->brandId;
             $companyId = $user->companyId;

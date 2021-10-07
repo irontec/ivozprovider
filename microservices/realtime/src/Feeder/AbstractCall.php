@@ -30,7 +30,7 @@ abstract class AbstractCall
     /** @var string */
     protected $channel;
 
-    public function isDone():bool
+    public function isDone(): bool
     {
         return $this->status === self::HANG_UP;
     }

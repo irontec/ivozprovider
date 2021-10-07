@@ -63,8 +63,10 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
         /**
          * Initialize action controller here
          */
-        if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) ||
-            (!is_object($this->_mainRouter))) {
+        if (
+            (!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) ||
+            (!is_object($this->_mainRouter))
+        ) {
             throw new Zend_Exception("", Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
@@ -160,7 +162,7 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
         $file = file_get_contents($filePath);
         $lines = explode(PHP_EOL, trim($file));
 
-        if (count($lines)<=0) {
+        if (count($lines) <= 0) {
             return false;
         }
 
@@ -170,7 +172,7 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
             $lineFields = str_getcsv(trim($line), $this->_delimiter, $this->_enclosure, $this->_scape);
             $linesArray[] = $lineFields;
             $counter++;
-            if (!is_null($limit) && $counter==$limit) {
+            if (!is_null($limit) && $counter == $limit) {
                 break;
             }
         }
@@ -197,9 +199,9 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
     ';
 
         $help = '<div class="parseHelp">';
-        $help.= '<p>'.$this->_helper->translate("Import file").". ".$this->_helper->translate("Set column configuration and continue.").'</p>';
-        $help.= '<p>'.$this->_helper->translate("Fields with * are required").'.</p><br/>';
-        $help.= '<ul>';
+        $help .= '<p>' . $this->_helper->translate("Import file") . ". " . $this->_helper->translate("Set column configuration and continue.") . '</p>';
+        $help .= '<p>' . $this->_helper->translate("Fields with * are required") . '.</p><br/>';
+        $help .= '<ul>';
 
         foreach ($this->_availableFields as $key => $fieldInfo) {
             if (isset($this->_forcedValues[$key])) {
@@ -216,24 +218,24 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
                 $fieldHelp = \Klear_Model_Gettext::gettextCheck($fieldInfo['help']);
             }
 
-            $help.='<li>'.$fieldLabel.$required.'<em>'.$fieldHelp.'</em></li>';
+            $help .= '<li>' . $fieldLabel . $required . '<em>' . $fieldHelp . '</em></li>';
         }
 
-        $help.= '</ul></div>';
+        $help .= '</ul></div>';
         $table = $help . '<div class="tableBox"><table class="kMatrix parsedValues">';
-        $table.= "<tr>";
+        $table .= "<tr>";
 
         $lineLength = count($lines[0]);
         $availableFieldsKeys = array_keys($this->_availableFields);
-        for ($i = 0; $i < $lineLength; $i ++) {
-            $optionValue = $this->getRequest()->getParam('field_'.$i, null);
+        for ($i = 0; $i < $lineLength; $i++) {
+            $optionValue = $this->getRequest()->getParam('field_' . $i, null);
 
-            $tmp = '<select name="field_'.$i.'" class="notcombo visualFilter ui-widget ui-state-default ui-corner-all ui-state-valid">';
+            $tmp = '<select name="field_' . $i . '" class="notcombo visualFilter ui-widget ui-state-default ui-corner-all ui-state-valid">';
             $selected = "";
             if ($optionValue == "ignore") {
                 $selected = 'selected="selected"';
             }
-            $tmp.='<option value="ignore" '.$selected.'>' . $this->_helper->translate('Ignore') . '</option>';
+            $tmp .= '<option value="ignore" ' . $selected . '>' . $this->_helper->translate('Ignore') . '</option>';
             foreach ($availableFieldsKeys as $idf => $xfield) {
                 if (isset($this->_forcedValues[$xfield])) {
                     continue;
@@ -251,30 +253,30 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
                         $selected = 'selected="selected"';
                     }
                 }
-                $tmp .= '<option value="'.$xfield.'" '
-                    .$selected.'>'
-                    .$xfieldLabel.$xfieldRequired. '</option>';
+                $tmp .= '<option value="' . $xfield . '" '
+                    . $selected . '>'
+                    . $xfieldLabel . $xfieldRequired . '</option>';
             }
-            $tmp.= '</select>';
-            $table.="<th class='ui-widget-header multiItem notSortable'>" . $tmp . "</th>";
+            $tmp .= '</select>';
+            $table .= "<th class='ui-widget-header multiItem notSortable'>" . $tmp . "</th>";
         }
 
-        $table.= "</tr>";
+        $table .= "</tr>";
         foreach ($lines as $line) {
-            $table.= "<tr>";
+            $table .= "<tr>";
             foreach ($line as $idPart => $part) {
-                $table.="<td class='ui-widget-content'>" . utf8_encode($part) . "</td>";
+                $table .= "<td class='ui-widget-content'>" . utf8_encode($part) . "</td>";
             }
-            $table.= "</tr>";
+            $table .= "</tr>";
         }
-        $table .="</table>";
+        $table .= "</table>";
         $form .= $table . '</div><br />';
         $ignoreFirst = $this->getRequest()->getParam("ingoreFirst", null);
         $checked = '';
         if (!is_null($ignoreFirst) && $ignoreFirst == "on") {
             $checked = 'checked="checked"';
         }
-        $form .= '<label><input type="checkbox" name="ingoreFirst" '.$checked.'/> ' . $this->_helper->translate("Ignore first line.").'</label>';
+        $form .= '<label><input type="checkbox" name="ingoreFirst" ' . $checked . '/> ' . $this->_helper->translate("Ignore first line.") . '</label>';
         $update = $this->getRequest()->getParam("update", null);
         $form .= '';
 
@@ -288,7 +290,7 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
 
         $lines = $this->_parseFile($filePath, 3);
 
-        if ($lines===false) {
+        if ($lines === false) {
             $this->_generalError();
             return;
         }
@@ -307,7 +309,7 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
         $form = $this->_buildForm($lines);
         $data = array(
             'title' => $this->_helper->translate("Import file"),
-            'message' => $message."<br>".$form,
+            'message' => $message . "<br>" . $form,
             'buttons' => array(
                 $this->_helper->translate('Close') => array(
                     'recall' => false,
@@ -404,7 +406,7 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
         $fileFields = count($lines[0]);
         $fieldsPossitions = array();
         for ($i = 0; $i < $fileFields; $i++) {
-            $fieldName = $this->getRequest()->getParam('field_'.$i);
+            $fieldName = $this->getRequest()->getParam('field_' . $i);
             $fieldsPossitions[$fieldName] = $i;
         }
 
@@ -418,7 +420,7 @@ class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
             if ($field["required"]) {
                 if (!isset($fieldsPossitions[$key])) {
                     $missing = true;
-                    $message .= "<p>'".$key."' ".$this->_helper->translate("is a required field").".</p>";
+                    $message .= "<p>'" . $key . "' " . $this->_helper->translate("is a required field") . ".</p>";
                 }
             }
         }

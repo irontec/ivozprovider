@@ -121,7 +121,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
     /**
      * @return bool
      */
-    public function isWaiting():bool
+    public function isWaiting(): bool
     {
         return $this->getStatus() === self::STATUS_WAITING;
     }

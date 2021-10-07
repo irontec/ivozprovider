@@ -62,7 +62,7 @@ class RegistrationStatus
         return $this->contact;
     }
 
-    private function setContact(string $contact):  static
+    private function setContact(string $contact): static
     {
         $this->contact = $contact;
         return $this;
@@ -73,7 +73,7 @@ class RegistrationStatus
         return $this->expires;
     }
 
-    private function setExpires(string $expires):  static
+    private function setExpires(string $expires): static
     {
         $this->expires = $expires;
         return $this;
@@ -84,7 +84,7 @@ class RegistrationStatus
         return $this->userAgent;
     }
 
-    private function setUserAgent(string $userAgent):  static
+    private function setUserAgent(string $userAgent): static
     {
         $this->userAgent = $userAgent;
         return $this;

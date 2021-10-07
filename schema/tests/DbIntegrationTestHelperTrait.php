@@ -98,7 +98,7 @@ trait DbIntegrationTestHelperTrait
         }
 
         $event = new CommandWasExecuted(
-            (new RequestId)->toString(),
+            (new RequestId())->toString(),
             $commandName,
             'setUp',
             [],

@@ -35,7 +35,7 @@ class ProviderPickUpRelUser extends Fixture implements DependentFixtureInterface
         $this->addReference('_reference_ProviderPickUpRelUser1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
-    
+
         $manager->flush();
     }
 

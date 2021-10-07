@@ -569,13 +569,13 @@ class FsoController extends \Zend_Controller_Action
 
 
         $expire = gmdate('D, d M Y H:i:s', time() + $this->_life);
-        $modified = gmdate('D, d M Y H:i:s', time()).' GMT';
+        $modified = gmdate('D, d M Y H:i:s', time()) . ' GMT';
 
-        $response->setHeader('Content-Disposition', 'inline; filename="'.$this->getBaseName().'"');
+        $response->setHeader('Content-Disposition', 'inline; filename="' . $this->getBaseName() . '"');
         $response->setHeader('Pragma', 'public', true);
         $response->setHeader('Cache-Control', 'public', true);
-        $response->setHeader('Cache-control', 'max-age=' . 60*60*24*14, true);
-        $response->setHeader('Expires', $expire .' GMT', true);
+        $response->setHeader('Cache-control', 'max-age=' . 60 * 60 * 24 * 14, true);
+        $response->setHeader('Expires', $expire . ' GMT', true);
         $response->setHeader('Last-Modified', $modified, true);
         $response->setHeader('If-Modified-Since', $modified, true);
         $response->setHeader('ETag', $cacheKey, true);
@@ -753,9 +753,9 @@ class FsoController extends \Zend_Controller_Action
                     APPLICATION_PATH . '/configs/application.ini',
                     APPLICATION_ENV
                 );
-                $conf = (Object) $conf->toArray();
+                $conf = (object) $conf->toArray();
             } else {
-                $conf = (Object) $bootstrap->getOptions();
+                $conf = (object) $bootstrap->getOptions();
             }
 
             if (isset($conf->translate['requestParam'])) {

@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Service\RoutingPatternGroup;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;

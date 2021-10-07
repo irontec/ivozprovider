@@ -42,7 +42,7 @@ class Trusted extends TrustedAbstract implements TrustedInterface
         $this->setProto('any');
     }
 
-    public function setSrcIp(?string $srcIp = null):  static
+    public function setSrcIp(?string $srcIp = null): static
     {
         try {
             Assertion::ip($srcIp);

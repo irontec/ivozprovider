@@ -1,4 +1,5 @@
 <?php
+
 namespace IvozProvider\Klear\Dynamic;
 
 use Ivoz\Core\Application\Service\DataGateway;
@@ -112,7 +113,7 @@ class Builder
     {
         $brandURLLogoBaseName = self::$_URL->getLogoBaseName();
         if (!empty($brandURLLogoBaseName)) {
-            return "fso/klearWebPortal/".self::$_URL->getId()."-".$brandURLLogoBaseName;
+            return "fso/klearWebPortal/" . self::$_URL->getId() . "-" . $brandURLLogoBaseName;
         }
 
         if (!self::$_brand) {
@@ -121,7 +122,7 @@ class Builder
 
         $brandLogoBaseName = self::$_brand->getLogoBaseName();
         if (!empty($brandLogoBaseName)) {
-            return "fso/klearBrand/".self::$_brand->getId()."-".$brandLogoBaseName;
+            return "fso/klearBrand/" . self::$_brand->getId() . "-" . $brandLogoBaseName;
         }
 
         return null;

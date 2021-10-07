@@ -64,7 +64,7 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
      * @param UserInterface $user
      * @return UserInterface[]
      */
-    public function getUserAssistantCandidates(UserInterface $user) :array
+    public function getUserAssistantCandidates(UserInterface $user): array
     {
         $company = $user->getCompany();
 
@@ -87,7 +87,7 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
      * @param UserInterface $user
      * @return UserInterface[]
      */
-    public function getAvailableVoicemails(UserInterface $user) :array
+    public function getAvailableVoicemails(UserInterface $user): array
     {
         $company = $user->getCompany();
 

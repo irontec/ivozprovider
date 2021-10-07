@@ -80,11 +80,11 @@ class KlearCustomCalendarController extends KlearMatrix_NewController
                 $listLI = array();
                 $fieldOpts = $this->_getFieldOptions();
                 foreach ($fieldOpts as $opt) {
-                    $listLI[] = "<li><span data-id='".$model->getId()."'>".$opt->toAutoOption()."</span></li>";
+                    $listLI[] = "<li><span data-id='" . $model->getId() . "'>" . $opt->toAutoOption() . "</span></li>";
                 }
-                if (count($listLI)>0) {
+                if (count($listLI) > 0) {
                     $listUL = '<ul class="postActionOptionsListUL ui-state-highlight ui-corner-all">';
-                    $listUL.= implode("\n", $listLI) . '</ul>';
+                    $listUL .= implode("\n", $listLI) . '</ul>';
                     $optsString = $listUL;
                 }
             }
@@ -97,10 +97,10 @@ class KlearCustomCalendarController extends KlearMatrix_NewController
         } catch (\Zend_Exception $exception) {
             $data = array(
                 'error' => true,
-                'message'=> $exception->getMessage()
+                'message' => $exception->getMessage()
             );
             $this->_helper->log(
-                'Error saving in new::save for ' . $mapperName . ' ['.$exception->getMessage().']',
+                'Error saving in new::save for ' . $mapperName . ' [' . $exception->getMessage() . ']',
                 Zend_Log::CRIT
             );
         }
@@ -120,7 +120,7 @@ class KlearCustomCalendarController extends KlearMatrix_NewController
             $displayErrors = ini_get("display_errors");
             $message = $this->view->translate('Error saving record');
             if ($displayErrors) {
-                $message.= " (".$exception->getMessage().")";
+                $message .= " (" . $exception->getMessage() . ")";
             }
             throw new \Zend_Exception($message);
         }

@@ -1,4 +1,5 @@
 <?php
+
 namespace IvozProvider\Klear\Dynamic\Config;
 
 class BrandOperator extends Base
@@ -12,9 +13,9 @@ class BrandOperator extends Base
 
     public function postInit()
     {
-        $this->_title = '[' . $this->_brand->getName(). ']';
+        $this->_title = '[' . $this->_brand->getName() . ']';
         if ($this->_user) {
-            $this->_subTitle = "Operator: <strong>". $this->_user->getLogin()."</strong>";
+            $this->_subTitle = "Operator: <strong>" . $this->_user->getLogin() . "</strong>";
 
             if ($this->_user->companyId) {
                 $this->_subTitle .= sprintf('<br />Emulated client: <strong>%s</strong>', $this->_user->companyName);

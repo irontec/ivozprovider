@@ -20,7 +20,7 @@ class ProviderInvoiceTemplate extends Fixture implements DependentFixtureInterfa
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(InvoiceTemplate::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(InvoiceTemplate::class);
         (function () use ($fixture) {
             $this->setName("Default");
@@ -47,7 +47,7 @@ class ProviderInvoiceTemplate extends Fixture implements DependentFixtureInterfa
         $this->addReference('_reference_ProviderInvoiceTemplate2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
-    
+
         $manager->flush();
     }
 

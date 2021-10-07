@@ -20,7 +20,7 @@ class ProviderConferenceRoom extends Fixture implements DependentFixtureInterfac
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ConferenceRoom::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(ConferenceRoom::class);
         (function () use ($fixture) {
             $this->setName("testConferenceRoom");
@@ -34,7 +34,7 @@ class ProviderConferenceRoom extends Fixture implements DependentFixtureInterfac
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
+
         $manager->flush();
     }
 

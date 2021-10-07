@@ -3,7 +3,7 @@
 use Symfony\Component\HttpFoundation\Request;
 
 // require Composer's autoloader
-require __DIR__.'/../config/bootstrap.php';
+require __DIR__ . '/../config/bootstrap.php';
 
 require __DIR__ . '/../src/Kernel.php';
 

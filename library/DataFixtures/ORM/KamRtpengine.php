@@ -22,7 +22,7 @@ class KamRtpengine extends Fixture implements DependentFixtureInterface
         $manager
             ->getClassMetadata(Rtpengine::class)
             ->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(Rtpengine::class);
         (function () use ($fixture) {
             $this

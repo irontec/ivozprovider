@@ -1,10 +1,10 @@
 <?php
 
-use \Ivoz\Provider\Domain\Model\Brand\Brand;
-use \Ivoz\Provider\Domain\Model\Brand\BrandDto;
-use \Ivoz\Provider\Domain\Model\Company\Company;
-use \Ivoz\Provider\Domain\Model\Brand\CompanyDto;
-use \Ivoz\Provider\Domain\Model\Feature\Feature;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Brand\CompanyDto;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 
 class KlearCustomExtraAuthController extends Zend_Controller_Action
 {
@@ -21,7 +21,8 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 ->addActionContext('emulate', 'json')
                 ->initContext('json');
 
-        if (!$this->_mainRouter = $this->getRequest()->getParam("mainRouter")
+        if (
+            !$this->_mainRouter = $this->getRequest()->getParam("mainRouter")
             || !is_object($this->_mainRouter)
         ) {
                 throw new Zend_Exception(
@@ -102,14 +103,14 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                         style='width:95%;margin: 0;padding: 6px;' 
                         class='emulation-filter ui-widget ui-state-default ui-corner-all'>";
             $html .= '</div><div class="entitySelectDiv">';
-            $html .= '<select id="entitySelect" name="'.$type.'" data-type="'.$type.'" class="" data-size="4">';
+            $html .= '<select id="entitySelect" name="' . $type . '" data-type="' . $type . '" class="" data-size="4">';
             foreach ($options as $option) {
                 $selected = "";
                 if ($option->getId() == $id) {
                     $selected = "selected";
                 }
                 if ($type == 'brand') {
-                    $html .= '<option value="'.$option->getId().'" '.$selected.'>'.$option->getName().'</option>';
+                    $html .= '<option value="' . $option->getId() . '" ' . $selected . '>' . $option->getName() . '</option>';
                 } elseif ($type == 'company') {
                     switch ($option->getType()) {
                         case 'vpbx':
@@ -125,10 +126,10 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                             $icon = "house";
                             break;
                     }
-                    $html .= '<option data-subtype="'.$option->getType()
-                    .'" data-icon="ui-silk inline ui-silk-'.$icon
-                    .'" value="'.$option->getId()
-                    .'" '.$selected.'>'.$option->getName().'</option>';
+                    $html .= '<option data-subtype="' . $option->getType()
+                    . '" data-icon="ui-silk inline ui-silk-' . $icon
+                    . '" value="' . $option->getId()
+                    . '" ' . $selected . '>' . $option->getName() . '</option>';
                 }
             }
             $html .= "</select>";
@@ -179,12 +180,12 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
             $html .= '</div>';
         }
 
-        $html .= '<p class="submit"><input type="submit" value="'.$this->view->translate('Continue').'" /></p>';
+        $html .= '<p class="submit"><input type="submit" value="' . $this->view->translate('Continue') . '" /></p>';
         $html .= '</form>';
         $this->view->responseType = 'simple';
         $this->view->data = array(
-                'body'=>$html,
-                'title'=>$title
+                'body' => $html,
+                'title' => $title
         );
     }
 
@@ -303,7 +304,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         $data = array(
                 "title" => $title,
                 "message" => $message,
-                "options" => array('width'=>'300px'),
+                "options" => array('width' => '300px'),
                 "buttons" => array(
                         $this->_helper->translate("Accept") => array(
                                 "recall" => true,
@@ -350,7 +351,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         $data = array(
                 "title" => $title,
                 "message" => $message,
-                "options" => array('width'=>'300px'),
+                "options" => array('width' => '300px'),
                 "buttons" => array(
 //                         $this->_helper->translate("Accept") => array(
 //                                 "recall" => false,

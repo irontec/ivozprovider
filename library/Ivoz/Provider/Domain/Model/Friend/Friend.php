@@ -95,7 +95,7 @@ class Friend extends FriendAbstract implements FriendInterface
     /**
      * @return bool
      */
-    public function isInterPbxConnectivity() : bool
+    public function isInterPbxConnectivity(): bool
     {
         return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_INTERVPBX;
     }
@@ -103,7 +103,7 @@ class Friend extends FriendAbstract implements FriendInterface
     /**
      * @return bool
      */
-    public function isDirectConnectivity() : bool
+    public function isDirectConnectivity(): bool
     {
         return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_YES;
     }
@@ -111,7 +111,7 @@ class Friend extends FriendAbstract implements FriendInterface
     /**
      * @return bool
      */
-    public function isRegisterConnectivity() : bool
+    public function isRegisterConnectivity(): bool
     {
         return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_NO;
     }
@@ -296,7 +296,7 @@ class Friend extends FriendAbstract implements FriendInterface
      * @return string
      * @throws \Exception
      */
-    private function getInterCompanyName() :string
+    private function getInterCompanyName(): string
     {
         $company = $this->getCompany();
 

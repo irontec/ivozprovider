@@ -290,7 +290,7 @@ class SimulatedCall
     /**
      * @return string
      */
-    public function getIntervalStart() :string
+    public function getIntervalStart(): string
     {
         return $this->intervalStart;
     }

@@ -37,8 +37,10 @@ trait ImporterControllerTrait
         /**
          * Initialize action controller here
          */
-        if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) ||
-            (!is_object($this->_mainRouter))) {
+        if (
+            (!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) ||
+            (!is_object($this->_mainRouter))
+        ) {
             throw new \Zend_Exception("", Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
@@ -102,7 +104,7 @@ trait ImporterControllerTrait
     protected function _loadFile($message = null)
     {
         if (!$message) {
-            $message .= "<p>".$this->_helper->translate("Please, choose a file to import")."</p>";
+            $message .= "<p>" . $this->_helper->translate("Please, choose a file to import") . "</p>";
         }
         $message .= "<div style='text-align:center;'><input type='file' name='importFile' data-upload-command='" . $this->_freeUploadCommand . "'></div>";
 
@@ -141,7 +143,7 @@ trait ImporterControllerTrait
     {
         $lines = $this->_csvParser->parseFile($filePath);
 
-        if (count($lines)<=0) {
+        if (count($lines) <= 0) {
             return false;
         }
 
@@ -150,7 +152,7 @@ trait ImporterControllerTrait
         foreach ($lines as $lineFields) {
             $linesArray[] = $lineFields;
             $counter++;
-            if (!is_null($limit) && $counter==$limit) {
+            if (!is_null($limit) && $counter == $limit) {
                 break;
             }
         }
@@ -192,7 +194,7 @@ trait ImporterControllerTrait
         }
         $lines = $this->_parseFile($filePath, 3);
 
-        if ($lines===false) {
+        if ($lines === false) {
             $this->_generalError();
             return;
         }
@@ -200,7 +202,7 @@ trait ImporterControllerTrait
         $form = $this->_buildForm($lines);
         $data = array(
             'title' => $this->_helper->translate("Parse file and import"),
-            'message' => $message."<br>".$form,
+            'message' => $message . "<br>" . $form,
             'buttons' => array(
                 $this->_helper->translate('Close') => array(
                     'recall' => false,
@@ -227,7 +229,7 @@ trait ImporterControllerTrait
         $fileFields = count($lines[0]);
         $fieldsPossitions = array();
         for ($i = 0; $i < $fileFields; $i++) {
-            $fieldName = $this->getRequest()->getParam('field_'.$i);
+            $fieldName = $this->getRequest()->getParam('field_' . $i);
             $fieldsPossitions[$fieldName] = $i;
         }
 
@@ -265,7 +267,7 @@ trait ImporterControllerTrait
             if ($field->get("required")) {
                 if (!isset($fieldsPossitions[$key])) {
                     $missing = true;
-                    $message .= "<p>'".$key."' ".$this->_helper->translate("is a required field").".</p>";
+                    $message .= "<p>'" . $key . "' " . $this->_helper->translate("is a required field") . ".</p>";
                 }
             }
         }

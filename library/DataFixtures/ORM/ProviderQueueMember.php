@@ -20,7 +20,7 @@ class ProviderQueueMember extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(QueueMember::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(QueueMember::class);
         (function () use ($fixture) {
             $this->setPenalty(1);
@@ -33,7 +33,7 @@ class ProviderQueueMember extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
+
         $manager->flush();
     }
 

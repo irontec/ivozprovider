@@ -4,7 +4,7 @@ use Services\WsServer;
 use Services\Sentinel;
 use Symfony\Component\ErrorHandler\Debug;
 
-require __DIR__.'/../config/bootstrap.php';
+require __DIR__ . '/../config/bootstrap.php';
 
 $env = getenv('APP_ENV') ?: 'dev';
 $debug = getenv('SYMFONY_DEBUG') !== '0' && $env !== 'prod';

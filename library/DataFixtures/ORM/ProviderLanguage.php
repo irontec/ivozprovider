@@ -20,7 +20,7 @@ class ProviderLanguage extends Fixture
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Language::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(Language::class);
         (function () use ($fixture) {
             $this->setIden("es");
@@ -61,7 +61,7 @@ class ProviderLanguage extends Fixture
         $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
-    
+
         $manager->flush();
     }
 }

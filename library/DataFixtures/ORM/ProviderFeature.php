@@ -20,7 +20,7 @@ class ProviderFeature extends Fixture
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Feature::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(Feature::class);
         (function () use ($fixture) {
             $this->setIden("queues");
@@ -111,7 +111,7 @@ class ProviderFeature extends Fixture
         $this->sanitizeEntityValues($item9);
         $manager->persist($item9);
 
-    
+
         $manager->flush();
     }
 }

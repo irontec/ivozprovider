@@ -105,7 +105,7 @@ class FaxDial extends RouteHandlerAbstract
             "-dBATCH",
             "-sDEVICE=tiffg4",
             "-sPAPERSIZE=a4",
-            "-sOutputFile=". $tifFile,
+            "-sOutputFile=" . $tifFile,
             $pdfFile
         ]);
         $process->run();

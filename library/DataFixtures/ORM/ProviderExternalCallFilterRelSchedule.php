@@ -35,7 +35,7 @@ class ProviderExternalCallFilterRelSchedule extends Fixture implements Dependent
         $this->addReference('_reference_ProviderExternalCallFilterRelSchedule1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
-    
+
         $manager->flush();
     }
 

@@ -135,7 +135,7 @@ class RatingPlanPricesAction
         fwrite(
             $tmpfile,
             '"rating plan", name, prefix, "connection fee", cost'
-            .', "rate increment", "group interval start", "time in", days'
+            . ', "rate increment", "group interval start", "time in", days'
             . "\n"
         );
         foreach ($generator as $batch) {
@@ -173,7 +173,7 @@ class RatingPlanPricesAction
      * @param array $fields
      * @return string
      */
-    private function array2csv(array $fields) : string
+    private function array2csv(array $fields): string
     {
         unset($fields['weight']);
 

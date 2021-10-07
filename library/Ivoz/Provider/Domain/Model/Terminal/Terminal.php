@@ -98,7 +98,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
         for ($i = 0; $i < 3; $i++) {
             $randStr .= $numbers[rand(0, strlen($numbers) - 1)];
         }
-        $randStr.= $symbols[rand(0, strlen($symbols) - 1)];
+        $randStr .= $symbols[rand(0, strlen($symbols) - 1)];
 
         return str_shuffle($randStr);
     }

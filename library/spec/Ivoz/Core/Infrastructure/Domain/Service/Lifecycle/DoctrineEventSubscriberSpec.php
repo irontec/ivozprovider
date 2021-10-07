@@ -12,9 +12,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Domain\Service\PersistErrorHandlerServiceCollection;
-use \Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
-use \Ivoz\Core\Infrastructure\Persistence\Doctrine\OnErrorEventArgs;
-use \Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnErrorEventArgs;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection;
 
 class DoctrineEventSubscriberSpec extends ObjectBehavior

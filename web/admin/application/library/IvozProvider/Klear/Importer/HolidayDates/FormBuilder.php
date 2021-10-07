@@ -27,7 +27,7 @@ class FormBuilder extends AbstractFormBuilder
         $help = vsprintf($help, $helpLines);
 
         $table =  $help . '<div class="tableBox"><table class="kMatrix parsedValues">';
-        $table.= "<tr>";
+        $table .= "<tr>";
 
         $name =  $this->_availableFields['name'];
         $eventDate =  $this->_availableFields['eventDate'];
@@ -38,26 +38,26 @@ class FormBuilder extends AbstractFormBuilder
         $nameValue = '<input type="hidden" name="field_0" value="name" />';
         $eventDateValue = '<input type="hidden" name="field_1" value="eventDate" />';
 
-        $table.="<th class='ui-widget-header multiItem notSortable'>$nameTranslation $nameValue</th>";
-        $table.="<th class='ui-widget-header multiItem notSortable'>$eventDateTranslation $eventDateValue</th>";
+        $table .= "<th class='ui-widget-header multiItem notSortable'>$nameTranslation $nameValue</th>";
+        $table .= "<th class='ui-widget-header multiItem notSortable'>$eventDateTranslation $eventDateValue</th>";
 
-        $table.= "</tr>";
+        $table .= "</tr>";
         foreach ($lines as $line) {
-            $table.= "<tr>";
+            $table .= "<tr>";
             foreach ($line as $idPart => $part) {
-                $table.="<td class='ui-widget-content'>" . $part . "</td>";
+                $table .= "<td class='ui-widget-content'>" . $part . "</td>";
             }
-            $table.= "</tr>";
+            $table .= "</tr>";
         }
-        $table .="</table>";
+        $table .= "</table>";
         $form .= $table . '</div><br />';
         $ignoreFirst = $this->_ignoreFirst;
         $checked = '';
         if (!is_null($ignoreFirst) && $ignoreFirst == "on") {
             $checked = 'checked="checked"';
         }
-        $form .= '<label><input type="checkbox" name="ingoreFirst" '.$checked.'/> ';
-        $form .= $this->_translator->translate("Ignore first line.").'</label>';
+        $form .= '<label><input type="checkbox" name="ingoreFirst" ' . $checked . '/> ';
+        $form .= $this->_translator->translate("Ignore first line.") . '</label>';
 
         return $form;
     }

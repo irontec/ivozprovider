@@ -45,7 +45,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
         /** @var \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto $kamTrunksUacreg */
         $kamTrunksUacreg = $dataGateway->findOneBy(
             \Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg::class,
-            ["TrunksUacreg.ddiProviderRegistration = '". $model->getId() ."'"]
+            ["TrunksUacreg.ddiProviderRegistration = '" . $model->getId() . "'"]
         );
 
         if (!$kamTrunksUacreg) {
@@ -71,7 +71,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
         } elseif (in_array($status, [24, 18], true)) {
             $response = '<span class="ui-silk inline ui-silk-error" title="In progress"></span>';
         } else {
-            $response = '<span class="ui-silk inline ui-silk-exclamation" title="Not registered (status '. $status .')"></span>';
+            $response = '<span class="ui-silk inline ui-silk-exclamation" title="Not registered (status ' . $status . ')"></span>';
         }
 
         return $response;
@@ -123,7 +123,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
         foreach ($sortedUserIds as $posibleResult) {
             $response .= " WHEN '" . $posibleResult . "' THEN " . $priority++;
         }
-        $response .= ' ELSE '. $priority .' END AS HIDDEN ORD';
+        $response .= ' ELSE ' . $priority . ' END AS HIDDEN ORD';
 
         return $response;
     }
@@ -370,7 +370,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
      * @param $received
      * @return string
      */
-    private function getRegisterHint($contact, $received) : string
+    private function getRegisterHint($contact, $received): string
     {
         $contactIsPrivate = $this->isRFC1918($contact);
 
@@ -408,7 +408,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
      * @param $src
      * @return bool
      */
-    private function isRFC1918($src) : bool
+    private function isRFC1918($src): bool
     {
         list ($ip) = explode(':', $src); // Extract address if port is given
 

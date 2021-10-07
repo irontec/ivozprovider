@@ -52,14 +52,14 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
         $message =
             "<a data-href='"
             . $targetUrl
-            ."'>"
+            . "'>"
             . $this->_helper->translate("This may take some minutes")
             . "</a>";
 
         $data = [
             "title" => $this->_helper->translate("Downloading"),
-            'message'=> $message,
-            "options" => ['width'=>'300px'],
+            'message' => $message,
+            "options" => ['width' => '300px'],
             "buttons" => array(
                 $this->_helper->translate("Close") => [
                     "recall" => false,
@@ -161,7 +161,7 @@ class KlearCustomDownloadRatingPlanController extends Zend_Controller_Action
 
             $response->setHeader('Content-Length', mb_strlen($responseContent));
             $response->setHeader('Content-Type', 'text/csv');
-            $response->setHeader('Content-disposition', 'attachment; filename='. $fileName .'.csv');
+            $response->setHeader('Content-disposition', 'attachment; filename=' . $fileName . '.csv');
         } catch (\Exception $e) {
             $response->setHttpResponseCode(
                 $e->getCode()

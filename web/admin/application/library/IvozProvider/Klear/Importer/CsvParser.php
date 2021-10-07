@@ -21,7 +21,7 @@ class CsvParser
         $file = file_get_contents($filePath);
         $lines = explode(PHP_EOL, trim($file));
 
-        if (count($lines)<=0) {
+        if (count($lines) <= 0) {
             return false;
         }
 
@@ -31,7 +31,7 @@ class CsvParser
             $lineFields = str_getcsv(trim($line), $this->_delimiter, $this->_enclosure, $this->_scape);
             $linesArray[] = $lineFields;
             $counter++;
-            if (!is_null($limit) && $counter==$limit) {
+            if (!is_null($limit) && $counter == $limit) {
                 break;
             }
         }

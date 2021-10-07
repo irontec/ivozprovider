@@ -20,7 +20,7 @@ class ProviderFixedCost extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(FixedCost::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(FixedCost::class);
         (function () use ($fixture) {
             $this->setName("Monitoring");

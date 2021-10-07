@@ -1,8 +1,8 @@
 <?php
 
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
-use \Ivoz\Provider\Domain\Model\Friend\FriendInterface;
-use \Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
 
 class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model_Interfaces_ParentOptionCustomizer
 {
@@ -211,11 +211,11 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
         $auth = Zend_Auth::getInstance();
         if (!$auth->hasIdentity()) {
             //TODO Exceptionante
-            throw new Klear_Exception_Default("No ".$type." emulated");
+            throw new Klear_Exception_Default("No " . $type . " emulated");
         }
         $loggedUser = $auth->getIdentity();
 
-        $propperty = $type."Id";
+        $propperty = $type . "Id";
         $currentModelId = $loggedUser->{$propperty};
         $parentModelId = $this->_parentModel->getId();
 

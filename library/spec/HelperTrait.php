@@ -86,7 +86,7 @@ trait HelperTrait
         $allowAnyCall = true
     ) {
         if (!$this->prophet) {
-            $this->prophet = new \Prophecy\Prophet;
+            $this->prophet = new \Prophecy\Prophet();
         }
 
         $collaborator = $this->prophet->prophesize(

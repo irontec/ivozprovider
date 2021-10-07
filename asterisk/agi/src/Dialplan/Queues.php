@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Dialplan;
 
 use Agi\Action\QueueCallAction;

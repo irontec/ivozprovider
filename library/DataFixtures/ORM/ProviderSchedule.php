@@ -21,7 +21,7 @@ class ProviderSchedule extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Schedule::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(Schedule::class);
         (function () use ($fixture) {
             $this->setName("aSchedule");
@@ -83,7 +83,7 @@ class ProviderSchedule extends Fixture implements DependentFixtureInterface
         $this->addReference('_reference_ProviderSchedule2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
-    
+
         $manager->flush();
     }
 

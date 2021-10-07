@@ -74,7 +74,7 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
      */
     protected function saveFiles($file, $route, $template)
     {
-        $fileRoute = $route . DIRECTORY_SEPARATOR .$file;
+        $fileRoute = $route . DIRECTORY_SEPARATOR . $file;
         $fileExists = $this->fs->exists($fileRoute);
 
         if ($fileExists) {

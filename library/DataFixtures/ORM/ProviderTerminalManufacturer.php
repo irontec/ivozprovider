@@ -19,7 +19,7 @@ class ProviderTerminalManufacturer extends Fixture
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(TerminalManufacturer::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(TerminalManufacturer::class);
         (function () use ($fixture) {
             $this->setIden("Generic");
@@ -60,7 +60,7 @@ class ProviderTerminalManufacturer extends Fixture
         $this->addReference('_reference_ProviderTerminalManufacturerTerminalManufacturer4', $item4);
         $manager->persist($item4);
 
-    
+
         $manager->flush();
     }
 }

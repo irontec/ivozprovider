@@ -33,7 +33,7 @@ class InvoiceLifeCycleTest extends KernelTestCase
              ->setTaxRate(25.0)
              ->setTotalWithTax(1.330)
              ->setStatus('processing');
-        
+
         return $invoiceDto;
     }
 

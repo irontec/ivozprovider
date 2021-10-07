@@ -209,7 +209,7 @@ class Rates
 
                 Assertion::false(
                     $prefixAlreadyUsed,
-                    'Duplicated prefix on line '. $lineNum
+                    'Duplicated prefix on line ' . $lineNum
                 );
 
                 // Validate & set format to rateCost

@@ -34,7 +34,7 @@ class ProviderExternalCallFilterWhiteList extends Fixture implements DependentFi
         $this->addReference('_reference_ProviderExternalCallFilterWhiteList1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
-    
+
         $manager->flush();
     }
 

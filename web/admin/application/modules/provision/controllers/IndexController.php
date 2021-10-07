@@ -232,7 +232,7 @@ class Provision_IndexController extends Zend_Controller_Action
          */
         $terminals = $this->dataGateway->findBy(
             \Ivoz\Provider\Domain\Model\Terminal\Terminal::class,
-            ["Terminal.mac IN ('". implode("','", $macCandidates) ."')"]
+            ["Terminal.mac IN ('" . implode("','", $macCandidates) . "')"]
         );
 
         foreach ($terminals as $candidate) {
@@ -300,7 +300,7 @@ class Provision_IndexController extends Zend_Controller_Action
     protected function _getFilePath()
     {
         $bootstrap = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
-        $conf = (Object) $bootstrap->getOptions();
+        $conf = (object) $bootstrap->getOptions();
         $path = $conf->Iron['fso']['localStoragePath'];
         return $path;
     }
@@ -312,7 +312,7 @@ class Provision_IndexController extends Zend_Controller_Action
         $controller = $this->_request->getParam("controller");
         $action = $this->_request->getParam("action");
 
-        $requestLog = $module . "/" . $controller . "::". $action;
+        $requestLog = $module . "/" . $controller . "::" . $action;
 
         $params = $this->_request->getParams();
 

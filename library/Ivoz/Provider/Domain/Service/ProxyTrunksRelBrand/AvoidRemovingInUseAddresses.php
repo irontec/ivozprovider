@@ -19,7 +19,7 @@ class AvoidRemovingInUseAddresses implements ProxyTrunksRelBrandLifecycleEventHa
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_REMOVE=> self::PRIORITY_NORMAL,
+            self::EVENT_POST_REMOVE => self::PRIORITY_NORMAL,
         ];
     }
     /**

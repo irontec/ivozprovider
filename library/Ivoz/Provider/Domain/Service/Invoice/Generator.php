@@ -154,7 +154,7 @@ class Generator
         }
 
         $this->logger->debug(self::LOGGER_PREFIX . ' Preparing templates');
-        $templateEngine = new Handlebars;
+        $templateEngine = new Handlebars();
 
         $header = $templateEngine->render($templateModel->getTemplateHeader(), $variables);
         $body = $templateEngine->render($templateModel->getTemplate(), $variables);
@@ -297,9 +297,9 @@ class Generator
         }
 
         $total = $callSumaryTotals['totalPrice'] + $this->fixedCostTotal;
-        $total = ceil($total*100) / 100;
+        $total = ceil($total * 100) / 100;
 
-        $totalTaxex = ceil(($total*$invoice->getTaxRate()/100)*100)/100;
+        $totalTaxex = ceil(($total * $invoice->getTaxRate() / 100) * 100) / 100;
         $totalWithTaxex = $totalTaxex + $total;
 
         $this->totals = array(

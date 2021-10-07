@@ -16,7 +16,8 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
 
     use DestinationRateGroupTrait;
 
-    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile;
+    use TempFileContainnerTrait {
+        addTmpFile as protected _addTmpFile;
     }
 
     /**

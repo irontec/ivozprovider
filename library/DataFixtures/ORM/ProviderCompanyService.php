@@ -20,7 +20,7 @@ class ProviderCompanyService extends Fixture implements DependentFixtureInterfac
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(CompanyService::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(CompanyService::class);
         (function () use ($fixture) {
             $this->setCode("94");

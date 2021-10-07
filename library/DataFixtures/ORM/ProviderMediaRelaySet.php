@@ -19,7 +19,7 @@ class ProviderMediaRelaySet extends Fixture
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(MediaRelaySet::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $manager->getConnection()->exec(
             "INSERT INTO MediaRelaySets (id, name, description) VALUES (0, 'Default','Default media relay set')"
         );
@@ -37,7 +37,7 @@ class ProviderMediaRelaySet extends Fixture
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
+
         $manager->flush();
     }
 }

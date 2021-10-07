@@ -1,6 +1,5 @@
 <?php
 
-
 class WorkerController extends Zend_Controller_Action
 {
     protected $_bootstrap;

@@ -55,7 +55,7 @@ class QueueCallAction
             $this->agi->error("User %s has no endpoint associated", $user);
             return;
         }
-        
+
         $dnd = $user->getDoNotDisturb();
         if ($dnd) {
             $this->agi->verbose("User %s has DND enabled.", $user);

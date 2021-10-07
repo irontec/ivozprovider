@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\Provider\Brand;
 
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;

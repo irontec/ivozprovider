@@ -20,7 +20,7 @@ class KamTrunksLcrRule extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(TrunksLcrRule::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(TrunksLcrRule::class);
         (function () use ($fixture) {
             $this->setLcrId(1);

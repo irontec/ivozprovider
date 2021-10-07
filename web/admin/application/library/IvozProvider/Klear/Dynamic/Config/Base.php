@@ -1,4 +1,5 @@
 <?php
+
 namespace IvozProvider\Klear\Dynamic\Config;
 
 use Ivoz\Core\Application\Service\DataGateway;
@@ -121,7 +122,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
 
     public function processjQueryUI($jQueryUIconf)
     {
-        $themeParser = new \Klear_Model_JQueryUIThemeParser;
+        $themeParser = new \Klear_Model_JQueryUIThemeParser();
         $themeParser->init();
 
         try {

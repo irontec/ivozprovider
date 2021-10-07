@@ -47,7 +47,7 @@ class RatingPlanGroupDoctrineRepository extends ServiceEntityRepository implemen
         while ($continue) {
             $qb
                 ->setMaxResults($batchSize)
-                ->setFirstResult(($currentPage -1) * $batchSize);
+                ->setFirstResult(($currentPage - 1) * $batchSize);
 
             $query = $qb->getQuery();
             $results = $query->getResult();
@@ -118,7 +118,8 @@ class RatingPlanGroupDoctrineRepository extends ServiceEntityRepository implemen
 
             $currentWindow = $item['timeIn'] . $item['days'];
 
-            if (array_key_exists($currentWindow, $rateWindows)
+            if (
+                array_key_exists($currentWindow, $rateWindows)
                 && ($rateWindows[$currentWindow] > $item['weight'])
             ) {
                 unset($results[$key]);

@@ -20,7 +20,7 @@ class ProviderFriendsPattern extends Fixture implements DependentFixtureInterfac
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(FriendsPattern::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(FriendsPattern::class);
         (function () use ($fixture) {
             $this->setName("Spain");
@@ -32,7 +32,7 @@ class ProviderFriendsPattern extends Fixture implements DependentFixtureInterfac
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
+
         $manager->flush();
     }
 

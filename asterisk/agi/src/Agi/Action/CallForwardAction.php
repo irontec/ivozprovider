@@ -1,4 +1,5 @@
 <?php
+
 namespace Agi\Action;
 
 use Agi\Agents\ResidentialAgent;

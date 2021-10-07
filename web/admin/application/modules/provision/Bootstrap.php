@@ -2,7 +2,7 @@
 
 class Provision_Bootstrap extends Zend_Application_Module_Bootstrap
 {
-    
+
     protected function _initRouting()
     {
         $frontController = Zend_Controller_Front::getInstance();

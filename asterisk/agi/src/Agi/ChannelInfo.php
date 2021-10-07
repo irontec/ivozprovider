@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Agi;
 
 use Agi\Agents\AgentInterface;
