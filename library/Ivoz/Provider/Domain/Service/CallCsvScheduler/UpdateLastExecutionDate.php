@@ -5,13 +5,11 @@ namespace Ivoz\Provider\Domain\Service\CallCsvScheduler;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
-use Psr\Log\LoggerInterface;
 
 class UpdateLastExecutionDate
 {
     public function __construct(
-        private EntityTools $entityTools,
-        private LoggerInterface $logger
+        private EntityTools $entityTools
     ) {
     }
 

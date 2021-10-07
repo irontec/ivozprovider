@@ -6,7 +6,6 @@ namespace Ivoz\Provider\Application\Service\User;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Service\Ddi\DdiFactory;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionFactory;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalFactory;
@@ -14,7 +13,6 @@ use Ivoz\Provider\Domain\Service\User\UserFactory;
 
 class SyncFromCsv
 {
-    private $companyRepository;
     private $userFactory;
     private $terminalFactory;
     private $extensionFactory;

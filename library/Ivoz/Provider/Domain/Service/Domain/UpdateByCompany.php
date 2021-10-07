@@ -20,8 +20,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
     const POST_PERSIST_PRIORITY = 10;
 
     public function __construct(
-        private EntityTools $entityTools,
-        private DomainRepository $domainRepository
+        private EntityTools $entityTools
     ) {
     }
 

@@ -2,10 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Service\BannedAddress;
 
-use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Infrastructure\Kamailio\UsersClient;
 use Ivoz\Provider\Domain\Model\BannedAddress\BannedAddressInterface;
-use Ivoz\Provider\Domain\Model\BannedAddress\BannedAddressRepository;
 use Psr\Log\LoggerInterface;
 
 class Unban implements BannedAddressLifecycleEventHandlerInterface
@@ -13,8 +11,6 @@ class Unban implements BannedAddressLifecycleEventHandlerInterface
     const PRE_REMOVE_PRIORITY = self::PRIORITY_HIGH;
 
     public function __construct(
-        private EntityTools $entityTools,
-        private BannedAddressRepository $bannedAddressRepository,
         private UsersClient $kamUsersClient,
         private LoggerInterface $logger
     ) {

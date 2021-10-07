@@ -4,7 +4,6 @@ namespace Ivoz\Kam\Domain\Service\UsersLocation;
 
 use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Model\Domain\DomainRepository;
 use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
@@ -16,7 +15,6 @@ class CompanyRegistrationSummary
     public function __construct(
         private DomainRepository $domainRepository,
         private UsersLocationRepository $usersLocationRepository,
-        private CompanyRepository $companyRepository,
         private TerminalRepository $terminalRepository,
         private FriendRepository $friendRepository,
         private ResidentialDeviceRepository $residentialDeviceRepository,
