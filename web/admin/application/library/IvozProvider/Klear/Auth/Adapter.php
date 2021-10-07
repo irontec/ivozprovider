@@ -79,7 +79,7 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
             throw new \Klear_Exception_Default('userMapper not configured', 500);
         }
 
-        $this->administrator = new $userMapperName;
+        $this->administrator = new $userMapperName();
 
         if (isset($this->_brand)) {
             $this->administrator->setBrand($this->_brand);

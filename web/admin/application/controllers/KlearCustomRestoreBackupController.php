@@ -1,4 +1,5 @@
 <?php
+
 class KlearCustomRestoreBackupController extends Zend_Controller_Action
 {
     protected $_mainRouter;
@@ -31,7 +32,7 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
     {
         $id = $this->_mainRouter->getParam('pk');
         $path = $this->getPath();
-        $filename = ($path. DIRECTORY_SEPARATOR . "Provision_template" . DIRECTORY_SEPARATOR . $id . DIRECTORY_SEPARATOR . $file . '.phtml.back');
+        $filename = ($path . DIRECTORY_SEPARATOR . "Provision_template" . DIRECTORY_SEPARATOR . $id . DIRECTORY_SEPARATOR . $file . '.phtml.back');
 
         if ($this->getRequest()->getParam("backup")) {
             $this->_helper->viewRenderer->setNoRender(true);
@@ -39,7 +40,7 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
             $filecontent = fread($file, filesize($filename));
             $data = array(
                     'title' => $this->_helper->translate("Restore backup"),
-                    'message'=>$this->_helper->translate("Loading") . "<textarea style=\"display: none\">" . str_replace("<br/>", "\n", $filecontent) . "</textarea>"
+                    'message' => $this->_helper->translate("Loading") . "<textarea style=\"display: none\">" . str_replace("<br/>", "\n", $filecontent) . "</textarea>"
             );
         } else {
             $existsBackup = file_exists($filename);
@@ -51,12 +52,12 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
 
             $data = array(
                     'title' => $this->_helper->translate("Restore backup"),
-                    'message'=> $message,
-                    'buttons'=>array(
+                    'message' => $message,
+                    'buttons' => array(
                             $this->_helper->translate('Accept') => array(
                                     'reloadParent' => false,
                                     'recall' => $existsBackup,
-                                    'params'=>array(
+                                    'params' => array(
                                             "backup" => true
                                     )
                             ),
@@ -81,7 +82,7 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
     private function getPath()
     {
         $bootstrap = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
-        $conf = (Object) $bootstrap->getOptions();
+        $conf = (object) $bootstrap->getOptions();
         $path = $conf->Iron['fso']['localStoragePath'];
         return $path;
     }

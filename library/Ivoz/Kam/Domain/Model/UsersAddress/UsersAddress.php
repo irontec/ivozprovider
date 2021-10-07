@@ -41,7 +41,7 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
         $this->setMask($mask);
     }
 
-    public function setIpAddr(?string $ipAddr = null):  static
+    public function setIpAddr(?string $ipAddr = null): static
     {
         if (!is_null($ipAddr)) {
             Assertion::ip($ipAddr);
@@ -50,7 +50,7 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
         return parent::setIpAddr($ipAddr);
     }
 
-    public function setMask(int $mask = null):  static
+    public function setMask(int $mask = null): static
     {
         $mask = $mask ?? 32;
 

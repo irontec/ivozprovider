@@ -34,7 +34,7 @@ class InvoiceSchedulerLifeCycleTest extends KernelTestCase
      */
     protected function addInvoiceScheduler()
     {
-        $invoiceSchedulerDto =$this->createDto();
+        $invoiceSchedulerDto = $this->createDto();
 
         /** @var InvoiceScheduler $invoiceScheduler */
         $invoiceScheduler = $this->entityTools

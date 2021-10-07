@@ -376,7 +376,7 @@ class WsServer extends AbstractWsServer
     ) {
         $keys = $redisClient->keys($mask);
         $this->logger->info(
-            "Sending current state (". $mask .") to #" . $fd
+            "Sending current state (" . $mask . ") to #" . $fd
         );
 
         $currentState = $redisClient->mGet($keys);

@@ -27,7 +27,8 @@ class SendTrunksLcrReloadRequest implements CarrierLifecycleEventHandlerInterfac
     public function execute(CarrierInterface $entity)
     {
         $changeSet = $entity->getChangedFields();
-        if (in_array('balance', $changeSet)
+        if (
+            in_array('balance', $changeSet)
             && count($changeSet) === 1
         ) {
             return;

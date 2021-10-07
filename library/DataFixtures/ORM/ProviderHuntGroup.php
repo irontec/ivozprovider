@@ -20,7 +20,7 @@ class ProviderHuntGroup extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(HuntGroup::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(HuntGroup::class);
         (function () use ($fixture) {
             $this->setName("testHuntGroup");
@@ -34,7 +34,7 @@ class ProviderHuntGroup extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
+
         $manager->flush();
     }
 

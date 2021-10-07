@@ -6,10 +6,11 @@ use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPubl
 class KlearCustomAclController extends Zend_Controller_Action
 {
     protected $_mainRouter;
-    
+
     public function init()
     {
-        if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter"))
+        if (
+            (!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter"))
             || (!is_object($this->_mainRouter))
         ) {
             throw new Zend_Exception(
@@ -24,7 +25,7 @@ class KlearCustomAclController extends Zend_Controller_Action
             ->addActionContext('grant-read-only', 'json')
             ->addActionContext('revoke-access', 'json')
             ->initContext('json');
-  
+
         $this->_helper->layout->disableLayout();
     }
 
@@ -50,7 +51,7 @@ class KlearCustomAclController extends Zend_Controller_Action
                 'title' => $this->_helper->translate(
                     "Write Access"
                 ),
-                'message'=> 'Write access successfully granted',
+                'message' => 'Write access successfully granted',
                 'buttons' => [
                     $this->_helper->translate('Accept') => [
                         'reloadParent' => true,
@@ -63,7 +64,7 @@ class KlearCustomAclController extends Zend_Controller_Action
                 'title' => $this->_helper->translate(
                     "Write Access"
                 ),
-                'message'=> $this->_helper->translate(
+                'message' => $this->_helper->translate(
                     'Do you really want to grant write access to selected entities?'
                 ),
                 'buttons' => [
@@ -113,7 +114,7 @@ class KlearCustomAclController extends Zend_Controller_Action
                 'title' => $this->_helper->translate(
                     "Read Only Access"
                 ),
-                'message'=> 'Read access successfully granted',
+                'message' => 'Read access successfully granted',
                 'buttons' => [
                     $this->_helper->translate('Accept') => [
                         'reloadParent' => true,
@@ -126,7 +127,7 @@ class KlearCustomAclController extends Zend_Controller_Action
                 'title' => $this->_helper->translate(
                     "Read Only Access"
                 ),
-                'message'=> $this->_helper->translate(
+                'message' => $this->_helper->translate(
                     'Do you really want to grant read access to selected entities?'
                 ),
                 'buttons' => [
@@ -176,7 +177,7 @@ class KlearCustomAclController extends Zend_Controller_Action
                 'title' => $this->_helper->translate(
                     "Revoke Access"
                 ),
-                'message'=> 'Access successfully revoked',
+                'message' => 'Access successfully revoked',
                 'buttons' => [
                     $this->_helper->translate('Accept') => [
                         'reloadParent' => true,
@@ -189,7 +190,7 @@ class KlearCustomAclController extends Zend_Controller_Action
                 'title' => $this->_helper->translate(
                     "Revoke Access"
                 ),
-                'message'=> $this->_helper->translate(
+                'message' => $this->_helper->translate(
                     'Do you really want to revoke access to selected entities?'
                 ),
                 'buttons' => [

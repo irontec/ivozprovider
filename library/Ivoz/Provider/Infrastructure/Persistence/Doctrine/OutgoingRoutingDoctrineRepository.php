@@ -24,7 +24,7 @@ class OutgoingRoutingDoctrineRepository extends ServiceEntityRepository implemen
     /*
      * Finds outgoing routings using the given pattern or a group having the given pattern
      */
-    public function findByRoutingPattern(RoutingPatternInterface $routingPattern) :array
+    public function findByRoutingPattern(RoutingPatternInterface $routingPattern): array
     {
         $qb = $this->createQueryBuilder('self');
         $query = $qb

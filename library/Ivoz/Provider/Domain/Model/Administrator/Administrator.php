@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
-use \Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Administrator
@@ -36,7 +36,8 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
      */
     public function setPass(string $pass = null): static
     {
-        if ($this->isInitialized()
+        if (
+            $this->isInitialized()
             && $pass === $this->getPass()
         ) {
             return $this;

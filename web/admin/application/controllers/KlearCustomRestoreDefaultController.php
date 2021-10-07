@@ -1,4 +1,5 @@
 <?php
+
 class KlearCustomRestoreDefaultController extends Zend_Controller_Action
 {
     protected $_mainRouter;
@@ -63,12 +64,12 @@ class KlearCustomRestoreDefaultController extends Zend_Controller_Action
 
             $data = array(
                     'title' => $this->_helper->translate("Restore default template"),
-                    'message'=> $message,
-                    'buttons'=>array(
+                    'message' => $message,
+                    'buttons' => array(
                             $this->_helper->translate('Accept') => array(
                                     'reloadParent' => false,
                                     'recall' => $existsBackup,
-                                    'params'=>array(
+                                    'params' => array(
                                             "backup" => true
                                     )
                             ),

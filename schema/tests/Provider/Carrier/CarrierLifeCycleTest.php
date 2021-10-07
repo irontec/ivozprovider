@@ -83,7 +83,7 @@ class CarrierLifeCycleTest extends KernelTestCase
         $this->addCarrier();
 
         $brands = $carrier->findAll();
-        $this->assertCount(count($fixtureCarriers) +1, $brands);
+        $this->assertCount(count($fixtureCarriers) + 1, $brands);
 
         ////////////////
         ///

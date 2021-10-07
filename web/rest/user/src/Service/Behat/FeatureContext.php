@@ -4,7 +4,7 @@ namespace Service\Behat;
 
 use Ivoz\Api\Behat\Context\FeatureContext as BaseFeatureContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
-use \Behat\MinkExtension\Context\RawMinkContext;
+use Behat\MinkExtension\Context\RawMinkContext;
 
 class FeatureContext extends BaseFeatureContext
 {

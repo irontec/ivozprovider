@@ -1,4 +1,5 @@
 <?php
+
 namespace Agi\Agents;
 
 use Doctrine\Common\Collections\Criteria;

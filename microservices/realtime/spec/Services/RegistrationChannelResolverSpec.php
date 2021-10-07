@@ -394,7 +394,7 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
         int $company = null,
         int $carrier = null,
         int $ddiProvider = null
-    ):array {
+    ): array {
 
         $filters = [];
 

@@ -40,7 +40,8 @@ class BillableCallNormalizer implements NormalizerInterface
             ->decoratedNormalizer
             ->normalize(...func_get_args());
 
-        if (! $object instanceof BillableCallInterface
+        if (
+            ! $object instanceof BillableCallInterface
             && !$object instanceof BillableCallDto
         ) {
             return $response;

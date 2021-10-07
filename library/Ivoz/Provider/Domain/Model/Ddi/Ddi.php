@@ -4,7 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Ddi;
 
 use Assert\Assertion;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
-use \Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
  * Ddi
@@ -61,7 +61,8 @@ class Ddi extends DdiAbstract implements DdiInterface
         );
 
         // If billInboundCalls is set, carrier must have externallyRated to 1
-        if ($this->getBillInboundCalls()
+        if (
+            $this->getBillInboundCalls()
             && !$this->getDdiProvider()->getExternallyRated()
         ) {
             throw new \DomainException(

@@ -12,10 +12,10 @@ class GenericForm extends AbstractFormBuilder
         $form = $this->_styles;
 
         $help = '<div class="parseHelp">';
-        $help.= '<p>'.$this->_translator->translate("Import file").";
-        $help.= ".$this->_translator->translate("Set column configuration and continue.").'</p>';
-        $help.= '<p>'.$this->_translator->translate("Fields with * are required").'.</p><br/>';
-        $help.= '<ul style="max-height: 150px; overflow-y: auto;">';
+        $help .= '<p>' . $this->_translator->translate("Import file") . ";
+        $help.= " . $this->_translator->translate("Set column configuration and continue.") . '</p>';
+        $help .= '<p>' . $this->_translator->translate("Fields with * are required") . '.</p><br/>';
+        $help .= '<ul style="max-height: 150px; overflow-y: auto;">';
 
         foreach ($this->_availableFields as $key => $fieldInfo) {
             $fieldLabel = \Klear_Model_Gettext::gettextCheck($fieldInfo->get('title'));
@@ -29,12 +29,12 @@ class GenericForm extends AbstractFormBuilder
                 $fieldHelp = \Klear_Model_Gettext::gettextCheck($fieldInfo->get('help'));
             }
 
-            $help.='<li>'.$fieldLabel.$required.'<em>'.$fieldHelp.'</em></li>';
+            $help .= '<li>' . $fieldLabel . $required . '<em>' . $fieldHelp . '</em></li>';
         }
 
-        $help.= '</ul></div>';
+        $help .= '</ul></div>';
         $table = $help . '<div class="tableBox"><table class="kMatrix parsedValues">';
-        $table.= "<tr>";
+        $table .= "<tr>";
         $idx = 0;
 
         $lineLength = count($lines[0]);
@@ -42,10 +42,10 @@ class GenericForm extends AbstractFormBuilder
 
         $fieldValues = $this->_postValues;
 
-        for ($i = 0; $i < $lineLength; $i ++) {
-            $optionValue = isset($fieldValues['field_'.$i]) ? $fieldValues['field_'.$i] : null;
+        for ($i = 0; $i < $lineLength; $i++) {
+            $optionValue = isset($fieldValues['field_' . $i]) ? $fieldValues['field_' . $i] : null;
 
-            $tmp = '<select name="field_'. $i;
+            $tmp = '<select name="field_' . $i;
             $tmp .= '" class="notcombo visualFilter ui-widget ui-state-default ui-corner-all ui-state-valid">';
             $selected = "";
             if ($optionValue == "ignore") {
@@ -91,7 +91,7 @@ class GenericForm extends AbstractFormBuilder
             $table .= "<th class='ui-widget-header multiItem notSortable'>" . $tmp . "</th>";
         }
 
-        $table.= "</tr>";
+        $table .= "</tr>";
         foreach ($lines as $line) {
             $table .= "<tr>";
             foreach ($line as $idPart => $part) {
@@ -106,7 +106,7 @@ class GenericForm extends AbstractFormBuilder
         if (!is_null($ignoreFirst) && $ignoreFirst == "on") {
             $checked = 'checked="checked"';
         }
-        $form .= '<label><input type="checkbox" name="ingoreFirst" '.$checked.'/> ';
+        $form .= '<label><input type="checkbox" name="ingoreFirst" ' . $checked . '/> ';
         $form .= $this->_translator->translate("Ignore first line.") . '</label>';
 
         $update = $this->_updateValues;

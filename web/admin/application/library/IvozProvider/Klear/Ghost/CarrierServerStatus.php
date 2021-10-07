@@ -123,10 +123,10 @@ class IvozProvider_Klear_Ghost_CarrierServerStatus extends KlearMatrix_Model_Fie
 
         if ($status === 0) {
             $response = '<span class="ui-silk inline ui-silk-tick" title="All servers active"></span>';
-        } elseif ($status === 2*count($carrierServers)) {
+        } elseif ($status === 2 * count($carrierServers)) {
             $response = '<span class="ui-silk inline ui-silk-exclamation" title="All server inactive"></span>';
         } else {
-            $response = '<span class="ui-silk inline ui-silk-error" title="'. $status / 2 .' of ' .count($carrierServers). ' servers inactive"></span>';
+            $response = '<span class="ui-silk inline ui-silk-error" title="' . $status / 2 . ' of ' . count($carrierServers) . ' servers inactive"></span>';
         }
 
         return $response;

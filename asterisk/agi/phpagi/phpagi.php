@@ -419,9 +419,9 @@ class AGI
      */
     function get_variable($variable, $getvalue = true)
     {
-        $res=$this->evaluate("GET VARIABLE $variable");
+        $res = $this->evaluate("GET VARIABLE $variable");
 
-        if ($getvalue==false) {
+        if ($getvalue == false) {
             return($res);
         }
 
@@ -906,7 +906,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer) - 1])) {
                 $proceed = true;
             }
         }
@@ -917,7 +917,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]));
+        return array('code' => AGIRES_OK, 'result' => ord($buffer[strlen($buffer) - 1]));
     }
 
     /**
@@ -935,7 +935,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer) - 1])) {
                 $proceed = true;
             }
         }
@@ -946,7 +946,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]));
+        return array('code' => AGIRES_OK, 'result' => ord($buffer[strlen($buffer) - 1]));
     }
 
     /**
@@ -964,7 +964,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer) - 1])) {
                 $proceed = true;
             }
         }
@@ -975,7 +975,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]));
+        return array('code' => AGIRES_OK, 'result' => ord($buffer[strlen($buffer) - 1]));
     }
 
     /**
@@ -993,7 +993,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer) - 1])) {
                 $proceed = true;
             }
         }
@@ -1004,7 +1004,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]));
+        return array('code' => AGIRES_OK, 'result' => ord($buffer[strlen($buffer) - 1]));
     }
 
     /**
@@ -1025,7 +1025,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer) - 1])) {
                 $proceed = true;
             }
         }
@@ -1036,7 +1036,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]), 'endpos'=>0);
+        return array('code' => AGIRES_OK, 'result' => ord($buffer[strlen($buffer) - 1]), 'endpos' => 0);
     }
 
     /**
@@ -1054,7 +1054,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer) - 1])) {
                 $proceed = true;
             }
         }
@@ -1065,7 +1065,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]), 'endpos'=>0);
+        return array('code' => AGIRES_OK, 'result' => ord($buffer[strlen($buffer) - 1]), 'endpos' => 0);
     }
 
     /**
@@ -1083,7 +1083,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer) - 1])) {
                 $proceed = true;
             }
         }
@@ -1094,7 +1094,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]), 'endpos'=>0);
+        return array('code' => AGIRES_OK, 'result' => ord($buffer[strlen($buffer) - 1]), 'endpos' => 0);
     }
 
     /**
@@ -1111,7 +1111,7 @@ class AGI
     {
         $proceed = false;
         if ($escape_digits != '' && $buffer != '') {
-            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer)-1])) {
+            if (!strpos(chr(255) . $escape_digits, $buffer[strlen($buffer) - 1])) {
                 $proceed = true;
             }
         }
@@ -1122,7 +1122,7 @@ class AGI
             }
             return $res;
         }
-        return array('code'=>AGIRES_OK, 'result'=>ord($buffer[strlen($buffer)-1]));
+        return array('code' => AGIRES_OK, 'result' => ord($buffer[strlen($buffer) - 1]));
     }
 
     /**
@@ -1184,7 +1184,7 @@ class AGI
                 }
             }
         }
-        return array('code'=>AGIRES_OK, 'result'=>$buffer);
+        return array('code' => AGIRES_OK, 'result' => $buffer);
     }
 
     // *********************************************************************************************************
@@ -1229,7 +1229,7 @@ class AGI
                 $ret = $this->get_data('beep', $timeout, 1);
                 if ($ret['code'] != AGIRES_OK || $ret['result'] == -1) {
                     $choice = -1;
-                } elseif ($ret['result'] != '' && strpos(' '.$keys, $ret['result'])) {
+                } elseif ($ret['result'] != '' && strpos(' ' . $keys, $ret['result'])) {
                     $choice = $ret['result'];
                 }
             }
@@ -1268,7 +1268,7 @@ class AGI
             $callerid = $this->request['agi_callerid'];
         }
 
-        $ret = array('name'=>'', 'protocol'=>'', 'username'=>'', 'host'=>'', 'port'=>'');
+        $ret = array('name' => '', 'protocol' => '', 'username' => '', 'host' => '', 'port' => '');
         $callerid = trim($callerid);
 
         if ($callerid[0] == '"' || $callerid[0] == "'") {
@@ -1420,26 +1420,26 @@ class AGI
      */
     function text_input($mode = 'NUMERIC')
     {
-        $alpha = array( 'k0'=>' ', 'k00'=>',', 'k000'=>'.', 'k0000'=>'?', 'k00000'=>'0',
-                'k1'=>'!', 'k11'=>':', 'k111'=>';', 'k1111'=>'#', 'k11111'=>'1',
-                'k2'=>'A', 'k22'=>'B', 'k222'=>'C', 'k2222'=>'2',
-                'k3'=>'D', 'k33'=>'E', 'k333'=>'F', 'k3333'=>'3',
-                'k4'=>'G', 'k44'=>'H', 'k444'=>'I', 'k4444'=>'4',
-                'k5'=>'J', 'k55'=>'K', 'k555'=>'L', 'k5555'=>'5',
-                'k6'=>'M', 'k66'=>'N', 'k666'=>'O', 'k6666'=>'6',
-                'k7'=>'P', 'k77'=>'Q', 'k777'=>'R', 'k7777'=>'S', 'k77777'=>'7',
-                'k8'=>'T', 'k88'=>'U', 'k888'=>'V', 'k8888'=>'8',
-                'k9'=>'W', 'k99'=>'X', 'k999'=>'Y', 'k9999'=>'Z', 'k99999'=>'9');
-        $symbol = array('k0'=>'=',
-                'k1'=>'<', 'k11'=>'(', 'k111'=>'[', 'k1111'=>'{', 'k11111'=>'1',
-                'k2'=>'@', 'k22'=>'$', 'k222'=>'&', 'k2222'=>'%', 'k22222'=>'2',
-                'k3'=>'>', 'k33'=>')', 'k333'=>']', 'k3333'=>'}', 'k33333'=>'3',
-                'k4'=>'+', 'k44'=>'-', 'k444'=>'*', 'k4444'=>'/', 'k44444'=>'4',
-                'k5'=>"'", 'k55'=>'`', 'k555'=>'5',
-                'k6'=>'"', 'k66'=>'6',
-                'k7'=>'^', 'k77'=>'7',
-                'k8'=>"\\",'k88'=>'|', 'k888'=>'8',
-                'k9'=>'_', 'k99'=>'~', 'k999'=>'9');
+        $alpha = array( 'k0' => ' ', 'k00' => ',', 'k000' => '.', 'k0000' => '?', 'k00000' => '0',
+                'k1' => '!', 'k11' => ':', 'k111' => ';', 'k1111' => '#', 'k11111' => '1',
+                'k2' => 'A', 'k22' => 'B', 'k222' => 'C', 'k2222' => '2',
+                'k3' => 'D', 'k33' => 'E', 'k333' => 'F', 'k3333' => '3',
+                'k4' => 'G', 'k44' => 'H', 'k444' => 'I', 'k4444' => '4',
+                'k5' => 'J', 'k55' => 'K', 'k555' => 'L', 'k5555' => '5',
+                'k6' => 'M', 'k66' => 'N', 'k666' => 'O', 'k6666' => '6',
+                'k7' => 'P', 'k77' => 'Q', 'k777' => 'R', 'k7777' => 'S', 'k77777' => '7',
+                'k8' => 'T', 'k88' => 'U', 'k888' => 'V', 'k8888' => '8',
+                'k9' => 'W', 'k99' => 'X', 'k999' => 'Y', 'k9999' => 'Z', 'k99999' => '9');
+        $symbol = array('k0' => '=',
+                'k1' => '<', 'k11' => '(', 'k111' => '[', 'k1111' => '{', 'k11111' => '1',
+                'k2' => '@', 'k22' => '$', 'k222' => '&', 'k2222' => '%', 'k22222' => '2',
+                'k3' => '>', 'k33' => ')', 'k333' => ']', 'k3333' => '}', 'k33333' => '3',
+                'k4' => '+', 'k44' => '-', 'k444' => '*', 'k4444' => '/', 'k44444' => '4',
+                'k5' => "'", 'k55' => '`', 'k555' => '5',
+                'k6' => '"', 'k66' => '6',
+                'k7' => '^', 'k77' => '7',
+                'k8' => "\\",'k88' => '|', 'k888' => '8',
+                'k9' => '_', 'k99' => '~', 'k999' => '9');
         $text = '';
         do {
             $command = false;
@@ -1464,7 +1464,7 @@ class AGI
                             break;
                         case '9':
                             $text = explode(' ', $text);
-                            unset($text[count($text)-1]);
+                            unset($text[count($text) - 1]);
                             $text = join(' ', $text);
                             break; // backspace a word
                     }
@@ -1475,12 +1475,12 @@ class AGI
                     $command = true;
                 } elseif ($mode == 'NUMERIC') {
                     $text .= $code;
-                } elseif ($mode == 'UPPERCASE' && isset($alpha['k'.$code])) {
-                    $text .= $alpha['k'.$code];
-                } elseif ($mode == 'LOWERCASE' && isset($alpha['k'.$code])) {
-                    $text .= strtolower($alpha['k'.$code]);
-                } elseif ($mode == 'SYMBOL' && isset($symbol['k'.$code])) {
-                    $text .= $symbol['k'.$code];
+                } elseif ($mode == 'UPPERCASE' && isset($alpha['k' . $code])) {
+                    $text .= $alpha['k' . $code];
+                } elseif ($mode == 'LOWERCASE' && isset($alpha['k' . $code])) {
+                    $text .= strtolower($alpha['k' . $code]);
+                } elseif ($mode == 'SYMBOL' && isset($symbol['k' . $code])) {
+                    $text .= $symbol['k' . $code];
                 }
             }
             $this->say_punctuation($text);
@@ -1632,7 +1632,7 @@ class AGI
      */
     function evaluate($command)
     {
-        $broken = array('code'=>500, 'result'=>-1, 'data'=>'');
+        $broken = array('code' => 500, 'result' => -1, 'data' => '');
 
         // write command
         if (!@fwrite($this->out, trim($command) . "\n")) {
@@ -1692,11 +1692,11 @@ class AGI
             foreach ($parse as $token) {
                 if ($in_token) { // we previously hit a token starting with ')' but not ending in ')'
                     $ret['data'] .= ' ' . trim($token, '() ');
-                    if ($token[strlen($token)-1] == ')') {
+                    if ($token[strlen($token) - 1] == ')') {
                         $in_token = false;
                     }
                 } elseif ($token[0] == '(') {
-                    if ($token[strlen($token)-1] != ')') {
+                    if ($token[strlen($token) - 1] != ')') {
                         $in_token = true;
                     }
                     $ret['data'] .= ' ' . trim($token, '() ');
@@ -1759,7 +1759,7 @@ class AGI
         }
 
         if (is_null($checkpath)) {
-            return $this->which($cmd, '/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:'.
+            return $this->which($cmd, '/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:' .
                     '/usr/X11R6/bin:/usr/local/apache/bin:/usr/local/mysql/bin');
         }
         return false;
@@ -1883,7 +1883,7 @@ function phpagi_error_handler($level, $message, $file, $line, $context)
         $subject = "$basefile/$line/$level: $message";
         $message = "$level: $message in $file on line $line\n\n";
 
-        if (function_exists('mysql_errno') && strpos(' '.strtolower($message), 'mysql')) {
+        if (function_exists('mysql_errno') && strpos(' ' . strtolower($message), 'mysql')) {
             $message .= 'MySQL error ' . mysql_errno() . ": " . mysql_error() . "\n\n";
         }
 
@@ -1908,7 +1908,7 @@ function phpagi_error_handler($level, $message, $file, $line, $context)
             $message .= "\n\n$file:\n";
             $code = @file($file);
             for ($i = max(0, $line - 10); $i < min($line + 10, count($code)); $i++) {
-                $message .= ($i + 1)."\t$code[$i]";
+                $message .= ($i + 1) . "\t$code[$i]";
             }
         }
 

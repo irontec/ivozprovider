@@ -52,7 +52,7 @@ class IvozProvider_Klear_Filter_CalendarPeriodSelectLocution implements KlearMat
                     );
 
                     $companyId = $calendarDto->getCompanyId();
-                    $this->_condition[] = "self::company = '".$companyId."'";
+                    $this->_condition[] = "self::company = '" . $companyId . "'";
                 }
                 break;
         }

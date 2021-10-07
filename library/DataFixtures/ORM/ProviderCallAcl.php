@@ -20,7 +20,7 @@ class ProviderCallAcl extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(CallAcl::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(CallAcl::class);
         (function () use ($fixture) {
             $this->setName("testACL");

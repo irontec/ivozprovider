@@ -50,7 +50,7 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
         }
 
         if (!empty($terminalIds)) {
-            $this->_condition[] = 'self::id NOT IN ('. implode(',', $terminalIds) .')';
+            $this->_condition[] = 'self::id NOT IN (' . implode(',', $terminalIds) . ')';
         }
 
         return true;

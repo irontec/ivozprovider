@@ -165,7 +165,7 @@ class ProviderTimezone extends Fixture implements DependentFixtureInterface
             $this->setCountry($fixture->getReference('_reference_ProviderCountry7'));
         })->call($item14);
 
-        
+
         $this->addReference('_reference_ProviderTimezone14', $item14);
         $this->sanitizeEntityValues($item14);
         $manager->persist($item14);

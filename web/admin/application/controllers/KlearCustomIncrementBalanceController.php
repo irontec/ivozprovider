@@ -39,7 +39,7 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
         $this->dataGateway = Zend_Registry::get('data_gateway');
         $this->container = Zend_Registry::get('container');
 
-        $this->_template = APPLICATION_PATH."/bin/template.php";
+        $this->_template = APPLICATION_PATH . "/bin/template.php";
     }
 
     public function addToBalanceAction()
@@ -241,7 +241,7 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
         $data = [
             'title' => $this->_helper->translate("Add balance"),
             'message' => $message,
-            'buttons'=>$buttons
+            'buttons' => $buttons
         ];
 
         $jsonResponse = new Klear_Model_DispatchResponse();

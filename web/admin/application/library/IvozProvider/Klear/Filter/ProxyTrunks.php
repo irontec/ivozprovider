@@ -37,7 +37,7 @@ class IvozProvider_Klear_Filter_ProxyTrunks implements KlearMatrix_Model_Field_S
         }
 
         if (count($proxyTrunkIds)) {
-            $this->_condition[] = "self::id IN (" . implode(',', $proxyTrunkIds) .")";
+            $this->_condition[] = "self::id IN (" . implode(',', $proxyTrunkIds) . ")";
         } else {
             $this->_condition[] = "self::id IS NULL";
         }

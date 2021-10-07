@@ -104,7 +104,7 @@ class Retails extends RouteHandlerAbstract
         // Some feedback for asterisk cli
         $this->agi->notice("Processing outgoing call from \e[0;36m%s\e[0;93m to number %s", $retailAccount, $exten);
 
-        $cfwDestination= $this->agi->getSIPHeader('X-Info-Cfw-Destination');
+        $cfwDestination = $this->agi->getSIPHeader('X-Info-Cfw-Destination');
         if ($cfwDestination) {
             $dstRetailAccount = $this->endpointResolver->getRetailFromEndpoint($cfwDestination);
             $this->retailCallAction

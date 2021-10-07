@@ -1,4 +1,5 @@
 <?php
+
 /**
  * phpagi-asmanager.php : PHP Asterisk Manager functions
  * Website: http://phpagi.sourceforge.net
@@ -17,7 +18,6 @@
  * @package phpAGI
  * @version 2.0
  */
-
 
 /**
  * Written for PHP 4.3.4, should work with older PHP 4.x versions.
@@ -249,7 +249,7 @@ class AGI_AsteriskManager
         }
 
         // login
-        $res = $this->send_request('login', array('Username'=>$username, 'Secret'=>$secret));
+        $res = $this->send_request('login', array('Username' => $username, 'Secret' => $secret));
         if ($res['Response'] != 'Success') {
             $this->log("Failed to login.");
             $this->disconnect();
@@ -284,7 +284,7 @@ class AGI_AsteriskManager
      */
     function AbsoluteTimeout($channel, $timeout)
     {
-        return $this->send_request('AbsoluteTimeout', array('Channel'=>$channel, 'Timeout'=>$timeout));
+        return $this->send_request('AbsoluteTimeout', array('Channel' => $channel, 'Timeout' => $timeout));
     }
 
     /**
@@ -296,7 +296,7 @@ class AGI_AsteriskManager
      */
     function ChangeMonitor($channel, $file)
     {
-        return $this->send_request('ChangeMontior', array('Channel'=>$channel, 'File'=>$file));
+        return $this->send_request('ChangeMontior', array('Channel' => $channel, 'File' => $file));
     }
 
     /**
@@ -310,7 +310,7 @@ class AGI_AsteriskManager
      */
     function Command($command, $actionid = null)
     {
-        $parameters = array('Command'=>$command);
+        $parameters = array('Command' => $command);
         if ($actionid) {
             $parameters['ActionID'] = $actionid;
         }
@@ -325,7 +325,7 @@ class AGI_AsteriskManager
      */
     function Events($eventmask)
     {
-        return $this->send_request('Events', array('EventMask'=>$eventmask));
+        return $this->send_request('Events', array('EventMask' => $eventmask));
     }
 
     /**
@@ -338,7 +338,7 @@ class AGI_AsteriskManager
      */
     function ExtensionState($exten, $context, $actionid = null)
     {
-        $parameters = array('Exten'=>$exten, 'Context'=>$context);
+        $parameters = array('Exten' => $exten, 'Context' => $context);
         if ($actionid) {
             $parameters['ActionID'] = $actionid;
         }
@@ -356,7 +356,7 @@ class AGI_AsteriskManager
      */
     function GetVar($channel, $variable, $actionid = null)
     {
-        $parameters = array('Channel'=>$channel, 'Variable'=>$variable);
+        $parameters = array('Channel' => $channel, 'Variable' => $variable);
         if ($actionid) {
             $parameters['ActionID'] = $actionid;
         }
@@ -371,7 +371,7 @@ class AGI_AsteriskManager
      */
     function Hangup($channel)
     {
-        return $this->send_request('Hangup', array('Channel'=>$channel));
+        return $this->send_request('Hangup', array('Channel' => $channel));
     }
 
     /**
@@ -393,7 +393,7 @@ class AGI_AsteriskManager
     function ListCommands($actionid = null)
     {
         if ($actionid) {
-            return $this->send_request('ListCommands', array('ActionID'=>$actionid));
+            return $this->send_request('ListCommands', array('ActionID' => $actionid));
         } else {
             return $this->send_request('ListCommands');
         }
@@ -424,7 +424,7 @@ class AGI_AsteriskManager
      */
     function MailboxCount($mailbox, $actionid = null)
     {
-        $parameters = array('Mailbox'=>$mailbox);
+        $parameters = array('Mailbox' => $mailbox);
         if ($actionid) {
             $parameters['ActionID'] = $actionid;
         }
@@ -445,7 +445,7 @@ class AGI_AsteriskManager
      */
     function MailboxStatus($mailbox, $actionid = null)
     {
-        $parameters = array('Mailbox'=>$mailbox);
+        $parameters = array('Mailbox' => $mailbox);
         if ($actionid) {
             $parameters['ActionID'] = $actionid;
         }
@@ -463,7 +463,7 @@ class AGI_AsteriskManager
      */
     function Monitor($channel, $file = null, $format = null, $mix = null)
     {
-        $parameters = array('Channel'=>$channel);
+        $parameters = array('Channel' => $channel);
         if ($file) {
             $parameters['File'] = $file;
         }
@@ -507,7 +507,7 @@ class AGI_AsteriskManager
         $async = null,
         $actionid = null
     ) {
-        $parameters = array('Channel'=>$channel);
+        $parameters = array('Channel' => $channel);
 
         if ($exten) {
             $parameters['Exten'] = $exten;
@@ -557,7 +557,7 @@ class AGI_AsteriskManager
     function ParkedCalls($actionid = null)
     {
         if ($actionid) {
-            return $this->send_request('ParkedCalls', array('ActionID'=>$actionid));
+            return $this->send_request('ParkedCalls', array('ActionID' => $actionid));
         } else {
             return $this->send_request('ParkedCalls');
         }
@@ -583,7 +583,7 @@ class AGI_AsteriskManager
      */
     function QueueAdd($queue, $interface, $penalty = 0)
     {
-        $parameters = array('Queue'=>$queue, 'Interface'=>$interface);
+        $parameters = array('Queue' => $queue, 'Interface' => $interface);
         if ($penalty) {
             $parameters['Penalty'] = $penalty;
         }
@@ -599,7 +599,7 @@ class AGI_AsteriskManager
      */
     function QueueRemove($queue, $interface)
     {
-        return $this->send_request('QueueRemove', array('Queue'=>$queue, 'Interface'=>$interface));
+        return $this->send_request('QueueRemove', array('Queue' => $queue, 'Interface' => $interface));
     }
 
     /**
@@ -621,7 +621,7 @@ class AGI_AsteriskManager
     function QueueStatus($actionid = null)
     {
         if ($actionid) {
-            return $this->send_request('QueueStatus', array('ActionID'=>$actionid));
+            return $this->send_request('QueueStatus', array('ActionID' => $actionid));
         } else {
             return $this->send_request('QueueStatus');
         }
@@ -639,8 +639,8 @@ class AGI_AsteriskManager
      */
     function Redirect($channel, $extrachannel, $exten, $context, $priority)
     {
-        return $this->send_request('Redirect', array('Channel'=>$channel, 'ExtraChannel'=>$extrachannel, 'Exten'=>$exten,
-                'Context'=>$context, 'Priority'=>$priority));
+        return $this->send_request('Redirect', array('Channel' => $channel, 'ExtraChannel' => $extrachannel, 'Exten' => $exten,
+                'Context' => $context, 'Priority' => $priority));
     }
 
     /**
@@ -653,7 +653,7 @@ class AGI_AsteriskManager
      */
     function SetCDRUserField($userfield, $channel, $append = null)
     {
-        $parameters = array('UserField'=>$userfield, 'Channel'=>$channel);
+        $parameters = array('UserField' => $userfield, 'Channel' => $channel);
         if ($append) {
             $parameters['Append'] = $append;
         }
@@ -670,7 +670,7 @@ class AGI_AsteriskManager
      */
     function SetVar($channel, $variable, $value)
     {
-        return $this->send_request('SetVar', array('Channel'=>$channel, 'Variable'=>$variable, 'Value'=>$value));
+        return $this->send_request('SetVar', array('Channel' => $channel, 'Variable' => $variable, 'Value' => $value));
     }
 
     /**
@@ -682,7 +682,7 @@ class AGI_AsteriskManager
      */
     function Status($channel, $actionid = null)
     {
-        $parameters = array('Channel'=>$channel);
+        $parameters = array('Channel' => $channel);
         if ($actionid) {
             $parameters['ActionID'] = $actionid;
         }
@@ -697,7 +697,7 @@ class AGI_AsteriskManager
      */
     function StopMontor($channel)
     {
-        return $this->send_request('StopMonitor', array('Channel'=>$channel));
+        return $this->send_request('StopMonitor', array('Channel' => $channel));
     }
 
     /**
@@ -709,7 +709,7 @@ class AGI_AsteriskManager
      */
     function ZapDialOffhook($zapchannel, $number)
     {
-        return $this->send_request('ZapDialOffhook', array('ZapChannel'=>$zapchannel, 'Number'=>$number));
+        return $this->send_request('ZapDialOffhook', array('ZapChannel' => $zapchannel, 'Number' => $number));
     }
 
     /**
@@ -720,7 +720,7 @@ class AGI_AsteriskManager
      */
     function ZapDNDoff($zapchannel)
     {
-        return $this->send_request('ZapDNDoff', array('ZapChannel'=>$zapchannel));
+        return $this->send_request('ZapDNDoff', array('ZapChannel' => $zapchannel));
     }
 
     /**
@@ -731,7 +731,7 @@ class AGI_AsteriskManager
      */
     function ZapDNDon($zapchannel)
     {
-        return $this->send_request('ZapDNDon', array('ZapChannel'=>$zapchannel));
+        return $this->send_request('ZapDNDon', array('ZapChannel' => $zapchannel));
     }
 
     /**
@@ -742,7 +742,7 @@ class AGI_AsteriskManager
      */
     function ZapHangup($zapchannel)
     {
-        return $this->send_request('ZapHangup', array('ZapChannel'=>$zapchannel));
+        return $this->send_request('ZapHangup', array('ZapChannel' => $zapchannel));
     }
 
     /**
@@ -753,7 +753,7 @@ class AGI_AsteriskManager
      */
     function ZapTransfer($zapchannel)
     {
-        return $this->send_request('ZapTransfer', array('ZapChannel'=>$zapchannel));
+        return $this->send_request('ZapTransfer', array('ZapChannel' => $zapchannel));
     }
 
     /**
@@ -765,7 +765,7 @@ class AGI_AsteriskManager
     function ZapShowChannels($actionid = null)
     {
         if ($actionid) {
-            return $this->send_request('ZapShowChannels', array('ActionID'=>$actionid));
+            return $this->send_request('ZapShowChannels', array('ActionID' => $actionid));
         } else {
             return $this->send_request('ZapShowChannels');
         }

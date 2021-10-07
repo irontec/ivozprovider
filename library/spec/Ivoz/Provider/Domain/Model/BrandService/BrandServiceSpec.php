@@ -18,6 +18,7 @@ use spec\DtoToEntityFakeTransformer;
 class BrandServiceSpec extends ObjectBehavior
 {
     use HelperTrait;
+
     protected $dto;
 
     /**

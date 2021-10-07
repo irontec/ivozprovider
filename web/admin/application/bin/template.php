@@ -1,8 +1,10 @@
 #!/usr/bin/php
 <?php
+
 /**
  *  Provisioning template wrapper
  */
+
 date_default_timezone_set('UTC');
 
 defined('APPLICATION_ENV')

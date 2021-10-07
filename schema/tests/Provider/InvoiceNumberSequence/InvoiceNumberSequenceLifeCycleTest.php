@@ -135,6 +135,6 @@ class InvoiceNumberSequenceLifeCycleTest extends KernelTestCase
         $this->expectException(
             \Doctrine\ORM\OptimisticLockException::class
         );
-        $this->entityTools->lock($entity, $entity->getVersion()-1);
+        $this->entityTools->lock($entity, $entity->getVersion() - 1);
     }
 }

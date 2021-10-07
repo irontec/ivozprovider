@@ -4,7 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Extension;
 
 use Assert\Assertion;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
-use \Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
  * Extension

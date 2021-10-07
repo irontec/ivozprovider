@@ -48,7 +48,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     /**
      * @return bool
      */
-    public function isDirectConnectivity() : bool
+    public function isDirectConnectivity(): bool
     {
         return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_YES;
     }

@@ -19,7 +19,7 @@ class ProviderProxyUser extends Fixture
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ProxyUser::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(ProxyUser::class);
         (function () use ($fixture) {
             $this->setName("proxyusers");
@@ -30,7 +30,7 @@ class ProviderProxyUser extends Fixture
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
+
         $manager->flush();
     }
 }

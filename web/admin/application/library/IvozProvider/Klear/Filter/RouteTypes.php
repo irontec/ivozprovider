@@ -2,7 +2,7 @@
 
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
-use \Ivoz\Provider\Domain\Model\Feature\Feature;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Feature\FeatureDto;

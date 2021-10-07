@@ -99,7 +99,7 @@ class RegistrationChannelResolver
     private function assertBrandAdminAccessGranted(
         string $username,
         array $registerCriteria
-    ):bool {
+    ): bool {
 
         $admin = $this->administratorRepository->findBrandAdminByUsername(
             $username
@@ -177,7 +177,7 @@ class RegistrationChannelResolver
     private function assertClientAdminAccessGranted(
         string $username,
         array $registerCriteria
-    ):bool {
+    ): bool {
 
         $admin = $this->administratorRepository->findClientAdminByUsername(
             $username

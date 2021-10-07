@@ -1,5 +1,6 @@
 #!/usr/bin/php
 <?php
+
 /**
  * phpagi-fastagi.php : PHP FastAGI bootstrap
  * Website: http://phpagi.sourceforge.net

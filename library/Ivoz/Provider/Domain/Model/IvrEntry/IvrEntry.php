@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Model\IvrEntry;
 
 use Ivoz\Provider\Domain\Traits\RoutableTrait;

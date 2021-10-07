@@ -20,7 +20,7 @@ class ProviderFeaturesRelBrand extends Fixture implements DependentFixtureInterf
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(FeaturesRelBrand::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(FeaturesRelBrand::class);
         (function () use ($fixture) {
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));

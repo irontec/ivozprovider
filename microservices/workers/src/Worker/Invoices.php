@@ -84,7 +84,7 @@ class Invoices
             if (!file_exists($tempPath)) {
                 mkdir($tempPath);
             }
-            $tempPdf = $tempPath."/temp". $invoice->getId() .".pdf";
+            $tempPdf = $tempPath . "/temp" . $invoice->getId() . ".pdf";
             file_put_contents($tempPdf, $content);
 
             $totals = $this->generator->getTotals();

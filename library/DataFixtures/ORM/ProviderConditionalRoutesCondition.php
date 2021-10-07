@@ -20,7 +20,7 @@ class ProviderConditionalRoutesCondition extends Fixture implements DependentFix
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ConditionalRoutesCondition::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(ConditionalRoutesCondition::class);
         (function () use ($fixture) {
             $this->setPriority(1);
@@ -34,7 +34,7 @@ class ProviderConditionalRoutesCondition extends Fixture implements DependentFix
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
+
         $manager->flush();
     }
 

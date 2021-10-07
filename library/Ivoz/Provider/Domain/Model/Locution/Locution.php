@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Model\Locution;
 
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
@@ -11,7 +12,8 @@ use Ivoz\Core\Domain\Service\TempFile;
 class Locution extends LocutionAbstract implements FileContainerInterface, LocutionInterface
 {
     use LocutionTrait;
-    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile;
+    use TempFileContainnerTrait {
+        addTmpFile as protected _addTmpFile;
     }
 
     /**

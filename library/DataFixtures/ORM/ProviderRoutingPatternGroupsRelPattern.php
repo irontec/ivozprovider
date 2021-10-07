@@ -20,7 +20,7 @@ class ProviderRoutingPatternGroupsRelPattern extends Fixture implements Dependen
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(RoutingPatternGroupsRelPattern::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item6310 = $this->createEntityInstance(RoutingPatternGroupsRelPattern::class);
         (function () use ($fixture) {
             $this->setRoutingPattern($fixture->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));

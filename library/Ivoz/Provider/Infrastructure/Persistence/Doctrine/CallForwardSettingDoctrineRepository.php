@@ -26,7 +26,7 @@ class CallForwardSettingDoctrineRepository extends ServiceEntityRepository imple
      * @param mixed $userId
      * @return int
      */
-    public function countByUserId($userId) :int
+    public function countByUserId($userId): int
     {
         $qb = $this->createQueryBuilder('self');
 
@@ -41,7 +41,7 @@ class CallForwardSettingDoctrineRepository extends ServiceEntityRepository imple
      * @param UserInterface $user
      * @return CallForwardSettingInterface[]
      */
-    public function findAndJoinByUser(UserInterface $user) :array
+    public function findAndJoinByUser(UserInterface $user): array
     {
         $qb = $this->createQueryBuilder('self');
 

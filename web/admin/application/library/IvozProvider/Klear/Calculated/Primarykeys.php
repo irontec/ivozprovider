@@ -1,4 +1,5 @@
 <?php
+
 class IvozProvider_Klear_Calculated_Primarykeys
 {
     public function huntGroupPk(KlearMatrix_Model_RouteDispatcher $router)

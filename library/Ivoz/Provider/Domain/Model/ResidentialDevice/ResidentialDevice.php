@@ -55,7 +55,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * @return bool
      */
-    public function isDirectConnectivity() : bool
+    public function isDirectConnectivity(): bool
     {
         return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_YES;
     }

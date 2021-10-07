@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Application\Service\User;
 
@@ -122,7 +124,7 @@ class SyncFromCsv
                     $entities
                 );
             } catch (\Exception $e) {
-                $errors[$k+1] = $e->getMessage();
+                $errors[$k + 1] = $e->getMessage();
                 continue;
             }
         }

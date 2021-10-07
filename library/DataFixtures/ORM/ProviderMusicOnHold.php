@@ -22,7 +22,7 @@ class ProviderMusicOnHold extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(MusicOnHold::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(MusicOnHold::class);
         (function () use ($fixture) {
             $this->setName("Something good");

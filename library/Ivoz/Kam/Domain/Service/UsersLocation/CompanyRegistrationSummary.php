@@ -76,7 +76,7 @@ class CompanyRegistrationSummary
         return $total;
     }
 
-    private function getDeviceNames(CompanyInterface $company):array
+    private function getDeviceNames(CompanyInterface $company): array
     {
         if ($company->isWholesale()) {
             return [];

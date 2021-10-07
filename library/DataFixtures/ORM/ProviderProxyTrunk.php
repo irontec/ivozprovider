@@ -19,7 +19,7 @@ class ProviderProxyTrunk extends Fixture
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ProxyTrunk::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(ProxyTrunk::class);
         (function () use ($fixture) {
             $this->setName("proxytrunks");

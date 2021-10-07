@@ -20,7 +20,7 @@ class ProviderFeaturesRelCompany extends Fixture implements DependentFixtureInte
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(FeaturesRelCompany::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(FeaturesRelCompany::class);
         (function () use ($fixture) {
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));

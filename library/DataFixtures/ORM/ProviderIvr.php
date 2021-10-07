@@ -20,7 +20,7 @@ class ProviderIvr extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Ivr::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(Ivr::class);
         (function () use ($fixture) {
             $this->setName("testIvrCustom");

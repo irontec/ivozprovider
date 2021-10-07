@@ -2,7 +2,7 @@
 
 use Knp\Snappy\Pdf;
 use Handlebars\Handlebars;
-use \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate;
+use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate;
 
 class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
 {
@@ -13,8 +13,10 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
     public function init()
     {
         // Nos aseguramos que este controlador se ejecuta sólamente desde klear!
-        if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter"))
-         ||    (!is_object($this->_mainRouter))) {
+        if (
+            (!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter"))
+            ||    (!is_object($this->_mainRouter))
+        ) {
             throw new Zend_Exception('', Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
@@ -49,7 +51,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
         $templateModel = $dataGateway->find(InvoiceTemplate::class, $this->_pk);
 
         $variables = $this->_getSampleData();
-        $templateEngine = new Handlebars;
+        $templateEngine = new Handlebars();
         $header = $templateEngine->render($templateModel->getTemplateHeader(), $variables);
         $body = $templateEngine->render($templateModel->getTemplate(), $variables);
         $footer = $templateEngine->render($templateModel->getTemplateFooter(), $variables);
@@ -69,16 +71,16 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
             mkdir($targetFolder, 0777, true);
         }
 
-        $tempFilePath = $targetFolder . $this->_pk .".pdf";
+        $tempFilePath = $targetFolder . $this->_pk . ".pdf";
         file_put_contents($tempFilePath, $content);
 
         $tempFileLink = $this->view->serverUrl() . $templateFolder . $this->_pk . ".pdf";
-        $message = "<h2>Click <a href='".$tempFileLink."' target='_blank'> <span class=\"ui-silk inline ui-silk-page-white-acrobat\"></span>here</a> to view the result</p>";
+        $message = "<h2>Click <a href='" . $tempFileLink . "' target='_blank'> <span class=\"ui-silk inline ui-silk-page-white-acrobat\"></span>here</a> to view the result</p>";
 
         $data = array(
             "title" => $this->_helper->translate("Invoice template tester"),
             "message" => $message,
-            "options" => array('width'=>'300px'),
+            "options" => array('width' => '300px'),
             "buttons" => array(
               $this->_helper->translate("Close") => array(
                   "recall" => false,
@@ -95,7 +97,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
         $data = array(
             "title" => "OK Dialog Title",
             "message" => $message,
-            "options" => array('width'=>'300px'),
+            "options" => array('width' => '300px'),
             "buttons" => array(
                 $this->_helper->translate("Accept") => array(
                     "recall" => false,

@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Kam\Domain\Model\UsersActiveWatcher;
 
 /**

@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Model\Ivr;
 
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
@@ -10,7 +11,8 @@ class Ivr extends IvrAbstract implements IvrInterface
 {
     use IvrTrait;
 
-    use RoutableTrait { getTarget as protected;
+    use RoutableTrait {
+        getTarget as protected;
     }
 
     /**

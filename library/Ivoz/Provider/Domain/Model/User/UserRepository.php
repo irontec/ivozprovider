@@ -25,13 +25,13 @@ interface UserRepository extends ObjectRepository, Selectable
      * @param UserInterface $user
      * @return UserInterface[]
      */
-    public function getUserAssistantCandidates(UserInterface $user) :array;
+    public function getUserAssistantCandidates(UserInterface $user): array;
 
     /**
      * @param UserInterface $user
      * @return UserInterface[]
      */
-    public function getAvailableVoicemails(UserInterface $user) :array;
+    public function getAvailableVoicemails(UserInterface $user): array;
 
     public function getBrandUsersIdsOrderByTerminalExpireDate(int $brandId, string $order = 'DESC'): array;
 

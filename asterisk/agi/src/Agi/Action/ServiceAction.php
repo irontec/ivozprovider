@@ -518,7 +518,7 @@ class ServiceAction
 
         do {
             $this->agi->playback($sound);
-            $entered.= $digit = $this->agi->read("", 60, 1);
+            $entered .= $digit = $this->agi->read("", 60, 1);
             $sound = "hello/$digit";
         } while (substr($entered, -3) != 777);
 

@@ -20,7 +20,7 @@ class ProviderHuntGroupsRelUser extends Fixture implements DependentFixtureInter
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(HuntGroupsRelUser::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(HuntGroupsRelUser::class);
         (function () use ($fixture) {
             $this->setRouteType("user");

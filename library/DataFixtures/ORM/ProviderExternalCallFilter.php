@@ -20,7 +20,7 @@ class ProviderExternalCallFilter extends Fixture implements DependentFixtureInte
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ExternalCallFilter::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(ExternalCallFilter::class);
         (function () use ($fixture) {
             $this->setName("testFilter");
@@ -33,7 +33,7 @@ class ProviderExternalCallFilter extends Fixture implements DependentFixtureInte
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
+
         $manager->flush();
     }
 

@@ -90,7 +90,7 @@ class FriendSpec extends ObjectBehavior
 
         $this
             ->shouldThrow('\Exception')
-            ->duringUpdateFromDto($dto, new $this->transformer);
+            ->duringUpdateFromDto($dto, new $this->transformer());
 
         $dto->setName('#something');
 
