@@ -51,7 +51,7 @@ class TokenExchangeAction
 
         /** @var string  $inputToken */
         $inputToken =  $request->get('token');
-        /** @var int $username */
+        /** @var string $username */
         $username = $request->get('username');
 
         $tokenStr = $this->exchangeToken->execute(

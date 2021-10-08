@@ -5,15 +5,13 @@ namespace Controller\My;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Serializer\Encoder\DecoderInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\SerializerInterface;
 
 class PutProfileAction
 {
     public function __construct(
         private TokenStorageInterface $tokenStorage,
-        private SerializerInterface $serializer,
+        private DenormalizerInterface $denormalizer,
         private RequestStack $requestStack
     ) {
     }
@@ -29,7 +27,8 @@ class PutProfileAction
         $user = $token->getUser();
         $request = $this->requestStack->getCurrentRequest();
 
-        $data = $this->serializer->decode(
+        /** @phpstan-ignore-next-line  */
+        $data = $this->denormalizer->decode(
             $request->getContent(),
             $request->getRequestFormat(),
             []
@@ -40,7 +39,7 @@ class PutProfileAction
             unset($data['pass']);
         }
 
-        return $this->serializer->denormalize(
+        return $this->denormalizer->denormalize(
             $data,
             get_class($user),
             $request->getRequestFormat(),

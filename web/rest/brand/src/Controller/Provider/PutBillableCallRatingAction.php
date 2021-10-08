@@ -10,13 +10,13 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class PutBillableCallRatingAction
 {
     public function __construct(
         private TokenStorageInterface $tokenStorage,
-        private SerializerInterface $serializer,
+        private DenormalizerInterface $denormalizer,
         private RequestStack $requestStack,
         private BillableCallRepository $billableCallRepository
     ) {
@@ -42,7 +42,8 @@ class PutBillableCallRatingAction
         $content = $request->getContent();
         $format = $request->getRequestFormat();
 
-        $data = $this->serializer->decode(
+        /** @phpstan-ignore-next-line  */
+        $data = $this->denormalizer->decode(
             $content,
             $format,
             []
@@ -78,7 +79,7 @@ class PutBillableCallRatingAction
 
         $billableCall = $calls[0];
 
-        return $this->serializer->denormalize(
+        return $this->denormalizer->denormalize(
             $data,
             BillableCall::class,
             $request->getRequestFormat(),

@@ -10,13 +10,13 @@ use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Model\UsersMassImport;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class PostUsersMassImportAction
 {
     public function __construct(
         private TokenStorageInterface $tokenStorage,
-        private SerializerInterface $serializer,
+        private DenormalizerInterface $denormalizer,
         private RequestStack $requestStack,
         private CompanyRepository $companyRepository,
         private SyncFromCsv $syncFromCsv
@@ -76,7 +76,7 @@ class PostUsersMassImportAction
             $rowsFailed
         );
 
-        return $this->serializer->denormalize(
+        return $this->denormalizer->denormalize(
             [],
             UsersMassImport::class,
             $request->getRequestFormat(),

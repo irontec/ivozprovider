@@ -43,12 +43,7 @@ class Multimedia
             $entityName = $job['entityName'];
             $entityNameSegments = explode('\\', $entityName);
             $entityClass = end($entityNameSegments);
-
             $repository = $this->em->getRepository($entityName);
-            if (!$repository) {
-                $this->logger->error(sprintf("Unable to find repository for %s", $entityName));
-                return false;
-            }
 
             /** @var LocutionInterface | null $entity */
             $entity = $repository->find($entityId);

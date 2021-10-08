@@ -7,13 +7,13 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class PostCallForwardSettingsAction
 {
     public function __construct(
         private TokenStorageInterface $tokenStorage,
-        private SerializerInterface $serializer,
+        private DenormalizerInterface $denormalizer,
         private RequestStack $requestStack
     ) {
     }
@@ -30,14 +30,15 @@ class PostCallForwardSettingsAction
         $user = $token->getUser();
         $request = $this->requestStack->getCurrentRequest();
 
-        $data = $this->serializer->decode(
+        /** @phpstan-ignore-next-line */
+        $data = $this->denormalizer->decode(
             $request->getContent(),
             $request->getRequestFormat(),
             []
         );
         $data['user'] = $user->getid();
 
-        return $this->serializer->denormalize(
+        return $this->denormalizer->denormalize(
             $data,
             CallForwardSetting::class,
             $request->getRequestFormat(),
