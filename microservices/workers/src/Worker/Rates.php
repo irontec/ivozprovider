@@ -32,51 +32,24 @@ class Rates
 
     use RegisterCommandTrait;
 
-    private $eventPublisher;
-    private $requestId;
-    private $em;
-    private $destinationRepository;
-    private $tpDestinationRepository;
-    private $destinationRateRepository;
-    private $tpRateRepository;
-    private $tpDestinationRateRepository;
-    private $entityTools;
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-    private $destinationRateGroupRepository;
-    private $reloadService;
-
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
-        EntityManagerInterface $em,
-        DestinationRepository $destinationRepository,
-        DestinationRateGroupRepository $destinationRateGroupRepository,
-        TpDestinationRepository $tpDestinationRepository,
-        DestinationRateRepository $destinationRateRepository,
-        TpRateRepository $tpRateRepository,
-        TpDestinationRateRepository $tpDestinationRateRepository,
-        EntityTools $entityTools,
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        Logger $logger,
-        ReloadService $reloadService
+        private EntityManagerInterface $em,
+        private DestinationRepository $destinationRepository,
+        private DestinationRateGroupRepository $destinationRateGroupRepository,
+        private TpDestinationRepository $tpDestinationRepository,
+        private DestinationRateRepository $destinationRateRepository,
+        private TpRateRepository $tpRateRepository,
+        private TpDestinationRateRepository $tpDestinationRateRepository,
+        private EntityTools $entityTools,
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private Logger $logger,
+        private ReloadService $reloadService
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->em = $em;
-        $this->destinationRepository = $destinationRepository;
-        $this->tpDestinationRepository = $tpDestinationRepository;
-        $this->destinationRateGroupRepository = $destinationRateGroupRepository;
-        $this->destinationRateRepository = $destinationRateRepository;
-        $this->tpDestinationRateRepository = $tpDestinationRateRepository;
-        $this->tpRateRepository = $tpRateRepository;
-        $this->entityTools = $entityTools;
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
-        $this->reloadService = $reloadService;
     }
 
     public function import()

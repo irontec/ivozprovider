@@ -6,7 +6,6 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup;
-use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupRepository;
 use Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist as CreateAndPersistRoutingPatternGroupsRelPattern;
@@ -41,10 +40,6 @@ class UpdateByRoutingPatternAndCountry
             );
 
         if (empty($routingPatternGroup)) {
-
-            /**
-             * @var RoutingPatternGroupDto $routingPatternGroupDto
-             */
             $routingPatternGroupDto = RoutingPatternGroup::createDto();
             $routingPatternGroupDto
                 ->setName($country->getZone()->getEn())

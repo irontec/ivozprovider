@@ -76,7 +76,8 @@
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "phpunit/phpunit": "^9.4.4",
         "dms/phpunit-arraysubset-asserts": "^0.2.1",
-        "symfony/phpunit-bridge": "^5.0"
+        "symfony/phpunit-bridge": "^5.0",
+        "vimeo/psalm": "^4.0"
     },
     "extra": {
         "symfony-assets-install": "relative",

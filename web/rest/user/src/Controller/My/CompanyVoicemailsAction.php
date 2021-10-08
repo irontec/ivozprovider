@@ -9,22 +9,10 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class CompanyVoicemailsAction
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    protected $tokenStorage;
-
-    /**
-     * @var UserRepository
-     */
-    protected $userRepository;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        UserRepository $userRepository
+        private TokenStorageInterface $tokenStorage,
+        private UserRepository $userRepository
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->userRepository = $userRepository;
     }
 
     public function __invoke()

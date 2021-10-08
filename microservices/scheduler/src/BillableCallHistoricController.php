@@ -11,21 +11,14 @@ class BillableCallHistoricController
 {
     use RegisterCommandTrait;
 
-    private $importFromBillableCalls;
-    private $eventPublisher;
-    private $requestId;
-    private $logger;
-
     public function __construct(
-        ImportFromBillableCalls $importFromBillableCalls,
+        private ImportFromBillableCalls $importFromBillableCalls,
+        private LoggerInterface $logger,
         DomainEventPublisher $eventPublisher,
-        RequestId $requestId,
-        LoggerInterface $logger
+        RequestId $requestId
     ) {
-        $this->importFromBillableCalls = $importFromBillableCalls;
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->logger = $logger;
     }
 
     public function indexAction()

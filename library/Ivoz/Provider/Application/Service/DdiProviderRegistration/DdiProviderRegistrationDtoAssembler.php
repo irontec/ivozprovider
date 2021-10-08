@@ -13,12 +13,9 @@ use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationIn
 
 class DdiProviderRegistrationDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $trunksClient;
-
     public function __construct(
-        TrunksClientInterface $trunksClient
+        private TrunksClientInterface $trunksClient
     ) {
-        $this->trunksClient = $trunksClient;
     }
 
     /**

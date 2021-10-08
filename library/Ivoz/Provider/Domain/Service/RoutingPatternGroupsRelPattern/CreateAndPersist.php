@@ -24,9 +24,6 @@ class CreateAndPersist
      */
     public function execute(RoutingPatternInterface $routingPattern, RoutingPatternGroupInterface $patternGroup)
     {
-        /**
-         * @var RoutingPatternGroupsRelPatternDTO $routingPatternGroupsRelPatternDto
-         */
         $routingPatternGroupsRelPatternDto = RoutingPatternGroupsRelPattern::createDto();
         $routingPatternGroupsRelPatternDto
             ->setRoutingPatternId($routingPattern->getId())

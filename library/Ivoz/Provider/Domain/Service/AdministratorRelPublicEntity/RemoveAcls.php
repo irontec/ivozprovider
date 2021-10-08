@@ -13,7 +13,6 @@ final class RemoveAcls implements AdministratorLifecycleEventHandlerInterface
 
     public function __construct(
         private AdministratorRelPublicEntityRepository $administratorRelPublicEntityRepository,
-        private EntityTools $entityTools
     ) {
     }
 

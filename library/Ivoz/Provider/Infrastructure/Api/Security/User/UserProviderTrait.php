@@ -11,28 +11,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 trait UserProviderTrait
 {
-    private $registry;
-    private $requestStack;
-    private $logger;
-    private $managerName;
-    private $entityClass;
-    private $identifierField;
-
     public function __construct(
-        ManagerRegistry $registry,
-        RequestStack $requestStack,
-        LoggerInterface $logger,
-        string $entityClass,
-        string $identifierField,
-        $managerName = null
+        private ManagerRegistry $registry,
+        private RequestStack $requestStack,
+        private LoggerInterface $logger,
+        private string $entityClass,
+        private string $identifierField,
+        private $managerName = null
     ) {
-        $this->registry = $registry;
-        $this->requestStack = $requestStack;
-        $this->logger = $logger;
-        $this->managerName = $managerName;
-
-        $this->entityClass = $entityClass;
-        $this->identifierField = $identifierField;
     }
 
     /**

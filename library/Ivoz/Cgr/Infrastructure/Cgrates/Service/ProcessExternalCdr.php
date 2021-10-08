@@ -89,7 +89,7 @@ class ProcessExternalCdr
         }
 
         try {
-            $response = $this->apiClient->sendRequest(
+            $this->apiClient->sendRequest(
                 'CdrsV1.ProcessExternalCDR',
                 $payload
             );

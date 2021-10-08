@@ -82,7 +82,7 @@ pipeline {
                         failure { notifyFailureGithub() }
                     }
                 }
-                stage ('phpstan') {
+                stage ('static analysis') {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
@@ -92,6 +92,7 @@ pipeline {
                     }
                     steps {
                         sh '/opt/irontec/ivozprovider/library/bin/test-phpstan'
+                        sh '/opt/irontec/ivozprovider/library/bin/test-psalm'
                     }
                     post {
                         success { notifySuccessGithub() }

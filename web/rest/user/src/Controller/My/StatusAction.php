@@ -14,22 +14,10 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class StatusAction
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    protected $tokenStorage;
-
-    /**
-     * @var UsersLocationRepository
-     */
-    protected $usersLocationRepository;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        UsersLocationRepository $usersLocationRepository
+        private TokenStorageInterface $tokenStorage,
+        private UsersLocationRepository $usersLocationRepository
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->usersLocationRepository = $usersLocationRepository;
     }
 
     public function __invoke()

@@ -27,6 +27,7 @@ class ImportFromBillableCalls
 
         do {
             $fromId = $this->billableCallHistoricRepository->getMaxId();
+            /** @psalm-suppress UndefinedVariable */
             if (!isset($untilId)) {
                 $untilId = $this->getRotateUntilId(
                     $fromId

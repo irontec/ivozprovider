@@ -26,7 +26,6 @@ class EndpointResolver
      */
     public function getUserFromEndpoint($endpointName)
     {
-        /** @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $endpoint */
         $endpoint = $this->getEndpointFromName($endpointName);
 
         Assertion::notNull(
@@ -124,7 +123,6 @@ class EndpointResolver
      */
     public function getFriendFromEndpoint($endpointName)
     {
-        /** @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $endpoint */
         $endpoint = $this->getEndpointFromName($endpointName);
 
         Assertion::notNull(
@@ -150,7 +148,6 @@ class EndpointResolver
      */
     public function getResidentialFromEndpoint($endpointName)
     {
-        /** @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $endpoint */
         $endpoint = $this->getEndpointFromName($endpointName);
 
         Assertion::notNull(
@@ -176,7 +173,6 @@ class EndpointResolver
      */
     public function getRetailFromEndpoint($endpointName)
     {
-        /** @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $endpoint */
         $endpoint = $this->getEndpointFromName($endpointName);
 
         Assertion::notNull(

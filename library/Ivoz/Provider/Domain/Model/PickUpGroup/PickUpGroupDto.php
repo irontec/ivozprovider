@@ -41,6 +41,7 @@ class PickUpGroupDto extends PickUpGroupDtoAbstract
 
         $response = parent::getPropertyMap(...func_get_args());
 
+        /** @psalm-suppress ParadoxicalCondition */
         if (in_array($context, self::CONTEXTS_WITH_USERS, true)) {
             $response['userIds'] = 'userIds';
         }

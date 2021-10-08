@@ -15,27 +15,16 @@ class Cgrates
 {
     use RegisterCommandTrait;
 
-    private $eventPublisher;
-    private $requestId;
-    private $reloadService;
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
-        ReloadService $reloadService,
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        LoggerInterface $logger
+        private ReloadService $reloadService,
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private LoggerInterface $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->reloadService = $reloadService;
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
     }
 
     public function reload()

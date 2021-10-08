@@ -9,22 +9,10 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class CompanyAssistantsAction
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    protected $tokenStorage;
-
-    /**
-     * @var UserRepository
-     */
-    protected $userRepository;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        UserRepository $userRepository
+        private TokenStorageInterface $tokenStorage,
+        private UserRepository $userRepository
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->userRepository = $userRepository;
     }
 
     public function __invoke()

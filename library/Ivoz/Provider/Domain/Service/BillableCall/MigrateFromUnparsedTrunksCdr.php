@@ -24,10 +24,9 @@ class MigrateFromUnparsedTrunksCdr
      */
     public function execute()
     {
-        /**
-         * @var \Generator
-         */
-        $trunksGenerator = $this->trunksCdrRepository->getUnparsedCallsGeneratorWithoutOffset(self::BATCH_SIZE);
+        $trunksGenerator = $this->trunksCdrRepository->getUnparsedCallsGeneratorWithoutOffset(
+            self::BATCH_SIZE
+        );
 
         $cdrCount = 0;
         foreach ($trunksGenerator as $trunks) {

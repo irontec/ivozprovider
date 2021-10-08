@@ -122,6 +122,6 @@
         "squizlabs/php_codesniffer": "^4.0",
         "swoole/ide-helper": "^4.3.4",
         "symfony/phpunit-bridge": "^5.1",
-        "vimeo/psalm": "^3.2"
+        "vimeo/psalm": "^4.0"
     }
 }

@@ -24,8 +24,6 @@ class SyncFromCsvSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    private $companyRepository;
-
     private $userFactory;
     private $user;
     private $terminalFactory;
@@ -49,10 +47,6 @@ EOCSV;
         $this->company = $this->getInstance(
             Company::class,
             ['id' => 1]
-        );
-
-        $this->companyRepository = $this->getTestDouble(
-            CompanyRepository::class
         );
 
         $this->userFactory = $this->getTestDouble(
@@ -80,7 +74,6 @@ EOCSV;
         );
 
         $this->beConstructedWith(
-            $this->companyRepository,
             $this->userFactory,
             $this->terminalFactory,
             $this->extensionFactory,
@@ -214,19 +207,6 @@ EOE;
 
     private function prepreExecution()
     {
-        $company = $this->getInstance(
-            Company::class
-        );
-
-        $this
-            ->companyRepository
-            ->find(
-                Argument::any()
-            )
-            ->willReturn(
-                $company
-            );
-
         // User
         $this->user = $this->getTestDouble(
             UserInterface::class

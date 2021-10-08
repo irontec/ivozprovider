@@ -13,12 +13,9 @@ use Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface;
 
 class RouteLockDtoAssembler implements CustomDtoAssemblerInterface
 {
-    private $companyServiceRepository;
-
     public function __construct(
-        CompanyServiceRepository $companyServiceRepository
+        private CompanyServiceRepository $companyServiceRepository
     ) {
-        $this->companyServiceRepository = $companyServiceRepository;
     }
 
     /**

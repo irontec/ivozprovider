@@ -1,9 +1,24 @@
 {
+    "amphp/amp": {
+        "version": "v2.5.2"
+    },
+    "amphp/byte-stream": {
+        "version": "v1.8.0"
+    },
     "beberlei/assert": {
         "version": "v2.9.9"
     },
     "beberlei/doctrineextensions": {
         "version": "v1.2.7"
+    },
+    "composer/semver": {
+        "version": "3.2.4"
+    },
+    "composer/xdebug-handler": {
+        "version": "1.4.5"
+    },
+    "dnoegel/php-xdg-base-dir": {
+        "version": "v0.1.1"
     },
     "doctrine/annotations": {
         "version": "1.0",
@@ -68,6 +83,12 @@
     "egulias/email-validator": {
         "version": "2.1.19"
     },
+    "felixfbecker/advanced-json-rpc": {
+        "version": "v3.2.0"
+    },
+    "felixfbecker/language-server-protocol": {
+        "version": "v1.5.0"
+    },
     "graze/guzzle-jsonrpc": {
         "version": "3.2.1"
     },
@@ -131,14 +152,32 @@
     "namshi/jose": {
         "version": "7.2.3"
     },
+    "netresearch/jsonmapper": {
+        "version": "v2.1.0"
+    },
+    "nikic/php-parser": {
+        "version": "v4.10.4"
+    },
     "ocramius/proxy-manager": {
         "version": "2.8.1"
+    },
+    "openlss/lib-array2xml": {
+        "version": "1.0.0"
     },
     "paragonie/random_compat": {
         "version": "v9.99.99"
     },
     "php": {
         "version": "8.0"
+    },
+    "phpdocumentor/reflection-common": {
+        "version": "2.2.0"
+    },
+    "phpdocumentor/reflection-docblock": {
+        "version": "5.2.2"
+    },
+    "phpdocumentor/type-resolver": {
+        "version": "1.4.0"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -160,6 +199,9 @@
     },
     "ramsey/uuid": {
         "version": "3.9.3"
+    },
+    "sebastian/diff": {
+        "version": "4.0.4"
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.3"
@@ -455,7 +497,16 @@
     "twig/twig": {
         "version": "v2.13.1"
     },
+    "vimeo/psalm": {
+        "version": "4.7.2"
+    },
     "webimpress/safe-writer": {
         "version": "2.1.0"
+    },
+    "webmozart/assert": {
+        "version": "1.9.1"
+    },
+    "webmozart/path-util": {
+        "version": "2.3.0"
     }
 }

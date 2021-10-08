@@ -11,21 +11,14 @@ class InvoiceSchedulerController
 {
     use RegisterCommandTrait;
 
-    private $invoiceCreator;
-    private $invoiceSchedulerRepository;
-    private $eventPublisher;
-    private $requestId;
-
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
-        CreateByScheduler $invoiceCreator,
-        InvoiceSchedulerRepository $invoiceSchedulerRepository
+        private CreateByScheduler $invoiceCreator,
+        private InvoiceSchedulerRepository $invoiceSchedulerRepository
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->invoiceCreator = $invoiceCreator;
-        $this->invoiceSchedulerRepository = $invoiceSchedulerRepository;
     }
 
     public function indexAction()

@@ -70,7 +70,6 @@ class Sender extends RouteHandlerAbstract
         /** @var \Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository $vmRepository */
         $vmRepository = $this->em->getRepository(Voicemail::class);
 
-        /** @var \Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface $vm */
         $vm = $vmRepository->findByMailboxAndContext(
             $vmdata[self::VM_MAILBOX],
             $vmdata[self::VM_CONTEXT]
@@ -159,7 +158,6 @@ class Sender extends RouteHandlerAbstract
             ->setFrom($fromAddress, $fromName)
             ->setTo($vm->getEmail());
 
-        /** @var \PhpMimeMailParser\Attachment[] $attachments */
         $attachments = $this->parser->getAttachments();
         foreach ($attachments as $attachment) {
             $wavContent = $attachment->getContent();

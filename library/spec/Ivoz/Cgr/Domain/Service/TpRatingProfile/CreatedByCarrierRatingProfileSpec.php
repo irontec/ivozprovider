@@ -4,19 +4,16 @@ namespace spec\Ivoz\Cgr\Domain\Service\TpRatingProfile;
 
 use Ivoz\Cgr\Domain\Service\TpRatingProfile\CreatedByCarrierRatingProfile;
 use Ivoz\Cgr\Domain\Service\TpRatingProfile\CreatedByOutgoingRoutingRelCarrier;
-use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\HelperTrait;
 
 class CreatedByCarrierRatingProfileSpec extends ObjectBehavior
 {
     use HelperTrait;
 
-    protected $entityTools;
     protected $createByOutgoingRoutingRelCarrier;
     protected $ratingProfile;
     protected $carrier;
@@ -24,18 +21,12 @@ class CreatedByCarrierRatingProfileSpec extends ObjectBehavior
 
     public function let()
     {
-        $this->entityTools = $this->getTestDouble(
-            EntityTools::class,
-            true
-        );
-
         $this->createByOutgoingRoutingRelCarrier = $this->getTestDouble(
             CreatedByOutgoingRoutingRelCarrier::class,
             true
         );
 
         $this->beConstructedWith(
-            $this->entityTools,
             $this->createByOutgoingRoutingRelCarrier
         );
     }

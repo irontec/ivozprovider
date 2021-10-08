@@ -87,13 +87,11 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
             $qb->orderBy(...$order);
         }
 
-        $currentPage = 1;
         $continue =  true;
         while ($continue) {
             $query = $qb->getQuery();
             $results = $query->getResult();
             $continue = count($results) === $batchSize;
-            $currentPage++;
 
             yield $results;
         }

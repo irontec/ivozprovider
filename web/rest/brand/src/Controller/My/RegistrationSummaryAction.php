@@ -11,31 +11,20 @@ use Model\RegistrationSummary;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class RegistrationSummaryAction
 {
-    protected $requestStack;
-    protected $tokenStorage;
-    protected $companyRegistrationSummary;
-    protected $brandRegistrationSummary;
-
     public function __construct(
-        RequestStack $requestStack,
-        TokenStorageInterface $tokenStorage,
-        CompanyRegistrationSummary $companyRegistrationSummary,
-        BrandRegistrationSummary $brandRegistrationSummary
+        private RequestStack $requestStack,
+        private TokenStorageInterface $tokenStorage,
+        private CompanyRegistrationSummary $companyRegistrationSummary,
+        private BrandRegistrationSummary $brandRegistrationSummary
     ) {
-        $this->requestStack = $requestStack;
-        $this->tokenStorage = $tokenStorage;
-        $this->companyRegistrationSummary = $companyRegistrationSummary;
-        $this->brandRegistrationSummary = $brandRegistrationSummary;
     }
 
     public function __invoke()
     {
-        /** @var TokenInterface|null $token */
         $token =  $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {

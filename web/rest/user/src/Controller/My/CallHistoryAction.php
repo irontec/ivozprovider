@@ -19,26 +19,14 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
 
 class CallHistoryAction
 {
-    protected $tokenStorage;
-
-    /**
-     * @var EntityRepository | UsersCdrRepository
-     */
-    protected $usersCdrRepository;
-
-    protected $collectionExtensions;
-
     protected $request;
 
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        UsersCdrRepository $usersCdrRepository,
-        CollectionExtensionList $collectionExtensions,
+        private TokenStorageInterface $tokenStorage,
+        private UsersCdrRepository $usersCdrRepository,
+        private CollectionExtensionList $collectionExtensions,
         RequestStack $requestStack
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->usersCdrRepository = $usersCdrRepository;
-        $this->collectionExtensions = $collectionExtensions;
         $this->request = $requestStack->getCurrentRequest();
     }
 
@@ -52,6 +40,7 @@ class CallHistoryAction
 
         /** @var UserInterface $user */
         $user = $token->getUser();
+        /** @phpstan-ignore-next-line  */
         $qb = $this
             ->usersCdrRepository
             ->createQueryBuilder('o');
@@ -107,7 +96,7 @@ class CallHistoryAction
      * @param QueryBuilder $qb
      * @param string $entityClass
      * @param string $operationName
-     * @return Paginator | array
+     * @return Paginator | array | iterable
      */
     protected function applyCollectionExtensions(QueryBuilder $qb, string $entityClass, string $operationName)
     {
@@ -117,6 +106,7 @@ class CallHistoryAction
 
         $queryNameGenerator = new QueryNameGenerator();
         foreach ($this->collectionExtensions->get() as $extension) {
+            /** @phpstan-ignore-next-line  */
             $extension->applyToCollection(
                 $qb,
                 $queryNameGenerator,
@@ -130,6 +120,7 @@ class CallHistoryAction
                 && $extension->supportsResult($entityClass, $operationName);
 
             if ($returnResults) {
+                /** @var QueryResultCollectionExtensionInterface $extension */
                 return $extension->getResult($qb);
             }
         }

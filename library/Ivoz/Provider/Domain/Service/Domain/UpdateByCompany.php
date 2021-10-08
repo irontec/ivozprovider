@@ -20,8 +20,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
     const POST_PERSIST_PRIORITY = 10;
 
     public function __construct(
-        private EntityTools $entityTools,
-        private DomainRepository $domainRepository
+        private EntityTools $entityTools
     ) {
     }
 
@@ -61,7 +60,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
             ->setDomain($name)
             ->setDescription($company->getName() . ' proxyusers domain');
 
-        $domain = $this->entityTools
+        $this->entityTools
             ->persistDto(
                 $domainDto,
                 $domain,

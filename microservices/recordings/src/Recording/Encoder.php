@@ -24,50 +24,14 @@ class Encoder
      */
     const RECORDING_AGE_MIN = 10;
 
-    /**
-     * @var TrunksCdrRepository
-     */
-    protected $trunksCdrRepository;
-
-    /**
-     * @var UsersCdrRepository
-     */
-    protected $usersCdrRepository;
-
-    /**
-     * @var DdiRepository
-     */
-    protected $ddiRepository;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var string
-     */
-    protected $rawRecordingsDir;
-
-    /**
-     * @var Logger
-     */
-    protected $logger;
-
     public function __construct(
-        TrunksCdrRepository $trunksCdrRepository,
-        UsersCdrRepository $usersCdrRepository,
-        DdiRepository $ddiRepository,
-        EntityTools $entityTools,
-        string $rawRecordingsDir,
-        Logger $logger
+        private TrunksCdrRepository $trunksCdrRepository,
+        private UsersCdrRepository $usersCdrRepository,
+        private DdiRepository $ddiRepository,
+        private EntityTools $entityTools,
+        private string $rawRecordingsDir,
+        private Logger $logger
     ) {
-        $this->trunksCdrRepository = $trunksCdrRepository;
-        $this->usersCdrRepository = $usersCdrRepository;
-        $this->entityTools = $entityTools;
-        $this->rawRecordingsDir = $rawRecordingsDir;
-        $this->ddiRepository = $ddiRepository;
-        $this->logger = $logger;
     }
 
     public function processAction()
