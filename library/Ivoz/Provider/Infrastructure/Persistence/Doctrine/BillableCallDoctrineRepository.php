@@ -407,7 +407,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
      * @param \DateTime $date
      * @return int
      */
-    public function getMaxIdUntilDate(int $fromId, \DateTime $date): int
+    public function getMaxIdUntilDate(int $fromId, \DateTimeInterface $date): int
     {
         $query =
             'SELECT MAX(B.id) FROM '

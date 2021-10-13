@@ -248,9 +248,9 @@ class SimulatedCall
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|\DateTimeImmutable
      */
-    public function getCallDate(): \DateTime
+    public function getCallDate(): \DateTimeInterface
     {
         return $this->callDate;
     }

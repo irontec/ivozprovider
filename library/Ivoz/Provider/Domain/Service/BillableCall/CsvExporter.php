@@ -60,10 +60,12 @@ class CsvExporter
 
     /**
      * @return string
+     * @param \DateTime|\DateTimeImmutable $inDate
+     * @param \DateTime|\DateTimeImmutable $outDate
      */
     public function execute(
-        \DateTime $inDate,
-        \DateTime $outDate,
+        \DateTimeInterface $inDate,
+        \DateTimeInterface $outDate,
         CompanyInterface $company = null,
         BrandInterface $brand = null,
         CallCsvSchedulerInterface $scheduler
@@ -76,8 +78,8 @@ class CsvExporter
         }
         $dateTimeZone = new \DateTimeZone($timezone);
 
-        $inDate->setTimezone($dateTimeZone);
-        $outDate->setTimezone($dateTimeZone);
+        $inDate = $inDate->setTimezone($dateTimeZone);
+        $outDate = $outDate->setTimezone($dateTimeZone);
 
         $criteria = [
             'startTime[after]' => $inDate->format('Y-m-d H:i:s'),

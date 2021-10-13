@@ -95,8 +95,9 @@ trait NextExecutionResolverTrait
 
     /**
      * @return void
+     * @param \DateTime|\DateTimeImmutable $nextExecution
      */
-    protected function setNextExecution(SchedulerInterface $scheduler, \DateTime $nextExecution)
+    protected function setNextExecution(SchedulerInterface $scheduler, \DateTimeInterface $nextExecution)
     {
         /** @var InvoiceSchedulerDto $schedulerDto */
         $schedulerDto = $this->entityTools->entityToDto($scheduler);

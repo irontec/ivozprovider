@@ -93,6 +93,6 @@ trait RpcRequestTrait
             return $config['timeout'] ?? 0;
         })->call($this->rpcClient);
 
-        return intval($response);
+        return (int) $response;
     }
 }

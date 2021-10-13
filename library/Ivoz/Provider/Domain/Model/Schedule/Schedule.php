@@ -34,7 +34,7 @@ class Schedule extends ScheduleAbstract implements ScheduleInterface
      * @param \DateTime $time Current time in Client's Timezone
      * @return bool
      */
-    public function isOnSchedule(\DateTime $time)
+    public function isOnSchedule(\DateTimeInterface $time)
     {
         // Check if Day of The Week is enabled in the schedule
         $dayOfTheWeek = $time->format("l");

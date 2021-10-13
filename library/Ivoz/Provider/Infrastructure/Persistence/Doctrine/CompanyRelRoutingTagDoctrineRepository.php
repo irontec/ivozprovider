@@ -40,7 +40,7 @@ class CompanyRelRoutingTagDoctrineRepository extends ServiceEntityRepository imp
         return array_map(
             function ($val) {
                 return $val !== null
-                    ? intval($val)
+                    ? (int) $val
                     : null;
             },
             array_column($result, 'routingTag')

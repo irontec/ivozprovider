@@ -79,7 +79,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
      *
      * @return void
      */
-    private function assertNoFutureDates($invoiceTz, $inDate, $outDate)
+    private function assertNoFutureDates($invoiceTz, \DateTimeInterface $inDate, \DateTimeInterface $outDate)
     {
         $now = (new \DateTime())->setTimezone($invoiceTz);
         $today = $now->setTime(0, 0, 0);
@@ -118,7 +118,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
      *
      * @return void
      */
-    private function assertNoInvoiceInDateRange(InvoiceInterface $invoice, \DateTime $utcInDate, \DateTime $utcOutDate)
+    private function assertNoInvoiceInDateRange(InvoiceInterface $invoice, \DateTimeInterface $utcInDate, \DateTimeInterface $utcOutDate)
     {
         $invoiceCount = $this->invoiveRepository->fetchInvoiceNumberInRange(
             $invoice->getCompany()->getId(),

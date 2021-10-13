@@ -43,7 +43,7 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
 
         return array_map(
             function ($row) {
-                return intval($row['id']);
+                return (int) $row['id'];
             },
             $result
         );
