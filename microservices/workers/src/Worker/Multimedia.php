@@ -106,6 +106,8 @@ class Multimedia
             $this->entityTools->persistDto($entityDto, $entity);
             $this->logger->info(sprintf("Successfully encoded %s", $entity));
         } catch (\Exception $e) {
+
+            /** @phpstan-ignore-next-line  */
             if (!isset($entity)) {
                 $this->logger->error($e->getMessage());
                 exit(1);

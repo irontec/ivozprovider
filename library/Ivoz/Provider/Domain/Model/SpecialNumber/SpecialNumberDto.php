@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\SpecialNumber;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
+/** @psalm-suppress UnusedProperty */
 class SpecialNumberDto extends SpecialNumberDtoAbstract
 {
     /**

@@ -83,8 +83,8 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
         $timezone = new \DateTimeZone(
             $callCsvReport->getTimezone()->getTz()
         );
-        $inDate->setTimezone($timezone);
-        $outDate->setTimezone($timezone);
+        $inDate = $inDate->setTimezone($timezone);
+        $outDate = $outDate->setTimezone($timezone);
 
         $name = $company
             ? $company->getName()

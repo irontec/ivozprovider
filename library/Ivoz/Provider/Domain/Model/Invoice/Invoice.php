@@ -72,9 +72,8 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
 
         $outDate = $this->getOutDate();
 
-        $outDate
-            ->setTimezone($invoiceTz);
-        $outDate
+        $outDate = $outDate
+            ->setTimezone($invoiceTz)
             ->modify('next day')
             ->setTime(0, 0, 0)
             ->modify('- 1 second');

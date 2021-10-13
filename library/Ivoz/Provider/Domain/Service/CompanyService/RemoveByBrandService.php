@@ -18,11 +18,6 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
     private $entityTools;
 
     /**
-     * @var EntityPersisterInterface
-     */
-    private $entityPersister;
-
-    /**
      * @var CompanyRepository
      */
     private $companyRepository;

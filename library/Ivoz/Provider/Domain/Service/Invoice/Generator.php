@@ -122,10 +122,10 @@ class Generator
         $invoiceDate->setTimezone($invoiceTz);
 
         $inDate = $invoice->getInDate();
-        $inDate->setTimezone($invoiceTz);
+        $inDate = $inDate->setTimezone($invoiceTz);
 
         $outDate = $invoice->getOutDate();
-        $outDate->setTimezone($invoiceTz);
+        $outDate = $outDate->setTimezone($invoiceTz);
 
         $invoiceDto = $this->entityTools->entityToDto($invoice);
 

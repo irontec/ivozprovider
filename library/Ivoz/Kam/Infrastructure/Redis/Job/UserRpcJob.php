@@ -16,7 +16,6 @@ class UserRpcJob implements RpcJobInterface
 
     private $rpcEntity;
     private $rpcPort;
-    private $rpcMethod;
 
     public function __construct(
         RedisMasterFactory $redisMasterFactory,

@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\InvoiceTemplate;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
+/** @psalm-suppress UnusedProperty */
 class InvoiceTemplateDto extends InvoiceTemplateDtoAbstract
 {
     /**
