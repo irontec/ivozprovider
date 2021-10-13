@@ -29,19 +29,21 @@ class UsersCdr extends UsersCdrAbstract implements UsersCdrInterface
     {
         if (!is_null($this->getUser())) {
             return $this->getUser()->getFullNameExtension();
-        } elseif (!is_null($this->getFriend())) {
+        }
+        if (!is_null($this->getFriend())) {
             return $this->getFriend()->getName();
-        } elseif (!is_null($this->getRetailAccount())) {
+        }
+        elseif (!is_null($this->getRetailAccount())) {
             return $this->getRetailAccount()->getName();
-        } elseif (!is_null($this->getResidentialDevice())) {
+        }
+        if (!is_null($this->getResidentialDevice())) {
             return $this->getResidentialDevice()->getName();
         }
 
         if ($this->getDirection() === UsersCdr::DIRECTION_OUTBOUND) {
             return $this->getCaller();
-        } else {
-            return $this->getCallee();
         }
+        return $this->getCallee();
     }
 
     /**
@@ -51,8 +53,7 @@ class UsersCdr extends UsersCdrAbstract implements UsersCdrInterface
     {
         if ($this->getDirection() === UsersCdr::DIRECTION_OUTBOUND) {
             return $this->getCallee();
-        } else {
-            return $this->getCaller();
         }
+        return $this->getCaller();
     }
 }

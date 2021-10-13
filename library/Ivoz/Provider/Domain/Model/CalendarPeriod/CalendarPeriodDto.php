@@ -13,9 +13,8 @@ class CalendarPeriodDto extends CalendarPeriodDtoAbstract
                 'endDate' => 'endDate',
                 'routeType' => 'routeType',
             ];
-        } else {
-            $response = parent::getPropertyMap($context, $role);
         }
+        $response = parent::getPropertyMap($context, $role);
 
         return $response;
     }
