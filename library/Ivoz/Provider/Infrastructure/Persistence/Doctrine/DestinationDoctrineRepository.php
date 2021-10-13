@@ -33,7 +33,7 @@ class DestinationDoctrineRepository extends ServiceEntityRepository implements D
      * @throws \Doctrine\DBAL\ConnectionException
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function insertIgnoreFromArray(array $destinations)
+    public function insertIgnoreFromArray(array $destinations): int
     {
         $destinationInsert =
             'INSERT IGNORE INTO Destinations (prefix, name_en, name_es, name_ca, name_it, brandId) VALUES '

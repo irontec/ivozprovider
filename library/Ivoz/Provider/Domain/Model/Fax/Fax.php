@@ -15,7 +15,7 @@ class Fax extends FaxAbstract implements FaxInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

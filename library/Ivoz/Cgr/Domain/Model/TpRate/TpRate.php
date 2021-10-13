@@ -9,7 +9,7 @@ class TpRate extends TpRateAbstract implements TpRateInterface
 {
     use TpRateTrait;
 
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

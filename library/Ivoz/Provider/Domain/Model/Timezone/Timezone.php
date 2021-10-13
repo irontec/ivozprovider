@@ -13,7 +13,7 @@ class Timezone extends TimezoneAbstract implements TimezoneInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

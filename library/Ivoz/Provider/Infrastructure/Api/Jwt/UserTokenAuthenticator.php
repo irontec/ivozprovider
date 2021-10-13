@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\User\ChainUserProvider;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserTokenAuthenticator extends JWTTokenAuthenticator
 {
@@ -82,7 +83,7 @@ class UserTokenAuthenticator extends JWTTokenAuthenticator
     /**
      * @inheritdoc
      */
-    protected function loadUser(UserProviderInterface $userProvider, array $payload, $identity)
+    protected function loadUser(UserProviderInterface $userProvider, array $payload, $identity): UserInterface
     {
         $provider = null;
 

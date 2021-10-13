@@ -18,7 +18,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -142,7 +142,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
     /**
      * @return \DateInterval
      */
-    public function getInterval()
+    public function getInterval(): \DateInterval
     {
         $frecuency = $this->getFrequency();
 

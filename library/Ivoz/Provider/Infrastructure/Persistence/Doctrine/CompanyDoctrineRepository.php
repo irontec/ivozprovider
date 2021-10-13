@@ -54,7 +54,7 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
      * @inheritdoc
      * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository::getSupervisedCompanyIdsByAdmin
      */
-    public function getSupervisedCompanyIdsByAdmin(AdministratorInterface $admin)
+    public function getSupervisedCompanyIdsByAdmin(AdministratorInterface $admin): array
     {
         if (!$admin->isBrandAdmin()) {
             throw new \DomainException('User must be brand admin');
@@ -124,7 +124,7 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
     /**
      * @return int[]
      */
-    public function getVpbxIdsByBrand(int $brandId)
+    public function getVpbxIdsByBrand(int $brandId): array
     {
         return $this->getIdsByBrandAndType(
             $brandId,
@@ -135,7 +135,7 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
     /**
      * @return int[]
      */
-    public function getResidentialIdsByBrand(int $brandId)
+    public function getResidentialIdsByBrand(int $brandId): array
     {
         return $this->getIdsByBrandAndType(
             $brandId,
@@ -146,7 +146,7 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
     /**
      * @return int[]
      */
-    public function getRetailIdsByBrand(int $brandId)
+    public function getRetailIdsByBrand(int $brandId): array
     {
         return $this->getIdsByBrandAndType(
             $brandId,
@@ -154,7 +154,7 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
         );
     }
 
-    private function getIdsByBrandAndType(int $brandId, string $type)
+    private function getIdsByBrandAndType(int $brandId, string $type): array
     {
         $qb = $this->createQueryBuilder('self');
         $criteria = CriteriaHelper::fromArray([

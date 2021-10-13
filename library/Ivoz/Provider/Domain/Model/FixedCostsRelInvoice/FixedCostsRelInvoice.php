@@ -16,7 +16,7 @@ class FixedCostsRelInvoice extends FixedCostsRelInvoiceAbstract implements Fixed
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

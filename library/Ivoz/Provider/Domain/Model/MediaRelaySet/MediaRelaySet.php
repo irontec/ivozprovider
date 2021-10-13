@@ -13,7 +13,7 @@ class MediaRelaySet extends MediaRelaySetAbstract implements MediaRelaySetInterf
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

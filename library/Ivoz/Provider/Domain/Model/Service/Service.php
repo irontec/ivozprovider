@@ -48,7 +48,7 @@ class Service extends ServiceAbstract implements ServiceInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

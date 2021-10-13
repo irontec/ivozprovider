@@ -13,7 +13,7 @@ class TpDerivedCharger extends TpDerivedChargerAbstract implements TpDerivedChar
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

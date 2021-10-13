@@ -17,7 +17,7 @@ class Recording extends RecordingAbstract implements FileContainerInterface, Rec
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -25,7 +25,7 @@ class Recording extends RecordingAbstract implements FileContainerInterface, Rec
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'RecordedFile' => [

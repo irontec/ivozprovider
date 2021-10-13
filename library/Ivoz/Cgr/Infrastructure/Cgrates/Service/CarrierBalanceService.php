@@ -16,7 +16,7 @@ class CarrierBalanceService extends AbstractBalanceService implements CarrierBal
      * @see \Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface::incrementBalance
      * @inheritdoc
      */
-    public function incrementBalance(CarrierInterface $company, float $amount)
+    public function incrementBalance(CarrierInterface $company, float $amount): array
     {
         return parent::addBalance($company, $amount);
     }
@@ -25,7 +25,7 @@ class CarrierBalanceService extends AbstractBalanceService implements CarrierBal
      * @see \Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface::decrementBalance
      * @inheritdoc
      */
-    public function decrementBalance(CarrierInterface $company, float $amount)
+    public function decrementBalance(CarrierInterface $company, float $amount): array
     {
         return parent::debitBalance($company, $amount);
     }
@@ -68,7 +68,7 @@ class CarrierBalanceService extends AbstractBalanceService implements CarrierBal
      * @throws \InvalidArgumentException
      * @see AbstractBalanceService::getTenant
      */
-    protected function getTenant(EntityInterface $entity)
+    protected function getTenant(EntityInterface $entity): string
     {
         Assertion::isInstanceOf(
             $entity,
@@ -84,7 +84,7 @@ class CarrierBalanceService extends AbstractBalanceService implements CarrierBal
      * @see AbstractBalanceService::getAccount
      * @inheritdoc
      */
-    protected function getAccount(EntityInterface $entity)
+    protected function getAccount(EntityInterface $entity): string
     {
         Assertion::isInstanceOf(
             $entity,

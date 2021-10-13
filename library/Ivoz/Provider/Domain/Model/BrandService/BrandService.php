@@ -15,7 +15,7 @@ class BrandService extends BrandServiceAbstract implements BrandServiceInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

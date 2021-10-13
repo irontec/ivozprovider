@@ -16,7 +16,7 @@ class CallAcl extends CallAclAbstract implements CallAclInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

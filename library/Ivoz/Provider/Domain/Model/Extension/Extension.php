@@ -18,7 +18,7 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

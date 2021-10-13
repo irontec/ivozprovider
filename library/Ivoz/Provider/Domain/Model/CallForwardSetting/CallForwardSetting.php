@@ -17,7 +17,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -148,7 +148,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
      *
      * @todo rename tagetType field to routeType
      */
-    public function getRouteType()
+    public function getRouteType(): ?string
     {
         return $this->getTargetType();
     }

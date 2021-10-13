@@ -14,7 +14,7 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
     /**
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

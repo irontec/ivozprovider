@@ -90,7 +90,7 @@ class Generator
      * @return string
      * @throws \Exception
      */
-    public function getInvoicePDFContents(int $invoiceId)
+    public function getInvoicePDFContents(int $invoiceId): string
     {
         $this->setInvoiceId($invoiceId);
         return $this->_createInvoice();
@@ -328,7 +328,7 @@ class Generator
      * @param string|float|int $value2
      * @return string
      */
-    protected function sumAndFormat($value, $value2)
+    protected function sumAndFormat($value, $value2): string
     {
         return $this->formatNumber(
             $this->sumConcepts($value, $value2)
@@ -359,7 +359,7 @@ class Generator
      * @param int $decimals
      * @return string
      */
-    protected function roundAndFormat($value, $decimals = 4)
+    protected function roundAndFormat($value, $decimals = 4): string
     {
         return $this->formatNumber(
             $this->roundNumber($value, $decimals)
@@ -381,7 +381,7 @@ class Generator
      * @param float $number
      * @return string
      */
-    protected function formatNumber($number)
+    protected function formatNumber($number): string
     {
         return number_format(
             $number,

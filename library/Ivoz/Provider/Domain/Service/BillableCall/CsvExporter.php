@@ -69,7 +69,7 @@ class CsvExporter
         CompanyInterface $company = null,
         BrandInterface $brand = null,
         CallCsvSchedulerInterface $scheduler
-    ) {
+    ): string {
         $timezone = 'UTC';
         if ($company) {
             $timezone = $company->getDefaultTimezone()->getTz();

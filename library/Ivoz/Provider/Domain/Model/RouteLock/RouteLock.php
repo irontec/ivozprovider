@@ -13,7 +13,7 @@ class RouteLock extends RouteLockAbstract implements RouteLockInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

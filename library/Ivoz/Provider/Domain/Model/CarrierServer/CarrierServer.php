@@ -14,7 +14,7 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
     /**
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -98,7 +98,7 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
         return parent::setIp($ip);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return
             sprintf(

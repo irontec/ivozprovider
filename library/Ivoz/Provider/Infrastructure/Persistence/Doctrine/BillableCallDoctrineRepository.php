@@ -291,7 +291,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         return $affectedRows;
     }
 
-    public function getGeneratorByInvoice(InvoiceInterface $invoice)
+    public function getGeneratorByInvoice(InvoiceInterface $invoice): \Generator
     {
         $conditions = $this->getConditionsByInvoice($invoice);
 

@@ -28,7 +28,7 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
      * @param string | int $id
      * @return UserInterface[]
      */
-    public function findByBossAssistantId($id)
+    public function findByBossAssistantId($id): array
     {
         return $this->findBy([
             'bossAssistant' => $id
@@ -40,7 +40,7 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
      * @param AdministratorInterface $admin
      * @return array
      */
-    public function getSupervisedUserIdsByAdmin(AdministratorInterface $admin)
+    public function getSupervisedUserIdsByAdmin(AdministratorInterface $admin): array
     {
         $companyIds = $admin->isBrandAdmin()
             ? $this->getCompanyIdsByBrandAdmin($admin)

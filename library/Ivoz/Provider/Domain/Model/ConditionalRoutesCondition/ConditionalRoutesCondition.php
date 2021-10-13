@@ -17,7 +17,7 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -233,7 +233,7 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
      *
      * @return string
      */
-    public function getMatchData()
+    public function getMatchData(): string
     {
         $matchData = [];
 

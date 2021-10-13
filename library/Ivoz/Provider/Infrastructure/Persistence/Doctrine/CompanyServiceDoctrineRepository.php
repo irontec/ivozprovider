@@ -40,7 +40,7 @@ class CompanyServiceDoctrineRepository extends ServiceEntityRepository implement
     /**
      * @return int[]
      */
-    public function findServiceIdsByCompany(int $companyId)
+    public function findServiceIdsByCompany(int $companyId): array
     {
         $qb = $this->createQueryBuilder('self');
         $expression = $qb->expr();

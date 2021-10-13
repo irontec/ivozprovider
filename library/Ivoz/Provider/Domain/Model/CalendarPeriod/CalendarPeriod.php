@@ -16,7 +16,7 @@ class CalendarPeriod extends CalendarPeriodAbstract implements CalendarPeriodInt
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

@@ -20,7 +20,7 @@ class Locution extends LocutionAbstract implements FileContainerInterface, Locut
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -28,7 +28,7 @@ class Locution extends LocutionAbstract implements FileContainerInterface, Locut
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'OriginalFile' => [

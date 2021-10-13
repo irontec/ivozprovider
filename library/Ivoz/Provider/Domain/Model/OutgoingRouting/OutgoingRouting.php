@@ -31,7 +31,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -113,7 +113,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
      *
      * @return string
      */
-    public function getCgrCategory()
+    public function getCgrCategory(): string
     {
         return sprintf(
             "or%d",
@@ -126,7 +126,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
      *
      * @return string
      */
-    public function getCgrRpCategory()
+    public function getCgrRpCategory(): string
     {
         return sprintf(
             "lcr_profile%d",

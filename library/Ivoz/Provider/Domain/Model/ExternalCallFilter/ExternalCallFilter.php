@@ -22,7 +22,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -239,7 +239,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      *
      * @return null|string
      */
-    public function getHolidayTarget()
+    public function getHolidayTarget(): ?string
     {
         return $this->getTarget("Holiday");
     }
@@ -249,7 +249,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      *
      * @todo rename holidayTagetType field to holidayRouteType
      */
-    public function getHolidayRouteType()
+    public function getHolidayRouteType(): ?string
     {
         return $this->getHolidayTargetType();
     }
@@ -259,7 +259,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      *
      * @return null|string
      */
-    public function getOutOfScheduleTarget()
+    public function getOutOfScheduleTarget(): ?string
     {
         return $this->getTarget("OutOfSchedule");
     }
@@ -269,7 +269,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      *
      * @todo rename outOfScheduleTargetType field to outOfScheduleRouteType
      */
-    public function getOutOfScheduleRouteType()
+    public function getOutOfScheduleRouteType(): ?string
     {
         return $this->getOutOfScheduleTargetType();
     }

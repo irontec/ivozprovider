@@ -13,7 +13,7 @@ class Schedule extends ScheduleAbstract implements ScheduleInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

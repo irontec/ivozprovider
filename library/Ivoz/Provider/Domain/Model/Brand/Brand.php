@@ -17,7 +17,7 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -25,7 +25,7 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'Logo' => [
@@ -155,7 +155,7 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
      *
      * @return string
      */
-    public function getCgrTenant()
+    public function getCgrTenant(): string
     {
         return sprintf(
             "b%d",

@@ -13,7 +13,7 @@ class TrunksLcrRuleTarget extends TrunksLcrRuleTargetAbstract implements TrunksL
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

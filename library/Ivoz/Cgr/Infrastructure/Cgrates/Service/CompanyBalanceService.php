@@ -16,7 +16,7 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface::incrementBalance
      * @inheritdoc
      */
-    public function incrementBalance(CompanyInterface $company, float $amount)
+    public function incrementBalance(CompanyInterface $company, float $amount): array
     {
         return parent::addBalance($company, $amount);
     }
@@ -25,7 +25,7 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface::decrementBalance
      * @inheritdoc
      */
-    public function decrementBalance(CompanyInterface $company, float $amount)
+    public function decrementBalance(CompanyInterface $company, float $amount): array
     {
         return parent::debitBalance($company, $amount);
     }
@@ -117,7 +117,7 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      * @throws \InvalidArgumentException
      * @see AbstractBalanceService::getTenant
      */
-    protected function getTenant(EntityInterface $entity)
+    protected function getTenant(EntityInterface $entity): string
     {
         Assertion::isInstanceOf(
             $entity,
@@ -133,7 +133,7 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      * @see AbstractBalanceService::getAccount
      * @inheritdoc
      */
-    protected function getAccount(EntityInterface $entity)
+    protected function getAccount(EntityInterface $entity): string
     {
         Assertion::isInstanceOf(
             $entity,

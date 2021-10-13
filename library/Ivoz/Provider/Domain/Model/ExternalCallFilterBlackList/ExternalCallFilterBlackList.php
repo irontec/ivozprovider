@@ -13,7 +13,7 @@ class ExternalCallFilterBlackList extends ExternalCallFilterBlackListAbstract im
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

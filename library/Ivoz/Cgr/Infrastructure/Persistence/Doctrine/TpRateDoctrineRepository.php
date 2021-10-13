@@ -31,7 +31,7 @@ class TpRateDoctrineRepository extends ServiceEntityRepository implements TpRate
      * @param int $destinationRateGroupId
      * @return int affected rows
      */
-    public function syncWithBusiness($destinationRateGroupId)
+    public function syncWithBusiness($destinationRateGroupId): int
     {
         $tpRatesInsert =
             "INSERT INTO tp_rates"

@@ -31,7 +31,7 @@ class TpDestinationDoctrineRepository extends ServiceEntityRepository implements
     /**
      * @return int affected rows
      */
-    public function syncWithBusiness($brandId)
+    public function syncWithBusiness($brandId): int
     {
         $tpDestinationInsert =
             'INSERT IGNORE INTO tp_destinations (tpid, tag, prefix, destinationId)'

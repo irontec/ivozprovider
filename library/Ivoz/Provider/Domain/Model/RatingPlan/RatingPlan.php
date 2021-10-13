@@ -31,7 +31,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
         return $this->id;
     }
 
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -84,7 +84,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
      *
      * @return string
      */
-    public function getCgrTag()
+    public function getCgrTag(): string
     {
         return $this
             ->getRatingPlanGroup()

@@ -13,7 +13,7 @@ class Codec extends CodecAbstract implements CodecInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

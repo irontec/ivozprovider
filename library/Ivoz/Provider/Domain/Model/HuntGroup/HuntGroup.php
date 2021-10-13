@@ -18,7 +18,7 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -71,7 +71,7 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
     /**
      * @return string
      */
-    public function getNoAnswerRouteType()
+    public function getNoAnswerRouteType(): ?string
     {
         return $this->getNoAnswerTargetType();
     }

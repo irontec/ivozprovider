@@ -25,7 +25,7 @@ class UsersCdr extends UsersCdrAbstract implements UsersCdrInterface
     /**
      * @return string
      */
-    public function getOwner()
+    public function getOwner(): string|null
     {
         if (!is_null($this->getUser())) {
             return $this->getUser()->getFullNameExtension();
@@ -49,7 +49,7 @@ class UsersCdr extends UsersCdrAbstract implements UsersCdrInterface
     /**
      * @return string
      */
-    public function getParty()
+    public function getParty(): ?string
     {
         if ($this->getDirection() === UsersCdr::DIRECTION_OUTBOUND) {
             return $this->getCallee();

@@ -15,7 +15,7 @@ class RoutingTag extends RoutingTagAbstract implements RoutingTagInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -42,7 +42,7 @@ class RoutingTag extends RoutingTagAbstract implements RoutingTagInterface
     /**
      * @return string
      */
-    public function getCgrSubject()
+    public function getCgrSubject(): string
     {
         return sprintf("rt%d", $this->getId());
     }

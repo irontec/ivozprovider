@@ -15,7 +15,7 @@ class Calendar extends CalendarAbstract implements CalendarInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

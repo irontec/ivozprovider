@@ -16,7 +16,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -99,7 +99,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     /**
      * @return string
      */
-    public function getSorcery()
+    public function getSorcery(): string
     {
         return sprintf(
             "b%dc%drt%d_%s",

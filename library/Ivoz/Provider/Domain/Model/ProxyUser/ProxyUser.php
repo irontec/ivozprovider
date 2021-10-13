@@ -15,7 +15,7 @@ class ProxyUser extends ProxyUserAbstract implements ProxyUserInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

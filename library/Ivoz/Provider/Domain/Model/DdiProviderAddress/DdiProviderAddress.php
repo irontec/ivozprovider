@@ -15,7 +15,7 @@ class DdiProviderAddress extends DdiProviderAddressAbstract implements DdiProvid
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

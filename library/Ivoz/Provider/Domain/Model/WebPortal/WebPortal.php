@@ -18,7 +18,7 @@ class WebPortal extends WebPortalAbstract implements FileContainerInterface, Web
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -41,7 +41,7 @@ class WebPortal extends WebPortalAbstract implements FileContainerInterface, Web
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'Logo' => [

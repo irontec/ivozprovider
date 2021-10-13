@@ -6,6 +6,7 @@ use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
 /**
  * Company
@@ -219,7 +220,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     /**
      * @return string
      */
-    public function getLanguageCode()
+    public function getLanguageCode(): string
     {
         $language = $this->getLanguage();
         if (! $language) {
@@ -231,7 +232,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     /**
      * @return string
      */
-    public function getCurrencySymbol()
+    public function getCurrencySymbol(): string
     {
         $currency = $this->getCurrency();
         if (!$currency) {
@@ -243,7 +244,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     /**
      * @return string
      */
-    public function getCurrencyIden()
+    public function getCurrencyIden(): string
     {
         $currency = $this->getCurrency();
         if (!$currency) {
@@ -427,10 +428,7 @@ class Company extends CompanyAbstract implements CompanyInterface
         return '';
     }
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    private function getBrandTimezone()
+    private function getBrandTimezone(): TimezoneInterface
     {
         return $this
             ->getBrand()
@@ -440,7 +438,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     /**
      * @return string
      */
-    public function getCgrSubject()
+    public function getCgrSubject(): string
     {
         return sprintf("c%d", $this->getId());
     }

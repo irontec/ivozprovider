@@ -15,7 +15,7 @@ class CompanyService extends CompanyServiceAbstract implements CompanyServiceInt
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

@@ -13,7 +13,7 @@ class Currency extends CurrencyAbstract implements CurrencyInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

@@ -13,7 +13,7 @@ class BillableCallHistoric extends BillableCallHistoricAbstract implements Billa
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

@@ -10,11 +10,8 @@ class RpcClient extends Client
 {
     /**
      * @param  string $uri
-     * @param  array  $config
-     *
-     * @return self
      */
-    public static function factory($uri, array $config = [])
+    public static function factory($uri, array $config = []): static
     {
         if (isset($config['message_factory'])) {
             $factory = $config['message_factory'];

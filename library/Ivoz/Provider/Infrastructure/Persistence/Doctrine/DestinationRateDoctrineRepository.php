@@ -37,7 +37,7 @@ class DestinationRateDoctrineRepository extends ServiceEntityRepository implemen
      * @throws \Doctrine\DBAL\ConnectionException
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function insertIgnoreFromArray(array $destinationRates)
+    public function insertIgnoreFromArray(array $destinationRates): int
     {
         $tpDestinationRateInsert =
             'INSERT INTO DestinationRates'

@@ -34,7 +34,7 @@ class TpDestinationRateDoctrineRepository extends ServiceEntityRepository implem
      * @throws \Doctrine\DBAL\ConnectionException
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function syncWithBussines($destinationRateGroupId, $roundingMethod)
+    public function syncWithBussines($destinationRateGroupId, $roundingMethod): int
     {
         $tpDestinationRatesInsert =
             "INSERT IGNORE tp_destination_rates (tpid, tag, destinations_tag, rates_tag, destinationRateId, rounding_method)

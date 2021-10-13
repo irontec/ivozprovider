@@ -9,7 +9,7 @@ class TpDestination extends TpDestinationAbstract implements TpDestinationInterf
 {
     use TpDestinationTrait;
 
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

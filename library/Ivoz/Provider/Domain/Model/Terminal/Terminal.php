@@ -81,7 +81,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
         return parent::setPassword($password);
     }
 
-    public static function randomPassword()
+    public static function randomPassword(): string
     {
         $uppers = "ABCDEFGHJKLMNPQRSTUVWXYZ";
         $lowers = "abcdefghijkmnopqrstuvwxyz";
@@ -114,7 +114,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
     /**
      * @return string
      */
-    public function getContact()
+    public function getContact(): string
     {
         return sprintf(
             'sip:%s@%s',
@@ -126,7 +126,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
     /**
      * @return string
      */
-    public function getSorcery()
+    public function getSorcery(): string
     {
         return sprintf(
             'b%dc%dt%d_%s',
