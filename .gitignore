@@ -9,6 +9,7 @@ vendor
 storage/*
 mount-storage.sh
 **.phplint-cache
+**.phpunit.result.cache
 
 web/admin/storage
 web/admin/application/cache/*
@@ -20,6 +21,8 @@ web/user/index.phtml
 web/user/scripts/
 web/user/app/styles/main.css.map
 web/user/app/styles/main.css
+
+web/client/.history
 
 doc/html/*
 doc/doctrees/

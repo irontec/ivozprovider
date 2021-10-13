@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+pushd /opt/irontec/ivozprovider/library
+    vendor/bin/rector process Ivoz
+popd
