@@ -42,7 +42,7 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
             ->getScalarResult();
 
         return array_map(
-            function ($row) {
+            function ($row): int {
                 return (int) $row['id'];
             },
             $result

@@ -77,7 +77,7 @@ class DdiProviderRegistrationStatus
         return $this->expires;
     }
 
-    private function setExpires(int $expires = null): static
+    private function setExpires(?int $expires = null): static
     {
         $this->expires = $expires;
 

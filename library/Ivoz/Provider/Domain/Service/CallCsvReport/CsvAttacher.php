@@ -110,8 +110,8 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
 
     private function cleanSensitiveDataIfNecessary(
         string $csv,
-        BrandInterface $brand = null,
-        CompanyInterface $company = null
+        ?BrandInterface $brand = null,
+        ?CompanyInterface $company = null
     ): string {
         if ($brand) {
             return $csv;

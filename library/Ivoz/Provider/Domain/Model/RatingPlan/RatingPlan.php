@@ -68,7 +68,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
             7 => $this->getSunday(),
         ];
 
-        $weekDays = array_filter($daysMap, function ($v) {
+        $weekDays = array_filter($daysMap, function ($v): bool {
             return $v !== 0;
         });
 

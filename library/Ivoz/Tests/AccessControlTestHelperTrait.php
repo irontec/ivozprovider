@@ -112,7 +112,7 @@ trait AccessControlTestHelperTrait
             ->expects($this->any())
             ->method('evaluate')
             ->will(
-                $this->returnCallback(function (string $expression, array $variables) {
+                $this->returnCallback(function (string $expression, array $variables): string {
                     return $expression;
                 })
             );
@@ -121,7 +121,7 @@ trait AccessControlTestHelperTrait
             ->expects($this->any())
             ->method('getForeginKeysByCriteria')
             ->will(
-                $this->returnCallback(function (string $fqcn, Criteria $criteria) {
+                $this->returnCallback(function (string $fqcn, Criteria $criteria): string {
 
                     $criteriaArray = CriteriaHelper::toArray($criteria);
                     $fqcnSegments = explode('\\', $fqcn);

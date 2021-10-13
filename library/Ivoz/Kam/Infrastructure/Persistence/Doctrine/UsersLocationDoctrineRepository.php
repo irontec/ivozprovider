@@ -111,7 +111,7 @@ class UsersLocationDoctrineRepository extends ServiceEntityRepository implements
      * @param UsersLocationInterface[] $results
      * @return UsersLocationInterface[]
      */
-    private function filterByExpires($results)
+    private function filterByExpires(array $results)
     {
         $response = [];
         foreach ($results as $result) {

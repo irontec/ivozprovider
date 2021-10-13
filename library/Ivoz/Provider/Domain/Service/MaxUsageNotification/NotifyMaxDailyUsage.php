@@ -114,7 +114,7 @@ class NotifyMaxDailyUsage
         return str_replace(array_keys($substitution), array_values($substitution), $content);
     }
 
-    private function parseNotificationBody(string $content, string $name, float $amount): string
+    private function parseNotificationBody(string $content, string $name, int $amount): string
     {
         $substitution = array(
             '${MAXDAILYUSAGE_COMPANY}' => $name,

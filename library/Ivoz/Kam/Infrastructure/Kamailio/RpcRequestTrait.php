@@ -69,14 +69,14 @@ trait RpcRequestTrait
      */
     private function setTimeout(int $timeout)
     {
-        (function () use ($timeout) {
+        (function () use ($timeout): void {
 
             /** @var \GuzzleHttp\Client $client */
             $client = $this->httpClient;
             $config = $client->getConfig();
             $config['timeout'] = $timeout;
 
-            (function () use ($config) {
+            (function () use ($config): void {
                 $this->config = $config;
             })->call($client);
         })->call($this->rpcClient);

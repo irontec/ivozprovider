@@ -26,7 +26,7 @@ class CsvStaticValidator
         }
 
         $fullNames = array_map(
-            function ($row) {
+            function ($row): string {
                 return $row[0] . ' ' . $row[1];
             },
             $rows
