@@ -83,7 +83,7 @@ class ARIConnector
      */
     private function _post($ch, $url, $postdata)
     {
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postdata));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postdata, JSON_THROW_ON_ERROR));
         curl_setopt($ch, CURLOPT_URL, $url);
         return curl_exec($ch);
     }

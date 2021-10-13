@@ -61,7 +61,7 @@ class Recoder implements RecoderJobInterface
 
             $redisClient->rPush(
                 self::CHANNEL,
-                \json_encode($data)
+                \json_encode($data, JSON_THROW_ON_ERROR)
             );
 
             $redisClient->close();

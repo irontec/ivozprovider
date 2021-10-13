@@ -129,7 +129,7 @@ trait AccessControlTestHelperTrait
                     return sprintf(
                         '%s(%s)',
                         end($fqcnSegments) . 'Repository',
-                        json_encode($criteriaArray)
+                        json_encode($criteriaArray, JSON_THROW_ON_ERROR)
                     );
                 })
             );

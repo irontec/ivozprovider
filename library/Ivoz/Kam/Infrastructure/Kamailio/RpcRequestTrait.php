@@ -42,7 +42,7 @@ trait RpcRequestTrait
         /** @var Response $response */
         $response = $this->rpcClient->send($request);
         $stringResponse = (string) $response->getBody();
-        $objectResponse = json_decode($stringResponse);
+        $objectResponse = json_decode($stringResponse, null, 512, JSON_THROW_ON_ERROR);
 
         if (!is_null($timeout)) {
             // Restore timeout

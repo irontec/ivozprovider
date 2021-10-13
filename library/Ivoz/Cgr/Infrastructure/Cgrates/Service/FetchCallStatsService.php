@@ -83,7 +83,7 @@ class FetchCallStatsService implements FetchCallStatsServiceInterface
 
         $response = $this->client->send($request);
         $responseObject = json_decode(
-            $response->getBody()->__toString()
+            $response->getBody()->__toString(), null, 512, JSON_THROW_ON_ERROR
         );
 
         return $responseObject;

@@ -44,7 +44,7 @@ class RatesImporter implements RatesImporterJobInterface
 
             $redisClient->rPush(
                 self::CHANNEL,
-                \json_encode($this->params)
+                \json_encode($this->params, JSON_THROW_ON_ERROR)
             );
 
             $redisClient->close();

@@ -35,7 +35,7 @@ class FakeRpcClient extends RpcClient
             'POST',
             '/uri',
             [],
-            json_encode($body)
+            json_encode($body, JSON_THROW_ON_ERROR)
         );
     }
 

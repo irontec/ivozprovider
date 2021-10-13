@@ -52,7 +52,7 @@ trait UserProviderTrait
     public function refreshUser(UserInterface $user)
     {
         if (!$user instanceof $this->entityClass) {
-            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $user::class));
         }
 
         $repository = $this->getRepository();
@@ -70,7 +70,7 @@ trait UserProviderTrait
 
         $refreshedUser = $repository->find($id);
         if (null === $refreshedUser) {
-            throw new UsernameNotFoundException(sprintf('User with id %s not found', json_encode($id)));
+            throw new UsernameNotFoundException(sprintf('User with id %s not found', json_encode($id, JSON_THROW_ON_ERROR)));
         }
 
         return $refreshedUser;

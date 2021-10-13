@@ -425,7 +425,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             $response = (new Query($this->_em))
                 ->setDQL($maxId)
                 ->getSingleScalarResult();
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return $fromId;
         }
 

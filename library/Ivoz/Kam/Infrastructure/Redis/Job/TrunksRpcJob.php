@@ -55,7 +55,7 @@ class TrunksRpcJob implements RpcJobInterface
 
             $redisClient->rPush(
                 $channel,
-                \json_encode($data)
+                \json_encode($data, JSON_THROW_ON_ERROR)
             );
 
             $redisClient->close();

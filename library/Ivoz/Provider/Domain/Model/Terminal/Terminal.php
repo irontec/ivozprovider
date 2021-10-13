@@ -90,15 +90,15 @@ class Terminal extends TerminalAbstract implements TerminalInterface
 
         $randStr = '';
         for ($i = 0; $i < 3; $i++) {
-            $randStr .= $uppers[rand(0, strlen($uppers) - 1)];
+            $randStr .= $uppers[random_int(0, strlen($uppers) - 1)];
         }
         for ($i = 0; $i < 3; $i++) {
-            $randStr .= $lowers[rand(0, strlen($lowers) - 1)];
+            $randStr .= $lowers[random_int(0, strlen($lowers) - 1)];
         }
         for ($i = 0; $i < 3; $i++) {
-            $randStr .= $numbers[rand(0, strlen($numbers) - 1)];
+            $randStr .= $numbers[random_int(0, strlen($numbers) - 1)];
         }
-        $randStr .= $symbols[rand(0, strlen($symbols) - 1)];
+        $randStr .= $symbols[random_int(0, strlen($symbols) - 1)];
 
         return str_shuffle($randStr);
     }

@@ -97,7 +97,7 @@ class SimulatedCall
         int $duration,
         EntityTools $entityTools
     ) {
-        $response = json_decode($response);
+        $response = json_decode($response, null, 512, JSON_THROW_ON_ERROR);
 
         /** @var TpRatingPlanRepository $tpRatingPlanRepository */
         $tpRatingPlanRepository = $entityTools->getRepository(TpRatingPlan::class);
@@ -222,7 +222,7 @@ class SimulatedCall
         }
 
         $emptyDestinationRateMsg = self::ERROR_NO_RATING_PLAN_MSG;
-        if (substr($errorMsg, 0, strlen($emptyDestinationRateMsg)) === $emptyDestinationRateMsg) {
+        if (str_starts_with($errorMsg, $emptyDestinationRateMsg)) {
             $instance->errorCode = self::ERROR_NO_RATING_PLAN;
 
             return $instance;

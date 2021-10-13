@@ -79,7 +79,7 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
             }
 
             $this->entityTools->dispatchQueuedOperations();
-        } catch (\Exception $e) {
+        } catch (\Exception) {
         }
     }
 }
