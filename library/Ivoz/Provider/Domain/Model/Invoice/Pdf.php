@@ -10,26 +10,26 @@ use Assert\Assertion;
 * Pdf
 * @codeCoverageIgnore
 */
-class Pdf
+final class Pdf
 {
     /**
      * column: pdfFileFileSize
      * comment: FSO
      * @var int | null
      */
-    protected $fileSize;
+    private $fileSize;
 
     /**
      * column: pdfFileMimeType
      * @var string | null
      */
-    protected $mimeType;
+    private $mimeType;
 
     /**
      * column: pdfFileBaseName
      * @var string | null
      */
-    protected $baseName;
+    private $baseName;
 
     /**
      * Constructor

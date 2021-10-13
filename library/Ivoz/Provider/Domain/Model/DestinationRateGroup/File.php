@@ -10,32 +10,32 @@ use Assert\Assertion;
 * File
 * @codeCoverageIgnore
 */
-class File
+final class File
 {
     /**
      * column: fileFileSize
      * comment: FSO
      * @var int | null
      */
-    protected $fileSize;
+    private $fileSize;
 
     /**
      * column: fileMimeType
      * @var string | null
      */
-    protected $mimeType;
+    private $mimeType;
 
     /**
      * column: fileBaseName
      * @var string | null
      */
-    protected $baseName;
+    private $baseName;
 
     /**
      * column: fileImporterArguments
      * @var array | null
      */
-    protected $importerArguments = [];
+    private $importerArguments = [];
 
     /**
      * Constructor

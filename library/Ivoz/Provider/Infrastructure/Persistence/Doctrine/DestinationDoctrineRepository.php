@@ -17,7 +17,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class DestinationDoctrineRepository extends ServiceEntityRepository implements DestinationRepository
 {
-    protected $queryRunner;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,

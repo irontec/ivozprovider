@@ -17,7 +17,7 @@ class CallAclDto extends CallAclDtoAbstract
      *     description="MatchList ids"
      * )
      */
-    protected $matchListIds = [];
+    private $matchListIds = [];
 
     /**
      * @inheritdoc

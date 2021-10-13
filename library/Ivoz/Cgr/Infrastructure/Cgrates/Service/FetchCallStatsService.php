@@ -10,8 +10,8 @@ use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 
 class FetchCallStatsService implements FetchCallStatsServiceInterface
 {
-    protected $client;
-    protected $carrierRepository;
+    private $client;
+    private $carrierRepository;
 
     public function __construct(
         ClientInterface $client,

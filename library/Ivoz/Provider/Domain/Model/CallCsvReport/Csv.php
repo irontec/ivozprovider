@@ -10,26 +10,26 @@ use Assert\Assertion;
 * Csv
 * @codeCoverageIgnore
 */
-class Csv
+final class Csv
 {
     /**
      * column: csvFileSize
      * comment: FSO
      * @var int | null
      */
-    protected $fileSize;
+    private $fileSize;
 
     /**
      * column: csvMimeType
      * @var string | null
      */
-    protected $mimeType;
+    private $mimeType;
 
     /**
      * column: csvBaseName
      * @var string | null
      */
-    protected $baseName;
+    private $baseName;
 
     /**
      * Constructor

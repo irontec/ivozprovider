@@ -10,42 +10,42 @@ use Assert\Assertion;
 * Invoice
 * @codeCoverageIgnore
 */
-class Invoice
+final class Invoice
 {
     /**
      * @var string
      */
-    protected $nif;
+    private $nif;
 
     /**
      * @var string
      */
-    protected $postalAddress;
+    private $postalAddress;
 
     /**
      * @var string
      */
-    protected $postalCode;
+    private $postalCode;
 
     /**
      * @var string
      */
-    protected $town;
+    private $town;
 
     /**
      * @var string
      */
-    protected $province;
+    private $province;
 
     /**
      * @var string
      */
-    protected $country;
+    private $country;
 
     /**
      * @var string | null
      */
-    protected $registryData;
+    private $registryData;
 
     /**
      * Constructor

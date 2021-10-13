@@ -14,9 +14,9 @@ class UserTimezoneInjector
 {
     public const FALLBACK_TZ = 'UTC';
 
-    protected $tokenStorage;
-    protected $logger;
-    protected $tzParamName;
+    private $tokenStorage;
+    private $logger;
+    private $tzParamName;
 
     public function __construct(
         TokenStorageInterface $tokenStorage,

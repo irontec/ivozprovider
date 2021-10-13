@@ -37,13 +37,13 @@ class UserDto extends UserDtoAbstract
      *     description="Pickup group ids"
      * )
      */
-    protected $pickupGroupIds = [];
+    private $pickupGroupIds = [];
 
     /**
      * @var string
      * @AttributeDefinition(type="string", description="required in order to update user password")
      */
-    protected $oldPass;
+    private $oldPass;
 
     /**
      * @return string

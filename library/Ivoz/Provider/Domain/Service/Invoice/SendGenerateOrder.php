@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 class SendGenerateOrder implements InvoiceLifecycleEventHandlerInterface
 {
-    protected $invoicer;
+    private $invoicer;
 
     public function __construct(
         InvoicerJobInterface $invoicer

@@ -23,7 +23,7 @@ class PickUpGroupDto extends PickUpGroupDtoAbstract
      *     description="User ids"
      * )
      */
-    protected $userIds = [];
+    private $userIds = [];
 
     /**
      * @inheritdoc

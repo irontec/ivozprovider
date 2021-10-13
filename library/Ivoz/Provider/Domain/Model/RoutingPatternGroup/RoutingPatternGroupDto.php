@@ -22,7 +22,7 @@ class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
      *     description="Binded routing patterns"
      * )
      */
-    protected $patternIds = [];
+    private $patternIds = [];
 
     /**
      * @inheritdoc

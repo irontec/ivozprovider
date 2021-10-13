@@ -22,7 +22,7 @@ class IvrDto extends IvrDtoAbstract
      *     description="Excluded extensions"
      * )
      */
-    protected $excludedExtensionIds = [];
+    private $excludedExtensionIds = [];
 
     /**
      * @inheritdoc

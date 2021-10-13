@@ -25,7 +25,7 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
      *     description="Matchlist ids"
      * )
      */
-    protected $matchListIds = [];
+    private $matchListIds = [];
 
     /**
      * @var int[]
@@ -35,7 +35,7 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
      *     description="Schedule ids"
      * )
      */
-    protected $scheduleIds = [];
+    private $scheduleIds = [];
 
     /**
      * @var int[]
@@ -45,7 +45,7 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
      *     description="Calendar ids"
      * )
      */
-    protected $calendarIds = [];
+    private $calendarIds = [];
 
     /**
      * @var int[]
@@ -55,7 +55,7 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
      *     description="Route lock ids"
      * )
      */
-    protected $routeLockIds = [];
+    private $routeLockIds = [];
 
     /**
      * @inheritdoc

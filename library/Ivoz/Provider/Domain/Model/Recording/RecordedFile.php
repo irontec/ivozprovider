@@ -10,26 +10,26 @@ use Assert\Assertion;
 * RecordedFile
 * @codeCoverageIgnore
 */
-class RecordedFile
+final class RecordedFile
 {
     /**
      * column: recordedFileFileSize
      * comment: FSO:keepExtension
      * @var int | null
      */
-    protected $fileSize;
+    private $fileSize;
 
     /**
      * column: recordedFileMimeType
      * @var string | null
      */
-    protected $mimeType;
+    private $mimeType;
 
     /**
      * column: recordedFileBaseName
      * @var string | null
      */
-    protected $baseName;
+    private $baseName;
 
     /**
      * Constructor

@@ -21,7 +21,7 @@ class UserTokenAuthenticator extends JWTTokenAuthenticator
      */
     protected $jwtManager;
 
-    protected $tokenStorage;
+    private $tokenStorage;
 
     /**
      * @param JWTTokenManagerInterface $jwtManager

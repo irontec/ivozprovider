@@ -21,7 +21,7 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
 {
     use GetGeneratorByConditionsTrait;
 
-    protected $queryRunner;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,

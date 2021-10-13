@@ -17,7 +17,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
      *     description="Registration status"
      * )
      */
-    protected $status = [];
+    private $status = [];
 
     /**
      * @var string
@@ -26,7 +26,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
      *     description="Registration domain"
      * )
      */
-    protected $domainName;
+    private $domainName;
 
     public function addStatus(RegistrationStatus $status)
     {

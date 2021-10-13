@@ -19,7 +19,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class BillableCallHistoricDoctrineRepository extends ServiceEntityRepository implements BillableCallHistoricRepository
 {
-    protected $queryRunner;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,

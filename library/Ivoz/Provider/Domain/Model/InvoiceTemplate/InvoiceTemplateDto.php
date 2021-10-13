@@ -14,7 +14,7 @@ class InvoiceTemplateDto extends InvoiceTemplateDtoAbstract
      *     description="Global Special Number"
      * )
      */
-    protected $global;
+    private $global;
 
     /**
      * @inheritdoc

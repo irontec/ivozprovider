@@ -18,7 +18,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class AdministratorRelPublicEntityDoctrineRepository extends ServiceEntityRepository implements AdministratorRelPublicEntityRepository
 {
-    protected $queryRunner;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,

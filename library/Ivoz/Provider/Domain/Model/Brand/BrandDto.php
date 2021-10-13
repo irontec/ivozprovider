@@ -24,7 +24,7 @@ class BrandDto extends BrandDtoAbstract
      *     description="Active feature ids"
      * )
      */
-    protected $features = [];
+    private $features = [];
 
     public function getFileObjects()
     {

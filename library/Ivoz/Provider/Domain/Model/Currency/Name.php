@@ -10,31 +10,31 @@ use Assert\Assertion;
 * Name
 * @codeCoverageIgnore
 */
-class Name
+final class Name
 {
     /**
      * column: name_en
      * @var string
      */
-    protected $en = '';
+    private $en = '';
 
     /**
      * column: name_es
      * @var string
      */
-    protected $es = '';
+    private $es = '';
 
     /**
      * column: name_ca
      * @var string
      */
-    protected $ca = '';
+    private $ca = '';
 
     /**
      * column: name_it
      * @var string
      */
-    protected $it = '';
+    private $it = '';
 
     /**
      * Constructor

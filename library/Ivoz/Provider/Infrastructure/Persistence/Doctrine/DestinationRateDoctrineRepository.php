@@ -18,8 +18,8 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class DestinationRateDoctrineRepository extends ServiceEntityRepository implements DestinationRateRepository
 {
-    protected $em;
-    protected $queryRunner;
+    private $em;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,

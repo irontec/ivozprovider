@@ -14,7 +14,7 @@ class SpecialNumberDto extends SpecialNumberDtoAbstract
      *     description="Global Special Number"
      * )
      */
-    protected $global;
+    private $global;
 
     public static function getPropertyMap(string $context = '', string $role = null)
     {

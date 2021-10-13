@@ -14,7 +14,7 @@ class RouteLockDto extends RouteLockDtoAbstract
      *     writable=false
      * )
      */
-    protected $closeExtension = '';
+    private $closeExtension = '';
 
     /**
      * @var string
@@ -24,7 +24,7 @@ class RouteLockDto extends RouteLockDtoAbstract
      *     writable=false
      * )
      */
-    protected $openExtension = '';
+    private $openExtension = '';
 
     /**
      * @var string
@@ -34,7 +34,7 @@ class RouteLockDto extends RouteLockDtoAbstract
      *     writable=false
      * )
      */
-    protected $toggleExtension = '';
+    private $toggleExtension = '';
 
     public const CALCULATED_READ_ONLY_PROPS = [
         'closeExtension' => 'closeExtension',

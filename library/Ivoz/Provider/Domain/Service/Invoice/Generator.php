@@ -21,35 +21,35 @@ class Generator
 
     public const LOGGER_PREFIX = '[Invoices][Generator]';
 
-    protected $invoiceId;
-    protected $fixedCostTotal = 0;
-    protected $fixedCosts = array();
-    protected $totals = array();
+    private $invoiceId;
+    private $fixedCostTotal = 0;
+    private $fixedCosts = array();
+    private $totals = array();
 
     /**
      * @var InvoiceRepository
      */
-    protected $invoiceRepository;
+    private $invoiceRepository;
 
     /**
      * @var BillableCallRepository
      */
-    protected $billableCallRepository;
+    private $billableCallRepository;
 
     /**
      * @var EntityTools
      */
-    protected $entityTools;
+    private $entityTools;
 
     /**
      * @var Logger
      */
-    protected $logger;
+    private $logger;
 
     /**
      * @var string
      */
-    protected $vendorDir;
+    private $vendorDir;
 
     /**
      * Generator constructor.

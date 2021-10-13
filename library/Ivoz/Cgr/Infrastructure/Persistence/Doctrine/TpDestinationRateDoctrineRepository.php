@@ -17,7 +17,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TpDestinationRateDoctrineRepository extends ServiceEntityRepository implements TpDestinationRateRepository
 {
-    protected $queryRunner;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,

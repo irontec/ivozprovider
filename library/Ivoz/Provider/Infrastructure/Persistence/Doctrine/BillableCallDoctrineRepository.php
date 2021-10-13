@@ -26,7 +26,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
     use GetGeneratorByConditionsTrait;
 
-    protected $queryRunner;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,

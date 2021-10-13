@@ -10,19 +10,19 @@ class RegistrationStatus
     * @var string
     * @AttributeDefinition(type="string")
     */
-    protected $contact;
+    private $contact;
 
     /**
      * @var string
      * @AttributeDefinition(type="string")
      */
-    protected $expires;
+    private $expires;
 
     /**
      * @var string
      * @AttributeDefinition(type="string")
      */
-    protected $userAgent;
+    private $userAgent;
 
     public function __construct(
         UsersLocationInterface $location = null,

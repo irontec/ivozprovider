@@ -24,67 +24,67 @@ class SimulatedCall
     public const ERROR_NO_RATING_PLAN_MSG = 'NOT_FOUND:RatingPlanId:';
     public const FALLBACK_ERROR_MSG = 'There was a problem';
 
-    protected $errorCode;
+    private $errorCode;
 
     /**
      * @var string
      */
-    protected $errorMessage;
+    private $errorMessage;
 
     /**
      * @var \DateTime
      */
-    protected $callDate;
+    private $callDate;
 
     /**
      * @var int
      */
-    protected $callDuration;
+    private $callDuration;
 
     /**
      * @var RatingPlanGroupDto
      */
-    protected $ratingPlanGroupDto;
+    private $ratingPlanGroupDto;
 
     /**
      * @var TpRatingPlanDto
      */
-    protected $tpRatingPlanDto;
+    private $tpRatingPlanDto;
 
     /**
      * @var string
      */
-    protected $patternName;
+    private $patternName;
 
     /**
      * @var string
      */
-    protected $prefix;
+    private $prefix;
 
     /**
      * @var string
      */
-    protected $intervalStart;
+    private $intervalStart;
 
     /**
      * @var float
      */
-    protected $connectionFee;
+    private $connectionFee;
 
     /**
      * @var int
      */
-    protected $chargePeriod;
+    private $chargePeriod;
 
     /**
      * @var float
      */
-    protected $rate;
+    private $rate;
 
     /**
      * @var float
      */
-    protected $cost;
+    private $cost;
 
     /**
      * @param string $response

@@ -25,7 +25,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
      *     description="Schedule ids"
      * )
      */
-    protected $scheduleIds = [];
+    private $scheduleIds = [];
 
     /**
      * @var int[]
@@ -35,7 +35,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
      *     description="Calendar ids"
      * )
      */
-    protected $calendarIds = [];
+    private $calendarIds = [];
 
     /**
      * @var int[]
@@ -45,7 +45,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
      *     description="Whitelisted matchlists"
      * )
      */
-    protected $whiteListIds = [];
+    private $whiteListIds = [];
 
     /**
      * @var int[]
@@ -55,7 +55,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
      *     description="Blacklisted matchlists"
      * )
      */
-    protected $blackListIds = [];
+    private $blackListIds = [];
 
     /**
      * @inheritdoc

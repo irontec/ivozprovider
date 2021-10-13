@@ -17,12 +17,12 @@ class SetInvoiceNumber implements InvoiceLifecycleEventHandlerInterface
     /**
      * @var NextValGenerator
      */
-    protected $nextValGenerator;
+    private $nextValGenerator;
 
     /**
      * @var EntityTools
      */
-    protected $entityTools;
+    private $entityTools;
 
     public function __construct(
         NextValGenerator $nextValGenerator,

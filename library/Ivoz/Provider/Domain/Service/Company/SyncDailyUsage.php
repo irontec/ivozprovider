@@ -10,10 +10,10 @@ use Psr\Log\LoggerInterface;
 
 class SyncDailyUsage
 {
-    protected $entityTools;
-    protected $logger;
-    protected $client;
-    protected $companyRepository;
+    private $entityTools;
+    private $logger;
+    private $client;
+    private $companyRepository;
 
     public function __construct(
         EntityTools $entityTools,

@@ -10,31 +10,31 @@ use Assert\Assertion;
 * Zone
 * @codeCoverageIgnore
 */
-class Zone
+final class Zone
 {
     /**
      * column: zone_en
      * @var string
      */
-    protected $en = '';
+    private $en = '';
 
     /**
      * column: zone_es
      * @var string
      */
-    protected $es = '';
+    private $es = '';
 
     /**
      * column: zone_ca
      * @var string
      */
-    protected $ca = '';
+    private $ca = '';
 
     /**
      * column: zone_it
      * @var string
      */
-    protected $it = '';
+    private $it = '';
 
     /**
      * Constructor

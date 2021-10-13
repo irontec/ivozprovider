@@ -11,11 +11,11 @@ use Psr\Http\Message\UriInterface;
 
 class Client implements ApiClientInterface
 {
-    protected $httpClient;
-    protected $jwtTokenManager;
+    private $httpClient;
+    private $jwtTokenManager;
 
-    protected $jwtToken;
-    protected $administratorRepository;
+    private $jwtToken;
+    private $administratorRepository;
 
     public function __construct(
         ClientInterface $platformHttpClient,

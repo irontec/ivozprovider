@@ -10,31 +10,31 @@ use Assert\Assertion;
 * Description
 * @codeCoverageIgnore
 */
-class Description
+final class Description
 {
     /**
      * column: description_en
      * @var string | null
      */
-    protected $en;
+    private $en;
 
     /**
      * column: description_es
      * @var string | null
      */
-    protected $es;
+    private $es;
 
     /**
      * column: description_ca
      * @var string | null
      */
-    protected $ca;
+    private $ca;
 
     /**
      * column: description_it
      * @var string | null
      */
-    protected $it;
+    private $it;
 
     /**
      * Constructor

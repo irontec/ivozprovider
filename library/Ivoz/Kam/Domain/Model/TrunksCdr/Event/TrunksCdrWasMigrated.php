@@ -15,12 +15,12 @@ class TrunksCdrWasMigrated extends Event implements StoppableDomainEventInterfac
     /**
      * @var TrunksCdrInterface
      */
-    protected $trunksCdr;
+    private $trunksCdr;
 
     /**
      * @var BillableCallInterface
      */
-    protected $billableCall;
+    private $billableCall;
 
     public function __construct(
         TrunksCdrInterface $trunksCdr,

@@ -22,7 +22,7 @@ class CompanyDto extends CompanyDtoAbstract
      *     description="Active feature ids"
      * )
      */
-    protected $featureIds = [];
+    private $featureIds = [];
 
     public function normalize(string $context, string $role = '')
     {

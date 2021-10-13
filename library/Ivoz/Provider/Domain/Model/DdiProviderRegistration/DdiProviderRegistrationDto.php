@@ -14,7 +14,7 @@ class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
      *     description="Registration status"
      * )
      */
-    protected $status;
+    private $status;
 
     /**
      * @inheritdoc

@@ -22,7 +22,7 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
      *     description="Carriers on LCR route type"
      * )
      */
-    protected $carrierIds = [];
+    private $carrierIds = [];
 
     public static function getPropertyMap(string $context = '', string $role = null)
     {

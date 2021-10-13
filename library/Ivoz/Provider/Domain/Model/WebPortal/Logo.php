@@ -10,26 +10,26 @@ use Assert\Assertion;
 * Logo
 * @codeCoverageIgnore
 */
-class Logo
+final class Logo
 {
     /**
      * column: logoFileSize
      * comment: FSO
      * @var int | null
      */
-    protected $fileSize;
+    private $fileSize;
 
     /**
      * column: logoMimeType
      * @var string | null
      */
-    protected $mimeType;
+    private $mimeType;
 
     /**
      * column: logoBaseName
      * @var string | null
      */
-    protected $baseName;
+    private $baseName;
 
     /**
      * Constructor
