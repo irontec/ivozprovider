@@ -22,19 +22,10 @@ abstract class SpecialNumberAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $number;
 
-    /**
-     * @var string | null
-     */
     protected $numberE164;
 
-    /**
-     * @var int
-     */
     protected $disableCDR = 1;
 
     /**
@@ -51,8 +42,8 @@ abstract class SpecialNumberAbstract
      * Constructor
      */
     protected function __construct(
-        $number,
-        $disableCDR
+        string $number,
+        int $disableCDR
     ) {
         $this->setNumber($number);
         $this->setDisableCDR($disableCDR);
@@ -79,9 +70,8 @@ abstract class SpecialNumberAbstract
 
     /**
      * @param mixed $id
-     * @return SpecialNumberDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): SpecialNumberDto
     {
         return new SpecialNumberDto($id);
     }
@@ -165,9 +155,8 @@ abstract class SpecialNumberAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return SpecialNumberDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): SpecialNumberDto
     {
         return self::createDto()
             ->setNumber(self::getNumber())

@@ -22,40 +22,21 @@ abstract class RecordingAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $callid;
 
-    /**
-     * @var \DateTime
-     */
     protected $calldate;
 
     /**
      * comment: enum:ondemand|ddi
-     * @var string
      */
     protected $type = 'ddi';
 
-    /**
-     * @var float
-     */
     protected $duration = 0;
 
-    /**
-     * @var string | null
-     */
     protected $caller;
 
-    /**
-     * @var string | null
-     */
     protected $callee;
 
-    /**
-     * @var string | null
-     */
     protected $recorder;
 
     /**
@@ -73,9 +54,9 @@ abstract class RecordingAbstract
      * Constructor
      */
     protected function __construct(
-        $calldate,
-        $type,
-        $duration,
+        \DateTimeInterface|string $calldate,
+        string $type,
+        float $duration,
         RecordedFile $recordedFile
     ) {
         $this->setCalldate($calldate);
@@ -105,9 +86,8 @@ abstract class RecordingAbstract
 
     /**
      * @param mixed $id
-     * @return RecordingDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): RecordingDto
     {
         return new RecordingDto($id);
     }
@@ -211,9 +191,8 @@ abstract class RecordingAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return RecordingDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): RecordingDto
     {
         return self::createDto()
             ->setCallid(self::getCallid())
@@ -282,7 +261,10 @@ abstract class RecordingAbstract
         return $this;
     }
 
-    public function getCalldate(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCalldate(): \DateTimeInterface
     {
         return clone $this->calldate;
     }

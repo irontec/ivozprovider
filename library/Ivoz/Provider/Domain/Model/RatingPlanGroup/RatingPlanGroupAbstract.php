@@ -76,9 +76,8 @@ abstract class RatingPlanGroupAbstract
 
     /**
      * @param mixed $id
-     * @return RatingPlanGroupDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): RatingPlanGroupDto
     {
         return new RatingPlanGroupDto($id);
     }
@@ -188,9 +187,8 @@ abstract class RatingPlanGroupAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return RatingPlanGroupDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): RatingPlanGroupDto
     {
         return self::createDto()
             ->setNameEn(self::getName()->getEn())

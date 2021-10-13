@@ -14,35 +14,35 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 */
 interface QueueInterface extends LoggableEntityInterface
 {
-    const TIMEOUTTARGETTYPE_NUMBER = 'number';
+    public const TIMEOUTTARGETTYPE_NUMBER = 'number';
 
-    const TIMEOUTTARGETTYPE_EXTENSION = 'extension';
+    public const TIMEOUTTARGETTYPE_EXTENSION = 'extension';
 
-    const TIMEOUTTARGETTYPE_VOICEMAIL = 'voicemail';
+    public const TIMEOUTTARGETTYPE_VOICEMAIL = 'voicemail';
 
-    const FULLTARGETTYPE_NUMBER = 'number';
+    public const FULLTARGETTYPE_NUMBER = 'number';
 
-    const FULLTARGETTYPE_EXTENSION = 'extension';
+    public const FULLTARGETTYPE_EXTENSION = 'extension';
 
-    const FULLTARGETTYPE_VOICEMAIL = 'voicemail';
+    public const FULLTARGETTYPE_VOICEMAIL = 'voicemail';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * {@inheritDoc}
      */
     public function setName(?string $name = null): static;
 
-    public function getAstQueueName();
+    public function getAstQueueName(): string;
 
     /**
      * @return string
      */
-    public function getTimeoutRouteType();
+    public function getTimeoutRouteType(): ?string;
 
     /**
      * Get the timeout numberValue in E.164 format when routing to 'number'
@@ -54,7 +54,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getFullRouteType();
+    public function getFullRouteType(): ?string;
 
     /**
      * Get the full numberValue in E.164 format when routing to 'number'

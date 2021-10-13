@@ -19,131 +19,88 @@ abstract class TpCdrAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $cgrid;
 
     /**
      * column: run_id
-     * @var string
      */
     protected $runId;
 
     /**
      * column: origin_host
-     * @var string
      */
     protected $originHost;
 
-    /**
-     * @var string
-     */
     protected $source;
 
     /**
      * column: origin_id
-     * @var string
      */
     protected $originId;
 
-    /**
-     * @var string
-     */
     protected $tor;
 
     /**
      * column: request_type
-     * @var string
      */
     protected $requestType;
 
-    /**
-     * @var string
-     */
     protected $tenant;
 
-    /**
-     * @var string
-     */
     protected $category;
 
-    /**
-     * @var string
-     */
     protected $account;
 
-    /**
-     * @var string
-     */
     protected $subject;
 
-    /**
-     * @var string
-     */
     protected $destination;
 
     /**
      * column: setup_time
-     * @var \DateTime
      */
     protected $setupTime;
 
     /**
      * column: answer_time
-     * @var \DateTime
      */
     protected $answerTime;
 
-    /**
-     * @var int
-     */
     protected $usage;
 
     /**
      * column: extra_fields
-     * @var string
      */
     protected $extraFields;
 
     /**
      * column: cost_source
-     * @var string
      */
     protected $costSource;
 
-    /**
-     * @var float
-     */
     protected $cost;
 
     /**
      * column: cost_details
-     * @var array
      */
     protected $costDetails = [];
 
     /**
      * column: extra_info
-     * @var string
      */
     protected $extraInfo;
 
     /**
      * column: created_at
-     * @var \DateTime | null
      */
     protected $createdAt;
 
     /**
      * column: updated_at
-     * @var \DateTime | null
      */
     protected $updatedAt;
 
     /**
      * column: deleted_at
-     * @var \DateTime | null
      */
     protected $deletedAt;
 
@@ -151,26 +108,26 @@ abstract class TpCdrAbstract
      * Constructor
      */
     protected function __construct(
-        $cgrid,
-        $runId,
-        $originHost,
-        $source,
-        $originId,
-        $tor,
-        $requestType,
-        $tenant,
-        $category,
-        $account,
-        $subject,
-        $destination,
-        $setupTime,
-        $answerTime,
-        $usage,
-        $extraFields,
-        $costSource,
-        $cost,
-        $costDetails,
-        $extraInfo
+        string $cgrid,
+        string $runId,
+        string $originHost,
+        string $source,
+        string $originId,
+        string $tor,
+        string $requestType,
+        string $tenant,
+        string $category,
+        string $account,
+        string $subject,
+        string $destination,
+        \DateTimeInterface|string $setupTime,
+        \DateTimeInterface|string $answerTime,
+        int $usage,
+        string $extraFields,
+        string $costSource,
+        float $cost,
+        array $costDetails,
+        string $extraInfo
     ) {
         $this->setCgrid($cgrid);
         $this->setRunId($runId);
@@ -215,9 +172,8 @@ abstract class TpCdrAbstract
 
     /**
      * @param mixed $id
-     * @return TpCdrDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TpCdrDto
     {
         return new TpCdrDto($id);
     }
@@ -337,9 +293,8 @@ abstract class TpCdrAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TpCdrDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TpCdrDto
     {
         return self::createDto()
             ->setCgrid(self::getCgrid())
@@ -584,7 +539,10 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    public function getSetupTime(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getSetupTime(): \DateTimeInterface
     {
         return clone $this->setupTime;
     }
@@ -606,7 +564,10 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    public function getAnswerTime(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getAnswerTime(): \DateTimeInterface
     {
         return clone $this->answerTime;
     }
@@ -707,7 +668,10 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return !is_null($this->createdAt) ? clone $this->createdAt : null;
     }
@@ -734,7 +698,10 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return !is_null($this->updatedAt) ? clone $this->updatedAt : null;
     }
@@ -761,7 +728,10 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    public function getDeletedAt(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getDeletedAt(): ?\DateTimeInterface
     {
         return !is_null($this->deletedAt) ? clone $this->deletedAt : null;
     }

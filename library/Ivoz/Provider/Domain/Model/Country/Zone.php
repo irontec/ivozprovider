@@ -14,25 +14,21 @@ final class Zone
 {
     /**
      * column: zone_en
-     * @var string
      */
     private $en = '';
 
     /**
      * column: zone_es
-     * @var string
      */
     private $es = '';
 
     /**
      * column: zone_ca
-     * @var string
      */
     private $ca = '';
 
     /**
      * column: zone_it
-     * @var string
      */
     private $it = '';
 
@@ -40,10 +36,10 @@ final class Zone
      * Constructor
      */
     public function __construct(
-        $en,
-        $es,
-        $ca,
-        $it
+        string $en,
+        string $es,
+        string $ca,
+        string $it
     ) {
         $this->setEn($en);
         $this->setEs($es);
@@ -56,11 +52,16 @@ final class Zone
      */
     public function equals(self $zone)
     {
-        return
-            $this->getEn() === $zone->getEn() &&
-            $this->getEs() === $zone->getEs() &&
-            $this->getCa() === $zone->getCa() &&
-            $this->getIt() === $zone->getIt();
+        if ($this->getEn() !== $zone->getEn()) {
+            return false;
+        }
+        if ($this->getEs() !== $zone->getEs()) {
+            return false;
+        }
+        if ($this->getCa() !== $zone->getCa()) {
+            return false;
+        }
+        return $this->getIt() === $zone->getIt();
     }
 
     protected function setEn(string $en): static

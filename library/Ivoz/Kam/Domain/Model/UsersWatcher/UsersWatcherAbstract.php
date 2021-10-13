@@ -20,40 +20,27 @@ abstract class UsersWatcherAbstract
 
     /**
      * column: presentity_uri
-     * @var string
      */
     protected $presentityUri;
 
     /**
      * column: watcher_username
-     * @var string
      */
     protected $watcherUsername;
 
     /**
      * column: watcher_domain
-     * @var string
      */
     protected $watcherDomain;
 
-    /**
-     * @var string
-     */
     protected $event = 'presence';
 
-    /**
-     * @var int
-     */
     protected $status;
 
-    /**
-     * @var string | null
-     */
     protected $reason;
 
     /**
      * column: inserted_time
-     * @var int
      */
     protected $insertedTime;
 
@@ -61,12 +48,12 @@ abstract class UsersWatcherAbstract
      * Constructor
      */
     protected function __construct(
-        $presentityUri,
-        $watcherUsername,
-        $watcherDomain,
-        $event,
-        $status,
-        $insertedTime
+        string $presentityUri,
+        string $watcherUsername,
+        string $watcherDomain,
+        string $event,
+        int $status,
+        int $insertedTime
     ) {
         $this->setPresentityUri($presentityUri);
         $this->setWatcherUsername($watcherUsername);
@@ -97,9 +84,8 @@ abstract class UsersWatcherAbstract
 
     /**
      * @param mixed $id
-     * @return UsersWatcherDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): UsersWatcherDto
     {
         return new UsersWatcherDto($id);
     }
@@ -187,9 +173,8 @@ abstract class UsersWatcherAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return UsersWatcherDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): UsersWatcherDto
     {
         return self::createDto()
             ->setPresentityUri(self::getPresentityUri())

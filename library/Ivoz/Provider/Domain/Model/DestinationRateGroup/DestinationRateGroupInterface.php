@@ -16,24 +16,24 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface DestinationRateGroupInterface extends LoggableEntityInterface, FileContainerInterface
 {
-    const STATUS_WAITING = 'waiting';
+    public const STATUS_WAITING = 'waiting';
 
-    const STATUS_INPROGRESS = 'inProgress';
+    public const STATUS_INPROGRESS = 'inProgress';
 
-    const STATUS_IMPORTED = 'imported';
+    public const STATUS_IMPORTED = 'imported';
 
-    const STATUS_ERROR = 'error';
+    public const STATUS_ERROR = 'error';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return array
      */
-    public function getFileObjects(?int $filter = null);
+    public function getFileObjects(?int $filter = null): array;
 
     /**
      * Add TempFile and set status to pending
@@ -46,17 +46,17 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface, FileCon
     /**
      * @return string
      */
-    public function getCgrTag();
+    public function getCgrTag(): string;
 
     /**
      * @return string
      */
-    public function getCurrencySymbol();
+    public function getCurrencySymbol(): string;
 
     /**
      * @return string
      */
-    public function getCurrencyIden();
+    public function getCurrencyIden(): string;
 
     /**
      * @return string

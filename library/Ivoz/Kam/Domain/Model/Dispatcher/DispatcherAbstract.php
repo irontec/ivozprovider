@@ -20,34 +20,16 @@ abstract class DispatcherAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var int
-     */
     protected $setid = 0;
 
-    /**
-     * @var string
-     */
     protected $destination = '';
 
-    /**
-     * @var int
-     */
     protected $flags = 0;
 
-    /**
-     * @var int
-     */
     protected $priority = 0;
 
-    /**
-     * @var string
-     */
     protected $attrs = '';
 
-    /**
-     * @var string
-     */
     protected $description = '';
 
     /**
@@ -59,12 +41,12 @@ abstract class DispatcherAbstract
      * Constructor
      */
     protected function __construct(
-        $setid,
-        $destination,
-        $flags,
-        $priority,
-        $attrs,
-        $description
+        int $setid,
+        string $destination,
+        int $flags,
+        int $priority,
+        string $attrs,
+        string $description
     ) {
         $this->setSetid($setid);
         $this->setDestination($destination);
@@ -95,9 +77,8 @@ abstract class DispatcherAbstract
 
     /**
      * @param mixed $id
-     * @return DispatcherDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): DispatcherDto
     {
         return new DispatcherDto($id);
     }
@@ -185,9 +166,8 @@ abstract class DispatcherAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return DispatcherDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): DispatcherDto
     {
         return self::createDto()
             ->setSetid(self::getSetid())

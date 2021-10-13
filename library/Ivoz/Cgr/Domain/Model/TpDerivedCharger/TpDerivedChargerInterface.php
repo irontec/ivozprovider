@@ -14,7 +14,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getTpid(): string;
 
@@ -66,7 +66,10 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
 
     public function getCostField(): string;
 
-    public function getCreatedAt(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface;
 
     public function getBrand(): BrandInterface;
 

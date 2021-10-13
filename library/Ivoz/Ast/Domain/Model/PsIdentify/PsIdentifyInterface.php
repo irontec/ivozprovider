@@ -17,7 +17,7 @@ interface PsIdentifyInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function setMatchHeader(?string $matchHeader = null): static;
 

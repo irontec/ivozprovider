@@ -19,29 +19,16 @@ abstract class TrunksDomainAttrAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $did;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var int
-     */
     protected $type;
 
-    /**
-     * @var string
-     */
     protected $value;
 
     /**
      * column: last_modified
-     * @var \DateTime
      */
     protected $lastModified;
 
@@ -49,11 +36,11 @@ abstract class TrunksDomainAttrAbstract
      * Constructor
      */
     protected function __construct(
-        $did,
-        $name,
-        $type,
-        $value,
-        $lastModified
+        string $did,
+        string $name,
+        int $type,
+        string $value,
+        \DateTimeInterface|string $lastModified
     ) {
         $this->setDid($did);
         $this->setName($name);
@@ -83,9 +70,8 @@ abstract class TrunksDomainAttrAbstract
 
     /**
      * @param mixed $id
-     * @return TrunksDomainAttrDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TrunksDomainAttrDto
     {
         return new TrunksDomainAttrDto($id);
     }
@@ -169,9 +155,8 @@ abstract class TrunksDomainAttrAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TrunksDomainAttrDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TrunksDomainAttrDto
     {
         return self::createDto()
             ->setDid(self::getDid())
@@ -268,7 +253,10 @@ abstract class TrunksDomainAttrAbstract
         return $this;
     }
 
-    public function getLastModified(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastModified(): \DateTimeInterface
     {
         return clone $this->lastModified;
     }

@@ -41,82 +41,43 @@ abstract class UserAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string
-     */
     protected $lastname;
 
-    /**
-     * @var string | null
-     */
     protected $email;
 
     /**
      * comment: password
-     * @var string | null
      */
     protected $pass;
 
-    /**
-     * @var bool
-     */
     protected $doNotDisturb = false;
 
-    /**
-     * @var bool
-     */
     protected $isBoss = false;
 
-    /**
-     * @var bool
-     */
     protected $active = false;
 
-    /**
-     * @var int
-     */
     protected $maxCalls = 0;
 
     /**
      * comment: enum:0|1|2|3
-     * @var string
      */
     protected $externalIpCalls = '0';
 
     /**
      * comment: enum:rfc|486|600
-     * @var string
      */
     protected $rejectCallMethod = 'rfc';
 
-    /**
-     * @var bool
-     */
     protected $voicemailEnabled = true;
 
-    /**
-     * @var bool
-     */
     protected $voicemailSendMail = false;
 
-    /**
-     * @var bool
-     */
     protected $voicemailAttachSound = true;
 
-    /**
-     * @var bool
-     */
     protected $multiContact = true;
 
-    /**
-     * @var bool
-     */
     protected $gsQRCode = false;
 
     /**
@@ -185,19 +146,19 @@ abstract class UserAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $lastname,
-        $doNotDisturb,
-        $isBoss,
-        $active,
-        $maxCalls,
-        $externalIpCalls,
-        $rejectCallMethod,
-        $voicemailEnabled,
-        $voicemailSendMail,
-        $voicemailAttachSound,
-        $multiContact,
-        $gsQRCode
+        string $name,
+        string $lastname,
+        bool $doNotDisturb,
+        bool $isBoss,
+        bool $active,
+        int $maxCalls,
+        string $externalIpCalls,
+        string $rejectCallMethod,
+        bool $voicemailEnabled,
+        bool $voicemailSendMail,
+        bool $voicemailAttachSound,
+        bool $multiContact,
+        bool $gsQRCode
     ) {
         $this->setName($name);
         $this->setLastname($lastname);
@@ -235,9 +196,8 @@ abstract class UserAbstract
 
     /**
      * @param mixed $id
-     * @return UserDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): UserDto
     {
         return new UserDto($id);
     }
@@ -365,9 +325,8 @@ abstract class UserAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return UserDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): UserDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -497,7 +456,7 @@ abstract class UserAbstract
 
     protected function setDoNotDisturb(bool $doNotDisturb): static
     {
-        Assertion::between(intval($doNotDisturb), 0, 1, 'doNotDisturb provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $doNotDisturb, 0, 1, 'doNotDisturb provided "%s" is not a valid boolean value.');
         $doNotDisturb = (bool) $doNotDisturb;
 
         $this->doNotDisturb = $doNotDisturb;
@@ -512,7 +471,7 @@ abstract class UserAbstract
 
     protected function setIsBoss(bool $isBoss): static
     {
-        Assertion::between(intval($isBoss), 0, 1, 'isBoss provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $isBoss, 0, 1, 'isBoss provided "%s" is not a valid boolean value.');
         $isBoss = (bool) $isBoss;
 
         $this->isBoss = $isBoss;
@@ -527,7 +486,7 @@ abstract class UserAbstract
 
     protected function setActive(bool $active): static
     {
-        Assertion::between(intval($active), 0, 1, 'active provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $active, 0, 1, 'active provided "%s" is not a valid boolean value.');
         $active = (bool) $active;
 
         $this->active = $active;
@@ -603,7 +562,7 @@ abstract class UserAbstract
 
     protected function setVoicemailEnabled(bool $voicemailEnabled): static
     {
-        Assertion::between(intval($voicemailEnabled), 0, 1, 'voicemailEnabled provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $voicemailEnabled, 0, 1, 'voicemailEnabled provided "%s" is not a valid boolean value.');
         $voicemailEnabled = (bool) $voicemailEnabled;
 
         $this->voicemailEnabled = $voicemailEnabled;
@@ -618,7 +577,7 @@ abstract class UserAbstract
 
     protected function setVoicemailSendMail(bool $voicemailSendMail): static
     {
-        Assertion::between(intval($voicemailSendMail), 0, 1, 'voicemailSendMail provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $voicemailSendMail, 0, 1, 'voicemailSendMail provided "%s" is not a valid boolean value.');
         $voicemailSendMail = (bool) $voicemailSendMail;
 
         $this->voicemailSendMail = $voicemailSendMail;
@@ -633,7 +592,7 @@ abstract class UserAbstract
 
     protected function setVoicemailAttachSound(bool $voicemailAttachSound): static
     {
-        Assertion::between(intval($voicemailAttachSound), 0, 1, 'voicemailAttachSound provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $voicemailAttachSound, 0, 1, 'voicemailAttachSound provided "%s" is not a valid boolean value.');
         $voicemailAttachSound = (bool) $voicemailAttachSound;
 
         $this->voicemailAttachSound = $voicemailAttachSound;
@@ -648,7 +607,7 @@ abstract class UserAbstract
 
     protected function setMultiContact(bool $multiContact): static
     {
-        Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $multiContact, 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
         $multiContact = (bool) $multiContact;
 
         $this->multiContact = $multiContact;
@@ -663,7 +622,7 @@ abstract class UserAbstract
 
     protected function setGsQRCode(bool $gsQRCode): static
     {
-        Assertion::between(intval($gsQRCode), 0, 1, 'gsQRCode provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $gsQRCode, 0, 1, 'gsQRCode provided "%s" is not a valid boolean value.');
         $gsQRCode = (bool) $gsQRCode;
 
         $this->gsQRCode = $gsQRCode;

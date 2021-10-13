@@ -18,24 +18,24 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * CGRates tag for this Rating Plan
      *
      * @return string
      */
-    public function getCgrTag();
+    public function getCgrTag(): string;
 
     /**
      * @return string
      */
-    public function getCurrencyIden();
+    public function getCurrencyIden(): string;
 
     /**
      * @return string
      */
-    public function getCurrencySymbol();
+    public function getCurrencySymbol(): string;
 
     /**
      * @return void

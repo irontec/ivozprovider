@@ -61,9 +61,8 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
 
     /**
      * @param mixed $id
-     * @return ConditionalRoutesConditionsRelRouteLockDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ConditionalRoutesConditionsRelRouteLockDto
     {
         return new ConditionalRoutesConditionsRelRouteLockDto($id);
     }
@@ -140,9 +139,8 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ConditionalRoutesConditionsRelRouteLockDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ConditionalRoutesConditionsRelRouteLockDto
     {
         return self::createDto()
             ->setCondition(ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))

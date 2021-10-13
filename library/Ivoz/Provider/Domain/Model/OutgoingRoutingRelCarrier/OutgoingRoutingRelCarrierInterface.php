@@ -18,7 +18,7 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function setOutgoingRouting(?OutgoingRoutingInterface $outgoingRouting = null): static;
 

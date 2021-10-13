@@ -16,7 +16,7 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice

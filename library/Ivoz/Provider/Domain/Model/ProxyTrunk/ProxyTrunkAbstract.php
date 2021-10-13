@@ -18,21 +18,15 @@ abstract class ProxyTrunkAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $name;
 
-    /**
-     * @var string
-     */
     protected $ip;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $ip
+        string $ip
     ) {
         $this->setIp($ip);
     }
@@ -58,9 +52,8 @@ abstract class ProxyTrunkAbstract
 
     /**
      * @param mixed $id
-     * @return ProxyTrunkDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ProxyTrunkDto
     {
         return new ProxyTrunkDto($id);
     }
@@ -138,9 +131,8 @@ abstract class ProxyTrunkAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ProxyTrunkDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ProxyTrunkDto
     {
         return self::createDto()
             ->setName(self::getName())

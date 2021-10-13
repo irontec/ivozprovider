@@ -25,26 +25,26 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 */
 interface UserInterface extends LoggableEntityInterface
 {
-    const EXTERNALIPCALLS_0 = '0';
+    public const EXTERNALIPCALLS_0 = '0';
 
-    const EXTERNALIPCALLS_1 = '1';
+    public const EXTERNALIPCALLS_1 = '1';
 
-    const EXTERNALIPCALLS_2 = '2';
+    public const EXTERNALIPCALLS_2 = '2';
 
-    const EXTERNALIPCALLS_3 = '3';
+    public const EXTERNALIPCALLS_3 = '3';
 
-    const REJECTCALLMETHOD_RFC = 'rfc';
+    public const REJECTCALLMETHOD_RFC = 'rfc';
 
-    const REJECTCALLMETHOD_486 = '486';
+    public const REJECTCALLMETHOD_486 = '486';
 
-    const REJECTCALLMETHOD_600 = '600';
+    public const REJECTCALLMETHOD_600 = '600';
 
     /**
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
-    public function serialize();
+    public function serialize(): string;
 
     public function unserialize($serialized);
 
@@ -120,7 +120,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * @return string comma separated pickup group ids
      */
-    public function getPickUpGroupsIds();
+    public function getPickUpGroupsIds(): string;
 
     /**
      * @return string
@@ -156,7 +156,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getFullNameExtension();
+    public function getFullNameExtension(): string;
 
     public function getName(): string;
 

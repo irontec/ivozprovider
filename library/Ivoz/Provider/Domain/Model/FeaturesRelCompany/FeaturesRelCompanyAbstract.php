@@ -61,9 +61,8 @@ abstract class FeaturesRelCompanyAbstract
 
     /**
      * @param mixed $id
-     * @return FeaturesRelCompanyDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): FeaturesRelCompanyDto
     {
         return new FeaturesRelCompanyDto($id);
     }
@@ -140,9 +139,8 @@ abstract class FeaturesRelCompanyAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return FeaturesRelCompanyDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): FeaturesRelCompanyDto
     {
         return self::createDto()
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))

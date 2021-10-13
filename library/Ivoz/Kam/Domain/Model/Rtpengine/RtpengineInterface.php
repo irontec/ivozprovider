@@ -14,7 +14,7 @@ interface RtpengineInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null): static;
 
@@ -26,7 +26,10 @@ interface RtpengineInterface extends LoggableEntityInterface
 
     public function getDisabled(): bool;
 
-    public function getStamp(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getStamp(): \DateTimeInterface;
 
     public function getDescription(): ?string;
 

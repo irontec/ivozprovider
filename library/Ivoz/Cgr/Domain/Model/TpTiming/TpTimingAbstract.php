@@ -21,46 +21,28 @@ abstract class TpTimingAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $tpid = 'ivozprovider';
 
-    /**
-     * @var string | null
-     */
     protected $tag;
 
-    /**
-     * @var string
-     */
     protected $years;
 
-    /**
-     * @var string
-     */
     protected $months;
 
     /**
      * column: month_days
-     * @var string
      */
     protected $monthDays;
 
     /**
      * column: week_days
-     * @var string
      */
     protected $weekDays;
 
-    /**
-     * @var string
-     */
     protected $time = '00:00:00';
 
     /**
      * column: created_at
-     * @var \DateTime
      */
     protected $createdAt;
 
@@ -74,13 +56,13 @@ abstract class TpTimingAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $years,
-        $months,
-        $monthDays,
-        $weekDays,
-        $time,
-        $createdAt
+        string $tpid,
+        string $years,
+        string $months,
+        string $monthDays,
+        string $weekDays,
+        string $time,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setYears($years);
@@ -112,9 +94,8 @@ abstract class TpTimingAbstract
 
     /**
      * @param mixed $id
-     * @return TpTimingDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TpTimingDto
     {
         return new TpTimingDto($id);
     }
@@ -206,9 +187,8 @@ abstract class TpTimingAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TpTimingDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TpTimingDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -357,7 +337,10 @@ abstract class TpTimingAbstract
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }

@@ -21,34 +21,16 @@ abstract class RtpengineAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var int
-     */
     protected $setid = 0;
 
-    /**
-     * @var string
-     */
     protected $url;
 
-    /**
-     * @var int
-     */
     protected $weight = 1;
 
-    /**
-     * @var bool
-     */
     protected $disabled = false;
 
-    /**
-     * @var \DateTime
-     */
     protected $stamp;
 
-    /**
-     * @var string | null
-     */
     protected $description;
 
     /**
@@ -60,11 +42,11 @@ abstract class RtpengineAbstract
      * Constructor
      */
     protected function __construct(
-        $setid,
-        $url,
-        $weight,
-        $disabled,
-        $stamp
+        int $setid,
+        string $url,
+        int $weight,
+        bool $disabled,
+        \DateTimeInterface|string $stamp
     ) {
         $this->setSetid($setid);
         $this->setUrl($url);
@@ -94,9 +76,8 @@ abstract class RtpengineAbstract
 
     /**
      * @param mixed $id
-     * @return RtpengineDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): RtpengineDto
     {
         return new RtpengineDto($id);
     }
@@ -184,9 +165,8 @@ abstract class RtpengineAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return RtpengineDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): RtpengineDto
     {
         return self::createDto()
             ->setSetid(self::getSetid())
@@ -256,7 +236,7 @@ abstract class RtpengineAbstract
 
     protected function setDisabled(bool $disabled): static
     {
-        Assertion::between(intval($disabled), 0, 1, 'disabled provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $disabled, 0, 1, 'disabled provided "%s" is not a valid boolean value.');
         $disabled = (bool) $disabled;
 
         $this->disabled = $disabled;
@@ -286,7 +266,10 @@ abstract class RtpengineAbstract
         return $this;
     }
 
-    public function getStamp(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getStamp(): \DateTimeInterface
     {
         return clone $this->stamp;
     }

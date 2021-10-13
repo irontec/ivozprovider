@@ -25,7 +25,10 @@ interface TpTimingInterface extends EntityInterface
 
     public function getTime(): string;
 
-    public function getCreatedAt(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface;
 
     public function setRatingPlan(RatingPlanInterface $ratingPlan): static;
 

@@ -13,11 +13,11 @@ use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 */
 interface RatingPlanInterface extends LoggableEntityInterface
 {
-    const TIMINGTYPE_ALWAYS = 'always';
+    public const TIMINGTYPE_ALWAYS = 'always';
 
-    const TIMINGTYPE_CUSTOM = 'custom';
+    public const TIMINGTYPE_CUSTOM = 'custom';
 
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Transform Weekdays booleans to a string for TpTimings
@@ -31,7 +31,7 @@ interface RatingPlanInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getCgrTag();
+    public function getCgrTag(): string;
 
     /**
      * CGrates tag for Timing associated to this Rating Plan
@@ -44,7 +44,10 @@ interface RatingPlanInterface extends LoggableEntityInterface
 
     public function getTimingType(): ?string;
 
-    public function getTimeIn(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getTimeIn(): \DateTimeInterface;
 
     public function getMonday(): ?bool;
 

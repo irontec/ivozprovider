@@ -25,7 +25,7 @@ class UsersCdr extends UsersCdrAbstract implements UsersCdrInterface
     /**
      * @return string
      */
-    public function getOwner(): string|null
+    public function getOwner(): ?string
     {
         if (!is_null($this->getUser())) {
             return $this->getUser()->getFullNameExtension();
@@ -33,7 +33,7 @@ class UsersCdr extends UsersCdrAbstract implements UsersCdrInterface
         if (!is_null($this->getFriend())) {
             return $this->getFriend()->getName();
         }
-        elseif (!is_null($this->getRetailAccount())) {
+        if (!is_null($this->getRetailAccount())) {
             return $this->getRetailAccount()->getName();
         }
         if (!is_null($this->getResidentialDevice())) {

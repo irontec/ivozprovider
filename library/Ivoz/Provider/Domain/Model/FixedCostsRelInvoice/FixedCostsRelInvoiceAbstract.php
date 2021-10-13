@@ -22,9 +22,6 @@ abstract class FixedCostsRelInvoiceAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var int | null
-     */
     protected $quantity;
 
     /**
@@ -66,9 +63,8 @@ abstract class FixedCostsRelInvoiceAbstract
 
     /**
      * @param mixed $id
-     * @return FixedCostsRelInvoiceDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): FixedCostsRelInvoiceDto
     {
         return new FixedCostsRelInvoiceDto($id);
     }
@@ -147,9 +143,8 @@ abstract class FixedCostsRelInvoiceAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return FixedCostsRelInvoiceDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): FixedCostsRelInvoiceDto
     {
         return self::createDto()
             ->setQuantity(self::getQuantity())

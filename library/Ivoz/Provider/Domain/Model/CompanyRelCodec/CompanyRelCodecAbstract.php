@@ -61,9 +61,8 @@ abstract class CompanyRelCodecAbstract
 
     /**
      * @param mixed $id
-     * @return CompanyRelCodecDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CompanyRelCodecDto
     {
         return new CompanyRelCodecDto($id);
     }
@@ -140,9 +139,8 @@ abstract class CompanyRelCodecAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CompanyRelCodecDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CompanyRelCodecDto
     {
         return self::createDto()
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))

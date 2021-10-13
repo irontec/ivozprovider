@@ -132,14 +132,11 @@ trait CompanyTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param CompanyDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getExtensions())) {
@@ -249,14 +246,11 @@ trait CompanyTrait
 
     /**
      * @internal use EntityTools instead
-     * @param CompanyDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getExtensions())) {
             $this->replaceExtensions(
@@ -361,19 +355,15 @@ trait CompanyTrait
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CompanyDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CompanyDto
     {
         $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()

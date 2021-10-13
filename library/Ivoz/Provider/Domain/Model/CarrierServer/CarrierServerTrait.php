@@ -37,14 +37,11 @@ trait CarrierServerTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param CarrierServerDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getLcrGateway())) {
@@ -66,14 +63,11 @@ trait CarrierServerTrait
 
     /**
      * @internal use EntityTools instead
-     * @param CarrierServerDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getLcrGateway())) {
             $this->setLcrGateway(
@@ -90,19 +84,15 @@ trait CarrierServerTrait
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CarrierServerDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CarrierServerDto
     {
         $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()

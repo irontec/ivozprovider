@@ -18,7 +18,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @inheritdoc
@@ -47,7 +47,7 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     public function brandHasFeature(string $iden): bool;
 
-    public function serialize();
+    public function serialize(): string;
 
     public function unserialize($serialized);
 

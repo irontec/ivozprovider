@@ -30,14 +30,11 @@ trait ScheduleTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param ScheduleDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
@@ -52,14 +49,11 @@ trait ScheduleTrait
 
     /**
      * @internal use EntityTools instead
-     * @param ScheduleDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
 
         $this->sanitizeValues();
@@ -70,19 +64,15 @@ trait ScheduleTrait
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ScheduleDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ScheduleDto
     {
         $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()

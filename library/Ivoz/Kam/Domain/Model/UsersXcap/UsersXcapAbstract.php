@@ -18,60 +18,40 @@ abstract class UsersXcapAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $username;
 
-    /**
-     * @var string
-     */
     protected $domain;
 
-    /**
-     * @var string
-     */
     protected $doc;
 
     /**
      * column: doc_type
-     * @var int
      */
     protected $docType;
 
-    /**
-     * @var string
-     */
     protected $etag;
 
-    /**
-     * @var int
-     */
     protected $source;
 
     /**
      * column: doc_uri
-     * @var string
      */
     protected $docUri;
 
-    /**
-     * @var int
-     */
     protected $port;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $username,
-        $domain,
-        $doc,
-        $docType,
-        $etag,
-        $source,
-        $docUri,
-        $port
+        string $username,
+        string $domain,
+        string $doc,
+        int $docType,
+        string $etag,
+        int $source,
+        string $docUri,
+        int $port
     ) {
         $this->setUsername($username);
         $this->setDomain($domain);
@@ -104,9 +84,8 @@ abstract class UsersXcapAbstract
 
     /**
      * @param mixed $id
-     * @return UsersXcapDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): UsersXcapDto
     {
         return new UsersXcapDto($id);
     }
@@ -196,9 +175,8 @@ abstract class UsersXcapAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return UsersXcapDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): UsersXcapDto
     {
         return self::createDto()
             ->setUsername(self::getUsername())

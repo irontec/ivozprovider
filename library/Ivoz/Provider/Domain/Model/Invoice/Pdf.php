@@ -15,19 +15,16 @@ final class Pdf
     /**
      * column: pdfFileFileSize
      * comment: FSO
-     * @var int | null
      */
     private $fileSize;
 
     /**
      * column: pdfFileMimeType
-     * @var string | null
      */
     private $mimeType;
 
     /**
      * column: pdfFileBaseName
-     * @var string | null
      */
     private $baseName;
 
@@ -35,9 +32,9 @@ final class Pdf
      * Constructor
      */
     public function __construct(
-        $fileSize,
-        $mimeType,
-        $baseName
+        ?int $fileSize,
+        ?string $mimeType,
+        ?string $baseName
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
@@ -49,10 +46,13 @@ final class Pdf
      */
     public function equals(self $pdf)
     {
-        return
-            $this->getFileSize() === $pdf->getFileSize() &&
-            $this->getMimeType() === $pdf->getMimeType() &&
-            $this->getBaseName() === $pdf->getBaseName();
+        if ($this->getFileSize() !== $pdf->getFileSize()) {
+            return false;
+        }
+        if ($this->getMimeType() !== $pdf->getMimeType()) {
+            return false;
+        }
+        return $this->getBaseName() === $pdf->getBaseName();
     }
 
     protected function setFileSize(?int $fileSize = null): static

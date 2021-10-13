@@ -22,9 +22,6 @@ abstract class CompanyServiceAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $code;
 
     /**
@@ -42,7 +39,7 @@ abstract class CompanyServiceAbstract
      * Constructor
      */
     protected function __construct(
-        $code
+        string $code
     ) {
         $this->setCode($code);
     }
@@ -68,9 +65,8 @@ abstract class CompanyServiceAbstract
 
     /**
      * @param mixed $id
-     * @return CompanyServiceDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CompanyServiceDto
     {
         return new CompanyServiceDto($id);
     }
@@ -150,9 +146,8 @@ abstract class CompanyServiceAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CompanyServiceDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CompanyServiceDto
     {
         return self::createDto()
             ->setCode(self::getCode())

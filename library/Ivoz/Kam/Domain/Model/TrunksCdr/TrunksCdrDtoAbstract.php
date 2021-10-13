@@ -24,12 +24,12 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $startTime = '2000-01-01 00:00:00';
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $endTime = '2000-01-01 00:00:00';
 
@@ -79,7 +79,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     private $parsed = false;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $parserScheduledAt = 'CURRENT_TIMESTAMP';
 
@@ -238,26 +238,26 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setStartTime(null|\DateTime|string $startTime): static
+    public function setStartTime(null|\DateTimeInterface|string $startTime): static
     {
         $this->startTime = $startTime;
 
         return $this;
     }
 
-    public function getStartTime(): \DateTime|string|null
+    public function getStartTime(): \DateTimeInterface|string|null
     {
         return $this->startTime;
     }
 
-    public function setEndTime(null|\DateTime|string $endTime): static
+    public function setEndTime(null|\DateTimeInterface|string $endTime): static
     {
         $this->endTime = $endTime;
 
         return $this;
     }
 
-    public function getEndTime(): \DateTime|string|null
+    public function getEndTime(): \DateTimeInterface|string|null
     {
         return $this->endTime;
     }
@@ -370,14 +370,14 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->parsed;
     }
 
-    public function setParserScheduledAt(null|\DateTime|string $parserScheduledAt): static
+    public function setParserScheduledAt(null|\DateTimeInterface|string $parserScheduledAt): static
     {
         $this->parserScheduledAt = $parserScheduledAt;
 
         return $this;
     }
 
-    public function getParserScheduledAt(): \DateTime|string|null
+    public function getParserScheduledAt(): \DateTimeInterface|string|null
     {
         return $this->parserScheduledAt;
     }

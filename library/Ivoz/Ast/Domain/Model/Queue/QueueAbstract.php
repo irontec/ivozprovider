@@ -19,56 +19,30 @@ abstract class QueueAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
      * column: periodic_announce
-     * @var string | null
      */
     protected $periodicAnnounce;
 
     /**
      * column: periodic_announce_frequency
-     * @var int | null
      */
     protected $periodicAnnounceFrequency;
 
-    /**
-     * @var int | null
-     */
     protected $timeout;
 
-    /**
-     * @var string
-     */
     protected $autopause = 'no';
 
-    /**
-     * @var string
-     */
     protected $ringinuse = 'no';
 
-    /**
-     * @var int | null
-     */
     protected $wrapuptime;
 
-    /**
-     * @var int | null
-     */
     protected $maxlen;
 
-    /**
-     * @var string | null
-     */
     protected $strategy;
 
-    /**
-     * @var int | null
-     */
     protected $weight;
 
     /**
@@ -80,9 +54,9 @@ abstract class QueueAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $autopause,
-        $ringinuse
+        string $name,
+        string $autopause,
+        string $ringinuse
     ) {
         $this->setName($name);
         $this->setAutopause($autopause);
@@ -110,9 +84,8 @@ abstract class QueueAbstract
 
     /**
      * @param mixed $id
-     * @return QueueDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): QueueDto
     {
         return new QueueDto($id);
     }
@@ -208,9 +181,8 @@ abstract class QueueAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return QueueDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): QueueDto
     {
         return self::createDto()
             ->setName(self::getName())

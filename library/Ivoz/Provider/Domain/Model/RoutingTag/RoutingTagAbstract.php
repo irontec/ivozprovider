@@ -20,14 +20,8 @@ abstract class RoutingTagAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string
-     */
     protected $tag;
 
     /**
@@ -39,8 +33,8 @@ abstract class RoutingTagAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $tag
+        string $name,
+        string $tag
     ) {
         $this->setName($name);
         $this->setTag($tag);
@@ -67,9 +61,8 @@ abstract class RoutingTagAbstract
 
     /**
      * @param mixed $id
-     * @return RoutingTagDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): RoutingTagDto
     {
         return new RoutingTagDto($id);
     }
@@ -149,9 +142,8 @@ abstract class RoutingTagAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return RoutingTagDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): RoutingTagDto
     {
         return self::createDto()
             ->setName(self::getName())

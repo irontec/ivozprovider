@@ -20,43 +20,43 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface FriendInterface extends LoggableEntityInterface
 {
-    const TRANSPORT_UDP = 'udp';
+    public const TRANSPORT_UDP = 'udp';
 
-    const TRANSPORT_TCP = 'tcp';
+    public const TRANSPORT_TCP = 'tcp';
 
-    const TRANSPORT_TLS = 'tls';
+    public const TRANSPORT_TLS = 'tls';
 
-    const DIRECTMEDIAMETHOD_INVITE = 'invite';
+    public const DIRECTMEDIAMETHOD_INVITE = 'invite';
 
-    const DIRECTMEDIAMETHOD_UPDATE = 'update';
+    public const DIRECTMEDIAMETHOD_UPDATE = 'update';
 
-    const CALLERIDUPDATEHEADER_PAI = 'pai';
+    public const CALLERIDUPDATEHEADER_PAI = 'pai';
 
-    const CALLERIDUPDATEHEADER_RPID = 'rpid';
+    public const CALLERIDUPDATEHEADER_RPID = 'rpid';
 
-    const UPDATECALLERID_YES = 'yes';
+    public const UPDATECALLERID_YES = 'yes';
 
-    const UPDATECALLERID_NO = 'no';
+    public const UPDATECALLERID_NO = 'no';
 
-    const DIRECTCONNECTIVITY_YES = 'yes';
+    public const DIRECTCONNECTIVITY_YES = 'yes';
 
-    const DIRECTCONNECTIVITY_NO = 'no';
+    public const DIRECTCONNECTIVITY_NO = 'no';
 
-    const DIRECTCONNECTIVITY_INTERVPBX = 'intervpbx';
+    public const DIRECTCONNECTIVITY_INTERVPBX = 'intervpbx';
 
-    const DDIIN_YES = 'yes';
+    public const DDIIN_YES = 'yes';
 
-    const DDIIN_NO = 'no';
+    public const DDIIN_NO = 'no';
 
-    const T38PASSTHROUGH_YES = 'yes';
+    public const T38PASSTHROUGH_YES = 'yes';
 
-    const T38PASSTHROUGH_NO = 'no';
+    public const T38PASSTHROUGH_NO = 'no';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return bool
@@ -103,12 +103,12 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getContact();
+    public function getContact(): string;
 
     /**
      * @return string
      */
-    public function getSorcery();
+    public function getSorcery(): string;
 
     /**
      * @param string $exten
@@ -122,7 +122,7 @@ interface FriendInterface extends LoggableEntityInterface
      */
     public function isAllowedToCall($exten);
 
-    public function getLanguageCode();
+    public function getLanguageCode(): string;
 
     /**
      * Get Friend outgoingDdi

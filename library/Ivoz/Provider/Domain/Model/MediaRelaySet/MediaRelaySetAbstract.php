@@ -18,21 +18,15 @@ abstract class MediaRelaySetAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name = '0';
 
-    /**
-     * @var string | null
-     */
     protected $description;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name
+        string $name
     ) {
         $this->setName($name);
     }
@@ -58,9 +52,8 @@ abstract class MediaRelaySetAbstract
 
     /**
      * @param mixed $id
-     * @return MediaRelaySetDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): MediaRelaySetDto
     {
         return new MediaRelaySetDto($id);
     }
@@ -138,9 +131,8 @@ abstract class MediaRelaySetAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return MediaRelaySetDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): MediaRelaySetDto
     {
         return self::createDto()
             ->setName(self::getName())

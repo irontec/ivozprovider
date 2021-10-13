@@ -20,19 +20,10 @@ abstract class RouteLockAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string
-     */
     protected $description = '';
 
-    /**
-     * @var bool
-     */
     protected $open = false;
 
     /**
@@ -44,9 +35,9 @@ abstract class RouteLockAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $description,
-        $open
+        string $name,
+        string $description,
+        bool $open
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -74,9 +65,8 @@ abstract class RouteLockAbstract
 
     /**
      * @param mixed $id
-     * @return RouteLockDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): RouteLockDto
     {
         return new RouteLockDto($id);
     }
@@ -158,9 +148,8 @@ abstract class RouteLockAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return RouteLockDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): RouteLockDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -212,7 +201,7 @@ abstract class RouteLockAbstract
 
     protected function setOpen(bool $open): static
     {
-        Assertion::between(intval($open), 0, 1, 'open provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $open, 0, 1, 'open provided "%s" is not a valid boolean value.');
         $open = (bool) $open;
 
         $this->open = $open;

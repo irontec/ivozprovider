@@ -18,12 +18,12 @@ interface RoutingTagInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return string
      */
-    public function getCgrSubject();
+    public function getCgrSubject(): string;
 
     public function getName(): string;
 

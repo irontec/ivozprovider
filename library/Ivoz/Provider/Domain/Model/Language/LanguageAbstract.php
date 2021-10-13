@@ -19,9 +19,6 @@ abstract class LanguageAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $iden;
 
     /**
@@ -33,7 +30,7 @@ abstract class LanguageAbstract
      * Constructor
      */
     protected function __construct(
-        $iden,
+        string $iden,
         Name $name
     ) {
         $this->setIden($iden);
@@ -61,9 +58,8 @@ abstract class LanguageAbstract
 
     /**
      * @param mixed $id
-     * @return LanguageDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): LanguageDto
     {
         return new LanguageDto($id);
     }
@@ -155,9 +151,8 @@ abstract class LanguageAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return LanguageDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): LanguageDto
     {
         return self::createDto()
             ->setIden(self::getIden())

@@ -21,36 +21,24 @@ abstract class TpRatingPlanAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $tpid = 'ivozprovider';
 
-    /**
-     * @var string | null
-     */
     protected $tag;
 
     /**
      * column: destrates_tag
-     * @var string | null
      */
     protected $destratesTag;
 
     /**
      * column: timing_tag
-     * @var string
      */
     protected $timingTag = '*any';
 
-    /**
-     * @var float
-     */
     protected $weight = 10;
 
     /**
      * column: created_at
-     * @var \DateTime
      */
     protected $createdAt;
 
@@ -64,10 +52,10 @@ abstract class TpRatingPlanAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $timingTag,
-        $weight,
-        $createdAt
+        string $tpid,
+        string $timingTag,
+        float $weight,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setTimingTag($timingTag);
@@ -96,9 +84,8 @@ abstract class TpRatingPlanAbstract
 
     /**
      * @param mixed $id
-     * @return TpRatingPlanDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TpRatingPlanDto
     {
         return new TpRatingPlanDto($id);
     }
@@ -186,9 +173,8 @@ abstract class TpRatingPlanAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TpRatingPlanDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TpRatingPlanDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -305,7 +291,10 @@ abstract class TpRatingPlanAbstract
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }

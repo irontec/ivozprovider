@@ -50,7 +50,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     private $groupIntervalStart = '0s';
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -208,14 +208,14 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->groupIntervalStart;
     }
 
-    public function setCreatedAt(null|\DateTime|string $createdAt): static
+    public function setCreatedAt(null|\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime|string|null
+    public function getCreatedAt(): \DateTimeInterface|string|null
     {
         return $this->createdAt;
     }

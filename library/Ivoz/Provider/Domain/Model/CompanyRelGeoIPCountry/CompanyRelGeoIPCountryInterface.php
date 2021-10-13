@@ -15,7 +15,7 @@ interface CompanyRelGeoIPCountryInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function setCompany(?CompanyInterface $company = null): static;
 

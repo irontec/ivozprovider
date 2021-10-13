@@ -13,31 +13,31 @@ use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 */
 interface PsEndpointInterface extends LoggableEntityInterface
 {
-    const DIRECTMEDIAMETHOD_UPDATE = 'update';
+    public const DIRECTMEDIAMETHOD_UPDATE = 'update';
 
-    const DIRECTMEDIAMETHOD_INVITE = 'invite';
+    public const DIRECTMEDIAMETHOD_INVITE = 'invite';
 
-    const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
+    public const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
 
-    const T38UDPTL_YES = 'yes';
+    public const T38UDPTL_YES = 'yes';
 
-    const T38UDPTL_NO = 'no';
+    public const T38UDPTL_NO = 'no';
 
-    const T38UDPTLEC_NONE = 'none';
+    public const T38UDPTLEC_NONE = 'none';
 
-    const T38UDPTLEC_FEC = 'fec';
+    public const T38UDPTLEC_FEC = 'fec';
 
-    const T38UDPTLEC_REDUNDANCY = 'redundancy';
+    public const T38UDPTLEC_REDUNDANCY = 'redundancy';
 
-    const T38UDPTLNAT_YES = 'yes';
+    public const T38UDPTLNAT_YES = 'yes';
 
-    const T38UDPTLNAT_NO = 'no';
+    public const T38UDPTLNAT_NO = 'no';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getSorceryId(): string;
 

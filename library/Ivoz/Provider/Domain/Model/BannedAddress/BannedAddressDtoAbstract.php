@@ -36,7 +36,7 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
     private $description;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $lastTimeBanned;
 
@@ -159,14 +159,14 @@ abstract class BannedAddressDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
-    public function setLastTimeBanned(null|\DateTime|string $lastTimeBanned): static
+    public function setLastTimeBanned(null|\DateTimeInterface|string $lastTimeBanned): static
     {
         $this->lastTimeBanned = $lastTimeBanned;
 
         return $this;
     }
 
-    public function getLastTimeBanned(): \DateTime|string|null
+    public function getLastTimeBanned(): \DateTimeInterface|string|null
     {
         return $this->lastTimeBanned;
     }

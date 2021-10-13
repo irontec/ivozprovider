@@ -11,17 +11,17 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 */
 interface BannedAddressInterface extends LoggableEntityInterface
 {
-    const BLOCKER_ANTIFLOOD = 'antiflood';
+    public const BLOCKER_ANTIFLOOD = 'antiflood';
 
-    const BLOCKER_IPFILTER = 'ipfilter';
+    public const BLOCKER_IPFILTER = 'ipfilter';
 
-    const BLOCKER_ANTIBRUTEFORCE = 'antibruteforce';
+    public const BLOCKER_ANTIBRUTEFORCE = 'antibruteforce';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getIp(): ?string;
 
@@ -31,7 +31,10 @@ interface BannedAddressInterface extends LoggableEntityInterface
 
     public function getDescription(): ?string;
 
-    public function getLastTimeBanned(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastTimeBanned(): ?\DateTimeInterface;
 
     public function getBrand(): ?BrandInterface;
 

@@ -18,21 +18,15 @@ abstract class ApplicationServerAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $ip;
 
-    /**
-     * @var string | null
-     */
     protected $name;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $ip
+        string $ip
     ) {
         $this->setIp($ip);
     }
@@ -58,9 +52,8 @@ abstract class ApplicationServerAbstract
 
     /**
      * @param mixed $id
-     * @return ApplicationServerDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ApplicationServerDto
     {
         return new ApplicationServerDto($id);
     }
@@ -138,9 +131,8 @@ abstract class ApplicationServerAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ApplicationServerDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ApplicationServerDto
     {
         return self::createDto()
             ->setIp(self::getIp())

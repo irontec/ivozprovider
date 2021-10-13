@@ -19,24 +19,24 @@ use Ivoz\Core\Domain\Service\TempFile;
 */
 interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterface
 {
-    const STATUS_WAITING = 'waiting';
+    public const STATUS_WAITING = 'waiting';
 
-    const STATUS_PROCESSING = 'processing';
+    public const STATUS_PROCESSING = 'processing';
 
-    const STATUS_CREATED = 'created';
+    public const STATUS_CREATED = 'created';
 
-    const STATUS_ERROR = 'error';
+    public const STATUS_ERROR = 'error';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return array
      */
-    public function getFileObjects(?int $filter = null);
+    public function getFileObjects(?int $filter = null): array;
 
     /**
      * @return bool
@@ -51,9 +51,15 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
 
     public function getNumber(): ?string;
 
-    public function getInDate(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getInDate(): ?\DateTimeInterface;
 
-    public function getOutDate(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getOutDate(): ?\DateTimeInterface;
 
     public function getTotal(): ?float;
 

@@ -18,70 +18,42 @@ abstract class UsersPresentityAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $username;
 
-    /**
-     * @var string
-     */
     protected $domain;
 
-    /**
-     * @var string
-     */
     protected $event;
 
-    /**
-     * @var string
-     */
     protected $etag;
 
-    /**
-     * @var int
-     */
     protected $expires;
 
     /**
      * column: received_time
-     * @var int
      */
     protected $receivedTime;
 
-    /**
-     * @var string
-     */
     protected $body;
 
-    /**
-     * @var string
-     */
     protected $sender;
 
-    /**
-     * @var int
-     */
     protected $priority = 0;
 
-    /**
-     * @var string | null
-     */
     protected $ruid;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $username,
-        $domain,
-        $event,
-        $etag,
-        $expires,
-        $receivedTime,
-        $body,
-        $sender,
-        $priority
+        string $username,
+        string $domain,
+        string $event,
+        string $etag,
+        int $expires,
+        int $receivedTime,
+        string $body,
+        string $sender,
+        int $priority
     ) {
         $this->setUsername($username);
         $this->setDomain($domain);
@@ -115,9 +87,8 @@ abstract class UsersPresentityAbstract
 
     /**
      * @param mixed $id
-     * @return UsersPresentityDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): UsersPresentityDto
     {
         return new UsersPresentityDto($id);
     }
@@ -211,9 +182,8 @@ abstract class UsersPresentityAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return UsersPresentityDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): UsersPresentityDto
     {
         return self::createDto()
             ->setUsername(self::getUsername())

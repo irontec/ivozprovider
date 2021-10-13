@@ -28,7 +28,7 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
     private $callid;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $startTime;
 
@@ -249,14 +249,14 @@ abstract class BillableCallHistoricDtoAbstract implements DataTransferObjectInte
         return $this->callid;
     }
 
-    public function setStartTime(null|\DateTime|string $startTime): static
+    public function setStartTime(null|\DateTimeInterface|string $startTime): static
     {
         $this->startTime = $startTime;
 
         return $this;
     }
 
-    public function getStartTime(): \DateTime|string|null
+    public function getStartTime(): \DateTimeInterface|string|null
     {
         return $this->startTime;
     }

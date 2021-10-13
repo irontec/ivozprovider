@@ -32,35 +32,23 @@ abstract class CallForwardSettingAbstract
 
     /**
      * comment: enum:internal|external|both
-     * @var string
      */
     protected $callTypeFilter;
 
     /**
      * comment: enum:inconditional|noAnswer|busy|userNotRegistered
-     * @var string
      */
     protected $callForwardType;
 
     /**
      * comment: enum:number|extension|voicemail|retail
-     * @var string | null
      */
     protected $targetType;
 
-    /**
-     * @var string | null
-     */
     protected $numberValue;
 
-    /**
-     * @var int
-     */
     protected $noAnswerTimeout = 10;
 
-    /**
-     * @var bool
-     */
     protected $enabled = true;
 
     /**
@@ -110,10 +98,10 @@ abstract class CallForwardSettingAbstract
      * Constructor
      */
     protected function __construct(
-        $callTypeFilter,
-        $callForwardType,
-        $noAnswerTimeout,
-        $enabled
+        string $callTypeFilter,
+        string $callForwardType,
+        int $noAnswerTimeout,
+        bool $enabled
     ) {
         $this->setCallTypeFilter($callTypeFilter);
         $this->setCallForwardType($callForwardType);
@@ -142,9 +130,8 @@ abstract class CallForwardSettingAbstract
 
     /**
      * @param mixed $id
-     * @return CallForwardSettingDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CallForwardSettingDto
     {
         return new CallForwardSettingDto($id);
     }
@@ -246,9 +233,8 @@ abstract class CallForwardSettingAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CallForwardSettingDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CallForwardSettingDto
     {
         return self::createDto()
             ->setCallTypeFilter(self::getCallTypeFilter())
@@ -393,7 +379,7 @@ abstract class CallForwardSettingAbstract
 
     protected function setEnabled(bool $enabled): static
     {
-        Assertion::between(intval($enabled), 0, 1, 'enabled provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $enabled, 0, 1, 'enabled provided "%s" is not a valid boolean value.');
         $enabled = (bool) $enabled;
 
         $this->enabled = $enabled;

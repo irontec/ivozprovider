@@ -55,7 +55,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     private $mac;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $lastProvisionDate;
 
@@ -261,14 +261,14 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->mac;
     }
 
-    public function setLastProvisionDate(null|\DateTime|string $lastProvisionDate): static
+    public function setLastProvisionDate(null|\DateTimeInterface|string $lastProvisionDate): static
     {
         $this->lastProvisionDate = $lastProvisionDate;
 
         return $this;
     }
 
-    public function getLastProvisionDate(): \DateTime|string|null
+    public function getLastProvisionDate(): \DateTimeInterface|string|null
     {
         return $this->lastProvisionDate;
     }

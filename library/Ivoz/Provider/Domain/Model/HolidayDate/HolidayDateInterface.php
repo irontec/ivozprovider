@@ -14,17 +14,17 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 */
 interface HolidayDateInterface extends LoggableEntityInterface
 {
-    const ROUTETYPE_NUMBER = 'number';
+    public const ROUTETYPE_NUMBER = 'number';
 
-    const ROUTETYPE_EXTENSION = 'extension';
+    public const ROUTETYPE_EXTENSION = 'extension';
 
-    const ROUTETYPE_VOICEMAIL = 'voicemail';
+    public const ROUTETYPE_VOICEMAIL = 'voicemail';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Get the numberValue in E.164 format when routing to 'number'
@@ -35,13 +35,22 @@ interface HolidayDateInterface extends LoggableEntityInterface
 
     public function getName(): string;
 
-    public function getEventDate(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getEventDate(): \DateTimeInterface;
 
     public function getWholeDayEvent(): bool;
 
-    public function getTimeIn(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getTimeIn(): ?\DateTimeInterface;
 
-    public function getTimeOut(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getTimeOut(): ?\DateTimeInterface;
 
     public function getRouteType(): ?string;
 

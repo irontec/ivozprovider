@@ -61,9 +61,8 @@ abstract class ExternalCallFilterBlackListAbstract
 
     /**
      * @param mixed $id
-     * @return ExternalCallFilterBlackListDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ExternalCallFilterBlackListDto
     {
         return new ExternalCallFilterBlackListDto($id);
     }
@@ -140,9 +139,8 @@ abstract class ExternalCallFilterBlackListAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ExternalCallFilterBlackListDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ExternalCallFilterBlackListDto
     {
         return self::createDto()
             ->setFilter(ExternalCallFilter::entityToDto(self::getFilter(), $depth))

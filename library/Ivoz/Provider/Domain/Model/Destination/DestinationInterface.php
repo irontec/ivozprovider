@@ -18,7 +18,7 @@ interface DestinationInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Validate prefix comes in E.164 format
@@ -30,7 +30,7 @@ interface DestinationInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getCgrTag();
+    public function getCgrTag(): string;
 
     public function getPrefix(): string;
 

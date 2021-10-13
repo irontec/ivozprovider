@@ -20,49 +20,22 @@ abstract class DdiProviderRegistrationAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $username = '';
 
-    /**
-     * @var string
-     */
     protected $domain = '';
 
-    /**
-     * @var string
-     */
     protected $realm = '';
 
-    /**
-     * @var string
-     */
     protected $authUsername = '';
 
-    /**
-     * @var string
-     */
     protected $authPassword = '';
 
-    /**
-     * @var string
-     */
     protected $authProxy = '';
 
-    /**
-     * @var int
-     */
     protected $expires = 0;
 
-    /**
-     * @var bool | null
-     */
     protected $multiDdi = false;
 
-    /**
-     * @var string
-     */
     protected $contactUsername = '';
 
     /**
@@ -75,14 +48,14 @@ abstract class DdiProviderRegistrationAbstract
      * Constructor
      */
     protected function __construct(
-        $username,
-        $domain,
-        $realm,
-        $authUsername,
-        $authPassword,
-        $authProxy,
-        $expires,
-        $contactUsername
+        string $username,
+        string $domain,
+        string $realm,
+        string $authUsername,
+        string $authPassword,
+        string $authProxy,
+        int $expires,
+        string $contactUsername
     ) {
         $this->setUsername($username);
         $this->setDomain($domain);
@@ -115,9 +88,8 @@ abstract class DdiProviderRegistrationAbstract
 
     /**
      * @param mixed $id
-     * @return DdiProviderRegistrationDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): DdiProviderRegistrationDto
     {
         return new DdiProviderRegistrationDto($id);
     }
@@ -211,9 +183,8 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return DdiProviderRegistrationDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): DdiProviderRegistrationDto
     {
         return self::createDto()
             ->setUsername(self::getUsername())
@@ -346,7 +317,7 @@ abstract class DdiProviderRegistrationAbstract
     protected function setMultiDdi(?bool $multiDdi = null): static
     {
         if (!is_null($multiDdi)) {
-            Assertion::between(intval($multiDdi), 0, 1, 'multiDdi provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $multiDdi, 0, 1, 'multiDdi provided "%s" is not a valid boolean value.');
             $multiDdi = (bool) $multiDdi;
         }
 

@@ -14,14 +14,14 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Update and return latest value
      *
      * @return string
      */
-    public function nextval();
+    public function nextval(): ?string;
 
     public function getName(): string;
 

@@ -19,9 +19,6 @@ abstract class FeatureAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $iden;
 
     /**
@@ -33,7 +30,7 @@ abstract class FeatureAbstract
      * Constructor
      */
     protected function __construct(
-        $iden,
+        string $iden,
         Name $name
     ) {
         $this->setIden($iden);
@@ -61,9 +58,8 @@ abstract class FeatureAbstract
 
     /**
      * @param mixed $id
-     * @return FeatureDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): FeatureDto
     {
         return new FeatureDto($id);
     }
@@ -155,9 +151,8 @@ abstract class FeatureAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return FeatureDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): FeatureDto
     {
         return self::createDto()
             ->setIden(self::getIden())

@@ -19,141 +19,85 @@ abstract class UsersLocationAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $ruid = '';
 
-    /**
-     * @var string
-     */
     protected $username = '';
 
-    /**
-     * @var string | null
-     */
     protected $domain;
 
-    /**
-     * @var string
-     */
     protected $contact = '';
 
-    /**
-     * @var string | null
-     */
     protected $received;
 
-    /**
-     * @var string | null
-     */
     protected $path;
 
-    /**
-     * @var \DateTime
-     */
     protected $expires;
 
-    /**
-     * @var float
-     */
     protected $q = 1;
 
-    /**
-     * @var string
-     */
     protected $callid = 'Default-Call-ID';
 
-    /**
-     * @var int
-     */
     protected $cseq = 1;
 
     /**
      * column: last_modified
-     * @var \DateTime
      */
     protected $lastModified;
 
-    /**
-     * @var int
-     */
     protected $flags = 0;
 
-    /**
-     * @var int
-     */
     protected $cflags = 0;
 
     /**
      * column: user_agent
-     * @var string
      */
     protected $userAgent = '';
 
-    /**
-     * @var string | null
-     */
     protected $socket;
 
-    /**
-     * @var int | null
-     */
     protected $methods;
 
-    /**
-     * @var string | null
-     */
     protected $instance;
 
     /**
      * column: reg_id
-     * @var int
      */
     protected $regId = 0;
 
     /**
      * column: server_id
-     * @var int
      */
     protected $serverId = 0;
 
     /**
      * column: connection_id
-     * @var int
      */
     protected $connectionId = 0;
 
-    /**
-     * @var int
-     */
     protected $keepalive = 0;
 
-    /**
-     * @var int
-     */
     protected $partition = 0;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $ruid,
-        $username,
-        $contact,
-        $expires,
-        $q,
-        $callid,
-        $cseq,
-        $lastModified,
-        $flags,
-        $cflags,
-        $userAgent,
-        $regId,
-        $serverId,
-        $connectionId,
-        $keepalive,
-        $partition
+        string $ruid,
+        string $username,
+        string $contact,
+        \DateTimeInterface|string $expires,
+        float $q,
+        string $callid,
+        int $cseq,
+        \DateTimeInterface|string $lastModified,
+        int $flags,
+        int $cflags,
+        string $userAgent,
+        int $regId,
+        int $serverId,
+        int $connectionId,
+        int $keepalive,
+        int $partition
     ) {
         $this->setRuid($ruid);
         $this->setUsername($username);
@@ -194,9 +138,8 @@ abstract class UsersLocationAbstract
 
     /**
      * @param mixed $id
-     * @return UsersLocationDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): UsersLocationDto
     {
         return new UsersLocationDto($id);
     }
@@ -314,9 +257,8 @@ abstract class UsersLocationAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return UsersLocationDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): UsersLocationDto
     {
         return self::createDto()
             ->setRuid(self::getRuid())
@@ -481,7 +423,10 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    public function getExpires(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getExpires(): \DateTimeInterface
     {
         return clone $this->expires;
     }
@@ -541,7 +486,10 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    public function getLastModified(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastModified(): \DateTimeInterface
     {
         return clone $this->lastModified;
     }

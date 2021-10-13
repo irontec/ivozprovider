@@ -44,129 +44,71 @@ abstract class CompanyAbstract
 
     /**
      * comment: enum:vpbx|retail|wholesale|residential
-     * @var string
      */
     protected $type = 'vpbx';
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
      * column: domain_users
-     * @var string | null
      */
     protected $domainUsers;
 
-    /**
-     * @var string
-     */
     protected $nif;
 
     /**
      * comment: enum:static|rr|hash
-     * @var string
      */
     protected $distributeMethod = 'hash';
 
-    /**
-     * @var int
-     */
     protected $maxCalls = 0;
 
-    /**
-     * @var int
-     */
     protected $maxDailyUsage = 1000000;
 
-    /**
-     * @var float | null
-     */
     protected $currentDayUsage = 0;
 
-    /**
-     * @var string | null
-     */
     protected $maxDailyUsageEmail;
 
-    /**
-     * @var string
-     */
     protected $postalAddress;
 
-    /**
-     * @var string
-     */
     protected $postalCode;
 
-    /**
-     * @var string
-     */
     protected $town;
 
-    /**
-     * @var string
-     */
     protected $province;
 
     /**
      * column: country
-     * @var string
      */
     protected $countryName;
 
     /**
      * column: ipFilter
-     * @var bool | null
      */
     protected $ipfilter = true;
 
-    /**
-     * @var int | null
-     */
     protected $onDemandRecord = 0;
 
-    /**
-     * @var bool
-     */
     protected $allowRecordingRemoval = true;
 
-    /**
-     * @var string | null
-     */
     protected $onDemandRecordCode;
 
     /**
      * column: externallyExtraOpts
-     * @var string | null
      */
     protected $externallyextraopts;
 
-    /**
-     * @var int | null
-     */
     protected $recordingsLimitMB;
 
-    /**
-     * @var string | null
-     */
     protected $recordingsLimitEmail;
 
     /**
      * comment: enum:postpaid|prepaid|pseudoprepaid
-     * @var string
      */
     protected $billingMethod = 'postpaid';
 
-    /**
-     * @var float | null
-     */
     protected $balance = 0;
 
-    /**
-     * @var bool | null
-     */
     protected $showInvoices = false;
 
     /**
@@ -254,19 +196,19 @@ abstract class CompanyAbstract
      * Constructor
      */
     protected function __construct(
-        $type,
-        $name,
-        $nif,
-        $distributeMethod,
-        $maxCalls,
-        $maxDailyUsage,
-        $postalAddress,
-        $postalCode,
-        $town,
-        $province,
-        $countryName,
-        $allowRecordingRemoval,
-        $billingMethod
+        string $type,
+        string $name,
+        string $nif,
+        string $distributeMethod,
+        int $maxCalls,
+        int $maxDailyUsage,
+        string $postalAddress,
+        string $postalCode,
+        string $town,
+        string $province,
+        string $countryName,
+        bool $allowRecordingRemoval,
+        string $billingMethod
     ) {
         $this->setType($type);
         $this->setName($name);
@@ -304,9 +246,8 @@ abstract class CompanyAbstract
 
     /**
      * @param mixed $id
-     * @return CompanyDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CompanyDto
     {
         return new CompanyDto($id);
     }
@@ -460,9 +401,8 @@ abstract class CompanyAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CompanyDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CompanyDto
     {
         return self::createDto()
             ->setType(self::getType())
@@ -780,7 +720,7 @@ abstract class CompanyAbstract
     protected function setIpfilter(?bool $ipfilter = null): static
     {
         if (!is_null($ipfilter)) {
-            Assertion::between(intval($ipfilter), 0, 1, 'ipfilter provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $ipfilter, 0, 1, 'ipfilter provided "%s" is not a valid boolean value.');
             $ipfilter = (bool) $ipfilter;
         }
 
@@ -808,7 +748,7 @@ abstract class CompanyAbstract
 
     protected function setAllowRecordingRemoval(bool $allowRecordingRemoval): static
     {
-        Assertion::between(intval($allowRecordingRemoval), 0, 1, 'allowRecordingRemoval provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $allowRecordingRemoval, 0, 1, 'allowRecordingRemoval provided "%s" is not a valid boolean value.');
         $allowRecordingRemoval = (bool) $allowRecordingRemoval;
 
         $this->allowRecordingRemoval = $allowRecordingRemoval;
@@ -923,7 +863,7 @@ abstract class CompanyAbstract
     protected function setShowInvoices(?bool $showInvoices = null): static
     {
         if (!is_null($showInvoices)) {
-            Assertion::between(intval($showInvoices), 0, 1, 'showInvoices provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $showInvoices, 0, 1, 'showInvoices provided "%s" is not a valid boolean value.');
             $showInvoices = (bool) $showInvoices;
         }
 

@@ -106,14 +106,11 @@ trait BrandTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param BrandDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getCompanies())) {
@@ -199,14 +196,11 @@ trait BrandTrait
 
     /**
      * @internal use EntityTools instead
-     * @param BrandDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getCompanies())) {
             $this->replaceCompanies(
@@ -287,19 +281,15 @@ trait BrandTrait
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return BrandDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): BrandDto
     {
         $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()

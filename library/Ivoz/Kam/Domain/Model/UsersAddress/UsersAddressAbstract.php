@@ -22,34 +22,20 @@ abstract class UsersAddressAbstract
 
     /**
      * column: source_address
-     * @var string
      */
     protected $sourceAddress;
 
     /**
      * column: ip_addr
-     * @var string | null
      */
     protected $ipAddr;
 
-    /**
-     * @var int
-     */
     protected $mask = 32;
 
-    /**
-     * @var int
-     */
     protected $port = 0;
 
-    /**
-     * @var string | null
-     */
     protected $tag;
 
-    /**
-     * @var string | null
-     */
     protected $description;
 
     /**
@@ -61,9 +47,9 @@ abstract class UsersAddressAbstract
      * Constructor
      */
     protected function __construct(
-        $sourceAddress,
-        $mask,
-        $port
+        string $sourceAddress,
+        int $mask,
+        int $port
     ) {
         $this->setSourceAddress($sourceAddress);
         $this->setMask($mask);
@@ -91,9 +77,8 @@ abstract class UsersAddressAbstract
 
     /**
      * @param mixed $id
-     * @return UsersAddressDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): UsersAddressDto
     {
         return new UsersAddressDto($id);
     }
@@ -181,9 +166,8 @@ abstract class UsersAddressAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return UsersAddressDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): UsersAddressDto
     {
         return self::createDto()
             ->setSourceAddress(self::getSourceAddress())

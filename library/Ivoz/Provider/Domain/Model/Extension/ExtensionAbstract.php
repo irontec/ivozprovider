@@ -34,25 +34,15 @@ abstract class ExtensionAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $number;
 
     /**
      * comment: enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional
-     * @var string | null
      */
     protected $routeType;
 
-    /**
-     * @var string | null
-     */
     protected $numberValue;
 
-    /**
-     * @var string | null
-     */
     protected $friendValue;
 
     /**
@@ -100,7 +90,7 @@ abstract class ExtensionAbstract
      * Constructor
      */
     protected function __construct(
-        $number
+        string $number
     ) {
         $this->setNumber($number);
     }
@@ -126,9 +116,8 @@ abstract class ExtensionAbstract
 
     /**
      * @param mixed $id
-     * @return ExtensionDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ExtensionDto
     {
         return new ExtensionDto($id);
     }
@@ -226,9 +215,8 @@ abstract class ExtensionAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ExtensionDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ExtensionDto
     {
         return self::createDto()
             ->setNumber(self::getNumber())

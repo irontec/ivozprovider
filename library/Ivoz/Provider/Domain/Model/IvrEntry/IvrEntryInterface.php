@@ -15,19 +15,19 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 */
 interface IvrEntryInterface extends LoggableEntityInterface
 {
-    const ROUTETYPE_NUMBER = 'number';
+    public const ROUTETYPE_NUMBER = 'number';
 
-    const ROUTETYPE_EXTENSION = 'extension';
+    public const ROUTETYPE_EXTENSION = 'extension';
 
-    const ROUTETYPE_VOICEMAIL = 'voicemail';
+    public const ROUTETYPE_VOICEMAIL = 'voicemail';
 
-    const ROUTETYPE_CONDITIONAL = 'conditional';
+    public const ROUTETYPE_CONDITIONAL = 'conditional';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Get the numberValue in E.164 format when routing to 'number'

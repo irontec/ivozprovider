@@ -15,7 +15,7 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function setFilter(?ExternalCallFilterInterface $filter = null): static;
 

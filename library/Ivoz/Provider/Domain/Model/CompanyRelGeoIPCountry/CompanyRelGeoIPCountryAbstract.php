@@ -61,9 +61,8 @@ abstract class CompanyRelGeoIPCountryAbstract
 
     /**
      * @param mixed $id
-     * @return CompanyRelGeoIPCountryDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CompanyRelGeoIPCountryDto
     {
         return new CompanyRelGeoIPCountryDto($id);
     }
@@ -140,9 +139,8 @@ abstract class CompanyRelGeoIPCountryAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CompanyRelGeoIPCountryDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CompanyRelGeoIPCountryDto
     {
         return self::createDto()
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))

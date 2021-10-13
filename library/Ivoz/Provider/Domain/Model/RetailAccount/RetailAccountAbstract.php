@@ -28,68 +28,40 @@ abstract class RetailAccountAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string
-     */
     protected $description = '';
 
     /**
      * comment: enum:udp|tcp|tls
-     * @var string | null
      */
     protected $transport;
 
-    /**
-     * @var string | null
-     */
     protected $ip;
 
-    /**
-     * @var int | null
-     */
     protected $port;
 
-    /**
-     * @var string | null
-     */
     protected $password;
 
-    /**
-     * @var string | null
-     */
     protected $fromDomain;
 
     /**
      * comment: enum:yes|no
-     * @var string
      */
     protected $directConnectivity = 'yes';
 
     /**
      * comment: enum:yes|no
-     * @var string
      */
     protected $ddiIn = 'yes';
 
     /**
      * comment: enum:yes|no
-     * @var string
      */
     protected $t38Passthrough = 'no';
 
-    /**
-     * @var bool
-     */
     protected $rtpEncryption = false;
 
-    /**
-     * @var bool
-     */
     protected $multiContact = true;
 
     /**
@@ -123,13 +95,13 @@ abstract class RetailAccountAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $description,
-        $directConnectivity,
-        $ddiIn,
-        $t38Passthrough,
-        $rtpEncryption,
-        $multiContact
+        string $name,
+        string $description,
+        string $directConnectivity,
+        string $ddiIn,
+        string $t38Passthrough,
+        bool $rtpEncryption,
+        bool $multiContact
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -161,9 +133,8 @@ abstract class RetailAccountAbstract
 
     /**
      * @param mixed $id
-     * @return RetailAccountDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): RetailAccountDto
     {
         return new RetailAccountDto($id);
     }
@@ -271,9 +242,8 @@ abstract class RetailAccountAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return RetailAccountDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): RetailAccountDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -503,7 +473,7 @@ abstract class RetailAccountAbstract
 
     protected function setRtpEncryption(bool $rtpEncryption): static
     {
-        Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $rtpEncryption, 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
         $rtpEncryption = (bool) $rtpEncryption;
 
         $this->rtpEncryption = $rtpEncryption;
@@ -518,7 +488,7 @@ abstract class RetailAccountAbstract
 
     protected function setMultiContact(bool $multiContact): static
     {
-        Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $multiContact, 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
         $multiContact = (bool) $multiContact;
 
         $this->multiContact = $multiContact;

@@ -17,17 +17,17 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityInterface
 {
-    const UNIT_WEEK = 'week';
+    public const UNIT_WEEK = 'week';
 
-    const UNIT_MONTH = 'month';
+    public const UNIT_MONTH = 'month';
 
-    const UNIT_YEAR = 'year';
+    public const UNIT_YEAR = 'year';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @inheritdoc
@@ -44,7 +44,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * @return \DateInterval
      */
-    public function getInterval();
+    public function getInterval(): \DateInterval;
 
     public function getName(): string;
 
@@ -54,11 +54,17 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     public function getEmail(): string;
 
-    public function getLastExecution(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastExecution(): ?\DateTimeInterface;
 
     public function getLastExecutionError(): ?string;
 
-    public function getNextExecution(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getNextExecution(): ?\DateTimeInterface;
 
     public function getTaxRate(): ?float;
 

@@ -15,13 +15,16 @@ interface MaxUsageNotificationInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getToAddress(): ?string;
 
     public function getThreshold(): ?float;
 
-    public function getLastSent(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastSent(): ?\DateTimeInterface;
 
     public function getNotificationTemplate(): ?NotificationTemplateInterface;
 

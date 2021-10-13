@@ -27,9 +27,6 @@ abstract class RatingProfileAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var \DateTime
-     */
     protected $activationTime;
 
     /**
@@ -58,7 +55,7 @@ abstract class RatingProfileAbstract
      * Constructor
      */
     protected function __construct(
-        $activationTime
+        \DateTimeInterface|string $activationTime
     ) {
         $this->setActivationTime($activationTime);
     }
@@ -84,9 +81,8 @@ abstract class RatingProfileAbstract
 
     /**
      * @param mixed $id
-     * @return RatingProfileDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): RatingProfileDto
     {
         return new RatingProfileDto($id);
     }
@@ -170,9 +166,8 @@ abstract class RatingProfileAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return RatingProfileDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): RatingProfileDto
     {
         return self::createDto()
             ->setActivationTime(self::getActivationTime())
@@ -213,7 +208,10 @@ abstract class RatingProfileAbstract
         return $this;
     }
 
-    public function getActivationTime(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getActivationTime(): \DateTimeInterface
     {
         return clone $this->activationTime;
     }

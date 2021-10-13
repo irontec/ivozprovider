@@ -15,13 +15,16 @@ interface BalanceMovementInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getAmount(): ?float;
 
     public function getBalance(): ?float;
 
-    public function getCreatedOn(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedOn(): ?\DateTimeInterface;
 
     public function getCompany(): ?CompanyInterface;
 

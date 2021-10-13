@@ -22,7 +22,10 @@ interface UsersLocationInterface extends EntityInterface
 
     public function getPath(): ?string;
 
-    public function getExpires(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getExpires(): \DateTimeInterface;
 
     public function getQ(): float;
 
@@ -30,7 +33,10 @@ interface UsersLocationInterface extends EntityInterface
 
     public function getCseq(): int;
 
-    public function getLastModified(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastModified(): \DateTimeInterface;
 
     public function getFlags(): int;
 

@@ -18,7 +18,7 @@ interface MatchListInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Check if the given number matches the list rules

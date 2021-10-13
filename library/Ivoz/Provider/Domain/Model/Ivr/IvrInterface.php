@@ -18,23 +18,23 @@ use Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterfac
 */
 interface IvrInterface extends LoggableEntityInterface
 {
-    const NOINPUTROUTETYPE_NUMBER = 'number';
+    public const NOINPUTROUTETYPE_NUMBER = 'number';
 
-    const NOINPUTROUTETYPE_EXTENSION = 'extension';
+    public const NOINPUTROUTETYPE_EXTENSION = 'extension';
 
-    const NOINPUTROUTETYPE_VOICEMAIL = 'voicemail';
+    public const NOINPUTROUTETYPE_VOICEMAIL = 'voicemail';
 
-    const ERRORROUTETYPE_NUMBER = 'number';
+    public const ERRORROUTETYPE_NUMBER = 'number';
 
-    const ERRORROUTETYPE_EXTENSION = 'extension';
+    public const ERRORROUTETYPE_EXTENSION = 'extension';
 
-    const ERRORROUTETYPE_VOICEMAIL = 'voicemail';
+    public const ERRORROUTETYPE_VOICEMAIL = 'voicemail';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface[] with key=>value
@@ -58,12 +58,12 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * @return null|string
      */
-    public function getNoInputTarget();
+    public function getNoInputTarget(): ?string;
 
     /**
      * @return null|string
      */
-    public function getErrorTarget();
+    public function getErrorTarget(): ?string;
 
     public function getName(): string;
 

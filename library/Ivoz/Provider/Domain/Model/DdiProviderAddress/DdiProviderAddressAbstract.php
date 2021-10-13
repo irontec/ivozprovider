@@ -20,14 +20,8 @@ abstract class DdiProviderAddressAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $ip;
 
-    /**
-     * @var string | null
-     */
     protected $description;
 
     /**
@@ -64,9 +58,8 @@ abstract class DdiProviderAddressAbstract
 
     /**
      * @param mixed $id
-     * @return DdiProviderAddressDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): DdiProviderAddressDto
     {
         return new DdiProviderAddressDto($id);
     }
@@ -145,9 +138,8 @@ abstract class DdiProviderAddressAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return DdiProviderAddressDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): DdiProviderAddressDto
     {
         return self::createDto()
             ->setIp(self::getIp())

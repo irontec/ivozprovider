@@ -27,18 +27,11 @@ abstract class DestinationRateGroupAbstract
 
     /**
      * comment: enum:waiting|inProgress|imported|error
-     * @var string | null
      */
     protected $status;
 
-    /**
-     * @var string | null
-     */
     protected $lastExecutionError;
 
-    /**
-     * @var bool
-     */
     protected $deductibleConnectionFee = false;
 
     /**
@@ -70,7 +63,7 @@ abstract class DestinationRateGroupAbstract
      * Constructor
      */
     protected function __construct(
-        $deductibleConnectionFee,
+        bool $deductibleConnectionFee,
         Name $name,
         Description $description,
         File $file
@@ -102,9 +95,8 @@ abstract class DestinationRateGroupAbstract
 
     /**
      * @param mixed $id
-     * @return DestinationRateGroupDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): DestinationRateGroupDto
     {
         return new DestinationRateGroupDto($id);
     }
@@ -236,9 +228,8 @@ abstract class DestinationRateGroupAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return DestinationRateGroupDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): DestinationRateGroupDto
     {
         return self::createDto()
             ->setStatus(self::getStatus())
@@ -330,7 +321,7 @@ abstract class DestinationRateGroupAbstract
 
     protected function setDeductibleConnectionFee(bool $deductibleConnectionFee): static
     {
-        Assertion::between(intval($deductibleConnectionFee), 0, 1, 'deductibleConnectionFee provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $deductibleConnectionFee, 0, 1, 'deductibleConnectionFee provided "%s" is not a valid boolean value.');
         $deductibleConnectionFee = (bool) $deductibleConnectionFee;
 
         $this->deductibleConnectionFee = $deductibleConnectionFee;

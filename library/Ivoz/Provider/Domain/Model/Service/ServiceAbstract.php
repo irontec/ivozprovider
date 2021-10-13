@@ -20,19 +20,10 @@ abstract class ServiceAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $iden = '';
 
-    /**
-     * @var string
-     */
     protected $defaultCode;
 
-    /**
-     * @var bool
-     */
     protected $extraArgs = false;
 
     /**
@@ -49,9 +40,9 @@ abstract class ServiceAbstract
      * Constructor
      */
     protected function __construct(
-        $iden,
-        $defaultCode,
-        $extraArgs,
+        string $iden,
+        string $defaultCode,
+        bool $extraArgs,
         Name $name,
         Description $description
     ) {
@@ -83,9 +74,8 @@ abstract class ServiceAbstract
 
     /**
      * @param mixed $id
-     * @return ServiceDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ServiceDto
     {
         return new ServiceDto($id);
     }
@@ -197,9 +187,8 @@ abstract class ServiceAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ServiceDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ServiceDto
     {
         return self::createDto()
             ->setIden(self::getIden())
@@ -265,7 +254,7 @@ abstract class ServiceAbstract
 
     protected function setExtraArgs(bool $extraArgs): static
     {
-        Assertion::between(intval($extraArgs), 0, 1, 'extraArgs provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $extraArgs, 0, 1, 'extraArgs provided "%s" is not a valid boolean value.');
         $extraArgs = (bool) $extraArgs;
 
         $this->extraArgs = $extraArgs;

@@ -26,19 +26,10 @@ abstract class DdiProviderAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $description = '';
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var bool | null
-     */
     protected $externallyRated = false;
 
     /**
@@ -65,8 +56,8 @@ abstract class DdiProviderAbstract
      * Constructor
      */
     protected function __construct(
-        $description,
-        $name
+        string $description,
+        string $name
     ) {
         $this->setDescription($description);
         $this->setName($name);
@@ -93,9 +84,8 @@ abstract class DdiProviderAbstract
 
     /**
      * @param mixed $id
-     * @return DdiProviderDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): DdiProviderDto
     {
         return new DdiProviderDto($id);
     }
@@ -183,9 +173,8 @@ abstract class DdiProviderAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return DdiProviderDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): DdiProviderDto
     {
         return self::createDto()
             ->setDescription(self::getDescription())
@@ -244,7 +233,7 @@ abstract class DdiProviderAbstract
     protected function setExternallyRated(?bool $externallyRated = null): static
     {
         if (!is_null($externallyRated)) {
-            Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $externallyRated, 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
             $externallyRated = (bool) $externallyRated;
         }
 

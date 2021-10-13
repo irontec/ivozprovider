@@ -33,69 +33,34 @@ abstract class UsersCdrAbstract
 
     /**
      * column: start_time
-     * @var \DateTime
      */
     protected $startTime;
 
     /**
      * column: end_time
-     * @var \DateTime
      */
     protected $endTime;
 
-    /**
-     * @var float
-     */
     protected $duration = 0;
 
-    /**
-     * @var string | null
-     */
     protected $direction;
 
-    /**
-     * @var string | null
-     */
     protected $caller;
 
-    /**
-     * @var string | null
-     */
     protected $callee;
 
-    /**
-     * @var string | null
-     */
     protected $diversion;
 
-    /**
-     * @var string | null
-     */
     protected $referee;
 
-    /**
-     * @var string | null
-     */
     protected $referrer;
 
-    /**
-     * @var string | null
-     */
     protected $callid;
 
-    /**
-     * @var string | null
-     */
     protected $callidHash;
 
-    /**
-     * @var string | null
-     */
     protected $xcallid;
 
-    /**
-     * @var bool
-     */
     protected $hidden = false;
 
     /**
@@ -132,10 +97,10 @@ abstract class UsersCdrAbstract
      * Constructor
      */
     protected function __construct(
-        $startTime,
-        $endTime,
-        $duration,
-        $hidden
+        \DateTimeInterface|string $startTime,
+        \DateTimeInterface|string $endTime,
+        float $duration,
+        bool $hidden
     ) {
         $this->setStartTime($startTime);
         $this->setEndTime($endTime);
@@ -164,9 +129,8 @@ abstract class UsersCdrAbstract
 
     /**
      * @param mixed $id
-     * @return UsersCdrDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): UsersCdrDto
     {
         return new UsersCdrDto($id);
     }
@@ -278,9 +242,8 @@ abstract class UsersCdrAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return UsersCdrDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): UsersCdrDto
     {
         return self::createDto()
             ->setStartTime(self::getStartTime())
@@ -349,7 +312,10 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    public function getStartTime(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getStartTime(): \DateTimeInterface
     {
         return clone $this->startTime;
     }
@@ -371,7 +337,10 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    public function getEndTime(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getEndTime(): \DateTimeInterface
     {
         return clone $this->endTime;
     }
@@ -530,7 +499,7 @@ abstract class UsersCdrAbstract
 
     protected function setHidden(bool $hidden): static
     {
-        Assertion::between(intval($hidden), 0, 1, 'hidden provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $hidden, 0, 1, 'hidden provided "%s" is not a valid boolean value.');
         $hidden = (bool) $hidden;
 
         $this->hidden = $hidden;

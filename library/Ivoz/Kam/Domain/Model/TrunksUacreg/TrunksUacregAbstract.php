@@ -24,87 +24,64 @@ abstract class TrunksUacregAbstract
 
     /**
      * column: l_uuid
-     * @var string
      */
     protected $lUuid = '';
 
     /**
      * column: l_username
-     * @var string
      */
     protected $lUsername = 'unused';
 
     /**
      * column: l_domain
-     * @var string
      */
     protected $lDomain = 'unused';
 
     /**
      * column: r_username
-     * @var string
      */
     protected $rUsername = '';
 
     /**
      * column: r_domain
-     * @var string
      */
     protected $rDomain = '';
 
-    /**
-     * @var string
-     */
     protected $realm = '';
 
     /**
      * column: auth_username
-     * @var string
      */
     protected $authUsername = '';
 
     /**
      * column: auth_password
-     * @var string
      */
     protected $authPassword = '';
 
     /**
      * column: auth_proxy
-     * @var string
      */
     protected $authProxy = '';
 
-    /**
-     * @var int
-     */
     protected $expires = 0;
 
-    /**
-     * @var int
-     */
     protected $flags = 0;
 
     /**
      * column: reg_delay
-     * @var int
      */
     protected $regDelay = 0;
 
     /**
      * column: auth_ha1
-     * @var string
      */
     protected $authHa1 = '';
 
-    /**
-     * @var string
-     */
     protected $socket = '';
 
     /**
      * column: contact_addr
-     * @var string
      */
     protected $contactAddr = '';
 
@@ -123,21 +100,21 @@ abstract class TrunksUacregAbstract
      * Constructor
      */
     protected function __construct(
-        $lUuid,
-        $lUsername,
-        $lDomain,
-        $rUsername,
-        $rDomain,
-        $realm,
-        $authUsername,
-        $authPassword,
-        $authProxy,
-        $expires,
-        $flags,
-        $regDelay,
-        $authHa1,
-        $socket,
-        $contactAddr
+        string $lUuid,
+        string $lUsername,
+        string $lDomain,
+        string $rUsername,
+        string $rDomain,
+        string $realm,
+        string $authUsername,
+        string $authPassword,
+        string $authProxy,
+        int $expires,
+        int $flags,
+        int $regDelay,
+        string $authHa1,
+        string $socket,
+        string $contactAddr
     ) {
         $this->setLUuid($lUuid);
         $this->setLUsername($lUsername);
@@ -177,9 +154,8 @@ abstract class TrunksUacregAbstract
 
     /**
      * @param mixed $id
-     * @return TrunksUacregDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TrunksUacregDto
     {
         return new TrunksUacregDto($id);
     }
@@ -287,9 +263,8 @@ abstract class TrunksUacregAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TrunksUacregDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TrunksUacregDto
     {
         return self::createDto()
             ->setLUuid(self::getLUuid())

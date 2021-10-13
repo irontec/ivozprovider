@@ -12,52 +12,31 @@ use Assert\Assertion;
 */
 final class Invoice
 {
-    /**
-     * @var string
-     */
     private $nif;
 
-    /**
-     * @var string
-     */
     private $postalAddress;
 
-    /**
-     * @var string
-     */
     private $postalCode;
 
-    /**
-     * @var string
-     */
     private $town;
 
-    /**
-     * @var string
-     */
     private $province;
 
-    /**
-     * @var string
-     */
     private $country;
 
-    /**
-     * @var string | null
-     */
     private $registryData;
 
     /**
      * Constructor
      */
     public function __construct(
-        $nif,
-        $postalAddress,
-        $postalCode,
-        $town,
-        $province,
-        $country,
-        $registryData
+        string $nif,
+        string $postalAddress,
+        string $postalCode,
+        string $town,
+        string $province,
+        string $country,
+        ?string $registryData
     ) {
         $this->setNif($nif);
         $this->setPostalAddress($postalAddress);
@@ -73,14 +52,25 @@ final class Invoice
      */
     public function equals(self $invoice)
     {
-        return
-            $this->getNif() === $invoice->getNif() &&
-            $this->getPostalAddress() === $invoice->getPostalAddress() &&
-            $this->getPostalCode() === $invoice->getPostalCode() &&
-            $this->getTown() === $invoice->getTown() &&
-            $this->getProvince() === $invoice->getProvince() &&
-            $this->getCountry() === $invoice->getCountry() &&
-            $this->getRegistryData() === $invoice->getRegistryData();
+        if ($this->getNif() !== $invoice->getNif()) {
+            return false;
+        }
+        if ($this->getPostalAddress() !== $invoice->getPostalAddress()) {
+            return false;
+        }
+        if ($this->getPostalCode() !== $invoice->getPostalCode()) {
+            return false;
+        }
+        if ($this->getTown() !== $invoice->getTown()) {
+            return false;
+        }
+        if ($this->getProvince() !== $invoice->getProvince()) {
+            return false;
+        }
+        if ($this->getCountry() !== $invoice->getCountry()) {
+            return false;
+        }
+        return $this->getRegistryData() === $invoice->getRegistryData();
     }
 
     protected function setNif(string $nif): static

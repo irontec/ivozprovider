@@ -41,14 +41,11 @@ trait HuntGroupTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param HuntGroupDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getHuntGroupsRelUsers())) {
@@ -70,14 +67,11 @@ trait HuntGroupTrait
 
     /**
      * @internal use EntityTools instead
-     * @param HuntGroupDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getHuntGroupsRelUsers())) {
             $this->replaceHuntGroupsRelUsers(
@@ -94,19 +88,15 @@ trait HuntGroupTrait
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return HuntGroupDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): HuntGroupDto
     {
         $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()

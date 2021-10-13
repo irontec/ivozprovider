@@ -30,7 +30,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     private $data;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $createdOn;
 
@@ -139,14 +139,14 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
         return $this->data;
     }
 
-    public function setCreatedOn(null|\DateTime|string $createdOn): static
+    public function setCreatedOn(null|\DateTimeInterface|string $createdOn): static
     {
         $this->createdOn = $createdOn;
 
         return $this;
     }
 
-    public function getCreatedOn(): \DateTime|string|null
+    public function getCreatedOn(): \DateTimeInterface|string|null
     {
         return $this->createdOn;
     }

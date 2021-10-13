@@ -12,15 +12,15 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 */
 interface HuntGroupsRelUserInterface extends LoggableEntityInterface
 {
-    const ROUTETYPE_NUMBER = 'number';
+    public const ROUTETYPE_NUMBER = 'number';
 
-    const ROUTETYPE_USER = 'user';
+    public const ROUTETYPE_USER = 'user';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Get the numberValue in E.164 format when routing to 'number'

@@ -31,12 +31,12 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return array
      */
-    public function getFileObjects(?int $filter = null);
+    public function getFileObjects(?int $filter = null): array;
 
     /**
      * @inheritdoc
@@ -88,7 +88,7 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      *
      * @return string
      */
-    public function getCgrTenant();
+    public function getCgrTenant(): string;
 
     /**
      * @param string $exten

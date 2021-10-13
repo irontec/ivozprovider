@@ -14,7 +14,7 @@ interface RouteLockInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Return in current lock status is open

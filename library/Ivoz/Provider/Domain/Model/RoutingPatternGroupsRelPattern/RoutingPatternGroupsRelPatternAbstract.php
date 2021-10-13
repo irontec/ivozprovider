@@ -62,9 +62,8 @@ abstract class RoutingPatternGroupsRelPatternAbstract
 
     /**
      * @param mixed $id
-     * @return RoutingPatternGroupsRelPatternDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): RoutingPatternGroupsRelPatternDto
     {
         return new RoutingPatternGroupsRelPatternDto($id);
     }
@@ -141,9 +140,8 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return RoutingPatternGroupsRelPatternDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): RoutingPatternGroupsRelPatternDto
     {
         return self::createDto()
             ->setRoutingPattern(RoutingPattern::entityToDto(self::getRoutingPattern(), $depth))

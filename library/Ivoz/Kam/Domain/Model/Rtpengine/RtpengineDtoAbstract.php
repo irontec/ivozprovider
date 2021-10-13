@@ -35,7 +35,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     private $disabled = false;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $stamp = '2000-01-01 00:00:00';
 
@@ -158,14 +158,14 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->disabled;
     }
 
-    public function setStamp(null|\DateTime|string $stamp): static
+    public function setStamp(null|\DateTimeInterface|string $stamp): static
     {
         $this->stamp = $stamp;
 
         return $this;
     }
 
-    public function getStamp(): \DateTime|string|null
+    public function getStamp(): \DateTimeInterface|string|null
     {
         return $this->stamp;
     }

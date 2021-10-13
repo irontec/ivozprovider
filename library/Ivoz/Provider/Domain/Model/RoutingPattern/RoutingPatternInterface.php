@@ -16,7 +16,7 @@ use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 interface RoutingPatternInterface extends LoggableEntityInterface
 {
 
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * {@inheritDoc}

@@ -21,151 +21,109 @@ abstract class TpDerivedChargerAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $tpid = 'ivozprovider';
 
-    /**
-     * @var string
-     */
     protected $loadid = 'DATABASE';
 
-    /**
-     * @var string
-     */
     protected $direction = '*out';
 
-    /**
-     * @var string
-     */
     protected $tenant;
 
-    /**
-     * @var string
-     */
     protected $category = 'call';
 
-    /**
-     * @var string
-     */
     protected $account = '*any';
 
-    /**
-     * @var string | null
-     */
     protected $subject = '*any';
 
     /**
      * column: destination_ids
-     * @var string | null
      */
     protected $destinationIds = '*any';
 
-    /**
-     * @var string
-     */
     protected $runid = 'carrier';
 
     /**
      * column: run_filters
-     * @var string
      */
     protected $runFilters = '';
 
     /**
      * column: req_type_field
-     * @var string
      */
     protected $reqTypeField = '^*postpaid';
 
     /**
      * column: direction_field
-     * @var string
      */
     protected $directionField = '*default';
 
     /**
      * column: tenant_field
-     * @var string
      */
     protected $tenantField = '*default';
 
     /**
      * column: category_field
-     * @var string
      */
     protected $categoryField = '*default';
 
     /**
      * column: account_field
-     * @var string
      */
     protected $accountField = 'carrierId';
 
     /**
      * column: subject_field
-     * @var string
      */
     protected $subjectField = 'carrierId';
 
     /**
      * column: destination_field
-     * @var string
      */
     protected $destinationField = '*default';
 
     /**
      * column: setup_time_field
-     * @var string
      */
     protected $setupTimeField = '*default';
 
     /**
      * column: pdd_field
-     * @var string
      */
     protected $pddField = '*default';
 
     /**
      * column: answer_time_field
-     * @var string
      */
     protected $answerTimeField = '*default';
 
     /**
      * column: usage_field
-     * @var string
      */
     protected $usageField = '*default';
 
     /**
      * column: supplier_field
-     * @var string
      */
     protected $supplierField = '*default';
 
     /**
      * column: disconnect_cause_field
-     * @var string
      */
     protected $disconnectCauseField = '*default';
 
     /**
      * column: rated_field
-     * @var string
      */
     protected $ratedTimeField = '*default';
 
     /**
      * column: cost_field
-     * @var string
      */
     protected $costField = '*default';
 
     /**
      * column: created_at
-     * @var \DateTime
      */
     protected $createdAt;
 
@@ -178,30 +136,30 @@ abstract class TpDerivedChargerAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $loadid,
-        $direction,
-        $tenant,
-        $category,
-        $account,
-        $runid,
-        $runFilters,
-        $reqTypeField,
-        $directionField,
-        $tenantField,
-        $categoryField,
-        $accountField,
-        $subjectField,
-        $destinationField,
-        $setupTimeField,
-        $pddField,
-        $answerTimeField,
-        $usageField,
-        $supplierField,
-        $disconnectCauseField,
-        $ratedTimeField,
-        $costField,
-        $createdAt
+        string $tpid,
+        string $loadid,
+        string $direction,
+        string $tenant,
+        string $category,
+        string $account,
+        string $runid,
+        string $runFilters,
+        string $reqTypeField,
+        string $directionField,
+        string $tenantField,
+        string $categoryField,
+        string $accountField,
+        string $subjectField,
+        string $destinationField,
+        string $setupTimeField,
+        string $pddField,
+        string $answerTimeField,
+        string $usageField,
+        string $supplierField,
+        string $disconnectCauseField,
+        string $ratedTimeField,
+        string $costField,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setLoadid($loadid);
@@ -250,9 +208,8 @@ abstract class TpDerivedChargerAbstract
 
     /**
      * @param mixed $id
-     * @return TpDerivedChargerDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TpDerivedChargerDto
     {
         return new TpDerivedChargerDto($id);
     }
@@ -380,9 +337,8 @@ abstract class TpDerivedChargerAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TpDerivedChargerDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TpDerivedChargerDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -821,7 +777,10 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }

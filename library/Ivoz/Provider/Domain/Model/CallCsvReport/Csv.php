@@ -15,19 +15,16 @@ final class Csv
     /**
      * column: csvFileSize
      * comment: FSO
-     * @var int | null
      */
     private $fileSize;
 
     /**
      * column: csvMimeType
-     * @var string | null
      */
     private $mimeType;
 
     /**
      * column: csvBaseName
-     * @var string | null
      */
     private $baseName;
 
@@ -35,9 +32,9 @@ final class Csv
      * Constructor
      */
     public function __construct(
-        $fileSize,
-        $mimeType,
-        $baseName
+        ?int $fileSize,
+        ?string $mimeType,
+        ?string $baseName
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
@@ -49,10 +46,13 @@ final class Csv
      */
     public function equals(self $csv)
     {
-        return
-            $this->getFileSize() === $csv->getFileSize() &&
-            $this->getMimeType() === $csv->getMimeType() &&
-            $this->getBaseName() === $csv->getBaseName();
+        if ($this->getFileSize() !== $csv->getFileSize()) {
+            return false;
+        }
+        if ($this->getMimeType() !== $csv->getMimeType()) {
+            return false;
+        }
+        return $this->getBaseName() === $csv->getBaseName();
     }
 
     protected function setFileSize(?int $fileSize = null): static

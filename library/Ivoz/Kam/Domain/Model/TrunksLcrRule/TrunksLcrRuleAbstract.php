@@ -26,41 +26,28 @@ abstract class TrunksLcrRuleAbstract
 
     /**
      * column: lcr_id
-     * @var int
      */
     protected $lcrId = 1;
 
-    /**
-     * @var string | null
-     */
     protected $prefix;
 
     /**
      * column: from_uri
-     * @var string | null
      */
     protected $fromUri;
 
     /**
      * column: request_uri
-     * @var string | null
      */
     protected $requestUri;
 
     /**
      * column: mt_tvalue
-     * @var string | null
      */
     protected $mtTvalue;
 
-    /**
-     * @var int
-     */
     protected $stopper = 0;
 
-    /**
-     * @var int
-     */
     protected $enabled = 1;
 
     /**
@@ -84,9 +71,9 @@ abstract class TrunksLcrRuleAbstract
      * Constructor
      */
     protected function __construct(
-        $lcrId,
-        $stopper,
-        $enabled
+        int $lcrId,
+        int $stopper,
+        int $enabled
     ) {
         $this->setLcrId($lcrId);
         $this->setStopper($stopper);
@@ -114,9 +101,8 @@ abstract class TrunksLcrRuleAbstract
 
     /**
      * @param mixed $id
-     * @return TrunksLcrRuleDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TrunksLcrRuleDto
     {
         return new TrunksLcrRuleDto($id);
     }
@@ -210,9 +196,8 @@ abstract class TrunksLcrRuleAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TrunksLcrRuleDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TrunksLcrRuleDto
     {
         return self::createDto()
             ->setLcrId(self::getLcrId())

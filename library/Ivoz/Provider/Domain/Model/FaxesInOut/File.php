@@ -15,19 +15,16 @@ final class File
     /**
      * column: fileFileSize
      * comment: FSO
-     * @var int | null
      */
     private $fileSize;
 
     /**
      * column: fileMimeType
-     * @var string | null
      */
     private $mimeType;
 
     /**
      * column: fileBaseName
-     * @var string | null
      */
     private $baseName;
 
@@ -35,9 +32,9 @@ final class File
      * Constructor
      */
     public function __construct(
-        $fileSize,
-        $mimeType,
-        $baseName
+        ?int $fileSize,
+        ?string $mimeType,
+        ?string $baseName
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
@@ -49,10 +46,13 @@ final class File
      */
     public function equals(self $file)
     {
-        return
-            $this->getFileSize() === $file->getFileSize() &&
-            $this->getMimeType() === $file->getMimeType() &&
-            $this->getBaseName() === $file->getBaseName();
+        if ($this->getFileSize() !== $file->getFileSize()) {
+            return false;
+        }
+        if ($this->getMimeType() !== $file->getMimeType()) {
+            return false;
+        }
+        return $this->getBaseName() === $file->getBaseName();
     }
 
     protected function setFileSize(?int $fileSize = null): static

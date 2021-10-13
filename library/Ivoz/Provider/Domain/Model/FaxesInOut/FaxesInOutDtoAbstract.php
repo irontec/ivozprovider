@@ -16,7 +16,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $calldate;
 
@@ -143,14 +143,14 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setCalldate(null|\DateTime|string $calldate): static
+    public function setCalldate(null|\DateTimeInterface|string $calldate): static
     {
         $this->calldate = $calldate;
 
         return $this;
     }
 
-    public function getCalldate(): \DateTime|string|null
+    public function getCalldate(): \DateTimeInterface|string|null
     {
         return $this->calldate;
     }

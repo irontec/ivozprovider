@@ -13,20 +13,20 @@ use Ivoz\Core\Domain\Service\TempFile;
 */
 interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInterface
 {
-    const TYPE_IN = 'In';
+    public const TYPE_IN = 'In';
 
-    const TYPE_OUT = 'Out';
+    public const TYPE_OUT = 'Out';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return array
      */
-    public function getFileObjects(?int $filter = null);
+    public function getFileObjects(?int $filter = null): array;
 
     public function setCalldate($calldate = null): static;
 
@@ -37,7 +37,10 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
      */
     public function getDstE164();
 
-    public function getCalldate(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCalldate(): \DateTimeInterface;
 
     public function getSrc(): ?string;
 

@@ -20,148 +20,104 @@ abstract class UsersActiveWatcherAbstract
 
     /**
      * column: presentity_uri
-     * @var string
      */
     protected $presentityUri;
 
     /**
      * column: watcher_username
-     * @var string
      */
     protected $watcherUsername;
 
     /**
      * column: watcher_domain
-     * @var string
      */
     protected $watcherDomain;
 
     /**
      * column: to_user
-     * @var string
      */
     protected $toUser;
 
     /**
      * column: to_domain
-     * @var string
      */
     protected $toDomain;
 
-    /**
-     * @var string
-     */
     protected $event = 'presence';
 
     /**
      * column: event_id
-     * @var string | null
      */
     protected $eventId;
 
     /**
      * column: to_tag
-     * @var string
      */
     protected $toTag;
 
     /**
      * column: from_tag
-     * @var string
      */
     protected $fromTag;
 
-    /**
-     * @var string
-     */
     protected $callid;
 
     /**
      * column: local_cseq
-     * @var int
      */
     protected $localCseq;
 
     /**
      * column: remote_cseq
-     * @var int
      */
     protected $remoteCseq;
 
-    /**
-     * @var string
-     */
     protected $contact;
 
     /**
      * column: record_route
-     * @var string | null
      */
     protected $recordRoute;
 
-    /**
-     * @var int
-     */
     protected $expires;
 
-    /**
-     * @var int
-     */
     protected $status = 2;
 
-    /**
-     * @var string | null
-     */
     protected $reason;
 
-    /**
-     * @var int
-     */
     protected $version = 0;
 
     /**
      * column: socket_info
-     * @var string
      */
     protected $socketInfo;
 
     /**
      * column: local_contact
-     * @var string
      */
     protected $localContact;
 
     /**
      * column: from_user
-     * @var string
      */
     protected $fromUser;
 
     /**
      * column: from_domain
-     * @var string
      */
     protected $fromDomain;
 
-    /**
-     * @var int
-     */
     protected $updated;
 
     /**
      * column: updated_winfo
-     * @var int
      */
     protected $updatedWinfo;
 
-    /**
-     * @var int
-     */
     protected $flags = 0;
 
     /**
      * column: user_agent
-     * @var string
      */
     protected $userAgent = '';
 
@@ -169,29 +125,29 @@ abstract class UsersActiveWatcherAbstract
      * Constructor
      */
     protected function __construct(
-        $presentityUri,
-        $watcherUsername,
-        $watcherDomain,
-        $toUser,
-        $toDomain,
-        $event,
-        $toTag,
-        $fromTag,
-        $callid,
-        $localCseq,
-        $remoteCseq,
-        $contact,
-        $expires,
-        $status,
-        $version,
-        $socketInfo,
-        $localContact,
-        $fromUser,
-        $fromDomain,
-        $updated,
-        $updatedWinfo,
-        $flags,
-        $userAgent
+        string $presentityUri,
+        string $watcherUsername,
+        string $watcherDomain,
+        string $toUser,
+        string $toDomain,
+        string $event,
+        string $toTag,
+        string $fromTag,
+        string $callid,
+        int $localCseq,
+        int $remoteCseq,
+        string $contact,
+        int $expires,
+        int $status,
+        int $version,
+        string $socketInfo,
+        string $localContact,
+        string $fromUser,
+        string $fromDomain,
+        int $updated,
+        int $updatedWinfo,
+        int $flags,
+        string $userAgent
     ) {
         $this->setPresentityUri($presentityUri);
         $this->setWatcherUsername($watcherUsername);
@@ -239,9 +195,8 @@ abstract class UsersActiveWatcherAbstract
 
     /**
      * @param mixed $id
-     * @return UsersActiveWatcherDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): UsersActiveWatcherDto
     {
         return new UsersActiveWatcherDto($id);
     }
@@ -367,9 +322,8 @@ abstract class UsersActiveWatcherAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return UsersActiveWatcherDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): UsersActiveWatcherDto
     {
         return self::createDto()
             ->setPresentityUri(self::getPresentityUri())

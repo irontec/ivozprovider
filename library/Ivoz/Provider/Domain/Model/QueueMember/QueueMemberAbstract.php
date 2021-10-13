@@ -22,9 +22,6 @@ abstract class QueueMemberAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var int | null
-     */
     protected $penalty;
 
     /**
@@ -66,9 +63,8 @@ abstract class QueueMemberAbstract
 
     /**
      * @param mixed $id
-     * @return QueueMemberDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): QueueMemberDto
     {
         return new QueueMemberDto($id);
     }
@@ -147,9 +143,8 @@ abstract class QueueMemberAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return QueueMemberDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): QueueMemberDto
     {
         return self::createDto()
             ->setPenalty(self::getPenalty())

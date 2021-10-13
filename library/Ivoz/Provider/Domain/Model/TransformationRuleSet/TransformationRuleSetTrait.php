@@ -40,14 +40,11 @@ trait TransformationRuleSetTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param TransformationRuleSetDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getRules())) {
@@ -69,14 +66,11 @@ trait TransformationRuleSetTrait
 
     /**
      * @internal use EntityTools instead
-     * @param TransformationRuleSetDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getRules())) {
             $this->replaceRules(
@@ -93,19 +87,15 @@ trait TransformationRuleSetTrait
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TransformationRuleSetDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TransformationRuleSetDto
     {
         $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()

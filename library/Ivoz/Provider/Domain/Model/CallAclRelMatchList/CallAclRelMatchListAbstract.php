@@ -22,14 +22,10 @@ abstract class CallAclRelMatchListAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var int
-     */
     protected $priority;
 
     /**
      * comment: enum:allow|deny
-     * @var string
      */
     protected $policy;
 
@@ -48,8 +44,8 @@ abstract class CallAclRelMatchListAbstract
      * Constructor
      */
     protected function __construct(
-        $priority,
-        $policy
+        int $priority,
+        string $policy
     ) {
         $this->setPriority($priority);
         $this->setPolicy($policy);
@@ -76,9 +72,8 @@ abstract class CallAclRelMatchListAbstract
 
     /**
      * @param mixed $id
-     * @return CallAclRelMatchListDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CallAclRelMatchListDto
     {
         return new CallAclRelMatchListDto($id);
     }
@@ -160,9 +155,8 @@ abstract class CallAclRelMatchListAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CallAclRelMatchListDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CallAclRelMatchListDto
     {
         return self::createDto()
             ->setPriority(self::getPriority())

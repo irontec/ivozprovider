@@ -22,26 +22,20 @@ abstract class MatchListPatternAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $description;
 
     /**
      * comment: enum:number|regexp
-     * @var string
      */
     protected $type;
 
     /**
      * column: regExp
-     * @var string | null
      */
     protected $regexp;
 
     /**
      * column: numberValue
-     * @var string | null
      */
     protected $numbervalue;
 
@@ -60,7 +54,7 @@ abstract class MatchListPatternAbstract
      * Constructor
      */
     protected function __construct(
-        $type
+        string $type
     ) {
         $this->setType($type);
     }
@@ -86,9 +80,8 @@ abstract class MatchListPatternAbstract
 
     /**
      * @param mixed $id
-     * @return MatchListPatternDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): MatchListPatternDto
     {
         return new MatchListPatternDto($id);
     }
@@ -174,9 +167,8 @@ abstract class MatchListPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return MatchListPatternDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): MatchListPatternDto
     {
         return self::createDto()
             ->setDescription(self::getDescription())

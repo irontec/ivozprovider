@@ -34,25 +34,25 @@ use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterfac
 */
 interface CompanyInterface extends LoggableEntityInterface
 {
-    const TYPE_VPBX = 'vpbx';
+    public const TYPE_VPBX = 'vpbx';
 
-    const TYPE_RETAIL = 'retail';
+    public const TYPE_RETAIL = 'retail';
 
-    const TYPE_WHOLESALE = 'wholesale';
+    public const TYPE_WHOLESALE = 'wholesale';
 
-    const TYPE_RESIDENTIAL = 'residential';
+    public const TYPE_RESIDENTIAL = 'residential';
 
-    const DISTRIBUTEMETHOD_STATIC = 'static';
+    public const DISTRIBUTEMETHOD_STATIC = 'static';
 
-    const DISTRIBUTEMETHOD_RR = 'rr';
+    public const DISTRIBUTEMETHOD_RR = 'rr';
 
-    const DISTRIBUTEMETHOD_HASH = 'hash';
+    public const DISTRIBUTEMETHOD_HASH = 'hash';
 
-    const BILLINGMETHOD_POSTPAID = 'postpaid';
+    public const BILLINGMETHOD_POSTPAID = 'postpaid';
 
-    const BILLINGMETHOD_PREPAID = 'prepaid';
+    public const BILLINGMETHOD_PREPAID = 'prepaid';
 
-    const BILLINGMETHOD_PSEUDOPREPAID = 'pseudoprepaid';
+    public const BILLINGMETHOD_PSEUDOPREPAID = 'pseudoprepaid';
 
     /**
      * @codeCoverageIgnore
@@ -99,17 +99,17 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getLanguageCode();
+    public function getLanguageCode(): string;
 
     /**
      * @return string
      */
-    public function getCurrencySymbol();
+    public function getCurrencySymbol(): string;
 
     /**
      * @return string
      */
-    public function getCurrencyIden();
+    public function getCurrencyIden(): string;
 
     /**
      * brief: Get musicclass for given company
@@ -173,7 +173,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getCgrSubject();
+    public function getCgrSubject(): string;
 
     public function isVpbx(): bool;
 

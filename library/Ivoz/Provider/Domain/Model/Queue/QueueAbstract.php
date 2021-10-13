@@ -28,71 +28,36 @@ abstract class QueueAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $name;
 
-    /**
-     * @var int | null
-     */
     protected $maxWaitTime;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string | null
      */
     protected $timeoutTargetType;
 
-    /**
-     * @var string | null
-     */
     protected $timeoutNumberValue;
 
-    /**
-     * @var int | null
-     */
     protected $maxlen;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string | null
      */
     protected $fullTargetType;
 
-    /**
-     * @var string | null
-     */
     protected $fullNumberValue;
 
-    /**
-     * @var int | null
-     */
     protected $periodicAnnounceFrequency;
 
-    /**
-     * @var int | null
-     */
     protected $memberCallRest;
 
-    /**
-     * @var int | null
-     */
     protected $memberCallTimeout;
 
-    /**
-     * @var string | null
-     */
     protected $strategy;
 
-    /**
-     * @var int | null
-     */
     protected $weight;
 
-    /**
-     * @var int
-     */
     protected $preventMissedCalls = 1;
 
     /**
@@ -149,7 +114,7 @@ abstract class QueueAbstract
      * Constructor
      */
     protected function __construct(
-        $preventMissedCalls
+        int $preventMissedCalls
     ) {
         $this->setPreventMissedCalls($preventMissedCalls);
     }
@@ -175,9 +140,8 @@ abstract class QueueAbstract
 
     /**
      * @param mixed $id
-     * @return QueueDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): QueueDto
     {
         return new QueueDto($id);
     }
@@ -297,9 +261,8 @@ abstract class QueueAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return QueueDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): QueueDto
     {
         return self::createDto()
             ->setName(self::getName())

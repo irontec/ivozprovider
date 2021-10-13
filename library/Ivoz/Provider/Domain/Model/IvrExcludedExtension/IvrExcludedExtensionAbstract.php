@@ -61,9 +61,8 @@ abstract class IvrExcludedExtensionAbstract
 
     /**
      * @param mixed $id
-     * @return IvrExcludedExtensionDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): IvrExcludedExtensionDto
     {
         return new IvrExcludedExtensionDto($id);
     }
@@ -140,9 +139,8 @@ abstract class IvrExcludedExtensionAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return IvrExcludedExtensionDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): IvrExcludedExtensionDto
     {
         return self::createDto()
             ->setIvr(Ivr::entityToDto(self::getIvr(), $depth))

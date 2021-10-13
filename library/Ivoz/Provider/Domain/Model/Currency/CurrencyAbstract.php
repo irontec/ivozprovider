@@ -19,14 +19,8 @@ abstract class CurrencyAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $iden;
 
-    /**
-     * @var string
-     */
     protected $symbol;
 
     /**
@@ -38,8 +32,8 @@ abstract class CurrencyAbstract
      * Constructor
      */
     protected function __construct(
-        $iden,
-        $symbol,
+        string $iden,
+        string $symbol,
         Name $name
     ) {
         $this->setIden($iden);
@@ -68,9 +62,8 @@ abstract class CurrencyAbstract
 
     /**
      * @param mixed $id
-     * @return CurrencyDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CurrencyDto
     {
         return new CurrencyDto($id);
     }
@@ -164,9 +157,8 @@ abstract class CurrencyAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CurrencyDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CurrencyDto
     {
         return self::createDto()
             ->setIden(self::getIden())

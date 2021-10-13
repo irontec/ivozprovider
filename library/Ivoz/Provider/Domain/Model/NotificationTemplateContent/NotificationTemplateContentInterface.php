@@ -11,15 +11,15 @@ use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 */
 interface NotificationTemplateContentInterface extends LoggableEntityInterface
 {
-    const BODYTYPE_TEXTPLAIN = 'text/plain';
+    public const BODYTYPE_TEXTPLAIN = 'text/plain';
 
-    const BODYTYPE_TEXTHTML = 'text/html';
+    public const BODYTYPE_TEXTHTML = 'text/html';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getFromName(): ?string;
 

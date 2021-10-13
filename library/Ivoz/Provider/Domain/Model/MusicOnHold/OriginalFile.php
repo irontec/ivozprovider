@@ -15,19 +15,16 @@ final class OriginalFile
     /**
      * column: originalFileFileSize
      * comment: FSO:keepExtension
-     * @var int | null
      */
     private $fileSize;
 
     /**
      * column: originalFileMimeType
-     * @var string | null
      */
     private $mimeType;
 
     /**
      * column: originalFileBaseName
-     * @var string | null
      */
     private $baseName;
 
@@ -35,9 +32,9 @@ final class OriginalFile
      * Constructor
      */
     public function __construct(
-        $fileSize,
-        $mimeType,
-        $baseName
+        ?int $fileSize,
+        ?string $mimeType,
+        ?string $baseName
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
@@ -49,10 +46,13 @@ final class OriginalFile
      */
     public function equals(self $originalFile)
     {
-        return
-            $this->getFileSize() === $originalFile->getFileSize() &&
-            $this->getMimeType() === $originalFile->getMimeType() &&
-            $this->getBaseName() === $originalFile->getBaseName();
+        if ($this->getFileSize() !== $originalFile->getFileSize()) {
+            return false;
+        }
+        if ($this->getMimeType() !== $originalFile->getMimeType()) {
+            return false;
+        }
+        return $this->getBaseName() === $originalFile->getBaseName();
     }
 
     protected function setFileSize(?int $fileSize = null): static

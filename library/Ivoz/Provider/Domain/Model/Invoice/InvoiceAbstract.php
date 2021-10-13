@@ -30,45 +30,23 @@ abstract class InvoiceAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $number;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $inDate;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $outDate;
 
-    /**
-     * @var float | null
-     */
     protected $total;
 
-    /**
-     * @var float | null
-     */
     protected $taxRate;
 
-    /**
-     * @var float | null
-     */
     protected $totalWithTax;
 
     /**
      * comment: enum:waiting|processing|created|error
-     * @var string | null
      */
     protected $status;
 
-    /**
-     * @var string | null
-     */
     protected $statusMsg;
 
     /**
@@ -131,9 +109,8 @@ abstract class InvoiceAbstract
 
     /**
      * @param mixed $id
-     * @return InvoiceDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): InvoiceDto
     {
         return new InvoiceDto($id);
     }
@@ -247,9 +224,8 @@ abstract class InvoiceAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return InvoiceDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): InvoiceDto
     {
         return self::createDto()
             ->setNumber(self::getNumber())
@@ -333,7 +309,10 @@ abstract class InvoiceAbstract
         return $this;
     }
 
-    public function getInDate(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getInDate(): ?\DateTimeInterface
     {
         return !is_null($this->inDate) ? clone $this->inDate : null;
     }
@@ -360,7 +339,10 @@ abstract class InvoiceAbstract
         return $this;
     }
 
-    public function getOutDate(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getOutDate(): ?\DateTimeInterface
     {
         return !is_null($this->outDate) ? clone $this->outDate : null;
     }

@@ -30,14 +30,11 @@ trait PsIdentifyTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param PsIdentifyDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
@@ -52,14 +49,11 @@ trait PsIdentifyTrait
 
     /**
      * @internal use EntityTools instead
-     * @param PsIdentifyDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
 
         $this->sanitizeValues();
@@ -70,19 +64,15 @@ trait PsIdentifyTrait
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return PsIdentifyDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): PsIdentifyDto
     {
         $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()

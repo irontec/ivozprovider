@@ -163,7 +163,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
      * @param int $depth
      * @return CallCsvSchedulerDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CallCsvSchedulerDto
     {
         $dto = $this->traitToDto($depth);
         $companyDto = \Ivoz\Provider\Domain\Model\Company\Company::entityToDto(

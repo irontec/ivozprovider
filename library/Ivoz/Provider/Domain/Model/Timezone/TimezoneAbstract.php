@@ -21,14 +21,8 @@ abstract class TimezoneAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $tz;
 
-    /**
-     * @var string | null
-     */
     protected $comment = '';
 
     /**
@@ -45,7 +39,7 @@ abstract class TimezoneAbstract
      * Constructor
      */
     protected function __construct(
-        $tz,
+        string $tz,
         Label $label
     ) {
         $this->setTz($tz);
@@ -73,9 +67,8 @@ abstract class TimezoneAbstract
 
     /**
      * @param mixed $id
-     * @return TimezoneDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TimezoneDto
     {
         return new TimezoneDto($id);
     }
@@ -171,9 +164,8 @@ abstract class TimezoneAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TimezoneDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TimezoneDto
     {
         return self::createDto()
             ->setTz(self::getTz())

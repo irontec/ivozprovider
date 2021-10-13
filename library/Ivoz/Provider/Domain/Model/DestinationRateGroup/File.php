@@ -15,25 +15,21 @@ final class File
     /**
      * column: fileFileSize
      * comment: FSO
-     * @var int | null
      */
     private $fileSize;
 
     /**
      * column: fileMimeType
-     * @var string | null
      */
     private $mimeType;
 
     /**
      * column: fileBaseName
-     * @var string | null
      */
     private $baseName;
 
     /**
      * column: fileImporterArguments
-     * @var array | null
      */
     private $importerArguments = [];
 
@@ -41,10 +37,10 @@ final class File
      * Constructor
      */
     public function __construct(
-        $fileSize,
-        $mimeType,
-        $baseName,
-        $importerArguments
+        ?int $fileSize,
+        ?string $mimeType,
+        ?string $baseName,
+        ?array $importerArguments
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
@@ -57,11 +53,16 @@ final class File
      */
     public function equals(self $file)
     {
-        return
-            $this->getFileSize() === $file->getFileSize() &&
-            $this->getMimeType() === $file->getMimeType() &&
-            $this->getBaseName() === $file->getBaseName() &&
-            $this->getImporterArguments() === $file->getImporterArguments();
+        if ($this->getFileSize() !== $file->getFileSize()) {
+            return false;
+        }
+        if ($this->getMimeType() !== $file->getMimeType()) {
+            return false;
+        }
+        if ($this->getBaseName() !== $file->getBaseName()) {
+            return false;
+        }
+        return $this->getImporterArguments() === $file->getImporterArguments();
     }
 
     protected function setFileSize(?int $fileSize = null): static

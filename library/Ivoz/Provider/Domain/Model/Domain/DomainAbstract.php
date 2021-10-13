@@ -18,27 +18,18 @@ abstract class DomainAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $domain;
 
-    /**
-     * @var string
-     */
     protected $pointsTo = 'proxyusers';
 
-    /**
-     * @var string | null
-     */
     protected $description;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $domain,
-        $pointsTo
+        string $domain,
+        string $pointsTo
     ) {
         $this->setDomain($domain);
         $this->setPointsTo($pointsTo);
@@ -65,9 +56,8 @@ abstract class DomainAbstract
 
     /**
      * @param mixed $id
-     * @return DomainDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): DomainDto
     {
         return new DomainDto($id);
     }
@@ -147,9 +137,8 @@ abstract class DomainAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return DomainDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): DomainDto
     {
         return self::createDto()
             ->setDomain(self::getDomain())

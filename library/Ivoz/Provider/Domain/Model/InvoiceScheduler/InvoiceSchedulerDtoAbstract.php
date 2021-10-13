@@ -39,7 +39,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     private $email;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $lastExecution;
 
@@ -49,7 +49,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     private $lastExecutionError;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $nextExecution;
 
@@ -203,14 +203,14 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->email;
     }
 
-    public function setLastExecution(null|\DateTime|string $lastExecution): static
+    public function setLastExecution(null|\DateTimeInterface|string $lastExecution): static
     {
         $this->lastExecution = $lastExecution;
 
         return $this;
     }
 
-    public function getLastExecution(): \DateTime|string|null
+    public function getLastExecution(): \DateTimeInterface|string|null
     {
         return $this->lastExecution;
     }
@@ -227,14 +227,14 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->lastExecutionError;
     }
 
-    public function setNextExecution(null|\DateTime|string $nextExecution): static
+    public function setNextExecution(null|\DateTimeInterface|string $nextExecution): static
     {
         $this->nextExecution = $nextExecution;
 
         return $this;
     }
 
-    public function getNextExecution(): \DateTime|string|null
+    public function getNextExecution(): \DateTimeInterface|string|null
     {
         return $this->nextExecution;
     }

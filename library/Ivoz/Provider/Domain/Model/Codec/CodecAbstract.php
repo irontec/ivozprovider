@@ -20,27 +20,20 @@ abstract class CodecAbstract
 
     /**
      * comment: enum:audio|video
-     * @var string
      */
     protected $type = 'audio';
 
-    /**
-     * @var string
-     */
     protected $iden;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $type,
-        $iden,
-        $name
+        string $type,
+        string $iden,
+        string $name
     ) {
         $this->setType($type);
         $this->setIden($iden);
@@ -68,9 +61,8 @@ abstract class CodecAbstract
 
     /**
      * @param mixed $id
-     * @return CodecDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CodecDto
     {
         return new CodecDto($id);
     }
@@ -150,9 +142,8 @@ abstract class CodecAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CodecDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CodecDto
     {
         return self::createDto()
             ->setType(self::getType())

@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 interface TpDestinationInterface extends LoggableEntityInterface
 {
 
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getTpid(): string;
 
@@ -19,7 +19,10 @@ interface TpDestinationInterface extends LoggableEntityInterface
 
     public function getPrefix(): string;
 
-    public function getCreatedAt(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface;
 
     public function setDestination(DestinationInterface $destination): static;
 

@@ -21,9 +21,6 @@ abstract class DestinationAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $prefix;
 
     /**
@@ -40,7 +37,7 @@ abstract class DestinationAbstract
      * Constructor
      */
     protected function __construct(
-        $prefix,
+        string $prefix,
         Name $name
     ) {
         $this->setPrefix($prefix);
@@ -68,9 +65,8 @@ abstract class DestinationAbstract
 
     /**
      * @param mixed $id
-     * @return DestinationDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): DestinationDto
     {
         return new DestinationDto($id);
     }
@@ -164,9 +160,8 @@ abstract class DestinationAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return DestinationDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): DestinationDto
     {
         return self::createDto()
             ->setPrefix(self::getPrefix())

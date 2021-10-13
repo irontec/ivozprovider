@@ -23,52 +23,33 @@ abstract class TpAccountActionAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $tpid = 'ivozprovider';
 
-    /**
-     * @var string
-     */
     protected $loadid = 'DATABASE';
 
-    /**
-     * @var string
-     */
     protected $tenant;
 
-    /**
-     * @var string
-     */
     protected $account;
 
     /**
      * column: action_plan_tag
-     * @var string | null
      */
     protected $actionPlanTag;
 
     /**
      * column: action_triggers_tag
-     * @var string | null
      */
     protected $actionTriggersTag;
 
     /**
      * column: allow_negative
-     * @var bool
      */
     protected $allowNegative = false;
 
-    /**
-     * @var bool
-     */
     protected $disabled = false;
 
     /**
      * column: created_at
-     * @var \DateTime
      */
     protected $createdAt;
 
@@ -86,13 +67,13 @@ abstract class TpAccountActionAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $loadid,
-        $tenant,
-        $account,
-        $allowNegative,
-        $disabled,
-        $createdAt
+        string $tpid,
+        string $loadid,
+        string $tenant,
+        string $account,
+        bool $allowNegative,
+        bool $disabled,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setLoadid($loadid);
@@ -124,9 +105,8 @@ abstract class TpAccountActionAbstract
 
     /**
      * @param mixed $id
-     * @return TpAccountActionDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TpAccountActionDto
     {
         return new TpAccountActionDto($id);
     }
@@ -222,9 +202,8 @@ abstract class TpAccountActionAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TpAccountActionDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TpAccountActionDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -350,7 +329,7 @@ abstract class TpAccountActionAbstract
 
     protected function setAllowNegative(bool $allowNegative): static
     {
-        Assertion::between(intval($allowNegative), 0, 1, 'allowNegative provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $allowNegative, 0, 1, 'allowNegative provided "%s" is not a valid boolean value.');
         $allowNegative = (bool) $allowNegative;
 
         $this->allowNegative = $allowNegative;
@@ -365,7 +344,7 @@ abstract class TpAccountActionAbstract
 
     protected function setDisabled(bool $disabled): static
     {
-        Assertion::between(intval($disabled), 0, 1, 'disabled provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $disabled, 0, 1, 'disabled provided "%s" is not a valid boolean value.');
         $disabled = (bool) $disabled;
 
         $this->disabled = $disabled;
@@ -395,7 +374,10 @@ abstract class TpAccountActionAbstract
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }

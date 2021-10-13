@@ -12,24 +12,24 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 */
 interface LocutionInterface extends LoggableEntityInterface, FileContainerInterface
 {
-    const STATUS_PENDING = 'pending';
+    public const STATUS_PENDING = 'pending';
 
-    const STATUS_ENCODING = 'encoding';
+    public const STATUS_ENCODING = 'encoding';
 
-    const STATUS_READY = 'ready';
+    public const STATUS_READY = 'ready';
 
-    const STATUS_ERROR = 'error';
+    public const STATUS_ERROR = 'error';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return array
      */
-    public function getFileObjects(?int $filter = null);
+    public function getFileObjects(?int $filter = null): array;
 
     /**
      * Add TempFile and set status to pending

@@ -14,7 +14,7 @@ interface TrustedInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function setSrcIp(?string $srcIp = null): static;
 

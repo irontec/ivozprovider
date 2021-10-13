@@ -20,30 +20,17 @@ abstract class TrunksAddressAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var int
-     */
     protected $grp = 1;
 
     /**
      * column: ip_addr
-     * @var string | null
      */
     protected $ipAddr;
 
-    /**
-     * @var int
-     */
     protected $mask = 32;
 
-    /**
-     * @var int
-     */
     protected $port = 0;
 
-    /**
-     * @var string | null
-     */
     protected $tag;
 
     /**
@@ -56,9 +43,9 @@ abstract class TrunksAddressAbstract
      * Constructor
      */
     protected function __construct(
-        $grp,
-        $mask,
-        $port
+        int $grp,
+        int $mask,
+        int $port
     ) {
         $this->setGrp($grp);
         $this->setMask($mask);
@@ -86,9 +73,8 @@ abstract class TrunksAddressAbstract
 
     /**
      * @param mixed $id
-     * @return TrunksAddressDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TrunksAddressDto
     {
         return new TrunksAddressDto($id);
     }
@@ -174,9 +160,8 @@ abstract class TrunksAddressAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TrunksAddressDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TrunksAddressDto
     {
         return self::createDto()
             ->setGrp(self::getGrp())
