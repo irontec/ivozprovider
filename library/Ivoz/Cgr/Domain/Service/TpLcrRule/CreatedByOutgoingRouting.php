@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleEventHa
 
 class CreatedByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private EntityTools $entityTools

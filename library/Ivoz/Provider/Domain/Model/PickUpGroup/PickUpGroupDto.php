@@ -7,9 +7,9 @@ use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 
 class PickUpGroupDto extends PickUpGroupDtoAbstract
 {
-    const CONTEXT_WITH_USERS = 'withUsers';
+    public const CONTEXT_WITH_USERS = 'withUsers';
 
-    const CONTEXTS_WITH_USERS = [
+    public const CONTEXTS_WITH_USERS = [
         self::CONTEXT_WITH_USERS,
         self::CONTEXT_DETAILED,
         self::CONTEXT_COLLECTION,

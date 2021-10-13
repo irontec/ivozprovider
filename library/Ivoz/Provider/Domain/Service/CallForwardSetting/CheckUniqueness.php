@@ -14,10 +14,10 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
  */
 class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterface
 {
-    const CALL_FORWARDS_WITH_THAT_TYPE_EXCEPTION = 30001;
-    const BUSY_CALL_FORWARD_EXCEPTION = 30002;
-    const NO_ANSWER_CALL_FORWARD_EXCEPTION = 30003;
-    const USER_NOT_REGISTERED_CALL_FORWARD_EXCEPTION = 30004;
+    public const CALL_FORWARDS_WITH_THAT_TYPE_EXCEPTION = 30001;
+    public const BUSY_CALL_FORWARD_EXCEPTION = 30002;
+    public const NO_ANSWER_CALL_FORWARD_EXCEPTION = 30003;
+    public const USER_NOT_REGISTERED_CALL_FORWARD_EXCEPTION = 30004;
 
     public function __construct(
         private CallForwardSettingRepository $callForwardSettingRepository

@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 
 class SendUsersDomainReloadRequest implements DomainLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private UsersClientInterface $usersClient

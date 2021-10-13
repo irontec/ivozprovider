@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 
 class SendTrunksLcrReloadRequest implements CarrierServerLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private TrunksClientInterface $trunksClient

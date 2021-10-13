@@ -9,7 +9,7 @@ class PsIdentify extends PsIdentifyAbstract implements PsIdentifyInterface
 {
     use PsIdentifyTrait;
 
-    const MATCH_HEADER = 'X-Info-Endpoint: ';
+    public const MATCH_HEADER = 'X-Info-Endpoint: ';
 
     /**
      * @codeCoverageIgnore

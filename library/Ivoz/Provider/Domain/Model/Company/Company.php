@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Model\Friend\Friend;
  */
 class Company extends CompanyAbstract implements CompanyInterface
 {
-    const EMPTY_DOMAIN_EXCEPTION = 2001;
+    public const EMPTY_DOMAIN_EXCEPTION = 2001;
 
     use CompanyTrait;
 

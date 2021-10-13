@@ -12,7 +12,7 @@ use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
  */
 class DestinationRateGroup extends DestinationRateGroupAbstract implements FileContainerInterface, DestinationRateGroupInterface
 {
-    const READONLY_DEDUCTIBLECONNECTIONFEE_EXCEPTION = 2301;
+    public const READONLY_DEDUCTIBLECONNECTIONFEE_EXCEPTION = 2301;
 
     use DestinationRateGroupTrait;
 

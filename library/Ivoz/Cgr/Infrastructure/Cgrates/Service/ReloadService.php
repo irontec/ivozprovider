@@ -8,7 +8,7 @@ use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\AbstractApiBasedService;
 
 class ReloadService extends AbstractApiBasedService
 {
-    const MUTEX_LOCK_NAME = 'cgr.reload';
+    public const MUTEX_LOCK_NAME = 'cgr.reload';
 
     private $mutex;
 

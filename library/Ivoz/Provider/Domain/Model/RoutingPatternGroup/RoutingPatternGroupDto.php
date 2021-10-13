@@ -7,9 +7,9 @@ use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGrou
 
 class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
 {
-    const CONTEXT_WITH_PATTERNS = 'withPatterns';
+    public const CONTEXT_WITH_PATTERNS = 'withPatterns';
 
-    const CONTEXTS_WITH_PATTERNS = [
+    public const CONTEXTS_WITH_PATTERNS = [
         self::CONTEXT_WITH_PATTERNS,
         self::CONTEXT_DETAILED
     ];

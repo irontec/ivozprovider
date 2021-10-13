@@ -10,7 +10,7 @@ use Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface;
 
 class CompanyBalanceService extends AbstractBalanceService implements CompanyBalanceServiceInterface
 {
-    const ACCOUNT_PREFIX = 'c';
+    public const ACCOUNT_PREFIX = 'c';
 
     /**
      * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface::incrementBalance

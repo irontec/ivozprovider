@@ -10,9 +10,9 @@ use Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhi
 
 class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
 {
-    const CONTEXT_WITH_INVERSE_RELATIONSHIPS = 'withInverseRelationships';
+    public const CONTEXT_WITH_INVERSE_RELATIONSHIPS = 'withInverseRelationships';
 
-    const CONTEXTS_WITH_INVERSE_RELATIONSHIPS = [
+    public const CONTEXTS_WITH_INVERSE_RELATIONSHIPS = [
         self::CONTEXT_WITH_INVERSE_RELATIONSHIPS,
         self::CONTEXT_DETAILED
     ];

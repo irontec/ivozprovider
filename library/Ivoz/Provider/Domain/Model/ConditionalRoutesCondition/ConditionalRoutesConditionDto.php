@@ -10,9 +10,9 @@ use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\Conditiona
 
 class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstract
 {
-    const CONTEXT_WITH_INVERSE_RELATIONSHIPS = 'withInverseRelationships';
+    public const CONTEXT_WITH_INVERSE_RELATIONSHIPS = 'withInverseRelationships';
 
-    const CONTEXTS_WITH_INVERSE_RELATIONSHIPS = [
+    public const CONTEXTS_WITH_INVERSE_RELATIONSHIPS = [
         self::CONTEXT_WITH_INVERSE_RELATIONSHIPS,
         self::CONTEXT_DETAILED
     ];

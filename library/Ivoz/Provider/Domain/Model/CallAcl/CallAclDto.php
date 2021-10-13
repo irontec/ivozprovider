@@ -7,7 +7,7 @@ use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
 class CallAclDto extends CallAclDtoAbstract
 {
-    const CONTEXT_WITH_MATCHLIST = 'withMatchListIds';
+    public const CONTEXT_WITH_MATCHLIST = 'withMatchListIds';
 
     /**
      * @var int[]

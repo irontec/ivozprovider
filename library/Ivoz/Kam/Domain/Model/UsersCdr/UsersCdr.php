@@ -9,8 +9,8 @@ class UsersCdr extends UsersCdrAbstract implements UsersCdrInterface
 {
     use UsersCdrTrait;
 
-    const DIRECTION_OUTBOUND = "outbound";
-    const DIRECTION_INBOUND = "inbound";
+    public const DIRECTION_OUTBOUND = "outbound";
+    public const DIRECTION_INBOUND = "inbound";
 
     /**
      * Get id

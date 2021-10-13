@@ -7,7 +7,7 @@ use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 
 class SendTrunksPermissionsReloadRequest implements TrunksAddressLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private TrunksClientInterface $trunksClient

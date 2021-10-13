@@ -10,7 +10,7 @@ use Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface;
  */
 class DeleteProtection implements ProxyUserLifecycleEventHandlerInterface
 {
-    const PRE_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
+    public const PRE_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
 
     public static function getSubscribedEvents()
     {

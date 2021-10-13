@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Service\RoutingTag\RoutingTagLifecycleEventHandlerInter
  */
 class UpdateByRoutingTag implements RoutingTagLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private TrunksLcrRuleFactory $trunksLcrRuleFactory

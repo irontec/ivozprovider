@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandle
 
 class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = 10;
+    public const POST_PERSIST_PRIORITY = 10;
 
     public function __construct(
         private EntityTools $entityTools

@@ -7,9 +7,9 @@ use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto;
 
 class BrandDto extends BrandDtoAbstract
 {
-    const CONTEXT_WITH_FEATURES = 'withFeatures';
+    public const CONTEXT_WITH_FEATURES = 'withFeatures';
 
-    const CONTEXTS_WITH_FEATURES = [
+    public const CONTEXTS_WITH_FEATURES = [
         self::CONTEXT_WITH_FEATURES,
         self::CONTEXT_DETAILED
     ];

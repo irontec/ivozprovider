@@ -13,7 +13,7 @@ use Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\RoutingPatternGr
  */
 class UpdateByRoutingPatternGroupsRelPattern implements RoutingPatternGroupsRelPatternLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = LcrRuleUpdateByRoutingPatternGroupsRelPattern::POST_PERSIST_PRIORITY + 10;
+    public const POST_PERSIST_PRIORITY = LcrRuleUpdateByRoutingPatternGroupsRelPattern::POST_PERSIST_PRIORITY + 10;
 
     public function __construct(
         private TrunksLcrRuleTargetFactory $trunksLcrRuleTargetFactory

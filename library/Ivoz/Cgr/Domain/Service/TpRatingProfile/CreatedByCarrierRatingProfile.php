@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Service\RatingProfile\RatingProfileLifecycleEventHandle
 
 class CreatedByCarrierRatingProfile implements RatingProfileLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = UpdateByRatingProfile::POST_PERSIST_PRIORITY + 1;
+    public const POST_PERSIST_PRIORITY = UpdateByRatingProfile::POST_PERSIST_PRIORITY + 1;
 
     public function __construct(
         private CreatedByOutgoingRoutingRelCarrier $createByOutgoingRoutingRelCarrier

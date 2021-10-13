@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Service\InvoiceNumberSequence\NextValGenerator;
  */
 class SetInvoiceNumber implements InvoiceLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_LOW;
+    public const PRE_PERSIST_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_LOW;
 
     /**
      * @var NextValGenerator

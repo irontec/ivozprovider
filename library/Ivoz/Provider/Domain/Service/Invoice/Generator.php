@@ -16,10 +16,10 @@ use Monolog\Logger;
 
 class Generator
 {
-    const DATE_FORMAT = 'd-m-Y';
-    const DATE_TIME_FORMAT = 'd-m-Y H:i:s';
+    public const DATE_FORMAT = 'd-m-Y';
+    public const DATE_TIME_FORMAT = 'd-m-Y H:i:s';
 
-    const LOGGER_PREFIX = '[Invoices][Generator]';
+    public const LOGGER_PREFIX = '[Invoices][Generator]';
 
     protected $invoiceId;
     protected $fixedCostTotal = 0;

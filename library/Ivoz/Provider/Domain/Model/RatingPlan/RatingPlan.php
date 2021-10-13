@@ -14,12 +14,12 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
     /**
      * @deprecated
      */
-    const TIMING_TYPE_ALWAYS = self::TIMINGTYPE_ALWAYS;
+    public const TIMING_TYPE_ALWAYS = self::TIMINGTYPE_ALWAYS;
 
     /**
      * @deprecated
      */
-    const TIMING_TYPE_CUSTOM = self::TIMINGTYPE_CUSTOM;
+    public const TIMING_TYPE_CUSTOM = self::TIMINGTYPE_CUSTOM;
 
     /**
      * Get id

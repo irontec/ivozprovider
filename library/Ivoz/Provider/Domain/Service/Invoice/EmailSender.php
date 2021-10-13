@@ -9,7 +9,7 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateReposito
 
 class EmailSender implements InvoiceLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_LOW;
+    public const ON_COMMIT_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_LOW;
 
     /**
      * Sender constructor.

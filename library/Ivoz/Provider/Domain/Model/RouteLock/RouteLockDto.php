@@ -36,7 +36,7 @@ class RouteLockDto extends RouteLockDtoAbstract
      */
     protected $toggleExtension = '';
 
-    const CALCULATED_READ_ONLY_PROPS = [
+    public const CALCULATED_READ_ONLY_PROPS = [
         'closeExtension' => 'closeExtension',
         'openExtension' => 'openExtension',
         'toggleExtension' => 'toggleExtension',

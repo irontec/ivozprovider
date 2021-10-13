@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class SendUsersTrustedPermissionsReloadRequest implements CompanyLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     protected $usersClient;
 

@@ -10,9 +10,9 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class CsvExporter
 {
-    const API_ENDPOINT = 'billable_calls';
+    public const API_ENDPOINT = 'billable_calls';
 
-    const CLIENT_PROPERTIES = [
+    public const CLIENT_PROPERTIES = [
         'callid',
         'startTime',
         'direction',
@@ -29,7 +29,7 @@ class CsvExporter
         'friendId',
     ];
 
-    const BRAND_PROPERTIES = [
+    public const BRAND_PROPERTIES = [
         'callid',
         'startTime',
         'direction',

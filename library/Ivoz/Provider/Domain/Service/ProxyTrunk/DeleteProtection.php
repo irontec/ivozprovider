@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderRepository;
  */
 class DeleteProtection implements ProxyTrunkLifecycleEventHandlerInterface
 {
-    const PRE_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
+    public const PRE_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private CarrierRepository $carrierRepository,

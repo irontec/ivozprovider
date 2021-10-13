@@ -10,7 +10,7 @@ class NextExecutionResolver implements InvoiceSchedulerLifecycleEventHandlerInte
 {
     use NextExecutionResolverTrait;
 
-    const PRE_PERSIST_PRIORITY = LifecycleEventHandlerInterface::PRIORITY_NORMAL;
+    public const PRE_PERSIST_PRIORITY = LifecycleEventHandlerInterface::PRIORITY_NORMAL;
 
     public function __construct(
         EntityTools $entityTools

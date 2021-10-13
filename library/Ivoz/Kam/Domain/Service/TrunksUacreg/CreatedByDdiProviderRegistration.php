@@ -13,7 +13,7 @@ use Ivoz\Provider\Domain\Service\DdiProviderRegistration\DdiProviderRegistration
  */
 class CreatedByDdiProviderRegistration implements DdiProviderRegistrationLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private EntityTools $entityTools

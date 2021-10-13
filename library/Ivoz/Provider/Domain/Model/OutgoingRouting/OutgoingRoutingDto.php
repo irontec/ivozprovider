@@ -7,9 +7,9 @@ use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarri
 
 class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
 {
-    const CONTEXT_WITH_CARRIERS = 'withCarriers';
+    public const CONTEXT_WITH_CARRIERS = 'withCarriers';
 
-    const CONTEXTS_WITH_CARRIERS = [
+    public const CONTEXTS_WITH_CARRIERS = [
         self::CONTEXT_WITH_CARRIERS,
         self::CONTEXT_DETAILED
     ];

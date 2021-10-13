@@ -8,16 +8,16 @@ use Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
 
 class PersistErrorHandler implements PersistErrorHandlerInterface
 {
-    const ON_ERROR_PRIORITY = self::PRIORITY_NORMAL;
+    public const ON_ERROR_PRIORITY = self::PRIORITY_NORMAL;
 
     /*
      * Mysql error code list:
      * https://dev.mysql.com/doc/refman/5.5/en/error-messages-server.html
      */
-    const MYSQL_ERROR_DUPLICATE_ENTRY = 1062;
+    public const MYSQL_ERROR_DUPLICATE_ENTRY = 1062;
 
-    const RATING_PLAN_DUPLICATED_WEIGHT = 40002;
-    const RATING_PLAN_DUPLICATED_WEIGHT_NAME = 'weight';
+    public const RATING_PLAN_DUPLICATED_WEIGHT = 40002;
+    public const RATING_PLAN_DUPLICATED_WEIGHT_NAME = 'weight';
 
     public static function getSubscribedEvents()
     {

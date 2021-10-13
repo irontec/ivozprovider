@@ -15,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TrunksLcrGatewayDoctrineRepository extends ServiceEntityRepository implements TrunksLcrGatewayRepository
 {
-    const DUMMY_LCR_GATEWAY_ID = 0;
+    public const DUMMY_LCR_GATEWAY_ID = 0;
 
     public function __construct(ManagerRegistry $registry)
     {

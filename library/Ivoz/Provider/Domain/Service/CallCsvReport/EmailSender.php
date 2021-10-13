@@ -12,7 +12,7 @@ use Psr\Log\LoggerInterface;
 
 class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_LOW;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_LOW;
 
     public function __construct(
         private EntityTools $entityTools,

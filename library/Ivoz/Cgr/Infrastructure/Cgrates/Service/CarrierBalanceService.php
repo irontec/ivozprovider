@@ -10,7 +10,7 @@ use Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface;
 
 class CarrierBalanceService extends AbstractBalanceService implements CarrierBalanceServiceInterface
 {
-    const ACCOUNT_PREFIX = 'cr';
+    public const ACCOUNT_PREFIX = 'cr';
 
     /**
      * @see \Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface::incrementBalance

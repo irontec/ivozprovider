@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\BillableCall;
 
 class BillableCallDto extends BillableCallDtoAbstract
 {
-    const CONTEXT_RATING = 'rating';
-    const CONTEXT_RATING_INTERNAL = 'rating-internal';
+    public const CONTEXT_RATING = 'rating';
+    public const CONTEXT_RATING_INTERNAL = 'rating-internal';
 
     /**
      * @inheritdoc

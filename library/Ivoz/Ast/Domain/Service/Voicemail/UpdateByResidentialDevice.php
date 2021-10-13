@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Service\ResidentialDevice\ResidentialDeviceLifecycleEve
 
 class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private EntityTools $entityTools,

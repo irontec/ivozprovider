@@ -8,7 +8,7 @@ use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
 
 class SendRecodingOrder implements MusicOnHoldLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private RecoderJobInterface $recoder

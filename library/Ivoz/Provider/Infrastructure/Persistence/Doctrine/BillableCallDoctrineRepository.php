@@ -22,7 +22,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class BillableCallDoctrineRepository extends ServiceEntityRepository implements BillableCallRepository
 {
-    const MYSQL_DATETIME_FORMAT = 'Y-m-d H:i:s';
+    public const MYSQL_DATETIME_FORMAT = 'Y-m-d H:i:s';
 
     use GetGeneratorByConditionsTrait;
 

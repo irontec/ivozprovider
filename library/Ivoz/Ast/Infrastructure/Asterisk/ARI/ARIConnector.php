@@ -19,7 +19,7 @@ class ARIConnector
     /**
      * Exceptions thrown
      */
-    const NO_SERVERS_AVAILABLE_EXCEPTION = 9001;
+    public const NO_SERVERS_AVAILABLE_EXCEPTION = 9001;
 
     /**
      * Connection information

@@ -12,7 +12,7 @@ use Psr\Log\LoggerInterface;
 
 class ProcessExternalCdr
 {
-    const DATE_FORMAT = 'Y-m-d\TH:i:s\Z';
+    public const DATE_FORMAT = 'Y-m-d\TH:i:s\Z';
 
     protected $apiClient;
     protected $entityTools;

@@ -18,11 +18,11 @@ use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
  */
 class SimulatedCall
 {
-    const ERROR_UNAUTHORIZED_DESTINATION = 1;
-    const ERROR_UNAUTHORIZED_DESTINATION_MSG = 'SERVER_ERROR: UNAUTHORIZED_DESTINATION';
-    const ERROR_NO_RATING_PLAN = 2;
-    const ERROR_NO_RATING_PLAN_MSG = 'NOT_FOUND:RatingPlanId:';
-    const FALLBACK_ERROR_MSG = 'There was a problem';
+    public const ERROR_UNAUTHORIZED_DESTINATION = 1;
+    public const ERROR_UNAUTHORIZED_DESTINATION_MSG = 'SERVER_ERROR: UNAUTHORIZED_DESTINATION';
+    public const ERROR_NO_RATING_PLAN = 2;
+    public const ERROR_NO_RATING_PLAN_MSG = 'NOT_FOUND:RatingPlanId:';
+    public const FALLBACK_ERROR_MSG = 'There was a problem';
 
     protected $errorCode;
 

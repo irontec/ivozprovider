@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Service\Invoice\InvoiceLifecycleEventHandlerInterface;
 
 class CheckValidity implements InvoiceNumberSequenceLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_HIGH;
+    public const PRE_PERSIST_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_HIGH;
 
     public static function getSubscribedEvents()
     {

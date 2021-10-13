@@ -14,7 +14,7 @@ use Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleEventHa
  */
 class RemoveByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = UpdateByOutgoingRouting::POST_PERSIST_PRIORITY + 10;
+    public const POST_PERSIST_PRIORITY = UpdateByOutgoingRouting::POST_PERSIST_PRIORITY + 10;
 
     public function __construct(
         private EntityTools $entityTools,

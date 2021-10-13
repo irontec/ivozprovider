@@ -9,12 +9,12 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 
 class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_HIGH;
+    public const PRE_PERSIST_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_HIGH;
 
-    const UNMETERED_CALLS = 50001;
-    const INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE = 50003;
-    const SENSELESS_IN_OUT_DATE = 50005;
-    const FORBIDDEN_FUTURE_DATES = 50006;
+    public const UNMETERED_CALLS = 50001;
+    public const INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE = 50003;
+    public const SENSELESS_IN_OUT_DATE = 50005;
+    public const FORBIDDEN_FUTURE_DATES = 50006;
 
     public function __construct(
         private BillableCallRepository $billableCallRepository,

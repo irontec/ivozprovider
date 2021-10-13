@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
 
 class SendUsersDialplanReloadRequest implements TransformationRuleLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
 
     public function __construct(
         private UsersClientInterface $usersClient

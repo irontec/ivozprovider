@@ -14,7 +14,7 @@ use Ivoz\Provider\Domain\Model\Carrier\Events\CarrierBalanceThresholdWasBroken;
  */
 class SearchBrokenThresholds implements CarrierLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = 10;
+    public const ON_COMMIT_PRIORITY = 10;
 
     public function __construct(
         private BalanceNotificationRepository $balanceNotificationRepository,

@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 
 class SendTrunksLcrReloadRequest implements OutgoingRoutingLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private TrunksClientInterface $trunksClient
