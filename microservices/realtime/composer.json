@@ -48,7 +48,7 @@
         "irontec/ivoz-provider-bundle": "^2.0",
         "irontec/replacements": "^1.0",
         "irontec/prophecy": "^1.13",
-        "symfony/flex": "^1.9"
+        "friendsofphp/proxy-manager-lts": "^1.0"
     },
     "require-dev": {
         "phpspec/phpspec": "^7.0",

@@ -59,7 +59,7 @@
         "irontec/ivoz-dev-tools": "^5.0",
         "irontec/ivoz-provider-bundle": "^2.5.11",
         "irontec/replacements": "^1.0",
-        "symfony/flex": "^1.9",
+        "friendsofphp/proxy-manager-lts": "^1.0",
         "symfony/maker-bundle": "^1.2"
     },
     "require-dev": {

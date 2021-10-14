@@ -11,6 +11,9 @@
     "beberlei/doctrineextensions": {
         "version": "v1.2.7"
     },
+    "brick/math": {
+        "version": "0.9.3"
+    },
     "composer/semver": {
         "version": "3.2.4"
     },
@@ -91,6 +94,9 @@
     },
     "felixfbecker/language-server-protocol": {
         "version": "v1.5.0"
+    },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.1"
     },
     "graze/guzzle-jsonrpc": {
         "version": "3.2.1"
@@ -226,6 +232,9 @@
     },
     "ralouphie/getallheaders": {
         "version": "3.0.3"
+    },
+    "ramsey/collection": {
+        "version": "1.2.2"
     },
     "ramsey/uuid": {
         "version": "3.9.3"
@@ -376,6 +385,9 @@
     "symfony/options-resolver": {
         "version": "v4.4.11"
     },
+    "symfony/password-hasher": {
+        "version": "v5.3.8"
+    },
     "symfony/polyfill-ctype": {
         "version": "v1.18.0"
     },
@@ -411,6 +423,9 @@
     },
     "symfony/polyfill-php80": {
         "version": "v1.18.0"
+    },
+    "symfony/polyfill-php81": {
+        "version": "v1.23.0"
     },
     "symfony/polyfill-util": {
         "version": "v1.18.0"
