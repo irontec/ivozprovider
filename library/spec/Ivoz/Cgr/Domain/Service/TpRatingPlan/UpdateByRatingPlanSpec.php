@@ -113,6 +113,14 @@ class UpdateByRatingPlanSpec extends ObjectBehavior
             false
         );
 
+        $this->getterProphecy(
+            $this->destinationRateGroup,
+            [
+                'getCgrTag' => ''
+            ],
+            false
+        );
+
         $this
             ->entityTools
             ->entityToDto($this->tpRatingPlan)

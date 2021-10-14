@@ -79,6 +79,7 @@ class UpdateByUserSpec extends ObjectBehavior
             [
                 'getFullName' => 'testName',
                 'getExtensionNumber' => '214',
+                'getPickUpGroupsIds' => '',
             ],
             true
         );
@@ -98,6 +99,7 @@ class UpdateByUserSpec extends ObjectBehavior
             $this->user,
             [
                 'getVoiceMail' => 'use@context',
+                'getPickUpGroupsIds' => '',
             ],
             true
         );
