@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd50cfcf14fa9e56d10dbd844adf02cb",
+    "content-hash": "cb175e8e1ea633d97fb4a54161004abf",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1517,16 +1517,16 @@
         },
         {
             "name": "friendsofphp/proxy-manager-lts",
-            "version": "v1.0.1",
+            "version": "v1.0.5",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/friendsofphp/proxy-manager-lts",
-                "reference": "aa76978a8feaf7ddffaf346ba4f409efbfe5f9a9"
+                "reference": "006aa5d32f887a4db4353b13b5b5095613e0611f"
             },
             "require": {
-                "laminas/laminas-code": "^3.4.1|^4.0",
+                "laminas/laminas-code": "~3.4.1|^4.0",
                 "php": ">=7.1",
-                "symfony/filesystem": "^4.4.17|^5.0"
+                "symfony/filesystem": "^4.4.17|^5.0|^6.0"
             },
             "conflict": {
                 "laminas/laminas-stdlib": "<3.2.1",
@@ -1537,7 +1537,7 @@
             },
             "require-dev": {
                 "ext-phar": "*",
-                "symfony/phpunit-bridge": "^5.2"
+                "symfony/phpunit-bridge": "^5.2|^6.0"
             },
             "type": "library",
             "extra": {
@@ -1588,11 +1588,11 @@
         },
         {
             "name": "gesdinet/jwt-refresh-token-bundle",
-            "version": "v0.11.1",
+            "version": "v0.12.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/gesdinet/jwt-refresh-token-bundle",
-                "reference": "81f15cca6690c77f591d7d903775fd3da8778829"
+                "reference": "4a7109df39b84b5bc41e6ee16da8cdcb9e0093fb"
             },
             "require": {
                 "lexik/jwt-authentication-bundle": "^1.1|^2.0@dev",
@@ -1949,11 +1949,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.3.2",
+            "version": "4.x-dev",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "627a4f089e97ad22ef26cee3e81c9f4bd91d737c"
+                "reference": "29ba19f7fc9d998d7a76bb15b8fa46599109ed25"
             },
             "require": {
                 "api-platform/core": "^2.5",
@@ -1998,15 +1998,15 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "4.1.3",
+            "version": "4.2",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api-bundle",
-                "reference": "34e284325d91d2d4e48e402050697dbc7f527140"
+                "reference": "1440e26cf7d2b6ca2b3779cff014472baf94a872"
             },
             "require": {
-                "gesdinet/jwt-refresh-token-bundle": "^0.11.1",
-                "irontec/ivoz-api": "^4.2.1",
+                "gesdinet/jwt-refresh-token-bundle": "^0.12",
+                "irontec/ivoz-api": "^4.4",
                 "irontec/ivoz-core-bundle": "^4.0.6",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^2.0",
@@ -2203,14 +2203,15 @@
         },
         {
             "name": "irontec/replacements",
-            "version": "1.0.0.0",
+            "version": "1.0.0.5",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/replacements",
-                "reference": "9aadf9a9e93f762c6ed33d1b5e443d9f4e283b49"
+                "reference": "692ff916566d15b89c6decdd12ac751144206fa2"
             },
             "require": {
-                "php": ">=7.4"
+                "laminas/laminas-code": "^4.0",
+                "php": ">=8.0"
             },
             "replace": {
                 "symfony/polyfill-php56": "*"
@@ -2295,33 +2296,31 @@
         },
         {
             "name": "laminas/laminas-code",
-            "version": "3.5.1",
+            "version": "4.4.3",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/laminas/laminas-code",
-                "reference": "b549b70c0bb6e935d497f84f750c82653326ac77"
+                "reference": "bb324850d09dd437b6acb142c13e64fdc725b0e1"
             },
             "require": {
-                "laminas/laminas-eventmanager": "^3.3",
-                "laminas/laminas-zendframework-bridge": "^1.1",
-                "php": "^7.3 || ~8.0.0"
+                "php": "^7.4 || ~8.0.0"
             },
             "conflict": {
                 "phpspec/prophecy": "<1.9.0"
             },
-            "replace": {
-                "zendframework/zend-code": "^3.4.1"
-            },
             "require-dev": {
                 "doctrine/annotations": "^1.10.4",
                 "ext-phar": "*",
-                "laminas/laminas-coding-standard": "^1.0.0",
+                "laminas/laminas-coding-standard": "^2.1.4",
                 "laminas/laminas-stdlib": "^3.3.0",
-                "phpunit/phpunit": "^9.4.2"
+                "phpunit/phpunit": "^9.4.2",
+                "psalm/plugin-phpunit": "^0.14.0",
+                "vimeo/psalm": "^4.3.1"
             },
             "suggest": {
                 "doctrine/annotations": "Doctrine\\Common\\Annotations >=1.0 for annotation features",
-                "laminas/laminas-stdlib": "Laminas\\Stdlib component"
+                "laminas/laminas-stdlib": "Laminas\\Stdlib component",
+                "laminas/laminas-zendframework-bridge": "A bridge with Zend Framework"
             },
             "type": "library",
             "autoload": {
@@ -2345,6 +2344,9 @@
                 "cs-fix": [
                     "phpcbf"
                 ],
+                "static-analysis": [
+                    "psalm --shepherd --stats"
+                ],
                 "test": [
                     "phpunit --colors=always"
                 ],
@@ -2359,179 +2361,16 @@
             "homepage": "https://laminas.dev",
             "keywords": [
                 "code",
-                "laminas"
-            ],
-            "support": {
-                "docs": "https://docs.laminas.dev/laminas-code/",
-                "issues": "https://github.com/laminas/laminas-code/issues",
-                "source": "https://github.com/laminas/laminas-code",
-                "rss": "https://github.com/laminas/laminas-code/releases.atom",
-                "chat": "https://laminas.dev/chat",
-                "forum": "https://discourse.laminas.dev"
-            },
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "laminas/laminas-eventmanager",
-            "version": "3.3.1",
-            "dist": {
-                "type": "path",
-                "url": "../../../library/vendor/laminas/laminas-eventmanager",
-                "reference": "966c859b67867b179fde1eff0cd38df51472ce4a"
-            },
-            "require": {
-                "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "^7.3 || ^8.0"
-            },
-            "replace": {
-                "zendframework/zend-eventmanager": "^3.2.1"
-            },
-            "require-dev": {
-                "container-interop/container-interop": "^1.1",
-                "laminas/laminas-coding-standard": "~1.0.0",
-                "laminas/laminas-stdlib": "^2.7.3 || ^3.0",
-                "phpbench/phpbench": "^0.17.1",
-                "phpunit/phpunit": "^8.5.8"
-            },
-            "suggest": {
-                "container-interop/container-interop": "^1.1, to use the lazy listeners feature",
-                "laminas/laminas-stdlib": "^2.7.3 || ^3.0, to use the FilterChain feature"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Laminas\\EventManager\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "LaminasTest\\EventManager\\": "test/",
-                    "LaminasBench\\EventManager\\": "benchmarks/"
-                },
-                "files": [
-                    "test/_autoload.php"
-                ]
-            },
-            "scripts": {
-                "check": [
-                    "@cs-check",
-                    "@test"
-                ],
-                "cs-check": [
-                    "phpcs"
-                ],
-                "cs-fix": [
-                    "phpcbf"
-                ],
-                "test": [
-                    "phpunit --colors=always"
-                ],
-                "test-coverage": [
-                    "phpunit --colors=always --coverage-clover clover.xml"
-                ]
-            },
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Trigger and listen to events within a PHP application",
-            "homepage": "https://laminas.dev",
-            "keywords": [
-                "event",
-                "eventmanager",
-                "events",
-                "laminas"
-            ],
-            "support": {
-                "docs": "https://docs.laminas.dev/laminas-eventmanager/",
-                "issues": "https://github.com/laminas/laminas-eventmanager/issues",
-                "source": "https://github.com/laminas/laminas-eventmanager",
-                "rss": "https://github.com/laminas/laminas-eventmanager/releases.atom",
-                "chat": "https://laminas.dev/chat",
-                "forum": "https://discourse.laminas.dev"
-            },
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "laminas/laminas-zendframework-bridge",
-            "version": "1.2.0",
-            "dist": {
-                "type": "path",
-                "url": "../../../library/vendor/laminas/laminas-zendframework-bridge",
-                "reference": "6cccbddfcfc742eb02158d6137ca5687d92cee32"
-            },
-            "require": {
-                "php": "^7.3 || ^8.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.1 || ^9.3",
-                "psalm/plugin-phpunit": "^0.15.1",
-                "squizlabs/php_codesniffer": "^3.5",
-                "vimeo/psalm": "^4.6"
-            },
-            "type": "library",
-            "extra": {
-                "laminas": {
-                    "module": "Laminas\\ZendFrameworkBridge"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/autoload.php"
-                ],
-                "psr-4": {
-                    "Laminas\\ZendFrameworkBridge\\": "src//"
-                }
-            },
-            "autoload-dev": {
-                "files": [
-                    "test/classes.php"
-                ],
-                "psr-4": {
-                    "LaminasTest\\ZendFrameworkBridge\\": "test/",
-                    "LaminasTest\\ZendFrameworkBridge\\TestAsset\\": "test/TestAsset/classes/",
-                    "Laminas\\ApiTools\\": "test/TestAsset/LaminasApiTools/",
-                    "Mezzio\\": "test/TestAsset/Mezzio/",
-                    "Laminas\\": "test/TestAsset/Laminas/"
-                }
-            },
-            "scripts": {
-                "cs-check": [
-                    "phpcs"
-                ],
-                "cs-fix": [
-                    "phpcbf"
-                ],
-                "static-analysis": [
-                    "psalm --shepherd --stats"
-                ],
-                "test": [
-                    "phpunit --colors=always"
-                ],
-                "test-coverage": [
-                    "phpunit --colors=always --coverage-clover clover.xml"
-                ]
-            },
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Alias legacy ZF class names to Laminas Project equivalents.",
-            "keywords": [
-                "autoloading",
                 "laminas",
-                "zendframework",
-                "zf"
+                "laminasframework"
             ],
             "support": {
-                "issues": "https://github.com/laminas/laminas-zendframework-bridge/issues",
-                "source": "https://github.com/laminas/laminas-zendframework-bridge",
-                "rss": "https://github.com/laminas/laminas-zendframework-bridge/releases.atom",
-                "forum": "https://discourse.laminas.dev/"
+                "issues": "https://github.com/laminas/laminas-code/issues",
+                "forum": "https://discourse.laminas.dev",
+                "chat": "https://laminas.dev/chat",
+                "source": "https://github.com/laminas/laminas-code",
+                "docs": "https://docs.laminas.dev/laminas-code/",
+                "rss": "https://github.com/laminas/laminas-code/releases.atom"
             },
             "transport-options": {
                 "symlink": true,
@@ -2654,17 +2493,18 @@
         },
         {
             "name": "lexik/jwt-authentication-bundle",
-            "version": "v2.11.2",
+            "version": "v2.13.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/lexik/jwt-authentication-bundle",
-                "reference": "f0a91712b4554454e6d28c648567e9381408e2d6"
+                "reference": "d3dbf97f9a2f7cead53767111234bb16b8726681"
             },
             "require": {
                 "ext-openssl": "*",
                 "lcobucci/jwt": "^3.4|^4.0",
                 "namshi/jose": "^7.2",
                 "php": ">=7.1",
+                "symfony/deprecation-contracts": "^2.4",
                 "symfony/framework-bundle": "^4.4|^5.1",
                 "symfony/security-bundle": "^4.4|^5.1"
             },
@@ -6018,20 +5858,18 @@
         },
         {
             "name": "symfony/proxy-manager-bridge",
-            "version": "v5.2.1",
+            "version": "v5.3.4",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/proxy-manager-bridge",
-                "reference": "fba051ee1cb00d1d40672ee2da842ba23c572576"
+                "reference": "76e61f33f6a34a340bf6e02211214f466e8e1dba"
             },
             "require": {
                 "composer/package-versions-deprecated": "^1.8",
-                "ocramius/proxy-manager": "~2.1",
+                "friendsofphp/proxy-manager-lts": "^1.0.2",
                 "php": ">=7.2.5",
-                "symfony/dependency-injection": "^5.0"
-            },
-            "conflict": {
-                "zendframework/zend-eventmanager": "2.6.0"
+                "symfony/dependency-injection": "^5.0",
+                "symfony/polyfill-php80": "^1.16"
             },
             "require-dev": {
                 "symfony/config": "^4.4|^5.0"
@@ -6058,7 +5896,7 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony ProxyManager Bridge",
+            "description": "Provides integration for ProxyManager with various Symfony components",
             "homepage": "https://symfony.com",
             "transport-options": {
                 "symlink": true,
@@ -7822,19 +7660,19 @@
         },
         {
             "name": "behat/gherkin",
-            "version": "v4.6.2",
+            "version": "v4.9.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/behat/gherkin",
-                "reference": "51ac4500c4dc30cbaaabcd2f25694299df666a31"
+                "reference": "0bc8d1e30e96183e4f36db9dc79caead300beff4"
             },
             "require": {
-                "php": ">=5.3.1"
+                "php": "~7.2|~8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.5|~5",
-                "symfony/phpunit-bridge": "~2.7|~3|~4",
-                "symfony/yaml": "~2.3|~3|~4"
+                "cucumber/cucumber": "dev-gherkin-22.0.0",
+                "phpunit/phpunit": "~8|~9",
+                "symfony/yaml": "~3|~4|~5"
             },
             "suggest": {
                 "symfony/yaml": "If you want to parse features, represented in YAML files"
@@ -7842,7 +7680,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.4-dev"
+                    "dev-master": "4.x-dev"
                 }
             },
             "autoload": {
@@ -7865,7 +7703,7 @@
                     "homepage": "http://everzet.com"
                 }
             ],
-            "description": "Gherkin DSL parser for PHP 5.3",
+            "description": "Gherkin DSL parser for PHP",
             "homepage": "http://behat.org/",
             "keywords": [
                 "BDD",
@@ -7882,20 +7720,21 @@
         },
         {
             "name": "behat/mink",
-            "version": "v1.8.1",
+            "version": "v1.9.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/behat/mink",
-                "reference": "07c6a9fe3fa98c2de074b25d9ed26c22904e3887"
+                "reference": "e35f4695de8800fc776af34ebf665ad58ebdd996"
             },
             "require": {
-                "php": ">=5.3.1",
+                "php": ">=5.4",
                 "symfony/css-selector": "^2.7|^3.0|^4.0|^5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20",
-                "symfony/debug": "^2.7|^3.0|^4.0",
-                "symfony/phpunit-bridge": "^3.4.38 || ^5.0.5"
+                "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5 || ^9.5",
+                "symfony/debug": "^2.7|^3.0|^4.0|^5.0",
+                "symfony/phpunit-bridge": "^3.4.38 || ^4.4 || ^5.0.5",
+                "yoast/phpunit-polyfills": "^1.0"
             },
             "suggest": {
                 "behat/mink-browserkit-driver": "extremely fast headless driver for Symfony\\Kernel-based apps (Sf2, Silex)",
@@ -7907,7 +7746,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "autoload": {
@@ -7931,7 +7770,7 @@
                 }
             ],
             "description": "Browser controller/emulator abstraction for PHP",
-            "homepage": "http://mink.behat.org/",
+            "homepage": "https://mink.behat.org/",
             "keywords": [
                 "browser",
                 "testing",
@@ -7944,27 +7783,29 @@
         },
         {
             "name": "behat/mink-browserkit-driver",
-            "version": "v1.3.4",
+            "version": "v1.4.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/behat/mink-browserkit-driver",
-                "reference": "e3b90840022ebcd544c7b394a3c9597ae242cbee"
+                "reference": "0ed1919eb09968f2e152ed91aee35300e70602a8"
             },
             "require": {
                 "behat/mink": "^1.7.1@dev",
-                "php": ">=5.3.6",
+                "php": ">=5.4",
                 "symfony/browser-kit": "~2.3|~3.0|~4.0",
                 "symfony/dom-crawler": "~2.3|~3.0|~4.0"
             },
             "require-dev": {
                 "mink/driver-testsuite": "dev-master",
+                "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.18 || ^8.5 || ^9.5",
                 "symfony/debug": "^2.7|^3.0|^4.0",
-                "symfony/http-kernel": "~2.3|~3.0|~4.0"
+                "symfony/http-kernel": "~2.3|~3.0|~4.0",
+                "yoast/phpunit-polyfills": "^1.0"
             },
             "type": "mink-driver",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "autoload": {
@@ -7988,7 +7829,7 @@
                 }
             ],
             "description": "Symfony2 BrowserKit driver for Mink framework",
-            "homepage": "http://mink.behat.org/",
+            "homepage": "https://mink.behat.org/",
             "keywords": [
                 "Mink",
                 "Symfony2",
