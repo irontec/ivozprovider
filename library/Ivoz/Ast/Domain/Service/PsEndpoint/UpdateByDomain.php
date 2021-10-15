@@ -66,6 +66,10 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
      */
     private function updateEndpoint(?PsEndpointInterface $endpoint, string $fromdomain)
     {
+        if (!$endpoint) {
+            return;
+        }
+
         /** @var PsEndpointDto $endpointDto */
         $endpointDto = $endpoint->toDto();
         $endpointDto->setFromDomain($fromdomain);
