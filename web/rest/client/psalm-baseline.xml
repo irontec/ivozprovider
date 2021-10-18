@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.7.2@83a0325c0a95c0ab531d6b90c877068b464377b5">
+  <file src="../../../library/Ivoz/Provider/Infrastructure/Api/Security/User/UserProviderTrait.php">
+    <DeprecatedClass occurrences="2">
+      <code>new UsernameNotFoundException($errorMsg)</code>
+      <code>new UsernameNotFoundException(sprintf('User with id %s not found', json_encode($id, JSON_THROW_ON_ERROR)))</code>
+    </DeprecatedClass>
+    <InvalidReturnType occurrences="1">
+      <code>loadUserByUsername</code>
+    </InvalidReturnType>
+    <MissingParamType occurrences="2">
+      <code>$managerName</code>
+      <code>$username</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="3">
+      <code>getClassMetadata</code>
+      <code>getObjectManager</code>
+      <code>getRepository</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="2">
+      <code>$this-&gt;managerName</code>
+      <code>$username</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="3">
+      <code>$id</code>
+      <code>$refreshedUser</code>
+      <code>$repository</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>refreshUser</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="4">
+      <code>find</code>
+      <code>getClassMetadata</code>
+      <code>getIdentifierValues</code>
+      <code>getRepository</code>
+    </MixedMethodCall>
+  </file>
+  <file src="src/Controller/Auth/TokenExchangeAction.php">
+    <InvalidScalarArgument occurrences="1">
+      <code>$code</code>
+    </InvalidScalarArgument>
+    <MissingReturnType occurrences="1">
+      <code>run</code>
+    </MissingReturnType>
+    <MixedInferredReturnType occurrences="1">
+      <code>Response</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$this-&gt;run()</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/Controller/Provider/RatingPlanPricesAction.php">
+    <MissingClosureReturnType occurrences="1">
+      <code>function (QueryBuilder $qb) use ($collectionExtensions, $request) {</code>
+    </MissingClosureReturnType>
+    <MixedArgument occurrences="4">
+      <code>$disposition</code>
+      <code>$item</code>
+      <code>Response::$statusTexts[Response::HTTP_FORBIDDEN]</code>
+      <code>Response::$statusTexts[Response::HTTP_NOT_FOUND]</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="4">
+      <code>$batch</code>
+      <code>$disposition</code>
+      <code>$item</code>
+      <code>$value</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/Controller/Provider/ServicesUnassignedAction.php">
+    <MixedArgument occurrences="2">
+      <code>$company-&gt;getBrand()-&gt;getId()</code>
+      <code>$company-&gt;getId()</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$id</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/DataFixtures/AppFixtures.php">
+    <MissingReturnType occurrences="1">
+      <code>load</code>
+    </MissingReturnType>
+  </file>
+  <file src="src/Kernel.php">
+    <DeprecatedClass occurrences="4">
+      <code>$routes-&gt;import($confDir . '/{routes}' . self::CONFIG_EXTS, '/', 'glob')</code>
+      <code>$routes-&gt;import($confDir . '/{routes}/' . $this-&gt;environment . '/*' . self::CONFIG_EXTS, '/', 'glob')</code>
+      <code>$routes-&gt;import($confDir . '/{routes}/*' . self::CONFIG_EXTS, '/', 'glob')</code>
+      <code>RouteCollectionBuilder</code>
+    </DeprecatedClass>
+    <MixedArrayAccess occurrences="2">
+      <code>$envs[$this-&gt;environment]</code>
+      <code>$envs['all']</code>
+    </MixedArrayAccess>
+    <MixedArrayOffset occurrences="1">
+      <code>$envs[$this-&gt;environment]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="3">
+      <code>$class</code>
+      <code>$contents</code>
+      <code>$envs</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>new $class()</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="4">
+      <code>$this-&gt;environment</code>
+      <code>$this-&gt;environment</code>
+      <code>$this-&gt;environment</code>
+      <code>$this-&gt;environment</code>
+    </MixedOperand>
+    <MoreSpecificReturnType occurrences="1">
+      <code>registerBundles</code>
+    </MoreSpecificReturnType>
+    <UnresolvableInclude occurrences="1">
+      <code>require $this-&gt;getProjectDir() . '/config/bundles.php'</code>
+    </UnresolvableInclude>
+  </file>
+  <file src="src/Model/RatingPlanPrices.php">
+    <MissingReturnType occurrences="1">
+      <code>fromArray</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="9">
+      <code>$data['connectFee']</code>
+      <code>$data['cost']</code>
+      <code>$data['days']</code>
+      <code>$data['groupIntervalStart']</code>
+      <code>$data['name']</code>
+      <code>$data['prefix']</code>
+      <code>$data['rateIncrement']</code>
+      <code>$data['ratingPlan']</code>
+      <code>$data['timeIn']</code>
+    </MixedArgument>
+    <PropertyNotSetInConstructor occurrences="9">
+      <code>$connectFee</code>
+      <code>$cost</code>
+      <code>$days</code>
+      <code>$groupIntervalStart</code>
+      <code>$name</code>
+      <code>$prefix</code>
+      <code>$rateIncrement</code>
+      <code>$ratingPlan</code>
+      <code>$timeIn</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Service/AuthEndpointDecorator.php">
+    <MixedArgument occurrences="3">
+      <code>$paths</code>
+      <code>func_get_args()</code>
+      <code>func_get_args()</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$paths</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>getArrayCopy</code>
+    </MixedMethodCall>
+    <PossiblyInvalidArrayAccess occurrences="1">
+      <code>$response['paths']</code>
+    </PossiblyInvalidArrayAccess>
+    <PossiblyInvalidArrayAssignment occurrences="1">
+      <code>$response['paths']</code>
+    </PossiblyInvalidArrayAssignment>
+    <PossiblyNullArrayAccess occurrences="1">
+      <code>$response['paths']</code>
+    </PossiblyNullArrayAccess>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>$definitions</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Service/Behat/FeatureContext.php">
+    <DeprecatedInterface occurrences="1">
+      <code>FeatureContext</code>
+    </DeprecatedInterface>
+    <MissingReturnType occurrences="6">
+      <code>setBrandAuthorizationHeaderByExchange</code>
+      <code>setCompanyAuthorizationHeader</code>
+      <code>setResidentialCompanyAuthorizationHeader</code>
+      <code>setRetailCompanyAuthorizationHeader</code>
+      <code>setUserApiContext</code>
+      <code>setUserAuthorizationHeader</code>
+    </MissingReturnType>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>FeatureContext</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Service/BillableCallNormalizer.php">
+    <MixedArgument occurrences="2">
+      <code>func_get_args()</code>
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
+  <file src="src/Service/UserProvider.php">
+    <MissingParamType occurrences="1">
+      <code>$class</code>
+    </MissingParamType>
+    <MixedArgument occurrences="2">
+      <code>$class</code>
+      <code>$class</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$admin</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>null | AdministratorInterface</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="3">
+      <code>findOneBy</code>
+      <code>getCompany</code>
+      <code>getShowInvoices</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>$admin</code>
+    </MixedReturnStatement>
+  </file>
+</files>
