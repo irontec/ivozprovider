@@ -2,10 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Service\Terminal;
 
-use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
-use Zend\EventManager\Exception\DomainException;
 
 /**
  * Class CheckUniqueness
@@ -43,7 +41,7 @@ class CheckUniqueness implements TerminalLifecycleEventHandlerInterface
             );
 
         if ($friend) {
-            throw new DomainException("There is already a friend with that name.", 30007);
+            throw new \DomainException("There is already a friend with that name.", 30007);
         }
     }
 }
