@@ -58,7 +58,7 @@ RUN wget https://github.com/sebastianbergmann/phpunit/archive/6.5.14.zip -O /opt
 RUN unzip /opt/phpunit/phpunit.zip -d /opt/phpunit/
 
 # Get dependencies
-RUN /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-progress --ignore-platform-reqs
+RUN /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-progress
 
 # Store the main project vendor
 RUN cp -r /opt/irontec/ivozprovider/library/vendor/    /opt/library-vendor
