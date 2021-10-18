@@ -1,3 +1,5 @@
+includes:
+    - phpstan-baseline.neon
 parameters:
     excludes_analyse:
         - "*/vendor/*"

@@ -1,0 +1,1507 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Agi\\\\Action\\\\CallForwardAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/CallForwardAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ConditionalRouteAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ConditionalRouteAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ConferenceRoomAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ConferenceRoomAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\DdiAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/DdiAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ExtensionAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ExtensionAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ExtensionAction\\:\\:setExtension\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ExtensionAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ExternalFaxCallAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFaxCallAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\ExternalFaxCallAction\\:\\:\\$faxfile \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FaxesInOut\\\\FaxesInOutInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FaxesInOut\\\\FaxesInOutInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFaxCallAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\ExternalFaxCallAction\\:\\:\\$number \\(string\\) does not accept string\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFaxCallAction.php
+
+		-
+			message: "#^Cannot call method getExtension\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFilterAction.php
+
+		-
+			message: "#^Cannot call method getExtension\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFilterAction.php
+
+		-
+			message: "#^Cannot call method getNumberValueE164\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFilterAction.php
+
+		-
+			message: "#^Cannot call method getNumberValueE164\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFilterAction.php
+
+		-
+			message: "#^Cannot call method getRouteType\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFilterAction.php
+
+		-
+			message: "#^Cannot call method getRouteType\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFilterAction.php
+
+		-
+			message: "#^Cannot call method getVoiceMailUser\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFilterAction.php
+
+		-
+			message: "#^Cannot call method getVoiceMailUser\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFilterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ExternalFilterAction\\:\\:processHoliday\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFilterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ExternalFilterAction\\:\\:processOutOfSchedule\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFilterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ExternalFilterAction\\:\\:setCalendarPeriod\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFilterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\ExternalFilterAction\\:\\:\\$filter \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalFilterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ExternalNumberAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalNumberAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\ExternalNumberAction\\:\\:\\$number \\(string\\) does not accept string\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/ExternalNumberAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\FaxReceiveAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/FaxReceiveAction.php
+
+		-
+			message: "#^Cannot call method getBody\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/FaxReceiveStatusAction.php
+
+		-
+			message: "#^Cannot call method getBodyType\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/FaxReceiveStatusAction.php
+
+		-
+			message: "#^Cannot call method getContentsByLanguage\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateInterface\\|null\\.$#"
+			count: 2
+			path: src/Agi/Action/FaxReceiveStatusAction.php
+
+		-
+			message: "#^Cannot call method getFromAddress\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/FaxReceiveStatusAction.php
+
+		-
+			message: "#^Cannot call method getFromName\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/FaxReceiveStatusAction.php
+
+		-
+			message: "#^Cannot call method getSubject\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/FaxReceiveStatusAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\FaxReceiveStatusAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/FaxReceiveStatusAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$addresses of method Swift_Mime_SimpleMessage\\:\\:setFrom\\(\\) expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: src/Agi/Action/FaxReceiveStatusAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function ltrim expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Agi/Action/FaxReceiveStatusAction.php
+
+		-
+			message: "#^Parameter \\#2 \\$replace of function str_replace expects array\\|string, string\\|null given\\.$#"
+			count: 2
+			path: src/Agi/Action/FaxReceiveStatusAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\FriendCallAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/FriendCallAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\FriendCallAction\\:\\:\\$destination \\(string\\) does not accept string\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/FriendCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\HuntGroupAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/HuntGroupAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\HuntGroupCallAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/HuntGroupCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\HuntGroupStatusAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/HuntGroupStatusAction.php
+
+		-
+			message: "#^Cannot call method getErrorExtension\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Cannot call method getErrorLocution\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Cannot call method getErrorNumberValueE164\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Cannot call method getErrorRouteType\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Cannot call method getErrorVoiceMailUser\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Cannot call method getNoInputExtension\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Cannot call method getNoInputLocution\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Cannot call method getNoInputNumberValueE164\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Cannot call method getNoInputRouteType\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Cannot call method getNoInputVoiceMailUser\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\IvrAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\IvrAction\\:\\:processError\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\IvrAction\\:\\:processNoInput\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/IvrAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\QueueAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/QueueAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\QueueCallAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/QueueCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\QueueFullAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/QueueFullAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\QueueTimeoutAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/QueueTimeoutAction.php
+
+		-
+			message: "#^Cannot call method getCallForwardSettings\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceInterface\\|null\\.$#"
+			count: 2
+			path: src/Agi/Action/ResidentialCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ResidentialCallAction\\:\\:getDialTimeout\\(\\) should return string but returns int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string\\.$#"
+			count: 1
+			path: src/Agi/Action/ResidentialCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ResidentialCallAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ResidentialCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ResidentialStatusAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ResidentialStatusAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ResidentialStatusAction\\:\\:setDialStatus\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ResidentialStatusAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ResidentialStatusAction\\:\\:setResidentialDevice\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ResidentialStatusAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ResidentialStatusAction\\:\\:setResidentialDevice\\(\\) has parameter \\$residentialDevice with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ResidentialStatusAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RetailCallAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RetailCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:route\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeService\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToConditionalRoute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToConferenceRoom\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToExtension\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToExternal\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToFax\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToFriend\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToHuntGroup\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToIvr\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToQueue\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToResidentialDevice\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToRetailAccount\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToUser\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:routeToVoiceMail\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteConditional\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteConferenceRoom\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteExtension\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteExternal\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteFax\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteFriend\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteFriendDestination\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteHuntGroup\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteIvr\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteQueue\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteResidential\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteRetail\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteService\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteType\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteUser\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteVoicemail\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteVoicemailResidential\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\RouterAction\\:\\:setRouteVoicemailUser\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeConditional \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeConference \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConferenceRoom\\\\ConferenceRoomInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConferenceRoom\\\\ConferenceRoomInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeExtension \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeExternal \\(string\\) does not accept string\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeFax \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Fax\\\\FaxInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Fax\\\\FaxInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeFriend \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeFriendDestination \\(string\\) does not accept string\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeHuntGroup \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeIvr \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeQueue \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeResidential \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeRetail \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeService \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyService\\\\CompanyServiceInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyService\\\\CompanyServiceInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeType \\(string\\) does not accept string\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Property Agi\\\\Action\\\\RouterAction\\:\\:\\$routeUser \\(Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserInterface\\) does not accept Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/RouterAction.php
+
+		-
+			message: "#^Cannot call method getCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BrandService\\\\BrandServiceInterface\\|Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyService\\\\CompanyServiceInterface\\|null\\.$#"
+			count: 5
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:printRouteLockStatus\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processCallForwardSetting\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processCallForwardSetting\\(\\) has parameter \\$callForwardType with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processCfwBusy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processCfwInconditional\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processCfwNoAnswer\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processCfwUnreachable\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processCloseLock\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processDirectPickUp\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processGroupPickUp\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processHello\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processOpenLock\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processRecordLocution\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processToggleLock\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\ServiceAction\\:\\:processVoiceMail\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/ServiceAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\UserCallAction\\:\\:getDialTimeout\\(\\) should return string but returns int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string\\.$#"
+			count: 1
+			path: src/Agi/Action/UserCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\UserCallAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/UserCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\UserCallAction\\:\\:setAllowCallForwards\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/UserCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\UserCallAction\\:\\:setAllowCallForwards\\(\\) has parameter \\$allowCallForwards with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/UserCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\UserCallAction\\:\\:setUser\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/UserCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\UserCallAction\\:\\:setUser\\(\\) has parameter \\$user with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/UserCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\UserStatusAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/UserStatusAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\UserStatusAction\\:\\:setDialStatus\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/UserStatusAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\UserStatusAction\\:\\:setUser\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/UserStatusAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\UserStatusAction\\:\\:setUser\\(\\) has parameter \\$user with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/UserStatusAction.php
+
+		-
+			message: "#^Cannot call method getVoiceMail\\(\\) on Agi\\\\Agents\\\\AgentInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Action/VoiceMailAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\VoiceMailAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/VoiceMailAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\VoiceMailAction\\:\\:processResidential\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/VoiceMailAction.php
+
+		-
+			message: "#^Method Agi\\\\Agents\\\\DdiAgent\\:\\:getPickupGroups\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Agents/DdiAgent.php
+
+		-
+			message: "#^Method Agi\\\\Agents\\\\FaxAgent\\:\\:getPickupGroups\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Agents/FaxAgent.php
+
+		-
+			message: "#^Property Agi\\\\Agents\\\\FaxAgent\\:\\:\\$agi has no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Agents/FaxAgent.php
+
+		-
+			message: "#^Property Agi\\\\Agents\\\\FaxAgent\\:\\:\\$fax has no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Agents/FaxAgent.php
+
+		-
+			message: "#^Cannot call method getT38Udptl\\(\\) on Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Agents/FriendAgent.php
+
+		-
+			message: "#^Method Agi\\\\Agents\\\\FriendAgent\\:\\:getPickupGroups\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Agents/FriendAgent.php
+
+		-
+			message: "#^Cannot call method getT38Udptl\\(\\) on Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Agents/ResidentialAgent.php
+
+		-
+			message: "#^Method Agi\\\\Agents\\\\ResidentialAgent\\:\\:getPickupGroups\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Agents/ResidentialAgent.php
+
+		-
+			message: "#^Method Agi\\\\Agents\\\\RetailAgent\\:\\:getPickupGroups\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Agents/RetailAgent.php
+
+		-
+			message: "#^Cannot call method getPsEndpoint\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Agents/UserAgent.php
+
+		-
+			message: "#^Cannot call method getT38Udptl\\(\\) on Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Agents/UserAgent.php
+
+		-
+			message: "#^Parameter \\#1 \\$originalDdi of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleInterface\\:\\:getOutgoingDdi\\(\\) expects Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiInterface, Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiInterface\\|null given\\.$#"
+			count: 1
+			path: src/Agi/Agents/UserAgent.php
+
+		-
+			message: "#^Method Agi\\\\ChannelInfo\\:\\:getChannelCaller\\(\\) should return Agi\\\\Agents\\\\AgentInterface but returns Agi\\\\Agents\\\\AgentInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/ChannelInfo.php
+
+		-
+			message: "#^Method Agi\\\\ChannelInfo\\:\\:setChannelCaller\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/ChannelInfo.php
+
+		-
+			message: "#^Method Agi\\\\ChannelInfo\\:\\:setChannelOrigin\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/ChannelInfo.php
+
+		-
+			message: "#^Parameter \\#1 \\$other of method Agi\\\\Agents\\\\AgentInterface\\:\\:isEqual\\(\\) expects Agi\\\\Agents\\\\AgentInterface, Agi\\\\Agents\\\\AgentInterface\\|null given\\.$#"
+			count: 2
+			path: src/Agi/ChannelInfo.php
+
+		-
+			message: "#^Method Agi\\\\Colorizer\\:\\:parse\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: src/Agi/Colorizer.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 2
+			path: src/Agi/Colorizer.php
+
+		-
+			message: "#^Property Agi\\\\Colorizer\\:\\:\\$colors type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Agi/Colorizer.php
+
+		-
+			message: "#^Cannot cast array\\|string to string\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:busy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:busy\\(\\) has parameter \\$duration with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:checkVoicemail\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:checkVoicemail\\(\\) has parameter \\$mailbox with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:checkVoicemail\\(\\) has parameter \\$options with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:decline\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:dump\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:error\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:error\\(\\) has parameter \\$args with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:error\\(\\) has parameter \\$fmt with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:extractURI\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:extractURI\\(\\) has parameter \\$uri with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:extractURI\\(\\) has parameter \\$variable with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getAgiType\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getCallId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getCallType\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getCallerIdName\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getCallerIdNum\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getConferenceInfo\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getConferenceInfo\\(\\) has parameter \\$num with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getConferenceInfo\\(\\) has parameter \\$type with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getConferenceSetting\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getConferenceSetting\\(\\) has parameter \\$setting with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getConnectedLineNum\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getConnectedLineNum\\(\\) has parameter \\$type with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getDeviceState\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getDeviceState\\(\\) has parameter \\$interface with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getDeviceState\\(\\) has parameter \\$prefix with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getDialedNumber\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getEndpoint\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getExtension\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getRedirecting\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getRedirecting\\(\\) has parameter \\$type with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getRequestData\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getRequestData\\(\\) has parameter \\$name with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getSIPHeader\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getSIPHeader\\(\\) has parameter \\$header with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:getUniqueId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:hangup\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:hangup\\(\\) has parameter \\$reason with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:notice\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:notice\\(\\) has parameter \\$args with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:notice\\(\\) has parameter \\$fmt with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:pickup\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:pickup\\(\\) has parameter \\$interface with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:playback\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:playback\\(\\) has parameter \\$filename with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:playback\\(\\) has parameter \\$options with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:playbackLocution\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:progress\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:progress\\(\\) has parameter \\$file with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:read\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:read\\(\\) has parameter \\$filename with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:read\\(\\) has parameter \\$maxdigits with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:read\\(\\) has parameter \\$timeout with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:record\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:record\\(\\) has parameter \\$file with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:record\\(\\) has parameter \\$options with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:redirect\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:redirect\\(\\) has parameter \\$context with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:redirect\\(\\) has parameter \\$exten with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:redirect\\(\\) has parameter \\$priority with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:ringing\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setCallType\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setCallType\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setCallerIdName\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setCallerIdName\\(\\) has parameter \\$name with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setCallerIdNum\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setCallerIdNum\\(\\) has parameter \\$num with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setConferenceSetting\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setConferenceSetting\\(\\) has parameter \\$setting with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setConferenceSetting\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setConnectedLine\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setConnectedLine\\(\\) has parameter \\$type with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setConnectedLine\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setRDNIS\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setRDNIS\\(\\) has parameter \\$num with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setRedirecting\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setRedirecting\\(\\) has parameter \\$type with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setRedirecting\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setRedirectingContext\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setRedirectingContext\\(\\) has parameter \\$context with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setSIPHeader\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setSIPHeader\\(\\) has parameter \\$header with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setSIPHeader\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setVariable\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setVariable\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:setVariable\\(\\) has parameter \\$variable with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:verbose\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:verbose\\(\\) has parameter \\$args with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:verbose\\(\\) has parameter \\$fmt with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:voicemail\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:voicemail\\(\\) has parameter \\$mailbox with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Agi\\\\Wrapper\\:\\:voicemail\\(\\) has parameter \\$opts with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Parameter \\#1 \\$filename of function file_exists expects string, string\\|null given\\.$#"
+			count: 2
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Parameter \\#1 \\$path of function pathinfo expects string, string\\|null given\\.$#"
+			count: 4
+			path: src/Agi/Wrapper.php
+
+		-
+			message: "#^Method Dialplan\\\\FaxDial\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/FaxDial.php
+
+		-
+			message: "#^Method Dialplan\\\\FaxDialStatus\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/FaxDialStatus.php
+
+		-
+			message: "#^Method Dialplan\\\\FaxReceiveStatus\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/FaxReceiveStatus.php
+
+		-
+			message: "#^Method Dialplan\\\\FaxSend\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/FaxSend.php
+
+		-
+			message: "#^Method Dialplan\\\\FaxSendStatus\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/FaxSendStatus.php
+
+		-
+			message: "#^Cannot call method getCompany\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendInterface\\|null\\.$#"
+			count: 1
+			path: src/Dialplan/Friends.php
+
+		-
+			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendInterface\\|null\\.$#"
+			count: 1
+			path: src/Dialplan/Friends.php
+
+		-
+			message: "#^Cannot call method getLanguageCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendInterface\\|null\\.$#"
+			count: 1
+			path: src/Dialplan/Friends.php
+
+		-
+			message: "#^Method Dialplan\\\\Friends\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/Friends.php
+
+		-
+			message: "#^Parameter \\#2 \\$friend of class Agi\\\\Agents\\\\FriendAgent constructor expects Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendInterface, Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendInterface\\|null given\\.$#"
+			count: 1
+			path: src/Dialplan/Friends.php
+
+		-
+			message: "#^Method Dialplan\\\\Headers\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/Headers.php
+
+		-
+			message: "#^Cannot call method getAllowCallForwards\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupInterface\\|null\\.$#"
+			count: 1
+			path: src/Dialplan/HuntGroupMember.php
+
+		-
+			message: "#^Cannot call method getStrategy\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupInterface\\|null\\.$#"
+			count: 1
+			path: src/Dialplan/HuntGroupMember.php
+
+		-
+			message: "#^Method Dialplan\\\\HuntGroupMember\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/HuntGroupMember.php
+
+		-
+			message: "#^Method Dialplan\\\\HuntGroupStatus\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/HuntGroupStatus.php
+
+		-
+			message: "#^Method Dialplan\\\\HuntGroups\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/HuntGroups.php
+
+		-
+			message: "#^Method Dialplan\\\\QueueStatus\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/QueueStatus.php
+
+		-
+			message: "#^Method Dialplan\\\\Queues\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/Queues.php
+
+		-
+			message: "#^Method Dialplan\\\\ResidentialStatus\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/ResidentialStatus.php
+
+		-
+			message: "#^Method Dialplan\\\\Residentials\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/Residentials.php
+
+		-
+			message: "#^Method Dialplan\\\\Retails\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/Retails.php
+
+		-
+			message: "#^Method Dialplan\\\\Trunks\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/Trunks.php
+
+		-
+			message: "#^Method Dialplan\\\\UserStatus\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/UserStatus.php
+
+		-
+			message: "#^Method Dialplan\\\\Users\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/Users.php
+
+		-
+			message: "#^Parameter \\#2 \\$domain of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalRepository\\:\\:findOneByNameAndDomain\\(\\) expects Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Domain\\\\DomainInterface, Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Domain\\\\DomainInterface\\|null given\\.$#"
+			count: 1
+			path: src/Helpers/EndpointResolver.php
+
+		-
+			message: "#^Method Kernel\\:\\:__construct\\(\\) has parameter \\$debug with no typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method Kernel\\:\\:__construct\\(\\) has parameter \\$environment with no typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method Kernel\\:\\:configureRoutes\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method Kernel\\:\\:handleRequestAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method Kernel\\:\\:initializeContainer\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method Kernel\\:\\:registerCommand\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Property Kernel\\:\\:\\$fastagi has no typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method RouteHandlerAbstract\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/RouteHandlerAbstract.php
+
+		-
+			message: "#^Cannot call method getBody\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
+			count: 1
+			path: src/Voicemail/Sender.php
+
+		-
+			message: "#^Cannot call method getBodyType\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
+			count: 1
+			path: src/Voicemail/Sender.php
+
+		-
+			message: "#^Cannot call method getContentsByLanguage\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateInterface\\|null\\.$#"
+			count: 2
+			path: src/Voicemail/Sender.php
+
+		-
+			message: "#^Cannot call method getFromAddress\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
+			count: 1
+			path: src/Voicemail/Sender.php
+
+		-
+			message: "#^Cannot call method getFromName\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
+			count: 1
+			path: src/Voicemail/Sender.php
+
+		-
+			message: "#^Cannot call method getSubject\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
+			count: 1
+			path: src/Voicemail/Sender.php
+
+		-
+			message: "#^Method Voicemail\\\\Sender\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Voicemail/Sender.php
+
+		-
+			message: "#^Parameter \\#1 \\$addresses of method Swift_Mime_SimpleMessage\\:\\:setFrom\\(\\) expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: src/Voicemail/Sender.php
+
+		-
+			message: "#^Parameter \\#1 \\$stream of method PhpMimeMailParser\\\\Parser\\:\\:setStream\\(\\) expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: src/Voicemail/Sender.php
+

@@ -1,0 +1,267 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Controller\\\\My\\\\CallForwardSettingsAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/CallForwardSettingsAction.php
+
+		-
+			message: "#^Cannot call method getTz\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneInterface\\|null\\.$#"
+			count: 1
+			path: src/Controller/My/CallHistoryAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\CallHistoryAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/CallHistoryAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\CallHistoryAction\\:\\:applyCollectionExtensions\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Controller/My/CallHistoryAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\CallHistoryAction\\:\\:setUserTimezone\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/CallHistoryAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\CallHistoryAction\\:\\:setUserTimezone\\(\\) has parameter \\$calls with no value type specified in iterable type Traversable\\.$#"
+			count: 1
+			path: src/Controller/My/CallHistoryAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$array of class ArrayIterator constructor expects array\\<TKey of \\(int\\|string\\), TValue\\>, iterable given\\.$#"
+			count: 1
+			path: src/Controller/My/CallHistoryAction.php
+
+		-
+			message: "#^Property Controller\\\\My\\\\CallHistoryAction\\:\\:\\$request has no typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/CallHistoryAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\CallStatsAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/CallStatsAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\CompanyAssistantsAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/CompanyAssistantsAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\CompanyCountryAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/CompanyCountryAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\CompanyExtensionsAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/CompanyExtensionsAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\CompanyVoicemailsAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/CompanyVoicemailsAction.php
+
+		-
+			message: "#^Cannot call method getContent\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
+			count: 1
+			path: src/Controller/My/PostCallForwardSettingsAction.php
+
+		-
+			message: "#^Cannot call method getRequestFormat\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
+			count: 2
+			path: src/Controller/My/PostCallForwardSettingsAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\PostCallForwardSettingsAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/PostCallForwardSettingsAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\ProfileAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/ProfileAction.php
+
+		-
+			message: "#^Cannot call method getContent\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
+			count: 1
+			path: src/Controller/My/PutProfileAction.php
+
+		-
+			message: "#^Cannot call method getRequestFormat\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
+			count: 2
+			path: src/Controller/My/PutProfileAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\PutProfileAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/PutProfileAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$object of function get_class expects object, string\\|Stringable\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface given\\.$#"
+			count: 1
+			path: src/Controller/My/PutProfileAction.php
+
+		-
+			message: "#^Parameter \\#2 \\$type of method Symfony\\\\Component\\\\Serializer\\\\Normalizer\\\\DenormalizerInterface\\:\\:denormalize\\(\\) expects string, class\\-string\\<Stringable\\>\\|class\\-string\\<Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\>\\|false given\\.$#"
+			count: 1
+			path: src/Controller/My/PutProfileAction.php
+
+		-
+			message: "#^Cannot call method getDomain\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Domain\\\\DomainInterface\\|null\\.$#"
+			count: 1
+			path: src/Controller/My/StatusAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\StatusAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/StatusAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\StatusAction\\:\\:setCompanyData\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/StatusAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\StatusAction\\:\\:setExtensionData\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/StatusAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\StatusAction\\:\\:setTerminalData\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/StatusAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\StatusAction\\:\\:setUserLocationData\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/StatusAction.php
+
+		-
+			message: "#^Cannot access property \\$server on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
+			count: 2
+			path: src/Controller/My/WebThemeAction.php
+
+		-
+			message: "#^Method Controller\\\\My\\\\WebThemeAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/WebThemeAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function urlencode expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Controller/My/WebThemeAction.php
+
+		-
+			message: "#^Method App\\\\DataFixtures\\\\AppFixtures\\:\\:load\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Method Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method Kernel\\:\\:configureRoutes\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method Model\\\\CallStats\\:\\:__construct\\(\\) has parameter \\$totalCalls with no typehint specified\\.$#"
+			count: 1
+			path: src/Model/CallStats.php
+
+		-
+			message: "#^Method Model\\\\CallStats\\:\\:__construct\\(\\) has parameter \\$totalDetours with no typehint specified\\.$#"
+			count: 1
+			path: src/Model/CallStats.php
+
+		-
+			message: "#^Method Model\\\\UserStatus\\:\\:setLanguage\\(\\) has parameter \\$language with no typehint specified\\.$#"
+			count: 1
+			path: src/Model/UserStatus.php
+
+		-
+			message: "#^Method Model\\\\WebTheme\\:\\:__construct\\(\\) has parameter \\$brandName with no typehint specified\\.$#"
+			count: 1
+			path: src/Model/WebTheme.php
+
+		-
+			message: "#^Method Model\\\\WebTheme\\:\\:__construct\\(\\) has parameter \\$logo with no typehint specified\\.$#"
+			count: 1
+			path: src/Model/WebTheme.php
+
+		-
+			message: "#^Method Model\\\\WebTheme\\:\\:__construct\\(\\) has parameter \\$theme with no typehint specified\\.$#"
+			count: 1
+			path: src/Model/WebTheme.php
+
+		-
+			message: "#^Cannot access offset 'paths' on array\\|ArrayObject\\|bool\\|float\\|int\\|string\\|null\\.$#"
+			count: 2
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Method Service\\\\AuthEndpointDecorator\\:\\:normalize\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Method Service\\\\AuthEndpointDecorator\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Method Service\\\\AuthEndpointDecorator\\:\\:normalize\\(\\) return type with generic class ArrayObject does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Property Service\\\\AuthEndpointDecorator\\:\\:\\$definitions with generic class ArrayObject does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setBrandAuthorizationHeaderByExchange\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Service/Behat/FeatureContext.php
+
+		-
+			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setCompanyAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Service/Behat/FeatureContext.php
+
+		-
+			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setResidentialCompanyAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Service/Behat/FeatureContext.php
+
+		-
+			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setRetailCompanyAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Service/Behat/FeatureContext.php
+
+		-
+			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setUserApiContext\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Service/Behat/FeatureContext.php
+
+		-
+			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setUserAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Service/Behat/FeatureContext.php
+
+		-
+			message: "#^Method Service\\\\UserProvider\\:\\:findUser\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/UserProvider.php
+
+		-
+			message: "#^Method Service\\\\UserProvider\\:\\:supportsClass\\(\\) has parameter \\$class with no typehint specified\\.$#"
+			count: 1
+			path: src/Service/UserProvider.php
+

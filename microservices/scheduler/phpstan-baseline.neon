@@ -1,0 +1,32 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method BillableCallController\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/BillableCallController.php
+
+		-
+			message: "#^Method BillableCallHistoricController\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/BillableCallHistoricController.php
+
+		-
+			message: "#^Method CallCsvController\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/CallCsvController.php
+
+		-
+			message: "#^Method InvoiceSchedulerController\\:\\:indexAction\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/InvoiceSchedulerController.php
+
+		-
+			message: "#^Method Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method Kernel\\:\\:configureRoutes\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
