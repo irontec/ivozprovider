@@ -167,7 +167,7 @@
                     self._icons.directions[data.Direction]
                 );
                 $(".copyCallId",_tr).on('click', function () {
-                    self.copyTextToClipboard(data['ID']);
+                    self.copyTextToClipboard(data['Call-ID']);
                 });
 
                 $(".brand",_tr).html(data.Brand);
