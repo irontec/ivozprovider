@@ -92,5 +92,8 @@ override_dh_installinit:
 	dh_installinit    -p ivozprovider-kamailio-users   --name=kamusers     --noscripts --no-restart-on-upgrade --no-start
 	dh_installinit    -p ivozprovider-kamailio-trunks  --name=kamtrunks    --noscripts --no-restart-on-upgrade --no-start
 
+# Avoid stripping all vendor files
+override_dh_strip_nondeterminism:
+
 %:
 	dh $@ --with systemd
