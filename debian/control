@@ -2,11 +2,32 @@ Source: ivozprovider
 Section: php
 Priority: optional
 Build-Depends: debhelper (>=9.2),
-    nodejs, npm, ruby-dev, git, openssh-client, curl, php8.0,
-    python3, make, python3-sphinx-rtd-theme, gettext,
-    python3-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
-    libjs-jquery (>=1.11.3), python3-alabaster (>=0.7.8), composer,
-    php8.0-mbstring, php8.0-xml, php8.0-zip, php8.0-mailparse, yarnpkg
+    composer,
+    curl,
+    gettext,
+    git,
+    libjs-jquery (>=1.11.3),
+    libjs-sphinxdoc (>=1.4.6),
+    make,
+    nodejs,
+    npm,
+    openssh-client,
+    php8.0,
+    php8.0-cli,
+    php8.0-common,
+    php8.0-mailparse,
+    php8.0-mbstring,
+    php8.0-opcache,
+    php8.0-readline,
+    php8.0-xml,
+    php8.0-zip,
+    python3,
+    python3-alabaster (>=0.7.8),
+    python3-sphinx (>=1.4.6),
+    python3-sphinx-rtd-theme,
+    ruby-dev,
+    sphinx-common (>=1.4.6),
+    yarnpkg
 Standards-Version: 3.9.6
 Maintainer: Irontec IvozProvider Team <ivozprovider@irontec.com>
 
