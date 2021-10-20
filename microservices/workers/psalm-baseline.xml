@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.7.2@83a0325c0a95c0ab531d6b90c877068b464377b5">
+  <file src="src/Kernel.php">
+    <DeprecatedClass occurrences="4">
+      <code>$routes-&gt;import($confDir . '/{routes}' . self::CONFIG_EXTS, '/', 'glob')</code>
+      <code>$routes-&gt;import($confDir . '/{routes}/' . $this-&gt;environment . '/*' . self::CONFIG_EXTS, '/', 'glob')</code>
+      <code>$routes-&gt;import($confDir . '/{routes}/*' . self::CONFIG_EXTS, '/', 'glob')</code>
+      <code>RouteCollectionBuilder</code>
+    </DeprecatedClass>
+    <MixedArrayAccess occurrences="2">
+      <code>$envs[$this-&gt;environment]</code>
+      <code>$envs['all']</code>
+    </MixedArrayAccess>
+    <MixedArrayOffset occurrences="1">
+      <code>$envs[$this-&gt;environment]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="3">
+      <code>$class</code>
+      <code>$contents</code>
+      <code>$envs</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>new $class()</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="4">
+      <code>$this-&gt;environment</code>
+      <code>$this-&gt;environment</code>
+      <code>$this-&gt;environment</code>
+      <code>$this-&gt;environment</code>
+    </MixedOperand>
+    <MoreSpecificReturnType occurrences="1">
+      <code>registerBundles</code>
+    </MoreSpecificReturnType>
+    <UnresolvableInclude occurrences="1">
+      <code>require $this-&gt;getProjectDir() . '/config/bundles.php'</code>
+    </UnresolvableInclude>
+  </file>
+  <file src="src/Worker/Cgrates.php">
+    <MissingReturnType occurrences="1">
+      <code>reload</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="4">
+      <code>$cgratesTpid</code>
+      <code>$cgratesTpid</code>
+      <code>$data</code>
+      <code>$job['disableDestinations']</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$cgratesTpid</code>
+      <code>$data</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>\json_decode($data, true)</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/Worker/Invoices.php">
+    <MissingReturnType occurrences="2">
+      <code>create</code>
+      <code>getInvoiceId</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="3">
+      <code>$id</code>
+      <code>$totals["totalPrice"]</code>
+      <code>$totals["totalWithTaxes"]</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="2">
+      <code>$totals["totalPrice"]</code>
+      <code>$totals["totalWithTaxes"]</code>
+    </MixedArrayAccess>
+    <MixedAssignment occurrences="2">
+      <code>$id</code>
+      <code>$totals</code>
+    </MixedAssignment>
+    <MixedOperand occurrences="2">
+      <code>$id</code>
+      <code>$invoice-&gt;getId()</code>
+    </MixedOperand>
+    <PossiblyNullOperand occurrences="1">
+      <code>$invoice-&gt;getNumber()</code>
+    </PossiblyNullOperand>
+    <UndefinedInterfaceMethod occurrences="2">
+      <code>setStatus</code>
+      <code>setStatusMsg</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/Worker/KamRpc.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$entity</code>
+    </ArgumentTypeCoercion>
+    <MissingParamType occurrences="1">
+      <code>$method</code>
+    </MissingParamType>
+    <MissingPropertyType occurrences="1">
+      <code>$retryInterval</code>
+    </MissingPropertyType>
+    <MissingReturnType occurrences="2">
+      <code>delayed</code>
+      <code>send</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="11">
+      <code>$data</code>
+      <code>$job['rpcEntity']</code>
+      <code>$job['rpcEntity']</code>
+      <code>$job['rpcMethod']</code>
+      <code>$job['rpcPort']</code>
+      <code>$job['rpcPort']</code>
+      <code>$method</code>
+      <code>$method</code>
+      <code>$method</code>
+      <code>$this-&gt;retryInterval</code>
+      <code>$this-&gt;retryInterval</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$data</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>\json_decode($data, true)</code>
+    </MixedReturnStatement>
+    <PossiblyNullArgument occurrences="3">
+      <code>$server-&gt;getIp()</code>
+      <code>$server-&gt;getIp()</code>
+      <code>$server-&gt;getName()</code>
+    </PossiblyNullArgument>
+  </file>
+  <file src="src/Worker/Multimedia.php">
+    <DocblockTypeContradiction occurrences="1">
+      <code>isset($entity)</code>
+    </DocblockTypeContradiction>
+    <ImplicitToStringCast occurrences="3">
+      <code>$entity</code>
+      <code>$entity</code>
+      <code>$entity</code>
+    </ImplicitToStringCast>
+    <MissingReturnType occurrences="1">
+      <code>encode</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="8">
+      <code>$data</code>
+      <code>$entityDto-&gt;getOriginalFileBaseName()</code>
+      <code>$entityId</code>
+      <code>$entityId</code>
+      <code>$entityId</code>
+      <code>$entityName</code>
+      <code>$entityName</code>
+      <code>$entityName</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="4">
+      <code>$data</code>
+      <code>$entityId</code>
+      <code>$entityName</code>
+      <code>$originalFile</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="3">
+      <code>setEncodedFilePath</code>
+      <code>setStatus</code>
+      <code>setStatus</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>\json_decode($data, true)</code>
+    </MixedReturnStatement>
+    <PossiblyNullArgument occurrences="2">
+      <code>$process-&gt;getExitCode()</code>
+      <code>$process-&gt;getExitCode()</code>
+    </PossiblyNullArgument>
+    <UndefinedInterfaceMethod occurrences="4">
+      <code>getOriginalFileBaseName</code>
+      <code>getOriginalFilePath</code>
+      <code>setEncodedFileBaseName</code>
+      <code>setEncodedFilePath</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/Worker/Rates.php">
+    <MissingReturnType occurrences="1">
+      <code>import</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="20">
+      <code>$brandId</code>
+      <code>$brandId</code>
+      <code>$column</code>
+      <code>$csvLines</code>
+      <code>$csvLines</code>
+      <code>$csvLines</code>
+      <code>$data</code>
+      <code>$destinationPrefixes[$prefix]</code>
+      <code>$destinationRateGroupDto-&gt;getFilePath()</code>
+      <code>$destinationRateGroupId</code>
+      <code>$destinationRateGroupId</code>
+      <code>$destinationRateGroupId</code>
+      <code>$importerArguments['columns']</code>
+      <code>$line</code>
+      <code>$line</code>
+      <code>$line["connectionCharge"]</code>
+      <code>$line["rateCost"]</code>
+      <code>$line["rateIncrement"]</code>
+      <code>$line['destinationName']</code>
+      <code>$line['destinationName']</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="8">
+      <code>$csvLines[$k]</code>
+      <code>$csvLines[$k]</code>
+      <code>$csvLines[$k]</code>
+      <code>$line["connectionCharge"]</code>
+      <code>$line["rateCost"]</code>
+      <code>$line["rateIncrement"]</code>
+      <code>$line['destinationName']</code>
+      <code>$line['destinationPrefix']</code>
+    </MixedArrayAccess>
+    <MixedArrayAssignment occurrences="5">
+      <code>$csvLines[$k]</code>
+      <code>$csvLines[$k]</code>
+      <code>$csvLines[$k]</code>
+      <code>$csvLines[$k]</code>
+      <code>$line[$key]</code>
+    </MixedArrayAssignment>
+    <MixedArrayOffset occurrences="7">
+      <code>$csvLines[$k]</code>
+      <code>$csvLines[$k]</code>
+      <code>$csvLines[$k]</code>
+      <code>$csvLines[$k]</code>
+      <code>$csvLines[$k]</code>
+      <code>$destinationPrefixes[$prefix]</code>
+      <code>$line[$key]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="9">
+      <code>$brandId</code>
+      <code>$column</code>
+      <code>$csvLines</code>
+      <code>$data</code>
+      <code>$destinationRateGroupId</code>
+      <code>$k</code>
+      <code>$key</code>
+      <code>$line</code>
+      <code>$prefix</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="3">
+      <code>setLastExecutionError</code>
+      <code>setLastExecutionError</code>
+      <code>setLastExecutionError</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="2">
+      <code>$params['filePath']</code>
+      <code>$params['id']</code>
+    </MixedOperand>
+    <MixedReturnStatement occurrences="1">
+      <code>\json_decode($data, true)</code>
+    </MixedReturnStatement>
+    <PossiblyNullArgument occurrences="1">
+      <code>$importerArguments['columns']</code>
+    </PossiblyNullArgument>
+    <PossiblyNullArrayAccess occurrences="2">
+      <code>$importerArguments['columns']</code>
+      <code>$importerArguments['ignoreFirst']</code>
+    </PossiblyNullArrayAccess>
+    <UndefinedInterfaceMethod occurrences="4">
+      <code>getFilePath</code>
+      <code>setStatus</code>
+      <code>setStatus</code>
+      <code>setStatus</code>
+    </UndefinedInterfaceMethod>
+  </file>
+</files>

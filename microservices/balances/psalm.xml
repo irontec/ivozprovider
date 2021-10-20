@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <psalm
-        errorLevel="8"
-        allowPhpStormGenerics="true"
-        findUnusedCode="true"
-        resolveFromConfigFile="true"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns="https://getpsalm.org/schema/config"
-        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    errorLevel="1"
+    allowPhpStormGenerics="true"
+    findUnusedCode="true"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    errorBaseline="psalm-baseline.xml"
 >
     <issueHandlers>
         <PossiblyNullReference errorLevel="suppress" />

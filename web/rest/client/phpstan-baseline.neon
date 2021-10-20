@@ -1,0 +1,202 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Controller\\\\Auth\\\\TokenExchangeAction\\:\\:run\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/Auth/TokenExchangeAction.php
+
+		-
+			message: "#^Cannot call method getBrand\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
+			count: 1
+			path: src/Controller/Provider/RatingPlanPricesAction.php
+
+		-
+			message: "#^Method Controller\\\\Provider\\\\RatingPlanPricesAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/Provider/RatingPlanPricesAction.php
+
+		-
+			message: "#^Method Controller\\\\Provider\\\\RatingPlanPricesAction\\:\\:array2csv\\(\\) has parameter \\$fields with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Controller/Provider/RatingPlanPricesAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$from of function stream_copy_to_stream expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: src/Controller/Provider/RatingPlanPricesAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$stream of function fputcsv expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: src/Controller/Provider/RatingPlanPricesAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$stream of function fseek expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: src/Controller/Provider/RatingPlanPricesAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$stream of function fwrite expects resource, resource\\|false given\\.$#"
+			count: 2
+			path: src/Controller/Provider/RatingPlanPricesAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$stream of function rewind expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: src/Controller/Provider/RatingPlanPricesAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$stream of function stream_get_contents expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: src/Controller/Provider/RatingPlanPricesAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function rtrim expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/Controller/Provider/RatingPlanPricesAction.php
+
+		-
+			message: "#^Parameter \\#2 \\$to of function stream_copy_to_stream expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: src/Controller/Provider/RatingPlanPricesAction.php
+
+		-
+			message: "#^Cannot call method getBrand\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
+			count: 1
+			path: src/Controller/Provider/ServicesUnassignedAction.php
+
+		-
+			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
+			count: 1
+			path: src/Controller/Provider/ServicesUnassignedAction.php
+
+		-
+			message: "#^Method Controller\\\\Provider\\\\ServicesUnassignedAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/Provider/ServicesUnassignedAction.php
+
+		-
+			message: "#^Method App\\\\DataFixtures\\\\AppFixtures\\:\\:load\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Method Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method Kernel\\:\\:configureRoutes\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: "#^Method Model\\\\ActiveCalls\\:\\:setInbound\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Model/ActiveCalls.php
+
+		-
+			message: "#^Method Model\\\\ActiveCalls\\:\\:setOutbound\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Model/ActiveCalls.php
+
+		-
+			message: "#^Method Model\\\\RatingPlanPrices\\:\\:fromArray\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Model/RatingPlanPrices.php
+
+		-
+			message: "#^Method Model\\\\RatingPlanPrices\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/RatingPlanPrices.php
+
+		-
+			message: "#^Cannot access offset 'paths' on array\\|ArrayObject\\|bool\\|float\\|int\\|string\\|null\\.$#"
+			count: 2
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Method Service\\\\AuthEndpointDecorator\\:\\:normalize\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Method Service\\\\AuthEndpointDecorator\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Method Service\\\\AuthEndpointDecorator\\:\\:normalize\\(\\) return type with generic class ArrayObject does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Property Service\\\\AuthEndpointDecorator\\:\\:\\$definitions with generic class ArrayObject does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setBrandAuthorizationHeaderByExchange\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Service/Behat/FeatureContext.php
+
+		-
+			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setCompanyAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Service/Behat/FeatureContext.php
+
+		-
+			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setResidentialCompanyAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Service/Behat/FeatureContext.php
+
+		-
+			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setRetailCompanyAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Service/Behat/FeatureContext.php
+
+		-
+			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setUserApiContext\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Service/Behat/FeatureContext.php
+
+		-
+			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setUserAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Service/Behat/FeatureContext.php
+
+		-
+			message: "#^Cannot access offset 'price' on array\\|ArrayObject\\|bool\\|float\\|int\\|string\\|null\\.$#"
+			count: 1
+			path: src/Service/BillableCallNormalizer.php
+
+		-
+			message: "#^Cannot call method getShowInvoices\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
+			count: 1
+			path: src/Service/BillableCallNormalizer.php
+
+		-
+			message: "#^Method Service\\\\BillableCallNormalizer\\:\\:normalize\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/BillableCallNormalizer.php
+
+		-
+			message: "#^Method Service\\\\BillableCallNormalizer\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/BillableCallNormalizer.php
+
+		-
+			message: "#^Method Service\\\\BillableCallNormalizer\\:\\:normalize\\(\\) return type with generic class ArrayObject does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Service/BillableCallNormalizer.php
+
+		-
+			message: "#^Method Service\\\\UserProvider\\:\\:findUser\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/UserProvider.php
+
+		-
+			message: "#^Method Service\\\\UserProvider\\:\\:supportsClass\\(\\) has parameter \\$class with no typehint specified\\.$#"
+			count: 1
+			path: src/Service/UserProvider.php
+
