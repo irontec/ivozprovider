@@ -1,11 +1,13 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import EntityService from 'lib/services/entity/EntityService';
+import { DdiProperties, DdiPropertiesList } from './DdiProperties';
+import { PropertySpec } from 'lib/services/api/ParsedApiSpecInterface';
 
 const allRoutableFields = [
     'ivr',
@@ -20,7 +22,7 @@ const allRoutableFields = [
     'retailAccount',
 ];
 
-const properties: PropertiesList = {
+const properties: DdiProperties = {
     'ddi': {
         label: _('DDI'),
     },
@@ -146,7 +148,10 @@ const columns = [
     'target',
 ];
 
-async function foreignKeyResolver(data: any, entityService: EntityService) {
+async function foreignKeyResolver(
+    data: DdiPropertiesList,
+    entityService: EntityService
+) {
 
     const promises = [];
     const {

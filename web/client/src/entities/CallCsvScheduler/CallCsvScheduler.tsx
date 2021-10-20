@@ -4,8 +4,9 @@ import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import LastExecution from './Field/LastExecution';
+import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
 
-const properties: PropertiesList = {
+const properties: CallCsvSchedulerProperties = {
     'name': {
         label: _('Name'),
     },
@@ -102,7 +103,10 @@ const columns = [
     'nextExecution',
 ];
 
-export const marshaller = (values: any, properties: PropertiesList) => {
+export const marshaller = (
+    values: CallCsvSchedulerProperties,
+    properties: PropertiesList
+) => {
 
     if (values.endpointType) {
         delete values.endpointType;
@@ -116,7 +120,10 @@ export const marshaller = (values: any, properties: PropertiesList) => {
     return response;
 }
 
-export const unmarshaller = (row: any, properties: PropertiesList) => {
+export const unmarshaller = (
+    row: CallCsvSchedulerProperties,
+    properties: PropertiesList
+) => {
 
     const response = defaultEntityBehavior.unmarshaller(
         row,

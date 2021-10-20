@@ -1,13 +1,14 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import EntityService from 'lib/services/entity/EntityService';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import _ from 'lib/services/translations/translate';
 import Form from './Form'
 import entities from '../index';
+import { TerminalProperties, TerminalPropertiesList } from './TerminalProperties';
 
-const properties: PropertiesList = {
+const properties: TerminalProperties = {
     'name': {
         label: _('Name'),
         helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
@@ -72,8 +73,7 @@ const properties: PropertiesList = {
     },
 };
 
-
-async function foreignKeyResolver(data: any, entityService: EntityService) {
+async function foreignKeyResolver(data: TerminalPropertiesList, entityService: EntityService) {
 
     const promises = [];
     const { TerminalModel } = entities;

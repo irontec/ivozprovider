@@ -1,8 +1,9 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
+import { QueueProperties } from './QueueProperties';
 
 const timeoutFields = [
     'timeoutNumberCountry',
@@ -18,7 +19,7 @@ const fullFields = [
     'fullVoiceMailUser',
 ];
 
-const properties: PropertiesList = {
+const properties: QueueProperties = {
     'name': {
         label: _('Name'),
         helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '-'"),

@@ -1,11 +1,12 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import StatusIcon from './Field/StatusIcon';
 import Form from './Form';
+import { FriendProperties } from './FriendProperties';
 
-const properties: PropertiesList = {
+const properties: FriendProperties = {
     'name': {
         label: _('Name'),
         helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'")
@@ -217,7 +218,7 @@ const properties: PropertiesList = {
         },
         helpText: _("Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring.")
     },
-    statusIcon: {
+    'statusIcon': {
         label: _('Status'),
         component: StatusIcon
     }

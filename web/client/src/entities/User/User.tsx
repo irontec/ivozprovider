@@ -1,13 +1,14 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
 import EntityService from 'lib/services/entity/EntityService';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
+import { UserProperties, UserPropertiesList } from './UserProperties';
 
-const properties: PropertiesList = {
+const properties: UserProperties = {
     'name': {
         label: _('Name'),
     },
@@ -170,7 +171,7 @@ const properties: PropertiesList = {
     }
 };
 
-async function foreignKeyResolver(data: any, entityService: EntityService) {
+async function foreignKeyResolver(data: UserPropertiesList, entityService: EntityService) {
     const promises = [];
     const { Ddi, Extension, Terminal } = entities;
 

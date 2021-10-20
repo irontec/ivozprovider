@@ -1,11 +1,12 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import Form from './Form';
 import EntityService from 'lib/services/entity/EntityService';
+import { ExternalCallFilterProperties, ExternalCallFilterPropertiesList } from './ExternalCallFilterProperties';
 
 const holidayFields = [
     'holidayNumberCountry',
@@ -21,7 +22,7 @@ const outOfScheduleFields = [
     'outOfScheduleVoiceMailUser',
 ];
 
-const properties: PropertiesList = {
+const properties: ExternalCallFilterProperties = {
     'name': {
         label: _('Name'),
     },
@@ -142,7 +143,7 @@ const columns = [
     'outOfScheduleTarget',
 ];
 
-async function foreignKeyResolver(data: any, entityService: EntityService) {
+async function foreignKeyResolver(data: ExternalCallFilterPropertiesList, entityService: EntityService) {
 
     const promises = [];
     const {

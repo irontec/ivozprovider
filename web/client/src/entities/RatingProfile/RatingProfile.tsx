@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
@@ -7,8 +7,9 @@ import RatingPlanGroup from '../RatingPlanGroup/RatingPlanGroup';
 import entities from '../index';
 import EntityService from 'lib/services/entity/EntityService';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
+import { RatingProfileProperties, RatingProfilePropertiesList } from './RatingProfileProperties';
 
-const properties: PropertiesList = {
+const properties: RatingProfileProperties = {
     'activationTime': {
         label: _('Activation time'),
     },
@@ -20,7 +21,7 @@ const properties: PropertiesList = {
     },
 };
 
-async function foreignKeyResolver(data: any, entityService: EntityService) {
+async function foreignKeyResolver(data: RatingProfilePropertiesList, entityService: EntityService) {
 
     const promises = [];
 

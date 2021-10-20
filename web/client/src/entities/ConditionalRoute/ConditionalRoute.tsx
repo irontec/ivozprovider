@@ -1,11 +1,12 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import Form from './Form';
 import EntityService from 'lib/services/entity/EntityService';
+import { ConditionalRouteProperties, ConditionalRoutePropertiesList } from './ConditionalRouteProperties';
 
 const routableFields = [
     'numberCountry',
@@ -20,7 +21,7 @@ const routableFields = [
     'extension',
 ];
 
-const properties: PropertiesList = {
+const properties: ConditionalRouteProperties = {
     'name': {
         label: _('Name'),
     },
@@ -126,7 +127,10 @@ const columns = [
     'target',
 ];
 
-async function foreignKeyResolver(data: any, entityService: EntityService) {
+async function foreignKeyResolver(
+    data: ConditionalRoutePropertiesList,
+    entityService: EntityService
+) {
 
     const promises = [];
     const {
@@ -262,9 +266,9 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
         delete data[idx].user;
         delete data[idx].ivr;
         delete data[idx].huntGroup;
-        delete data[idx].voicemail;
-        delete data[idx].number;
-        delete data[idx].friend;
+        delete data[idx].voicemailUser;
+        delete data[idx].numbervalue;
+        delete data[idx].friendvalue;
         delete data[idx].queue;
         delete data[idx].conferenceRoom;
         delete data[idx].extension;

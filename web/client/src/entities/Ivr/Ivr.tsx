@@ -5,7 +5,8 @@ import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import Form from './Form';
-import EntityService from 'lib/services/entity/EntityService';
+import EntityService, { EntityValues } from 'lib/services/entity/EntityService';
+import { IvrProperties, IvrPropertiesList } from './IvrProperties';
 
 const noInputFields = [
     'noInputNumberCountry',
@@ -21,7 +22,7 @@ const errorFields = [
     'errorVoiceMailUser',
 ];
 
-const properties: PropertiesList = {
+const properties: IvrProperties = {
     'name': {
         label: _('Name'),
     },
@@ -159,7 +160,7 @@ const columns = [
     'errorTarget',
 ];
 
-async function foreignKeyResolver(data: any, entityService: EntityService) {
+async function foreignKeyResolver(data: IvrPropertiesList, entityService: EntityService) {
 
     const promises = [];
     const {
@@ -266,15 +267,17 @@ async function foreignKeyResolver(data: any, entityService: EntityService) {
                 break;
         }
 
-        delete data[idx].noInputNumberCountryId;
-        delete data[idx].noInputNumberValue;
-        delete data[idx].noInputExtensionId;
-        delete data[idx].noInputVoiceMailUserId;
+        console.log('IVR[idx]', data[idx]);
+        debugger;
+        delete (data[idx] as any).noInputNumberCountryId;
+        delete (data[idx] as any).noInputNumberValue;
+        delete (data[idx] as any).noInputExtensionId;
+        delete (data[idx] as any).noInputVoiceMailUserId;
 
-        delete data[idx].errorNumberCountryId;
-        delete data[idx].errorNumberValue;
-        delete data[idx].errorExtensionId;
-        delete data[idx].errorVoiceMailUserId;
+        delete (data[idx] as any).errorNumberCountryId;
+        delete (data[idx] as any).errorNumberValue;
+        delete (data[idx] as any).errorExtensionId;
+        delete (data[idx] as any).errorVoiceMailUserId;
     }
 
     return data;

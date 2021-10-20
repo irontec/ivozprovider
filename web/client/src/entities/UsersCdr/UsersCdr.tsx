@@ -1,13 +1,14 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import EntityService from 'lib/services/entity/EntityService';
 import entities from '../index';
 import View from './View';
+import { UsersCdrProperties, UsersCdrRow, UsersCdrRows } from './UsersCdrProperties';
 
-const properties: PropertiesList = {
+const properties: UsersCdrProperties = {
     'startTime': {
         label: _('Start time'),
         readOnly: true,
@@ -54,7 +55,7 @@ const properties: PropertiesList = {
     },
 };
 
-function ownerAndPartyResolver(row: any, addLinks = true) {
+function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
 
     if (row.user) {
         row.owner = row.user;
@@ -93,7 +94,7 @@ function ownerAndPartyResolver(row: any, addLinks = true) {
     return row;
 }
 
-export async function foreignKeyResolver(data: any, entityService: EntityService) {
+export async function foreignKeyResolver(data: UsersCdrRows, entityService: EntityService) {
 
     const promises = [];
     const { User, Friend, ResidentialDevice, RetailAccount } = entities;
@@ -142,7 +143,7 @@ export async function foreignKeyResolver(data: any, entityService: EntityService
 
     for (const idx in data) {
         data[idx] = ownerAndPartyResolver(data[idx]);
-        data[idx].duration = Math.round(data[idx].duration);
+        data[idx].duration = Math.round(data[idx].duration as number);
     }
 
     return data;

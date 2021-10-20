@@ -1,11 +1,12 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import EntityService from 'lib/services/entity/EntityService';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import entities from '../index';
+import { ExtensionProperties, ExtensionPropertiesList } from './ExtensionProperties';
 
 const allRoutableFields = [
     'numberCountry',
@@ -19,7 +20,7 @@ const allRoutableFields = [
     'conditionalRoute',
 ];
 
-const properties: PropertiesList = {
+const properties: ExtensionProperties = {
     'number': {
         label: _('Number'),
         helpText: _('Minimal length: 2')
@@ -114,7 +115,7 @@ const columns = [
     'target'
 ];
 
-async function foreignKeyResolver(data: any, entityService: EntityService) {
+async function foreignKeyResolver(data: ExtensionPropertiesList, entityService: EntityService) {
 
     const promises = [];
     const { User, Country, Ivr, HuntGroup, ConferenceRoom, Queue, ConditionalRoute } = entities;

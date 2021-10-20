@@ -1,10 +1,11 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import TypeGhost from './Field/TypeGhost';
+import { RecordingProperties } from './RecordingProperties';
 
-const properties: PropertiesList = {
+const properties: RecordingProperties = {
     'callid': {
         label: _('Callid'),
     },
