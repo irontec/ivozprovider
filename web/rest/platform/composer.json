@@ -52,6 +52,9 @@
         "sort-packages": true,
         "preferred-install": {
             "*": "git"
+        },
+        "platform": {
+            "php": "8.0.9"
         }
     },
     "require": {
@@ -59,9 +62,10 @@
         "irontec/ivoz-provider-bundle": "^2.0",
         "irontec/replacements": "^1.0",
         "knplabs/knp-snappy": "^1.2",
-        "symfony/flex": "^1.9",
+        "friendsofphp/proxy-manager-lts": "^1.0",
         "twig/twig": "^3.0",
-        "xamin/handlebars.php": "^0.10.4"
+        "xamin/handlebars.php": "^0.10.4",
+        "symfony/flex": "^1.9"
     },
     "require-dev": {
         "ext-pcntl": "*",

@@ -2,10 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Service\RetailAccount;
 
-use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
-use Zend\EventManager\Exception\DomainException;
 
 /**
  * Class CheckUniqueness
@@ -43,7 +41,7 @@ class CheckUniqueness implements RetailAccountLifecycleEventHandlerInterface
             );
 
         if ($retailAccount) {
-            throw new DomainException("There is already a residential device with that name.", 30006);
+            throw new \DomainException("There is already a residential device with that name.", 30006);
         }
     }
 }

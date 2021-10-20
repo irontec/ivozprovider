@@ -44,6 +44,9 @@
         "sort-packages": true,
         "preferred-install": {
             "*": "git"
+        },
+        "platform": {
+            "php": "8.0.9"
         }
     },
     "require": {
@@ -53,7 +56,8 @@
         "knplabs/knp-snappy": "^1.2",
         "phpxmlrpc/phpxmlrpc": "^4.0",
         "symfony/flex": "^1.9",
-        "xamin/handlebars.php": "^0.10.4"
+        "xamin/handlebars.php": "^0.10.4",
+        "friendsofphp/proxy-manager-lts": "^1.0"
     },
     "require-dev": {
         "vimeo/psalm": "^4.0"

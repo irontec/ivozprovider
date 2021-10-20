@@ -47,12 +47,17 @@
         "sort-packages": true,
         "preferred-install": {
             "*": "git"
+        },
+        "platform": {
+            "php": "8.0.9"
         }
     },
     "require": {
-        "irontec/ivoz-provider-bundle": "^2.0",
+        "friendsofphp/proxy-manager-lts": "^1.0",
+        "irontec/ivoz-provider-bundle": "^2.5",
         "irontec/replacements": "^1.0",
-        "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
+        "php-mime-mail-parser/php-mime-mail-parser": "^7.0",
+        "symfony/proxy-manager-bridge": "^5.3",
         "symfony/flex": "^1.9"
     },
     "extra": {

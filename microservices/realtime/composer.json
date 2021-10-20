@@ -41,6 +41,9 @@
         "sort-packages": true,
         "preferred-install": {
             "*": "git"
+        },
+        "platform": {
+            "php": "8.0.9"
         }
     },
     "require": {
@@ -48,6 +51,7 @@
         "irontec/ivoz-provider-bundle": "^2.0",
         "irontec/replacements": "^1.0",
         "irontec/prophecy": "^1.13",
+        "friendsofphp/proxy-manager-lts": "^1.0",
         "symfony/flex": "^1.9"
     },
     "require-dev": {

@@ -1,6 +1,6 @@
 {
     "name": "irontec/replacements",
-    "version": "1.0.0.0",
+    "version": "1.0.0.5",
     "description": "Empty package replacement",
     "license": "GPL-3.0-or-later",
     "minimum-stability": "dev",
@@ -14,7 +14,8 @@
     "autoload": {
     },
     "require": {
-        "php": ">=8.0"
+        "php": ">=8.0",
+        "laminas/laminas-code": "^4.0"
     },
     "replace": {
         "symfony/polyfill-php56": "*"
