@@ -17,7 +17,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -106,7 +106,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * @return string
      */
-    public function getContact()
+    public function getContact(): string
     {
         return sprintf(
             "sip:%s@%s",
@@ -118,7 +118,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * @return string
      */
-    public function getSorcery()
+    public function getSorcery(): string
     {
         return sprintf(
             "b%dc%dr%d_%s",
@@ -132,7 +132,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * @return string
      */
-    public function getLanguageCode()
+    public function getLanguageCode(): string
     {
         $language = $this->getLanguage();
         if ($language) {

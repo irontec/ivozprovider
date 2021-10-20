@@ -20,102 +20,70 @@ abstract class UsersPuaAbstract
 
     /**
      * column: pres_uri
-     * @var string
      */
     protected $presUri;
 
     /**
      * column: pres_id
-     * @var string
      */
     protected $presId;
 
-    /**
-     * @var int
-     */
     protected $event;
 
-    /**
-     * @var int
-     */
     protected $expires;
 
     /**
      * column: desired_expires
-     * @var int
      */
     protected $desiredExpires;
 
-    /**
-     * @var int
-     */
     protected $flag;
 
-    /**
-     * @var string
-     */
     protected $etag;
 
     /**
      * column: tuple_id
-     * @var string | null
      */
     protected $tupleId;
 
     /**
      * column: watcher_uri
-     * @var string
      */
     protected $watcherUri;
 
     /**
      * column: call_id
-     * @var string
      */
     protected $callId;
 
     /**
      * column: to_tag
-     * @var string
      */
     protected $toTag;
 
     /**
      * column: from_tag
-     * @var string
      */
     protected $fromTag;
 
-    /**
-     * @var int
-     */
     protected $cseq;
 
     /**
      * column: record_route
-     * @var string | null
      */
     protected $recordRoute;
 
-    /**
-     * @var string
-     */
     protected $contact;
 
     /**
      * column: remote_contact
-     * @var string
      */
     protected $remoteContact;
 
-    /**
-     * @var int
-     */
     protected $version;
 
     /**
      * column: extra_headers
-     * @var string
      */
     protected $extraHeaders;
 
@@ -123,22 +91,22 @@ abstract class UsersPuaAbstract
      * Constructor
      */
     protected function __construct(
-        $presUri,
-        $presId,
-        $event,
-        $expires,
-        $desiredExpires,
-        $flag,
-        $etag,
-        $watcherUri,
-        $callId,
-        $toTag,
-        $fromTag,
-        $cseq,
-        $contact,
-        $remoteContact,
-        $version,
-        $extraHeaders
+        string $presUri,
+        string $presId,
+        int $event,
+        int $expires,
+        int $desiredExpires,
+        int $flag,
+        string $etag,
+        string $watcherUri,
+        string $callId,
+        string $toTag,
+        string $fromTag,
+        int $cseq,
+        string $contact,
+        string $remoteContact,
+        int $version,
+        string $extraHeaders
     ) {
         $this->setPresUri($presUri);
         $this->setPresId($presId);
@@ -179,9 +147,8 @@ abstract class UsersPuaAbstract
 
     /**
      * @param mixed $id
-     * @return UsersPuaDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): UsersPuaDto
     {
         return new UsersPuaDto($id);
     }
@@ -291,9 +258,8 @@ abstract class UsersPuaAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return UsersPuaDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): UsersPuaDto
     {
         return self::createDto()
             ->setPresUri(self::getPresUri())

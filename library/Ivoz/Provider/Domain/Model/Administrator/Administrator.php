@@ -16,7 +16,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
     /**
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -135,7 +135,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
         return false;
     }
 
-    public function serialize()
+    public function serialize(): string
     {
         return serialize(array(
             $this->id,

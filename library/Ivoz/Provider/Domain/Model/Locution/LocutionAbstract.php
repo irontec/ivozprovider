@@ -22,14 +22,10 @@ abstract class LocutionAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
      * comment: enum:pending|encoding|ready|error
-     * @var string | null
      */
     protected $status;
 
@@ -52,7 +48,7 @@ abstract class LocutionAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
+        string $name,
         EncodedFile $encodedFile,
         OriginalFile $originalFile
     ) {
@@ -82,9 +78,8 @@ abstract class LocutionAbstract
 
     /**
      * @param mixed $id
-     * @return LocutionDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): LocutionDto
     {
         return new LocutionDto($id);
     }
@@ -192,9 +187,8 @@ abstract class LocutionAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return LocutionDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): LocutionDto
     {
         return self::createDto()
             ->setName(self::getName())

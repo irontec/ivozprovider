@@ -12,7 +12,7 @@ use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
  */
 class DestinationRateGroup extends DestinationRateGroupAbstract implements FileContainerInterface, DestinationRateGroupInterface
 {
-    const READONLY_DEDUCTIBLECONNECTIONFEE_EXCEPTION = 2301;
+    public const READONLY_DEDUCTIBLECONNECTIONFEE_EXCEPTION = 2301;
 
     use DestinationRateGroupTrait;
 
@@ -24,7 +24,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -42,7 +42,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'file' => [
@@ -74,7 +74,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
     /**
      * @return string
      */
-    public function getCgrTag()
+    public function getCgrTag(): string
     {
         return sprintf(
             "b%ddr%d",
@@ -86,7 +86,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
     /**
      * @return string
      */
-    public function getCurrencySymbol()
+    public function getCurrencySymbol(): string
     {
         $currency = $this->getCurrency();
         if (!$currency) {
@@ -98,7 +98,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
     /**
      * @return string
      */
-    public function getCurrencyIden()
+    public function getCurrencyIden(): string
     {
         $currency = $this->getCurrency();
         if (!$currency) {

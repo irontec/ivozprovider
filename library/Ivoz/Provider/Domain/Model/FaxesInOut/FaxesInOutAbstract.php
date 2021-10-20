@@ -24,35 +24,19 @@ abstract class FaxesInOutAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var \DateTime
-     */
     protected $calldate;
 
-    /**
-     * @var string | null
-     */
     protected $src;
 
-    /**
-     * @var string | null
-     */
     protected $dst;
 
     /**
      * comment: enum:In|Out
-     * @var string | null
      */
     protected $type = 'Out';
 
-    /**
-     * @var string | null
-     */
     protected $pages;
 
-    /**
-     * @var string | null
-     */
     protected $status;
 
     /**
@@ -74,7 +58,7 @@ abstract class FaxesInOutAbstract
      * Constructor
      */
     protected function __construct(
-        $calldate,
+        \DateTimeInterface|string $calldate,
         File $file
     ) {
         $this->setCalldate($calldate);
@@ -102,9 +86,8 @@ abstract class FaxesInOutAbstract
 
     /**
      * @param mixed $id
-     * @return FaxesInOutDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): FaxesInOutDto
     {
         return new FaxesInOutDto($id);
     }
@@ -208,9 +191,8 @@ abstract class FaxesInOutAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return FaxesInOutDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): FaxesInOutDto
     {
         return self::createDto()
             ->setCalldate(self::getCalldate())
@@ -263,7 +245,10 @@ abstract class FaxesInOutAbstract
         return $this;
     }
 
-    public function getCalldate(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCalldate(): \DateTimeInterface
     {
         return clone $this->calldate;
     }

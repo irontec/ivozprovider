@@ -8,14 +8,14 @@ use Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
 
 class PersistErrorHandler implements PersistErrorHandlerInterface
 {
-    const ON_ERROR_PRIORITY = self::PRIORITY_NORMAL;
+    public const ON_ERROR_PRIORITY = self::PRIORITY_NORMAL;
 
     /*
      * Mysql error code list:
      * https://dev.mysql.com/doc/refman/5.5/en/error-messages-server.html
      */
-    const MYSQL_ERROR_DUPLICATE_ENTRY = 1062;
-    const UNIQUE_PRIORITY_CONSTRAINT_NAME = 'companyPrio';
+    public const MYSQL_ERROR_DUPLICATE_ENTRY = 1062;
+    public const UNIQUE_PRIORITY_CONSTRAINT_NAME = 'companyPrio';
 
     public static function getSubscribedEvents()
     {

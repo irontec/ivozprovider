@@ -56,7 +56,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     private $disabled = false;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
@@ -235,14 +235,14 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->disabled;
     }
 
-    public function setCreatedAt(null|\DateTime|string $createdAt): static
+    public function setCreatedAt(null|\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime|string|null
+    public function getCreatedAt(): \DateTimeInterface|string|null
     {
         return $this->createdAt;
     }

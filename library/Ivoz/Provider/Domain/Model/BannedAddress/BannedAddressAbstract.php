@@ -23,30 +23,17 @@ abstract class BannedAddressAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $ip;
 
     /**
      * comment: enum:antiflood|ipfilter|antibruteforce
-     * @var string | null
      */
     protected $blocker;
 
-    /**
-     * @var string | null
-     */
     protected $aor;
 
-    /**
-     * @var string | null
-     */
     protected $description;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $lastTimeBanned;
 
     /**
@@ -87,9 +74,8 @@ abstract class BannedAddressAbstract
 
     /**
      * @param mixed $id
-     * @return BannedAddressDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): BannedAddressDto
     {
         return new BannedAddressDto($id);
     }
@@ -176,9 +162,8 @@ abstract class BannedAddressAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return BannedAddressDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): BannedAddressDto
     {
         return self::createDto()
             ->setIp(self::getIp())
@@ -301,7 +286,10 @@ abstract class BannedAddressAbstract
         return $this;
     }
 
-    public function getLastTimeBanned(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastTimeBanned(): ?\DateTimeInterface
     {
         return !is_null($this->lastTimeBanned) ? clone $this->lastTimeBanned : null;
     }

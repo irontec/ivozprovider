@@ -30,116 +30,74 @@ abstract class FriendAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string
-     */
     protected $description = '';
 
     /**
      * comment: enum:udp|tcp|tls
-     * @var string | null
      */
     protected $transport;
 
-    /**
-     * @var string | null
-     */
     protected $ip;
 
-    /**
-     * @var int | null
-     */
     protected $port;
 
-    /**
-     * @var string | null
-     */
     protected $password;
 
-    /**
-     * @var int
-     */
     protected $priority = 1;
 
-    /**
-     * @var string
-     */
     protected $disallow = 'all';
 
-    /**
-     * @var string
-     */
     protected $allow = 'alaw';
 
     /**
      * column: direct_media_method
      * comment: enum:invite|update
-     * @var string
      */
     protected $directMediaMethod = 'update';
 
     /**
      * column: callerid_update_header
      * comment: enum:pai|rpid
-     * @var string
      */
     protected $calleridUpdateHeader = 'pai';
 
     /**
      * column: update_callerid
      * comment: enum:yes|no
-     * @var string
      */
     protected $updateCallerid = 'yes';
 
     /**
      * column: from_user
-     * @var string | null
      */
     protected $fromUser;
 
     /**
      * column: from_domain
-     * @var string | null
      */
     protected $fromDomain;
 
     /**
      * comment: enum:yes|no|intervpbx
-     * @var string
      */
     protected $directConnectivity = 'yes';
 
     /**
      * comment: enum:yes|no
-     * @var string
      */
     protected $ddiIn = 'yes';
 
     /**
      * comment: enum:yes|no
-     * @var string
      */
     protected $t38Passthrough = 'no';
 
-    /**
-     * @var bool
-     */
     protected $alwaysApplyTransformations = false;
 
-    /**
-     * @var bool
-     */
     protected $rtpEncryption = false;
 
-    /**
-     * @var bool
-     */
     protected $multiContact = true;
 
     /**
@@ -183,20 +141,20 @@ abstract class FriendAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $description,
-        $priority,
-        $disallow,
-        $allow,
-        $directMediaMethod,
-        $calleridUpdateHeader,
-        $updateCallerid,
-        $directConnectivity,
-        $ddiIn,
-        $t38Passthrough,
-        $alwaysApplyTransformations,
-        $rtpEncryption,
-        $multiContact
+        string $name,
+        string $description,
+        int $priority,
+        string $disallow,
+        string $allow,
+        string $directMediaMethod,
+        string $calleridUpdateHeader,
+        string $updateCallerid,
+        string $directConnectivity,
+        string $ddiIn,
+        string $t38Passthrough,
+        bool $alwaysApplyTransformations,
+        bool $rtpEncryption,
+        bool $multiContact
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -235,9 +193,8 @@ abstract class FriendAbstract
 
     /**
      * @param mixed $id
-     * @return FriendDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): FriendDto
     {
         return new FriendDto($id);
     }
@@ -365,9 +322,8 @@ abstract class FriendAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return FriendDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): FriendDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -738,7 +694,7 @@ abstract class FriendAbstract
 
     protected function setAlwaysApplyTransformations(bool $alwaysApplyTransformations): static
     {
-        Assertion::between(intval($alwaysApplyTransformations), 0, 1, 'alwaysApplyTransformations provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $alwaysApplyTransformations, 0, 1, 'alwaysApplyTransformations provided "%s" is not a valid boolean value.');
         $alwaysApplyTransformations = (bool) $alwaysApplyTransformations;
 
         $this->alwaysApplyTransformations = $alwaysApplyTransformations;
@@ -753,7 +709,7 @@ abstract class FriendAbstract
 
     protected function setRtpEncryption(bool $rtpEncryption): static
     {
-        Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $rtpEncryption, 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
         $rtpEncryption = (bool) $rtpEncryption;
 
         $this->rtpEncryption = $rtpEncryption;
@@ -768,7 +724,7 @@ abstract class FriendAbstract
 
     protected function setMultiContact(bool $multiContact): static
     {
-        Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $multiContact, 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
         $multiContact = (bool) $multiContact;
 
         $this->multiContact = $multiContact;

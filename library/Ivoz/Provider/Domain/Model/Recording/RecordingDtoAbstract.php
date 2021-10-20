@@ -20,7 +20,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     private $callid;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $calldate = 'CURRENT_TIMESTAMP';
 
@@ -154,14 +154,14 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
         return $this->callid;
     }
 
-    public function setCalldate(null|\DateTime|string $calldate): static
+    public function setCalldate(null|\DateTimeInterface|string $calldate): static
     {
         $this->calldate = $calldate;
 
         return $this;
     }
 
-    public function getCalldate(): \DateTime|string|null
+    public function getCalldate(): \DateTimeInterface|string|null
     {
         return $this->calldate;
     }

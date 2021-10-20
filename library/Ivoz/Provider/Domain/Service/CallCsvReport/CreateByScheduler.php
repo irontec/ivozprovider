@@ -59,13 +59,15 @@ class CreateByScheduler
     private function createCallCsvReport(CallCsvSchedulerInterface $scheduler)
     {
         $outDate = $scheduler->getNextExecution();
-        $outDate->setTimezone(
+        $outDate = $outDate->setTimezone(
             new \DateTimeZone(
                 $scheduler->getTimezone()->getTz()
             )
         );
-        $outDate->setTime(0, 0, 0);
-        $outDate->modify('1 second ago');
+
+        $outDate = $outDate
+            ->setTime(0, 0, 0)
+            ->modify('1 second ago');
 
         $inDate = DateTimeHelper::sub(
             $outDate,
@@ -75,8 +77,8 @@ class CreateByScheduler
 
         // Back to UTC
         $utc = new \DateTimeZone('UTC');
-        $outDate->setTimezone($utc);
-        $inDate->setTimezone($utc);
+        $outDate = $outDate->setTimezone($utc);
+        $inDate = $inDate->setTimezone($utc);
 
         $company = $scheduler->getCompany();
         $companyId = $company

@@ -7,9 +7,9 @@ use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyDto;
 
 class CompanyDto extends CompanyDtoAbstract
 {
-    const CONTEXT_WITH_FEATURES = 'withFeatures';
+    public const CONTEXT_WITH_FEATURES = 'withFeatures';
 
-    const CONTEXTS_WITH_FEATURES = [
+    public const CONTEXTS_WITH_FEATURES = [
         self::CONTEXT_WITH_FEATURES,
         self::CONTEXT_DETAILED
     ];
@@ -22,7 +22,7 @@ class CompanyDto extends CompanyDtoAbstract
      *     description="Active feature ids"
      * )
      */
-    protected $featureIds = [];
+    private $featureIds = [];
 
     public function normalize(string $context, string $role = '')
     {
@@ -188,7 +188,7 @@ class CompanyDto extends CompanyDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
@@ -219,7 +219,7 @@ class CompanyDto extends CompanyDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY

@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class SendUsersAddressPermissionsReloadRequest implements CompanyLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private UsersClientInterface $usersClient

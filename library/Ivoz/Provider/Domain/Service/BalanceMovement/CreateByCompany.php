@@ -16,7 +16,7 @@ class CreateByCompany
     public function execute(
         CompanyInterface $company,
         ?float $amount,
-        $balance
+        ?float $balance
     ) {
         // Store this transaction in a BalanceMovement
         $balanceMovementDto = BalanceMovement::createDto();

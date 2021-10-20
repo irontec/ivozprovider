@@ -39,7 +39,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     private $agent;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $createdOn;
 
@@ -169,14 +169,14 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
         return $this->agent;
     }
 
-    public function setCreatedOn(null|\DateTime|string $createdOn): static
+    public function setCreatedOn(null|\DateTimeInterface|string $createdOn): static
     {
         $this->createdOn = $createdOn;
 
         return $this;
     }
 
-    public function getCreatedOn(): \DateTime|string|null
+    public function getCreatedOn(): \DateTimeInterface|string|null
     {
         return $this->createdOn;
     }

@@ -29,40 +29,21 @@ abstract class HolidayDateAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var \DateTime
-     */
     protected $eventDate;
 
-    /**
-     * @var bool
-     */
     protected $wholeDayEvent = true;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $timeIn;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $timeOut;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string | null
      */
     protected $routeType;
 
-    /**
-     * @var string | null
-     */
     protected $numberValue;
 
     /**
@@ -95,9 +76,9 @@ abstract class HolidayDateAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $eventDate,
-        $wholeDayEvent
+        string $name,
+        \DateTimeInterface|string $eventDate,
+        bool $wholeDayEvent
     ) {
         $this->setName($name);
         $this->setEventDate($eventDate);
@@ -125,9 +106,8 @@ abstract class HolidayDateAbstract
 
     /**
      * @param mixed $id
-     * @return HolidayDateDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): HolidayDateDto
     {
         return new HolidayDateDto($id);
     }
@@ -225,9 +205,8 @@ abstract class HolidayDateAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return HolidayDateDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): HolidayDateDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -286,14 +265,17 @@ abstract class HolidayDateAbstract
         return $this;
     }
 
-    public function getEventDate(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getEventDate(): \DateTimeInterface
     {
         return clone $this->eventDate;
     }
 
     protected function setWholeDayEvent(bool $wholeDayEvent): static
     {
-        Assertion::between(intval($wholeDayEvent), 0, 1, 'wholeDayEvent provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $wholeDayEvent, 0, 1, 'wholeDayEvent provided "%s" is not a valid boolean value.');
         $wholeDayEvent = (bool) $wholeDayEvent;
 
         $this->wholeDayEvent = $wholeDayEvent;
@@ -313,7 +295,10 @@ abstract class HolidayDateAbstract
         return $this;
     }
 
-    public function getTimeIn(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getTimeIn(): ?\DateTimeInterface
     {
         return !is_null($this->timeIn) ? clone $this->timeIn : null;
     }
@@ -325,7 +310,10 @@ abstract class HolidayDateAbstract
         return $this;
     }
 
-    public function getTimeOut(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getTimeOut(): ?\DateTimeInterface
     {
         return !is_null($this->timeOut) ? clone $this->timeOut : null;
     }

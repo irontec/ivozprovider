@@ -26,7 +26,10 @@ interface CommandlogInterface extends EntityInterface
 
     public function getAgent(): ?array;
 
-    public function getCreatedOn(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedOn(): \DateTimeInterface;
 
     public function getMicrotime(): int;
 

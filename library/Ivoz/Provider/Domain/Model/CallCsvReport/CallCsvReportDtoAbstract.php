@@ -22,17 +22,17 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     private $sentTo = '';
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $inDate;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $outDate;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $createdOn;
 
@@ -149,38 +149,38 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->sentTo;
     }
 
-    public function setInDate(null|\DateTime|string $inDate): static
+    public function setInDate(null|\DateTimeInterface|string $inDate): static
     {
         $this->inDate = $inDate;
 
         return $this;
     }
 
-    public function getInDate(): \DateTime|string|null
+    public function getInDate(): \DateTimeInterface|string|null
     {
         return $this->inDate;
     }
 
-    public function setOutDate(null|\DateTime|string $outDate): static
+    public function setOutDate(null|\DateTimeInterface|string $outDate): static
     {
         $this->outDate = $outDate;
 
         return $this;
     }
 
-    public function getOutDate(): \DateTime|string|null
+    public function getOutDate(): \DateTimeInterface|string|null
     {
         return $this->outDate;
     }
 
-    public function setCreatedOn(null|\DateTime|string $createdOn): static
+    public function setCreatedOn(null|\DateTimeInterface|string $createdOn): static
     {
         $this->createdOn = $createdOn;
 
         return $this;
     }
 
-    public function getCreatedOn(): \DateTime|string|null
+    public function getCreatedOn(): \DateTimeInterface|string|null
     {
         return $this->createdOn;
     }

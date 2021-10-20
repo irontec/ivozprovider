@@ -13,7 +13,7 @@ class TpLcrRule extends TpLcrRuleAbstract implements TpLcrRuleInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

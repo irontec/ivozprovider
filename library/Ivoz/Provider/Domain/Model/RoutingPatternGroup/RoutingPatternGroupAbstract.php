@@ -20,14 +20,8 @@ abstract class RoutingPatternGroupAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string | null
-     */
     protected $description;
 
     /**
@@ -39,7 +33,7 @@ abstract class RoutingPatternGroupAbstract
      * Constructor
      */
     protected function __construct(
-        $name
+        string $name
     ) {
         $this->setName($name);
     }
@@ -65,9 +59,8 @@ abstract class RoutingPatternGroupAbstract
 
     /**
      * @param mixed $id
-     * @return RoutingPatternGroupDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): RoutingPatternGroupDto
     {
         return new RoutingPatternGroupDto($id);
     }
@@ -147,9 +140,8 @@ abstract class RoutingPatternGroupAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return RoutingPatternGroupDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): RoutingPatternGroupDto
     {
         return self::createDto()
             ->setName(self::getName())

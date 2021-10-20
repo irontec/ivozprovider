@@ -15,7 +15,7 @@ interface ConditionalRoutesConditionsRelScheduleInterface extends LoggableEntity
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function setCondition(?ConditionalRoutesConditionInterface $condition = null): static;
 

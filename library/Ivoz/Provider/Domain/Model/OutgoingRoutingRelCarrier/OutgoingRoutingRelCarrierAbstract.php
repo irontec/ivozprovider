@@ -62,9 +62,8 @@ abstract class OutgoingRoutingRelCarrierAbstract
 
     /**
      * @param mixed $id
-     * @return OutgoingRoutingRelCarrierDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): OutgoingRoutingRelCarrierDto
     {
         return new OutgoingRoutingRelCarrierDto($id);
     }
@@ -141,9 +140,8 @@ abstract class OutgoingRoutingRelCarrierAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return OutgoingRoutingRelCarrierDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): OutgoingRoutingRelCarrierDto
     {
         return self::createDto()
             ->setOutgoingRouting(OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth))

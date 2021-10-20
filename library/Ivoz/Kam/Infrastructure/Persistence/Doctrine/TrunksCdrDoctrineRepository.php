@@ -21,7 +21,7 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
 {
     use GetGeneratorByConditionsTrait;
 
-    protected $queryRunner;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,
@@ -101,7 +101,7 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
      * @inheritdoc
      * @see TrunksCdrRepository::resetParsed
      */
-    public function resetParsed(array $ids)
+    public function resetParsed(array $ids): int
     {
         $now = new  \DateTime(
             'now',

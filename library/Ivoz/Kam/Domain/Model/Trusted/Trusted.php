@@ -25,7 +25,7 @@ class Trusted extends TrustedAbstract implements TrustedInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

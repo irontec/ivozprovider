@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Service\OutgoingRoutingRelCarrier\OutgoingRoutingRelCar
  */
 class CreatedByOutgoingRoutingRelCarrierBinding implements OutgoingRoutingRelCarrierLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private CreatedByOutgoingRoutingRelCarrier $createByOutgoingRoutingRelCarrier

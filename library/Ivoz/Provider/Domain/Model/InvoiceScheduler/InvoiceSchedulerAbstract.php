@@ -27,45 +27,23 @@ abstract class InvoiceSchedulerAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
      * comment: enum:week|month|year
-     * @var string
      */
     protected $unit = 'month';
 
-    /**
-     * @var int
-     */
     protected $frequency;
 
-    /**
-     * @var string
-     */
     protected $email;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $lastExecution;
 
-    /**
-     * @var string | null
-     */
     protected $lastExecutionError;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $nextExecution;
 
-    /**
-     * @var float | null
-     */
     protected $taxRate;
 
     /**
@@ -92,10 +70,10 @@ abstract class InvoiceSchedulerAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $unit,
-        $frequency,
-        $email
+        string $name,
+        string $unit,
+        int $frequency,
+        string $email
     ) {
         $this->setName($name);
         $this->setUnit($unit);
@@ -124,9 +102,8 @@ abstract class InvoiceSchedulerAbstract
 
     /**
      * @param mixed $id
-     * @return InvoiceSchedulerDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): InvoiceSchedulerDto
     {
         return new InvoiceSchedulerDto($id);
     }
@@ -224,9 +201,8 @@ abstract class InvoiceSchedulerAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return InvoiceSchedulerDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): InvoiceSchedulerDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -351,7 +327,10 @@ abstract class InvoiceSchedulerAbstract
         return $this;
     }
 
-    public function getLastExecution(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastExecution(): ?\DateTimeInterface
     {
         return !is_null($this->lastExecution) ? clone $this->lastExecution : null;
     }
@@ -394,7 +373,10 @@ abstract class InvoiceSchedulerAbstract
         return $this;
     }
 
-    public function getNextExecution(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getNextExecution(): ?\DateTimeInterface
     {
         return !is_null($this->nextExecution) ? clone $this->nextExecution : null;
     }

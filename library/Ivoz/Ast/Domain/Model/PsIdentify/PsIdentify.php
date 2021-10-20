@@ -9,13 +9,13 @@ class PsIdentify extends PsIdentifyAbstract implements PsIdentifyInterface
 {
     use PsIdentifyTrait;
 
-    const MATCH_HEADER = 'X-Info-Endpoint: ';
+    public const MATCH_HEADER = 'X-Info-Endpoint: ';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

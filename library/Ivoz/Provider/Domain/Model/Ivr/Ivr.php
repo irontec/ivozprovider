@@ -19,7 +19,7 @@ class Ivr extends IvrAbstract implements IvrInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -101,7 +101,7 @@ class Ivr extends IvrAbstract implements IvrInterface
     /**
      * @return null|string
      */
-    public function getNoInputTarget()
+    public function getNoInputTarget(): ?string
     {
         return $this->getTarget("NoInput");
     }
@@ -109,7 +109,7 @@ class Ivr extends IvrAbstract implements IvrInterface
     /**
      * @return null|string
      */
-    public function getErrorTarget()
+    public function getErrorTarget(): ?string
     {
         return $this->getTarget("Error");
     }

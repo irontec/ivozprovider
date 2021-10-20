@@ -7,9 +7,9 @@ use Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionDto;
 
 class IvrDto extends IvrDtoAbstract
 {
-    const CONTEXT_WITH_EXCLUDED_EXTENSIONS = 'withExcludedExtensions';
+    public const CONTEXT_WITH_EXCLUDED_EXTENSIONS = 'withExcludedExtensions';
 
-    const CONTEXTS_WITH_EXCLUDED_EXTENSIONS = [
+    public const CONTEXTS_WITH_EXCLUDED_EXTENSIONS = [
         self::CONTEXT_WITH_EXCLUDED_EXTENSIONS,
         self::CONTEXT_DETAILED
     ];
@@ -22,7 +22,7 @@ class IvrDto extends IvrDtoAbstract
      *     description="Excluded extensions"
      * )
      */
-    protected $excludedExtensionIds = [];
+    private $excludedExtensionIds = [];
 
     /**
      * @inheritdoc

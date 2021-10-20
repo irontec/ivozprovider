@@ -63,7 +63,7 @@ class HuntGroupsRelUser extends HuntGroupsRelUserAbstract implements HuntGroupsR
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

@@ -279,6 +279,14 @@ class ProcessExternalCdrSpec extends ObjectBehavior
         );
 
         $this->getterProphecy(
+            $brand,
+            [
+                'getCgrTenant' => 'b1',
+            ],
+            false
+        );
+
+        $this->getterProphecy(
             $company,
             [
                 'getCgrSubject' => 'c1',

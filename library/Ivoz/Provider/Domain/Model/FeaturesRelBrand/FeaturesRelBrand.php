@@ -13,7 +13,7 @@ class FeaturesRelBrand extends FeaturesRelBrandAbstract implements FeaturesRelBr
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

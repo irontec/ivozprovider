@@ -13,7 +13,7 @@ use Ivoz\Provider\Domain\Service\DestinationRate\DestinationRateLifecycleEventHa
 
 class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = TpRateUpdatedByDestinationRate::POST_PERSIST_PRIORITY + 1;
+    public const POST_PERSIST_PRIORITY = TpRateUpdatedByDestinationRate::POST_PERSIST_PRIORITY + 1;
 
     /**
      * CreatedByTpDestinationRate constructor.

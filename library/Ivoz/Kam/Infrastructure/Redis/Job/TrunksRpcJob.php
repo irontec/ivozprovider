@@ -10,12 +10,12 @@ use Psr\Log\LoggerInterface;
 
 class TrunksRpcJob implements RpcJobInterface
 {
-    protected $redisMasterFactory;
-    protected $redisDb;
-    protected $logger;
+    private $redisMasterFactory;
+    private $redisDb;
+    private $logger;
 
-    protected $rpcEntity;
-    protected $rpcPort;
+    private $rpcEntity;
+    private $rpcPort;
 
     public function __construct(
         RedisMasterFactory $redisMasterFactory,
@@ -55,7 +55,7 @@ class TrunksRpcJob implements RpcJobInterface
 
             $redisClient->rPush(
                 $channel,
-                \json_encode($data)
+                \json_encode($data, JSON_THROW_ON_ERROR)
             );
 
             $redisClient->close();

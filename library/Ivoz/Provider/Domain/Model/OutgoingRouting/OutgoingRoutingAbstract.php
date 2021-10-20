@@ -32,45 +32,23 @@ abstract class OutgoingRoutingAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $type = 'group';
 
-    /**
-     * @var int
-     */
     protected $priority;
 
-    /**
-     * @var int
-     */
     protected $weight = 1;
 
     /**
      * comment: enum:static|lcr|block
-     * @var string | null
      */
     protected $routingMode = 'static';
 
-    /**
-     * @var string | null
-     */
     protected $prefix;
 
-    /**
-     * @var bool
-     */
     protected $stopper = false;
 
-    /**
-     * @var bool | null
-     */
     protected $forceClid = false;
 
-    /**
-     * @var string | null
-     */
     protected $clid;
 
     /**
@@ -117,9 +95,9 @@ abstract class OutgoingRoutingAbstract
      * Constructor
      */
     protected function __construct(
-        $priority,
-        $weight,
-        $stopper
+        int $priority,
+        int $weight,
+        bool $stopper
     ) {
         $this->setPriority($priority);
         $this->setWeight($weight);
@@ -147,9 +125,8 @@ abstract class OutgoingRoutingAbstract
 
     /**
      * @param mixed $id
-     * @return OutgoingRoutingDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): OutgoingRoutingDto
     {
         return new OutgoingRoutingDto($id);
     }
@@ -253,9 +230,8 @@ abstract class OutgoingRoutingAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return OutgoingRoutingDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): OutgoingRoutingDto
     {
         return self::createDto()
             ->setType(self::getType())
@@ -382,7 +358,7 @@ abstract class OutgoingRoutingAbstract
 
     protected function setStopper(bool $stopper): static
     {
-        Assertion::between(intval($stopper), 0, 1, 'stopper provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $stopper, 0, 1, 'stopper provided "%s" is not a valid boolean value.');
         $stopper = (bool) $stopper;
 
         $this->stopper = $stopper;
@@ -398,7 +374,7 @@ abstract class OutgoingRoutingAbstract
     protected function setForceClid(?bool $forceClid = null): static
     {
         if (!is_null($forceClid)) {
-            Assertion::between(intval($forceClid), 0, 1, 'forceClid provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $forceClid, 0, 1, 'forceClid provided "%s" is not a valid boolean value.');
             $forceClid = (bool) $forceClid;
         }
 

@@ -17,7 +17,7 @@ class ConditionalRoute extends ConditionalRouteAbstract implements ConditionalRo
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

@@ -14,7 +14,7 @@ interface TrunksAddressInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getGrp(): int;
 

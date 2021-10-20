@@ -16,7 +16,7 @@ class HolidayDate extends HolidayDateAbstract implements HolidayDateInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

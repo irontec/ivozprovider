@@ -13,7 +13,7 @@ use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
  */
 class DeleteByCompany implements CompanyLifecycleEventHandlerInterface
 {
-    const POST_REMOVE_PRIORITY = 10;
+    public const POST_REMOVE_PRIORITY = 10;
 
     public function __construct(
         private EntityTools $entityTools

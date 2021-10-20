@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * AdministratorRelPublicEntityDoctrineRepository
@@ -18,7 +19,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class AdministratorRelPublicEntityDoctrineRepository extends ServiceEntityRepository implements AdministratorRelPublicEntityRepository
 {
-    protected $queryRunner;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,
@@ -149,7 +150,7 @@ class AdministratorRelPublicEntityDoctrineRepository extends ServiceEntityReposi
         );
     }
 
-    private function prepareUpdateQuery(bool $read, bool $write)
+    private function prepareUpdateQuery(bool $read, bool $write): QueryBuilder
     {
         return $this
             ->createQueryBuilder('self')

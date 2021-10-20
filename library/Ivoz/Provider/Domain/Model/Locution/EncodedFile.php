@@ -10,34 +10,31 @@ use Assert\Assertion;
 * EncodedFile
 * @codeCoverageIgnore
 */
-class EncodedFile
+final class EncodedFile
 {
     /**
      * column: encodedFileFileSize
      * comment: FSO:keepExtension
-     * @var int | null
      */
-    protected $fileSize;
+    private $fileSize;
 
     /**
      * column: encodedFileMimeType
-     * @var string | null
      */
-    protected $mimeType;
+    private $mimeType;
 
     /**
      * column: encodedFileBaseName
-     * @var string | null
      */
-    protected $baseName;
+    private $baseName;
 
     /**
      * Constructor
      */
     public function __construct(
-        $fileSize,
-        $mimeType,
-        $baseName
+        ?int $fileSize,
+        ?string $mimeType,
+        ?string $baseName
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
@@ -49,10 +46,13 @@ class EncodedFile
      */
     public function equals(self $encodedFile)
     {
-        return
-            $this->getFileSize() === $encodedFile->getFileSize() &&
-            $this->getMimeType() === $encodedFile->getMimeType() &&
-            $this->getBaseName() === $encodedFile->getBaseName();
+        if ($this->getFileSize() !== $encodedFile->getFileSize()) {
+            return false;
+        }
+        if ($this->getMimeType() !== $encodedFile->getMimeType()) {
+            return false;
+        }
+        return $this->getBaseName() === $encodedFile->getBaseName();
     }
 
     protected function setFileSize(?int $fileSize = null): static

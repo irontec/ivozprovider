@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 
 class SendTrunksLcrReloadRequest implements RoutingTagLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private TrunksClientInterface $trunksClient

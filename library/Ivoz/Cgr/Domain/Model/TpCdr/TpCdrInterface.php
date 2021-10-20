@@ -56,9 +56,15 @@ interface TpCdrInterface extends EntityInterface
 
     public function getDestination(): string;
 
-    public function getSetupTime(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getSetupTime(): \DateTimeInterface;
 
-    public function getAnswerTime(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getAnswerTime(): \DateTimeInterface;
 
     public function getUsage(): int;
 
@@ -72,11 +78,20 @@ interface TpCdrInterface extends EntityInterface
 
     public function getExtraInfo(): string;
 
-    public function getCreatedAt(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): ?\DateTimeInterface;
 
-    public function getUpdatedAt(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getUpdatedAt(): ?\DateTimeInterface;
 
-    public function getDeletedAt(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getDeletedAt(): ?\DateTimeInterface;
 
     public function isInitialized(): bool;
 }

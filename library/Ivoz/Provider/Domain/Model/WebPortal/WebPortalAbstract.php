@@ -21,30 +21,17 @@ abstract class WebPortalAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $url;
 
-    /**
-     * @var string | null
-     */
     protected $klearTheme = '';
 
     /**
      * comment: enum:god|brand|admin|user
-     * @var string
      */
     protected $urlType;
 
-    /**
-     * @var string | null
-     */
     protected $name = '';
 
-    /**
-     * @var string | null
-     */
     protected $userTheme = '';
 
     /**
@@ -62,8 +49,8 @@ abstract class WebPortalAbstract
      * Constructor
      */
     protected function __construct(
-        $url,
-        $urlType,
+        string $url,
+        string $urlType,
         Logo $logo
     ) {
         $this->setUrl($url);
@@ -92,9 +79,8 @@ abstract class WebPortalAbstract
 
     /**
      * @param mixed $id
-     * @return WebPortalDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): WebPortalDto
     {
         return new WebPortalDto($id);
     }
@@ -194,9 +180,8 @@ abstract class WebPortalAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return WebPortalDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): WebPortalDto
     {
         return self::createDto()
             ->setUrl(self::getUrl())

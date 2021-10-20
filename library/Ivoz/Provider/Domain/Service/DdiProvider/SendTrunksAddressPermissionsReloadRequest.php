@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 
 class SendTrunksAddressPermissionsReloadRequest implements DdiProviderLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private TrunksClientInterface $trunksClient

@@ -12,19 +12,19 @@ use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 */
 interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
 {
-    const TYPE_PREFIX = 'prefix';
+    public const TYPE_PREFIX = 'prefix';
 
-    const TYPE_DESTINATION = 'destination';
+    public const TYPE_DESTINATION = 'destination';
 
-    const ACTION_KEEP = 'keep';
+    public const ACTION_KEEP = 'keep';
 
-    const ACTION_FORCE = 'force';
+    public const ACTION_FORCE = 'force';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Return forced Ddi for this rule pattern

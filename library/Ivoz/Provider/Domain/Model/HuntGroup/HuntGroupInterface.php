@@ -17,25 +17,25 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface HuntGroupInterface extends LoggableEntityInterface
 {
-    const STRATEGY_RINGALL = 'ringAll';
+    public const STRATEGY_RINGALL = 'ringAll';
 
-    const STRATEGY_LINEAR = 'linear';
+    public const STRATEGY_LINEAR = 'linear';
 
-    const STRATEGY_ROUNDROBIN = 'roundRobin';
+    public const STRATEGY_ROUNDROBIN = 'roundRobin';
 
-    const STRATEGY_RANDOM = 'random';
+    public const STRATEGY_RANDOM = 'random';
 
-    const NOANSWERTARGETTYPE_NUMBER = 'number';
+    public const NOANSWERTARGETTYPE_NUMBER = 'number';
 
-    const NOANSWERTARGETTYPE_EXTENSION = 'extension';
+    public const NOANSWERTARGETTYPE_EXTENSION = 'extension';
 
-    const NOANSWERTARGETTYPE_VOICEMAIL = 'voicemail';
+    public const NOANSWERTARGETTYPE_VOICEMAIL = 'voicemail';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Get this Hungroup related users
@@ -46,7 +46,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getNoAnswerRouteType();
+    public function getNoAnswerRouteType(): ?string;
 
     /**
      * Get the timeout numberValue in E.164 format when routing to 'number'

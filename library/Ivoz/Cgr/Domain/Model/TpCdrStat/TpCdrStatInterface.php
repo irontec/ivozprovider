@@ -14,7 +14,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getTpid(): string;
 
@@ -68,7 +68,10 @@ interface TpCdrStatInterface extends LoggableEntityInterface
 
     public function getActionTriggers(): string;
 
-    public function getCreatedAt(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface;
 
     public function setCarrier(CarrierInterface $carrier): static;
 

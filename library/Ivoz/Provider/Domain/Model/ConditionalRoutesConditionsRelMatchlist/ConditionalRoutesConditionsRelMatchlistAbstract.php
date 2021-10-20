@@ -61,9 +61,8 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
 
     /**
      * @param mixed $id
-     * @return ConditionalRoutesConditionsRelMatchlistDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ConditionalRoutesConditionsRelMatchlistDto
     {
         return new ConditionalRoutesConditionsRelMatchlistDto($id);
     }
@@ -140,9 +139,8 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ConditionalRoutesConditionsRelMatchlistDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ConditionalRoutesConditionsRelMatchlistDto
     {
         return self::createDto()
             ->setCondition(ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))

@@ -22,14 +22,10 @@ abstract class OutgoingDdiRuleAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
      * comment: enum:keep|force
-     * @var string
      */
     protected $defaultAction;
 
@@ -47,8 +43,8 @@ abstract class OutgoingDdiRuleAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $defaultAction
+        string $name,
+        string $defaultAction
     ) {
         $this->setName($name);
         $this->setDefaultAction($defaultAction);
@@ -75,9 +71,8 @@ abstract class OutgoingDdiRuleAbstract
 
     /**
      * @param mixed $id
-     * @return OutgoingDdiRuleDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): OutgoingDdiRuleDto
     {
         return new OutgoingDdiRuleDto($id);
     }
@@ -159,9 +154,8 @@ abstract class OutgoingDdiRuleAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return OutgoingDdiRuleDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): OutgoingDdiRuleDto
     {
         return self::createDto()
             ->setName(self::getName())

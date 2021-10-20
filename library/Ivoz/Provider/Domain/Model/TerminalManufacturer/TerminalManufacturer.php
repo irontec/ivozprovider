@@ -13,7 +13,7 @@ class TerminalManufacturer extends TerminalManufacturerAbstract implements Termi
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

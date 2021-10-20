@@ -18,7 +18,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -142,7 +142,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
     /**
      * @return \DateInterval
      */
-    public function getInterval()
+    public function getInterval(): \DateInterval
     {
         $frecuency = $this->getFrequency();
 
@@ -163,7 +163,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
      * @param int $depth
      * @return CallCsvSchedulerDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CallCsvSchedulerDto
     {
         $dto = $this->traitToDto($depth);
         $companyDto = \Ivoz\Provider\Domain\Model\Company\Company::entityToDto(

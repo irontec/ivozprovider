@@ -19,49 +19,28 @@ abstract class CommandlogAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $requestId;
 
-    /**
-     * @var string
-     */
     protected $class;
 
-    /**
-     * @var string | null
-     */
     protected $method;
 
-    /**
-     * @var array | null
-     */
     protected $arguments = [];
 
-    /**
-     * @var array | null
-     */
     protected $agent = [];
 
-    /**
-     * @var \DateTime
-     */
     protected $createdOn;
 
-    /**
-     * @var int
-     */
     protected $microtime;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $requestId,
-        $class,
-        $createdOn,
-        $microtime
+        string $requestId,
+        string $class,
+        \DateTimeInterface|string $createdOn,
+        int $microtime
     ) {
         $this->setRequestId($requestId);
         $this->setClass($class);
@@ -90,9 +69,8 @@ abstract class CommandlogAbstract
 
     /**
      * @param mixed $id
-     * @return CommandlogDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CommandlogDto
     {
         return new CommandlogDto($id);
     }
@@ -180,9 +158,8 @@ abstract class CommandlogAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CommandlogDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CommandlogDto
     {
         return self::createDto()
             ->setRequestId(self::getRequestId())
@@ -293,7 +270,10 @@ abstract class CommandlogAbstract
         return $this;
     }
 
-    public function getCreatedOn(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedOn(): \DateTimeInterface
     {
         return clone $this->createdOn;
     }

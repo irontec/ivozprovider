@@ -24,7 +24,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     private $name;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $eventDate;
 
@@ -34,12 +34,12 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     private $wholeDayEvent = true;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $timeIn;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $timeOut;
 
@@ -161,14 +161,14 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setEventDate(null|\DateTime|string $eventDate): static
+    public function setEventDate(null|\DateTimeInterface|string $eventDate): static
     {
         $this->eventDate = $eventDate;
 
         return $this;
     }
 
-    public function getEventDate(): \DateTime|string|null
+    public function getEventDate(): \DateTimeInterface|string|null
     {
         return $this->eventDate;
     }
@@ -185,26 +185,26 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->wholeDayEvent;
     }
 
-    public function setTimeIn(null|\DateTime|string $timeIn): static
+    public function setTimeIn(null|\DateTimeInterface|string $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    public function getTimeIn(): \DateTime|string|null
+    public function getTimeIn(): \DateTimeInterface|string|null
     {
         return $this->timeIn;
     }
 
-    public function setTimeOut(null|\DateTime|string $timeOut): static
+    public function setTimeOut(null|\DateTimeInterface|string $timeOut): static
     {
         $this->timeOut = $timeOut;
 
         return $this;
     }
 
-    public function getTimeOut(): \DateTime|string|null
+    public function getTimeOut(): \DateTimeInterface|string|null
     {
         return $this->timeOut;
     }

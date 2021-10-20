@@ -61,9 +61,8 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
 
     /**
      * @param mixed $id
-     * @return ConditionalRoutesConditionsRelCalendarDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ConditionalRoutesConditionsRelCalendarDto
     {
         return new ConditionalRoutesConditionsRelCalendarDto($id);
     }
@@ -140,9 +139,8 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ConditionalRoutesConditionsRelCalendarDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ConditionalRoutesConditionsRelCalendarDto
     {
         return self::createDto()
             ->setCondition(ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))

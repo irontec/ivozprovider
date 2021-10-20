@@ -4,7 +4,7 @@ namespace Ivoz\Provider\Domain\Job;
 
 interface RatesImporterJobInterface
 {
-    const CHANNEL = 'RatesImport';
+    public const CHANNEL = 'RatesImport';
 
     public function setParams(array $params): self;
 

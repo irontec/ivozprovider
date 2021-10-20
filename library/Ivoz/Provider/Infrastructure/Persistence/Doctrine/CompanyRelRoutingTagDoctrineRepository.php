@@ -38,9 +38,9 @@ class CompanyRelRoutingTagDoctrineRepository extends ServiceEntityRepository imp
         $result = $qb->getQuery()->getScalarResult();
 
         return array_map(
-            function ($val) {
+            function ($val): ?int {
                 return $val !== null
-                    ? intval($val)
+                    ? (int) $val
                     : null;
             },
             array_column($result, 'routingTag')

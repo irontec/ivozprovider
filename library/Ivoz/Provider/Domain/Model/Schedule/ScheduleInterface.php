@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Schedule;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use DateTime;
+use DateTimeInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
@@ -15,7 +15,7 @@ interface ScheduleInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Check if current time is inside Schedule
@@ -23,13 +23,19 @@ interface ScheduleInterface extends LoggableEntityInterface
      * @param \DateTime $time Current time in Client's Timezone
      * @return bool
      */
-    public function isOnSchedule(DateTime $time);
+    public function isOnSchedule(DateTimeInterface $time);
 
     public function getName(): string;
 
-    public function getTimeIn(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getTimeIn(): \DateTimeInterface;
 
-    public function getTimeout(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getTimeout(): \DateTimeInterface;
 
     public function getMonday(): ?bool;
 

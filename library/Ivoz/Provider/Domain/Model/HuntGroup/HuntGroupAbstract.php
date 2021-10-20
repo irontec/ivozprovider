@@ -28,46 +28,26 @@ abstract class HuntGroupAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name = '';
 
-    /**
-     * @var string
-     */
     protected $description = '';
 
     /**
      * comment: enum:ringAll|linear|roundRobin|random
-     * @var string
      */
     protected $strategy;
 
-    /**
-     * @var int | null
-     */
     protected $ringAllTimeout;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string | null
      */
     protected $noAnswerTargetType;
 
-    /**
-     * @var string | null
-     */
     protected $noAnswerNumberValue;
 
-    /**
-     * @var int
-     */
     protected $preventMissedCalls = 1;
 
-    /**
-     * @var int
-     */
     protected $allowCallForwards = 0;
 
     /**
@@ -99,11 +79,11 @@ abstract class HuntGroupAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $description,
-        $strategy,
-        $preventMissedCalls,
-        $allowCallForwards
+        string $name,
+        string $description,
+        string $strategy,
+        int $preventMissedCalls,
+        int $allowCallForwards
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -133,9 +113,8 @@ abstract class HuntGroupAbstract
 
     /**
      * @param mixed $id
-     * @return HuntGroupDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): HuntGroupDto
     {
         return new HuntGroupDto($id);
     }
@@ -235,9 +214,8 @@ abstract class HuntGroupAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return HuntGroupDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): HuntGroupDto
     {
         return self::createDto()
             ->setName(self::getName())

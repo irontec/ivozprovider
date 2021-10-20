@@ -62,9 +62,8 @@ abstract class CompanyRelRoutingTagAbstract
 
     /**
      * @param mixed $id
-     * @return CompanyRelRoutingTagDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CompanyRelRoutingTagDto
     {
         return new CompanyRelRoutingTagDto($id);
     }
@@ -141,9 +140,8 @@ abstract class CompanyRelRoutingTagAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CompanyRelRoutingTagDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CompanyRelRoutingTagDto
     {
         return self::createDto()
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))

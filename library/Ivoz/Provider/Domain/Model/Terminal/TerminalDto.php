@@ -7,7 +7,7 @@ use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
 
 class TerminalDto extends TerminalDtoAbstract
 {
-    const CONTEXT_STATUS = 'status';
+    public const CONTEXT_STATUS = 'status';
 
     /**
      * @var RegistrationStatus[]
@@ -17,7 +17,7 @@ class TerminalDto extends TerminalDtoAbstract
      *     description="Registration status"
      * )
      */
-    protected $status = [];
+    private $status = [];
 
     /**
      * @var string
@@ -26,7 +26,7 @@ class TerminalDto extends TerminalDtoAbstract
      *     description="Registration domain"
      * )
      */
-    protected $domainName;
+    private $domainName;
 
     public function addStatus(RegistrationStatus $status)
     {
@@ -107,7 +107,7 @@ class TerminalDto extends TerminalDtoAbstract
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;
         $response['status'] = array_map(
-            function (RegistrationStatus $registrationStatus) {
+            function (RegistrationStatus $registrationStatus): array {
                 return $registrationStatus->toArray();
             },
             $this->status

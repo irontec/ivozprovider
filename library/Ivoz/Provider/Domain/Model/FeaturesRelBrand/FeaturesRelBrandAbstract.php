@@ -61,9 +61,8 @@ abstract class FeaturesRelBrandAbstract
 
     /**
      * @param mixed $id
-     * @return FeaturesRelBrandDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): FeaturesRelBrandDto
     {
         return new FeaturesRelBrandDto($id);
     }
@@ -140,9 +139,8 @@ abstract class FeaturesRelBrandAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return FeaturesRelBrandDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): FeaturesRelBrandDto
     {
         return self::createDto()
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))

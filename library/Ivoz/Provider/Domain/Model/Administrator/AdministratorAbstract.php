@@ -24,40 +24,21 @@ abstract class AdministratorAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $username;
 
     /**
      * comment: password
-     * @var string
      */
     protected $pass;
 
-    /**
-     * @var string
-     */
     protected $email = '';
 
-    /**
-     * @var bool
-     */
     protected $active = true;
 
-    /**
-     * @var bool
-     */
     protected $restricted = false;
 
-    /**
-     * @var string | null
-     */
     protected $name;
 
-    /**
-     * @var string | null
-     */
     protected $lastname;
 
     /**
@@ -79,11 +60,11 @@ abstract class AdministratorAbstract
      * Constructor
      */
     protected function __construct(
-        $username,
-        $pass,
-        $email,
-        $active,
-        $restricted
+        string $username,
+        string $pass,
+        string $email,
+        bool $active,
+        bool $restricted
     ) {
         $this->setUsername($username);
         $this->setPass($pass);
@@ -113,9 +94,8 @@ abstract class AdministratorAbstract
 
     /**
      * @param mixed $id
-     * @return AdministratorDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): AdministratorDto
     {
         return new AdministratorDto($id);
     }
@@ -209,9 +189,8 @@ abstract class AdministratorAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return AdministratorDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): AdministratorDto
     {
         return self::createDto()
             ->setUsername(self::getUsername())
@@ -289,7 +268,7 @@ abstract class AdministratorAbstract
 
     protected function setActive(bool $active): static
     {
-        Assertion::between(intval($active), 0, 1, 'active provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $active, 0, 1, 'active provided "%s" is not a valid boolean value.');
         $active = (bool) $active;
 
         $this->active = $active;
@@ -304,7 +283,7 @@ abstract class AdministratorAbstract
 
     protected function setRestricted(bool $restricted): static
     {
-        Assertion::between(intval($restricted), 0, 1, 'restricted provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $restricted, 0, 1, 'restricted provided "%s" is not a valid boolean value.');
         $restricted = (bool) $restricted;
 
         $this->restricted = $restricted;

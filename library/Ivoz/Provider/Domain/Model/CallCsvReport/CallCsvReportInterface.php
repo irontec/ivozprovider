@@ -18,12 +18,12 @@ interface CallCsvReportInterface extends LoggableEntityInterface, FileContainerI
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return array
      */
-    public function getFileObjects(?int $filter = null);
+    public function getFileObjects(?int $filter = null): array;
 
     /**
      * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
@@ -32,11 +32,20 @@ interface CallCsvReportInterface extends LoggableEntityInterface, FileContainerI
 
     public function getSentTo(): string;
 
-    public function getInDate(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getInDate(): \DateTimeInterface;
 
-    public function getOutDate(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getOutDate(): \DateTimeInterface;
 
-    public function getCreatedOn(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedOn(): \DateTimeInterface;
 
     public function getCsv(): Csv;
 

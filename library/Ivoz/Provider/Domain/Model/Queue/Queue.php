@@ -17,7 +17,7 @@ class Queue extends QueueAbstract implements QueueInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -51,7 +51,7 @@ class Queue extends QueueAbstract implements QueueInterface
         return parent::setName($name);
     }
 
-    public function getAstQueueName()
+    public function getAstQueueName(): string
     {
         return sprintf(
             "b%dc%dq%d_%s",
@@ -65,7 +65,7 @@ class Queue extends QueueAbstract implements QueueInterface
     /**
      * @return string
      */
-    public function getTimeoutRouteType()
+    public function getTimeoutRouteType(): ?string
     {
         return $this->getTimeoutTargetType();
     }
@@ -89,7 +89,7 @@ class Queue extends QueueAbstract implements QueueInterface
     /**
      * @return string
      */
-    public function getFullRouteType()
+    public function getFullRouteType(): ?string
     {
         return $this->getFullTargetType();
     }

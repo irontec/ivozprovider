@@ -18,7 +18,7 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -26,7 +26,7 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'file' => [

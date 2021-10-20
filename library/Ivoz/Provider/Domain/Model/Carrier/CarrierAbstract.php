@@ -28,29 +28,14 @@ abstract class CarrierAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $description = '';
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var bool | null
-     */
     protected $externallyRated = false;
 
-    /**
-     * @var float | null
-     */
     protected $balance = 0;
 
-    /**
-     * @var bool | null
-     */
     protected $calculateCost = false;
 
     /**
@@ -82,8 +67,8 @@ abstract class CarrierAbstract
      * Constructor
      */
     protected function __construct(
-        $description,
-        $name
+        string $description,
+        string $name
     ) {
         $this->setDescription($description);
         $this->setName($name);
@@ -110,9 +95,8 @@ abstract class CarrierAbstract
 
     /**
      * @param mixed $id
-     * @return CarrierDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CarrierDto
     {
         return new CarrierDto($id);
     }
@@ -206,9 +190,8 @@ abstract class CarrierAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CarrierDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CarrierDto
     {
         return self::createDto()
             ->setDescription(self::getDescription())
@@ -273,7 +256,7 @@ abstract class CarrierAbstract
     protected function setExternallyRated(?bool $externallyRated = null): static
     {
         if (!is_null($externallyRated)) {
-            Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $externallyRated, 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
             $externallyRated = (bool) $externallyRated;
         }
 
@@ -306,7 +289,7 @@ abstract class CarrierAbstract
     protected function setCalculateCost(?bool $calculateCost = null): static
     {
         if (!is_null($calculateCost)) {
-            Assertion::between(intval($calculateCost), 0, 1, 'calculateCost provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $calculateCost, 0, 1, 'calculateCost provided "%s" is not a valid boolean value.');
             $calculateCost = (bool) $calculateCost;
         }
 

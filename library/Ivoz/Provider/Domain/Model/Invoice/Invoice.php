@@ -72,9 +72,8 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
 
         $outDate = $this->getOutDate();
 
-        $outDate
-            ->setTimezone($invoiceTz);
-        $outDate
+        $outDate = $outDate
+            ->setTimezone($invoiceTz)
             ->modify('next day')
             ->setTime(0, 0, 0)
             ->modify('- 1 second');
@@ -86,7 +85,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -94,7 +93,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'Pdf' => [

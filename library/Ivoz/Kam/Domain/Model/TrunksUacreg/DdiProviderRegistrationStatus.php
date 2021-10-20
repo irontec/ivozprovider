@@ -9,17 +9,17 @@ class DdiProviderRegistrationStatus
    /**
     * @AttributeDefinition(type="bool")
     */
-    protected $registered = false;
+    private $registered = false;
 
     /**
      * @AttributeDefinition(type="bool")
      */
-    protected $inProgress = false;
+    private $inProgress = false;
 
     /**
      * @AttributeDefinition(type="int", required=false)
      */
-    protected $expires;
+    private $expires;
 
     public function __construct(
         int $statusCode,
@@ -77,7 +77,7 @@ class DdiProviderRegistrationStatus
         return $this->expires;
     }
 
-    private function setExpires(int $expires = null): static
+    private function setExpires(?int $expires = null): static
     {
         $this->expires = $expires;
 

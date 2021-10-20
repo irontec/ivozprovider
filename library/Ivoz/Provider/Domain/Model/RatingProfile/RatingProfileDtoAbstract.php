@@ -19,7 +19,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $activationTime = 'CURRENT_TIMESTAMP';
 
@@ -106,14 +106,14 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setActivationTime(null|\DateTime|string $activationTime): static
+    public function setActivationTime(null|\DateTimeInterface|string $activationTime): static
     {
         $this->activationTime = $activationTime;
 
         return $this;
     }
 
-    public function getActivationTime(): \DateTime|string|null
+    public function getActivationTime(): \DateTimeInterface|string|null
     {
         return $this->activationTime;
     }

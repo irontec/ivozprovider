@@ -7,7 +7,7 @@ use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
 
 class RetailAccountDto extends RetailAccountDtoAbstract
 {
-    const CONTEXT_STATUS = 'status';
+    public const CONTEXT_STATUS = 'status';
 
     /**
      * @var RegistrationStatus[]
@@ -17,7 +17,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
      *     description="Registration status"
      * )
      */
-    protected $status = [];
+    private $status = [];
 
     /**
      * @var string
@@ -26,7 +26,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
      *     description="Registration domain"
      * )
      */
-    protected $domainName;
+    private $domainName;
 
     public function addStatus(RegistrationStatus $status)
     {
@@ -45,7 +45,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;
         $response['status'] = array_map(
-            function (RegistrationStatus $registrationStatus) {
+            function (RegistrationStatus $registrationStatus): array {
                 return $registrationStatus->toArray();
             },
             $this->status
@@ -140,7 +140,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
@@ -165,7 +165,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY

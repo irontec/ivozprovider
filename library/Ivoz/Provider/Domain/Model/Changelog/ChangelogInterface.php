@@ -23,7 +23,10 @@ interface ChangelogInterface extends EntityInterface
 
     public function getData(): ?array;
 
-    public function getCreatedOn(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedOn(): \DateTimeInterface;
 
     public function getMicrotime(): int;
 

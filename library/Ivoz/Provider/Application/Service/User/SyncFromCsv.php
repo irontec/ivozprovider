@@ -51,7 +51,8 @@ class SyncFromCsv
         } catch (\Exception $e) {
             throw new \DomainException(
                 $e->getMessage(),
-                count($rows)
+                count($rows),
+                $e
             );
         }
 

@@ -48,14 +48,11 @@ trait RoutingTagTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param RoutingTagDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getOutgoingRoutings())) {
@@ -85,14 +82,11 @@ trait RoutingTagTrait
 
     /**
      * @internal use EntityTools instead
-     * @param RoutingTagDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getOutgoingRoutings())) {
             $this->replaceOutgoingRoutings(
@@ -117,19 +111,15 @@ trait RoutingTagTrait
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return RoutingTagDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): RoutingTagDto
     {
         $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()

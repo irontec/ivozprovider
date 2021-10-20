@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Calendar;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use DateTime;
+use DateTimeInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -19,7 +19,7 @@ interface CalendarInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Check if the given day is registered as Holiday
@@ -27,7 +27,7 @@ interface CalendarInterface extends LoggableEntityInterface
      * @param \DateTime $datetime
      * @return bool
      */
-    public function isHolidayDate(DateTime $datetime);
+    public function isHolidayDate(DateTimeInterface $datetime);
 
     /**
      * Return the first HolidayDate matching the given date
@@ -35,7 +35,7 @@ interface CalendarInterface extends LoggableEntityInterface
      * @param \DateTime $dateTime
      * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface|null
      */
-    public function getHolidayDate(DateTime $dateTime);
+    public function getHolidayDate(DateTimeInterface $dateTime);
 
     public function getName(): string;
 

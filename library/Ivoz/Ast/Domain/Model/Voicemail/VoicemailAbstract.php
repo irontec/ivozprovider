@@ -23,171 +23,76 @@ abstract class VoicemailAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $context;
 
-    /**
-     * @var string
-     */
     protected $mailbox;
 
-    /**
-     * @var string | null
-     */
     protected $password;
 
-    /**
-     * @var string | null
-     */
     protected $fullname;
 
-    /**
-     * @var string | null
-     */
     protected $alias;
 
-    /**
-     * @var string | null
-     */
     protected $email;
 
-    /**
-     * @var string | null
-     */
     protected $pager;
 
-    /**
-     * @var string | null
-     */
     protected $attach;
 
-    /**
-     * @var string | null
-     */
     protected $attachfmt;
 
-    /**
-     * @var string | null
-     */
     protected $serveremail;
 
-    /**
-     * @var string | null
-     */
     protected $language;
 
-    /**
-     * @var string | null
-     */
     protected $tz;
 
     /**
      * column: deleteast_voicemail
-     * @var string | null
      */
     protected $deleteVoicemail;
 
-    /**
-     * @var string | null
-     */
     protected $saycid = 'yes';
 
     /**
      * column: sendast_voicemail
-     * @var string | null
      */
     protected $sendVoicemail;
 
-    /**
-     * @var string | null
-     */
     protected $review;
 
-    /**
-     * @var string | null
-     */
     protected $tempgreetwarn;
 
-    /**
-     * @var string | null
-     */
     protected $operator;
 
-    /**
-     * @var string | null
-     */
     protected $envelope;
 
-    /**
-     * @var int | null
-     */
     protected $sayduration;
 
-    /**
-     * @var string | null
-     */
     protected $forcename;
 
-    /**
-     * @var string | null
-     */
     protected $forcegreetings;
 
-    /**
-     * @var string | null
-     */
     protected $callback;
 
-    /**
-     * @var string | null
-     */
     protected $dialout;
 
-    /**
-     * @var string | null
-     */
     protected $exitcontext;
 
-    /**
-     * @var int | null
-     */
     protected $maxmsg;
 
-    /**
-     * @var float | null
-     */
     protected $volgain;
 
-    /**
-     * @var string | null
-     */
     protected $imapuser;
 
-    /**
-     * @var string | null
-     */
     protected $imappassword;
 
-    /**
-     * @var string | null
-     */
     protected $imapserver;
 
-    /**
-     * @var string | null
-     */
     protected $imapport;
 
-    /**
-     * @var string | null
-     */
     protected $imapflags;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $stamp;
 
     /**
@@ -204,8 +109,8 @@ abstract class VoicemailAbstract
      * Constructor
      */
     protected function __construct(
-        $context,
-        $mailbox
+        string $context,
+        string $mailbox
     ) {
         $this->setContext($context);
         $this->setMailbox($mailbox);
@@ -232,9 +137,8 @@ abstract class VoicemailAbstract
 
     /**
      * @param mixed $id
-     * @return VoicemailDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): VoicemailDto
     {
         return new VoicemailDto($id);
     }
@@ -378,9 +282,8 @@ abstract class VoicemailAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return VoicemailDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): VoicemailDto
     {
         return self::createDto()
             ->setContext(self::getContext())
@@ -946,7 +849,10 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    public function getStamp(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getStamp(): ?\DateTimeInterface
     {
         return !is_null($this->stamp) ? clone $this->stamp : null;
     }

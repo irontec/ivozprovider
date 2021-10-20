@@ -10,40 +10,36 @@ use Assert\Assertion;
 * Description
 * @codeCoverageIgnore
 */
-class Description
+final class Description
 {
     /**
      * column: description_en
-     * @var string | null
      */
-    protected $en;
+    private $en;
 
     /**
      * column: description_es
-     * @var string | null
      */
-    protected $es;
+    private $es;
 
     /**
      * column: description_ca
-     * @var string | null
      */
-    protected $ca;
+    private $ca;
 
     /**
      * column: description_it
-     * @var string | null
      */
-    protected $it;
+    private $it;
 
     /**
      * Constructor
      */
     public function __construct(
-        $en,
-        $es,
-        $ca,
-        $it
+        ?string $en,
+        ?string $es,
+        ?string $ca,
+        ?string $it
     ) {
         $this->setEn($en);
         $this->setEs($es);
@@ -56,11 +52,16 @@ class Description
      */
     public function equals(self $description)
     {
-        return
-            $this->getEn() === $description->getEn() &&
-            $this->getEs() === $description->getEs() &&
-            $this->getCa() === $description->getCa() &&
-            $this->getIt() === $description->getIt();
+        if ($this->getEn() !== $description->getEn()) {
+            return false;
+        }
+        if ($this->getEs() !== $description->getEs()) {
+            return false;
+        }
+        if ($this->getCa() !== $description->getCa()) {
+            return false;
+        }
+        return $this->getIt() === $description->getIt();
     }
 
     protected function setEn(?string $en = null): static

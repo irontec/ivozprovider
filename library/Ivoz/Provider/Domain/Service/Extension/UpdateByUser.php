@@ -13,8 +13,8 @@ use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
  */
 class UpdateByUser implements UserLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = 20;
-    const POST_REMOVE_PRIORITY = 10;
+    public const POST_PERSIST_PRIORITY = 20;
+    public const POST_REMOVE_PRIORITY = 10;
 
     public function __construct(
         private EntityTools $entityTools

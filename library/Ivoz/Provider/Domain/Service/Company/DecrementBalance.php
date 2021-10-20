@@ -9,7 +9,7 @@ class DecrementBalance extends AbstractBalanceOperation
      * @param float $amount
      * @return boolean
      */
-    public function execute($companyId, float $amount)
+    public function execute($companyId, float $amount): bool
     {
         $this->logger->info('Company#%s\'s balance will be decreased by ' . $amount);
         $company = $this->companyRepository->find($companyId);

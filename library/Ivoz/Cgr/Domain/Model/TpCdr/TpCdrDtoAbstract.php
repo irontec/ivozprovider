@@ -74,12 +74,12 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     private $destination;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $setupTime;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $answerTime;
 
@@ -114,17 +114,17 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     private $extraInfo;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $updatedAt;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $deletedAt;
 
@@ -365,26 +365,26 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->destination;
     }
 
-    public function setSetupTime(null|\DateTime|string $setupTime): static
+    public function setSetupTime(null|\DateTimeInterface|string $setupTime): static
     {
         $this->setupTime = $setupTime;
 
         return $this;
     }
 
-    public function getSetupTime(): \DateTime|string|null
+    public function getSetupTime(): \DateTimeInterface|string|null
     {
         return $this->setupTime;
     }
 
-    public function setAnswerTime(null|\DateTime|string $answerTime): static
+    public function setAnswerTime(null|\DateTimeInterface|string $answerTime): static
     {
         $this->answerTime = $answerTime;
 
         return $this;
     }
 
-    public function getAnswerTime(): \DateTime|string|null
+    public function getAnswerTime(): \DateTimeInterface|string|null
     {
         return $this->answerTime;
     }
@@ -461,38 +461,38 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->extraInfo;
     }
 
-    public function setCreatedAt(null|\DateTime|string $createdAt): static
+    public function setCreatedAt(null|\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime|string|null
+    public function getCreatedAt(): \DateTimeInterface|string|null
     {
         return $this->createdAt;
     }
 
-    public function setUpdatedAt(null|\DateTime|string $updatedAt): static
+    public function setUpdatedAt(null|\DateTimeInterface|string $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    public function getUpdatedAt(): \DateTime|string|null
+    public function getUpdatedAt(): \DateTimeInterface|string|null
     {
         return $this->updatedAt;
     }
 
-    public function setDeletedAt(null|\DateTime|string $deletedAt): static
+    public function setDeletedAt(null|\DateTimeInterface|string $deletedAt): static
     {
         $this->deletedAt = $deletedAt;
 
         return $this;
     }
 
-    public function getDeletedAt(): \DateTime|string|null
+    public function getDeletedAt(): \DateTimeInterface|string|null
     {
         return $this->deletedAt;
     }

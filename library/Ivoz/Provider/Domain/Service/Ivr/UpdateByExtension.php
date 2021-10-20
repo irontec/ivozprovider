@@ -15,7 +15,7 @@ use Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleEventHandlerInterfa
  */
 class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
 {
-    const PRE_REMOVE_PRIORITY = 10;
+    public const PRE_REMOVE_PRIORITY = 10;
 
     public function __construct(
         private EntityTools $entityTools,

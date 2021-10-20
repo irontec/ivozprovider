@@ -21,73 +21,44 @@ abstract class TpLcrRuleAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $tpid = 'ivozprovider';
 
-    /**
-     * @var string
-     */
     protected $direction = '*out';
 
-    /**
-     * @var string
-     */
     protected $tenant;
 
-    /**
-     * @var string
-     */
     protected $category;
 
-    /**
-     * @var string
-     */
     protected $account = '*any';
 
-    /**
-     * @var string | null
-     */
     protected $subject = '*any';
 
     /**
      * column: destination_tag
-     * @var string | null
      */
     protected $destinationTag = '*any';
 
     /**
      * column: rp_category
-     * @var string
      */
     protected $rpCategory;
 
-    /**
-     * @var string
-     */
     protected $strategy = '*lowest_cost';
 
     /**
      * column: strategy_params
-     * @var string | null
      */
     protected $strategyParams = '';
 
     /**
      * column: activation_time
-     * @var \DateTime
      */
     protected $activationTime;
 
-    /**
-     * @var float
-     */
     protected $weight = 10;
 
     /**
      * column: created_at
-     * @var \DateTime
      */
     protected $createdAt;
 
@@ -101,16 +72,16 @@ abstract class TpLcrRuleAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $direction,
-        $tenant,
-        $category,
-        $account,
-        $rpCategory,
-        $strategy,
-        $activationTime,
-        $weight,
-        $createdAt
+        string $tpid,
+        string $direction,
+        string $tenant,
+        string $category,
+        string $account,
+        string $rpCategory,
+        string $strategy,
+        \DateTimeInterface|string $activationTime,
+        float $weight,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setDirection($direction);
@@ -145,9 +116,8 @@ abstract class TpLcrRuleAbstract
 
     /**
      * @param mixed $id
-     * @return TpLcrRuleDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TpLcrRuleDto
     {
         return new TpLcrRuleDto($id);
     }
@@ -249,9 +219,8 @@ abstract class TpLcrRuleAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TpLcrRuleDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TpLcrRuleDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -456,7 +425,10 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    public function getActivationTime(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getActivationTime(): \DateTimeInterface
     {
         return clone $this->activationTime;
     }
@@ -490,7 +462,10 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }

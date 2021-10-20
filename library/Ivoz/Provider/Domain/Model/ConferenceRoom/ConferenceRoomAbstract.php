@@ -20,24 +20,12 @@ abstract class ConferenceRoomAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var bool
-     */
     protected $pinProtected = false;
 
-    /**
-     * @var string | null
-     */
     protected $pinCode;
 
-    /**
-     * @var int
-     */
     protected $maxMembers = 0;
 
     /**
@@ -49,9 +37,9 @@ abstract class ConferenceRoomAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $pinProtected,
-        $maxMembers
+        string $name,
+        bool $pinProtected,
+        int $maxMembers
     ) {
         $this->setName($name);
         $this->setPinProtected($pinProtected);
@@ -79,9 +67,8 @@ abstract class ConferenceRoomAbstract
 
     /**
      * @param mixed $id
-     * @return ConferenceRoomDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ConferenceRoomDto
     {
         return new ConferenceRoomDto($id);
     }
@@ -165,9 +152,8 @@ abstract class ConferenceRoomAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ConferenceRoomDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ConferenceRoomDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -207,7 +193,7 @@ abstract class ConferenceRoomAbstract
 
     protected function setPinProtected(bool $pinProtected): static
     {
-        Assertion::between(intval($pinProtected), 0, 1, 'pinProtected provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $pinProtected, 0, 1, 'pinProtected provided "%s" is not a valid boolean value.');
         $pinProtected = (bool) $pinProtected;
 
         $this->pinProtected = $pinProtected;

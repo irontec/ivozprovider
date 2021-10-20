@@ -15,7 +15,7 @@ interface CalendarPeriodsRelScheduleInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function setCalendarPeriod(?CalendarPeriodInterface $calendarPeriod = null): static;
 

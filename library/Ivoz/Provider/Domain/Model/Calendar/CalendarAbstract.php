@@ -20,9 +20,6 @@ abstract class CalendarAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
@@ -34,7 +31,7 @@ abstract class CalendarAbstract
      * Constructor
      */
     protected function __construct(
-        $name
+        string $name
     ) {
         $this->setName($name);
     }
@@ -60,9 +57,8 @@ abstract class CalendarAbstract
 
     /**
      * @param mixed $id
-     * @return CalendarDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CalendarDto
     {
         return new CalendarDto($id);
     }
@@ -140,9 +136,8 @@ abstract class CalendarAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CalendarDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CalendarDto
     {
         return self::createDto()
             ->setName(self::getName())

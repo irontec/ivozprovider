@@ -20,23 +20,23 @@ use Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterR
 */
 interface ExternalCallFilterInterface extends LoggableEntityInterface
 {
-    const HOLIDAYTARGETTYPE_NUMBER = 'number';
+    public const HOLIDAYTARGETTYPE_NUMBER = 'number';
 
-    const HOLIDAYTARGETTYPE_EXTENSION = 'extension';
+    public const HOLIDAYTARGETTYPE_EXTENSION = 'extension';
 
-    const HOLIDAYTARGETTYPE_VOICEMAIL = 'voicemail';
+    public const HOLIDAYTARGETTYPE_VOICEMAIL = 'voicemail';
 
-    const OUTOFSCHEDULETARGETTYPE_NUMBER = 'number';
+    public const OUTOFSCHEDULETARGETTYPE_NUMBER = 'number';
 
-    const OUTOFSCHEDULETARGETTYPE_EXTENSION = 'extension';
+    public const OUTOFSCHEDULETARGETTYPE_EXTENSION = 'extension';
 
-    const OUTOFSCHEDULETARGETTYPE_VOICEMAIL = 'voicemail';
+    public const OUTOFSCHEDULETARGETTYPE_VOICEMAIL = 'voicemail';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Check if the given number matches External Filter black list
@@ -83,28 +83,28 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @return null|string
      */
-    public function getHolidayTarget();
+    public function getHolidayTarget(): ?string;
 
     /**
      * Alias for getHolidayTargetType
      *
      * @todo rename holidayTagetType field to holidayRouteType
      */
-    public function getHolidayRouteType();
+    public function getHolidayRouteType(): ?string;
 
     /**
      * Get Target destination for Out of schedule
      *
      * @return null|string
      */
-    public function getOutOfScheduleTarget();
+    public function getOutOfScheduleTarget(): ?string;
 
     /**
      * Alias for getOutOfScheduleTargetType
      *
      * @todo rename outOfScheduleTargetType field to outOfScheduleRouteType
      */
-    public function getOutOfScheduleRouteType();
+    public function getOutOfScheduleRouteType(): ?string;
 
     public function getName(): string;
 

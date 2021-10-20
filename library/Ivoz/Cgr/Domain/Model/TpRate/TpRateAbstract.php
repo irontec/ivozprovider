@@ -21,49 +21,37 @@ abstract class TpRateAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $tpid = 'ivozprovider';
 
-    /**
-     * @var string | null
-     */
     protected $tag;
 
     /**
      * column: connect_fee
-     * @var float
      */
     protected $connectFee;
 
     /**
      * column: rate
-     * @var float
      */
     protected $rateCost;
 
     /**
      * column: rate_unit
-     * @var string
      */
     protected $rateUnit = '60s';
 
     /**
      * column: rate_increment
-     * @var string
      */
     protected $rateIncrement;
 
     /**
      * column: group_interval_start
-     * @var string
      */
     protected $groupIntervalStart = '0s';
 
     /**
      * column: created_at
-     * @var \DateTime
      */
     protected $createdAt;
 
@@ -77,13 +65,13 @@ abstract class TpRateAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $connectFee,
-        $rateCost,
-        $rateUnit,
-        $rateIncrement,
-        $groupIntervalStart,
-        $createdAt
+        string $tpid,
+        float $connectFee,
+        float $rateCost,
+        string $rateUnit,
+        string $rateIncrement,
+        string $groupIntervalStart,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setConnectFee($connectFee);
@@ -115,9 +103,8 @@ abstract class TpRateAbstract
 
     /**
      * @param mixed $id
-     * @return TpRateDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TpRateDto
     {
         return new TpRateDto($id);
     }
@@ -209,9 +196,8 @@ abstract class TpRateAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TpRateDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TpRateDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -356,7 +342,10 @@ abstract class TpRateAbstract
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }

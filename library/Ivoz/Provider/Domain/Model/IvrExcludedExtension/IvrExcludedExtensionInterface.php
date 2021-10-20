@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 interface IvrExcludedExtensionInterface extends LoggableEntityInterface
 {
 
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function setIvr(?IvrInterface $ivr = null): static;
 

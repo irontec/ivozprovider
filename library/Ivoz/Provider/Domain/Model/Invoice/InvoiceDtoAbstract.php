@@ -25,12 +25,12 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     private $number;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $inDate;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $outDate;
 
@@ -200,26 +200,26 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
         return $this->number;
     }
 
-    public function setInDate(null|\DateTime|string $inDate): static
+    public function setInDate(null|\DateTimeInterface|string $inDate): static
     {
         $this->inDate = $inDate;
 
         return $this;
     }
 
-    public function getInDate(): \DateTime|string|null
+    public function getInDate(): \DateTimeInterface|string|null
     {
         return $this->inDate;
     }
 
-    public function setOutDate(null|\DateTime|string $outDate): static
+    public function setOutDate(null|\DateTimeInterface|string $outDate): static
     {
         $this->outDate = $outDate;
 
         return $this;
     }
 
-    public function getOutDate(): \DateTime|string|null
+    public function getOutDate(): \DateTimeInterface|string|null
     {
         return $this->outDate;
     }

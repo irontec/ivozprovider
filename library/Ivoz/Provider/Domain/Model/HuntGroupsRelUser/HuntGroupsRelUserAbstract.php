@@ -24,25 +24,15 @@ abstract class HuntGroupsRelUserAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var int | null
-     */
     protected $timeoutTime;
 
-    /**
-     * @var int | null
-     */
     protected $priority;
 
     /**
      * comment: enum:number|user
-     * @var string
      */
     protected $routeType;
 
-    /**
-     * @var string | null
-     */
     protected $numberValue;
 
     /**
@@ -65,7 +55,7 @@ abstract class HuntGroupsRelUserAbstract
      * Constructor
      */
     protected function __construct(
-        $routeType
+        string $routeType
     ) {
         $this->setRouteType($routeType);
     }
@@ -91,9 +81,8 @@ abstract class HuntGroupsRelUserAbstract
 
     /**
      * @param mixed $id
-     * @return HuntGroupsRelUserDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): HuntGroupsRelUserDto
     {
         return new HuntGroupsRelUserDto($id);
     }
@@ -181,9 +170,8 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return HuntGroupsRelUserDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): HuntGroupsRelUserDto
     {
         return self::createDto()
             ->setTimeoutTime(self::getTimeoutTime())

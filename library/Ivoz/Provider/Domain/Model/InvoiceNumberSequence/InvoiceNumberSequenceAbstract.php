@@ -20,39 +20,18 @@ abstract class InvoiceNumberSequenceAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string
-     */
     protected $prefix = '';
 
-    /**
-     * @var int
-     */
     protected $sequenceLength;
 
-    /**
-     * @var int
-     */
     protected $increment;
 
-    /**
-     * @var string | null
-     */
     protected $latestValue = '';
 
-    /**
-     * @var int
-     */
     protected $iteration = 0;
 
-    /**
-     * @var int
-     */
     protected $version = 1;
 
     /**
@@ -64,12 +43,12 @@ abstract class InvoiceNumberSequenceAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $prefix,
-        $sequenceLength,
-        $increment,
-        $iteration,
-        $version
+        string $name,
+        string $prefix,
+        int $sequenceLength,
+        int $increment,
+        int $iteration,
+        int $version
     ) {
         $this->setName($name);
         $this->setPrefix($prefix);
@@ -100,9 +79,8 @@ abstract class InvoiceNumberSequenceAbstract
 
     /**
      * @param mixed $id
-     * @return InvoiceNumberSequenceDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): InvoiceNumberSequenceDto
     {
         return new InvoiceNumberSequenceDto($id);
     }
@@ -192,9 +170,8 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return InvoiceNumberSequenceDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): InvoiceNumberSequenceDto
     {
         return self::createDto()
             ->setName(self::getName())

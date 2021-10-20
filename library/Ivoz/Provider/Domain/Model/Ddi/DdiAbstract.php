@@ -50,41 +50,28 @@ abstract class DdiAbstract
 
     /**
      * column: Ddi
-     * @var string
      */
     protected $ddi;
 
     /**
      * column: DdiE164
-     * @var string | null
      */
     protected $ddie164;
 
     /**
      * comment: enum:none|all|inbound|outbound
-     * @var string
      */
     protected $recordCalls = 'none';
 
-    /**
-     * @var string | null
-     */
     protected $displayName;
 
     /**
      * comment: enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail
-     * @var string | null
      */
     protected $routeType;
 
-    /**
-     * @var bool
-     */
     protected $billInboundCalls = false;
 
-    /**
-     * @var string | null
-     */
     protected $friendValue;
 
     /**
@@ -169,9 +156,9 @@ abstract class DdiAbstract
      * Constructor
      */
     protected function __construct(
-        $ddi,
-        $recordCalls,
-        $billInboundCalls
+        string $ddi,
+        string $recordCalls,
+        bool $billInboundCalls
     ) {
         $this->setDdi($ddi);
         $this->setRecordCalls($recordCalls);
@@ -199,9 +186,8 @@ abstract class DdiAbstract
 
     /**
      * @param mixed $id
-     * @return DdiDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): DdiDto
     {
         return new DdiDto($id);
     }
@@ -319,9 +305,8 @@ abstract class DdiAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return DdiDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): DdiDto
     {
         return self::createDto()
             ->setDdi(self::getDdi())
@@ -483,7 +468,7 @@ abstract class DdiAbstract
 
     protected function setBillInboundCalls(bool $billInboundCalls): static
     {
-        Assertion::between(intval($billInboundCalls), 0, 1, 'billInboundCalls provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $billInboundCalls, 0, 1, 'billInboundCalls provided "%s" is not a valid boolean value.');
         $billInboundCalls = (bool) $billInboundCalls;
 
         $this->billInboundCalls = $billInboundCalls;

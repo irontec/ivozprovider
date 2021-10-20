@@ -30,20 +30,13 @@ abstract class IvrEntryAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $entry;
 
     /**
      * comment: enum:number|extension|voicemail|conditional
-     * @var string
      */
     protected $routeType;
 
-    /**
-     * @var string | null
-     */
     protected $numberValue;
 
     /**
@@ -81,8 +74,8 @@ abstract class IvrEntryAbstract
      * Constructor
      */
     protected function __construct(
-        $entry,
-        $routeType
+        string $entry,
+        string $routeType
     ) {
         $this->setEntry($entry);
         $this->setRouteType($routeType);
@@ -109,9 +102,8 @@ abstract class IvrEntryAbstract
 
     /**
      * @param mixed $id
-     * @return IvrEntryDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): IvrEntryDto
     {
         return new IvrEntryDto($id);
     }
@@ -203,9 +195,8 @@ abstract class IvrEntryAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return IvrEntryDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): IvrEntryDto
     {
         return self::createDto()
             ->setEntry(self::getEntry())

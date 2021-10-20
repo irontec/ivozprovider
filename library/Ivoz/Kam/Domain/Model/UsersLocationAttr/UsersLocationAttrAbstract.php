@@ -19,39 +19,20 @@ abstract class UsersLocationAttrAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $ruid = '';
 
-    /**
-     * @var string
-     */
     protected $username = '';
 
-    /**
-     * @var string | null
-     */
     protected $domain;
 
-    /**
-     * @var string
-     */
     protected $aname = '';
 
-    /**
-     * @var int
-     */
     protected $atype = 0;
 
-    /**
-     * @var string
-     */
     protected $avalue = '';
 
     /**
      * column: last_modified
-     * @var \DateTime
      */
     protected $lastModified;
 
@@ -59,12 +40,12 @@ abstract class UsersLocationAttrAbstract
      * Constructor
      */
     protected function __construct(
-        $ruid,
-        $username,
-        $aname,
-        $atype,
-        $avalue,
-        $lastModified
+        string $ruid,
+        string $username,
+        string $aname,
+        int $atype,
+        string $avalue,
+        \DateTimeInterface|string $lastModified
     ) {
         $this->setRuid($ruid);
         $this->setUsername($username);
@@ -95,9 +76,8 @@ abstract class UsersLocationAttrAbstract
 
     /**
      * @param mixed $id
-     * @return UsersLocationAttrDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): UsersLocationAttrDto
     {
         return new UsersLocationAttrDto($id);
     }
@@ -185,9 +165,8 @@ abstract class UsersLocationAttrAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return UsersLocationAttrDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): UsersLocationAttrDto
     {
         return self::createDto()
             ->setRuid(self::getRuid())
@@ -316,7 +295,10 @@ abstract class UsersLocationAttrAbstract
         return $this;
     }
 
-    public function getLastModified(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastModified(): \DateTimeInterface
     {
         return clone $this->lastModified;
     }

@@ -8,8 +8,8 @@ use Psr\Log\LoggerInterface;
 
 class ImportFromBillableCalls
 {
-    const SYNC_CHUNK_SIZE = 500;
-    const SLEEP_BETWEEN_LOOPS = 2;
+    public const SYNC_CHUNK_SIZE = 500;
+    public const SLEEP_BETWEEN_LOOPS = 2;
 
     public function __construct(
         private BillableCallRepository $billableCallRepository,

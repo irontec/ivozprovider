@@ -62,9 +62,8 @@ abstract class PickUpRelUserAbstract
 
     /**
      * @param mixed $id
-     * @return PickUpRelUserDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): PickUpRelUserDto
     {
         return new PickUpRelUserDto($id);
     }
@@ -141,9 +140,8 @@ abstract class PickUpRelUserAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return PickUpRelUserDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): PickUpRelUserDto
     {
         return self::createDto()
             ->setPickUpGroup(PickUpGroup::entityToDto(self::getPickUpGroup(), $depth))

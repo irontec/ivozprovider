@@ -7,7 +7,7 @@ use Ivoz\Kam\Domain\Service\UsersClientInterface;
 
 class SendUsersPermissionsReloadRequest implements TrustedLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
 
     public function __construct(
         private UsersClientInterface $usersClient

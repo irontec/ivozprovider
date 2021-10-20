@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\Ddi;
 use Assert\Assertion;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 
 /**
  * Ddi
@@ -18,7 +19,7 @@ class Ddi extends DdiAbstract implements DdiInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -81,10 +82,7 @@ class Ddi extends DdiAbstract implements DdiInterface
         return parent::setDdi($ddi);
     }
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
-     */
-    public function getDomain()
+    public function getDomain(): ?DomainInterface
     {
         $company = $this->getCompany();
         $brand = $company->getBrand();
@@ -92,7 +90,7 @@ class Ddi extends DdiAbstract implements DdiInterface
         return $brand->getDomain();
     }
 
-    public function getLanguageCode()
+    public function getLanguageCode(): string
     {
         $language = $this->getLanguage();
         if (!$language) {

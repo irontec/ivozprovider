@@ -10,9 +10,9 @@ use Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhi
 
 class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
 {
-    const CONTEXT_WITH_INVERSE_RELATIONSHIPS = 'withInverseRelationships';
+    public const CONTEXT_WITH_INVERSE_RELATIONSHIPS = 'withInverseRelationships';
 
-    const CONTEXTS_WITH_INVERSE_RELATIONSHIPS = [
+    public const CONTEXTS_WITH_INVERSE_RELATIONSHIPS = [
         self::CONTEXT_WITH_INVERSE_RELATIONSHIPS,
         self::CONTEXT_DETAILED
     ];
@@ -25,7 +25,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
      *     description="Schedule ids"
      * )
      */
-    protected $scheduleIds = [];
+    private $scheduleIds = [];
 
     /**
      * @var int[]
@@ -35,7 +35,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
      *     description="Calendar ids"
      * )
      */
-    protected $calendarIds = [];
+    private $calendarIds = [];
 
     /**
      * @var int[]
@@ -45,7 +45,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
      *     description="Whitelisted matchlists"
      * )
      */
-    protected $whiteListIds = [];
+    private $whiteListIds = [];
 
     /**
      * @var int[]
@@ -55,7 +55,7 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
      *     description="Blacklisted matchlists"
      * )
      */
-    protected $blackListIds = [];
+    private $blackListIds = [];
 
     /**
      * @inheritdoc

@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 interface RoutingPatternGroupsRelPatternInterface extends LoggableEntityInterface
 {
 
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function setRoutingPattern(?RoutingPatternInterface $routingPattern = null): static;
 

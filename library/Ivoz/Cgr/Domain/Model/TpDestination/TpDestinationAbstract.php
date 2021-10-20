@@ -21,24 +21,14 @@ abstract class TpDestinationAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $tpid = 'ivozprovider';
 
-    /**
-     * @var string | null
-     */
     protected $tag;
 
-    /**
-     * @var string
-     */
     protected $prefix;
 
     /**
      * column: created_at
-     * @var \DateTime
      */
     protected $createdAt;
 
@@ -52,9 +42,9 @@ abstract class TpDestinationAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $prefix,
-        $createdAt
+        string $tpid,
+        string $prefix,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setPrefix($prefix);
@@ -82,9 +72,8 @@ abstract class TpDestinationAbstract
 
     /**
      * @param mixed $id
-     * @return TpDestinationDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TpDestinationDto
     {
         return new TpDestinationDto($id);
     }
@@ -168,9 +157,8 @@ abstract class TpDestinationAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TpDestinationDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TpDestinationDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -255,7 +243,10 @@ abstract class TpDestinationAbstract
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }

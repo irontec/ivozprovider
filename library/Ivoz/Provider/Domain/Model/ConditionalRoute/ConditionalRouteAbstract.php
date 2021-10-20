@@ -36,27 +36,21 @@ abstract class ConditionalRouteAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
      * column: routeType
      * comment: enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension
-     * @var string | null
      */
     protected $routetype;
 
     /**
      * column: numberValue
-     * @var string | null
      */
     protected $numbervalue;
 
     /**
      * column: friendValue
-     * @var string | null
      */
     protected $friendvalue;
 
@@ -114,7 +108,7 @@ abstract class ConditionalRouteAbstract
      * Constructor
      */
     protected function __construct(
-        $name
+        string $name
     ) {
         $this->setName($name);
     }
@@ -140,9 +134,8 @@ abstract class ConditionalRouteAbstract
 
     /**
      * @param mixed $id
-     * @return ConditionalRouteDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ConditionalRouteDto
     {
         return new ConditionalRouteDto($id);
     }
@@ -244,9 +237,8 @@ abstract class ConditionalRouteAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ConditionalRouteDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ConditionalRouteDto
     {
         return self::createDto()
             ->setName(self::getName())

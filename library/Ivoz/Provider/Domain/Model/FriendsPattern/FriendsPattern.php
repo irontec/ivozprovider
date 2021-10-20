@@ -13,7 +13,7 @@ class FriendsPattern extends FriendsPatternAbstract implements FriendsPatternInt
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

@@ -9,8 +9,8 @@ use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 
 class BillingService implements BillingServiceInterface
 {
-    protected $client;
-    protected $entityTools;
+    private $client;
+    private $entityTools;
 
     public function __construct(
         ClientInterface $client,
@@ -31,7 +31,7 @@ class BillingService implements BillingServiceInterface
      * @throws \DomainException
      * @return SimulatedCall
      */
-    public function simulateCall(string $tenant, string $subject, string $destination, int $durationSeconds)
+    public function simulateCall(string $tenant, string $subject, string $destination, int $durationSeconds): SimulatedCall
     {
         $answerDateTime = new \DateTime();
         $answerDateTime->setTimestamp(time());
@@ -94,7 +94,7 @@ class BillingService implements BillingServiceInterface
      * @throws \DomainException
      * @return SimulatedCall
      */
-    private function sendRequest(array $payload)
+    private function sendRequest(array $payload): SimulatedCall
     {
         /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $request */
         $request = $this->client

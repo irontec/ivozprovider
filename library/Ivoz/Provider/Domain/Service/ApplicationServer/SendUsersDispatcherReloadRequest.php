@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
 
 class SendUsersDispatcherReloadRequest implements ApplicationServerLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
 
     public function __construct(
         private UsersClientInterface $usersGearmanClient

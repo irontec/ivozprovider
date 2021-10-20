@@ -24,29 +24,29 @@ use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\Condition
 */
 interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
 {
-    const ROUTETYPE_USER = 'user';
+    public const ROUTETYPE_USER = 'user';
 
-    const ROUTETYPE_NUMBER = 'number';
+    public const ROUTETYPE_NUMBER = 'number';
 
-    const ROUTETYPE_IVR = 'ivr';
+    public const ROUTETYPE_IVR = 'ivr';
 
-    const ROUTETYPE_HUNTGROUP = 'huntGroup';
+    public const ROUTETYPE_HUNTGROUP = 'huntGroup';
 
-    const ROUTETYPE_VOICEMAIL = 'voicemail';
+    public const ROUTETYPE_VOICEMAIL = 'voicemail';
 
-    const ROUTETYPE_FRIEND = 'friend';
+    public const ROUTETYPE_FRIEND = 'friend';
 
-    const ROUTETYPE_QUEUE = 'queue';
+    public const ROUTETYPE_QUEUE = 'queue';
 
-    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
+    public const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
 
-    const ROUTETYPE_EXTENSION = 'extension';
+    public const ROUTETYPE_EXTENSION = 'extension';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Get the numberValue in E.164 format when routing to 'number'
@@ -117,7 +117,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getMatchData();
+    public function getMatchData(): string;
 
     public function getPriority(): int;
 

@@ -26,18 +26,11 @@ abstract class TrunksLcrRuleTargetAbstract
 
     /**
      * column: lcr_id
-     * @var int
      */
     protected $lcrId = 1;
 
-    /**
-     * @var int
-     */
     protected $priority;
 
-    /**
-     * @var int
-     */
     protected $weight = 1;
 
     /**
@@ -60,9 +53,9 @@ abstract class TrunksLcrRuleTargetAbstract
      * Constructor
      */
     protected function __construct(
-        $lcrId,
-        $priority,
-        $weight
+        int $lcrId,
+        int $priority,
+        int $weight
     ) {
         $this->setLcrId($lcrId);
         $this->setPriority($priority);
@@ -90,9 +83,8 @@ abstract class TrunksLcrRuleTargetAbstract
 
     /**
      * @param mixed $id
-     * @return TrunksLcrRuleTargetDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TrunksLcrRuleTargetDto
     {
         return new TrunksLcrRuleTargetDto($id);
     }
@@ -178,9 +170,8 @@ abstract class TrunksLcrRuleTargetAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TrunksLcrRuleTargetDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TrunksLcrRuleTargetDto
     {
         return self::createDto()
             ->setLcrId(self::getLcrId())

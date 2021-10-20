@@ -20,14 +20,10 @@ abstract class CallAclAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
      * comment: enum:allow|deny
-     * @var string
      */
     protected $defaultPolicy;
 
@@ -40,8 +36,8 @@ abstract class CallAclAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $defaultPolicy
+        string $name,
+        string $defaultPolicy
     ) {
         $this->setName($name);
         $this->setDefaultPolicy($defaultPolicy);
@@ -68,9 +64,8 @@ abstract class CallAclAbstract
 
     /**
      * @param mixed $id
-     * @return CallAclDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CallAclDto
     {
         return new CallAclDto($id);
     }
@@ -150,9 +145,8 @@ abstract class CallAclAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CallAclDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CallAclDto
     {
         return self::createDto()
             ->setName(self::getName())

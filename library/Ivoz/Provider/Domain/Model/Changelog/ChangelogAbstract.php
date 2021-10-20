@@ -21,29 +21,14 @@ abstract class ChangelogAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $entity;
 
-    /**
-     * @var string
-     */
     protected $entityId;
 
-    /**
-     * @var array | null
-     */
     protected $data = [];
 
-    /**
-     * @var \DateTime
-     */
     protected $createdOn;
 
-    /**
-     * @var int
-     */
     protected $microtime;
 
     /**
@@ -55,10 +40,10 @@ abstract class ChangelogAbstract
      * Constructor
      */
     protected function __construct(
-        $entity,
-        $entityId,
-        $createdOn,
-        $microtime
+        string $entity,
+        string $entityId,
+        \DateTimeInterface|string $createdOn,
+        int $microtime
     ) {
         $this->setEntity($entity);
         $this->setEntityId($entityId);
@@ -87,9 +72,8 @@ abstract class ChangelogAbstract
 
     /**
      * @param mixed $id
-     * @return ChangelogDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ChangelogDto
     {
         return new ChangelogDto($id);
     }
@@ -175,9 +159,8 @@ abstract class ChangelogAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ChangelogDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ChangelogDto
     {
         return self::createDto()
             ->setEntity(self::getEntity())
@@ -260,7 +243,10 @@ abstract class ChangelogAbstract
         return $this;
     }
 
-    public function getCreatedOn(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedOn(): \DateTimeInterface
     {
         return clone $this->createdOn;
     }

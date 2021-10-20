@@ -9,8 +9,8 @@ class UsersCdr extends UsersCdrAbstract implements UsersCdrInterface
 {
     use UsersCdrTrait;
 
-    const DIRECTION_OUTBOUND = "outbound";
-    const DIRECTION_INBOUND = "inbound";
+    public const DIRECTION_OUTBOUND = "outbound";
+    public const DIRECTION_INBOUND = "inbound";
 
     /**
      * Get id
@@ -25,34 +25,35 @@ class UsersCdr extends UsersCdrAbstract implements UsersCdrInterface
     /**
      * @return string
      */
-    public function getOwner()
+    public function getOwner(): ?string
     {
         if (!is_null($this->getUser())) {
             return $this->getUser()->getFullNameExtension();
-        } elseif (!is_null($this->getFriend())) {
+        }
+        if (!is_null($this->getFriend())) {
             return $this->getFriend()->getName();
-        } elseif (!is_null($this->getRetailAccount())) {
+        }
+        if (!is_null($this->getRetailAccount())) {
             return $this->getRetailAccount()->getName();
-        } elseif (!is_null($this->getResidentialDevice())) {
+        }
+        if (!is_null($this->getResidentialDevice())) {
             return $this->getResidentialDevice()->getName();
         }
 
         if ($this->getDirection() === UsersCdr::DIRECTION_OUTBOUND) {
             return $this->getCaller();
-        } else {
-            return $this->getCallee();
         }
+        return $this->getCallee();
     }
 
     /**
      * @return string
      */
-    public function getParty()
+    public function getParty(): ?string
     {
         if ($this->getDirection() === UsersCdr::DIRECTION_OUTBOUND) {
             return $this->getCallee();
-        } else {
-            return $this->getCaller();
         }
+        return $this->getCaller();
     }
 }

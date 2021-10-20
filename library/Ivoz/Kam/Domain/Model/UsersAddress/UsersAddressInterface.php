@@ -14,7 +14,7 @@ interface UsersAddressInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function setIpAddr(?string $ipAddr = null): static;
 

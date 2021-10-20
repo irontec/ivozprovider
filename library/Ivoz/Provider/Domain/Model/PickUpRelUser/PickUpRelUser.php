@@ -13,7 +13,7 @@ class PickUpRelUser extends PickUpRelUserAbstract implements PickUpRelUserInterf
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

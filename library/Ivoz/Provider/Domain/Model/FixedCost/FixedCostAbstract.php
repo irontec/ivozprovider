@@ -20,19 +20,10 @@ abstract class FixedCostAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string | null
-     */
     protected $description;
 
-    /**
-     * @var float | null
-     */
     protected $cost;
 
     /**
@@ -44,7 +35,7 @@ abstract class FixedCostAbstract
      * Constructor
      */
     protected function __construct(
-        $name
+        string $name
     ) {
         $this->setName($name);
     }
@@ -70,9 +61,8 @@ abstract class FixedCostAbstract
 
     /**
      * @param mixed $id
-     * @return FixedCostDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): FixedCostDto
     {
         return new FixedCostDto($id);
     }
@@ -154,9 +144,8 @@ abstract class FixedCostAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return FixedCostDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): FixedCostDto
     {
         return self::createDto()
             ->setName(self::getName())

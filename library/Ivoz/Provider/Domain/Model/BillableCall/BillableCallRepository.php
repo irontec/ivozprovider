@@ -95,11 +95,15 @@ interface BillableCallRepository extends ObjectRepository, Selectable
 
     /**
      * @throws \Doctrine\ORM\NoResultException
+     * @return \DateTime|\DateTimeImmutable
      */
-    public function getMinStartTime(int $fromId = 0): \DateTime;
+    public function getMinStartTime(int $fromId = 0): \DateTimeInterface;
 
 
-    public function getMaxIdUntilDate(int $fromId, \DateTime $date): int;
+    /**
+     * @param \DateTime|\DateTimeImmutable $date
+     */
+    public function getMaxIdUntilDate(int $fromId, \DateTimeInterface $date): int;
 
     /**
      * @return int[]

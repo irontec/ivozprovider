@@ -13,7 +13,7 @@ class MaxUsageNotification extends MaxUsageNotificationAbstract implements MaxUs
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

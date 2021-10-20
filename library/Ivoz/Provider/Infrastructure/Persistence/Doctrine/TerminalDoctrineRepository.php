@@ -73,7 +73,7 @@ class TerminalDoctrineRepository extends ServiceEntityRepository implements Term
      * @param int $companyId
      * @return string[]
      */
-    public function findNamesByCompanyId(int $companyId)
+    public function findNamesByCompanyId(int $companyId): array
     {
         $qb = $this->createQueryBuilder('self');
         $expression = $qb->expr();

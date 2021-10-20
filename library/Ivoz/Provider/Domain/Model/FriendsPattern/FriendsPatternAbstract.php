@@ -20,14 +20,8 @@ abstract class FriendsPatternAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string
-     */
     protected $regExp;
 
     /**
@@ -40,8 +34,8 @@ abstract class FriendsPatternAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $regExp
+        string $name,
+        string $regExp
     ) {
         $this->setName($name);
         $this->setRegExp($regExp);
@@ -68,9 +62,8 @@ abstract class FriendsPatternAbstract
 
     /**
      * @param mixed $id
-     * @return FriendsPatternDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): FriendsPatternDto
     {
         return new FriendsPatternDto($id);
     }
@@ -150,9 +143,8 @@ abstract class FriendsPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return FriendsPatternDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): FriendsPatternDto
     {
         return self::createDto()
             ->setName(self::getName())

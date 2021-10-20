@@ -24,23 +24,13 @@ abstract class DestinationRateAbstract
 
     /**
      * column: rate
-     * @var float
      */
     protected $cost;
 
-    /**
-     * @var float
-     */
     protected $connectFee;
 
-    /**
-     * @var string
-     */
     protected $rateIncrement;
 
-    /**
-     * @var string
-     */
     protected $groupIntervalStart = '0s';
 
     /**
@@ -59,10 +49,10 @@ abstract class DestinationRateAbstract
      * Constructor
      */
     protected function __construct(
-        $cost,
-        $connectFee,
-        $rateIncrement,
-        $groupIntervalStart
+        float $cost,
+        float $connectFee,
+        string $rateIncrement,
+        string $groupIntervalStart
     ) {
         $this->setCost($cost);
         $this->setConnectFee($connectFee);
@@ -91,9 +81,8 @@ abstract class DestinationRateAbstract
 
     /**
      * @param mixed $id
-     * @return DestinationRateDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): DestinationRateDto
     {
         return new DestinationRateDto($id);
     }
@@ -179,9 +168,8 @@ abstract class DestinationRateAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return DestinationRateDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): DestinationRateDto
     {
         return self::createDto()
             ->setCost(self::getCost())

@@ -49,7 +49,7 @@ class BrandServiceDoctrineRepository extends ServiceEntityRepository implements 
      * @param int $id
      * @return BrandServiceInterface[]
      */
-    public function findByBrandId($id)
+    public function findByBrandId($id): array
     {
         return $this->findBy([
             'brand' => $id

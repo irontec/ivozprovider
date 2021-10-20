@@ -15,7 +15,7 @@ class Destination extends DestinationAbstract implements DestinationInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -47,7 +47,7 @@ class Destination extends DestinationAbstract implements DestinationInterface
     /**
      * @return string
      */
-    public function getCgrTag()
+    public function getCgrTag(): string
     {
         return sprintf(
             "b%ddst%d",

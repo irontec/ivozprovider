@@ -116,7 +116,7 @@ trait AdministratorSecurityTrait
                     return true;
                 }
             }
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return false;
         }
 

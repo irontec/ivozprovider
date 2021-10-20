@@ -41,75 +41,39 @@ abstract class TrunksCdrAbstract
 
     /**
      * column: start_time
-     * @var \DateTime
      */
     protected $startTime;
 
     /**
      * column: end_time
-     * @var \DateTime
      */
     protected $endTime;
 
-    /**
-     * @var float
-     */
     protected $duration = 0;
 
-    /**
-     * @var string | null
-     */
     protected $caller;
 
-    /**
-     * @var string | null
-     */
     protected $callee;
 
-    /**
-     * @var string | null
-     */
     protected $callid;
 
-    /**
-     * @var string | null
-     */
     protected $callidHash;
 
-    /**
-     * @var string | null
-     */
     protected $xcallid;
 
-    /**
-     * @var string | null
-     */
     protected $diversion;
 
-    /**
-     * @var bool | null
-     */
     protected $bounced;
 
-    /**
-     * @var bool | null
-     */
     protected $parsed = false;
 
-    /**
-     * @var \DateTime
-     */
     protected $parserScheduledAt;
 
     /**
      * comment: enum:inbound|outbound
-     * @var string | null
      */
     protected $direction;
 
-    /**
-     * @var string | null
-     */
     protected $cgrid;
 
     /**
@@ -166,10 +130,10 @@ abstract class TrunksCdrAbstract
      * Constructor
      */
     protected function __construct(
-        $startTime,
-        $endTime,
-        $duration,
-        $parserScheduledAt
+        \DateTimeInterface|string $startTime,
+        \DateTimeInterface|string $endTime,
+        float $duration,
+        \DateTimeInterface|string $parserScheduledAt
     ) {
         $this->setStartTime($startTime);
         $this->setEndTime($endTime);
@@ -198,9 +162,8 @@ abstract class TrunksCdrAbstract
 
     /**
      * @param mixed $id
-     * @return TrunksCdrDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TrunksCdrDto
     {
         return new TrunksCdrDto($id);
     }
@@ -322,9 +285,8 @@ abstract class TrunksCdrAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TrunksCdrDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TrunksCdrDto
     {
         return self::createDto()
             ->setStartTime(self::getStartTime())
@@ -403,7 +365,10 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    public function getStartTime(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getStartTime(): \DateTimeInterface
     {
         return clone $this->startTime;
     }
@@ -425,7 +390,10 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    public function getEndTime(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getEndTime(): \DateTimeInterface
     {
         return clone $this->endTime;
     }
@@ -541,7 +509,7 @@ abstract class TrunksCdrAbstract
     protected function setBounced(?bool $bounced = null): static
     {
         if (!is_null($bounced)) {
-            Assertion::between(intval($bounced), 0, 1, 'bounced provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $bounced, 0, 1, 'bounced provided "%s" is not a valid boolean value.');
             $bounced = (bool) $bounced;
         }
 
@@ -558,7 +526,7 @@ abstract class TrunksCdrAbstract
     protected function setParsed(?bool $parsed = null): static
     {
         if (!is_null($parsed)) {
-            Assertion::between(intval($parsed), 0, 1, 'parsed provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $parsed, 0, 1, 'parsed provided "%s" is not a valid boolean value.');
             $parsed = (bool) $parsed;
         }
 
@@ -589,7 +557,10 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    public function getParserScheduledAt(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getParserScheduledAt(): \DateTimeInterface
     {
         return clone $this->parserScheduledAt;
     }

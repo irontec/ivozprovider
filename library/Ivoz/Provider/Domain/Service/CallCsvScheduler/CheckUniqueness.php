@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerRepository;
 
 class CheckUniqueness implements CallCsvSchedulerLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private CallCsvSchedulerRepository $callCsvSchedulerRepository

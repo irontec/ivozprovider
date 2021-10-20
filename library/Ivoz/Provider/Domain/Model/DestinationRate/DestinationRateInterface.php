@@ -17,22 +17,22 @@ interface DestinationRateInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return string
      */
-    public function getCgrTag();
+    public function getCgrTag(): string;
 
     /**
      * @return string
      */
-    public function getCgrRatesTag();
+    public function getCgrRatesTag(): string;
 
     /**
      * @return string
      */
-    public function getCgrDestinationsTag();
+    public function getCgrDestinationsTag(): string;
 
     /**
      * Ensure Valid connectFee format

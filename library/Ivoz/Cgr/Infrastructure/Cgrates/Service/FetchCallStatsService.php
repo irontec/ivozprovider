@@ -10,8 +10,8 @@ use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 
 class FetchCallStatsService implements FetchCallStatsServiceInterface
 {
-    protected $client;
-    protected $carrierRepository;
+    private $client;
+    private $carrierRepository;
 
     public function __construct(
         ClientInterface $client,
@@ -62,7 +62,7 @@ class FetchCallStatsService implements FetchCallStatsServiceInterface
         return $response->ACD ?? null;
     }
 
-    private function sendRequest($method, $payload)
+    private function sendRequest(string $method, array $payload)
     {
         try {
             /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $request */
@@ -83,7 +83,10 @@ class FetchCallStatsService implements FetchCallStatsServiceInterface
 
         $response = $this->client->send($request);
         $responseObject = json_decode(
-            $response->getBody()->__toString()
+            $response->getBody()->__toString(),
+            null,
+            512,
+            JSON_THROW_ON_ERROR
         );
 
         return $responseObject;

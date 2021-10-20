@@ -28,31 +28,20 @@ abstract class ExternalCallFilterAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string | null
      */
     protected $holidayTargetType;
 
-    /**
-     * @var string | null
-     */
     protected $holidayNumberValue;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string | null
      */
     protected $outOfScheduleTargetType;
 
-    /**
-     * @var string | null
-     */
     protected $outOfScheduleNumberValue;
 
     /**
@@ -109,7 +98,7 @@ abstract class ExternalCallFilterAbstract
      * Constructor
      */
     protected function __construct(
-        $name
+        string $name
     ) {
         $this->setName($name);
     }
@@ -135,9 +124,8 @@ abstract class ExternalCallFilterAbstract
 
     /**
      * @param mixed $id
-     * @return ExternalCallFilterDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ExternalCallFilterDto
     {
         return new ExternalCallFilterDto($id);
     }
@@ -241,9 +229,8 @@ abstract class ExternalCallFilterAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ExternalCallFilterDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ExternalCallFilterDto
     {
         return self::createDto()
             ->setName(self::getName())

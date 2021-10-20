@@ -22,40 +22,25 @@ abstract class TrustedAbstract
 
     /**
      * column: src_ip
-     * @var string | null
      */
     protected $srcIp;
 
-    /**
-     * @var string | null
-     */
     protected $proto;
 
     /**
      * column: from_pattern
-     * @var string | null
      */
     protected $fromPattern;
 
     /**
      * column: ruri_pattern
-     * @var string | null
      */
     protected $ruriPattern;
 
-    /**
-     * @var string | null
-     */
     protected $tag;
 
-    /**
-     * @var string | null
-     */
     protected $description;
 
-    /**
-     * @var int
-     */
     protected $priority = 0;
 
     /**
@@ -67,7 +52,7 @@ abstract class TrustedAbstract
      * Constructor
      */
     protected function __construct(
-        $priority
+        int $priority
     ) {
         $this->setPriority($priority);
     }
@@ -93,9 +78,8 @@ abstract class TrustedAbstract
 
     /**
      * @param mixed $id
-     * @return TrustedDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TrustedDto
     {
         return new TrustedDto($id);
     }
@@ -185,9 +169,8 @@ abstract class TrustedAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TrustedDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TrustedDto
     {
         return self::createDto()
             ->setSrcIp(self::getSrcIp())

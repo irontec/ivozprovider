@@ -18,16 +18,22 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * @return string
      */
-    public function getOwner();
+    public function getOwner(): ?string;
 
     /**
      * @return string
      */
-    public function getParty();
+    public function getParty(): ?string;
 
-    public function getStartTime(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getStartTime(): \DateTimeInterface;
 
-    public function getEndTime(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getEndTime(): \DateTimeInterface;
 
     public function getDuration(): float;
 

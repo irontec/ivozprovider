@@ -22,24 +22,12 @@ abstract class AdministratorRelPublicEntityAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var bool
-     */
     protected $create = false;
 
-    /**
-     * @var bool
-     */
     protected $read = true;
 
-    /**
-     * @var bool
-     */
     protected $update = false;
 
-    /**
-     * @var bool
-     */
     protected $delete = false;
 
     /**
@@ -57,10 +45,10 @@ abstract class AdministratorRelPublicEntityAbstract
      * Constructor
      */
     protected function __construct(
-        $create,
-        $read,
-        $update,
-        $delete
+        bool $create,
+        bool $read,
+        bool $update,
+        bool $delete
     ) {
         $this->setCreate($create);
         $this->setRead($read);
@@ -89,9 +77,8 @@ abstract class AdministratorRelPublicEntityAbstract
 
     /**
      * @param mixed $id
-     * @return AdministratorRelPublicEntityDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): AdministratorRelPublicEntityDto
     {
         return new AdministratorRelPublicEntityDto($id);
     }
@@ -177,9 +164,8 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return AdministratorRelPublicEntityDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): AdministratorRelPublicEntityDto
     {
         return self::createDto()
             ->setCreate(self::getCreate())
@@ -207,7 +193,7 @@ abstract class AdministratorRelPublicEntityAbstract
 
     protected function setCreate(bool $create): static
     {
-        Assertion::between(intval($create), 0, 1, 'create provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $create, 0, 1, 'create provided "%s" is not a valid boolean value.');
         $create = (bool) $create;
 
         $this->create = $create;
@@ -222,7 +208,7 @@ abstract class AdministratorRelPublicEntityAbstract
 
     protected function setRead(bool $read): static
     {
-        Assertion::between(intval($read), 0, 1, 'read provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $read, 0, 1, 'read provided "%s" is not a valid boolean value.');
         $read = (bool) $read;
 
         $this->read = $read;
@@ -237,7 +223,7 @@ abstract class AdministratorRelPublicEntityAbstract
 
     protected function setUpdate(bool $update): static
     {
-        Assertion::between(intval($update), 0, 1, 'update provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $update, 0, 1, 'update provided "%s" is not a valid boolean value.');
         $update = (bool) $update;
 
         $this->update = $update;
@@ -252,7 +238,7 @@ abstract class AdministratorRelPublicEntityAbstract
 
     protected function setDelete(bool $delete): static
     {
-        Assertion::between(intval($delete), 0, 1, 'delete provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $delete, 0, 1, 'delete provided "%s" is not a valid boolean value.');
         $delete = (bool) $delete;
 
         $this->delete = $delete;

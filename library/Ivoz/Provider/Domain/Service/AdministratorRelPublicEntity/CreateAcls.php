@@ -10,7 +10,7 @@ use Ivoz\Provider\Domain\Service\Administrator\AdministratorLifecycleEventHandle
 
 final class CreateAcls implements AdministratorLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private PublicEntityRepository $publicEntityRepository,

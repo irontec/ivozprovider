@@ -22,28 +22,15 @@ abstract class TransformationRuleAbstract
 
     /**
      * comment: enum:callerin|calleein|callerout|calleeout
-     * @var string
      */
     protected $type;
 
-    /**
-     * @var string
-     */
     protected $description = '';
 
-    /**
-     * @var int | null
-     */
     protected $priority;
 
-    /**
-     * @var string | null
-     */
     protected $matchExpr;
 
-    /**
-     * @var string | null
-     */
     protected $replaceExpr;
 
     /**
@@ -56,8 +43,8 @@ abstract class TransformationRuleAbstract
      * Constructor
      */
     protected function __construct(
-        $type,
-        $description
+        string $type,
+        string $description
     ) {
         $this->setType($type);
         $this->setDescription($description);
@@ -84,9 +71,8 @@ abstract class TransformationRuleAbstract
 
     /**
      * @param mixed $id
-     * @return TransformationRuleDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TransformationRuleDto
     {
         return new TransformationRuleDto($id);
     }
@@ -172,9 +158,8 @@ abstract class TransformationRuleAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TransformationRuleDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TransformationRuleDto
     {
         return self::createDto()
             ->setType(self::getType())

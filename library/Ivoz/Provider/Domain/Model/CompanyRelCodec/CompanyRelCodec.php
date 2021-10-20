@@ -14,7 +14,7 @@ class CompanyRelCodec extends CompanyRelCodecAbstract implements CompanyRelCodec
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

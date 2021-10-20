@@ -26,7 +26,7 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     private $threshold = 0;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $lastSent;
 
@@ -121,14 +121,14 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return $this->threshold;
     }
 
-    public function setLastSent(null|\DateTime|string $lastSent): static
+    public function setLastSent(null|\DateTimeInterface|string $lastSent): static
     {
         $this->lastSent = $lastSent;
 
         return $this;
     }
 
-    public function getLastSent(): \DateTime|string|null
+    public function getLastSent(): \DateTimeInterface|string|null
     {
         return $this->lastSent;
     }

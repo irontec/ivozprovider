@@ -15,7 +15,7 @@ class Calendar extends CalendarAbstract implements CalendarInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -36,7 +36,7 @@ class Calendar extends CalendarAbstract implements CalendarInterface
      * @param \DateTime $datetime
      * @return bool
      */
-    public function isHolidayDate(\DateTime $datetime)
+    public function isHolidayDate(\DateTimeInterface $datetime)
     {
         return $this->getHolidayDate($datetime) !== null;
     }
@@ -47,7 +47,7 @@ class Calendar extends CalendarAbstract implements CalendarInterface
      * @param \DateTime $dateTime
      * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface|null
      */
-    public function getHolidayDate(\DateTime $dateTime)
+    public function getHolidayDate(\DateTimeInterface $dateTime)
     {
         // Find HolidayDates for the given date that apply the whole day
         // or time is between the range of the event

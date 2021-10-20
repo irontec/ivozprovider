@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 interface TpRatingPlanInterface extends LoggableEntityInterface
 {
 
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getTpid(): string;
 
@@ -23,7 +23,10 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
 
     public function getWeight(): float;
 
-    public function getCreatedAt(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface;
 
     public function setRatingPlan(RatingPlanInterface $ratingPlan): static;
 

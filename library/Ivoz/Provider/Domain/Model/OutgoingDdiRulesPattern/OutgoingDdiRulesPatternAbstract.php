@@ -26,24 +26,16 @@ abstract class OutgoingDdiRulesPatternAbstract
 
     /**
      * comment: enum:prefix|destination
-     * @var string
      */
     protected $type;
 
-    /**
-     * @var string | null
-     */
     protected $prefix;
 
     /**
      * comment: enum:keep|force
-     * @var string
      */
     protected $action;
 
-    /**
-     * @var int
-     */
     protected $priority = 1;
 
     /**
@@ -66,9 +58,9 @@ abstract class OutgoingDdiRulesPatternAbstract
      * Constructor
      */
     protected function __construct(
-        $type,
-        $action,
-        $priority
+        string $type,
+        string $action,
+        int $priority
     ) {
         $this->setType($type);
         $this->setAction($action);
@@ -96,9 +88,8 @@ abstract class OutgoingDdiRulesPatternAbstract
 
     /**
      * @param mixed $id
-     * @return OutgoingDdiRulesPatternDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): OutgoingDdiRulesPatternDto
     {
         return new OutgoingDdiRulesPatternDto($id);
     }
@@ -186,9 +177,8 @@ abstract class OutgoingDdiRulesPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return OutgoingDdiRulesPatternDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): OutgoingDdiRulesPatternDto
     {
         return self::createDto()
             ->setType(self::getType())

@@ -11,11 +11,11 @@ class UserDto extends UserDtoAbstract
         'pass',
     ];
 
-    const CONTEXT_MY_PROFILE = 'myProfile';
-    const CONTEXT_PUT_MY_PROFILE = 'updateMyProfile';
-    const CONTEXT_WITH_PICKUP_GROUPS = 'withPickupGroups';
+    public const CONTEXT_MY_PROFILE = 'myProfile';
+    public const CONTEXT_PUT_MY_PROFILE = 'updateMyProfile';
+    public const CONTEXT_WITH_PICKUP_GROUPS = 'withPickupGroups';
 
-    const CONTEXT_TYPES = [
+    public const CONTEXT_TYPES = [
         self::CONTEXT_COLLECTION,
         self::CONTEXT_SIMPLE,
         self::CONTEXT_DETAILED,
@@ -24,7 +24,7 @@ class UserDto extends UserDtoAbstract
         self::CONTEXT_WITH_PICKUP_GROUPS
     ];
 
-    const CONTEXTS_WITH_PICKUP_GROUPS = [
+    public const CONTEXTS_WITH_PICKUP_GROUPS = [
         self::CONTEXT_WITH_PICKUP_GROUPS,
         self::CONTEXT_DETAILED
     ];
@@ -37,13 +37,13 @@ class UserDto extends UserDtoAbstract
      *     description="Pickup group ids"
      * )
      */
-    protected $pickupGroupIds = [];
+    private $pickupGroupIds = [];
 
     /**
      * @var string
      * @AttributeDefinition(type="string", description="required in order to update user password")
      */
-    protected $oldPass;
+    private $oldPass;
 
     /**
      * @return string

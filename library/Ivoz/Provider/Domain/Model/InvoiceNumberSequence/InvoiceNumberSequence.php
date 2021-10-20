@@ -13,7 +13,7 @@ class InvoiceNumberSequence extends InvoiceNumberSequenceAbstract implements Inv
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -45,7 +45,7 @@ class InvoiceNumberSequence extends InvoiceNumberSequenceAbstract implements Inv
      *
      * @return string
      */
-    public function nextval()
+    public function nextval(): ?string
     {
         $iteration = $this->getIteration() + 1;
         $sequence = str_pad(

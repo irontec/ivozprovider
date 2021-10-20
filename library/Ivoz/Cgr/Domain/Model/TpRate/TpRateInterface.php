@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 interface TpRateInterface extends LoggableEntityInterface
 {
 
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Validate RateIncrement has valid unit
@@ -37,7 +37,10 @@ interface TpRateInterface extends LoggableEntityInterface
 
     public function getGroupIntervalStart(): string;
 
-    public function getCreatedAt(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface;
 
     public function setDestinationRate(DestinationRateInterface $destinationRate): static;
 

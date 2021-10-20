@@ -19,7 +19,7 @@ class ARIConnector
     /**
      * Exceptions thrown
      */
-    const NO_SERVERS_AVAILABLE_EXCEPTION = 9001;
+    public const NO_SERVERS_AVAILABLE_EXCEPTION = 9001;
 
     /**
      * Connection information
@@ -81,9 +81,9 @@ class ARIConnector
      * @return string|bool true on success or false on failure. However, if the CURLOPT_RETURNTRANSFER
      * option is set, it will return the result on success, false on failure.
      */
-    private function _post($ch, $url, $postdata)
+    private function _post($ch, $url, array $postdata)
     {
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postdata));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postdata, JSON_THROW_ON_ERROR));
         curl_setopt($ch, CURLOPT_URL, $url);
         return curl_exec($ch);
     }

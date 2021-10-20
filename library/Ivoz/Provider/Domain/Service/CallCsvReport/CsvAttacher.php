@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private EntityTools $entityTools,
@@ -83,8 +83,8 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
         $timezone = new \DateTimeZone(
             $callCsvReport->getTimezone()->getTz()
         );
-        $inDate->setTimezone($timezone);
-        $outDate->setTimezone($timezone);
+        $inDate = $inDate->setTimezone($timezone);
+        $outDate = $outDate->setTimezone($timezone);
 
         $name = $company
             ? $company->getName()
@@ -110,8 +110,8 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
 
     private function cleanSensitiveDataIfNecessary(
         string $csv,
-        BrandInterface $brand = null,
-        CompanyInterface $company = null
+        ?BrandInterface $brand = null,
+        ?CompanyInterface $company = null
     ): string {
         if ($brand) {
             return $csv;

@@ -21,56 +21,43 @@ abstract class TpDestinationRateAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $tpid = 'ivozprovider';
 
-    /**
-     * @var string | null
-     */
     protected $tag;
 
     /**
      * column: destinations_tag
-     * @var string | null
      */
     protected $destinationsTag;
 
     /**
      * column: rates_tag
-     * @var string | null
      */
     protected $ratesTag;
 
     /**
      * column: rounding_method
      * comment: enum:*up|*upmincost
-     * @var string
      */
     protected $roundingMethod = '*up';
 
     /**
      * column: rounding_decimals
-     * @var int
      */
     protected $roundingDecimals = 4;
 
     /**
      * column: max_cost
-     * @var float
      */
     protected $maxCost = 0;
 
     /**
      * column: max_cost_strategy
-     * @var string
      */
     protected $maxCostStrategy = '';
 
     /**
      * column: created_at
-     * @var \DateTime
      */
     protected $createdAt;
 
@@ -84,12 +71,12 @@ abstract class TpDestinationRateAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $roundingMethod,
-        $roundingDecimals,
-        $maxCost,
-        $maxCostStrategy,
-        $createdAt
+        string $tpid,
+        string $roundingMethod,
+        int $roundingDecimals,
+        float $maxCost,
+        string $maxCostStrategy,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setRoundingMethod($roundingMethod);
@@ -120,9 +107,8 @@ abstract class TpDestinationRateAbstract
 
     /**
      * @param mixed $id
-     * @return TpDestinationRateDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TpDestinationRateDto
     {
         return new TpDestinationRateDto($id);
     }
@@ -216,9 +202,8 @@ abstract class TpDestinationRateAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TpDestinationRateDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TpDestinationRateDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -391,7 +376,10 @@ abstract class TpDestinationRateAbstract
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }

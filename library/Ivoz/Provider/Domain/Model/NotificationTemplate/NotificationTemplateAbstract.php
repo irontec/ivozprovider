@@ -20,14 +20,10 @@ abstract class NotificationTemplateAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
      * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage
-     * @var string
      */
     protected $type;
 
@@ -40,8 +36,8 @@ abstract class NotificationTemplateAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $type
+        string $name,
+        string $type
     ) {
         $this->setName($name);
         $this->setType($type);
@@ -68,9 +64,8 @@ abstract class NotificationTemplateAbstract
 
     /**
      * @param mixed $id
-     * @return NotificationTemplateDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): NotificationTemplateDto
     {
         return new NotificationTemplateDto($id);
     }
@@ -150,9 +145,8 @@ abstract class NotificationTemplateAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return NotificationTemplateDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): NotificationTemplateDto
     {
         return self::createDto()
             ->setName(self::getName())

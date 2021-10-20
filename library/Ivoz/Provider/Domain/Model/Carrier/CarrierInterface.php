@@ -25,22 +25,22 @@ interface CarrierInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return string
      */
-    public function getCgrSubject();
+    public function getCgrSubject(): string;
 
     /**
      * @return string
      */
-    public function getCurrencySymbol();
+    public function getCurrencySymbol(): string;
 
     /**
      * @return string
      */
-    public function getCurrencyIden();
+    public function getCurrencyIden(): string;
 
     public function getDescription(): string;
 

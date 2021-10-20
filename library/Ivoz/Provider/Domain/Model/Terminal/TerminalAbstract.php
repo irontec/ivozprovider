@@ -25,60 +25,40 @@ abstract class TerminalAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string
-     */
     protected $disallow = 'all';
 
     /**
      * column: allow_audio
-     * @var string
      */
     protected $allowAudio = 'alaw';
 
     /**
      * column: allow_video
-     * @var string | null
      */
     protected $allowVideo;
 
     /**
      * column: direct_media_method
      * comment: enum:update|invite|reinvite
-     * @var string
      */
     protected $directMediaMethod = 'update';
 
     /**
      * comment: password
-     * @var string
      */
     protected $password = '';
 
-    /**
-     * @var string | null
-     */
     protected $mac;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $lastProvisionDate;
 
     /**
      * comment: enum:yes|no
-     * @var string
      */
     protected $t38Passthrough = 'no';
 
-    /**
-     * @var bool
-     */
     protected $rtpEncryption = false;
 
     /**
@@ -102,13 +82,13 @@ abstract class TerminalAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $disallow,
-        $allowAudio,
-        $directMediaMethod,
-        $password,
-        $t38Passthrough,
-        $rtpEncryption
+        string $name,
+        string $disallow,
+        string $allowAudio,
+        string $directMediaMethod,
+        string $password,
+        string $t38Passthrough,
+        bool $rtpEncryption
     ) {
         $this->setName($name);
         $this->setDisallow($disallow);
@@ -140,9 +120,8 @@ abstract class TerminalAbstract
 
     /**
      * @param mixed $id
-     * @return TerminalDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TerminalDto
     {
         return new TerminalDto($id);
     }
@@ -242,9 +221,8 @@ abstract class TerminalAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TerminalDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TerminalDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -416,7 +394,10 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    public function getLastProvisionDate(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastProvisionDate(): ?\DateTimeInterface
     {
         return !is_null($this->lastProvisionDate) ? clone $this->lastProvisionDate : null;
     }
@@ -444,7 +425,7 @@ abstract class TerminalAbstract
 
     protected function setRtpEncryption(bool $rtpEncryption): static
     {
-        Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $rtpEncryption, 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
         $rtpEncryption = (bool) $rtpEncryption;
 
         $this->rtpEncryption = $rtpEncryption;

@@ -18,7 +18,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @param Criteria|null $criteria

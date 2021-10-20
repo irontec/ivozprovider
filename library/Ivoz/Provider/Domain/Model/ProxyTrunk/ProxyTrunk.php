@@ -11,13 +11,13 @@ class ProxyTrunk extends ProxyTrunkAbstract implements ProxyTrunkInterface
 {
     use ProxyTrunkTrait;
 
-    const MAIN_ADDRESS_ID = 1;
+    public const MAIN_ADDRESS_ID = 1;
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

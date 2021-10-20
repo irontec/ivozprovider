@@ -22,29 +22,16 @@ abstract class NotificationTemplateContentAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $fromName;
 
-    /**
-     * @var string | null
-     */
     protected $fromAddress;
 
-    /**
-     * @var string
-     */
     protected $subject;
 
-    /**
-     * @var string
-     */
     protected $body;
 
     /**
      * comment: enum:text/plain|text/html
-     * @var string
      */
     protected $bodyType = 'text/plain';
 
@@ -63,9 +50,9 @@ abstract class NotificationTemplateContentAbstract
      * Constructor
      */
     protected function __construct(
-        $subject,
-        $body,
-        $bodyType
+        string $subject,
+        string $body,
+        string $bodyType
     ) {
         $this->setSubject($subject);
         $this->setBody($body);
@@ -93,9 +80,8 @@ abstract class NotificationTemplateContentAbstract
 
     /**
      * @param mixed $id
-     * @return NotificationTemplateContentDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): NotificationTemplateContentDto
     {
         return new NotificationTemplateContentDto($id);
     }
@@ -183,9 +169,8 @@ abstract class NotificationTemplateContentAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return NotificationTemplateContentDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): NotificationTemplateContentDto
     {
         return self::createDto()
             ->setFromName(self::getFromName())

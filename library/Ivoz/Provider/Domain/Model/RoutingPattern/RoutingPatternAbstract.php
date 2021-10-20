@@ -22,9 +22,6 @@ abstract class RoutingPatternAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $prefix;
 
     /**
@@ -46,7 +43,7 @@ abstract class RoutingPatternAbstract
      * Constructor
      */
     protected function __construct(
-        $prefix,
+        string $prefix,
         Name $name,
         Description $description
     ) {
@@ -76,9 +73,8 @@ abstract class RoutingPatternAbstract
 
     /**
      * @param mixed $id
-     * @return RoutingPatternDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): RoutingPatternDto
     {
         return new RoutingPatternDto($id);
     }
@@ -188,9 +184,8 @@ abstract class RoutingPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return RoutingPatternDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): RoutingPatternDto
     {
         return self::createDto()
             ->setPrefix(self::getPrefix())

@@ -14,7 +14,7 @@ use Ivoz\Provider\Domain\Model\Feature\Feature;
  */
 class ForceExternallyRated implements CarrierLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private EntityTools $entityTools

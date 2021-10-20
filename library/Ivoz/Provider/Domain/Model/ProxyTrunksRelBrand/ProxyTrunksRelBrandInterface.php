@@ -15,7 +15,7 @@ interface ProxyTrunksRelBrandInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function setBrand(?BrandInterface $brand = null): static;
 

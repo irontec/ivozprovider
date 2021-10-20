@@ -61,9 +61,8 @@ abstract class ExternalCallFilterRelCalendarAbstract
 
     /**
      * @param mixed $id
-     * @return ExternalCallFilterRelCalendarDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ExternalCallFilterRelCalendarDto
     {
         return new ExternalCallFilterRelCalendarDto($id);
     }
@@ -140,9 +139,8 @@ abstract class ExternalCallFilterRelCalendarAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ExternalCallFilterRelCalendarDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ExternalCallFilterRelCalendarDto
     {
         return self::createDto()
             ->setFilter(ExternalCallFilter::entityToDto(self::getFilter(), $depth))

@@ -6,7 +6,7 @@ use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 
 class CheckValidCurrency implements RatingPlanLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public static function getSubscribedEvents()
     {

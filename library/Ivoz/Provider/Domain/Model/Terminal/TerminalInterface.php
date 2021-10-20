@@ -17,15 +17,15 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface TerminalInterface extends LoggableEntityInterface
 {
-    const DIRECTMEDIAMETHOD_UPDATE = 'update';
+    public const DIRECTMEDIAMETHOD_UPDATE = 'update';
 
-    const DIRECTMEDIAMETHOD_INVITE = 'invite';
+    public const DIRECTMEDIAMETHOD_INVITE = 'invite';
 
-    const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
+    public const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
 
-    const T38PASSTHROUGH_YES = 'yes';
+    public const T38PASSTHROUGH_YES = 'yes';
 
-    const T38PASSTHROUGH_NO = 'no';
+    public const T38PASSTHROUGH_NO = 'no';
 
     /**
      * @return array
@@ -44,19 +44,19 @@ interface TerminalInterface extends LoggableEntityInterface
      */
     public function setPassword(string $password): static;
 
-    public static function randomPassword();
+    public static function randomPassword(): string;
 
     public function getUser();
 
     /**
      * @return string
      */
-    public function getContact();
+    public function getContact(): string;
 
     /**
      * @return string
      */
-    public function getSorcery();
+    public function getSorcery(): string;
 
     /**
      * @return string
@@ -79,7 +79,10 @@ interface TerminalInterface extends LoggableEntityInterface
 
     public function getMac(): ?string;
 
-    public function getLastProvisionDate(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastProvisionDate(): ?\DateTimeInterface;
 
     public function getT38Passthrough(): string;
 

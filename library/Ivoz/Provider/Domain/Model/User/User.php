@@ -7,6 +7,7 @@ use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
 /**
  * User
@@ -19,7 +20,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
     /**
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -48,7 +49,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
         );
     }
 
-    public function serialize()
+    public function serialize(): string
     {
         return serialize(array(
             $this->id,
@@ -291,7 +292,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
     /**
      * @return string comma separated pickup group ids
      */
-    public function getPickUpGroupsIds()
+    public function getPickUpGroupsIds(): string
     {
         $pickUpGroupIds = array();
 
@@ -390,10 +391,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
         return parent::setEmail($email);
     }
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    private function getCompanyTimezone()
+    private function getCompanyTimezone(): ?TimezoneInterface
     {
         return $this
             ->getCompany()
@@ -403,7 +401,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
     /**
      * @return string
      */
-    public function getFullNameExtension()
+    public function getFullNameExtension(): string
     {
         return sprintf(
             "%s %s (%s)",

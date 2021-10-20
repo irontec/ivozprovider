@@ -4,9 +4,9 @@ namespace Ivoz\Provider\Domain\Model\CallForwardSetting;
 
 class CallForwardSettingDto extends CallForwardSettingDtoAbstract
 {
-    const CONTEXT_DETAILED_COLLECTION = 'detailedCollection';
+    public const CONTEXT_DETAILED_COLLECTION = 'detailedCollection';
 
-    const CONTEXT_TYPES = [
+    public const CONTEXT_TYPES = [
         self::CONTEXT_COLLECTION,
         self::CONTEXT_SIMPLE,
         self::CONTEXT_DETAILED,

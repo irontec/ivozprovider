@@ -28,46 +28,26 @@ abstract class IvrAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var int
-     */
     protected $timeout;
 
-    /**
-     * @var int
-     */
     protected $maxDigits;
 
-    /**
-     * @var bool
-     */
     protected $allowExtensions = false;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string | null
      */
     protected $noInputRouteType;
 
-    /**
-     * @var string | null
-     */
     protected $noInputNumberValue;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string | null
      */
     protected $errorRouteType;
 
-    /**
-     * @var string | null
-     */
     protected $errorNumberValue;
 
     /**
@@ -129,10 +109,10 @@ abstract class IvrAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $timeout,
-        $maxDigits,
-        $allowExtensions
+        string $name,
+        int $timeout,
+        int $maxDigits,
+        bool $allowExtensions
     ) {
         $this->setName($name);
         $this->setTimeout($timeout);
@@ -161,9 +141,8 @@ abstract class IvrAbstract
 
     /**
      * @param mixed $id
-     * @return IvrDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): IvrDto
     {
         return new IvrDto($id);
     }
@@ -275,9 +254,8 @@ abstract class IvrAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return IvrDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): IvrDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -373,7 +351,7 @@ abstract class IvrAbstract
 
     protected function setAllowExtensions(bool $allowExtensions): static
     {
-        Assertion::between(intval($allowExtensions), 0, 1, 'allowExtensions provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $allowExtensions, 0, 1, 'allowExtensions provided "%s" is not a valid boolean value.');
         $allowExtensions = (bool) $allowExtensions;
 
         $this->allowExtensions = $allowExtensions;

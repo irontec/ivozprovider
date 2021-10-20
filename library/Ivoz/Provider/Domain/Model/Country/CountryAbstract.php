@@ -20,14 +20,8 @@ abstract class CountryAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $code = '';
 
-    /**
-     * @var string | null
-     */
     protected $countryCode;
 
     /**
@@ -44,7 +38,7 @@ abstract class CountryAbstract
      * Constructor
      */
     protected function __construct(
-        $code,
+        string $code,
         Name $name,
         Zone $zone
     ) {
@@ -74,9 +68,8 @@ abstract class CountryAbstract
 
     /**
      * @param mixed $id
-     * @return CountryDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CountryDto
     {
         return new CountryDto($id);
     }
@@ -186,9 +179,8 @@ abstract class CountryAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CountryDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CountryDto
     {
         return self::createDto()
             ->setCode(self::getCode())

@@ -24,14 +24,10 @@ abstract class MusicOnHoldAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
      * comment: enum:pending|encoding|ready|error
-     * @var string | null
      */
     protected $status;
 
@@ -61,7 +57,7 @@ abstract class MusicOnHoldAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
+        string $name,
         OriginalFile $originalFile,
         EncodedFile $encodedFile
     ) {
@@ -91,9 +87,8 @@ abstract class MusicOnHoldAbstract
 
     /**
      * @param mixed $id
-     * @return MusicOnHoldDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): MusicOnHoldDto
     {
         return new MusicOnHoldDto($id);
     }
@@ -203,9 +198,8 @@ abstract class MusicOnHoldAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return MusicOnHoldDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): MusicOnHoldDto
     {
         return self::createDto()
             ->setName(self::getName())

@@ -13,15 +13,15 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface CallAclInterface extends LoggableEntityInterface
 {
-    const DEFAULTPOLICY_ALLOW = 'allow';
+    public const DEFAULTPOLICY_ALLOW = 'allow';
 
-    const DEFAULTPOLICY_DENY = 'deny';
+    public const DEFAULTPOLICY_DENY = 'deny';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @param string $dst

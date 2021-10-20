@@ -13,7 +13,7 @@ class PublicEntity extends PublicEntityAbstract implements PublicEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

@@ -10,19 +10,19 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 */
 interface TransformationRuleInterface extends LoggableEntityInterface
 {
-    const TYPE_CALLERIN = 'callerin';
+    public const TYPE_CALLERIN = 'callerin';
 
-    const TYPE_CALLEEIN = 'calleein';
+    public const TYPE_CALLEEIN = 'calleein';
 
-    const TYPE_CALLEROUT = 'callerout';
+    public const TYPE_CALLEROUT = 'callerout';
 
-    const TYPE_CALLEEOUT = 'calleeout';
+    public const TYPE_CALLEEOUT = 'calleeout';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * {@inheritDoc}

@@ -20,7 +20,7 @@ class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface,
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -28,7 +28,7 @@ class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface,
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'OriginalFile' => [

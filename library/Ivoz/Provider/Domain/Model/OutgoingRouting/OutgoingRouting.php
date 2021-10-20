@@ -14,24 +14,24 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
      * Available OutgoingRoutings Types
      * @todo restrict values on the setter
      */
-    const TYPE_PATTERN   = 'pattern';
-    const TYPE_GROUP     = 'group';
-    const TYPE_FAX       = 'fax';
+    public const TYPE_PATTERN   = 'pattern';
+    public const TYPE_GROUP     = 'group';
+    public const TYPE_FAX       = 'fax';
 
     /**
      * Available OugoingRoutings Route Mode
      */
     /** @deprecated */
-    const MODE_STATIC = self::ROUTINGMODE_STATIC;
+    public const MODE_STATIC = self::ROUTINGMODE_STATIC;
 
     /** @deprecated */
-    const MODE_LCR    = self::ROUTINGMODE_LCR;
+    public const MODE_LCR    = self::ROUTINGMODE_LCR;
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -113,7 +113,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
      *
      * @return string
      */
-    public function getCgrCategory()
+    public function getCgrCategory(): string
     {
         return sprintf(
             "or%d",
@@ -126,7 +126,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
      *
      * @return string
      */
-    public function getCgrRpCategory()
+    public function getCgrRpCategory(): string
     {
         return sprintf(
             "lcr_profile%d",

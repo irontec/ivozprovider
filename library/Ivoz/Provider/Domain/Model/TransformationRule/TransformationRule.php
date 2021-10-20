@@ -15,7 +15,7 @@ class TransformationRule extends TransformationRuleAbstract implements Transform
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

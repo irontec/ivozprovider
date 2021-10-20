@@ -21,155 +21,108 @@ abstract class TpCdrStatAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $tpid = 'ivozprovider';
 
-    /**
-     * @var string
-     */
     protected $tag;
 
     /**
      * column: queue_length
-     * @var int
      */
     protected $queueLength = 0;
 
     /**
      * column: time_window
-     * @var string
      */
     protected $timeWindow = '';
 
     /**
      * column: save_interval
-     * @var string
      */
     protected $saveInterval = '';
 
-    /**
-     * @var string
-     */
     protected $metrics;
 
     /**
      * column: setup_interval
-     * @var string
      */
     protected $setupInterval = '';
 
-    /**
-     * @var string
-     */
     protected $tors = '';
 
     /**
      * column: cdr_hosts
-     * @var string
      */
     protected $cdrHosts = '';
 
     /**
      * column: cdr_sources
-     * @var string
      */
     protected $cdrSources = '';
 
     /**
      * column: req_types
-     * @var string
      */
     protected $reqTypes = '';
 
-    /**
-     * @var string
-     */
     protected $directions = '';
 
-    /**
-     * @var string
-     */
     protected $tenants = '';
 
-    /**
-     * @var string
-     */
     protected $categories = '';
 
-    /**
-     * @var string
-     */
     protected $accounts = '';
 
-    /**
-     * @var string
-     */
     protected $subjects = '';
 
     /**
      * column: destination_ids
-     * @var string
      */
     protected $destinationIds = '';
 
     /**
      * column: ppd_interval
-     * @var string
      */
     protected $ppdInterval = '';
 
     /**
      * column: usage_interval
-     * @var string
      */
     protected $usageInterval = '';
 
-    /**
-     * @var string
-     */
     protected $suppliers = '';
 
     /**
      * column: disconnect_causes
-     * @var string
      */
     protected $disconnectCauses = '';
 
     /**
      * column: mediation_runids
-     * @var string
      */
     protected $mediationRunids = '';
 
     /**
      * column: rated_accounts
-     * @var string
      */
     protected $ratedAccounts = '';
 
     /**
      * column: rated_subjects
-     * @var string
      */
     protected $ratedSubjects = '';
 
     /**
      * column: cost_interval
-     * @var string
      */
     protected $costInterval = '';
 
     /**
      * column: action_triggers
-     * @var string
      */
     protected $actionTriggers = '';
 
     /**
      * column: created_at
-     * @var \DateTime
      */
     protected $createdAt;
 
@@ -183,33 +136,33 @@ abstract class TpCdrStatAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $tag,
-        $queueLength,
-        $timeWindow,
-        $saveInterval,
-        $metrics,
-        $setupInterval,
-        $tors,
-        $cdrHosts,
-        $cdrSources,
-        $reqTypes,
-        $directions,
-        $tenants,
-        $categories,
-        $accounts,
-        $subjects,
-        $destinationIds,
-        $ppdInterval,
-        $usageInterval,
-        $suppliers,
-        $disconnectCauses,
-        $mediationRunids,
-        $ratedAccounts,
-        $ratedSubjects,
-        $costInterval,
-        $actionTriggers,
-        $createdAt
+        string $tpid,
+        string $tag,
+        int $queueLength,
+        string $timeWindow,
+        string $saveInterval,
+        string $metrics,
+        string $setupInterval,
+        string $tors,
+        string $cdrHosts,
+        string $cdrSources,
+        string $reqTypes,
+        string $directions,
+        string $tenants,
+        string $categories,
+        string $accounts,
+        string $subjects,
+        string $destinationIds,
+        string $ppdInterval,
+        string $usageInterval,
+        string $suppliers,
+        string $disconnectCauses,
+        string $mediationRunids,
+        string $ratedAccounts,
+        string $ratedSubjects,
+        string $costInterval,
+        string $actionTriggers,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setTag($tag);
@@ -261,9 +214,8 @@ abstract class TpCdrStatAbstract
 
     /**
      * @param mixed $id
-     * @return TpCdrStatDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TpCdrStatDto
     {
         return new TpCdrStatDto($id);
     }
@@ -393,9 +345,8 @@ abstract class TpCdrStatAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TpCdrStatDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TpCdrStatDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -844,7 +795,10 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }

@@ -16,40 +16,40 @@ use Monolog\Logger;
 
 class Generator
 {
-    const DATE_FORMAT = 'd-m-Y';
-    const DATE_TIME_FORMAT = 'd-m-Y H:i:s';
+    public const DATE_FORMAT = 'd-m-Y';
+    public const DATE_TIME_FORMAT = 'd-m-Y H:i:s';
 
-    const LOGGER_PREFIX = '[Invoices][Generator]';
+    public const LOGGER_PREFIX = '[Invoices][Generator]';
 
-    protected $invoiceId;
-    protected $fixedCostTotal = 0;
-    protected $fixedCosts = array();
-    protected $totals = array();
+    private $invoiceId;
+    private $fixedCostTotal = 0;
+    private $fixedCosts = array();
+    private $totals = array();
 
     /**
      * @var InvoiceRepository
      */
-    protected $invoiceRepository;
+    private $invoiceRepository;
 
     /**
      * @var BillableCallRepository
      */
-    protected $billableCallRepository;
+    private $billableCallRepository;
 
     /**
      * @var EntityTools
      */
-    protected $entityTools;
+    private $entityTools;
 
     /**
      * @var Logger
      */
-    protected $logger;
+    private $logger;
 
     /**
      * @var string
      */
-    protected $vendorDir;
+    private $vendorDir;
 
     /**
      * Generator constructor.
@@ -90,7 +90,7 @@ class Generator
      * @return string
      * @throws \Exception
      */
-    public function getInvoicePDFContents(int $invoiceId)
+    public function getInvoicePDFContents(int $invoiceId): string
     {
         $this->setInvoiceId($invoiceId);
         return $this->_createInvoice();
@@ -122,10 +122,10 @@ class Generator
         $invoiceDate->setTimezone($invoiceTz);
 
         $inDate = $invoice->getInDate();
-        $inDate->setTimezone($invoiceTz);
+        $inDate = $inDate->setTimezone($invoiceTz);
 
         $outDate = $invoice->getOutDate();
-        $outDate->setTimezone($invoiceTz);
+        $outDate = $outDate->setTimezone($invoiceTz);
 
         $invoiceDto = $this->entityTools->entityToDto($invoice);
 
@@ -328,7 +328,7 @@ class Generator
      * @param string|float|int $value2
      * @return string
      */
-    protected function sumAndFormat($value, $value2)
+    protected function sumAndFormat($value, $value2): string
     {
         return $this->formatNumber(
             $this->sumConcepts($value, $value2)
@@ -359,7 +359,7 @@ class Generator
      * @param int $decimals
      * @return string
      */
-    protected function roundAndFormat($value, $decimals = 4)
+    protected function roundAndFormat($value, $decimals = 4): string
     {
         return $this->formatNumber(
             $this->roundNumber($value, $decimals)
@@ -381,7 +381,7 @@ class Generator
      * @param float $number
      * @return string
      */
-    protected function formatNumber($number)
+    protected function formatNumber($number): string
     {
         return number_format(
             $number,

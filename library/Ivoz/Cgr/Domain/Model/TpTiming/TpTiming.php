@@ -9,9 +9,9 @@ class TpTiming extends TpTimingAbstract implements TpTimingInterface
 {
     use TpTimingTrait;
 
-    const TIMING_ANY    = '*any';
-    const TIMING_ALL    = '*all';
-    const TIMING_ASAP   = '*asap';
+    public const TIMING_ANY    = '*any';
+    public const TIMING_ALL    = '*all';
+    public const TIMING_ASAP   = '*asap';
 
     /**
      * Get id

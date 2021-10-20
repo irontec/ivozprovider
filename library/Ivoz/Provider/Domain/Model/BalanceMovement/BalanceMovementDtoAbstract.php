@@ -26,7 +26,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     private $balance = 0;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $createdOn = 'CURRENT_TIMESTAMP';
 
@@ -121,14 +121,14 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
         return $this->balance;
     }
 
-    public function setCreatedOn(null|\DateTime|string $createdOn): static
+    public function setCreatedOn(null|\DateTimeInterface|string $createdOn): static
     {
         $this->createdOn = $createdOn;
 
         return $this;
     }
 
-    public function getCreatedOn(): \DateTime|string|null
+    public function getCreatedOn(): \DateTimeInterface|string|null
     {
         return $this->createdOn;
     }

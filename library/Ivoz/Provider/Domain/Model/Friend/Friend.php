@@ -19,7 +19,7 @@ class Friend extends FriendAbstract implements FriendInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -190,7 +190,7 @@ class Friend extends FriendAbstract implements FriendInterface
     /**
      * @return string
      */
-    public function getContact()
+    public function getContact(): string
     {
         return sprintf(
             "sip:%s@%s",
@@ -202,7 +202,7 @@ class Friend extends FriendAbstract implements FriendInterface
     /**
      * @return string
      */
-    public function getSorcery()
+    public function getSorcery(): string
     {
         return sprintf(
             "b%dc%df%d_%s",
@@ -261,7 +261,7 @@ class Friend extends FriendAbstract implements FriendInterface
         return $callAcl->dstIsCallable($exten);
     }
 
-    public function getLanguageCode()
+    public function getLanguageCode(): string
     {
         $language = $this->getLanguage();
         if (!$language) {

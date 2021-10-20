@@ -14,15 +14,15 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface OutgoingDdiRuleInterface extends LoggableEntityInterface
 {
-    const DEFAULTACTION_KEEP = 'keep';
+    public const DEFAULTACTION_KEEP = 'keep';
 
-    const DEFAULTACTION_FORCE = 'force';
+    public const DEFAULTACTION_FORCE = 'force';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Return forced Ddi for this rule

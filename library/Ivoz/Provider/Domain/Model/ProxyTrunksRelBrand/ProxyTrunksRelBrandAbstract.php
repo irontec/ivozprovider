@@ -61,9 +61,8 @@ abstract class ProxyTrunksRelBrandAbstract
 
     /**
      * @param mixed $id
-     * @return ProxyTrunksRelBrandDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ProxyTrunksRelBrandDto
     {
         return new ProxyTrunksRelBrandDto($id);
     }
@@ -140,9 +139,8 @@ abstract class ProxyTrunksRelBrandAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ProxyTrunksRelBrandDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ProxyTrunksRelBrandDto
     {
         return self::createDto()
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))

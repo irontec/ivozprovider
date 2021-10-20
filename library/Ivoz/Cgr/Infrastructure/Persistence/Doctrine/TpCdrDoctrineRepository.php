@@ -53,7 +53,7 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
             return $qb
                 ->getQuery()
                 ->getSingleResult();
-        } catch (NoResultException $error) {
+        } catch (NoResultException) {
         }
 
         return null;
@@ -79,7 +79,7 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
             return $qb
                 ->getQuery()
                 ->getSingleResult();
-        } catch (NoResultException $error) {
+        } catch (NoResultException) {
         }
 
         return null;

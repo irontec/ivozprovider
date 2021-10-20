@@ -13,7 +13,7 @@ class ConferenceRoom extends ConferenceRoomAbstract implements ConferenceRoomInt
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

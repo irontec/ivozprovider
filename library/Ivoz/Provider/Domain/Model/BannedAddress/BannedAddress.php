@@ -13,7 +13,7 @@ class BannedAddress extends BannedAddressAbstract implements BannedAddressInterf
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

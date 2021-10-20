@@ -19,7 +19,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class BillableCallHistoricDoctrineRepository extends ServiceEntityRepository implements BillableCallHistoricRepository
 {
-    protected $queryRunner;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,
@@ -56,7 +56,7 @@ class BillableCallHistoricDoctrineRepository extends ServiceEntityRepository imp
             $fromId = (new Query($this->_em))
                 ->setDQL($query)
                 ->getSingleScalarResult();
-        } catch (NoResultException $e) {
+        } catch (NoResultException) {
         }
 
         return $fromId ?? 0;

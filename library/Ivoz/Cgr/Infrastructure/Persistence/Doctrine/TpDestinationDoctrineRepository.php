@@ -18,7 +18,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TpDestinationDoctrineRepository extends ServiceEntityRepository implements TpDestinationRepository
 {
-    protected $queryRunner;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,
@@ -31,7 +31,7 @@ class TpDestinationDoctrineRepository extends ServiceEntityRepository implements
     /**
      * @return int affected rows
      */
-    public function syncWithBusiness($brandId)
+    public function syncWithBusiness($brandId): int
     {
         $tpDestinationInsert =
             'INSERT IGNORE INTO tp_destinations (tpid, tag, prefix, destinationId)'

@@ -22,17 +22,17 @@ use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarri
 */
 interface OutgoingRoutingInterface extends LoggableEntityInterface
 {
-    const ROUTINGMODE_STATIC = 'static';
+    public const ROUTINGMODE_STATIC = 'static';
 
-    const ROUTINGMODE_LCR = 'lcr';
+    public const ROUTINGMODE_LCR = 'lcr';
 
-    const ROUTINGMODE_BLOCK = 'block';
+    public const ROUTINGMODE_BLOCK = 'block';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @todo awkward return type
@@ -45,14 +45,14 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getCgrCategory();
+    public function getCgrCategory(): string;
 
     /**
      * Return CGRates tag for LCR rating plan category
      *
      * @return string
      */
-    public function getCgrRpCategory();
+    public function getCgrRpCategory(): string;
 
     /**
      * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $pattern

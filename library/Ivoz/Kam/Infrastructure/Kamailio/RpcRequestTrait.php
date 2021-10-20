@@ -42,7 +42,7 @@ trait RpcRequestTrait
         /** @var Response $response */
         $response = $this->rpcClient->send($request);
         $stringResponse = (string) $response->getBody();
-        $objectResponse = json_decode($stringResponse);
+        $objectResponse = json_decode($stringResponse, null, 512, JSON_THROW_ON_ERROR);
 
         if (!is_null($timeout)) {
             // Restore timeout
@@ -69,14 +69,14 @@ trait RpcRequestTrait
      */
     private function setTimeout(int $timeout)
     {
-        (function () use ($timeout) {
+        (function () use ($timeout): void {
 
             /** @var \GuzzleHttp\Client $client */
             $client = $this->httpClient;
             $config = $client->getConfig();
             $config['timeout'] = $timeout;
 
-            (function () use ($config) {
+            (function () use ($config): void {
                 $this->config = $config;
             })->call($client);
         })->call($this->rpcClient);
@@ -93,6 +93,6 @@ trait RpcRequestTrait
             return $config['timeout'] ?? 0;
         })->call($this->rpcClient);
 
-        return intval($response);
+        return (int) $response;
     }
 }

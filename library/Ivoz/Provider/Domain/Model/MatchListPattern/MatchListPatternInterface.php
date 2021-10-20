@@ -11,15 +11,15 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 */
 interface MatchListPatternInterface extends LoggableEntityInterface
 {
-    const TYPE_NUMBER = 'number';
+    public const TYPE_NUMBER = 'number';
 
-    const TYPE_REGEXP = 'regexp';
+    public const TYPE_REGEXP = 'regexp';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Get Number value in E.164 format

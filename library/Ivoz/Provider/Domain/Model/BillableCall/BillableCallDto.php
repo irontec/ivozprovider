@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\BillableCall;
 
 class BillableCallDto extends BillableCallDtoAbstract
 {
-    const CONTEXT_RATING = 'rating';
-    const CONTEXT_RATING_INTERNAL = 'rating-internal';
+    public const CONTEXT_RATING = 'rating';
+    public const CONTEXT_RATING_INTERNAL = 'rating-internal';
 
     /**
      * @inheritdoc
@@ -108,7 +108,7 @@ class BillableCallDto extends BillableCallDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
@@ -140,7 +140,7 @@ class BillableCallDto extends BillableCallDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY

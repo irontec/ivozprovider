@@ -12,7 +12,7 @@ class Voicemail extends VoicemailAbstract implements VoicemailInterface
     /**
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

@@ -14,7 +14,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     /**
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getContext(): string;
 
@@ -80,7 +80,10 @@ interface VoicemailInterface extends LoggableEntityInterface
 
     public function getImapflags(): ?string;
 
-    public function getStamp(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getStamp(): ?\DateTimeInterface;
 
     public function getUser(): ?UserInterface;
 

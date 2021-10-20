@@ -14,12 +14,12 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
     /**
      * @deprecated
      */
-    const TIMING_TYPE_ALWAYS = self::TIMINGTYPE_ALWAYS;
+    public const TIMING_TYPE_ALWAYS = self::TIMINGTYPE_ALWAYS;
 
     /**
      * @deprecated
      */
-    const TIMING_TYPE_CUSTOM = self::TIMINGTYPE_CUSTOM;
+    public const TIMING_TYPE_CUSTOM = self::TIMINGTYPE_CUSTOM;
 
     /**
      * Get id
@@ -31,7 +31,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
         return $this->id;
     }
 
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -68,7 +68,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
             7 => $this->getSunday(),
         ];
 
-        $weekDays = array_filter($daysMap, function ($v) {
+        $weekDays = array_filter($daysMap, function ($v): bool {
             return $v !== 0;
         });
 
@@ -84,7 +84,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
      *
      * @return string
      */
-    public function getCgrTag()
+    public function getCgrTag(): string
     {
         return $this
             ->getRatingPlanGroup()

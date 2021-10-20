@@ -13,7 +13,7 @@ class TpCdrStat extends TpCdrStatAbstract implements TpCdrStatInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

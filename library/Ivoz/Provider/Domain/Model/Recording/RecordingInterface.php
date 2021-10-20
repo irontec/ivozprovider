@@ -12,24 +12,27 @@ use Ivoz\Core\Domain\Service\TempFile;
 */
 interface RecordingInterface extends LoggableEntityInterface, FileContainerInterface
 {
-    const TYPE_ONDEMAND = 'ondemand';
+    public const TYPE_ONDEMAND = 'ondemand';
 
-    const TYPE_DDI = 'ddi';
+    public const TYPE_DDI = 'ddi';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return array
      */
-    public function getFileObjects(?int $filter = null);
+    public function getFileObjects(?int $filter = null): array;
 
     public function getCallid(): ?string;
 
-    public function getCalldate(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCalldate(): \DateTimeInterface;
 
     public function getType(): string;
 

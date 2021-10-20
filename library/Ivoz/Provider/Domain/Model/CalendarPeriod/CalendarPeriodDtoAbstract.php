@@ -20,12 +20,12 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $startDate;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $endDate;
 
@@ -135,26 +135,26 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setStartDate(null|\DateTime|string $startDate): static
+    public function setStartDate(null|\DateTimeInterface|string $startDate): static
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    public function getStartDate(): \DateTime|string|null
+    public function getStartDate(): \DateTimeInterface|string|null
     {
         return $this->startDate;
     }
 
-    public function setEndDate(null|\DateTime|string $endDate): static
+    public function setEndDate(null|\DateTimeInterface|string $endDate): static
     {
         $this->endDate = $endDate;
 
         return $this;
     }
 
-    public function getEndDate(): \DateTime|string|null
+    public function getEndDate(): \DateTimeInterface|string|null
     {
         return $this->endDate;
     }

@@ -30,30 +30,17 @@ abstract class BrandAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
      * column: domain_users
-     * @var string | null
      */
     protected $domainUsers;
 
-    /**
-     * @var int | null
-     */
     protected $recordingsLimitMB;
 
-    /**
-     * @var string | null
-     */
     protected $recordingsLimitEmail;
 
-    /**
-     * @var int
-     */
     protected $maxCalls = 0;
 
     /**
@@ -115,8 +102,8 @@ abstract class BrandAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $maxCalls,
+        string $name,
+        int $maxCalls,
         Logo $logo,
         Invoice $invoice
     ) {
@@ -147,9 +134,8 @@ abstract class BrandAbstract
 
     /**
      * @param mixed $id
-     * @return BrandDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): BrandDto
     {
         return new BrandDto($id);
     }
@@ -287,9 +273,8 @@ abstract class BrandAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return BrandDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): BrandDto
     {
         return self::createDto()
             ->setName(self::getName())

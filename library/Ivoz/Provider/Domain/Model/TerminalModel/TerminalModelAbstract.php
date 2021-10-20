@@ -20,39 +20,18 @@ abstract class TerminalModelAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $iden;
 
-    /**
-     * @var string
-     */
     protected $name = '';
 
-    /**
-     * @var string
-     */
     protected $description = '';
 
-    /**
-     * @var string | null
-     */
     protected $genericTemplate;
 
-    /**
-     * @var string | null
-     */
     protected $specificTemplate;
 
-    /**
-     * @var string | null
-     */
     protected $genericUrlPattern;
 
-    /**
-     * @var string | null
-     */
     protected $specificUrlPattern;
 
     /**
@@ -64,9 +43,9 @@ abstract class TerminalModelAbstract
      * Constructor
      */
     protected function __construct(
-        $iden,
-        $name,
-        $description
+        string $iden,
+        string $name,
+        string $description
     ) {
         $this->setIden($iden);
         $this->setName($name);
@@ -94,9 +73,8 @@ abstract class TerminalModelAbstract
 
     /**
      * @param mixed $id
-     * @return TerminalModelDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TerminalModelDto
     {
         return new TerminalModelDto($id);
     }
@@ -186,9 +164,8 @@ abstract class TerminalModelAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TerminalModelDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TerminalModelDto
     {
         return self::createDto()
             ->setIden(self::getIden())

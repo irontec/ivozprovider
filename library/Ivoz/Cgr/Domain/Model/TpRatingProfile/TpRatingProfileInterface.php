@@ -15,7 +15,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getTpid(): string;
 
@@ -37,7 +37,10 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
 
     public function getCdrStatQueueIds(): ?string;
 
-    public function getCreatedAt(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface;
 
     public function setRatingProfile(?RatingProfileInterface $ratingProfile = null): static;
 

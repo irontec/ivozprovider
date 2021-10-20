@@ -20,42 +20,35 @@ abstract class TrunksHtableAbstract
 
     /**
      * column: key_name
-     * @var string
      */
     protected $keyName = '';
 
     /**
      * column: key_type
-     * @var int
      */
     protected $keyType = 0;
 
     /**
      * column: value_type
-     * @var int
      */
     protected $valueType = 0;
 
     /**
      * column: key_value
-     * @var string
      */
     protected $keyValue = '';
 
-    /**
-     * @var int
-     */
     protected $expires = 0;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $keyName,
-        $keyType,
-        $valueType,
-        $keyValue,
-        $expires
+        string $keyName,
+        int $keyType,
+        int $valueType,
+        string $keyValue,
+        int $expires
     ) {
         $this->setKeyName($keyName);
         $this->setKeyType($keyType);
@@ -85,9 +78,8 @@ abstract class TrunksHtableAbstract
 
     /**
      * @param mixed $id
-     * @return TrunksHtableDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TrunksHtableDto
     {
         return new TrunksHtableDto($id);
     }
@@ -171,9 +163,8 @@ abstract class TrunksHtableAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TrunksHtableDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TrunksHtableDto
     {
         return self::createDto()
             ->setKeyName(self::getKeyName())

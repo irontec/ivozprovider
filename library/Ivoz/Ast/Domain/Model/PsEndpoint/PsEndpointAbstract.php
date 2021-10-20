@@ -28,119 +28,87 @@ abstract class PsEndpointAbstract
 
     /**
      * column: sorcery_id
-     * @var string
      */
     protected $sorceryId;
 
     /**
      * column: from_domain
-     * @var string | null
      */
     protected $fromDomain;
 
-    /**
-     * @var string | null
-     */
     protected $aors;
 
-    /**
-     * @var string | null
-     */
     protected $callerid;
 
-    /**
-     * @var string
-     */
     protected $context = 'users';
 
-    /**
-     * @var string
-     */
     protected $disallow = 'all';
 
-    /**
-     * @var string
-     */
     protected $allow = 'all';
 
     /**
      * column: direct_media
-     * @var string | null
      */
     protected $directMedia = 'yes';
 
     /**
      * column: direct_media_method
      * comment: enum:update|invite|reinvite
-     * @var string | null
      */
     protected $directMediaMethod = 'update';
 
-    /**
-     * @var string | null
-     */
     protected $mailboxes;
 
     /**
      * column: named_pickup_group
-     * @var string | null
      */
     protected $namedPickupGroup;
 
     /**
      * column: send_diversion
-     * @var string | null
      */
     protected $sendDiversion = 'yes';
 
     /**
      * column: send_pai
-     * @var string | null
      */
     protected $sendPai = 'yes';
 
     /**
      * column: 100rel
-     * @var string
      */
     protected $oneHundredRel = 'no';
 
     /**
      * column: outbound_proxy
-     * @var string | null
      */
     protected $outboundProxy;
 
     /**
      * column: trust_id_inbound
-     * @var string | null
      */
     protected $trustIdInbound;
 
     /**
      * column: t38_udptl
      * comment: enum:yes|no
-     * @var string
      */
     protected $t38Udptl = 'no';
 
     /**
      * column: t38_udptl_ec
      * comment: enum:none|fec|redundancy
-     * @var string
      */
     protected $t38UdptlEc = 'redundancy';
 
     /**
      * column: t38_udptl_maxdatagram
-     * @var int
      */
     protected $t38UdptlMaxdatagram = 1440;
 
     /**
      * column: t38_udptl_nat
      * comment: enum:yes|no
-     * @var string
      */
     protected $t38UdptlNat = 'no';
 
@@ -172,15 +140,15 @@ abstract class PsEndpointAbstract
      * Constructor
      */
     protected function __construct(
-        $sorceryId,
-        $context,
-        $disallow,
-        $allow,
-        $oneHundredRel,
-        $t38Udptl,
-        $t38UdptlEc,
-        $t38UdptlMaxdatagram,
-        $t38UdptlNat
+        string $sorceryId,
+        string $context,
+        string $disallow,
+        string $allow,
+        string $oneHundredRel,
+        string $t38Udptl,
+        string $t38UdptlEc,
+        int $t38UdptlMaxdatagram,
+        string $t38UdptlNat
     ) {
         $this->setSorceryId($sorceryId);
         $this->setContext($context);
@@ -214,9 +182,8 @@ abstract class PsEndpointAbstract
 
     /**
      * @param mixed $id
-     * @return PsEndpointDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): PsEndpointDto
     {
         return new PsEndpointDto($id);
     }
@@ -338,9 +305,8 @@ abstract class PsEndpointAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return PsEndpointDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): PsEndpointDto
     {
         return self::createDto()
             ->setSorceryId(self::getSorceryId())

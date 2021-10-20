@@ -22,11 +22,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class BillableCallDoctrineRepository extends ServiceEntityRepository implements BillableCallRepository
 {
-    const MYSQL_DATETIME_FORMAT = 'Y-m-d H:i:s';
+    public const MYSQL_DATETIME_FORMAT = 'Y-m-d H:i:s';
 
     use GetGeneratorByConditionsTrait;
 
-    protected $queryRunner;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,
@@ -291,7 +291,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         return $affectedRows;
     }
 
-    public function getGeneratorByInvoice(InvoiceInterface $invoice)
+    public function getGeneratorByInvoice(InvoiceInterface $invoice): \Generator
     {
         $conditions = $this->getConditionsByInvoice($invoice);
 
@@ -407,7 +407,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
      * @param \DateTime $date
      * @return int
      */
-    public function getMaxIdUntilDate(int $fromId, \DateTime $date): int
+    public function getMaxIdUntilDate(int $fromId, \DateTimeInterface $date): int
     {
         $query =
             'SELECT MAX(B.id) FROM '
@@ -425,7 +425,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             $response = (new Query($this->_em))
                 ->setDQL($maxId)
                 ->getSingleScalarResult();
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return $fromId;
         }
 

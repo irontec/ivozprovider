@@ -19,29 +19,29 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 */
 interface RetailAccountInterface extends LoggableEntityInterface
 {
-    const TRANSPORT_UDP = 'udp';
+    public const TRANSPORT_UDP = 'udp';
 
-    const TRANSPORT_TCP = 'tcp';
+    public const TRANSPORT_TCP = 'tcp';
 
-    const TRANSPORT_TLS = 'tls';
+    public const TRANSPORT_TLS = 'tls';
 
-    const DIRECTCONNECTIVITY_YES = 'yes';
+    public const DIRECTCONNECTIVITY_YES = 'yes';
 
-    const DIRECTCONNECTIVITY_NO = 'no';
+    public const DIRECTCONNECTIVITY_NO = 'no';
 
-    const DDIIN_YES = 'yes';
+    public const DDIIN_YES = 'yes';
 
-    const DDIIN_NO = 'no';
+    public const DDIIN_NO = 'no';
 
-    const T38PASSTHROUGH_YES = 'yes';
+    public const T38PASSTHROUGH_YES = 'yes';
 
-    const T38PASSTHROUGH_NO = 'no';
+    public const T38PASSTHROUGH_NO = 'no';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return bool
@@ -68,7 +68,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getSorcery();
+    public function getSorcery(): string;
 
     /**
      * Get Ddi associated with this retail Account

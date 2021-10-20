@@ -30,14 +30,11 @@ trait FriendsPatternTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param FriendsPatternDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
@@ -52,14 +49,11 @@ trait FriendsPatternTrait
 
     /**
      * @internal use EntityTools instead
-     * @param FriendsPatternDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
 
         $this->sanitizeValues();
@@ -70,19 +64,15 @@ trait FriendsPatternTrait
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return FriendsPatternDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): FriendsPatternDto
     {
         $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()

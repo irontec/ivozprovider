@@ -19,29 +19,14 @@ abstract class PublicEntityAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $iden;
 
-    /**
-     * @var string | null
-     */
     protected $fqdn;
 
-    /**
-     * @var bool
-     */
     protected $platform = false;
 
-    /**
-     * @var bool
-     */
     protected $brand = false;
 
-    /**
-     * @var bool
-     */
     protected $client = false;
 
     /**
@@ -53,10 +38,10 @@ abstract class PublicEntityAbstract
      * Constructor
      */
     protected function __construct(
-        $iden,
-        $platform,
-        $brand,
-        $client,
+        string $iden,
+        bool $platform,
+        bool $brand,
+        bool $client,
         Name $name
     ) {
         $this->setIden($iden);
@@ -87,9 +72,8 @@ abstract class PublicEntityAbstract
 
     /**
      * @param mixed $id
-     * @return PublicEntityDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): PublicEntityDto
     {
         return new PublicEntityDto($id);
     }
@@ -189,9 +173,8 @@ abstract class PublicEntityAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return PublicEntityDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): PublicEntityDto
     {
         return self::createDto()
             ->setIden(self::getIden())
@@ -255,7 +238,7 @@ abstract class PublicEntityAbstract
 
     protected function setPlatform(bool $platform): static
     {
-        Assertion::between(intval($platform), 0, 1, 'platform provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $platform, 0, 1, 'platform provided "%s" is not a valid boolean value.');
         $platform = (bool) $platform;
 
         $this->platform = $platform;
@@ -270,7 +253,7 @@ abstract class PublicEntityAbstract
 
     protected function setBrand(bool $brand): static
     {
-        Assertion::between(intval($brand), 0, 1, 'brand provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $brand, 0, 1, 'brand provided "%s" is not a valid boolean value.');
         $brand = (bool) $brand;
 
         $this->brand = $brand;
@@ -285,7 +268,7 @@ abstract class PublicEntityAbstract
 
     protected function setClient(bool $client): static
     {
-        Assertion::between(intval($client), 0, 1, 'client provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $client, 0, 1, 'client provided "%s" is not a valid boolean value.');
         $client = (bool) $client;
 
         $this->client = $client;

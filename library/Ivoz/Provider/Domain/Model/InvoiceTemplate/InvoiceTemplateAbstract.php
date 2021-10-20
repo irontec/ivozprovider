@@ -20,29 +20,14 @@ abstract class InvoiceTemplateAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string | null
-     */
     protected $description;
 
-    /**
-     * @var string
-     */
     protected $template;
 
-    /**
-     * @var string | null
-     */
     protected $templateHeader;
 
-    /**
-     * @var string | null
-     */
     protected $templateFooter;
 
     /**
@@ -54,8 +39,8 @@ abstract class InvoiceTemplateAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $template
+        string $name,
+        string $template
     ) {
         $this->setName($name);
         $this->setTemplate($template);
@@ -82,9 +67,8 @@ abstract class InvoiceTemplateAbstract
 
     /**
      * @param mixed $id
-     * @return InvoiceTemplateDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): InvoiceTemplateDto
     {
         return new InvoiceTemplateDto($id);
     }
@@ -170,9 +154,8 @@ abstract class InvoiceTemplateAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return InvoiceTemplateDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): InvoiceTemplateDto
     {
         return self::createDto()
             ->setName(self::getName())

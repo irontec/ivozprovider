@@ -30,111 +30,72 @@ abstract class ResidentialDeviceAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string
-     */
     protected $description = '';
 
     /**
      * comment: enum:udp|tcp|tls
-     * @var string | null
      */
     protected $transport;
 
-    /**
-     * @var string | null
-     */
     protected $ip;
 
-    /**
-     * @var int | null
-     */
     protected $port;
 
     /**
      * column: auth_needed
-     * @var string
      */
     protected $authNeeded = 'yes';
 
-    /**
-     * @var string | null
-     */
     protected $password;
 
-    /**
-     * @var string
-     */
     protected $disallow = 'all';
 
-    /**
-     * @var string
-     */
     protected $allow = 'alaw';
 
     /**
      * column: direct_media_method
      * comment: enum:invite|update
-     * @var string
      */
     protected $directMediaMethod = 'update';
 
     /**
      * column: callerid_update_header
      * comment: enum:pai|rpid
-     * @var string
      */
     protected $calleridUpdateHeader = 'pai';
 
     /**
      * column: update_callerid
      * comment: enum:yes|no
-     * @var string
      */
     protected $updateCallerid = 'yes';
 
     /**
      * column: from_domain
-     * @var string | null
      */
     protected $fromDomain;
 
     /**
      * comment: enum:yes|no
-     * @var string
      */
     protected $directConnectivity = 'yes';
 
     /**
      * comment: enum:yes|no
-     * @var string
      */
     protected $ddiIn = 'yes';
 
-    /**
-     * @var int
-     */
     protected $maxCalls = 1;
 
     /**
      * comment: enum:yes|no
-     * @var string
      */
     protected $t38Passthrough = 'no';
 
-    /**
-     * @var bool
-     */
     protected $rtpEncryption = false;
 
-    /**
-     * @var bool
-     */
     protected $multiContact = true;
 
     /**
@@ -173,20 +134,20 @@ abstract class ResidentialDeviceAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $description,
-        $authNeeded,
-        $disallow,
-        $allow,
-        $directMediaMethod,
-        $calleridUpdateHeader,
-        $updateCallerid,
-        $directConnectivity,
-        $ddiIn,
-        $maxCalls,
-        $t38Passthrough,
-        $rtpEncryption,
-        $multiContact
+        string $name,
+        string $description,
+        string $authNeeded,
+        string $disallow,
+        string $allow,
+        string $directMediaMethod,
+        string $calleridUpdateHeader,
+        string $updateCallerid,
+        string $directConnectivity,
+        string $ddiIn,
+        int $maxCalls,
+        string $t38Passthrough,
+        bool $rtpEncryption,
+        bool $multiContact
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -225,9 +186,8 @@ abstract class ResidentialDeviceAbstract
 
     /**
      * @param mixed $id
-     * @return ResidentialDeviceDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ResidentialDeviceDto
     {
         return new ResidentialDeviceDto($id);
     }
@@ -351,9 +311,8 @@ abstract class ResidentialDeviceAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ResidentialDeviceDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ResidentialDeviceDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -716,7 +675,7 @@ abstract class ResidentialDeviceAbstract
 
     protected function setRtpEncryption(bool $rtpEncryption): static
     {
-        Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $rtpEncryption, 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
         $rtpEncryption = (bool) $rtpEncryption;
 
         $this->rtpEncryption = $rtpEncryption;
@@ -731,7 +690,7 @@ abstract class ResidentialDeviceAbstract
 
     protected function setMultiContact(bool $multiContact): static
     {
-        Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $multiContact, 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
         $multiContact = (bool) $multiContact;
 
         $this->multiContact = $multiContact;

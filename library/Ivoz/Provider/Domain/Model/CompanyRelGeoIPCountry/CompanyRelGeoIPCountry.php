@@ -13,7 +13,7 @@ class CompanyRelGeoIPCountry extends CompanyRelGeoIPCountryAbstract implements C
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

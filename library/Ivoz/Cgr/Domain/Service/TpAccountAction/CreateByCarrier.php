@@ -9,7 +9,7 @@ use Ivoz\Provider\Domain\Service\Carrier\CarrierLifecycleEventHandlerInterface;
 
 class CreateByCarrier implements CarrierLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private EntityTools $entityTools

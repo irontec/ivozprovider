@@ -15,7 +15,7 @@ use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
  */
 class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = 10;
+    public const POST_PERSIST_PRIORITY = 10;
 
     public function __construct(
         private EntityTools $entityTools

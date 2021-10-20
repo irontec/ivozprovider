@@ -16,7 +16,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
@@ -32,7 +32,10 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
 
     public function getThreshold(): ?float;
 
-    public function getLastSent(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastSent(): ?\DateTimeInterface;
 
     public function getCompany(): ?CompanyInterface;
 

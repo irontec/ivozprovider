@@ -23,34 +23,16 @@ abstract class TransformationRuleSetAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $description;
 
-    /**
-     * @var string | null
-     */
     protected $internationalCode = '00';
 
-    /**
-     * @var string | null
-     */
     protected $trunkPrefix = '';
 
-    /**
-     * @var string | null
-     */
     protected $areaCode = '';
 
-    /**
-     * @var int | null
-     */
     protected $nationalLen = 9;
 
-    /**
-     * @var bool | null
-     */
     protected $generateRules = false;
 
     /**
@@ -98,9 +80,8 @@ abstract class TransformationRuleSetAbstract
 
     /**
      * @param mixed $id
-     * @return TransformationRuleSetDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TransformationRuleSetDto
     {
         return new TransformationRuleSetDto($id);
     }
@@ -206,9 +187,8 @@ abstract class TransformationRuleSetAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TransformationRuleSetDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TransformationRuleSetDto
     {
         return self::createDto()
             ->setDescription(self::getDescription())
@@ -329,7 +309,7 @@ abstract class TransformationRuleSetAbstract
     protected function setGenerateRules(?bool $generateRules = null): static
     {
         if (!is_null($generateRules)) {
-            Assertion::between(intval($generateRules), 0, 1, 'generateRules provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $generateRules, 0, 1, 'generateRules provided "%s" is not a valid boolean value.');
             $generateRules = (bool) $generateRules;
         }
 

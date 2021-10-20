@@ -9,19 +9,19 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  * Description
  * @codeCoverageIgnore
  */
-class Description
+final class Description
 {
     /**
      * column: description_en
      * @var string
      */
-    protected $en;
+    private $en;
 
     /**
      * column: description_es
      * @var string
      */
-    protected $es;
+    private $es;
 
 
     /**

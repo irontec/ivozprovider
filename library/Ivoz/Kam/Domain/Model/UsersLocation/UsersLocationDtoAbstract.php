@@ -44,7 +44,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     private $path;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $expires = '2030-05-28 21:32:15';
 
@@ -64,7 +64,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     private $cseq = 1;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $lastModified = '1900-01-01 00:00:01';
 
@@ -286,14 +286,14 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->path;
     }
 
-    public function setExpires(null|\DateTime|string $expires): static
+    public function setExpires(null|\DateTimeInterface|string $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    public function getExpires(): \DateTime|string|null
+    public function getExpires(): \DateTimeInterface|string|null
     {
         return $this->expires;
     }
@@ -334,14 +334,14 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->cseq;
     }
 
-    public function setLastModified(null|\DateTime|string $lastModified): static
+    public function setLastModified(null|\DateTimeInterface|string $lastModified): static
     {
         $this->lastModified = $lastModified;
 
         return $this;
     }
 
-    public function getLastModified(): \DateTime|string|null
+    public function getLastModified(): \DateTimeInterface|string|null
     {
         return $this->lastModified;
     }

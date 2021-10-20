@@ -37,80 +37,39 @@ abstract class BillableCallHistoricAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $callid;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $startTime;
 
-    /**
-     * @var float
-     */
     protected $duration = 0;
 
-    /**
-     * @var string | null
-     */
     protected $caller;
 
-    /**
-     * @var string | null
-     */
     protected $callee;
 
-    /**
-     * @var float | null
-     */
     protected $cost;
 
-    /**
-     * @var float | null
-     */
     protected $price;
 
-    /**
-     * @var array | null
-     */
     protected $priceDetails = [];
 
-    /**
-     * @var string | null
-     */
     protected $carrierName;
 
-    /**
-     * @var string | null
-     */
     protected $destinationName;
 
-    /**
-     * @var string | null
-     */
     protected $ratingPlanName;
 
     /**
      * comment: enum:RetailAccount|ResidentialDevice|User|Friend|Fax
-     * @var string | null
      */
     protected $endpointType;
 
-    /**
-     * @var int | null
-     */
     protected $endpointId;
 
-    /**
-     * @var string | null
-     */
     protected $endpointName;
 
     /**
      * comment: enum:inbound|outbound
-     * @var string | null
      */
     protected $direction = 'outbound';
 
@@ -163,7 +122,7 @@ abstract class BillableCallHistoricAbstract
      * Constructor
      */
     protected function __construct(
-        $duration
+        float $duration
     ) {
         $this->setDuration($duration);
     }
@@ -189,9 +148,8 @@ abstract class BillableCallHistoricAbstract
 
     /**
      * @param mixed $id
-     * @return BillableCallHistoricDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): BillableCallHistoricDto
     {
         return new BillableCallHistoricDto($id);
     }
@@ -313,9 +271,8 @@ abstract class BillableCallHistoricAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return BillableCallHistoricDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): BillableCallHistoricDto
     {
         return self::createDto()
             ->setCallid(self::getCallid())
@@ -415,7 +372,10 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    public function getStartTime(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getStartTime(): ?\DateTimeInterface
     {
         return !is_null($this->startTime) ? clone $this->startTime : null;
     }

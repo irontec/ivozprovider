@@ -14,25 +14,25 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface NotificationTemplateInterface extends LoggableEntityInterface
 {
-    const TYPE_VOICEMAIL = 'voicemail';
+    public const TYPE_VOICEMAIL = 'voicemail';
 
-    const TYPE_FAX = 'fax';
+    public const TYPE_FAX = 'fax';
 
-    const TYPE_LIMIT = 'limit';
+    public const TYPE_LIMIT = 'limit';
 
-    const TYPE_LOWBALANCE = 'lowbalance';
+    public const TYPE_LOWBALANCE = 'lowbalance';
 
-    const TYPE_INVOICE = 'invoice';
+    public const TYPE_INVOICE = 'invoice';
 
-    const TYPE_CALLCSV = 'callCsv';
+    public const TYPE_CALLCSV = 'callCsv';
 
-    const TYPE_MAXDAILYUSAGE = 'maxDailyUsage';
+    public const TYPE_MAXDAILYUSAGE = 'maxDailyUsage';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Get contents by language

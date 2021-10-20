@@ -23,19 +23,10 @@ abstract class BalanceMovementAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var float | null
-     */
     protected $amount = 0;
 
-    /**
-     * @var float | null
-     */
     protected $balance = 0;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $createdOn;
 
     /**
@@ -76,9 +67,8 @@ abstract class BalanceMovementAbstract
 
     /**
      * @param mixed $id
-     * @return BalanceMovementDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): BalanceMovementDto
     {
         return new BalanceMovementDto($id);
     }
@@ -161,9 +151,8 @@ abstract class BalanceMovementAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return BalanceMovementDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): BalanceMovementDto
     {
         return self::createDto()
             ->setAmount(self::getAmount())
@@ -241,7 +230,10 @@ abstract class BalanceMovementAbstract
         return $this;
     }
 
-    public function getCreatedOn(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedOn(): ?\DateTimeInterface
     {
         return !is_null($this->createdOn) ? clone $this->createdOn : null;
     }

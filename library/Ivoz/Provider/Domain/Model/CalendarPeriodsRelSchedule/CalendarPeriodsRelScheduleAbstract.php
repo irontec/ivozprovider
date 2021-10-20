@@ -61,9 +61,8 @@ abstract class CalendarPeriodsRelScheduleAbstract
 
     /**
      * @param mixed $id
-     * @return CalendarPeriodsRelScheduleDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CalendarPeriodsRelScheduleDto
     {
         return new CalendarPeriodsRelScheduleDto($id);
     }
@@ -140,9 +139,8 @@ abstract class CalendarPeriodsRelScheduleAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CalendarPeriodsRelScheduleDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CalendarPeriodsRelScheduleDto
     {
         return self::createDto()
             ->setCalendarPeriod(CalendarPeriod::entityToDto(self::getCalendarPeriod(), $depth))

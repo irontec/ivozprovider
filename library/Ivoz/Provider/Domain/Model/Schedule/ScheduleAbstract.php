@@ -21,54 +21,24 @@ abstract class ScheduleAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var \DateTime
-     */
     protected $timeIn;
 
-    /**
-     * @var \DateTime
-     */
     protected $timeout;
 
-    /**
-     * @var bool | null
-     */
     protected $monday = false;
 
-    /**
-     * @var bool | null
-     */
     protected $tuesday = false;
 
-    /**
-     * @var bool | null
-     */
     protected $wednesday = false;
 
-    /**
-     * @var bool | null
-     */
     protected $thursday = false;
 
-    /**
-     * @var bool | null
-     */
     protected $friday = false;
 
-    /**
-     * @var bool | null
-     */
     protected $saturday = false;
 
-    /**
-     * @var bool | null
-     */
     protected $sunday = false;
 
     /**
@@ -80,9 +50,9 @@ abstract class ScheduleAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $timeIn,
-        $timeout
+        string $name,
+        \DateTimeInterface|string $timeIn,
+        \DateTimeInterface|string $timeout
     ) {
         $this->setName($name);
         $this->setTimeIn($timeIn);
@@ -110,9 +80,8 @@ abstract class ScheduleAbstract
 
     /**
      * @param mixed $id
-     * @return ScheduleDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ScheduleDto
     {
         return new ScheduleDto($id);
     }
@@ -208,9 +177,8 @@ abstract class ScheduleAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ScheduleDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ScheduleDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -267,7 +235,10 @@ abstract class ScheduleAbstract
         return $this;
     }
 
-    public function getTimeIn(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getTimeIn(): \DateTimeInterface
     {
         return clone $this->timeIn;
     }
@@ -279,7 +250,10 @@ abstract class ScheduleAbstract
         return $this;
     }
 
-    public function getTimeout(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getTimeout(): \DateTimeInterface
     {
         return clone $this->timeout;
     }
@@ -287,7 +261,7 @@ abstract class ScheduleAbstract
     protected function setMonday(?bool $monday = null): static
     {
         if (!is_null($monday)) {
-            Assertion::between(intval($monday), 0, 1, 'monday provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $monday, 0, 1, 'monday provided "%s" is not a valid boolean value.');
             $monday = (bool) $monday;
         }
 
@@ -304,7 +278,7 @@ abstract class ScheduleAbstract
     protected function setTuesday(?bool $tuesday = null): static
     {
         if (!is_null($tuesday)) {
-            Assertion::between(intval($tuesday), 0, 1, 'tuesday provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $tuesday, 0, 1, 'tuesday provided "%s" is not a valid boolean value.');
             $tuesday = (bool) $tuesday;
         }
 
@@ -321,7 +295,7 @@ abstract class ScheduleAbstract
     protected function setWednesday(?bool $wednesday = null): static
     {
         if (!is_null($wednesday)) {
-            Assertion::between(intval($wednesday), 0, 1, 'wednesday provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $wednesday, 0, 1, 'wednesday provided "%s" is not a valid boolean value.');
             $wednesday = (bool) $wednesday;
         }
 
@@ -338,7 +312,7 @@ abstract class ScheduleAbstract
     protected function setThursday(?bool $thursday = null): static
     {
         if (!is_null($thursday)) {
-            Assertion::between(intval($thursday), 0, 1, 'thursday provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $thursday, 0, 1, 'thursday provided "%s" is not a valid boolean value.');
             $thursday = (bool) $thursday;
         }
 
@@ -355,7 +329,7 @@ abstract class ScheduleAbstract
     protected function setFriday(?bool $friday = null): static
     {
         if (!is_null($friday)) {
-            Assertion::between(intval($friday), 0, 1, 'friday provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $friday, 0, 1, 'friday provided "%s" is not a valid boolean value.');
             $friday = (bool) $friday;
         }
 
@@ -372,7 +346,7 @@ abstract class ScheduleAbstract
     protected function setSaturday(?bool $saturday = null): static
     {
         if (!is_null($saturday)) {
-            Assertion::between(intval($saturday), 0, 1, 'saturday provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $saturday, 0, 1, 'saturday provided "%s" is not a valid boolean value.');
             $saturday = (bool) $saturday;
         }
 
@@ -389,7 +363,7 @@ abstract class ScheduleAbstract
     protected function setSunday(?bool $sunday = null): static
     {
         if (!is_null($sunday)) {
-            Assertion::between(intval($sunday), 0, 1, 'sunday provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $sunday, 0, 1, 'sunday provided "%s" is not a valid boolean value.');
             $sunday = (bool) $sunday;
         }
 

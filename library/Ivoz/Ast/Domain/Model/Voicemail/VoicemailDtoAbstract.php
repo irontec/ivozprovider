@@ -176,7 +176,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     private $imapflags;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
     private $stamp;
 
@@ -691,14 +691,14 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->imapflags;
     }
 
-    public function setStamp(null|\DateTime|string $stamp): static
+    public function setStamp(null|\DateTimeInterface|string $stamp): static
     {
         $this->stamp = $stamp;
 
         return $this;
     }
 
-    public function getStamp(): \DateTime|string|null
+    public function getStamp(): \DateTimeInterface|string|null
     {
         return $this->stamp;
     }

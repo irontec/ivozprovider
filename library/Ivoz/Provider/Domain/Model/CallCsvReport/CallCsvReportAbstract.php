@@ -26,24 +26,12 @@ abstract class CallCsvReportAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $sentTo = '';
 
-    /**
-     * @var \DateTime
-     */
     protected $inDate;
 
-    /**
-     * @var \DateTime
-     */
     protected $outDate;
 
-    /**
-     * @var \DateTime
-     */
     protected $createdOn;
 
     /**
@@ -70,10 +58,10 @@ abstract class CallCsvReportAbstract
      * Constructor
      */
     protected function __construct(
-        $sentTo,
-        $inDate,
-        $outDate,
-        $createdOn,
+        string $sentTo,
+        \DateTimeInterface|string $inDate,
+        \DateTimeInterface|string $outDate,
+        \DateTimeInterface|string $createdOn,
         Csv $csv
     ) {
         $this->setSentTo($sentTo);
@@ -104,9 +92,8 @@ abstract class CallCsvReportAbstract
 
     /**
      * @param mixed $id
-     * @return CallCsvReportDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CallCsvReportDto
     {
         return new CallCsvReportDto($id);
     }
@@ -208,9 +195,8 @@ abstract class CallCsvReportAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CallCsvReportDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CallCsvReportDto
     {
         return self::createDto()
             ->setSentTo(self::getSentTo())
@@ -275,7 +261,10 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    public function getInDate(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getInDate(): \DateTimeInterface
     {
         return clone $this->inDate;
     }
@@ -297,7 +286,10 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    public function getOutDate(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getOutDate(): \DateTimeInterface
     {
         return clone $this->outDate;
     }
@@ -319,7 +311,10 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    public function getCreatedOn(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedOn(): \DateTimeInterface
     {
         return clone $this->createdOn;
     }

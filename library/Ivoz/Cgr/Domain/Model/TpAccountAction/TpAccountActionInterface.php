@@ -15,7 +15,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getTpid(): string;
 
@@ -33,7 +33,10 @@ interface TpAccountActionInterface extends LoggableEntityInterface
 
     public function getDisabled(): bool;
 
-    public function getCreatedAt(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface;
 
     public function getCompany(): ?CompanyInterface;
 

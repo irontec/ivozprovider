@@ -29,25 +29,15 @@ abstract class CalendarPeriodAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var \DateTime
-     */
     protected $startDate;
 
-    /**
-     * @var \DateTime
-     */
     protected $endDate;
 
     /**
      * comment: enum:number|extension|voicemail
-     * @var string | null
      */
     protected $routeType;
 
-    /**
-     * @var string | null
-     */
     protected $numberValue;
 
     /**
@@ -80,8 +70,8 @@ abstract class CalendarPeriodAbstract
      * Constructor
      */
     protected function __construct(
-        $startDate,
-        $endDate
+        \DateTimeInterface|string $startDate,
+        \DateTimeInterface|string $endDate
     ) {
         $this->setStartDate($startDate);
         $this->setEndDate($endDate);
@@ -108,9 +98,8 @@ abstract class CalendarPeriodAbstract
 
     /**
      * @param mixed $id
-     * @return CalendarPeriodDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CalendarPeriodDto
     {
         return new CalendarPeriodDto($id);
     }
@@ -202,9 +191,8 @@ abstract class CalendarPeriodAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CalendarPeriodDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CalendarPeriodDto
     {
         return self::createDto()
             ->setStartDate(self::getStartDate())
@@ -243,7 +231,10 @@ abstract class CalendarPeriodAbstract
         return $this;
     }
 
-    public function getStartDate(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getStartDate(): \DateTimeInterface
     {
         return clone $this->startDate;
     }
@@ -255,7 +246,10 @@ abstract class CalendarPeriodAbstract
         return $this;
     }
 
-    public function getEndDate(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getEndDate(): \DateTimeInterface
     {
         return clone $this->endDate;
     }

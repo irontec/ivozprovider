@@ -23,63 +23,40 @@ abstract class TpRatingProfileAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $tpid = 'ivozprovider';
 
-    /**
-     * @var string
-     */
     protected $loadid = 'DATABASE';
 
-    /**
-     * @var string
-     */
     protected $direction = '*out';
 
-    /**
-     * @var string | null
-     */
     protected $tenant;
 
-    /**
-     * @var string
-     */
     protected $category = 'call';
 
-    /**
-     * @var string | null
-     */
     protected $subject;
 
     /**
      * column: activation_time
-     * @var string
      */
     protected $activationTime = '1970-01-01 00:00:00';
 
     /**
      * column: rating_plan_tag
-     * @var string | null
      */
     protected $ratingPlanTag;
 
     /**
      * column: fallback_subjects
-     * @var string | null
      */
     protected $fallbackSubjects;
 
     /**
      * column: cdr_stat_queue_ids
-     * @var string | null
      */
     protected $cdrStatQueueIds;
 
     /**
      * column: created_at
-     * @var \DateTime
      */
     protected $createdAt;
 
@@ -99,12 +76,12 @@ abstract class TpRatingProfileAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $loadid,
-        $direction,
-        $category,
-        $activationTime,
-        $createdAt
+        string $tpid,
+        string $loadid,
+        string $direction,
+        string $category,
+        string $activationTime,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setLoadid($loadid);
@@ -135,9 +112,8 @@ abstract class TpRatingProfileAbstract
 
     /**
      * @param mixed $id
-     * @return TpRatingProfileDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TpRatingProfileDto
     {
         return new TpRatingProfileDto($id);
     }
@@ -237,9 +213,8 @@ abstract class TpRatingProfileAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TpRatingProfileDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TpRatingProfileDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -446,7 +421,10 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface
     {
         return clone $this->createdAt;
     }

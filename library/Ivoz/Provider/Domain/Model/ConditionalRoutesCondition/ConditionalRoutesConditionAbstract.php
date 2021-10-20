@@ -36,25 +36,15 @@ abstract class ConditionalRoutesConditionAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var int
-     */
     protected $priority = 1;
 
     /**
      * comment: enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension
-     * @var string | null
      */
     protected $routeType;
 
-    /**
-     * @var string | null
-     */
     protected $numberValue;
 
-    /**
-     * @var string | null
-     */
     protected $friendValue;
 
     /**
@@ -112,7 +102,7 @@ abstract class ConditionalRoutesConditionAbstract
      * Constructor
      */
     protected function __construct(
-        $priority
+        int $priority
     ) {
         $this->setPriority($priority);
     }
@@ -138,9 +128,8 @@ abstract class ConditionalRoutesConditionAbstract
 
     /**
      * @param mixed $id
-     * @return ConditionalRoutesConditionDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ConditionalRoutesConditionDto
     {
         return new ConditionalRoutesConditionDto($id);
     }
@@ -242,9 +231,8 @@ abstract class ConditionalRoutesConditionAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ConditionalRoutesConditionDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ConditionalRoutesConditionDto
     {
         return self::createDto()
             ->setPriority(self::getPriority())

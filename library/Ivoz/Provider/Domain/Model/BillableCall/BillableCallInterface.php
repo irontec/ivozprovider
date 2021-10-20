@@ -18,31 +18,34 @@ use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 */
 interface BillableCallInterface extends LoggableEntityInterface
 {
-    const ENDPOINTTYPE_RETAILACCOUNT = 'RetailAccount';
+    public const ENDPOINTTYPE_RETAILACCOUNT = 'RetailAccount';
 
-    const ENDPOINTTYPE_RESIDENTIALDEVICE = 'ResidentialDevice';
+    public const ENDPOINTTYPE_RESIDENTIALDEVICE = 'ResidentialDevice';
 
-    const ENDPOINTTYPE_USER = 'User';
+    public const ENDPOINTTYPE_USER = 'User';
 
-    const ENDPOINTTYPE_FRIEND = 'Friend';
+    public const ENDPOINTTYPE_FRIEND = 'Friend';
 
-    const ENDPOINTTYPE_FAX = 'Fax';
+    public const ENDPOINTTYPE_FAX = 'Fax';
 
-    const DIRECTION_INBOUND = 'inbound';
+    public const DIRECTION_INBOUND = 'inbound';
 
-    const DIRECTION_OUTBOUND = 'outbound';
+    public const DIRECTION_OUTBOUND = 'outbound';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function isOutboundCall(): bool;
 
     public function getCallid(): ?string;
 
-    public function getStartTime(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getStartTime(): ?\DateTimeInterface;
 
     public function getDuration(): float;
 

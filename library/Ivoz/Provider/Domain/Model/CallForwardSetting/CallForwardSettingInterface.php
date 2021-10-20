@@ -15,33 +15,33 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 */
 interface CallForwardSettingInterface extends LoggableEntityInterface
 {
-    const CALLTYPEFILTER_INTERNAL = 'internal';
+    public const CALLTYPEFILTER_INTERNAL = 'internal';
 
-    const CALLTYPEFILTER_EXTERNAL = 'external';
+    public const CALLTYPEFILTER_EXTERNAL = 'external';
 
-    const CALLTYPEFILTER_BOTH = 'both';
+    public const CALLTYPEFILTER_BOTH = 'both';
 
-    const CALLFORWARDTYPE_INCONDITIONAL = 'inconditional';
+    public const CALLFORWARDTYPE_INCONDITIONAL = 'inconditional';
 
-    const CALLFORWARDTYPE_NOANSWER = 'noAnswer';
+    public const CALLFORWARDTYPE_NOANSWER = 'noAnswer';
 
-    const CALLFORWARDTYPE_BUSY = 'busy';
+    public const CALLFORWARDTYPE_BUSY = 'busy';
 
-    const CALLFORWARDTYPE_USERNOTREGISTERED = 'userNotRegistered';
+    public const CALLFORWARDTYPE_USERNOTREGISTERED = 'userNotRegistered';
 
-    const TARGETTYPE_NUMBER = 'number';
+    public const TARGETTYPE_NUMBER = 'number';
 
-    const TARGETTYPE_EXTENSION = 'extension';
+    public const TARGETTYPE_EXTENSION = 'extension';
 
-    const TARGETTYPE_VOICEMAIL = 'voicemail';
+    public const TARGETTYPE_VOICEMAIL = 'voicemail';
 
-    const TARGETTYPE_RETAIL = 'retail';
+    public const TARGETTYPE_RETAIL = 'retail';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * {@inheritDoc}
@@ -64,7 +64,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      *
      * @todo rename tagetType field to routeType
      */
-    public function getRouteType();
+    public function getRouteType(): ?string;
 
     public function getCallForwardTarget();
 

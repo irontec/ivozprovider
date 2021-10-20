@@ -15,14 +15,14 @@ interface CarrierServerInterface extends LoggableEntityInterface
     /**
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * {@inheritDoc}
      */
     public function setIp(?string $ip = null): static;
 
-    public function getName();
+    public function getName(): string;
 
     public function getIp(): ?string;
 

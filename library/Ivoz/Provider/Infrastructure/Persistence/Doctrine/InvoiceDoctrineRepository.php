@@ -16,7 +16,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class InvoiceDoctrineRepository extends ServiceEntityRepository implements InvoiceRepository
 {
-    const ENTITY_ALIAS = 'invoice';
+    public const ENTITY_ALIAS = 'invoice';
 
     public function __construct(ManagerRegistry $registry)
     {

@@ -10,13 +10,13 @@ use Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface;
 
 class CompanyBalanceService extends AbstractBalanceService implements CompanyBalanceServiceInterface
 {
-    const ACCOUNT_PREFIX = 'c';
+    public const ACCOUNT_PREFIX = 'c';
 
     /**
      * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface::incrementBalance
      * @inheritdoc
      */
-    public function incrementBalance(CompanyInterface $company, float $amount)
+    public function incrementBalance(CompanyInterface $company, float $amount): array
     {
         return parent::addBalance($company, $amount);
     }
@@ -25,7 +25,7 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface::decrementBalance
      * @inheritdoc
      */
-    public function decrementBalance(CompanyInterface $company, float $amount)
+    public function decrementBalance(CompanyInterface $company, float $amount): array
     {
         return parent::debitBalance($company, $amount);
     }
@@ -34,7 +34,7 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceClientInterface::getBalances
      * @inheritdoc
      */
-    public function getBalances($brandId, array $companyIds)
+    public function getBalances(int $brandId, array $companyIds)
     {
         $payload = parent::getAccountsBalances($brandId, $companyIds, self::ACCOUNT_PREFIX);
 
@@ -51,7 +51,7 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceClientInterface::getBalance
      * @inheritdoc
      */
-    public function getBalance($brandId, $companyId)
+    public function getBalance(int $brandId, int $companyId)
     {
         $payload = $this->getBalances($brandId, [$companyId]);
 
@@ -66,7 +66,7 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceClientInterface::getCurrentDayUsage
      * @inheritdoc
      */
-    public function getCurrentDayUsage($brandId, $companyId)
+    public function getCurrentDayUsage(int $brandId, int $companyId)
     {
         $payload = parent::getAccountsBalances($brandId, [$companyId], self::ACCOUNT_PREFIX);
 
@@ -82,7 +82,7 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceClientInterface::getCurrentDayMaxUsage
      * @inheritdoc
      */
-    public function getCurrentDayMaxUsage($brandId, $companyId)
+    public function getCurrentDayMaxUsage(int $brandId, int $companyId)
     {
         $payload = parent::getAccountsBalances($brandId, [$companyId], self::ACCOUNT_PREFIX);
 
@@ -95,10 +95,10 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
     }
 
     /**
-     * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceClientInterface::getAccountStatus
+     * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface::getAccountStatus
      * @inheritdoc
      */
-    public function getAccountStatus($brandId, $companyId)
+    public function getAccountStatus(int $brandId, int $companyId)
     {
         $payload = parent::getAccountsBalances($brandId, [$companyId], self::ACCOUNT_PREFIX);
 
@@ -117,7 +117,7 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      * @throws \InvalidArgumentException
      * @see AbstractBalanceService::getTenant
      */
-    protected function getTenant(EntityInterface $entity)
+    protected function getTenant(EntityInterface $entity): string
     {
         Assertion::isInstanceOf(
             $entity,
@@ -133,7 +133,7 @@ class CompanyBalanceService extends AbstractBalanceService implements CompanyBal
      * @see AbstractBalanceService::getAccount
      * @inheritdoc
      */
-    protected function getAccount(EntityInterface $entity)
+    protected function getAccount(EntityInterface $entity): string
     {
         Assertion::isInstanceOf(
             $entity,

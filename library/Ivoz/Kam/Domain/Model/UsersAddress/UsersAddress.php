@@ -25,7 +25,7 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

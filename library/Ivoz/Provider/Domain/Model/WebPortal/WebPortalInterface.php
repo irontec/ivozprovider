@@ -12,24 +12,24 @@ use Ivoz\Core\Domain\Service\TempFile;
 */
 interface WebPortalInterface extends LoggableEntityInterface, FileContainerInterface
 {
-    const URLTYPE_GOD = 'god';
+    public const URLTYPE_GOD = 'god';
 
-    const URLTYPE_BRAND = 'brand';
+    public const URLTYPE_BRAND = 'brand';
 
-    const URLTYPE_ADMIN = 'admin';
+    public const URLTYPE_ADMIN = 'admin';
 
-    const URLTYPE_USER = 'user';
+    public const URLTYPE_USER = 'user';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return array
      */
-    public function getFileObjects(?int $filter = null);
+    public function getFileObjects(?int $filter = null): array;
 
     /**
      * @return static

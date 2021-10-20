@@ -2,9 +2,11 @@
 
 namespace Worker;
 
+use Ivoz\Core\Application\RegisterCommandTrait;
+use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
-use Ivoz\Core\Infrastructure\Persistence\Redis\Sentinel;
 use Ivoz\Provider\Domain\Job\InvoicerJobInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
@@ -12,9 +14,6 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Service\Invoice\Generator;
 use Psr\Log\LoggerInterface;
-use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\RegisterCommandTrait;
 use Symfony\Component\HttpFoundation\Response;
 
 class Invoices
@@ -90,6 +89,7 @@ class Invoices
                 exit(1);
             }
 
+            /** @phpstan-ignore-next-line  */
             if (!isset($invoice)) {
                 exit(1);
             }

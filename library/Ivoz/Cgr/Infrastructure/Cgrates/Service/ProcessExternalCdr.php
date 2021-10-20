@@ -12,13 +12,13 @@ use Psr\Log\LoggerInterface;
 
 class ProcessExternalCdr
 {
-    const DATE_FORMAT = 'Y-m-d\TH:i:s\Z';
+    public const DATE_FORMAT = 'Y-m-d\TH:i:s\Z';
 
-    protected $apiClient;
-    protected $entityTools;
-    protected $tpCdrRepository;
-    protected $logger;
-    protected $trunksClient;
+    private $apiClient;
+    private $entityTools;
+    private $tpCdrRepository;
+    private $logger;
+    private $trunksClient;
 
     public function __construct(
         ApiClient $apiClient,

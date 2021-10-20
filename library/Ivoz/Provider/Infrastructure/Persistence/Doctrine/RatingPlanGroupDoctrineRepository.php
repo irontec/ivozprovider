@@ -16,7 +16,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class RatingPlanGroupDoctrineRepository extends ServiceEntityRepository implements RatingPlanGroupRepository
 {
-    const TIME_FORMAT = 'H:i:s';
+    public const TIME_FORMAT = 'H:i:s';
 
     public function __construct(ManagerRegistry $registry)
     {

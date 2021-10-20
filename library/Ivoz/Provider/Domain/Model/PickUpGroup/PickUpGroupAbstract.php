@@ -20,9 +20,6 @@ abstract class PickUpGroupAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
@@ -34,7 +31,7 @@ abstract class PickUpGroupAbstract
      * Constructor
      */
     protected function __construct(
-        $name
+        string $name
     ) {
         $this->setName($name);
     }
@@ -60,9 +57,8 @@ abstract class PickUpGroupAbstract
 
     /**
      * @param mixed $id
-     * @return PickUpGroupDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): PickUpGroupDto
     {
         return new PickUpGroupDto($id);
     }
@@ -140,9 +136,8 @@ abstract class PickUpGroupAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return PickUpGroupDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): PickUpGroupDto
     {
         return self::createDto()
             ->setName(self::getName())

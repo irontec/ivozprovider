@@ -16,7 +16,7 @@ class IvrEntry extends IvrEntryAbstract implements IvrEntryInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

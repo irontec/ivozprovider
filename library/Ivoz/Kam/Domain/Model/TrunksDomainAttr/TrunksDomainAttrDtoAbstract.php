@@ -34,7 +34,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     private $value;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string
      */
     private $lastModified = '1900-01-01 00:00:01';
 
@@ -143,14 +143,14 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
         return $this->value;
     }
 
-    public function setLastModified(null|\DateTime|string $lastModified): static
+    public function setLastModified(null|\DateTimeInterface|string $lastModified): static
     {
         $this->lastModified = $lastModified;
 
         return $this;
     }
 
-    public function getLastModified(): \DateTime|string|null
+    public function getLastModified(): \DateTimeInterface|string|null
     {
         return $this->lastModified;
     }

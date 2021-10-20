@@ -25,19 +25,10 @@ abstract class BalanceNotificationAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $toAddress;
 
-    /**
-     * @var float | null
-     */
     protected $threshold = 0;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $lastSent;
 
     /**
@@ -83,9 +74,8 @@ abstract class BalanceNotificationAbstract
 
     /**
      * @param mixed $id
-     * @return BalanceNotificationDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): BalanceNotificationDto
     {
         return new BalanceNotificationDto($id);
     }
@@ -170,9 +160,8 @@ abstract class BalanceNotificationAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return BalanceNotificationDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): BalanceNotificationDto
     {
         return self::createDto()
             ->setToAddress(self::getToAddress())
@@ -252,7 +241,10 @@ abstract class BalanceNotificationAbstract
         return $this;
     }
 
-    public function getLastSent(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastSent(): ?\DateTimeInterface
     {
         return !is_null($this->lastSent) ? clone $this->lastSent : null;
     }

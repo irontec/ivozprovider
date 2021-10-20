@@ -10,11 +10,11 @@ use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 */
 interface TpDestinationRateInterface extends LoggableEntityInterface
 {
-    const ROUNDINGMETHOD_UP = '*up';
+    public const ROUNDINGMETHOD_UP = '*up';
 
-    const ROUNDINGMETHOD_UPMINCOST = '*upmincost';
+    public const ROUNDINGMETHOD_UPMINCOST = '*upmincost';
 
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getTpid(): string;
 
@@ -32,7 +32,10 @@ interface TpDestinationRateInterface extends LoggableEntityInterface
 
     public function getMaxCostStrategy(): string;
 
-    public function getCreatedAt(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface;
 
     public function setDestinationRate(DestinationRateInterface $destinationRate): static;
 

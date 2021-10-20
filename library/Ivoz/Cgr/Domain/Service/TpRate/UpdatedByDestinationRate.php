@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Service\DestinationRate\DestinationRateLifecycleEventHa
 
 class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private EntityTools $entityTools

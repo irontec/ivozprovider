@@ -20,7 +20,7 @@ interface RatingProfileInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Return the TpRatingProfile row associated with this RatingProfile
@@ -29,7 +29,10 @@ interface RatingProfileInterface extends LoggableEntityInterface
      */
     public function getCgrRatingProfile();
 
-    public function getActivationTime(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getActivationTime(): \DateTimeInterface;
 
     public function setCompany(?CompanyInterface $company = null): static;
 

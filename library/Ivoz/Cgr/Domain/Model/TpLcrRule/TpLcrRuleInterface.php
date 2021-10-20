@@ -14,7 +14,7 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     public function getTpid(): string;
 
@@ -36,11 +36,17 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
 
     public function getStrategyParams(): ?string;
 
-    public function getActivationTime(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getActivationTime(): \DateTimeInterface;
 
     public function getWeight(): float;
 
-    public function getCreatedAt(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getCreatedAt(): \DateTimeInterface;
 
     public function setOutgoingRouting(?OutgoingRoutingInterface $outgoingRouting = null): static;
 

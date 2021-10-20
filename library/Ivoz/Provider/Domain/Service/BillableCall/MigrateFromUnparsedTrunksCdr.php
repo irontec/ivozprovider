@@ -9,7 +9,7 @@ use Psr\Log\LoggerInterface;
 
 class MigrateFromUnparsedTrunksCdr
 {
-    const BATCH_SIZE = 100;
+    public const BATCH_SIZE = 100;
 
     public function __construct(
         private TrunksCdrRepository $trunksCdrRepository,

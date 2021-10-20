@@ -22,65 +22,35 @@ abstract class TrunksLcrGatewayAbstract
 
     /**
      * column: lcr_id
-     * @var int
      */
     protected $lcrId = 1;
 
     /**
      * column: gw_name
-     * @var string
      */
     protected $gwName;
 
-    /**
-     * @var string | null
-     */
     protected $ip;
 
-    /**
-     * @var string | null
-     */
     protected $hostname;
 
-    /**
-     * @var int | null
-     */
     protected $port;
 
-    /**
-     * @var string | null
-     */
     protected $params;
 
     /**
      * column: uri_scheme
-     * @var int | null
      */
     protected $uriScheme;
 
-    /**
-     * @var int | null
-     */
     protected $transport;
 
-    /**
-     * @var bool | null
-     */
     protected $strip;
 
-    /**
-     * @var string | null
-     */
     protected $prefix;
 
-    /**
-     * @var string | null
-     */
     protected $tag;
 
-    /**
-     * @var int | null
-     */
     protected $defunct;
 
     /**
@@ -93,8 +63,8 @@ abstract class TrunksLcrGatewayAbstract
      * Constructor
      */
     protected function __construct(
-        $lcrId,
-        $gwName
+        int $lcrId,
+        string $gwName
     ) {
         $this->setLcrId($lcrId);
         $this->setGwName($gwName);
@@ -121,9 +91,8 @@ abstract class TrunksLcrGatewayAbstract
 
     /**
      * @param mixed $id
-     * @return TrunksLcrGatewayDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): TrunksLcrGatewayDto
     {
         return new TrunksLcrGatewayDto($id);
     }
@@ -223,9 +192,8 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return TrunksLcrGatewayDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): TrunksLcrGatewayDto
     {
         return self::createDto()
             ->setLcrId(self::getLcrId())
@@ -392,7 +360,7 @@ abstract class TrunksLcrGatewayAbstract
     protected function setStrip(?bool $strip = null): static
     {
         if (!is_null($strip)) {
-            Assertion::between(intval($strip), 0, 1, 'strip provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $strip, 0, 1, 'strip provided "%s" is not a valid boolean value.');
             $strip = (bool) $strip;
         }
 

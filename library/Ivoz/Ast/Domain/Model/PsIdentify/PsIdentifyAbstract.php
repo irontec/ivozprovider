@@ -28,29 +28,20 @@ abstract class PsIdentifyAbstract
 
     /**
      * column: sorcery_id
-     * @var string
      */
     protected $sorceryId;
 
-    /**
-     * @var string | null
-     */
     protected $endpoint;
 
-    /**
-     * @var string | null
-     */
     protected $match;
 
     /**
      * column: match_header
-     * @var string | null
      */
     protected $matchHeader;
 
     /**
      * column: srv_lookups
-     * @var string
      */
     protected $srvLookups = 'false';
 
@@ -82,8 +73,8 @@ abstract class PsIdentifyAbstract
      * Constructor
      */
     protected function __construct(
-        $sorceryId,
-        $srvLookups
+        string $sorceryId,
+        string $srvLookups
     ) {
         $this->setSorceryId($sorceryId);
         $this->setSrvLookups($srvLookups);
@@ -110,9 +101,8 @@ abstract class PsIdentifyAbstract
 
     /**
      * @param mixed $id
-     * @return PsIdentifyDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): PsIdentifyDto
     {
         return new PsIdentifyDto($id);
     }
@@ -204,9 +194,8 @@ abstract class PsIdentifyAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return PsIdentifyDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): PsIdentifyDto
     {
         return self::createDto()
             ->setSorceryId(self::getSorceryId())

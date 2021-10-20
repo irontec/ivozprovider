@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\SpecialNumber;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
+/** @psalm-suppress UnusedProperty */
 class SpecialNumberDto extends SpecialNumberDtoAbstract
 {
     /**
@@ -14,7 +15,7 @@ class SpecialNumberDto extends SpecialNumberDtoAbstract
      *     description="Global Special Number"
      * )
      */
-    protected $global;
+    private $global;
 
     public static function getPropertyMap(string $context = '', string $role = null)
     {

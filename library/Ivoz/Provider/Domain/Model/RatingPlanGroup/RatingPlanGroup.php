@@ -13,7 +13,7 @@ class RatingPlanGroup extends RatingPlanGroupAbstract implements RatingPlanGroup
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -33,7 +33,7 @@ class RatingPlanGroup extends RatingPlanGroupAbstract implements RatingPlanGroup
      *
      * @return string
      */
-    public function getCgrTag()
+    public function getCgrTag(): string
     {
         return sprintf(
             "b%drp%d",
@@ -45,7 +45,7 @@ class RatingPlanGroup extends RatingPlanGroupAbstract implements RatingPlanGroup
     /**
      * @return string
      */
-    public function getCurrencyIden()
+    public function getCurrencyIden(): string
     {
         $currency = $this->getCurrency();
         if (!$currency) {
@@ -58,7 +58,7 @@ class RatingPlanGroup extends RatingPlanGroupAbstract implements RatingPlanGroup
     /**
      * @return string
      */
-    public function getCurrencySymbol()
+    public function getCurrencySymbol(): string
     {
         $currency = $this->getCurrency();
         if (!$currency) {

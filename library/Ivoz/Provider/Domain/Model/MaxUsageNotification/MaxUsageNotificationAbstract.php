@@ -23,19 +23,10 @@ abstract class MaxUsageNotificationAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $toAddress;
 
-    /**
-     * @var float | null
-     */
     protected $threshold = 0;
 
-    /**
-     * @var \DateTime | null
-     */
     protected $lastSent;
 
     /**
@@ -76,9 +67,8 @@ abstract class MaxUsageNotificationAbstract
 
     /**
      * @param mixed $id
-     * @return MaxUsageNotificationDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): MaxUsageNotificationDto
     {
         return new MaxUsageNotificationDto($id);
     }
@@ -161,9 +151,8 @@ abstract class MaxUsageNotificationAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return MaxUsageNotificationDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): MaxUsageNotificationDto
     {
         return self::createDto()
             ->setToAddress(self::getToAddress())
@@ -241,7 +230,10 @@ abstract class MaxUsageNotificationAbstract
         return $this;
     }
 
-    public function getLastSent(): ?\DateTime
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastSent(): ?\DateTimeInterface
     {
         return !is_null($this->lastSent) ? clone $this->lastSent : null;
     }

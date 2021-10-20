@@ -22,74 +22,32 @@ abstract class CarrierServerAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $ip;
 
-    /**
-     * @var string | null
-     */
     protected $hostname;
 
-    /**
-     * @var int | null
-     */
     protected $port;
 
-    /**
-     * @var int | null
-     */
     protected $uriScheme;
 
-    /**
-     * @var int | null
-     */
     protected $transport;
 
-    /**
-     * @var bool | null
-     */
     protected $sendPAI = false;
 
-    /**
-     * @var bool | null
-     */
     protected $sendRPID = false;
 
-    /**
-     * @var string
-     */
     protected $authNeeded = 'no';
 
-    /**
-     * @var string | null
-     */
     protected $authUser;
 
-    /**
-     * @var string | null
-     */
     protected $authPassword;
 
-    /**
-     * @var string | null
-     */
     protected $sipProxy;
 
-    /**
-     * @var string | null
-     */
     protected $outboundProxy;
 
-    /**
-     * @var string | null
-     */
     protected $fromUser;
 
-    /**
-     * @var string | null
-     */
     protected $fromDomain;
 
     /**
@@ -107,7 +65,7 @@ abstract class CarrierServerAbstract
      * Constructor
      */
     protected function __construct(
-        $authNeeded
+        string $authNeeded
     ) {
         $this->setAuthNeeded($authNeeded);
     }
@@ -133,9 +91,8 @@ abstract class CarrierServerAbstract
 
     /**
      * @param mixed $id
-     * @return CarrierServerDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): CarrierServerDto
     {
         return new CarrierServerDto($id);
     }
@@ -241,9 +198,8 @@ abstract class CarrierServerAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return CarrierServerDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): CarrierServerDto
     {
         return self::createDto()
             ->setIp(self::getIp())
@@ -372,7 +328,7 @@ abstract class CarrierServerAbstract
     protected function setSendPAI(?bool $sendPAI = null): static
     {
         if (!is_null($sendPAI)) {
-            Assertion::between(intval($sendPAI), 0, 1, 'sendPAI provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $sendPAI, 0, 1, 'sendPAI provided "%s" is not a valid boolean value.');
             $sendPAI = (bool) $sendPAI;
         }
 
@@ -389,7 +345,7 @@ abstract class CarrierServerAbstract
     protected function setSendRPID(?bool $sendRPID = null): static
     {
         if (!is_null($sendRPID)) {
-            Assertion::between(intval($sendRPID), 0, 1, 'sendRPID provided "%s" is not a valid boolean value.');
+            Assertion::between((int) $sendRPID, 0, 1, 'sendRPID provided "%s" is not a valid boolean value.');
             $sendRPID = (bool) $sendRPID;
         }
 

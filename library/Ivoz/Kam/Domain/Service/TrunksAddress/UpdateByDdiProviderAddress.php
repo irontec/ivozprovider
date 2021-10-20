@@ -14,7 +14,7 @@ use Ivoz\Provider\Domain\Service\DdiProviderAddress\DdiProviderAddressLifecycleE
  */
 class UpdateByDdiProviderAddress implements DdiProviderAddressLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private EntityTools $entityTools

@@ -22,9 +22,6 @@ abstract class MatchListAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
     /**
@@ -42,7 +39,7 @@ abstract class MatchListAbstract
      * Constructor
      */
     protected function __construct(
-        $name
+        string $name
     ) {
         $this->setName($name);
     }
@@ -68,9 +65,8 @@ abstract class MatchListAbstract
 
     /**
      * @param mixed $id
-     * @return MatchListDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): MatchListDto
     {
         return new MatchListDto($id);
     }
@@ -150,9 +146,8 @@ abstract class MatchListAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return MatchListDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): MatchListDto
     {
         return self::createDto()
             ->setName(self::getName())

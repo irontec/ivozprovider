@@ -9,7 +9,7 @@ class RoutingPatternGroupsRelPattern extends RoutingPatternGroupsRelPatternAbstr
 {
     use RoutingPatternGroupsRelPatternTrait;
 
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

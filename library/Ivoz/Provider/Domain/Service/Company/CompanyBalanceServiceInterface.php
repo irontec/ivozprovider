@@ -25,26 +25,26 @@ interface CompanyBalanceServiceInterface
      * @param array $companyIds
      * @return \stdClass
      */
-    public function getBalances($brandId, array $companyIds);
+    public function getBalances(int $brandId, array $companyIds);
 
     /**
      * @param int $brandId
      * @param int $companyId
      * @return mixed
      */
-    public function getBalance($brandId, $companyId);
+    public function getBalance(int $brandId, int $companyId);
 
     /**
      * @param int $brandId
      * @param int $companyId
      * @return mixed
      */
-    public function getCurrentDayUsage($brandId, $companyId);
+    public function getCurrentDayUsage(int $brandId, int $companyId);
 
     /**
      * @param int $brandId
      * @param int $companyId
      * @return mixed
      */
-    public function getCurrentDayMaxUsage($brandId, $companyId);
+    public function getCurrentDayMaxUsage(int $brandId, int $companyId);
 }

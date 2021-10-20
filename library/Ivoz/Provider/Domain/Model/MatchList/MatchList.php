@@ -15,7 +15,7 @@ class MatchList extends MatchListAbstract implements MatchListInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

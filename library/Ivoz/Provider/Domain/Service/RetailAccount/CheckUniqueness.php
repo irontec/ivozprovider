@@ -13,7 +13,7 @@ use Zend\EventManager\Exception\DomainException;
  */
 class CheckUniqueness implements RetailAccountLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private ResidentialDeviceRepository $residentialDeviceRepository

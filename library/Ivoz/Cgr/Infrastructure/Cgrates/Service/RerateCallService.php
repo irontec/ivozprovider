@@ -14,22 +14,22 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
     /**
      * @var TrunksCdrRepository
      */
-    protected $trunksCdrRepository;
+    private $trunksCdrRepository;
 
     /**
      * @var BillableCallRepository
      */
-    protected $billableCallRepository;
+    private $billableCallRepository;
 
     /**
      * @var ProcessExternalCdr
      */
-    protected $processExternalCdr;
+    private $processExternalCdr;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    private $logger;
 
     public function __construct(
         ClientInterface $jsonRpcClient,

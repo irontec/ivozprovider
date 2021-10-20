@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromTrunksCdr;
 
 class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = CheckValidity::PRE_PERSIST_PRIORITY - 1;
+    public const PRE_PERSIST_PRIORITY = CheckValidity::PRE_PERSIST_PRIORITY - 1;
 
     public function __construct(
         private BillableCallRepository $billableCallRepository,
@@ -79,7 +79,7 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
             }
 
             $this->entityTools->dispatchQueuedOperations();
-        } catch (\Exception $e) {
+        } catch (\Exception) {
         }
     }
 }

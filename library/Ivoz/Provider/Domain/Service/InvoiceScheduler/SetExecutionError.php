@@ -21,7 +21,7 @@ class SetExecutionError
      */
     public function execute(
         InvoiceSchedulerInterface $scheduler,
-        $error = null
+        ?string $error = null
     ) {
         /** @var InvoiceSchedulerDto $invoiceSchedulerDto */
         $invoiceSchedulerDto = $this

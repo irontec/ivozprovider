@@ -17,17 +17,17 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface CalendarPeriodInterface extends LoggableEntityInterface
 {
-    const ROUTETYPE_NUMBER = 'number';
+    public const ROUTETYPE_NUMBER = 'number';
 
-    const ROUTETYPE_EXTENSION = 'extension';
+    public const ROUTETYPE_EXTENSION = 'extension';
 
-    const ROUTETYPE_VOICEMAIL = 'voicemail';
+    public const ROUTETYPE_VOICEMAIL = 'voicemail';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * Get the numberValue in E.164 format when routing to 'number'
@@ -38,9 +38,15 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
 
     public function isOutOfSchedule();
 
-    public function getStartDate(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getStartDate(): \DateTimeInterface;
 
-    public function getEndDate(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getEndDate(): \DateTimeInterface;
 
     public function getRouteType(): ?string;
 

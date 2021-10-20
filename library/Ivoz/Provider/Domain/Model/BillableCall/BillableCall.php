@@ -13,7 +13,7 @@ class BillableCall extends BillableCallAbstract implements BillableCallInterface
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }

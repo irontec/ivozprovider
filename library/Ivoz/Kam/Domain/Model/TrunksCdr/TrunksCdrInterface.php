@@ -19,15 +19,21 @@ use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 */
 interface TrunksCdrInterface extends EntityInterface
 {
-    const DIRECTION_INBOUND = 'inbound';
+    public const DIRECTION_INBOUND = 'inbound';
 
-    const DIRECTION_OUTBOUND = 'outbound';
+    public const DIRECTION_OUTBOUND = 'outbound';
 
     public function isOutboundCall();
 
-    public function getStartTime(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getStartTime(): \DateTimeInterface;
 
-    public function getEndTime(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getEndTime(): \DateTimeInterface;
 
     public function getDuration(): float;
 
@@ -47,7 +53,10 @@ interface TrunksCdrInterface extends EntityInterface
 
     public function getParsed(): ?bool;
 
-    public function getParserScheduledAt(): \DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getParserScheduledAt(): \DateTimeInterface;
 
     public function getDirection(): ?string;
 

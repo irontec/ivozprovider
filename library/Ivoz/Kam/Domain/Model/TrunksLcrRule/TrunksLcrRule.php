@@ -15,7 +15,7 @@ class TrunksLcrRule extends TrunksLcrRuleAbstract implements TrunksLcrRuleInterf
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -36,7 +36,7 @@ class TrunksLcrRule extends TrunksLcrRuleAbstract implements TrunksLcrRuleInterf
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      * @return string
      */
-    public static function getFromUriForOutgoingRouting(OutgoingRoutingInterface $outgoingRouting)
+    public static function getFromUriForOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): string
     {
         $company = $outgoingRouting->getCompany();
 

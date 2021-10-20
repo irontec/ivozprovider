@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleEventHa
  */
 class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = LcrRuleUpdateByOutgoingRouting::POST_PERSIST_PRIORITY + 10;
+    public const POST_PERSIST_PRIORITY = LcrRuleUpdateByOutgoingRouting::POST_PERSIST_PRIORITY + 10;
 
     public function __construct(
         private TrunksLcrRuleTargetFactory $trunksLcrRuleTargetFactory

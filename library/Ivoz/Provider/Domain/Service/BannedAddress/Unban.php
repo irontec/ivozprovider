@@ -8,7 +8,7 @@ use Psr\Log\LoggerInterface;
 
 class Unban implements BannedAddressLifecycleEventHandlerInterface
 {
-    const PRE_REMOVE_PRIORITY = self::PRIORITY_HIGH;
+    public const PRE_REMOVE_PRIORITY = self::PRIORITY_HIGH;
 
     public function __construct(
         private UsersClient $kamUsersClient,

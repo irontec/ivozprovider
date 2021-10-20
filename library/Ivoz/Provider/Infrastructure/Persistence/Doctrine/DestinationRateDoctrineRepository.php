@@ -18,8 +18,8 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class DestinationRateDoctrineRepository extends ServiceEntityRepository implements DestinationRateRepository
 {
-    protected $em;
-    protected $queryRunner;
+    private $em;
+    private $queryRunner;
 
     public function __construct(
         ManagerRegistry $registry,
@@ -37,7 +37,7 @@ class DestinationRateDoctrineRepository extends ServiceEntityRepository implemen
      * @throws \Doctrine\DBAL\ConnectionException
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function insertIgnoreFromArray(array $destinationRates)
+    public function insertIgnoreFromArray(array $destinationRates): int
     {
         $tpDestinationRateInsert =
             'INSERT INTO DestinationRates'

@@ -18,14 +18,8 @@ abstract class ProxyUserAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string | null
-     */
     protected $name;
 
-    /**
-     * @var string | null
-     */
     protected $ip;
 
     /**
@@ -56,9 +50,8 @@ abstract class ProxyUserAbstract
 
     /**
      * @param mixed $id
-     * @return ProxyUserDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): ProxyUserDto
     {
         return new ProxyUserDto($id);
     }
@@ -135,9 +128,8 @@ abstract class ProxyUserAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return ProxyUserDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): ProxyUserDto
     {
         return self::createDto()
             ->setName(self::getName())

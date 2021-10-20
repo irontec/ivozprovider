@@ -66,23 +66,24 @@ class CreateByScheduler
     {
         $brand = $scheduler->getBrand();
         $outDate = $scheduler->getNextExecution();
-        $outDate->setTimezone(
+        $outDate = $outDate->setTimezone(
             new \DateTimeZone(
                 $brand->getDefaultTimezone()->getTz()
             )
         );
-        $outDate->setTime(0, 0, 0);
-        $outDate->modify('1 second ago');
+        $outDate = $outDate
+            ->setTime(0, 0, 0)
+            ->modify('1 second ago');
 
         $inDate = DateTimeHelper::sub(
             $outDate,
             $scheduler->getInterval()
         );
-        $inDate->modify('+1 second');
+        $inDate = $inDate->modify('+1 second');
 
         // Back to UTC
-        $outDate->setTimezone(new \DateTimeZone('UTC'));
-        $inDate->setTimezone(new \DateTimeZone('UTC'));
+        $outDate = $outDate->setTimezone(new \DateTimeZone('UTC'));
+        $inDate = $inDate->setTimezone(new \DateTimeZone('UTC'));
 
         $company = $scheduler->getCompany();
         $invoiceDto = new InvoiceDto();

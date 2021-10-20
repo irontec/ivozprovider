@@ -21,21 +21,21 @@ use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 */
 interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityInterface
 {
-    const UNIT_DAY = 'day';
+    public const UNIT_DAY = 'day';
 
-    const UNIT_WEEK = 'week';
+    public const UNIT_WEEK = 'week';
 
-    const UNIT_MONTH = 'month';
+    public const UNIT_MONTH = 'month';
 
-    const CALLDIRECTION_INBOUND = 'inbound';
+    public const CALLDIRECTION_INBOUND = 'inbound';
 
-    const CALLDIRECTION_OUTBOUND = 'outbound';
+    public const CALLDIRECTION_OUTBOUND = 'outbound';
 
     /**
      * @codeCoverageIgnore
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
@@ -47,7 +47,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * @return \DateInterval
      */
-    public function getInterval();
+    public function getInterval(): \DateInterval;
 
     public function getName(): string;
 
@@ -59,11 +59,17 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     public function getEmail(): string;
 
-    public function getLastExecution(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getLastExecution(): ?\DateTimeInterface;
 
     public function getLastExecutionError(): ?string;
 
-    public function getNextExecution(): ?\DateTime;
+    /**
+     * @return \DateTime|\DateTimeImmutable
+     */
+    public function getNextExecution(): ?\DateTimeInterface;
 
     public function getBrand(): ?BrandInterface;
 

@@ -22,19 +22,10 @@ abstract class FaxAbstract
 {
     use ChangelogTrait;
 
-    /**
-     * @var string
-     */
     protected $name;
 
-    /**
-     * @var string | null
-     */
     protected $email;
 
-    /**
-     * @var bool
-     */
     protected $sendByEmail = true;
 
     /**
@@ -51,8 +42,8 @@ abstract class FaxAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $sendByEmail
+        string $name,
+        bool $sendByEmail
     ) {
         $this->setName($name);
         $this->setSendByEmail($sendByEmail);
@@ -79,9 +70,8 @@ abstract class FaxAbstract
 
     /**
      * @param mixed $id
-     * @return FaxDto
      */
-    public static function createDto($id = null)
+    public static function createDto($id = null): FaxDto
     {
         return new FaxDto($id);
     }
@@ -165,9 +155,8 @@ abstract class FaxAbstract
     /**
      * @internal use EntityTools instead
      * @param int $depth
-     * @return FaxDto
      */
-    public function toDto($depth = 0)
+    public function toDto($depth = 0): FaxDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -223,7 +212,7 @@ abstract class FaxAbstract
 
     protected function setSendByEmail(bool $sendByEmail): static
     {
-        Assertion::between(intval($sendByEmail), 0, 1, 'sendByEmail provided "%s" is not a valid boolean value.');
+        Assertion::between((int) $sendByEmail, 0, 1, 'sendByEmail provided "%s" is not a valid boolean value.');
         $sendByEmail = (bool) $sendByEmail;
 
         $this->sendByEmail = $sendByEmail;

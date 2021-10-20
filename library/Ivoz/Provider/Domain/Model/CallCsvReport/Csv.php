@@ -10,34 +10,31 @@ use Assert\Assertion;
 * Csv
 * @codeCoverageIgnore
 */
-class Csv
+final class Csv
 {
     /**
      * column: csvFileSize
      * comment: FSO
-     * @var int | null
      */
-    protected $fileSize;
+    private $fileSize;
 
     /**
      * column: csvMimeType
-     * @var string | null
      */
-    protected $mimeType;
+    private $mimeType;
 
     /**
      * column: csvBaseName
-     * @var string | null
      */
-    protected $baseName;
+    private $baseName;
 
     /**
      * Constructor
      */
     public function __construct(
-        $fileSize,
-        $mimeType,
-        $baseName
+        ?int $fileSize,
+        ?string $mimeType,
+        ?string $baseName
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
@@ -49,10 +46,13 @@ class Csv
      */
     public function equals(self $csv)
     {
-        return
-            $this->getFileSize() === $csv->getFileSize() &&
-            $this->getMimeType() === $csv->getMimeType() &&
-            $this->getBaseName() === $csv->getBaseName();
+        if ($this->getFileSize() !== $csv->getFileSize()) {
+            return false;
+        }
+        if ($this->getMimeType() !== $csv->getMimeType()) {
+            return false;
+        }
+        return $this->getBaseName() === $csv->getBaseName();
     }
 
     protected function setFileSize(?int $fileSize = null): static
