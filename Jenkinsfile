@@ -23,7 +23,6 @@ pipeline {
     // Environment configuration
     // ------------------------------------------------------------------------
     environment {
-        SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
         SYMFONY_PHPUNIT_VERSION = "9.5.3"
     }
 
@@ -43,7 +42,7 @@ pipeline {
             agent {
                 docker {
                     image 'ironartemis/ivozprovider-testing-base:halliday'
-                    args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                    args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                     reuseNode true
                 }
             }
@@ -70,7 +69,7 @@ pipeline {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
@@ -86,7 +85,7 @@ pipeline {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
@@ -103,7 +102,7 @@ pipeline {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
@@ -120,7 +119,7 @@ pipeline {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
@@ -136,7 +135,7 @@ pipeline {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
@@ -152,7 +151,7 @@ pipeline {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
@@ -169,7 +168,7 @@ pipeline {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
@@ -186,7 +185,7 @@ pipeline {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
@@ -203,7 +202,7 @@ pipeline {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
@@ -220,7 +219,7 @@ pipeline {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
@@ -236,7 +235,7 @@ pipeline {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
                     }
@@ -252,7 +251,7 @@ pipeline {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
-                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            args '--user jenkins --volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                         }
                     }
                     steps {
@@ -274,7 +273,7 @@ pipeline {
                                     sh 'while ! mysqladmin ping -hdata.ivozprovider.local --silent; do sleep 1; done'
                                 }
                                 docker.image('ironartemis/ivozprovider-testing-base:halliday')
-                                      .inside("--volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:data.ivozprovider.local") {
+                                      .inside("--volume ${JENKINS_HOME}/caches/ivozprovider:/home/jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:data.ivozprovider.local") {
                                     sh '/opt/irontec/ivozprovider/schema/bin/test-schema'
                                     sh '/opt/irontec/ivozprovider/schema/bin/test-duplicate-keys'
                                 }

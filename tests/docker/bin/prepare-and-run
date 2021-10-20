@@ -2,9 +2,6 @@
 
 set -e
 
-# Restore main vendor directory (improves composer install)
-cp -fr /opt/library-vendor /opt/irontec/ivozprovider/library/vendor || true
-
 # Update composer dependencies
 /opt/irontec/ivozprovider/library/bin/composer-install --no-interaction --prefer-dist --no-progress
 

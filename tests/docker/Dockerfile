@@ -49,21 +49,7 @@ RUN npm install -g swagger-cli
 
 # Base project
 USER $UNAME
-RUN mkdir -p /opt/irontec
-RUN git clone -b halliday --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
 
-# Install phpunit 6.5.14
-RUN mkdir -p /opt/phpunit/
-RUN wget https://github.com/sebastianbergmann/phpunit/archive/6.5.14.zip -O /opt/phpunit/phpunit.zip
-RUN unzip /opt/phpunit/phpunit.zip -d /opt/phpunit/
-
-# Get dependencies
-RUN /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-progress
-
-# Store the main project vendor
-RUN cp -r /opt/irontec/ivozprovider/library/vendor/    /opt/library-vendor
-
-# We dont require project files anymore
-RUN rm -fr /opt/irontec/ivozprovider/
+RUN mkdir -p /opt/irontec/ivozprovider
 
 WORKDIR /opt/irontec/ivozprovider/
