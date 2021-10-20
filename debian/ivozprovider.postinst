@@ -163,6 +163,7 @@ function enable_services()
     /bin/systemctl enable kamailio@users
     /bin/systemctl enable kamailio@trunks
     /bin/systemctl enable asterisk
+    /bin/systemctl enable ivozprovider-realtime
     /bin/systemctl enable ivozprovider-jwt.timer
     /bin/systemctl enable ivozprovider-recordings.timer
     /bin/systemctl enable ivozprovider-balances.timer
