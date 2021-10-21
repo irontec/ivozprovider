@@ -1,7 +1,7 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import pickUpGroup from './PickUpGroup';
 
-const PickUpGroupSelectOptions = (callback: FetchFksCallback) => {
+const PickUpGroupSelectOptions = (callback: FetchFksCallback): void => {
 
     defaultEntityBehavior.fetchFks(
         pickUpGroup.path,

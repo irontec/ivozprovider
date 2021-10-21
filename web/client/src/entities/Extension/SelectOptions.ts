@@ -1,6 +1,6 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const ExtensionSelectOptions = (callback: FetchFksCallback) => {
+const ExtensionSelectOptions = (callback: FetchFksCallback): void => {
 
     defaultEntityBehavior.fetchFks(
         '/extensions',

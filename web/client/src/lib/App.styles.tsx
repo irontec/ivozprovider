@@ -2,7 +2,7 @@ import { Theme, Breakpoint, Paper, Container } from '@mui/material';
 import { styled } from '@mui/styles';
 import { CreateCSSProperties } from '@mui/styles/withStyles';
 
-export const StyledAppFlexDiv = styled('div')(({ theme }: { theme: Theme }) => {
+export const StyledAppFlexDiv = styled('div')(() => {
   return { display: 'flex' };
 });
 

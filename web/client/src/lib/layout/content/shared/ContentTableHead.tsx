@@ -1,9 +1,18 @@
 import {
     TableCell, TableHead, TableRow, TableSortLabel
 } from '@mui/material';
+import EntityService from 'lib/services/entity/EntityService';
 import { StyledTableSortLabelVisuallyHidden } from './ContentTableHead.styles';
 
-const ContentTableHead = function (props: any) {
+interface ContentTableHead {
+    entityService: EntityService,
+    order: 'asc' | 'desc',
+    orderBy: string,
+    onRequestSort: (property: string, order: 'asc' | 'desc') => void
+}
+
+const ContentTableHead = function (props: ContentTableHead): JSX.Element {
+
     const {
         entityService,
         order,
@@ -13,7 +22,7 @@ const ContentTableHead = function (props: any) {
 
     const columns = entityService.getCollectionColumns();
 
-    const createSortHandler = (property: string) => (event: any) => {
+    const createSortHandler = (property: string) => () => {
         const isDesc = orderBy === property && order === 'desc';
         onRequestSort(
             property,

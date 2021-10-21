@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import { CriteriaFilterValue, CriteriaFilterValues } from '../shared/ContentFilter';
 
 
-interface useRequestPathProps {
+interface UseRequestPathProps {
     where: CriteriaFilterValues,
     basePath: string
 }
 
-function useFilterRequestPath(props: useRequestPathProps) {
+function useFilterRequestPath(props: UseRequestPathProps): string {
 
     const {
         where, basePath
@@ -51,9 +51,7 @@ function useFilterRequestPath(props: useRequestPathProps) {
                 setMounted(false);
             };
         },
-        [
-            where, basePath,
-        ]
+        [mounted, where, basePath]
     );
 
     return reqPath;

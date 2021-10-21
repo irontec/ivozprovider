@@ -8,7 +8,7 @@ import { useStoreActions } from "easy-peasy";
 import { useEffect } from "react";
 import { AppRoutesProps } from "lib/App";
 
-export default function AppRoutes(props:AppRoutesProps) {
+export default function AppRoutes(props: AppRoutesProps): JSX.Element {
 
   const { token, apiSpec } = props;
 
@@ -21,7 +21,7 @@ export default function AppRoutes(props:AppRoutesProps) {
       <Route exact key='login' path='/'>
         <DashboardRoute loggedIn={!!token} />
       </Route>
-      {token && parseRoutes(apiSpec).map((route: RouteSpec, key:number) => (
+      {token && parseRoutes(apiSpec).map((route: RouteSpec) => (
         <Route exact key={route.key} path={route.path}>
           <RouteContent route={route} {...props} />
         </Route>
@@ -30,9 +30,9 @@ export default function AppRoutes(props:AppRoutesProps) {
   );
 }
 
-const DashboardRoute = (props:any) => {
+const DashboardRoute = (props: any) => {
   const { loggedIn } = props;
-  const setRoute = useStoreActions((actions:any) => {
+  const setRoute = useStoreActions((actions: any) => {
     return actions.route.setRoute;
   });
 
@@ -46,13 +46,13 @@ const DashboardRoute = (props:any) => {
   return (<Dashboard loggedIn={loggedIn} />);
 };
 
-const RouteContent = (props:any) => {
+const RouteContent = (props: any) => {
 
   const { route, apiSpec } = props;
-  const setRoute = useStoreActions((actions:any) => {
+  const setRoute = useStoreActions((actions: any) => {
     return actions.route.setRoute;
   });
-  const setRouteName = useStoreActions((actions:any) => {
+  const setRouteName = useStoreActions((actions: any) => {
     return actions.route.setName;
   });
 

@@ -1,6 +1,6 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const ResidentialDeviceSelectOptions = (callback: FetchFksCallback) => {
+const ResidentialDeviceSelectOptions = (callback: FetchFksCallback): void => {
 
     defaultEntityBehavior.fetchFks(
         '/residential_devices',

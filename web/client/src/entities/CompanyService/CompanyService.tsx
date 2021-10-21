@@ -2,7 +2,6 @@ import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import EntityService from 'lib/services/entity/EntityService';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import Form from './Form';
@@ -21,9 +20,8 @@ const properties: CompanyServiceProperties = {
 };
 
 async function foreignKeyResolver(
-    data: CompanyServicePropertiesList,
-    entityService: EntityService
-) {
+    data: CompanyServicePropertiesList
+): Promise<CompanyServicePropertiesList> {
     const promises = [];
     const { Service } = entities;
 

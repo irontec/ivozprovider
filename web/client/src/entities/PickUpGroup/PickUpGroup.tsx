@@ -4,7 +4,6 @@ import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import entities from '../index';
-import EntityService, { EntityValues } from 'lib/services/entity/EntityService';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import { PickUpGroupProperties, PickUpGroupPropertiesList } from './PickUpGroupProperties';
 
@@ -17,7 +16,7 @@ const properties: PickUpGroupProperties = {
     }
 };
 
-async function foreignKeyResolver(data: PickUpGroupPropertiesList, entityService: EntityService) {
+async function foreignKeyResolver(data: PickUpGroupPropertiesList): Promise<PickUpGroupPropertiesList> {
 
     const promises = [];
     const { User } = entities;

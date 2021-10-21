@@ -1,6 +1,6 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const TimezoneSelectOptions = (callback: FetchFksCallback) => {
+const TimezoneSelectOptions = (callback: FetchFksCallback): void => {
 
     defaultEntityBehavior.fetchFks(
         '/timezones',

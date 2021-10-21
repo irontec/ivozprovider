@@ -1,6 +1,6 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const HuntGroupSelectOptions = (callback: FetchFksCallback) => {
+const HuntGroupSelectOptions = (callback: FetchFksCallback): void => {
 
     defaultEntityBehavior.fetchFks(
         '/hunt_groups',

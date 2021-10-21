@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFormik, FormikHelpers } from 'formik';
+import { useFormik } from 'formik';
 import { Container } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -9,13 +9,20 @@ import Title from 'lib/layout/Title';
 import ErrorMessage from './shared/ErrorMessage';
 import { useFormikType } from 'lib/services/form/types';
 import { StyledLoginContainer, StyledAvatar, StyledForm, StyledSubmitButton } from './Login.styles';
+import { EntityValidator } from 'lib/entities/DefaultEntityBehavior';
 
-export default function Login(props: any) {
 
-  const [error, setError] = useState(null);
+interface LoginProps {
+  validator?: EntityValidator
+}
+
+export default function Login(props: LoginProps): JSX.Element {
+
+  debugger;
+  const [error, setError] = useState<string | null>(null);
 
   const setToken = useStoreActions((actions: any) => actions.auth.setToken);
-  const submit = async (values: any, actions: FormikHelpers<any>) => {
+  const submit = async (values: any) => {
 
     try {
 

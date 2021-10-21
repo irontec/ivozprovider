@@ -1,7 +1,6 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
-import EntityService from 'lib/services/entity/EntityService';
 import DefaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import _ from 'lib/services/translations/translate';
 import Form from './Form';
@@ -63,7 +62,7 @@ const properties: BillableCallProperties = {
     },
 };
 
-async function foreignKeyResolver(data: BillableCallPropertiesList, entityService: EntityService) {
+async function foreignKeyResolver(data: BillableCallPropertiesList): Promise<BillableCallPropertiesList> {
 
     const promises = [];
     const { Ddi } = entities;

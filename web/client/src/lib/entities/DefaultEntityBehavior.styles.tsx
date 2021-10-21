@@ -1,6 +1,6 @@
 
 import { styled } from '@mui/styles';
-import { Theme, Typography, Grid } from '@mui/material';
+import { Typography, Grid } from '@mui/material';
 
 export const StyledGroupLegend = styled(
     (props) => {
@@ -8,7 +8,7 @@ export const StyledGroupLegend = styled(
         return (<Typography variant='h6' color='inherit' gutterBottom className={className}>{children}</Typography>);
     }
 )(
-    ({ theme }: { theme: Theme }) => {
+    () => {
         return {
             marginBottom: '40px',
             paddingBottom: '10px',
@@ -23,7 +23,7 @@ export const StyledGroupGrid = styled(
         return (<Grid container spacing={3} className={className}>{children}</Grid>);
     }
 )(
-    ({ theme }: { theme: Theme }) => {
+    () => {
         return {
             paddingLeft: '15px',
             marginBottom: '15px',

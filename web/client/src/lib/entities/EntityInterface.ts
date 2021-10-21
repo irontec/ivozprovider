@@ -1,5 +1,5 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
-import EntityService from "lib/services/entity/EntityService";
+import EntityService, { EntityValues } from "lib/services/entity/EntityService";
 import { EntityFormProps } from "./DefaultEntityBehavior";
 
 export type ListDecoratorPropsType = {
@@ -10,7 +10,7 @@ export type ListDecoratorPropsType = {
 export type ListDecoratorType = (props: ListDecoratorPropsType) => any;
 
 type foreignKeyResolverType = (data: any, entityService: EntityService) => Promise<any>;
-type foreignKeyGetterType = () => Promise<any>;
+export type ForeignKeyGetterType = () => Promise<any>;
 type AclType = {
     create: boolean,
     read: boolean,
@@ -22,24 +22,35 @@ export type PropertiesList = {
     [index: string]: Partial<PropertySpec>
 };
 
+export type RowIconsType = (props: EntityValues) => JSX.Element;
+export interface ViewProps {
+    entityService: EntityService,
+    row: any,
+    groups: any,
+}
+export type ViewType = (props: ViewProps) => JSX.Element | null;
+
+
+type ToStrType = (row: EntityValues) => string;
+
 export default interface EntityInterface {
     initialValues: any,
     validator: (values: any, properties: PropertiesList) => any,
     marshaller: (T: any, properties: PropertiesList) => any,
     unmarshaller: (T: any, properties: PropertiesList) => any,
     foreignKeyResolver: foreignKeyResolverType,
-    foreignKeyGetter: foreignKeyGetterType,
+    foreignKeyGetter: ForeignKeyGetterType,
     Form: React.FunctionComponent<EntityFormProps>,
-    View: React.FunctionComponent,
+    View: ViewType,
     ListDecorator: ListDecoratorType,
-    RowIcons: React.FunctionComponent,
+    RowIcons: RowIconsType,
     acl: AclType,
     iden: string,
     title: string | JSX.Element,
     path: string,
     columns: Array<string>,
     properties: PropertiesList,
-    toStr: (row: { [key: string]: any; }) => string,
+    toStr: ToStrType,
     defaultOrderBy: string,
     icon: JSX.Element
 }

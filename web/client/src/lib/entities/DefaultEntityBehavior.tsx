@@ -1,19 +1,23 @@
 import * as React from 'react';
-import EntityService from 'lib/services/entity/EntityService';
+import EntityService, { EntityValues, VisualToggleStates } from 'lib/services/entity/EntityService';
 import FormFieldFactory from 'lib/services/form/FormFieldFactory';
 import { useFormikType } from 'lib/services/form/types';
 import ApiClient from "lib/services/api/ApiClient";
 import { Grid } from '@mui/material';
 import { PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
-import EntityInterface, { PropertiesList } from './EntityInterface';
+import EntityInterface, { PropertiesList, RowIconsType, ViewProps } from './EntityInterface';
 import ViewFieldValue from 'lib/services/form/Field/ViewFieldValue';
 import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
 
 export const initialValues = {};
 
-export const validator = (values: any, properties: PropertiesList) => {
+interface EntityValidatorValues { [label: string]: string }
+type EntityValidatorResponse = Record<string, string>;
+export type EntityValidator = (values: EntityValidatorValues, properties: PropertiesList) => EntityValidatorResponse;
 
-    const response: any = {};
+export const validator: EntityValidator = (values: EntityValidatorValues, properties: PropertiesList): EntityValidatorResponse => {
+
+    const response: EntityValidatorResponse = {};
     for (const idx in values) {
 
         const pattern: RegExp | undefined = (properties[idx] as ScalarProperty)?.pattern;
@@ -25,7 +29,8 @@ export const validator = (values: any, properties: PropertiesList) => {
     return response;
 }
 
-export const marshaller = (values: any, properties: PropertiesList) => {
+export type MarshallerValues = { [key: string]: any };
+export const marshaller = (values: MarshallerValues, properties: PropertiesList): MarshallerValues => {
 
     for (const idx in values) {
 
@@ -63,7 +68,7 @@ export const marshaller = (values: any, properties: PropertiesList) => {
 }
 
 // API Response format => formik compatible format
-export const unmarshaller = (row: any, properties: PropertiesList) => {
+export const unmarshaller = (row: MarshallerValues, properties: PropertiesList): MarshallerValues => {
 
     const normalizedData: any = {};
 
@@ -98,9 +103,10 @@ export const unmarshaller = (row: any, properties: PropertiesList) => {
     return normalizedData;
 };
 
-export const foreignKeyResolver = async (data: any, entityService: EntityService) => data;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const foreignKeyResolver = async (data: EntityValues, entityService: EntityService): Promise<EntityValues> => data;
 
-export const foreignKeyGetter = async () => {
+export const foreignKeyGetter = async (): Promise<any> => {
     return {};
 };
 
@@ -115,7 +121,13 @@ export const acl = {
     delete: true,
 };
 
-export const ListDecorator = (props: any) => {
+interface ListDecoratorProps {
+    field: any,
+    row: any,
+    property: any
+}
+
+export const ListDecorator = (props: ListDecoratorProps): JSX.Element | string => {
 
     const { field, row, property } = props;
     let value = row[field];
@@ -145,7 +157,8 @@ export const ListDecorator = (props: any) => {
         : '';
 }
 
-export const RowIcons = (props: any) => {
+
+export const RowIcons: RowIconsType = (): JSX.Element => {
     return (
         <React.Fragment />
     );
@@ -156,20 +169,30 @@ export type FieldsetGroups = {
     fields: Array<string>
 }
 
+export type PropertyFkChoices = {
+    [key: string]: string | React.ReactElement<any>
+};
+
+export type NullablePropertyFkChoices = null | PropertyFkChoices;
+
+export type FkChoices = null | {
+    [key: string]: NullablePropertyFkChoices
+};
+
 export type EntityFormProps = EntityInterface & {
     create?: boolean,
     edit?: boolean,
     entityService: EntityService,
     formik: useFormikType,
     groups: Array<FieldsetGroups>,
-    fkChoices: any,
+    fkChoices: FkChoices,
     readOnlyProperties?: { [attribute: string]: boolean },
 };
 
 
 export type FormOnChangeEvent = React.ChangeEvent<{ name: string, value: any }>;
 
-const Form = (props: EntityFormProps) => {
+const Form = (props: EntityFormProps): JSX.Element => {
 
     const { entityService, formik, readOnlyProperties } = props;
     const { fkChoices } = props;
@@ -197,7 +220,7 @@ const Form = (props: EntityFormProps) => {
         );
     }
 
-    const [visualToggles, setVisualToggles] = React.useState(initialVisualToggles);
+    const [visualToggles, setVisualToggles] = React.useState<VisualToggleStates>(initialVisualToggles);
 
     const formOnChangeHandler = (e: FormOnChangeEvent): void => {
 
@@ -242,7 +265,7 @@ const Form = (props: EntityFormProps) => {
                         <StyledGroupGrid>
                             {group.fields.map((columnName: string, idx: number) => {
 
-                                const choices = fkChoices
+                                const choices: NullablePropertyFkChoices = fkChoices
                                     ? fkChoices[columnName]
                                     : null;
 
@@ -268,9 +291,9 @@ const Form = (props: EntityFormProps) => {
     );
 };
 
-const View = (props: any) => {
+const View = (props: ViewProps): JSX.Element | null => {
 
-    const { entityService, row }: { entityService: EntityService, row: any } = props;
+    const { entityService, row } = props;
 
     const columns = entityService.getColumns();
     const columnNames = Object.keys(columns);
@@ -314,7 +337,7 @@ const View = (props: any) => {
 
 export type FetchFksCallback = (data: { [key: string]: any }) => void;
 
-const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksCallback) => {
+const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksCallback): void => {
     ApiClient.get(
         endpoint,
         {
@@ -339,8 +362,8 @@ const DefaultEntityBehavior = {
     properties,
     acl,
     ListDecorator,
-    toStr: (row: any) => {
-        return (row.id || '[*]');
+    toStr: (row: EntityValues): string => {
+        return (row.id as string || '[*]');
     },
     RowIcons,
     Form,

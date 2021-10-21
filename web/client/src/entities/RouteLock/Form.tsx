@@ -1,7 +1,7 @@
-import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import _ from 'lib/services/translations/translate';
 
-const Form = (props: any) => {
+const Form = (props: EntityFormProps): JSX.Element => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
@@ -19,7 +19,7 @@ const Form = (props: any) => {
         },
     ];
 
-    return (<DefaultEntityForm groups={groups} {...props} />);
+    return (<DefaultEntityForm {...props} groups={groups} />);
 }
 
 export default Form;

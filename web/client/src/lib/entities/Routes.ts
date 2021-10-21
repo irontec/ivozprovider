@@ -12,7 +12,7 @@ export type RouteSpec = {
 };
 const routes: Array<RouteSpec> = [];
 
-export const parseRoutes = (apiSpec: ParsedApiSpecInterface) => {
+export const parseRoutes = (apiSpec: ParsedApiSpecInterface): RouteSpec[] => {
 
     const routes: Array<RouteSpec> = [];
 

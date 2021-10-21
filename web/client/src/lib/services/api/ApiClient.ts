@@ -5,11 +5,11 @@ type AsyncFunction = (data: any, headers: any) => Promise<void>
 export type ApiError = AxiosResponse | null;
 
 class ApiClient {
-    static setToken(token: string) {
+    static setToken(token: string): void {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
 
-    static async get(endpoint: string, params: any = undefined, callback: AsyncFunction) {
+    static async get(endpoint: string, params: any = undefined, callback: AsyncFunction): Promise<unknown> {
         try {
 
             const response = await axios.get(
@@ -42,7 +42,7 @@ class ApiClient {
         }
     }
 
-    static async post(endpoint: string, params: any = undefined, contentType: string) {
+    static async post<T = any>(endpoint: string, params: any = undefined, contentType: string): Promise<T> {
         const reqConfig = {
             headers: {
                 'Content-Type': contentType
@@ -69,7 +69,7 @@ class ApiClient {
         }
     }
 
-    static async put(endpoint: string, params: any = undefined) {
+    static async put<T = any>(endpoint: string, params: any = undefined): Promise<T> {
         try {
             return await axios.put(config.API_URL + endpoint, params);
         } catch (error) {
@@ -81,7 +81,7 @@ class ApiClient {
         }
     }
 
-    static async delete(endpoint: string, params: any = undefined) {
+    static async delete<T = any>(endpoint: string, params: any = undefined): Promise<T> {
         try {
             return await axios.delete(config.API_URL + endpoint, params);
         } catch (error) {

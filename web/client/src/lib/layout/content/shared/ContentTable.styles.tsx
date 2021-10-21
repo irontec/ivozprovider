@@ -1,9 +1,9 @@
-import { Theme, Fab, Chip } from '@mui/material';
+import { Fab, Chip } from '@mui/material';
 import { styled } from '@mui/styles';
 import { Link } from "react-router-dom";
 
 export const StyledActionButtonContainer = styled('div')(
-  ({ theme }: { theme: Theme }) => {
+  () => {
     return {
       display: 'flex',
       justifyContent: 'space-between',
@@ -20,7 +20,7 @@ export const StyledLink = styled(
     return (<Link to={to} className={className}>{children}</Link>);
   }
 )(
-  ({ theme }: { theme: Theme }) => {
+  () => {
     return {
       textDecoration: 'none',
       color: 'inherit',
@@ -44,7 +44,7 @@ export const StyledFab = styled(
     );
   }
 )(
-  ({ theme }: { theme: Theme }) => {
+  () => {
     return {
       marginRight: '10px'
     }
@@ -64,7 +64,7 @@ export const StyledChip = styled(
     );
   }
 )(
-  ({ theme }: { theme: Theme }) => {
+  () => {
     return {
       margin: '0 5px',
     }
@@ -82,7 +82,7 @@ export const StyledChipIcon = styled(
     );
   }
 )(
-  ({ theme }: { theme: Theme }) => {
+  () => {
     return {
       paddingTop: '5px',
       '* .prefix': {

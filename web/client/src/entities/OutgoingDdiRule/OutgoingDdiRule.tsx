@@ -3,7 +3,7 @@ import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
-import EntityService, { EntityValues } from 'lib/services/entity/EntityService';
+import { EntityValues } from 'lib/services/entity/EntityService';
 import entities from '../index';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 
@@ -34,7 +34,7 @@ const properties: PropertiesList = {
 };
 
 
-async function foreignKeyResolver(data: EntityValues, entityService: EntityService) {
+async function foreignKeyResolver(data: EntityValues): Promise<EntityValues> {
 
     const promises = [];
     const { Ddi } = entities;

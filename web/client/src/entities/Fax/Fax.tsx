@@ -1,7 +1,6 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
-import EntityService from 'lib/services/entity/EntityService';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
@@ -45,7 +44,7 @@ const columns = [
     'email',
 ];
 
-async function foreignKeyResolver(data: FaxPropertiesList, entityService: EntityService) {
+async function foreignKeyResolver(data: FaxPropertiesList): Promise<FaxPropertiesList> {
 
     const promises = [];
     const { Ddi } = entities;

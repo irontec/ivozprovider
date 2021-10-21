@@ -7,7 +7,7 @@ interface StatusIconProps {
     _context: string,
 }
 
-const StatusIcon = (props: StatusIconProps) => {
+const StatusIcon = (props: StatusIconProps): JSX.Element => {
 
     const { directConnectivity, _context } = props;
     const writeContext = (_context === 'write');

@@ -5,9 +5,7 @@ import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
-import EntityService from 'lib/services/entity/EntityService';
 import { DdiProperties, DdiPropertiesList } from './DdiProperties';
-import { PropertySpec } from 'lib/services/api/ParsedApiSpecInterface';
 
 const allRoutableFields = [
     'ivr',
@@ -149,9 +147,8 @@ const columns = [
 ];
 
 async function foreignKeyResolver(
-    data: DdiPropertiesList,
-    entityService: EntityService
-) {
+    data: DdiPropertiesList
+): Promise<DdiPropertiesList> {
 
     const promises = [];
     const {

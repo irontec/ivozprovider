@@ -1,14 +1,13 @@
-import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 
-export default function Title(props: any) {
+interface TitleProps {
+  children: JSX.Element | string
+}
+
+export default function Title(props: TitleProps): JSX.Element {
   return (
     <Typography component="h2" variant="h6" color="inherit" gutterBottom>
       {props.children}
     </Typography>
   );
 }
-
-Title.propTypes = {
-  children: PropTypes.node,
-};

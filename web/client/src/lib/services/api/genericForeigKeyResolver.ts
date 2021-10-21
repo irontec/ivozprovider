@@ -1,12 +1,14 @@
+import { EntityValues } from '../entity/EntityService';
 import ApiClient from './ApiClient';
 
 export default async function genericForeignKeyResolver(
-    data: any,
+    data: Array<EntityValues> | EntityValues,
     fkFld: string,
     entityEndpoint: string,
-    toStr: (row: { [key: string]: any }) => string,
+    toStr: (row: EntityValues) => string,
     addLink = true
-) {
+): Promise<Array<EntityValues> | EntityValues> {
+
     if (typeof data !== 'object') {
         return data;
     }
@@ -17,7 +19,7 @@ export default async function genericForeignKeyResolver(
 
     if (!Array.isArray(data)) {
         // Just flat view's detailed model
-        data[fkFld] = toStr(data[fkFld]);
+        data[fkFld] = toStr(data[fkFld] as EntityValues);
 
         return data;
     }
@@ -50,7 +52,7 @@ export default async function genericForeignKeyResolver(
                 id: ids,
                 _pagination: false
             },
-            async (response: any, headers: any) => {
+            async (response: any) => {
 
                 const entityReducer = async (accumulator: any, value: any) => {
 
@@ -77,11 +79,13 @@ export default async function genericForeignKeyResolver(
                             continue;
                         }
 
+                        const scalarFk = fk as string | number;
+
                         data[idx][`${fkFld}Id`] = data[idx][fkFld];
                         if (addLink) {
-                            data[idx][`${fkFld}Link`] = `${entityEndpoint}/${fk}/update`;
+                            data[idx][`${fkFld}Link`] = `${entityEndpoint}/${scalarFk}/update`;
                         }
-                        data[idx][fkFld] = entities[fk];
+                        data[idx][fkFld] = entities[scalarFk];
                     }
                 }
             }
@@ -91,7 +95,7 @@ export default async function genericForeignKeyResolver(
     return data;
 }
 
-export const remapFk = (row: any, from: string, to: string) => {
+export const remapFk = (row: EntityValues, from: string, to: string): void => {
 
     row[to] = row[from];
     row[`${to}Id`] = row[`${from}Id`];

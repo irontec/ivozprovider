@@ -2,8 +2,9 @@ import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import EntityService from 'lib/services/entity/EntityService';
 import { foreignKeyResolver } from './UsersCdr';
 import { useState, useEffect } from 'react';
+import { ViewProps } from 'lib/entities/EntityInterface';
 
-const View = (props: any) => {
+const View = (props: ViewProps): JSX.Element | null => {
 
     const { row, entityService }: { row: any, entityService: EntityService } = props;
     const [parsedValues, setParsedValues] = useState<any>({});
@@ -14,7 +15,7 @@ const View = (props: any) => {
         () => {
 
             if (mounted) {
-                foreignKeyResolver([row], entityService).then((data: any) => {
+                foreignKeyResolver([row]).then((data: any) => {
 
                     if (!mounted) {
                         return;
@@ -29,14 +30,14 @@ const View = (props: any) => {
                 setMounted(false);
             };
         },
-        [row, setParsedFks, entityService]
+        [mounted, row, setParsedFks, entityService]
     );
 
     if (!parsedFks) {
         return null;
     }
 
-    return (<defaultEntityBehavior.View row={parsedValues} {...props} />);
+    return (<defaultEntityBehavior.View {...props} row={parsedValues} />);
 }
 
 export default View;

@@ -3,7 +3,7 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import { FormikHelpers, useFormik } from 'formik';
 import { Button } from '@mui/material';
 import ErrorMessage from './shared/ErrorMessage';
-import EntityService from 'lib/services/entity/EntityService';
+import EntityService, { EntityValues } from 'lib/services/entity/EntityService';
 import EntityInterface from 'lib/entities/EntityInterface';
 import { useFormikType } from 'lib/services/form/types';
 import { useStoreActions } from 'easy-peasy';
@@ -19,7 +19,7 @@ const Create = (props: CreateProps & RouteComponentProps) => {
 
   const { marshaller, unmarshaller, path, history, properties } = props;
   const { Form: EntityForm, entityService }: { Form: any, entityService: EntityService } = props;
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const apiPost = useStoreActions((actions: any) => {
     return actions.api.post
   });
@@ -50,7 +50,7 @@ const Create = (props: CreateProps & RouteComponentProps) => {
     }
   };
 
-  let initialValues: any = {
+  let initialValues: EntityValues = {
     ...entityService.getDefultValues(),
     ...props.initialValues
   }

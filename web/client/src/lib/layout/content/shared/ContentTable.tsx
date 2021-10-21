@@ -1,6 +1,6 @@
 /* eslint-disable no-script-url */
 
-import React, { useState, MouseEvent } from 'react';
+import React, { useState } from 'react';
 import { Table, TablePagination, TableBody, Tooltip, Fab } from '@mui/material';
 import QueueIcon from '@mui/icons-material/Queue';
 import SearchIcon from '@mui/icons-material/Search';
@@ -16,7 +16,7 @@ import { StyledActionButtonContainer, StyledLink, StyledFab, StyledChip, StyledC
 
 type sortType = 'asc' | 'desc';
 
-interface propsType {
+interface ContentTableProps {
   loading?: boolean,
   path: string,
   setLoading: (loading: boolean) => void,
@@ -25,7 +25,7 @@ interface propsType {
   rowsPerPage: number,
   setRowsPerPage: (loading: number) => void,
   orderBy: string,
-  orderDirection: string,
+  orderDirection: 'asc' | 'desc',
   setSort: (property: string, sortType: sortType) => void,
   page: number,
   setPage: (page: number) => void,
@@ -34,7 +34,7 @@ interface propsType {
   setWhere: (where: CriteriaFilterValues) => void
 }
 
-export default function ContentTable(props: propsType) {
+export default function ContentTable(props: ContentTableProps): JSX.Element {
   const {
     path,
     entityService,
@@ -56,11 +56,11 @@ export default function ContentTable(props: propsType) {
   const acl = entityService.getAcls();
 
   const [showFilters, setShowFilters] = useState(false);
-  const handleFiltersClose = (event: any) => {
+  const handleFiltersClose = () => {
     setShowFilters(false);
   };
 
-  const filterButtonHandler = (event: MouseEvent<HTMLButtonElement>) => {
+  const filterButtonHandler = (/*event: MouseEvent<HTMLButtonElement>*/) => {
     setShowFilters(!showFilters);
   };
 
@@ -148,7 +148,6 @@ export default function ContentTable(props: propsType) {
 
       <Table size="medium">
         <ContentTableHead
-          path={path}
           entityService={entityService}
           order={orderDirection}
           orderBy={orderBy}

@@ -3,10 +3,16 @@ import Snackbar from '@mui/material/Snackbar';
 import SnackbarContent from '@mui/material/SnackbarContent';
 import IconButton from '@mui/material/IconButton';
 import { StyledCloseIcon, StyledSnackbarContentMessageContainer } from './Message.styles';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
 
-export default function Message(props: any) {
+export interface MessageProps {
+    message: string,
+    icon?: JSX.Element | OverridableComponent<any>,
+}
 
-    const { message, className, icon } = props;
+export default function Message(props: MessageProps): JSX.Element {
+
+    const { message, icon } = props;
     const [open, setOpen] = useState(true);
 
     const handleClose = () => {
@@ -24,7 +30,6 @@ export default function Message(props: any) {
             onClose={handleClose}
         >
             <SnackbarContent
-                className={className}
                 message={
                     <StyledSnackbarContentMessageContainer>
                         {icon}

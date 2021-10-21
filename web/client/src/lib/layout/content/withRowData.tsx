@@ -50,7 +50,7 @@ const withRowData = (Component: FunctionComponent | ComponentClass): FunctionCom
           setMounted(false);
         };
       },
-      [loading, entityId, entityService, apiGet]
+      [mounted, loading, entityId, entityService, apiGet]
     );
 
     if (loading) {

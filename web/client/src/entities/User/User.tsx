@@ -3,7 +3,6 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
-import EntityService from 'lib/services/entity/EntityService';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import { UserProperties, UserPropertiesList } from './UserProperties';
@@ -171,7 +170,7 @@ const properties: UserProperties = {
     }
 };
 
-async function foreignKeyResolver(data: UserPropertiesList, entityService: EntityService) {
+async function foreignKeyResolver(data: UserPropertiesList): Promise<UserPropertiesList> {
     const promises = [];
     const { Ddi, Extension, Terminal } = entities;
 

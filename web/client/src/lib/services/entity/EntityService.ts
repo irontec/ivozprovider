@@ -1,9 +1,22 @@
-import EntityInterface, { ListDecoratorPropsType, PropertiesList } from 'lib/entities/EntityInterface';
-import { FunctionComponent } from "react";
+import
+EntityInterface, { ForeignKeyGetterType, ListDecoratorPropsType, PropertiesList, RowIconsType }
+    from 'lib/entities/EntityInterface';
 import {
     ActionsSpec, PropertyList, ActionModelList, ScalarProperty,
     ActionModelSpec, visualToggleList
 } from "lib/services/api/ParsedApiSpecInterface";
+
+export type VisualToggleStates = { [key: string]: boolean };
+export type EntityValue = string | number | File | Array<string | number>;
+export type EntityValues = {
+    [key: string]: EntityValue | EntityValues
+};
+export type EntityAcls = {
+    create: boolean,
+    read: boolean,
+    update: boolean,
+    delete: boolean
+};
 
 export default class EntityService {
     constructor(
@@ -97,7 +110,7 @@ export default class EntityService {
         return rules;
     }
 
-    public getVisualToggles(): any {
+    public getVisualToggles(): VisualToggleStates {
         const properties = this.entityConfig.properties;
         const visualToggles = Object.keys(properties).reduce(
             (accumulator: any, fldName: string) => {
@@ -110,7 +123,12 @@ export default class EntityService {
         return visualToggles;
     }
 
-    public updateVisualToggle(fld: string, value: any, visualToggles: any) {
+    public updateVisualToggle(
+        fld: string,
+        value: string | number,
+        visualToggles: VisualToggleStates
+    ): VisualToggleStates {
+
         const rules = this.getVisualToggleRules();
 
         if (!rules[fld]) {
@@ -132,8 +150,8 @@ export default class EntityService {
         return visualToggles;
     }
 
-    public getDefultValues() {
-        const response: any = {};
+    public getDefultValues(): EntityValues {
+        const response: EntityValues = {};
         const columns = this.getColumns();
 
         for (const idx in columns) {
@@ -158,12 +176,12 @@ export default class EntityService {
         return response;
     }
 
-    public prepareFormData(payload: any) {
+    public prepareFormData(payload: EntityValues): FormData | EntityValues {
 
         const files: { [idx: string]: File } = {};
         for (const idx in payload) {
             if (payload[idx] instanceof File) {
-                files[idx] = payload[idx];
+                files[idx] = (payload[idx] as File);
                 delete payload[idx];
             }
         }
@@ -227,7 +245,7 @@ export default class EntityService {
         return action?.paths[0];
     }
 
-    public getTitle() {
+    public getTitle(): string | JSX.Element {
         return this.entityConfig.title;
     }
 
@@ -235,11 +253,11 @@ export default class EntityService {
         return this.entityConfig?.defaultOrderBy || 'id';
     }
 
-    public getOrderDirection(): string {
+    public getOrderDirection(): 'asc' | 'desc' {
         return 'desc';
     }
 
-    public getAcls() {
+    public getAcls(): EntityAcls {
         const create: boolean = this.entityConfig.acl.create && this.actions.post
             ? true
             : false;
@@ -266,7 +284,7 @@ export default class EntityService {
         return acl;
     }
 
-    public getForeignKeyGetter() {
+    public getForeignKeyGetter(): ForeignKeyGetterType {
         return this.entityConfig.foreignKeyGetter;
     }
 
@@ -274,7 +292,7 @@ export default class EntityService {
         return this.entityConfig.ListDecorator;
     }
 
-    public getRowActions(): FunctionComponent {
+    public getRowActions(): RowIconsType {
         return this.entityConfig.RowIcons;
     }
 

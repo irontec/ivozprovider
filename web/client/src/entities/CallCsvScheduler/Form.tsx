@@ -1,4 +1,4 @@
-import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import DdiSelectOptions from 'entities/Ddi/SelectOptions';
 import RetailAccountSelectOptions from 'entities/RetailAccount/SelectOptions';
@@ -9,7 +9,7 @@ import FriendSelectOptions from 'entities/Friend/SelectOptions';
 import DdiProviderSelectOptions from 'entities/DdiProvider/SelectOptions';
 import _ from 'lib/services/translations/translate';
 
-const Form = (props: any) => {
+const Form = (props: EntityFormProps): JSX.Element => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
@@ -92,7 +92,7 @@ const Form = (props: any) => {
                 setMounted(false);
             };
         },
-        [loadingFks, fkChoices]
+        [mounted, loadingFks, fkChoices]
     );
 
     const groups: Array<FieldsetGroups> = [
@@ -127,7 +127,7 @@ const Form = (props: any) => {
         },
     ];
 
-    return (<DefaultEntityForm fkChoices={fkChoices} groups={groups} {...props} />);
+    return (<DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />);
 }
 
 export default Form;

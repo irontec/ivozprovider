@@ -5,7 +5,7 @@ interface LastExecutionProps {
     recorder: string
 }
 
-const TypeGhost = (props: LastExecutionProps) => {
+const TypeGhost = (props: LastExecutionProps): JSX.Element => {
 
     const type = _(props.type);
     const recorder = props.recorder;

@@ -13,14 +13,14 @@ import { ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
 import _ from 'lib/services/translations/translate';
 import { StyledTableRowLink, StyledTableRowFkLink, StyledDeleteIcon, StyledTableCell, StyledCheckBoxIcon, StyledCheckBoxOutlineBlankIcon } from './ContentTableRow.styles';
 
-interface propsType {
+interface ContentTableRowProps {
   entityService: EntityService,
   row: any,
   path: string,
   setLoading: (loading: boolean) => void
 }
 
-export default function ContentTableRow(props: propsType) {
+export default function ContentTableRow(props: ContentTableRowProps): JSX.Element {
 
   const { entityService, row, path, setLoading } = props;
 
@@ -29,17 +29,17 @@ export default function ContentTableRow(props: propsType) {
   const ListDecorator = entityService.getListDecorator();
   const RowActions: React.FunctionComponent | any = entityService.getRowActions();
 
-  const [showDelete, setShowDelete] = useState(false);
+  const [showDelete, setShowDelete] = useState<boolean>(false);
 
   const apiDelete = useStoreActions((actions: any) => {
     return actions.api.delete
   });
 
-  const handleHideDelete = (event: any) => {
+  const handleHideDelete = (): void => {
     setShowDelete(false);
   };
 
-  const handleDelete = async (event: any) => {
+  const handleDelete = async (event: any): Promise<void> => {
 
     const path = entityService.getDeletePath();
     if (!path) {

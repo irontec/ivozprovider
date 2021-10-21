@@ -1,7 +1,7 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import Country from './Country';
 
-const CountrySelectOptions = (callback: FetchFksCallback) => {
+const CountrySelectOptions = (callback: FetchFksCallback): void => {
 
     defaultEntityBehavior.fetchFks(
         '/countries',

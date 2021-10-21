@@ -1,11 +1,10 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import Form from './Form';
-import EntityService, { EntityValues } from 'lib/services/entity/EntityService';
 import { IvrProperties, IvrPropertiesList } from './IvrProperties';
 
 const noInputFields = [
@@ -160,7 +159,7 @@ const columns = [
     'errorTarget',
 ];
 
-async function foreignKeyResolver(data: IvrPropertiesList, entityService: EntityService) {
+async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertiesList> {
 
     const promises = [];
     const {

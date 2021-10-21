@@ -1,8 +1,7 @@
-import { Theme } from '@mui/material';
 import { styled } from '@mui/styles';
 
 export const StyledTableSortLabelVisuallyHidden = styled('span')(
-    ({ theme }: { theme: Theme }) => {
+    () => {
         return {
             border: 0,
             clip: 'rect(0 0 0 0)',

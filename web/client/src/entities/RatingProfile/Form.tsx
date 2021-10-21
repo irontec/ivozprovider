@@ -1,9 +1,9 @@
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { EntityFormProps } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import RatingPlanGroupSelectOptions from 'entities/RatingPlanGroup/SelectOptions';
 import RoutingTagSelectOptions from 'entities/RoutingTag/SelectOptions';
 
-const Form = (props: any) => {
+const Form = (props: EntityFormProps): JSX.Element => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
@@ -39,10 +39,10 @@ const Form = (props: any) => {
                 setMounted(false);
             };
         },
-        [loadingFks, fkChoices]
+        [mounted, loadingFks, fkChoices]
     );
 
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props} />);
+    return (<DefaultEntityForm {...props} fkChoices={fkChoices} />);
 }
 
 export default Form;

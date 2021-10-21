@@ -1,4 +1,3 @@
-
 import { styled } from '@mui/styles';
 import { Theme, Typography, FormControl, TextField } from '@mui/material';
 
@@ -8,7 +7,7 @@ export const StyledSwitchFormControl = styled(
         return (<FormControl className={className} fullWidth={true}>{children}</FormControl>);
     }
 )(
-    ({ theme }: { theme: Theme }) => {
+    () => {
         return {
             marginTop: '10px',
         }
@@ -52,7 +51,7 @@ export const StyledtextField = styled(
         );
     }
 )(
-    ({ theme }: { theme: Theme }) => {
+    () => {
         return {
             marginTop: '0px',
         }
@@ -60,7 +59,7 @@ export const StyledtextField = styled(
 );
 
 export const StyledLinearProgress = styled('div')(
-    ({ theme }: { theme: Theme }) => {
+    () => {
         return {
             paddingTop: '60px',
         }

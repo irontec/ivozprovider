@@ -24,7 +24,7 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
 
   const entityId = match.params.id;
 
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   const initialValues = unmarshaller(
     row,

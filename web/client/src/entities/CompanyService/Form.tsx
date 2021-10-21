@@ -1,8 +1,8 @@
-import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import ServiceSelectOptions from 'entities/Service/SelectOptions';
 
-const Form = (props: any) => {
+const Form = (props: EntityFormProps): JSX.Element => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
@@ -34,7 +34,7 @@ const Form = (props: any) => {
                 setMounted(false);
             };
         },
-        [loadingFks, fkChoices, props.formik.initialValues?.service]
+        [mounted, loadingFks, fkChoices, props.formik.initialValues?.service]
     );
 
     const groups: Array<FieldsetGroups> = [

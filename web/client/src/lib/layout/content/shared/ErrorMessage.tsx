@@ -4,7 +4,7 @@ import { Theme } from '@mui/material/styles';
 import ErrorIcon from '@mui/icons-material/Error';
 import Message from './Message';
 
-export default function ErrorMessage(props: any) {
+export default function ErrorMessage(props: { message: string }): JSX.Element {
 
     const { message } = props;
     return (
@@ -13,13 +13,12 @@ export default function ErrorMessage(props: any) {
 }
 
 const StyledErrorMessage = styled(
-    (props: any) => {
-        const { className, message } = props;
+    (props: { message: string }) => {
+        const { message } = props;
         return (
             <Message
-                className={className}
                 message={message}
-                Icon={ErrorIcon}
+                icon={ErrorIcon}
             />
         );
     }

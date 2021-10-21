@@ -16,7 +16,7 @@ interface AppProps {
   children: React.FunctionComponent<AppRoutesProps>
 }
 
-export default function App(props: AppProps) {
+export default function App(props: AppProps): JSX.Element {
 
   const apiSpecInitFn = useStoreActions((actions: any) => actions.apiSpec.init);
   const authInit = useStoreActions((actions: any) => actions.auth.init);

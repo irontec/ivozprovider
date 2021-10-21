@@ -3,7 +3,7 @@ import { styled } from '@mui/styles';
 import { Theme, AppBar, Typography } from '@mui/material';
 
 export const StyledAppBar = styled(AppBar)(
-  ({ theme }: { theme: Theme }) => {
+  () => {
     return {
       position: 'relative',
     }

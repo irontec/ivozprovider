@@ -5,7 +5,6 @@ import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import Form from './Form';
-import EntityService from 'lib/services/entity/EntityService';
 import { ExternalCallFilterProperties, ExternalCallFilterPropertiesList } from './ExternalCallFilterProperties';
 
 const holidayFields = [
@@ -143,7 +142,7 @@ const columns = [
     'outOfScheduleTarget',
 ];
 
-async function foreignKeyResolver(data: ExternalCallFilterPropertiesList, entityService: EntityService) {
+async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promise<ExternalCallFilterPropertiesList> {
 
     const promises = [];
     const {

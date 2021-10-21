@@ -3,7 +3,7 @@ import { Theme } from '@mui/material/styles';
 import InfoIcon from '@mui/icons-material/Info';
 import Message from './Message';
 
-export default function InfoMessage(props: any) {
+export default function InfoMessage(props: { message: string }) {
 
     const { message } = props;
     return (
@@ -12,13 +12,12 @@ export default function InfoMessage(props: any) {
 }
 
 const StyledInfoMessage = styled(
-    (props: any) => {
-        const { className, message } = props;
+    (props: { message: string }) => {
+        const { message } = props;
         return (
             <Message
-                className={className}
                 message={message}
-                Icon={InfoIcon}
+                icon={InfoIcon}
             />
         );
     }

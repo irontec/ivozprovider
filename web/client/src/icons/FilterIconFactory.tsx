@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Contains from './contains';
 import StartsWith from './startsWith';
 import EndsWith from './endsWith';
@@ -12,7 +10,11 @@ import GreaterThanEqual from './greaterThanEqual';
 import NotInterestedIcon from '@mui/icons-material/NotInterested';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 
-export default function FilterIconFactory(props: any = {}) {
+interface FilterIconFactoryProps {
+    name: string,
+    fontSize?: 'small' | 'inherit' | 'large' | 'medium' | undefined,
+}
+export default function FilterIconFactory(props: FilterIconFactoryProps): JSX.Element {
 
     const { name, ...rest } = props;
 
@@ -22,25 +24,25 @@ export default function FilterIconFactory(props: any = {}) {
         case 'exists':
             return <AssignmentTurnedInIcon {...rest} />;
         case 'partial':
-            return <Contains {...rest} />;
+            return <Contains />;
         case 'start':
-            return <StartsWith {...rest} />;
+            return <StartsWith />;
         case 'end':
-            return <EndsWith {...rest} />;
+            return <EndsWith />;
         case 'in':
         case 'exact':
         case 'eq':
-            return <Equals {...rest} />;
+            return <Equals />;
         case 'neq':
-            return <NotEquals {...rest} />;
+            return <NotEquals />;
         case 'lt':
-            return <LowerThan {...rest} />;
+            return <LowerThan />;
         case 'lte':
-            return <LowerThanEqual {...rest} />;
+            return <LowerThanEqual />;
         case 'gt':
-            return <GreaterThan {...rest} />;
+            return <GreaterThan />;
         case 'gte':
-            return <GreaterThanEqual {...rest} />;
+            return <GreaterThanEqual />;
         default:
             const error = { error: `Icon ${name} was not found` };
             throw error;

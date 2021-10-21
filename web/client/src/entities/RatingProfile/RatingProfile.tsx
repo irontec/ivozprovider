@@ -5,7 +5,6 @@ import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
 import RatingPlanGroup from '../RatingPlanGroup/RatingPlanGroup';
 import entities from '../index';
-import EntityService from 'lib/services/entity/EntityService';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import { RatingProfileProperties, RatingProfilePropertiesList } from './RatingProfileProperties';
 
@@ -21,7 +20,7 @@ const properties: RatingProfileProperties = {
     },
 };
 
-async function foreignKeyResolver(data: RatingProfilePropertiesList, entityService: EntityService) {
+async function foreignKeyResolver(data: RatingProfilePropertiesList): Promise<RatingProfilePropertiesList> {
 
     const promises = [];
 

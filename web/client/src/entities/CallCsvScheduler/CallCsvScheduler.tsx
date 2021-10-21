@@ -1,7 +1,7 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { MarshallerValues } from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import LastExecution from './Field/LastExecution';
 import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
@@ -106,7 +106,7 @@ const columns = [
 export const marshaller = (
     values: CallCsvSchedulerProperties,
     properties: PropertiesList
-) => {
+): MarshallerValues => {
 
     if (values.endpointType) {
         delete values.endpointType;
@@ -123,7 +123,7 @@ export const marshaller = (
 export const unmarshaller = (
     row: CallCsvSchedulerProperties,
     properties: PropertiesList
-) => {
+): MarshallerValues => {
 
     const response = defaultEntityBehavior.unmarshaller(
         row,

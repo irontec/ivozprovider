@@ -10,10 +10,16 @@ const linkStyles: CreateCSSProperties = {
   color: 'white',
 };
 
+interface StyledCollapsedBreadcrumbsLinkProps {
+  className: string,
+  children: string | JSX.Element,
+  to: string
+}
+
 export const StyledCollapsedBreadcrumbsLink = styled(
-  (props) => {
+  (props: StyledCollapsedBreadcrumbsLinkProps) => {
     const { className, children, to, ...rest } = props;
-    return (<Link className={className} to={to} {...rest}>{props.children}</Link>);
+    return (<Link className={className} to={to} {...rest}>{children}</Link>);
   }
 )(
   () => {
@@ -23,8 +29,13 @@ export const StyledCollapsedBreadcrumbsLink = styled(
   }
 );
 
+interface StyledCollapsedBreadcrumbsTypographyProps {
+  className: string,
+  children: string | JSX.Element
+}
+
 export const StyledCollapsedBreadcrumbsTypography = styled(
-  (props) => {
+  (props: StyledCollapsedBreadcrumbsTypographyProps) => {
     const { className, children, ...rest } = props;
     return (<Typography className={className} {...rest}>{children}</Typography>);
   }
@@ -36,8 +47,11 @@ export const StyledCollapsedBreadcrumbsTypography = styled(
   }
 );
 
+interface StyledCollapsedBreadcrumbsNavigateNextIconProps {
+  className: string
+}
 export const StyledCollapsedBreadcrumbsNavigateNextIcon = styled(
-  (props) => {
+  (props: StyledCollapsedBreadcrumbsNavigateNextIconProps) => {
     const { className } = props;
     return (<NavigateNextIcon fontSize='small' className={className} />);
   }

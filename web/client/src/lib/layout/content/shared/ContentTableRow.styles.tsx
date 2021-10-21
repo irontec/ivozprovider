@@ -1,4 +1,4 @@
-import { Theme, TableCell } from '@mui/material';
+import { TableCell } from '@mui/material';
 import { styled } from '@mui/styles';
 import { Link } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -16,7 +16,7 @@ export const StyledTableRowLink = styled(
     return (<Link to={to} className={className}>{children}</Link>);
   }
 )(
-  ({ theme }: { theme: Theme }) => {
+  () => {
     return {
       ...linkSharedStyles,
       textDecoration: 'none',
@@ -30,7 +30,7 @@ export const StyledTableRowFkLink = styled(
     return (<Link to={to} className={className}>{children}</Link>);
   }
 )(
-  ({ theme }: { theme: Theme }) => {
+  () => {
     return linkSharedStyles;
   }
 );
@@ -41,13 +41,13 @@ export const StyledDeleteIcon = styled(
     return (<DeleteIcon className={className} onClick={onClick} />);
   }
 )(
-  ({ theme }: { theme: Theme }) => {
+  () => {
     return linkSharedStyles;
   }
 );
 
 export const StyledCheckBoxIcon = styled(CheckBoxIcon)(
-  ({ theme }: { theme: Theme }) => {
+  () => {
     return {
       color: '#aaa'
     };
@@ -55,7 +55,7 @@ export const StyledCheckBoxIcon = styled(CheckBoxIcon)(
 );
 
 export const StyledCheckBoxOutlineBlankIcon = styled(CheckBoxOutlineBlankIcon)(
-  ({ theme }: { theme: Theme }) => {
+  () => {
     return {
       color: '#aaa'
     };
@@ -68,7 +68,7 @@ export const StyledTableCell = styled(
     return (<TableCell key={key} className={className}>{children}</TableCell>);
   }
 )(
-  ({ theme }: { theme: Theme }) => {
+  () => {
     return {
       textAlign: 'right'
     };

@@ -12,7 +12,14 @@ const Transition = React.forwardRef<unknown, TransitionProps>((props: any, ref) 
 });
 Transition.displayName = 'FilterDialogTransition';
 
-export default function FullScreenDialog(props: any) {
+interface FullScreenDialog {
+  open: boolean,
+  handleClose: (event: unknown) => void,
+  apply: (event: unknown) => void,
+  children: unknown
+}
+
+export default function FullScreenDialog(props: FullScreenDialog): JSX.Element {
 
   const { open, handleClose, apply } = props;
 

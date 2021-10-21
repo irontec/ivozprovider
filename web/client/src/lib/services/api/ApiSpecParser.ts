@@ -7,7 +7,7 @@ type KeyValList = {
 
 export default class ApiSpecParser {
 
-    public parse(spec: OpenApiSpecInterface) {
+    public parse(spec: OpenApiSpecInterface): ParsedApiSpecInterface {
 
         return this.parseSpec(spec);
     }

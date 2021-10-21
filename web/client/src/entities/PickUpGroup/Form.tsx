@@ -1,12 +1,12 @@
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, { EntityFormProps, FkChoices } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import UserSelectOptions from 'entities/User/SelectOptions';
 
-const Form = (props: any) => {
+const Form = (props: EntityFormProps): JSX.Element => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
-    const [fkChoices, setFkChoices] = useState<any>({});
+    const [fkChoices, setFkChoices] = useState<FkChoices>({});
     const [mounted, setMounted] = useState<boolean>(true);
     const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
@@ -29,10 +29,10 @@ const Form = (props: any) => {
                 setMounted(false);
             };
         },
-        [loadingFks, fkChoices]
+        [mounted, loadingFks, fkChoices]
     );
 
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props} />);
+    return (<DefaultEntityForm {...props} fkChoices={fkChoices} />);
 }
 
 export default Form;

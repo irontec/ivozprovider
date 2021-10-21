@@ -11,7 +11,7 @@ import CustomComponentWrapper from './Field/CustomComponentWrapper';
 import Alert from '@mui/material/Alert';
 import FileUploader from './Field/FileUploader';
 import { StyledSwitchFormControl, StyledtextField, StyledLinearProgress } from './FormFieldFactory.styles';
-import { FormOnChangeEvent } from 'lib/entities/DefaultEntityBehavior';
+import { FormOnChangeEvent, NullablePropertyFkChoices, PropertyFkChoices } from 'lib/entities/DefaultEntityBehavior';
 
 export default class FormFieldFactory {
 
@@ -22,7 +22,7 @@ export default class FormFieldFactory {
     ) {
     }
 
-    public getFormField(fld: string, choices?: any, readOnly = false) {
+    public getFormField(fld: string, choices: NullablePropertyFkChoices, readOnly = false): JSX.Element|null {
         const property = this.getProperty(fld);
         if (!property) {
             console.error(`Property ${fld} was not found`);
@@ -46,7 +46,8 @@ export default class FormFieldFactory {
         return (properties[fld] as PropertySpec);
     }
 
-    private getInputField(fld: string, choices: any, readOnly: boolean) {
+    private getInputField(fld: string, choices: NullablePropertyFkChoices, readOnly: boolean) {
+
         const property = this.getProperty(fld);
 
         const disabled = (property as ScalarProperty).readOnly || readOnly;
@@ -72,7 +73,7 @@ export default class FormFieldFactory {
             }
 
             if (property.null) {
-                choices['__null__'] = property.null;
+                (choices as PropertyFkChoices)['__null__'] = property.null;
             }
 
             return (
@@ -103,7 +104,7 @@ export default class FormFieldFactory {
             }
 
             if (property.null) {
-                choices['__null__'] = property.null;
+                (choices as PropertyFkChoices)['__null__'] = property.null;
             }
 
             return (

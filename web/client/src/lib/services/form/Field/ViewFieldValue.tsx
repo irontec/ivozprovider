@@ -7,7 +7,7 @@ interface ViewValueProps {
     values: any,
 }
 
-const ViewFieldValue = (props: ViewValueProps) => {
+const ViewFieldValue = (props: ViewValueProps): JSX.Element => {
     const { columnName, values } = props;
     let { property } = props;
 

@@ -13,7 +13,7 @@ interface ViewValueProps {
     changeHandler: (e: FormOnChangeEvent) => void,
 }
 
-const FileUploader = (props: ViewValueProps) => {
+const FileUploader = (props: ViewValueProps): JSX.Element => {
 
     const { property, columnName, values, changeHandler } = props;
 

@@ -14,7 +14,7 @@ interface AutocompleteProps {
   choices: any
 }
 
-const Autocomplete = (props: AutocompleteProps) => {
+const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
 
   const { name, label, required, multiple, disabled, onChange, choices } = props;
   const value = props.value || null;
@@ -40,7 +40,7 @@ const Autocomplete = (props: AutocompleteProps) => {
         setMounted(false);
       };
     },
-    [choices]
+    [loading, choices, mounted]
   );
 
   const onChangeWrapper = useCallback(

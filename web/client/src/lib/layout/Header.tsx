@@ -5,7 +5,7 @@ interface headerProps {
   loggedIn: boolean
 }
 
-export default function Header(props: headerProps) {
+export default function Header(props: headerProps): JSX.Element {
 
   const { loggedIn } = props;
 

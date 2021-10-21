@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { TextField, Grid, Menu, MenuItem, IconButton } from '@mui/material';
 import { withStyles } from '@mui/styles';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -43,11 +43,11 @@ const ContentFilterRow = function (props: any) {
         }
     };
 
-    const handleToggle = (event: MouseEvent<HTMLButtonElement>) => {
+    const handleToggle = () => {
         setOpen(!open);
     };
 
-    const handleClose = (event: any) => {
+    const handleClose = () => {
         setOpen(false);
     };
 
@@ -99,7 +99,7 @@ const ContentFilterRow = function (props: any) {
                                 onClick={() => { handleFilterTypeCheck(filter.value) }}
                                 key={filter.value}
                             >
-                                <FilterIconFactory name={filter.value} className={classes.icon} />
+                                <FilterIconFactory name={filter.value} /*@TODO className={classes.icon}*/ />
                                 <em>{filter.label}</em>
                             </MenuItem>
                         );

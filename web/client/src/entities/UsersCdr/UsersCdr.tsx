@@ -3,7 +3,6 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
-import EntityService from 'lib/services/entity/EntityService';
 import entities from '../index';
 import View from './View';
 import { UsersCdrProperties, UsersCdrRow, UsersCdrRows } from './UsersCdrProperties';
@@ -94,7 +93,7 @@ function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
     return row;
 }
 
-export async function foreignKeyResolver(data: UsersCdrRows, entityService: EntityService) {
+export async function foreignKeyResolver(data: UsersCdrRows): Promise<UsersCdrRows> {
 
     const promises = [];
     const { User, Friend, ResidentialDevice, RetailAccount } = entities;
@@ -166,7 +165,7 @@ const usersCdr: EntityInterface = {
     properties,
     columns,
     foreignKeyResolver,
-    View: View,
+    View
 };
 
 export default usersCdr;

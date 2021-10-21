@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode } from 'react';
+import { useState, useEffect, ReactNode, ReactElement } from 'react';
 import { withStyles } from '@mui/styles';
 import FilterDialog from './FilterDialog';
 import ContentFilterRow from './ContentFilterRow';
@@ -12,7 +12,14 @@ const styles = {
     },
 };
 
-export const filterTypes = [
+interface Filter {
+    value: string | Array<string>,
+    label: string | JSX.Element
+}
+
+type FilterList = Array<Filter>;
+
+export const filterTypes: FilterList = [
     { value: "", label: _("None") },
     { value: "eq", label: _("Equals") },
     { value: "exact", label: _("Equals") },
@@ -31,7 +38,7 @@ export const multSelectFilterTypes = [
     { value: "in", label: _("Is any of") },
 ];
 
-export const getFilterTypeLabel = (type: string) => {
+export const getFilterTypeLabel = (type: string): ReactElement | string => {
     for (const idx in filterTypes) {
         if (filterTypes[idx].value === type) {
             return filterTypes[idx].label;
@@ -47,7 +54,7 @@ export const getFilterTypeLabel = (type: string) => {
     return '';
 }
 
-export const getFilterLabel = (filter: any) => {
+export const getFilterLabel = (filter: Filter): string | JSX.Element => {
 
     const hasLabels = filter.label !== undefined;
     const isArrayValue = Array.isArray(filter.value);
@@ -55,15 +62,17 @@ export const getFilterLabel = (filter: any) => {
     if (!isArrayValue) {
 
         return hasLabels
-            ? filter.label
-            : filter.value;
+            ? filter.label as string
+            : filter.value as string;
     }
 
     if (!hasLabels) {
-        return '[' + filter.value.join(', ') + ']';
+        const filterValue = filter.value as Array<string>;
+        return '[' + filterValue.join(', ') + ']';
     }
 
-    return '[' + filter.label.join(', ') + ']';
+    return (<>[${filter.label}]</>);
+    //return '[' + filter.label.join(', ') + ']';
 }
 
 export interface CriteriaFilterValue {
@@ -109,7 +118,7 @@ const ContentFilterMenu = function (props: any) {
                 setMounted(false);
             };
         },
-        [loading, foreignKeyGetter]
+        [mounted, loading, foreignKeyGetter]
     );
 
     const apply = () => {
@@ -133,13 +142,16 @@ const ContentFilterMenu = function (props: any) {
         });
     };
 
+
+    const columnNames: Array<string> = Object.keys(columns);
+
     return (
         <FilterDialog
             open={open}
             handleClose={handleClose}
             apply={apply}
         >
-            {!loading && Object.keys(columns).map((key: string, idx: number) => {
+            {columnNames.map((key: string, idx: number): JSX.Element | null => {
 
                 const propertyFilter = entityService.getPropertyFilters(key, path);
                 if (!propertyFilter.length) {

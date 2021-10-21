@@ -33,7 +33,7 @@ const List = function (props: any & RouteComponentProps) {
     const [orderBy, setOrderBy] = useState(entityService.getOrderBy());
     const [orderDirection, setOrderDirection] = useState(entityService.getOrderDirection());
 
-    const setSort = (property: string, direction: string) => {
+    const setSort = (property: string, direction: 'asc' | 'desc') => {
         setOrderBy(property);
         setOrderDirection(direction);
         setLoading(true);
@@ -108,7 +108,7 @@ const List = function (props: any & RouteComponentProps) {
             };
         },
         [
-            loading, foreignKeyResolver, entityService,
+            mounted, loading, foreignKeyResolver, entityService,
             apiGet, reqPath, paginationParams
         ]
     );

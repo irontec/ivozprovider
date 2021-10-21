@@ -5,7 +5,6 @@ import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import Form from './Form';
-import EntityService from 'lib/services/entity/EntityService';
 import { ConditionalRouteProperties, ConditionalRoutePropertiesList } from './ConditionalRouteProperties';
 
 const routableFields = [
@@ -128,9 +127,8 @@ const columns = [
 ];
 
 async function foreignKeyResolver(
-    data: ConditionalRoutePropertiesList,
-    entityService: EntityService
-) {
+    data: ConditionalRoutePropertiesList
+): Promise<ConditionalRoutePropertiesList> {
 
     const promises = [];
     const {

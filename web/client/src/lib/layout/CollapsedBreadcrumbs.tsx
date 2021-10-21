@@ -6,7 +6,7 @@ import {
   StyledCollapsedBreadcrumbsTypography, StyledHomeIcon
 } from './CollapsedBreadcrumbs.styles';
 
-export default function CollapsedBreadcrumbs() {
+export default function CollapsedBreadcrumbs(): JSX.Element {
 
   const currentRoute = useStoreState((state: any) => state.route.route);
   const currentRouteName = useStoreState((state: any) => state.route.name);

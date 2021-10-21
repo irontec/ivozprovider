@@ -11,10 +11,10 @@ const specStore = {
     sessionStorage.setItem('apiSpec', JSON.stringify(spec));
     state.spec = new ApiSpecParser().parse(spec);
   }),
-  setLoading: action((state: any, spec: any) => {
+  setLoading: action((state: any/*, spec: any*/) => {
     state.loading = true;
   }),
-  unsetLoading: action((state: any, spec: any) => {
+  unsetLoading: action((state: any/*, spec: any*/) => {
     state.loading = false;
   }),
 
@@ -43,7 +43,7 @@ const specStore = {
         ApiClient.get(
           '/docs.json',
           {},
-          async (data: any, headers: any) => {
+          async (data: any/*, headers: any*/) => {
             actions.setSpec(data);
             actions.unsetLoading();
             resolve(true);

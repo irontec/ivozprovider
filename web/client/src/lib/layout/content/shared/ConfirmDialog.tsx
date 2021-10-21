@@ -18,7 +18,14 @@ const Transition: ComponentType<any> = forwardRef(
 );
 Transition.displayName = 'ConfirmDialogTransition';
 
-export default function ConfirmDialog(props: any) {
+interface ConfirmDialogProps {
+  text: string,
+  open: boolean,
+  handleClose: (event: unknown) => void,
+  handleApply: (event: unknown) => void
+}
+
+export default function ConfirmDialog(props: ConfirmDialogProps): JSX.Element {
 
   const { text, open, handleClose, handleApply } = props;
 

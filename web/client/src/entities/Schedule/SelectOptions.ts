@@ -1,7 +1,7 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import Schedule from './Schedule';
 
-const ScheduleSelectOptions = (callback: FetchFksCallback) => {
+const ScheduleSelectOptions = (callback: FetchFksCallback): void => {
 
     defaultEntityBehavior.fetchFks(
         Schedule.path,

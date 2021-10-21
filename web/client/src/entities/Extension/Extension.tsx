@@ -1,6 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
-import EntityService from 'lib/services/entity/EntityService';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -115,7 +114,7 @@ const columns = [
     'target'
 ];
 
-async function foreignKeyResolver(data: ExtensionPropertiesList, entityService: EntityService) {
+async function foreignKeyResolver(data: ExtensionPropertiesList): Promise<ExtensionPropertiesList> {
 
     const promises = [];
     const { User, Country, Ivr, HuntGroup, ConferenceRoom, Queue, ConditionalRoute } = entities;

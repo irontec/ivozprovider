@@ -17,7 +17,7 @@ interface SelectProps {
   choices: any
 }
 
-const Dropdown = (props: SelectProps) => {
+const Dropdown = (props: SelectProps): JSX.Element => {
 
   const { name, label, value, required, disabled, onChange, choices } = props;
   const labelId = `${name}-label`;

@@ -1,14 +1,14 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import Calendar from './Calendar';
 
-const CalendarSelectOptions = (callback: FetchFksCallback ) => {
+const CalendarSelectOptions = (callback: FetchFksCallback): void => {
 
     defaultEntityBehavior.fetchFks(
         Calendar.path,
         ['id', 'name'],
-        (data:any) => {
+        (data: any) => {
 
-            const options:any = {};
+            const options: any = {};
             for (const item of data) {
                 options[item.id] = item.name;
             }
