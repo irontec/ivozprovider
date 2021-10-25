@@ -1,1 +1,1 @@
-.. include:: ../../vpbx/calls/call_recordings.rst
+.. include:: ../../../shared/external_calls.rst.inc
