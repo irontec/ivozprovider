@@ -12,8 +12,6 @@ Filters Configuration
 
 This are the configurable settings of *Residential external filters*:
 
-.. glossary::
-
     Name
         Name of the filter.
 

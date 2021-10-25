@@ -13,8 +13,6 @@ in what we call **External call filter**.
 The client admin can configure them in the following screen:
 
 
-.. glossary::
-
     Name
         Descriptive name that will reference this filter in DDIs configuration.
 

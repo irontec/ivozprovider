@@ -7,8 +7,6 @@ and create new ones.
 
 These are the required fields of each entry:
 
-.. glossary::
-
     Username
         User for login process.
 

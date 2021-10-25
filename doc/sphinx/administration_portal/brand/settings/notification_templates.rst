@@ -31,8 +31,6 @@ Brand administrators can create new notification templates in **Brand configurat
 
 Fields are nearly self-explanatory:
 
-.. glossary::
-
     Name
         Used to identify this notification template
 
@@ -52,8 +50,6 @@ the proper language based on the destination:
  - For Faxes, the client language will be used.
 
 Configurable fields of each content:
-
-.. glossary::
 
     Language
         Language of the contents.

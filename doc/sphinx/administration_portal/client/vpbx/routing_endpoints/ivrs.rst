@@ -17,8 +17,6 @@ to route any existing client extension.
 
 IVRs have the following fields:
 
-.. glossary::
-
     Name
         Descriptive name of the IVR that will be used in other sections.
 

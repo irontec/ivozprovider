@@ -6,8 +6,6 @@ This section allows programming the automatic periodical creation of invoices.
 
 When adding a new definition, these fields are shown:
 
-.. glossary::
-
     Name
         Name of the scheduled invoice
 

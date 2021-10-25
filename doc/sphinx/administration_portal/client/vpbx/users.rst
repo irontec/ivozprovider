@@ -14,8 +14,6 @@ in this section.
 Personal data
 *************
 
-.. glossary::
-
     Name
         Used to identify this user in most of the screens. This is also the 
         name that will be displayed in internal calls made from this user.
@@ -42,8 +40,6 @@ Personal data
 Login Info
 **********
 
-.. glossary::
-
     Active
         Allows administrators to grant or disable user's acces to the 
         :ref:`user's portal <userportal>`.
@@ -59,8 +55,6 @@ Login Info
 Basic Configuration
 *******************
 
-
-.. glossary::
 
     Terminal
         The available terminals created in :ref:`terminals` are listed here 
@@ -114,8 +108,6 @@ Voicemail
 *********
 
 
-.. glossary::
-
     VoiceMail enabled
         Enables or disables the **existance** of a users voicemail.
         This only makes the voicemail available to be routed as destination of a call forwarding.
@@ -147,8 +139,6 @@ This feature will turn the user into a boss that can only be directly call by:
 - Any origin that matches the white list.
 
 The rest of the calls to *a boss* will be redirected to the assistant.
-
-.. glossary::
 
     Is boss
         Determines if this user is a boss.
@@ -184,8 +174,6 @@ User Call Forward
 The user's call forward can be configured with the **List of call forward settings**  button.
 
 These are the fields and available values:
-
-.. glossary::
 
     Call Type
         Determines if the forward must be applied to external, internal or any 

@@ -6,8 +6,6 @@ Brands
 
 This are the fields shown when a new brand is created:
 
-.. glossary::
-
     Name
         Sets the name for this brand.
 

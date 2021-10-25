@@ -22,8 +22,6 @@ Queue configuration
 
 This are the settings related to a queue:
 
-.. glossary::
-
   Name
     Use to reference this queue
 
@@ -82,8 +80,6 @@ Queue strategy
 The queue strategy **always applies to current penalty members** starting with
 the smallest penalty value and only going to the next penalty if all members of
 current one are busy or unavailable.
-
-.. glossary::
 
     Ring all
         The call will make all the members of the current priority during a

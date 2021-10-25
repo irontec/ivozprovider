@@ -16,8 +16,6 @@ This section is shown at different levels:
 
 Each entry shows this information:
 
-.. glossary::
-
     Start time
         Date and time of the call establishment.
 

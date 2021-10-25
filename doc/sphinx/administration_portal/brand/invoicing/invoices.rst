@@ -15,8 +15,6 @@ Generating a new invoice
 
 These are the fields shown when *Add Invoice* options is used:
 
-.. glossary::
-
     Invoice number sequence
         Use next number of a predefined sequence or use custom number
 
@@ -41,8 +39,6 @@ These are the fields shown when *Add Invoice* options is used:
 
 Once saved, some :ref:`fixed costs` can be added before generating the final invoice. This is achieved with **Fixed costs**
 subsection, that allows adding several positive concepts to the invoice:
-
-.. glossary::
 
     Fixed cost
         Choose a predefined cost

@@ -8,8 +8,6 @@ call ACL logics: **every user/friend is allowed to call to any number listed her
 
 .. rubric:: Create a new extension
 
-.. glossary::
-
     Number
         The number that must be dialed by the internal user that will trigger
         the configured logic. It must have a minimum length of 2 and must be 
@@ -27,8 +25,6 @@ call ACL logics: **every user/friend is allowed to call to any number listed her
 
 Route options
 =============
-
-.. glossary::
 
     Unassigned
         Calls to this extension will be hung up.

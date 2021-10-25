@@ -32,9 +32,6 @@ Adding/Editing clients
 
 These are the fields shown when **adding** a new wholesale client:
 
-.. glossary::
-    :sorted:
-
     Name
         Used to reference this particular client.
 
@@ -66,9 +63,6 @@ These are the fields shown when **adding** a new wholesale client:
         avoid notification.
 
 When **editing** a client, these additional fields can be configured:
-
-.. glossary::
-    :sorted:
 
     Invoice data
         All the fields in this group will be included in invoices generated for this client. This section also allows

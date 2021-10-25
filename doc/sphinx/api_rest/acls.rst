@@ -19,8 +19,6 @@ Enabling global/brand administrator **Restricted** option makes this administrat
 Privileges can be fine-tuned in *List of Administrator access privileges* subsection, where you can enable/disable
 for each endpoint:
 
-.. glossary::
-
     Create privilege
         Administrator with this privilege can create new items of given endpoint.
 

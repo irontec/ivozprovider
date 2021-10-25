@@ -7,8 +7,6 @@ that require feature-full call flows.
 
 .. hint:: Some fields described below may not be visible depending on enabled features.
 
-.. glossary::
-
     Name
         Sets the name for this client.
 

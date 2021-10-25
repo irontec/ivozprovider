@@ -13,8 +13,6 @@ some destinations with different prices at different times of the day.
 
 This are the fields that define a Rating plan:
 
-.. glossary::
-
     Name
         Name that will be use to reference this rating plan.
 
@@ -32,8 +30,6 @@ Adding Destination rates to Rating Plan
 
 Rating plans group several :ref:`destination rates` to allow flexible configuration that rate destinations differently
 at different times of the day (**List of destination rates** subsection).
-
-.. glossary::
 
     Destination rate
         Adds selected destination rate to rating plan

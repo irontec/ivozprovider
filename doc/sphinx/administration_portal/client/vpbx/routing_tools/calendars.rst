@@ -12,8 +12,6 @@ Calendar creation process only requires a name. Once created, we can add what
 days will be holidays using the buttons in its row:
 
 
-.. glossary::
-
     Name
         Unique name to identify this holiday date
 
@@ -50,8 +48,6 @@ Calendars can also be used to override some time periods with a different schedu
 This can be handy if vPBX has a summer schedule or other types of schedule based events.
 
 Calendar periods can define a custom Scheduler and override External Call filters configurations:
-
-.. glossary::
 
     Start Date
         Since when the schedules will override the filters configuration

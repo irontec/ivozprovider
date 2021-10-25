@@ -15,8 +15,6 @@ Add/Edit/Delete a routing tag
 
 Routing tag definition only implies these two fields:
 
-.. glossary::
-
     Name
         Name used for referencing (e.g. "Premium")
 

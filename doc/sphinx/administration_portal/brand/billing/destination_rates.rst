@@ -8,8 +8,6 @@ A *Destination rate* groups some prefixes with their cost details.
 
 They only have two fields:
 
-.. glossary::
-
     Name
         Name to reference the destination rate
 
@@ -83,8 +81,6 @@ Add rates manually
 ******************
 
 Brand operator can add rates by hand, filling these fields (**List of rates** subsection):
-
-.. glossary::
 
     Destination
         Pre-created destination that specifies a concrete prefix.

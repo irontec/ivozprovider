@@ -9,8 +9,6 @@ traditional **call to a user**.
 
 These are the fields shown for new hunt groups:
 
-.. glossary::
-
     Name
         Used to reference this hunt group
 
@@ -56,8 +54,6 @@ These are the fields shown for new hunt groups:
           **Use this feature wisely**.
 
 There are 4 strategies available:
-
-.. glossary::
 
     Ringall
         The call will make all the terminals of the group during a predefined 

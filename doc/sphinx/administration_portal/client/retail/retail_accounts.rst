@@ -39,8 +39,6 @@ Retail Accounts Configuration
 
 These are the configurable settings of *Retail accounts*:
 
-.. glossary::
-
     Name
         Name of the **retail account**. This name must be unique in the whole brand so 
         it's recommended to use some kind of sequential identifier. This will also be used

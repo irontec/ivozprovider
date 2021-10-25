@@ -52,9 +52,6 @@ Adding/Editing retail clients
 
 These are the fields shown when **adding** a new retail client:
 
-.. glossary::
-    :sorted:
-
     Name
         Used to reference this particular client.
 
@@ -96,9 +93,6 @@ These are the fields shown when **adding** a new retail client:
 
 
 When **editing** a client, these additional fields can be configured:
-
-.. glossary::
-    :sorted:
 
     Invoice data
         All the fields in this group will be included in invoices generated for this client. This section also allows

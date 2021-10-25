@@ -39,8 +39,6 @@ Residential Devices Configuration
 
 These are the configurable settings of *Residential devices*:
 
-.. glossary::
-
     Name
         Name of the **residential device**. This name must be unique in the whole brand so 
         it's recommended to use some kind of sequential identifier. This will also be used

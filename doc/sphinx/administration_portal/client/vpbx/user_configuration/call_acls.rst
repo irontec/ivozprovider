@@ -43,8 +43,6 @@ Call ACL
 
 When a new **Call ACL** is created, these two fields turn up:
 
-.. glossary::
-
    Name
       Used to reference this Call ACL.
 

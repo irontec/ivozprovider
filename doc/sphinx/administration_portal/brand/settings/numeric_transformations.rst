@@ -89,8 +89,6 @@ with most of the countries.
 
 In order to create a new set of transformations use **Add Numeric transformations**:
 
-.. glossary::
-
    Name
       Use to reference this numeric transformation set
 

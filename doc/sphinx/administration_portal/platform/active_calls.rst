@@ -8,8 +8,6 @@ This section allows main operator and brand operator view **current active exter
 
 These are columns shown:
 
-.. glossary::
-
     Duration
         Show call establishment duration during establishment and call duration during ongoing call. It also shows
         direction (inbound/outbound) and call state information, as explained below.

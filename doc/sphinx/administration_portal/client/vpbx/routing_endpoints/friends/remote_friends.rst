@@ -45,8 +45,6 @@ The **Friend** configuration is a merge between a **User** and a **Terminal**
 
 These are the configurable settings of *friends*:
 
-.. glossary::
-
     Name
         Name of the **friend**, like in **Terminals**. This will also be used
         in SIP messages (sent **From User**).

@@ -10,8 +10,6 @@ This are the fields that define a carrier:
 
 .. hint:: Some fields described below may not be visible depending on enabled features.
 
-.. glossary::
-
     Name
         Used to reference this Carrier.
 
@@ -72,8 +70,6 @@ Carrier Servers
 
 A **Carrier Server** is a SIP server associated to an IP Provider. Carrier servers
 are used for placing outgoing calls by using :ref:`Outgoing routings`.
-
-.. glossary::
 
     SIP Proxy
         IP address (or DNS registry) of the Carrier Server. You can also specify

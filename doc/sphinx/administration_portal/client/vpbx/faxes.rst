@@ -20,8 +20,6 @@ Creating a virtual fax
 
 These are the fields that turn up when we create a new fax:
 
-.. glossary::
-
     Name
         Used by remaining section to reference a fax
 

@@ -4,8 +4,6 @@ Current day usages
 
 This section lists current day usage for each client in the brand:
 
-.. glossary::
-
     Type
         Type of client (vPBX, retail, residential or wholesale).
 

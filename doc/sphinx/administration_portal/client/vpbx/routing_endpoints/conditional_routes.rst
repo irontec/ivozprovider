@@ -67,8 +67,6 @@ Evaluating conditional routes
 
 This is how each criteria is evaluated:
 
-.. glossary::
-
     Matchlist criteria
         If caller number matches any of selected matchlist(s), this criteria is considered fulfilled.
 
