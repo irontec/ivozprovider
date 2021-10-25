@@ -1,3 +1,5 @@
+.. _current day usages:
+
 ******************
 Current day usages
 ******************

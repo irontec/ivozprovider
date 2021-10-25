@@ -1,3 +1,5 @@
+.. _retail clients:
+
 ##############
 Retail Clients
 ##############

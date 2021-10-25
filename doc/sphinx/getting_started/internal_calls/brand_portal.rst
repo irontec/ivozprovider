@@ -1,3 +1,5 @@
+.. _brand configuration:
+
 *******************
 Brand Configuration
 *******************
@@ -12,6 +14,7 @@ goal :)
 Only a thing is required to configure for this client, pressing **Edit client** option.
 
 .. _domain_per_client:
+.. _client sip domain:
 
 Client SIP Domain
 ==================

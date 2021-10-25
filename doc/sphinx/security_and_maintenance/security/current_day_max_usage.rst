@@ -1,3 +1,5 @@
+.. _current day max usage:
+
 #####################
 Current day max usage
 #####################

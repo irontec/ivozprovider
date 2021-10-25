@@ -1,3 +1,5 @@
+.. _fixed costs:
+
 ***********
 Fixed costs
 ***********

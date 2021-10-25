@@ -1,3 +1,5 @@
+.. _call csv schedulers:
+
 *******************
 Call CSV schedulers
 *******************

@@ -1,3 +1,5 @@
+.. _global special numbers:
+
 Global Special Numbers
 ======================
 

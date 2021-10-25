@@ -1,3 +1,5 @@
+.. _vpbx clients:
+
 ************
 vPBX Clients
 ************

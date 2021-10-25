@@ -1,3 +1,5 @@
+.. _minimum requirements:
+
 ####################
 Minimum requirements
 ####################

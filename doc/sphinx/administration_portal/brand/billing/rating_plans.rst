@@ -1,3 +1,5 @@
+.. _rating plans:
+
 #############
 Rating plans
 #############
@@ -57,6 +59,8 @@ list will charge for that call.
 
 .. tip:: Rating plans can be linked to both Clients (for price calculation) and Carriers (for cost calculation).
 
+.. _assigning rating plans to clients:
+
 *********************************
 Assigning rating plans to clients
 *********************************
@@ -76,6 +80,8 @@ in the rating plan list and check the price it will imply. This way, we can be s
 that the configuration is ok.
 
 .. tip:: Active rating plan of a given client will be used to set Price for its calls.
+
+.. _assigning rating plans to carriers:
 
 **********************************
 Assigning rating plans to carriers

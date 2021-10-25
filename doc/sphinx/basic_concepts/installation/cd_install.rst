@@ -1,3 +1,5 @@
+.. _automatic iso cd image:
+
 ######################
 Automatic ISO CD image
 ######################

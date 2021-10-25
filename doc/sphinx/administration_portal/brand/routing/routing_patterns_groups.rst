@@ -1,3 +1,5 @@
+.. _routing pattern groups:
+
 **********************
 Routing pattern groups
 **********************

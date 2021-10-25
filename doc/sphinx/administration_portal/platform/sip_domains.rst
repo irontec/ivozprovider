@@ -1,4 +1,5 @@
 .. _god_sipdomains:
+.. _sip domains:
 
 SIP domains
 -----------

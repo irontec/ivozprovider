@@ -1,3 +1,5 @@
+.. _anti brute-force attacks:
+
 ########################
 Anti brute-force attacks
 ########################

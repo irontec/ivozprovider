@@ -1,3 +1,5 @@
+.. _invoice schedulers:
+
 ******************
 Invoice schedulers
 ******************

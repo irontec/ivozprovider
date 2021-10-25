@@ -1,3 +1,5 @@
+.. _calendars:
+
 *********
 Calendars
 *********
@@ -40,6 +42,7 @@ days will be holidays using the buttons in its row:
 .. hint:: Holidays without special routing will apply the external call filter
    holiday routing.
 
+.. _calendar periods:
 
 Calendar Periods
 ----------------

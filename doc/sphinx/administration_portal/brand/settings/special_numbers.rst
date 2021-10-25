@@ -1,3 +1,5 @@
+.. _special numbers:
+
 Special Numbers
 ===============
 

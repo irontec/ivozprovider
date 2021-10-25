@@ -1,4 +1,5 @@
 .. _client_authorized_ip_ranges:
+.. _authorized ip ranges:
 
 ####################
 Authorized IP ranges

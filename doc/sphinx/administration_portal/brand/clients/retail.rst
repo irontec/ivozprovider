@@ -19,6 +19,8 @@ They just provide a SIP trunking service that include these features:
 
 .. error:: Retail clients and their accounts **MUST use Brand's SIP domain in their SIP messages**.
 
+.. _differences between retail and residential clients:
+
 Differences between retail and residential clients
 --------------------------------------------------
 

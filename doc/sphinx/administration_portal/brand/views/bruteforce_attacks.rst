@@ -1,3 +1,5 @@
+.. _brute-force attacks:
+
 *******************
 Brute-force attacks
 *******************

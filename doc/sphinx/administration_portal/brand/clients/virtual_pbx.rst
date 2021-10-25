@@ -1,3 +1,5 @@
+.. _virtual pbx:
+
 ***********
 Virtual PBX
 ***********

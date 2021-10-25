@@ -1,4 +1,5 @@
 .. _conditional_routes:
+.. _conditional routes:
 
 ##################
 Conditional routes

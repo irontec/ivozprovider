@@ -34,6 +34,8 @@ Optionally, we can add the repository key to check signed packages:
 
     wget http://packages.irontec.com/public.key -q -O - | apt-key add -
 
+.. _installing profile package:
+
 **************************
 Installing profile package
 **************************

@@ -1,3 +1,5 @@
+.. _billing:
+
 #######
 Billing
 #######
@@ -20,6 +22,7 @@ Billing methods
 
 IvozProvider supports 3 different billing methods. Billing method is configured at client level via *Billing method* parameter.
 
+.. _postpaid billing:
 
 Postpaid billing
 ================
@@ -28,6 +31,8 @@ Postpaid billing
 
    - No configurable limit or balances involved.
 
+
+.. _prepaid billing:
 
 Prepaid billing
 ================
@@ -42,6 +47,7 @@ Prepaid billing
 
    - Low balance email notifications can be configured.
 
+.. _pseudo-prepaid billing:
 
 Pseudo-prepaid billing
 ======================

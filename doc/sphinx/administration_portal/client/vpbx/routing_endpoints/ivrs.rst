@@ -6,7 +6,7 @@ IVRs are the most common way to make **audio menus** where the caller must
 choose the destination of the call by **pressing codes** based on the locutions
 instructions that will be played.
 
-.. ivrs:
+.. _ivrs:
 
 ***********
 IVRs

@@ -2,6 +2,8 @@
 Installation Types
 ##################
 
+.. _distributed install:
+
 *******************
 Distributed Install
 *******************
@@ -24,6 +26,8 @@ account, that while some of them are designed to scale horizontally (for
 example: asterisk or media-relays) others will require additional software so the
 systems that have the same profile are synchronized (for example: database
 replication or http request balancing).
+
+.. _standalone install:
 
 ******************
 StandAlone Install

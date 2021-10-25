@@ -1,3 +1,5 @@
+.. _extensions:
+
 ##########
 Extensions
 ##########
@@ -8,16 +10,16 @@ call ACL logics: **every user/friend is allowed to call to any number listed her
 
 .. rubric:: Create a new extension
 
-    Number
-        The number that must be dialed by the internal user that will trigger
-        the configured logic. It must have a minimum length of 2 and must be 
-        a number.
+Number
+    The number that must be dialed by the internal user that will trigger
+    the configured logic. It must have a minimum length of 2 and must be
+    a number.
 
-    Route
-        This select will allow us to choose the logic that will use this
-        extension when is dialed from an internal user. Depending on the selected
-        route, and additional select or input will be shown to select the
-        hunt group, conference room, user, etc.
+Route
+    This select will allow us to choose the logic that will use this
+    extension when is dialed from an internal user. Depending on the selected
+    route, and additional select or input will be shown to select the
+    hunt group, conference room, user, etc.
 
 .. warning:: If an extension has a number that conflicts with an external
    number, this external number will be masked and, in practice, will be

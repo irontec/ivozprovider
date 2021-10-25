@@ -39,7 +39,7 @@ In order to access to each level, **you will need a corresponding level URL and 
 
 - URL: Client URL defined in :ref:`Client Portals` + /api/client
 
-- Credentials: Client credentials defined in :ref:`Additional subsections` *Client admins*.
+- Credentials: Client credentials defined in :ref:`Main operators`.
 
 .. warning:: All credentials usernames are unique at brand level. This is why *username + brand URL* duple is needed to
              identify a user (both in API and in web portal).

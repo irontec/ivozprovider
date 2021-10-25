@@ -1,4 +1,4 @@
-.. _destination_rate:
+.. _destination rates:
 
 #################
 Destination Rates
@@ -75,6 +75,7 @@ This is underlying logic:
 
 This setting guarantees a minimal cost of 0.01.
 
+.. _add rates manually:
 
 ******************
 Add rates manually
@@ -110,6 +111,8 @@ Call cost/price is increased by (*Per minute rate* / 60 ) * *charge period* ever
 
 - If *billing period* is set to 60, every minute the price will be increased
   *price per minute* (bill by minutes).
+
+.. _importing a csv file:
 
 ********************
 Importing a CSV file

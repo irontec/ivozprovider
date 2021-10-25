@@ -1,3 +1,5 @@
+.. _ddi providers:
+
 *************
 DDI Providers
 *************

@@ -1,4 +1,5 @@
 .. _default_notification_templates:
+.. _default notification templates:
 
 ##############################
 Default Notification Templates
