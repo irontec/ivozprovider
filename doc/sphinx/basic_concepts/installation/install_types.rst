@@ -3,6 +3,7 @@ Installation Types
 ##################
 
 .. _distributed install:
+.. _instalación distribuida:
 
 *******************
 Distributed Install
@@ -28,6 +29,7 @@ systems that have the same profile are synchronized (for example: database
 replication or http request balancing).
 
 .. _standalone install:
+.. _instalación standalone:
 
 ******************
 StandAlone Install

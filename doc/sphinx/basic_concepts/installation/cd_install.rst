@@ -1,4 +1,5 @@
 .. _automatic iso cd image:
+.. _cds automáticos de instalación:
 
 ######################
 Automatic ISO CD image

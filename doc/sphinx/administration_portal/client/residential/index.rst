@@ -1,4 +1,5 @@
 .. _residential clients:
+.. _clientes residenciales:
 
 ###################
 Residential Clients

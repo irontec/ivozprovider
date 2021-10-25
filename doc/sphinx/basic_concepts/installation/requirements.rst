@@ -1,4 +1,5 @@
 .. _minimum requirements:
+.. _requisitos mínimos:
 
 ####################
 Minimum requirements

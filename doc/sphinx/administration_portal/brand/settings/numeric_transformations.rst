@@ -1,5 +1,6 @@
 .. _transformations:
 .. _numeric transformations:
+.. _transformaciones numéricas:
 
 #######################
 Numeric transformations
