@@ -19,7 +19,7 @@ export const parseRoutes = (apiSpec: ParsedApiSpecInterface): RouteSpec[] => {
     for (const name in entities) {
         const entity = entities[name];
 
-        if (!apiSpec[entity.iden]) {
+        if (!apiSpec[entity?.iden]) {
             continue;
         }
 

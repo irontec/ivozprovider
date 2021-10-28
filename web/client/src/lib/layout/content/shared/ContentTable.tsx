@@ -79,18 +79,23 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
     setWhere(where);
   }
 
+  const totalItems = parseInt(
+    headers['x-total-items'] ?? 0,
+    10
+  );
+
   return (
     <React.Fragment>
       <StyledActionButtonContainer>
         <div />
         <div>
-          <Tooltip title={_('Search')}>
+          <Tooltip title={_('Search')} arrow>
             <StyledFab onClick={filterButtonHandler}>
               <SearchIcon />
             </StyledFab>
           </Tooltip>
           {acl.create && <StyledLink to={`${path}/create`}>
-            <Tooltip title="Add">
+            <Tooltip title="Add" arrow>
               <Fab color="secondary" size="small" variant="extended">
                 <QueueIcon />
               </Fab>
@@ -173,7 +178,7 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
           page={page - 1}
           rowsPerPage={rowsPerPage}
           rowsPerPageOptions={[1, 10, 50, 100]}
-          count={parseInt(headers['x-total-items'], 10)}
+          count={totalItems}
           backIconButtonProps={{
             'aria-label': 'previous page',
           }}

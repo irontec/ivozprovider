@@ -1,19 +1,19 @@
 import { action, Action, Thunk, thunk } from 'easy-peasy';
 import ApiClient from 'lib/services/api/ApiClient';
 
-
-interface authStoreState {
+interface AuthState {
   token: string | null,
 }
 
-interface authStoreActions {
-
-  resetToken: Action<authStoreState, null>,
-  setToken: Action<authStoreState, string>,
+interface AuthActions {
+  resetToken: Action<AuthState, null>,
+  setToken: Action<AuthState, string>,
   init: Thunk<() => Promise<void>>
 }
 
-const auth: authStoreActions & authStoreState = {
+export type AuthStore = AuthActions & AuthState;
+
+const auth = {
   token: null,
 
   // actions

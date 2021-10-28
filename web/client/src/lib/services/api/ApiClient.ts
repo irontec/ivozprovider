@@ -26,7 +26,41 @@ class ApiClient {
 
             return response;
 
-        } catch (error) {
+        } catch (error: any) {
+
+            if (!error) {
+                throw error;
+            }
+
+            const axiosError = error as AxiosError;
+            if (axiosError?.response?.status === 403) {
+                await callback([], axiosError.response.headers);
+                return;
+            }
+
+            throw axiosError.response;
+        }
+    }
+
+    static async download(endpoint: string, params: any = undefined, callback: AsyncFunction): Promise<unknown> {
+        try {
+
+            const response = await axios.get(
+                config.API_URL + endpoint,
+                {
+                    params: params,
+                    headers: {
+                        'Accept': 'application/json'
+                    },
+                    responseType: 'blob',
+                }
+            );
+
+            await callback(response.data, response.headers);
+
+            return response;
+
+        } catch (error: any) {
 
             if (!error) {
                 throw error;
@@ -60,7 +94,7 @@ class ApiClient {
 
         try {
             return await axios.post(config.API_URL + endpoint, params, reqConfig);
-        } catch (error) {
+        } catch (error: any) {
             if (!error) {
                 throw error;
             }
@@ -72,7 +106,7 @@ class ApiClient {
     static async put<T = any>(endpoint: string, params: any = undefined): Promise<T> {
         try {
             return await axios.put(config.API_URL + endpoint, params);
-        } catch (error) {
+        } catch (error: any) {
             if (!error) {
                 throw error;
             }
@@ -84,7 +118,7 @@ class ApiClient {
     static async delete<T = any>(endpoint: string, params: any = undefined): Promise<T> {
         try {
             return await axios.delete(config.API_URL + endpoint, params);
-        } catch (error) {
+        } catch (error: any) {
             if (!error) {
                 throw error;
             }

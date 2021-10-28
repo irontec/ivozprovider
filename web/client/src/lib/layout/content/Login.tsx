@@ -11,14 +11,12 @@ import { useFormikType } from 'lib/services/form/types';
 import { StyledLoginContainer, StyledAvatar, StyledForm, StyledSubmitButton } from './Login.styles';
 import { EntityValidator } from 'lib/entities/DefaultEntityBehavior';
 
-
 interface LoginProps {
   validator?: EntityValidator
 }
 
 export default function Login(props: LoginProps): JSX.Element {
 
-  debugger;
   const [error, setError] = useState<string | null>(null);
 
   const setToken = useStoreActions((actions: any) => actions.auth.setToken);
@@ -45,7 +43,7 @@ export default function Login(props: LoginProps): JSX.Element {
 
       throw error;
 
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       setError(error.toString());
     } finally {

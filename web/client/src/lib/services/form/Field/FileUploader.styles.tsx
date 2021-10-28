@@ -1,5 +1,6 @@
 import { styled } from '@mui/styles';
 import { useRef } from "react";
+import DownloadingIcon from '@mui/icons-material/Downloading';
 
 export const StyledFileUploaderContainer = styled(
     (props) => {
@@ -34,6 +35,12 @@ export const StyledFileUploaderContainer = styled(
         }
     }
 );
+
+export const StyledDownloadingIcon = styled(DownloadingIcon)({
+    verticalAlign: 'bottom',
+    cursor: 'pointer',
+    marginRight: '5px',
+});
 
 export const StyledUploadButtonContainer = styled('div')({
     alignSelf: 'center',

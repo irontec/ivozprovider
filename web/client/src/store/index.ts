@@ -1,13 +1,33 @@
-import auth from './auth';
-import apiSpec from './apiSpec';
-import api from './api';
-import route from './route';
+import auth, { AuthStore } from './auth';
+import spec, { SpecStore } from './apiSpec';
+import api, { ApiStore } from './api';
+import route, { RouteStore } from './route';
+import { createTypedHooks } from 'easy-peasy';
 
-const store = {
-  auth,
-  apiSpec,
-  api,
-  route
+interface AppStore {
+  auth: AuthStore,
+  spec: SpecStore,
+  api: ApiStore,
+  route: RouteStore
+}
+
+const {
+  useStoreActions,
+  useStoreState,
+  useStoreDispatch,
+  useStore
+} = createTypedHooks<AppStore>();
+
+export {
+  useStoreActions,
+  useStoreState,
+  useStoreDispatch,
+  useStore
 };
 
-export default store;
+export default {
+  auth,
+  apiSpec: spec,
+  api,
+  route
+}

@@ -4,18 +4,18 @@ import SnackbarContent from '@mui/material/SnackbarContent';
 import IconButton from '@mui/material/IconButton';
 import { StyledCloseIcon, StyledSnackbarContentMessageContainer } from './Message.styles';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { SvgIconTypeMap } from '@mui/material';
 
 export interface MessageProps {
     message: string,
-    icon?: JSX.Element | OverridableComponent<any>,
+    Icon: OverridableComponent<SvgIconTypeMap<any, "svg">>
 }
 
 export default function Message(props: MessageProps): JSX.Element {
+    const { message, Icon } = props;
+    const [open, setOpen] = useState<boolean>(true);
 
-    const { message, icon } = props;
-    const [open, setOpen] = useState(true);
-
-    const handleClose = () => {
+    const handleClose = (): void => {
         setOpen(false);
     }
 
@@ -32,7 +32,7 @@ export default function Message(props: MessageProps): JSX.Element {
             <SnackbarContent
                 message={
                     <StyledSnackbarContentMessageContainer>
-                        {icon}
+                        <Icon />
                         {message}
                     </StyledSnackbarContentMessageContainer>
                 }

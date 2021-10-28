@@ -29,7 +29,7 @@ export const StyledLink = styled(
 );
 
 export const StyledFab = styled(
-  (props) => {
+  (props): any => {
     const { children, className, onClick } = props;
     return (
       <Fab

@@ -1,7 +1,7 @@
 import { useState, useEffect, FunctionComponent, ComponentClass } from 'react';
 import EntityService from 'lib/services/entity/EntityService';
-import { useStoreActions } from 'easy-peasy';
 import hoistStatics from "hoist-non-react-statics";
+import { useStoreActions } from 'store';
 
 const withRowData = (Component: FunctionComponent | ComponentClass): FunctionComponent => {
 
@@ -17,8 +17,8 @@ const withRowData = (Component: FunctionComponent | ComponentClass): FunctionCom
     const [loading, setLoading] = useState(true)
     const [row, setRow] = useState({});
 
-    const apiGet = useStoreActions((actions: any) => {
-      return actions.api.get
+    const apiGet = useStoreActions((actions) => {
+      return actions.api.get;
     });
 
     useEffect(

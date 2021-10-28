@@ -5,15 +5,14 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
-import { TransitionProps } from '@mui/material/transitions';
+import Slide, { SlideProps } from '@mui/material/Slide';
 
 const Transition: ComponentType<any> = forwardRef(
   function (
-    props: TransitionProps & { children?: React.ReactElement<any, any> },
+    props: SlideProps,
     ref: React.Ref<unknown>,
   ) {
-    return <Slide direction="up" ref={ref} {...props} />;
+    return <Slide {...props} direction="up" ref={ref} />;
   }
 );
 Transition.displayName = 'ConfirmDialogTransition';

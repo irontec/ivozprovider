@@ -17,7 +17,7 @@ const StyledInfoMessage = styled(
         return (
             <Message
                 message={message}
-                icon={InfoIcon}
+                Icon={InfoIcon}
             />
         );
     }

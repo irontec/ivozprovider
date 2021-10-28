@@ -1,6 +1,20 @@
-import { action, thunk } from 'easy-peasy';
+import { Action, action, Thunk, thunk } from 'easy-peasy';
 import ApiClient from 'lib/services/api/ApiClient';
 import ApiSpecParser from 'lib/services/api/ApiSpecParser';
+
+interface SpecState {
+  spec: any,
+  loading: boolean,
+}
+
+interface SpecActions {
+  setSpec: Action<SpecState, null>,
+  setLoading: Action<SpecState, string>,
+  unsetLoading: Action<SpecState, string>,
+  init: Thunk<() => Promise<void>>
+}
+
+export type SpecStore = SpecState & SpecActions;
 
 const specStore = {
   spec: {},
@@ -20,7 +34,7 @@ const specStore = {
 
   init: thunk(
     // callback thunk
-    (actions:any, payload, helpers) => {
+    (actions: any, payload, helpers) => {
 
       const state: any = helpers.getState();
       if (state.loading) {
