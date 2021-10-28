@@ -114,6 +114,7 @@ production:
           allowRecordingRemoval: true
           externallyExtraOpts: true
           maxDailyUsageNotificationTemplate: true
+          relCodecs: true
         order: &retailClientsOrder_Link
           id: true
           name: true
