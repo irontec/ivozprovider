@@ -266,8 +266,6 @@ async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertie
                 break;
         }
 
-        console.log('IVR[idx]', data[idx]);
-        debugger;
         delete (data[idx] as any).noInputNumberCountryId;
         delete (data[idx] as any).noInputNumberValue;
         delete (data[idx] as any).noInputExtensionId;

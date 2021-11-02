@@ -22,7 +22,7 @@ export default class FormFieldFactory {
     ) {
     }
 
-    public getFormField(fld: string, choices: NullablePropertyFkChoices, readOnly = false): JSX.Element|null {
+    public getFormField(fld: string, choices: NullablePropertyFkChoices, readOnly = false): JSX.Element | null {
         const property = this.getProperty(fld);
         if (!property) {
             console.error(`Property ${fld} was not found`);
@@ -148,13 +148,20 @@ export default class FormFieldFactory {
         }
 
         if (fileUpload) {
+            const downloadModel = (property as FkProperty).$ref.split('/').pop();
+            const downloadAction = this.entityService.getItemByModel(downloadModel ?? '');
+            const paths = downloadAction?.paths || [];
+            const downloadPath = paths.length
+                ? paths.pop().replace('{id}', this.formik.values.id)
+                : null;
 
             return (
                 <FileUploader
-                    property={property}
+                    property={property as FkProperty}
                     columnName={fld}
                     values={this.formik.values}
                     changeHandler={this.changeHandler}
+                    downloadPath={downloadPath}
                 />
             );
         }

@@ -42,8 +42,7 @@ const Create = (props: CreateProps & RouteComponentProps) => {
       setError(null);
       history.push(path);
 
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
       setError(error.toString());
     } finally {
       setSubmitting(false);

@@ -12,13 +12,18 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 //'recordingExtension',
             ]
         },
-        /*{
+        {
             legend: '',
             fields: [
                 'originalFile',
-                'encodedFile',
             ]
-        }*/
+        },
+        {
+            legend: '',
+            fields: [
+                'status',
+            ]
+        },
     ];
 
     return (<DefaultEntityForm {...props} groups={groups} />);

@@ -55,7 +55,7 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
 
       setError(null);
       history.goBack();
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       setError(error.toString());
     } finally {

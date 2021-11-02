@@ -9,9 +9,13 @@ const properties: LocutionProperties = {
     'name': {
         label: _('Name'),
     },
-    //@TODO POSPONED originalFile
+    'originalFile': {
+        label: _('Uploaded file'),
+        type: 'file'
+    },
     'status': {
         label: _('Status'),
+        readOnly: true,
         enum: {
             'pending': _('pending'),
             'encoding': _('encoding'),
@@ -21,6 +25,12 @@ const properties: LocutionProperties = {
     }
 };
 
+const columns = [
+    'name',
+    'originalFile',
+    'status',
+];
+
 const locution: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
@@ -28,7 +38,8 @@ const locution: EntityInterface = {
     title: _('Locution', { count: 2 }),
     path: '/locutions',
     properties,
-    Form
+    Form,
+    columns
 };
 
 export default locution;

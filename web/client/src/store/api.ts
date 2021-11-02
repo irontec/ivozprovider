@@ -1,10 +1,24 @@
-import { Actions, thunk } from 'easy-peasy';
+import { Actions, Thunk, thunk } from 'easy-peasy';
 import ApiClient, { ApiError } from 'lib/services/api/ApiClient';
+
+interface ApiState {
+  errorMsg: string | null,
+}
+
+interface ApiActions {
+  get: Thunk<() => Promise<void>, apiGetRequestParams>
+  download: Thunk<() => Promise<void>, apiGetRequestParams>
+  post: Thunk<() => Promise<void>, apiPostRequestParams>
+  put: Thunk<() => Promise<void>, apiPutRequestParams>
+  delete: Thunk<() => Promise<void>, apiDeleteRequestParams>
+}
+
+export type ApiStore = ApiState & ApiActions;
 
 interface apiGetRequestParams {
   path: string,
   params: any,
-  successCallback: () => Promise<any>
+  successCallback: (data: Record<string, any>, headers: Record<string, any>) => Promise<any>
 }
 
 interface apiPostRequestParams {
@@ -24,7 +38,7 @@ interface apiDeleteRequestParams {
   successCallback: () => Promise<any>
 }
 
-const handleApiErrors = (error: ApiError | null, getStoreActions: () => Actions<any>) => {
+const handleApiErrors = (error: ApiError | null, getStoreActions: () => Actions<any>): string | null => {
 
   if (!error) {
     throw error;
@@ -35,7 +49,7 @@ const handleApiErrors = (error: ApiError | null, getStoreActions: () => Actions<
     actions.auth.resetToken();
   }
 
-  throw error;
+  throw error.statusText;
 };
 
 const api = {
@@ -53,12 +67,28 @@ const api = {
         params,
         successCallback
       );
-    } catch (error) {
+    } catch (error: any) {
 
       console.log('api get error', error);
       handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
+
+  download: thunk(async (actions: any, payload: apiGetRequestParams, { getStoreActions }) => {
+
+    const { path, params, successCallback } = payload;
+
+    try {
+      return await ApiClient.download(
+        path,
+        params,
+        successCallback
+      );
+    } catch (error: any) {
+      handleApiErrors(error as ApiError, getStoreActions);
+    }
+  }),
+
   ////////////////////////////////////////
   // POST
   ////////////////////////////////////////
@@ -72,7 +102,7 @@ const api = {
         values,
         contentType
       );
-    } catch (error) {
+    } catch (error: any) {
       console.log('api post error', error);
       handleApiErrors(error as ApiError, getStoreActions);
     }
@@ -89,7 +119,7 @@ const api = {
         path,
         values
       );
-    } catch (error) {
+    } catch (error: any) {
       console.log('api put error', error);
       handleApiErrors(error as ApiError, getStoreActions);
     }
@@ -105,7 +135,7 @@ const api = {
       return await ApiClient.delete(
         path
       );
-    } catch (error) {
+    } catch (error: any) {
       console.log('api delete error', error);
       handleApiErrors(error as ApiError, getStoreActions);
     }

@@ -28,6 +28,14 @@ export default class ApiSpecParser {
                 apiSpec
             );
 
+            if (modelName.indexOf('_') > 0 && Object.keys(paths).length) {
+                const parentModelName = modelName.split('_').shift() as string;
+                responseData[parentModelName][modelName] = {
+                    ...apiSpec.definitions[parentModelName],
+                    paths
+                };
+            }
+
             responseData[entityNameRoot][modelName] = {
                 ...apiSpec.definitions[modelName],
                 paths
@@ -149,7 +157,7 @@ export default class ApiSpecParser {
 
     private getItemPaths(paths: any) {
         return Object.keys(paths).filter((key: string) => {
-            return paths[key]?.responses['200']?.schema?.$ref;
+            return paths[key]?.responses['200']?.schema?.$ref || paths[key]?.produces.includes('application/octet-stream');
         });
     }
 
@@ -162,16 +170,13 @@ export default class ApiSpecParser {
     }
 
     private getEntityPaths(entityNameRoot: string, apiSpec: OpenApiSpecInterface): OpenApiPaths {
-        /* eslint-disable */
+
         entityNameRoot = entityNameRoot.replace('-', '\-');
-        const pattern = `^\#\/definitions\/${entityNameRoot}$`;
-        /* eslint-enable */
-        const regExp = new RegExp(pattern);
         const endpoints: OpenApiPaths = {};
 
         for (const endpoint in apiSpec.paths) {
-            for (const method in apiSpec.paths[endpoint]) {
 
+            for (const method in apiSpec.paths[endpoint]) {
                 const action = apiSpec.paths[endpoint][method];
 
                 const isGetRequest = ['get'].includes(method.toLowerCase())
@@ -179,12 +184,12 @@ export default class ApiSpecParser {
                     : false;
 
                 const matches = isGetRequest
-                    ? this.filterByResponseSchema(action, regExp)
-                    : this.filterByRequestSchema(action, regExp)
+                    ? this.filterByResponseSchema(action, entityNameRoot)
+                    : this.filterByRequestSchema(action, entityNameRoot)
 
                 const uploadActionMatch =
                     !isGetRequest
-                    && (this.filterByResponseSchema(action, regExp)).length > 0
+                    && (this.filterByResponseSchema(action, entityNameRoot)).length > 0
                     && this.isUploadAction(action);
 
                 if (!matches.length && !uploadActionMatch) {
@@ -212,16 +217,52 @@ export default class ApiSpecParser {
         return endpoints;
     }
 
-    private filterByRequestSchema(action: any, regExp: RegExp): Array<string> {
+    private filterByRequestSchema(action: any, entityNameRoot: string): Array<string> {
+
+        const pattern = `^\#\/definitions\/${entityNameRoot}$`;
+        const regExp = new RegExp(pattern);
+
         return Object
             .values(action.parameters)
-            .map((parameter: any) => parameter?.schema?.$ref)
+            .map((parameter: any) => {
+                if (parameter?.in === 'formData') {
+                    if (entityNameRoot.toLowerCase() === parameter?.name.toLowerCase()) {
+                        return `#/definitions/${entityNameRoot}`;
+                    }
+                }
+
+                return parameter?.schema?.$ref;
+            })
             .filter((ref: string) => {
                 return ref && ref.search(regExp) === 0;
             });
     }
 
-    private filterByResponseSchema(action: any, regExp: RegExp): Array<string> {
+    private filterByResponseSchema(action: any, entityNameRoot: string): Array<string> {
+
+        const isFileDownload =
+            action.produces
+            && action.produces.includes('application/octet-stream');
+
+        if (isFileDownload) {
+            return Object
+                .values(action.responses)
+                .filter((response: any) => response?.description && response.description.indexOf('#/definitions/') >= 0)
+                .map((response: any) => response.description.replace('#/definitions/', '') ?? '')
+                .map((description: string) => {
+                    const modelMatch = description.toLowerCase() === entityNameRoot.toLowerCase();
+                    return modelMatch
+                        ? entityNameRoot
+                        : '';
+                })
+                .filter((description: string) => {
+                    return description !== '';
+                });
+        }
+
+        const pattern = `^\#\/definitions\/${entityNameRoot}$`;
+        const regExp = new RegExp(pattern);
+
         return Object
             .values(action.responses)
             .map((response: any) => response.schema)

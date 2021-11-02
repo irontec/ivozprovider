@@ -221,6 +221,20 @@ export default class EntityService {
         return action?.paths[0];
     }
 
+    public getItemByModel(model: string): ActionModelSpec | null {
+        const itemActions = this.actions?.get?.item || {};
+
+        if (!itemActions[model]) {
+            return null;
+        }
+
+        return JSON.parse(
+            JSON.stringify(
+                itemActions[model]
+            )
+        );
+    }
+
     public getPostPath(path: string | null = null): string | null {
         const itemActions = this.actions?.post || {};
 

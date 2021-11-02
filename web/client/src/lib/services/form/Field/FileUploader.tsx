@@ -1,24 +1,35 @@
 import { Button } from '@mui/material';
-import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
+import { FkProperty } from "lib/services/api/ParsedApiSpecInterface";
 import CustomComponentWrapper from "./CustomComponentWrapper";
 import BackupIcon from '@mui/icons-material/Backup';
-import { ChangeEvent, DragEvent, useCallback, useState } from 'react';
-import { StyledFileUploaderContainer, StyledFileNameContainer, StyledUploadButtonContainer, StyledUploadButtonLabel } from './FileUploader.styles';
+import { ChangeEvent, DragEvent, MouseEvent, useCallback, useState } from 'react';
+import { StyledFileUploaderContainer, StyledFileNameContainer, StyledUploadButtonContainer, StyledUploadButtonLabel, StyledDownloadingIcon } from './FileUploader.styles';
 import { FormOnChangeEvent } from 'lib/entities/DefaultEntityBehavior';
+import { useStoreActions } from 'store';
+import { saveAs } from 'file-saver';
 
-interface ViewValueProps {
+interface FileUploaderProps {
     columnName: string,
-    property: PropertySpec,
+    property: FkProperty,
     values: any,
     changeHandler: (e: FormOnChangeEvent) => void,
+    downloadPath: string | null
 }
 
-const FileUploader = (props: ViewValueProps): JSX.Element => {
+const FileUploader = (props: FileUploaderProps): JSX.Element => {
 
-    const { property, columnName, values, changeHandler } = props;
+    const { property, columnName, values, changeHandler, downloadPath } = props;
+    if (!downloadPath) {
+        console.error('Empty download path');
+    }
+
+    const apiDownload = useStoreActions((actions) => {
+        return actions.api.download;
+    });
 
     const [hover, setHover] = useState<boolean>(false);
     const [hoverCount, setHoverCount] = useState<number>(0);
+    const [downloading, setDownloading] = useState<boolean>(false);
 
     const handleDragEnter = useCallback(
         (e: DragEvent) => {
@@ -48,6 +59,35 @@ const FileUploader = (props: ViewValueProps): JSX.Element => {
             setHoverCount(hoverCount - 1);
         },
         [hoverCount],
+    );
+
+    const handleDownload = useCallback(
+        async (e: MouseEvent) => {
+
+            if (downloading) {
+                return;
+            }
+
+            setDownloading(true);
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            try {
+                await apiDownload({
+                    path: downloadPath as string,
+                    params: {},
+                    successCallback: async (data: any, headers: any) => {
+                        const fileName = headers['content-disposition'].split('filename=').pop();
+                        saveAs(data, fileName);
+                    }
+                });
+            } finally {
+                setDownloading(false);
+            }
+
+        },
+        [downloading, downloadPath, apiDownload],
     );
 
     type fileContainerEvent = Pick<ChangeEvent<{ files: FileList }>, 'target'>
@@ -144,7 +184,14 @@ const FileUploader = (props: ViewValueProps): JSX.Element => {
                         </Button>
                     </StyledUploadButtonLabel>
                 </StyledUploadButtonContainer>
-                {fileName && <StyledFileNameContainer>{fileName} ({fileSizeMb}MB)</StyledFileNameContainer>}
+                {fileName &&
+                    <>
+                        <StyledFileNameContainer>
+                            {values.id && <StyledDownloadingIcon onClick={handleDownload} />}
+                            {fileName} ({fileSizeMb}MB)
+                        </StyledFileNameContainer>
+                    </>
+                }
             </StyledFileUploaderContainer>
 
         </CustomComponentWrapper >

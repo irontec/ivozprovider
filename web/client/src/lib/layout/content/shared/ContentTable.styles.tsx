@@ -1,5 +1,6 @@
 import { Fab, Chip } from '@mui/material';
 import { styled } from '@mui/styles';
+import { forwardRef } from 'react';
 import { Link } from "react-router-dom";
 
 export const StyledActionButtonContainer = styled('div')(
@@ -28,22 +29,25 @@ export const StyledLink = styled(
   }
 );
 
-export const StyledFab = styled(
-  (props) => {
-    const { children, className, onClick } = props;
-    return (
-      <Fab
-        color="secondary"
-        size="small"
-        variant="extended"
-        className={className}
-        onClick={onClick}
-      >
-        {children}
-      </Fab>
-    );
-  }
-)(
+const _Fab = forwardRef<any, any>((props, ref) => {
+  const { children, className, onClick, ...rest } = props;
+  return (
+    <Fab
+      {...rest}
+      color="secondary"
+      size="small"
+      variant="extended"
+      className={className}
+      onClick={onClick}
+      ref={ref}
+    >
+      {children}
+    </Fab>
+  );
+});
+_Fab.displayName = '_Fab';
+
+export const StyledFab = styled(_Fab)(
   () => {
     return {
       marginRight: '10px'
@@ -51,19 +55,21 @@ export const StyledFab = styled(
   }
 );
 
-export const StyledChip = styled(
-  (props) => {
-    const { className, icon, label, onDelete } = props;
-    return (
-      <Chip
-        icon={icon}
-        label={label}
-        onDelete={onDelete}
-        className={className}
-      />
-    );
-  }
-)(
+const _Chip = forwardRef<any, any>((props, ref) => {
+  const { className, icon, label, onDelete } = props;
+  return (
+    <Chip
+      icon={icon}
+      label={label}
+      onDelete={onDelete}
+      className={className}
+      ref={ref}
+    />
+  );
+});
+_Chip.displayName = '_Chip';
+
+export const StyledChip = styled(_Chip)(
   () => {
     return {
       margin: '0 5px',
