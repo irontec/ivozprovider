@@ -1098,6 +1098,9 @@ Ivoz\Provider\Domain\Model\Locution\Locution:
       required:
       - company
 
+Ivoz\Provider\Domain\Model\Locution\OriginalFile: ~
+Ivoz\Provider\Domain\Model\Locution\EncodedFile: ~
+
 Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
   itemOperations: []
   collectionOperations: []
