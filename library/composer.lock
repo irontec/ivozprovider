@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22d8a55d576845af60a4ad875c2d19f5",
+    "content-hash": "688fc113afd8f76f9865b924586af3de",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1757,17 +1757,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "3.3.9",
+            "version": "3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "2d2fb1b9c31578cd0c482f47e5eaec6cd07f2fc6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/2d2fb1b9c31578cd0c482f47e5eaec6cd07f2fc6",
-                "reference": "2d2fb1b9c31578cd0c482f47e5eaec6cd07f2fc6",
-                "shasum": ""
+                "reference": "3eccde9473af434e448ed7cf15736d21852508cb"
             },
             "require": {
                 "beberlei/assert": "2.9.*",
@@ -1788,7 +1782,6 @@
                     "Ivoz\\Core\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0-or-later"
             ],
@@ -1807,26 +1800,26 @@
                 }
             ],
             "description": "Core library for ivozprovider",
-            "time": "2021-09-16T09:06:37+00:00"
+            "time": "2021-11-03T14:28:21+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "3.4.1",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core-bundle.git",
-                "reference": "9e628723cc793d960af320d4e661abba3f7b36ca"
+                "reference": "4d344148268f287bdfa1dd4e6dd8da337353353b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/9e628723cc793d960af320d4e661abba3f7b36ca",
-                "reference": "9e628723cc793d960af320d4e661abba3f7b36ca",
+                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/4d344148268f287bdfa1dd4e6dd8da337353353b",
+                "reference": "4d344148268f287bdfa1dd4e6dd8da337353353b",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": "^1.6",
                 "doctrine/doctrine-cache-bundle": "^1.3",
-                "irontec/ivoz-core": "^3.3.2",
+                "irontec/ivoz-core": "^3.4",
                 "ocramius/proxy-manager": "~2.0",
                 "php": ">=7.0.19",
                 "symfony/monolog-bundle": "3.1.*",
@@ -1858,7 +1851,7 @@
                 }
             ],
             "description": "Symfony bridge for ivoz-core",
-            "time": "2021-02-16T12:32:27+00:00"
+            "time": "2021-11-03T11:00:28+00:00"
         },
         {
             "name": "irontec/ivoz-dev-tools",
@@ -1909,11 +1902,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.9",
+            "version": "2.5.10",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "55001ea4c5ebdb30f4493fbb1f35c0ea2c9a227c"
+                "reference": "d3928ec5e0d48375f62d069ad699178c2eaa1acc"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.1",
@@ -1962,7 +1955,8 @@
             ],
             "description": "Symfony bridge for IvozProvider",
             "transport-options": {
-                "symlink": false
+                "symlink": false,
+                "relative": true
             }
         },
         {
@@ -7110,6 +7104,12 @@
                 "future",
                 "non-blocking",
                 "promise"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/amphp",
+                    "type": "github"
+                }
             ],
             "time": "2020-07-14T21:47:18+00:00"
         },
