@@ -3,6 +3,7 @@
 namespace Ivoz\Kam\Infrastructure\Kamailio;
 
 use Ivoz\Kam\Infrastructure\Redis\Job\TrunksRpcJob;
+use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Psr\Log\LoggerInterface;
 
@@ -10,9 +11,13 @@ class TrunksClient implements TrunksClientInterface
 {
     use RpcRequestTrait;
 
+    const REDIS_RT_CALLS_DB = 1;
+    const REDIS_SCAN_COUNT = 1000;
+
     public function __construct(
         RpcClient $rpcClient,
         private TrunksRpcJob $rpcJob,
+        private RedisMasterFactory $redisMasterFactory,
         LoggerInterface $logger
     ) {
         $this->rpcClient = $rpcClient;
@@ -140,20 +145,23 @@ class TrunksClient implements TrunksClientInterface
     }
 
     /**
-     * @param int $companyId
      * @return int[] inbound/outbound
      */
-    public function getCompanyActiveCalls(int $companyId): array
+    public function getCompanyActiveCalls(int $brandId, int $companyId): array
     {
-        $inbound = $this->getActiveCalls([
-            'inboundCallsCompany',
+        $inboundFilterPattern = sprintf(
+            'trunks:b%d:c%d:dp*',
+            $brandId,
             $companyId
-        ]);
+        );
+        $inbound = $this->getRedisActiveCalls($inboundFilterPattern);
 
-        $outbound = $this->getActiveCalls([
-            'outboundCallsCompany',
+        $outboundFilterPattern = sprintf(
+            'trunks:b%d:c%d:cr*',
+            $brandId,
             $companyId
-        ]);
+        );
+        $outbound = $this->getRedisActiveCalls($outboundFilterPattern);
 
         return [
             $inbound,
@@ -167,15 +175,17 @@ class TrunksClient implements TrunksClientInterface
      */
     public function getBrandActiveCalls(int $brandId): array
     {
-        $inbound = $this->getActiveCalls([
-            'inboundCallsBrand',
+        $inboundFilterPattern = sprintf(
+            'trunks:b%d:*:dp*',
             $brandId
-        ]);
+        );
+        $inbound = $this->getRedisActiveCalls($inboundFilterPattern);
 
-        $outbound = $this->getActiveCalls([
-            'outboundCallsBrand',
+        $outboundFilterPattern = sprintf(
+            'trunks:b%d:*:cr*',
             $brandId
-        ]);
+        );
+        $outbound = $this->getRedisActiveCalls($outboundFilterPattern);
 
         return [
             $inbound,
@@ -188,13 +198,8 @@ class TrunksClient implements TrunksClientInterface
      */
     public function getPlatformActiveCalls(): array
     {
-        $inbound = $this->getActiveCalls([
-            'inboundCallsBrand'
-        ]);
-
-        $outbound = $this->getActiveCalls([
-            'outboundCallsBrand'
-        ]);
+        $inbound = $this->getRedisActiveCalls('trunks:*:dp*');
+        $outbound = $this->getRedisActiveCalls('trunks:*:cr*');
 
         return [
             $inbound,
@@ -203,21 +208,59 @@ class TrunksClient implements TrunksClientInterface
     }
 
     /**
-     * @param array $payload
+     * @param string $filterPattern
      * @return int
      */
-    private function getActiveCalls(array $payload)
+    private function getRedisActiveCalls(string $filterPattern)
     {
-        $response = $this->sendRequest(
-            self::DLG_PROFILE_GET_SIZE,
-            $payload
-        );
+        $callNum = 0;
+        try {
+            $redisClient = $this->redisMasterFactory->create(
+                self::REDIS_RT_CALLS_DB
+            );
 
-        if (!isset($response->result)) {
-            return -1;
+            /** @var int|null $redisScanIterator */
+            $redisScanIterator = null;
+
+            while (true) {
+                $keys = $redisClient->scan(
+                    $redisScanIterator,
+                    $filterPattern,
+                    self::REDIS_SCAN_COUNT
+                );
+
+                if (!is_array($keys)) {
+                    break;
+                }
+
+                $callNum += count($keys);
+                if ($redisScanIterator === 0) {
+                    break;
+                }
+            }
+
+            $redisClient->close();
+        } catch (\Exception $e) {
+            $classMethod = substr(
+                __METHOD__,
+                (int) strrpos(__METHOD__, '\\') + 1
+            );
+
+            $erroMsg = sprintf(
+                '%s(%s): %s',
+                $classMethod,
+                $filterPattern,
+                $e->getMessage()
+            );
+
+            $this
+                ->logger
+                ->error(
+                    $erroMsg
+                );
         }
 
-        return $response->result;
+        return $callNum;
     }
 
     public function isCgrEnabled(): bool
