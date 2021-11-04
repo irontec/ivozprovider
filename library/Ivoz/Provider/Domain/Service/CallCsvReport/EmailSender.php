@@ -55,6 +55,10 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
             ->callCsvNotificationTemplateByCallCsvReport
             ->execute($callCsvReport);
 
+        if (!$notificationTemplateContent) {
+            return;
+        }
+
         $fromName = $notificationTemplateContent->getFromName();
         $fromAddress = $notificationTemplateContent->getFromAddress();
         $bodyType = $notificationTemplateContent->getBodyType();

@@ -25,14 +25,20 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
         parent::__construct($registry, NotificationTemplate::class);
     }
 
-    /**
-     * @return null | NotificationTemplateInterface
-     */
-    public function findCallCsvTemplateByCallCsvReport(CallCsvReportInterface $callCsvReport)
+    public function findCallCsvTemplateByCallCsvReport(CallCsvReportInterface $callCsvReport): NotificationTemplateInterface
     {
         $template = $this->getNotificationTemplateByReport($callCsvReport);
         $company = $callCsvReport->getCompany();
         $brand = $callCsvReport->getBrand();
+
+        if (!$company && !$brand) {
+            /**
+             * @todo remove this as soon as brand is required in database schema
+             */
+            throw new \Exception(
+                'Either brand or company are required'
+            );
+        }
 
         $language = $company
             ? $company->getLanguage()
@@ -54,11 +60,7 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
         return $response;
     }
 
-    /**
-     * @param CallCsvReportInterface $callCsvReport
-     * @return NotificationTemplateInterface | null
-     */
-    private function getNotificationTemplateByReport(CallCsvReportInterface $callCsvReport)
+    private function getNotificationTemplateByReport(CallCsvReportInterface $callCsvReport): ?NotificationTemplateInterface
     {
         $company = $callCsvReport->getCompany();
         if ($company) {
@@ -80,13 +82,9 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
         return $scheduler->getCallCsvNotificationTemplate();
     }
 
-    /**
-     * @param CompanyInterface $company
-     * @return NotificationTemplateInterface
-     */
     public function findInvoiceNotificationTemplateByCompany(
         CompanyInterface $company
-    ) {
+    ): NotificationTemplateInterface {
         $language = $company->getLanguage();
         $invoiceNotificationTemplate = $company->getInvoiceNotificationTemplate();
 
@@ -106,10 +104,7 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
         return $response;
     }
 
-    /**
-     * @return null | NotificationTemplateInterface
-     */
-    public function findFaxTemplateByCompany(CompanyInterface $company)
+    public function findFaxTemplateByCompany(CompanyInterface $company): NotificationTemplateInterface
     {
         $language = $company->getLanguage();
         $faxNotificationTemplate = $company->getFaxNotificationTemplate();
@@ -140,10 +135,7 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
         return $response;
     }
 
-    /**
-     * @return null | NotificationTemplateInterface
-     */
-    public function findMaxDailyUsageTemplateByCompany(CompanyInterface $company)
+    public function findMaxDailyUsageTemplateByCompany(CompanyInterface $company): NotificationTemplateInterface
     {
         $notificationTemplate = $company->getMaxDailyUsageNotificationTemplate();
         if (!$notificationTemplate) {
@@ -170,13 +162,10 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
         return $response;
     }
 
-    /**
-     * @return null | NotificationTemplateInterface
-     */
     public function findVoicemailTemplateByCompany(
         CompanyInterface $company,
         LanguageInterface $language
-    ) {
+    ): NotificationTemplateInterface {
         // Get Company Notification Template for voicemails
         $notificationTemplate = $company->getVoicemailNotificationTemplate();
         if ($notificationTemplate) {
@@ -203,26 +192,25 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
         return $response;
     }
 
-    /**
-     * @inheritdoc
-     * @see NotificationTemplateRepository::findTemplateByBalanceNotification
-     */
     public function findTemplateByBalanceNotification(
         BalanceNotificationInterface $balanceNotification,
         LanguageInterface $language
-    ) {
+    ): NotificationTemplateInterface {
         $notificationTemplate = $balanceNotification->getNotificationTemplate();
         if ($notificationTemplate) {
-            //make sure we've contents for required language,
-            // use default notification template otherwise
+            // make sure we've contents for required language,
             if ($notificationTemplate->getContentsByLanguage($language)) {
                 return $notificationTemplate;
             }
         }
 
-        return $this->findOneBy([
+        // return default notification template
+        /** @var NotificationTemplateInterface $response */
+        $response = $this->findOneBy([
             'brand' => null,
             'type' => 'lowbalance'
         ]);
+
+        return $response;
     }
 }

@@ -131,11 +131,6 @@ parameters:
 			path: src/Agi/Action/FaxReceiveStatusAction.php
 
 		-
-			message: "#^Cannot call method getContentsByLanguage\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateInterface\\|null\\.$#"
-			count: 2
-			path: src/Agi/Action/FaxReceiveStatusAction.php
-
-		-
 			message: "#^Cannot call method getFromAddress\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
 			count: 1
 			path: src/Agi/Action/FaxReceiveStatusAction.php
@@ -1468,11 +1463,6 @@ parameters:
 		-
 			message: "#^Cannot call method getBodyType\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
 			count: 1
-			path: src/Voicemail/Sender.php
-
-		-
-			message: "#^Cannot call method getContentsByLanguage\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateInterface\\|null\\.$#"
-			count: 2
 			path: src/Voicemail/Sender.php
 
 		-

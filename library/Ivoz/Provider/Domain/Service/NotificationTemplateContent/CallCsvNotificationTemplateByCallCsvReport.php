@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Domain\Service\NotificationTemplateContent;
 
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
-use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
+use Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface;
 
 class CallCsvNotificationTemplateByCallCsvReport
 {
@@ -13,11 +13,7 @@ class CallCsvNotificationTemplateByCallCsvReport
     ) {
     }
 
-    /**
-     * @param CallCsvReportInterface $callCsvReport
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface
-     */
-    public function execute(CallCsvReportInterface $callCsvReport)
+    public function execute(CallCsvReportInterface $callCsvReport): ?NotificationTemplateContentInterface
     {
         $company = $callCsvReport->getCompany();
         $brand = $callCsvReport->getBrand();

@@ -11,35 +11,15 @@ use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 
 interface NotificationTemplateRepository extends ObjectRepository, Selectable
 {
-    /**
-     * @return null | NotificationTemplateInterface
-     */
-    public function findCallCsvTemplateByCallCsvReport(CallCsvReportInterface $callCsvReport);
+    public function findCallCsvTemplateByCallCsvReport(CallCsvReportInterface $callCsvReport): NotificationTemplateInterface;
 
-    /**
-     * @return null | NotificationTemplateInterface
-     */
-    public function findInvoiceNotificationTemplateByCompany(CompanyInterface $company);
+    public function findInvoiceNotificationTemplateByCompany(CompanyInterface $company): NotificationTemplateInterface;
 
-    /**
-     * @return null | NotificationTemplateInterface
-     */
-    public function findFaxTemplateByCompany(CompanyInterface $company);
+    public function findFaxTemplateByCompany(CompanyInterface $company): NotificationTemplateInterface;
 
-    /**
-     * @return null | NotificationTemplateInterface
-     */
-    public function findMaxDailyUsageTemplateByCompany(CompanyInterface $company);
+    public function findMaxDailyUsageTemplateByCompany(CompanyInterface $company): NotificationTemplateInterface;
 
-    /**
-     * @return null | NotificationTemplateInterface
-     */
-    public function findVoicemailTemplateByCompany(CompanyInterface $company, LanguageInterface $language);
+    public function findVoicemailTemplateByCompany(CompanyInterface $company, LanguageInterface $language): NotificationTemplateInterface;
 
-    /**
-     * @param BalanceNotificationInterface $balanceNotification
-     * @param LanguageInterface $language
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface|null|object
-     */
-    public function findTemplateByBalanceNotification(BalanceNotificationInterface $balanceNotification, LanguageInterface $language);
+    public function findTemplateByBalanceNotification(BalanceNotificationInterface $balanceNotification, LanguageInterface $language): NotificationTemplateInterface;
 }

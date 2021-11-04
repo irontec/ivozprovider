@@ -57,10 +57,6 @@ class SearchBrokenMaxDailyUsage implements CompanyLifecycleEventHandlerInterface
             ->notificationTemplateRepository
             ->findMaxDailyUsageTemplateByCompany($company);
 
-        if (!$notificationTemplate) {
-            return;
-        }
-
         $this
             ->notifyMaxDailyUsage
             ->send(

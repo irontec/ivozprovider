@@ -6,6 +6,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
+use Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface;
 
 class EmailSender implements InvoiceLifecycleEventHandlerInterface
 {
@@ -38,6 +39,10 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
         }
 
         $notificationTemplateContent = $this->getNotificationTemplateContent($invoice);
+        if (!$notificationTemplateContent) {
+            return false;
+        }
+
         // Get data from template
         $fromName = $notificationTemplateContent->getFromName();
         $fromAddress = $notificationTemplateContent->getFromAddress();
@@ -100,11 +105,7 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
         return $email;
     }
 
-    /**
-     * @param InvoiceInterface $invoice
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface
-     */
-    private function getNotificationTemplateContent(InvoiceInterface $invoice)
+    private function getNotificationTemplateContent(InvoiceInterface $invoice): ?NotificationTemplateContentInterface
     {
         $company = $invoice->getCompany();
 

@@ -33731,11 +33731,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/BalanceNotification/NotifyBrokenThreshold.php
 
 		-
-			message: "#^Parameter \\#1 \\$language of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateInterface\\:\\:getContentsByLanguage\\(\\) expects Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageInterface, Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageInterface\\|null given\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/BalanceNotification/NotifyBrokenThreshold.php
-
-		-
 			message: "#^Parameter \\#1 \\$toAddress of method Ivoz\\\\Core\\\\Domain\\\\Model\\\\Mailer\\\\Message\\:\\:setToAddress\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/BalanceNotification/NotifyBrokenThreshold.php
@@ -34851,11 +34846,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Invoice/CreateByScheduler.php
 
 		-
-			message: "#^Cannot call method getContentsByLanguage\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateInterface\\|null\\.$#"
-			count: 2
-			path: Ivoz/Provider/Domain/Service/Invoice/EmailSender.php
-
-		-
 			message: "#^Cannot call method getTz\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Invoice/EmailSender.php
@@ -34863,16 +34853,6 @@ parameters:
 		-
 			message: "#^Cannot call method setTimezone\\(\\) on DateTime\\|DateTimeImmutable\\|null\\.$#"
 			count: 2
-			path: Ivoz/Provider/Domain/Service/Invoice/EmailSender.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\EmailSender\\:\\:execute\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Invoice/EmailSender.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\EmailSender\\:\\:getNotificationTemplateContent\\(\\) should return Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface but returns Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
-			count: 1
 			path: Ivoz/Provider/Domain/Service/Invoice/EmailSender.php
 
 		-
@@ -35141,17 +35121,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/MusicOnHold/SendRecodingOrder.php
 
 		-
-			message: "#^Cannot call method getContentsByLanguage\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/NotificationTemplateContent/CallCsvNotificationTemplateByCallCsvReport.php
-
-		-
 			message: "#^Cannot call method getLanguage\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/NotificationTemplateContent/CallCsvNotificationTemplateByCallCsvReport.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\NotificationTemplateContent\\\\CallCsvNotificationTemplateByCallCsvReport\\:\\:execute\\(\\) should return Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface but returns Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/NotificationTemplateContent/CallCsvNotificationTemplateByCallCsvReport.php
 
