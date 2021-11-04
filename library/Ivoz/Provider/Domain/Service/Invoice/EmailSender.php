@@ -31,7 +31,7 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(InvoiceInterface $invoice)
+    public function execute(InvoiceInterface $invoice): false|int
     {
         $targetEmail = $this->getTargetEmail($invoice);
         if (!$targetEmail) {
@@ -75,7 +75,9 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
             ->attach($pdf);
 
         // Send the email
-        $this->mailer->send($mail);
+        $successfulRecipients = $this->mailer->send($mail);
+
+        return $successfulRecipients;
     }
 
     /**

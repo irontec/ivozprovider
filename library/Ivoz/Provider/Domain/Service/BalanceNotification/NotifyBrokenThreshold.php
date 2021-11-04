@@ -58,7 +58,6 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
 
         $language = $balanceNotification->getLanguage();
 
-        /** @var NotificationTemplateInterface $notificationTemplate */
         $notificationTemplate = $this
             ->notificationTemplateRepository
             ->findTemplateByBalanceNotification(

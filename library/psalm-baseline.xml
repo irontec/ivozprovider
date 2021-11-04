@@ -23134,9 +23134,8 @@
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$domainEvent</code>
     </MoreSpecificImplementedParamType>
-    <PossiblyNullArgument occurrences="4">
+    <PossiblyNullArgument occurrences="3">
       <code>$balanceNotification-&gt;getToAddress()</code>
-      <code>$language</code>
       <code>$notificationContent-&gt;getFromAddress()</code>
       <code>$notificationContent-&gt;getFromName()</code>
     </PossiblyNullArgument>
@@ -24176,15 +24175,6 @@
     <InvalidArgument occurrences="1">
       <code>array_values($substitution)</code>
     </InvalidArgument>
-    <InvalidNullableReturnType occurrences="1">
-      <code>\Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface</code>
-    </InvalidNullableReturnType>
-    <MissingReturnType occurrences="1">
-      <code>execute</code>
-    </MissingReturnType>
-    <NullableReturnStatement occurrences="1">
-      <code>$notificationTemplateContent</code>
-    </NullableReturnStatement>
     <PossiblyNullArgument occurrences="2">
       <code>$fromAddress</code>
       <code>$invoiceDto-&gt;getPdfBaseName()</code>
@@ -24400,14 +24390,6 @@
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
-  </file>
-  <file src="Ivoz/Provider/Domain/Service/NotificationTemplateContent/CallCsvNotificationTemplateByCallCsvReport.php">
-    <InvalidNullableReturnType occurrences="1">
-      <code>\Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface</code>
-    </InvalidNullableReturnType>
-    <NullableReturnStatement occurrences="1">
-      <code>$notificationTemplateContent</code>
-    </NullableReturnStatement>
   </file>
   <file src="Ivoz/Provider/Domain/Service/OutgoingRouting/OutgoingRoutingLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
@@ -25412,12 +25394,6 @@
     <MixedReturnStatement occurrences="1">
       <code>$qb-&gt;getQuery()-&gt;getOneOrNullResult()</code>
     </MixedReturnStatement>
-  </file>
-  <file src="Ivoz/Provider/Infrastructure/Persistence/Doctrine/NotificationTemplateDoctrineRepository.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>findTemplateByBalanceNotification</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Infrastructure/Persistence/Doctrine/OutgoingRoutingDoctrineRepository.php">
     <MixedArgument occurrences="1">
