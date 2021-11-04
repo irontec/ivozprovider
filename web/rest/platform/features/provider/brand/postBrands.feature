@@ -22,7 +22,8 @@ Feature: Manage brands
           "country": "Spain",
           "registryData": "registryData"
         },
-        "defaultTimezone": 145
+        "defaultTimezone": 145,
+        "language": 1
       }
     """
     Then the response status code should be 201
@@ -49,7 +50,16 @@ Feature: Manage brands
               "country": "Spain",
               "registryData": "registryData"
           },
-          "language": null,
+          "language": {
+              "iden": "es",
+              "id": 1,
+              "name": {
+                  "en": "es",
+                  "es": "es",
+                  "ca": "es",
+                  "it": "es"
+              }
+          },
           "defaultTimezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",
@@ -94,7 +104,16 @@ Feature: Manage brands
               "country": "Spain",
               "registryData": "registryData"
           },
-          "language": null,
+          "language": {
+              "iden": "es",
+              "id": 1,
+              "name": {
+                  "en": "es",
+                  "es": "es",
+                  "ca": "es",
+                  "it": "es"
+              }
+          },
           "defaultTimezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",
@@ -136,6 +155,7 @@ Content-Disposition: form-data; name="brand"
           "registryData": "registryData"
         },
         "defaultTimezone": 145,
+        "language": 1,
         "features": [1]
       }
 ----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
@@ -170,7 +190,16 @@ This is file content
               "country": "Spain",
               "registryData": "registryData"
           },
-          "language": null,
+          "language": {
+              "iden": "es",
+              "id": 1,
+              "name": {
+                  "en": "es",
+                  "es": "es",
+                  "ca": "es",
+                  "it": "es"
+              }
+          },
           "defaultTimezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",

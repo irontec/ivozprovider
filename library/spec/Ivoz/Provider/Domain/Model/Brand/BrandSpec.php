@@ -59,7 +59,14 @@ class BrandSpec extends ObjectBehavior
     protected function prepareExecution()
     {
         $this->domain =  $this->getTestDouble(DomainInterface::class);
+
+        $languageDto = new LanguageDto();
         $this->language =  $this->getTestDouble(LanguageInterface::class);
+        $this->getterProphecy(
+            $this->language,
+            ['getIden' => 'en'],
+            false
+        );
 
         $timezoneDto = new TimezoneDto();
         $this->timezone = $this->getTestDouble(TimezoneInterface::class);
@@ -76,10 +83,12 @@ class BrandSpec extends ObjectBehavior
             ->setInvoiceProvince('')
             ->setInvoiceCountry('')
             ->setInvoiceRegistryData('')
-            ->setDefaultTimezone($timezoneDto);
+            ->setDefaultTimezone($timezoneDto)
+            ->setLanguage($languageDto);
 
         $this->transformer->appendFixedTransforms([
-            [$timezoneDto, $this->timezone->reveal()]
+            [$timezoneDto, $this->timezone->reveal()],
+            [$languageDto, $this->language->reveal()],
         ]);
     }
 

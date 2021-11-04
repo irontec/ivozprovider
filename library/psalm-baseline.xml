@@ -7658,7 +7658,8 @@
     <PossiblyNullOperand occurrences="1">
       <code>$this-&gt;getRecordingsLimitMB()</code>
     </PossiblyNullOperand>
-    <PropertyNotSetInConstructor occurrences="2">
+    <PropertyNotSetInConstructor occurrences="3">
+      <code>Brand</code>
       <code>Brand</code>
       <code>Brand</code>
     </PropertyNotSetInConstructor>
@@ -7741,8 +7742,9 @@
       <code>$dto-&gt;getName()</code>
       <code>$dto-&gt;getName()</code>
     </PossiblyNullArgument>
-    <PropertyNotSetInConstructor occurrences="1">
+    <PropertyNotSetInConstructor occurrences="2">
       <code>$defaultTimezone</code>
+      <code>$language</code>
     </PropertyNotSetInConstructor>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
@@ -24183,9 +24185,7 @@
     <NullableReturnStatement occurrences="1">
       <code>$notificationTemplateContent</code>
     </NullableReturnStatement>
-    <PossiblyNullArgument occurrences="4">
-      <code>$company-&gt;getLanguage()</code>
-      <code>$company-&gt;getLanguage()</code>
+    <PossiblyNullArgument occurrences="2">
       <code>$fromAddress</code>
       <code>$invoiceDto-&gt;getPdfBaseName()</code>
     </PossiblyNullArgument>
@@ -24374,9 +24374,8 @@
     </MixedArrayAssignment>
   </file>
   <file src="Ivoz/Provider/Domain/Service/MaxUsageNotification/NotifyMaxDailyUsage.php">
-    <PossiblyNullArgument occurrences="4">
+    <PossiblyNullArgument occurrences="3">
       <code>$company-&gt;getMaxDailyUsageEmail()</code>
-      <code>$language</code>
       <code>$notificationTemplateContent-&gt;getFromAddress()</code>
       <code>$notificationTemplateContent-&gt;getFromName()</code>
     </PossiblyNullArgument>
@@ -24409,9 +24408,6 @@
     <NullableReturnStatement occurrences="1">
       <code>$notificationTemplateContent</code>
     </NullableReturnStatement>
-    <PossiblyNullArgument occurrences="1">
-      <code>$language</code>
-    </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Service/OutgoingRouting/OutgoingRoutingLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
