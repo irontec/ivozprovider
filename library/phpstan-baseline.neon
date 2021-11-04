@@ -11216,11 +11216,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Brand/BrandAbstract.php
 
 		-
-			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandAbstract.php
-
-		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateInterface\\|null\\.$#"
 			count: 5
 			path: Ivoz/Provider/Domain/Model/Brand/BrandAbstract.php
@@ -32766,11 +32761,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/User/User.php
 
 		-
-			message: "#^Cannot call method getIden\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/User.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\User\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/User/User.php
@@ -35117,11 +35107,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$fromName of method Ivoz\\\\Core\\\\Domain\\\\Model\\\\Mailer\\\\Message\\:\\:setFromName\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/MaxUsageNotification/NotifyMaxDailyUsage.php
-
-		-
-			message: "#^Parameter \\#1 \\$language of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateInterface\\:\\:getContentsByLanguage\\(\\) expects Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageInterface, Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageInterface\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/MaxUsageNotification/NotifyMaxDailyUsage.php
 

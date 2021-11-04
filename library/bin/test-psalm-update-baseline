@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pushd /opt/irontec/ivozprovider/library/bin
+  ./test-psalm --update-baseline
+popd
