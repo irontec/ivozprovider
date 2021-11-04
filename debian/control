@@ -228,7 +228,7 @@ Description: IVOZ Provider - Rest API files
 Package: ivozprovider-common-library
 Architecture: all
 Section: php
-Depends: php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, acl, klear-library, php-mailparse, php7.0-intl, php7.0-igbinary
+Depends: php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, acl, klear-library, php-mailparse, php7.0-intl, php7.0-igbinary, php-redis
 Provides: ivozprovider-data-library
 Conflicts: ivozprovider-data-library
 Priority: optional
@@ -273,7 +273,7 @@ Description: IVOZ Provider - Rating updater - Symfony microservice
 Package: ivozprovider-realtime
 Architecture: all
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), php-redis, php-swoole
+Depends: ivozprovider-common-library (=${binary:Version}), php-swoole
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Realtime Websocket server - Symfony microservice
   .

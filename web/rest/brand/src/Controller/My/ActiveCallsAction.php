@@ -73,6 +73,7 @@ class ActiveCallsAction
         $activeCalls = $this
             ->trunksClient
             ->getCompanyActiveCalls(
+                $brand->getId(),
                 intval($companyId)
             );
 
