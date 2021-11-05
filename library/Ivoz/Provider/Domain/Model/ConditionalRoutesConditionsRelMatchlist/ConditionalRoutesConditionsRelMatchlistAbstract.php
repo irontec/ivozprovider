@@ -162,7 +162,6 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     {
         $this->condition = $condition;
 
-        /** @var  $this */
         return $this;
     }
 

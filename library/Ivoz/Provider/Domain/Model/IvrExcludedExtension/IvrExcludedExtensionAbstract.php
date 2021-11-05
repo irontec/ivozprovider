@@ -162,7 +162,6 @@ abstract class IvrExcludedExtensionAbstract
     {
         $this->ivr = $ivr;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -195,7 +195,6 @@ abstract class DdiProviderAddressAbstract
     {
         $this->ddiProvider = $ddiProvider;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -162,7 +162,6 @@ abstract class FeaturesRelBrandAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 

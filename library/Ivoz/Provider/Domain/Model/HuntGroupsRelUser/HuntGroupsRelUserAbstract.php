@@ -265,7 +265,6 @@ abstract class HuntGroupsRelUserAbstract
     {
         $this->huntGroup = $huntGroup;
 
-        /** @var  $this */
         return $this;
     }
 

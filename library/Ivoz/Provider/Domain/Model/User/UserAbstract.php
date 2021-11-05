@@ -711,7 +711,6 @@ abstract class UserAbstract
     {
         $this->terminal = $terminal;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -724,7 +723,6 @@ abstract class UserAbstract
     {
         $this->extension = $extension;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -261,7 +261,6 @@ abstract class TrunksAddressAbstract
     {
         $this->ddiProviderAddress = $ddiProviderAddress;
 
-        /** @var  $this */
         return $this;
     }
 

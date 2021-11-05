@@ -268,7 +268,6 @@ abstract class MatchListPatternAbstract
     {
         $this->matchList = $matchList;
 
-        /** @var  $this */
         return $this;
     }
 

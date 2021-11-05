@@ -917,7 +917,6 @@ abstract class CompanyAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 

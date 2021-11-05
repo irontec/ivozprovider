@@ -162,7 +162,6 @@ abstract class ProxyTrunksRelBrandAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 

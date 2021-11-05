@@ -163,7 +163,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     {
         $this->routingPattern = $routingPattern;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -176,7 +175,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     {
         $this->routingPatternGroup = $routingPatternGroup;
 
-        /** @var  $this */
         return $this;
     }
 

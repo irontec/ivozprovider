@@ -185,7 +185,6 @@ abstract class BrandServiceAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 

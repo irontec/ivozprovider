@@ -126,7 +126,6 @@ trait DestinationRateTrait
     {
         $this->tpRate = $tpRate;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -139,7 +138,6 @@ trait DestinationRateTrait
     {
         $this->tpDestinationRate = $tpDestinationRate;
 
-        /** @var  $this */
         return $this;
     }
 

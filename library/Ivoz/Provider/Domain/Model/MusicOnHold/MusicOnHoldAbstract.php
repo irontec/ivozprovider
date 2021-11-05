@@ -309,7 +309,6 @@ abstract class MusicOnHoldAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -322,7 +321,6 @@ abstract class MusicOnHoldAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 

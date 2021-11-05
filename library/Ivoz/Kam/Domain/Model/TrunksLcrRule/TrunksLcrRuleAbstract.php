@@ -341,7 +341,6 @@ abstract class TrunksLcrRuleAbstract
     {
         $this->routingPattern = $routingPattern;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -366,7 +365,6 @@ abstract class TrunksLcrRuleAbstract
     {
         $this->outgoingRouting = $outgoingRouting;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -196,7 +196,6 @@ abstract class FriendsPatternAbstract
     {
         $this->friend = $friend;
 
-        /** @var  $this */
         return $this;
     }
 

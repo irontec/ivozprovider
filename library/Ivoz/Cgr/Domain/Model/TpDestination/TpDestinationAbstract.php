@@ -255,7 +255,6 @@ abstract class TpDestinationAbstract
     {
         $this->destination = $destination;
 
-        /** @var  $this */
         return $this;
     }
 

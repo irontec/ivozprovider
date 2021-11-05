@@ -216,7 +216,6 @@ abstract class CallAclRelMatchListAbstract
     {
         $this->callAcl = $callAcl;
 
-        /** @var  $this */
         return $this;
     }
 

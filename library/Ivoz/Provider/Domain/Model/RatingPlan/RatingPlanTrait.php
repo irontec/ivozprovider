@@ -126,7 +126,6 @@ trait RatingPlanTrait
     {
         $this->tpTiming = $tpTiming;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -139,7 +138,6 @@ trait RatingPlanTrait
     {
         $this->tpRatingPlan = $tpRatingPlan;
 
-        /** @var  $this */
         return $this;
     }
 

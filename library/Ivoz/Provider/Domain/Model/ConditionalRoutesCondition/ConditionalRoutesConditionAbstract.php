@@ -353,7 +353,6 @@ abstract class ConditionalRoutesConditionAbstract
     {
         $this->conditionalRoute = $conditionalRoute;
 
-        /** @var  $this */
         return $this;
     }
 

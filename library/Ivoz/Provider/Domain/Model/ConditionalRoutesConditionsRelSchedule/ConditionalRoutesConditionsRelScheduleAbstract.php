@@ -162,7 +162,6 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     {
         $this->condition = $condition;
 
-        /** @var  $this */
         return $this;
     }
 

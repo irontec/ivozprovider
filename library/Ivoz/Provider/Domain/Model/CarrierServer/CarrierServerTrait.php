@@ -103,7 +103,6 @@ trait CarrierServerTrait
     {
         $this->lcrGateway = $lcrGateway;
 
-        /** @var  $this */
         return $this;
     }
 

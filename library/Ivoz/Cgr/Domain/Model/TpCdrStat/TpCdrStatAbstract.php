@@ -807,7 +807,6 @@ abstract class TpCdrStatAbstract
     {
         $this->carrier = $carrier;
 
-        /** @var  $this */
         return $this;
     }
 

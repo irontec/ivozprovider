@@ -334,7 +334,6 @@ abstract class ExtensionAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 

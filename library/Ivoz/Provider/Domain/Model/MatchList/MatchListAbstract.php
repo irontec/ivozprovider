@@ -185,7 +185,6 @@ abstract class MatchListAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 

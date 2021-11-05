@@ -426,7 +426,6 @@ abstract class TrunksLcrGatewayAbstract
     {
         $this->carrierServer = $carrierServer;
 
-        /** @var  $this */
         return $this;
     }
 

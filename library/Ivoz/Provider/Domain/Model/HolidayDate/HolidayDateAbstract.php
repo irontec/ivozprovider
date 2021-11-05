@@ -363,7 +363,6 @@ abstract class HolidayDateAbstract
     {
         $this->calendar = $calendar;
 
-        /** @var  $this */
         return $this;
     }
 

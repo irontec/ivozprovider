@@ -192,7 +192,6 @@ abstract class QueueMemberAbstract
     {
         $this->user = $user;
 
-        /** @var  $this */
         return $this;
     }
 

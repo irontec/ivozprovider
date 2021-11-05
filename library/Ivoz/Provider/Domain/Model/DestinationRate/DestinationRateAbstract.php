@@ -251,7 +251,6 @@ abstract class DestinationRateAbstract
     {
         $this->destinationRateGroup = $destinationRateGroup;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -264,7 +263,6 @@ abstract class DestinationRateAbstract
     {
         $this->destination = $destination;
 
-        /** @var  $this */
         return $this;
     }
 

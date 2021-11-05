@@ -433,7 +433,6 @@ abstract class TpRatingProfileAbstract
     {
         $this->ratingProfile = $ratingProfile;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -446,7 +445,6 @@ abstract class TpRatingProfileAbstract
     {
         $this->outgoingRoutingRelCarrier = $outgoingRoutingRelCarrier;
 
-        /** @var  $this */
         return $this;
     }
 

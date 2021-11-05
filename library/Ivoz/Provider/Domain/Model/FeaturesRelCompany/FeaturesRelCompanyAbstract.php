@@ -162,7 +162,6 @@ abstract class FeaturesRelCompanyAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 

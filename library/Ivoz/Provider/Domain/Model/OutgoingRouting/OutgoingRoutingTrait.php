@@ -178,7 +178,6 @@ trait OutgoingRoutingTrait
     {
         $this->tpLcrRule = $tpLcrRule;
 
-        /** @var  $this */
         return $this;
     }
 

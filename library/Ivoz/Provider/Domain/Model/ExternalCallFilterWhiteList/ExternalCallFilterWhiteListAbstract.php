@@ -162,7 +162,6 @@ abstract class ExternalCallFilterWhiteListAbstract
     {
         $this->filter = $filter;
 
-        /** @var  $this */
         return $this;
     }
 

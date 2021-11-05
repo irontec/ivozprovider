@@ -176,7 +176,6 @@ trait RetailAccountTrait
     {
         $this->psEndpoint = $psEndpoint;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -189,7 +188,6 @@ trait RetailAccountTrait
     {
         $this->psIdentify = $psIdentify;
 
-        /** @var  $this */
         return $this;
     }
 

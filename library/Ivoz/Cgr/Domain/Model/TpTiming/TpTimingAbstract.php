@@ -349,7 +349,6 @@ abstract class TpTimingAbstract
     {
         $this->ratingPlan = $ratingPlan;
 
-        /** @var  $this */
         return $this;
     }
 

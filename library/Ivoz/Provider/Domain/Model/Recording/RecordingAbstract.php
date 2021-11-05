@@ -370,7 +370,6 @@ abstract class RecordingAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 

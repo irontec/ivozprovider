@@ -471,7 +471,6 @@ abstract class CarrierServerAbstract
     {
         $this->carrier = $carrier;
 
-        /** @var  $this */
         return $this;
     }
 

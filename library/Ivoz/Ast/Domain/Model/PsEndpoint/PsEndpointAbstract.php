@@ -686,7 +686,6 @@ abstract class PsEndpointAbstract
     {
         $this->terminal = $terminal;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -699,7 +698,6 @@ abstract class PsEndpointAbstract
     {
         $this->friend = $friend;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -712,7 +710,6 @@ abstract class PsEndpointAbstract
     {
         $this->residentialDevice = $residentialDevice;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -725,7 +722,6 @@ abstract class PsEndpointAbstract
     {
         $this->retailAccount = $retailAccount;
 
-        /** @var  $this */
         return $this;
     }
 

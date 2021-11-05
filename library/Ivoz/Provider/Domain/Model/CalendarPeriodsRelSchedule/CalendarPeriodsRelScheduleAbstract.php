@@ -162,7 +162,6 @@ abstract class CalendarPeriodsRelScheduleAbstract
     {
         $this->calendarPeriod = $calendarPeriod;
 
-        /** @var  $this */
         return $this;
     }
 
