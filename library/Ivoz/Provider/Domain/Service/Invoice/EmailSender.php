@@ -6,6 +6,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
+use Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface;
 
 class EmailSender implements InvoiceLifecycleEventHandlerInterface
 {
@@ -30,7 +31,7 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(InvoiceInterface $invoice)
+    public function execute(InvoiceInterface $invoice): false|int
     {
         $targetEmail = $this->getTargetEmail($invoice);
         if (!$targetEmail) {
@@ -38,6 +39,10 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
         }
 
         $notificationTemplateContent = $this->getNotificationTemplateContent($invoice);
+        if (!$notificationTemplateContent) {
+            return false;
+        }
+
         // Get data from template
         $fromName = $notificationTemplateContent->getFromName();
         $fromAddress = $notificationTemplateContent->getFromAddress();
@@ -70,7 +75,9 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
             ->attach($pdf);
 
         // Send the email
-        $this->mailer->send($mail);
+        $successfulRecipients = $this->mailer->send($mail);
+
+        return $successfulRecipients;
     }
 
     /**
@@ -100,44 +107,18 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
         return $email;
     }
 
-    /**
-     * @param InvoiceInterface $invoice
-     * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface
-     */
-    private function getNotificationTemplateContent(InvoiceInterface $invoice)
+    private function getNotificationTemplateContent(InvoiceInterface $invoice): ?NotificationTemplateContentInterface
     {
         $company = $invoice->getCompany();
-        $brand = $company->getBrand();
 
-        // Get Company Notification Template for invoices
-        $invoiceNotificationTemplate = $company->getInvoiceNotificationTemplate();
-
-        // If company has no template associated, fallback to brand notification template for invoices
-        if (!$invoiceNotificationTemplate) {
-            $invoiceNotificationTemplate = $brand->getInvoiceNotificationTemplate();
-        }
-
-        $genericInvoiceNotificationTemplate = $this->notificationTemplateRepository
-            ->findGenericInvoiceTemplate();
-
-        if (!$invoiceNotificationTemplate) {
-            // Get Generic Notification Template
-            $invoiceNotificationTemplate = $genericInvoiceNotificationTemplate;
-        }
+        $invoiceNotificationTemplate = $this
+            ->notificationTemplateRepository
+            ->findInvoiceNotificationTemplateByCompany($company);
 
         // Get Notification contents for required language
-        $notificationTemplateContent = $invoiceNotificationTemplate->getContentsByLanguage(
+        return $invoiceNotificationTemplate->getContentsByLanguage(
             $company->getLanguage()
         );
-
-        if (!$notificationTemplateContent) {
-            // Fallback to generic template language content
-            $notificationTemplateContent = $genericInvoiceNotificationTemplate->getContentsByLanguage(
-                $company->getLanguage()
-            );
-        }
-
-        return $notificationTemplateContent;
     }
 
     /**
