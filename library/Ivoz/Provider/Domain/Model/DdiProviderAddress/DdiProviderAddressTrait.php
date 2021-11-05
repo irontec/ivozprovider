@@ -103,7 +103,6 @@ trait DdiProviderAddressTrait
     {
         $this->trunksAddress = $trunksAddress;
 
-        /** @var  $this */
         return $this;
     }
 

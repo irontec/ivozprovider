@@ -299,7 +299,6 @@ abstract class CalendarPeriodAbstract
     {
         $this->calendar = $calendar;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -275,7 +275,6 @@ abstract class TransformationRuleAbstract
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -442,7 +442,6 @@ abstract class TerminalAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -455,7 +454,6 @@ abstract class TerminalAbstract
     {
         $this->domain = $domain;
 
-        /** @var  $this */
         return $this;
     }
 

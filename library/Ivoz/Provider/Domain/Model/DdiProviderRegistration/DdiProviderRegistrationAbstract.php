@@ -349,7 +349,6 @@ abstract class DdiProviderRegistrationAbstract
     {
         $this->ddiProvider = $ddiProvider;
 
-        /** @var  $this */
         return $this;
     }
 

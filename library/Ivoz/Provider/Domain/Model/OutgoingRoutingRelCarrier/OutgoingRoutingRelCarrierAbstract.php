@@ -163,7 +163,6 @@ abstract class OutgoingRoutingRelCarrierAbstract
     {
         $this->outgoingRouting = $outgoingRouting;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -176,7 +175,6 @@ abstract class OutgoingRoutingRelCarrierAbstract
     {
         $this->carrier = $carrier;
 
-        /** @var  $this */
         return $this;
     }
 

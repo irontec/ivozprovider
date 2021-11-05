@@ -307,7 +307,6 @@ abstract class PsIdentifyAbstract
     {
         $this->terminal = $terminal;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -320,7 +319,6 @@ abstract class PsIdentifyAbstract
     {
         $this->friend = $friend;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -333,7 +331,6 @@ abstract class PsIdentifyAbstract
     {
         $this->residentialDevice = $residentialDevice;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -346,7 +343,6 @@ abstract class PsIdentifyAbstract
     {
         $this->retailAccount = $retailAccount;
 
-        /** @var  $this */
         return $this;
     }
 

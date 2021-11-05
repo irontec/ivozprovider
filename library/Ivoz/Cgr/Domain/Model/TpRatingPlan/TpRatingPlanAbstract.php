@@ -303,7 +303,6 @@ abstract class TpRatingPlanAbstract
     {
         $this->ratingPlan = $ratingPlan;
 
-        /** @var  $this */
         return $this;
     }
 

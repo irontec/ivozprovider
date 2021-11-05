@@ -163,7 +163,6 @@ abstract class CompanyRelRoutingTagAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -176,7 +175,6 @@ abstract class CompanyRelRoutingTagAbstract
     {
         $this->routingTag = $routingTag;
 
-        /** @var  $this */
         return $this;
     }
 

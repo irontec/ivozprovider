@@ -162,7 +162,6 @@ abstract class CompanyRelCodecAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 

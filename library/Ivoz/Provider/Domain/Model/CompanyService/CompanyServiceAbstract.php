@@ -185,7 +185,6 @@ abstract class CompanyServiceAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -286,7 +286,6 @@ abstract class IvrEntryAbstract
     {
         $this->ivr = $ivr;
 
-        /** @var  $this */
         return $this;
     }
 

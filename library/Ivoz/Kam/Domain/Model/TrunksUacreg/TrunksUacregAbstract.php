@@ -520,7 +520,6 @@ abstract class TrunksUacregAbstract
     {
         $this->ddiProviderRegistration = $ddiProviderRegistration;
 
-        /** @var  $this */
         return $this;
     }
 

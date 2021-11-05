@@ -707,7 +707,6 @@ abstract class ResidentialDeviceAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -720,7 +719,6 @@ abstract class ResidentialDeviceAbstract
     {
         $this->domain = $domain;
 
-        /** @var  $this */
         return $this;
     }
 

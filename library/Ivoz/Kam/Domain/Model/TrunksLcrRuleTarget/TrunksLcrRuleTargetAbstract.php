@@ -267,7 +267,6 @@ abstract class TrunksLcrRuleTargetAbstract
     {
         $this->outgoingRouting = $outgoingRouting;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -162,7 +162,6 @@ abstract class ExternalCallFilterRelCalendarAbstract
     {
         $this->filter = $filter;
 
-        /** @var  $this */
         return $this;
     }
 

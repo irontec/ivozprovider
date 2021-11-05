@@ -196,7 +196,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
         $this->invoiceScheduler = $invoiceScheduler;
 
-        /** @var  $this */
         return $this;
     }
 

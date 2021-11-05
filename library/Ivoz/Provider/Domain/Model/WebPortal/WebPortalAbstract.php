@@ -319,7 +319,6 @@ abstract class WebPortalAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 

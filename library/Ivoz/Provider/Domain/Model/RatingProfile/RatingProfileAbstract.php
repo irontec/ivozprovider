@@ -220,7 +220,6 @@ abstract class RatingProfileAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -233,7 +232,6 @@ abstract class RatingProfileAbstract
     {
         $this->carrier = $carrier;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -196,7 +196,6 @@ abstract class FixedCostsRelInvoiceAbstract
     {
         $this->invoice = $invoice;
 
-        /** @var  $this */
         return $this;
     }
 

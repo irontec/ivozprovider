@@ -163,7 +163,6 @@ abstract class PickUpRelUserAbstract
     {
         $this->pickUpGroup = $pickUpGroup;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -176,7 +175,6 @@ abstract class PickUpRelUserAbstract
     {
         $this->user = $user;
 
-        /** @var  $this */
         return $this;
     }
 

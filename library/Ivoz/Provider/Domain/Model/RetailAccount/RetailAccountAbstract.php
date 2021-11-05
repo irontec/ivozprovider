@@ -505,7 +505,6 @@ abstract class RetailAccountAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -518,7 +517,6 @@ abstract class RetailAccountAbstract
     {
         $this->domain = $domain;
 
-        /** @var  $this */
         return $this;
     }
 

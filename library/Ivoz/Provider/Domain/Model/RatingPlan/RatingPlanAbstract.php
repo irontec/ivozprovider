@@ -405,7 +405,6 @@ abstract class RatingPlanAbstract
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 
-        /** @var  $this */
         return $this;
     }
 

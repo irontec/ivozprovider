@@ -129,7 +129,6 @@ trait DestinationTrait
     {
         $this->tpDestination = $tpDestination;
 
-        /** @var  $this */
         return $this;
     }
 

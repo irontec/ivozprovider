@@ -408,7 +408,6 @@ abstract class OutgoingRoutingAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -433,7 +432,6 @@ abstract class OutgoingRoutingAbstract
     {
         $this->carrier = $carrier;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -446,7 +444,6 @@ abstract class OutgoingRoutingAbstract
     {
         $this->routingPattern = $routingPattern;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -459,7 +456,6 @@ abstract class OutgoingRoutingAbstract
     {
         $this->routingPatternGroup = $routingPatternGroup;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -472,7 +468,6 @@ abstract class OutgoingRoutingAbstract
     {
         $this->routingTag = $routingTag;
 
-        /** @var  $this */
         return $this;
     }
 

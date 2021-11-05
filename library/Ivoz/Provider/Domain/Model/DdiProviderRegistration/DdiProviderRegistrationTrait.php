@@ -103,7 +103,6 @@ trait DdiProviderRegistrationTrait
     {
         $this->trunksUacreg = $trunksUacreg;
 
-        /** @var  $this */
         return $this;
     }
 

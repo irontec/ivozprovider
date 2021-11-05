@@ -282,7 +282,6 @@ abstract class OutgoingDdiRulesPatternAbstract
     {
         $this->outgoingDdiRule = $outgoingDdiRule;
 
-        /** @var  $this */
         return $this;
     }
 

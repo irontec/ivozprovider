@@ -255,7 +255,6 @@ abstract class AdministratorRelPublicEntityAbstract
     {
         $this->administrator = $administrator;
 
-        /** @var  $this */
         return $this;
     }
 

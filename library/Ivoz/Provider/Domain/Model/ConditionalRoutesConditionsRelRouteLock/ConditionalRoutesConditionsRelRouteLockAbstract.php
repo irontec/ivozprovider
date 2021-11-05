@@ -162,7 +162,6 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     {
         $this->condition = $condition;
 
-        /** @var  $this */
         return $this;
     }
 

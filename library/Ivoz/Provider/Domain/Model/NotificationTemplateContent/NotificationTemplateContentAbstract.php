@@ -284,7 +284,6 @@ abstract class NotificationTemplateContentAbstract
     {
         $this->notificationTemplate = $notificationTemplate;
 
-        /** @var  $this */
         return $this;
     }
 

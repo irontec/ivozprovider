@@ -741,7 +741,6 @@ abstract class FriendAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -754,7 +753,6 @@ abstract class FriendAbstract
     {
         $this->domain = $domain;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -474,7 +474,6 @@ abstract class TpLcrRuleAbstract
     {
         $this->outgoingRouting = $outgoingRouting;
 
-        /** @var  $this */
         return $this;
     }
 

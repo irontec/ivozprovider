@@ -162,7 +162,6 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     {
         $this->condition = $condition;
 
-        /** @var  $this */
         return $this;
     }
 

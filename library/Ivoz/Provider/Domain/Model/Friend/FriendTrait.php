@@ -152,7 +152,6 @@ trait FriendTrait
     {
         $this->psEndpoint = $psEndpoint;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -165,7 +164,6 @@ trait FriendTrait
     {
         $this->psIdentify = $psIdentify;
 
-        /** @var  $this */
         return $this;
     }
 

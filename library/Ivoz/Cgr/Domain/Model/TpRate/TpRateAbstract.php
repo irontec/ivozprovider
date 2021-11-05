@@ -354,7 +354,6 @@ abstract class TpRateAbstract
     {
         $this->destinationRate = $destinationRate;
 
-        /** @var  $this */
         return $this;
     }
 

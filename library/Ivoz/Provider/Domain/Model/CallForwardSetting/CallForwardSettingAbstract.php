@@ -396,7 +396,6 @@ abstract class CallForwardSettingAbstract
     {
         $this->user = $user;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -445,7 +444,6 @@ abstract class CallForwardSettingAbstract
     {
         $this->residentialDevice = $residentialDevice;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -458,7 +456,6 @@ abstract class CallForwardSettingAbstract
     {
         $this->retailAccount = $retailAccount;
 
-        /** @var  $this */
         return $this;
     }
 
