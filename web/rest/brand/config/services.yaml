@@ -26,7 +26,10 @@ services:
 
     Service\UserProvider:
         arguments:
-            $identifierField: 'username'
+            $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+
+    Service\TokenExchangeUserProvider:
+        arguments:
             $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
 
     Service\AuthEndpointDecorator:
@@ -40,7 +43,7 @@ services:
 
     Ivoz\Api\Operation\ExchangeToken:
         arguments:
-            $userProvider: '@Service\UserProvider'
+            $userProvider: '@Service\TokenExchangeUserProvider'
 
     Ivoz\Api\Core\Security\DataAccessControlParser:
         public: true

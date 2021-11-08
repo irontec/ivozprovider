@@ -26,7 +26,6 @@ services:
 
     Service\UserProvider:
         arguments:
-            $identifierField: 'email'
             $entityClass: 'Ivoz\Provider\Domain\Model\User\User'
 
     Service\AuthEndpointDecorator:
