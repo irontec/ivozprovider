@@ -2,6 +2,7 @@
 
 namespace Service;
 
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Ivoz\Provider\Infrastructure\Api\Security\User\MutableUserProviderInterface;
 use Ivoz\Provider\Infrastructure\Api\Security\User\UserProviderTrait;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -17,11 +18,12 @@ class UserProvider implements UserProviderInterface, MutableUserProviderInterfac
      * @param array $criteria
      * @return null | AdministratorInterface
      */
-    protected function findUser(array $criteria)
+    protected function findUser(string $identity): ?AdministratorInterface
     {
-        $admin = $this
-            ->getRepository()
-            ->findOneBy($criteria);
+        /** @var AdministratorRepository $repository */
+        $repository = $this->getRepository();
+
+        $admin = $repository->findClientAdminByUsername($identity);
 
         if ($admin) {
             /**
@@ -44,17 +46,6 @@ class UserProvider implements UserProviderInterface, MutableUserProviderInterfac
     public function setEntityClass(string $class): MutableUserProviderInterface
     {
         $this->entityClass = $class;
-
-        return $this;
-    }
-
-    /**
-     * @param string $identifierField
-     * @return $this
-     */
-    public function setUserIdentityField(string $identifierField): MutableUserProviderInterface
-    {
-        $this->identifierField = $identifierField;
 
         return $this;
     }

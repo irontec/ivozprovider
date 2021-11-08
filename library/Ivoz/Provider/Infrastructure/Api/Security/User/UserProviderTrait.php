@@ -3,11 +3,13 @@
 namespace Ivoz\Provider\Infrastructure\Api\Security\User;
 
 use Doctrine\Persistence\ManagerRegistry;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 trait UserProviderTrait
 {
@@ -16,7 +18,6 @@ trait UserProviderTrait
         private RequestStack $requestStack,
         private LoggerInterface $logger,
         private string $entityClass,
-        private string $identifierField,
         private $managerName = null
     ) {
     }
@@ -27,9 +28,7 @@ trait UserProviderTrait
     public function loadUserByUsername($username)
     {
         try {
-            $user = $this->findUser([
-                $this->identifierField => $username
-            ]);
+            $user = $this->findUser($username);
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage());
             throw $e;
@@ -44,12 +43,12 @@ trait UserProviderTrait
         return $user;
     }
 
-    abstract protected function findUser(array $criteria);
+    abstract protected function findUser(string $identity): null|AdministratorInterface|UserInterface;
 
     /**
      * {@inheritdoc}
      */
-    public function refreshUser(UserInterface $user)
+    public function refreshUser(SymfonyUserInterface $user)
     {
         if (!$user instanceof $this->entityClass) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $user::class));
