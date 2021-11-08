@@ -22,6 +22,9 @@ class BrandAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
+    /**
+     * @return void
+     */
     public function fromDto(
         DataTransferObjectInterface $brandDto,
         EntityInterface $brand,

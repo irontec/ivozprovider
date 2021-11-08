@@ -8,16 +8,20 @@ class FeatureContext extends BaseFeatureContext
 {
     /**
      * @Given I add Brand Authorization header
+     *
+     * @return void
      */
-    public function setBrandAuthorizationHeader()
+    public function setBrandAuthorizationHeader(): void
     {
         $this->setAuthorizationHeader('test_brand_admin');
     }
 
     /**
      * @Given I exchange Brand Authorization header
+     *
+     * @return void
      */
-    public function setBrandAuthorizationHeaderByExchange()
+    public function setBrandAuthorizationHeaderByExchange(): void
     {
         $this->exchangeAuthorizationHeader('admin', 'test_brand_admin');
     }

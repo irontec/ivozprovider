@@ -22,7 +22,10 @@ class CompanyRelRoutingTagDoctrineRepository extends ServiceEntityRepository imp
 
     /**
      * Used by client API access controls
-     * @return int[]
+     *
+     * @return (int|null)[]
+     *
+     * @psalm-return list<int|null>
      */
     public function getRoutingTagIdsByCompany(int $companyId): array
     {

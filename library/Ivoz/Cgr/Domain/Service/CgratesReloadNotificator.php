@@ -27,8 +27,10 @@ abstract class CgratesReloadNotificator implements LifecycleEventHandlerInterfac
     /**
      * @param string $tpid
      * @param bool $disableDestinations
+     *
+     * @return void
      */
-    protected function reload(string $tpid, bool $disableDestinations = true)
+    protected function reload(string $tpid, bool $disableDestinations = true): void
     {
         $this
             ->cgratesReloadJob

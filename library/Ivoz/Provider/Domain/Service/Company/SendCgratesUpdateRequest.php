@@ -53,6 +53,9 @@ class SendCgratesUpdateRequest extends CgratesReloadNotificator implements Compa
             );
     }
 
+    /**
+     * @return void
+     */
     private function sendReloadJob(
         CompanyInterface $company
     ) {

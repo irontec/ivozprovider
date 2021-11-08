@@ -21,6 +21,9 @@ class DestinationRateGroupAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
+    /**
+     * @return void
+     */
     public function fromDto(
         DataTransferObjectInterface $destinationRateGroupDto,
         EntityInterface $destinationRateGroup,

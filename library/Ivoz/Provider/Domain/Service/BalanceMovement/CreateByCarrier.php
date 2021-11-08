@@ -17,7 +17,7 @@ class CreateByCarrier
         CarrierInterface $carrier,
         ?float $amount,
         ?float $balance
-    ) {
+    ): void {
         // Store this transaction in a BalanceMovement
         $balanceMovementDto = BalanceMovement::createDto();
         $balanceMovementDto

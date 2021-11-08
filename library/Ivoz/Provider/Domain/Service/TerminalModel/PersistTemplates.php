@@ -57,7 +57,7 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
     /**
      * @return void
      */
-    protected function createFolder($route)
+    protected function createFolder(string $route)
     {
         $folderExists = $this->fs->exists($route);
         if ($folderExists) {
@@ -71,8 +71,10 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
 
     /**
      * @return void
+     *
+     * @param null|string $template
      */
-    protected function saveFiles($file, $route, $template)
+    protected function saveFiles(string $file, string $route, ?string $template)
     {
         $fileRoute = $route . DIRECTORY_SEPARATOR . $file;
         $fileExists = $this->fs->exists($fileRoute);

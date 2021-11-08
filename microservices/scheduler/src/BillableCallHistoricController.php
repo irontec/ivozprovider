@@ -21,7 +21,7 @@ class BillableCallHistoricController
         $this->requestId = $requestId;
     }
 
-    public function indexAction()
+    public function indexAction(): Response
     {
         try {
             $this->registerCommand('Scheduler', 'billableCallHistoric');

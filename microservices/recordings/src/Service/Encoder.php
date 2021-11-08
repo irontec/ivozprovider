@@ -29,6 +29,9 @@ class Encoder
     ) {
     }
 
+    /**
+     * @return void
+     */
     public function processAction()
     {
         // Store statistics

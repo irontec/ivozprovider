@@ -28,7 +28,7 @@ class ResetCounter
         $this->resetDailyUsageCounters = $resetDailyUsageCounters;
     }
 
-    public function index()
+    public function index(): Response
     {
         $this->registerCommand('reset-counter');
 

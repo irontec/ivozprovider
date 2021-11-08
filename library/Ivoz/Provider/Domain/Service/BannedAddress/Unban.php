@@ -23,6 +23,9 @@ class Unban implements BannedAddressLifecycleEventHandlerInterface
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(BannedAddressInterface $bannedAddress)
     {
         $blockedByAntibruteForce = $bannedAddress->getBlocker() === BannedAddressInterface::BLOCKER_ANTIBRUTEFORCE;

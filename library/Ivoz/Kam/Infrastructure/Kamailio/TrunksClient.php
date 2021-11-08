@@ -223,6 +223,9 @@ class TrunksClient implements TrunksClientInterface
         return $response->result;
     }
 
+    /**
+     * @return bool|int
+     */
     public function isCgrEnabled()
     {
         $response = $this->sendRequest(

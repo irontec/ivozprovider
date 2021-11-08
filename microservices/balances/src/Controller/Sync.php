@@ -32,7 +32,7 @@ class Sync
         $this->syncCarrierBalances = $syncCarrierBalances;
     }
 
-    public function index()
+    public function index(): Response
     {
         $this->registerCommand('sync');
 

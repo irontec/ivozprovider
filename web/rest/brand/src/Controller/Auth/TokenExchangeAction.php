@@ -44,7 +44,7 @@ class TokenExchangeAction
         }
     }
 
-    private function run()
+    private function run(): Token
     {
         /** @var Request $request */
         $request = $this->requestStack->getCurrentRequest();

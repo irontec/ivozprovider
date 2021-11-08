@@ -21,7 +21,7 @@ class CallCsvController
         $this->requestId = $requestId;
     }
 
-    public function indexAction()
+    public function indexAction(): Response
     {
         $errors = [];
         $this->registerCommand('Scheduler', 'callCsv');

@@ -21,7 +21,7 @@ class InvoiceSchedulerController
         $this->requestId = $requestId;
     }
 
-    public function indexAction()
+    public function indexAction(): Response
     {
         $this->registerCommand('Scheduler', 'invoiceScheduler');
         $invoiceSchedulers = $this->invoiceSchedulerRepository->getPendingSchedulers();

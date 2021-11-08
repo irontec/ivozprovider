@@ -34,8 +34,10 @@ class FeatureContext extends BaseFeatureContext
 
     /**
      * @Given I exchange Client Authorization header
+     *
+     * @return void
      */
-    public function setBrandAuthorizationHeaderByExchange()
+    public function setBrandAuthorizationHeaderByExchange(): void
     {
         $this->exchangeAuthorizationHeader('test_brand_admin', 'test_company_admin');
     }
@@ -50,8 +52,10 @@ class FeatureContext extends BaseFeatureContext
 
     /**
      * @BeforeScenario @userApiContext
+     *
+     * @return void
      */
-    public function setUserApiContext(BeforeScenarioScope $scope)
+    public function setUserApiContext(BeforeScenarioScope $scope): void
     {
         /** @var \FriendsOfBehat\SymfonyExtension\Context\Environment\InitializedSymfonyExtensionEnvironment $environment */
         $environment = $scope->getEnvironment();

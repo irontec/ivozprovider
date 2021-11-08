@@ -24,6 +24,9 @@ class SendUsersTrustedPermissionsReloadRequest implements CompanyLifecycleEventH
         ];
     }
 
+    /**
+     * @return void
+     */
     public function execute(CompanyInterface $company)
     {
         $wasRemoved = $company->hasBeenDeleted();

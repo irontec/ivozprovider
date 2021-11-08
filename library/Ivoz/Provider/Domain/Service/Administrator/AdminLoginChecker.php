@@ -9,6 +9,9 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 
 class AdminLoginChecker implements UserCheckerInterface
 {
+    /**
+     * @return void
+     */
     public function checkPreAuth(SymfonyUserInterface $admin)
     {
         if (!$admin instanceof AdministratorInterface) {
@@ -22,6 +25,9 @@ class AdminLoginChecker implements UserCheckerInterface
         }
     }
 
+    /**
+     * @return void
+     */
     public function checkPostAuth(SymfonyUserInterface $user)
     {
     }

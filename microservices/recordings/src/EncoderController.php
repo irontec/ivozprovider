@@ -15,7 +15,7 @@ class EncoderController
     ) {
     }
 
-    public function index()
+    public function index(): JsonResponse
     {
         $this->registerCommand();
 
@@ -28,7 +28,7 @@ class EncoderController
         ]);
     }
 
-    private function registerCommand()
+    private function registerCommand(): void
     {
         $event = new CommandWasExecuted(
             $this->requestId->toString(),

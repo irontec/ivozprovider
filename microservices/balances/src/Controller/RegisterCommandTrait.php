@@ -13,7 +13,7 @@ trait RegisterCommandTrait
     /** @var RequestId */
     protected $requestId;
 
-    private function registerCommand(string $method)
+    private function registerCommand(string $method): void
     {
         $event = new CommandWasExecuted(
             $this->requestId->toString(),

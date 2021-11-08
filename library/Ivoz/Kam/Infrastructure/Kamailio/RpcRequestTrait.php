@@ -66,8 +66,10 @@ trait RpcRequestTrait
 
     /**
      * @param int $timeout
+     *
+     * @return void
      */
-    private function setTimeout(int $timeout)
+    private function setTimeout(int $timeout): void
     {
         (function () use ($timeout): void {
 
