@@ -49,7 +49,7 @@ class UpdateByApplicationServer implements ApplicationServerLifecycleEventHandle
             ->setApplicationServerId($entity->getId())
             ->setSetid(1)
             ->setDestination('sip:' . $entity->getIp() . ":6060")
-            ->setDescription($entity->getName());
+            ->setDescription($entity->getName() ?? '');
 
         $this->entityPersister->persistDto($kamDispatcherDto, $kamDispatcher);
     }

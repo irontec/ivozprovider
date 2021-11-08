@@ -56,7 +56,7 @@ class UpdateDtoByDefaultRunTpCdr
                 $startTime
             )
             ->setDuration(
-                $duration
+                $duration ?? 0
             )
             ->setCallee(
                 $callee

@@ -31,7 +31,7 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
         parent::initChangelog();
     }
 
-    public function getDuration()
+    public function getDuration(): ?float
     {
         $usage = $this->getUsage();
         if (!$usage) {

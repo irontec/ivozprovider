@@ -43,7 +43,7 @@ class InvoiceNumberSequenceDto extends InvoiceNumberSequenceDtoAbstract
     /**
      * @inheritdoc
      */
-    public function setIteration(?int $iteration = null): static
+    public function setIteration(int $iteration): static
     {
         if ($this->getId()) {
             //Do not update this value
@@ -69,7 +69,7 @@ class InvoiceNumberSequenceDto extends InvoiceNumberSequenceDtoAbstract
     /**
      * @inheritdoc
      */
-    public function setVersion(?int $version = null): static
+    public function setVersion(int $version): static
     {
         if ($this->getId()) {
             //Do not update this value
