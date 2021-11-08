@@ -37,7 +37,6 @@ class AuthEndpointDecorator implements NormalizerInterface
 
         $auth = [
             '/admin_login' => $this->getAdminLoginSpec(),
-            '/user_login' => $this->getUserLoginSpec(),
             '/token/refresh' => $this->getTokenRefreshSpec()
         ];
 
