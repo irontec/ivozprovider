@@ -94,7 +94,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
     /**
      * @return (int|mixed|null|string)[]
      *
-     * @psalm-return array{id: int|null, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voiceMailUserId: mixed|null, voiceMailUser: string, noAnswerTimeout: int}
+     * @psalm-return array{id: int|null, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voicemailId: mixed|null, voicemail: string, noAnswerTimeout: int}
      */
     public function toArrayPortal()
     {
@@ -120,12 +120,12 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
             $response['extension'] = $extension->getNumber();
         }
 
-        $voiceMailUser = $this->getVoiceMailUser();
-        $response['voiceMailUserId'] = $voiceMailUser
-            ? $voiceMailUser->getId()
+        $voicemail = $this->getVoicemail();
+        $response['voicemailId'] = $voicemail
+            ? $voicemail->getId()
             : null;
-        $response['voiceMailUser'] = $voiceMailUser
-            ? $this->getVoiceMailUser()->getFullName()
+        $response['voicemail'] = $voicemail
+            ? $voicemail->getName()
             : '';
         $response['noAnswerTimeout'] = $this->getNoAnswerTimeout();
 

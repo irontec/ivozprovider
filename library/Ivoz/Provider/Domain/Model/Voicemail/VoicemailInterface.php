@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Voicemail;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -48,6 +49,11 @@ interface VoicemailInterface extends LoggableEntityInterface
      * @return string with the voicemail context
      */
     public function getContext();
+
+    /**
+     * @return LanguageInterface|null
+     */
+    public function getLanguage(): ?LanguageInterface;
 
     public static function createDto(string|int|null $id = null): VoicemailDto;
 

@@ -11,16 +11,19 @@ use Ivoz\Provider\Domain\Service\ResidentialDevice\ResidentialDeviceLifecycleEve
 
 class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandlerInterface
 {
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+
     public function __construct(
         private EntityTools $entityTools,
         private PsEndpointRepository $psEndpointRepository
     ) {
     }
 
+
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_PERSIST => 10
+            self::EVENT_POST_PERSIST => self::POST_PERSIST_PRIORITY
         ];
     }
 
@@ -52,6 +55,9 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
             ? $entity->getFromDomain()
             : $entity->getDomain()->getDomain();
 
+        // Get Residential Voicemail
+        $voicemail = $entity->getVoicemail();
+
         // Update/Insert endpoint data
         $endpointDto
             ->setResidentialDeviceId($entity->getId())
@@ -64,7 +70,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
             ->setTrustIdInbound('yes')
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
             ->setT38Udptl($entity->getT38Passthrough())
-            ->setMailboxes($entity->getVoiceMail())
+            ->setMailboxes($voicemail?->getVoicemailName())
             ->setDirectMediaMethod('invite');
 
         // Disable direct media for T.38 capable devices

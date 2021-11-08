@@ -33,7 +33,7 @@ class CalendarPeriodDto extends CalendarPeriodDtoAbstract
                 'numberCountryId' => 'numberCountry',
                 'numberValue' => 'numberValue',
                 'extensionId' => 'extension',
-                'voiceMailUserId' => 'voiceMailUser',
+                'voicemailId' => 'voicemail',
                 'scheduleIds' => 'scheduleIds',
             ];
         }

@@ -65,7 +65,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * @return (int|mixed|null|string)[]
      *
-     * @psalm-return array{id: int|null, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voiceMailUserId: mixed|null, voiceMailUser: string, noAnswerTimeout: int}
+     * @psalm-return array{id: int|null, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voicemailId: mixed|null, voicemail: string, noAnswerTimeout: int}
      */
     public function toArrayPortal();
 

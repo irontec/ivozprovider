@@ -16,6 +16,7 @@ class VoicemailDto extends VoicemailDtoAbstract
                 'enabled' => 'enabled',
                 'name' => 'name',
                 'email' => 'email',
+                'userId' => 'user',
             ];
         }
 

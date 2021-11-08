@@ -74,9 +74,12 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
         // Set new callerid with updated extension number
         $endpointDto->setCallerid($callerId);
 
+        // Update user voicemail
+        $voicemail = $user->getVoicemail();
+
         // Update endpoint voicemail mailbox@context
-        if ($user->getVoicemailEnabled()) {
-            $endpointDto->setMailboxes($user->getVoiceMail());
+        if ($voicemail) {
+            $endpointDto->setMailboxes($voicemail->getVoicemailName());
         }
 
         // Update endpoint pickup groups

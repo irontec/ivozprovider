@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Voicemail;
 
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+
 /**
  * Voicemail
  */
@@ -66,11 +68,11 @@ class Voicemail extends VoicemailAbstract implements VoicemailInterface
         $type = $this->getType();
 
         if ($type == self::VOICEMAIL_TYPE_USER) {
-            return self::VOICEMAIL_TYPE_USER . $this->getUser()->getId();
+            return self::VOICEMAIL_TYPE_USER . $this->getUser()?->getId();
         }
 
         if ($type == self::VOICEMAIL_TYPE_RESIDENTIAL) {
-            return self::VOICEMAIL_TYPE_RESIDENTIAL . $this->getResidentialDevice()->getId();
+            return self::VOICEMAIL_TYPE_RESIDENTIAL . $this->getResidentialDevice()?->getId();
         }
 
         return self::VOICEMAIL_TYPE_GENERIC . $this->getId();
@@ -84,6 +86,24 @@ class Voicemail extends VoicemailAbstract implements VoicemailInterface
         return
             'company'
             . $this->getCompany()->getId();
+    }
+
+    /**
+     * @return LanguageInterface|null
+     */
+    public function getLanguage(): ?LanguageInterface
+    {
+        $type = $this->getType();
+
+        if ($type == self::VOICEMAIL_TYPE_USER) {
+            return $this->getUser()?->getLanguage();
+        }
+
+        if ($type == self::VOICEMAIL_TYPE_RESIDENTIAL) {
+            return $this->getResidentialDevice()?->getLanguage();
+        }
+
+        return $this->getCompany()->getLanguage();
     }
 
 }

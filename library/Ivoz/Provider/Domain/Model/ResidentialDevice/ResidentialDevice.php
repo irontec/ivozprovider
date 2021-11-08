@@ -195,30 +195,4 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
 
         return array_shift($ddis);
     }
-
-    /**
-     * @return string with the voicemail
-     */
-    public function getVoiceMail()
-    {
-        return $this->getVoiceMailUser() . '@' . $this->getVoiceMailContext();
-    }
-
-    /**
-     * @return string with the voicemail user
-     */
-    public function getVoiceMailUser()
-    {
-        return "residential" . $this->getId();
-    }
-
-    /**
-     * @return string with the voicemail context
-     */
-    public function getVoiceMailContext()
-    {
-        return
-            'company'
-            . $this->getCompany()->getId();
-    }
 }

@@ -45,8 +45,8 @@ class IvrDto extends IvrDtoAbstract
                 'successLocutionId' => 'successLocution',
                 'noInputExtensionId' => 'noInputExtension',
                 'errorExtensionId' => 'errorExtension',
-                'noInputVoiceMailUserId' => 'noInputVoiceMailUser',
-                'errorVoiceMailUserId' => 'errorVoiceMailUser',
+                'noInputVoicemailId' => 'noInputVoicemail',
+                'errorVoicemailId' => 'errorVoicemail',
                 'noInputNumberCountryId' => 'noInputNumberCountry',
                 'errorNumberCountryId' => 'errorNumberCountry'
             ];

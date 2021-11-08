@@ -89,26 +89,6 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
     }
 
     /**
-     * @return UserInterface[]
-     */
-    public function getAvailableVoicemails(UserInterface $user): array
-    {
-        $company = $user->getCompany();
-
-        $qb = $this->createQueryBuilder('self');
-        $expression = $qb->expr();
-
-        $query = $qb
-            ->where(
-                $expression->eq('self.company', $company->getid())
-            )->andWhere(
-                $expression->eq('self.voicemailEnabled', true)
-            )->getQuery();
-
-        return $query->getResult();
-    }
-
-    /**
      * @return int[]
      */
     public function getBrandUsersIdsOrderByTerminalExpireDate(int $brandId, string $order = 'DESC'): array

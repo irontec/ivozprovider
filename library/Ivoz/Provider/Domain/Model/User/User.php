@@ -94,19 +94,10 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             $this->setActive(false);
             $this->setPass(null);
         }
-
-        if (!$this->getEmail()) {
-            // If no mail, no SendMail
-            $this->setVoicemailSendMail(false);
-        }
     }
 
     protected function sanitizeNew(): void
     {
-        if ($this->getEmail()) {
-            $this->setVoicemailSendMail(true);
-        }
-
         if ($this->getEmail() && $this->getPass()) {
             $this->setActive(true);
         }
@@ -160,32 +151,6 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
         }
 
         return $terminal->getName();
-    }
-
-    /**
-     * @return string with the voicemail
-     */
-    public function getVoiceMail()
-    {
-        return $this->getVoiceMailUser() . '@' . $this->getVoiceMailContext();
-    }
-
-    /**
-     * @return string with the voicemail user
-     */
-    public function getVoiceMailUser()
-    {
-        return "user" . $this->getId();
-    }
-
-    /**
-     * @return string with the voicemail context
-     */
-    public function getVoiceMailContext()
-    {
-        return
-            'company'
-            . $this->getCompany()->getId();
     }
 
     /**

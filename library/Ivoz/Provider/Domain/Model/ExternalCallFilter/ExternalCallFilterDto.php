@@ -72,14 +72,14 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
                 'holidayNumberValue' => 'holidayNumberValue',
                 'holidayLocutionId' => 'holidayLocution',
                 'holidayExtensionId' => 'holidayExtension',
-                'holidayVoiceMailUserId' => 'holidayVoiceMailUser',
+                'holidayVoicemailId' => 'holidayVoicemail',
                 'holidayNumberCountryId' => 'holidayNumberCountry',
 
                 'outOfScheduleTargetType' => 'outOfScheduleTargetType',
                 'outOfScheduleNumberValue' => 'outOfScheduleNumberValue',
                 'outOfScheduleLocutionId' => 'outOfScheduleLocution',
                 'outOfScheduleExtensionId' => 'outOfScheduleExtension',
-                'outOfScheduleVoiceMailUserId' => 'outOfScheduleVoiceMailUser',
+                'outOfScheduleVoicemailId' => 'outOfScheduleVoicemail',
                 'outOfScheduleNumberCountryId' => 'outOfScheduleNumberCountry'
 
 
