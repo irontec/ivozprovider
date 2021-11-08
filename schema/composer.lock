@@ -2033,11 +2033,11 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "5.4.1",
+            "version": "5.5",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-dev-tools",
-                "reference": "88b6240c813a440763879e4fb0645096bd10577f"
+                "reference": "ec7b86769124940be94573ef064c70d2d9d0fb35"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
