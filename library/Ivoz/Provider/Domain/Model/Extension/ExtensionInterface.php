@@ -53,6 +53,11 @@ interface ExtensionInterface extends LoggableEntityInterface
      */
     public function setNumberValue(?string $numberValue = null): static;
 
+    /**
+     * @return (int|string)[]
+     *
+     * @psalm-return array{id: int, number: string}
+     */
     public function toArrayPortal();
 
     /**

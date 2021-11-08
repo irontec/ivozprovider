@@ -46,7 +46,7 @@ interface TrunksClientInterface
      */
     public function getPlatformActiveCalls(): array;
 
-    public function isCgrEnabled();
+    public function isCgrEnabled(): bool;
 
     public function reloadDialplan(): void;
 

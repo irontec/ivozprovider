@@ -113,9 +113,11 @@ interface UserInterface extends LoggableEntityInterface
     public function isAllowedToCall($exten);
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface[]
+     * @return (\Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface|null)[]
+     *
+     * @psalm-return array<array-key, \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface|null>
      */
-    public function getPickUpGroups();
+    public function getPickUpGroups(): array;
 
     /**
      * @return string comma separated pickup group ids

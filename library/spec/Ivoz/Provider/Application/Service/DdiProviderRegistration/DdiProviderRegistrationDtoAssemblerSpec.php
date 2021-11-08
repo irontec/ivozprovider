@@ -63,6 +63,7 @@ class DdiProviderRegistrationDtoAssemblerSpec extends ObjectBehavior
             ->setStatus(
                 Argument::type(DdiProviderRegistrationStatus::class)
             )
+            ->willReturn($this->ddiProviderRegistrationDto)
             ->shouldBeCalled();
 
         $this

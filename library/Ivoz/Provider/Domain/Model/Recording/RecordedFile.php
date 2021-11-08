@@ -43,10 +43,8 @@ final class RecordedFile
 
     /**
      * Equals
-     *
-     * @return bool
      */
-    public function equals(self $recordedFile): bool
+    public function equals(self $recordedFile)
     {
         if ($this->getFileSize() !== $recordedFile->getFileSize()) {
             return false;

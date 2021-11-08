@@ -21,10 +21,7 @@ class SendTrunksAddressPermissionsReloadRequest implements DdiProviderLifecycleE
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function execute(DdiProviderInterface $ddiProvider)
+    public function execute(DdiProviderInterface $ddiProvider): void
     {
         $wasRemoved = $ddiProvider->hasBeenDeleted();
         if (!$wasRemoved) {

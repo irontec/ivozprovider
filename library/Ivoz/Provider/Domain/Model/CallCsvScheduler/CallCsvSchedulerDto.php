@@ -80,7 +80,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      *
      * @return null|string
      */
@@ -95,9 +95,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
-     *
-     * @return static
+     * @TODO: Remove this as soon as klear is dead
      */
     public function setCompanyType(string $type = null): static
     {
@@ -139,7 +137,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      */
     public function getVpbxId()
     {
@@ -147,9 +145,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
-     *
-     * @return static
+     * @TODO: Remove this as soon as klear is dead
      */
     public function setVpbxId($id): static
     {
@@ -161,7 +157,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      */
     public function getRetailId()
     {
@@ -169,9 +165,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
-     *
-     * @return static
+     * @TODO: Remove this as soon as klear is dead
      */
     public function setRetailId($id): static
     {
@@ -183,7 +177,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      */
     public function getResidentialId()
     {
@@ -191,9 +185,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
-     *
-     * @return static
+     * @TODO: Remove this as soon as klear is dead
      */
     public function setResidentialId($id): static
     {
@@ -205,7 +197,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      *
      * @return null|string
      */
@@ -227,17 +219,15 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
-     *
-     * @return static
+     * @TODO: Remove this as soon as klear is dead
      */
-    public function setEndpointType($type): static
+    public function setEndpointType(): static
     {
         return $this;
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      *
      * @return null|string
      */
@@ -255,11 +245,9 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
-     *
-     * @return static
+     * @TODO: Remove this as soon as klear is dead
      */
-    public function setResidentialEndpointType($type): static
+    public function setResidentialEndpointType(): static
     {
         return $this;
     }

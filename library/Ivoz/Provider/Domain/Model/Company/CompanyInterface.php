@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Company;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
@@ -18,7 +19,6 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterfac
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
@@ -82,7 +82,7 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getDdi($ddieE164);
 
-    public function getFriend($exten);
+    public function getFriend($exten): ?FriendInterface;
 
     /**
      * @param string $exten

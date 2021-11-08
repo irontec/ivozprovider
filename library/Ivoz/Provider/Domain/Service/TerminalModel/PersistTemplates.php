@@ -92,6 +92,9 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
             );
         }
 
-        $this->fs->dumpFile($fileRoute, $template);
+        $this->fs->dumpFile(
+            $fileRoute,
+            $template ?? ''
+        );
     }
 }

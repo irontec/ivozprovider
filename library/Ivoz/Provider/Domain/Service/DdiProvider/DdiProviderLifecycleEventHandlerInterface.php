@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 
 interface DdiProviderLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(DdiProviderInterface $ddiProvider);
+    public function execute(DdiProviderInterface $ddiProvider): void;
 }

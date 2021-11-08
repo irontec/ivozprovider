@@ -158,10 +158,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
         return $this->getTargetType();
     }
 
-    /**
-     * @return null|string
-     */
-    public function getCallForwardTarget()
+    public function getCallForwardTarget(): ?string
     {
         if ($this->getRouteType() == CallForwardSettingInterface::TARGETTYPE_RETAIL) {
             return $this->getCfwToRetailAccount()->getName();

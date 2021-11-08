@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\CallCsvScheduler;
 
 use Ivoz\Core\Domain\Model\SchedulerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
@@ -37,10 +38,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      */
     public function getChangeSet(): array;
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    public function getTimezone();
+    public function getTimezone(): ?TimezoneInterface;
 
     public function getSchedulerDateTimeZone(): \DateTimeZone;
 

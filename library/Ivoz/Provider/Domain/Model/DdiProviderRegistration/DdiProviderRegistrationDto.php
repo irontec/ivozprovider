@@ -69,8 +69,10 @@ class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
         return $response;
     }
 
-    public function setStatus(DdiProviderRegistrationStatus $status): void
+    public function setStatus(DdiProviderRegistrationStatus $status): static
     {
         $this->status = $status;
+
+        return $this;
     }
 }

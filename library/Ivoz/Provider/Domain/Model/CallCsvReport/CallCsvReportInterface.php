@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
@@ -25,10 +26,7 @@ interface CallCsvReportInterface extends LoggableEntityInterface, FileContainerI
      */
     public function getFileObjects(?int $filter = null): array;
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    public function getTimezone();
+    public function getTimezone(): ?TimezoneInterface;
 
     public function getSentTo(): string;
 

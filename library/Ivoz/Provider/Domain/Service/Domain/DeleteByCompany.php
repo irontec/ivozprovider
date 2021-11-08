@@ -27,10 +27,7 @@ class DeleteByCompany implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function execute(CompanyInterface $company)
+    public function execute(CompanyInterface $company): void
     {
         if ($company->getType() !== CompanyInterface::TYPE_VPBX) {
             return;

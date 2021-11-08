@@ -29,10 +29,7 @@ class Encoder
     ) {
     }
 
-    /**
-     * @return void
-     */
-    public function processAction()
+    public function processAction(): void
     {
         // Store statistics
         $stats = array(

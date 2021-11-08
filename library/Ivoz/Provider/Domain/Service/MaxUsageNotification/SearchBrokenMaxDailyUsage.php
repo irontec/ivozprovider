@@ -21,10 +21,7 @@ class SearchBrokenMaxDailyUsage implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function execute(CompanyInterface $company)
+    public function execute(CompanyInterface $company): void
     {
         $isNew = $company->isNew();
         if ($isNew) {

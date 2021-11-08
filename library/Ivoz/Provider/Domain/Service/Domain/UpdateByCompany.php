@@ -31,10 +31,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function execute(CompanyInterface $company)
+    public function execute(CompanyInterface $company): void
     {
         $notVpbx = $company->getType() !== CompanyInterface::TYPE_VPBX;
         if ($notVpbx) {

@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
 /**
  * CallCsvReport
@@ -49,10 +50,7 @@ class CallCsvReport extends CallCsvReportAbstract implements FileContainerInterf
         );
     }
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface|null
-     */
-    public function getTimezone(): ?\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+    public function getTimezone(): ?TimezoneInterface
     {
         $timeZone = $this->getBrand()
             ? $this->getBrand()->getDefaultTimezone()

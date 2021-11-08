@@ -31,7 +31,10 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(InvoiceInterface $invoice): false|int
+    /**
+     * @return false|int
+     */
+    public function execute(InvoiceInterface $invoice)
     {
         $targetEmail = $this->getTargetEmail($invoice);
         if (!$targetEmail) {

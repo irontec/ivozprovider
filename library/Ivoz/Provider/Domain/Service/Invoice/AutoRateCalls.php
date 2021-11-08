@@ -30,8 +30,6 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
     }
 
     /**
-     * @param InvoiceInterface $invoice
-     *
      * @return void
      */
     public function execute(InvoiceInterface $invoice)
