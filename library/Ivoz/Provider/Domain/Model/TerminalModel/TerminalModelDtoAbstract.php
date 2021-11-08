@@ -117,7 +117,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setIden(?string $iden): static
+    public function setIden(string $iden): static
     {
         $this->iden = $iden;
 
@@ -129,7 +129,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
         return $this->iden;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -141,7 +141,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 

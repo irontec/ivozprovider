@@ -154,7 +154,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
         return $this->callid;
     }
 
-    public function setCalldate(null|\DateTimeInterface|string $calldate): static
+    public function setCalldate(\DateTimeInterface|string $calldate): static
     {
         $this->calldate = $calldate;
 
@@ -166,7 +166,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
         return $this->calldate;
     }
 
-    public function setType(?string $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 
@@ -178,7 +178,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
         return $this->type;
     }
 
-    public function setDuration(?float $duration): static
+    public function setDuration(float $duration): static
     {
         $this->duration = $duration;
 

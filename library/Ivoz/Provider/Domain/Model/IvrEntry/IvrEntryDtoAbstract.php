@@ -129,7 +129,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setEntry(?string $entry): static
+    public function setEntry(string $entry): static
     {
         $this->entry = $entry;
 
@@ -141,7 +141,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->entry;
     }
 
-    public function setRouteType(?string $routeType): static
+    public function setRouteType(string $routeType): static
     {
         $this->routeType = $routeType;
 

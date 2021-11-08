@@ -327,11 +327,6 @@ abstract class CarrierServerAbstract
 
     protected function setSendPAI(?bool $sendPAI = null): static
     {
-        if (!is_null($sendPAI)) {
-            Assertion::between((int) $sendPAI, 0, 1, 'sendPAI provided "%s" is not a valid boolean value.');
-            $sendPAI = (bool) $sendPAI;
-        }
-
         $this->sendPAI = $sendPAI;
 
         return $this;
@@ -344,11 +339,6 @@ abstract class CarrierServerAbstract
 
     protected function setSendRPID(?bool $sendRPID = null): static
     {
-        if (!is_null($sendRPID)) {
-            Assertion::between((int) $sendRPID, 0, 1, 'sendRPID provided "%s" is not a valid boolean value.');
-            $sendRPID = (bool) $sendRPID;
-        }
-
         $this->sendRPID = $sendRPID;
 
         return $this;

@@ -116,7 +116,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this->description;
     }
 
-    public function setType(?string $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 

@@ -719,11 +719,6 @@ abstract class CompanyAbstract
 
     protected function setIpfilter(?bool $ipfilter = null): static
     {
-        if (!is_null($ipfilter)) {
-            Assertion::between((int) $ipfilter, 0, 1, 'ipfilter provided "%s" is not a valid boolean value.');
-            $ipfilter = (bool) $ipfilter;
-        }
-
         $this->ipfilter = $ipfilter;
 
         return $this;
@@ -748,9 +743,6 @@ abstract class CompanyAbstract
 
     protected function setAllowRecordingRemoval(bool $allowRecordingRemoval): static
     {
-        Assertion::between((int) $allowRecordingRemoval, 0, 1, 'allowRecordingRemoval provided "%s" is not a valid boolean value.');
-        $allowRecordingRemoval = (bool) $allowRecordingRemoval;
-
         $this->allowRecordingRemoval = $allowRecordingRemoval;
 
         return $this;
@@ -862,11 +854,6 @@ abstract class CompanyAbstract
 
     protected function setShowInvoices(?bool $showInvoices = null): static
     {
-        if (!is_null($showInvoices)) {
-            Assertion::between((int) $showInvoices, 0, 1, 'showInvoices provided "%s" is not a valid boolean value.');
-            $showInvoices = (bool) $showInvoices;
-        }
-
         $this->showInvoices = $showInvoices;
 
         return $this;

@@ -307,7 +307,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setContext(?string $context): static
+    public function setContext(string $context): static
     {
         $this->context = $context;
 
@@ -319,7 +319,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->context;
     }
 
-    public function setMailbox(?string $mailbox): static
+    public function setMailbox(string $mailbox): static
     {
         $this->mailbox = $mailbox;
 

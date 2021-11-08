@@ -130,7 +130,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setUsername(?string $username): static
+    public function setUsername(string $username): static
     {
         $this->username = $username;
 
@@ -142,7 +142,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
         return $this->username;
     }
 
-    public function setDomain(?string $domain): static
+    public function setDomain(string $domain): static
     {
         $this->domain = $domain;
 
@@ -154,7 +154,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
         return $this->domain;
     }
 
-    public function setEvent(?string $event): static
+    public function setEvent(string $event): static
     {
         $this->event = $event;
 
@@ -166,7 +166,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
         return $this->event;
     }
 
-    public function setEtag(?string $etag): static
+    public function setEtag(string $etag): static
     {
         $this->etag = $etag;
 
@@ -178,7 +178,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
         return $this->etag;
     }
 
-    public function setExpires(?int $expires): static
+    public function setExpires(int $expires): static
     {
         $this->expires = $expires;
 
@@ -190,7 +190,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
         return $this->expires;
     }
 
-    public function setReceivedTime(?int $receivedTime): static
+    public function setReceivedTime(int $receivedTime): static
     {
         $this->receivedTime = $receivedTime;
 
@@ -202,7 +202,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
         return $this->receivedTime;
     }
 
-    public function setBody(?string $body): static
+    public function setBody(string $body): static
     {
         $this->body = $body;
 
@@ -214,7 +214,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
         return $this->body;
     }
 
-    public function setSender(?string $sender): static
+    public function setSender(string $sender): static
     {
         $this->sender = $sender;
 
@@ -226,7 +226,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
         return $this->sender;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 

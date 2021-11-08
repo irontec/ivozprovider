@@ -96,7 +96,7 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -108,7 +108,7 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setTag(?string $tag): static
+    public function setTag(string $tag): static
     {
         $this->tag = $tag;
 

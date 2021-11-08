@@ -499,9 +499,6 @@ abstract class UsersCdrAbstract
 
     protected function setHidden(bool $hidden): static
     {
-        Assertion::between((int) $hidden, 0, 1, 'hidden provided "%s" is not a valid boolean value.');
-        $hidden = (bool) $hidden;
-
         $this->hidden = $hidden;
 
         return $this;

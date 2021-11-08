@@ -162,7 +162,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setWeight(?float $weight): static
+    public function setWeight(float $weight): static
     {
         $this->weight = $weight;
 
@@ -186,7 +186,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->timingType;
     }
 
-    public function setTimeIn(null|\DateTimeInterface|string $timeIn): static
+    public function setTimeIn(\DateTimeInterface|string $timeIn): static
     {
         $this->timeIn = $timeIn;
 

@@ -473,9 +473,6 @@ abstract class RetailAccountAbstract
 
     protected function setRtpEncryption(bool $rtpEncryption): static
     {
-        Assertion::between((int) $rtpEncryption, 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
-        $rtpEncryption = (bool) $rtpEncryption;
-
         $this->rtpEncryption = $rtpEncryption;
 
         return $this;
@@ -488,9 +485,6 @@ abstract class RetailAccountAbstract
 
     protected function setMultiContact(bool $multiContact): static
     {
-        Assertion::between((int) $multiContact, 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
-        $multiContact = (bool) $multiContact;
-
         $this->multiContact = $multiContact;
 
         return $this;

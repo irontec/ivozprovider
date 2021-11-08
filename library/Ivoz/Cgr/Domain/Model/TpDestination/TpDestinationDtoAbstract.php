@@ -96,7 +96,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -120,7 +120,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
         return $this->tag;
     }
 
-    public function setPrefix(?string $prefix): static
+    public function setPrefix(string $prefix): static
     {
         $this->prefix = $prefix;
 
@@ -132,7 +132,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
         return $this->prefix;
     }
 
-    public function setCreatedAt(null|\DateTimeInterface|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 

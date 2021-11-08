@@ -83,7 +83,7 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setCode(?string $code): static
+    public function setCode(string $code): static
     {
         $this->code = $code;
 

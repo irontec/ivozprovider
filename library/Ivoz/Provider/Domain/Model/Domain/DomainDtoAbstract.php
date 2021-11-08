@@ -102,7 +102,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setDomain(?string $domain): static
+    public function setDomain(string $domain): static
     {
         $this->domain = $domain;
 
@@ -114,7 +114,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this->domain;
     }
 
-    public function setPointsTo(?string $pointsTo): static
+    public function setPointsTo(string $pointsTo): static
     {
         $this->pointsTo = $pointsTo;
 

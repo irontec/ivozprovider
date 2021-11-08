@@ -213,7 +213,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->type;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
@@ -225,7 +225,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->priority;
     }
 
-    public function setWeight(?int $weight): static
+    public function setWeight(int $weight): static
     {
         $this->weight = $weight;
 
@@ -261,7 +261,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->prefix;
     }
 
-    public function setStopper(?bool $stopper): static
+    public function setStopper(bool $stopper): static
     {
         $this->stopper = $stopper;
 

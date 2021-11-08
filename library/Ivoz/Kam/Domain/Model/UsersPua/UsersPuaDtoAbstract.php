@@ -186,7 +186,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setPresUri(?string $presUri): static
+    public function setPresUri(string $presUri): static
     {
         $this->presUri = $presUri;
 
@@ -198,7 +198,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->presUri;
     }
 
-    public function setPresId(?string $presId): static
+    public function setPresId(string $presId): static
     {
         $this->presId = $presId;
 
@@ -210,7 +210,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->presId;
     }
 
-    public function setEvent(?int $event): static
+    public function setEvent(int $event): static
     {
         $this->event = $event;
 
@@ -222,7 +222,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->event;
     }
 
-    public function setExpires(?int $expires): static
+    public function setExpires(int $expires): static
     {
         $this->expires = $expires;
 
@@ -234,7 +234,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->expires;
     }
 
-    public function setDesiredExpires(?int $desiredExpires): static
+    public function setDesiredExpires(int $desiredExpires): static
     {
         $this->desiredExpires = $desiredExpires;
 
@@ -246,7 +246,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->desiredExpires;
     }
 
-    public function setFlag(?int $flag): static
+    public function setFlag(int $flag): static
     {
         $this->flag = $flag;
 
@@ -258,7 +258,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->flag;
     }
 
-    public function setEtag(?string $etag): static
+    public function setEtag(string $etag): static
     {
         $this->etag = $etag;
 
@@ -282,7 +282,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->tupleId;
     }
 
-    public function setWatcherUri(?string $watcherUri): static
+    public function setWatcherUri(string $watcherUri): static
     {
         $this->watcherUri = $watcherUri;
 
@@ -294,7 +294,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->watcherUri;
     }
 
-    public function setCallId(?string $callId): static
+    public function setCallId(string $callId): static
     {
         $this->callId = $callId;
 
@@ -306,7 +306,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->callId;
     }
 
-    public function setToTag(?string $toTag): static
+    public function setToTag(string $toTag): static
     {
         $this->toTag = $toTag;
 
@@ -318,7 +318,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->toTag;
     }
 
-    public function setFromTag(?string $fromTag): static
+    public function setFromTag(string $fromTag): static
     {
         $this->fromTag = $fromTag;
 
@@ -330,7 +330,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->fromTag;
     }
 
-    public function setCseq(?int $cseq): static
+    public function setCseq(int $cseq): static
     {
         $this->cseq = $cseq;
 
@@ -354,7 +354,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->recordRoute;
     }
 
-    public function setContact(?string $contact): static
+    public function setContact(string $contact): static
     {
         $this->contact = $contact;
 
@@ -366,7 +366,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->contact;
     }
 
-    public function setRemoteContact(?string $remoteContact): static
+    public function setRemoteContact(string $remoteContact): static
     {
         $this->remoteContact = $remoteContact;
 
@@ -378,7 +378,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->remoteContact;
     }
 
-    public function setVersion(?int $version): static
+    public function setVersion(int $version): static
     {
         $this->version = $version;
 
@@ -390,7 +390,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->version;
     }
 
-    public function setExtraHeaders(?string $extraHeaders): static
+    public function setExtraHeaders(string $extraHeaders): static
     {
         $this->extraHeaders = $extraHeaders;
 

@@ -232,11 +232,6 @@ abstract class DdiProviderAbstract
 
     protected function setExternallyRated(?bool $externallyRated = null): static
     {
-        if (!is_null($externallyRated)) {
-            Assertion::between((int) $externallyRated, 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
-            $externallyRated = (bool) $externallyRated;
-        }
-
         $this->externallyRated = $externallyRated;
 
         return $this;

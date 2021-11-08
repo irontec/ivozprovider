@@ -164,7 +164,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $response;
     }
 
-    public function setCallTypeFilter(?string $callTypeFilter): static
+    public function setCallTypeFilter(string $callTypeFilter): static
     {
         $this->callTypeFilter = $callTypeFilter;
 
@@ -176,7 +176,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->callTypeFilter;
     }
 
-    public function setCallForwardType(?string $callForwardType): static
+    public function setCallForwardType(string $callForwardType): static
     {
         $this->callForwardType = $callForwardType;
 
@@ -212,7 +212,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->numberValue;
     }
 
-    public function setNoAnswerTimeout(?int $noAnswerTimeout): static
+    public function setNoAnswerTimeout(int $noAnswerTimeout): static
     {
         $this->noAnswerTimeout = $noAnswerTimeout;
 
@@ -224,7 +224,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->noAnswerTimeout;
     }
 
-    public function setEnabled(?bool $enabled): static
+    public function setEnabled(bool $enabled): static
     {
         $this->enabled = $enabled;
 

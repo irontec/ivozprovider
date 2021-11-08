@@ -86,7 +86,7 @@ abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setIp(?string $ip): static
+    public function setIp(string $ip): static
     {
         $this->ip = $ip;
 

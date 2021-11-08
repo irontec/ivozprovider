@@ -145,7 +145,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setIden(?string $iden): static
+    public function setIden(string $iden): static
     {
         $this->iden = $iden;
 
@@ -157,7 +157,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this->iden;
     }
 
-    public function setDefaultCode(?string $defaultCode): static
+    public function setDefaultCode(string $defaultCode): static
     {
         $this->defaultCode = $defaultCode;
 
@@ -169,7 +169,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this->defaultCode;
     }
 
-    public function setExtraArgs(?bool $extraArgs): static
+    public function setExtraArgs(bool $extraArgs): static
     {
         $this->extraArgs = $extraArgs;
 
@@ -193,7 +193,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this->id;
     }
 
-    public function setNameEn(?string $nameEn): static
+    public function setNameEn(string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
@@ -205,7 +205,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this->nameEn;
     }
 
-    public function setNameEs(?string $nameEs): static
+    public function setNameEs(string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
@@ -217,7 +217,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this->nameEs;
     }
 
-    public function setNameCa(?string $nameCa): static
+    public function setNameCa(string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
@@ -229,7 +229,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this->nameCa;
     }
 
-    public function setNameIt(?string $nameIt): static
+    public function setNameIt(string $nameIt): static
     {
         $this->nameIt = $nameIt;
 
@@ -241,7 +241,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this->nameIt;
     }
 
-    public function setDescriptionEn(?string $descriptionEn): static
+    public function setDescriptionEn(string $descriptionEn): static
     {
         $this->descriptionEn = $descriptionEn;
 
@@ -253,7 +253,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this->descriptionEn;
     }
 
-    public function setDescriptionEs(?string $descriptionEs): static
+    public function setDescriptionEs(string $descriptionEs): static
     {
         $this->descriptionEs = $descriptionEs;
 
@@ -265,7 +265,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this->descriptionEs;
     }
 
-    public function setDescriptionCa(?string $descriptionCa): static
+    public function setDescriptionCa(string $descriptionCa): static
     {
         $this->descriptionCa = $descriptionCa;
 
@@ -277,7 +277,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this->descriptionCa;
     }
 
-    public function setDescriptionIt(?string $descriptionIt): static
+    public function setDescriptionIt(string $descriptionIt): static
     {
         $this->descriptionIt = $descriptionIt;
 

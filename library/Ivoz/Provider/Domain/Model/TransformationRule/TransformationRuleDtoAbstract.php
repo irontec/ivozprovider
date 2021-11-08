@@ -103,7 +103,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
         return $response;
     }
 
-    public function setType(?string $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 
@@ -115,7 +115,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
         return $this->type;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 

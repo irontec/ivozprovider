@@ -351,9 +351,6 @@ abstract class IvrAbstract
 
     protected function setAllowExtensions(bool $allowExtensions): static
     {
-        Assertion::between((int) $allowExtensions, 0, 1, 'allowExtensions provided "%s" is not a valid boolean value.');
-        $allowExtensions = (bool) $allowExtensions;
-
         $this->allowExtensions = $allowExtensions;
 
         return $this;

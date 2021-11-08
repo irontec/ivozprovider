@@ -199,7 +199,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setStartTime(null|\DateTimeInterface|string $startTime): static
+    public function setStartTime(\DateTimeInterface|string $startTime): static
     {
         $this->startTime = $startTime;
 
@@ -211,7 +211,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->startTime;
     }
 
-    public function setEndTime(null|\DateTimeInterface|string $endTime): static
+    public function setEndTime(\DateTimeInterface|string $endTime): static
     {
         $this->endTime = $endTime;
 
@@ -223,7 +223,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->endTime;
     }
 
-    public function setDuration(?float $duration): static
+    public function setDuration(float $duration): static
     {
         $this->duration = $duration;
 
@@ -343,7 +343,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->xcallid;
     }
 
-    public function setHidden(?bool $hidden): static
+    public function setHidden(bool $hidden): static
     {
         $this->hidden = $hidden;
 

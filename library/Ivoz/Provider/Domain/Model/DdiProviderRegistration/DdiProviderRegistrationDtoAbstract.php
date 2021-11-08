@@ -139,7 +139,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $response;
     }
 
-    public function setUsername(?string $username): static
+    public function setUsername(string $username): static
     {
         $this->username = $username;
 
@@ -151,7 +151,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->username;
     }
 
-    public function setDomain(?string $domain): static
+    public function setDomain(string $domain): static
     {
         $this->domain = $domain;
 
@@ -163,7 +163,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->domain;
     }
 
-    public function setRealm(?string $realm): static
+    public function setRealm(string $realm): static
     {
         $this->realm = $realm;
 
@@ -175,7 +175,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->realm;
     }
 
-    public function setAuthUsername(?string $authUsername): static
+    public function setAuthUsername(string $authUsername): static
     {
         $this->authUsername = $authUsername;
 
@@ -187,7 +187,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->authUsername;
     }
 
-    public function setAuthPassword(?string $authPassword): static
+    public function setAuthPassword(string $authPassword): static
     {
         $this->authPassword = $authPassword;
 
@@ -199,7 +199,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->authPassword;
     }
 
-    public function setAuthProxy(?string $authProxy): static
+    public function setAuthProxy(string $authProxy): static
     {
         $this->authProxy = $authProxy;
 
@@ -211,7 +211,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->authProxy;
     }
 
-    public function setExpires(?int $expires): static
+    public function setExpires(int $expires): static
     {
         $this->expires = $expires;
 
@@ -235,7 +235,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->multiDdi;
     }
 
-    public function setContactUsername(?string $contactUsername): static
+    public function setContactUsername(string $contactUsername): static
     {
         $this->contactUsername = $contactUsername;
 

@@ -116,7 +116,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setUsername(?string $username): static
+    public function setUsername(string $username): static
     {
         $this->username = $username;
 
@@ -128,7 +128,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
         return $this->username;
     }
 
-    public function setDomain(?string $domain): static
+    public function setDomain(string $domain): static
     {
         $this->domain = $domain;
 
@@ -140,7 +140,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
         return $this->domain;
     }
 
-    public function setDoc(?string $doc): static
+    public function setDoc(string $doc): static
     {
         $this->doc = $doc;
 
@@ -152,7 +152,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
         return $this->doc;
     }
 
-    public function setDocType(?int $docType): static
+    public function setDocType(int $docType): static
     {
         $this->docType = $docType;
 
@@ -164,7 +164,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
         return $this->docType;
     }
 
-    public function setEtag(?string $etag): static
+    public function setEtag(string $etag): static
     {
         $this->etag = $etag;
 
@@ -176,7 +176,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
         return $this->etag;
     }
 
-    public function setSource(?int $source): static
+    public function setSource(int $source): static
     {
         $this->source = $source;
 
@@ -188,7 +188,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
         return $this->source;
     }
 
-    public function setDocUri(?string $docUri): static
+    public function setDocUri(string $docUri): static
     {
         $this->docUri = $docUri;
 
@@ -200,7 +200,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
         return $this->docUri;
     }
 
-    public function setPort(?int $port): static
+    public function setPort(int $port): static
     {
         $this->port = $port;
 

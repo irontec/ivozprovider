@@ -204,7 +204,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -216,7 +216,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->name;
     }
 
-    public function setUnit(?string $unit): static
+    public function setUnit(string $unit): static
     {
         $this->unit = $unit;
 
@@ -228,7 +228,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->unit;
     }
 
-    public function setFrequency(?int $frequency): static
+    public function setFrequency(int $frequency): static
     {
         $this->frequency = $frequency;
 
@@ -252,7 +252,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->callDirection;
     }
 
-    public function setEmail(?string $email): static
+    public function setEmail(string $email): static
     {
         $this->email = $email;
 

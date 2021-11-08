@@ -140,7 +140,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setUsername(?string $username): static
+    public function setUsername(string $username): static
     {
         $this->username = $username;
 
@@ -152,7 +152,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->username;
     }
 
-    public function setPass(?string $pass): static
+    public function setPass(string $pass): static
     {
         $this->pass = $pass;
 
@@ -164,7 +164,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->pass;
     }
 
-    public function setEmail(?string $email): static
+    public function setEmail(string $email): static
     {
         $this->email = $email;
 
@@ -176,7 +176,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->email;
     }
 
-    public function setActive(?bool $active): static
+    public function setActive(bool $active): static
     {
         $this->active = $active;
 
@@ -188,7 +188,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->active;
     }
 
-    public function setRestricted(?bool $restricted): static
+    public function setRestricted(bool $restricted): static
     {
         $this->restricted = $restricted;
 

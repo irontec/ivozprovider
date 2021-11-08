@@ -221,7 +221,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setCgrid(?string $cgrid): static
+    public function setCgrid(string $cgrid): static
     {
         $this->cgrid = $cgrid;
 
@@ -233,7 +233,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->cgrid;
     }
 
-    public function setRunId(?string $runId): static
+    public function setRunId(string $runId): static
     {
         $this->runId = $runId;
 
@@ -245,7 +245,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->runId;
     }
 
-    public function setOriginHost(?string $originHost): static
+    public function setOriginHost(string $originHost): static
     {
         $this->originHost = $originHost;
 
@@ -257,7 +257,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->originHost;
     }
 
-    public function setSource(?string $source): static
+    public function setSource(string $source): static
     {
         $this->source = $source;
 
@@ -269,7 +269,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->source;
     }
 
-    public function setOriginId(?string $originId): static
+    public function setOriginId(string $originId): static
     {
         $this->originId = $originId;
 
@@ -281,7 +281,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->originId;
     }
 
-    public function setTor(?string $tor): static
+    public function setTor(string $tor): static
     {
         $this->tor = $tor;
 
@@ -293,7 +293,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->tor;
     }
 
-    public function setRequestType(?string $requestType): static
+    public function setRequestType(string $requestType): static
     {
         $this->requestType = $requestType;
 
@@ -305,7 +305,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->requestType;
     }
 
-    public function setTenant(?string $tenant): static
+    public function setTenant(string $tenant): static
     {
         $this->tenant = $tenant;
 
@@ -317,7 +317,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->tenant;
     }
 
-    public function setCategory(?string $category): static
+    public function setCategory(string $category): static
     {
         $this->category = $category;
 
@@ -329,7 +329,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->category;
     }
 
-    public function setAccount(?string $account): static
+    public function setAccount(string $account): static
     {
         $this->account = $account;
 
@@ -341,7 +341,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->account;
     }
 
-    public function setSubject(?string $subject): static
+    public function setSubject(string $subject): static
     {
         $this->subject = $subject;
 
@@ -353,7 +353,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->subject;
     }
 
-    public function setDestination(?string $destination): static
+    public function setDestination(string $destination): static
     {
         $this->destination = $destination;
 
@@ -365,7 +365,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->destination;
     }
 
-    public function setSetupTime(null|\DateTimeInterface|string $setupTime): static
+    public function setSetupTime(\DateTimeInterface|string $setupTime): static
     {
         $this->setupTime = $setupTime;
 
@@ -377,7 +377,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->setupTime;
     }
 
-    public function setAnswerTime(null|\DateTimeInterface|string $answerTime): static
+    public function setAnswerTime(\DateTimeInterface|string $answerTime): static
     {
         $this->answerTime = $answerTime;
 
@@ -389,7 +389,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->answerTime;
     }
 
-    public function setUsage(?int $usage): static
+    public function setUsage(int $usage): static
     {
         $this->usage = $usage;
 
@@ -401,7 +401,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->usage;
     }
 
-    public function setExtraFields(?string $extraFields): static
+    public function setExtraFields(string $extraFields): static
     {
         $this->extraFields = $extraFields;
 
@@ -413,7 +413,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->extraFields;
     }
 
-    public function setCostSource(?string $costSource): static
+    public function setCostSource(string $costSource): static
     {
         $this->costSource = $costSource;
 
@@ -425,7 +425,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->costSource;
     }
 
-    public function setCost(?float $cost): static
+    public function setCost(float $cost): static
     {
         $this->cost = $cost;
 
@@ -437,7 +437,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->cost;
     }
 
-    public function setCostDetails(?array $costDetails): static
+    public function setCostDetails(array $costDetails): static
     {
         $this->costDetails = $costDetails;
 
@@ -449,7 +449,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->costDetails;
     }
 
-    public function setExtraInfo(?string $extraInfo): static
+    public function setExtraInfo(string $extraInfo): static
     {
         $this->extraInfo = $extraInfo;
 

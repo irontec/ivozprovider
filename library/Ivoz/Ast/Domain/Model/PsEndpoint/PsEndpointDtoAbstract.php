@@ -232,7 +232,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setSorceryId(?string $sorceryId): static
+    public function setSorceryId(string $sorceryId): static
     {
         $this->sorceryId = $sorceryId;
 
@@ -280,7 +280,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->callerid;
     }
 
-    public function setContext(?string $context): static
+    public function setContext(string $context): static
     {
         $this->context = $context;
 
@@ -292,7 +292,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->context;
     }
 
-    public function setDisallow(?string $disallow): static
+    public function setDisallow(string $disallow): static
     {
         $this->disallow = $disallow;
 
@@ -304,7 +304,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->disallow;
     }
 
-    public function setAllow(?string $allow): static
+    public function setAllow(string $allow): static
     {
         $this->allow = $allow;
 
@@ -388,7 +388,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->sendPai;
     }
 
-    public function setOneHundredRel(?string $oneHundredRel): static
+    public function setOneHundredRel(string $oneHundredRel): static
     {
         $this->oneHundredRel = $oneHundredRel;
 
@@ -424,7 +424,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->trustIdInbound;
     }
 
-    public function setT38Udptl(?string $t38Udptl): static
+    public function setT38Udptl(string $t38Udptl): static
     {
         $this->t38Udptl = $t38Udptl;
 
@@ -436,7 +436,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->t38Udptl;
     }
 
-    public function setT38UdptlEc(?string $t38UdptlEc): static
+    public function setT38UdptlEc(string $t38UdptlEc): static
     {
         $this->t38UdptlEc = $t38UdptlEc;
 
@@ -448,7 +448,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->t38UdptlEc;
     }
 
-    public function setT38UdptlMaxdatagram(?int $t38UdptlMaxdatagram): static
+    public function setT38UdptlMaxdatagram(int $t38UdptlMaxdatagram): static
     {
         $this->t38UdptlMaxdatagram = $t38UdptlMaxdatagram;
 
@@ -460,7 +460,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->t38UdptlMaxdatagram;
     }
 
-    public function setT38UdptlNat(?string $t38UdptlNat): static
+    public function setT38UdptlNat(string $t38UdptlNat): static
     {
         $this->t38UdptlNat = $t38UdptlNat;
 

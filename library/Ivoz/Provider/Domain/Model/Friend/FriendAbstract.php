@@ -694,9 +694,6 @@ abstract class FriendAbstract
 
     protected function setAlwaysApplyTransformations(bool $alwaysApplyTransformations): static
     {
-        Assertion::between((int) $alwaysApplyTransformations, 0, 1, 'alwaysApplyTransformations provided "%s" is not a valid boolean value.');
-        $alwaysApplyTransformations = (bool) $alwaysApplyTransformations;
-
         $this->alwaysApplyTransformations = $alwaysApplyTransformations;
 
         return $this;
@@ -709,9 +706,6 @@ abstract class FriendAbstract
 
     protected function setRtpEncryption(bool $rtpEncryption): static
     {
-        Assertion::between((int) $rtpEncryption, 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
-        $rtpEncryption = (bool) $rtpEncryption;
-
         $this->rtpEncryption = $rtpEncryption;
 
         return $this;
@@ -724,9 +718,6 @@ abstract class FriendAbstract
 
     protected function setMultiContact(bool $multiContact): static
     {
-        Assertion::between((int) $multiContact, 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
-        $multiContact = (bool) $multiContact;
-
         $this->multiContact = $multiContact;
 
         return $this;

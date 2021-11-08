@@ -131,7 +131,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -179,7 +179,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->ratesTag;
     }
 
-    public function setRoundingMethod(?string $roundingMethod): static
+    public function setRoundingMethod(string $roundingMethod): static
     {
         $this->roundingMethod = $roundingMethod;
 
@@ -191,7 +191,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->roundingMethod;
     }
 
-    public function setRoundingDecimals(?int $roundingDecimals): static
+    public function setRoundingDecimals(int $roundingDecimals): static
     {
         $this->roundingDecimals = $roundingDecimals;
 
@@ -203,7 +203,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->roundingDecimals;
     }
 
-    public function setMaxCost(?float $maxCost): static
+    public function setMaxCost(float $maxCost): static
     {
         $this->maxCost = $maxCost;
 
@@ -215,7 +215,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->maxCost;
     }
 
-    public function setMaxCostStrategy(?string $maxCostStrategy): static
+    public function setMaxCostStrategy(string $maxCostStrategy): static
     {
         $this->maxCostStrategy = $maxCostStrategy;
 
@@ -227,7 +227,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->maxCostStrategy;
     }
 
-    public function setCreatedAt(null|\DateTimeInterface|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 

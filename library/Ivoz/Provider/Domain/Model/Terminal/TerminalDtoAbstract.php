@@ -177,7 +177,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -189,7 +189,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setDisallow(?string $disallow): static
+    public function setDisallow(string $disallow): static
     {
         $this->disallow = $disallow;
 
@@ -201,7 +201,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->disallow;
     }
 
-    public function setAllowAudio(?string $allowAudio): static
+    public function setAllowAudio(string $allowAudio): static
     {
         $this->allowAudio = $allowAudio;
 
@@ -225,7 +225,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->allowVideo;
     }
 
-    public function setDirectMediaMethod(?string $directMediaMethod): static
+    public function setDirectMediaMethod(string $directMediaMethod): static
     {
         $this->directMediaMethod = $directMediaMethod;
 
@@ -237,7 +237,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->directMediaMethod;
     }
 
-    public function setPassword(?string $password): static
+    public function setPassword(string $password): static
     {
         $this->password = $password;
 
@@ -273,7 +273,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->lastProvisionDate;
     }
 
-    public function setT38Passthrough(?string $t38Passthrough): static
+    public function setT38Passthrough(string $t38Passthrough): static
     {
         $this->t38Passthrough = $t38Passthrough;
 
@@ -285,7 +285,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->t38Passthrough;
     }
 
-    public function setRtpEncryption(?bool $rtpEncryption): static
+    public function setRtpEncryption(bool $rtpEncryption): static
     {
         $this->rtpEncryption = $rtpEncryption;
 

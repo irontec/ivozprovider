@@ -89,7 +89,7 @@ abstract class RouteLockDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -101,7 +101,7 @@ abstract class RouteLockDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -113,7 +113,7 @@ abstract class RouteLockDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
-    public function setOpen(?bool $open): static
+    public function setOpen(bool $open): static
     {
         $this->open = $open;
 

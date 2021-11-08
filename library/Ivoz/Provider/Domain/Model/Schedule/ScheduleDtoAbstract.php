@@ -138,7 +138,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -150,7 +150,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setTimeIn(null|\DateTimeInterface|string $timeIn): static
+    public function setTimeIn(\DateTimeInterface|string $timeIn): static
     {
         $this->timeIn = $timeIn;
 
@@ -162,7 +162,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
         return $this->timeIn;
     }
 
-    public function setTimeout(null|\DateTimeInterface|string $timeout): static
+    public function setTimeout(\DateTimeInterface|string $timeout): static
     {
         $this->timeout = $timeout;
 

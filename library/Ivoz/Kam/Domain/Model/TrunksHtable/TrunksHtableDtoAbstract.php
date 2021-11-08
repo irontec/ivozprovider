@@ -95,7 +95,7 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setKeyName(?string $keyName): static
+    public function setKeyName(string $keyName): static
     {
         $this->keyName = $keyName;
 
@@ -107,7 +107,7 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
         return $this->keyName;
     }
 
-    public function setKeyType(?int $keyType): static
+    public function setKeyType(int $keyType): static
     {
         $this->keyType = $keyType;
 
@@ -119,7 +119,7 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
         return $this->keyType;
     }
 
-    public function setValueType(?int $valueType): static
+    public function setValueType(int $valueType): static
     {
         $this->valueType = $valueType;
 
@@ -131,7 +131,7 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
         return $this->valueType;
     }
 
-    public function setKeyValue(?string $keyValue): static
+    public function setKeyValue(string $keyValue): static
     {
         $this->keyValue = $keyValue;
 
@@ -143,7 +143,7 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
         return $this->keyValue;
     }
 
-    public function setExpires(?int $expires): static
+    public function setExpires(int $expires): static
     {
         $this->expires = $expires;
 

@@ -110,7 +110,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setSourceAddress(?string $sourceAddress): static
+    public function setSourceAddress(string $sourceAddress): static
     {
         $this->sourceAddress = $sourceAddress;
 
@@ -134,7 +134,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
         return $this->ipAddr;
     }
 
-    public function setMask(?int $mask): static
+    public function setMask(int $mask): static
     {
         $this->mask = $mask;
 
@@ -146,7 +146,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
         return $this->mask;
     }
 
-    public function setPort(?int $port): static
+    public function setPort(int $port): static
     {
         $this->port = $port;
 

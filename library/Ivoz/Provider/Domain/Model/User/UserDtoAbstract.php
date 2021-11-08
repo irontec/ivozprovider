@@ -281,7 +281,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -293,7 +293,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setLastname(?string $lastname): static
+    public function setLastname(string $lastname): static
     {
         $this->lastname = $lastname;
 
@@ -329,7 +329,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->pass;
     }
 
-    public function setDoNotDisturb(?bool $doNotDisturb): static
+    public function setDoNotDisturb(bool $doNotDisturb): static
     {
         $this->doNotDisturb = $doNotDisturb;
 
@@ -341,7 +341,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->doNotDisturb;
     }
 
-    public function setIsBoss(?bool $isBoss): static
+    public function setIsBoss(bool $isBoss): static
     {
         $this->isBoss = $isBoss;
 
@@ -353,7 +353,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->isBoss;
     }
 
-    public function setActive(?bool $active): static
+    public function setActive(bool $active): static
     {
         $this->active = $active;
 
@@ -365,7 +365,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->active;
     }
 
-    public function setMaxCalls(?int $maxCalls): static
+    public function setMaxCalls(int $maxCalls): static
     {
         $this->maxCalls = $maxCalls;
 
@@ -377,7 +377,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->maxCalls;
     }
 
-    public function setExternalIpCalls(?string $externalIpCalls): static
+    public function setExternalIpCalls(string $externalIpCalls): static
     {
         $this->externalIpCalls = $externalIpCalls;
 
@@ -389,7 +389,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->externalIpCalls;
     }
 
-    public function setRejectCallMethod(?string $rejectCallMethod): static
+    public function setRejectCallMethod(string $rejectCallMethod): static
     {
         $this->rejectCallMethod = $rejectCallMethod;
 
@@ -401,7 +401,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->rejectCallMethod;
     }
 
-    public function setVoicemailEnabled(?bool $voicemailEnabled): static
+    public function setVoicemailEnabled(bool $voicemailEnabled): static
     {
         $this->voicemailEnabled = $voicemailEnabled;
 
@@ -413,7 +413,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->voicemailEnabled;
     }
 
-    public function setVoicemailSendMail(?bool $voicemailSendMail): static
+    public function setVoicemailSendMail(bool $voicemailSendMail): static
     {
         $this->voicemailSendMail = $voicemailSendMail;
 
@@ -425,7 +425,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->voicemailSendMail;
     }
 
-    public function setVoicemailAttachSound(?bool $voicemailAttachSound): static
+    public function setVoicemailAttachSound(bool $voicemailAttachSound): static
     {
         $this->voicemailAttachSound = $voicemailAttachSound;
 
@@ -437,7 +437,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->voicemailAttachSound;
     }
 
-    public function setMultiContact(?bool $multiContact): static
+    public function setMultiContact(bool $multiContact): static
     {
         $this->multiContact = $multiContact;
 
@@ -449,7 +449,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->multiContact;
     }
 
-    public function setGsQRCode(?bool $gsQRCode): static
+    public function setGsQRCode(bool $gsQRCode): static
     {
         $this->gsQRCode = $gsQRCode;
 

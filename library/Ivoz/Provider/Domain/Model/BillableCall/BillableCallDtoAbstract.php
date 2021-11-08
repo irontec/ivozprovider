@@ -261,7 +261,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->startTime;
     }
 
-    public function setDuration(?float $duration): static
+    public function setDuration(float $duration): static
     {
         $this->duration = $duration;
 

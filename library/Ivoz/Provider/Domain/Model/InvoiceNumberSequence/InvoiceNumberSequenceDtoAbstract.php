@@ -117,7 +117,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -129,7 +129,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->name;
     }
 
-    public function setPrefix(?string $prefix): static
+    public function setPrefix(string $prefix): static
     {
         $this->prefix = $prefix;
 
@@ -141,7 +141,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->prefix;
     }
 
-    public function setSequenceLength(?int $sequenceLength): static
+    public function setSequenceLength(int $sequenceLength): static
     {
         $this->sequenceLength = $sequenceLength;
 
@@ -153,7 +153,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->sequenceLength;
     }
 
-    public function setIncrement(?int $increment): static
+    public function setIncrement(int $increment): static
     {
         $this->increment = $increment;
 
@@ -177,7 +177,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->latestValue;
     }
 
-    public function setIteration(?int $iteration): static
+    public function setIteration(int $iteration): static
     {
         $this->iteration = $iteration;
 
@@ -189,7 +189,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->iteration;
     }
 
-    public function setVersion(?int $version): static
+    public function setVersion(int $version): static
     {
         $this->version = $version;
 

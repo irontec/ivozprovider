@@ -109,7 +109,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setRequestId(?string $requestId): static
+    public function setRequestId(string $requestId): static
     {
         $this->requestId = $requestId;
 
@@ -121,7 +121,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
         return $this->requestId;
     }
 
-    public function setClass(?string $class): static
+    public function setClass(string $class): static
     {
         $this->class = $class;
 
@@ -169,7 +169,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
         return $this->agent;
     }
 
-    public function setCreatedOn(null|\DateTimeInterface|string $createdOn): static
+    public function setCreatedOn(\DateTimeInterface|string $createdOn): static
     {
         $this->createdOn = $createdOn;
 
@@ -181,7 +181,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
         return $this->createdOn;
     }
 
-    public function setMicrotime(?int $microtime): static
+    public function setMicrotime(int $microtime): static
     {
         $this->microtime = $microtime;
 

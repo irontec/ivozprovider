@@ -106,7 +106,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setActivationTime(null|\DateTimeInterface|string $activationTime): static
+    public function setActivationTime(\DateTimeInterface|string $activationTime): static
     {
         $this->activationTime = $activationTime;
 

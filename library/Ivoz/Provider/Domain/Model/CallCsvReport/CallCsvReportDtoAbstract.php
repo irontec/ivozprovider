@@ -137,7 +137,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setSentTo(?string $sentTo): static
+    public function setSentTo(string $sentTo): static
     {
         $this->sentTo = $sentTo;
 
@@ -149,7 +149,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->sentTo;
     }
 
-    public function setInDate(null|\DateTimeInterface|string $inDate): static
+    public function setInDate(\DateTimeInterface|string $inDate): static
     {
         $this->inDate = $inDate;
 
@@ -161,7 +161,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->inDate;
     }
 
-    public function setOutDate(null|\DateTimeInterface|string $outDate): static
+    public function setOutDate(\DateTimeInterface|string $outDate): static
     {
         $this->outDate = $outDate;
 
@@ -173,7 +173,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->outDate;
     }
 
-    public function setCreatedOn(null|\DateTimeInterface|string $createdOn): static
+    public function setCreatedOn(\DateTimeInterface|string $createdOn): static
     {
         $this->createdOn = $createdOn;
 

@@ -268,9 +268,6 @@ abstract class AdministratorAbstract
 
     protected function setActive(bool $active): static
     {
-        Assertion::between((int) $active, 0, 1, 'active provided "%s" is not a valid boolean value.');
-        $active = (bool) $active;
-
         $this->active = $active;
 
         return $this;
@@ -283,9 +280,6 @@ abstract class AdministratorAbstract
 
     protected function setRestricted(bool $restricted): static
     {
-        Assertion::between((int) $restricted, 0, 1, 'restricted provided "%s" is not a valid boolean value.');
-        $restricted = (bool) $restricted;
-
         $this->restricted = $restricted;
 
         return $this;

@@ -127,7 +127,7 @@ abstract class PsIdentifyDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setSorceryId(?string $sorceryId): static
+    public function setSorceryId(string $sorceryId): static
     {
         $this->sorceryId = $sorceryId;
 
@@ -175,7 +175,7 @@ abstract class PsIdentifyDtoAbstract implements DataTransferObjectInterface
         return $this->matchHeader;
     }
 
-    public function setSrvLookups(?string $srvLookups): static
+    public function setSrvLookups(string $srvLookups): static
     {
         $this->srvLookups = $srvLookups;
 

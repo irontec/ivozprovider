@@ -358,9 +358,6 @@ abstract class OutgoingRoutingAbstract
 
     protected function setStopper(bool $stopper): static
     {
-        Assertion::between((int) $stopper, 0, 1, 'stopper provided "%s" is not a valid boolean value.');
-        $stopper = (bool) $stopper;
-
         $this->stopper = $stopper;
 
         return $this;
@@ -373,11 +370,6 @@ abstract class OutgoingRoutingAbstract
 
     protected function setForceClid(?bool $forceClid = null): static
     {
-        if (!is_null($forceClid)) {
-            Assertion::between((int) $forceClid, 0, 1, 'forceClid provided "%s" is not a valid boolean value.');
-            $forceClid = (bool) $forceClid;
-        }
-
         $this->forceClid = $forceClid;
 
         return $this;

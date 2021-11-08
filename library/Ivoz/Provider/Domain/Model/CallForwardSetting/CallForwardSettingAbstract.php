@@ -379,9 +379,6 @@ abstract class CallForwardSettingAbstract
 
     protected function setEnabled(bool $enabled): static
     {
-        Assertion::between((int) $enabled, 0, 1, 'enabled provided "%s" is not a valid boolean value.');
-        $enabled = (bool) $enabled;
-
         $this->enabled = $enabled;
 
         return $this;

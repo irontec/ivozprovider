@@ -201,9 +201,6 @@ abstract class RouteLockAbstract
 
     protected function setOpen(bool $open): static
     {
-        Assertion::between((int) $open, 0, 1, 'open provided "%s" is not a valid boolean value.');
-        $open = (bool) $open;
-
         $this->open = $open;
 
         return $this;

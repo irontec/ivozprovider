@@ -97,7 +97,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -109,7 +109,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setDefaultAction(?string $defaultAction): static
+    public function setDefaultAction(string $defaultAction): static
     {
         $this->defaultAction = $defaultAction;
 

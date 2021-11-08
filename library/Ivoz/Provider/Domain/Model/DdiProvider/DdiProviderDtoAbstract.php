@@ -127,7 +127,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -139,7 +139,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 

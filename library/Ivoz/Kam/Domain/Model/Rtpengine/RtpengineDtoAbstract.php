@@ -110,7 +110,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setSetid(?int $setid): static
+    public function setSetid(int $setid): static
     {
         $this->setid = $setid;
 
@@ -122,7 +122,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->setid;
     }
 
-    public function setUrl(?string $url): static
+    public function setUrl(string $url): static
     {
         $this->url = $url;
 
@@ -134,7 +134,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->url;
     }
 
-    public function setWeight(?int $weight): static
+    public function setWeight(int $weight): static
     {
         $this->weight = $weight;
 
@@ -146,7 +146,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->weight;
     }
 
-    public function setDisabled(?bool $disabled): static
+    public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
 
@@ -158,7 +158,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->disabled;
     }
 
-    public function setStamp(null|\DateTimeInterface|string $stamp): static
+    public function setStamp(\DateTimeInterface|string $stamp): static
     {
         $this->stamp = $stamp;
 

@@ -329,9 +329,6 @@ abstract class TpAccountActionAbstract
 
     protected function setAllowNegative(bool $allowNegative): static
     {
-        Assertion::between((int) $allowNegative, 0, 1, 'allowNegative provided "%s" is not a valid boolean value.');
-        $allowNegative = (bool) $allowNegative;
-
         $this->allowNegative = $allowNegative;
 
         return $this;
@@ -344,9 +341,6 @@ abstract class TpAccountActionAbstract
 
     protected function setDisabled(bool $disabled): static
     {
-        Assertion::between((int) $disabled, 0, 1, 'disabled provided "%s" is not a valid boolean value.');
-        $disabled = (bool) $disabled;
-
         $this->disabled = $disabled;
 
         return $this;

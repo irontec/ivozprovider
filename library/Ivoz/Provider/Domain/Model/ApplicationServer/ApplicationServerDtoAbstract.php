@@ -74,7 +74,7 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
         return $response;
     }
 
-    public function setIp(?string $ip): static
+    public function setIp(string $ip): static
     {
         $this->ip = $ip;
 

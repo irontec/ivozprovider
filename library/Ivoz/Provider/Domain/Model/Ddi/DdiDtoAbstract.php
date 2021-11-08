@@ -229,7 +229,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setDdi(?string $ddi): static
+    public function setDdi(string $ddi): static
     {
         $this->ddi = $ddi;
 
@@ -253,7 +253,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->ddie164;
     }
 
-    public function setRecordCalls(?string $recordCalls): static
+    public function setRecordCalls(string $recordCalls): static
     {
         $this->recordCalls = $recordCalls;
 
@@ -289,7 +289,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this->routeType;
     }
 
-    public function setBillInboundCalls(?bool $billInboundCalls): static
+    public function setBillInboundCalls(bool $billInboundCalls): static
     {
         $this->billInboundCalls = $billInboundCalls;
 

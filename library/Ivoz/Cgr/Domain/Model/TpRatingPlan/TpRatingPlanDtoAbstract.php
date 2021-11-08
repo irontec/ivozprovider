@@ -110,7 +110,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -146,7 +146,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->destratesTag;
     }
 
-    public function setTimingTag(?string $timingTag): static
+    public function setTimingTag(string $timingTag): static
     {
         $this->timingTag = $timingTag;
 
@@ -158,7 +158,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->timingTag;
     }
 
-    public function setWeight(?float $weight): static
+    public function setWeight(float $weight): static
     {
         $this->weight = $weight;
 
@@ -170,7 +170,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->weight;
     }
 
-    public function setCreatedAt(null|\DateTimeInterface|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 

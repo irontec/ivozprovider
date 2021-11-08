@@ -103,7 +103,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -127,7 +127,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
-    public function setTemplate(?string $template): static
+    public function setTemplate(string $template): static
     {
         $this->template = $template;
 

@@ -153,7 +153,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -165,7 +165,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->tpid;
     }
 
-    public function setLoadid(?string $loadid): static
+    public function setLoadid(string $loadid): static
     {
         $this->loadid = $loadid;
 
@@ -177,7 +177,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->loadid;
     }
 
-    public function setDirection(?string $direction): static
+    public function setDirection(string $direction): static
     {
         $this->direction = $direction;
 
@@ -201,7 +201,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->tenant;
     }
 
-    public function setCategory(?string $category): static
+    public function setCategory(string $category): static
     {
         $this->category = $category;
 
@@ -225,7 +225,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->subject;
     }
 
-    public function setActivationTime(?string $activationTime): static
+    public function setActivationTime(string $activationTime): static
     {
         $this->activationTime = $activationTime;
 
@@ -273,7 +273,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->cdrStatQueueIds;
     }
 
-    public function setCreatedAt(null|\DateTimeInterface|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 

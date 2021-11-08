@@ -193,9 +193,6 @@ abstract class AdministratorRelPublicEntityAbstract
 
     protected function setCreate(bool $create): static
     {
-        Assertion::between((int) $create, 0, 1, 'create provided "%s" is not a valid boolean value.');
-        $create = (bool) $create;
-
         $this->create = $create;
 
         return $this;
@@ -208,9 +205,6 @@ abstract class AdministratorRelPublicEntityAbstract
 
     protected function setRead(bool $read): static
     {
-        Assertion::between((int) $read, 0, 1, 'read provided "%s" is not a valid boolean value.');
-        $read = (bool) $read;
-
         $this->read = $read;
 
         return $this;
@@ -223,9 +217,6 @@ abstract class AdministratorRelPublicEntityAbstract
 
     protected function setUpdate(bool $update): static
     {
-        Assertion::between((int) $update, 0, 1, 'update provided "%s" is not a valid boolean value.');
-        $update = (bool) $update;
-
         $this->update = $update;
 
         return $this;
@@ -238,9 +229,6 @@ abstract class AdministratorRelPublicEntityAbstract
 
     protected function setDelete(bool $delete): static
     {
-        Assertion::between((int) $delete, 0, 1, 'delete provided "%s" is not a valid boolean value.');
-        $delete = (bool) $delete;
-
         $this->delete = $delete;
 
         return $this;

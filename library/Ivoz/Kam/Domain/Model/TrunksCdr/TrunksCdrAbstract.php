@@ -508,11 +508,6 @@ abstract class TrunksCdrAbstract
 
     protected function setBounced(?bool $bounced = null): static
     {
-        if (!is_null($bounced)) {
-            Assertion::between((int) $bounced, 0, 1, 'bounced provided "%s" is not a valid boolean value.');
-            $bounced = (bool) $bounced;
-        }
-
         $this->bounced = $bounced;
 
         return $this;
@@ -525,11 +520,6 @@ abstract class TrunksCdrAbstract
 
     protected function setParsed(?bool $parsed = null): static
     {
-        if (!is_null($parsed)) {
-            Assertion::between((int) $parsed, 0, 1, 'parsed provided "%s" is not a valid boolean value.');
-            $parsed = (bool) $parsed;
-        }
-
         $this->parsed = $parsed;
 
         return $this;

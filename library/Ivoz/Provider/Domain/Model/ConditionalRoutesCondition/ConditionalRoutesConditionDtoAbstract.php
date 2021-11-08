@@ -195,7 +195,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $response;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 

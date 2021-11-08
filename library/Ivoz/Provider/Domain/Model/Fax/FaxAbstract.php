@@ -212,9 +212,6 @@ abstract class FaxAbstract
 
     protected function setSendByEmail(bool $sendByEmail): static
     {
-        Assertion::between((int) $sendByEmail, 0, 1, 'sendByEmail provided "%s" is not a valid boolean value.');
-        $sendByEmail = (bool) $sendByEmail;
-
         $this->sendByEmail = $sendByEmail;
 
         return $this;

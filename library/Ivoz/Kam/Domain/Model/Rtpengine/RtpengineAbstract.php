@@ -236,9 +236,6 @@ abstract class RtpengineAbstract
 
     protected function setDisabled(bool $disabled): static
     {
-        Assertion::between((int) $disabled, 0, 1, 'disabled provided "%s" is not a valid boolean value.');
-        $disabled = (bool) $disabled;
-
         $this->disabled = $disabled;
 
         return $this;

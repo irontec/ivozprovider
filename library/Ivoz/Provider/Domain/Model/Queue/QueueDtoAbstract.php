@@ -370,7 +370,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->weight;
     }
 
-    public function setPreventMissedCalls(?int $preventMissedCalls): static
+    public function setPreventMissedCalls(int $preventMissedCalls): static
     {
         $this->preventMissedCalls = $preventMissedCalls;
 

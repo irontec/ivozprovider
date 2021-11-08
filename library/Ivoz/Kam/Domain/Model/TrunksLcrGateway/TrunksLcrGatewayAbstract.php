@@ -359,11 +359,6 @@ abstract class TrunksLcrGatewayAbstract
 
     protected function setStrip(?bool $strip = null): static
     {
-        if (!is_null($strip)) {
-            Assertion::between((int) $strip, 0, 1, 'strip provided "%s" is not a valid boolean value.');
-            $strip = (bool) $strip;
-        }
-
         $this->strip = $strip;
 
         return $this;
