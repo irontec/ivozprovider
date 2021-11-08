@@ -18,19 +18,19 @@ run_test () {
         --no-progress \
         --autoload-file ${APP_ROOT}/vendor/autoload.php \
         --configuration ${APP_ROOT}/phpstan.neon \
-        ${TARGET}
+        ${TARGET} $3
 
     popd
 }
 
-run_test library Ivoz
-run_test asterisk/agi src
-run_test microservices/balances src
-run_test microservices/recordings src
-run_test microservices/scheduler src
-run_test microservices/workers src
-run_test microservices/realtime src
-run_test web/rest/brand src
-run_test web/rest/client src
-run_test web/rest/user src
-run_test web/rest/platform src
+run_test library Ivoz $1
+run_test asterisk/agi src $1
+run_test microservices/balances src $1
+run_test microservices/recordings src $1
+run_test microservices/scheduler src $1
+run_test microservices/workers src $1
+run_test microservices/realtime src $1
+run_test web/rest/brand src $1
+run_test web/rest/client src $1
+run_test web/rest/user src $1
+run_test web/rest/platform src $1
